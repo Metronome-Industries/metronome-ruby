@@ -1,0 +1,74 @@
+# frozen_string_literal: true
+
+module Metronome
+  module Resources
+    class Usage
+      def initialize(client:)
+        @client = client
+      end
+
+      # Fetch aggregated usage data for multiple customers and billable-metrics, broken
+      #   into intervals of the specified length.
+      # 
+      # @param params [Hash] Attributes to send in this request.
+      # @option params [String] :ending_before Body param:
+      # @option params [String] :starting_on Body param:
+      # @option params [Symbol] :window_size Body param: A window_size of "day" or "hour" will return the usage for the
+      #   specified period segmented into daily or hourly aggregates. A window_size of
+      #   "none" will return a single usage aggregate for the entirety of the specified
+      #   period.
+      # @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
+      # @option params [Array<BillableMetric>] :billable_metrics Body param: A list of billable metrics to fetch usage for. If absent, all
+      #   billable metrics will be returned.
+      # @option params [Array<String>] :customer_ids Body param: A list of Metronome customer IDs to fetch usage for. If absent,
+      #   usage for all customers will be returned.
+      # 
+      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # 
+      # @return [Metronome::Models::UsageListResponse]
+      def list(params = {}, opts = {})
+        req = {}
+        req[:method] = :post
+        req[:path] = "/usage"
+        query_params = [:next_page]
+        req[:query] = params.slice(*query_params)
+        req[:body] = params.except(*query_params)
+        req[:model] = Metronome::Models::UsageListResponse
+        @client.request(req, opts)
+      end
+
+      # Fetch aggregated usage data for the specified customer, billable-metric, and
+      #   optional group, broken into intervals of the specified length.
+      # 
+      # @param params [Hash] Attributes to send in this request.
+      # @option params [String] :billable_metric_id Body param:
+      # @option params [String] :customer_id Body param:
+      # @option params [Symbol] :window_size Body param: A window_size of "day" or "hour" will return the usage for the
+      #   specified period segmented into daily or hourly aggregates. A window_size of
+      #   "none" will return a single usage aggregate for the entirety of the specified
+      #   period.
+      # @option params [Integer] :limit Query param: Max number of results that should be returned
+      # @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
+      # @option params [Boolean] :current_period Body param: If true, will return the usage for the current billing period. Will
+      #   return an error if the customer is currently uncontracted or starting_on and
+      #   ending_before are specified when this is true.
+      # @option params [String] :ending_before Body param:
+      # @option params [GroupBy] :group_by Body param:
+      # @option params [String] :starting_on Body param:
+      # 
+      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # 
+      # @return [Metronome::Models::UsageListWithGroupsResponse]
+      def list_with_groups(params = {}, opts = {})
+        req = {}
+        req[:method] = :post
+        req[:path] = "/usage/groups"
+        query_params = [:limit, :next_page]
+        req[:query] = params.slice(*query_params)
+        req[:body] = params.except(*query_params)
+        req[:model] = Metronome::Models::UsageListWithGroupsResponse
+        @client.request(req, opts)
+      end
+    end
+  end
+end
