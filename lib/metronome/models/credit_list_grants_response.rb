@@ -1,0 +1,233 @@
+# frozen_string_literal: true
+
+module Metronome
+  module Models
+    class CreditListGrantsResponse < BaseModel
+      # @!attribute [rw] data
+      #   @return [Array<Metronome::Models::CreditListGrantsResponse::Data>]
+      required :data, Metronome::ArrayOf.new(-> { Metronome::Models::CreditListGrantsResponse::Data })
+
+      # @!attribute [rw] next_page
+      #   @return [String]
+      required :next_page, String
+
+      class Data < BaseModel
+        # @!attribute [rw] id
+        #   the Metronome ID of the credit grant
+        #   @return [String]
+        required :id, String
+
+        # @!attribute [rw] balance
+        #   The effective balance of the grant as of the end of the customer's current billing period. Expiration deductions will be included only if the grant expires before the end of the current billing period.
+        #   @return [Metronome::Models::CreditListGrantsResponse::Data::Balance]
+        required :balance, -> { Metronome::Models::CreditListGrantsResponse::Data::Balance }
+
+        # @!attribute [rw] custom_fields
+        #   @return [Hash]
+        required :custom_fields, Hash
+
+        # @!attribute [rw] customer_id
+        #   the Metronome ID of the customer
+        #   @return [String]
+        required :customer_id, String
+
+        # @!attribute [rw] deductions
+        #   @return [Array<Metronome::Models::CreditListGrantsResponse::Data::Deduction>]
+        required :deductions,
+                 Metronome::ArrayOf.new(-> { Metronome::Models::CreditListGrantsResponse::Data::Deduction })
+
+        # @!attribute [rw] effective_at
+        #   @return [String]
+        required :effective_at, String
+
+        # @!attribute [rw] expires_at
+        #   @return [String]
+        required :expires_at, String
+
+        # @!attribute [rw] grant_amount
+        #   the amount of credits initially granted
+        #   @return [Metronome::Models::CreditListGrantsResponse::Data::GrantAmount]
+        required :grant_amount, -> { Metronome::Models::CreditListGrantsResponse::Data::GrantAmount }
+
+        # @!attribute [rw] name_
+        #   @return [String]
+        required :name_, String
+
+        # @!attribute [rw] paid_amount
+        #   the amount paid for this credit grant
+        #   @return [Metronome::Models::CreditListGrantsResponse::Data::PaidAmount]
+        required :paid_amount, -> { Metronome::Models::CreditListGrantsResponse::Data::PaidAmount }
+
+        # @!attribute [rw] pending_deductions
+        #   @return [Array<Metronome::Models::CreditListGrantsResponse::Data::PendingDeduction>]
+        required :pending_deductions,
+                 Metronome::ArrayOf.new(-> { Metronome::Models::CreditListGrantsResponse::Data::PendingDeduction })
+
+        # @!attribute [rw] priority
+        #   @return [Float]
+        required :priority, Float
+
+        # @!attribute [rw] credit_grant_type
+        #   @return [String]
+        optional :credit_grant_type, String
+
+        # @!attribute [rw] invoice_id
+        #   the Metronome ID of the invoice with the purchase charge for this credit grant, if applicable
+        #   @return [String]
+        optional :invoice_id, String
+
+        # @!attribute [rw] products
+        #   The products which these credits will be applied to. (If unspecified, the credits will be applied to charges for all products.)
+        #   @return [Array<Metronome::Models::CreditListGrantsResponse::Data::Product>]
+        optional :products,
+                 Metronome::ArrayOf.new(-> { Metronome::Models::CreditListGrantsResponse::Data::Product })
+
+        # @!attribute [rw] reason
+        #   @return [String]
+        optional :reason, String
+
+        # @!attribute [rw] uniqueness_key
+        #   Prevents the creation of duplicates. If a request to create a record is made with a previously used uniqueness key, a new record will not be created and the request will fail with a 409 error.
+        #   @return [String]
+        optional :uniqueness_key, String
+
+        class Balance < BaseModel
+          # @!attribute [rw] effective_at
+          #   The end_date of the customer's current billing period.
+          #   @return [String]
+          required :effective_at, String
+
+          # @!attribute [rw] excluding_pending
+          #   The grant's current balance including all posted deductions. If the grant has expired, this amount will be 0.
+          #   @return [Float]
+          required :excluding_pending, Float
+
+          # @!attribute [rw] including_pending
+          #   The grant's current balance including all posted and pending deductions. If the grant expires before the end of the customer's current billing period, this amount will be 0.
+          #   @return [Float]
+          required :including_pending, Float
+        end
+
+        class Deduction < BaseModel
+          # @!attribute [rw] amount
+          #   an amount representing the change to the customer's credit balance
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute [rw] created_by
+          #   @return [String]
+          required :created_by, String
+
+          # @!attribute [rw] credit_grant_id
+          #   the credit grant this entry is related to
+          #   @return [String]
+          required :credit_grant_id, String
+
+          # @!attribute [rw] effective_at
+          #   @return [String]
+          required :effective_at, String
+
+          # @!attribute [rw] reason
+          #   @return [String]
+          required :reason, String
+
+          # @!attribute [rw] running_balance
+          #   the running balance for this credit type at the time of the ledger entry, including all preceding charges
+          #   @return [Float]
+          required :running_balance, Float
+
+          # @!attribute [rw] invoice_id
+          #   if this entry is a deduction, the Metronome ID of the invoice where the credit deduction was consumed; if this entry is a grant, the Metronome ID of the invoice where the grant's paid_amount was charged
+          #   @return [String]
+          optional :invoice_id, String
+        end
+
+        class GrantAmount < BaseModel
+          # @!attribute [rw] amount
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute [rw] credit_type
+          #   the credit type for the amount granted
+          #   @return [Metronome::Models::CreditListGrantsResponse::Data::GrantAmount::CreditType]
+          required :credit_type, -> { Metronome::Models::CreditListGrantsResponse::Data::GrantAmount::CreditType }
+
+          class CreditType < BaseModel
+            # @!attribute [rw] id
+            #   @return [String]
+            required :id, String
+
+            # @!attribute [rw] name_
+            #   @return [String]
+            required :name_, String
+          end
+        end
+
+        class PaidAmount < BaseModel
+          # @!attribute [rw] amount
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute [rw] credit_type
+          #   the credit type for the amount paid
+          #   @return [Metronome::Models::CreditListGrantsResponse::Data::PaidAmount::CreditType]
+          required :credit_type, -> { Metronome::Models::CreditListGrantsResponse::Data::PaidAmount::CreditType }
+
+          class CreditType < BaseModel
+            # @!attribute [rw] id
+            #   @return [String]
+            required :id, String
+
+            # @!attribute [rw] name_
+            #   @return [String]
+            required :name_, String
+          end
+        end
+
+        class PendingDeduction < BaseModel
+          # @!attribute [rw] amount
+          #   an amount representing the change to the customer's credit balance
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute [rw] created_by
+          #   @return [String]
+          required :created_by, String
+
+          # @!attribute [rw] credit_grant_id
+          #   the credit grant this entry is related to
+          #   @return [String]
+          required :credit_grant_id, String
+
+          # @!attribute [rw] effective_at
+          #   @return [String]
+          required :effective_at, String
+
+          # @!attribute [rw] reason
+          #   @return [String]
+          required :reason, String
+
+          # @!attribute [rw] running_balance
+          #   the running balance for this credit type at the time of the ledger entry, including all preceding charges
+          #   @return [Float]
+          required :running_balance, Float
+
+          # @!attribute [rw] invoice_id
+          #   if this entry is a deduction, the Metronome ID of the invoice where the credit deduction was consumed; if this entry is a grant, the Metronome ID of the invoice where the grant's paid_amount was charged
+          #   @return [String]
+          optional :invoice_id, String
+        end
+
+        class Product < BaseModel
+          # @!attribute [rw] id
+          #   @return [String]
+          required :id, String
+
+          # @!attribute [rw] name_
+          #   @return [String]
+          required :name_, String
+        end
+      end
+    end
+  end
+end
