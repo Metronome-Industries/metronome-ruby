@@ -29,9 +29,6 @@ module Metronome
     # @return [Metronome::Resources::Dashboards]
     attr_reader :dashboards
 
-    # @return [Metronome::Resources::Webhooks]
-    attr_reader :webhooks
-
     # @return [Metronome::Resources::Usage]
     attr_reader :usage
 
@@ -66,7 +63,6 @@ module Metronome
       @credit_types = Metronome::Resources::CreditTypes.new(client: self)
       @customers = Metronome::Resources::Customers.new(client: self)
       @dashboards = Metronome::Resources::Dashboards.new(client: self)
-      @webhooks = Metronome::Resources::Webhooks.new(client: self)
       @usage = Metronome::Resources::Usage.new(client: self)
       @audit_logs = Metronome::Resources::AuditLogs.new(client: self)
       @custom_fields = Metronome::Resources::CustomFields.new(client: self)
