@@ -99,6 +99,7 @@ module Metronome
       # List credit grants. This list does not included voided grants.
       # 
       # @param params [Hash] Attributes to send in this request.
+      # @option params [Integer] :limit Query param: Max number of results that should be returned
       # @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
       # @option params [Array<String>] :credit_grant_ids Body param: An array of credit grant IDs. If this is specified, neither
       #   credit_type_ids nor customer_ids may be specified.
@@ -117,7 +118,7 @@ module Metronome
         req = {}
         req[:method] = :post
         req[:path] = "/credits/listGrants"
-        query_params = [:next_page]
+        query_params = [:limit, :next_page]
         req[:query] = params.slice(*query_params)
         req[:body] = params.except(*query_params)
         req[:model] = Metronome::Models::CreditListGrantsResponse
