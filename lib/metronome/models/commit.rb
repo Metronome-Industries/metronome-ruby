@@ -56,8 +56,8 @@ module Metronome
 
       # @!attribute [rw] invoice_schedule
       #   The schedule that the customer will be invoiced for this commit.
-      #   @return [Metronome::Models::Commit::InvoiceSchedule]
-      optional :invoice_schedule, -> { Metronome::Models::Commit::InvoiceSchedule }
+      #   @return [Metronome::Models::SchedulePointInTime]
+      optional :invoice_schedule, -> { Metronome::Models::SchedulePointInTime }
 
       # @!attribute [rw] ledger
       #   A list of ordered events that impact the balance of a commit. For example, an invoice deduction or a rollover.
@@ -150,39 +150,6 @@ module Metronome
         # @!attribute [rw] id
         #   @return [String]
         required :id, String
-      end
-
-      class InvoiceSchedule < BaseModel
-        # @!attribute [rw] schedule_items
-        #   @return [Array<Metronome::Models::Commit::InvoiceSchedule::ScheduleItem>]
-        optional :schedule_items,
-                 Metronome::ArrayOf.new(-> { Metronome::Models::Commit::InvoiceSchedule::ScheduleItem })
-
-        class ScheduleItem < BaseModel
-          # @!attribute [rw] id
-          #   @return [String]
-          required :id, String
-
-          # @!attribute [rw] amount
-          #   @return [Float]
-          required :amount, Float
-
-          # @!attribute [rw] invoice_id
-          #   @return [String]
-          required :invoice_id, String
-
-          # @!attribute [rw] quantity
-          #   @return [Float]
-          required :quantity, Float
-
-          # @!attribute [rw] timestamp
-          #   @return [String]
-          required :timestamp, String
-
-          # @!attribute [rw] unit_price
-          #   @return [Float]
-          required :unit_price, Float
-        end
       end
 
       class RolledOverFrom < BaseModel

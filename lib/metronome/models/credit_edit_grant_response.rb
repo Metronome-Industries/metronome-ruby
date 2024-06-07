@@ -4,14 +4,8 @@ module Metronome
   module Models
     class CreditEditGrantResponse < BaseModel
       # @!attribute [rw] data
-      #   @return [Metronome::Models::CreditEditGrantResponse::Data]
-      required :data, -> { Metronome::Models::CreditEditGrantResponse::Data }
-
-      class Data < BaseModel
-        # @!attribute [rw] id
-        #   @return [String]
-        required :id, String
-      end
+      #   @return [Metronome::Models::ID]
+      required :data, -> { Metronome::Models::ID }
     end
   end
 end
