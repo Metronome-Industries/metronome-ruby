@@ -12,8 +12,8 @@ module Metronome
       required :product, -> { Metronome::Models::ScheduledCharge::Product }
 
       # @!attribute [rw] schedule
-      #   @return [Metronome::Models::ScheduledCharge::Schedule]
-      required :schedule, -> { Metronome::Models::ScheduledCharge::Schedule }
+      #   @return [Metronome::Models::SchedulePointInTime]
+      required :schedule, -> { Metronome::Models::SchedulePointInTime }
 
       # @!attribute [rw] custom_fields
       #   @return [Hash]
@@ -37,39 +37,6 @@ module Metronome
         # @!attribute [rw] name_
         #   @return [String]
         required :name_, String
-      end
-
-      class Schedule < BaseModel
-        # @!attribute [rw] schedule_items
-        #   @return [Array<Metronome::Models::ScheduledCharge::Schedule::ScheduleItem>]
-        optional :schedule_items,
-                 Metronome::ArrayOf.new(-> { Metronome::Models::ScheduledCharge::Schedule::ScheduleItem })
-
-        class ScheduleItem < BaseModel
-          # @!attribute [rw] id
-          #   @return [String]
-          required :id, String
-
-          # @!attribute [rw] amount
-          #   @return [Float]
-          required :amount, Float
-
-          # @!attribute [rw] invoice_id
-          #   @return [String]
-          required :invoice_id, String
-
-          # @!attribute [rw] quantity
-          #   @return [Float]
-          required :quantity, Float
-
-          # @!attribute [rw] timestamp
-          #   @return [String]
-          required :timestamp, String
-
-          # @!attribute [rw] unit_price
-          #   @return [Float]
-          required :unit_price, Float
-        end
       end
     end
   end
