@@ -1,0 +1,27 @@
+# frozen_string_literal: true
+
+module Metronome
+  module Resources
+    class Services
+      def initialize(client:)
+        @client = client
+      end
+
+      # Fetches a list of services used by Metronome and the associated IP addresses. IP
+      #   addresses are not necessarily unique between services. In most cases, IP
+      #   addresses will appear in the list at least 30 days before they are used for the
+      #   first time.
+      # 
+      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # 
+      # @return [Metronome::Models::ServiceListResponse]
+      def list(opts = {})
+        req = {}
+        req[:method] = :get
+        req[:path] = "/services"
+        req[:model] = Metronome::Models::ServiceListResponse
+        @client.request(req, opts)
+      end
+    end
+  end
+end

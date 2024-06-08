@@ -58,6 +58,33 @@ module Metronome
           req[:model] = Metronome::Models::InvoiceListResponse
           @client.request(req, opts)
         end
+
+        # Add a one time charge to the specified invoice
+        # 
+        # @param customer_id [String]
+        # 
+        # @param params [Hash] Attributes to send in this request.
+        # @option params [String] :charge_id The Metronome ID of the charge to add to the invoice. Note that the charge must
+        #   be on a product that is not on the current plan, and the product must have only
+        #   fixed charges.
+        # @option params [String] :customer_plan_id The Metronome ID of the customer plan to add the charge to.
+        # @option params [String] :description
+        # @option params [String] :invoice_start_timestamp The start_timestamp of the invoice to add the charge to.
+        # @option params [Float] :price The price of the charge. This price will match the currency on the invoice, e.g.
+        #   USD cents.
+        # @option params [Float] :quantity
+        # 
+        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # 
+        # @return [Metronome::Models::InvoiceAddChargeResponse]
+        def add_charge(customer_id, params = {}, opts = {})
+          req = {}
+          req[:method] = :post
+          req[:path] = "/customers/#{customer_id}/addCharge"
+          req[:body] = params
+          req[:model] = Metronome::Models::InvoiceAddChargeResponse
+          @client.request(req, opts)
+        end
       end
     end
   end

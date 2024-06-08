@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class CustomerAlertListResponse < BaseModel
+    class AlertListResponse < BaseModel
       # @!attribute [rw] data
       #   @return [Array<Metronome::Models::CustomerAlert>]
       required :data, Metronome::ArrayOf.new(-> { Metronome::Models::CustomerAlert })

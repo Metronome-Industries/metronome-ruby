@@ -54,7 +54,8 @@ module Metronome
                    :low_remaining_commit_percentage_reached,
                    :low_remaining_days_for_contract_credit_segment_reached,
                    :low_remaining_contract_credit_balance_reached,
-                   :low_remaining_contract_credit_percentage_reached
+                   :low_remaining_contract_credit_percentage_reached,
+                   :invoice_total_reached
                  )
 
         # @!attribute [rw] updated_at
@@ -63,8 +64,8 @@ module Metronome
         required :updated_at, String
 
         # @!attribute [rw] credit_type
-        #   @return [Metronome::Models::CustomerAlert::Alert::CreditType]
-        optional :credit_type, -> { Metronome::Models::CustomerAlert::Alert::CreditType }
+        #   @return [Metronome::Models::CreditType]
+        optional :credit_type, -> { Metronome::Models::CreditType }
 
         # @!attribute [rw] custom_field_filters
         #   A list of custom field filters for alert types that support advanced filtering
@@ -77,20 +78,15 @@ module Metronome
         #   @return [Metronome::Models::CustomerAlert::Alert::GroupKeyFilter]
         optional :group_key_filter, -> { Metronome::Models::CustomerAlert::Alert::GroupKeyFilter }
 
+        # @!attribute [rw] invoice_types_filter
+        #   Only supported for invoice_total_reached alerts. A list of invoice types to evaluate.
+        #   @return [Array<String>]
+        optional :invoice_types_filter, Metronome::ArrayOf.new(String)
+
         # @!attribute [rw] uniqueness_key
         #   Prevents the creation of duplicates. If a request to create a record is made with a previously used uniqueness key, a new record will not be created and the request will fail with a 409 error.
         #   @return [String]
         optional :uniqueness_key, String
-
-        class CreditType < BaseModel
-          # @!attribute [rw] id
-          #   @return [String]
-          required :id, String
-
-          # @!attribute [rw] name_
-          #   @return [String]
-          required :name_, String
-        end
 
         class CustomFieldFilter < BaseModel
           # @!attribute [rw] entity

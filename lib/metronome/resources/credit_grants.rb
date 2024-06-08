@@ -2,7 +2,7 @@
 
 module Metronome
   module Resources
-    class Credits
+    class CreditGrants
       def initialize(client:)
         @client = client
       end
@@ -36,13 +36,42 @@ module Metronome
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [Metronome::Models::CreditCreateGrantResponse]
-      def create_grant(params = {}, opts = {})
+      # @return [Metronome::Models::CreditGrantCreateResponse]
+      def create(params = {}, opts = {})
         req = {}
         req[:method] = :post
         req[:path] = "/credits/createGrant"
         req[:body] = params
-        req[:model] = Metronome::Models::CreditCreateGrantResponse
+        req[:model] = Metronome::Models::CreditGrantCreateResponse
+        @client.request(req, opts)
+      end
+
+      # List credit grants. This list does not included voided grants.
+      # 
+      # @param params [Hash] Attributes to send in this request.
+      # @option params [Integer] :limit Query param: Max number of results that should be returned
+      # @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
+      # @option params [Array<String>] :credit_grant_ids Body param: An array of credit grant IDs. If this is specified, neither
+      #   credit_type_ids nor customer_ids may be specified.
+      # @option params [Array<String>] :credit_type_ids Body param: An array of credit type IDs. This must not be specified if
+      #   credit_grant_ids is specified.
+      # @option params [Array<String>] :customer_ids Body param: An array of Metronome customer IDs. This must not be specified if
+      #   credit_grant_ids is specified.
+      # @option params [String] :effective_before Body param: Only return credit grants that are effective before this timestamp
+      #   (exclusive).
+      # @option params [String] :not_expiring_before Body param: Only return credit grants that expire at or after this timestamp.
+      # 
+      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # 
+      # @return [Metronome::Models::CreditGrantListResponse]
+      def list(params = {}, opts = {})
+        req = {}
+        req[:method] = :post
+        req[:path] = "/credits/listGrants"
+        query_params = [:limit, :next_page]
+        req[:query] = params.slice(*query_params)
+        req[:body] = params.except(*query_params)
+        req[:model] = Metronome::Models::CreditGrantListResponse
         @client.request(req, opts)
       end
 
@@ -55,13 +84,31 @@ module Metronome
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [Metronome::Models::CreditEditGrantResponse]
-      def edit_grant(params = {}, opts = {})
+      # @return [Metronome::Models::CreditGrantEditResponse]
+      def edit(params = {}, opts = {})
         req = {}
         req[:method] = :post
         req[:path] = "/credits/editGrant"
         req[:body] = params
-        req[:model] = Metronome::Models::CreditEditGrantResponse
+        req[:model] = Metronome::Models::CreditGrantEditResponse
+        @client.request(req, opts)
+      end
+
+      # List all pricing units (known in the API by the legacy term "credit types").
+      # 
+      # @param params [Hash] Attributes to send in this request.
+      # @option params [Integer] :limit Max number of results that should be returned
+      # @option params [String] :next_page Cursor that indicates where the next page of results should start.
+      # 
+      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # 
+      # @return [Metronome::Models::CreditGrantListCreditTypesResponse]
+      def list_credit_types(params = {}, opts = {})
+        req = {}
+        req[:method] = :get
+        req[:path] = "/credit-types/list"
+        req[:query] = params
+        req[:model] = Metronome::Models::CreditGrantListCreditTypesResponse
         @client.request(req, opts)
       end
 
@@ -84,7 +131,7 @@ module Metronome
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [Metronome::Models::CreditListEntriesResponse]
+      # @return [Metronome::Models::CreditGrantListEntriesResponse]
       def list_entries(params = {}, opts = {})
         req = {}
         req[:method] = :post
@@ -92,36 +139,7 @@ module Metronome
         query_params = [:next_page]
         req[:query] = params.slice(*query_params)
         req[:body] = params.except(*query_params)
-        req[:model] = Metronome::Models::CreditListEntriesResponse
-        @client.request(req, opts)
-      end
-
-      # List credit grants. This list does not included voided grants.
-      # 
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [Integer] :limit Query param: Max number of results that should be returned
-      # @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
-      # @option params [Array<String>] :credit_grant_ids Body param: An array of credit grant IDs. If this is specified, neither
-      #   credit_type_ids nor customer_ids may be specified.
-      # @option params [Array<String>] :credit_type_ids Body param: An array of credit type IDs. This must not be specified if
-      #   credit_grant_ids is specified.
-      # @option params [Array<String>] :customer_ids Body param: An array of Metronome customer IDs. This must not be specified if
-      #   credit_grant_ids is specified.
-      # @option params [String] :effective_before Body param: Only return credit grants that are effective before this timestamp
-      #   (exclusive).
-      # @option params [String] :not_expiring_before Body param: Only return credit grants that expire at or after this timestamp.
-      # 
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
-      # @return [Metronome::Models::CreditListGrantsResponse]
-      def list_grants(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/credits/listGrants"
-        query_params = [:limit, :next_page]
-        req[:query] = params.slice(*query_params)
-        req[:body] = params.except(*query_params)
-        req[:model] = Metronome::Models::CreditListGrantsResponse
+        req[:model] = Metronome::Models::CreditGrantListEntriesResponse
         @client.request(req, opts)
       end
 
@@ -133,13 +151,13 @@ module Metronome
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [Metronome::Models::CreditVoidGrantResponse]
-      def void_grant(params = {}, opts = {})
+      # @return [Metronome::Models::CreditGrantVoidResponse]
+      def void(params = {}, opts = {})
         req = {}
         req[:method] = :post
         req[:path] = "/credits/voidGrant"
         req[:body] = params
-        req[:model] = Metronome::Models::CreditVoidGrantResponse
+        req[:model] = Metronome::Models::CreditGrantVoidResponse
         @client.request(req, opts)
       end
     end
