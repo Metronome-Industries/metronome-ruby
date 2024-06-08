@@ -12,8 +12,8 @@ module Metronome
       required :billable_status, Metronome::Enum.new(:billable, :unbillable)
 
       # @!attribute [rw] credit_type
-      #   @return [Metronome::Models::Invoice::CreditType]
-      required :credit_type, -> { Metronome::Models::Invoice::CreditType }
+      #   @return [Metronome::Models::CreditType]
+      required :credit_type, -> { Metronome::Models::CreditType }
 
       # @!attribute [rw] customer_id
       #   @return [String]
@@ -123,20 +123,10 @@ module Metronome
       #   @return [Float]
       optional :subtotal, Float
 
-      class CreditType < BaseModel
-        # @!attribute [rw] id
-        #   @return [String]
-        required :id, String
-
-        # @!attribute [rw] name_
-        #   @return [String]
-        required :name_, String
-      end
-
       class LineItem < BaseModel
         # @!attribute [rw] credit_type
-        #   @return [Metronome::Models::Invoice::LineItem::CreditType]
-        required :credit_type, -> { Metronome::Models::Invoice::LineItem::CreditType }
+        #   @return [Metronome::Models::CreditType]
+        required :credit_type, -> { Metronome::Models::CreditType }
 
         # @!attribute [rw] name_
         #   @return [String]
@@ -282,16 +272,6 @@ module Metronome
         #   only present for beta contract invoices
         #   @return [Float]
         optional :unit_price, Float
-
-        class CreditType < BaseModel
-          # @!attribute [rw] id
-          #   @return [String]
-          required :id, String
-
-          # @!attribute [rw] name_
-          #   @return [String]
-          required :name_, String
-        end
 
         class PostpaidCommit < BaseModel
           # @!attribute [rw] id
@@ -457,8 +437,8 @@ module Metronome
 
       class InvoiceAdjustment < BaseModel
         # @!attribute [rw] credit_type
-        #   @return [Metronome::Models::Invoice::InvoiceAdjustment::CreditType]
-        required :credit_type, -> { Metronome::Models::Invoice::InvoiceAdjustment::CreditType }
+        #   @return [Metronome::Models::CreditType]
+        required :credit_type, -> { Metronome::Models::CreditType }
 
         # @!attribute [rw] name_
         #   @return [String]
@@ -471,16 +451,6 @@ module Metronome
         # @!attribute [rw] credit_grant_id
         #   @return [String]
         optional :credit_grant_id, String
-
-        class CreditType < BaseModel
-          # @!attribute [rw] id
-          #   @return [String]
-          required :id, String
-
-          # @!attribute [rw] name_
-          #   @return [String]
-          required :name_, String
-        end
       end
 
       class ResellerRoyalty < BaseModel

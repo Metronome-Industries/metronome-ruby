@@ -37,17 +37,16 @@ module Metronome
         required :amount_granted, Float
 
         # @!attribute [rw] amount_granted_credit_type
-        #   @return [Metronome::Models::PlanDetail::CreditGrant::AmountGrantedCreditType]
-        required :amount_granted_credit_type,
-                 -> { Metronome::Models::PlanDetail::CreditGrant::AmountGrantedCreditType }
+        #   @return [Metronome::Models::CreditType]
+        required :amount_granted_credit_type, -> { Metronome::Models::CreditType }
 
         # @!attribute [rw] amount_paid
         #   @return [Float]
         required :amount_paid, Float
 
         # @!attribute [rw] amount_paid_credit_type
-        #   @return [Metronome::Models::PlanDetail::CreditGrant::AmountPaidCreditType]
-        required :amount_paid_credit_type, -> { Metronome::Models::PlanDetail::CreditGrant::AmountPaidCreditType }
+        #   @return [Metronome::Models::CreditType]
+        required :amount_paid_credit_type, -> { Metronome::Models::CreditType }
 
         # @!attribute [rw] effective_duration
         #   @return [Float]
@@ -76,32 +75,12 @@ module Metronome
         # @!attribute [rw] recurrence_interval
         #   @return [Float]
         optional :recurrence_interval, Float
-
-        class AmountGrantedCreditType < BaseModel
-          # @!attribute [rw] id
-          #   @return [String]
-          required :id, String
-
-          # @!attribute [rw] name_
-          #   @return [String]
-          required :name_, String
-        end
-
-        class AmountPaidCreditType < BaseModel
-          # @!attribute [rw] id
-          #   @return [String]
-          required :id, String
-
-          # @!attribute [rw] name_
-          #   @return [String]
-          required :name_, String
-        end
       end
 
       class Minimum < BaseModel
         # @!attribute [rw] credit_type
-        #   @return [Metronome::Models::PlanDetail::Minimum::CreditType]
-        required :credit_type, -> { Metronome::Models::PlanDetail::Minimum::CreditType }
+        #   @return [Metronome::Models::CreditType]
+        required :credit_type, -> { Metronome::Models::CreditType }
 
         # @!attribute [rw] name_
         #   @return [String]
@@ -115,26 +94,16 @@ module Metronome
         # @!attribute [rw] value
         #   @return [Float]
         required :value, Float
-
-        class CreditType < BaseModel
-          # @!attribute [rw] id
-          #   @return [String]
-          required :id, String
-
-          # @!attribute [rw] name_
-          #   @return [String]
-          required :name_, String
-        end
       end
 
       class OverageRate < BaseModel
         # @!attribute [rw] credit_type
-        #   @return [Metronome::Models::PlanDetail::OverageRate::CreditType]
-        required :credit_type, -> { Metronome::Models::PlanDetail::OverageRate::CreditType }
+        #   @return [Metronome::Models::CreditType]
+        required :credit_type, -> { Metronome::Models::CreditType }
 
         # @!attribute [rw] fiat_credit_type
-        #   @return [Metronome::Models::PlanDetail::OverageRate::FiatCreditType]
-        required :fiat_credit_type, -> { Metronome::Models::PlanDetail::OverageRate::FiatCreditType }
+        #   @return [Metronome::Models::CreditType]
+        required :fiat_credit_type, -> { Metronome::Models::CreditType }
 
         # @!attribute [rw] start_period
         #   Used in price ramps.  Indicates how many billing periods pass before the charge applies.
@@ -144,26 +113,6 @@ module Metronome
         # @!attribute [rw] to_fiat_conversion_factor
         #   @return [Float]
         required :to_fiat_conversion_factor, Float
-
-        class CreditType < BaseModel
-          # @!attribute [rw] id
-          #   @return [String]
-          required :id, String
-
-          # @!attribute [rw] name_
-          #   @return [String]
-          required :name_, String
-        end
-
-        class FiatCreditType < BaseModel
-          # @!attribute [rw] id
-          #   @return [String]
-          required :id, String
-
-          # @!attribute [rw] name_
-          #   @return [String]
-          required :name_, String
-        end
       end
     end
   end

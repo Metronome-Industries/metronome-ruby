@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class CreditVoidGrantResponse < BaseModel
+    class CreditGrantVoidResponse < BaseModel
       # @!attribute [rw] data
       #   @return [Metronome::Models::ID]
       required :data, -> { Metronome::Models::ID }

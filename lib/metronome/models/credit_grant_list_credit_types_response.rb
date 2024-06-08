@@ -2,10 +2,10 @@
 
 module Metronome
   module Models
-    class CreditTypeListResponse < BaseModel
+    class CreditGrantListCreditTypesResponse < BaseModel
       # @!attribute [rw] data
-      #   @return [Array<Metronome::Models::CreditTypeListResponse::Data>]
-      required :data, Metronome::ArrayOf.new(-> { Metronome::Models::CreditTypeListResponse::Data })
+      #   @return [Array<Metronome::Models::CreditGrantListCreditTypesResponse::Data>]
+      required :data, Metronome::ArrayOf.new(-> { Metronome::Models::CreditGrantListCreditTypesResponse::Data })
 
       # @!attribute [rw] next_page
       #   @return [String]

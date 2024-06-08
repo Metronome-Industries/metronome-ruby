@@ -11,17 +11,11 @@ module Metronome
     # @return [Metronome::Resources::Alerts]
     attr_reader :alerts
 
-    # @return [Metronome::Resources::CustomerAlerts]
-    attr_reader :customer_alerts
-
     # @return [Metronome::Resources::Plans]
     attr_reader :plans
 
-    # @return [Metronome::Resources::Credits]
-    attr_reader :credits
-
-    # @return [Metronome::Resources::CreditTypes]
-    attr_reader :credit_types
+    # @return [Metronome::Resources::CreditGrants]
+    attr_reader :credit_grants
 
     # @return [Metronome::Resources::Customers]
     attr_reader :customers
@@ -37,6 +31,12 @@ module Metronome
 
     # @return [Metronome::Resources::CustomFields]
     attr_reader :custom_fields
+
+    # @return [Metronome::Resources::BillableMetrics]
+    attr_reader :billable_metrics
+
+    # @return [Metronome::Resources::Services]
+    attr_reader :services
 
     # @!visibility private
     def auth_headers
@@ -57,15 +57,15 @@ module Metronome
       super(base_url: base_url, max_retries: max_retries)
 
       @alerts = Metronome::Resources::Alerts.new(client: self)
-      @customer_alerts = Metronome::Resources::CustomerAlerts.new(client: self)
       @plans = Metronome::Resources::Plans.new(client: self)
-      @credits = Metronome::Resources::Credits.new(client: self)
-      @credit_types = Metronome::Resources::CreditTypes.new(client: self)
+      @credit_grants = Metronome::Resources::CreditGrants.new(client: self)
       @customers = Metronome::Resources::Customers.new(client: self)
       @dashboards = Metronome::Resources::Dashboards.new(client: self)
       @usage = Metronome::Resources::Usage.new(client: self)
       @audit_logs = Metronome::Resources::AuditLogs.new(client: self)
       @custom_fields = Metronome::Resources::CustomFields.new(client: self)
+      @billable_metrics = Metronome::Resources::BillableMetrics.new(client: self)
+      @services = Metronome::Resources::Services.new(client: self)
     end
 
     # @!visibility private

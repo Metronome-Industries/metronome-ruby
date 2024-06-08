@@ -21,8 +21,8 @@ module Metronome
         required :charge_type, Metronome::Enum.new(:usage, :fixed, :composite, :minimum, :seat)
 
         # @!attribute [rw] credit_type
-        #   @return [Metronome::Models::PlanListChargesResponse::Data::CreditType]
-        required :credit_type, -> { Metronome::Models::PlanListChargesResponse::Data::CreditType }
+        #   @return [Metronome::Models::CreditType]
+        required :credit_type, -> { Metronome::Models::CreditType }
 
         # @!attribute [rw] custom_fields
         #   @return [Hash]
@@ -57,16 +57,6 @@ module Metronome
         #   Specifies how quantities for usage based charges will be converted.
         #   @return [Metronome::Models::PlanListChargesResponse::Data::UnitConversion]
         optional :unit_conversion, -> { Metronome::Models::PlanListChargesResponse::Data::UnitConversion }
-
-        class CreditType < BaseModel
-          # @!attribute [rw] id
-          #   @return [String]
-          required :id, String
-
-          # @!attribute [rw] name_
-          #   @return [String]
-          required :name_, String
-        end
 
         class Price < BaseModel
           # @!attribute [rw] tier

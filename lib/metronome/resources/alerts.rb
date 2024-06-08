@@ -26,6 +26,8 @@ module Metronome
       #   trigger the alert threshold. Defaults to true.
       # @option params [GroupKeyFilter] :group_key_filter Scopes alert evaluation to a specific presentation group key on individual line
       #   items. Only present for spend alerts.
+      # @option params [Array<String>] :invoice_types_filter Only supported for invoice_total_reached alerts. A list of invoice types to
+      #   evaluate.
       # @option params [String] :plan_id If provided, will create this alert for this specific plan. To create an alert
       #   for all customers, do not specify `customer_id` or `plan_id`.
       # @option params [String] :uniqueness_key Prevents the creation of duplicates. If a request to create a record is made

@@ -37,6 +37,27 @@ module Metronome
         @client.request(req, opts)
       end
 
+      # Send usage events to Metronome. The body of this request is expected to be a
+      #   JSON array of between 1 and 100 usage events. Compressed request bodies are
+      #   supported with a `Content-Encoding: gzip` header. See
+      #   [Getting usage into Metronome](https://docs.metronome.com/getting-usage-data-into-metronome/overview)
+      #   to learn more about usage events.
+      # 
+      # @param params [Hash] Attributes to send in this request.
+      # @option params [Array<Usage>] :usage
+      # 
+      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # 
+      # @return [nil]
+      def ingest(params = {}, opts = {})
+        req = {}
+        req[:method] = :post
+        req[:path] = "/ingest"
+        req[:body] = params[:usage]
+        req[:model] = NilClass
+        @client.request(req, opts)
+      end
+
       # Fetch aggregated usage data for the specified customer, billable-metric, and
       #   optional group, broken into intervals of the specified length.
       # 

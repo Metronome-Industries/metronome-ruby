@@ -108,8 +108,8 @@ module Metronome
                  Metronome::ArrayOf.new(-> { Metronome::Models::Commit::AccessSchedule::ScheduleItem })
 
         # @!attribute [rw] credit_type
-        #   @return [Metronome::Models::Commit::AccessSchedule::CreditType]
-        optional :credit_type, -> { Metronome::Models::Commit::AccessSchedule::CreditType }
+        #   @return [Metronome::Models::CreditType]
+        optional :credit_type, -> { Metronome::Models::CreditType }
 
         class ScheduleItem < BaseModel
           # @!attribute [rw] id
@@ -127,16 +127,6 @@ module Metronome
           # @!attribute [rw] starting_at
           #   @return [String]
           required :starting_at, String
-        end
-
-        class CreditType < BaseModel
-          # @!attribute [rw] id
-          #   @return [String]
-          required :id, String
-
-          # @!attribute [rw] name_
-          #   @return [String]
-          required :name_, String
         end
       end
 
