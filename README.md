@@ -42,7 +42,9 @@ metronome = Metronome::Client.new(
   bearer_token: "My Bearer Token" # defaults to ENV["METRONOME_BEARER_TOKEN"]
 )
 
-metronome.ingest
+alert_create_response = metronome.alerts.create
+
+puts alert_create_response.data
 ```
 
 ### Errors
