@@ -72,13 +72,14 @@ module Metronome
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [Metronome::Models::CustomerListResponse]
+      # @return [Metronome::CursorPage<Metronome::Models::CustomerDetail>]
       def list(params = {}, opts = {})
         req = {}
         req[:method] = :get
         req[:path] = "/customers"
         req[:query] = params
-        req[:model] = Metronome::Models::CustomerListResponse
+        req[:page] = Metronome::CursorPage
+        req[:model] = Metronome::Models::CustomerDetail
         @client.request(req, opts)
       end
 
@@ -111,12 +112,13 @@ module Metronome
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [Metronome::Models::CustomerListBillableMetricsResponse]
+      # @return [Metronome::CursorPage<Metronome::Models::CustomerListBillableMetricsResponse>]
       def list_billable_metrics(customer_id, params = {}, opts = {})
         req = {}
         req[:method] = :get
         req[:path] = "/customers/#{customer_id}/billable-metrics"
         req[:query] = params
+        req[:page] = Metronome::CursorPage
         req[:model] = Metronome::Models::CustomerListBillableMetricsResponse
         @client.request(req, opts)
       end
@@ -135,12 +137,13 @@ module Metronome
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [Metronome::Models::CustomerListCostsResponse]
+      # @return [Metronome::CursorPage<Metronome::Models::CustomerListCostsResponse>]
       def list_costs(customer_id, params = {}, opts = {})
         req = {}
         req[:method] = :get
         req[:path] = "/customers/#{customer_id}/costs"
         req[:query] = params
+        req[:page] = Metronome::CursorPage
         req[:model] = Metronome::Models::CustomerListCostsResponse
         @client.request(req, opts)
       end

@@ -25,6 +25,6 @@ class Metronome::Test::Resources::UsageTest < Test::Unit::TestCase
     response = @metronome.usage.list_with_groups(
       {billable_metric_id: "222796fd-d29c-429e-89b2-549fabda4ed6", customer_id: "04ca7e72-4229-4a6e-ab11-9f7376fccbcb", window_size: "day"}
     )
-    assert_kind_of(Metronome::Models::UsageListWithGroupsResponse, response)
+    assert_kind_of(Metronome::CursorPage, response)
   end
 end

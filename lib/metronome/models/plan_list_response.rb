@@ -3,31 +3,21 @@
 module Metronome
   module Models
     class PlanListResponse < BaseModel
-      # @!attribute [rw] data
-      #   @return [Array<Metronome::Models::PlanListResponse::Data>]
-      required :data, Metronome::ArrayOf.new(-> { Metronome::Models::PlanListResponse::Data })
-
-      # @!attribute [rw] next_page
+      # @!attribute [rw] id
       #   @return [String]
-      required :next_page, String
+      required :id, String
 
-      class Data < BaseModel
-        # @!attribute [rw] id
-        #   @return [String]
-        required :id, String
+      # @!attribute [rw] description
+      #   @return [String]
+      required :description, String
 
-        # @!attribute [rw] description
-        #   @return [String]
-        required :description, String
+      # @!attribute [rw] name_
+      #   @return [String]
+      required :name_, String
 
-        # @!attribute [rw] name_
-        #   @return [String]
-        required :name_, String
-
-        # @!attribute [rw] custom_fields
-        #   @return [Hash]
-        optional :custom_fields, Hash
-      end
+      # @!attribute [rw] custom_fields
+      #   @return [Hash]
+      optional :custom_fields, Hash
     end
   end
 end

@@ -63,7 +63,7 @@ module Metronome
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [Metronome::Models::CreditGrantListResponse]
+      # @return [Metronome::CursorPage<Metronome::Models::CreditGrantListResponse>]
       def list(params = {}, opts = {})
         req = {}
         req[:method] = :post
@@ -71,6 +71,7 @@ module Metronome
         query_params = [:limit, :next_page]
         req[:query] = params.slice(*query_params)
         req[:body] = params.except(*query_params)
+        req[:page] = Metronome::CursorPage
         req[:model] = Metronome::Models::CreditGrantListResponse
         @client.request(req, opts)
       end
@@ -102,12 +103,13 @@ module Metronome
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [Metronome::Models::CreditGrantListCreditTypesResponse]
+      # @return [Metronome::CursorPage<Metronome::Models::CreditGrantListCreditTypesResponse>]
       def list_credit_types(params = {}, opts = {})
         req = {}
         req[:method] = :get
         req[:path] = "/credit-types/list"
         req[:query] = params
+        req[:page] = Metronome::CursorPage
         req[:model] = Metronome::Models::CreditGrantListCreditTypesResponse
         @client.request(req, opts)
       end

@@ -79,7 +79,7 @@ module Metronome
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [Metronome::Models::UsageListWithGroupsResponse]
+      # @return [Metronome::CursorPage<Metronome::Models::UsageListWithGroupsResponse>]
       def list_with_groups(params = {}, opts = {})
         req = {}
         req[:method] = :post
@@ -87,6 +87,7 @@ module Metronome
         query_params = [:limit, :next_page]
         req[:query] = params.slice(*query_params)
         req[:body] = params.except(*query_params)
+        req[:page] = Metronome::CursorPage
         req[:model] = Metronome::Models::UsageListWithGroupsResponse
         @client.request(req, opts)
       end
