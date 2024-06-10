@@ -16,7 +16,7 @@ class Metronome::Test::Resources::CreditGrantsTest < Test::Unit::TestCase
 
   def test_list
     response = @metronome.credit_grants.list 
-    assert_kind_of(Metronome::Models::CreditGrantListResponse, response)
+    assert_kind_of(Metronome::CursorPage, response)
   end
 
   def test_edit_required_params
@@ -26,7 +26,7 @@ class Metronome::Test::Resources::CreditGrantsTest < Test::Unit::TestCase
 
   def test_list_credit_types
     response = @metronome.credit_grants.list_credit_types 
-    assert_kind_of(Metronome::Models::CreditGrantListCreditTypesResponse, response)
+    assert_kind_of(Metronome::CursorPage, response)
   end
 
   def test_list_entries

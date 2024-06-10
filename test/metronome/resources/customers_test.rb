@@ -19,7 +19,7 @@ class Metronome::Test::Resources::CustomersTest < Test::Unit::TestCase
 
   def test_list
     response = @metronome.customers.list 
-    assert_kind_of(Metronome::Models::CustomerListResponse, response)
+    assert_kind_of(Metronome::CursorPage, response)
   end
 
   def test_archive_required_params
@@ -29,7 +29,7 @@ class Metronome::Test::Resources::CustomersTest < Test::Unit::TestCase
 
   def test_list_billable_metrics
     response = @metronome.customers.list_billable_metrics("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-    assert_kind_of(Metronome::Models::CustomerListBillableMetricsResponse, response)
+    assert_kind_of(Metronome::CursorPage, response)
   end
 
   def test_list_costs_required_params
@@ -37,7 +37,7 @@ class Metronome::Test::Resources::CustomersTest < Test::Unit::TestCase
       "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
       {ending_before: "2019-12-27T18:11:19.117Z", starting_on: "2019-12-27T18:11:19.117Z"}
     )
-    assert_kind_of(Metronome::Models::CustomerListCostsResponse, response)
+    assert_kind_of(Metronome::CursorPage, response)
   end
 
   def test_set_ingest_aliases_required_params

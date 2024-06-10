@@ -9,7 +9,7 @@ class Metronome::Test::Resources::PlansTest < Test::Unit::TestCase
 
   def test_list
     response = @metronome.plans.list 
-    assert_kind_of(Metronome::Models::PlanListResponse, response)
+    assert_kind_of(Metronome::CursorPage, response)
   end
 
   def test_get_details
@@ -19,11 +19,11 @@ class Metronome::Test::Resources::PlansTest < Test::Unit::TestCase
 
   def test_list_charges
     response = @metronome.plans.list_charges("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-    assert_kind_of(Metronome::Models::PlanListChargesResponse, response)
+    assert_kind_of(Metronome::CursorPage, response)
   end
 
   def test_list_customers
     response = @metronome.plans.list_customers("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-    assert_kind_of(Metronome::Models::PlanListCustomersResponse, response)
+    assert_kind_of(Metronome::CursorPage, response)
   end
 end

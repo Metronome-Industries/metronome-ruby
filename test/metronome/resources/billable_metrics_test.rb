@@ -19,7 +19,7 @@ class Metronome::Test::Resources::BillableMetricsTest < Test::Unit::TestCase
 
   def test_list
     response = @metronome.billable_metrics.list("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-    assert_kind_of(Metronome::Models::BillableMetricListResponse, response)
+    assert_kind_of(Metronome::CursorPage, response)
   end
 
   def test_archive_required_params
