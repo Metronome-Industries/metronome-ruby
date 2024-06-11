@@ -35,7 +35,7 @@ module Metronome
         @client.request(req, opts)
       end
 
-      # Get a billable metric
+      # Get a billable metric.
       # 
       # @param billable_metric_id [String]
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
@@ -49,7 +49,7 @@ module Metronome
         @client.request(req, opts)
       end
 
-      # List all billable metrics.
+      # Get all billable metrics for a given customer.
       # 
       # @param customer_id [String]
       # 
@@ -72,7 +72,7 @@ module Metronome
         @client.request(req, opts)
       end
 
-      # Archive an existing billable metric
+      # Archive an existing billable metric.
       # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :id

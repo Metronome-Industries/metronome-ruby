@@ -100,7 +100,7 @@ module Metronome
         @client.request(req, opts)
       end
 
-      # List all billable metrics.
+      # Get all billable metrics for a given customer.
       # 
       # @param customer_id [String]
       # 
