@@ -44,6 +44,11 @@ module Metronome
       #   @return [Float]
       optional :start_period, Float
 
+      # @!attribute [rw] tier_reset_frequency
+      #   Used in pricing tiers.  Indicates how often the tier resets. Default is 1 - the tier count resets every billing period.
+      #   @return [Float]
+      optional :tier_reset_frequency, Float
+
       # @!attribute [rw] unit_conversion
       #   Specifies how quantities for usage based charges will be converted.
       #   @return [Metronome::Models::PlanListChargesResponse::UnitConversion]
