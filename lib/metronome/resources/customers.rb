@@ -26,7 +26,7 @@ module Metronome
       # Create a new customer
       # 
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :name
+      # @option params [String] :name This will be truncated to 160 characters if the provided name is longer.
       # @option params [BillingConfig] :billing_config
       # @option params [Hash] :custom_fields
       # @option params [String] :external_id (deprecated, use ingest_aliases instead) the first ID (Metronome ID or ingest
@@ -174,7 +174,8 @@ module Metronome
       # @param customer_id [String]
       # 
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :name The new name for the customer
+      # @option params [String] :name The new name for the customer. This will be truncated to 160 characters if the
+      #   provided name is longer.
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
