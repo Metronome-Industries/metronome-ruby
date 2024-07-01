@@ -304,10 +304,20 @@ module Metronome
           #   @return [String]
           optional :credit_grant_id, String
 
+          # @!attribute [rw] end_date
+          #   The end date for the charge (for seats charges only).
+          #   @return [String]
+          optional :end_date, String
+
           # @!attribute [rw] price
           #   the unit price for this charge, present only if the charge is not tiered and the quantity is nonzero
           #   @return [Float]
           optional :price, Float
+
+          # @!attribute [rw] start_date
+          #   The start date for the charge (for seats charges only).
+          #   @return [String]
+          optional :start_date, String
 
           # @!attribute [rw] tiers
           #   @return [Array<Metronome::Models::Invoice::LineItem::SubLineItem::Tier>]

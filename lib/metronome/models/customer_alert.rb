@@ -63,6 +63,11 @@ module Metronome
         #   @return [String]
         required :updated_at, String
 
+        # @!attribute [rw] credit_grant_type_filters
+        #   An array of strings, representing a way to filter the credit grant this alert applies to, by looking at the credit_grant_type field on the credit grant. This field is only defined for CreditPercentage and CreditBalance alerts
+        #   @return [Array<String>]
+        optional :credit_grant_type_filters, Metronome::ArrayOf.new(String)
+
         # @!attribute [rw] credit_type
         #   @return [Metronome::Models::CreditType]
         optional :credit_type, -> { Metronome::Models::CreditType }
