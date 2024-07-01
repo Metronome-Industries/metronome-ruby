@@ -15,6 +15,9 @@ module Metronome
       # @option params [Float] :threshold Threshold value of the alert policy
       # @option params [String] :billable_metric_id For alerts of type `usage_threshold_reached`, specifies which billable metric to
       #   track the usage for.
+      # @option params [Array<String>] :credit_grant_type_filters An array of strings, representing a way to filter the credit grant this alert
+      #   applies to, by looking at the credit_grant_type field on the credit grant. This
+      #   field is only defined for CreditPercentage and CreditBalance alerts
       # @option params [String] :credit_type_id
       # @option params [Array<CustomFieldFilter>] :custom_field_filters Only present for beta contract invoices. This field's availability is dependent
       #   on your client's configuration. A list of custom field filters for alert types
