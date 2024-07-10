@@ -19,6 +19,10 @@ module Metronome
                  :tiered
                )
 
+      # @!attribute [rw] credit_type
+      #   @return [Metronome::Models::CreditType]
+      optional :credit_type, -> { Metronome::Models::CreditType }
+
       # @!attribute [rw] custom_rate
       #   Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.
       #   @return [Hash]

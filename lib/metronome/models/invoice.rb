@@ -319,9 +319,24 @@ module Metronome
           #   @return [String]
           optional :start_date, String
 
+          # @!attribute [rw] tier_period
+          #   when the current tier started and ends (for tiered charges only)
+          #   @return [Metronome::Models::Invoice::LineItem::SubLineItem::TierPeriod]
+          optional :tier_period, -> { Metronome::Models::Invoice::LineItem::SubLineItem::TierPeriod }
+
           # @!attribute [rw] tiers
           #   @return [Array<Metronome::Models::Invoice::LineItem::SubLineItem::Tier>]
           optional :tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Invoice::LineItem::SubLineItem::Tier })
+
+          class TierPeriod < BaseModel
+            # @!attribute [rw] starting_at
+            #   @return [String]
+            required :starting_at, String
+
+            # @!attribute [rw] ending_before
+            #   @return [String]
+            optional :ending_before, String
+          end
 
           class Tier < BaseModel
             # @!attribute [rw] price
