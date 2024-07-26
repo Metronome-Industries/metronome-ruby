@@ -473,6 +473,10 @@ module Metronome
         #   @return [Float]
         required :total, Float
 
+        # @!attribute [rw] credit_grant_custom_fields
+        #   @return [Hash]
+        optional :credit_grant_custom_fields, Hash
+
         # @!attribute [rw] credit_grant_id
         #   @return [String]
         optional :credit_grant_id, String
