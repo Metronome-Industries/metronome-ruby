@@ -7,10 +7,6 @@ module Metronome
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] billable_status
-      #   @return [Symbol]
-      required :billable_status, Metronome::Enum.new(:billable, :unbillable)
-
       # @!attribute [rw] credit_type
       #   @return [Metronome::Models::CreditType]
       required :credit_type, -> { Metronome::Models::CreditType }
@@ -38,6 +34,11 @@ module Metronome
       # @!attribute [rw] amendment_id
       #   @return [String]
       optional :amendment_id, String
+
+      # @!attribute [rw] billable_status
+      #   This field's availability is dependent on your client's configuration.
+      #   @return [Symbol]
+      optional :billable_status, Metronome::Enum.new(:billable, :unbillable)
 
       # @!attribute [rw] contract_custom_fields
       #   @return [Hash]

@@ -8,10 +8,6 @@ module Metronome
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] current_billable_status
-      #   @return [Metronome::Models::CustomerDetail::CurrentBillableStatus]
-      required :current_billable_status, -> { Metronome::Models::CustomerDetail::CurrentBillableStatus }
-
       # @!attribute [rw] custom_fields
       #   @return [Hash]
       required :custom_fields, Hash
@@ -34,6 +30,18 @@ module Metronome
       #   @return [String]
       required :name_, String
 
+      # @!attribute [rw] current_billable_status
+      #   This field's availability is dependent on your client's configuration.
+      #   @return [Metronome::Models::CustomerDetail::CurrentBillableStatus]
+      optional :current_billable_status, -> { Metronome::Models::CustomerDetail::CurrentBillableStatus }
+
+      class CustomerConfig < BaseModel
+        # @!attribute [rw] salesforce_account_id
+        #   The Salesforce account ID for the customer
+        #   @return [String]
+        required :salesforce_account_id, String
+      end
+
       class CurrentBillableStatus < BaseModel
         # @!attribute [rw] value
         #   @return [Symbol]
@@ -42,13 +50,6 @@ module Metronome
         # @!attribute [rw] effective_at
         #   @return [String]
         optional :effective_at, String
-      end
-
-      class CustomerConfig < BaseModel
-        # @!attribute [rw] salesforce_account_id
-        #   The Salesforce account ID for the customer
-        #   @return [String]
-        required :salesforce_account_id, String
       end
     end
   end

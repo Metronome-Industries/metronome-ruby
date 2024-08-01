@@ -85,6 +85,7 @@ module Metronome
       optional :salesforce_opportunity_id, String
 
       # @!attribute [rw] total_contract_value
+      #   This field's availability is dependent on your client's configuration.
       #   @return [Float]
       optional :total_contract_value, Float
 
