@@ -157,7 +157,7 @@ module Metronome
 
         # @!attribute [rw] ledger
         #   A list of ordered events that impact the balance of a credit. For example, an invoice deduction or an expiration.
-        #   @return [Array<Metronome::Models::ContractWithoutAmendments::Credit::Ledger::UnnamedTypeWithunionParent15|Metronome::Models::ContractWithoutAmendments::Credit::Ledger::UnnamedTypeWithunionParent16|Metronome::Models::ContractWithoutAmendments::Credit::Ledger::UnnamedTypeWithunionParent17|Metronome::Models::ContractWithoutAmendments::Credit::Ledger::UnnamedTypeWithunionParent18|Metronome::Models::ContractWithoutAmendments::Credit::Ledger::UnnamedTypeWithunionParent19|Metronome::Models::ContractWithoutAmendments::Credit::Ledger::UnnamedTypeWithunionParent20>]
+        #   @return [Array<Metronome::Models::ContractWithoutAmendments::Credit::Ledger::UnnamedTypeWithunionParent13|Metronome::Models::ContractWithoutAmendments::Credit::Ledger::UnnamedTypeWithunionParent14|Metronome::Models::ContractWithoutAmendments::Credit::Ledger::UnnamedTypeWithunionParent15|Metronome::Models::ContractWithoutAmendments::Credit::Ledger::UnnamedTypeWithunionParent16|Metronome::Models::ContractWithoutAmendments::Credit::Ledger::UnnamedTypeWithunionParent17|Metronome::Models::ContractWithoutAmendments::Credit::Ledger::UnnamedTypeWithunionParent18>]
         optional :ledger, Metronome::ArrayOf.new(Metronome::Unknown)
 
         # @!attribute [rw] name_
