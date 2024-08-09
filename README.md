@@ -53,7 +53,7 @@ non-success status code (i.e., 4xx or 5xx response), a subclass of
 
 ```ruby
 begin
-  alert = metronome.alerts.create
+  contract = metronome.contracts.create
 rescue Metronome::HTTP::Error => e
   puts e.code # 400
 end
@@ -90,7 +90,7 @@ metronome = Metronome::Client.new(
 )
 
 # Or, configure per-request:
-metronome.alerts.create(max_retries: 5)
+metronome.contracts.create(max_retries: 5)
 ```
 
 ## Versioning
