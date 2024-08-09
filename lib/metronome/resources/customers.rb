@@ -15,12 +15,24 @@ module Metronome
       # @return [Metronome::Resources::Customers::BillingConfig]
       attr_reader :billing_config
 
+      # @return [Metronome::Resources::Customers::Commits]
+      attr_reader :commits
+
+      # @return [Metronome::Resources::Customers::Credits]
+      attr_reader :credits
+
+      # @return [Metronome::Resources::Customers::NamedSchedules]
+      attr_reader :named_schedules
+
       def initialize(client:)
         @client = client
         @alerts = Metronome::Resources::Customers::Alerts.new(client: client)
         @plans = Metronome::Resources::Customers::Plans.new(client: client)
         @invoices = Metronome::Resources::Customers::Invoices.new(client: client)
         @billing_config = Metronome::Resources::Customers::BillingConfig.new(client: client)
+        @commits = Metronome::Resources::Customers::Commits.new(client: client)
+        @credits = Metronome::Resources::Customers::Credits.new(client: client)
+        @named_schedules = Metronome::Resources::Customers::NamedSchedules.new(client: client)
       end
 
       # Create a new customer

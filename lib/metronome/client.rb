@@ -38,6 +38,12 @@ module Metronome
     # @return [Metronome::Resources::Services]
     attr_reader :services
 
+    # @return [Metronome::Resources::Invoices]
+    attr_reader :invoices
+
+    # @return [Metronome::Resources::Contracts]
+    attr_reader :contracts
+
     # @!visibility private
     def auth_headers
       {"Authorization" => "Bearer #{@bearer_token}"}
@@ -66,6 +72,8 @@ module Metronome
       @custom_fields = Metronome::Resources::CustomFields.new(client: self)
       @billable_metrics = Metronome::Resources::BillableMetrics.new(client: self)
       @services = Metronome::Resources::Services.new(client: self)
+      @invoices = Metronome::Resources::Invoices.new(client: self)
+      @contracts = Metronome::Resources::Contracts.new(client: self)
     end
 
     # @!visibility private

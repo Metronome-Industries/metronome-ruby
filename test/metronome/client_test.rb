@@ -40,8 +40,8 @@ class MetronomeTest < Test::Unit::TestCase
     requester = MockRequester.new(500, {})
     metronome.requester = requester
     assert_raise(Metronome::HTTP::InternalServerError) do
-      metronome.alerts.create(
-        {alert_type: "spend_threshold_reached", name: "$100 spend threshold reached", threshold: 10000}
+      metronome.contracts.create(
+        {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"}
       )
     end
     assert_equal(3, requester.attempts.length)
@@ -52,8 +52,8 @@ class MetronomeTest < Test::Unit::TestCase
     requester = MockRequester.new(500, {})
     metronome.requester = requester
     assert_raise(Metronome::HTTP::InternalServerError) do
-      metronome.alerts.create(
-        {alert_type: "spend_threshold_reached", name: "$100 spend threshold reached", threshold: 10000}
+      metronome.contracts.create(
+        {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"}
       )
     end
     assert_equal(4, requester.attempts.length)
@@ -64,8 +64,8 @@ class MetronomeTest < Test::Unit::TestCase
     requester = MockRequester.new(500, {})
     metronome.requester = requester
     assert_raise(Metronome::HTTP::InternalServerError) do
-      metronome.alerts.create(
-        {alert_type: "spend_threshold_reached", name: "$100 spend threshold reached", threshold: 10000},
+      metronome.contracts.create(
+        {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"},
         max_retries: 3
       )
     end
@@ -77,8 +77,8 @@ class MetronomeTest < Test::Unit::TestCase
     requester = MockRequester.new(500, {})
     metronome.requester = requester
     assert_raise(Metronome::HTTP::InternalServerError) do
-      metronome.alerts.create(
-        {alert_type: "spend_threshold_reached", name: "$100 spend threshold reached", threshold: 10000},
+      metronome.contracts.create(
+        {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"},
         max_retries: 4
       )
     end
@@ -89,8 +89,8 @@ class MetronomeTest < Test::Unit::TestCase
     metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token")
     requester = MockRequester.new(200, {})
     metronome.requester = requester
-    metronome.alerts.create(
-      {alert_type: "spend_threshold_reached", name: "$100 spend threshold reached", threshold: 10000}
+    metronome.contracts.create(
+      {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"}
     )
     headers = requester.attempts[0][:headers]
     assert_not_empty(headers["X-Stainless-Lang"])

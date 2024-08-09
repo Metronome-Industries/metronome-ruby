@@ -1,0 +1,103 @@
+# frozen_string_literal: true
+
+module Metronome
+  module Resources
+    class Customers
+      class Commits
+        def initialize(client:)
+          @client = client
+        end
+
+        # Create a new commit at the customer level.
+        # 
+        # @param params [Hash] Attributes to send in this request.
+        # @option params [AccessSchedule] :access_schedule Schedule for distributing the commit to the customer. For "POSTPAID" commits
+        #   only one schedule item is allowed and amount must match invoice_schedule total.
+        # @option params [String] :customer_id
+        # @option params [Float] :priority If multiple credits or commits are applicable, the one with the lower priority
+        #   will apply first.
+        # @option params [String] :product_id
+        # @option params [Symbol] :type
+        # @option params [Array<String>] :applicable_contract_ids Which contract the commit applies to. If not provided, the commit applies to all
+        #   contracts.
+        # @option params [Array<String>] :applicable_product_ids Which products the commit applies to. If both applicable_product_ids and
+        #   applicable_product_tags are not provided, the commit applies to all products.
+        # @option params [Array<String>] :applicable_product_tags Which tags the commit applies to. If both applicable_product_ids and
+        #   applicable_product_tags are not provided, the commit applies to all products.
+        # @option params [Hash] :custom_fields
+        # @option params [String] :description Used only in UI/API. It is not exposed to end customers.
+        # @option params [String] :invoice_contract_id The contract that this commit will be billed on. This is required for "POSTPAID"
+        #   commits and for "PREPAID" commits unless there is no invoice schedule above
+        #   (i.e., the commit is 'free').
+        # @option params [InvoiceSchedule] :invoice_schedule Required for "POSTPAID" commits: the true up invoice will be generated at this
+        #   time and only one schedule item is allowed; the total must match
+        #   accesss_schedule amount. Optional for "PREPAID" commits: if not provided, this
+        #   will be a "complimentary" commit with no invoice.
+        # @option params [String] :name displayed on invoices
+        # @option params [String] :netsuite_sales_order_id This field's availability is dependent on your client's configuration.
+        # @option params [String] :salesforce_opportunity_id This field's availability is dependent on your client's configuration.
+        # 
+        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # 
+        # @return [Metronome::Models::CommitCreateResponse]
+        def create(params = {}, opts = {})
+          req = {}
+          req[:method] = :post
+          req[:path] = "/contracts/customerCommits/create"
+          req[:body] = params
+          req[:model] = Metronome::Models::CommitCreateResponse
+          @client.request(req, opts)
+        end
+
+        # List commits.
+        # 
+        # @param params [Hash] Attributes to send in this request.
+        # @option params [String] :customer_id
+        # @option params [String] :commit_id
+        # @option params [String] :covering_date Include only commits that have access schedules that "cover" the provided date
+        # @option params [String] :effective_before Include only commits that have any access before the provided date (exclusive)
+        # @option params [Boolean] :include_archived Include commits from archived contracts.
+        # @option params [Boolean] :include_contract_commits Include commits on the contract level.
+        # @option params [Boolean] :include_ledgers Include commit ledgers in the response. Setting this flag may cause the query to
+        #   be slower.
+        # @option params [String] :next_page The next page token from a previous response.
+        # @option params [String] :starting_at Include only commits that have any access on or after the provided date
+        # 
+        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # 
+        # @return [Metronome::Models::CommitListResponse]
+        def list(params = {}, opts = {})
+          req = {}
+          req[:method] = :post
+          req[:path] = "/contracts/customerCommits/list"
+          req[:body] = params
+          req[:model] = Metronome::Models::CommitListResponse
+          @client.request(req, opts)
+        end
+
+        # Update the end date of a PREPAID commit
+        # 
+        # @param params [Hash] Attributes to send in this request.
+        # @option params [String] :commit_id ID of the commit to update. Only supports "PREPAID" commits.
+        # @option params [String] :customer_id ID of the customer whose commit is to be updated
+        # @option params [String] :access_ending_before RFC 3339 timestamp indicating when access to the commit will end and it will no
+        #   longer be possible to draw it down (exclusive). If not provided, the access will
+        #   not be updated.
+        # @option params [String] :invoices_ending_before RFC 3339 timestamp indicating when the commit will stop being invoiced
+        #   (exclusive). If not provided, the invoice schedule will not be updated.
+        # 
+        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # 
+        # @return [Metronome::Models::CommitUpdateEndDateResponse]
+        def update_end_date(params = {}, opts = {})
+          req = {}
+          req[:method] = :post
+          req[:path] = "/contracts/customerCommits/updateEndDate"
+          req[:body] = params
+          req[:model] = Metronome::Models::CommitUpdateEndDateResponse
+          @client.request(req, opts)
+        end
+      end
+    end
+  end
+end
