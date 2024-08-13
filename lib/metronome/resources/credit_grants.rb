@@ -80,6 +80,7 @@ module Metronome
       # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :id the ID of the credit grant
+      # @option params [String] :credit_grant_type the updated credit grant type
       # @option params [String] :expires_at the updated expiration date for the credit grant
       # @option params [String] :name the updated name for the credit grant
       # 
