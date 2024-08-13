@@ -9,7 +9,7 @@ class Metronome::Test::Resources::AlertsTest < Test::Unit::TestCase
 
   def test_create_required_params
     response = @metronome.alerts.create(
-      {alert_type: "spend_threshold_reached", name: "$100 spend threshold reached", threshold: 10000}
+      {alert_type: "low_credit_balance_reached", name: "$100 spend threshold reached", threshold: 10000}
     )
     assert_kind_of(Metronome::Models::AlertCreateResponse, response)
   end
