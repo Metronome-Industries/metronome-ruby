@@ -79,6 +79,11 @@ module Metronome
       optional :property_filters,
                Metronome::ArrayOf.new(-> { Metronome::Models::CustomerListBillableMetricsResponse::PropertyFilter })
 
+      # @!attribute [rw] sql
+      #   The SQL query associated with the billable metric
+      #   @return [String]
+      optional :sql, String
+
       class EventTypeFilter < BaseModel
         # @!attribute [rw] in_values
         #   A list of event types that are explicitly included in the billable metric. If specified, only events of these types will match the billable metric. Must be non-empty if present.
