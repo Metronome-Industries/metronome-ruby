@@ -13,10 +13,20 @@ module Metronome
         #   @return [String]
         required :id, String
 
+        # @!attribute [rw] name_
+        #   The display name of the billable metric.
+        #   @return [String]
+        required :name_, String
+
+        # @!attribute [rw] aggregation_key
+        #   A key that specifies which property of the event is used to aggregate data. This key must be one of the property filter names and is not applicable when the aggregation type is 'count'.
+        #   @return [String]
+        optional :aggregation_key, String
+
         # @!attribute [rw] aggregation_type
         #   Specifies the type of aggregation performed on matching events.
         #   @return [Symbol]
-        required :aggregation_type,
+        optional :aggregation_type,
                  Metronome::Enum.new(
                    :count,
                    :Count,
@@ -34,16 +44,6 @@ module Metronome
                    :Unique,
                    :UNIQUE
                  )
-
-        # @!attribute [rw] name_
-        #   The display name of the billable metric.
-        #   @return [String]
-        required :name_, String
-
-        # @!attribute [rw] aggregation_key
-        #   A key that specifies which property of the event is used to aggregate data. This key must be one of the property filter names and is not applicable when the aggregation type is 'count'.
-        #   @return [String]
-        optional :aggregation_key, String
 
         # @!attribute [rw] custom_fields
         #   @return [Hash]
@@ -65,6 +65,11 @@ module Metronome
         #   @return [Array<Metronome::Models::BillableMetricRetrieveResponse::Data::PropertyFilter>]
         optional :property_filters,
                  Metronome::ArrayOf.new(-> { Metronome::Models::BillableMetricRetrieveResponse::Data::PropertyFilter })
+
+        # @!attribute [rw] sql
+        #   The SQL query associated with the billable metric
+        #   @return [String]
+        optional :sql, String
 
         class EventTypeFilter < BaseModel
           # @!attribute [rw] in_values
