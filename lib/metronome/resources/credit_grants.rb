@@ -116,8 +116,8 @@ module Metronome
       end
 
       # Fetches a list of credit ledger entries. Returns lists of ledgers per customer.
-      #   Ledger entries are returned in reverse chronological order. Ledger entries
-      #   associated with voided credit grants are not included.
+      #   Ledger entries are returned in chronological order. Ledger entries associated
+      #   with voided credit grants are not included.
       # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.

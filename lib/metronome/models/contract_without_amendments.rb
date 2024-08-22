@@ -110,7 +110,7 @@ module Metronome
       class UsageStatementSchedule < BaseModel
         # @!attribute [rw] frequency
         #   @return [Symbol]
-        required :frequency, Metronome::Enum.new(:MONTHLY, :monthly, :QUARTERLY, :quarterly)
+        required :frequency, Metronome::Enum.new(:MONTHLY, :QUARTERLY)
       end
 
       class Credit < BaseModel

@@ -69,19 +69,7 @@ module Metronome
 
       # @!attribute [rw] rate_type
       #   @return [Symbol]
-      optional :rate_type,
-               Metronome::Enum.new(
-                 :FLAT,
-                 :flat,
-                 :PERCENTAGE,
-                 :percentage,
-                 :SUBSCRIPTION,
-                 :subscription,
-                 :TIERED,
-                 :tiered,
-                 :CUSTOM,
-                 :custom
-               )
+      optional :rate_type, Metronome::Enum.new(:FLAT, :PERCENTAGE, :SUBSCRIPTION, :TIERED, :CUSTOM)
 
       # @!attribute [rw] tiers
       #   Only set for TIERED rate_type.
@@ -128,19 +116,7 @@ module Metronome
       class OverwriteRate < BaseModel
         # @!attribute [rw] rate_type
         #   @return [Symbol]
-        required :rate_type,
-                 Metronome::Enum.new(
-                   :FLAT,
-                   :flat,
-                   :PERCENTAGE,
-                   :percentage,
-                   :SUBSCRIPTION,
-                   :subscription,
-                   :TIERED,
-                   :tiered,
-                   :CUSTOM,
-                   :custom
-                 )
+        required :rate_type, Metronome::Enum.new(:FLAT, :PERCENTAGE, :SUBSCRIPTION, :TIERED, :CUSTOM)
 
         # @!attribute [rw] credit_type
         #   @return [Metronome::Models::CreditType]

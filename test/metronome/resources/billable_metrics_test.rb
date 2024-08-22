@@ -8,7 +8,7 @@ class Metronome::Test::Resources::BillableMetricsTest < Test::Unit::TestCase
   end
 
   def test_create_required_params
-    response = @metronome.billable_metrics.create({aggregation_type: "count", name: "CPU Hours"})
+    response = @metronome.billable_metrics.create({aggregation_type: "COUNT", name: "CPU Hours"})
     assert_kind_of(Metronome::Models::BillableMetricCreateResponse, response)
   end
 

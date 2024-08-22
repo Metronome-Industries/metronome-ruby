@@ -119,7 +119,7 @@ module Metronome
             # @!attribute [rw] operation
             #   The operation to perform on the quantity
             #   @return [Symbol]
-            required :operation, Metronome::Enum.new(:multiply, :divide, :MULTIPLY, :DIVIDE)
+            required :operation, Metronome::Enum.new(:MULTIPLY, :DIVIDE)
 
             # @!attribute [rw] name_
             #   Optional name for this conversion.
@@ -134,8 +134,7 @@ module Metronome
 
             # @!attribute [rw] rounding_method
             #   @return [Symbol]
-            required :rounding_method,
-                     Metronome::Enum.new(:round_up, :round_down, :round_half_up, :ROUND_UP, :ROUND_DOWN, :ROUND_HALF_UP)
+            required :rounding_method, Metronome::Enum.new(:ROUND_UP, :ROUND_DOWN, :ROUND_HALF_UP)
           end
         end
 
@@ -222,7 +221,7 @@ module Metronome
             # @!attribute [rw] operation
             #   The operation to perform on the quantity
             #   @return [Symbol]
-            required :operation, Metronome::Enum.new(:multiply, :divide, :MULTIPLY, :DIVIDE)
+            required :operation, Metronome::Enum.new(:MULTIPLY, :DIVIDE)
 
             # @!attribute [rw] name_
             #   Optional name for this conversion.
@@ -237,8 +236,7 @@ module Metronome
 
             # @!attribute [rw] rounding_method
             #   @return [Symbol]
-            required :rounding_method,
-                     Metronome::Enum.new(:round_up, :round_down, :round_half_up, :ROUND_UP, :ROUND_DOWN, :ROUND_HALF_UP)
+            required :rounding_method, Metronome::Enum.new(:ROUND_UP, :ROUND_DOWN, :ROUND_HALF_UP)
           end
         end
 
@@ -324,7 +322,7 @@ module Metronome
             # @!attribute [rw] operation
             #   The operation to perform on the quantity
             #   @return [Symbol]
-            required :operation, Metronome::Enum.new(:multiply, :divide, :MULTIPLY, :DIVIDE)
+            required :operation, Metronome::Enum.new(:MULTIPLY, :DIVIDE)
 
             # @!attribute [rw] name_
             #   Optional name for this conversion.
@@ -339,8 +337,7 @@ module Metronome
 
             # @!attribute [rw] rounding_method
             #   @return [Symbol]
-            required :rounding_method,
-                     Metronome::Enum.new(:round_up, :round_down, :round_half_up, :ROUND_UP, :ROUND_DOWN, :ROUND_HALF_UP)
+            required :rounding_method, Metronome::Enum.new(:ROUND_UP, :ROUND_DOWN, :ROUND_HALF_UP)
           end
         end
       end
