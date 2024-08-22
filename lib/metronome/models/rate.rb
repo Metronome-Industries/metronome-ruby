@@ -38,23 +38,13 @@ module Metronome
 
       # @!attribute [rw] tiers
       #   Only set for TIERED rate_type.
-      #   @return [Array<Metronome::Models::Rate::Tier>]
-      optional :tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Rate::Tier })
+      #   @return [Array<Metronome::Models::Tier>]
+      optional :tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Tier })
 
       # @!attribute [rw] use_list_prices
       #   Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed using list prices rather than the standard rates for this product on the contract.
       #   @return [Boolean]
       optional :use_list_prices, Metronome::BooleanModel
-
-      class Tier < BaseModel
-        # @!attribute [rw] price
-        #   @return [Float]
-        required :price, Float
-
-        # @!attribute [rw] size
-        #   @return [Float]
-        optional :size, Float
-      end
     end
   end
 end

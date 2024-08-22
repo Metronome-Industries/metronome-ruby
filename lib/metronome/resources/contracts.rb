@@ -50,7 +50,7 @@ module Metronome
       # @option params [String] :uniqueness_key Prevents the creation of duplicates. If a request to create a record is made
       #   with a previously used uniqueness key, a new record will not be created and the
       #   request will fail with a 409 error.
-      # @option params [UsageFilter] :usage_filter
+      # @option params [Metronome::Models::BaseUsageFilter] :usage_filter
       # @option params [UsageStatementSchedule] :usage_statement_schedule
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.

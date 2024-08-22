@@ -106,19 +106,8 @@ module Metronome
             optional :starting_at, String
 
             # @!attribute [rw] tiers
-            #   @return [Array<Metronome::Models::RateCardRetrieveResponse::Data::RateCardEntries::RateCardEntry::Current::Tier>]
-            optional :tiers,
-                     Metronome::ArrayOf.new(-> { Metronome::Models::RateCardRetrieveResponse::Data::RateCardEntries::RateCardEntry::Current::Tier })
-
-            class Tier < BaseModel
-              # @!attribute [rw] price
-              #   @return [Float]
-              required :price, Float
-
-              # @!attribute [rw] size
-              #   @return [Float]
-              optional :size, Float
-            end
+            #   @return [Array<Metronome::Models::Tier>]
+            optional :tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Tier })
           end
 
           class Update < BaseModel
@@ -175,19 +164,8 @@ module Metronome
             optional :quantity, Float
 
             # @!attribute [rw] tiers
-            #   @return [Array<Metronome::Models::RateCardRetrieveResponse::Data::RateCardEntries::RateCardEntry::Update::Tier>]
-            optional :tiers,
-                     Metronome::ArrayOf.new(-> { Metronome::Models::RateCardRetrieveResponse::Data::RateCardEntries::RateCardEntry::Update::Tier })
-
-            class Tier < BaseModel
-              # @!attribute [rw] price
-              #   @return [Float]
-              required :price, Float
-
-              # @!attribute [rw] size
-              #   @return [Float]
-              optional :size, Float
-            end
+            #   @return [Array<Metronome::Models::Tier>]
+            optional :tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Tier })
           end
         end
 
