@@ -5,19 +5,7 @@ module Metronome
     class Rate < BaseModel
       # @!attribute [rw] rate_type
       #   @return [Symbol]
-      required :rate_type,
-               Metronome::Enum.new(
-                 :FLAT,
-                 :flat,
-                 :PERCENTAGE,
-                 :percentage,
-                 :SUBSCRIPTION,
-                 :subscription,
-                 :CUSTOM,
-                 :custom,
-                 :TIERED,
-                 :tiered
-               )
+      required :rate_type, Metronome::Enum.new(:FLAT, :PERCENTAGE, :SUBSCRIPTION, :CUSTOM, :TIERED)
 
       # @!attribute [rw] credit_type
       #   @return [Metronome::Models::CreditType]

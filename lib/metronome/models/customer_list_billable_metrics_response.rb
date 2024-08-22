@@ -29,24 +29,7 @@ module Metronome
       # @!attribute [rw] aggregation_type
       #   Specifies the type of aggregation performed on matching events.
       #   @return [Symbol]
-      optional :aggregation_type,
-               Metronome::Enum.new(
-                 :count,
-                 :Count,
-                 :COUNT,
-                 :latest,
-                 :Latest,
-                 :LATEST,
-                 :max,
-                 :Max,
-                 :MAX,
-                 :sum,
-                 :Sum,
-                 :SUM,
-                 :unique,
-                 :Unique,
-                 :UNIQUE
-               )
+      optional :aggregation_type, Metronome::Enum.new(:COUNT, :LATEST, :MAX, :SUM, :UNIQUE)
 
       # @!attribute [rw] custom_fields
       #   @return [Hash]
