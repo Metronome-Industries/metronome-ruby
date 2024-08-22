@@ -16,10 +16,10 @@ module Metronome
       #   key must be one of the property filter names and is not applicable when the
       #   aggregation type is 'count'.
       # @option params [Hash] :custom_fields Custom fields to attach to the billable metric.
-      # @option params [EventTypeFilter] :event_type_filter An optional filtering rule to match the 'event_type' property of an event.
+      # @option params [Metronome::Models::EventTypeFilter] :event_type_filter An optional filtering rule to match the 'event_type' property of an event.
       # @option params [Array<Array<String>>] :group_keys Property names that are used to group usage costs on an invoice. Each entry
       #   represents a set of properties used to slice events into distinct buckets.
-      # @option params [Array<PropertyFilter>] :property_filters A list of filters to match events to this billable metric. Each filter defines a
+      # @option params [Array<Metronome::Models::PropertyFilter>] :property_filters A list of filters to match events to this billable metric. Each filter defines a
       #   rule on an event property. All rules must pass for the event to match the
       #   billable metric.
       # 

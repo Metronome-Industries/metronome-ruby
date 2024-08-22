@@ -73,8 +73,8 @@ module Metronome
 
       # @!attribute [rw] tiers
       #   Only set for TIERED rate_type.
-      #   @return [Array<Metronome::Models::Override::Tier>]
-      optional :tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Override::Tier })
+      #   @return [Array<Metronome::Models::Tier>]
+      optional :tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Tier })
 
       # @!attribute [rw] type
       #   @return [Symbol]
@@ -144,18 +144,8 @@ module Metronome
 
         # @!attribute [rw] tiers
         #   Only set for TIERED rate_type.
-        #   @return [Array<Metronome::Models::Override::OverwriteRate::Tier>]
-        optional :tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Override::OverwriteRate::Tier })
-
-        class Tier < BaseModel
-          # @!attribute [rw] price
-          #   @return [Float]
-          required :price, Float
-
-          # @!attribute [rw] size
-          #   @return [Float]
-          optional :size, Float
-        end
+        #   @return [Array<Metronome::Models::Tier>]
+        optional :tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Tier })
       end
 
       class Product < BaseModel
@@ -166,16 +156,6 @@ module Metronome
         # @!attribute [rw] name_
         #   @return [String]
         required :name_, String
-      end
-
-      class Tier < BaseModel
-        # @!attribute [rw] price
-        #   @return [Float]
-        required :price, Float
-
-        # @!attribute [rw] size
-        #   @return [Float]
-        optional :size, Float
       end
     end
   end

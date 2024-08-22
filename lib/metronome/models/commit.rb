@@ -17,8 +17,8 @@ module Metronome
 
       # @!attribute [rw] access_schedule
       #   The schedule that the customer will gain access to the credits purposed with this commit.
-      #   @return [Metronome::Models::Commit::AccessSchedule]
-      optional :access_schedule, -> { Metronome::Models::Commit::AccessSchedule }
+      #   @return [Metronome::Models::ScheduleDuration]
+      optional :access_schedule, -> { Metronome::Models::ScheduleDuration }
 
       # @!attribute [rw] amount
       #   (DEPRECATED) Use access_schedule + invoice_schedule instead.
@@ -99,35 +99,6 @@ module Metronome
         # @!attribute [rw] name_
         #   @return [String]
         required :name_, String
-      end
-
-      class AccessSchedule < BaseModel
-        # @!attribute [rw] schedule_items
-        #   @return [Array<Metronome::Models::Commit::AccessSchedule::ScheduleItem>]
-        required :schedule_items,
-                 Metronome::ArrayOf.new(-> { Metronome::Models::Commit::AccessSchedule::ScheduleItem })
-
-        # @!attribute [rw] credit_type
-        #   @return [Metronome::Models::CreditType]
-        optional :credit_type, -> { Metronome::Models::CreditType }
-
-        class ScheduleItem < BaseModel
-          # @!attribute [rw] id
-          #   @return [String]
-          required :id, String
-
-          # @!attribute [rw] amount
-          #   @return [Float]
-          required :amount, Float
-
-          # @!attribute [rw] ending_before
-          #   @return [String]
-          required :ending_before, String
-
-          # @!attribute [rw] starting_at
-          #   @return [String]
-          required :starting_at, String
-        end
       end
 
       class Contract < BaseModel

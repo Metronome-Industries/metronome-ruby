@@ -56,7 +56,7 @@ module Metronome
           # @option params [Hash] :pricing_group_values Optional. List of pricing group key value pairs which will be used to calculate
           #   the price.
           # @option params [Float] :quantity Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
-          # @option params [Array<Tier>] :tiers Only set for TIERED rate_type.
+          # @option params [Array<Metronome::Models::Tier>] :tiers Only set for TIERED rate_type.
           # @option params [Boolean] :use_list_prices Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
           #   using list prices rather than the standard rates for this product on the
           #   contract.
