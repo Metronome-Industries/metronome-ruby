@@ -11,4 +11,9 @@ class Metronome::Test::Resources::InvoicesTest < Test::Unit::TestCase
     response = @metronome.invoices.regenerate({id: "6a37bb88-8538-48c5-b37b-a41c836328bd"})
     assert_kind_of(Metronome::Models::InvoiceRegenerateResponse, response)
   end
+
+  def test_void_required_params
+    response = @metronome.invoices.void({id: "6a37bb88-8538-48c5-b37b-a41c836328bd"})
+    assert_kind_of(Metronome::Models::InvoiceVoidResponse, response)
+  end
 end
