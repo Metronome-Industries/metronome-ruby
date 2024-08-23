@@ -127,6 +127,64 @@ class MetronomeTest < Test::Unit::TestCase
     assert_equal(requester.attempts.last[:headers]["X-Stainless-Mock-Slept"], 1.3)
   end
 
+  def test_client_redirect_307
+    metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token")
+    requester = MockRequester.new(307, {}, {"location" => "/redirected"})
+    metronome.requester = requester
+    assert_raise(Metronome::HTTP::APIConnectionError) do
+      metronome.contracts.create(
+        {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"},
+        extra_headers: {}
+      )
+    end
+    assert_equal(requester.attempts[1][:path], "/redirected")
+    assert_equal(requester.attempts[1][:method], requester.attempts[0][:method])
+    assert_equal(requester.attempts[1][:body], requester.attempts[0][:body])
+    assert_equal(requester.attempts[1][:headers]["Content-Type"], requester.attempts[0][:headers]["Content-Type"])
+  end
+
+  def test_client_redirect_303
+    metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token")
+    requester = MockRequester.new(303, {}, {"location" => "/redirected"})
+    metronome.requester = requester
+    assert_raise(Metronome::HTTP::APIConnectionError) do
+      metronome.contracts.create(
+        {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"},
+        extra_headers: {}
+      )
+    end
+    assert_equal(requester.attempts[1][:path], "/redirected")
+    assert_equal(requester.attempts[1][:method], :get)
+    assert_equal(requester.attempts[1][:body], nil)
+    assert_equal(requester.attempts[1][:headers]["Content-Type"], nil)
+  end
+
+  def test_client_redirect_auth_keep_same_origin
+    metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token")
+    requester = MockRequester.new(307, {}, {"location" => "/redirected"})
+    metronome.requester = requester
+    assert_raise(Metronome::HTTP::APIConnectionError) do
+      metronome.contracts.create(
+        {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"},
+        extra_headers: {"Authorization" => "Bearer xyz"}
+      )
+    end
+    assert_equal(requester.attempts[1][:headers]["Authorization"], requester.attempts[0][:headers]["Authorization"])
+  end
+
+  def test_client_redirect_auth_strip_cross_origin
+    metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token")
+    requester = MockRequester.new(307, {}, {"location" => "https://example.com/redirected"})
+    metronome.requester = requester
+    assert_raise(Metronome::HTTP::APIConnectionError) do
+      metronome.contracts.create(
+        {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"},
+        extra_headers: {"Authorization" => "Bearer xyz"}
+      )
+    end
+    assert_equal(requester.attempts[1][:headers]["Authorization"], nil)
+  end
+
   def test_default_headers
     metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token")
     requester = MockRequester.new(200, {}, {"x-stainless-mock-sleep" => "true"})
