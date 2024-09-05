@@ -4,22 +4,14 @@ module Metronome
   module Models
     class BillableMetricListResponse < BaseModel
       # @!attribute [rw] id
+      #   ID of the billable metric
       #   @return [String]
       required :id, String
 
       # @!attribute [rw] name_
+      #   The display name of the billable metric.
       #   @return [String]
       required :name_, String
-
-      # @!attribute [rw] aggregate
-      #   (DEPRECATED) use aggregation_type instead
-      #   @return [String]
-      optional :aggregate, String
-
-      # @!attribute [rw] aggregate_keys
-      #   (DEPRECATED) use aggregation_key instead
-      #   @return [Array<String>]
-      optional :aggregate_keys, Metronome::ArrayOf.new(String)
 
       # @!attribute [rw] aggregation_key
       #   A key that specifies which property of the event is used to aggregate data. This key must be one of the property filter names and is not applicable when the aggregation type is 'count'.
@@ -39,16 +31,6 @@ module Metronome
       #   An optional filtering rule to match the 'event_type' property of an event.
       #   @return [Metronome::Models::EventTypeFilter]
       optional :event_type_filter, -> { Metronome::Models::EventTypeFilter }
-
-      # @!attribute [rw] filter
-      #   (DEPRECATED) use property_filters & event_type_filter instead
-      #   @return [Hash]
-      optional :filter, Hash
-
-      # @!attribute [rw] group_by
-      #   (DEPRECATED) use group_keys instead
-      #   @return [Array<String>]
-      optional :group_by, Metronome::ArrayOf.new(String)
 
       # @!attribute [rw] group_keys
       #   Property names that are used to group usage costs on an invoice. Each entry represents a set of properties used to slice events into distinct buckets.

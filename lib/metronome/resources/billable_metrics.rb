@@ -49,23 +49,19 @@ module Metronome
         @client.request(req, opts)
       end
 
-      # Get all billable metrics for a given customer.
-      # 
-      # @param customer_id [String]
+      # List all billable metrics.
       # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [Integer] :limit Max number of results that should be returned
       # @option params [String] :next_page Cursor that indicates where the next page of results should start.
-      # @option params [Boolean] :on_current_plan If true, the list of metrics will be filtered to just ones that are on the
-      #   customer's current plan
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
       # @return [Metronome::CursorPage<Metronome::Models::BillableMetricListResponse>]
-      def list(customer_id, params = {}, opts = {})
+      def list(params = {}, opts = {})
         req = {}
         req[:method] = :get
-        req[:path] = "/customers/#{customer_id}/billable-metrics"
+        req[:path] = "/billable-metrics"
         req[:query] = params
         req[:page] = Metronome::CursorPage
         req[:model] = Metronome::Models::BillableMetricListResponse

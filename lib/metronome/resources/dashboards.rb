@@ -14,6 +14,8 @@ module Metronome
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :customer_id
       # @option params [Symbol] :dashboard The type of dashboard to retrieve.
+      # @option params [BmGroupKeyDisplayNameOverrides] :bm_group_key_display_name_overrides
+      # @option params [BmGroupKeyValuesDisplayNameOverrides] :bm_group_key_values_display_name_overrides
       # @option params [Array<ColorOverride>] :color_overrides Optional list of colors to override
       # @option params [Array<DashboardOption>] :dashboard_options Optional dashboard specific options
       # 
