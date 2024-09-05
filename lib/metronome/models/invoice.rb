@@ -188,6 +188,12 @@ module Metronome
         #   @return [Boolean]
         optional :is_prorated, Metronome::BooleanModel
 
+        # @!attribute [rw] list_price
+        #   only present for contract invoices and when the include_list_prices query parameter is set to true. This will include the list rate for the charge if applicable.  Only present for usage and subscription line items.
+        #
+        #   @return [Metronome::Models::Rate]
+        optional :list_price, -> { Metronome::Models::Rate }
+
         # @!attribute [rw] metadata
         #   @return [String]
         optional :metadata, String

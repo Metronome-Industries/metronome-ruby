@@ -185,6 +185,24 @@ module Metronome
         @client.request(req, opts)
       end
 
+      # Creates historical usage invoices for a contract
+      # 
+      # @param params [Hash] Attributes to send in this request.
+      # @option params [Array<Invoice>] :invoices
+      # @option params [Boolean] :preview
+      # 
+      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # 
+      # @return [Metronome::Models::ContractCreateHistoricalInvoicesResponse]
+      def create_historical_invoices(params = {}, opts = {})
+        req = {}
+        req[:method] = :post
+        req[:path] = "/contracts/createHistoricalInvoices"
+        req[:body] = params
+        req[:model] = Metronome::Models::ContractCreateHistoricalInvoicesResponse
+        @client.request(req, opts)
+      end
+
       # List balances (commits and credits).
       # 
       # @param params [Hash] Attributes to send in this request.
