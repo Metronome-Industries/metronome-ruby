@@ -45,7 +45,8 @@ module Metronome
           @client.request(req, opts)
         end
 
-        # Get a specific rate card
+        # Get a specific rate card NOTE: Use `/contract-pricing/rate-cards/getRates` to
+        #   retrieve rate card rates.
         # 
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :id
@@ -85,7 +86,8 @@ module Metronome
           @client.request(req, opts)
         end
 
-        # List rate cards
+        # List rate cards NOTE: Use `/contract-pricing/rate-cards/getRates` to retrieve
+        #   rate card rates.
         # 
         # @param params [Hash] Attributes to send in this request.
         # @option params [Object] :body Body param:
