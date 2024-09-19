@@ -9,8 +9,9 @@ module Metronome
 
       # @!attribute [rw] customer_status
       #   The status of the customer alert. If the alert is archived, null will be returned.
+      #   One of the constants defined in {Metronome::Models::CustomerAlert::CustomerStatus}
       #   @return [Symbol]
-      required :customer_status, Metronome::Enum.new(:ok, :in_alarm, :evaluating)
+      required :customer_status, enum: -> { Metronome::Models::CustomerAlert::CustomerStatus }
 
       # @!attribute [rw] triggered_by
       #   If present, indicates the reason the alert was triggered.
@@ -30,8 +31,9 @@ module Metronome
 
         # @!attribute [rw] status
         #   Status of the alert
+        #   One of the constants defined in {Metronome::Models::CustomerAlert::Alert::Status}
         #   @return [Symbol]
-        required :status, Metronome::Enum.new(:enabled, :archived, :disabled)
+        required :status, enum: -> { Metronome::Models::CustomerAlert::Alert::Status }
 
         # @!attribute [rw] threshold
         #   Threshold value of the alert policy
@@ -40,24 +42,9 @@ module Metronome
 
         # @!attribute [rw] type
         #   Type of the alert
+        #   One of the constants defined in {Metronome::Models::CustomerAlert::Alert::Type}
         #   @return [Symbol]
-        required :type,
-                 Metronome::Enum.new(
-                   :low_credit_balance_reached,
-                   :spend_threshold_reached,
-                   :monthly_invoice_total_spend_threshold_reached,
-                   :low_remaining_days_in_plan_reached,
-                   :low_remaining_credit_percentage_reached,
-                   :usage_threshold_reached,
-                   :low_remaining_days_for_commit_segment_reached,
-                   :low_remaining_commit_balance_reached,
-                   :low_remaining_commit_percentage_reached,
-                   :low_remaining_days_for_contract_credit_segment_reached,
-                   :low_remaining_contract_credit_balance_reached,
-                   :low_remaining_contract_credit_percentage_reached,
-                   :low_remaining_contract_credit_and_commit_balance_reached,
-                   :invoice_total_reached
-                 )
+        required :type, enum: -> { Metronome::Models::CustomerAlert::Alert::Type }
 
         # @!attribute [rw] updated_at
         #   Timestamp for when the alert was last updated
@@ -94,10 +81,36 @@ module Metronome
         #   @return [String]
         optional :uniqueness_key, String
 
+        # Status of the alert
+        class Status < Metronome::Enum
+          ENABLED = :enabled
+          ARCHIVED = :archived
+          DISABLED = :disabled
+        end
+
+        # Type of the alert
+        class Type < Metronome::Enum
+          LOW_CREDIT_BALANCE_REACHED = :low_credit_balance_reached
+          SPEND_THRESHOLD_REACHED = :spend_threshold_reached
+          MONTHLY_INVOICE_TOTAL_SPEND_THRESHOLD_REACHED = :monthly_invoice_total_spend_threshold_reached
+          LOW_REMAINING_DAYS_IN_PLAN_REACHED = :low_remaining_days_in_plan_reached
+          LOW_REMAINING_CREDIT_PERCENTAGE_REACHED = :low_remaining_credit_percentage_reached
+          USAGE_THRESHOLD_REACHED = :usage_threshold_reached
+          LOW_REMAINING_DAYS_FOR_COMMIT_SEGMENT_REACHED = :low_remaining_days_for_commit_segment_reached
+          LOW_REMAINING_COMMIT_BALANCE_REACHED = :low_remaining_commit_balance_reached
+          LOW_REMAINING_COMMIT_PERCENTAGE_REACHED = :low_remaining_commit_percentage_reached
+          LOW_REMAINING_DAYS_FOR_CONTRACT_CREDIT_SEGMENT_REACHED = :low_remaining_days_for_contract_credit_segment_reached
+          LOW_REMAINING_CONTRACT_CREDIT_BALANCE_REACHED = :low_remaining_contract_credit_balance_reached
+          LOW_REMAINING_CONTRACT_CREDIT_PERCENTAGE_REACHED = :low_remaining_contract_credit_percentage_reached
+          LOW_REMAINING_CONTRACT_CREDIT_AND_COMMIT_BALANCE_REACHED = :low_remaining_contract_credit_and_commit_balance_reached
+          INVOICE_TOTAL_REACHED = :invoice_total_reached
+        end
+
         class CustomFieldFilter < BaseModel
           # @!attribute [rw] entity
+          #   One of the constants defined in {Metronome::Models::CustomerAlert::Alert::CustomFieldFilter::Entity}
           #   @return [Symbol]
-          required :entity, Metronome::Enum.new(:Contract, :Commit, :ContractCredit)
+          required :entity, enum: -> { Metronome::Models::CustomerAlert::Alert::CustomFieldFilter::Entity }
 
           # @!attribute [rw] key
           #   @return [String]
@@ -106,6 +119,12 @@ module Metronome
           # @!attribute [rw] value
           #   @return [String]
           required :value, String
+
+          class Entity < Metronome::Enum
+            CONTRACT = :Contract
+            COMMIT = :Commit
+            CONTRACT_CREDIT = :ContractCredit
+          end
         end
 
         class GroupKeyFilter < BaseModel
@@ -117,6 +136,13 @@ module Metronome
           #   @return [String]
           required :value, String
         end
+      end
+
+      # The status of the customer alert. If the alert is archived, null will be returned.
+      class CustomerStatus < Metronome::Enum
+        OK = :ok
+        IN_ALARM = :in_alarm
+        EVALUATING = :evaluating
       end
     end
   end

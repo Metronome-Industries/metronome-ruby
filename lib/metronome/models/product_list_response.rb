@@ -16,8 +16,9 @@ module Metronome
       required :initial, -> { Metronome::Models::ProductListItemState }
 
       # @!attribute [rw] type
+      #   One of the constants defined in {Metronome::Models::ProductListResponse::Type}
       #   @return [Symbol]
-      required :type, Metronome::Enum.new(:USAGE, :SUBSCRIPTION, :COMPOSITE, :FIXED, :PRO_SERVICE)
+      required :type, enum: -> { Metronome::Models::ProductListResponse::Type }
 
       # @!attribute [rw] updates
       #   @return [Array<Metronome::Models::ProductListResponse::Update>]
@@ -30,6 +31,14 @@ module Metronome
       # @!attribute [rw] custom_fields
       #   @return [Hash]
       optional :custom_fields, Hash
+
+      class Type < Metronome::Enum
+        USAGE = :USAGE
+        SUBSCRIPTION = :SUBSCRIPTION
+        COMPOSITE = :COMPOSITE
+        FIXED = :FIXED
+        PRO_SERVICE = :PRO_SERVICE
+      end
 
       class Update < BaseModel
         # @!attribute [rw] created_at

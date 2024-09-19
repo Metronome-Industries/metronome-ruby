@@ -92,8 +92,10 @@ module Metronome
           optional :product_id, String
 
           # @!attribute [rw] rate_type
+          #   One of the constants defined in {Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Current::RateType}
           #   @return [Symbol]
-          optional :rate_type, Metronome::Enum.new(:FLAT, :PERCENTAGE, :SUBSCRIPTION, :CUSTOM, :TIERED)
+          optional :rate_type,
+                   enum: -> { Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Current::RateType }
 
           # @!attribute [rw] starting_at
           #   @return [String]
@@ -102,6 +104,14 @@ module Metronome
           # @!attribute [rw] tiers
           #   @return [Array<Metronome::Models::Tier>]
           optional :tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Tier })
+
+          class RateType < Metronome::Enum
+            FLAT = :FLAT
+            PERCENTAGE = :PERCENTAGE
+            SUBSCRIPTION = :SUBSCRIPTION
+            CUSTOM = :CUSTOM
+            TIERED = :TIERED
+          end
         end
 
         class Update < BaseModel
@@ -126,8 +136,10 @@ module Metronome
           required :product_id, String
 
           # @!attribute [rw] rate_type
+          #   One of the constants defined in {Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Update::RateType}
           #   @return [Symbol]
-          required :rate_type, Metronome::Enum.new(:FLAT, :PERCENTAGE, :SUBSCRIPTION, :CUSTOM, :TIERED)
+          required :rate_type,
+                   enum: -> { Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Update::RateType }
 
           # @!attribute [rw] starting_at
           #   @return [String]
@@ -160,6 +172,14 @@ module Metronome
           # @!attribute [rw] tiers
           #   @return [Array<Metronome::Models::Tier>]
           optional :tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Tier })
+
+          class RateType < Metronome::Enum
+            FLAT = :FLAT
+            PERCENTAGE = :PERCENTAGE
+            SUBSCRIPTION = :SUBSCRIPTION
+            CUSTOM = :CUSTOM
+            TIERED = :TIERED
+          end
         end
       end
 

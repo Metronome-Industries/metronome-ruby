@@ -28,8 +28,10 @@ module Metronome
 
       # @!attribute [rw] aggregation_type
       #   Specifies the type of aggregation performed on matching events.
+      #   One of the constants defined in {Metronome::Models::CustomerListBillableMetricsResponse::AggregationType}
       #   @return [Symbol]
-      optional :aggregation_type, Metronome::Enum.new(:COUNT, :LATEST, :MAX, :SUM, :UNIQUE)
+      optional :aggregation_type,
+               enum: -> { Metronome::Models::CustomerListBillableMetricsResponse::AggregationType }
 
       # @!attribute [rw] custom_fields
       #   @return [Hash]
@@ -64,6 +66,15 @@ module Metronome
       #   The SQL query associated with the billable metric
       #   @return [String]
       optional :sql, String
+
+      # Specifies the type of aggregation performed on matching events.
+      class AggregationType < Metronome::Enum
+        COUNT = :COUNT
+        LATEST = :LATEST
+        MAX = :MAX
+        SUM = :SUM
+        UNIQUE = :UNIQUE
+      end
     end
   end
 end

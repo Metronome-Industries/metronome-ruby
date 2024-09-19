@@ -12,8 +12,9 @@ module Metronome
       required :product, -> { Metronome::Models::Commit::Product }
 
       # @!attribute [rw] type
+      #   One of the constants defined in {Metronome::Models::Commit::Type}
       #   @return [Symbol]
-      required :type, Metronome::Enum.new(:PREPAID, :POSTPAID)
+      required :type, enum: -> { Metronome::Models::Commit::Type }
 
       # @!attribute [rw] access_schedule
       #   The schedule that the customer will gain access to the credits purposed with this commit.
@@ -99,6 +100,11 @@ module Metronome
         # @!attribute [rw] name_
         #   @return [String]
         required :name_, String
+      end
+
+      class Type < Metronome::Enum
+        PREPAID = :PREPAID
+        POSTPAID = :POSTPAID
       end
 
       class Contract < BaseModel

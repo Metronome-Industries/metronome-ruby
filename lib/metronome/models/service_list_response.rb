@@ -17,8 +17,14 @@ module Metronome
         required :name_, String
 
         # @!attribute [rw] usage
+        #   One of the constants defined in {Metronome::Models::ServiceListResponse::Service::Usage}
         #   @return [Symbol]
-        required :usage, Metronome::Enum.new(:makes_connections_from, :accepts_connections_at)
+        required :usage, enum: -> { Metronome::Models::ServiceListResponse::Service::Usage }
+
+        class Usage < Metronome::Enum
+          MAKES_CONNECTIONS_FROM = :makes_connections_from
+          ACCEPTS_CONNECTIONS_AT = :accepts_connections_at
+        end
       end
     end
   end

@@ -4,8 +4,9 @@ module Metronome
   module Models
     class Rate < BaseModel
       # @!attribute [rw] rate_type
+      #   One of the constants defined in {Metronome::Models::Rate::RateType}
       #   @return [Symbol]
-      required :rate_type, Metronome::Enum.new(:FLAT, :PERCENTAGE, :SUBSCRIPTION, :CUSTOM, :TIERED)
+      required :rate_type, enum: -> { Metronome::Models::Rate::RateType }
 
       # @!attribute [rw] credit_type
       #   @return [Metronome::Models::CreditType]
@@ -45,6 +46,14 @@ module Metronome
       #   Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed using list prices rather than the standard rates for this product on the contract.
       #   @return [Boolean]
       optional :use_list_prices, Metronome::BooleanModel
+
+      class RateType < Metronome::Enum
+        FLAT = :FLAT
+        PERCENTAGE = :PERCENTAGE
+        SUBSCRIPTION = :SUBSCRIPTION
+        CUSTOM = :CUSTOM
+        TIERED = :TIERED
+      end
     end
   end
 end

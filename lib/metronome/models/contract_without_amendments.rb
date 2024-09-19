@@ -102,14 +102,27 @@ module Metronome
         required :to_contract_id, String
 
         # @!attribute [rw] type
+        #   One of the constants defined in {Metronome::Models::ContractWithoutAmendments::Transition::Type}
         #   @return [Symbol]
-        required :type, Metronome::Enum.new(:SUPERSEDE, :RENEWAL)
+        required :type, enum: -> { Metronome::Models::ContractWithoutAmendments::Transition::Type }
+
+        class Type < Metronome::Enum
+          SUPERSEDE = :SUPERSEDE
+          RENEWAL = :RENEWAL
+        end
       end
 
       class UsageStatementSchedule < BaseModel
         # @!attribute [rw] frequency
+        #   One of the constants defined in {Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule::Frequency}
         #   @return [Symbol]
-        required :frequency, Metronome::Enum.new(:MONTHLY, :QUARTERLY)
+        required :frequency,
+                 enum: -> { Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule::Frequency }
+
+        class Frequency < Metronome::Enum
+          MONTHLY = :MONTHLY
+          QUARTERLY = :QUARTERLY
+        end
       end
 
       class ResellerRoyalty < BaseModel
@@ -122,8 +135,10 @@ module Metronome
         required :netsuite_reseller_id, String
 
         # @!attribute [rw] reseller_type
+        #   One of the constants defined in {Metronome::Models::ContractWithoutAmendments::ResellerRoyalty::ResellerType}
         #   @return [Symbol]
-        required :reseller_type, Metronome::Enum.new(:AWS, :AWS_PRO_SERVICE, :GCP, :GCP_PRO_SERVICE)
+        required :reseller_type,
+                 enum: -> { Metronome::Models::ContractWithoutAmendments::ResellerRoyalty::ResellerType }
 
         # @!attribute [rw] starting_at
         #   @return [String]
@@ -164,6 +179,13 @@ module Metronome
         # @!attribute [rw] reseller_contract_value
         #   @return [Float]
         optional :reseller_contract_value, Float
+
+        class ResellerType < Metronome::Enum
+          AWS = :AWS
+          AWS_PRO_SERVICE = :AWS_PRO_SERVICE
+          GCP = :GCP
+          GCP_PRO_SERVICE = :GCP_PRO_SERVICE
+        end
       end
 
       class UsageFilter < BaseModel
