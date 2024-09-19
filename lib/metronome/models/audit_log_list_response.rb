@@ -32,8 +32,9 @@ module Metronome
       optional :resource_type, String
 
       # @!attribute [rw] status
+      #   One of the constants defined in {Metronome::Models::AuditLogListResponse::Status}
       #   @return [Symbol]
-      optional :status, Metronome::Enum.new(:success, :failure, :pending)
+      optional :status, enum: -> { Metronome::Models::AuditLogListResponse::Status }
 
       class Actor < BaseModel
         # @!attribute [rw] id
@@ -47,6 +48,12 @@ module Metronome
         # @!attribute [rw] email
         #   @return [String]
         optional :email, String
+      end
+
+      class Status < Metronome::Enum
+        SUCCESS = :success
+        FAILURE = :failure
+        PENDING = :pending
       end
     end
   end

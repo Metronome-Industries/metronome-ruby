@@ -8,8 +8,9 @@ module Metronome
       required :id, String
 
       # @!attribute [rw] charge_type
+      #   One of the constants defined in {Metronome::Models::PlanListChargesResponse::ChargeType}
       #   @return [Symbol]
-      required :charge_type, Metronome::Enum.new(:usage, :fixed, :composite, :minimum, :seat)
+      required :charge_type, enum: -> { Metronome::Models::PlanListChargesResponse::ChargeType }
 
       # @!attribute [rw] credit_type
       #   @return [Metronome::Models::CreditType]
@@ -54,6 +55,14 @@ module Metronome
       #   @return [Metronome::Models::PlanListChargesResponse::UnitConversion]
       optional :unit_conversion, -> { Metronome::Models::PlanListChargesResponse::UnitConversion }
 
+      class ChargeType < Metronome::Enum
+        USAGE = :usage
+        FIXED = :fixed
+        COMPOSITE = :composite
+        MINIMUM = :minimum
+        SEAT = :seat
+      end
+
       class Price < BaseModel
         # @!attribute [rw] tier
         #   Used in pricing tiers.  Indicates at what metric value the price applies.
@@ -85,8 +94,16 @@ module Metronome
 
         # @!attribute [rw] rounding_behavior
         #   Whether usage should be rounded down or up to the nearest whole number. If null, quantity will be rounded to 20 decimal places.
+        #   One of the constants defined in {Metronome::Models::PlanListChargesResponse::UnitConversion::RoundingBehavior}
         #   @return [Symbol]
-        optional :rounding_behavior, Metronome::Enum.new(:floor, :ceiling)
+        optional :rounding_behavior,
+                 enum: -> { Metronome::Models::PlanListChargesResponse::UnitConversion::RoundingBehavior }
+
+        # Whether usage should be rounded down or up to the nearest whole number. If null, quantity will be rounded to 20 decimal places.
+        class RoundingBehavior < Metronome::Enum
+          FLOOR = :floor
+          CEILING = :ceiling
+        end
       end
     end
   end

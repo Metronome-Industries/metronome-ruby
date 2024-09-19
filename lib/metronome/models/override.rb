@@ -68,8 +68,9 @@ module Metronome
       optional :quantity, Float
 
       # @!attribute [rw] rate_type
+      #   One of the constants defined in {Metronome::Models::Override::RateType}
       #   @return [Symbol]
-      optional :rate_type, Metronome::Enum.new(:FLAT, :PERCENTAGE, :SUBSCRIPTION, :TIERED, :CUSTOM)
+      optional :rate_type, enum: -> { Metronome::Models::Override::RateType }
 
       # @!attribute [rw] tiers
       #   Only set for TIERED rate_type.
@@ -77,8 +78,9 @@ module Metronome
       optional :tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Tier })
 
       # @!attribute [rw] type
+      #   One of the constants defined in {Metronome::Models::Override::Type}
       #   @return [Symbol]
-      optional :type, Metronome::Enum.new(:OVERWRITE, :MULTIPLIER, :TIERED)
+      optional :type, enum: -> { Metronome::Models::Override::Type }
 
       # @!attribute [rw] value
       #   Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.
@@ -115,8 +117,9 @@ module Metronome
 
       class OverwriteRate < BaseModel
         # @!attribute [rw] rate_type
+        #   One of the constants defined in {Metronome::Models::Override::OverwriteRate::RateType}
         #   @return [Symbol]
-        required :rate_type, Metronome::Enum.new(:FLAT, :PERCENTAGE, :SUBSCRIPTION, :TIERED, :CUSTOM)
+        required :rate_type, enum: -> { Metronome::Models::Override::OverwriteRate::RateType }
 
         # @!attribute [rw] credit_type
         #   @return [Metronome::Models::CreditType]
@@ -146,6 +149,14 @@ module Metronome
         #   Only set for TIERED rate_type.
         #   @return [Array<Metronome::Models::Tier>]
         optional :tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Tier })
+
+        class RateType < Metronome::Enum
+          FLAT = :FLAT
+          PERCENTAGE = :PERCENTAGE
+          SUBSCRIPTION = :SUBSCRIPTION
+          TIERED = :TIERED
+          CUSTOM = :CUSTOM
+        end
       end
 
       class Product < BaseModel
@@ -156,6 +167,20 @@ module Metronome
         # @!attribute [rw] name_
         #   @return [String]
         required :name_, String
+      end
+
+      class RateType < Metronome::Enum
+        FLAT = :FLAT
+        PERCENTAGE = :PERCENTAGE
+        SUBSCRIPTION = :SUBSCRIPTION
+        TIERED = :TIERED
+        CUSTOM = :CUSTOM
+      end
+
+      class Type < Metronome::Enum
+        OVERWRITE = :OVERWRITE
+        MULTIPLIER = :MULTIPLIER
+        TIERED = :TIERED
       end
     end
   end

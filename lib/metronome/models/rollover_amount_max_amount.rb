@@ -5,13 +5,19 @@ module Metronome
     class RolloverAmountMaxAmount < BaseModel
       # @!attribute [rw] type
       #   Rollover up to a fixed amount of the original credit grant amount.
+      #   One of the constants defined in {Metronome::Models::RolloverAmountMaxAmount::Type}
       #   @return [Symbol]
-      required :type, Metronome::Enum.new(:MAX_AMOUNT)
+      required :type, enum: -> { Metronome::Models::RolloverAmountMaxAmount::Type }
 
       # @!attribute [rw] value
       #   The maximum amount to rollover.
       #   @return [Float]
       required :value, Float
+
+      # Rollover up to a fixed amount of the original credit grant amount.
+      class Type < Metronome::Enum
+        MAX_AMOUNT = :MAX_AMOUNT
+      end
     end
   end
 end

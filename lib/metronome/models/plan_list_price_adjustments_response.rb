@@ -8,8 +8,9 @@ module Metronome
       required :charge_id, String
 
       # @!attribute [rw] charge_type
+      #   One of the constants defined in {Metronome::Models::PlanListPriceAdjustmentsResponse::ChargeType}
       #   @return [Symbol]
-      required :charge_type, Metronome::Enum.new(:usage, :fixed, :composite, :minimum, :seat)
+      required :charge_type, enum: -> { Metronome::Models::PlanListPriceAdjustmentsResponse::ChargeType }
 
       # @!attribute [rw] prices
       #   @return [Array<Metronome::Models::PlanListPriceAdjustmentsResponse::Price>]
@@ -24,11 +25,21 @@ module Metronome
       #   @return [Float]
       optional :quantity, Float
 
+      class ChargeType < Metronome::Enum
+        USAGE = :usage
+        FIXED = :fixed
+        COMPOSITE = :composite
+        MINIMUM = :minimum
+        SEAT = :seat
+      end
+
       class Price < BaseModel
         # @!attribute [rw] adjustment_type
         #   Determines how the value will be applied.
+        #   One of the constants defined in {Metronome::Models::PlanListPriceAdjustmentsResponse::Price::AdjustmentType}
         #   @return [Symbol]
-        required :adjustment_type, Metronome::Enum.new(:fixed, :quantity, :percentage, :override)
+        required :adjustment_type,
+                 enum: -> { Metronome::Models::PlanListPriceAdjustmentsResponse::Price::AdjustmentType }
 
         # @!attribute [rw] tier
         #   Used in pricing tiers.  Indicates at what metric value the price applies.
@@ -38,6 +49,14 @@ module Metronome
         # @!attribute [rw] value
         #   @return [Float]
         optional :value, Float
+
+        # Determines how the value will be applied.
+        class AdjustmentType < Metronome::Enum
+          FIXED = :fixed
+          QUANTITY = :quantity
+          PERCENTAGE = :percentage
+          OVERRIDE = :override
+        end
       end
     end
   end

@@ -17,30 +17,32 @@ module Metronome
         required :enforce_uniqueness, Metronome::BooleanModel
 
         # @!attribute [rw] entity
+        #   One of the constants defined in {Metronome::Models::CustomFieldListKeysResponse::Data::Entity}
         #   @return [Symbol]
-        required :entity,
-                 Metronome::Enum.new(
-                   :alert,
-                   :billable_metric,
-                   :charge,
-                   :commit,
-                   :contract_credit,
-                   :contract_product,
-                   :contract,
-                   :credit_grant,
-                   :customer_plan,
-                   :customer,
-                   :invoice,
-                   :plan,
-                   :professional_service,
-                   :product,
-                   :rate_card,
-                   :scheduled_charge
-                 )
+        required :entity, enum: -> { Metronome::Models::CustomFieldListKeysResponse::Data::Entity }
 
         # @!attribute [rw] key
         #   @return [String]
         required :key, String
+
+        class Entity < Metronome::Enum
+          ALERT = :alert
+          BILLABLE_METRIC = :billable_metric
+          CHARGE = :charge
+          COMMIT = :commit
+          CONTRACT_CREDIT = :contract_credit
+          CONTRACT_PRODUCT = :contract_product
+          CONTRACT = :contract
+          CREDIT_GRANT = :credit_grant
+          CUSTOMER_PLAN = :customer_plan
+          CUSTOMER = :customer
+          INVOICE = :invoice
+          PLAN = :plan
+          PROFESSIONAL_SERVICE = :professional_service
+          PRODUCT = :product
+          RATE_CARD = :rate_card
+          SCHEDULED_CHARGE = :scheduled_charge
+        end
       end
     end
   end

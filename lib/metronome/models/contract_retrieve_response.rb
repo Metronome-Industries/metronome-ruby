@@ -105,8 +105,10 @@ module Metronome
 
           class ResellerRoyalty < BaseModel
             # @!attribute [rw] reseller_type
+            #   One of the constants defined in {Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty::ResellerType}
             #   @return [Symbol]
-            required :reseller_type, Metronome::Enum.new(:AWS, :AWS_PRO_SERVICE, :GCP, :GCP_PRO_SERVICE)
+            required :reseller_type,
+                     enum: -> { Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty::ResellerType }
 
             # @!attribute [rw] aws_account_number
             #   @return [String]
@@ -147,27 +149,46 @@ module Metronome
             # @!attribute [rw] starting_at
             #   @return [String]
             optional :starting_at, String
+
+            class ResellerType < Metronome::Enum
+              AWS = :AWS
+              AWS_PRO_SERVICE = :AWS_PRO_SERVICE
+              GCP = :GCP
+              GCP_PRO_SERVICE = :GCP_PRO_SERVICE
+            end
           end
         end
 
         class CustomerBillingProviderConfiguration < BaseModel
           # @!attribute [rw] billing_provider
+          #   One of the constants defined in {Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::BillingProvider}
           #   @return [Symbol]
           required :billing_provider,
-                   Metronome::Enum.new(
-                     :aws_marketplace,
-                     :stripe,
-                     :netsuite,
-                     :custom,
-                     :azure_marketplace,
-                     :quickbooks_online,
-                     :workday,
-                     :gcp_marketplace
-                   )
+                   enum: -> { Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::BillingProvider }
 
           # @!attribute [rw] delivery_method
+          #   One of the constants defined in {Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod}
           #   @return [Symbol]
-          required :delivery_method, Metronome::Enum.new(:direct_to_billing_provider, :aws_sqs, :tackle, :aws_sns)
+          required :delivery_method,
+                   enum: -> { Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod }
+
+          class BillingProvider < Metronome::Enum
+            AWS_MARKETPLACE = :aws_marketplace
+            STRIPE = :stripe
+            NETSUITE = :netsuite
+            CUSTOM = :custom
+            AZURE_MARKETPLACE = :azure_marketplace
+            QUICKBOOKS_ONLINE = :quickbooks_online
+            WORKDAY = :workday
+            GCP_MARKETPLACE = :gcp_marketplace
+          end
+
+          class DeliveryMethod < Metronome::Enum
+            DIRECT_TO_BILLING_PROVIDER = :direct_to_billing_provider
+            AWS_SQS = :aws_sqs
+            TACKLE = :tackle
+            AWS_SNS = :aws_sns
+          end
         end
       end
     end

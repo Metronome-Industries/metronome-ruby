@@ -37,8 +37,9 @@ module Metronome
 
       # @!attribute [rw] billable_status
       #   This field's availability is dependent on your client's configuration.
+      #   One of the constants defined in {Metronome::Models::Invoice::BillableStatus}
       #   @return [Symbol]
-      optional :billable_status, Metronome::Enum.new(:billable, :unbillable)
+      optional :billable_status, enum: -> { Metronome::Models::Invoice::BillableStatus }
 
       # @!attribute [rw] contract_custom_fields
       #   @return [Hash]
@@ -254,8 +255,9 @@ module Metronome
         optional :quantity, Float
 
         # @!attribute [rw] reseller_type
+        #   One of the constants defined in {Metronome::Models::Invoice::LineItem::ResellerType}
         #   @return [Symbol]
-        optional :reseller_type, Metronome::Enum.new(:AWS, :AWS_PRO_SERVICE, :GCP, :GCP_PRO_SERVICE)
+        optional :reseller_type, enum: -> { Metronome::Models::Invoice::LineItem::ResellerType }
 
         # @!attribute [rw] scheduled_charge_custom_fields
         #   @return [Hash]
@@ -284,6 +286,13 @@ module Metronome
           # @!attribute [rw] id
           #   @return [String]
           required :id, String
+        end
+
+        class ResellerType < Metronome::Enum
+          AWS = :AWS
+          AWS_PRO_SERVICE = :AWS_PRO_SERVICE
+          GCP = :GCP
+          GCP_PRO_SERVICE = :GCP_PRO_SERVICE
         end
 
         class SubLineItem < BaseModel
@@ -366,6 +375,12 @@ module Metronome
         end
       end
 
+      # This field's availability is dependent on your client's configuration.
+      class BillableStatus < Metronome::Enum
+        BILLABLE = :billable
+        UNBILLABLE = :unbillable
+      end
+
       class CorrectionRecord < BaseModel
         # @!attribute [rw] corrected_invoice_id
         #   @return [String]
@@ -386,35 +401,16 @@ module Metronome
 
         class CorrectedExternalInvoice < BaseModel
           # @!attribute [rw] billing_provider_type
+          #   One of the constants defined in {Metronome::Models::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType}
           #   @return [Symbol]
           required :billing_provider_type,
-                   Metronome::Enum.new(
-                     :aws_marketplace,
-                     :stripe,
-                     :netsuite,
-                     :custom,
-                     :azure_marketplace,
-                     :quickbooks_online,
-                     :workday,
-                     :gcp_marketplace
-                   )
+                   enum: -> { Metronome::Models::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType }
 
           # @!attribute [rw] external_status
+          #   One of the constants defined in {Metronome::Models::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus}
           #   @return [Symbol]
           optional :external_status,
-                   Metronome::Enum.new(
-                     :DRAFT,
-                     :FINALIZED,
-                     :PAID,
-                     :UNCOLLECTIBLE,
-                     :VOID,
-                     :DELETED,
-                     :PAYMENT_FAILED,
-                     :INVALID_REQUEST_ERROR,
-                     :SKIPPED,
-                     :SENT,
-                     :QUEUED
-                   )
+                   enum: -> { Metronome::Models::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus }
 
           # @!attribute [rw] invoice_id
           #   @return [String]
@@ -423,40 +419,45 @@ module Metronome
           # @!attribute [rw] issued_at_timestamp
           #   @return [String]
           optional :issued_at_timestamp, String
+
+          class BillingProviderType < Metronome::Enum
+            AWS_MARKETPLACE = :aws_marketplace
+            STRIPE = :stripe
+            NETSUITE = :netsuite
+            CUSTOM = :custom
+            AZURE_MARKETPLACE = :azure_marketplace
+            QUICKBOOKS_ONLINE = :quickbooks_online
+            WORKDAY = :workday
+            GCP_MARKETPLACE = :gcp_marketplace
+          end
+
+          class ExternalStatus < Metronome::Enum
+            DRAFT = :DRAFT
+            FINALIZED = :FINALIZED
+            PAID = :PAID
+            UNCOLLECTIBLE = :UNCOLLECTIBLE
+            VOID = :VOID
+            DELETED = :DELETED
+            PAYMENT_FAILED = :PAYMENT_FAILED
+            INVALID_REQUEST_ERROR = :INVALID_REQUEST_ERROR
+            SKIPPED = :SKIPPED
+            SENT = :SENT
+            QUEUED = :QUEUED
+          end
         end
       end
 
       class ExternalInvoice < BaseModel
         # @!attribute [rw] billing_provider_type
+        #   One of the constants defined in {Metronome::Models::Invoice::ExternalInvoice::BillingProviderType}
         #   @return [Symbol]
         required :billing_provider_type,
-                 Metronome::Enum.new(
-                   :aws_marketplace,
-                   :stripe,
-                   :netsuite,
-                   :custom,
-                   :azure_marketplace,
-                   :quickbooks_online,
-                   :workday,
-                   :gcp_marketplace
-                 )
+                 enum: -> { Metronome::Models::Invoice::ExternalInvoice::BillingProviderType }
 
         # @!attribute [rw] external_status
+        #   One of the constants defined in {Metronome::Models::Invoice::ExternalInvoice::ExternalStatus}
         #   @return [Symbol]
-        optional :external_status,
-                 Metronome::Enum.new(
-                   :DRAFT,
-                   :FINALIZED,
-                   :PAID,
-                   :UNCOLLECTIBLE,
-                   :VOID,
-                   :DELETED,
-                   :PAYMENT_FAILED,
-                   :INVALID_REQUEST_ERROR,
-                   :SKIPPED,
-                   :SENT,
-                   :QUEUED
-                 )
+        optional :external_status, enum: -> { Metronome::Models::Invoice::ExternalInvoice::ExternalStatus }
 
         # @!attribute [rw] invoice_id
         #   @return [String]
@@ -465,6 +466,31 @@ module Metronome
         # @!attribute [rw] issued_at_timestamp
         #   @return [String]
         optional :issued_at_timestamp, String
+
+        class BillingProviderType < Metronome::Enum
+          AWS_MARKETPLACE = :aws_marketplace
+          STRIPE = :stripe
+          NETSUITE = :netsuite
+          CUSTOM = :custom
+          AZURE_MARKETPLACE = :azure_marketplace
+          QUICKBOOKS_ONLINE = :quickbooks_online
+          WORKDAY = :workday
+          GCP_MARKETPLACE = :gcp_marketplace
+        end
+
+        class ExternalStatus < Metronome::Enum
+          DRAFT = :DRAFT
+          FINALIZED = :FINALIZED
+          PAID = :PAID
+          UNCOLLECTIBLE = :UNCOLLECTIBLE
+          VOID = :VOID
+          DELETED = :DELETED
+          PAYMENT_FAILED = :PAYMENT_FAILED
+          INVALID_REQUEST_ERROR = :INVALID_REQUEST_ERROR
+          SKIPPED = :SKIPPED
+          SENT = :SENT
+          QUEUED = :QUEUED
+        end
       end
 
       class InvoiceAdjustment < BaseModel
@@ -499,8 +525,9 @@ module Metronome
         required :netsuite_reseller_id, String
 
         # @!attribute [rw] reseller_type
+        #   One of the constants defined in {Metronome::Models::Invoice::ResellerRoyalty::ResellerType}
         #   @return [Symbol]
-        required :reseller_type, Metronome::Enum.new(:AWS, :AWS_PRO_SERVICE, :GCP, :GCP_PRO_SERVICE)
+        required :reseller_type, enum: -> { Metronome::Models::Invoice::ResellerRoyalty::ResellerType }
 
         # @!attribute [rw] aws_options
         #   @return [Metronome::Models::Invoice::ResellerRoyalty::AwsOptions]
@@ -509,6 +536,13 @@ module Metronome
         # @!attribute [rw] gcp_options
         #   @return [Metronome::Models::Invoice::ResellerRoyalty::GcpOptions]
         optional :gcp_options, -> { Metronome::Models::Invoice::ResellerRoyalty::GcpOptions }
+
+        class ResellerType < Metronome::Enum
+          AWS = :AWS
+          AWS_PRO_SERVICE = :AWS_PRO_SERVICE
+          GCP = :GCP
+          GCP_PRO_SERVICE = :GCP_PRO_SERVICE
+        end
 
         class AwsOptions < BaseModel
           # @!attribute [rw] aws_account_number

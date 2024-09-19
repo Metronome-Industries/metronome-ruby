@@ -12,8 +12,9 @@ module Metronome
       required :product, -> { Metronome::Models::Credit::Product }
 
       # @!attribute [rw] type
+      #   One of the constants defined in {Metronome::Models::Credit::Type}
       #   @return [Symbol]
-      required :type, Metronome::Enum.new(:CREDIT)
+      required :type, enum: -> { Metronome::Models::Credit::Type }
 
       # @!attribute [rw] access_schedule
       #   The schedule that the customer will gain access to the credits.
@@ -76,6 +77,10 @@ module Metronome
         # @!attribute [rw] name_
         #   @return [String]
         required :name_, String
+      end
+
+      class Type < Metronome::Enum
+        CREDIT = :CREDIT
       end
 
       class Contract < BaseModel
