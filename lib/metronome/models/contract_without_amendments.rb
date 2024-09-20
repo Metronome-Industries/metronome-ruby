@@ -8,8 +8,8 @@ module Metronome
       required :commits, Metronome::ArrayOf.new(-> { Metronome::Models::Commit })
 
       # @!attribute [rw] created_at
-      #   @return [String]
-      required :created_at, String
+      #   @return [DateTime]
+      required :created_at, DateTime
 
       # @!attribute [rw] created_by
       #   @return [String]
@@ -24,8 +24,8 @@ module Metronome
       required :scheduled_charges, Metronome::ArrayOf.new(-> { Metronome::Models::ScheduledCharge })
 
       # @!attribute [rw] starting_at
-      #   @return [String]
-      required :starting_at, String
+      #   @return [DateTime]
+      required :starting_at, DateTime
 
       # @!attribute [rw] transitions
       #   @return [Array<Metronome::Models::ContractWithoutAmendments::Transition>]
@@ -47,8 +47,8 @@ module Metronome
       optional :discounts, Metronome::ArrayOf.new(-> { Metronome::Models::Discount })
 
       # @!attribute [rw] ending_before
-      #   @return [String]
-      optional :ending_before, String
+      #   @return [DateTime]
+      optional :ending_before, DateTime
 
       # @!attribute [rw] name_
       #   @return [String]
@@ -141,8 +141,8 @@ module Metronome
                  enum: -> { Metronome::Models::ContractWithoutAmendments::ResellerRoyalty::ResellerType }
 
         # @!attribute [rw] starting_at
-        #   @return [String]
-        required :starting_at, String
+        #   @return [DateTime]
+        required :starting_at, DateTime
 
         # @!attribute [rw] applicable_product_ids
         #   @return [Array<String>]
@@ -165,8 +165,8 @@ module Metronome
         optional :aws_payer_reference_id, String
 
         # @!attribute [rw] ending_before
-        #   @return [String]
-        optional :ending_before, String
+        #   @return [DateTime]
+        optional :ending_before, DateTime
 
         # @!attribute [rw] gcp_account_id
         #   @return [String]
@@ -212,8 +212,8 @@ module Metronome
           required :group_values, Metronome::ArrayOf.new(String)
 
           # @!attribute [rw] starting_at
-          #   @return [String]
-          required :starting_at, String
+          #   @return [DateTime]
+          required :starting_at, DateTime
         end
       end
     end

@@ -27,4 +27,12 @@ class Metronome::Test::Resources::InvoicesTest < Test::Unit::TestCase
     )
     assert_kind_of(Metronome::Models::InvoiceAddChargeResponse, response)
   end
+
+  def test_list_breakdowns_required_params
+    response = @metronome.customers.invoices.list_breakdowns(
+      "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+      {ending_before: "2019-12-27T18:11:19.117Z", starting_on: "2019-12-27T18:11:19.117Z"}
+    )
+    assert_kind_of(Metronome::CursorPage, response)
+  end
 end

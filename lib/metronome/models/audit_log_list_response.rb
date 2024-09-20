@@ -8,8 +8,8 @@ module Metronome
       required :id, String
 
       # @!attribute [rw] timestamp
-      #   @return [String]
-      required :timestamp, String
+      #   @return [DateTime]
+      required :timestamp, DateTime
 
       # @!attribute [rw] action
       #   @return [String]

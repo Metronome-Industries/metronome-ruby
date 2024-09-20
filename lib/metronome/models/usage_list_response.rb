@@ -25,12 +25,12 @@ module Metronome
         required :customer_id, String
 
         # @!attribute [rw] end_timestamp
-        #   @return [String]
-        required :end_timestamp, String
+        #   @return [DateTime]
+        required :end_timestamp, DateTime
 
         # @!attribute [rw] start_timestamp
-        #   @return [String]
-        required :start_timestamp, String
+        #   @return [DateTime]
+        required :start_timestamp, DateTime
 
         # @!attribute [rw] value
         #   @return [Float]

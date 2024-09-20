@@ -112,10 +112,10 @@ module Metronome
         # 
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :rate_card_id Body param: ID of the rate card to get the schedule for
-        # @option params [String] :starting_at Body param: inclusive starting point for the rates schedule
+        # @option params [DateTime] :starting_at Body param: inclusive starting point for the rates schedule
         # @option params [Integer] :limit Query param: Max number of results that should be returned
         # @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
-        # @option params [String] :ending_before Body param: optional exclusive end date for the rates schedule. When not
+        # @option params [DateTime] :ending_before Body param: optional exclusive end date for the rates schedule. When not
         #   specified rates will show all future schedule segments.
         # @option params [Array<Selector>] :selectors Body param: List of rate selectors, rates matching ANY of the selector will be
         #   included in the response Passing no selectors will result in all rates being

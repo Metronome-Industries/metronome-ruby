@@ -37,9 +37,9 @@ module Metronome
         # 
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :plan_id
-        # @option params [String] :starting_on RFC 3339 timestamp for when the plan becomes active for this customer. Must be
+        # @option params [DateTime] :starting_on RFC 3339 timestamp for when the plan becomes active for this customer. Must be
         #   at 0:00 UTC (midnight).
-        # @option params [String] :ending_before RFC 3339 timestamp for when the plan ends (exclusive) for this customer. Must be
+        # @option params [DateTime] :ending_before RFC 3339 timestamp for when the plan ends (exclusive) for this customer. Must be
         #   at 0:00 UTC (midnight).
         # @option params [Float] :net_payment_terms_days Number of days after issuance of invoice after which the invoice is due (e.g.
         #   Net 30).
@@ -72,7 +72,7 @@ module Metronome
         # @param customer_plan_id [String] the ID of a customer-plan relationship
         # 
         # @param params [Hash] Attributes to send in this request.
-        # @option params [String] :ending_before RFC 3339 timestamp for when the plan ends (exclusive) for this customer. Must be
+        # @option params [DateTime] :ending_before RFC 3339 timestamp for when the plan ends (exclusive) for this customer. Must be
         #   at 0:00 UTC (midnight). If not provided, the plan end date will be cleared.
         # @option params [Boolean] :void_invoices If true, plan end date can be before the last finalized invoice date. Any
         #   invoices generated after the plan end date will be voided.

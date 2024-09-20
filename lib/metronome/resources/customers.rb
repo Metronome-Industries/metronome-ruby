@@ -142,8 +142,8 @@ module Metronome
       # @param customer_id [String]
       # 
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :ending_before RFC 3339 timestamp (exclusive)
-      # @option params [String] :starting_on RFC 3339 timestamp (inclusive)
+      # @option params [DateTime] :ending_before RFC 3339 timestamp (exclusive)
+      # @option params [DateTime] :starting_on RFC 3339 timestamp (inclusive)
       # @option params [Integer] :limit Max number of results that should be returned
       # @option params [String] :next_page Cursor that indicates where the next page of results should start.
       # 
