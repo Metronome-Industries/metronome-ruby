@@ -10,8 +10,8 @@ module Metronome
       class Data < BaseModel
         # @!attribute [rw] aws_expiration_date
         #   Contract expiration date for the customer. The expected format is RFC 3339 and can be retrieved from AWS's GetEntitlements API. (See https://docs.aws.amazon.com/marketplaceentitlement/latest/APIReference/API_GetEntitlements.html.)
-        #   @return [String]
-        optional :aws_expiration_date, String
+        #   @return [DateTime]
+        optional :aws_expiration_date, DateTime
 
         # @!attribute [rw] aws_product_code
         #   @return [String]
@@ -24,8 +24,8 @@ module Metronome
 
         # @!attribute [rw] azure_expiration_date
         #   Subscription term start/end date for the customer. The expected format is RFC 3339 and can be retrieved from Azure's Get Subscription API. (See https://learn.microsoft.com/en-us/partner-center/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api#get-subscription.)
-        #   @return [String]
-        optional :azure_expiration_date, String
+        #   @return [DateTime]
+        optional :azure_expiration_date, DateTime
 
         # @!attribute [rw] azure_plan_id
         #   @return [String]
@@ -33,8 +33,8 @@ module Metronome
 
         # @!attribute [rw] azure_start_date
         #   Subscription term start/end date for the customer. The expected format is RFC 3339 and can be retrieved from Azure's Get Subscription API. (See https://learn.microsoft.com/en-us/partner-center/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api#get-subscription.)
-        #   @return [String]
-        optional :azure_start_date, String
+        #   @return [DateTime]
+        optional :azure_start_date, DateTime
 
         # @!attribute [rw] azure_subscription_status
         #   One of the constants defined in {Metronome::Models::BillingConfigRetrieveResponse::Data::AzureSubscriptionStatus}

@@ -48,8 +48,8 @@ module Metronome
 
         # @!attribute [rw] updated_at
         #   Timestamp for when the alert was last updated
-        #   @return [String]
-        required :updated_at, String
+        #   @return [DateTime]
+        required :updated_at, DateTime
 
         # @!attribute [rw] credit_grant_type_filters
         #   An array of strings, representing a way to filter the credit grant this alert applies to, by looking at the credit_grant_type field on the credit grant. This field is only defined for CreditPercentage and CreditBalance alerts

@@ -49,8 +49,8 @@ module Metronome
         required :value, enum: -> { Metronome::Models::CustomerDetail::CurrentBillableStatus::Value }
 
         # @!attribute [rw] effective_at
-        #   @return [String]
-        optional :effective_at, String
+        #   @return [DateTime]
+        optional :effective_at, DateTime
 
         class Value < Metronome::Enum
           BILLABLE = :billable

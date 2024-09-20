@@ -48,8 +48,8 @@ module Metronome
           class EndingBalance < BaseModel
             # @!attribute [rw] effective_at
             #   the ending_before request parameter (if supplied) or the current billing period's end date
-            #   @return [String]
-            required :effective_at, String
+            #   @return [DateTime]
+            required :effective_at, DateTime
 
             # @!attribute [rw] excluding_pending
             #   the ending balance, including the balance of all grants that have not expired before the effective_at date and deductions that happened before the effective_at date
@@ -65,8 +65,8 @@ module Metronome
           class StartingBalance < BaseModel
             # @!attribute [rw] effective_at
             #   the starting_on request parameter (if supplied) or the first credit grant's effective_at date
-            #   @return [String]
-            required :effective_at, String
+            #   @return [DateTime]
+            required :effective_at, DateTime
 
             # @!attribute [rw] excluding_pending
             #   the starting balance, including all posted grants, deductions, and expirations that happened at or before the effective_at timestamp

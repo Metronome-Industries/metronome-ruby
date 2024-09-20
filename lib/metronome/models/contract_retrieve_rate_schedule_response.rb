@@ -42,12 +42,12 @@ module Metronome
         required :rate_card_id, String
 
         # @!attribute [rw] starting_at
-        #   @return [String]
-        required :starting_at, String
+        #   @return [DateTime]
+        required :starting_at, DateTime
 
         # @!attribute [rw] ending_before
-        #   @return [String]
-        optional :ending_before, String
+        #   @return [DateTime]
+        optional :ending_before, DateTime
 
         # @!attribute [rw] override_rate
         #   @return [Metronome::Models::Rate]

@@ -21,12 +21,12 @@ module Metronome
         required :amount, Float
 
         # @!attribute [rw] ending_before
-        #   @return [String]
-        required :ending_before, String
+        #   @return [DateTime]
+        required :ending_before, DateTime
 
         # @!attribute [rw] starting_at
-        #   @return [String]
-        required :starting_at, String
+        #   @return [DateTime]
+        required :starting_at, DateTime
       end
     end
   end

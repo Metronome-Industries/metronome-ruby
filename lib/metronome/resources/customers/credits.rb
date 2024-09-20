@@ -44,15 +44,15 @@ module Metronome
         # 
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :customer_id
-        # @option params [String] :covering_date Return only credits that have access schedules that "cover" the provided date
+        # @option params [DateTime] :covering_date Return only credits that have access schedules that "cover" the provided date
         # @option params [String] :credit_id
-        # @option params [String] :effective_before Include only credits that have any access before the provided date (exclusive)
+        # @option params [DateTime] :effective_before Include only credits that have any access before the provided date (exclusive)
         # @option params [Boolean] :include_archived Include credits from archived contracts.
         # @option params [Boolean] :include_contract_credits Include credits on the contract level.
         # @option params [Boolean] :include_ledgers Include credit ledgers in the response. Setting this flag may cause the query to
         #   be slower.
         # @option params [String] :next_page The next page token from a previous response.
-        # @option params [String] :starting_at Include only credits that have any access on or after the provided date
+        # @option params [DateTime] :starting_at Include only credits that have any access on or after the provided date
         # 
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
         # 
@@ -69,7 +69,7 @@ module Metronome
         # Update the end date of a credit
         # 
         # @param params [Hash] Attributes to send in this request.
-        # @option params [String] :access_ending_before RFC 3339 timestamp indicating when access to the credit will end and it will no
+        # @option params [DateTime] :access_ending_before RFC 3339 timestamp indicating when access to the credit will end and it will no
         #   longer be possible to draw it down (exclusive).
         # @option params [String] :credit_id ID of the commit to update
         # @option params [String] :customer_id ID of the customer whose credit is to be updated

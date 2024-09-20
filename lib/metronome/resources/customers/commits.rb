@@ -54,14 +54,14 @@ module Metronome
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :customer_id
         # @option params [String] :commit_id
-        # @option params [String] :covering_date Include only commits that have access schedules that "cover" the provided date
-        # @option params [String] :effective_before Include only commits that have any access before the provided date (exclusive)
+        # @option params [DateTime] :covering_date Include only commits that have access schedules that "cover" the provided date
+        # @option params [DateTime] :effective_before Include only commits that have any access before the provided date (exclusive)
         # @option params [Boolean] :include_archived Include commits from archived contracts.
         # @option params [Boolean] :include_contract_commits Include commits on the contract level.
         # @option params [Boolean] :include_ledgers Include commit ledgers in the response. Setting this flag may cause the query to
         #   be slower.
         # @option params [String] :next_page The next page token from a previous response.
-        # @option params [String] :starting_at Include only commits that have any access on or after the provided date
+        # @option params [DateTime] :starting_at Include only commits that have any access on or after the provided date
         # 
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
         # 
@@ -80,10 +80,10 @@ module Metronome
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :commit_id ID of the commit to update. Only supports "PREPAID" commits.
         # @option params [String] :customer_id ID of the customer whose commit is to be updated
-        # @option params [String] :access_ending_before RFC 3339 timestamp indicating when access to the commit will end and it will no
+        # @option params [DateTime] :access_ending_before RFC 3339 timestamp indicating when access to the commit will end and it will no
         #   longer be possible to draw it down (exclusive). If not provided, the access will
         #   not be updated.
-        # @option params [String] :invoices_ending_before RFC 3339 timestamp indicating when the commit will stop being invoiced
+        # @option params [DateTime] :invoices_ending_before RFC 3339 timestamp indicating when the commit will stop being invoiced
         #   (exclusive). If not provided, the invoice schedule will not be updated.
         # 
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.

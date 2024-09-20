@@ -14,7 +14,7 @@ module Metronome
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :rate_card_id ID of the rate card whose named schedule is to be retrieved
         # @option params [String] :schedule_name The identifier for the schedule to be retrieved
-        # @option params [String] :covering_date If provided, at most one schedule segment will be returned (the one that covers
+        # @option params [DateTime] :covering_date If provided, at most one schedule segment will be returned (the one that covers
         #   this date). If not provided, all segments will be returned.
         # 
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
@@ -35,10 +35,10 @@ module Metronome
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :rate_card_id ID of the rate card whose named schedule is to be updated
         # @option params [String] :schedule_name The identifier for the schedule to be updated
-        # @option params [String] :starting_at
+        # @option params [DateTime] :starting_at
         # @option params [Object] :value The value to set for the named schedule. The structure of this object is
         #   specific to the named schedule.
-        # @option params [String] :ending_before
+        # @option params [DateTime] :ending_before
         # 
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
         # 

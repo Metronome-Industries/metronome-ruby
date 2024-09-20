@@ -23,13 +23,13 @@ module Metronome
       # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :customer_id
-      # @option params [String] :starting_at inclusive contract start time
+      # @option params [DateTime] :starting_at inclusive contract start time
       # @option params [BillingProviderConfiguration] :billing_provider_configuration This field's availability is dependent on your client's configuration.
       # @option params [Array<Commit>] :commits
       # @option params [Array<Credit>] :credits
       # @option params [Hash] :custom_fields
       # @option params [Array<Discount>] :discounts This field's availability is dependent on your client's configuration.
-      # @option params [String] :ending_before exclusive contract end time
+      # @option params [DateTime] :ending_before exclusive contract end time
       # @option params [Symbol] :multiplier_override_prioritization Defaults to LOWEST_MULTIPLIER, which applies the greatest discount to list
       #   prices automatically. EXPLICIT prioritization requires specifying priorities for
       #   each multiplier; the one with the lowest priority value will be prioritized
@@ -89,13 +89,13 @@ module Metronome
       # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :customer_id
-      # @option params [String] :covering_date Optional RFC 3339 timestamp. If provided, the response will include only
+      # @option params [DateTime] :covering_date Optional RFC 3339 timestamp. If provided, the response will include only
       #   contracts effective on the provided date. This cannot be provided if the
       #   starting_at filter is provided.
       # @option params [Boolean] :include_archived Include archived contracts in the response
       # @option params [Boolean] :include_ledgers Include commit ledgers in the response. Setting this flag may cause the query to
       #   be slower.
-      # @option params [String] :starting_at Optional RFC 3339 timestamp. If provided, the response will include only
+      # @option params [DateTime] :starting_at Optional RFC 3339 timestamp. If provided, the response will include only
       #   contracts where effective_at is on or after the provided date. This cannot be
       #   provided if the covering_date filter is provided.
       # 
@@ -120,7 +120,7 @@ module Metronome
       # @option params [String] :reason Reason for the manual adjustment. This will be displayed in the ledger.
       # @option params [String] :segment_id ID of the segment to update.
       # @option params [String] :contract_id ID of the contract to update. Leave blank to update a customer level balance.
-      # @option params [String] :timestamp RFC 3339 timestamp indicating when the manual adjustment takes place. If not
+      # @option params [DateTime] :timestamp RFC 3339 timestamp indicating when the manual adjustment takes place. If not
       #   provided, it will default to the start of the segment.
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
@@ -140,7 +140,7 @@ module Metronome
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :contract_id ID of the contract to amend
       # @option params [String] :customer_id ID of the customer whose contract is to be amended
-      # @option params [String] :starting_at inclusive start time for the amendment
+      # @option params [DateTime] :starting_at inclusive start time for the amendment
       # @option params [Array<Commit>] :commits
       # @option params [Array<Credit>] :credits
       # @option params [Hash] :custom_fields
@@ -208,14 +208,14 @@ module Metronome
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :customer_id
       # @option params [String] :id
-      # @option params [String] :covering_date Return only balances that have access schedules that "cover" the provided date
-      # @option params [String] :effective_before Include only balances that have any access before the provided date (exclusive)
+      # @option params [DateTime] :covering_date Return only balances that have access schedules that "cover" the provided date
+      # @option params [DateTime] :effective_before Include only balances that have any access before the provided date (exclusive)
       # @option params [Boolean] :include_archived Include credits from archived contracts.
       # @option params [Boolean] :include_contract_balances Include balances on the contract level.
       # @option params [Boolean] :include_ledgers Include ledgers in the response. Setting this flag may cause the query to be
       #   slower.
       # @option params [String] :next_page The next page token from a previous response.
-      # @option params [String] :starting_at Include only balances that have any access on or after the provided date
+      # @option params [DateTime] :starting_at Include only balances that have any access on or after the provided date
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
@@ -236,7 +236,7 @@ module Metronome
       # @option params [String] :customer_id Body param: ID of the customer for whose contract to get the rate schedule for.
       # @option params [Integer] :limit Query param: Max number of results that should be returned
       # @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
-      # @option params [String] :at Body param: optional timestamp which overlaps with the returned rate schedule
+      # @option params [DateTime] :at Body param: optional timestamp which overlaps with the returned rate schedule
       #   segments. When not specified, the current timestamp will be used.
       # @option params [Array<Selector>] :selectors Body param: List of rate selectors, rates matching ANY of the selectors will be
       #   included in the response. Passing no selectors will result in all rates being
@@ -262,10 +262,10 @@ module Metronome
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :contract_id
       # @option params [String] :customer_id
-      # @option params [String] :issued_at The date the invoice is issued
+      # @option params [DateTime] :issued_at The date the invoice is issued
       # @option params [Array<LineItem>] :line_items Each line requires an amount or both unit_price and quantity.
-      # @option params [String] :netsuite_invoice_header_end The end date of the invoice header in Netsuite
-      # @option params [String] :netsuite_invoice_header_start The start date of the invoice header in Netsuite
+      # @option params [DateTime] :netsuite_invoice_header_end The end date of the invoice header in Netsuite
+      # @option params [DateTime] :netsuite_invoice_header_start The start date of the invoice header in Netsuite
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
@@ -286,7 +286,7 @@ module Metronome
       # @option params [String] :customer_id
       # @option params [String] :group_key
       # @option params [Array<String>] :group_values
-      # @option params [String] :starting_at
+      # @option params [DateTime] :starting_at
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
@@ -305,7 +305,7 @@ module Metronome
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :contract_id ID of the contract to update
       # @option params [String] :customer_id ID of the customer whose contract is to be updated
-      # @option params [String] :ending_before RFC 3339 timestamp indicating when the contract will end (exclusive). If not
+      # @option params [DateTime] :ending_before RFC 3339 timestamp indicating when the contract will end (exclusive). If not
       #   provided, the contract will be updated to be open-ended.
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.

@@ -8,8 +8,8 @@ module Metronome
       required :id, String
 
       # @!attribute [rw] created_at
-      #   @return [String]
-      required :created_at, String
+      #   @return [DateTime]
+      required :created_at, DateTime
 
       # @!attribute [rw] created_by
       #   @return [String]
@@ -60,8 +60,8 @@ module Metronome
           optional :id, String
 
           # @!attribute [rw] created_at
-          #   @return [String]
-          optional :created_at, String
+          #   @return [DateTime]
+          optional :created_at, DateTime
 
           # @!attribute [rw] created_by
           #   @return [String]
@@ -76,8 +76,8 @@ module Metronome
           optional :custom_rate, Hash
 
           # @!attribute [rw] ending_before
-          #   @return [String]
-          optional :ending_before, String
+          #   @return [DateTime]
+          optional :ending_before, DateTime
 
           # @!attribute [rw] entitled
           #   @return [Boolean]
@@ -98,8 +98,8 @@ module Metronome
                    enum: -> { Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Current::RateType }
 
           # @!attribute [rw] starting_at
-          #   @return [String]
-          optional :starting_at, String
+          #   @return [DateTime]
+          optional :starting_at, DateTime
 
           # @!attribute [rw] tiers
           #   @return [Array<Metronome::Models::Tier>]
@@ -120,8 +120,8 @@ module Metronome
           required :id, String
 
           # @!attribute [rw] created_at
-          #   @return [String]
-          required :created_at, String
+          #   @return [DateTime]
+          required :created_at, DateTime
 
           # @!attribute [rw] created_by
           #   @return [String]
@@ -142,8 +142,8 @@ module Metronome
                    enum: -> { Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Update::RateType }
 
           # @!attribute [rw] starting_at
-          #   @return [String]
-          required :starting_at, String
+          #   @return [DateTime]
+          required :starting_at, DateTime
 
           # @!attribute [rw] credit_type
           #   @return [Metronome::Models::CreditType]
@@ -154,8 +154,8 @@ module Metronome
           optional :custom_rate, Hash
 
           # @!attribute [rw] ending_before
-          #   @return [String]
-          optional :ending_before, String
+          #   @return [DateTime]
+          optional :ending_before, DateTime
 
           # @!attribute [rw] is_prorated
           #   @return [Boolean]
@@ -189,12 +189,12 @@ module Metronome
         required :name_, String
 
         # @!attribute [rw] ending_before
-        #   @return [String]
-        optional :ending_before, String
+        #   @return [DateTime]
+        optional :ending_before, DateTime
 
         # @!attribute [rw] starting_at
-        #   @return [String]
-        optional :starting_at, String
+        #   @return [DateTime]
+        optional :starting_at, DateTime
       end
 
       class CreditTypeConversion < BaseModel

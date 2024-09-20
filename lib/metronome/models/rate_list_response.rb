@@ -24,12 +24,12 @@ module Metronome
       required :rate, -> { Metronome::Models::Rate }
 
       # @!attribute [rw] starting_at
-      #   @return [String]
-      required :starting_at, String
+      #   @return [DateTime]
+      required :starting_at, DateTime
 
       # @!attribute [rw] ending_before
-      #   @return [String]
-      optional :ending_before, String
+      #   @return [DateTime]
+      optional :ending_before, DateTime
 
       # @!attribute [rw] pricing_group_values
       #   @return [Hash]
