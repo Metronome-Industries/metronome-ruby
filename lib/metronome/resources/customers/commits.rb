@@ -9,7 +9,7 @@ module Metronome
         end
 
         # Create a new commit at the customer level.
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [AccessSchedule] :access_schedule Schedule for distributing the commit to the customer. For "POSTPAID" commits
         #   only one schedule item is allowed and amount must match invoice_schedule total.
@@ -36,9 +36,9 @@ module Metronome
         # @option params [String] :name displayed on invoices
         # @option params [String] :netsuite_sales_order_id This field's availability is dependent on your client's configuration.
         # @option params [String] :salesforce_opportunity_id This field's availability is dependent on your client's configuration.
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Metronome::Models::CommitCreateResponse]
         def create(params = {}, opts = {})
           req = {}
@@ -50,7 +50,7 @@ module Metronome
         end
 
         # List commits.
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :customer_id
         # @option params [String] :commit_id
@@ -62,9 +62,9 @@ module Metronome
         #   be slower.
         # @option params [String] :next_page The next page token from a previous response.
         # @option params [DateTime] :starting_at Include only commits that have any access on or after the provided date
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Metronome::Models::CommitListResponse]
         def list(params = {}, opts = {})
           req = {}
@@ -76,7 +76,7 @@ module Metronome
         end
 
         # Update the end date of a PREPAID commit
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :commit_id ID of the commit to update. Only supports "PREPAID" commits.
         # @option params [String] :customer_id ID of the customer whose commit is to be updated
@@ -85,9 +85,9 @@ module Metronome
         #   not be updated.
         # @option params [DateTime] :invoices_ending_before RFC 3339 timestamp indicating when the commit will stop being invoiced
         #   (exclusive). If not provided, the invoice schedule will not be updated.
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Metronome::Models::CommitUpdateEndDateResponse]
         def update_end_date(params = {}, opts = {})
           req = {}

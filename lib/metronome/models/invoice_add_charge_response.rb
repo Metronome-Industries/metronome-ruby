@@ -3,7 +3,6 @@
 module Metronome
   module Models
     class InvoiceAddChargeResponse < BaseModel
-
     end
   end
 end

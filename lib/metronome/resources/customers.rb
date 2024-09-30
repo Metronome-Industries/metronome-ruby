@@ -36,7 +36,7 @@ module Metronome
       end
 
       # Create a new customer
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :name This will be truncated to 160 characters if the provided name is longer.
       # @option params [BillingConfig] :billing_config
@@ -44,9 +44,9 @@ module Metronome
       # @option params [String] :external_id (deprecated, use ingest_aliases instead) the first ID (Metronome ID or ingest
       #   alias) that can be used in usage events
       # @option params [Array<String>] :ingest_aliases Aliases that can be used to refer to this customer in usage events
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Metronome::Models::CustomerCreateResponse]
       def create(params = {}, opts = {})
         req = {}
@@ -58,10 +58,10 @@ module Metronome
       end
 
       # Get a customer by Metronome ID.
-      # 
+      #
       # @param customer_id [String]
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Metronome::Models::CustomerRetrieveResponse]
       def retrieve(customer_id, opts = {})
         req = {}
@@ -72,7 +72,7 @@ module Metronome
       end
 
       # List all customers.
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [Array<String>] :customer_ids Filter the customer list by customer_id. Up to 100 ids can be provided.
       # @option params [String] :ingest_alias Filter the customer list by ingest_alias
@@ -81,9 +81,9 @@ module Metronome
       # @option params [Boolean] :only_archived Filter the customer list by only archived customers.
       # @option params [Array<String>] :salesforce_account_ids Filter the customer list by salesforce_account_id. Up to 100 ids can be
       #   provided.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Metronome::CursorPage<Metronome::Models::CustomerDetail>]
       def list(params = {}, opts = {})
         req = {}
@@ -96,12 +96,12 @@ module Metronome
       end
 
       # Archive a customer
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :id
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Metronome::Models::CustomerArchiveResponse]
       def archive(params = {}, opts = {})
         req = {}
@@ -113,17 +113,17 @@ module Metronome
       end
 
       # Get all billable metrics for a given customer.
-      # 
+      #
       # @param customer_id [String]
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [Integer] :limit Max number of results that should be returned
       # @option params [String] :next_page Cursor that indicates where the next page of results should start.
       # @option params [Boolean] :on_current_plan If true, the list of metrics will be filtered to just ones that are on the
       #   customer's current plan
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Metronome::CursorPage<Metronome::Models::CustomerListBillableMetricsResponse>]
       def list_billable_metrics(customer_id, params = {}, opts = {})
         req = {}
@@ -138,17 +138,17 @@ module Metronome
       # Fetch daily pending costs for the specified customer, broken down by credit type
       #   and line items. Note: this is not supported for customers whose plan includes a
       #   UNIQUE-type billable metric.
-      # 
+      #
       # @param customer_id [String]
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [DateTime] :ending_before RFC 3339 timestamp (exclusive)
       # @option params [DateTime] :starting_on RFC 3339 timestamp (inclusive)
       # @option params [Integer] :limit Max number of results that should be returned
       # @option params [String] :next_page Cursor that indicates where the next page of results should start.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Metronome::CursorPage<Metronome::Models::CustomerListCostsResponse>]
       def list_costs(customer_id, params = {}, opts = {})
         req = {}
@@ -163,14 +163,14 @@ module Metronome
       # Sets the ingest aliases for a customer. Ingest aliases can be used in the
       #   `customer_id` field when sending usage events to Metronome. This call is
       #   idempotent. It fully replaces the set of ingest aliases for the given customer.
-      # 
+      #
       # @param customer_id [String]
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [Array<String>] :ingest_aliases
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [nil]
       def set_ingest_aliases(customer_id, params = {}, opts = {})
         req = {}
@@ -182,15 +182,15 @@ module Metronome
       end
 
       # Updates the specified customer's name.
-      # 
+      #
       # @param customer_id [String]
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :name The new name for the customer. This will be truncated to 160 characters if the
       #   provided name is longer.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Metronome::Models::CustomerSetNameResponse]
       def set_name(customer_id, params = {}, opts = {})
         req = {}
@@ -202,16 +202,16 @@ module Metronome
       end
 
       # Updates the specified customer's config.
-      # 
+      #
       # @param customer_id [String]
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [Boolean] :leave_stripe_invoices_in_draft Leave in draft or set to auto-advance on invoices sent to Stripe. Falls back to
       #   the client-level config if unset, which defaults to true if unset.
       # @option params [String] :salesforce_account_id The Salesforce account ID for the customer
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [nil]
       def update_config(customer_id, params = {}, opts = {})
         req = {}

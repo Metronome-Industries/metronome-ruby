@@ -8,7 +8,7 @@ class Metronome::Test::Resources::ServicesTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @metronome.services.list 
+    response = @metronome.services.list
     assert_kind_of(Metronome::Models::ServiceListResponse, response)
   end
 end

@@ -9,15 +9,15 @@ module Metronome
         end
 
         # List the given customer's plans in reverse-chronological order.
-        # 
+        #
         # @param customer_id [String]
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [Integer] :limit Max number of results that should be returned
         # @option params [String] :next_page Cursor that indicates where the next page of results should start.
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Metronome::CursorPage<Metronome::Models::PlanListResponse>]
         def list(customer_id, params = {}, opts = {})
           req = {}
@@ -32,9 +32,9 @@ module Metronome
         # Associate an existing customer with a plan for a specified date range. See the
         #   [price adjustments documentation](https://docs.metronome.com/pricing/managing-plans/#price-adjustments)
         #   for details on the price adjustments.
-        # 
+        #
         # @param customer_id [String]
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :plan_id
         # @option params [DateTime] :starting_on RFC 3339 timestamp for when the plan becomes active for this customer. Must be
@@ -52,9 +52,9 @@ module Metronome
         # @option params [TrialSpec] :trial_spec A custom trial can be set for the customer's plan. See the
         #   [trial configuration documentation](https://docs.metronome.com/provisioning/configure-trials/)
         #   for details.
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Metronome::Models::PlanAddResponse]
         def add(customer_id, params = {}, opts = {})
           req = {}
@@ -66,11 +66,11 @@ module Metronome
         end
 
         # Change the end date of a customer's plan.
-        # 
+        #
         # @param customer_id [String]
-        # 
+        #
         # @param customer_plan_id [String] the ID of a customer-plan relationship
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [DateTime] :ending_before RFC 3339 timestamp for when the plan ends (exclusive) for this customer. Must be
         #   at 0:00 UTC (midnight). If not provided, the plan end date will be cleared.
@@ -79,9 +79,9 @@ module Metronome
         # @option params [Boolean] :void_stripe_invoices Only applicable when void_invoices is set to true. If true, for every invoice
         #   that is voided we will also attempt to void/delete the stripe invoice (if any).
         #   Stripe invoices will be voided if finalized or deleted if still in draft state.
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Metronome::Models::PlanEndResponse]
         def end_(customer_id, customer_plan_id, params = {}, opts = {})
           req = {}
@@ -95,17 +95,17 @@ module Metronome
         # Lists a customer plans adjustments. See the
         #   [price adjustments documentation](https://docs.metronome.com/pricing/managing-plans/#price-adjustments)
         #   for details.
-        # 
+        #
         # @param customer_id [String]
-        # 
+        #
         # @param customer_plan_id [String] the ID of a customer-plan relationship
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [Integer] :limit Max number of results that should be returned
         # @option params [String] :next_page Cursor that indicates where the next page of results should start.
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Metronome::CursorPage<Metronome::Models::PlanListPriceAdjustmentsResponse>]
         def list_price_adjustments(customer_id, customer_plan_id, params = {}, opts = {})
           req = {}

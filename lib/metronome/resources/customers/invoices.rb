@@ -9,16 +9,16 @@ module Metronome
         end
 
         # Fetch a specific invoice for a given customer.
-        # 
+        #
         # @param customer_id [String]
-        # 
+        #
         # @param invoice_id [String]
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [Boolean] :skip_zero_qty_line_items If set, all zero quantity line items will be filtered out of the response
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Metronome::Models::InvoiceRetrieveResponse]
         def retrieve(customer_id, invoice_id, params = {}, opts = {})
           req = {}
@@ -31,9 +31,9 @@ module Metronome
 
         # List all invoices for a given customer, optionally filtered by status, date
         #   range, and/or credit type.
-        # 
+        #
         # @param customer_id [String]
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :credit_type_id Only return invoices for the specified credit type
         # @option params [DateTime] :ending_before RFC 3339 timestamp (exclusive). Invoices will only be returned for billing
@@ -46,9 +46,9 @@ module Metronome
         # @option params [DateTime] :starting_on RFC 3339 timestamp (inclusive). Invoices will only be returned for billing
         #   periods that start at or after this time.
         # @option params [String] :status Invoice status, e.g. DRAFT, FINALIZED, or VOID
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Metronome::CursorPage<Metronome::Models::Invoice>]
         def list(customer_id, params = {}, opts = {})
           req = {}
@@ -61,9 +61,9 @@ module Metronome
         end
 
         # Add a one time charge to the specified invoice
-        # 
+        #
         # @param customer_id [String]
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :charge_id The Metronome ID of the charge to add to the invoice. Note that the charge must
         #   be on a product that is not on the current plan, and the product must have only
@@ -74,9 +74,9 @@ module Metronome
         # @option params [Float] :price The price of the charge. This price will match the currency on the invoice, e.g.
         #   USD cents.
         # @option params [Float] :quantity
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Metronome::Models::InvoiceAddChargeResponse]
         def add_charge(customer_id, params = {}, opts = {})
           req = {}
@@ -89,9 +89,9 @@ module Metronome
 
         # List daily or hourly breakdown invoices for a given customer, optionally
         #   filtered by status, date range, and/or credit type.
-        # 
+        #
         # @param customer_id [String]
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [DateTime] :ending_before RFC 3339 timestamp. Breakdowns will only be returned for time windows that end
         #   on or before this time.
@@ -108,9 +108,9 @@ module Metronome
         #   date_asc.
         # @option params [String] :status Invoice status, e.g. DRAFT or FINALIZED
         # @option params [Symbol] :window_size The granularity of the breakdowns to return. Defaults to day.
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Metronome::CursorPage<Metronome::Models::InvoiceListBreakdownsResponse>]
         def list_breakdowns(customer_id, params = {}, opts = {})
           req = {}

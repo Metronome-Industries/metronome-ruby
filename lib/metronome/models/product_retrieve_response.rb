@@ -27,7 +27,12 @@ module Metronome
 
         # @!attribute [rw] updates
         #   @return [Array<Metronome::Models::ProductRetrieveResponse::Data::Update>]
-        required :updates, Metronome::ArrayOf.new(-> { Metronome::Models::ProductRetrieveResponse::Data::Update })
+        required :updates,
+                 Metronome::ArrayOf.new(
+                   lambda {
+                     Metronome::Models::ProductRetrieveResponse::Data::Update
+                   }
+                 )
 
         # @!attribute [rw] archived_at
         #   @return [DateTime]

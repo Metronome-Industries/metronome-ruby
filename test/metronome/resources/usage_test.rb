@@ -16,14 +16,27 @@ class Metronome::Test::Resources::UsageTest < Test::Unit::TestCase
 
   def test_ingest_required_params
     response = @metronome.usage.ingest(
-      {usage: [{"customer_id" => "team@example.com", "event_type" => "heartbeat", "timestamp" => "2021-01-01T00:00:00Z", "transaction_id" => "2021-01-01T00:00:00Z_cluster42"}]}
+      {
+        usage: [
+          {
+            "customer_id" => "team@example.com",
+            "event_type" => "heartbeat",
+            "timestamp" => "2021-01-01T00:00:00Z",
+            "transaction_id" => "2021-01-01T00:00:00Z_cluster42"
+          }
+        ]
+      }
     )
     assert_nil(response)
   end
 
   def test_list_with_groups_required_params
     response = @metronome.usage.list_with_groups(
-      {billable_metric_id: "222796fd-d29c-429e-89b2-549fabda4ed6", customer_id: "04ca7e72-4229-4a6e-ab11-9f7376fccbcb", window_size: "HOUR"}
+      {
+        billable_metric_id: "222796fd-d29c-429e-89b2-549fabda4ed6",
+        customer_id: "04ca7e72-4229-4a6e-ab11-9f7376fccbcb",
+        window_size: "HOUR"
+      }
     )
     assert_kind_of(Metronome::CursorPage, response)
   end

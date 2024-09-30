@@ -17,12 +17,18 @@ class Metronome::Test::Resources::BillingConfigTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @metronome.customers.billing_config.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", "aws_marketplace")
+    response = @metronome.customers.billing_config.retrieve(
+      "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+      "aws_marketplace"
+    )
     assert_kind_of(Metronome::Models::BillingConfigRetrieveResponse, response)
   end
 
   def test_delete
-    response = @metronome.customers.billing_config.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", "aws_marketplace")
+    response = @metronome.customers.billing_config.delete(
+      "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+      "aws_marketplace"
+    )
     assert_nil(response)
   end
 end

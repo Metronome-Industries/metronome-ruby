@@ -12,7 +12,7 @@ module Metronome
     attr_accessor :client, :req, :opts
 
     # @!visibility private
-    def initialize(model, raw_data, response, client, req, opts)
+    def initialize(model, raw_data, _response, client, req, opts)
       self.next_page = raw_data[:next_page]
       self.data = (raw_data[:data] || []).map { |e| model.convert(e) }
       self.client = client

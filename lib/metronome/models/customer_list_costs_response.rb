@@ -23,7 +23,11 @@ module Metronome
         # @!attribute [rw] line_item_breakdown
         #   @return [Array<Metronome::Models::CustomerListCostsResponse::CreditTypes::CreditType::LineItemBreakdown>]
         optional :line_item_breakdown,
-                 Metronome::ArrayOf.new(-> { Metronome::Models::CustomerListCostsResponse::CreditTypes::CreditType::LineItemBreakdown })
+                 Metronome::ArrayOf.new(
+                   lambda {
+                     Metronome::Models::CustomerListCostsResponse::CreditTypes::CreditType::LineItemBreakdown
+                   }
+                 )
 
         # @!attribute [rw] name_
         #   @return [String]

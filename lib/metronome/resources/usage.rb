@@ -9,7 +9,7 @@ module Metronome
 
       # Fetch aggregated usage data for multiple customers and billable-metrics, broken
       #   into intervals of the specified length.
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [DateTime] :ending_before Body param:
       # @option params [DateTime] :starting_on Body param:
@@ -22,9 +22,9 @@ module Metronome
       #   billable metrics will be returned.
       # @option params [Array<String>] :customer_ids Body param: A list of Metronome customer IDs to fetch usage for. If absent,
       #   usage for all customers will be returned.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Metronome::Models::UsageListResponse]
       def list(params = {}, opts = {})
         req = {}
@@ -42,12 +42,12 @@ module Metronome
       #   supported with a `Content-Encoding: gzip` header. See
       #   [Getting usage into Metronome](https://docs.metronome.com/getting-usage-data-into-metronome/overview)
       #   to learn more about usage events.
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [Array<Usage>] :usage
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [nil]
       def ingest(params = {}, opts = {})
         req = {}
@@ -60,7 +60,7 @@ module Metronome
 
       # Fetch aggregated usage data for the specified customer, billable-metric, and
       #   optional group, broken into intervals of the specified length.
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :billable_metric_id Body param:
       # @option params [String] :customer_id Body param:
@@ -76,9 +76,9 @@ module Metronome
       # @option params [DateTime] :ending_before Body param:
       # @option params [GroupBy] :group_by Body param:
       # @option params [DateTime] :starting_on Body param:
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Metronome::CursorPage<Metronome::Models::UsageListWithGroupsResponse>]
       def list_with_groups(params = {}, opts = {})
         req = {}

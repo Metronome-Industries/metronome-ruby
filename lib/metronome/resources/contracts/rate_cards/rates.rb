@@ -10,7 +10,7 @@ module Metronome
           end
 
           # Get rate card rates for a specific time.
-          # 
+          #
           # @param params [Hash] Attributes to send in this request.
           # @option params [DateTime] :at Body param: inclusive starting point for the rates schedule
           # @option params [String] :rate_card_id Body param: ID of the rate card to get the schedule for
@@ -19,9 +19,9 @@ module Metronome
           # @option params [Array<Selector>] :selectors Body param: List of rate selectors, rates matching ANY of the selector will be
           #   included in the response Passing no selectors will result in all rates being
           #   returned.
-          # 
+          #
           # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-          # 
+          #
           # @return [Metronome::CursorPage<Metronome::Models::RateListResponse>]
           def list(params = {}, opts = {})
             req = {}
@@ -36,7 +36,7 @@ module Metronome
           end
 
           # Add a new rate
-          # 
+          #
           # @param params [Hash] Attributes to send in this request.
           # @option params [Boolean] :entitled
           # @option params [String] :product_id ID of the product to add a rate for
@@ -60,9 +60,9 @@ module Metronome
           # @option params [Boolean] :use_list_prices Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
           #   using list prices rather than the standard rates for this product on the
           #   contract.
-          # 
+          #
           # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-          # 
+          #
           # @return [Metronome::Models::RateAddResponse]
           def add(params = {}, opts = {})
             req = {}
@@ -74,13 +74,13 @@ module Metronome
           end
 
           # Add new rates
-          # 
+          #
           # @param params [Hash] Attributes to send in this request.
           # @option params [String] :rate_card_id
           # @option params [Array<Rate>] :rates
-          # 
+          #
           # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-          # 
+          #
           # @return [Metronome::Models::RateAddManyResponse]
           def add_many(params = {}, opts = {})
             req = {}

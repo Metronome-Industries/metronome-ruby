@@ -8,7 +8,7 @@ module Metronome
       end
 
       # Create a new credit grant
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :customer_id the Metronome ID of the customer
       # @option params [DateTime] :expires_at The credit grant will only apply to billing periods that end before this
@@ -33,9 +33,9 @@ module Metronome
       # @option params [String] :uniqueness_key Prevents the creation of duplicates. If a request to create a record is made
       #   with a previously used uniqueness key, a new record will not be created and the
       #   request will fail with a 409 error.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Metronome::Models::CreditGrantCreateResponse]
       def create(params = {}, opts = {})
         req = {}
@@ -47,7 +47,7 @@ module Metronome
       end
 
       # List credit grants. This list does not included voided grants.
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [Integer] :limit Query param: Max number of results that should be returned
       # @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
@@ -60,9 +60,9 @@ module Metronome
       # @option params [DateTime] :effective_before Body param: Only return credit grants that are effective before this timestamp
       #   (exclusive).
       # @option params [DateTime] :not_expiring_before Body param: Only return credit grants that expire at or after this timestamp.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Metronome::CursorPage<Metronome::Models::CreditGrantListResponse>]
       def list(params = {}, opts = {})
         req = {}
@@ -77,15 +77,15 @@ module Metronome
       end
 
       # Edit an existing credit grant
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :id the ID of the credit grant
       # @option params [String] :credit_grant_type the updated credit grant type
       # @option params [DateTime] :expires_at the updated expiration date for the credit grant
       # @option params [String] :name the updated name for the credit grant
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Metronome::Models::CreditGrantEditResponse]
       def edit(params = {}, opts = {})
         req = {}
@@ -97,13 +97,13 @@ module Metronome
       end
 
       # List all pricing units (known in the API by the legacy term "credit types").
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [Integer] :limit Max number of results that should be returned
       # @option params [String] :next_page Cursor that indicates where the next page of results should start.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Metronome::CursorPage<Metronome::Models::CreditGrantListCreditTypesResponse>]
       def list_credit_types(params = {}, opts = {})
         req = {}
@@ -118,7 +118,7 @@ module Metronome
       # Fetches a list of credit ledger entries. Returns lists of ledgers per customer.
       #   Ledger entries are returned in chronological order. Ledger entries associated
       #   with voided credit grants are not included.
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
       # @option params [Array<String>] :credit_type_ids Body param: A list of Metronome credit type IDs to fetch ledger entries for. If
@@ -131,9 +131,9 @@ module Metronome
       #   billing period will be returned.
       # @option params [DateTime] :starting_on Body param: If supplied, only ledger entries effective at or after this time
       #   will be returned.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Metronome::Models::CreditGrantListEntriesResponse]
       def list_entries(params = {}, opts = {})
         req = {}
@@ -147,14 +147,14 @@ module Metronome
       end
 
       # Void a credit grant
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :id
       # @option params [Boolean] :release_uniqueness_key If true, resets the uniqueness key on this grant so it can be re-used
       # @option params [Boolean] :void_credit_purchase_invoice If true, void the purchase invoice associated with the grant
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Metronome::Models::CreditGrantVoidResponse]
       def void(params = {}, opts = {})
         req = {}

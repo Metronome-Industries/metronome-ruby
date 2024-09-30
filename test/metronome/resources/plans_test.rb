@@ -8,7 +8,7 @@ class Metronome::Test::Resources::PlansTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @metronome.plans.list 
+    response = @metronome.plans.list
     assert_kind_of(Metronome::CursorPage, response)
   end
 

@@ -21,7 +21,7 @@ module Metronome
         end
 
         # Create a new rate card
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :name Used only in UI/API. It is not exposed to end customers.
         # @option params [Array<Alias>] :aliases Reference this alias when creating a contract. If the same alias is assigned to
@@ -32,9 +32,9 @@ module Metronome
         # @option params [String] :description
         # @option params [String] :fiat_credit_type_id "The Metronome ID of the credit type to associate with the rate card, defaults
         #   to USD (cents) if not passed."
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Metronome::Models::RateCardCreateResponse]
         def create(params = {}, opts = {})
           req = {}
@@ -47,12 +47,12 @@ module Metronome
 
         # Get a specific rate card NOTE: Use `/contract-pricing/rate-cards/getRates` to
         #   retrieve rate card rates.
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :id
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Metronome::Models::RateCardRetrieveResponse]
         def retrieve(params = {}, opts = {})
           req = {}
@@ -64,7 +64,7 @@ module Metronome
         end
 
         # Update a rate card
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :rate_card_id ID of the rate card to update
         # @option params [Array<Alias>] :aliases Reference this alias when creating a contract. If the same alias is assigned to
@@ -73,9 +73,9 @@ module Metronome
         # @option params [Hash] :custom_fields
         # @option params [String] :description
         # @option params [String] :name Used only in UI/API. It is not exposed to end customers.
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Metronome::Models::RateCardUpdateResponse]
         def update(params = {}, opts = {})
           req = {}
@@ -88,14 +88,14 @@ module Metronome
 
         # List rate cards NOTE: Use `/contract-pricing/rate-cards/getRates` to retrieve
         #   rate card rates.
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [Object] :body Body param:
         # @option params [Integer] :limit Query param: Max number of results that should be returned
         # @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Metronome::CursorPage<Metronome::Models::RateCardListResponse>]
         def list(params = {}, opts = {})
           req = {}
@@ -109,7 +109,7 @@ module Metronome
         end
 
         # Get a specific rate schedule including all rate card entries
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :rate_card_id Body param: ID of the rate card to get the schedule for
         # @option params [DateTime] :starting_at Body param: inclusive starting point for the rates schedule
@@ -120,9 +120,9 @@ module Metronome
         # @option params [Array<Selector>] :selectors Body param: List of rate selectors, rates matching ANY of the selector will be
         #   included in the response Passing no selectors will result in all rates being
         #   returned.
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Metronome::Models::RateCardRetrieveRateScheduleResponse]
         def retrieve_rate_schedule(params = {}, opts = {})
           req = {}

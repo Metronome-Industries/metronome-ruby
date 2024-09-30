@@ -51,7 +51,11 @@ class MetronomeTest < Test::Unit::TestCase
   end
 
   def test_client_given_request_default_retry_attempts
-    metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token", max_retries: 3)
+    metronome = Metronome::Client.new(
+      base_url: "http://localhost:4010",
+      bearer_token: "My Bearer Token",
+      max_retries: 3
+    )
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     metronome.requester = requester
     assert_raise(Metronome::HTTP::InternalServerError) do
@@ -76,7 +80,11 @@ class MetronomeTest < Test::Unit::TestCase
   end
 
   def test_client_given_request_given_retry_attempts
-    metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token", max_retries: 3)
+    metronome = Metronome::Client.new(
+      base_url: "http://localhost:4010",
+      bearer_token: "My Bearer Token",
+      max_retries: 3
+    )
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     metronome.requester = requester
     assert_raise(Metronome::HTTP::InternalServerError) do
@@ -89,7 +97,11 @@ class MetronomeTest < Test::Unit::TestCase
   end
 
   def test_client_retry_after_seconds
-    metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token", max_retries: 1)
+    metronome = Metronome::Client.new(
+      base_url: "http://localhost:4010",
+      bearer_token: "My Bearer Token",
+      max_retries: 1
+    )
     requester = MockRequester.new(500, {}, {"retry-after" => "1.3", "x-stainless-mock-sleep" => "true"})
     metronome.requester = requester
     assert_raise(Metronome::HTTP::InternalServerError) do
@@ -102,8 +114,20 @@ class MetronomeTest < Test::Unit::TestCase
   end
 
   def test_client_retry_after_date
-    metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token", max_retries: 1)
-    requester = MockRequester.new(500, {}, {"retry-after" => (Time.now + 2).httpdate, "x-stainless-mock-sleep" => "true", "x-stainless-mock-sleep-base" => (Time.now).httpdate})
+    metronome = Metronome::Client.new(
+      base_url: "http://localhost:4010",
+      bearer_token: "My Bearer Token",
+      max_retries: 1
+    )
+    requester = MockRequester.new(
+      500,
+      {},
+      {
+        "retry-after" => (Time.now + 2).httpdate,
+        "x-stainless-mock-sleep" => "true",
+        "x-stainless-mock-sleep-base" => Time.now.httpdate
+      }
+    )
     metronome.requester = requester
     assert_raise(Metronome::HTTP::InternalServerError) do
       metronome.contracts.create(
@@ -115,7 +139,11 @@ class MetronomeTest < Test::Unit::TestCase
   end
 
   def test_client_retry_after_ms
-    metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token", max_retries: 1)
+    metronome = Metronome::Client.new(
+      base_url: "http://localhost:4010",
+      bearer_token: "My Bearer Token",
+      max_retries: 1
+    )
     requester = MockRequester.new(500, {}, {"retry-after-ms" => "1300", "x-stainless-mock-sleep" => "true"})
     metronome.requester = requester
     assert_raise(Metronome::HTTP::InternalServerError) do
@@ -140,7 +168,10 @@ class MetronomeTest < Test::Unit::TestCase
     assert_equal(requester.attempts[1][:path], "/redirected")
     assert_equal(requester.attempts[1][:method], requester.attempts[0][:method])
     assert_equal(requester.attempts[1][:body], requester.attempts[0][:body])
-    assert_equal(requester.attempts[1][:headers]["Content-Type"], requester.attempts[0][:headers]["Content-Type"])
+    assert_equal(
+      requester.attempts[1][:headers]["Content-Type"],
+      requester.attempts[0][:headers]["Content-Type"]
+    )
   end
 
   def test_client_redirect_303
@@ -169,7 +200,10 @@ class MetronomeTest < Test::Unit::TestCase
         extra_headers: {"Authorization" => "Bearer xyz"}
       )
     end
-    assert_equal(requester.attempts[1][:headers]["Authorization"], requester.attempts[0][:headers]["Authorization"])
+    assert_equal(
+      requester.attempts[1][:headers]["Authorization"],
+      requester.attempts[0][:headers]["Authorization"]
+    )
   end
 
   def test_client_redirect_auth_strip_cross_origin

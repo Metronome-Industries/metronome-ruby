@@ -8,7 +8,7 @@ module Metronome
       end
 
       # Create a new alert
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [Symbol] :alert_type Type of the alert
       # @option params [String] :name Name of the alert
@@ -36,9 +36,9 @@ module Metronome
       # @option params [String] :uniqueness_key Prevents the creation of duplicates. If a request to create a record is made
       #   with a previously used uniqueness key, a new record will not be created and the
       #   request will fail with a 409 error.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Metronome::Models::AlertCreateResponse]
       def create(params = {}, opts = {})
         req = {}
@@ -50,12 +50,12 @@ module Metronome
       end
 
       # Archive an existing alert
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :id
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Metronome::Models::AlertArchiveResponse]
       def archive(params = {}, opts = {})
         req = {}

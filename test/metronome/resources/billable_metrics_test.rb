@@ -18,7 +18,7 @@ class Metronome::Test::Resources::BillableMetricsTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @metronome.billable_metrics.list 
+    response = @metronome.billable_metrics.list
     assert_kind_of(Metronome::CursorPage, response)
   end
 
