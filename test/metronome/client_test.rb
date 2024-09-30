@@ -33,7 +33,8 @@ class MetronomeTest < Test::Unit::TestCase
     end
 
     def execute(req)
-      attempts.push(req)
+      # Deep copy the request because it is mutated on each retry.
+      attempts.push(Marshal.load(Marshal.dump(req)))
       MockResponse.new(response_code, response_data, response_headers)
     end
   end
@@ -153,6 +154,53 @@ class MetronomeTest < Test::Unit::TestCase
     end
     assert_equal(2, requester.attempts.length)
     assert_equal(requester.attempts.last[:headers]["X-Stainless-Mock-Slept"], 1.3)
+  end
+
+  def test_retry_count_header
+    metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token")
+    requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
+    metronome.requester = requester
+
+    assert_raise(Metronome::HTTP::InternalServerError) do
+      metronome.contracts.create(
+        {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"}
+      )
+    end
+
+    retry_count_headers = requester.attempts.map { |a| a[:headers]["X-Stainless-Retry-Count"] }
+    assert_equal(%w[0 1 2], retry_count_headers)
+  end
+
+  def test_omit_retry_count_header
+    metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token")
+    requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
+    metronome.requester = requester
+
+    assert_raise(Metronome::HTTP::InternalServerError) do
+      metronome.contracts.create(
+        {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"},
+        extra_headers: {"X-Stainless-Retry-Count" => nil}
+      )
+    end
+
+    retry_count_headers = requester.attempts.map { |a| a[:headers]["X-Stainless-Retry-Count"] }
+    assert_equal([nil, nil, nil], retry_count_headers)
+  end
+
+  def test_overwrite_retry_count_header
+    metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token")
+    requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
+    metronome.requester = requester
+
+    assert_raise(Metronome::HTTP::InternalServerError) do
+      metronome.contracts.create(
+        {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"},
+        extra_headers: {"X-Stainless-Retry-Count" => "42"}
+      )
+    end
+
+    retry_count_headers = requester.attempts.map { |a| a[:headers]["X-Stainless-Retry-Count"] }
+    assert_equal(%w[42 42 42], retry_count_headers)
   end
 
   def test_client_redirect_307
