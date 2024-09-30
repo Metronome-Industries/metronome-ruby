@@ -9,7 +9,7 @@ module Metronome
         end
 
         # Create a new product
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :name displayed on invoices
         # @option params [Symbol] :type
@@ -37,9 +37,9 @@ module Metronome
         #   the method is "round up" and the decimal places is 0, then the quantity will be
         #   rounded up to the nearest integer.
         # @option params [Array<String>] :tags
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Metronome::Models::ProductCreateResponse]
         def create(params = {}, opts = {})
           req = {}
@@ -51,12 +51,12 @@ module Metronome
         end
 
         # Get a specific product
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :id
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Metronome::Models::ProductRetrieveResponse]
         def retrieve(params = {}, opts = {})
           req = {}
@@ -68,7 +68,7 @@ module Metronome
         end
 
         # Update a product
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :product_id ID of the product to update
         # @option params [DateTime] :starting_at Timestamp representing when the update should go into effect. It must be on an
@@ -104,9 +104,9 @@ module Metronome
         #   the method is "round up" and the decimal places is 0, then the quantity will be
         #   rounded up to the nearest integer.
         # @option params [Array<String>] :tags If not provided, defaults to product's current tags
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Metronome::Models::ProductUpdateResponse]
         def update(params = {}, opts = {})
           req = {}
@@ -118,14 +118,14 @@ module Metronome
         end
 
         # List products
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [Integer] :limit Query param: Max number of results that should be returned
         # @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
         # @option params [Symbol] :archive_filter Body param: Filter options for the product list
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Metronome::CursorPage<Metronome::Models::ProductListResponse>]
         def list(params = {}, opts = {})
           req = {}
@@ -140,12 +140,12 @@ module Metronome
         end
 
         # Archive a product
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :product_id ID of the product to be archived
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Metronome::Models::ProductArchiveResponse]
         def archive(params = {}, opts = {})
           req = {}

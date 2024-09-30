@@ -9,7 +9,7 @@ module Metronome
         end
 
         # Create a new credit at the customer level.
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [AccessSchedule] :access_schedule Schedule for distributing the credit to the customer.
         # @option params [String] :customer_id
@@ -27,9 +27,9 @@ module Metronome
         # @option params [String] :name displayed on invoices
         # @option params [String] :netsuite_sales_order_id This field's availability is dependent on your client's configuration.
         # @option params [String] :salesforce_opportunity_id This field's availability is dependent on your client's configuration.
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Metronome::Models::CreditCreateResponse]
         def create(params = {}, opts = {})
           req = {}
@@ -41,7 +41,7 @@ module Metronome
         end
 
         # List credits.
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :customer_id
         # @option params [DateTime] :covering_date Return only credits that have access schedules that "cover" the provided date
@@ -53,9 +53,9 @@ module Metronome
         #   be slower.
         # @option params [String] :next_page The next page token from a previous response.
         # @option params [DateTime] :starting_at Include only credits that have any access on or after the provided date
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Metronome::Models::CreditListResponse]
         def list(params = {}, opts = {})
           req = {}
@@ -67,15 +67,15 @@ module Metronome
         end
 
         # Update the end date of a credit
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [DateTime] :access_ending_before RFC 3339 timestamp indicating when access to the credit will end and it will no
         #   longer be possible to draw it down (exclusive).
         # @option params [String] :credit_id ID of the commit to update
         # @option params [String] :customer_id ID of the customer whose credit is to be updated
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Metronome::Models::CreditUpdateEndDateResponse]
         def update_end_date(params = {}, opts = {})
           req = {}

@@ -47,12 +47,19 @@ module Metronome
       class RateCardEntry < BaseModel
         # @!attribute [rw] current
         #   @return [Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Current]
-        optional :current, -> { Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Current }
+        optional :current,
+                 lambda {
+                   Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Current
+                 }
 
         # @!attribute [rw] updates
         #   @return [Array<Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Update>]
         optional :updates,
-                 Metronome::ArrayOf.new(-> { Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Update })
+                 Metronome::ArrayOf.new(
+                   lambda {
+                     Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Update
+                   }
+                 )
 
         class Current < BaseModel
           # @!attribute [rw] id
@@ -95,7 +102,9 @@ module Metronome
           #   One of the constants defined in {Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Current::RateType}
           #   @return [Symbol]
           optional :rate_type,
-                   enum: -> { Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Current::RateType }
+                   enum: lambda {
+                     Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Current::RateType
+                   }
 
           # @!attribute [rw] starting_at
           #   @return [DateTime]
@@ -139,7 +148,9 @@ module Metronome
           #   One of the constants defined in {Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Update::RateType}
           #   @return [Symbol]
           required :rate_type,
-                   enum: -> { Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Update::RateType }
+                   enum: lambda {
+                     Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Update::RateType
+                   }
 
           # @!attribute [rw] starting_at
           #   @return [DateTime]

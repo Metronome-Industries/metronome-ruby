@@ -96,7 +96,11 @@ module Metronome
           #   This field's availability is dependent on your client's configuration.
           #   @return [Array<Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty>]
           optional :reseller_royalties,
-                   Metronome::ArrayOf.new(-> { Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty })
+                   Metronome::ArrayOf.new(
+                     lambda {
+                       Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty
+                     }
+                   )
 
           # @!attribute [rw] salesforce_opportunity_id
           #   This field's availability is dependent on your client's configuration.
@@ -108,7 +112,9 @@ module Metronome
             #   One of the constants defined in {Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty::ResellerType}
             #   @return [Symbol]
             required :reseller_type,
-                     enum: -> { Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty::ResellerType }
+                     enum: lambda {
+                       Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty::ResellerType
+                     }
 
             # @!attribute [rw] aws_account_number
             #   @return [String]
@@ -164,13 +170,17 @@ module Metronome
           #   One of the constants defined in {Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::BillingProvider}
           #   @return [Symbol]
           required :billing_provider,
-                   enum: -> { Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::BillingProvider }
+                   enum: lambda {
+                     Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::BillingProvider
+                   }
 
           # @!attribute [rw] delivery_method
           #   One of the constants defined in {Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod}
           #   @return [Symbol]
           required :delivery_method,
-                   enum: -> { Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod }
+                   enum: lambda {
+                     Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod
+                   }
 
           class BillingProvider < Metronome::Enum
             AWS_MARKETPLACE = :aws_marketplace

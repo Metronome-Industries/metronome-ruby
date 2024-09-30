@@ -8,7 +8,7 @@ class Metronome::Test::Resources::AuditLogsTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @metronome.audit_logs.list 
+    response = @metronome.audit_logs.list
     assert_kind_of(Metronome::CursorPage, response)
   end
 end

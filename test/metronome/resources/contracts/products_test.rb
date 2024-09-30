@@ -25,7 +25,7 @@ class Metronome::Test::Resources::ProductsTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @metronome.contracts.products.list 
+    response = @metronome.contracts.products.list
     assert_kind_of(Metronome::CursorPage, response)
   end
 

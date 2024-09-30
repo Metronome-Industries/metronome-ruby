@@ -122,6 +122,7 @@ module Metronome
         class Frequency < Metronome::Enum
           MONTHLY = :MONTHLY
           QUARTERLY = :QUARTERLY
+          ANNUAL = :ANNUAL
         end
       end
 
@@ -200,7 +201,11 @@ module Metronome
         # @!attribute [rw] updates
         #   @return [Array<Metronome::Models::ContractWithoutAmendments::UsageFilter::Update>]
         required :updates,
-                 Metronome::ArrayOf.new(-> { Metronome::Models::ContractWithoutAmendments::UsageFilter::Update })
+                 Metronome::ArrayOf.new(
+                   lambda {
+                     Metronome::Models::ContractWithoutAmendments::UsageFilter::Update
+                   }
+                 )
 
         class Update < BaseModel
           # @!attribute [rw] group_key

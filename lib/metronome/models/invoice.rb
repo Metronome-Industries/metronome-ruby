@@ -275,7 +275,12 @@ module Metronome
 
         # @!attribute [rw] sub_line_items
         #   @return [Array<Metronome::Models::Invoice::LineItem::SubLineItem>]
-        optional :sub_line_items, Metronome::ArrayOf.new(-> { Metronome::Models::Invoice::LineItem::SubLineItem })
+        optional :sub_line_items,
+                 Metronome::ArrayOf.new(
+                   lambda {
+                     Metronome::Models::Invoice::LineItem::SubLineItem
+                   }
+                 )
 
         # @!attribute [rw] unit_price
         #   only present for beta contract invoices
@@ -342,7 +347,12 @@ module Metronome
 
           # @!attribute [rw] tiers
           #   @return [Array<Metronome::Models::Invoice::LineItem::SubLineItem::Tier>]
-          optional :tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Invoice::LineItem::SubLineItem::Tier })
+          optional :tiers,
+                   Metronome::ArrayOf.new(
+                     lambda {
+                       Metronome::Models::Invoice::LineItem::SubLineItem::Tier
+                     }
+                   )
 
           class TierPeriod < BaseModel
             # @!attribute [rw] starting_at
@@ -404,13 +414,17 @@ module Metronome
           #   One of the constants defined in {Metronome::Models::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType}
           #   @return [Symbol]
           required :billing_provider_type,
-                   enum: -> { Metronome::Models::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType }
+                   enum: lambda {
+                     Metronome::Models::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType
+                   }
 
           # @!attribute [rw] external_status
           #   One of the constants defined in {Metronome::Models::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus}
           #   @return [Symbol]
           optional :external_status,
-                   enum: -> { Metronome::Models::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus }
+                   enum: lambda {
+                     Metronome::Models::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus
+                   }
 
           # @!attribute [rw] invoice_id
           #   @return [String]

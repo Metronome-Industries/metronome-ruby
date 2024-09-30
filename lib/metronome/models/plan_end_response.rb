@@ -3,7 +3,6 @@
 module Metronome
   module Models
     class PlanEndResponse < BaseModel
-
     end
   end
 end

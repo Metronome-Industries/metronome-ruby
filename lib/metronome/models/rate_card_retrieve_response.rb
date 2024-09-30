@@ -30,12 +30,21 @@ module Metronome
 
         # @!attribute [rw] aliases
         #   @return [Array<Metronome::Models::RateCardRetrieveResponse::Data::Alias>]
-        optional :aliases, Metronome::ArrayOf.new(-> { Metronome::Models::RateCardRetrieveResponse::Data::Alias })
+        optional :aliases,
+                 Metronome::ArrayOf.new(
+                   lambda {
+                     Metronome::Models::RateCardRetrieveResponse::Data::Alias
+                   }
+                 )
 
         # @!attribute [rw] credit_type_conversions
         #   @return [Array<Metronome::Models::RateCardRetrieveResponse::Data::CreditTypeConversion>]
         optional :credit_type_conversions,
-                 Metronome::ArrayOf.new(-> { Metronome::Models::RateCardRetrieveResponse::Data::CreditTypeConversion })
+                 Metronome::ArrayOf.new(
+                   lambda {
+                     Metronome::Models::RateCardRetrieveResponse::Data::CreditTypeConversion
+                   }
+                 )
 
         # @!attribute [rw] custom_fields
         #   @return [Hash]
@@ -58,7 +67,11 @@ module Metronome
           # @!attribute [rw] updates
           #   @return [Array<Metronome::Models::RateCardRetrieveResponse::Data::RateCardEntries::RateCardEntry::Update>]
           optional :updates,
-                   Metronome::ArrayOf.new(-> { Metronome::Models::RateCardRetrieveResponse::Data::RateCardEntries::RateCardEntry::Update })
+                   Metronome::ArrayOf.new(
+                     lambda {
+                       Metronome::Models::RateCardRetrieveResponse::Data::RateCardEntries::RateCardEntry::Update
+                     }
+                   )
 
           class Current < BaseModel
             # @!attribute [rw] id
@@ -101,7 +114,9 @@ module Metronome
             #   One of the constants defined in {Metronome::Models::RateCardRetrieveResponse::Data::RateCardEntries::RateCardEntry::Current::RateType}
             #   @return [Symbol]
             optional :rate_type,
-                     enum: -> { Metronome::Models::RateCardRetrieveResponse::Data::RateCardEntries::RateCardEntry::Current::RateType }
+                     enum: lambda {
+                       Metronome::Models::RateCardRetrieveResponse::Data::RateCardEntries::RateCardEntry::Current::RateType
+                     }
 
             # @!attribute [rw] starting_at
             #   @return [DateTime]
@@ -145,7 +160,9 @@ module Metronome
             #   One of the constants defined in {Metronome::Models::RateCardRetrieveResponse::Data::RateCardEntries::RateCardEntry::Update::RateType}
             #   @return [Symbol]
             required :rate_type,
-                     enum: -> { Metronome::Models::RateCardRetrieveResponse::Data::RateCardEntries::RateCardEntry::Update::RateType }
+                     enum: lambda {
+                       Metronome::Models::RateCardRetrieveResponse::Data::RateCardEntries::RateCardEntry::Update::RateType
+                     }
 
             # @!attribute [rw] starting_at
             #   @return [DateTime]

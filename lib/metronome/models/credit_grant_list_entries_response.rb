@@ -19,7 +19,11 @@ module Metronome
         # @!attribute [rw] ledgers
         #   @return [Array<Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger>]
         required :ledgers,
-                 Metronome::ArrayOf.new(-> { Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger })
+                 Metronome::ArrayOf.new(
+                   lambda {
+                     Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger
+                   }
+                 )
 
         class Ledger < BaseModel
           # @!attribute [rw] credit_type
