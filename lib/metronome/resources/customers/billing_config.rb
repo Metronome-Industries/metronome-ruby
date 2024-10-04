@@ -10,24 +10,22 @@ module Metronome
 
         # Set the billing configuration for a given customer.
         #
-        # @param customer_id [String]
-        #
-        # @param billing_provider_type [Symbol, BillingProviderType] The billing provider (e.g. stripe)
-        #
         # @param params [Hash] Attributes to send in this request.
-        # @option params [String] :billing_provider_customer_id The customer ID in the billing provider's system. For Azure, this is the
-        #   subscription ID.
-        # @option params [String, nil] :aws_product_code
-        # @option params [Symbol, AwsRegion, nil] :aws_region
-        # @option params [Symbol, StripeCollectionMethod, nil] :stripe_collection_method
+        # @option params [String] :customer_id Path param:
+        # @option params [Symbol, BillingProviderType] :billing_provider_type Path param: The billing provider (e.g. stripe)
+        # @option params [String] :billing_provider_customer_id Body param: The customer ID in the billing provider's system. For Azure, this is
+        #   the subscription ID.
+        # @option params [String, nil] :aws_product_code Body param:
+        # @option params [Symbol, AwsRegion, nil] :aws_region Body param:
+        # @option params [Symbol, StripeCollectionMethod, nil] :stripe_collection_method Body param:
         #
         # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [nil]
-        def create(customer_id, billing_provider_type, params = {}, opts = {})
+        def create(params = {}, opts = {})
           req = {
             method: :post,
-            path: "/customers/#{customer_id}/billing-config/#{billing_provider_type}",
+            path: "/customers/#{params.fetch(:customer_id)}/billing-config/#{params.fetch(:billing_provider_type)}",
             body: params,
             headers: {"Content-Type" => "application/json"},
             model: NilClass
@@ -37,15 +35,17 @@ module Metronome
 
         # Fetch the billing configuration for the given customer.
         #
-        # @param customer_id [String]
-        # @param billing_provider_type [Symbol, BillingProviderType] The billing provider (e.g. stripe)
+        # @param params [Hash] Attributes to send in this request.
+        # @option params [String] :customer_id
+        # @option params [Symbol, BillingProviderType] :billing_provider_type The billing provider (e.g. stripe)
+        #
         # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::BillingConfigRetrieveResponse]
-        def retrieve(customer_id, billing_provider_type, opts = {})
+        def retrieve(params = {}, opts = {})
           req = {
             method: :get,
-            path: "/customers/#{customer_id}/billing-config/#{billing_provider_type}",
+            path: "/customers/#{params.fetch(:customer_id)}/billing-config/#{params.fetch(:billing_provider_type)}",
             model: Metronome::Models::BillingConfigRetrieveResponse
           }
           @client.request(req, opts)
@@ -54,15 +54,17 @@ module Metronome
         # Delete the billing configuration for a given customer. Note: this is unsupported
         #   for Azure and AWS Marketplace customers.
         #
-        # @param customer_id [String]
-        # @param billing_provider_type [Symbol, BillingProviderType] The billing provider (e.g. stripe)
+        # @param params [Hash] Attributes to send in this request.
+        # @option params [String] :customer_id
+        # @option params [Symbol, BillingProviderType] :billing_provider_type The billing provider (e.g. stripe)
+        #
         # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [nil]
-        def delete(customer_id, billing_provider_type, opts = {})
+        def delete(params = {}, opts = {})
           req = {
             method: :delete,
-            path: "/customers/#{customer_id}/billing-config/#{billing_provider_type}",
+            path: "/customers/#{params.fetch(:customer_id)}/billing-config/#{params.fetch(:billing_provider_type)}",
             model: NilClass
           }
           @client.request(req, opts)
