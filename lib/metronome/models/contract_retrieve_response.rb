@@ -109,8 +109,7 @@ module Metronome
 
           class ResellerRoyalty < BaseModel
             # @!attribute [rw] reseller_type
-            #   One of the constants defined in {Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty::ResellerType}
-            #   @return [Symbol]
+            #   @return [Symbol, Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty::ResellerType]
             required :reseller_type,
                      enum: lambda {
                        Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty::ResellerType
@@ -167,16 +166,14 @@ module Metronome
 
         class CustomerBillingProviderConfiguration < BaseModel
           # @!attribute [rw] billing_provider
-          #   One of the constants defined in {Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::BillingProvider}
-          #   @return [Symbol]
+          #   @return [Symbol, Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::BillingProvider]
           required :billing_provider,
                    enum: lambda {
                      Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::BillingProvider
                    }
 
           # @!attribute [rw] delivery_method
-          #   One of the constants defined in {Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod}
-          #   @return [Symbol]
+          #   @return [Symbol, Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod]
           required :delivery_method,
                    enum: lambda {
                      Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod

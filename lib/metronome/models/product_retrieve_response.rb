@@ -21,8 +21,7 @@ module Metronome
         required :initial, -> { Metronome::Models::ProductListItemState }
 
         # @!attribute [rw] type
-        #   One of the constants defined in {Metronome::Models::ProductRetrieveResponse::Data::Type}
-        #   @return [Symbol]
+        #   @return [Symbol, Metronome::Models::ProductRetrieveResponse::Data::Type]
         required :type, enum: -> { Metronome::Models::ProductRetrieveResponse::Data::Type }
 
         # @!attribute [rw] updates

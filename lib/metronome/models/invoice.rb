@@ -37,8 +37,7 @@ module Metronome
 
       # @!attribute [rw] billable_status
       #   This field's availability is dependent on your client's configuration.
-      #   One of the constants defined in {Metronome::Models::Invoice::BillableStatus}
-      #   @return [Symbol]
+      #   @return [Symbol, Metronome::Models::Invoice::BillableStatus]
       optional :billable_status, enum: -> { Metronome::Models::Invoice::BillableStatus }
 
       # @!attribute [rw] contract_custom_fields
@@ -255,8 +254,7 @@ module Metronome
         optional :quantity, Float
 
         # @!attribute [rw] reseller_type
-        #   One of the constants defined in {Metronome::Models::Invoice::LineItem::ResellerType}
-        #   @return [Symbol]
+        #   @return [Symbol, Metronome::Models::Invoice::LineItem::ResellerType]
         optional :reseller_type, enum: -> { Metronome::Models::Invoice::LineItem::ResellerType }
 
         # @!attribute [rw] scheduled_charge_custom_fields
@@ -411,16 +409,14 @@ module Metronome
 
         class CorrectedExternalInvoice < BaseModel
           # @!attribute [rw] billing_provider_type
-          #   One of the constants defined in {Metronome::Models::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType}
-          #   @return [Symbol]
+          #   @return [Symbol, Metronome::Models::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType]
           required :billing_provider_type,
                    enum: lambda {
                      Metronome::Models::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType
                    }
 
           # @!attribute [rw] external_status
-          #   One of the constants defined in {Metronome::Models::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus}
-          #   @return [Symbol]
+          #   @return [Symbol, Metronome::Models::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus]
           optional :external_status,
                    enum: lambda {
                      Metronome::Models::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus
@@ -463,14 +459,12 @@ module Metronome
 
       class ExternalInvoice < BaseModel
         # @!attribute [rw] billing_provider_type
-        #   One of the constants defined in {Metronome::Models::Invoice::ExternalInvoice::BillingProviderType}
-        #   @return [Symbol]
+        #   @return [Symbol, Metronome::Models::Invoice::ExternalInvoice::BillingProviderType]
         required :billing_provider_type,
                  enum: -> { Metronome::Models::Invoice::ExternalInvoice::BillingProviderType }
 
         # @!attribute [rw] external_status
-        #   One of the constants defined in {Metronome::Models::Invoice::ExternalInvoice::ExternalStatus}
-        #   @return [Symbol]
+        #   @return [Symbol, Metronome::Models::Invoice::ExternalInvoice::ExternalStatus]
         optional :external_status, enum: -> { Metronome::Models::Invoice::ExternalInvoice::ExternalStatus }
 
         # @!attribute [rw] invoice_id
@@ -539,8 +533,7 @@ module Metronome
         required :netsuite_reseller_id, String
 
         # @!attribute [rw] reseller_type
-        #   One of the constants defined in {Metronome::Models::Invoice::ResellerRoyalty::ResellerType}
-        #   @return [Symbol]
+        #   @return [Symbol, Metronome::Models::Invoice::ResellerRoyalty::ResellerType]
         required :reseller_type, enum: -> { Metronome::Models::Invoice::ResellerRoyalty::ResellerType }
 
         # @!attribute [rw] aws_options

@@ -102,8 +102,7 @@ module Metronome
         required :to_contract_id, String
 
         # @!attribute [rw] type
-        #   One of the constants defined in {Metronome::Models::ContractWithoutAmendments::Transition::Type}
-        #   @return [Symbol]
+        #   @return [Symbol, Metronome::Models::ContractWithoutAmendments::Transition::Type]
         required :type, enum: -> { Metronome::Models::ContractWithoutAmendments::Transition::Type }
 
         class Type < Metronome::Enum
@@ -119,8 +118,7 @@ module Metronome
         required :billing_anchor_date, DateTime
 
         # @!attribute [rw] frequency
-        #   One of the constants defined in {Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule::Frequency}
-        #   @return [Symbol]
+        #   @return [Symbol, Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule::Frequency]
         required :frequency,
                  enum: -> { Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule::Frequency }
 
@@ -141,8 +139,7 @@ module Metronome
         required :netsuite_reseller_id, String
 
         # @!attribute [rw] reseller_type
-        #   One of the constants defined in {Metronome::Models::ContractWithoutAmendments::ResellerRoyalty::ResellerType}
-        #   @return [Symbol]
+        #   @return [Symbol, Metronome::Models::ContractWithoutAmendments::ResellerRoyalty::ResellerType]
         required :reseller_type,
                  enum: -> { Metronome::Models::ContractWithoutAmendments::ResellerRoyalty::ResellerType }
 

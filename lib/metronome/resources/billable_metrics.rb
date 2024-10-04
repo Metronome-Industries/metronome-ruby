@@ -10,20 +10,20 @@ module Metronome
       # Creates a new Billable Metric.
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Symbol] :aggregation_type Specifies the type of aggregation performed on matching events.
+      # @option params [Symbol, AggregationType] :aggregation_type Specifies the type of aggregation performed on matching events.
       # @option params [String] :name The display name of the billable metric.
-      # @option params [String] :aggregation_key A key that specifies which property of the event is used to aggregate data. This
+      # @option params [String, nil] :aggregation_key A key that specifies which property of the event is used to aggregate data. This
       #   key must be one of the property filter names and is not applicable when the
       #   aggregation type is 'count'.
-      # @option params [Hash] :custom_fields Custom fields to attach to the billable metric.
-      # @option params [Metronome::Models::EventTypeFilter] :event_type_filter An optional filtering rule to match the 'event_type' property of an event.
-      # @option params [Array<Array<String>>] :group_keys Property names that are used to group usage costs on an invoice. Each entry
+      # @option params [Hash, nil] :custom_fields Custom fields to attach to the billable metric.
+      # @option params [Metronome::Models::EventTypeFilter, nil] :event_type_filter An optional filtering rule to match the 'event_type' property of an event.
+      # @option params [Array<Array<String>>, nil] :group_keys Property names that are used to group usage costs on an invoice. Each entry
       #   represents a set of properties used to slice events into distinct buckets.
-      # @option params [Array<Metronome::Models::PropertyFilter>] :property_filters A list of filters to match events to this billable metric. Each filter defines a
+      # @option params [Array<Metronome::Models::PropertyFilter>, nil] :property_filters A list of filters to match events to this billable metric. Each filter defines a
       #   rule on an event property. All rules must pass for the event to match the
       #   billable metric.
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::BillableMetricCreateResponse]
       def create(params = {}, opts = {})
@@ -38,7 +38,7 @@ module Metronome
       # Get a billable metric.
       #
       # @param billable_metric_id [String]
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::BillableMetricRetrieveResponse]
       def retrieve(billable_metric_id, opts = {})
@@ -52,10 +52,10 @@ module Metronome
       # List all billable metrics.
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Integer] :limit Max number of results that should be returned
-      # @option params [String] :next_page Cursor that indicates where the next page of results should start.
+      # @option params [Integer, nil] :limit Max number of results that should be returned
+      # @option params [String, nil] :next_page Cursor that indicates where the next page of results should start.
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::BillableMetricListResponse>]
       def list(params = {}, opts = {})
@@ -73,7 +73,7 @@ module Metronome
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :id
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::BillableMetricArchiveResponse]
       def archive(params = {}, opts = {})

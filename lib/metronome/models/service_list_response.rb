@@ -17,8 +17,7 @@ module Metronome
         required :name_, String
 
         # @!attribute [rw] usage
-        #   One of the constants defined in {Metronome::Models::ServiceListResponse::Service::Usage}
-        #   @return [Symbol]
+        #   @return [Symbol, Metronome::Models::ServiceListResponse::Service::Usage]
         required :usage, enum: -> { Metronome::Models::ServiceListResponse::Service::Usage }
 
         class Usage < Metronome::Enum

@@ -9,8 +9,7 @@ module Metronome
 
       # @!attribute [rw] customer_status
       #   The status of the customer alert. If the alert is archived, null will be returned.
-      #   One of the constants defined in {Metronome::Models::CustomerAlert::CustomerStatus}
-      #   @return [Symbol]
+      #   @return [Symbol, Metronome::Models::CustomerAlert::CustomerStatus]
       required :customer_status, enum: -> { Metronome::Models::CustomerAlert::CustomerStatus }
 
       # @!attribute [rw] triggered_by
@@ -31,8 +30,7 @@ module Metronome
 
         # @!attribute [rw] status
         #   Status of the alert
-        #   One of the constants defined in {Metronome::Models::CustomerAlert::Alert::Status}
-        #   @return [Symbol]
+        #   @return [Symbol, Metronome::Models::CustomerAlert::Alert::Status]
         required :status, enum: -> { Metronome::Models::CustomerAlert::Alert::Status }
 
         # @!attribute [rw] threshold
@@ -42,8 +40,7 @@ module Metronome
 
         # @!attribute [rw] type
         #   Type of the alert
-        #   One of the constants defined in {Metronome::Models::CustomerAlert::Alert::Type}
-        #   @return [Symbol]
+        #   @return [Symbol, Metronome::Models::CustomerAlert::Alert::Type]
         required :type, enum: -> { Metronome::Models::CustomerAlert::Alert::Type }
 
         # @!attribute [rw] updated_at
@@ -108,8 +105,7 @@ module Metronome
 
         class CustomFieldFilter < BaseModel
           # @!attribute [rw] entity
-          #   One of the constants defined in {Metronome::Models::CustomerAlert::Alert::CustomFieldFilter::Entity}
-          #   @return [Symbol]
+          #   @return [Symbol, Metronome::Models::CustomerAlert::Alert::CustomFieldFilter::Entity]
           required :entity, enum: -> { Metronome::Models::CustomerAlert::Alert::CustomFieldFilter::Entity }
 
           # @!attribute [rw] key

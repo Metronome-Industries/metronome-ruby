@@ -28,8 +28,7 @@ module Metronome
 
       # @!attribute [rw] aggregation_type
       #   Specifies the type of aggregation performed on matching events.
-      #   One of the constants defined in {Metronome::Models::CustomerListBillableMetricsResponse::AggregationType}
-      #   @return [Symbol]
+      #   @return [Symbol, Metronome::Models::CustomerListBillableMetricsResponse::AggregationType]
       optional :aggregation_type,
                enum: -> { Metronome::Models::CustomerListBillableMetricsResponse::AggregationType }
 

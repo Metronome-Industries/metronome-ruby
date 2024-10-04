@@ -55,8 +55,7 @@ module Metronome
 
         class CommitRate < BaseModel
           # @!attribute [rw] rate_type
-          #   One of the constants defined in {Metronome::Models::RateCardRetrieveRateScheduleResponse::Data::CommitRate::RateType}
-          #   @return [Symbol]
+          #   @return [Symbol, Metronome::Models::RateCardRetrieveRateScheduleResponse::Data::CommitRate::RateType]
           required :rate_type,
                    enum: lambda {
                      Metronome::Models::RateCardRetrieveRateScheduleResponse::Data::CommitRate::RateType

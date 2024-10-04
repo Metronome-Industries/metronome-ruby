@@ -18,8 +18,7 @@ module Metronome
         optional :aws_product_code, String
 
         # @!attribute [rw] aws_region
-        #   One of the constants defined in {Metronome::Models::BillingConfigRetrieveResponse::Data::AwsRegion}
-        #   @return [Symbol]
+        #   @return [Symbol, Metronome::Models::BillingConfigRetrieveResponse::Data::AwsRegion]
         optional :aws_region, enum: -> { Metronome::Models::BillingConfigRetrieveResponse::Data::AwsRegion }
 
         # @!attribute [rw] azure_expiration_date
@@ -37,8 +36,7 @@ module Metronome
         optional :azure_start_date, DateTime
 
         # @!attribute [rw] azure_subscription_status
-        #   One of the constants defined in {Metronome::Models::BillingConfigRetrieveResponse::Data::AzureSubscriptionStatus}
-        #   @return [Symbol]
+        #   @return [Symbol, Metronome::Models::BillingConfigRetrieveResponse::Data::AzureSubscriptionStatus]
         optional :azure_subscription_status,
                  enum: -> { Metronome::Models::BillingConfigRetrieveResponse::Data::AzureSubscriptionStatus }
 
@@ -47,8 +45,7 @@ module Metronome
         optional :billing_provider_customer_id, String
 
         # @!attribute [rw] stripe_collection_method
-        #   One of the constants defined in {Metronome::Models::BillingConfigRetrieveResponse::Data::StripeCollectionMethod}
-        #   @return [Symbol]
+        #   @return [Symbol, Metronome::Models::BillingConfigRetrieveResponse::Data::StripeCollectionMethod]
         optional :stripe_collection_method,
                  enum: -> { Metronome::Models::BillingConfigRetrieveResponse::Data::StripeCollectionMethod }
 

@@ -10,10 +10,10 @@ module Metronome
       # List all available plans.
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Integer] :limit Max number of results that should be returned
-      # @option params [String] :next_page Cursor that indicates where the next page of results should start.
+      # @option params [Integer, nil] :limit Max number of results that should be returned
+      # @option params [String, nil] :next_page Cursor that indicates where the next page of results should start.
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::PlanListResponse>]
       def list(params = {}, opts = {})
@@ -29,7 +29,7 @@ module Metronome
       # Fetch high level details of a specific plan.
       #
       # @param plan_id [String]
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::PlanGetDetailsResponse]
       def get_details(plan_id, opts = {})
@@ -45,10 +45,10 @@ module Metronome
       # @param plan_id [String]
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Integer] :limit Max number of results that should be returned
-      # @option params [String] :next_page Cursor that indicates where the next page of results should start.
+      # @option params [Integer, nil] :limit Max number of results that should be returned
+      # @option params [String, nil] :next_page Cursor that indicates where the next page of results should start.
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::PlanListChargesResponse>]
       def list_charges(plan_id, params = {}, opts = {})
@@ -67,9 +67,9 @@ module Metronome
       # @param plan_id [String]
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Integer] :limit Max number of results that should be returned
-      # @option params [String] :next_page Cursor that indicates where the next page of results should start.
-      # @option params [Symbol] :status Status of customers on a given plan. Defaults to `active`.
+      # @option params [Integer, nil] :limit Max number of results that should be returned
+      # @option params [String, nil] :next_page Cursor that indicates where the next page of results should start.
+      # @option params [Symbol, Status, nil] :status Status of customers on a given plan. Defaults to `active`.
       #
       #   - `all` - Return current, past, and upcoming customers of the plan.
       #   - `active` - Return current customers of the plan.
@@ -79,7 +79,7 @@ module Metronome
       #   Multiple statuses can be OR'd together using commas, e.g. `active,ended`.
       #   **Note:** `ended,upcoming` combination is not yet supported.
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::PlanListCustomersResponse>]
       def list_customers(plan_id, params = {}, opts = {})

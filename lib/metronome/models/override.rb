@@ -68,8 +68,7 @@ module Metronome
       optional :quantity, Float
 
       # @!attribute [rw] rate_type
-      #   One of the constants defined in {Metronome::Models::Override::RateType}
-      #   @return [Symbol]
+      #   @return [Symbol, Metronome::Models::Override::RateType]
       optional :rate_type, enum: -> { Metronome::Models::Override::RateType }
 
       # @!attribute [rw] tiers
@@ -78,8 +77,7 @@ module Metronome
       optional :tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Tier })
 
       # @!attribute [rw] type
-      #   One of the constants defined in {Metronome::Models::Override::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Metronome::Models::Override::Type]
       optional :type, enum: -> { Metronome::Models::Override::Type }
 
       # @!attribute [rw] value
@@ -117,8 +115,7 @@ module Metronome
 
       class OverwriteRate < BaseModel
         # @!attribute [rw] rate_type
-        #   One of the constants defined in {Metronome::Models::Override::OverwriteRate::RateType}
-        #   @return [Symbol]
+        #   @return [Symbol, Metronome::Models::Override::OverwriteRate::RateType]
         required :rate_type, enum: -> { Metronome::Models::Override::OverwriteRate::RateType }
 
         # @!attribute [rw] credit_type

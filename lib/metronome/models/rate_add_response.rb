@@ -9,8 +9,7 @@ module Metronome
 
       class Data < BaseModel
         # @!attribute [rw] rate_type
-        #   One of the constants defined in {Metronome::Models::RateAddResponse::Data::RateType}
-        #   @return [Symbol]
+        #   @return [Symbol, Metronome::Models::RateAddResponse::Data::RateType]
         required :rate_type, enum: -> { Metronome::Models::RateAddResponse::Data::RateType }
 
         # @!attribute [rw] commit_rate
@@ -72,8 +71,7 @@ module Metronome
 
         class CommitRate < BaseModel
           # @!attribute [rw] rate_type
-          #   One of the constants defined in {Metronome::Models::RateAddResponse::Data::CommitRate::RateType}
-          #   @return [Symbol]
+          #   @return [Symbol, Metronome::Models::RateAddResponse::Data::CommitRate::RateType]
           required :rate_type, enum: -> { Metronome::Models::RateAddResponse::Data::CommitRate::RateType }
 
           # @!attribute [rw] credit_type

@@ -4,8 +4,7 @@ module Metronome
   module Models
     class Rate < BaseModel
       # @!attribute [rw] rate_type
-      #   One of the constants defined in {Metronome::Models::Rate::RateType}
-      #   @return [Symbol]
+      #   @return [Symbol, Metronome::Models::Rate::RateType]
       required :rate_type, enum: -> { Metronome::Models::Rate::RateType }
 
       # @!attribute [rw] credit_type

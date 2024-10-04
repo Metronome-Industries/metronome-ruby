@@ -99,8 +99,7 @@ module Metronome
           optional :product_id, String
 
           # @!attribute [rw] rate_type
-          #   One of the constants defined in {Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Current::RateType}
-          #   @return [Symbol]
+          #   @return [Symbol, Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Current::RateType]
           optional :rate_type,
                    enum: lambda {
                      Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Current::RateType
@@ -145,8 +144,7 @@ module Metronome
           required :product_id, String
 
           # @!attribute [rw] rate_type
-          #   One of the constants defined in {Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Update::RateType}
-          #   @return [Symbol]
+          #   @return [Symbol, Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Update::RateType]
           required :rate_type,
                    enum: lambda {
                      Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Update::RateType
@@ -200,8 +198,7 @@ module Metronome
 
           class CommitRate < BaseModel
             # @!attribute [rw] rate_type
-            #   One of the constants defined in {Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Update::CommitRate::RateType}
-            #   @return [Symbol]
+            #   @return [Symbol, Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Update::CommitRate::RateType]
             required :rate_type,
                      enum: lambda {
                        Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Update::CommitRate::RateType

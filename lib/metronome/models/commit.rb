@@ -12,8 +12,7 @@ module Metronome
       required :product, -> { Metronome::Models::Commit::Product }
 
       # @!attribute [rw] type
-      #   One of the constants defined in {Metronome::Models::Commit::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Metronome::Models::Commit::Type]
       required :type, enum: -> { Metronome::Models::Commit::Type }
 
       # @!attribute [rw] access_schedule
@@ -62,7 +61,7 @@ module Metronome
 
       # @!attribute [rw] ledger
       #   A list of ordered events that impact the balance of a commit. For example, an invoice deduction or a rollover.
-      #   @return [Array<Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent0|Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent1|Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent10|Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent11|Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent12|Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent2|Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent3|Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent4|Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent5|Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent6|Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent7|Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent8|Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent9>]
+      #   @return [Array<Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent0, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent1, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent10, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent11, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent12, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent2, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent3, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent4, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent5, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent6, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent7, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent8, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent9>]
       optional :ledger, Metronome::ArrayOf.new(Metronome::Unknown)
 
       # @!attribute [rw] name_

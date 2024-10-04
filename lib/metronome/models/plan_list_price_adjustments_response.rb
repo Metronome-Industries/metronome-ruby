@@ -8,8 +8,7 @@ module Metronome
       required :charge_id, String
 
       # @!attribute [rw] charge_type
-      #   One of the constants defined in {Metronome::Models::PlanListPriceAdjustmentsResponse::ChargeType}
-      #   @return [Symbol]
+      #   @return [Symbol, Metronome::Models::PlanListPriceAdjustmentsResponse::ChargeType]
       required :charge_type, enum: -> { Metronome::Models::PlanListPriceAdjustmentsResponse::ChargeType }
 
       # @!attribute [rw] prices
@@ -36,8 +35,7 @@ module Metronome
       class Price < BaseModel
         # @!attribute [rw] adjustment_type
         #   Determines how the value will be applied.
-        #   One of the constants defined in {Metronome::Models::PlanListPriceAdjustmentsResponse::Price::AdjustmentType}
-        #   @return [Symbol]
+        #   @return [Symbol, Metronome::Models::PlanListPriceAdjustmentsResponse::Price::AdjustmentType]
         required :adjustment_type,
                  enum: -> { Metronome::Models::PlanListPriceAdjustmentsResponse::Price::AdjustmentType }
 

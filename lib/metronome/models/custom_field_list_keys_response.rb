@@ -17,8 +17,7 @@ module Metronome
         required :enforce_uniqueness, Metronome::BooleanModel
 
         # @!attribute [rw] entity
-        #   One of the constants defined in {Metronome::Models::CustomFieldListKeysResponse::Data::Entity}
-        #   @return [Symbol]
+        #   @return [Symbol, Metronome::Models::CustomFieldListKeysResponse::Data::Entity]
         required :entity, enum: -> { Metronome::Models::CustomFieldListKeysResponse::Data::Entity }
 
         # @!attribute [rw] key
