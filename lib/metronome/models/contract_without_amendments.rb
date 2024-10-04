@@ -113,6 +113,11 @@ module Metronome
       end
 
       class UsageStatementSchedule < BaseModel
+        # @!attribute [rw] billing_anchor_date
+        #   Contract usage statements follow a selected cadence based on this date.
+        #   @return [DateTime]
+        required :billing_anchor_date, DateTime
+
         # @!attribute [rw] frequency
         #   One of the constants defined in {Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule::Frequency}
         #   @return [Symbol]

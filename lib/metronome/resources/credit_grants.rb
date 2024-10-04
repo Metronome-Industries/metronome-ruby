@@ -11,16 +11,15 @@ module Metronome
       #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :customer_id the Metronome ID of the customer
-      # @option params [DateTime] :expires_at The credit grant will only apply to billing periods that end before this
-      #   timestamp.
+      # @option params [DateTime] :expires_at The credit grant will only apply to usage or charges dated before this timestamp
       # @option params [GrantAmount] :grant_amount the amount of credits granted
       # @option params [String] :name the name of the credit grant as it will appear on invoices
       # @option params [PaidAmount] :paid_amount the amount paid for this credit grant
       # @option params [Float] :priority
       # @option params [String] :credit_grant_type
       # @option params [Hash] :custom_fields Custom fields to attach to the credit grant.
-      # @option params [DateTime] :effective_at The credit grant will only apply to billing periods that end at or after this
-      #   timestamp.
+      # @option params [DateTime] :effective_at The credit grant will only apply to usage or charges dated on or after this
+      #   timestamp
       # @option params [DateTime] :invoice_date The date to issue an invoice for the paid_amount.
       # @option params [Array<String>] :product_ids The product(s) which these credits will be applied to. (If unspecified, the
       #   credits will be applied to charges for all products.). The array ordering
