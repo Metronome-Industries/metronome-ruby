@@ -7,31 +7,38 @@ class Metronome::Test::Resources::PlansTest < Test::Unit::TestCase
     @metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token")
   end
 
-  def test_list
-    response = @metronome.customers.plans.list("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+  def test_list_required_params
+    response = @metronome.customers.plans.list({customer_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc"})
     assert_kind_of(Metronome::CursorPage, response)
   end
 
   def test_add_required_params
     response = @metronome.customers.plans.add(
-      "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-      {plan_id: "d2c06dae-9549-4d7d-bc04-b78dd3d241b8", starting_on: "2021-02-01T00:00:00Z"}
+      {
+        customer_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
+        plan_id: "d2c06dae-9549-4d7d-bc04-b78dd3d241b8",
+        starting_on: "2021-02-01T00:00:00Z"
+      }
     )
     assert_kind_of(Metronome::Models::PlanAddResponse, response)
   end
 
-  def test_end_
+  def test_end__required_params
     response = @metronome.customers.plans.end_(
-      "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-      "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
+      {
+        customer_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
+        customer_plan_id: "7aa11640-0703-4600-8eb9-293f535a6b74"
+      }
     )
     assert_kind_of(Metronome::Models::PlanEndResponse, response)
   end
 
-  def test_list_price_adjustments
+  def test_list_price_adjustments_required_params
     response = @metronome.customers.plans.list_price_adjustments(
-      "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-      "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
+      {
+        customer_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
+        customer_plan_id: "7aa11640-0703-4600-8eb9-293f535a6b74"
+      }
     )
     assert_kind_of(Metronome::CursorPage, response)
   end
