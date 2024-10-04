@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "date"
-require "time"
 
 module Metronome
   # @!visibility private
@@ -23,8 +22,8 @@ module Metronome
         type.convert(value)
       elsif type == Date
         Date.parse(value)
-      elsif type == Time
-        Time.parse(value)
+      elsif type == DateTime
+        DateTime.parse(value)
       elsif type == NilClass
         nil
       elsif type == Float

@@ -33,18 +33,22 @@ module Metronome
     end
 
     def self.coerce_integer(str)
-      Integer(str, exception: false) || str
+      Integer(str)
+    rescue StandardError
+      str
     end
 
     def self.coerce_float(str)
-      Float(str, exception: false) || str
+      Float(str)
+    rescue StandardError
+      str
     end
 
     def self.coerce_boolean(input)
       case input
-      in "true"
+      when "true"
         true
-      in "false"
+      when "false"
         false
       else
         input

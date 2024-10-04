@@ -8,8 +8,8 @@ module Metronome
       required :commits, Metronome::ArrayOf.new(-> { Metronome::Models::Commit })
 
       # @!attribute [rw] created_at
-      #   @return [Time]
-      required :created_at, Time
+      #   @return [DateTime]
+      required :created_at, DateTime
 
       # @!attribute [rw] created_by
       #   @return [String]
@@ -24,8 +24,8 @@ module Metronome
       required :scheduled_charges, Metronome::ArrayOf.new(-> { Metronome::Models::ScheduledCharge })
 
       # @!attribute [rw] starting_at
-      #   @return [Time]
-      required :starting_at, Time
+      #   @return [DateTime]
+      required :starting_at, DateTime
 
       # @!attribute [rw] transitions
       #   @return [Array<Metronome::Models::ContractWithoutAmendments::Transition>]
@@ -47,8 +47,8 @@ module Metronome
       optional :discounts, Metronome::ArrayOf.new(-> { Metronome::Models::Discount })
 
       # @!attribute [rw] ending_before
-      #   @return [Time]
-      optional :ending_before, Time
+      #   @return [DateTime]
+      optional :ending_before, DateTime
 
       # @!attribute [rw] name_
       #   @return [String]
@@ -114,8 +114,8 @@ module Metronome
       class UsageStatementSchedule < BaseModel
         # @!attribute [rw] billing_anchor_date
         #   Contract usage statements follow a selected cadence based on this date.
-        #   @return [Time]
-        required :billing_anchor_date, Time
+        #   @return [DateTime]
+        required :billing_anchor_date, DateTime
 
         # @!attribute [rw] frequency
         #   @return [Symbol, Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule::Frequency]
@@ -144,8 +144,8 @@ module Metronome
                  enum: -> { Metronome::Models::ContractWithoutAmendments::ResellerRoyalty::ResellerType }
 
         # @!attribute [rw] starting_at
-        #   @return [Time]
-        required :starting_at, Time
+        #   @return [DateTime]
+        required :starting_at, DateTime
 
         # @!attribute [rw] applicable_product_ids
         #   @return [Array<String>]
@@ -168,8 +168,8 @@ module Metronome
         optional :aws_payer_reference_id, String
 
         # @!attribute [rw] ending_before
-        #   @return [Time]
-        optional :ending_before, Time
+        #   @return [DateTime]
+        optional :ending_before, DateTime
 
         # @!attribute [rw] gcp_account_id
         #   @return [String]
@@ -219,8 +219,8 @@ module Metronome
           required :group_values, Metronome::ArrayOf.new(String)
 
           # @!attribute [rw] starting_at
-          #   @return [Time]
-          required :starting_at, Time
+          #   @return [DateTime]
+          required :starting_at, DateTime
         end
       end
     end
