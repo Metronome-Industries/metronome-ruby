@@ -14,10 +14,10 @@ module Metronome
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :customer_id ID of the customer whose named schedule is to be retrieved
         # @option params [String] :schedule_name The identifier for the schedule to be retrieved
-        # @option params [DateTime] :covering_date If provided, at most one schedule segment will be returned (the one that covers
+        # @option params [DateTime, nil] :covering_date If provided, at most one schedule segment will be returned (the one that covers
         #   this date). If not provided, all segments will be returned.
         #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::NamedScheduleRetrieveResponse]
         def retrieve(params = {}, opts = {})
@@ -38,9 +38,9 @@ module Metronome
         # @option params [DateTime] :starting_at
         # @option params [Object] :value The value to set for the named schedule. The structure of this object is
         #   specific to the named schedule.
-        # @option params [DateTime] :ending_before
+        # @option params [DateTime, nil] :ending_before
         #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [nil]
         def update(params = {}, opts = {})

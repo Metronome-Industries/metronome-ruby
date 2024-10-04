@@ -10,8 +10,7 @@ module Metronome
 
       # @!attribute [rw] operation
       #   The operation to perform on the quantity
-      #   One of the constants defined in {Metronome::Models::QuantityConversion::Operation}
-      #   @return [Symbol]
+      #   @return [Symbol, Metronome::Models::QuantityConversion::Operation]
       required :operation, enum: -> { Metronome::Models::QuantityConversion::Operation }
 
       # @!attribute [rw] name_

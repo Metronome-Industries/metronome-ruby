@@ -12,10 +12,10 @@ module Metronome
       #
       # @param params [Hash] Attributes to send in this request.
       # @option params [Boolean] :enforce_uniqueness
-      # @option params [Symbol] :entity
+      # @option params [Symbol, Entity] :entity
       # @option params [String] :key
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       def add_key(params = {}, opts = {})
@@ -30,11 +30,11 @@ module Metronome
       # Deletes one or more custom fields on an instance of a Metronome entity.
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Symbol] :entity
+      # @option params [Symbol, Entity] :entity
       # @option params [String] :entity_id
       # @option params [Array<String>] :keys
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       def delete_values(params = {}, opts = {})
@@ -49,10 +49,10 @@ module Metronome
       # List all active custom field keys, optionally filtered by entity type.
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
-      # @option params [Array<Symbol>] :entities Body param: Optional list of entity types to return keys for
+      # @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
+      # @option params [Array<Symbol, Entity>, nil] :entities Body param: Optional list of entity types to return keys for
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CustomFieldListKeysResponse]
       def list_keys(params = {}, opts = {})
@@ -69,10 +69,10 @@ module Metronome
       # Remove a key from the allow list for a given entity.
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Symbol] :entity
+      # @option params [Symbol, Entity] :entity
       # @option params [String] :key
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       def remove_key(params = {}, opts = {})
@@ -94,10 +94,10 @@ module Metronome
       #
       # @param params [Hash] Attributes to send in this request.
       # @option params [Hash] :custom_fields
-      # @option params [Symbol] :entity
+      # @option params [Symbol, Entity] :entity
       # @option params [String] :entity_id
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       def set_values(params = {}, opts = {})

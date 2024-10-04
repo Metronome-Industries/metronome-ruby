@@ -15,7 +15,7 @@ module Metronome
         # @option params [String] :alert_id The Metronome ID of the alert
         # @option params [String] :customer_id The Metronome ID of the customer
         #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::AlertRetrieveResponse]
         def retrieve(params = {}, opts = {})
@@ -31,11 +31,11 @@ module Metronome
         #
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :customer_id Body param: The Metronome ID of the customer
-        # @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
-        # @option params [Array<Symbol>] :alert_statuses Body param: Optionally filter by alert status. If absent, only enabled alerts
+        # @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
+        # @option params [Array<Symbol, AlertStatus>, nil] :alert_statuses Body param: Optionally filter by alert status. If absent, only enabled alerts
         #   will be returned.
         #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::AlertListResponse]
         def list(params = {}, opts = {})
@@ -55,7 +55,7 @@ module Metronome
         # @option params [String] :alert_id The Metronome ID of the alert
         # @option params [String] :customer_id The Metronome ID of the customer
         #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [nil]
         def reset(params = {}, opts = {})

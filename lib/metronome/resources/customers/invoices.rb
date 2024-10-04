@@ -15,9 +15,9 @@ module Metronome
         # @param invoice_id [String]
         #
         # @param params [Hash] Attributes to send in this request.
-        # @option params [Boolean] :skip_zero_qty_line_items If set, all zero quantity line items will be filtered out of the response
+        # @option params [Boolean, nil] :skip_zero_qty_line_items If set, all zero quantity line items will be filtered out of the response
         #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::InvoiceRetrieveResponse]
         def retrieve(customer_id, invoice_id, params = {}, opts = {})
@@ -35,19 +35,19 @@ module Metronome
         # @param customer_id [String]
         #
         # @param params [Hash] Attributes to send in this request.
-        # @option params [String] :credit_type_id Only return invoices for the specified credit type
-        # @option params [DateTime] :ending_before RFC 3339 timestamp (exclusive). Invoices will only be returned for billing
+        # @option params [String, nil] :credit_type_id Only return invoices for the specified credit type
+        # @option params [DateTime, nil] :ending_before RFC 3339 timestamp (exclusive). Invoices will only be returned for billing
         #   periods that end before this time.
-        # @option params [Integer] :limit Max number of results that should be returned
-        # @option params [String] :next_page Cursor that indicates where the next page of results should start.
-        # @option params [Boolean] :skip_zero_qty_line_items If set, all zero quantity line items will be filtered out of the response
-        # @option params [Symbol] :sort Invoice sort order by issued_at, e.g. date_asc or date_desc. Defaults to
+        # @option params [Integer, nil] :limit Max number of results that should be returned
+        # @option params [String, nil] :next_page Cursor that indicates where the next page of results should start.
+        # @option params [Boolean, nil] :skip_zero_qty_line_items If set, all zero quantity line items will be filtered out of the response
+        # @option params [Symbol, Sort, nil] :sort Invoice sort order by issued_at, e.g. date_asc or date_desc. Defaults to
         #   date_asc.
-        # @option params [DateTime] :starting_on RFC 3339 timestamp (inclusive). Invoices will only be returned for billing
+        # @option params [DateTime, nil] :starting_on RFC 3339 timestamp (inclusive). Invoices will only be returned for billing
         #   periods that start at or after this time.
-        # @option params [String] :status Invoice status, e.g. DRAFT, FINALIZED, or VOID
+        # @option params [String, nil] :status Invoice status, e.g. DRAFT, FINALIZED, or VOID
         #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::CursorPage<Metronome::Models::Invoice>]
         def list(customer_id, params = {}, opts = {})
@@ -75,7 +75,7 @@ module Metronome
         #   USD cents.
         # @option params [Float] :quantity
         #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::InvoiceAddChargeResponse]
         def add_charge(customer_id, params = {}, opts = {})
@@ -97,19 +97,19 @@ module Metronome
         #   on or before this time.
         # @option params [DateTime] :starting_on RFC 3339 timestamp. Breakdowns will only be returned for time windows that start
         #   on or after this time.
-        # @option params [String] :credit_type_id Only return invoices for the specified credit type
-        # @option params [Integer] :limit Max number of results that should be returned. For daily breakdowns, the
+        # @option params [String, nil] :credit_type_id Only return invoices for the specified credit type
+        # @option params [Integer, nil] :limit Max number of results that should be returned. For daily breakdowns, the
         #   response can return up to 35 days worth of breakdowns. For hourly breakdowns,
         #   the response can return up to 24 hours. If there are more results, a cursor to
         #   the next page is returned.
-        # @option params [String] :next_page Cursor that indicates where the next page of results should start.
-        # @option params [Boolean] :skip_zero_qty_line_items If set, all zero quantity line items will be filtered out of the response
-        # @option params [Symbol] :sort Invoice sort order by issued_at, e.g. date_asc or date_desc. Defaults to
+        # @option params [String, nil] :next_page Cursor that indicates where the next page of results should start.
+        # @option params [Boolean, nil] :skip_zero_qty_line_items If set, all zero quantity line items will be filtered out of the response
+        # @option params [Symbol, Sort, nil] :sort Invoice sort order by issued_at, e.g. date_asc or date_desc. Defaults to
         #   date_asc.
-        # @option params [String] :status Invoice status, e.g. DRAFT or FINALIZED
-        # @option params [Symbol] :window_size The granularity of the breakdowns to return. Defaults to day.
+        # @option params [String, nil] :status Invoice status, e.g. DRAFT or FINALIZED
+        # @option params [Symbol, WindowSize, nil] :window_size The granularity of the breakdowns to return. Defaults to day.
         #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::CursorPage<Metronome::Models::InvoiceListBreakdownsResponse>]
         def list_breakdowns(customer_id, params = {}, opts = {})

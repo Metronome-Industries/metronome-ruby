@@ -12,8 +12,7 @@ module Metronome
       required :product, -> { Metronome::Models::Credit::Product }
 
       # @!attribute [rw] type
-      #   One of the constants defined in {Metronome::Models::Credit::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Metronome::Models::Credit::Type]
       required :type, enum: -> { Metronome::Models::Credit::Type }
 
       # @!attribute [rw] access_schedule
@@ -47,7 +46,7 @@ module Metronome
 
       # @!attribute [rw] ledger
       #   A list of ordered events that impact the balance of a credit. For example, an invoice deduction or an expiration.
-      #   @return [Array<Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent13|Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent14|Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent15|Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent16|Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent17|Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent18>]
+      #   @return [Array<Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent13, Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent14, Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent15, Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent16, Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent17, Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent18>]
       optional :ledger, Metronome::ArrayOf.new(Metronome::Unknown)
 
       # @!attribute [rw] name_

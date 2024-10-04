@@ -44,8 +44,7 @@ module Metronome
 
       class CurrentBillableStatus < BaseModel
         # @!attribute [rw] value
-        #   One of the constants defined in {Metronome::Models::CustomerDetail::CurrentBillableStatus::Value}
-        #   @return [Symbol]
+        #   @return [Symbol, Metronome::Models::CustomerDetail::CurrentBillableStatus::Value]
         required :value, enum: -> { Metronome::Models::CustomerDetail::CurrentBillableStatus::Value }
 
         # @!attribute [rw] effective_at

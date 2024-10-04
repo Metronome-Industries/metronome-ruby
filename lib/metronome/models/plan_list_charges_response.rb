@@ -8,8 +8,7 @@ module Metronome
       required :id, String
 
       # @!attribute [rw] charge_type
-      #   One of the constants defined in {Metronome::Models::PlanListChargesResponse::ChargeType}
-      #   @return [Symbol]
+      #   @return [Symbol, Metronome::Models::PlanListChargesResponse::ChargeType]
       required :charge_type, enum: -> { Metronome::Models::PlanListChargesResponse::ChargeType }
 
       # @!attribute [rw] credit_type
@@ -94,8 +93,7 @@ module Metronome
 
         # @!attribute [rw] rounding_behavior
         #   Whether usage should be rounded down or up to the nearest whole number. If null, quantity will be rounded to 20 decimal places.
-        #   One of the constants defined in {Metronome::Models::PlanListChargesResponse::UnitConversion::RoundingBehavior}
-        #   @return [Symbol]
+        #   @return [Symbol, Metronome::Models::PlanListChargesResponse::UnitConversion::RoundingBehavior]
         optional :rounding_behavior,
                  enum: -> { Metronome::Models::PlanListChargesResponse::UnitConversion::RoundingBehavior }
 

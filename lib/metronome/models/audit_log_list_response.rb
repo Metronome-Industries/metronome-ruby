@@ -32,8 +32,7 @@ module Metronome
       optional :resource_type, String
 
       # @!attribute [rw] status
-      #   One of the constants defined in {Metronome::Models::AuditLogListResponse::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Metronome::Models::AuditLogListResponse::Status]
       optional :status, enum: -> { Metronome::Models::AuditLogListResponse::Status }
 
       class Actor < BaseModel

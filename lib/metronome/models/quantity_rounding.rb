@@ -8,8 +8,7 @@ module Metronome
       required :decimal_places, Float
 
       # @!attribute [rw] rounding_method
-      #   One of the constants defined in {Metronome::Models::QuantityRounding::RoundingMethod}
-      #   @return [Symbol]
+      #   @return [Symbol, Metronome::Models::QuantityRounding::RoundingMethod]
       required :rounding_method, enum: -> { Metronome::Models::QuantityRounding::RoundingMethod }
 
       class RoundingMethod < Metronome::Enum

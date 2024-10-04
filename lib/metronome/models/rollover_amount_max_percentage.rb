@@ -5,8 +5,7 @@ module Metronome
     class RolloverAmountMaxPercentage < BaseModel
       # @!attribute [rw] type
       #   Rollover up to a percentage of the original credit grant amount.
-      #   One of the constants defined in {Metronome::Models::RolloverAmountMaxPercentage::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Metronome::Models::RolloverAmountMaxPercentage::Type]
       required :type, enum: -> { Metronome::Models::RolloverAmountMaxPercentage::Type }
 
       # @!attribute [rw] value
