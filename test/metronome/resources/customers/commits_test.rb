@@ -2,7 +2,9 @@
 
 require_relative "../../test_helper"
 
-class Metronome::Test::Resources::Customers::CommitsTest < Test::Unit::TestCase
+class Metronome::Test::Resources::Customers::CommitsTest < Minitest::Test
+  parallelize_me!
+
   def setup
     @metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token")
   end
