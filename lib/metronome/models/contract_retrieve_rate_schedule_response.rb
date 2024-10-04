@@ -42,8 +42,8 @@ module Metronome
         required :rate_card_id, String
 
         # @!attribute [rw] starting_at
-        #   @return [DateTime]
-        required :starting_at, DateTime
+        #   @return [Time]
+        required :starting_at, Time
 
         # @!attribute [rw] commit_rate
         #   The rate that will be used to rate a product when it is paid for by a commit. This feature requires opt-in before it can be used. Please contact Metronome support to enable this feature.
@@ -54,8 +54,8 @@ module Metronome
                  }
 
         # @!attribute [rw] ending_before
-        #   @return [DateTime]
-        optional :ending_before, DateTime
+        #   @return [Time]
+        optional :ending_before, Time
 
         # @!attribute [rw] override_rate
         #   @return [Metronome::Models::Rate]
