@@ -2,7 +2,7 @@
 
 require_relative "../../../test_helper"
 
-class Metronome::Test::Resources::RatesTest < Test::Unit::TestCase
+class Metronome::Test::Resources::Contracts::RateCards::RatesTest < Test::Unit::TestCase
   def setup
     @metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token")
   end
