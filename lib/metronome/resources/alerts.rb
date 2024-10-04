@@ -42,11 +42,13 @@ module Metronome
       #
       # @return [Metronome::Models::AlertCreateResponse]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/alerts/create"
-        req[:body] = params
-        req[:model] = Metronome::Models::AlertCreateResponse
+        req = {
+          method: :post,
+          path: "/alerts/create",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Metronome::Models::AlertCreateResponse
+        }
         @client.request(req, opts)
       end
 
@@ -59,11 +61,13 @@ module Metronome
       #
       # @return [Metronome::Models::AlertArchiveResponse]
       def archive(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/alerts/archive"
-        req[:body] = params
-        req[:model] = Metronome::Models::AlertArchiveResponse
+        req = {
+          method: :post,
+          path: "/alerts/archive",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Metronome::Models::AlertArchiveResponse
+        }
         @client.request(req, opts)
       end
     end

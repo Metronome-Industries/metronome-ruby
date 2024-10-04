@@ -27,11 +27,13 @@ module Metronome
       #
       # @return [Metronome::Models::BillableMetricCreateResponse]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/billable-metrics/create"
-        req[:body] = params
-        req[:model] = Metronome::Models::BillableMetricCreateResponse
+        req = {
+          method: :post,
+          path: "/billable-metrics/create",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Metronome::Models::BillableMetricCreateResponse
+        }
         @client.request(req, opts)
       end
 
@@ -42,10 +44,11 @@ module Metronome
       #
       # @return [Metronome::Models::BillableMetricRetrieveResponse]
       def retrieve(billable_metric_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/billable-metrics/#{billable_metric_id}"
-        req[:model] = Metronome::Models::BillableMetricRetrieveResponse
+        req = {
+          method: :get,
+          path: "/billable-metrics/#{billable_metric_id}",
+          model: Metronome::Models::BillableMetricRetrieveResponse
+        }
         @client.request(req, opts)
       end
 
@@ -59,12 +62,13 @@ module Metronome
       #
       # @return [Metronome::CursorPage<Metronome::Models::BillableMetricListResponse>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/billable-metrics"
-        req[:query] = params
-        req[:page] = Metronome::CursorPage
-        req[:model] = Metronome::Models::BillableMetricListResponse
+        req = {
+          method: :get,
+          path: "/billable-metrics",
+          query: params,
+          page: Metronome::CursorPage,
+          model: Metronome::Models::BillableMetricListResponse
+        }
         @client.request(req, opts)
       end
 
@@ -77,11 +81,13 @@ module Metronome
       #
       # @return [Metronome::Models::BillableMetricArchiveResponse]
       def archive(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/billable-metrics/archive"
-        req[:body] = params
-        req[:model] = Metronome::Models::BillableMetricArchiveResponse
+        req = {
+          method: :post,
+          path: "/billable-metrics/archive",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Metronome::Models::BillableMetricArchiveResponse
+        }
         @client.request(req, opts)
       end
     end

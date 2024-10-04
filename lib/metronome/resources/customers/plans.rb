@@ -20,12 +20,13 @@ module Metronome
         #
         # @return [Metronome::CursorPage<Metronome::Models::PlanListResponse>]
         def list(customer_id, params = {}, opts = {})
-          req = {}
-          req[:method] = :get
-          req[:path] = "/customers/#{customer_id}/plans"
-          req[:query] = params
-          req[:page] = Metronome::CursorPage
-          req[:model] = Metronome::Models::PlanListResponse
+          req = {
+            method: :get,
+            path: "/customers/#{customer_id}/plans",
+            query: params,
+            page: Metronome::CursorPage,
+            model: Metronome::Models::PlanListResponse
+          }
           @client.request(req, opts)
         end
 
@@ -57,11 +58,13 @@ module Metronome
         #
         # @return [Metronome::Models::PlanAddResponse]
         def add(customer_id, params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/customers/#{customer_id}/plans/add"
-          req[:body] = params
-          req[:model] = Metronome::Models::PlanAddResponse
+          req = {
+            method: :post,
+            path: "/customers/#{customer_id}/plans/add",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Metronome::Models::PlanAddResponse
+          }
           @client.request(req, opts)
         end
 
@@ -84,11 +87,13 @@ module Metronome
         #
         # @return [Metronome::Models::PlanEndResponse]
         def end_(customer_id, customer_plan_id, params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/customers/#{customer_id}/plans/#{customer_plan_id}/end"
-          req[:body] = params
-          req[:model] = Metronome::Models::PlanEndResponse
+          req = {
+            method: :post,
+            path: "/customers/#{customer_id}/plans/#{customer_plan_id}/end",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Metronome::Models::PlanEndResponse
+          }
           @client.request(req, opts)
         end
 
@@ -108,12 +113,13 @@ module Metronome
         #
         # @return [Metronome::CursorPage<Metronome::Models::PlanListPriceAdjustmentsResponse>]
         def list_price_adjustments(customer_id, customer_plan_id, params = {}, opts = {})
-          req = {}
-          req[:method] = :get
-          req[:path] = "/customers/#{customer_id}/plans/#{customer_plan_id}/priceAdjustments"
-          req[:query] = params
-          req[:page] = Metronome::CursorPage
-          req[:model] = Metronome::Models::PlanListPriceAdjustmentsResponse
+          req = {
+            method: :get,
+            path: "/customers/#{customer_id}/plans/#{customer_plan_id}/priceAdjustments",
+            query: params,
+            page: Metronome::CursorPage,
+            model: Metronome::Models::PlanListPriceAdjustmentsResponse
+          }
           @client.request(req, opts)
         end
       end

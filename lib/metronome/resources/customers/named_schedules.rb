@@ -21,11 +21,13 @@ module Metronome
         #
         # @return [Metronome::Models::NamedScheduleRetrieveResponse]
         def retrieve(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/customers/getNamedSchedule"
-          req[:body] = params
-          req[:model] = Metronome::Models::NamedScheduleRetrieveResponse
+          req = {
+            method: :post,
+            path: "/customers/getNamedSchedule",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Metronome::Models::NamedScheduleRetrieveResponse
+          }
           @client.request(req, opts)
         end
 
@@ -44,11 +46,13 @@ module Metronome
         #
         # @return [nil]
         def update(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/customers/updateNamedSchedule"
-          req[:body] = params
-          req[:model] = NilClass
+          req = {
+            method: :post,
+            path: "/customers/updateNamedSchedule",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: NilClass
+          }
           @client.request(req, opts)
         end
       end

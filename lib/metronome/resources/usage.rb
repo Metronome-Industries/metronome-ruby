@@ -27,13 +27,15 @@ module Metronome
       #
       # @return [Metronome::Models::UsageListResponse]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/usage"
         query_params = [:next_page]
-        req[:query] = params.slice(*query_params)
-        req[:body] = params.except(*query_params)
-        req[:model] = Metronome::Models::UsageListResponse
+        req = {
+          method: :post,
+          path: "/usage",
+          query: params.slice(*query_params),
+          body: params.except(*query_params),
+          headers: {"Content-Type" => "application/json"},
+          model: Metronome::Models::UsageListResponse
+        }
         @client.request(req, opts)
       end
 
@@ -50,11 +52,13 @@ module Metronome
       #
       # @return [nil]
       def ingest(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/ingest"
-        req[:body] = params[:usage]
-        req[:model] = NilClass
+        req = {
+          method: :post,
+          path: "/ingest",
+          body: params[:usage],
+          headers: {"Content-Type" => "application/json"},
+          model: NilClass
+        }
         @client.request(req, opts)
       end
 
@@ -81,14 +85,16 @@ module Metronome
       #
       # @return [Metronome::CursorPage<Metronome::Models::UsageListWithGroupsResponse>]
       def list_with_groups(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/usage/groups"
         query_params = [:limit, :next_page]
-        req[:query] = params.slice(*query_params)
-        req[:body] = params.except(*query_params)
-        req[:page] = Metronome::CursorPage
-        req[:model] = Metronome::Models::UsageListWithGroupsResponse
+        req = {
+          method: :post,
+          path: "/usage/groups",
+          query: params.slice(*query_params),
+          body: params.except(*query_params),
+          headers: {"Content-Type" => "application/json"},
+          page: Metronome::CursorPage,
+          model: Metronome::Models::UsageListWithGroupsResponse
+        }
         @client.request(req, opts)
       end
     end

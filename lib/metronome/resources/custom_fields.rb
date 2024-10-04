@@ -19,11 +19,13 @@ module Metronome
       #
       # @return [nil]
       def add_key(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/customFields/addKey"
-        req[:body] = params
-        req[:model] = NilClass
+        req = {
+          method: :post,
+          path: "/customFields/addKey",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: NilClass
+        }
         @client.request(req, opts)
       end
 
@@ -38,11 +40,13 @@ module Metronome
       #
       # @return [nil]
       def delete_values(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/customFields/deleteValues"
-        req[:body] = params
-        req[:model] = NilClass
+        req = {
+          method: :post,
+          path: "/customFields/deleteValues",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: NilClass
+        }
         @client.request(req, opts)
       end
 
@@ -56,13 +60,15 @@ module Metronome
       #
       # @return [Metronome::Models::CustomFieldListKeysResponse]
       def list_keys(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/customFields/listKeys"
         query_params = [:next_page]
-        req[:query] = params.slice(*query_params)
-        req[:body] = params.except(*query_params)
-        req[:model] = Metronome::Models::CustomFieldListKeysResponse
+        req = {
+          method: :post,
+          path: "/customFields/listKeys",
+          query: params.slice(*query_params),
+          body: params.except(*query_params),
+          headers: {"Content-Type" => "application/json"},
+          model: Metronome::Models::CustomFieldListKeysResponse
+        }
         @client.request(req, opts)
       end
 
@@ -76,11 +82,13 @@ module Metronome
       #
       # @return [nil]
       def remove_key(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/customFields/removeKey"
-        req[:body] = params
-        req[:model] = NilClass
+        req = {
+          method: :post,
+          path: "/customFields/removeKey",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: NilClass
+        }
         @client.request(req, opts)
       end
 
@@ -101,11 +109,13 @@ module Metronome
       #
       # @return [nil]
       def set_values(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/customFields/setValues"
-        req[:body] = params
-        req[:model] = NilClass
+        req = {
+          method: :post,
+          path: "/customFields/setValues",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: NilClass
+        }
         @client.request(req, opts)
       end
     end

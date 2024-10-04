@@ -19,11 +19,13 @@ module Metronome
           #
           # @return [Metronome::Models::ProductOrderUpdateResponse]
           def update(params = {}, opts = {})
-            req = {}
-            req[:method] = :post
-            req[:path] = "/contract-pricing/rate-cards/moveRateCardProducts"
-            req[:body] = params
-            req[:model] = Metronome::Models::ProductOrderUpdateResponse
+            req = {
+              method: :post,
+              path: "/contract-pricing/rate-cards/moveRateCardProducts",
+              body: params,
+              headers: {"Content-Type" => "application/json"},
+              model: Metronome::Models::ProductOrderUpdateResponse
+            }
             @client.request(req, opts)
           end
 
@@ -37,11 +39,13 @@ module Metronome
           #
           # @return [Metronome::Models::ProductOrderSetResponse]
           def set(params = {}, opts = {})
-            req = {}
-            req[:method] = :post
-            req[:path] = "/contract-pricing/rate-cards/setRateCardProductsOrder"
-            req[:body] = params
-            req[:model] = Metronome::Models::ProductOrderSetResponse
+            req = {
+              method: :post,
+              path: "/contract-pricing/rate-cards/setRateCardProductsOrder",
+              body: params,
+              headers: {"Content-Type" => "application/json"},
+              model: Metronome::Models::ProductOrderSetResponse
+            }
             @client.request(req, opts)
           end
         end

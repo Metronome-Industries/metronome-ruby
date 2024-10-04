@@ -37,11 +37,13 @@ module Metronome
         #
         # @return [Metronome::Models::RateCardCreateResponse]
         def create(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/contract-pricing/rate-cards/create"
-          req[:body] = params
-          req[:model] = Metronome::Models::RateCardCreateResponse
+          req = {
+            method: :post,
+            path: "/contract-pricing/rate-cards/create",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Metronome::Models::RateCardCreateResponse
+          }
           @client.request(req, opts)
         end
 
@@ -55,11 +57,13 @@ module Metronome
         #
         # @return [Metronome::Models::RateCardRetrieveResponse]
         def retrieve(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/contract-pricing/rate-cards/get"
-          req[:body] = params
-          req[:model] = Metronome::Models::RateCardRetrieveResponse
+          req = {
+            method: :post,
+            path: "/contract-pricing/rate-cards/get",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Metronome::Models::RateCardRetrieveResponse
+          }
           @client.request(req, opts)
         end
 
@@ -78,11 +82,13 @@ module Metronome
         #
         # @return [Metronome::Models::RateCardUpdateResponse]
         def update(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/contract-pricing/rate-cards/update"
-          req[:body] = params
-          req[:model] = Metronome::Models::RateCardUpdateResponse
+          req = {
+            method: :post,
+            path: "/contract-pricing/rate-cards/update",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Metronome::Models::RateCardUpdateResponse
+          }
           @client.request(req, opts)
         end
 
@@ -98,13 +104,15 @@ module Metronome
         #
         # @return [Metronome::CursorPage<Metronome::Models::RateCardListResponse>]
         def list(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/contract-pricing/rate-cards/list"
-          req[:body] = params[:body]
-          req[:query] = params.except(:body)
-          req[:page] = Metronome::CursorPage
-          req[:model] = Metronome::Models::RateCardListResponse
+          req = {
+            method: :post,
+            path: "/contract-pricing/rate-cards/list",
+            body: params[:body],
+            query: params.except(:body),
+            headers: {"Content-Type" => "application/json"},
+            page: Metronome::CursorPage,
+            model: Metronome::Models::RateCardListResponse
+          }
           @client.request(req, opts)
         end
 
@@ -126,13 +134,15 @@ module Metronome
         #
         # @return [Metronome::Models::RateCardRetrieveRateScheduleResponse]
         def retrieve_rate_schedule(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/contract-pricing/rate-cards/getRateSchedule"
           query_params = [:limit, :next_page]
-          req[:query] = params.slice(*query_params)
-          req[:body] = params.except(*query_params)
-          req[:model] = Metronome::Models::RateCardRetrieveRateScheduleResponse
+          req = {
+            method: :post,
+            path: "/contract-pricing/rate-cards/getRateSchedule",
+            query: params.slice(*query_params),
+            body: params.except(*query_params),
+            headers: {"Content-Type" => "application/json"},
+            model: Metronome::Models::RateCardRetrieveRateScheduleResponse
+          }
           @client.request(req, opts)
         end
       end
