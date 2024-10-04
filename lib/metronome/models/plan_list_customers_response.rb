@@ -30,13 +30,13 @@ module Metronome
 
         # @!attribute [rw] starting_on
         #   The start date of the plan
-        #   @return [DateTime]
-        required :starting_on, DateTime
+        #   @return [Time]
+        required :starting_on, Time
 
         # @!attribute [rw] ending_before
         #   The end date of the plan
-        #   @return [DateTime]
-        optional :ending_before, DateTime
+        #   @return [Time]
+        optional :ending_before, Time
       end
     end
   end

@@ -54,8 +54,8 @@ module Metronome
 
       # @!attribute [rw] created_at
       #   When the invoice was created (UTC). This field is present for correction invoices only.
-      #   @return [DateTime]
-      optional :created_at, DateTime
+      #   @return [Time]
+      optional :created_at, Time
 
       # @!attribute [rw] custom_fields
       #   @return [Hash]
@@ -67,8 +67,8 @@ module Metronome
 
       # @!attribute [rw] end_timestamp
       #   End of the usage period this invoice covers (UTC)
-      #   @return [DateTime]
-      optional :end_timestamp, DateTime
+      #   @return [Time]
+      optional :end_timestamp, Time
 
       # @!attribute [rw] external_invoice
       #   @return [Metronome::Models::Invoice::ExternalInvoice]
@@ -81,8 +81,8 @@ module Metronome
 
       # @!attribute [rw] issued_at
       #   When the invoice was issued (UTC)
-      #   @return [DateTime]
-      optional :issued_at, DateTime
+      #   @return [Time]
+      optional :issued_at, Time
 
       # @!attribute [rw] net_payment_terms_days
       #   @return [Float]
@@ -117,8 +117,8 @@ module Metronome
 
       # @!attribute [rw] start_timestamp
       #   Beginning of the usage period this invoice covers (UTC)
-      #   @return [DateTime]
-      optional :start_timestamp, DateTime
+      #   @return [Time]
+      optional :start_timestamp, Time
 
       # @!attribute [rw] subtotal
       #   @return [Float]
@@ -172,8 +172,8 @@ module Metronome
 
         # @!attribute [rw] ending_before
         #   only present for beta contract invoices
-        #   @return [DateTime]
-        optional :ending_before, DateTime
+        #   @return [Time]
+        optional :ending_before, Time
 
         # @!attribute [rw] group_key
         #   @return [String]
@@ -200,13 +200,13 @@ module Metronome
 
         # @!attribute [rw] netsuite_invoice_billing_end
         #   The end date for the billing period on the invoice.
-        #   @return [DateTime]
-        optional :netsuite_invoice_billing_end, DateTime
+        #   @return [Time]
+        optional :netsuite_invoice_billing_end, Time
 
         # @!attribute [rw] netsuite_invoice_billing_start
         #   The start date for the billing period on the invoice.
-        #   @return [DateTime]
-        optional :netsuite_invoice_billing_start, DateTime
+        #   @return [Time]
+        optional :netsuite_invoice_billing_start, Time
 
         # @!attribute [rw] netsuite_item_id
         #   only present for beta contract invoices. This field's availability is dependent on your client's configuration.
@@ -268,8 +268,8 @@ module Metronome
 
         # @!attribute [rw] starting_at
         #   only present for beta contract invoices
-        #   @return [DateTime]
-        optional :starting_at, DateTime
+        #   @return [Time]
+        optional :starting_at, Time
 
         # @!attribute [rw] sub_line_items
         #   @return [Array<Metronome::Models::Invoice::LineItem::SubLineItem>]
@@ -325,8 +325,8 @@ module Metronome
 
           # @!attribute [rw] end_date
           #   The end date for the charge (for seats charges only).
-          #   @return [DateTime]
-          optional :end_date, DateTime
+          #   @return [Time]
+          optional :end_date, Time
 
           # @!attribute [rw] price
           #   the unit price for this charge, present only if the charge is not tiered and the quantity is nonzero
@@ -335,8 +335,8 @@ module Metronome
 
           # @!attribute [rw] start_date
           #   The start date for the charge (for seats charges only).
-          #   @return [DateTime]
-          optional :start_date, DateTime
+          #   @return [Time]
+          optional :start_date, Time
 
           # @!attribute [rw] tier_period
           #   when the current tier started and ends (for tiered charges only)
@@ -354,12 +354,12 @@ module Metronome
 
           class TierPeriod < BaseModel
             # @!attribute [rw] starting_at
-            #   @return [DateTime]
-            required :starting_at, DateTime
+            #   @return [Time]
+            required :starting_at, Time
 
             # @!attribute [rw] ending_before
-            #   @return [DateTime]
-            optional :ending_before, DateTime
+            #   @return [Time]
+            optional :ending_before, Time
           end
 
           class Tier < BaseModel
@@ -427,8 +427,8 @@ module Metronome
           optional :invoice_id, String
 
           # @!attribute [rw] issued_at_timestamp
-          #   @return [DateTime]
-          optional :issued_at_timestamp, DateTime
+          #   @return [Time]
+          optional :issued_at_timestamp, Time
 
           class BillingProviderType < Metronome::Enum
             AWS_MARKETPLACE = :aws_marketplace
@@ -472,8 +472,8 @@ module Metronome
         optional :invoice_id, String
 
         # @!attribute [rw] issued_at_timestamp
-        #   @return [DateTime]
-        optional :issued_at_timestamp, DateTime
+        #   @return [Time]
+        optional :issued_at_timestamp, Time
 
         class BillingProviderType < Metronome::Enum
           AWS_MARKETPLACE = :aws_marketplace

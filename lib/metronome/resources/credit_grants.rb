@@ -11,16 +11,16 @@ module Metronome
       #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :customer_id the Metronome ID of the customer
-      # @option params [DateTime] :expires_at The credit grant will only apply to usage or charges dated before this timestamp
+      # @option params [Time] :expires_at The credit grant will only apply to usage or charges dated before this timestamp
       # @option params [GrantAmount] :grant_amount the amount of credits granted
       # @option params [String] :name the name of the credit grant as it will appear on invoices
       # @option params [PaidAmount] :paid_amount the amount paid for this credit grant
       # @option params [Float] :priority
       # @option params [String, nil] :credit_grant_type
       # @option params [Hash, nil] :custom_fields Custom fields to attach to the credit grant.
-      # @option params [DateTime, nil] :effective_at The credit grant will only apply to usage or charges dated on or after this
+      # @option params [Time, nil] :effective_at The credit grant will only apply to usage or charges dated on or after this
       #   timestamp
-      # @option params [DateTime, nil] :invoice_date The date to issue an invoice for the paid_amount.
+      # @option params [Time, nil] :invoice_date The date to issue an invoice for the paid_amount.
       # @option params [Array<String>, nil] :product_ids The product(s) which these credits will be applied to. (If unspecified, the
       #   credits will be applied to charges for all products.). The array ordering
       #   specified here will be used to determine the order in which credits will be
@@ -58,9 +58,9 @@ module Metronome
       #   credit_grant_ids is specified.
       # @option params [Array<String>, nil] :customer_ids Body param: An array of Metronome customer IDs. This must not be specified if
       #   credit_grant_ids is specified.
-      # @option params [DateTime, nil] :effective_before Body param: Only return credit grants that are effective before this timestamp
+      # @option params [Time, nil] :effective_before Body param: Only return credit grants that are effective before this timestamp
       #   (exclusive).
-      # @option params [DateTime, nil] :not_expiring_before Body param: Only return credit grants that expire at or after this timestamp.
+      # @option params [Time, nil] :not_expiring_before Body param: Only return credit grants that expire at or after this timestamp.
       #
       # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -84,7 +84,7 @@ module Metronome
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :id the ID of the credit grant
       # @option params [String, nil] :credit_grant_type the updated credit grant type
-      # @option params [DateTime, nil] :expires_at the updated expiration date for the credit grant
+      # @option params [Time, nil] :expires_at the updated expiration date for the credit grant
       # @option params [String, nil] :name the updated name for the credit grant
       #
       # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -131,11 +131,11 @@ module Metronome
       #   absent, ledger entries for all credit types will be returned.
       # @option params [Array<String>, nil] :customer_ids Body param: A list of Metronome customer IDs to fetch ledger entries for. If
       #   absent, ledger entries for all customers will be returned.
-      # @option params [DateTime, nil] :ending_before Body param: If supplied, ledger entries will only be returned with an
+      # @option params [Time, nil] :ending_before Body param: If supplied, ledger entries will only be returned with an
       #   effective_at before this time. This timestamp must not be in the future. If no
       #   timestamp is supplied, all entries up to the start of the customer's next
       #   billing period will be returned.
-      # @option params [DateTime, nil] :starting_on Body param: If supplied, only ledger entries effective at or after this time
+      # @option params [Time, nil] :starting_on Body param: If supplied, only ledger entries effective at or after this time
       #   will be returned.
       #
       # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.

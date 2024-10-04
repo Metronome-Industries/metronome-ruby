@@ -37,14 +37,14 @@ module Metronome
         #
         # @param params [Hash] Attributes to send in this request.
         # @option params [String, nil] :credit_type_id Only return invoices for the specified credit type
-        # @option params [DateTime, nil] :ending_before RFC 3339 timestamp (exclusive). Invoices will only be returned for billing
+        # @option params [Time, nil] :ending_before RFC 3339 timestamp (exclusive). Invoices will only be returned for billing
         #   periods that end before this time.
         # @option params [Integer, nil] :limit Max number of results that should be returned
         # @option params [String, nil] :next_page Cursor that indicates where the next page of results should start.
         # @option params [Boolean, nil] :skip_zero_qty_line_items If set, all zero quantity line items will be filtered out of the response
         # @option params [Symbol, Sort, nil] :sort Invoice sort order by issued_at, e.g. date_asc or date_desc. Defaults to
         #   date_asc.
-        # @option params [DateTime, nil] :starting_on RFC 3339 timestamp (inclusive). Invoices will only be returned for billing
+        # @option params [Time, nil] :starting_on RFC 3339 timestamp (inclusive). Invoices will only be returned for billing
         #   periods that start at or after this time.
         # @option params [String, nil] :status Invoice status, e.g. DRAFT, FINALIZED, or VOID
         #
@@ -72,7 +72,7 @@ module Metronome
         #   fixed charges.
         # @option params [String] :customer_plan_id The Metronome ID of the customer plan to add the charge to.
         # @option params [String] :description
-        # @option params [DateTime] :invoice_start_timestamp The start_timestamp of the invoice to add the charge to.
+        # @option params [Time] :invoice_start_timestamp The start_timestamp of the invoice to add the charge to.
         # @option params [Float] :price The price of the charge. This price will match the currency on the invoice, e.g.
         #   USD cents.
         # @option params [Float] :quantity
@@ -97,9 +97,9 @@ module Metronome
         # @param customer_id [String]
         #
         # @param params [Hash] Attributes to send in this request.
-        # @option params [DateTime] :ending_before RFC 3339 timestamp. Breakdowns will only be returned for time windows that end
+        # @option params [Time] :ending_before RFC 3339 timestamp. Breakdowns will only be returned for time windows that end
         #   on or before this time.
-        # @option params [DateTime] :starting_on RFC 3339 timestamp. Breakdowns will only be returned for time windows that start
+        # @option params [Time] :starting_on RFC 3339 timestamp. Breakdowns will only be returned for time windows that start
         #   on or after this time.
         # @option params [String, nil] :credit_type_id Only return invoices for the specified credit type
         # @option params [Integer, nil] :limit Max number of results that should be returned. For daily breakdowns, the

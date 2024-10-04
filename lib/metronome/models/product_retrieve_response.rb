@@ -34,8 +34,8 @@ module Metronome
                  )
 
         # @!attribute [rw] archived_at
-        #   @return [DateTime]
-        optional :archived_at, DateTime
+        #   @return [Time]
+        optional :archived_at, Time
 
         # @!attribute [rw] custom_fields
         #   @return [Hash]
@@ -51,8 +51,8 @@ module Metronome
 
         class Update < BaseModel
           # @!attribute [rw] created_at
-          #   @return [DateTime]
-          required :created_at, DateTime
+          #   @return [Time]
+          required :created_at, Time
 
           # @!attribute [rw] created_by
           #   @return [String]
@@ -113,8 +113,8 @@ module Metronome
           optional :quantity_rounding, -> { Metronome::Models::QuantityRounding }
 
           # @!attribute [rw] starting_at
-          #   @return [DateTime]
-          optional :starting_at, DateTime
+          #   @return [Time]
+          optional :starting_at, Time
 
           # @!attribute [rw] tags
           #   @return [Array<String>]

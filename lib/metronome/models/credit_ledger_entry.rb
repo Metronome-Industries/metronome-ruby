@@ -18,8 +18,8 @@ module Metronome
       required :credit_grant_id, String
 
       # @!attribute [rw] effective_at
-      #   @return [DateTime]
-      required :effective_at, DateTime
+      #   @return [Time]
+      required :effective_at, Time
 
       # @!attribute [rw] reason
       #   @return [String]
