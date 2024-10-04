@@ -9,16 +9,16 @@ module Metronome
 
       class Data < BaseModel
         # @!attribute [rw] starting_at
-        #   @return [DateTime]
-        required :starting_at, DateTime
+        #   @return [Time]
+        required :starting_at, Time
 
         # @!attribute [rw] value
         #   @return [Object]
         required :value, Metronome::Unknown
 
         # @!attribute [rw] ending_before
-        #   @return [DateTime]
-        optional :ending_before, DateTime
+        #   @return [Time]
+        optional :ending_before, Time
       end
     end
   end

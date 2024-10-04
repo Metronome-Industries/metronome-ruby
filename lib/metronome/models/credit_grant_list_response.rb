@@ -27,12 +27,12 @@ module Metronome
       required :deductions, Metronome::ArrayOf.new(-> { Metronome::Models::CreditLedgerEntry })
 
       # @!attribute [rw] effective_at
-      #   @return [DateTime]
-      required :effective_at, DateTime
+      #   @return [Time]
+      required :effective_at, Time
 
       # @!attribute [rw] expires_at
-      #   @return [DateTime]
-      required :expires_at, DateTime
+      #   @return [Time]
+      required :expires_at, Time
 
       # @!attribute [rw] grant_amount
       #   the amount of credits initially granted
@@ -82,8 +82,8 @@ module Metronome
       class Balance < BaseModel
         # @!attribute [rw] effective_at
         #   The end_date of the customer's current billing period.
-        #   @return [DateTime]
-        required :effective_at, DateTime
+        #   @return [Time]
+        required :effective_at, Time
 
         # @!attribute [rw] excluding_pending
         #   The grant's current balance including all posted deductions. If the grant has expired, this amount will be 0.

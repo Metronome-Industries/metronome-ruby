@@ -75,7 +75,7 @@ module Metronome
         #
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :product_id ID of the product to update
-        # @option params [DateTime] :starting_at Timestamp representing when the update should go into effect. It must be on an
+        # @option params [Time] :starting_at Timestamp representing when the update should go into effect. It must be on an
         #   hour boundary (e.g. 1:00, not 1:30).
         # @option params [String, nil] :billable_metric_id Available for USAGE products only. If not provided, defaults to product's
         #   current billable metric.

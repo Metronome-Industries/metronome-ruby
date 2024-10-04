@@ -4,8 +4,8 @@ module Metronome
   module Models
     class UsageListWithGroupsResponse < BaseModel
       # @!attribute [rw] ending_before
-      #   @return [DateTime]
-      required :ending_before, DateTime
+      #   @return [Time]
+      required :ending_before, Time
 
       # @!attribute [rw] group_key
       #   @return [String]
@@ -16,8 +16,8 @@ module Metronome
       required :group_value, String
 
       # @!attribute [rw] starting_on
-      #   @return [DateTime]
-      required :starting_on, DateTime
+      #   @return [Time]
+      required :starting_on, Time
 
       # @!attribute [rw] value
       #   @return [Float]

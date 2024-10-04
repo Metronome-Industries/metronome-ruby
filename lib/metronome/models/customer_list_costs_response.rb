@@ -8,12 +8,12 @@ module Metronome
       required :credit_types, Hash
 
       # @!attribute [rw] end_timestamp
-      #   @return [DateTime]
-      required :end_timestamp, DateTime
+      #   @return [Time]
+      required :end_timestamp, Time
 
       # @!attribute [rw] start_timestamp
-      #   @return [DateTime]
-      required :start_timestamp, DateTime
+      #   @return [Time]
+      required :start_timestamp, Time
 
       class CreditType < BaseModel
         # @!attribute [rw] cost
