@@ -34,8 +34,8 @@ module Metronome
         required :rate, -> { Metronome::Models::Rate }
 
         # @!attribute [rw] starting_at
-        #   @return [Time]
-        required :starting_at, Time
+        #   @return [DateTime]
+        required :starting_at, DateTime
 
         # @!attribute [rw] commit_rate
         #   The rate that will be used to rate a product when it is paid for by a commit. This feature requires opt-in before it can be used. Please contact Metronome support to enable this feature.
@@ -46,8 +46,8 @@ module Metronome
                  }
 
         # @!attribute [rw] ending_before
-        #   @return [Time]
-        optional :ending_before, Time
+        #   @return [DateTime]
+        optional :ending_before, DateTime
 
         # @!attribute [rw] pricing_group_values
         #   @return [Hash]

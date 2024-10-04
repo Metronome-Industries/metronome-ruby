@@ -30,8 +30,8 @@ module Metronome
         required :quantity, Float
 
         # @!attribute [rw] timestamp
-        #   @return [Time]
-        required :timestamp, Time
+        #   @return [DateTime]
+        required :timestamp, DateTime
 
         # @!attribute [rw] unit_price
         #   @return [Float]

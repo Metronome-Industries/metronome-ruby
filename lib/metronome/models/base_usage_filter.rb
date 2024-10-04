@@ -12,8 +12,8 @@ module Metronome
       required :group_values, Metronome::ArrayOf.new(String)
 
       # @!attribute [rw] starting_at
-      #   @return [Time]
-      optional :starting_at, Time
+      #   @return [DateTime]
+      optional :starting_at, DateTime
     end
   end
 end

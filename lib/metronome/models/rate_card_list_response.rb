@@ -8,8 +8,8 @@ module Metronome
       required :id, String
 
       # @!attribute [rw] created_at
-      #   @return [Time]
-      required :created_at, Time
+      #   @return [DateTime]
+      required :created_at, DateTime
 
       # @!attribute [rw] created_by
       #   @return [String]
@@ -67,8 +67,8 @@ module Metronome
           optional :id, String
 
           # @!attribute [rw] created_at
-          #   @return [Time]
-          optional :created_at, Time
+          #   @return [DateTime]
+          optional :created_at, DateTime
 
           # @!attribute [rw] created_by
           #   @return [String]
@@ -83,8 +83,8 @@ module Metronome
           optional :custom_rate, Hash
 
           # @!attribute [rw] ending_before
-          #   @return [Time]
-          optional :ending_before, Time
+          #   @return [DateTime]
+          optional :ending_before, DateTime
 
           # @!attribute [rw] entitled
           #   @return [Boolean]
@@ -106,8 +106,8 @@ module Metronome
                    }
 
           # @!attribute [rw] starting_at
-          #   @return [Time]
-          optional :starting_at, Time
+          #   @return [DateTime]
+          optional :starting_at, DateTime
 
           # @!attribute [rw] tiers
           #   @return [Array<Metronome::Models::Tier>]
@@ -128,8 +128,8 @@ module Metronome
           required :id, String
 
           # @!attribute [rw] created_at
-          #   @return [Time]
-          required :created_at, Time
+          #   @return [DateTime]
+          required :created_at, DateTime
 
           # @!attribute [rw] created_by
           #   @return [String]
@@ -151,8 +151,8 @@ module Metronome
                    }
 
           # @!attribute [rw] starting_at
-          #   @return [Time]
-          required :starting_at, Time
+          #   @return [DateTime]
+          required :starting_at, DateTime
 
           # @!attribute [rw] commit_rate
           #   The rate that will be used to rate a product when it is paid for by a commit. This feature requires opt-in before it can be used. Please contact Metronome support to enable this feature.
@@ -169,8 +169,8 @@ module Metronome
           optional :custom_rate, Hash
 
           # @!attribute [rw] ending_before
-          #   @return [Time]
-          optional :ending_before, Time
+          #   @return [DateTime]
+          optional :ending_before, DateTime
 
           # @!attribute [rw] is_prorated
           #   @return [Boolean]
@@ -255,12 +255,12 @@ module Metronome
         required :name_, String
 
         # @!attribute [rw] ending_before
-        #   @return [Time]
-        optional :ending_before, Time
+        #   @return [DateTime]
+        optional :ending_before, DateTime
 
         # @!attribute [rw] starting_at
-        #   @return [Time]
-        optional :starting_at, Time
+        #   @return [DateTime]
+        optional :starting_at, DateTime
       end
 
       class CreditTypeConversion < BaseModel
