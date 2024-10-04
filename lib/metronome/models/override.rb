@@ -8,8 +8,8 @@ module Metronome
       required :id, String
 
       # @!attribute [rw] starting_at
-      #   @return [DateTime]
-      required :starting_at, DateTime
+      #   @return [Time]
+      required :starting_at, Time
 
       # @!attribute [rw] applicable_product_tags
       #   @return [Array<String>]
@@ -20,8 +20,8 @@ module Metronome
       optional :credit_type, -> { Metronome::Models::CreditType }
 
       # @!attribute [rw] ending_before
-      #   @return [DateTime]
-      optional :ending_before, DateTime
+      #   @return [Time]
+      optional :ending_before, Time
 
       # @!attribute [rw] entitled
       #   @return [Boolean]

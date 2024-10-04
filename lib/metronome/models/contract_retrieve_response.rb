@@ -54,8 +54,8 @@ module Metronome
           required :commits, Metronome::ArrayOf.new(-> { Metronome::Models::Commit })
 
           # @!attribute [rw] created_at
-          #   @return [DateTime]
-          required :created_at, DateTime
+          #   @return [Time]
+          required :created_at, Time
 
           # @!attribute [rw] created_by
           #   @return [String]
@@ -70,8 +70,8 @@ module Metronome
           required :scheduled_charges, Metronome::ArrayOf.new(-> { Metronome::Models::ScheduledCharge })
 
           # @!attribute [rw] starting_at
-          #   @return [DateTime]
-          required :starting_at, DateTime
+          #   @return [Time]
+          required :starting_at, Time
 
           # @!attribute [rw] credits
           #   @return [Array<Metronome::Models::Credit>]
@@ -128,8 +128,8 @@ module Metronome
             optional :aws_payer_reference_id, String
 
             # @!attribute [rw] ending_before
-            #   @return [DateTime]
-            optional :ending_before, DateTime
+            #   @return [Time]
+            optional :ending_before, Time
 
             # @!attribute [rw] fraction
             #   @return [Float]
@@ -152,8 +152,8 @@ module Metronome
             optional :reseller_contract_value, Float
 
             # @!attribute [rw] starting_at
-            #   @return [DateTime]
-            optional :starting_at, DateTime
+            #   @return [Time]
+            optional :starting_at, Time
 
             class ResellerType < Metronome::Enum
               AWS = :AWS
