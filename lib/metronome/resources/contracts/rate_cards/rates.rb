@@ -9,7 +9,7 @@ module Metronome
             @client = client
           end
 
-          # Get rate card rates for a specific time.
+          # Get all rates for a rate card at a point in time
           #
           # @param params [Hash] Attributes to send in this request.
           # @option params [DateTime] :at Body param: inclusive starting point for the rates schedule
@@ -43,6 +43,9 @@ module Metronome
           # @option params [String] :rate_card_id ID of the rate card to update
           # @option params [Symbol] :rate_type
           # @option params [DateTime] :starting_at inclusive effective date
+          # @option params [CommitRate] :commit_rate The rate that will be used to rate a product when it is paid for by a commit.
+          #   This feature requires opt-in before it can be used. Please contact Metronome
+          #   support to enable this feature.
           # @option params [String] :credit_type_id "The Metronome ID of the credit type to associate with price, defaults to USD
           #   (cents) if not passed. Used by all rate_types except type PERCENTAGE. PERCENTAGE
           #   rates use the credit type of associated rates."

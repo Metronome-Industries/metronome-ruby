@@ -12,7 +12,8 @@ module Metronome
       # @param params [Hash] Attributes to send in this request.
       # @option params [Symbol] :alert_type Type of the alert
       # @option params [String] :name Name of the alert
-      # @option params [Float] :threshold Threshold value of the alert policy
+      # @option params [Float] :threshold Threshold value of the alert policy. Depending upon the alert type, this number
+      #   may represent a financial amount, the days remaining, or a percentage reached.
       # @option params [String] :billable_metric_id For alerts of type `usage_threshold_reached`, specifies which billable metric to
       #   track the usage for.
       # @option params [Array<String>] :credit_grant_type_filters An array of strings, representing a way to filter the credit grant this alert

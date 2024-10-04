@@ -108,7 +108,8 @@ module Metronome
           @client.request(req, opts)
         end
 
-        # Get a specific rate schedule including all rate card entries
+        # Get all rates for a rate card from starting_at (either in perpetuity or until
+        #   ending_before, if provided)
         #
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :rate_card_id Body param: ID of the rate card to get the schedule for
