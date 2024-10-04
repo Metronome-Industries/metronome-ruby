@@ -49,11 +49,13 @@ module Metronome
       #
       # @return [Metronome::Models::CustomerCreateResponse]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/customers"
-        req[:body] = params
-        req[:model] = Metronome::Models::CustomerCreateResponse
+        req = {
+          method: :post,
+          path: "/customers",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Metronome::Models::CustomerCreateResponse
+        }
         @client.request(req, opts)
       end
 
@@ -64,10 +66,11 @@ module Metronome
       #
       # @return [Metronome::Models::CustomerRetrieveResponse]
       def retrieve(customer_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/customers/#{customer_id}"
-        req[:model] = Metronome::Models::CustomerRetrieveResponse
+        req = {
+          method: :get,
+          path: "/customers/#{customer_id}",
+          model: Metronome::Models::CustomerRetrieveResponse
+        }
         @client.request(req, opts)
       end
 
@@ -86,12 +89,13 @@ module Metronome
       #
       # @return [Metronome::CursorPage<Metronome::Models::CustomerDetail>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/customers"
-        req[:query] = params
-        req[:page] = Metronome::CursorPage
-        req[:model] = Metronome::Models::CustomerDetail
+        req = {
+          method: :get,
+          path: "/customers",
+          query: params,
+          page: Metronome::CursorPage,
+          model: Metronome::Models::CustomerDetail
+        }
         @client.request(req, opts)
       end
 
@@ -104,11 +108,13 @@ module Metronome
       #
       # @return [Metronome::Models::CustomerArchiveResponse]
       def archive(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/customers/archive"
-        req[:body] = params
-        req[:model] = Metronome::Models::CustomerArchiveResponse
+        req = {
+          method: :post,
+          path: "/customers/archive",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Metronome::Models::CustomerArchiveResponse
+        }
         @client.request(req, opts)
       end
 
@@ -126,12 +132,13 @@ module Metronome
       #
       # @return [Metronome::CursorPage<Metronome::Models::CustomerListBillableMetricsResponse>]
       def list_billable_metrics(customer_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/customers/#{customer_id}/billable-metrics"
-        req[:query] = params
-        req[:page] = Metronome::CursorPage
-        req[:model] = Metronome::Models::CustomerListBillableMetricsResponse
+        req = {
+          method: :get,
+          path: "/customers/#{customer_id}/billable-metrics",
+          query: params,
+          page: Metronome::CursorPage,
+          model: Metronome::Models::CustomerListBillableMetricsResponse
+        }
         @client.request(req, opts)
       end
 
@@ -151,12 +158,13 @@ module Metronome
       #
       # @return [Metronome::CursorPage<Metronome::Models::CustomerListCostsResponse>]
       def list_costs(customer_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/customers/#{customer_id}/costs"
-        req[:query] = params
-        req[:page] = Metronome::CursorPage
-        req[:model] = Metronome::Models::CustomerListCostsResponse
+        req = {
+          method: :get,
+          path: "/customers/#{customer_id}/costs",
+          query: params,
+          page: Metronome::CursorPage,
+          model: Metronome::Models::CustomerListCostsResponse
+        }
         @client.request(req, opts)
       end
 
@@ -173,11 +181,13 @@ module Metronome
       #
       # @return [nil]
       def set_ingest_aliases(customer_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/customers/#{customer_id}/setIngestAliases"
-        req[:body] = params
-        req[:model] = NilClass
+        req = {
+          method: :post,
+          path: "/customers/#{customer_id}/setIngestAliases",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: NilClass
+        }
         @client.request(req, opts)
       end
 
@@ -193,11 +203,13 @@ module Metronome
       #
       # @return [Metronome::Models::CustomerSetNameResponse]
       def set_name(customer_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/customers/#{customer_id}/setName"
-        req[:body] = params
-        req[:model] = Metronome::Models::CustomerSetNameResponse
+        req = {
+          method: :post,
+          path: "/customers/#{customer_id}/setName",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Metronome::Models::CustomerSetNameResponse
+        }
         @client.request(req, opts)
       end
 
@@ -214,11 +226,13 @@ module Metronome
       #
       # @return [nil]
       def update_config(customer_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/customers/#{customer_id}/updateConfig"
-        req[:body] = params
-        req[:model] = NilClass
+        req = {
+          method: :post,
+          path: "/customers/#{customer_id}/updateConfig",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: NilClass
+        }
         @client.request(req, opts)
       end
     end

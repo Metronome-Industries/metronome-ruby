@@ -16,11 +16,13 @@ module Metronome
       #
       # @return [Metronome::Models::InvoiceRegenerateResponse]
       def regenerate(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/invoices/regenerate"
-        req[:body] = params
-        req[:model] = Metronome::Models::InvoiceRegenerateResponse
+        req = {
+          method: :post,
+          path: "/invoices/regenerate",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Metronome::Models::InvoiceRegenerateResponse
+        }
         @client.request(req, opts)
       end
 
@@ -33,11 +35,13 @@ module Metronome
       #
       # @return [Metronome::Models::InvoiceVoidResponse]
       def void(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/invoices/void"
-        req[:body] = params
-        req[:model] = Metronome::Models::InvoiceVoidResponse
+        req = {
+          method: :post,
+          path: "/invoices/void",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Metronome::Models::InvoiceVoidResponse
+        }
         @client.request(req, opts)
       end
     end

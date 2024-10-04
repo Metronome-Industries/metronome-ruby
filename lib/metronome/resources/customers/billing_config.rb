@@ -25,11 +25,13 @@ module Metronome
         #
         # @return [nil]
         def create(customer_id, billing_provider_type, params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/customers/#{customer_id}/billing-config/#{billing_provider_type}"
-          req[:body] = params
-          req[:model] = NilClass
+          req = {
+            method: :post,
+            path: "/customers/#{customer_id}/billing-config/#{billing_provider_type}",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: NilClass
+          }
           @client.request(req, opts)
         end
 
@@ -41,10 +43,11 @@ module Metronome
         #
         # @return [Metronome::Models::BillingConfigRetrieveResponse]
         def retrieve(customer_id, billing_provider_type, opts = {})
-          req = {}
-          req[:method] = :get
-          req[:path] = "/customers/#{customer_id}/billing-config/#{billing_provider_type}"
-          req[:model] = Metronome::Models::BillingConfigRetrieveResponse
+          req = {
+            method: :get,
+            path: "/customers/#{customer_id}/billing-config/#{billing_provider_type}",
+            model: Metronome::Models::BillingConfigRetrieveResponse
+          }
           @client.request(req, opts)
         end
 
@@ -57,10 +60,11 @@ module Metronome
         #
         # @return [nil]
         def delete(customer_id, billing_provider_type, opts = {})
-          req = {}
-          req[:method] = :delete
-          req[:path] = "/customers/#{customer_id}/billing-config/#{billing_provider_type}"
-          req[:model] = NilClass
+          req = {
+            method: :delete,
+            path: "/customers/#{customer_id}/billing-config/#{billing_provider_type}",
+            model: NilClass
+          }
           @client.request(req, opts)
         end
       end

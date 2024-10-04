@@ -19,11 +19,13 @@ module Metronome
         #
         # @return [Metronome::Models::AlertRetrieveResponse]
         def retrieve(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/customer-alerts/get"
-          req[:body] = params
-          req[:model] = Metronome::Models::AlertRetrieveResponse
+          req = {
+            method: :post,
+            path: "/customer-alerts/get",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Metronome::Models::AlertRetrieveResponse
+          }
           @client.request(req, opts)
         end
 
@@ -39,13 +41,15 @@ module Metronome
         #
         # @return [Metronome::Models::AlertListResponse]
         def list(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/customer-alerts/list"
           query_params = [:next_page]
-          req[:query] = params.slice(*query_params)
-          req[:body] = params.except(*query_params)
-          req[:model] = Metronome::Models::AlertListResponse
+          req = {
+            method: :post,
+            path: "/customer-alerts/list",
+            query: params.slice(*query_params),
+            body: params.except(*query_params),
+            headers: {"Content-Type" => "application/json"},
+            model: Metronome::Models::AlertListResponse
+          }
           @client.request(req, opts)
         end
 
@@ -59,11 +63,13 @@ module Metronome
         #
         # @return [nil]
         def reset(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/customer-alerts/reset"
-          req[:body] = params
-          req[:model] = NilClass
+          req = {
+            method: :post,
+            path: "/customer-alerts/reset",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: NilClass
+          }
           @client.request(req, opts)
         end
       end

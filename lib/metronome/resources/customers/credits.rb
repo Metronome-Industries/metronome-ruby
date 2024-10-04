@@ -32,11 +32,13 @@ module Metronome
         #
         # @return [Metronome::Models::CreditCreateResponse]
         def create(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/contracts/customerCredits/create"
-          req[:body] = params
-          req[:model] = Metronome::Models::CreditCreateResponse
+          req = {
+            method: :post,
+            path: "/contracts/customerCredits/create",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Metronome::Models::CreditCreateResponse
+          }
           @client.request(req, opts)
         end
 
@@ -58,11 +60,13 @@ module Metronome
         #
         # @return [Metronome::Models::CreditListResponse]
         def list(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/contracts/customerCredits/list"
-          req[:body] = params
-          req[:model] = Metronome::Models::CreditListResponse
+          req = {
+            method: :post,
+            path: "/contracts/customerCredits/list",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Metronome::Models::CreditListResponse
+          }
           @client.request(req, opts)
         end
 
@@ -78,11 +82,13 @@ module Metronome
         #
         # @return [Metronome::Models::CreditUpdateEndDateResponse]
         def update_end_date(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/contracts/customerCredits/updateEndDate"
-          req[:body] = params
-          req[:model] = Metronome::Models::CreditUpdateEndDateResponse
+          req = {
+            method: :post,
+            path: "/contracts/customerCredits/updateEndDate",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Metronome::Models::CreditUpdateEndDateResponse
+          }
           @client.request(req, opts)
         end
       end

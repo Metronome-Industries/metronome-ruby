@@ -9,6 +9,7 @@
 require "metronome"
 
 require "test/unit"
+require "stringio"
 
 module Metronome
   module Test

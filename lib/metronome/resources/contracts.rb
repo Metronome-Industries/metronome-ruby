@@ -57,11 +57,13 @@ module Metronome
       #
       # @return [Metronome::Models::ContractCreateResponse]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/contracts/create"
-        req[:body] = params
-        req[:model] = Metronome::Models::ContractCreateResponse
+        req = {
+          method: :post,
+          path: "/contracts/create",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Metronome::Models::ContractCreateResponse
+        }
         @client.request(req, opts)
       end
 
@@ -77,11 +79,13 @@ module Metronome
       #
       # @return [Metronome::Models::ContractRetrieveResponse]
       def retrieve(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/contracts/get"
-        req[:body] = params
-        req[:model] = Metronome::Models::ContractRetrieveResponse
+        req = {
+          method: :post,
+          path: "/contracts/get",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Metronome::Models::ContractRetrieveResponse
+        }
         @client.request(req, opts)
       end
 
@@ -103,11 +107,13 @@ module Metronome
       #
       # @return [Metronome::Models::ContractListResponse]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/contracts/list"
-        req[:body] = params
-        req[:model] = Metronome::Models::ContractListResponse
+        req = {
+          method: :post,
+          path: "/contracts/list",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Metronome::Models::ContractListResponse
+        }
         @client.request(req, opts)
       end
 
@@ -127,11 +133,13 @@ module Metronome
       #
       # @return [nil]
       def add_manual_balance_entry(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/contracts/addManualBalanceLedgerEntry"
-        req[:body] = params
-        req[:model] = NilClass
+        req = {
+          method: :post,
+          path: "/contracts/addManualBalanceLedgerEntry",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: NilClass
+        }
         @client.request(req, opts)
       end
 
@@ -157,11 +165,13 @@ module Metronome
       #
       # @return [Metronome::Models::ContractAmendResponse]
       def amend(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/contracts/amend"
-        req[:body] = params
-        req[:model] = Metronome::Models::ContractAmendResponse
+        req = {
+          method: :post,
+          path: "/contracts/amend",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Metronome::Models::ContractAmendResponse
+        }
         @client.request(req, opts)
       end
 
@@ -177,11 +187,13 @@ module Metronome
       #
       # @return [Metronome::Models::ContractArchiveResponse]
       def archive(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/contracts/archive"
-        req[:body] = params
-        req[:model] = Metronome::Models::ContractArchiveResponse
+        req = {
+          method: :post,
+          path: "/contracts/archive",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Metronome::Models::ContractArchiveResponse
+        }
         @client.request(req, opts)
       end
 
@@ -195,11 +207,13 @@ module Metronome
       #
       # @return [Metronome::Models::ContractCreateHistoricalInvoicesResponse]
       def create_historical_invoices(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/contracts/createHistoricalInvoices"
-        req[:body] = params
-        req[:model] = Metronome::Models::ContractCreateHistoricalInvoicesResponse
+        req = {
+          method: :post,
+          path: "/contracts/createHistoricalInvoices",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Metronome::Models::ContractCreateHistoricalInvoicesResponse
+        }
         @client.request(req, opts)
       end
 
@@ -221,11 +235,13 @@ module Metronome
       #
       # @return [Metronome::Models::ContractListBalancesResponse]
       def list_balances(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/contracts/customerBalances/list"
-        req[:body] = params
-        req[:model] = Metronome::Models::ContractListBalancesResponse
+        req = {
+          method: :post,
+          path: "/contracts/customerBalances/list",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Metronome::Models::ContractListBalancesResponse
+        }
         @client.request(req, opts)
       end
 
@@ -246,13 +262,15 @@ module Metronome
       #
       # @return [Metronome::Models::ContractRetrieveRateScheduleResponse]
       def retrieve_rate_schedule(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/contracts/getContractRateSchedule"
         query_params = [:limit, :next_page]
-        req[:query] = params.slice(*query_params)
-        req[:body] = params.except(*query_params)
-        req[:model] = Metronome::Models::ContractRetrieveRateScheduleResponse
+        req = {
+          method: :post,
+          path: "/contracts/getContractRateSchedule",
+          query: params.slice(*query_params),
+          body: params.except(*query_params),
+          headers: {"Content-Type" => "application/json"},
+          model: Metronome::Models::ContractRetrieveRateScheduleResponse
+        }
         @client.request(req, opts)
       end
 
@@ -271,11 +289,13 @@ module Metronome
       #
       # @return [Metronome::Models::ContractScheduleProServicesInvoiceResponse]
       def schedule_pro_services_invoice(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/contracts/scheduleProServicesInvoice"
-        req[:body] = params
-        req[:model] = Metronome::Models::ContractScheduleProServicesInvoiceResponse
+        req = {
+          method: :post,
+          path: "/contracts/scheduleProServicesInvoice",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Metronome::Models::ContractScheduleProServicesInvoiceResponse
+        }
         @client.request(req, opts)
       end
 
@@ -292,11 +312,13 @@ module Metronome
       #
       # @return [nil]
       def set_usage_filter(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/contracts/setUsageFilter"
-        req[:body] = params
-        req[:model] = NilClass
+        req = {
+          method: :post,
+          path: "/contracts/setUsageFilter",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: NilClass
+        }
         @client.request(req, opts)
       end
 
@@ -312,11 +334,13 @@ module Metronome
       #
       # @return [Metronome::Models::ContractUpdateEndDateResponse]
       def update_end_date(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/contracts/updateEndDate"
-        req[:body] = params
-        req[:model] = Metronome::Models::ContractUpdateEndDateResponse
+        req = {
+          method: :post,
+          path: "/contracts/updateEndDate",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Metronome::Models::ContractUpdateEndDateResponse
+        }
         @client.request(req, opts)
       end
     end

@@ -16,10 +16,11 @@ module Metronome
       #
       # @return [Metronome::Models::ServiceListResponse]
       def list(opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/services"
-        req[:model] = Metronome::Models::ServiceListResponse
+        req = {
+          method: :get,
+          path: "/services",
+          model: Metronome::Models::ServiceListResponse
+        }
         @client.request(req, opts)
       end
     end

@@ -21,11 +21,12 @@ module Metronome
         #
         # @return [Metronome::Models::InvoiceRetrieveResponse]
         def retrieve(customer_id, invoice_id, params = {}, opts = {})
-          req = {}
-          req[:method] = :get
-          req[:path] = "/customers/#{customer_id}/invoices/#{invoice_id}"
-          req[:query] = params
-          req[:model] = Metronome::Models::InvoiceRetrieveResponse
+          req = {
+            method: :get,
+            path: "/customers/#{customer_id}/invoices/#{invoice_id}",
+            query: params,
+            model: Metronome::Models::InvoiceRetrieveResponse
+          }
           @client.request(req, opts)
         end
 
@@ -51,12 +52,13 @@ module Metronome
         #
         # @return [Metronome::CursorPage<Metronome::Models::Invoice>]
         def list(customer_id, params = {}, opts = {})
-          req = {}
-          req[:method] = :get
-          req[:path] = "/customers/#{customer_id}/invoices"
-          req[:query] = params
-          req[:page] = Metronome::CursorPage
-          req[:model] = Metronome::Models::Invoice
+          req = {
+            method: :get,
+            path: "/customers/#{customer_id}/invoices",
+            query: params,
+            page: Metronome::CursorPage,
+            model: Metronome::Models::Invoice
+          }
           @client.request(req, opts)
         end
 
@@ -79,11 +81,13 @@ module Metronome
         #
         # @return [Metronome::Models::InvoiceAddChargeResponse]
         def add_charge(customer_id, params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/customers/#{customer_id}/addCharge"
-          req[:body] = params
-          req[:model] = Metronome::Models::InvoiceAddChargeResponse
+          req = {
+            method: :post,
+            path: "/customers/#{customer_id}/addCharge",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Metronome::Models::InvoiceAddChargeResponse
+          }
           @client.request(req, opts)
         end
 
@@ -113,12 +117,13 @@ module Metronome
         #
         # @return [Metronome::CursorPage<Metronome::Models::InvoiceListBreakdownsResponse>]
         def list_breakdowns(customer_id, params = {}, opts = {})
-          req = {}
-          req[:method] = :get
-          req[:path] = "/customers/#{customer_id}/invoices/breakdowns"
-          req[:query] = params
-          req[:page] = Metronome::CursorPage
-          req[:model] = Metronome::Models::InvoiceListBreakdownsResponse
+          req = {
+            method: :get,
+            path: "/customers/#{customer_id}/invoices/breakdowns",
+            query: params,
+            page: Metronome::CursorPage,
+            model: Metronome::Models::InvoiceListBreakdownsResponse
+          }
           @client.request(req, opts)
         end
       end

@@ -24,14 +24,16 @@ module Metronome
           #
           # @return [Metronome::CursorPage<Metronome::Models::RateListResponse>]
           def list(params = {}, opts = {})
-            req = {}
-            req[:method] = :post
-            req[:path] = "/contract-pricing/rate-cards/getRates"
             query_params = [:limit, :next_page]
-            req[:query] = params.slice(*query_params)
-            req[:body] = params.except(*query_params)
-            req[:page] = Metronome::CursorPage
-            req[:model] = Metronome::Models::RateListResponse
+            req = {
+              method: :post,
+              path: "/contract-pricing/rate-cards/getRates",
+              query: params.slice(*query_params),
+              body: params.except(*query_params),
+              headers: {"Content-Type" => "application/json"},
+              page: Metronome::CursorPage,
+              model: Metronome::Models::RateListResponse
+            }
             @client.request(req, opts)
           end
 
@@ -68,11 +70,13 @@ module Metronome
           #
           # @return [Metronome::Models::RateAddResponse]
           def add(params = {}, opts = {})
-            req = {}
-            req[:method] = :post
-            req[:path] = "/contract-pricing/rate-cards/addRate"
-            req[:body] = params
-            req[:model] = Metronome::Models::RateAddResponse
+            req = {
+              method: :post,
+              path: "/contract-pricing/rate-cards/addRate",
+              body: params,
+              headers: {"Content-Type" => "application/json"},
+              model: Metronome::Models::RateAddResponse
+            }
             @client.request(req, opts)
           end
 
@@ -86,11 +90,13 @@ module Metronome
           #
           # @return [Metronome::Models::RateAddManyResponse]
           def add_many(params = {}, opts = {})
-            req = {}
-            req[:method] = :post
-            req[:path] = "/contract-pricing/rate-cards/addRates"
-            req[:body] = params
-            req[:model] = Metronome::Models::RateAddManyResponse
+            req = {
+              method: :post,
+              path: "/contract-pricing/rate-cards/addRates",
+              body: params,
+              headers: {"Content-Type" => "application/json"},
+              model: Metronome::Models::RateAddManyResponse
+            }
             @client.request(req, opts)
           end
         end

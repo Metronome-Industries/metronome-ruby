@@ -17,12 +17,13 @@ module Metronome
       #
       # @return [Metronome::CursorPage<Metronome::Models::PlanListResponse>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/plans"
-        req[:query] = params
-        req[:page] = Metronome::CursorPage
-        req[:model] = Metronome::Models::PlanListResponse
+        req = {
+          method: :get,
+          path: "/plans",
+          query: params,
+          page: Metronome::CursorPage,
+          model: Metronome::Models::PlanListResponse
+        }
         @client.request(req, opts)
       end
 
@@ -33,10 +34,11 @@ module Metronome
       #
       # @return [Metronome::Models::PlanGetDetailsResponse]
       def get_details(plan_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/planDetails/#{plan_id}"
-        req[:model] = Metronome::Models::PlanGetDetailsResponse
+        req = {
+          method: :get,
+          path: "/planDetails/#{plan_id}",
+          model: Metronome::Models::PlanGetDetailsResponse
+        }
         @client.request(req, opts)
       end
 
@@ -52,12 +54,13 @@ module Metronome
       #
       # @return [Metronome::CursorPage<Metronome::Models::PlanListChargesResponse>]
       def list_charges(plan_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/planDetails/#{plan_id}/charges"
-        req[:query] = params
-        req[:page] = Metronome::CursorPage
-        req[:model] = Metronome::Models::PlanListChargesResponse
+        req = {
+          method: :get,
+          path: "/planDetails/#{plan_id}/charges",
+          query: params,
+          page: Metronome::CursorPage,
+          model: Metronome::Models::PlanListChargesResponse
+        }
         @client.request(req, opts)
       end
 
@@ -83,12 +86,13 @@ module Metronome
       #
       # @return [Metronome::CursorPage<Metronome::Models::PlanListCustomersResponse>]
       def list_customers(plan_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/planDetails/#{plan_id}/customers"
-        req[:query] = params
-        req[:page] = Metronome::CursorPage
-        req[:model] = Metronome::Models::PlanListCustomersResponse
+        req = {
+          method: :get,
+          path: "/planDetails/#{plan_id}/customers",
+          query: params,
+          page: Metronome::CursorPage,
+          model: Metronome::Models::PlanListCustomersResponse
+        }
         @client.request(req, opts)
       end
     end
