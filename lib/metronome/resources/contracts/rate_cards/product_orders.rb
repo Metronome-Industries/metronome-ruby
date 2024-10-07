@@ -5,6 +5,7 @@ module Metronome
     class Contracts
       class RateCards
         class ProductOrders
+          # @param client [Metronome::Client]
           def initialize(client:)
             @client = client
           end

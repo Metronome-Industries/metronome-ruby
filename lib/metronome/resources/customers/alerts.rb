@@ -4,6 +4,7 @@ module Metronome
   module Resources
     class Customers
       class Alerts
+        # @param client [Metronome::Client]
         def initialize(client:)
           @client = client
         end
