@@ -12,8 +12,8 @@ module Metronome
       required :charge_type, enum: -> { Metronome::Models::PlanListChargesResponse::ChargeType }
 
       # @!attribute [rw] credit_type
-      #   @return [Metronome::Models::CreditType]
-      required :credit_type, -> { Metronome::Models::CreditType }
+      #   @return [Metronome::Models::CreditTypeData]
+      required :credit_type, -> { Metronome::Models::CreditTypeData }
 
       # @!attribute [rw] custom_fields
       #   @return [Hash]

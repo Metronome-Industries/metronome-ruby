@@ -54,8 +54,8 @@ module Metronome
         optional :credit_grant_type_filters, Metronome::ArrayOf.new(String)
 
         # @!attribute [rw] credit_type
-        #   @return [Metronome::Models::CreditType]
-        optional :credit_type, -> { Metronome::Models::CreditType }
+        #   @return [Metronome::Models::CreditTypeData]
+        optional :credit_type, -> { Metronome::Models::CreditTypeData }
 
         # @!attribute [rw] custom_field_filters
         #   A list of custom field filters for alert types that support advanced filtering

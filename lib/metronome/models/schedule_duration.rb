@@ -13,8 +13,8 @@ module Metronome
                )
 
       # @!attribute [rw] credit_type
-      #   @return [Metronome::Models::CreditType]
-      optional :credit_type, -> { Metronome::Models::CreditType }
+      #   @return [Metronome::Models::CreditTypeData]
+      optional :credit_type, -> { Metronome::Models::CreditTypeData }
 
       class ScheduleItem < BaseModel
         # @!attribute [rw] id

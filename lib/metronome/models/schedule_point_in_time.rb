@@ -4,8 +4,8 @@ module Metronome
   module Models
     class SchedulePointInTime < BaseModel
       # @!attribute [rw] credit_type
-      #   @return [Metronome::Models::CreditType]
-      optional :credit_type, -> { Metronome::Models::CreditType }
+      #   @return [Metronome::Models::CreditTypeData]
+      optional :credit_type, -> { Metronome::Models::CreditTypeData }
 
       # @!attribute [rw] schedule_items
       #   @return [Array<Metronome::Models::SchedulePointInTime::ScheduleItem>]

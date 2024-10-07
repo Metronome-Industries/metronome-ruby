@@ -46,8 +46,8 @@ module Metronome
         required :rate_type, enum: -> { Metronome::Models::RateListResponse::CommitRate::RateType }
 
         # @!attribute [rw] credit_type
-        #   @return [Metronome::Models::CreditType]
-        optional :credit_type, -> { Metronome::Models::CreditType }
+        #   @return [Metronome::Models::CreditTypeData]
+        optional :credit_type, -> { Metronome::Models::CreditTypeData }
 
         # @!attribute [rw] is_prorated
         #   Commit rate proration configuration. Only valid for SUBSCRIPTION rate_type.

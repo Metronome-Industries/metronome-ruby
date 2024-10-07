@@ -103,8 +103,8 @@ module Metronome
 
         # @!attribute [rw] credit_type
         #   the credit type for the amount granted
-        #   @return [Metronome::Models::CreditType]
-        required :credit_type, -> { Metronome::Models::CreditType }
+        #   @return [Metronome::Models::CreditTypeData]
+        required :credit_type, -> { Metronome::Models::CreditTypeData }
       end
 
       class PaidAmount < BaseModel
@@ -114,8 +114,8 @@ module Metronome
 
         # @!attribute [rw] credit_type
         #   the credit type for the amount paid
-        #   @return [Metronome::Models::CreditType]
-        required :credit_type, -> { Metronome::Models::CreditType }
+        #   @return [Metronome::Models::CreditTypeData]
+        required :credit_type, -> { Metronome::Models::CreditTypeData }
       end
 
       class Product < BaseModel

@@ -44,7 +44,7 @@ module Metronome
           uri_string
         )
 
-        content_type = headers["content-type"]
+        content_type = headers["Content-Type"]
         if content_type == "multipart/form-data" && body
           form_data =
             body.filter_map do |k, v|
@@ -52,7 +52,7 @@ module Metronome
               [k.to_s, v].flatten
             end
           request.set_form(form_data, content_type)
-          headers = headers.merge("content-type" => nil)
+          headers = headers.merge("Content-Type" => nil)
         else
           request.body = body
         end

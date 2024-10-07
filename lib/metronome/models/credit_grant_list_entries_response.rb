@@ -27,8 +27,8 @@ module Metronome
 
         class Ledger < BaseModel
           # @!attribute [rw] credit_type
-          #   @return [Metronome::Models::CreditType]
-          required :credit_type, -> { Metronome::Models::CreditType }
+          #   @return [Metronome::Models::CreditTypeData]
+          required :credit_type, -> { Metronome::Models::CreditTypeData }
 
           # @!attribute [rw] ending_balance
           #   the effective balances at the end of the specified time window

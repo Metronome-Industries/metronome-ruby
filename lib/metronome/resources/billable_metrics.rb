@@ -39,16 +39,14 @@ module Metronome
 
       # Get a billable metric.
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :billable_metric_id
-      #
+      # @param billable_metric_id [String]
       # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::BillableMetricRetrieveResponse]
-      def retrieve(params = {}, opts = {})
+      def retrieve(billable_metric_id, opts = {})
         req = {
           method: :get,
-          path: "/billable-metrics/#{params.fetch(:billable_metric_id)}",
+          path: "/billable-metrics/#{billable_metric_id}",
           model: Metronome::Models::BillableMetricRetrieveResponse
         }
         @client.request(req, opts)

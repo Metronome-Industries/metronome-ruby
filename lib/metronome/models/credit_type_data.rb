@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class CreditType < BaseModel
+    class CreditTypeData < BaseModel
       # @!attribute [rw] id
       #   @return [String]
       required :id, String

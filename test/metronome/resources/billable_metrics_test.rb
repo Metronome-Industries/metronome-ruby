@@ -2,9 +2,7 @@
 
 require_relative "../test_helper"
 
-class Metronome::Test::Resources::BillableMetricsTest < Minitest::Test
-  parallelize_me!
-
+class Metronome::Test::Resources::BillableMetricsTest < Test::Unit::TestCase
   def setup
     @metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token")
   end
@@ -14,8 +12,8 @@ class Metronome::Test::Resources::BillableMetricsTest < Minitest::Test
     assert_kind_of(Metronome::Models::BillableMetricCreateResponse, response)
   end
 
-  def test_retrieve_required_params
-    response = @metronome.billable_metrics.retrieve({billable_metric_id: "13117714-3f05-48e5-a6e9-a66093f13b4d"})
+  def test_retrieve
+    response = @metronome.billable_metrics.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     assert_kind_of(Metronome::Models::BillableMetricRetrieveResponse, response)
   end
 

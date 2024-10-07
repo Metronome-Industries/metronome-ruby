@@ -18,8 +18,8 @@ module Metronome
         optional :commit_rate, -> { Metronome::Models::RateAddResponse::Data::CommitRate }
 
         # @!attribute [rw] credit_type
-        #   @return [Metronome::Models::CreditType]
-        optional :credit_type, -> { Metronome::Models::CreditType }
+        #   @return [Metronome::Models::CreditTypeData]
+        optional :credit_type, -> { Metronome::Models::CreditTypeData }
 
         # @!attribute [rw] custom_rate
         #   Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.
@@ -75,8 +75,8 @@ module Metronome
           required :rate_type, enum: -> { Metronome::Models::RateAddResponse::Data::CommitRate::RateType }
 
           # @!attribute [rw] credit_type
-          #   @return [Metronome::Models::CreditType]
-          optional :credit_type, -> { Metronome::Models::CreditType }
+          #   @return [Metronome::Models::CreditTypeData]
+          optional :credit_type, -> { Metronome::Models::CreditTypeData }
 
           # @!attribute [rw] is_prorated
           #   Commit rate proration configuration. Only valid for SUBSCRIPTION rate_type.

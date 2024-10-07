@@ -37,16 +37,16 @@ module Metronome
         required :amount_granted, Float
 
         # @!attribute [rw] amount_granted_credit_type
-        #   @return [Metronome::Models::CreditType]
-        required :amount_granted_credit_type, -> { Metronome::Models::CreditType }
+        #   @return [Metronome::Models::CreditTypeData]
+        required :amount_granted_credit_type, -> { Metronome::Models::CreditTypeData }
 
         # @!attribute [rw] amount_paid
         #   @return [Float]
         required :amount_paid, Float
 
         # @!attribute [rw] amount_paid_credit_type
-        #   @return [Metronome::Models::CreditType]
-        required :amount_paid_credit_type, -> { Metronome::Models::CreditType }
+        #   @return [Metronome::Models::CreditTypeData]
+        required :amount_paid_credit_type, -> { Metronome::Models::CreditTypeData }
 
         # @!attribute [rw] effective_duration
         #   @return [Float]
@@ -79,8 +79,8 @@ module Metronome
 
       class Minimum < BaseModel
         # @!attribute [rw] credit_type
-        #   @return [Metronome::Models::CreditType]
-        required :credit_type, -> { Metronome::Models::CreditType }
+        #   @return [Metronome::Models::CreditTypeData]
+        required :credit_type, -> { Metronome::Models::CreditTypeData }
 
         # @!attribute [rw] name_
         #   @return [String]
@@ -98,12 +98,12 @@ module Metronome
 
       class OverageRate < BaseModel
         # @!attribute [rw] credit_type
-        #   @return [Metronome::Models::CreditType]
-        required :credit_type, -> { Metronome::Models::CreditType }
+        #   @return [Metronome::Models::CreditTypeData]
+        required :credit_type, -> { Metronome::Models::CreditTypeData }
 
         # @!attribute [rw] fiat_credit_type
-        #   @return [Metronome::Models::CreditType]
-        required :fiat_credit_type, -> { Metronome::Models::CreditType }
+        #   @return [Metronome::Models::CreditTypeData]
+        required :fiat_credit_type, -> { Metronome::Models::CreditTypeData }
 
         # @!attribute [rw] start_period
         #   Used in price ramps.  Indicates how many billing periods pass before the charge applies.
