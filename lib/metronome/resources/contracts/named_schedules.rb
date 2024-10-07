@@ -4,6 +4,7 @@ module Metronome
   module Resources
     class Contracts
       class NamedSchedules
+        # @param client [Metronome::Client]
         def initialize(client:)
           @client = client
         end

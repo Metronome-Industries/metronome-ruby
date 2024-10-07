@@ -13,6 +13,7 @@ module Metronome
         # @return [Metronome::Resources::Contracts::RateCards::NamedSchedules]
         attr_reader :named_schedules
 
+        # @param client [Metronome::Client]
         def initialize(client:)
           @client = client
           @product_orders = Metronome::Resources::Contracts::RateCards::ProductOrders.new(client: client)

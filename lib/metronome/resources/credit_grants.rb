@@ -3,6 +3,7 @@
 module Metronome
   module Resources
     class CreditGrants
+      # @param client [Metronome::Client]
       def initialize(client:)
         @client = client
       end
