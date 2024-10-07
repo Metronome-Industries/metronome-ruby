@@ -55,7 +55,8 @@ module Metronome
       # Archive an existing alert
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :id
+      # @option params [String] :id The Metronome ID of the alert
+      # @option params [Boolean, nil] :release_uniqueness_key If true, resets the uniqueness key on this alert so it can be re-used
       #
       # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #

@@ -41,8 +41,8 @@ module Metronome
       optional :description, String
 
       # @!attribute [rw] fiat_credit_type
-      #   @return [Metronome::Models::CreditType]
-      optional :fiat_credit_type, -> { Metronome::Models::CreditType }
+      #   @return [Metronome::Models::CreditTypeData]
+      optional :fiat_credit_type, -> { Metronome::Models::CreditTypeData }
 
       class RateCardEntry < BaseModel
         # @!attribute [rw] current
@@ -75,8 +75,8 @@ module Metronome
           optional :created_by, String
 
           # @!attribute [rw] credit_type
-          #   @return [Metronome::Models::CreditType]
-          optional :credit_type, -> { Metronome::Models::CreditType }
+          #   @return [Metronome::Models::CreditTypeData]
+          optional :credit_type, -> { Metronome::Models::CreditTypeData }
 
           # @!attribute [rw] custom_rate
           #   @return [Hash]
@@ -161,8 +161,8 @@ module Metronome
                    -> { Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Update::CommitRate }
 
           # @!attribute [rw] credit_type
-          #   @return [Metronome::Models::CreditType]
-          optional :credit_type, -> { Metronome::Models::CreditType }
+          #   @return [Metronome::Models::CreditTypeData]
+          optional :credit_type, -> { Metronome::Models::CreditTypeData }
 
           # @!attribute [rw] custom_rate
           #   @return [Hash]
@@ -205,8 +205,8 @@ module Metronome
                      }
 
             # @!attribute [rw] credit_type
-            #   @return [Metronome::Models::CreditType]
-            optional :credit_type, -> { Metronome::Models::CreditType }
+            #   @return [Metronome::Models::CreditTypeData]
+            optional :credit_type, -> { Metronome::Models::CreditTypeData }
 
             # @!attribute [rw] is_prorated
             #   Commit rate proration configuration. Only valid for SUBSCRIPTION rate_type.
@@ -265,8 +265,8 @@ module Metronome
 
       class CreditTypeConversion < BaseModel
         # @!attribute [rw] custom_credit_type
-        #   @return [Metronome::Models::CreditType]
-        required :custom_credit_type, -> { Metronome::Models::CreditType }
+        #   @return [Metronome::Models::CreditTypeData]
+        required :custom_credit_type, -> { Metronome::Models::CreditTypeData }
 
         # @!attribute [rw] fiat_per_custom_credit
         #   @return [String]

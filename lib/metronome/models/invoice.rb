@@ -8,8 +8,8 @@ module Metronome
       required :id, String
 
       # @!attribute [rw] credit_type
-      #   @return [Metronome::Models::CreditType]
-      required :credit_type, -> { Metronome::Models::CreditType }
+      #   @return [Metronome::Models::CreditTypeData]
+      required :credit_type, -> { Metronome::Models::CreditTypeData }
 
       # @!attribute [rw] customer_id
       #   @return [String]
@@ -126,8 +126,8 @@ module Metronome
 
       class LineItem < BaseModel
         # @!attribute [rw] credit_type
-        #   @return [Metronome::Models::CreditType]
-        required :credit_type, -> { Metronome::Models::CreditType }
+        #   @return [Metronome::Models::CreditTypeData]
+        required :credit_type, -> { Metronome::Models::CreditTypeData }
 
         # @!attribute [rw] name_
         #   @return [String]
@@ -503,8 +503,8 @@ module Metronome
 
       class InvoiceAdjustment < BaseModel
         # @!attribute [rw] credit_type
-        #   @return [Metronome::Models::CreditType]
-        required :credit_type, -> { Metronome::Models::CreditType }
+        #   @return [Metronome::Models::CreditTypeData]
+        required :credit_type, -> { Metronome::Models::CreditTypeData }
 
         # @!attribute [rw] name_
         #   @return [String]

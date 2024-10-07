@@ -8,8 +8,8 @@ module Metronome
       required :rate_type, enum: -> { Metronome::Models::Rate::RateType }
 
       # @!attribute [rw] credit_type
-      #   @return [Metronome::Models::CreditType]
-      optional :credit_type, -> { Metronome::Models::CreditType }
+      #   @return [Metronome::Models::CreditTypeData]
+      optional :credit_type, -> { Metronome::Models::CreditTypeData }
 
       # @!attribute [rw] custom_rate
       #   Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.

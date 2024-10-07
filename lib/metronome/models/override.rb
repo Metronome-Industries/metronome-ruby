@@ -16,8 +16,8 @@ module Metronome
       optional :applicable_product_tags, Metronome::ArrayOf.new(String)
 
       # @!attribute [rw] credit_type
-      #   @return [Metronome::Models::CreditType]
-      optional :credit_type, -> { Metronome::Models::CreditType }
+      #   @return [Metronome::Models::CreditTypeData]
+      optional :credit_type, -> { Metronome::Models::CreditTypeData }
 
       # @!attribute [rw] ending_before
       #   @return [Time]
@@ -119,8 +119,8 @@ module Metronome
         required :rate_type, enum: -> { Metronome::Models::Override::OverwriteRate::RateType }
 
         # @!attribute [rw] credit_type
-        #   @return [Metronome::Models::CreditType]
-        optional :credit_type, -> { Metronome::Models::CreditType }
+        #   @return [Metronome::Models::CreditTypeData]
+        optional :credit_type, -> { Metronome::Models::CreditTypeData }
 
         # @!attribute [rw] custom_rate
         #   Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.

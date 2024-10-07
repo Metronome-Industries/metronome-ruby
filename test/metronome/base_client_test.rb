@@ -2,9 +2,7 @@
 
 require_relative "test_helper"
 
-class Metronome::Test::BaseClientTest < Minitest::Test
-  parallelize_me!
-
+class Metronome::Test::BaseClientTest < Test::Unit::TestCase
   def test_from_uri_string
     assert_equal(
       {

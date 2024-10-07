@@ -1,27 +1,18 @@
 # frozen_string_literal: true
 
-require "minitest/test_task"
+require "rake/testtask"
 require "rubocop/rake_task"
 
 task(default: [:test, :format])
 
-Minitest::TestTask.create
+Rake::TestTask.new { |t| t.pattern = "./test/**/*_test.rb" }
 
 RuboCop::RakeTask.new(:rubocop) do |t|
-  t.options = %w[--fail-level E --autocorrect]
-  if ENV.key?("CI")
-    t.options += %w[--format github]
-  end
+  t.options = ["-a", "--fail-level", "E"]
 end
 
-RuboCop::RakeTask.new(:format) do |t|
-  t.options = %w[--fail-level F --autocorrect --format offenses]
-end
+task(format: [:rubocop])
 
-task(:build) do
-  sh(*%w[gem build -- metronome.gemspec])
-end
+task(:build) { sh(*%w[gem build -- metronome.gemspec]) }
 
-task(release: [:build]) do
-  sh(*%w[gem push], *FileList["metronome-*.gem"])
-end
+task(release: [:build]) { sh(*%w[gem push], *FileList["metronome-*.gem"]) }

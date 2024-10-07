@@ -13,16 +13,14 @@ module Metronome
     )
       self.requester = PooledNetRequester.new
       base_url_parsed = URI.parse(base_url)
-      @headers = Util.normalized_headers(
-        {
-          "X-Stainless-Lang" => "ruby",
-          "X-Stainless-Package-Version" => Metronome::VERSION,
-          "X-Stainless-Runtime" => RUBY_ENGINE,
-          "X-Stainless-Runtime-Version" => RUBY_ENGINE_VERSION,
-          "Accept" => "application/json"
-        },
-        headers
-      )
+      base_headers = {
+        "X-Stainless-Lang" => "ruby",
+        "X-Stainless-Package-Version" => Metronome::VERSION,
+        "X-Stainless-Runtime" => RUBY_ENGINE,
+        "X-Stainless-Runtime-Version" => RUBY_ENGINE_VERSION,
+        "Accept" => "application/json"
+      }
+      @headers = base_headers.merge(headers)
       @host = base_url_parsed.host
       @scheme = base_url_parsed.scheme
       @port = base_url_parsed.port
@@ -93,12 +91,18 @@ module Metronome
     def prep_request(options)
       method = options.fetch(:method)
 
-      headers = Util.normalized_headers(@headers, auth_headers, options[:headers], options[:extra_headers])
-      if @idempotency_header && !headers[@idempotency_header] && ![:get, :head, :options].include?(method)
-        headers[@idempotency_header.to_s.downcase] = options[:idempotency_key] || generate_idempotency_key
+      headers = @headers.merge(auth_headers)
+      if options[:headers]
+        headers.merge!(options[:headers])
       end
-      if !headers.key?("x-stainless-retry-count")
-        headers["x-stainless-retry-count"] = "0"
+      if options[:extra_headers]
+        headers.merge!(options[:extra_headers])
+      end
+      if @idempotency_header && !headers[@idempotency_header] && ![:get, :head, :options].include?(method)
+        headers[@idempotency_header] = options[:idempotency_key] || generate_idempotency_key
+      end
+      if !headers.key?("X-Stainless-Retry-Count")
+        headers["X-Stainless-Retry-Count"] = "0"
       end
       headers.compact!
       headers.transform_values!(&:to_s)
@@ -108,7 +112,7 @@ module Metronome
         when :post, :put, :patch, :delete
           body = options[:body]
           if body
-            if headers["content-type"] == "application/json"
+            if headers["Content-Type"] == "application/json"
               JSON.dump(body)
             else
               body
@@ -131,7 +135,7 @@ module Metronome
     end
 
     def should_retry?(response)
-      should_retry_header = response["x-should-retry"]
+      should_retry_header = response.header["x-should-retry"]
 
       case should_retry_header
       when "true"
@@ -171,18 +175,18 @@ module Metronome
 
     def header_based_retry(response)
       # Note the `retry-after-ms` header may not be standard, but is a good idea and we'd like proactive support for it.
-      retry_after_millis = Float(response["retry-after-ms"], exception: false)
+      retry_after_millis = Float(response.header["retry-after-ms"], exception: false)
       if retry_after_millis
         retry_after = retry_after_millis / 1000.0
-      elsif response["retry-after"]
-        retry_after = Float(response["retry-after"], exception: false)
+      elsif response.header["retry-after"]
+        retry_after = Float(response.header["retry-after"], exception: false)
         if retry_after.nil?
           begin
             base = Time.now
-            if response["x-stainless-mock-sleep-base"]
-              base = Time.httpdate(response["x-stainless-mock-sleep-base"])
+            if response.header["x-stainless-mock-sleep-base"]
+              base = Time.httpdate(response.header["x-stainless-mock-sleep-base"])
             end
-            retry_after = Time.httpdate(response["retry-after"]) - base
+            retry_after = Time.httpdate(response.header["retry-after"]) - base
           rescue StandardError # rubocop:disable Lint/SuppressedException
           end
         end
@@ -195,12 +199,12 @@ module Metronome
       delay = 0.5
       max_delay = 8.0
       # Don't send the current retry count in the headers if the caller modified the header defaults.
-      should_send_retry_count = request[:headers]["x-stainless-retry-count"] == "0"
+      should_send_retry_count = request[:headers]["X-Stainless-Retry-Count"] == "0"
       retries = 0
       request_max_retries = max_retries || @max_retries
       loop do # rubocop:disable Metrics/BlockLength
         if should_send_retry_count
-          request[:headers]["x-stainless-retry-count"] = retries.to_s
+          request[:headers]["X-Stainless-Retry-Count"] = retries.to_s
         end
 
         begin
@@ -211,8 +215,8 @@ module Metronome
             return response
           elsif status < 400
             begin
-              prev_uri = URI.parse(Util.uri_from_req(request, absolute: true))
-              location = URI.join(prev_uri, response["location"])
+              prev_uri = URI.parse(Metronome::Util.uri_from_req(request, absolute: true))
+              location = URI.join(prev_uri, response.header["location"])
             rescue ArgumentError
               message = "server responded with status #{status} but no valid location header"
               raise HTTP::APIConnectionError.new(message: message, request: request)
@@ -232,13 +236,13 @@ module Metronome
               request[:method] = request[:method] == :head ? :head : :get
               request[:body] = nil
               request[:headers] = request[:headers].reject do |k|
-                %w[content-encoding content-language content-location content-type content-length].include?(k)
+                %w[content-encoding content-language content-location content-type content-length].include?(k.downcase)
               end
             end
             # from undici
             if Metronome::Util.uri_origin(prev_uri) != Metronome::Util.uri_origin(location)
               request[:headers] = request[:headers].reject do |k|
-                %w[authorization cookie proxy-authorization host].include?(k)
+                %w[authorization cookie proxy-authorization host].include?(k.downcase)
               end
             end
             return send_request(
@@ -273,8 +277,8 @@ module Metronome
           delay = (base_delay * jitter_factor).clamp(0, max_delay)
         end
 
-        if response["x-stainless-mock-sleep"]
-          request[:headers]["x-stainless-mock-slept"] = delay
+        if response.header["x-stainless-mock-sleep"]
+          request[:headers]["X-Stainless-Mock-Slept"] = delay
         else
           sleep delay
         end

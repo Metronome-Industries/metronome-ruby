@@ -2,32 +2,28 @@
 
 require_relative "../../test_helper"
 
-class Metronome::Test::Resources::Customers::InvoicesTest < Minitest::Test
-  parallelize_me!
-
+class Metronome::Test::Resources::InvoicesTest < Test::Unit::TestCase
   def setup
     @metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token")
   end
 
-  def test_retrieve_required_params
+  def test_retrieve
     response = @metronome.customers.invoices.retrieve(
-      {
-        customer_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
-        invoice_id: "6a37bb88-8538-48c5-b37b-a41c836328bd"
-      }
+      "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+      "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
     )
     assert_kind_of(Metronome::Models::InvoiceRetrieveResponse, response)
   end
 
-  def test_list_required_params
-    response = @metronome.customers.invoices.list({customer_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc"})
+  def test_list
+    response = @metronome.customers.invoices.list("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     assert_kind_of(Metronome::CursorPage, response)
   end
 
   def test_add_charge_required_params
     response = @metronome.customers.invoices.add_charge(
+      "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
       {
-        customer_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
         charge_id: "5ae4b726-1ebe-439c-9190-9831760ba195",
         customer_plan_id: "a23b3cf4-47fb-4c3f-bb3d-9e64f7704015",
         description: "One time charge",
@@ -41,11 +37,8 @@ class Metronome::Test::Resources::Customers::InvoicesTest < Minitest::Test
 
   def test_list_breakdowns_required_params
     response = @metronome.customers.invoices.list_breakdowns(
-      {
-        customer_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
-        ending_before: "2019-12-27T18:11:19.117Z",
-        starting_on: "2019-12-27T18:11:19.117Z"
-      }
+      "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+      {ending_before: "2019-12-27T18:11:19.117Z", starting_on: "2019-12-27T18:11:19.117Z"}
     )
     assert_kind_of(Metronome::CursorPage, response)
   end
