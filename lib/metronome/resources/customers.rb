@@ -61,14 +61,16 @@ module Metronome
 
       # Get a customer by Metronome ID.
       #
-      # @param customer_id [String]
+      # @param params [Hash] Attributes to send in this request.
+      # @option params [String] :customer_id
+      #
       # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CustomerRetrieveResponse]
-      def retrieve(customer_id, opts = {})
+      def retrieve(params = {}, opts = {})
         req = {
           method: :get,
-          path: "/customers/#{customer_id}",
+          path: "/customers/#{params.fetch(:customer_id)}",
           model: Metronome::Models::CustomerRetrieveResponse
         }
         @client.request(req, opts)
@@ -120,21 +122,20 @@ module Metronome
 
       # Get all billable metrics for a given customer.
       #
-      # @param customer_id [String]
-      #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Integer, nil] :limit Max number of results that should be returned
-      # @option params [String, nil] :next_page Cursor that indicates where the next page of results should start.
-      # @option params [Boolean, nil] :on_current_plan If true, the list of metrics will be filtered to just ones that are on the
-      #   customer's current plan
+      # @option params [String] :customer_id Path param:
+      # @option params [Integer, nil] :limit Query param: Max number of results that should be returned
+      # @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
+      # @option params [Boolean, nil] :on_current_plan Query param: If true, the list of metrics will be filtered to just ones that are
+      #   on the customer's current plan
       #
       # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::CustomerListBillableMetricsResponse>]
-      def list_billable_metrics(customer_id, params = {}, opts = {})
+      def list_billable_metrics(params = {}, opts = {})
         req = {
           method: :get,
-          path: "/customers/#{customer_id}/billable-metrics",
+          path: "/customers/#{params.fetch(:customer_id)}/billable-metrics",
           query: params,
           page: Metronome::CursorPage,
           model: Metronome::Models::CustomerListBillableMetricsResponse
@@ -146,21 +147,20 @@ module Metronome
       #   and line items. Note: this is not supported for customers whose plan includes a
       #   UNIQUE-type billable metric.
       #
-      # @param customer_id [String]
-      #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Time] :ending_before RFC 3339 timestamp (exclusive)
-      # @option params [Time] :starting_on RFC 3339 timestamp (inclusive)
-      # @option params [Integer, nil] :limit Max number of results that should be returned
-      # @option params [String, nil] :next_page Cursor that indicates where the next page of results should start.
+      # @option params [String] :customer_id Path param:
+      # @option params [Time] :ending_before Query param: RFC 3339 timestamp (exclusive)
+      # @option params [Time] :starting_on Query param: RFC 3339 timestamp (inclusive)
+      # @option params [Integer, nil] :limit Query param: Max number of results that should be returned
+      # @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
       #
       # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::CustomerListCostsResponse>]
-      def list_costs(customer_id, params = {}, opts = {})
+      def list_costs(params = {}, opts = {})
         req = {
           method: :get,
-          path: "/customers/#{customer_id}/costs",
+          path: "/customers/#{params.fetch(:customer_id)}/costs",
           query: params,
           page: Metronome::CursorPage,
           model: Metronome::Models::CustomerListCostsResponse
@@ -172,18 +172,17 @@ module Metronome
       #   `customer_id` field when sending usage events to Metronome. This call is
       #   idempotent. It fully replaces the set of ingest aliases for the given customer.
       #
-      # @param customer_id [String]
-      #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Array<String>] :ingest_aliases
+      # @option params [String] :customer_id Path param:
+      # @option params [Array<String>] :ingest_aliases Body param:
       #
       # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
-      def set_ingest_aliases(customer_id, params = {}, opts = {})
+      def set_ingest_aliases(params = {}, opts = {})
         req = {
           method: :post,
-          path: "/customers/#{customer_id}/setIngestAliases",
+          path: "/customers/#{params.fetch(:customer_id)}/setIngestAliases",
           body: params,
           headers: {"Content-Type" => "application/json"},
           model: NilClass
@@ -193,19 +192,18 @@ module Metronome
 
       # Updates the specified customer's name.
       #
-      # @param customer_id [String]
-      #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :name The new name for the customer. This will be truncated to 160 characters if the
-      #   provided name is longer.
+      # @option params [String] :customer_id Path param:
+      # @option params [String] :name Body param: The new name for the customer. This will be truncated to 160
+      #   characters if the provided name is longer.
       #
       # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CustomerSetNameResponse]
-      def set_name(customer_id, params = {}, opts = {})
+      def set_name(params = {}, opts = {})
         req = {
           method: :post,
-          path: "/customers/#{customer_id}/setName",
+          path: "/customers/#{params.fetch(:customer_id)}/setName",
           body: params,
           headers: {"Content-Type" => "application/json"},
           model: Metronome::Models::CustomerSetNameResponse
@@ -215,20 +213,19 @@ module Metronome
 
       # Updates the specified customer's config.
       #
-      # @param customer_id [String]
-      #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Boolean, nil] :leave_stripe_invoices_in_draft Leave in draft or set to auto-advance on invoices sent to Stripe. Falls back to
-      #   the client-level config if unset, which defaults to true if unset.
-      # @option params [String, nil] :salesforce_account_id The Salesforce account ID for the customer
+      # @option params [String] :customer_id Path param:
+      # @option params [Boolean, nil] :leave_stripe_invoices_in_draft Body param: Leave in draft or set to auto-advance on invoices sent to Stripe.
+      #   Falls back to the client-level config if unset, which defaults to true if unset.
+      # @option params [String, nil] :salesforce_account_id Body param: The Salesforce account ID for the customer
       #
       # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
-      def update_config(customer_id, params = {}, opts = {})
+      def update_config(params = {}, opts = {})
         req = {
           method: :post,
-          path: "/customers/#{customer_id}/updateConfig",
+          path: "/customers/#{params.fetch(:customer_id)}/updateConfig",
           body: params,
           headers: {"Content-Type" => "application/json"},
           model: NilClass

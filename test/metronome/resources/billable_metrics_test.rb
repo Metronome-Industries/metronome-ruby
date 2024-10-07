@@ -12,8 +12,8 @@ class Metronome::Test::Resources::BillableMetricsTest < Test::Unit::TestCase
     assert_kind_of(Metronome::Models::BillableMetricCreateResponse, response)
   end
 
-  def test_retrieve
-    response = @metronome.billable_metrics.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+  def test_retrieve_required_params
+    response = @metronome.billable_metrics.retrieve({billable_metric_id: "13117714-3f05-48e5-a6e9-a66093f13b4d"})
     assert_kind_of(Metronome::Models::BillableMetricRetrieveResponse, response)
   end
 
