@@ -12,18 +12,18 @@ class Metronome::Test::Resources::PlansTest < Test::Unit::TestCase
     assert_kind_of(Metronome::CursorPage, response)
   end
 
-  def test_get_details
-    response = @metronome.plans.get_details("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+  def test_get_details_required_params
+    response = @metronome.plans.get_details({plan_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc"})
     assert_kind_of(Metronome::Models::PlanGetDetailsResponse, response)
   end
 
-  def test_list_charges
-    response = @metronome.plans.list_charges("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+  def test_list_charges_required_params
+    response = @metronome.plans.list_charges({plan_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc"})
     assert_kind_of(Metronome::CursorPage, response)
   end
 
-  def test_list_customers
-    response = @metronome.plans.list_customers("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+  def test_list_customers_required_params
+    response = @metronome.plans.list_customers({plan_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc"})
     assert_kind_of(Metronome::CursorPage, response)
   end
 end
