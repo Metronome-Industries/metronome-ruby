@@ -2,9 +2,9 @@
 
 require_relative "test_helper"
 
-class Metronome::Test::UtilTest < Test::Unit::TestCase
+class Metronome::Test::UtilTest < Minitest::Test
   def test_left_map
-    assert_equal(Metronome::Util.deep_merge({a: 1}, nil), nil)
+    assert_nil(Metronome::Util.deep_merge({a: 1}, nil))
   end
 
   def test_right_map
