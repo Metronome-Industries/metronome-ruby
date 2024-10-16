@@ -64,6 +64,20 @@ module Metronome
             #   the excluding_pending balance plus any pending invoice deductions and expirations that will happen by the effective_at date
             #   @return [Float]
             required :including_pending, Float
+
+            # Create a new instance of EndingBalance from a Hash of raw data.
+            #
+            # @overload initialize(effective_at: nil, excluding_pending: nil, including_pending: nil)
+            # @param effective_at [String] the ending_before request parameter (if supplied) or the current billing
+            #   period's end date
+            # @param excluding_pending [Float] the ending balance, including the balance of all grants that have not expired
+            #   before the effective_at date and deductions that happened before the
+            #   effective_at date
+            # @param including_pending [Float] the excluding_pending balance plus any pending invoice deductions and
+            #   expirations that will happen by the effective_at date
+            def initialize(data = {})
+              super
+            end
           end
 
           class StartingBalance < BaseModel
@@ -81,8 +95,51 @@ module Metronome
             #   the excluding_pending balance plus any pending activity that has not been posted at the time of the query
             #   @return [Float]
             required :including_pending, Float
+
+            # Create a new instance of StartingBalance from a Hash of raw data.
+            #
+            # @overload initialize(effective_at: nil, excluding_pending: nil, including_pending: nil)
+            # @param effective_at [String] the starting_on request parameter (if supplied) or the first credit grant's
+            #   effective_at date
+            # @param excluding_pending [Float] the starting balance, including all posted grants, deductions, and expirations
+            #   that happened at or before the effective_at timestamp
+            # @param including_pending [Float] the excluding_pending balance plus any pending activity that has not been posted
+            #   at the time of the query
+            def initialize(data = {})
+              super
+            end
+          end
+
+          # Create a new instance of Ledger from a Hash of raw data.
+          #
+          # @overload initialize(credit_type: nil, ending_balance: nil, entries: nil, pending_entries: nil, starting_balance: nil)
+          # @param credit_type [Object]
+          # @param ending_balance [Object] the effective balances at the end of the specified time window
+          # @param entries [Array<Object>]
+          # @param pending_entries [Array<Object>]
+          # @param starting_balance [Object]
+          def initialize(data = {})
+            super
           end
         end
+
+        # Create a new instance of Data from a Hash of raw data.
+        #
+        # @overload initialize(customer_id: nil, ledgers: nil)
+        # @param customer_id [String]
+        # @param ledgers [Array<Object>]
+        def initialize(data = {})
+          super
+        end
+      end
+
+      # Create a new instance of CreditGrantListEntriesResponse from a Hash of raw data.
+      #
+      # @overload initialize(data: nil, next_page: nil)
+      # @param data [Array<Object>]
+      # @param next_page [String]
+      def initialize(data = {})
+        super
       end
     end
   end

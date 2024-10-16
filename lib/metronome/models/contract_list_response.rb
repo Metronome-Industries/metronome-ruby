@@ -161,6 +161,44 @@ module Metronome
               GCP = :GCP
               GCP_PRO_SERVICE = :GCP_PRO_SERVICE
             end
+
+            # Create a new instance of ResellerRoyalty from a Hash of raw data.
+            #
+            # @overload initialize(reseller_type: nil, aws_account_number: nil, aws_offer_id: nil, aws_payer_reference_id: nil, ending_before: nil, fraction: nil, gcp_account_id: nil, gcp_offer_id: nil, netsuite_reseller_id: nil, reseller_contract_value: nil, starting_at: nil)
+            # @param reseller_type [String]
+            # @param aws_account_number [String]
+            # @param aws_offer_id [String]
+            # @param aws_payer_reference_id [String]
+            # @param ending_before [String]
+            # @param fraction [Float]
+            # @param gcp_account_id [String]
+            # @param gcp_offer_id [String]
+            # @param netsuite_reseller_id [String]
+            # @param reseller_contract_value [Float]
+            # @param starting_at [String]
+            def initialize(data = {})
+              super
+            end
+          end
+
+          # Create a new instance of Amendment from a Hash of raw data.
+          #
+          # @overload initialize(id: nil, commits: nil, created_at: nil, created_by: nil, overrides: nil, scheduled_charges: nil, starting_at: nil, credits: nil, discounts: nil, netsuite_sales_order_id: nil, professional_services: nil, reseller_royalties: nil, salesforce_opportunity_id: nil)
+          # @param id [String]
+          # @param commits [Array<Object>]
+          # @param created_at [String]
+          # @param created_by [String]
+          # @param overrides [Array<Object>]
+          # @param scheduled_charges [Array<Object>]
+          # @param starting_at [String]
+          # @param credits [Array<Object>]
+          # @param discounts [Array<Object>] This field's availability is dependent on your client's configuration.
+          # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
+          # @param professional_services [Array<Object>] This field's availability is dependent on your client's configuration.
+          # @param reseller_royalties [Array<Object>] This field's availability is dependent on your client's configuration.
+          # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
+          def initialize(data = {})
+            super
           end
         end
 
@@ -196,7 +234,42 @@ module Metronome
             TACKLE = :tackle
             AWS_SNS = :aws_sns
           end
+
+          # Create a new instance of CustomerBillingProviderConfiguration from a Hash of raw
+          #   data.
+          #
+          # @overload initialize(billing_provider: nil, delivery_method: nil)
+          # @param billing_provider [String]
+          # @param delivery_method [String]
+          def initialize(data = {})
+            super
+          end
         end
+
+        # Create a new instance of Data from a Hash of raw data.
+        #
+        # @overload initialize(id: nil, amendments: nil, current: nil, customer_id: nil, initial: nil, custom_fields: nil, customer_billing_provider_configuration: nil, uniqueness_key: nil)
+        # @param id [String]
+        # @param amendments [Array<Object>]
+        # @param current [Object]
+        # @param customer_id [String]
+        # @param initial [Object]
+        # @param custom_fields [Hash]
+        # @param customer_billing_provider_configuration [Object] This field's availability is dependent on your client's configuration.
+        # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made
+        #   with a previously used uniqueness key, a new record will not be created and the
+        #   request will fail with a 409 error.
+        def initialize(data = {})
+          super
+        end
+      end
+
+      # Create a new instance of ContractListResponse from a Hash of raw data.
+      #
+      # @overload initialize(data: nil)
+      # @param data [Array<Object>]
+      def initialize(data = {})
+        super
       end
     end
   end

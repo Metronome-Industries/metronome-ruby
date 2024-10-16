@@ -10,6 +10,15 @@ module Metronome
       # @!attribute [rw] next_page
       #   @return [String]
       required :next_page, String
+
+      # Create a new instance of ContractListBalancesResponse from a Hash of raw data.
+      #
+      # @overload initialize(data: nil, next_page: nil)
+      # @param data [Array<Object>]
+      # @param next_page [String]
+      def initialize(data = {})
+        super
+      end
     end
   end
 end

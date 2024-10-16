@@ -86,6 +86,42 @@ module Metronome
           CUSTOM = :CUSTOM
           CUSTOM = :custom
         end
+
+        # Create a new instance of CommitRate from a Hash of raw data.
+        #
+        # @overload initialize(rate_type: nil, credit_type: nil, is_prorated: nil, price: nil, quantity: nil, tiers: nil, use_list_prices: nil)
+        # @param rate_type [String]
+        # @param credit_type [Object]
+        # @param is_prorated [Hash] Commit rate proration configuration. Only valid for SUBSCRIPTION rate_type.
+        # @param price [Float] Commit rate price. For FLAT rate_type, this must be >=0. For PERCENTAGE
+        #   rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0
+        #   and <=1.
+        # @param quantity [Float] Commit rate quantity. For SUBSCRIPTION rate_type, this must be >=0.
+        # @param tiers [Array<Object>] Only set for TIERED rate_type.
+        # @param use_list_prices [Hash] Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
+        #   using list prices rather than the standard rates for this product on the
+        #   contract.
+        def initialize(data = {})
+          super
+        end
+      end
+
+      # Create a new instance of RateListResponse from a Hash of raw data.
+      #
+      # @overload initialize(entitled: nil, product_id: nil, product_name: nil, product_tags: nil, rate: nil, starting_at: nil, commit_rate: nil, ending_before: nil, pricing_group_values: nil)
+      # @param entitled [Hash]
+      # @param product_id [String]
+      # @param product_name [String]
+      # @param product_tags [Array<String>]
+      # @param rate [Object]
+      # @param starting_at [String]
+      # @param commit_rate [Object] The rate that will be used to rate a product when it is paid for by a commit.
+      #   This feature requires opt-in before it can be used. Please contact Metronome
+      #   support to enable this feature.
+      # @param ending_before [String]
+      # @param pricing_group_values [Hash]
+      def initialize(data = {})
+        super
       end
     end
   end

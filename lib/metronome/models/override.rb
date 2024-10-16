@@ -101,6 +101,17 @@ module Metronome
         # @!attribute [rw] product_tags
         #   @return [Array<String>]
         optional :product_tags, Metronome::ArrayOf.new(String)
+
+        # Create a new instance of OverrideSpecifier from a Hash of raw data.
+        #
+        # @overload initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
+        # @param presentation_group_values [Hash]
+        # @param pricing_group_values [Hash]
+        # @param product_id [String]
+        # @param product_tags [Array<String>]
+        def initialize(data = {})
+          super
+        end
       end
 
       class OverrideTier < BaseModel
@@ -111,6 +122,15 @@ module Metronome
         # @!attribute [rw] size
         #   @return [Float]
         optional :size, Float
+
+        # Create a new instance of OverrideTier from a Hash of raw data.
+        #
+        # @overload initialize(multiplier: nil, size: nil)
+        # @param multiplier [Float]
+        # @param size [Float]
+        def initialize(data = {})
+          super
+        end
       end
 
       class OverwriteRate < BaseModel
@@ -154,6 +174,22 @@ module Metronome
           TIERED = :TIERED
           CUSTOM = :CUSTOM
         end
+
+        # Create a new instance of OverwriteRate from a Hash of raw data.
+        #
+        # @overload initialize(rate_type: nil, credit_type: nil, custom_rate: nil, is_prorated: nil, price: nil, quantity: nil, tiers: nil)
+        # @param rate_type [String]
+        # @param credit_type [Object]
+        # @param custom_rate [Hash] Only set for CUSTOM rate_type. This field is interpreted by custom rate
+        #   processors.
+        # @param is_prorated [Hash] Default proration configuration. Only valid for SUBSCRIPTION rate_type.
+        # @param price [Float] Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
+        #   this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
+        # @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
+        # @param tiers [Array<Object>] Only set for TIERED rate_type.
+        def initialize(data = {})
+          super
+        end
       end
 
       class Product < BaseModel
@@ -164,6 +200,15 @@ module Metronome
         # @!attribute [rw] name_
         #   @return [String]
         required :name_, String
+
+        # Create a new instance of Product from a Hash of raw data.
+        #
+        # @overload initialize(id: nil, name: nil)
+        # @param id [String]
+        # @param name [String]
+        def initialize(data = {})
+          super
+        end
       end
 
       class RateType < Metronome::Enum
@@ -178,6 +223,34 @@ module Metronome
         OVERWRITE = :OVERWRITE
         MULTIPLIER = :MULTIPLIER
         TIERED = :TIERED
+      end
+
+      # Create a new instance of Override from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, starting_at: nil, applicable_product_tags: nil, credit_type: nil, ending_before: nil, entitled: nil, is_prorated: nil, multiplier: nil, override_specifiers: nil, override_tiers: nil, overwrite_rate: nil, price: nil, priority: nil, product: nil, quantity: nil, rate_type: nil, tiers: nil, type: nil, value: nil)
+      # @param id [String]
+      # @param starting_at [String]
+      # @param applicable_product_tags [Array<String>]
+      # @param credit_type [Object]
+      # @param ending_before [String]
+      # @param entitled [Hash]
+      # @param is_prorated [Hash] Default proration configuration. Only valid for SUBSCRIPTION rate_type.
+      # @param multiplier [Float]
+      # @param override_specifiers [Array<Object>]
+      # @param override_tiers [Array<Object>]
+      # @param overwrite_rate [Object]
+      # @param price [Float] Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
+      #   this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
+      # @param priority [Float]
+      # @param product [Object]
+      # @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
+      # @param rate_type [String]
+      # @param tiers [Array<Object>] Only set for TIERED rate_type.
+      # @param type [String]
+      # @param value [Hash] Only set for CUSTOM rate_type. This field is interpreted by custom rate
+      #   processors.
+      def initialize(data = {})
+        super
       end
     end
   end

@@ -55,6 +55,29 @@ module Metronome
           PERCENTAGE = :percentage
           OVERRIDE = :override
         end
+
+        # Create a new instance of Price from a Hash of raw data.
+        #
+        # @overload initialize(adjustment_type: nil, tier: nil, value: nil)
+        # @param adjustment_type [String] Determines how the value will be applied.
+        # @param tier [Float] Used in pricing tiers. Indicates at what metric value the price applies.
+        # @param value [Float]
+        def initialize(data = {})
+          super
+        end
+      end
+
+      # Create a new instance of PlanListPriceAdjustmentsResponse from a Hash of raw
+      #   data.
+      #
+      # @overload initialize(charge_id: nil, charge_type: nil, prices: nil, start_period: nil, quantity: nil)
+      # @param charge_id [String]
+      # @param charge_type [String]
+      # @param prices [Array<Object>]
+      # @param start_period [Float]
+      # @param quantity [Float]
+      def initialize(data = {})
+        super
       end
     end
   end

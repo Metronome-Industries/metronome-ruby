@@ -32,6 +32,27 @@ module Metronome
         # @!attribute [rw] name_
         #   @return [String]
         required :name_, String
+
+        # Create a new instance of Product from a Hash of raw data.
+        #
+        # @overload initialize(id: nil, name: nil)
+        # @param id [String]
+        # @param name [String]
+        def initialize(data = {})
+          super
+        end
+      end
+
+      # Create a new instance of Discount from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, product: nil, schedule: nil, name: nil, netsuite_sales_order_id: nil)
+      # @param id [String]
+      # @param product [Object]
+      # @param schedule [Object]
+      # @param name [String]
+      # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
+      def initialize(data = {})
+        super
       end
     end
   end

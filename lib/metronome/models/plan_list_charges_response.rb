@@ -83,6 +83,18 @@ module Metronome
         # @!attribute [rw] quantity
         #   @return [Float]
         optional :quantity, Float
+
+        # Create a new instance of Price from a Hash of raw data.
+        #
+        # @overload initialize(tier: nil, value: nil, collection_interval: nil, collection_schedule: nil, quantity: nil)
+        # @param tier [Float] Used in pricing tiers. Indicates at what metric value the price applies.
+        # @param value [Float]
+        # @param collection_interval [Float]
+        # @param collection_schedule [String]
+        # @param quantity [Float]
+        def initialize(data = {})
+          super
+        end
       end
 
       class UnitConversion < BaseModel
@@ -102,6 +114,37 @@ module Metronome
           FLOOR = :floor
           CEILING = :ceiling
         end
+
+        # Create a new instance of UnitConversion from a Hash of raw data.
+        #
+        # @overload initialize(division_factor: nil, rounding_behavior: nil)
+        # @param division_factor [Float] The conversion factor
+        # @param rounding_behavior [String] Whether usage should be rounded down or up to the nearest whole number. If null,
+        #   quantity will be rounded to 20 decimal places.
+        def initialize(data = {})
+          super
+        end
+      end
+
+      # Create a new instance of PlanListChargesResponse from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, charge_type: nil, credit_type: nil, custom_fields: nil, name: nil, prices: nil, product_id: nil, product_name: nil, quantity: nil, start_period: nil, tier_reset_frequency: nil, unit_conversion: nil)
+      # @param id [String]
+      # @param charge_type [String]
+      # @param credit_type [Object]
+      # @param custom_fields [Hash]
+      # @param name [String]
+      # @param prices [Array<Object>]
+      # @param product_id [String]
+      # @param product_name [String]
+      # @param quantity [Float]
+      # @param start_period [Float] Used in price ramps. Indicates how many billing periods pass before the charge
+      #   applies.
+      # @param tier_reset_frequency [Float] Used in pricing tiers. Indicates how often the tier resets. Default is 1 - the
+      #   tier count resets every billing period.
+      # @param unit_conversion [Object] Specifies how quantities for usage based charges will be converted.
+      def initialize(data = {})
+        super
       end
     end
   end

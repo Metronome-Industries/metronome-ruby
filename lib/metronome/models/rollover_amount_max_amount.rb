@@ -17,6 +17,15 @@ module Metronome
       class Type < Metronome::Enum
         MAX_AMOUNT = :MAX_AMOUNT
       end
+
+      # Create a new instance of RolloverAmountMaxAmount from a Hash of raw data.
+      #
+      # @overload initialize(type: nil, value: nil)
+      # @param type [String] Rollover up to a fixed amount of the original credit grant amount.
+      # @param value [Float] The maximum amount to rollover.
+      def initialize(data = {})
+        super
+      end
     end
   end
 end

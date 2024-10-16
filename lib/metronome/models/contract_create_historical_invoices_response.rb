@@ -6,6 +6,15 @@ module Metronome
       # @!attribute [rw] data
       #   @return [Array<Metronome::Models::Invoice>]
       required :data, Metronome::ArrayOf.new(-> { Metronome::Models::Invoice })
+
+      # Create a new instance of ContractCreateHistoricalInvoicesResponse from a Hash of
+      #   raw data.
+      #
+      # @overload initialize(data: nil)
+      # @param data [Array<Object>]
+      def initialize(data = {})
+        super
+      end
     end
   end
 end

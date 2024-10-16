@@ -18,6 +18,17 @@ module Metronome
       # @!attribute [rw] custom_fields
       #   @return [Hash]
       optional :custom_fields, Hash
+
+      # Create a new instance of PlanListResponse from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, description: nil, name: nil, custom_fields: nil)
+      # @param id [String]
+      # @param description [String]
+      # @param name [String]
+      # @param custom_fields [Hash]
+      def initialize(data = {})
+        super
+      end
     end
   end
 end

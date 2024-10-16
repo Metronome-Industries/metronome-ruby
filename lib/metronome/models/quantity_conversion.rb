@@ -23,6 +23,16 @@ module Metronome
         MULTIPLY = :MULTIPLY
         DIVIDE = :DIVIDE
       end
+
+      # Create a new instance of QuantityConversion from a Hash of raw data.
+      #
+      # @overload initialize(conversion_factor: nil, operation: nil, name: nil)
+      # @param conversion_factor [Float] The factor to multiply or divide the quantity by.
+      # @param operation [String] The operation to perform on the quantity
+      # @param name [String] Optional name for this conversion.
+      def initialize(data = {})
+        super
+      end
     end
   end
 end

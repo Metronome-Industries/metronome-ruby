@@ -36,6 +36,28 @@ module Metronome
         # @!attribute [rw] unit_price
         #   @return [Float]
         required :unit_price, Float
+
+        # Create a new instance of ScheduleItem from a Hash of raw data.
+        #
+        # @overload initialize(id: nil, amount: nil, invoice_id: nil, quantity: nil, timestamp: nil, unit_price: nil)
+        # @param id [String]
+        # @param amount [Float]
+        # @param invoice_id [String]
+        # @param quantity [Float]
+        # @param timestamp [String]
+        # @param unit_price [Float]
+        def initialize(data = {})
+          super
+        end
+      end
+
+      # Create a new instance of SchedulePointInTime from a Hash of raw data.
+      #
+      # @overload initialize(credit_type: nil, schedule_items: nil)
+      # @param credit_type [Object]
+      # @param schedule_items [Array<Object>]
+      def initialize(data = {})
+        super
       end
     end
   end

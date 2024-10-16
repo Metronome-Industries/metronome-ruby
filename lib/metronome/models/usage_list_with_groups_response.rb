@@ -22,6 +22,18 @@ module Metronome
       # @!attribute [rw] value
       #   @return [Float]
       required :value, Float
+
+      # Create a new instance of UsageListWithGroupsResponse from a Hash of raw data.
+      #
+      # @overload initialize(ending_before: nil, group_key: nil, group_value: nil, starting_on: nil, value: nil)
+      # @param ending_before [String]
+      # @param group_key [String]
+      # @param group_value [String]
+      # @param starting_on [String]
+      # @param value [Float]
+      def initialize(data = {})
+        super
+      end
     end
   end
 end

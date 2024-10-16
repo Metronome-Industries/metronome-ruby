@@ -32,6 +32,26 @@ module Metronome
         # @!attribute [rw] starting_at
         #   @return [Time]
         required :starting_at, Time
+
+        # Create a new instance of ScheduleItem from a Hash of raw data.
+        #
+        # @overload initialize(id: nil, amount: nil, ending_before: nil, starting_at: nil)
+        # @param id [String]
+        # @param amount [Float]
+        # @param ending_before [String]
+        # @param starting_at [String]
+        def initialize(data = {})
+          super
+        end
+      end
+
+      # Create a new instance of ScheduleDuration from a Hash of raw data.
+      #
+      # @overload initialize(schedule_items: nil, credit_type: nil)
+      # @param schedule_items [Array<Object>]
+      # @param credit_type [Object]
+      def initialize(data = {})
+        super
       end
     end
   end
