@@ -6,7 +6,10 @@ class Metronome::Test::Resources::DashboardsTest < Minitest::Test
   parallelize_me!
 
   def setup
-    @metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token")
+    @metronome = Metronome::Client.new(
+      base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
+      bearer_token: "My Bearer Token"
+    )
   end
 
   def test_get_embeddable_url_required_params
