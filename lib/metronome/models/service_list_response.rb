@@ -24,6 +24,24 @@ module Metronome
           MAKES_CONNECTIONS_FROM = :makes_connections_from
           ACCEPTS_CONNECTIONS_AT = :accepts_connections_at
         end
+
+        # Create a new instance of Service from a Hash of raw data.
+        #
+        # @overload initialize(ips: nil, name: nil, usage: nil)
+        # @param ips [Array<String>]
+        # @param name [String]
+        # @param usage [String]
+        def initialize(data = {})
+          super
+        end
+      end
+
+      # Create a new instance of ServiceListResponse from a Hash of raw data.
+      #
+      # @overload initialize(services: nil)
+      # @param services [Array<Object>]
+      def initialize(data = {})
+        super
       end
     end
   end

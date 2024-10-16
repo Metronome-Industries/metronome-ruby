@@ -289,6 +289,14 @@ module Metronome
           # @!attribute [rw] id
           #   @return [String]
           required :id, String
+
+          # Create a new instance of PostpaidCommit from a Hash of raw data.
+          #
+          # @overload initialize(id: nil)
+          # @param id [String]
+          def initialize(data = {})
+            super
+          end
         end
 
         class ResellerType < Metronome::Enum
@@ -360,6 +368,15 @@ module Metronome
             # @!attribute [rw] ending_before
             #   @return [Time]
             optional :ending_before, Time
+
+            # Create a new instance of TierPeriod from a Hash of raw data.
+            #
+            # @overload initialize(starting_at: nil, ending_before: nil)
+            # @param starting_at [String]
+            # @param ending_before [String]
+            def initialize(data = {})
+              super
+            end
           end
 
           class Tier < BaseModel
@@ -379,7 +396,85 @@ module Metronome
             # @!attribute [rw] subtotal
             #   @return [Float]
             required :subtotal, Float
+
+            # Create a new instance of Tier from a Hash of raw data.
+            #
+            # @overload initialize(price: nil, quantity: nil, starting_at: nil, subtotal: nil)
+            # @param price [Float]
+            # @param quantity [Float]
+            # @param starting_at [Float] at what metric amount this tier begins
+            # @param subtotal [Float]
+            def initialize(data = {})
+              super
+            end
           end
+
+          # Create a new instance of SubLineItem from a Hash of raw data.
+          #
+          # @overload initialize(custom_fields: nil, name: nil, quantity: nil, subtotal: nil, charge_id: nil, credit_grant_id: nil, end_date: nil, price: nil, start_date: nil, tier_period: nil, tiers: nil)
+          # @param custom_fields [Hash]
+          # @param name [String]
+          # @param quantity [Float]
+          # @param subtotal [Float]
+          # @param charge_id [String]
+          # @param credit_grant_id [String]
+          # @param end_date [String] The end date for the charge (for seats charges only).
+          # @param price [Float] the unit price for this charge, present only if the charge is not tiered and the
+          #   quantity is nonzero
+          # @param start_date [String] The start date for the charge (for seats charges only).
+          # @param tier_period [Object] when the current tier started and ends (for tiered charges only)
+          # @param tiers [Array<Object>]
+          def initialize(data = {})
+            super
+          end
+        end
+
+        # Create a new instance of LineItem from a Hash of raw data.
+        #
+        # @overload initialize(credit_type: nil, name: nil, total: nil, commit_custom_fields: nil, commit_id: nil, commit_netsuite_item_id: nil, commit_netsuite_sales_order_id: nil, commit_segment_id: nil, commit_type: nil, custom_fields: nil, ending_before: nil, group_key: nil, group_value: nil, is_prorated: nil, list_price: nil, metadata: nil, netsuite_invoice_billing_end: nil, netsuite_invoice_billing_start: nil, netsuite_item_id: nil, postpaid_commit: nil, presentation_group_values: nil, pricing_group_values: nil, product_custom_fields: nil, product_id: nil, product_type: nil, professional_service_custom_fields: nil, professional_service_id: nil, quantity: nil, reseller_type: nil, scheduled_charge_custom_fields: nil, scheduled_charge_id: nil, starting_at: nil, sub_line_items: nil, unit_price: nil)
+        # @param credit_type [Object]
+        # @param name [String]
+        # @param total [Float]
+        # @param commit_custom_fields [Hash]
+        # @param commit_id [String] only present for beta contract invoices
+        # @param commit_netsuite_item_id [String] only present for beta contract invoices. This field's availability is dependent
+        #   on your client's configuration.
+        # @param commit_netsuite_sales_order_id [String] only present for beta contract invoices. This field's availability is dependent
+        #   on your client's configuration.
+        # @param commit_segment_id [String] only present for beta contract invoices
+        # @param commit_type [String] only present for beta contract invoices
+        # @param custom_fields [Hash]
+        # @param ending_before [String] only present for beta contract invoices
+        # @param group_key [String]
+        # @param group_value [String]
+        # @param is_prorated [Hash] only present for beta contract invoices
+        # @param list_price [Object] only present for contract invoices and when the include_list_prices query
+        #   parameter is set to true. This will include the list rate for the charge if
+        #   applicable. Only present for usage and subscription line items.
+        # @param metadata [String]
+        # @param netsuite_invoice_billing_end [String] The end date for the billing period on the invoice.
+        # @param netsuite_invoice_billing_start [String] The start date for the billing period on the invoice.
+        # @param netsuite_item_id [String] only present for beta contract invoices. This field's availability is dependent
+        #   on your client's configuration.
+        # @param postpaid_commit [Object] only present for beta contract invoices
+        # @param presentation_group_values [Hash] if presentation groups are used, this will contain the values used to break down
+        #   the line item
+        # @param pricing_group_values [Hash] if pricing groups are used, this will contain the values used to calculate the
+        #   price
+        # @param product_custom_fields [Hash]
+        # @param product_id [String]
+        # @param product_type [String]
+        # @param professional_service_custom_fields [Hash]
+        # @param professional_service_id [String] only present for beta contract invoices
+        # @param quantity [Float]
+        # @param reseller_type [String]
+        # @param scheduled_charge_custom_fields [Hash]
+        # @param scheduled_charge_id [String] only present for beta contract invoices
+        # @param starting_at [String] only present for beta contract invoices
+        # @param sub_line_items [Array<Object>]
+        # @param unit_price [Float] only present for beta contract invoices
+        def initialize(data = {})
+          super
         end
       end
 
@@ -454,6 +549,28 @@ module Metronome
             SENT = :SENT
             QUEUED = :QUEUED
           end
+
+          # Create a new instance of CorrectedExternalInvoice from a Hash of raw data.
+          #
+          # @overload initialize(billing_provider_type: nil, external_status: nil, invoice_id: nil, issued_at_timestamp: nil)
+          # @param billing_provider_type [String]
+          # @param external_status [String]
+          # @param invoice_id [String]
+          # @param issued_at_timestamp [String]
+          def initialize(data = {})
+            super
+          end
+        end
+
+        # Create a new instance of CorrectionRecord from a Hash of raw data.
+        #
+        # @overload initialize(corrected_invoice_id: nil, memo: nil, reason: nil, corrected_external_invoice: nil)
+        # @param corrected_invoice_id [String]
+        # @param memo [String]
+        # @param reason [String]
+        # @param corrected_external_invoice [Object]
+        def initialize(data = {})
+          super
         end
       end
 
@@ -499,6 +616,17 @@ module Metronome
           SENT = :SENT
           QUEUED = :QUEUED
         end
+
+        # Create a new instance of ExternalInvoice from a Hash of raw data.
+        #
+        # @overload initialize(billing_provider_type: nil, external_status: nil, invoice_id: nil, issued_at_timestamp: nil)
+        # @param billing_provider_type [String]
+        # @param external_status [String]
+        # @param invoice_id [String]
+        # @param issued_at_timestamp [String]
+        def initialize(data = {})
+          super
+        end
       end
 
       class InvoiceAdjustment < BaseModel
@@ -521,6 +649,18 @@ module Metronome
         # @!attribute [rw] credit_grant_id
         #   @return [String]
         optional :credit_grant_id, String
+
+        # Create a new instance of InvoiceAdjustment from a Hash of raw data.
+        #
+        # @overload initialize(credit_type: nil, name: nil, total: nil, credit_grant_custom_fields: nil, credit_grant_id: nil)
+        # @param credit_type [Object]
+        # @param name [String]
+        # @param total [Float]
+        # @param credit_grant_custom_fields [Hash]
+        # @param credit_grant_id [String]
+        def initialize(data = {})
+          super
+        end
       end
 
       class ResellerRoyalty < BaseModel
@@ -563,6 +703,16 @@ module Metronome
           # @!attribute [rw] aws_payer_reference_id
           #   @return [String]
           optional :aws_payer_reference_id, String
+
+          # Create a new instance of AwsOptions from a Hash of raw data.
+          #
+          # @overload initialize(aws_account_number: nil, aws_offer_id: nil, aws_payer_reference_id: nil)
+          # @param aws_account_number [String]
+          # @param aws_offer_id [String]
+          # @param aws_payer_reference_id [String]
+          def initialize(data = {})
+            super
+          end
         end
 
         class GcpOptions < BaseModel
@@ -573,7 +723,64 @@ module Metronome
           # @!attribute [rw] gcp_offer_id
           #   @return [String]
           optional :gcp_offer_id, String
+
+          # Create a new instance of GcpOptions from a Hash of raw data.
+          #
+          # @overload initialize(gcp_account_id: nil, gcp_offer_id: nil)
+          # @param gcp_account_id [String]
+          # @param gcp_offer_id [String]
+          def initialize(data = {})
+            super
+          end
         end
+
+        # Create a new instance of ResellerRoyalty from a Hash of raw data.
+        #
+        # @overload initialize(fraction: nil, netsuite_reseller_id: nil, reseller_type: nil, aws_options: nil, gcp_options: nil)
+        # @param fraction [String]
+        # @param netsuite_reseller_id [String]
+        # @param reseller_type [String]
+        # @param aws_options [Object]
+        # @param gcp_options [Object]
+        def initialize(data = {})
+          super
+        end
+      end
+
+      # Create a new instance of Invoice from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, credit_type: nil, customer_id: nil, line_items: nil, status: nil, total: nil, type: nil, amendment_id: nil, billable_status: nil, contract_custom_fields: nil, contract_id: nil, correction_record: nil, created_at: nil, custom_fields: nil, customer_custom_fields: nil, end_timestamp: nil, external_invoice: nil, invoice_adjustments: nil, issued_at: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, plan_custom_fields: nil, plan_id: nil, plan_name: nil, reseller_royalty: nil, salesforce_opportunity_id: nil, start_timestamp: nil, subtotal: nil)
+      # @param id [String]
+      # @param credit_type [Object]
+      # @param customer_id [String]
+      # @param line_items [Array<Object>]
+      # @param status [String]
+      # @param total [Float]
+      # @param type [String]
+      # @param amendment_id [String]
+      # @param billable_status [String] This field's availability is dependent on your client's configuration.
+      # @param contract_custom_fields [Hash]
+      # @param contract_id [String]
+      # @param correction_record [Object]
+      # @param created_at [String] When the invoice was created (UTC). This field is present for correction
+      #   invoices only.
+      # @param custom_fields [Hash]
+      # @param customer_custom_fields [Hash]
+      # @param end_timestamp [String] End of the usage period this invoice covers (UTC)
+      # @param external_invoice [Object]
+      # @param invoice_adjustments [Array<Object>]
+      # @param issued_at [String] When the invoice was issued (UTC)
+      # @param net_payment_terms_days [Float]
+      # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
+      # @param plan_custom_fields [Hash]
+      # @param plan_id [String]
+      # @param plan_name [String]
+      # @param reseller_royalty [Object] only present for beta contract invoices with reseller royalties
+      # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
+      # @param start_timestamp [String] Beginning of the usage period this invoice covers (UTC)
+      # @param subtotal [Float]
+      def initialize(data = {})
+        super
       end
     end
   end

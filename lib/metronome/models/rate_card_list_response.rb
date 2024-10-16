@@ -120,6 +120,25 @@ module Metronome
             CUSTOM = :CUSTOM
             TIERED = :TIERED
           end
+
+          # Create a new instance of Current from a Hash of raw data.
+          #
+          # @overload initialize(id: nil, created_at: nil, created_by: nil, credit_type: nil, custom_rate: nil, ending_before: nil, entitled: nil, price: nil, product_id: nil, rate_type: nil, starting_at: nil, tiers: nil)
+          # @param id [String]
+          # @param created_at [String]
+          # @param created_by [String]
+          # @param credit_type [Object]
+          # @param custom_rate [Hash]
+          # @param ending_before [String]
+          # @param entitled [Hash]
+          # @param price [Float]
+          # @param product_id [String]
+          # @param rate_type [String]
+          # @param starting_at [String]
+          # @param tiers [Array<Object>]
+          def initialize(data = {})
+            super
+          end
         end
 
         class Update < BaseModel
@@ -245,7 +264,58 @@ module Metronome
               CUSTOM = :CUSTOM
               CUSTOM = :custom
             end
+
+            # Create a new instance of CommitRate from a Hash of raw data.
+            #
+            # @overload initialize(rate_type: nil, credit_type: nil, is_prorated: nil, price: nil, quantity: nil, tiers: nil, use_list_prices: nil)
+            # @param rate_type [String]
+            # @param credit_type [Object]
+            # @param is_prorated [Hash] Commit rate proration configuration. Only valid for SUBSCRIPTION rate_type.
+            # @param price [Float] Commit rate price. For FLAT rate_type, this must be >=0. For PERCENTAGE
+            #   rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0
+            #   and <=1.
+            # @param quantity [Float] Commit rate quantity. For SUBSCRIPTION rate_type, this must be >=0.
+            # @param tiers [Array<Object>] Only set for TIERED rate_type.
+            # @param use_list_prices [Hash] Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
+            #   using list prices rather than the standard rates for this product on the
+            #   contract.
+            def initialize(data = {})
+              super
+            end
           end
+
+          # Create a new instance of Update from a Hash of raw data.
+          #
+          # @overload initialize(id: nil, created_at: nil, created_by: nil, entitled: nil, product_id: nil, rate_type: nil, starting_at: nil, commit_rate: nil, credit_type: nil, custom_rate: nil, ending_before: nil, is_prorated: nil, price: nil, quantity: nil, tiers: nil)
+          # @param id [String]
+          # @param created_at [String]
+          # @param created_by [String]
+          # @param entitled [Hash]
+          # @param product_id [String]
+          # @param rate_type [String]
+          # @param starting_at [String]
+          # @param commit_rate [Object] The rate that will be used to rate a product when it is paid for by a commit.
+          #   This feature requires opt-in before it can be used. Please contact Metronome
+          #   support to enable this feature.
+          # @param credit_type [Object]
+          # @param custom_rate [Hash]
+          # @param ending_before [String]
+          # @param is_prorated [Hash]
+          # @param price [Float]
+          # @param quantity [Float]
+          # @param tiers [Array<Object>]
+          def initialize(data = {})
+            super
+          end
+        end
+
+        # Create a new instance of RateCardEntry from a Hash of raw data.
+        #
+        # @overload initialize(current: nil, updates: nil)
+        # @param current [Object]
+        # @param updates [Array<Object>]
+        def initialize(data = {})
+          super
         end
       end
 
@@ -261,6 +331,16 @@ module Metronome
         # @!attribute [rw] starting_at
         #   @return [Time]
         optional :starting_at, Time
+
+        # Create a new instance of Alias from a Hash of raw data.
+        #
+        # @overload initialize(name: nil, ending_before: nil, starting_at: nil)
+        # @param name [String]
+        # @param ending_before [String]
+        # @param starting_at [String]
+        def initialize(data = {})
+          super
+        end
       end
 
       class CreditTypeConversion < BaseModel
@@ -271,6 +351,32 @@ module Metronome
         # @!attribute [rw] fiat_per_custom_credit
         #   @return [String]
         required :fiat_per_custom_credit, String
+
+        # Create a new instance of CreditTypeConversion from a Hash of raw data.
+        #
+        # @overload initialize(custom_credit_type: nil, fiat_per_custom_credit: nil)
+        # @param custom_credit_type [Object]
+        # @param fiat_per_custom_credit [String]
+        def initialize(data = {})
+          super
+        end
+      end
+
+      # Create a new instance of RateCardListResponse from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, created_at: nil, created_by: nil, name: nil, rate_card_entries: nil, aliases: nil, credit_type_conversions: nil, custom_fields: nil, description: nil, fiat_credit_type: nil)
+      # @param id [String]
+      # @param created_at [String]
+      # @param created_by [String]
+      # @param name [String]
+      # @param rate_card_entries [Hash]
+      # @param aliases [Array<Object>]
+      # @param credit_type_conversions [Array<Object>]
+      # @param custom_fields [Hash]
+      # @param description [String]
+      # @param fiat_credit_type [Object]
+      def initialize(data = {})
+        super
       end
     end
   end

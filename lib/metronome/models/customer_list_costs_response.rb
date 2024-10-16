@@ -49,7 +49,38 @@ module Metronome
           # @!attribute [rw] group_value
           #   @return [String]
           optional :group_value, String
+
+          # Create a new instance of LineItemBreakdown from a Hash of raw data.
+          #
+          # @overload initialize(cost: nil, name: nil, group_key: nil, group_value: nil)
+          # @param cost [Float]
+          # @param name [String]
+          # @param group_key [String]
+          # @param group_value [String]
+          def initialize(data = {})
+            super
+          end
         end
+
+        # Create a new instance of CreditType from a Hash of raw data.
+        #
+        # @overload initialize(cost: nil, line_item_breakdown: nil, name: nil)
+        # @param cost [Float]
+        # @param line_item_breakdown [Array<Object>]
+        # @param name [String]
+        def initialize(data = {})
+          super
+        end
+      end
+
+      # Create a new instance of CustomerListCostsResponse from a Hash of raw data.
+      #
+      # @overload initialize(credit_types: nil, end_timestamp: nil, start_timestamp: nil)
+      # @param credit_types [Hash]
+      # @param end_timestamp [String]
+      # @param start_timestamp [String]
+      def initialize(data = {})
+        super
       end
     end
   end

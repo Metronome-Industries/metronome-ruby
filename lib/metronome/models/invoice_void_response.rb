@@ -11,6 +11,22 @@ module Metronome
         # @!attribute [rw] id
         #   @return [String]
         required :id, String
+
+        # Create a new instance of Data from a Hash of raw data.
+        #
+        # @overload initialize(id: nil)
+        # @param id [String]
+        def initialize(data = {})
+          super
+        end
+      end
+
+      # Create a new instance of InvoiceVoidResponse from a Hash of raw data.
+      #
+      # @overload initialize(data: nil)
+      # @param data [Object]
+      def initialize(data = {})
+        super
       end
     end
   end

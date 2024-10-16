@@ -88,6 +88,36 @@ module Metronome
           CHARGE_AUTOMATICALLY = :charge_automatically
           SEND_INVOICE = :send_invoice
         end
+
+        # Create a new instance of Data from a Hash of raw data.
+        #
+        # @overload initialize(aws_expiration_date: nil, aws_product_code: nil, aws_region: nil, azure_expiration_date: nil, azure_plan_id: nil, azure_start_date: nil, azure_subscription_status: nil, billing_provider_customer_id: nil, stripe_collection_method: nil)
+        # @param aws_expiration_date [String] Contract expiration date for the customer. The expected format is RFC 3339 and
+        #   can be retrieved from AWS's GetEntitlements API. (See
+        #   https://docs.aws.amazon.com/marketplaceentitlement/latest/APIReference/API_GetEntitlements.html.)
+        # @param aws_product_code [String]
+        # @param aws_region [String]
+        # @param azure_expiration_date [String] Subscription term start/end date for the customer. The expected format is RFC
+        #   3339 and can be retrieved from Azure's Get Subscription API. (See
+        #   https://learn.microsoft.com/en-us/partner-center/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api#get-subscription.)
+        # @param azure_plan_id [String]
+        # @param azure_start_date [String] Subscription term start/end date for the customer. The expected format is RFC
+        #   3339 and can be retrieved from Azure's Get Subscription API. (See
+        #   https://learn.microsoft.com/en-us/partner-center/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api#get-subscription.)
+        # @param azure_subscription_status [String]
+        # @param billing_provider_customer_id [String]
+        # @param stripe_collection_method [String]
+        def initialize(data = {})
+          super
+        end
+      end
+
+      # Create a new instance of BillingConfigRetrieveResponse from a Hash of raw data.
+      #
+      # @overload initialize(data: nil)
+      # @param data [Object]
+      def initialize(data = {})
+        super
       end
     end
   end

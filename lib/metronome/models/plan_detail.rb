@@ -75,6 +75,24 @@ module Metronome
         # @!attribute [rw] recurrence_interval
         #   @return [Float]
         optional :recurrence_interval, Float
+
+        # Create a new instance of CreditGrant from a Hash of raw data.
+        #
+        # @overload initialize(amount_granted: nil, amount_granted_credit_type: nil, amount_paid: nil, amount_paid_credit_type: nil, effective_duration: nil, name: nil, priority: nil, send_invoice: nil, reason: nil, recurrence_duration: nil, recurrence_interval: nil)
+        # @param amount_granted [Float]
+        # @param amount_granted_credit_type [Object]
+        # @param amount_paid [Float]
+        # @param amount_paid_credit_type [Object]
+        # @param effective_duration [Float]
+        # @param name [String]
+        # @param priority [String]
+        # @param send_invoice [Hash]
+        # @param reason [String]
+        # @param recurrence_duration [Float]
+        # @param recurrence_interval [Float]
+        def initialize(data = {})
+          super
+        end
       end
 
       class Minimum < BaseModel
@@ -94,6 +112,18 @@ module Metronome
         # @!attribute [rw] value
         #   @return [Float]
         required :value, Float
+
+        # Create a new instance of Minimum from a Hash of raw data.
+        #
+        # @overload initialize(credit_type: nil, name: nil, start_period: nil, value: nil)
+        # @param credit_type [Object]
+        # @param name [String]
+        # @param start_period [Float] Used in price ramps. Indicates how many billing periods pass before the charge
+        #   applies.
+        # @param value [Float]
+        def initialize(data = {})
+          super
+        end
       end
 
       class OverageRate < BaseModel
@@ -113,6 +143,32 @@ module Metronome
         # @!attribute [rw] to_fiat_conversion_factor
         #   @return [Float]
         required :to_fiat_conversion_factor, Float
+
+        # Create a new instance of OverageRate from a Hash of raw data.
+        #
+        # @overload initialize(credit_type: nil, fiat_credit_type: nil, start_period: nil, to_fiat_conversion_factor: nil)
+        # @param credit_type [Object]
+        # @param fiat_credit_type [Object]
+        # @param start_period [Float] Used in price ramps. Indicates how many billing periods pass before the charge
+        #   applies.
+        # @param to_fiat_conversion_factor [Float]
+        def initialize(data = {})
+          super
+        end
+      end
+
+      # Create a new instance of PlanDetail from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, custom_fields: nil, name: nil, credit_grants: nil, description: nil, minimums: nil, overage_rates: nil)
+      # @param id [String]
+      # @param custom_fields [Hash]
+      # @param name [String]
+      # @param credit_grants [Array<Object>]
+      # @param description [String]
+      # @param minimums [Array<Object>]
+      # @param overage_rates [Array<Object>]
+      def initialize(data = {})
+        super
       end
     end
   end

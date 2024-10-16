@@ -17,6 +17,15 @@ module Metronome
       class Type < Metronome::Enum
         MAX_PERCENTAGE = :MAX_PERCENTAGE
       end
+
+      # Create a new instance of RolloverAmountMaxPercentage from a Hash of raw data.
+      #
+      # @overload initialize(type: nil, value: nil)
+      # @param type [String] Rollover up to a percentage of the original credit grant amount.
+      # @param value [Float] The maximum percentage (0-1) of the original credit grant to rollover.
+      def initialize(data = {})
+        super
+      end
     end
   end
 end

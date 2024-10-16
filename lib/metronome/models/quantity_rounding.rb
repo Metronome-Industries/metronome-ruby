@@ -16,6 +16,15 @@ module Metronome
         ROUND_DOWN = :ROUND_DOWN
         ROUND_HALF_UP = :ROUND_HALF_UP
       end
+
+      # Create a new instance of QuantityRounding from a Hash of raw data.
+      #
+      # @overload initialize(decimal_places: nil, rounding_method: nil)
+      # @param decimal_places [Float]
+      # @param rounding_method [String]
+      def initialize(data = {})
+        super
+      end
     end
   end
 end

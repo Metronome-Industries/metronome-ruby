@@ -42,6 +42,25 @@ module Metronome
           RATE_CARD = :rate_card
           SCHEDULED_CHARGE = :scheduled_charge
         end
+
+        # Create a new instance of Data from a Hash of raw data.
+        #
+        # @overload initialize(enforce_uniqueness: nil, entity: nil, key: nil)
+        # @param enforce_uniqueness [Hash]
+        # @param entity [String]
+        # @param key [String]
+        def initialize(data = {})
+          super
+        end
+      end
+
+      # Create a new instance of CustomFieldListKeysResponse from a Hash of raw data.
+      #
+      # @overload initialize(data: nil, next_page: nil)
+      # @param data [Array<Object>]
+      # @param next_page [String]
+      def initialize(data = {})
+        super
       end
     end
   end

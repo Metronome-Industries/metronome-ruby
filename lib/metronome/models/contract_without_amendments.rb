@@ -109,6 +109,16 @@ module Metronome
           SUPERSEDE = :SUPERSEDE
           RENEWAL = :RENEWAL
         end
+
+        # Create a new instance of Transition from a Hash of raw data.
+        #
+        # @overload initialize(from_contract_id: nil, to_contract_id: nil, type: nil)
+        # @param from_contract_id [String]
+        # @param to_contract_id [String]
+        # @param type [String]
+        def initialize(data = {})
+          super
+        end
       end
 
       class UsageStatementSchedule < BaseModel
@@ -126,6 +136,15 @@ module Metronome
           MONTHLY = :MONTHLY
           QUARTERLY = :QUARTERLY
           ANNUAL = :ANNUAL
+        end
+
+        # Create a new instance of UsageStatementSchedule from a Hash of raw data.
+        #
+        # @overload initialize(billing_anchor_date: nil, frequency: nil)
+        # @param billing_anchor_date [String] Contract usage statements follow a selected cadence based on this date.
+        # @param frequency [String]
+        def initialize(data = {})
+          super
         end
       end
 
@@ -189,6 +208,26 @@ module Metronome
           GCP = :GCP
           GCP_PRO_SERVICE = :GCP_PRO_SERVICE
         end
+
+        # Create a new instance of ResellerRoyalty from a Hash of raw data.
+        #
+        # @overload initialize(fraction: nil, netsuite_reseller_id: nil, reseller_type: nil, starting_at: nil, applicable_product_ids: nil, applicable_product_tags: nil, aws_account_number: nil, aws_offer_id: nil, aws_payer_reference_id: nil, ending_before: nil, gcp_account_id: nil, gcp_offer_id: nil, reseller_contract_value: nil)
+        # @param fraction [Float]
+        # @param netsuite_reseller_id [String]
+        # @param reseller_type [String]
+        # @param starting_at [String]
+        # @param applicable_product_ids [Array<String>]
+        # @param applicable_product_tags [Array<String>]
+        # @param aws_account_number [String]
+        # @param aws_offer_id [String]
+        # @param aws_payer_reference_id [String]
+        # @param ending_before [String]
+        # @param gcp_account_id [String]
+        # @param gcp_offer_id [String]
+        # @param reseller_contract_value [Float]
+        def initialize(data = {})
+          super
+        end
       end
 
       class UsageFilter < BaseModel
@@ -221,7 +260,54 @@ module Metronome
           # @!attribute [rw] starting_at
           #   @return [Time]
           required :starting_at, Time
+
+          # Create a new instance of Update from a Hash of raw data.
+          #
+          # @overload initialize(group_key: nil, group_values: nil, starting_at: nil)
+          # @param group_key [String]
+          # @param group_values [Array<String>]
+          # @param starting_at [String]
+          def initialize(data = {})
+            super
+          end
         end
+
+        # Create a new instance of UsageFilter from a Hash of raw data.
+        #
+        # @overload initialize(current: nil, initial: nil, updates: nil)
+        # @param current [Object]
+        # @param initial [Object]
+        # @param updates [Array<Object>]
+        def initialize(data = {})
+          super
+        end
+      end
+
+      # Create a new instance of ContractWithoutAmendments from a Hash of raw data.
+      #
+      # @overload initialize(commits: nil, created_at: nil, created_by: nil, overrides: nil, scheduled_charges: nil, starting_at: nil, transitions: nil, usage_statement_schedule: nil, credits: nil, discounts: nil, ending_before: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, professional_services: nil, rate_card_id: nil, reseller_royalties: nil, salesforce_opportunity_id: nil, total_contract_value: nil, usage_filter: nil)
+      # @param commits [Array<Object>]
+      # @param created_at [String]
+      # @param created_by [String]
+      # @param overrides [Array<Object>]
+      # @param scheduled_charges [Array<Object>]
+      # @param starting_at [String]
+      # @param transitions [Array<Object>]
+      # @param usage_statement_schedule [Object]
+      # @param credits [Array<Object>]
+      # @param discounts [Array<Object>] This field's availability is dependent on your client's configuration.
+      # @param ending_before [String]
+      # @param name [String]
+      # @param net_payment_terms_days [Float]
+      # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
+      # @param professional_services [Array<Object>] This field's availability is dependent on your client's configuration.
+      # @param rate_card_id [String]
+      # @param reseller_royalties [Array<Object>] This field's availability is dependent on your client's configuration.
+      # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
+      # @param total_contract_value [Float] This field's availability is dependent on your client's configuration.
+      # @param usage_filter [Object]
+      def initialize(data = {})
+        super
       end
     end
   end
