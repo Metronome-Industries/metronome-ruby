@@ -57,7 +57,7 @@ module Metronome
     # @param max_retries [Integer] Max number of retries to attempt after a failed retryable request.
     #
     # @return [Metronome::Client]
-    def initialize(base_url: nil, bearer_token: nil, max_retries: DEFAULT_MAX_RETRIES)
+    def initialize(base_url: nil, bearer_token: nil, max_retries: DEFAULT_MAX_RETRIES, timeout: 60)
       base_url ||= "https://api.metronome.com/v1"
 
       @bearer_token = [bearer_token, ENV["METRONOME_BEARER_TOKEN"]].find { |v| !v.nil? }
@@ -65,7 +65,7 @@ module Metronome
         raise ArgumentError, "bearer_token is required"
       end
 
-      super(base_url: base_url, max_retries: max_retries)
+      super(base_url: base_url, max_retries: max_retries, timeout: timeout)
 
       @alerts = Metronome::Resources::Alerts.new(client: self)
       @plans = Metronome::Resources::Plans.new(client: self)
