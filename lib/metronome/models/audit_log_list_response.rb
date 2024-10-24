@@ -42,21 +42,20 @@ module Metronome
 
         # @!attribute [rw] name_
         #   @return [String]
-        required :name_, String
+        required :name_, String, api_name: :name
 
         # @!attribute [rw] email
         #   @return [String]
         optional :email, String
 
-        # Create a new instance of Actor from a Hash of raw data.
-        #
-        # @overload initialize(id: nil, name: nil, email: nil)
-        # @param id [String]
-        # @param name [String]
-        # @param email [String]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Actor from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :id
+        #   #   @option data [String] :name
+        #   #   @option data [String, nil] :email
+        #   def initialize(data = {}) = super
       end
 
       class Status < Metronome::Enum
@@ -65,20 +64,19 @@ module Metronome
         PENDING = :pending
       end
 
-      # Create a new instance of AuditLogListResponse from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, timestamp: nil, action: nil, actor: nil, description: nil, resource_id: nil, resource_type: nil, status: nil)
-      # @param id [String]
-      # @param timestamp [String]
-      # @param action [String]
-      # @param actor [Object]
-      # @param description [String]
-      # @param resource_id [String]
-      # @param resource_type [String]
-      # @param status [String]
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of AuditLogListResponse from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id
+      #   #   @option data [String] :timestamp
+      #   #   @option data [String, nil] :action
+      #   #   @option data [Object, nil] :actor
+      #   #   @option data [String, nil] :description
+      #   #   @option data [String, nil] :resource_id
+      #   #   @option data [String, nil] :resource_type
+      #   #   @option data [String, nil] :status
+      #   def initialize(data = {}) = super
     end
   end
 end

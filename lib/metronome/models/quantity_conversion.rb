@@ -16,7 +16,7 @@ module Metronome
       # @!attribute [rw] name_
       #   Optional name for this conversion.
       #   @return [String]
-      optional :name_, String
+      optional :name_, String, api_name: :name
 
       # The operation to perform on the quantity
       class Operation < Metronome::Enum
@@ -24,15 +24,14 @@ module Metronome
         DIVIDE = :DIVIDE
       end
 
-      # Create a new instance of QuantityConversion from a Hash of raw data.
-      #
-      # @overload initialize(conversion_factor: nil, operation: nil, name: nil)
-      # @param conversion_factor [Float] The factor to multiply or divide the quantity by.
-      # @param operation [String] The operation to perform on the quantity
-      # @param name [String] Optional name for this conversion.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of QuantityConversion from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [Float] :conversion_factor The factor to multiply or divide the quantity by.
+      #   #   @option data [String] :operation The operation to perform on the quantity
+      #   #   @option data [String, nil] :name Optional name for this conversion.
+      #   def initialize(data = {}) = super
     end
   end
 end

@@ -66,7 +66,7 @@ module Metronome
 
       # @!attribute [rw] name_
       #   @return [String]
-      optional :name_, String
+      optional :name_, String, api_name: :name
 
       # @!attribute [rw] netsuite_sales_order_id
       #   This field's availability is dependent on your client's configuration.
@@ -77,6 +77,10 @@ module Metronome
       #   If multiple credits or commits are applicable, the one with the lower priority will apply first.
       #   @return [Float]
       optional :priority, Float
+
+      # @!attribute [rw] rate_type
+      #   @return [Symbol, Metronome::Models::Commit::RateType]
+      optional :rate_type, enum: -> { Metronome::Models::Commit::RateType }
 
       # @!attribute [rw] rolled_over_from
       #   @return [Metronome::Models::Commit::RolledOverFrom]
@@ -98,16 +102,15 @@ module Metronome
 
         # @!attribute [rw] name_
         #   @return [String]
-        required :name_, String
+        required :name_, String, api_name: :name
 
-        # Create a new instance of Product from a Hash of raw data.
-        #
-        # @overload initialize(id: nil, name: nil)
-        # @param id [String]
-        # @param name [String]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Product from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :id
+        #   #   @option data [String] :name
+        #   def initialize(data = {}) = super
       end
 
       class Type < Metronome::Enum
@@ -120,13 +123,12 @@ module Metronome
         #   @return [String]
         required :id, String
 
-        # Create a new instance of Contract from a Hash of raw data.
-        #
-        # @overload initialize(id: nil)
-        # @param id [String]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Contract from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :id
+        #   def initialize(data = {}) = super
       end
 
       class InvoiceContract < BaseModel
@@ -134,13 +136,17 @@ module Metronome
         #   @return [String]
         required :id, String
 
-        # Create a new instance of InvoiceContract from a Hash of raw data.
-        #
-        # @overload initialize(id: nil)
-        # @param id [String]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of InvoiceContract from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :id
+        #   def initialize(data = {}) = super
+      end
+
+      class RateType < Metronome::Enum
+        COMMIT_RATE = :COMMIT_RATE
+        LIST_RATE = :LIST_RATE
       end
 
       class RolledOverFrom < BaseModel
@@ -152,45 +158,44 @@ module Metronome
         #   @return [String]
         required :contract_id, String
 
-        # Create a new instance of RolledOverFrom from a Hash of raw data.
-        #
-        # @overload initialize(commit_id: nil, contract_id: nil)
-        # @param commit_id [String]
-        # @param contract_id [String]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of RolledOverFrom from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :commit_id
+        #   #   @option data [String] :contract_id
+        #   def initialize(data = {}) = super
       end
 
-      # Create a new instance of Commit from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, product: nil, type: nil, access_schedule: nil, amount: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, custom_fields: nil, description: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil)
-      # @param id [String]
-      # @param product [Object]
-      # @param type [String]
-      # @param access_schedule [Object] The schedule that the customer will gain access to the credits purposed with
-      #   this commit.
-      # @param amount [Float] (DEPRECATED) Use access_schedule + invoice_schedule instead.
-      # @param applicable_contract_ids [Array<String>]
-      # @param applicable_product_ids [Array<String>]
-      # @param applicable_product_tags [Array<String>]
-      # @param contract [Object]
-      # @param custom_fields [Hash]
-      # @param description [String]
-      # @param invoice_contract [Object] The contract that this commit will be billed on.
-      # @param invoice_schedule [Object] The schedule that the customer will be invoiced for this commit.
-      # @param ledger [Array<Object>] A list of ordered events that impact the balance of a commit. For example, an
-      #   invoice deduction or a rollover.
-      # @param name [String]
-      # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
-      # @param priority [Float] If multiple credits or commits are applicable, the one with the lower priority
-      #   will apply first.
-      # @param rolled_over_from [Object]
-      # @param rollover_fraction [Float]
-      # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of Commit from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id
+      #   #   @option data [Object] :product
+      #   #   @option data [String] :type
+      #   #   @option data [Object, nil] :access_schedule The schedule that the customer will gain access to the credits purposed with
+      #   #     this commit.
+      #   #   @option data [Float, nil] :amount (DEPRECATED) Use access_schedule + invoice_schedule instead.
+      #   #   @option data [Array<String>, nil] :applicable_contract_ids
+      #   #   @option data [Array<String>, nil] :applicable_product_ids
+      #   #   @option data [Array<String>, nil] :applicable_product_tags
+      #   #   @option data [Object, nil] :contract
+      #   #   @option data [Hash, nil] :custom_fields
+      #   #   @option data [String, nil] :description
+      #   #   @option data [Object, nil] :invoice_contract The contract that this commit will be billed on.
+      #   #   @option data [Object, nil] :invoice_schedule The schedule that the customer will be invoiced for this commit.
+      #   #   @option data [Array<Object>, nil] :ledger A list of ordered events that impact the balance of a commit. For example, an
+      #   #     invoice deduction or a rollover.
+      #   #   @option data [String, nil] :name
+      #   #   @option data [String, nil] :netsuite_sales_order_id This field's availability is dependent on your client's configuration.
+      #   #   @option data [Float, nil] :priority If multiple credits or commits are applicable, the one with the lower priority
+      #   #     will apply first.
+      #   #   @option data [String, nil] :rate_type
+      #   #   @option data [Object, nil] :rolled_over_from
+      #   #   @option data [Float, nil] :rollover_fraction
+      #   #   @option data [String, nil] :salesforce_opportunity_id This field's availability is dependent on your client's configuration.
+      #   def initialize(data = {}) = super
     end
   end
 end

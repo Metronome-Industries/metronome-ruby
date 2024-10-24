@@ -41,7 +41,7 @@ module Metronome
 
       # @!attribute [rw] name_
       #   @return [String]
-      required :name_, String
+      required :name_, String, api_name: :name
 
       # @!attribute [rw] paid_amount
       #   the amount paid for this credit grant
@@ -95,18 +95,17 @@ module Metronome
         #   @return [Float]
         required :including_pending, Float
 
-        # Create a new instance of Balance from a Hash of raw data.
-        #
-        # @overload initialize(effective_at: nil, excluding_pending: nil, including_pending: nil)
-        # @param effective_at [String] The end_date of the customer's current billing period.
-        # @param excluding_pending [Float] The grant's current balance including all posted deductions. If the grant has
-        #   expired, this amount will be 0.
-        # @param including_pending [Float] The grant's current balance including all posted and pending deductions. If the
-        #   grant expires before the end of the customer's current billing period, this
-        #   amount will be 0.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Balance from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :effective_at The end_date of the customer's current billing period.
+        #   #   @option data [Float] :excluding_pending The grant's current balance including all posted deductions. If the grant has
+        #   #     expired, this amount will be 0.
+        #   #   @option data [Float] :including_pending The grant's current balance including all posted and pending deductions. If the
+        #   #     grant expires before the end of the customer's current billing period, this
+        #   #     amount will be 0.
+        #   def initialize(data = {}) = super
       end
 
       class GrantAmount < BaseModel
@@ -119,14 +118,13 @@ module Metronome
         #   @return [Metronome::Models::CreditTypeData]
         required :credit_type, -> { Metronome::Models::CreditTypeData }
 
-        # Create a new instance of GrantAmount from a Hash of raw data.
-        #
-        # @overload initialize(amount: nil, credit_type: nil)
-        # @param amount [Float]
-        # @param credit_type [Object] the credit type for the amount granted
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of GrantAmount from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Float] :amount
+        #   #   @option data [Object] :credit_type the credit type for the amount granted
+        #   def initialize(data = {}) = super
       end
 
       class PaidAmount < BaseModel
@@ -139,14 +137,13 @@ module Metronome
         #   @return [Metronome::Models::CreditTypeData]
         required :credit_type, -> { Metronome::Models::CreditTypeData }
 
-        # Create a new instance of PaidAmount from a Hash of raw data.
-        #
-        # @overload initialize(amount: nil, credit_type: nil)
-        # @param amount [Float]
-        # @param credit_type [Object] the credit type for the amount paid
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of PaidAmount from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Float] :amount
+        #   #   @option data [Object] :credit_type the credit type for the amount paid
+        #   def initialize(data = {}) = super
       end
 
       class Product < BaseModel
@@ -156,47 +153,45 @@ module Metronome
 
         # @!attribute [rw] name_
         #   @return [String]
-        required :name_, String
+        required :name_, String, api_name: :name
 
-        # Create a new instance of Product from a Hash of raw data.
-        #
-        # @overload initialize(id: nil, name: nil)
-        # @param id [String]
-        # @param name [String]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Product from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :id
+        #   #   @option data [String] :name
+        #   def initialize(data = {}) = super
       end
 
-      # Create a new instance of CreditGrantListResponse from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, balance: nil, custom_fields: nil, customer_id: nil, deductions: nil, effective_at: nil, expires_at: nil, grant_amount: nil, name: nil, paid_amount: nil, pending_deductions: nil, priority: nil, credit_grant_type: nil, invoice_id: nil, products: nil, reason: nil, uniqueness_key: nil)
-      # @param id [String] the Metronome ID of the credit grant
-      # @param balance [Object] The effective balance of the grant as of the end of the customer's current
-      #   billing period. Expiration deductions will be included only if the grant expires
-      #   before the end of the current billing period.
-      # @param custom_fields [Hash]
-      # @param customer_id [String] the Metronome ID of the customer
-      # @param deductions [Array<Object>]
-      # @param effective_at [String]
-      # @param expires_at [String]
-      # @param grant_amount [Object] the amount of credits initially granted
-      # @param name [String]
-      # @param paid_amount [Object] the amount paid for this credit grant
-      # @param pending_deductions [Array<Object>]
-      # @param priority [Float]
-      # @param credit_grant_type [String]
-      # @param invoice_id [String] the Metronome ID of the invoice with the purchase charge for this credit grant,
-      #   if applicable
-      # @param products [Array<Object>] The products which these credits will be applied to. (If unspecified, the
-      #   credits will be applied to charges for all products.)
-      # @param reason [String]
-      # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made
-      #   with a previously used uniqueness key, a new record will not be created and the
-      #   request will fail with a 409 error.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of CreditGrantListResponse from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id the Metronome ID of the credit grant
+      #   #   @option data [Object] :balance The effective balance of the grant as of the end of the customer's current
+      #   #     billing period. Expiration deductions will be included only if the grant expires
+      #   #     before the end of the current billing period.
+      #   #   @option data [Hash] :custom_fields
+      #   #   @option data [String] :customer_id the Metronome ID of the customer
+      #   #   @option data [Array<Object>] :deductions
+      #   #   @option data [String] :effective_at
+      #   #   @option data [String] :expires_at
+      #   #   @option data [Object] :grant_amount the amount of credits initially granted
+      #   #   @option data [String] :name
+      #   #   @option data [Object] :paid_amount the amount paid for this credit grant
+      #   #   @option data [Array<Object>] :pending_deductions
+      #   #   @option data [Float] :priority
+      #   #   @option data [String, nil] :credit_grant_type
+      #   #   @option data [String, nil] :invoice_id the Metronome ID of the invoice with the purchase charge for this credit grant,
+      #   #     if applicable
+      #   #   @option data [Array<Object>, nil] :products The products which these credits will be applied to. (If unspecified, the
+      #   #     credits will be applied to charges for all products.)
+      #   #   @option data [String, nil] :reason
+      #   #   @option data [String, nil] :uniqueness_key Prevents the creation of duplicates. If a request to create a record is made
+      #   #     with a previously used uniqueness key, a new record will not be created and the
+      #   #     request will fail with a 409 error.
+      #   def initialize(data = {}) = super
     end
   end
 end

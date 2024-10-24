@@ -24,14 +24,14 @@ module Metronome
         #   @return [Array<Metronome::Models::CustomerListCostsResponse::CreditTypes::CreditType::LineItemBreakdown>]
         optional :line_item_breakdown,
                  Metronome::ArrayOf.new(
-                   lambda {
+                   -> {
                      Metronome::Models::CustomerListCostsResponse::CreditTypes::CreditType::LineItemBreakdown
                    }
                  )
 
         # @!attribute [rw] name_
         #   @return [String]
-        optional :name_, String
+        optional :name_, String, api_name: :name
 
         class LineItemBreakdown < BaseModel
           # @!attribute [rw] cost
@@ -40,7 +40,7 @@ module Metronome
 
           # @!attribute [rw] name_
           #   @return [String]
-          required :name_, String
+          required :name_, String, api_name: :name
 
           # @!attribute [rw] group_key
           #   @return [String]
@@ -50,38 +50,35 @@ module Metronome
           #   @return [String]
           optional :group_value, String
 
-          # Create a new instance of LineItemBreakdown from a Hash of raw data.
-          #
-          # @overload initialize(cost: nil, name: nil, group_key: nil, group_value: nil)
-          # @param cost [Float]
-          # @param name [String]
-          # @param group_key [String]
-          # @param group_value [String]
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of LineItemBreakdown from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [Float] :cost
+          #   #   @option data [String] :name
+          #   #   @option data [String, nil] :group_key
+          #   #   @option data [String, nil] :group_value
+          #   def initialize(data = {}) = super
         end
 
-        # Create a new instance of CreditType from a Hash of raw data.
-        #
-        # @overload initialize(cost: nil, line_item_breakdown: nil, name: nil)
-        # @param cost [Float]
-        # @param line_item_breakdown [Array<Object>]
-        # @param name [String]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of CreditType from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Float, nil] :cost
+        #   #   @option data [Array<Object>, nil] :line_item_breakdown
+        #   #   @option data [String, nil] :name
+        #   def initialize(data = {}) = super
       end
 
-      # Create a new instance of CustomerListCostsResponse from a Hash of raw data.
-      #
-      # @overload initialize(credit_types: nil, end_timestamp: nil, start_timestamp: nil)
-      # @param credit_types [Hash]
-      # @param end_timestamp [String]
-      # @param start_timestamp [String]
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of CustomerListCostsResponse from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [Hash] :credit_types
+      #   #   @option data [String] :end_timestamp
+      #   #   @option data [String] :start_timestamp
+      #   def initialize(data = {}) = super
     end
   end
 end

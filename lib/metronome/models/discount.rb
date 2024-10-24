@@ -17,7 +17,7 @@ module Metronome
 
       # @!attribute [rw] name_
       #   @return [String]
-      optional :name_, String
+      optional :name_, String, api_name: :name
 
       # @!attribute [rw] netsuite_sales_order_id
       #   This field's availability is dependent on your client's configuration.
@@ -31,29 +31,27 @@ module Metronome
 
         # @!attribute [rw] name_
         #   @return [String]
-        required :name_, String
+        required :name_, String, api_name: :name
 
-        # Create a new instance of Product from a Hash of raw data.
-        #
-        # @overload initialize(id: nil, name: nil)
-        # @param id [String]
-        # @param name [String]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Product from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :id
+        #   #   @option data [String] :name
+        #   def initialize(data = {}) = super
       end
 
-      # Create a new instance of Discount from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, product: nil, schedule: nil, name: nil, netsuite_sales_order_id: nil)
-      # @param id [String]
-      # @param product [Object]
-      # @param schedule [Object]
-      # @param name [String]
-      # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of Discount from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id
+      #   #   @option data [Object] :product
+      #   #   @option data [Object] :schedule
+      #   #   @option data [String, nil] :name
+      #   #   @option data [String, nil] :netsuite_sales_order_id This field's availability is dependent on your client's configuration.
+      #   def initialize(data = {}) = super
     end
   end
 end

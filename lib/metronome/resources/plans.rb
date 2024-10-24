@@ -10,9 +10,9 @@ module Metronome
 
       # List all available plans.
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [Integer, nil] :limit Max number of results that should be returned
-      # @option params [String, nil] :next_page Cursor that indicates where the next page of results should start.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      #   @option params [Integer, nil] :limit Max number of results that should be returned
+      #   @option params [String, nil] :next_page Cursor that indicates where the next page of results should start.
       #
       # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -30,8 +30,8 @@ module Metronome
 
       # Fetch high level details of a specific plan.
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :plan_id
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      #   @option params [String] :plan_id
       #
       # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -47,10 +47,10 @@ module Metronome
 
       # Fetches a list of charges of a specific plan.
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :plan_id Path param:
-      # @option params [Integer, nil] :limit Query param: Max number of results that should be returned
-      # @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      #   @option params [String] :plan_id Path param:
+      #   @option params [Integer, nil] :limit Query param: Max number of results that should be returned
+      #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
       #
       # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -69,19 +69,19 @@ module Metronome
       # Fetches a list of customers on a specific plan (by default, only currently
       #   active plans are included)
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :plan_id Path param:
-      # @option params [Integer, nil] :limit Query param: Max number of results that should be returned
-      # @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
-      # @option params [Symbol, Status, nil] :status Query param: Status of customers on a given plan. Defaults to `active`.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      #   @option params [String] :plan_id Path param:
+      #   @option params [Integer, nil] :limit Query param: Max number of results that should be returned
+      #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
+      #   @option params [Symbol, Status, nil] :status Query param: Status of customers on a given plan. Defaults to `active`.
       #
-      #   - `all` - Return current, past, and upcoming customers of the plan.
-      #   - `active` - Return current customers of the plan.
-      #   - `ended` - Return past customers of the plan.
-      #   - `upcoming` - Return upcoming customers of the plan.
+      #     - `all` - Return current, past, and upcoming customers of the plan.
+      #     - `active` - Return current customers of the plan.
+      #     - `ended` - Return past customers of the plan.
+      #     - `upcoming` - Return upcoming customers of the plan.
       #
-      #   Multiple statuses can be OR'd together using commas, e.g. `active,ended`.
-      #   **Note:** `ended,upcoming` combination is not yet supported.
+      #     Multiple statuses can be OR'd together using commas, e.g. `active,ended`.
+      #     **Note:** `ended,upcoming` combination is not yet supported.
       #
       # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #

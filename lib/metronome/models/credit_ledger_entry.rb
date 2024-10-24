@@ -35,22 +35,21 @@ module Metronome
       #   @return [String]
       optional :invoice_id, String
 
-      # Create a new instance of CreditLedgerEntry from a Hash of raw data.
-      #
-      # @overload initialize(amount: nil, created_by: nil, credit_grant_id: nil, effective_at: nil, reason: nil, running_balance: nil, invoice_id: nil)
-      # @param amount [Float] an amount representing the change to the customer's credit balance
-      # @param created_by [String]
-      # @param credit_grant_id [String] the credit grant this entry is related to
-      # @param effective_at [String]
-      # @param reason [String]
-      # @param running_balance [Float] the running balance for this credit type at the time of the ledger entry,
-      #   including all preceding charges
-      # @param invoice_id [String] if this entry is a deduction, the Metronome ID of the invoice where the credit
-      #   deduction was consumed; if this entry is a grant, the Metronome ID of the
-      #   invoice where the grant's paid_amount was charged
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of CreditLedgerEntry from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [Float] :amount an amount representing the change to the customer's credit balance
+      #   #   @option data [String] :created_by
+      #   #   @option data [String] :credit_grant_id the credit grant this entry is related to
+      #   #   @option data [String] :effective_at
+      #   #   @option data [String] :reason
+      #   #   @option data [Float] :running_balance the running balance for this credit type at the time of the ledger entry,
+      #   #     including all preceding charges
+      #   #   @option data [String, nil] :invoice_id if this entry is a deduction, the Metronome ID of the invoice where the credit
+      #   #     deduction was consumed; if this entry is a grant, the Metronome ID of the
+      #   #     invoice where the grant's paid_amount was charged
+      #   def initialize(data = {}) = super
     end
   end
 end

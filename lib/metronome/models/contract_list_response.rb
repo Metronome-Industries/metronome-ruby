@@ -97,7 +97,7 @@ module Metronome
           #   @return [Array<Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty>]
           optional :reseller_royalties,
                    Metronome::ArrayOf.new(
-                     lambda {
+                     -> {
                        Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty
                      }
                    )
@@ -111,7 +111,7 @@ module Metronome
             # @!attribute [rw] reseller_type
             #   @return [Symbol, Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty::ResellerType]
             required :reseller_type,
-                     enum: lambda {
+                     enum: -> {
                        Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty::ResellerType
                      }
 
@@ -162,58 +162,56 @@ module Metronome
               GCP_PRO_SERVICE = :GCP_PRO_SERVICE
             end
 
-            # Create a new instance of ResellerRoyalty from a Hash of raw data.
-            #
-            # @overload initialize(reseller_type: nil, aws_account_number: nil, aws_offer_id: nil, aws_payer_reference_id: nil, ending_before: nil, fraction: nil, gcp_account_id: nil, gcp_offer_id: nil, netsuite_reseller_id: nil, reseller_contract_value: nil, starting_at: nil)
-            # @param reseller_type [String]
-            # @param aws_account_number [String]
-            # @param aws_offer_id [String]
-            # @param aws_payer_reference_id [String]
-            # @param ending_before [String]
-            # @param fraction [Float]
-            # @param gcp_account_id [String]
-            # @param gcp_offer_id [String]
-            # @param netsuite_reseller_id [String]
-            # @param reseller_contract_value [Float]
-            # @param starting_at [String]
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of ResellerRoyalty from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :reseller_type
+            #   #   @option data [String, nil] :aws_account_number
+            #   #   @option data [String, nil] :aws_offer_id
+            #   #   @option data [String, nil] :aws_payer_reference_id
+            #   #   @option data [String, nil] :ending_before
+            #   #   @option data [Float, nil] :fraction
+            #   #   @option data [String, nil] :gcp_account_id
+            #   #   @option data [String, nil] :gcp_offer_id
+            #   #   @option data [String, nil] :netsuite_reseller_id
+            #   #   @option data [Float, nil] :reseller_contract_value
+            #   #   @option data [String, nil] :starting_at
+            #   def initialize(data = {}) = super
           end
 
-          # Create a new instance of Amendment from a Hash of raw data.
-          #
-          # @overload initialize(id: nil, commits: nil, created_at: nil, created_by: nil, overrides: nil, scheduled_charges: nil, starting_at: nil, credits: nil, discounts: nil, netsuite_sales_order_id: nil, professional_services: nil, reseller_royalties: nil, salesforce_opportunity_id: nil)
-          # @param id [String]
-          # @param commits [Array<Object>]
-          # @param created_at [String]
-          # @param created_by [String]
-          # @param overrides [Array<Object>]
-          # @param scheduled_charges [Array<Object>]
-          # @param starting_at [String]
-          # @param credits [Array<Object>]
-          # @param discounts [Array<Object>] This field's availability is dependent on your client's configuration.
-          # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
-          # @param professional_services [Array<Object>] This field's availability is dependent on your client's configuration.
-          # @param reseller_royalties [Array<Object>] This field's availability is dependent on your client's configuration.
-          # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of Amendment from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :id
+          #   #   @option data [Array<Object>] :commits
+          #   #   @option data [String] :created_at
+          #   #   @option data [String] :created_by
+          #   #   @option data [Array<Object>] :overrides
+          #   #   @option data [Array<Object>] :scheduled_charges
+          #   #   @option data [String] :starting_at
+          #   #   @option data [Array<Object>, nil] :credits
+          #   #   @option data [Array<Object>, nil] :discounts This field's availability is dependent on your client's configuration.
+          #   #   @option data [String, nil] :netsuite_sales_order_id This field's availability is dependent on your client's configuration.
+          #   #   @option data [Array<Object>, nil] :professional_services This field's availability is dependent on your client's configuration.
+          #   #   @option data [Array<Object>, nil] :reseller_royalties This field's availability is dependent on your client's configuration.
+          #   #   @option data [String, nil] :salesforce_opportunity_id This field's availability is dependent on your client's configuration.
+          #   def initialize(data = {}) = super
         end
 
         class CustomerBillingProviderConfiguration < BaseModel
           # @!attribute [rw] billing_provider
           #   @return [Symbol, Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration::BillingProvider]
           required :billing_provider,
-                   enum: lambda {
+                   enum: -> {
                      Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration::BillingProvider
                    }
 
           # @!attribute [rw] delivery_method
           #   @return [Symbol, Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod]
           required :delivery_method,
-                   enum: lambda {
+                   enum: -> {
                      Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod
                    }
 
@@ -235,42 +233,39 @@ module Metronome
             AWS_SNS = :aws_sns
           end
 
-          # Create a new instance of CustomerBillingProviderConfiguration from a Hash of raw
-          #   data.
-          #
-          # @overload initialize(billing_provider: nil, delivery_method: nil)
-          # @param billing_provider [String]
-          # @param delivery_method [String]
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of CustomerBillingProviderConfiguration from a Hash of raw
+          #   #   data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :billing_provider
+          #   #   @option data [String] :delivery_method
+          #   def initialize(data = {}) = super
         end
 
-        # Create a new instance of Data from a Hash of raw data.
-        #
-        # @overload initialize(id: nil, amendments: nil, current: nil, customer_id: nil, initial: nil, custom_fields: nil, customer_billing_provider_configuration: nil, uniqueness_key: nil)
-        # @param id [String]
-        # @param amendments [Array<Object>]
-        # @param current [Object]
-        # @param customer_id [String]
-        # @param initial [Object]
-        # @param custom_fields [Hash]
-        # @param customer_billing_provider_configuration [Object] This field's availability is dependent on your client's configuration.
-        # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made
-        #   with a previously used uniqueness key, a new record will not be created and the
-        #   request will fail with a 409 error.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Data from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :id
+        #   #   @option data [Array<Object>] :amendments
+        #   #   @option data [Object] :current
+        #   #   @option data [String] :customer_id
+        #   #   @option data [Object] :initial
+        #   #   @option data [Hash, nil] :custom_fields
+        #   #   @option data [Object, nil] :customer_billing_provider_configuration This field's availability is dependent on your client's configuration.
+        #   #   @option data [String, nil] :uniqueness_key Prevents the creation of duplicates. If a request to create a record is made
+        #   #     with a previously used uniqueness key, a new record will not be created and the
+        #   #     request will fail with a 409 error.
+        #   def initialize(data = {}) = super
       end
 
-      # Create a new instance of ContractListResponse from a Hash of raw data.
-      #
-      # @overload initialize(data: nil)
-      # @param data [Array<Object>]
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of ContractListResponse from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [Array<Object>] :data
+      #   def initialize(data = {}) = super
     end
   end
 end

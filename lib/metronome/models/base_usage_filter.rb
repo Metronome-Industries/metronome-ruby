@@ -15,15 +15,14 @@ module Metronome
       #   @return [Time]
       optional :starting_at, Time
 
-      # Create a new instance of BaseUsageFilter from a Hash of raw data.
-      #
-      # @overload initialize(group_key: nil, group_values: nil, starting_at: nil)
-      # @param group_key [String]
-      # @param group_values [Array<String>]
-      # @param starting_at [String]
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of BaseUsageFilter from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :group_key
+      #   #   @option data [Array<String>] :group_values
+      #   #   @option data [String, nil] :starting_at
+      #   def initialize(data = {}) = super
     end
   end
 end

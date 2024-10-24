@@ -37,28 +37,26 @@ module Metronome
         #   @return [Float]
         required :unit_price, Float
 
-        # Create a new instance of ScheduleItem from a Hash of raw data.
-        #
-        # @overload initialize(id: nil, amount: nil, invoice_id: nil, quantity: nil, timestamp: nil, unit_price: nil)
-        # @param id [String]
-        # @param amount [Float]
-        # @param invoice_id [String]
-        # @param quantity [Float]
-        # @param timestamp [String]
-        # @param unit_price [Float]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of ScheduleItem from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :id
+        #   #   @option data [Float] :amount
+        #   #   @option data [String] :invoice_id
+        #   #   @option data [Float] :quantity
+        #   #   @option data [String] :timestamp
+        #   #   @option data [Float] :unit_price
+        #   def initialize(data = {}) = super
       end
 
-      # Create a new instance of SchedulePointInTime from a Hash of raw data.
-      #
-      # @overload initialize(credit_type: nil, schedule_items: nil)
-      # @param credit_type [Object]
-      # @param schedule_items [Array<Object>]
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of SchedulePointInTime from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [Object, nil] :credit_type
+      #   #   @option data [Array<Object>, nil] :schedule_items
+      #   def initialize(data = {}) = super
     end
   end
 end

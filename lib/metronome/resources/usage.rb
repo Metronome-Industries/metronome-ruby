@@ -11,18 +11,18 @@ module Metronome
       # Fetch aggregated usage data for multiple customers and billable-metrics, broken
       #   into intervals of the specified length.
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [Time] :ending_before Body param:
-      # @option params [Time] :starting_on Body param:
-      # @option params [Symbol, WindowSize] :window_size Body param: A window_size of "day" or "hour" will return the usage for the
-      #   specified period segmented into daily or hourly aggregates. A window_size of
-      #   "none" will return a single usage aggregate for the entirety of the specified
-      #   period.
-      # @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
-      # @option params [Array<BillableMetric>, nil] :billable_metrics Body param: A list of billable metrics to fetch usage for. If absent, all
-      #   billable metrics will be returned.
-      # @option params [Array<String>, nil] :customer_ids Body param: A list of Metronome customer IDs to fetch usage for. If absent,
-      #   usage for all customers will be returned.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      #   @option params [Time] :ending_before Body param:
+      #   @option params [Time] :starting_on Body param:
+      #   @option params [Symbol, WindowSize] :window_size Body param: A window_size of "day" or "hour" will return the usage for the
+      #     specified period segmented into daily or hourly aggregates. A window_size of
+      #     "none" will return a single usage aggregate for the entirety of the specified
+      #     period.
+      #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
+      #   @option params [Array<BillableMetric>, nil] :billable_metrics Body param: A list of billable metrics to fetch usage for. If absent, all
+      #     billable metrics will be returned.
+      #   @option params [Array<String>, nil] :customer_ids Body param: A list of Metronome customer IDs to fetch usage for. If absent,
+      #     usage for all customers will be returned.
       #
       # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -46,8 +46,8 @@ module Metronome
       #   [Getting usage into Metronome](https://docs.metronome.com/getting-usage-data-into-metronome/overview)
       #   to learn more about usage events.
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [Array<Usage>] :usage
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      #   @option params [Array<Usage>] :usage
       #
       # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -66,21 +66,21 @@ module Metronome
       # Fetch aggregated usage data for the specified customer, billable-metric, and
       #   optional group, broken into intervals of the specified length.
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :billable_metric_id Body param:
-      # @option params [String] :customer_id Body param:
-      # @option params [Symbol, WindowSize] :window_size Body param: A window_size of "day" or "hour" will return the usage for the
-      #   specified period segmented into daily or hourly aggregates. A window_size of
-      #   "none" will return a single usage aggregate for the entirety of the specified
-      #   period.
-      # @option params [Integer, nil] :limit Query param: Max number of results that should be returned
-      # @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
-      # @option params [Boolean, nil] :current_period Body param: If true, will return the usage for the current billing period. Will
-      #   return an error if the customer is currently uncontracted or starting_on and
-      #   ending_before are specified when this is true.
-      # @option params [Time, nil] :ending_before Body param:
-      # @option params [GroupBy, nil] :group_by Body param:
-      # @option params [Time, nil] :starting_on Body param:
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      #   @option params [String] :billable_metric_id Body param:
+      #   @option params [String] :customer_id Body param:
+      #   @option params [Symbol, WindowSize] :window_size Body param: A window_size of "day" or "hour" will return the usage for the
+      #     specified period segmented into daily or hourly aggregates. A window_size of
+      #     "none" will return a single usage aggregate for the entirety of the specified
+      #     period.
+      #   @option params [Integer, nil] :limit Query param: Max number of results that should be returned
+      #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
+      #   @option params [Boolean, nil] :current_period Body param: If true, will return the usage for the current billing period. Will
+      #     return an error if the customer is currently uncontracted or starting_on and
+      #     ending_before are specified when this is true.
+      #   @option params [Time, nil] :ending_before Body param:
+      #   @option params [GroupBy, nil] :group_by Body param:
+      #   @option params [Time, nil] :starting_on Body param:
       #
       # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #

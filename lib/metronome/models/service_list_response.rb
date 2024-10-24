@@ -14,7 +14,7 @@ module Metronome
 
         # @!attribute [rw] name_
         #   @return [String]
-        required :name_, String
+        required :name_, String, api_name: :name
 
         # @!attribute [rw] usage
         #   @return [Symbol, Metronome::Models::ServiceListResponse::Service::Usage]
@@ -25,24 +25,22 @@ module Metronome
           ACCEPTS_CONNECTIONS_AT = :accepts_connections_at
         end
 
-        # Create a new instance of Service from a Hash of raw data.
-        #
-        # @overload initialize(ips: nil, name: nil, usage: nil)
-        # @param ips [Array<String>]
-        # @param name [String]
-        # @param usage [String]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Service from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Array<String>] :ips
+        #   #   @option data [String] :name
+        #   #   @option data [String] :usage
+        #   def initialize(data = {}) = super
       end
 
-      # Create a new instance of ServiceListResponse from a Hash of raw data.
-      #
-      # @overload initialize(services: nil)
-      # @param services [Array<Object>]
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of ServiceListResponse from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [Array<Object>] :services
+      #   def initialize(data = {}) = super
     end
   end
 end

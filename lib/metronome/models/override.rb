@@ -102,16 +102,15 @@ module Metronome
         #   @return [Array<String>]
         optional :product_tags, Metronome::ArrayOf.new(String)
 
-        # Create a new instance of OverrideSpecifier from a Hash of raw data.
-        #
-        # @overload initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
-        # @param presentation_group_values [Hash]
-        # @param pricing_group_values [Hash]
-        # @param product_id [String]
-        # @param product_tags [Array<String>]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of OverrideSpecifier from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Hash, nil] :presentation_group_values
+        #   #   @option data [Hash, nil] :pricing_group_values
+        #   #   @option data [String, nil] :product_id
+        #   #   @option data [Array<String>, nil] :product_tags
+        #   def initialize(data = {}) = super
       end
 
       class OverrideTier < BaseModel
@@ -123,14 +122,13 @@ module Metronome
         #   @return [Float]
         optional :size, Float
 
-        # Create a new instance of OverrideTier from a Hash of raw data.
-        #
-        # @overload initialize(multiplier: nil, size: nil)
-        # @param multiplier [Float]
-        # @param size [Float]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of OverrideTier from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Float] :multiplier
+        #   #   @option data [Float, nil] :size
+        #   def initialize(data = {}) = super
       end
 
       class OverwriteRate < BaseModel
@@ -175,21 +173,20 @@ module Metronome
           CUSTOM = :CUSTOM
         end
 
-        # Create a new instance of OverwriteRate from a Hash of raw data.
-        #
-        # @overload initialize(rate_type: nil, credit_type: nil, custom_rate: nil, is_prorated: nil, price: nil, quantity: nil, tiers: nil)
-        # @param rate_type [String]
-        # @param credit_type [Object]
-        # @param custom_rate [Hash] Only set for CUSTOM rate_type. This field is interpreted by custom rate
-        #   processors.
-        # @param is_prorated [Hash] Default proration configuration. Only valid for SUBSCRIPTION rate_type.
-        # @param price [Float] Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
-        #   this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
-        # @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
-        # @param tiers [Array<Object>] Only set for TIERED rate_type.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of OverwriteRate from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :rate_type
+        #   #   @option data [Object, nil] :credit_type
+        #   #   @option data [Hash, nil] :custom_rate Only set for CUSTOM rate_type. This field is interpreted by custom rate
+        #   #     processors.
+        #   #   @option data [Hash, nil] :is_prorated Default proration configuration. Only valid for SUBSCRIPTION rate_type.
+        #   #   @option data [Float, nil] :price Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
+        #   #     this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
+        #   #   @option data [Float, nil] :quantity Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
+        #   #   @option data [Array<Object>, nil] :tiers Only set for TIERED rate_type.
+        #   def initialize(data = {}) = super
       end
 
       class Product < BaseModel
@@ -199,16 +196,15 @@ module Metronome
 
         # @!attribute [rw] name_
         #   @return [String]
-        required :name_, String
+        required :name_, String, api_name: :name
 
-        # Create a new instance of Product from a Hash of raw data.
-        #
-        # @overload initialize(id: nil, name: nil)
-        # @param id [String]
-        # @param name [String]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Product from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :id
+        #   #   @option data [String] :name
+        #   def initialize(data = {}) = super
       end
 
       class RateType < Metronome::Enum
@@ -225,33 +221,32 @@ module Metronome
         TIERED = :TIERED
       end
 
-      # Create a new instance of Override from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, starting_at: nil, applicable_product_tags: nil, credit_type: nil, ending_before: nil, entitled: nil, is_prorated: nil, multiplier: nil, override_specifiers: nil, override_tiers: nil, overwrite_rate: nil, price: nil, priority: nil, product: nil, quantity: nil, rate_type: nil, tiers: nil, type: nil, value: nil)
-      # @param id [String]
-      # @param starting_at [String]
-      # @param applicable_product_tags [Array<String>]
-      # @param credit_type [Object]
-      # @param ending_before [String]
-      # @param entitled [Hash]
-      # @param is_prorated [Hash] Default proration configuration. Only valid for SUBSCRIPTION rate_type.
-      # @param multiplier [Float]
-      # @param override_specifiers [Array<Object>]
-      # @param override_tiers [Array<Object>]
-      # @param overwrite_rate [Object]
-      # @param price [Float] Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
-      #   this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
-      # @param priority [Float]
-      # @param product [Object]
-      # @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
-      # @param rate_type [String]
-      # @param tiers [Array<Object>] Only set for TIERED rate_type.
-      # @param type [String]
-      # @param value [Hash] Only set for CUSTOM rate_type. This field is interpreted by custom rate
-      #   processors.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of Override from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id
+      #   #   @option data [String] :starting_at
+      #   #   @option data [Array<String>, nil] :applicable_product_tags
+      #   #   @option data [Object, nil] :credit_type
+      #   #   @option data [String, nil] :ending_before
+      #   #   @option data [Hash, nil] :entitled
+      #   #   @option data [Hash, nil] :is_prorated Default proration configuration. Only valid for SUBSCRIPTION rate_type.
+      #   #   @option data [Float, nil] :multiplier
+      #   #   @option data [Array<Object>, nil] :override_specifiers
+      #   #   @option data [Array<Object>, nil] :override_tiers
+      #   #   @option data [Object, nil] :overwrite_rate
+      #   #   @option data [Float, nil] :price Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
+      #   #     this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
+      #   #   @option data [Float, nil] :priority
+      #   #   @option data [Object, nil] :product
+      #   #   @option data [Float, nil] :quantity Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
+      #   #   @option data [String, nil] :rate_type
+      #   #   @option data [Array<Object>, nil] :tiers Only set for TIERED rate_type.
+      #   #   @option data [String, nil] :type
+      #   #   @option data [Hash, nil] :value Only set for CUSTOM rate_type. This field is interpreted by custom rate
+      #   #     processors.
+      #   def initialize(data = {}) = super
     end
   end
 end

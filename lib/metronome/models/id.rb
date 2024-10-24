@@ -7,13 +7,12 @@ module Metronome
       #   @return [String]
       required :id, String
 
-      # Create a new instance of ID from a Hash of raw data.
-      #
-      # @overload initialize(id: nil)
-      # @param id [String]
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of ID from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id
+      #   def initialize(data = {}) = super
     end
   end
 end

@@ -11,14 +11,13 @@ module Metronome
       #   @return [Float]
       optional :size, Float
 
-      # Create a new instance of Tier from a Hash of raw data.
-      #
-      # @overload initialize(price: nil, size: nil)
-      # @param price [Float]
-      # @param size [Float]
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of Tier from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [Float] :price
+      #   #   @option data [Float, nil] :size
+      #   def initialize(data = {}) = super
     end
   end
 end

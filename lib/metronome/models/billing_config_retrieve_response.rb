@@ -9,7 +9,7 @@ module Metronome
 
       class Data < BaseModel
         # @!attribute [rw] aws_expiration_date
-        #   Contract expiration date for the customer. The expected format is RFC 3339 and can be retrieved from AWS's GetEntitlements API. (See https://docs.aws.amazon.com/marketplaceentitlement/latest/APIReference/API_GetEntitlements.html.)
+        #   Contract expiration date for the customer. The expected format is RFC 3339 and can be retrieved from [AWS's GetEntitlements API](https://docs.aws.amazon.com/marketplaceentitlement/latest/APIReference/API_GetEntitlements.html).
         #   @return [Time]
         optional :aws_expiration_date, Time
 
@@ -22,7 +22,7 @@ module Metronome
         optional :aws_region, enum: -> { Metronome::Models::BillingConfigRetrieveResponse::Data::AwsRegion }
 
         # @!attribute [rw] azure_expiration_date
-        #   Subscription term start/end date for the customer. The expected format is RFC 3339 and can be retrieved from Azure's Get Subscription API. (See https://learn.microsoft.com/en-us/partner-center/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api#get-subscription.)
+        #   Subscription term start/end date for the customer. The expected format is RFC 3339 and can be retrieved from [Azure's Get Subscription API](https://learn.microsoft.com/en-us/partner-center/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api#get-subscription).
         #   @return [Time]
         optional :azure_expiration_date, Time
 
@@ -31,7 +31,7 @@ module Metronome
         optional :azure_plan_id, String
 
         # @!attribute [rw] azure_start_date
-        #   Subscription term start/end date for the customer. The expected format is RFC 3339 and can be retrieved from Azure's Get Subscription API. (See https://learn.microsoft.com/en-us/partner-center/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api#get-subscription.)
+        #   Subscription term start/end date for the customer. The expected format is RFC 3339 and can be retrieved from [Azure's Get Subscription API](https://learn.microsoft.com/en-us/partner-center/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api#get-subscription).
         #   @return [Time]
         optional :azure_start_date, Time
 
@@ -89,36 +89,34 @@ module Metronome
           SEND_INVOICE = :send_invoice
         end
 
-        # Create a new instance of Data from a Hash of raw data.
-        #
-        # @overload initialize(aws_expiration_date: nil, aws_product_code: nil, aws_region: nil, azure_expiration_date: nil, azure_plan_id: nil, azure_start_date: nil, azure_subscription_status: nil, billing_provider_customer_id: nil, stripe_collection_method: nil)
-        # @param aws_expiration_date [String] Contract expiration date for the customer. The expected format is RFC 3339 and
-        #   can be retrieved from AWS's GetEntitlements API. (See
-        #   https://docs.aws.amazon.com/marketplaceentitlement/latest/APIReference/API_GetEntitlements.html.)
-        # @param aws_product_code [String]
-        # @param aws_region [String]
-        # @param azure_expiration_date [String] Subscription term start/end date for the customer. The expected format is RFC
-        #   3339 and can be retrieved from Azure's Get Subscription API. (See
-        #   https://learn.microsoft.com/en-us/partner-center/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api#get-subscription.)
-        # @param azure_plan_id [String]
-        # @param azure_start_date [String] Subscription term start/end date for the customer. The expected format is RFC
-        #   3339 and can be retrieved from Azure's Get Subscription API. (See
-        #   https://learn.microsoft.com/en-us/partner-center/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api#get-subscription.)
-        # @param azure_subscription_status [String]
-        # @param billing_provider_customer_id [String]
-        # @param stripe_collection_method [String]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Data from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String, nil] :aws_expiration_date Contract expiration date for the customer. The expected format is RFC 3339 and
+        #   #     can be retrieved from
+        #   #     [AWS's GetEntitlements API](https://docs.aws.amazon.com/marketplaceentitlement/latest/APIReference/API_GetEntitlements.html).
+        #   #   @option data [String, nil] :aws_product_code
+        #   #   @option data [String, nil] :aws_region
+        #   #   @option data [String, nil] :azure_expiration_date Subscription term start/end date for the customer. The expected format is RFC
+        #   #     3339 and can be retrieved from
+        #   #     [Azure's Get Subscription API](https://learn.microsoft.com/en-us/partner-center/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api#get-subscription).
+        #   #   @option data [String, nil] :azure_plan_id
+        #   #   @option data [String, nil] :azure_start_date Subscription term start/end date for the customer. The expected format is RFC
+        #   #     3339 and can be retrieved from
+        #   #     [Azure's Get Subscription API](https://learn.microsoft.com/en-us/partner-center/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api#get-subscription).
+        #   #   @option data [String, nil] :azure_subscription_status
+        #   #   @option data [String, nil] :billing_provider_customer_id
+        #   #   @option data [String, nil] :stripe_collection_method
+        #   def initialize(data = {}) = super
       end
 
-      # Create a new instance of BillingConfigRetrieveResponse from a Hash of raw data.
-      #
-      # @overload initialize(data: nil)
-      # @param data [Object]
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of BillingConfigRetrieveResponse from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [Object] :data
+      #   def initialize(data = {}) = super
     end
   end
 end

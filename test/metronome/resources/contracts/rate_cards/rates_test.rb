@@ -32,8 +32,26 @@ class Metronome::Test::Resources::Contracts::RateCards::RatesTest < Minitest::Te
     assert_kind_of(Metronome::Models::RateAddResponse, response)
   end
 
-  def test_add_many
-    response = @metronome.contracts.rate_cards.rates.add_many
+  def test_add_many_required_params
+    response = @metronome.contracts.rate_cards.rates.add_many(
+      {
+        rate_card_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
+        rates: [
+          {
+            "entitled" => true,
+            "product_id" => "13117714-3f05-48e5-a6e9-a66093f13b4d",
+            "rate_type" => "FLAT",
+            "starting_at" => "2020-01-01T00:00:00.000Z"
+          },
+          {
+            "entitled" => true,
+            "product_id" => "13117714-3f05-48e5-a6e9-a66093f13b4d",
+            "rate_type" => "FLAT",
+            "starting_at" => "2020-01-01T00:00:00.000Z"
+          }
+        ]
+      }
+    )
     assert_kind_of(Metronome::Models::RateAddManyResponse, response)
   end
 end

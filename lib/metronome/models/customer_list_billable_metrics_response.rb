@@ -9,7 +9,7 @@ module Metronome
 
       # @!attribute [rw] name_
       #   @return [String]
-      required :name_, String
+      required :name_, String, api_name: :name
 
       # @!attribute [rw] aggregate
       #   (DEPRECATED) use aggregation_type instead
@@ -75,31 +75,30 @@ module Metronome
         UNIQUE = :UNIQUE
       end
 
-      # Create a new instance of CustomerListBillableMetricsResponse from a Hash of raw
-      #   data.
-      #
-      # @overload initialize(id: nil, name: nil, aggregate: nil, aggregate_keys: nil, aggregation_key: nil, aggregation_type: nil, custom_fields: nil, event_type_filter: nil, filter: nil, group_by: nil, group_keys: nil, property_filters: nil, sql: nil)
-      # @param id [String]
-      # @param name [String]
-      # @param aggregate [String] (DEPRECATED) use aggregation_type instead
-      # @param aggregate_keys [Array<String>] (DEPRECATED) use aggregation_key instead
-      # @param aggregation_key [String] A key that specifies which property of the event is used to aggregate data. This
-      #   key must be one of the property filter names and is not applicable when the
-      #   aggregation type is 'count'.
-      # @param aggregation_type [String] Specifies the type of aggregation performed on matching events.
-      # @param custom_fields [Hash]
-      # @param event_type_filter [Object] An optional filtering rule to match the 'event_type' property of an event.
-      # @param filter [Hash] (DEPRECATED) use property_filters & event_type_filter instead
-      # @param group_by [Array<String>] (DEPRECATED) use group_keys instead
-      # @param group_keys [Array<Array<String>>] Property names that are used to group usage costs on an invoice. Each entry
-      #   represents a set of properties used to slice events into distinct buckets.
-      # @param property_filters [Array<Object>] A list of filters to match events to this billable metric. Each filter defines a
-      #   rule on an event property. All rules must pass for the event to match the
-      #   billable metric.
-      # @param sql [String] The SQL query associated with the billable metric
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of CustomerListBillableMetricsResponse from a Hash of raw
+      #   #   data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id
+      #   #   @option data [String] :name
+      #   #   @option data [String, nil] :aggregate (DEPRECATED) use aggregation_type instead
+      #   #   @option data [Array<String>, nil] :aggregate_keys (DEPRECATED) use aggregation_key instead
+      #   #   @option data [String, nil] :aggregation_key A key that specifies which property of the event is used to aggregate data. This
+      #   #     key must be one of the property filter names and is not applicable when the
+      #   #     aggregation type is 'count'.
+      #   #   @option data [String, nil] :aggregation_type Specifies the type of aggregation performed on matching events.
+      #   #   @option data [Hash, nil] :custom_fields
+      #   #   @option data [Object, nil] :event_type_filter An optional filtering rule to match the 'event_type' property of an event.
+      #   #   @option data [Hash, nil] :filter (DEPRECATED) use property_filters & event_type_filter instead
+      #   #   @option data [Array<String>, nil] :group_by (DEPRECATED) use group_keys instead
+      #   #   @option data [Array<Array<String>>, nil] :group_keys Property names that are used to group usage costs on an invoice. Each entry
+      #   #     represents a set of properties used to slice events into distinct buckets.
+      #   #   @option data [Array<Object>, nil] :property_filters A list of filters to match events to this billable metric. Each filter defines a
+      #   #     rule on an event property. All rules must pass for the event to match the
+      #   #     billable metric.
+      #   #   @option data [String, nil] :sql The SQL query associated with the billable metric
+      #   def initialize(data = {}) = super
     end
   end
 end

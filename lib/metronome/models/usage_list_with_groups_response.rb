@@ -23,17 +23,16 @@ module Metronome
       #   @return [Float]
       required :value, Float
 
-      # Create a new instance of UsageListWithGroupsResponse from a Hash of raw data.
-      #
-      # @overload initialize(ending_before: nil, group_key: nil, group_value: nil, starting_on: nil, value: nil)
-      # @param ending_before [String]
-      # @param group_key [String]
-      # @param group_value [String]
-      # @param starting_on [String]
-      # @param value [Float]
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of UsageListWithGroupsResponse from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :ending_before
+      #   #   @option data [String] :group_key
+      #   #   @option data [String] :group_value
+      #   #   @option data [String] :starting_on
+      #   #   @option data [Float] :value
+      #   def initialize(data = {}) = super
     end
   end
 end

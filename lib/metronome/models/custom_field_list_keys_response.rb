@@ -43,25 +43,23 @@ module Metronome
           SCHEDULED_CHARGE = :scheduled_charge
         end
 
-        # Create a new instance of Data from a Hash of raw data.
-        #
-        # @overload initialize(enforce_uniqueness: nil, entity: nil, key: nil)
-        # @param enforce_uniqueness [Hash]
-        # @param entity [String]
-        # @param key [String]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Data from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Hash] :enforce_uniqueness
+        #   #   @option data [String] :entity
+        #   #   @option data [String] :key
+        #   def initialize(data = {}) = super
       end
 
-      # Create a new instance of CustomFieldListKeysResponse from a Hash of raw data.
-      #
-      # @overload initialize(data: nil, next_page: nil)
-      # @param data [Array<Object>]
-      # @param next_page [String]
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of CustomFieldListKeysResponse from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [Array<Object>] :data
+      #   #   @option data [String] :next_page
+      #   def initialize(data = {}) = super
     end
   end
 end

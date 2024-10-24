@@ -20,25 +20,24 @@ module Metronome
 
       # @!attribute [rw] name_
       #   @return [String]
-      required :name_, String
+      required :name_, String, api_name: :name
 
       # @!attribute [rw] custom_fields
       #   @return [Hash]
       optional :custom_fields, Hash
 
-      # Create a new instance of Customer from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, external_id: nil, ingest_aliases: nil, name: nil, custom_fields: nil)
-      # @param id [String] the Metronome ID of the customer
-      # @param external_id [String] (deprecated, use ingest_aliases instead) the first ID (Metronome or ingest
-      #   alias) that can be used in usage events
-      # @param ingest_aliases [Array<String>] aliases for this customer that can be used instead of the Metronome customer ID
-      #   in usage events
-      # @param name [String]
-      # @param custom_fields [Hash]
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of Customer from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id the Metronome ID of the customer
+      #   #   @option data [String] :external_id (deprecated, use ingest_aliases instead) the first ID (Metronome or ingest
+      #   #     alias) that can be used in usage events
+      #   #   @option data [Array<String>] :ingest_aliases aliases for this customer that can be used instead of the Metronome customer ID
+      #   #     in usage events
+      #   #   @option data [String] :name
+      #   #   @option data [Hash, nil] :custom_fields
+      #   def initialize(data = {}) = super
     end
   end
 end

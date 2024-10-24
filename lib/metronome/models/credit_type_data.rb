@@ -9,16 +9,15 @@ module Metronome
 
       # @!attribute [rw] name_
       #   @return [String]
-      required :name_, String
+      required :name_, String, api_name: :name
 
-      # Create a new instance of CreditTypeData from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, name: nil)
-      # @param id [String]
-      # @param name [String]
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of CreditTypeData from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id
+      #   #   @option data [String] :name
+      #   def initialize(data = {}) = super
     end
   end
 end
