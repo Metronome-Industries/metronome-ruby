@@ -10,8 +10,8 @@ module Metronome
 
       # Regenerate a voided contract invoice
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :id The invoice id to regenerate
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      #   @option params [String] :id The invoice id to regenerate
       #
       # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -29,8 +29,8 @@ module Metronome
 
       # Void an invoice
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :id The invoice id to void
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      #   @option params [String] :id The invoice id to void
       #
       # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #

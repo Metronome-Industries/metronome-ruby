@@ -74,82 +74,22 @@ class Metronome::Test::Resources::ContractsTest < Minitest::Test
       {
         invoices: [
           {
-            "contract_id" => "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            "credit_type_id" => "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            "customer_id" => "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            "exclusive_end_date" => "2019-12-27T18:11:19.117Z",
-            "inclusive_start_date" => "2019-12-27T18:11:19.117Z",
-            "issue_date" => "2019-12-27T18:11:19.117Z",
+            "contract_id" => "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
+            "credit_type_id" => "2714e483-4ff1-48e4-9e25-ac732e8f24f2",
+            "customer_id" => "13117714-3f05-48e5-a6e9-a66093f13b4d",
+            "exclusive_end_date" => "2020-02-01T00:00:00.000Z",
+            "inclusive_start_date" => "2020-01-01T00:00:00.000Z",
+            "issue_date" => "2020-02-01T00:00:00.000Z",
             "usage_line_items" => [
               {
-                "exclusive_end_date" => "2019-12-27T18:11:19.117Z",
-                "inclusive_start_date" => "2019-12-27T18:11:19.117Z",
-                "product_id" => "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
-              },
-              {
-                "exclusive_end_date" => "2019-12-27T18:11:19.117Z",
-                "inclusive_start_date" => "2019-12-27T18:11:19.117Z",
-                "product_id" => "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
-              },
-              {
-                "exclusive_end_date" => "2019-12-27T18:11:19.117Z",
-                "inclusive_start_date" => "2019-12-27T18:11:19.117Z",
-                "product_id" => "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
-              }
-            ]
-          },
-          {
-            "contract_id" => "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            "credit_type_id" => "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            "customer_id" => "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            "exclusive_end_date" => "2019-12-27T18:11:19.117Z",
-            "inclusive_start_date" => "2019-12-27T18:11:19.117Z",
-            "issue_date" => "2019-12-27T18:11:19.117Z",
-            "usage_line_items" => [
-              {
-                "exclusive_end_date" => "2019-12-27T18:11:19.117Z",
-                "inclusive_start_date" => "2019-12-27T18:11:19.117Z",
-                "product_id" => "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
-              },
-              {
-                "exclusive_end_date" => "2019-12-27T18:11:19.117Z",
-                "inclusive_start_date" => "2019-12-27T18:11:19.117Z",
-                "product_id" => "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
-              },
-              {
-                "exclusive_end_date" => "2019-12-27T18:11:19.117Z",
-                "inclusive_start_date" => "2019-12-27T18:11:19.117Z",
-                "product_id" => "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
-              }
-            ]
-          },
-          {
-            "contract_id" => "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            "credit_type_id" => "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            "customer_id" => "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            "exclusive_end_date" => "2019-12-27T18:11:19.117Z",
-            "inclusive_start_date" => "2019-12-27T18:11:19.117Z",
-            "issue_date" => "2019-12-27T18:11:19.117Z",
-            "usage_line_items" => [
-              {
-                "exclusive_end_date" => "2019-12-27T18:11:19.117Z",
-                "inclusive_start_date" => "2019-12-27T18:11:19.117Z",
-                "product_id" => "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
-              },
-              {
-                "exclusive_end_date" => "2019-12-27T18:11:19.117Z",
-                "inclusive_start_date" => "2019-12-27T18:11:19.117Z",
-                "product_id" => "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
-              },
-              {
-                "exclusive_end_date" => "2019-12-27T18:11:19.117Z",
-                "inclusive_start_date" => "2019-12-27T18:11:19.117Z",
-                "product_id" => "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
+                "exclusive_end_date" => "2020-02-01T00:00:00.000Z",
+                "inclusive_start_date" => "2020-01-01T00:00:00.000Z",
+                "product_id" => "f14d6729-6a44-4b13-9908-9387f1918790"
               }
             ]
           }
         ],
-        preview: true
+        preview: false
       }
     )
     assert_kind_of(Metronome::Models::ContractCreateHistoricalInvoicesResponse, response)

@@ -13,7 +13,7 @@ module Metronome
 
       # @!attribute [rw] name_
       #   @return [String]
-      required :name_, String
+      required :name_, String, api_name: :name
 
       # @!attribute [rw] credit_grants
       #   @return [Array<Metronome::Models::PlanDetail::CreditGrant>]
@@ -54,7 +54,7 @@ module Metronome
 
         # @!attribute [rw] name_
         #   @return [String]
-        required :name_, String
+        required :name_, String, api_name: :name
 
         # @!attribute [rw] priority
         #   @return [String]
@@ -76,23 +76,22 @@ module Metronome
         #   @return [Float]
         optional :recurrence_interval, Float
 
-        # Create a new instance of CreditGrant from a Hash of raw data.
-        #
-        # @overload initialize(amount_granted: nil, amount_granted_credit_type: nil, amount_paid: nil, amount_paid_credit_type: nil, effective_duration: nil, name: nil, priority: nil, send_invoice: nil, reason: nil, recurrence_duration: nil, recurrence_interval: nil)
-        # @param amount_granted [Float]
-        # @param amount_granted_credit_type [Object]
-        # @param amount_paid [Float]
-        # @param amount_paid_credit_type [Object]
-        # @param effective_duration [Float]
-        # @param name [String]
-        # @param priority [String]
-        # @param send_invoice [Hash]
-        # @param reason [String]
-        # @param recurrence_duration [Float]
-        # @param recurrence_interval [Float]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of CreditGrant from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Float] :amount_granted
+        #   #   @option data [Object] :amount_granted_credit_type
+        #   #   @option data [Float] :amount_paid
+        #   #   @option data [Object] :amount_paid_credit_type
+        #   #   @option data [Float] :effective_duration
+        #   #   @option data [String] :name
+        #   #   @option data [String] :priority
+        #   #   @option data [Hash] :send_invoice
+        #   #   @option data [String, nil] :reason
+        #   #   @option data [Float, nil] :recurrence_duration
+        #   #   @option data [Float, nil] :recurrence_interval
+        #   def initialize(data = {}) = super
       end
 
       class Minimum < BaseModel
@@ -102,7 +101,7 @@ module Metronome
 
         # @!attribute [rw] name_
         #   @return [String]
-        required :name_, String
+        required :name_, String, api_name: :name
 
         # @!attribute [rw] start_period
         #   Used in price ramps.  Indicates how many billing periods pass before the charge applies.
@@ -113,17 +112,16 @@ module Metronome
         #   @return [Float]
         required :value, Float
 
-        # Create a new instance of Minimum from a Hash of raw data.
-        #
-        # @overload initialize(credit_type: nil, name: nil, start_period: nil, value: nil)
-        # @param credit_type [Object]
-        # @param name [String]
-        # @param start_period [Float] Used in price ramps. Indicates how many billing periods pass before the charge
-        #   applies.
-        # @param value [Float]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Minimum from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Object] :credit_type
+        #   #   @option data [String] :name
+        #   #   @option data [Float] :start_period Used in price ramps. Indicates how many billing periods pass before the charge
+        #   #     applies.
+        #   #   @option data [Float] :value
+        #   def initialize(data = {}) = super
       end
 
       class OverageRate < BaseModel
@@ -144,32 +142,30 @@ module Metronome
         #   @return [Float]
         required :to_fiat_conversion_factor, Float
 
-        # Create a new instance of OverageRate from a Hash of raw data.
-        #
-        # @overload initialize(credit_type: nil, fiat_credit_type: nil, start_period: nil, to_fiat_conversion_factor: nil)
-        # @param credit_type [Object]
-        # @param fiat_credit_type [Object]
-        # @param start_period [Float] Used in price ramps. Indicates how many billing periods pass before the charge
-        #   applies.
-        # @param to_fiat_conversion_factor [Float]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of OverageRate from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Object] :credit_type
+        #   #   @option data [Object] :fiat_credit_type
+        #   #   @option data [Float] :start_period Used in price ramps. Indicates how many billing periods pass before the charge
+        #   #     applies.
+        #   #   @option data [Float] :to_fiat_conversion_factor
+        #   def initialize(data = {}) = super
       end
 
-      # Create a new instance of PlanDetail from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, custom_fields: nil, name: nil, credit_grants: nil, description: nil, minimums: nil, overage_rates: nil)
-      # @param id [String]
-      # @param custom_fields [Hash]
-      # @param name [String]
-      # @param credit_grants [Array<Object>]
-      # @param description [String]
-      # @param minimums [Array<Object>]
-      # @param overage_rates [Array<Object>]
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of PlanDetail from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id
+      #   #   @option data [Hash] :custom_fields
+      #   #   @option data [String] :name
+      #   #   @option data [Array<Object>, nil] :credit_grants
+      #   #   @option data [String, nil] :description
+      #   #   @option data [Array<Object>, nil] :minimums
+      #   #   @option data [Array<Object>, nil] :overage_rates
+      #   def initialize(data = {}) = super
     end
   end
 end

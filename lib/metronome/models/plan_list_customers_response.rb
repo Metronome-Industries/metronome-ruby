@@ -26,7 +26,7 @@ module Metronome
 
         # @!attribute [rw] name_
         #   @return [String]
-        required :name_, String
+        required :name_, String, api_name: :name
 
         # @!attribute [rw] starting_on
         #   The start date of the plan
@@ -38,28 +38,26 @@ module Metronome
         #   @return [Time]
         optional :ending_before, Time
 
-        # Create a new instance of PlanDetails from a Hash of raw data.
-        #
-        # @overload initialize(id: nil, custom_fields: nil, customer_plan_id: nil, name: nil, starting_on: nil, ending_before: nil)
-        # @param id [String]
-        # @param custom_fields [Hash]
-        # @param customer_plan_id [String]
-        # @param name [String]
-        # @param starting_on [String] The start date of the plan
-        # @param ending_before [String] The end date of the plan
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of PlanDetails from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :id
+        #   #   @option data [Hash] :custom_fields
+        #   #   @option data [String] :customer_plan_id
+        #   #   @option data [String] :name
+        #   #   @option data [String] :starting_on The start date of the plan
+        #   #   @option data [String, nil] :ending_before The end date of the plan
+        #   def initialize(data = {}) = super
       end
 
-      # Create a new instance of PlanListCustomersResponse from a Hash of raw data.
-      #
-      # @overload initialize(customer_details: nil, plan_details: nil)
-      # @param customer_details [Object]
-      # @param plan_details [Object]
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of PlanListCustomersResponse from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [Object] :customer_details
+      #   #   @option data [Object] :plan_details
+      #   def initialize(data = {}) = super
     end
   end
 end

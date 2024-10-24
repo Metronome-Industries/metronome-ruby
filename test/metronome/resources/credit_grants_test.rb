@@ -47,7 +47,7 @@ class Metronome::Test::Resources::CreditGrantsTest < Minitest::Test
   end
 
   def test_void_required_params
-    response = @metronome.credit_grants.void({id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"})
+    response = @metronome.credit_grants.void({id: "9b85c1c1-5238-4f2a-a409-61412905e1e1"})
     assert_kind_of(Metronome::Models::CreditGrantVoidResponse, response)
   end
 end

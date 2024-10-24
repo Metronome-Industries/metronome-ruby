@@ -25,7 +25,7 @@ module Metronome
       !next_page.nil?
     end
 
-    # @return [CursorPage]
+    # @return [Metronome::CursorPage]
     def next_page
       if !next_page?
         raise "No more pages available; please check #next_page? before calling #next_page"
@@ -44,6 +44,11 @@ module Metronome
         break if !page.next_page?
         page = page.next_page
       end
+    end
+
+    # @return String
+    def inspect
+      "#<#{selfl.class}:0x#{object_id.to_s(16)} next_page=#{next_page.inspect} data=#{data.inspect}>"
     end
   end
 end

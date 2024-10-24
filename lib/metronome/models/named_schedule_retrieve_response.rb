@@ -20,24 +20,22 @@ module Metronome
         #   @return [Time]
         optional :ending_before, Time
 
-        # Create a new instance of Data from a Hash of raw data.
-        #
-        # @overload initialize(starting_at: nil, value: nil, ending_before: nil)
-        # @param starting_at [String]
-        # @param value [Object]
-        # @param ending_before [String]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Data from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :starting_at
+        #   #   @option data [Object] :value
+        #   #   @option data [String, nil] :ending_before
+        #   def initialize(data = {}) = super
       end
 
-      # Create a new instance of NamedScheduleRetrieveResponse from a Hash of raw data.
-      #
-      # @overload initialize(data: nil)
-      # @param data [Array<Object>]
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of NamedScheduleRetrieveResponse from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [Array<Object>] :data
+      #   def initialize(data = {}) = super
     end
   end
 end

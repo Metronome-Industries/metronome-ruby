@@ -52,7 +52,7 @@ module Metronome
 
       # @!attribute [rw] name_
       #   @return [String]
-      optional :name_, String
+      optional :name_, String, api_name: :name
 
       # @!attribute [rw] net_payment_terms_days
       #   @return [Float]
@@ -110,15 +110,14 @@ module Metronome
           RENEWAL = :RENEWAL
         end
 
-        # Create a new instance of Transition from a Hash of raw data.
-        #
-        # @overload initialize(from_contract_id: nil, to_contract_id: nil, type: nil)
-        # @param from_contract_id [String]
-        # @param to_contract_id [String]
-        # @param type [String]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Transition from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :from_contract_id
+        #   #   @option data [String] :to_contract_id
+        #   #   @option data [String] :type
+        #   def initialize(data = {}) = super
       end
 
       class UsageStatementSchedule < BaseModel
@@ -138,14 +137,13 @@ module Metronome
           ANNUAL = :ANNUAL
         end
 
-        # Create a new instance of UsageStatementSchedule from a Hash of raw data.
-        #
-        # @overload initialize(billing_anchor_date: nil, frequency: nil)
-        # @param billing_anchor_date [String] Contract usage statements follow a selected cadence based on this date.
-        # @param frequency [String]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of UsageStatementSchedule from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :billing_anchor_date Contract usage statements follow a selected cadence based on this date.
+        #   #   @option data [String] :frequency
+        #   def initialize(data = {}) = super
       end
 
       class ResellerRoyalty < BaseModel
@@ -209,25 +207,24 @@ module Metronome
           GCP_PRO_SERVICE = :GCP_PRO_SERVICE
         end
 
-        # Create a new instance of ResellerRoyalty from a Hash of raw data.
-        #
-        # @overload initialize(fraction: nil, netsuite_reseller_id: nil, reseller_type: nil, starting_at: nil, applicable_product_ids: nil, applicable_product_tags: nil, aws_account_number: nil, aws_offer_id: nil, aws_payer_reference_id: nil, ending_before: nil, gcp_account_id: nil, gcp_offer_id: nil, reseller_contract_value: nil)
-        # @param fraction [Float]
-        # @param netsuite_reseller_id [String]
-        # @param reseller_type [String]
-        # @param starting_at [String]
-        # @param applicable_product_ids [Array<String>]
-        # @param applicable_product_tags [Array<String>]
-        # @param aws_account_number [String]
-        # @param aws_offer_id [String]
-        # @param aws_payer_reference_id [String]
-        # @param ending_before [String]
-        # @param gcp_account_id [String]
-        # @param gcp_offer_id [String]
-        # @param reseller_contract_value [Float]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of ResellerRoyalty from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Float] :fraction
+        #   #   @option data [String] :netsuite_reseller_id
+        #   #   @option data [String] :reseller_type
+        #   #   @option data [String] :starting_at
+        #   #   @option data [Array<String>, nil] :applicable_product_ids
+        #   #   @option data [Array<String>, nil] :applicable_product_tags
+        #   #   @option data [String, nil] :aws_account_number
+        #   #   @option data [String, nil] :aws_offer_id
+        #   #   @option data [String, nil] :aws_payer_reference_id
+        #   #   @option data [String, nil] :ending_before
+        #   #   @option data [String, nil] :gcp_account_id
+        #   #   @option data [String, nil] :gcp_offer_id
+        #   #   @option data [Float, nil] :reseller_contract_value
+        #   def initialize(data = {}) = super
       end
 
       class UsageFilter < BaseModel
@@ -243,7 +240,7 @@ module Metronome
         #   @return [Array<Metronome::Models::ContractWithoutAmendments::UsageFilter::Update>]
         required :updates,
                  Metronome::ArrayOf.new(
-                   lambda {
+                   -> {
                      Metronome::Models::ContractWithoutAmendments::UsageFilter::Update
                    }
                  )
@@ -261,54 +258,51 @@ module Metronome
           #   @return [Time]
           required :starting_at, Time
 
-          # Create a new instance of Update from a Hash of raw data.
-          #
-          # @overload initialize(group_key: nil, group_values: nil, starting_at: nil)
-          # @param group_key [String]
-          # @param group_values [Array<String>]
-          # @param starting_at [String]
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of Update from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :group_key
+          #   #   @option data [Array<String>] :group_values
+          #   #   @option data [String] :starting_at
+          #   def initialize(data = {}) = super
         end
 
-        # Create a new instance of UsageFilter from a Hash of raw data.
-        #
-        # @overload initialize(current: nil, initial: nil, updates: nil)
-        # @param current [Object]
-        # @param initial [Object]
-        # @param updates [Array<Object>]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of UsageFilter from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Object] :current
+        #   #   @option data [Object] :initial
+        #   #   @option data [Array<Object>] :updates
+        #   def initialize(data = {}) = super
       end
 
-      # Create a new instance of ContractWithoutAmendments from a Hash of raw data.
-      #
-      # @overload initialize(commits: nil, created_at: nil, created_by: nil, overrides: nil, scheduled_charges: nil, starting_at: nil, transitions: nil, usage_statement_schedule: nil, credits: nil, discounts: nil, ending_before: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, professional_services: nil, rate_card_id: nil, reseller_royalties: nil, salesforce_opportunity_id: nil, total_contract_value: nil, usage_filter: nil)
-      # @param commits [Array<Object>]
-      # @param created_at [String]
-      # @param created_by [String]
-      # @param overrides [Array<Object>]
-      # @param scheduled_charges [Array<Object>]
-      # @param starting_at [String]
-      # @param transitions [Array<Object>]
-      # @param usage_statement_schedule [Object]
-      # @param credits [Array<Object>]
-      # @param discounts [Array<Object>] This field's availability is dependent on your client's configuration.
-      # @param ending_before [String]
-      # @param name [String]
-      # @param net_payment_terms_days [Float]
-      # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
-      # @param professional_services [Array<Object>] This field's availability is dependent on your client's configuration.
-      # @param rate_card_id [String]
-      # @param reseller_royalties [Array<Object>] This field's availability is dependent on your client's configuration.
-      # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
-      # @param total_contract_value [Float] This field's availability is dependent on your client's configuration.
-      # @param usage_filter [Object]
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of ContractWithoutAmendments from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [Array<Object>] :commits
+      #   #   @option data [String] :created_at
+      #   #   @option data [String] :created_by
+      #   #   @option data [Array<Object>] :overrides
+      #   #   @option data [Array<Object>] :scheduled_charges
+      #   #   @option data [String] :starting_at
+      #   #   @option data [Array<Object>] :transitions
+      #   #   @option data [Object] :usage_statement_schedule
+      #   #   @option data [Array<Object>, nil] :credits
+      #   #   @option data [Array<Object>, nil] :discounts This field's availability is dependent on your client's configuration.
+      #   #   @option data [String, nil] :ending_before
+      #   #   @option data [String, nil] :name
+      #   #   @option data [Float, nil] :net_payment_terms_days
+      #   #   @option data [String, nil] :netsuite_sales_order_id This field's availability is dependent on your client's configuration.
+      #   #   @option data [Array<Object>, nil] :professional_services This field's availability is dependent on your client's configuration.
+      #   #   @option data [String, nil] :rate_card_id
+      #   #   @option data [Array<Object>, nil] :reseller_royalties This field's availability is dependent on your client's configuration.
+      #   #   @option data [String, nil] :salesforce_opportunity_id This field's availability is dependent on your client's configuration.
+      #   #   @option data [Float, nil] :total_contract_value This field's availability is dependent on your client's configuration.
+      #   #   @option data [Object, nil] :usage_filter
+      #   def initialize(data = {}) = super
     end
   end
 end

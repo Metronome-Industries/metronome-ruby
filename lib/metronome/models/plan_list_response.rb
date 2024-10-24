@@ -13,22 +13,21 @@ module Metronome
 
       # @!attribute [rw] name_
       #   @return [String]
-      required :name_, String
+      required :name_, String, api_name: :name
 
       # @!attribute [rw] custom_fields
       #   @return [Hash]
       optional :custom_fields, Hash
 
-      # Create a new instance of PlanListResponse from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, description: nil, name: nil, custom_fields: nil)
-      # @param id [String]
-      # @param description [String]
-      # @param name [String]
-      # @param custom_fields [Hash]
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of PlanListResponse from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id
+      #   #   @option data [String] :description
+      #   #   @option data [String] :name
+      #   #   @option data [Hash, nil] :custom_fields
+      #   def initialize(data = {}) = super
     end
   end
 end

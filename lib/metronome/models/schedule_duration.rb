@@ -7,7 +7,7 @@ module Metronome
       #   @return [Array<Metronome::Models::ScheduleDuration::ScheduleItem>]
       required :schedule_items,
                Metronome::ArrayOf.new(
-                 lambda {
+                 -> {
                    Metronome::Models::ScheduleDuration::ScheduleItem
                  }
                )
@@ -33,26 +33,24 @@ module Metronome
         #   @return [Time]
         required :starting_at, Time
 
-        # Create a new instance of ScheduleItem from a Hash of raw data.
-        #
-        # @overload initialize(id: nil, amount: nil, ending_before: nil, starting_at: nil)
-        # @param id [String]
-        # @param amount [Float]
-        # @param ending_before [String]
-        # @param starting_at [String]
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of ScheduleItem from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :id
+        #   #   @option data [Float] :amount
+        #   #   @option data [String] :ending_before
+        #   #   @option data [String] :starting_at
+        #   def initialize(data = {}) = super
       end
 
-      # Create a new instance of ScheduleDuration from a Hash of raw data.
-      #
-      # @overload initialize(schedule_items: nil, credit_type: nil)
-      # @param schedule_items [Array<Object>]
-      # @param credit_type [Object]
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of ScheduleDuration from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [Array<Object>] :schedule_items
+      #   #   @option data [Object, nil] :credit_type
+      #   def initialize(data = {}) = super
     end
   end
 end

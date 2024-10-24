@@ -12,9 +12,9 @@ module Metronome
         # Get the customer alert status and alert information for the specified customer
         #   and alert
         #
-        # @param params [Hash] Attributes to send in this request.
-        # @option params [String] :alert_id The Metronome ID of the alert
-        # @option params [String] :customer_id The Metronome ID of the customer
+        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+        #   @option params [String] :alert_id The Metronome ID of the alert
+        #   @option params [String] :customer_id The Metronome ID of the customer
         #
         # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
@@ -32,11 +32,11 @@ module Metronome
 
         # Fetch all customer alert statuses and alert information for a customer
         #
-        # @param params [Hash] Attributes to send in this request.
-        # @option params [String] :customer_id Body param: The Metronome ID of the customer
-        # @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
-        # @option params [Array<Symbol, AlertStatus>, nil] :alert_statuses Body param: Optionally filter by alert status. If absent, only enabled alerts
-        #   will be returned.
+        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+        #   @option params [String] :customer_id Body param: The Metronome ID of the customer
+        #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
+        #   @option params [Array<Symbol, AlertStatus>, nil] :alert_statuses Body param: Optionally filter by alert status. If absent, only enabled alerts
+        #     will be returned.
         #
         # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
@@ -56,9 +56,9 @@ module Metronome
 
         # Reset state for an alert by customer id and force re-evaluation
         #
-        # @param params [Hash] Attributes to send in this request.
-        # @option params [String] :alert_id The Metronome ID of the alert
-        # @option params [String] :customer_id The Metronome ID of the customer
+        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+        #   @option params [String] :alert_id The Metronome ID of the alert
+        #   @option params [String] :customer_id The Metronome ID of the customer
         #
         # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #

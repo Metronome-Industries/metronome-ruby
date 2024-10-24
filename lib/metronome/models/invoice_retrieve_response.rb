@@ -7,13 +7,12 @@ module Metronome
       #   @return [Metronome::Models::Invoice]
       required :data, -> { Metronome::Models::Invoice }
 
-      # Create a new instance of InvoiceRetrieveResponse from a Hash of raw data.
-      #
-      # @overload initialize(data: nil)
-      # @param data [Object]
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of InvoiceRetrieveResponse from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [Object] :data
+      #   def initialize(data = {}) = super
     end
   end
 end

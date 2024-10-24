@@ -13,18 +13,17 @@ module Metronome
 
       # @!attribute [rw] name_
       #   @return [String]
-      optional :name_, String
+      optional :name_, String, api_name: :name
 
-      # Create a new instance of CreditGrantListCreditTypesResponse from a Hash of raw
-      #   data.
-      #
-      # @overload initialize(id: nil, is_currency: nil, name: nil)
-      # @param id [String]
-      # @param is_currency [Hash]
-      # @param name [String]
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of CreditGrantListCreditTypesResponse from a Hash of raw
+      #   #   data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String, nil] :id
+      #   #   @option data [Hash, nil] :is_currency
+      #   #   @option data [String, nil] :name
+      #   def initialize(data = {}) = super
     end
   end
 end

@@ -7,13 +7,12 @@ module Metronome
       #   @return [Metronome::Models::CustomerDetail]
       required :data, -> { Metronome::Models::CustomerDetail }
 
-      # Create a new instance of CustomerRetrieveResponse from a Hash of raw data.
-      #
-      # @overload initialize(data: nil)
-      # @param data [Object]
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of CustomerRetrieveResponse from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [Object] :data
+      #   def initialize(data = {}) = super
     end
   end
 end
