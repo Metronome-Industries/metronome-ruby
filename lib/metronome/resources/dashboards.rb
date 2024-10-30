@@ -19,7 +19,7 @@ module Metronome
       #   @option params [Array<ColorOverride>, nil] :color_overrides Optional list of colors to override
       #   @option params [Array<DashboardOption>, nil] :dashboard_options Optional dashboard specific options
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::DashboardGetEmbeddableURLResponse]
       def get_embeddable_url(params = {}, opts = {})

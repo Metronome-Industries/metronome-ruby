@@ -39,7 +39,7 @@ module Metronome
       #     with a previously used uniqueness key, a new record will not be created and the
       #     request will fail with a 409 error.
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::AlertCreateResponse]
       def create(params = {}, opts = {})
@@ -59,7 +59,7 @@ module Metronome
       #   @option params [String] :id The Metronome ID of the alert
       #   @option params [Boolean, nil] :release_uniqueness_key If true, resets the uniqueness key on this alert so it can be re-used
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::AlertArchiveResponse]
       def archive(params = {}, opts = {})

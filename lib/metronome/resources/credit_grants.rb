@@ -34,7 +34,7 @@ module Metronome
       #     with a previously used uniqueness key, a new record will not be created and the
       #     request will fail with a 409 error.
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CreditGrantCreateResponse]
       def create(params = {}, opts = {})
@@ -63,7 +63,7 @@ module Metronome
       #     (exclusive).
       #   @option params [Time, nil] :not_expiring_before Body param: Only return credit grants that expire at or after this timestamp.
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::CreditGrantListResponse>]
       def list(params = {}, opts = {})
@@ -88,7 +88,7 @@ module Metronome
       #   @option params [Time, nil] :expires_at the updated expiration date for the credit grant
       #   @option params [String, nil] :name the updated name for the credit grant
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CreditGrantEditResponse]
       def edit(params = {}, opts = {})
@@ -108,7 +108,7 @@ module Metronome
       #   @option params [Integer, nil] :limit Max number of results that should be returned
       #   @option params [String, nil] :next_page Cursor that indicates where the next page of results should start.
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::CreditGrantListCreditTypesResponse>]
       def list_credit_types(params = {}, opts = {})
@@ -139,7 +139,7 @@ module Metronome
       #   @option params [Time, nil] :starting_on Body param: If supplied, only ledger entries effective at or after this time
       #     will be returned.
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CreditGrantListEntriesResponse]
       def list_entries(params = {}, opts = {})
@@ -162,7 +162,7 @@ module Metronome
       #   @option params [Boolean, nil] :release_uniqueness_key If true, resets the uniqueness key on this grant so it can be re-used
       #   @option params [Boolean, nil] :void_credit_purchase_invoice If true, void the purchase invoice associated with the grant
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CreditGrantVoidResponse]
       def void(params = {}, opts = {})

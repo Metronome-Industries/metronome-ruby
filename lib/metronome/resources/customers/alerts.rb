@@ -16,7 +16,7 @@ module Metronome
         #   @option params [String] :alert_id The Metronome ID of the alert
         #   @option params [String] :customer_id The Metronome ID of the customer
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::AlertRetrieveResponse]
         def retrieve(params = {}, opts = {})
@@ -38,7 +38,7 @@ module Metronome
         #   @option params [Array<Symbol, AlertStatus>, nil] :alert_statuses Body param: Optionally filter by alert status. If absent, only enabled alerts
         #     will be returned.
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::AlertListResponse]
         def list(params = {}, opts = {})
@@ -60,7 +60,7 @@ module Metronome
         #   @option params [String] :alert_id The Metronome ID of the alert
         #   @option params [String] :customer_id The Metronome ID of the customer
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [nil]
         def reset(params = {}, opts = {})

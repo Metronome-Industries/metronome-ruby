@@ -21,7 +21,7 @@ module Metronome
           #     included in the response Passing no selectors will result in all rates being
           #     returned.
           #
-          # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+          # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
           #
           # @return [Metronome::CursorPage<Metronome::Models::RateListResponse>]
           def list(params = {}, opts = {})
@@ -64,7 +64,7 @@ module Metronome
           #     using list prices rather than the standard rates for this product on the
           #     contract.
           #
-          # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+          # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
           #
           # @return [Metronome::Models::RateAddResponse]
           def add(params = {}, opts = {})
@@ -84,7 +84,7 @@ module Metronome
           #   @option params [String] :rate_card_id
           #   @option params [Array<Rate>] :rates
           #
-          # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+          # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
           #
           # @return [Metronome::Models::RateAddManyResponse]
           def add_many(params = {}, opts = {})

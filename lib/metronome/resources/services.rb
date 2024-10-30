@@ -13,7 +13,7 @@ module Metronome
       #   addresses will appear in the list at least 30 days before they are used for the
       #   first time.
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::ServiceListResponse]
       def list(opts = {})

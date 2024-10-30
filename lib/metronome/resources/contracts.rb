@@ -54,7 +54,7 @@ module Metronome
       #   @option params [Metronome::Models::BaseUsageFilter, nil] :usage_filter
       #   @option params [UsageStatementSchedule, nil] :usage_statement_schedule
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::ContractCreateResponse]
       def create(params = {}, opts = {})
@@ -76,7 +76,7 @@ module Metronome
       #   @option params [Boolean, nil] :include_ledgers Include commit ledgers in the response. Setting this flag may cause the query to
       #     be slower.
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::ContractRetrieveResponse]
       def retrieve(params = {}, opts = {})
@@ -104,7 +104,7 @@ module Metronome
       #     contracts where effective_at is on or after the provided date. This cannot be
       #     provided if the covering_date filter is provided.
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::ContractListResponse]
       def list(params = {}, opts = {})
@@ -130,7 +130,7 @@ module Metronome
       #   @option params [Time, nil] :timestamp RFC 3339 timestamp indicating when the manual adjustment takes place. If not
       #     provided, it will default to the start of the segment.
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       def add_manual_balance_entry(params = {}, opts = {})
@@ -162,7 +162,7 @@ module Metronome
       #   @option params [Array<ScheduledCharge>, nil] :scheduled_charges
       #   @option params [Float, nil] :total_contract_value This field's availability is dependent on your client's configuration.
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::ContractAmendResponse]
       def amend(params = {}, opts = {})
@@ -184,7 +184,7 @@ module Metronome
       #   @option params [Boolean] :void_invoices If false, the existing finalized invoices will remain after the contract is
       #     archived.
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::ContractArchiveResponse]
       def archive(params = {}, opts = {})
@@ -204,7 +204,7 @@ module Metronome
       #   @option params [Array<Invoice>] :invoices
       #   @option params [Boolean] :preview
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::ContractCreateHistoricalInvoicesResponse]
       def create_historical_invoices(params = {}, opts = {})
@@ -232,7 +232,7 @@ module Metronome
       #   @option params [String, nil] :next_page The next page token from a previous response.
       #   @option params [Time, nil] :starting_at Include only balances that have any access on or after the provided date
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::ContractListBalancesResponse]
       def list_balances(params = {}, opts = {})
@@ -259,7 +259,7 @@ module Metronome
       #     included in the response. Passing no selectors will result in all rates being
       #     returned.
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::ContractRetrieveRateScheduleResponse]
       def retrieve_rate_schedule(params = {}, opts = {})
@@ -286,7 +286,7 @@ module Metronome
       #   @option params [Time, nil] :netsuite_invoice_header_end The end date of the invoice header in Netsuite
       #   @option params [Time, nil] :netsuite_invoice_header_start The start date of the invoice header in Netsuite
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::ContractScheduleProServicesInvoiceResponse]
       def schedule_pro_services_invoice(params = {}, opts = {})
@@ -309,7 +309,7 @@ module Metronome
       #   @option params [Array<String>] :group_values
       #   @option params [Time] :starting_at
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       def set_usage_filter(params = {}, opts = {})
@@ -331,7 +331,7 @@ module Metronome
       #   @option params [Time, nil] :ending_before RFC 3339 timestamp indicating when the contract will end (exclusive). If not
       #     provided, the contract will be updated to be open-ended.
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::ContractUpdateEndDateResponse]
       def update_end_date(params = {}, opts = {})

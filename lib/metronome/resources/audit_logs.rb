@@ -25,7 +25,7 @@ module Metronome
       #   @option params [Time, nil] :starting_on RFC 3339 timestamp of the earliest audit log to return. Cannot be used with
       #     'next_page'.
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::AuditLogListResponse>]
       def list(params = {}, opts = {})

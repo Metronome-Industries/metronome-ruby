@@ -24,7 +24,7 @@ module Metronome
       #   @option params [Array<String>, nil] :customer_ids Body param: A list of Metronome customer IDs to fetch usage for. If absent,
       #     usage for all customers will be returned.
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::UsageListResponse]
       def list(params = {}, opts = {})
@@ -49,7 +49,7 @@ module Metronome
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Array<Usage>] :usage
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       def ingest(params = {}, opts = {})
@@ -82,7 +82,7 @@ module Metronome
       #   @option params [GroupBy, nil] :group_by Body param:
       #   @option params [Time, nil] :starting_on Body param:
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::UsageListWithGroupsResponse>]
       def list_with_groups(params = {}, opts = {})

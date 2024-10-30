@@ -20,7 +20,7 @@ module Metronome
           #   @option params [Time, nil] :covering_date If provided, at most one schedule segment will be returned (the one that covers
           #     this date). If not provided, all segments will be returned.
           #
-          # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+          # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
           #
           # @return [Metronome::Models::NamedScheduleRetrieveResponse]
           def retrieve(params = {}, opts = {})
@@ -46,7 +46,7 @@ module Metronome
           #     specific to the named schedule.
           #   @option params [Time, nil] :ending_before
           #
-          # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+          # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
           #
           # @return [nil]
           def update(params = {}, opts = {})
