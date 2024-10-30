@@ -38,7 +38,7 @@ module Metronome
         #   @option params [String, nil] :netsuite_sales_order_id This field's availability is dependent on your client's configuration.
         #   @option params [String, nil] :salesforce_opportunity_id This field's availability is dependent on your client's configuration.
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::CommitCreateResponse]
         def create(params = {}, opts = {})
@@ -66,7 +66,7 @@ module Metronome
         #   @option params [String, nil] :next_page The next page token from a previous response.
         #   @option params [Time, nil] :starting_at Include only commits that have any access on or after the provided date
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::CommitListResponse]
         def list(params = {}, opts = {})
@@ -91,7 +91,7 @@ module Metronome
         #   @option params [Time, nil] :invoices_ending_before RFC 3339 timestamp indicating when the commit will stop being invoiced
         #     (exclusive). If not provided, the invoice schedule will not be updated.
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::CommitUpdateEndDateResponse]
         def update_end_date(params = {}, opts = {})

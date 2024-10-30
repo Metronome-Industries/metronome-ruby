@@ -29,7 +29,7 @@ module Metronome
         #   @option params [String, nil] :netsuite_sales_order_id This field's availability is dependent on your client's configuration.
         #   @option params [String, nil] :salesforce_opportunity_id This field's availability is dependent on your client's configuration.
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::CreditCreateResponse]
         def create(params = {}, opts = {})
@@ -57,7 +57,7 @@ module Metronome
         #   @option params [String, nil] :next_page The next page token from a previous response.
         #   @option params [Time, nil] :starting_at Include only credits that have any access on or after the provided date
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::CreditListResponse]
         def list(params = {}, opts = {})
@@ -79,7 +79,7 @@ module Metronome
         #   @option params [String] :credit_id ID of the commit to update
         #   @option params [String] :customer_id ID of the customer whose credit is to be updated
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::CreditUpdateEndDateResponse]
         def update_end_date(params = {}, opts = {})

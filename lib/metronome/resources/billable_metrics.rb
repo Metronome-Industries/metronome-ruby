@@ -27,7 +27,7 @@ module Metronome
       #     aggregation_key, and group_keys. If provided, these other fields must be
       #     omitted.
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::BillableMetricCreateResponse]
       def create(params = {}, opts = {})
@@ -46,7 +46,7 @@ module Metronome
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :billable_metric_id
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::BillableMetricRetrieveResponse]
       def retrieve(params = {}, opts = {})
@@ -64,7 +64,7 @@ module Metronome
       #   @option params [Integer, nil] :limit Max number of results that should be returned
       #   @option params [String, nil] :next_page Cursor that indicates where the next page of results should start.
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::BillableMetricListResponse>]
       def list(params = {}, opts = {})
@@ -83,7 +83,7 @@ module Metronome
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :id
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::BillableMetricArchiveResponse]
       def archive(params = {}, opts = {})

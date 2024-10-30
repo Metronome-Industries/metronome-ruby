@@ -34,7 +34,7 @@ module Metronome
         #   @option params [String, nil] :fiat_credit_type_id The Metronome ID of the credit type to associate with the rate card, defaults to
         #     USD (cents) if not passed.
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::RateCardCreateResponse]
         def create(params = {}, opts = {})
@@ -54,7 +54,7 @@ module Metronome
         # @param params [Hash{Symbol => Object}] Attributes to send in this request.
         #   @option params [String] :id
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::RateCardRetrieveResponse]
         def retrieve(params = {}, opts = {})
@@ -79,7 +79,7 @@ module Metronome
         #   @option params [String, nil] :description
         #   @option params [String, nil] :name Used only in UI/API. It is not exposed to end customers.
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::RateCardUpdateResponse]
         def update(params = {}, opts = {})
@@ -101,7 +101,7 @@ module Metronome
         #   @option params [Integer, nil] :limit Query param: Max number of results that should be returned
         #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::CursorPage<Metronome::Models::RateCardListResponse>]
         def list(params = {}, opts = {})
@@ -131,7 +131,7 @@ module Metronome
         #     included in the response Passing no selectors will result in all rates being
         #     returned.
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::RateCardRetrieveRateScheduleResponse]
         def retrieve_rate_schedule(params = {}, opts = {})

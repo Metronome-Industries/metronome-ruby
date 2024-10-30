@@ -14,7 +14,7 @@ module Metronome
       #   @option params [Integer, nil] :limit Max number of results that should be returned
       #   @option params [String, nil] :next_page Cursor that indicates where the next page of results should start.
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::PlanListResponse>]
       def list(params = {}, opts = {})
@@ -33,7 +33,7 @@ module Metronome
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :plan_id
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::PlanGetDetailsResponse]
       def get_details(params = {}, opts = {})
@@ -52,7 +52,7 @@ module Metronome
       #   @option params [Integer, nil] :limit Query param: Max number of results that should be returned
       #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::PlanListChargesResponse>]
       def list_charges(params = {}, opts = {})
@@ -83,7 +83,7 @@ module Metronome
       #     Multiple statuses can be OR'd together using commas, e.g. `active,ended`.
       #     **Note:** `ended,upcoming` combination is not yet supported.
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::PlanListCustomersResponse>]
       def list_customers(params = {}, opts = {})

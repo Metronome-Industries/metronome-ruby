@@ -39,7 +39,7 @@ module Metronome
         #     rounded up to the nearest integer.
         #   @option params [Array<String>, nil] :tags
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::ProductCreateResponse]
         def create(params = {}, opts = {})
@@ -58,7 +58,7 @@ module Metronome
         # @param params [Hash{Symbol => Object}] Attributes to send in this request.
         #   @option params [String] :id
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::ProductRetrieveResponse]
         def retrieve(params = {}, opts = {})
@@ -110,7 +110,7 @@ module Metronome
         #     rounded up to the nearest integer.
         #   @option params [Array<String>, nil] :tags If not provided, defaults to product's current tags
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::ProductUpdateResponse]
         def update(params = {}, opts = {})
@@ -131,7 +131,7 @@ module Metronome
         #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
         #   @option params [Symbol, ArchiveFilter, nil] :archive_filter Body param: Filter options for the product list
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::CursorPage<Metronome::Models::ProductListResponse>]
         def list(params = {}, opts = {})
@@ -153,7 +153,7 @@ module Metronome
         # @param params [Hash{Symbol => Object}] Attributes to send in this request.
         #   @option params [String] :product_id ID of the product to be archived
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::ProductArchiveResponse]
         def archive(params = {}, opts = {})

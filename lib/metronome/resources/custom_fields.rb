@@ -16,7 +16,7 @@ module Metronome
       #   @option params [Symbol, Entity] :entity
       #   @option params [String] :key
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       def add_key(params = {}, opts = {})
@@ -37,7 +37,7 @@ module Metronome
       #   @option params [String] :entity_id
       #   @option params [Array<String>] :keys
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       def delete_values(params = {}, opts = {})
@@ -57,7 +57,7 @@ module Metronome
       #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
       #   @option params [Array<Symbol, Entity>, nil] :entities Body param: Optional list of entity types to return keys for
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CustomFieldListKeysResponse]
       def list_keys(params = {}, opts = {})
@@ -79,7 +79,7 @@ module Metronome
       #   @option params [Symbol, Entity] :entity
       #   @option params [String] :key
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       def remove_key(params = {}, opts = {})
@@ -106,7 +106,7 @@ module Metronome
       #   @option params [Symbol, Entity] :entity
       #   @option params [String] :entity_id
       #
-      # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       def set_values(params = {}, opts = {})

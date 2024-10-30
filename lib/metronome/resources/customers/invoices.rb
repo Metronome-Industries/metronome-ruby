@@ -17,7 +17,7 @@ module Metronome
         #   @option params [Boolean, nil] :skip_zero_qty_line_items Query param: If set, all zero quantity line items will be filtered out of the
         #     response
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::InvoiceRetrieveResponse]
         def retrieve(params = {}, opts = {})
@@ -48,7 +48,7 @@ module Metronome
         #     billing periods that start at or after this time.
         #   @option params [String, nil] :status Query param: Invoice status, e.g. DRAFT, FINALIZED, or VOID
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::CursorPage<Metronome::Models::Invoice>]
         def list(params = {}, opts = {})
@@ -76,7 +76,7 @@ module Metronome
         #     invoice, e.g. USD cents.
         #   @option params [Float] :quantity Body param:
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::InvoiceAddChargeResponse]
         def add_charge(params = {}, opts = {})
@@ -112,7 +112,7 @@ module Metronome
         #   @option params [String, nil] :status Query param: Invoice status, e.g. DRAFT or FINALIZED
         #   @option params [Symbol, WindowSize, nil] :window_size Query param: The granularity of the breakdowns to return. Defaults to day.
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::CursorPage<Metronome::Models::InvoiceListBreakdownsResponse>]
         def list_breakdowns(params = {}, opts = {})

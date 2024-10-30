@@ -20,7 +20,7 @@ module Metronome
         #   @option params [Symbol, AwsRegion, nil] :aws_region Body param:
         #   @option params [Symbol, StripeCollectionMethod, nil] :stripe_collection_method Body param:
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [nil]
         def create(params = {}, opts = {})
@@ -40,7 +40,7 @@ module Metronome
         #   @option params [String] :customer_id
         #   @option params [Symbol, BillingProviderType] :billing_provider_type The billing provider (e.g. stripe)
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::BillingConfigRetrieveResponse]
         def retrieve(params = {}, opts = {})
@@ -59,7 +59,7 @@ module Metronome
         #   @option params [String] :customer_id
         #   @option params [Symbol, BillingProviderType] :billing_provider_type The billing provider (e.g. stripe)
         #
-        # @param opts [Hash, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [nil]
         def delete(params = {}, opts = {})
