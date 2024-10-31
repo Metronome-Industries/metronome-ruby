@@ -27,6 +27,10 @@ module Metronome
       #   @return [Boolean]
       optional :entitled, Metronome::BooleanModel
 
+      # @!attribute [rw] is_commit_specific
+      #   @return [Boolean]
+      optional :is_commit_specific, Metronome::BooleanModel
+
       # @!attribute [rw] is_prorated
       #   Default proration configuration. Only valid for SUBSCRIPTION rate_type.
       #   @return [Boolean]
@@ -71,6 +75,10 @@ module Metronome
       #   @return [Symbol, Metronome::Models::Override::RateType]
       optional :rate_type, enum: -> { Metronome::Models::Override::RateType }
 
+      # @!attribute [rw] target
+      #   @return [Symbol, Metronome::Models::Override::Target]
+      optional :target, enum: -> { Metronome::Models::Override::Target }
+
       # @!attribute [rw] tiers
       #   Only set for TIERED rate_type.
       #   @return [Array<Metronome::Models::Tier>]
@@ -86,6 +94,10 @@ module Metronome
       optional :value, Hash
 
       class OverrideSpecifier < BaseModel
+        # @!attribute [rw] commit_ids
+        #   @return [Array<String>]
+        optional :commit_ids, Metronome::ArrayOf.new(String)
+
         # @!attribute [rw] presentation_group_values
         #   @return [Hash]
         optional :presentation_group_values, Hash
@@ -106,6 +118,7 @@ module Metronome
         #   # Create a new instance of OverrideSpecifier from a Hash of raw data.
         #   #
         #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Array<String>, nil] :commit_ids
         #   #   @option data [Hash, nil] :presentation_group_values
         #   #   @option data [Hash, nil] :pricing_group_values
         #   #   @option data [String, nil] :product_id
@@ -215,6 +228,11 @@ module Metronome
         CUSTOM = :CUSTOM
       end
 
+      class Target < Metronome::Enum
+        COMMIT_RATE = :COMMIT_RATE
+        LIST_RATE = :LIST_RATE
+      end
+
       class Type < Metronome::Enum
         OVERWRITE = :OVERWRITE
         MULTIPLIER = :MULTIPLIER
@@ -231,6 +249,7 @@ module Metronome
       #   #   @option data [Object, nil] :credit_type
       #   #   @option data [String, nil] :ending_before
       #   #   @option data [Hash, nil] :entitled
+      #   #   @option data [Hash, nil] :is_commit_specific
       #   #   @option data [Hash, nil] :is_prorated Default proration configuration. Only valid for SUBSCRIPTION rate_type.
       #   #   @option data [Float, nil] :multiplier
       #   #   @option data [Array<Object>, nil] :override_specifiers
@@ -242,6 +261,7 @@ module Metronome
       #   #   @option data [Object, nil] :product
       #   #   @option data [Float, nil] :quantity Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
       #   #   @option data [String, nil] :rate_type
+      #   #   @option data [String, nil] :target
       #   #   @option data [Array<Object>, nil] :tiers Only set for TIERED rate_type.
       #   #   @option data [String, nil] :type
       #   #   @option data [Hash, nil] :value Only set for CUSTOM rate_type. This field is interpreted by custom rate
