@@ -46,15 +46,13 @@ module Metronome
       content_type = headers["content-type"]
 
       get_pool(req, timeout: timeout).with do |conn|
-        # Net can't understand posting to a URI representing only path + query,
-        # so we concatenate
-        uri_string = Metronome::Util.uri_from_req(req, absolute: false)
+        uri = Metronome::Util.unparse_uri(req, absolute: false)
 
         request = Net::HTTPGenericRequest.new(
           method.to_s.upcase,
           !body.nil?,
           method != :head,
-          uri_string
+          uri.to_s
         )
 
         case [content_type, body]
