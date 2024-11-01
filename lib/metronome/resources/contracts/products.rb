@@ -23,9 +23,13 @@ module Metronome
         #     to true.
         #   @option params [String, nil] :netsuite_internal_item_id This field's availability is dependent on your client's configuration.
         #   @option params [String, nil] :netsuite_overage_item_id This field's availability is dependent on your client's configuration.
-        #   @option params [Array<String>, nil] :presentation_group_key For USAGE products only. Groups usage line items on invoices.
+        #   @option params [Array<String>, nil] :presentation_group_key For USAGE products only. Groups usage line items on invoices. The superset of
+        #     values in the pricing group key and presentation group key must be set as one
+        #     compound group key on the billable metric.
         #   @option params [Array<String>, nil] :pricing_group_key For USAGE products only. If set, pricing for this product will be determined for
-        #     each pricing_group_key value, as opposed to the product as a whole.
+        #     each pricing_group_key value, as opposed to the product as a whole. The superset
+        #     of values in the pricing group key and presentation group key must be set as one
+        #     compound group key on the billable metric.
         #   @option params [Metronome::Models::QuantityConversion, nil] :quantity_conversion Optional. Only valid for USAGE products. If provided, the quantity will be
         #     converted using the provided conversion factor and operation. For example, if
         #     the operation is "multiply" and the conversion factor is 100, then the quantity
@@ -94,9 +98,13 @@ module Metronome
         #   @option params [String, nil] :netsuite_overage_item_id Available for USAGE and COMPOSITE products only. If not provided, defaults to
         #     product's current netsuite_overage_item_id. This field's availability is
         #     dependent on your client's configuration.
-        #   @option params [Array<String>, nil] :presentation_group_key For USAGE products only. Groups usage line items on invoices.
+        #   @option params [Array<String>, nil] :presentation_group_key For USAGE products only. Groups usage line items on invoices. The superset of
+        #     values in the pricing group key and presentation group key must be set as one
+        #     compound group key on the billable metric.
         #   @option params [Array<String>, nil] :pricing_group_key For USAGE products only. If set, pricing for this product will be determined for
-        #     each pricing_group_key value, as opposed to the product as a whole.
+        #     each pricing_group_key value, as opposed to the product as a whole. The superset
+        #     of values in the pricing group key and presentation group key must be set as one
+        #     compound group key on the billable metric.
         #   @option params [Metronome::Models::QuantityConversion, nil] :quantity_conversion Optional. Only valid for USAGE products. If provided, the quantity will be
         #     converted using the provided conversion factor and operation. For example, if
         #     the operation is "multiply" and the conversion factor is 100, then the quantity
