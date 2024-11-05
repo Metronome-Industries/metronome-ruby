@@ -125,6 +125,7 @@ module Metronome
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :customer_id Path param:
+      #   @option params [Boolean, nil] :include_archived Query param: If true, the list of returned metrics will include archived metrics
       #   @option params [Integer, nil] :limit Query param: Max number of results that should be returned
       #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
       #   @option params [Boolean, nil] :on_current_plan Query param: If true, the list of metrics will be filtered to just ones that are

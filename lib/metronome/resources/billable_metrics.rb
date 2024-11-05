@@ -61,6 +61,7 @@ module Metronome
       # List all billable metrics.
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      #   @option params [Boolean, nil] :include_archived If true, the list of returned metrics will include archived metrics
       #   @option params [Integer, nil] :limit Max number of results that should be returned
       #   @option params [String, nil] :next_page Cursor that indicates where the next page of results should start.
       #
