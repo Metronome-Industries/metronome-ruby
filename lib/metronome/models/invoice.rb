@@ -137,6 +137,11 @@ module Metronome
         #   @return [Float]
         required :total, Float
 
+        # @!attribute [rw] applied_commit_or_credit
+        #   only present for beta contract invoices
+        #   @return [Metronome::Models::Invoice::LineItem::AppliedCommitOrCredit]
+        optional :applied_commit_or_credit, -> { Metronome::Models::Invoice::LineItem::AppliedCommitOrCredit }
+
         # @!attribute [rw] commit_custom_fields
         #   only present for beta contract invoices
         #   @return [Hash]
@@ -287,6 +292,30 @@ module Metronome
         #   @return [Float]
         optional :unit_price, Float
 
+        class AppliedCommitOrCredit < BaseModel
+          # @!attribute [rw] id
+          #   @return [String]
+          required :id, String
+
+          # @!attribute [rw] type
+          #   @return [Symbol, Metronome::Models::Invoice::LineItem::AppliedCommitOrCredit::Type]
+          required :type, enum: -> { Metronome::Models::Invoice::LineItem::AppliedCommitOrCredit::Type }
+
+          class Type < Metronome::Enum
+            PREPAID = :PREPAID
+            POSTPAID = :POSTPAID
+            CREDIT = :CREDIT
+          end
+
+          # @!parse
+          #   # Create a new instance of AppliedCommitOrCredit from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :id
+          #   #   @option data [String] :type
+          #   def initialize(data = {}) = super
+        end
+
         class PostpaidCommit < BaseModel
           # @!attribute [rw] id
           #   @return [String]
@@ -434,6 +463,7 @@ module Metronome
         #   #   @option data [Object] :credit_type
         #   #   @option data [String] :name
         #   #   @option data [Float] :total
+        #   #   @option data [Object, nil] :applied_commit_or_credit only present for beta contract invoices
         #   #   @option data [Hash, nil] :commit_custom_fields only present for beta contract invoices
         #   #   @option data [String, nil] :commit_id only present for beta contract invoices
         #   #   @option data [String, nil] :commit_netsuite_item_id only present for beta contract invoices. This field's availability is dependent
