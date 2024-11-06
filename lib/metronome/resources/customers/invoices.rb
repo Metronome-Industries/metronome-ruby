@@ -90,7 +90,7 @@ module Metronome
           @client.request(req, opts)
         end
 
-        # List daily or hourly breakdown invoices for a given customer, optionally
+        # List daily or hourly invoice breakdowns for a given customer, optionally
         #   filtered by status, date range, and/or credit type.
         #
         # @param params [Hash{Symbol => Object}] Attributes to send in this request.

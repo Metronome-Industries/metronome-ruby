@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class CreditGrantListResponse < BaseModel
+    class CreditGrantListResponse < Metronome::BaseModel
       # @!attribute [rw] id
       #   the Metronome ID of the credit grant
       #   @return [String]
@@ -79,7 +79,7 @@ module Metronome
       #   @return [String]
       optional :uniqueness_key, String
 
-      class Balance < BaseModel
+      class Balance < Metronome::BaseModel
         # @!attribute [rw] effective_at
         #   The end_date of the customer's current billing period.
         #   @return [Time]
@@ -108,7 +108,7 @@ module Metronome
         #   def initialize(data = {}) = super
       end
 
-      class GrantAmount < BaseModel
+      class GrantAmount < Metronome::BaseModel
         # @!attribute [rw] amount
         #   @return [Float]
         required :amount, Float
@@ -127,7 +127,7 @@ module Metronome
         #   def initialize(data = {}) = super
       end
 
-      class PaidAmount < BaseModel
+      class PaidAmount < Metronome::BaseModel
         # @!attribute [rw] amount
         #   @return [Float]
         required :amount, Float
@@ -146,7 +146,7 @@ module Metronome
         #   def initialize(data = {}) = super
       end
 
-      class Product < BaseModel
+      class Product < Metronome::BaseModel
         # @!attribute [rw] id
         #   @return [String]
         required :id, String

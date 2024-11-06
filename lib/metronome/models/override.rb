@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class Override < BaseModel
+    class Override < Metronome::BaseModel
       # @!attribute [rw] id
       #   @return [String]
       required :id, String
@@ -85,7 +85,7 @@ module Metronome
       #   @return [Hash]
       optional :value, Hash
 
-      class OverrideSpecifier < BaseModel
+      class OverrideSpecifier < Metronome::BaseModel
         # @!attribute [rw] presentation_group_values
         #   @return [Hash]
         optional :presentation_group_values, Hash
@@ -113,7 +113,7 @@ module Metronome
         #   def initialize(data = {}) = super
       end
 
-      class OverrideTier < BaseModel
+      class OverrideTier < Metronome::BaseModel
         # @!attribute [rw] multiplier
         #   @return [Float]
         required :multiplier, Float
@@ -131,7 +131,7 @@ module Metronome
         #   def initialize(data = {}) = super
       end
 
-      class OverwriteRate < BaseModel
+      class OverwriteRate < Metronome::BaseModel
         # @!attribute [rw] rate_type
         #   @return [Symbol, Metronome::Models::Override::OverwriteRate::RateType]
         required :rate_type, enum: -> { Metronome::Models::Override::OverwriteRate::RateType }
@@ -189,7 +189,7 @@ module Metronome
         #   def initialize(data = {}) = super
       end
 
-      class Product < BaseModel
+      class Product < Metronome::BaseModel
         # @!attribute [rw] id
         #   @return [String]
         required :id, String

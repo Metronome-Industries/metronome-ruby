@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class QuantityConversion < BaseModel
+    class QuantityConversion < Metronome::BaseModel
       # @!attribute [rw] conversion_factor
       #   The factor to multiply or divide the quantity by.
       #   @return [Float]

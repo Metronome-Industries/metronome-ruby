@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class ScheduledCharge < BaseModel
+    class ScheduledCharge < Metronome::BaseModel
       # @!attribute [rw] id
       #   @return [String]
       required :id, String
@@ -29,7 +29,7 @@ module Metronome
       #   @return [String]
       optional :netsuite_sales_order_id, String
 
-      class Product < BaseModel
+      class Product < Metronome::BaseModel
         # @!attribute [rw] id
         #   @return [String]
         required :id, String

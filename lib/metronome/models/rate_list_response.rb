@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class RateListResponse < BaseModel
+    class RateListResponse < Metronome::BaseModel
       # @!attribute [rw] entitled
       #   @return [Boolean]
       required :entitled, Metronome::BooleanModel

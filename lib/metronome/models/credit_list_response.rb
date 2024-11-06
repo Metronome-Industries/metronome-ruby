@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class CreditListResponse < BaseModel
+    class CreditListResponse < Metronome::BaseModel
       # @!attribute [rw] data
       #   @return [Array<Metronome::Models::Credit>]
       required :data, Metronome::ArrayOf.new(-> { Metronome::Models::Credit })

@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class PlanListResponse < BaseModel
+    class PlanListResponse < Metronome::BaseModel
       # @!attribute [rw] id
       #   @return [String]
       required :id, String

@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class Invoice < BaseModel
+    class Invoice < Metronome::BaseModel
       # @!attribute [rw] id
       #   @return [String]
       required :id, String
@@ -124,7 +124,7 @@ module Metronome
       #   @return [Float]
       optional :subtotal, Float
 
-      class LineItem < BaseModel
+      class LineItem < Metronome::BaseModel
         # @!attribute [rw] credit_type
         #   @return [Metronome::Models::CreditTypeData]
         required :credit_type, -> { Metronome::Models::CreditTypeData }
@@ -292,7 +292,7 @@ module Metronome
         #   @return [Float]
         optional :unit_price, Float
 
-        class AppliedCommitOrCredit < BaseModel
+        class AppliedCommitOrCredit < Metronome::BaseModel
           # @!attribute [rw] id
           #   @return [String]
           required :id, String
@@ -316,7 +316,7 @@ module Metronome
           #   def initialize(data = {}) = super
         end
 
-        class PostpaidCommit < BaseModel
+        class PostpaidCommit < Metronome::BaseModel
           # @!attribute [rw] id
           #   @return [String]
           required :id, String
@@ -336,7 +336,7 @@ module Metronome
           GCP_PRO_SERVICE = :GCP_PRO_SERVICE
         end
 
-        class SubLineItem < BaseModel
+        class SubLineItem < Metronome::BaseModel
           # @!attribute [rw] custom_fields
           #   @return [Hash]
           required :custom_fields, Hash
@@ -390,7 +390,7 @@ module Metronome
                      }
                    )
 
-          class TierPeriod < BaseModel
+          class TierPeriod < Metronome::BaseModel
             # @!attribute [rw] starting_at
             #   @return [Time]
             required :starting_at, Time
@@ -408,7 +408,7 @@ module Metronome
             #   def initialize(data = {}) = super
           end
 
-          class Tier < BaseModel
+          class Tier < Metronome::BaseModel
             # @!attribute [rw] price
             #   @return [Float]
             required :price, Float
@@ -511,7 +511,7 @@ module Metronome
         UNBILLABLE = :unbillable
       end
 
-      class CorrectionRecord < BaseModel
+      class CorrectionRecord < Metronome::BaseModel
         # @!attribute [rw] corrected_invoice_id
         #   @return [String]
         required :corrected_invoice_id, String
@@ -529,7 +529,7 @@ module Metronome
         optional :corrected_external_invoice,
                  -> { Metronome::Models::Invoice::CorrectionRecord::CorrectedExternalInvoice }
 
-        class CorrectedExternalInvoice < BaseModel
+        class CorrectedExternalInvoice < Metronome::BaseModel
           # @!attribute [rw] billing_provider_type
           #   @return [Symbol, Metronome::Models::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType]
           required :billing_provider_type,
@@ -599,7 +599,7 @@ module Metronome
         #   def initialize(data = {}) = super
       end
 
-      class ExternalInvoice < BaseModel
+      class ExternalInvoice < Metronome::BaseModel
         # @!attribute [rw] billing_provider_type
         #   @return [Symbol, Metronome::Models::Invoice::ExternalInvoice::BillingProviderType]
         required :billing_provider_type,
@@ -653,7 +653,7 @@ module Metronome
         #   def initialize(data = {}) = super
       end
 
-      class InvoiceAdjustment < BaseModel
+      class InvoiceAdjustment < Metronome::BaseModel
         # @!attribute [rw] credit_type
         #   @return [Metronome::Models::CreditTypeData]
         required :credit_type, -> { Metronome::Models::CreditTypeData }
@@ -686,7 +686,7 @@ module Metronome
         #   def initialize(data = {}) = super
       end
 
-      class ResellerRoyalty < BaseModel
+      class ResellerRoyalty < Metronome::BaseModel
         # @!attribute [rw] fraction
         #   @return [String]
         required :fraction, String
@@ -714,7 +714,7 @@ module Metronome
           GCP_PRO_SERVICE = :GCP_PRO_SERVICE
         end
 
-        class AwsOptions < BaseModel
+        class AwsOptions < Metronome::BaseModel
           # @!attribute [rw] aws_account_number
           #   @return [String]
           optional :aws_account_number, String
@@ -737,7 +737,7 @@ module Metronome
           #   def initialize(data = {}) = super
         end
 
-        class GcpOptions < BaseModel
+        class GcpOptions < Metronome::BaseModel
           # @!attribute [rw] gcp_account_id
           #   @return [String]
           optional :gcp_account_id, String

@@ -2,12 +2,12 @@
 
 module Metronome
   module Models
-    class RateAddResponse < BaseModel
+    class RateAddResponse < Metronome::BaseModel
       # @!attribute [rw] data
       #   @return [Metronome::Models::RateAddResponse::Data]
       required :data, -> { Metronome::Models::RateAddResponse::Data }
 
-      class Data < BaseModel
+      class Data < Metronome::BaseModel
         # @!attribute [rw] rate_type
         #   @return [Symbol, Metronome::Models::RateAddResponse::Data::RateType]
         required :rate_type, enum: -> { Metronome::Models::RateAddResponse::Data::RateType }

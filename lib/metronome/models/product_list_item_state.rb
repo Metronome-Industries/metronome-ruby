@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class ProductListItemState < BaseModel
+    class ProductListItemState < Metronome::BaseModel
       # @!attribute [rw] created_at
       #   @return [Time]
       required :created_at, Time

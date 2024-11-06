@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class CreditGrantListCreditTypesResponse < BaseModel
+    class CreditGrantListCreditTypesResponse < Metronome::BaseModel
       # @!attribute [rw] id
       #   @return [String]
       optional :id, String

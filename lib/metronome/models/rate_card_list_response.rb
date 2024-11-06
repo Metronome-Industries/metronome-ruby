@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class RateCardListResponse < BaseModel
+    class RateCardListResponse < Metronome::BaseModel
       # @!attribute [rw] id
       #   @return [String]
       required :id, String
@@ -44,7 +44,7 @@ module Metronome
       #   @return [Metronome::Models::CreditTypeData]
       optional :fiat_credit_type, -> { Metronome::Models::CreditTypeData }
 
-      class RateCardEntry < BaseModel
+      class RateCardEntry < Metronome::BaseModel
         # @!attribute [rw] current
         #   @return [Metronome::Models::RateCardListResponse::RateCardEntries::RateCardEntry::Current]
         optional :current,
@@ -61,7 +61,7 @@ module Metronome
                    }
                  )
 
-        class Current < BaseModel
+        class Current < Metronome::BaseModel
           # @!attribute [rw] id
           #   @return [String]
           optional :id, String
@@ -140,7 +140,7 @@ module Metronome
           #   def initialize(data = {}) = super
         end
 
-        class Update < BaseModel
+        class Update < Metronome::BaseModel
           # @!attribute [rw] id
           #   @return [String]
           required :id, String
@@ -238,7 +238,7 @@ module Metronome
         #   def initialize(data = {}) = super
       end
 
-      class Alias < BaseModel
+      class Alias < Metronome::BaseModel
         # @!attribute [rw] name_
         #   @return [String]
         required :name_, String, api_name: :name
@@ -261,7 +261,7 @@ module Metronome
         #   def initialize(data = {}) = super
       end
 
-      class CreditTypeConversion < BaseModel
+      class CreditTypeConversion < Metronome::BaseModel
         # @!attribute [rw] custom_credit_type
         #   @return [Metronome::Models::CreditTypeData]
         required :custom_credit_type, -> { Metronome::Models::CreditTypeData }

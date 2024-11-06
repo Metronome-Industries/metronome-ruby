@@ -2,12 +2,12 @@
 
 module Metronome
   module Models
-    class InvoiceVoidResponse < BaseModel
+    class InvoiceVoidResponse < Metronome::BaseModel
       # @!attribute [rw] data
       #   @return [Metronome::Models::InvoiceVoidResponse::Data]
       optional :data, -> { Metronome::Models::InvoiceVoidResponse::Data }
 
-      class Data < BaseModel
+      class Data < Metronome::BaseModel
         # @!attribute [rw] id
         #   @return [String]
         required :id, String

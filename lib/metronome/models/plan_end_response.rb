@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class PlanEndResponse < BaseModel
+    class PlanEndResponse < Metronome::BaseModel
       # @!parse
       #   # Create a new instance of PlanEndResponse from a Hash of raw data.
       #   #

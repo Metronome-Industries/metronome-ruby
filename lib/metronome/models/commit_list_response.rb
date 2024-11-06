@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class CommitListResponse < BaseModel
+    class CommitListResponse < Metronome::BaseModel
       # @!attribute [rw] data
       #   @return [Array<Metronome::Models::Commit>]
       required :data, Metronome::ArrayOf.new(-> { Metronome::Models::Commit })

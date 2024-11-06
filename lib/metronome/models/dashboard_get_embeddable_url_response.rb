@@ -2,12 +2,12 @@
 
 module Metronome
   module Models
-    class DashboardGetEmbeddableURLResponse < BaseModel
+    class DashboardGetEmbeddableURLResponse < Metronome::BaseModel
       # @!attribute [rw] data
       #   @return [Metronome::Models::DashboardGetEmbeddableURLResponse::Data]
       required :data, -> { Metronome::Models::DashboardGetEmbeddableURLResponse::Data }
 
-      class Data < BaseModel
+      class Data < Metronome::BaseModel
         # @!attribute [rw] url
         #   @return [String]
         optional :url, String

@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class RolloverAmountMaxAmount < BaseModel
+    class RolloverAmountMaxAmount < Metronome::BaseModel
       # @!attribute [rw] type
       #   Rollover up to a fixed amount of the original credit grant amount.
       #   @return [Symbol, Metronome::Models::RolloverAmountMaxAmount::Type]

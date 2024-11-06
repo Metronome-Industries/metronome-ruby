@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class CustomerListBillableMetricsResponse < BaseModel
+    class CustomerListBillableMetricsResponse < Metronome::BaseModel
       # @!attribute [rw] id
       #   @return [String]
       required :id, String

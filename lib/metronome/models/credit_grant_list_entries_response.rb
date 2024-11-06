@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class CreditGrantListEntriesResponse < BaseModel
+    class CreditGrantListEntriesResponse < Metronome::BaseModel
       # @!attribute [rw] data
       #   @return [Array<Metronome::Models::CreditGrantListEntriesResponse::Data>]
       required :data, Metronome::ArrayOf.new(-> { Metronome::Models::CreditGrantListEntriesResponse::Data })
@@ -11,7 +11,7 @@ module Metronome
       #   @return [String]
       required :next_page, String
 
-      class Data < BaseModel
+      class Data < Metronome::BaseModel
         # @!attribute [rw] customer_id
         #   @return [String]
         required :customer_id, String
@@ -25,7 +25,7 @@ module Metronome
                    }
                  )
 
-        class Ledger < BaseModel
+        class Ledger < Metronome::BaseModel
           # @!attribute [rw] credit_type
           #   @return [Metronome::Models::CreditTypeData]
           required :credit_type, -> { Metronome::Models::CreditTypeData }
@@ -49,7 +49,7 @@ module Metronome
           required :starting_balance,
                    -> { Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance }
 
-          class EndingBalance < BaseModel
+          class EndingBalance < Metronome::BaseModel
             # @!attribute [rw] effective_at
             #   the ending_before request parameter (if supplied) or the current billing period's end date
             #   @return [Time]
@@ -79,7 +79,7 @@ module Metronome
             #   def initialize(data = {}) = super
           end
 
-          class StartingBalance < BaseModel
+          class StartingBalance < Metronome::BaseModel
             # @!attribute [rw] effective_at
             #   the starting_on request parameter (if supplied) or the first credit grant's effective_at date
             #   @return [Time]

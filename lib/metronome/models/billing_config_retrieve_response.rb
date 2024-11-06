@@ -2,12 +2,12 @@
 
 module Metronome
   module Models
-    class BillingConfigRetrieveResponse < BaseModel
+    class BillingConfigRetrieveResponse < Metronome::BaseModel
       # @!attribute [rw] data
       #   @return [Metronome::Models::BillingConfigRetrieveResponse::Data]
       required :data, -> { Metronome::Models::BillingConfigRetrieveResponse::Data }
 
-      class Data < BaseModel
+      class Data < Metronome::BaseModel
         # @!attribute [rw] aws_expiration_date
         #   Contract expiration date for the customer. The expected format is RFC 3339 and can be retrieved from [AWS's GetEntitlements API](https://docs.aws.amazon.com/marketplaceentitlement/latest/APIReference/API_GetEntitlements.html).
         #   @return [Time]

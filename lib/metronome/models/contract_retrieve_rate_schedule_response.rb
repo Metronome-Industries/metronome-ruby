@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class ContractRetrieveRateScheduleResponse < BaseModel
+    class ContractRetrieveRateScheduleResponse < Metronome::BaseModel
       # @!attribute [rw] data
       #   @return [Array<Metronome::Models::ContractRetrieveRateScheduleResponse::Data>]
       required :data,
@@ -12,7 +12,7 @@ module Metronome
       #   @return [String]
       optional :next_page, String
 
-      class Data < BaseModel
+      class Data < Metronome::BaseModel
         # @!attribute [rw] entitled
         #   @return [Boolean]
         required :entitled, Metronome::BooleanModel

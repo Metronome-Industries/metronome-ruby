@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class AuditLogListResponse < BaseModel
+    class AuditLogListResponse < Metronome::BaseModel
       # @!attribute [rw] id
       #   @return [String]
       required :id, String
@@ -35,7 +35,7 @@ module Metronome
       #   @return [Symbol, Metronome::Models::AuditLogListResponse::Status]
       optional :status, enum: -> { Metronome::Models::AuditLogListResponse::Status }
 
-      class Actor < BaseModel
+      class Actor < Metronome::BaseModel
         # @!attribute [rw] id
         #   @return [String]
         required :id, String

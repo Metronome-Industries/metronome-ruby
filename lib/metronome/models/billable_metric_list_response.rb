@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class BillableMetricListResponse < BaseModel
+    class BillableMetricListResponse < Metronome::BaseModel
       # @!attribute [rw] id
       #   ID of the billable metric
       #   @return [String]

@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class PropertyFilter < BaseModel
+    class PropertyFilter < Metronome::BaseModel
       # @!attribute [rw] name_
       #   The name of the event property.
       #   @return [String]

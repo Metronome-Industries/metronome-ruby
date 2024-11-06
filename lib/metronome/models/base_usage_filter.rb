@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class BaseUsageFilter < BaseModel
+    class BaseUsageFilter < Metronome::BaseModel
       # @!attribute [rw] group_key
       #   @return [String]
       required :group_key, String

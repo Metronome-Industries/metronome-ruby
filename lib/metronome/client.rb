@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Metronome
-  class Client < BaseClient
+  class Client < Metronome::BaseClient
     # Default max number of retries to attempt after a failed retryable request.
     DEFAULT_MAX_RETRIES = 2
 
@@ -55,8 +55,6 @@ module Metronome
     # @param base_url [String, nil] Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
     # @param bearer_token [String, nil] Defaults to `ENV["METRONOME_BEARER_TOKEN"]`
     # @param max_retries [Integer] Max number of retries to attempt after a failed retryable request.
-    #
-    # @return [Metronome::Client]
     def initialize(base_url: nil, bearer_token: nil, max_retries: DEFAULT_MAX_RETRIES, timeout: 60)
       base_url ||= "https://api.metronome.com/v1"
 

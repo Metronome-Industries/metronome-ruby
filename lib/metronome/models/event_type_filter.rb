@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class EventTypeFilter < BaseModel
+    class EventTypeFilter < Metronome::BaseModel
       # @!attribute [rw] in_values
       #   A list of event types that are explicitly included in the billable metric. If specified, only events of these types will match the billable metric. Must be non-empty if present.
       #   @return [Array<String>]

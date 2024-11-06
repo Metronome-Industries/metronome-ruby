@@ -2,12 +2,12 @@
 
 module Metronome
   module Models
-    class NamedScheduleRetrieveResponse < BaseModel
+    class NamedScheduleRetrieveResponse < Metronome::BaseModel
       # @!attribute [rw] data
       #   @return [Array<Metronome::Models::NamedScheduleRetrieveResponse::Data>]
       required :data, Metronome::ArrayOf.new(-> { Metronome::Models::NamedScheduleRetrieveResponse::Data })
 
-      class Data < BaseModel
+      class Data < Metronome::BaseModel
         # @!attribute [rw] starting_at
         #   @return [Time]
         required :starting_at, Time

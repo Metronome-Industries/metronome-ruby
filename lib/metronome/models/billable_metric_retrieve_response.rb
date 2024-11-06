@@ -2,12 +2,12 @@
 
 module Metronome
   module Models
-    class BillableMetricRetrieveResponse < BaseModel
+    class BillableMetricRetrieveResponse < Metronome::BaseModel
       # @!attribute [rw] data
       #   @return [Metronome::Models::BillableMetricRetrieveResponse::Data]
       required :data, -> { Metronome::Models::BillableMetricRetrieveResponse::Data }
 
-      class Data < BaseModel
+      class Data < Metronome::BaseModel
         # @!attribute [rw] id
         #   ID of the billable metric
         #   @return [String]

@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class ScheduleDuration < BaseModel
+    class ScheduleDuration < Metronome::BaseModel
       # @!attribute [rw] schedule_items
       #   @return [Array<Metronome::Models::ScheduleDuration::ScheduleItem>]
       required :schedule_items,
@@ -16,7 +16,7 @@ module Metronome
       #   @return [Metronome::Models::CreditTypeData]
       optional :credit_type, -> { Metronome::Models::CreditTypeData }
 
-      class ScheduleItem < BaseModel
+      class ScheduleItem < Metronome::BaseModel
         # @!attribute [rw] id
         #   @return [String]
         required :id, String

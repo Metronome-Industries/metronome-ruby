@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class QuantityRounding < BaseModel
+    class QuantityRounding < Metronome::BaseModel
       # @!attribute [rw] decimal_places
       #   @return [Float]
       required :decimal_places, Float

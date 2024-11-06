@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class PlanListChargesResponse < BaseModel
+    class PlanListChargesResponse < Metronome::BaseModel
       # @!attribute [rw] id
       #   @return [String]
       required :id, String
@@ -62,7 +62,7 @@ module Metronome
         SEAT = :seat
       end
 
-      class Price < BaseModel
+      class Price < Metronome::BaseModel
         # @!attribute [rw] tier
         #   Used in pricing tiers.  Indicates at what metric value the price applies.
         #   @return [Float]
@@ -96,7 +96,7 @@ module Metronome
         #   def initialize(data = {}) = super
       end
 
-      class UnitConversion < BaseModel
+      class UnitConversion < Metronome::BaseModel
         # @!attribute [rw] division_factor
         #   The conversion factor
         #   @return [Float]
