@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class PlanListCustomersResponse < BaseModel
+    class PlanListCustomersResponse < Metronome::BaseModel
       # @!attribute [rw] customer_details
       #   @return [Metronome::Models::CustomerDetail]
       required :customer_details, -> { Metronome::Models::CustomerDetail }
@@ -11,7 +11,7 @@ module Metronome
       #   @return [Metronome::Models::PlanListCustomersResponse::PlanDetails]
       required :plan_details, -> { Metronome::Models::PlanListCustomersResponse::PlanDetails }
 
-      class PlanDetails < BaseModel
+      class PlanDetails < Metronome::BaseModel
         # @!attribute [rw] id
         #   @return [String]
         required :id, String

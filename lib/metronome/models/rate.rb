@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class Rate < BaseModel
+    class Rate < Metronome::BaseModel
       # @!attribute [rw] rate_type
       #   @return [Symbol, Metronome::Models::Rate::RateType]
       required :rate_type, enum: -> { Metronome::Models::Rate::RateType }

@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class ContractWithoutAmendments < BaseModel
+    class ContractWithoutAmendments < Metronome::BaseModel
       # @!attribute [rw] commits
       #   @return [Array<Metronome::Models::Commit>]
       required :commits, Metronome::ArrayOf.new(-> { Metronome::Models::Commit })
@@ -92,7 +92,7 @@ module Metronome
       #   @return [Metronome::Models::ContractWithoutAmendments::UsageFilter]
       optional :usage_filter, -> { Metronome::Models::ContractWithoutAmendments::UsageFilter }
 
-      class Transition < BaseModel
+      class Transition < Metronome::BaseModel
         # @!attribute [rw] from_contract_id
         #   @return [String]
         required :from_contract_id, String
@@ -120,7 +120,7 @@ module Metronome
         #   def initialize(data = {}) = super
       end
 
-      class UsageStatementSchedule < BaseModel
+      class UsageStatementSchedule < Metronome::BaseModel
         # @!attribute [rw] billing_anchor_date
         #   Contract usage statements follow a selected cadence based on this date.
         #   @return [Time]
@@ -146,7 +146,7 @@ module Metronome
         #   def initialize(data = {}) = super
       end
 
-      class ResellerRoyalty < BaseModel
+      class ResellerRoyalty < Metronome::BaseModel
         # @!attribute [rw] fraction
         #   @return [Float]
         required :fraction, Float
@@ -227,7 +227,7 @@ module Metronome
         #   def initialize(data = {}) = super
       end
 
-      class UsageFilter < BaseModel
+      class UsageFilter < Metronome::BaseModel
         # @!attribute [rw] current
         #   @return [Metronome::Models::BaseUsageFilter]
         required :current, -> { Metronome::Models::BaseUsageFilter }
@@ -245,7 +245,7 @@ module Metronome
                    }
                  )
 
-        class Update < BaseModel
+        class Update < Metronome::BaseModel
           # @!attribute [rw] group_key
           #   @return [String]
           required :group_key, String

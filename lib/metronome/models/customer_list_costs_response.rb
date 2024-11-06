@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class CustomerListCostsResponse < BaseModel
+    class CustomerListCostsResponse < Metronome::BaseModel
       # @!attribute [rw] credit_types
       #   @return [Hash]
       required :credit_types, Hash
@@ -15,7 +15,7 @@ module Metronome
       #   @return [Time]
       required :start_timestamp, Time
 
-      class CreditType < BaseModel
+      class CreditType < Metronome::BaseModel
         # @!attribute [rw] cost
         #   @return [Float]
         optional :cost, Float
@@ -33,7 +33,7 @@ module Metronome
         #   @return [String]
         optional :name_, String, api_name: :name
 
-        class LineItemBreakdown < BaseModel
+        class LineItemBreakdown < Metronome::BaseModel
           # @!attribute [rw] cost
           #   @return [Float]
           required :cost, Float

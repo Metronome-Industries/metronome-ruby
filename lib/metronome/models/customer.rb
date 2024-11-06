@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class Customer < BaseModel
+    class Customer < Metronome::BaseModel
       # @!attribute [rw] id
       #   the Metronome ID of the customer
       #   @return [String]

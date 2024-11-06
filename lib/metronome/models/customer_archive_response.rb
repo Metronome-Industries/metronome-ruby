@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class CustomerArchiveResponse < BaseModel
+    class CustomerArchiveResponse < Metronome::BaseModel
       # @!attribute [rw] data
       #   @return [Metronome::Models::ID]
       required :data, -> { Metronome::Models::ID }

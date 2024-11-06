@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class AlertRetrieveResponse < BaseModel
+    class AlertRetrieveResponse < Metronome::BaseModel
       # @!attribute [rw] data
       #   @return [Metronome::Models::CustomerAlert]
       required :data, -> { Metronome::Models::CustomerAlert }

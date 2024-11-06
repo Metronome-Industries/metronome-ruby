@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class CustomerDetail < BaseModel
+    class CustomerDetail < Metronome::BaseModel
       # @!attribute [rw] id
       #   the Metronome ID of the customer
       #   @return [String]
@@ -35,7 +35,7 @@ module Metronome
       #   @return [Metronome::Models::CustomerDetail::CurrentBillableStatus]
       optional :current_billable_status, -> { Metronome::Models::CustomerDetail::CurrentBillableStatus }
 
-      class CustomerConfig < BaseModel
+      class CustomerConfig < Metronome::BaseModel
         # @!attribute [rw] salesforce_account_id
         #   The Salesforce account ID for the customer
         #   @return [String]
@@ -49,7 +49,7 @@ module Metronome
         #   def initialize(data = {}) = super
       end
 
-      class CurrentBillableStatus < BaseModel
+      class CurrentBillableStatus < Metronome::BaseModel
         # @!attribute [rw] value
         #   @return [Symbol, Metronome::Models::CustomerDetail::CurrentBillableStatus::Value]
         required :value, enum: -> { Metronome::Models::CustomerDetail::CurrentBillableStatus::Value }

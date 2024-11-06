@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class CreditLedgerEntry < BaseModel
+    class CreditLedgerEntry < Metronome::BaseModel
       # @!attribute [rw] amount
       #   an amount representing the change to the customer's credit balance
       #   @return [Float]

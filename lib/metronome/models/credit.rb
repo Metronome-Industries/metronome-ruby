@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class Credit < BaseModel
+    class Credit < Metronome::BaseModel
       # @!attribute [rw] id
       #   @return [String]
       required :id, String
@@ -68,7 +68,7 @@ module Metronome
       #   @return [String]
       optional :salesforce_opportunity_id, String
 
-      class Product < BaseModel
+      class Product < Metronome::BaseModel
         # @!attribute [rw] id
         #   @return [String]
         required :id, String
@@ -90,7 +90,7 @@ module Metronome
         CREDIT = :CREDIT
       end
 
-      class Contract < BaseModel
+      class Contract < Metronome::BaseModel
         # @!attribute [rw] id
         #   @return [String]
         required :id, String

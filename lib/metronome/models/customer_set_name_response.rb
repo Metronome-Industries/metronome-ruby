@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class CustomerSetNameResponse < BaseModel
+    class CustomerSetNameResponse < Metronome::BaseModel
       # @!attribute [rw] data
       #   @return [Metronome::Models::Customer]
       required :data, -> { Metronome::Models::Customer }

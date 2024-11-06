@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class CustomerAlert < BaseModel
+    class CustomerAlert < Metronome::BaseModel
       # @!attribute [rw] alert
       #   @return [Metronome::Models::CustomerAlert::Alert]
       required :alert, -> { Metronome::Models::CustomerAlert::Alert }
@@ -17,7 +17,7 @@ module Metronome
       #   @return [String]
       optional :triggered_by, String
 
-      class Alert < BaseModel
+      class Alert < Metronome::BaseModel
         # @!attribute [rw] id
         #   the Metronome ID of the alert
         #   @return [String]
@@ -103,7 +103,7 @@ module Metronome
           INVOICE_TOTAL_REACHED = :invoice_total_reached
         end
 
-        class CustomFieldFilter < BaseModel
+        class CustomFieldFilter < Metronome::BaseModel
           # @!attribute [rw] entity
           #   @return [Symbol, Metronome::Models::CustomerAlert::Alert::CustomFieldFilter::Entity]
           required :entity, enum: -> { Metronome::Models::CustomerAlert::Alert::CustomFieldFilter::Entity }
@@ -132,7 +132,7 @@ module Metronome
           #   def initialize(data = {}) = super
         end
 
-        class GroupKeyFilter < BaseModel
+        class GroupKeyFilter < Metronome::BaseModel
           # @!attribute [rw] key
           #   @return [String]
           required :key, String

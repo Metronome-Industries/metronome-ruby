@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class ContractCreateResponse < BaseModel
+    class ContractCreateResponse < Metronome::BaseModel
       # @!attribute [rw] data
       #   @return [Metronome::Models::ID]
       required :data, -> { Metronome::Models::ID }

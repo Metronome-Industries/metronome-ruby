@@ -2,12 +2,12 @@
 
 module Metronome
   module Models
-    class ContractRetrieveResponse < BaseModel
+    class ContractRetrieveResponse < Metronome::BaseModel
       # @!attribute [rw] data
       #   @return [Metronome::Models::ContractRetrieveResponse::Data]
       required :data, -> { Metronome::Models::ContractRetrieveResponse::Data }
 
-      class Data < BaseModel
+      class Data < Metronome::BaseModel
         # @!attribute [rw] id
         #   @return [String]
         required :id, String
@@ -44,7 +44,7 @@ module Metronome
         #   @return [String]
         optional :uniqueness_key, String
 
-        class Amendment < BaseModel
+        class Amendment < Metronome::BaseModel
           # @!attribute [rw] id
           #   @return [String]
           required :id, String
@@ -107,7 +107,7 @@ module Metronome
           #   @return [String]
           optional :salesforce_opportunity_id, String
 
-          class ResellerRoyalty < BaseModel
+          class ResellerRoyalty < Metronome::BaseModel
             # @!attribute [rw] reseller_type
             #   @return [Symbol, Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty::ResellerType]
             required :reseller_type,
@@ -200,7 +200,7 @@ module Metronome
           #   def initialize(data = {}) = super
         end
 
-        class CustomerBillingProviderConfiguration < BaseModel
+        class CustomerBillingProviderConfiguration < Metronome::BaseModel
           # @!attribute [rw] billing_provider
           #   @return [Symbol, Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::BillingProvider]
           required :billing_provider,

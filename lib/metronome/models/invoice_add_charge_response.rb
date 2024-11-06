@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class InvoiceAddChargeResponse < BaseModel
+    class InvoiceAddChargeResponse < Metronome::BaseModel
       # @!parse
       #   # Create a new instance of InvoiceAddChargeResponse from a Hash of raw data.
       #   #

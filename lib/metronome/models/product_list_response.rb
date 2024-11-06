@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class ProductListResponse < BaseModel
+    class ProductListResponse < Metronome::BaseModel
       # @!attribute [rw] id
       #   @return [String]
       required :id, String
@@ -39,7 +39,7 @@ module Metronome
         PRO_SERVICE = :PRO_SERVICE
       end
 
-      class Update < BaseModel
+      class Update < Metronome::BaseModel
         # @!attribute [rw] created_at
         #   @return [Time]
         required :created_at, Time

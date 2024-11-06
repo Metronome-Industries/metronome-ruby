@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class UsageListWithGroupsResponse < BaseModel
+    class UsageListWithGroupsResponse < Metronome::BaseModel
       # @!attribute [rw] ending_before
       #   @return [Time]
       required :ending_before, Time

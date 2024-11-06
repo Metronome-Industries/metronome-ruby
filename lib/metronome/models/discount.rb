@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class Discount < BaseModel
+    class Discount < Metronome::BaseModel
       # @!attribute [rw] id
       #   @return [String]
       required :id, String
@@ -24,7 +24,7 @@ module Metronome
       #   @return [String]
       optional :netsuite_sales_order_id, String
 
-      class Product < BaseModel
+      class Product < Metronome::BaseModel
         # @!attribute [rw] id
         #   @return [String]
         required :id, String

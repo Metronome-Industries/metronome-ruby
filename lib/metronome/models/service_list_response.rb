@@ -2,12 +2,12 @@
 
 module Metronome
   module Models
-    class ServiceListResponse < BaseModel
+    class ServiceListResponse < Metronome::BaseModel
       # @!attribute [rw] services
       #   @return [Array<Metronome::Models::ServiceListResponse::Service>]
       required :services, Metronome::ArrayOf.new(-> { Metronome::Models::ServiceListResponse::Service })
 
-      class Service < BaseModel
+      class Service < Metronome::BaseModel
         # @!attribute [rw] ips
         #   @return [Array<String>]
         required :ips, Metronome::ArrayOf.new(String)

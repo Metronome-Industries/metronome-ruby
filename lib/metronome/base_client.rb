@@ -19,7 +19,7 @@ module Metronome
       idempotency_header: nil,
       max_retries: 0
     )
-      self.requester = PooledNetRequester.new
+      self.requester = Metronome::PooledNetRequester.new
       base_url_parsed = URI.parse(base_url)
       @headers = Metronome::Util.normalized_headers(
         {

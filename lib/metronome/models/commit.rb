@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class Commit < BaseModel
+    class Commit < Metronome::BaseModel
       # @!attribute [rw] id
       #   @return [String]
       required :id, String
@@ -91,7 +91,7 @@ module Metronome
       #   @return [String]
       optional :salesforce_opportunity_id, String
 
-      class Product < BaseModel
+      class Product < Metronome::BaseModel
         # @!attribute [rw] id
         #   @return [String]
         required :id, String
@@ -114,7 +114,7 @@ module Metronome
         POSTPAID = :POSTPAID
       end
 
-      class Contract < BaseModel
+      class Contract < Metronome::BaseModel
         # @!attribute [rw] id
         #   @return [String]
         required :id, String
@@ -127,7 +127,7 @@ module Metronome
         #   def initialize(data = {}) = super
       end
 
-      class InvoiceContract < BaseModel
+      class InvoiceContract < Metronome::BaseModel
         # @!attribute [rw] id
         #   @return [String]
         required :id, String
@@ -140,7 +140,7 @@ module Metronome
         #   def initialize(data = {}) = super
       end
 
-      class RolledOverFrom < BaseModel
+      class RolledOverFrom < Metronome::BaseModel
         # @!attribute [rw] commit_id
         #   @return [String]
         required :commit_id, String

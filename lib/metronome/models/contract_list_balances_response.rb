@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class ContractListBalancesResponse < BaseModel
+    class ContractListBalancesResponse < Metronome::BaseModel
       # @!attribute [rw] data
       #   @return [Array<Metronome::Models::Commit, Metronome::Models::Credit>]
       required :data, Metronome::ArrayOf.new(Metronome::Unknown)

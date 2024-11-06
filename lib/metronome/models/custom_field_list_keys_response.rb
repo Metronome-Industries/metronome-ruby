@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class CustomFieldListKeysResponse < BaseModel
+    class CustomFieldListKeysResponse < Metronome::BaseModel
       # @!attribute [rw] data
       #   @return [Array<Metronome::Models::CustomFieldListKeysResponse::Data>]
       required :data, Metronome::ArrayOf.new(-> { Metronome::Models::CustomFieldListKeysResponse::Data })
@@ -11,7 +11,7 @@ module Metronome
       #   @return [String]
       required :next_page, String
 
-      class Data < BaseModel
+      class Data < Metronome::BaseModel
         # @!attribute [rw] enforce_uniqueness
         #   @return [Boolean]
         required :enforce_uniqueness, Metronome::BooleanModel

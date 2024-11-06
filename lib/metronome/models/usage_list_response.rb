@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class UsageListResponse < BaseModel
+    class UsageListResponse < Metronome::BaseModel
       # @!attribute [rw] data
       #   @return [Array<Metronome::Models::UsageListResponse::Data>]
       required :data, Metronome::ArrayOf.new(-> { Metronome::Models::UsageListResponse::Data })
@@ -11,7 +11,7 @@ module Metronome
       #   @return [String]
       required :next_page, String
 
-      class Data < BaseModel
+      class Data < Metronome::BaseModel
         # @!attribute [rw] billable_metric_id
         #   @return [String]
         required :billable_metric_id, String

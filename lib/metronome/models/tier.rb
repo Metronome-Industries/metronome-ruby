@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class Tier < BaseModel
+    class Tier < Metronome::BaseModel
       # @!attribute [rw] price
       #   @return [Float]
       required :price, Float

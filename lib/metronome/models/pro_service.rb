@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class ProService < BaseModel
+    class ProService < Metronome::BaseModel
       # @!attribute [rw] id
       #   @return [String]
       required :id, String

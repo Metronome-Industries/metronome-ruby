@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class RateAddManyResponse < BaseModel
+    class RateAddManyResponse < Metronome::BaseModel
       # @!attribute [rw] data
       #   The ID of the rate card to which the rates were added.
       #   @return [Metronome::Models::ID]

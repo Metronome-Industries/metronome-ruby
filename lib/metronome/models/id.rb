@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class ID < BaseModel
+    class ID < Metronome::BaseModel
       # @!attribute [rw] id
       #   @return [String]
       required :id, String

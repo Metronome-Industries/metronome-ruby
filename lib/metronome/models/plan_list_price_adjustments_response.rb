@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class PlanListPriceAdjustmentsResponse < BaseModel
+    class PlanListPriceAdjustmentsResponse < Metronome::BaseModel
       # @!attribute [rw] charge_id
       #   @return [String]
       required :charge_id, String
@@ -32,7 +32,7 @@ module Metronome
         SEAT = :seat
       end
 
-      class Price < BaseModel
+      class Price < Metronome::BaseModel
         # @!attribute [rw] adjustment_type
         #   Determines how the value will be applied.
         #   @return [Symbol, Metronome::Models::PlanListPriceAdjustmentsResponse::Price::AdjustmentType]

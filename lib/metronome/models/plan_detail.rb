@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class PlanDetail < BaseModel
+    class PlanDetail < Metronome::BaseModel
       # @!attribute [rw] id
       #   @return [String]
       required :id, String
@@ -31,7 +31,7 @@ module Metronome
       #   @return [Array<Metronome::Models::PlanDetail::OverageRate>]
       optional :overage_rates, Metronome::ArrayOf.new(-> { Metronome::Models::PlanDetail::OverageRate })
 
-      class CreditGrant < BaseModel
+      class CreditGrant < Metronome::BaseModel
         # @!attribute [rw] amount_granted
         #   @return [Float]
         required :amount_granted, Float
@@ -94,7 +94,7 @@ module Metronome
         #   def initialize(data = {}) = super
       end
 
-      class Minimum < BaseModel
+      class Minimum < Metronome::BaseModel
         # @!attribute [rw] credit_type
         #   @return [Metronome::Models::CreditTypeData]
         required :credit_type, -> { Metronome::Models::CreditTypeData }
@@ -124,7 +124,7 @@ module Metronome
         #   def initialize(data = {}) = super
       end
 
-      class OverageRate < BaseModel
+      class OverageRate < Metronome::BaseModel
         # @!attribute [rw] credit_type
         #   @return [Metronome::Models::CreditTypeData]
         required :credit_type, -> { Metronome::Models::CreditTypeData }

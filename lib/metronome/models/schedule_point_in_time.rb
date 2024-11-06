@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class SchedulePointInTime < BaseModel
+    class SchedulePointInTime < Metronome::BaseModel
       # @!attribute [rw] credit_type
       #   @return [Metronome::Models::CreditTypeData]
       optional :credit_type, -> { Metronome::Models::CreditTypeData }
@@ -12,7 +12,7 @@ module Metronome
       optional :schedule_items,
                Metronome::ArrayOf.new(-> { Metronome::Models::SchedulePointInTime::ScheduleItem })
 
-      class ScheduleItem < BaseModel
+      class ScheduleItem < Metronome::BaseModel
         # @!attribute [rw] id
         #   @return [String]
         required :id, String
