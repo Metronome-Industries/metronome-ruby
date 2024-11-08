@@ -80,23 +80,23 @@ module Metronome
     end
 
     # @!visibility private
-    def make_status_error(message:, body:, response:)
+    private def make_status_error(message:, body:, response:)
       case response.code.to_i
-      when 400
+      in 400
         Metronome::HTTP::BadRequestError.new(message: message, response: response, body: body)
-      when 401
+      in 401
         Metronome::HTTP::AuthenticationError.new(message: message, response: response, body: body)
-      when 403
+      in 403
         Metronome::HTTP::PermissionDeniedError.new(message: message, response: response, body: body)
-      when 404
+      in 404
         Metronome::HTTP::NotFoundError.new(message: message, response: response, body: body)
-      when 409
+      in 409
         Metronome::HTTP::ConflictError.new(message: message, response: response, body: body)
-      when 422
+      in 422
         Metronome::HTTP::UnprocessableEntityError.new(message: message, response: response, body: body)
-      when 429
+      in 429
         Metronome::HTTP::RateLimitError.new(message: message, response: response, body: body)
-      when 500..599
+      in 500..599
         Metronome::HTTP::InternalServerError.new(message: message, response: response, body: body)
       else
         Metronome::HTTP::APIStatusError.new(message: message, response: response, body: body)
