@@ -10,33 +10,18 @@ module Metronome
 
     # @!visibility private
     #
-    # @return [Metronome::Client]
-    attr_accessor :client
-
-    # @!visibility private
-    #
-    # @return [Hash{Symbol => Object}]
-    attr_accessor :req
-
-    # @!visibility private
-    #
-    # @return [Hash{Symbol => Object}]
-    attr_accessor :opts
-
-    # @!visibility private
-    #
     # @param model [Object]
     # @param raw_data [Hash{Symbol => Object}]
     # @param response [Net::HTTPResponse]
     # @param client [Metronome::Client]
     # @param req [Hash{Symbol => Object}]
     # @param opts [Hash{Symbol => Object}]
-    def initialize(model, raw_data, _response, client, req, opts)
+    def initialize(client:, model:, req:, opts:, response:, raw_data:)
       self.next_page = raw_data[:next_page]
       self.data = (raw_data[:data] || []).map { |e| model.convert(e) }
-      self.client = client
-      self.req = req
-      self.opts = opts
+      @client = client
+      @req = req
+      @opts = opts
     end
 
     # @return [Boolean]
@@ -50,7 +35,9 @@ module Metronome
       unless next_page?
         raise "No more pages available; please check #next_page? before calling #next_page"
       end
-      client.request(Metronome::Util.deep_merge(req, {query: {next_page: next_page}}), opts)
+
+      req = Metronome::Util.deep_merge(@req, {query: {next_page: next_page}})
+      @client.request(req, @opts)
     end
 
     # @param blk [Proc]
@@ -70,7 +57,7 @@ module Metronome
 
     # @return [String]
     def inspect
-      "#<#{selfl.class}:0x#{object_id.to_s(16)} next_page=#{next_page.inspect} data=#{data.inspect}>"
+      "#<#{self.class}:0x#{object_id.to_s(16)} next_page=#{next_page.inspect} data=#{data.inspect}>"
     end
   end
 end
