@@ -5,6 +5,16 @@ module Metronome
     # Default max number of retries to attempt after a failed retryable request.
     DEFAULT_MAX_RETRIES = 2
 
+    # Default per-request timeout.
+    DEFAULT_TIMEOUT_IN_SECONDS = 60
+
+    # Default initial retry delay in seconds.
+    # Overall delay is calculated using exponential backoff + jitter.
+    DEFAULT_INITIAL_RETRY_DELAY = 0.5
+
+    # Default max retry delay in seconds.
+    DEFAULT_MAX_RETRY_DELAY = 8.0
+
     # Client option
     # @return [String]
     attr_reader :bearer_token
@@ -55,15 +65,29 @@ module Metronome
     # @param base_url [String, nil] Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
     # @param bearer_token [String, nil] Defaults to `ENV["METRONOME_BEARER_TOKEN"]`
     # @param max_retries [Integer] Max number of retries to attempt after a failed retryable request.
-    def initialize(base_url: nil, bearer_token: nil, max_retries: DEFAULT_MAX_RETRIES, timeout: 60)
+    def initialize(
+      base_url: nil,
+      bearer_token: ENV["METRONOME_BEARER_TOKEN"],
+      max_retries: DEFAULT_MAX_RETRIES,
+      timeout: DEFAULT_TIMEOUT_IN_SECONDS,
+      initial_retry_delay: DEFAULT_INITIAL_RETRY_DELAY,
+      max_retry_delay: DEFAULT_MAX_RETRY_DELAY
+    )
       base_url ||= "https://api.metronome.com/v1"
 
-      @bearer_token = [bearer_token, ENV["METRONOME_BEARER_TOKEN"]].find { |v| !v.nil? }
-      if @bearer_token.nil?
+      if bearer_token.nil?
         raise ArgumentError, "bearer_token is required"
       end
 
-      super(base_url: base_url, max_retries: max_retries, timeout: timeout)
+      @bearer_token = bearer_token.to_s
+
+      super(
+        base_url: base_url,
+        timeout: timeout,
+        max_retries: max_retries,
+        initial_retry_delay: initial_retry_delay,
+        max_retry_delay: max_retry_delay
+      )
 
       @alerts = Metronome::Resources::Alerts.new(client: self)
       @plans = Metronome::Resources::Plans.new(client: self)
