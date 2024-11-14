@@ -27,6 +27,7 @@ module Metronome
         #   @option params [String, nil] :description Used only in UI/API. It is not exposed to end customers.
         #   @option params [String, nil] :name displayed on invoices
         #   @option params [String, nil] :netsuite_sales_order_id This field's availability is dependent on your client's configuration.
+        #   @option params [Symbol, RateType, nil] :rate_type
         #   @option params [String, nil] :salesforce_opportunity_id This field's availability is dependent on your client's configuration.
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.

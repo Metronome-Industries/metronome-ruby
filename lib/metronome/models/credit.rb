@@ -63,6 +63,10 @@ module Metronome
       #   @return [Float]
       optional :priority, Float
 
+      # @!attribute [rw] rate_type
+      #   @return [Symbol, Metronome::Models::Credit::RateType]
+      optional :rate_type, enum: -> { Metronome::Models::Credit::RateType }
+
       # @!attribute [rw] salesforce_opportunity_id
       #   This field's availability is dependent on your client's configuration.
       #   @return [String]
@@ -103,6 +107,11 @@ module Metronome
         #   def initialize(data = {}) = super
       end
 
+      class RateType < Metronome::Enum
+        COMMIT_RATE = :COMMIT_RATE
+        LIST_RATE = :LIST_RATE
+      end
+
       # @!parse
       #   # Create a new instance of Credit from a Hash of raw data.
       #   #
@@ -123,6 +132,7 @@ module Metronome
       #   #   @option data [String, nil] :netsuite_sales_order_id This field's availability is dependent on your client's configuration.
       #   #   @option data [Float, nil] :priority If multiple credits or commits are applicable, the one with the lower priority
       #   #     will apply first.
+      #   #   @option data [String, nil] :rate_type
       #   #   @option data [String, nil] :salesforce_opportunity_id This field's availability is dependent on your client's configuration.
       #   def initialize(data = {}) = super
     end
