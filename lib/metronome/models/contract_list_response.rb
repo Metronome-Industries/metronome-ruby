@@ -34,7 +34,7 @@ module Metronome
         optional :custom_fields, Hash
 
         # @!attribute [rw] customer_billing_provider_configuration
-        #   This field's availability is dependent on your client's configuration.
+        #   The billing provider configuration associated with a contract.
         #   @return [Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration]
         optional :customer_billing_provider_configuration,
                  -> { Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration }
@@ -253,7 +253,7 @@ module Metronome
         #   #   @option data [String] :customer_id
         #   #   @option data [Object] :initial
         #   #   @option data [Hash, nil] :custom_fields
-        #   #   @option data [Object, nil] :customer_billing_provider_configuration This field's availability is dependent on your client's configuration.
+        #   #   @option data [Object, nil] :customer_billing_provider_configuration The billing provider configuration associated with a contract.
         #   #   @option data [String, nil] :uniqueness_key Prevents the creation of duplicates. If a request to create a record is made
         #   #     with a previously used uniqueness key, a new record will not be created and the
         #   #     request will fail with a 409 error.

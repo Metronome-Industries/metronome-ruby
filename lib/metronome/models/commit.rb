@@ -78,6 +78,10 @@ module Metronome
       #   @return [Float]
       optional :priority, Float
 
+      # @!attribute [rw] rate_type
+      #   @return [Symbol, Metronome::Models::Commit::RateType]
+      optional :rate_type, enum: -> { Metronome::Models::Commit::RateType }
+
       # @!attribute [rw] rolled_over_from
       #   @return [Metronome::Models::Commit::RolledOverFrom]
       optional :rolled_over_from, -> { Metronome::Models::Commit::RolledOverFrom }
@@ -140,6 +144,11 @@ module Metronome
         #   def initialize(data = {}) = super
       end
 
+      class RateType < Metronome::Enum
+        COMMIT_RATE = :COMMIT_RATE
+        LIST_RATE = :LIST_RATE
+      end
+
       class RolledOverFrom < Metronome::BaseModel
         # @!attribute [rw] commit_id
         #   @return [String]
@@ -182,6 +191,7 @@ module Metronome
       #   #   @option data [String, nil] :netsuite_sales_order_id This field's availability is dependent on your client's configuration.
       #   #   @option data [Float, nil] :priority If multiple credits or commits are applicable, the one with the lower priority
       #   #     will apply first.
+      #   #   @option data [String, nil] :rate_type
       #   #   @option data [Object, nil] :rolled_over_from
       #   #   @option data [Float, nil] :rollover_fraction
       #   #   @option data [String, nil] :salesforce_opportunity_id This field's availability is dependent on your client's configuration.

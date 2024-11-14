@@ -25,7 +25,7 @@ module Metronome
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :customer_id
       #   @option params [Time] :starting_at inclusive contract start time
-      #   @option params [BillingProviderConfiguration, nil] :billing_provider_configuration This field's availability is dependent on your client's configuration.
+      #   @option params [BillingProviderConfiguration, nil] :billing_provider_configuration The billing provider configuration associated with a contract.
       #   @option params [Array<Commit>, nil] :commits
       #   @option params [Array<Credit>, nil] :credits
       #   @option params [Hash, nil] :custom_fields
