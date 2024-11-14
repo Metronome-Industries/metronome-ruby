@@ -12,6 +12,11 @@ module Metronome
         #   @return [Symbol, Metronome::Models::RateAddResponse::Data::RateType]
         required :rate_type, enum: -> { Metronome::Models::RateAddResponse::Data::RateType }
 
+        # @!attribute [rw] commit_rate
+        #   A distinct rate on the rate card. You can choose to use this rate rather than list rate when consuming a credit or commit. This feature requires opt-in before it can be used. Please contact Metronome support to enable this feature.
+        #   @return [Metronome::Models::RateAddResponse::Data::CommitRate]
+        optional :commit_rate, -> { Metronome::Models::RateAddResponse::Data::CommitRate }
+
         # @!attribute [rw] credit_type
         #   @return [Metronome::Models::CreditTypeData]
         optional :credit_type, -> { Metronome::Models::CreditTypeData }
@@ -64,11 +69,52 @@ module Metronome
           TIERED = :tiered
         end
 
+        class CommitRate < Metronome::BaseModel
+          # @!attribute [rw] rate_type
+          #   @return [Symbol, Metronome::Models::RateAddResponse::Data::CommitRate::RateType]
+          required :rate_type, enum: -> { Metronome::Models::RateAddResponse::Data::CommitRate::RateType }
+
+          # @!attribute [rw] price
+          #   Commit rate price. For FLAT rate_type, this must be >=0.
+          #   @return [Float]
+          optional :price, Float
+
+          # @!attribute [rw] tiers
+          #   Only set for TIERED rate_type.
+          #   @return [Array<Metronome::Models::Tier>]
+          optional :tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Tier })
+
+          class RateType < Metronome::Enum
+            FLAT = :FLAT
+            FLAT = :flat
+            PERCENTAGE = :PERCENTAGE
+            PERCENTAGE = :percentage
+            SUBSCRIPTION = :SUBSCRIPTION
+            SUBSCRIPTION = :subscription
+            TIERED = :TIERED
+            TIERED = :tiered
+            CUSTOM = :CUSTOM
+            CUSTOM = :custom
+          end
+
+          # @!parse
+          #   # Create a new instance of CommitRate from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :rate_type
+          #   #   @option data [Float, nil] :price Commit rate price. For FLAT rate_type, this must be >=0.
+          #   #   @option data [Array<Object>, nil] :tiers Only set for TIERED rate_type.
+          #   def initialize(data = {}) = super
+        end
+
         # @!parse
         #   # Create a new instance of Data from a Hash of raw data.
         #   #
         #   # @param data [Hash{Symbol => Object}] .
         #   #   @option data [String] :rate_type
+        #   #   @option data [Object, nil] :commit_rate A distinct rate on the rate card. You can choose to use this rate rather than
+        #   #     list rate when consuming a credit or commit. This feature requires opt-in before
+        #   #     it can be used. Please contact Metronome support to enable this feature.
         #   #   @option data [Object, nil] :credit_type
         #   #   @option data [Hash, nil] :custom_rate Only set for CUSTOM rate_type. This field is interpreted by custom rate
         #   #     processors.
