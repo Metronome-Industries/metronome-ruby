@@ -17,8 +17,8 @@ module Metronome
     # @param req [Hash{Symbol => Object}]
     # @param opts [Hash{Symbol => Object}]
     def initialize(client:, model:, req:, opts:, response:, raw_data:)
-      self.next_page_ = raw_data[:next_page]
-      self.data = (raw_data[:data] || []).map { |e| model.convert(e) }
+      @next_page_ = raw_data[:next_page]
+      @data = (raw_data[:data] || []).map { |e| model.convert(e) }
       @client = client
       @req = req
       @opts = opts
