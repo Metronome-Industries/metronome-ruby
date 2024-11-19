@@ -39,9 +39,9 @@ module Metronome
       #   @return [Metronome::Models::CreditGrantListResponse::GrantAmount]
       required :grant_amount, -> { Metronome::Models::CreditGrantListResponse::GrantAmount }
 
-      # @!attribute [rw] name_
+      # @!attribute [rw] name
       #   @return [String]
-      required :name_, String, api_name: :name
+      required :name, String
 
       # @!attribute [rw] paid_amount
       #   the amount paid for this credit grant
@@ -151,9 +151,9 @@ module Metronome
         #   @return [String]
         required :id, String
 
-        # @!attribute [rw] name_
+        # @!attribute [rw] name
         #   @return [String]
-        required :name_, String, api_name: :name
+        required :name, String
 
         # @!parse
         #   # Create a new instance of Product from a Hash of raw data.

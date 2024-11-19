@@ -78,9 +78,9 @@ module Metronome
           #   @return [Boolean]
           optional :is_refundable, Metronome::BooleanModel
 
-          # @!attribute [rw] name_
+          # @!attribute [rw] name
           #   @return [String]
-          optional :name_, String, api_name: :name
+          optional :name, String
 
           # @!attribute [rw] netsuite_internal_item_id
           #   This field's availability is dependent on your client's configuration.

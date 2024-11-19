@@ -11,9 +11,9 @@ module Metronome
       #   @return [String]
       required :created_by, String
 
-      # @!attribute [rw] name_
+      # @!attribute [rw] name
       #   @return [String]
-      required :name_, String, api_name: :name
+      required :name, String
 
       # @!attribute [rw] billable_metric_id
       #   @return [String]

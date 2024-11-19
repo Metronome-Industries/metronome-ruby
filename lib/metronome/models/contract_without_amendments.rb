@@ -50,9 +50,9 @@ module Metronome
       #   @return [Time]
       optional :ending_before, Time
 
-      # @!attribute [rw] name_
+      # @!attribute [rw] name
       #   @return [String]
-      optional :name_, String, api_name: :name
+      optional :name, String
 
       # @!attribute [rw] net_payment_terms_days
       #   @return [Float]

@@ -24,9 +24,9 @@ module Metronome
         #   @return [String]
         required :customer_plan_id, String
 
-        # @!attribute [rw] name_
+        # @!attribute [rw] name
         #   @return [String]
-        required :name_, String, api_name: :name
+        required :name, String
 
         # @!attribute [rw] starting_on
         #   The start date of the plan

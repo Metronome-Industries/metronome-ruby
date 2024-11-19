@@ -64,9 +64,9 @@ module Metronome
       #   @return [Array<Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent0, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent1, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent10, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent11, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent12, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent2, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent3, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent4, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent5, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent6, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent7, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent8, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent9>]
       optional :ledger, Metronome::ArrayOf.new(Metronome::Unknown)
 
-      # @!attribute [rw] name_
+      # @!attribute [rw] name
       #   @return [String]
-      optional :name_, String, api_name: :name
+      optional :name, String
 
       # @!attribute [rw] netsuite_sales_order_id
       #   This field's availability is dependent on your client's configuration.
@@ -100,9 +100,9 @@ module Metronome
         #   @return [String]
         required :id, String
 
-        # @!attribute [rw] name_
+        # @!attribute [rw] name
         #   @return [String]
-        required :name_, String, api_name: :name
+        required :name, String
 
         # @!parse
         #   # Create a new instance of Product from a Hash of raw data.

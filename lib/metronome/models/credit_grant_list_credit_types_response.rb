@@ -11,9 +11,9 @@ module Metronome
       #   @return [Boolean]
       optional :is_currency, Metronome::BooleanModel
 
-      # @!attribute [rw] name_
+      # @!attribute [rw] name
       #   @return [String]
-      optional :name_, String, api_name: :name
+      optional :name, String
 
       # @!parse
       #   # Create a new instance of CreditGrantListCreditTypesResponse from a Hash of raw

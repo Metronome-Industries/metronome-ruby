@@ -19,10 +19,10 @@ module Metronome
       #   @return [Hash]
       optional :custom_fields, Hash
 
-      # @!attribute [rw] name_
+      # @!attribute [rw] name
       #   displayed on invoices
       #   @return [String]
-      optional :name_, String, api_name: :name
+      optional :name, String
 
       # @!attribute [rw] netsuite_sales_order_id
       #   This field's availability is dependent on your client's configuration.
@@ -34,9 +34,9 @@ module Metronome
         #   @return [String]
         required :id, String
 
-        # @!attribute [rw] name_
+        # @!attribute [rw] name
         #   @return [String]
-        required :name_, String, api_name: :name
+        required :name, String
 
         # @!parse
         #   # Create a new instance of Product from a Hash of raw data.

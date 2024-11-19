@@ -40,9 +40,9 @@ module Metronome
         #   @return [String]
         required :id, String
 
-        # @!attribute [rw] name_
+        # @!attribute [rw] name
         #   @return [String]
-        required :name_, String, api_name: :name
+        required :name, String
 
         # @!attribute [rw] email
         #   @return [String]
