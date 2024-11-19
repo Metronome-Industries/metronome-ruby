@@ -116,11 +116,7 @@ class Metronome::Test::Resources::ContractsTest < Minitest::Test
         contract_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         customer_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         issued_at: "2019-12-27T18:11:19.117Z",
-        line_items: [
-          {"professional_service_id" => "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"},
-          {"professional_service_id" => "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"},
-          {"professional_service_id" => "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"}
-        ]
+        line_items: [{"professional_service_id" => "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"}]
       }
     )
     assert_kind_of(Metronome::Models::ContractScheduleProServicesInvoiceResponse, response)
