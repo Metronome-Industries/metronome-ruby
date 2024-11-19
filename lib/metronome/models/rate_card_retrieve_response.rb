@@ -20,9 +20,9 @@ module Metronome
         #   @return [String]
         required :created_by, String
 
-        # @!attribute [rw] name_
+        # @!attribute [rw] name
         #   @return [String]
-        required :name_, String, api_name: :name
+        required :name, String
 
         # @!attribute [rw] rate_card_entries
         #   @return [Hash]
@@ -301,9 +301,9 @@ module Metronome
         end
 
         class Alias < Metronome::BaseModel
-          # @!attribute [rw] name_
+          # @!attribute [rw] name
           #   @return [String]
-          required :name_, String, api_name: :name
+          required :name, String
 
           # @!attribute [rw] ending_before
           #   @return [Time]

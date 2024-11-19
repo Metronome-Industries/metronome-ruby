@@ -26,9 +26,9 @@ module Metronome
       #   @return [Array<String>]
       required :ingest_aliases, Metronome::ArrayOf.new(String)
 
-      # @!attribute [rw] name_
+      # @!attribute [rw] name
       #   @return [String]
-      required :name_, String, api_name: :name
+      required :name, String
 
       # @!attribute [rw] current_billable_status
       #   This field's availability is dependent on your client's configuration.

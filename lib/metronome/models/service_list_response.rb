@@ -12,9 +12,9 @@ module Metronome
         #   @return [Array<String>]
         required :ips, Metronome::ArrayOf.new(String)
 
-        # @!attribute [rw] name_
+        # @!attribute [rw] name
         #   @return [String]
-        required :name_, String, api_name: :name
+        required :name, String
 
         # @!attribute [rw] usage
         #   @return [Symbol, Metronome::Models::ServiceListResponse::Service::Usage]

@@ -11,9 +11,9 @@ module Metronome
       #   @return [Hash]
       required :custom_fields, Hash
 
-      # @!attribute [rw] name_
+      # @!attribute [rw] name
       #   @return [String]
-      required :name_, String, api_name: :name
+      required :name, String
 
       # @!attribute [rw] credit_grants
       #   @return [Array<Metronome::Models::PlanDetail::CreditGrant>]
@@ -52,9 +52,9 @@ module Metronome
         #   @return [Float]
         required :effective_duration, Float
 
-        # @!attribute [rw] name_
+        # @!attribute [rw] name
         #   @return [String]
-        required :name_, String, api_name: :name
+        required :name, String
 
         # @!attribute [rw] priority
         #   @return [String]
@@ -99,9 +99,9 @@ module Metronome
         #   @return [Metronome::Models::CreditTypeData]
         required :credit_type, -> { Metronome::Models::CreditTypeData }
 
-        # @!attribute [rw] name_
+        # @!attribute [rw] name
         #   @return [String]
-        required :name_, String, api_name: :name
+        required :name, String
 
         # @!attribute [rw] start_period
         #   Used in price ramps.  Indicates how many billing periods pass before the charge applies.

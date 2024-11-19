@@ -129,9 +129,9 @@ module Metronome
         #   @return [Metronome::Models::CreditTypeData]
         required :credit_type, -> { Metronome::Models::CreditTypeData }
 
-        # @!attribute [rw] name_
+        # @!attribute [rw] name
         #   @return [String]
-        required :name_, String, api_name: :name
+        required :name, String
 
         # @!attribute [rw] total
         #   @return [Float]
@@ -341,9 +341,9 @@ module Metronome
           #   @return [Hash]
           required :custom_fields, Hash
 
-          # @!attribute [rw] name_
+          # @!attribute [rw] name
           #   @return [String]
-          required :name_, String, api_name: :name
+          required :name, String
 
           # @!attribute [rw] quantity
           #   @return [Float]
@@ -658,9 +658,9 @@ module Metronome
         #   @return [Metronome::Models::CreditTypeData]
         required :credit_type, -> { Metronome::Models::CreditTypeData }
 
-        # @!attribute [rw] name_
+        # @!attribute [rw] name
         #   @return [String]
-        required :name_, String, api_name: :name
+        required :name, String
 
         # @!attribute [rw] total
         #   @return [Float]

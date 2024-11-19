@@ -13,10 +13,10 @@ module Metronome
       #   @return [Symbol, Metronome::Models::QuantityConversion::Operation]
       required :operation, enum: -> { Metronome::Models::QuantityConversion::Operation }
 
-      # @!attribute [rw] name_
+      # @!attribute [rw] name
       #   Optional name for this conversion.
       #   @return [String]
-      optional :name_, String, api_name: :name
+      optional :name, String
 
       # The operation to perform on the quantity
       class Operation < Metronome::Enum

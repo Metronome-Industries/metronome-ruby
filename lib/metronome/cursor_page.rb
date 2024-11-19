@@ -3,7 +3,7 @@
 module Metronome
   class CursorPage
     # @return [String]
-    attr_accessor :next_page
+    attr_accessor :next_page_
 
     # @return [Array<Object>]
     attr_accessor :data
@@ -17,7 +17,7 @@ module Metronome
     # @param req [Hash{Symbol => Object}]
     # @param opts [Hash{Symbol => Object}]
     def initialize(client:, model:, req:, opts:, response:, raw_data:)
-      self.next_page = raw_data[:next_page]
+      self.next_page_ = raw_data[:next_page]
       self.data = (raw_data[:data] || []).map { |e| model.convert(e) }
       @client = client
       @req = req
@@ -26,7 +26,7 @@ module Metronome
 
     # @return [Boolean]
     def next_page?
-      !next_page.nil?
+      !next_page_.nil?
     end
 
     # @raise [Metronome::HTTP::Error]
@@ -36,7 +36,7 @@ module Metronome
         raise "No more pages available; please check #next_page? before calling #next_page"
       end
 
-      req = Metronome::Util.deep_merge(@req, {query: {next_page: next_page}})
+      req = Metronome::Util.deep_merge(@req, {query: {next_page: next_page_}})
       @client.request(req, @opts)
     end
 
@@ -57,7 +57,7 @@ module Metronome
 
     # @return [String]
     def inspect
-      "#<#{self.class}:0x#{object_id.to_s(16)} next_page=#{next_page.inspect} data=#{data.inspect}>"
+      "#<#{self.class}:0x#{object_id.to_s(16)} next_page_=#{next_page_.inspect} data=#{data.inspect}>"
     end
   end
 end

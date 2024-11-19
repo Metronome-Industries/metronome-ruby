@@ -19,9 +19,9 @@ module Metronome
       #   @return [Hash]
       required :custom_fields, Hash
 
-      # @!attribute [rw] name_
+      # @!attribute [rw] name
       #   @return [String]
-      required :name_, String, api_name: :name
+      required :name, String
 
       # @!attribute [rw] prices
       #   @return [Array<Metronome::Models::PlanListChargesResponse::Price>]

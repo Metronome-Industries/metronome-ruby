@@ -29,18 +29,18 @@ module Metronome
                    }
                  )
 
-        # @!attribute [rw] name_
+        # @!attribute [rw] name
         #   @return [String]
-        optional :name_, String, api_name: :name
+        optional :name, String
 
         class LineItemBreakdown < Metronome::BaseModel
           # @!attribute [rw] cost
           #   @return [Float]
           required :cost, Float
 
-          # @!attribute [rw] name_
+          # @!attribute [rw] name
           #   @return [String]
-          required :name_, String, api_name: :name
+          required :name, String
 
           # @!attribute [rw] group_key
           #   @return [String]
