@@ -24,10 +24,16 @@ module Metronome
         #
         # @return [nil]
         def create(params = {}, opts = {})
+          customer_id = params.fetch(:customer_id) do
+            raise ArgumentError, "missing required path argument :customer_id"
+          end
+          billing_provider_type = params.fetch(:billing_provider_type) do
+            raise ArgumentError, "missing required path argument :billing_provider_type"
+          end
           req = {
             method: :post,
-            path: "/customers/#{params.fetch(:customer_id)}/billing-config/#{params.fetch(:billing_provider_type)}",
-            body: params,
+            path: "/customers/#{customer_id}/billing-config/#{billing_provider_type}",
+            body: params.except(:customer_id, :billing_provider_type),
             headers: {"Content-Type" => "application/json"},
             model: NilClass
           }
@@ -44,9 +50,15 @@ module Metronome
         #
         # @return [Metronome::Models::BillingConfigRetrieveResponse]
         def retrieve(params = {}, opts = {})
+          customer_id = params.fetch(:customer_id) do
+            raise ArgumentError, "missing required path argument :customer_id"
+          end
+          billing_provider_type = params.fetch(:billing_provider_type) do
+            raise ArgumentError, "missing required path argument :billing_provider_type"
+          end
           req = {
             method: :get,
-            path: "/customers/#{params.fetch(:customer_id)}/billing-config/#{params.fetch(:billing_provider_type)}",
+            path: "/customers/#{customer_id}/billing-config/#{billing_provider_type}",
             model: Metronome::Models::BillingConfigRetrieveResponse
           }
           @client.request(req, opts)
@@ -63,9 +75,15 @@ module Metronome
         #
         # @return [nil]
         def delete(params = {}, opts = {})
+          customer_id = params.fetch(:customer_id) do
+            raise ArgumentError, "missing required path argument :customer_id"
+          end
+          billing_provider_type = params.fetch(:billing_provider_type) do
+            raise ArgumentError, "missing required path argument :billing_provider_type"
+          end
           req = {
             method: :delete,
-            path: "/customers/#{params.fetch(:customer_id)}/billing-config/#{params.fetch(:billing_provider_type)}",
+            path: "/customers/#{customer_id}/billing-config/#{billing_provider_type}",
             model: NilClass
           }
           @client.request(req, opts)
