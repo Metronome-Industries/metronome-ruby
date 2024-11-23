@@ -27,8 +27,8 @@ module Metronome
             req = {
               method: :post,
               path: "/contracts/getNamedSchedule",
-              body: params,
               headers: {"Content-Type" => "application/json"},
+              body: params,
               model: Metronome::Models::NamedScheduleRetrieveResponse
             }
             @client.request(req, opts)
@@ -53,8 +53,8 @@ module Metronome
             req = {
               method: :post,
               path: "/contracts/updateNamedSchedule",
-              body: params,
               headers: {"Content-Type" => "application/json"},
+              body: params,
               model: NilClass
             }
             @client.request(req, opts)

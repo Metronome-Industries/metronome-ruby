@@ -34,8 +34,8 @@ module Metronome
         req = {
           method: :post,
           path: "/billable-metrics/create",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Metronome::Models::BillableMetricCreateResponse
         }
         @client.request(req, opts)
@@ -94,8 +94,8 @@ module Metronome
         req = {
           method: :post,
           path: "/billable-metrics/archive",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Metronome::Models::BillableMetricArchiveResponse
         }
         @client.request(req, opts)

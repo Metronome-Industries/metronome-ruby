@@ -20,8 +20,8 @@ module Metronome
         req = {
           method: :post,
           path: "/invoices/regenerate",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Metronome::Models::InvoiceRegenerateResponse
         }
         @client.request(req, opts)
@@ -39,8 +39,8 @@ module Metronome
         req = {
           method: :post,
           path: "/invoices/void",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Metronome::Models::InvoiceVoidResponse
         }
         @client.request(req, opts)

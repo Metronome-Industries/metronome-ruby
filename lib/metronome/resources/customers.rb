@@ -53,8 +53,8 @@ module Metronome
         req = {
           method: :post,
           path: "/customers",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Metronome::Models::CustomerCreateResponse
         }
         @client.request(req, opts)
@@ -117,8 +117,8 @@ module Metronome
         req = {
           method: :post,
           path: "/customers/archive",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Metronome::Models::CustomerArchiveResponse
         }
         @client.request(req, opts)
@@ -197,8 +197,8 @@ module Metronome
         req = {
           method: :post,
           path: "/customers/#{customer_id}/setIngestAliases",
-          body: params.except(:customer_id),
           headers: {"Content-Type" => "application/json"},
+          body: params.except(:customer_id),
           model: NilClass
         }
         @client.request(req, opts)
@@ -221,8 +221,8 @@ module Metronome
         req = {
           method: :post,
           path: "/customers/#{customer_id}/setName",
-          body: params.except(:customer_id),
           headers: {"Content-Type" => "application/json"},
+          body: params.except(:customer_id),
           model: Metronome::Models::CustomerSetNameResponse
         }
         @client.request(req, opts)
@@ -246,8 +246,8 @@ module Metronome
         req = {
           method: :post,
           path: "/customers/#{customer_id}/updateConfig",
-          body: params.except(:customer_id),
           headers: {"Content-Type" => "application/json"},
+          body: params.except(:customer_id),
           model: NilClass
         }
         @client.request(req, opts)

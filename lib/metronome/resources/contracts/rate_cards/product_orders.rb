@@ -23,8 +23,8 @@ module Metronome
             req = {
               method: :post,
               path: "/contract-pricing/rate-cards/moveRateCardProducts",
-              body: params,
               headers: {"Content-Type" => "application/json"},
+              body: params,
               model: Metronome::Models::ProductOrderUpdateResponse
             }
             @client.request(req, opts)
@@ -43,8 +43,8 @@ module Metronome
             req = {
               method: :post,
               path: "/contract-pricing/rate-cards/setRateCardProductsOrder",
-              body: params,
               headers: {"Content-Type" => "application/json"},
+              body: params,
               model: Metronome::Models::ProductOrderSetResponse
             }
             @client.request(req, opts)

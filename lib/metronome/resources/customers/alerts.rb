@@ -23,8 +23,8 @@ module Metronome
           req = {
             method: :post,
             path: "/customer-alerts/get",
-            body: params,
             headers: {"Content-Type" => "application/json"},
+            body: params,
             model: Metronome::Models::AlertRetrieveResponse
           }
           @client.request(req, opts)
@@ -47,8 +47,8 @@ module Metronome
             method: :post,
             path: "/customer-alerts/list",
             query: params.slice(*query_params),
-            body: params.except(*query_params),
             headers: {"Content-Type" => "application/json"},
+            body: params.except(*query_params),
             model: Metronome::Models::AlertListResponse
           }
           @client.request(req, opts)
@@ -67,8 +67,8 @@ module Metronome
           req = {
             method: :post,
             path: "/customer-alerts/reset",
-            body: params,
             headers: {"Content-Type" => "application/json"},
+            body: params,
             model: NilClass
           }
           @client.request(req, opts)

@@ -61,8 +61,8 @@ module Metronome
         req = {
           method: :post,
           path: "/contracts/create",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Metronome::Models::ContractCreateResponse
         }
         @client.request(req, opts)
@@ -83,8 +83,8 @@ module Metronome
         req = {
           method: :post,
           path: "/contracts/get",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Metronome::Models::ContractRetrieveResponse
         }
         @client.request(req, opts)
@@ -111,8 +111,8 @@ module Metronome
         req = {
           method: :post,
           path: "/contracts/list",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Metronome::Models::ContractListResponse
         }
         @client.request(req, opts)
@@ -137,8 +137,8 @@ module Metronome
         req = {
           method: :post,
           path: "/contracts/addManualBalanceLedgerEntry",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: NilClass
         }
         @client.request(req, opts)
@@ -169,8 +169,8 @@ module Metronome
         req = {
           method: :post,
           path: "/contracts/amend",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Metronome::Models::ContractAmendResponse
         }
         @client.request(req, opts)
@@ -191,8 +191,8 @@ module Metronome
         req = {
           method: :post,
           path: "/contracts/archive",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Metronome::Models::ContractArchiveResponse
         }
         @client.request(req, opts)
@@ -211,8 +211,8 @@ module Metronome
         req = {
           method: :post,
           path: "/contracts/createHistoricalInvoices",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Metronome::Models::ContractCreateHistoricalInvoicesResponse
         }
         @client.request(req, opts)
@@ -239,8 +239,8 @@ module Metronome
         req = {
           method: :post,
           path: "/contracts/customerBalances/list",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Metronome::Models::ContractListBalancesResponse
         }
         @client.request(req, opts)
@@ -268,8 +268,8 @@ module Metronome
           method: :post,
           path: "/contracts/getContractRateSchedule",
           query: params.slice(*query_params),
-          body: params.except(*query_params),
           headers: {"Content-Type" => "application/json"},
+          body: params.except(*query_params),
           model: Metronome::Models::ContractRetrieveRateScheduleResponse
         }
         @client.request(req, opts)
@@ -293,8 +293,8 @@ module Metronome
         req = {
           method: :post,
           path: "/contracts/scheduleProServicesInvoice",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Metronome::Models::ContractScheduleProServicesInvoiceResponse
         }
         @client.request(req, opts)
@@ -316,8 +316,8 @@ module Metronome
         req = {
           method: :post,
           path: "/contracts/setUsageFilter",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: NilClass
         }
         @client.request(req, opts)
@@ -338,8 +338,8 @@ module Metronome
         req = {
           method: :post,
           path: "/contracts/updateEndDate",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Metronome::Models::ContractUpdateEndDateResponse
         }
         @client.request(req, opts)

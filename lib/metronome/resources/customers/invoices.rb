@@ -95,8 +95,8 @@ module Metronome
           req = {
             method: :post,
             path: "/customers/#{customer_id}/addCharge",
-            body: params.except(:customer_id),
             headers: {"Content-Type" => "application/json"},
+            body: params.except(:customer_id),
             model: Metronome::Models::InvoiceAddChargeResponse
           }
           @client.request(req, opts)
