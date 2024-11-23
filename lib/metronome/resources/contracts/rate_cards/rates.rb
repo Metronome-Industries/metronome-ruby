@@ -30,8 +30,8 @@ module Metronome
               method: :post,
               path: "/contract-pricing/rate-cards/getRates",
               query: params.slice(*query_params),
-              body: params.except(*query_params),
               headers: {"Content-Type" => "application/json"},
+              body: params.except(*query_params),
               page: Metronome::CursorPage,
               model: Metronome::Models::RateListResponse
             }
@@ -74,8 +74,8 @@ module Metronome
             req = {
               method: :post,
               path: "/contract-pricing/rate-cards/addRate",
-              body: params,
               headers: {"Content-Type" => "application/json"},
+              body: params,
               model: Metronome::Models::RateAddResponse
             }
             @client.request(req, opts)
@@ -94,8 +94,8 @@ module Metronome
             req = {
               method: :post,
               path: "/contract-pricing/rate-cards/addRates",
-              body: params,
               headers: {"Content-Type" => "application/json"},
+              body: params,
               model: Metronome::Models::RateAddManyResponse
             }
             @client.request(req, opts)

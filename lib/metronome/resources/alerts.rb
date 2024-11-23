@@ -46,8 +46,8 @@ module Metronome
         req = {
           method: :post,
           path: "/alerts/create",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Metronome::Models::AlertCreateResponse
         }
         @client.request(req, opts)
@@ -66,8 +66,8 @@ module Metronome
         req = {
           method: :post,
           path: "/alerts/archive",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Metronome::Models::AlertArchiveResponse
         }
         @client.request(req, opts)

@@ -66,8 +66,8 @@ module Metronome
           req = {
             method: :post,
             path: "/customers/#{customer_id}/plans/add",
-            body: params.except(:customer_id),
             headers: {"Content-Type" => "application/json"},
+            body: params.except(:customer_id),
             model: Metronome::Models::PlanAddResponse
           }
           @client.request(req, opts)
@@ -101,8 +101,8 @@ module Metronome
           req = {
             method: :post,
             path: "/customers/#{customer_id}/plans/#{customer_plan_id}/end",
-            body: params.except(:customer_id, :customer_plan_id),
             headers: {"Content-Type" => "application/json"},
+            body: params.except(:customer_id, :customer_plan_id),
             model: Metronome::Models::PlanEndResponse
           }
           @client.request(req, opts)

@@ -33,8 +33,8 @@ module Metronome
           req = {
             method: :post,
             path: "/customers/#{customer_id}/billing-config/#{billing_provider_type}",
-            body: params.except(:customer_id, :billing_provider_type),
             headers: {"Content-Type" => "application/json"},
+            body: params.except(:customer_id, :billing_provider_type),
             model: NilClass
           }
           @client.request(req, opts)

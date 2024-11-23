@@ -23,8 +23,8 @@ module Metronome
         req = {
           method: :post,
           path: "/customFields/addKey",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: NilClass
         }
         @client.request(req, opts)
@@ -44,8 +44,8 @@ module Metronome
         req = {
           method: :post,
           path: "/customFields/deleteValues",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: NilClass
         }
         @client.request(req, opts)
@@ -66,8 +66,8 @@ module Metronome
           method: :post,
           path: "/customFields/listKeys",
           query: params.slice(*query_params),
-          body: params.except(*query_params),
           headers: {"Content-Type" => "application/json"},
+          body: params.except(*query_params),
           model: Metronome::Models::CustomFieldListKeysResponse
         }
         @client.request(req, opts)
@@ -86,8 +86,8 @@ module Metronome
         req = {
           method: :post,
           path: "/customFields/removeKey",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: NilClass
         }
         @client.request(req, opts)
@@ -113,8 +113,8 @@ module Metronome
         req = {
           method: :post,
           path: "/customFields/setValues",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: NilClass
         }
         @client.request(req, opts)
