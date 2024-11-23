@@ -108,8 +108,8 @@ module Metronome
           req = {
             method: :post,
             path: "/contract-pricing/rate-cards/list",
-            body: params[:body],
             query: params.except(:body),
+            body: params[:body],
             headers: {"Content-Type" => "application/json"},
             page: Metronome::CursorPage,
             model: Metronome::Models::RateCardListResponse

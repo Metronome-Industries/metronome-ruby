@@ -50,9 +50,12 @@ module Metronome
       #
       # @return [Metronome::Models::BillableMetricRetrieveResponse]
       def retrieve(params = {}, opts = {})
+        billable_metric_id = params.fetch(:billable_metric_id) do
+          raise ArgumentError, "missing required path argument :billable_metric_id"
+        end
         req = {
           method: :get,
-          path: "/billable-metrics/#{params.fetch(:billable_metric_id)}",
+          path: "/billable-metrics/#{billable_metric_id}",
           model: Metronome::Models::BillableMetricRetrieveResponse
         }
         @client.request(req, opts)
