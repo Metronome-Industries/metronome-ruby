@@ -18,14 +18,14 @@ module Metronome
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
-        # @return [Metronome::Models::AlertRetrieveResponse]
+        # @return [Metronome::Models::Customers::AlertRetrieveResponse]
         def retrieve(params = {}, opts = {})
           req = {
             method: :post,
             path: "/customer-alerts/get",
             headers: {"Content-Type" => "application/json"},
             body: params,
-            model: Metronome::Models::AlertRetrieveResponse
+            model: Metronome::Models::Customers::AlertRetrieveResponse
           }
           @client.request(req, opts)
         end
@@ -35,12 +35,12 @@ module Metronome
         # @param params [Hash{Symbol => Object}] Attributes to send in this request.
         #   @option params [String] :customer_id Body param: The Metronome ID of the customer
         #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
-        #   @option params [Array<Symbol, AlertStatus>, nil] :alert_statuses Body param: Optionally filter by alert status. If absent, only enabled alerts
+        #   @option params [Array<Symbol, Metronome::Models::Customers::AlertListParams::AlertStatus>, nil] :alert_statuses Body param: Optionally filter by alert status. If absent, only enabled alerts
         #     will be returned.
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
-        # @return [Metronome::Models::AlertListResponse]
+        # @return [Metronome::Models::Customers::AlertListResponse]
         def list(params = {}, opts = {})
           query_params = [:next_page]
           req = {
@@ -49,7 +49,7 @@ module Metronome
             query: params.slice(*query_params),
             headers: {"Content-Type" => "application/json"},
             body: params.except(*query_params),
-            model: Metronome::Models::AlertListResponse
+            model: Metronome::Models::Customers::AlertListResponse
           }
           @client.request(req, opts)
         end

@@ -14,10 +14,10 @@ module Metronome
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :customer_id
-      #   @option params [Symbol, Dashboard] :dashboard The type of dashboard to retrieve.
-      #   @option params [Array<BmGroupKeyOverride>, nil] :bm_group_key_overrides Optional list of billable metric group key overrides
-      #   @option params [Array<ColorOverride>, nil] :color_overrides Optional list of colors to override
-      #   @option params [Array<DashboardOption>, nil] :dashboard_options Optional dashboard specific options
+      #   @option params [Symbol, Metronome::Models::DashboardGetEmbeddableURLParams::Dashboard] :dashboard The type of dashboard to retrieve.
+      #   @option params [Array<Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>, nil] :bm_group_key_overrides Optional list of billable metric group key overrides
+      #   @option params [Array<Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride>, nil] :color_overrides Optional list of colors to override
+      #   @option params [Array<Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption>, nil] :dashboard_options Optional dashboard specific options
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #

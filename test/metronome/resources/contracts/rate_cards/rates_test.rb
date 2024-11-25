@@ -29,7 +29,7 @@ class Metronome::Test::Resources::Contracts::RateCards::RatesTest < Minitest::Te
         starting_at: "2020-01-01T00:00:00.000Z"
       }
     )
-    assert_kind_of(Metronome::Models::RateAddResponse, response)
+    assert_kind_of(Metronome::Models::Contracts::RateCards::RateAddResponse, response)
   end
 
   def test_add_many_required_params
@@ -52,6 +52,6 @@ class Metronome::Test::Resources::Contracts::RateCards::RatesTest < Minitest::Te
         ]
       }
     )
-    assert_kind_of(Metronome::Models::RateAddManyResponse, response)
+    assert_kind_of(Metronome::Models::Contracts::RateCards::RateAddManyResponse, response)
   end
 end

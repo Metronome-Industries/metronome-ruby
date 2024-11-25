@@ -14,7 +14,7 @@ module Metronome
       #   @option params [String] :name The display name of the billable metric.
       #   @option params [String, nil] :aggregation_key Specifies the type of aggregation performed on matching events. Required if
       #     `sql` is not provided.
-      #   @option params [Symbol, AggregationType, nil] :aggregation_type Specifies the type of aggregation performed on matching events.
+      #   @option params [Symbol, Metronome::Models::BillableMetricCreateParams::AggregationType, nil] :aggregation_type Specifies the type of aggregation performed on matching events.
       #   @option params [Hash, nil] :custom_fields Custom fields to attach to the billable metric.
       #   @option params [Metronome::Models::EventTypeFilter, nil] :event_type_filter An optional filtering rule to match the 'event_type' property of an event.
       #   @option params [Array<Array<String>>, nil] :group_keys Property names that are used to group usage costs on an invoice. Each entry

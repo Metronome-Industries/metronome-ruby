@@ -29,12 +29,12 @@ class Metronome::Test::Resources::Customers::CreditsTest < Minitest::Test
         product_id: "f14d6729-6a44-4b13-9908-9387f1918790"
       }
     )
-    assert_kind_of(Metronome::Models::CreditCreateResponse, response)
+    assert_kind_of(Metronome::Models::Customers::CreditCreateResponse, response)
   end
 
   def test_list_required_params
     response = @metronome.customers.credits.list({customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d"})
-    assert_kind_of(Metronome::Models::CreditListResponse, response)
+    assert_kind_of(Metronome::Models::Customers::CreditListResponse, response)
   end
 
   def test_update_end_date_required_params
@@ -45,6 +45,6 @@ class Metronome::Test::Resources::Customers::CreditsTest < Minitest::Test
         customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d"
       }
     )
-    assert_kind_of(Metronome::Models::CreditUpdateEndDateResponse, response)
+    assert_kind_of(Metronome::Models::Customers::CreditUpdateEndDateResponse, response)
   end
 end

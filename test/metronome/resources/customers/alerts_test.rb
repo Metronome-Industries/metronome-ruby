@@ -16,12 +16,12 @@ class Metronome::Test::Resources::Customers::AlertsTest < Minitest::Test
     response = @metronome.customers.alerts.retrieve(
       {alert_id: "8deed800-1b7a-495d-a207-6c52bac54dc9", customer_id: "9b85c1c1-5238-4f2a-a409-61412905e1e1"}
     )
-    assert_kind_of(Metronome::Models::AlertRetrieveResponse, response)
+    assert_kind_of(Metronome::Models::Customers::AlertRetrieveResponse, response)
   end
 
   def test_list_required_params
     response = @metronome.customers.alerts.list({customer_id: "9b85c1c1-5238-4f2a-a409-61412905e1e1"})
-    assert_kind_of(Metronome::Models::AlertListResponse, response)
+    assert_kind_of(Metronome::Models::Customers::AlertListResponse, response)
   end
 
   def test_reset_required_params

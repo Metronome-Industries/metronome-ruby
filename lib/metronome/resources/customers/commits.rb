@@ -12,13 +12,13 @@ module Metronome
         # Create a new commit at the customer level.
         #
         # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-        #   @option params [AccessSchedule] :access_schedule Schedule for distributing the commit to the customer. For "POSTPAID" commits
+        #   @option params [Metronome::Models::Customers::CommitCreateParams::AccessSchedule] :access_schedule Schedule for distributing the commit to the customer. For "POSTPAID" commits
         #     only one schedule item is allowed and amount must match invoice_schedule total.
         #   @option params [String] :customer_id
         #   @option params [Float] :priority If multiple credits or commits are applicable, the one with the lower priority
         #     will apply first.
         #   @option params [String] :product_id
-        #   @option params [Symbol, Type] :type
+        #   @option params [Symbol, Metronome::Models::Customers::CommitCreateParams::Type] :type
         #   @option params [Array<String>, nil] :applicable_contract_ids Which contract the commit applies to. If not provided, the commit applies to all
         #     contracts.
         #   @option params [Array<String>, nil] :applicable_product_ids Which products the commit applies to. If both applicable_product_ids and
@@ -30,25 +30,25 @@ module Metronome
         #   @option params [String, nil] :invoice_contract_id The contract that this commit will be billed on. This is required for "POSTPAID"
         #     commits and for "PREPAID" commits unless there is no invoice schedule above
         #     (i.e., the commit is 'free').
-        #   @option params [InvoiceSchedule, nil] :invoice_schedule Required for "POSTPAID" commits: the true up invoice will be generated at this
+        #   @option params [Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule, nil] :invoice_schedule Required for "POSTPAID" commits: the true up invoice will be generated at this
         #     time and only one schedule item is allowed; the total must match
         #     accesss_schedule amount. Optional for "PREPAID" commits: if not provided, this
         #     will be a "complimentary" commit with no invoice.
         #   @option params [String, nil] :name displayed on invoices
         #   @option params [String, nil] :netsuite_sales_order_id This field's availability is dependent on your client's configuration.
-        #   @option params [Symbol, RateType, nil] :rate_type
+        #   @option params [Symbol, Metronome::Models::Customers::CommitCreateParams::RateType, nil] :rate_type
         #   @option params [String, nil] :salesforce_opportunity_id This field's availability is dependent on your client's configuration.
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
-        # @return [Metronome::Models::CommitCreateResponse]
+        # @return [Metronome::Models::Customers::CommitCreateResponse]
         def create(params = {}, opts = {})
           req = {
             method: :post,
             path: "/contracts/customerCommits/create",
             headers: {"Content-Type" => "application/json"},
             body: params,
-            model: Metronome::Models::CommitCreateResponse
+            model: Metronome::Models::Customers::CommitCreateResponse
           }
           @client.request(req, opts)
         end
@@ -69,14 +69,14 @@ module Metronome
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
-        # @return [Metronome::Models::CommitListResponse]
+        # @return [Metronome::Models::Customers::CommitListResponse]
         def list(params = {}, opts = {})
           req = {
             method: :post,
             path: "/contracts/customerCommits/list",
             headers: {"Content-Type" => "application/json"},
             body: params,
-            model: Metronome::Models::CommitListResponse
+            model: Metronome::Models::Customers::CommitListResponse
           }
           @client.request(req, opts)
         end
@@ -94,14 +94,14 @@ module Metronome
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
-        # @return [Metronome::Models::CommitUpdateEndDateResponse]
+        # @return [Metronome::Models::Customers::CommitUpdateEndDateResponse]
         def update_end_date(params = {}, opts = {})
           req = {
             method: :post,
             path: "/contracts/customerCommits/updateEndDate",
             headers: {"Content-Type" => "application/json"},
             body: params,
-            model: Metronome::Models::CommitUpdateEndDateResponse
+            model: Metronome::Models::Customers::CommitUpdateEndDateResponse
           }
           @client.request(req, opts)
         end

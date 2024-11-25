@@ -12,7 +12,7 @@ module Metronome
         # Create a new credit at the customer level.
         #
         # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-        #   @option params [AccessSchedule] :access_schedule Schedule for distributing the credit to the customer.
+        #   @option params [Metronome::Models::Customers::CreditCreateParams::AccessSchedule] :access_schedule Schedule for distributing the credit to the customer.
         #   @option params [String] :customer_id
         #   @option params [Float] :priority If multiple credits or commits are applicable, the one with the lower priority
         #     will apply first.
@@ -27,19 +27,19 @@ module Metronome
         #   @option params [String, nil] :description Used only in UI/API. It is not exposed to end customers.
         #   @option params [String, nil] :name displayed on invoices
         #   @option params [String, nil] :netsuite_sales_order_id This field's availability is dependent on your client's configuration.
-        #   @option params [Symbol, RateType, nil] :rate_type
+        #   @option params [Symbol, Metronome::Models::Customers::CreditCreateParams::RateType, nil] :rate_type
         #   @option params [String, nil] :salesforce_opportunity_id This field's availability is dependent on your client's configuration.
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
-        # @return [Metronome::Models::CreditCreateResponse]
+        # @return [Metronome::Models::Customers::CreditCreateResponse]
         def create(params = {}, opts = {})
           req = {
             method: :post,
             path: "/contracts/customerCredits/create",
             headers: {"Content-Type" => "application/json"},
             body: params,
-            model: Metronome::Models::CreditCreateResponse
+            model: Metronome::Models::Customers::CreditCreateResponse
           }
           @client.request(req, opts)
         end
@@ -60,14 +60,14 @@ module Metronome
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
-        # @return [Metronome::Models::CreditListResponse]
+        # @return [Metronome::Models::Customers::CreditListResponse]
         def list(params = {}, opts = {})
           req = {
             method: :post,
             path: "/contracts/customerCredits/list",
             headers: {"Content-Type" => "application/json"},
             body: params,
-            model: Metronome::Models::CreditListResponse
+            model: Metronome::Models::Customers::CreditListResponse
           }
           @client.request(req, opts)
         end
@@ -82,14 +82,14 @@ module Metronome
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
-        # @return [Metronome::Models::CreditUpdateEndDateResponse]
+        # @return [Metronome::Models::Customers::CreditUpdateEndDateResponse]
         def update_end_date(params = {}, opts = {})
           req = {
             method: :post,
             path: "/contracts/customerCredits/updateEndDate",
             headers: {"Content-Type" => "application/json"},
             body: params,
-            model: Metronome::Models::CreditUpdateEndDateResponse
+            model: Metronome::Models::Customers::CreditUpdateEndDateResponse
           }
           @client.request(req, opts)
         end

@@ -13,9 +13,9 @@ module Metronome
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :customer_id the Metronome ID of the customer
       #   @option params [Time] :expires_at The credit grant will only apply to usage or charges dated before this timestamp
-      #   @option params [GrantAmount] :grant_amount the amount of credits granted
+      #   @option params [Metronome::Models::CreditGrantCreateParams::GrantAmount] :grant_amount the amount of credits granted
       #   @option params [String] :name the name of the credit grant as it will appear on invoices
-      #   @option params [PaidAmount] :paid_amount the amount paid for this credit grant
+      #   @option params [Metronome::Models::CreditGrantCreateParams::PaidAmount] :paid_amount the amount paid for this credit grant
       #   @option params [Float] :priority
       #   @option params [String, nil] :credit_grant_type
       #   @option params [Hash, nil] :custom_fields Custom fields to attach to the credit grant.
@@ -27,7 +27,7 @@ module Metronome
       #     specified here will be used to determine the order in which credits will be
       #     applied to invoice line items
       #   @option params [String, nil] :reason
-      #   @option params [RolloverSettings, nil] :rollover_settings Configure a rollover for this credit grant so if it expires it rolls over a
+      #   @option params [Metronome::Models::CreditGrantCreateParams::RolloverSettings, nil] :rollover_settings Configure a rollover for this credit grant so if it expires it rolls over a
       #     configured amount to a new credit grant. This feature is currently opt-in only.
       #     Contact Metronome to be added to the beta.
       #   @option params [String, nil] :uniqueness_key Prevents the creation of duplicates. If a request to create a record is made

@@ -22,14 +22,14 @@ module Metronome
           #
           # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
           #
-          # @return [Metronome::Models::NamedScheduleRetrieveResponse]
+          # @return [Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse]
           def retrieve(params = {}, opts = {})
             req = {
               method: :post,
               path: "/contracts/getNamedSchedule",
               headers: {"Content-Type" => "application/json"},
               body: params,
-              model: Metronome::Models::NamedScheduleRetrieveResponse
+              model: Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse
             }
             @client.request(req, opts)
           end
