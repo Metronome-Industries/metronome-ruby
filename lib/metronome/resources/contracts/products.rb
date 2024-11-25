@@ -13,7 +13,7 @@ module Metronome
         #
         # @param params [Hash{Symbol => Object}] Attributes to send in this request.
         #   @option params [String] :name displayed on invoices
-        #   @option params [Symbol, Type] :type
+        #   @option params [Symbol, Metronome::Models::Contracts::ProductCreateParams::Type] :type
         #   @option params [String, nil] :billable_metric_id Required for USAGE products
         #   @option params [Array<String>, nil] :composite_product_ids Required for COMPOSITE products
         #   @option params [Array<String>, nil] :composite_tags Required for COMPOSITE products
@@ -30,14 +30,14 @@ module Metronome
         #     each pricing_group_key value, as opposed to the product as a whole. The superset
         #     of values in the pricing group key and presentation group key must be set as one
         #     compound group key on the billable metric.
-        #   @option params [Metronome::Models::QuantityConversion, nil] :quantity_conversion Optional. Only valid for USAGE products. If provided, the quantity will be
+        #   @option params [Metronome::Models::Contracts::QuantityConversion, nil] :quantity_conversion Optional. Only valid for USAGE products. If provided, the quantity will be
         #     converted using the provided conversion factor and operation. For example, if
         #     the operation is "multiply" and the conversion factor is 100, then the quantity
         #     will be multiplied by 100. This can be used in cases where data is sent in one
         #     unit and priced in another. For example, data could be sent in MB and priced in
         #     GB. In this case, the conversion factor would be 1024 and the operation would be
         #     "divide".
-        #   @option params [Metronome::Models::QuantityRounding, nil] :quantity_rounding Optional. Only valid for USAGE products. If provided, the quantity will be
+        #   @option params [Metronome::Models::Contracts::QuantityRounding, nil] :quantity_rounding Optional. Only valid for USAGE products. If provided, the quantity will be
         #     rounded using the provided rounding method and decimal places. For example, if
         #     the method is "round up" and the decimal places is 0, then the quantity will be
         #     rounded up to the nearest integer.
@@ -45,14 +45,14 @@ module Metronome
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
-        # @return [Metronome::Models::ProductCreateResponse]
+        # @return [Metronome::Models::Contracts::ProductCreateResponse]
         def create(params = {}, opts = {})
           req = {
             method: :post,
             path: "/contract-pricing/products/create",
             headers: {"Content-Type" => "application/json"},
             body: params,
-            model: Metronome::Models::ProductCreateResponse
+            model: Metronome::Models::Contracts::ProductCreateResponse
           }
           @client.request(req, opts)
         end
@@ -64,14 +64,14 @@ module Metronome
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
-        # @return [Metronome::Models::ProductRetrieveResponse]
+        # @return [Metronome::Models::Contracts::ProductRetrieveResponse]
         def retrieve(params = {}, opts = {})
           req = {
             method: :post,
             path: "/contract-pricing/products/get",
             headers: {"Content-Type" => "application/json"},
             body: params,
-            model: Metronome::Models::ProductRetrieveResponse
+            model: Metronome::Models::Contracts::ProductRetrieveResponse
           }
           @client.request(req, opts)
         end
@@ -105,14 +105,14 @@ module Metronome
         #     each pricing_group_key value, as opposed to the product as a whole. The superset
         #     of values in the pricing group key and presentation group key must be set as one
         #     compound group key on the billable metric.
-        #   @option params [Metronome::Models::QuantityConversion, nil] :quantity_conversion Optional. Only valid for USAGE products. If provided, the quantity will be
+        #   @option params [Metronome::Models::Contracts::QuantityConversion, nil] :quantity_conversion Optional. Only valid for USAGE products. If provided, the quantity will be
         #     converted using the provided conversion factor and operation. For example, if
         #     the operation is "multiply" and the conversion factor is 100, then the quantity
         #     will be multiplied by 100. This can be used in cases where data is sent in one
         #     unit and priced in another. For example, data could be sent in MB and priced in
         #     GB. In this case, the conversion factor would be 1024 and the operation would be
         #     "divide".
-        #   @option params [Metronome::Models::QuantityRounding, nil] :quantity_rounding Optional. Only valid for USAGE products. If provided, the quantity will be
+        #   @option params [Metronome::Models::Contracts::QuantityRounding, nil] :quantity_rounding Optional. Only valid for USAGE products. If provided, the quantity will be
         #     rounded using the provided rounding method and decimal places. For example, if
         #     the method is "round up" and the decimal places is 0, then the quantity will be
         #     rounded up to the nearest integer.
@@ -120,14 +120,14 @@ module Metronome
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
-        # @return [Metronome::Models::ProductUpdateResponse]
+        # @return [Metronome::Models::Contracts::ProductUpdateResponse]
         def update(params = {}, opts = {})
           req = {
             method: :post,
             path: "/contract-pricing/products/update",
             headers: {"Content-Type" => "application/json"},
             body: params,
-            model: Metronome::Models::ProductUpdateResponse
+            model: Metronome::Models::Contracts::ProductUpdateResponse
           }
           @client.request(req, opts)
         end
@@ -137,11 +137,11 @@ module Metronome
         # @param params [Hash{Symbol => Object}] Attributes to send in this request.
         #   @option params [Integer, nil] :limit Query param: Max number of results that should be returned
         #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
-        #   @option params [Symbol, ArchiveFilter, nil] :archive_filter Body param: Filter options for the product list
+        #   @option params [Symbol, Metronome::Models::Contracts::ProductListParams::ArchiveFilter, nil] :archive_filter Body param: Filter options for the product list
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
-        # @return [Metronome::CursorPage<Metronome::Models::ProductListResponse>]
+        # @return [Metronome::CursorPage<Metronome::Models::Contracts::ProductListResponse>]
         def list(params = {}, opts = {})
           query_params = [:limit, :next_page]
           req = {
@@ -151,7 +151,7 @@ module Metronome
             headers: {"Content-Type" => "application/json"},
             body: params.except(*query_params),
             page: Metronome::CursorPage,
-            model: Metronome::Models::ProductListResponse
+            model: Metronome::Models::Contracts::ProductListResponse
           }
           @client.request(req, opts)
         end
@@ -163,14 +163,14 @@ module Metronome
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
-        # @return [Metronome::Models::ProductArchiveResponse]
+        # @return [Metronome::Models::Contracts::ProductArchiveResponse]
         def archive(params = {}, opts = {})
           req = {
             method: :post,
             path: "/contract-pricing/products/archive",
             headers: {"Content-Type" => "application/json"},
             body: params,
-            model: Metronome::Models::ProductArchiveResponse
+            model: Metronome::Models::Contracts::ProductArchiveResponse
           }
           @client.request(req, opts)
         end

@@ -25,7 +25,7 @@ class Metronome::Test::Resources::Customers::PlansTest < Minitest::Test
         starting_on: "2021-02-01T00:00:00Z"
       }
     )
-    assert_kind_of(Metronome::Models::PlanAddResponse, response)
+    assert_kind_of(Metronome::Models::Customers::PlanAddResponse, response)
   end
 
   def test_end__required_params
@@ -35,7 +35,7 @@ class Metronome::Test::Resources::Customers::PlansTest < Minitest::Test
         customer_plan_id: "7aa11640-0703-4600-8eb9-293f535a6b74"
       }
     )
-    assert_kind_of(Metronome::Models::PlanEndResponse, response)
+    assert_kind_of(Metronome::Models::Customers::PlanEndResponse, response)
   end
 
   def test_list_price_adjustments_required_params

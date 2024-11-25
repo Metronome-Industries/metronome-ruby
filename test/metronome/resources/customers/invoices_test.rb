@@ -19,7 +19,7 @@ class Metronome::Test::Resources::Customers::InvoicesTest < Minitest::Test
         invoice_id: "6a37bb88-8538-48c5-b37b-a41c836328bd"
       }
     )
-    assert_kind_of(Metronome::Models::InvoiceRetrieveResponse, response)
+    assert_kind_of(Metronome::Models::Customers::InvoiceRetrieveResponse, response)
   end
 
   def test_list_required_params
@@ -39,7 +39,7 @@ class Metronome::Test::Resources::Customers::InvoicesTest < Minitest::Test
         quantity: 1
       }
     )
-    assert_kind_of(Metronome::Models::InvoiceAddChargeResponse, response)
+    assert_kind_of(Metronome::Models::Customers::InvoiceAddChargeResponse, response)
   end
 
   def test_list_breakdowns_required_params

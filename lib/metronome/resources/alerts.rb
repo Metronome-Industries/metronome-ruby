@@ -11,7 +11,7 @@ module Metronome
       # Create a new alert
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [Symbol, AlertType] :alert_type Type of the alert
+      #   @option params [Symbol, Metronome::Models::AlertCreateParams::AlertType] :alert_type Type of the alert
       #   @option params [String] :name Name of the alert
       #   @option params [Float] :threshold Threshold value of the alert policy. Depending upon the alert type, this number
       #     may represent a financial amount, the days remaining, or a percentage reached.
@@ -21,7 +21,7 @@ module Metronome
       #     applies to, by looking at the credit_grant_type field on the credit grant. This
       #     field is only defined for CreditPercentage and CreditBalance alerts
       #   @option params [String, nil] :credit_type_id
-      #   @option params [Array<CustomFieldFilter>, nil] :custom_field_filters Only present for beta contract invoices. This field's availability is dependent
+      #   @option params [Array<Metronome::Models::AlertCreateParams::CustomFieldFilter>, nil] :custom_field_filters Only present for beta contract invoices. This field's availability is dependent
       #     on your client's configuration. A list of custom field filters for alert types
       #     that support advanced filtering
       #   @option params [String, nil] :customer_id If provided, will create this alert for this specific customer. To create an
@@ -29,7 +29,7 @@ module Metronome
       #   @option params [Boolean, nil] :evaluate_on_create If true, the alert will evaluate immediately on customers that already meet the
       #     alert threshold. If false, it will only evaluate on future customers that
       #     trigger the alert threshold. Defaults to true.
-      #   @option params [GroupKeyFilter, nil] :group_key_filter Scopes alert evaluation to a specific presentation group key on individual line
+      #   @option params [Metronome::Models::AlertCreateParams::GroupKeyFilter, nil] :group_key_filter Scopes alert evaluation to a specific presentation group key on individual line
       #     items. Only present for spend alerts.
       #   @option params [Array<String>, nil] :invoice_types_filter Only supported for invoice_total_reached alerts. A list of invoice types to
       #     evaluate.

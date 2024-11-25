@@ -20,7 +20,7 @@ class Metronome::Test::Resources::Contracts::RateCards::NamedSchedulesTest < Min
         schedule_name: "my-schedule"
       }
     )
-    assert_kind_of(Metronome::Models::NamedScheduleRetrieveResponse, response)
+    assert_kind_of(Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse, response)
   end
 
   def test_update_required_params

@@ -17,13 +17,13 @@ module Metronome
           #   @option params [String] :rate_card_id Body param: ID of the rate card to get the schedule for
           #   @option params [Integer, nil] :limit Query param: Max number of results that should be returned
           #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
-          #   @option params [Array<Selector>, nil] :selectors Body param: List of rate selectors, rates matching ANY of the selector will be
+          #   @option params [Array<Metronome::Models::Contracts::RateCards::RateListParams::Selector>, nil] :selectors Body param: List of rate selectors, rates matching ANY of the selector will be
           #     included in the response Passing no selectors will result in all rates being
           #     returned.
           #
           # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
           #
-          # @return [Metronome::CursorPage<Metronome::Models::RateListResponse>]
+          # @return [Metronome::CursorPage<Metronome::Models::Contracts::RateCards::RateListResponse>]
           def list(params = {}, opts = {})
             query_params = [:limit, :next_page]
             req = {
@@ -33,7 +33,7 @@ module Metronome
               headers: {"Content-Type" => "application/json"},
               body: params.except(*query_params),
               page: Metronome::CursorPage,
-              model: Metronome::Models::RateListResponse
+              model: Metronome::Models::Contracts::RateCards::RateListResponse
             }
             @client.request(req, opts)
           end
@@ -44,9 +44,9 @@ module Metronome
           #   @option params [Boolean] :entitled
           #   @option params [String] :product_id ID of the product to add a rate for
           #   @option params [String] :rate_card_id ID of the rate card to update
-          #   @option params [Symbol, RateType] :rate_type
+          #   @option params [Symbol, Metronome::Models::Contracts::RateCards::RateAddParams::RateType] :rate_type
           #   @option params [Time] :starting_at inclusive effective date
-          #   @option params [CommitRate, nil] :commit_rate A distinct rate on the rate card. You can choose to use this rate rather than
+          #   @option params [Metronome::Models::Contracts::RateCards::RateAddParams::CommitRate, nil] :commit_rate A distinct rate on the rate card. You can choose to use this rate rather than
           #     list rate when consuming a credit or commit. This feature requires opt-in before
           #     it can be used. Please contact Metronome support to enable this feature.
           #   @option params [String, nil] :credit_type_id The Metronome ID of the credit type to associate with price, defaults to USD
@@ -69,14 +69,14 @@ module Metronome
           #
           # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
           #
-          # @return [Metronome::Models::RateAddResponse]
+          # @return [Metronome::Models::Contracts::RateCards::RateAddResponse]
           def add(params = {}, opts = {})
             req = {
               method: :post,
               path: "/contract-pricing/rate-cards/addRate",
               headers: {"Content-Type" => "application/json"},
               body: params,
-              model: Metronome::Models::RateAddResponse
+              model: Metronome::Models::Contracts::RateCards::RateAddResponse
             }
             @client.request(req, opts)
           end
@@ -85,18 +85,18 @@ module Metronome
           #
           # @param params [Hash{Symbol => Object}] Attributes to send in this request.
           #   @option params [String] :rate_card_id
-          #   @option params [Array<Rate>] :rates
+          #   @option params [Array<Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate>] :rates
           #
           # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
           #
-          # @return [Metronome::Models::RateAddManyResponse]
+          # @return [Metronome::Models::Contracts::RateCards::RateAddManyResponse]
           def add_many(params = {}, opts = {})
             req = {
               method: :post,
               path: "/contract-pricing/rate-cards/addRates",
               headers: {"Content-Type" => "application/json"},
               body: params,
-              model: Metronome::Models::RateAddManyResponse
+              model: Metronome::Models::Contracts::RateCards::RateAddManyResponse
             }
             @client.request(req, opts)
           end

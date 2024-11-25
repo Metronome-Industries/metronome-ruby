@@ -16,7 +16,7 @@ class Metronome::Test::Resources::Customers::NamedSchedulesTest < Minitest::Test
     response = @metronome.customers.named_schedules.retrieve(
       {customer_id: "9b85c1c1-5238-4f2a-a409-61412905e1e1", schedule_name: "my-schedule"}
     )
-    assert_kind_of(Metronome::Models::NamedScheduleRetrieveResponse, response)
+    assert_kind_of(Metronome::Models::Customers::NamedScheduleRetrieveResponse, response)
   end
 
   def test_update_required_params

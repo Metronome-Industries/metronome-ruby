@@ -19,7 +19,7 @@ module Metronome
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
-        # @return [Metronome::Models::InvoiceRetrieveResponse]
+        # @return [Metronome::Models::Customers::InvoiceRetrieveResponse]
         def retrieve(params = {}, opts = {})
           customer_id = params.fetch(:customer_id) do
             raise ArgumentError, "missing required path argument :customer_id"
@@ -31,7 +31,7 @@ module Metronome
             method: :get,
             path: "/customers/#{customer_id}/invoices/#{invoice_id}",
             query: params.except(:customer_id, :invoice_id),
-            model: Metronome::Models::InvoiceRetrieveResponse
+            model: Metronome::Models::Customers::InvoiceRetrieveResponse
           }
           @client.request(req, opts)
         end
@@ -48,7 +48,7 @@ module Metronome
         #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
         #   @option params [Boolean, nil] :skip_zero_qty_line_items Query param: If set, all zero quantity line items will be filtered out of the
         #     response
-        #   @option params [Symbol, Sort, nil] :sort Query param: Invoice sort order by issued_at, e.g. date_asc or date_desc.
+        #   @option params [Symbol, Metronome::Models::Customers::InvoiceListParams::Sort, nil] :sort Query param: Invoice sort order by issued_at, e.g. date_asc or date_desc.
         #     Defaults to date_asc.
         #   @option params [Time, nil] :starting_on Query param: RFC 3339 timestamp (inclusive). Invoices will only be returned for
         #     billing periods that start at or after this time.
@@ -56,7 +56,7 @@ module Metronome
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
-        # @return [Metronome::CursorPage<Metronome::Models::Invoice>]
+        # @return [Metronome::CursorPage<Metronome::Models::Customers::Invoice>]
         def list(params = {}, opts = {})
           customer_id = params.fetch(:customer_id) do
             raise ArgumentError, "missing required path argument :customer_id"
@@ -66,7 +66,7 @@ module Metronome
             path: "/customers/#{customer_id}/invoices",
             query: params.except(:customer_id),
             page: Metronome::CursorPage,
-            model: Metronome::Models::Invoice
+            model: Metronome::Models::Customers::Invoice
           }
           @client.request(req, opts)
         end
@@ -87,7 +87,7 @@ module Metronome
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
-        # @return [Metronome::Models::InvoiceAddChargeResponse]
+        # @return [Metronome::Models::Customers::InvoiceAddChargeResponse]
         def add_charge(params = {}, opts = {})
           customer_id = params.fetch(:customer_id) do
             raise ArgumentError, "missing required path argument :customer_id"
@@ -97,7 +97,7 @@ module Metronome
             path: "/customers/#{customer_id}/addCharge",
             headers: {"Content-Type" => "application/json"},
             body: params.except(:customer_id),
-            model: Metronome::Models::InvoiceAddChargeResponse
+            model: Metronome::Models::Customers::InvoiceAddChargeResponse
           }
           @client.request(req, opts)
         end
@@ -119,14 +119,14 @@ module Metronome
         #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
         #   @option params [Boolean, nil] :skip_zero_qty_line_items Query param: If set, all zero quantity line items will be filtered out of the
         #     response
-        #   @option params [Symbol, Sort, nil] :sort Query param: Invoice sort order by issued_at, e.g. date_asc or date_desc.
+        #   @option params [Symbol, Metronome::Models::Customers::InvoiceListBreakdownsParams::Sort, nil] :sort Query param: Invoice sort order by issued_at, e.g. date_asc or date_desc.
         #     Defaults to date_asc.
         #   @option params [String, nil] :status Query param: Invoice status, e.g. DRAFT or FINALIZED
-        #   @option params [Symbol, WindowSize, nil] :window_size Query param: The granularity of the breakdowns to return. Defaults to day.
+        #   @option params [Symbol, Metronome::Models::Customers::InvoiceListBreakdownsParams::WindowSize, nil] :window_size Query param: The granularity of the breakdowns to return. Defaults to day.
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
-        # @return [Metronome::CursorPage<Metronome::Models::InvoiceListBreakdownsResponse>]
+        # @return [Metronome::CursorPage<Metronome::Models::Customers::InvoiceListBreakdownsResponse>]
         def list_breakdowns(params = {}, opts = {})
           customer_id = params.fetch(:customer_id) do
             raise ArgumentError, "missing required path argument :customer_id"
@@ -136,7 +136,7 @@ module Metronome
             path: "/customers/#{customer_id}/invoices/breakdowns",
             query: params.except(:customer_id),
             page: Metronome::CursorPage,
-            model: Metronome::Models::InvoiceListBreakdownsResponse
+            model: Metronome::Models::Customers::InvoiceListBreakdownsResponse
           }
           @client.request(req, opts)
         end

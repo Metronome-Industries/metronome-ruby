@@ -40,7 +40,7 @@ module Metronome
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name This will be truncated to 160 characters if the provided name is longer.
-      #   @option params [BillingConfig, nil] :billing_config
+      #   @option params [Metronome::Models::CustomerCreateParams::BillingConfig, nil] :billing_config
       #   @option params [Hash, nil] :custom_fields
       #   @option params [String, nil] :external_id (deprecated, use ingest_aliases instead) an alias that can be used to refer to
       #     this customer in usage events

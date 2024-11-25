@@ -25,7 +25,7 @@ class Metronome::Test::Resources::Contracts::RateCards::ProductOrdersTest < Mini
         rate_card_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc"
       }
     )
-    assert_kind_of(Metronome::Models::ProductOrderUpdateResponse, response)
+    assert_kind_of(Metronome::Models::Contracts::RateCards::ProductOrderUpdateResponse, response)
   end
 
   def test_set_required_params
@@ -35,6 +35,6 @@ class Metronome::Test::Resources::Contracts::RateCards::ProductOrdersTest < Mini
         rate_card_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc"
       }
     )
-    assert_kind_of(Metronome::Models::ProductOrderSetResponse, response)
+    assert_kind_of(Metronome::Models::Contracts::RateCards::ProductOrderSetResponse, response)
   end
 end

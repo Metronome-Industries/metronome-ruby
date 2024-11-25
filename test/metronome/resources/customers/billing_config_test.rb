@@ -27,7 +27,7 @@ class Metronome::Test::Resources::Customers::BillingConfigTest < Minitest::Test
     response = @metronome.customers.billing_config.retrieve(
       {customer_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc", billing_provider_type: "aws_marketplace"}
     )
-    assert_kind_of(Metronome::Models::BillingConfigRetrieveResponse, response)
+    assert_kind_of(Metronome::Models::Customers::BillingConfigRetrieveResponse, response)
   end
 
   def test_delete_required_params
