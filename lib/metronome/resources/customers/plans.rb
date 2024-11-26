@@ -34,7 +34,7 @@ module Metronome
         end
 
         # Associate an existing customer with a plan for a specified date range. See the
-        #   [price adjustments documentation](https://docs.metronome.com/pricing/managing-plans/#price-adjustments)
+        #   [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments)
         #   for details on the price adjustments.
         #
         # @param params [Hash{Symbol => Object}] Attributes to send in this request.
@@ -50,7 +50,7 @@ module Metronome
         #     original plan configuration. These new rates will apply to all pricing ramps.
         #   @option params [Array<Metronome::Models::Customers::PlanAddParams::PriceAdjustment>, nil] :price_adjustments Body param: A list of price adjustments can be applied on top of the pricing in
         #     the plans. See the
-        #     [price adjustments documentation](https://docs.metronome.com/pricing/managing-plans/#price-adjustments)
+        #     [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments)
         #     for details.
         #   @option params [Metronome::Models::Customers::PlanAddParams::TrialSpec, nil] :trial_spec Body param: A custom trial can be set for the customer's plan. See the
         #     [trial configuration documentation](https://docs.metronome.com/provisioning/configure-trials/)
@@ -109,7 +109,7 @@ module Metronome
         end
 
         # Lists a customer plans adjustments. See the
-        #   [price adjustments documentation](https://docs.metronome.com/pricing/managing-plans/#price-adjustments)
+        #   [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments)
         #   for details.
         #
         # @param params [Hash{Symbol => Object}] Attributes to send in this request.

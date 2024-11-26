@@ -29,6 +29,11 @@ module Metronome
         #   @return [Metronome::Models::ContractWithoutAmendments]
         required :initial, -> { Metronome::Models::ContractWithoutAmendments }
 
+        # @!attribute [rw] archived_at
+        #   RFC 3339 timestamp indicating when the contract was archived. If not returned, the contract is not archived.
+        #   @return [Time]
+        optional :archived_at, Time
+
         # @!attribute [rw] custom_fields
         #   @return [Hash]
         optional :custom_fields, Hash
@@ -252,6 +257,8 @@ module Metronome
         #   #   @option data [Object] :current
         #   #   @option data [String] :customer_id
         #   #   @option data [Object] :initial
+        #   #   @option data [String, nil] :archived_at RFC 3339 timestamp indicating when the contract was archived. If not returned,
+        #   #     the contract is not archived.
         #   #   @option data [Hash, nil] :custom_fields
         #   #   @option data [Object, nil] :customer_billing_provider_configuration The billing provider configuration associated with a contract.
         #   #   @option data [String, nil] :uniqueness_key Prevents the creation of duplicates. If a request to create a record is made
