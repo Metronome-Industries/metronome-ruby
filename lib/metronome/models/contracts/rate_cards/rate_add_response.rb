@@ -18,7 +18,7 @@ module Metronome
                      }
 
             # @!attribute [rw] commit_rate
-            #   A distinct rate on the rate card. You can choose to use this rate rather than list rate when consuming a credit or commit. This feature requires opt-in before it can be used. Please contact Metronome support to enable this feature.
+            #   A distinct rate on the rate card. You can choose to use this rate rather than list rate when consuming a credit or commit.
             #   @return [Metronome::Models::Contracts::RateCards::RateAddResponse::Data::CommitRate]
             optional :commit_rate,
                      -> {
@@ -124,8 +124,7 @@ module Metronome
             #   # @param data [Hash{Symbol => Object}] .
             #   #   @option data [String] :rate_type
             #   #   @option data [Object, nil] :commit_rate A distinct rate on the rate card. You can choose to use this rate rather than
-            #   #     list rate when consuming a credit or commit. This feature requires opt-in before
-            #   #     it can be used. Please contact Metronome support to enable this feature.
+            #   #     list rate when consuming a credit or commit.
             #   #   @option data [Object, nil] :credit_type
             #   #   @option data [Hash, nil] :custom_rate Only set for CUSTOM rate_type. This field is interpreted by custom rate
             #   #     processors.

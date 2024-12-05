@@ -47,8 +47,7 @@ module Metronome
           #   @option params [Symbol, Metronome::Models::Contracts::RateCards::RateAddParams::RateType] :rate_type
           #   @option params [Time] :starting_at inclusive effective date
           #   @option params [Metronome::Models::Contracts::RateCards::RateAddParams::CommitRate, nil] :commit_rate A distinct rate on the rate card. You can choose to use this rate rather than
-          #     list rate when consuming a credit or commit. This feature requires opt-in before
-          #     it can be used. Please contact Metronome support to enable this feature.
+          #     list rate when consuming a credit or commit.
           #   @option params [String, nil] :credit_type_id The Metronome ID of the credit type to associate with price, defaults to USD
           #     (cents) if not passed. Used by all rate_types except type PERCENTAGE. PERCENTAGE
           #     rates use the credit type of associated rates.
