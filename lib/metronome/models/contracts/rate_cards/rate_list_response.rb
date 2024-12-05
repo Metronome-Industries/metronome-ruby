@@ -30,7 +30,7 @@ module Metronome
           required :starting_at, Time
 
           # @!attribute [rw] commit_rate
-          #   A distinct rate on the rate card. You can choose to use this rate rather than list rate when consuming a credit or commit. This feature requires opt-in before it can be used. Please contact Metronome support to enable this feature.
+          #   A distinct rate on the rate card. You can choose to use this rate rather than list rate when consuming a credit or commit.
           #   @return [Metronome::Models::Contracts::RateCards::RateListResponse::CommitRate]
           optional :commit_rate, -> { Metronome::Models::Contracts::RateCards::RateListResponse::CommitRate }
 
@@ -94,8 +94,7 @@ module Metronome
           #   #   @option data [Object] :rate
           #   #   @option data [String] :starting_at
           #   #   @option data [Object, nil] :commit_rate A distinct rate on the rate card. You can choose to use this rate rather than
-          #   #     list rate when consuming a credit or commit. This feature requires opt-in before
-          #   #     it can be used. Please contact Metronome support to enable this feature.
+          #   #     list rate when consuming a credit or commit.
           #   #   @option data [String, nil] :ending_before
           #   #   @option data [Hash, nil] :pricing_group_values
           #   def initialize(data = {}) = super
