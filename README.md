@@ -49,12 +49,12 @@ metronome.usage.ingest
 
 When the library is unable to connect to the API, or if the API returns a
 non-success status code (i.e., 4xx or 5xx response), a subclass of
-`Metronome::HTTP::Error` will be thrown:
+`Metronome::Error` will be thrown:
 
 ```ruby
 begin
   contract = metronome.contracts.create
-rescue Metronome::HTTP::Error => e
+rescue Metronome::Error => e
   puts(e.code) # 400
 end
 ```
