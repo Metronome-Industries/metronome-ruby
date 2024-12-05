@@ -76,7 +76,7 @@ module Metronome
       base_url ||= "https://api.metronome.com/v1"
 
       if bearer_token.nil?
-        raise ArgumentError, "bearer_token is required"
+        raise ArgumentError.new("bearer_token is required")
       end
 
       @bearer_token = bearer_token.to_s
@@ -101,30 +101,6 @@ module Metronome
       @services = Metronome::Resources::Services.new(client: self)
       @invoices = Metronome::Resources::Invoices.new(client: self)
       @contracts = Metronome::Resources::Contracts.new(client: self)
-    end
-
-    # @!visibility private
-    private def make_status_error(message:, body:, response:)
-      case response.code.to_i
-      in 400
-        Metronome::HTTP::BadRequestError.new(message: message, response: response, body: body)
-      in 401
-        Metronome::HTTP::AuthenticationError.new(message: message, response: response, body: body)
-      in 403
-        Metronome::HTTP::PermissionDeniedError.new(message: message, response: response, body: body)
-      in 404
-        Metronome::HTTP::NotFoundError.new(message: message, response: response, body: body)
-      in 409
-        Metronome::HTTP::ConflictError.new(message: message, response: response, body: body)
-      in 422
-        Metronome::HTTP::UnprocessableEntityError.new(message: message, response: response, body: body)
-      in 429
-        Metronome::HTTP::RateLimitError.new(message: message, response: response, body: body)
-      in 500..599
-        Metronome::HTTP::InternalServerError.new(message: message, response: response, body: body)
-      else
-        Metronome::HTTP::APIStatusError.new(message: message, response: response, body: body)
-      end
     end
   end
 end
