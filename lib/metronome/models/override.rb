@@ -32,7 +32,7 @@ module Metronome
       optional :is_commit_specific, Metronome::BooleanModel
 
       # @!attribute [rw] is_prorated
-      #   Default proration configuration. Only valid for SUBSCRIPTION rate_type.
+      #   Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be set to true.
       #   @return [Boolean]
       optional :is_prorated, Metronome::BooleanModel
 
@@ -159,7 +159,7 @@ module Metronome
         optional :custom_rate, Hash
 
         # @!attribute [rw] is_prorated
-        #   Default proration configuration. Only valid for SUBSCRIPTION rate_type.
+        #   Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be set to true.
         #   @return [Boolean]
         optional :is_prorated, Metronome::BooleanModel
 
@@ -194,7 +194,8 @@ module Metronome
         #   #   @option data [Object, nil] :credit_type
         #   #   @option data [Hash, nil] :custom_rate Only set for CUSTOM rate_type. This field is interpreted by custom rate
         #   #     processors.
-        #   #   @option data [Hash, nil] :is_prorated Default proration configuration. Only valid for SUBSCRIPTION rate_type.
+        #   #   @option data [Hash, nil] :is_prorated Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
+        #   #     set to true.
         #   #   @option data [Float, nil] :price Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
         #   #     this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
         #   #   @option data [Float, nil] :quantity Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
@@ -250,7 +251,8 @@ module Metronome
       #   #   @option data [String, nil] :ending_before
       #   #   @option data [Hash, nil] :entitled
       #   #   @option data [Hash, nil] :is_commit_specific
-      #   #   @option data [Hash, nil] :is_prorated Default proration configuration. Only valid for SUBSCRIPTION rate_type.
+      #   #   @option data [Hash, nil] :is_prorated Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
+      #   #     set to true.
       #   #   @option data [Float, nil] :multiplier
       #   #   @option data [Array<Object>, nil] :override_specifiers
       #   #   @option data [Array<Object>, nil] :override_tiers

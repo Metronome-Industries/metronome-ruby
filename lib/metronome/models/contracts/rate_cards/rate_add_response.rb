@@ -35,7 +35,7 @@ module Metronome
             optional :custom_rate, Hash
 
             # @!attribute [rw] is_prorated
-            #   Default proration configuration. Only valid for SUBSCRIPTION rate_type.
+            #   Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be set to true.
             #   @return [Boolean]
             optional :is_prorated, Metronome::BooleanModel
 
@@ -128,7 +128,8 @@ module Metronome
             #   #   @option data [Object, nil] :credit_type
             #   #   @option data [Hash, nil] :custom_rate Only set for CUSTOM rate_type. This field is interpreted by custom rate
             #   #     processors.
-            #   #   @option data [Hash, nil] :is_prorated Default proration configuration. Only valid for SUBSCRIPTION rate_type.
+            #   #   @option data [Hash, nil] :is_prorated Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
+            #   #     set to true.
             #   #   @option data [Float, nil] :price Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
             #   #     this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
             #   #   @option data [Hash, nil] :pricing_group_values if pricing groups are used, this will contain the values used to calculate the
