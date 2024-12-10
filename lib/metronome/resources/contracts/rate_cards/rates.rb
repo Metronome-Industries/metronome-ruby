@@ -54,7 +54,8 @@ module Metronome
           #   @option params [Hash, nil] :custom_rate Only set for CUSTOM rate_type. This field is interpreted by custom rate
           #     processors.
           #   @option params [Time, nil] :ending_before exclusive end date
-          #   @option params [Boolean, nil] :is_prorated Default proration configuration. Only valid for SUBSCRIPTION rate_type.
+          #   @option params [Boolean, nil] :is_prorated Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
+          #     set to true.
           #   @option params [Float, nil] :price Default price. For FLAT and SUBSCRIPTION rate_type, this must be >=0. For
           #     PERCENTAGE rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this
           #     must be >=0 and <=1.
