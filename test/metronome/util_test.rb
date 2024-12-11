@@ -90,11 +90,10 @@ class Metronome::Test::UtilTest < Minitest::Test
       https://example.com/
       https://example.com:443/example?e1=e1&e2=e2&e=
     ].each do |url|
-      uri = URI.parse(url)
-      parsed = Metronome::Util.parse_uri(uri)
-      unparsed = Metronome::Util.unparse_uri(parsed)
+      parsed = Metronome::Util.parse_uri(url)
+      unparsed = Metronome::Util.unparse_uri(parsed).to_s
 
-      assert_equal(unparsed, uri)
+      assert_equal(url, unparsed)
       assert_equal(parsed, Metronome::Util.parse_uri(unparsed))
     end
   end
