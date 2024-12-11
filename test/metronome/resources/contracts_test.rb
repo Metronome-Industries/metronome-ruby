@@ -14,133 +14,116 @@ class Metronome::Test::Resources::ContractsTest < Minitest::Test
 
   def test_create_required_params
     response = @metronome.contracts.create(
-      {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"}
+      customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+      starting_at: "2020-01-01T00:00:00.000Z"
     )
     assert_kind_of(Metronome::Models::ContractCreateResponse, response)
   end
 
   def test_retrieve_required_params
     response = @metronome.contracts.retrieve(
-      {
-        contract_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
-        customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d"
-      }
+      contract_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
+      customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d"
     )
     assert_kind_of(Metronome::Models::ContractRetrieveResponse, response)
   end
 
   def test_list_required_params
-    response = @metronome.contracts.list({customer_id: "9b85c1c1-5238-4f2a-a409-61412905e1e1"})
+    response = @metronome.contracts.list(customer_id: "9b85c1c1-5238-4f2a-a409-61412905e1e1")
     assert_kind_of(Metronome::Models::ContractListResponse, response)
   end
 
   def test_add_manual_balance_entry_required_params
     response = @metronome.contracts.add_manual_balance_entry(
-      {
-        id: "6162d87b-e5db-4a33-b7f2-76ce6ead4e85",
-        amount: -1000,
-        customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
-        reason: "Reason for entry",
-        segment_id: "66368e29-3f97-4d15-a6e9-120897f0070a"
-      }
+      id: "6162d87b-e5db-4a33-b7f2-76ce6ead4e85",
+      amount: -1000,
+      customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+      reason: "Reason for entry",
+      segment_id: "66368e29-3f97-4d15-a6e9-120897f0070a"
     )
     assert_nil(response)
   end
 
   def test_amend_required_params
     response = @metronome.contracts.amend(
-      {
-        contract_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
-        customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
-        starting_at: "2020-01-01T00:00:00.000Z"
-      }
+      contract_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
+      customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+      starting_at: "2020-01-01T00:00:00.000Z"
     )
     assert_kind_of(Metronome::Models::ContractAmendResponse, response)
   end
 
   def test_archive_required_params
     response = @metronome.contracts.archive(
-      {
-        contract_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
-        customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
-        void_invoices: true
-      }
+      contract_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
+      customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+      void_invoices: true
     )
     assert_kind_of(Metronome::Models::ContractArchiveResponse, response)
   end
 
   def test_create_historical_invoices_required_params
     response = @metronome.contracts.create_historical_invoices(
-      {
-        invoices: [
-          {
-            "contract_id" => "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
-            "credit_type_id" => "2714e483-4ff1-48e4-9e25-ac732e8f24f2",
-            "customer_id" => "13117714-3f05-48e5-a6e9-a66093f13b4d",
-            "exclusive_end_date" => "2020-02-01T00:00:00.000Z",
-            "inclusive_start_date" => "2020-01-01T00:00:00.000Z",
-            "issue_date" => "2020-02-01T00:00:00.000Z",
-            "usage_line_items" => [
-              {
-                "exclusive_end_date" => "2020-02-01T00:00:00.000Z",
-                "inclusive_start_date" => "2020-01-01T00:00:00.000Z",
-                "product_id" => "f14d6729-6a44-4b13-9908-9387f1918790"
-              }
-            ]
-          }
-        ],
-        preview: false
-      }
+      invoices: [
+        {
+          "contract_id" => "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
+          "credit_type_id" => "2714e483-4ff1-48e4-9e25-ac732e8f24f2",
+          "customer_id" => "13117714-3f05-48e5-a6e9-a66093f13b4d",
+          "exclusive_end_date" => "2020-02-01T00:00:00.000Z",
+          "inclusive_start_date" => "2020-01-01T00:00:00.000Z",
+          "issue_date" => "2020-02-01T00:00:00.000Z",
+          "usage_line_items" => [
+            {
+              "exclusive_end_date" => "2020-02-01T00:00:00.000Z",
+              "inclusive_start_date" => "2020-01-01T00:00:00.000Z",
+              "product_id" => "f14d6729-6a44-4b13-9908-9387f1918790"
+            }
+          ]
+        }
+      ],
+      preview: false
     )
     assert_kind_of(Metronome::Models::ContractCreateHistoricalInvoicesResponse, response)
   end
 
   def test_list_balances_required_params
-    response = @metronome.contracts.list_balances({customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d"})
+    response = @metronome.contracts.list_balances(customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d")
     assert_kind_of(Metronome::Models::ContractListBalancesResponse, response)
   end
 
   def test_retrieve_rate_schedule_required_params
     response = @metronome.contracts.retrieve_rate_schedule(
-      {
-        contract_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
-        customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d"
-      }
+      contract_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
+      customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d"
     )
     assert_kind_of(Metronome::Models::ContractRetrieveRateScheduleResponse, response)
   end
 
   def test_schedule_pro_services_invoice_required_params
     response = @metronome.contracts.schedule_pro_services_invoice(
-      {
-        contract_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        customer_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        issued_at: "2019-12-27T18:11:19.117Z",
-        line_items: [{"professional_service_id" => "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"}]
-      }
+      contract_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+      customer_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+      issued_at: "2019-12-27T18:11:19.117Z",
+      line_items: [{"professional_service_id" => "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"}]
     )
     assert_kind_of(Metronome::Models::ContractScheduleProServicesInvoiceResponse, response)
   end
 
   def test_set_usage_filter_required_params
     response = @metronome.contracts.set_usage_filter(
-      {
-        contract_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
-        customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
-        group_key: "business_subscription_id",
-        group_values: %w[ID-1 ID-2],
-        starting_at: "2020-01-01T00:00:00.000Z"
-      }
+      contract_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
+      customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+      group_key: "business_subscription_id",
+      group_values: %w[ID-1 ID-2],
+      starting_at: "2020-01-01T00:00:00.000Z"
     )
     assert_nil(response)
   end
 
   def test_update_end_date_required_params
     response = @metronome.contracts.update_end_date(
-      {
-        contract_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
-        customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d"
-      }
+      contract_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
+      customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d"
     )
     assert_kind_of(Metronome::Models::ContractUpdateEndDateResponse, response)
   end

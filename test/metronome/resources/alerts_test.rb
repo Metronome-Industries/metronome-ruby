@@ -14,13 +14,15 @@ class Metronome::Test::Resources::AlertsTest < Minitest::Test
 
   def test_create_required_params
     response = @metronome.alerts.create(
-      {alert_type: "low_credit_balance_reached", name: "$100 spend threshold reached", threshold: 10_000}
+      alert_type: "low_credit_balance_reached",
+      name: "$100 spend threshold reached",
+      threshold: 10_000
     )
     assert_kind_of(Metronome::Models::AlertCreateResponse, response)
   end
 
   def test_archive_required_params
-    response = @metronome.alerts.archive({id: "8deed800-1b7a-495d-a207-6c52bac54dc9"})
+    response = @metronome.alerts.archive(id: "8deed800-1b7a-495d-a207-6c52bac54dc9")
     assert_kind_of(Metronome::Models::AlertArchiveResponse, response)
   end
 end
