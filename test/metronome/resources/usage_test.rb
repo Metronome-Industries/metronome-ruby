@@ -3,8 +3,6 @@
 require_relative "../test_helper"
 
 class Metronome::Test::Resources::UsageTest < Minitest::Test
-  parallelize_me!
-
   def setup
     @metronome = Metronome::Client.new(
       base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),

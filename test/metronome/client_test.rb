@@ -3,8 +3,6 @@
 require_relative "test_helper"
 
 class MetronomeTest < Minitest::Test
-  parallelize_me!
-
   def test_raises_on_missing_non_nullable_opts
     e = assert_raises(ArgumentError) do
       Metronome::Client.new
@@ -77,12 +75,14 @@ class MetronomeTest < Minitest::Test
     metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token")
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     metronome.requester = requester
+
     assert_raises(Metronome::InternalServerError) do
       metronome.contracts.create(
         customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
         starting_at: "2020-01-01T00:00:00.000Z"
       )
     end
+
     assert_equal(3, requester.attempts.length)
   end
 
@@ -94,12 +94,14 @@ class MetronomeTest < Minitest::Test
     )
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     metronome.requester = requester
+
     assert_raises(Metronome::InternalServerError) do
       metronome.contracts.create(
         customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
         starting_at: "2020-01-01T00:00:00.000Z"
       )
     end
+
     assert_equal(4, requester.attempts.length)
   end
 
@@ -107,12 +109,14 @@ class MetronomeTest < Minitest::Test
     metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token")
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     metronome.requester = requester
+
     assert_raises(Metronome::InternalServerError) do
       metronome.contracts.create(
         {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"},
         max_retries: 3
       )
     end
+
     assert_equal(4, requester.attempts.length)
   end
 
@@ -124,12 +128,14 @@ class MetronomeTest < Minitest::Test
     )
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     metronome.requester = requester
+
     assert_raises(Metronome::InternalServerError) do
       metronome.contracts.create(
         {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"},
         max_retries: 4
       )
     end
+
     assert_equal(5, requester.attempts.length)
   end
 
@@ -141,12 +147,14 @@ class MetronomeTest < Minitest::Test
     )
     requester = MockRequester.new(500, {}, {"retry-after" => "1.3", "x-stainless-mock-sleep" => "true"})
     metronome.requester = requester
+
     assert_raises(Metronome::InternalServerError) do
       metronome.contracts.create(
         customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
         starting_at: "2020-01-01T00:00:00.000Z"
       )
     end
+
     assert_equal(2, requester.attempts.length)
     assert_equal(1.3, requester.attempts.last[:headers]["x-stainless-mock-slept"])
   end
@@ -161,20 +169,23 @@ class MetronomeTest < Minitest::Test
       500,
       {},
       {
-        "retry-after" => (Time.now + 2).httpdate,
-        "x-stainless-mock-sleep" => "true",
-        "x-stainless-mock-sleep-base" => Time.now.httpdate
+        "retry-after" => (Time.now + 10).httpdate,
+        "x-stainless-mock-sleep" => "true"
       }
     )
     metronome.requester = requester
+
     assert_raises(Metronome::InternalServerError) do
-      metronome.contracts.create(
-        customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
-        starting_at: "2020-01-01T00:00:00.000Z"
-      )
+      Time.stub(:now, Time.now) do
+        metronome.contracts.create(
+          customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+          starting_at: "2020-01-01T00:00:00.000Z"
+        )
+      end
     end
+
     assert_equal(2, requester.attempts.length)
-    assert_equal(2, requester.attempts.last[:headers]["x-stainless-mock-slept"])
+    assert_in_delta(10, requester.attempts.last[:headers]["x-stainless-mock-slept"], 1.0)
   end
 
   def test_client_retry_after_ms
@@ -185,12 +196,14 @@ class MetronomeTest < Minitest::Test
     )
     requester = MockRequester.new(500, {}, {"retry-after-ms" => "1300", "x-stainless-mock-sleep" => "true"})
     metronome.requester = requester
+
     assert_raises(Metronome::InternalServerError) do
       metronome.contracts.create(
         customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
         starting_at: "2020-01-01T00:00:00.000Z"
       )
     end
+
     assert_equal(2, requester.attempts.length)
     assert_equal(1.3, requester.attempts.last[:headers]["x-stainless-mock-slept"])
   end
@@ -247,12 +260,14 @@ class MetronomeTest < Minitest::Test
     metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token")
     requester = MockRequester.new(307, {}, {"location" => "/redirected"})
     metronome.requester = requester
+
     assert_raises(Metronome::APIConnectionError) do
       metronome.contracts.create(
         {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"},
         extra_headers: {}
       )
     end
+
     assert_equal("/redirected", requester.attempts[1][:url].path)
     assert_equal(requester.attempts[0][:method], requester.attempts[1][:method])
     assert_equal(requester.attempts[0][:body], requester.attempts[1][:body])
@@ -266,12 +281,14 @@ class MetronomeTest < Minitest::Test
     metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token")
     requester = MockRequester.new(303, {}, {"location" => "/redirected"})
     metronome.requester = requester
+
     assert_raises(Metronome::APIConnectionError) do
       metronome.contracts.create(
         {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"},
         extra_headers: {}
       )
     end
+
     assert_equal("/redirected", requester.attempts[1][:url].path)
     assert_equal(:get, requester.attempts[1][:method])
     assert_nil(requester.attempts[1][:body])
@@ -282,12 +299,14 @@ class MetronomeTest < Minitest::Test
     metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token")
     requester = MockRequester.new(307, {}, {"location" => "/redirected"})
     metronome.requester = requester
+
     assert_raises(Metronome::APIConnectionError) do
       metronome.contracts.create(
         {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"},
         extra_headers: {"Authorization" => "Bearer xyz"}
       )
     end
+
     assert_equal(
       requester.attempts[0][:headers]["authorization"],
       requester.attempts[1][:headers]["authorization"]
@@ -298,12 +317,14 @@ class MetronomeTest < Minitest::Test
     metronome = Metronome::Client.new(base_url: "http://localhost:4010", bearer_token: "My Bearer Token")
     requester = MockRequester.new(307, {}, {"location" => "https://example.com/redirected"})
     metronome.requester = requester
+
     assert_raises(Metronome::APIConnectionError) do
       metronome.contracts.create(
         {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"},
         extra_headers: {"Authorization" => "Bearer xyz"}
       )
     end
+
     assert_nil(requester.attempts[1][:headers]["Authorization"])
   end
 
@@ -316,6 +337,7 @@ class MetronomeTest < Minitest::Test
       starting_at: "2020-01-01T00:00:00.000Z"
     )
     headers = requester.attempts[0][:headers]
+
     refute_empty(headers["x-stainless-lang"])
     refute_empty(headers["x-stainless-package-version"])
     refute_empty(headers["x-stainless-runtime"])
