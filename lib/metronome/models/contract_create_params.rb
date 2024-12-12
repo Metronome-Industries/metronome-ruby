@@ -1,0 +1,1467 @@
+# frozen_string_literal: true
+
+module Metronome
+  module Models
+    class ContractCreateParams < Metronome::BaseModel
+      # @!attribute [rw] customer_id
+      #   @return [String]
+      required :customer_id, String
+
+      # @!attribute [rw] starting_at
+      #   inclusive contract start time
+      #   @return [Time]
+      required :starting_at, Time
+
+      # @!attribute [rw] billing_provider_configuration
+      #   The billing provider configuration associated with a contract.
+      #   @return [Metronome::Models::ContractCreateParams::BillingProviderConfiguration]
+      optional :billing_provider_configuration,
+               -> { Metronome::Models::ContractCreateParams::BillingProviderConfiguration }
+
+      # @!attribute [rw] commits
+      #   @return [Array<Metronome::Models::ContractCreateParams::Commit>]
+      optional :commits, Metronome::ArrayOf.new(-> { Metronome::Models::ContractCreateParams::Commit })
+
+      # @!attribute [rw] credits
+      #   @return [Array<Metronome::Models::ContractCreateParams::Credit>]
+      optional :credits, Metronome::ArrayOf.new(-> { Metronome::Models::ContractCreateParams::Credit })
+
+      # @!attribute [rw] custom_fields
+      #   @return [Hash]
+      optional :custom_fields, Hash
+
+      # @!attribute [rw] discounts
+      #   This field's availability is dependent on your client's configuration.
+      #   @return [Array<Metronome::Models::ContractCreateParams::Discount>]
+      optional :discounts, Metronome::ArrayOf.new(-> { Metronome::Models::ContractCreateParams::Discount })
+
+      # @!attribute [rw] ending_before
+      #   exclusive contract end time
+      #   @return [Time]
+      optional :ending_before, Time
+
+      # @!attribute [rw] multiplier_override_prioritization
+      #   Defaults to LOWEST_MULTIPLIER, which applies the greatest discount to list prices automatically. EXPLICIT prioritization requires specifying priorities for each multiplier; the one with the lowest priority value will be prioritized first. If tiered overrides are used, prioritization must be explicit.
+      #   @return [Symbol, Metronome::Models::ContractCreateParams::MultiplierOverridePrioritization]
+      optional :multiplier_override_prioritization,
+               enum: -> { Metronome::Models::ContractCreateParams::MultiplierOverridePrioritization }
+
+      # @!attribute [rw] name
+      #   @return [String]
+      optional :name, String
+
+      # @!attribute [rw] net_payment_terms_days
+      #   @return [Float]
+      optional :net_payment_terms_days, Float
+
+      # @!attribute [rw] netsuite_sales_order_id
+      #   This field's availability is dependent on your client's configuration.
+      #   @return [String]
+      optional :netsuite_sales_order_id, String
+
+      # @!attribute [rw] overrides
+      #   @return [Array<Metronome::Models::ContractCreateParams::Override>]
+      optional :overrides, Metronome::ArrayOf.new(-> { Metronome::Models::ContractCreateParams::Override })
+
+      # @!attribute [rw] professional_services
+      #   This field's availability is dependent on your client's configuration.
+      #   @return [Array<Metronome::Models::ContractCreateParams::ProfessionalService>]
+      optional :professional_services,
+               Metronome::ArrayOf.new(-> { Metronome::Models::ContractCreateParams::ProfessionalService })
+
+      # @!attribute [rw] rate_card_alias
+      #   Selects the rate card linked to the specified alias as of the contract's start date.
+      #   @return [String]
+      optional :rate_card_alias, String
+
+      # @!attribute [rw] rate_card_id
+      #   @return [String]
+      optional :rate_card_id, String
+
+      # @!attribute [rw] reseller_royalties
+      #   This field's availability is dependent on your client's configuration.
+      #   @return [Array<Metronome::Models::ContractCreateParams::ResellerRoyalty>]
+      optional :reseller_royalties,
+               Metronome::ArrayOf.new(-> { Metronome::Models::ContractCreateParams::ResellerRoyalty })
+
+      # @!attribute [rw] salesforce_opportunity_id
+      #   This field's availability is dependent on your client's configuration.
+      #   @return [String]
+      optional :salesforce_opportunity_id, String
+
+      # @!attribute [rw] scheduled_charges
+      #   @return [Array<Metronome::Models::ContractCreateParams::ScheduledCharge>]
+      optional :scheduled_charges,
+               Metronome::ArrayOf.new(-> { Metronome::Models::ContractCreateParams::ScheduledCharge })
+
+      # @!attribute [rw] total_contract_value
+      #   This field's availability is dependent on your client's configuration.
+      #   @return [Float]
+      optional :total_contract_value, Float
+
+      # @!attribute [rw] transition
+      #   @return [Metronome::Models::ContractCreateParams::Transition]
+      optional :transition, -> { Metronome::Models::ContractCreateParams::Transition }
+
+      # @!attribute [rw] uniqueness_key
+      #   Prevents the creation of duplicates. If a request to create a record is made with a previously used uniqueness key, a new record will not be created and the request will fail with a 409 error.
+      #   @return [String]
+      optional :uniqueness_key, String
+
+      # @!attribute [rw] usage_filter
+      #   @return [Metronome::Models::BaseUsageFilter]
+      optional :usage_filter, -> { Metronome::Models::BaseUsageFilter }
+
+      # @!attribute [rw] usage_statement_schedule
+      #   @return [Metronome::Models::ContractCreateParams::UsageStatementSchedule]
+      optional :usage_statement_schedule,
+               -> {
+                 Metronome::Models::ContractCreateParams::UsageStatementSchedule
+               }
+
+      class BillingProviderConfiguration < Metronome::BaseModel
+        # @!attribute [rw] billing_provider
+        #   @return [Symbol, Metronome::Models::ContractCreateParams::BillingProviderConfiguration::BillingProvider]
+        optional :billing_provider,
+                 enum: -> {
+                   Metronome::Models::ContractCreateParams::BillingProviderConfiguration::BillingProvider
+                 }
+
+        # @!attribute [rw] billing_provider_configuration_id
+        #   The Metronome ID of the billing provider configuration
+        #   @return [String]
+        optional :billing_provider_configuration_id, String
+
+        # @!attribute [rw] delivery_method
+        #   @return [Symbol, Metronome::Models::ContractCreateParams::BillingProviderConfiguration::DeliveryMethod]
+        optional :delivery_method,
+                 enum: -> {
+                   Metronome::Models::ContractCreateParams::BillingProviderConfiguration::DeliveryMethod
+                 }
+
+        class BillingProvider < Metronome::Enum
+          AWS_MARKETPLACE = :aws_marketplace
+          AZURE_MARKETPLACE = :azure_marketplace
+          GCP_MARKETPLACE = :gcp_marketplace
+          STRIPE = :stripe
+          NETSUITE = :netsuite
+        end
+
+        class DeliveryMethod < Metronome::Enum
+          DIRECT_TO_BILLING_PROVIDER = :direct_to_billing_provider
+          AWS_SQS = :aws_sqs
+          TACKLE = :tackle
+          AWS_SNS = :aws_sns
+        end
+
+        # @!parse
+        #   # Create a new instance of BillingProviderConfiguration from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String, nil] :billing_provider
+        #   #   @option data [String, nil] :billing_provider_configuration_id The Metronome ID of the billing provider configuration
+        #   #   @option data [String, nil] :delivery_method
+        #   def initialize(data = {}) = super
+      end
+
+      class Commit < Metronome::BaseModel
+        # @!attribute [rw] product_id
+        #   @return [String]
+        required :product_id, String
+
+        # @!attribute [rw] type
+        #   @return [Symbol, Metronome::Models::ContractCreateParams::Commit::Type]
+        required :type, enum: -> { Metronome::Models::ContractCreateParams::Commit::Type }
+
+        # @!attribute [rw] access_schedule
+        #   Required: Schedule for distributing the commit to the customer. For "POSTPAID" commits only one schedule item is allowed and amount must match invoice_schedule total.
+        #   @return [Metronome::Models::ContractCreateParams::Commit::AccessSchedule]
+        optional :access_schedule, -> { Metronome::Models::ContractCreateParams::Commit::AccessSchedule }
+
+        # @!attribute [rw] amount
+        #   (DEPRECATED) Use access_schedule and invoice_schedule instead.
+        #   @return [Float]
+        optional :amount, Float
+
+        # @!attribute [rw] applicable_product_ids
+        #   Which products the commit applies to. If both applicable_product_ids and applicable_product_tags are not provided, the commit applies to all products.
+        #   @return [Array<String>]
+        optional :applicable_product_ids, Metronome::ArrayOf.new(String)
+
+        # @!attribute [rw] applicable_product_tags
+        #   Which tags the commit applies to. If both applicable_product_ids and applicable_product_tags are not provided, the commit applies to all products.
+        #   @return [Array<String>]
+        optional :applicable_product_tags, Metronome::ArrayOf.new(String)
+
+        # @!attribute [rw] custom_fields
+        #   @return [Hash]
+        optional :custom_fields, Hash
+
+        # @!attribute [rw] description
+        #   Used only in UI/API. It is not exposed to end customers.
+        #   @return [String]
+        optional :description, String
+
+        # @!attribute [rw] invoice_schedule
+        #   Required for "POSTPAID" commits: the true up invoice will be generated at this time and only one schedule item is allowed; the total must match access_schedule amount. Optional for "PREPAID" commits: if not provided, this will be a "complimentary" commit with no invoice.
+        #   @return [Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule]
+        optional :invoice_schedule, -> { Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule }
+
+        # @!attribute [rw] name
+        #   displayed on invoices
+        #   @return [String]
+        optional :name, String
+
+        # @!attribute [rw] netsuite_sales_order_id
+        #   This field's availability is dependent on your client's configuration.
+        #   @return [String]
+        optional :netsuite_sales_order_id, String
+
+        # @!attribute [rw] priority
+        #   If multiple commits are applicable, the one with the lower priority will apply first.
+        #   @return [Float]
+        optional :priority, Float
+
+        # @!attribute [rw] rate_type
+        #   @return [Symbol, Metronome::Models::ContractCreateParams::Commit::RateType]
+        optional :rate_type, enum: -> { Metronome::Models::ContractCreateParams::Commit::RateType }
+
+        # @!attribute [rw] rollover_fraction
+        #   Fraction of unused segments that will be rolled over. Must be between 0 and 1.
+        #   @return [Float]
+        optional :rollover_fraction, Float
+
+        # @!attribute [rw] temporary_id
+        #   A temporary ID for the commit that can be used to reference the commit for commit specific overrides.
+        #   @return [String]
+        optional :temporary_id, String
+
+        class Type < Metronome::Enum
+          PREPAID = :PREPAID
+          POSTPAID = :POSTPAID
+        end
+
+        class AccessSchedule < Metronome::BaseModel
+          # @!attribute [rw] schedule_items
+          #   @return [Array<Metronome::Models::ContractCreateParams::Commit::AccessSchedule::ScheduleItem>]
+          required :schedule_items,
+                   Metronome::ArrayOf.new(
+                     -> {
+                       Metronome::Models::ContractCreateParams::Commit::AccessSchedule::ScheduleItem
+                     }
+                   )
+
+          # @!attribute [rw] credit_type_id
+          #   @return [String]
+          optional :credit_type_id, String
+
+          class ScheduleItem < Metronome::BaseModel
+            # @!attribute [rw] amount
+            #   @return [Float]
+            required :amount, Float
+
+            # @!attribute [rw] ending_before
+            #   RFC 3339 timestamp (exclusive)
+            #   @return [Time]
+            required :ending_before, Time
+
+            # @!attribute [rw] starting_at
+            #   RFC 3339 timestamp (inclusive)
+            #   @return [Time]
+            required :starting_at, Time
+
+            # @!parse
+            #   # Create a new instance of ScheduleItem from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [Float] :amount
+            #   #   @option data [String] :ending_before RFC 3339 timestamp (exclusive)
+            #   #   @option data [String] :starting_at RFC 3339 timestamp (inclusive)
+            #   def initialize(data = {}) = super
+          end
+
+          # @!parse
+          #   # Create a new instance of AccessSchedule from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [Array<Object>] :schedule_items
+          #   #   @option data [String, nil] :credit_type_id
+          #   def initialize(data = {}) = super
+        end
+
+        class InvoiceSchedule < Metronome::BaseModel
+          # @!attribute [rw] credit_type_id
+          #   Defaults to USD if not passed. Only USD is supported at this time.
+          #   @return [String]
+          optional :credit_type_id, String
+
+          # @!attribute [rw] recurring_schedule
+          #   Enter the unit price and quantity for the charge or instead only send the amount. If amount is sent, the unit price is assumed to be the amount and quantity is inferred to be 1.
+          #   @return [Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule]
+          optional :recurring_schedule,
+                   -> { Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule }
+
+          # @!attribute [rw] schedule_items
+          #   Either provide amount or provide both unit_price and quantity.
+          #   @return [Array<Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::ScheduleItem>]
+          optional :schedule_items,
+                   Metronome::ArrayOf.new(
+                     -> {
+                       Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::ScheduleItem
+                     }
+                   )
+
+          class RecurringSchedule < Metronome::BaseModel
+            # @!attribute [rw] amount_distribution
+            #   @return [Symbol, Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::AmountDistribution]
+            required :amount_distribution,
+                     enum: -> {
+                       Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::AmountDistribution
+                     }
+
+            # @!attribute [rw] ending_before
+            #   RFC 3339 timestamp (exclusive).
+            #   @return [Time]
+            required :ending_before, Time
+
+            # @!attribute [rw] frequency
+            #   @return [Symbol, Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::Frequency]
+            required :frequency,
+                     enum: -> {
+                       Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::Frequency
+                     }
+
+            # @!attribute [rw] starting_at
+            #   RFC 3339 timestamp (inclusive).
+            #   @return [Time]
+            required :starting_at, Time
+
+            # @!attribute [rw] amount
+            #   Amount for the charge. Can be provided instead of unit_price and quantity. If amount is sent, the unit_price is assumed to be the amount and quantity is inferred to be 1.
+            #   @return [Float]
+            optional :amount, Float
+
+            # @!attribute [rw] quantity
+            #   Quantity for the charge. Will be multiplied by unit_price to determine the amount and must be specified with unit_price. If specified amount cannot be provided.
+            #   @return [Float]
+            optional :quantity, Float
+
+            # @!attribute [rw] unit_price
+            #   Unit price for the charge. Will be multiplied by quantity to determine the amount and must be specified with quantity. If specified amount cannot be provided.
+            #   @return [Float]
+            optional :unit_price, Float
+
+            class AmountDistribution < Metronome::Enum
+              DIVIDED = :DIVIDED
+              DIVIDED_ROUNDED = :DIVIDED_ROUNDED
+              EACH = :EACH
+            end
+
+            class Frequency < Metronome::Enum
+              MONTHLY = :MONTHLY
+              QUARTERLY = :QUARTERLY
+              SEMI_ANNUAL = :SEMI_ANNUAL
+              ANNUAL = :ANNUAL
+            end
+
+            # @!parse
+            #   # Create a new instance of RecurringSchedule from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :amount_distribution
+            #   #   @option data [String] :ending_before RFC 3339 timestamp (exclusive).
+            #   #   @option data [String] :frequency
+            #   #   @option data [String] :starting_at RFC 3339 timestamp (inclusive).
+            #   #   @option data [Float, nil] :amount Amount for the charge. Can be provided instead of unit_price and quantity. If
+            #   #     amount is sent, the unit_price is assumed to be the amount and quantity is
+            #   #     inferred to be 1.
+            #   #   @option data [Float, nil] :quantity Quantity for the charge. Will be multiplied by unit_price to determine the
+            #   #     amount and must be specified with unit_price. If specified amount cannot be
+            #   #     provided.
+            #   #   @option data [Float, nil] :unit_price Unit price for the charge. Will be multiplied by quantity to determine the
+            #   #     amount and must be specified with quantity. If specified amount cannot be
+            #   #     provided.
+            #   def initialize(data = {}) = super
+          end
+
+          class ScheduleItem < Metronome::BaseModel
+            # @!attribute [rw] timestamp
+            #   timestamp of the scheduled event
+            #   @return [Time]
+            required :timestamp, Time
+
+            # @!attribute [rw] amount
+            #   Amount for the charge. Can be provided instead of unit_price and quantity. If amount is sent, the unit_price is assumed to be the amount and quantity is inferred to be 1.
+            #   @return [Float]
+            optional :amount, Float
+
+            # @!attribute [rw] quantity
+            #   Quantity for the charge. Will be multiplied by unit_price to determine the amount and must be specified with unit_price. If specified amount cannot be provided.
+            #   @return [Float]
+            optional :quantity, Float
+
+            # @!attribute [rw] unit_price
+            #   Unit price for the charge. Will be multiplied by quantity to determine the amount and must be specified with quantity. If specified amount cannot be provided.
+            #   @return [Float]
+            optional :unit_price, Float
+
+            # @!parse
+            #   # Create a new instance of ScheduleItem from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :timestamp timestamp of the scheduled event
+            #   #   @option data [Float, nil] :amount Amount for the charge. Can be provided instead of unit_price and quantity. If
+            #   #     amount is sent, the unit_price is assumed to be the amount and quantity is
+            #   #     inferred to be 1.
+            #   #   @option data [Float, nil] :quantity Quantity for the charge. Will be multiplied by unit_price to determine the
+            #   #     amount and must be specified with unit_price. If specified amount cannot be
+            #   #     provided.
+            #   #   @option data [Float, nil] :unit_price Unit price for the charge. Will be multiplied by quantity to determine the
+            #   #     amount and must be specified with quantity. If specified amount cannot be
+            #   #     provided.
+            #   def initialize(data = {}) = super
+          end
+
+          # @!parse
+          #   # Create a new instance of InvoiceSchedule from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String, nil] :credit_type_id Defaults to USD if not passed. Only USD is supported at this time.
+          #   #   @option data [Object, nil] :recurring_schedule Enter the unit price and quantity for the charge or instead only send the
+          #   #     amount. If amount is sent, the unit price is assumed to be the amount and
+          #   #     quantity is inferred to be 1.
+          #   #   @option data [Array<Object>, nil] :schedule_items Either provide amount or provide both unit_price and quantity.
+          #   def initialize(data = {}) = super
+        end
+
+        class RateType < Metronome::Enum
+          COMMIT_RATE = :COMMIT_RATE
+          COMMIT_RATE = :commit_rate
+          LIST_RATE = :LIST_RATE
+          LIST_RATE = :list_rate
+        end
+
+        # @!parse
+        #   # Create a new instance of Commit from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :product_id
+        #   #   @option data [String] :type
+        #   #   @option data [Object, nil] :access_schedule Required: Schedule for distributing the commit to the customer. For "POSTPAID"
+        #   #     commits only one schedule item is allowed and amount must match invoice_schedule
+        #   #     total.
+        #   #   @option data [Float, nil] :amount (DEPRECATED) Use access_schedule and invoice_schedule instead.
+        #   #   @option data [Array<String>, nil] :applicable_product_ids Which products the commit applies to. If both applicable_product_ids and
+        #   #     applicable_product_tags are not provided, the commit applies to all products.
+        #   #   @option data [Array<String>, nil] :applicable_product_tags Which tags the commit applies to. If both applicable_product_ids and
+        #   #     applicable_product_tags are not provided, the commit applies to all products.
+        #   #   @option data [Hash, nil] :custom_fields
+        #   #   @option data [String, nil] :description Used only in UI/API. It is not exposed to end customers.
+        #   #   @option data [Object, nil] :invoice_schedule Required for "POSTPAID" commits: the true up invoice will be generated at this
+        #   #     time and only one schedule item is allowed; the total must match access_schedule
+        #   #     amount. Optional for "PREPAID" commits: if not provided, this will be a
+        #   #     "complimentary" commit with no invoice.
+        #   #   @option data [String, nil] :name displayed on invoices
+        #   #   @option data [String, nil] :netsuite_sales_order_id This field's availability is dependent on your client's configuration.
+        #   #   @option data [Float, nil] :priority If multiple commits are applicable, the one with the lower priority will apply
+        #   #     first.
+        #   #   @option data [String, nil] :rate_type
+        #   #   @option data [Float, nil] :rollover_fraction Fraction of unused segments that will be rolled over. Must be between 0 and 1.
+        #   #   @option data [String, nil] :temporary_id A temporary ID for the commit that can be used to reference the commit for
+        #   #     commit specific overrides.
+        #   def initialize(data = {}) = super
+      end
+
+      class Credit < Metronome::BaseModel
+        # @!attribute [rw] access_schedule
+        #   Schedule for distributing the credit to the customer.
+        #   @return [Metronome::Models::ContractCreateParams::Credit::AccessSchedule]
+        required :access_schedule, -> { Metronome::Models::ContractCreateParams::Credit::AccessSchedule }
+
+        # @!attribute [rw] product_id
+        #   @return [String]
+        required :product_id, String
+
+        # @!attribute [rw] applicable_product_ids
+        #   Which products the credit applies to. If both applicable_product_ids and applicable_product_tags are not provided, the credit applies to all products.
+        #   @return [Array<String>]
+        optional :applicable_product_ids, Metronome::ArrayOf.new(String)
+
+        # @!attribute [rw] applicable_product_tags
+        #   Which tags the credit applies to. If both applicable_product_ids and applicable_product_tags are not provided, the credit applies to all products.
+        #   @return [Array<String>]
+        optional :applicable_product_tags, Metronome::ArrayOf.new(String)
+
+        # @!attribute [rw] custom_fields
+        #   @return [Hash]
+        optional :custom_fields, Hash
+
+        # @!attribute [rw] description
+        #   Used only in UI/API. It is not exposed to end customers.
+        #   @return [String]
+        optional :description, String
+
+        # @!attribute [rw] name
+        #   displayed on invoices
+        #   @return [String]
+        optional :name, String
+
+        # @!attribute [rw] netsuite_sales_order_id
+        #   This field's availability is dependent on your client's configuration.
+        #   @return [String]
+        optional :netsuite_sales_order_id, String
+
+        # @!attribute [rw] priority
+        #   If multiple credits are applicable, the one with the lower priority will apply first.
+        #   @return [Float]
+        optional :priority, Float
+
+        # @!attribute [rw] rate_type
+        #   @return [Symbol, Metronome::Models::ContractCreateParams::Credit::RateType]
+        optional :rate_type, enum: -> { Metronome::Models::ContractCreateParams::Credit::RateType }
+
+        class AccessSchedule < Metronome::BaseModel
+          # @!attribute [rw] schedule_items
+          #   @return [Array<Metronome::Models::ContractCreateParams::Credit::AccessSchedule::ScheduleItem>]
+          required :schedule_items,
+                   Metronome::ArrayOf.new(
+                     -> {
+                       Metronome::Models::ContractCreateParams::Credit::AccessSchedule::ScheduleItem
+                     }
+                   )
+
+          # @!attribute [rw] credit_type_id
+          #   @return [String]
+          optional :credit_type_id, String
+
+          class ScheduleItem < Metronome::BaseModel
+            # @!attribute [rw] amount
+            #   @return [Float]
+            required :amount, Float
+
+            # @!attribute [rw] ending_before
+            #   RFC 3339 timestamp (exclusive)
+            #   @return [Time]
+            required :ending_before, Time
+
+            # @!attribute [rw] starting_at
+            #   RFC 3339 timestamp (inclusive)
+            #   @return [Time]
+            required :starting_at, Time
+
+            # @!parse
+            #   # Create a new instance of ScheduleItem from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [Float] :amount
+            #   #   @option data [String] :ending_before RFC 3339 timestamp (exclusive)
+            #   #   @option data [String] :starting_at RFC 3339 timestamp (inclusive)
+            #   def initialize(data = {}) = super
+          end
+
+          # @!parse
+          #   # Create a new instance of AccessSchedule from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [Array<Object>] :schedule_items
+          #   #   @option data [String, nil] :credit_type_id
+          #   def initialize(data = {}) = super
+        end
+
+        class RateType < Metronome::Enum
+          COMMIT_RATE = :COMMIT_RATE
+          COMMIT_RATE = :commit_rate
+          LIST_RATE = :LIST_RATE
+          LIST_RATE = :list_rate
+        end
+
+        # @!parse
+        #   # Create a new instance of Credit from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Object] :access_schedule Schedule for distributing the credit to the customer.
+        #   #   @option data [String] :product_id
+        #   #   @option data [Array<String>, nil] :applicable_product_ids Which products the credit applies to. If both applicable_product_ids and
+        #   #     applicable_product_tags are not provided, the credit applies to all products.
+        #   #   @option data [Array<String>, nil] :applicable_product_tags Which tags the credit applies to. If both applicable_product_ids and
+        #   #     applicable_product_tags are not provided, the credit applies to all products.
+        #   #   @option data [Hash, nil] :custom_fields
+        #   #   @option data [String, nil] :description Used only in UI/API. It is not exposed to end customers.
+        #   #   @option data [String, nil] :name displayed on invoices
+        #   #   @option data [String, nil] :netsuite_sales_order_id This field's availability is dependent on your client's configuration.
+        #   #   @option data [Float, nil] :priority If multiple credits are applicable, the one with the lower priority will apply
+        #   #     first.
+        #   #   @option data [String, nil] :rate_type
+        #   def initialize(data = {}) = super
+      end
+
+      class Discount < Metronome::BaseModel
+        # @!attribute [rw] product_id
+        #   @return [String]
+        required :product_id, String
+
+        # @!attribute [rw] schedule
+        #   Must provide either schedule_items or recurring_schedule.
+        #   @return [Metronome::Models::ContractCreateParams::Discount::Schedule]
+        required :schedule, -> { Metronome::Models::ContractCreateParams::Discount::Schedule }
+
+        # @!attribute [rw] name
+        #   displayed on invoices
+        #   @return [String]
+        optional :name, String
+
+        # @!attribute [rw] netsuite_sales_order_id
+        #   This field's availability is dependent on your client's configuration.
+        #   @return [String]
+        optional :netsuite_sales_order_id, String
+
+        class Schedule < Metronome::BaseModel
+          # @!attribute [rw] credit_type_id
+          #   Defaults to USD if not passed. Only USD is supported at this time.
+          #   @return [String]
+          optional :credit_type_id, String
+
+          # @!attribute [rw] recurring_schedule
+          #   Enter the unit price and quantity for the charge or instead only send the amount. If amount is sent, the unit price is assumed to be the amount and quantity is inferred to be 1.
+          #   @return [Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule]
+          optional :recurring_schedule,
+                   -> { Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule }
+
+          # @!attribute [rw] schedule_items
+          #   Either provide amount or provide both unit_price and quantity.
+          #   @return [Array<Metronome::Models::ContractCreateParams::Discount::Schedule::ScheduleItem>]
+          optional :schedule_items,
+                   Metronome::ArrayOf.new(
+                     -> {
+                       Metronome::Models::ContractCreateParams::Discount::Schedule::ScheduleItem
+                     }
+                   )
+
+          class RecurringSchedule < Metronome::BaseModel
+            # @!attribute [rw] amount_distribution
+            #   @return [Symbol, Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule::AmountDistribution]
+            required :amount_distribution,
+                     enum: -> {
+                       Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule::AmountDistribution
+                     }
+
+            # @!attribute [rw] ending_before
+            #   RFC 3339 timestamp (exclusive).
+            #   @return [Time]
+            required :ending_before, Time
+
+            # @!attribute [rw] frequency
+            #   @return [Symbol, Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule::Frequency]
+            required :frequency,
+                     enum: -> {
+                       Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule::Frequency
+                     }
+
+            # @!attribute [rw] starting_at
+            #   RFC 3339 timestamp (inclusive).
+            #   @return [Time]
+            required :starting_at, Time
+
+            # @!attribute [rw] amount
+            #   Amount for the charge. Can be provided instead of unit_price and quantity. If amount is sent, the unit_price is assumed to be the amount and quantity is inferred to be 1.
+            #   @return [Float]
+            optional :amount, Float
+
+            # @!attribute [rw] quantity
+            #   Quantity for the charge. Will be multiplied by unit_price to determine the amount and must be specified with unit_price. If specified amount cannot be provided.
+            #   @return [Float]
+            optional :quantity, Float
+
+            # @!attribute [rw] unit_price
+            #   Unit price for the charge. Will be multiplied by quantity to determine the amount and must be specified with quantity. If specified amount cannot be provided.
+            #   @return [Float]
+            optional :unit_price, Float
+
+            class AmountDistribution < Metronome::Enum
+              DIVIDED = :DIVIDED
+              DIVIDED_ROUNDED = :DIVIDED_ROUNDED
+              EACH = :EACH
+            end
+
+            class Frequency < Metronome::Enum
+              MONTHLY = :MONTHLY
+              QUARTERLY = :QUARTERLY
+              SEMI_ANNUAL = :SEMI_ANNUAL
+              ANNUAL = :ANNUAL
+            end
+
+            # @!parse
+            #   # Create a new instance of RecurringSchedule from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :amount_distribution
+            #   #   @option data [String] :ending_before RFC 3339 timestamp (exclusive).
+            #   #   @option data [String] :frequency
+            #   #   @option data [String] :starting_at RFC 3339 timestamp (inclusive).
+            #   #   @option data [Float, nil] :amount Amount for the charge. Can be provided instead of unit_price and quantity. If
+            #   #     amount is sent, the unit_price is assumed to be the amount and quantity is
+            #   #     inferred to be 1.
+            #   #   @option data [Float, nil] :quantity Quantity for the charge. Will be multiplied by unit_price to determine the
+            #   #     amount and must be specified with unit_price. If specified amount cannot be
+            #   #     provided.
+            #   #   @option data [Float, nil] :unit_price Unit price for the charge. Will be multiplied by quantity to determine the
+            #   #     amount and must be specified with quantity. If specified amount cannot be
+            #   #     provided.
+            #   def initialize(data = {}) = super
+          end
+
+          class ScheduleItem < Metronome::BaseModel
+            # @!attribute [rw] timestamp
+            #   timestamp of the scheduled event
+            #   @return [Time]
+            required :timestamp, Time
+
+            # @!attribute [rw] amount
+            #   Amount for the charge. Can be provided instead of unit_price and quantity. If amount is sent, the unit_price is assumed to be the amount and quantity is inferred to be 1.
+            #   @return [Float]
+            optional :amount, Float
+
+            # @!attribute [rw] quantity
+            #   Quantity for the charge. Will be multiplied by unit_price to determine the amount and must be specified with unit_price. If specified amount cannot be provided.
+            #   @return [Float]
+            optional :quantity, Float
+
+            # @!attribute [rw] unit_price
+            #   Unit price for the charge. Will be multiplied by quantity to determine the amount and must be specified with quantity. If specified amount cannot be provided.
+            #   @return [Float]
+            optional :unit_price, Float
+
+            # @!parse
+            #   # Create a new instance of ScheduleItem from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :timestamp timestamp of the scheduled event
+            #   #   @option data [Float, nil] :amount Amount for the charge. Can be provided instead of unit_price and quantity. If
+            #   #     amount is sent, the unit_price is assumed to be the amount and quantity is
+            #   #     inferred to be 1.
+            #   #   @option data [Float, nil] :quantity Quantity for the charge. Will be multiplied by unit_price to determine the
+            #   #     amount and must be specified with unit_price. If specified amount cannot be
+            #   #     provided.
+            #   #   @option data [Float, nil] :unit_price Unit price for the charge. Will be multiplied by quantity to determine the
+            #   #     amount and must be specified with quantity. If specified amount cannot be
+            #   #     provided.
+            #   def initialize(data = {}) = super
+          end
+
+          # @!parse
+          #   # Create a new instance of Schedule from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String, nil] :credit_type_id Defaults to USD if not passed. Only USD is supported at this time.
+          #   #   @option data [Object, nil] :recurring_schedule Enter the unit price and quantity for the charge or instead only send the
+          #   #     amount. If amount is sent, the unit price is assumed to be the amount and
+          #   #     quantity is inferred to be 1.
+          #   #   @option data [Array<Object>, nil] :schedule_items Either provide amount or provide both unit_price and quantity.
+          #   def initialize(data = {}) = super
+        end
+
+        # @!parse
+        #   # Create a new instance of Discount from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :product_id
+        #   #   @option data [Object] :schedule Must provide either schedule_items or recurring_schedule.
+        #   #   @option data [String, nil] :name displayed on invoices
+        #   #   @option data [String, nil] :netsuite_sales_order_id This field's availability is dependent on your client's configuration.
+        #   def initialize(data = {}) = super
+      end
+
+      # Defaults to LOWEST_MULTIPLIER, which applies the greatest discount to list prices automatically. EXPLICIT prioritization requires specifying priorities for each multiplier; the one with the lowest priority value will be prioritized first. If tiered overrides are used, prioritization must be explicit.
+      class MultiplierOverridePrioritization < Metronome::Enum
+        LOWEST_MULTIPLIER = :LOWEST_MULTIPLIER
+        EXPLICIT = :EXPLICIT
+      end
+
+      class Override < Metronome::BaseModel
+        # @!attribute [rw] starting_at
+        #   RFC 3339 timestamp indicating when the override will start applying (inclusive)
+        #   @return [Time]
+        required :starting_at, Time
+
+        # @!attribute [rw] applicable_product_tags
+        #   tags identifying products whose rates are being overridden. Cannot be used in conjunction with override_specifiers.
+        #   @return [Array<String>]
+        optional :applicable_product_tags, Metronome::ArrayOf.new(String)
+
+        # @!attribute [rw] ending_before
+        #   RFC 3339 timestamp indicating when the override will stop applying (exclusive)
+        #   @return [Time]
+        optional :ending_before, Time
+
+        # @!attribute [rw] entitled
+        #   @return [Boolean]
+        optional :entitled, Metronome::BooleanModel
+
+        # @!attribute [rw] is_commit_specific
+        #   Indicates whether the override should only apply to commits. Defaults to `false`. If `true`, you can specify relevant commits in `override_specifiers` by passing `commit_ids`. if you do not specify `commit_ids`, then the override will apply when consuming any prepaid or postpaid commit.
+        #   @return [Boolean]
+        optional :is_commit_specific, Metronome::BooleanModel
+
+        # @!attribute [rw] multiplier
+        #   Required for MULTIPLIER type. Must be >=0.
+        #   @return [Float]
+        optional :multiplier, Float
+
+        # @!attribute [rw] override_specifiers
+        #   Cannot be used in conjunction with product_id or applicable_product_tags. If provided, the override will apply to all products with the specified specifiers.
+        #   @return [Array<Metronome::Models::ContractCreateParams::Override::OverrideSpecifier>]
+        optional :override_specifiers,
+                 Metronome::ArrayOf.new(
+                   -> {
+                     Metronome::Models::ContractCreateParams::Override::OverrideSpecifier
+                   }
+                 )
+
+        # @!attribute [rw] overwrite_rate
+        #   Required for OVERWRITE type.
+        #   @return [Metronome::Models::ContractCreateParams::Override::OverwriteRate]
+        optional :overwrite_rate, -> { Metronome::Models::ContractCreateParams::Override::OverwriteRate }
+
+        # @!attribute [rw] priority
+        #   Required for EXPLICIT multiplier prioritization scheme and all TIERED overrides. Under EXPLICIT prioritization, overwrites are prioritized first, and then tiered and multiplier overrides are prioritized by their priority value (lowest first). Must be > 0.
+        #   @return [Float]
+        optional :priority, Float
+
+        # @!attribute [rw] product_id
+        #   ID of the product whose rate is being overridden. Cannot be used in conjunction with override_specifiers.
+        #   @return [String]
+        optional :product_id, String
+
+        # @!attribute [rw] target
+        #   Indicates whether the override applies to commit rates or list rates. Can only be used for overrides that have `is_commit_specific` set to `true`. Defaults to `"LIST_RATE"`.
+        #   @return [Symbol, Metronome::Models::ContractCreateParams::Override::Target]
+        optional :target, enum: -> { Metronome::Models::ContractCreateParams::Override::Target }
+
+        # @!attribute [rw] tiers
+        #   Required for TIERED type. Must have at least one tier.
+        #   @return [Array<Metronome::Models::ContractCreateParams::Override::Tier>]
+        optional :tiers,
+                 Metronome::ArrayOf.new(
+                   -> {
+                     Metronome::Models::ContractCreateParams::Override::Tier
+                   }
+                 )
+
+        # @!attribute [rw] type
+        #   Overwrites are prioritized over multipliers and tiered overrides.
+        #   @return [Symbol, Metronome::Models::ContractCreateParams::Override::Type]
+        optional :type, enum: -> { Metronome::Models::ContractCreateParams::Override::Type }
+
+        class OverrideSpecifier < Metronome::BaseModel
+          # @!attribute [rw] commit_ids
+          #   Can only be used for commit specific overrides. Must be used in conjunction with one of product_id, product_tags, pricing_group_values, or presentation_group_values. If provided, the override will only apply to the specified commits. If not provided, the override will apply to all commits.
+          #   @return [Array<String>]
+          optional :commit_ids, Metronome::ArrayOf.new(String)
+
+          # @!attribute [rw] presentation_group_values
+          #   A map of group names to values. The override will only apply to line items with the specified presentation group values. Can only be used for multiplier overrides.
+          #   @return [Hash]
+          optional :presentation_group_values, Hash
+
+          # @!attribute [rw] pricing_group_values
+          #   A map of pricing group names to values. The override will only apply to products with the specified pricing group values.
+          #   @return [Hash]
+          optional :pricing_group_values, Hash
+
+          # @!attribute [rw] product_id
+          #   If provided, the override will only apply to the product with the specified ID.
+          #   @return [String]
+          optional :product_id, String
+
+          # @!attribute [rw] product_tags
+          #   If provided, the override will only apply to products with all the specified tags.
+          #   @return [Array<String>]
+          optional :product_tags, Metronome::ArrayOf.new(String)
+
+          # @!parse
+          #   # Create a new instance of OverrideSpecifier from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [Array<String>, nil] :commit_ids Can only be used for commit specific overrides. Must be used in conjunction with
+          #   #     one of product_id, product_tags, pricing_group_values, or
+          #   #     presentation_group_values. If provided, the override will only apply to the
+          #   #     specified commits. If not provided, the override will apply to all commits.
+          #   #   @option data [Hash, nil] :presentation_group_values A map of group names to values. The override will only apply to line items with
+          #   #     the specified presentation group values. Can only be used for multiplier
+          #   #     overrides.
+          #   #   @option data [Hash, nil] :pricing_group_values A map of pricing group names to values. The override will only apply to products
+          #   #     with the specified pricing group values.
+          #   #   @option data [String, nil] :product_id If provided, the override will only apply to the product with the specified ID.
+          #   #   @option data [Array<String>, nil] :product_tags If provided, the override will only apply to products with all the specified
+          #   #     tags.
+          #   def initialize(data = {}) = super
+        end
+
+        class OverwriteRate < Metronome::BaseModel
+          # @!attribute [rw] rate_type
+          #   @return [Symbol, Metronome::Models::ContractCreateParams::Override::OverwriteRate::RateType]
+          required :rate_type,
+                   enum: -> { Metronome::Models::ContractCreateParams::Override::OverwriteRate::RateType }
+
+          # @!attribute [rw] credit_type_id
+          #   @return [String]
+          optional :credit_type_id, String
+
+          # @!attribute [rw] custom_rate
+          #   Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.
+          #   @return [Hash]
+          optional :custom_rate, Hash
+
+          # @!attribute [rw] is_prorated
+          #   Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be set to true.
+          #   @return [Boolean]
+          optional :is_prorated, Metronome::BooleanModel
+
+          # @!attribute [rw] price
+          #   Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
+          #   @return [Float]
+          optional :price, Float
+
+          # @!attribute [rw] quantity
+          #   Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
+          #   @return [Float]
+          optional :quantity, Float
+
+          # @!attribute [rw] tiers
+          #   Only set for TIERED rate_type.
+          #   @return [Array<Metronome::Models::Tier>]
+          optional :tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Tier })
+
+          class RateType < Metronome::Enum
+            FLAT = :FLAT
+            PERCENTAGE = :PERCENTAGE
+            SUBSCRIPTION = :SUBSCRIPTION
+            TIERED = :TIERED
+            CUSTOM = :CUSTOM
+          end
+
+          # @!parse
+          #   # Create a new instance of OverwriteRate from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :rate_type
+          #   #   @option data [String, nil] :credit_type_id
+          #   #   @option data [Hash, nil] :custom_rate Only set for CUSTOM rate_type. This field is interpreted by custom rate
+          #   #     processors.
+          #   #   @option data [Hash, nil] :is_prorated Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
+          #   #     set to true.
+          #   #   @option data [Float, nil] :price Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
+          #   #     this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
+          #   #   @option data [Float, nil] :quantity Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
+          #   #   @option data [Array<Object>, nil] :tiers Only set for TIERED rate_type.
+          #   def initialize(data = {}) = super
+        end
+
+        # Indicates whether the override applies to commit rates or list rates. Can only be used for overrides that have `is_commit_specific` set to `true`. Defaults to `"LIST_RATE"`.
+        class Target < Metronome::Enum
+          COMMIT_RATE = :COMMIT_RATE
+          COMMIT_RATE = :commit_rate
+          LIST_RATE = :LIST_RATE
+          LIST_RATE = :list_rate
+        end
+
+        class Tier < Metronome::BaseModel
+          # @!attribute [rw] multiplier
+          #   @return [Float]
+          required :multiplier, Float
+
+          # @!attribute [rw] size
+          #   @return [Float]
+          optional :size, Float
+
+          # @!parse
+          #   # Create a new instance of Tier from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [Float] :multiplier
+          #   #   @option data [Float, nil] :size
+          #   def initialize(data = {}) = super
+        end
+
+        # Overwrites are prioritized over multipliers and tiered overrides.
+        class Type < Metronome::Enum
+          OVERWRITE = :OVERWRITE
+          MULTIPLIER = :MULTIPLIER
+          TIERED = :TIERED
+        end
+
+        # @!parse
+        #   # Create a new instance of Override from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :starting_at RFC 3339 timestamp indicating when the override will start applying (inclusive)
+        #   #   @option data [Array<String>, nil] :applicable_product_tags tags identifying products whose rates are being overridden. Cannot be used in
+        #   #     conjunction with override_specifiers.
+        #   #   @option data [String, nil] :ending_before RFC 3339 timestamp indicating when the override will stop applying (exclusive)
+        #   #   @option data [Hash, nil] :entitled
+        #   #   @option data [Hash, nil] :is_commit_specific Indicates whether the override should only apply to commits. Defaults to
+        #   #     `false`. If `true`, you can specify relevant commits in `override_specifiers` by
+        #   #     passing `commit_ids`. if you do not specify `commit_ids`, then the override will
+        #   #     apply when consuming any prepaid or postpaid commit.
+        #   #   @option data [Float, nil] :multiplier Required for MULTIPLIER type. Must be >=0.
+        #   #   @option data [Array<Object>, nil] :override_specifiers Cannot be used in conjunction with product_id or applicable_product_tags. If
+        #   #     provided, the override will apply to all products with the specified specifiers.
+        #   #   @option data [Object, nil] :overwrite_rate Required for OVERWRITE type.
+        #   #   @option data [Float, nil] :priority Required for EXPLICIT multiplier prioritization scheme and all TIERED overrides.
+        #   #     Under EXPLICIT prioritization, overwrites are prioritized first, and then tiered
+        #   #     and multiplier overrides are prioritized by their priority value (lowest first).
+        #   #     Must be > 0.
+        #   #   @option data [String, nil] :product_id ID of the product whose rate is being overridden. Cannot be used in conjunction
+        #   #     with override_specifiers.
+        #   #   @option data [String, nil] :target Indicates whether the override applies to commit rates or list rates. Can only
+        #   #     be used for overrides that have `is_commit_specific` set to `true`. Defaults to
+        #   #     `"LIST_RATE"`.
+        #   #   @option data [Array<Object>, nil] :tiers Required for TIERED type. Must have at least one tier.
+        #   #   @option data [String, nil] :type Overwrites are prioritized over multipliers and tiered overrides.
+        #   def initialize(data = {}) = super
+      end
+
+      class ProfessionalService < Metronome::BaseModel
+        # @!attribute [rw] max_amount
+        #   Maximum amount for the term.
+        #   @return [Float]
+        required :max_amount, Float
+
+        # @!attribute [rw] product_id
+        #   @return [String]
+        required :product_id, String
+
+        # @!attribute [rw] quantity
+        #   Quantity for the charge. Will be multiplied by unit_price to determine the amount.
+        #   @return [Float]
+        required :quantity, Float
+
+        # @!attribute [rw] unit_price
+        #   Unit price for the charge. Will be multiplied by quantity to determine the amount and must be specified.
+        #   @return [Float]
+        required :unit_price, Float
+
+        # @!attribute [rw] custom_fields
+        #   @return [Hash]
+        optional :custom_fields, Hash
+
+        # @!attribute [rw] description
+        #   @return [String]
+        optional :description, String
+
+        # @!attribute [rw] netsuite_sales_order_id
+        #   This field's availability is dependent on your client's configuration.
+        #   @return [String]
+        optional :netsuite_sales_order_id, String
+
+        # @!parse
+        #   # Create a new instance of ProfessionalService from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Float] :max_amount Maximum amount for the term.
+        #   #   @option data [String] :product_id
+        #   #   @option data [Float] :quantity Quantity for the charge. Will be multiplied by unit_price to determine the
+        #   #     amount.
+        #   #   @option data [Float] :unit_price Unit price for the charge. Will be multiplied by quantity to determine the
+        #   #     amount and must be specified.
+        #   #   @option data [Hash, nil] :custom_fields
+        #   #   @option data [String, nil] :description
+        #   #   @option data [String, nil] :netsuite_sales_order_id This field's availability is dependent on your client's configuration.
+        #   def initialize(data = {}) = super
+      end
+
+      class ResellerRoyalty < Metronome::BaseModel
+        # @!attribute [rw] fraction
+        #   @return [Float]
+        required :fraction, Float
+
+        # @!attribute [rw] netsuite_reseller_id
+        #   @return [String]
+        required :netsuite_reseller_id, String
+
+        # @!attribute [rw] reseller_type
+        #   @return [Symbol, Metronome::Models::ContractCreateParams::ResellerRoyalty::ResellerType]
+        required :reseller_type,
+                 enum: -> { Metronome::Models::ContractCreateParams::ResellerRoyalty::ResellerType }
+
+        # @!attribute [rw] starting_at
+        #   @return [Time]
+        required :starting_at, Time
+
+        # @!attribute [rw] applicable_product_ids
+        #   Must provide at least one of applicable_product_ids or applicable_product_tags.
+        #   @return [Array<String>]
+        optional :applicable_product_ids, Metronome::ArrayOf.new(String)
+
+        # @!attribute [rw] applicable_product_tags
+        #   Must provide at least one of applicable_product_ids or applicable_product_tags.
+        #   @return [Array<String>]
+        optional :applicable_product_tags, Metronome::ArrayOf.new(String)
+
+        # @!attribute [rw] aws_options
+        #   @return [Metronome::Models::ContractCreateParams::ResellerRoyalty::AwsOptions]
+        optional :aws_options, -> { Metronome::Models::ContractCreateParams::ResellerRoyalty::AwsOptions }
+
+        # @!attribute [rw] ending_before
+        #   @return [Time]
+        optional :ending_before, Time
+
+        # @!attribute [rw] gcp_options
+        #   @return [Metronome::Models::ContractCreateParams::ResellerRoyalty::GcpOptions]
+        optional :gcp_options, -> { Metronome::Models::ContractCreateParams::ResellerRoyalty::GcpOptions }
+
+        # @!attribute [rw] reseller_contract_value
+        #   @return [Float]
+        optional :reseller_contract_value, Float
+
+        class ResellerType < Metronome::Enum
+          AWS = :AWS
+          AWS_PRO_SERVICE = :AWS_PRO_SERVICE
+          GCP = :GCP
+          GCP_PRO_SERVICE = :GCP_PRO_SERVICE
+        end
+
+        class AwsOptions < Metronome::BaseModel
+          # @!attribute [rw] aws_account_number
+          #   @return [String]
+          optional :aws_account_number, String
+
+          # @!attribute [rw] aws_offer_id
+          #   @return [String]
+          optional :aws_offer_id, String
+
+          # @!attribute [rw] aws_payer_reference_id
+          #   @return [String]
+          optional :aws_payer_reference_id, String
+
+          # @!parse
+          #   # Create a new instance of AwsOptions from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String, nil] :aws_account_number
+          #   #   @option data [String, nil] :aws_offer_id
+          #   #   @option data [String, nil] :aws_payer_reference_id
+          #   def initialize(data = {}) = super
+        end
+
+        class GcpOptions < Metronome::BaseModel
+          # @!attribute [rw] gcp_account_id
+          #   @return [String]
+          optional :gcp_account_id, String
+
+          # @!attribute [rw] gcp_offer_id
+          #   @return [String]
+          optional :gcp_offer_id, String
+
+          # @!parse
+          #   # Create a new instance of GcpOptions from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String, nil] :gcp_account_id
+          #   #   @option data [String, nil] :gcp_offer_id
+          #   def initialize(data = {}) = super
+        end
+
+        # @!parse
+        #   # Create a new instance of ResellerRoyalty from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Float] :fraction
+        #   #   @option data [String] :netsuite_reseller_id
+        #   #   @option data [String] :reseller_type
+        #   #   @option data [String] :starting_at
+        #   #   @option data [Array<String>, nil] :applicable_product_ids Must provide at least one of applicable_product_ids or applicable_product_tags.
+        #   #   @option data [Array<String>, nil] :applicable_product_tags Must provide at least one of applicable_product_ids or applicable_product_tags.
+        #   #   @option data [Object, nil] :aws_options
+        #   #   @option data [String, nil] :ending_before
+        #   #   @option data [Object, nil] :gcp_options
+        #   #   @option data [Float, nil] :reseller_contract_value
+        #   def initialize(data = {}) = super
+      end
+
+      class ScheduledCharge < Metronome::BaseModel
+        # @!attribute [rw] product_id
+        #   @return [String]
+        required :product_id, String
+
+        # @!attribute [rw] schedule
+        #   Must provide either schedule_items or recurring_schedule.
+        #   @return [Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule]
+        required :schedule, -> { Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule }
+
+        # @!attribute [rw] name
+        #   displayed on invoices
+        #   @return [String]
+        optional :name, String
+
+        # @!attribute [rw] netsuite_sales_order_id
+        #   This field's availability is dependent on your client's configuration.
+        #   @return [String]
+        optional :netsuite_sales_order_id, String
+
+        class Schedule < Metronome::BaseModel
+          # @!attribute [rw] credit_type_id
+          #   Defaults to USD if not passed. Only USD is supported at this time.
+          #   @return [String]
+          optional :credit_type_id, String
+
+          # @!attribute [rw] recurring_schedule
+          #   Enter the unit price and quantity for the charge or instead only send the amount. If amount is sent, the unit price is assumed to be the amount and quantity is inferred to be 1.
+          #   @return [Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule]
+          optional :recurring_schedule,
+                   -> { Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule }
+
+          # @!attribute [rw] schedule_items
+          #   Either provide amount or provide both unit_price and quantity.
+          #   @return [Array<Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::ScheduleItem>]
+          optional :schedule_items,
+                   Metronome::ArrayOf.new(
+                     -> {
+                       Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::ScheduleItem
+                     }
+                   )
+
+          class RecurringSchedule < Metronome::BaseModel
+            # @!attribute [rw] amount_distribution
+            #   @return [Symbol, Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::AmountDistribution]
+            required :amount_distribution,
+                     enum: -> {
+                       Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::AmountDistribution
+                     }
+
+            # @!attribute [rw] ending_before
+            #   RFC 3339 timestamp (exclusive).
+            #   @return [Time]
+            required :ending_before, Time
+
+            # @!attribute [rw] frequency
+            #   @return [Symbol, Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::Frequency]
+            required :frequency,
+                     enum: -> {
+                       Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::Frequency
+                     }
+
+            # @!attribute [rw] starting_at
+            #   RFC 3339 timestamp (inclusive).
+            #   @return [Time]
+            required :starting_at, Time
+
+            # @!attribute [rw] amount
+            #   Amount for the charge. Can be provided instead of unit_price and quantity. If amount is sent, the unit_price is assumed to be the amount and quantity is inferred to be 1.
+            #   @return [Float]
+            optional :amount, Float
+
+            # @!attribute [rw] quantity
+            #   Quantity for the charge. Will be multiplied by unit_price to determine the amount and must be specified with unit_price. If specified amount cannot be provided.
+            #   @return [Float]
+            optional :quantity, Float
+
+            # @!attribute [rw] unit_price
+            #   Unit price for the charge. Will be multiplied by quantity to determine the amount and must be specified with quantity. If specified amount cannot be provided.
+            #   @return [Float]
+            optional :unit_price, Float
+
+            class AmountDistribution < Metronome::Enum
+              DIVIDED = :DIVIDED
+              DIVIDED_ROUNDED = :DIVIDED_ROUNDED
+              EACH = :EACH
+            end
+
+            class Frequency < Metronome::Enum
+              MONTHLY = :MONTHLY
+              QUARTERLY = :QUARTERLY
+              SEMI_ANNUAL = :SEMI_ANNUAL
+              ANNUAL = :ANNUAL
+            end
+
+            # @!parse
+            #   # Create a new instance of RecurringSchedule from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :amount_distribution
+            #   #   @option data [String] :ending_before RFC 3339 timestamp (exclusive).
+            #   #   @option data [String] :frequency
+            #   #   @option data [String] :starting_at RFC 3339 timestamp (inclusive).
+            #   #   @option data [Float, nil] :amount Amount for the charge. Can be provided instead of unit_price and quantity. If
+            #   #     amount is sent, the unit_price is assumed to be the amount and quantity is
+            #   #     inferred to be 1.
+            #   #   @option data [Float, nil] :quantity Quantity for the charge. Will be multiplied by unit_price to determine the
+            #   #     amount and must be specified with unit_price. If specified amount cannot be
+            #   #     provided.
+            #   #   @option data [Float, nil] :unit_price Unit price for the charge. Will be multiplied by quantity to determine the
+            #   #     amount and must be specified with quantity. If specified amount cannot be
+            #   #     provided.
+            #   def initialize(data = {}) = super
+          end
+
+          class ScheduleItem < Metronome::BaseModel
+            # @!attribute [rw] timestamp
+            #   timestamp of the scheduled event
+            #   @return [Time]
+            required :timestamp, Time
+
+            # @!attribute [rw] amount
+            #   Amount for the charge. Can be provided instead of unit_price and quantity. If amount is sent, the unit_price is assumed to be the amount and quantity is inferred to be 1.
+            #   @return [Float]
+            optional :amount, Float
+
+            # @!attribute [rw] quantity
+            #   Quantity for the charge. Will be multiplied by unit_price to determine the amount and must be specified with unit_price. If specified amount cannot be provided.
+            #   @return [Float]
+            optional :quantity, Float
+
+            # @!attribute [rw] unit_price
+            #   Unit price for the charge. Will be multiplied by quantity to determine the amount and must be specified with quantity. If specified amount cannot be provided.
+            #   @return [Float]
+            optional :unit_price, Float
+
+            # @!parse
+            #   # Create a new instance of ScheduleItem from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :timestamp timestamp of the scheduled event
+            #   #   @option data [Float, nil] :amount Amount for the charge. Can be provided instead of unit_price and quantity. If
+            #   #     amount is sent, the unit_price is assumed to be the amount and quantity is
+            #   #     inferred to be 1.
+            #   #   @option data [Float, nil] :quantity Quantity for the charge. Will be multiplied by unit_price to determine the
+            #   #     amount and must be specified with unit_price. If specified amount cannot be
+            #   #     provided.
+            #   #   @option data [Float, nil] :unit_price Unit price for the charge. Will be multiplied by quantity to determine the
+            #   #     amount and must be specified with quantity. If specified amount cannot be
+            #   #     provided.
+            #   def initialize(data = {}) = super
+          end
+
+          # @!parse
+          #   # Create a new instance of Schedule from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String, nil] :credit_type_id Defaults to USD if not passed. Only USD is supported at this time.
+          #   #   @option data [Object, nil] :recurring_schedule Enter the unit price and quantity for the charge or instead only send the
+          #   #     amount. If amount is sent, the unit price is assumed to be the amount and
+          #   #     quantity is inferred to be 1.
+          #   #   @option data [Array<Object>, nil] :schedule_items Either provide amount or provide both unit_price and quantity.
+          #   def initialize(data = {}) = super
+        end
+
+        # @!parse
+        #   # Create a new instance of ScheduledCharge from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :product_id
+        #   #   @option data [Object] :schedule Must provide either schedule_items or recurring_schedule.
+        #   #   @option data [String, nil] :name displayed on invoices
+        #   #   @option data [String, nil] :netsuite_sales_order_id This field's availability is dependent on your client's configuration.
+        #   def initialize(data = {}) = super
+      end
+
+      class Transition < Metronome::BaseModel
+        # @!attribute [rw] from_contract_id
+        #   @return [String]
+        required :from_contract_id, String
+
+        # @!attribute [rw] type
+        #   This field's available values may vary based on your client's configuration.
+        #   @return [Symbol, Metronome::Models::ContractCreateParams::Transition::Type]
+        required :type, enum: -> { Metronome::Models::ContractCreateParams::Transition::Type }
+
+        # @!attribute [rw] future_invoice_behavior
+        #   @return [Metronome::Models::ContractCreateParams::Transition::FutureInvoiceBehavior]
+        optional :future_invoice_behavior,
+                 -> { Metronome::Models::ContractCreateParams::Transition::FutureInvoiceBehavior }
+
+        # This field's available values may vary based on your client's configuration.
+        class Type < Metronome::Enum
+          SUPERSEDE = :SUPERSEDE
+          RENEWAL = :RENEWAL
+        end
+
+        class FutureInvoiceBehavior < Metronome::BaseModel
+          # @!attribute [rw] trueup
+          #   Controls whether future trueup invoices are billed or removed. Default behavior is AS_IS if not specified.
+          #   @return [Symbol, Metronome::Models::ContractCreateParams::Transition::FutureInvoiceBehavior::Trueup]
+          optional :trueup,
+                   enum: -> {
+                     Metronome::Models::ContractCreateParams::Transition::FutureInvoiceBehavior::Trueup
+                   }
+
+          # Controls whether future trueup invoices are billed or removed. Default behavior is AS_IS if not specified.
+          class Trueup < Metronome::Enum
+            REMOVE = :REMOVE
+            AS_IS = :AS_IS
+          end
+
+          # @!parse
+          #   # Create a new instance of FutureInvoiceBehavior from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String, nil] :trueup Controls whether future trueup invoices are billed or removed. Default behavior
+          #   #     is AS_IS if not specified.
+          #   def initialize(data = {}) = super
+        end
+
+        # @!parse
+        #   # Create a new instance of Transition from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :from_contract_id
+        #   #   @option data [String] :type This field's available values may vary based on your client's configuration.
+        #   #   @option data [Object, nil] :future_invoice_behavior
+        #   def initialize(data = {}) = super
+      end
+
+      class UsageStatementSchedule < Metronome::BaseModel
+        # @!attribute [rw] frequency
+        #   @return [Symbol, Metronome::Models::ContractCreateParams::UsageStatementSchedule::Frequency]
+        required :frequency,
+                 enum: -> { Metronome::Models::ContractCreateParams::UsageStatementSchedule::Frequency }
+
+        # @!attribute [rw] billing_anchor_date
+        #   Required when using CUSTOM_DATE. This option lets you set a historical billing anchor date, aligning future billing cycles with a chosen cadence. For example, if a contract starts on 2024-09-15 and you set the anchor date to 2024-09-10 with a MONTHLY frequency, the first usage statement will cover 09-15 to 10-10. Subsequent statements will follow the 10th of each month.
+        #   @return [Time]
+        optional :billing_anchor_date, Time
+
+        # @!attribute [rw] day
+        #   If not provided, defaults to the first day of the month.
+        #   @return [Symbol, Metronome::Models::ContractCreateParams::UsageStatementSchedule::Day]
+        optional :day, enum: -> { Metronome::Models::ContractCreateParams::UsageStatementSchedule::Day }
+
+        # @!attribute [rw] invoice_generation_starting_at
+        #   The date Metronome should start generating usage invoices. If unspecified, contract start date will be used. This is useful to set if you want to import historical invoices via our 'Create Historical Invoices' API rather than having Metronome automatically generate them.
+        #   @return [Time]
+        optional :invoice_generation_starting_at, Time
+
+        class Frequency < Metronome::Enum
+          MONTHLY = :MONTHLY
+          QUARTERLY = :QUARTERLY
+          ANNUAL = :ANNUAL
+        end
+
+        # If not provided, defaults to the first day of the month.
+        class Day < Metronome::Enum
+          FIRST_OF_MONTH = :FIRST_OF_MONTH
+          CONTRACT_START = :CONTRACT_START
+          CUSTOM_DATE = :CUSTOM_DATE
+          CUSTOM_DATE = :custom_date
+        end
+
+        # @!parse
+        #   # Create a new instance of UsageStatementSchedule from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :frequency
+        #   #   @option data [String, nil] :billing_anchor_date Required when using CUSTOM_DATE. This option lets you set a historical billing
+        #   #     anchor date, aligning future billing cycles with a chosen cadence. For example,
+        #   #     if a contract starts on 2024-09-15 and you set the anchor date to 2024-09-10
+        #   #     with a MONTHLY frequency, the first usage statement will cover 09-15 to 10-10.
+        #   #     Subsequent statements will follow the 10th of each month.
+        #   #   @option data [String, nil] :day If not provided, defaults to the first day of the month.
+        #   #   @option data [String, nil] :invoice_generation_starting_at The date Metronome should start generating usage invoices. If unspecified,
+        #   #     contract start date will be used. This is useful to set if you want to import
+        #   #     historical invoices via our 'Create Historical Invoices' API rather than having
+        #   #     Metronome automatically generate them.
+        #   def initialize(data = {}) = super
+      end
+    end
+  end
+end

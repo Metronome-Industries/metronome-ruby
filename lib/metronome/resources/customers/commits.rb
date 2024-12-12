@@ -43,11 +43,12 @@ module Metronome
         #
         # @return [Metronome::Models::Customers::CommitCreateResponse]
         def create(params = {}, opts = {})
+          parsed = Metronome::Models::Customers::CommitCreateParams.dump(params)
           req = {
             method: :post,
             path: "/contracts/customerCommits/create",
             headers: {"Content-Type" => "application/json"},
-            body: params,
+            body: parsed,
             model: Metronome::Models::Customers::CommitCreateResponse
           }
           @client.request(req, opts)
@@ -71,11 +72,12 @@ module Metronome
         #
         # @return [Metronome::Models::Customers::CommitListResponse]
         def list(params = {}, opts = {})
+          parsed = Metronome::Models::Customers::CommitListParams.dump(params)
           req = {
             method: :post,
             path: "/contracts/customerCommits/list",
             headers: {"Content-Type" => "application/json"},
-            body: params,
+            body: parsed,
             model: Metronome::Models::Customers::CommitListResponse
           }
           @client.request(req, opts)
@@ -96,11 +98,12 @@ module Metronome
         #
         # @return [Metronome::Models::Customers::CommitUpdateEndDateResponse]
         def update_end_date(params = {}, opts = {})
+          parsed = Metronome::Models::Customers::CommitUpdateEndDateParams.dump(params)
           req = {
             method: :post,
             path: "/contracts/customerCommits/updateEndDate",
             headers: {"Content-Type" => "application/json"},
-            body: params,
+            body: parsed,
             model: Metronome::Models::Customers::CommitUpdateEndDateResponse
           }
           @client.request(req, opts)

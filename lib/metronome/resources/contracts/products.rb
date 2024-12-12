@@ -47,11 +47,12 @@ module Metronome
         #
         # @return [Metronome::Models::Contracts::ProductCreateResponse]
         def create(params = {}, opts = {})
+          parsed = Metronome::Models::Contracts::ProductCreateParams.dump(params)
           req = {
             method: :post,
             path: "/contract-pricing/products/create",
             headers: {"Content-Type" => "application/json"},
-            body: params,
+            body: parsed,
             model: Metronome::Models::Contracts::ProductCreateResponse
           }
           @client.request(req, opts)
@@ -66,11 +67,12 @@ module Metronome
         #
         # @return [Metronome::Models::Contracts::ProductRetrieveResponse]
         def retrieve(params = {}, opts = {})
+          parsed = Metronome::Models::Contracts::ProductRetrieveParams.dump(params)
           req = {
             method: :post,
             path: "/contract-pricing/products/get",
             headers: {"Content-Type" => "application/json"},
-            body: params,
+            body: parsed,
             model: Metronome::Models::Contracts::ProductRetrieveResponse
           }
           @client.request(req, opts)
@@ -122,11 +124,12 @@ module Metronome
         #
         # @return [Metronome::Models::Contracts::ProductUpdateResponse]
         def update(params = {}, opts = {})
+          parsed = Metronome::Models::Contracts::ProductUpdateParams.dump(params)
           req = {
             method: :post,
             path: "/contract-pricing/products/update",
             headers: {"Content-Type" => "application/json"},
-            body: params,
+            body: parsed,
             model: Metronome::Models::Contracts::ProductUpdateResponse
           }
           @client.request(req, opts)
@@ -143,13 +146,14 @@ module Metronome
         #
         # @return [Metronome::CursorPage<Metronome::Models::Contracts::ProductListResponse>]
         def list(params = {}, opts = {})
+          parsed = Metronome::Models::Contracts::ProductListParams.dump(params)
           query_params = [:limit, :next_page]
           req = {
             method: :post,
             path: "/contract-pricing/products/list",
-            query: params.slice(*query_params),
+            query: parsed.slice(*query_params),
             headers: {"Content-Type" => "application/json"},
-            body: params.except(*query_params),
+            body: parsed.except(*query_params),
             page: Metronome::CursorPage,
             model: Metronome::Models::Contracts::ProductListResponse
           }
@@ -165,11 +169,12 @@ module Metronome
         #
         # @return [Metronome::Models::Contracts::ProductArchiveResponse]
         def archive(params = {}, opts = {})
+          parsed = Metronome::Models::Contracts::ProductArchiveParams.dump(params)
           req = {
             method: :post,
             path: "/contract-pricing/products/archive",
             headers: {"Content-Type" => "application/json"},
-            body: params,
+            body: parsed,
             model: Metronome::Models::Contracts::ProductArchiveResponse
           }
           @client.request(req, opts)

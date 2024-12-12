@@ -23,11 +23,12 @@ module Metronome
       #
       # @return [Metronome::Models::DashboardGetEmbeddableURLResponse]
       def get_embeddable_url(params = {}, opts = {})
+        parsed = Metronome::Models::DashboardGetEmbeddableURLParams.dump(params)
         req = {
           method: :post,
           path: "/dashboards/getEmbeddableUrl",
           headers: {"Content-Type" => "application/json"},
-          body: params,
+          body: parsed,
           model: Metronome::Models::DashboardGetEmbeddableURLResponse
         }
         @client.request(req, opts)

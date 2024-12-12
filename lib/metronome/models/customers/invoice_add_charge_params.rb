@@ -1,0 +1,41 @@
+# frozen_string_literal: true
+
+module Metronome
+  module Models
+    module Customers
+      class InvoiceAddChargeParams < Metronome::BaseModel
+        # @!attribute [rw] customer_id
+        #   @return [String]
+        required :customer_id, String
+
+        # @!attribute [rw] charge_id
+        #   The Metronome ID of the charge to add to the invoice. Note that the charge must be on a product that is not on the current plan, and the product must have only fixed charges.
+        #   @return [String]
+        required :charge_id, String
+
+        # @!attribute [rw] customer_plan_id
+        #   The Metronome ID of the customer plan to add the charge to.
+        #   @return [String]
+        required :customer_plan_id, String
+
+        # @!attribute [rw] description
+        #   @return [String]
+        required :description, String
+
+        # @!attribute [rw] invoice_start_timestamp
+        #   The start_timestamp of the invoice to add the charge to.
+        #   @return [Time]
+        required :invoice_start_timestamp, Time
+
+        # @!attribute [rw] price
+        #   The price of the charge. This price will match the currency on the invoice, e.g. USD cents.
+        #   @return [Float]
+        required :price, Float
+
+        # @!attribute [rw] quantity
+        #   @return [Float]
+        required :quantity, Float
+      end
+    end
+  end
+end

@@ -34,11 +34,12 @@ module Metronome
         #
         # @return [Metronome::Models::Customers::CreditCreateResponse]
         def create(params = {}, opts = {})
+          parsed = Metronome::Models::Customers::CreditCreateParams.dump(params)
           req = {
             method: :post,
             path: "/contracts/customerCredits/create",
             headers: {"Content-Type" => "application/json"},
-            body: params,
+            body: parsed,
             model: Metronome::Models::Customers::CreditCreateResponse
           }
           @client.request(req, opts)
@@ -62,11 +63,12 @@ module Metronome
         #
         # @return [Metronome::Models::Customers::CreditListResponse]
         def list(params = {}, opts = {})
+          parsed = Metronome::Models::Customers::CreditListParams.dump(params)
           req = {
             method: :post,
             path: "/contracts/customerCredits/list",
             headers: {"Content-Type" => "application/json"},
-            body: params,
+            body: parsed,
             model: Metronome::Models::Customers::CreditListResponse
           }
           @client.request(req, opts)
@@ -84,11 +86,12 @@ module Metronome
         #
         # @return [Metronome::Models::Customers::CreditUpdateEndDateResponse]
         def update_end_date(params = {}, opts = {})
+          parsed = Metronome::Models::Customers::CreditUpdateEndDateParams.dump(params)
           req = {
             method: :post,
             path: "/contracts/customerCredits/updateEndDate",
             headers: {"Content-Type" => "application/json"},
-            body: params,
+            body: parsed,
             model: Metronome::Models::Customers::CreditUpdateEndDateResponse
           }
           @client.request(req, opts)
