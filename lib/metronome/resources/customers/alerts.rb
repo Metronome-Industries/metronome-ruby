@@ -20,11 +20,12 @@ module Metronome
         #
         # @return [Metronome::Models::Customers::AlertRetrieveResponse]
         def retrieve(params = {}, opts = {})
+          parsed = Metronome::Models::Customers::AlertRetrieveParams.dump(params)
           req = {
             method: :post,
             path: "/customer-alerts/get",
             headers: {"Content-Type" => "application/json"},
-            body: params,
+            body: parsed,
             model: Metronome::Models::Customers::AlertRetrieveResponse
           }
           @client.request(req, opts)
@@ -42,13 +43,14 @@ module Metronome
         #
         # @return [Metronome::Models::Customers::AlertListResponse]
         def list(params = {}, opts = {})
+          parsed = Metronome::Models::Customers::AlertListParams.dump(params)
           query_params = [:next_page]
           req = {
             method: :post,
             path: "/customer-alerts/list",
-            query: params.slice(*query_params),
+            query: parsed.slice(*query_params),
             headers: {"Content-Type" => "application/json"},
-            body: params.except(*query_params),
+            body: parsed.except(*query_params),
             model: Metronome::Models::Customers::AlertListResponse
           }
           @client.request(req, opts)
@@ -64,11 +66,12 @@ module Metronome
         #
         # @return [nil]
         def reset(params = {}, opts = {})
+          parsed = Metronome::Models::Customers::AlertResetParams.dump(params)
           req = {
             method: :post,
             path: "/customer-alerts/reset",
             headers: {"Content-Type" => "application/json"},
-            body: params,
+            body: parsed,
             model: NilClass
           }
           @client.request(req, opts)

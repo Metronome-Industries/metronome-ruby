@@ -25,13 +25,14 @@ module Metronome
           #
           # @return [Metronome::CursorPage<Metronome::Models::Contracts::RateCards::RateListResponse>]
           def list(params = {}, opts = {})
+            parsed = Metronome::Models::Contracts::RateCards::RateListParams.dump(params)
             query_params = [:limit, :next_page]
             req = {
               method: :post,
               path: "/contract-pricing/rate-cards/getRates",
-              query: params.slice(*query_params),
+              query: parsed.slice(*query_params),
               headers: {"Content-Type" => "application/json"},
-              body: params.except(*query_params),
+              body: parsed.except(*query_params),
               page: Metronome::CursorPage,
               model: Metronome::Models::Contracts::RateCards::RateListResponse
             }
@@ -71,11 +72,12 @@ module Metronome
           #
           # @return [Metronome::Models::Contracts::RateCards::RateAddResponse]
           def add(params = {}, opts = {})
+            parsed = Metronome::Models::Contracts::RateCards::RateAddParams.dump(params)
             req = {
               method: :post,
               path: "/contract-pricing/rate-cards/addRate",
               headers: {"Content-Type" => "application/json"},
-              body: params,
+              body: parsed,
               model: Metronome::Models::Contracts::RateCards::RateAddResponse
             }
             @client.request(req, opts)
@@ -91,11 +93,12 @@ module Metronome
           #
           # @return [Metronome::Models::Contracts::RateCards::RateAddManyResponse]
           def add_many(params = {}, opts = {})
+            parsed = Metronome::Models::Contracts::RateCards::RateAddManyParams.dump(params)
             req = {
               method: :post,
               path: "/contract-pricing/rate-cards/addRates",
               headers: {"Content-Type" => "application/json"},
-              body: params,
+              body: parsed,
               model: Metronome::Models::Contracts::RateCards::RateAddManyResponse
             }
             @client.request(req, opts)

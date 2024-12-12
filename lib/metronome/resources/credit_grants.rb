@@ -38,11 +38,12 @@ module Metronome
       #
       # @return [Metronome::Models::CreditGrantCreateResponse]
       def create(params = {}, opts = {})
+        parsed = Metronome::Models::CreditGrantCreateParams.dump(params)
         req = {
           method: :post,
           path: "/credits/createGrant",
           headers: {"Content-Type" => "application/json"},
-          body: params,
+          body: parsed,
           model: Metronome::Models::CreditGrantCreateResponse
         }
         @client.request(req, opts)
@@ -67,13 +68,14 @@ module Metronome
       #
       # @return [Metronome::CursorPage<Metronome::Models::CreditGrantListResponse>]
       def list(params = {}, opts = {})
+        parsed = Metronome::Models::CreditGrantListParams.dump(params)
         query_params = [:limit, :next_page]
         req = {
           method: :post,
           path: "/credits/listGrants",
-          query: params.slice(*query_params),
+          query: parsed.slice(*query_params),
           headers: {"Content-Type" => "application/json"},
-          body: params.except(*query_params),
+          body: parsed.except(*query_params),
           page: Metronome::CursorPage,
           model: Metronome::Models::CreditGrantListResponse
         }
@@ -92,11 +94,12 @@ module Metronome
       #
       # @return [Metronome::Models::CreditGrantEditResponse]
       def edit(params = {}, opts = {})
+        parsed = Metronome::Models::CreditGrantEditParams.dump(params)
         req = {
           method: :post,
           path: "/credits/editGrant",
           headers: {"Content-Type" => "application/json"},
-          body: params,
+          body: parsed,
           model: Metronome::Models::CreditGrantEditResponse
         }
         @client.request(req, opts)
@@ -112,10 +115,11 @@ module Metronome
       #
       # @return [Metronome::CursorPage<Metronome::Models::CreditGrantListCreditTypesResponse>]
       def list_credit_types(params = {}, opts = {})
+        parsed = Metronome::Models::CreditGrantListCreditTypesParams.dump(params)
         req = {
           method: :get,
           path: "/credit-types/list",
-          query: params,
+          query: parsed,
           page: Metronome::CursorPage,
           model: Metronome::Models::CreditGrantListCreditTypesResponse
         }
@@ -143,13 +147,14 @@ module Metronome
       #
       # @return [Metronome::Models::CreditGrantListEntriesResponse]
       def list_entries(params = {}, opts = {})
+        parsed = Metronome::Models::CreditGrantListEntriesParams.dump(params)
         query_params = [:next_page]
         req = {
           method: :post,
           path: "/credits/listEntries",
-          query: params.slice(*query_params),
+          query: parsed.slice(*query_params),
           headers: {"Content-Type" => "application/json"},
-          body: params.except(*query_params),
+          body: parsed.except(*query_params),
           model: Metronome::Models::CreditGrantListEntriesResponse
         }
         @client.request(req, opts)
@@ -166,11 +171,12 @@ module Metronome
       #
       # @return [Metronome::Models::CreditGrantVoidResponse]
       def void(params = {}, opts = {})
+        parsed = Metronome::Models::CreditGrantVoidParams.dump(params)
         req = {
           method: :post,
           path: "/credits/voidGrant",
           headers: {"Content-Type" => "application/json"},
-          body: params,
+          body: parsed,
           model: Metronome::Models::CreditGrantVoidResponse
         }
         @client.request(req, opts)

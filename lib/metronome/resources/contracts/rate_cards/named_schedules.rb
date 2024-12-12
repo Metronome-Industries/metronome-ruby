@@ -24,11 +24,12 @@ module Metronome
           #
           # @return [Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse]
           def retrieve(params = {}, opts = {})
+            parsed = Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveParams.dump(params)
             req = {
               method: :post,
               path: "/contracts/getNamedSchedule",
               headers: {"Content-Type" => "application/json"},
-              body: params,
+              body: parsed,
               model: Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse
             }
             @client.request(req, opts)
@@ -50,11 +51,12 @@ module Metronome
           #
           # @return [nil]
           def update(params = {}, opts = {})
+            parsed = Metronome::Models::Contracts::RateCards::NamedScheduleUpdateParams.dump(params)
             req = {
               method: :post,
               path: "/contracts/updateNamedSchedule",
               headers: {"Content-Type" => "application/json"},
-              body: params,
+              body: parsed,
               model: NilClass
             }
             @client.request(req, opts)

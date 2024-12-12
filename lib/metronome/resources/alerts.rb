@@ -43,11 +43,12 @@ module Metronome
       #
       # @return [Metronome::Models::AlertCreateResponse]
       def create(params = {}, opts = {})
+        parsed = Metronome::Models::AlertCreateParams.dump(params)
         req = {
           method: :post,
           path: "/alerts/create",
           headers: {"Content-Type" => "application/json"},
-          body: params,
+          body: parsed,
           model: Metronome::Models::AlertCreateResponse
         }
         @client.request(req, opts)
@@ -63,11 +64,12 @@ module Metronome
       #
       # @return [Metronome::Models::AlertArchiveResponse]
       def archive(params = {}, opts = {})
+        parsed = Metronome::Models::AlertArchiveParams.dump(params)
         req = {
           method: :post,
           path: "/alerts/archive",
           headers: {"Content-Type" => "application/json"},
-          body: params,
+          body: parsed,
           model: Metronome::Models::AlertArchiveResponse
         }
         @client.request(req, opts)

@@ -18,10 +18,11 @@ module Metronome
       #
       # @return [Metronome::CursorPage<Metronome::Models::PlanListResponse>]
       def list(params = {}, opts = {})
+        parsed = Metronome::Models::PlanListParams.dump(params)
         req = {
           method: :get,
           path: "/plans",
-          query: params,
+          query: parsed,
           page: Metronome::CursorPage,
           model: Metronome::Models::PlanListResponse
         }
@@ -37,6 +38,7 @@ module Metronome
       #
       # @return [Metronome::Models::PlanGetDetailsResponse]
       def get_details(params = {}, opts = {})
+        Metronome::Models::PlanGetDetailsParams.dump(params)
         plan_id = params.fetch(:plan_id) do
           raise ArgumentError, "missing required path argument :plan_id"
         end
@@ -59,13 +61,14 @@ module Metronome
       #
       # @return [Metronome::CursorPage<Metronome::Models::PlanListChargesResponse>]
       def list_charges(params = {}, opts = {})
+        parsed = Metronome::Models::PlanListChargesParams.dump(params)
         plan_id = params.fetch(:plan_id) do
           raise ArgumentError, "missing required path argument :plan_id"
         end
         req = {
           method: :get,
           path: "/planDetails/#{plan_id}/charges",
-          query: params.except(:plan_id),
+          query: parsed.except(:plan_id),
           page: Metronome::CursorPage,
           model: Metronome::Models::PlanListChargesResponse
         }
@@ -93,13 +96,14 @@ module Metronome
       #
       # @return [Metronome::CursorPage<Metronome::Models::PlanListCustomersResponse>]
       def list_customers(params = {}, opts = {})
+        parsed = Metronome::Models::PlanListCustomersParams.dump(params)
         plan_id = params.fetch(:plan_id) do
           raise ArgumentError, "missing required path argument :plan_id"
         end
         req = {
           method: :get,
           path: "/planDetails/#{plan_id}/customers",
-          query: params.except(:plan_id),
+          query: parsed.except(:plan_id),
           page: Metronome::CursorPage,
           model: Metronome::Models::PlanListCustomersResponse
         }

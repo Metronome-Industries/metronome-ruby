@@ -38,11 +38,12 @@ module Metronome
         #
         # @return [Metronome::Models::Contracts::RateCardCreateResponse]
         def create(params = {}, opts = {})
+          parsed = Metronome::Models::Contracts::RateCardCreateParams.dump(params)
           req = {
             method: :post,
             path: "/contract-pricing/rate-cards/create",
             headers: {"Content-Type" => "application/json"},
-            body: params,
+            body: parsed,
             model: Metronome::Models::Contracts::RateCardCreateResponse
           }
           @client.request(req, opts)
@@ -58,11 +59,12 @@ module Metronome
         #
         # @return [Metronome::Models::Contracts::RateCardRetrieveResponse]
         def retrieve(params = {}, opts = {})
+          parsed = Metronome::Models::Contracts::RateCardRetrieveParams.dump(params)
           req = {
             method: :post,
             path: "/contract-pricing/rate-cards/get",
             headers: {"Content-Type" => "application/json"},
-            body: params,
+            body: parsed,
             model: Metronome::Models::Contracts::RateCardRetrieveResponse
           }
           @client.request(req, opts)
@@ -83,11 +85,12 @@ module Metronome
         #
         # @return [Metronome::Models::Contracts::RateCardUpdateResponse]
         def update(params = {}, opts = {})
+          parsed = Metronome::Models::Contracts::RateCardUpdateParams.dump(params)
           req = {
             method: :post,
             path: "/contract-pricing/rate-cards/update",
             headers: {"Content-Type" => "application/json"},
-            body: params,
+            body: parsed,
             model: Metronome::Models::Contracts::RateCardUpdateResponse
           }
           @client.request(req, opts)
@@ -105,12 +108,13 @@ module Metronome
         #
         # @return [Metronome::CursorPage<Metronome::Models::Contracts::RateCardListResponse>]
         def list(params = {}, opts = {})
+          parsed = Metronome::Models::Contracts::RateCardListParams.dump(params)
           req = {
             method: :post,
             path: "/contract-pricing/rate-cards/list",
-            query: params.except(:body),
+            query: parsed.except(:body),
             headers: {"Content-Type" => "application/json"},
-            body: params[:body],
+            body: parsed[:body],
             page: Metronome::CursorPage,
             model: Metronome::Models::Contracts::RateCardListResponse
           }
@@ -135,13 +139,14 @@ module Metronome
         #
         # @return [Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse]
         def retrieve_rate_schedule(params = {}, opts = {})
+          parsed = Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams.dump(params)
           query_params = [:limit, :next_page]
           req = {
             method: :post,
             path: "/contract-pricing/rate-cards/getRateSchedule",
-            query: params.slice(*query_params),
+            query: parsed.slice(*query_params),
             headers: {"Content-Type" => "application/json"},
-            body: params.except(*query_params),
+            body: parsed.except(*query_params),
             model: Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse
           }
           @client.request(req, opts)

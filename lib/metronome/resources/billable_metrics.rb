@@ -31,11 +31,12 @@ module Metronome
       #
       # @return [Metronome::Models::BillableMetricCreateResponse]
       def create(params = {}, opts = {})
+        parsed = Metronome::Models::BillableMetricCreateParams.dump(params)
         req = {
           method: :post,
           path: "/billable-metrics/create",
           headers: {"Content-Type" => "application/json"},
-          body: params,
+          body: parsed,
           model: Metronome::Models::BillableMetricCreateResponse
         }
         @client.request(req, opts)
@@ -50,6 +51,7 @@ module Metronome
       #
       # @return [Metronome::Models::BillableMetricRetrieveResponse]
       def retrieve(params = {}, opts = {})
+        Metronome::Models::BillableMetricRetrieveParams.dump(params)
         billable_metric_id = params.fetch(:billable_metric_id) do
           raise ArgumentError, "missing required path argument :billable_metric_id"
         end
@@ -72,10 +74,11 @@ module Metronome
       #
       # @return [Metronome::CursorPage<Metronome::Models::BillableMetricListResponse>]
       def list(params = {}, opts = {})
+        parsed = Metronome::Models::BillableMetricListParams.dump(params)
         req = {
           method: :get,
           path: "/billable-metrics",
-          query: params,
+          query: parsed,
           page: Metronome::CursorPage,
           model: Metronome::Models::BillableMetricListResponse
         }
@@ -91,11 +94,12 @@ module Metronome
       #
       # @return [Metronome::Models::BillableMetricArchiveResponse]
       def archive(params = {}, opts = {})
+        parsed = Metronome::Models::BillableMetricArchiveParams.dump(params)
         req = {
           method: :post,
           path: "/billable-metrics/archive",
           headers: {"Content-Type" => "application/json"},
-          body: params,
+          body: parsed,
           model: Metronome::Models::BillableMetricArchiveResponse
         }
         @client.request(req, opts)

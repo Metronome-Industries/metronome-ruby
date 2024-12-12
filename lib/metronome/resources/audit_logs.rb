@@ -29,10 +29,11 @@ module Metronome
       #
       # @return [Metronome::CursorPage<Metronome::Models::AuditLogListResponse>]
       def list(params = {}, opts = {})
+        parsed = Metronome::Models::AuditLogListParams.dump(params)
         req = {
           method: :get,
           path: "/auditLogs",
-          query: params,
+          query: parsed,
           page: Metronome::CursorPage,
           model: Metronome::Models::AuditLogListResponse
         }

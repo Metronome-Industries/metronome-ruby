@@ -1,0 +1,177 @@
+# frozen_string_literal: true
+
+module Metronome
+  module Models
+    module Contracts
+      module RateCards
+        class RateAddManyParams < Metronome::BaseModel
+          # @!attribute [rw] rate_card_id
+          #   @return [String]
+          required :rate_card_id, String
+
+          # @!attribute [rw] rates
+          #   @return [Array<Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate>]
+          required :rates,
+                   Metronome::ArrayOf.new(
+                     -> {
+                       Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate
+                     }
+                   )
+
+          class Rate < Metronome::BaseModel
+            # @!attribute [rw] entitled
+            #   @return [Boolean]
+            required :entitled, Metronome::BooleanModel
+
+            # @!attribute [rw] product_id
+            #   ID of the product to add a rate for
+            #   @return [String]
+            required :product_id, String
+
+            # @!attribute [rw] rate_type
+            #   @return [Symbol, Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate::RateType]
+            required :rate_type,
+                     enum: -> { Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate::RateType }
+
+            # @!attribute [rw] starting_at
+            #   inclusive effective date
+            #   @return [Time]
+            required :starting_at, Time
+
+            # @!attribute [rw] commit_rate
+            #   A distinct rate on the rate card. You can choose to use this rate rather than list rate when consuming a credit or commit.
+            #   @return [Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate::CommitRate]
+            optional :commit_rate,
+                     -> {
+                       Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate::CommitRate
+                     }
+
+            # @!attribute [rw] credit_type_id
+            #   "The Metronome ID of the credit type to associate with price, defaults to USD (cents) if not passed. Used by all rate_types except type PERCENTAGE. PERCENTAGE rates use the credit type of associated rates."
+            #   @return [String]
+            optional :credit_type_id, String
+
+            # @!attribute [rw] custom_rate
+            #   Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.
+            #   @return [Hash]
+            optional :custom_rate, Hash
+
+            # @!attribute [rw] ending_before
+            #   exclusive end date
+            #   @return [Time]
+            optional :ending_before, Time
+
+            # @!attribute [rw] is_prorated
+            #   Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be set to true.
+            #   @return [Boolean]
+            optional :is_prorated, Metronome::BooleanModel
+
+            # @!attribute [rw] price
+            #   Default price. For FLAT and SUBSCRIPTION rate_type, this must be >=0. For PERCENTAGE rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
+            #   @return [Float]
+            optional :price, Float
+
+            # @!attribute [rw] pricing_group_values
+            #   Optional. List of pricing group key value pairs which will be used to calculate the price.
+            #   @return [Hash]
+            optional :pricing_group_values, Hash
+
+            # @!attribute [rw] quantity
+            #   Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
+            #   @return [Float]
+            optional :quantity, Float
+
+            # @!attribute [rw] tiers
+            #   Only set for TIERED rate_type.
+            #   @return [Array<Metronome::Models::Tier>]
+            optional :tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Tier })
+
+            # @!attribute [rw] use_list_prices
+            #   Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed using list prices rather than the standard rates for this product on the contract.
+            #   @return [Boolean]
+            optional :use_list_prices, Metronome::BooleanModel
+
+            class RateType < Metronome::Enum
+              FLAT = :FLAT
+              PERCENTAGE = :PERCENTAGE
+              SUBSCRIPTION = :SUBSCRIPTION
+              TIERED = :TIERED
+              CUSTOM = :CUSTOM
+            end
+
+            class CommitRate < Metronome::BaseModel
+              # @!attribute [rw] rate_type
+              #   @return [Symbol, Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::RateType]
+              required :rate_type,
+                       enum: -> {
+                         Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::RateType
+                       }
+
+              # @!attribute [rw] price
+              #   Commit rate price. For FLAT rate_type, this must be >=0.
+              #   @return [Float]
+              optional :price, Float
+
+              # @!attribute [rw] tiers
+              #   Only set for TIERED rate_type.
+              #   @return [Array<Metronome::Models::Tier>]
+              optional :tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Tier })
+
+              class RateType < Metronome::Enum
+                FLAT = :FLAT
+                FLAT = :flat
+                PERCENTAGE = :PERCENTAGE
+                PERCENTAGE = :percentage
+                SUBSCRIPTION = :SUBSCRIPTION
+                SUBSCRIPTION = :subscription
+                TIERED = :TIERED
+                TIERED = :tiered
+                CUSTOM = :CUSTOM
+                CUSTOM = :custom
+              end
+
+              # @!parse
+              #   # Create a new instance of CommitRate from a Hash of raw data.
+              #   #
+              #   # @param data [Hash{Symbol => Object}] .
+              #   #   @option data [String] :rate_type
+              #   #   @option data [Float, nil] :price Commit rate price. For FLAT rate_type, this must be >=0.
+              #   #   @option data [Array<Object>, nil] :tiers Only set for TIERED rate_type.
+              #   def initialize(data = {}) = super
+            end
+
+            # @!parse
+            #   # Create a new instance of Rate from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [Hash] :entitled
+            #   #   @option data [String] :product_id ID of the product to add a rate for
+            #   #   @option data [String] :rate_type
+            #   #   @option data [String] :starting_at inclusive effective date
+            #   #   @option data [Object, nil] :commit_rate A distinct rate on the rate card. You can choose to use this rate rather than
+            #   #     list rate when consuming a credit or commit.
+            #   #   @option data [String, nil] :credit_type_id "The Metronome ID of the credit type to associate with price, defaults to USD
+            #   #     (cents) if not passed. Used by all rate_types except type PERCENTAGE. PERCENTAGE
+            #   #     rates use the credit type of associated rates."
+            #   #   @option data [Hash, nil] :custom_rate Only set for CUSTOM rate_type. This field is interpreted by custom rate
+            #   #     processors.
+            #   #   @option data [String, nil] :ending_before exclusive end date
+            #   #   @option data [Hash, nil] :is_prorated Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
+            #   #     set to true.
+            #   #   @option data [Float, nil] :price Default price. For FLAT and SUBSCRIPTION rate_type, this must be >=0. For
+            #   #     PERCENTAGE rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this
+            #   #     must be >=0 and <=1.
+            #   #   @option data [Hash, nil] :pricing_group_values Optional. List of pricing group key value pairs which will be used to calculate
+            #   #     the price.
+            #   #   @option data [Float, nil] :quantity Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
+            #   #   @option data [Array<Object>, nil] :tiers Only set for TIERED rate_type.
+            #   #   @option data [Hash, nil] :use_list_prices Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
+            #   #     using list prices rather than the standard rates for this product on the
+            #   #     contract.
+            #   def initialize(data = {}) = super
+          end
+        end
+      end
+    end
+  end
+end

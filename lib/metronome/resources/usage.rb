@@ -28,13 +28,14 @@ module Metronome
       #
       # @return [Metronome::Models::UsageListResponse]
       def list(params = {}, opts = {})
+        parsed = Metronome::Models::UsageListParams.dump(params)
         query_params = [:next_page]
         req = {
           method: :post,
           path: "/usage",
-          query: params.slice(*query_params),
+          query: parsed.slice(*query_params),
           headers: {"Content-Type" => "application/json"},
-          body: params.except(*query_params),
+          body: parsed.except(*query_params),
           model: Metronome::Models::UsageListResponse
         }
         @client.request(req, opts)
@@ -53,11 +54,12 @@ module Metronome
       #
       # @return [nil]
       def ingest(params = {}, opts = {})
+        parsed = Metronome::Models::UsageIngestParams.dump(params)
         req = {
           method: :post,
           path: "/ingest",
           headers: {"Content-Type" => "application/json"},
-          body: params[:usage],
+          body: parsed[:usage],
           model: NilClass
         }
         @client.request(req, opts)
@@ -86,13 +88,14 @@ module Metronome
       #
       # @return [Metronome::CursorPage<Metronome::Models::UsageListWithGroupsResponse>]
       def list_with_groups(params = {}, opts = {})
+        parsed = Metronome::Models::UsageListWithGroupsParams.dump(params)
         query_params = [:limit, :next_page]
         req = {
           method: :post,
           path: "/usage/groups",
-          query: params.slice(*query_params),
+          query: parsed.slice(*query_params),
           headers: {"Content-Type" => "application/json"},
-          body: params.except(*query_params),
+          body: parsed.except(*query_params),
           page: Metronome::CursorPage,
           model: Metronome::Models::UsageListWithGroupsResponse
         }
