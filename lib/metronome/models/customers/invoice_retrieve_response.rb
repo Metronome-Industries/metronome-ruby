@@ -4,7 +4,7 @@ module Metronome
   module Models
     module Customers
       class InvoiceRetrieveResponse < Metronome::BaseModel
-        # @!attribute [rw] data
+        # @!attribute data
         #   @return [Metronome::Models::Customers::Invoice]
         required :data, -> { Metronome::Models::Customers::Invoice }
 

@@ -3,11 +3,11 @@
 module Metronome
   module Models
     class CreditTypeData < Metronome::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] name
+      # @!attribute name
       #   @return [String]
       required :name, String
 

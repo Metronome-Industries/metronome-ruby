@@ -4,28 +4,28 @@ module Metronome
   module Models
     module Contracts
       class RateCardRetrieveResponse < Metronome::BaseModel
-        # @!attribute [rw] data
+        # @!attribute data
         #   @return [Metronome::Models::Contracts::RateCardRetrieveResponse::Data]
         required :data, -> { Metronome::Models::Contracts::RateCardRetrieveResponse::Data }
 
         class Data < Metronome::BaseModel
-          # @!attribute [rw] id
+          # @!attribute id
           #   @return [String]
           required :id, String
 
-          # @!attribute [rw] created_at
+          # @!attribute created_at
           #   @return [Time]
           required :created_at, Time
 
-          # @!attribute [rw] created_by
+          # @!attribute created_by
           #   @return [String]
           required :created_by, String
 
-          # @!attribute [rw] name
+          # @!attribute name
           #   @return [String]
           required :name, String
 
-          # @!attribute [rw] aliases
+          # @!attribute aliases
           #   @return [Array<Metronome::Models::Contracts::RateCardRetrieveResponse::Data::Alias>]
           optional :aliases,
                    Metronome::ArrayOf.new(
@@ -34,7 +34,7 @@ module Metronome
                      }
                    )
 
-          # @!attribute [rw] credit_type_conversions
+          # @!attribute credit_type_conversions
           #   @return [Array<Metronome::Models::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion>]
           optional :credit_type_conversions,
                    Metronome::ArrayOf.new(
@@ -43,28 +43,28 @@ module Metronome
                      }
                    )
 
-          # @!attribute [rw] custom_fields
+          # @!attribute custom_fields
           #   @return [Hash]
           optional :custom_fields, Hash
 
-          # @!attribute [rw] description
+          # @!attribute description
           #   @return [String]
           optional :description, String
 
-          # @!attribute [rw] fiat_credit_type
+          # @!attribute fiat_credit_type
           #   @return [Metronome::Models::CreditTypeData]
           optional :fiat_credit_type, -> { Metronome::Models::CreditTypeData }
 
           class Alias < Metronome::BaseModel
-            # @!attribute [rw] name
+            # @!attribute name
             #   @return [String]
             required :name, String
 
-            # @!attribute [rw] ending_before
+            # @!attribute ending_before
             #   @return [Time]
             optional :ending_before, Time
 
-            # @!attribute [rw] starting_at
+            # @!attribute starting_at
             #   @return [Time]
             optional :starting_at, Time
 
@@ -79,11 +79,11 @@ module Metronome
           end
 
           class CreditTypeConversion < Metronome::BaseModel
-            # @!attribute [rw] custom_credit_type
+            # @!attribute custom_credit_type
             #   @return [Metronome::Models::CreditTypeData]
             required :custom_credit_type, -> { Metronome::Models::CreditTypeData }
 
-            # @!attribute [rw] fiat_per_custom_credit
+            # @!attribute fiat_per_custom_credit
             #   @return [String]
             required :fiat_per_custom_credit, String
 

@@ -3,104 +3,104 @@
 module Metronome
   module Models
     class Commit < Metronome::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] product
+      # @!attribute product
       #   @return [Metronome::Models::Commit::Product]
       required :product, -> { Metronome::Models::Commit::Product }
 
-      # @!attribute [rw] type
+      # @!attribute type
       #   @return [Symbol, Metronome::Models::Commit::Type]
       required :type, enum: -> { Metronome::Models::Commit::Type }
 
-      # @!attribute [rw] access_schedule
+      # @!attribute access_schedule
       #   The schedule that the customer will gain access to the credits purposed with this commit.
       #   @return [Metronome::Models::ScheduleDuration]
       optional :access_schedule, -> { Metronome::Models::ScheduleDuration }
 
-      # @!attribute [rw] amount
+      # @!attribute amount
       #   (DEPRECATED) Use access_schedule + invoice_schedule instead.
       #   @return [Float]
       optional :amount, Float
 
-      # @!attribute [rw] applicable_contract_ids
+      # @!attribute applicable_contract_ids
       #   @return [Array<String>]
       optional :applicable_contract_ids, Metronome::ArrayOf.new(String)
 
-      # @!attribute [rw] applicable_product_ids
+      # @!attribute applicable_product_ids
       #   @return [Array<String>]
       optional :applicable_product_ids, Metronome::ArrayOf.new(String)
 
-      # @!attribute [rw] applicable_product_tags
+      # @!attribute applicable_product_tags
       #   @return [Array<String>]
       optional :applicable_product_tags, Metronome::ArrayOf.new(String)
 
-      # @!attribute [rw] contract
+      # @!attribute contract
       #   @return [Metronome::Models::Commit::Contract]
       optional :contract, -> { Metronome::Models::Commit::Contract }
 
-      # @!attribute [rw] custom_fields
+      # @!attribute custom_fields
       #   @return [Hash]
       optional :custom_fields, Hash
 
-      # @!attribute [rw] description
+      # @!attribute description
       #   @return [String]
       optional :description, String
 
-      # @!attribute [rw] invoice_contract
+      # @!attribute invoice_contract
       #   The contract that this commit will be billed on.
       #   @return [Metronome::Models::Commit::InvoiceContract]
       optional :invoice_contract, -> { Metronome::Models::Commit::InvoiceContract }
 
-      # @!attribute [rw] invoice_schedule
+      # @!attribute invoice_schedule
       #   The schedule that the customer will be invoiced for this commit.
       #   @return [Metronome::Models::SchedulePointInTime]
       optional :invoice_schedule, -> { Metronome::Models::SchedulePointInTime }
 
-      # @!attribute [rw] ledger
+      # @!attribute ledger
       #   A list of ordered events that impact the balance of a commit. For example, an invoice deduction or a rollover.
       #   @return [Array<Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent0, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent1, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent10, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent11, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent12, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent2, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent3, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent4, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent5, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent6, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent7, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent8, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent9>]
       optional :ledger, Metronome::ArrayOf.new(Metronome::Unknown)
 
-      # @!attribute [rw] name
+      # @!attribute name
       #   @return [String]
       optional :name, String
 
-      # @!attribute [rw] netsuite_sales_order_id
+      # @!attribute netsuite_sales_order_id
       #   This field's availability is dependent on your client's configuration.
       #   @return [String]
       optional :netsuite_sales_order_id, String
 
-      # @!attribute [rw] priority
+      # @!attribute priority
       #   If multiple credits or commits are applicable, the one with the lower priority will apply first.
       #   @return [Float]
       optional :priority, Float
 
-      # @!attribute [rw] rate_type
+      # @!attribute rate_type
       #   @return [Symbol, Metronome::Models::Commit::RateType]
       optional :rate_type, enum: -> { Metronome::Models::Commit::RateType }
 
-      # @!attribute [rw] rolled_over_from
+      # @!attribute rolled_over_from
       #   @return [Metronome::Models::Commit::RolledOverFrom]
       optional :rolled_over_from, -> { Metronome::Models::Commit::RolledOverFrom }
 
-      # @!attribute [rw] rollover_fraction
+      # @!attribute rollover_fraction
       #   @return [Float]
       optional :rollover_fraction, Float
 
-      # @!attribute [rw] salesforce_opportunity_id
+      # @!attribute salesforce_opportunity_id
       #   This field's availability is dependent on your client's configuration.
       #   @return [String]
       optional :salesforce_opportunity_id, String
 
       class Product < Metronome::BaseModel
-        # @!attribute [rw] id
+        # @!attribute id
         #   @return [String]
         required :id, String
 
-        # @!attribute [rw] name
+        # @!attribute name
         #   @return [String]
         required :name, String
 
@@ -119,7 +119,7 @@ module Metronome
       end
 
       class Contract < Metronome::BaseModel
-        # @!attribute [rw] id
+        # @!attribute id
         #   @return [String]
         required :id, String
 
@@ -132,7 +132,7 @@ module Metronome
       end
 
       class InvoiceContract < Metronome::BaseModel
-        # @!attribute [rw] id
+        # @!attribute id
         #   @return [String]
         required :id, String
 
@@ -150,11 +150,11 @@ module Metronome
       end
 
       class RolledOverFrom < Metronome::BaseModel
-        # @!attribute [rw] commit_id
+        # @!attribute commit_id
         #   @return [String]
         required :commit_id, String
 
-        # @!attribute [rw] contract_id
+        # @!attribute contract_id
         #   @return [String]
         required :contract_id, String
 

@@ -4,7 +4,7 @@ module Metronome
   module Models
     module Customers
       class NamedScheduleRetrieveResponse < Metronome::BaseModel
-        # @!attribute [rw] data
+        # @!attribute data
         #   @return [Array<Metronome::Models::Customers::NamedScheduleRetrieveResponse::Data>]
         required :data,
                  Metronome::ArrayOf.new(
@@ -14,15 +14,15 @@ module Metronome
                  )
 
         class Data < Metronome::BaseModel
-          # @!attribute [rw] starting_at
+          # @!attribute starting_at
           #   @return [Time]
           required :starting_at, Time
 
-          # @!attribute [rw] value
+          # @!attribute value
           #   @return [Object]
           required :value, Metronome::Unknown
 
-          # @!attribute [rw] ending_before
+          # @!attribute ending_before
           #   @return [Time]
           optional :ending_before, Time
 

@@ -3,37 +3,37 @@
 module Metronome
   module Models
     class PlanListCustomersResponse < Metronome::BaseModel
-      # @!attribute [rw] customer_details
+      # @!attribute customer_details
       #   @return [Metronome::Models::CustomerDetail]
       required :customer_details, -> { Metronome::Models::CustomerDetail }
 
-      # @!attribute [rw] plan_details
+      # @!attribute plan_details
       #   @return [Metronome::Models::PlanListCustomersResponse::PlanDetails]
       required :plan_details, -> { Metronome::Models::PlanListCustomersResponse::PlanDetails }
 
       class PlanDetails < Metronome::BaseModel
-        # @!attribute [rw] id
+        # @!attribute id
         #   @return [String]
         required :id, String
 
-        # @!attribute [rw] custom_fields
+        # @!attribute custom_fields
         #   @return [Hash]
         required :custom_fields, Hash
 
-        # @!attribute [rw] customer_plan_id
+        # @!attribute customer_plan_id
         #   @return [String]
         required :customer_plan_id, String
 
-        # @!attribute [rw] name
+        # @!attribute name
         #   @return [String]
         required :name, String
 
-        # @!attribute [rw] starting_on
+        # @!attribute starting_on
         #   The start date of the plan
         #   @return [Time]
         required :starting_on, Time
 
-        # @!attribute [rw] ending_before
+        # @!attribute ending_before
         #   The end date of the plan
         #   @return [Time]
         optional :ending_before, Time

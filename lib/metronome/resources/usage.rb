@@ -34,7 +34,6 @@ module Metronome
           method: :post,
           path: "/usage",
           query: parsed.slice(*query_params),
-          headers: {"Content-Type" => "application/json"},
           body: parsed.except(*query_params),
           model: Metronome::Models::UsageListResponse
         }
@@ -58,7 +57,6 @@ module Metronome
         req = {
           method: :post,
           path: "/ingest",
-          headers: {"Content-Type" => "application/json"},
           body: parsed[:usage],
           model: NilClass
         }
@@ -94,7 +92,6 @@ module Metronome
           method: :post,
           path: "/usage/groups",
           query: parsed.slice(*query_params),
-          headers: {"Content-Type" => "application/json"},
           body: parsed.except(*query_params),
           page: Metronome::CursorPage,
           model: Metronome::Models::UsageListWithGroupsResponse

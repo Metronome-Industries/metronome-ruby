@@ -3,37 +3,37 @@
 module Metronome
   module Models
     class SchedulePointInTime < Metronome::BaseModel
-      # @!attribute [rw] credit_type
+      # @!attribute credit_type
       #   @return [Metronome::Models::CreditTypeData]
       optional :credit_type, -> { Metronome::Models::CreditTypeData }
 
-      # @!attribute [rw] schedule_items
+      # @!attribute schedule_items
       #   @return [Array<Metronome::Models::SchedulePointInTime::ScheduleItem>]
       optional :schedule_items,
                Metronome::ArrayOf.new(-> { Metronome::Models::SchedulePointInTime::ScheduleItem })
 
       class ScheduleItem < Metronome::BaseModel
-        # @!attribute [rw] id
+        # @!attribute id
         #   @return [String]
         required :id, String
 
-        # @!attribute [rw] amount
+        # @!attribute amount
         #   @return [Float]
         required :amount, Float
 
-        # @!attribute [rw] invoice_id
+        # @!attribute invoice_id
         #   @return [String]
         required :invoice_id, String
 
-        # @!attribute [rw] quantity
+        # @!attribute quantity
         #   @return [Float]
         required :quantity, Float
 
-        # @!attribute [rw] timestamp
+        # @!attribute timestamp
         #   @return [Time]
         required :timestamp, Time
 
-        # @!attribute [rw] unit_price
+        # @!attribute unit_price
         #   @return [Float]
         required :unit_price, Float
 

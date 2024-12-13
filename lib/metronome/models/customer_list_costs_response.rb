@@ -3,24 +3,24 @@
 module Metronome
   module Models
     class CustomerListCostsResponse < Metronome::BaseModel
-      # @!attribute [rw] credit_types
+      # @!attribute credit_types
       #   @return [Hash]
       required :credit_types, Hash
 
-      # @!attribute [rw] end_timestamp
+      # @!attribute end_timestamp
       #   @return [Time]
       required :end_timestamp, Time
 
-      # @!attribute [rw] start_timestamp
+      # @!attribute start_timestamp
       #   @return [Time]
       required :start_timestamp, Time
 
       class CreditType < Metronome::BaseModel
-        # @!attribute [rw] cost
+        # @!attribute cost
         #   @return [Float]
         optional :cost, Float
 
-        # @!attribute [rw] line_item_breakdown
+        # @!attribute line_item_breakdown
         #   @return [Array<Metronome::Models::CustomerListCostsResponse::CreditTypes::CreditType::LineItemBreakdown>]
         optional :line_item_breakdown,
                  Metronome::ArrayOf.new(
@@ -29,24 +29,24 @@ module Metronome
                    }
                  )
 
-        # @!attribute [rw] name
+        # @!attribute name
         #   @return [String]
         optional :name, String
 
         class LineItemBreakdown < Metronome::BaseModel
-          # @!attribute [rw] cost
+          # @!attribute cost
           #   @return [Float]
           required :cost, Float
 
-          # @!attribute [rw] name
+          # @!attribute name
           #   @return [String]
           required :name, String
 
-          # @!attribute [rw] group_key
+          # @!attribute group_key
           #   @return [String]
           optional :group_key, String
 
-          # @!attribute [rw] group_value
+          # @!attribute group_value
           #   @return [String]
           optional :group_value, String
 

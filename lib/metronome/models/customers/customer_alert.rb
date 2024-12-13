@@ -4,61 +4,61 @@ module Metronome
   module Models
     module Customers
       class CustomerAlert < Metronome::BaseModel
-        # @!attribute [rw] alert
+        # @!attribute alert
         #   @return [Metronome::Models::Customers::CustomerAlert::Alert]
         required :alert, -> { Metronome::Models::Customers::CustomerAlert::Alert }
 
-        # @!attribute [rw] customer_status
+        # @!attribute customer_status
         #   The status of the customer alert. If the alert is archived, null will be returned.
         #   @return [Symbol, Metronome::Models::Customers::CustomerAlert::CustomerStatus]
         required :customer_status, enum: -> { Metronome::Models::Customers::CustomerAlert::CustomerStatus }
 
-        # @!attribute [rw] triggered_by
+        # @!attribute triggered_by
         #   If present, indicates the reason the alert was triggered.
         #   @return [String]
         optional :triggered_by, String
 
         class Alert < Metronome::BaseModel
-          # @!attribute [rw] id
+          # @!attribute id
           #   the Metronome ID of the alert
           #   @return [String]
           required :id, String
 
-          # @!attribute [rw] name
+          # @!attribute name
           #   Name of the alert
           #   @return [String]
           required :name, String
 
-          # @!attribute [rw] status
+          # @!attribute status
           #   Status of the alert
           #   @return [Symbol, Metronome::Models::Customers::CustomerAlert::Alert::Status]
           required :status, enum: -> { Metronome::Models::Customers::CustomerAlert::Alert::Status }
 
-          # @!attribute [rw] threshold
+          # @!attribute threshold
           #   Threshold value of the alert policy
           #   @return [Float]
           required :threshold, Float
 
-          # @!attribute [rw] type
+          # @!attribute type
           #   Type of the alert
           #   @return [Symbol, Metronome::Models::Customers::CustomerAlert::Alert::Type]
           required :type, enum: -> { Metronome::Models::Customers::CustomerAlert::Alert::Type }
 
-          # @!attribute [rw] updated_at
+          # @!attribute updated_at
           #   Timestamp for when the alert was last updated
           #   @return [Time]
           required :updated_at, Time
 
-          # @!attribute [rw] credit_grant_type_filters
+          # @!attribute credit_grant_type_filters
           #   An array of strings, representing a way to filter the credit grant this alert applies to, by looking at the credit_grant_type field on the credit grant. This field is only defined for CreditPercentage and CreditBalance alerts
           #   @return [Array<String>]
           optional :credit_grant_type_filters, Metronome::ArrayOf.new(String)
 
-          # @!attribute [rw] credit_type
+          # @!attribute credit_type
           #   @return [Metronome::Models::CreditTypeData]
           optional :credit_type, -> { Metronome::Models::CreditTypeData }
 
-          # @!attribute [rw] custom_field_filters
+          # @!attribute custom_field_filters
           #   A list of custom field filters for alert types that support advanced filtering
           #   @return [Array<Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter>]
           optional :custom_field_filters,
@@ -68,7 +68,7 @@ module Metronome
                      }
                    )
 
-          # @!attribute [rw] group_key_filter
+          # @!attribute group_key_filter
           #   Scopes alert evaluation to a specific presentation group key on individual line items. Only present for spend alerts.
           #   @return [Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter]
           optional :group_key_filter,
@@ -76,12 +76,12 @@ module Metronome
                      Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter
                    }
 
-          # @!attribute [rw] invoice_types_filter
+          # @!attribute invoice_types_filter
           #   Only supported for invoice_total_reached alerts. A list of invoice types to evaluate.
           #   @return [Array<String>]
           optional :invoice_types_filter, Metronome::ArrayOf.new(String)
 
-          # @!attribute [rw] uniqueness_key
+          # @!attribute uniqueness_key
           #   Prevents the creation of duplicates. If a request to create a record is made with a previously used uniqueness key, a new record will not be created and the request will fail with a 409 error.
           #   @return [String]
           optional :uniqueness_key, String
@@ -112,18 +112,18 @@ module Metronome
           end
 
           class CustomFieldFilter < Metronome::BaseModel
-            # @!attribute [rw] entity
+            # @!attribute entity
             #   @return [Symbol, Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter::Entity]
             required :entity,
                      enum: -> {
                        Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter::Entity
                      }
 
-            # @!attribute [rw] key
+            # @!attribute key
             #   @return [String]
             required :key, String
 
-            # @!attribute [rw] value
+            # @!attribute value
             #   @return [String]
             required :value, String
 
@@ -144,11 +144,11 @@ module Metronome
           end
 
           class GroupKeyFilter < Metronome::BaseModel
-            # @!attribute [rw] key
+            # @!attribute key
             #   @return [String]
             required :key, String
 
-            # @!attribute [rw] value
+            # @!attribute value
             #   @return [String]
             required :value, String
 

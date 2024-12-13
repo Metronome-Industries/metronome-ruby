@@ -42,7 +42,6 @@ module Metronome
         req = {
           method: :post,
           path: "/credits/createGrant",
-          headers: {"Content-Type" => "application/json"},
           body: parsed,
           model: Metronome::Models::CreditGrantCreateResponse
         }
@@ -74,7 +73,6 @@ module Metronome
           method: :post,
           path: "/credits/listGrants",
           query: parsed.slice(*query_params),
-          headers: {"Content-Type" => "application/json"},
           body: parsed.except(*query_params),
           page: Metronome::CursorPage,
           model: Metronome::Models::CreditGrantListResponse
@@ -98,7 +96,6 @@ module Metronome
         req = {
           method: :post,
           path: "/credits/editGrant",
-          headers: {"Content-Type" => "application/json"},
           body: parsed,
           model: Metronome::Models::CreditGrantEditResponse
         }
@@ -153,7 +150,6 @@ module Metronome
           method: :post,
           path: "/credits/listEntries",
           query: parsed.slice(*query_params),
-          headers: {"Content-Type" => "application/json"},
           body: parsed.except(*query_params),
           model: Metronome::Models::CreditGrantListEntriesResponse
         }
@@ -175,7 +171,6 @@ module Metronome
         req = {
           method: :post,
           path: "/credits/voidGrant",
-          headers: {"Content-Type" => "application/json"},
           body: parsed,
           model: Metronome::Models::CreditGrantVoidResponse
         }

@@ -4,29 +4,29 @@ module Metronome
   module Models
     module Customers
       class BillingConfigCreateParams < Metronome::BaseModel
-        # @!attribute [rw] customer_id
+        # @!attribute customer_id
         #   @return [String]
         required :customer_id, String
 
-        # @!attribute [rw] billing_provider_type
+        # @!attribute billing_provider_type
         #   @return [Symbol, Metronome::Models::Customers::BillingConfigCreateParams::BillingProviderType]
         required :billing_provider_type,
                  enum: -> { Metronome::Models::Customers::BillingConfigCreateParams::BillingProviderType }
 
-        # @!attribute [rw] billing_provider_customer_id
+        # @!attribute billing_provider_customer_id
         #   The customer ID in the billing provider's system. For Azure, this is the subscription ID.
         #   @return [String]
         required :billing_provider_customer_id, String
 
-        # @!attribute [rw] aws_product_code
+        # @!attribute aws_product_code
         #   @return [String]
         optional :aws_product_code, String
 
-        # @!attribute [rw] aws_region
+        # @!attribute aws_region
         #   @return [Symbol, Metronome::Models::Customers::BillingConfigCreateParams::AwsRegion]
         optional :aws_region, enum: -> { Metronome::Models::Customers::BillingConfigCreateParams::AwsRegion }
 
-        # @!attribute [rw] stripe_collection_method
+        # @!attribute stripe_collection_method
         #   @return [Symbol, Metronome::Models::Customers::BillingConfigCreateParams::StripeCollectionMethod]
         optional :stripe_collection_method,
                  enum: -> { Metronome::Models::Customers::BillingConfigCreateParams::StripeCollectionMethod }

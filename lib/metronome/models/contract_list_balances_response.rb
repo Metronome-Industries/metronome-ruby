@@ -3,11 +3,11 @@
 module Metronome
   module Models
     class ContractListBalancesResponse < Metronome::BaseModel
-      # @!attribute [rw] data
+      # @!attribute data
       #   @return [Array<Metronome::Models::Commit, Metronome::Models::Credit>]
       required :data, Metronome::ArrayOf.new(Metronome::Unknown)
 
-      # @!attribute [rw] next_page
+      # @!attribute next_page
       #   @return [String]
       required :next_page, String
 

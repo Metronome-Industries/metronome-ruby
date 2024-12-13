@@ -3,34 +3,34 @@
 module Metronome
   module Models
     class CreditLedgerEntry < Metronome::BaseModel
-      # @!attribute [rw] amount
+      # @!attribute amount
       #   an amount representing the change to the customer's credit balance
       #   @return [Float]
       required :amount, Float
 
-      # @!attribute [rw] created_by
+      # @!attribute created_by
       #   @return [String]
       required :created_by, String
 
-      # @!attribute [rw] credit_grant_id
+      # @!attribute credit_grant_id
       #   the credit grant this entry is related to
       #   @return [String]
       required :credit_grant_id, String
 
-      # @!attribute [rw] effective_at
+      # @!attribute effective_at
       #   @return [Time]
       required :effective_at, Time
 
-      # @!attribute [rw] reason
+      # @!attribute reason
       #   @return [String]
       required :reason, String
 
-      # @!attribute [rw] running_balance
+      # @!attribute running_balance
       #   the running balance for this credit type at the time of the ledger entry, including all preceding charges
       #   @return [Float]
       required :running_balance, Float
 
-      # @!attribute [rw] invoice_id
+      # @!attribute invoice_id
       #   if this entry is a deduction, the Metronome ID of the invoice where the credit deduction was consumed; if this entry is a grant, the Metronome ID of the invoice where the grant's paid_amount was charged
       #   @return [String]
       optional :invoice_id, String

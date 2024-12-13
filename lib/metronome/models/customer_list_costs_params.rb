@@ -3,26 +3,26 @@
 module Metronome
   module Models
     class CustomerListCostsParams < Metronome::BaseModel
-      # @!attribute [rw] customer_id
+      # @!attribute customer_id
       #   @return [String]
       required :customer_id, String
 
-      # @!attribute [rw] ending_before
+      # @!attribute ending_before
       #   RFC 3339 timestamp (exclusive)
       #   @return [Time]
       required :ending_before, Time
 
-      # @!attribute [rw] starting_on
+      # @!attribute starting_on
       #   RFC 3339 timestamp (inclusive)
       #   @return [Time]
       required :starting_on, Time
 
-      # @!attribute [rw] limit
+      # @!attribute limit
       #   Max number of results that should be returned
       #   @return [Integer]
       optional :limit, Integer
 
-      # @!attribute [rw] next_page
+      # @!attribute next_page
       #   Cursor that indicates where the next page of results should start.
       #   @return [String]
       optional :next_page, String

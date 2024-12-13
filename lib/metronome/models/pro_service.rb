@@ -3,38 +3,38 @@
 module Metronome
   module Models
     class ProService < Metronome::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] max_amount
+      # @!attribute max_amount
       #   Maximum amount for the term.
       #   @return [Float]
       required :max_amount, Float
 
-      # @!attribute [rw] product_id
+      # @!attribute product_id
       #   @return [String]
       required :product_id, String
 
-      # @!attribute [rw] quantity
+      # @!attribute quantity
       #   Quantity for the charge. Will be multiplied by unit_price to determine the amount.
       #   @return [Float]
       required :quantity, Float
 
-      # @!attribute [rw] unit_price
+      # @!attribute unit_price
       #   Unit price for the charge. Will be multiplied by quantity to determine the amount and must be specified.
       #   @return [Float]
       required :unit_price, Float
 
-      # @!attribute [rw] custom_fields
+      # @!attribute custom_fields
       #   @return [Hash]
       optional :custom_fields, Hash
 
-      # @!attribute [rw] description
+      # @!attribute description
       #   @return [String]
       optional :description, String
 
-      # @!attribute [rw] netsuite_sales_order_id
+      # @!attribute netsuite_sales_order_id
       #   This field's availability is dependent on your client's configuration.
       #   @return [String]
       optional :netsuite_sales_order_id, String

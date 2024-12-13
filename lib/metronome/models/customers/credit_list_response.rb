@@ -4,11 +4,11 @@ module Metronome
   module Models
     module Customers
       class CreditListResponse < Metronome::BaseModel
-        # @!attribute [rw] data
+        # @!attribute data
         #   @return [Array<Metronome::Models::Credit>]
         required :data, Metronome::ArrayOf.new(-> { Metronome::Models::Credit })
 
-        # @!attribute [rw] next_page
+        # @!attribute next_page
         #   @return [String]
         required :next_page, String
 

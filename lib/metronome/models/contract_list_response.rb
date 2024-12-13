@@ -3,101 +3,101 @@
 module Metronome
   module Models
     class ContractListResponse < Metronome::BaseModel
-      # @!attribute [rw] data
+      # @!attribute data
       #   @return [Array<Metronome::Models::ContractListResponse::Data>]
       required :data, Metronome::ArrayOf.new(-> { Metronome::Models::ContractListResponse::Data })
 
       class Data < Metronome::BaseModel
-        # @!attribute [rw] id
+        # @!attribute id
         #   @return [String]
         required :id, String
 
-        # @!attribute [rw] amendments
+        # @!attribute amendments
         #   @return [Array<Metronome::Models::ContractListResponse::Data::Amendment>]
         required :amendments,
                  Metronome::ArrayOf.new(-> { Metronome::Models::ContractListResponse::Data::Amendment })
 
-        # @!attribute [rw] current
+        # @!attribute current
         #   @return [Metronome::Models::ContractWithoutAmendments]
         required :current, -> { Metronome::Models::ContractWithoutAmendments }
 
-        # @!attribute [rw] customer_id
+        # @!attribute customer_id
         #   @return [String]
         required :customer_id, String
 
-        # @!attribute [rw] initial
+        # @!attribute initial
         #   @return [Metronome::Models::ContractWithoutAmendments]
         required :initial, -> { Metronome::Models::ContractWithoutAmendments }
 
-        # @!attribute [rw] archived_at
+        # @!attribute archived_at
         #   RFC 3339 timestamp indicating when the contract was archived. If not returned, the contract is not archived.
         #   @return [Time]
         optional :archived_at, Time
 
-        # @!attribute [rw] custom_fields
+        # @!attribute custom_fields
         #   @return [Hash]
         optional :custom_fields, Hash
 
-        # @!attribute [rw] customer_billing_provider_configuration
+        # @!attribute customer_billing_provider_configuration
         #   The billing provider configuration associated with a contract.
         #   @return [Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration]
         optional :customer_billing_provider_configuration,
                  -> { Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration }
 
-        # @!attribute [rw] uniqueness_key
+        # @!attribute uniqueness_key
         #   Prevents the creation of duplicates. If a request to create a record is made with a previously used uniqueness key, a new record will not be created and the request will fail with a 409 error.
         #   @return [String]
         optional :uniqueness_key, String
 
         class Amendment < Metronome::BaseModel
-          # @!attribute [rw] id
+          # @!attribute id
           #   @return [String]
           required :id, String
 
-          # @!attribute [rw] commits
+          # @!attribute commits
           #   @return [Array<Metronome::Models::Commit>]
           required :commits, Metronome::ArrayOf.new(-> { Metronome::Models::Commit })
 
-          # @!attribute [rw] created_at
+          # @!attribute created_at
           #   @return [Time]
           required :created_at, Time
 
-          # @!attribute [rw] created_by
+          # @!attribute created_by
           #   @return [String]
           required :created_by, String
 
-          # @!attribute [rw] overrides
+          # @!attribute overrides
           #   @return [Array<Metronome::Models::Override>]
           required :overrides, Metronome::ArrayOf.new(-> { Metronome::Models::Override })
 
-          # @!attribute [rw] scheduled_charges
+          # @!attribute scheduled_charges
           #   @return [Array<Metronome::Models::ScheduledCharge>]
           required :scheduled_charges, Metronome::ArrayOf.new(-> { Metronome::Models::ScheduledCharge })
 
-          # @!attribute [rw] starting_at
+          # @!attribute starting_at
           #   @return [Time]
           required :starting_at, Time
 
-          # @!attribute [rw] credits
+          # @!attribute credits
           #   @return [Array<Metronome::Models::Credit>]
           optional :credits, Metronome::ArrayOf.new(-> { Metronome::Models::Credit })
 
-          # @!attribute [rw] discounts
+          # @!attribute discounts
           #   This field's availability is dependent on your client's configuration.
           #   @return [Array<Metronome::Models::Discount>]
           optional :discounts, Metronome::ArrayOf.new(-> { Metronome::Models::Discount })
 
-          # @!attribute [rw] netsuite_sales_order_id
+          # @!attribute netsuite_sales_order_id
           #   This field's availability is dependent on your client's configuration.
           #   @return [String]
           optional :netsuite_sales_order_id, String
 
-          # @!attribute [rw] professional_services
+          # @!attribute professional_services
           #   This field's availability is dependent on your client's configuration.
           #   @return [Array<Metronome::Models::ProService>]
           optional :professional_services, Metronome::ArrayOf.new(-> { Metronome::Models::ProService })
 
-          # @!attribute [rw] reseller_royalties
+          # @!attribute reseller_royalties
           #   This field's availability is dependent on your client's configuration.
           #   @return [Array<Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty>]
           optional :reseller_royalties,
@@ -107,56 +107,56 @@ module Metronome
                      }
                    )
 
-          # @!attribute [rw] salesforce_opportunity_id
+          # @!attribute salesforce_opportunity_id
           #   This field's availability is dependent on your client's configuration.
           #   @return [String]
           optional :salesforce_opportunity_id, String
 
           class ResellerRoyalty < Metronome::BaseModel
-            # @!attribute [rw] reseller_type
+            # @!attribute reseller_type
             #   @return [Symbol, Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty::ResellerType]
             required :reseller_type,
                      enum: -> {
                        Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty::ResellerType
                      }
 
-            # @!attribute [rw] aws_account_number
+            # @!attribute aws_account_number
             #   @return [String]
             optional :aws_account_number, String
 
-            # @!attribute [rw] aws_offer_id
+            # @!attribute aws_offer_id
             #   @return [String]
             optional :aws_offer_id, String
 
-            # @!attribute [rw] aws_payer_reference_id
+            # @!attribute aws_payer_reference_id
             #   @return [String]
             optional :aws_payer_reference_id, String
 
-            # @!attribute [rw] ending_before
+            # @!attribute ending_before
             #   @return [Time]
             optional :ending_before, Time
 
-            # @!attribute [rw] fraction
+            # @!attribute fraction
             #   @return [Float]
             optional :fraction, Float
 
-            # @!attribute [rw] gcp_account_id
+            # @!attribute gcp_account_id
             #   @return [String]
             optional :gcp_account_id, String
 
-            # @!attribute [rw] gcp_offer_id
+            # @!attribute gcp_offer_id
             #   @return [String]
             optional :gcp_offer_id, String
 
-            # @!attribute [rw] netsuite_reseller_id
+            # @!attribute netsuite_reseller_id
             #   @return [String]
             optional :netsuite_reseller_id, String
 
-            # @!attribute [rw] reseller_contract_value
+            # @!attribute reseller_contract_value
             #   @return [Float]
             optional :reseller_contract_value, Float
 
-            # @!attribute [rw] starting_at
+            # @!attribute starting_at
             #   @return [Time]
             optional :starting_at, Time
 
@@ -206,14 +206,14 @@ module Metronome
         end
 
         class CustomerBillingProviderConfiguration < Metronome::BaseModel
-          # @!attribute [rw] billing_provider
+          # @!attribute billing_provider
           #   @return [Symbol, Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration::BillingProvider]
           required :billing_provider,
                    enum: -> {
                      Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration::BillingProvider
                    }
 
-          # @!attribute [rw] delivery_method
+          # @!attribute delivery_method
           #   @return [Symbol, Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod]
           required :delivery_method,
                    enum: -> {

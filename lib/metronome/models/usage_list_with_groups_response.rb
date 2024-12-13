@@ -3,23 +3,23 @@
 module Metronome
   module Models
     class UsageListWithGroupsResponse < Metronome::BaseModel
-      # @!attribute [rw] ending_before
+      # @!attribute ending_before
       #   @return [Time]
       required :ending_before, Time
 
-      # @!attribute [rw] group_key
+      # @!attribute group_key
       #   @return [String]
       required :group_key, String
 
-      # @!attribute [rw] group_value
+      # @!attribute group_value
       #   @return [String]
       required :group_value, String
 
-      # @!attribute [rw] starting_on
+      # @!attribute starting_on
       #   @return [Time]
       required :starting_on, Time
 
-      # @!attribute [rw] value
+      # @!attribute value
       #   @return [Float]
       required :value, Float
 

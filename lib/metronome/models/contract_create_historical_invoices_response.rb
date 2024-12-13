@@ -3,7 +3,7 @@
 module Metronome
   module Models
     class ContractCreateHistoricalInvoicesResponse < Metronome::BaseModel
-      # @!attribute [rw] data
+      # @!attribute data
       #   @return [Array<Metronome::Models::Customers::Invoice>]
       required :data, Metronome::ArrayOf.new(-> { Metronome::Models::Customers::Invoice })
 

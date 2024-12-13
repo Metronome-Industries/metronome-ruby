@@ -27,7 +27,6 @@ module Metronome
         req = {
           method: :post,
           path: "/dashboards/getEmbeddableUrl",
-          headers: {"Content-Type" => "application/json"},
           body: parsed,
           model: Metronome::Models::DashboardGetEmbeddableURLResponse
         }

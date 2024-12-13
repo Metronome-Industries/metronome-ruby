@@ -3,15 +3,15 @@
 module Metronome
   module Models
     class CustomFieldDeleteValuesParams < Metronome::BaseModel
-      # @!attribute [rw] entity
+      # @!attribute entity
       #   @return [Symbol, Metronome::Models::CustomFieldDeleteValuesParams::Entity]
       required :entity, enum: -> { Metronome::Models::CustomFieldDeleteValuesParams::Entity }
 
-      # @!attribute [rw] entity_id
+      # @!attribute entity_id
       #   @return [String]
       required :entity_id, String
 
-      # @!attribute [rw] keys
+      # @!attribute keys
       #   @return [Array<String>]
       required :keys, Metronome::ArrayOf.new(String)
 

@@ -38,9 +38,9 @@ module Metronome
       #
       # @return [Metronome::Models::PlanGetDetailsResponse]
       def get_details(params = {}, opts = {})
-        Metronome::Models::PlanGetDetailsParams.dump(params)
-        plan_id = params.fetch(:plan_id) do
-          raise ArgumentError, "missing required path argument :plan_id"
+        parsed = Metronome::Models::PlanGetDetailsParams.dump(params)
+        plan_id = parsed.fetch(:plan_id) do
+          raise ArgumentError.new("missing required path argument :plan_id")
         end
         req = {
           method: :get,
@@ -62,8 +62,8 @@ module Metronome
       # @return [Metronome::CursorPage<Metronome::Models::PlanListChargesResponse>]
       def list_charges(params = {}, opts = {})
         parsed = Metronome::Models::PlanListChargesParams.dump(params)
-        plan_id = params.fetch(:plan_id) do
-          raise ArgumentError, "missing required path argument :plan_id"
+        plan_id = parsed.fetch(:plan_id) do
+          raise ArgumentError.new("missing required path argument :plan_id")
         end
         req = {
           method: :get,
@@ -97,8 +97,8 @@ module Metronome
       # @return [Metronome::CursorPage<Metronome::Models::PlanListCustomersResponse>]
       def list_customers(params = {}, opts = {})
         parsed = Metronome::Models::PlanListCustomersParams.dump(params)
-        plan_id = params.fetch(:plan_id) do
-          raise ArgumentError, "missing required path argument :plan_id"
+        plan_id = parsed.fetch(:plan_id) do
+          raise ArgumentError.new("missing required path argument :plan_id")
         end
         req = {
           method: :get,

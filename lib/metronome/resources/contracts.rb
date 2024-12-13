@@ -62,7 +62,6 @@ module Metronome
         req = {
           method: :post,
           path: "/contracts/create",
-          headers: {"Content-Type" => "application/json"},
           body: parsed,
           model: Metronome::Models::ContractCreateResponse
         }
@@ -85,7 +84,6 @@ module Metronome
         req = {
           method: :post,
           path: "/contracts/get",
-          headers: {"Content-Type" => "application/json"},
           body: parsed,
           model: Metronome::Models::ContractRetrieveResponse
         }
@@ -114,7 +112,6 @@ module Metronome
         req = {
           method: :post,
           path: "/contracts/list",
-          headers: {"Content-Type" => "application/json"},
           body: parsed,
           model: Metronome::Models::ContractListResponse
         }
@@ -141,7 +138,6 @@ module Metronome
         req = {
           method: :post,
           path: "/contracts/addManualBalanceLedgerEntry",
-          headers: {"Content-Type" => "application/json"},
           body: parsed,
           model: NilClass
         }
@@ -174,7 +170,6 @@ module Metronome
         req = {
           method: :post,
           path: "/contracts/amend",
-          headers: {"Content-Type" => "application/json"},
           body: parsed,
           model: Metronome::Models::ContractAmendResponse
         }
@@ -197,7 +192,6 @@ module Metronome
         req = {
           method: :post,
           path: "/contracts/archive",
-          headers: {"Content-Type" => "application/json"},
           body: parsed,
           model: Metronome::Models::ContractArchiveResponse
         }
@@ -218,7 +212,6 @@ module Metronome
         req = {
           method: :post,
           path: "/contracts/createHistoricalInvoices",
-          headers: {"Content-Type" => "application/json"},
           body: parsed,
           model: Metronome::Models::ContractCreateHistoricalInvoicesResponse
         }
@@ -247,7 +240,6 @@ module Metronome
         req = {
           method: :post,
           path: "/contracts/customerBalances/list",
-          headers: {"Content-Type" => "application/json"},
           body: parsed,
           model: Metronome::Models::ContractListBalancesResponse
         }
@@ -277,7 +269,6 @@ module Metronome
           method: :post,
           path: "/contracts/getContractRateSchedule",
           query: parsed.slice(*query_params),
-          headers: {"Content-Type" => "application/json"},
           body: parsed.except(*query_params),
           model: Metronome::Models::ContractRetrieveRateScheduleResponse
         }
@@ -303,7 +294,6 @@ module Metronome
         req = {
           method: :post,
           path: "/contracts/scheduleProServicesInvoice",
-          headers: {"Content-Type" => "application/json"},
           body: parsed,
           model: Metronome::Models::ContractScheduleProServicesInvoiceResponse
         }
@@ -327,7 +317,6 @@ module Metronome
         req = {
           method: :post,
           path: "/contracts/setUsageFilter",
-          headers: {"Content-Type" => "application/json"},
           body: parsed,
           model: NilClass
         }
@@ -350,7 +339,6 @@ module Metronome
         req = {
           method: :post,
           path: "/contracts/updateEndDate",
-          headers: {"Content-Type" => "application/json"},
           body: parsed,
           model: Metronome::Models::ContractUpdateEndDateResponse
         }

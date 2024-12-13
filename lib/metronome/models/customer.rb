@@ -3,26 +3,26 @@
 module Metronome
   module Models
     class Customer < Metronome::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   the Metronome ID of the customer
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] external_id
+      # @!attribute external_id
       #   (deprecated, use ingest_aliases instead) the first ID (Metronome or ingest alias) that can be used in usage events
       #   @return [String]
       required :external_id, String
 
-      # @!attribute [rw] ingest_aliases
+      # @!attribute ingest_aliases
       #   aliases for this customer that can be used instead of the Metronome customer ID in usage events
       #   @return [Array<String>]
       required :ingest_aliases, Metronome::ArrayOf.new(String)
 
-      # @!attribute [rw] name
+      # @!attribute name
       #   @return [String]
       required :name, String
 
-      # @!attribute [rw] custom_fields
+      # @!attribute custom_fields
       #   @return [Hash]
       optional :custom_fields, Hash
 

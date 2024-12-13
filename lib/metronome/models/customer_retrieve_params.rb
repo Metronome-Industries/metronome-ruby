@@ -3,7 +3,7 @@
 module Metronome
   module Models
     class CustomerRetrieveParams < Metronome::BaseModel
-      # @!attribute [rw] customer_id
+      # @!attribute customer_id
       #   @return [String]
       required :customer_id, String
     end

@@ -4,17 +4,17 @@ module Metronome
   module Models
     module Contracts
       class QuantityConversion < Metronome::BaseModel
-        # @!attribute [rw] conversion_factor
+        # @!attribute conversion_factor
         #   The factor to multiply or divide the quantity by.
         #   @return [Float]
         required :conversion_factor, Float
 
-        # @!attribute [rw] operation
+        # @!attribute operation
         #   The operation to perform on the quantity
         #   @return [Symbol, Metronome::Models::Contracts::QuantityConversion::Operation]
         required :operation, enum: -> { Metronome::Models::Contracts::QuantityConversion::Operation }
 
-        # @!attribute [rw] name
+        # @!attribute name
         #   Optional name for this conversion.
         #   @return [String]
         optional :name, String

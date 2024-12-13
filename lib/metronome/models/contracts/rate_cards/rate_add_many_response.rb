@@ -5,7 +5,7 @@ module Metronome
     module Contracts
       module RateCards
         class RateAddManyResponse < Metronome::BaseModel
-          # @!attribute [rw] data
+          # @!attribute data
           #   The ID of the rate card to which the rates were added.
           #   @return [Metronome::Models::ID]
           required :data, -> { Metronome::Models::ID }
