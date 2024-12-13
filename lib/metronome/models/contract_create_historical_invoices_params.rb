@@ -3,7 +3,7 @@
 module Metronome
   module Models
     class ContractCreateHistoricalInvoicesParams < Metronome::BaseModel
-      # @!attribute [rw] invoices
+      # @!attribute invoices
       #   @return [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice>]
       required :invoices,
                Metronome::ArrayOf.new(
@@ -12,36 +12,36 @@ module Metronome
                  }
                )
 
-      # @!attribute [rw] preview
+      # @!attribute preview
       #   @return [Boolean]
       required :preview, Metronome::BooleanModel
 
       class Invoice < Metronome::BaseModel
-        # @!attribute [rw] contract_id
+        # @!attribute contract_id
         #   @return [String]
         required :contract_id, String
 
-        # @!attribute [rw] credit_type_id
+        # @!attribute credit_type_id
         #   @return [String]
         required :credit_type_id, String
 
-        # @!attribute [rw] customer_id
+        # @!attribute customer_id
         #   @return [String]
         required :customer_id, String
 
-        # @!attribute [rw] exclusive_end_date
+        # @!attribute exclusive_end_date
         #   @return [Time]
         required :exclusive_end_date, Time
 
-        # @!attribute [rw] inclusive_start_date
+        # @!attribute inclusive_start_date
         #   @return [Time]
         required :inclusive_start_date, Time
 
-        # @!attribute [rw] issue_date
+        # @!attribute issue_date
         #   @return [Time]
         required :issue_date, Time
 
-        # @!attribute [rw] usage_line_items
+        # @!attribute usage_line_items
         #   @return [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem>]
         required :usage_line_items,
                  Metronome::ArrayOf.new(
@@ -50,7 +50,7 @@ module Metronome
                    }
                  )
 
-        # @!attribute [rw] billable_status
+        # @!attribute billable_status
         #   This field's availability is dependent on your client's configuration.
         #   @return [Symbol, Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus]
         optional :billable_status,
@@ -58,43 +58,43 @@ module Metronome
                    Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus
                  }
 
-        # @!attribute [rw] breakdown_granularity
+        # @!attribute breakdown_granularity
         #   @return [Symbol, Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity]
         optional :breakdown_granularity,
                  enum: -> {
                    Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity
                  }
 
-        # @!attribute [rw] custom_fields
+        # @!attribute custom_fields
         #   @return [Hash]
         optional :custom_fields, Hash
 
         class UsageLineItem < Metronome::BaseModel
-          # @!attribute [rw] exclusive_end_date
+          # @!attribute exclusive_end_date
           #   @return [Time]
           required :exclusive_end_date, Time
 
-          # @!attribute [rw] inclusive_start_date
+          # @!attribute inclusive_start_date
           #   @return [Time]
           required :inclusive_start_date, Time
 
-          # @!attribute [rw] product_id
+          # @!attribute product_id
           #   @return [String]
           required :product_id, String
 
-          # @!attribute [rw] presentation_group_values
+          # @!attribute presentation_group_values
           #   @return [Hash]
           optional :presentation_group_values, Hash
 
-          # @!attribute [rw] pricing_group_values
+          # @!attribute pricing_group_values
           #   @return [Hash]
           optional :pricing_group_values, Hash
 
-          # @!attribute [rw] quantity
+          # @!attribute quantity
           #   @return [Float]
           optional :quantity, Float
 
-          # @!attribute [rw] subtotals_with_quantity
+          # @!attribute subtotals_with_quantity
           #   @return [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity>]
           optional :subtotals_with_quantity,
                    Metronome::ArrayOf.new(
@@ -104,15 +104,15 @@ module Metronome
                    )
 
           class SubtotalsWithQuantity < Metronome::BaseModel
-            # @!attribute [rw] exclusive_end_date
+            # @!attribute exclusive_end_date
             #   @return [Time]
             required :exclusive_end_date, Time
 
-            # @!attribute [rw] inclusive_start_date
+            # @!attribute inclusive_start_date
             #   @return [Time]
             required :inclusive_start_date, Time
 
-            # @!attribute [rw] quantity
+            # @!attribute quantity
             #   @return [Float]
             required :quantity, Float
 

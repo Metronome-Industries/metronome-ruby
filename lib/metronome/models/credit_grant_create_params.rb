@@ -3,79 +3,79 @@
 module Metronome
   module Models
     class CreditGrantCreateParams < Metronome::BaseModel
-      # @!attribute [rw] customer_id
+      # @!attribute customer_id
       #   the Metronome ID of the customer
       #   @return [String]
       required :customer_id, String
 
-      # @!attribute [rw] expires_at
+      # @!attribute expires_at
       #   The credit grant will only apply to usage or charges dated before this timestamp
       #   @return [Time]
       required :expires_at, Time
 
-      # @!attribute [rw] grant_amount
+      # @!attribute grant_amount
       #   the amount of credits granted
       #   @return [Metronome::Models::CreditGrantCreateParams::GrantAmount]
       required :grant_amount, -> { Metronome::Models::CreditGrantCreateParams::GrantAmount }
 
-      # @!attribute [rw] name
+      # @!attribute name
       #   the name of the credit grant as it will appear on invoices
       #   @return [String]
       required :name, String
 
-      # @!attribute [rw] paid_amount
+      # @!attribute paid_amount
       #   the amount paid for this credit grant
       #   @return [Metronome::Models::CreditGrantCreateParams::PaidAmount]
       required :paid_amount, -> { Metronome::Models::CreditGrantCreateParams::PaidAmount }
 
-      # @!attribute [rw] priority
+      # @!attribute priority
       #   @return [Float]
       required :priority, Float
 
-      # @!attribute [rw] credit_grant_type
+      # @!attribute credit_grant_type
       #   @return [String]
       optional :credit_grant_type, String
 
-      # @!attribute [rw] custom_fields
+      # @!attribute custom_fields
       #   Custom fields to attach to the credit grant.
       #   @return [Hash]
       optional :custom_fields, Hash
 
-      # @!attribute [rw] effective_at
+      # @!attribute effective_at
       #   The credit grant will only apply to usage or charges dated on or after this timestamp
       #   @return [Time]
       optional :effective_at, Time
 
-      # @!attribute [rw] invoice_date
+      # @!attribute invoice_date
       #   The date to issue an invoice for the paid_amount.
       #   @return [Time]
       optional :invoice_date, Time
 
-      # @!attribute [rw] product_ids
+      # @!attribute product_ids
       #   The product(s) which these credits will be applied to. (If unspecified, the credits will be applied to charges for all products.). The array ordering specified here will be used to determine the order in which credits will be applied to invoice line items
       #   @return [Array<String>]
       optional :product_ids, Metronome::ArrayOf.new(String)
 
-      # @!attribute [rw] reason
+      # @!attribute reason
       #   @return [String]
       optional :reason, String
 
-      # @!attribute [rw] rollover_settings
+      # @!attribute rollover_settings
       #   Configure a rollover for this credit grant so if it expires it rolls over a configured amount to a new credit grant. This feature is currently opt-in only. Contact Metronome to be added to the beta.
       #   @return [Metronome::Models::CreditGrantCreateParams::RolloverSettings]
       optional :rollover_settings, -> { Metronome::Models::CreditGrantCreateParams::RolloverSettings }
 
-      # @!attribute [rw] uniqueness_key
+      # @!attribute uniqueness_key
       #   Prevents the creation of duplicates. If a request to create a record is made with a previously used uniqueness key, a new record will not be created and the request will fail with a 409 error.
       #   @return [String]
       optional :uniqueness_key, String
 
       class GrantAmount < Metronome::BaseModel
-        # @!attribute [rw] amount
+        # @!attribute amount
         #   @return [Float]
         required :amount, Float
 
-        # @!attribute [rw] credit_type_id
+        # @!attribute credit_type_id
         #   the ID of the pricing unit to be used
         #   @return [String]
         required :credit_type_id, String
@@ -90,11 +90,11 @@ module Metronome
       end
 
       class PaidAmount < Metronome::BaseModel
-        # @!attribute [rw] amount
+        # @!attribute amount
         #   @return [Float]
         required :amount, Float
 
-        # @!attribute [rw] credit_type_id
+        # @!attribute credit_type_id
         #   the ID of the pricing unit to be used
         #   @return [String]
         required :credit_type_id, String
@@ -109,17 +109,17 @@ module Metronome
       end
 
       class RolloverSettings < Metronome::BaseModel
-        # @!attribute [rw] expires_at
+        # @!attribute expires_at
         #   The date to expire the rollover credits.
         #   @return [Time]
         required :expires_at, Time
 
-        # @!attribute [rw] priority
+        # @!attribute priority
         #   The priority to give the rollover credit grant that gets created when a rollover happens.
         #   @return [Float]
         required :priority, Float
 
-        # @!attribute [rw] rollover_amount
+        # @!attribute rollover_amount
         #   Specify how much to rollover to the rollover credit grant
         #   @return [Metronome::Models::RolloverAmountMaxAmount, Metronome::Models::RolloverAmountMaxPercentage]
         required :rollover_amount, Metronome::Unknown

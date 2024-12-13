@@ -4,298 +4,298 @@ module Metronome
   module Models
     module Customers
       class Invoice < Metronome::BaseModel
-        # @!attribute [rw] id
+        # @!attribute id
         #   @return [String]
         required :id, String
 
-        # @!attribute [rw] credit_type
+        # @!attribute credit_type
         #   @return [Metronome::Models::CreditTypeData]
         required :credit_type, -> { Metronome::Models::CreditTypeData }
 
-        # @!attribute [rw] customer_id
+        # @!attribute customer_id
         #   @return [String]
         required :customer_id, String
 
-        # @!attribute [rw] line_items
+        # @!attribute line_items
         #   @return [Array<Metronome::Models::Customers::Invoice::LineItem>]
         required :line_items, Metronome::ArrayOf.new(-> { Metronome::Models::Customers::Invoice::LineItem })
 
-        # @!attribute [rw] status
+        # @!attribute status
         #   @return [String]
         required :status, String
 
-        # @!attribute [rw] total
+        # @!attribute total
         #   @return [Float]
         required :total, Float
 
-        # @!attribute [rw] type
+        # @!attribute type
         #   @return [String]
         required :type, String
 
-        # @!attribute [rw] amendment_id
+        # @!attribute amendment_id
         #   @return [String]
         optional :amendment_id, String
 
-        # @!attribute [rw] billable_status
+        # @!attribute billable_status
         #   This field's availability is dependent on your client's configuration.
         #   @return [Symbol, Metronome::Models::Customers::Invoice::BillableStatus]
         optional :billable_status, enum: -> { Metronome::Models::Customers::Invoice::BillableStatus }
 
-        # @!attribute [rw] contract_custom_fields
+        # @!attribute contract_custom_fields
         #   @return [Hash]
         optional :contract_custom_fields, Hash
 
-        # @!attribute [rw] contract_id
+        # @!attribute contract_id
         #   @return [String]
         optional :contract_id, String
 
-        # @!attribute [rw] correction_record
+        # @!attribute correction_record
         #   @return [Metronome::Models::Customers::Invoice::CorrectionRecord]
         optional :correction_record, -> { Metronome::Models::Customers::Invoice::CorrectionRecord }
 
-        # @!attribute [rw] created_at
+        # @!attribute created_at
         #   When the invoice was created (UTC). This field is present for correction invoices only.
         #   @return [Time]
         optional :created_at, Time
 
-        # @!attribute [rw] custom_fields
+        # @!attribute custom_fields
         #   @return [Hash]
         optional :custom_fields, Hash
 
-        # @!attribute [rw] customer_custom_fields
+        # @!attribute customer_custom_fields
         #   @return [Hash]
         optional :customer_custom_fields, Hash
 
-        # @!attribute [rw] end_timestamp
+        # @!attribute end_timestamp
         #   End of the usage period this invoice covers (UTC)
         #   @return [Time]
         optional :end_timestamp, Time
 
-        # @!attribute [rw] external_invoice
+        # @!attribute external_invoice
         #   @return [Metronome::Models::Customers::Invoice::ExternalInvoice]
         optional :external_invoice, -> { Metronome::Models::Customers::Invoice::ExternalInvoice }
 
-        # @!attribute [rw] invoice_adjustments
+        # @!attribute invoice_adjustments
         #   @return [Array<Metronome::Models::Customers::Invoice::InvoiceAdjustment>]
         optional :invoice_adjustments,
                  Metronome::ArrayOf.new(-> { Metronome::Models::Customers::Invoice::InvoiceAdjustment })
 
-        # @!attribute [rw] issued_at
+        # @!attribute issued_at
         #   When the invoice was issued (UTC)
         #   @return [Time]
         optional :issued_at, Time
 
-        # @!attribute [rw] net_payment_terms_days
+        # @!attribute net_payment_terms_days
         #   @return [Float]
         optional :net_payment_terms_days, Float
 
-        # @!attribute [rw] netsuite_sales_order_id
+        # @!attribute netsuite_sales_order_id
         #   This field's availability is dependent on your client's configuration.
         #   @return [String]
         optional :netsuite_sales_order_id, String
 
-        # @!attribute [rw] plan_custom_fields
+        # @!attribute plan_custom_fields
         #   @return [Hash]
         optional :plan_custom_fields, Hash
 
-        # @!attribute [rw] plan_id
+        # @!attribute plan_id
         #   @return [String]
         optional :plan_id, String
 
-        # @!attribute [rw] plan_name
+        # @!attribute plan_name
         #   @return [String]
         optional :plan_name, String
 
-        # @!attribute [rw] reseller_royalty
+        # @!attribute reseller_royalty
         #   only present for beta contract invoices with reseller royalties
         #   @return [Metronome::Models::Customers::Invoice::ResellerRoyalty]
         optional :reseller_royalty, -> { Metronome::Models::Customers::Invoice::ResellerRoyalty }
 
-        # @!attribute [rw] salesforce_opportunity_id
+        # @!attribute salesforce_opportunity_id
         #   This field's availability is dependent on your client's configuration.
         #   @return [String]
         optional :salesforce_opportunity_id, String
 
-        # @!attribute [rw] start_timestamp
+        # @!attribute start_timestamp
         #   Beginning of the usage period this invoice covers (UTC)
         #   @return [Time]
         optional :start_timestamp, Time
 
-        # @!attribute [rw] subtotal
+        # @!attribute subtotal
         #   @return [Float]
         optional :subtotal, Float
 
         class LineItem < Metronome::BaseModel
-          # @!attribute [rw] credit_type
+          # @!attribute credit_type
           #   @return [Metronome::Models::CreditTypeData]
           required :credit_type, -> { Metronome::Models::CreditTypeData }
 
-          # @!attribute [rw] name
+          # @!attribute name
           #   @return [String]
           required :name, String
 
-          # @!attribute [rw] total
+          # @!attribute total
           #   @return [Float]
           required :total, Float
 
-          # @!attribute [rw] applied_commit_or_credit
+          # @!attribute applied_commit_or_credit
           #   only present for beta contract invoices
           #   @return [Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit]
           optional :applied_commit_or_credit,
                    -> { Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit }
 
-          # @!attribute [rw] commit_custom_fields
+          # @!attribute commit_custom_fields
           #   only present for beta contract invoices
           #   @return [Hash]
           optional :commit_custom_fields, Hash
 
-          # @!attribute [rw] commit_id
+          # @!attribute commit_id
           #   only present for beta contract invoices
           #   @return [String]
           optional :commit_id, String
 
-          # @!attribute [rw] commit_netsuite_item_id
+          # @!attribute commit_netsuite_item_id
           #   only present for beta contract invoices. This field's availability is dependent on your client's configuration.
           #   @return [String]
           optional :commit_netsuite_item_id, String
 
-          # @!attribute [rw] commit_netsuite_sales_order_id
+          # @!attribute commit_netsuite_sales_order_id
           #   only present for beta contract invoices. This field's availability is dependent on your client's configuration.
           #   @return [String]
           optional :commit_netsuite_sales_order_id, String
 
-          # @!attribute [rw] commit_segment_id
+          # @!attribute commit_segment_id
           #   only present for beta contract invoices
           #   @return [String]
           optional :commit_segment_id, String
 
-          # @!attribute [rw] commit_type
+          # @!attribute commit_type
           #   only present for beta contract invoices
           #   @return [String]
           optional :commit_type, String
 
-          # @!attribute [rw] custom_fields
+          # @!attribute custom_fields
           #   @return [Hash]
           optional :custom_fields, Hash
 
-          # @!attribute [rw] ending_before
+          # @!attribute ending_before
           #   only present for beta contract invoices
           #   @return [Time]
           optional :ending_before, Time
 
-          # @!attribute [rw] group_key
+          # @!attribute group_key
           #   @return [String]
           optional :group_key, String
 
-          # @!attribute [rw] group_value
+          # @!attribute group_value
           #   @return [String]
           optional :group_value, String
 
-          # @!attribute [rw] is_prorated
+          # @!attribute is_prorated
           #   only present for beta contract invoices
           #   @return [Boolean]
           optional :is_prorated, Metronome::BooleanModel
 
-          # @!attribute [rw] list_price
+          # @!attribute list_price
           #   Only present for contract invoices and when the include_list_prices query parameter is set to true. This will include the list rate for the charge if applicable.  Only present for usage and subscription line items.
           #
           #   @return [Metronome::Models::Rate]
           optional :list_price, -> { Metronome::Models::Rate }
 
-          # @!attribute [rw] metadata
+          # @!attribute metadata
           #   @return [String]
           optional :metadata, String
 
-          # @!attribute [rw] netsuite_invoice_billing_end
+          # @!attribute netsuite_invoice_billing_end
           #   The end date for the billing period on the invoice.
           #   @return [Time]
           optional :netsuite_invoice_billing_end, Time
 
-          # @!attribute [rw] netsuite_invoice_billing_start
+          # @!attribute netsuite_invoice_billing_start
           #   The start date for the billing period on the invoice.
           #   @return [Time]
           optional :netsuite_invoice_billing_start, Time
 
-          # @!attribute [rw] netsuite_item_id
+          # @!attribute netsuite_item_id
           #   only present for beta contract invoices. This field's availability is dependent on your client's configuration.
           #   @return [String]
           optional :netsuite_item_id, String
 
-          # @!attribute [rw] postpaid_commit
+          # @!attribute postpaid_commit
           #   only present for beta contract invoices
           #   @return [Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit]
           optional :postpaid_commit, -> { Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit }
 
-          # @!attribute [rw] presentation_group_values
+          # @!attribute presentation_group_values
           #   if presentation groups are used, this will contain the values used to break down the line item
           #   @return [Hash]
           optional :presentation_group_values, Hash
 
-          # @!attribute [rw] pricing_group_values
+          # @!attribute pricing_group_values
           #   if pricing groups are used, this will contain the values used to calculate the price
           #   @return [Hash]
           optional :pricing_group_values, Hash
 
-          # @!attribute [rw] product_custom_fields
+          # @!attribute product_custom_fields
           #   @return [Hash]
           optional :product_custom_fields, Hash
 
-          # @!attribute [rw] product_id
+          # @!attribute product_id
           #   @return [String]
           optional :product_id, String
 
-          # @!attribute [rw] product_type
+          # @!attribute product_type
           #   @return [String]
           optional :product_type, String
 
-          # @!attribute [rw] professional_service_custom_fields
+          # @!attribute professional_service_custom_fields
           #   only present for beta contract invoices
           #   @return [Hash]
           optional :professional_service_custom_fields, Hash
 
-          # @!attribute [rw] professional_service_id
+          # @!attribute professional_service_id
           #   only present for beta contract invoices
           #   @return [String]
           optional :professional_service_id, String
 
-          # @!attribute [rw] quantity
+          # @!attribute quantity
           #   @return [Float]
           optional :quantity, Float
 
-          # @!attribute [rw] reseller_type
+          # @!attribute reseller_type
           #   @return [Symbol, Metronome::Models::Customers::Invoice::LineItem::ResellerType]
           optional :reseller_type, enum: -> { Metronome::Models::Customers::Invoice::LineItem::ResellerType }
 
-          # @!attribute [rw] scheduled_charge_custom_fields
+          # @!attribute scheduled_charge_custom_fields
           #   @return [Hash]
           optional :scheduled_charge_custom_fields, Hash
 
-          # @!attribute [rw] scheduled_charge_id
+          # @!attribute scheduled_charge_id
           #   only present for beta contract invoices
           #   @return [String]
           optional :scheduled_charge_id, String
 
-          # @!attribute [rw] starting_at
+          # @!attribute starting_at
           #   only present for beta contract invoices
           #   @return [Time]
           optional :starting_at, Time
 
-          # @!attribute [rw] sub_line_items
+          # @!attribute sub_line_items
           #   @return [Array<Metronome::Models::Customers::Invoice::LineItem::SubLineItem>]
           optional :sub_line_items,
                    Metronome::ArrayOf.new(-> { Metronome::Models::Customers::Invoice::LineItem::SubLineItem })
 
-          # @!attribute [rw] unit_price
+          # @!attribute unit_price
           #   only present for beta contract invoices
           #   @return [Float]
           optional :unit_price, Float
 
           class AppliedCommitOrCredit < Metronome::BaseModel
-            # @!attribute [rw] id
+            # @!attribute id
             #   @return [String]
             required :id, String
 
-            # @!attribute [rw] type
+            # @!attribute type
             #   @return [Symbol, Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type]
             required :type,
                      enum: -> {
@@ -318,7 +318,7 @@ module Metronome
           end
 
           class PostpaidCommit < Metronome::BaseModel
-            # @!attribute [rw] id
+            # @!attribute id
             #   @return [String]
             required :id, String
 
@@ -338,46 +338,46 @@ module Metronome
           end
 
           class SubLineItem < Metronome::BaseModel
-            # @!attribute [rw] custom_fields
+            # @!attribute custom_fields
             #   @return [Hash]
             required :custom_fields, Hash
 
-            # @!attribute [rw] name
+            # @!attribute name
             #   @return [String]
             required :name, String
 
-            # @!attribute [rw] quantity
+            # @!attribute quantity
             #   @return [Float]
             required :quantity, Float
 
-            # @!attribute [rw] subtotal
+            # @!attribute subtotal
             #   @return [Float]
             required :subtotal, Float
 
-            # @!attribute [rw] charge_id
+            # @!attribute charge_id
             #   @return [String]
             optional :charge_id, String
 
-            # @!attribute [rw] credit_grant_id
+            # @!attribute credit_grant_id
             #   @return [String]
             optional :credit_grant_id, String
 
-            # @!attribute [rw] end_date
+            # @!attribute end_date
             #   The end date for the charge (for seats charges only).
             #   @return [Time]
             optional :end_date, Time
 
-            # @!attribute [rw] price
+            # @!attribute price
             #   the unit price for this charge, present only if the charge is not tiered and the quantity is nonzero
             #   @return [Float]
             optional :price, Float
 
-            # @!attribute [rw] start_date
+            # @!attribute start_date
             #   The start date for the charge (for seats charges only).
             #   @return [Time]
             optional :start_date, Time
 
-            # @!attribute [rw] tier_period
+            # @!attribute tier_period
             #   when the current tier started and ends (for tiered charges only)
             #   @return [Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod]
             optional :tier_period,
@@ -385,7 +385,7 @@ module Metronome
                        Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod
                      }
 
-            # @!attribute [rw] tiers
+            # @!attribute tiers
             #   @return [Array<Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier>]
             optional :tiers,
                      Metronome::ArrayOf.new(
@@ -395,11 +395,11 @@ module Metronome
                      )
 
             class TierPeriod < Metronome::BaseModel
-              # @!attribute [rw] starting_at
+              # @!attribute starting_at
               #   @return [Time]
               required :starting_at, Time
 
-              # @!attribute [rw] ending_before
+              # @!attribute ending_before
               #   @return [Time]
               optional :ending_before, Time
 
@@ -413,20 +413,20 @@ module Metronome
             end
 
             class Tier < Metronome::BaseModel
-              # @!attribute [rw] price
+              # @!attribute price
               #   @return [Float]
               required :price, Float
 
-              # @!attribute [rw] quantity
+              # @!attribute quantity
               #   @return [Float]
               required :quantity, Float
 
-              # @!attribute [rw] starting_at
+              # @!attribute starting_at
               #   at what metric amount this tier begins
               #   @return [Float]
               required :starting_at, Float
 
-              # @!attribute [rw] subtotal
+              # @!attribute subtotal
               #   @return [Float]
               required :subtotal, Float
 
@@ -516,43 +516,43 @@ module Metronome
         end
 
         class CorrectionRecord < Metronome::BaseModel
-          # @!attribute [rw] corrected_invoice_id
+          # @!attribute corrected_invoice_id
           #   @return [String]
           required :corrected_invoice_id, String
 
-          # @!attribute [rw] memo
+          # @!attribute memo
           #   @return [String]
           required :memo, String
 
-          # @!attribute [rw] reason
+          # @!attribute reason
           #   @return [String]
           required :reason, String
 
-          # @!attribute [rw] corrected_external_invoice
+          # @!attribute corrected_external_invoice
           #   @return [Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice]
           optional :corrected_external_invoice,
                    -> { Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice }
 
           class CorrectedExternalInvoice < Metronome::BaseModel
-            # @!attribute [rw] billing_provider_type
+            # @!attribute billing_provider_type
             #   @return [Symbol, Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType]
             required :billing_provider_type,
                      enum: -> {
                        Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType
                      }
 
-            # @!attribute [rw] external_status
+            # @!attribute external_status
             #   @return [Symbol, Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus]
             optional :external_status,
                      enum: -> {
                        Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus
                      }
 
-            # @!attribute [rw] invoice_id
+            # @!attribute invoice_id
             #   @return [String]
             optional :invoice_id, String
 
-            # @!attribute [rw] issued_at_timestamp
+            # @!attribute issued_at_timestamp
             #   @return [Time]
             optional :issued_at_timestamp, Time
 
@@ -604,21 +604,21 @@ module Metronome
         end
 
         class ExternalInvoice < Metronome::BaseModel
-          # @!attribute [rw] billing_provider_type
+          # @!attribute billing_provider_type
           #   @return [Symbol, Metronome::Models::Customers::Invoice::ExternalInvoice::BillingProviderType]
           required :billing_provider_type,
                    enum: -> { Metronome::Models::Customers::Invoice::ExternalInvoice::BillingProviderType }
 
-          # @!attribute [rw] external_status
+          # @!attribute external_status
           #   @return [Symbol, Metronome::Models::Customers::Invoice::ExternalInvoice::ExternalStatus]
           optional :external_status,
                    enum: -> { Metronome::Models::Customers::Invoice::ExternalInvoice::ExternalStatus }
 
-          # @!attribute [rw] invoice_id
+          # @!attribute invoice_id
           #   @return [String]
           optional :invoice_id, String
 
-          # @!attribute [rw] issued_at_timestamp
+          # @!attribute issued_at_timestamp
           #   @return [Time]
           optional :issued_at_timestamp, Time
 
@@ -659,23 +659,23 @@ module Metronome
         end
 
         class InvoiceAdjustment < Metronome::BaseModel
-          # @!attribute [rw] credit_type
+          # @!attribute credit_type
           #   @return [Metronome::Models::CreditTypeData]
           required :credit_type, -> { Metronome::Models::CreditTypeData }
 
-          # @!attribute [rw] name
+          # @!attribute name
           #   @return [String]
           required :name, String
 
-          # @!attribute [rw] total
+          # @!attribute total
           #   @return [Float]
           required :total, Float
 
-          # @!attribute [rw] credit_grant_custom_fields
+          # @!attribute credit_grant_custom_fields
           #   @return [Hash]
           optional :credit_grant_custom_fields, Hash
 
-          # @!attribute [rw] credit_grant_id
+          # @!attribute credit_grant_id
           #   @return [String]
           optional :credit_grant_id, String
 
@@ -692,26 +692,26 @@ module Metronome
         end
 
         class ResellerRoyalty < Metronome::BaseModel
-          # @!attribute [rw] fraction
+          # @!attribute fraction
           #   @return [String]
           required :fraction, String
 
-          # @!attribute [rw] netsuite_reseller_id
+          # @!attribute netsuite_reseller_id
           #   @return [String]
           required :netsuite_reseller_id, String
 
-          # @!attribute [rw] reseller_type
+          # @!attribute reseller_type
           #   @return [Symbol, Metronome::Models::Customers::Invoice::ResellerRoyalty::ResellerType]
           required :reseller_type,
                    enum: -> {
                      Metronome::Models::Customers::Invoice::ResellerRoyalty::ResellerType
                    }
 
-          # @!attribute [rw] aws_options
+          # @!attribute aws_options
           #   @return [Metronome::Models::Customers::Invoice::ResellerRoyalty::AwsOptions]
           optional :aws_options, -> { Metronome::Models::Customers::Invoice::ResellerRoyalty::AwsOptions }
 
-          # @!attribute [rw] gcp_options
+          # @!attribute gcp_options
           #   @return [Metronome::Models::Customers::Invoice::ResellerRoyalty::GcpOptions]
           optional :gcp_options, -> { Metronome::Models::Customers::Invoice::ResellerRoyalty::GcpOptions }
 
@@ -723,15 +723,15 @@ module Metronome
           end
 
           class AwsOptions < Metronome::BaseModel
-            # @!attribute [rw] aws_account_number
+            # @!attribute aws_account_number
             #   @return [String]
             optional :aws_account_number, String
 
-            # @!attribute [rw] aws_offer_id
+            # @!attribute aws_offer_id
             #   @return [String]
             optional :aws_offer_id, String
 
-            # @!attribute [rw] aws_payer_reference_id
+            # @!attribute aws_payer_reference_id
             #   @return [String]
             optional :aws_payer_reference_id, String
 
@@ -746,11 +746,11 @@ module Metronome
           end
 
           class GcpOptions < Metronome::BaseModel
-            # @!attribute [rw] gcp_account_id
+            # @!attribute gcp_account_id
             #   @return [String]
             optional :gcp_account_id, String
 
-            # @!attribute [rw] gcp_offer_id
+            # @!attribute gcp_offer_id
             #   @return [String]
             optional :gcp_offer_id, String
 

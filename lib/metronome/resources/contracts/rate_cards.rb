@@ -42,7 +42,6 @@ module Metronome
           req = {
             method: :post,
             path: "/contract-pricing/rate-cards/create",
-            headers: {"Content-Type" => "application/json"},
             body: parsed,
             model: Metronome::Models::Contracts::RateCardCreateResponse
           }
@@ -63,7 +62,6 @@ module Metronome
           req = {
             method: :post,
             path: "/contract-pricing/rate-cards/get",
-            headers: {"Content-Type" => "application/json"},
             body: parsed,
             model: Metronome::Models::Contracts::RateCardRetrieveResponse
           }
@@ -89,7 +87,6 @@ module Metronome
           req = {
             method: :post,
             path: "/contract-pricing/rate-cards/update",
-            headers: {"Content-Type" => "application/json"},
             body: parsed,
             model: Metronome::Models::Contracts::RateCardUpdateResponse
           }
@@ -113,7 +110,6 @@ module Metronome
             method: :post,
             path: "/contract-pricing/rate-cards/list",
             query: parsed.except(:body),
-            headers: {"Content-Type" => "application/json"},
             body: parsed[:body],
             page: Metronome::CursorPage,
             model: Metronome::Models::Contracts::RateCardListResponse
@@ -145,7 +141,6 @@ module Metronome
             method: :post,
             path: "/contract-pricing/rate-cards/getRateSchedule",
             query: parsed.slice(*query_params),
-            headers: {"Content-Type" => "application/json"},
             body: parsed.except(*query_params),
             model: Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse
           }

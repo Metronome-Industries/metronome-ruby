@@ -33,6 +33,7 @@ module Metronome
           "X-Stainless-Package-Version" => Metronome::VERSION,
           "X-Stainless-Runtime" => RUBY_ENGINE,
           "X-Stainless-Runtime-Version" => RUBY_ENGINE_VERSION,
+          "Content-Type" => "application/json",
           "Accept" => "application/json"
         },
         headers

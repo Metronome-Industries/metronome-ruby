@@ -3,12 +3,12 @@
 module Metronome
   module Models
     class CreditGrantListCreditTypesParams < Metronome::BaseModel
-      # @!attribute [rw] limit
+      # @!attribute limit
       #   Max number of results that should be returned
       #   @return [Integer]
       optional :limit, Integer
 
-      # @!attribute [rw] next_page
+      # @!attribute next_page
       #   Cursor that indicates where the next page of results should start.
       #   @return [String]
       optional :next_page, String

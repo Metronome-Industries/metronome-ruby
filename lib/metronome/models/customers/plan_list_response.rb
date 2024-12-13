@@ -4,50 +4,50 @@ module Metronome
   module Models
     module Customers
       class PlanListResponse < Metronome::BaseModel
-        # @!attribute [rw] id
+        # @!attribute id
         #   the ID of the customer plan
         #   @return [String]
         required :id, String
 
-        # @!attribute [rw] custom_fields
+        # @!attribute custom_fields
         #   @return [Hash]
         required :custom_fields, Hash
 
-        # @!attribute [rw] plan_description
+        # @!attribute plan_description
         #   @return [String]
         required :plan_description, String
 
-        # @!attribute [rw] plan_id
+        # @!attribute plan_id
         #   the ID of the plan
         #   @return [String]
         required :plan_id, String
 
-        # @!attribute [rw] plan_name
+        # @!attribute plan_name
         #   @return [String]
         required :plan_name, String
 
-        # @!attribute [rw] starting_on
+        # @!attribute starting_on
         #   @return [Time]
         required :starting_on, Time
 
-        # @!attribute [rw] ending_before
+        # @!attribute ending_before
         #   @return [Time]
         optional :ending_before, Time
 
-        # @!attribute [rw] net_payment_terms_days
+        # @!attribute net_payment_terms_days
         #   @return [Float]
         optional :net_payment_terms_days, Float
 
-        # @!attribute [rw] trial_info
+        # @!attribute trial_info
         #   @return [Metronome::Models::Customers::PlanListResponse::TrialInfo]
         optional :trial_info, -> { Metronome::Models::Customers::PlanListResponse::TrialInfo }
 
         class TrialInfo < Metronome::BaseModel
-          # @!attribute [rw] ending_before
+          # @!attribute ending_before
           #   @return [Time]
           required :ending_before, Time
 
-          # @!attribute [rw] spending_caps
+          # @!attribute spending_caps
           #   @return [Array<Metronome::Models::Customers::PlanListResponse::TrialInfo::SpendingCap>]
           required :spending_caps,
                    Metronome::ArrayOf.new(
@@ -57,15 +57,15 @@ module Metronome
                    )
 
           class SpendingCap < Metronome::BaseModel
-            # @!attribute [rw] amount
+            # @!attribute amount
             #   @return [Float]
             required :amount, Float
 
-            # @!attribute [rw] amount_remaining
+            # @!attribute amount_remaining
             #   @return [Float]
             required :amount_remaining, Float
 
-            # @!attribute [rw] credit_type
+            # @!attribute credit_type
             #   @return [Metronome::Models::CreditTypeData]
             required :credit_type, -> { Metronome::Models::CreditTypeData }
 

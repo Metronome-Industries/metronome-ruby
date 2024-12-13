@@ -3,12 +3,12 @@
 module Metronome
   module Models
     class InvoiceRegenerateResponse < Metronome::BaseModel
-      # @!attribute [rw] data
+      # @!attribute data
       #   @return [Metronome::Models::InvoiceRegenerateResponse::Data]
       optional :data, -> { Metronome::Models::InvoiceRegenerateResponse::Data }
 
       class Data < Metronome::BaseModel
-        # @!attribute [rw] id
+        # @!attribute id
         #   The new invoice id
         #   @return [String]
         required :id, String

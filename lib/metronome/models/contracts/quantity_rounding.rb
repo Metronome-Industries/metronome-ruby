@@ -4,11 +4,11 @@ module Metronome
   module Models
     module Contracts
       class QuantityRounding < Metronome::BaseModel
-        # @!attribute [rw] decimal_places
+        # @!attribute decimal_places
         #   @return [Float]
         required :decimal_places, Float
 
-        # @!attribute [rw] rounding_method
+        # @!attribute rounding_method
         #   @return [Symbol, Metronome::Models::Contracts::QuantityRounding::RoundingMethod]
         required :rounding_method, enum: -> { Metronome::Models::Contracts::QuantityRounding::RoundingMethod }
 

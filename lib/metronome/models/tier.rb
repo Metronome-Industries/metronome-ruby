@@ -3,11 +3,11 @@
 module Metronome
   module Models
     class Tier < Metronome::BaseModel
-      # @!attribute [rw] price
+      # @!attribute price
       #   @return [Float]
       required :price, Float
 
-      # @!attribute [rw] size
+      # @!attribute size
       #   @return [Float]
       optional :size, Float
 

@@ -3,7 +3,7 @@
 module Metronome
   module Models
     class PlanGetDetailsParams < Metronome::BaseModel
-      # @!attribute [rw] plan_id
+      # @!attribute plan_id
       #   @return [String]
       required :plan_id, String
     end

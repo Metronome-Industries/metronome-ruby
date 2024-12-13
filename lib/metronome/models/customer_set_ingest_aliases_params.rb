@@ -3,11 +3,11 @@
 module Metronome
   module Models
     class CustomerSetIngestAliasesParams < Metronome::BaseModel
-      # @!attribute [rw] customer_id
+      # @!attribute customer_id
       #   @return [String]
       required :customer_id, String
 
-      # @!attribute [rw] ingest_aliases
+      # @!attribute ingest_aliases
       #   @return [Array<String>]
       required :ingest_aliases, Metronome::ArrayOf.new(String)
     end

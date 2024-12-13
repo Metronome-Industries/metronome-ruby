@@ -3,11 +3,11 @@
 module Metronome
   module Models
     class CustomerSetNameParams < Metronome::BaseModel
-      # @!attribute [rw] customer_id
+      # @!attribute customer_id
       #   @return [String]
       required :customer_id, String
 
-      # @!attribute [rw] name
+      # @!attribute name
       #   The new name for the customer. This will be truncated to 160 characters if the provided name is longer.
       #   @return [String]
       required :name, String

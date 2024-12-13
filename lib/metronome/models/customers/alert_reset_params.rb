@@ -4,12 +4,12 @@ module Metronome
   module Models
     module Customers
       class AlertResetParams < Metronome::BaseModel
-        # @!attribute [rw] alert_id
+        # @!attribute alert_id
         #   The Metronome ID of the alert
         #   @return [String]
         required :alert_id, String
 
-        # @!attribute [rw] customer_id
+        # @!attribute customer_id
         #   The Metronome ID of the customer
         #   @return [String]
         required :customer_id, String

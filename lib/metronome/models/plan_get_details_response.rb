@@ -3,7 +3,7 @@
 module Metronome
   module Models
     class PlanGetDetailsResponse < Metronome::BaseModel
-      # @!attribute [rw] data
+      # @!attribute data
       #   @return [Metronome::Models::PlanDetail]
       required :data, -> { Metronome::Models::PlanDetail }
 

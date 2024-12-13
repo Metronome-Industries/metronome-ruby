@@ -3,15 +3,15 @@
 module Metronome
   module Models
     class CreditGrantListCreditTypesResponse < Metronome::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   @return [String]
       optional :id, String
 
-      # @!attribute [rw] is_currency
+      # @!attribute is_currency
       #   @return [Boolean]
       optional :is_currency, Metronome::BooleanModel
 
-      # @!attribute [rw] name
+      # @!attribute name
       #   @return [String]
       optional :name, String
 

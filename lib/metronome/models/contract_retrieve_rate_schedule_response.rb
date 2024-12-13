@@ -3,49 +3,49 @@
 module Metronome
   module Models
     class ContractRetrieveRateScheduleResponse < Metronome::BaseModel
-      # @!attribute [rw] data
+      # @!attribute data
       #   @return [Array<Metronome::Models::ContractRetrieveRateScheduleResponse::Data>]
       required :data,
                Metronome::ArrayOf.new(-> { Metronome::Models::ContractRetrieveRateScheduleResponse::Data })
 
-      # @!attribute [rw] next_page
+      # @!attribute next_page
       #   @return [String]
       optional :next_page, String
 
       class Data < Metronome::BaseModel
-        # @!attribute [rw] entitled
+        # @!attribute entitled
         #   @return [Boolean]
         required :entitled, Metronome::BooleanModel
 
-        # @!attribute [rw] list_rate
+        # @!attribute list_rate
         #   @return [Metronome::Models::Rate]
         required :list_rate, -> { Metronome::Models::Rate }
 
-        # @!attribute [rw] product_custom_fields
+        # @!attribute product_custom_fields
         #   @return [Hash]
         required :product_custom_fields, Hash
 
-        # @!attribute [rw] product_id
+        # @!attribute product_id
         #   @return [String]
         required :product_id, String
 
-        # @!attribute [rw] product_name
+        # @!attribute product_name
         #   @return [String]
         required :product_name, String
 
-        # @!attribute [rw] product_tags
+        # @!attribute product_tags
         #   @return [Array<String>]
         required :product_tags, Metronome::ArrayOf.new(String)
 
-        # @!attribute [rw] rate_card_id
+        # @!attribute rate_card_id
         #   @return [String]
         required :rate_card_id, String
 
-        # @!attribute [rw] starting_at
+        # @!attribute starting_at
         #   @return [Time]
         required :starting_at, Time
 
-        # @!attribute [rw] commit_rate
+        # @!attribute commit_rate
         #   A distinct rate on the rate card. You can choose to use this rate rather than list rate when consuming a credit or commit.
         #   @return [Metronome::Models::ContractRetrieveRateScheduleResponse::Data::CommitRate]
         optional :commit_rate,
@@ -53,32 +53,32 @@ module Metronome
                    Metronome::Models::ContractRetrieveRateScheduleResponse::Data::CommitRate
                  }
 
-        # @!attribute [rw] ending_before
+        # @!attribute ending_before
         #   @return [Time]
         optional :ending_before, Time
 
-        # @!attribute [rw] override_rate
+        # @!attribute override_rate
         #   @return [Metronome::Models::Rate]
         optional :override_rate, -> { Metronome::Models::Rate }
 
-        # @!attribute [rw] pricing_group_values
+        # @!attribute pricing_group_values
         #   @return [Hash]
         optional :pricing_group_values, Hash
 
         class CommitRate < Metronome::BaseModel
-          # @!attribute [rw] rate_type
+          # @!attribute rate_type
           #   @return [Symbol, Metronome::Models::ContractRetrieveRateScheduleResponse::Data::CommitRate::RateType]
           required :rate_type,
                    enum: -> {
                      Metronome::Models::ContractRetrieveRateScheduleResponse::Data::CommitRate::RateType
                    }
 
-          # @!attribute [rw] price
+          # @!attribute price
           #   Commit rate price. For FLAT rate_type, this must be >=0.
           #   @return [Float]
           optional :price, Float
 
-          # @!attribute [rw] tiers
+          # @!attribute tiers
           #   Only set for TIERED rate_type.
           #   @return [Array<Metronome::Models::Tier>]
           optional :tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Tier })

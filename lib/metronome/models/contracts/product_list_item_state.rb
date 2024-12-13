@@ -4,74 +4,74 @@ module Metronome
   module Models
     module Contracts
       class ProductListItemState < Metronome::BaseModel
-        # @!attribute [rw] created_at
+        # @!attribute created_at
         #   @return [Time]
         required :created_at, Time
 
-        # @!attribute [rw] created_by
+        # @!attribute created_by
         #   @return [String]
         required :created_by, String
 
-        # @!attribute [rw] name
+        # @!attribute name
         #   @return [String]
         required :name, String
 
-        # @!attribute [rw] billable_metric_id
+        # @!attribute billable_metric_id
         #   @return [String]
         optional :billable_metric_id, String
 
-        # @!attribute [rw] composite_product_ids
+        # @!attribute composite_product_ids
         #   @return [Array<String>]
         optional :composite_product_ids, Metronome::ArrayOf.new(String)
 
-        # @!attribute [rw] composite_tags
+        # @!attribute composite_tags
         #   @return [Array<String>]
         optional :composite_tags, Metronome::ArrayOf.new(String)
 
-        # @!attribute [rw] exclude_free_usage
+        # @!attribute exclude_free_usage
         #   @return [Boolean]
         optional :exclude_free_usage, Metronome::BooleanModel
 
-        # @!attribute [rw] is_refundable
+        # @!attribute is_refundable
         #   This field's availability is dependent on your client's configuration.
         #   @return [Boolean]
         optional :is_refundable, Metronome::BooleanModel
 
-        # @!attribute [rw] netsuite_internal_item_id
+        # @!attribute netsuite_internal_item_id
         #   This field's availability is dependent on your client's configuration.
         #   @return [String]
         optional :netsuite_internal_item_id, String
 
-        # @!attribute [rw] netsuite_overage_item_id
+        # @!attribute netsuite_overage_item_id
         #   This field's availability is dependent on your client's configuration.
         #   @return [String]
         optional :netsuite_overage_item_id, String
 
-        # @!attribute [rw] presentation_group_key
+        # @!attribute presentation_group_key
         #   For USAGE products only. Groups usage line items on invoices. The superset of values in the pricing group key and presentation group key must be set as one compound group key on the billable metric.
         #   @return [Array<String>]
         optional :presentation_group_key, Metronome::ArrayOf.new(String)
 
-        # @!attribute [rw] pricing_group_key
+        # @!attribute pricing_group_key
         #   For USAGE products only. If set, pricing for this product will be determined for each pricing_group_key value, as opposed to the product as a whole. The superset of values in the pricing group key and presentation group key must be set as one compound group key on the billable metric.
         #   @return [Array<String>]
         optional :pricing_group_key, Metronome::ArrayOf.new(String)
 
-        # @!attribute [rw] quantity_conversion
+        # @!attribute quantity_conversion
         #   Optional. Only valid for USAGE products. If provided, the quantity will be converted using the provided conversion factor and operation. For example, if the operation is "multiply" and the conversion factor is 100, then the quantity will be multiplied by 100. This can be used in cases where data is sent in one unit and priced in another.  For example, data could be sent in MB and priced in GB. In this case, the conversion factor would be 1024 and the operation would be "divide".
         #   @return [Metronome::Models::Contracts::QuantityConversion]
         optional :quantity_conversion, -> { Metronome::Models::Contracts::QuantityConversion }
 
-        # @!attribute [rw] quantity_rounding
+        # @!attribute quantity_rounding
         #   Optional. Only valid for USAGE products. If provided, the quantity will be rounded using the provided rounding method and decimal places. For example, if the method is "round up" and the decimal places is 0, then the quantity will be rounded up to the nearest integer.
         #   @return [Metronome::Models::Contracts::QuantityRounding]
         optional :quantity_rounding, -> { Metronome::Models::Contracts::QuantityRounding }
 
-        # @!attribute [rw] starting_at
+        # @!attribute starting_at
         #   @return [Time]
         optional :starting_at, Time
 
-        # @!attribute [rw] tags
+        # @!attribute tags
         #   @return [Array<String>]
         optional :tags, Metronome::ArrayOf.new(String)
 

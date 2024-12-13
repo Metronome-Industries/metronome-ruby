@@ -4,69 +4,69 @@ module Metronome
   module Models
     module Customers
       class CreditCreateParams < Metronome::BaseModel
-        # @!attribute [rw] access_schedule
+        # @!attribute access_schedule
         #   Schedule for distributing the credit to the customer.
         #   @return [Metronome::Models::Customers::CreditCreateParams::AccessSchedule]
         required :access_schedule, -> { Metronome::Models::Customers::CreditCreateParams::AccessSchedule }
 
-        # @!attribute [rw] customer_id
+        # @!attribute customer_id
         #   @return [String]
         required :customer_id, String
 
-        # @!attribute [rw] priority
+        # @!attribute priority
         #   If multiple credits or commits are applicable, the one with the lower priority will apply first.
         #   @return [Float]
         required :priority, Float
 
-        # @!attribute [rw] product_id
+        # @!attribute product_id
         #   @return [String]
         required :product_id, String
 
-        # @!attribute [rw] applicable_contract_ids
+        # @!attribute applicable_contract_ids
         #   Which contract the credit applies to. If not provided, the credit applies to all contracts.
         #   @return [Array<String>]
         optional :applicable_contract_ids, Metronome::ArrayOf.new(String)
 
-        # @!attribute [rw] applicable_product_ids
+        # @!attribute applicable_product_ids
         #   Which products the credit applies to. If both applicable_product_ids and applicable_product_tags are not provided, the credit applies to all products.
         #   @return [Array<String>]
         optional :applicable_product_ids, Metronome::ArrayOf.new(String)
 
-        # @!attribute [rw] applicable_product_tags
+        # @!attribute applicable_product_tags
         #   Which tags the credit applies to. If both applicable_product_ids and applicable_product_tags are not provided, the credit applies to all products.
         #   @return [Array<String>]
         optional :applicable_product_tags, Metronome::ArrayOf.new(String)
 
-        # @!attribute [rw] custom_fields
+        # @!attribute custom_fields
         #   @return [Hash]
         optional :custom_fields, Hash
 
-        # @!attribute [rw] description
+        # @!attribute description
         #   Used only in UI/API. It is not exposed to end customers.
         #   @return [String]
         optional :description, String
 
-        # @!attribute [rw] name
+        # @!attribute name
         #   displayed on invoices
         #   @return [String]
         optional :name, String
 
-        # @!attribute [rw] netsuite_sales_order_id
+        # @!attribute netsuite_sales_order_id
         #   This field's availability is dependent on your client's configuration.
         #   @return [String]
         optional :netsuite_sales_order_id, String
 
-        # @!attribute [rw] rate_type
+        # @!attribute rate_type
         #   @return [Symbol, Metronome::Models::Customers::CreditCreateParams::RateType]
         optional :rate_type, enum: -> { Metronome::Models::Customers::CreditCreateParams::RateType }
 
-        # @!attribute [rw] salesforce_opportunity_id
+        # @!attribute salesforce_opportunity_id
         #   This field's availability is dependent on your client's configuration.
         #   @return [String]
         optional :salesforce_opportunity_id, String
 
         class AccessSchedule < Metronome::BaseModel
-          # @!attribute [rw] schedule_items
+          # @!attribute schedule_items
           #   @return [Array<Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem>]
           required :schedule_items,
                    Metronome::ArrayOf.new(
@@ -75,21 +75,21 @@ module Metronome
                      }
                    )
 
-          # @!attribute [rw] credit_type_id
+          # @!attribute credit_type_id
           #   @return [String]
           optional :credit_type_id, String
 
           class ScheduleItem < Metronome::BaseModel
-            # @!attribute [rw] amount
+            # @!attribute amount
             #   @return [Float]
             required :amount, Float
 
-            # @!attribute [rw] ending_before
+            # @!attribute ending_before
             #   RFC 3339 timestamp (exclusive)
             #   @return [Time]
             required :ending_before, Time
 
-            # @!attribute [rw] starting_at
+            # @!attribute starting_at
             #   RFC 3339 timestamp (inclusive)
             #   @return [Time]
             required :starting_at, Time

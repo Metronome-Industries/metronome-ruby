@@ -3,53 +3,53 @@
 module Metronome
   module Models
     class PlanListChargesResponse < Metronome::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] charge_type
+      # @!attribute charge_type
       #   @return [Symbol, Metronome::Models::PlanListChargesResponse::ChargeType]
       required :charge_type, enum: -> { Metronome::Models::PlanListChargesResponse::ChargeType }
 
-      # @!attribute [rw] credit_type
+      # @!attribute credit_type
       #   @return [Metronome::Models::CreditTypeData]
       required :credit_type, -> { Metronome::Models::CreditTypeData }
 
-      # @!attribute [rw] custom_fields
+      # @!attribute custom_fields
       #   @return [Hash]
       required :custom_fields, Hash
 
-      # @!attribute [rw] name
+      # @!attribute name
       #   @return [String]
       required :name, String
 
-      # @!attribute [rw] prices
+      # @!attribute prices
       #   @return [Array<Metronome::Models::PlanListChargesResponse::Price>]
       required :prices, Metronome::ArrayOf.new(-> { Metronome::Models::PlanListChargesResponse::Price })
 
-      # @!attribute [rw] product_id
+      # @!attribute product_id
       #   @return [String]
       required :product_id, String
 
-      # @!attribute [rw] product_name
+      # @!attribute product_name
       #   @return [String]
       required :product_name, String
 
-      # @!attribute [rw] quantity
+      # @!attribute quantity
       #   @return [Float]
       optional :quantity, Float
 
-      # @!attribute [rw] start_period
+      # @!attribute start_period
       #   Used in price ramps.  Indicates how many billing periods pass before the charge applies.
       #   @return [Float]
       optional :start_period, Float
 
-      # @!attribute [rw] tier_reset_frequency
+      # @!attribute tier_reset_frequency
       #   Used in pricing tiers.  Indicates how often the tier resets. Default is 1 - the tier count resets every billing period.
       #   @return [Float]
       optional :tier_reset_frequency, Float
 
-      # @!attribute [rw] unit_conversion
+      # @!attribute unit_conversion
       #   Specifies how quantities for usage based charges will be converted.
       #   @return [Metronome::Models::PlanListChargesResponse::UnitConversion]
       optional :unit_conversion, -> { Metronome::Models::PlanListChargesResponse::UnitConversion }
@@ -63,24 +63,24 @@ module Metronome
       end
 
       class Price < Metronome::BaseModel
-        # @!attribute [rw] tier
+        # @!attribute tier
         #   Used in pricing tiers.  Indicates at what metric value the price applies.
         #   @return [Float]
         required :tier, Float
 
-        # @!attribute [rw] value
+        # @!attribute value
         #   @return [Float]
         required :value, Float
 
-        # @!attribute [rw] collection_interval
+        # @!attribute collection_interval
         #   @return [Float]
         optional :collection_interval, Float
 
-        # @!attribute [rw] collection_schedule
+        # @!attribute collection_schedule
         #   @return [String]
         optional :collection_schedule, String
 
-        # @!attribute [rw] quantity
+        # @!attribute quantity
         #   @return [Float]
         optional :quantity, Float
 
@@ -97,12 +97,12 @@ module Metronome
       end
 
       class UnitConversion < Metronome::BaseModel
-        # @!attribute [rw] division_factor
+        # @!attribute division_factor
         #   The conversion factor
         #   @return [Float]
         required :division_factor, Float
 
-        # @!attribute [rw] rounding_behavior
+        # @!attribute rounding_behavior
         #   Whether usage should be rounded down or up to the nearest whole number. If null, quantity will be rounded to 20 decimal places.
         #   @return [Symbol, Metronome::Models::PlanListChargesResponse::UnitConversion::RoundingBehavior]
         optional :rounding_behavior,

@@ -51,7 +51,6 @@ module Metronome
           req = {
             method: :post,
             path: "/contract-pricing/products/create",
-            headers: {"Content-Type" => "application/json"},
             body: parsed,
             model: Metronome::Models::Contracts::ProductCreateResponse
           }
@@ -71,7 +70,6 @@ module Metronome
           req = {
             method: :post,
             path: "/contract-pricing/products/get",
-            headers: {"Content-Type" => "application/json"},
             body: parsed,
             model: Metronome::Models::Contracts::ProductRetrieveResponse
           }
@@ -128,7 +126,6 @@ module Metronome
           req = {
             method: :post,
             path: "/contract-pricing/products/update",
-            headers: {"Content-Type" => "application/json"},
             body: parsed,
             model: Metronome::Models::Contracts::ProductUpdateResponse
           }
@@ -152,7 +149,6 @@ module Metronome
             method: :post,
             path: "/contract-pricing/products/list",
             query: parsed.slice(*query_params),
-            headers: {"Content-Type" => "application/json"},
             body: parsed.except(*query_params),
             page: Metronome::CursorPage,
             model: Metronome::Models::Contracts::ProductListResponse
@@ -173,7 +169,6 @@ module Metronome
           req = {
             method: :post,
             path: "/contract-pricing/products/archive",
-            headers: {"Content-Type" => "application/json"},
             body: parsed,
             model: Metronome::Models::Contracts::ProductArchiveResponse
           }

@@ -24,7 +24,6 @@ module Metronome
         req = {
           method: :post,
           path: "/customFields/addKey",
-          headers: {"Content-Type" => "application/json"},
           body: parsed,
           model: NilClass
         }
@@ -46,7 +45,6 @@ module Metronome
         req = {
           method: :post,
           path: "/customFields/deleteValues",
-          headers: {"Content-Type" => "application/json"},
           body: parsed,
           model: NilClass
         }
@@ -69,7 +67,6 @@ module Metronome
           method: :post,
           path: "/customFields/listKeys",
           query: parsed.slice(*query_params),
-          headers: {"Content-Type" => "application/json"},
           body: parsed.except(*query_params),
           model: Metronome::Models::CustomFieldListKeysResponse
         }
@@ -90,7 +87,6 @@ module Metronome
         req = {
           method: :post,
           path: "/customFields/removeKey",
-          headers: {"Content-Type" => "application/json"},
           body: parsed,
           model: NilClass
         }
@@ -118,7 +114,6 @@ module Metronome
         req = {
           method: :post,
           path: "/customFields/setValues",
-          headers: {"Content-Type" => "application/json"},
           body: parsed,
           model: NilClass
         }

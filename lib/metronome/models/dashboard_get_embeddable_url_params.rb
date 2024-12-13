@@ -3,16 +3,16 @@
 module Metronome
   module Models
     class DashboardGetEmbeddableURLParams < Metronome::BaseModel
-      # @!attribute [rw] customer_id
+      # @!attribute customer_id
       #   @return [String]
       required :customer_id, String
 
-      # @!attribute [rw] dashboard
+      # @!attribute dashboard
       #   The type of dashboard to retrieve.
       #   @return [Symbol, Metronome::Models::DashboardGetEmbeddableURLParams::Dashboard]
       required :dashboard, enum: -> { Metronome::Models::DashboardGetEmbeddableURLParams::Dashboard }
 
-      # @!attribute [rw] bm_group_key_overrides
+      # @!attribute bm_group_key_overrides
       #   Optional list of billable metric group key overrides
       #   @return [Array<Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>]
       optional :bm_group_key_overrides,
@@ -22,7 +22,7 @@ module Metronome
                  }
                )
 
-      # @!attribute [rw] color_overrides
+      # @!attribute color_overrides
       #   Optional list of colors to override
       #   @return [Array<Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride>]
       optional :color_overrides,
@@ -32,7 +32,7 @@ module Metronome
                  }
                )
 
-      # @!attribute [rw] dashboard_options
+      # @!attribute dashboard_options
       #   Optional dashboard specific options
       #   @return [Array<Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption>]
       optional :dashboard_options,
@@ -50,17 +50,17 @@ module Metronome
       end
 
       class BmGroupKeyOverride < Metronome::BaseModel
-        # @!attribute [rw] group_key_name
+        # @!attribute group_key_name
         #   The name of the billable metric group key.
         #   @return [String]
         required :group_key_name, String
 
-        # @!attribute [rw] display_name
+        # @!attribute display_name
         #   The display name for the billable metric group key
         #   @return [String]
         optional :display_name, String
 
-        # @!attribute [rw] value_display_names
+        # @!attribute value_display_names
         #   <key, value> pairs of the billable metric group key values and their display names. e.g. {"a": "Asia", "b": "Euro"}
         #   @return [Hash]
         optional :value_display_names, Hash
@@ -77,12 +77,12 @@ module Metronome
       end
 
       class ColorOverride < Metronome::BaseModel
-        # @!attribute [rw] name
+        # @!attribute name
         #   The color to override
         #   @return [Symbol, Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride::Name]
         optional :name, enum: -> { Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride::Name }
 
-        # @!attribute [rw] value
+        # @!attribute value
         #   Hex value representation of the color
         #   @return [String]
         optional :value, String
@@ -120,12 +120,12 @@ module Metronome
       end
 
       class DashboardOption < Metronome::BaseModel
-        # @!attribute [rw] key
+        # @!attribute key
         #   The option key name
         #   @return [String]
         required :key, String
 
-        # @!attribute [rw] value
+        # @!attribute value
         #   The option value
         #   @return [String]
         required :value, String

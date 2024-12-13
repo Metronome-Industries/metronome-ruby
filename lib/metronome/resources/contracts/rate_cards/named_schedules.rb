@@ -28,7 +28,6 @@ module Metronome
             req = {
               method: :post,
               path: "/contracts/getNamedSchedule",
-              headers: {"Content-Type" => "application/json"},
               body: parsed,
               model: Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse
             }
@@ -55,7 +54,6 @@ module Metronome
             req = {
               method: :post,
               path: "/contracts/updateNamedSchedule",
-              headers: {"Content-Type" => "application/json"},
               body: parsed,
               model: NilClass
             }

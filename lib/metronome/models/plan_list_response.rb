@@ -3,19 +3,19 @@
 module Metronome
   module Models
     class PlanListResponse < Metronome::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] description
+      # @!attribute description
       #   @return [String]
       required :description, String
 
-      # @!attribute [rw] name
+      # @!attribute name
       #   @return [String]
       required :name, String
 
-      # @!attribute [rw] custom_fields
+      # @!attribute custom_fields
       #   @return [Hash]
       optional :custom_fields, Hash
 

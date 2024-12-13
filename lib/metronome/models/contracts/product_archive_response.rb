@@ -4,7 +4,7 @@ module Metronome
   module Models
     module Contracts
       class ProductArchiveResponse < Metronome::BaseModel
-        # @!attribute [rw] data
+        # @!attribute data
         #   @return [Metronome::Models::ID]
         required :data, -> { Metronome::Models::ID }
 

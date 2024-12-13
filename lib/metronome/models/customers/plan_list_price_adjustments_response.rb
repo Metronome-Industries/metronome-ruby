@@ -4,16 +4,16 @@ module Metronome
   module Models
     module Customers
       class PlanListPriceAdjustmentsResponse < Metronome::BaseModel
-        # @!attribute [rw] charge_id
+        # @!attribute charge_id
         #   @return [String]
         required :charge_id, String
 
-        # @!attribute [rw] charge_type
+        # @!attribute charge_type
         #   @return [Symbol, Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::ChargeType]
         required :charge_type,
                  enum: -> { Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::ChargeType }
 
-        # @!attribute [rw] prices
+        # @!attribute prices
         #   @return [Array<Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price>]
         required :prices,
                  Metronome::ArrayOf.new(
@@ -22,11 +22,11 @@ module Metronome
                    }
                  )
 
-        # @!attribute [rw] start_period
+        # @!attribute start_period
         #   @return [Float]
         required :start_period, Float
 
-        # @!attribute [rw] quantity
+        # @!attribute quantity
         #   @return [Float]
         optional :quantity, Float
 
@@ -39,7 +39,7 @@ module Metronome
         end
 
         class Price < Metronome::BaseModel
-          # @!attribute [rw] adjustment_type
+          # @!attribute adjustment_type
           #   Determines how the value will be applied.
           #   @return [Symbol, Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType]
           required :adjustment_type,
@@ -47,12 +47,12 @@ module Metronome
                      Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType
                    }
 
-          # @!attribute [rw] tier
+          # @!attribute tier
           #   Used in pricing tiers.  Indicates at what metric value the price applies.
           #   @return [Float]
           optional :tier, Float
 
-          # @!attribute [rw] value
+          # @!attribute value
           #   @return [Float]
           optional :value, Float
 

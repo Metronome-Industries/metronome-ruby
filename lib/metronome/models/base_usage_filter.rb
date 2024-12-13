@@ -3,15 +3,15 @@
 module Metronome
   module Models
     class BaseUsageFilter < Metronome::BaseModel
-      # @!attribute [rw] group_key
+      # @!attribute group_key
       #   @return [String]
       required :group_key, String
 
-      # @!attribute [rw] group_values
+      # @!attribute group_values
       #   @return [Array<String>]
       required :group_values, Metronome::ArrayOf.new(String)
 
-      # @!attribute [rw] starting_at
+      # @!attribute starting_at
       #   @return [Time]
       optional :starting_at, Time
 

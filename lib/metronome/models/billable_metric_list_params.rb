@@ -3,17 +3,17 @@
 module Metronome
   module Models
     class BillableMetricListParams < Metronome::BaseModel
-      # @!attribute [rw] include_archived
+      # @!attribute include_archived
       #   If true, the list of returned metrics will include archived metrics
       #   @return [Boolean]
       optional :include_archived, Metronome::BooleanModel
 
-      # @!attribute [rw] limit
+      # @!attribute limit
       #   Max number of results that should be returned
       #   @return [Integer]
       optional :limit, Integer
 
-      # @!attribute [rw] next_page
+      # @!attribute next_page
       #   Cursor that indicates where the next page of results should start.
       #   @return [String]
       optional :next_page, String

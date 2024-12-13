@@ -3,40 +3,40 @@
 module Metronome
   module Models
     class CustomerDetail < Metronome::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   the Metronome ID of the customer
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] custom_fields
+      # @!attribute custom_fields
       #   @return [Hash]
       required :custom_fields, Hash
 
-      # @!attribute [rw] customer_config
+      # @!attribute customer_config
       #   @return [Metronome::Models::CustomerDetail::CustomerConfig]
       required :customer_config, -> { Metronome::Models::CustomerDetail::CustomerConfig }
 
-      # @!attribute [rw] external_id
+      # @!attribute external_id
       #   (deprecated, use ingest_aliases instead) the first ID (Metronome or ingest alias) that can be used in usage events
       #   @return [String]
       required :external_id, String
 
-      # @!attribute [rw] ingest_aliases
+      # @!attribute ingest_aliases
       #   aliases for this customer that can be used instead of the Metronome customer ID in usage events
       #   @return [Array<String>]
       required :ingest_aliases, Metronome::ArrayOf.new(String)
 
-      # @!attribute [rw] name
+      # @!attribute name
       #   @return [String]
       required :name, String
 
-      # @!attribute [rw] current_billable_status
+      # @!attribute current_billable_status
       #   This field's availability is dependent on your client's configuration.
       #   @return [Metronome::Models::CustomerDetail::CurrentBillableStatus]
       optional :current_billable_status, -> { Metronome::Models::CustomerDetail::CurrentBillableStatus }
 
       class CustomerConfig < Metronome::BaseModel
-        # @!attribute [rw] salesforce_account_id
+        # @!attribute salesforce_account_id
         #   The Salesforce account ID for the customer
         #   @return [String]
         required :salesforce_account_id, String
@@ -50,11 +50,11 @@ module Metronome
       end
 
       class CurrentBillableStatus < Metronome::BaseModel
-        # @!attribute [rw] value
+        # @!attribute value
         #   @return [Symbol, Metronome::Models::CustomerDetail::CurrentBillableStatus::Value]
         required :value, enum: -> { Metronome::Models::CustomerDetail::CurrentBillableStatus::Value }
 
-        # @!attribute [rw] effective_at
+        # @!attribute effective_at
         #   @return [Time]
         optional :effective_at, Time
 

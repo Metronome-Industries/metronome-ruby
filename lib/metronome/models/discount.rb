@@ -3,33 +3,33 @@
 module Metronome
   module Models
     class Discount < Metronome::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] product
+      # @!attribute product
       #   @return [Metronome::Models::Discount::Product]
       required :product, -> { Metronome::Models::Discount::Product }
 
-      # @!attribute [rw] schedule
+      # @!attribute schedule
       #   @return [Metronome::Models::SchedulePointInTime]
       required :schedule, -> { Metronome::Models::SchedulePointInTime }
 
-      # @!attribute [rw] name
+      # @!attribute name
       #   @return [String]
       optional :name, String
 
-      # @!attribute [rw] netsuite_sales_order_id
+      # @!attribute netsuite_sales_order_id
       #   This field's availability is dependent on your client's configuration.
       #   @return [String]
       optional :netsuite_sales_order_id, String
 
       class Product < Metronome::BaseModel
-        # @!attribute [rw] id
+        # @!attribute id
         #   @return [String]
         required :id, String
 
-        # @!attribute [rw] name
+        # @!attribute name
         #   @return [String]
         required :name, String
 

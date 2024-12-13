@@ -38,7 +38,6 @@ module Metronome
           req = {
             method: :post,
             path: "/contracts/customerCredits/create",
-            headers: {"Content-Type" => "application/json"},
             body: parsed,
             model: Metronome::Models::Customers::CreditCreateResponse
           }
@@ -67,7 +66,6 @@ module Metronome
           req = {
             method: :post,
             path: "/contracts/customerCredits/list",
-            headers: {"Content-Type" => "application/json"},
             body: parsed,
             model: Metronome::Models::Customers::CreditListResponse
           }
@@ -90,7 +88,6 @@ module Metronome
           req = {
             method: :post,
             path: "/contracts/customerCredits/updateEndDate",
-            headers: {"Content-Type" => "application/json"},
             body: parsed,
             model: Metronome::Models::Customers::CreditUpdateEndDateResponse
           }

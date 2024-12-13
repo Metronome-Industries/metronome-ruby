@@ -3,24 +3,24 @@
 module Metronome
   module Models
     class CustomFieldListKeysResponse < Metronome::BaseModel
-      # @!attribute [rw] data
+      # @!attribute data
       #   @return [Array<Metronome::Models::CustomFieldListKeysResponse::Data>]
       required :data, Metronome::ArrayOf.new(-> { Metronome::Models::CustomFieldListKeysResponse::Data })
 
-      # @!attribute [rw] next_page
+      # @!attribute next_page
       #   @return [String]
       required :next_page, String
 
       class Data < Metronome::BaseModel
-        # @!attribute [rw] enforce_uniqueness
+        # @!attribute enforce_uniqueness
         #   @return [Boolean]
         required :enforce_uniqueness, Metronome::BooleanModel
 
-        # @!attribute [rw] entity
+        # @!attribute entity
         #   @return [Symbol, Metronome::Models::CustomFieldListKeysResponse::Data::Entity]
         required :entity, enum: -> { Metronome::Models::CustomFieldListKeysResponse::Data::Entity }
 
-        # @!attribute [rw] key
+        # @!attribute key
         #   @return [String]
         required :key, String
 

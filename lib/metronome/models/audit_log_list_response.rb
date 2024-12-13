@@ -3,48 +3,48 @@
 module Metronome
   module Models
     class AuditLogListResponse < Metronome::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] timestamp
+      # @!attribute timestamp
       #   @return [Time]
       required :timestamp, Time
 
-      # @!attribute [rw] action
+      # @!attribute action
       #   @return [String]
       optional :action, String
 
-      # @!attribute [rw] actor
+      # @!attribute actor
       #   @return [Metronome::Models::AuditLogListResponse::Actor]
       optional :actor, -> { Metronome::Models::AuditLogListResponse::Actor }
 
-      # @!attribute [rw] description
+      # @!attribute description
       #   @return [String]
       optional :description, String
 
-      # @!attribute [rw] resource_id
+      # @!attribute resource_id
       #   @return [String]
       optional :resource_id, String
 
-      # @!attribute [rw] resource_type
+      # @!attribute resource_type
       #   @return [String]
       optional :resource_type, String
 
-      # @!attribute [rw] status
+      # @!attribute status
       #   @return [Symbol, Metronome::Models::AuditLogListResponse::Status]
       optional :status, enum: -> { Metronome::Models::AuditLogListResponse::Status }
 
       class Actor < Metronome::BaseModel
-        # @!attribute [rw] id
+        # @!attribute id
         #   @return [String]
         required :id, String
 
-        # @!attribute [rw] name
+        # @!attribute name
         #   @return [String]
         required :name, String
 
-        # @!attribute [rw] email
+        # @!attribute email
         #   @return [String]
         optional :email, String
 
