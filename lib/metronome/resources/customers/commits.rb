@@ -11,7 +11,7 @@ module Metronome
 
         # Create a new commit at the customer level.
         #
-        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::CommitCreateParams] Attributes to send in this request.
         #   @option params [Metronome::Models::Customers::CommitCreateParams::AccessSchedule] :access_schedule Schedule for distributing the commit to the customer. For "POSTPAID" commits
         #     only one schedule item is allowed and amount must match invoice_schedule total.
         #   @option params [String] :customer_id
@@ -55,7 +55,7 @@ module Metronome
 
         # List commits.
         #
-        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::CommitListParams] Attributes to send in this request.
         #   @option params [String] :customer_id
         #   @option params [String, nil] :commit_id
         #   @option params [Time, nil] :covering_date Include only commits that have access schedules that "cover" the provided date
@@ -83,7 +83,7 @@ module Metronome
 
         # Update the end date of a PREPAID commit
         #
-        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::CommitUpdateEndDateParams] Attributes to send in this request.
         #   @option params [String] :commit_id ID of the commit to update. Only supports "PREPAID" commits.
         #   @option params [String] :customer_id ID of the customer whose commit is to be updated
         #   @option params [Time, nil] :access_ending_before RFC 3339 timestamp indicating when access to the commit will end and it will no

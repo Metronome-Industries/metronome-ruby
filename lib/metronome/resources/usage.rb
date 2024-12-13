@@ -11,7 +11,7 @@ module Metronome
       # Fetch aggregated usage data for multiple customers and billable-metrics, broken
       #   into intervals of the specified length.
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}, Metronome::Models::UsageListParams] Attributes to send in this request.
       #   @option params [Time] :ending_before Body param:
       #   @option params [Time] :starting_on Body param:
       #   @option params [Symbol, Metronome::Models::UsageListParams::WindowSize] :window_size Body param: A window_size of "day" or "hour" will return the usage for the
@@ -46,7 +46,7 @@ module Metronome
       #   [Getting usage into Metronome](https://docs.metronome.com/connect-metronome/) to
       #   learn more about usage events.
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}, Metronome::Models::UsageIngestParams] Attributes to send in this request.
       #   @option params [Array<Metronome::Models::UsageIngestParams::Usage>] :usage
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -66,7 +66,7 @@ module Metronome
       # Fetch aggregated usage data for the specified customer, billable-metric, and
       #   optional group, broken into intervals of the specified length.
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}, Metronome::Models::UsageListWithGroupsParams] Attributes to send in this request.
       #   @option params [String] :billable_metric_id Body param:
       #   @option params [String] :customer_id Body param:
       #   @option params [Symbol, Metronome::Models::UsageListWithGroupsParams::WindowSize] :window_size Body param: A window_size of "day" or "hour" will return the usage for the

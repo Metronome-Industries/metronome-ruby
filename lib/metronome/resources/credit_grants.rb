@@ -10,7 +10,7 @@ module Metronome
 
       # Create a new credit grant
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}, Metronome::Models::CreditGrantCreateParams] Attributes to send in this request.
       #   @option params [String] :customer_id the Metronome ID of the customer
       #   @option params [Time] :expires_at The credit grant will only apply to usage or charges dated before this timestamp
       #   @option params [Metronome::Models::CreditGrantCreateParams::GrantAmount] :grant_amount the amount of credits granted
@@ -50,7 +50,7 @@ module Metronome
 
       # List credit grants. This list does not included voided grants.
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}, Metronome::Models::CreditGrantListParams] Attributes to send in this request.
       #   @option params [Integer, nil] :limit Query param: Max number of results that should be returned
       #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
       #   @option params [Array<String>, nil] :credit_grant_ids Body param: An array of credit grant IDs. If this is specified, neither
@@ -82,7 +82,7 @@ module Metronome
 
       # Edit an existing credit grant
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}, Metronome::Models::CreditGrantEditParams] Attributes to send in this request.
       #   @option params [String] :id the ID of the credit grant
       #   @option params [String, nil] :credit_grant_type the updated credit grant type
       #   @option params [Time, nil] :expires_at the updated expiration date for the credit grant
@@ -104,7 +104,7 @@ module Metronome
 
       # List all pricing units (known in the API by the legacy term "credit types").
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}, Metronome::Models::CreditGrantListCreditTypesParams] Attributes to send in this request.
       #   @option params [Integer, nil] :limit Max number of results that should be returned
       #   @option params [String, nil] :next_page Cursor that indicates where the next page of results should start.
       #
@@ -127,7 +127,7 @@ module Metronome
       #   Ledger entries are returned in chronological order. Ledger entries associated
       #   with voided credit grants are not included.
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}, Metronome::Models::CreditGrantListEntriesParams] Attributes to send in this request.
       #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
       #   @option params [Array<String>, nil] :credit_type_ids Body param: A list of Metronome credit type IDs to fetch ledger entries for. If
       #     absent, ledger entries for all credit types will be returned.
@@ -158,7 +158,7 @@ module Metronome
 
       # Void a credit grant
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}, Metronome::Models::CreditGrantVoidParams] Attributes to send in this request.
       #   @option params [String] :id
       #   @option params [Boolean, nil] :release_uniqueness_key If true, resets the uniqueness key on this grant so it can be re-used
       #   @option params [Boolean, nil] :void_credit_purchase_invoice If true, void the purchase invoice associated with the grant

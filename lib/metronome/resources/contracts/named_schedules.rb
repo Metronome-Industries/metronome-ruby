@@ -12,7 +12,7 @@ module Metronome
         # Get a named schedule for the given rate card. This endpoint's availability is
         #   dependent on your client's configuration.
         #
-        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::NamedScheduleRetrieveParams] Attributes to send in this request.
         #   @option params [String] :rate_card_id ID of the rate card whose named schedule is to be retrieved
         #   @option params [String] :schedule_name The identifier for the schedule to be retrieved
         #   @option params [Time, nil] :covering_date If provided, at most one schedule segment will be returned (the one that covers
@@ -35,7 +35,7 @@ module Metronome
         # Update a named schedule for the given rate card. This endpoint's availability is
         #   dependent on your client's configuration.
         #
-        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::NamedScheduleUpdateParams] Attributes to send in this request.
         #   @option params [String] :rate_card_id ID of the rate card whose named schedule is to be updated
         #   @option params [String] :schedule_name The identifier for the schedule to be updated
         #   @option params [Time] :starting_at

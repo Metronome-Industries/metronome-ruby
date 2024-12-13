@@ -10,7 +10,7 @@ module Metronome
 
       # Creates a new Billable Metric.
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}, Metronome::Models::BillableMetricCreateParams] Attributes to send in this request.
       #   @option params [String] :name The display name of the billable metric.
       #   @option params [String, nil] :aggregation_key Specifies the type of aggregation performed on matching events. Required if
       #     `sql` is not provided.
@@ -43,7 +43,7 @@ module Metronome
 
       # Get a billable metric.
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}, Metronome::Models::BillableMetricRetrieveParams] Attributes to send in this request.
       #   @option params [String] :billable_metric_id
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -64,7 +64,7 @@ module Metronome
 
       # List all billable metrics.
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}, Metronome::Models::BillableMetricListParams] Attributes to send in this request.
       #   @option params [Boolean, nil] :include_archived If true, the list of returned metrics will include archived metrics
       #   @option params [Integer, nil] :limit Max number of results that should be returned
       #   @option params [String, nil] :next_page Cursor that indicates where the next page of results should start.
@@ -86,7 +86,7 @@ module Metronome
 
       # Archive an existing billable metric.
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}, Metronome::Models::BillableMetricArchiveParams] Attributes to send in this request.
       #   @option params [String] :id
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.

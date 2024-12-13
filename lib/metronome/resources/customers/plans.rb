@@ -11,7 +11,7 @@ module Metronome
 
         # List the given customer's plans in reverse-chronological order.
         #
-        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::PlanListParams] Attributes to send in this request.
         #   @option params [String] :customer_id Path param:
         #   @option params [Integer, nil] :limit Query param: Max number of results that should be returned
         #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
@@ -38,7 +38,7 @@ module Metronome
         #   [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments)
         #   for details on the price adjustments.
         #
-        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::PlanAddParams] Attributes to send in this request.
         #   @option params [String] :customer_id Path param:
         #   @option params [String] :plan_id Body param:
         #   @option params [Time] :starting_on Body param: RFC 3339 timestamp for when the plan becomes active for this
@@ -76,7 +76,7 @@ module Metronome
 
         # Change the end date of a customer's plan.
         #
-        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::PlanEndParams] Attributes to send in this request.
         #   @option params [String] :customer_id Path param:
         #   @option params [String] :customer_plan_id Path param: the ID of a customer-plan relationship
         #   @option params [Time, nil] :ending_before Body param: RFC 3339 timestamp for when the plan ends (exclusive) for this
@@ -113,7 +113,7 @@ module Metronome
         #   [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments)
         #   for details.
         #
-        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::PlanListPriceAdjustmentsParams] Attributes to send in this request.
         #   @option params [String] :customer_id Path param:
         #   @option params [String] :customer_plan_id Path param: the ID of a customer-plan relationship
         #   @option params [Integer, nil] :limit Query param: Max number of results that should be returned

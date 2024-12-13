@@ -11,7 +11,7 @@ module Metronome
 
         # Create a new product
         #
-        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::ProductCreateParams] Attributes to send in this request.
         #   @option params [String] :name displayed on invoices
         #   @option params [Symbol, Metronome::Models::Contracts::ProductCreateParams::Type] :type
         #   @option params [String, nil] :billable_metric_id Required for USAGE products
@@ -59,7 +59,7 @@ module Metronome
 
         # Get a specific product
         #
-        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::ProductRetrieveParams] Attributes to send in this request.
         #   @option params [String] :id
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -78,7 +78,7 @@ module Metronome
 
         # Update a product
         #
-        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::ProductUpdateParams] Attributes to send in this request.
         #   @option params [String] :product_id ID of the product to update
         #   @option params [Time] :starting_at Timestamp representing when the update should go into effect. It must be on an
         #     hour boundary (e.g. 1:00, not 1:30).
@@ -134,7 +134,7 @@ module Metronome
 
         # List products
         #
-        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::ProductListParams] Attributes to send in this request.
         #   @option params [Integer, nil] :limit Query param: Max number of results that should be returned
         #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
         #   @option params [Symbol, Metronome::Models::Contracts::ProductListParams::ArchiveFilter, nil] :archive_filter Body param: Filter options for the product list
@@ -158,7 +158,7 @@ module Metronome
 
         # Archive a product
         #
-        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::ProductArchiveParams] Attributes to send in this request.
         #   @option params [String] :product_id ID of the product to be archived
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
