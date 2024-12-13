@@ -12,7 +12,7 @@ module Metronome
 
           # Updates ordering of specified products
           #
-          # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+          # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams] Attributes to send in this request.
           #   @option params [Array<Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove>] :product_moves
           #   @option params [String] :rate_card_id ID of the rate card to update
           #
@@ -32,7 +32,7 @@ module Metronome
 
           # Sets the ordering of products within a rate card
           #
-          # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+          # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::RateCards::ProductOrderSetParams] Attributes to send in this request.
           #   @option params [Array<String>] :product_order
           #   @option params [String] :rate_card_id ID of the rate card to update
           #

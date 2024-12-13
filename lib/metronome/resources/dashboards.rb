@@ -12,7 +12,7 @@ module Metronome
       #   embedded using an iframe in a website. This will show information such as usage
       #   data and customer invoices.
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}, Metronome::Models::DashboardGetEmbeddableURLParams] Attributes to send in this request.
       #   @option params [String] :customer_id
       #   @option params [Symbol, Metronome::Models::DashboardGetEmbeddableURLParams::Dashboard] :dashboard The type of dashboard to retrieve.
       #   @option params [Array<Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>, nil] :bm_group_key_overrides Optional list of billable metric group key overrides

@@ -11,7 +11,7 @@ module Metronome
 
         # Fetch a specific invoice for a given customer.
         #
-        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::InvoiceRetrieveParams] Attributes to send in this request.
         #   @option params [String] :customer_id Path param:
         #   @option params [String] :invoice_id Path param:
         #   @option params [Boolean, nil] :skip_zero_qty_line_items Query param: If set, all zero quantity line items will be filtered out of the
@@ -40,7 +40,7 @@ module Metronome
         # List all invoices for a given customer, optionally filtered by status, date
         #   range, and/or credit type.
         #
-        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::InvoiceListParams] Attributes to send in this request.
         #   @option params [String] :customer_id Path param:
         #   @option params [String, nil] :credit_type_id Query param: Only return invoices for the specified credit type
         #   @option params [Time, nil] :ending_before Query param: RFC 3339 timestamp (exclusive). Invoices will only be returned for
@@ -75,7 +75,7 @@ module Metronome
 
         # Add a one time charge to the specified invoice
         #
-        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::InvoiceAddChargeParams] Attributes to send in this request.
         #   @option params [String] :customer_id Path param:
         #   @option params [String] :charge_id Body param: The Metronome ID of the charge to add to the invoice. Note that the
         #     charge must be on a product that is not on the current plan, and the product
@@ -107,7 +107,7 @@ module Metronome
         # List daily or hourly invoice breakdowns for a given customer, optionally
         #   filtered by status, date range, and/or credit type.
         #
-        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::InvoiceListBreakdownsParams] Attributes to send in this request.
         #   @option params [String] :customer_id Path param:
         #   @option params [Time] :ending_before Query param: RFC 3339 timestamp. Breakdowns will only be returned for time
         #     windows that end on or before this time.
