@@ -3,8 +3,6 @@
 require_relative "test_helper"
 
 class Metronome::Test::BaseModelTest < Minitest::Test
-  parallelize_me!
-
   class E1 < Metronome::Enum
     A = :a
     B = :b
