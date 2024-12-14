@@ -76,6 +76,7 @@ module Metronome
                    )
 
           # @!attribute credit_type_id
+          #   Defaults to USD (cents) if not passed
           #   @return [String]
           optional :credit_type_id, String
 
@@ -109,7 +110,7 @@ module Metronome
           #   #
           #   # @param data [Hash{Symbol => Object}] .
           #   #   @option data [Array<Object>] :schedule_items
-          #   #   @option data [String, nil] :credit_type_id
+          #   #   @option data [String, nil] :credit_type_id Defaults to USD (cents) if not passed
           #   def initialize(data = {}) = super
         end
 

@@ -76,7 +76,7 @@ module Metronome
         required :amount, Float
 
         # @!attribute credit_type_id
-        #   the ID of the pricing unit to be used
+        #   the ID of the pricing unit to be used. Defaults to USD (cents) if not passed.
         #   @return [String]
         required :credit_type_id, String
 
@@ -85,7 +85,7 @@ module Metronome
         #   #
         #   # @param data [Hash{Symbol => Object}] .
         #   #   @option data [Float] :amount
-        #   #   @option data [String] :credit_type_id the ID of the pricing unit to be used
+        #   #   @option data [String] :credit_type_id the ID of the pricing unit to be used. Defaults to USD (cents) if not passed.
         #   def initialize(data = {}) = super
       end
 
@@ -95,7 +95,7 @@ module Metronome
         required :amount, Float
 
         # @!attribute credit_type_id
-        #   the ID of the pricing unit to be used
+        #   the ID of the pricing unit to be used. Defaults to USD (cents) if not passed.
         #   @return [String]
         required :credit_type_id, String
 
@@ -104,7 +104,7 @@ module Metronome
         #   #
         #   # @param data [Hash{Symbol => Object}] .
         #   #   @option data [Float] :amount
-        #   #   @option data [String] :credit_type_id the ID of the pricing unit to be used
+        #   #   @option data [String] :credit_type_id the ID of the pricing unit to be used. Defaults to USD (cents) if not passed.
         #   def initialize(data = {}) = super
       end
 
