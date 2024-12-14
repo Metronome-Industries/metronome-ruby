@@ -252,6 +252,7 @@ module Metronome
                    )
 
           # @!attribute credit_type_id
+          #   Defaults to USD (cents) if not passed
           #   @return [String]
           optional :credit_type_id, String
 
@@ -285,13 +286,13 @@ module Metronome
           #   #
           #   # @param data [Hash{Symbol => Object}] .
           #   #   @option data [Array<Object>] :schedule_items
-          #   #   @option data [String, nil] :credit_type_id
+          #   #   @option data [String, nil] :credit_type_id Defaults to USD (cents) if not passed
           #   def initialize(data = {}) = super
         end
 
         class InvoiceSchedule < Metronome::BaseModel
           # @!attribute credit_type_id
-          #   Defaults to USD if not passed. Only USD is supported at this time.
+          #   Defaults to USD (cents) if not passed.
           #   @return [String]
           optional :credit_type_id, String
 
@@ -426,7 +427,7 @@ module Metronome
           #   # Create a new instance of InvoiceSchedule from a Hash of raw data.
           #   #
           #   # @param data [Hash{Symbol => Object}] .
-          #   #   @option data [String, nil] :credit_type_id Defaults to USD if not passed. Only USD is supported at this time.
+          #   #   @option data [String, nil] :credit_type_id Defaults to USD (cents) if not passed.
           #   #   @option data [Object, nil] :recurring_schedule Enter the unit price and quantity for the charge or instead only send the
           #   #     amount. If amount is sent, the unit price is assumed to be the amount and
           #   #     quantity is inferred to be 1.
@@ -531,6 +532,7 @@ module Metronome
                    )
 
           # @!attribute credit_type_id
+          #   Defaults to USD (cents) if not passed
           #   @return [String]
           optional :credit_type_id, String
 
@@ -564,7 +566,7 @@ module Metronome
           #   #
           #   # @param data [Hash{Symbol => Object}] .
           #   #   @option data [Array<Object>] :schedule_items
-          #   #   @option data [String, nil] :credit_type_id
+          #   #   @option data [String, nil] :credit_type_id Defaults to USD (cents) if not passed
           #   def initialize(data = {}) = super
         end
 
@@ -617,7 +619,7 @@ module Metronome
 
         class Schedule < Metronome::BaseModel
           # @!attribute credit_type_id
-          #   Defaults to USD if not passed. Only USD is supported at this time.
+          #   Defaults to USD (cents) if not passed.
           #   @return [String]
           optional :credit_type_id, String
 
@@ -752,7 +754,7 @@ module Metronome
           #   # Create a new instance of Schedule from a Hash of raw data.
           #   #
           #   # @param data [Hash{Symbol => Object}] .
-          #   #   @option data [String, nil] :credit_type_id Defaults to USD if not passed. Only USD is supported at this time.
+          #   #   @option data [String, nil] :credit_type_id Defaults to USD (cents) if not passed.
           #   #   @option data [Object, nil] :recurring_schedule Enter the unit price and quantity for the charge or instead only send the
           #   #     amount. If amount is sent, the unit price is assumed to be the amount and
           #   #     quantity is inferred to be 1.
@@ -1201,7 +1203,7 @@ module Metronome
 
         class Schedule < Metronome::BaseModel
           # @!attribute credit_type_id
-          #   Defaults to USD if not passed. Only USD is supported at this time.
+          #   Defaults to USD (cents) if not passed.
           #   @return [String]
           optional :credit_type_id, String
 
@@ -1336,7 +1338,7 @@ module Metronome
           #   # Create a new instance of Schedule from a Hash of raw data.
           #   #
           #   # @param data [Hash{Symbol => Object}] .
-          #   #   @option data [String, nil] :credit_type_id Defaults to USD if not passed. Only USD is supported at this time.
+          #   #   @option data [String, nil] :credit_type_id Defaults to USD (cents) if not passed.
           #   #   @option data [Object, nil] :recurring_schedule Enter the unit price and quantity for the charge or instead only send the
           #   #     amount. If amount is sent, the unit price is assumed to be the amount and
           #   #     quantity is inferred to be 1.
