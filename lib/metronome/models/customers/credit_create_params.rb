@@ -78,6 +78,57 @@ module Metronome
         #   @return [String]
         optional :salesforce_opportunity_id, String
 
+        # @!parse
+        #   # @param access_schedule [Object] Schedule for distributing the credit to the customer.
+        #   #
+        #   # @param customer_id [String]
+        #   #
+        #   # @param priority [Float] If multiple credits or commits are applicable, the one with the lower priority
+        #   #   will apply first.
+        #   #
+        #   # @param product_id [String]
+        #   #
+        #   # @param applicable_contract_ids [Array<String>, nil] Which contract the credit applies to. If not provided, the credit applies to all
+        #   #   contracts.
+        #   #
+        #   # @param applicable_product_ids [Array<String>, nil] Which products the credit applies to. If both applicable_product_ids and
+        #   #   applicable_product_tags are not provided, the credit applies to all products.
+        #   #
+        #   # @param applicable_product_tags [Array<String>, nil] Which tags the credit applies to. If both applicable_product_ids and
+        #   #   applicable_product_tags are not provided, the credit applies to all products.
+        #   #
+        #   # @param custom_fields [Hash, nil]
+        #   #
+        #   # @param description [String, nil] Used only in UI/API. It is not exposed to end customers.
+        #   #
+        #   # @param name [String, nil] displayed on invoices
+        #   #
+        #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
+        #   #
+        #   # @param rate_type [String, nil]
+        #   #
+        #   # @param salesforce_opportunity_id [String, nil] This field's availability is dependent on your client's configuration.
+        #   #
+        #   def initialize(
+        #     access_schedule:,
+        #     customer_id:,
+        #     priority:,
+        #     product_id:,
+        #     applicable_contract_ids: nil,
+        #     applicable_product_ids: nil,
+        #     applicable_product_tags: nil,
+        #     custom_fields: nil,
+        #     description: nil,
+        #     name: nil,
+        #     netsuite_sales_order_id: nil,
+        #     rate_type: nil,
+        #     salesforce_opportunity_id: nil
+        #   )
+        #     super
+        #   end
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
         class AccessSchedule < Metronome::BaseModel
           # @!attribute schedule_items
           #

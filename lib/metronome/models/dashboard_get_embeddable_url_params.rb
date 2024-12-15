@@ -47,6 +47,21 @@ module Metronome
                  }
                )
 
+      # @!parse
+      #   # @param customer_id [String]
+      #   #
+      #   # @param dashboard [String] The type of dashboard to retrieve.
+      #   #
+      #   # @param bm_group_key_overrides [Array<Object>, nil] Optional list of billable metric group key overrides
+      #   #
+      #   # @param color_overrides [Array<Object>, nil] Optional list of colors to override
+      #   #
+      #   # @param dashboard_options [Array<Object>, nil] Optional dashboard specific options
+      #   #
+      #   def initialize(customer_id:, dashboard:, bm_group_key_overrides: nil, color_overrides: nil, dashboard_options: nil) = super
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
+
       # The type of dashboard to retrieve.
       class Dashboard < Metronome::Enum
         INVOICES = :invoices

@@ -15,6 +15,15 @@ module Metronome
           #
           #   @return [String]
           required :rate_card_id, String
+
+          # @!parse
+          #   # @param product_order [Array<String>]
+          #   #
+          #   # @param rate_card_id [String] ID of the rate card to update
+          #   #
+          #   def initialize(product_order:, rate_card_id:) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
         end
       end
     end

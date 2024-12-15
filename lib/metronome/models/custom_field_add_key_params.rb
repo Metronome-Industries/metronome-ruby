@@ -18,6 +18,15 @@ module Metronome
       #   @return [String]
       required :key, String
 
+      # @!parse
+      #   # @param enforce_uniqueness [Boolean]
+      #   # @param entity [String]
+      #   # @param key [String]
+      #   #
+      #   def initialize(enforce_uniqueness:, entity:, key:) = super
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
+
       class Entity < Metronome::Enum
         ALERT = :alert
         BILLABLE_METRIC = :billable_metric

@@ -40,6 +40,22 @@ module Metronome
                      }
                    )
 
+          # @!parse
+          #   # @param at [String] inclusive starting point for the rates schedule
+          #   #
+          #   # @param rate_card_id [String] ID of the rate card to get the schedule for
+          #   #
+          #   # @param limit [Integer, nil] Max number of results that should be returned
+          #   #
+          #   # @param next_page [String, nil] Cursor that indicates where the next page of results should start.
+          #   #
+          #   # @param selectors [Array<Object>, nil] List of rate selectors, rates matching ANY of the selector will be included in
+          #   #   the response Passing no selectors will result in all rates being returned.
+          #   #
+          #   def initialize(at:, rate_card_id:, limit: nil, next_page: nil, selectors: nil) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
           class Selector < Metronome::BaseModel
             # @!attribute partial_pricing_group_values
             #   List of pricing group key value pairs, rates containing the matching key / value pairs will be included in the response.

@@ -54,6 +54,42 @@ module Metronome
       #
       #   @return [Time]
       optional :starting_at, Time
+
+      # @!parse
+      #   # @param customer_id [String]
+      #   #
+      #   # @param id [String, nil]
+      #   #
+      #   # @param covering_date [String, nil] Return only balances that have access schedules that "cover" the provided date
+      #   #
+      #   # @param effective_before [String, nil] Include only balances that have any access before the provided date (exclusive)
+      #   #
+      #   # @param include_archived [Boolean, nil] Include credits from archived contracts.
+      #   #
+      #   # @param include_contract_balances [Boolean, nil] Include balances on the contract level.
+      #   #
+      #   # @param include_ledgers [Boolean, nil] Include ledgers in the response. Setting this flag may cause the query to be
+      #   #   slower.
+      #   #
+      #   # @param next_page [String, nil] The next page token from a previous response.
+      #   #
+      #   # @param starting_at [String, nil] Include only balances that have any access on or after the provided date
+      #   #
+      #   def initialize(
+      #     customer_id:,
+      #     id: nil,
+      #     covering_date: nil,
+      #     effective_before: nil,
+      #     include_archived: nil,
+      #     include_contract_balances: nil,
+      #     include_ledgers: nil,
+      #     next_page: nil,
+      #     starting_at: nil
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
     end
   end
 end

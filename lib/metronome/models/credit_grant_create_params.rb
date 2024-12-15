@@ -84,6 +84,64 @@ module Metronome
       #   @return [String]
       optional :uniqueness_key, String
 
+      # @!parse
+      #   # @param customer_id [String] the Metronome ID of the customer
+      #   #
+      #   # @param expires_at [String] The credit grant will only apply to usage or charges dated before this timestamp
+      #   #
+      #   # @param grant_amount [Object] the amount of credits granted
+      #   #
+      #   # @param name [String] the name of the credit grant as it will appear on invoices
+      #   #
+      #   # @param paid_amount [Object] the amount paid for this credit grant
+      #   #
+      #   # @param priority [Float]
+      #   #
+      #   # @param credit_grant_type [String, nil]
+      #   #
+      #   # @param custom_fields [Hash, nil] Custom fields to attach to the credit grant.
+      #   #
+      #   # @param effective_at [String, nil] The credit grant will only apply to usage or charges dated on or after this
+      #   #   timestamp
+      #   #
+      #   # @param invoice_date [String, nil] The date to issue an invoice for the paid_amount.
+      #   #
+      #   # @param product_ids [Array<String>, nil] The product(s) which these credits will be applied to. (If unspecified, the
+      #   #   credits will be applied to charges for all products.). The array ordering
+      #   #   specified here will be used to determine the order in which credits will be
+      #   #   applied to invoice line items
+      #   #
+      #   # @param reason [String, nil]
+      #   #
+      #   # @param rollover_settings [Object, nil] Configure a rollover for this credit grant so if it expires it rolls over a
+      #   #   configured amount to a new credit grant. This feature is currently opt-in only.
+      #   #   Contact Metronome to be added to the beta.
+      #   #
+      #   # @param uniqueness_key [String, nil] Prevents the creation of duplicates. If a request to create a record is made
+      #   #   with a previously used uniqueness key, a new record will not be created and the
+      #   #   request will fail with a 409 error.
+      #   #
+      #   def initialize(
+      #     customer_id:,
+      #     expires_at:,
+      #     grant_amount:,
+      #     name:,
+      #     paid_amount:,
+      #     priority:,
+      #     credit_grant_type: nil,
+      #     custom_fields: nil,
+      #     effective_at: nil,
+      #     invoice_date: nil,
+      #     product_ids: nil,
+      #     reason: nil,
+      #     rollover_settings: nil,
+      #     uniqueness_key: nil
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
+
       class GrantAmount < Metronome::BaseModel
         # @!attribute amount
         #

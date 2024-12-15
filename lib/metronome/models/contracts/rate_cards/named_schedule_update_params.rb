@@ -38,6 +38,24 @@ module Metronome
           #
           #   @return [Time]
           optional :ending_before, Time
+
+          # @!parse
+          #   # @param contract_id [String] ID of the contract whose named schedule is to be updated
+          #   #
+          #   # @param customer_id [String] ID of the customer whose named schedule is to be updated
+          #   #
+          #   # @param schedule_name [String] The identifier for the schedule to be updated
+          #   #
+          #   # @param starting_at [String]
+          #   #
+          #   # @param value [Object] The value to set for the named schedule. The structure of this object is
+          #   #   specific to the named schedule.
+          #   #
+          #   # @param ending_before [String, nil]
+          #   #
+          #   def initialize(contract_id:, customer_id:, schedule_name:, starting_at:, value:, ending_before: nil) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
         end
       end
     end

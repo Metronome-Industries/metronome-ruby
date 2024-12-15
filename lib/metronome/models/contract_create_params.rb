@@ -143,6 +143,92 @@ module Metronome
                  Metronome::Models::ContractCreateParams::UsageStatementSchedule
                }
 
+      # @!parse
+      #   # @param customer_id [String]
+      #   #
+      #   # @param starting_at [String] inclusive contract start time
+      #   #
+      #   # @param billing_provider_configuration [Object, nil] The billing provider configuration associated with a contract.
+      #   #
+      #   # @param commits [Array<Object>, nil]
+      #   #
+      #   # @param credits [Array<Object>, nil]
+      #   #
+      #   # @param custom_fields [Hash, nil]
+      #   #
+      #   # @param discounts [Array<Object>, nil] This field's availability is dependent on your client's configuration.
+      #   #
+      #   # @param ending_before [String, nil] exclusive contract end time
+      #   #
+      #   # @param multiplier_override_prioritization [String, nil] Defaults to LOWEST_MULTIPLIER, which applies the greatest discount to list
+      #   #   prices automatically. EXPLICIT prioritization requires specifying priorities for
+      #   #   each multiplier; the one with the lowest priority value will be prioritized
+      #   #   first. If tiered overrides are used, prioritization must be explicit.
+      #   #
+      #   # @param name [String, nil]
+      #   #
+      #   # @param net_payment_terms_days [Float, nil]
+      #   #
+      #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
+      #   #
+      #   # @param overrides [Array<Object>, nil]
+      #   #
+      #   # @param professional_services [Array<Object>, nil] This field's availability is dependent on your client's configuration.
+      #   #
+      #   # @param rate_card_alias [String, nil] Selects the rate card linked to the specified alias as of the contract's start
+      #   #   date.
+      #   #
+      #   # @param rate_card_id [String, nil]
+      #   #
+      #   # @param reseller_royalties [Array<Object>, nil] This field's availability is dependent on your client's configuration.
+      #   #
+      #   # @param salesforce_opportunity_id [String, nil] This field's availability is dependent on your client's configuration.
+      #   #
+      #   # @param scheduled_charges [Array<Object>, nil]
+      #   #
+      #   # @param total_contract_value [Float, nil] This field's availability is dependent on your client's configuration.
+      #   #
+      #   # @param transition [Object, nil]
+      #   #
+      #   # @param uniqueness_key [String, nil] Prevents the creation of duplicates. If a request to create a record is made
+      #   #   with a previously used uniqueness key, a new record will not be created and the
+      #   #   request will fail with a 409 error.
+      #   #
+      #   # @param usage_filter [Object, nil]
+      #   #
+      #   # @param usage_statement_schedule [Object, nil]
+      #   #
+      #   def initialize(
+      #     customer_id:,
+      #     starting_at:,
+      #     billing_provider_configuration: nil,
+      #     commits: nil,
+      #     credits: nil,
+      #     custom_fields: nil,
+      #     discounts: nil,
+      #     ending_before: nil,
+      #     multiplier_override_prioritization: nil,
+      #     name: nil,
+      #     net_payment_terms_days: nil,
+      #     netsuite_sales_order_id: nil,
+      #     overrides: nil,
+      #     professional_services: nil,
+      #     rate_card_alias: nil,
+      #     rate_card_id: nil,
+      #     reseller_royalties: nil,
+      #     salesforce_opportunity_id: nil,
+      #     scheduled_charges: nil,
+      #     total_contract_value: nil,
+      #     transition: nil,
+      #     uniqueness_key: nil,
+      #     usage_filter: nil,
+      #     usage_statement_schedule: nil
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
+
       class BillingProviderConfiguration < Metronome::BaseModel
         # @!attribute billing_provider
         #

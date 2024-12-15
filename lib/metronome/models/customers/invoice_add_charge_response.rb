@@ -5,8 +5,6 @@ module Metronome
     module Customers
       class InvoiceAddChargeResponse < Metronome::BaseModel
         # @!parse
-        #   #
-        #   #
         #   def initialize = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void

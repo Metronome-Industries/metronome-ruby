@@ -21,6 +21,15 @@ module Metronome
           #   @return [String]
           required :rate_card_id, String
 
+          # @!parse
+          #   # @param product_moves [Array<Object>]
+          #   #
+          #   # @param rate_card_id [String] ID of the rate card to update
+          #   #
+          #   def initialize(product_moves:, rate_card_id:) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
           class ProductMove < Metronome::BaseModel
             # @!attribute position
             #   0-based index of the new position of the product

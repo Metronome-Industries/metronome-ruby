@@ -42,6 +42,32 @@ module Metronome
       #   @return [Time]
       optional :netsuite_invoice_header_start, Time
 
+      # @!parse
+      #   # @param contract_id [String]
+      #   #
+      #   # @param customer_id [String]
+      #   #
+      #   # @param issued_at [String] The date the invoice is issued
+      #   #
+      #   # @param line_items [Array<Object>] Each line requires an amount or both unit_price and quantity.
+      #   #
+      #   # @param netsuite_invoice_header_end [String, nil] The end date of the invoice header in Netsuite
+      #   #
+      #   # @param netsuite_invoice_header_start [String, nil] The start date of the invoice header in Netsuite
+      #   #
+      #   def initialize(
+      #     contract_id:,
+      #     customer_id:,
+      #     issued_at:,
+      #     line_items:,
+      #     netsuite_invoice_header_end: nil,
+      #     netsuite_invoice_header_start: nil
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
+
       class LineItem < Metronome::BaseModel
         # @!attribute professional_service_id
         #

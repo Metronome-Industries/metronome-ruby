@@ -44,6 +44,38 @@ module Metronome
       #
       #   @return [Time]
       optional :not_expiring_before, Time
+
+      # @!parse
+      #   # @param limit [Integer, nil] Max number of results that should be returned
+      #   #
+      #   # @param next_page [String, nil] Cursor that indicates where the next page of results should start.
+      #   #
+      #   # @param credit_grant_ids [Array<String>, nil] An array of credit grant IDs. If this is specified, neither credit_type_ids nor
+      #   #   customer_ids may be specified.
+      #   #
+      #   # @param credit_type_ids [Array<String>, nil] An array of credit type IDs. This must not be specified if credit_grant_ids is
+      #   #   specified.
+      #   #
+      #   # @param customer_ids [Array<String>, nil] An array of Metronome customer IDs. This must not be specified if
+      #   #   credit_grant_ids is specified.
+      #   #
+      #   # @param effective_before [String, nil] Only return credit grants that are effective before this timestamp (exclusive).
+      #   #
+      #   # @param not_expiring_before [String, nil] Only return credit grants that expire at or after this timestamp.
+      #   #
+      #   def initialize(
+      #     limit: nil,
+      #     next_page: nil,
+      #     credit_grant_ids: nil,
+      #     credit_type_ids: nil,
+      #     customer_ids: nil,
+      #     effective_before: nil,
+      #     not_expiring_before: nil
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
     end
   end
 end

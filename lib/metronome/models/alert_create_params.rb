@@ -81,6 +81,67 @@ module Metronome
       #   @return [String]
       optional :uniqueness_key, String
 
+      # @!parse
+      #   # @param alert_type [String] Type of the alert
+      #   #
+      #   # @param name [String] Name of the alert
+      #   #
+      #   # @param threshold [Float] Threshold value of the alert policy. Depending upon the alert type, this number
+      #   #   may represent a financial amount, the days remaining, or a percentage reached.
+      #   #
+      #   # @param billable_metric_id [String, nil] For alerts of type `usage_threshold_reached`, specifies which billable metric to
+      #   #   track the usage for.
+      #   #
+      #   # @param credit_grant_type_filters [Array<String>, nil] An array of strings, representing a way to filter the credit grant this alert
+      #   #   applies to, by looking at the credit_grant_type field on the credit grant. This
+      #   #   field is only defined for CreditPercentage and CreditBalance alerts
+      #   #
+      #   # @param credit_type_id [String, nil]
+      #   #
+      #   # @param custom_field_filters [Array<Object>, nil] Only present for beta contract invoices. This field's availability is dependent
+      #   #   on your client's configuration. A list of custom field filters for alert types
+      #   #   that support advanced filtering
+      #   #
+      #   # @param customer_id [String, nil] If provided, will create this alert for this specific customer. To create an
+      #   #   alert for all customers, do not specify `customer_id` or `plan_id`.
+      #   #
+      #   # @param evaluate_on_create [Boolean, nil] If true, the alert will evaluate immediately on customers that already meet the
+      #   #   alert threshold. If false, it will only evaluate on future customers that
+      #   #   trigger the alert threshold. Defaults to true.
+      #   #
+      #   # @param group_key_filter [Object, nil] Scopes alert evaluation to a specific presentation group key on individual line
+      #   #   items. Only present for spend alerts.
+      #   #
+      #   # @param invoice_types_filter [Array<String>, nil] Only supported for invoice_total_reached alerts. A list of invoice types to
+      #   #   evaluate.
+      #   #
+      #   # @param plan_id [String, nil] If provided, will create this alert for this specific plan. To create an alert
+      #   #   for all customers, do not specify `customer_id` or `plan_id`.
+      #   #
+      #   # @param uniqueness_key [String, nil] Prevents the creation of duplicates. If a request to create a record is made
+      #   #   with a previously used uniqueness key, a new record will not be created and the
+      #   #   request will fail with a 409 error.
+      #   #
+      #   def initialize(
+      #     alert_type:,
+      #     name:,
+      #     threshold:,
+      #     billable_metric_id: nil,
+      #     credit_grant_type_filters: nil,
+      #     credit_type_id: nil,
+      #     custom_field_filters: nil,
+      #     customer_id: nil,
+      #     evaluate_on_create: nil,
+      #     group_key_filter: nil,
+      #     invoice_types_filter: nil,
+      #     plan_id: nil,
+      #     uniqueness_key: nil
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
+
       # Type of the alert
       class AlertType < Metronome::Enum
         LOW_CREDIT_BALANCE_REACHED = :low_credit_balance_reached

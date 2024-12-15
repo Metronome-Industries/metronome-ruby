@@ -42,6 +42,28 @@ module Metronome
         #
         #   @return [Float]
         required :quantity, Float
+
+        # @!parse
+        #   # @param customer_id [String]
+        #   #
+        #   # @param charge_id [String] The Metronome ID of the charge to add to the invoice. Note that the charge must
+        #   #   be on a product that is not on the current plan, and the product must have only
+        #   #   fixed charges.
+        #   #
+        #   # @param customer_plan_id [String] The Metronome ID of the customer plan to add the charge to.
+        #   #
+        #   # @param description [String]
+        #   #
+        #   # @param invoice_start_timestamp [String] The start_timestamp of the invoice to add the charge to.
+        #   #
+        #   # @param price [Float] The price of the charge. This price will match the currency on the invoice, e.g.
+        #   #   USD cents.
+        #   #
+        #   # @param quantity [Float]
+        #   #
+        #   def initialize(customer_id:, charge_id:, customer_plan_id:, description:, invoice_start_timestamp:, price:, quantity:) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
       end
     end
   end

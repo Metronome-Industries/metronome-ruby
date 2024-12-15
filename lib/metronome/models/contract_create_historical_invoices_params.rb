@@ -18,6 +18,14 @@ module Metronome
       #   @return [Boolean]
       required :preview, Metronome::BooleanModel
 
+      # @!parse
+      #   # @param invoices [Array<Object>]
+      #   # @param preview [Boolean]
+      #   #
+      #   def initialize(invoices:, preview:) = super
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
+
       class Invoice < Metronome::BaseModel
         # @!attribute contract_id
         #

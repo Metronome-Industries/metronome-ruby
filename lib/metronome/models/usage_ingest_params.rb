@@ -8,6 +8,13 @@ module Metronome
       #   @return [Array<Metronome::Models::UsageIngestParams::Usage>]
       required :usage, Metronome::ArrayOf.new(-> { Metronome::Models::UsageIngestParams::Usage })
 
+      # @!parse
+      #   # @param usage [Array<Object>]
+      #   #
+      #   def initialize(usage:) = super
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
+
       class Usage < Metronome::BaseModel
         # @!attribute customer_id
         #

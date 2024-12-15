@@ -95,6 +95,72 @@ module Metronome
         #   @return [String]
         optional :salesforce_opportunity_id, String
 
+        # @!parse
+        #   # @param access_schedule [Object] Schedule for distributing the commit to the customer. For "POSTPAID" commits
+        #   #   only one schedule item is allowed and amount must match invoice_schedule total.
+        #   #
+        #   # @param customer_id [String]
+        #   #
+        #   # @param priority [Float] If multiple credits or commits are applicable, the one with the lower priority
+        #   #   will apply first.
+        #   #
+        #   # @param product_id [String]
+        #   #
+        #   # @param type [String]
+        #   #
+        #   # @param applicable_contract_ids [Array<String>, nil] Which contract the commit applies to. If not provided, the commit applies to all
+        #   #   contracts.
+        #   #
+        #   # @param applicable_product_ids [Array<String>, nil] Which products the commit applies to. If both applicable_product_ids and
+        #   #   applicable_product_tags are not provided, the commit applies to all products.
+        #   #
+        #   # @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If both applicable_product_ids and
+        #   #   applicable_product_tags are not provided, the commit applies to all products.
+        #   #
+        #   # @param custom_fields [Hash, nil]
+        #   #
+        #   # @param description [String, nil] Used only in UI/API. It is not exposed to end customers.
+        #   #
+        #   # @param invoice_contract_id [String, nil] The contract that this commit will be billed on. This is required for "POSTPAID"
+        #   #   commits and for "PREPAID" commits unless there is no invoice schedule above
+        #   #   (i.e., the commit is 'free').
+        #   #
+        #   # @param invoice_schedule [Object, nil] Required for "POSTPAID" commits: the true up invoice will be generated at this
+        #   #   time and only one schedule item is allowed; the total must match
+        #   #   accesss_schedule amount. Optional for "PREPAID" commits: if not provided, this
+        #   #   will be a "complimentary" commit with no invoice.
+        #   #
+        #   # @param name [String, nil] displayed on invoices
+        #   #
+        #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
+        #   #
+        #   # @param rate_type [String, nil]
+        #   #
+        #   # @param salesforce_opportunity_id [String, nil] This field's availability is dependent on your client's configuration.
+        #   #
+        #   def initialize(
+        #     access_schedule:,
+        #     customer_id:,
+        #     priority:,
+        #     product_id:,
+        #     type:,
+        #     applicable_contract_ids: nil,
+        #     applicable_product_ids: nil,
+        #     applicable_product_tags: nil,
+        #     custom_fields: nil,
+        #     description: nil,
+        #     invoice_contract_id: nil,
+        #     invoice_schedule: nil,
+        #     name: nil,
+        #     netsuite_sales_order_id: nil,
+        #     rate_type: nil,
+        #     salesforce_opportunity_id: nil
+        #   )
+        #     super
+        #   end
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
         class AccessSchedule < Metronome::BaseModel
           # @!attribute schedule_items
           #
