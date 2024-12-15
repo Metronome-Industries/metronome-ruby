@@ -55,6 +55,42 @@ module Metronome
         #
         #   @return [Time]
         optional :starting_at, Time
+
+        # @!parse
+        #   # @param customer_id [String]
+        #   #
+        #   # @param commit_id [String, nil]
+        #   #
+        #   # @param covering_date [String, nil] Include only commits that have access schedules that "cover" the provided date
+        #   #
+        #   # @param effective_before [String, nil] Include only commits that have any access before the provided date (exclusive)
+        #   #
+        #   # @param include_archived [Boolean, nil] Include commits from archived contracts.
+        #   #
+        #   # @param include_contract_commits [Boolean, nil] Include commits on the contract level.
+        #   #
+        #   # @param include_ledgers [Boolean, nil] Include commit ledgers in the response. Setting this flag may cause the query to
+        #   #   be slower.
+        #   #
+        #   # @param next_page [String, nil] The next page token from a previous response.
+        #   #
+        #   # @param starting_at [String, nil] Include only commits that have any access on or after the provided date
+        #   #
+        #   def initialize(
+        #     customer_id:,
+        #     commit_id: nil,
+        #     covering_date: nil,
+        #     effective_before: nil,
+        #     include_archived: nil,
+        #     include_contract_commits: nil,
+        #     include_ledgers: nil,
+        #     next_page: nil,
+        #     starting_at: nil
+        #   )
+        #     super
+        #   end
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
       end
     end
   end

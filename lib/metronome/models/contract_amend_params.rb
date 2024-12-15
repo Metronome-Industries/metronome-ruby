@@ -85,6 +85,56 @@ module Metronome
       #   @return [Float]
       optional :total_contract_value, Float
 
+      # @!parse
+      #   # @param contract_id [String] ID of the contract to amend
+      #   #
+      #   # @param customer_id [String] ID of the customer whose contract is to be amended
+      #   #
+      #   # @param starting_at [String] inclusive start time for the amendment
+      #   #
+      #   # @param commits [Array<Object>, nil]
+      #   #
+      #   # @param credits [Array<Object>, nil]
+      #   #
+      #   # @param custom_fields [Hash, nil]
+      #   #
+      #   # @param discounts [Array<Object>, nil] This field's availability is dependent on your client's configuration.
+      #   #
+      #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
+      #   #
+      #   # @param overrides [Array<Object>, nil]
+      #   #
+      #   # @param professional_services [Array<Object>, nil] This field's availability is dependent on your client's configuration.
+      #   #
+      #   # @param reseller_royalties [Array<Object>, nil] This field's availability is dependent on your client's configuration.
+      #   #
+      #   # @param salesforce_opportunity_id [String, nil] This field's availability is dependent on your client's configuration.
+      #   #
+      #   # @param scheduled_charges [Array<Object>, nil]
+      #   #
+      #   # @param total_contract_value [Float, nil] This field's availability is dependent on your client's configuration.
+      #   #
+      #   def initialize(
+      #     contract_id:,
+      #     customer_id:,
+      #     starting_at:,
+      #     commits: nil,
+      #     credits: nil,
+      #     custom_fields: nil,
+      #     discounts: nil,
+      #     netsuite_sales_order_id: nil,
+      #     overrides: nil,
+      #     professional_services: nil,
+      #     reseller_royalties: nil,
+      #     salesforce_opportunity_id: nil,
+      #     scheduled_charges: nil,
+      #     total_contract_value: nil
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
+
       class Commit < Metronome::BaseModel
         # @!attribute product_id
         #

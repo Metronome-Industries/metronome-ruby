@@ -38,6 +38,27 @@ module Metronome
       #   @return [Array<String>]
       optional :customer_ids, Metronome::ArrayOf.new(String)
 
+      # @!parse
+      #   # @param ending_before [String]
+      #   #
+      #   # @param starting_on [String]
+      #   #
+      #   # @param window_size [String] A window_size of "day" or "hour" will return the usage for the specified period
+      #   #   segmented into daily or hourly aggregates. A window_size of "none" will return a
+      #   #   single usage aggregate for the entirety of the specified period.
+      #   #
+      #   # @param next_page [String, nil] Cursor that indicates where the next page of results should start.
+      #   #
+      #   # @param billable_metrics [Array<Object>, nil] A list of billable metrics to fetch usage for. If absent, all billable metrics
+      #   #   will be returned.
+      #   #
+      #   # @param customer_ids [Array<String>, nil] A list of Metronome customer IDs to fetch usage for. If absent, usage for all
+      #   #   customers will be returned.
+      #   #
+      #   def initialize(ending_before:, starting_on:, window_size:, next_page: nil, billable_metrics: nil, customer_ids: nil) = super
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
+
       # A window_size of "day" or "hour" will return the usage for the specified period segmented into daily or hourly aggregates. A window_size of "none" will return a single usage aggregate for the entirety of the specified period.
       class WindowSize < Metronome::Enum
         HOUR = :HOUR

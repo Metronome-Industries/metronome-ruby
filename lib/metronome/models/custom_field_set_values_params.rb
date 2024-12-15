@@ -18,6 +18,15 @@ module Metronome
       #   @return [String]
       required :entity_id, String
 
+      # @!parse
+      #   # @param custom_fields [Hash]
+      #   # @param entity [String]
+      #   # @param entity_id [String]
+      #   #
+      #   def initialize(custom_fields:, entity:, entity_id:) = super
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
+
       class Entity < Metronome::Enum
         ALERT = :alert
         BILLABLE_METRIC = :billable_metric

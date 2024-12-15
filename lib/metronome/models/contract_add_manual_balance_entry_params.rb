@@ -44,6 +44,26 @@ module Metronome
       #
       #   @return [Time]
       optional :timestamp, Time
+
+      # @!parse
+      #   # @param id [String] ID of the balance (commit or credit) to update.
+      #   #
+      #   # @param amount [Float] Amount to add to the segment. A negative number will draw down from the balance.
+      #   #
+      #   # @param customer_id [String] ID of the customer whose balance is to be updated.
+      #   #
+      #   # @param reason [String] Reason for the manual adjustment. This will be displayed in the ledger.
+      #   #
+      #   # @param segment_id [String] ID of the segment to update.
+      #   #
+      #   # @param contract_id [String, nil] ID of the contract to update. Leave blank to update a customer level balance.
+      #   #
+      #   # @param timestamp [String, nil] RFC 3339 timestamp indicating when the manual adjustment takes place. If not
+      #   #   provided, it will default to the start of the segment.
+      #   #
+      #   def initialize(id:, amount:, customer_id:, reason:, segment_id:, contract_id: nil, timestamp: nil) = super
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
     end
   end
 end

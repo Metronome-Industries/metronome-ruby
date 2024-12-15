@@ -18,6 +18,15 @@ module Metronome
       #   @return [Array<String>]
       required :keys, Metronome::ArrayOf.new(String)
 
+      # @!parse
+      #   # @param entity [String]
+      #   # @param entity_id [String]
+      #   # @param keys [Array<String>]
+      #   #
+      #   def initialize(entity:, entity_id:, keys:) = super
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
+
       class Entity < Metronome::Enum
         ALERT = :alert
         BILLABLE_METRIC = :billable_metric

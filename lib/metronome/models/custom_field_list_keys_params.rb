@@ -16,6 +16,15 @@ module Metronome
       optional :entities,
                Metronome::ArrayOf.new(enum: -> { Metronome::Models::CustomFieldListKeysParams::Entity })
 
+      # @!parse
+      #   # @param next_page [String, nil] Cursor that indicates where the next page of results should start.
+      #   #
+      #   # @param entities [Array<String>, nil] Optional list of entity types to return keys for
+      #   #
+      #   def initialize(next_page: nil, entities: nil) = super
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
+
       class Entity < Metronome::Enum
         ALERT = :alert
         BILLABLE_METRIC = :billable_metric

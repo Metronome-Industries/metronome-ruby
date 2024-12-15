@@ -33,6 +33,23 @@ module Metronome
         #   @return [String]
         optional :name, String
 
+        # @!parse
+        #   # @param rate_card_id [String] ID of the rate card to update
+        #   #
+        #   # @param aliases [Array<Object>, nil] Reference this alias when creating a contract. If the same alias is assigned to
+        #   #   multiple rate cards, it will reference the rate card to which it was most
+        #   #   recently assigned. It is not exposed to end customers.
+        #   #
+        #   # @param custom_fields [Hash, nil]
+        #   #
+        #   # @param description [String, nil]
+        #   #
+        #   # @param name [String, nil] Used only in UI/API. It is not exposed to end customers.
+        #   #
+        #   def initialize(rate_card_id:, aliases: nil, custom_fields: nil, description: nil, name: nil) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
         class Alias < Metronome::BaseModel
           # @!attribute name
           #

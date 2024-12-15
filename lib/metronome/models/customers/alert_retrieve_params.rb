@@ -15,6 +15,15 @@ module Metronome
         #
         #   @return [String]
         required :customer_id, String
+
+        # @!parse
+        #   # @param alert_id [String] The Metronome ID of the alert
+        #   #
+        #   # @param customer_id [String] The Metronome ID of the customer
+        #   #
+        #   def initialize(alert_id:, customer_id:) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
       end
     end
   end

@@ -44,6 +44,35 @@ module Metronome
         #   @return [String]
         optional :fiat_credit_type_id, String
 
+        # @!parse
+        #   # @param name [String] Used only in UI/API. It is not exposed to end customers.
+        #   #
+        #   # @param aliases [Array<Object>, nil] Reference this alias when creating a contract. If the same alias is assigned to
+        #   #   multiple rate cards, it will reference the rate card to which it was most
+        #   #   recently assigned. It is not exposed to end customers.
+        #   #
+        #   # @param credit_type_conversions [Array<Object>, nil] Required when using custom pricing units in rates.
+        #   #
+        #   # @param custom_fields [Hash, nil]
+        #   #
+        #   # @param description [String, nil]
+        #   #
+        #   # @param fiat_credit_type_id [String, nil] The Metronome ID of the credit type to associate with the rate card, defaults to
+        #   #   USD (cents) if not passed.
+        #   #
+        #   def initialize(
+        #     name:,
+        #     aliases: nil,
+        #     credit_type_conversions: nil,
+        #     custom_fields: nil,
+        #     description: nil,
+        #     fiat_credit_type_id: nil
+        #   )
+        #     super
+        #   end
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
         class Alias < Metronome::BaseModel
           # @!attribute name
           #

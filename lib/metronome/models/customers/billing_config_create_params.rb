@@ -37,6 +37,33 @@ module Metronome
         optional :stripe_collection_method,
                  enum: -> { Metronome::Models::Customers::BillingConfigCreateParams::StripeCollectionMethod }
 
+        # @!parse
+        #   # @param customer_id [String]
+        #   #
+        #   # @param billing_provider_type [String]
+        #   #
+        #   # @param billing_provider_customer_id [String] The customer ID in the billing provider's system. For Azure, this is the
+        #   #   subscription ID.
+        #   #
+        #   # @param aws_product_code [String, nil]
+        #   #
+        #   # @param aws_region [String, nil]
+        #   #
+        #   # @param stripe_collection_method [String, nil]
+        #   #
+        #   def initialize(
+        #     customer_id:,
+        #     billing_provider_type:,
+        #     billing_provider_customer_id:,
+        #     aws_product_code: nil,
+        #     aws_region: nil,
+        #     stripe_collection_method: nil
+        #   )
+        #     super
+        #   end
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
         class BillingProviderType < Metronome::Enum
           AWS_MARKETPLACE = :aws_marketplace
           STRIPE = :stripe

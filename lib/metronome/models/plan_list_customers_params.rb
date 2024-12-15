@@ -34,6 +34,27 @@ module Metronome
       #   @return [Symbol, Metronome::Models::PlanListCustomersParams::Status]
       optional :status, enum: -> { Metronome::Models::PlanListCustomersParams::Status }
 
+      # @!parse
+      #   # @param plan_id [String]
+      #   #
+      #   # @param limit [Integer, nil] Max number of results that should be returned
+      #   #
+      #   # @param next_page [String, nil] Cursor that indicates where the next page of results should start.
+      #   #
+      #   # @param status [String, nil] Status of customers on a given plan. Defaults to `active`.
+      #   #
+      #   #   - `all` - Return current, past, and upcoming customers of the plan.
+      #   #   - `active` - Return current customers of the plan.
+      #   #   - `ended` - Return past customers of the plan.
+      #   #   - `upcoming` - Return upcoming customers of the plan.
+      #   #
+      #   #   Multiple statuses can be OR'd together using commas, e.g. `active,ended`.
+      #   #   **Note:** `ended,upcoming` combination is not yet supported.
+      #   #
+      #   def initialize(plan_id:, limit: nil, next_page: nil, status: nil) = super
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
+
       # Status of customers on a given plan. Defaults to `active`.
       #
       # * `all` - Return current, past, and upcoming customers of the plan.

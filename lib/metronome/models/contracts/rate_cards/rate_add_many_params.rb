@@ -20,6 +20,14 @@ module Metronome
                      }
                    )
 
+          # @!parse
+          #   # @param rate_card_id [String]
+          #   # @param rates [Array<Object>]
+          #   #
+          #   def initialize(rate_card_id:, rates:) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
           class Rate < Metronome::BaseModel
             # @!attribute entitled
             #

@@ -19,6 +19,17 @@ module Metronome
       #
       #   @return [Boolean]
       optional :void_credit_purchase_invoice, Metronome::BooleanModel
+
+      # @!parse
+      #   # @param id [String]
+      #   #
+      #   # @param release_uniqueness_key [Boolean, nil] If true, resets the uniqueness key on this grant so it can be re-used
+      #   #
+      #   # @param void_credit_purchase_invoice [Boolean, nil] If true, void the purchase invoice associated with the grant
+      #   #
+      #   def initialize(id:, release_uniqueness_key: nil, void_credit_purchase_invoice: nil) = super
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
     end
   end
 end

@@ -15,6 +15,14 @@ module Metronome
         required :billing_provider_type,
                  enum: -> { Metronome::Models::Customers::BillingConfigDeleteParams::BillingProviderType }
 
+        # @!parse
+        #   # @param customer_id [String]
+        #   # @param billing_provider_type [String]
+        #   #
+        #   def initialize(customer_id:, billing_provider_type:) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
         class BillingProviderType < Metronome::Enum
           AWS_MARKETPLACE = :aws_marketplace
           STRIPE = :stripe

@@ -31,6 +31,22 @@ module Metronome
       #   @return [Array<String>]
       optional :ingest_aliases, Metronome::ArrayOf.new(String)
 
+      # @!parse
+      #   # @param name [String] This will be truncated to 160 characters if the provided name is longer.
+      #   #
+      #   # @param billing_config [Object, nil]
+      #   #
+      #   # @param custom_fields [Hash, nil]
+      #   #
+      #   # @param external_id [String, nil] (deprecated, use ingest_aliases instead) an alias that can be used to refer to
+      #   #   this customer in usage events
+      #   #
+      #   # @param ingest_aliases [Array<String>, nil] Aliases that can be used to refer to this customer in usage events
+      #   #
+      #   def initialize(name:, billing_config: nil, custom_fields: nil, external_id: nil, ingest_aliases: nil) = super
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
+
       class BillingConfig < Metronome::BaseModel
         # @!attribute billing_provider_customer_id
         #
