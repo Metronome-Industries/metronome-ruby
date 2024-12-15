@@ -8,7 +8,7 @@ module Metronome
     # @return [Array<Object>]
     attr_accessor :data
 
-    # @!visibility private
+    # @private
     #
     # @param model [Object]
     # @param raw_data [Hash{Symbol => Object}]
