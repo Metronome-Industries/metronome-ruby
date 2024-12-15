@@ -56,7 +56,7 @@ module Metronome
     attr_reader :contracts
 
     # @private
-    def auth_headers
+    private def auth_headers
       {"Authorization" => "Bearer #{@bearer_token}"}
     end
 
