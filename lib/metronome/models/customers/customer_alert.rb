@@ -5,61 +5,85 @@ module Metronome
     module Customers
       class CustomerAlert < Metronome::BaseModel
         # @!attribute alert
+        #
         #   @return [Metronome::Models::Customers::CustomerAlert::Alert]
         required :alert, -> { Metronome::Models::Customers::CustomerAlert::Alert }
 
         # @!attribute customer_status
         #   The status of the customer alert. If the alert is archived, null will be returned.
+        #
         #   @return [Symbol, Metronome::Models::Customers::CustomerAlert::CustomerStatus]
         required :customer_status, enum: -> { Metronome::Models::Customers::CustomerAlert::CustomerStatus }
 
         # @!attribute triggered_by
         #   If present, indicates the reason the alert was triggered.
+        #
         #   @return [String]
         optional :triggered_by, String
+
+        # @!parse
+        #   # @param alert [Object]
+        #   #
+        #   # @param customer_status [String] The status of the customer alert. If the alert is archived, null will be
+        #   #   returned.
+        #   #
+        #   # @param triggered_by [String, nil] If present, indicates the reason the alert was triggered.
+        #   #
+        #   def initialize(alert:, customer_status:, triggered_by: nil) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
 
         class Alert < Metronome::BaseModel
           # @!attribute id
           #   the Metronome ID of the alert
+          #
           #   @return [String]
           required :id, String
 
           # @!attribute name
           #   Name of the alert
+          #
           #   @return [String]
           required :name, String
 
           # @!attribute status
           #   Status of the alert
+          #
           #   @return [Symbol, Metronome::Models::Customers::CustomerAlert::Alert::Status]
           required :status, enum: -> { Metronome::Models::Customers::CustomerAlert::Alert::Status }
 
           # @!attribute threshold
           #   Threshold value of the alert policy
+          #
           #   @return [Float]
           required :threshold, Float
 
           # @!attribute type
           #   Type of the alert
+          #
           #   @return [Symbol, Metronome::Models::Customers::CustomerAlert::Alert::Type]
           required :type, enum: -> { Metronome::Models::Customers::CustomerAlert::Alert::Type }
 
           # @!attribute updated_at
           #   Timestamp for when the alert was last updated
+          #
           #   @return [Time]
           required :updated_at, Time
 
           # @!attribute credit_grant_type_filters
           #   An array of strings, representing a way to filter the credit grant this alert applies to, by looking at the credit_grant_type field on the credit grant. This field is only defined for CreditPercentage and CreditBalance alerts
+          #
           #   @return [Array<String>]
           optional :credit_grant_type_filters, Metronome::ArrayOf.new(String)
 
           # @!attribute credit_type
+          #
           #   @return [Metronome::Models::CreditTypeData]
           optional :credit_type, -> { Metronome::Models::CreditTypeData }
 
           # @!attribute custom_field_filters
           #   A list of custom field filters for alert types that support advanced filtering
+          #
           #   @return [Array<Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter>]
           optional :custom_field_filters,
                    Metronome::ArrayOf.new(
@@ -70,6 +94,7 @@ module Metronome
 
           # @!attribute group_key_filter
           #   Scopes alert evaluation to a specific presentation group key on individual line items. Only present for spend alerts.
+          #
           #   @return [Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter]
           optional :group_key_filter,
                    -> {
@@ -78,13 +103,65 @@ module Metronome
 
           # @!attribute invoice_types_filter
           #   Only supported for invoice_total_reached alerts. A list of invoice types to evaluate.
+          #
           #   @return [Array<String>]
           optional :invoice_types_filter, Metronome::ArrayOf.new(String)
 
           # @!attribute uniqueness_key
           #   Prevents the creation of duplicates. If a request to create a record is made with a previously used uniqueness key, a new record will not be created and the request will fail with a 409 error.
+          #
           #   @return [String]
           optional :uniqueness_key, String
+
+          # @!parse
+          #   # @param id [String] the Metronome ID of the alert
+          #   #
+          #   # @param name [String] Name of the alert
+          #   #
+          #   # @param status [String] Status of the alert
+          #   #
+          #   # @param threshold [Float] Threshold value of the alert policy
+          #   #
+          #   # @param type [String] Type of the alert
+          #   #
+          #   # @param updated_at [String] Timestamp for when the alert was last updated
+          #   #
+          #   # @param credit_grant_type_filters [Array<String>, nil] An array of strings, representing a way to filter the credit grant this alert
+          #   #   applies to, by looking at the credit_grant_type field on the credit grant. This
+          #   #   field is only defined for CreditPercentage and CreditBalance alerts
+          #   #
+          #   # @param credit_type [Object, nil]
+          #   #
+          #   # @param custom_field_filters [Array<Object>, nil] A list of custom field filters for alert types that support advanced filtering
+          #   #
+          #   # @param group_key_filter [Object, nil] Scopes alert evaluation to a specific presentation group key on individual line
+          #   #   items. Only present for spend alerts.
+          #   #
+          #   # @param invoice_types_filter [Array<String>, nil] Only supported for invoice_total_reached alerts. A list of invoice types to
+          #   #   evaluate.
+          #   #
+          #   # @param uniqueness_key [String, nil] Prevents the creation of duplicates. If a request to create a record is made
+          #   #   with a previously used uniqueness key, a new record will not be created and the
+          #   #   request will fail with a 409 error.
+          #   #
+          #   def initialize(
+          #     id:,
+          #     name:,
+          #     status:,
+          #     threshold:,
+          #     type:,
+          #     updated_at:,
+          #     credit_grant_type_filters: nil,
+          #     credit_type: nil,
+          #     custom_field_filters: nil,
+          #     group_key_filter: nil,
+          #     invoice_types_filter: nil,
+          #     uniqueness_key: nil
+          #   )
+          #     super
+          #   end
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # Status of the alert
           class Status < Metronome::Enum
@@ -113,6 +190,7 @@ module Metronome
 
           class CustomFieldFilter < Metronome::BaseModel
             # @!attribute entity
+            #
             #   @return [Symbol, Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter::Entity]
             required :entity,
                      enum: -> {
@@ -120,70 +198,53 @@ module Metronome
                      }
 
             # @!attribute key
+            #
             #   @return [String]
             required :key, String
 
             # @!attribute value
+            #
             #   @return [String]
             required :value, String
+
+            # @!parse
+            #   # @param entity [String]
+            #   # @param key [String]
+            #   # @param value [String]
+            #   #
+            #   def initialize(entity:, key:, value:) = super
+
+            # def initialize: (Hash | Metronome::BaseModel) -> void
 
             class Entity < Metronome::Enum
               CONTRACT = :Contract
               COMMIT = :Commit
               CONTRACT_CREDIT = :ContractCredit
             end
-
-            # @!parse
-            #   # Create a new instance of CustomFieldFilter from a Hash of raw data.
-            #   #
-            #   # @param data [Hash{Symbol => Object}] .
-            #   #   @option data [String] :entity
-            #   #   @option data [String] :key
-            #   #   @option data [String] :value
-            #   def initialize(data = {}) = super
           end
 
           class GroupKeyFilter < Metronome::BaseModel
             # @!attribute key
+            #
             #   @return [String]
             required :key, String
 
             # @!attribute value
+            #
             #   @return [String]
             required :value, String
 
             # @!parse
-            #   # Create a new instance of GroupKeyFilter from a Hash of raw data.
+            #   # Scopes alert evaluation to a specific presentation group key on individual line
+            #   #   items. Only present for spend alerts.
             #   #
-            #   # @param data [Hash{Symbol => Object}] .
-            #   #   @option data [String] :key
-            #   #   @option data [String] :value
-            #   def initialize(data = {}) = super
-          end
+            #   # @param key [String]
+            #   # @param value [String]
+            #   #
+            #   def initialize(key:, value:) = super
 
-          # @!parse
-          #   # Create a new instance of Alert from a Hash of raw data.
-          #   #
-          #   # @param data [Hash{Symbol => Object}] .
-          #   #   @option data [String] :id the Metronome ID of the alert
-          #   #   @option data [String] :name Name of the alert
-          #   #   @option data [String] :status Status of the alert
-          #   #   @option data [Float] :threshold Threshold value of the alert policy
-          #   #   @option data [String] :type Type of the alert
-          #   #   @option data [String] :updated_at Timestamp for when the alert was last updated
-          #   #   @option data [Array<String>, nil] :credit_grant_type_filters An array of strings, representing a way to filter the credit grant this alert
-          #   #     applies to, by looking at the credit_grant_type field on the credit grant. This
-          #   #     field is only defined for CreditPercentage and CreditBalance alerts
-          #   #   @option data [Object, nil] :credit_type
-          #   #   @option data [Array<Object>, nil] :custom_field_filters A list of custom field filters for alert types that support advanced filtering
-          #   #   @option data [Object, nil] :group_key_filter Scopes alert evaluation to a specific presentation group key on individual line
-          #   #     items. Only present for spend alerts.
-          #   #   @option data [Array<String>, nil] :invoice_types_filter Only supported for invoice_total_reached alerts. A list of invoice types to
-          #   #     evaluate.
-          #   #   @option data [String, nil] :uniqueness_key Prevents the creation of duplicates. If a request to create a record is made
-          #   #     with a previously used uniqueness key, a new record will not be created and the
-          #   #     request will fail with a 409 error.
-          #   def initialize(data = {}) = super
+            # def initialize: (Hash | Metronome::BaseModel) -> void
+          end
         end
 
         # The status of the customer alert. If the alert is archived, null will be returned.
@@ -192,16 +253,6 @@ module Metronome
           IN_ALARM = :in_alarm
           EVALUATING = :evaluating
         end
-
-        # @!parse
-        #   # Create a new instance of CustomerAlert from a Hash of raw data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [Object] :alert
-        #   #   @option data [String] :customer_status The status of the customer alert. If the alert is archived, null will be
-        #   #     returned.
-        #   #   @option data [String, nil] :triggered_by If present, indicates the reason the alert was triggered.
-        #   def initialize(data = {}) = super
       end
     end
 

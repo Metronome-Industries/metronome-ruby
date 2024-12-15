@@ -6,6 +6,7 @@ module Metronome
       module RateCards
         class ProductOrderUpdateParams < Metronome::BaseModel
           # @!attribute product_moves
+          #
           #   @return [Array<Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove>]
           required :product_moves,
                    Metronome::ArrayOf.new(
@@ -16,27 +17,31 @@ module Metronome
 
           # @!attribute rate_card_id
           #   ID of the rate card to update
+          #
           #   @return [String]
           required :rate_card_id, String
 
           class ProductMove < Metronome::BaseModel
             # @!attribute position
             #   0-based index of the new position of the product
+            #
             #   @return [Float]
             required :position, Float
 
             # @!attribute product_id
             #   ID of the product to move
+            #
             #   @return [String]
             required :product_id, String
 
             # @!parse
-            #   # Create a new instance of ProductMove from a Hash of raw data.
+            #   # @param position [Float] 0-based index of the new position of the product
             #   #
-            #   # @param data [Hash{Symbol => Object}] .
-            #   #   @option data [Float] :position 0-based index of the new position of the product
-            #   #   @option data [String] :product_id ID of the product to move
-            #   def initialize(data = {}) = super
+            #   # @param product_id [String] ID of the product to move
+            #   #
+            #   def initialize(position:, product_id:) = super
+
+            # def initialize: (Hash | Metronome::BaseModel) -> void
           end
         end
       end

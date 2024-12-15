@@ -4,16 +4,16 @@ module Metronome
   module Models
     class ContractCreateHistoricalInvoicesResponse < Metronome::BaseModel
       # @!attribute data
+      #
       #   @return [Array<Metronome::Models::Customers::Invoice>]
       required :data, Metronome::ArrayOf.new(-> { Metronome::Models::Customers::Invoice })
 
       # @!parse
-      #   # Create a new instance of ContractCreateHistoricalInvoicesResponse from a Hash of
-      #   #   raw data.
+      #   # @param data [Array<Object>]
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [Array<Object>] :data
-      #   def initialize(data = {}) = super
+      #   def initialize(data:) = super
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
     end
   end
 end

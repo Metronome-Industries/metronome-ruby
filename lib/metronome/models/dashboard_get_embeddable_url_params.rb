@@ -4,16 +4,19 @@ module Metronome
   module Models
     class DashboardGetEmbeddableURLParams < Metronome::BaseModel
       # @!attribute customer_id
+      #
       #   @return [String]
       required :customer_id, String
 
       # @!attribute dashboard
       #   The type of dashboard to retrieve.
+      #
       #   @return [Symbol, Metronome::Models::DashboardGetEmbeddableURLParams::Dashboard]
       required :dashboard, enum: -> { Metronome::Models::DashboardGetEmbeddableURLParams::Dashboard }
 
       # @!attribute bm_group_key_overrides
       #   Optional list of billable metric group key overrides
+      #
       #   @return [Array<Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>]
       optional :bm_group_key_overrides,
                Metronome::ArrayOf.new(
@@ -24,6 +27,7 @@ module Metronome
 
       # @!attribute color_overrides
       #   Optional list of colors to override
+      #
       #   @return [Array<Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride>]
       optional :color_overrides,
                Metronome::ArrayOf.new(
@@ -34,6 +38,7 @@ module Metronome
 
       # @!attribute dashboard_options
       #   Optional dashboard specific options
+      #
       #   @return [Array<Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption>]
       optional :dashboard_options,
                Metronome::ArrayOf.new(
@@ -52,40 +57,56 @@ module Metronome
       class BmGroupKeyOverride < Metronome::BaseModel
         # @!attribute group_key_name
         #   The name of the billable metric group key.
+        #
         #   @return [String]
         required :group_key_name, String
 
         # @!attribute display_name
         #   The display name for the billable metric group key
+        #
         #   @return [String]
         optional :display_name, String
 
         # @!attribute value_display_names
         #   <key, value> pairs of the billable metric group key values and their display names. e.g. {"a": "Asia", "b": "Euro"}
+        #
         #   @return [Hash]
         optional :value_display_names, Hash
 
         # @!parse
-        #   # Create a new instance of BmGroupKeyOverride from a Hash of raw data.
+        #   # @param group_key_name [String] The name of the billable metric group key.
         #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :group_key_name The name of the billable metric group key.
-        #   #   @option data [String, nil] :display_name The display name for the billable metric group key
-        #   #   @option data [Hash, nil] :value_display_names <key, value> pairs of the billable metric group key values and their display
-        #   #     names. e.g. {"a": "Asia", "b": "Euro"}
-        #   def initialize(data = {}) = super
+        #   # @param display_name [String, nil] The display name for the billable metric group key
+        #   #
+        #   # @param value_display_names [Hash, nil] <key, value> pairs of the billable metric group key values and their display
+        #   #   names. e.g. {"a": "Asia", "b": "Euro"}
+        #   #
+        #   def initialize(group_key_name:, display_name: nil, value_display_names: nil) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
       class ColorOverride < Metronome::BaseModel
         # @!attribute name
         #   The color to override
+        #
         #   @return [Symbol, Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride::Name]
         optional :name, enum: -> { Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride::Name }
 
         # @!attribute value
         #   Hex value representation of the color
+        #
         #   @return [String]
         optional :value, String
+
+        # @!parse
+        #   # @param name [String, nil] The color to override
+        #   #
+        #   # @param value [String, nil] Hex value representation of the color
+        #   #
+        #   def initialize(name: nil, value: nil) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # The color to override
         class Name < Metronome::Enum
@@ -109,34 +130,29 @@ module Metronome
           PRIMARY_GREEN = :Primary_green
           PRIMARY_RED = :Primary_red
         end
-
-        # @!parse
-        #   # Create a new instance of ColorOverride from a Hash of raw data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String, nil] :name The color to override
-        #   #   @option data [String, nil] :value Hex value representation of the color
-        #   def initialize(data = {}) = super
       end
 
       class DashboardOption < Metronome::BaseModel
         # @!attribute key
         #   The option key name
+        #
         #   @return [String]
         required :key, String
 
         # @!attribute value
         #   The option value
+        #
         #   @return [String]
         required :value, String
 
         # @!parse
-        #   # Create a new instance of DashboardOption from a Hash of raw data.
+        #   # @param key [String] The option key name
         #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :key The option key name
-        #   #   @option data [String] :value The option value
-        #   def initialize(data = {}) = super
+        #   # @param value [String] The option value
+        #   #
+        #   def initialize(key:, value:) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
       end
     end
   end

@@ -39,11 +39,16 @@ module Metronome
       # Create a new customer
       #
       # @param params [Hash{Symbol => Object}, Metronome::Models::CustomerCreateParams] Attributes to send in this request.
+      #
       #   @option params [String] :name This will be truncated to 160 characters if the provided name is longer.
+      #
       #   @option params [Metronome::Models::CustomerCreateParams::BillingConfig, nil] :billing_config
+      #
       #   @option params [Hash, nil] :custom_fields
+      #
       #   @option params [String, nil] :external_id (deprecated, use ingest_aliases instead) an alias that can be used to refer to
       #     this customer in usage events
+      #
       #   @option params [Array<String>, nil] :ingest_aliases Aliases that can be used to refer to this customer in usage events
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -63,6 +68,7 @@ module Metronome
       # Get a customer by Metronome ID.
       #
       # @param params [Hash{Symbol => Object}, Metronome::Models::CustomerRetrieveParams] Attributes to send in this request.
+      #
       #   @option params [String] :customer_id
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -84,11 +90,17 @@ module Metronome
       # List all customers.
       #
       # @param params [Hash{Symbol => Object}, Metronome::Models::CustomerListParams] Attributes to send in this request.
+      #
       #   @option params [Array<String>, nil] :customer_ids Filter the customer list by customer_id. Up to 100 ids can be provided.
+      #
       #   @option params [String, nil] :ingest_alias Filter the customer list by ingest_alias
+      #
       #   @option params [Integer, nil] :limit Max number of results that should be returned
+      #
       #   @option params [String, nil] :next_page Cursor that indicates where the next page of results should start.
+      #
       #   @option params [Boolean, nil] :only_archived Filter the customer list by only archived customers.
+      #
       #   @option params [Array<String>, nil] :salesforce_account_ids Filter the customer list by salesforce_account_id. Up to 100 ids can be
       #     provided.
       #
@@ -110,6 +122,7 @@ module Metronome
       # Archive a customer
       #
       # @param params [Hash{Symbol => Object}, Metronome::Models::CustomerArchiveParams] Attributes to send in this request.
+      #
       #   @option params [String] :id
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -129,10 +142,15 @@ module Metronome
       # Get all billable metrics for a given customer.
       #
       # @param params [Hash{Symbol => Object}, Metronome::Models::CustomerListBillableMetricsParams] Attributes to send in this request.
+      #
       #   @option params [String] :customer_id Path param:
+      #
       #   @option params [Boolean, nil] :include_archived Query param: If true, the list of returned metrics will include archived metrics
+      #
       #   @option params [Integer, nil] :limit Query param: Max number of results that should be returned
+      #
       #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
+      #
       #   @option params [Boolean, nil] :on_current_plan Query param: If true, the list of metrics will be filtered to just ones that are
       #     on the customer's current plan
       #
@@ -159,10 +177,15 @@ module Metronome
       #   UNIQUE-type billable metric.
       #
       # @param params [Hash{Symbol => Object}, Metronome::Models::CustomerListCostsParams] Attributes to send in this request.
+      #
       #   @option params [String] :customer_id Path param:
+      #
       #   @option params [Time] :ending_before Query param: RFC 3339 timestamp (exclusive)
+      #
       #   @option params [Time] :starting_on Query param: RFC 3339 timestamp (inclusive)
+      #
       #   @option params [Integer, nil] :limit Query param: Max number of results that should be returned
+      #
       #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -188,7 +211,9 @@ module Metronome
       #   idempotent. It fully replaces the set of ingest aliases for the given customer.
       #
       # @param params [Hash{Symbol => Object}, Metronome::Models::CustomerSetIngestAliasesParams] Attributes to send in this request.
+      #
       #   @option params [String] :customer_id Path param:
+      #
       #   @option params [Array<String>] :ingest_aliases Body param:
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -211,7 +236,9 @@ module Metronome
       # Updates the specified customer's name.
       #
       # @param params [Hash{Symbol => Object}, Metronome::Models::CustomerSetNameParams] Attributes to send in this request.
+      #
       #   @option params [String] :customer_id Path param:
+      #
       #   @option params [String] :name Body param: The new name for the customer. This will be truncated to 160
       #     characters if the provided name is longer.
       #
@@ -235,9 +262,12 @@ module Metronome
       # Updates the specified customer's config.
       #
       # @param params [Hash{Symbol => Object}, Metronome::Models::CustomerUpdateConfigParams] Attributes to send in this request.
+      #
       #   @option params [String] :customer_id Path param:
+      #
       #   @option params [Boolean, nil] :leave_stripe_invoices_in_draft Body param: Leave in draft or set to auto-advance on invoices sent to Stripe.
       #     Falls back to the client-level config if unset, which defaults to true if unset.
+      #
       #   @option params [String, nil] :salesforce_account_id Body param: The Salesforce account ID for the customer
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.

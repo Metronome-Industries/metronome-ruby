@@ -6,16 +6,19 @@ module Metronome
       class AlertListParams < Metronome::BaseModel
         # @!attribute customer_id
         #   The Metronome ID of the customer
+        #
         #   @return [String]
         required :customer_id, String
 
         # @!attribute next_page
         #   Cursor that indicates where the next page of results should start.
+        #
         #   @return [String]
         optional :next_page, String
 
         # @!attribute alert_statuses
         #   Optionally filter by alert status. If absent, only enabled alerts will be returned.
+        #
         #   @return [Array<Symbol, Metronome::Models::Customers::AlertListParams::AlertStatus>]
         optional :alert_statuses,
                  Metronome::ArrayOf.new(

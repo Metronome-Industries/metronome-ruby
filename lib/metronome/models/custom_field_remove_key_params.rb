@@ -4,10 +4,12 @@ module Metronome
   module Models
     class CustomFieldRemoveKeyParams < Metronome::BaseModel
       # @!attribute entity
+      #
       #   @return [Symbol, Metronome::Models::CustomFieldRemoveKeyParams::Entity]
       required :entity, enum: -> { Metronome::Models::CustomFieldRemoveKeyParams::Entity }
 
       # @!attribute key
+      #
       #   @return [String]
       required :key, String
 

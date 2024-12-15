@@ -4,56 +4,82 @@ module Metronome
   module Models
     class ProService < Metronome::BaseModel
       # @!attribute id
+      #
       #   @return [String]
       required :id, String
 
       # @!attribute max_amount
       #   Maximum amount for the term.
+      #
       #   @return [Float]
       required :max_amount, Float
 
       # @!attribute product_id
+      #
       #   @return [String]
       required :product_id, String
 
       # @!attribute quantity
       #   Quantity for the charge. Will be multiplied by unit_price to determine the amount.
+      #
       #   @return [Float]
       required :quantity, Float
 
       # @!attribute unit_price
       #   Unit price for the charge. Will be multiplied by quantity to determine the amount and must be specified.
+      #
       #   @return [Float]
       required :unit_price, Float
 
       # @!attribute custom_fields
+      #
       #   @return [Hash]
       optional :custom_fields, Hash
 
       # @!attribute description
+      #
       #   @return [String]
       optional :description, String
 
       # @!attribute netsuite_sales_order_id
       #   This field's availability is dependent on your client's configuration.
+      #
       #   @return [String]
       optional :netsuite_sales_order_id, String
 
       # @!parse
-      #   # Create a new instance of ProService from a Hash of raw data.
+      #   # @param id [String]
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id
-      #   #   @option data [Float] :max_amount Maximum amount for the term.
-      #   #   @option data [String] :product_id
-      #   #   @option data [Float] :quantity Quantity for the charge. Will be multiplied by unit_price to determine the
-      #   #     amount.
-      #   #   @option data [Float] :unit_price Unit price for the charge. Will be multiplied by quantity to determine the
-      #   #     amount and must be specified.
-      #   #   @option data [Hash, nil] :custom_fields
-      #   #   @option data [String, nil] :description
-      #   #   @option data [String, nil] :netsuite_sales_order_id This field's availability is dependent on your client's configuration.
-      #   def initialize(data = {}) = super
+      #   # @param max_amount [Float] Maximum amount for the term.
+      #   #
+      #   # @param product_id [String]
+      #   #
+      #   # @param quantity [Float] Quantity for the charge. Will be multiplied by unit_price to determine the
+      #   #   amount.
+      #   #
+      #   # @param unit_price [Float] Unit price for the charge. Will be multiplied by quantity to determine the
+      #   #   amount and must be specified.
+      #   #
+      #   # @param custom_fields [Hash, nil]
+      #   #
+      #   # @param description [String, nil]
+      #   #
+      #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
+      #   #
+      #   def initialize(
+      #     id:,
+      #     max_amount:,
+      #     product_id:,
+      #     quantity:,
+      #     unit_price:,
+      #     custom_fields: nil,
+      #     description: nil,
+      #     netsuite_sales_order_id: nil
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
     end
   end
 end

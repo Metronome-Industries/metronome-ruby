@@ -4,20 +4,22 @@ module Metronome
   module Models
     class Tier < Metronome::BaseModel
       # @!attribute price
+      #
       #   @return [Float]
       required :price, Float
 
       # @!attribute size
+      #
       #   @return [Float]
       optional :size, Float
 
       # @!parse
-      #   # Create a new instance of Tier from a Hash of raw data.
+      #   # @param price [Float]
+      #   # @param size [Float, nil]
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [Float] :price
-      #   #   @option data [Float, nil] :size
-      #   def initialize(data = {}) = super
+      #   def initialize(price:, size: nil) = super
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
     end
   end
 end

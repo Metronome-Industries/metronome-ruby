@@ -7,15 +7,16 @@ module Metronome
         class RateAddManyResponse < Metronome::BaseModel
           # @!attribute data
           #   The ID of the rate card to which the rates were added.
+          #
           #   @return [Metronome::Models::ID]
           required :data, -> { Metronome::Models::ID }
 
           # @!parse
-          #   # Create a new instance of RateAddManyResponse from a Hash of raw data.
+          #   # @param data [Object] The ID of the rate card to which the rates were added.
           #   #
-          #   # @param data [Hash{Symbol => Object}] .
-          #   #   @option data [Object] :data The ID of the rate card to which the rates were added.
-          #   def initialize(data = {}) = super
+          #   def initialize(data:) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
         end
       end
     end

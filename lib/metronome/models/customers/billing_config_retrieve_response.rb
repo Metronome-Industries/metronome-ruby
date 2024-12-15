@@ -5,39 +5,54 @@ module Metronome
     module Customers
       class BillingConfigRetrieveResponse < Metronome::BaseModel
         # @!attribute data
+        #
         #   @return [Metronome::Models::Customers::BillingConfigRetrieveResponse::Data]
         required :data, -> { Metronome::Models::Customers::BillingConfigRetrieveResponse::Data }
+
+        # @!parse
+        #   # @param data [Object]
+        #   #
+        #   def initialize(data:) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
 
         class Data < Metronome::BaseModel
           # @!attribute aws_expiration_date
           #   Contract expiration date for the customer. The expected format is RFC 3339 and can be retrieved from [AWS's GetEntitlements API](https://docs.aws.amazon.com/marketplaceentitlement/latest/APIReference/API_GetEntitlements.html).
+          #
           #   @return [Time]
           optional :aws_expiration_date, Time
 
           # @!attribute aws_product_code
+          #
           #   @return [String]
           optional :aws_product_code, String
 
           # @!attribute aws_region
+          #
           #   @return [Symbol, Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::AwsRegion]
           optional :aws_region,
                    enum: -> { Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::AwsRegion }
 
           # @!attribute azure_expiration_date
           #   Subscription term start/end date for the customer. The expected format is RFC 3339 and can be retrieved from [Azure's Get Subscription API](https://learn.microsoft.com/en-us/partner-center/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api#get-subscription).
+          #
           #   @return [Time]
           optional :azure_expiration_date, Time
 
           # @!attribute azure_plan_id
+          #
           #   @return [String]
           optional :azure_plan_id, String
 
           # @!attribute azure_start_date
           #   Subscription term start/end date for the customer. The expected format is RFC 3339 and can be retrieved from [Azure's Get Subscription API](https://learn.microsoft.com/en-us/partner-center/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api#get-subscription).
+          #
           #   @return [Time]
           optional :azure_start_date, Time
 
           # @!attribute azure_subscription_status
+          #
           #   @return [Symbol, Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::AzureSubscriptionStatus]
           optional :azure_subscription_status,
                    enum: -> {
@@ -45,15 +60,58 @@ module Metronome
                    }
 
           # @!attribute billing_provider_customer_id
+          #
           #   @return [String]
           optional :billing_provider_customer_id, String
 
           # @!attribute stripe_collection_method
+          #
           #   @return [Symbol, Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::StripeCollectionMethod]
           optional :stripe_collection_method,
                    enum: -> {
                      Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::StripeCollectionMethod
                    }
+
+          # @!parse
+          #   # @param aws_expiration_date [String, nil] Contract expiration date for the customer. The expected format is RFC 3339 and
+          #   #   can be retrieved from
+          #   #   [AWS's GetEntitlements API](https://docs.aws.amazon.com/marketplaceentitlement/latest/APIReference/API_GetEntitlements.html).
+          #   #
+          #   # @param aws_product_code [String, nil]
+          #   #
+          #   # @param aws_region [String, nil]
+          #   #
+          #   # @param azure_expiration_date [String, nil] Subscription term start/end date for the customer. The expected format is RFC
+          #   #   3339 and can be retrieved from
+          #   #   [Azure's Get Subscription API](https://learn.microsoft.com/en-us/partner-center/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api#get-subscription).
+          #   #
+          #   # @param azure_plan_id [String, nil]
+          #   #
+          #   # @param azure_start_date [String, nil] Subscription term start/end date for the customer. The expected format is RFC
+          #   #   3339 and can be retrieved from
+          #   #   [Azure's Get Subscription API](https://learn.microsoft.com/en-us/partner-center/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api#get-subscription).
+          #   #
+          #   # @param azure_subscription_status [String, nil]
+          #   #
+          #   # @param billing_provider_customer_id [String, nil]
+          #   #
+          #   # @param stripe_collection_method [String, nil]
+          #   #
+          #   def initialize(
+          #     aws_expiration_date: nil,
+          #     aws_product_code: nil,
+          #     aws_region: nil,
+          #     azure_expiration_date: nil,
+          #     azure_plan_id: nil,
+          #     azure_start_date: nil,
+          #     azure_subscription_status: nil,
+          #     billing_provider_customer_id: nil,
+          #     stripe_collection_method: nil
+          #   )
+          #     super
+          #   end
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
 
           class AwsRegion < Metronome::Enum
             AF_SOUTH_1 = :"af-south-1"
@@ -94,35 +152,7 @@ module Metronome
             CHARGE_AUTOMATICALLY = :charge_automatically
             SEND_INVOICE = :send_invoice
           end
-
-          # @!parse
-          #   # Create a new instance of Data from a Hash of raw data.
-          #   #
-          #   # @param data [Hash{Symbol => Object}] .
-          #   #   @option data [String, nil] :aws_expiration_date Contract expiration date for the customer. The expected format is RFC 3339 and
-          #   #     can be retrieved from
-          #   #     [AWS's GetEntitlements API](https://docs.aws.amazon.com/marketplaceentitlement/latest/APIReference/API_GetEntitlements.html).
-          #   #   @option data [String, nil] :aws_product_code
-          #   #   @option data [String, nil] :aws_region
-          #   #   @option data [String, nil] :azure_expiration_date Subscription term start/end date for the customer. The expected format is RFC
-          #   #     3339 and can be retrieved from
-          #   #     [Azure's Get Subscription API](https://learn.microsoft.com/en-us/partner-center/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api#get-subscription).
-          #   #   @option data [String, nil] :azure_plan_id
-          #   #   @option data [String, nil] :azure_start_date Subscription term start/end date for the customer. The expected format is RFC
-          #   #     3339 and can be retrieved from
-          #   #     [Azure's Get Subscription API](https://learn.microsoft.com/en-us/partner-center/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api#get-subscription).
-          #   #   @option data [String, nil] :azure_subscription_status
-          #   #   @option data [String, nil] :billing_provider_customer_id
-          #   #   @option data [String, nil] :stripe_collection_method
-          #   def initialize(data = {}) = super
         end
-
-        # @!parse
-        #   # Create a new instance of BillingConfigRetrieveResponse from a Hash of raw data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [Object] :data
-        #   def initialize(data = {}) = super
       end
     end
   end

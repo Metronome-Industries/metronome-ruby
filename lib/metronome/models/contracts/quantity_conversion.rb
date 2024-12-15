@@ -6,33 +6,46 @@ module Metronome
       class QuantityConversion < Metronome::BaseModel
         # @!attribute conversion_factor
         #   The factor to multiply or divide the quantity by.
+        #
         #   @return [Float]
         required :conversion_factor, Float
 
         # @!attribute operation
         #   The operation to perform on the quantity
+        #
         #   @return [Symbol, Metronome::Models::Contracts::QuantityConversion::Operation]
         required :operation, enum: -> { Metronome::Models::Contracts::QuantityConversion::Operation }
 
         # @!attribute name
         #   Optional name for this conversion.
+        #
         #   @return [String]
         optional :name, String
+
+        # @!parse
+        #   # Optional. Only valid for USAGE products. If provided, the quantity will be
+        #   #   converted using the provided conversion factor and operation. For example, if
+        #   #   the operation is "multiply" and the conversion factor is 100, then the quantity
+        #   #   will be multiplied by 100. This can be used in cases where data is sent in one
+        #   #   unit and priced in another. For example, data could be sent in MB and priced in
+        #   #   GB. In this case, the conversion factor would be 1024 and the operation would be
+        #   #   "divide".
+        #   #
+        #   # @param conversion_factor [Float] The factor to multiply or divide the quantity by.
+        #   #
+        #   # @param operation [String] The operation to perform on the quantity
+        #   #
+        #   # @param name [String, nil] Optional name for this conversion.
+        #   #
+        #   def initialize(conversion_factor:, operation:, name: nil) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # The operation to perform on the quantity
         class Operation < Metronome::Enum
           MULTIPLY = :MULTIPLY
           DIVIDE = :DIVIDE
         end
-
-        # @!parse
-        #   # Create a new instance of QuantityConversion from a Hash of raw data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [Float] :conversion_factor The factor to multiply or divide the quantity by.
-        #   #   @option data [String] :operation The operation to perform on the quantity
-        #   #   @option data [String, nil] :name Optional name for this conversion.
-        #   def initialize(data = {}) = super
       end
     end
   end

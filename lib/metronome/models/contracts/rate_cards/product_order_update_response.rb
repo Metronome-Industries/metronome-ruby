@@ -6,15 +6,16 @@ module Metronome
       module RateCards
         class ProductOrderUpdateResponse < Metronome::BaseModel
           # @!attribute data
+          #
           #   @return [Metronome::Models::ID]
           required :data, -> { Metronome::Models::ID }
 
           # @!parse
-          #   # Create a new instance of ProductOrderUpdateResponse from a Hash of raw data.
+          #   # @param data [Object]
           #   #
-          #   # @param data [Hash{Symbol => Object}] .
-          #   #   @option data [Object] :data
-          #   def initialize(data = {}) = super
+          #   def initialize(data:) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
         end
       end
     end

@@ -5,6 +5,7 @@ module Metronome
     class InvoiceRegenerateParams < Metronome::BaseModel
       # @!attribute id
       #   The invoice id to regenerate
+      #
       #   @return [String]
       required :id, String
     end

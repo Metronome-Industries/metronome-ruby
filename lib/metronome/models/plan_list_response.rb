@@ -4,30 +4,34 @@ module Metronome
   module Models
     class PlanListResponse < Metronome::BaseModel
       # @!attribute id
+      #
       #   @return [String]
       required :id, String
 
       # @!attribute description
+      #
       #   @return [String]
       required :description, String
 
       # @!attribute name
+      #
       #   @return [String]
       required :name, String
 
       # @!attribute custom_fields
+      #
       #   @return [Hash]
       optional :custom_fields, Hash
 
       # @!parse
-      #   # Create a new instance of PlanListResponse from a Hash of raw data.
+      #   # @param id [String]
+      #   # @param description [String]
+      #   # @param name [String]
+      #   # @param custom_fields [Hash, nil]
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id
-      #   #   @option data [String] :description
-      #   #   @option data [String] :name
-      #   #   @option data [Hash, nil] :custom_fields
-      #   def initialize(data = {}) = super
+      #   def initialize(id:, description:, name:, custom_fields: nil) = super
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
     end
   end
 end

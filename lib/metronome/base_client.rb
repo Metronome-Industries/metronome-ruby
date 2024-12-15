@@ -7,6 +7,7 @@ module Metronome
     MAX_REDIRECTS = 20 # from whatwg fetch spec
 
     # @!attribute requester
+    #
     #   @return [Metronome::PooledNetRequester]
     attr_accessor :requester
 

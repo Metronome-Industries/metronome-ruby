@@ -5,15 +5,16 @@ module Metronome
     module Customers
       class AlertRetrieveResponse < Metronome::BaseModel
         # @!attribute data
+        #
         #   @return [Metronome::Models::Customers::CustomerAlert]
         required :data, -> { Metronome::Models::Customers::CustomerAlert }
 
         # @!parse
-        #   # Create a new instance of AlertRetrieveResponse from a Hash of raw data.
+        #   # @param data [Object]
         #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [Object] :data
-        #   def initialize(data = {}) = super
+        #   def initialize(data:) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
       end
     end
   end

@@ -5,15 +5,16 @@ module Metronome
     module Customers
       class InvoiceRetrieveResponse < Metronome::BaseModel
         # @!attribute data
+        #
         #   @return [Metronome::Models::Customers::Invoice]
         required :data, -> { Metronome::Models::Customers::Invoice }
 
         # @!parse
-        #   # Create a new instance of InvoiceRetrieveResponse from a Hash of raw data.
+        #   # @param data [Object]
         #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [Object] :data
-        #   def initialize(data = {}) = super
+        #   def initialize(data:) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
       end
     end
   end

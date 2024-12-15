@@ -4,14 +4,17 @@ module Metronome
   module Models
     class CustomFieldAddKeyParams < Metronome::BaseModel
       # @!attribute enforce_uniqueness
+      #
       #   @return [Boolean]
       required :enforce_uniqueness, Metronome::BooleanModel
 
       # @!attribute entity
+      #
       #   @return [Symbol, Metronome::Models::CustomFieldAddKeyParams::Entity]
       required :entity, enum: -> { Metronome::Models::CustomFieldAddKeyParams::Entity }
 
       # @!attribute key
+      #
       #   @return [String]
       required :key, String
 

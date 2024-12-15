@@ -13,8 +13,11 @@ module Metronome
         #   dependent on your client's configuration.
         #
         # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::NamedScheduleRetrieveParams] Attributes to send in this request.
+        #
         #   @option params [String] :rate_card_id ID of the rate card whose named schedule is to be retrieved
+        #
         #   @option params [String] :schedule_name The identifier for the schedule to be retrieved
+        #
         #   @option params [Time, nil] :covering_date If provided, at most one schedule segment will be returned (the one that covers
         #     this date). If not provided, all segments will be returned.
         #
@@ -36,11 +39,16 @@ module Metronome
         #   dependent on your client's configuration.
         #
         # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::NamedScheduleUpdateParams] Attributes to send in this request.
+        #
         #   @option params [String] :rate_card_id ID of the rate card whose named schedule is to be updated
+        #
         #   @option params [String] :schedule_name The identifier for the schedule to be updated
+        #
         #   @option params [Time] :starting_at
+        #
         #   @option params [Object] :value The value to set for the named schedule. The structure of this object is
         #     specific to the named schedule.
+        #
         #   @option params [Time, nil] :ending_before
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.

@@ -5,49 +5,78 @@ module Metronome
     class CustomerCreateParams < Metronome::BaseModel
       # @!attribute name
       #   This will be truncated to 160 characters if the provided name is longer.
+      #
       #   @return [String]
       required :name, String
 
       # @!attribute billing_config
+      #
       #   @return [Metronome::Models::CustomerCreateParams::BillingConfig]
       optional :billing_config, -> { Metronome::Models::CustomerCreateParams::BillingConfig }
 
       # @!attribute custom_fields
+      #
       #   @return [Hash]
       optional :custom_fields, Hash
 
       # @!attribute external_id
       #   (deprecated, use ingest_aliases instead) an alias that can be used to refer to this customer in usage events
+      #
       #   @return [String]
       optional :external_id, String
 
       # @!attribute ingest_aliases
       #   Aliases that can be used to refer to this customer in usage events
+      #
       #   @return [Array<String>]
       optional :ingest_aliases, Metronome::ArrayOf.new(String)
 
       class BillingConfig < Metronome::BaseModel
         # @!attribute billing_provider_customer_id
+        #
         #   @return [String]
         required :billing_provider_customer_id, String
 
         # @!attribute billing_provider_type
+        #
         #   @return [Symbol, Metronome::Models::CustomerCreateParams::BillingConfig::BillingProviderType]
         required :billing_provider_type,
                  enum: -> { Metronome::Models::CustomerCreateParams::BillingConfig::BillingProviderType }
 
         # @!attribute aws_product_code
+        #
         #   @return [String]
         optional :aws_product_code, String
 
         # @!attribute aws_region
+        #
         #   @return [Symbol, Metronome::Models::CustomerCreateParams::BillingConfig::AwsRegion]
         optional :aws_region, enum: -> { Metronome::Models::CustomerCreateParams::BillingConfig::AwsRegion }
 
         # @!attribute stripe_collection_method
+        #
         #   @return [Symbol, Metronome::Models::CustomerCreateParams::BillingConfig::StripeCollectionMethod]
         optional :stripe_collection_method,
                  enum: -> { Metronome::Models::CustomerCreateParams::BillingConfig::StripeCollectionMethod }
+
+        # @!parse
+        #   # @param billing_provider_customer_id [String]
+        #   # @param billing_provider_type [String]
+        #   # @param aws_product_code [String, nil]
+        #   # @param aws_region [String, nil]
+        #   # @param stripe_collection_method [String, nil]
+        #   #
+        #   def initialize(
+        #     billing_provider_customer_id:,
+        #     billing_provider_type:,
+        #     aws_product_code: nil,
+        #     aws_region: nil,
+        #     stripe_collection_method: nil
+        #   )
+        #     super
+        #   end
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
 
         class BillingProviderType < Metronome::Enum
           AWS_MARKETPLACE = :aws_marketplace
@@ -92,17 +121,6 @@ module Metronome
           CHARGE_AUTOMATICALLY = :charge_automatically
           SEND_INVOICE = :send_invoice
         end
-
-        # @!parse
-        #   # Create a new instance of BillingConfig from a Hash of raw data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :billing_provider_customer_id
-        #   #   @option data [String] :billing_provider_type
-        #   #   @option data [String, nil] :aws_product_code
-        #   #   @option data [String, nil] :aws_region
-        #   #   @option data [String, nil] :stripe_collection_method
-        #   def initialize(data = {}) = super
       end
     end
   end

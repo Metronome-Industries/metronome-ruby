@@ -4,45 +4,54 @@ module Metronome
   module Models
     class ContractListBalancesParams < Metronome::BaseModel
       # @!attribute customer_id
+      #
       #   @return [String]
       required :customer_id, String
 
       # @!attribute id
+      #
       #   @return [String]
       optional :id, String
 
       # @!attribute covering_date
       #   Return only balances that have access schedules that "cover" the provided date
+      #
       #   @return [Time]
       optional :covering_date, Time
 
       # @!attribute effective_before
       #   Include only balances that have any access before the provided date (exclusive)
+      #
       #   @return [Time]
       optional :effective_before, Time
 
       # @!attribute include_archived
       #   Include credits from archived contracts.
+      #
       #   @return [Boolean]
       optional :include_archived, Metronome::BooleanModel
 
       # @!attribute include_contract_balances
       #   Include balances on the contract level.
+      #
       #   @return [Boolean]
       optional :include_contract_balances, Metronome::BooleanModel
 
       # @!attribute include_ledgers
       #   Include ledgers in the response. Setting this flag may cause the query to be slower.
+      #
       #   @return [Boolean]
       optional :include_ledgers, Metronome::BooleanModel
 
       # @!attribute next_page
       #   The next page token from a previous response.
+      #
       #   @return [String]
       optional :next_page, String
 
       # @!attribute starting_at
       #   Include only balances that have any access on or after the provided date
+      #
       #   @return [Time]
       optional :starting_at, Time
     end

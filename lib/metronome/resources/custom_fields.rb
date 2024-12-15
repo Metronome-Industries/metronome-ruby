@@ -12,8 +12,11 @@ module Metronome
       #   on custom field keys.
       #
       # @param params [Hash{Symbol => Object}, Metronome::Models::CustomFieldAddKeyParams] Attributes to send in this request.
+      #
       #   @option params [Boolean] :enforce_uniqueness
+      #
       #   @option params [Symbol, Metronome::Models::CustomFieldAddKeyParams::Entity] :entity
+      #
       #   @option params [String] :key
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -33,8 +36,11 @@ module Metronome
       # Deletes one or more custom fields on an instance of a Metronome entity.
       #
       # @param params [Hash{Symbol => Object}, Metronome::Models::CustomFieldDeleteValuesParams] Attributes to send in this request.
+      #
       #   @option params [Symbol, Metronome::Models::CustomFieldDeleteValuesParams::Entity] :entity
+      #
       #   @option params [String] :entity_id
+      #
       #   @option params [Array<String>] :keys
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -54,7 +60,9 @@ module Metronome
       # List all active custom field keys, optionally filtered by entity type.
       #
       # @param params [Hash{Symbol => Object}, Metronome::Models::CustomFieldListKeysParams] Attributes to send in this request.
+      #
       #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
+      #
       #   @option params [Array<Symbol, Metronome::Models::CustomFieldListKeysParams::Entity>, nil] :entities Body param: Optional list of entity types to return keys for
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -76,7 +84,9 @@ module Metronome
       # Remove a key from the allow list for a given entity.
       #
       # @param params [Hash{Symbol => Object}, Metronome::Models::CustomFieldRemoveKeyParams] Attributes to send in this request.
+      #
       #   @option params [Symbol, Metronome::Models::CustomFieldRemoveKeyParams::Entity] :entity
+      #
       #   @option params [String] :key
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -102,8 +112,11 @@ module Metronome
       #   values.
       #
       # @param params [Hash{Symbol => Object}, Metronome::Models::CustomFieldSetValuesParams] Attributes to send in this request.
+      #
       #   @option params [Hash] :custom_fields
+      #
       #   @option params [Symbol, Metronome::Models::CustomFieldSetValuesParams::Entity] :entity
+      #
       #   @option params [String] :entity_id
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.

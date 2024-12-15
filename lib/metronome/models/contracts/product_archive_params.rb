@@ -6,6 +6,7 @@ module Metronome
       class ProductArchiveParams < Metronome::BaseModel
         # @!attribute product_id
         #   ID of the product to be archived
+        #
         #   @return [String]
         required :product_id, String
       end

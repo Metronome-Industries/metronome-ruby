@@ -6,49 +6,57 @@ module Metronome
       class RateCardUpdateParams < Metronome::BaseModel
         # @!attribute rate_card_id
         #   ID of the rate card to update
+        #
         #   @return [String]
         required :rate_card_id, String
 
         # @!attribute aliases
         #   Reference this alias when creating a contract. If the same alias is assigned to multiple rate cards, it will reference the rate card to which it was most recently assigned. It is not exposed to end customers.
+        #
         #   @return [Array<Metronome::Models::Contracts::RateCardUpdateParams::Alias>]
         optional :aliases,
                  Metronome::ArrayOf.new(-> { Metronome::Models::Contracts::RateCardUpdateParams::Alias })
 
         # @!attribute custom_fields
+        #
         #   @return [Hash]
         optional :custom_fields, Hash
 
         # @!attribute description
+        #
         #   @return [String]
         optional :description, String
 
         # @!attribute name
         #   Used only in UI/API. It is not exposed to end customers.
+        #
         #   @return [String]
         optional :name, String
 
         class Alias < Metronome::BaseModel
           # @!attribute name
+          #
           #   @return [String]
           required :name, String
 
           # @!attribute ending_before
+          #
           #   @return [Time]
           optional :ending_before, Time
 
           # @!attribute starting_at
+          #
           #   @return [Time]
           optional :starting_at, Time
 
           # @!parse
-          #   # Create a new instance of Alias from a Hash of raw data.
+          #   # @param name [String]
+          #   # @param ending_before [String, nil]
+          #   # @param starting_at [String, nil]
           #   #
-          #   # @param data [Hash{Symbol => Object}] .
-          #   #   @option data [String] :name
-          #   #   @option data [String, nil] :ending_before
-          #   #   @option data [String, nil] :starting_at
-          #   def initialize(data = {}) = super
+          #   def initialize(name:, ending_before: nil, starting_at: nil) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
         end
       end
     end
