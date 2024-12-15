@@ -5,6 +5,7 @@ module Metronome
     module Customers
       class NamedScheduleRetrieveResponse < Metronome::BaseModel
         # @!attribute data
+        #
         #   @return [Array<Metronome::Models::Customers::NamedScheduleRetrieveResponse::Data>]
         required :data,
                  Metronome::ArrayOf.new(
@@ -13,35 +14,38 @@ module Metronome
                    }
                  )
 
+        # @!parse
+        #   # @param data [Array<Object>]
+        #   #
+        #   def initialize(data:) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
         class Data < Metronome::BaseModel
           # @!attribute starting_at
+          #
           #   @return [Time]
           required :starting_at, Time
 
           # @!attribute value
+          #
           #   @return [Object]
           required :value, Metronome::Unknown
 
           # @!attribute ending_before
+          #
           #   @return [Time]
           optional :ending_before, Time
 
           # @!parse
-          #   # Create a new instance of Data from a Hash of raw data.
+          #   # @param starting_at [String]
+          #   # @param value [Object]
+          #   # @param ending_before [String, nil]
           #   #
-          #   # @param data [Hash{Symbol => Object}] .
-          #   #   @option data [String] :starting_at
-          #   #   @option data [Object] :value
-          #   #   @option data [String, nil] :ending_before
-          #   def initialize(data = {}) = super
-        end
+          #   def initialize(starting_at:, value:, ending_before: nil) = super
 
-        # @!parse
-        #   # Create a new instance of NamedScheduleRetrieveResponse from a Hash of raw data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [Array<Object>] :data
-        #   def initialize(data = {}) = super
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+        end
       end
     end
   end

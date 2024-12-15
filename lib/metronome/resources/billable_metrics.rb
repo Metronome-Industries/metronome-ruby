@@ -11,17 +11,25 @@ module Metronome
       # Creates a new Billable Metric.
       #
       # @param params [Hash{Symbol => Object}, Metronome::Models::BillableMetricCreateParams] Attributes to send in this request.
+      #
       #   @option params [String] :name The display name of the billable metric.
+      #
       #   @option params [String, nil] :aggregation_key Specifies the type of aggregation performed on matching events. Required if
       #     `sql` is not provided.
+      #
       #   @option params [Symbol, Metronome::Models::BillableMetricCreateParams::AggregationType, nil] :aggregation_type Specifies the type of aggregation performed on matching events.
+      #
       #   @option params [Hash, nil] :custom_fields Custom fields to attach to the billable metric.
+      #
       #   @option params [Metronome::Models::EventTypeFilter, nil] :event_type_filter An optional filtering rule to match the 'event_type' property of an event.
+      #
       #   @option params [Array<Array<String>>, nil] :group_keys Property names that are used to group usage costs on an invoice. Each entry
       #     represents a set of properties used to slice events into distinct buckets.
+      #
       #   @option params [Array<Metronome::Models::PropertyFilter>, nil] :property_filters A list of filters to match events to this billable metric. Each filter defines a
       #     rule on an event property. All rules must pass for the event to match the
       #     billable metric.
+      #
       #   @option params [String, nil] :sql The SQL query associated with the billable metric. This field is mutually
       #     exclusive with aggregation_type, event_type_filter, property_filters,
       #     aggregation_key, and group_keys. If provided, these other fields must be
@@ -44,6 +52,7 @@ module Metronome
       # Get a billable metric.
       #
       # @param params [Hash{Symbol => Object}, Metronome::Models::BillableMetricRetrieveParams] Attributes to send in this request.
+      #
       #   @option params [String] :billable_metric_id
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -65,8 +74,11 @@ module Metronome
       # List all billable metrics.
       #
       # @param params [Hash{Symbol => Object}, Metronome::Models::BillableMetricListParams] Attributes to send in this request.
+      #
       #   @option params [Boolean, nil] :include_archived If true, the list of returned metrics will include archived metrics
+      #
       #   @option params [Integer, nil] :limit Max number of results that should be returned
+      #
       #   @option params [String, nil] :next_page Cursor that indicates where the next page of results should start.
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -87,6 +99,7 @@ module Metronome
       # Archive an existing billable metric.
       #
       # @param params [Hash{Symbol => Object}, Metronome::Models::BillableMetricArchiveParams] Attributes to send in this request.
+      #
       #   @option params [String] :id
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.

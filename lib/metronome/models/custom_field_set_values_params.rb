@@ -4,14 +4,17 @@ module Metronome
   module Models
     class CustomFieldSetValuesParams < Metronome::BaseModel
       # @!attribute custom_fields
+      #
       #   @return [Hash]
       required :custom_fields, Hash
 
       # @!attribute entity
+      #
       #   @return [Symbol, Metronome::Models::CustomFieldSetValuesParams::Entity]
       required :entity, enum: -> { Metronome::Models::CustomFieldSetValuesParams::Entity }
 
       # @!attribute entity_id
+      #
       #   @return [String]
       required :entity_id, String
 

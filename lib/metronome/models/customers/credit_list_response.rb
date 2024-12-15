@@ -5,20 +5,22 @@ module Metronome
     module Customers
       class CreditListResponse < Metronome::BaseModel
         # @!attribute data
+        #
         #   @return [Array<Metronome::Models::Credit>]
         required :data, Metronome::ArrayOf.new(-> { Metronome::Models::Credit })
 
         # @!attribute next_page
+        #
         #   @return [String]
         required :next_page, String
 
         # @!parse
-        #   # Create a new instance of CreditListResponse from a Hash of raw data.
+        #   # @param data [Array<Object>]
+        #   # @param next_page [String]
         #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [Array<Object>] :data
-        #   #   @option data [String] :next_page
-        #   def initialize(data = {}) = super
+        #   def initialize(data:, next_page:) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
       end
     end
   end

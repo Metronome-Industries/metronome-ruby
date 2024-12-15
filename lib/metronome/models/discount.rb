@@ -4,54 +4,65 @@ module Metronome
   module Models
     class Discount < Metronome::BaseModel
       # @!attribute id
+      #
       #   @return [String]
       required :id, String
 
       # @!attribute product
+      #
       #   @return [Metronome::Models::Discount::Product]
       required :product, -> { Metronome::Models::Discount::Product }
 
       # @!attribute schedule
+      #
       #   @return [Metronome::Models::SchedulePointInTime]
       required :schedule, -> { Metronome::Models::SchedulePointInTime }
 
       # @!attribute name
+      #
       #   @return [String]
       optional :name, String
 
       # @!attribute netsuite_sales_order_id
       #   This field's availability is dependent on your client's configuration.
+      #
       #   @return [String]
       optional :netsuite_sales_order_id, String
 
+      # @!parse
+      #   # @param id [String]
+      #   #
+      #   # @param product [Object]
+      #   #
+      #   # @param schedule [Object]
+      #   #
+      #   # @param name [String, nil]
+      #   #
+      #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
+      #   #
+      #   def initialize(id:, product:, schedule:, name: nil, netsuite_sales_order_id: nil) = super
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
+
       class Product < Metronome::BaseModel
         # @!attribute id
+        #
         #   @return [String]
         required :id, String
 
         # @!attribute name
+        #
         #   @return [String]
         required :name, String
 
         # @!parse
-        #   # Create a new instance of Product from a Hash of raw data.
+        #   # @param id [String]
+        #   # @param name [String]
         #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :id
-        #   #   @option data [String] :name
-        #   def initialize(data = {}) = super
-      end
+        #   def initialize(id:, name:) = super
 
-      # @!parse
-      #   # Create a new instance of Discount from a Hash of raw data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id
-      #   #   @option data [Object] :product
-      #   #   @option data [Object] :schedule
-      #   #   @option data [String, nil] :name
-      #   #   @option data [String, nil] :netsuite_sales_order_id This field's availability is dependent on your client's configuration.
-      #   def initialize(data = {}) = super
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+      end
     end
   end
 end

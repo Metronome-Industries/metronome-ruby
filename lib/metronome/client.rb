@@ -63,7 +63,9 @@ module Metronome
     # Creates and returns a new client for interacting with the API.
     #
     # @param base_url [String, nil] Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
+    #
     # @param bearer_token [String, nil] Defaults to `ENV["METRONOME_BEARER_TOKEN"]`
+    #
     # @param max_retries [Integer] Max number of retries to attempt after a failed retryable request.
     def initialize(
       base_url: nil,

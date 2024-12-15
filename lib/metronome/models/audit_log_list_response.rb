@@ -4,58 +4,94 @@ module Metronome
   module Models
     class AuditLogListResponse < Metronome::BaseModel
       # @!attribute id
+      #
       #   @return [String]
       required :id, String
 
       # @!attribute timestamp
+      #
       #   @return [Time]
       required :timestamp, Time
 
       # @!attribute action
+      #
       #   @return [String]
       optional :action, String
 
       # @!attribute actor
+      #
       #   @return [Metronome::Models::AuditLogListResponse::Actor]
       optional :actor, -> { Metronome::Models::AuditLogListResponse::Actor }
 
       # @!attribute description
+      #
       #   @return [String]
       optional :description, String
 
       # @!attribute resource_id
+      #
       #   @return [String]
       optional :resource_id, String
 
       # @!attribute resource_type
+      #
       #   @return [String]
       optional :resource_type, String
 
       # @!attribute status
+      #
       #   @return [Symbol, Metronome::Models::AuditLogListResponse::Status]
       optional :status, enum: -> { Metronome::Models::AuditLogListResponse::Status }
 
+      # @!parse
+      #   # @param id [String]
+      #   # @param timestamp [String]
+      #   # @param action [String, nil]
+      #   # @param actor [Object, nil]
+      #   # @param description [String, nil]
+      #   # @param resource_id [String, nil]
+      #   # @param resource_type [String, nil]
+      #   # @param status [String, nil]
+      #   #
+      #   def initialize(
+      #     id:,
+      #     timestamp:,
+      #     action: nil,
+      #     actor: nil,
+      #     description: nil,
+      #     resource_id: nil,
+      #     resource_type: nil,
+      #     status: nil
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
+
       class Actor < Metronome::BaseModel
         # @!attribute id
+        #
         #   @return [String]
         required :id, String
 
         # @!attribute name
+        #
         #   @return [String]
         required :name, String
 
         # @!attribute email
+        #
         #   @return [String]
         optional :email, String
 
         # @!parse
-        #   # Create a new instance of Actor from a Hash of raw data.
+        #   # @param id [String]
+        #   # @param name [String]
+        #   # @param email [String, nil]
         #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :id
-        #   #   @option data [String] :name
-        #   #   @option data [String, nil] :email
-        #   def initialize(data = {}) = super
+        #   def initialize(id:, name:, email: nil) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
       class Status < Metronome::Enum
@@ -63,20 +99,6 @@ module Metronome
         FAILURE = :failure
         PENDING = :pending
       end
-
-      # @!parse
-      #   # Create a new instance of AuditLogListResponse from a Hash of raw data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id
-      #   #   @option data [String] :timestamp
-      #   #   @option data [String, nil] :action
-      #   #   @option data [Object, nil] :actor
-      #   #   @option data [String, nil] :description
-      #   #   @option data [String, nil] :resource_id
-      #   #   @option data [String, nil] :resource_type
-      #   #   @option data [String, nil] :status
-      #   def initialize(data = {}) = super
     end
   end
 end

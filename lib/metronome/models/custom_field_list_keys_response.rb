@@ -4,25 +4,47 @@ module Metronome
   module Models
     class CustomFieldListKeysResponse < Metronome::BaseModel
       # @!attribute data
+      #
       #   @return [Array<Metronome::Models::CustomFieldListKeysResponse::Data>]
       required :data, Metronome::ArrayOf.new(-> { Metronome::Models::CustomFieldListKeysResponse::Data })
 
       # @!attribute next_page
+      #
       #   @return [String]
       required :next_page, String
 
+      # @!parse
+      #   # @param data [Array<Object>]
+      #   # @param next_page [String]
+      #   #
+      #   def initialize(data:, next_page:) = super
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
+
       class Data < Metronome::BaseModel
         # @!attribute enforce_uniqueness
+        #
         #   @return [Boolean]
         required :enforce_uniqueness, Metronome::BooleanModel
 
         # @!attribute entity
+        #
         #   @return [Symbol, Metronome::Models::CustomFieldListKeysResponse::Data::Entity]
         required :entity, enum: -> { Metronome::Models::CustomFieldListKeysResponse::Data::Entity }
 
         # @!attribute key
+        #
         #   @return [String]
         required :key, String
+
+        # @!parse
+        #   # @param enforce_uniqueness [Boolean]
+        #   # @param entity [String]
+        #   # @param key [String]
+        #   #
+        #   def initialize(enforce_uniqueness:, entity:, key:) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
 
         class Entity < Metronome::Enum
           ALERT = :alert
@@ -42,24 +64,7 @@ module Metronome
           RATE_CARD = :rate_card
           SCHEDULED_CHARGE = :scheduled_charge
         end
-
-        # @!parse
-        #   # Create a new instance of Data from a Hash of raw data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [Hash] :enforce_uniqueness
-        #   #   @option data [String] :entity
-        #   #   @option data [String] :key
-        #   def initialize(data = {}) = super
       end
-
-      # @!parse
-      #   # Create a new instance of CustomFieldListKeysResponse from a Hash of raw data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [Array<Object>] :data
-      #   #   @option data [String] :next_page
-      #   def initialize(data = {}) = super
     end
   end
 end

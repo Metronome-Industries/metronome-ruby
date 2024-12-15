@@ -6,48 +6,94 @@ module Metronome
       class PlanListResponse < Metronome::BaseModel
         # @!attribute id
         #   the ID of the customer plan
+        #
         #   @return [String]
         required :id, String
 
         # @!attribute custom_fields
+        #
         #   @return [Hash]
         required :custom_fields, Hash
 
         # @!attribute plan_description
+        #
         #   @return [String]
         required :plan_description, String
 
         # @!attribute plan_id
         #   the ID of the plan
+        #
         #   @return [String]
         required :plan_id, String
 
         # @!attribute plan_name
+        #
         #   @return [String]
         required :plan_name, String
 
         # @!attribute starting_on
+        #
         #   @return [Time]
         required :starting_on, Time
 
         # @!attribute ending_before
+        #
         #   @return [Time]
         optional :ending_before, Time
 
         # @!attribute net_payment_terms_days
+        #
         #   @return [Float]
         optional :net_payment_terms_days, Float
 
         # @!attribute trial_info
+        #
         #   @return [Metronome::Models::Customers::PlanListResponse::TrialInfo]
         optional :trial_info, -> { Metronome::Models::Customers::PlanListResponse::TrialInfo }
 
+        # @!parse
+        #   # @param id [String] the ID of the customer plan
+        #   #
+        #   # @param custom_fields [Hash]
+        #   #
+        #   # @param plan_description [String]
+        #   #
+        #   # @param plan_id [String] the ID of the plan
+        #   #
+        #   # @param plan_name [String]
+        #   #
+        #   # @param starting_on [String]
+        #   #
+        #   # @param ending_before [String, nil]
+        #   #
+        #   # @param net_payment_terms_days [Float, nil]
+        #   #
+        #   # @param trial_info [Object, nil]
+        #   #
+        #   def initialize(
+        #     id:,
+        #     custom_fields:,
+        #     plan_description:,
+        #     plan_id:,
+        #     plan_name:,
+        #     starting_on:,
+        #     ending_before: nil,
+        #     net_payment_terms_days: nil,
+        #     trial_info: nil
+        #   )
+        #     super
+        #   end
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
         class TrialInfo < Metronome::BaseModel
           # @!attribute ending_before
+          #
           #   @return [Time]
           required :ending_before, Time
 
           # @!attribute spending_caps
+          #
           #   @return [Array<Metronome::Models::Customers::PlanListResponse::TrialInfo::SpendingCap>]
           required :spending_caps,
                    Metronome::ArrayOf.new(
@@ -56,52 +102,40 @@ module Metronome
                      }
                    )
 
+          # @!parse
+          #   # @param ending_before [String]
+          #   # @param spending_caps [Array<Object>]
+          #   #
+          #   def initialize(ending_before:, spending_caps:) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
           class SpendingCap < Metronome::BaseModel
             # @!attribute amount
+            #
             #   @return [Float]
             required :amount, Float
 
             # @!attribute amount_remaining
+            #
             #   @return [Float]
             required :amount_remaining, Float
 
             # @!attribute credit_type
+            #
             #   @return [Metronome::Models::CreditTypeData]
             required :credit_type, -> { Metronome::Models::CreditTypeData }
 
             # @!parse
-            #   # Create a new instance of SpendingCap from a Hash of raw data.
+            #   # @param amount [Float]
+            #   # @param amount_remaining [Float]
+            #   # @param credit_type [Object]
             #   #
-            #   # @param data [Hash{Symbol => Object}] .
-            #   #   @option data [Float] :amount
-            #   #   @option data [Float] :amount_remaining
-            #   #   @option data [Object] :credit_type
-            #   def initialize(data = {}) = super
+            #   def initialize(amount:, amount_remaining:, credit_type:) = super
+
+            # def initialize: (Hash | Metronome::BaseModel) -> void
           end
-
-          # @!parse
-          #   # Create a new instance of TrialInfo from a Hash of raw data.
-          #   #
-          #   # @param data [Hash{Symbol => Object}] .
-          #   #   @option data [String] :ending_before
-          #   #   @option data [Array<Object>] :spending_caps
-          #   def initialize(data = {}) = super
         end
-
-        # @!parse
-        #   # Create a new instance of PlanListResponse from a Hash of raw data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :id the ID of the customer plan
-        #   #   @option data [Hash] :custom_fields
-        #   #   @option data [String] :plan_description
-        #   #   @option data [String] :plan_id the ID of the plan
-        #   #   @option data [String] :plan_name
-        #   #   @option data [String] :starting_on
-        #   #   @option data [String, nil] :ending_before
-        #   #   @option data [Float, nil] :net_payment_terms_days
-        #   #   @option data [Object, nil] :trial_info
-        #   def initialize(data = {}) = super
       end
     end
   end

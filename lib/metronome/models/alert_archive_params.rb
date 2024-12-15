@@ -5,11 +5,13 @@ module Metronome
     class AlertArchiveParams < Metronome::BaseModel
       # @!attribute id
       #   The Metronome ID of the alert
+      #
       #   @return [String]
       required :id, String
 
       # @!attribute release_uniqueness_key
       #   If true, resets the uniqueness key on this alert so it can be re-used
+      #
       #   @return [Boolean]
       optional :release_uniqueness_key, Metronome::BooleanModel
     end

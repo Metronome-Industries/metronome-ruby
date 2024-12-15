@@ -12,12 +12,18 @@ module Metronome
         # Set the billing configuration for a given customer.
         #
         # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::BillingConfigCreateParams] Attributes to send in this request.
+        #
         #   @option params [String] :customer_id Path param:
+        #
         #   @option params [Symbol, Metronome::Models::Customers::BillingConfigCreateParams::BillingProviderType] :billing_provider_type Path param: The billing provider (e.g. stripe)
+        #
         #   @option params [String] :billing_provider_customer_id Body param: The customer ID in the billing provider's system. For Azure, this is
         #     the subscription ID.
+        #
         #   @option params [String, nil] :aws_product_code Body param:
+        #
         #   @option params [Symbol, Metronome::Models::Customers::BillingConfigCreateParams::AwsRegion, nil] :aws_region Body param:
+        #
         #   @option params [Symbol, Metronome::Models::Customers::BillingConfigCreateParams::StripeCollectionMethod, nil] :stripe_collection_method Body param:
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -43,7 +49,9 @@ module Metronome
         # Fetch the billing configuration for the given customer.
         #
         # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::BillingConfigRetrieveParams] Attributes to send in this request.
+        #
         #   @option params [String] :customer_id
+        #
         #   @option params [Symbol, Metronome::Models::Customers::BillingConfigRetrieveParams::BillingProviderType] :billing_provider_type The billing provider (e.g. stripe)
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -69,7 +77,9 @@ module Metronome
         #   for Azure and AWS Marketplace customers.
         #
         # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::BillingConfigDeleteParams] Attributes to send in this request.
+        #
         #   @option params [String] :customer_id
+        #
         #   @option params [Symbol, Metronome::Models::Customers::BillingConfigDeleteParams::BillingProviderType] :billing_provider_type The billing provider (e.g. stripe)
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.

@@ -4,28 +4,30 @@ module Metronome
   module Models
     class InvoiceVoidResponse < Metronome::BaseModel
       # @!attribute data
+      #
       #   @return [Metronome::Models::InvoiceVoidResponse::Data]
       optional :data, -> { Metronome::Models::InvoiceVoidResponse::Data }
 
+      # @!parse
+      #   # @param data [Object, nil]
+      #   #
+      #   def initialize(data: nil) = super
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
+
       class Data < Metronome::BaseModel
         # @!attribute id
+        #
         #   @return [String]
         required :id, String
 
         # @!parse
-        #   # Create a new instance of Data from a Hash of raw data.
+        #   # @param id [String]
         #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :id
-        #   def initialize(data = {}) = super
-      end
+        #   def initialize(id:) = super
 
-      # @!parse
-      #   # Create a new instance of InvoiceVoidResponse from a Hash of raw data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [Object, nil] :data
-      #   def initialize(data = {}) = super
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+      end
     end
   end
 end

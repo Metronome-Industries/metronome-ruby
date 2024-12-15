@@ -5,27 +5,40 @@ module Metronome
     module Contracts
       class RateCardRetrieveResponse < Metronome::BaseModel
         # @!attribute data
+        #
         #   @return [Metronome::Models::Contracts::RateCardRetrieveResponse::Data]
         required :data, -> { Metronome::Models::Contracts::RateCardRetrieveResponse::Data }
 
+        # @!parse
+        #   # @param data [Object]
+        #   #
+        #   def initialize(data:) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
         class Data < Metronome::BaseModel
           # @!attribute id
+          #
           #   @return [String]
           required :id, String
 
           # @!attribute created_at
+          #
           #   @return [Time]
           required :created_at, Time
 
           # @!attribute created_by
+          #
           #   @return [String]
           required :created_by, String
 
           # @!attribute name
+          #
           #   @return [String]
           required :name, String
 
           # @!attribute aliases
+          #
           #   @return [Array<Metronome::Models::Contracts::RateCardRetrieveResponse::Data::Alias>]
           optional :aliases,
                    Metronome::ArrayOf.new(
@@ -35,6 +48,7 @@ module Metronome
                    )
 
           # @!attribute credit_type_conversions
+          #
           #   @return [Array<Metronome::Models::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion>]
           optional :credit_type_conversions,
                    Metronome::ArrayOf.new(
@@ -44,80 +58,93 @@ module Metronome
                    )
 
           # @!attribute custom_fields
+          #
           #   @return [Hash]
           optional :custom_fields, Hash
 
           # @!attribute description
+          #
           #   @return [String]
           optional :description, String
 
           # @!attribute fiat_credit_type
+          #
           #   @return [Metronome::Models::CreditTypeData]
           optional :fiat_credit_type, -> { Metronome::Models::CreditTypeData }
 
+          # @!parse
+          #   # @param id [String]
+          #   # @param created_at [String]
+          #   # @param created_by [String]
+          #   # @param name [String]
+          #   # @param aliases [Array<Object>, nil]
+          #   # @param credit_type_conversions [Array<Object>, nil]
+          #   # @param custom_fields [Hash, nil]
+          #   # @param description [String, nil]
+          #   # @param fiat_credit_type [Object, nil]
+          #   #
+          #   def initialize(
+          #     id:,
+          #     created_at:,
+          #     created_by:,
+          #     name:,
+          #     aliases: nil,
+          #     credit_type_conversions: nil,
+          #     custom_fields: nil,
+          #     description: nil,
+          #     fiat_credit_type: nil
+          #   )
+          #     super
+          #   end
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
           class Alias < Metronome::BaseModel
             # @!attribute name
+            #
             #   @return [String]
             required :name, String
 
             # @!attribute ending_before
+            #
             #   @return [Time]
             optional :ending_before, Time
 
             # @!attribute starting_at
+            #
             #   @return [Time]
             optional :starting_at, Time
 
             # @!parse
-            #   # Create a new instance of Alias from a Hash of raw data.
+            #   # @param name [String]
+            #   # @param ending_before [String, nil]
+            #   # @param starting_at [String, nil]
             #   #
-            #   # @param data [Hash{Symbol => Object}] .
-            #   #   @option data [String] :name
-            #   #   @option data [String, nil] :ending_before
-            #   #   @option data [String, nil] :starting_at
-            #   def initialize(data = {}) = super
+            #   def initialize(name:, ending_before: nil, starting_at: nil) = super
+
+            # def initialize: (Hash | Metronome::BaseModel) -> void
           end
 
           class CreditTypeConversion < Metronome::BaseModel
             # @!attribute custom_credit_type
+            #
             #   @return [Metronome::Models::CreditTypeData]
             required :custom_credit_type, -> { Metronome::Models::CreditTypeData }
 
             # @!attribute fiat_per_custom_credit
+            #
             #   @return [String]
             required :fiat_per_custom_credit, String
 
             # @!parse
-            #   # Create a new instance of CreditTypeConversion from a Hash of raw data.
+            #   # @param custom_credit_type [Object]
+            #   # @param fiat_per_custom_credit [String]
             #   #
-            #   # @param data [Hash{Symbol => Object}] .
-            #   #   @option data [Object] :custom_credit_type
-            #   #   @option data [String] :fiat_per_custom_credit
-            #   def initialize(data = {}) = super
+            #   def initialize(custom_credit_type:, fiat_per_custom_credit:) = super
+
+            # def initialize: (Hash | Metronome::BaseModel) -> void
           end
-
-          # @!parse
-          #   # Create a new instance of Data from a Hash of raw data.
-          #   #
-          #   # @param data [Hash{Symbol => Object}] .
-          #   #   @option data [String] :id
-          #   #   @option data [String] :created_at
-          #   #   @option data [String] :created_by
-          #   #   @option data [String] :name
-          #   #   @option data [Array<Object>, nil] :aliases
-          #   #   @option data [Array<Object>, nil] :credit_type_conversions
-          #   #   @option data [Hash, nil] :custom_fields
-          #   #   @option data [String, nil] :description
-          #   #   @option data [Object, nil] :fiat_credit_type
-          #   def initialize(data = {}) = super
         end
-
-        # @!parse
-        #   # Create a new instance of RateCardRetrieveResponse from a Hash of raw data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [Object] :data
-        #   def initialize(data = {}) = super
       end
     end
   end

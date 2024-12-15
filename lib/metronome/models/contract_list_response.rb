@@ -4,101 +4,168 @@ module Metronome
   module Models
     class ContractListResponse < Metronome::BaseModel
       # @!attribute data
+      #
       #   @return [Array<Metronome::Models::ContractListResponse::Data>]
       required :data, Metronome::ArrayOf.new(-> { Metronome::Models::ContractListResponse::Data })
 
+      # @!parse
+      #   # @param data [Array<Object>]
+      #   #
+      #   def initialize(data:) = super
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
+
       class Data < Metronome::BaseModel
         # @!attribute id
+        #
         #   @return [String]
         required :id, String
 
         # @!attribute amendments
+        #
         #   @return [Array<Metronome::Models::ContractListResponse::Data::Amendment>]
         required :amendments,
                  Metronome::ArrayOf.new(-> { Metronome::Models::ContractListResponse::Data::Amendment })
 
         # @!attribute current
+        #
         #   @return [Metronome::Models::ContractWithoutAmendments]
         required :current, -> { Metronome::Models::ContractWithoutAmendments }
 
         # @!attribute customer_id
+        #
         #   @return [String]
         required :customer_id, String
 
         # @!attribute initial
+        #
         #   @return [Metronome::Models::ContractWithoutAmendments]
         required :initial, -> { Metronome::Models::ContractWithoutAmendments }
 
         # @!attribute archived_at
         #   RFC 3339 timestamp indicating when the contract was archived. If not returned, the contract is not archived.
+        #
         #   @return [Time]
         optional :archived_at, Time
 
         # @!attribute custom_fields
+        #
         #   @return [Hash]
         optional :custom_fields, Hash
 
         # @!attribute customer_billing_provider_configuration
         #   The billing provider configuration associated with a contract.
+        #
         #   @return [Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration]
         optional :customer_billing_provider_configuration,
                  -> { Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration }
 
         # @!attribute uniqueness_key
         #   Prevents the creation of duplicates. If a request to create a record is made with a previously used uniqueness key, a new record will not be created and the request will fail with a 409 error.
+        #
         #   @return [String]
         optional :uniqueness_key, String
 
+        # @!parse
+        #   # @param id [String]
+        #   #
+        #   # @param amendments [Array<Object>]
+        #   #
+        #   # @param current [Object]
+        #   #
+        #   # @param customer_id [String]
+        #   #
+        #   # @param initial [Object]
+        #   #
+        #   # @param archived_at [String, nil] RFC 3339 timestamp indicating when the contract was archived. If not returned,
+        #   #   the contract is not archived.
+        #   #
+        #   # @param custom_fields [Hash, nil]
+        #   #
+        #   # @param customer_billing_provider_configuration [Object, nil] The billing provider configuration associated with a contract.
+        #   #
+        #   # @param uniqueness_key [String, nil] Prevents the creation of duplicates. If a request to create a record is made
+        #   #   with a previously used uniqueness key, a new record will not be created and the
+        #   #   request will fail with a 409 error.
+        #   #
+        #   def initialize(
+        #     id:,
+        #     amendments:,
+        #     current:,
+        #     customer_id:,
+        #     initial:,
+        #     archived_at: nil,
+        #     custom_fields: nil,
+        #     customer_billing_provider_configuration: nil,
+        #     uniqueness_key: nil
+        #   )
+        #     super
+        #   end
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
         class Amendment < Metronome::BaseModel
           # @!attribute id
+          #
           #   @return [String]
           required :id, String
 
           # @!attribute commits
+          #
           #   @return [Array<Metronome::Models::Commit>]
           required :commits, Metronome::ArrayOf.new(-> { Metronome::Models::Commit })
 
           # @!attribute created_at
+          #
           #   @return [Time]
           required :created_at, Time
 
           # @!attribute created_by
+          #
           #   @return [String]
           required :created_by, String
 
           # @!attribute overrides
+          #
           #   @return [Array<Metronome::Models::Override>]
           required :overrides, Metronome::ArrayOf.new(-> { Metronome::Models::Override })
 
           # @!attribute scheduled_charges
+          #
           #   @return [Array<Metronome::Models::ScheduledCharge>]
           required :scheduled_charges, Metronome::ArrayOf.new(-> { Metronome::Models::ScheduledCharge })
 
           # @!attribute starting_at
+          #
           #   @return [Time]
           required :starting_at, Time
 
           # @!attribute credits
+          #
           #   @return [Array<Metronome::Models::Credit>]
           optional :credits, Metronome::ArrayOf.new(-> { Metronome::Models::Credit })
 
           # @!attribute discounts
           #   This field's availability is dependent on your client's configuration.
+          #
           #   @return [Array<Metronome::Models::Discount>]
           optional :discounts, Metronome::ArrayOf.new(-> { Metronome::Models::Discount })
 
           # @!attribute netsuite_sales_order_id
           #   This field's availability is dependent on your client's configuration.
+          #
           #   @return [String]
           optional :netsuite_sales_order_id, String
 
           # @!attribute professional_services
           #   This field's availability is dependent on your client's configuration.
+          #
           #   @return [Array<Metronome::Models::ProService>]
           optional :professional_services, Metronome::ArrayOf.new(-> { Metronome::Models::ProService })
 
           # @!attribute reseller_royalties
           #   This field's availability is dependent on your client's configuration.
+          #
           #   @return [Array<Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty>]
           optional :reseller_royalties,
                    Metronome::ArrayOf.new(
@@ -109,11 +176,60 @@ module Metronome
 
           # @!attribute salesforce_opportunity_id
           #   This field's availability is dependent on your client's configuration.
+          #
           #   @return [String]
           optional :salesforce_opportunity_id, String
 
+          # @!parse
+          #   # @param id [String]
+          #   #
+          #   # @param commits [Array<Object>]
+          #   #
+          #   # @param created_at [String]
+          #   #
+          #   # @param created_by [String]
+          #   #
+          #   # @param overrides [Array<Object>]
+          #   #
+          #   # @param scheduled_charges [Array<Object>]
+          #   #
+          #   # @param starting_at [String]
+          #   #
+          #   # @param credits [Array<Object>, nil]
+          #   #
+          #   # @param discounts [Array<Object>, nil] This field's availability is dependent on your client's configuration.
+          #   #
+          #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
+          #   #
+          #   # @param professional_services [Array<Object>, nil] This field's availability is dependent on your client's configuration.
+          #   #
+          #   # @param reseller_royalties [Array<Object>, nil] This field's availability is dependent on your client's configuration.
+          #   #
+          #   # @param salesforce_opportunity_id [String, nil] This field's availability is dependent on your client's configuration.
+          #   #
+          #   def initialize(
+          #     id:,
+          #     commits:,
+          #     created_at:,
+          #     created_by:,
+          #     overrides:,
+          #     scheduled_charges:,
+          #     starting_at:,
+          #     credits: nil,
+          #     discounts: nil,
+          #     netsuite_sales_order_id: nil,
+          #     professional_services: nil,
+          #     reseller_royalties: nil,
+          #     salesforce_opportunity_id: nil
+          #   )
+          #     super
+          #   end
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
           class ResellerRoyalty < Metronome::BaseModel
             # @!attribute reseller_type
+            #
             #   @return [Symbol, Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty::ResellerType]
             required :reseller_type,
                      enum: -> {
@@ -121,44 +237,85 @@ module Metronome
                      }
 
             # @!attribute aws_account_number
+            #
             #   @return [String]
             optional :aws_account_number, String
 
             # @!attribute aws_offer_id
+            #
             #   @return [String]
             optional :aws_offer_id, String
 
             # @!attribute aws_payer_reference_id
+            #
             #   @return [String]
             optional :aws_payer_reference_id, String
 
             # @!attribute ending_before
+            #
             #   @return [Time]
             optional :ending_before, Time
 
             # @!attribute fraction
+            #
             #   @return [Float]
             optional :fraction, Float
 
             # @!attribute gcp_account_id
+            #
             #   @return [String]
             optional :gcp_account_id, String
 
             # @!attribute gcp_offer_id
+            #
             #   @return [String]
             optional :gcp_offer_id, String
 
             # @!attribute netsuite_reseller_id
+            #
             #   @return [String]
             optional :netsuite_reseller_id, String
 
             # @!attribute reseller_contract_value
+            #
             #   @return [Float]
             optional :reseller_contract_value, Float
 
             # @!attribute starting_at
+            #
             #   @return [Time]
             optional :starting_at, Time
+
+            # @!parse
+            #   # @param reseller_type [String]
+            #   # @param aws_account_number [String, nil]
+            #   # @param aws_offer_id [String, nil]
+            #   # @param aws_payer_reference_id [String, nil]
+            #   # @param ending_before [String, nil]
+            #   # @param fraction [Float, nil]
+            #   # @param gcp_account_id [String, nil]
+            #   # @param gcp_offer_id [String, nil]
+            #   # @param netsuite_reseller_id [String, nil]
+            #   # @param reseller_contract_value [Float, nil]
+            #   # @param starting_at [String, nil]
+            #   #
+            #   def initialize(
+            #     reseller_type:,
+            #     aws_account_number: nil,
+            #     aws_offer_id: nil,
+            #     aws_payer_reference_id: nil,
+            #     ending_before: nil,
+            #     fraction: nil,
+            #     gcp_account_id: nil,
+            #     gcp_offer_id: nil,
+            #     netsuite_reseller_id: nil,
+            #     reseller_contract_value: nil,
+            #     starting_at: nil
+            #   )
+            #     super
+            #   end
+
+            # def initialize: (Hash | Metronome::BaseModel) -> void
 
             class ResellerType < Metronome::Enum
               AWS = :AWS
@@ -166,47 +323,12 @@ module Metronome
               GCP = :GCP
               GCP_PRO_SERVICE = :GCP_PRO_SERVICE
             end
-
-            # @!parse
-            #   # Create a new instance of ResellerRoyalty from a Hash of raw data.
-            #   #
-            #   # @param data [Hash{Symbol => Object}] .
-            #   #   @option data [String] :reseller_type
-            #   #   @option data [String, nil] :aws_account_number
-            #   #   @option data [String, nil] :aws_offer_id
-            #   #   @option data [String, nil] :aws_payer_reference_id
-            #   #   @option data [String, nil] :ending_before
-            #   #   @option data [Float, nil] :fraction
-            #   #   @option data [String, nil] :gcp_account_id
-            #   #   @option data [String, nil] :gcp_offer_id
-            #   #   @option data [String, nil] :netsuite_reseller_id
-            #   #   @option data [Float, nil] :reseller_contract_value
-            #   #   @option data [String, nil] :starting_at
-            #   def initialize(data = {}) = super
           end
-
-          # @!parse
-          #   # Create a new instance of Amendment from a Hash of raw data.
-          #   #
-          #   # @param data [Hash{Symbol => Object}] .
-          #   #   @option data [String] :id
-          #   #   @option data [Array<Object>] :commits
-          #   #   @option data [String] :created_at
-          #   #   @option data [String] :created_by
-          #   #   @option data [Array<Object>] :overrides
-          #   #   @option data [Array<Object>] :scheduled_charges
-          #   #   @option data [String] :starting_at
-          #   #   @option data [Array<Object>, nil] :credits
-          #   #   @option data [Array<Object>, nil] :discounts This field's availability is dependent on your client's configuration.
-          #   #   @option data [String, nil] :netsuite_sales_order_id This field's availability is dependent on your client's configuration.
-          #   #   @option data [Array<Object>, nil] :professional_services This field's availability is dependent on your client's configuration.
-          #   #   @option data [Array<Object>, nil] :reseller_royalties This field's availability is dependent on your client's configuration.
-          #   #   @option data [String, nil] :salesforce_opportunity_id This field's availability is dependent on your client's configuration.
-          #   def initialize(data = {}) = super
         end
 
         class CustomerBillingProviderConfiguration < Metronome::BaseModel
           # @!attribute billing_provider
+          #
           #   @return [Symbol, Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration::BillingProvider]
           required :billing_provider,
                    enum: -> {
@@ -214,11 +336,22 @@ module Metronome
                    }
 
           # @!attribute delivery_method
+          #
           #   @return [Symbol, Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod]
           required :delivery_method,
                    enum: -> {
                      Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod
                    }
+
+          # @!parse
+          #   # The billing provider configuration associated with a contract.
+          #   #
+          #   # @param billing_provider [String]
+          #   # @param delivery_method [String]
+          #   #
+          #   def initialize(billing_provider:, delivery_method:) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
 
           class BillingProvider < Metronome::Enum
             AWS_MARKETPLACE = :aws_marketplace
@@ -237,42 +370,8 @@ module Metronome
             TACKLE = :tackle
             AWS_SNS = :aws_sns
           end
-
-          # @!parse
-          #   # Create a new instance of CustomerBillingProviderConfiguration from a Hash of raw
-          #   #   data.
-          #   #
-          #   # @param data [Hash{Symbol => Object}] .
-          #   #   @option data [String] :billing_provider
-          #   #   @option data [String] :delivery_method
-          #   def initialize(data = {}) = super
         end
-
-        # @!parse
-        #   # Create a new instance of Data from a Hash of raw data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :id
-        #   #   @option data [Array<Object>] :amendments
-        #   #   @option data [Object] :current
-        #   #   @option data [String] :customer_id
-        #   #   @option data [Object] :initial
-        #   #   @option data [String, nil] :archived_at RFC 3339 timestamp indicating when the contract was archived. If not returned,
-        #   #     the contract is not archived.
-        #   #   @option data [Hash, nil] :custom_fields
-        #   #   @option data [Object, nil] :customer_billing_provider_configuration The billing provider configuration associated with a contract.
-        #   #   @option data [String, nil] :uniqueness_key Prevents the creation of duplicates. If a request to create a record is made
-        #   #     with a previously used uniqueness key, a new record will not be created and the
-        #   #     request will fail with a 409 error.
-        #   def initialize(data = {}) = super
       end
-
-      # @!parse
-      #   # Create a new instance of ContractListResponse from a Hash of raw data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [Array<Object>] :data
-      #   def initialize(data = {}) = super
     end
   end
 end

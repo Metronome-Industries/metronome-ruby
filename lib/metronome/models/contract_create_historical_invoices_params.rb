@@ -4,6 +4,7 @@ module Metronome
   module Models
     class ContractCreateHistoricalInvoicesParams < Metronome::BaseModel
       # @!attribute invoices
+      #
       #   @return [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice>]
       required :invoices,
                Metronome::ArrayOf.new(
@@ -13,35 +14,43 @@ module Metronome
                )
 
       # @!attribute preview
+      #
       #   @return [Boolean]
       required :preview, Metronome::BooleanModel
 
       class Invoice < Metronome::BaseModel
         # @!attribute contract_id
+        #
         #   @return [String]
         required :contract_id, String
 
         # @!attribute credit_type_id
+        #
         #   @return [String]
         required :credit_type_id, String
 
         # @!attribute customer_id
+        #
         #   @return [String]
         required :customer_id, String
 
         # @!attribute exclusive_end_date
+        #
         #   @return [Time]
         required :exclusive_end_date, Time
 
         # @!attribute inclusive_start_date
+        #
         #   @return [Time]
         required :inclusive_start_date, Time
 
         # @!attribute issue_date
+        #
         #   @return [Time]
         required :issue_date, Time
 
         # @!attribute usage_line_items
+        #
         #   @return [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem>]
         required :usage_line_items,
                  Metronome::ArrayOf.new(
@@ -52,6 +61,7 @@ module Metronome
 
         # @!attribute billable_status
         #   This field's availability is dependent on your client's configuration.
+        #
         #   @return [Symbol, Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus]
         optional :billable_status,
                  enum: -> {
@@ -59,6 +69,7 @@ module Metronome
                  }
 
         # @!attribute breakdown_granularity
+        #
         #   @return [Symbol, Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity]
         optional :breakdown_granularity,
                  enum: -> {
@@ -66,35 +77,81 @@ module Metronome
                  }
 
         # @!attribute custom_fields
+        #
         #   @return [Hash]
         optional :custom_fields, Hash
 
+        # @!parse
+        #   # @param contract_id [String]
+        #   #
+        #   # @param credit_type_id [String]
+        #   #
+        #   # @param customer_id [String]
+        #   #
+        #   # @param exclusive_end_date [String]
+        #   #
+        #   # @param inclusive_start_date [String]
+        #   #
+        #   # @param issue_date [String]
+        #   #
+        #   # @param usage_line_items [Array<Object>]
+        #   #
+        #   # @param billable_status [String, nil] This field's availability is dependent on your client's configuration.
+        #   #
+        #   # @param breakdown_granularity [String, nil]
+        #   #
+        #   # @param custom_fields [Hash, nil]
+        #   #
+        #   def initialize(
+        #     contract_id:,
+        #     credit_type_id:,
+        #     customer_id:,
+        #     exclusive_end_date:,
+        #     inclusive_start_date:,
+        #     issue_date:,
+        #     usage_line_items:,
+        #     billable_status: nil,
+        #     breakdown_granularity: nil,
+        #     custom_fields: nil
+        #   )
+        #     super
+        #   end
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
         class UsageLineItem < Metronome::BaseModel
           # @!attribute exclusive_end_date
+          #
           #   @return [Time]
           required :exclusive_end_date, Time
 
           # @!attribute inclusive_start_date
+          #
           #   @return [Time]
           required :inclusive_start_date, Time
 
           # @!attribute product_id
+          #
           #   @return [String]
           required :product_id, String
 
           # @!attribute presentation_group_values
+          #
           #   @return [Hash]
           optional :presentation_group_values, Hash
 
           # @!attribute pricing_group_values
+          #
           #   @return [Hash]
           optional :pricing_group_values, Hash
 
           # @!attribute quantity
+          #
           #   @return [Float]
           optional :quantity, Float
 
           # @!attribute subtotals_with_quantity
+          #
           #   @return [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity>]
           optional :subtotals_with_quantity,
                    Metronome::ArrayOf.new(
@@ -103,41 +160,54 @@ module Metronome
                      }
                    )
 
+          # @!parse
+          #   # @param exclusive_end_date [String]
+          #   # @param inclusive_start_date [String]
+          #   # @param product_id [String]
+          #   # @param presentation_group_values [Hash, nil]
+          #   # @param pricing_group_values [Hash, nil]
+          #   # @param quantity [Float, nil]
+          #   # @param subtotals_with_quantity [Array<Object>, nil]
+          #   #
+          #   def initialize(
+          #     exclusive_end_date:,
+          #     inclusive_start_date:,
+          #     product_id:,
+          #     presentation_group_values: nil,
+          #     pricing_group_values: nil,
+          #     quantity: nil,
+          #     subtotals_with_quantity: nil
+          #   )
+          #     super
+          #   end
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
           class SubtotalsWithQuantity < Metronome::BaseModel
             # @!attribute exclusive_end_date
+            #
             #   @return [Time]
             required :exclusive_end_date, Time
 
             # @!attribute inclusive_start_date
+            #
             #   @return [Time]
             required :inclusive_start_date, Time
 
             # @!attribute quantity
+            #
             #   @return [Float]
             required :quantity, Float
 
             # @!parse
-            #   # Create a new instance of SubtotalsWithQuantity from a Hash of raw data.
+            #   # @param exclusive_end_date [String]
+            #   # @param inclusive_start_date [String]
+            #   # @param quantity [Float]
             #   #
-            #   # @param data [Hash{Symbol => Object}] .
-            #   #   @option data [String] :exclusive_end_date
-            #   #   @option data [String] :inclusive_start_date
-            #   #   @option data [Float] :quantity
-            #   def initialize(data = {}) = super
-          end
+            #   def initialize(exclusive_end_date:, inclusive_start_date:, quantity:) = super
 
-          # @!parse
-          #   # Create a new instance of UsageLineItem from a Hash of raw data.
-          #   #
-          #   # @param data [Hash{Symbol => Object}] .
-          #   #   @option data [String] :exclusive_end_date
-          #   #   @option data [String] :inclusive_start_date
-          #   #   @option data [String] :product_id
-          #   #   @option data [Hash, nil] :presentation_group_values
-          #   #   @option data [Hash, nil] :pricing_group_values
-          #   #   @option data [Float, nil] :quantity
-          #   #   @option data [Array<Object>, nil] :subtotals_with_quantity
-          #   def initialize(data = {}) = super
+            # def initialize: (Hash | Metronome::BaseModel) -> void
+          end
         end
 
         # This field's availability is dependent on your client's configuration.
@@ -150,22 +220,6 @@ module Metronome
           HOUR = :HOUR
           DAY = :DAY
         end
-
-        # @!parse
-        #   # Create a new instance of Invoice from a Hash of raw data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :contract_id
-        #   #   @option data [String] :credit_type_id
-        #   #   @option data [String] :customer_id
-        #   #   @option data [String] :exclusive_end_date
-        #   #   @option data [String] :inclusive_start_date
-        #   #   @option data [String] :issue_date
-        #   #   @option data [Array<Object>] :usage_line_items
-        #   #   @option data [String, nil] :billable_status This field's availability is dependent on your client's configuration.
-        #   #   @option data [String, nil] :breakdown_granularity
-        #   #   @option data [Hash, nil] :custom_fields
-        #   def initialize(data = {}) = super
       end
     end
   end

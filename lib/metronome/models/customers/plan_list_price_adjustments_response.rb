@@ -5,15 +5,18 @@ module Metronome
     module Customers
       class PlanListPriceAdjustmentsResponse < Metronome::BaseModel
         # @!attribute charge_id
+        #
         #   @return [String]
         required :charge_id, String
 
         # @!attribute charge_type
+        #
         #   @return [Symbol, Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::ChargeType]
         required :charge_type,
                  enum: -> { Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::ChargeType }
 
         # @!attribute prices
+        #
         #   @return [Array<Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price>]
         required :prices,
                  Metronome::ArrayOf.new(
@@ -23,12 +26,25 @@ module Metronome
                  )
 
         # @!attribute start_period
+        #
         #   @return [Float]
         required :start_period, Float
 
         # @!attribute quantity
+        #
         #   @return [Float]
         optional :quantity, Float
+
+        # @!parse
+        #   # @param charge_id [String]
+        #   # @param charge_type [String]
+        #   # @param prices [Array<Object>]
+        #   # @param start_period [Float]
+        #   # @param quantity [Float, nil]
+        #   #
+        #   def initialize(charge_id:, charge_type:, prices:, start_period:, quantity: nil) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
 
         class ChargeType < Metronome::Enum
           USAGE = :usage
@@ -41,6 +57,7 @@ module Metronome
         class Price < Metronome::BaseModel
           # @!attribute adjustment_type
           #   Determines how the value will be applied.
+          #
           #   @return [Symbol, Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType]
           required :adjustment_type,
                    enum: -> {
@@ -49,12 +66,25 @@ module Metronome
 
           # @!attribute tier
           #   Used in pricing tiers.  Indicates at what metric value the price applies.
+          #
           #   @return [Float]
           optional :tier, Float
 
           # @!attribute value
+          #
           #   @return [Float]
           optional :value, Float
+
+          # @!parse
+          #   # @param adjustment_type [String] Determines how the value will be applied.
+          #   #
+          #   # @param tier [Float, nil] Used in pricing tiers. Indicates at what metric value the price applies.
+          #   #
+          #   # @param value [Float, nil]
+          #   #
+          #   def initialize(adjustment_type:, tier: nil, value: nil) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # Determines how the value will be applied.
           class AdjustmentType < Metronome::Enum
@@ -63,28 +93,7 @@ module Metronome
             PERCENTAGE = :percentage
             OVERRIDE = :override
           end
-
-          # @!parse
-          #   # Create a new instance of Price from a Hash of raw data.
-          #   #
-          #   # @param data [Hash{Symbol => Object}] .
-          #   #   @option data [String] :adjustment_type Determines how the value will be applied.
-          #   #   @option data [Float, nil] :tier Used in pricing tiers. Indicates at what metric value the price applies.
-          #   #   @option data [Float, nil] :value
-          #   def initialize(data = {}) = super
         end
-
-        # @!parse
-        #   # Create a new instance of PlanListPriceAdjustmentsResponse from a Hash of raw
-        #   #   data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :charge_id
-        #   #   @option data [String] :charge_type
-        #   #   @option data [Array<Object>] :prices
-        #   #   @option data [Float] :start_period
-        #   #   @option data [Float, nil] :quantity
-        #   def initialize(data = {}) = super
       end
     end
   end

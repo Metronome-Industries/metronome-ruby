@@ -5,6 +5,7 @@ module Metronome
     class InvoiceVoidParams < Metronome::BaseModel
       # @!attribute id
       #   The invoice id to void
+      #
       #   @return [String]
       required :id, String
     end

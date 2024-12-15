@@ -4,6 +4,7 @@ module Metronome
   module Models
     class ScheduleDuration < Metronome::BaseModel
       # @!attribute schedule_items
+      #
       #   @return [Array<Metronome::Models::ScheduleDuration::ScheduleItem>]
       required :schedule_items,
                Metronome::ArrayOf.new(
@@ -13,44 +14,49 @@ module Metronome
                )
 
       # @!attribute credit_type
+      #
       #   @return [Metronome::Models::CreditTypeData]
       optional :credit_type, -> { Metronome::Models::CreditTypeData }
 
+      # @!parse
+      #   # @param schedule_items [Array<Object>]
+      #   # @param credit_type [Object, nil]
+      #   #
+      #   def initialize(schedule_items:, credit_type: nil) = super
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
+
       class ScheduleItem < Metronome::BaseModel
         # @!attribute id
+        #
         #   @return [String]
         required :id, String
 
         # @!attribute amount
+        #
         #   @return [Float]
         required :amount, Float
 
         # @!attribute ending_before
+        #
         #   @return [Time]
         required :ending_before, Time
 
         # @!attribute starting_at
+        #
         #   @return [Time]
         required :starting_at, Time
 
         # @!parse
-        #   # Create a new instance of ScheduleItem from a Hash of raw data.
+        #   # @param id [String]
+        #   # @param amount [Float]
+        #   # @param ending_before [String]
+        #   # @param starting_at [String]
         #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :id
-        #   #   @option data [Float] :amount
-        #   #   @option data [String] :ending_before
-        #   #   @option data [String] :starting_at
-        #   def initialize(data = {}) = super
-      end
+        #   def initialize(id:, amount:, ending_before:, starting_at:) = super
 
-      # @!parse
-      #   # Create a new instance of ScheduleDuration from a Hash of raw data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [Array<Object>] :schedule_items
-      #   #   @option data [Object, nil] :credit_type
-      #   def initialize(data = {}) = super
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+      end
     end
   end
 end

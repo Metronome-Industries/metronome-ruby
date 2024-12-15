@@ -5,10 +5,11 @@ module Metronome
     module Customers
       class InvoiceAddChargeResponse < Metronome::BaseModel
         # @!parse
-        #   # Create a new instance of InvoiceAddChargeResponse from a Hash of raw data.
         #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   def initialize(data = {}) = super
+        #   #
+        #   def initialize = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
       end
     end
   end

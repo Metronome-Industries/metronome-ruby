@@ -5,10 +5,12 @@ module Metronome
     module Customers
       class BillingConfigRetrieveParams < Metronome::BaseModel
         # @!attribute customer_id
+        #
         #   @return [String]
         required :customer_id, String
 
         # @!attribute billing_provider_type
+        #
         #   @return [Symbol, Metronome::Models::Customers::BillingConfigRetrieveParams::BillingProviderType]
         required :billing_provider_type,
                  enum: -> { Metronome::Models::Customers::BillingConfigRetrieveParams::BillingProviderType }

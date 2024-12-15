@@ -4,35 +4,40 @@ module Metronome
   module Models
     class UsageListWithGroupsResponse < Metronome::BaseModel
       # @!attribute ending_before
+      #
       #   @return [Time]
       required :ending_before, Time
 
       # @!attribute group_key
+      #
       #   @return [String]
       required :group_key, String
 
       # @!attribute group_value
+      #
       #   @return [String]
       required :group_value, String
 
       # @!attribute starting_on
+      #
       #   @return [Time]
       required :starting_on, Time
 
       # @!attribute value
+      #
       #   @return [Float]
       required :value, Float
 
       # @!parse
-      #   # Create a new instance of UsageListWithGroupsResponse from a Hash of raw data.
+      #   # @param ending_before [String]
+      #   # @param group_key [String]
+      #   # @param group_value [String]
+      #   # @param starting_on [String]
+      #   # @param value [Float]
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :ending_before
-      #   #   @option data [String] :group_key
-      #   #   @option data [String] :group_value
-      #   #   @option data [String] :starting_on
-      #   #   @option data [Float] :value
-      #   def initialize(data = {}) = super
+      #   def initialize(ending_before:, group_key:, group_value:, starting_on:, value:) = super
+
+      # def initialize: (Hash | Metronome::BaseModel) -> void
     end
   end
 end

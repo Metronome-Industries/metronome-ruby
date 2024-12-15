@@ -5,11 +5,13 @@ module Metronome
     class CustomFieldListKeysParams < Metronome::BaseModel
       # @!attribute next_page
       #   Cursor that indicates where the next page of results should start.
+      #
       #   @return [String]
       optional :next_page, String
 
       # @!attribute entities
       #   Optional list of entity types to return keys for
+      #
       #   @return [Array<Symbol, Metronome::Models::CustomFieldListKeysParams::Entity>]
       optional :entities,
                Metronome::ArrayOf.new(enum: -> { Metronome::Models::CustomFieldListKeysParams::Entity })
