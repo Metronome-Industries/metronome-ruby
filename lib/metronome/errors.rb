@@ -65,7 +65,7 @@ module Metronome
   end
 
   class APIStatusError < Metronome::APIError
-    # @!visibility private
+    # @private
     #
     # @param status [Integer]
     # @param body [Object, nil]
