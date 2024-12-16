@@ -12,21 +12,33 @@ class Metronome::Test::Resources::PlansTest < Minitest::Test
 
   def test_list
     response = @metronome.plans.list
-    assert_kind_of(Metronome::CursorPage, response)
+
+    assert_pattern do
+      response => Metronome::CursorPage
+    end
   end
 
   def test_get_details_required_params
     response = @metronome.plans.get_details(plan_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc")
-    assert_kind_of(Metronome::Models::PlanGetDetailsResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::PlanGetDetailsResponse
+    end
   end
 
   def test_list_charges_required_params
     response = @metronome.plans.list_charges(plan_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc")
-    assert_kind_of(Metronome::CursorPage, response)
+
+    assert_pattern do
+      response => Metronome::CursorPage
+    end
   end
 
   def test_list_customers_required_params
     response = @metronome.plans.list_customers(plan_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc")
-    assert_kind_of(Metronome::CursorPage, response)
+
+    assert_pattern do
+      response => Metronome::CursorPage
+    end
   end
 end

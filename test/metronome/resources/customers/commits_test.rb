@@ -26,12 +26,18 @@ class Metronome::Test::Resources::Customers::CommitsTest < Minitest::Test
       product_id: "f14d6729-6a44-4b13-9908-9387f1918790",
       type: "PREPAID"
     )
-    assert_kind_of(Metronome::Models::Customers::CommitCreateResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::Customers::CommitCreateResponse
+    end
   end
 
   def test_list_required_params
     response = @metronome.customers.commits.list(customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d")
-    assert_kind_of(Metronome::Models::Customers::CommitListResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::Customers::CommitListResponse
+    end
   end
 
   def test_update_end_date_required_params
@@ -39,6 +45,9 @@ class Metronome::Test::Resources::Customers::CommitsTest < Minitest::Test
       commit_id: "6162d87b-e5db-4a33-b7f2-76ce6ead4e85",
       customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d"
     )
-    assert_kind_of(Metronome::Models::Customers::CommitUpdateEndDateResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::Customers::CommitUpdateEndDateResponse
+    end
   end
 end

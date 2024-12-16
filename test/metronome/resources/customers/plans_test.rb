@@ -12,7 +12,10 @@ class Metronome::Test::Resources::Customers::PlansTest < Minitest::Test
 
   def test_list_required_params
     response = @metronome.customers.plans.list(customer_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc")
-    assert_kind_of(Metronome::CursorPage, response)
+
+    assert_pattern do
+      response => Metronome::CursorPage
+    end
   end
 
   def test_add_required_params
@@ -21,7 +24,10 @@ class Metronome::Test::Resources::Customers::PlansTest < Minitest::Test
       plan_id: "d2c06dae-9549-4d7d-bc04-b78dd3d241b8",
       starting_on: "2021-02-01T00:00:00Z"
     )
-    assert_kind_of(Metronome::Models::Customers::PlanAddResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::Customers::PlanAddResponse
+    end
   end
 
   def test_end__required_params
@@ -29,7 +35,10 @@ class Metronome::Test::Resources::Customers::PlansTest < Minitest::Test
       customer_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
       customer_plan_id: "7aa11640-0703-4600-8eb9-293f535a6b74"
     )
-    assert_kind_of(Metronome::Models::Customers::PlanEndResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::Customers::PlanEndResponse
+    end
   end
 
   def test_list_price_adjustments_required_params
@@ -37,6 +46,9 @@ class Metronome::Test::Resources::Customers::PlansTest < Minitest::Test
       customer_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
       customer_plan_id: "7aa11640-0703-4600-8eb9-293f535a6b74"
     )
-    assert_kind_of(Metronome::CursorPage, response)
+
+    assert_pattern do
+      response => Metronome::CursorPage
+    end
   end
 end

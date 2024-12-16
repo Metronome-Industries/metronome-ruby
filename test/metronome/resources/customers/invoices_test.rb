@@ -15,12 +15,18 @@ class Metronome::Test::Resources::Customers::InvoicesTest < Minitest::Test
       customer_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
       invoice_id: "6a37bb88-8538-48c5-b37b-a41c836328bd"
     )
-    assert_kind_of(Metronome::Models::Customers::InvoiceRetrieveResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::Customers::InvoiceRetrieveResponse
+    end
   end
 
   def test_list_required_params
     response = @metronome.customers.invoices.list(customer_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc")
-    assert_kind_of(Metronome::CursorPage, response)
+
+    assert_pattern do
+      response => Metronome::CursorPage
+    end
   end
 
   def test_add_charge_required_params
@@ -33,7 +39,10 @@ class Metronome::Test::Resources::Customers::InvoicesTest < Minitest::Test
       price: 250,
       quantity: 1
     )
-    assert_kind_of(Metronome::Models::Customers::InvoiceAddChargeResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::Customers::InvoiceAddChargeResponse
+    end
   end
 
   def test_list_breakdowns_required_params
@@ -42,6 +51,9 @@ class Metronome::Test::Resources::Customers::InvoicesTest < Minitest::Test
       ending_before: "2019-12-27T18:11:19.117Z",
       starting_on: "2019-12-27T18:11:19.117Z"
     )
-    assert_kind_of(Metronome::CursorPage, response)
+
+    assert_pattern do
+      response => Metronome::CursorPage
+    end
   end
 end

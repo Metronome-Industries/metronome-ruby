@@ -16,7 +16,10 @@ class Metronome::Test::Resources::Customers::BillingConfigTest < Minitest::Test
       billing_provider_type: "aws_marketplace",
       billing_provider_customer_id: "cus_AJ6y20bjkOOayM"
     )
-    assert_nil(response)
+
+    assert_pattern do
+      response => nil
+    end
   end
 
   def test_retrieve_required_params
@@ -24,7 +27,10 @@ class Metronome::Test::Resources::Customers::BillingConfigTest < Minitest::Test
       customer_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
       billing_provider_type: "aws_marketplace"
     )
-    assert_kind_of(Metronome::Models::Customers::BillingConfigRetrieveResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::Customers::BillingConfigRetrieveResponse
+    end
   end
 
   def test_delete_required_params
@@ -32,6 +38,9 @@ class Metronome::Test::Resources::Customers::BillingConfigTest < Minitest::Test
       customer_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
       billing_provider_type: "aws_marketplace"
     )
-    assert_nil(response)
+
+    assert_pattern do
+      response => nil
+    end
   end
 end

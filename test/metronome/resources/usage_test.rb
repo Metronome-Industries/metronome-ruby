@@ -16,7 +16,10 @@ class Metronome::Test::Resources::UsageTest < Minitest::Test
       starting_on: "2021-01-01T00:00:00Z",
       window_size: "HOUR"
     )
-    assert_kind_of(Metronome::Models::UsageListResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::UsageListResponse
+    end
   end
 
   def test_ingest_required_params
@@ -30,7 +33,10 @@ class Metronome::Test::Resources::UsageTest < Minitest::Test
         }
       ]
     )
-    assert_nil(response)
+
+    assert_pattern do
+      response => nil
+    end
   end
 
   def test_list_with_groups_required_params
@@ -39,6 +45,9 @@ class Metronome::Test::Resources::UsageTest < Minitest::Test
       customer_id: "04ca7e72-4229-4a6e-ab11-9f7376fccbcb",
       window_size: "HOUR"
     )
-    assert_kind_of(Metronome::CursorPage, response)
+
+    assert_pattern do
+      response => Metronome::CursorPage
+    end
   end
 end

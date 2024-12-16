@@ -15,6 +15,9 @@ class Metronome::Test::Resources::DashboardsTest < Minitest::Test
       customer_id: "4db51251-61de-4bfe-b9ce-495e244f3491",
       dashboard: "invoices"
     )
-    assert_kind_of(Metronome::Models::DashboardGetEmbeddableURLResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::DashboardGetEmbeddableURLResponse
+    end
   end
 end

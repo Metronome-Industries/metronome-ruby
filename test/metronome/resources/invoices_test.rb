@@ -12,11 +12,17 @@ class Metronome::Test::Resources::InvoicesTest < Minitest::Test
 
   def test_regenerate_required_params
     response = @metronome.invoices.regenerate(id: "6a37bb88-8538-48c5-b37b-a41c836328bd")
-    assert_kind_of(Metronome::Models::InvoiceRegenerateResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::InvoiceRegenerateResponse
+    end
   end
 
   def test_void_required_params
     response = @metronome.invoices.void(id: "6a37bb88-8538-48c5-b37b-a41c836328bd")
-    assert_kind_of(Metronome::Models::InvoiceVoidResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::InvoiceVoidResponse
+    end
   end
 end

@@ -15,12 +15,18 @@ class Metronome::Test::Resources::Customers::AlertsTest < Minitest::Test
       alert_id: "8deed800-1b7a-495d-a207-6c52bac54dc9",
       customer_id: "9b85c1c1-5238-4f2a-a409-61412905e1e1"
     )
-    assert_kind_of(Metronome::Models::Customers::AlertRetrieveResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::Customers::AlertRetrieveResponse
+    end
   end
 
   def test_list_required_params
     response = @metronome.customers.alerts.list(customer_id: "9b85c1c1-5238-4f2a-a409-61412905e1e1")
-    assert_kind_of(Metronome::Models::Customers::AlertListResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::Customers::AlertListResponse
+    end
   end
 
   def test_reset_required_params
@@ -28,6 +34,9 @@ class Metronome::Test::Resources::Customers::AlertsTest < Minitest::Test
       alert_id: "5e8691bf-b22a-4672-922d-f80eee940f01",
       customer_id: "4c83caf3-8af4-44e2-9aeb-e290531726d9"
     )
-    assert_nil(response)
+
+    assert_pattern do
+      response => nil
+    end
   end
 end

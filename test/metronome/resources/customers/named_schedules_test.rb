@@ -15,7 +15,10 @@ class Metronome::Test::Resources::Customers::NamedSchedulesTest < Minitest::Test
       customer_id: "9b85c1c1-5238-4f2a-a409-61412905e1e1",
       schedule_name: "my-schedule"
     )
-    assert_kind_of(Metronome::Models::Customers::NamedScheduleRetrieveResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::Customers::NamedScheduleRetrieveResponse
+    end
   end
 
   def test_update_required_params
@@ -25,6 +28,9 @@ class Metronome::Test::Resources::Customers::NamedSchedulesTest < Minitest::Test
       starting_at: "2022-02-01T00:00:00Z",
       value: {"my_key" => "my_value"}
     )
-    assert_nil(response)
+
+    assert_pattern do
+      response => nil
+    end
   end
 end

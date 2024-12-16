@@ -12,6 +12,9 @@ class Metronome::Test::Resources::ServicesTest < Minitest::Test
 
   def test_list
     response = @metronome.services.list
-    assert_kind_of(Metronome::Models::ServiceListResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::ServiceListResponse
+    end
   end
 end
