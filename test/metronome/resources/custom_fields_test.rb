@@ -16,7 +16,10 @@ class Metronome::Test::Resources::CustomFieldsTest < Minitest::Test
       entity: "alert",
       key: "x_account_id"
     )
-    assert_nil(response)
+
+    assert_pattern do
+      response => nil
+    end
   end
 
   def test_delete_values_required_params
@@ -25,17 +28,26 @@ class Metronome::Test::Resources::CustomFieldsTest < Minitest::Test
       entity_id: "99594816-e8a5-4bca-be21-8d1de0f45120",
       keys: ["x_account_id"]
     )
-    assert_nil(response)
+
+    assert_pattern do
+      response => nil
+    end
   end
 
   def test_list_keys
     response = @metronome.custom_fields.list_keys
-    assert_kind_of(Metronome::Models::CustomFieldListKeysResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::CustomFieldListKeysResponse
+    end
   end
 
   def test_remove_key_required_params
     response = @metronome.custom_fields.remove_key(entity: "alert", key: "x_account_id")
-    assert_nil(response)
+
+    assert_pattern do
+      response => nil
+    end
   end
 
   def test_set_values_required_params
@@ -44,6 +56,9 @@ class Metronome::Test::Resources::CustomFieldsTest < Minitest::Test
       entity: "alert",
       entity_id: "99594816-e8a5-4bca-be21-8d1de0f45120"
     )
-    assert_nil(response)
+
+    assert_pattern do
+      response => nil
+    end
   end
 end

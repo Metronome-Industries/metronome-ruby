@@ -15,7 +15,10 @@ class Metronome::Test::Resources::Contracts::RateCards::RatesTest < Minitest::Te
       at: "2024-01-01T00:00:00.000Z",
       rate_card_id: "f3d51ae8-f283-44e1-9933-a3cf9ad7a6fe"
     )
-    assert_kind_of(Metronome::CursorPage, response)
+
+    assert_pattern do
+      response => Metronome::CursorPage
+    end
   end
 
   def test_add_required_params
@@ -26,7 +29,10 @@ class Metronome::Test::Resources::Contracts::RateCards::RatesTest < Minitest::Te
       rate_type: "FLAT",
       starting_at: "2020-01-01T00:00:00.000Z"
     )
-    assert_kind_of(Metronome::Models::Contracts::RateCards::RateAddResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::Contracts::RateCards::RateAddResponse
+    end
   end
 
   def test_add_many_required_params
@@ -47,6 +53,9 @@ class Metronome::Test::Resources::Contracts::RateCards::RatesTest < Minitest::Te
         }
       ]
     )
-    assert_kind_of(Metronome::Models::Contracts::RateCards::RateAddManyResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::Contracts::RateCards::RateAddManyResponse
+    end
   end
 end

@@ -12,6 +12,9 @@ class Metronome::Test::Resources::AuditLogsTest < Minitest::Test
 
   def test_list
     response = @metronome.audit_logs.list
-    assert_kind_of(Metronome::CursorPage, response)
+
+    assert_pattern do
+      response => Metronome::CursorPage
+    end
   end
 end

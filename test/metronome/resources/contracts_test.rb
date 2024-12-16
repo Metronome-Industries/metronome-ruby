@@ -15,7 +15,10 @@ class Metronome::Test::Resources::ContractsTest < Minitest::Test
       customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
       starting_at: "2020-01-01T00:00:00.000Z"
     )
-    assert_kind_of(Metronome::Models::ContractCreateResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::ContractCreateResponse
+    end
   end
 
   def test_retrieve_required_params
@@ -23,12 +26,18 @@ class Metronome::Test::Resources::ContractsTest < Minitest::Test
       contract_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
       customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d"
     )
-    assert_kind_of(Metronome::Models::ContractRetrieveResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::ContractRetrieveResponse
+    end
   end
 
   def test_list_required_params
     response = @metronome.contracts.list(customer_id: "9b85c1c1-5238-4f2a-a409-61412905e1e1")
-    assert_kind_of(Metronome::Models::ContractListResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::ContractListResponse
+    end
   end
 
   def test_add_manual_balance_entry_required_params
@@ -39,7 +48,10 @@ class Metronome::Test::Resources::ContractsTest < Minitest::Test
       reason: "Reason for entry",
       segment_id: "66368e29-3f97-4d15-a6e9-120897f0070a"
     )
-    assert_nil(response)
+
+    assert_pattern do
+      response => nil
+    end
   end
 
   def test_amend_required_params
@@ -48,7 +60,10 @@ class Metronome::Test::Resources::ContractsTest < Minitest::Test
       customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
       starting_at: "2020-01-01T00:00:00.000Z"
     )
-    assert_kind_of(Metronome::Models::ContractAmendResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::ContractAmendResponse
+    end
   end
 
   def test_archive_required_params
@@ -57,7 +72,10 @@ class Metronome::Test::Resources::ContractsTest < Minitest::Test
       customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
       void_invoices: true
     )
-    assert_kind_of(Metronome::Models::ContractArchiveResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::ContractArchiveResponse
+    end
   end
 
   def test_create_historical_invoices_required_params
@@ -81,12 +99,18 @@ class Metronome::Test::Resources::ContractsTest < Minitest::Test
       ],
       preview: false
     )
-    assert_kind_of(Metronome::Models::ContractCreateHistoricalInvoicesResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::ContractCreateHistoricalInvoicesResponse
+    end
   end
 
   def test_list_balances_required_params
     response = @metronome.contracts.list_balances(customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d")
-    assert_kind_of(Metronome::Models::ContractListBalancesResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::ContractListBalancesResponse
+    end
   end
 
   def test_retrieve_rate_schedule_required_params
@@ -94,7 +118,10 @@ class Metronome::Test::Resources::ContractsTest < Minitest::Test
       contract_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
       customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d"
     )
-    assert_kind_of(Metronome::Models::ContractRetrieveRateScheduleResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::ContractRetrieveRateScheduleResponse
+    end
   end
 
   def test_schedule_pro_services_invoice_required_params
@@ -104,7 +131,10 @@ class Metronome::Test::Resources::ContractsTest < Minitest::Test
       issued_at: "2019-12-27T18:11:19.117Z",
       line_items: [{"professional_service_id" => "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"}]
     )
-    assert_kind_of(Metronome::Models::ContractScheduleProServicesInvoiceResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::ContractScheduleProServicesInvoiceResponse
+    end
   end
 
   def test_set_usage_filter_required_params
@@ -115,7 +145,10 @@ class Metronome::Test::Resources::ContractsTest < Minitest::Test
       group_values: %w[ID-1 ID-2],
       starting_at: "2020-01-01T00:00:00.000Z"
     )
-    assert_nil(response)
+
+    assert_pattern do
+      response => nil
+    end
   end
 
   def test_update_end_date_required_params
@@ -123,6 +156,9 @@ class Metronome::Test::Resources::ContractsTest < Minitest::Test
       contract_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
       customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d"
     )
-    assert_kind_of(Metronome::Models::ContractUpdateEndDateResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::ContractUpdateEndDateResponse
+    end
   end
 end

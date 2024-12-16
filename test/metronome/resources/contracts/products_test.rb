@@ -12,12 +12,18 @@ class Metronome::Test::Resources::Contracts::ProductsTest < Minitest::Test
 
   def test_create_required_params
     response = @metronome.contracts.products.create(name: "My Product", type: "FIXED")
-    assert_kind_of(Metronome::Models::Contracts::ProductCreateResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::Contracts::ProductCreateResponse
+    end
   end
 
   def test_retrieve_required_params
     response = @metronome.contracts.products.retrieve(id: "d84e7f4e-7a70-4fe4-be02-7a5027beffcc")
-    assert_kind_of(Metronome::Models::Contracts::ProductRetrieveResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::Contracts::ProductRetrieveResponse
+    end
   end
 
   def test_update_required_params
@@ -25,16 +31,25 @@ class Metronome::Test::Resources::Contracts::ProductsTest < Minitest::Test
       product_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
       starting_at: "2020-01-01T00:00:00.000Z"
     )
-    assert_kind_of(Metronome::Models::Contracts::ProductUpdateResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::Contracts::ProductUpdateResponse
+    end
   end
 
   def test_list
     response = @metronome.contracts.products.list
-    assert_kind_of(Metronome::CursorPage, response)
+
+    assert_pattern do
+      response => Metronome::CursorPage
+    end
   end
 
   def test_archive_required_params
     response = @metronome.contracts.products.archive(product_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc")
-    assert_kind_of(Metronome::Models::Contracts::ProductArchiveResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::Contracts::ProductArchiveResponse
+    end
   end
 end

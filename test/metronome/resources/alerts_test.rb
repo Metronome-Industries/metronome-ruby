@@ -16,11 +16,17 @@ class Metronome::Test::Resources::AlertsTest < Minitest::Test
       name: "$100 spend threshold reached",
       threshold: 10_000
     )
-    assert_kind_of(Metronome::Models::AlertCreateResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::AlertCreateResponse
+    end
   end
 
   def test_archive_required_params
     response = @metronome.alerts.archive(id: "8deed800-1b7a-495d-a207-6c52bac54dc9")
-    assert_kind_of(Metronome::Models::AlertArchiveResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::AlertArchiveResponse
+    end
   end
 end

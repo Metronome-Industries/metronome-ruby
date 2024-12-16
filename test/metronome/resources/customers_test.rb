@@ -12,27 +12,42 @@ class Metronome::Test::Resources::CustomersTest < Minitest::Test
 
   def test_create_required_params
     response = @metronome.customers.create(name: "Example, Inc.")
-    assert_kind_of(Metronome::Models::CustomerCreateResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::CustomerCreateResponse
+    end
   end
 
   def test_retrieve_required_params
     response = @metronome.customers.retrieve(customer_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc")
-    assert_kind_of(Metronome::Models::CustomerRetrieveResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::CustomerRetrieveResponse
+    end
   end
 
   def test_list
     response = @metronome.customers.list
-    assert_kind_of(Metronome::CursorPage, response)
+
+    assert_pattern do
+      response => Metronome::CursorPage
+    end
   end
 
   def test_archive_required_params
     response = @metronome.customers.archive(id: "8deed800-1b7a-495d-a207-6c52bac54dc9")
-    assert_kind_of(Metronome::Models::CustomerArchiveResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::CustomerArchiveResponse
+    end
   end
 
   def test_list_billable_metrics_required_params
     response = @metronome.customers.list_billable_metrics(customer_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc")
-    assert_kind_of(Metronome::CursorPage, response)
+
+    assert_pattern do
+      response => Metronome::CursorPage
+    end
   end
 
   def test_list_costs_required_params
@@ -41,7 +56,10 @@ class Metronome::Test::Resources::CustomersTest < Minitest::Test
       ending_before: "2019-12-27T18:11:19.117Z",
       starting_on: "2019-12-27T18:11:19.117Z"
     )
-    assert_kind_of(Metronome::CursorPage, response)
+
+    assert_pattern do
+      response => Metronome::CursorPage
+    end
   end
 
   def test_set_ingest_aliases_required_params
@@ -49,7 +67,10 @@ class Metronome::Test::Resources::CustomersTest < Minitest::Test
       customer_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
       ingest_aliases: ["team@example.com"]
     )
-    assert_nil(response)
+
+    assert_pattern do
+      response => nil
+    end
   end
 
   def test_set_name_required_params
@@ -57,11 +78,17 @@ class Metronome::Test::Resources::CustomersTest < Minitest::Test
       customer_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
       name: "Example, Inc."
     )
-    assert_kind_of(Metronome::Models::CustomerSetNameResponse, response)
+
+    assert_pattern do
+      response => Metronome::Models::CustomerSetNameResponse
+    end
   end
 
   def test_update_config_required_params
     response = @metronome.customers.update_config(customer_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc")
-    assert_nil(response)
+
+    assert_pattern do
+      response => nil
+    end
   end
 end
