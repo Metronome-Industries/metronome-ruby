@@ -9,7 +9,7 @@ module Metronome
       required :usage, Metronome::ArrayOf.new(-> { Metronome::Models::UsageIngestParams::Usage })
 
       # @!parse
-      #   # @param usage [Array<Object>]
+      #   # @param usage [Array<Metronome::Models::UsageIngestParams::Usage>]
       #   #
       #   def initialize(usage:) = super
 

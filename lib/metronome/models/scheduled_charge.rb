@@ -38,9 +38,9 @@ module Metronome
       # @!parse
       #   # @param id [String]
       #   #
-      #   # @param product [Object]
+      #   # @param product [Metronome::Models::ScheduledCharge::Product]
       #   #
-      #   # @param schedule [Object]
+      #   # @param schedule [Metronome::Models::SchedulePointInTime]
       #   #
       #   # @param custom_fields [Hash, nil]
       #   #

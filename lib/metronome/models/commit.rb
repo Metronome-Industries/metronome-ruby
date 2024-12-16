@@ -119,11 +119,11 @@ module Metronome
       # @!parse
       #   # @param id [String]
       #   #
-      #   # @param product [Object]
+      #   # @param product [Metronome::Models::Commit::Product]
       #   #
       #   # @param type [String]
       #   #
-      #   # @param access_schedule [Object, nil] The schedule that the customer will gain access to the credits purposed with
+      #   # @param access_schedule [Metronome::Models::ScheduleDuration, nil] The schedule that the customer will gain access to the credits purposed with
       #   #   this commit.
       #   #
       #   # @param amount [Float, nil] (DEPRECATED) Use access_schedule + invoice_schedule instead.
@@ -134,17 +134,17 @@ module Metronome
       #   #
       #   # @param applicable_product_tags [Array<String>, nil]
       #   #
-      #   # @param contract [Object, nil]
+      #   # @param contract [Metronome::Models::Commit::Contract, nil]
       #   #
       #   # @param custom_fields [Hash, nil]
       #   #
       #   # @param description [String, nil]
       #   #
-      #   # @param invoice_contract [Object, nil] The contract that this commit will be billed on.
+      #   # @param invoice_contract [Metronome::Models::Commit::InvoiceContract, nil] The contract that this commit will be billed on.
       #   #
-      #   # @param invoice_schedule [Object, nil] The schedule that the customer will be invoiced for this commit.
+      #   # @param invoice_schedule [Metronome::Models::SchedulePointInTime, nil] The schedule that the customer will be invoiced for this commit.
       #   #
-      #   # @param ledger [Array<Object>, nil] A list of ordered events that impact the balance of a commit. For example, an
+      #   # @param ledger [Array<Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent0, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent1, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent10, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent11, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent12, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent2, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent3, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent4, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent5, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent6, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent7, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent8, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent9>, nil] A list of ordered events that impact the balance of a commit. For example, an
       #   #   invoice deduction or a rollover.
       #   #
       #   # @param name [String, nil]
@@ -156,7 +156,7 @@ module Metronome
       #   #
       #   # @param rate_type [String, nil]
       #   #
-      #   # @param rolled_over_from [Object, nil]
+      #   # @param rolled_over_from [Metronome::Models::Commit::RolledOverFrom, nil]
       #   #
       #   # @param rollover_fraction [Float, nil]
       #   #

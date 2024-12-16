@@ -14,8 +14,8 @@ module Metronome
       required :plan_details, -> { Metronome::Models::PlanListCustomersResponse::PlanDetails }
 
       # @!parse
-      #   # @param customer_details [Object]
-      #   # @param plan_details [Object]
+      #   # @param customer_details [Metronome::Models::CustomerDetail]
+      #   # @param plan_details [Metronome::Models::PlanListCustomersResponse::PlanDetails]
       #   #
       #   def initialize(customer_details:, plan_details:) = super
 

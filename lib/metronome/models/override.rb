@@ -121,7 +121,7 @@ module Metronome
       #   #
       #   # @param applicable_product_tags [Array<String>, nil]
       #   #
-      #   # @param credit_type [Object, nil]
+      #   # @param credit_type [Metronome::Models::CreditTypeData, nil]
       #   #
       #   # @param ending_before [String, nil]
       #   #
@@ -134,18 +134,18 @@ module Metronome
       #   #
       #   # @param multiplier [Float, nil]
       #   #
-      #   # @param override_specifiers [Array<Object>, nil]
+      #   # @param override_specifiers [Array<Metronome::Models::Override::OverrideSpecifier>, nil]
       #   #
-      #   # @param override_tiers [Array<Object>, nil]
+      #   # @param override_tiers [Array<Metronome::Models::Override::OverrideTier>, nil]
       #   #
-      #   # @param overwrite_rate [Object, nil]
+      #   # @param overwrite_rate [Metronome::Models::Override::OverwriteRate, nil]
       #   #
       #   # @param price [Float, nil] Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
       #   #   this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
       #   #
       #   # @param priority [Float, nil]
       #   #
-      #   # @param product [Object, nil]
+      #   # @param product [Metronome::Models::Override::Product, nil]
       #   #
       #   # @param quantity [Float, nil] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
       #   #
@@ -153,7 +153,7 @@ module Metronome
       #   #
       #   # @param target [String, nil]
       #   #
-      #   # @param tiers [Array<Object>, nil] Only set for TIERED rate_type.
+      #   # @param tiers [Array<Metronome::Models::Tier>, nil] Only set for TIERED rate_type.
       #   #
       #   # @param type [String, nil]
       #   #
@@ -298,7 +298,7 @@ module Metronome
         # @!parse
         #   # @param rate_type [String]
         #   #
-        #   # @param credit_type [Object, nil]
+        #   # @param credit_type [Metronome::Models::CreditTypeData, nil]
         #   #
         #   # @param custom_rate [Hash, nil] Only set for CUSTOM rate_type. This field is interpreted by custom rate
         #   #   processors.
@@ -311,7 +311,7 @@ module Metronome
         #   #
         #   # @param quantity [Float, nil] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
         #   #
-        #   # @param tiers [Array<Object>, nil] Only set for TIERED rate_type.
+        #   # @param tiers [Array<Metronome::Models::Tier>, nil] Only set for TIERED rate_type.
         #   #
         #   def initialize(rate_type:, credit_type: nil, custom_rate: nil, is_prorated: nil, price: nil, quantity: nil, tiers: nil) = super
 

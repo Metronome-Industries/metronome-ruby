@@ -58,7 +58,7 @@ module Metronome
       # @!parse
       #   # @param rate_type [String]
       #   #
-      #   # @param credit_type [Object, nil]
+      #   # @param credit_type [Metronome::Models::CreditTypeData, nil]
       #   #
       #   # @param custom_rate [Hash, nil] Only set for CUSTOM rate_type. This field is interpreted by custom rate
       #   #   processors.
@@ -74,7 +74,7 @@ module Metronome
       #   #
       #   # @param quantity [Float, nil] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
       #   #
-      #   # @param tiers [Array<Object>, nil] Only set for TIERED rate_type.
+      #   # @param tiers [Array<Metronome::Models::Tier>, nil] Only set for TIERED rate_type.
       #   #
       #   # @param use_list_prices [Boolean, nil] Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
       #   #   using list prices rather than the standard rates for this product on the

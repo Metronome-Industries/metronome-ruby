@@ -32,9 +32,9 @@ module Metronome
       # @!parse
       #   # @param id [String]
       #   #
-      #   # @param product [Object]
+      #   # @param product [Metronome::Models::Discount::Product]
       #   #
-      #   # @param schedule [Object]
+      #   # @param schedule [Metronome::Models::SchedulePointInTime]
       #   #
       #   # @param name [String, nil]
       #   #

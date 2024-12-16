@@ -9,7 +9,7 @@ module Metronome
       required :data, Metronome::ArrayOf.new(-> { Metronome::Models::Customers::Invoice })
 
       # @!parse
-      #   # @param data [Array<Object>]
+      #   # @param data [Array<Metronome::Models::Customers::Invoice>]
       #   #
       #   def initialize(data:) = super
 

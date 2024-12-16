@@ -99,7 +99,7 @@ module Metronome
       # @!parse
       #   # @param id [String] the Metronome ID of the credit grant
       #   #
-      #   # @param balance [Object] The effective balance of the grant as of the end of the customer's current
+      #   # @param balance [Metronome::Models::CreditGrantListResponse::Balance] The effective balance of the grant as of the end of the customer's current
       #   #   billing period. Expiration deductions will be included only if the grant expires
       #   #   before the end of the current billing period.
       #   #
@@ -107,19 +107,19 @@ module Metronome
       #   #
       #   # @param customer_id [String] the Metronome ID of the customer
       #   #
-      #   # @param deductions [Array<Object>]
+      #   # @param deductions [Array<Metronome::Models::CreditLedgerEntry>]
       #   #
       #   # @param effective_at [String]
       #   #
       #   # @param expires_at [String]
       #   #
-      #   # @param grant_amount [Object] the amount of credits initially granted
+      #   # @param grant_amount [Metronome::Models::CreditGrantListResponse::GrantAmount] the amount of credits initially granted
       #   #
       #   # @param name [String]
       #   #
-      #   # @param paid_amount [Object] the amount paid for this credit grant
+      #   # @param paid_amount [Metronome::Models::CreditGrantListResponse::PaidAmount] the amount paid for this credit grant
       #   #
-      #   # @param pending_deductions [Array<Object>]
+      #   # @param pending_deductions [Array<Metronome::Models::CreditLedgerEntry>]
       #   #
       #   # @param priority [Float]
       #   #
@@ -128,7 +128,7 @@ module Metronome
       #   # @param invoice_id [String, nil] the Metronome ID of the invoice with the purchase charge for this credit grant,
       #   #   if applicable
       #   #
-      #   # @param products [Array<Object>, nil] The products which these credits will be applied to. (If unspecified, the
+      #   # @param products [Array<Metronome::Models::CreditGrantListResponse::Product>, nil] The products which these credits will be applied to. (If unspecified, the
       #   #   credits will be applied to charges for all products.)
       #   #
       #   # @param reason [String, nil]
@@ -216,7 +216,7 @@ module Metronome
         #   #
         #   # @param amount [Float]
         #   #
-        #   # @param credit_type [Object] the credit type for the amount granted
+        #   # @param credit_type [Metronome::Models::CreditTypeData] the credit type for the amount granted
         #   #
         #   def initialize(amount:, credit_type:) = super
 
@@ -240,7 +240,7 @@ module Metronome
         #   #
         #   # @param amount [Float]
         #   #
-        #   # @param credit_type [Object] the credit type for the amount paid
+        #   # @param credit_type [Metronome::Models::CreditTypeData] the credit type for the amount paid
         #   #
         #   def initialize(amount:, credit_type:) = super
 

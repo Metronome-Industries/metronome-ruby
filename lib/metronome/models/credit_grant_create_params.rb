@@ -89,11 +89,11 @@ module Metronome
       #   #
       #   # @param expires_at [String] The credit grant will only apply to usage or charges dated before this timestamp
       #   #
-      #   # @param grant_amount [Object] the amount of credits granted
+      #   # @param grant_amount [Metronome::Models::CreditGrantCreateParams::GrantAmount] the amount of credits granted
       #   #
       #   # @param name [String] the name of the credit grant as it will appear on invoices
       #   #
-      #   # @param paid_amount [Object] the amount paid for this credit grant
+      #   # @param paid_amount [Metronome::Models::CreditGrantCreateParams::PaidAmount] the amount paid for this credit grant
       #   #
       #   # @param priority [Float]
       #   #
@@ -113,7 +113,7 @@ module Metronome
       #   #
       #   # @param reason [String, nil]
       #   #
-      #   # @param rollover_settings [Object, nil] Configure a rollover for this credit grant so if it expires it rolls over a
+      #   # @param rollover_settings [Metronome::Models::CreditGrantCreateParams::RolloverSettings, nil] Configure a rollover for this credit grant so if it expires it rolls over a
       #   #   configured amount to a new credit grant. This feature is currently opt-in only.
       #   #   Contact Metronome to be added to the beta.
       #   #
@@ -219,7 +219,7 @@ module Metronome
         #   # @param priority [Float] The priority to give the rollover credit grant that gets created when a rollover
         #   #   happens.
         #   #
-        #   # @param rollover_amount [Object] Specify how much to rollover to the rollover credit grant
+        #   # @param rollover_amount [Metronome::Models::RolloverAmountMaxAmount, Metronome::Models::RolloverAmountMaxPercentage] Specify how much to rollover to the rollover credit grant
         #   #
         #   def initialize(expires_at:, priority:, rollover_amount:) = super
 

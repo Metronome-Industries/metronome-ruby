@@ -79,7 +79,7 @@ module Metronome
         optional :salesforce_opportunity_id, String
 
         # @!parse
-        #   # @param access_schedule [Object] Schedule for distributing the credit to the customer.
+        #   # @param access_schedule [Metronome::Models::Customers::CreditCreateParams::AccessSchedule] Schedule for distributing the credit to the customer.
         #   #
         #   # @param customer_id [String]
         #   #
@@ -149,7 +149,7 @@ module Metronome
           # @!parse
           #   # Schedule for distributing the credit to the customer.
           #   #
-          #   # @param schedule_items [Array<Object>]
+          #   # @param schedule_items [Array<Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem>]
           #   #
           #   # @param credit_type_id [String, nil] Defaults to USD (cents) if not passed
           #   #

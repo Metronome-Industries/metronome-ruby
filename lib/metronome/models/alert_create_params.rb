@@ -98,7 +98,7 @@ module Metronome
       #   #
       #   # @param credit_type_id [String, nil]
       #   #
-      #   # @param custom_field_filters [Array<Object>, nil] Only present for beta contract invoices. This field's availability is dependent
+      #   # @param custom_field_filters [Array<Metronome::Models::AlertCreateParams::CustomFieldFilter>, nil] Only present for beta contract invoices. This field's availability is dependent
       #   #   on your client's configuration. A list of custom field filters for alert types
       #   #   that support advanced filtering
       #   #
@@ -109,7 +109,7 @@ module Metronome
       #   #   alert threshold. If false, it will only evaluate on future customers that
       #   #   trigger the alert threshold. Defaults to true.
       #   #
-      #   # @param group_key_filter [Object, nil] Scopes alert evaluation to a specific presentation group key on individual line
+      #   # @param group_key_filter [Metronome::Models::AlertCreateParams::GroupKeyFilter, nil] Scopes alert evaluation to a specific presentation group key on individual line
       #   #   items. Only present for spend alerts.
       #   #
       #   # @param invoice_types_filter [Array<String>, nil] Only supported for invoice_total_reached alerts. A list of invoice types to

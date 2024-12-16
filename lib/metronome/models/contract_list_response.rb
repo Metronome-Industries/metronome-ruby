@@ -9,7 +9,7 @@ module Metronome
       required :data, Metronome::ArrayOf.new(-> { Metronome::Models::ContractListResponse::Data })
 
       # @!parse
-      #   # @param data [Array<Object>]
+      #   # @param data [Array<Metronome::Models::ContractListResponse::Data>]
       #   #
       #   def initialize(data:) = super
 
@@ -69,20 +69,20 @@ module Metronome
         # @!parse
         #   # @param id [String]
         #   #
-        #   # @param amendments [Array<Object>]
+        #   # @param amendments [Array<Metronome::Models::ContractListResponse::Data::Amendment>]
         #   #
-        #   # @param current [Object]
+        #   # @param current [Metronome::Models::ContractWithoutAmendments]
         #   #
         #   # @param customer_id [String]
         #   #
-        #   # @param initial [Object]
+        #   # @param initial [Metronome::Models::ContractWithoutAmendments]
         #   #
         #   # @param archived_at [String, nil] RFC 3339 timestamp indicating when the contract was archived. If not returned,
         #   #   the contract is not archived.
         #   #
         #   # @param custom_fields [Hash, nil]
         #   #
-        #   # @param customer_billing_provider_configuration [Object, nil] The billing provider configuration associated with a contract.
+        #   # @param customer_billing_provider_configuration [Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration, nil] The billing provider configuration associated with a contract.
         #   #
         #   # @param uniqueness_key [String, nil] Prevents the creation of duplicates. If a request to create a record is made
         #   #   with a previously used uniqueness key, a new record will not be created and the
@@ -183,27 +183,27 @@ module Metronome
           # @!parse
           #   # @param id [String]
           #   #
-          #   # @param commits [Array<Object>]
+          #   # @param commits [Array<Metronome::Models::Commit>]
           #   #
           #   # @param created_at [String]
           #   #
           #   # @param created_by [String]
           #   #
-          #   # @param overrides [Array<Object>]
+          #   # @param overrides [Array<Metronome::Models::Override>]
           #   #
-          #   # @param scheduled_charges [Array<Object>]
+          #   # @param scheduled_charges [Array<Metronome::Models::ScheduledCharge>]
           #   #
           #   # @param starting_at [String]
           #   #
-          #   # @param credits [Array<Object>, nil]
+          #   # @param credits [Array<Metronome::Models::Credit>, nil]
           #   #
-          #   # @param discounts [Array<Object>, nil] This field's availability is dependent on your client's configuration.
+          #   # @param discounts [Array<Metronome::Models::Discount>, nil] This field's availability is dependent on your client's configuration.
           #   #
           #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
           #   #
-          #   # @param professional_services [Array<Object>, nil] This field's availability is dependent on your client's configuration.
+          #   # @param professional_services [Array<Metronome::Models::ProService>, nil] This field's availability is dependent on your client's configuration.
           #   #
-          #   # @param reseller_royalties [Array<Object>, nil] This field's availability is dependent on your client's configuration.
+          #   # @param reseller_royalties [Array<Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty>, nil] This field's availability is dependent on your client's configuration.
           #   #
           #   # @param salesforce_opportunity_id [String, nil] This field's availability is dependent on your client's configuration.
           #   #

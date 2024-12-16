@@ -14,7 +14,7 @@ module Metronome
       required :next_page, String
 
       # @!parse
-      #   # @param data [Array<Object>]
+      #   # @param data [Array<Metronome::Models::CreditGrantListEntriesResponse::Data>]
       #   # @param next_page [String]
       #   #
       #   def initialize(data:, next_page:) = super
@@ -39,7 +39,7 @@ module Metronome
 
         # @!parse
         #   # @param customer_id [String]
-        #   # @param ledgers [Array<Object>]
+        #   # @param ledgers [Array<Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger>]
         #   #
         #   def initialize(customer_id:, ledgers:) = super
 
@@ -75,15 +75,15 @@ module Metronome
                    -> { Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance }
 
           # @!parse
-          #   # @param credit_type [Object]
+          #   # @param credit_type [Metronome::Models::CreditTypeData]
           #   #
-          #   # @param ending_balance [Object] the effective balances at the end of the specified time window
+          #   # @param ending_balance [Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance] the effective balances at the end of the specified time window
           #   #
-          #   # @param entries [Array<Object>]
+          #   # @param entries [Array<Metronome::Models::CreditLedgerEntry>]
           #   #
-          #   # @param pending_entries [Array<Object>]
+          #   # @param pending_entries [Array<Metronome::Models::CreditLedgerEntry>]
           #   #
-          #   # @param starting_balance [Object]
+          #   # @param starting_balance [Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance]
           #   #
           #   def initialize(credit_type:, ending_balance:, entries:, pending_entries:, starting_balance:) = super
 

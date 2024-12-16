@@ -52,11 +52,11 @@ module Metronome
       #   #
       #   # @param dashboard [String] The type of dashboard to retrieve.
       #   #
-      #   # @param bm_group_key_overrides [Array<Object>, nil] Optional list of billable metric group key overrides
+      #   # @param bm_group_key_overrides [Array<Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>, nil] Optional list of billable metric group key overrides
       #   #
-      #   # @param color_overrides [Array<Object>, nil] Optional list of colors to override
+      #   # @param color_overrides [Array<Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride>, nil] Optional list of colors to override
       #   #
-      #   # @param dashboard_options [Array<Object>, nil] Optional dashboard specific options
+      #   # @param dashboard_options [Array<Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption>, nil] Optional dashboard specific options
       #   #
       #   def initialize(customer_id:, dashboard:, bm_group_key_overrides: nil, color_overrides: nil, dashboard_options: nil) = super
 

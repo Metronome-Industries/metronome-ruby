@@ -14,7 +14,7 @@ module Metronome
       required :next_page, String
 
       # @!parse
-      #   # @param data [Array<Object>]
+      #   # @param data [Array<Metronome::Models::Commit, Metronome::Models::Credit>]
       #   # @param next_page [String]
       #   #
       #   def initialize(data:, next_page:) = super

@@ -16,7 +16,7 @@ module Metronome
                    )
 
           # @!parse
-          #   # @param data [Array<Object>]
+          #   # @param data [Array<Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse::Data>]
           #   #
           #   def initialize(data:) = super
 

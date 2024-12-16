@@ -47,11 +47,11 @@ module Metronome
         # @!parse
         #   # @param name [String] Used only in UI/API. It is not exposed to end customers.
         #   #
-        #   # @param aliases [Array<Object>, nil] Reference this alias when creating a contract. If the same alias is assigned to
+        #   # @param aliases [Array<Metronome::Models::Contracts::RateCardCreateParams::Alias>, nil] Reference this alias when creating a contract. If the same alias is assigned to
         #   #   multiple rate cards, it will reference the rate card to which it was most
         #   #   recently assigned. It is not exposed to end customers.
         #   #
-        #   # @param credit_type_conversions [Array<Object>, nil] Required when using custom pricing units in rates.
+        #   # @param credit_type_conversions [Array<Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion>, nil] Required when using custom pricing units in rates.
         #   #
         #   # @param custom_fields [Hash, nil]
         #   #

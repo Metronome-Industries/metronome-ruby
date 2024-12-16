@@ -113,25 +113,25 @@ module Metronome
       optional :usage_filter, -> { Metronome::Models::ContractWithoutAmendments::UsageFilter }
 
       # @!parse
-      #   # @param commits [Array<Object>]
+      #   # @param commits [Array<Metronome::Models::Commit>]
       #   #
       #   # @param created_at [String]
       #   #
       #   # @param created_by [String]
       #   #
-      #   # @param overrides [Array<Object>]
+      #   # @param overrides [Array<Metronome::Models::Override>]
       #   #
-      #   # @param scheduled_charges [Array<Object>]
+      #   # @param scheduled_charges [Array<Metronome::Models::ScheduledCharge>]
       #   #
       #   # @param starting_at [String]
       #   #
-      #   # @param transitions [Array<Object>]
+      #   # @param transitions [Array<Metronome::Models::ContractWithoutAmendments::Transition>]
       #   #
-      #   # @param usage_statement_schedule [Object]
+      #   # @param usage_statement_schedule [Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule]
       #   #
-      #   # @param credits [Array<Object>, nil]
+      #   # @param credits [Array<Metronome::Models::Credit>, nil]
       #   #
-      #   # @param discounts [Array<Object>, nil] This field's availability is dependent on your client's configuration.
+      #   # @param discounts [Array<Metronome::Models::Discount>, nil] This field's availability is dependent on your client's configuration.
       #   #
       #   # @param ending_before [String, nil]
       #   #
@@ -141,17 +141,17 @@ module Metronome
       #   #
       #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
       #   #
-      #   # @param professional_services [Array<Object>, nil] This field's availability is dependent on your client's configuration.
+      #   # @param professional_services [Array<Metronome::Models::ProService>, nil] This field's availability is dependent on your client's configuration.
       #   #
       #   # @param rate_card_id [String, nil]
       #   #
-      #   # @param reseller_royalties [Array<Object>, nil] This field's availability is dependent on your client's configuration.
+      #   # @param reseller_royalties [Array<Metronome::Models::ContractWithoutAmendments::ResellerRoyalty>, nil] This field's availability is dependent on your client's configuration.
       #   #
       #   # @param salesforce_opportunity_id [String, nil] This field's availability is dependent on your client's configuration.
       #   #
       #   # @param total_contract_value [Float, nil] This field's availability is dependent on your client's configuration.
       #   #
-      #   # @param usage_filter [Object, nil]
+      #   # @param usage_filter [Metronome::Models::ContractWithoutAmendments::UsageFilter, nil]
       #   #
       #   def initialize(
       #     commits:,
@@ -372,9 +372,9 @@ module Metronome
                  )
 
         # @!parse
-        #   # @param current [Object]
-        #   # @param initial [Object]
-        #   # @param updates [Array<Object>]
+        #   # @param current [Metronome::Models::BaseUsageFilter]
+        #   # @param initial [Metronome::Models::BaseUsageFilter]
+        #   # @param updates [Array<Metronome::Models::ContractWithoutAmendments::UsageFilter::Update>]
         #   #
         #   def initialize(current:, initial:, updates:) = super
 

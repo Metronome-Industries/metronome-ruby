@@ -22,7 +22,7 @@ module Metronome
 
           # @!parse
           #   # @param rate_card_id [String]
-          #   # @param rates [Array<Object>]
+          #   # @param rates [Array<Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate>]
           #   #
           #   def initialize(rate_card_id:, rates:) = super
 
@@ -124,7 +124,7 @@ module Metronome
             #   #
             #   # @param starting_at [String] inclusive effective date
             #   #
-            #   # @param commit_rate [Object, nil] A distinct rate on the rate card. You can choose to use this rate rather than
+            #   # @param commit_rate [Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate::CommitRate, nil] A distinct rate on the rate card. You can choose to use this rate rather than
             #   #   list rate when consuming a credit or commit.
             #   #
             #   # @param credit_type_id [String, nil] "The Metronome ID of the credit type to associate with price, defaults to USD
@@ -148,7 +148,7 @@ module Metronome
             #   #
             #   # @param quantity [Float, nil] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
             #   #
-            #   # @param tiers [Array<Object>, nil] Only set for TIERED rate_type.
+            #   # @param tiers [Array<Metronome::Models::Tier>, nil] Only set for TIERED rate_type.
             #   #
             #   # @param use_list_prices [Boolean, nil] Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
             #   #   using list prices rather than the standard rates for this product on the
@@ -212,7 +212,7 @@ module Metronome
               #   #
               #   # @param price [Float, nil] Commit rate price. For FLAT rate_type, this must be >=0.
               #   #
-              #   # @param tiers [Array<Object>, nil] Only set for TIERED rate_type.
+              #   # @param tiers [Array<Metronome::Models::Tier>, nil] Only set for TIERED rate_type.
               #   #
               #   def initialize(rate_type:, price: nil, tiers: nil) = super
 

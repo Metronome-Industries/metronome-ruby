@@ -9,7 +9,7 @@ module Metronome
       required :services, Metronome::ArrayOf.new(-> { Metronome::Models::ServiceListResponse::Service })
 
       # @!parse
-      #   # @param services [Array<Object>]
+      #   # @param services [Array<Metronome::Models::ServiceListResponse::Service>]
       #   #
       #   def initialize(services:) = super
 

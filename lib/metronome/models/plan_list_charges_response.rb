@@ -71,13 +71,13 @@ module Metronome
       #   #
       #   # @param charge_type [String]
       #   #
-      #   # @param credit_type [Object]
+      #   # @param credit_type [Metronome::Models::CreditTypeData]
       #   #
       #   # @param custom_fields [Hash]
       #   #
       #   # @param name [String]
       #   #
-      #   # @param prices [Array<Object>]
+      #   # @param prices [Array<Metronome::Models::PlanListChargesResponse::Price>]
       #   #
       #   # @param product_id [String]
       #   #
@@ -91,7 +91,7 @@ module Metronome
       #   # @param tier_reset_frequency [Float, nil] Used in pricing tiers. Indicates how often the tier resets. Default is 1 - the
       #   #   tier count resets every billing period.
       #   #
-      #   # @param unit_conversion [Object, nil] Specifies how quantities for usage based charges will be converted.
+      #   # @param unit_conversion [Metronome::Models::PlanListChargesResponse::UnitConversion, nil] Specifies how quantities for usage based charges will be converted.
       #   #
       #   def initialize(
       #     id:,
