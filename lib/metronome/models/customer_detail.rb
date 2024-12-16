@@ -47,7 +47,7 @@ module Metronome
       #   #
       #   # @param custom_fields [Hash]
       #   #
-      #   # @param customer_config [Object]
+      #   # @param customer_config [Metronome::Models::CustomerDetail::CustomerConfig]
       #   #
       #   # @param external_id [String] (deprecated, use ingest_aliases instead) the first ID (Metronome or ingest
       #   #   alias) that can be used in usage events
@@ -57,7 +57,7 @@ module Metronome
       #   #
       #   # @param name [String]
       #   #
-      #   # @param current_billable_status [Object, nil] This field's availability is dependent on your client's configuration.
+      #   # @param current_billable_status [Metronome::Models::CustomerDetail::CurrentBillableStatus, nil] This field's availability is dependent on your client's configuration.
       #   #
       #   def initialize(id:, custom_fields:, customer_config:, external_id:, ingest_aliases:, name:, current_billable_status: nil) = super
 

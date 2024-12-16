@@ -19,7 +19,7 @@ module Metronome
       required :preview, Metronome::BooleanModel
 
       # @!parse
-      #   # @param invoices [Array<Object>]
+      #   # @param invoices [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice>]
       #   # @param preview [Boolean]
       #   #
       #   def initialize(invoices:, preview:) = super
@@ -102,7 +102,7 @@ module Metronome
         #   #
         #   # @param issue_date [String]
         #   #
-        #   # @param usage_line_items [Array<Object>]
+        #   # @param usage_line_items [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem>]
         #   #
         #   # @param billable_status [String, nil] This field's availability is dependent on your client's configuration.
         #   #
@@ -175,7 +175,7 @@ module Metronome
           #   # @param presentation_group_values [Hash, nil]
           #   # @param pricing_group_values [Hash, nil]
           #   # @param quantity [Float, nil]
-          #   # @param subtotals_with_quantity [Array<Object>, nil]
+          #   # @param subtotals_with_quantity [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity>, nil]
           #   #
           #   def initialize(
           #     exclusive_end_date:,

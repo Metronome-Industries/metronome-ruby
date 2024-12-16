@@ -36,7 +36,7 @@ module Metronome
         # @!parse
         #   # @param rate_card_id [String] ID of the rate card to update
         #   #
-        #   # @param aliases [Array<Object>, nil] Reference this alias when creating a contract. If the same alias is assigned to
+        #   # @param aliases [Array<Metronome::Models::Contracts::RateCardUpdateParams::Alias>, nil] Reference this alias when creating a contract. If the same alias is assigned to
         #   #   multiple rate cards, it will reference the rate card to which it was most
         #   #   recently assigned. It is not exposed to end customers.
         #   #

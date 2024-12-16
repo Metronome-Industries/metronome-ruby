@@ -9,7 +9,7 @@ module Metronome
       required :data, -> { Metronome::Models::DashboardGetEmbeddableURLResponse::Data }
 
       # @!parse
-      #   # @param data [Object]
+      #   # @param data [Metronome::Models::DashboardGetEmbeddableURLResponse::Data]
       #   #
       #   def initialize(data:) = super
 

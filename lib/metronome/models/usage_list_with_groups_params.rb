@@ -71,7 +71,7 @@ module Metronome
       #   #
       #   # @param ending_before [String, nil]
       #   #
-      #   # @param group_by [Object, nil]
+      #   # @param group_by [Metronome::Models::UsageListWithGroupsParams::GroupBy, nil]
       #   #
       #   # @param starting_on [String, nil]
       #   #

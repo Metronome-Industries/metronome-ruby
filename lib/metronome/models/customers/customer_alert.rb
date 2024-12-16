@@ -22,7 +22,7 @@ module Metronome
         optional :triggered_by, String
 
         # @!parse
-        #   # @param alert [Object]
+        #   # @param alert [Metronome::Models::Customers::CustomerAlert::Alert]
         #   #
         #   # @param customer_status [String] The status of the customer alert. If the alert is archived, null will be
         #   #   returned.
@@ -130,11 +130,11 @@ module Metronome
           #   #   applies to, by looking at the credit_grant_type field on the credit grant. This
           #   #   field is only defined for CreditPercentage and CreditBalance alerts
           #   #
-          #   # @param credit_type [Object, nil]
+          #   # @param credit_type [Metronome::Models::CreditTypeData, nil]
           #   #
-          #   # @param custom_field_filters [Array<Object>, nil] A list of custom field filters for alert types that support advanced filtering
+          #   # @param custom_field_filters [Array<Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter>, nil] A list of custom field filters for alert types that support advanced filtering
           #   #
-          #   # @param group_key_filter [Object, nil] Scopes alert evaluation to a specific presentation group key on individual line
+          #   # @param group_key_filter [Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter, nil] Scopes alert evaluation to a specific presentation group key on individual line
           #   #   items. Only present for spend alerts.
           #   #
           #   # @param invoice_types_filter [Array<String>, nil] Only supported for invoice_total_reached alerts. A list of invoice types to

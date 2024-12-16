@@ -60,11 +60,11 @@ module Metronome
         #   # @param created_at [String]
         #   # @param created_by [String]
         #   # @param name [String]
-        #   # @param aliases [Array<Object>, nil]
-        #   # @param credit_type_conversions [Array<Object>, nil]
+        #   # @param aliases [Array<Metronome::Models::Contracts::RateCardListResponse::Alias>, nil]
+        #   # @param credit_type_conversions [Array<Metronome::Models::Contracts::RateCardListResponse::CreditTypeConversion>, nil]
         #   # @param custom_fields [Hash, nil]
         #   # @param description [String, nil]
-        #   # @param fiat_credit_type [Object, nil]
+        #   # @param fiat_credit_type [Metronome::Models::CreditTypeData, nil]
         #   #
         #   def initialize(
         #     id:,
@@ -120,7 +120,7 @@ module Metronome
           required :fiat_per_custom_credit, String
 
           # @!parse
-          #   # @param custom_credit_type [Object]
+          #   # @param custom_credit_type [Metronome::Models::CreditTypeData]
           #   # @param fiat_per_custom_credit [String]
           #   #
           #   def initialize(custom_credit_type:, fiat_per_custom_credit:) = super

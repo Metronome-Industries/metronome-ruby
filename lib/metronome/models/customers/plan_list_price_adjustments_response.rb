@@ -38,7 +38,7 @@ module Metronome
         # @!parse
         #   # @param charge_id [String]
         #   # @param charge_type [String]
-        #   # @param prices [Array<Object>]
+        #   # @param prices [Array<Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price>]
         #   # @param start_period [Float]
         #   # @param quantity [Float, nil]
         #   #

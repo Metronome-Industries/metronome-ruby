@@ -49,7 +49,7 @@ module Metronome
           #   #
           #   # @param next_page [String, nil] Cursor that indicates where the next page of results should start.
           #   #
-          #   # @param selectors [Array<Object>, nil] List of rate selectors, rates matching ANY of the selector will be included in
+          #   # @param selectors [Array<Metronome::Models::Contracts::RateCards::RateListParams::Selector>, nil] List of rate selectors, rates matching ANY of the selector will be included in
           #   #   the response Passing no selectors will result in all rates being returned.
           #   #
           #   def initialize(at:, rate_card_id:, limit: nil, next_page: nil, selectors: nil) = super

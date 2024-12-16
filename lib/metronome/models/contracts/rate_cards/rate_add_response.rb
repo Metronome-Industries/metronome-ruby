@@ -11,7 +11,7 @@ module Metronome
           required :data, -> { Metronome::Models::Contracts::RateCards::RateAddResponse::Data }
 
           # @!parse
-          #   # @param data [Object]
+          #   # @param data [Metronome::Models::Contracts::RateCards::RateAddResponse::Data]
           #   #
           #   def initialize(data:) = super
 
@@ -85,10 +85,10 @@ module Metronome
             # @!parse
             #   # @param rate_type [String]
             #   #
-            #   # @param commit_rate [Object, nil] A distinct rate on the rate card. You can choose to use this rate rather than
+            #   # @param commit_rate [Metronome::Models::Contracts::RateCards::RateAddResponse::Data::CommitRate, nil] A distinct rate on the rate card. You can choose to use this rate rather than
             #   #   list rate when consuming a credit or commit.
             #   #
-            #   # @param credit_type [Object, nil]
+            #   # @param credit_type [Metronome::Models::CreditTypeData, nil]
             #   #
             #   # @param custom_rate [Hash, nil] Only set for CUSTOM rate_type. This field is interpreted by custom rate
             #   #   processors.
@@ -104,7 +104,7 @@ module Metronome
             #   #
             #   # @param quantity [Float, nil] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
             #   #
-            #   # @param tiers [Array<Object>, nil] Only set for TIERED rate_type.
+            #   # @param tiers [Array<Metronome::Models::Tier>, nil] Only set for TIERED rate_type.
             #   #
             #   # @param use_list_prices [Boolean, nil] Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
             #   #   using list prices rather than the standard rates for this product on the
@@ -169,7 +169,7 @@ module Metronome
               #   #
               #   # @param price [Float, nil] Commit rate price. For FLAT rate_type, this must be >=0.
               #   #
-              #   # @param tiers [Array<Object>, nil] Only set for TIERED rate_type.
+              #   # @param tiers [Array<Metronome::Models::Tier>, nil] Only set for TIERED rate_type.
               #   #
               #   def initialize(rate_type:, price: nil, tiers: nil) = super
 

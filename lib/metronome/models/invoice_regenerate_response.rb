@@ -9,7 +9,7 @@ module Metronome
       optional :data, -> { Metronome::Models::InvoiceRegenerateResponse::Data }
 
       # @!parse
-      #   # @param data [Object, nil]
+      #   # @param data [Metronome::Models::InvoiceRegenerateResponse::Data, nil]
       #   #
       #   def initialize(data: nil) = super
 

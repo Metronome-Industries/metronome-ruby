@@ -57,7 +57,7 @@ module Metronome
         #   # @param ending_before [String, nil] optional exclusive end date for the rates schedule. When not specified rates
         #   #   will show all future schedule segments.
         #   #
-        #   # @param selectors [Array<Object>, nil] List of rate selectors, rates matching ANY of the selector will be included in
+        #   # @param selectors [Array<Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams::Selector>, nil] List of rate selectors, rates matching ANY of the selector will be included in
         #   #   the response Passing no selectors will result in all rates being returned.
         #   #
         #   def initialize(rate_card_id:, starting_at:, limit: nil, next_page: nil, ending_before: nil, selectors: nil) = super

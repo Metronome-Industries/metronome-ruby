@@ -133,7 +133,7 @@ module Metronome
         #   #   of values in the pricing group key and presentation group key must be set as one
         #   #   compound group key on the billable metric.
         #   #
-        #   # @param quantity_conversion [Object, nil] Optional. Only valid for USAGE products. If provided, the quantity will be
+        #   # @param quantity_conversion [Metronome::Models::Contracts::QuantityConversion, nil] Optional. Only valid for USAGE products. If provided, the quantity will be
         #   #   converted using the provided conversion factor and operation. For example, if
         #   #   the operation is "multiply" and the conversion factor is 100, then the quantity
         #   #   will be multiplied by 100. This can be used in cases where data is sent in one
@@ -141,7 +141,7 @@ module Metronome
         #   #   GB. In this case, the conversion factor would be 1024 and the operation would be
         #   #   "divide".
         #   #
-        #   # @param quantity_rounding [Object, nil] Optional. Only valid for USAGE products. If provided, the quantity will be
+        #   # @param quantity_rounding [Metronome::Models::Contracts::QuantityRounding, nil] Optional. Only valid for USAGE products. If provided, the quantity will be
         #   #   rounded using the provided rounding method and decimal places. For example, if
         #   #   the method is "round up" and the decimal places is 0, then the quantity will be
         #   #   rounded up to the nearest integer.

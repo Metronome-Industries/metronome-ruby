@@ -70,15 +70,15 @@ module Metronome
         #   # @param net_payment_terms_days [Float, nil] Number of days after issuance of invoice after which the invoice is due (e.g.
         #   #   Net 30).
         #   #
-        #   # @param overage_rate_adjustments [Array<Object>, nil] An optional list of overage rates that override the rates of the original plan
+        #   # @param overage_rate_adjustments [Array<Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment>, nil] An optional list of overage rates that override the rates of the original plan
         #   #   configuration. These new rates will apply to all pricing ramps.
         #   #
-        #   # @param price_adjustments [Array<Object>, nil] A list of price adjustments can be applied on top of the pricing in the plans.
+        #   # @param price_adjustments [Array<Metronome::Models::Customers::PlanAddParams::PriceAdjustment>, nil] A list of price adjustments can be applied on top of the pricing in the plans.
         #   #   See the
         #   #   [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments)
         #   #   for details.
         #   #
-        #   # @param trial_spec [Object, nil] A custom trial can be set for the customer's plan. See the
+        #   # @param trial_spec [Metronome::Models::Customers::PlanAddParams::TrialSpec, nil] A custom trial can be set for the customer's plan. See the
         #   #   [trial configuration documentation](https://docs.metronome.com/provisioning/configure-trials/)
         #   #   for details.
         #   #
@@ -209,7 +209,7 @@ module Metronome
           #   #
           #   # @param length_in_days [Float] Length of the trial period in days.
           #   #
-          #   # @param spending_cap [Object, nil]
+          #   # @param spending_cap [Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap, nil]
           #   #
           #   def initialize(length_in_days:, spending_cap: nil) = super
 

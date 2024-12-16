@@ -68,7 +68,7 @@ module Metronome
         #   #
         #   # @param net_payment_terms_days [Float, nil]
         #   #
-        #   # @param trial_info [Object, nil]
+        #   # @param trial_info [Metronome::Models::Customers::PlanListResponse::TrialInfo, nil]
         #   #
         #   def initialize(
         #     id:,
@@ -104,7 +104,7 @@ module Metronome
 
           # @!parse
           #   # @param ending_before [String]
-          #   # @param spending_caps [Array<Object>]
+          #   # @param spending_caps [Array<Metronome::Models::Customers::PlanListResponse::TrialInfo::SpendingCap>]
           #   #
           #   def initialize(ending_before:, spending_caps:) = super
 
@@ -129,7 +129,7 @@ module Metronome
             # @!parse
             #   # @param amount [Float]
             #   # @param amount_remaining [Float]
-            #   # @param credit_type [Object]
+            #   # @param credit_type [Metronome::Models::CreditTypeData]
             #   #
             #   def initialize(amount:, amount_remaining:, credit_type:) = super
 

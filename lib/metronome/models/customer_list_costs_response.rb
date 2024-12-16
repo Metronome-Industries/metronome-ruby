@@ -50,7 +50,7 @@ module Metronome
 
         # @!parse
         #   # @param cost [Float, nil]
-        #   # @param line_item_breakdown [Array<Object>, nil]
+        #   # @param line_item_breakdown [Array<Metronome::Models::CustomerListCostsResponse::CreditTypes::CreditType::LineItemBreakdown>, nil]
         #   # @param name [String, nil]
         #   #
         #   def initialize(cost: nil, line_item_breakdown: nil, name: nil) = super

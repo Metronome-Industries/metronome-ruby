@@ -19,8 +19,8 @@ module Metronome
       optional :credit_type, -> { Metronome::Models::CreditTypeData }
 
       # @!parse
-      #   # @param schedule_items [Array<Object>]
-      #   # @param credit_type [Object, nil]
+      #   # @param schedule_items [Array<Metronome::Models::ScheduleDuration::ScheduleItem>]
+      #   # @param credit_type [Metronome::Models::CreditTypeData, nil]
       #   #
       #   def initialize(schedule_items:, credit_type: nil) = super
 

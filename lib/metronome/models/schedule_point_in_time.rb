@@ -15,8 +15,8 @@ module Metronome
                Metronome::ArrayOf.new(-> { Metronome::Models::SchedulePointInTime::ScheduleItem })
 
       # @!parse
-      #   # @param credit_type [Object, nil]
-      #   # @param schedule_items [Array<Object>, nil]
+      #   # @param credit_type [Metronome::Models::CreditTypeData, nil]
+      #   # @param schedule_items [Array<Metronome::Models::SchedulePointInTime::ScheduleItem>, nil]
       #   #
       #   def initialize(credit_type: nil, schedule_items: nil) = super
 

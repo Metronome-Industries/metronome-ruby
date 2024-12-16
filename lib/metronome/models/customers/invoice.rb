@@ -156,11 +156,11 @@ module Metronome
         # @!parse
         #   # @param id [String]
         #   #
-        #   # @param credit_type [Object]
+        #   # @param credit_type [Metronome::Models::CreditTypeData]
         #   #
         #   # @param customer_id [String]
         #   #
-        #   # @param line_items [Array<Object>]
+        #   # @param line_items [Array<Metronome::Models::Customers::Invoice::LineItem>]
         #   #
         #   # @param status [String]
         #   #
@@ -176,7 +176,7 @@ module Metronome
         #   #
         #   # @param contract_id [String, nil]
         #   #
-        #   # @param correction_record [Object, nil]
+        #   # @param correction_record [Metronome::Models::Customers::Invoice::CorrectionRecord, nil]
         #   #
         #   # @param created_at [String, nil] When the invoice was created (UTC). This field is present for correction
         #   #   invoices only.
@@ -187,9 +187,9 @@ module Metronome
         #   #
         #   # @param end_timestamp [String, nil] End of the usage period this invoice covers (UTC)
         #   #
-        #   # @param external_invoice [Object, nil]
+        #   # @param external_invoice [Metronome::Models::Customers::Invoice::ExternalInvoice, nil]
         #   #
-        #   # @param invoice_adjustments [Array<Object>, nil]
+        #   # @param invoice_adjustments [Array<Metronome::Models::Customers::Invoice::InvoiceAdjustment>, nil]
         #   #
         #   # @param issued_at [String, nil] When the invoice was issued (UTC)
         #   #
@@ -203,7 +203,7 @@ module Metronome
         #   #
         #   # @param plan_name [String, nil]
         #   #
-        #   # @param reseller_royalty [Object, nil] only present for beta contract invoices with reseller royalties
+        #   # @param reseller_royalty [Metronome::Models::Customers::Invoice::ResellerRoyalty, nil] only present for beta contract invoices with reseller royalties
         #   #
         #   # @param salesforce_opportunity_id [String, nil] This field's availability is dependent on your client's configuration.
         #   #
@@ -446,13 +446,13 @@ module Metronome
           optional :unit_price, Float
 
           # @!parse
-          #   # @param credit_type [Object]
+          #   # @param credit_type [Metronome::Models::CreditTypeData]
           #   #
           #   # @param name [String]
           #   #
           #   # @param total [Float]
           #   #
-          #   # @param applied_commit_or_credit [Object, nil] only present for beta contract invoices
+          #   # @param applied_commit_or_credit [Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit, nil] only present for beta contract invoices
           #   #
           #   # @param commit_custom_fields [Hash, nil] only present for beta contract invoices
           #   #
@@ -478,7 +478,7 @@ module Metronome
           #   #
           #   # @param is_prorated [Boolean, nil] only present for beta contract invoices
           #   #
-          #   # @param list_price [Object, nil] Only present for contract invoices and when the include_list_prices query
+          #   # @param list_price [Metronome::Models::Rate, nil] Only present for contract invoices and when the include_list_prices query
           #   #   parameter is set to true. This will include the list rate for the charge if
           #   #   applicable. Only present for usage and subscription line items.
           #   #
@@ -491,7 +491,7 @@ module Metronome
           #   # @param netsuite_item_id [String, nil] only present for beta contract invoices. This field's availability is dependent
           #   #   on your client's configuration.
           #   #
-          #   # @param postpaid_commit [Object, nil] only present for beta contract invoices
+          #   # @param postpaid_commit [Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit, nil] only present for beta contract invoices
           #   #
           #   # @param presentation_group_values [Hash, nil] if presentation groups are used, this will contain the values used to break down
           #   #   the line item
@@ -519,7 +519,7 @@ module Metronome
           #   #
           #   # @param starting_at [String, nil] only present for beta contract invoices
           #   #
-          #   # @param sub_line_items [Array<Object>, nil]
+          #   # @param sub_line_items [Array<Metronome::Models::Customers::Invoice::LineItem::SubLineItem>, nil]
           #   #
           #   # @param unit_price [Float, nil] only present for beta contract invoices
           #   #
@@ -707,9 +707,9 @@ module Metronome
             #   #
             #   # @param start_date [String, nil] The start date for the charge (for seats charges only).
             #   #
-            #   # @param tier_period [Object, nil] when the current tier started and ends (for tiered charges only)
+            #   # @param tier_period [Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod, nil] when the current tier started and ends (for tiered charges only)
             #   #
-            #   # @param tiers [Array<Object>, nil]
+            #   # @param tiers [Array<Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier>, nil]
             #   #
             #   def initialize(
             #     custom_fields:,
@@ -821,7 +821,7 @@ module Metronome
           #   # @param corrected_invoice_id [String]
           #   # @param memo [String]
           #   # @param reason [String]
-          #   # @param corrected_external_invoice [Object, nil]
+          #   # @param corrected_external_invoice [Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice, nil]
           #   #
           #   def initialize(corrected_invoice_id:, memo:, reason:, corrected_external_invoice: nil) = super
 
@@ -977,7 +977,7 @@ module Metronome
           optional :credit_grant_id, String
 
           # @!parse
-          #   # @param credit_type [Object]
+          #   # @param credit_type [Metronome::Models::CreditTypeData]
           #   # @param name [String]
           #   # @param total [Float]
           #   # @param credit_grant_custom_fields [Hash, nil]
@@ -1023,8 +1023,8 @@ module Metronome
           #   # @param fraction [String]
           #   # @param netsuite_reseller_id [String]
           #   # @param reseller_type [String]
-          #   # @param aws_options [Object, nil]
-          #   # @param gcp_options [Object, nil]
+          #   # @param aws_options [Metronome::Models::Customers::Invoice::ResellerRoyalty::AwsOptions, nil]
+          #   # @param gcp_options [Metronome::Models::Customers::Invoice::ResellerRoyalty::GcpOptions, nil]
           #   #
           #   def initialize(fraction:, netsuite_reseller_id:, reseller_type:, aws_options: nil, gcp_options: nil) = super
 

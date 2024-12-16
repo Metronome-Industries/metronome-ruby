@@ -49,7 +49,7 @@ module Metronome
       #   #
       #   # @param issued_at [String] The date the invoice is issued
       #   #
-      #   # @param line_items [Array<Object>] Each line requires an amount or both unit_price and quantity.
+      #   # @param line_items [Array<Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem>] Each line requires an amount or both unit_price and quantity.
       #   #
       #   # @param netsuite_invoice_header_end [String, nil] The end date of the invoice header in Netsuite
       #   #

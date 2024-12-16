@@ -105,7 +105,7 @@ module Metronome
       #   #
       #   # @param custom_fields [Hash, nil]
       #   #
-      #   # @param event_type_filter [Object, nil] An optional filtering rule to match the 'event_type' property of an event.
+      #   # @param event_type_filter [Metronome::Models::EventTypeFilter, nil] An optional filtering rule to match the 'event_type' property of an event.
       #   #
       #   # @param filter [Hash, nil] (DEPRECATED) use property_filters & event_type_filter instead
       #   #
@@ -114,7 +114,7 @@ module Metronome
       #   # @param group_keys [Array<Array<String>>, nil] Property names that are used to group usage costs on an invoice. Each entry
       #   #   represents a set of properties used to slice events into distinct buckets.
       #   #
-      #   # @param property_filters [Array<Object>, nil] A list of filters to match events to this billable metric. Each filter defines a
+      #   # @param property_filters [Array<Metronome::Models::PropertyFilter>, nil] A list of filters to match events to this billable metric. Each filter defines a
       #   #   rule on an event property. All rules must pass for the event to match the
       #   #   billable metric.
       #   #

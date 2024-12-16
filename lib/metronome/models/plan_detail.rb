@@ -42,10 +42,10 @@ module Metronome
       #   # @param id [String]
       #   # @param custom_fields [Hash]
       #   # @param name [String]
-      #   # @param credit_grants [Array<Object>, nil]
+      #   # @param credit_grants [Array<Metronome::Models::PlanDetail::CreditGrant>, nil]
       #   # @param description [String, nil]
-      #   # @param minimums [Array<Object>, nil]
-      #   # @param overage_rates [Array<Object>, nil]
+      #   # @param minimums [Array<Metronome::Models::PlanDetail::Minimum>, nil]
+      #   # @param overage_rates [Array<Metronome::Models::PlanDetail::OverageRate>, nil]
       #   #
       #   def initialize(id:, custom_fields:, name:, credit_grants: nil, description: nil, minimums: nil, overage_rates: nil) = super
 
@@ -109,9 +109,9 @@ module Metronome
 
         # @!parse
         #   # @param amount_granted [Float]
-        #   # @param amount_granted_credit_type [Object]
+        #   # @param amount_granted_credit_type [Metronome::Models::CreditTypeData]
         #   # @param amount_paid [Float]
-        #   # @param amount_paid_credit_type [Object]
+        #   # @param amount_paid_credit_type [Metronome::Models::CreditTypeData]
         #   # @param effective_duration [Float]
         #   # @param name [String]
         #   # @param priority [String]
@@ -162,7 +162,7 @@ module Metronome
         required :value, Float
 
         # @!parse
-        #   # @param credit_type [Object]
+        #   # @param credit_type [Metronome::Models::CreditTypeData]
         #   #
         #   # @param name [String]
         #   #
@@ -199,9 +199,9 @@ module Metronome
         required :to_fiat_conversion_factor, Float
 
         # @!parse
-        #   # @param credit_type [Object]
+        #   # @param credit_type [Metronome::Models::CreditTypeData]
         #   #
-        #   # @param fiat_credit_type [Object]
+        #   # @param fiat_credit_type [Metronome::Models::CreditTypeData]
         #   #
         #   # @param start_period [Float] Used in price ramps. Indicates how many billing periods pass before the charge
         #   #   applies.

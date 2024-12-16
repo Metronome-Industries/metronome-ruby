@@ -47,7 +47,7 @@ module Metronome
       #   # @param id [String]
       #   # @param timestamp [String]
       #   # @param action [String, nil]
-      #   # @param actor [Object, nil]
+      #   # @param actor [Metronome::Models::AuditLogListResponse::Actor, nil]
       #   # @param description [String, nil]
       #   # @param resource_id [String, nil]
       #   # @param resource_type [String, nil]

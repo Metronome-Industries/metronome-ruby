@@ -49,7 +49,7 @@ module Metronome
       #   #
       #   # @param next_page [String, nil] Cursor that indicates where the next page of results should start.
       #   #
-      #   # @param billable_metrics [Array<Object>, nil] A list of billable metrics to fetch usage for. If absent, all billable metrics
+      #   # @param billable_metrics [Array<Metronome::Models::UsageListParams::BillableMetric>, nil] A list of billable metrics to fetch usage for. If absent, all billable metrics
       #   #   will be returned.
       #   #
       #   # @param customer_ids [Array<String>, nil] A list of Metronome customer IDs to fetch usage for. If absent, usage for all
@@ -79,7 +79,7 @@ module Metronome
 
         # @!parse
         #   # @param id [String]
-        #   # @param group_by [Object, nil]
+        #   # @param group_by [Metronome::Models::UsageListParams::BillableMetric::GroupBy, nil]
         #   #
         #   def initialize(id:, group_by: nil) = super
 

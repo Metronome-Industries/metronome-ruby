@@ -34,7 +34,7 @@ module Metronome
       # @!parse
       #   # @param name [String] This will be truncated to 160 characters if the provided name is longer.
       #   #
-      #   # @param billing_config [Object, nil]
+      #   # @param billing_config [Metronome::Models::CustomerCreateParams::BillingConfig, nil]
       #   #
       #   # @param custom_fields [Hash, nil]
       #   #

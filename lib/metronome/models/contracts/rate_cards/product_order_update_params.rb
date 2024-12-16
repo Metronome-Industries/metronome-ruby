@@ -22,7 +22,7 @@ module Metronome
           required :rate_card_id, String
 
           # @!parse
-          #   # @param product_moves [Array<Object>]
+          #   # @param product_moves [Array<Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove>]
           #   #
           #   # @param rate_card_id [String] ID of the rate card to update
           #   #

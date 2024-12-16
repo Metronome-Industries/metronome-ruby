@@ -91,11 +91,11 @@ module Metronome
       # @!parse
       #   # @param id [String]
       #   #
-      #   # @param product [Object]
+      #   # @param product [Metronome::Models::Credit::Product]
       #   #
       #   # @param type [String]
       #   #
-      #   # @param access_schedule [Object, nil] The schedule that the customer will gain access to the credits.
+      #   # @param access_schedule [Metronome::Models::ScheduleDuration, nil] The schedule that the customer will gain access to the credits.
       #   #
       #   # @param applicable_contract_ids [Array<String>, nil]
       #   #
@@ -103,13 +103,13 @@ module Metronome
       #   #
       #   # @param applicable_product_tags [Array<String>, nil]
       #   #
-      #   # @param contract [Object, nil]
+      #   # @param contract [Metronome::Models::Credit::Contract, nil]
       #   #
       #   # @param custom_fields [Hash, nil]
       #   #
       #   # @param description [String, nil]
       #   #
-      #   # @param ledger [Array<Object>, nil] A list of ordered events that impact the balance of a credit. For example, an
+      #   # @param ledger [Array<Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent13, Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent14, Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent15, Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent16, Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent17, Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent18>, nil] A list of ordered events that impact the balance of a credit. For example, an
       #   #   invoice deduction or an expiration.
       #   #
       #   # @param name [String, nil]

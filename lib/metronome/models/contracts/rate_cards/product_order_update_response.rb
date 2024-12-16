@@ -11,7 +11,7 @@ module Metronome
           required :data, -> { Metronome::Models::ID }
 
           # @!parse
-          #   # @param data [Object]
+          #   # @param data [Metronome::Models::ID]
           #   #
           #   def initialize(data:) = super
 

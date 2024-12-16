@@ -92,25 +92,25 @@ module Metronome
       #   #
       #   # @param starting_at [String] inclusive start time for the amendment
       #   #
-      #   # @param commits [Array<Object>, nil]
+      #   # @param commits [Array<Metronome::Models::ContractAmendParams::Commit>, nil]
       #   #
-      #   # @param credits [Array<Object>, nil]
+      #   # @param credits [Array<Metronome::Models::ContractAmendParams::Credit>, nil]
       #   #
       #   # @param custom_fields [Hash, nil]
       #   #
-      #   # @param discounts [Array<Object>, nil] This field's availability is dependent on your client's configuration.
+      #   # @param discounts [Array<Metronome::Models::ContractAmendParams::Discount>, nil] This field's availability is dependent on your client's configuration.
       #   #
       #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
       #   #
-      #   # @param overrides [Array<Object>, nil]
+      #   # @param overrides [Array<Metronome::Models::ContractAmendParams::Override>, nil]
       #   #
-      #   # @param professional_services [Array<Object>, nil] This field's availability is dependent on your client's configuration.
+      #   # @param professional_services [Array<Metronome::Models::ContractAmendParams::ProfessionalService>, nil] This field's availability is dependent on your client's configuration.
       #   #
-      #   # @param reseller_royalties [Array<Object>, nil] This field's availability is dependent on your client's configuration.
+      #   # @param reseller_royalties [Array<Metronome::Models::ContractAmendParams::ResellerRoyalty>, nil] This field's availability is dependent on your client's configuration.
       #   #
       #   # @param salesforce_opportunity_id [String, nil] This field's availability is dependent on your client's configuration.
       #   #
-      #   # @param scheduled_charges [Array<Object>, nil]
+      #   # @param scheduled_charges [Array<Metronome::Models::ContractAmendParams::ScheduledCharge>, nil]
       #   #
       #   # @param total_contract_value [Float, nil] This field's availability is dependent on your client's configuration.
       #   #
@@ -227,7 +227,7 @@ module Metronome
         #   #
         #   # @param type [String]
         #   #
-        #   # @param access_schedule [Object, nil] Required: Schedule for distributing the commit to the customer. For "POSTPAID"
+        #   # @param access_schedule [Metronome::Models::ContractAmendParams::Commit::AccessSchedule, nil] Required: Schedule for distributing the commit to the customer. For "POSTPAID"
         #   #   commits only one schedule item is allowed and amount must match invoice_schedule
         #   #   total.
         #   #
@@ -243,7 +243,7 @@ module Metronome
         #   #
         #   # @param description [String, nil] Used only in UI/API. It is not exposed to end customers.
         #   #
-        #   # @param invoice_schedule [Object, nil] Required for "POSTPAID" commits: the true up invoice will be generated at this
+        #   # @param invoice_schedule [Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule, nil] Required for "POSTPAID" commits: the true up invoice will be generated at this
         #   #   time and only one schedule item is allowed; the total must match access_schedule
         #   #   amount. Optional for "PREPAID" commits: if not provided, this will be a
         #   #   "complimentary" commit with no invoice.
@@ -311,7 +311,7 @@ module Metronome
           #   #   commits only one schedule item is allowed and amount must match invoice_schedule
           #   #   total.
           #   #
-          #   # @param schedule_items [Array<Object>]
+          #   # @param schedule_items [Array<Metronome::Models::ContractAmendParams::Commit::AccessSchedule::ScheduleItem>]
           #   #
           #   # @param credit_type_id [String, nil] Defaults to USD (cents) if not passed
           #   #
@@ -383,11 +383,11 @@ module Metronome
           #   #
           #   # @param credit_type_id [String, nil] Defaults to USD (cents) if not passed.
           #   #
-          #   # @param recurring_schedule [Object, nil] Enter the unit price and quantity for the charge or instead only send the
+          #   # @param recurring_schedule [Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule::RecurringSchedule, nil] Enter the unit price and quantity for the charge or instead only send the
           #   #   amount. If amount is sent, the unit price is assumed to be the amount and
           #   #   quantity is inferred to be 1.
           #   #
-          #   # @param schedule_items [Array<Object>, nil] Either provide amount or provide both unit_price and quantity.
+          #   # @param schedule_items [Array<Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule::ScheduleItem>, nil] Either provide amount or provide both unit_price and quantity.
           #   #
           #   def initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil) = super
 
@@ -606,7 +606,7 @@ module Metronome
         optional :rate_type, enum: -> { Metronome::Models::ContractAmendParams::Credit::RateType }
 
         # @!parse
-        #   # @param access_schedule [Object] Schedule for distributing the credit to the customer.
+        #   # @param access_schedule [Metronome::Models::ContractAmendParams::Credit::AccessSchedule] Schedule for distributing the credit to the customer.
         #   #
         #   # @param product_id [String]
         #   #
@@ -666,7 +666,7 @@ module Metronome
           # @!parse
           #   # Schedule for distributing the credit to the customer.
           #   #
-          #   # @param schedule_items [Array<Object>]
+          #   # @param schedule_items [Array<Metronome::Models::ContractAmendParams::Credit::AccessSchedule::ScheduleItem>]
           #   #
           #   # @param credit_type_id [String, nil] Defaults to USD (cents) if not passed
           #   #
@@ -740,7 +740,7 @@ module Metronome
         # @!parse
         #   # @param product_id [String]
         #   #
-        #   # @param schedule [Object] Must provide either schedule_items or recurring_schedule.
+        #   # @param schedule [Metronome::Models::ContractAmendParams::Discount::Schedule] Must provide either schedule_items or recurring_schedule.
         #   #
         #   # @param name [String, nil] displayed on invoices
         #   #
@@ -780,11 +780,11 @@ module Metronome
           #   #
           #   # @param credit_type_id [String, nil] Defaults to USD (cents) if not passed.
           #   #
-          #   # @param recurring_schedule [Object, nil] Enter the unit price and quantity for the charge or instead only send the
+          #   # @param recurring_schedule [Metronome::Models::ContractAmendParams::Discount::Schedule::RecurringSchedule, nil] Enter the unit price and quantity for the charge or instead only send the
           #   #   amount. If amount is sent, the unit price is assumed to be the amount and
           #   #   quantity is inferred to be 1.
           #   #
-          #   # @param schedule_items [Array<Object>, nil] Either provide amount or provide both unit_price and quantity.
+          #   # @param schedule_items [Array<Metronome::Models::ContractAmendParams::Discount::Schedule::ScheduleItem>, nil] Either provide amount or provide both unit_price and quantity.
           #   #
           #   def initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil) = super
 
@@ -1037,10 +1037,10 @@ module Metronome
         #   #
         #   # @param multiplier [Float, nil] Required for MULTIPLIER type. Must be >=0.
         #   #
-        #   # @param override_specifiers [Array<Object>, nil] Cannot be used in conjunction with product_id or applicable_product_tags. If
+        #   # @param override_specifiers [Array<Metronome::Models::ContractAmendParams::Override::OverrideSpecifier>, nil] Cannot be used in conjunction with product_id or applicable_product_tags. If
         #   #   provided, the override will apply to all products with the specified specifiers.
         #   #
-        #   # @param overwrite_rate [Object, nil] Required for OVERWRITE type.
+        #   # @param overwrite_rate [Metronome::Models::ContractAmendParams::Override::OverwriteRate, nil] Required for OVERWRITE type.
         #   #
         #   # @param priority [Float, nil] Required for EXPLICIT multiplier prioritization scheme and all TIERED overrides.
         #   #   Under EXPLICIT prioritization, overwrites are prioritized first, and then tiered
@@ -1054,7 +1054,7 @@ module Metronome
         #   #   be used for overrides that have `is_commit_specific` set to `true`. Defaults to
         #   #   `"LIST_RATE"`.
         #   #
-        #   # @param tiers [Array<Object>, nil] Required for TIERED type. Must have at least one tier.
+        #   # @param tiers [Array<Metronome::Models::ContractAmendParams::Override::Tier>, nil] Required for TIERED type. Must have at least one tier.
         #   #
         #   # @param type [String, nil] Overwrites are prioritized over multipliers and tiered overrides.
         #   #
@@ -1200,7 +1200,7 @@ module Metronome
           #   #
           #   # @param quantity [Float, nil] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
           #   #
-          #   # @param tiers [Array<Object>, nil] Only set for TIERED rate_type.
+          #   # @param tiers [Array<Metronome::Models::Tier>, nil] Only set for TIERED rate_type.
           #   #
           #   def initialize(rate_type:, credit_type_id: nil, custom_rate: nil, is_prorated: nil, price: nil, quantity: nil, tiers: nil) = super
 
@@ -1385,13 +1385,13 @@ module Metronome
         #   #
         #   # @param applicable_product_tags [Array<String>, nil] Must provide at least one of applicable_product_ids or applicable_product_tags.
         #   #
-        #   # @param aws_options [Object, nil]
+        #   # @param aws_options [Metronome::Models::ContractAmendParams::ResellerRoyalty::AwsOptions, nil]
         #   #
         #   # @param ending_before [String, nil] Use null to indicate that the existing end timestamp should be removed.
         #   #
         #   # @param fraction [Float, nil]
         #   #
-        #   # @param gcp_options [Object, nil]
+        #   # @param gcp_options [Metronome::Models::ContractAmendParams::ResellerRoyalty::GcpOptions, nil]
         #   #
         #   # @param netsuite_reseller_id [String, nil]
         #   #
@@ -1497,7 +1497,7 @@ module Metronome
         # @!parse
         #   # @param product_id [String]
         #   #
-        #   # @param schedule [Object] Must provide either schedule_items or recurring_schedule.
+        #   # @param schedule [Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule] Must provide either schedule_items or recurring_schedule.
         #   #
         #   # @param name [String, nil] displayed on invoices
         #   #
@@ -1537,11 +1537,11 @@ module Metronome
           #   #
           #   # @param credit_type_id [String, nil] Defaults to USD (cents) if not passed.
           #   #
-          #   # @param recurring_schedule [Object, nil] Enter the unit price and quantity for the charge or instead only send the
+          #   # @param recurring_schedule [Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule::RecurringSchedule, nil] Enter the unit price and quantity for the charge or instead only send the
           #   #   amount. If amount is sent, the unit price is assumed to be the amount and
           #   #   quantity is inferred to be 1.
           #   #
-          #   # @param schedule_items [Array<Object>, nil] Either provide amount or provide both unit_price and quantity.
+          #   # @param schedule_items [Array<Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule::ScheduleItem>, nil] Either provide amount or provide both unit_price and quantity.
           #   #
           #   def initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil) = super
 

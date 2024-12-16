@@ -52,7 +52,7 @@ module Metronome
       #   # @param at [String, nil] optional timestamp which overlaps with the returned rate schedule segments. When
       #   #   not specified, the current timestamp will be used.
       #   #
-      #   # @param selectors [Array<Object>, nil] List of rate selectors, rates matching ANY of the selectors will be included in
+      #   # @param selectors [Array<Metronome::Models::ContractRetrieveRateScheduleParams::Selector>, nil] List of rate selectors, rates matching ANY of the selectors will be included in
       #   #   the response. Passing no selectors will result in all rates being returned.
       #   #
       #   def initialize(contract_id:, customer_id:, limit: nil, next_page: nil, at: nil, selectors: nil) = super

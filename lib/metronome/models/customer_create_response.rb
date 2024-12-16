@@ -9,7 +9,7 @@ module Metronome
       required :data, -> { Metronome::Models::Customer }
 
       # @!parse
-      #   # @param data [Object]
+      #   # @param data [Metronome::Models::Customer]
       #   #
       #   def initialize(data:) = super
 

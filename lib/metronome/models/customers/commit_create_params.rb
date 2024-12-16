@@ -96,7 +96,7 @@ module Metronome
         optional :salesforce_opportunity_id, String
 
         # @!parse
-        #   # @param access_schedule [Object] Schedule for distributing the commit to the customer. For "POSTPAID" commits
+        #   # @param access_schedule [Metronome::Models::Customers::CommitCreateParams::AccessSchedule] Schedule for distributing the commit to the customer. For "POSTPAID" commits
         #   #   only one schedule item is allowed and amount must match invoice_schedule total.
         #   #
         #   # @param customer_id [String]
@@ -125,7 +125,7 @@ module Metronome
         #   #   commits and for "PREPAID" commits unless there is no invoice schedule above
         #   #   (i.e., the commit is 'free').
         #   #
-        #   # @param invoice_schedule [Object, nil] Required for "POSTPAID" commits: the true up invoice will be generated at this
+        #   # @param invoice_schedule [Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule, nil] Required for "POSTPAID" commits: the true up invoice will be generated at this
         #   #   time and only one schedule item is allowed; the total must match
         #   #   accesss_schedule amount. Optional for "PREPAID" commits: if not provided, this
         #   #   will be a "complimentary" commit with no invoice.
@@ -182,7 +182,7 @@ module Metronome
           #   # Schedule for distributing the commit to the customer. For "POSTPAID" commits
           #   #   only one schedule item is allowed and amount must match invoice_schedule total.
           #   #
-          #   # @param schedule_items [Array<Object>]
+          #   # @param schedule_items [Array<Metronome::Models::Customers::CommitCreateParams::AccessSchedule::ScheduleItem>]
           #   #
           #   # @param credit_type_id [String, nil] Defaults to USD (cents) if not passed
           #   #
@@ -259,11 +259,11 @@ module Metronome
           #   #
           #   # @param credit_type_id [String, nil] Defaults to USD (cents) if not passed.
           #   #
-          #   # @param recurring_schedule [Object, nil] Enter the unit price and quantity for the charge or instead only send the
+          #   # @param recurring_schedule [Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule, nil] Enter the unit price and quantity for the charge or instead only send the
           #   #   amount. If amount is sent, the unit price is assumed to be the amount and
           #   #   quantity is inferred to be 1.
           #   #
-          #   # @param schedule_items [Array<Object>, nil] Either provide amount or provide both unit_price and quantity.
+          #   # @param schedule_items [Array<Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem>, nil] Either provide amount or provide both unit_price and quantity.
           #   #
           #   def initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil) = super
 

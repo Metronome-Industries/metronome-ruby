@@ -20,7 +20,7 @@ module Metronome
         optional :next_page, String
 
         # @!parse
-        #   # @param data [Array<Object>]
+        #   # @param data [Array<Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Data>]
         #   # @param next_page [String, nil]
         #   #
         #   def initialize(data:, next_page: nil) = super
@@ -84,11 +84,11 @@ module Metronome
           #   #
           #   # @param product_tags [Array<String>]
           #   #
-          #   # @param rate [Object]
+          #   # @param rate [Metronome::Models::Rate]
           #   #
           #   # @param starting_at [String]
           #   #
-          #   # @param commit_rate [Object, nil] A distinct rate on the rate card. You can choose to use this rate rather than
+          #   # @param commit_rate [Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Data::CommitRate, nil] A distinct rate on the rate card. You can choose to use this rate rather than
           #   #   list rate when consuming a credit or commit.
           #   #
           #   # @param ending_before [String, nil]
@@ -140,7 +140,7 @@ module Metronome
             #   #
             #   # @param price [Float, nil] Commit rate price. For FLAT rate_type, this must be >=0.
             #   #
-            #   # @param tiers [Array<Object>, nil] Only set for TIERED rate_type.
+            #   # @param tiers [Array<Metronome::Models::Tier>, nil] Only set for TIERED rate_type.
             #   #
             #   def initialize(rate_type:, price: nil, tiers: nil) = super
 
