@@ -49,5 +49,10 @@ class Metronome::Test::Resources::UsageTest < Minitest::Test
     assert_pattern do
       response => Metronome::CursorPage
     end
+
+    page = response.next_page
+    assert_pattern do
+      page => Metronome::CursorPage
+    end
   end
 end

@@ -64,6 +64,21 @@ module Metronome
       #
       # Multiple statuses can be OR'd together using commas, e.g. `active,ended`.
       # **Note:** `ended,upcoming` combination is not yet supported.
+      #
+      # @example
+      #
+      # ```ruby
+      # case enum
+      # in :all
+      #   # ...
+      # in :active
+      #   # ...
+      # in :ended
+      #   # ...
+      # in :upcoming
+      #   # ...
+      # end
+      # ```
       class Status < Metronome::Enum
         ALL = :all
         ACTIVE = :active

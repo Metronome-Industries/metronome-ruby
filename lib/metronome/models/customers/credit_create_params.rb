@@ -188,6 +188,20 @@ module Metronome
           end
         end
 
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :COMMIT_RATE
+        #   # ...
+        # in :commit_rate
+        #   # ...
+        # in :LIST_RATE
+        #   # ...
+        # in :list_rate
+        #   # ...
+        # end
+        # ```
         class RateType < Metronome::Enum
           COMMIT_RATE = :COMMIT_RATE
           COMMIT_RATE = :commit_rate

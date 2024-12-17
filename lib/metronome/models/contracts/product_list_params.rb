@@ -34,6 +34,19 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # Filter options for the product list
+        #
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :ARCHIVED
+        #   # ...
+        # in :NOT_ARCHIVED
+        #   # ...
+        # in :ALL
+        #   # ...
+        # end
+        # ```
         class ArchiveFilter < Metronome::Enum
           ARCHIVED = :ARCHIVED
           NOT_ARCHIVED = :NOT_ARCHIVED

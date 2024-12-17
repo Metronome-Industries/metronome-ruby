@@ -221,6 +221,16 @@ module Metronome
           end
         end
 
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :PREPAID
+        #   # ...
+        # in :POSTPAID
+        #   # ...
+        # end
+        # ```
         class Type < Metronome::Enum
           PREPAID = :PREPAID
           POSTPAID = :POSTPAID
@@ -355,12 +365,38 @@ module Metronome
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
+            # @example
+            #
+            # ```ruby
+            # case enum
+            # in :DIVIDED
+            #   # ...
+            # in :DIVIDED_ROUNDED
+            #   # ...
+            # in :EACH
+            #   # ...
+            # end
+            # ```
             class AmountDistribution < Metronome::Enum
               DIVIDED = :DIVIDED
               DIVIDED_ROUNDED = :DIVIDED_ROUNDED
               EACH = :EACH
             end
 
+            # @example
+            #
+            # ```ruby
+            # case enum
+            # in :MONTHLY
+            #   # ...
+            # in :QUARTERLY
+            #   # ...
+            # in :SEMI_ANNUAL
+            #   # ...
+            # in :ANNUAL
+            #   # ...
+            # end
+            # ```
             class Frequency < Metronome::Enum
               MONTHLY = :MONTHLY
               QUARTERLY = :QUARTERLY
@@ -415,6 +451,20 @@ module Metronome
           end
         end
 
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :COMMIT_RATE
+        #   # ...
+        # in :commit_rate
+        #   # ...
+        # in :LIST_RATE
+        #   # ...
+        # in :list_rate
+        #   # ...
+        # end
+        # ```
         class RateType < Metronome::Enum
           COMMIT_RATE = :COMMIT_RATE
           COMMIT_RATE = :commit_rate

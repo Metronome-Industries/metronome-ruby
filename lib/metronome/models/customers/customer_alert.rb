@@ -164,6 +164,19 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # Status of the alert
+          #
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :enabled
+          #   # ...
+          # in :archived
+          #   # ...
+          # in :disabled
+          #   # ...
+          # end
+          # ```
           class Status < Metronome::Enum
             ENABLED = :enabled
             ARCHIVED = :archived
@@ -171,6 +184,25 @@ module Metronome
           end
 
           # Type of the alert
+          #
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :low_credit_balance_reached
+          #   # ...
+          # in :spend_threshold_reached
+          #   # ...
+          # in :monthly_invoice_total_spend_threshold_reached
+          #   # ...
+          # in :low_remaining_days_in_plan_reached
+          #   # ...
+          # in :low_remaining_credit_percentage_reached
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Type < Metronome::Enum
             LOW_CREDIT_BALANCE_REACHED = :low_credit_balance_reached
             SPEND_THRESHOLD_REACHED = :spend_threshold_reached
@@ -216,6 +248,18 @@ module Metronome
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
+            # @example
+            #
+            # ```ruby
+            # case enum
+            # in :Contract
+            #   # ...
+            # in :Commit
+            #   # ...
+            # in :ContractCredit
+            #   # ...
+            # end
+            # ```
             class Entity < Metronome::Enum
               CONTRACT = :Contract
               COMMIT = :Commit
@@ -248,6 +292,19 @@ module Metronome
         end
 
         # The status of the customer alert. If the alert is archived, null will be returned.
+        #
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :ok
+        #   # ...
+        # in :in_alarm
+        #   # ...
+        # in :evaluating
+        #   # ...
+        # end
+        # ```
         class CustomerStatus < Metronome::Enum
           OK = :ok
           IN_ALARM = :in_alarm

@@ -205,6 +205,16 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :SUPERSEDE
+        #   # ...
+        # in :RENEWAL
+        #   # ...
+        # end
+        # ```
         class Type < Metronome::Enum
           SUPERSEDE = :SUPERSEDE
           RENEWAL = :RENEWAL
@@ -233,6 +243,18 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :MONTHLY
+        #   # ...
+        # in :QUARTERLY
+        #   # ...
+        # in :ANNUAL
+        #   # ...
+        # end
+        # ```
         class Frequency < Metronome::Enum
           MONTHLY = :MONTHLY
           QUARTERLY = :QUARTERLY
@@ -342,6 +364,20 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :AWS
+        #   # ...
+        # in :AWS_PRO_SERVICE
+        #   # ...
+        # in :GCP
+        #   # ...
+        # in :GCP_PRO_SERVICE
+        #   # ...
+        # end
+        # ```
         class ResellerType < Metronome::Enum
           AWS = :AWS
           AWS_PRO_SERVICE = :AWS_PRO_SERVICE

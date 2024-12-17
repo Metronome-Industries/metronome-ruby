@@ -39,6 +39,18 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :ENABLED
+        #   # ...
+        # in :DISABLED
+        #   # ...
+        # in :ARCHIVED
+        #   # ...
+        # end
+        # ```
         class AlertStatus < Metronome::Enum
           ENABLED = :ENABLED
           DISABLED = :DISABLED

@@ -43,6 +43,11 @@ class Metronome::Test::Resources::Contracts::ProductsTest < Minitest::Test
     assert_pattern do
       response => Metronome::CursorPage
     end
+
+    page = response.next_page
+    assert_pattern do
+      page => Metronome::CursorPage
+    end
   end
 
   def test_archive_required_params

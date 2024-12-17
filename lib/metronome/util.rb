@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module Metronome
+  # rubocop:disable Metrics/ModuleLength
+
   # @private
   #
   module Util
@@ -271,4 +273,6 @@ module Metronome
       end
     end
   end
+
+  # rubocop:enable Metrics/ModuleLength
 end

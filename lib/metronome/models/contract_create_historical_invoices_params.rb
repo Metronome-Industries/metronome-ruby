@@ -219,11 +219,32 @@ module Metronome
         end
 
         # This field's availability is dependent on your client's configuration.
+        #
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :billable
+        #   # ...
+        # in :unbillable
+        #   # ...
+        # end
+        # ```
         class BillableStatus < Metronome::Enum
           BILLABLE = :billable
           UNBILLABLE = :unbillable
         end
 
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :HOUR
+        #   # ...
+        # in :DAY
+        #   # ...
+        # end
+        # ```
         class BreakdownGranularity < Metronome::Enum
           HOUR = :HOUR
           DAY = :DAY

@@ -78,6 +78,17 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # Sort order by timestamp, e.g. date_asc or date_desc. Defaults to date_asc.
+      #
+      # @example
+      #
+      # ```ruby
+      # case enum
+      # in :date_asc
+      #   # ...
+      # in :date_desc
+      #   # ...
+      # end
+      # ```
       class Sort < Metronome::Enum
         DATE_ASC = :date_asc
         DATE_DESC = :date_desc

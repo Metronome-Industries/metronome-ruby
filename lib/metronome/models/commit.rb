@@ -210,6 +210,16 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
+      # @example
+      #
+      # ```ruby
+      # case enum
+      # in :PREPAID
+      #   # ...
+      # in :POSTPAID
+      #   # ...
+      # end
+      # ```
       class Type < Metronome::Enum
         PREPAID = :PREPAID
         POSTPAID = :POSTPAID
@@ -245,6 +255,16 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
+      # @example
+      #
+      # ```ruby
+      # case enum
+      # in :COMMIT_RATE
+      #   # ...
+      # in :LIST_RATE
+      #   # ...
+      # end
+      # ```
       class RateType < Metronome::Enum
         COMMIT_RATE = :COMMIT_RATE
         LIST_RATE = :LIST_RATE

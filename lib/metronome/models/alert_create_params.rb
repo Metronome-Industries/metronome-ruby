@@ -143,6 +143,25 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # Type of the alert
+      #
+      # @example
+      #
+      # ```ruby
+      # case enum
+      # in :low_credit_balance_reached
+      #   # ...
+      # in :spend_threshold_reached
+      #   # ...
+      # in :monthly_invoice_total_spend_threshold_reached
+      #   # ...
+      # in :low_remaining_days_in_plan_reached
+      #   # ...
+      # in :low_remaining_credit_percentage_reached
+      #   # ...
+      # in ...
+      #   #...
+      # end
+      # ```
       class AlertType < Metronome::Enum
         LOW_CREDIT_BALANCE_REACHED = :low_credit_balance_reached
         SPEND_THRESHOLD_REACHED = :spend_threshold_reached
@@ -185,6 +204,18 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :Contract
+        #   # ...
+        # in :Commit
+        #   # ...
+        # in :ContractCredit
+        #   # ...
+        # end
+        # ```
         class Entity < Metronome::Enum
           CONTRACT = :Contract
           COMMIT = :Commit

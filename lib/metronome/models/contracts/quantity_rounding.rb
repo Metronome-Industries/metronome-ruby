@@ -27,6 +27,18 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :ROUND_UP
+        #   # ...
+        # in :ROUND_DOWN
+        #   # ...
+        # in :ROUND_HALF_UP
+        #   # ...
+        # end
+        # ```
         class RoundingMethod < Metronome::Enum
           ROUND_UP = :ROUND_UP
           ROUND_DOWN = :ROUND_DOWN

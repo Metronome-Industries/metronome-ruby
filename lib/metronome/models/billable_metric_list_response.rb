@@ -107,6 +107,23 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # Specifies the type of aggregation performed on matching events.
+      #
+      # @example
+      #
+      # ```ruby
+      # case enum
+      # in :COUNT
+      #   # ...
+      # in :LATEST
+      #   # ...
+      # in :MAX
+      #   # ...
+      # in :SUM
+      #   # ...
+      # in :UNIQUE
+      #   # ...
+      # end
+      # ```
       class AggregationType < Metronome::Enum
         COUNT = :COUNT
         LATEST = :LATEST

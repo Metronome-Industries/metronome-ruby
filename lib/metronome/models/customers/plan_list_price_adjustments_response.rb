@@ -46,6 +46,22 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :usage
+        #   # ...
+        # in :fixed
+        #   # ...
+        # in :composite
+        #   # ...
+        # in :minimum
+        #   # ...
+        # in :seat
+        #   # ...
+        # end
+        # ```
         class ChargeType < Metronome::Enum
           USAGE = :usage
           FIXED = :fixed
@@ -87,6 +103,21 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # Determines how the value will be applied.
+          #
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :fixed
+          #   # ...
+          # in :quantity
+          #   # ...
+          # in :percentage
+          #   # ...
+          # in :override
+          #   # ...
+          # end
+          # ```
           class AdjustmentType < Metronome::Enum
             FIXED = :fixed
             QUANTITY = :quantity

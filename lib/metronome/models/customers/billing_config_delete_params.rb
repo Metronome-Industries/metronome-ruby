@@ -23,6 +23,24 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :aws_marketplace
+        #   # ...
+        # in :stripe
+        #   # ...
+        # in :netsuite
+        #   # ...
+        # in :custom
+        #   # ...
+        # in :azure_marketplace
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class BillingProviderType < Metronome::Enum
           AWS_MARKETPLACE = :aws_marketplace
           STRIPE = :stripe

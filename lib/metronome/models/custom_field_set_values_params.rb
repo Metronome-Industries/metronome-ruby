@@ -27,6 +27,24 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
+      # @example
+      #
+      # ```ruby
+      # case enum
+      # in :alert
+      #   # ...
+      # in :billable_metric
+      #   # ...
+      # in :charge
+      #   # ...
+      # in :commit
+      #   # ...
+      # in :contract_credit
+      #   # ...
+      # in ...
+      #   #...
+      # end
+      # ```
       class Entity < Metronome::Enum
         ALERT = :alert
         BILLABLE_METRIC = :billable_metric

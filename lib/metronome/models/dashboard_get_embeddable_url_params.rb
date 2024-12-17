@@ -63,6 +63,19 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # The type of dashboard to retrieve.
+      #
+      # @example
+      #
+      # ```ruby
+      # case enum
+      # in :invoices
+      #   # ...
+      # in :usage
+      #   # ...
+      # in :credits
+      #   # ...
+      # end
+      # ```
       class Dashboard < Metronome::Enum
         INVOICES = :invoices
         USAGE = :usage
@@ -124,6 +137,25 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # The color to override
+        #
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :Gray_dark
+        #   # ...
+        # in :Gray_medium
+        #   # ...
+        # in :Gray_light
+        #   # ...
+        # in :Gray_extralight
+        #   # ...
+        # in :White
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class Name < Metronome::Enum
           GRAY_DARK = :Gray_dark
           GRAY_MEDIUM = :Gray_medium

@@ -152,6 +152,24 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :FIXED
+        #   # ...
+        # in :USAGE
+        #   # ...
+        # in :COMPOSITE
+        #   # ...
+        # in :SUBSCRIPTION
+        #   # ...
+        # in :PROFESSIONAL_SERVICE
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class Type < Metronome::Enum
           FIXED = :FIXED
           USAGE = :USAGE

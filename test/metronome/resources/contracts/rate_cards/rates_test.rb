@@ -19,6 +19,11 @@ class Metronome::Test::Resources::Contracts::RateCards::RatesTest < Minitest::Te
     assert_pattern do
       response => Metronome::CursorPage
     end
+
+    page = response.next_page
+    assert_pattern do
+      page => Metronome::CursorPage
+    end
   end
 
   def test_add_required_params

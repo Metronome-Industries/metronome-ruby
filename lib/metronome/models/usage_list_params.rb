@@ -60,6 +60,19 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # A window_size of "day" or "hour" will return the usage for the specified period segmented into daily or hourly aggregates. A window_size of "none" will return a single usage aggregate for the entirety of the specified period.
+      #
+      # @example
+      #
+      # ```ruby
+      # case enum
+      # in :HOUR
+      #   # ...
+      # in :DAY
+      #   # ...
+      # in :NONE
+      #   # ...
+      # end
+      # ```
       class WindowSize < Metronome::Enum
         HOUR = :HOUR
         DAY = :DAY
