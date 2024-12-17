@@ -439,6 +439,11 @@ module Metronome
           optional :sub_line_items,
                    Metronome::ArrayOf.new(-> { Metronome::Models::Customers::Invoice::LineItem::SubLineItem })
 
+          # @!attribute tier
+          #
+          #   @return [Metronome::Models::Customers::Invoice::LineItem::Tier]
+          optional :tier, -> { Metronome::Models::Customers::Invoice::LineItem::Tier }
+
           # @!attribute unit_price
           #   only present for beta contract invoices
           #
@@ -521,6 +526,8 @@ module Metronome
           #   #
           #   # @param sub_line_items [Array<Metronome::Models::Customers::Invoice::LineItem::SubLineItem>, nil]
           #   #
+          #   # @param tier [Metronome::Models::Customers::Invoice::LineItem::Tier, nil]
+          #   #
           #   # @param unit_price [Float, nil] only present for beta contract invoices
           #   #
           #   def initialize(
@@ -558,6 +565,7 @@ module Metronome
           #     scheduled_charge_id: nil,
           #     starting_at: nil,
           #     sub_line_items: nil,
+          #     tier: nil,
           #     unit_price: nil
           #   )
           #     super
@@ -786,6 +794,32 @@ module Metronome
 
               # def initialize: (Hash | Metronome::BaseModel) -> void
             end
+          end
+
+          class Tier < Metronome::BaseModel
+            # @!attribute level
+            #
+            #   @return [Float]
+            required :level, Float
+
+            # @!attribute starting_at
+            #
+            #   @return [String]
+            required :starting_at, String
+
+            # @!attribute size
+            #
+            #   @return [String]
+            optional :size, String
+
+            # @!parse
+            #   # @param level [Float]
+            #   # @param starting_at [String]
+            #   # @param size [String, nil]
+            #   #
+            #   def initialize(level:, starting_at:, size: nil) = super
+
+            # def initialize: (Hash | Metronome::BaseModel) -> void
           end
         end
 
