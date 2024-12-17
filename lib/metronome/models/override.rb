@@ -317,6 +317,22 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :FLAT
+        #   # ...
+        # in :PERCENTAGE
+        #   # ...
+        # in :SUBSCRIPTION
+        #   # ...
+        # in :TIERED
+        #   # ...
+        # in :CUSTOM
+        #   # ...
+        # end
+        # ```
         class RateType < Metronome::Enum
           FLAT = :FLAT
           PERCENTAGE = :PERCENTAGE
@@ -346,6 +362,22 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
+      # @example
+      #
+      # ```ruby
+      # case enum
+      # in :FLAT
+      #   # ...
+      # in :PERCENTAGE
+      #   # ...
+      # in :SUBSCRIPTION
+      #   # ...
+      # in :TIERED
+      #   # ...
+      # in :CUSTOM
+      #   # ...
+      # end
+      # ```
       class RateType < Metronome::Enum
         FLAT = :FLAT
         PERCENTAGE = :PERCENTAGE
@@ -354,11 +386,33 @@ module Metronome
         CUSTOM = :CUSTOM
       end
 
+      # @example
+      #
+      # ```ruby
+      # case enum
+      # in :COMMIT_RATE
+      #   # ...
+      # in :LIST_RATE
+      #   # ...
+      # end
+      # ```
       class Target < Metronome::Enum
         COMMIT_RATE = :COMMIT_RATE
         LIST_RATE = :LIST_RATE
       end
 
+      # @example
+      #
+      # ```ruby
+      # case enum
+      # in :OVERWRITE
+      #   # ...
+      # in :MULTIPLIER
+      #   # ...
+      # in :TIERED
+      #   # ...
+      # end
+      # ```
       class Type < Metronome::Enum
         OVERWRITE = :OVERWRITE
         MULTIPLIER = :MULTIPLIER

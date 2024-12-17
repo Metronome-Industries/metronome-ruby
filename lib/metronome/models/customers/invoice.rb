@@ -597,6 +597,18 @@ module Metronome
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
+            # @example
+            #
+            # ```ruby
+            # case enum
+            # in :PREPAID
+            #   # ...
+            # in :POSTPAID
+            #   # ...
+            # in :CREDIT
+            #   # ...
+            # end
+            # ```
             class Type < Metronome::Enum
               PREPAID = :PREPAID
               POSTPAID = :POSTPAID
@@ -620,6 +632,20 @@ module Metronome
             # def initialize: (Hash | Metronome::BaseModel) -> void
           end
 
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :AWS
+          #   # ...
+          # in :AWS_PRO_SERVICE
+          #   # ...
+          # in :GCP
+          #   # ...
+          # in :GCP_PRO_SERVICE
+          #   # ...
+          # end
+          # ```
           class ResellerType < Metronome::Enum
             AWS = :AWS
             AWS_PRO_SERVICE = :AWS_PRO_SERVICE
@@ -824,6 +850,17 @@ module Metronome
         end
 
         # This field's availability is dependent on your client's configuration.
+        #
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :billable
+        #   # ...
+        # in :unbillable
+        #   # ...
+        # end
+        # ```
         class BillableStatus < Metronome::Enum
           BILLABLE = :billable
           UNBILLABLE = :unbillable
@@ -898,6 +935,24 @@ module Metronome
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
+            # @example
+            #
+            # ```ruby
+            # case enum
+            # in :aws_marketplace
+            #   # ...
+            # in :stripe
+            #   # ...
+            # in :netsuite
+            #   # ...
+            # in :custom
+            #   # ...
+            # in :azure_marketplace
+            #   # ...
+            # in ...
+            #   #...
+            # end
+            # ```
             class BillingProviderType < Metronome::Enum
               AWS_MARKETPLACE = :aws_marketplace
               STRIPE = :stripe
@@ -909,6 +964,24 @@ module Metronome
               GCP_MARKETPLACE = :gcp_marketplace
             end
 
+            # @example
+            #
+            # ```ruby
+            # case enum
+            # in :DRAFT
+            #   # ...
+            # in :FINALIZED
+            #   # ...
+            # in :PAID
+            #   # ...
+            # in :UNCOLLECTIBLE
+            #   # ...
+            # in :VOID
+            #   # ...
+            # in ...
+            #   #...
+            # end
+            # ```
             class ExternalStatus < Metronome::Enum
               DRAFT = :DRAFT
               FINALIZED = :FINALIZED
@@ -958,6 +1031,24 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :aws_marketplace
+          #   # ...
+          # in :stripe
+          #   # ...
+          # in :netsuite
+          #   # ...
+          # in :custom
+          #   # ...
+          # in :azure_marketplace
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class BillingProviderType < Metronome::Enum
             AWS_MARKETPLACE = :aws_marketplace
             STRIPE = :stripe
@@ -969,6 +1060,24 @@ module Metronome
             GCP_MARKETPLACE = :gcp_marketplace
           end
 
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :DRAFT
+          #   # ...
+          # in :FINALIZED
+          #   # ...
+          # in :PAID
+          #   # ...
+          # in :UNCOLLECTIBLE
+          #   # ...
+          # in :VOID
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class ExternalStatus < Metronome::Enum
             DRAFT = :DRAFT
             FINALIZED = :FINALIZED
@@ -1064,6 +1173,20 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :AWS
+          #   # ...
+          # in :AWS_PRO_SERVICE
+          #   # ...
+          # in :GCP
+          #   # ...
+          # in :GCP_PRO_SERVICE
+          #   # ...
+          # end
+          # ```
           class ResellerType < Metronome::Enum
             AWS = :AWS
             AWS_PRO_SERVICE = :AWS_PRO_SERVICE

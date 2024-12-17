@@ -112,6 +112,22 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
+      # @example
+      #
+      # ```ruby
+      # case enum
+      # in :usage
+      #   # ...
+      # in :fixed
+      #   # ...
+      # in :composite
+      #   # ...
+      # in :minimum
+      #   # ...
+      # in :seat
+      #   # ...
+      # end
+      # ```
       class ChargeType < Metronome::Enum
         USAGE = :usage
         FIXED = :fixed
@@ -190,6 +206,17 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # Whether usage should be rounded down or up to the nearest whole number. If null, quantity will be rounded to 20 decimal places.
+        #
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :floor
+        #   # ...
+        # in :ceiling
+        #   # ...
+        # end
+        # ```
         class RoundingBehavior < Metronome::Enum
           FLOOR = :floor
           CEILING = :ceiling

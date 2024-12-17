@@ -42,6 +42,17 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # The operation to perform on the quantity
+        #
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :MULTIPLY
+        #   # ...
+        # in :DIVIDE
+        #   # ...
+        # end
+        # ```
         class Operation < Metronome::Enum
           MULTIPLY = :MULTIPLY
           DIVIDE = :DIVIDE

@@ -182,6 +182,20 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :percentage
+          #   # ...
+          # in :fixed
+          #   # ...
+          # in :override
+          #   # ...
+          # in :quantity
+          #   # ...
+          # end
+          # ```
           class AdjustmentType < Metronome::Enum
             PERCENTAGE = :percentage
             FIXED = :fixed

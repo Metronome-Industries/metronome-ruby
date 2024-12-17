@@ -94,6 +94,18 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
+      # @example
+      #
+      # ```ruby
+      # case enum
+      # in :success
+      #   # ...
+      # in :failure
+      #   # ...
+      # in :pending
+      #   # ...
+      # end
+      # ```
       class Status < Metronome::Enum
         SUCCESS = :success
         FAILURE = :failure

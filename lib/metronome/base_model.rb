@@ -58,6 +58,8 @@ module Metronome
     include Metronome::Converter
     # rubocop:disable Lint/UnusedMethodArgument
 
+    private_class_method :new
+
     # @param other [Object]
     #
     # @return [Boolean]
@@ -80,6 +82,8 @@ module Metronome
   # Ruby has no Boolean class; this is something for models to refer to.
   class BooleanModel
     include Metronome::Converter
+
+    private_class_method :new
 
     # @param other [Object]
     #
@@ -108,6 +112,8 @@ module Metronome
   # values safely.
   class Enum
     include Metronome::Converter
+
+    private_class_method :new
 
     # @param other [Object]
     #

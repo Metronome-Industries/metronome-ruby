@@ -16,6 +16,11 @@ class Metronome::Test::Resources::PlansTest < Minitest::Test
     assert_pattern do
       response => Metronome::CursorPage
     end
+
+    page = response.next_page
+    assert_pattern do
+      page => Metronome::CursorPage
+    end
   end
 
   def test_get_details_required_params
@@ -32,6 +37,11 @@ class Metronome::Test::Resources::PlansTest < Minitest::Test
     assert_pattern do
       response => Metronome::CursorPage
     end
+
+    page = response.next_page
+    assert_pattern do
+      page => Metronome::CursorPage
+    end
   end
 
   def test_list_customers_required_params
@@ -39,6 +49,11 @@ class Metronome::Test::Resources::PlansTest < Minitest::Test
 
     assert_pattern do
       response => Metronome::CursorPage
+    end
+
+    page = response.next_page
+    assert_pattern do
+      page => Metronome::CursorPage
     end
   end
 end

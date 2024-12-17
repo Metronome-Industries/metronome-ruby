@@ -99,6 +99,16 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :billable
+        #   # ...
+        # in :unbillable
+        #   # ...
+        # end
+        # ```
         class Value < Metronome::Enum
           BILLABLE = :billable
           UNBILLABLE = :unbillable

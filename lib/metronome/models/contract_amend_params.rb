@@ -284,6 +284,16 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :PREPAID
+        #   # ...
+        # in :POSTPAID
+        #   # ...
+        # end
+        # ```
         class Type < Metronome::Enum
           PREPAID = :PREPAID
           POSTPAID = :POSTPAID
@@ -479,12 +489,38 @@ module Metronome
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
+            # @example
+            #
+            # ```ruby
+            # case enum
+            # in :DIVIDED
+            #   # ...
+            # in :DIVIDED_ROUNDED
+            #   # ...
+            # in :EACH
+            #   # ...
+            # end
+            # ```
             class AmountDistribution < Metronome::Enum
               DIVIDED = :DIVIDED
               DIVIDED_ROUNDED = :DIVIDED_ROUNDED
               EACH = :EACH
             end
 
+            # @example
+            #
+            # ```ruby
+            # case enum
+            # in :MONTHLY
+            #   # ...
+            # in :QUARTERLY
+            #   # ...
+            # in :SEMI_ANNUAL
+            #   # ...
+            # in :ANNUAL
+            #   # ...
+            # end
+            # ```
             class Frequency < Metronome::Enum
               MONTHLY = :MONTHLY
               QUARTERLY = :QUARTERLY
@@ -539,6 +575,20 @@ module Metronome
           end
         end
 
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :COMMIT_RATE
+        #   # ...
+        # in :commit_rate
+        #   # ...
+        # in :LIST_RATE
+        #   # ...
+        # in :list_rate
+        #   # ...
+        # end
+        # ```
         class RateType < Metronome::Enum
           COMMIT_RATE = :COMMIT_RATE
           COMMIT_RATE = :commit_rate
@@ -705,6 +755,20 @@ module Metronome
           end
         end
 
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :COMMIT_RATE
+        #   # ...
+        # in :commit_rate
+        #   # ...
+        # in :LIST_RATE
+        #   # ...
+        # in :list_rate
+        #   # ...
+        # end
+        # ```
         class RateType < Metronome::Enum
           COMMIT_RATE = :COMMIT_RATE
           COMMIT_RATE = :commit_rate
@@ -876,12 +940,38 @@ module Metronome
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
+            # @example
+            #
+            # ```ruby
+            # case enum
+            # in :DIVIDED
+            #   # ...
+            # in :DIVIDED_ROUNDED
+            #   # ...
+            # in :EACH
+            #   # ...
+            # end
+            # ```
             class AmountDistribution < Metronome::Enum
               DIVIDED = :DIVIDED
               DIVIDED_ROUNDED = :DIVIDED_ROUNDED
               EACH = :EACH
             end
 
+            # @example
+            #
+            # ```ruby
+            # case enum
+            # in :MONTHLY
+            #   # ...
+            # in :QUARTERLY
+            #   # ...
+            # in :SEMI_ANNUAL
+            #   # ...
+            # in :ANNUAL
+            #   # ...
+            # end
+            # ```
             class Frequency < Metronome::Enum
               MONTHLY = :MONTHLY
               QUARTERLY = :QUARTERLY
@@ -1206,6 +1296,22 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :FLAT
+          #   # ...
+          # in :PERCENTAGE
+          #   # ...
+          # in :SUBSCRIPTION
+          #   # ...
+          # in :TIERED
+          #   # ...
+          # in :CUSTOM
+          #   # ...
+          # end
+          # ```
           class RateType < Metronome::Enum
             FLAT = :FLAT
             PERCENTAGE = :PERCENTAGE
@@ -1216,6 +1322,21 @@ module Metronome
         end
 
         # Indicates whether the override applies to commit rates or list rates. Can only be used for overrides that have `is_commit_specific` set to `true`. Defaults to `"LIST_RATE"`.
+        #
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :COMMIT_RATE
+        #   # ...
+        # in :commit_rate
+        #   # ...
+        # in :LIST_RATE
+        #   # ...
+        # in :list_rate
+        #   # ...
+        # end
+        # ```
         class Target < Metronome::Enum
           COMMIT_RATE = :COMMIT_RATE
           COMMIT_RATE = :commit_rate
@@ -1244,6 +1365,19 @@ module Metronome
         end
 
         # Overwrites are prioritized over multipliers and tiered overrides.
+        #
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :OVERWRITE
+        #   # ...
+        # in :MULTIPLIER
+        #   # ...
+        # in :TIERED
+        #   # ...
+        # end
+        # ```
         class Type < Metronome::Enum
           OVERWRITE = :OVERWRITE
           MULTIPLIER = :MULTIPLIER
@@ -1416,6 +1550,20 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :AWS
+        #   # ...
+        # in :AWS_PRO_SERVICE
+        #   # ...
+        # in :GCP
+        #   # ...
+        # in :GCP_PRO_SERVICE
+        #   # ...
+        # end
+        # ```
         class ResellerType < Metronome::Enum
           AWS = :AWS
           AWS_PRO_SERVICE = :AWS_PRO_SERVICE
@@ -1633,12 +1781,38 @@ module Metronome
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
+            # @example
+            #
+            # ```ruby
+            # case enum
+            # in :DIVIDED
+            #   # ...
+            # in :DIVIDED_ROUNDED
+            #   # ...
+            # in :EACH
+            #   # ...
+            # end
+            # ```
             class AmountDistribution < Metronome::Enum
               DIVIDED = :DIVIDED
               DIVIDED_ROUNDED = :DIVIDED_ROUNDED
               EACH = :EACH
             end
 
+            # @example
+            #
+            # ```ruby
+            # case enum
+            # in :MONTHLY
+            #   # ...
+            # in :QUARTERLY
+            #   # ...
+            # in :SEMI_ANNUAL
+            #   # ...
+            # in :ANNUAL
+            #   # ...
+            # end
+            # ```
             class Frequency < Metronome::Enum
               MONTHLY = :MONTHLY
               QUARTERLY = :QUARTERLY

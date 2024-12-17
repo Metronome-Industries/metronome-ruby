@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Metronome
-  class CursorPage
+  class CursorPage < Metronome::BasePage
     # @return [String]
     attr_accessor :next_page_
 
@@ -10,18 +10,27 @@ module Metronome
 
     # @private
     #
-    # @param model [Object]
-    # @param raw_data [Hash{Symbol => Object}]
-    # @param response [Net::HTTPResponse]
     # @param client [Metronome::Client]
     # @param req [Hash{Symbol => Object}]
     # @param opts [Hash{Symbol => Object}]
-    def initialize(client:, model:, req:, opts:, response:, raw_data:)
-      @next_page_ = raw_data[:next_page]
-      @data = raw_data[:data]&.map { |row| model.coerce(row) }
-      @client = client
-      @req = req
-      @opts = opts
+    # @param headers [Hash{String => String}]
+    # @param unwrapped [Hash{Symbol => Object}]
+    def initialize(client:, req:, opts:, headers:, unwrapped:)
+      case unwrapped
+      in {next_page: next_page_} if next_page_.is_a?(String) || next_page_.is_nil?
+        @next_page_ = next_page_
+      else
+      end
+
+      model = req.fetch(:model)
+
+      case unwrapped
+      in {data: data} if data.is_a?(Array) || data.nil?
+        @data = data&.map { |row| model.coerce(row) }
+      else
+      end
+
+      super
     end
 
     # @return [Boolean]
@@ -42,23 +51,19 @@ module Metronome
 
     # @param blk [Proc]
     #
-    # @return [nil]
+    # @yieldreturn Metronome::CursorPage
+    # @return [void]
     def auto_paging_each(&blk)
       unless block_given?
         raise ArgumentError.new("A block must be given to #auto_paging_each")
       end
       page = self
       loop do
-        page.data.each { |e| blk.call(e) }
+        page.data&.each { |row| blk.call(row) }
         break unless page.next_page?
         page = page.next_page
       end
     end
-
-    # @return [Enumerator]
-    def to_enum = super(:auto_paging_each)
-
-    alias_method :enum_for, :to_enum
 
     # @return [String]
     def inspect

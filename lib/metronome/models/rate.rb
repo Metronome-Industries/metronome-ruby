@@ -96,6 +96,22 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
+      # @example
+      #
+      # ```ruby
+      # case enum
+      # in :FLAT
+      #   # ...
+      # in :PERCENTAGE
+      #   # ...
+      # in :SUBSCRIPTION
+      #   # ...
+      # in :CUSTOM
+      #   # ...
+      # in :TIERED
+      #   # ...
+      # end
+      # ```
       class RateType < Metronome::Enum
         FLAT = :FLAT
         PERCENTAGE = :PERCENTAGE

@@ -40,6 +40,16 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :makes_connections_from
+        #   # ...
+        # in :accepts_connections_at
+        #   # ...
+        # end
+        # ```
         class Usage < Metronome::Enum
           MAKES_CONNECTIONS_FROM = :makes_connections_from
           ACCEPTS_CONNECTIONS_AT = :accepts_connections_at

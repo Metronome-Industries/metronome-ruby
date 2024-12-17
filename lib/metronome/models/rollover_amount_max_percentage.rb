@@ -25,6 +25,15 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # Rollover up to a percentage of the original credit grant amount.
+      #
+      # @example
+      #
+      # ```ruby
+      # case enum
+      # in :MAX_PERCENTAGE
+      #   # ...
+      # end
+      # ```
       class Type < Metronome::Enum
         MAX_PERCENTAGE = :MAX_PERCENTAGE
       end

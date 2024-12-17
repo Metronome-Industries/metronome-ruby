@@ -317,6 +317,20 @@ module Metronome
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
+            # @example
+            #
+            # ```ruby
+            # case enum
+            # in :AWS
+            #   # ...
+            # in :AWS_PRO_SERVICE
+            #   # ...
+            # in :GCP
+            #   # ...
+            # in :GCP_PRO_SERVICE
+            #   # ...
+            # end
+            # ```
             class ResellerType < Metronome::Enum
               AWS = :AWS
               AWS_PRO_SERVICE = :AWS_PRO_SERVICE
@@ -353,6 +367,24 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :aws_marketplace
+          #   # ...
+          # in :stripe
+          #   # ...
+          # in :netsuite
+          #   # ...
+          # in :custom
+          #   # ...
+          # in :azure_marketplace
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class BillingProvider < Metronome::Enum
             AWS_MARKETPLACE = :aws_marketplace
             STRIPE = :stripe
@@ -364,6 +396,20 @@ module Metronome
             GCP_MARKETPLACE = :gcp_marketplace
           end
 
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :direct_to_billing_provider
+          #   # ...
+          # in :aws_sqs
+          #   # ...
+          # in :tackle
+          #   # ...
+          # in :aws_sns
+          #   # ...
+          # end
+          # ```
           class DeliveryMethod < Metronome::Enum
             DIRECT_TO_BILLING_PROVIDER = :direct_to_billing_provider
             AWS_SQS = :aws_sqs

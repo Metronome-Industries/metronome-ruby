@@ -111,12 +111,34 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # Invoice sort order by issued_at, e.g. date_asc or date_desc.  Defaults to date_asc.
+        #
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :date_asc
+        #   # ...
+        # in :date_desc
+        #   # ...
+        # end
+        # ```
         class Sort < Metronome::Enum
           DATE_ASC = :date_asc
           DATE_DESC = :date_desc
         end
 
         # The granularity of the breakdowns to return. Defaults to day.
+        #
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :HOUR
+        #   # ...
+        # in :DAY
+        #   # ...
+        # end
+        # ```
         class WindowSize < Metronome::Enum
           HOUR = :HOUR
           DAY = :DAY

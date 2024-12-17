@@ -113,6 +113,24 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :"af-south-1"
+          #   # ...
+          # in :"ap-east-1"
+          #   # ...
+          # in :"ap-northeast-1"
+          #   # ...
+          # in :"ap-northeast-2"
+          #   # ...
+          # in :"ap-northeast-3"
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class AwsRegion < Metronome::Enum
             AF_SOUTH_1 = :"af-south-1"
             AP_EAST_1 = :"ap-east-1"
@@ -141,6 +159,20 @@ module Metronome
             US_WEST_2 = :"us-west-2"
           end
 
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :Subscribed
+          #   # ...
+          # in :Unsubscribed
+          #   # ...
+          # in :Suspended
+          #   # ...
+          # in :PendingFulfillmentStart
+          #   # ...
+          # end
+          # ```
           class AzureSubscriptionStatus < Metronome::Enum
             SUBSCRIBED = :Subscribed
             UNSUBSCRIBED = :Unsubscribed
@@ -148,6 +180,16 @@ module Metronome
             PENDING_FULFILLMENT_START = :PendingFulfillmentStart
           end
 
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :charge_automatically
+          #   # ...
+          # in :send_invoice
+          #   # ...
+          # end
+          # ```
           class StripeCollectionMethod < Metronome::Enum
             CHARGE_AUTOMATICALLY = :charge_automatically
             SEND_INVOICE = :send_invoice

@@ -40,6 +40,11 @@ class Metronome::Test::Resources::Contracts::RateCardsTest < Minitest::Test
     assert_pattern do
       response => Metronome::CursorPage
     end
+
+    page = response.next_page
+    assert_pattern do
+      page => Metronome::CursorPage
+    end
   end
 
   def test_retrieve_rate_schedule_required_params
