@@ -6,8 +6,7 @@ module Metronome
       # @!attribute data
       #
       #   @return [Array<Metronome::Models::ContractRetrieveRateScheduleResponse::Data>]
-      required :data,
-               Metronome::ArrayOf.new(-> { Metronome::Models::ContractRetrieveRateScheduleResponse::Data })
+      required :data, Metronome::ArrayOf[-> { Metronome::Models::ContractRetrieveRateScheduleResponse::Data }]
 
       # @!attribute next_page
       #
@@ -51,7 +50,7 @@ module Metronome
         # @!attribute product_tags
         #
         #   @return [Array<String>]
-        required :product_tags, Metronome::ArrayOf.new(String)
+        required :product_tags, Metronome::ArrayOf[String]
 
         # @!attribute rate_card_id
         #
@@ -151,7 +150,7 @@ module Metronome
           #   Only set for TIERED rate_type.
           #
           #   @return [Array<Metronome::Models::Tier>]
-          optional :tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Tier })
+          optional :tiers, Metronome::ArrayOf[-> { Metronome::Models::Tier }]
 
           # @!parse
           #   # A distinct rate on the rate card. You can choose to use this rate rather than

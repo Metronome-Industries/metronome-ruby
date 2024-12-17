@@ -39,11 +39,9 @@ module Metronome
         #
         #   @return [Array<Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams::Selector>]
         optional :selectors,
-                 Metronome::ArrayOf.new(
-                   -> {
-                     Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams::Selector
-                   }
-                 )
+                 Metronome::ArrayOf[-> {
+                   Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams::Selector
+                 }]
 
         # @!parse
         #   # @param rate_card_id [String] ID of the rate card to get the schedule for

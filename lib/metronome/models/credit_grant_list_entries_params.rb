@@ -13,13 +13,13 @@ module Metronome
       #   A list of Metronome credit type IDs to fetch ledger entries for. If absent, ledger entries for all credit types will be returned.
       #
       #   @return [Array<String>]
-      optional :credit_type_ids, Metronome::ArrayOf.new(String)
+      optional :credit_type_ids, Metronome::ArrayOf[String]
 
       # @!attribute customer_ids
       #   A list of Metronome customer IDs to fetch ledger entries for. If absent, ledger entries for all customers will be returned.
       #
       #   @return [Array<String>]
-      optional :customer_ids, Metronome::ArrayOf.new(String)
+      optional :customer_ids, Metronome::ArrayOf[String]
 
       # @!attribute ending_before
       #   If supplied, ledger entries will only be returned with an effective_at before this time. This timestamp must not be in the future. If no timestamp is supplied, all entries up to the start of the customer's next billing period will be returned.

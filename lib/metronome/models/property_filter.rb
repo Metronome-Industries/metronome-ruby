@@ -19,13 +19,13 @@ module Metronome
       #   Specifies the allowed values for the property to match an event. An event will pass the filter only if its property value is included in this list. If undefined, all property values will pass the filter. Must be non-empty if present.
       #
       #   @return [Array<String>]
-      optional :in_values, Metronome::ArrayOf.new(String)
+      optional :in_values, Metronome::ArrayOf[String]
 
       # @!attribute not_in_values
       #   Specifies the values that prevent an event from matching the filter. An event will not pass the filter if its property value is included in this list. If null or empty, all property values will pass the filter. Must be non-empty if present.
       #
       #   @return [Array<String>]
-      optional :not_in_values, Metronome::ArrayOf.new(String)
+      optional :not_in_values, Metronome::ArrayOf[String]
 
       # @!parse
       #   # @param name [String] The name of the event property.

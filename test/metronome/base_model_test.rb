@@ -8,8 +8,8 @@ class Metronome::Test::BaseModelTest < Minitest::Test
     B = :b
   end
 
-  A1 = Metronome::ArrayOf.new(-> { Integer })
-  A2 = Metronome::ArrayOf.new(enum: -> { E1 })
+  A1 = Metronome::ArrayOf[-> { Integer }]
+  A2 = Metronome::ArrayOf[enum: -> { E1 }]
 
   def test_basic
     assert(E1.include?(Metronome::Converter))

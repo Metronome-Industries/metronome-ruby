@@ -6,7 +6,7 @@ module Metronome
       # @!attribute commits
       #
       #   @return [Array<Metronome::Models::Commit>]
-      required :commits, Metronome::ArrayOf.new(-> { Metronome::Models::Commit })
+      required :commits, Metronome::ArrayOf[-> { Metronome::Models::Commit }]
 
       # @!attribute created_at
       #
@@ -21,12 +21,12 @@ module Metronome
       # @!attribute overrides
       #
       #   @return [Array<Metronome::Models::Override>]
-      required :overrides, Metronome::ArrayOf.new(-> { Metronome::Models::Override })
+      required :overrides, Metronome::ArrayOf[-> { Metronome::Models::Override }]
 
       # @!attribute scheduled_charges
       #
       #   @return [Array<Metronome::Models::ScheduledCharge>]
-      required :scheduled_charges, Metronome::ArrayOf.new(-> { Metronome::Models::ScheduledCharge })
+      required :scheduled_charges, Metronome::ArrayOf[-> { Metronome::Models::ScheduledCharge }]
 
       # @!attribute starting_at
       #
@@ -37,7 +37,9 @@ module Metronome
       #
       #   @return [Array<Metronome::Models::ContractWithoutAmendments::Transition>]
       required :transitions,
-               Metronome::ArrayOf.new(-> { Metronome::Models::ContractWithoutAmendments::Transition })
+               Metronome::ArrayOf[-> {
+                 Metronome::Models::ContractWithoutAmendments::Transition
+               }]
 
       # @!attribute usage_statement_schedule
       #
@@ -48,13 +50,13 @@ module Metronome
       # @!attribute credits
       #
       #   @return [Array<Metronome::Models::Credit>]
-      optional :credits, Metronome::ArrayOf.new(-> { Metronome::Models::Credit })
+      optional :credits, Metronome::ArrayOf[-> { Metronome::Models::Credit }]
 
       # @!attribute discounts
       #   This field's availability is dependent on your client's configuration.
       #
       #   @return [Array<Metronome::Models::Discount>]
-      optional :discounts, Metronome::ArrayOf.new(-> { Metronome::Models::Discount })
+      optional :discounts, Metronome::ArrayOf[-> { Metronome::Models::Discount }]
 
       # @!attribute ending_before
       #
@@ -81,7 +83,7 @@ module Metronome
       #   This field's availability is dependent on your client's configuration.
       #
       #   @return [Array<Metronome::Models::ProService>]
-      optional :professional_services, Metronome::ArrayOf.new(-> { Metronome::Models::ProService })
+      optional :professional_services, Metronome::ArrayOf[-> { Metronome::Models::ProService }]
 
       # @!attribute rate_card_id
       #
@@ -93,7 +95,7 @@ module Metronome
       #
       #   @return [Array<Metronome::Models::ContractWithoutAmendments::ResellerRoyalty>]
       optional :reseller_royalties,
-               Metronome::ArrayOf.new(-> { Metronome::Models::ContractWithoutAmendments::ResellerRoyalty })
+               Metronome::ArrayOf[-> { Metronome::Models::ContractWithoutAmendments::ResellerRoyalty }]
 
       # @!attribute salesforce_opportunity_id
       #   This field's availability is dependent on your client's configuration.
@@ -287,12 +289,12 @@ module Metronome
         # @!attribute applicable_product_ids
         #
         #   @return [Array<String>]
-        optional :applicable_product_ids, Metronome::ArrayOf.new(String)
+        optional :applicable_product_ids, Metronome::ArrayOf[String]
 
         # @!attribute applicable_product_tags
         #
         #   @return [Array<String>]
-        optional :applicable_product_tags, Metronome::ArrayOf.new(String)
+        optional :applicable_product_tags, Metronome::ArrayOf[String]
 
         # @!attribute aws_account_number
         #
@@ -401,11 +403,7 @@ module Metronome
         #
         #   @return [Array<Metronome::Models::ContractWithoutAmendments::UsageFilter::Update>]
         required :updates,
-                 Metronome::ArrayOf.new(
-                   -> {
-                     Metronome::Models::ContractWithoutAmendments::UsageFilter::Update
-                   }
-                 )
+                 Metronome::ArrayOf[-> { Metronome::Models::ContractWithoutAmendments::UsageFilter::Update }]
 
         # @!parse
         #   # @param current [Metronome::Models::BaseUsageFilter]
@@ -425,7 +423,7 @@ module Metronome
           # @!attribute group_values
           #
           #   @return [Array<String>]
-          required :group_values, Metronome::ArrayOf.new(String)
+          required :group_values, Metronome::ArrayOf[String]
 
           # @!attribute starting_at
           #

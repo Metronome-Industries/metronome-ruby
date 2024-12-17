@@ -19,19 +19,19 @@ module Metronome
       #   An array of credit grant IDs. If this is specified, neither credit_type_ids nor customer_ids may be specified.
       #
       #   @return [Array<String>]
-      optional :credit_grant_ids, Metronome::ArrayOf.new(String)
+      optional :credit_grant_ids, Metronome::ArrayOf[String]
 
       # @!attribute credit_type_ids
       #   An array of credit type IDs. This must not be specified if credit_grant_ids is specified.
       #
       #   @return [Array<String>]
-      optional :credit_type_ids, Metronome::ArrayOf.new(String)
+      optional :credit_type_ids, Metronome::ArrayOf[String]
 
       # @!attribute customer_ids
       #   An array of Metronome customer IDs. This must not be specified if credit_grant_ids is specified.
       #
       #   @return [Array<String>]
-      optional :customer_ids, Metronome::ArrayOf.new(String)
+      optional :customer_ids, Metronome::ArrayOf[String]
 
       # @!attribute effective_before
       #   Only return credit grants that are effective before this timestamp (exclusive).

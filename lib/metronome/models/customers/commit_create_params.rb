@@ -35,19 +35,19 @@ module Metronome
         #   Which contract the commit applies to. If not provided, the commit applies to all contracts.
         #
         #   @return [Array<String>]
-        optional :applicable_contract_ids, Metronome::ArrayOf.new(String)
+        optional :applicable_contract_ids, Metronome::ArrayOf[String]
 
         # @!attribute applicable_product_ids
         #   Which products the commit applies to. If both applicable_product_ids and applicable_product_tags are not provided, the commit applies to all products.
         #
         #   @return [Array<String>]
-        optional :applicable_product_ids, Metronome::ArrayOf.new(String)
+        optional :applicable_product_ids, Metronome::ArrayOf[String]
 
         # @!attribute applicable_product_tags
         #   Which tags the commit applies to. If both applicable_product_ids and applicable_product_tags are not provided, the commit applies to all products.
         #
         #   @return [Array<String>]
-        optional :applicable_product_tags, Metronome::ArrayOf.new(String)
+        optional :applicable_product_tags, Metronome::ArrayOf[String]
 
         # @!attribute custom_fields
         #
@@ -166,11 +166,9 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::Customers::CommitCreateParams::AccessSchedule::ScheduleItem>]
           required :schedule_items,
-                   Metronome::ArrayOf.new(
-                     -> {
-                       Metronome::Models::Customers::CommitCreateParams::AccessSchedule::ScheduleItem
-                     }
-                   )
+                   Metronome::ArrayOf[-> {
+                     Metronome::Models::Customers::CommitCreateParams::AccessSchedule::ScheduleItem
+                   }]
 
           # @!attribute credit_type_id
           #   Defaults to USD (cents) if not passed
@@ -255,11 +253,9 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem>]
           optional :schedule_items,
-                   Metronome::ArrayOf.new(
-                     -> {
-                       Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem
-                     }
-                   )
+                   Metronome::ArrayOf[-> {
+                     Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem
+                   }]
 
           # @!parse
           #   # Required for "POSTPAID" commits: the true up invoice will be generated at this

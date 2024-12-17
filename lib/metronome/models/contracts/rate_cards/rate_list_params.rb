@@ -34,11 +34,9 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::Contracts::RateCards::RateListParams::Selector>]
           optional :selectors,
-                   Metronome::ArrayOf.new(
-                     -> {
-                       Metronome::Models::Contracts::RateCards::RateListParams::Selector
-                     }
-                   )
+                   Metronome::ArrayOf[-> {
+                     Metronome::Models::Contracts::RateCards::RateListParams::Selector
+                   }]
 
           # @!parse
           #   # @param at [String] inclusive starting point for the rates schedule
@@ -79,7 +77,7 @@ module Metronome
             #   List of product tags, rates matching any of the tags will be included in the response.
             #
             #   @return [Array<String>]
-            optional :product_tags, Metronome::ArrayOf.new(String)
+            optional :product_tags, Metronome::ArrayOf[String]
 
             # @!parse
             #   # @param partial_pricing_group_values [Hash, nil] List of pricing group key value pairs, rates containing the matching key / value

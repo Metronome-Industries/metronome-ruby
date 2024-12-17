@@ -21,7 +21,7 @@ module Metronome
       # @!attribute credit_grants
       #
       #   @return [Array<Metronome::Models::PlanDetail::CreditGrant>]
-      optional :credit_grants, Metronome::ArrayOf.new(-> { Metronome::Models::PlanDetail::CreditGrant })
+      optional :credit_grants, Metronome::ArrayOf[-> { Metronome::Models::PlanDetail::CreditGrant }]
 
       # @!attribute description
       #
@@ -31,12 +31,12 @@ module Metronome
       # @!attribute minimums
       #
       #   @return [Array<Metronome::Models::PlanDetail::Minimum>]
-      optional :minimums, Metronome::ArrayOf.new(-> { Metronome::Models::PlanDetail::Minimum })
+      optional :minimums, Metronome::ArrayOf[-> { Metronome::Models::PlanDetail::Minimum }]
 
       # @!attribute overage_rates
       #
       #   @return [Array<Metronome::Models::PlanDetail::OverageRate>]
-      optional :overage_rates, Metronome::ArrayOf.new(-> { Metronome::Models::PlanDetail::OverageRate })
+      optional :overage_rates, Metronome::ArrayOf[-> { Metronome::Models::PlanDetail::OverageRate }]
 
       # @!parse
       #   # @param id [String]

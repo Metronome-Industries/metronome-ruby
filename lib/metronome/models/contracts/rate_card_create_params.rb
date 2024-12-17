@@ -15,18 +15,18 @@ module Metronome
         #
         #   @return [Array<Metronome::Models::Contracts::RateCardCreateParams::Alias>]
         optional :aliases,
-                 Metronome::ArrayOf.new(-> { Metronome::Models::Contracts::RateCardCreateParams::Alias })
+                 Metronome::ArrayOf[-> {
+                   Metronome::Models::Contracts::RateCardCreateParams::Alias
+                 }]
 
         # @!attribute credit_type_conversions
         #   Required when using custom pricing units in rates.
         #
         #   @return [Array<Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion>]
         optional :credit_type_conversions,
-                 Metronome::ArrayOf.new(
-                   -> {
-                     Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion
-                   }
-                 )
+                 Metronome::ArrayOf[-> {
+                   Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion
+                 }]
 
         # @!attribute custom_fields
         #

@@ -27,17 +27,17 @@ module Metronome
       # @!attribute applicable_contract_ids
       #
       #   @return [Array<String>]
-      optional :applicable_contract_ids, Metronome::ArrayOf.new(String)
+      optional :applicable_contract_ids, Metronome::ArrayOf[String]
 
       # @!attribute applicable_product_ids
       #
       #   @return [Array<String>]
-      optional :applicable_product_ids, Metronome::ArrayOf.new(String)
+      optional :applicable_product_ids, Metronome::ArrayOf[String]
 
       # @!attribute applicable_product_tags
       #
       #   @return [Array<String>]
-      optional :applicable_product_tags, Metronome::ArrayOf.new(String)
+      optional :applicable_product_tags, Metronome::ArrayOf[String]
 
       # @!attribute contract
       #
@@ -58,7 +58,7 @@ module Metronome
       #   A list of ordered events that impact the balance of a credit. For example, an invoice deduction or an expiration.
       #
       #   @return [Array<Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent13, Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent14, Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent15, Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent16, Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent17, Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent18>]
-      optional :ledger, Metronome::ArrayOf.new(Metronome::Unknown)
+      optional :ledger, Metronome::ArrayOf[Metronome::Unknown]
 
       # @!attribute name
       #

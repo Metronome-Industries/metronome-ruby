@@ -96,11 +96,9 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::Customers::PlanListResponse::TrialInfo::SpendingCap>]
           required :spending_caps,
-                   Metronome::ArrayOf.new(
-                     -> {
-                       Metronome::Models::Customers::PlanListResponse::TrialInfo::SpendingCap
-                     }
-                   )
+                   Metronome::ArrayOf[-> {
+                     Metronome::Models::Customers::PlanListResponse::TrialInfo::SpendingCap
+                   }]
 
           # @!parse
           #   # @param ending_before [String]

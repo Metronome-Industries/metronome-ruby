@@ -16,7 +16,7 @@ module Metronome
       # @!attribute applicable_product_tags
       #
       #   @return [Array<String>]
-      optional :applicable_product_tags, Metronome::ArrayOf.new(String)
+      optional :applicable_product_tags, Metronome::ArrayOf[String]
 
       # @!attribute credit_type
       #
@@ -52,13 +52,12 @@ module Metronome
       # @!attribute override_specifiers
       #
       #   @return [Array<Metronome::Models::Override::OverrideSpecifier>]
-      optional :override_specifiers,
-               Metronome::ArrayOf.new(-> { Metronome::Models::Override::OverrideSpecifier })
+      optional :override_specifiers, Metronome::ArrayOf[-> { Metronome::Models::Override::OverrideSpecifier }]
 
       # @!attribute override_tiers
       #
       #   @return [Array<Metronome::Models::Override::OverrideTier>]
-      optional :override_tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Override::OverrideTier })
+      optional :override_tiers, Metronome::ArrayOf[-> { Metronome::Models::Override::OverrideTier }]
 
       # @!attribute overwrite_rate
       #
@@ -101,7 +100,7 @@ module Metronome
       #   Only set for TIERED rate_type.
       #
       #   @return [Array<Metronome::Models::Tier>]
-      optional :tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Tier })
+      optional :tiers, Metronome::ArrayOf[-> { Metronome::Models::Tier }]
 
       # @!attribute type
       #
@@ -192,7 +191,7 @@ module Metronome
         # @!attribute commit_ids
         #
         #   @return [Array<String>]
-        optional :commit_ids, Metronome::ArrayOf.new(String)
+        optional :commit_ids, Metronome::ArrayOf[String]
 
         # @!attribute presentation_group_values
         #
@@ -212,7 +211,7 @@ module Metronome
         # @!attribute product_tags
         #
         #   @return [Array<String>]
-        optional :product_tags, Metronome::ArrayOf.new(String)
+        optional :product_tags, Metronome::ArrayOf[String]
 
         # @!parse
         #   # @param commit_ids [Array<String>, nil]
@@ -293,7 +292,7 @@ module Metronome
         #   Only set for TIERED rate_type.
         #
         #   @return [Array<Metronome::Models::Tier>]
-        optional :tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Tier })
+        optional :tiers, Metronome::ArrayOf[-> { Metronome::Models::Tier }]
 
         # @!parse
         #   # @param rate_type [String]

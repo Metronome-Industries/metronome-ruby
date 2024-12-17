@@ -16,7 +16,7 @@ module Metronome
       # @!attribute keys
       #
       #   @return [Array<String>]
-      required :keys, Metronome::ArrayOf.new(String)
+      required :keys, Metronome::ArrayOf[String]
 
       # @!parse
       #   # @param entity [String]

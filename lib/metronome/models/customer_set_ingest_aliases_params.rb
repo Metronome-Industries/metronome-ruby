@@ -11,7 +11,7 @@ module Metronome
       # @!attribute ingest_aliases
       #
       #   @return [Array<String>]
-      required :ingest_aliases, Metronome::ArrayOf.new(String)
+      required :ingest_aliases, Metronome::ArrayOf[String]
 
       # @!parse
       #   # @param customer_id [String]

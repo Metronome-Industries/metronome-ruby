@@ -6,7 +6,7 @@ module Metronome
       # @!attribute data
       #
       #   @return [Array<Metronome::Models::CreditGrantListEntriesResponse::Data>]
-      required :data, Metronome::ArrayOf.new(-> { Metronome::Models::CreditGrantListEntriesResponse::Data })
+      required :data, Metronome::ArrayOf[-> { Metronome::Models::CreditGrantListEntriesResponse::Data }]
 
       # @!attribute next_page
       #
@@ -31,11 +31,7 @@ module Metronome
         #
         #   @return [Array<Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger>]
         required :ledgers,
-                 Metronome::ArrayOf.new(
-                   -> {
-                     Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger
-                   }
-                 )
+                 Metronome::ArrayOf[-> { Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger }]
 
         # @!parse
         #   # @param customer_id [String]
@@ -61,12 +57,12 @@ module Metronome
           # @!attribute entries
           #
           #   @return [Array<Metronome::Models::CreditLedgerEntry>]
-          required :entries, Metronome::ArrayOf.new(-> { Metronome::Models::CreditLedgerEntry })
+          required :entries, Metronome::ArrayOf[-> { Metronome::Models::CreditLedgerEntry }]
 
           # @!attribute pending_entries
           #
           #   @return [Array<Metronome::Models::CreditLedgerEntry>]
-          required :pending_entries, Metronome::ArrayOf.new(-> { Metronome::Models::CreditLedgerEntry })
+          required :pending_entries, Metronome::ArrayOf[-> { Metronome::Models::CreditLedgerEntry }]
 
           # @!attribute starting_balance
           #

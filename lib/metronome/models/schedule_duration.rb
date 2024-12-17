@@ -6,12 +6,7 @@ module Metronome
       # @!attribute schedule_items
       #
       #   @return [Array<Metronome::Models::ScheduleDuration::ScheduleItem>]
-      required :schedule_items,
-               Metronome::ArrayOf.new(
-                 -> {
-                   Metronome::Models::ScheduleDuration::ScheduleItem
-                 }
-               )
+      required :schedule_items, Metronome::ArrayOf[-> { Metronome::Models::ScheduleDuration::ScheduleItem }]
 
       # @!attribute credit_type
       #

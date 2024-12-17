@@ -6,7 +6,7 @@ module Metronome
       # @!attribute data
       #
       #   @return [Array<Metronome::Models::UsageListResponse::Data>]
-      required :data, Metronome::ArrayOf.new(-> { Metronome::Models::UsageListResponse::Data })
+      required :data, Metronome::ArrayOf[-> { Metronome::Models::UsageListResponse::Data }]
 
       # @!attribute next_page
       #

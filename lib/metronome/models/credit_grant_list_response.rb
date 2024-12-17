@@ -29,7 +29,7 @@ module Metronome
       # @!attribute deductions
       #
       #   @return [Array<Metronome::Models::CreditLedgerEntry>]
-      required :deductions, Metronome::ArrayOf.new(-> { Metronome::Models::CreditLedgerEntry })
+      required :deductions, Metronome::ArrayOf[-> { Metronome::Models::CreditLedgerEntry }]
 
       # @!attribute effective_at
       #
@@ -61,7 +61,7 @@ module Metronome
       # @!attribute pending_deductions
       #
       #   @return [Array<Metronome::Models::CreditLedgerEntry>]
-      required :pending_deductions, Metronome::ArrayOf.new(-> { Metronome::Models::CreditLedgerEntry })
+      required :pending_deductions, Metronome::ArrayOf[-> { Metronome::Models::CreditLedgerEntry }]
 
       # @!attribute priority
       #
@@ -83,7 +83,7 @@ module Metronome
       #   The products which these credits will be applied to. (If unspecified, the credits will be applied to charges for all products.)
       #
       #   @return [Array<Metronome::Models::CreditGrantListResponse::Product>]
-      optional :products, Metronome::ArrayOf.new(-> { Metronome::Models::CreditGrantListResponse::Product })
+      optional :products, Metronome::ArrayOf[-> { Metronome::Models::CreditGrantListResponse::Product }]
 
       # @!attribute reason
       #

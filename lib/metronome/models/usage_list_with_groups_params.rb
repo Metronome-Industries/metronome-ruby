@@ -122,7 +122,7 @@ module Metronome
         #   Values of the group_by key to return in the query. Omit this if you'd like all values for the key returned.
         #
         #   @return [Array<String>]
-        optional :values, Metronome::ArrayOf.new(String)
+        optional :values, Metronome::ArrayOf[String]
 
         # @!parse
         #   # @param key [String] The name of the group_by key to use

@@ -7,7 +7,7 @@ module Metronome
       #   Filter the customer list by customer_id.  Up to 100 ids can be provided.
       #
       #   @return [Array<String>]
-      optional :customer_ids, Metronome::ArrayOf.new(String)
+      optional :customer_ids, Metronome::ArrayOf[String]
 
       # @!attribute ingest_alias
       #   Filter the customer list by ingest_alias
@@ -37,7 +37,7 @@ module Metronome
       #   Filter the customer list by salesforce_account_id.  Up to 100 ids can be provided.
       #
       #   @return [Array<String>]
-      optional :salesforce_account_ids, Metronome::ArrayOf.new(String)
+      optional :salesforce_account_ids, Metronome::ArrayOf[String]
 
       # @!parse
       #   # @param customer_ids [Array<String>, nil] Filter the customer list by customer_id. Up to 100 ids can be provided.
