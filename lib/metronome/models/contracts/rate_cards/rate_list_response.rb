@@ -10,6 +10,11 @@ module Metronome
           #   @return [Boolean]
           required :entitled, Metronome::BooleanModel
 
+          # @!attribute product_custom_fields
+          #
+          #   @return [Hash]
+          required :product_custom_fields, Hash
+
           # @!attribute product_id
           #
           #   @return [String]
@@ -54,6 +59,8 @@ module Metronome
           # @!parse
           #   # @param entitled [Boolean]
           #   #
+          #   # @param product_custom_fields [Hash]
+          #   #
           #   # @param product_id [String]
           #   #
           #   # @param product_name [String]
@@ -73,6 +80,7 @@ module Metronome
           #   #
           #   def initialize(
           #     entitled:,
+          #     product_custom_fields:,
           #     product_id:,
           #     product_name:,
           #     product_tags:,
