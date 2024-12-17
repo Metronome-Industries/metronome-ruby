@@ -7,7 +7,7 @@ module Metronome
         # @!attribute data
         #
         #   @return [Array<Metronome::Models::Credit>]
-        required :data, Metronome::ArrayOf.new(-> { Metronome::Models::Credit })
+        required :data, Metronome::ArrayOf[-> { Metronome::Models::Credit }]
 
         # @!attribute next_page
         #

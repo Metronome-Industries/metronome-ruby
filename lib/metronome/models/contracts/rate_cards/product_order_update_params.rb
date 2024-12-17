@@ -9,11 +9,9 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove>]
           required :product_moves,
-                   Metronome::ArrayOf.new(
-                     -> {
-                       Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove
-                     }
-                   )
+                   Metronome::ArrayOf[-> {
+                     Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove
+                   }]
 
           # @!attribute rate_card_id
           #   ID of the rate card to update

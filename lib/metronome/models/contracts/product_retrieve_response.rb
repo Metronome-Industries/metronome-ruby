@@ -41,11 +41,9 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::Contracts::ProductRetrieveResponse::Data::Update>]
           required :updates,
-                   Metronome::ArrayOf.new(
-                     -> {
-                       Metronome::Models::Contracts::ProductRetrieveResponse::Data::Update
-                     }
-                   )
+                   Metronome::ArrayOf[-> {
+                     Metronome::Models::Contracts::ProductRetrieveResponse::Data::Update
+                   }]
 
           # @!attribute archived_at
           #
@@ -113,12 +111,12 @@ module Metronome
             # @!attribute composite_product_ids
             #
             #   @return [Array<String>]
-            optional :composite_product_ids, Metronome::ArrayOf.new(String)
+            optional :composite_product_ids, Metronome::ArrayOf[String]
 
             # @!attribute composite_tags
             #
             #   @return [Array<String>]
-            optional :composite_tags, Metronome::ArrayOf.new(String)
+            optional :composite_tags, Metronome::ArrayOf[String]
 
             # @!attribute exclude_free_usage
             #
@@ -151,13 +149,13 @@ module Metronome
             #   For USAGE products only. Groups usage line items on invoices. The superset of values in the pricing group key and presentation group key must be set as one compound group key on the billable metric.
             #
             #   @return [Array<String>]
-            optional :presentation_group_key, Metronome::ArrayOf.new(String)
+            optional :presentation_group_key, Metronome::ArrayOf[String]
 
             # @!attribute pricing_group_key
             #   For USAGE products only. If set, pricing for this product will be determined for each pricing_group_key value, as opposed to the product as a whole. The superset of values in the pricing group key and presentation group key must be set as one compound group key on the billable metric.
             #
             #   @return [Array<String>]
-            optional :pricing_group_key, Metronome::ArrayOf.new(String)
+            optional :pricing_group_key, Metronome::ArrayOf[String]
 
             # @!attribute quantity_conversion
             #   Optional. Only valid for USAGE products. If provided, the quantity will be converted using the provided conversion factor and operation. For example, if the operation is "multiply" and the conversion factor is 100, then the quantity will be multiplied by 100. This can be used in cases where data is sent in one unit and priced in another.  For example, data could be sent in MB and priced in GB. In this case, the conversion factor would be 1024 and the operation would be "divide".
@@ -179,7 +177,7 @@ module Metronome
             # @!attribute tags
             #
             #   @return [Array<String>]
-            optional :tags, Metronome::ArrayOf.new(String)
+            optional :tags, Metronome::ArrayOf[String]
 
             # @!parse
             #   # @param created_at [String]

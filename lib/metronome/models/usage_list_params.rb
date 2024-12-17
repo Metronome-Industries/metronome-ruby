@@ -30,13 +30,15 @@ module Metronome
       #
       #   @return [Array<Metronome::Models::UsageListParams::BillableMetric>]
       optional :billable_metrics,
-               Metronome::ArrayOf.new(-> { Metronome::Models::UsageListParams::BillableMetric })
+               Metronome::ArrayOf[-> {
+                 Metronome::Models::UsageListParams::BillableMetric
+               }]
 
       # @!attribute customer_ids
       #   A list of Metronome customer IDs to fetch usage for. If absent, usage for all customers will be returned.
       #
       #   @return [Array<String>]
-      optional :customer_ids, Metronome::ArrayOf.new(String)
+      optional :customer_ids, Metronome::ArrayOf[String]
 
       # @!parse
       #   # @param ending_before [String]
@@ -109,7 +111,7 @@ module Metronome
           #   Values of the group_by key to return in the query. If this field is omitted, all available values will be returned, up to a maximum of 200.
           #
           #   @return [Array<String>]
-          optional :values, Metronome::ArrayOf.new(String)
+          optional :values, Metronome::ArrayOf[String]
 
           # @!parse
           #   # @param key [String] The name of the group_by key to use

@@ -74,7 +74,7 @@ module Metronome
             #   Only set for TIERED rate_type.
             #
             #   @return [Array<Metronome::Models::Tier>]
-            optional :tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Tier })
+            optional :tiers, Metronome::ArrayOf[-> { Metronome::Models::Tier }]
 
             # @!attribute use_list_prices
             #   Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed using list prices rather than the standard rates for this product on the contract.
@@ -177,7 +177,7 @@ module Metronome
               #   Only set for TIERED rate_type.
               #
               #   @return [Array<Metronome::Models::Tier>]
-              optional :tiers, Metronome::ArrayOf.new(-> { Metronome::Models::Tier })
+              optional :tiers, Metronome::ArrayOf[-> { Metronome::Models::Tier }]
 
               # @!parse
               #   # A distinct rate on the rate card. You can choose to use this rate rather than

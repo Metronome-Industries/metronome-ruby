@@ -6,7 +6,7 @@ module Metronome
       # @!attribute data
       #
       #   @return [Array<Metronome::Models::Commit, Metronome::Models::Credit>]
-      required :data, Metronome::ArrayOf.new(Metronome::Unknown)
+      required :data, Metronome::ArrayOf[Metronome::Unknown]
 
       # @!attribute next_page
       #

@@ -31,7 +31,7 @@ module Metronome
       #   An array of strings, representing a way to filter the credit grant this alert applies to, by looking at the credit_grant_type field on the credit grant. This field is only defined for CreditPercentage and CreditBalance alerts
       #
       #   @return [Array<String>]
-      optional :credit_grant_type_filters, Metronome::ArrayOf.new(String)
+      optional :credit_grant_type_filters, Metronome::ArrayOf[String]
 
       # @!attribute credit_type_id
       #
@@ -43,7 +43,7 @@ module Metronome
       #
       #   @return [Array<Metronome::Models::AlertCreateParams::CustomFieldFilter>]
       optional :custom_field_filters,
-               Metronome::ArrayOf.new(-> { Metronome::Models::AlertCreateParams::CustomFieldFilter })
+               Metronome::ArrayOf[-> { Metronome::Models::AlertCreateParams::CustomFieldFilter }]
 
       # @!attribute customer_id
       #   If provided, will create this alert for this specific customer. To create an alert for all customers, do not specify `customer_id` or `plan_id`.
@@ -67,7 +67,7 @@ module Metronome
       #   Only supported for invoice_total_reached alerts. A list of invoice types to evaluate.
       #
       #   @return [Array<String>]
-      optional :invoice_types_filter, Metronome::ArrayOf.new(String)
+      optional :invoice_types_filter, Metronome::ArrayOf[String]
 
       # @!attribute plan_id
       #   If provided, will create this alert for this specific plan. To create an alert for all customers, do not specify `customer_id` or `plan_id`.

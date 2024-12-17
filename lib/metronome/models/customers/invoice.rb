@@ -22,7 +22,7 @@ module Metronome
         # @!attribute line_items
         #
         #   @return [Array<Metronome::Models::Customers::Invoice::LineItem>]
-        required :line_items, Metronome::ArrayOf.new(-> { Metronome::Models::Customers::Invoice::LineItem })
+        required :line_items, Metronome::ArrayOf[-> { Metronome::Models::Customers::Invoice::LineItem }]
 
         # @!attribute status
         #
@@ -96,7 +96,7 @@ module Metronome
         #
         #   @return [Array<Metronome::Models::Customers::Invoice::InvoiceAdjustment>]
         optional :invoice_adjustments,
-                 Metronome::ArrayOf.new(-> { Metronome::Models::Customers::Invoice::InvoiceAdjustment })
+                 Metronome::ArrayOf[-> { Metronome::Models::Customers::Invoice::InvoiceAdjustment }]
 
         # @!attribute issued_at
         #   When the invoice was issued (UTC)
@@ -437,7 +437,7 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::Customers::Invoice::LineItem::SubLineItem>]
           optional :sub_line_items,
-                   Metronome::ArrayOf.new(-> { Metronome::Models::Customers::Invoice::LineItem::SubLineItem })
+                   Metronome::ArrayOf[-> { Metronome::Models::Customers::Invoice::LineItem::SubLineItem }]
 
           # @!attribute tier
           #
@@ -715,11 +715,9 @@ module Metronome
             #
             #   @return [Array<Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier>]
             optional :tiers,
-                     Metronome::ArrayOf.new(
-                       -> {
-                         Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier
-                       }
-                     )
+                     Metronome::ArrayOf[-> {
+                       Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier
+                     }]
 
             # @!parse
             #   # @param custom_fields [Hash]

@@ -65,7 +65,7 @@ module Metronome
       #   The product(s) which these credits will be applied to. (If unspecified, the credits will be applied to charges for all products.). The array ordering specified here will be used to determine the order in which credits will be applied to invoice line items
       #
       #   @return [Array<String>]
-      optional :product_ids, Metronome::ArrayOf.new(String)
+      optional :product_ids, Metronome::ArrayOf[String]
 
       # @!attribute reason
       #

@@ -38,7 +38,7 @@ module Metronome
       #
       #   @return [Array<Metronome::Models::ContractRetrieveRateScheduleParams::Selector>]
       optional :selectors,
-               Metronome::ArrayOf.new(-> { Metronome::Models::ContractRetrieveRateScheduleParams::Selector })
+               Metronome::ArrayOf[-> { Metronome::Models::ContractRetrieveRateScheduleParams::Selector }]
 
       # @!parse
       #   # @param contract_id [String] ID of the contract to get the rate schedule for.
@@ -82,7 +82,7 @@ module Metronome
         #   List of product tags, rates matching any of the tags will be included in the response.
         #
         #   @return [Array<String>]
-        optional :product_tags, Metronome::ArrayOf.new(String)
+        optional :product_tags, Metronome::ArrayOf[String]
 
         # @!parse
         #   # @param partial_pricing_group_values [Hash, nil] List of pricing group key value pairs, rates containing the matching key / value

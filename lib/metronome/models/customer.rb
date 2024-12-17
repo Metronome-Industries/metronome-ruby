@@ -19,7 +19,7 @@ module Metronome
       #   aliases for this customer that can be used instead of the Metronome customer ID in usage events
       #
       #   @return [Array<String>]
-      required :ingest_aliases, Metronome::ArrayOf.new(String)
+      required :ingest_aliases, Metronome::ArrayOf[String]
 
       # @!attribute name
       #

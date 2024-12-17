@@ -148,6 +148,10 @@ module Metronome
   class ArrayOf
     include Metronome::Converter
 
+    private_class_method :new
+
+    def self.[](...) = new(...)
+
     # @param other [Object]
     #
     # @return [Boolean]

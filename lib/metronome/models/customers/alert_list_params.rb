@@ -21,11 +21,7 @@ module Metronome
         #
         #   @return [Array<Symbol, Metronome::Models::Customers::AlertListParams::AlertStatus>]
         optional :alert_statuses,
-                 Metronome::ArrayOf.new(
-                   enum: -> {
-                     Metronome::Models::Customers::AlertListParams::AlertStatus
-                   }
-                 )
+                 Metronome::ArrayOf[enum: -> { Metronome::Models::Customers::AlertListParams::AlertStatus }]
 
         # @!parse
         #   # @param customer_id [String] The Metronome ID of the customer

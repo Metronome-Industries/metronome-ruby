@@ -6,7 +6,7 @@ module Metronome
       # @!attribute data
       #
       #   @return [Array<Metronome::Models::CustomFieldListKeysResponse::Data>]
-      required :data, Metronome::ArrayOf.new(-> { Metronome::Models::CustomFieldListKeysResponse::Data })
+      required :data, Metronome::ArrayOf[-> { Metronome::Models::CustomFieldListKeysResponse::Data }]
 
       # @!attribute next_page
       #

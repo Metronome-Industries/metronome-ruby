@@ -19,33 +19,23 @@ module Metronome
       #
       #   @return [Array<Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>]
       optional :bm_group_key_overrides,
-               Metronome::ArrayOf.new(
-                 -> {
-                   Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride
-                 }
-               )
+               Metronome::ArrayOf[-> {
+                 Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride
+               }]
 
       # @!attribute color_overrides
       #   Optional list of colors to override
       #
       #   @return [Array<Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride>]
       optional :color_overrides,
-               Metronome::ArrayOf.new(
-                 -> {
-                   Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride
-                 }
-               )
+               Metronome::ArrayOf[-> { Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride }]
 
       # @!attribute dashboard_options
       #   Optional dashboard specific options
       #
       #   @return [Array<Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption>]
       optional :dashboard_options,
-               Metronome::ArrayOf.new(
-                 -> {
-                   Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption
-                 }
-               )
+               Metronome::ArrayOf[-> { Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption }]
 
       # @!parse
       #   # @param customer_id [String]

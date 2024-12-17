@@ -74,7 +74,7 @@ module Metronome
           #   An array of strings, representing a way to filter the credit grant this alert applies to, by looking at the credit_grant_type field on the credit grant. This field is only defined for CreditPercentage and CreditBalance alerts
           #
           #   @return [Array<String>]
-          optional :credit_grant_type_filters, Metronome::ArrayOf.new(String)
+          optional :credit_grant_type_filters, Metronome::ArrayOf[String]
 
           # @!attribute credit_type
           #
@@ -86,11 +86,9 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter>]
           optional :custom_field_filters,
-                   Metronome::ArrayOf.new(
-                     -> {
-                       Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter
-                     }
-                   )
+                   Metronome::ArrayOf[-> {
+                     Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter
+                   }]
 
           # @!attribute group_key_filter
           #   Scopes alert evaluation to a specific presentation group key on individual line items. Only present for spend alerts.
@@ -105,7 +103,7 @@ module Metronome
           #   Only supported for invoice_total_reached alerts. A list of invoice types to evaluate.
           #
           #   @return [Array<String>]
-          optional :invoice_types_filter, Metronome::ArrayOf.new(String)
+          optional :invoice_types_filter, Metronome::ArrayOf[String]
 
           # @!attribute uniqueness_key
           #   Prevents the creation of duplicates. If a request to create a record is made with a previously used uniqueness key, a new record will not be created and the request will fail with a 409 error.

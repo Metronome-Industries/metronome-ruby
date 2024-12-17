@@ -11,7 +11,7 @@ module Metronome
       # @!attribute group_values
       #
       #   @return [Array<String>]
-      required :group_values, Metronome::ArrayOf.new(String)
+      required :group_values, Metronome::ArrayOf[String]
 
       # @!attribute starting_at
       #

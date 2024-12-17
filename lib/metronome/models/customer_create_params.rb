@@ -29,7 +29,7 @@ module Metronome
       #   Aliases that can be used to refer to this customer in usage events
       #
       #   @return [Array<String>]
-      optional :ingest_aliases, Metronome::ArrayOf.new(String)
+      optional :ingest_aliases, Metronome::ArrayOf[String]
 
       # @!parse
       #   # @param name [String] This will be truncated to 160 characters if the provided name is longer.

@@ -31,7 +31,7 @@ module Metronome
       # @!attribute prices
       #
       #   @return [Array<Metronome::Models::PlanListChargesResponse::Price>]
-      required :prices, Metronome::ArrayOf.new(-> { Metronome::Models::PlanListChargesResponse::Price })
+      required :prices, Metronome::ArrayOf[-> { Metronome::Models::PlanListChargesResponse::Price }]
 
       # @!attribute product_id
       #

@@ -30,19 +30,19 @@ module Metronome
         #   Which contract the credit applies to. If not provided, the credit applies to all contracts.
         #
         #   @return [Array<String>]
-        optional :applicable_contract_ids, Metronome::ArrayOf.new(String)
+        optional :applicable_contract_ids, Metronome::ArrayOf[String]
 
         # @!attribute applicable_product_ids
         #   Which products the credit applies to. If both applicable_product_ids and applicable_product_tags are not provided, the credit applies to all products.
         #
         #   @return [Array<String>]
-        optional :applicable_product_ids, Metronome::ArrayOf.new(String)
+        optional :applicable_product_ids, Metronome::ArrayOf[String]
 
         # @!attribute applicable_product_tags
         #   Which tags the credit applies to. If both applicable_product_ids and applicable_product_tags are not provided, the credit applies to all products.
         #
         #   @return [Array<String>]
-        optional :applicable_product_tags, Metronome::ArrayOf.new(String)
+        optional :applicable_product_tags, Metronome::ArrayOf[String]
 
         # @!attribute custom_fields
         #
@@ -134,11 +134,9 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem>]
           required :schedule_items,
-                   Metronome::ArrayOf.new(
-                     -> {
-                       Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem
-                     }
-                   )
+                   Metronome::ArrayOf[-> {
+                     Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem
+                   }]
 
           # @!attribute credit_type_id
           #   Defaults to USD (cents) if not passed

@@ -19,11 +19,9 @@ module Metronome
         #
         #   @return [Array<Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price>]
         required :prices,
-                 Metronome::ArrayOf.new(
-                   -> {
-                     Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price
-                   }
-                 )
+                 Metronome::ArrayOf[-> {
+                   Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price
+                 }]
 
         # @!attribute start_period
         #

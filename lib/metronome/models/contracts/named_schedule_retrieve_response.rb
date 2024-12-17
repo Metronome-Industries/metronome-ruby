@@ -8,11 +8,7 @@ module Metronome
         #
         #   @return [Array<Metronome::Models::Contracts::NamedScheduleRetrieveResponse::Data>]
         required :data,
-                 Metronome::ArrayOf.new(
-                   -> {
-                     Metronome::Models::Contracts::NamedScheduleRetrieveResponse::Data
-                   }
-                 )
+                 Metronome::ArrayOf[-> { Metronome::Models::Contracts::NamedScheduleRetrieveResponse::Data }]
 
         # @!parse
         #   # @param data [Array<Metronome::Models::Contracts::NamedScheduleRetrieveResponse::Data>]

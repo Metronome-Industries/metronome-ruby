@@ -23,7 +23,7 @@ module Metronome
       #   (DEPRECATED) use aggregation_key instead
       #
       #   @return [Array<String>]
-      optional :aggregate_keys, Metronome::ArrayOf.new(String)
+      optional :aggregate_keys, Metronome::ArrayOf[String]
 
       # @!attribute aggregation_key
       #   A key that specifies which property of the event is used to aggregate data. This key must be one of the property filter names and is not applicable when the aggregation type is 'count'.
@@ -65,19 +65,19 @@ module Metronome
       #   (DEPRECATED) use group_keys instead
       #
       #   @return [Array<String>]
-      optional :group_by, Metronome::ArrayOf.new(String)
+      optional :group_by, Metronome::ArrayOf[String]
 
       # @!attribute group_keys
       #   Property names that are used to group usage costs on an invoice. Each entry represents a set of properties used to slice events into distinct buckets.
       #
       #   @return [Array<Array<String>>]
-      optional :group_keys, Metronome::ArrayOf.new(Metronome::ArrayOf.new(String))
+      optional :group_keys, Metronome::ArrayOf[Metronome::ArrayOf[String]]
 
       # @!attribute property_filters
       #   A list of filters to match events to this billable metric. Each filter defines a rule on an event property. All rules must pass for the event to match the billable metric.
       #
       #   @return [Array<Metronome::Models::PropertyFilter>]
-      optional :property_filters, Metronome::ArrayOf.new(-> { Metronome::Models::PropertyFilter })
+      optional :property_filters, Metronome::ArrayOf[-> { Metronome::Models::PropertyFilter }]
 
       # @!attribute sql
       #   The SQL query associated with the billable metric

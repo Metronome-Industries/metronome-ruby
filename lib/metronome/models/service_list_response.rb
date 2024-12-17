@@ -6,7 +6,7 @@ module Metronome
       # @!attribute services
       #
       #   @return [Array<Metronome::Models::ServiceListResponse::Service>]
-      required :services, Metronome::ArrayOf.new(-> { Metronome::Models::ServiceListResponse::Service })
+      required :services, Metronome::ArrayOf[-> { Metronome::Models::ServiceListResponse::Service }]
 
       # @!parse
       #   # @param services [Array<Metronome::Models::ServiceListResponse::Service>]
@@ -19,7 +19,7 @@ module Metronome
         # @!attribute ips
         #
         #   @return [Array<String>]
-        required :ips, Metronome::ArrayOf.new(String)
+        required :ips, Metronome::ArrayOf[String]
 
         # @!attribute name
         #

@@ -8,7 +8,7 @@ module Metronome
           # @!attribute product_order
           #
           #   @return [Array<String>]
-          required :product_order, Metronome::ArrayOf.new(String)
+          required :product_order, Metronome::ArrayOf[String]
 
           # @!attribute rate_card_id
           #   ID of the rate card to update
