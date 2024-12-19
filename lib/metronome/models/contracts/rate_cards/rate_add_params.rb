@@ -149,7 +149,8 @@ module Metronome
           #     pricing_group_values: nil,
           #     quantity: nil,
           #     tiers: nil,
-          #     use_list_prices: nil
+          #     use_list_prices: nil,
+          #     **
           #   )
           #     super
           #   end
@@ -209,7 +210,7 @@ module Metronome
             #   #
             #   # @param tiers [Array<Metronome::Models::Tier>, nil] Only set for TIERED rate_type.
             #   #
-            #   def initialize(rate_type:, price: nil, tiers: nil) = super
+            #   def initialize(rate_type:, price: nil, tiers: nil, **) = super
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
 

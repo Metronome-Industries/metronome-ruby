@@ -145,7 +145,8 @@ module Metronome
         #     pricing_group_key: nil,
         #     quantity_conversion: nil,
         #     quantity_rounding: nil,
-        #     tags: nil
+        #     tags: nil,
+        #     **
         #   )
         #     super
         #   end

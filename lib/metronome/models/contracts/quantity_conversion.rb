@@ -37,7 +37,7 @@ module Metronome
         #   #
         #   # @param name [String, nil] Optional name for this conversion.
         #   #
-        #   def initialize(conversion_factor:, operation:, name: nil) = super
+        #   def initialize(conversion_factor:, operation:, name: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 

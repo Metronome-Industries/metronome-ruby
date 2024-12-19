@@ -128,7 +128,8 @@ module Metronome
       #     reseller_royalties: nil,
       #     salesforce_opportunity_id: nil,
       #     scheduled_charges: nil,
-      #     total_contract_value: nil
+      #     total_contract_value: nil,
+      #     **
       #   )
       #     super
       #   end
@@ -277,7 +278,8 @@ module Metronome
         #     priority: nil,
         #     rate_type: nil,
         #     rollover_fraction: nil,
-        #     temporary_id: nil
+        #     temporary_id: nil,
+        #     **
         #   )
         #     super
         #   end
@@ -323,7 +325,7 @@ module Metronome
           #   #
           #   # @param credit_type_id [String, nil] Defaults to USD (cents) if not passed
           #   #
-          #   def initialize(schedule_items:, credit_type_id: nil) = super
+          #   def initialize(schedule_items:, credit_type_id: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -352,7 +354,7 @@ module Metronome
             #   #
             #   # @param starting_at [String] RFC 3339 timestamp (inclusive)
             #   #
-            #   def initialize(amount:, ending_before:, starting_at:) = super
+            #   def initialize(amount:, ending_before:, starting_at:, **) = super
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
           end
@@ -395,7 +397,7 @@ module Metronome
           #   #
           #   # @param schedule_items [Array<Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule::ScheduleItem>, nil] Either provide amount or provide both unit_price and quantity.
           #   #
-          #   def initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil) = super
+          #   def initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -478,7 +480,8 @@ module Metronome
             #     starting_at:,
             #     amount: nil,
             #     quantity: nil,
-            #     unit_price: nil
+            #     unit_price: nil,
+            #     **
             #   )
             #     super
             #   end
@@ -565,7 +568,7 @@ module Metronome
             #   #   amount and must be specified with quantity. If specified amount cannot be
             #   #   provided.
             #   #
-            #   def initialize(timestamp:, amount: nil, quantity: nil, unit_price: nil) = super
+            #   def initialize(timestamp:, amount: nil, quantity: nil, unit_price: nil, **) = super
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
           end
@@ -685,7 +688,8 @@ module Metronome
         #     name: nil,
         #     netsuite_sales_order_id: nil,
         #     priority: nil,
-        #     rate_type: nil
+        #     rate_type: nil,
+        #     **
         #   )
         #     super
         #   end
@@ -714,7 +718,7 @@ module Metronome
           #   #
           #   # @param credit_type_id [String, nil] Defaults to USD (cents) if not passed
           #   #
-          #   def initialize(schedule_items:, credit_type_id: nil) = super
+          #   def initialize(schedule_items:, credit_type_id: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -743,7 +747,7 @@ module Metronome
             #   #
             #   # @param starting_at [String] RFC 3339 timestamp (inclusive)
             #   #
-            #   def initialize(amount:, ending_before:, starting_at:) = super
+            #   def initialize(amount:, ending_before:, starting_at:, **) = super
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
           end
@@ -804,7 +808,7 @@ module Metronome
         #   #
         #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
         #   #
-        #   def initialize(product_id:, schedule:, name: nil, netsuite_sales_order_id: nil) = super
+        #   def initialize(product_id:, schedule:, name: nil, netsuite_sales_order_id: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -842,7 +846,7 @@ module Metronome
           #   #
           #   # @param schedule_items [Array<Metronome::Models::ContractAmendParams::Discount::Schedule::ScheduleItem>, nil] Either provide amount or provide both unit_price and quantity.
           #   #
-          #   def initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil) = super
+          #   def initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -925,7 +929,8 @@ module Metronome
             #     starting_at:,
             #     amount: nil,
             #     quantity: nil,
-            #     unit_price: nil
+            #     unit_price: nil,
+            #     **
             #   )
             #     super
             #   end
@@ -1012,7 +1017,7 @@ module Metronome
             #   #   amount and must be specified with quantity. If specified amount cannot be
             #   #   provided.
             #   #
-            #   def initialize(timestamp:, amount: nil, quantity: nil, unit_price: nil) = super
+            #   def initialize(timestamp:, amount: nil, quantity: nil, unit_price: nil, **) = super
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
           end
@@ -1151,7 +1156,8 @@ module Metronome
         #     product_id: nil,
         #     target: nil,
         #     tiers: nil,
-        #     type: nil
+        #     type: nil,
+        #     **
         #   )
         #     super
         #   end
@@ -1212,7 +1218,8 @@ module Metronome
           #     presentation_group_values: nil,
           #     pricing_group_values: nil,
           #     product_id: nil,
-          #     product_tags: nil
+          #     product_tags: nil,
+          #     **
           #   )
           #     super
           #   end
@@ -1282,7 +1289,18 @@ module Metronome
           #   #
           #   # @param tiers [Array<Metronome::Models::Tier>, nil] Only set for TIERED rate_type.
           #   #
-          #   def initialize(rate_type:, credit_type_id: nil, custom_rate: nil, is_prorated: nil, price: nil, quantity: nil, tiers: nil) = super
+          #   def initialize(
+          #     rate_type:,
+          #     credit_type_id: nil,
+          #     custom_rate: nil,
+          #     is_prorated: nil,
+          #     price: nil,
+          #     quantity: nil,
+          #     tiers: nil,
+          #     **
+          #   )
+          #     super
+          #   end
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -1349,7 +1367,7 @@ module Metronome
           #   # @param multiplier [Float]
           #   # @param size [Float, nil]
           #   #
-          #   def initialize(multiplier:, size: nil) = super
+          #   def initialize(multiplier:, size: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
         end
@@ -1439,7 +1457,8 @@ module Metronome
         #     unit_price:,
         #     custom_fields: nil,
         #     description: nil,
-        #     netsuite_sales_order_id: nil
+        #     netsuite_sales_order_id: nil,
+        #     **
         #   )
         #     super
         #   end
@@ -1533,7 +1552,8 @@ module Metronome
         #     gcp_options: nil,
         #     netsuite_reseller_id: nil,
         #     reseller_contract_value: nil,
-        #     starting_at: nil
+        #     starting_at: nil,
+        #     **
         #   )
         #     super
         #   end
@@ -1582,7 +1602,7 @@ module Metronome
           #   # @param aws_offer_id [String, nil]
           #   # @param aws_payer_reference_id [String, nil]
           #   #
-          #   def initialize(aws_account_number: nil, aws_offer_id: nil, aws_payer_reference_id: nil) = super
+          #   def initialize(aws_account_number: nil, aws_offer_id: nil, aws_payer_reference_id: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
         end
@@ -1602,7 +1622,7 @@ module Metronome
           #   # @param gcp_account_id [String, nil]
           #   # @param gcp_offer_id [String, nil]
           #   #
-          #   def initialize(gcp_account_id: nil, gcp_offer_id: nil) = super
+          #   def initialize(gcp_account_id: nil, gcp_offer_id: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
         end
@@ -1641,7 +1661,7 @@ module Metronome
         #   #
         #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
         #   #
-        #   def initialize(product_id:, schedule:, name: nil, netsuite_sales_order_id: nil) = super
+        #   def initialize(product_id:, schedule:, name: nil, netsuite_sales_order_id: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -1679,7 +1699,7 @@ module Metronome
           #   #
           #   # @param schedule_items [Array<Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule::ScheduleItem>, nil] Either provide amount or provide both unit_price and quantity.
           #   #
-          #   def initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil) = super
+          #   def initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -1762,7 +1782,8 @@ module Metronome
             #     starting_at:,
             #     amount: nil,
             #     quantity: nil,
-            #     unit_price: nil
+            #     unit_price: nil,
+            #     **
             #   )
             #     super
             #   end
@@ -1849,7 +1870,7 @@ module Metronome
             #   #   amount and must be specified with quantity. If specified amount cannot be
             #   #   provided.
             #   #
-            #   def initialize(timestamp:, amount: nil, quantity: nil, unit_price: nil) = super
+            #   def initialize(timestamp:, amount: nil, quantity: nil, unit_price: nil, **) = super
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
           end

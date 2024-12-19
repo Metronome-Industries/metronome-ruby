@@ -70,7 +70,8 @@ module Metronome
       #     resource_id: nil,
       #     resource_type: nil,
       #     sort: nil,
-      #     starting_on: nil
+      #     starting_on: nil,
+      #     **
       #   )
       #     super
       #   end

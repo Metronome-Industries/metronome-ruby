@@ -50,7 +50,7 @@ module Metronome
       #   # @param starting_on [String, nil] If supplied, only ledger entries effective at or after this time will be
       #   #   returned.
       #   #
-      #   def initialize(next_page: nil, credit_type_ids: nil, customer_ids: nil, ending_before: nil, starting_on: nil) = super
+      #   def initialize(next_page: nil, credit_type_ids: nil, customer_ids: nil, ending_before: nil, starting_on: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

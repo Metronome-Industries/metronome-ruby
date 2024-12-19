@@ -29,7 +29,7 @@ module Metronome
         #   #
         #   # @param archive_filter [String, nil] Filter options for the product list
         #   #
-        #   def initialize(limit: nil, next_page: nil, archive_filter: nil) = super
+        #   def initialize(limit: nil, next_page: nil, archive_filter: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 

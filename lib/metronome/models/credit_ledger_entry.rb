@@ -60,7 +60,7 @@ module Metronome
       #   #   deduction was consumed; if this entry is a grant, the Metronome ID of the
       #   #   invoice where the grant's paid_amount was charged
       #   #
-      #   def initialize(amount:, created_by:, credit_grant_id:, effective_at:, reason:, running_balance:, invoice_id: nil) = super
+      #   def initialize(amount:, created_by:, credit_grant_id:, effective_at:, reason:, running_balance:, invoice_id: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

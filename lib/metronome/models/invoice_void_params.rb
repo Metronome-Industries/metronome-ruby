@@ -12,7 +12,7 @@ module Metronome
       # @!parse
       #   # @param id [String] The invoice id to void
       #   #
-      #   def initialize(id:) = super
+      #   def initialize(id:, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

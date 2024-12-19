@@ -23,7 +23,7 @@ module Metronome
         #   # @param decimal_places [Float]
         #   # @param rounding_method [String]
         #   #
-        #   def initialize(decimal_places:, rounding_method:) = super
+        #   def initialize(decimal_places:, rounding_method:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 

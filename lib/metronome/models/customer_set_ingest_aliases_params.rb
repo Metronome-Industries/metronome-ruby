@@ -17,7 +17,7 @@ module Metronome
       #   # @param customer_id [String]
       #   # @param ingest_aliases [Array<String>]
       #   #
-      #   def initialize(customer_id:, ingest_aliases:) = super
+      #   def initialize(customer_id:, ingest_aliases:, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

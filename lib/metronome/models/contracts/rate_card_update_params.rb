@@ -48,7 +48,7 @@ module Metronome
         #   #
         #   # @param name [String, nil] Used only in UI/API. It is not exposed to end customers.
         #   #
-        #   def initialize(rate_card_id:, aliases: nil, custom_fields: nil, description: nil, name: nil) = super
+        #   def initialize(rate_card_id:, aliases: nil, custom_fields: nil, description: nil, name: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -73,7 +73,7 @@ module Metronome
           #   # @param ending_before [String, nil]
           #   # @param starting_at [String, nil]
           #   #
-          #   def initialize(name:, ending_before: nil, starting_at: nil) = super
+          #   def initialize(name:, ending_before: nil, starting_at: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
         end

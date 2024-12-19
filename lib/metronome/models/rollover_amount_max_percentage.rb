@@ -20,7 +20,7 @@ module Metronome
       #   #
       #   # @param value [Float] The maximum percentage (0-1) of the original credit grant to rollover.
       #   #
-      #   def initialize(type:, value:) = super
+      #   def initialize(type:, value:, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 

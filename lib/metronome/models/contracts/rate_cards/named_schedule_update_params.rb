@@ -53,7 +53,7 @@ module Metronome
           #   #
           #   # @param ending_before [String, nil]
           #   #
-          #   def initialize(contract_id:, customer_id:, schedule_name:, starting_at:, value:, ending_before: nil) = super
+          #   def initialize(contract_id:, customer_id:, schedule_name:, starting_at:, value:, ending_before: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
         end

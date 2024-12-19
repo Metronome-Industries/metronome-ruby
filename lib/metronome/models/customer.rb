@@ -44,7 +44,7 @@ module Metronome
       #   #
       #   # @param custom_fields [Hash{Symbol => String}, nil]
       #   #
-      #   def initialize(id:, external_id:, ingest_aliases:, name:, custom_fields: nil) = super
+      #   def initialize(id:, external_id:, ingest_aliases:, name:, custom_fields: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

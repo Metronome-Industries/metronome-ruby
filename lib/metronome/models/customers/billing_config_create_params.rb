@@ -57,7 +57,8 @@ module Metronome
         #     billing_provider_customer_id:,
         #     aws_product_code: nil,
         #     aws_region: nil,
-        #     stripe_collection_method: nil
+        #     stripe_collection_method: nil,
+        #     **
         #   )
         #     super
         #   end

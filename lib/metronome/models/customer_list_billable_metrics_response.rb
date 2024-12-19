@@ -134,7 +134,8 @@ module Metronome
       #     group_by: nil,
       #     group_keys: nil,
       #     property_filters: nil,
-      #     sql: nil
+      #     sql: nil,
+      #     **
       #   )
       #     super
       #   end

@@ -29,7 +29,7 @@ module Metronome
         #   #
         #   # @param triggered_by [String, nil] If present, indicates the reason the alert was triggered.
         #   #
-        #   def initialize(alert:, customer_status:, triggered_by: nil) = super
+        #   def initialize(alert:, customer_status:, triggered_by: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -154,7 +154,8 @@ module Metronome
           #     custom_field_filters: nil,
           #     group_key_filter: nil,
           #     invoice_types_filter: nil,
-          #     uniqueness_key: nil
+          #     uniqueness_key: nil,
+          #     **
           #   )
           #     super
           #   end
@@ -242,7 +243,7 @@ module Metronome
             #   # @param key [String]
             #   # @param value [String]
             #   #
-            #   def initialize(entity:, key:, value:) = super
+            #   def initialize(entity:, key:, value:, **) = super
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -283,7 +284,7 @@ module Metronome
             #   # @param key [String]
             #   # @param value [String]
             #   #
-            #   def initialize(key:, value:) = super
+            #   def initialize(key:, value:, **) = super
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
           end

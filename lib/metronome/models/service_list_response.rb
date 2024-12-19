@@ -11,7 +11,7 @@ module Metronome
       # @!parse
       #   # @param services [Array<Metronome::Models::ServiceListResponse::Service>]
       #   #
-      #   def initialize(services:) = super
+      #   def initialize(services:, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -36,7 +36,7 @@ module Metronome
         #   # @param name [String]
         #   # @param usage [String]
         #   #
-        #   def initialize(ips:, name:, usage:) = super
+        #   def initialize(ips:, name:, usage:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 

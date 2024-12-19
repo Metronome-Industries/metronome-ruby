@@ -31,7 +31,7 @@ module Metronome
         #   # @param alert_statuses [Array<String>, nil] Optionally filter by alert status. If absent, only enabled alerts will be
         #   #   returned.
         #   #
-        #   def initialize(customer_id:, next_page: nil, alert_statuses: nil) = super
+        #   def initialize(customer_id:, next_page: nil, alert_statuses: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 

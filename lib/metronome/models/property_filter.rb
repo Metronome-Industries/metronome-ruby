@@ -45,7 +45,7 @@ module Metronome
       #   #   or empty, all property values will pass the filter. Must be non-empty if
       #   #   present.
       #   #
-      #   def initialize(name:, exists: nil, in_values: nil, not_in_values: nil) = super
+      #   def initialize(name:, exists: nil, in_values: nil, not_in_values: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

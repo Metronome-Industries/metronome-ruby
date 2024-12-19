@@ -17,7 +17,7 @@ module Metronome
       #   # @param data [Array<Metronome::Models::ContractRetrieveRateScheduleResponse::Data>]
       #   # @param next_page [String, nil]
       #   #
-      #   def initialize(data:, next_page: nil) = super
+      #   def initialize(data:, next_page: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -124,7 +124,8 @@ module Metronome
         #     commit_rate: nil,
         #     ending_before: nil,
         #     override_rate: nil,
-        #     pricing_group_values: nil
+        #     pricing_group_values: nil,
+        #     **
         #   )
         #     super
         #   end
@@ -162,7 +163,7 @@ module Metronome
           #   #
           #   # @param tiers [Array<Metronome::Models::Tier>, nil] Only set for TIERED rate_type.
           #   #
-          #   def initialize(rate_type:, price: nil, tiers: nil) = super
+          #   def initialize(rate_type:, price: nil, tiers: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 

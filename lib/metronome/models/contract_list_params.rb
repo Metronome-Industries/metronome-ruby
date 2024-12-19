@@ -48,7 +48,7 @@ module Metronome
       #   #   contracts where effective_at is on or after the provided date. This cannot be
       #   #   provided if the covering_date filter is provided.
       #   #
-      #   def initialize(customer_id:, covering_date: nil, include_archived: nil, include_ledgers: nil, starting_at: nil) = super
+      #   def initialize(customer_id:, covering_date: nil, include_archived: nil, include_ledgers: nil, starting_at: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

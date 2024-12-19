@@ -18,7 +18,7 @@ module Metronome
       #   # @param invoices [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice>]
       #   # @param preview [Boolean]
       #   #
-      #   def initialize(invoices:, preview:) = super
+      #   def initialize(invoices:, preview:, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -114,7 +114,8 @@ module Metronome
         #     usage_line_items:,
         #     billable_status: nil,
         #     breakdown_granularity: nil,
-        #     custom_fields: nil
+        #     custom_fields: nil,
+        #     **
         #   )
         #     super
         #   end
@@ -176,7 +177,8 @@ module Metronome
           #     presentation_group_values: nil,
           #     pricing_group_values: nil,
           #     quantity: nil,
-          #     subtotals_with_quantity: nil
+          #     subtotals_with_quantity: nil,
+          #     **
           #   )
           #     super
           #   end
@@ -204,7 +206,7 @@ module Metronome
             #   # @param inclusive_start_date [String]
             #   # @param quantity [Float]
             #   #
-            #   def initialize(exclusive_end_date:, inclusive_start_date:, quantity:) = super
+            #   def initialize(exclusive_end_date:, inclusive_start_date:, quantity:, **) = super
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
           end

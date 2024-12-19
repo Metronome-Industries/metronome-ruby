@@ -17,7 +17,7 @@ module Metronome
       #   # @param data [Array<Metronome::Models::UsageListResponse::Data>]
       #   # @param next_page [String, nil]
       #   #
-      #   def initialize(data:, next_page:) = super
+      #   def initialize(data:, next_page:, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -81,7 +81,8 @@ module Metronome
         #     end_timestamp:,
         #     start_timestamp:,
         #     value:,
-        #     groups: nil
+        #     groups: nil,
+        #     **
         #   )
         #     super
         #   end

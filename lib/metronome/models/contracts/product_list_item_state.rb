@@ -154,7 +154,8 @@ module Metronome
         #     quantity_conversion: nil,
         #     quantity_rounding: nil,
         #     starting_at: nil,
-        #     tags: nil
+        #     tags: nil,
+        #     **
         #   )
         #     super
         #   end

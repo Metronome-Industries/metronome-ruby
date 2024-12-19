@@ -27,7 +27,7 @@ module Metronome
         #   #
         #   # @param skip_zero_qty_line_items [Boolean, nil] If set, all zero quantity line items will be filtered out of the response
         #   #
-        #   def initialize(customer_id:, invoice_id:, skip_zero_qty_line_items: nil) = super
+        #   def initialize(customer_id:, invoice_id:, skip_zero_qty_line_items: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

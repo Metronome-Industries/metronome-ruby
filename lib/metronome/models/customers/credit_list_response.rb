@@ -18,7 +18,7 @@ module Metronome
         #   # @param data [Array<Metronome::Models::Credit>]
         #   # @param next_page [String, nil]
         #   #
-        #   def initialize(data:, next_page:) = super
+        #   def initialize(data:, next_page:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

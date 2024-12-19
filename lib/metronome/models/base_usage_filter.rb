@@ -23,7 +23,7 @@ module Metronome
       #   # @param group_values [Array<String>]
       #   # @param starting_at [String, nil]
       #   #
-      #   def initialize(group_key:, group_values:, starting_at: nil) = super
+      #   def initialize(group_key:, group_values:, starting_at: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

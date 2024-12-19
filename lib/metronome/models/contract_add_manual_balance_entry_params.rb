@@ -61,7 +61,7 @@ module Metronome
       #   # @param timestamp [String, nil] RFC 3339 timestamp indicating when the manual adjustment takes place. If not
       #   #   provided, it will default to the start of the segment.
       #   #
-      #   def initialize(id:, amount:, customer_id:, reason:, segment_id:, contract_id: nil, timestamp: nil) = super
+      #   def initialize(id:, amount:, customer_id:, reason:, segment_id:, contract_id: nil, timestamp: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

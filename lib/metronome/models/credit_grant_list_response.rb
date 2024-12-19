@@ -154,7 +154,8 @@ module Metronome
       #     invoice_id: nil,
       #     products: nil,
       #     reason: nil,
-      #     uniqueness_key: nil
+      #     uniqueness_key: nil,
+      #     **
       #   )
       #     super
       #   end
@@ -194,7 +195,7 @@ module Metronome
         #   #   grant expires before the end of the customer's current billing period, this
         #   #   amount will be 0.
         #   #
-        #   def initialize(effective_at:, excluding_pending:, including_pending:) = super
+        #   def initialize(effective_at:, excluding_pending:, including_pending:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
@@ -218,7 +219,7 @@ module Metronome
         #   #
         #   # @param credit_type [Metronome::Models::CreditTypeData] the credit type for the amount granted
         #   #
-        #   def initialize(amount:, credit_type:) = super
+        #   def initialize(amount:, credit_type:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
@@ -242,7 +243,7 @@ module Metronome
         #   #
         #   # @param credit_type [Metronome::Models::CreditTypeData] the credit type for the amount paid
         #   #
-        #   def initialize(amount:, credit_type:) = super
+        #   def initialize(amount:, credit_type:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
@@ -262,7 +263,7 @@ module Metronome
         #   # @param id [String]
         #   # @param name [String]
         #   #
-        #   def initialize(id:, name:) = super
+        #   def initialize(id:, name:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

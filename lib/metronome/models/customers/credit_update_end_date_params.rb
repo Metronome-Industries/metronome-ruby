@@ -30,7 +30,7 @@ module Metronome
         #   #
         #   # @param customer_id [String] ID of the customer whose credit is to be updated
         #   #
-        #   def initialize(access_ending_before:, credit_id:, customer_id:) = super
+        #   def initialize(access_ending_before:, credit_id:, customer_id:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

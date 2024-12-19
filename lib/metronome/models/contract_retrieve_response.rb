@@ -11,7 +11,7 @@ module Metronome
       # @!parse
       #   # @param data [Metronome::Models::ContractRetrieveResponse::Data]
       #   #
-      #   def initialize(data:) = super
+      #   def initialize(data:, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -97,7 +97,8 @@ module Metronome
         #     archived_at: nil,
         #     custom_fields: nil,
         #     customer_billing_provider_configuration: nil,
-        #     uniqueness_key: nil
+        #     uniqueness_key: nil,
+        #     **
         #   )
         #     super
         #   end
@@ -218,7 +219,8 @@ module Metronome
           #     netsuite_sales_order_id: nil,
           #     professional_services: nil,
           #     reseller_royalties: nil,
-          #     salesforce_opportunity_id: nil
+          #     salesforce_opportunity_id: nil,
+          #     **
           #   )
           #     super
           #   end
@@ -308,7 +310,8 @@ module Metronome
             #     gcp_offer_id: nil,
             #     netsuite_reseller_id: nil,
             #     reseller_contract_value: nil,
-            #     starting_at: nil
+            #     starting_at: nil,
+            #     **
             #   )
             #     super
             #   end
@@ -361,7 +364,7 @@ module Metronome
           #   # @param billing_provider [String]
           #   # @param delivery_method [String]
           #   #
-          #   def initialize(billing_provider:, delivery_method:) = super
+          #   def initialize(billing_provider:, delivery_method:, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 

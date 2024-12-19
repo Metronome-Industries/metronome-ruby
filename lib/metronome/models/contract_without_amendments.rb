@@ -175,7 +175,8 @@ module Metronome
       #     reseller_royalties: nil,
       #     salesforce_opportunity_id: nil,
       #     total_contract_value: nil,
-      #     usage_filter: nil
+      #     usage_filter: nil,
+      #     **
       #   )
       #     super
       #   end
@@ -203,7 +204,7 @@ module Metronome
         #   # @param to_contract_id [String]
         #   # @param type [String]
         #   #
-        #   def initialize(from_contract_id:, to_contract_id:, type:) = super
+        #   def initialize(from_contract_id:, to_contract_id:, type:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -241,7 +242,7 @@ module Metronome
         #   #
         #   # @param frequency [String]
         #   #
-        #   def initialize(billing_anchor_date:, frequency:) = super
+        #   def initialize(billing_anchor_date:, frequency:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -359,7 +360,8 @@ module Metronome
         #     ending_before: nil,
         #     gcp_account_id: nil,
         #     gcp_offer_id: nil,
-        #     reseller_contract_value: nil
+        #     reseller_contract_value: nil,
+        #     **
         #   )
         #     super
         #   end
@@ -410,7 +412,7 @@ module Metronome
         #   # @param initial [Metronome::Models::BaseUsageFilter]
         #   # @param updates [Array<Metronome::Models::ContractWithoutAmendments::UsageFilter::Update>]
         #   #
-        #   def initialize(current:, initial:, updates:) = super
+        #   def initialize(current:, initial:, updates:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -435,7 +437,7 @@ module Metronome
           #   # @param group_values [Array<String>]
           #   # @param starting_at [String]
           #   #
-          #   def initialize(group_key:, group_values:, starting_at:) = super
+          #   def initialize(group_key:, group_values:, starting_at:, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
         end

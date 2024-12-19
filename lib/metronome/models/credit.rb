@@ -139,7 +139,8 @@ module Metronome
       #     netsuite_sales_order_id: nil,
       #     priority: nil,
       #     rate_type: nil,
-      #     salesforce_opportunity_id: nil
+      #     salesforce_opportunity_id: nil,
+      #     **
       #   )
       #     super
       #   end
@@ -161,7 +162,7 @@ module Metronome
         #   # @param id [String]
         #   # @param name [String]
         #   #
-        #   def initialize(id:, name:) = super
+        #   def initialize(id:, name:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
@@ -187,7 +188,7 @@ module Metronome
         # @!parse
         #   # @param id [String]
         #   #
-        #   def initialize(id:) = super
+        #   def initialize(id:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

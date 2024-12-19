@@ -20,7 +20,7 @@ module Metronome
       #   # @param credit_type [Metronome::Models::CreditTypeData, nil]
       #   # @param schedule_items [Array<Metronome::Models::SchedulePointInTime::ScheduleItem>, nil]
       #   #
-      #   def initialize(credit_type: nil, schedule_items: nil) = super
+      #   def initialize(credit_type: nil, schedule_items: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -63,7 +63,7 @@ module Metronome
         #   # @param timestamp [String]
         #   # @param unit_price [Float]
         #   #
-        #   def initialize(id:, amount:, invoice_id:, quantity:, timestamp:, unit_price:) = super
+        #   def initialize(id:, amount:, invoice_id:, quantity:, timestamp:, unit_price:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

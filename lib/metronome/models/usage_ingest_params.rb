@@ -11,7 +11,7 @@ module Metronome
       # @!parse
       #   # @param usage [Array<Metronome::Models::UsageIngestParams::Usage>]
       #   #
-      #   def initialize(usage:) = super
+      #   def initialize(usage:, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -53,7 +53,7 @@ module Metronome
         #   #
         #   # @param properties [Hash{Symbol => Object}, nil]
         #   #
-        #   def initialize(customer_id:, event_type:, timestamp:, transaction_id:, properties: nil) = super
+        #   def initialize(customer_id:, event_type:, timestamp:, transaction_id:, properties: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

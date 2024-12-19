@@ -59,7 +59,18 @@ module Metronome
       #   #
       #   # @param current_billable_status [Metronome::Models::CustomerDetail::CurrentBillableStatus, nil] This field's availability is dependent on your client's configuration.
       #   #
-      #   def initialize(id:, custom_fields:, customer_config:, external_id:, ingest_aliases:, name:, current_billable_status: nil) = super
+      #   def initialize(
+      #     id:,
+      #     custom_fields:,
+      #     customer_config:,
+      #     external_id:,
+      #     ingest_aliases:,
+      #     name:,
+      #     current_billable_status: nil,
+      #     **
+      #   )
+      #     super
+      #   end
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -73,7 +84,7 @@ module Metronome
         # @!parse
         #   # @param salesforce_account_id [String, nil] The Salesforce account ID for the customer
         #   #
-        #   def initialize(salesforce_account_id:) = super
+        #   def initialize(salesforce_account_id:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
@@ -95,7 +106,7 @@ module Metronome
         #   # @param value [String]
         #   # @param effective_at [String, nil]
         #   #
-        #   def initialize(value:, effective_at: nil) = super
+        #   def initialize(value:, effective_at: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 

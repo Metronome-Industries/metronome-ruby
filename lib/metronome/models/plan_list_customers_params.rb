@@ -51,7 +51,7 @@ module Metronome
       #   #   Multiple statuses can be OR'd together using commas, e.g. `active,ended`.
       #   #   **Note:** `ended,upcoming` combination is not yet supported.
       #   #
-      #   def initialize(plan_id:, limit: nil, next_page: nil, status: nil) = super
+      #   def initialize(plan_id:, limit: nil, next_page: nil, status: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 

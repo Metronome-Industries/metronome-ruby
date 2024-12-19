@@ -58,7 +58,7 @@ module Metronome
         #   # @param selectors [Array<Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams::Selector>, nil] List of rate selectors, rates matching ANY of the selector will be included in
         #   #   the response Passing no selectors will result in all rates being returned.
         #   #
-        #   def initialize(rate_card_id:, starting_at:, limit: nil, next_page: nil, ending_before: nil, selectors: nil) = super
+        #   def initialize(rate_card_id:, starting_at:, limit: nil, next_page: nil, ending_before: nil, selectors: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -90,7 +90,7 @@ module Metronome
           #   #
           #   # @param product_id [String, nil] Rates matching the product id will be included in the response.
           #   #
-          #   def initialize(partial_pricing_group_values: nil, pricing_group_values: nil, product_id: nil) = super
+          #   def initialize(partial_pricing_group_values: nil, pricing_group_values: nil, product_id: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
         end

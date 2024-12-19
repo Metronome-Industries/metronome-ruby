@@ -239,7 +239,8 @@ module Metronome
         #     reseller_royalty: nil,
         #     salesforce_opportunity_id: nil,
         #     start_timestamp: nil,
-        #     subtotal: nil
+        #     subtotal: nil,
+        #     **
         #   )
         #     super
         #   end
@@ -566,7 +567,8 @@ module Metronome
           #     starting_at: nil,
           #     sub_line_items: nil,
           #     tier: nil,
-          #     unit_price: nil
+          #     unit_price: nil,
+          #     **
           #   )
           #     super
           #   end
@@ -593,7 +595,7 @@ module Metronome
             #   # @param id [String]
             #   # @param type [String]
             #   #
-            #   def initialize(id:, type:) = super
+            #   def initialize(id:, type:, **) = super
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -627,7 +629,7 @@ module Metronome
             #   #
             #   # @param id [String]
             #   #
-            #   def initialize(id:) = super
+            #   def initialize(id:, **) = super
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
           end
@@ -754,7 +756,8 @@ module Metronome
             #     price: nil,
             #     start_date: nil,
             #     tier_period: nil,
-            #     tiers: nil
+            #     tiers: nil,
+            #     **
             #   )
             #     super
             #   end
@@ -778,7 +781,7 @@ module Metronome
               #   # @param starting_at [String]
               #   # @param ending_before [String, nil]
               #   #
-              #   def initialize(starting_at:, ending_before: nil) = super
+              #   def initialize(starting_at:, ending_before: nil, **) = super
 
               # def initialize: (Hash | Metronome::BaseModel) -> void
             end
@@ -814,7 +817,7 @@ module Metronome
               #   #
               #   # @param subtotal [Float]
               #   #
-              #   def initialize(price:, quantity:, starting_at:, subtotal:) = super
+              #   def initialize(price:, quantity:, starting_at:, subtotal:, **) = super
 
               # def initialize: (Hash | Metronome::BaseModel) -> void
             end
@@ -841,7 +844,7 @@ module Metronome
             #   # @param starting_at [String]
             #   # @param size [String, nil]
             #   #
-            #   def initialize(level:, starting_at:, size: nil) = super
+            #   def initialize(level:, starting_at:, size: nil, **) = super
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
           end
@@ -892,7 +895,7 @@ module Metronome
           #   # @param reason [String]
           #   # @param corrected_external_invoice [Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice, nil]
           #   #
-          #   def initialize(corrected_invoice_id:, memo:, reason:, corrected_external_invoice: nil) = super
+          #   def initialize(corrected_invoice_id:, memo:, reason:, corrected_external_invoice: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -929,7 +932,7 @@ module Metronome
             #   # @param invoice_id [String, nil]
             #   # @param issued_at_timestamp [String, nil]
             #   #
-            #   def initialize(billing_provider_type:, external_status: nil, invoice_id: nil, issued_at_timestamp: nil) = super
+            #   def initialize(billing_provider_type:, external_status: nil, invoice_id: nil, issued_at_timestamp: nil, **) = super
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -1025,7 +1028,7 @@ module Metronome
           #   # @param invoice_id [String, nil]
           #   # @param issued_at_timestamp [String, nil]
           #   #
-          #   def initialize(billing_provider_type:, external_status: nil, invoice_id: nil, issued_at_timestamp: nil) = super
+          #   def initialize(billing_provider_type:, external_status: nil, invoice_id: nil, issued_at_timestamp: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -1124,7 +1127,7 @@ module Metronome
           #   # @param credit_grant_custom_fields [Hash{Symbol => String}, nil]
           #   # @param credit_grant_id [String, nil]
           #   #
-          #   def initialize(credit_type:, name:, total:, credit_grant_custom_fields: nil, credit_grant_id: nil) = super
+          #   def initialize(credit_type:, name:, total:, credit_grant_custom_fields: nil, credit_grant_id: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
         end
@@ -1167,7 +1170,7 @@ module Metronome
           #   # @param aws_options [Metronome::Models::Customers::Invoice::ResellerRoyalty::AwsOptions, nil]
           #   # @param gcp_options [Metronome::Models::Customers::Invoice::ResellerRoyalty::GcpOptions, nil]
           #   #
-          #   def initialize(fraction:, netsuite_reseller_id:, reseller_type:, aws_options: nil, gcp_options: nil) = super
+          #   def initialize(fraction:, netsuite_reseller_id:, reseller_type:, aws_options: nil, gcp_options: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -1213,7 +1216,7 @@ module Metronome
             #   # @param aws_offer_id [String, nil]
             #   # @param aws_payer_reference_id [String, nil]
             #   #
-            #   def initialize(aws_account_number: nil, aws_offer_id: nil, aws_payer_reference_id: nil) = super
+            #   def initialize(aws_account_number: nil, aws_offer_id: nil, aws_payer_reference_id: nil, **) = super
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
           end
@@ -1233,7 +1236,7 @@ module Metronome
             #   # @param gcp_account_id [String, nil]
             #   # @param gcp_offer_id [String, nil]
             #   #
-            #   def initialize(gcp_account_id: nil, gcp_offer_id: nil) = super
+            #   def initialize(gcp_account_id: nil, gcp_offer_id: nil, **) = super
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
           end

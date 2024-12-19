@@ -11,7 +11,7 @@ module Metronome
       # @!parse
       #   # @param customer_id [String]
       #   #
-      #   def initialize(customer_id:) = super
+      #   def initialize(customer_id:, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

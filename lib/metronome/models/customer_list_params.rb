@@ -59,7 +59,8 @@ module Metronome
       #     limit: nil,
       #     next_page: nil,
       #     only_archived: nil,
-      #     salesforce_account_ids: nil
+      #     salesforce_account_ids: nil,
+      #     **
       #   )
       #     super
       #   end

@@ -26,7 +26,7 @@ module Metronome
       #   # @param end_timestamp [String]
       #   # @param start_timestamp [String]
       #   #
-      #   def initialize(credit_types:, end_timestamp:, start_timestamp:) = super
+      #   def initialize(credit_types:, end_timestamp:, start_timestamp:, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -54,7 +54,7 @@ module Metronome
         #   # @param line_item_breakdown [Array<Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown>, nil]
         #   # @param name [String, nil]
         #   #
-        #   def initialize(cost: nil, line_item_breakdown: nil, name: nil) = super
+        #   def initialize(cost: nil, line_item_breakdown: nil, name: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -85,7 +85,7 @@ module Metronome
           #   # @param group_key [String, nil]
           #   # @param group_value [String, nil]
           #   #
-          #   def initialize(cost:, name:, group_key: nil, group_value: nil) = super
+          #   def initialize(cost:, name:, group_key: nil, group_value: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
         end

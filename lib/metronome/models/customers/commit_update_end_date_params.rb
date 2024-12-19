@@ -40,7 +40,7 @@ module Metronome
         #   # @param invoices_ending_before [String, nil] RFC 3339 timestamp indicating when the commit will stop being invoiced
         #   #   (exclusive). If not provided, the invoice schedule will not be updated.
         #   #
-        #   def initialize(commit_id:, customer_id:, access_ending_before: nil, invoices_ending_before: nil) = super
+        #   def initialize(commit_id:, customer_id:, access_ending_before: nil, invoices_ending_before: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

@@ -13,7 +13,7 @@ module Metronome
         # @!parse
         #   # @param product_id [String] ID of the product to be archived
         #   #
-        #   def initialize(product_id:) = super
+        #   def initialize(product_id:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

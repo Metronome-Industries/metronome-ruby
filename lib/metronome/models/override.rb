@@ -180,7 +180,8 @@ module Metronome
       #     target: nil,
       #     tiers: nil,
       #     type: nil,
-      #     value: nil
+      #     value: nil,
+      #     **
       #   )
       #     super
       #   end
@@ -225,7 +226,8 @@ module Metronome
         #     presentation_group_values: nil,
         #     pricing_group_values: nil,
         #     product_id: nil,
-        #     product_tags: nil
+        #     product_tags: nil,
+        #     **
         #   )
         #     super
         #   end
@@ -248,7 +250,7 @@ module Metronome
         #   # @param multiplier [Float]
         #   # @param size [Float, nil]
         #   #
-        #   def initialize(multiplier:, size: nil) = super
+        #   def initialize(multiplier:, size: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
@@ -312,7 +314,18 @@ module Metronome
         #   #
         #   # @param tiers [Array<Metronome::Models::Tier>, nil] Only set for TIERED rate_type.
         #   #
-        #   def initialize(rate_type:, credit_type: nil, custom_rate: nil, is_prorated: nil, price: nil, quantity: nil, tiers: nil) = super
+        #   def initialize(
+        #     rate_type:,
+        #     credit_type: nil,
+        #     custom_rate: nil,
+        #     is_prorated: nil,
+        #     price: nil,
+        #     quantity: nil,
+        #     tiers: nil,
+        #     **
+        #   )
+        #     super
+        #   end
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -356,7 +369,7 @@ module Metronome
         #   # @param id [String]
         #   # @param name [String]
         #   #
-        #   def initialize(id:, name:) = super
+        #   def initialize(id:, name:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

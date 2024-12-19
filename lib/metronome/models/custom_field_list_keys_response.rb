@@ -17,7 +17,7 @@ module Metronome
       #   # @param data [Array<Metronome::Models::CustomFieldListKeysResponse::Data>]
       #   # @param next_page [String, nil]
       #   #
-      #   def initialize(data:, next_page:) = super
+      #   def initialize(data:, next_page:, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -42,7 +42,7 @@ module Metronome
         #   # @param entity [String]
         #   # @param key [String]
         #   #
-        #   def initialize(enforce_uniqueness:, entity:, key:) = super
+        #   def initialize(enforce_uniqueness:, entity:, key:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
