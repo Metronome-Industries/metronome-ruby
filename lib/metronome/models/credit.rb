@@ -57,8 +57,8 @@ module Metronome
       # @!attribute ledger
       #   A list of ordered events that impact the balance of a credit. For example, an invoice deduction or an expiration.
       #
-      #   @return [Array<Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent13, Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent14, Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent15, Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent16, Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent17, Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent18>]
-      optional :ledger, Metronome::ArrayOf[Metronome::Unknown]
+      #   @return [Array<Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry, Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry, Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry, Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry, Metronome::Models::Credit::Ledger::CreditManualLedgerEntry>]
+      optional :ledger, Metronome::ArrayOf[union: -> { Metronome::Models::Credit::Ledger }]
 
       # @!attribute name
       #
@@ -109,7 +109,7 @@ module Metronome
       #   #
       #   # @param description [String, nil]
       #   #
-      #   # @param ledger [Array<Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent13, Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent14, Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent15, Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent16, Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent17, Metronome::Models::Credit::Ledger::UnnamedTypeWithunionParent18>, nil] A list of ordered events that impact the balance of a credit. For example, an
+      #   # @param ledger [Array<Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry, Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry, Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry, Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry, Metronome::Models::Credit::Ledger::CreditManualLedgerEntry>, nil] A list of ordered events that impact the balance of a credit. For example, an
       #   #   invoice deduction or an expiration.
       #   #
       #   # @param name [String, nil]
@@ -191,6 +191,608 @@ module Metronome
         #   def initialize(id:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
+      end
+
+      # @example
+      #
+      # ```ruby
+      # case union
+      # in Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry
+      #   # ...
+      # in Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry
+      #   # ...
+      # in Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry
+      #   # ...
+      # in Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry
+      #   # ...
+      # in Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry
+      #   # ...
+      # in Metronome::Models::Credit::Ledger::CreditManualLedgerEntry
+      #   # ...
+      # end
+      # ```
+      class Ledger < Metronome::Union
+        variant -> { Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry }
+
+        variant -> { Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry }
+
+        variant -> { Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry }
+
+        variant -> { Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry }
+
+        variant -> { Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry }
+
+        variant -> { Metronome::Models::Credit::Ledger::CreditManualLedgerEntry }
+
+        class CreditSegmentStartLedgerEntry < Metronome::BaseModel
+          # @!attribute amount
+          #
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute segment_id
+          #
+          #   @return [String]
+          required :segment_id, String
+
+          # @!attribute timestamp
+          #
+          #   @return [Time]
+          required :timestamp, Time
+
+          # @!attribute type
+          #
+          #   @return [Symbol, Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry::Type]
+          required :type, enum: -> { Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry::Type }
+
+          # @!parse
+          #   # @param amount [Float]
+          #   # @param segment_id [String]
+          #   # @param timestamp [String]
+          #   # @param type [String]
+          #   #
+          #   def initialize(amount:, segment_id:, timestamp:, type:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :CREDIT_SEGMENT_START
+          #   # ...
+          # end
+          # ```
+          class Type < Metronome::Enum
+            CREDIT_SEGMENT_START = :CREDIT_SEGMENT_START
+          end
+        end
+
+        class CreditAutomatedInvoiceDeductionLedgerEntry < Metronome::BaseModel
+          # @!attribute amount
+          #
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute invoice_id
+          #
+          #   @return [String]
+          required :invoice_id, String
+
+          # @!attribute segment_id
+          #
+          #   @return [String]
+          required :segment_id, String
+
+          # @!attribute timestamp
+          #
+          #   @return [Time]
+          required :timestamp, Time
+
+          # @!attribute type
+          #
+          #   @return [Symbol, Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type]
+          required :type,
+                   enum: -> {
+                     Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type
+                   }
+
+          # @!parse
+          #   # @param amount [Float]
+          #   # @param invoice_id [String]
+          #   # @param segment_id [String]
+          #   # @param timestamp [String]
+          #   # @param type [String]
+          #   #
+          #   def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :CREDIT_AUTOMATED_INVOICE_DEDUCTION
+          #   # ...
+          # end
+          # ```
+          class Type < Metronome::Enum
+            CREDIT_AUTOMATED_INVOICE_DEDUCTION = :CREDIT_AUTOMATED_INVOICE_DEDUCTION
+          end
+        end
+
+        class CreditExpirationLedgerEntry < Metronome::BaseModel
+          # @!attribute amount
+          #
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute segment_id
+          #
+          #   @return [String]
+          required :segment_id, String
+
+          # @!attribute timestamp
+          #
+          #   @return [Time]
+          required :timestamp, Time
+
+          # @!attribute type
+          #
+          #   @return [Symbol, Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry::Type]
+          required :type, enum: -> { Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry::Type }
+
+          # @!parse
+          #   # @param amount [Float]
+          #   # @param segment_id [String]
+          #   # @param timestamp [String]
+          #   # @param type [String]
+          #   #
+          #   def initialize(amount:, segment_id:, timestamp:, type:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :CREDIT_EXPIRATION
+          #   # ...
+          # end
+          # ```
+          class Type < Metronome::Enum
+            CREDIT_EXPIRATION = :CREDIT_EXPIRATION
+          end
+        end
+
+        class CreditCanceledLedgerEntry < Metronome::BaseModel
+          # @!attribute amount
+          #
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute invoice_id
+          #
+          #   @return [String]
+          required :invoice_id, String
+
+          # @!attribute segment_id
+          #
+          #   @return [String]
+          required :segment_id, String
+
+          # @!attribute timestamp
+          #
+          #   @return [Time]
+          required :timestamp, Time
+
+          # @!attribute type
+          #
+          #   @return [Symbol, Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry::Type]
+          required :type, enum: -> { Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry::Type }
+
+          # @!parse
+          #   # @param amount [Float]
+          #   # @param invoice_id [String]
+          #   # @param segment_id [String]
+          #   # @param timestamp [String]
+          #   # @param type [String]
+          #   #
+          #   def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :CREDIT_CANCELED
+          #   # ...
+          # end
+          # ```
+          class Type < Metronome::Enum
+            CREDIT_CANCELED = :CREDIT_CANCELED
+          end
+        end
+
+        class CreditCreditedLedgerEntry < Metronome::BaseModel
+          # @!attribute amount
+          #
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute invoice_id
+          #
+          #   @return [String]
+          required :invoice_id, String
+
+          # @!attribute segment_id
+          #
+          #   @return [String]
+          required :segment_id, String
+
+          # @!attribute timestamp
+          #
+          #   @return [Time]
+          required :timestamp, Time
+
+          # @!attribute type
+          #
+          #   @return [Symbol, Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry::Type]
+          required :type, enum: -> { Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry::Type }
+
+          # @!parse
+          #   # @param amount [Float]
+          #   # @param invoice_id [String]
+          #   # @param segment_id [String]
+          #   # @param timestamp [String]
+          #   # @param type [String]
+          #   #
+          #   def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :CREDIT_CREDITED
+          #   # ...
+          # end
+          # ```
+          class Type < Metronome::Enum
+            CREDIT_CREDITED = :CREDIT_CREDITED
+          end
+        end
+
+        class CreditManualLedgerEntry < Metronome::BaseModel
+          # @!attribute amount
+          #
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute reason
+          #
+          #   @return [String]
+          required :reason, String
+
+          # @!attribute timestamp
+          #
+          #   @return [Time]
+          required :timestamp, Time
+
+          # @!attribute type
+          #
+          #   @return [Symbol, Metronome::Models::Credit::Ledger::CreditManualLedgerEntry::Type]
+          required :type, enum: -> { Metronome::Models::Credit::Ledger::CreditManualLedgerEntry::Type }
+
+          # @!parse
+          #   # @param amount [Float]
+          #   # @param reason [String]
+          #   # @param timestamp [String]
+          #   # @param type [String]
+          #   #
+          #   def initialize(amount:, reason:, timestamp:, type:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :CREDIT_MANUAL
+          #   # ...
+          # end
+          # ```
+          class Type < Metronome::Enum
+            CREDIT_MANUAL = :CREDIT_MANUAL
+          end
+        end
+      end
+
+      class CreditSegmentStartLedgerEntry < Metronome::BaseModel
+        # @!attribute amount
+        #
+        #   @return [Float]
+        required :amount, Float
+
+        # @!attribute segment_id
+        #
+        #   @return [String]
+        required :segment_id, String
+
+        # @!attribute timestamp
+        #
+        #   @return [Time]
+        required :timestamp, Time
+
+        # @!attribute type
+        #
+        #   @return [Symbol, Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry::Type]
+        required :type, enum: -> { Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry::Type }
+
+        # @!parse
+        #   # @param amount [Float]
+        #   # @param segment_id [String]
+        #   # @param timestamp [String]
+        #   # @param type [String]
+        #   #
+        #   def initialize(amount:, segment_id:, timestamp:, type:, **) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :CREDIT_SEGMENT_START
+        #   # ...
+        # end
+        # ```
+        class Type < Metronome::Enum
+          CREDIT_SEGMENT_START = :CREDIT_SEGMENT_START
+        end
+      end
+
+      class CreditAutomatedInvoiceDeductionLedgerEntry < Metronome::BaseModel
+        # @!attribute amount
+        #
+        #   @return [Float]
+        required :amount, Float
+
+        # @!attribute invoice_id
+        #
+        #   @return [String]
+        required :invoice_id, String
+
+        # @!attribute segment_id
+        #
+        #   @return [String]
+        required :segment_id, String
+
+        # @!attribute timestamp
+        #
+        #   @return [Time]
+        required :timestamp, Time
+
+        # @!attribute type
+        #
+        #   @return [Symbol, Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type]
+        required :type,
+                 enum: -> {
+                   Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type
+                 }
+
+        # @!parse
+        #   # @param amount [Float]
+        #   # @param invoice_id [String]
+        #   # @param segment_id [String]
+        #   # @param timestamp [String]
+        #   # @param type [String]
+        #   #
+        #   def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, **) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :CREDIT_AUTOMATED_INVOICE_DEDUCTION
+        #   # ...
+        # end
+        # ```
+        class Type < Metronome::Enum
+          CREDIT_AUTOMATED_INVOICE_DEDUCTION = :CREDIT_AUTOMATED_INVOICE_DEDUCTION
+        end
+      end
+
+      class CreditExpirationLedgerEntry < Metronome::BaseModel
+        # @!attribute amount
+        #
+        #   @return [Float]
+        required :amount, Float
+
+        # @!attribute segment_id
+        #
+        #   @return [String]
+        required :segment_id, String
+
+        # @!attribute timestamp
+        #
+        #   @return [Time]
+        required :timestamp, Time
+
+        # @!attribute type
+        #
+        #   @return [Symbol, Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry::Type]
+        required :type, enum: -> { Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry::Type }
+
+        # @!parse
+        #   # @param amount [Float]
+        #   # @param segment_id [String]
+        #   # @param timestamp [String]
+        #   # @param type [String]
+        #   #
+        #   def initialize(amount:, segment_id:, timestamp:, type:, **) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :CREDIT_EXPIRATION
+        #   # ...
+        # end
+        # ```
+        class Type < Metronome::Enum
+          CREDIT_EXPIRATION = :CREDIT_EXPIRATION
+        end
+      end
+
+      class CreditCanceledLedgerEntry < Metronome::BaseModel
+        # @!attribute amount
+        #
+        #   @return [Float]
+        required :amount, Float
+
+        # @!attribute invoice_id
+        #
+        #   @return [String]
+        required :invoice_id, String
+
+        # @!attribute segment_id
+        #
+        #   @return [String]
+        required :segment_id, String
+
+        # @!attribute timestamp
+        #
+        #   @return [Time]
+        required :timestamp, Time
+
+        # @!attribute type
+        #
+        #   @return [Symbol, Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry::Type]
+        required :type, enum: -> { Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry::Type }
+
+        # @!parse
+        #   # @param amount [Float]
+        #   # @param invoice_id [String]
+        #   # @param segment_id [String]
+        #   # @param timestamp [String]
+        #   # @param type [String]
+        #   #
+        #   def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, **) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :CREDIT_CANCELED
+        #   # ...
+        # end
+        # ```
+        class Type < Metronome::Enum
+          CREDIT_CANCELED = :CREDIT_CANCELED
+        end
+      end
+
+      class CreditCreditedLedgerEntry < Metronome::BaseModel
+        # @!attribute amount
+        #
+        #   @return [Float]
+        required :amount, Float
+
+        # @!attribute invoice_id
+        #
+        #   @return [String]
+        required :invoice_id, String
+
+        # @!attribute segment_id
+        #
+        #   @return [String]
+        required :segment_id, String
+
+        # @!attribute timestamp
+        #
+        #   @return [Time]
+        required :timestamp, Time
+
+        # @!attribute type
+        #
+        #   @return [Symbol, Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry::Type]
+        required :type, enum: -> { Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry::Type }
+
+        # @!parse
+        #   # @param amount [Float]
+        #   # @param invoice_id [String]
+        #   # @param segment_id [String]
+        #   # @param timestamp [String]
+        #   # @param type [String]
+        #   #
+        #   def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, **) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :CREDIT_CREDITED
+        #   # ...
+        # end
+        # ```
+        class Type < Metronome::Enum
+          CREDIT_CREDITED = :CREDIT_CREDITED
+        end
+      end
+
+      class CreditManualLedgerEntry < Metronome::BaseModel
+        # @!attribute amount
+        #
+        #   @return [Float]
+        required :amount, Float
+
+        # @!attribute reason
+        #
+        #   @return [String]
+        required :reason, String
+
+        # @!attribute timestamp
+        #
+        #   @return [Time]
+        required :timestamp, Time
+
+        # @!attribute type
+        #
+        #   @return [Symbol, Metronome::Models::Credit::Ledger::CreditManualLedgerEntry::Type]
+        required :type, enum: -> { Metronome::Models::Credit::Ledger::CreditManualLedgerEntry::Type }
+
+        # @!parse
+        #   # @param amount [Float]
+        #   # @param reason [String]
+        #   # @param timestamp [String]
+        #   # @param type [String]
+        #   #
+        #   def initialize(amount:, reason:, timestamp:, type:, **) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :CREDIT_MANUAL
+        #   # ...
+        # end
+        # ```
+        class Type < Metronome::Enum
+          CREDIT_MANUAL = :CREDIT_MANUAL
+        end
       end
 
       # @example

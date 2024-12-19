@@ -75,8 +75,8 @@ module Metronome
       # @!attribute ledger
       #   A list of ordered events that impact the balance of a commit. For example, an invoice deduction or a rollover.
       #
-      #   @return [Array<Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent0, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent1, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent10, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent11, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent12, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent2, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent3, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent4, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent5, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent6, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent7, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent8, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent9>]
-      optional :ledger, Metronome::ArrayOf[Metronome::Unknown]
+      #   @return [Array<Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry>]
+      optional :ledger, Metronome::ArrayOf[union: -> { Metronome::Models::Commit::Ledger }]
 
       # @!attribute name
       #
@@ -144,7 +144,7 @@ module Metronome
       #   #
       #   # @param invoice_schedule [Metronome::Models::SchedulePointInTime, nil] The schedule that the customer will be invoiced for this commit.
       #   #
-      #   # @param ledger [Array<Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent0, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent1, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent10, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent11, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent12, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent2, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent3, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent4, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent5, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent6, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent7, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent8, Metronome::Models::Commit::Ledger::UnnamedTypeWithunionParent9>, nil] A list of ordered events that impact the balance of a commit. For example, an
+      #   # @param ledger [Array<Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry>, nil] A list of ordered events that impact the balance of a commit. For example, an
       #   #   invoice deduction or a rollover.
       #   #
       #   # @param name [String, nil]
@@ -254,6 +254,1313 @@ module Metronome
         #   def initialize(id:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
+      end
+
+      # @example
+      #
+      # ```ruby
+      # case union
+      # in Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry
+      #   # ...
+      # in Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry
+      #   # ...
+      # in Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry
+      #   # ...
+      # in Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry
+      #   # ...
+      # in Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry
+      #   # ...
+      # in Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry
+      #   # ...
+      # in Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry
+      #   # ...
+      # in Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry
+      #   # ...
+      # in Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry
+      #   # ...
+      # in Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry
+      #   # ...
+      # in Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry
+      #   # ...
+      # in Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry
+      #   # ...
+      # in Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry
+      #   # ...
+      # end
+      # ```
+      class Ledger < Metronome::Union
+        variant -> { Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry }
+
+        variant -> { Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry }
+
+        variant -> { Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry }
+
+        variant -> { Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry }
+
+        variant -> { Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry }
+
+        variant -> { Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry }
+
+        variant -> { Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry }
+
+        variant -> { Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry }
+
+        variant -> { Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry }
+
+        variant -> { Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry }
+
+        variant -> { Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry }
+
+        variant -> { Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry }
+
+        variant -> { Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry }
+
+        class PrepaidCommitSegmentStartLedgerEntry < Metronome::BaseModel
+          # @!attribute amount
+          #
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute segment_id
+          #
+          #   @return [String]
+          required :segment_id, String
+
+          # @!attribute timestamp
+          #
+          #   @return [Time]
+          required :timestamp, Time
+
+          # @!attribute type
+          #
+          #   @return [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type]
+          required :type,
+                   enum: -> {
+                     Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type
+                   }
+
+          # @!parse
+          #   # @param amount [Float]
+          #   # @param segment_id [String]
+          #   # @param timestamp [String]
+          #   # @param type [String]
+          #   #
+          #   def initialize(amount:, segment_id:, timestamp:, type:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :PREPAID_COMMIT_SEGMENT_START
+          #   # ...
+          # end
+          # ```
+          class Type < Metronome::Enum
+            PREPAID_COMMIT_SEGMENT_START = :PREPAID_COMMIT_SEGMENT_START
+          end
+        end
+
+        class PrepaidCommitAutomatedInvoiceDeductionLedgerEntry < Metronome::BaseModel
+          # @!attribute amount
+          #
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute invoice_id
+          #
+          #   @return [String]
+          required :invoice_id, String
+
+          # @!attribute segment_id
+          #
+          #   @return [String]
+          required :segment_id, String
+
+          # @!attribute timestamp
+          #
+          #   @return [Time]
+          required :timestamp, Time
+
+          # @!attribute type
+          #
+          #   @return [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
+          required :type,
+                   enum: -> {
+                     Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type
+                   }
+
+          # @!parse
+          #   # @param amount [Float]
+          #   # @param invoice_id [String]
+          #   # @param segment_id [String]
+          #   # @param timestamp [String]
+          #   # @param type [String]
+          #   #
+          #   def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
+          #   # ...
+          # end
+          # ```
+          class Type < Metronome::Enum
+            PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION = :PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
+          end
+        end
+
+        class PrepaidCommitRolloverLedgerEntry < Metronome::BaseModel
+          # @!attribute amount
+          #
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute new_contract_id
+          #
+          #   @return [String]
+          required :new_contract_id, String
+
+          # @!attribute segment_id
+          #
+          #   @return [String]
+          required :segment_id, String
+
+          # @!attribute timestamp
+          #
+          #   @return [Time]
+          required :timestamp, Time
+
+          # @!attribute type
+          #
+          #   @return [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type]
+          required :type,
+                   enum: -> {
+                     Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type
+                   }
+
+          # @!parse
+          #   # @param amount [Float]
+          #   # @param new_contract_id [String]
+          #   # @param segment_id [String]
+          #   # @param timestamp [String]
+          #   # @param type [String]
+          #   #
+          #   def initialize(amount:, new_contract_id:, segment_id:, timestamp:, type:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :PREPAID_COMMIT_ROLLOVER
+          #   # ...
+          # end
+          # ```
+          class Type < Metronome::Enum
+            PREPAID_COMMIT_ROLLOVER = :PREPAID_COMMIT_ROLLOVER
+          end
+        end
+
+        class PrepaidCommitExpirationLedgerEntry < Metronome::BaseModel
+          # @!attribute amount
+          #
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute segment_id
+          #
+          #   @return [String]
+          required :segment_id, String
+
+          # @!attribute timestamp
+          #
+          #   @return [Time]
+          required :timestamp, Time
+
+          # @!attribute type
+          #
+          #   @return [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type]
+          required :type,
+                   enum: -> {
+                     Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type
+                   }
+
+          # @!parse
+          #   # @param amount [Float]
+          #   # @param segment_id [String]
+          #   # @param timestamp [String]
+          #   # @param type [String]
+          #   #
+          #   def initialize(amount:, segment_id:, timestamp:, type:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :PREPAID_COMMIT_EXPIRATION
+          #   # ...
+          # end
+          # ```
+          class Type < Metronome::Enum
+            PREPAID_COMMIT_EXPIRATION = :PREPAID_COMMIT_EXPIRATION
+          end
+        end
+
+        class PrepaidCommitCanceledLedgerEntry < Metronome::BaseModel
+          # @!attribute amount
+          #
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute invoice_id
+          #
+          #   @return [String]
+          required :invoice_id, String
+
+          # @!attribute segment_id
+          #
+          #   @return [String]
+          required :segment_id, String
+
+          # @!attribute timestamp
+          #
+          #   @return [Time]
+          required :timestamp, Time
+
+          # @!attribute type
+          #
+          #   @return [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type]
+          required :type,
+                   enum: -> {
+                     Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type
+                   }
+
+          # @!parse
+          #   # @param amount [Float]
+          #   # @param invoice_id [String]
+          #   # @param segment_id [String]
+          #   # @param timestamp [String]
+          #   # @param type [String]
+          #   #
+          #   def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :PREPAID_COMMIT_CANCELED
+          #   # ...
+          # end
+          # ```
+          class Type < Metronome::Enum
+            PREPAID_COMMIT_CANCELED = :PREPAID_COMMIT_CANCELED
+          end
+        end
+
+        class PrepaidCommitCreditedLedgerEntry < Metronome::BaseModel
+          # @!attribute amount
+          #
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute invoice_id
+          #
+          #   @return [String]
+          required :invoice_id, String
+
+          # @!attribute segment_id
+          #
+          #   @return [String]
+          required :segment_id, String
+
+          # @!attribute timestamp
+          #
+          #   @return [Time]
+          required :timestamp, Time
+
+          # @!attribute type
+          #
+          #   @return [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type]
+          required :type,
+                   enum: -> {
+                     Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type
+                   }
+
+          # @!parse
+          #   # @param amount [Float]
+          #   # @param invoice_id [String]
+          #   # @param segment_id [String]
+          #   # @param timestamp [String]
+          #   # @param type [String]
+          #   #
+          #   def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :PREPAID_COMMIT_CREDITED
+          #   # ...
+          # end
+          # ```
+          class Type < Metronome::Enum
+            PREPAID_COMMIT_CREDITED = :PREPAID_COMMIT_CREDITED
+          end
+        end
+
+        class PostpaidCommitInitialBalanceLedgerEntry < Metronome::BaseModel
+          # @!attribute amount
+          #
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute timestamp
+          #
+          #   @return [Time]
+          required :timestamp, Time
+
+          # @!attribute type
+          #
+          #   @return [Symbol, Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type]
+          required :type,
+                   enum: -> {
+                     Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type
+                   }
+
+          # @!parse
+          #   # @param amount [Float]
+          #   # @param timestamp [String]
+          #   # @param type [String]
+          #   #
+          #   def initialize(amount:, timestamp:, type:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :POSTPAID_COMMIT_INITIAL_BALANCE
+          #   # ...
+          # end
+          # ```
+          class Type < Metronome::Enum
+            POSTPAID_COMMIT_INITIAL_BALANCE = :POSTPAID_COMMIT_INITIAL_BALANCE
+          end
+        end
+
+        class PostpaidCommitAutomatedInvoiceDeductionLedgerEntry < Metronome::BaseModel
+          # @!attribute amount
+          #
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute invoice_id
+          #
+          #   @return [String]
+          required :invoice_id, String
+
+          # @!attribute segment_id
+          #
+          #   @return [String]
+          required :segment_id, String
+
+          # @!attribute timestamp
+          #
+          #   @return [Time]
+          required :timestamp, Time
+
+          # @!attribute type
+          #
+          #   @return [Symbol, Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
+          required :type,
+                   enum: -> {
+                     Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type
+                   }
+
+          # @!parse
+          #   # @param amount [Float]
+          #   # @param invoice_id [String]
+          #   # @param segment_id [String]
+          #   # @param timestamp [String]
+          #   # @param type [String]
+          #   #
+          #   def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
+          #   # ...
+          # end
+          # ```
+          class Type < Metronome::Enum
+            POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION = :POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
+          end
+        end
+
+        class PostpaidCommitRolloverLedgerEntry < Metronome::BaseModel
+          # @!attribute amount
+          #
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute new_contract_id
+          #
+          #   @return [String]
+          required :new_contract_id, String
+
+          # @!attribute segment_id
+          #
+          #   @return [String]
+          required :segment_id, String
+
+          # @!attribute timestamp
+          #
+          #   @return [Time]
+          required :timestamp, Time
+
+          # @!attribute type
+          #
+          #   @return [Symbol, Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type]
+          required :type,
+                   enum: -> {
+                     Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type
+                   }
+
+          # @!parse
+          #   # @param amount [Float]
+          #   # @param new_contract_id [String]
+          #   # @param segment_id [String]
+          #   # @param timestamp [String]
+          #   # @param type [String]
+          #   #
+          #   def initialize(amount:, new_contract_id:, segment_id:, timestamp:, type:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :POSTPAID_COMMIT_ROLLOVER
+          #   # ...
+          # end
+          # ```
+          class Type < Metronome::Enum
+            POSTPAID_COMMIT_ROLLOVER = :POSTPAID_COMMIT_ROLLOVER
+          end
+        end
+
+        class PostpaidCommitTrueupLedgerEntry < Metronome::BaseModel
+          # @!attribute amount
+          #
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute invoice_id
+          #
+          #   @return [String]
+          required :invoice_id, String
+
+          # @!attribute timestamp
+          #
+          #   @return [Time]
+          required :timestamp, Time
+
+          # @!attribute type
+          #
+          #   @return [Symbol, Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type]
+          required :type,
+                   enum: -> {
+                     Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type
+                   }
+
+          # @!parse
+          #   # @param amount [Float]
+          #   # @param invoice_id [String]
+          #   # @param timestamp [String]
+          #   # @param type [String]
+          #   #
+          #   def initialize(amount:, invoice_id:, timestamp:, type:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :POSTPAID_COMMIT_TRUEUP
+          #   # ...
+          # end
+          # ```
+          class Type < Metronome::Enum
+            POSTPAID_COMMIT_TRUEUP = :POSTPAID_COMMIT_TRUEUP
+          end
+        end
+
+        class PrepaidCommitManualLedgerEntry < Metronome::BaseModel
+          # @!attribute amount
+          #
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute reason
+          #
+          #   @return [String]
+          required :reason, String
+
+          # @!attribute timestamp
+          #
+          #   @return [Time]
+          required :timestamp, Time
+
+          # @!attribute type
+          #
+          #   @return [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry::Type]
+          required :type, enum: -> { Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry::Type }
+
+          # @!parse
+          #   # @param amount [Float]
+          #   # @param reason [String]
+          #   # @param timestamp [String]
+          #   # @param type [String]
+          #   #
+          #   def initialize(amount:, reason:, timestamp:, type:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :PREPAID_COMMIT_MANUAL
+          #   # ...
+          # end
+          # ```
+          class Type < Metronome::Enum
+            PREPAID_COMMIT_MANUAL = :PREPAID_COMMIT_MANUAL
+          end
+        end
+
+        class PostpaidCommitManualLedgerEntry < Metronome::BaseModel
+          # @!attribute amount
+          #
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute reason
+          #
+          #   @return [String]
+          required :reason, String
+
+          # @!attribute timestamp
+          #
+          #   @return [Time]
+          required :timestamp, Time
+
+          # @!attribute type
+          #
+          #   @return [Symbol, Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type]
+          required :type,
+                   enum: -> {
+                     Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type
+                   }
+
+          # @!parse
+          #   # @param amount [Float]
+          #   # @param reason [String]
+          #   # @param timestamp [String]
+          #   # @param type [String]
+          #   #
+          #   def initialize(amount:, reason:, timestamp:, type:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :POSTPAID_COMMIT_MANUAL
+          #   # ...
+          # end
+          # ```
+          class Type < Metronome::Enum
+            POSTPAID_COMMIT_MANUAL = :POSTPAID_COMMIT_MANUAL
+          end
+        end
+
+        class PostpaidCommitExpirationLedgerEntry < Metronome::BaseModel
+          # @!attribute amount
+          #
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute timestamp
+          #
+          #   @return [Time]
+          required :timestamp, Time
+
+          # @!attribute type
+          #
+          #   @return [Symbol, Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type]
+          required :type,
+                   enum: -> {
+                     Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type
+                   }
+
+          # @!parse
+          #   # @param amount [Float]
+          #   # @param timestamp [String]
+          #   # @param type [String]
+          #   #
+          #   def initialize(amount:, timestamp:, type:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :POSTPAID_COMMIT_EXPIRATION
+          #   # ...
+          # end
+          # ```
+          class Type < Metronome::Enum
+            POSTPAID_COMMIT_EXPIRATION = :POSTPAID_COMMIT_EXPIRATION
+          end
+        end
+      end
+
+      class PrepaidCommitSegmentStartLedgerEntry < Metronome::BaseModel
+        # @!attribute amount
+        #
+        #   @return [Float]
+        required :amount, Float
+
+        # @!attribute segment_id
+        #
+        #   @return [String]
+        required :segment_id, String
+
+        # @!attribute timestamp
+        #
+        #   @return [Time]
+        required :timestamp, Time
+
+        # @!attribute type
+        #
+        #   @return [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type]
+        required :type,
+                 enum: -> {
+                   Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type
+                 }
+
+        # @!parse
+        #   # @param amount [Float]
+        #   # @param segment_id [String]
+        #   # @param timestamp [String]
+        #   # @param type [String]
+        #   #
+        #   def initialize(amount:, segment_id:, timestamp:, type:, **) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :PREPAID_COMMIT_SEGMENT_START
+        #   # ...
+        # end
+        # ```
+        class Type < Metronome::Enum
+          PREPAID_COMMIT_SEGMENT_START = :PREPAID_COMMIT_SEGMENT_START
+        end
+      end
+
+      class PrepaidCommitAutomatedInvoiceDeductionLedgerEntry < Metronome::BaseModel
+        # @!attribute amount
+        #
+        #   @return [Float]
+        required :amount, Float
+
+        # @!attribute invoice_id
+        #
+        #   @return [String]
+        required :invoice_id, String
+
+        # @!attribute segment_id
+        #
+        #   @return [String]
+        required :segment_id, String
+
+        # @!attribute timestamp
+        #
+        #   @return [Time]
+        required :timestamp, Time
+
+        # @!attribute type
+        #
+        #   @return [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
+        required :type,
+                 enum: -> {
+                   Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type
+                 }
+
+        # @!parse
+        #   # @param amount [Float]
+        #   # @param invoice_id [String]
+        #   # @param segment_id [String]
+        #   # @param timestamp [String]
+        #   # @param type [String]
+        #   #
+        #   def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, **) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
+        #   # ...
+        # end
+        # ```
+        class Type < Metronome::Enum
+          PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION = :PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
+        end
+      end
+
+      class PrepaidCommitRolloverLedgerEntry < Metronome::BaseModel
+        # @!attribute amount
+        #
+        #   @return [Float]
+        required :amount, Float
+
+        # @!attribute new_contract_id
+        #
+        #   @return [String]
+        required :new_contract_id, String
+
+        # @!attribute segment_id
+        #
+        #   @return [String]
+        required :segment_id, String
+
+        # @!attribute timestamp
+        #
+        #   @return [Time]
+        required :timestamp, Time
+
+        # @!attribute type
+        #
+        #   @return [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type]
+        required :type, enum: -> { Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type }
+
+        # @!parse
+        #   # @param amount [Float]
+        #   # @param new_contract_id [String]
+        #   # @param segment_id [String]
+        #   # @param timestamp [String]
+        #   # @param type [String]
+        #   #
+        #   def initialize(amount:, new_contract_id:, segment_id:, timestamp:, type:, **) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :PREPAID_COMMIT_ROLLOVER
+        #   # ...
+        # end
+        # ```
+        class Type < Metronome::Enum
+          PREPAID_COMMIT_ROLLOVER = :PREPAID_COMMIT_ROLLOVER
+        end
+      end
+
+      class PrepaidCommitExpirationLedgerEntry < Metronome::BaseModel
+        # @!attribute amount
+        #
+        #   @return [Float]
+        required :amount, Float
+
+        # @!attribute segment_id
+        #
+        #   @return [String]
+        required :segment_id, String
+
+        # @!attribute timestamp
+        #
+        #   @return [Time]
+        required :timestamp, Time
+
+        # @!attribute type
+        #
+        #   @return [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type]
+        required :type,
+                 enum: -> {
+                   Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type
+                 }
+
+        # @!parse
+        #   # @param amount [Float]
+        #   # @param segment_id [String]
+        #   # @param timestamp [String]
+        #   # @param type [String]
+        #   #
+        #   def initialize(amount:, segment_id:, timestamp:, type:, **) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :PREPAID_COMMIT_EXPIRATION
+        #   # ...
+        # end
+        # ```
+        class Type < Metronome::Enum
+          PREPAID_COMMIT_EXPIRATION = :PREPAID_COMMIT_EXPIRATION
+        end
+      end
+
+      class PrepaidCommitCanceledLedgerEntry < Metronome::BaseModel
+        # @!attribute amount
+        #
+        #   @return [Float]
+        required :amount, Float
+
+        # @!attribute invoice_id
+        #
+        #   @return [String]
+        required :invoice_id, String
+
+        # @!attribute segment_id
+        #
+        #   @return [String]
+        required :segment_id, String
+
+        # @!attribute timestamp
+        #
+        #   @return [Time]
+        required :timestamp, Time
+
+        # @!attribute type
+        #
+        #   @return [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type]
+        required :type, enum: -> { Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type }
+
+        # @!parse
+        #   # @param amount [Float]
+        #   # @param invoice_id [String]
+        #   # @param segment_id [String]
+        #   # @param timestamp [String]
+        #   # @param type [String]
+        #   #
+        #   def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, **) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :PREPAID_COMMIT_CANCELED
+        #   # ...
+        # end
+        # ```
+        class Type < Metronome::Enum
+          PREPAID_COMMIT_CANCELED = :PREPAID_COMMIT_CANCELED
+        end
+      end
+
+      class PrepaidCommitCreditedLedgerEntry < Metronome::BaseModel
+        # @!attribute amount
+        #
+        #   @return [Float]
+        required :amount, Float
+
+        # @!attribute invoice_id
+        #
+        #   @return [String]
+        required :invoice_id, String
+
+        # @!attribute segment_id
+        #
+        #   @return [String]
+        required :segment_id, String
+
+        # @!attribute timestamp
+        #
+        #   @return [Time]
+        required :timestamp, Time
+
+        # @!attribute type
+        #
+        #   @return [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type]
+        required :type, enum: -> { Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type }
+
+        # @!parse
+        #   # @param amount [Float]
+        #   # @param invoice_id [String]
+        #   # @param segment_id [String]
+        #   # @param timestamp [String]
+        #   # @param type [String]
+        #   #
+        #   def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, **) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :PREPAID_COMMIT_CREDITED
+        #   # ...
+        # end
+        # ```
+        class Type < Metronome::Enum
+          PREPAID_COMMIT_CREDITED = :PREPAID_COMMIT_CREDITED
+        end
+      end
+
+      class PostpaidCommitInitialBalanceLedgerEntry < Metronome::BaseModel
+        # @!attribute amount
+        #
+        #   @return [Float]
+        required :amount, Float
+
+        # @!attribute timestamp
+        #
+        #   @return [Time]
+        required :timestamp, Time
+
+        # @!attribute type
+        #
+        #   @return [Symbol, Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type]
+        required :type,
+                 enum: -> { Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type }
+
+        # @!parse
+        #   # @param amount [Float]
+        #   # @param timestamp [String]
+        #   # @param type [String]
+        #   #
+        #   def initialize(amount:, timestamp:, type:, **) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :POSTPAID_COMMIT_INITIAL_BALANCE
+        #   # ...
+        # end
+        # ```
+        class Type < Metronome::Enum
+          POSTPAID_COMMIT_INITIAL_BALANCE = :POSTPAID_COMMIT_INITIAL_BALANCE
+        end
+      end
+
+      class PostpaidCommitAutomatedInvoiceDeductionLedgerEntry < Metronome::BaseModel
+        # @!attribute amount
+        #
+        #   @return [Float]
+        required :amount, Float
+
+        # @!attribute invoice_id
+        #
+        #   @return [String]
+        required :invoice_id, String
+
+        # @!attribute segment_id
+        #
+        #   @return [String]
+        required :segment_id, String
+
+        # @!attribute timestamp
+        #
+        #   @return [Time]
+        required :timestamp, Time
+
+        # @!attribute type
+        #
+        #   @return [Symbol, Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
+        required :type,
+                 enum: -> {
+                   Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type
+                 }
+
+        # @!parse
+        #   # @param amount [Float]
+        #   # @param invoice_id [String]
+        #   # @param segment_id [String]
+        #   # @param timestamp [String]
+        #   # @param type [String]
+        #   #
+        #   def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, **) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
+        #   # ...
+        # end
+        # ```
+        class Type < Metronome::Enum
+          POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION = :POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
+        end
+      end
+
+      class PostpaidCommitRolloverLedgerEntry < Metronome::BaseModel
+        # @!attribute amount
+        #
+        #   @return [Float]
+        required :amount, Float
+
+        # @!attribute new_contract_id
+        #
+        #   @return [String]
+        required :new_contract_id, String
+
+        # @!attribute segment_id
+        #
+        #   @return [String]
+        required :segment_id, String
+
+        # @!attribute timestamp
+        #
+        #   @return [Time]
+        required :timestamp, Time
+
+        # @!attribute type
+        #
+        #   @return [Symbol, Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type]
+        required :type,
+                 enum: -> {
+                   Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type
+                 }
+
+        # @!parse
+        #   # @param amount [Float]
+        #   # @param new_contract_id [String]
+        #   # @param segment_id [String]
+        #   # @param timestamp [String]
+        #   # @param type [String]
+        #   #
+        #   def initialize(amount:, new_contract_id:, segment_id:, timestamp:, type:, **) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :POSTPAID_COMMIT_ROLLOVER
+        #   # ...
+        # end
+        # ```
+        class Type < Metronome::Enum
+          POSTPAID_COMMIT_ROLLOVER = :POSTPAID_COMMIT_ROLLOVER
+        end
+      end
+
+      class PostpaidCommitTrueupLedgerEntry < Metronome::BaseModel
+        # @!attribute amount
+        #
+        #   @return [Float]
+        required :amount, Float
+
+        # @!attribute invoice_id
+        #
+        #   @return [String]
+        required :invoice_id, String
+
+        # @!attribute timestamp
+        #
+        #   @return [Time]
+        required :timestamp, Time
+
+        # @!attribute type
+        #
+        #   @return [Symbol, Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type]
+        required :type, enum: -> { Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type }
+
+        # @!parse
+        #   # @param amount [Float]
+        #   # @param invoice_id [String]
+        #   # @param timestamp [String]
+        #   # @param type [String]
+        #   #
+        #   def initialize(amount:, invoice_id:, timestamp:, type:, **) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :POSTPAID_COMMIT_TRUEUP
+        #   # ...
+        # end
+        # ```
+        class Type < Metronome::Enum
+          POSTPAID_COMMIT_TRUEUP = :POSTPAID_COMMIT_TRUEUP
+        end
+      end
+
+      class PrepaidCommitManualLedgerEntry < Metronome::BaseModel
+        # @!attribute amount
+        #
+        #   @return [Float]
+        required :amount, Float
+
+        # @!attribute reason
+        #
+        #   @return [String]
+        required :reason, String
+
+        # @!attribute timestamp
+        #
+        #   @return [Time]
+        required :timestamp, Time
+
+        # @!attribute type
+        #
+        #   @return [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry::Type]
+        required :type, enum: -> { Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry::Type }
+
+        # @!parse
+        #   # @param amount [Float]
+        #   # @param reason [String]
+        #   # @param timestamp [String]
+        #   # @param type [String]
+        #   #
+        #   def initialize(amount:, reason:, timestamp:, type:, **) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :PREPAID_COMMIT_MANUAL
+        #   # ...
+        # end
+        # ```
+        class Type < Metronome::Enum
+          PREPAID_COMMIT_MANUAL = :PREPAID_COMMIT_MANUAL
+        end
+      end
+
+      class PostpaidCommitManualLedgerEntry < Metronome::BaseModel
+        # @!attribute amount
+        #
+        #   @return [Float]
+        required :amount, Float
+
+        # @!attribute reason
+        #
+        #   @return [String]
+        required :reason, String
+
+        # @!attribute timestamp
+        #
+        #   @return [Time]
+        required :timestamp, Time
+
+        # @!attribute type
+        #
+        #   @return [Symbol, Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type]
+        required :type, enum: -> { Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type }
+
+        # @!parse
+        #   # @param amount [Float]
+        #   # @param reason [String]
+        #   # @param timestamp [String]
+        #   # @param type [String]
+        #   #
+        #   def initialize(amount:, reason:, timestamp:, type:, **) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :POSTPAID_COMMIT_MANUAL
+        #   # ...
+        # end
+        # ```
+        class Type < Metronome::Enum
+          POSTPAID_COMMIT_MANUAL = :POSTPAID_COMMIT_MANUAL
+        end
+      end
+
+      class PostpaidCommitExpirationLedgerEntry < Metronome::BaseModel
+        # @!attribute amount
+        #
+        #   @return [Float]
+        required :amount, Float
+
+        # @!attribute timestamp
+        #
+        #   @return [Time]
+        required :timestamp, Time
+
+        # @!attribute type
+        #
+        #   @return [Symbol, Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type]
+        required :type,
+                 enum: -> {
+                   Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type
+                 }
+
+        # @!parse
+        #   # @param amount [Float]
+        #   # @param timestamp [String]
+        #   # @param type [String]
+        #   #
+        #   def initialize(amount:, timestamp:, type:, **) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :POSTPAID_COMMIT_EXPIRATION
+        #   # ...
+        # end
+        # ```
+        class Type < Metronome::Enum
+          POSTPAID_COMMIT_EXPIRATION = :POSTPAID_COMMIT_EXPIRATION
+        end
       end
 
       # @example

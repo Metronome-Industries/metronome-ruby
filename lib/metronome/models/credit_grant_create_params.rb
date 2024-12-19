@@ -207,8 +207,9 @@ module Metronome
         # @!attribute rollover_amount
         #   Specify how much to rollover to the rollover credit grant
         #
-        #   @return [Metronome::Models::RolloverAmountMaxAmount, Metronome::Models::RolloverAmountMaxPercentage]
-        required :rollover_amount, Metronome::Unknown
+        #   @return [Metronome::Models::RolloverAmountMaxPercentage, Metronome::Models::RolloverAmountMaxAmount]
+        required :rollover_amount,
+                 union: -> { Metronome::Models::CreditGrantCreateParams::RolloverSettings::RolloverAmount }
 
         # @!parse
         #   # Configure a rollover for this credit grant so if it expires it rolls over a
@@ -220,11 +221,103 @@ module Metronome
         #   # @param priority [Float] The priority to give the rollover credit grant that gets created when a rollover
         #   #   happens.
         #   #
-        #   # @param rollover_amount [Metronome::Models::RolloverAmountMaxAmount, Metronome::Models::RolloverAmountMaxPercentage] Specify how much to rollover to the rollover credit grant
+        #   # @param rollover_amount [Metronome::Models::RolloverAmountMaxPercentage, Metronome::Models::RolloverAmountMaxAmount] Specify how much to rollover to the rollover credit grant
         #   #
         #   def initialize(expires_at:, priority:, rollover_amount:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
+
+        # Specify how much to rollover to the rollover credit grant
+        #
+        # @example
+        #
+        # ```ruby
+        # case union
+        # in Metronome::Models::RolloverAmountMaxPercentage
+        #   # ...
+        # in Metronome::Models::RolloverAmountMaxAmount
+        #   # ...
+        # end
+        # ```
+        class RolloverAmount < Metronome::Union
+          variant -> { Metronome::Models::RolloverAmountMaxPercentage }
+
+          variant -> { Metronome::Models::RolloverAmountMaxAmount }
+        end
+
+        class RolloverAmountMaxPercentage < Metronome::BaseModel
+          # @!attribute type
+          #   Rollover up to a percentage of the original credit grant amount.
+          #
+          #   @return [Symbol, Metronome::Models::RolloverAmountMaxPercentage::Type]
+          required :type, enum: -> { Metronome::Models::RolloverAmountMaxPercentage::Type }
+
+          # @!attribute value
+          #   The maximum percentage (0-1) of the original credit grant to rollover.
+          #
+          #   @return [Float]
+          required :value, Float
+
+          # @!parse
+          #   # @param type [String] Rollover up to a percentage of the original credit grant amount.
+          #   #
+          #   # @param value [Float] The maximum percentage (0-1) of the original credit grant to rollover.
+          #   #
+          #   def initialize(type:, value:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
+          # Rollover up to a percentage of the original credit grant amount.
+          #
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :MAX_PERCENTAGE
+          #   # ...
+          # end
+          # ```
+          class Type < Metronome::Enum
+            MAX_PERCENTAGE = :MAX_PERCENTAGE
+          end
+        end
+
+        class RolloverAmountMaxAmount < Metronome::BaseModel
+          # @!attribute type
+          #   Rollover up to a fixed amount of the original credit grant amount.
+          #
+          #   @return [Symbol, Metronome::Models::RolloverAmountMaxAmount::Type]
+          required :type, enum: -> { Metronome::Models::RolloverAmountMaxAmount::Type }
+
+          # @!attribute value
+          #   The maximum amount to rollover.
+          #
+          #   @return [Float]
+          required :value, Float
+
+          # @!parse
+          #   # @param type [String] Rollover up to a fixed amount of the original credit grant amount.
+          #   #
+          #   # @param value [Float] The maximum amount to rollover.
+          #   #
+          #   def initialize(type:, value:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
+          # Rollover up to a fixed amount of the original credit grant amount.
+          #
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :MAX_AMOUNT
+          #   # ...
+          # end
+          # ```
+          class Type < Metronome::Enum
+            MAX_AMOUNT = :MAX_AMOUNT
+          end
+        end
       end
     end
   end
