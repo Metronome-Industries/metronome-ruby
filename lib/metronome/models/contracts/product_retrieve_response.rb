@@ -52,8 +52,8 @@ module Metronome
 
           # @!attribute custom_fields
           #
-          #   @return [Hash]
-          optional :custom_fields, Hash
+          #   @return [Hash{Symbol => String}]
+          optional :custom_fields, Metronome::HashOf[String]
 
           # @!parse
           #   # @param id [String]
@@ -62,7 +62,7 @@ module Metronome
           #   # @param type [String]
           #   # @param updates [Array<Metronome::Models::Contracts::ProductRetrieveResponse::Data::Update>]
           #   # @param archived_at [String, nil]
-          #   # @param custom_fields [Hash, nil]
+          #   # @param custom_fields [Hash{Symbol => String}, nil]
           #   #
           #   def initialize(id:, current:, initial:, type:, updates:, archived_at: nil, custom_fields: nil) = super
 

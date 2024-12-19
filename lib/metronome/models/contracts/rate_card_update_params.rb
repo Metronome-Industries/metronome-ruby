@@ -21,8 +21,8 @@ module Metronome
 
         # @!attribute custom_fields
         #
-        #   @return [Hash]
-        optional :custom_fields, Hash
+        #   @return [Hash{Symbol => String}]
+        optional :custom_fields, Metronome::HashOf[String]
 
         # @!attribute description
         #
@@ -42,7 +42,7 @@ module Metronome
         #   #   multiple rate cards, it will reference the rate card to which it was most
         #   #   recently assigned. It is not exposed to end customers.
         #   #
-        #   # @param custom_fields [Hash, nil]
+        #   # @param custom_fields [Hash{Symbol => String}, nil]
         #   #
         #   # @param description [String, nil]
         #   #

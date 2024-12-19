@@ -34,7 +34,7 @@ module Metronome
       #
       #   @option params [Array<Metronome::Models::ContractCreateParams::Credit>, nil] :credits
       #
-      #   @option params [Hash, nil] :custom_fields
+      #   @option params [Hash{Symbol => String}, nil] :custom_fields
       #
       #   @option params [Array<Metronome::Models::ContractCreateParams::Discount>, nil] :discounts This field's availability is dependent on your client's configuration.
       #
@@ -197,7 +197,7 @@ module Metronome
       #
       #   @option params [Array<Metronome::Models::ContractAmendParams::Credit>, nil] :credits
       #
-      #   @option params [Hash, nil] :custom_fields
+      #   @option params [Hash{Symbol => String}, nil] :custom_fields
       #
       #   @option params [Array<Metronome::Models::ContractAmendParams::Discount>, nil] :discounts This field's availability is dependent on your client's configuration.
       #

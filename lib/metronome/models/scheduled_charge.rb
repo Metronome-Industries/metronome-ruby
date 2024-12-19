@@ -20,8 +20,8 @@ module Metronome
 
       # @!attribute custom_fields
       #
-      #   @return [Hash]
-      optional :custom_fields, Hash
+      #   @return [Hash{Symbol => String}]
+      optional :custom_fields, Metronome::HashOf[String]
 
       # @!attribute name
       #   displayed on invoices
@@ -42,7 +42,7 @@ module Metronome
       #   #
       #   # @param schedule [Metronome::Models::SchedulePointInTime]
       #   #
-      #   # @param custom_fields [Hash, nil]
+      #   # @param custom_fields [Hash{Symbol => String}, nil]
       #   #
       #   # @param name [String, nil] displayed on invoices
       #   #

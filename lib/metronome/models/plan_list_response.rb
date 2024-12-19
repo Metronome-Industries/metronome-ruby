@@ -20,14 +20,14 @@ module Metronome
 
       # @!attribute custom_fields
       #
-      #   @return [Hash]
-      optional :custom_fields, Hash
+      #   @return [Hash{Symbol => String}]
+      optional :custom_fields, Metronome::HashOf[String]
 
       # @!parse
       #   # @param id [String]
       #   # @param description [String]
       #   # @param name [String]
-      #   # @param custom_fields [Hash, nil]
+      #   # @param custom_fields [Hash{Symbol => String}, nil]
       #   #
       #   def initialize(id:, description:, name:, custom_fields: nil) = super
 

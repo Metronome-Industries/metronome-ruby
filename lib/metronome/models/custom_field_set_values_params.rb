@@ -5,8 +5,8 @@ module Metronome
     class CustomFieldSetValuesParams < Metronome::BaseModel
       # @!attribute custom_fields
       #
-      #   @return [Hash]
-      required :custom_fields, Hash
+      #   @return [Hash{Symbol => String}]
+      required :custom_fields, Metronome::HashOf[String]
 
       # @!attribute entity
       #
@@ -19,7 +19,7 @@ module Metronome
       required :entity_id, String
 
       # @!parse
-      #   # @param custom_fields [Hash]
+      #   # @param custom_fields [Hash{Symbol => String}]
       #   # @param entity [String]
       #   # @param entity_id [String]
       #   #

@@ -11,8 +11,8 @@ module Metronome
 
       # @!attribute custom_fields
       #
-      #   @return [Hash]
-      required :custom_fields, Hash
+      #   @return [Hash{Symbol => String}]
+      required :custom_fields, Metronome::HashOf[String]
 
       # @!attribute customer_config
       #
@@ -45,7 +45,7 @@ module Metronome
       # @!parse
       #   # @param id [String] the Metronome ID of the customer
       #   #
-      #   # @param custom_fields [Hash]
+      #   # @param custom_fields [Hash{Symbol => String}]
       #   #
       #   # @param customer_config [Metronome::Models::CustomerDetail::CustomerConfig]
       #   #
@@ -71,7 +71,7 @@ module Metronome
         required :salesforce_account_id, String
 
         # @!parse
-        #   # @param salesforce_account_id [String] The Salesforce account ID for the customer
+        #   # @param salesforce_account_id [String, nil] The Salesforce account ID for the customer
         #   #
         #   def initialize(salesforce_account_id:) = super
 

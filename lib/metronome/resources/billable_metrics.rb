@@ -19,7 +19,7 @@ module Metronome
       #
       #   @option params [Symbol, Metronome::Models::BillableMetricCreateParams::AggregationType, nil] :aggregation_type Specifies the type of aggregation performed on matching events.
       #
-      #   @option params [Hash, nil] :custom_fields Custom fields to attach to the billable metric.
+      #   @option params [Hash{Symbol => String}, nil] :custom_fields Custom fields to attach to the billable metric.
       #
       #   @option params [Metronome::Models::EventTypeFilter, nil] :event_type_filter An optional filtering rule to match the 'event_type' property of an event.
       #

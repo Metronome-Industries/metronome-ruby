@@ -10,8 +10,8 @@ module Metronome
 
       # @!attribute custom_fields
       #
-      #   @return [Hash]
-      required :custom_fields, Hash
+      #   @return [Hash{Symbol => String}]
+      required :custom_fields, Metronome::HashOf[String]
 
       # @!attribute name
       #
@@ -40,7 +40,7 @@ module Metronome
 
       # @!parse
       #   # @param id [String]
-      #   # @param custom_fields [Hash]
+      #   # @param custom_fields [Hash{Symbol => String}]
       #   # @param name [String]
       #   # @param credit_grants [Array<Metronome::Models::PlanDetail::CreditGrant>, nil]
       #   # @param description [String, nil]

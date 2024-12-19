@@ -15,7 +15,7 @@ module Metronome
 
       # @!parse
       #   # @param data [Array<Metronome::Models::UsageListResponse::Data>]
-      #   # @param next_page [String]
+      #   # @param next_page [String, nil]
       #   #
       #   def initialize(data:, next_page:) = super
 
@@ -55,8 +55,8 @@ module Metronome
         # @!attribute groups
         #   Values will be either a number or null. Null indicates that there were no matches for the group_by value.
         #
-        #   @return [Hash]
-        optional :groups, Hash
+        #   @return [Hash{Symbol => Float}]
+        optional :groups, Metronome::HashOf[Float]
 
         # @!parse
         #   # @param billable_metric_id [String]
@@ -69,9 +69,9 @@ module Metronome
         #   #
         #   # @param start_timestamp [String]
         #   #
-        #   # @param value [Float]
+        #   # @param value [Float, nil]
         #   #
-        #   # @param groups [Hash, nil] Values will be either a number or null. Null indicates that there were no
+        #   # @param groups [Hash{Symbol => Float}, nil] Values will be either a number or null. Null indicates that there were no
         #   #   matches for the group_by value.
         #   #
         #   def initialize(

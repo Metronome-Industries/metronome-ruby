@@ -50,8 +50,8 @@ module Metronome
 
         # @!attribute custom_fields
         #
-        #   @return [Hash]
-        optional :custom_fields, Hash
+        #   @return [Hash{Symbol => String}]
+        optional :custom_fields, Metronome::HashOf[String]
 
         # @!attribute customer_billing_provider_configuration
         #   The billing provider configuration associated with a contract.
@@ -80,7 +80,7 @@ module Metronome
         #   # @param archived_at [String, nil] RFC 3339 timestamp indicating when the contract was archived. If not returned,
         #   #   the contract is not archived.
         #   #
-        #   # @param custom_fields [Hash, nil]
+        #   # @param custom_fields [Hash{Symbol => String}, nil]
         #   #
         #   # @param customer_billing_provider_configuration [Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration, nil] The billing provider configuration associated with a contract.
         #   #

@@ -26,7 +26,7 @@ module Metronome
       #
       #   @option params [String, nil] :credit_grant_type
       #
-      #   @option params [Hash, nil] :custom_fields Custom fields to attach to the credit grant.
+      #   @option params [Hash{Symbol => String}, nil] :custom_fields Custom fields to attach to the credit grant.
       #
       #   @option params [Time, nil] :effective_at The credit grant will only apply to usage or charges dated on or after this
       #     timestamp

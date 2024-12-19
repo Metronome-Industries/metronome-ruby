@@ -30,8 +30,8 @@ module Metronome
 
         # @!attribute custom_fields
         #
-        #   @return [Hash]
-        optional :custom_fields, Hash
+        #   @return [Hash{Symbol => String}]
+        optional :custom_fields, Metronome::HashOf[String]
 
         # @!attribute description
         #
@@ -53,7 +53,7 @@ module Metronome
         #   #
         #   # @param credit_type_conversions [Array<Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion>, nil] Required when using custom pricing units in rates.
         #   #
-        #   # @param custom_fields [Hash, nil]
+        #   # @param custom_fields [Hash{Symbol => String}, nil]
         #   #
         #   # @param description [String, nil]
         #   #

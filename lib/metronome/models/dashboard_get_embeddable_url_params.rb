@@ -88,15 +88,15 @@ module Metronome
         # @!attribute value_display_names
         #   <key, value> pairs of the billable metric group key values and their display names. e.g. {"a": "Asia", "b": "Euro"}
         #
-        #   @return [Hash]
-        optional :value_display_names, Hash
+        #   @return [Hash{Symbol => Object}]
+        optional :value_display_names, Metronome::HashOf[Metronome::Unknown]
 
         # @!parse
         #   # @param group_key_name [String] The name of the billable metric group key.
         #   #
         #   # @param display_name [String, nil] The display name for the billable metric group key
         #   #
-        #   # @param value_display_names [Hash, nil] <key, value> pairs of the billable metric group key values and their display
+        #   # @param value_display_names [Hash{Symbol => Object}, nil] <key, value> pairs of the billable metric group key values and their display
         #   #   names. e.g. {"a": "Asia", "b": "Euro"}
         #   #
         #   def initialize(group_key_name:, display_name: nil, value_display_names: nil) = super

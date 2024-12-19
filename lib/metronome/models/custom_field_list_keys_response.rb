@@ -15,7 +15,7 @@ module Metronome
 
       # @!parse
       #   # @param data [Array<Metronome::Models::CustomFieldListKeysResponse::Data>]
-      #   # @param next_page [String]
+      #   # @param next_page [String, nil]
       #   #
       #   def initialize(data:, next_page:) = super
 
