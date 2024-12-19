@@ -28,7 +28,7 @@ module Metronome
           parsed = Metronome::Models::Contracts::NamedScheduleRetrieveParams.dump(params)
           req = {
             method: :post,
-            path: "/contract-pricing/rate-cards/getNamedSchedule",
+            path: "contract-pricing/rate-cards/getNamedSchedule",
             body: parsed,
             model: Metronome::Models::Contracts::NamedScheduleRetrieveResponse
           }
@@ -58,7 +58,7 @@ module Metronome
           parsed = Metronome::Models::Contracts::NamedScheduleUpdateParams.dump(params)
           req = {
             method: :post,
-            path: "/contract-pricing/rate-cards/updateNamedSchedule",
+            path: "contract-pricing/rate-cards/updateNamedSchedule",
             body: parsed,
             model: NilClass
           }

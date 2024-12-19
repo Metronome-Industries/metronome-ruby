@@ -25,7 +25,7 @@ module Metronome
           parsed = Metronome::Models::Customers::AlertRetrieveParams.dump(params)
           req = {
             method: :post,
-            path: "/customer-alerts/get",
+            path: "customer-alerts/get",
             body: parsed,
             model: Metronome::Models::Customers::AlertRetrieveResponse
           }
@@ -51,7 +51,7 @@ module Metronome
           query_params = [:next_page]
           req = {
             method: :post,
-            path: "/customer-alerts/list",
+            path: "customer-alerts/list",
             query: parsed.slice(*query_params),
             body: parsed.except(*query_params),
             model: Metronome::Models::Customers::AlertListResponse
@@ -74,7 +74,7 @@ module Metronome
           parsed = Metronome::Models::Customers::AlertResetParams.dump(params)
           req = {
             method: :post,
-            path: "/customer-alerts/reset",
+            path: "customer-alerts/reset",
             body: parsed,
             model: NilClass
           }

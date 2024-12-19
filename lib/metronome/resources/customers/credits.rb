@@ -50,7 +50,7 @@ module Metronome
           parsed = Metronome::Models::Customers::CreditCreateParams.dump(params)
           req = {
             method: :post,
-            path: "/contracts/customerCredits/create",
+            path: "contracts/customerCredits/create",
             body: parsed,
             model: Metronome::Models::Customers::CreditCreateResponse
           }
@@ -87,7 +87,7 @@ module Metronome
           parsed = Metronome::Models::Customers::CreditListParams.dump(params)
           req = {
             method: :post,
-            path: "/contracts/customerCredits/list",
+            path: "contracts/customerCredits/list",
             body: parsed,
             model: Metronome::Models::Customers::CreditListResponse
           }
@@ -112,7 +112,7 @@ module Metronome
           parsed = Metronome::Models::Customers::CreditUpdateEndDateParams.dump(params)
           req = {
             method: :post,
-            path: "/contracts/customerCredits/updateEndDate",
+            path: "contracts/customerCredits/updateEndDate",
             body: parsed,
             model: Metronome::Models::Customers::CreditUpdateEndDateResponse
           }

@@ -21,7 +21,7 @@ module Metronome
         parsed = Metronome::Models::InvoiceRegenerateParams.dump(params)
         req = {
           method: :post,
-          path: "/invoices/regenerate",
+          path: "invoices/regenerate",
           body: parsed,
           model: Metronome::Models::InvoiceRegenerateResponse
         }
@@ -41,7 +41,7 @@ module Metronome
         parsed = Metronome::Models::InvoiceVoidParams.dump(params)
         req = {
           method: :post,
-          path: "/invoices/void",
+          path: "invoices/void",
           body: parsed,
           model: Metronome::Models::InvoiceVoidResponse
         }

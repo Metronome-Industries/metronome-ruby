@@ -39,7 +39,7 @@ module Metronome
         parsed = Metronome::Models::AuditLogListParams.dump(params)
         req = {
           method: :get,
-          path: "/auditLogs",
+          path: "auditLogs",
           query: parsed,
           page: Metronome::CursorPage,
           model: Metronome::Models::AuditLogListResponse

@@ -23,7 +23,7 @@ module Metronome
         parsed = Metronome::Models::PlanListParams.dump(params)
         req = {
           method: :get,
-          path: "/plans",
+          path: "plans",
           query: parsed,
           page: Metronome::CursorPage,
           model: Metronome::Models::PlanListResponse
@@ -43,11 +43,11 @@ module Metronome
       def get_details(params = {}, opts = {})
         parsed = Metronome::Models::PlanGetDetailsParams.dump(params)
         plan_id = parsed.fetch(:plan_id) do
-          raise ArgumentError.new("missing required path argument :plan_id")
+          raise ArgumentError.new("missing required path argument #{_1}")
         end
         req = {
           method: :get,
-          path: "/planDetails/#{plan_id}",
+          path: ["planDetails/%0s", plan_id],
           model: Metronome::Models::PlanGetDetailsResponse
         }
         @client.request(req, opts)
@@ -69,11 +69,11 @@ module Metronome
       def list_charges(params = {}, opts = {})
         parsed = Metronome::Models::PlanListChargesParams.dump(params)
         plan_id = parsed.fetch(:plan_id) do
-          raise ArgumentError.new("missing required path argument :plan_id")
+          raise ArgumentError.new("missing required path argument #{_1}")
         end
         req = {
           method: :get,
-          path: "/planDetails/#{plan_id}/charges",
+          path: ["planDetails/%0s/charges", plan_id],
           query: parsed.except(:plan_id),
           page: Metronome::CursorPage,
           model: Metronome::Models::PlanListChargesResponse
@@ -108,11 +108,11 @@ module Metronome
       def list_customers(params = {}, opts = {})
         parsed = Metronome::Models::PlanListCustomersParams.dump(params)
         plan_id = parsed.fetch(:plan_id) do
-          raise ArgumentError.new("missing required path argument :plan_id")
+          raise ArgumentError.new("missing required path argument #{_1}")
         end
         req = {
           method: :get,
-          path: "/planDetails/#{plan_id}/customers",
+          path: ["planDetails/%0s/customers", plan_id],
           query: parsed.except(:plan_id),
           page: Metronome::CursorPage,
           model: Metronome::Models::PlanListCustomersResponse

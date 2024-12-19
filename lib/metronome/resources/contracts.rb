@@ -85,7 +85,7 @@ module Metronome
         parsed = Metronome::Models::ContractCreateParams.dump(params)
         req = {
           method: :post,
-          path: "/contracts/create",
+          path: "contracts/create",
           body: parsed,
           model: Metronome::Models::ContractCreateResponse
         }
@@ -110,7 +110,7 @@ module Metronome
         parsed = Metronome::Models::ContractRetrieveParams.dump(params)
         req = {
           method: :post,
-          path: "/contracts/get",
+          path: "contracts/get",
           body: parsed,
           model: Metronome::Models::ContractRetrieveResponse
         }
@@ -143,7 +143,7 @@ module Metronome
         parsed = Metronome::Models::ContractListParams.dump(params)
         req = {
           method: :post,
-          path: "/contracts/list",
+          path: "contracts/list",
           body: parsed,
           model: Metronome::Models::ContractListResponse
         }
@@ -176,7 +176,7 @@ module Metronome
         parsed = Metronome::Models::ContractAddManualBalanceEntryParams.dump(params)
         req = {
           method: :post,
-          path: "/contracts/addManualBalanceLedgerEntry",
+          path: "contracts/addManualBalanceLedgerEntry",
           body: parsed,
           model: NilClass
         }
@@ -222,7 +222,7 @@ module Metronome
         parsed = Metronome::Models::ContractAmendParams.dump(params)
         req = {
           method: :post,
-          path: "/contracts/amend",
+          path: "contracts/amend",
           body: parsed,
           model: Metronome::Models::ContractAmendResponse
         }
@@ -247,7 +247,7 @@ module Metronome
         parsed = Metronome::Models::ContractArchiveParams.dump(params)
         req = {
           method: :post,
-          path: "/contracts/archive",
+          path: "contracts/archive",
           body: parsed,
           model: Metronome::Models::ContractArchiveResponse
         }
@@ -269,7 +269,7 @@ module Metronome
         parsed = Metronome::Models::ContractCreateHistoricalInvoicesParams.dump(params)
         req = {
           method: :post,
-          path: "/contracts/createHistoricalInvoices",
+          path: "contracts/createHistoricalInvoices",
           body: parsed,
           model: Metronome::Models::ContractCreateHistoricalInvoicesResponse
         }
@@ -306,7 +306,7 @@ module Metronome
         parsed = Metronome::Models::ContractListBalancesParams.dump(params)
         req = {
           method: :post,
-          path: "/contracts/customerBalances/list",
+          path: "contracts/customerBalances/list",
           body: parsed,
           model: Metronome::Models::ContractListBalancesResponse
         }
@@ -340,7 +340,7 @@ module Metronome
         query_params = [:limit, :next_page]
         req = {
           method: :post,
-          path: "/contracts/getContractRateSchedule",
+          path: "contracts/getContractRateSchedule",
           query: parsed.slice(*query_params),
           body: parsed.except(*query_params),
           model: Metronome::Models::ContractRetrieveRateScheduleResponse
@@ -372,7 +372,7 @@ module Metronome
         parsed = Metronome::Models::ContractScheduleProServicesInvoiceParams.dump(params)
         req = {
           method: :post,
-          path: "/contracts/scheduleProServicesInvoice",
+          path: "contracts/scheduleProServicesInvoice",
           body: parsed,
           model: Metronome::Models::ContractScheduleProServicesInvoiceResponse
         }
@@ -400,7 +400,7 @@ module Metronome
         parsed = Metronome::Models::ContractSetUsageFilterParams.dump(params)
         req = {
           method: :post,
-          path: "/contracts/setUsageFilter",
+          path: "contracts/setUsageFilter",
           body: parsed,
           model: NilClass
         }
@@ -425,7 +425,7 @@ module Metronome
         parsed = Metronome::Models::ContractUpdateEndDateParams.dump(params)
         req = {
           method: :post,
-          path: "/contracts/updateEndDate",
+          path: "contracts/updateEndDate",
           body: parsed,
           model: Metronome::Models::ContractUpdateEndDateResponse
         }

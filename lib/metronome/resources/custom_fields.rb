@@ -26,7 +26,7 @@ module Metronome
         parsed = Metronome::Models::CustomFieldAddKeyParams.dump(params)
         req = {
           method: :post,
-          path: "/customFields/addKey",
+          path: "customFields/addKey",
           body: parsed,
           model: NilClass
         }
@@ -50,7 +50,7 @@ module Metronome
         parsed = Metronome::Models::CustomFieldDeleteValuesParams.dump(params)
         req = {
           method: :post,
-          path: "/customFields/deleteValues",
+          path: "customFields/deleteValues",
           body: parsed,
           model: NilClass
         }
@@ -73,7 +73,7 @@ module Metronome
         query_params = [:next_page]
         req = {
           method: :post,
-          path: "/customFields/listKeys",
+          path: "customFields/listKeys",
           query: parsed.slice(*query_params),
           body: parsed.except(*query_params),
           model: Metronome::Models::CustomFieldListKeysResponse
@@ -96,7 +96,7 @@ module Metronome
         parsed = Metronome::Models::CustomFieldRemoveKeyParams.dump(params)
         req = {
           method: :post,
-          path: "/customFields/removeKey",
+          path: "customFields/removeKey",
           body: parsed,
           model: NilClass
         }
@@ -126,7 +126,7 @@ module Metronome
         parsed = Metronome::Models::CustomFieldSetValuesParams.dump(params)
         req = {
           method: :post,
-          path: "/customFields/setValues",
+          path: "customFields/setValues",
           body: parsed,
           model: NilClass
         }

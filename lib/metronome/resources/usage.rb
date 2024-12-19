@@ -38,7 +38,7 @@ module Metronome
         query_params = [:next_page]
         req = {
           method: :post,
-          path: "/usage",
+          path: "usage",
           query: parsed.slice(*query_params),
           body: parsed.except(*query_params),
           model: Metronome::Models::UsageListResponse
@@ -63,7 +63,7 @@ module Metronome
         parsed = Metronome::Models::UsageIngestParams.dump(params)
         req = {
           method: :post,
-          path: "/ingest",
+          path: "ingest",
           body: parsed[:usage],
           model: NilClass
         }
@@ -106,7 +106,7 @@ module Metronome
         query_params = [:limit, :next_page]
         req = {
           method: :post,
-          path: "/usage/groups",
+          path: "usage/groups",
           query: parsed.slice(*query_params),
           body: parsed.except(*query_params),
           page: Metronome::CursorPage,

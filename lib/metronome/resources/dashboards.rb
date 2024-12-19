@@ -31,7 +31,7 @@ module Metronome
         parsed = Metronome::Models::DashboardGetEmbeddableURLParams.dump(params)
         req = {
           method: :post,
-          path: "/dashboards/getEmbeddableUrl",
+          path: "dashboards/getEmbeddableUrl",
           body: parsed,
           model: Metronome::Models::DashboardGetEmbeddableURLResponse
         }
