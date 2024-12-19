@@ -35,10 +35,10 @@ module Metronome
 
         # @!attribute line_item_breakdown
         #
-        #   @return [Array<Metronome::Models::CustomerListCostsResponse::CreditTypes::CreditType::LineItemBreakdown>]
+        #   @return [Array<Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown>]
         optional :line_item_breakdown,
                  Metronome::ArrayOf[-> {
-                   Metronome::Models::CustomerListCostsResponse::CreditTypes::CreditType::LineItemBreakdown
+                   Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown
                  }]
 
         # @!attribute name
@@ -48,7 +48,7 @@ module Metronome
 
         # @!parse
         #   # @param cost [Float, nil]
-        #   # @param line_item_breakdown [Array<Metronome::Models::CustomerListCostsResponse::CreditTypes::CreditType::LineItemBreakdown>, nil]
+        #   # @param line_item_breakdown [Array<Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown>, nil]
         #   # @param name [String, nil]
         #   #
         #   def initialize(cost: nil, line_item_breakdown: nil, name: nil) = super
