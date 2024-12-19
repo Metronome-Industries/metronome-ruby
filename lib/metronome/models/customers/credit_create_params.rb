@@ -122,7 +122,8 @@ module Metronome
         #     name: nil,
         #     netsuite_sales_order_id: nil,
         #     rate_type: nil,
-        #     salesforce_opportunity_id: nil
+        #     salesforce_opportunity_id: nil,
+        #     **
         #   )
         #     super
         #   end
@@ -151,7 +152,7 @@ module Metronome
           #   #
           #   # @param credit_type_id [String, nil] Defaults to USD (cents) if not passed
           #   #
-          #   def initialize(schedule_items:, credit_type_id: nil) = super
+          #   def initialize(schedule_items:, credit_type_id: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -180,7 +181,7 @@ module Metronome
             #   #
             #   # @param starting_at [String] RFC 3339 timestamp (inclusive)
             #   #
-            #   def initialize(amount:, ending_before:, starting_at:) = super
+            #   def initialize(amount:, ending_before:, starting_at:, **) = super
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
           end

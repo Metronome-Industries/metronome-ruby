@@ -20,7 +20,7 @@ module Metronome
       #   #
       #   # @param value [Float] The maximum amount to rollover.
       #   #
-      #   def initialize(type:, value:) = super
+      #   def initialize(type:, value:, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 

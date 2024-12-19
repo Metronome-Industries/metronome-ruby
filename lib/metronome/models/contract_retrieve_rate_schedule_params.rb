@@ -55,7 +55,7 @@ module Metronome
       #   # @param selectors [Array<Metronome::Models::ContractRetrieveRateScheduleParams::Selector>, nil] List of rate selectors, rates matching ANY of the selectors will be included in
       #   #   the response. Passing no selectors will result in all rates being returned.
       #   #
-      #   def initialize(contract_id:, customer_id:, limit: nil, next_page: nil, at: nil, selectors: nil) = super
+      #   def initialize(contract_id:, customer_id:, limit: nil, next_page: nil, at: nil, selectors: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -96,7 +96,7 @@ module Metronome
         #   # @param product_tags [Array<String>, nil] List of product tags, rates matching any of the tags will be included in the
         #   #   response.
         #   #
-        #   def initialize(partial_pricing_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil) = super
+        #   def initialize(partial_pricing_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

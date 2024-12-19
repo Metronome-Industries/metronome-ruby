@@ -105,7 +105,8 @@ module Metronome
       #     quantity: nil,
       #     start_period: nil,
       #     tier_reset_frequency: nil,
-      #     unit_conversion: nil
+      #     unit_conversion: nil,
+      #     **
       #   )
       #     super
       #   end
@@ -174,7 +175,7 @@ module Metronome
         #   #
         #   # @param quantity [Float, nil]
         #   #
-        #   def initialize(tier:, value:, collection_interval: nil, collection_schedule: nil, quantity: nil) = super
+        #   def initialize(tier:, value:, collection_interval: nil, collection_schedule: nil, quantity: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
@@ -201,7 +202,7 @@ module Metronome
         #   # @param rounding_behavior [String, nil] Whether usage should be rounded down or up to the nearest whole number. If null,
         #   #   quantity will be rounded to 20 decimal places.
         #   #
-        #   def initialize(division_factor:, rounding_behavior: nil) = super
+        #   def initialize(division_factor:, rounding_behavior: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 

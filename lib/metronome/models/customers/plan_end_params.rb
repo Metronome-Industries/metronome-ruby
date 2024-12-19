@@ -47,7 +47,7 @@ module Metronome
         #   #   that is voided we will also attempt to void/delete the stripe invoice (if any).
         #   #   Stripe invoices will be voided if finalized or deleted if still in draft state.
         #   #
-        #   def initialize(customer_id:, customer_plan_id:, ending_before: nil, void_invoices: nil, void_stripe_invoices: nil) = super
+        #   def initialize(customer_id:, customer_plan_id:, ending_before: nil, void_invoices: nil, void_stripe_invoices: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

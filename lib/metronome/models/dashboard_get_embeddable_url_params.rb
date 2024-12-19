@@ -48,7 +48,7 @@ module Metronome
       #   #
       #   # @param dashboard_options [Array<Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption>, nil] Optional dashboard specific options
       #   #
-      #   def initialize(customer_id:, dashboard:, bm_group_key_overrides: nil, color_overrides: nil, dashboard_options: nil) = super
+      #   def initialize(customer_id:, dashboard:, bm_group_key_overrides: nil, color_overrides: nil, dashboard_options: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -99,7 +99,7 @@ module Metronome
         #   # @param value_display_names [Hash{Symbol => Object}, nil] <key, value> pairs of the billable metric group key values and their display
         #   #   names. e.g. {"a": "Asia", "b": "Euro"}
         #   #
-        #   def initialize(group_key_name:, display_name: nil, value_display_names: nil) = super
+        #   def initialize(group_key_name:, display_name: nil, value_display_names: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
@@ -122,7 +122,7 @@ module Metronome
         #   #
         #   # @param value [String, nil] Hex value representation of the color
         #   #
-        #   def initialize(name: nil, value: nil) = super
+        #   def initialize(name: nil, value: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -187,7 +187,7 @@ module Metronome
         #   #
         #   # @param value [String] The option value
         #   #
-        #   def initialize(key:, value:) = super
+        #   def initialize(key:, value:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

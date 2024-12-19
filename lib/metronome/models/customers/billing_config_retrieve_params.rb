@@ -19,7 +19,7 @@ module Metronome
         #   # @param customer_id [String]
         #   # @param billing_provider_type [String]
         #   #
-        #   def initialize(customer_id:, billing_provider_type:) = super
+        #   def initialize(customer_id:, billing_provider_type:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 

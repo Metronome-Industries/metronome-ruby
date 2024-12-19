@@ -23,7 +23,7 @@ module Metronome
       #   # @param entity_id [String]
       #   # @param keys [Array<String>]
       #   #
-      #   def initialize(entity:, entity_id:, keys:) = super
+      #   def initialize(entity:, entity_id:, keys:, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 

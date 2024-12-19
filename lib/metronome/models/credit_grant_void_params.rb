@@ -27,7 +27,7 @@ module Metronome
       #   #
       #   # @param void_credit_purchase_invoice [Boolean, nil] If true, void the purchase invoice associated with the grant
       #   #
-      #   def initialize(id:, release_uniqueness_key: nil, void_credit_purchase_invoice: nil) = super
+      #   def initialize(id:, release_uniqueness_key: nil, void_credit_purchase_invoice: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

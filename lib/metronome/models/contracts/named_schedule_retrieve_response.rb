@@ -13,7 +13,7 @@ module Metronome
         # @!parse
         #   # @param data [Array<Metronome::Models::Contracts::NamedScheduleRetrieveResponse::Data>]
         #   #
-        #   def initialize(data:) = super
+        #   def initialize(data:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -38,7 +38,7 @@ module Metronome
           #   # @param value [Object]
           #   # @param ending_before [String, nil]
           #   #
-          #   def initialize(starting_at:, value:, ending_before: nil) = super
+          #   def initialize(starting_at:, value:, ending_before: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
         end

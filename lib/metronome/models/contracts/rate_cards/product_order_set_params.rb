@@ -21,7 +21,7 @@ module Metronome
           #   #
           #   # @param rate_card_id [String] ID of the rate card to update
           #   #
-          #   def initialize(product_order:, rate_card_id:) = super
+          #   def initialize(product_order:, rate_card_id:, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
         end

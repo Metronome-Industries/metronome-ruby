@@ -23,7 +23,7 @@ module Metronome
       #   # @param entity [String]
       #   # @param key [String]
       #   #
-      #   def initialize(enforce_uniqueness:, entity:, key:) = super
+      #   def initialize(enforce_uniqueness:, entity:, key:, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 

@@ -35,7 +35,7 @@ module Metronome
       #   # @param group_values [Array<String>]
       #   # @param starting_at [String]
       #   #
-      #   def initialize(contract_id:, customer_id:, group_key:, group_values:, starting_at:) = super
+      #   def initialize(contract_id:, customer_id:, group_key:, group_values:, starting_at:, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

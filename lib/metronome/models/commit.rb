@@ -183,7 +183,8 @@ module Metronome
       #     rate_type: nil,
       #     rolled_over_from: nil,
       #     rollover_fraction: nil,
-      #     salesforce_opportunity_id: nil
+      #     salesforce_opportunity_id: nil,
+      #     **
       #   )
       #     super
       #   end
@@ -205,7 +206,7 @@ module Metronome
         #   # @param id [String]
         #   # @param name [String]
         #   #
-        #   def initialize(id:, name:) = super
+        #   def initialize(id:, name:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
@@ -234,7 +235,7 @@ module Metronome
         # @!parse
         #   # @param id [String]
         #   #
-        #   def initialize(id:) = super
+        #   def initialize(id:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
@@ -250,7 +251,7 @@ module Metronome
         #   #
         #   # @param id [String]
         #   #
-        #   def initialize(id:) = super
+        #   def initialize(id:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
@@ -285,7 +286,7 @@ module Metronome
         #   # @param commit_id [String]
         #   # @param contract_id [String]
         #   #
-        #   def initialize(commit_id:, contract_id:) = super
+        #   def initialize(commit_id:, contract_id:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

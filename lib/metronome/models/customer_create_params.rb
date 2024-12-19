@@ -43,7 +43,7 @@ module Metronome
       #   #
       #   # @param ingest_aliases [Array<String>, nil] Aliases that can be used to refer to this customer in usage events
       #   #
-      #   def initialize(name:, billing_config: nil, custom_fields: nil, external_id: nil, ingest_aliases: nil) = super
+      #   def initialize(name:, billing_config: nil, custom_fields: nil, external_id: nil, ingest_aliases: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -87,7 +87,8 @@ module Metronome
         #     billing_provider_type:,
         #     aws_product_code: nil,
         #     aws_region: nil,
-        #     stripe_collection_method: nil
+        #     stripe_collection_method: nil,
+        #     **
         #   )
         #     super
         #   end

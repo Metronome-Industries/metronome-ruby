@@ -12,7 +12,7 @@ module Metronome
         # @!parse
         #   # @param data [Metronome::Models::Customers::BillingConfigRetrieveResponse::Data]
         #   #
-        #   def initialize(data:) = super
+        #   def initialize(data:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -106,7 +106,8 @@ module Metronome
           #     azure_start_date: nil,
           #     azure_subscription_status: nil,
           #     billing_provider_customer_id: nil,
-          #     stripe_collection_method: nil
+          #     stripe_collection_method: nil,
+          #     **
           #   )
           #     super
           #   end

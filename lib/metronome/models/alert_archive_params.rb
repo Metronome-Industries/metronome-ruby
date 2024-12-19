@@ -20,7 +20,7 @@ module Metronome
       #   #
       #   # @param release_uniqueness_key [Boolean, nil] If true, resets the uniqueness key on this alert so it can be re-used
       #   #
-      #   def initialize(id:, release_uniqueness_key: nil) = super
+      #   def initialize(id:, release_uniqueness_key: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

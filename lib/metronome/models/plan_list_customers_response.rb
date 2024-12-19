@@ -17,7 +17,7 @@ module Metronome
       #   # @param customer_details [Metronome::Models::CustomerDetail]
       #   # @param plan_details [Metronome::Models::PlanListCustomersResponse::PlanDetails]
       #   #
-      #   def initialize(customer_details:, plan_details:) = super
+      #   def initialize(customer_details:, plan_details:, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -67,7 +67,7 @@ module Metronome
         #   #
         #   # @param ending_before [String, nil] The end date of the plan
         #   #
-        #   def initialize(id:, custom_fields:, customer_plan_id:, name:, starting_on:, ending_before: nil) = super
+        #   def initialize(id:, custom_fields:, customer_plan_id:, name:, starting_on:, ending_before: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

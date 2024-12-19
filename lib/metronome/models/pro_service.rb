@@ -74,7 +74,8 @@ module Metronome
       #     unit_price:,
       #     custom_fields: nil,
       #     description: nil,
-      #     netsuite_sales_order_id: nil
+      #     netsuite_sales_order_id: nil,
+      #     **
       #   )
       #     super
       #   end

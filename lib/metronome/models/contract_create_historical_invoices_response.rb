@@ -11,7 +11,7 @@ module Metronome
       # @!parse
       #   # @param data [Array<Metronome::Models::Customers::Invoice>]
       #   #
-      #   def initialize(data:) = super
+      #   def initialize(data:, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

@@ -11,7 +11,7 @@ module Metronome
       # @!parse
       #   # @param data [Metronome::Models::InvoiceRegenerateResponse::Data, nil]
       #   #
-      #   def initialize(data: nil) = super
+      #   def initialize(data: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -25,7 +25,7 @@ module Metronome
         # @!parse
         #   # @param id [String] The new invoice id
         #   #
-        #   def initialize(id:) = super
+        #   def initialize(id:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

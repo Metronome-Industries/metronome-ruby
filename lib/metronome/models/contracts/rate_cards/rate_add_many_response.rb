@@ -14,7 +14,7 @@ module Metronome
           # @!parse
           #   # @param data [Metronome::Models::ID] The ID of the rate card to which the rates were added.
           #   #
-          #   def initialize(data:) = super
+          #   def initialize(data:, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
         end

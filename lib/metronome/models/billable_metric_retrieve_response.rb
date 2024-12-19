@@ -11,7 +11,7 @@ module Metronome
       # @!parse
       #   # @param data [Metronome::Models::BillableMetricRetrieveResponse::Data]
       #   #
-      #   def initialize(data:) = super
+      #   def initialize(data:, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -113,7 +113,8 @@ module Metronome
         #     event_type_filter: nil,
         #     group_keys: nil,
         #     property_filters: nil,
-        #     sql: nil
+        #     sql: nil,
+        #     **
         #   )
         #     super
         #   end

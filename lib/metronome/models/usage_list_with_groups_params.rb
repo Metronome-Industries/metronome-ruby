@@ -84,7 +84,8 @@ module Metronome
       #     current_period: nil,
       #     ending_before: nil,
       #     group_by: nil,
-      #     starting_on: nil
+      #     starting_on: nil,
+      #     **
       #   )
       #     super
       #   end
@@ -130,7 +131,7 @@ module Metronome
         #   # @param values [Array<String>, nil] Values of the group_by key to return in the query. Omit this if you'd like all
         #   #   values for the key returned.
         #   #
-        #   def initialize(key:, values: nil) = super
+        #   def initialize(key:, values: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

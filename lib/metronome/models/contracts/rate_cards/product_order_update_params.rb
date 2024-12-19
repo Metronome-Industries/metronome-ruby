@@ -24,7 +24,7 @@ module Metronome
           #   #
           #   # @param rate_card_id [String] ID of the rate card to update
           #   #
-          #   def initialize(product_moves:, rate_card_id:) = super
+          #   def initialize(product_moves:, rate_card_id:, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -46,7 +46,7 @@ module Metronome
             #   #
             #   # @param product_id [String] ID of the product to move
             #   #
-            #   def initialize(position:, product_id:) = super
+            #   def initialize(position:, product_id:, **) = super
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
           end

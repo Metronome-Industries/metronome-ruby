@@ -40,7 +40,7 @@ module Metronome
         #   # @param start_period [Float]
         #   # @param quantity [Float, nil]
         #   #
-        #   def initialize(charge_id:, charge_type:, prices:, start_period:, quantity: nil) = super
+        #   def initialize(charge_id:, charge_type:, prices:, start_period:, quantity: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -96,7 +96,7 @@ module Metronome
           #   #
           #   # @param value [Float, nil]
           #   #
-          #   def initialize(adjustment_type:, tier: nil, value: nil) = super
+          #   def initialize(adjustment_type:, tier: nil, value: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 

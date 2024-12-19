@@ -61,7 +61,8 @@ module Metronome
       #     description: nil,
       #     resource_id: nil,
       #     resource_type: nil,
-      #     status: nil
+      #     status: nil,
+      #     **
       #   )
       #     super
       #   end
@@ -89,7 +90,7 @@ module Metronome
         #   # @param name [String]
         #   # @param email [String, nil]
         #   #
-        #   def initialize(id:, name:, email: nil) = super
+        #   def initialize(id:, name:, email: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

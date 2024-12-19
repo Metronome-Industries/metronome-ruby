@@ -75,7 +75,8 @@ module Metronome
         #     credit_type_conversions: nil,
         #     custom_fields: nil,
         #     description: nil,
-        #     fiat_credit_type: nil
+        #     fiat_credit_type: nil,
+        #     **
         #   )
         #     super
         #   end
@@ -103,7 +104,7 @@ module Metronome
           #   # @param ending_before [String, nil]
           #   # @param starting_at [String, nil]
           #   #
-          #   def initialize(name:, ending_before: nil, starting_at: nil) = super
+          #   def initialize(name:, ending_before: nil, starting_at: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
         end
@@ -123,7 +124,7 @@ module Metronome
           #   # @param custom_credit_type [Metronome::Models::CreditTypeData]
           #   # @param fiat_per_custom_credit [String]
           #   #
-          #   def initialize(custom_credit_type:, fiat_per_custom_credit:) = super
+          #   def initialize(custom_credit_type:, fiat_per_custom_credit:, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
         end

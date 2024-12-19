@@ -103,7 +103,8 @@ module Metronome
         #     skip_zero_qty_line_items: nil,
         #     sort: nil,
         #     status: nil,
-        #     window_size: nil
+        #     window_size: nil,
+        #     **
         #   )
         #     super
         #   end

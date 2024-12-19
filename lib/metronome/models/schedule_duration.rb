@@ -17,7 +17,7 @@ module Metronome
       #   # @param schedule_items [Array<Metronome::Models::ScheduleDuration::ScheduleItem>]
       #   # @param credit_type [Metronome::Models::CreditTypeData, nil]
       #   #
-      #   def initialize(schedule_items:, credit_type: nil) = super
+      #   def initialize(schedule_items:, credit_type: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -48,7 +48,7 @@ module Metronome
         #   # @param ending_before [String]
         #   # @param starting_at [String]
         #   #
-        #   def initialize(id:, amount:, ending_before:, starting_at:) = super
+        #   def initialize(id:, amount:, ending_before:, starting_at:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

@@ -28,7 +28,7 @@ module Metronome
       #   #
       #   # @param salesforce_account_id [String, nil] The Salesforce account ID for the customer
       #   #
-      #   def initialize(customer_id:, leave_stripe_invoices_in_draft: nil, salesforce_account_id: nil) = super
+      #   def initialize(customer_id:, leave_stripe_invoices_in_draft: nil, salesforce_account_id: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

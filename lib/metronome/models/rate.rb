@@ -89,7 +89,8 @@ module Metronome
       #     pricing_group_values: nil,
       #     quantity: nil,
       #     tiers: nil,
-      #     use_list_prices: nil
+      #     use_list_prices: nil,
+      #     **
       #   )
       #     super
       #   end

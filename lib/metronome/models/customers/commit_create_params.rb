@@ -154,7 +154,8 @@ module Metronome
         #     name: nil,
         #     netsuite_sales_order_id: nil,
         #     rate_type: nil,
-        #     salesforce_opportunity_id: nil
+        #     salesforce_opportunity_id: nil,
+        #     **
         #   )
         #     super
         #   end
@@ -184,7 +185,7 @@ module Metronome
           #   #
           #   # @param credit_type_id [String, nil] Defaults to USD (cents) if not passed
           #   #
-          #   def initialize(schedule_items:, credit_type_id: nil) = super
+          #   def initialize(schedule_items:, credit_type_id: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -213,7 +214,7 @@ module Metronome
             #   #
             #   # @param starting_at [String] RFC 3339 timestamp (inclusive)
             #   #
-            #   def initialize(amount:, ending_before:, starting_at:) = super
+            #   def initialize(amount:, ending_before:, starting_at:, **) = super
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
           end
@@ -271,7 +272,7 @@ module Metronome
           #   #
           #   # @param schedule_items [Array<Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem>, nil] Either provide amount or provide both unit_price and quantity.
           #   #
-          #   def initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil) = super
+          #   def initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -354,7 +355,8 @@ module Metronome
             #     starting_at:,
             #     amount: nil,
             #     quantity: nil,
-            #     unit_price: nil
+            #     unit_price: nil,
+            #     **
             #   )
             #     super
             #   end
@@ -441,7 +443,7 @@ module Metronome
             #   #   amount and must be specified with quantity. If specified amount cannot be
             #   #   provided.
             #   #
-            #   def initialize(timestamp:, amount: nil, quantity: nil, unit_price: nil) = super
+            #   def initialize(timestamp:, amount: nil, quantity: nil, unit_price: nil, **) = super
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
           end

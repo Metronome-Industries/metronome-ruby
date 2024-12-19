@@ -28,7 +28,7 @@ module Metronome
       #   #
       #   # @param next_page [String, nil] Cursor that indicates where the next page of results should start.
       #   #
-      #   def initialize(include_archived: nil, limit: nil, next_page: nil) = super
+      #   def initialize(include_archived: nil, limit: nil, next_page: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

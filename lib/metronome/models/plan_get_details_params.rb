@@ -11,7 +11,7 @@ module Metronome
       # @!parse
       #   # @param plan_id [String]
       #   #
-      #   def initialize(plan_id:) = super
+      #   def initialize(plan_id:, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

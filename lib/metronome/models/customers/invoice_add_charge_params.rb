@@ -61,7 +61,7 @@ module Metronome
         #   #
         #   # @param quantity [Float]
         #   #
-        #   def initialize(customer_id:, charge_id:, customer_plan_id:, description:, invoice_start_timestamp:, price:, quantity:) = super
+        #   def initialize(customer_id:, charge_id:, customer_plan_id:, description:, invoice_start_timestamp:, price:, quantity:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

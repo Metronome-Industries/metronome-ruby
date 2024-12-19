@@ -40,7 +40,7 @@ module Metronome
       #   #
       #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
       #   #
-      #   def initialize(id:, product:, schedule:, name: nil, netsuite_sales_order_id: nil) = super
+      #   def initialize(id:, product:, schedule:, name: nil, netsuite_sales_order_id: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -59,7 +59,7 @@ module Metronome
         #   # @param id [String]
         #   # @param name [String]
         #   #
-        #   def initialize(id:, name:) = super
+        #   def initialize(id:, name:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

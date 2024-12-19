@@ -36,7 +36,7 @@ module Metronome
       #   #
       #   # @param name [String, nil] the updated name for the credit grant
       #   #
-      #   def initialize(id:, credit_grant_type: nil, expires_at: nil, name: nil) = super
+      #   def initialize(id:, credit_grant_type: nil, expires_at: nil, name: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

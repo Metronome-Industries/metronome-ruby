@@ -35,7 +35,7 @@ module Metronome
       #   # @param starting_on [String]
       #   # @param value [Float, nil]
       #   #
-      #   def initialize(ending_before:, group_key:, group_value:, starting_on:, value:) = super
+      #   def initialize(ending_before:, group_key:, group_value:, starting_on:, value:, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

@@ -17,7 +17,7 @@ module Metronome
       #   # @param data [Array<Metronome::Models::CreditGrantListEntriesResponse::Data>]
       #   # @param next_page [String, nil]
       #   #
-      #   def initialize(data:, next_page:) = super
+      #   def initialize(data:, next_page:, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -37,7 +37,7 @@ module Metronome
         #   # @param customer_id [String]
         #   # @param ledgers [Array<Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger>]
         #   #
-        #   def initialize(customer_id:, ledgers:) = super
+        #   def initialize(customer_id:, ledgers:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -81,7 +81,7 @@ module Metronome
           #   #
           #   # @param starting_balance [Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance]
           #   #
-          #   def initialize(credit_type:, ending_balance:, entries:, pending_entries:, starting_balance:) = super
+          #   def initialize(credit_type:, ending_balance:, entries:, pending_entries:, starting_balance:, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -117,7 +117,7 @@ module Metronome
             #   # @param including_pending [Float] the excluding_pending balance plus any pending invoice deductions and
             #   #   expirations that will happen by the effective_at date
             #   #
-            #   def initialize(effective_at:, excluding_pending:, including_pending:) = super
+            #   def initialize(effective_at:, excluding_pending:, including_pending:, **) = super
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
           end
@@ -151,7 +151,7 @@ module Metronome
             #   # @param including_pending [Float] the excluding_pending balance plus any pending activity that has not been posted
             #   #   at the time of the query
             #   #
-            #   def initialize(effective_at:, excluding_pending:, including_pending:) = super
+            #   def initialize(effective_at:, excluding_pending:, including_pending:, **) = super
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
           end

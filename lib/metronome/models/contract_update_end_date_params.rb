@@ -29,7 +29,7 @@ module Metronome
       #   # @param ending_before [String, nil] RFC 3339 timestamp indicating when the contract will end (exclusive). If not
       #   #   provided, the contract will be updated to be open-ended.
       #   #
-      #   def initialize(contract_id:, customer_id:, ending_before: nil) = super
+      #   def initialize(contract_id:, customer_id:, ending_before: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

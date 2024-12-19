@@ -85,7 +85,8 @@ module Metronome
         #     include_contract_credits: nil,
         #     include_ledgers: nil,
         #     next_page: nil,
-        #     starting_at: nil
+        #     starting_at: nil,
+        #     **
         #   )
         #     super
         #   end

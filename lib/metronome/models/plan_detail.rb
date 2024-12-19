@@ -47,7 +47,7 @@ module Metronome
       #   # @param minimums [Array<Metronome::Models::PlanDetail::Minimum>, nil]
       #   # @param overage_rates [Array<Metronome::Models::PlanDetail::OverageRate>, nil]
       #   #
-      #   def initialize(id:, custom_fields:, name:, credit_grants: nil, description: nil, minimums: nil, overage_rates: nil) = super
+      #   def initialize(id:, custom_fields:, name:, credit_grants: nil, description: nil, minimums: nil, overage_rates: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -131,7 +131,8 @@ module Metronome
         #     send_invoice:,
         #     reason: nil,
         #     recurrence_duration: nil,
-        #     recurrence_interval: nil
+        #     recurrence_interval: nil,
+        #     **
         #   )
         #     super
         #   end
@@ -171,7 +172,7 @@ module Metronome
         #   #
         #   # @param value [Float]
         #   #
-        #   def initialize(credit_type:, name:, start_period:, value:) = super
+        #   def initialize(credit_type:, name:, start_period:, value:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
@@ -208,7 +209,7 @@ module Metronome
         #   #
         #   # @param to_fiat_conversion_factor [Float]
         #   #
-        #   def initialize(credit_type:, fiat_credit_type:, start_period:, to_fiat_conversion_factor:) = super
+        #   def initialize(credit_type:, fiat_credit_type:, start_period:, to_fiat_conversion_factor:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

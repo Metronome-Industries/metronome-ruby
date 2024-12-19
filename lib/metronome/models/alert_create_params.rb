@@ -135,7 +135,8 @@ module Metronome
       #     group_key_filter: nil,
       #     invoice_types_filter: nil,
       #     plan_id: nil,
-      #     uniqueness_key: nil
+      #     uniqueness_key: nil,
+      #     **
       #   )
       #     super
       #   end
@@ -200,7 +201,7 @@ module Metronome
         #   # @param key [String]
         #   # @param value [String]
         #   #
-        #   def initialize(entity:, key:, value:) = super
+        #   def initialize(entity:, key:, value:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -241,7 +242,7 @@ module Metronome
         #   # @param key [String]
         #   # @param value [String]
         #   #
-        #   def initialize(key:, value:) = super
+        #   def initialize(key:, value:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

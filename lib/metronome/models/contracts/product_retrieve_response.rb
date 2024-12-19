@@ -12,7 +12,7 @@ module Metronome
         # @!parse
         #   # @param data [Metronome::Models::Contracts::ProductRetrieveResponse::Data]
         #   #
-        #   def initialize(data:) = super
+        #   def initialize(data:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -64,7 +64,7 @@ module Metronome
           #   # @param archived_at [String, nil]
           #   # @param custom_fields [Hash{Symbol => String}, nil]
           #   #
-          #   def initialize(id:, current:, initial:, type:, updates:, archived_at: nil, custom_fields: nil) = super
+          #   def initialize(id:, current:, initial:, type:, updates:, archived_at: nil, custom_fields: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -242,7 +242,8 @@ module Metronome
             #     quantity_conversion: nil,
             #     quantity_rounding: nil,
             #     starting_at: nil,
-            #     tags: nil
+            #     tags: nil,
+            #     **
             #   )
             #     super
             #   end

@@ -26,7 +26,7 @@ module Metronome
       #   #   specified, events of these types will not match the billable metric. Must be
       #   #   non-empty if present.
       #   #
-      #   def initialize(in_values: nil, not_in_values: nil) = super
+      #   def initialize(in_values: nil, not_in_values: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

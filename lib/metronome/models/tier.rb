@@ -17,7 +17,7 @@ module Metronome
       #   # @param price [Float]
       #   # @param size [Float, nil]
       #   #
-      #   def initialize(price:, size: nil) = super
+      #   def initialize(price:, size: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

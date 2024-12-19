@@ -70,7 +70,8 @@ module Metronome
       #     credit_type_ids: nil,
       #     customer_ids: nil,
       #     effective_before: nil,
-      #     not_expiring_before: nil
+      #     not_expiring_before: nil,
+      #     **
       #   )
       #     super
       #   end

@@ -11,7 +11,7 @@ module Metronome
       # @!parse
       #   # @param data [Metronome::Models::DashboardGetEmbeddableURLResponse::Data]
       #   #
-      #   def initialize(data:) = super
+      #   def initialize(data:, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -24,7 +24,7 @@ module Metronome
         # @!parse
         #   # @param url [String, nil]
         #   #
-        #   def initialize(url: nil) = super
+        #   def initialize(url: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

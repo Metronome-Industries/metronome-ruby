@@ -86,7 +86,8 @@ module Metronome
         #     net_payment_terms_days: nil,
         #     overage_rate_adjustments: nil,
         #     price_adjustments: nil,
-        #     trial_spec: nil
+        #     trial_spec: nil,
+        #     **
         #   )
         #     super
         #   end
@@ -117,7 +118,7 @@ module Metronome
           #   #
           #   # @param to_fiat_conversion_factor [Float] The overage cost in fiat currency for each credit of the custom credit type.
           #   #
-          #   def initialize(custom_credit_type_id:, fiat_currency_credit_type_id:, to_fiat_conversion_factor:) = super
+          #   def initialize(custom_credit_type_id:, fiat_currency_credit_type_id:, to_fiat_conversion_factor:, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
         end
@@ -174,7 +175,7 @@ module Metronome
           #   #   positive or negative. Percentage-based adjustments should be decimals, e.g.
           #   #   -0.05 for a 5% discount.
           #   #
-          #   def initialize(adjustment_type:, charge_id:, start_period:, quantity: nil, tier: nil, value: nil) = super
+          #   def initialize(adjustment_type:, charge_id:, start_period:, quantity: nil, tier: nil, value: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -221,7 +222,7 @@ module Metronome
           #   #
           #   # @param spending_cap [Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap, nil]
           #   #
-          #   def initialize(length_in_days:, spending_cap: nil) = super
+          #   def initialize(length_in_days:, spending_cap: nil, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
@@ -244,7 +245,7 @@ module Metronome
             #   #
             #   # @param credit_type_id [String] The credit type ID for the spending cap.
             #   #
-            #   def initialize(amount:, credit_type_id:) = super
+            #   def initialize(amount:, credit_type_id:, **) = super
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
           end

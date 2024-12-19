@@ -23,7 +23,7 @@ module Metronome
       #   # @param is_currency [Boolean, nil]
       #   # @param name [String, nil]
       #   #
-      #   def initialize(id: nil, is_currency: nil, name: nil) = super
+      #   def initialize(id: nil, is_currency: nil, name: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

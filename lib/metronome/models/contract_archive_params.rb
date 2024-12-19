@@ -29,7 +29,7 @@ module Metronome
       #   # @param void_invoices [Boolean] If false, the existing finalized invoices will remain after the contract is
       #   #   archived.
       #   #
-      #   def initialize(contract_id:, customer_id:, void_invoices:) = super
+      #   def initialize(contract_id:, customer_id:, void_invoices:, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

@@ -99,7 +99,8 @@ module Metronome
       #     event_type_filter: nil,
       #     group_keys: nil,
       #     property_filters: nil,
-      #     sql: nil
+      #     sql: nil,
+      #     **
       #   )
       #     super
       #   end

@@ -44,7 +44,7 @@ module Metronome
       #   # @param on_current_plan [Boolean, nil] If true, the list of metrics will be filtered to just ones that are on the
       #   #   customer's current plan
       #   #
-      #   def initialize(customer_id:, include_archived: nil, limit: nil, next_page: nil, on_current_plan: nil) = super
+      #   def initialize(customer_id:, include_archived: nil, limit: nil, next_page: nil, on_current_plan: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

@@ -23,7 +23,7 @@ module Metronome
       #   #
       #   # @param entities [Array<String>, nil] Optional list of entity types to return keys for
       #   #
-      #   def initialize(next_page: nil, entities: nil) = super
+      #   def initialize(next_page: nil, entities: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 

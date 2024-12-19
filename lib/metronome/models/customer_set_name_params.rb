@@ -20,7 +20,7 @@ module Metronome
       #   # @param name [String] The new name for the customer. This will be truncated to 160 characters if the
       #   #   provided name is longer.
       #   #
-      #   def initialize(customer_id:, name:) = super
+      #   def initialize(customer_id:, name:, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

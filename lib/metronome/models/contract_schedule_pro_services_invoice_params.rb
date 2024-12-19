@@ -59,7 +59,8 @@ module Metronome
       #     issued_at:,
       #     line_items:,
       #     netsuite_invoice_header_end: nil,
-      #     netsuite_invoice_header_start: nil
+      #     netsuite_invoice_header_start: nil,
+      #     **
       #   )
       #     super
       #   end
@@ -143,7 +144,8 @@ module Metronome
         #     netsuite_invoice_billing_end: nil,
         #     netsuite_invoice_billing_start: nil,
         #     quantity: nil,
-        #     unit_price: nil
+        #     unit_price: nil,
+        #     **
         #   )
         #     super
         #   end

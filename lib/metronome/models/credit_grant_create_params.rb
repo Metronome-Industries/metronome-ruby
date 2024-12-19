@@ -135,7 +135,8 @@ module Metronome
       #     product_ids: nil,
       #     reason: nil,
       #     rollover_settings: nil,
-      #     uniqueness_key: nil
+      #     uniqueness_key: nil,
+      #     **
       #   )
       #     super
       #   end
@@ -161,7 +162,7 @@ module Metronome
         #   #
         #   # @param credit_type_id [String] the ID of the pricing unit to be used. Defaults to USD (cents) if not passed.
         #   #
-        #   def initialize(amount:, credit_type_id:) = super
+        #   def initialize(amount:, credit_type_id:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
@@ -185,7 +186,7 @@ module Metronome
         #   #
         #   # @param credit_type_id [String] the ID of the pricing unit to be used. Defaults to USD (cents) if not passed.
         #   #
-        #   def initialize(amount:, credit_type_id:) = super
+        #   def initialize(amount:, credit_type_id:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
@@ -221,7 +222,7 @@ module Metronome
         #   #
         #   # @param rollover_amount [Metronome::Models::RolloverAmountMaxAmount, Metronome::Models::RolloverAmountMaxPercentage] Specify how much to rollover to the rollover credit grant
         #   #
-        #   def initialize(expires_at:, priority:, rollover_amount:) = super
+        #   def initialize(expires_at:, priority:, rollover_amount:, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
