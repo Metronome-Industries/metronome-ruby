@@ -32,14 +32,14 @@ module Metronome
         def create(params = {}, opts = {})
           parsed = Metronome::Models::Customers::BillingConfigCreateParams.dump(params)
           customer_id = parsed.fetch(:customer_id) do
-            raise ArgumentError.new("missing required path argument :customer_id")
+            raise ArgumentError.new("missing required path argument #{_1}")
           end
           billing_provider_type = parsed.fetch(:billing_provider_type) do
-            raise ArgumentError.new("missing required path argument :billing_provider_type")
+            raise ArgumentError.new("missing required path argument #{_1}")
           end
           req = {
             method: :post,
-            path: "/customers/#{customer_id}/billing-config/#{billing_provider_type}",
+            path: ["customers/%0s/billing-config/%1s", customer_id, billing_provider_type],
             body: parsed.except(:customer_id, :billing_provider_type),
             model: NilClass
           }
@@ -60,14 +60,14 @@ module Metronome
         def retrieve(params = {}, opts = {})
           parsed = Metronome::Models::Customers::BillingConfigRetrieveParams.dump(params)
           customer_id = parsed.fetch(:customer_id) do
-            raise ArgumentError.new("missing required path argument :customer_id")
+            raise ArgumentError.new("missing required path argument #{_1}")
           end
           billing_provider_type = parsed.fetch(:billing_provider_type) do
-            raise ArgumentError.new("missing required path argument :billing_provider_type")
+            raise ArgumentError.new("missing required path argument #{_1}")
           end
           req = {
             method: :get,
-            path: "/customers/#{customer_id}/billing-config/#{billing_provider_type}",
+            path: ["customers/%0s/billing-config/%1s", customer_id, billing_provider_type],
             model: Metronome::Models::Customers::BillingConfigRetrieveResponse
           }
           @client.request(req, opts)
@@ -88,14 +88,14 @@ module Metronome
         def delete(params = {}, opts = {})
           parsed = Metronome::Models::Customers::BillingConfigDeleteParams.dump(params)
           customer_id = parsed.fetch(:customer_id) do
-            raise ArgumentError.new("missing required path argument :customer_id")
+            raise ArgumentError.new("missing required path argument #{_1}")
           end
           billing_provider_type = parsed.fetch(:billing_provider_type) do
-            raise ArgumentError.new("missing required path argument :billing_provider_type")
+            raise ArgumentError.new("missing required path argument #{_1}")
           end
           req = {
             method: :delete,
-            path: "/customers/#{customer_id}/billing-config/#{billing_provider_type}",
+            path: ["customers/%0s/billing-config/%1s", customer_id, billing_provider_type],
             model: NilClass
           }
           @client.request(req, opts)

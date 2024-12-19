@@ -19,7 +19,7 @@ module Metronome
       def list(opts = {})
         req = {
           method: :get,
-          path: "/services",
+          path: "services",
           model: Metronome::Models::ServiceListResponse
         }
         @client.request(req, opts)

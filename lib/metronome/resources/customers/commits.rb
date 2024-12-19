@@ -62,7 +62,7 @@ module Metronome
           parsed = Metronome::Models::Customers::CommitCreateParams.dump(params)
           req = {
             method: :post,
-            path: "/contracts/customerCommits/create",
+            path: "contracts/customerCommits/create",
             body: parsed,
             model: Metronome::Models::Customers::CommitCreateResponse
           }
@@ -99,7 +99,7 @@ module Metronome
           parsed = Metronome::Models::Customers::CommitListParams.dump(params)
           req = {
             method: :post,
-            path: "/contracts/customerCommits/list",
+            path: "contracts/customerCommits/list",
             body: parsed,
             model: Metronome::Models::Customers::CommitListResponse
           }
@@ -128,7 +128,7 @@ module Metronome
           parsed = Metronome::Models::Customers::CommitUpdateEndDateParams.dump(params)
           req = {
             method: :post,
-            path: "/contracts/customerCommits/updateEndDate",
+            path: "contracts/customerCommits/updateEndDate",
             body: parsed,
             model: Metronome::Models::Customers::CommitUpdateEndDateResponse
           }

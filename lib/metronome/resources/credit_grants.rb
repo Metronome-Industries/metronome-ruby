@@ -55,7 +55,7 @@ module Metronome
         parsed = Metronome::Models::CreditGrantCreateParams.dump(params)
         req = {
           method: :post,
-          path: "/credits/createGrant",
+          path: "credits/createGrant",
           body: parsed,
           model: Metronome::Models::CreditGrantCreateResponse
         }
@@ -92,7 +92,7 @@ module Metronome
         query_params = [:limit, :next_page]
         req = {
           method: :post,
-          path: "/credits/listGrants",
+          path: "credits/listGrants",
           query: parsed.slice(*query_params),
           body: parsed.except(*query_params),
           page: Metronome::CursorPage,
@@ -120,7 +120,7 @@ module Metronome
         parsed = Metronome::Models::CreditGrantEditParams.dump(params)
         req = {
           method: :post,
-          path: "/credits/editGrant",
+          path: "credits/editGrant",
           body: parsed,
           model: Metronome::Models::CreditGrantEditResponse
         }
@@ -142,7 +142,7 @@ module Metronome
         parsed = Metronome::Models::CreditGrantListCreditTypesParams.dump(params)
         req = {
           method: :get,
-          path: "/credit-types/list",
+          path: "credit-types/list",
           query: parsed,
           page: Metronome::CursorPage,
           model: Metronome::Models::CreditGrantListCreditTypesResponse
@@ -180,7 +180,7 @@ module Metronome
         query_params = [:next_page]
         req = {
           method: :post,
-          path: "/credits/listEntries",
+          path: "credits/listEntries",
           query: parsed.slice(*query_params),
           body: parsed.except(*query_params),
           model: Metronome::Models::CreditGrantListEntriesResponse
@@ -205,7 +205,7 @@ module Metronome
         parsed = Metronome::Models::CreditGrantVoidParams.dump(params)
         req = {
           method: :post,
-          path: "/credits/voidGrant",
+          path: "credits/voidGrant",
           body: parsed,
           model: Metronome::Models::CreditGrantVoidResponse
         }

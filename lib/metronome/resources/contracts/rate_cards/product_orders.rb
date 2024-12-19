@@ -25,7 +25,7 @@ module Metronome
             parsed = Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams.dump(params)
             req = {
               method: :post,
-              path: "/contract-pricing/rate-cards/moveRateCardProducts",
+              path: "contract-pricing/rate-cards/moveRateCardProducts",
               body: parsed,
               model: Metronome::Models::Contracts::RateCards::ProductOrderUpdateResponse
             }
@@ -47,7 +47,7 @@ module Metronome
             parsed = Metronome::Models::Contracts::RateCards::ProductOrderSetParams.dump(params)
             req = {
               method: :post,
-              path: "/contract-pricing/rate-cards/setRateCardProductsOrder",
+              path: "contract-pricing/rate-cards/setRateCardProductsOrder",
               body: parsed,
               model: Metronome::Models::Contracts::RateCards::ProductOrderSetResponse
             }

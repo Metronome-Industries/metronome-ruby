@@ -26,14 +26,14 @@ module Metronome
         def retrieve(params = {}, opts = {})
           parsed = Metronome::Models::Customers::InvoiceRetrieveParams.dump(params)
           customer_id = parsed.fetch(:customer_id) do
-            raise ArgumentError.new("missing required path argument :customer_id")
+            raise ArgumentError.new("missing required path argument #{_1}")
           end
           invoice_id = parsed.fetch(:invoice_id) do
-            raise ArgumentError.new("missing required path argument :invoice_id")
+            raise ArgumentError.new("missing required path argument #{_1}")
           end
           req = {
             method: :get,
-            path: "/customers/#{customer_id}/invoices/#{invoice_id}",
+            path: ["customers/%0s/invoices/%1s", customer_id, invoice_id],
             query: parsed.except(:customer_id, :invoice_id),
             model: Metronome::Models::Customers::InvoiceRetrieveResponse
           }
@@ -73,11 +73,11 @@ module Metronome
         def list(params = {}, opts = {})
           parsed = Metronome::Models::Customers::InvoiceListParams.dump(params)
           customer_id = parsed.fetch(:customer_id) do
-            raise ArgumentError.new("missing required path argument :customer_id")
+            raise ArgumentError.new("missing required path argument #{_1}")
           end
           req = {
             method: :get,
-            path: "/customers/#{customer_id}/invoices",
+            path: ["customers/%0s/invoices", customer_id],
             query: parsed.except(:customer_id),
             page: Metronome::CursorPage,
             model: Metronome::Models::Customers::Invoice
@@ -112,11 +112,11 @@ module Metronome
         def add_charge(params = {}, opts = {})
           parsed = Metronome::Models::Customers::InvoiceAddChargeParams.dump(params)
           customer_id = parsed.fetch(:customer_id) do
-            raise ArgumentError.new("missing required path argument :customer_id")
+            raise ArgumentError.new("missing required path argument #{_1}")
           end
           req = {
             method: :post,
-            path: "/customers/#{customer_id}/addCharge",
+            path: ["customers/%0s/addCharge", customer_id],
             body: parsed.except(:customer_id),
             model: Metronome::Models::Customers::InvoiceAddChargeResponse
           }
@@ -161,11 +161,11 @@ module Metronome
         def list_breakdowns(params = {}, opts = {})
           parsed = Metronome::Models::Customers::InvoiceListBreakdownsParams.dump(params)
           customer_id = parsed.fetch(:customer_id) do
-            raise ArgumentError.new("missing required path argument :customer_id")
+            raise ArgumentError.new("missing required path argument #{_1}")
           end
           req = {
             method: :get,
-            path: "/customers/#{customer_id}/invoices/breakdowns",
+            path: ["customers/%0s/invoices/breakdowns", customer_id],
             query: parsed.except(:customer_id),
             page: Metronome::CursorPage,
             model: Metronome::Models::Customers::InvoiceListBreakdownsResponse

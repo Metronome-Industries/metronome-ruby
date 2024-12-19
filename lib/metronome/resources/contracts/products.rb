@@ -64,7 +64,7 @@ module Metronome
           parsed = Metronome::Models::Contracts::ProductCreateParams.dump(params)
           req = {
             method: :post,
-            path: "/contract-pricing/products/create",
+            path: "contract-pricing/products/create",
             body: parsed,
             model: Metronome::Models::Contracts::ProductCreateResponse
           }
@@ -84,7 +84,7 @@ module Metronome
           parsed = Metronome::Models::Contracts::ProductRetrieveParams.dump(params)
           req = {
             method: :post,
-            path: "/contract-pricing/products/get",
+            path: "contract-pricing/products/get",
             body: parsed,
             model: Metronome::Models::Contracts::ProductRetrieveResponse
           }
@@ -155,7 +155,7 @@ module Metronome
           parsed = Metronome::Models::Contracts::ProductUpdateParams.dump(params)
           req = {
             method: :post,
-            path: "/contract-pricing/products/update",
+            path: "contract-pricing/products/update",
             body: parsed,
             model: Metronome::Models::Contracts::ProductUpdateResponse
           }
@@ -180,7 +180,7 @@ module Metronome
           query_params = [:limit, :next_page]
           req = {
             method: :post,
-            path: "/contract-pricing/products/list",
+            path: "contract-pricing/products/list",
             query: parsed.slice(*query_params),
             body: parsed.except(*query_params),
             page: Metronome::CursorPage,
@@ -202,7 +202,7 @@ module Metronome
           parsed = Metronome::Models::Contracts::ProductArchiveParams.dump(params)
           req = {
             method: :post,
-            path: "/contract-pricing/products/archive",
+            path: "contract-pricing/products/archive",
             body: parsed,
             model: Metronome::Models::Contracts::ProductArchiveResponse
           }

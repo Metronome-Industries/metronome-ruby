@@ -47,7 +47,7 @@ module Metronome
           parsed = Metronome::Models::Contracts::RateCardCreateParams.dump(params)
           req = {
             method: :post,
-            path: "/contract-pricing/rate-cards/create",
+            path: "contract-pricing/rate-cards/create",
             body: parsed,
             model: Metronome::Models::Contracts::RateCardCreateResponse
           }
@@ -68,7 +68,7 @@ module Metronome
           parsed = Metronome::Models::Contracts::RateCardRetrieveParams.dump(params)
           req = {
             method: :post,
-            path: "/contract-pricing/rate-cards/get",
+            path: "contract-pricing/rate-cards/get",
             body: parsed,
             model: Metronome::Models::Contracts::RateCardRetrieveResponse
           }
@@ -98,7 +98,7 @@ module Metronome
           parsed = Metronome::Models::Contracts::RateCardUpdateParams.dump(params)
           req = {
             method: :post,
-            path: "/contract-pricing/rate-cards/update",
+            path: "contract-pricing/rate-cards/update",
             body: parsed,
             model: Metronome::Models::Contracts::RateCardUpdateResponse
           }
@@ -123,7 +123,7 @@ module Metronome
           parsed = Metronome::Models::Contracts::RateCardListParams.dump(params)
           req = {
             method: :post,
-            path: "/contract-pricing/rate-cards/list",
+            path: "contract-pricing/rate-cards/list",
             query: parsed.except(:body),
             body: parsed[:body],
             page: Metronome::CursorPage,
@@ -160,7 +160,7 @@ module Metronome
           query_params = [:limit, :next_page]
           req = {
             method: :post,
-            path: "/contract-pricing/rate-cards/getRateSchedule",
+            path: "contract-pricing/rate-cards/getRateSchedule",
             query: parsed.slice(*query_params),
             body: parsed.except(*query_params),
             model: Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse

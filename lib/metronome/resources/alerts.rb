@@ -59,7 +59,7 @@ module Metronome
         parsed = Metronome::Models::AlertCreateParams.dump(params)
         req = {
           method: :post,
-          path: "/alerts/create",
+          path: "alerts/create",
           body: parsed,
           model: Metronome::Models::AlertCreateResponse
         }
@@ -81,7 +81,7 @@ module Metronome
         parsed = Metronome::Models::AlertArchiveParams.dump(params)
         req = {
           method: :post,
-          path: "/alerts/archive",
+          path: "alerts/archive",
           body: parsed,
           model: Metronome::Models::AlertArchiveResponse
         }
