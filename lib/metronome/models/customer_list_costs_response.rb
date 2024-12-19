@@ -5,8 +5,11 @@ module Metronome
     class CustomerListCostsResponse < Metronome::BaseModel
       # @!attribute credit_types
       #
-      #   @return [Hash]
-      required :credit_types, Hash
+      #   @return [Hash{Symbol => Metronome::Models::CustomerListCostsResponse::CreditType}]
+      required :credit_types,
+               Metronome::HashOf[-> {
+                 Metronome::Models::CustomerListCostsResponse::CreditType
+               }]
 
       # @!attribute end_timestamp
       #
@@ -19,7 +22,7 @@ module Metronome
       required :start_timestamp, Time
 
       # @!parse
-      #   # @param credit_types [Hash]
+      #   # @param credit_types [Hash{Symbol => Metronome::Models::CustomerListCostsResponse::CreditType}]
       #   # @param end_timestamp [String]
       #   # @param start_timestamp [String]
       #   #

@@ -46,8 +46,8 @@ module Metronome
 
       # @!attribute custom_fields
       #
-      #   @return [Hash]
-      optional :custom_fields, Hash
+      #   @return [Hash{Symbol => String}]
+      optional :custom_fields, Metronome::HashOf[String]
 
       # @!attribute description
       #
@@ -105,7 +105,7 @@ module Metronome
       #   #
       #   # @param contract [Metronome::Models::Credit::Contract, nil]
       #   #
-      #   # @param custom_fields [Hash, nil]
+      #   # @param custom_fields [Hash{Symbol => String}, nil]
       #   #
       #   # @param description [String, nil]
       #   #

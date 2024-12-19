@@ -24,7 +24,7 @@ module Metronome
         # @!parse
         #   # @param alert [Metronome::Models::Customers::CustomerAlert::Alert]
         #   #
-        #   # @param customer_status [String] The status of the customer alert. If the alert is archived, null will be
+        #   # @param customer_status [String, nil] The status of the customer alert. If the alert is archived, null will be
         #   #   returned.
         #   #
         #   # @param triggered_by [String, nil] If present, indicates the reason the alert was triggered.

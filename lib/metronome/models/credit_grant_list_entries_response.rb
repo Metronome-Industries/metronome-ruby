@@ -15,7 +15,7 @@ module Metronome
 
       # @!parse
       #   # @param data [Array<Metronome::Models::CreditGrantListEntriesResponse::Data>]
-      #   # @param next_page [String]
+      #   # @param next_page [String, nil]
       #   #
       #   def initialize(data:, next_page:) = super
 

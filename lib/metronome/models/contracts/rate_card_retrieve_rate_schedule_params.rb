@@ -66,14 +66,14 @@ module Metronome
           # @!attribute partial_pricing_group_values
           #   List of pricing group key value pairs, rates containing the matching key / value pairs will be included in the response.
           #
-          #   @return [Hash]
-          optional :partial_pricing_group_values, Hash
+          #   @return [Hash{Symbol => String}]
+          optional :partial_pricing_group_values, Metronome::HashOf[String]
 
           # @!attribute pricing_group_values
           #   List of pricing group key value pairs, rates matching all of the key / value pairs will be included in the response.
           #
-          #   @return [Hash]
-          optional :pricing_group_values, Hash
+          #   @return [Hash{Symbol => String}]
+          optional :pricing_group_values, Metronome::HashOf[String]
 
           # @!attribute product_id
           #   Rates matching the product id will be included in the response.
@@ -82,10 +82,10 @@ module Metronome
           optional :product_id, String
 
           # @!parse
-          #   # @param partial_pricing_group_values [Hash, nil] List of pricing group key value pairs, rates containing the matching key / value
+          #   # @param partial_pricing_group_values [Hash{Symbol => String}, nil] List of pricing group key value pairs, rates containing the matching key / value
           #   #   pairs will be included in the response.
           #   #
-          #   # @param pricing_group_values [Hash, nil] List of pricing group key value pairs, rates matching all of the key / value
+          #   # @param pricing_group_values [Hash{Symbol => String}, nil] List of pricing group key value pairs, rates matching all of the key / value
           #   #   pairs will be included in the response.
           #   #
           #   # @param product_id [String, nil] Rates matching the product id will be included in the response.

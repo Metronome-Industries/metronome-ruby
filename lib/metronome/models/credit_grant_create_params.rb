@@ -46,8 +46,8 @@ module Metronome
       # @!attribute custom_fields
       #   Custom fields to attach to the credit grant.
       #
-      #   @return [Hash]
-      optional :custom_fields, Hash
+      #   @return [Hash{Symbol => String}]
+      optional :custom_fields, Metronome::HashOf[String]
 
       # @!attribute effective_at
       #   The credit grant will only apply to usage or charges dated on or after this timestamp
@@ -99,7 +99,7 @@ module Metronome
       #   #
       #   # @param credit_grant_type [String, nil]
       #   #
-      #   # @param custom_fields [Hash, nil] Custom fields to attach to the credit grant.
+      #   # @param custom_fields [Hash{Symbol => String}, nil] Custom fields to attach to the credit grant.
       #   #
       #   # @param effective_at [String, nil] The credit grant will only apply to usage or charges dated on or after this
       #   #   timestamp

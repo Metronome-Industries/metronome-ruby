@@ -33,8 +33,8 @@ module Metronome
 
       # @!attribute custom_fields
       #
-      #   @return [Hash]
-      optional :custom_fields, Hash
+      #   @return [Hash{Symbol => String}]
+      optional :custom_fields, Metronome::HashOf[String]
 
       # @!attribute discounts
       #   This field's availability is dependent on your client's configuration.
@@ -96,7 +96,7 @@ module Metronome
       #   #
       #   # @param credits [Array<Metronome::Models::ContractAmendParams::Credit>, nil]
       #   #
-      #   # @param custom_fields [Hash, nil]
+      #   # @param custom_fields [Hash{Symbol => String}, nil]
       #   #
       #   # @param discounts [Array<Metronome::Models::ContractAmendParams::Discount>, nil] This field's availability is dependent on your client's configuration.
       #   #
@@ -172,8 +172,8 @@ module Metronome
 
         # @!attribute custom_fields
         #
-        #   @return [Hash]
-        optional :custom_fields, Hash
+        #   @return [Hash{Symbol => String}]
+        optional :custom_fields, Metronome::HashOf[String]
 
         # @!attribute description
         #   Used only in UI/API. It is not exposed to end customers.
@@ -239,7 +239,7 @@ module Metronome
         #   # @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If both applicable_product_ids and
         #   #   applicable_product_tags are not provided, the commit applies to all products.
         #   #
-        #   # @param custom_fields [Hash, nil]
+        #   # @param custom_fields [Hash{Symbol => String}, nil]
         #   #
         #   # @param description [String, nil] Used only in UI/API. It is not exposed to end customers.
         #   #
@@ -619,8 +619,8 @@ module Metronome
 
         # @!attribute custom_fields
         #
-        #   @return [Hash]
-        optional :custom_fields, Hash
+        #   @return [Hash{Symbol => String}]
+        optional :custom_fields, Metronome::HashOf[String]
 
         # @!attribute description
         #   Used only in UI/API. It is not exposed to end customers.
@@ -662,7 +662,7 @@ module Metronome
         #   # @param applicable_product_tags [Array<String>, nil] Which tags the credit applies to. If both applicable_product_ids and
         #   #   applicable_product_tags are not provided, the credit applies to all products.
         #   #
-        #   # @param custom_fields [Hash, nil]
+        #   # @param custom_fields [Hash{Symbol => String}, nil]
         #   #
         #   # @param description [String, nil] Used only in UI/API. It is not exposed to end customers.
         #   #
@@ -1168,14 +1168,14 @@ module Metronome
           # @!attribute presentation_group_values
           #   A map of group names to values. The override will only apply to line items with the specified presentation group values. Can only be used for multiplier overrides.
           #
-          #   @return [Hash]
-          optional :presentation_group_values, Hash
+          #   @return [Hash{Symbol => String}]
+          optional :presentation_group_values, Metronome::HashOf[String]
 
           # @!attribute pricing_group_values
           #   A map of pricing group names to values. The override will only apply to products with the specified pricing group values.
           #
-          #   @return [Hash]
-          optional :pricing_group_values, Hash
+          #   @return [Hash{Symbol => String}]
+          optional :pricing_group_values, Metronome::HashOf[String]
 
           # @!attribute product_id
           #   If provided, the override will only apply to the product with the specified ID.
@@ -1195,11 +1195,11 @@ module Metronome
           #   #   presentation_group_values. If provided, the override will only apply to the
           #   #   specified commits. If not provided, the override will apply to all commits.
           #   #
-          #   # @param presentation_group_values [Hash, nil] A map of group names to values. The override will only apply to line items with
+          #   # @param presentation_group_values [Hash{Symbol => String}, nil] A map of group names to values. The override will only apply to line items with
           #   #   the specified presentation group values. Can only be used for multiplier
           #   #   overrides.
           #   #
-          #   # @param pricing_group_values [Hash, nil] A map of pricing group names to values. The override will only apply to products
+          #   # @param pricing_group_values [Hash{Symbol => String}, nil] A map of pricing group names to values. The override will only apply to products
           #   #   with the specified pricing group values.
           #   #
           #   # @param product_id [String, nil] If provided, the override will only apply to the product with the specified ID.
@@ -1235,8 +1235,8 @@ module Metronome
           # @!attribute custom_rate
           #   Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.
           #
-          #   @return [Hash]
-          optional :custom_rate, Hash
+          #   @return [Hash{Symbol => Object}]
+          optional :custom_rate, Metronome::HashOf[Metronome::Unknown]
 
           # @!attribute is_prorated
           #   Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be set to true.
@@ -1269,7 +1269,7 @@ module Metronome
           #   #
           #   # @param credit_type_id [String, nil]
           #   #
-          #   # @param custom_rate [Hash, nil] Only set for CUSTOM rate_type. This field is interpreted by custom rate
+          #   # @param custom_rate [Hash{Symbol => Object}, nil] Only set for CUSTOM rate_type. This field is interpreted by custom rate
           #   #   processors.
           #   #
           #   # @param is_prorated [Boolean, nil] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
@@ -1401,8 +1401,8 @@ module Metronome
 
         # @!attribute custom_fields
         #
-        #   @return [Hash]
-        optional :custom_fields, Hash
+        #   @return [Hash{Symbol => String}]
+        optional :custom_fields, Metronome::HashOf[String]
 
         # @!attribute description
         #
@@ -1426,7 +1426,7 @@ module Metronome
         #   # @param unit_price [Float] Unit price for the charge. Will be multiplied by quantity to determine the
         #   #   amount and must be specified.
         #   #
-        #   # @param custom_fields [Hash, nil]
+        #   # @param custom_fields [Hash{Symbol => String}, nil]
         #   #
         #   # @param description [String, nil]
         #   #

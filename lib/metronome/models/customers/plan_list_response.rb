@@ -12,8 +12,8 @@ module Metronome
 
         # @!attribute custom_fields
         #
-        #   @return [Hash]
-        required :custom_fields, Hash
+        #   @return [Hash{Symbol => String}]
+        required :custom_fields, Metronome::HashOf[String]
 
         # @!attribute plan_description
         #
@@ -54,7 +54,7 @@ module Metronome
         # @!parse
         #   # @param id [String] the ID of the customer plan
         #   #
-        #   # @param custom_fields [Hash]
+        #   # @param custom_fields [Hash{Symbol => String}]
         #   #
         #   # @param plan_description [String]
         #   #

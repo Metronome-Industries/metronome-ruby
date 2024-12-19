@@ -39,8 +39,8 @@ module Metronome
 
         # @!attribute properties
         #
-        #   @return [Hash]
-        optional :properties, Hash
+        #   @return [Hash{Symbol => Object}]
+        optional :properties, Metronome::HashOf[Metronome::Unknown]
 
         # @!parse
         #   # @param customer_id [String]
@@ -51,7 +51,7 @@ module Metronome
         #   #
         #   # @param transaction_id [String]
         #   #
-        #   # @param properties [Hash, nil]
+        #   # @param properties [Hash{Symbol => Object}, nil]
         #   #
         #   def initialize(customer_id:, event_type:, timestamp:, transaction_id:, properties: nil) = super
 

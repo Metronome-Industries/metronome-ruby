@@ -52,8 +52,8 @@ module Metronome
 
         # @!attribute contract_custom_fields
         #
-        #   @return [Hash]
-        optional :contract_custom_fields, Hash
+        #   @return [Hash{Symbol => String}]
+        optional :contract_custom_fields, Metronome::HashOf[String]
 
         # @!attribute contract_id
         #
@@ -73,13 +73,13 @@ module Metronome
 
         # @!attribute custom_fields
         #
-        #   @return [Hash]
-        optional :custom_fields, Hash
+        #   @return [Hash{Symbol => Object}]
+        optional :custom_fields, Metronome::HashOf[Metronome::Unknown]
 
         # @!attribute customer_custom_fields
         #
-        #   @return [Hash]
-        optional :customer_custom_fields, Hash
+        #   @return [Hash{Symbol => String}]
+        optional :customer_custom_fields, Metronome::HashOf[String]
 
         # @!attribute end_timestamp
         #   End of the usage period this invoice covers (UTC)
@@ -117,8 +117,8 @@ module Metronome
 
         # @!attribute plan_custom_fields
         #
-        #   @return [Hash]
-        optional :plan_custom_fields, Hash
+        #   @return [Hash{Symbol => String}]
+        optional :plan_custom_fields, Metronome::HashOf[String]
 
         # @!attribute plan_id
         #
@@ -172,7 +172,7 @@ module Metronome
         #   #
         #   # @param billable_status [String, nil] This field's availability is dependent on your client's configuration.
         #   #
-        #   # @param contract_custom_fields [Hash, nil]
+        #   # @param contract_custom_fields [Hash{Symbol => String}, nil]
         #   #
         #   # @param contract_id [String, nil]
         #   #
@@ -181,9 +181,9 @@ module Metronome
         #   # @param created_at [String, nil] When the invoice was created (UTC). This field is present for correction
         #   #   invoices only.
         #   #
-        #   # @param custom_fields [Hash, nil]
+        #   # @param custom_fields [Hash{Symbol => Object}, nil]
         #   #
-        #   # @param customer_custom_fields [Hash, nil]
+        #   # @param customer_custom_fields [Hash{Symbol => String}, nil]
         #   #
         #   # @param end_timestamp [String, nil] End of the usage period this invoice covers (UTC)
         #   #
@@ -197,7 +197,7 @@ module Metronome
         #   #
         #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
         #   #
-        #   # @param plan_custom_fields [Hash, nil]
+        #   # @param plan_custom_fields [Hash{Symbol => String}, nil]
         #   #
         #   # @param plan_id [String, nil]
         #   #
@@ -272,8 +272,8 @@ module Metronome
           # @!attribute commit_custom_fields
           #   only present for beta contract invoices
           #
-          #   @return [Hash]
-          optional :commit_custom_fields, Hash
+          #   @return [Hash{Symbol => String}]
+          optional :commit_custom_fields, Metronome::HashOf[String]
 
           # @!attribute commit_id
           #   only present for beta contract invoices
@@ -307,8 +307,8 @@ module Metronome
 
           # @!attribute custom_fields
           #
-          #   @return [Hash]
-          optional :custom_fields, Hash
+          #   @return [Hash{Symbol => String}]
+          optional :custom_fields, Metronome::HashOf[String]
 
           # @!attribute ending_before
           #   only present for beta contract invoices
@@ -370,19 +370,19 @@ module Metronome
           # @!attribute presentation_group_values
           #   if presentation groups are used, this will contain the values used to break down the line item
           #
-          #   @return [Hash]
-          optional :presentation_group_values, Hash
+          #   @return [Hash{Symbol => String}]
+          optional :presentation_group_values, Metronome::HashOf[String]
 
           # @!attribute pricing_group_values
           #   if pricing groups are used, this will contain the values used to calculate the price
           #
-          #   @return [Hash]
-          optional :pricing_group_values, Hash
+          #   @return [Hash{Symbol => String}]
+          optional :pricing_group_values, Metronome::HashOf[String]
 
           # @!attribute product_custom_fields
           #
-          #   @return [Hash]
-          optional :product_custom_fields, Hash
+          #   @return [Hash{Symbol => String}]
+          optional :product_custom_fields, Metronome::HashOf[String]
 
           # @!attribute product_id
           #
@@ -397,8 +397,8 @@ module Metronome
           # @!attribute professional_service_custom_fields
           #   only present for beta contract invoices
           #
-          #   @return [Hash]
-          optional :professional_service_custom_fields, Hash
+          #   @return [Hash{Symbol => String}]
+          optional :professional_service_custom_fields, Metronome::HashOf[String]
 
           # @!attribute professional_service_id
           #   only present for beta contract invoices
@@ -418,8 +418,8 @@ module Metronome
 
           # @!attribute scheduled_charge_custom_fields
           #
-          #   @return [Hash]
-          optional :scheduled_charge_custom_fields, Hash
+          #   @return [Hash{Symbol => String}]
+          optional :scheduled_charge_custom_fields, Metronome::HashOf[String]
 
           # @!attribute scheduled_charge_id
           #   only present for beta contract invoices
@@ -459,7 +459,7 @@ module Metronome
           #   #
           #   # @param applied_commit_or_credit [Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit, nil] only present for beta contract invoices
           #   #
-          #   # @param commit_custom_fields [Hash, nil] only present for beta contract invoices
+          #   # @param commit_custom_fields [Hash{Symbol => String}, nil] only present for beta contract invoices
           #   #
           #   # @param commit_id [String, nil] only present for beta contract invoices
           #   #
@@ -473,7 +473,7 @@ module Metronome
           #   #
           #   # @param commit_type [String, nil] only present for beta contract invoices
           #   #
-          #   # @param custom_fields [Hash, nil]
+          #   # @param custom_fields [Hash{Symbol => String}, nil]
           #   #
           #   # @param ending_before [String, nil] only present for beta contract invoices
           #   #
@@ -498,19 +498,19 @@ module Metronome
           #   #
           #   # @param postpaid_commit [Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit, nil] only present for beta contract invoices
           #   #
-          #   # @param presentation_group_values [Hash, nil] if presentation groups are used, this will contain the values used to break down
+          #   # @param presentation_group_values [Hash{Symbol => String}, nil] if presentation groups are used, this will contain the values used to break down
           #   #   the line item
           #   #
-          #   # @param pricing_group_values [Hash, nil] if pricing groups are used, this will contain the values used to calculate the
+          #   # @param pricing_group_values [Hash{Symbol => String}, nil] if pricing groups are used, this will contain the values used to calculate the
           #   #   price
           #   #
-          #   # @param product_custom_fields [Hash, nil]
+          #   # @param product_custom_fields [Hash{Symbol => String}, nil]
           #   #
           #   # @param product_id [String, nil]
           #   #
           #   # @param product_type [String, nil]
           #   #
-          #   # @param professional_service_custom_fields [Hash, nil] only present for beta contract invoices
+          #   # @param professional_service_custom_fields [Hash{Symbol => String}, nil] only present for beta contract invoices
           #   #
           #   # @param professional_service_id [String, nil] only present for beta contract invoices
           #   #
@@ -518,7 +518,7 @@ module Metronome
           #   #
           #   # @param reseller_type [String, nil]
           #   #
-          #   # @param scheduled_charge_custom_fields [Hash, nil]
+          #   # @param scheduled_charge_custom_fields [Hash{Symbol => String}, nil]
           #   #
           #   # @param scheduled_charge_id [String, nil] only present for beta contract invoices
           #   #
@@ -656,8 +656,8 @@ module Metronome
           class SubLineItem < Metronome::BaseModel
             # @!attribute custom_fields
             #
-            #   @return [Hash]
-            required :custom_fields, Hash
+            #   @return [Hash{Symbol => String}]
+            required :custom_fields, Metronome::HashOf[String]
 
             # @!attribute name
             #
@@ -720,7 +720,7 @@ module Metronome
                      }]
 
             # @!parse
-            #   # @param custom_fields [Hash]
+            #   # @param custom_fields [Hash{Symbol => String}]
             #   #
             #   # @param name [String]
             #   #
@@ -1109,8 +1109,8 @@ module Metronome
 
           # @!attribute credit_grant_custom_fields
           #
-          #   @return [Hash]
-          optional :credit_grant_custom_fields, Hash
+          #   @return [Hash{Symbol => String}]
+          optional :credit_grant_custom_fields, Metronome::HashOf[String]
 
           # @!attribute credit_grant_id
           #
@@ -1121,7 +1121,7 @@ module Metronome
           #   # @param credit_type [Metronome::Models::CreditTypeData]
           #   # @param name [String]
           #   # @param total [Float]
-          #   # @param credit_grant_custom_fields [Hash, nil]
+          #   # @param credit_grant_custom_fields [Hash{Symbol => String}, nil]
           #   # @param credit_grant_id [String, nil]
           #   #
           #   def initialize(credit_type:, name:, total:, credit_grant_custom_fields: nil, credit_grant_id: nil) = super

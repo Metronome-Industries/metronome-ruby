@@ -31,7 +31,7 @@ module Metronome
         #   @option params [Array<String>, nil] :applicable_product_tags Which tags the credit applies to. If both applicable_product_ids and
         #     applicable_product_tags are not provided, the credit applies to all products.
         #
-        #   @option params [Hash, nil] :custom_fields
+        #   @option params [Hash{Symbol => String}, nil] :custom_fields
         #
         #   @option params [String, nil] :description Used only in UI/API. It is not exposed to end customers.
         #

@@ -46,8 +46,8 @@ module Metronome
 
       # @!attribute custom_fields
       #
-      #   @return [Hash]
-      optional :custom_fields, Hash
+      #   @return [Hash{Symbol => String}]
+      optional :custom_fields, Metronome::HashOf[String]
 
       # @!attribute event_type_filter
       #   An optional filtering rule to match the 'event_type' property of an event.
@@ -58,8 +58,8 @@ module Metronome
       # @!attribute filter
       #   (DEPRECATED) use property_filters & event_type_filter instead
       #
-      #   @return [Hash]
-      optional :filter, Hash
+      #   @return [Hash{Symbol => Object}]
+      optional :filter, Metronome::HashOf[Metronome::Unknown]
 
       # @!attribute group_by
       #   (DEPRECATED) use group_keys instead
@@ -103,11 +103,11 @@ module Metronome
       #   # @param archived_at [String, nil] RFC 3339 timestamp indicating when the billable metric was archived. If not
       #   #   provided, the billable metric is not archived.
       #   #
-      #   # @param custom_fields [Hash, nil]
+      #   # @param custom_fields [Hash{Symbol => String}, nil]
       #   #
       #   # @param event_type_filter [Metronome::Models::EventTypeFilter, nil] An optional filtering rule to match the 'event_type' property of an event.
       #   #
-      #   # @param filter [Hash, nil] (DEPRECATED) use property_filters & event_type_filter instead
+      #   # @param filter [Hash{Symbol => Object}, nil] (DEPRECATED) use property_filters & event_type_filter instead
       #   #
       #   # @param group_by [Array<String>, nil] (DEPRECATED) use group_keys instead
       #   #

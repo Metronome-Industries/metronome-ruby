@@ -46,8 +46,8 @@ module Metronome
 
         # @!attribute custom_fields
         #
-        #   @return [Hash]
-        optional :custom_fields, Hash
+        #   @return [Hash{Symbol => String}]
+        optional :custom_fields, Metronome::HashOf[String]
 
         # @!attribute description
         #   Used only in UI/API. It is not exposed to end customers.
@@ -97,7 +97,7 @@ module Metronome
         #   # @param applicable_product_tags [Array<String>, nil] Which tags the credit applies to. If both applicable_product_ids and
         #   #   applicable_product_tags are not provided, the credit applies to all products.
         #   #
-        #   # @param custom_fields [Hash, nil]
+        #   # @param custom_fields [Hash{Symbol => String}, nil]
         #   #
         #   # @param description [String, nil] Used only in UI/API. It is not exposed to end customers.
         #   #

@@ -55,8 +55,8 @@ module Metronome
 
           # @!attribute custom_fields
           #
-          #   @return [Hash]
-          optional :custom_fields, Hash
+          #   @return [Hash{Symbol => String}]
+          optional :custom_fields, Metronome::HashOf[String]
 
           # @!attribute description
           #
@@ -75,7 +75,7 @@ module Metronome
           #   # @param name [String]
           #   # @param aliases [Array<Metronome::Models::Contracts::RateCardRetrieveResponse::Data::Alias>, nil]
           #   # @param credit_type_conversions [Array<Metronome::Models::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion>, nil]
-          #   # @param custom_fields [Hash, nil]
+          #   # @param custom_fields [Hash{Symbol => String}, nil]
           #   # @param description [String, nil]
           #   # @param fiat_credit_type [Metronome::Models::CreditTypeData, nil]
           #   #

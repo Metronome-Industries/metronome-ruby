@@ -16,8 +16,8 @@ module Metronome
 
       # @!attribute custom_fields
       #
-      #   @return [Hash]
-      optional :custom_fields, Hash
+      #   @return [Hash{Symbol => String}]
+      optional :custom_fields, Metronome::HashOf[String]
 
       # @!attribute external_id
       #   (deprecated, use ingest_aliases instead) an alias that can be used to refer to this customer in usage events
@@ -36,7 +36,7 @@ module Metronome
       #   #
       #   # @param billing_config [Metronome::Models::CustomerCreateParams::BillingConfig, nil]
       #   #
-      #   # @param custom_fields [Hash, nil]
+      #   # @param custom_fields [Hash{Symbol => String}, nil]
       #   #
       #   # @param external_id [String, nil] (deprecated, use ingest_aliases instead) an alias that can be used to refer to
       #   #   this customer in usage events

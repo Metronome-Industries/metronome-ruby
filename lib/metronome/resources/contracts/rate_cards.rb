@@ -33,7 +33,7 @@ module Metronome
         #
         #   @option params [Array<Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion>, nil] :credit_type_conversions Required when using custom pricing units in rates.
         #
-        #   @option params [Hash, nil] :custom_fields
+        #   @option params [Hash{Symbol => String}, nil] :custom_fields
         #
         #   @option params [String, nil] :description
         #
@@ -85,7 +85,7 @@ module Metronome
         #     multiple rate cards, it will reference the rate card to which it was most
         #     recently assigned. It is not exposed to end customers.
         #
-        #   @option params [Hash, nil] :custom_fields
+        #   @option params [Hash{Symbol => String}, nil] :custom_fields
         #
         #   @option params [String, nil] :description
         #

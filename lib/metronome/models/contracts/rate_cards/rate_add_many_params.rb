@@ -66,8 +66,8 @@ module Metronome
             # @!attribute custom_rate
             #   Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.
             #
-            #   @return [Hash]
-            optional :custom_rate, Hash
+            #   @return [Hash{Symbol => Object}]
+            optional :custom_rate, Metronome::HashOf[Metronome::Unknown]
 
             # @!attribute ending_before
             #   exclusive end date
@@ -90,8 +90,8 @@ module Metronome
             # @!attribute pricing_group_values
             #   Optional. List of pricing group key value pairs which will be used to calculate the price.
             #
-            #   @return [Hash]
-            optional :pricing_group_values, Hash
+            #   @return [Hash{Symbol => String}]
+            optional :pricing_group_values, Metronome::HashOf[String]
 
             # @!attribute quantity
             #   Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
@@ -127,7 +127,7 @@ module Metronome
             #   #   (cents) if not passed. Used by all rate_types except type PERCENTAGE. PERCENTAGE
             #   #   rates use the credit type of associated rates."
             #   #
-            #   # @param custom_rate [Hash, nil] Only set for CUSTOM rate_type. This field is interpreted by custom rate
+            #   # @param custom_rate [Hash{Symbol => Object}, nil] Only set for CUSTOM rate_type. This field is interpreted by custom rate
             #   #   processors.
             #   #
             #   # @param ending_before [String, nil] exclusive end date
@@ -139,7 +139,7 @@ module Metronome
             #   #   PERCENTAGE rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this
             #   #   must be >=0 and <=1.
             #   #
-            #   # @param pricing_group_values [Hash, nil] Optional. List of pricing group key value pairs which will be used to calculate
+            #   # @param pricing_group_values [Hash{Symbol => String}, nil] Optional. List of pricing group key value pairs which will be used to calculate
             #   #   the price.
             #   #
             #   # @param quantity [Float, nil] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.

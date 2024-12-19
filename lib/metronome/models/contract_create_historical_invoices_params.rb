@@ -80,8 +80,8 @@ module Metronome
 
         # @!attribute custom_fields
         #
-        #   @return [Hash]
-        optional :custom_fields, Hash
+        #   @return [Hash{Symbol => String}]
+        optional :custom_fields, Metronome::HashOf[String]
 
         # @!parse
         #   # @param contract_id [String]
@@ -102,7 +102,7 @@ module Metronome
         #   #
         #   # @param breakdown_granularity [String, nil]
         #   #
-        #   # @param custom_fields [Hash, nil]
+        #   # @param custom_fields [Hash{Symbol => String}, nil]
         #   #
         #   def initialize(
         #     contract_id:,
@@ -139,13 +139,13 @@ module Metronome
 
           # @!attribute presentation_group_values
           #
-          #   @return [Hash]
-          optional :presentation_group_values, Hash
+          #   @return [Hash{Symbol => String}]
+          optional :presentation_group_values, Metronome::HashOf[String]
 
           # @!attribute pricing_group_values
           #
-          #   @return [Hash]
-          optional :pricing_group_values, Hash
+          #   @return [Hash{Symbol => String}]
+          optional :pricing_group_values, Metronome::HashOf[String]
 
           # @!attribute quantity
           #
@@ -164,8 +164,8 @@ module Metronome
           #   # @param exclusive_end_date [String]
           #   # @param inclusive_start_date [String]
           #   # @param product_id [String]
-          #   # @param presentation_group_values [Hash, nil]
-          #   # @param pricing_group_values [Hash, nil]
+          #   # @param presentation_group_values [Hash{Symbol => String}, nil]
+          #   # @param pricing_group_values [Hash{Symbol => String}, nil]
           #   # @param quantity [Float, nil]
           #   # @param subtotals_with_quantity [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity>, nil]
           #   #

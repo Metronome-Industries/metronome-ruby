@@ -17,8 +17,8 @@ module Metronome
 
       # @!attribute custom_fields
       #
-      #   @return [Hash]
-      required :custom_fields, Hash
+      #   @return [Hash{Symbol => String}]
+      required :custom_fields, Metronome::HashOf[String]
 
       # @!attribute customer_id
       #   the Metronome ID of the customer
@@ -103,7 +103,7 @@ module Metronome
       #   #   billing period. Expiration deductions will be included only if the grant expires
       #   #   before the end of the current billing period.
       #   #
-      #   # @param custom_fields [Hash]
+      #   # @param custom_fields [Hash{Symbol => String}]
       #   #
       #   # @param customer_id [String] the Metronome ID of the customer
       #   #

@@ -12,8 +12,8 @@ module Metronome
 
           # @!attribute product_custom_fields
           #
-          #   @return [Hash]
-          required :product_custom_fields, Hash
+          #   @return [Hash{Symbol => String}]
+          required :product_custom_fields, Metronome::HashOf[String]
 
           # @!attribute product_id
           #
@@ -53,13 +53,13 @@ module Metronome
 
           # @!attribute pricing_group_values
           #
-          #   @return [Hash]
-          optional :pricing_group_values, Hash
+          #   @return [Hash{Symbol => String}]
+          optional :pricing_group_values, Metronome::HashOf[String]
 
           # @!parse
           #   # @param entitled [Boolean]
           #   #
-          #   # @param product_custom_fields [Hash]
+          #   # @param product_custom_fields [Hash{Symbol => String}]
           #   #
           #   # @param product_id [String]
           #   #
@@ -76,7 +76,7 @@ module Metronome
           #   #
           #   # @param ending_before [String, nil]
           #   #
-          #   # @param pricing_group_values [Hash, nil]
+          #   # @param pricing_group_values [Hash{Symbol => String}, nil]
           #   #
           #   def initialize(
           #     entitled:,

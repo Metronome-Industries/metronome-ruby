@@ -406,7 +406,7 @@ module Metronome
                  Metronome::ArrayOf[-> { Metronome::Models::ContractWithoutAmendments::UsageFilter::Update }]
 
         # @!parse
-        #   # @param current [Metronome::Models::BaseUsageFilter]
+        #   # @param current [Metronome::Models::BaseUsageFilter, nil]
         #   # @param initial [Metronome::Models::BaseUsageFilter]
         #   # @param updates [Array<Metronome::Models::ContractWithoutAmendments::UsageFilter::Update>]
         #   #

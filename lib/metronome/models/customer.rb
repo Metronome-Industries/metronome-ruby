@@ -28,8 +28,8 @@ module Metronome
 
       # @!attribute custom_fields
       #
-      #   @return [Hash]
-      optional :custom_fields, Hash
+      #   @return [Hash{Symbol => String}]
+      optional :custom_fields, Metronome::HashOf[String]
 
       # @!parse
       #   # @param id [String] the Metronome ID of the customer
@@ -42,7 +42,7 @@ module Metronome
       #   #
       #   # @param name [String]
       #   #
-      #   # @param custom_fields [Hash, nil]
+      #   # @param custom_fields [Hash{Symbol => String}, nil]
       #   #
       #   def initialize(id:, external_id:, ingest_aliases:, name:, custom_fields: nil) = super
 

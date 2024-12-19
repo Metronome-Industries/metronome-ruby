@@ -64,7 +64,7 @@ module Metronome
           #     (cents) if not passed. Used by all rate_types except type PERCENTAGE. PERCENTAGE
           #     rates use the credit type of associated rates.
           #
-          #   @option params [Hash, nil] :custom_rate Only set for CUSTOM rate_type. This field is interpreted by custom rate
+          #   @option params [Hash{Symbol => Object}, nil] :custom_rate Only set for CUSTOM rate_type. This field is interpreted by custom rate
           #     processors.
           #
           #   @option params [Time, nil] :ending_before exclusive end date
@@ -76,7 +76,7 @@ module Metronome
           #     PERCENTAGE rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this
           #     must be >=0 and <=1.
           #
-          #   @option params [Hash, nil] :pricing_group_values Optional. List of pricing group key value pairs which will be used to calculate
+          #   @option params [Hash{Symbol => String}, nil] :pricing_group_values Optional. List of pricing group key value pairs which will be used to calculate
           #     the price.
           #
           #   @option params [Float, nil] :quantity Default quantity. For SUBSCRIPTION rate_type, this must be >=0.

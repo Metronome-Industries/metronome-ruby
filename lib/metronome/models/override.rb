@@ -110,8 +110,8 @@ module Metronome
       # @!attribute value
       #   Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.
       #
-      #   @return [Hash]
-      optional :value, Hash
+      #   @return [Hash{Symbol => Object}]
+      optional :value, Metronome::HashOf[Metronome::Unknown]
 
       # @!parse
       #   # @param id [String]
@@ -156,7 +156,7 @@ module Metronome
       #   #
       #   # @param type [String, nil]
       #   #
-      #   # @param value [Hash, nil] Only set for CUSTOM rate_type. This field is interpreted by custom rate
+      #   # @param value [Hash{Symbol => Object}, nil] Only set for CUSTOM rate_type. This field is interpreted by custom rate
       #   #   processors.
       #   #
       #   def initialize(
@@ -195,13 +195,13 @@ module Metronome
 
         # @!attribute presentation_group_values
         #
-        #   @return [Hash]
-        optional :presentation_group_values, Hash
+        #   @return [Hash{Symbol => String}]
+        optional :presentation_group_values, Metronome::HashOf[String]
 
         # @!attribute pricing_group_values
         #
-        #   @return [Hash]
-        optional :pricing_group_values, Hash
+        #   @return [Hash{Symbol => String}]
+        optional :pricing_group_values, Metronome::HashOf[String]
 
         # @!attribute product_id
         #
@@ -215,8 +215,8 @@ module Metronome
 
         # @!parse
         #   # @param commit_ids [Array<String>, nil]
-        #   # @param presentation_group_values [Hash, nil]
-        #   # @param pricing_group_values [Hash, nil]
+        #   # @param presentation_group_values [Hash{Symbol => String}, nil]
+        #   # @param pricing_group_values [Hash{Symbol => String}, nil]
         #   # @param product_id [String, nil]
         #   # @param product_tags [Array<String>, nil]
         #   #
@@ -267,8 +267,8 @@ module Metronome
         # @!attribute custom_rate
         #   Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.
         #
-        #   @return [Hash]
-        optional :custom_rate, Hash
+        #   @return [Hash{Symbol => Object}]
+        optional :custom_rate, Metronome::HashOf[Metronome::Unknown]
 
         # @!attribute is_prorated
         #   Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be set to true.
@@ -299,7 +299,7 @@ module Metronome
         #   #
         #   # @param credit_type [Metronome::Models::CreditTypeData, nil]
         #   #
-        #   # @param custom_rate [Hash, nil] Only set for CUSTOM rate_type. This field is interpreted by custom rate
+        #   # @param custom_rate [Hash{Symbol => Object}, nil] Only set for CUSTOM rate_type. This field is interpreted by custom rate
         #   #   processors.
         #   #
         #   # @param is_prorated [Boolean, nil] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be

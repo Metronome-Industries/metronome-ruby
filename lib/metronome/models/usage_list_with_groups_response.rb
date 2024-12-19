@@ -30,10 +30,10 @@ module Metronome
 
       # @!parse
       #   # @param ending_before [String]
-      #   # @param group_key [String]
-      #   # @param group_value [String]
+      #   # @param group_key [String, nil]
+      #   # @param group_value [String, nil]
       #   # @param starting_on [String]
-      #   # @param value [Float]
+      #   # @param value [Float, nil]
       #   #
       #   def initialize(ending_before:, group_key:, group_value:, starting_on:, value:) = super
 

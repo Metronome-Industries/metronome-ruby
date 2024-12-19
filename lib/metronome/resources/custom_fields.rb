@@ -113,7 +113,7 @@ module Metronome
       #
       # @param params [Hash{Symbol => Object}, Metronome::Models::CustomFieldSetValuesParams] Attributes to send in this request.
       #
-      #   @option params [Hash] :custom_fields
+      #   @option params [Hash{Symbol => String}] :custom_fields
       #
       #   @option params [Symbol, Metronome::Models::CustomFieldSetValuesParams::Entity] :entity
       #
