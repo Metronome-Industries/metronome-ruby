@@ -78,6 +78,12 @@ module Metronome
         #   @return [String]
         optional :salesforce_opportunity_id, String
 
+        # @!attribute uniqueness_key
+        #   Prevents the creation of duplicates. If a request to create a commit or credit is made with a uniqueness key that was previously used to create a commit or credit, a new record will not be created and the request will fail with a 409 error.
+        #
+        #   @return [String]
+        optional :uniqueness_key, String
+
         # @!parse
         #   # @param access_schedule [Metronome::Models::Customers::CreditCreateParams::AccessSchedule] Schedule for distributing the credit to the customer.
         #   #
@@ -109,6 +115,11 @@ module Metronome
         #   #
         #   # @param salesforce_opportunity_id [String, nil] This field's availability is dependent on your client's configuration.
         #   #
+        #   # @param uniqueness_key [String, nil] Prevents the creation of duplicates. If a request to create a commit or credit
+        #   #   is made with a uniqueness key that was previously used to create a commit or
+        #   #   credit, a new record will not be created and the request will fail with a 409
+        #   #   error.
+        #   #
         #   def initialize(
         #     access_schedule:,
         #     customer_id:,
@@ -123,6 +134,7 @@ module Metronome
         #     netsuite_sales_order_id: nil,
         #     rate_type: nil,
         #     salesforce_opportunity_id: nil,
+        #     uniqueness_key: nil,
         #     **
         #   )
         #     super
