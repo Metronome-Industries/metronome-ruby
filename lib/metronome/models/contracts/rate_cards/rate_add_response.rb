@@ -157,6 +157,8 @@ module Metronome
               CUSTOM = :custom
               TIERED = :TIERED
               TIERED = :tiered
+
+              finalize!
             end
 
             class CommitRate < Metronome::BaseModel
@@ -223,6 +225,8 @@ module Metronome
                 TIERED = :tiered
                 CUSTOM = :CUSTOM
                 CUSTOM = :custom
+
+                finalize!
               end
             end
           end

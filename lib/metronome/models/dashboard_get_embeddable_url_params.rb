@@ -70,6 +70,8 @@ module Metronome
         INVOICES = :invoices
         USAGE = :usage
         CREDITS = :credits
+
+        finalize!
       end
 
       class BmGroupKeyOverride < Metronome::BaseModel
@@ -166,6 +168,8 @@ module Metronome
           USAGE_LINE_9 = :UsageLine_9
           PRIMARY_GREEN = :Primary_green
           PRIMARY_RED = :Primary_red
+
+          finalize!
         end
       end
 

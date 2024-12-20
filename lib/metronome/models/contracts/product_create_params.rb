@@ -178,6 +178,8 @@ module Metronome
           SUBSCRIPTION = :SUBSCRIPTION
           PROFESSIONAL_SERVICE = :PROFESSIONAL_SERVICE
           PRO_SERVICE = :PRO_SERVICE
+
+          finalize!
         end
       end
     end

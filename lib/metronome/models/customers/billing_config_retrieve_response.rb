@@ -158,6 +158,8 @@ module Metronome
             US_GOV_WEST_1 = :"us-gov-west-1"
             US_WEST_1 = :"us-west-1"
             US_WEST_2 = :"us-west-2"
+
+            finalize!
           end
 
           # @example
@@ -179,6 +181,8 @@ module Metronome
             UNSUBSCRIBED = :Unsubscribed
             SUSPENDED = :Suspended
             PENDING_FULFILLMENT_START = :PendingFulfillmentStart
+
+            finalize!
           end
 
           # @example
@@ -194,6 +198,8 @@ module Metronome
           class StripeCollectionMethod < Metronome::Enum
             CHARGE_AUTOMATICALLY = :charge_automatically
             SEND_INVOICE = :send_invoice
+
+            finalize!
           end
         end
       end

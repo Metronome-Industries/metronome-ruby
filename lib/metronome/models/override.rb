@@ -351,6 +351,8 @@ module Metronome
           SUBSCRIPTION = :SUBSCRIPTION
           TIERED = :TIERED
           CUSTOM = :CUSTOM
+
+          finalize!
         end
       end
 
@@ -396,6 +398,8 @@ module Metronome
         SUBSCRIPTION = :SUBSCRIPTION
         TIERED = :TIERED
         CUSTOM = :CUSTOM
+
+        finalize!
       end
 
       # @example
@@ -411,6 +415,8 @@ module Metronome
       class Target < Metronome::Enum
         COMMIT_RATE = :COMMIT_RATE
         LIST_RATE = :LIST_RATE
+
+        finalize!
       end
 
       # @example
@@ -429,6 +435,8 @@ module Metronome
         OVERWRITE = :OVERWRITE
         MULTIPLIER = :MULTIPLIER
         TIERED = :TIERED
+
+        finalize!
       end
     end
   end

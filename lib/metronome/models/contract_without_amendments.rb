@@ -221,6 +221,8 @@ module Metronome
         class Type < Metronome::Enum
           SUPERSEDE = :SUPERSEDE
           RENEWAL = :RENEWAL
+
+          finalize!
         end
       end
 
@@ -262,6 +264,8 @@ module Metronome
           MONTHLY = :MONTHLY
           QUARTERLY = :QUARTERLY
           ANNUAL = :ANNUAL
+
+          finalize!
         end
       end
 
@@ -387,6 +391,8 @@ module Metronome
           AWS_PRO_SERVICE = :AWS_PRO_SERVICE
           GCP = :GCP
           GCP_PRO_SERVICE = :GCP_PRO_SERVICE
+
+          finalize!
         end
       end
 

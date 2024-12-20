@@ -51,6 +51,8 @@ module Metronome
           ARCHIVED = :ARCHIVED
           NOT_ARCHIVED = :NOT_ARCHIVED
           ALL = :ALL
+
+          finalize!
         end
       end
     end

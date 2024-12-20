@@ -233,6 +233,8 @@ module Metronome
         class Type < Metronome::Enum
           PREPAID = :PREPAID
           POSTPAID = :POSTPAID
+
+          finalize!
         end
 
         class InvoiceSchedule < Metronome::BaseModel
@@ -379,6 +381,8 @@ module Metronome
               DIVIDED = :DIVIDED
               DIVIDED_ROUNDED = :DIVIDED_ROUNDED
               EACH = :EACH
+
+              finalize!
             end
 
             # @example
@@ -400,6 +404,8 @@ module Metronome
               QUARTERLY = :QUARTERLY
               SEMI_ANNUAL = :SEMI_ANNUAL
               ANNUAL = :ANNUAL
+
+              finalize!
             end
           end
 
@@ -468,6 +474,8 @@ module Metronome
           COMMIT_RATE = :commit_rate
           LIST_RATE = :LIST_RATE
           LIST_RATE = :list_rate
+
+          finalize!
         end
       end
     end

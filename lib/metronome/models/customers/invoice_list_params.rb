@@ -111,6 +111,8 @@ module Metronome
         class Sort < Metronome::Enum
           DATE_ASC = :date_asc
           DATE_DESC = :date_desc
+
+          finalize!
         end
       end
     end

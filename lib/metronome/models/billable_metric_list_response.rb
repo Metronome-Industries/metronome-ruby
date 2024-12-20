@@ -131,6 +131,8 @@ module Metronome
         MAX = :MAX
         SUM = :SUM
         UNIQUE = :UNIQUE
+
+        finalize!
       end
     end
   end

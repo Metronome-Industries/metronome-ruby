@@ -279,6 +279,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             MAX_PERCENTAGE = :MAX_PERCENTAGE
+
+            finalize!
           end
         end
 
@@ -316,6 +318,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             MAX_AMOUNT = :MAX_AMOUNT
+
+            finalize!
           end
         end
       end

@@ -135,6 +135,8 @@ module Metronome
         COMPOSITE = :composite
         MINIMUM = :minimum
         SEAT = :seat
+
+        finalize!
       end
 
       class Price < Metronome::BaseModel
@@ -221,6 +223,8 @@ module Metronome
         class RoundingBehavior < Metronome::Enum
           FLOOR = :floor
           CEILING = :ceiling
+
+          finalize!
         end
       end
     end

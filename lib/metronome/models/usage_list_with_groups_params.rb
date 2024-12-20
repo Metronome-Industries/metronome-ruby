@@ -110,6 +110,8 @@ module Metronome
         HOUR = :HOUR
         DAY = :DAY
         NONE = :NONE
+
+        finalize!
       end
 
       class GroupBy < Metronome::BaseModel

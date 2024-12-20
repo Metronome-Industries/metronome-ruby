@@ -194,6 +194,8 @@ module Metronome
               SUBSCRIPTION = :SUBSCRIPTION
               TIERED = :TIERED
               CUSTOM = :CUSTOM
+
+              finalize!
             end
 
             class CommitRate < Metronome::BaseModel
@@ -260,6 +262,8 @@ module Metronome
                 TIERED = :tiered
                 CUSTOM = :CUSTOM
                 CUSTOM = :custom
+
+                finalize!
               end
             end
           end

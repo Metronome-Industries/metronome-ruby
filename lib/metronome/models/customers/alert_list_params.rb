@@ -51,6 +51,8 @@ module Metronome
           ENABLED = :ENABLED
           DISABLED = :DISABLED
           ARCHIVED = :ARCHIVED
+
+          finalize!
         end
       end
     end

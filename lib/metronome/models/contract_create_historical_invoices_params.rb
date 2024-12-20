@@ -227,6 +227,8 @@ module Metronome
         class BillableStatus < Metronome::Enum
           BILLABLE = :billable
           UNBILLABLE = :unbillable
+
+          finalize!
         end
 
         # @example
@@ -242,6 +244,8 @@ module Metronome
         class BreakdownGranularity < Metronome::Enum
           HOUR = :HOUR
           DAY = :DAY
+
+          finalize!
         end
       end
     end

@@ -180,6 +180,8 @@ module Metronome
             ENABLED = :enabled
             ARCHIVED = :archived
             DISABLED = :disabled
+
+            finalize!
           end
 
           # Type of the alert
@@ -217,6 +219,8 @@ module Metronome
             LOW_REMAINING_CONTRACT_CREDIT_PERCENTAGE_REACHED = :low_remaining_contract_credit_percentage_reached
             LOW_REMAINING_CONTRACT_CREDIT_AND_COMMIT_BALANCE_REACHED = :low_remaining_contract_credit_and_commit_balance_reached
             INVOICE_TOTAL_REACHED = :invoice_total_reached
+
+            finalize!
           end
 
           class CustomFieldFilter < Metronome::BaseModel
@@ -263,6 +267,8 @@ module Metronome
               CONTRACT = :Contract
               COMMIT = :Commit
               CONTRACT_CREDIT = :ContractCredit
+
+              finalize!
             end
           end
 
@@ -308,6 +314,8 @@ module Metronome
           OK = :ok
           IN_ALARM = :in_alarm
           EVALUATING = :evaluating
+
+          finalize!
         end
       end
     end

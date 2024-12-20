@@ -84,6 +84,8 @@ module Metronome
         ACTIVE = :active
         ENDED = :ended
         UPCOMING = :upcoming
+
+        finalize!
       end
     end
   end

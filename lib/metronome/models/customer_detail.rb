@@ -123,6 +123,8 @@ module Metronome
         class Value < Metronome::Enum
           BILLABLE = :billable
           UNBILLABLE = :unbillable
+
+          finalize!
         end
       end
     end

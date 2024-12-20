@@ -177,6 +177,8 @@ module Metronome
       # ```
       class Type < Metronome::Enum
         CREDIT = :CREDIT
+
+        finalize!
       end
 
       class Contract < Metronome::BaseModel
@@ -265,6 +267,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             CREDIT_SEGMENT_START = :CREDIT_SEGMENT_START
+
+            finalize!
           end
         end
 
@@ -318,6 +322,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             CREDIT_AUTOMATED_INVOICE_DEDUCTION = :CREDIT_AUTOMATED_INVOICE_DEDUCTION
+
+            finalize!
           end
         end
 
@@ -362,6 +368,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             CREDIT_EXPIRATION = :CREDIT_EXPIRATION
+
+            finalize!
           end
         end
 
@@ -412,6 +420,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             CREDIT_CANCELED = :CREDIT_CANCELED
+
+            finalize!
           end
         end
 
@@ -462,6 +472,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             CREDIT_CREDITED = :CREDIT_CREDITED
+
+            finalize!
           end
         end
 
@@ -506,6 +518,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             CREDIT_MANUAL = :CREDIT_MANUAL
+
+            finalize!
           end
         end
       end
@@ -551,6 +565,8 @@ module Metronome
         # ```
         class Type < Metronome::Enum
           CREDIT_SEGMENT_START = :CREDIT_SEGMENT_START
+
+          finalize!
         end
       end
 
@@ -604,6 +620,8 @@ module Metronome
         # ```
         class Type < Metronome::Enum
           CREDIT_AUTOMATED_INVOICE_DEDUCTION = :CREDIT_AUTOMATED_INVOICE_DEDUCTION
+
+          finalize!
         end
       end
 
@@ -648,6 +666,8 @@ module Metronome
         # ```
         class Type < Metronome::Enum
           CREDIT_EXPIRATION = :CREDIT_EXPIRATION
+
+          finalize!
         end
       end
 
@@ -698,6 +718,8 @@ module Metronome
         # ```
         class Type < Metronome::Enum
           CREDIT_CANCELED = :CREDIT_CANCELED
+
+          finalize!
         end
       end
 
@@ -748,6 +770,8 @@ module Metronome
         # ```
         class Type < Metronome::Enum
           CREDIT_CREDITED = :CREDIT_CREDITED
+
+          finalize!
         end
       end
 
@@ -792,6 +816,8 @@ module Metronome
         # ```
         class Type < Metronome::Enum
           CREDIT_MANUAL = :CREDIT_MANUAL
+
+          finalize!
         end
       end
 
@@ -808,6 +834,8 @@ module Metronome
       class RateType < Metronome::Enum
         COMMIT_RATE = :COMMIT_RATE
         LIST_RATE = :LIST_RATE
+
+        finalize!
       end
     end
   end

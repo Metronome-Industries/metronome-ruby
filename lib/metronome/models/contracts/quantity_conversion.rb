@@ -56,6 +56,8 @@ module Metronome
         class Operation < Metronome::Enum
           MULTIPLY = :MULTIPLY
           DIVIDE = :DIVIDE
+
+          finalize!
         end
       end
     end
