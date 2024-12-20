@@ -50,6 +50,8 @@ module Metronome
           QUICKBOOKS_ONLINE = :quickbooks_online
           WORKDAY = :workday
           GCP_MARKETPLACE = :gcp_marketplace
+
+          finalize!
         end
       end
     end

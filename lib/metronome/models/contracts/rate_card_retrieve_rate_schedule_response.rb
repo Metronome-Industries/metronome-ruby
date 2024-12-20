@@ -182,6 +182,8 @@ module Metronome
               TIERED = :tiered
               CUSTOM = :CUSTOM
               CUSTOM = :custom
+
+              finalize!
             end
           end
         end

@@ -299,6 +299,8 @@ module Metronome
         class Type < Metronome::Enum
           PREPAID = :PREPAID
           POSTPAID = :POSTPAID
+
+          finalize!
         end
 
         class AccessSchedule < Metronome::BaseModel
@@ -504,6 +506,8 @@ module Metronome
               DIVIDED = :DIVIDED
               DIVIDED_ROUNDED = :DIVIDED_ROUNDED
               EACH = :EACH
+
+              finalize!
             end
 
             # @example
@@ -525,6 +529,8 @@ module Metronome
               QUARTERLY = :QUARTERLY
               SEMI_ANNUAL = :SEMI_ANNUAL
               ANNUAL = :ANNUAL
+
+              finalize!
             end
           end
 
@@ -593,6 +599,8 @@ module Metronome
           COMMIT_RATE = :commit_rate
           LIST_RATE = :LIST_RATE
           LIST_RATE = :list_rate
+
+          finalize!
         end
       end
 
@@ -772,6 +780,8 @@ module Metronome
           COMMIT_RATE = :commit_rate
           LIST_RATE = :LIST_RATE
           LIST_RATE = :list_rate
+
+          finalize!
         end
       end
 
@@ -953,6 +963,8 @@ module Metronome
               DIVIDED = :DIVIDED
               DIVIDED_ROUNDED = :DIVIDED_ROUNDED
               EACH = :EACH
+
+              finalize!
             end
 
             # @example
@@ -974,6 +986,8 @@ module Metronome
               QUARTERLY = :QUARTERLY
               SEMI_ANNUAL = :SEMI_ANNUAL
               ANNUAL = :ANNUAL
+
+              finalize!
             end
           end
 
@@ -1326,6 +1340,8 @@ module Metronome
             SUBSCRIPTION = :SUBSCRIPTION
             TIERED = :TIERED
             CUSTOM = :CUSTOM
+
+            finalize!
           end
         end
 
@@ -1350,6 +1366,8 @@ module Metronome
           COMMIT_RATE = :commit_rate
           LIST_RATE = :LIST_RATE
           LIST_RATE = :list_rate
+
+          finalize!
         end
 
         class Tier < Metronome::BaseModel
@@ -1390,6 +1408,8 @@ module Metronome
           OVERWRITE = :OVERWRITE
           MULTIPLIER = :MULTIPLIER
           TIERED = :TIERED
+
+          finalize!
         end
       end
 
@@ -1579,6 +1599,8 @@ module Metronome
           AWS_PRO_SERVICE = :AWS_PRO_SERVICE
           GCP = :GCP
           GCP_PRO_SERVICE = :GCP_PRO_SERVICE
+
+          finalize!
         end
 
         class AwsOptions < Metronome::BaseModel
@@ -1806,6 +1828,8 @@ module Metronome
               DIVIDED = :DIVIDED
               DIVIDED_ROUNDED = :DIVIDED_ROUNDED
               EACH = :EACH
+
+              finalize!
             end
 
             # @example
@@ -1827,6 +1851,8 @@ module Metronome
               QUARTERLY = :QUARTERLY
               SEMI_ANNUAL = :SEMI_ANNUAL
               ANNUAL = :ANNUAL
+
+              finalize!
             end
           end
 

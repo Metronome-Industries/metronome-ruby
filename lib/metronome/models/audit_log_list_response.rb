@@ -111,6 +111,8 @@ module Metronome
         SUCCESS = :success
         FAILURE = :failure
         PENDING = :pending
+
+        finalize!
       end
     end
   end

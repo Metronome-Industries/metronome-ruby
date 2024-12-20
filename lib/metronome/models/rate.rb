@@ -119,6 +119,8 @@ module Metronome
         SUBSCRIPTION = :SUBSCRIPTION
         CUSTOM = :CUSTOM
         TIERED = :TIERED
+
+        finalize!
       end
     end
   end

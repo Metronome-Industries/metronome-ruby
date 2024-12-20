@@ -259,6 +259,8 @@ module Metronome
         class Type < Metronome::Enum
           PREPAID = :PREPAID
           POSTPAID = :POSTPAID
+
+          finalize!
         end
 
         class Contract < Metronome::BaseModel
@@ -394,6 +396,8 @@ module Metronome
             # ```
             class Type < Metronome::Enum
               PREPAID_COMMIT_SEGMENT_START = :PREPAID_COMMIT_SEGMENT_START
+
+              finalize!
             end
           end
 
@@ -447,6 +451,8 @@ module Metronome
             # ```
             class Type < Metronome::Enum
               PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION = :PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
+
+              finalize!
             end
           end
 
@@ -500,6 +506,8 @@ module Metronome
             # ```
             class Type < Metronome::Enum
               PREPAID_COMMIT_ROLLOVER = :PREPAID_COMMIT_ROLLOVER
+
+              finalize!
             end
           end
 
@@ -547,6 +555,8 @@ module Metronome
             # ```
             class Type < Metronome::Enum
               PREPAID_COMMIT_EXPIRATION = :PREPAID_COMMIT_EXPIRATION
+
+              finalize!
             end
           end
 
@@ -600,6 +610,8 @@ module Metronome
             # ```
             class Type < Metronome::Enum
               PREPAID_COMMIT_CANCELED = :PREPAID_COMMIT_CANCELED
+
+              finalize!
             end
           end
 
@@ -653,6 +665,8 @@ module Metronome
             # ```
             class Type < Metronome::Enum
               PREPAID_COMMIT_CREDITED = :PREPAID_COMMIT_CREDITED
+
+              finalize!
             end
           end
 
@@ -694,6 +708,8 @@ module Metronome
             # ```
             class Type < Metronome::Enum
               POSTPAID_COMMIT_INITIAL_BALANCE = :POSTPAID_COMMIT_INITIAL_BALANCE
+
+              finalize!
             end
           end
 
@@ -747,6 +763,8 @@ module Metronome
             # ```
             class Type < Metronome::Enum
               POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION = :POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
+
+              finalize!
             end
           end
 
@@ -800,6 +818,8 @@ module Metronome
             # ```
             class Type < Metronome::Enum
               POSTPAID_COMMIT_ROLLOVER = :POSTPAID_COMMIT_ROLLOVER
+
+              finalize!
             end
           end
 
@@ -847,6 +867,8 @@ module Metronome
             # ```
             class Type < Metronome::Enum
               POSTPAID_COMMIT_TRUEUP = :POSTPAID_COMMIT_TRUEUP
+
+              finalize!
             end
           end
 
@@ -894,6 +916,8 @@ module Metronome
             # ```
             class Type < Metronome::Enum
               PREPAID_COMMIT_MANUAL = :PREPAID_COMMIT_MANUAL
+
+              finalize!
             end
           end
 
@@ -941,6 +965,8 @@ module Metronome
             # ```
             class Type < Metronome::Enum
               POSTPAID_COMMIT_MANUAL = :POSTPAID_COMMIT_MANUAL
+
+              finalize!
             end
           end
 
@@ -982,6 +1008,8 @@ module Metronome
             # ```
             class Type < Metronome::Enum
               POSTPAID_COMMIT_EXPIRATION = :POSTPAID_COMMIT_EXPIRATION
+
+              finalize!
             end
           end
         end
@@ -1030,6 +1058,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             PREPAID_COMMIT_SEGMENT_START = :PREPAID_COMMIT_SEGMENT_START
+
+            finalize!
           end
         end
 
@@ -1083,6 +1113,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION = :PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
+
+            finalize!
           end
         end
 
@@ -1136,6 +1168,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             PREPAID_COMMIT_ROLLOVER = :PREPAID_COMMIT_ROLLOVER
+
+            finalize!
           end
         end
 
@@ -1183,6 +1217,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             PREPAID_COMMIT_EXPIRATION = :PREPAID_COMMIT_EXPIRATION
+
+            finalize!
           end
         end
 
@@ -1236,6 +1272,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             PREPAID_COMMIT_CANCELED = :PREPAID_COMMIT_CANCELED
+
+            finalize!
           end
         end
 
@@ -1289,6 +1327,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             PREPAID_COMMIT_CREDITED = :PREPAID_COMMIT_CREDITED
+
+            finalize!
           end
         end
 
@@ -1330,6 +1370,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             POSTPAID_COMMIT_INITIAL_BALANCE = :POSTPAID_COMMIT_INITIAL_BALANCE
+
+            finalize!
           end
         end
 
@@ -1383,6 +1425,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION = :POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
+
+            finalize!
           end
         end
 
@@ -1436,6 +1480,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             POSTPAID_COMMIT_ROLLOVER = :POSTPAID_COMMIT_ROLLOVER
+
+            finalize!
           end
         end
 
@@ -1483,6 +1529,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             POSTPAID_COMMIT_TRUEUP = :POSTPAID_COMMIT_TRUEUP
+
+            finalize!
           end
         end
 
@@ -1527,6 +1575,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             PREPAID_COMMIT_MANUAL = :PREPAID_COMMIT_MANUAL
+
+            finalize!
           end
         end
 
@@ -1574,6 +1624,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             POSTPAID_COMMIT_MANUAL = :POSTPAID_COMMIT_MANUAL
+
+            finalize!
           end
         end
 
@@ -1615,6 +1667,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             POSTPAID_COMMIT_EXPIRATION = :POSTPAID_COMMIT_EXPIRATION
+
+            finalize!
           end
         end
 
@@ -1631,6 +1685,8 @@ module Metronome
         class RateType < Metronome::Enum
           COMMIT_RATE = :COMMIT_RATE
           LIST_RATE = :LIST_RATE
+
+          finalize!
         end
 
         class RolledOverFrom < Metronome::BaseModel
@@ -1829,6 +1885,8 @@ module Metronome
         # ```
         class Type < Metronome::Enum
           CREDIT = :CREDIT
+
+          finalize!
         end
 
         class Contract < Metronome::BaseModel
@@ -1920,6 +1978,8 @@ module Metronome
             # ```
             class Type < Metronome::Enum
               CREDIT_SEGMENT_START = :CREDIT_SEGMENT_START
+
+              finalize!
             end
           end
 
@@ -1973,6 +2033,8 @@ module Metronome
             # ```
             class Type < Metronome::Enum
               CREDIT_AUTOMATED_INVOICE_DEDUCTION = :CREDIT_AUTOMATED_INVOICE_DEDUCTION
+
+              finalize!
             end
           end
 
@@ -2017,6 +2079,8 @@ module Metronome
             # ```
             class Type < Metronome::Enum
               CREDIT_EXPIRATION = :CREDIT_EXPIRATION
+
+              finalize!
             end
           end
 
@@ -2067,6 +2131,8 @@ module Metronome
             # ```
             class Type < Metronome::Enum
               CREDIT_CANCELED = :CREDIT_CANCELED
+
+              finalize!
             end
           end
 
@@ -2117,6 +2183,8 @@ module Metronome
             # ```
             class Type < Metronome::Enum
               CREDIT_CREDITED = :CREDIT_CREDITED
+
+              finalize!
             end
           end
 
@@ -2161,6 +2229,8 @@ module Metronome
             # ```
             class Type < Metronome::Enum
               CREDIT_MANUAL = :CREDIT_MANUAL
+
+              finalize!
             end
           end
         end
@@ -2206,6 +2276,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             CREDIT_SEGMENT_START = :CREDIT_SEGMENT_START
+
+            finalize!
           end
         end
 
@@ -2259,6 +2331,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             CREDIT_AUTOMATED_INVOICE_DEDUCTION = :CREDIT_AUTOMATED_INVOICE_DEDUCTION
+
+            finalize!
           end
         end
 
@@ -2303,6 +2377,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             CREDIT_EXPIRATION = :CREDIT_EXPIRATION
+
+            finalize!
           end
         end
 
@@ -2353,6 +2429,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             CREDIT_CANCELED = :CREDIT_CANCELED
+
+            finalize!
           end
         end
 
@@ -2403,6 +2481,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             CREDIT_CREDITED = :CREDIT_CREDITED
+
+            finalize!
           end
         end
 
@@ -2447,6 +2527,8 @@ module Metronome
           # ```
           class Type < Metronome::Enum
             CREDIT_MANUAL = :CREDIT_MANUAL
+
+            finalize!
           end
         end
 
@@ -2463,6 +2545,8 @@ module Metronome
         class RateType < Metronome::Enum
           COMMIT_RATE = :COMMIT_RATE
           LIST_RATE = :LIST_RATE
+
+          finalize!
         end
       end
     end

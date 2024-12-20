@@ -337,6 +337,8 @@ module Metronome
               AWS_PRO_SERVICE = :AWS_PRO_SERVICE
               GCP = :GCP
               GCP_PRO_SERVICE = :GCP_PRO_SERVICE
+
+              finalize!
             end
           end
         end
@@ -395,6 +397,8 @@ module Metronome
             QUICKBOOKS_ONLINE = :quickbooks_online
             WORKDAY = :workday
             GCP_MARKETPLACE = :gcp_marketplace
+
+            finalize!
           end
 
           # @example
@@ -416,6 +420,8 @@ module Metronome
             AWS_SQS = :aws_sqs
             TACKLE = :tackle
             AWS_SNS = :aws_sns
+
+            finalize!
           end
         end
       end

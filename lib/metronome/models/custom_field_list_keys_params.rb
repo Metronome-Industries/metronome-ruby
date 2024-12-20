@@ -62,6 +62,8 @@ module Metronome
         PRODUCT = :product
         RATE_CARD = :rate_card
         SCHEDULED_CHARGE = :scheduled_charge
+
+        finalize!
       end
     end
   end

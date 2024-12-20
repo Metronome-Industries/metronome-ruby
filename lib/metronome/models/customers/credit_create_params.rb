@@ -206,6 +206,8 @@ module Metronome
           COMMIT_RATE = :commit_rate
           LIST_RATE = :LIST_RATE
           LIST_RATE = :list_rate
+
+          finalize!
         end
       end
     end

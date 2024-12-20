@@ -126,6 +126,8 @@ module Metronome
         class Sort < Metronome::Enum
           DATE_ASC = :date_asc
           DATE_DESC = :date_desc
+
+          finalize!
         end
 
         # The granularity of the breakdowns to return. Defaults to day.
@@ -143,6 +145,8 @@ module Metronome
         class WindowSize < Metronome::Enum
           HOUR = :HOUR
           DAY = :DAY
+
+          finalize!
         end
       end
     end

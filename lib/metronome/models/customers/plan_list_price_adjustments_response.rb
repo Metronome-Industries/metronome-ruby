@@ -66,6 +66,8 @@ module Metronome
           COMPOSITE = :composite
           MINIMUM = :minimum
           SEAT = :seat
+
+          finalize!
         end
 
         class Price < Metronome::BaseModel
@@ -121,6 +123,8 @@ module Metronome
             QUANTITY = :quantity
             PERCENTAGE = :percentage
             OVERRIDE = :override
+
+            finalize!
           end
         end
       end

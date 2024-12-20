@@ -43,6 +43,8 @@ module Metronome
           ROUND_UP = :ROUND_UP
           ROUND_DOWN = :ROUND_DOWN
           ROUND_HALF_UP = :ROUND_HALF_UP
+
+          finalize!
         end
       end
     end

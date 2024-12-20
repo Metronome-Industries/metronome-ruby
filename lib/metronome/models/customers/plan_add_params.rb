@@ -198,6 +198,8 @@ module Metronome
             FIXED = :fixed
             OVERRIDE = :override
             QUANTITY = :quantity
+
+            finalize!
           end
         end
 

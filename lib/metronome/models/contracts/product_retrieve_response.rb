@@ -90,6 +90,8 @@ module Metronome
             COMPOSITE = :COMPOSITE
             FIXED = :FIXED
             PRO_SERVICE = :PRO_SERVICE
+
+            finalize!
           end
 
           class Update < Metronome::BaseModel

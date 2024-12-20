@@ -288,6 +288,8 @@ module Metronome
           GCP_MARKETPLACE = :gcp_marketplace
           STRIPE = :stripe
           NETSUITE = :netsuite
+
+          finalize!
         end
 
         # @example
@@ -309,6 +311,8 @@ module Metronome
           AWS_SQS = :aws_sqs
           TACKLE = :tackle
           AWS_SNS = :aws_sns
+
+          finalize!
         end
       end
 
@@ -475,6 +479,8 @@ module Metronome
         class Type < Metronome::Enum
           PREPAID = :PREPAID
           POSTPAID = :POSTPAID
+
+          finalize!
         end
 
         class AccessSchedule < Metronome::BaseModel
@@ -680,6 +686,8 @@ module Metronome
               DIVIDED = :DIVIDED
               DIVIDED_ROUNDED = :DIVIDED_ROUNDED
               EACH = :EACH
+
+              finalize!
             end
 
             # @example
@@ -701,6 +709,8 @@ module Metronome
               QUARTERLY = :QUARTERLY
               SEMI_ANNUAL = :SEMI_ANNUAL
               ANNUAL = :ANNUAL
+
+              finalize!
             end
           end
 
@@ -769,6 +779,8 @@ module Metronome
           COMMIT_RATE = :commit_rate
           LIST_RATE = :LIST_RATE
           LIST_RATE = :list_rate
+
+          finalize!
         end
       end
 
@@ -948,6 +960,8 @@ module Metronome
           COMMIT_RATE = :commit_rate
           LIST_RATE = :LIST_RATE
           LIST_RATE = :list_rate
+
+          finalize!
         end
       end
 
@@ -1129,6 +1143,8 @@ module Metronome
               DIVIDED = :DIVIDED
               DIVIDED_ROUNDED = :DIVIDED_ROUNDED
               EACH = :EACH
+
+              finalize!
             end
 
             # @example
@@ -1150,6 +1166,8 @@ module Metronome
               QUARTERLY = :QUARTERLY
               SEMI_ANNUAL = :SEMI_ANNUAL
               ANNUAL = :ANNUAL
+
+              finalize!
             end
           end
 
@@ -1215,6 +1233,8 @@ module Metronome
       class MultiplierOverridePrioritization < Metronome::Enum
         LOWEST_MULTIPLIER = :LOWEST_MULTIPLIER
         EXPLICIT = :EXPLICIT
+
+        finalize!
       end
 
       class Override < Metronome::BaseModel
@@ -1519,6 +1539,8 @@ module Metronome
             SUBSCRIPTION = :SUBSCRIPTION
             TIERED = :TIERED
             CUSTOM = :CUSTOM
+
+            finalize!
           end
         end
 
@@ -1543,6 +1565,8 @@ module Metronome
           COMMIT_RATE = :commit_rate
           LIST_RATE = :LIST_RATE
           LIST_RATE = :list_rate
+
+          finalize!
         end
 
         class Tier < Metronome::BaseModel
@@ -1583,6 +1607,8 @@ module Metronome
           OVERWRITE = :OVERWRITE
           MULTIPLIER = :MULTIPLIER
           TIERED = :TIERED
+
+          finalize!
         end
       end
 
@@ -1771,6 +1797,8 @@ module Metronome
           AWS_PRO_SERVICE = :AWS_PRO_SERVICE
           GCP = :GCP
           GCP_PRO_SERVICE = :GCP_PRO_SERVICE
+
+          finalize!
         end
 
         class AwsOptions < Metronome::BaseModel
@@ -1998,6 +2026,8 @@ module Metronome
               DIVIDED = :DIVIDED
               DIVIDED_ROUNDED = :DIVIDED_ROUNDED
               EACH = :EACH
+
+              finalize!
             end
 
             # @example
@@ -2019,6 +2049,8 @@ module Metronome
               QUARTERLY = :QUARTERLY
               SEMI_ANNUAL = :SEMI_ANNUAL
               ANNUAL = :ANNUAL
+
+              finalize!
             end
           end
 
@@ -2113,6 +2145,8 @@ module Metronome
         class Type < Metronome::Enum
           SUPERSEDE = :SUPERSEDE
           RENEWAL = :RENEWAL
+
+          finalize!
         end
 
         class FutureInvoiceBehavior < Metronome::BaseModel
@@ -2148,6 +2182,8 @@ module Metronome
           class Trueup < Metronome::Enum
             REMOVE = :REMOVE
             AS_IS = :AS_IS
+
+            finalize!
           end
         end
       end
@@ -2213,6 +2249,8 @@ module Metronome
           MONTHLY = :MONTHLY
           QUARTERLY = :QUARTERLY
           ANNUAL = :ANNUAL
+
+          finalize!
         end
 
         # If not provided, defaults to the first day of the month.
@@ -2236,6 +2274,8 @@ module Metronome
           CONTRACT_START = :CONTRACT_START
           CUSTOM_DATE = :CUSTOM_DATE
           CUSTOM_DATE = :custom_date
+
+          finalize!
         end
       end
     end

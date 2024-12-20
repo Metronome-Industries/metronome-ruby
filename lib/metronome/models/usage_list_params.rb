@@ -79,6 +79,8 @@ module Metronome
         HOUR = :HOUR
         DAY = :DAY
         NONE = :NONE
+
+        finalize!
       end
 
       class BillableMetric < Metronome::BaseModel

@@ -615,6 +615,8 @@ module Metronome
               PREPAID = :PREPAID
               POSTPAID = :POSTPAID
               CREDIT = :CREDIT
+
+              finalize!
             end
           end
 
@@ -653,6 +655,8 @@ module Metronome
             AWS_PRO_SERVICE = :AWS_PRO_SERVICE
             GCP = :GCP
             GCP_PRO_SERVICE = :GCP_PRO_SERVICE
+
+            finalize!
           end
 
           class SubLineItem < Metronome::BaseModel
@@ -865,6 +869,8 @@ module Metronome
         class BillableStatus < Metronome::Enum
           BILLABLE = :billable
           UNBILLABLE = :unbillable
+
+          finalize!
         end
 
         class CorrectionRecord < Metronome::BaseModel
@@ -963,6 +969,8 @@ module Metronome
               QUICKBOOKS_ONLINE = :quickbooks_online
               WORKDAY = :workday
               GCP_MARKETPLACE = :gcp_marketplace
+
+              finalize!
             end
 
             # @example
@@ -995,6 +1003,8 @@ module Metronome
               SKIPPED = :SKIPPED
               SENT = :SENT
               QUEUED = :QUEUED
+
+              finalize!
             end
           end
         end
@@ -1059,6 +1069,8 @@ module Metronome
             QUICKBOOKS_ONLINE = :quickbooks_online
             WORKDAY = :workday
             GCP_MARKETPLACE = :gcp_marketplace
+
+            finalize!
           end
 
           # @example
@@ -1091,6 +1103,8 @@ module Metronome
             SKIPPED = :SKIPPED
             SENT = :SENT
             QUEUED = :QUEUED
+
+            finalize!
           end
         end
 
@@ -1193,6 +1207,8 @@ module Metronome
             AWS_PRO_SERVICE = :AWS_PRO_SERVICE
             GCP = :GCP
             GCP_PRO_SERVICE = :GCP_PRO_SERVICE
+
+            finalize!
           end
 
           class AwsOptions < Metronome::BaseModel

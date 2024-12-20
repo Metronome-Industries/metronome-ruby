@@ -53,6 +53,8 @@ module Metronome
         class Usage < Metronome::Enum
           MAKES_CONNECTIONS_FROM = :makes_connections_from
           ACCEPTS_CONNECTIONS_AT = :accepts_connections_at
+
+          finalize!
         end
       end
     end
