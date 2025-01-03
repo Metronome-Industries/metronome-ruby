@@ -85,8 +85,6 @@ module Metronome
         #     multiple rate cards, it will reference the rate card to which it was most
         #     recently assigned. It is not exposed to end customers.
         #
-        #   @option params [Hash{Symbol => String}, nil] :custom_fields
-        #
         #   @option params [String, nil] :description
         #
         #   @option params [String, nil] :name Used only in UI/API. It is not exposed to end customers.

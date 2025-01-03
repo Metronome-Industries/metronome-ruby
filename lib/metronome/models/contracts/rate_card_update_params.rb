@@ -19,11 +19,6 @@ module Metronome
                    Metronome::Models::Contracts::RateCardUpdateParams::Alias
                  }]
 
-        # @!attribute custom_fields
-        #
-        #   @return [Hash{Symbol => String}]
-        optional :custom_fields, Metronome::HashOf[String]
-
         # @!attribute description
         #
         #   @return [String]
@@ -42,13 +37,11 @@ module Metronome
         #   #   multiple rate cards, it will reference the rate card to which it was most
         #   #   recently assigned. It is not exposed to end customers.
         #   #
-        #   # @param custom_fields [Hash{Symbol => String}, nil]
-        #   #
         #   # @param description [String, nil]
         #   #
         #   # @param name [String, nil] Used only in UI/API. It is not exposed to end customers.
         #   #
-        #   def initialize(rate_card_id:, aliases: nil, custom_fields: nil, description: nil, name: nil, **) = super
+        #   def initialize(rate_card_id:, aliases: nil, description: nil, name: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
