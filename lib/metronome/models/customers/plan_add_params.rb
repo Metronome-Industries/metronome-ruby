@@ -60,21 +60,21 @@ module Metronome
         #   # @param starting_on [String] RFC 3339 timestamp for when the plan becomes active for this customer. Must be
         #   #   at 0:00 UTC (midnight).
         #   #
-        #   # @param ending_before [String, nil] RFC 3339 timestamp for when the plan ends (exclusive) for this customer. Must be
+        #   # @param ending_before [String] RFC 3339 timestamp for when the plan ends (exclusive) for this customer. Must be
         #   #   at 0:00 UTC (midnight).
         #   #
-        #   # @param net_payment_terms_days [Float, nil] Number of days after issuance of invoice after which the invoice is due (e.g.
+        #   # @param net_payment_terms_days [Float] Number of days after issuance of invoice after which the invoice is due (e.g.
         #   #   Net 30).
         #   #
-        #   # @param overage_rate_adjustments [Array<Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment>, nil] An optional list of overage rates that override the rates of the original plan
+        #   # @param overage_rate_adjustments [Array<Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment>] An optional list of overage rates that override the rates of the original plan
         #   #   configuration. These new rates will apply to all pricing ramps.
         #   #
-        #   # @param price_adjustments [Array<Metronome::Models::Customers::PlanAddParams::PriceAdjustment>, nil] A list of price adjustments can be applied on top of the pricing in the plans.
+        #   # @param price_adjustments [Array<Metronome::Models::Customers::PlanAddParams::PriceAdjustment>] A list of price adjustments can be applied on top of the pricing in the plans.
         #   #   See the
         #   #   [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments)
         #   #   for details.
         #   #
-        #   # @param trial_spec [Metronome::Models::Customers::PlanAddParams::TrialSpec, nil] A custom trial can be set for the customer's plan. See the
+        #   # @param trial_spec [Metronome::Models::Customers::PlanAddParams::TrialSpec] A custom trial can be set for the customer's plan. See the
         #   #   [trial configuration documentation](https://docs.metronome.com/provisioning/configure-trials/)
         #   #   for details.
         #   #
@@ -167,11 +167,11 @@ module Metronome
           #   # @param start_period [Float] Used in price ramps. Indicates how many billing periods pass before the charge
           #   #   applies.
           #   #
-          #   # @param quantity [Float, nil] the overridden quantity for a fixed charge
+          #   # @param quantity [Float] the overridden quantity for a fixed charge
           #   #
-          #   # @param tier [Float, nil] Used in pricing tiers. Indicates at what metric value the price applies.
+          #   # @param tier [Float] Used in pricing tiers. Indicates at what metric value the price applies.
           #   #
-          #   # @param value [Float, nil] The amount of change to a price. Percentage and fixed adjustments can be
+          #   # @param value [Float] The amount of change to a price. Percentage and fixed adjustments can be
           #   #   positive or negative. Percentage-based adjustments should be decimals, e.g.
           #   #   -0.05 for a 5% discount.
           #   #
@@ -222,7 +222,7 @@ module Metronome
           #   #
           #   # @param length_in_days [Float] Length of the trial period in days.
           #   #
-          #   # @param spending_cap [Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap, nil]
+          #   # @param spending_cap [Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap]
           #   #
           #   def initialize(length_in_days:, spending_cap: nil, **) = super
 

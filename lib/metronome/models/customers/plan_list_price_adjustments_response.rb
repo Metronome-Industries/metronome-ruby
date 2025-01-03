@@ -38,7 +38,7 @@ module Metronome
         #   # @param charge_type [String]
         #   # @param prices [Array<Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price>]
         #   # @param start_period [Float]
-        #   # @param quantity [Float, nil]
+        #   # @param quantity [Float]
         #   #
         #   def initialize(charge_id:, charge_type:, prices:, start_period:, quantity: nil, **) = super
 
@@ -94,9 +94,9 @@ module Metronome
           # @!parse
           #   # @param adjustment_type [String] Determines how the value will be applied.
           #   #
-          #   # @param tier [Float, nil] Used in pricing tiers. Indicates at what metric value the price applies.
+          #   # @param tier [Float] Used in pricing tiers. Indicates at what metric value the price applies.
           #   #
-          #   # @param value [Float, nil]
+          #   # @param value [Float]
           #   #
           #   def initialize(adjustment_type:, tier: nil, value: nil, **) = super
 

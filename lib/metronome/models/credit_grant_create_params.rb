@@ -97,27 +97,27 @@ module Metronome
       #   #
       #   # @param priority [Float]
       #   #
-      #   # @param credit_grant_type [String, nil]
+      #   # @param credit_grant_type [String]
       #   #
-      #   # @param custom_fields [Hash{Symbol => String}, nil] Custom fields to attach to the credit grant.
+      #   # @param custom_fields [Hash{Symbol => String}] Custom fields to attach to the credit grant.
       #   #
-      #   # @param effective_at [String, nil] The credit grant will only apply to usage or charges dated on or after this
+      #   # @param effective_at [String] The credit grant will only apply to usage or charges dated on or after this
       #   #   timestamp
       #   #
-      #   # @param invoice_date [String, nil] The date to issue an invoice for the paid_amount.
+      #   # @param invoice_date [String] The date to issue an invoice for the paid_amount.
       #   #
-      #   # @param product_ids [Array<String>, nil] The product(s) which these credits will be applied to. (If unspecified, the
+      #   # @param product_ids [Array<String>] The product(s) which these credits will be applied to. (If unspecified, the
       #   #   credits will be applied to charges for all products.). The array ordering
       #   #   specified here will be used to determine the order in which credits will be
       #   #   applied to invoice line items
       #   #
-      #   # @param reason [String, nil]
+      #   # @param reason [String]
       #   #
-      #   # @param rollover_settings [Metronome::Models::CreditGrantCreateParams::RolloverSettings, nil] Configure a rollover for this credit grant so if it expires it rolls over a
+      #   # @param rollover_settings [Metronome::Models::CreditGrantCreateParams::RolloverSettings] Configure a rollover for this credit grant so if it expires it rolls over a
       #   #   configured amount to a new credit grant. This feature is currently opt-in only.
       #   #   Contact Metronome to be added to the beta.
       #   #
-      #   # @param uniqueness_key [String, nil] Prevents the creation of duplicates. If a request to create a record is made
+      #   # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made
       #   #   with a previously used uniqueness key, a new record will not be created and the
       #   #   request will fail with a 409 error.
       #   #

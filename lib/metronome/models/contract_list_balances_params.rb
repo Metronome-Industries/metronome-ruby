@@ -58,22 +58,22 @@ module Metronome
       # @!parse
       #   # @param customer_id [String]
       #   #
-      #   # @param id [String, nil]
+      #   # @param id [String]
       #   #
-      #   # @param covering_date [String, nil] Return only balances that have access schedules that "cover" the provided date
+      #   # @param covering_date [String] Return only balances that have access schedules that "cover" the provided date
       #   #
-      #   # @param effective_before [String, nil] Include only balances that have any access before the provided date (exclusive)
+      #   # @param effective_before [String] Include only balances that have any access before the provided date (exclusive)
       #   #
-      #   # @param include_archived [Boolean, nil] Include credits from archived contracts.
+      #   # @param include_archived [Boolean] Include credits from archived contracts.
       #   #
-      #   # @param include_contract_balances [Boolean, nil] Include balances on the contract level.
+      #   # @param include_contract_balances [Boolean] Include balances on the contract level.
       #   #
-      #   # @param include_ledgers [Boolean, nil] Include ledgers in the response. Setting this flag may cause the query to be
+      #   # @param include_ledgers [Boolean] Include ledgers in the response. Setting this flag may cause the query to be
       #   #   slower.
       #   #
-      #   # @param next_page [String, nil] The next page token from a previous response.
+      #   # @param next_page [String] The next page token from a previous response.
       #   #
-      #   # @param starting_at [String, nil] Include only balances that have any access on or after the provided date
+      #   # @param starting_at [String] Include only balances that have any access on or after the provided date
       #   #
       #   def initialize(
       #     customer_id:,

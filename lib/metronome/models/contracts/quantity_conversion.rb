@@ -35,7 +35,7 @@ module Metronome
         #   #
         #   # @param operation [String] The operation to perform on the quantity
         #   #
-        #   # @param name [String, nil] Optional name for this conversion.
+        #   # @param name [String] Optional name for this conversion.
         #   #
         #   def initialize(conversion_factor:, operation:, name: nil, **) = super
 

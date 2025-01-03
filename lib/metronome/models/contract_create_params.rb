@@ -148,55 +148,55 @@ module Metronome
       #   #
       #   # @param starting_at [String] inclusive contract start time
       #   #
-      #   # @param billing_provider_configuration [Metronome::Models::ContractCreateParams::BillingProviderConfiguration, nil] The billing provider configuration associated with a contract.
+      #   # @param billing_provider_configuration [Metronome::Models::ContractCreateParams::BillingProviderConfiguration] The billing provider configuration associated with a contract.
       #   #
-      #   # @param commits [Array<Metronome::Models::ContractCreateParams::Commit>, nil]
+      #   # @param commits [Array<Metronome::Models::ContractCreateParams::Commit>]
       #   #
-      #   # @param credits [Array<Metronome::Models::ContractCreateParams::Credit>, nil]
+      #   # @param credits [Array<Metronome::Models::ContractCreateParams::Credit>]
       #   #
-      #   # @param custom_fields [Hash{Symbol => String}, nil]
+      #   # @param custom_fields [Hash{Symbol => String}]
       #   #
-      #   # @param discounts [Array<Metronome::Models::ContractCreateParams::Discount>, nil] This field's availability is dependent on your client's configuration.
+      #   # @param discounts [Array<Metronome::Models::ContractCreateParams::Discount>] This field's availability is dependent on your client's configuration.
       #   #
-      #   # @param ending_before [String, nil] exclusive contract end time
+      #   # @param ending_before [String] exclusive contract end time
       #   #
-      #   # @param multiplier_override_prioritization [String, nil] Defaults to LOWEST_MULTIPLIER, which applies the greatest discount to list
+      #   # @param multiplier_override_prioritization [String] Defaults to LOWEST_MULTIPLIER, which applies the greatest discount to list
       #   #   prices automatically. EXPLICIT prioritization requires specifying priorities for
       #   #   each multiplier; the one with the lowest priority value will be prioritized
       #   #   first. If tiered overrides are used, prioritization must be explicit.
       #   #
-      #   # @param name [String, nil]
+      #   # @param name [String]
       #   #
-      #   # @param net_payment_terms_days [Float, nil]
+      #   # @param net_payment_terms_days [Float]
       #   #
-      #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
+      #   # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
       #   #
-      #   # @param overrides [Array<Metronome::Models::ContractCreateParams::Override>, nil]
+      #   # @param overrides [Array<Metronome::Models::ContractCreateParams::Override>]
       #   #
-      #   # @param professional_services [Array<Metronome::Models::ContractCreateParams::ProfessionalService>, nil] This field's availability is dependent on your client's configuration.
+      #   # @param professional_services [Array<Metronome::Models::ContractCreateParams::ProfessionalService>] This field's availability is dependent on your client's configuration.
       #   #
-      #   # @param rate_card_alias [String, nil] Selects the rate card linked to the specified alias as of the contract's start
+      #   # @param rate_card_alias [String] Selects the rate card linked to the specified alias as of the contract's start
       #   #   date.
       #   #
-      #   # @param rate_card_id [String, nil]
+      #   # @param rate_card_id [String]
       #   #
-      #   # @param reseller_royalties [Array<Metronome::Models::ContractCreateParams::ResellerRoyalty>, nil] This field's availability is dependent on your client's configuration.
+      #   # @param reseller_royalties [Array<Metronome::Models::ContractCreateParams::ResellerRoyalty>] This field's availability is dependent on your client's configuration.
       #   #
-      #   # @param salesforce_opportunity_id [String, nil] This field's availability is dependent on your client's configuration.
+      #   # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
       #   #
-      #   # @param scheduled_charges [Array<Metronome::Models::ContractCreateParams::ScheduledCharge>, nil]
+      #   # @param scheduled_charges [Array<Metronome::Models::ContractCreateParams::ScheduledCharge>]
       #   #
-      #   # @param total_contract_value [Float, nil] This field's availability is dependent on your client's configuration.
+      #   # @param total_contract_value [Float] This field's availability is dependent on your client's configuration.
       #   #
-      #   # @param transition [Metronome::Models::ContractCreateParams::Transition, nil]
+      #   # @param transition [Metronome::Models::ContractCreateParams::Transition]
       #   #
-      #   # @param uniqueness_key [String, nil] Prevents the creation of duplicates. If a request to create a record is made
+      #   # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made
       #   #   with a previously used uniqueness key, a new record will not be created and the
       #   #   request will fail with a 409 error.
       #   #
-      #   # @param usage_filter [Metronome::Models::BaseUsageFilter, nil]
+      #   # @param usage_filter [Metronome::Models::BaseUsageFilter]
       #   #
-      #   # @param usage_statement_schedule [Metronome::Models::ContractCreateParams::UsageStatementSchedule, nil]
+      #   # @param usage_statement_schedule [Metronome::Models::ContractCreateParams::UsageStatementSchedule]
       #   #
       #   def initialize(
       #     customer_id:,
@@ -256,11 +256,11 @@ module Metronome
         # @!parse
         #   # The billing provider configuration associated with a contract.
         #   #
-        #   # @param billing_provider [String, nil]
+        #   # @param billing_provider [String]
         #   #
-        #   # @param billing_provider_configuration_id [String, nil] The Metronome ID of the billing provider configuration
+        #   # @param billing_provider_configuration_id [String] The Metronome ID of the billing provider configuration
         #   #
-        #   # @param delivery_method [String, nil]
+        #   # @param delivery_method [String]
         #   #
         #   def initialize(billing_provider: nil, billing_provider_configuration_id: nil, delivery_method: nil, **) = super
 
@@ -408,39 +408,39 @@ module Metronome
         #   #
         #   # @param type [String]
         #   #
-        #   # @param access_schedule [Metronome::Models::ContractCreateParams::Commit::AccessSchedule, nil] Required: Schedule for distributing the commit to the customer. For "POSTPAID"
+        #   # @param access_schedule [Metronome::Models::ContractCreateParams::Commit::AccessSchedule] Required: Schedule for distributing the commit to the customer. For "POSTPAID"
         #   #   commits only one schedule item is allowed and amount must match invoice_schedule
         #   #   total.
         #   #
-        #   # @param amount [Float, nil] (DEPRECATED) Use access_schedule and invoice_schedule instead.
+        #   # @param amount [Float] (DEPRECATED) Use access_schedule and invoice_schedule instead.
         #   #
-        #   # @param applicable_product_ids [Array<String>, nil] Which products the commit applies to. If both applicable_product_ids and
+        #   # @param applicable_product_ids [Array<String>] Which products the commit applies to. If both applicable_product_ids and
         #   #   applicable_product_tags are not provided, the commit applies to all products.
         #   #
-        #   # @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If both applicable_product_ids and
+        #   # @param applicable_product_tags [Array<String>] Which tags the commit applies to. If both applicable_product_ids and
         #   #   applicable_product_tags are not provided, the commit applies to all products.
         #   #
-        #   # @param custom_fields [Hash{Symbol => String}, nil]
+        #   # @param custom_fields [Hash{Symbol => String}]
         #   #
-        #   # @param description [String, nil] Used only in UI/API. It is not exposed to end customers.
+        #   # @param description [String] Used only in UI/API. It is not exposed to end customers.
         #   #
-        #   # @param invoice_schedule [Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule, nil] Required for "POSTPAID" commits: the true up invoice will be generated at this
+        #   # @param invoice_schedule [Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule] Required for "POSTPAID" commits: the true up invoice will be generated at this
         #   #   time and only one schedule item is allowed; the total must match access_schedule
         #   #   amount. Optional for "PREPAID" commits: if not provided, this will be a
         #   #   "complimentary" commit with no invoice.
         #   #
-        #   # @param name [String, nil] displayed on invoices
+        #   # @param name [String] displayed on invoices
         #   #
-        #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
+        #   # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
         #   #
-        #   # @param priority [Float, nil] If multiple commits are applicable, the one with the lower priority will apply
+        #   # @param priority [Float] If multiple commits are applicable, the one with the lower priority will apply
         #   #   first.
         #   #
-        #   # @param rate_type [String, nil]
+        #   # @param rate_type [String]
         #   #
-        #   # @param rollover_fraction [Float, nil] Fraction of unused segments that will be rolled over. Must be between 0 and 1.
+        #   # @param rollover_fraction [Float] Fraction of unused segments that will be rolled over. Must be between 0 and 1.
         #   #
-        #   # @param temporary_id [String, nil] A temporary ID for the commit that can be used to reference the commit for
+        #   # @param temporary_id [String] A temporary ID for the commit that can be used to reference the commit for
         #   #   commit specific overrides.
         #   #
         #   def initialize(
@@ -505,7 +505,7 @@ module Metronome
           #   #
           #   # @param schedule_items [Array<Metronome::Models::ContractCreateParams::Commit::AccessSchedule::ScheduleItem>]
           #   #
-          #   # @param credit_type_id [String, nil] Defaults to USD (cents) if not passed
+          #   # @param credit_type_id [String] Defaults to USD (cents) if not passed
           #   #
           #   def initialize(schedule_items:, credit_type_id: nil, **) = super
 
@@ -571,13 +571,13 @@ module Metronome
           #   #   amount. Optional for "PREPAID" commits: if not provided, this will be a
           #   #   "complimentary" commit with no invoice.
           #   #
-          #   # @param credit_type_id [String, nil] Defaults to USD (cents) if not passed.
+          #   # @param credit_type_id [String] Defaults to USD (cents) if not passed.
           #   #
-          #   # @param recurring_schedule [Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule, nil] Enter the unit price and quantity for the charge or instead only send the
+          #   # @param recurring_schedule [Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule] Enter the unit price and quantity for the charge or instead only send the
           #   #   amount. If amount is sent, the unit price is assumed to be the amount and
           #   #   quantity is inferred to be 1.
           #   #
-          #   # @param schedule_items [Array<Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::ScheduleItem>, nil] Either provide amount or provide both unit_price and quantity.
+          #   # @param schedule_items [Array<Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::ScheduleItem>] Either provide amount or provide both unit_price and quantity.
           #   #
           #   def initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil, **) = super
 
@@ -643,15 +643,15 @@ module Metronome
             #   #
             #   # @param starting_at [String] RFC 3339 timestamp (inclusive).
             #   #
-            #   # @param amount [Float, nil] Amount for the charge. Can be provided instead of unit_price and quantity. If
+            #   # @param amount [Float] Amount for the charge. Can be provided instead of unit_price and quantity. If
             #   #   amount is sent, the unit_price is assumed to be the amount and quantity is
             #   #   inferred to be 1.
             #   #
-            #   # @param quantity [Float, nil] Quantity for the charge. Will be multiplied by unit_price to determine the
+            #   # @param quantity [Float] Quantity for the charge. Will be multiplied by unit_price to determine the
             #   #   amount and must be specified with unit_price. If specified amount cannot be
             #   #   provided.
             #   #
-            #   # @param unit_price [Float, nil] Unit price for the charge. Will be multiplied by quantity to determine the
+            #   # @param unit_price [Float] Unit price for the charge. Will be multiplied by quantity to determine the
             #   #   amount and must be specified with quantity. If specified amount cannot be
             #   #   provided.
             #   #
@@ -742,15 +742,15 @@ module Metronome
             # @!parse
             #   # @param timestamp [String] timestamp of the scheduled event
             #   #
-            #   # @param amount [Float, nil] Amount for the charge. Can be provided instead of unit_price and quantity. If
+            #   # @param amount [Float] Amount for the charge. Can be provided instead of unit_price and quantity. If
             #   #   amount is sent, the unit_price is assumed to be the amount and quantity is
             #   #   inferred to be 1.
             #   #
-            #   # @param quantity [Float, nil] Quantity for the charge. Will be multiplied by unit_price to determine the
+            #   # @param quantity [Float] Quantity for the charge. Will be multiplied by unit_price to determine the
             #   #   amount and must be specified with unit_price. If specified amount cannot be
             #   #   provided.
             #   #
-            #   # @param unit_price [Float, nil] Unit price for the charge. Will be multiplied by quantity to determine the
+            #   # @param unit_price [Float] Unit price for the charge. Will be multiplied by quantity to determine the
             #   #   amount and must be specified with quantity. If specified amount cannot be
             #   #   provided.
             #   #
@@ -847,24 +847,24 @@ module Metronome
         #   #
         #   # @param product_id [String]
         #   #
-        #   # @param applicable_product_ids [Array<String>, nil] Which products the credit applies to. If both applicable_product_ids and
+        #   # @param applicable_product_ids [Array<String>] Which products the credit applies to. If both applicable_product_ids and
         #   #   applicable_product_tags are not provided, the credit applies to all products.
         #   #
-        #   # @param applicable_product_tags [Array<String>, nil] Which tags the credit applies to. If both applicable_product_ids and
+        #   # @param applicable_product_tags [Array<String>] Which tags the credit applies to. If both applicable_product_ids and
         #   #   applicable_product_tags are not provided, the credit applies to all products.
         #   #
-        #   # @param custom_fields [Hash{Symbol => String}, nil]
+        #   # @param custom_fields [Hash{Symbol => String}]
         #   #
-        #   # @param description [String, nil] Used only in UI/API. It is not exposed to end customers.
+        #   # @param description [String] Used only in UI/API. It is not exposed to end customers.
         #   #
-        #   # @param name [String, nil] displayed on invoices
+        #   # @param name [String] displayed on invoices
         #   #
-        #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
+        #   # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
         #   #
-        #   # @param priority [Float, nil] If multiple credits are applicable, the one with the lower priority will apply
+        #   # @param priority [Float] If multiple credits are applicable, the one with the lower priority will apply
         #   #   first.
         #   #
-        #   # @param rate_type [String, nil]
+        #   # @param rate_type [String]
         #   #
         #   def initialize(
         #     access_schedule:,
@@ -904,7 +904,7 @@ module Metronome
           #   #
           #   # @param schedule_items [Array<Metronome::Models::ContractCreateParams::Credit::AccessSchedule::ScheduleItem>]
           #   #
-          #   # @param credit_type_id [String, nil] Defaults to USD (cents) if not passed
+          #   # @param credit_type_id [String] Defaults to USD (cents) if not passed
           #   #
           #   def initialize(schedule_items:, credit_type_id: nil, **) = super
 
@@ -994,9 +994,9 @@ module Metronome
         #   #
         #   # @param schedule [Metronome::Models::ContractCreateParams::Discount::Schedule] Must provide either schedule_items or recurring_schedule.
         #   #
-        #   # @param name [String, nil] displayed on invoices
+        #   # @param name [String] displayed on invoices
         #   #
-        #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
+        #   # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
         #   #
         #   def initialize(product_id:, schedule:, name: nil, netsuite_sales_order_id: nil, **) = super
 
@@ -1028,13 +1028,13 @@ module Metronome
           # @!parse
           #   # Must provide either schedule_items or recurring_schedule.
           #   #
-          #   # @param credit_type_id [String, nil] Defaults to USD (cents) if not passed.
+          #   # @param credit_type_id [String] Defaults to USD (cents) if not passed.
           #   #
-          #   # @param recurring_schedule [Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule, nil] Enter the unit price and quantity for the charge or instead only send the
+          #   # @param recurring_schedule [Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule] Enter the unit price and quantity for the charge or instead only send the
           #   #   amount. If amount is sent, the unit price is assumed to be the amount and
           #   #   quantity is inferred to be 1.
           #   #
-          #   # @param schedule_items [Array<Metronome::Models::ContractCreateParams::Discount::Schedule::ScheduleItem>, nil] Either provide amount or provide both unit_price and quantity.
+          #   # @param schedule_items [Array<Metronome::Models::ContractCreateParams::Discount::Schedule::ScheduleItem>] Either provide amount or provide both unit_price and quantity.
           #   #
           #   def initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil, **) = super
 
@@ -1100,15 +1100,15 @@ module Metronome
             #   #
             #   # @param starting_at [String] RFC 3339 timestamp (inclusive).
             #   #
-            #   # @param amount [Float, nil] Amount for the charge. Can be provided instead of unit_price and quantity. If
+            #   # @param amount [Float] Amount for the charge. Can be provided instead of unit_price and quantity. If
             #   #   amount is sent, the unit_price is assumed to be the amount and quantity is
             #   #   inferred to be 1.
             #   #
-            #   # @param quantity [Float, nil] Quantity for the charge. Will be multiplied by unit_price to determine the
+            #   # @param quantity [Float] Quantity for the charge. Will be multiplied by unit_price to determine the
             #   #   amount and must be specified with unit_price. If specified amount cannot be
             #   #   provided.
             #   #
-            #   # @param unit_price [Float, nil] Unit price for the charge. Will be multiplied by quantity to determine the
+            #   # @param unit_price [Float] Unit price for the charge. Will be multiplied by quantity to determine the
             #   #   amount and must be specified with quantity. If specified amount cannot be
             #   #   provided.
             #   #
@@ -1199,15 +1199,15 @@ module Metronome
             # @!parse
             #   # @param timestamp [String] timestamp of the scheduled event
             #   #
-            #   # @param amount [Float, nil] Amount for the charge. Can be provided instead of unit_price and quantity. If
+            #   # @param amount [Float] Amount for the charge. Can be provided instead of unit_price and quantity. If
             #   #   amount is sent, the unit_price is assumed to be the amount and quantity is
             #   #   inferred to be 1.
             #   #
-            #   # @param quantity [Float, nil] Quantity for the charge. Will be multiplied by unit_price to determine the
+            #   # @param quantity [Float] Quantity for the charge. Will be multiplied by unit_price to determine the
             #   #   amount and must be specified with unit_price. If specified amount cannot be
             #   #   provided.
             #   #
-            #   # @param unit_price [Float, nil] Unit price for the charge. Will be multiplied by quantity to determine the
+            #   # @param unit_price [Float] Unit price for the charge. Will be multiplied by quantity to determine the
             #   #   amount and must be specified with quantity. If specified amount cannot be
             #   #   provided.
             #   #
@@ -1321,40 +1321,40 @@ module Metronome
         # @!parse
         #   # @param starting_at [String] RFC 3339 timestamp indicating when the override will start applying (inclusive)
         #   #
-        #   # @param applicable_product_tags [Array<String>, nil] tags identifying products whose rates are being overridden. Cannot be used in
+        #   # @param applicable_product_tags [Array<String>] tags identifying products whose rates are being overridden. Cannot be used in
         #   #   conjunction with override_specifiers.
         #   #
-        #   # @param ending_before [String, nil] RFC 3339 timestamp indicating when the override will stop applying (exclusive)
+        #   # @param ending_before [String] RFC 3339 timestamp indicating when the override will stop applying (exclusive)
         #   #
-        #   # @param entitled [Boolean, nil]
+        #   # @param entitled [Boolean]
         #   #
-        #   # @param is_commit_specific [Boolean, nil] Indicates whether the override should only apply to commits. Defaults to
+        #   # @param is_commit_specific [Boolean] Indicates whether the override should only apply to commits. Defaults to
         #   #   `false`. If `true`, you can specify relevant commits in `override_specifiers` by
         #   #   passing `commit_ids`. if you do not specify `commit_ids`, then the override will
         #   #   apply when consuming any prepaid or postpaid commit.
         #   #
-        #   # @param multiplier [Float, nil] Required for MULTIPLIER type. Must be >=0.
+        #   # @param multiplier [Float] Required for MULTIPLIER type. Must be >=0.
         #   #
-        #   # @param override_specifiers [Array<Metronome::Models::ContractCreateParams::Override::OverrideSpecifier>, nil] Cannot be used in conjunction with product_id or applicable_product_tags. If
+        #   # @param override_specifiers [Array<Metronome::Models::ContractCreateParams::Override::OverrideSpecifier>] Cannot be used in conjunction with product_id or applicable_product_tags. If
         #   #   provided, the override will apply to all products with the specified specifiers.
         #   #
-        #   # @param overwrite_rate [Metronome::Models::ContractCreateParams::Override::OverwriteRate, nil] Required for OVERWRITE type.
+        #   # @param overwrite_rate [Metronome::Models::ContractCreateParams::Override::OverwriteRate] Required for OVERWRITE type.
         #   #
-        #   # @param priority [Float, nil] Required for EXPLICIT multiplier prioritization scheme and all TIERED overrides.
+        #   # @param priority [Float] Required for EXPLICIT multiplier prioritization scheme and all TIERED overrides.
         #   #   Under EXPLICIT prioritization, overwrites are prioritized first, and then tiered
         #   #   and multiplier overrides are prioritized by their priority value (lowest first).
         #   #   Must be > 0.
         #   #
-        #   # @param product_id [String, nil] ID of the product whose rate is being overridden. Cannot be used in conjunction
+        #   # @param product_id [String] ID of the product whose rate is being overridden. Cannot be used in conjunction
         #   #   with override_specifiers.
         #   #
-        #   # @param target [String, nil] Indicates whether the override applies to commit rates or list rates. Can only
+        #   # @param target [String] Indicates whether the override applies to commit rates or list rates. Can only
         #   #   be used for overrides that have `is_commit_specific` set to `true`. Defaults to
         #   #   `"LIST_RATE"`.
         #   #
-        #   # @param tiers [Array<Metronome::Models::ContractCreateParams::Override::Tier>, nil] Required for TIERED type. Must have at least one tier.
+        #   # @param tiers [Array<Metronome::Models::ContractCreateParams::Override::Tier>] Required for TIERED type. Must have at least one tier.
         #   #
-        #   # @param type [String, nil] Overwrites are prioritized over multipliers and tiered overrides.
+        #   # @param type [String] Overwrites are prioritized over multipliers and tiered overrides.
         #   #
         #   def initialize(
         #     starting_at:,
@@ -1409,21 +1409,21 @@ module Metronome
           optional :product_tags, Metronome::ArrayOf[String]
 
           # @!parse
-          #   # @param commit_ids [Array<String>, nil] Can only be used for commit specific overrides. Must be used in conjunction with
+          #   # @param commit_ids [Array<String>] Can only be used for commit specific overrides. Must be used in conjunction with
           #   #   one of product_id, product_tags, pricing_group_values, or
           #   #   presentation_group_values. If provided, the override will only apply to the
           #   #   specified commits. If not provided, the override will apply to all commits.
           #   #
-          #   # @param presentation_group_values [Hash{Symbol => String}, nil] A map of group names to values. The override will only apply to line items with
+          #   # @param presentation_group_values [Hash{Symbol => String}] A map of group names to values. The override will only apply to line items with
           #   #   the specified presentation group values. Can only be used for multiplier
           #   #   overrides.
           #   #
-          #   # @param pricing_group_values [Hash{Symbol => String}, nil] A map of pricing group names to values. The override will only apply to products
+          #   # @param pricing_group_values [Hash{Symbol => String}] A map of pricing group names to values. The override will only apply to products
           #   #   with the specified pricing group values.
           #   #
-          #   # @param product_id [String, nil] If provided, the override will only apply to the product with the specified ID.
+          #   # @param product_id [String] If provided, the override will only apply to the product with the specified ID.
           #   #
-          #   # @param product_tags [Array<String>, nil] If provided, the override will only apply to products with all the specified
+          #   # @param product_tags [Array<String>] If provided, the override will only apply to products with all the specified
           #   #   tags.
           #   #
           #   def initialize(
@@ -1487,20 +1487,20 @@ module Metronome
           #   #
           #   # @param rate_type [String]
           #   #
-          #   # @param credit_type_id [String, nil]
+          #   # @param credit_type_id [String]
           #   #
-          #   # @param custom_rate [Hash{Symbol => Object}, nil] Only set for CUSTOM rate_type. This field is interpreted by custom rate
+          #   # @param custom_rate [Hash{Symbol => Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate
           #   #   processors.
           #   #
-          #   # @param is_prorated [Boolean, nil] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
+          #   # @param is_prorated [Boolean] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
           #   #   set to true.
           #   #
-          #   # @param price [Float, nil] Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
+          #   # @param price [Float] Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
           #   #   this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
           #   #
-          #   # @param quantity [Float, nil] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
+          #   # @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
           #   #
-          #   # @param tiers [Array<Metronome::Models::Tier>, nil] Only set for TIERED rate_type.
+          #   # @param tiers [Array<Metronome::Models::Tier>] Only set for TIERED rate_type.
           #   #
           #   def initialize(
           #     rate_type:,
@@ -1582,7 +1582,7 @@ module Metronome
 
           # @!parse
           #   # @param multiplier [Float]
-          #   # @param size [Float, nil]
+          #   # @param size [Float]
           #   #
           #   def initialize(multiplier:, size: nil, **) = super
 
@@ -1663,11 +1663,11 @@ module Metronome
         #   # @param unit_price [Float] Unit price for the charge. Will be multiplied by quantity to determine the
         #   #   amount and must be specified.
         #   #
-        #   # @param custom_fields [Hash{Symbol => String}, nil]
+        #   # @param custom_fields [Hash{Symbol => String}]
         #   #
-        #   # @param description [String, nil]
+        #   # @param description [String]
         #   #
-        #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
+        #   # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
         #   #
         #   def initialize(
         #     max_amount:,
@@ -1748,17 +1748,17 @@ module Metronome
         #   #
         #   # @param starting_at [String]
         #   #
-        #   # @param applicable_product_ids [Array<String>, nil] Must provide at least one of applicable_product_ids or applicable_product_tags.
+        #   # @param applicable_product_ids [Array<String>] Must provide at least one of applicable_product_ids or applicable_product_tags.
         #   #
-        #   # @param applicable_product_tags [Array<String>, nil] Must provide at least one of applicable_product_ids or applicable_product_tags.
+        #   # @param applicable_product_tags [Array<String>] Must provide at least one of applicable_product_ids or applicable_product_tags.
         #   #
-        #   # @param aws_options [Metronome::Models::ContractCreateParams::ResellerRoyalty::AwsOptions, nil]
+        #   # @param aws_options [Metronome::Models::ContractCreateParams::ResellerRoyalty::AwsOptions]
         #   #
-        #   # @param ending_before [String, nil]
+        #   # @param ending_before [String]
         #   #
-        #   # @param gcp_options [Metronome::Models::ContractCreateParams::ResellerRoyalty::GcpOptions, nil]
+        #   # @param gcp_options [Metronome::Models::ContractCreateParams::ResellerRoyalty::GcpOptions]
         #   #
-        #   # @param reseller_contract_value [Float, nil]
+        #   # @param reseller_contract_value [Float]
         #   #
         #   def initialize(
         #     fraction:,
@@ -1818,9 +1818,9 @@ module Metronome
           optional :aws_payer_reference_id, String
 
           # @!parse
-          #   # @param aws_account_number [String, nil]
-          #   # @param aws_offer_id [String, nil]
-          #   # @param aws_payer_reference_id [String, nil]
+          #   # @param aws_account_number [String]
+          #   # @param aws_offer_id [String]
+          #   # @param aws_payer_reference_id [String]
           #   #
           #   def initialize(aws_account_number: nil, aws_offer_id: nil, aws_payer_reference_id: nil, **) = super
 
@@ -1839,8 +1839,8 @@ module Metronome
           optional :gcp_offer_id, String
 
           # @!parse
-          #   # @param gcp_account_id [String, nil]
-          #   # @param gcp_offer_id [String, nil]
+          #   # @param gcp_account_id [String]
+          #   # @param gcp_offer_id [String]
           #   #
           #   def initialize(gcp_account_id: nil, gcp_offer_id: nil, **) = super
 
@@ -1877,9 +1877,9 @@ module Metronome
         #   #
         #   # @param schedule [Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule] Must provide either schedule_items or recurring_schedule.
         #   #
-        #   # @param name [String, nil] displayed on invoices
+        #   # @param name [String] displayed on invoices
         #   #
-        #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
+        #   # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
         #   #
         #   def initialize(product_id:, schedule:, name: nil, netsuite_sales_order_id: nil, **) = super
 
@@ -1911,13 +1911,13 @@ module Metronome
           # @!parse
           #   # Must provide either schedule_items or recurring_schedule.
           #   #
-          #   # @param credit_type_id [String, nil] Defaults to USD (cents) if not passed.
+          #   # @param credit_type_id [String] Defaults to USD (cents) if not passed.
           #   #
-          #   # @param recurring_schedule [Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule, nil] Enter the unit price and quantity for the charge or instead only send the
+          #   # @param recurring_schedule [Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule] Enter the unit price and quantity for the charge or instead only send the
           #   #   amount. If amount is sent, the unit price is assumed to be the amount and
           #   #   quantity is inferred to be 1.
           #   #
-          #   # @param schedule_items [Array<Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::ScheduleItem>, nil] Either provide amount or provide both unit_price and quantity.
+          #   # @param schedule_items [Array<Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::ScheduleItem>] Either provide amount or provide both unit_price and quantity.
           #   #
           #   def initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil, **) = super
 
@@ -1983,15 +1983,15 @@ module Metronome
             #   #
             #   # @param starting_at [String] RFC 3339 timestamp (inclusive).
             #   #
-            #   # @param amount [Float, nil] Amount for the charge. Can be provided instead of unit_price and quantity. If
+            #   # @param amount [Float] Amount for the charge. Can be provided instead of unit_price and quantity. If
             #   #   amount is sent, the unit_price is assumed to be the amount and quantity is
             #   #   inferred to be 1.
             #   #
-            #   # @param quantity [Float, nil] Quantity for the charge. Will be multiplied by unit_price to determine the
+            #   # @param quantity [Float] Quantity for the charge. Will be multiplied by unit_price to determine the
             #   #   amount and must be specified with unit_price. If specified amount cannot be
             #   #   provided.
             #   #
-            #   # @param unit_price [Float, nil] Unit price for the charge. Will be multiplied by quantity to determine the
+            #   # @param unit_price [Float] Unit price for the charge. Will be multiplied by quantity to determine the
             #   #   amount and must be specified with quantity. If specified amount cannot be
             #   #   provided.
             #   #
@@ -2082,15 +2082,15 @@ module Metronome
             # @!parse
             #   # @param timestamp [String] timestamp of the scheduled event
             #   #
-            #   # @param amount [Float, nil] Amount for the charge. Can be provided instead of unit_price and quantity. If
+            #   # @param amount [Float] Amount for the charge. Can be provided instead of unit_price and quantity. If
             #   #   amount is sent, the unit_price is assumed to be the amount and quantity is
             #   #   inferred to be 1.
             #   #
-            #   # @param quantity [Float, nil] Quantity for the charge. Will be multiplied by unit_price to determine the
+            #   # @param quantity [Float] Quantity for the charge. Will be multiplied by unit_price to determine the
             #   #   amount and must be specified with unit_price. If specified amount cannot be
             #   #   provided.
             #   #
-            #   # @param unit_price [Float, nil] Unit price for the charge. Will be multiplied by quantity to determine the
+            #   # @param unit_price [Float] Unit price for the charge. Will be multiplied by quantity to determine the
             #   #   amount and must be specified with quantity. If specified amount cannot be
             #   #   provided.
             #   #
@@ -2124,7 +2124,7 @@ module Metronome
         #   #
         #   # @param type [String] This field's available values may vary based on your client's configuration.
         #   #
-        #   # @param future_invoice_behavior [Metronome::Models::ContractCreateParams::Transition::FutureInvoiceBehavior, nil]
+        #   # @param future_invoice_behavior [Metronome::Models::ContractCreateParams::Transition::FutureInvoiceBehavior]
         #   #
         #   def initialize(from_contract_id:, type:, future_invoice_behavior: nil, **) = super
 
@@ -2153,7 +2153,7 @@ module Metronome
           # @!attribute trueup
           #   Controls whether future trueup invoices are billed or removed. Default behavior is AS_IS if not specified.
           #
-          #   @return [Symbol, Metronome::Models::ContractCreateParams::Transition::FutureInvoiceBehavior::Trueup]
+          #   @return [Symbol, Metronome::Models::ContractCreateParams::Transition::FutureInvoiceBehavior::Trueup, nil]
           optional :trueup,
                    enum: -> {
                      Metronome::Models::ContractCreateParams::Transition::FutureInvoiceBehavior::Trueup
@@ -2216,15 +2216,15 @@ module Metronome
         # @!parse
         #   # @param frequency [String]
         #   #
-        #   # @param billing_anchor_date [String, nil] Required when using CUSTOM_DATE. This option lets you set a historical billing
+        #   # @param billing_anchor_date [String] Required when using CUSTOM_DATE. This option lets you set a historical billing
         #   #   anchor date, aligning future billing cycles with a chosen cadence. For example,
         #   #   if a contract starts on 2024-09-15 and you set the anchor date to 2024-09-10
         #   #   with a MONTHLY frequency, the first usage statement will cover 09-15 to 10-10.
         #   #   Subsequent statements will follow the 10th of each month.
         #   #
-        #   # @param day [String, nil] If not provided, defaults to the first day of the month.
+        #   # @param day [String] If not provided, defaults to the first day of the month.
         #   #
-        #   # @param invoice_generation_starting_at [String, nil] The date Metronome should start generating usage invoices. If unspecified,
+        #   # @param invoice_generation_starting_at [String] The date Metronome should start generating usage invoices. If unspecified,
         #   #   contract start date will be used. This is useful to set if you want to import
         #   #   historical invoices via our 'Create Historical Invoices' API rather than having
         #   #   Metronome automatically generate them.

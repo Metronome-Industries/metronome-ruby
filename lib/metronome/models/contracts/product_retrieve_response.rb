@@ -47,7 +47,7 @@ module Metronome
 
           # @!attribute archived_at
           #
-          #   @return [Time]
+          #   @return [Time, nil]
           optional :archived_at, Time
 
           # @!attribute custom_fields
@@ -62,7 +62,7 @@ module Metronome
           #   # @param type [String]
           #   # @param updates [Array<Metronome::Models::Contracts::ProductRetrieveResponse::Data::Update>]
           #   # @param archived_at [String, nil]
-          #   # @param custom_fields [Hash{Symbol => String}, nil]
+          #   # @param custom_fields [Hash{Symbol => String}]
           #   #
           #   def initialize(id:, current:, initial:, type:, updates:, archived_at: nil, custom_fields: nil, **) = super
 
@@ -162,13 +162,13 @@ module Metronome
             # @!attribute quantity_conversion
             #   Optional. Only valid for USAGE products. If provided, the quantity will be converted using the provided conversion factor and operation. For example, if the operation is "multiply" and the conversion factor is 100, then the quantity will be multiplied by 100. This can be used in cases where data is sent in one unit and priced in another.  For example, data could be sent in MB and priced in GB. In this case, the conversion factor would be 1024 and the operation would be "divide".
             #
-            #   @return [Metronome::Models::Contracts::QuantityConversion]
+            #   @return [Metronome::Models::Contracts::QuantityConversion, nil]
             optional :quantity_conversion, -> { Metronome::Models::Contracts::QuantityConversion }
 
             # @!attribute quantity_rounding
             #   Optional. Only valid for USAGE products. If provided, the quantity will be rounded using the provided rounding method and decimal places. For example, if the method is "round up" and the decimal places is 0, then the quantity will be rounded up to the nearest integer.
             #
-            #   @return [Metronome::Models::Contracts::QuantityRounding]
+            #   @return [Metronome::Models::Contracts::QuantityRounding, nil]
             optional :quantity_rounding, -> { Metronome::Models::Contracts::QuantityRounding }
 
             # @!attribute starting_at
@@ -186,27 +186,27 @@ module Metronome
             #   #
             #   # @param created_by [String]
             #   #
-            #   # @param billable_metric_id [String, nil]
+            #   # @param billable_metric_id [String]
             #   #
-            #   # @param composite_product_ids [Array<String>, nil]
+            #   # @param composite_product_ids [Array<String>]
             #   #
-            #   # @param composite_tags [Array<String>, nil]
+            #   # @param composite_tags [Array<String>]
             #   #
-            #   # @param exclude_free_usage [Boolean, nil]
+            #   # @param exclude_free_usage [Boolean]
             #   #
-            #   # @param is_refundable [Boolean, nil]
+            #   # @param is_refundable [Boolean]
             #   #
-            #   # @param name [String, nil]
+            #   # @param name [String]
             #   #
-            #   # @param netsuite_internal_item_id [String, nil] This field's availability is dependent on your client's configuration.
+            #   # @param netsuite_internal_item_id [String] This field's availability is dependent on your client's configuration.
             #   #
-            #   # @param netsuite_overage_item_id [String, nil] This field's availability is dependent on your client's configuration.
+            #   # @param netsuite_overage_item_id [String] This field's availability is dependent on your client's configuration.
             #   #
-            #   # @param presentation_group_key [Array<String>, nil] For USAGE products only. Groups usage line items on invoices. The superset of
+            #   # @param presentation_group_key [Array<String>] For USAGE products only. Groups usage line items on invoices. The superset of
             #   #   values in the pricing group key and presentation group key must be set as one
             #   #   compound group key on the billable metric.
             #   #
-            #   # @param pricing_group_key [Array<String>, nil] For USAGE products only. If set, pricing for this product will be determined for
+            #   # @param pricing_group_key [Array<String>] For USAGE products only. If set, pricing for this product will be determined for
             #   #   each pricing_group_key value, as opposed to the product as a whole. The superset
             #   #   of values in the pricing group key and presentation group key must be set as one
             #   #   compound group key on the billable metric.
@@ -224,9 +224,9 @@ module Metronome
             #   #   the method is "round up" and the decimal places is 0, then the quantity will be
             #   #   rounded up to the nearest integer.
             #   #
-            #   # @param starting_at [String, nil]
+            #   # @param starting_at [String]
             #   #
-            #   # @param tags [Array<String>, nil]
+            #   # @param tags [Array<String>]
             #   #
             #   def initialize(
             #     created_at:,

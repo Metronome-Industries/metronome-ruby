@@ -27,7 +27,7 @@ module Metronome
       #   # @param id [String]
       #   # @param description [String]
       #   # @param name [String]
-      #   # @param custom_fields [Hash{Symbol => String}, nil]
+      #   # @param custom_fields [Hash{Symbol => String}]
       #   #
       #   def initialize(id:, description:, name:, custom_fields: nil, **) = super
 

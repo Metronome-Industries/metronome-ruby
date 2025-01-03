@@ -51,7 +51,7 @@ module Metronome
         #   #
         #   # @param transaction_id [String]
         #   #
-        #   # @param properties [Hash{Symbol => Object}, nil]
+        #   # @param properties [Hash{Symbol => Object}]
         #   #
         #   def initialize(customer_id:, event_type:, timestamp:, transaction_id:, properties: nil, **) = super
 

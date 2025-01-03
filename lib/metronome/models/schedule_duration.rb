@@ -15,7 +15,7 @@ module Metronome
 
       # @!parse
       #   # @param schedule_items [Array<Metronome::Models::ScheduleDuration::ScheduleItem>]
-      #   # @param credit_type [Metronome::Models::CreditTypeData, nil]
+      #   # @param credit_type [Metronome::Models::CreditTypeData]
       #   #
       #   def initialize(schedule_items:, credit_type: nil, **) = super
 

@@ -98,11 +98,11 @@ module Metronome
         #   #
         #   # @param usage_line_items [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem>]
         #   #
-        #   # @param billable_status [String, nil] This field's availability is dependent on your client's configuration.
+        #   # @param billable_status [String] This field's availability is dependent on your client's configuration.
         #   #
-        #   # @param breakdown_granularity [String, nil]
+        #   # @param breakdown_granularity [String]
         #   #
-        #   # @param custom_fields [Hash{Symbol => String}, nil]
+        #   # @param custom_fields [Hash{Symbol => String}]
         #   #
         #   def initialize(
         #     contract_id:,
@@ -165,10 +165,10 @@ module Metronome
           #   # @param exclusive_end_date [String]
           #   # @param inclusive_start_date [String]
           #   # @param product_id [String]
-          #   # @param presentation_group_values [Hash{Symbol => String}, nil]
-          #   # @param pricing_group_values [Hash{Symbol => String}, nil]
-          #   # @param quantity [Float, nil]
-          #   # @param subtotals_with_quantity [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity>, nil]
+          #   # @param presentation_group_values [Hash{Symbol => String}]
+          #   # @param pricing_group_values [Hash{Symbol => String}]
+          #   # @param quantity [Float]
+          #   # @param subtotals_with_quantity [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity>]
           #   #
           #   def initialize(
           #     exclusive_end_date:,

@@ -42,7 +42,7 @@ module Metronome
         #   # @param value [Object] The value to set for the named schedule. The structure of this object is
         #   #   specific to the named schedule.
         #   #
-        #   # @param ending_before [String, nil]
+        #   # @param ending_before [String]
         #   #
         #   def initialize(rate_card_id:, schedule_name:, starting_at:, value:, ending_before: nil, **) = super
 

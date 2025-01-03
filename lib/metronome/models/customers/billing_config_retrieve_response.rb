@@ -73,29 +73,29 @@ module Metronome
                    }
 
           # @!parse
-          #   # @param aws_expiration_date [String, nil] Contract expiration date for the customer. The expected format is RFC 3339 and
+          #   # @param aws_expiration_date [String] Contract expiration date for the customer. The expected format is RFC 3339 and
           #   #   can be retrieved from
           #   #   [AWS's GetEntitlements API](https://docs.aws.amazon.com/marketplaceentitlement/latest/APIReference/API_GetEntitlements.html).
           #   #
-          #   # @param aws_product_code [String, nil]
+          #   # @param aws_product_code [String]
           #   #
-          #   # @param aws_region [String, nil]
+          #   # @param aws_region [String]
           #   #
-          #   # @param azure_expiration_date [String, nil] Subscription term start/end date for the customer. The expected format is RFC
+          #   # @param azure_expiration_date [String] Subscription term start/end date for the customer. The expected format is RFC
           #   #   3339 and can be retrieved from
           #   #   [Azure's Get Subscription API](https://learn.microsoft.com/en-us/partner-center/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api#get-subscription).
           #   #
-          #   # @param azure_plan_id [String, nil]
+          #   # @param azure_plan_id [String]
           #   #
-          #   # @param azure_start_date [String, nil] Subscription term start/end date for the customer. The expected format is RFC
+          #   # @param azure_start_date [String] Subscription term start/end date for the customer. The expected format is RFC
           #   #   3339 and can be retrieved from
           #   #   [Azure's Get Subscription API](https://learn.microsoft.com/en-us/partner-center/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api#get-subscription).
           #   #
-          #   # @param azure_subscription_status [String, nil]
+          #   # @param azure_subscription_status [String]
           #   #
-          #   # @param billing_provider_customer_id [String, nil]
+          #   # @param billing_provider_customer_id [String]
           #   #
-          #   # @param stripe_collection_method [String, nil]
+          #   # @param stripe_collection_method [String]
           #   #
           #   def initialize(
           #     aws_expiration_date: nil,

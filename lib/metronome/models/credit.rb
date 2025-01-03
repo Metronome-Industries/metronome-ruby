@@ -101,35 +101,35 @@ module Metronome
       #   #
       #   # @param type [String]
       #   #
-      #   # @param access_schedule [Metronome::Models::ScheduleDuration, nil] The schedule that the customer will gain access to the credits.
+      #   # @param access_schedule [Metronome::Models::ScheduleDuration] The schedule that the customer will gain access to the credits.
       #   #
-      #   # @param applicable_contract_ids [Array<String>, nil]
+      #   # @param applicable_contract_ids [Array<String>]
       #   #
-      #   # @param applicable_product_ids [Array<String>, nil]
+      #   # @param applicable_product_ids [Array<String>]
       #   #
-      #   # @param applicable_product_tags [Array<String>, nil]
+      #   # @param applicable_product_tags [Array<String>]
       #   #
-      #   # @param contract [Metronome::Models::Credit::Contract, nil]
+      #   # @param contract [Metronome::Models::Credit::Contract]
       #   #
-      #   # @param custom_fields [Hash{Symbol => String}, nil]
+      #   # @param custom_fields [Hash{Symbol => String}]
       #   #
-      #   # @param description [String, nil]
+      #   # @param description [String]
       #   #
-      #   # @param ledger [Array<Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry, Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry, Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry, Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry, Metronome::Models::Credit::Ledger::CreditManualLedgerEntry>, nil] A list of ordered events that impact the balance of a credit. For example, an
+      #   # @param ledger [Array<Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry, Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry, Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry, Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry, Metronome::Models::Credit::Ledger::CreditManualLedgerEntry>] A list of ordered events that impact the balance of a credit. For example, an
       #   #   invoice deduction or an expiration.
       #   #
-      #   # @param name [String, nil]
+      #   # @param name [String]
       #   #
-      #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
+      #   # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
       #   #
-      #   # @param priority [Float, nil] If multiple credits or commits are applicable, the one with the lower priority
+      #   # @param priority [Float] If multiple credits or commits are applicable, the one with the lower priority
       #   #   will apply first.
       #   #
-      #   # @param rate_type [String, nil]
+      #   # @param rate_type [String]
       #   #
-      #   # @param salesforce_opportunity_id [String, nil] This field's availability is dependent on your client's configuration.
+      #   # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
       #   #
-      #   # @param uniqueness_key [String, nil] Prevents the creation of duplicates. If a request to create a commit or credit
+      #   # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a commit or credit
       #   #   is made with a uniqueness key that was previously used to create a commit or
       #   #   credit, a new record will not be created and the request will fail with a 409
       #   #   error.

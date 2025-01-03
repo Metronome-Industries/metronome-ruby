@@ -12,13 +12,13 @@ module Metronome
         # @!attribute customer_status
         #   The status of the customer alert. If the alert is archived, null will be returned.
         #
-        #   @return [Symbol, Metronome::Models::Customers::CustomerAlert::CustomerStatus]
+        #   @return [Symbol, Metronome::Models::Customers::CustomerAlert::CustomerStatus, nil]
         required :customer_status, enum: -> { Metronome::Models::Customers::CustomerAlert::CustomerStatus }
 
         # @!attribute triggered_by
         #   If present, indicates the reason the alert was triggered.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :triggered_by, String
 
         # @!parse
@@ -78,7 +78,7 @@ module Metronome
 
           # @!attribute credit_type
           #
-          #   @return [Metronome::Models::CreditTypeData]
+          #   @return [Metronome::Models::CreditTypeData, nil]
           optional :credit_type, -> { Metronome::Models::CreditTypeData }
 
           # @!attribute custom_field_filters
@@ -124,21 +124,21 @@ module Metronome
           #   #
           #   # @param updated_at [String] Timestamp for when the alert was last updated
           #   #
-          #   # @param credit_grant_type_filters [Array<String>, nil] An array of strings, representing a way to filter the credit grant this alert
+          #   # @param credit_grant_type_filters [Array<String>] An array of strings, representing a way to filter the credit grant this alert
           #   #   applies to, by looking at the credit_grant_type field on the credit grant. This
           #   #   field is only defined for CreditPercentage and CreditBalance alerts
           #   #
           #   # @param credit_type [Metronome::Models::CreditTypeData, nil]
           #   #
-          #   # @param custom_field_filters [Array<Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter>, nil] A list of custom field filters for alert types that support advanced filtering
+          #   # @param custom_field_filters [Array<Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter>] A list of custom field filters for alert types that support advanced filtering
           #   #
-          #   # @param group_key_filter [Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter, nil] Scopes alert evaluation to a specific presentation group key on individual line
+          #   # @param group_key_filter [Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter] Scopes alert evaluation to a specific presentation group key on individual line
           #   #   items. Only present for spend alerts.
           #   #
-          #   # @param invoice_types_filter [Array<String>, nil] Only supported for invoice_total_reached alerts. A list of invoice types to
+          #   # @param invoice_types_filter [Array<String>] Only supported for invoice_total_reached alerts. A list of invoice types to
           #   #   evaluate.
           #   #
-          #   # @param uniqueness_key [String, nil] Prevents the creation of duplicates. If a request to create a record is made
+          #   # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made
           #   #   with a previously used uniqueness key, a new record will not be created and the
           #   #   request will fail with a 409 error.
           #   #

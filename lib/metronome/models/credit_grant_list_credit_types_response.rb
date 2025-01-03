@@ -19,9 +19,9 @@ module Metronome
       optional :name, String
 
       # @!parse
-      #   # @param id [String, nil]
-      #   # @param is_currency [Boolean, nil]
-      #   # @param name [String, nil]
+      #   # @param id [String]
+      #   # @param is_currency [Boolean]
+      #   # @param name [String]
       #   #
       #   def initialize(id: nil, is_currency: nil, name: nil, **) = super
 

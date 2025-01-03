@@ -19,9 +19,9 @@ module Metronome
                }]
 
       # @!parse
-      #   # @param next_page [String, nil] Cursor that indicates where the next page of results should start.
+      #   # @param next_page [String] Cursor that indicates where the next page of results should start.
       #   #
-      #   # @param entities [Array<String>, nil] Optional list of entity types to return keys for
+      #   # @param entities [Array<String>] Optional list of entity types to return keys for
       #   #
       #   def initialize(next_page: nil, entities: nil, **) = super
 

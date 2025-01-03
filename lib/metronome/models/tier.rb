@@ -15,7 +15,7 @@ module Metronome
 
       # @!parse
       #   # @param price [Float]
-      #   # @param size [Float, nil]
+      #   # @param size [Float]
       #   #
       #   def initialize(price:, size: nil, **) = super
 

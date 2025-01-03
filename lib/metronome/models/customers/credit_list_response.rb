@@ -11,7 +11,7 @@ module Metronome
 
         # @!attribute next_page
         #
-        #   @return [String]
+        #   @return [String, nil]
         required :next_page, String
 
         # @!parse

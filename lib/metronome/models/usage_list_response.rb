@@ -10,7 +10,7 @@ module Metronome
 
       # @!attribute next_page
       #
-      #   @return [String]
+      #   @return [String, nil]
       required :next_page, String
 
       # @!parse
@@ -49,13 +49,13 @@ module Metronome
 
         # @!attribute value
         #
-        #   @return [Float]
+        #   @return [Float, nil]
         required :value, Float
 
         # @!attribute groups
         #   Values will be either a number or null. Null indicates that there were no matches for the group_by value.
         #
-        #   @return [Hash{Symbol => Float}]
+        #   @return [Hash{Symbol => Float, nil}]
         optional :groups, Metronome::HashOf[Float]
 
         # @!parse
@@ -71,7 +71,7 @@ module Metronome
         #   #
         #   # @param value [Float, nil]
         #   #
-        #   # @param groups [Hash{Symbol => Float}, nil] Values will be either a number or null. Null indicates that there were no
+        #   # @param groups [Hash{Symbol => Float, nil}] Values will be either a number or null. Null indicates that there were no
         #   #   matches for the group_by value.
         #   #
         #   def initialize(

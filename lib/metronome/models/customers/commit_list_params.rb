@@ -59,22 +59,22 @@ module Metronome
         # @!parse
         #   # @param customer_id [String]
         #   #
-        #   # @param commit_id [String, nil]
+        #   # @param commit_id [String]
         #   #
-        #   # @param covering_date [String, nil] Include only commits that have access schedules that "cover" the provided date
+        #   # @param covering_date [String] Include only commits that have access schedules that "cover" the provided date
         #   #
-        #   # @param effective_before [String, nil] Include only commits that have any access before the provided date (exclusive)
+        #   # @param effective_before [String] Include only commits that have any access before the provided date (exclusive)
         #   #
-        #   # @param include_archived [Boolean, nil] Include commits from archived contracts.
+        #   # @param include_archived [Boolean] Include commits from archived contracts.
         #   #
-        #   # @param include_contract_commits [Boolean, nil] Include commits on the contract level.
+        #   # @param include_contract_commits [Boolean] Include commits on the contract level.
         #   #
-        #   # @param include_ledgers [Boolean, nil] Include commit ledgers in the response. Setting this flag may cause the query to
+        #   # @param include_ledgers [Boolean] Include commit ledgers in the response. Setting this flag may cause the query to
         #   #   be slower.
         #   #
-        #   # @param next_page [String, nil] The next page token from a previous response.
+        #   # @param next_page [String] The next page token from a previous response.
         #   #
-        #   # @param starting_at [String, nil] Include only commits that have any access on or after the provided date
+        #   # @param starting_at [String] Include only commits that have any access on or after the provided date
         #   #
         #   def initialize(
         #     customer_id:,

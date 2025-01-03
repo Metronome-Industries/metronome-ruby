@@ -38,9 +38,9 @@ module Metronome
         #
         #   @option params [String] :customer_id Body param: The Metronome ID of the customer
         #
-        #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
+        #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
         #
-        #   @option params [Array<Symbol, Metronome::Models::Customers::AlertListParams::AlertStatus>, nil] :alert_statuses Body param: Optionally filter by alert status. If absent, only enabled alerts
+        #   @option params [Array<Symbol, Metronome::Models::Customers::AlertListParams::AlertStatus>] :alert_statuses Body param: Optionally filter by alert status. If absent, only enabled alerts
         #     will be returned.
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.

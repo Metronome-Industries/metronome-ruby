@@ -56,9 +56,9 @@ module Metronome
       #   #
       #   # @param segment_id [String] ID of the segment to update.
       #   #
-      #   # @param contract_id [String, nil] ID of the contract to update. Leave blank to update a customer level balance.
+      #   # @param contract_id [String] ID of the contract to update. Leave blank to update a customer level balance.
       #   #
-      #   # @param timestamp [String, nil] RFC 3339 timestamp indicating when the manual adjustment takes place. If not
+      #   # @param timestamp [String] RFC 3339 timestamp indicating when the manual adjustment takes place. If not
       #   #   provided, it will default to the start of the segment.
       #   #
       #   def initialize(id:, amount:, customer_id:, reason:, segment_id:, contract_id: nil, timestamp: nil, **) = super

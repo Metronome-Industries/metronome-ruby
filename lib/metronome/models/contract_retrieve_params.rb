@@ -24,7 +24,7 @@ module Metronome
       #   #
       #   # @param customer_id [String]
       #   #
-      #   # @param include_ledgers [Boolean, nil] Include commit ledgers in the response. Setting this flag may cause the query to
+      #   # @param include_ledgers [Boolean] Include commit ledgers in the response. Setting this flag may cause the query to
       #   #   be slower.
       #   #
       #   def initialize(contract_id:, customer_id:, include_ledgers: nil, **) = super

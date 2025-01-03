@@ -45,11 +45,11 @@ module Metronome
         #   # @param billing_provider_customer_id [String] The customer ID in the billing provider's system. For Azure, this is the
         #   #   subscription ID.
         #   #
-        #   # @param aws_product_code [String, nil]
+        #   # @param aws_product_code [String]
         #   #
-        #   # @param aws_region [String, nil]
+        #   # @param aws_region [String]
         #   #
-        #   # @param stripe_collection_method [String, nil]
+        #   # @param stripe_collection_method [String]
         #   #
         #   def initialize(
         #     customer_id:,

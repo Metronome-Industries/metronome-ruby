@@ -118,45 +118,45 @@ module Metronome
       #   #
       #   # @param starting_at [String]
       #   #
-      #   # @param applicable_product_tags [Array<String>, nil]
+      #   # @param applicable_product_tags [Array<String>]
       #   #
-      #   # @param credit_type [Metronome::Models::CreditTypeData, nil]
+      #   # @param credit_type [Metronome::Models::CreditTypeData]
       #   #
-      #   # @param ending_before [String, nil]
+      #   # @param ending_before [String]
       #   #
-      #   # @param entitled [Boolean, nil]
+      #   # @param entitled [Boolean]
       #   #
-      #   # @param is_commit_specific [Boolean, nil]
+      #   # @param is_commit_specific [Boolean]
       #   #
-      #   # @param is_prorated [Boolean, nil] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
+      #   # @param is_prorated [Boolean] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
       #   #   set to true.
       #   #
-      #   # @param multiplier [Float, nil]
+      #   # @param multiplier [Float]
       #   #
-      #   # @param override_specifiers [Array<Metronome::Models::Override::OverrideSpecifier>, nil]
+      #   # @param override_specifiers [Array<Metronome::Models::Override::OverrideSpecifier>]
       #   #
-      #   # @param override_tiers [Array<Metronome::Models::Override::OverrideTier>, nil]
+      #   # @param override_tiers [Array<Metronome::Models::Override::OverrideTier>]
       #   #
-      #   # @param overwrite_rate [Metronome::Models::Override::OverwriteRate, nil]
+      #   # @param overwrite_rate [Metronome::Models::Override::OverwriteRate]
       #   #
-      #   # @param price [Float, nil] Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
+      #   # @param price [Float] Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
       #   #   this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
       #   #
-      #   # @param priority [Float, nil]
+      #   # @param priority [Float]
       #   #
-      #   # @param product [Metronome::Models::Override::Product, nil]
+      #   # @param product [Metronome::Models::Override::Product]
       #   #
-      #   # @param quantity [Float, nil] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
+      #   # @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
       #   #
-      #   # @param rate_type [String, nil]
+      #   # @param rate_type [String]
       #   #
-      #   # @param target [String, nil]
+      #   # @param target [String]
       #   #
-      #   # @param tiers [Array<Metronome::Models::Tier>, nil] Only set for TIERED rate_type.
+      #   # @param tiers [Array<Metronome::Models::Tier>] Only set for TIERED rate_type.
       #   #
-      #   # @param type [String, nil]
+      #   # @param type [String]
       #   #
-      #   # @param value [Hash{Symbol => Object}, nil] Only set for CUSTOM rate_type. This field is interpreted by custom rate
+      #   # @param value [Hash{Symbol => Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate
       #   #   processors.
       #   #
       #   def initialize(
@@ -196,7 +196,7 @@ module Metronome
 
         # @!attribute presentation_group_values
         #
-        #   @return [Hash{Symbol => String}]
+        #   @return [Hash{Symbol => String, nil}]
         optional :presentation_group_values, Metronome::HashOf[String]
 
         # @!attribute pricing_group_values
@@ -215,11 +215,11 @@ module Metronome
         optional :product_tags, Metronome::ArrayOf[String]
 
         # @!parse
-        #   # @param commit_ids [Array<String>, nil]
-        #   # @param presentation_group_values [Hash{Symbol => String}, nil]
-        #   # @param pricing_group_values [Hash{Symbol => String}, nil]
-        #   # @param product_id [String, nil]
-        #   # @param product_tags [Array<String>, nil]
+        #   # @param commit_ids [Array<String>]
+        #   # @param presentation_group_values [Hash{Symbol => String, nil}]
+        #   # @param pricing_group_values [Hash{Symbol => String}]
+        #   # @param product_id [String]
+        #   # @param product_tags [Array<String>]
         #   #
         #   def initialize(
         #     commit_ids: nil,
@@ -248,7 +248,7 @@ module Metronome
 
         # @!parse
         #   # @param multiplier [Float]
-        #   # @param size [Float, nil]
+        #   # @param size [Float]
         #   #
         #   def initialize(multiplier:, size: nil, **) = super
 
@@ -299,20 +299,20 @@ module Metronome
         # @!parse
         #   # @param rate_type [String]
         #   #
-        #   # @param credit_type [Metronome::Models::CreditTypeData, nil]
+        #   # @param credit_type [Metronome::Models::CreditTypeData]
         #   #
-        #   # @param custom_rate [Hash{Symbol => Object}, nil] Only set for CUSTOM rate_type. This field is interpreted by custom rate
+        #   # @param custom_rate [Hash{Symbol => Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate
         #   #   processors.
         #   #
-        #   # @param is_prorated [Boolean, nil] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
+        #   # @param is_prorated [Boolean] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
         #   #   set to true.
         #   #
-        #   # @param price [Float, nil] Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
+        #   # @param price [Float] Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
         #   #   this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
         #   #
-        #   # @param quantity [Float, nil] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
+        #   # @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
         #   #
-        #   # @param tiers [Array<Metronome::Models::Tier>, nil] Only set for TIERED rate_type.
+        #   # @param tiers [Array<Metronome::Models::Tier>] Only set for TIERED rate_type.
         #   #
         #   def initialize(
         #     rate_type:,

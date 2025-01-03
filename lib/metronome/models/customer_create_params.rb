@@ -34,14 +34,14 @@ module Metronome
       # @!parse
       #   # @param name [String] This will be truncated to 160 characters if the provided name is longer.
       #   #
-      #   # @param billing_config [Metronome::Models::CustomerCreateParams::BillingConfig, nil]
+      #   # @param billing_config [Metronome::Models::CustomerCreateParams::BillingConfig]
       #   #
-      #   # @param custom_fields [Hash{Symbol => String}, nil]
+      #   # @param custom_fields [Hash{Symbol => String}]
       #   #
-      #   # @param external_id [String, nil] (deprecated, use ingest_aliases instead) an alias that can be used to refer to
+      #   # @param external_id [String] (deprecated, use ingest_aliases instead) an alias that can be used to refer to
       #   #   this customer in usage events
       #   #
-      #   # @param ingest_aliases [Array<String>, nil] Aliases that can be used to refer to this customer in usage events
+      #   # @param ingest_aliases [Array<String>] Aliases that can be used to refer to this customer in usage events
       #   #
       #   def initialize(name:, billing_config: nil, custom_fields: nil, external_id: nil, ingest_aliases: nil, **) = super
 
@@ -78,9 +78,9 @@ module Metronome
         # @!parse
         #   # @param billing_provider_customer_id [String]
         #   # @param billing_provider_type [String]
-        #   # @param aws_product_code [String, nil]
-        #   # @param aws_region [String, nil]
-        #   # @param stripe_collection_method [String, nil]
+        #   # @param aws_product_code [String]
+        #   # @param aws_region [String]
+        #   # @param stripe_collection_method [String]
         #   #
         #   def initialize(
         #     billing_provider_customer_id:,

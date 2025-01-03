@@ -39,7 +39,7 @@ module Metronome
             # @!parse
             #   # @param starting_at [String]
             #   # @param value [Object]
-            #   # @param ending_before [String, nil]
+            #   # @param ending_before [String]
             #   #
             #   def initialize(starting_at:, value:, ending_before: nil, **) = super
 

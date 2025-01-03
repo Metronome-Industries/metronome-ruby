@@ -73,11 +73,11 @@ module Metronome
           #   # @param created_at [String]
           #   # @param created_by [String]
           #   # @param name [String]
-          #   # @param aliases [Array<Metronome::Models::Contracts::RateCardRetrieveResponse::Data::Alias>, nil]
-          #   # @param credit_type_conversions [Array<Metronome::Models::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion>, nil]
-          #   # @param custom_fields [Hash{Symbol => String}, nil]
-          #   # @param description [String, nil]
-          #   # @param fiat_credit_type [Metronome::Models::CreditTypeData, nil]
+          #   # @param aliases [Array<Metronome::Models::Contracts::RateCardRetrieveResponse::Data::Alias>]
+          #   # @param credit_type_conversions [Array<Metronome::Models::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion>]
+          #   # @param custom_fields [Hash{Symbol => String}]
+          #   # @param description [String]
+          #   # @param fiat_credit_type [Metronome::Models::CreditTypeData]
           #   #
           #   def initialize(
           #     id:,
@@ -114,8 +114,8 @@ module Metronome
 
             # @!parse
             #   # @param name [String]
-            #   # @param ending_before [String, nil]
-            #   # @param starting_at [String, nil]
+            #   # @param ending_before [String]
+            #   # @param starting_at [String]
             #   #
             #   def initialize(name:, ending_before: nil, starting_at: nil, **) = super
 

@@ -46,12 +46,12 @@ module Metronome
       # @!parse
       #   # @param id [String]
       #   # @param timestamp [String]
-      #   # @param action [String, nil]
-      #   # @param actor [Metronome::Models::AuditLogListResponse::Actor, nil]
-      #   # @param description [String, nil]
-      #   # @param resource_id [String, nil]
-      #   # @param resource_type [String, nil]
-      #   # @param status [String, nil]
+      #   # @param action [String]
+      #   # @param actor [Metronome::Models::AuditLogListResponse::Actor]
+      #   # @param description [String]
+      #   # @param resource_id [String]
+      #   # @param resource_type [String]
+      #   # @param status [String]
       #   #
       #   def initialize(
       #     id:,
@@ -88,7 +88,7 @@ module Metronome
         # @!parse
         #   # @param id [String]
         #   # @param name [String]
-        #   # @param email [String, nil]
+        #   # @param email [String]
         #   #
         #   def initialize(id:, name:, email: nil, **) = super
 

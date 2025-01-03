@@ -50,9 +50,9 @@ module Metronome
         optional :name, String
 
         # @!parse
-        #   # @param cost [Float, nil]
-        #   # @param line_item_breakdown [Array<Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown>, nil]
-        #   # @param name [String, nil]
+        #   # @param cost [Float]
+        #   # @param line_item_breakdown [Array<Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown>]
+        #   # @param name [String]
         #   #
         #   def initialize(cost: nil, line_item_breakdown: nil, name: nil, **) = super
 
@@ -76,13 +76,13 @@ module Metronome
 
           # @!attribute group_value
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :group_value, String
 
           # @!parse
           #   # @param cost [Float]
           #   # @param name [String]
-          #   # @param group_key [String, nil]
+          #   # @param group_key [String]
           #   # @param group_value [String, nil]
           #   #
           #   def initialize(cost:, name:, group_key: nil, group_value: nil, **) = super

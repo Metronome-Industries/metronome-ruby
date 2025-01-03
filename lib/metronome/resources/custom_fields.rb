@@ -61,9 +61,9 @@ module Metronome
       #
       # @param params [Hash{Symbol => Object}, Metronome::Models::CustomFieldListKeysParams] Attributes to send in this request.
       #
-      #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
+      #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
       #
-      #   @option params [Array<Symbol, Metronome::Models::CustomFieldListKeysParams::Entity>, nil] :entities Body param: Optional list of entity types to return keys for
+      #   @option params [Array<Symbol, Metronome::Models::CustomFieldListKeysParams::Entity>] :entities Body param: Optional list of entity types to return keys for
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #

@@ -45,14 +45,14 @@ module Metronome
       #   #
       #   # @param customer_id [String] ID of the customer for whose contract to get the rate schedule for.
       #   #
-      #   # @param limit [Integer, nil] Max number of results that should be returned
+      #   # @param limit [Integer] Max number of results that should be returned
       #   #
-      #   # @param next_page [String, nil] Cursor that indicates where the next page of results should start.
+      #   # @param next_page [String] Cursor that indicates where the next page of results should start.
       #   #
-      #   # @param at [String, nil] optional timestamp which overlaps with the returned rate schedule segments. When
+      #   # @param at [String] optional timestamp which overlaps with the returned rate schedule segments. When
       #   #   not specified, the current timestamp will be used.
       #   #
-      #   # @param selectors [Array<Metronome::Models::ContractRetrieveRateScheduleParams::Selector>, nil] List of rate selectors, rates matching ANY of the selectors will be included in
+      #   # @param selectors [Array<Metronome::Models::ContractRetrieveRateScheduleParams::Selector>] List of rate selectors, rates matching ANY of the selectors will be included in
       #   #   the response. Passing no selectors will result in all rates being returned.
       #   #
       #   def initialize(contract_id:, customer_id:, limit: nil, next_page: nil, at: nil, selectors: nil, **) = super
@@ -85,15 +85,15 @@ module Metronome
         optional :product_tags, Metronome::ArrayOf[String]
 
         # @!parse
-        #   # @param partial_pricing_group_values [Hash{Symbol => String}, nil] List of pricing group key value pairs, rates containing the matching key / value
+        #   # @param partial_pricing_group_values [Hash{Symbol => String}] List of pricing group key value pairs, rates containing the matching key / value
         #   #   pairs will be included in the response.
         #   #
-        #   # @param pricing_group_values [Hash{Symbol => String}, nil] List of pricing group key value pairs, rates matching all of the key / value
+        #   # @param pricing_group_values [Hash{Symbol => String}] List of pricing group key value pairs, rates matching all of the key / value
         #   #   pairs will be included in the response.
         #   #
-        #   # @param product_id [String, nil] Rates matching the product id will be included in the response.
+        #   # @param product_id [String] Rates matching the product id will be included in the response.
         #   #
-        #   # @param product_tags [Array<String>, nil] List of product tags, rates matching any of the tags will be included in the
+        #   # @param product_tags [Array<String>] List of product tags, rates matching any of the tags will be included in the
         #   #   response.
         #   #
         #   def initialize(partial_pricing_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, **) = super

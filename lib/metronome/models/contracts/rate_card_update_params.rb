@@ -33,13 +33,13 @@ module Metronome
         # @!parse
         #   # @param rate_card_id [String] ID of the rate card to update
         #   #
-        #   # @param aliases [Array<Metronome::Models::Contracts::RateCardUpdateParams::Alias>, nil] Reference this alias when creating a contract. If the same alias is assigned to
+        #   # @param aliases [Array<Metronome::Models::Contracts::RateCardUpdateParams::Alias>] Reference this alias when creating a contract. If the same alias is assigned to
         #   #   multiple rate cards, it will reference the rate card to which it was most
         #   #   recently assigned. It is not exposed to end customers.
         #   #
-        #   # @param description [String, nil]
+        #   # @param description [String]
         #   #
-        #   # @param name [String, nil] Used only in UI/API. It is not exposed to end customers.
+        #   # @param name [String] Used only in UI/API. It is not exposed to end customers.
         #   #
         #   def initialize(rate_card_id:, aliases: nil, description: nil, name: nil, **) = super
 
@@ -63,8 +63,8 @@ module Metronome
 
           # @!parse
           #   # @param name [String]
-          #   # @param ending_before [String, nil]
-          #   # @param starting_at [String, nil]
+          #   # @param ending_before [String]
+          #   # @param starting_at [String]
           #   #
           #   def initialize(name:, ending_before: nil, starting_at: nil, **) = super
 

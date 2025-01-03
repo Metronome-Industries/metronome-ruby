@@ -47,17 +47,17 @@ module Metronome
         # @!parse
         #   # @param name [String] Used only in UI/API. It is not exposed to end customers.
         #   #
-        #   # @param aliases [Array<Metronome::Models::Contracts::RateCardCreateParams::Alias>, nil] Reference this alias when creating a contract. If the same alias is assigned to
+        #   # @param aliases [Array<Metronome::Models::Contracts::RateCardCreateParams::Alias>] Reference this alias when creating a contract. If the same alias is assigned to
         #   #   multiple rate cards, it will reference the rate card to which it was most
         #   #   recently assigned. It is not exposed to end customers.
         #   #
-        #   # @param credit_type_conversions [Array<Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion>, nil] Required when using custom pricing units in rates.
+        #   # @param credit_type_conversions [Array<Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion>] Required when using custom pricing units in rates.
         #   #
-        #   # @param custom_fields [Hash{Symbol => String}, nil]
+        #   # @param custom_fields [Hash{Symbol => String}]
         #   #
-        #   # @param description [String, nil]
+        #   # @param description [String]
         #   #
-        #   # @param fiat_credit_type_id [String, nil] The Metronome ID of the credit type to associate with the rate card, defaults to
+        #   # @param fiat_credit_type_id [String] The Metronome ID of the credit type to associate with the rate card, defaults to
         #   #   USD (cents) if not passed.
         #   #
         #   def initialize(
@@ -92,8 +92,8 @@ module Metronome
 
           # @!parse
           #   # @param name [String]
-          #   # @param ending_before [String, nil]
-          #   # @param starting_at [String, nil]
+          #   # @param ending_before [String]
+          #   # @param starting_at [String]
           #   #
           #   def initialize(name:, ending_before: nil, starting_at: nil, **) = super
 

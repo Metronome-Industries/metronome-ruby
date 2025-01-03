@@ -58,25 +58,25 @@ module Metronome
       # @!parse
       #   # @param rate_type [String]
       #   #
-      #   # @param credit_type [Metronome::Models::CreditTypeData, nil]
+      #   # @param credit_type [Metronome::Models::CreditTypeData]
       #   #
-      #   # @param custom_rate [Hash{Symbol => Object}, nil] Only set for CUSTOM rate_type. This field is interpreted by custom rate
+      #   # @param custom_rate [Hash{Symbol => Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate
       #   #   processors.
       #   #
-      #   # @param is_prorated [Boolean, nil] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
+      #   # @param is_prorated [Boolean] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
       #   #   set to true.
       #   #
-      #   # @param price [Float, nil] Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
+      #   # @param price [Float] Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
       #   #   this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
       #   #
-      #   # @param pricing_group_values [Hash{Symbol => String}, nil] if pricing groups are used, this will contain the values used to calculate the
+      #   # @param pricing_group_values [Hash{Symbol => String}] if pricing groups are used, this will contain the values used to calculate the
       #   #   price
       #   #
-      #   # @param quantity [Float, nil] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
+      #   # @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
       #   #
-      #   # @param tiers [Array<Metronome::Models::Tier>, nil] Only set for TIERED rate_type.
+      #   # @param tiers [Array<Metronome::Models::Tier>] Only set for TIERED rate_type.
       #   #
-      #   # @param use_list_prices [Boolean, nil] Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
+      #   # @param use_list_prices [Boolean] Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
       #   #   using list prices rather than the standard rates for this product on the
       #   #   contract.
       #   #
