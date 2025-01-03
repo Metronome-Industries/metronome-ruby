@@ -129,46 +129,46 @@ module Metronome
       #   #
       #   # @param type [String]
       #   #
-      #   # @param access_schedule [Metronome::Models::ScheduleDuration, nil] The schedule that the customer will gain access to the credits purposed with
+      #   # @param access_schedule [Metronome::Models::ScheduleDuration] The schedule that the customer will gain access to the credits purposed with
       #   #   this commit.
       #   #
-      #   # @param amount [Float, nil] (DEPRECATED) Use access_schedule + invoice_schedule instead.
+      #   # @param amount [Float] (DEPRECATED) Use access_schedule + invoice_schedule instead.
       #   #
-      #   # @param applicable_contract_ids [Array<String>, nil]
+      #   # @param applicable_contract_ids [Array<String>]
       #   #
-      #   # @param applicable_product_ids [Array<String>, nil]
+      #   # @param applicable_product_ids [Array<String>]
       #   #
-      #   # @param applicable_product_tags [Array<String>, nil]
+      #   # @param applicable_product_tags [Array<String>]
       #   #
-      #   # @param contract [Metronome::Models::Commit::Contract, nil]
+      #   # @param contract [Metronome::Models::Commit::Contract]
       #   #
-      #   # @param custom_fields [Hash{Symbol => String}, nil]
+      #   # @param custom_fields [Hash{Symbol => String}]
       #   #
-      #   # @param description [String, nil]
+      #   # @param description [String]
       #   #
-      #   # @param invoice_contract [Metronome::Models::Commit::InvoiceContract, nil] The contract that this commit will be billed on.
+      #   # @param invoice_contract [Metronome::Models::Commit::InvoiceContract] The contract that this commit will be billed on.
       #   #
-      #   # @param invoice_schedule [Metronome::Models::SchedulePointInTime, nil] The schedule that the customer will be invoiced for this commit.
+      #   # @param invoice_schedule [Metronome::Models::SchedulePointInTime] The schedule that the customer will be invoiced for this commit.
       #   #
-      #   # @param ledger [Array<Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry>, nil] A list of ordered events that impact the balance of a commit. For example, an
+      #   # @param ledger [Array<Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry>] A list of ordered events that impact the balance of a commit. For example, an
       #   #   invoice deduction or a rollover.
       #   #
-      #   # @param name [String, nil]
+      #   # @param name [String]
       #   #
-      #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
+      #   # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
       #   #
-      #   # @param priority [Float, nil] If multiple credits or commits are applicable, the one with the lower priority
+      #   # @param priority [Float] If multiple credits or commits are applicable, the one with the lower priority
       #   #   will apply first.
       #   #
-      #   # @param rate_type [String, nil]
+      #   # @param rate_type [String]
       #   #
-      #   # @param rolled_over_from [Metronome::Models::Commit::RolledOverFrom, nil]
+      #   # @param rolled_over_from [Metronome::Models::Commit::RolledOverFrom]
       #   #
-      #   # @param rollover_fraction [Float, nil]
+      #   # @param rollover_fraction [Float]
       #   #
-      #   # @param salesforce_opportunity_id [String, nil] This field's availability is dependent on your client's configuration.
+      #   # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
       #   #
-      #   # @param uniqueness_key [String, nil] Prevents the creation of duplicates. If a request to create a commit or credit
+      #   # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a commit or credit
       #   #   is made with a uniqueness key that was previously used to create a commit or
       #   #   credit, a new record will not be created and the request will fail with a 409
       #   #   error.

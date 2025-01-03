@@ -21,7 +21,7 @@ module Metronome
       # @!parse
       #   # @param group_key [String]
       #   # @param group_values [Array<String>]
-      #   # @param starting_at [String, nil]
+      #   # @param starting_at [String]
       #   #
       #   def initialize(group_key:, group_values:, starting_at: nil, **) = super
 

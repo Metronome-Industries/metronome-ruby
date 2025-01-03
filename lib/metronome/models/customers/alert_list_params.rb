@@ -26,9 +26,9 @@ module Metronome
         # @!parse
         #   # @param customer_id [String] The Metronome ID of the customer
         #   #
-        #   # @param next_page [String, nil] Cursor that indicates where the next page of results should start.
+        #   # @param next_page [String] Cursor that indicates where the next page of results should start.
         #   #
-        #   # @param alert_statuses [Array<String>, nil] Optionally filter by alert status. If absent, only enabled alerts will be
+        #   # @param alert_statuses [Array<String>] Optionally filter by alert status. If absent, only enabled alerts will be
         #   #   returned.
         #   #
         #   def initialize(customer_id:, next_page: nil, alert_statuses: nil, **) = super

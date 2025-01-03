@@ -64,11 +64,11 @@ module Metronome
         #   #
         #   # @param starting_on [String]
         #   #
-        #   # @param ending_before [String, nil]
+        #   # @param ending_before [String]
         #   #
-        #   # @param net_payment_terms_days [Float, nil]
+        #   # @param net_payment_terms_days [Float]
         #   #
-        #   # @param trial_info [Metronome::Models::Customers::PlanListResponse::TrialInfo, nil]
+        #   # @param trial_info [Metronome::Models::Customers::PlanListResponse::TrialInfo]
         #   #
         #   def initialize(
         #     id:,

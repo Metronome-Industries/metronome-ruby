@@ -57,7 +57,7 @@ module Metronome
       #   #
       #   # @param name [String]
       #   #
-      #   # @param current_billable_status [Metronome::Models::CustomerDetail::CurrentBillableStatus, nil] This field's availability is dependent on your client's configuration.
+      #   # @param current_billable_status [Metronome::Models::CustomerDetail::CurrentBillableStatus] This field's availability is dependent on your client's configuration.
       #   #
       #   def initialize(
       #     id:,
@@ -78,7 +78,7 @@ module Metronome
         # @!attribute salesforce_account_id
         #   The Salesforce account ID for the customer
         #
-        #   @return [String]
+        #   @return [String, nil]
         required :salesforce_account_id, String
 
         # @!parse
@@ -97,7 +97,7 @@ module Metronome
 
         # @!attribute effective_at
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :effective_at, Time
 
         # @!parse

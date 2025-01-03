@@ -12,9 +12,9 @@ module Metronome
       #
       # @param params [Hash{Symbol => Object}, Metronome::Models::PlanListParams] Attributes to send in this request.
       #
-      #   @option params [Integer, nil] :limit Max number of results that should be returned
+      #   @option params [Integer] :limit Max number of results that should be returned
       #
-      #   @option params [String, nil] :next_page Cursor that indicates where the next page of results should start.
+      #   @option params [String] :next_page Cursor that indicates where the next page of results should start.
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -59,9 +59,9 @@ module Metronome
       #
       #   @option params [String] :plan_id Path param:
       #
-      #   @option params [Integer, nil] :limit Query param: Max number of results that should be returned
+      #   @option params [Integer] :limit Query param: Max number of results that should be returned
       #
-      #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
+      #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -88,11 +88,11 @@ module Metronome
       #
       #   @option params [String] :plan_id Path param:
       #
-      #   @option params [Integer, nil] :limit Query param: Max number of results that should be returned
+      #   @option params [Integer] :limit Query param: Max number of results that should be returned
       #
-      #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
+      #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
       #
-      #   @option params [Symbol, Metronome::Models::PlanListCustomersParams::Status, nil] :status Query param: Status of customers on a given plan. Defaults to `active`.
+      #   @option params [Symbol, Metronome::Models::PlanListCustomersParams::Status] :status Query param: Status of customers on a given plan. Defaults to `active`.
       #
       #     - `all` - Return current, past, and upcoming customers of the plan.
       #     - `active` - Return current customers of the plan.

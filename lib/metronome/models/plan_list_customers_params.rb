@@ -37,11 +37,11 @@ module Metronome
       # @!parse
       #   # @param plan_id [String]
       #   #
-      #   # @param limit [Integer, nil] Max number of results that should be returned
+      #   # @param limit [Integer] Max number of results that should be returned
       #   #
-      #   # @param next_page [String, nil] Cursor that indicates where the next page of results should start.
+      #   # @param next_page [String] Cursor that indicates where the next page of results should start.
       #   #
-      #   # @param status [String, nil] Status of customers on a given plan. Defaults to `active`.
+      #   # @param status [String] Status of customers on a given plan. Defaults to `active`.
       #   #
       #   #   - `all` - Return current, past, and upcoming customers of the plan.
       #   #   - `active` - Return current customers of the plan.

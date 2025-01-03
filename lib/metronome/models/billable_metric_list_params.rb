@@ -22,11 +22,11 @@ module Metronome
       optional :next_page, String
 
       # @!parse
-      #   # @param include_archived [Boolean, nil] If true, the list of returned metrics will include archived metrics
+      #   # @param include_archived [Boolean] If true, the list of returned metrics will include archived metrics
       #   #
-      #   # @param limit [Integer, nil] Max number of results that should be returned
+      #   # @param limit [Integer] Max number of results that should be returned
       #   #
-      #   # @param next_page [String, nil] Cursor that indicates where the next page of results should start.
+      #   # @param next_page [String] Cursor that indicates where the next page of results should start.
       #   #
       #   def initialize(include_archived: nil, limit: nil, next_page: nil, **) = super
 

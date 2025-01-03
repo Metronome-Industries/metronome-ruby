@@ -18,11 +18,11 @@ module Metronome
       #
       #   @option params [Symbol, Metronome::Models::DashboardGetEmbeddableURLParams::Dashboard] :dashboard The type of dashboard to retrieve.
       #
-      #   @option params [Array<Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>, nil] :bm_group_key_overrides Optional list of billable metric group key overrides
+      #   @option params [Array<Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>] :bm_group_key_overrides Optional list of billable metric group key overrides
       #
-      #   @option params [Array<Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride>, nil] :color_overrides Optional list of colors to override
+      #   @option params [Array<Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride>] :color_overrides Optional list of colors to override
       #
-      #   @option params [Array<Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption>, nil] :dashboard_options Optional dashboard specific options
+      #   @option params [Array<Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption>] :dashboard_options Optional dashboard specific options
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #

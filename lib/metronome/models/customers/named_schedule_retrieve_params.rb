@@ -27,7 +27,7 @@ module Metronome
         #   #
         #   # @param schedule_name [String] The identifier for the schedule to be retrieved
         #   #
-        #   # @param covering_date [String, nil] If provided, at most one schedule segment will be returned (the one that covers
+        #   # @param covering_date [String] If provided, at most one schedule segment will be returned (the one that covers
         #   #   this date). If not provided, all segments will be returned.
         #   #
         #   def initialize(customer_id:, schedule_name:, covering_date: nil, **) = super

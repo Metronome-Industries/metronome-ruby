@@ -61,19 +61,19 @@ module Metronome
       #   #   segmented into daily or hourly aggregates. A window_size of "none" will return a
       #   #   single usage aggregate for the entirety of the specified period.
       #   #
-      #   # @param limit [Integer, nil] Max number of results that should be returned
+      #   # @param limit [Integer] Max number of results that should be returned
       #   #
-      #   # @param next_page [String, nil] Cursor that indicates where the next page of results should start.
+      #   # @param next_page [String] Cursor that indicates where the next page of results should start.
       #   #
-      #   # @param current_period [Boolean, nil] If true, will return the usage for the current billing period. Will return an
+      #   # @param current_period [Boolean] If true, will return the usage for the current billing period. Will return an
       #   #   error if the customer is currently uncontracted or starting_on and ending_before
       #   #   are specified when this is true.
       #   #
-      #   # @param ending_before [String, nil]
+      #   # @param ending_before [String]
       #   #
-      #   # @param group_by [Metronome::Models::UsageListWithGroupsParams::GroupBy, nil]
+      #   # @param group_by [Metronome::Models::UsageListWithGroupsParams::GroupBy]
       #   #
-      #   # @param starting_on [String, nil]
+      #   # @param starting_on [String]
       #   #
       #   def initialize(
       #     billable_metric_id:,
@@ -130,7 +130,7 @@ module Metronome
         # @!parse
         #   # @param key [String] The name of the group_by key to use
         #   #
-        #   # @param values [Array<String>, nil] Values of the group_by key to return in the query. Omit this if you'd like all
+        #   # @param values [Array<String>] Values of the group_by key to return in the query. Omit this if you'd like all
         #   #   values for the key returned.
         #   #
         #   def initialize(key:, values: nil, **) = super

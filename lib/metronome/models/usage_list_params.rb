@@ -49,12 +49,12 @@ module Metronome
       #   #   segmented into daily or hourly aggregates. A window_size of "none" will return a
       #   #   single usage aggregate for the entirety of the specified period.
       #   #
-      #   # @param next_page [String, nil] Cursor that indicates where the next page of results should start.
+      #   # @param next_page [String] Cursor that indicates where the next page of results should start.
       #   #
-      #   # @param billable_metrics [Array<Metronome::Models::UsageListParams::BillableMetric>, nil] A list of billable metrics to fetch usage for. If absent, all billable metrics
+      #   # @param billable_metrics [Array<Metronome::Models::UsageListParams::BillableMetric>] A list of billable metrics to fetch usage for. If absent, all billable metrics
       #   #   will be returned.
       #   #
-      #   # @param customer_ids [Array<String>, nil] A list of Metronome customer IDs to fetch usage for. If absent, usage for all
+      #   # @param customer_ids [Array<String>] A list of Metronome customer IDs to fetch usage for. If absent, usage for all
       #   #   customers will be returned.
       #   #
       #   def initialize(ending_before:, starting_on:, window_size:, next_page: nil, billable_metrics: nil, customer_ids: nil, **) = super
@@ -96,7 +96,7 @@ module Metronome
 
         # @!parse
         #   # @param id [String]
-        #   # @param group_by [Metronome::Models::UsageListParams::BillableMetric::GroupBy, nil]
+        #   # @param group_by [Metronome::Models::UsageListParams::BillableMetric::GroupBy]
         #   #
         #   def initialize(id:, group_by: nil, **) = super
 
@@ -118,7 +118,7 @@ module Metronome
           # @!parse
           #   # @param key [String] The name of the group_by key to use
           #   #
-          #   # @param values [Array<String>, nil] Values of the group_by key to return in the query. If this field is omitted, all
+          #   # @param values [Array<String>] Values of the group_by key to return in the query. If this field is omitted, all
           #   #   available values will be returned, up to a maximum of 200.
           #   #
           #   def initialize(key:, values: nil, **) = super

@@ -18,7 +18,7 @@ module Metronome
         #
         #   @option params [String] :schedule_name The identifier for the schedule to be retrieved
         #
-        #   @option params [Time, nil] :covering_date If provided, at most one schedule segment will be returned (the one that covers
+        #   @option params [Time] :covering_date If provided, at most one schedule segment will be returned (the one that covers
         #     this date). If not provided, all segments will be returned.
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -49,7 +49,7 @@ module Metronome
         #   @option params [Object] :value The value to set for the named schedule. The structure of this object is
         #     specific to the named schedule.
         #
-        #   @option params [Time, nil] :ending_before
+        #   @option params [Time] :ending_before
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #

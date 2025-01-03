@@ -131,29 +131,29 @@ module Metronome
       #   #
       #   # @param usage_statement_schedule [Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule]
       #   #
-      #   # @param credits [Array<Metronome::Models::Credit>, nil]
+      #   # @param credits [Array<Metronome::Models::Credit>]
       #   #
-      #   # @param discounts [Array<Metronome::Models::Discount>, nil] This field's availability is dependent on your client's configuration.
+      #   # @param discounts [Array<Metronome::Models::Discount>] This field's availability is dependent on your client's configuration.
       #   #
-      #   # @param ending_before [String, nil]
+      #   # @param ending_before [String]
       #   #
-      #   # @param name [String, nil]
+      #   # @param name [String]
       #   #
-      #   # @param net_payment_terms_days [Float, nil]
+      #   # @param net_payment_terms_days [Float]
       #   #
-      #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
+      #   # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
       #   #
-      #   # @param professional_services [Array<Metronome::Models::ProService>, nil] This field's availability is dependent on your client's configuration.
+      #   # @param professional_services [Array<Metronome::Models::ProService>] This field's availability is dependent on your client's configuration.
       #   #
-      #   # @param rate_card_id [String, nil]
+      #   # @param rate_card_id [String]
       #   #
-      #   # @param reseller_royalties [Array<Metronome::Models::ContractWithoutAmendments::ResellerRoyalty>, nil] This field's availability is dependent on your client's configuration.
+      #   # @param reseller_royalties [Array<Metronome::Models::ContractWithoutAmendments::ResellerRoyalty>] This field's availability is dependent on your client's configuration.
       #   #
-      #   # @param salesforce_opportunity_id [String, nil] This field's availability is dependent on your client's configuration.
+      #   # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
       #   #
-      #   # @param total_contract_value [Float, nil] This field's availability is dependent on your client's configuration.
+      #   # @param total_contract_value [Float] This field's availability is dependent on your client's configuration.
       #   #
-      #   # @param usage_filter [Metronome::Models::ContractWithoutAmendments::UsageFilter, nil]
+      #   # @param usage_filter [Metronome::Models::ContractWithoutAmendments::UsageFilter]
       #   #
       #   def initialize(
       #     commits:,
@@ -341,15 +341,15 @@ module Metronome
         #   # @param netsuite_reseller_id [String]
         #   # @param reseller_type [String]
         #   # @param starting_at [String]
-        #   # @param applicable_product_ids [Array<String>, nil]
-        #   # @param applicable_product_tags [Array<String>, nil]
-        #   # @param aws_account_number [String, nil]
-        #   # @param aws_offer_id [String, nil]
-        #   # @param aws_payer_reference_id [String, nil]
-        #   # @param ending_before [String, nil]
-        #   # @param gcp_account_id [String, nil]
-        #   # @param gcp_offer_id [String, nil]
-        #   # @param reseller_contract_value [Float, nil]
+        #   # @param applicable_product_ids [Array<String>]
+        #   # @param applicable_product_tags [Array<String>]
+        #   # @param aws_account_number [String]
+        #   # @param aws_offer_id [String]
+        #   # @param aws_payer_reference_id [String]
+        #   # @param ending_before [String]
+        #   # @param gcp_account_id [String]
+        #   # @param gcp_offer_id [String]
+        #   # @param reseller_contract_value [Float]
         #   #
         #   def initialize(
         #     fraction:,
@@ -399,7 +399,7 @@ module Metronome
       class UsageFilter < Metronome::BaseModel
         # @!attribute current
         #
-        #   @return [Metronome::Models::BaseUsageFilter]
+        #   @return [Metronome::Models::BaseUsageFilter, nil]
         required :current, -> { Metronome::Models::BaseUsageFilter }
 
         # @!attribute initial

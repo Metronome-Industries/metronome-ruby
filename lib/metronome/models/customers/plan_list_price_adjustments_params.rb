@@ -31,9 +31,9 @@ module Metronome
         #   #
         #   # @param customer_plan_id [String]
         #   #
-        #   # @param limit [Integer, nil] Max number of results that should be returned
+        #   # @param limit [Integer] Max number of results that should be returned
         #   #
-        #   # @param next_page [String, nil] Cursor that indicates where the next page of results should start.
+        #   # @param next_page [String] Cursor that indicates where the next page of results should start.
         #   #
         #   def initialize(customer_id:, customer_plan_id:, limit: nil, next_page: nil, **) = super
 

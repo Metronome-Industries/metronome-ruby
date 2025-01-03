@@ -77,14 +77,14 @@ module Metronome
         #   #
         #   # @param initial [Metronome::Models::ContractWithoutAmendments]
         #   #
-        #   # @param archived_at [String, nil] RFC 3339 timestamp indicating when the contract was archived. If not returned,
+        #   # @param archived_at [String] RFC 3339 timestamp indicating when the contract was archived. If not returned,
         #   #   the contract is not archived.
         #   #
-        #   # @param custom_fields [Hash{Symbol => String}, nil]
+        #   # @param custom_fields [Hash{Symbol => String}]
         #   #
-        #   # @param customer_billing_provider_configuration [Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration, nil] The billing provider configuration associated with a contract.
+        #   # @param customer_billing_provider_configuration [Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration] The billing provider configuration associated with a contract.
         #   #
-        #   # @param uniqueness_key [String, nil] Prevents the creation of duplicates. If a request to create a record is made
+        #   # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made
         #   #   with a previously used uniqueness key, a new record will not be created and the
         #   #   request will fail with a 409 error.
         #   #
@@ -194,17 +194,17 @@ module Metronome
           #   #
           #   # @param starting_at [String]
           #   #
-          #   # @param credits [Array<Metronome::Models::Credit>, nil]
+          #   # @param credits [Array<Metronome::Models::Credit>]
           #   #
-          #   # @param discounts [Array<Metronome::Models::Discount>, nil] This field's availability is dependent on your client's configuration.
+          #   # @param discounts [Array<Metronome::Models::Discount>] This field's availability is dependent on your client's configuration.
           #   #
-          #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
+          #   # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
           #   #
-          #   # @param professional_services [Array<Metronome::Models::ProService>, nil] This field's availability is dependent on your client's configuration.
+          #   # @param professional_services [Array<Metronome::Models::ProService>] This field's availability is dependent on your client's configuration.
           #   #
-          #   # @param reseller_royalties [Array<Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty>, nil] This field's availability is dependent on your client's configuration.
+          #   # @param reseller_royalties [Array<Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty>] This field's availability is dependent on your client's configuration.
           #   #
-          #   # @param salesforce_opportunity_id [String, nil] This field's availability is dependent on your client's configuration.
+          #   # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
           #   #
           #   def initialize(
           #     id:,
@@ -253,7 +253,7 @@ module Metronome
 
             # @!attribute ending_before
             #
-            #   @return [Time]
+            #   @return [Time, nil]
             optional :ending_before, Time
 
             # @!attribute fraction
@@ -288,16 +288,16 @@ module Metronome
 
             # @!parse
             #   # @param reseller_type [String]
-            #   # @param aws_account_number [String, nil]
-            #   # @param aws_offer_id [String, nil]
-            #   # @param aws_payer_reference_id [String, nil]
+            #   # @param aws_account_number [String]
+            #   # @param aws_offer_id [String]
+            #   # @param aws_payer_reference_id [String]
             #   # @param ending_before [String, nil]
-            #   # @param fraction [Float, nil]
-            #   # @param gcp_account_id [String, nil]
-            #   # @param gcp_offer_id [String, nil]
-            #   # @param netsuite_reseller_id [String, nil]
-            #   # @param reseller_contract_value [Float, nil]
-            #   # @param starting_at [String, nil]
+            #   # @param fraction [Float]
+            #   # @param gcp_account_id [String]
+            #   # @param gcp_offer_id [String]
+            #   # @param netsuite_reseller_id [String]
+            #   # @param reseller_contract_value [Float]
+            #   # @param starting_at [String]
             #   #
             #   def initialize(
             #     reseller_type:,

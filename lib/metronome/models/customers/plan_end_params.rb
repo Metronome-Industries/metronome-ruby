@@ -37,13 +37,13 @@ module Metronome
         #   #
         #   # @param customer_plan_id [String]
         #   #
-        #   # @param ending_before [String, nil] RFC 3339 timestamp for when the plan ends (exclusive) for this customer. Must be
+        #   # @param ending_before [String] RFC 3339 timestamp for when the plan ends (exclusive) for this customer. Must be
         #   #   at 0:00 UTC (midnight). If not provided, the plan end date will be cleared.
         #   #
-        #   # @param void_invoices [Boolean, nil] If true, plan end date can be before the last finalized invoice date. Any
+        #   # @param void_invoices [Boolean] If true, plan end date can be before the last finalized invoice date. Any
         #   #   invoices generated after the plan end date will be voided.
         #   #
-        #   # @param void_stripe_invoices [Boolean, nil] Only applicable when void_invoices is set to true. If true, for every invoice
+        #   # @param void_stripe_invoices [Boolean] Only applicable when void_invoices is set to true. If true, for every invoice
         #   #   that is voided we will also attempt to void/delete the stripe invoice (if any).
         #   #   Stripe invoices will be voided if finalized or deleted if still in draft state.
         #   #

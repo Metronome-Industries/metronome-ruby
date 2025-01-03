@@ -42,14 +42,14 @@ module Metronome
       #
       #   @option params [String] :name This will be truncated to 160 characters if the provided name is longer.
       #
-      #   @option params [Metronome::Models::CustomerCreateParams::BillingConfig, nil] :billing_config
+      #   @option params [Metronome::Models::CustomerCreateParams::BillingConfig] :billing_config
       #
-      #   @option params [Hash{Symbol => String}, nil] :custom_fields
+      #   @option params [Hash{Symbol => String}] :custom_fields
       #
-      #   @option params [String, nil] :external_id (deprecated, use ingest_aliases instead) an alias that can be used to refer to
+      #   @option params [String] :external_id (deprecated, use ingest_aliases instead) an alias that can be used to refer to
       #     this customer in usage events
       #
-      #   @option params [Array<String>, nil] :ingest_aliases Aliases that can be used to refer to this customer in usage events
+      #   @option params [Array<String>] :ingest_aliases Aliases that can be used to refer to this customer in usage events
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -91,17 +91,17 @@ module Metronome
       #
       # @param params [Hash{Symbol => Object}, Metronome::Models::CustomerListParams] Attributes to send in this request.
       #
-      #   @option params [Array<String>, nil] :customer_ids Filter the customer list by customer_id. Up to 100 ids can be provided.
+      #   @option params [Array<String>] :customer_ids Filter the customer list by customer_id. Up to 100 ids can be provided.
       #
-      #   @option params [String, nil] :ingest_alias Filter the customer list by ingest_alias
+      #   @option params [String] :ingest_alias Filter the customer list by ingest_alias
       #
-      #   @option params [Integer, nil] :limit Max number of results that should be returned
+      #   @option params [Integer] :limit Max number of results that should be returned
       #
-      #   @option params [String, nil] :next_page Cursor that indicates where the next page of results should start.
+      #   @option params [String] :next_page Cursor that indicates where the next page of results should start.
       #
-      #   @option params [Boolean, nil] :only_archived Filter the customer list by only archived customers.
+      #   @option params [Boolean] :only_archived Filter the customer list by only archived customers.
       #
-      #   @option params [Array<String>, nil] :salesforce_account_ids Filter the customer list by salesforce_account_id. Up to 100 ids can be
+      #   @option params [Array<String>] :salesforce_account_ids Filter the customer list by salesforce_account_id. Up to 100 ids can be
       #     provided.
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -145,13 +145,13 @@ module Metronome
       #
       #   @option params [String] :customer_id Path param:
       #
-      #   @option params [Boolean, nil] :include_archived Query param: If true, the list of returned metrics will include archived metrics
+      #   @option params [Boolean] :include_archived Query param: If true, the list of returned metrics will include archived metrics
       #
-      #   @option params [Integer, nil] :limit Query param: Max number of results that should be returned
+      #   @option params [Integer] :limit Query param: Max number of results that should be returned
       #
-      #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
+      #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
       #
-      #   @option params [Boolean, nil] :on_current_plan Query param: If true, the list of metrics will be filtered to just ones that are
+      #   @option params [Boolean] :on_current_plan Query param: If true, the list of metrics will be filtered to just ones that are
       #     on the customer's current plan
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -184,9 +184,9 @@ module Metronome
       #
       #   @option params [Time] :starting_on Query param: RFC 3339 timestamp (inclusive)
       #
-      #   @option params [Integer, nil] :limit Query param: Max number of results that should be returned
+      #   @option params [Integer] :limit Query param: Max number of results that should be returned
       #
-      #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
+      #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #

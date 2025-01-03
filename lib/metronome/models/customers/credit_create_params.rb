@@ -94,28 +94,28 @@ module Metronome
         #   #
         #   # @param product_id [String]
         #   #
-        #   # @param applicable_contract_ids [Array<String>, nil] Which contract the credit applies to. If not provided, the credit applies to all
+        #   # @param applicable_contract_ids [Array<String>] Which contract the credit applies to. If not provided, the credit applies to all
         #   #   contracts.
         #   #
-        #   # @param applicable_product_ids [Array<String>, nil] Which products the credit applies to. If both applicable_product_ids and
+        #   # @param applicable_product_ids [Array<String>] Which products the credit applies to. If both applicable_product_ids and
         #   #   applicable_product_tags are not provided, the credit applies to all products.
         #   #
-        #   # @param applicable_product_tags [Array<String>, nil] Which tags the credit applies to. If both applicable_product_ids and
+        #   # @param applicable_product_tags [Array<String>] Which tags the credit applies to. If both applicable_product_ids and
         #   #   applicable_product_tags are not provided, the credit applies to all products.
         #   #
-        #   # @param custom_fields [Hash{Symbol => String}, nil]
+        #   # @param custom_fields [Hash{Symbol => String}]
         #   #
-        #   # @param description [String, nil] Used only in UI/API. It is not exposed to end customers.
+        #   # @param description [String] Used only in UI/API. It is not exposed to end customers.
         #   #
-        #   # @param name [String, nil] displayed on invoices
+        #   # @param name [String] displayed on invoices
         #   #
-        #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
+        #   # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
         #   #
-        #   # @param rate_type [String, nil]
+        #   # @param rate_type [String]
         #   #
-        #   # @param salesforce_opportunity_id [String, nil] This field's availability is dependent on your client's configuration.
+        #   # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
         #   #
-        #   # @param uniqueness_key [String, nil] Prevents the creation of duplicates. If a request to create a commit or credit
+        #   # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a commit or credit
         #   #   is made with a uniqueness key that was previously used to create a commit or
         #   #   credit, a new record will not be created and the request will fail with a 409
         #   #   error.
@@ -162,7 +162,7 @@ module Metronome
           #   #
           #   # @param schedule_items [Array<Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem>]
           #   #
-          #   # @param credit_type_id [String, nil] Defaults to USD (cents) if not passed
+          #   # @param credit_type_id [String] Defaults to USD (cents) if not passed
           #   #
           #   def initialize(schedule_items:, credit_type_id: nil, **) = super
 

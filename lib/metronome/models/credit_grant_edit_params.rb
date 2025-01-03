@@ -30,11 +30,11 @@ module Metronome
       # @!parse
       #   # @param id [String] the ID of the credit grant
       #   #
-      #   # @param credit_grant_type [String, nil] the updated credit grant type
+      #   # @param credit_grant_type [String] the updated credit grant type
       #   #
-      #   # @param expires_at [String, nil] the updated expiration date for the credit grant
+      #   # @param expires_at [String] the updated expiration date for the credit grant
       #   #
-      #   # @param name [String, nil] the updated name for the credit grant
+      #   # @param name [String] the updated name for the credit grant
       #   #
       #   def initialize(id:, credit_grant_type: nil, expires_at: nil, name: nil, **) = super
 

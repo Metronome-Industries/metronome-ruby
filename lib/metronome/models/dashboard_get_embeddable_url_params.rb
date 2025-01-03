@@ -42,11 +42,11 @@ module Metronome
       #   #
       #   # @param dashboard [String] The type of dashboard to retrieve.
       #   #
-      #   # @param bm_group_key_overrides [Array<Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>, nil] Optional list of billable metric group key overrides
+      #   # @param bm_group_key_overrides [Array<Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>] Optional list of billable metric group key overrides
       #   #
-      #   # @param color_overrides [Array<Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride>, nil] Optional list of colors to override
+      #   # @param color_overrides [Array<Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride>] Optional list of colors to override
       #   #
-      #   # @param dashboard_options [Array<Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption>, nil] Optional dashboard specific options
+      #   # @param dashboard_options [Array<Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption>] Optional dashboard specific options
       #   #
       #   def initialize(customer_id:, dashboard:, bm_group_key_overrides: nil, color_overrides: nil, dashboard_options: nil, **) = super
 
@@ -96,9 +96,9 @@ module Metronome
         # @!parse
         #   # @param group_key_name [String] The name of the billable metric group key.
         #   #
-        #   # @param display_name [String, nil] The display name for the billable metric group key
+        #   # @param display_name [String] The display name for the billable metric group key
         #   #
-        #   # @param value_display_names [Hash{Symbol => Object}, nil] <key, value> pairs of the billable metric group key values and their display
+        #   # @param value_display_names [Hash{Symbol => Object}] <key, value> pairs of the billable metric group key values and their display
         #   #   names. e.g. {"a": "Asia", "b": "Euro"}
         #   #
         #   def initialize(group_key_name:, display_name: nil, value_display_names: nil, **) = super
@@ -120,9 +120,9 @@ module Metronome
         optional :value, String
 
         # @!parse
-        #   # @param name [String, nil] The color to override
+        #   # @param name [String] The color to override
         #   #
-        #   # @param value [String, nil] Hex value representation of the color
+        #   # @param value [String] Hex value representation of the color
         #   #
         #   def initialize(name: nil, value: nil, **) = super
 

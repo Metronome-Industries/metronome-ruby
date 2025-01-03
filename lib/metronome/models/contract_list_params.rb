@@ -35,16 +35,16 @@ module Metronome
       # @!parse
       #   # @param customer_id [String]
       #   #
-      #   # @param covering_date [String, nil] Optional RFC 3339 timestamp. If provided, the response will include only
+      #   # @param covering_date [String] Optional RFC 3339 timestamp. If provided, the response will include only
       #   #   contracts effective on the provided date. This cannot be provided if the
       #   #   starting_at filter is provided.
       #   #
-      #   # @param include_archived [Boolean, nil] Include archived contracts in the response
+      #   # @param include_archived [Boolean] Include archived contracts in the response
       #   #
-      #   # @param include_ledgers [Boolean, nil] Include commit ledgers in the response. Setting this flag may cause the query to
+      #   # @param include_ledgers [Boolean] Include commit ledgers in the response. Setting this flag may cause the query to
       #   #   be slower.
       #   #
-      #   # @param starting_at [String, nil] Optional RFC 3339 timestamp. If provided, the response will include only
+      #   # @param starting_at [String] Optional RFC 3339 timestamp. If provided, the response will include only
       #   #   contracts where effective_at is on or after the provided date. This cannot be
       #   #   provided if the covering_date filter is provided.
       #   #

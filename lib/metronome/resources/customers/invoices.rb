@@ -17,7 +17,7 @@ module Metronome
         #
         #   @option params [String] :invoice_id Path param:
         #
-        #   @option params [Boolean, nil] :skip_zero_qty_line_items Query param: If set, all zero quantity line items will be filtered out of the
+        #   @option params [Boolean] :skip_zero_qty_line_items Query param: If set, all zero quantity line items will be filtered out of the
         #     response
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -47,25 +47,25 @@ module Metronome
         #
         #   @option params [String] :customer_id Path param:
         #
-        #   @option params [String, nil] :credit_type_id Query param: Only return invoices for the specified credit type
+        #   @option params [String] :credit_type_id Query param: Only return invoices for the specified credit type
         #
-        #   @option params [Time, nil] :ending_before Query param: RFC 3339 timestamp (exclusive). Invoices will only be returned for
+        #   @option params [Time] :ending_before Query param: RFC 3339 timestamp (exclusive). Invoices will only be returned for
         #     billing periods that end before this time.
         #
-        #   @option params [Integer, nil] :limit Query param: Max number of results that should be returned
+        #   @option params [Integer] :limit Query param: Max number of results that should be returned
         #
-        #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
+        #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
         #
-        #   @option params [Boolean, nil] :skip_zero_qty_line_items Query param: If set, all zero quantity line items will be filtered out of the
+        #   @option params [Boolean] :skip_zero_qty_line_items Query param: If set, all zero quantity line items will be filtered out of the
         #     response
         #
-        #   @option params [Symbol, Metronome::Models::Customers::InvoiceListParams::Sort, nil] :sort Query param: Invoice sort order by issued_at, e.g. date_asc or date_desc.
+        #   @option params [Symbol, Metronome::Models::Customers::InvoiceListParams::Sort] :sort Query param: Invoice sort order by issued_at, e.g. date_asc or date_desc.
         #     Defaults to date_asc.
         #
-        #   @option params [Time, nil] :starting_on Query param: RFC 3339 timestamp (inclusive). Invoices will only be returned for
+        #   @option params [Time] :starting_on Query param: RFC 3339 timestamp (inclusive). Invoices will only be returned for
         #     billing periods that start at or after this time.
         #
-        #   @option params [String, nil] :status Query param: Invoice status, e.g. DRAFT, FINALIZED, or VOID
+        #   @option params [String] :status Query param: Invoice status, e.g. DRAFT, FINALIZED, or VOID
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
@@ -136,24 +136,24 @@ module Metronome
         #   @option params [Time] :starting_on Query param: RFC 3339 timestamp. Breakdowns will only be returned for time
         #     windows that start on or after this time.
         #
-        #   @option params [String, nil] :credit_type_id Query param: Only return invoices for the specified credit type
+        #   @option params [String] :credit_type_id Query param: Only return invoices for the specified credit type
         #
-        #   @option params [Integer, nil] :limit Query param: Max number of results that should be returned. For daily
+        #   @option params [Integer] :limit Query param: Max number of results that should be returned. For daily
         #     breakdowns, the response can return up to 35 days worth of breakdowns. For
         #     hourly breakdowns, the response can return up to 24 hours. If there are more
         #     results, a cursor to the next page is returned.
         #
-        #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
+        #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
         #
-        #   @option params [Boolean, nil] :skip_zero_qty_line_items Query param: If set, all zero quantity line items will be filtered out of the
+        #   @option params [Boolean] :skip_zero_qty_line_items Query param: If set, all zero quantity line items will be filtered out of the
         #     response
         #
-        #   @option params [Symbol, Metronome::Models::Customers::InvoiceListBreakdownsParams::Sort, nil] :sort Query param: Invoice sort order by issued_at, e.g. date_asc or date_desc.
+        #   @option params [Symbol, Metronome::Models::Customers::InvoiceListBreakdownsParams::Sort] :sort Query param: Invoice sort order by issued_at, e.g. date_asc or date_desc.
         #     Defaults to date_asc.
         #
-        #   @option params [String, nil] :status Query param: Invoice status, e.g. DRAFT or FINALIZED
+        #   @option params [String] :status Query param: Invoice status, e.g. DRAFT or FINALIZED
         #
-        #   @option params [Symbol, Metronome::Models::Customers::InvoiceListBreakdownsParams::WindowSize, nil] :window_size Query param: The granularity of the breakdowns to return. Defaults to day.
+        #   @option params [Symbol, Metronome::Models::Customers::InvoiceListBreakdownsParams::WindowSize] :window_size Query param: The granularity of the breakdowns to return. Defaults to day.
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #

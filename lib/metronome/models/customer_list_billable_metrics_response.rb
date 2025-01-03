@@ -90,35 +90,35 @@ module Metronome
       #   #
       #   # @param name [String]
       #   #
-      #   # @param aggregate [String, nil] (DEPRECATED) use aggregation_type instead
+      #   # @param aggregate [String] (DEPRECATED) use aggregation_type instead
       #   #
-      #   # @param aggregate_keys [Array<String>, nil] (DEPRECATED) use aggregation_key instead
+      #   # @param aggregate_keys [Array<String>] (DEPRECATED) use aggregation_key instead
       #   #
-      #   # @param aggregation_key [String, nil] A key that specifies which property of the event is used to aggregate data. This
+      #   # @param aggregation_key [String] A key that specifies which property of the event is used to aggregate data. This
       #   #   key must be one of the property filter names and is not applicable when the
       #   #   aggregation type is 'count'.
       #   #
-      #   # @param aggregation_type [String, nil] Specifies the type of aggregation performed on matching events.
+      #   # @param aggregation_type [String] Specifies the type of aggregation performed on matching events.
       #   #
-      #   # @param archived_at [String, nil] RFC 3339 timestamp indicating when the billable metric was archived. If not
+      #   # @param archived_at [String] RFC 3339 timestamp indicating when the billable metric was archived. If not
       #   #   provided, the billable metric is not archived.
       #   #
-      #   # @param custom_fields [Hash{Symbol => String}, nil]
+      #   # @param custom_fields [Hash{Symbol => String}]
       #   #
-      #   # @param event_type_filter [Metronome::Models::EventTypeFilter, nil] An optional filtering rule to match the 'event_type' property of an event.
+      #   # @param event_type_filter [Metronome::Models::EventTypeFilter] An optional filtering rule to match the 'event_type' property of an event.
       #   #
-      #   # @param filter [Hash{Symbol => Object}, nil] (DEPRECATED) use property_filters & event_type_filter instead
+      #   # @param filter [Hash{Symbol => Object}] (DEPRECATED) use property_filters & event_type_filter instead
       #   #
-      #   # @param group_by [Array<String>, nil] (DEPRECATED) use group_keys instead
+      #   # @param group_by [Array<String>] (DEPRECATED) use group_keys instead
       #   #
-      #   # @param group_keys [Array<Array<String>>, nil] Property names that are used to group usage costs on an invoice. Each entry
+      #   # @param group_keys [Array<Array<String>>] Property names that are used to group usage costs on an invoice. Each entry
       #   #   represents a set of properties used to slice events into distinct buckets.
       #   #
-      #   # @param property_filters [Array<Metronome::Models::PropertyFilter>, nil] A list of filters to match events to this billable metric. Each filter defines a
+      #   # @param property_filters [Array<Metronome::Models::PropertyFilter>] A list of filters to match events to this billable metric. Each filter defines a
       #   #   rule on an event property. All rules must pass for the event to match the
       #   #   billable metric.
       #   #
-      #   # @param sql [String, nil] The SQL query associated with the billable metric
+      #   # @param sql [String] The SQL query associated with the billable metric
       #   #
       #   def initialize(
       #     id:,

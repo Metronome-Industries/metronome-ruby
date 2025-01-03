@@ -26,7 +26,7 @@ module Metronome
       #   #
       #   # @param customer_id [String] ID of the customer whose contract is to be updated
       #   #
-      #   # @param ending_before [String, nil] RFC 3339 timestamp indicating when the contract will end (exclusive). If not
+      #   # @param ending_before [String] RFC 3339 timestamp indicating when the contract will end (exclusive). If not
       #   #   provided, the contract will be updated to be open-ended.
       #   #
       #   def initialize(contract_id:, customer_id:, ending_before: nil, **) = super

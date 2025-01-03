@@ -83,15 +83,15 @@ module Metronome
       #   #
       #   # @param product_name [String]
       #   #
-      #   # @param quantity [Float, nil]
+      #   # @param quantity [Float]
       #   #
-      #   # @param start_period [Float, nil] Used in price ramps. Indicates how many billing periods pass before the charge
+      #   # @param start_period [Float] Used in price ramps. Indicates how many billing periods pass before the charge
       #   #   applies.
       #   #
-      #   # @param tier_reset_frequency [Float, nil] Used in pricing tiers. Indicates how often the tier resets. Default is 1 - the
+      #   # @param tier_reset_frequency [Float] Used in pricing tiers. Indicates how often the tier resets. Default is 1 - the
       #   #   tier count resets every billing period.
       #   #
-      #   # @param unit_conversion [Metronome::Models::PlanListChargesResponse::UnitConversion, nil] Specifies how quantities for usage based charges will be converted.
+      #   # @param unit_conversion [Metronome::Models::PlanListChargesResponse::UnitConversion] Specifies how quantities for usage based charges will be converted.
       #   #
       #   def initialize(
       #     id:,
@@ -171,11 +171,11 @@ module Metronome
         #   #
         #   # @param value [Float]
         #   #
-        #   # @param collection_interval [Float, nil]
+        #   # @param collection_interval [Float]
         #   #
-        #   # @param collection_schedule [String, nil]
+        #   # @param collection_schedule [String]
         #   #
-        #   # @param quantity [Float, nil]
+        #   # @param quantity [Float]
         #   #
         #   def initialize(tier:, value:, collection_interval: nil, collection_schedule: nil, quantity: nil, **) = super
 
@@ -201,7 +201,7 @@ module Metronome
         #   #
         #   # @param division_factor [Float] The conversion factor
         #   #
-        #   # @param rounding_behavior [String, nil] Whether usage should be rounded down or up to the nearest whole number. If null,
+        #   # @param rounding_behavior [String] Whether usage should be rounded down or up to the nearest whole number. If null,
         #   #   quantity will be rounded to 20 decimal places.
         #   #
         #   def initialize(division_factor:, rounding_behavior: nil, **) = super

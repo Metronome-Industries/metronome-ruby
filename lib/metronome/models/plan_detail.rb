@@ -42,10 +42,10 @@ module Metronome
       #   # @param id [String]
       #   # @param custom_fields [Hash{Symbol => String}]
       #   # @param name [String]
-      #   # @param credit_grants [Array<Metronome::Models::PlanDetail::CreditGrant>, nil]
-      #   # @param description [String, nil]
-      #   # @param minimums [Array<Metronome::Models::PlanDetail::Minimum>, nil]
-      #   # @param overage_rates [Array<Metronome::Models::PlanDetail::OverageRate>, nil]
+      #   # @param credit_grants [Array<Metronome::Models::PlanDetail::CreditGrant>]
+      #   # @param description [String]
+      #   # @param minimums [Array<Metronome::Models::PlanDetail::Minimum>]
+      #   # @param overage_rates [Array<Metronome::Models::PlanDetail::OverageRate>]
       #   #
       #   def initialize(id:, custom_fields:, name:, credit_grants: nil, description: nil, minimums: nil, overage_rates: nil, **) = super
 
@@ -116,9 +116,9 @@ module Metronome
         #   # @param name [String]
         #   # @param priority [String]
         #   # @param send_invoice [Boolean]
-        #   # @param reason [String, nil]
-        #   # @param recurrence_duration [Float, nil]
-        #   # @param recurrence_interval [Float, nil]
+        #   # @param reason [String]
+        #   # @param recurrence_duration [Float]
+        #   # @param recurrence_interval [Float]
         #   #
         #   def initialize(
         #     amount_granted:,

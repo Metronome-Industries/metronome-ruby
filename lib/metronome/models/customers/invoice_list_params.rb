@@ -60,24 +60,24 @@ module Metronome
         # @!parse
         #   # @param customer_id [String]
         #   #
-        #   # @param credit_type_id [String, nil] Only return invoices for the specified credit type
+        #   # @param credit_type_id [String] Only return invoices for the specified credit type
         #   #
-        #   # @param ending_before [String, nil] RFC 3339 timestamp (exclusive). Invoices will only be returned for billing
+        #   # @param ending_before [String] RFC 3339 timestamp (exclusive). Invoices will only be returned for billing
         #   #   periods that end before this time.
         #   #
-        #   # @param limit [Integer, nil] Max number of results that should be returned
+        #   # @param limit [Integer] Max number of results that should be returned
         #   #
-        #   # @param next_page [String, nil] Cursor that indicates where the next page of results should start.
+        #   # @param next_page [String] Cursor that indicates where the next page of results should start.
         #   #
-        #   # @param skip_zero_qty_line_items [Boolean, nil] If set, all zero quantity line items will be filtered out of the response
+        #   # @param skip_zero_qty_line_items [Boolean] If set, all zero quantity line items will be filtered out of the response
         #   #
-        #   # @param sort [String, nil] Invoice sort order by issued_at, e.g. date_asc or date_desc. Defaults to
+        #   # @param sort [String] Invoice sort order by issued_at, e.g. date_asc or date_desc. Defaults to
         #   #   date_asc.
         #   #
-        #   # @param starting_on [String, nil] RFC 3339 timestamp (inclusive). Invoices will only be returned for billing
+        #   # @param starting_on [String] RFC 3339 timestamp (inclusive). Invoices will only be returned for billing
         #   #   periods that start at or after this time.
         #   #
-        #   # @param status [String, nil] Invoice status, e.g. DRAFT, FINALIZED, or VOID
+        #   # @param status [String] Invoice status, e.g. DRAFT, FINALIZED, or VOID
         #   #
         #   def initialize(
         #     customer_id:,

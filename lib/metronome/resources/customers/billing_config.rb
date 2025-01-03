@@ -20,11 +20,11 @@ module Metronome
         #   @option params [String] :billing_provider_customer_id Body param: The customer ID in the billing provider's system. For Azure, this is
         #     the subscription ID.
         #
-        #   @option params [String, nil] :aws_product_code Body param:
+        #   @option params [String] :aws_product_code Body param:
         #
-        #   @option params [Symbol, Metronome::Models::Customers::BillingConfigCreateParams::AwsRegion, nil] :aws_region Body param:
+        #   @option params [Symbol, Metronome::Models::Customers::BillingConfigCreateParams::AwsRegion] :aws_region Body param:
         #
-        #   @option params [Symbol, Metronome::Models::Customers::BillingConfigCreateParams::StripeCollectionMethod, nil] :stripe_collection_method Body param:
+        #   @option params [Symbol, Metronome::Models::Customers::BillingConfigCreateParams::StripeCollectionMethod] :stripe_collection_method Body param:
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #

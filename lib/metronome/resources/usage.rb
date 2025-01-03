@@ -22,12 +22,12 @@ module Metronome
       #     "none" will return a single usage aggregate for the entirety of the specified
       #     period.
       #
-      #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
+      #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
       #
-      #   @option params [Array<Metronome::Models::UsageListParams::BillableMetric>, nil] :billable_metrics Body param: A list of billable metrics to fetch usage for. If absent, all
+      #   @option params [Array<Metronome::Models::UsageListParams::BillableMetric>] :billable_metrics Body param: A list of billable metrics to fetch usage for. If absent, all
       #     billable metrics will be returned.
       #
-      #   @option params [Array<String>, nil] :customer_ids Body param: A list of Metronome customer IDs to fetch usage for. If absent,
+      #   @option params [Array<String>] :customer_ids Body param: A list of Metronome customer IDs to fetch usage for. If absent,
       #     usage for all customers will be returned.
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -84,19 +84,19 @@ module Metronome
       #     "none" will return a single usage aggregate for the entirety of the specified
       #     period.
       #
-      #   @option params [Integer, nil] :limit Query param: Max number of results that should be returned
+      #   @option params [Integer] :limit Query param: Max number of results that should be returned
       #
-      #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
+      #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
       #
-      #   @option params [Boolean, nil] :current_period Body param: If true, will return the usage for the current billing period. Will
+      #   @option params [Boolean] :current_period Body param: If true, will return the usage for the current billing period. Will
       #     return an error if the customer is currently uncontracted or starting_on and
       #     ending_before are specified when this is true.
       #
-      #   @option params [Time, nil] :ending_before Body param:
+      #   @option params [Time] :ending_before Body param:
       #
-      #   @option params [Metronome::Models::UsageListWithGroupsParams::GroupBy, nil] :group_by Body param:
+      #   @option params [Metronome::Models::UsageListWithGroupsParams::GroupBy] :group_by Body param:
       #
-      #   @option params [Time, nil] :starting_on Body param:
+      #   @option params [Time] :starting_on Body param:
       #
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #

@@ -17,27 +17,27 @@ module Metronome
         #
         #   @option params [Symbol, Metronome::Models::Contracts::ProductCreateParams::Type] :type
         #
-        #   @option params [String, nil] :billable_metric_id Required for USAGE products
+        #   @option params [String] :billable_metric_id Required for USAGE products
         #
-        #   @option params [Array<String>, nil] :composite_product_ids Required for COMPOSITE products
+        #   @option params [Array<String>] :composite_product_ids Required for COMPOSITE products
         #
-        #   @option params [Array<String>, nil] :composite_tags Required for COMPOSITE products
+        #   @option params [Array<String>] :composite_tags Required for COMPOSITE products
         #
-        #   @option params [Boolean, nil] :exclude_free_usage Beta feature only available for composite products. If true, products with $0
+        #   @option params [Boolean] :exclude_free_usage Beta feature only available for composite products. If true, products with $0
         #     will not be included when computing composite usage. Defaults to false
         #
-        #   @option params [Boolean, nil] :is_refundable This field's availability is dependent on your client's configuration. Defaults
+        #   @option params [Boolean] :is_refundable This field's availability is dependent on your client's configuration. Defaults
         #     to true.
         #
-        #   @option params [String, nil] :netsuite_internal_item_id This field's availability is dependent on your client's configuration.
+        #   @option params [String] :netsuite_internal_item_id This field's availability is dependent on your client's configuration.
         #
-        #   @option params [String, nil] :netsuite_overage_item_id This field's availability is dependent on your client's configuration.
+        #   @option params [String] :netsuite_overage_item_id This field's availability is dependent on your client's configuration.
         #
-        #   @option params [Array<String>, nil] :presentation_group_key For USAGE products only. Groups usage line items on invoices. The superset of
+        #   @option params [Array<String>] :presentation_group_key For USAGE products only. Groups usage line items on invoices. The superset of
         #     values in the pricing group key and presentation group key must be set as one
         #     compound group key on the billable metric.
         #
-        #   @option params [Array<String>, nil] :pricing_group_key For USAGE products only. If set, pricing for this product will be determined for
+        #   @option params [Array<String>] :pricing_group_key For USAGE products only. If set, pricing for this product will be determined for
         #     each pricing_group_key value, as opposed to the product as a whole. The superset
         #     of values in the pricing group key and presentation group key must be set as one
         #     compound group key on the billable metric.
@@ -55,7 +55,7 @@ module Metronome
         #     the method is "round up" and the decimal places is 0, then the quantity will be
         #     rounded up to the nearest integer.
         #
-        #   @option params [Array<String>, nil] :tags
+        #   @option params [Array<String>] :tags
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
@@ -100,35 +100,35 @@ module Metronome
         #   @option params [Time] :starting_at Timestamp representing when the update should go into effect. It must be on an
         #     hour boundary (e.g. 1:00, not 1:30).
         #
-        #   @option params [String, nil] :billable_metric_id Available for USAGE products only. If not provided, defaults to product's
+        #   @option params [String] :billable_metric_id Available for USAGE products only. If not provided, defaults to product's
         #     current billable metric.
         #
-        #   @option params [Array<String>, nil] :composite_product_ids Available for COMPOSITE products only. If not provided, defaults to product's
+        #   @option params [Array<String>] :composite_product_ids Available for COMPOSITE products only. If not provided, defaults to product's
         #     current composite_product_ids.
         #
-        #   @option params [Array<String>, nil] :composite_tags Available for COMPOSITE products only. If not provided, defaults to product's
+        #   @option params [Array<String>] :composite_tags Available for COMPOSITE products only. If not provided, defaults to product's
         #     current composite_tags.
         #
-        #   @option params [Boolean, nil] :exclude_free_usage Beta feature only available for composite products. If true, products with $0
+        #   @option params [Boolean] :exclude_free_usage Beta feature only available for composite products. If true, products with $0
         #     will not be included when computing composite usage. Defaults to false
         #
-        #   @option params [Boolean, nil] :is_refundable Defaults to product's current refundability status. This field's availability is
+        #   @option params [Boolean] :is_refundable Defaults to product's current refundability status. This field's availability is
         #     dependent on your client's configuration.
         #
-        #   @option params [String, nil] :name displayed on invoices. If not provided, defaults to product's current name.
+        #   @option params [String] :name displayed on invoices. If not provided, defaults to product's current name.
         #
-        #   @option params [String, nil] :netsuite_internal_item_id If not provided, defaults to product's current netsuite_internal_item_id. This
+        #   @option params [String] :netsuite_internal_item_id If not provided, defaults to product's current netsuite_internal_item_id. This
         #     field's availability is dependent on your client's configuration.
         #
-        #   @option params [String, nil] :netsuite_overage_item_id Available for USAGE and COMPOSITE products only. If not provided, defaults to
+        #   @option params [String] :netsuite_overage_item_id Available for USAGE and COMPOSITE products only. If not provided, defaults to
         #     product's current netsuite_overage_item_id. This field's availability is
         #     dependent on your client's configuration.
         #
-        #   @option params [Array<String>, nil] :presentation_group_key For USAGE products only. Groups usage line items on invoices. The superset of
+        #   @option params [Array<String>] :presentation_group_key For USAGE products only. Groups usage line items on invoices. The superset of
         #     values in the pricing group key and presentation group key must be set as one
         #     compound group key on the billable metric.
         #
-        #   @option params [Array<String>, nil] :pricing_group_key For USAGE products only. If set, pricing for this product will be determined for
+        #   @option params [Array<String>] :pricing_group_key For USAGE products only. If set, pricing for this product will be determined for
         #     each pricing_group_key value, as opposed to the product as a whole. The superset
         #     of values in the pricing group key and presentation group key must be set as one
         #     compound group key on the billable metric.
@@ -146,7 +146,7 @@ module Metronome
         #     the method is "round up" and the decimal places is 0, then the quantity will be
         #     rounded up to the nearest integer.
         #
-        #   @option params [Array<String>, nil] :tags If not provided, defaults to product's current tags
+        #   @option params [Array<String>] :tags If not provided, defaults to product's current tags
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
@@ -166,11 +166,11 @@ module Metronome
         #
         # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::ProductListParams] Attributes to send in this request.
         #
-        #   @option params [Integer, nil] :limit Query param: Max number of results that should be returned
+        #   @option params [Integer] :limit Query param: Max number of results that should be returned
         #
-        #   @option params [String, nil] :next_page Query param: Cursor that indicates where the next page of results should start.
+        #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
         #
-        #   @option params [Symbol, Metronome::Models::Contracts::ProductListParams::ArchiveFilter, nil] :archive_filter Body param: Filter options for the product list
+        #   @option params [Symbol, Metronome::Models::Contracts::ProductListParams::ArchiveFilter] :archive_filter Body param: Filter options for the product list
         #
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #

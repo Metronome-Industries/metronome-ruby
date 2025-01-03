@@ -60,11 +60,11 @@ module Metronome
       #   # @param unit_price [Float] Unit price for the charge. Will be multiplied by quantity to determine the
       #   #   amount and must be specified.
       #   #
-      #   # @param custom_fields [Hash{Symbol => String}, nil]
+      #   # @param custom_fields [Hash{Symbol => String}]
       #   #
-      #   # @param description [String, nil]
+      #   # @param description [String]
       #   #
-      #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
+      #   # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
       #   #
       #   def initialize(
       #     id:,

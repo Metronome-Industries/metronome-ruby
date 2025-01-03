@@ -104,33 +104,33 @@ module Metronome
           #   #
           #   # @param starting_at [String] inclusive effective date
           #   #
-          #   # @param commit_rate [Metronome::Models::Contracts::RateCards::RateAddParams::CommitRate, nil] A distinct rate on the rate card. You can choose to use this rate rather than
+          #   # @param commit_rate [Metronome::Models::Contracts::RateCards::RateAddParams::CommitRate] A distinct rate on the rate card. You can choose to use this rate rather than
           #   #   list rate when consuming a credit or commit.
           #   #
-          #   # @param credit_type_id [String, nil] The Metronome ID of the credit type to associate with price, defaults to USD
+          #   # @param credit_type_id [String] The Metronome ID of the credit type to associate with price, defaults to USD
           #   #   (cents) if not passed. Used by all rate_types except type PERCENTAGE. PERCENTAGE
           #   #   rates use the credit type of associated rates.
           #   #
-          #   # @param custom_rate [Hash{Symbol => Object}, nil] Only set for CUSTOM rate_type. This field is interpreted by custom rate
+          #   # @param custom_rate [Hash{Symbol => Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate
           #   #   processors.
           #   #
-          #   # @param ending_before [String, nil] exclusive end date
+          #   # @param ending_before [String] exclusive end date
           #   #
-          #   # @param is_prorated [Boolean, nil] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
+          #   # @param is_prorated [Boolean] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
           #   #   set to true.
           #   #
-          #   # @param price [Float, nil] Default price. For FLAT and SUBSCRIPTION rate_type, this must be >=0. For
+          #   # @param price [Float] Default price. For FLAT and SUBSCRIPTION rate_type, this must be >=0. For
           #   #   PERCENTAGE rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this
           #   #   must be >=0 and <=1.
           #   #
-          #   # @param pricing_group_values [Hash{Symbol => String}, nil] Optional. List of pricing group key value pairs which will be used to calculate
+          #   # @param pricing_group_values [Hash{Symbol => String}] Optional. List of pricing group key value pairs which will be used to calculate
           #   #   the price.
           #   #
-          #   # @param quantity [Float, nil] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
+          #   # @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
           #   #
-          #   # @param tiers [Array<Metronome::Models::Tier>, nil] Only set for TIERED rate_type.
+          #   # @param tiers [Array<Metronome::Models::Tier>] Only set for TIERED rate_type.
           #   #
-          #   # @param use_list_prices [Boolean, nil] Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
+          #   # @param use_list_prices [Boolean] Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
           #   #   using list prices rather than the standard rates for this product on the
           #   #   contract.
           #   #
@@ -208,9 +208,9 @@ module Metronome
             #   #
             #   # @param rate_type [String]
             #   #
-            #   # @param price [Float, nil] Commit rate price. For FLAT rate_type, this must be >=0.
+            #   # @param price [Float] Commit rate price. For FLAT rate_type, this must be >=0.
             #   #
-            #   # @param tiers [Array<Metronome::Models::Tier>, nil] Only set for TIERED rate_type.
+            #   # @param tiers [Array<Metronome::Models::Tier>] Only set for TIERED rate_type.
             #   #
             #   def initialize(rate_type:, price: nil, tiers: nil, **) = super
 

@@ -36,9 +36,9 @@ module Metronome
       #   #
       #   # @param schedule [Metronome::Models::SchedulePointInTime]
       #   #
-      #   # @param name [String, nil]
+      #   # @param name [String]
       #   #
-      #   # @param netsuite_sales_order_id [String, nil] This field's availability is dependent on your client's configuration.
+      #   # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
       #   #
       #   def initialize(id:, product:, schedule:, name: nil, netsuite_sales_order_id: nil, **) = super
 

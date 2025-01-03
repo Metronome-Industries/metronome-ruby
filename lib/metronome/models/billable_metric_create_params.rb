@@ -54,23 +54,23 @@ module Metronome
       # @!parse
       #   # @param name [String] The display name of the billable metric.
       #   #
-      #   # @param aggregation_key [String, nil] Specifies the type of aggregation performed on matching events. Required if
+      #   # @param aggregation_key [String] Specifies the type of aggregation performed on matching events. Required if
       #   #   `sql` is not provided.
       #   #
-      #   # @param aggregation_type [String, nil] Specifies the type of aggregation performed on matching events.
+      #   # @param aggregation_type [String] Specifies the type of aggregation performed on matching events.
       #   #
-      #   # @param custom_fields [Hash{Symbol => String}, nil] Custom fields to attach to the billable metric.
+      #   # @param custom_fields [Hash{Symbol => String}] Custom fields to attach to the billable metric.
       #   #
-      #   # @param event_type_filter [Metronome::Models::EventTypeFilter, nil] An optional filtering rule to match the 'event_type' property of an event.
+      #   # @param event_type_filter [Metronome::Models::EventTypeFilter] An optional filtering rule to match the 'event_type' property of an event.
       #   #
-      #   # @param group_keys [Array<Array<String>>, nil] Property names that are used to group usage costs on an invoice. Each entry
+      #   # @param group_keys [Array<Array<String>>] Property names that are used to group usage costs on an invoice. Each entry
       #   #   represents a set of properties used to slice events into distinct buckets.
       #   #
-      #   # @param property_filters [Array<Metronome::Models::PropertyFilter>, nil] A list of filters to match events to this billable metric. Each filter defines a
+      #   # @param property_filters [Array<Metronome::Models::PropertyFilter>] A list of filters to match events to this billable metric. Each filter defines a
       #   #   rule on an event property. All rules must pass for the event to match the
       #   #   billable metric.
       #   #
-      #   # @param sql [String, nil] The SQL query associated with the billable metric. This field is mutually
+      #   # @param sql [String] The SQL query associated with the billable metric. This field is mutually
       #   #   exclusive with aggregation_type, event_type_filter, property_filters,
       #   #   aggregation_key, and group_keys. If provided, these other fields must be
       #   #   omitted.

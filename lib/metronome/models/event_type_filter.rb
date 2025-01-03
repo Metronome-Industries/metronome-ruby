@@ -18,11 +18,11 @@ module Metronome
       # @!parse
       #   # An optional filtering rule to match the 'event_type' property of an event.
       #   #
-      #   # @param in_values [Array<String>, nil] A list of event types that are explicitly included in the billable metric. If
+      #   # @param in_values [Array<String>] A list of event types that are explicitly included in the billable metric. If
       #   #   specified, only events of these types will match the billable metric. Must be
       #   #   non-empty if present.
       #   #
-      #   # @param not_in_values [Array<String>, nil] A list of event types that are explicitly excluded from the billable metric. If
+      #   # @param not_in_values [Array<String>] A list of event types that are explicitly excluded from the billable metric. If
       #   #   specified, events of these types will not match the billable metric. Must be
       #   #   non-empty if present.
       #   #

@@ -49,9 +49,9 @@ module Metronome
       #   #
       #   # @param line_items [Array<Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem>] Each line requires an amount or both unit_price and quantity.
       #   #
-      #   # @param netsuite_invoice_header_end [String, nil] The end date of the invoice header in Netsuite
+      #   # @param netsuite_invoice_header_end [String] The end date of the invoice header in Netsuite
       #   #
-      #   # @param netsuite_invoice_header_start [String, nil] The start date of the invoice header in Netsuite
+      #   # @param netsuite_invoice_header_start [String] The start date of the invoice header in Netsuite
       #   #
       #   def initialize(
       #     contract_id:,
@@ -120,20 +120,20 @@ module Metronome
         #   #
         #   # @param professional_service_id [String]
         #   #
-        #   # @param amendment_id [String, nil] If the professional_service_id was added on an amendment, this is required.
+        #   # @param amendment_id [String] If the professional_service_id was added on an amendment, this is required.
         #   #
-        #   # @param amount [Float, nil] Amount for the term on the new invoice.
+        #   # @param amount [Float] Amount for the term on the new invoice.
         #   #
-        #   # @param metadata [String, nil] For client use.
+        #   # @param metadata [String] For client use.
         #   #
-        #   # @param netsuite_invoice_billing_end [String, nil] The end date for the billing period on the invoice.
+        #   # @param netsuite_invoice_billing_end [String] The end date for the billing period on the invoice.
         #   #
-        #   # @param netsuite_invoice_billing_start [String, nil] The start date for the billing period on the invoice.
+        #   # @param netsuite_invoice_billing_start [String] The start date for the billing period on the invoice.
         #   #
-        #   # @param quantity [Float, nil] Quantity for the charge. Will be multiplied by unit_price to determine the
+        #   # @param quantity [Float] Quantity for the charge. Will be multiplied by unit_price to determine the
         #   #   amount.
         #   #
-        #   # @param unit_price [Float, nil] If specified, this overrides the unit price on the pro service term. Must also
+        #   # @param unit_price [Float] If specified, this overrides the unit price on the pro service term. Must also
         #   #   provide quantity (but not amount) if providing unit_price.
         #   #
         #   def initialize(

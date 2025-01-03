@@ -22,7 +22,7 @@ module Metronome
         optional :url, String
 
         # @!parse
-        #   # @param url [String, nil]
+        #   # @param url [String]
         #   #
         #   def initialize(url: nil, **) = super
 

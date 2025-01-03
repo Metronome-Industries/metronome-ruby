@@ -75,23 +75,23 @@ module Metronome
         #   # @param starting_on [String] RFC 3339 timestamp. Breakdowns will only be returned for time windows that start
         #   #   on or after this time.
         #   #
-        #   # @param credit_type_id [String, nil] Only return invoices for the specified credit type
+        #   # @param credit_type_id [String] Only return invoices for the specified credit type
         #   #
-        #   # @param limit [Integer, nil] Max number of results that should be returned. For daily breakdowns, the
+        #   # @param limit [Integer] Max number of results that should be returned. For daily breakdowns, the
         #   #   response can return up to 35 days worth of breakdowns. For hourly breakdowns,
         #   #   the response can return up to 24 hours. If there are more results, a cursor to
         #   #   the next page is returned.
         #   #
-        #   # @param next_page [String, nil] Cursor that indicates where the next page of results should start.
+        #   # @param next_page [String] Cursor that indicates where the next page of results should start.
         #   #
-        #   # @param skip_zero_qty_line_items [Boolean, nil] If set, all zero quantity line items will be filtered out of the response
+        #   # @param skip_zero_qty_line_items [Boolean] If set, all zero quantity line items will be filtered out of the response
         #   #
-        #   # @param sort [String, nil] Invoice sort order by issued_at, e.g. date_asc or date_desc. Defaults to
+        #   # @param sort [String] Invoice sort order by issued_at, e.g. date_asc or date_desc. Defaults to
         #   #   date_asc.
         #   #
-        #   # @param status [String, nil] Invoice status, e.g. DRAFT or FINALIZED
+        #   # @param status [String] Invoice status, e.g. DRAFT or FINALIZED
         #   #
-        #   # @param window_size [String, nil] The granularity of the breakdowns to return. Defaults to day.
+        #   # @param window_size [String] The granularity of the breakdowns to return. Defaults to day.
         #   #
         #   def initialize(
         #     customer_id:,
