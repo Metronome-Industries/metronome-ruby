@@ -4,6 +4,7 @@ module Metronome
   module Resources
     class Invoices
       # @param client [Metronome::Client]
+      #
       def initialize(client:)
         @client = client
       end
@@ -17,6 +18,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::InvoiceRegenerateResponse]
+      #
       def regenerate(params = {}, opts = {})
         parsed = Metronome::Models::InvoiceRegenerateParams.dump(params)
         req = {
@@ -37,6 +39,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::InvoiceVoidResponse]
+      #
       def void(params = {}, opts = {})
         parsed = Metronome::Models::InvoiceVoidParams.dump(params)
         req = {

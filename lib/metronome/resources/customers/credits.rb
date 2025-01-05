@@ -5,6 +5,7 @@ module Metronome
     class Customers
       class Credits
         # @param client [Metronome::Client]
+        #
         def initialize(client:)
           @client = client
         end
@@ -51,6 +52,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Customers::CreditCreateResponse]
+        #
         def create(params = {}, opts = {})
           parsed = Metronome::Models::Customers::CreditCreateParams.dump(params)
           req = {
@@ -88,6 +90,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Customers::CreditListResponse]
+        #
         def list(params = {}, opts = {})
           parsed = Metronome::Models::Customers::CreditListParams.dump(params)
           req = {
@@ -113,6 +116,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Customers::CreditUpdateEndDateResponse]
+        #
         def update_end_date(params = {}, opts = {})
           parsed = Metronome::Models::Customers::CreditUpdateEndDateParams.dump(params)
           req = {

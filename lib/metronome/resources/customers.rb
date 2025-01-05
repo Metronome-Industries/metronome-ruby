@@ -25,6 +25,7 @@ module Metronome
       attr_reader :named_schedules
 
       # @param client [Metronome::Client]
+      #
       def initialize(client:)
         @client = client
         @alerts = Metronome::Resources::Customers::Alerts.new(client: client)
@@ -54,6 +55,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CustomerCreateResponse]
+      #
       def create(params = {}, opts = {})
         parsed = Metronome::Models::CustomerCreateParams.dump(params)
         req = {
@@ -74,6 +76,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CustomerRetrieveResponse]
+      #
       def retrieve(params = {}, opts = {})
         parsed = Metronome::Models::CustomerRetrieveParams.dump(params)
         customer_id = parsed.fetch(:customer_id) do
@@ -107,6 +110,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::CustomerDetail>]
+      #
       def list(params = {}, opts = {})
         parsed = Metronome::Models::CustomerListParams.dump(params)
         req = {
@@ -128,6 +132,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CustomerArchiveResponse]
+      #
       def archive(params = {}, opts = {})
         parsed = Metronome::Models::CustomerArchiveParams.dump(params)
         req = {
@@ -157,6 +162,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::CustomerListBillableMetricsResponse>]
+      #
       def list_billable_metrics(params = {}, opts = {})
         parsed = Metronome::Models::CustomerListBillableMetricsParams.dump(params)
         customer_id = parsed.fetch(:customer_id) do
@@ -191,6 +197,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::CustomerListCostsResponse>]
+      #
       def list_costs(params = {}, opts = {})
         parsed = Metronome::Models::CustomerListCostsParams.dump(params)
         customer_id = parsed.fetch(:customer_id) do
@@ -219,6 +226,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
+      #
       def set_ingest_aliases(params = {}, opts = {})
         parsed = Metronome::Models::CustomerSetIngestAliasesParams.dump(params)
         customer_id = parsed.fetch(:customer_id) do
@@ -245,6 +253,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CustomerSetNameResponse]
+      #
       def set_name(params = {}, opts = {})
         parsed = Metronome::Models::CustomerSetNameParams.dump(params)
         customer_id = parsed.fetch(:customer_id) do
@@ -273,6 +282,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
+      #
       def update_config(params = {}, opts = {})
         parsed = Metronome::Models::CustomerUpdateConfigParams.dump(params)
         customer_id = parsed.fetch(:customer_id) do

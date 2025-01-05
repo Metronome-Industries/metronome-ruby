@@ -13,6 +13,7 @@ module Metronome
       attr_reader :named_schedules
 
       # @param client [Metronome::Client]
+      #
       def initialize(client:)
         @client = client
         @products = Metronome::Resources::Contracts::Products.new(client: client)
@@ -81,6 +82,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::ContractCreateResponse]
+      #
       def create(params = {}, opts = {})
         parsed = Metronome::Models::ContractCreateParams.dump(params)
         req = {
@@ -106,6 +108,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::ContractRetrieveResponse]
+      #
       def retrieve(params = {}, opts = {})
         parsed = Metronome::Models::ContractRetrieveParams.dump(params)
         req = {
@@ -139,6 +142,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::ContractListResponse]
+      #
       def list(params = {}, opts = {})
         parsed = Metronome::Models::ContractListParams.dump(params)
         req = {
@@ -172,6 +176,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
+      #
       def add_manual_balance_entry(params = {}, opts = {})
         parsed = Metronome::Models::ContractAddManualBalanceEntryParams.dump(params)
         req = {
@@ -218,6 +223,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::ContractAmendResponse]
+      #
       def amend(params = {}, opts = {})
         parsed = Metronome::Models::ContractAmendParams.dump(params)
         req = {
@@ -243,6 +249,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::ContractArchiveResponse]
+      #
       def archive(params = {}, opts = {})
         parsed = Metronome::Models::ContractArchiveParams.dump(params)
         req = {
@@ -265,6 +272,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::ContractCreateHistoricalInvoicesResponse]
+      #
       def create_historical_invoices(params = {}, opts = {})
         parsed = Metronome::Models::ContractCreateHistoricalInvoicesParams.dump(params)
         req = {
@@ -302,6 +310,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::ContractListBalancesResponse]
+      #
       def list_balances(params = {}, opts = {})
         parsed = Metronome::Models::ContractListBalancesParams.dump(params)
         req = {
@@ -335,6 +344,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::ContractRetrieveRateScheduleResponse]
+      #
       def retrieve_rate_schedule(params = {}, opts = {})
         parsed = Metronome::Models::ContractRetrieveRateScheduleParams.dump(params)
         query_params = [:limit, :next_page]
@@ -368,6 +378,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::ContractScheduleProServicesInvoiceResponse]
+      #
       def schedule_pro_services_invoice(params = {}, opts = {})
         parsed = Metronome::Models::ContractScheduleProServicesInvoiceParams.dump(params)
         req = {
@@ -396,6 +407,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
+      #
       def set_usage_filter(params = {}, opts = {})
         parsed = Metronome::Models::ContractSetUsageFilterParams.dump(params)
         req = {
@@ -421,6 +433,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::ContractUpdateEndDateResponse]
+      #
       def update_end_date(params = {}, opts = {})
         parsed = Metronome::Models::ContractUpdateEndDateParams.dump(params)
         req = {

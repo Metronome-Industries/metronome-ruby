@@ -4,6 +4,7 @@ module Metronome
   module Resources
     class Usage
       # @param client [Metronome::Client]
+      #
       def initialize(client:)
         @client = client
       end
@@ -33,6 +34,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::UsageListResponse]
+      #
       def list(params = {}, opts = {})
         parsed = Metronome::Models::UsageListParams.dump(params)
         query_params = [:next_page]
@@ -59,6 +61,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
+      #
       def ingest(params = {}, opts = {})
         parsed = Metronome::Models::UsageIngestParams.dump(params)
         req = {
@@ -101,6 +104,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::UsageListWithGroupsResponse>]
+      #
       def list_with_groups(params = {}, opts = {})
         parsed = Metronome::Models::UsageListWithGroupsParams.dump(params)
         query_params = [:limit, :next_page]

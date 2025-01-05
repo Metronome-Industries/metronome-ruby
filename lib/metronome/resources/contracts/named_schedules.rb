@@ -5,6 +5,7 @@ module Metronome
     class Contracts
       class NamedSchedules
         # @param client [Metronome::Client]
+        #
         def initialize(client:)
           @client = client
         end
@@ -24,6 +25,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Contracts::NamedScheduleRetrieveResponse]
+        #
         def retrieve(params = {}, opts = {})
           parsed = Metronome::Models::Contracts::NamedScheduleRetrieveParams.dump(params)
           req = {
@@ -54,6 +56,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [nil]
+        #
         def update(params = {}, opts = {})
           parsed = Metronome::Models::Contracts::NamedScheduleUpdateParams.dump(params)
           req = {

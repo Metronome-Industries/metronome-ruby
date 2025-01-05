@@ -5,6 +5,7 @@ module Metronome
     class Contracts
       class Products
         # @param client [Metronome::Client]
+        #
         def initialize(client:)
           @client = client
         end
@@ -60,6 +61,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Contracts::ProductCreateResponse]
+        #
         def create(params = {}, opts = {})
           parsed = Metronome::Models::Contracts::ProductCreateParams.dump(params)
           req = {
@@ -80,6 +82,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Contracts::ProductRetrieveResponse]
+        #
         def retrieve(params = {}, opts = {})
           parsed = Metronome::Models::Contracts::ProductRetrieveParams.dump(params)
           req = {
@@ -151,6 +154,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Contracts::ProductUpdateResponse]
+        #
         def update(params = {}, opts = {})
           parsed = Metronome::Models::Contracts::ProductUpdateParams.dump(params)
           req = {
@@ -175,6 +179,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::CursorPage<Metronome::Models::Contracts::ProductListResponse>]
+        #
         def list(params = {}, opts = {})
           parsed = Metronome::Models::Contracts::ProductListParams.dump(params)
           query_params = [:limit, :next_page]
@@ -198,6 +203,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Contracts::ProductArchiveResponse]
+        #
         def archive(params = {}, opts = {})
           parsed = Metronome::Models::Contracts::ProductArchiveParams.dump(params)
           req = {
