@@ -5,6 +5,7 @@ module Metronome
     class Customers
       class BillingConfig
         # @param client [Metronome::Client]
+        #
         def initialize(client:)
           @client = client
         end
@@ -29,6 +30,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [nil]
+        #
         def create(params = {}, opts = {})
           parsed = Metronome::Models::Customers::BillingConfigCreateParams.dump(params)
           customer_id = parsed.fetch(:customer_id) do
@@ -57,6 +59,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Customers::BillingConfigRetrieveResponse]
+        #
         def retrieve(params = {}, opts = {})
           parsed = Metronome::Models::Customers::BillingConfigRetrieveParams.dump(params)
           customer_id = parsed.fetch(:customer_id) do
@@ -85,6 +88,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [nil]
+        #
         def delete(params = {}, opts = {})
           parsed = Metronome::Models::Customers::BillingConfigDeleteParams.dump(params)
           customer_id = parsed.fetch(:customer_id) do

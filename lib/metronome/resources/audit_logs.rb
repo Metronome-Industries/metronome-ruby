@@ -4,6 +4,7 @@ module Metronome
   module Resources
     class AuditLogs
       # @param client [Metronome::Client]
+      #
       def initialize(client:)
         @client = client
       end
@@ -35,6 +36,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::AuditLogListResponse>]
+      #
       def list(params = {}, opts = {})
         parsed = Metronome::Models::AuditLogListParams.dump(params)
         req = {

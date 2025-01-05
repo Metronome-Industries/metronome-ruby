@@ -4,6 +4,7 @@ module Metronome
   module Resources
     class CustomFields
       # @param client [Metronome::Client]
+      #
       def initialize(client:)
         @client = client
       end
@@ -22,6 +23,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
+      #
       def add_key(params = {}, opts = {})
         parsed = Metronome::Models::CustomFieldAddKeyParams.dump(params)
         req = {
@@ -46,6 +48,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
+      #
       def delete_values(params = {}, opts = {})
         parsed = Metronome::Models::CustomFieldDeleteValuesParams.dump(params)
         req = {
@@ -68,6 +71,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CustomFieldListKeysResponse]
+      #
       def list_keys(params = {}, opts = {})
         parsed = Metronome::Models::CustomFieldListKeysParams.dump(params)
         query_params = [:next_page]
@@ -92,6 +96,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
+      #
       def remove_key(params = {}, opts = {})
         parsed = Metronome::Models::CustomFieldRemoveKeyParams.dump(params)
         req = {
@@ -122,6 +127,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
+      #
       def set_values(params = {}, opts = {})
         parsed = Metronome::Models::CustomFieldSetValuesParams.dump(params)
         req = {

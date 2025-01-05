@@ -56,6 +56,9 @@ module Metronome
     attr_reader :contracts
 
     # @private
+    #
+    # @return [Hash{String => String}]
+    #
     private def auth_headers
       {"Authorization" => "Bearer #{@bearer_token}"}
     end
@@ -67,6 +70,13 @@ module Metronome
     # @param bearer_token [String, nil] Defaults to `ENV["METRONOME_BEARER_TOKEN"]`
     #
     # @param max_retries [Integer] Max number of retries to attempt after a failed retryable request.
+    #
+    # @param timeout [Float]
+    #
+    # @param initial_retry_delay [Float]
+    #
+    # @param max_retry_delay [Float]
+    #
     def initialize(
       base_url: nil,
       bearer_token: ENV["METRONOME_BEARER_TOKEN"],

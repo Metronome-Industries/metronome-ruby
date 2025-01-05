@@ -6,6 +6,7 @@ module Metronome
       class RateCards
         class ProductOrders
           # @param client [Metronome::Client]
+          #
           def initialize(client:)
             @client = client
           end
@@ -21,6 +22,7 @@ module Metronome
           # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
           #
           # @return [Metronome::Models::Contracts::RateCards::ProductOrderUpdateResponse]
+          #
           def update(params = {}, opts = {})
             parsed = Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams.dump(params)
             req = {
@@ -43,6 +45,7 @@ module Metronome
           # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
           #
           # @return [Metronome::Models::Contracts::RateCards::ProductOrderSetResponse]
+          #
           def set(params = {}, opts = {})
             parsed = Metronome::Models::Contracts::RateCards::ProductOrderSetParams.dump(params)
             req = {

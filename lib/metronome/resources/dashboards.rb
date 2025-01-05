@@ -4,6 +4,7 @@ module Metronome
   module Resources
     class Dashboards
       # @param client [Metronome::Client]
+      #
       def initialize(client:)
         @client = client
       end
@@ -27,6 +28,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::DashboardGetEmbeddableURLResponse]
+      #
       def get_embeddable_url(params = {}, opts = {})
         parsed = Metronome::Models::DashboardGetEmbeddableURLParams.dump(params)
         req = {

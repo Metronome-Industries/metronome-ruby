@@ -5,6 +5,7 @@ module Metronome
     class Customers
       class Invoices
         # @param client [Metronome::Client]
+        #
         def initialize(client:)
           @client = client
         end
@@ -23,6 +24,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Customers::InvoiceRetrieveResponse]
+        #
         def retrieve(params = {}, opts = {})
           parsed = Metronome::Models::Customers::InvoiceRetrieveParams.dump(params)
           customer_id = parsed.fetch(:customer_id) do
@@ -70,6 +72,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::CursorPage<Metronome::Models::Customers::Invoice>]
+        #
         def list(params = {}, opts = {})
           parsed = Metronome::Models::Customers::InvoiceListParams.dump(params)
           customer_id = parsed.fetch(:customer_id) do
@@ -109,6 +112,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Customers::InvoiceAddChargeResponse]
+        #
         def add_charge(params = {}, opts = {})
           parsed = Metronome::Models::Customers::InvoiceAddChargeParams.dump(params)
           customer_id = parsed.fetch(:customer_id) do
@@ -158,6 +162,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::CursorPage<Metronome::Models::Customers::InvoiceListBreakdownsResponse>]
+        #
         def list_breakdowns(params = {}, opts = {})
           parsed = Metronome::Models::Customers::InvoiceListBreakdownsParams.dump(params)
           customer_id = parsed.fetch(:customer_id) do

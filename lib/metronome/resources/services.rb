@@ -4,6 +4,7 @@ module Metronome
   module Resources
     class Services
       # @param client [Metronome::Client]
+      #
       def initialize(client:)
         @client = client
       end
@@ -16,6 +17,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::ServiceListResponse]
+      #
       def list(opts = {})
         req = {
           method: :get,

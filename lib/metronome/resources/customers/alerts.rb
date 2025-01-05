@@ -5,6 +5,7 @@ module Metronome
     class Customers
       class Alerts
         # @param client [Metronome::Client]
+        #
         def initialize(client:)
           @client = client
         end
@@ -21,6 +22,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Customers::AlertRetrieveResponse]
+        #
         def retrieve(params = {}, opts = {})
           parsed = Metronome::Models::Customers::AlertRetrieveParams.dump(params)
           req = {
@@ -46,6 +48,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Customers::AlertListResponse]
+        #
         def list(params = {}, opts = {})
           parsed = Metronome::Models::Customers::AlertListParams.dump(params)
           query_params = [:next_page]
@@ -70,6 +73,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [nil]
+        #
         def reset(params = {}, opts = {})
           parsed = Metronome::Models::Customers::AlertResetParams.dump(params)
           req = {

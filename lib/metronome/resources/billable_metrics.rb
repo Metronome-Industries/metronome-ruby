@@ -4,6 +4,7 @@ module Metronome
   module Resources
     class BillableMetrics
       # @param client [Metronome::Client]
+      #
       def initialize(client:)
         @client = client
       end
@@ -38,6 +39,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::BillableMetricCreateResponse]
+      #
       def create(params = {}, opts = {})
         parsed = Metronome::Models::BillableMetricCreateParams.dump(params)
         req = {
@@ -58,6 +60,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::BillableMetricRetrieveResponse]
+      #
       def retrieve(params = {}, opts = {})
         parsed = Metronome::Models::BillableMetricRetrieveParams.dump(params)
         billable_metric_id = parsed.fetch(:billable_metric_id) do
@@ -84,6 +87,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::BillableMetricListResponse>]
+      #
       def list(params = {}, opts = {})
         parsed = Metronome::Models::BillableMetricListParams.dump(params)
         req = {
@@ -105,6 +109,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::BillableMetricArchiveResponse]
+      #
       def archive(params = {}, opts = {})
         parsed = Metronome::Models::BillableMetricArchiveParams.dump(params)
         req = {

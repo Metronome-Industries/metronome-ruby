@@ -14,6 +14,7 @@ module Metronome
         attr_reader :named_schedules
 
         # @param client [Metronome::Client]
+        #
         def initialize(client:)
           @client = client
           @product_orders = Metronome::Resources::Contracts::RateCards::ProductOrders.new(client: client)
@@ -43,6 +44,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Contracts::RateCardCreateResponse]
+        #
         def create(params = {}, opts = {})
           parsed = Metronome::Models::Contracts::RateCardCreateParams.dump(params)
           req = {
@@ -64,6 +66,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Contracts::RateCardRetrieveResponse]
+        #
         def retrieve(params = {}, opts = {})
           parsed = Metronome::Models::Contracts::RateCardRetrieveParams.dump(params)
           req = {
@@ -92,6 +95,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Contracts::RateCardUpdateResponse]
+        #
         def update(params = {}, opts = {})
           parsed = Metronome::Models::Contracts::RateCardUpdateParams.dump(params)
           req = {
@@ -117,6 +121,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::CursorPage<Metronome::Models::Contracts::RateCardListResponse>]
+        #
         def list(params = {}, opts = {})
           parsed = Metronome::Models::Contracts::RateCardListParams.dump(params)
           req = {
@@ -153,6 +158,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse]
+        #
         def retrieve_rate_schedule(params = {}, opts = {})
           parsed = Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams.dump(params)
           query_params = [:limit, :next_page]

@@ -4,6 +4,7 @@ module Metronome
   module Resources
     class Alerts
       # @param client [Metronome::Client]
+      #
       def initialize(client:)
         @client = client
       end
@@ -55,6 +56,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::AlertCreateResponse]
+      #
       def create(params = {}, opts = {})
         parsed = Metronome::Models::AlertCreateParams.dump(params)
         req = {
@@ -77,6 +79,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::AlertArchiveResponse]
+      #
       def archive(params = {}, opts = {})
         parsed = Metronome::Models::AlertArchiveParams.dump(params)
         req = {

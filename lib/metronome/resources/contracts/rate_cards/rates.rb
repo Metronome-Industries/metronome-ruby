@@ -6,6 +6,7 @@ module Metronome
       class RateCards
         class Rates
           # @param client [Metronome::Client]
+          #
           def initialize(client:)
             @client = client
           end
@@ -29,6 +30,7 @@ module Metronome
           # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
           #
           # @return [Metronome::CursorPage<Metronome::Models::Contracts::RateCards::RateListResponse>]
+          #
           def list(params = {}, opts = {})
             parsed = Metronome::Models::Contracts::RateCards::RateListParams.dump(params)
             query_params = [:limit, :next_page]
@@ -90,6 +92,7 @@ module Metronome
           # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
           #
           # @return [Metronome::Models::Contracts::RateCards::RateAddResponse]
+          #
           def add(params = {}, opts = {})
             parsed = Metronome::Models::Contracts::RateCards::RateAddParams.dump(params)
             req = {
@@ -112,6 +115,7 @@ module Metronome
           # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
           #
           # @return [Metronome::Models::Contracts::RateCards::RateAddManyResponse]
+          #
           def add_many(params = {}, opts = {})
             parsed = Metronome::Models::Contracts::RateCards::RateAddManyParams.dump(params)
             req = {

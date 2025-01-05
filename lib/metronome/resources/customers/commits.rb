@@ -5,6 +5,7 @@ module Metronome
     class Customers
       class Commits
         # @param client [Metronome::Client]
+        #
         def initialize(client:)
           @client = client
         end
@@ -63,6 +64,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Customers::CommitCreateResponse]
+        #
         def create(params = {}, opts = {})
           parsed = Metronome::Models::Customers::CommitCreateParams.dump(params)
           req = {
@@ -100,6 +102,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Customers::CommitListResponse]
+        #
         def list(params = {}, opts = {})
           parsed = Metronome::Models::Customers::CommitListParams.dump(params)
           req = {
@@ -129,6 +132,7 @@ module Metronome
         # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Customers::CommitUpdateEndDateResponse]
+        #
         def update_end_date(params = {}, opts = {})
           parsed = Metronome::Models::Customers::CommitUpdateEndDateParams.dump(params)
           req = {

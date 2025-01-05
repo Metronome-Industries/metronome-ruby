@@ -4,6 +4,7 @@ module Metronome
   module Resources
     class CreditGrants
       # @param client [Metronome::Client]
+      #
       def initialize(client:)
         @client = client
       end
@@ -51,6 +52,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CreditGrantCreateResponse]
+      #
       def create(params = {}, opts = {})
         parsed = Metronome::Models::CreditGrantCreateParams.dump(params)
         req = {
@@ -87,6 +89,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::CreditGrantListResponse>]
+      #
       def list(params = {}, opts = {})
         parsed = Metronome::Models::CreditGrantListParams.dump(params)
         query_params = [:limit, :next_page]
@@ -116,6 +119,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CreditGrantEditResponse]
+      #
       def edit(params = {}, opts = {})
         parsed = Metronome::Models::CreditGrantEditParams.dump(params)
         req = {
@@ -138,6 +142,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::CreditGrantListCreditTypesResponse>]
+      #
       def list_credit_types(params = {}, opts = {})
         parsed = Metronome::Models::CreditGrantListCreditTypesParams.dump(params)
         req = {
@@ -175,6 +180,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CreditGrantListEntriesResponse]
+      #
       def list_entries(params = {}, opts = {})
         parsed = Metronome::Models::CreditGrantListEntriesParams.dump(params)
         query_params = [:next_page]
@@ -201,6 +207,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CreditGrantVoidResponse]
+      #
       def void(params = {}, opts = {})
         parsed = Metronome::Models::CreditGrantVoidParams.dump(params)
         req = {

@@ -4,6 +4,7 @@ module Metronome
   module Resources
     class Plans
       # @param client [Metronome::Client]
+      #
       def initialize(client:)
         @client = client
       end
@@ -19,6 +20,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::PlanListResponse>]
+      #
       def list(params = {}, opts = {})
         parsed = Metronome::Models::PlanListParams.dump(params)
         req = {
@@ -40,6 +42,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::PlanGetDetailsResponse]
+      #
       def get_details(params = {}, opts = {})
         parsed = Metronome::Models::PlanGetDetailsParams.dump(params)
         plan_id = parsed.fetch(:plan_id) do
@@ -66,6 +69,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::PlanListChargesResponse>]
+      #
       def list_charges(params = {}, opts = {})
         parsed = Metronome::Models::PlanListChargesParams.dump(params)
         plan_id = parsed.fetch(:plan_id) do
@@ -105,6 +109,7 @@ module Metronome
       # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::PlanListCustomersResponse>]
+      #
       def list_customers(params = {}, opts = {})
         parsed = Metronome::Models::PlanListCustomersParams.dump(params)
         plan_id = parsed.fetch(:plan_id) do
