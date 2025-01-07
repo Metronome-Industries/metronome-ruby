@@ -10,7 +10,7 @@ module Metronome
 
     # @private
     #
-    # @param client [Metronome::Client]
+    # @param client [Metronome::BaseClient]
     # @param req [Hash{Symbol => Object}]
     # @param opts [Hash{Symbol => Object}]
     # @param headers [Hash{String => String}]
