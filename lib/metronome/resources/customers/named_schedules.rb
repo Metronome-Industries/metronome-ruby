@@ -13,7 +13,7 @@ module Metronome
         # Get a named schedule for the given customer. This endpoint's availability is
         #   dependent on your client's configuration.
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::NamedScheduleRetrieveParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::NamedScheduleRetrieveParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id ID of the customer whose named schedule is to be retrieved
         #
@@ -40,7 +40,7 @@ module Metronome
         # Update a named schedule for the given customer. This endpoint's availability is
         #   dependent on your client's configuration.
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::NamedScheduleUpdateParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::NamedScheduleUpdateParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id ID of the customer whose named schedule is to be updated
         #

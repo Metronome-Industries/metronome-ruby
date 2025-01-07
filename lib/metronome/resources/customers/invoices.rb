@@ -12,7 +12,7 @@ module Metronome
 
         # Fetch a specific invoice for a given customer.
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::InvoiceRetrieveParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::InvoiceRetrieveParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id Path param:
         #
@@ -45,7 +45,7 @@ module Metronome
         # List all invoices for a given customer, optionally filtered by status, date
         #   range, and/or credit type.
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::InvoiceListParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::InvoiceListParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id Path param:
         #
@@ -90,7 +90,7 @@ module Metronome
 
         # Add a one time charge to the specified invoice
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::InvoiceAddChargeParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::InvoiceAddChargeParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id Path param:
         #
@@ -130,7 +130,7 @@ module Metronome
         # List daily or hourly invoice breakdowns for a given customer, optionally
         #   filtered by status, date range, and/or credit type.
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::InvoiceListBreakdownsParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::InvoiceListBreakdownsParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id Path param:
         #

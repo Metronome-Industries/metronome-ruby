@@ -23,7 +23,7 @@ module Metronome
 
       # Create a new contract
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::ContractCreateParams] Attributes to send in this request.
+      # @param params [Metronome::Models::ContractCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :customer_id
       #
@@ -96,7 +96,7 @@ module Metronome
 
       # Get a specific contract
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::ContractRetrieveParams] Attributes to send in this request.
+      # @param params [Metronome::Models::ContractRetrieveParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :contract_id
       #
@@ -122,7 +122,7 @@ module Metronome
 
       # List all contracts for a customer
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::ContractListParams] Attributes to send in this request.
+      # @param params [Metronome::Models::ContractListParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :customer_id
       #
@@ -156,7 +156,7 @@ module Metronome
 
       # Add a manual balance entry
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::ContractAddManualBalanceEntryParams] Attributes to send in this request.
+      # @param params [Metronome::Models::ContractAddManualBalanceEntryParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :id ID of the balance (commit or credit) to update.
       #
@@ -190,7 +190,7 @@ module Metronome
 
       # Amend a contract
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::ContractAmendParams] Attributes to send in this request.
+      # @param params [Metronome::Models::ContractAmendParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :contract_id ID of the contract to amend
       #
@@ -237,7 +237,7 @@ module Metronome
 
       # Archive a contract
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::ContractArchiveParams] Attributes to send in this request.
+      # @param params [Metronome::Models::ContractArchiveParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :contract_id ID of the contract to archive
       #
@@ -263,7 +263,7 @@ module Metronome
 
       # Creates historical usage invoices for a contract
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::ContractCreateHistoricalInvoicesParams] Attributes to send in this request.
+      # @param params [Metronome::Models::ContractCreateHistoricalInvoicesParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice>] :invoices
       #
@@ -286,7 +286,7 @@ module Metronome
 
       # List balances (commits and credits).
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::ContractListBalancesParams] Attributes to send in this request.
+      # @param params [Metronome::Models::ContractListBalancesParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :customer_id
       #
@@ -324,7 +324,7 @@ module Metronome
 
       # Get the rate schedule for the rate card on a given contract.
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::ContractRetrieveRateScheduleParams] Attributes to send in this request.
+      # @param params [Metronome::Models::ContractRetrieveRateScheduleParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :contract_id Body param: ID of the contract to get the rate schedule for.
       #
@@ -361,7 +361,7 @@ module Metronome
       # Create a new scheduled invoice for Professional Services terms on a contract.
       #   This endpoint's availability is dependent on your client's configuration.
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::ContractScheduleProServicesInvoiceParams] Attributes to send in this request.
+      # @param params [Metronome::Models::ContractScheduleProServicesInvoiceParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :contract_id
       #
@@ -392,7 +392,7 @@ module Metronome
 
       # Set usage filter for a contract
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::ContractSetUsageFilterParams] Attributes to send in this request.
+      # @param params [Metronome::Models::ContractSetUsageFilterParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :contract_id
       #
@@ -421,7 +421,7 @@ module Metronome
 
       # Update the end date of a contract
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::ContractUpdateEndDateParams] Attributes to send in this request.
+      # @param params [Metronome::Models::ContractUpdateEndDateParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :contract_id ID of the contract to update
       #

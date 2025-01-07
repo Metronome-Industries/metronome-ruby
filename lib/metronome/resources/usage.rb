@@ -12,7 +12,7 @@ module Metronome
       # Fetch aggregated usage data for multiple customers and billable-metrics, broken
       #   into intervals of the specified length.
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::UsageListParams] Attributes to send in this request.
+      # @param params [Metronome::Models::UsageListParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [Time] :ending_before Body param:
       #
@@ -54,7 +54,7 @@ module Metronome
       #   [Getting usage into Metronome](https://docs.metronome.com/connect-metronome/) to
       #   learn more about usage events.
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::UsageIngestParams] Attributes to send in this request.
+      # @param params [Metronome::Models::UsageIngestParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [Array<Metronome::Models::UsageIngestParams::Usage>] :usage
       #
@@ -76,7 +76,7 @@ module Metronome
       # Fetch aggregated usage data for the specified customer, billable-metric, and
       #   optional group, broken into intervals of the specified length.
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::UsageListWithGroupsParams] Attributes to send in this request.
+      # @param params [Metronome::Models::UsageListWithGroupsParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :billable_metric_id Body param:
       #

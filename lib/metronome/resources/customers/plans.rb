@@ -12,7 +12,7 @@ module Metronome
 
         # List the given customer's plans in reverse-chronological order.
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::PlanListParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::PlanListParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id Path param:
         #
@@ -43,7 +43,7 @@ module Metronome
         #   [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments)
         #   for details on the price adjustments.
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::PlanAddParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::PlanAddParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id Path param:
         #
@@ -90,7 +90,7 @@ module Metronome
 
         # Change the end date of a customer's plan.
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::PlanEndParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::PlanEndParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id Path param:
         #
@@ -133,7 +133,7 @@ module Metronome
         #   [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments)
         #   for details.
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::PlanListPriceAdjustmentsParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::PlanListPriceAdjustmentsParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id Path param:
         #

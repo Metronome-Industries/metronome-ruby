@@ -13,7 +13,7 @@ module Metronome
 
           # Get all rates for a rate card at a point in time
           #
-          # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::RateCards::RateListParams] Attributes to send in this request.
+          # @param params [Metronome::Models::Contracts::RateCards::RateListParams, Hash{Symbol => Object}] Attributes to send in this request.
           #
           #   @option params [Time] :at Body param: inclusive starting point for the rates schedule
           #
@@ -47,7 +47,7 @@ module Metronome
 
           # Add a new rate
           #
-          # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::RateCards::RateAddParams] Attributes to send in this request.
+          # @param params [Metronome::Models::Contracts::RateCards::RateAddParams, Hash{Symbol => Object}] Attributes to send in this request.
           #
           #   @option params [Boolean] :entitled
           #
@@ -106,7 +106,7 @@ module Metronome
 
           # Add new rates
           #
-          # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::RateCards::RateAddManyParams] Attributes to send in this request.
+          # @param params [Metronome::Models::Contracts::RateCards::RateAddManyParams, Hash{Symbol => Object}] Attributes to send in this request.
           #
           #   @option params [String] :rate_card_id
           #

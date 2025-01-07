@@ -12,7 +12,7 @@ module Metronome
 
         # Set the billing configuration for a given customer.
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::BillingConfigCreateParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::BillingConfigCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id Path param:
         #
@@ -50,7 +50,7 @@ module Metronome
 
         # Fetch the billing configuration for the given customer.
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::BillingConfigRetrieveParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::BillingConfigRetrieveParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id
         #
@@ -79,7 +79,7 @@ module Metronome
         # Delete the billing configuration for a given customer. Note: this is unsupported
         #   for Azure and AWS Marketplace customers.
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::BillingConfigDeleteParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::BillingConfigDeleteParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id
         #
