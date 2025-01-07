@@ -11,7 +11,7 @@ module Metronome
 
       # Create a new credit grant
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::CreditGrantCreateParams] Attributes to send in this request.
+      # @param params [Metronome::Models::CreditGrantCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :customer_id the Metronome ID of the customer
       #
@@ -66,7 +66,7 @@ module Metronome
 
       # List credit grants. This list does not included voided grants.
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::CreditGrantListParams] Attributes to send in this request.
+      # @param params [Metronome::Models::CreditGrantListParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [Integer] :limit Query param: Max number of results that should be returned
       #
@@ -106,7 +106,7 @@ module Metronome
 
       # Edit an existing credit grant
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::CreditGrantEditParams] Attributes to send in this request.
+      # @param params [Metronome::Models::CreditGrantEditParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :id the ID of the credit grant
       #
@@ -133,7 +133,7 @@ module Metronome
 
       # List all pricing units (known in the API by the legacy term "credit types").
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::CreditGrantListCreditTypesParams] Attributes to send in this request.
+      # @param params [Metronome::Models::CreditGrantListCreditTypesParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [Integer] :limit Max number of results that should be returned
       #
@@ -159,7 +159,7 @@ module Metronome
       #   Ledger entries are returned in chronological order. Ledger entries associated
       #   with voided credit grants are not included.
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::CreditGrantListEntriesParams] Attributes to send in this request.
+      # @param params [Metronome::Models::CreditGrantListEntriesParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
       #
@@ -196,7 +196,7 @@ module Metronome
 
       # Void a credit grant
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::CreditGrantVoidParams] Attributes to send in this request.
+      # @param params [Metronome::Models::CreditGrantVoidParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :id
       #

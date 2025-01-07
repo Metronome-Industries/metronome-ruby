@@ -39,7 +39,7 @@ module Metronome
 
       # Create a new customer
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::CustomerCreateParams] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :name This will be truncated to 160 characters if the provided name is longer.
       #
@@ -69,7 +69,7 @@ module Metronome
 
       # Get a customer by Metronome ID.
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::CustomerRetrieveParams] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerRetrieveParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :customer_id
       #
@@ -92,7 +92,7 @@ module Metronome
 
       # List all customers.
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::CustomerListParams] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerListParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [Array<String>] :customer_ids Filter the customer list by customer_id. Up to 100 ids can be provided.
       #
@@ -125,7 +125,7 @@ module Metronome
 
       # Archive a customer
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::CustomerArchiveParams] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerArchiveParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :id
       #
@@ -146,7 +146,7 @@ module Metronome
 
       # Get all billable metrics for a given customer.
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::CustomerListBillableMetricsParams] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerListBillableMetricsParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :customer_id Path param:
       #
@@ -182,7 +182,7 @@ module Metronome
       #   and line items. Note: this is not supported for customers whose plan includes a
       #   UNIQUE-type billable metric.
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::CustomerListCostsParams] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerListCostsParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :customer_id Path param:
       #
@@ -217,7 +217,7 @@ module Metronome
       #   `customer_id` field when sending usage events to Metronome. This call is
       #   idempotent. It fully replaces the set of ingest aliases for the given customer.
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::CustomerSetIngestAliasesParams] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerSetIngestAliasesParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :customer_id Path param:
       #
@@ -243,7 +243,7 @@ module Metronome
 
       # Updates the specified customer's name.
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::CustomerSetNameParams] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerSetNameParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :customer_id Path param:
       #
@@ -270,7 +270,7 @@ module Metronome
 
       # Updates the specified customer's config.
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::CustomerUpdateConfigParams] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerUpdateConfigParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :customer_id Path param:
       #

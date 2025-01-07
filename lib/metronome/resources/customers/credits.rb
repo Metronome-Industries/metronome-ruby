@@ -12,7 +12,7 @@ module Metronome
 
         # Create a new credit at the customer level.
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::CreditCreateParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::CreditCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [Metronome::Models::Customers::CreditCreateParams::AccessSchedule] :access_schedule Schedule for distributing the credit to the customer.
         #
@@ -66,7 +66,7 @@ module Metronome
 
         # List credits.
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::CreditListParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::CreditListParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id
         #
@@ -104,7 +104,7 @@ module Metronome
 
         # Update the end date of a credit
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::CreditUpdateEndDateParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::CreditUpdateEndDateParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [Time] :access_ending_before RFC 3339 timestamp indicating when access to the credit will end and it will no
         #     longer be possible to draw it down (exclusive).

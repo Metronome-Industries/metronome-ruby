@@ -11,7 +11,7 @@ module Metronome
 
       # List all available plans.
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::PlanListParams] Attributes to send in this request.
+      # @param params [Metronome::Models::PlanListParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [Integer] :limit Max number of results that should be returned
       #
@@ -35,7 +35,7 @@ module Metronome
 
       # Fetch high level details of a specific plan.
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::PlanGetDetailsParams] Attributes to send in this request.
+      # @param params [Metronome::Models::PlanGetDetailsParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :plan_id
       #
@@ -58,7 +58,7 @@ module Metronome
 
       # Fetches a list of charges of a specific plan.
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::PlanListChargesParams] Attributes to send in this request.
+      # @param params [Metronome::Models::PlanListChargesParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :plan_id Path param:
       #
@@ -88,7 +88,7 @@ module Metronome
       # Fetches a list of customers on a specific plan (by default, only currently
       #   active plans are included)
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::PlanListCustomersParams] Attributes to send in this request.
+      # @param params [Metronome::Models::PlanListCustomersParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :plan_id Path param:
       #

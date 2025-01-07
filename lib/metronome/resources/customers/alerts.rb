@@ -13,7 +13,7 @@ module Metronome
         # Get the customer alert status and alert information for the specified customer
         #   and alert
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::AlertRetrieveParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::AlertRetrieveParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :alert_id The Metronome ID of the alert
         #
@@ -36,7 +36,7 @@ module Metronome
 
         # Fetch all customer alert statuses and alert information for a customer
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::AlertListParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::AlertListParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id Body param: The Metronome ID of the customer
         #
@@ -64,7 +64,7 @@ module Metronome
 
         # Reset state for an alert by customer id and force re-evaluation
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::AlertResetParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::AlertResetParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :alert_id The Metronome ID of the alert
         #

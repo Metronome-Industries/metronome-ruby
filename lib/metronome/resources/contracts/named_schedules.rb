@@ -13,7 +13,7 @@ module Metronome
         # Get a named schedule for the given rate card. This endpoint's availability is
         #   dependent on your client's configuration.
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::NamedScheduleRetrieveParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::NamedScheduleRetrieveParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :rate_card_id ID of the rate card whose named schedule is to be retrieved
         #
@@ -40,7 +40,7 @@ module Metronome
         # Update a named schedule for the given rate card. This endpoint's availability is
         #   dependent on your client's configuration.
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::NamedScheduleUpdateParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::NamedScheduleUpdateParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :rate_card_id ID of the rate card whose named schedule is to be updated
         #

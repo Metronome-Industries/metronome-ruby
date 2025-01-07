@@ -11,7 +11,7 @@ module Metronome
 
       # Creates a new Billable Metric.
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::BillableMetricCreateParams] Attributes to send in this request.
+      # @param params [Metronome::Models::BillableMetricCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :name The display name of the billable metric.
       #
@@ -53,7 +53,7 @@ module Metronome
 
       # Get a billable metric.
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::BillableMetricRetrieveParams] Attributes to send in this request.
+      # @param params [Metronome::Models::BillableMetricRetrieveParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :billable_metric_id
       #
@@ -76,7 +76,7 @@ module Metronome
 
       # List all billable metrics.
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::BillableMetricListParams] Attributes to send in this request.
+      # @param params [Metronome::Models::BillableMetricListParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [Boolean] :include_archived If true, the list of returned metrics will include archived metrics
       #
@@ -102,7 +102,7 @@ module Metronome
 
       # Archive an existing billable metric.
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::BillableMetricArchiveParams] Attributes to send in this request.
+      # @param params [Metronome::Models::BillableMetricArchiveParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :id
       #

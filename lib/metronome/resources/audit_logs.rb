@@ -14,7 +14,7 @@ module Metronome
       #   subsequent requests using the same next_page value will be in the returned data
       #   array, ensuring a continuous and uninterrupted reading of audit logs.
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::AuditLogListParams] Attributes to send in this request.
+      # @param params [Metronome::Models::AuditLogListParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [Time] :ending_before RFC 3339 timestamp (exclusive). Cannot be used with 'next_page'.
       #

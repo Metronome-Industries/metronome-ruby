@@ -12,7 +12,7 @@ module Metronome
 
         # Create a new commit at the customer level.
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::CommitCreateParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::CommitCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [Metronome::Models::Customers::CommitCreateParams::AccessSchedule] :access_schedule Schedule for distributing the commit to the customer. For "POSTPAID" commits
         #     only one schedule item is allowed and amount must match invoice_schedule total.
@@ -78,7 +78,7 @@ module Metronome
 
         # List commits.
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::CommitListParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::CommitListParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id
         #
@@ -116,7 +116,7 @@ module Metronome
 
         # Update the end date of a PREPAID commit
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Customers::CommitUpdateEndDateParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::CommitUpdateEndDateParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :commit_id ID of the commit to update. Only supports "PREPAID" commits.
         #

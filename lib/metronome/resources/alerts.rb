@@ -11,7 +11,7 @@ module Metronome
 
       # Create a new alert
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::AlertCreateParams] Attributes to send in this request.
+      # @param params [Metronome::Models::AlertCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [Symbol, Metronome::Models::AlertCreateParams::AlertType] :alert_type Type of the alert
       #
@@ -70,7 +70,7 @@ module Metronome
 
       # Archive an existing alert
       #
-      # @param params [Hash{Symbol => Object}, Metronome::Models::AlertArchiveParams] Attributes to send in this request.
+      # @param params [Metronome::Models::AlertArchiveParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :id The Metronome ID of the alert
       #

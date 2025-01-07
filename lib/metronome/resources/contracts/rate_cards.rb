@@ -24,7 +24,7 @@ module Metronome
 
         # Create a new rate card
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::RateCardCreateParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::RateCardCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :name Used only in UI/API. It is not exposed to end customers.
         #
@@ -59,7 +59,7 @@ module Metronome
         # Get a specific rate card NOTE: Use `/contract-pricing/rate-cards/getRates` to
         #   retrieve rate card rates.
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::RateCardRetrieveParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::RateCardRetrieveParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :id
         #
@@ -80,7 +80,7 @@ module Metronome
 
         # Update a rate card
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::RateCardUpdateParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::RateCardUpdateParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :rate_card_id ID of the rate card to update
         #
@@ -110,7 +110,7 @@ module Metronome
         # List rate cards NOTE: Use `/contract-pricing/rate-cards/getRates` to retrieve
         #   rate card rates.
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::RateCardListParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::RateCardListParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [Object] :body Body param:
         #
@@ -138,7 +138,7 @@ module Metronome
         # Get all rates for a rate card from starting_at (either in perpetuity or until
         #   ending_before, if provided)
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :rate_card_id Body param: ID of the rate card to get the schedule for
         #

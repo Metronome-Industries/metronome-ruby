@@ -12,7 +12,7 @@ module Metronome
 
         # Create a new product
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::ProductCreateParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::ProductCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :name displayed on invoices
         #
@@ -75,7 +75,7 @@ module Metronome
 
         # Get a specific product
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::ProductRetrieveParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::ProductRetrieveParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :id
         #
@@ -96,7 +96,7 @@ module Metronome
 
         # Update a product
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::ProductUpdateParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::ProductUpdateParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :product_id ID of the product to update
         #
@@ -168,7 +168,7 @@ module Metronome
 
         # List products
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::ProductListParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::ProductListParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [Integer] :limit Query param: Max number of results that should be returned
         #
@@ -196,7 +196,7 @@ module Metronome
 
         # Archive a product
         #
-        # @param params [Hash{Symbol => Object}, Metronome::Models::Contracts::ProductArchiveParams] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::ProductArchiveParams, Hash{Symbol => Object}] Attributes to send in this request.
         #
         #   @option params [String] :product_id ID of the product to be archived
         #
