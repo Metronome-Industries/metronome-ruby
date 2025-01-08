@@ -22,7 +22,8 @@ module Metronome
         #   @option params [Float] :priority If multiple credits or commits are applicable, the one with the lower priority
         #     will apply first.
         #
-        #   @option params [String] :product_id
+        #   @option params [String] :product_id ID of the fixed product associated with the commit. This is required because
+        #     products are used to invoice the commit amount.
         #
         #   @option params [Symbol, Metronome::Models::Customers::CommitCreateParams::Type] :type
         #
