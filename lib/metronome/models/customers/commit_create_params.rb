@@ -22,6 +22,7 @@ module Metronome
         required :priority, Float
 
         # @!attribute product_id
+        #   ID of the fixed product associated with the commit. This is required because products are used to invoice the commit amount.
         #
         #   @return [String]
         required :product_id, String
@@ -110,7 +111,8 @@ module Metronome
         #   # @param priority [Float] If multiple credits or commits are applicable, the one with the lower priority
         #   #   will apply first.
         #   #
-        #   # @param product_id [String]
+        #   # @param product_id [String] ID of the fixed product associated with the commit. This is required because
+        #   #   products are used to invoice the commit amount.
         #   #
         #   # @param type [String]
         #   #
