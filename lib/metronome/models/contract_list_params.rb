@@ -20,6 +20,12 @@ module Metronome
       #   @return [Boolean]
       optional :include_archived, Metronome::BooleanModel
 
+      # @!attribute include_balance
+      #   Include the balance of credits and commits in the response. Setting this flag may cause the query to be slower.
+      #
+      #   @return [Boolean]
+      optional :include_balance, Metronome::BooleanModel
+
       # @!attribute include_ledgers
       #   Include commit ledgers in the response. Setting this flag may cause the query to be slower.
       #
@@ -41,6 +47,9 @@ module Metronome
       #   #
       #   # @param include_archived [Boolean] Include archived contracts in the response
       #   #
+      #   # @param include_balance [Boolean] Include the balance of credits and commits in the response. Setting this flag
+      #   #   may cause the query to be slower.
+      #   #
       #   # @param include_ledgers [Boolean] Include commit ledgers in the response. Setting this flag may cause the query to
       #   #   be slower.
       #   #
@@ -48,7 +57,17 @@ module Metronome
       #   #   contracts where effective_at is on or after the provided date. This cannot be
       #   #   provided if the covering_date filter is provided.
       #   #
-      #   def initialize(customer_id:, covering_date: nil, include_archived: nil, include_ledgers: nil, starting_at: nil, **) = super
+      #   def initialize(
+      #     customer_id:,
+      #     covering_date: nil,
+      #     include_archived: nil,
+      #     include_balance: nil,
+      #     include_ledgers: nil,
+      #     starting_at: nil,
+      #     **
+      #   )
+      #     super
+      #   end
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

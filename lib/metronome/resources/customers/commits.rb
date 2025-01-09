@@ -91,6 +91,9 @@ module Metronome
         #
         #   @option params [Boolean] :include_archived Include commits from archived contracts.
         #
+        #   @option params [Boolean] :include_balance Include the balance in the response. Setting this flag may cause the query to be
+        #     slower.
+        #
         #   @option params [Boolean] :include_contract_commits Include commits on the contract level.
         #
         #   @option params [Boolean] :include_ledgers Include commit ledgers in the response. Setting this flag may cause the query to

@@ -32,6 +32,12 @@ module Metronome
         #   @return [Boolean]
         optional :include_archived, Metronome::BooleanModel
 
+        # @!attribute include_balance
+        #   Include the balance in the response. Setting this flag may cause the query to be slower.
+        #
+        #   @return [Boolean]
+        optional :include_balance, Metronome::BooleanModel
+
         # @!attribute include_contract_commits
         #   Include commits on the contract level.
         #
@@ -67,6 +73,9 @@ module Metronome
         #   #
         #   # @param include_archived [Boolean] Include commits from archived contracts.
         #   #
+        #   # @param include_balance [Boolean] Include the balance in the response. Setting this flag may cause the query to be
+        #   #   slower.
+        #   #
         #   # @param include_contract_commits [Boolean] Include commits on the contract level.
         #   #
         #   # @param include_ledgers [Boolean] Include commit ledgers in the response. Setting this flag may cause the query to
@@ -82,6 +91,7 @@ module Metronome
         #     covering_date: nil,
         #     effective_before: nil,
         #     include_archived: nil,
+        #     include_balance: nil,
         #     include_contract_commits: nil,
         #     include_ledgers: nil,
         #     next_page: nil,
