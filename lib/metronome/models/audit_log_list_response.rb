@@ -8,6 +8,11 @@ module Metronome
       #   @return [String]
       required :id, String
 
+      # @!attribute request
+      #
+      #   @return [Metronome::Models::AuditLogListResponse::Request]
+      required :request, -> { Metronome::Models::AuditLogListResponse::Request }
+
       # @!attribute timestamp
       #
       #   @return [Time]
@@ -45,6 +50,7 @@ module Metronome
 
       # @!parse
       #   # @param id [String]
+      #   # @param request [Metronome::Models::AuditLogListResponse::Request]
       #   # @param timestamp [String]
       #   # @param action [String]
       #   # @param actor [Metronome::Models::AuditLogListResponse::Actor]
@@ -55,6 +61,7 @@ module Metronome
       #   #
       #   def initialize(
       #     id:,
+      #     request:,
       #     timestamp:,
       #     action: nil,
       #     actor: nil,
@@ -68,6 +75,32 @@ module Metronome
       #   end
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
+
+      class Request < Metronome::BaseModel
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
+        # @!attribute ip
+        #
+        #   @return [String]
+        optional :ip, String
+
+        # @!attribute user_agent
+        #
+        #   @return [String]
+        optional :user_agent, String
+
+        # @!parse
+        #   # @param id [String]
+        #   # @param ip [String]
+        #   # @param user_agent [String]
+        #   #
+        #   def initialize(id:, ip: nil, user_agent: nil, **) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+      end
 
       class Actor < Metronome::BaseModel
         # @!attribute id
