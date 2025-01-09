@@ -39,6 +39,12 @@ module Metronome
       #   @return [Array<String>]
       optional :applicable_product_tags, Metronome::ArrayOf[String]
 
+      # @!attribute balance
+      #   The current balance of the credit or commit. This balance reflects the amount of credit or commit that the customer has access to use at this moment - thus, expired and upcoming credit or commit segments contribute 0 to the balance. The balance will match the sum of all ledger entries with the exception of the case where the sum of negative manual ledger entries exceeds the positive amount remaining on the credit or commit - in that case, the balance will be 0. All manual ledger entries associated with active credit or commit segments are included in the balance, including future-dated manual ledger entries.
+      #
+      #   @return [Float]
+      optional :balance, Float
+
       # @!attribute contract
       #
       #   @return [Metronome::Models::Credit::Contract]
@@ -109,6 +115,15 @@ module Metronome
       #   #
       #   # @param applicable_product_tags [Array<String>]
       #   #
+      #   # @param balance [Float] The current balance of the credit or commit. This balance reflects the amount of
+      #   #   credit or commit that the customer has access to use at this moment - thus,
+      #   #   expired and upcoming credit or commit segments contribute 0 to the balance. The
+      #   #   balance will match the sum of all ledger entries with the exception of the case
+      #   #   where the sum of negative manual ledger entries exceeds the positive amount
+      #   #   remaining on the credit or commit - in that case, the balance will be 0. All
+      #   #   manual ledger entries associated with active credit or commit segments are
+      #   #   included in the balance, including future-dated manual ledger entries.
+      #   #
       #   # @param contract [Metronome::Models::Credit::Contract]
       #   #
       #   # @param custom_fields [Hash{Symbol => String}]
@@ -142,6 +157,7 @@ module Metronome
       #     applicable_contract_ids: nil,
       #     applicable_product_ids: nil,
       #     applicable_product_tags: nil,
+      #     balance: nil,
       #     contract: nil,
       #     custom_fields: nil,
       #     description: nil,

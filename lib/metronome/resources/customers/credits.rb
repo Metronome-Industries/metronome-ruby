@@ -78,6 +78,9 @@ module Metronome
         #
         #   @option params [Boolean] :include_archived Include credits from archived contracts.
         #
+        #   @option params [Boolean] :include_balance Include the balance in the response. Setting this flag may cause the query to be
+        #     slower.
+        #
         #   @option params [Boolean] :include_contract_credits Include credits on the contract level.
         #
         #   @option params [Boolean] :include_ledgers Include credit ledgers in the response. Setting this flag may cause the query to

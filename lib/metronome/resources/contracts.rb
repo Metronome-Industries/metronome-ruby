@@ -102,6 +102,9 @@ module Metronome
       #
       #   @option params [String] :customer_id
       #
+      #   @option params [Boolean] :include_balance Include the balance of credits and commits in the response. Setting this flag
+      #     may cause the query to be slower.
+      #
       #   @option params [Boolean] :include_ledgers Include commit ledgers in the response. Setting this flag may cause the query to
       #     be slower.
       #
@@ -131,6 +134,9 @@ module Metronome
       #     starting_at filter is provided.
       #
       #   @option params [Boolean] :include_archived Include archived contracts in the response
+      #
+      #   @option params [Boolean] :include_balance Include the balance of credits and commits in the response. Setting this flag
+      #     may cause the query to be slower.
       #
       #   @option params [Boolean] :include_ledgers Include commit ledgers in the response. Setting this flag may cause the query to
       #     be slower.
@@ -297,6 +303,9 @@ module Metronome
       #   @option params [Time] :effective_before Include only balances that have any access before the provided date (exclusive)
       #
       #   @option params [Boolean] :include_archived Include credits from archived contracts.
+      #
+      #   @option params [Boolean] :include_balance Include the balance of credits and commits in the response. Setting this flag
+      #     may cause the query to be slower.
       #
       #   @option params [Boolean] :include_contract_balances Include balances on the contract level.
       #
