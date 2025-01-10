@@ -160,7 +160,7 @@ module Metronome
           # @example
           #
           # ```ruby
-          # case enum
+          # case rate_type
           # in :FLAT
           #   # ...
           # in :PERCENTAGE
@@ -183,6 +183,15 @@ module Metronome
             finalize!
           end
 
+          # @example
+          #
+          # ```ruby
+          # commit_rate => {
+          #   rate_type: Metronome::Models::Contracts::RateCards::RateAddParams::CommitRate::RateType,
+          #   price: Float,
+          #   tiers: -> { Metronome::ArrayOf[Metronome::Models::Tier] === _1 }
+          # }
+          # ```
           class CommitRate < Metronome::BaseModel
             # @!attribute rate_type
             #
@@ -219,7 +228,7 @@ module Metronome
             # @example
             #
             # ```ruby
-            # case enum
+            # case rate_type
             # in :FLAT
             #   # ...
             # in :flat

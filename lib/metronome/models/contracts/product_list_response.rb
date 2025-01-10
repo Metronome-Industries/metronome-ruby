@@ -3,6 +3,18 @@
 module Metronome
   module Models
     module Contracts
+      # @example
+      #
+      # ```ruby
+      # product_list_response => {
+      #   id: String,
+      #   current: Metronome::Models::Contracts::ProductListItemState,
+      #   initial: Metronome::Models::Contracts::ProductListItemState,
+      #   type: Metronome::Models::Contracts::ProductListResponse::Type,
+      #   updates: -> { Metronome::ArrayOf[Metronome::Models::Contracts::ProductListResponse::Update] === _1 },
+      #   **_
+      # }
+      # ```
       class ProductListResponse < Metronome::BaseModel
         # @!attribute id
         #
@@ -58,7 +70,7 @@ module Metronome
         # @example
         #
         # ```ruby
-        # case enum
+        # case type
         # in :USAGE
         #   # ...
         # in :SUBSCRIPTION
@@ -81,6 +93,18 @@ module Metronome
           finalize!
         end
 
+        # @example
+        #
+        # ```ruby
+        # update => {
+        #   created_at: Time,
+        #   created_by: String,
+        #   billable_metric_id: String,
+        #   composite_product_ids: -> { Metronome::ArrayOf[String] === _1 },
+        #   composite_tags: -> { Metronome::ArrayOf[String] === _1 },
+        #   **_
+        # }
+        # ```
         class Update < Metronome::BaseModel
           # @!attribute created_at
           #

@@ -47,6 +47,17 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
+      # @example
+      #
+      # ```ruby
+      # billing_config => {
+      #   billing_provider_customer_id: String,
+      #   billing_provider_type: Metronome::Models::CustomerCreateParams::BillingConfig::BillingProviderType,
+      #   aws_product_code: String,
+      #   aws_region: Metronome::Models::CustomerCreateParams::BillingConfig::AwsRegion,
+      #   stripe_collection_method: Metronome::Models::CustomerCreateParams::BillingConfig::StripeCollectionMethod
+      # }
+      # ```
       class BillingConfig < Metronome::BaseModel
         # @!attribute billing_provider_customer_id
         #
@@ -98,7 +109,7 @@ module Metronome
         # @example
         #
         # ```ruby
-        # case enum
+        # case billing_provider_type
         # in :aws_marketplace
         #   # ...
         # in :stripe
@@ -129,7 +140,7 @@ module Metronome
         # @example
         #
         # ```ruby
-        # case enum
+        # case aws_region
         # in :"af-south-1"
         #   # ...
         # in :"ap-east-1"
@@ -177,7 +188,7 @@ module Metronome
         # @example
         #
         # ```ruby
-        # case enum
+        # case stripe_collection_method
         # in :charge_automatically
         #   # ...
         # in :send_invoice

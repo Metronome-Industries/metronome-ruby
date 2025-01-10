@@ -4,6 +4,13 @@ module Metronome
   module Models
     module Contracts
       module RateCards
+        # @example
+        #
+        # ```ruby
+        # product_order_set_response => {
+        #   data: Metronome::Models::ID
+        # }
+        # ```
         class ProductOrderSetResponse < Metronome::BaseModel
           # @!attribute data
           #

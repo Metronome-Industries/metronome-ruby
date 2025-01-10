@@ -148,7 +148,7 @@ module Metronome
       # @example
       #
       # ```ruby
-      # case enum
+      # case alert_type
       # in :low_credit_balance_reached
       #   # ...
       # in :spend_threshold_reached
@@ -182,6 +182,15 @@ module Metronome
         finalize!
       end
 
+      # @example
+      #
+      # ```ruby
+      # custom_field_filter => {
+      #   entity: Metronome::Models::AlertCreateParams::CustomFieldFilter::Entity,
+      #   key: String,
+      #   value: String
+      # }
+      # ```
       class CustomFieldFilter < Metronome::BaseModel
         # @!attribute entity
         #
@@ -210,7 +219,7 @@ module Metronome
         # @example
         #
         # ```ruby
-        # case enum
+        # case entity
         # in :Contract
         #   # ...
         # in :Commit
@@ -228,6 +237,14 @@ module Metronome
         end
       end
 
+      # @example
+      #
+      # ```ruby
+      # group_key_filter => {
+      #   key: String,
+      #   value: String
+      # }
+      # ```
       class GroupKeyFilter < Metronome::BaseModel
         # @!attribute key
         #

@@ -101,7 +101,7 @@ module Metronome
         # @example
         #
         # ```ruby
-        # case enum
+        # case sort
         # in :date_asc
         #   # ...
         # in :date_desc

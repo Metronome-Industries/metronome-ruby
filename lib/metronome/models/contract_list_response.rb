@@ -2,6 +2,13 @@
 
 module Metronome
   module Models
+    # @example
+    #
+    # ```ruby
+    # contract_list_response => {
+    #   data: -> { Metronome::ArrayOf[Metronome::Models::ContractListResponse::Data] === _1 }
+    # }
+    # ```
     class ContractListResponse < Metronome::BaseModel
       # @!attribute data
       #
@@ -15,6 +22,18 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
+      # @example
+      #
+      # ```ruby
+      # data => {
+      #   id: String,
+      #   amendments: -> { Metronome::ArrayOf[Metronome::Models::ContractListResponse::Data::Amendment] === _1 },
+      #   current: Metronome::Models::ContractWithoutAmendments,
+      #   customer_id: String,
+      #   initial: Metronome::Models::ContractWithoutAmendments,
+      #   **_
+      # }
+      # ```
       class Data < Metronome::BaseModel
         # @!attribute id
         #
@@ -107,6 +126,18 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # amendment => {
+        #   id: String,
+        #   commits: -> { Metronome::ArrayOf[Metronome::Models::Commit] === _1 },
+        #   created_at: Time,
+        #   created_by: String,
+        #   overrides: -> { Metronome::ArrayOf[Metronome::Models::Override] === _1 },
+        #   **_
+        # }
+        # ```
         class Amendment < Metronome::BaseModel
           # @!attribute id
           #
@@ -229,6 +260,18 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @example
+          #
+          # ```ruby
+          # reseller_royalty => {
+          #   reseller_type: Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty::ResellerType,
+          #   aws_account_number: String,
+          #   aws_offer_id: String,
+          #   aws_payer_reference_id: String,
+          #   ending_before: Time,
+          #   **_
+          # }
+          # ```
           class ResellerRoyalty < Metronome::BaseModel
             # @!attribute reseller_type
             #
@@ -323,7 +366,7 @@ module Metronome
             # @example
             #
             # ```ruby
-            # case enum
+            # case reseller_type
             # in :AWS
             #   # ...
             # in :AWS_PRO_SERVICE
@@ -345,6 +388,14 @@ module Metronome
           end
         end
 
+        # @example
+        #
+        # ```ruby
+        # customer_billing_provider_configuration => {
+        #   billing_provider: Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration::BillingProvider,
+        #   delivery_method: Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod
+        # }
+        # ```
         class CustomerBillingProviderConfiguration < Metronome::BaseModel
           # @!attribute billing_provider
           #
@@ -375,7 +426,7 @@ module Metronome
           # @example
           #
           # ```ruby
-          # case enum
+          # case billing_provider
           # in :aws_marketplace
           #   # ...
           # in :stripe
@@ -406,7 +457,7 @@ module Metronome
           # @example
           #
           # ```ruby
-          # case enum
+          # case delivery_method
           # in :direct_to_billing_provider
           #   # ...
           # in :aws_sqs

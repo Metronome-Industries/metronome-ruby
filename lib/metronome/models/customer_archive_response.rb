@@ -2,6 +2,13 @@
 
 module Metronome
   module Models
+    # @example
+    #
+    # ```ruby
+    # customer_archive_response => {
+    #   data: Metronome::Models::ID
+    # }
+    # ```
     class CustomerArchiveResponse < Metronome::BaseModel
       # @!attribute data
       #

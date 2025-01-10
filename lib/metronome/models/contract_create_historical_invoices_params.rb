@@ -22,6 +22,18 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
+      # @example
+      #
+      # ```ruby
+      # invoice => {
+      #   contract_id: String,
+      #   credit_type_id: String,
+      #   customer_id: String,
+      #   exclusive_end_date: Time,
+      #   inclusive_start_date: Time,
+      #   **_
+      # }
+      # ```
       class Invoice < Metronome::BaseModel
         # @!attribute contract_id
         #
@@ -122,6 +134,18 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # usage_line_item => {
+        #   exclusive_end_date: Time,
+        #   inclusive_start_date: Time,
+        #   product_id: String,
+        #   presentation_group_values: -> { Metronome::HashOf[String] === _1 },
+        #   pricing_group_values: -> { Metronome::HashOf[String] === _1 },
+        #   **_
+        # }
+        # ```
         class UsageLineItem < Metronome::BaseModel
           # @!attribute exclusive_end_date
           #
@@ -185,6 +209,15 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @example
+          #
+          # ```ruby
+          # subtotals_with_quantity => {
+          #   exclusive_end_date: Time,
+          #   inclusive_start_date: Time,
+          #   quantity: Float
+          # }
+          # ```
           class SubtotalsWithQuantity < Metronome::BaseModel
             # @!attribute exclusive_end_date
             #
@@ -217,7 +250,7 @@ module Metronome
         # @example
         #
         # ```ruby
-        # case enum
+        # case billable_status
         # in :billable
         #   # ...
         # in :unbillable
@@ -234,7 +267,7 @@ module Metronome
         # @example
         #
         # ```ruby
-        # case enum
+        # case breakdown_granularity
         # in :HOUR
         #   # ...
         # in :DAY

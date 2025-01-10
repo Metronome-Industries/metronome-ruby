@@ -2,6 +2,14 @@
 
 module Metronome
   module Models
+    # @example
+    #
+    # ```ruby
+    # rollover_amount_max_percentage => {
+    #   type: Metronome::Models::RolloverAmountMaxPercentage::Type,
+    #   value: Float
+    # }
+    # ```
     class RolloverAmountMaxPercentage < Metronome::BaseModel
       # @!attribute type
       #   Rollover up to a percentage of the original credit grant amount.
@@ -29,7 +37,7 @@ module Metronome
       # @example
       #
       # ```ruby
-      # case enum
+      # case type
       # in :MAX_PERCENTAGE
       #   # ...
       # end

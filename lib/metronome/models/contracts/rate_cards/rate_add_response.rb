@@ -4,6 +4,13 @@ module Metronome
   module Models
     module Contracts
       module RateCards
+        # @example
+        #
+        # ```ruby
+        # rate_add_response => {
+        #   data: Metronome::Models::Contracts::RateCards::RateAddResponse::Data
+        # }
+        # ```
         class RateAddResponse < Metronome::BaseModel
           # @!attribute data
           #
@@ -17,6 +24,18 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @example
+          #
+          # ```ruby
+          # data => {
+          #   rate_type: Metronome::Models::Contracts::RateCards::RateAddResponse::Data::RateType,
+          #   commit_rate: Metronome::Models::Contracts::RateCards::RateAddResponse::Data::CommitRate,
+          #   credit_type: Metronome::Models::CreditTypeData,
+          #   custom_rate: -> { Metronome::HashOf[Metronome::Unknown] === _1 },
+          #   is_prorated: Metronome::BooleanModel,
+          #   **_
+          # }
+          # ```
           class Data < Metronome::BaseModel
             # @!attribute rate_type
             #
@@ -131,7 +150,7 @@ module Metronome
             # @example
             #
             # ```ruby
-            # case enum
+            # case rate_type
             # in :FLAT
             #   # ...
             # in :flat
@@ -161,6 +180,15 @@ module Metronome
               finalize!
             end
 
+            # @example
+            #
+            # ```ruby
+            # commit_rate => {
+            #   rate_type: Metronome::Models::Contracts::RateCards::RateAddResponse::Data::CommitRate::RateType,
+            #   price: Float,
+            #   tiers: -> { Metronome::ArrayOf[Metronome::Models::Tier] === _1 }
+            # }
+            # ```
             class CommitRate < Metronome::BaseModel
               # @!attribute rate_type
               #
@@ -199,7 +227,7 @@ module Metronome
               # @example
               #
               # ```ruby
-              # case enum
+              # case rate_type
               # in :FLAT
               #   # ...
               # in :flat

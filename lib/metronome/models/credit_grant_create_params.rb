@@ -143,6 +143,14 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
+      # @example
+      #
+      # ```ruby
+      # grant_amount => {
+      #   amount: Float,
+      #   credit_type_id: String
+      # }
+      # ```
       class GrantAmount < Metronome::BaseModel
         # @!attribute amount
         #
@@ -167,6 +175,14 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
+      # @example
+      #
+      # ```ruby
+      # paid_amount => {
+      #   amount: Float,
+      #   credit_type_id: String
+      # }
+      # ```
       class PaidAmount < Metronome::BaseModel
         # @!attribute amount
         #
@@ -191,6 +207,15 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
+      # @example
+      #
+      # ```ruby
+      # rollover_settings => {
+      #   expires_at: Time,
+      #   priority: Float,
+      #   rollover_amount: Metronome::Models::CreditGrantCreateParams::RolloverSettings::RolloverAmount
+      # }
+      # ```
       class RolloverSettings < Metronome::BaseModel
         # @!attribute expires_at
         #   The date to expire the rollover credits.
@@ -232,7 +257,7 @@ module Metronome
         # @example
         #
         # ```ruby
-        # case union
+        # case rollover_amount
         # in Metronome::Models::RolloverAmountMaxPercentage
         #   # ...
         # in Metronome::Models::RolloverAmountMaxAmount

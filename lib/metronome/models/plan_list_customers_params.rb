@@ -68,7 +68,7 @@ module Metronome
       # @example
       #
       # ```ruby
-      # case enum
+      # case status
       # in :all
       #   # ...
       # in :active

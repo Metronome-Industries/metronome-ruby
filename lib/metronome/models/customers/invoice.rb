@@ -3,6 +3,18 @@
 module Metronome
   module Models
     module Customers
+      # @example
+      #
+      # ```ruby
+      # invoice => {
+      #   id: String,
+      #   credit_type: Metronome::Models::CreditTypeData,
+      #   customer_id: String,
+      #   line_items: -> { Metronome::ArrayOf[Metronome::Models::Customers::Invoice::LineItem] === _1 },
+      #   status: String,
+      #   **_
+      # }
+      # ```
       class Invoice < Metronome::BaseModel
         # @!attribute id
         #
@@ -247,6 +259,18 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # line_item => {
+        #   credit_type: Metronome::Models::CreditTypeData,
+        #   name: String,
+        #   total: Float,
+        #   applied_commit_or_credit: Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit,
+        #   commit_custom_fields: -> { Metronome::HashOf[String] === _1 },
+        #   **_
+        # }
+        # ```
         class LineItem < Metronome::BaseModel
           # @!attribute credit_type
           #
@@ -575,6 +599,14 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @example
+          #
+          # ```ruby
+          # applied_commit_or_credit => {
+          #   id: String,
+          #   type: Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type
+          # }
+          # ```
           class AppliedCommitOrCredit < Metronome::BaseModel
             # @!attribute id
             #
@@ -602,7 +634,7 @@ module Metronome
             # @example
             #
             # ```ruby
-            # case enum
+            # case type
             # in :PREPAID
             #   # ...
             # in :POSTPAID
@@ -620,6 +652,13 @@ module Metronome
             end
           end
 
+          # @example
+          #
+          # ```ruby
+          # postpaid_commit => {
+          #   id: String
+          # }
+          # ```
           class PostpaidCommit < Metronome::BaseModel
             # @!attribute id
             #
@@ -639,7 +678,7 @@ module Metronome
           # @example
           #
           # ```ruby
-          # case enum
+          # case reseller_type
           # in :AWS
           #   # ...
           # in :AWS_PRO_SERVICE
@@ -659,6 +698,18 @@ module Metronome
             finalize!
           end
 
+          # @example
+          #
+          # ```ruby
+          # sub_line_item => {
+          #   custom_fields: -> { Metronome::HashOf[String] === _1 },
+          #   name: String,
+          #   quantity: Float,
+          #   subtotal: Float,
+          #   charge_id: String,
+          #   **_
+          # }
+          # ```
           class SubLineItem < Metronome::BaseModel
             # @!attribute custom_fields
             #
@@ -768,6 +819,14 @@ module Metronome
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
+            # @example
+            #
+            # ```ruby
+            # tier_period => {
+            #   starting_at: Time,
+            #   ending_before: Time
+            # }
+            # ```
             class TierPeriod < Metronome::BaseModel
               # @!attribute starting_at
               #
@@ -790,6 +849,16 @@ module Metronome
               # def initialize: (Hash | Metronome::BaseModel) -> void
             end
 
+            # @example
+            #
+            # ```ruby
+            # tier => {
+            #   price: Float,
+            #   quantity: Float,
+            #   starting_at: Float,
+            #   subtotal: Float
+            # }
+            # ```
             class Tier < Metronome::BaseModel
               # @!attribute price
               #
@@ -827,6 +896,15 @@ module Metronome
             end
           end
 
+          # @example
+          #
+          # ```ruby
+          # tier => {
+          #   level: Float,
+          #   starting_at: String,
+          #   size: String
+          # }
+          # ```
           class Tier < Metronome::BaseModel
             # @!attribute level
             #
@@ -859,7 +937,7 @@ module Metronome
         # @example
         #
         # ```ruby
-        # case enum
+        # case billable_status
         # in :billable
         #   # ...
         # in :unbillable
@@ -873,6 +951,16 @@ module Metronome
           finalize!
         end
 
+        # @example
+        #
+        # ```ruby
+        # correction_record => {
+        #   corrected_invoice_id: String,
+        #   memo: String,
+        #   reason: String,
+        #   corrected_external_invoice: Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice
+        # }
+        # ```
         class CorrectionRecord < Metronome::BaseModel
           # @!attribute corrected_invoice_id
           #
@@ -905,6 +993,16 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @example
+          #
+          # ```ruby
+          # corrected_external_invoice => {
+          #   billing_provider_type: Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType,
+          #   external_status: Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus,
+          #   invoice_id: String,
+          #   issued_at_timestamp: Time
+          # }
+          # ```
           class CorrectedExternalInvoice < Metronome::BaseModel
             # @!attribute billing_provider_type
             #
@@ -945,7 +1043,7 @@ module Metronome
             # @example
             #
             # ```ruby
-            # case enum
+            # case billing_provider_type
             # in :aws_marketplace
             #   # ...
             # in :stripe
@@ -976,7 +1074,7 @@ module Metronome
             # @example
             #
             # ```ruby
-            # case enum
+            # case external_status
             # in :DRAFT
             #   # ...
             # in :FINALIZED
@@ -1009,6 +1107,16 @@ module Metronome
           end
         end
 
+        # @example
+        #
+        # ```ruby
+        # external_invoice => {
+        #   billing_provider_type: Metronome::Models::Customers::Invoice::ExternalInvoice::BillingProviderType,
+        #   external_status: Metronome::Models::Customers::Invoice::ExternalInvoice::ExternalStatus,
+        #   invoice_id: String,
+        #   issued_at_timestamp: Time
+        # }
+        # ```
         class ExternalInvoice < Metronome::BaseModel
           # @!attribute billing_provider_type
           #
@@ -1045,7 +1153,7 @@ module Metronome
           # @example
           #
           # ```ruby
-          # case enum
+          # case billing_provider_type
           # in :aws_marketplace
           #   # ...
           # in :stripe
@@ -1076,7 +1184,7 @@ module Metronome
           # @example
           #
           # ```ruby
-          # case enum
+          # case external_status
           # in :DRAFT
           #   # ...
           # in :FINALIZED
@@ -1108,6 +1216,17 @@ module Metronome
           end
         end
 
+        # @example
+        #
+        # ```ruby
+        # invoice_adjustment => {
+        #   credit_type: Metronome::Models::CreditTypeData,
+        #   name: String,
+        #   total: Float,
+        #   credit_grant_custom_fields: -> { Metronome::HashOf[String] === _1 },
+        #   credit_grant_id: String
+        # }
+        # ```
         class InvoiceAdjustment < Metronome::BaseModel
           # @!attribute credit_type
           #
@@ -1146,6 +1265,17 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
         end
 
+        # @example
+        #
+        # ```ruby
+        # reseller_royalty => {
+        #   fraction: String,
+        #   netsuite_reseller_id: String,
+        #   reseller_type: Metronome::Models::Customers::Invoice::ResellerRoyalty::ResellerType,
+        #   aws_options: Metronome::Models::Customers::Invoice::ResellerRoyalty::AwsOptions,
+        #   gcp_options: Metronome::Models::Customers::Invoice::ResellerRoyalty::GcpOptions
+        # }
+        # ```
         class ResellerRoyalty < Metronome::BaseModel
           # @!attribute fraction
           #
@@ -1191,7 +1321,7 @@ module Metronome
           # @example
           #
           # ```ruby
-          # case enum
+          # case reseller_type
           # in :AWS
           #   # ...
           # in :AWS_PRO_SERVICE
@@ -1211,6 +1341,15 @@ module Metronome
             finalize!
           end
 
+          # @example
+          #
+          # ```ruby
+          # aws_options => {
+          #   aws_account_number: String,
+          #   aws_offer_id: String,
+          #   aws_payer_reference_id: String
+          # }
+          # ```
           class AwsOptions < Metronome::BaseModel
             # @!attribute aws_account_number
             #
@@ -1237,6 +1376,14 @@ module Metronome
             # def initialize: (Hash | Metronome::BaseModel) -> void
           end
 
+          # @example
+          #
+          # ```ruby
+          # gcp_options => {
+          #   gcp_account_id: String,
+          #   gcp_offer_id: String
+          # }
+          # ```
           class GcpOptions < Metronome::BaseModel
             # @!attribute gcp_account_id
             #

@@ -96,7 +96,7 @@ module Metronome
       # @example
       #
       # ```ruby
-      # case enum
+      # case aggregation_type
       # in :COUNT
       #   # ...
       # in :LATEST

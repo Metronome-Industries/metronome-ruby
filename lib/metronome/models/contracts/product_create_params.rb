@@ -156,7 +156,7 @@ module Metronome
         # @example
         #
         # ```ruby
-        # case enum
+        # case type
         # in :FIXED
         #   # ...
         # in :USAGE

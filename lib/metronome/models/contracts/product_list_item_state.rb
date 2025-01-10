@@ -3,6 +3,18 @@
 module Metronome
   module Models
     module Contracts
+      # @example
+      #
+      # ```ruby
+      # product_list_item_state => {
+      #   created_at: Time,
+      #   created_by: String,
+      #   name: String,
+      #   billable_metric_id: String,
+      #   composite_product_ids: -> { Metronome::ArrayOf[String] === _1 },
+      #   **_
+      # }
+      # ```
       class ProductListItemState < Metronome::BaseModel
         # @!attribute created_at
         #

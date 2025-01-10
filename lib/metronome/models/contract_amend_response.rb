@@ -2,6 +2,13 @@
 
 module Metronome
   module Models
+    # @example
+    #
+    # ```ruby
+    # contract_amend_response => {
+    #   data: Metronome::Models::ID
+    # }
+    # ```
     class ContractAmendResponse < Metronome::BaseModel
       # @!attribute data
       #

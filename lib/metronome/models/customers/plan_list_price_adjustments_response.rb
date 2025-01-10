@@ -3,6 +3,17 @@
 module Metronome
   module Models
     module Customers
+      # @example
+      #
+      # ```ruby
+      # plan_list_price_adjustments_response => {
+      #   charge_id: String,
+      #   charge_type: Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::ChargeType,
+      #   prices: -> { Metronome::ArrayOf[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price] === _1 },
+      #   start_period: Float,
+      #   quantity: Float
+      # }
+      # ```
       class PlanListPriceAdjustmentsResponse < Metronome::BaseModel
         # @!attribute charge_id
         #
@@ -47,7 +58,7 @@ module Metronome
         # @example
         #
         # ```ruby
-        # case enum
+        # case charge_type
         # in :usage
         #   # ...
         # in :fixed
@@ -70,6 +81,15 @@ module Metronome
           finalize!
         end
 
+        # @example
+        #
+        # ```ruby
+        # price => {
+        #   adjustment_type: Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType,
+        #   tier: Float,
+        #   value: Float
+        # }
+        # ```
         class Price < Metronome::BaseModel
           # @!attribute adjustment_type
           #   Determines how the value will be applied.
@@ -107,7 +127,7 @@ module Metronome
           # @example
           #
           # ```ruby
-          # case enum
+          # case adjustment_type
           # in :fixed
           #   # ...
           # in :quantity

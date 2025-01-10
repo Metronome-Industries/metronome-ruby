@@ -1,6 +1,29 @@
 # frozen_string_literal: true
 
 module Metronome
+  # @example
+  #
+  # ```ruby
+  # if cursor_page.has_next?
+  #   page = cursor_page.next_page
+  # end
+  # ```
+  #
+  # @example
+  #
+  # ```ruby
+  # cursor_page.auto_paging_each do |item|
+  # #   item ...
+  # end
+  # ```
+  #
+  # @example
+  #
+  # ```ruby
+  # items = cursor_page.to_enum.take(2)
+  #
+  # items => Array
+  # ```
   class CursorPage < Metronome::BasePage
     # @return [String]
     attr_accessor :next_page_

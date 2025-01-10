@@ -3,6 +3,13 @@
 module Metronome
   module Models
     module Customers
+      # @example
+      #
+      # ```ruby
+      # invoice_retrieve_response => {
+      #   data: Metronome::Models::Customers::Invoice
+      # }
+      # ```
       class InvoiceRetrieveResponse < Metronome::BaseModel
         # @!attribute data
         #

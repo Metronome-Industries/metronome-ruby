@@ -2,6 +2,15 @@
 
 module Metronome
   module Models
+    # @example
+    #
+    # ```ruby
+    # credit_grant_list_credit_types_response => {
+    #   id: String,
+    #   is_currency: Metronome::BooleanModel,
+    #   name: String
+    # }
+    # ```
     class CreditGrantListCreditTypesResponse < Metronome::BaseModel
       # @!attribute id
       #

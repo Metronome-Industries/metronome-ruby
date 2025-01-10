@@ -2,6 +2,15 @@
 
 module Metronome
   module Models
+    # @example
+    #
+    # ```ruby
+    # customer_list_costs_response => {
+    #   credit_types: -> { Metronome::HashOf[Metronome::Models::CustomerListCostsResponse::CreditType] === _1 },
+    #   end_timestamp: Time,
+    #   start_timestamp: Time
+    # }
+    # ```
     class CustomerListCostsResponse < Metronome::BaseModel
       # @!attribute credit_types
       #
@@ -30,6 +39,15 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
+      # @example
+      #
+      # ```ruby
+      # credit_type => {
+      #   cost: Float,
+      #   line_item_breakdown: -> { Metronome::ArrayOf[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown] === _1 },
+      #   name: String
+      # }
+      # ```
       class CreditType < Metronome::BaseModel
         # @!attribute cost
         #
@@ -58,6 +76,16 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # line_item_breakdown => {
+        #   cost: Float,
+        #   name: String,
+        #   group_key: String,
+        #   group_value: String
+        # }
+        # ```
         class LineItemBreakdown < Metronome::BaseModel
           # @!attribute cost
           #

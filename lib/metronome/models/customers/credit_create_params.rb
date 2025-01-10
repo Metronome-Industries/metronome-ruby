@@ -142,6 +142,14 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # access_schedule => {
+        #   schedule_items: -> { Metronome::ArrayOf[Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem] === _1 },
+        #   credit_type_id: String
+        # }
+        # ```
         class AccessSchedule < Metronome::BaseModel
           # @!attribute schedule_items
           #
@@ -168,6 +176,15 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @example
+          #
+          # ```ruby
+          # schedule_item => {
+          #   amount: Float,
+          #   ending_before: Time,
+          #   starting_at: Time
+          # }
+          # ```
           class ScheduleItem < Metronome::BaseModel
             # @!attribute amount
             #
@@ -202,7 +219,7 @@ module Metronome
         # @example
         #
         # ```ruby
-        # case enum
+        # case rate_type
         # in :COMMIT_RATE
         #   # ...
         # in :commit_rate

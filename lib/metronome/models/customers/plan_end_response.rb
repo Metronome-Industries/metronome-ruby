@@ -3,6 +3,13 @@
 module Metronome
   module Models
     module Customers
+      # @example
+      #
+      # ```ruby
+      # plan_end_response => {
+      #
+      # }
+      # ```
       class PlanEndResponse < Metronome::BaseModel
         # @!parse
         #   def initialize(**) = super

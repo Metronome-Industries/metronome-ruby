@@ -2,6 +2,18 @@
 
 module Metronome
   module Models
+    # @example
+    #
+    # ```ruby
+    # pro_service => {
+    #   id: String,
+    #   max_amount: Float,
+    #   product_id: String,
+    #   quantity: Float,
+    #   unit_price: Float,
+    #   **_
+    # }
+    # ```
     class ProService < Metronome::BaseModel
       # @!attribute id
       #
