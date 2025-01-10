@@ -2,6 +2,13 @@
 
 module Metronome
   module Models
+    # @example
+    #
+    # ```ruby
+    # credit_grant_create_response => {
+    #   data: Metronome::Models::ID
+    # }
+    # ```
     class CreditGrantCreateResponse < Metronome::BaseModel
       # @!attribute data
       #

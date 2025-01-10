@@ -2,6 +2,17 @@
 
 module Metronome
   module Models
+    # @example
+    #
+    # ```ruby
+    # customer => {
+    #   id: String,
+    #   external_id: String,
+    #   ingest_aliases: -> { Metronome::ArrayOf[String] === _1 },
+    #   name: String,
+    #   custom_fields: -> { Metronome::HashOf[String] === _1 }
+    # }
+    # ```
     class Customer < Metronome::BaseModel
       # @!attribute id
       #   the Metronome ID of the customer

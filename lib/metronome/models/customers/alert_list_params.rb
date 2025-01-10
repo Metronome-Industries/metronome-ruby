@@ -38,7 +38,7 @@ module Metronome
         # @example
         #
         # ```ruby
-        # case enum
+        # case alert_status
         # in :ENABLED
         #   # ...
         # in :DISABLED

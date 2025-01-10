@@ -24,7 +24,7 @@ module Metronome
       # @example
       #
       # ```ruby
-      # case enum
+      # case entity
       # in :alert
       #   # ...
       # in :billable_metric

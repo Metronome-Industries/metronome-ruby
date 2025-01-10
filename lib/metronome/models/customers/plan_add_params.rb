@@ -94,6 +94,15 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # overage_rate_adjustment => {
+        #   custom_credit_type_id: String,
+        #   fiat_currency_credit_type_id: String,
+        #   to_fiat_conversion_factor: Float
+        # }
+        # ```
         class OverageRateAdjustment < Metronome::BaseModel
           # @!attribute custom_credit_type_id
           #
@@ -123,6 +132,17 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
         end
 
+        # @example
+        #
+        # ```ruby
+        # price_adjustment => {
+        #   adjustment_type: Metronome::Models::Customers::PlanAddParams::PriceAdjustment::AdjustmentType,
+        #   charge_id: String,
+        #   start_period: Float,
+        #   quantity: Float,
+        #   tier: Float
+        # }
+        # ```
         class PriceAdjustment < Metronome::BaseModel
           # @!attribute adjustment_type
           #
@@ -182,7 +202,7 @@ module Metronome
           # @example
           #
           # ```ruby
-          # case enum
+          # case adjustment_type
           # in :percentage
           #   # ...
           # in :fixed
@@ -203,6 +223,14 @@ module Metronome
           end
         end
 
+        # @example
+        #
+        # ```ruby
+        # trial_spec => {
+        #   length_in_days: Float,
+        #   spending_cap: Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap
+        # }
+        # ```
         class TrialSpec < Metronome::BaseModel
           # @!attribute length_in_days
           #   Length of the trial period in days.
@@ -228,6 +256,14 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @example
+          #
+          # ```ruby
+          # spending_cap => {
+          #   amount: Float,
+          #   credit_type_id: String
+          # }
+          # ```
           class SpendingCap < Metronome::BaseModel
             # @!attribute amount
             #   The credit amount in the given denomination based on the credit type, e.g. US cents.

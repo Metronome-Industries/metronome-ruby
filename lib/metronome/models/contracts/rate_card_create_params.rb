@@ -74,6 +74,15 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # alias => {
+        #   name: String,
+        #   ending_before: Time,
+        #   starting_at: Time
+        # }
+        # ```
         class Alias < Metronome::BaseModel
           # @!attribute name
           #
@@ -100,6 +109,14 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
         end
 
+        # @example
+        #
+        # ```ruby
+        # credit_type_conversion => {
+        #   custom_credit_type_id: String,
+        #   fiat_per_custom_credit: Float
+        # }
+        # ```
         class CreditTypeConversion < Metronome::BaseModel
           # @!attribute custom_credit_type_id
           #

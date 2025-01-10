@@ -38,7 +38,7 @@ module Metronome
         # @example
         #
         # ```ruby
-        # case enum
+        # case archive_filter
         # in :ARCHIVED
         #   # ...
         # in :NOT_ARCHIVED

@@ -3,6 +3,13 @@
 module Metronome
   module Models
     module Contracts
+      # @example
+      #
+      # ```ruby
+      # rate_card_retrieve_response => {
+      #   data: Metronome::Models::Contracts::RateCardRetrieveResponse::Data
+      # }
+      # ```
       class RateCardRetrieveResponse < Metronome::BaseModel
         # @!attribute data
         #
@@ -16,6 +23,18 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # data => {
+        #   id: String,
+        #   created_at: Time,
+        #   created_by: String,
+        #   name: String,
+        #   aliases: -> { Metronome::ArrayOf[Metronome::Models::Contracts::RateCardRetrieveResponse::Data::Alias] === _1 },
+        #   **_
+        # }
+        # ```
         class Data < Metronome::BaseModel
           # @!attribute id
           #
@@ -96,6 +115,15 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @example
+          #
+          # ```ruby
+          # alias => {
+          #   name: String,
+          #   ending_before: Time,
+          #   starting_at: Time
+          # }
+          # ```
           class Alias < Metronome::BaseModel
             # @!attribute name
             #
@@ -122,6 +150,14 @@ module Metronome
             # def initialize: (Hash | Metronome::BaseModel) -> void
           end
 
+          # @example
+          #
+          # ```ruby
+          # credit_type_conversion => {
+          #   custom_credit_type: Metronome::Models::CreditTypeData,
+          #   fiat_per_custom_credit: String
+          # }
+          # ```
           class CreditTypeConversion < Metronome::BaseModel
             # @!attribute custom_credit_type
             #

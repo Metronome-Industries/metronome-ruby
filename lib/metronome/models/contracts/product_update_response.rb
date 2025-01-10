@@ -3,6 +3,13 @@
 module Metronome
   module Models
     module Contracts
+      # @example
+      #
+      # ```ruby
+      # product_update_response => {
+      #   data: Metronome::Models::ID
+      # }
+      # ```
       class ProductUpdateResponse < Metronome::BaseModel
         # @!attribute data
         #

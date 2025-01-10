@@ -2,6 +2,15 @@
 
 module Metronome
   module Models
+    # @example
+    #
+    # ```ruby
+    # base_usage_filter => {
+    #   group_key: String,
+    #   group_values: -> { Metronome::ArrayOf[String] === _1 },
+    #   starting_at: Time
+    # }
+    # ```
     class BaseUsageFilter < Metronome::BaseModel
       # @!attribute group_key
       #

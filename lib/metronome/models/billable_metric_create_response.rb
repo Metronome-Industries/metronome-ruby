@@ -2,6 +2,13 @@
 
 module Metronome
   module Models
+    # @example
+    #
+    # ```ruby
+    # billable_metric_create_response => {
+    #   data: Metronome::Models::ID
+    # }
+    # ```
     class BillableMetricCreateResponse < Metronome::BaseModel
       # @!attribute data
       #

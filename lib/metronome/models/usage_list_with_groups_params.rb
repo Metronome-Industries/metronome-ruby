@@ -97,7 +97,7 @@ module Metronome
       # @example
       #
       # ```ruby
-      # case enum
+      # case window_size
       # in :HOUR
       #   # ...
       # in :DAY
@@ -114,6 +114,14 @@ module Metronome
         finalize!
       end
 
+      # @example
+      #
+      # ```ruby
+      # group_by => {
+      #   key: String,
+      #   values: -> { Metronome::ArrayOf[String] === _1 }
+      # }
+      # ```
       class GroupBy < Metronome::BaseModel
         # @!attribute key
         #   The name of the group_by key to use

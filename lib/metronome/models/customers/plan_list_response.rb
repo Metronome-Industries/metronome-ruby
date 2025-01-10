@@ -3,6 +3,18 @@
 module Metronome
   module Models
     module Customers
+      # @example
+      #
+      # ```ruby
+      # plan_list_response => {
+      #   id: String,
+      #   custom_fields: -> { Metronome::HashOf[String] === _1 },
+      #   plan_description: String,
+      #   plan_id: String,
+      #   plan_name: String,
+      #   **_
+      # }
+      # ```
       class PlanListResponse < Metronome::BaseModel
         # @!attribute id
         #   the ID of the customer plan
@@ -87,6 +99,14 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # trial_info => {
+        #   ending_before: Time,
+        #   spending_caps: -> { Metronome::ArrayOf[Metronome::Models::Customers::PlanListResponse::TrialInfo::SpendingCap] === _1 }
+        # }
+        # ```
         class TrialInfo < Metronome::BaseModel
           # @!attribute ending_before
           #
@@ -109,6 +129,15 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @example
+          #
+          # ```ruby
+          # spending_cap => {
+          #   amount: Float,
+          #   amount_remaining: Float,
+          #   credit_type: Metronome::Models::CreditTypeData
+          # }
+          # ```
           class SpendingCap < Metronome::BaseModel
             # @!attribute amount
             #

@@ -66,7 +66,7 @@ module Metronome
       # @example
       #
       # ```ruby
-      # case enum
+      # case window_size
       # in :HOUR
       #   # ...
       # in :DAY
@@ -83,6 +83,14 @@ module Metronome
         finalize!
       end
 
+      # @example
+      #
+      # ```ruby
+      # billable_metric => {
+      #   id: String,
+      #   group_by: Metronome::Models::UsageListParams::BillableMetric::GroupBy
+      # }
+      # ```
       class BillableMetric < Metronome::BaseModel
         # @!attribute id
         #
@@ -102,6 +110,14 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # group_by => {
+        #   key: String,
+        #   values: -> { Metronome::ArrayOf[String] === _1 }
+        # }
+        # ```
         class GroupBy < Metronome::BaseModel
           # @!attribute key
           #   The name of the group_by key to use

@@ -2,6 +2,18 @@
 
 module Metronome
   module Models
+    # @example
+    #
+    # ```ruby
+    # credit => {
+    #   id: String,
+    #   product: Metronome::Models::Credit::Product,
+    #   type: Metronome::Models::Credit::Type,
+    #   access_schedule: Metronome::Models::ScheduleDuration,
+    #   applicable_contract_ids: -> { Metronome::ArrayOf[String] === _1 },
+    #   **_
+    # }
+    # ```
     class Credit < Metronome::BaseModel
       # @!attribute id
       #
@@ -175,6 +187,14 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
+      # @example
+      #
+      # ```ruby
+      # product => {
+      #   id: String,
+      #   name: String
+      # }
+      # ```
       class Product < Metronome::BaseModel
         # @!attribute id
         #
@@ -198,7 +218,7 @@ module Metronome
       # @example
       #
       # ```ruby
-      # case enum
+      # case type
       # in :CREDIT
       #   # ...
       # end
@@ -209,6 +229,13 @@ module Metronome
         finalize!
       end
 
+      # @example
+      #
+      # ```ruby
+      # contract => {
+      #   id: String
+      # }
+      # ```
       class Contract < Metronome::BaseModel
         # @!attribute id
         #
@@ -226,7 +253,7 @@ module Metronome
       # @example
       #
       # ```ruby
-      # case union
+      # case ledger
       # in Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry
       #   # ...
       # in Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry
@@ -254,6 +281,16 @@ module Metronome
 
         variant -> { Metronome::Models::Credit::Ledger::CreditManualLedgerEntry }
 
+        # @example
+        #
+        # ```ruby
+        # credit_segment_start_ledger_entry => {
+        #   amount: Float,
+        #   segment_id: String,
+        #   timestamp: Time,
+        #   type: Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry::Type
+        # }
+        # ```
         class CreditSegmentStartLedgerEntry < Metronome::BaseModel
           # @!attribute amount
           #
@@ -288,7 +325,7 @@ module Metronome
           # @example
           #
           # ```ruby
-          # case enum
+          # case type
           # in :CREDIT_SEGMENT_START
           #   # ...
           # end
@@ -300,6 +337,17 @@ module Metronome
           end
         end
 
+        # @example
+        #
+        # ```ruby
+        # credit_automated_invoice_deduction_ledger_entry => {
+        #   amount: Float,
+        #   invoice_id: String,
+        #   segment_id: String,
+        #   timestamp: Time,
+        #   type: Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type
+        # }
+        # ```
         class CreditAutomatedInvoiceDeductionLedgerEntry < Metronome::BaseModel
           # @!attribute amount
           #
@@ -343,7 +391,7 @@ module Metronome
           # @example
           #
           # ```ruby
-          # case enum
+          # case type
           # in :CREDIT_AUTOMATED_INVOICE_DEDUCTION
           #   # ...
           # end
@@ -355,6 +403,16 @@ module Metronome
           end
         end
 
+        # @example
+        #
+        # ```ruby
+        # credit_expiration_ledger_entry => {
+        #   amount: Float,
+        #   segment_id: String,
+        #   timestamp: Time,
+        #   type: Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry::Type
+        # }
+        # ```
         class CreditExpirationLedgerEntry < Metronome::BaseModel
           # @!attribute amount
           #
@@ -389,7 +447,7 @@ module Metronome
           # @example
           #
           # ```ruby
-          # case enum
+          # case type
           # in :CREDIT_EXPIRATION
           #   # ...
           # end
@@ -401,6 +459,17 @@ module Metronome
           end
         end
 
+        # @example
+        #
+        # ```ruby
+        # credit_canceled_ledger_entry => {
+        #   amount: Float,
+        #   invoice_id: String,
+        #   segment_id: String,
+        #   timestamp: Time,
+        #   type: Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry::Type
+        # }
+        # ```
         class CreditCanceledLedgerEntry < Metronome::BaseModel
           # @!attribute amount
           #
@@ -441,7 +510,7 @@ module Metronome
           # @example
           #
           # ```ruby
-          # case enum
+          # case type
           # in :CREDIT_CANCELED
           #   # ...
           # end
@@ -453,6 +522,17 @@ module Metronome
           end
         end
 
+        # @example
+        #
+        # ```ruby
+        # credit_credited_ledger_entry => {
+        #   amount: Float,
+        #   invoice_id: String,
+        #   segment_id: String,
+        #   timestamp: Time,
+        #   type: Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry::Type
+        # }
+        # ```
         class CreditCreditedLedgerEntry < Metronome::BaseModel
           # @!attribute amount
           #
@@ -493,7 +573,7 @@ module Metronome
           # @example
           #
           # ```ruby
-          # case enum
+          # case type
           # in :CREDIT_CREDITED
           #   # ...
           # end
@@ -505,6 +585,16 @@ module Metronome
           end
         end
 
+        # @example
+        #
+        # ```ruby
+        # credit_manual_ledger_entry => {
+        #   amount: Float,
+        #   reason: String,
+        #   timestamp: Time,
+        #   type: Metronome::Models::Credit::Ledger::CreditManualLedgerEntry::Type
+        # }
+        # ```
         class CreditManualLedgerEntry < Metronome::BaseModel
           # @!attribute amount
           #
@@ -539,7 +629,7 @@ module Metronome
           # @example
           #
           # ```ruby
-          # case enum
+          # case type
           # in :CREDIT_MANUAL
           #   # ...
           # end
@@ -555,7 +645,7 @@ module Metronome
       # @example
       #
       # ```ruby
-      # case enum
+      # case rate_type
       # in :COMMIT_RATE
       #   # ...
       # in :LIST_RATE

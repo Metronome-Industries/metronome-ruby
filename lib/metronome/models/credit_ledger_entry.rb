@@ -2,6 +2,18 @@
 
 module Metronome
   module Models
+    # @example
+    #
+    # ```ruby
+    # credit_ledger_entry => {
+    #   amount: Float,
+    #   created_by: String,
+    #   credit_grant_id: String,
+    #   effective_at: Time,
+    #   reason: String,
+    #   **_
+    # }
+    # ```
     class CreditLedgerEntry < Metronome::BaseModel
       # @!attribute amount
       #   an amount representing the change to the customer's credit balance

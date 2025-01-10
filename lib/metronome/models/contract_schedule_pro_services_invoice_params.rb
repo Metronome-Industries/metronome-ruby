@@ -67,6 +67,18 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
+      # @example
+      #
+      # ```ruby
+      # line_item => {
+      #   professional_service_id: String,
+      #   amendment_id: String,
+      #   amount: Float,
+      #   metadata: String,
+      #   netsuite_invoice_billing_end: Time,
+      #   **_
+      # }
+      # ```
       class LineItem < Metronome::BaseModel
         # @!attribute professional_service_id
         #

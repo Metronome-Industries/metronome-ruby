@@ -2,6 +2,14 @@
 
 module Metronome
   module Models
+    # @example
+    #
+    # ```ruby
+    # contract_list_balances_response => {
+    #   data: -> { Metronome::ArrayOf[Metronome::Models::ContractListBalancesResponse::Data] === _1 },
+    #   next_page: String
+    # }
+    # ```
     class ContractListBalancesResponse < Metronome::BaseModel
       # @!attribute data
       #
@@ -24,7 +32,7 @@ module Metronome
       # @example
       #
       # ```ruby
-      # case union
+      # case data
       # in Metronome::Models::Commit
       #   # ...
       # in Metronome::Models::Credit

@@ -2,6 +2,14 @@
 
 module Metronome
   module Models
+    # @example
+    #
+    # ```ruby
+    # tier => {
+    #   price: Float,
+    #   size: Float
+    # }
+    # ```
     class Tier < Metronome::BaseModel
       # @!attribute price
       #

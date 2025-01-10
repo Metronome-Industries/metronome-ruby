@@ -2,6 +2,13 @@
 
 module Metronome
   module Models
+    # @example
+    #
+    # ```ruby
+    # customer_set_name_response => {
+    #   data: Metronome::Models::Customer
+    # }
+    # ```
     class CustomerSetNameResponse < Metronome::BaseModel
       # @!attribute data
       #

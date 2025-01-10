@@ -68,7 +68,7 @@ module Metronome
         # @example
         #
         # ```ruby
-        # case enum
+        # case billing_provider_type
         # in :aws_marketplace
         #   # ...
         # in :stripe
@@ -99,7 +99,7 @@ module Metronome
         # @example
         #
         # ```ruby
-        # case enum
+        # case aws_region
         # in :"af-south-1"
         #   # ...
         # in :"ap-east-1"
@@ -147,7 +147,7 @@ module Metronome
         # @example
         #
         # ```ruby
-        # case enum
+        # case stripe_collection_method
         # in :charge_automatically
         #   # ...
         # in :send_invoice

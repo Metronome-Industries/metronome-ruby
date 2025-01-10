@@ -3,6 +3,13 @@
 module Metronome
   module Models
     module Customers
+      # @example
+      #
+      # ```ruby
+      # named_schedule_retrieve_response => {
+      #   data: -> { Metronome::ArrayOf[Metronome::Models::Customers::NamedScheduleRetrieveResponse::Data] === _1 }
+      # }
+      # ```
       class NamedScheduleRetrieveResponse < Metronome::BaseModel
         # @!attribute data
         #
@@ -17,6 +24,15 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # data => {
+        #   starting_at: Time,
+        #   value: Metronome::Unknown,
+        #   ending_before: Time
+        # }
+        # ```
         class Data < Metronome::BaseModel
           # @!attribute starting_at
           #

@@ -2,6 +2,13 @@
 
 module Metronome
   module Models
+    # @example
+    #
+    # ```ruby
+    # alert_create_response => {
+    #   data: Metronome::Models::ID
+    # }
+    # ```
     class AlertCreateResponse < Metronome::BaseModel
       # @!attribute data
       #

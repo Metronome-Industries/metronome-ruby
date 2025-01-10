@@ -2,6 +2,17 @@
 
 module Metronome
   module Models
+    # @example
+    #
+    # ```ruby
+    # discount => {
+    #   id: String,
+    #   product: Metronome::Models::Discount::Product,
+    #   schedule: Metronome::Models::SchedulePointInTime,
+    #   name: String,
+    #   netsuite_sales_order_id: String
+    # }
+    # ```
     class Discount < Metronome::BaseModel
       # @!attribute id
       #
@@ -44,6 +55,14 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
+      # @example
+      #
+      # ```ruby
+      # product => {
+      #   id: String,
+      #   name: String
+      # }
+      # ```
       class Product < Metronome::BaseModel
         # @!attribute id
         #

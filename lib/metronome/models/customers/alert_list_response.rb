@@ -3,6 +3,14 @@
 module Metronome
   module Models
     module Customers
+      # @example
+      #
+      # ```ruby
+      # alert_list_response => {
+      #   data: -> { Metronome::ArrayOf[Metronome::Models::Customers::CustomerAlert] === _1 },
+      #   next_page: String
+      # }
+      # ```
       class AlertListResponse < Metronome::BaseModel
         # @!attribute data
         #

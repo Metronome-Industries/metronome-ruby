@@ -2,6 +2,14 @@
 
 module Metronome
   module Models
+    # @example
+    #
+    # ```ruby
+    # schedule_point_in_time => {
+    #   credit_type: Metronome::Models::CreditTypeData,
+    #   schedule_items: -> { Metronome::ArrayOf[Metronome::Models::SchedulePointInTime::ScheduleItem] === _1 }
+    # }
+    # ```
     class SchedulePointInTime < Metronome::BaseModel
       # @!attribute credit_type
       #
@@ -24,6 +32,17 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
+      # @example
+      #
+      # ```ruby
+      # schedule_item => {
+      #   id: String,
+      #   amount: Float,
+      #   invoice_id: String,
+      #   quantity: Float,
+      #   timestamp: Time
+      # }
+      # ```
       class ScheduleItem < Metronome::BaseModel
         # @!attribute id
         #

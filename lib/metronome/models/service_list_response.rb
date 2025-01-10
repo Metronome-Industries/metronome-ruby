@@ -2,6 +2,13 @@
 
 module Metronome
   module Models
+    # @example
+    #
+    # ```ruby
+    # service_list_response => {
+    #   services: -> { Metronome::ArrayOf[Metronome::Models::ServiceListResponse::Service] === _1 }
+    # }
+    # ```
     class ServiceListResponse < Metronome::BaseModel
       # @!attribute services
       #
@@ -15,6 +22,15 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
+      # @example
+      #
+      # ```ruby
+      # service => {
+      #   ips: -> { Metronome::ArrayOf[String] === _1 },
+      #   name: String,
+      #   usage: Metronome::Models::ServiceListResponse::Service::Usage
+      # }
+      # ```
       class Service < Metronome::BaseModel
         # @!attribute ips
         #
@@ -43,7 +59,7 @@ module Metronome
         # @example
         #
         # ```ruby
-        # case enum
+        # case usage
         # in :makes_connections_from
         #   # ...
         # in :accepts_connections_at

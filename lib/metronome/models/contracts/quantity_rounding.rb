@@ -3,6 +3,14 @@
 module Metronome
   module Models
     module Contracts
+      # @example
+      #
+      # ```ruby
+      # quantity_rounding => {
+      #   decimal_places: Float,
+      #   rounding_method: Metronome::Models::Contracts::QuantityRounding::RoundingMethod
+      # }
+      # ```
       class QuantityRounding < Metronome::BaseModel
         # @!attribute decimal_places
         #
@@ -30,7 +38,7 @@ module Metronome
         # @example
         #
         # ```ruby
-        # case enum
+        # case rounding_method
         # in :ROUND_UP
         #   # ...
         # in :ROUND_DOWN

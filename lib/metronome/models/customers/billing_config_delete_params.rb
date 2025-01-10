@@ -26,7 +26,7 @@ module Metronome
         # @example
         #
         # ```ruby
-        # case enum
+        # case billing_provider_type
         # in :aws_marketplace
         #   # ...
         # in :stripe

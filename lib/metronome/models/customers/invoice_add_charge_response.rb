@@ -3,6 +3,13 @@
 module Metronome
   module Models
     module Customers
+      # @example
+      #
+      # ```ruby
+      # invoice_add_charge_response => {
+      #
+      # }
+      # ```
       class InvoiceAddChargeResponse < Metronome::BaseModel
         # @!parse
         #   def initialize(**) = super

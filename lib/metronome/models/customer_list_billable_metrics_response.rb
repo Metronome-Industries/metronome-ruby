@@ -2,6 +2,18 @@
 
 module Metronome
   module Models
+    # @example
+    #
+    # ```ruby
+    # customer_list_billable_metrics_response => {
+    #   id: String,
+    #   name: String,
+    #   aggregate: String,
+    #   aggregate_keys: -> { Metronome::ArrayOf[String] === _1 },
+    #   aggregation_key: String,
+    #   **_
+    # }
+    # ```
     class CustomerListBillableMetricsResponse < Metronome::BaseModel
       # @!attribute id
       #
@@ -147,7 +159,7 @@ module Metronome
       # @example
       #
       # ```ruby
-      # case enum
+      # case aggregation_type
       # in :COUNT
       #   # ...
       # in :LATEST
