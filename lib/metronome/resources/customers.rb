@@ -47,6 +47,8 @@ module Metronome
       #
       #   @option params [Hash{Symbol => String}] :custom_fields
       #
+      #   @option params [Array<Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration>] :customer_billing_provider_configurations
+      #
       #   @option params [String] :external_id (deprecated, use ingest_aliases instead) an alias that can be used to refer to
       #     this customer in usage events
       #
