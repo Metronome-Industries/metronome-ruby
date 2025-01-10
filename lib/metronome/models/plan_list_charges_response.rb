@@ -7,7 +7,7 @@ module Metronome
     # ```ruby
     # plan_list_charges_response => {
     #   id: String,
-    #   charge_type: Metronome::Models::PlanListChargesResponse::ChargeType,
+    #   charge_type: enum: Metronome::Models::PlanListChargesResponse::ChargeType,
     #   credit_type: Metronome::Models::CreditTypeData,
     #   custom_fields: -> { Metronome::HashOf[String] === _1 },
     #   name: String,
@@ -43,7 +43,7 @@ module Metronome
       # @!attribute prices
       #
       #   @return [Array<Metronome::Models::PlanListChargesResponse::Price>]
-      required :prices, Metronome::ArrayOf[-> { Metronome::Models::PlanListChargesResponse::Price }]
+      required :prices, -> { Metronome::ArrayOf[Metronome::Models::PlanListChargesResponse::Price] }
 
       # @!attribute product_id
       #
@@ -210,7 +210,7 @@ module Metronome
       # ```ruby
       # unit_conversion => {
       #   division_factor: Float,
-      #   rounding_behavior: Metronome::Models::PlanListChargesResponse::UnitConversion::RoundingBehavior
+      #   rounding_behavior: enum: Metronome::Models::PlanListChargesResponse::UnitConversion::RoundingBehavior
       # }
       # ```
       class UnitConversion < Metronome::BaseModel

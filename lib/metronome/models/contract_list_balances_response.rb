@@ -6,7 +6,7 @@ module Metronome
     #
     # ```ruby
     # contract_list_balances_response => {
-    #   data: -> { Metronome::ArrayOf[Metronome::Models::ContractListBalancesResponse::Data] === _1 },
+    #   data: -> { Metronome::ArrayOf[union: Metronome::Models::ContractListBalancesResponse::Data] === _1 },
     #   next_page: String
     # }
     # ```
@@ -14,7 +14,7 @@ module Metronome
       # @!attribute data
       #
       #   @return [Array<Metronome::Models::Commit, Metronome::Models::Credit>]
-      required :data, Metronome::ArrayOf[union: -> { Metronome::Models::ContractListBalancesResponse::Data }]
+      required :data, -> { Metronome::ArrayOf[union: Metronome::Models::ContractListBalancesResponse::Data] }
 
       # @!attribute next_page
       #

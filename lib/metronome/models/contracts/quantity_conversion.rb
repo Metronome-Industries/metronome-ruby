@@ -8,7 +8,7 @@ module Metronome
       # ```ruby
       # quantity_conversion => {
       #   conversion_factor: Float,
-      #   operation: Metronome::Models::Contracts::QuantityConversion::Operation,
+      #   operation: enum: Metronome::Models::Contracts::QuantityConversion::Operation,
       #   name: String
       # }
       # ```

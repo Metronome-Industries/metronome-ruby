@@ -40,17 +40,17 @@ module Metronome
         #
         #   @return [Array<Metronome::Models::Contracts::RateCardListResponse::Alias>]
         optional :aliases,
-                 Metronome::ArrayOf[-> {
-                   Metronome::Models::Contracts::RateCardListResponse::Alias
-                 }]
+                 -> {
+                   Metronome::ArrayOf[Metronome::Models::Contracts::RateCardListResponse::Alias]
+                 }
 
         # @!attribute credit_type_conversions
         #
         #   @return [Array<Metronome::Models::Contracts::RateCardListResponse::CreditTypeConversion>]
         optional :credit_type_conversions,
-                 Metronome::ArrayOf[-> {
-                   Metronome::Models::Contracts::RateCardListResponse::CreditTypeConversion
-                 }]
+                 -> {
+                   Metronome::ArrayOf[Metronome::Models::Contracts::RateCardListResponse::CreditTypeConversion]
+                 }
 
         # @!attribute custom_fields
         #

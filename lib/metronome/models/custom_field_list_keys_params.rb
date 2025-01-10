@@ -14,9 +14,9 @@ module Metronome
       #
       #   @return [Array<Symbol, Metronome::Models::CustomFieldListKeysParams::Entity>]
       optional :entities,
-               Metronome::ArrayOf[enum: -> {
-                 Metronome::Models::CustomFieldListKeysParams::Entity
-               }]
+               -> {
+                 Metronome::ArrayOf[enum: Metronome::Models::CustomFieldListKeysParams::Entity]
+               }
 
       # @!parse
       #   # @param next_page [String] Cursor that indicates where the next page of results should start.

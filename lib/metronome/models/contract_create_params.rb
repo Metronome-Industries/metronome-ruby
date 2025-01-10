@@ -24,12 +24,12 @@ module Metronome
       # @!attribute commits
       #
       #   @return [Array<Metronome::Models::ContractCreateParams::Commit>]
-      optional :commits, Metronome::ArrayOf[-> { Metronome::Models::ContractCreateParams::Commit }]
+      optional :commits, -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Commit] }
 
       # @!attribute credits
       #
       #   @return [Array<Metronome::Models::ContractCreateParams::Credit>]
-      optional :credits, Metronome::ArrayOf[-> { Metronome::Models::ContractCreateParams::Credit }]
+      optional :credits, -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Credit] }
 
       # @!attribute custom_fields
       #
@@ -40,7 +40,7 @@ module Metronome
       #   This field's availability is dependent on your client's configuration.
       #
       #   @return [Array<Metronome::Models::ContractCreateParams::Discount>]
-      optional :discounts, Metronome::ArrayOf[-> { Metronome::Models::ContractCreateParams::Discount }]
+      optional :discounts, -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Discount] }
 
       # @!attribute ending_before
       #   exclusive contract end time
@@ -74,14 +74,14 @@ module Metronome
       # @!attribute overrides
       #
       #   @return [Array<Metronome::Models::ContractCreateParams::Override>]
-      optional :overrides, Metronome::ArrayOf[-> { Metronome::Models::ContractCreateParams::Override }]
+      optional :overrides, -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Override] }
 
       # @!attribute professional_services
       #   This field's availability is dependent on your client's configuration.
       #
       #   @return [Array<Metronome::Models::ContractCreateParams::ProfessionalService>]
       optional :professional_services,
-               Metronome::ArrayOf[-> { Metronome::Models::ContractCreateParams::ProfessionalService }]
+               -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::ProfessionalService] }
 
       # @!attribute rate_card_alias
       #   Selects the rate card linked to the specified alias as of the contract's start date.
@@ -99,7 +99,7 @@ module Metronome
       #
       #   @return [Array<Metronome::Models::ContractCreateParams::ResellerRoyalty>]
       optional :reseller_royalties,
-               Metronome::ArrayOf[-> { Metronome::Models::ContractCreateParams::ResellerRoyalty }]
+               -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::ResellerRoyalty] }
 
       # @!attribute salesforce_opportunity_id
       #   This field's availability is dependent on your client's configuration.
@@ -111,7 +111,7 @@ module Metronome
       #
       #   @return [Array<Metronome::Models::ContractCreateParams::ScheduledCharge>]
       optional :scheduled_charges,
-               Metronome::ArrayOf[-> { Metronome::Models::ContractCreateParams::ScheduledCharge }]
+               -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::ScheduledCharge] }
 
       # @!attribute total_contract_value
       #   This field's availability is dependent on your client's configuration.
@@ -234,9 +234,9 @@ module Metronome
       #
       # ```ruby
       # billing_provider_configuration => {
-      #   billing_provider: Metronome::Models::ContractCreateParams::BillingProviderConfiguration::BillingProvider,
+      #   billing_provider: enum: Metronome::Models::ContractCreateParams::BillingProviderConfiguration::BillingProvider,
       #   billing_provider_configuration_id: String,
-      #   delivery_method: Metronome::Models::ContractCreateParams::BillingProviderConfiguration::DeliveryMethod
+      #   delivery_method: enum: Metronome::Models::ContractCreateParams::BillingProviderConfiguration::DeliveryMethod
       # }
       # ```
       class BillingProviderConfiguration < Metronome::BaseModel
@@ -330,7 +330,7 @@ module Metronome
       # ```ruby
       # commit => {
       #   product_id: String,
-      #   type: Metronome::Models::ContractCreateParams::Commit::Type,
+      #   type: enum: Metronome::Models::ContractCreateParams::Commit::Type,
       #   access_schedule: Metronome::Models::ContractCreateParams::Commit::AccessSchedule,
       #   amount: Float,
       #   applicable_product_ids: -> { Metronome::ArrayOf[String] === _1 },
@@ -517,9 +517,9 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::ContractCreateParams::Commit::AccessSchedule::ScheduleItem>]
           required :schedule_items,
-                   Metronome::ArrayOf[-> {
-                     Metronome::Models::ContractCreateParams::Commit::AccessSchedule::ScheduleItem
-                   }]
+                   -> {
+                     Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Commit::AccessSchedule::ScheduleItem]
+                   }
 
           # @!attribute credit_type_id
           #   Defaults to USD (cents) if not passed
@@ -608,9 +608,9 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::ScheduleItem>]
           optional :schedule_items,
-                   Metronome::ArrayOf[-> {
-                     Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::ScheduleItem
-                   }]
+                   -> {
+                     Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::ScheduleItem]
+                   }
 
           # @!parse
           #   # Required for "POSTPAID" commits: the true up invoice will be generated at this
@@ -634,9 +634,9 @@ module Metronome
           #
           # ```ruby
           # recurring_schedule => {
-          #   amount_distribution: Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::AmountDistribution,
+          #   amount_distribution: enum: Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::AmountDistribution,
           #   ending_before: Time,
-          #   frequency: Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::Frequency,
+          #   frequency: enum: Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::Frequency,
           #   starting_at: Time,
           #   amount: Float,
           #   **_
@@ -978,9 +978,9 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::ContractCreateParams::Credit::AccessSchedule::ScheduleItem>]
           required :schedule_items,
-                   Metronome::ArrayOf[-> {
-                     Metronome::Models::ContractCreateParams::Credit::AccessSchedule::ScheduleItem
-                   }]
+                   -> {
+                     Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Credit::AccessSchedule::ScheduleItem]
+                   }
 
           # @!attribute credit_type_id
           #   Defaults to USD (cents) if not passed
@@ -1138,9 +1138,9 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::ContractCreateParams::Discount::Schedule::ScheduleItem>]
           optional :schedule_items,
-                   Metronome::ArrayOf[-> {
-                     Metronome::Models::ContractCreateParams::Discount::Schedule::ScheduleItem
-                   }]
+                   -> {
+                     Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Discount::Schedule::ScheduleItem]
+                   }
 
           # @!parse
           #   # Must provide either schedule_items or recurring_schedule.
@@ -1161,9 +1161,9 @@ module Metronome
           #
           # ```ruby
           # recurring_schedule => {
-          #   amount_distribution: Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule::AmountDistribution,
+          #   amount_distribution: enum: Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule::AmountDistribution,
           #   ending_before: Time,
-          #   frequency: Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule::Frequency,
+          #   frequency: enum: Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule::Frequency,
           #   starting_at: Time,
           #   amount: Float,
           #   **_
@@ -1429,9 +1429,9 @@ module Metronome
         #
         #   @return [Array<Metronome::Models::ContractCreateParams::Override::OverrideSpecifier>]
         optional :override_specifiers,
-                 Metronome::ArrayOf[-> {
-                   Metronome::Models::ContractCreateParams::Override::OverrideSpecifier
-                 }]
+                 -> {
+                   Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Override::OverrideSpecifier]
+                 }
 
         # @!attribute overwrite_rate
         #   Required for OVERWRITE type.
@@ -1461,7 +1461,7 @@ module Metronome
         #   Required for TIERED type. Must have at least one tier.
         #
         #   @return [Array<Metronome::Models::ContractCreateParams::Override::Tier>]
-        optional :tiers, Metronome::ArrayOf[-> { Metronome::Models::ContractCreateParams::Override::Tier }]
+        optional :tiers, -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Override::Tier] }
 
         # @!attribute type
         #   Overwrites are prioritized over multipliers and tiered overrides.
@@ -1606,7 +1606,7 @@ module Metronome
         #
         # ```ruby
         # overwrite_rate => {
-        #   rate_type: Metronome::Models::ContractCreateParams::Override::OverwriteRate::RateType,
+        #   rate_type: enum: Metronome::Models::ContractCreateParams::Override::OverwriteRate::RateType,
         #   credit_type_id: String,
         #   custom_rate: -> { Metronome::HashOf[Metronome::Unknown] === _1 },
         #   is_prorated: Metronome::BooleanModel,
@@ -1654,7 +1654,7 @@ module Metronome
           #   Only set for TIERED rate_type.
           #
           #   @return [Array<Metronome::Models::Tier>]
-          optional :tiers, Metronome::ArrayOf[-> { Metronome::Models::Tier }]
+          optional :tiers, -> { Metronome::ArrayOf[Metronome::Models::Tier] }
 
           # @!parse
           #   # Required for OVERWRITE type.
@@ -1885,7 +1885,7 @@ module Metronome
       # reseller_royalty => {
       #   fraction: Float,
       #   netsuite_reseller_id: String,
-      #   reseller_type: Metronome::Models::ContractCreateParams::ResellerRoyalty::ResellerType,
+      #   reseller_type: enum: Metronome::Models::ContractCreateParams::ResellerRoyalty::ResellerType,
       #   starting_at: Time,
       #   applicable_product_ids: -> { Metronome::ArrayOf[String] === _1 },
       #   **_
@@ -2146,9 +2146,9 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::ScheduleItem>]
           optional :schedule_items,
-                   Metronome::ArrayOf[-> {
-                     Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::ScheduleItem
-                   }]
+                   -> {
+                     Metronome::ArrayOf[Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::ScheduleItem]
+                   }
 
           # @!parse
           #   # Must provide either schedule_items or recurring_schedule.
@@ -2169,9 +2169,9 @@ module Metronome
           #
           # ```ruby
           # recurring_schedule => {
-          #   amount_distribution: Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::AmountDistribution,
+          #   amount_distribution: enum: Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::AmountDistribution,
           #   ending_before: Time,
-          #   frequency: Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::Frequency,
+          #   frequency: enum: Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::Frequency,
           #   starting_at: Time,
           #   amount: Float,
           #   **_
@@ -2370,7 +2370,7 @@ module Metronome
       # ```ruby
       # transition => {
       #   from_contract_id: String,
-      #   type: Metronome::Models::ContractCreateParams::Transition::Type,
+      #   type: enum: Metronome::Models::ContractCreateParams::Transition::Type,
       #   future_invoice_behavior: Metronome::Models::ContractCreateParams::Transition::FutureInvoiceBehavior
       # }
       # ```
@@ -2426,7 +2426,7 @@ module Metronome
         #
         # ```ruby
         # future_invoice_behavior => {
-        #   trueup: Metronome::Models::ContractCreateParams::Transition::FutureInvoiceBehavior::Trueup
+        #   trueup: enum: Metronome::Models::ContractCreateParams::Transition::FutureInvoiceBehavior::Trueup
         # }
         # ```
         class FutureInvoiceBehavior < Metronome::BaseModel
@@ -2472,9 +2472,9 @@ module Metronome
       #
       # ```ruby
       # usage_statement_schedule => {
-      #   frequency: Metronome::Models::ContractCreateParams::UsageStatementSchedule::Frequency,
+      #   frequency: enum: Metronome::Models::ContractCreateParams::UsageStatementSchedule::Frequency,
       #   billing_anchor_date: Time,
-      #   day: Metronome::Models::ContractCreateParams::UsageStatementSchedule::Day,
+      #   day: enum: Metronome::Models::ContractCreateParams::UsageStatementSchedule::Day,
       #   invoice_generation_starting_at: Time
       # }
       # ```

@@ -14,7 +14,7 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate>]
           required :rates,
-                   Metronome::ArrayOf[-> { Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate }]
+                   -> { Metronome::ArrayOf[Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate] }
 
           # @!parse
           #   # @param rate_card_id [String]
@@ -30,7 +30,7 @@ module Metronome
           # rate => {
           #   entitled: Metronome::BooleanModel,
           #   product_id: String,
-          #   rate_type: Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate::RateType,
+          #   rate_type: enum: Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate::RateType,
           #   starting_at: Time,
           #   commit_rate: Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate::CommitRate,
           #   **_
@@ -115,7 +115,7 @@ module Metronome
             #   Only set for TIERED rate_type.
             #
             #   @return [Array<Metronome::Models::Tier>]
-            optional :tiers, Metronome::ArrayOf[-> { Metronome::Models::Tier }]
+            optional :tiers, -> { Metronome::ArrayOf[Metronome::Models::Tier] }
 
             # @!attribute use_list_prices
             #   Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed using list prices rather than the standard rates for this product on the contract.
@@ -214,7 +214,7 @@ module Metronome
             #
             # ```ruby
             # commit_rate => {
-            #   rate_type: Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::RateType,
+            #   rate_type: enum: Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::RateType,
             #   price: Float,
             #   tiers: -> { Metronome::ArrayOf[Metronome::Models::Tier] === _1 }
             # }
@@ -238,7 +238,7 @@ module Metronome
               #   Only set for TIERED rate_type.
               #
               #   @return [Array<Metronome::Models::Tier>]
-              optional :tiers, Metronome::ArrayOf[-> { Metronome::Models::Tier }]
+              optional :tiers, -> { Metronome::ArrayOf[Metronome::Models::Tier] }
 
               # @!parse
               #   # A distinct rate on the rate card. You can choose to use this rate rather than

@@ -6,7 +6,7 @@ module Metronome
     #
     # ```ruby
     # rollover_amount_max_amount => {
-    #   type: Metronome::Models::RolloverAmountMaxAmount::Type,
+    #   type: enum: Metronome::Models::RolloverAmountMaxAmount::Type,
     #   value: Float
     # }
     # ```

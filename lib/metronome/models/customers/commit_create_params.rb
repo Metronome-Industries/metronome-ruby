@@ -189,9 +189,9 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::Customers::CommitCreateParams::AccessSchedule::ScheduleItem>]
           required :schedule_items,
-                   Metronome::ArrayOf[-> {
-                     Metronome::Models::Customers::CommitCreateParams::AccessSchedule::ScheduleItem
-                   }]
+                   -> {
+                     Metronome::ArrayOf[Metronome::Models::Customers::CommitCreateParams::AccessSchedule::ScheduleItem]
+                   }
 
           # @!attribute credit_type_id
           #   Defaults to USD (cents) if not passed
@@ -296,9 +296,9 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem>]
           optional :schedule_items,
-                   Metronome::ArrayOf[-> {
-                     Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem
-                   }]
+                   -> {
+                     Metronome::ArrayOf[Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]
+                   }
 
           # @!parse
           #   # Required for "POSTPAID" commits: the true up invoice will be generated at this
@@ -322,9 +322,9 @@ module Metronome
           #
           # ```ruby
           # recurring_schedule => {
-          #   amount_distribution: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::AmountDistribution,
+          #   amount_distribution: enum: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::AmountDistribution,
           #   ending_before: Time,
-          #   frequency: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::Frequency,
+          #   frequency: enum: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::Frequency,
           #   starting_at: Time,
           #   amount: Float,
           #   **_

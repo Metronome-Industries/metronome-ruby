@@ -8,7 +8,7 @@ module Metronome
       # ```ruby
       # plan_list_price_adjustments_response => {
       #   charge_id: String,
-      #   charge_type: Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::ChargeType,
+      #   charge_type: enum: Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::ChargeType,
       #   prices: -> { Metronome::ArrayOf[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price] === _1 },
       #   start_period: Float,
       #   quantity: Float
@@ -30,9 +30,9 @@ module Metronome
         #
         #   @return [Array<Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price>]
         required :prices,
-                 Metronome::ArrayOf[-> {
-                   Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price
-                 }]
+                 -> {
+                   Metronome::ArrayOf[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price]
+                 }
 
         # @!attribute start_period
         #
@@ -85,7 +85,7 @@ module Metronome
         #
         # ```ruby
         # price => {
-        #   adjustment_type: Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType,
+        #   adjustment_type: enum: Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType,
         #   tier: Float,
         #   value: Float
         # }

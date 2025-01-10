@@ -34,7 +34,7 @@ module Metronome
         # @!attribute line_items
         #
         #   @return [Array<Metronome::Models::Customers::Invoice::LineItem>]
-        required :line_items, Metronome::ArrayOf[-> { Metronome::Models::Customers::Invoice::LineItem }]
+        required :line_items, -> { Metronome::ArrayOf[Metronome::Models::Customers::Invoice::LineItem] }
 
         # @!attribute status
         #
@@ -108,7 +108,7 @@ module Metronome
         #
         #   @return [Array<Metronome::Models::Customers::Invoice::InvoiceAdjustment>]
         optional :invoice_adjustments,
-                 Metronome::ArrayOf[-> { Metronome::Models::Customers::Invoice::InvoiceAdjustment }]
+                 -> { Metronome::ArrayOf[Metronome::Models::Customers::Invoice::InvoiceAdjustment] }
 
         # @!attribute issued_at
         #   When the invoice was issued (UTC)
@@ -395,7 +395,7 @@ module Metronome
           # @!attribute presentation_group_values
           #   if presentation groups are used, this will contain the values used to break down the line item
           #
-          #   @return [Hash{Symbol => String, nil}]
+          #   @return [Hash{Symbol => String}, nil]
           optional :presentation_group_values, Metronome::HashOf[String]
 
           # @!attribute pricing_group_values
@@ -462,7 +462,7 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::Customers::Invoice::LineItem::SubLineItem>]
           optional :sub_line_items,
-                   Metronome::ArrayOf[-> { Metronome::Models::Customers::Invoice::LineItem::SubLineItem }]
+                   -> { Metronome::ArrayOf[Metronome::Models::Customers::Invoice::LineItem::SubLineItem] }
 
           # @!attribute tier
           #
@@ -523,7 +523,7 @@ module Metronome
           #   #
           #   # @param postpaid_commit [Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit] only present for beta contract invoices
           #   #
-          #   # @param presentation_group_values [Hash{Symbol => String, nil}] if presentation groups are used, this will contain the values used to break down
+          #   # @param presentation_group_values [Hash{Symbol => String}, nil] if presentation groups are used, this will contain the values used to break down
           #   #   the line item
           #   #
           #   # @param pricing_group_values [Hash{Symbol => String}] if pricing groups are used, this will contain the values used to calculate the
@@ -604,7 +604,7 @@ module Metronome
           # ```ruby
           # applied_commit_or_credit => {
           #   id: String,
-          #   type: Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type
+          #   type: enum: Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type
           # }
           # ```
           class AppliedCommitOrCredit < Metronome::BaseModel
@@ -772,9 +772,9 @@ module Metronome
             #
             #   @return [Array<Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier>]
             optional :tiers,
-                     Metronome::ArrayOf[-> {
-                       Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier
-                     }]
+                     -> {
+                       Metronome::ArrayOf[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]
+                     }
 
             # @!parse
             #   # @param custom_fields [Hash{Symbol => String}]
@@ -997,8 +997,8 @@ module Metronome
           #
           # ```ruby
           # corrected_external_invoice => {
-          #   billing_provider_type: Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType,
-          #   external_status: Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus,
+          #   billing_provider_type: enum: Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType,
+          #   external_status: enum: Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus,
           #   invoice_id: String,
           #   issued_at_timestamp: Time
           # }
@@ -1111,8 +1111,8 @@ module Metronome
         #
         # ```ruby
         # external_invoice => {
-        #   billing_provider_type: Metronome::Models::Customers::Invoice::ExternalInvoice::BillingProviderType,
-        #   external_status: Metronome::Models::Customers::Invoice::ExternalInvoice::ExternalStatus,
+        #   billing_provider_type: enum: Metronome::Models::Customers::Invoice::ExternalInvoice::BillingProviderType,
+        #   external_status: enum: Metronome::Models::Customers::Invoice::ExternalInvoice::ExternalStatus,
         #   invoice_id: String,
         #   issued_at_timestamp: Time
         # }
@@ -1271,7 +1271,7 @@ module Metronome
         # reseller_royalty => {
         #   fraction: String,
         #   netsuite_reseller_id: String,
-        #   reseller_type: Metronome::Models::Customers::Invoice::ResellerRoyalty::ResellerType,
+        #   reseller_type: enum: Metronome::Models::Customers::Invoice::ResellerRoyalty::ResellerType,
         #   aws_options: Metronome::Models::Customers::Invoice::ResellerRoyalty::AwsOptions,
         #   gcp_options: Metronome::Models::Customers::Invoice::ResellerRoyalty::GcpOptions
         # }

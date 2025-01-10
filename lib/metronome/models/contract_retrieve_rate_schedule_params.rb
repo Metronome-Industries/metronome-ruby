@@ -38,7 +38,7 @@ module Metronome
       #
       #   @return [Array<Metronome::Models::ContractRetrieveRateScheduleParams::Selector>]
       optional :selectors,
-               Metronome::ArrayOf[-> { Metronome::Models::ContractRetrieveRateScheduleParams::Selector }]
+               -> { Metronome::ArrayOf[Metronome::Models::ContractRetrieveRateScheduleParams::Selector] }
 
       # @!parse
       #   # @param contract_id [String] ID of the contract to get the rate schedule for.

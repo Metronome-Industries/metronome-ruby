@@ -64,12 +64,12 @@ module Metronome
       # @!attribute override_specifiers
       #
       #   @return [Array<Metronome::Models::Override::OverrideSpecifier>]
-      optional :override_specifiers, Metronome::ArrayOf[-> { Metronome::Models::Override::OverrideSpecifier }]
+      optional :override_specifiers, -> { Metronome::ArrayOf[Metronome::Models::Override::OverrideSpecifier] }
 
       # @!attribute override_tiers
       #
       #   @return [Array<Metronome::Models::Override::OverrideTier>]
-      optional :override_tiers, Metronome::ArrayOf[-> { Metronome::Models::Override::OverrideTier }]
+      optional :override_tiers, -> { Metronome::ArrayOf[Metronome::Models::Override::OverrideTier] }
 
       # @!attribute overwrite_rate
       #
@@ -112,7 +112,7 @@ module Metronome
       #   Only set for TIERED rate_type.
       #
       #   @return [Array<Metronome::Models::Tier>]
-      optional :tiers, Metronome::ArrayOf[-> { Metronome::Models::Tier }]
+      optional :tiers, -> { Metronome::ArrayOf[Metronome::Models::Tier] }
 
       # @!attribute type
       #
@@ -219,7 +219,7 @@ module Metronome
 
         # @!attribute presentation_group_values
         #
-        #   @return [Hash{Symbol => String, nil}]
+        #   @return [Hash{Symbol => String}, nil]
         optional :presentation_group_values, Metronome::HashOf[String]
 
         # @!attribute pricing_group_values
@@ -239,7 +239,7 @@ module Metronome
 
         # @!parse
         #   # @param commit_ids [Array<String>]
-        #   # @param presentation_group_values [Hash{Symbol => String, nil}]
+        #   # @param presentation_group_values [Hash{Symbol => String}, nil]
         #   # @param pricing_group_values [Hash{Symbol => String}]
         #   # @param product_id [String]
         #   # @param product_tags [Array<String>]
@@ -290,7 +290,7 @@ module Metronome
       #
       # ```ruby
       # overwrite_rate => {
-      #   rate_type: Metronome::Models::Override::OverwriteRate::RateType,
+      #   rate_type: enum: Metronome::Models::Override::OverwriteRate::RateType,
       #   credit_type: Metronome::Models::CreditTypeData,
       #   custom_rate: -> { Metronome::HashOf[Metronome::Unknown] === _1 },
       #   is_prorated: Metronome::BooleanModel,
@@ -337,7 +337,7 @@ module Metronome
         #   Only set for TIERED rate_type.
         #
         #   @return [Array<Metronome::Models::Tier>]
-        optional :tiers, Metronome::ArrayOf[-> { Metronome::Models::Tier }]
+        optional :tiers, -> { Metronome::ArrayOf[Metronome::Models::Tier] }
 
         # @!parse
         #   # @param rate_type [String]

@@ -30,9 +30,9 @@ module Metronome
       #
       #   @return [Array<Metronome::Models::UsageListParams::BillableMetric>]
       optional :billable_metrics,
-               Metronome::ArrayOf[-> {
-                 Metronome::Models::UsageListParams::BillableMetric
-               }]
+               -> {
+                 Metronome::ArrayOf[Metronome::Models::UsageListParams::BillableMetric]
+               }
 
       # @!attribute customer_ids
       #   A list of Metronome customer IDs to fetch usage for. If absent, usage for all customers will be returned.

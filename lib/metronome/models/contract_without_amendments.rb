@@ -18,7 +18,7 @@ module Metronome
       # @!attribute commits
       #
       #   @return [Array<Metronome::Models::Commit>]
-      required :commits, Metronome::ArrayOf[-> { Metronome::Models::Commit }]
+      required :commits, -> { Metronome::ArrayOf[Metronome::Models::Commit] }
 
       # @!attribute created_at
       #
@@ -33,12 +33,12 @@ module Metronome
       # @!attribute overrides
       #
       #   @return [Array<Metronome::Models::Override>]
-      required :overrides, Metronome::ArrayOf[-> { Metronome::Models::Override }]
+      required :overrides, -> { Metronome::ArrayOf[Metronome::Models::Override] }
 
       # @!attribute scheduled_charges
       #
       #   @return [Array<Metronome::Models::ScheduledCharge>]
-      required :scheduled_charges, Metronome::ArrayOf[-> { Metronome::Models::ScheduledCharge }]
+      required :scheduled_charges, -> { Metronome::ArrayOf[Metronome::Models::ScheduledCharge] }
 
       # @!attribute starting_at
       #
@@ -49,9 +49,9 @@ module Metronome
       #
       #   @return [Array<Metronome::Models::ContractWithoutAmendments::Transition>]
       required :transitions,
-               Metronome::ArrayOf[-> {
-                 Metronome::Models::ContractWithoutAmendments::Transition
-               }]
+               -> {
+                 Metronome::ArrayOf[Metronome::Models::ContractWithoutAmendments::Transition]
+               }
 
       # @!attribute usage_statement_schedule
       #
@@ -62,13 +62,13 @@ module Metronome
       # @!attribute credits
       #
       #   @return [Array<Metronome::Models::Credit>]
-      optional :credits, Metronome::ArrayOf[-> { Metronome::Models::Credit }]
+      optional :credits, -> { Metronome::ArrayOf[Metronome::Models::Credit] }
 
       # @!attribute discounts
       #   This field's availability is dependent on your client's configuration.
       #
       #   @return [Array<Metronome::Models::Discount>]
-      optional :discounts, Metronome::ArrayOf[-> { Metronome::Models::Discount }]
+      optional :discounts, -> { Metronome::ArrayOf[Metronome::Models::Discount] }
 
       # @!attribute ending_before
       #
@@ -95,7 +95,7 @@ module Metronome
       #   This field's availability is dependent on your client's configuration.
       #
       #   @return [Array<Metronome::Models::ProService>]
-      optional :professional_services, Metronome::ArrayOf[-> { Metronome::Models::ProService }]
+      optional :professional_services, -> { Metronome::ArrayOf[Metronome::Models::ProService] }
 
       # @!attribute rate_card_id
       #
@@ -107,7 +107,7 @@ module Metronome
       #
       #   @return [Array<Metronome::Models::ContractWithoutAmendments::ResellerRoyalty>]
       optional :reseller_royalties,
-               Metronome::ArrayOf[-> { Metronome::Models::ContractWithoutAmendments::ResellerRoyalty }]
+               -> { Metronome::ArrayOf[Metronome::Models::ContractWithoutAmendments::ResellerRoyalty] }
 
       # @!attribute salesforce_opportunity_id
       #   This field's availability is dependent on your client's configuration.
@@ -201,7 +201,7 @@ module Metronome
       # transition => {
       #   from_contract_id: String,
       #   to_contract_id: String,
-      #   type: Metronome::Models::ContractWithoutAmendments::Transition::Type
+      #   type: enum: Metronome::Models::ContractWithoutAmendments::Transition::Type
       # }
       # ```
       class Transition < Metronome::BaseModel
@@ -252,7 +252,7 @@ module Metronome
       # ```ruby
       # usage_statement_schedule => {
       #   billing_anchor_date: Time,
-      #   frequency: Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule::Frequency
+      #   frequency: enum: Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule::Frequency
       # }
       # ```
       class UsageStatementSchedule < Metronome::BaseModel
@@ -304,7 +304,7 @@ module Metronome
       # reseller_royalty => {
       #   fraction: Float,
       #   netsuite_reseller_id: String,
-      #   reseller_type: Metronome::Models::ContractWithoutAmendments::ResellerRoyalty::ResellerType,
+      #   reseller_type: enum: Metronome::Models::ContractWithoutAmendments::ResellerRoyalty::ResellerType,
       #   starting_at: Time,
       #   applicable_product_ids: -> { Metronome::ArrayOf[String] === _1 },
       #   **_
@@ -461,7 +461,7 @@ module Metronome
         #
         #   @return [Array<Metronome::Models::ContractWithoutAmendments::UsageFilter::Update>]
         required :updates,
-                 Metronome::ArrayOf[-> { Metronome::Models::ContractWithoutAmendments::UsageFilter::Update }]
+                 -> { Metronome::ArrayOf[Metronome::Models::ContractWithoutAmendments::UsageFilter::Update] }
 
         # @!parse
         #   # @param current [Metronome::Models::BaseUsageFilter, nil]

@@ -8,7 +8,7 @@ module Metronome
     # commit => {
     #   id: String,
     #   product: Metronome::Models::Commit::Product,
-    #   type: Metronome::Models::Commit::Type,
+    #   type: enum: Metronome::Models::Commit::Type,
     #   access_schedule: Metronome::Models::ScheduleDuration,
     #   amount: Float,
     #   **_
@@ -94,7 +94,7 @@ module Metronome
       #   A list of ordered events that impact the balance of a commit. For example, an invoice deduction or a rollover.
       #
       #   @return [Array<Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry>]
-      optional :ledger, Metronome::ArrayOf[union: -> { Metronome::Models::Commit::Ledger }]
+      optional :ledger, -> { Metronome::ArrayOf[union: Metronome::Models::Commit::Ledger] }
 
       # @!attribute name
       #
@@ -386,7 +386,7 @@ module Metronome
         #   amount: Float,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type
+        #   type: enum: Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type
         # }
         # ```
         class PrepaidCommitSegmentStartLedgerEntry < Metronome::BaseModel
@@ -446,7 +446,7 @@ module Metronome
         #   invoice_id: String,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type
+        #   type: enum: Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type
         # }
         # ```
         class PrepaidCommitAutomatedInvoiceDeductionLedgerEntry < Metronome::BaseModel
@@ -512,7 +512,7 @@ module Metronome
         #   new_contract_id: String,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type
+        #   type: enum: Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type
         # }
         # ```
         class PrepaidCommitRolloverLedgerEntry < Metronome::BaseModel
@@ -577,7 +577,7 @@ module Metronome
         #   amount: Float,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type
+        #   type: enum: Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type
         # }
         # ```
         class PrepaidCommitExpirationLedgerEntry < Metronome::BaseModel
@@ -637,7 +637,7 @@ module Metronome
         #   invoice_id: String,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type
+        #   type: enum: Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type
         # }
         # ```
         class PrepaidCommitCanceledLedgerEntry < Metronome::BaseModel
@@ -703,7 +703,7 @@ module Metronome
         #   invoice_id: String,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type
+        #   type: enum: Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type
         # }
         # ```
         class PrepaidCommitCreditedLedgerEntry < Metronome::BaseModel
@@ -767,7 +767,7 @@ module Metronome
         # postpaid_commit_initial_balance_ledger_entry => {
         #   amount: Float,
         #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type
+        #   type: enum: Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type
         # }
         # ```
         class PostpaidCommitInitialBalanceLedgerEntry < Metronome::BaseModel
@@ -821,7 +821,7 @@ module Metronome
         #   invoice_id: String,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type
+        #   type: enum: Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type
         # }
         # ```
         class PostpaidCommitAutomatedInvoiceDeductionLedgerEntry < Metronome::BaseModel
@@ -887,7 +887,7 @@ module Metronome
         #   new_contract_id: String,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type
+        #   type: enum: Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type
         # }
         # ```
         class PostpaidCommitRolloverLedgerEntry < Metronome::BaseModel
@@ -952,7 +952,7 @@ module Metronome
         #   amount: Float,
         #   invoice_id: String,
         #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type
+        #   type: enum: Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type
         # }
         # ```
         class PostpaidCommitTrueupLedgerEntry < Metronome::BaseModel
@@ -1011,7 +1011,7 @@ module Metronome
         #   amount: Float,
         #   reason: String,
         #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry::Type
+        #   type: enum: Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry::Type
         # }
         # ```
         class PrepaidCommitManualLedgerEntry < Metronome::BaseModel
@@ -1067,7 +1067,7 @@ module Metronome
         #   amount: Float,
         #   reason: String,
         #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type
+        #   type: enum: Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type
         # }
         # ```
         class PostpaidCommitManualLedgerEntry < Metronome::BaseModel
@@ -1125,7 +1125,7 @@ module Metronome
         # postpaid_commit_expiration_ledger_entry => {
         #   amount: Float,
         #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type
+        #   type: enum: Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type
         # }
         # ```
         class PostpaidCommitExpirationLedgerEntry < Metronome::BaseModel

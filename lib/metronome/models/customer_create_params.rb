@@ -52,10 +52,10 @@ module Metronome
       # ```ruby
       # billing_config => {
       #   billing_provider_customer_id: String,
-      #   billing_provider_type: Metronome::Models::CustomerCreateParams::BillingConfig::BillingProviderType,
+      #   billing_provider_type: enum: Metronome::Models::CustomerCreateParams::BillingConfig::BillingProviderType,
       #   aws_product_code: String,
-      #   aws_region: Metronome::Models::CustomerCreateParams::BillingConfig::AwsRegion,
-      #   stripe_collection_method: Metronome::Models::CustomerCreateParams::BillingConfig::StripeCollectionMethod
+      #   aws_region: enum: Metronome::Models::CustomerCreateParams::BillingConfig::AwsRegion,
+      #   stripe_collection_method: enum: Metronome::Models::CustomerCreateParams::BillingConfig::StripeCollectionMethod
       # }
       # ```
       class BillingConfig < Metronome::BaseModel

@@ -37,14 +37,14 @@ module Metronome
         #
         #   @return [Array<Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment>]
         optional :overage_rate_adjustments,
-                 Metronome::ArrayOf[-> { Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment }]
+                 -> { Metronome::ArrayOf[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment] }
 
         # @!attribute price_adjustments
         #   A list of price adjustments can be applied on top of the pricing in the plans. See the [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments) for details.
         #
         #   @return [Array<Metronome::Models::Customers::PlanAddParams::PriceAdjustment>]
         optional :price_adjustments,
-                 Metronome::ArrayOf[-> { Metronome::Models::Customers::PlanAddParams::PriceAdjustment }]
+                 -> { Metronome::ArrayOf[Metronome::Models::Customers::PlanAddParams::PriceAdjustment] }
 
         # @!attribute trial_spec
         #   A custom trial can be set for the customer's plan. See the [trial configuration documentation](https://docs.metronome.com/provisioning/configure-trials/) for details.
@@ -136,7 +136,7 @@ module Metronome
         #
         # ```ruby
         # price_adjustment => {
-        #   adjustment_type: Metronome::Models::Customers::PlanAddParams::PriceAdjustment::AdjustmentType,
+        #   adjustment_type: enum: Metronome::Models::Customers::PlanAddParams::PriceAdjustment::AdjustmentType,
         #   charge_id: String,
         #   start_period: Float,
         #   quantity: Float,

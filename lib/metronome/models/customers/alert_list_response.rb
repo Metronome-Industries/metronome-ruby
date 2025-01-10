@@ -15,7 +15,7 @@ module Metronome
         # @!attribute data
         #
         #   @return [Array<Metronome::Models::Customers::CustomerAlert>]
-        required :data, Metronome::ArrayOf[-> { Metronome::Models::Customers::CustomerAlert }]
+        required :data, -> { Metronome::ArrayOf[Metronome::Models::Customers::CustomerAlert] }
 
         # @!attribute next_page
         #
