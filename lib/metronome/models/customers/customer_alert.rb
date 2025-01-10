@@ -8,7 +8,7 @@ module Metronome
       # ```ruby
       # customer_alert => {
       #   alert: Metronome::Models::Customers::CustomerAlert::Alert,
-      #   customer_status: Metronome::Models::Customers::CustomerAlert::CustomerStatus,
+      #   customer_status: enum: Metronome::Models::Customers::CustomerAlert::CustomerStatus,
       #   triggered_by: String
       # }
       # ```
@@ -48,9 +48,9 @@ module Metronome
         # alert => {
         #   id: String,
         #   name: String,
-        #   status: Metronome::Models::Customers::CustomerAlert::Alert::Status,
+        #   status: enum: Metronome::Models::Customers::CustomerAlert::Alert::Status,
         #   threshold: Float,
-        #   type: Metronome::Models::Customers::CustomerAlert::Alert::Type,
+        #   type: enum: Metronome::Models::Customers::CustomerAlert::Alert::Type,
         #   **_
         # }
         # ```
@@ -107,9 +107,9 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter>]
           optional :custom_field_filters,
-                   Metronome::ArrayOf[-> {
-                     Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter
-                   }]
+                   -> {
+                     Metronome::ArrayOf[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter]
+                   }
 
           # @!attribute group_key_filter
           #   Scopes alert evaluation to a specific presentation group key on individual line items. Only present for spend alerts.
@@ -248,7 +248,7 @@ module Metronome
           #
           # ```ruby
           # custom_field_filter => {
-          #   entity: Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter::Entity,
+          #   entity: enum: Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter::Entity,
           #   key: String,
           #   value: String
           # }

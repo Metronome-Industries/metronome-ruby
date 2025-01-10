@@ -6,7 +6,7 @@ module Metronome
       # @!attribute usage
       #
       #   @return [Array<Metronome::Models::UsageIngestParams::Usage>]
-      required :usage, Metronome::ArrayOf[-> { Metronome::Models::UsageIngestParams::Usage }]
+      required :usage, -> { Metronome::ArrayOf[Metronome::Models::UsageIngestParams::Usage] }
 
       # @!parse
       #   # @param usage [Array<Metronome::Models::UsageIngestParams::Usage>]

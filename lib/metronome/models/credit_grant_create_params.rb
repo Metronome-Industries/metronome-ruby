@@ -213,7 +213,7 @@ module Metronome
       # rollover_settings => {
       #   expires_at: Time,
       #   priority: Float,
-      #   rollover_amount: Metronome::Models::CreditGrantCreateParams::RolloverSettings::RolloverAmount
+      #   rollover_amount: union: Metronome::Models::CreditGrantCreateParams::RolloverSettings::RolloverAmount
       # }
       # ```
       class RolloverSettings < Metronome::BaseModel

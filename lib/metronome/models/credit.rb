@@ -8,7 +8,7 @@ module Metronome
     # credit => {
     #   id: String,
     #   product: Metronome::Models::Credit::Product,
-    #   type: Metronome::Models::Credit::Type,
+    #   type: enum: Metronome::Models::Credit::Type,
     #   access_schedule: Metronome::Models::ScheduleDuration,
     #   applicable_contract_ids: -> { Metronome::ArrayOf[String] === _1 },
     #   **_
@@ -76,7 +76,7 @@ module Metronome
       #   A list of ordered events that impact the balance of a credit. For example, an invoice deduction or an expiration.
       #
       #   @return [Array<Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry, Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry, Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry, Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry, Metronome::Models::Credit::Ledger::CreditManualLedgerEntry>]
-      optional :ledger, Metronome::ArrayOf[union: -> { Metronome::Models::Credit::Ledger }]
+      optional :ledger, -> { Metronome::ArrayOf[union: Metronome::Models::Credit::Ledger] }
 
       # @!attribute name
       #
@@ -288,7 +288,7 @@ module Metronome
         #   amount: Float,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry::Type
+        #   type: enum: Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry::Type
         # }
         # ```
         class CreditSegmentStartLedgerEntry < Metronome::BaseModel
@@ -345,7 +345,7 @@ module Metronome
         #   invoice_id: String,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type
+        #   type: enum: Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type
         # }
         # ```
         class CreditAutomatedInvoiceDeductionLedgerEntry < Metronome::BaseModel
@@ -410,7 +410,7 @@ module Metronome
         #   amount: Float,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry::Type
+        #   type: enum: Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry::Type
         # }
         # ```
         class CreditExpirationLedgerEntry < Metronome::BaseModel
@@ -467,7 +467,7 @@ module Metronome
         #   invoice_id: String,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry::Type
+        #   type: enum: Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry::Type
         # }
         # ```
         class CreditCanceledLedgerEntry < Metronome::BaseModel
@@ -530,7 +530,7 @@ module Metronome
         #   invoice_id: String,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry::Type
+        #   type: enum: Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry::Type
         # }
         # ```
         class CreditCreditedLedgerEntry < Metronome::BaseModel
@@ -592,7 +592,7 @@ module Metronome
         #   amount: Float,
         #   reason: String,
         #   timestamp: Time,
-        #   type: Metronome::Models::Credit::Ledger::CreditManualLedgerEntry::Type
+        #   type: enum: Metronome::Models::Credit::Ledger::CreditManualLedgerEntry::Type
         # }
         # ```
         class CreditManualLedgerEntry < Metronome::BaseModel

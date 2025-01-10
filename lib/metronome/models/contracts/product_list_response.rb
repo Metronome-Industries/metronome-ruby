@@ -10,7 +10,7 @@ module Metronome
       #   id: String,
       #   current: Metronome::Models::Contracts::ProductListItemState,
       #   initial: Metronome::Models::Contracts::ProductListItemState,
-      #   type: Metronome::Models::Contracts::ProductListResponse::Type,
+      #   type: enum: Metronome::Models::Contracts::ProductListResponse::Type,
       #   updates: -> { Metronome::ArrayOf[Metronome::Models::Contracts::ProductListResponse::Update] === _1 },
       #   **_
       # }
@@ -40,9 +40,9 @@ module Metronome
         #
         #   @return [Array<Metronome::Models::Contracts::ProductListResponse::Update>]
         required :updates,
-                 Metronome::ArrayOf[-> {
-                   Metronome::Models::Contracts::ProductListResponse::Update
-                 }]
+                 -> {
+                   Metronome::ArrayOf[Metronome::Models::Contracts::ProductListResponse::Update]
+                 }
 
         # @!attribute archived_at
         #

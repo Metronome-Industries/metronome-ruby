@@ -7,7 +7,7 @@ module Metronome
       #
       #   @return [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice>]
       required :invoices,
-               Metronome::ArrayOf[-> { Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice }]
+               -> { Metronome::ArrayOf[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice] }
 
       # @!attribute preview
       #
@@ -69,9 +69,9 @@ module Metronome
         #
         #   @return [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem>]
         required :usage_line_items,
-                 Metronome::ArrayOf[-> {
-                   Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem
-                 }]
+                 -> {
+                   Metronome::ArrayOf[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem]
+                 }
 
         # @!attribute billable_status
         #   This field's availability is dependent on your client's configuration.
@@ -181,9 +181,9 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity>]
           optional :subtotals_with_quantity,
-                   Metronome::ArrayOf[-> {
-                     Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity
-                   }]
+                   -> {
+                     Metronome::ArrayOf[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
+                   }
 
           # @!parse
           #   # @param exclusive_end_date [String]

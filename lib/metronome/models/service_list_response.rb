@@ -13,7 +13,7 @@ module Metronome
       # @!attribute services
       #
       #   @return [Array<Metronome::Models::ServiceListResponse::Service>]
-      required :services, Metronome::ArrayOf[-> { Metronome::Models::ServiceListResponse::Service }]
+      required :services, -> { Metronome::ArrayOf[Metronome::Models::ServiceListResponse::Service] }
 
       # @!parse
       #   # @param services [Array<Metronome::Models::ServiceListResponse::Service>]
@@ -28,7 +28,7 @@ module Metronome
       # service => {
       #   ips: -> { Metronome::ArrayOf[String] === _1 },
       #   name: String,
-      #   usage: Metronome::Models::ServiceListResponse::Service::Usage
+      #   usage: enum: Metronome::Models::ServiceListResponse::Service::Usage
       # }
       # ```
       class Service < Metronome::BaseModel

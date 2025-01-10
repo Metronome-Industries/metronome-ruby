@@ -89,7 +89,7 @@ module Metronome
       #   A list of filters to match events to this billable metric. Each filter defines a rule on an event property. All rules must pass for the event to match the billable metric.
       #
       #   @return [Array<Metronome::Models::PropertyFilter>]
-      optional :property_filters, Metronome::ArrayOf[-> { Metronome::Models::PropertyFilter }]
+      optional :property_filters, -> { Metronome::ArrayOf[Metronome::Models::PropertyFilter] }
 
       # @!attribute sql
       #   The SQL query associated with the billable metric

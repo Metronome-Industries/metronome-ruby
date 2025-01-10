@@ -112,7 +112,7 @@ module Metronome
       #
       # ```ruby
       # current_billable_status => {
-      #   value: Metronome::Models::CustomerDetail::CurrentBillableStatus::Value,
+      #   value: enum: Metronome::Models::CustomerDetail::CurrentBillableStatus::Value,
       #   effective_at: Time
       # }
       # ```

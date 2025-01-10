@@ -14,7 +14,7 @@ module Metronome
       # @!attribute data
       #
       #   @return [Array<Metronome::Models::UsageListResponse::Data>]
-      required :data, Metronome::ArrayOf[-> { Metronome::Models::UsageListResponse::Data }]
+      required :data, -> { Metronome::ArrayOf[Metronome::Models::UsageListResponse::Data] }
 
       # @!attribute next_page
       #
@@ -75,7 +75,7 @@ module Metronome
         # @!attribute groups
         #   Values will be either a number or null. Null indicates that there were no matches for the group_by value.
         #
-        #   @return [Hash{Symbol => Float, nil}]
+        #   @return [Hash{Symbol => Float}, nil]
         optional :groups, Metronome::HashOf[Float]
 
         # @!parse
@@ -91,7 +91,7 @@ module Metronome
         #   #
         #   # @param value [Float, nil]
         #   #
-        #   # @param groups [Hash{Symbol => Float, nil}] Values will be either a number or null. Null indicates that there were no
+        #   # @param groups [Hash{Symbol => Float}, nil] Values will be either a number or null. Null indicates that there were no
         #   #   matches for the group_by value.
         #   #
         #   def initialize(

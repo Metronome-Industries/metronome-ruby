@@ -6,7 +6,7 @@ module Metronome
     #
     # ```ruby
     # rate => {
-    #   rate_type: Metronome::Models::Rate::RateType,
+    #   rate_type: enum: Metronome::Models::Rate::RateType,
     #   credit_type: Metronome::Models::CreditTypeData,
     #   custom_rate: -> { Metronome::HashOf[Metronome::Unknown] === _1 },
     #   is_prorated: Metronome::BooleanModel,
@@ -59,7 +59,7 @@ module Metronome
       #   Only set for TIERED rate_type.
       #
       #   @return [Array<Metronome::Models::Tier>]
-      optional :tiers, Metronome::ArrayOf[-> { Metronome::Models::Tier }]
+      optional :tiers, -> { Metronome::ArrayOf[Metronome::Models::Tier] }
 
       # @!attribute use_list_prices
       #   Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed using list prices rather than the standard rates for this product on the contract.

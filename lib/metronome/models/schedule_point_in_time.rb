@@ -20,9 +20,9 @@ module Metronome
       #
       #   @return [Array<Metronome::Models::SchedulePointInTime::ScheduleItem>]
       optional :schedule_items,
-               Metronome::ArrayOf[-> {
-                 Metronome::Models::SchedulePointInTime::ScheduleItem
-               }]
+               -> {
+                 Metronome::ArrayOf[Metronome::Models::SchedulePointInTime::ScheduleItem]
+               }
 
       # @!parse
       #   # @param credit_type [Metronome::Models::CreditTypeData]

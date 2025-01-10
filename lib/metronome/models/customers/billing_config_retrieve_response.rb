@@ -29,7 +29,7 @@ module Metronome
         # data => {
         #   aws_expiration_date: Time,
         #   aws_product_code: String,
-        #   aws_region: Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::AwsRegion,
+        #   aws_region: enum: Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::AwsRegion,
         #   azure_expiration_date: Time,
         #   azure_plan_id: String,
         #   **_

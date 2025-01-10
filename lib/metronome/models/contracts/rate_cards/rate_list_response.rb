@@ -112,7 +112,7 @@ module Metronome
           #
           # ```ruby
           # commit_rate => {
-          #   rate_type: Metronome::Models::Contracts::RateCards::RateListResponse::CommitRate::RateType,
+          #   rate_type: enum: Metronome::Models::Contracts::RateCards::RateListResponse::CommitRate::RateType,
           #   price: Float,
           #   tiers: -> { Metronome::ArrayOf[Metronome::Models::Tier] === _1 }
           # }
@@ -136,7 +136,7 @@ module Metronome
             #   Only set for TIERED rate_type.
             #
             #   @return [Array<Metronome::Models::Tier>]
-            optional :tiers, Metronome::ArrayOf[-> { Metronome::Models::Tier }]
+            optional :tiers, -> { Metronome::ArrayOf[Metronome::Models::Tier] }
 
             # @!parse
             #   # A distinct rate on the rate card. You can choose to use this rate rather than

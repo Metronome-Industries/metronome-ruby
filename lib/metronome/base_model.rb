@@ -559,8 +559,12 @@ module Metronome
         case [enum, union, item_type]
         in [Proc, nil, nil]
           enum
+        in [Class | Metronome::Converter, nil, nil]
+          -> { enum }
         in [nil, Proc, nil]
           union
+        in [nil, Class | Metronome::Converter, nil]
+          -> { union }
         in [nil, nil, Proc]
           item_type
         in [nil, nil, Class | Metronome::Converter]
@@ -688,8 +692,12 @@ module Metronome
         case [enum, union, item_type]
         in [Proc, nil, nil]
           enum
+        in [Class | Metronome::Converter, nil, nil]
+          -> { enum }
         in [nil, Proc, nil]
           union
+        in [nil, Class | Metronome::Converter, nil]
+          -> { union }
         in [nil, nil, Proc]
           item_type
         in [nil, nil, Class | Metronome::Converter]

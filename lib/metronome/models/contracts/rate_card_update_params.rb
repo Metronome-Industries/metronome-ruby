@@ -15,9 +15,9 @@ module Metronome
         #
         #   @return [Array<Metronome::Models::Contracts::RateCardUpdateParams::Alias>]
         optional :aliases,
-                 Metronome::ArrayOf[-> {
-                   Metronome::Models::Contracts::RateCardUpdateParams::Alias
-                 }]
+                 -> {
+                   Metronome::ArrayOf[Metronome::Models::Contracts::RateCardUpdateParams::Alias]
+                 }
 
         # @!attribute description
         #

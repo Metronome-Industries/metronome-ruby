@@ -13,7 +13,7 @@ module Metronome
       # @!attribute data
       #
       #   @return [Array<Metronome::Models::Customers::Invoice>]
-      required :data, Metronome::ArrayOf[-> { Metronome::Models::Customers::Invoice }]
+      required :data, -> { Metronome::ArrayOf[Metronome::Models::Customers::Invoice] }
 
       # @!parse
       #   # @param data [Array<Metronome::Models::Customers::Invoice>]

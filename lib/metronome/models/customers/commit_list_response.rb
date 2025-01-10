@@ -15,7 +15,7 @@ module Metronome
         # @!attribute data
         #
         #   @return [Array<Metronome::Models::Commit>]
-        required :data, Metronome::ArrayOf[-> { Metronome::Models::Commit }]
+        required :data, -> { Metronome::ArrayOf[Metronome::Models::Commit] }
 
         # @!attribute next_page
         #

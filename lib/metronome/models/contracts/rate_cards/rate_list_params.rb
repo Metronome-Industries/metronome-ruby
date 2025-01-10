@@ -34,9 +34,9 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::Contracts::RateCards::RateListParams::Selector>]
           optional :selectors,
-                   Metronome::ArrayOf[-> {
-                     Metronome::Models::Contracts::RateCards::RateListParams::Selector
-                   }]
+                   -> {
+                     Metronome::ArrayOf[Metronome::Models::Contracts::RateCards::RateListParams::Selector]
+                   }
 
           # @!parse
           #   # @param at [String] inclusive starting point for the rates schedule

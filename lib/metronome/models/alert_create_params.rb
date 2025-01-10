@@ -43,7 +43,7 @@ module Metronome
       #
       #   @return [Array<Metronome::Models::AlertCreateParams::CustomFieldFilter>]
       optional :custom_field_filters,
-               Metronome::ArrayOf[-> { Metronome::Models::AlertCreateParams::CustomFieldFilter }]
+               -> { Metronome::ArrayOf[Metronome::Models::AlertCreateParams::CustomFieldFilter] }
 
       # @!attribute customer_id
       #   If provided, will create this alert for this specific customer. To create an alert for all customers, do not specify `customer_id` or `plan_id`.
@@ -186,7 +186,7 @@ module Metronome
       #
       # ```ruby
       # custom_field_filter => {
-      #   entity: Metronome::Models::AlertCreateParams::CustomFieldFilter::Entity,
+      #   entity: enum: Metronome::Models::AlertCreateParams::CustomFieldFilter::Entity,
       #   key: String,
       #   value: String
       # }

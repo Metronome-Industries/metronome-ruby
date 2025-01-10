@@ -13,7 +13,7 @@ module Metronome
       # @!attribute data
       #
       #   @return [Array<Metronome::Models::ContractListResponse::Data>]
-      required :data, Metronome::ArrayOf[-> { Metronome::Models::ContractListResponse::Data }]
+      required :data, -> { Metronome::ArrayOf[Metronome::Models::ContractListResponse::Data] }
 
       # @!parse
       #   # @param data [Array<Metronome::Models::ContractListResponse::Data>]
@@ -44,9 +44,9 @@ module Metronome
         #
         #   @return [Array<Metronome::Models::ContractListResponse::Data::Amendment>]
         required :amendments,
-                 Metronome::ArrayOf[-> {
-                   Metronome::Models::ContractListResponse::Data::Amendment
-                 }]
+                 -> {
+                   Metronome::ArrayOf[Metronome::Models::ContractListResponse::Data::Amendment]
+                 }
 
         # @!attribute current
         #
@@ -147,7 +147,7 @@ module Metronome
           # @!attribute commits
           #
           #   @return [Array<Metronome::Models::Commit>]
-          required :commits, Metronome::ArrayOf[-> { Metronome::Models::Commit }]
+          required :commits, -> { Metronome::ArrayOf[Metronome::Models::Commit] }
 
           # @!attribute created_at
           #
@@ -162,12 +162,12 @@ module Metronome
           # @!attribute overrides
           #
           #   @return [Array<Metronome::Models::Override>]
-          required :overrides, Metronome::ArrayOf[-> { Metronome::Models::Override }]
+          required :overrides, -> { Metronome::ArrayOf[Metronome::Models::Override] }
 
           # @!attribute scheduled_charges
           #
           #   @return [Array<Metronome::Models::ScheduledCharge>]
-          required :scheduled_charges, Metronome::ArrayOf[-> { Metronome::Models::ScheduledCharge }]
+          required :scheduled_charges, -> { Metronome::ArrayOf[Metronome::Models::ScheduledCharge] }
 
           # @!attribute starting_at
           #
@@ -177,13 +177,13 @@ module Metronome
           # @!attribute credits
           #
           #   @return [Array<Metronome::Models::Credit>]
-          optional :credits, Metronome::ArrayOf[-> { Metronome::Models::Credit }]
+          optional :credits, -> { Metronome::ArrayOf[Metronome::Models::Credit] }
 
           # @!attribute discounts
           #   This field's availability is dependent on your client's configuration.
           #
           #   @return [Array<Metronome::Models::Discount>]
-          optional :discounts, Metronome::ArrayOf[-> { Metronome::Models::Discount }]
+          optional :discounts, -> { Metronome::ArrayOf[Metronome::Models::Discount] }
 
           # @!attribute netsuite_sales_order_id
           #   This field's availability is dependent on your client's configuration.
@@ -195,16 +195,16 @@ module Metronome
           #   This field's availability is dependent on your client's configuration.
           #
           #   @return [Array<Metronome::Models::ProService>]
-          optional :professional_services, Metronome::ArrayOf[-> { Metronome::Models::ProService }]
+          optional :professional_services, -> { Metronome::ArrayOf[Metronome::Models::ProService] }
 
           # @!attribute reseller_royalties
           #   This field's availability is dependent on your client's configuration.
           #
           #   @return [Array<Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty>]
           optional :reseller_royalties,
-                   Metronome::ArrayOf[-> {
-                     Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty
-                   }]
+                   -> {
+                     Metronome::ArrayOf[Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty]
+                   }
 
           # @!attribute salesforce_opportunity_id
           #   This field's availability is dependent on your client's configuration.
@@ -264,7 +264,7 @@ module Metronome
           #
           # ```ruby
           # reseller_royalty => {
-          #   reseller_type: Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty::ResellerType,
+          #   reseller_type: enum: Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty::ResellerType,
           #   aws_account_number: String,
           #   aws_offer_id: String,
           #   aws_payer_reference_id: String,
@@ -392,8 +392,8 @@ module Metronome
         #
         # ```ruby
         # customer_billing_provider_configuration => {
-        #   billing_provider: Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration::BillingProvider,
-        #   delivery_method: Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod
+        #   billing_provider: enum: Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration::BillingProvider,
+        #   delivery_method: enum: Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod
         # }
         # ```
         class CustomerBillingProviderConfiguration < Metronome::BaseModel

@@ -8,7 +8,7 @@ module Metronome
       # ```ruby
       # quantity_rounding => {
       #   decimal_places: Float,
-      #   rounding_method: Metronome::Models::Contracts::QuantityRounding::RoundingMethod
+      #   rounding_method: enum: Metronome::Models::Contracts::QuantityRounding::RoundingMethod
       # }
       # ```
       class QuantityRounding < Metronome::BaseModel

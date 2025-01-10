@@ -14,7 +14,7 @@ module Metronome
       # @!attribute data
       #
       #   @return [Array<Metronome::Models::CustomFieldListKeysResponse::Data>]
-      required :data, Metronome::ArrayOf[-> { Metronome::Models::CustomFieldListKeysResponse::Data }]
+      required :data, -> { Metronome::ArrayOf[Metronome::Models::CustomFieldListKeysResponse::Data] }
 
       # @!attribute next_page
       #
@@ -34,7 +34,7 @@ module Metronome
       # ```ruby
       # data => {
       #   enforce_uniqueness: Metronome::BooleanModel,
-      #   entity: Metronome::Models::CustomFieldListKeysResponse::Data::Entity,
+      #   entity: enum: Metronome::Models::CustomFieldListKeysResponse::Data::Entity,
       #   key: String
       # }
       # ```
