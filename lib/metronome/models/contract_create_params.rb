@@ -113,6 +113,13 @@ module Metronome
       optional :scheduled_charges,
                -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::ScheduledCharge] }
 
+      # @!attribute scheduled_charges_on_usage_invoices
+      #   Determines which scheduled and commit charges to consolidate onto the Contract's usage invoice. The charge's `timestamp` must match the usage invoice's `ending_before` date for consolidation to occur. This field cannot be modified after a Contract has been created. If this field is omitted, charges will appear on a separate invoice from usage charges.
+      #
+      #   @return [Symbol, Metronome::Models::ContractCreateParams::ScheduledChargesOnUsageInvoices]
+      optional :scheduled_charges_on_usage_invoices,
+               enum: -> { Metronome::Models::ContractCreateParams::ScheduledChargesOnUsageInvoices }
+
       # @!attribute total_contract_value
       #   This field's availability is dependent on your client's configuration.
       #
@@ -186,6 +193,12 @@ module Metronome
       #   #
       #   # @param scheduled_charges [Array<Metronome::Models::ContractCreateParams::ScheduledCharge>]
       #   #
+      #   # @param scheduled_charges_on_usage_invoices [String] Determines which scheduled and commit charges to consolidate onto the Contract's
+      #   #   usage invoice. The charge's `timestamp` must match the usage invoice's
+      #   #   `ending_before` date for consolidation to occur. This field cannot be modified
+      #   #   after a Contract has been created. If this field is omitted, charges will appear
+      #   #   on a separate invoice from usage charges.
+      #   #
       #   # @param total_contract_value [Float] This field's availability is dependent on your client's configuration.
       #   #
       #   # @param transition [Metronome::Models::ContractCreateParams::Transition]
@@ -218,6 +231,7 @@ module Metronome
       #     reseller_royalties: nil,
       #     salesforce_opportunity_id: nil,
       #     scheduled_charges: nil,
+      #     scheduled_charges_on_usage_invoices: nil,
       #     total_contract_value: nil,
       #     transition: nil,
       #     uniqueness_key: nil,
@@ -2363,6 +2377,22 @@ module Metronome
             # def initialize: (Hash | Metronome::BaseModel) -> void
           end
         end
+      end
+
+      # Determines which scheduled and commit charges to consolidate onto the Contract's usage invoice. The charge's `timestamp` must match the usage invoice's `ending_before` date for consolidation to occur. This field cannot be modified after a Contract has been created. If this field is omitted, charges will appear on a separate invoice from usage charges.
+      #
+      # @example
+      #
+      # ```ruby
+      # case scheduled_charges_on_usage_invoices
+      # in :ALL
+      #   # ...
+      # end
+      # ```
+      class ScheduledChargesOnUsageInvoices < Metronome::Enum
+        ALL = :ALL
+
+        finalize!
       end
 
       # @example
