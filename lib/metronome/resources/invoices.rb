@@ -3,12 +3,6 @@
 module Metronome
   module Resources
     class Invoices
-      # @param client [Metronome::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Regenerate a voided contract invoice
       #
       # @param params [Metronome::Models::InvoiceRegenerateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -49,6 +43,12 @@ module Metronome
           model: Metronome::Models::InvoiceVoidResponse
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Metronome::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

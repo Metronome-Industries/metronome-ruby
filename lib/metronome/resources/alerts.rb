@@ -3,12 +3,6 @@
 module Metronome
   module Resources
     class Alerts
-      # @param client [Metronome::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Create a new alert
       #
       # @param params [Metronome::Models::AlertCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -89,6 +83,12 @@ module Metronome
           model: Metronome::Models::AlertArchiveResponse
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Metronome::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

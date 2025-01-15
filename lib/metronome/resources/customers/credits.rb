@@ -4,12 +4,6 @@ module Metronome
   module Resources
     class Customers
       class Credits
-        # @param client [Metronome::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Create a new credit at the customer level.
         #
         # @param params [Metronome::Models::Customers::CreditCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -129,6 +123,12 @@ module Metronome
             model: Metronome::Models::Customers::CreditUpdateEndDateResponse
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Metronome::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

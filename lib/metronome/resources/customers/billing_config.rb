@@ -4,12 +4,6 @@ module Metronome
   module Resources
     class Customers
       class BillingConfig
-        # @param client [Metronome::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Set the billing configuration for a given customer.
         #
         # @param params [Metronome::Models::Customers::BillingConfigCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -103,6 +97,12 @@ module Metronome
             model: NilClass
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Metronome::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

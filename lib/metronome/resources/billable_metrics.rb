@@ -3,12 +3,6 @@
 module Metronome
   module Resources
     class BillableMetrics
-      # @param client [Metronome::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Creates a new Billable Metric.
       #
       # @param params [Metronome::Models::BillableMetricCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -119,6 +113,12 @@ module Metronome
           model: Metronome::Models::BillableMetricArchiveResponse
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Metronome::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

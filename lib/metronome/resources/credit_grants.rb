@@ -3,12 +3,6 @@
 module Metronome
   module Resources
     class CreditGrants
-      # @param client [Metronome::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Create a new credit grant
       #
       # @param params [Metronome::Models::CreditGrantCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -217,6 +211,12 @@ module Metronome
           model: Metronome::Models::CreditGrantVoidResponse
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Metronome::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

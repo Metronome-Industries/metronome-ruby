@@ -3,12 +3,6 @@
 module Metronome
   module Resources
     class Dashboards
-      # @param client [Metronome::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Retrieve an embeddable dashboard url for a customer. The dashboard can be
       #   embedded using an iframe in a website. This will show information such as usage
       #   data and customer invoices.
@@ -38,6 +32,12 @@ module Metronome
           model: Metronome::Models::DashboardGetEmbeddableURLResponse
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Metronome::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end
