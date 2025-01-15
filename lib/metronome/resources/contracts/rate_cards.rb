@@ -13,15 +13,6 @@ module Metronome
         # @return [Metronome::Resources::Contracts::RateCards::NamedSchedules]
         attr_reader :named_schedules
 
-        # @param client [Metronome::Client]
-        #
-        def initialize(client:)
-          @client = client
-          @product_orders = Metronome::Resources::Contracts::RateCards::ProductOrders.new(client: client)
-          @rates = Metronome::Resources::Contracts::RateCards::Rates.new(client: client)
-          @named_schedules = Metronome::Resources::Contracts::RateCards::NamedSchedules.new(client: client)
-        end
-
         # Create a new rate card
         #
         # @param params [Metronome::Models::Contracts::RateCardCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -170,6 +161,15 @@ module Metronome
             model: Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Metronome::Client]
+        #
+        def initialize(client:)
+          @client = client
+          @product_orders = Metronome::Resources::Contracts::RateCards::ProductOrders.new(client: client)
+          @rates = Metronome::Resources::Contracts::RateCards::Rates.new(client: client)
+          @named_schedules = Metronome::Resources::Contracts::RateCards::NamedSchedules.new(client: client)
         end
       end
     end

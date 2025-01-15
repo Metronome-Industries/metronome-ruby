@@ -4,12 +4,6 @@ module Metronome
   module Resources
     class Customers
       class Invoices
-        # @param client [Metronome::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Fetch a specific invoice for a given customer.
         #
         # @param params [Metronome::Models::Customers::InvoiceRetrieveParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -176,6 +170,12 @@ module Metronome
             model: Metronome::Models::Customers::InvoiceListBreakdownsResponse
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Metronome::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

@@ -3,12 +3,6 @@
 module Metronome
   module Resources
     class Plans
-      # @param client [Metronome::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # List all available plans.
       #
       # @param params [Metronome::Models::PlanListParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -123,6 +117,12 @@ module Metronome
           model: Metronome::Models::PlanListCustomersResponse
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Metronome::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

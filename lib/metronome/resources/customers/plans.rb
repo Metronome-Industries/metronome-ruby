@@ -4,12 +4,6 @@ module Metronome
   module Resources
     class Customers
       class Plans
-        # @param client [Metronome::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # List the given customer's plans in reverse-chronological order.
         #
         # @param params [Metronome::Models::Customers::PlanListParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -163,6 +157,12 @@ module Metronome
             model: Metronome::Models::Customers::PlanListPriceAdjustmentsResponse
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Metronome::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

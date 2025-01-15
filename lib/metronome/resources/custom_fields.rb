@@ -3,12 +3,6 @@
 module Metronome
   module Resources
     class CustomFields
-      # @param client [Metronome::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Add a key to the allow list for a given entity. There is a 100 character limit
       #   on custom field keys.
       #
@@ -137,6 +131,12 @@ module Metronome
           model: NilClass
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Metronome::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

@@ -4,12 +4,6 @@ module Metronome
   module Resources
     class Contracts
       class Products
-        # @param client [Metronome::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Create a new product
         #
         # @param params [Metronome::Models::Contracts::ProductCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -213,6 +207,12 @@ module Metronome
             model: Metronome::Models::Contracts::ProductArchiveResponse
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Metronome::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

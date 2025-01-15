@@ -4,12 +4,6 @@ module Metronome
   module Resources
     class Contracts
       class NamedSchedules
-        # @param client [Metronome::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Get a named schedule for the given rate card. This endpoint's availability is
         #   dependent on your client's configuration.
         #
@@ -66,6 +60,12 @@ module Metronome
             model: NilClass
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Metronome::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

@@ -3,12 +3,6 @@
 module Metronome
   module Resources
     class AuditLogs
-      # @param client [Metronome::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Retrieves a range of audit logs. If no further audit logs are currently
       #   available, the data array will be empty. As new audit logs are created,
       #   subsequent requests using the same next_page value will be in the returned data
@@ -47,6 +41,12 @@ module Metronome
           model: Metronome::Models::AuditLogListResponse
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Metronome::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

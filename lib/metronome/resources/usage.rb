@@ -3,12 +3,6 @@
 module Metronome
   module Resources
     class Usage
-      # @param client [Metronome::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Fetch aggregated usage data for multiple customers and billable-metrics, broken
       #   into intervals of the specified length.
       #
@@ -117,6 +111,12 @@ module Metronome
           model: Metronome::Models::UsageListWithGroupsResponse
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Metronome::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

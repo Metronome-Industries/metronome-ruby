@@ -5,12 +5,6 @@ module Metronome
     class Contracts
       class RateCards
         class Rates
-          # @param client [Metronome::Client]
-          #
-          def initialize(client:)
-            @client = client
-          end
-
           # Get all rates for a rate card at a point in time
           #
           # @param params [Metronome::Models::Contracts::RateCards::RateListParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -125,6 +119,12 @@ module Metronome
               model: Metronome::Models::Contracts::RateCards::RateAddManyResponse
             }
             @client.request(req, opts)
+          end
+
+          # @param client [Metronome::Client]
+          #
+          def initialize(client:)
+            @client = client
           end
         end
       end
