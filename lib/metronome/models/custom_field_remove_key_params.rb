@@ -50,6 +50,7 @@ module Metronome
         CREDIT_GRANT = :credit_grant
         CUSTOMER_PLAN = :customer_plan
         CUSTOMER = :customer
+        DISCOUNT = :discount
         INVOICE = :invoice
         PLAN = :plan
         PROFESSIONAL_SERVICE = :professional_service
