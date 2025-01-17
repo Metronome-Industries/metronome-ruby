@@ -16,7 +16,7 @@ module Metronome
 
       # @!attribute custom_fields
       #
-      #   @return [Hash{Symbol => String}]
+      #   @return [Hash{Symbol=>String}]
       optional :custom_fields, Metronome::HashOf[String]
 
       # @!attribute customer_billing_provider_configurations
@@ -44,7 +44,7 @@ module Metronome
       #   #
       #   # @param billing_config [Metronome::Models::CustomerCreateParams::BillingConfig]
       #   #
-      #   # @param custom_fields [Hash{Symbol => String}]
+      #   # @param custom_fields [Hash{Symbol=>String}]
       #   #
       #   # @param customer_billing_provider_configurations [Array<Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration>]
       #   #
@@ -68,7 +68,6 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # billing_config => {
       #   billing_provider_customer_id: String,
@@ -140,7 +139,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # case billing_provider_type
         # in :aws_marketplace
@@ -171,7 +169,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # case aws_region
         # in :"af-south-1"
@@ -219,7 +216,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # case stripe_collection_method
         # in :charge_automatically
@@ -237,7 +233,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # customer_billing_provider_configuration => {
       #   billing_provider: enum: Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::BillingProvider,
@@ -259,7 +254,7 @@ module Metronome
         # @!attribute configuration
         #   Configuration for the billing provider. The structure of this object is specific to the billing provider and delivery provider combination. Defaults to an empty object, however, for most billing provider + delivery method combinations, it will not be a valid configuration.
         #
-        #   @return [Hash{Symbol => Object}]
+        #   @return [Hash{Symbol=>Object}]
         optional :configuration, Metronome::HashOf[Metronome::Unknown]
 
         # @!attribute delivery_method
@@ -280,7 +275,7 @@ module Metronome
         # @!parse
         #   # @param billing_provider [String] The billing provider set for this configuration.
         #   #
-        #   # @param configuration [Hash{Symbol => Object}] Configuration for the billing provider. The structure of this object is specific
+        #   # @param configuration [Hash{Symbol=>Object}] Configuration for the billing provider. The structure of this object is specific
         #   #   to the billing provider and delivery provider combination. Defaults to an empty
         #   #   object, however, for most billing provider + delivery method combinations, it
         #   #   will not be a valid configuration.
@@ -298,7 +293,6 @@ module Metronome
         # The billing provider set for this configuration.
         #
         # @example
-        #
         # ```ruby
         # case billing_provider
         # in :aws_marketplace
@@ -326,7 +320,6 @@ module Metronome
         # The method to use for delivering invoices to this customer. If not provided, the `delivery_method_id` must be provided.
         #
         # @example
-        #
         # ```ruby
         # case delivery_method
         # in :direct_to_billing_provider

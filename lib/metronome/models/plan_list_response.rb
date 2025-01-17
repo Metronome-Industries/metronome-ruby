@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # plan_list_response => {
     #   id: String,
@@ -30,14 +29,14 @@ module Metronome
 
       # @!attribute custom_fields
       #
-      #   @return [Hash{Symbol => String}]
+      #   @return [Hash{Symbol=>String}]
       optional :custom_fields, Metronome::HashOf[String]
 
       # @!parse
       #   # @param id [String]
       #   # @param description [String]
       #   # @param name [String]
-      #   # @param custom_fields [Hash{Symbol => String}]
+      #   # @param custom_fields [Hash{Symbol=>String}]
       #   #
       #   def initialize(id:, description:, name:, custom_fields: nil, **) = super
 

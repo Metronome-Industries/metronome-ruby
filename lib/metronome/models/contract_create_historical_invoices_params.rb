@@ -23,7 +23,6 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # invoice => {
       #   contract_id: String,
@@ -92,7 +91,7 @@ module Metronome
 
         # @!attribute custom_fields
         #
-        #   @return [Hash{Symbol => String}]
+        #   @return [Hash{Symbol=>String}]
         optional :custom_fields, Metronome::HashOf[String]
 
         # @!parse
@@ -114,7 +113,7 @@ module Metronome
         #   #
         #   # @param breakdown_granularity [String]
         #   #
-        #   # @param custom_fields [Hash{Symbol => String}]
+        #   # @param custom_fields [Hash{Symbol=>String}]
         #   #
         #   def initialize(
         #     contract_id:,
@@ -135,7 +134,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # usage_line_item => {
         #   exclusive_end_date: Time,
@@ -164,12 +162,12 @@ module Metronome
 
           # @!attribute presentation_group_values
           #
-          #   @return [Hash{Symbol => String}]
+          #   @return [Hash{Symbol=>String}]
           optional :presentation_group_values, Metronome::HashOf[String]
 
           # @!attribute pricing_group_values
           #
-          #   @return [Hash{Symbol => String}]
+          #   @return [Hash{Symbol=>String}]
           optional :pricing_group_values, Metronome::HashOf[String]
 
           # @!attribute quantity
@@ -189,8 +187,8 @@ module Metronome
           #   # @param exclusive_end_date [String]
           #   # @param inclusive_start_date [String]
           #   # @param product_id [String]
-          #   # @param presentation_group_values [Hash{Symbol => String}]
-          #   # @param pricing_group_values [Hash{Symbol => String}]
+          #   # @param presentation_group_values [Hash{Symbol=>String}]
+          #   # @param pricing_group_values [Hash{Symbol=>String}]
           #   # @param quantity [Float]
           #   # @param subtotals_with_quantity [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity>]
           #   #
@@ -210,7 +208,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # subtotals_with_quantity => {
           #   exclusive_end_date: Time,
@@ -248,7 +245,6 @@ module Metronome
         # This field's availability is dependent on your client's configuration.
         #
         # @example
-        #
         # ```ruby
         # case billable_status
         # in :billable
@@ -265,7 +261,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # case breakdown_granularity
         # in :HOUR

@@ -5,13 +5,13 @@ module Metronome
     class Plans
       # List all available plans.
       #
-      # @param params [Metronome::Models::PlanListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::PlanListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Integer] :limit Max number of results that should be returned
       #
       #   @option params [String] :next_page Cursor that indicates where the next page of results should start.
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::PlanListResponse>]
       #
@@ -29,11 +29,11 @@ module Metronome
 
       # Fetch high level details of a specific plan.
       #
-      # @param params [Metronome::Models::PlanGetDetailsParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::PlanGetDetailsParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :plan_id
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::PlanGetDetailsResponse]
       #
@@ -52,7 +52,7 @@ module Metronome
 
       # Fetches a list of charges of a specific plan.
       #
-      # @param params [Metronome::Models::PlanListChargesParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::PlanListChargesParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :plan_id Path param:
       #
@@ -60,7 +60,7 @@ module Metronome
       #
       #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::PlanListChargesResponse>]
       #
@@ -82,7 +82,7 @@ module Metronome
       # Fetches a list of customers on a specific plan (by default, only currently
       #   active plans are included)
       #
-      # @param params [Metronome::Models::PlanListCustomersParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::PlanListCustomersParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :plan_id Path param:
       #
@@ -100,7 +100,7 @@ module Metronome
       #     Multiple statuses can be OR'd together using commas, e.g. `active,ended`.
       #     **Note:** `ended,upcoming` combination is not yet supported.
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::PlanListCustomersResponse>]
       #

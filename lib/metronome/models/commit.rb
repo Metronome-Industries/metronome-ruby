@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # commit => {
     #   id: String,
@@ -70,7 +69,7 @@ module Metronome
 
       # @!attribute custom_fields
       #
-      #   @return [Hash{Symbol => String}]
+      #   @return [Hash{Symbol=>String}]
       optional :custom_fields, Metronome::HashOf[String]
 
       # @!attribute description
@@ -169,7 +168,7 @@ module Metronome
       #   #
       #   # @param contract [Metronome::Models::Commit::Contract]
       #   #
-      #   # @param custom_fields [Hash{Symbol => String}]
+      #   # @param custom_fields [Hash{Symbol=>String}]
       #   #
       #   # @param description [String]
       #   #
@@ -232,7 +231,6 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # product => {
       #   id: String,
@@ -260,7 +258,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # case type
       # in :PREPAID
@@ -277,7 +274,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # contract => {
       #   id: String
@@ -298,7 +294,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # invoice_contract => {
       #   id: String
@@ -321,7 +316,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # case ledger
       # in Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry
@@ -380,7 +374,6 @@ module Metronome
         variant -> { Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry }
 
         # @example
-        #
         # ```ruby
         # prepaid_commit_segment_start_ledger_entry => {
         #   amount: Float,
@@ -424,7 +417,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # case type
           # in :PREPAID_COMMIT_SEGMENT_START
@@ -439,7 +431,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # prepaid_commit_automated_invoice_deduction_ledger_entry => {
         #   amount: Float,
@@ -490,7 +481,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # case type
           # in :PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
@@ -505,7 +495,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # prepaid_commit_rollover_ledger_entry => {
         #   amount: Float,
@@ -556,7 +545,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # case type
           # in :PREPAID_COMMIT_ROLLOVER
@@ -571,7 +559,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # prepaid_commit_expiration_ledger_entry => {
         #   amount: Float,
@@ -615,7 +602,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # case type
           # in :PREPAID_COMMIT_EXPIRATION
@@ -630,7 +616,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # prepaid_commit_canceled_ledger_entry => {
         #   amount: Float,
@@ -681,7 +666,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # case type
           # in :PREPAID_COMMIT_CANCELED
@@ -696,7 +680,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # prepaid_commit_credited_ledger_entry => {
         #   amount: Float,
@@ -747,7 +730,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # case type
           # in :PREPAID_COMMIT_CREDITED
@@ -762,7 +744,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # postpaid_commit_initial_balance_ledger_entry => {
         #   amount: Float,
@@ -799,7 +780,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # case type
           # in :POSTPAID_COMMIT_INITIAL_BALANCE
@@ -814,7 +794,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # postpaid_commit_automated_invoice_deduction_ledger_entry => {
         #   amount: Float,
@@ -865,7 +844,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # case type
           # in :POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
@@ -880,7 +858,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # postpaid_commit_rollover_ledger_entry => {
         #   amount: Float,
@@ -931,7 +908,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # case type
           # in :POSTPAID_COMMIT_ROLLOVER
@@ -946,7 +922,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # postpaid_commit_trueup_ledger_entry => {
         #   amount: Float,
@@ -990,7 +965,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # case type
           # in :POSTPAID_COMMIT_TRUEUP
@@ -1005,7 +979,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # prepaid_commit_manual_ledger_entry => {
         #   amount: Float,
@@ -1046,7 +1019,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # case type
           # in :PREPAID_COMMIT_MANUAL
@@ -1061,7 +1033,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # postpaid_commit_manual_ledger_entry => {
         #   amount: Float,
@@ -1105,7 +1076,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # case type
           # in :POSTPAID_COMMIT_MANUAL
@@ -1120,7 +1090,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # postpaid_commit_expiration_ledger_entry => {
         #   amount: Float,
@@ -1157,7 +1126,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # case type
           # in :POSTPAID_COMMIT_EXPIRATION
@@ -1173,7 +1141,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # case rate_type
       # in :COMMIT_RATE
@@ -1190,7 +1157,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # rolled_over_from => {
       #   commit_id: String,

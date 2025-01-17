@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # contract_create_historical_invoices_response => {
     #   data: -> { Metronome::ArrayOf[Metronome::Models::Customers::Invoice] === _1 }

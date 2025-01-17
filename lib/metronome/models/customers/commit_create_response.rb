@@ -4,7 +4,6 @@ module Metronome
   module Models
     module Customers
       # @example
-      #
       # ```ruby
       # commit_create_response => {
       #   data: Metronome::Models::ID

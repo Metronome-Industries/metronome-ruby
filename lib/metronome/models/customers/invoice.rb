@@ -4,7 +4,6 @@ module Metronome
   module Models
     module Customers
       # @example
-      #
       # ```ruby
       # invoice => {
       #   id: String,
@@ -64,7 +63,7 @@ module Metronome
 
         # @!attribute contract_custom_fields
         #
-        #   @return [Hash{Symbol => String}]
+        #   @return [Hash{Symbol=>String}]
         optional :contract_custom_fields, Metronome::HashOf[String]
 
         # @!attribute contract_id
@@ -85,12 +84,12 @@ module Metronome
 
         # @!attribute custom_fields
         #
-        #   @return [Hash{Symbol => Object}]
+        #   @return [Hash{Symbol=>Object}]
         optional :custom_fields, Metronome::HashOf[Metronome::Unknown]
 
         # @!attribute customer_custom_fields
         #
-        #   @return [Hash{Symbol => String}]
+        #   @return [Hash{Symbol=>String}]
         optional :customer_custom_fields, Metronome::HashOf[String]
 
         # @!attribute end_timestamp
@@ -129,7 +128,7 @@ module Metronome
 
         # @!attribute plan_custom_fields
         #
-        #   @return [Hash{Symbol => String}]
+        #   @return [Hash{Symbol=>String}]
         optional :plan_custom_fields, Metronome::HashOf[String]
 
         # @!attribute plan_id
@@ -184,7 +183,7 @@ module Metronome
         #   #
         #   # @param billable_status [String] This field's availability is dependent on your client's configuration.
         #   #
-        #   # @param contract_custom_fields [Hash{Symbol => String}]
+        #   # @param contract_custom_fields [Hash{Symbol=>String}]
         #   #
         #   # @param contract_id [String]
         #   #
@@ -193,9 +192,9 @@ module Metronome
         #   # @param created_at [String] When the invoice was created (UTC). This field is present for correction
         #   #   invoices only.
         #   #
-        #   # @param custom_fields [Hash{Symbol => Object}]
+        #   # @param custom_fields [Hash{Symbol=>Object}]
         #   #
-        #   # @param customer_custom_fields [Hash{Symbol => String}]
+        #   # @param customer_custom_fields [Hash{Symbol=>String}]
         #   #
         #   # @param end_timestamp [String] End of the usage period this invoice covers (UTC)
         #   #
@@ -209,7 +208,7 @@ module Metronome
         #   #
         #   # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
         #   #
-        #   # @param plan_custom_fields [Hash{Symbol => String}]
+        #   # @param plan_custom_fields [Hash{Symbol=>String}]
         #   #
         #   # @param plan_id [String]
         #   #
@@ -260,7 +259,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # line_item => {
         #   credit_type: Metronome::Models::CreditTypeData,
@@ -297,7 +295,7 @@ module Metronome
           # @!attribute commit_custom_fields
           #   only present for beta contract invoices
           #
-          #   @return [Hash{Symbol => String}]
+          #   @return [Hash{Symbol=>String}]
           optional :commit_custom_fields, Metronome::HashOf[String]
 
           # @!attribute commit_id
@@ -332,7 +330,7 @@ module Metronome
 
           # @!attribute custom_fields
           #
-          #   @return [Hash{Symbol => String}]
+          #   @return [Hash{Symbol=>String}]
           optional :custom_fields, Metronome::HashOf[String]
 
           # @!attribute ending_before
@@ -395,18 +393,18 @@ module Metronome
           # @!attribute presentation_group_values
           #   if presentation groups are used, this will contain the values used to break down the line item
           #
-          #   @return [Hash{Symbol => String}, nil]
+          #   @return [Hash{Symbol=>String}, nil]
           optional :presentation_group_values, Metronome::HashOf[String]
 
           # @!attribute pricing_group_values
           #   if pricing groups are used, this will contain the values used to calculate the price
           #
-          #   @return [Hash{Symbol => String}]
+          #   @return [Hash{Symbol=>String}]
           optional :pricing_group_values, Metronome::HashOf[String]
 
           # @!attribute product_custom_fields
           #
-          #   @return [Hash{Symbol => String}]
+          #   @return [Hash{Symbol=>String}]
           optional :product_custom_fields, Metronome::HashOf[String]
 
           # @!attribute product_id
@@ -422,7 +420,7 @@ module Metronome
           # @!attribute professional_service_custom_fields
           #   only present for beta contract invoices
           #
-          #   @return [Hash{Symbol => String}]
+          #   @return [Hash{Symbol=>String}]
           optional :professional_service_custom_fields, Metronome::HashOf[String]
 
           # @!attribute professional_service_id
@@ -443,7 +441,7 @@ module Metronome
 
           # @!attribute scheduled_charge_custom_fields
           #
-          #   @return [Hash{Symbol => String}]
+          #   @return [Hash{Symbol=>String}]
           optional :scheduled_charge_custom_fields, Metronome::HashOf[String]
 
           # @!attribute scheduled_charge_id
@@ -484,7 +482,7 @@ module Metronome
           #   #
           #   # @param applied_commit_or_credit [Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit] only present for beta contract invoices
           #   #
-          #   # @param commit_custom_fields [Hash{Symbol => String}] only present for beta contract invoices
+          #   # @param commit_custom_fields [Hash{Symbol=>String}] only present for beta contract invoices
           #   #
           #   # @param commit_id [String] only present for beta contract invoices
           #   #
@@ -498,7 +496,7 @@ module Metronome
           #   #
           #   # @param commit_type [String] only present for beta contract invoices
           #   #
-          #   # @param custom_fields [Hash{Symbol => String}]
+          #   # @param custom_fields [Hash{Symbol=>String}]
           #   #
           #   # @param ending_before [String] only present for beta contract invoices
           #   #
@@ -523,19 +521,19 @@ module Metronome
           #   #
           #   # @param postpaid_commit [Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit] only present for beta contract invoices
           #   #
-          #   # @param presentation_group_values [Hash{Symbol => String}, nil] if presentation groups are used, this will contain the values used to break down
+          #   # @param presentation_group_values [Hash{Symbol=>String}, nil] if presentation groups are used, this will contain the values used to break down
           #   #   the line item
           #   #
-          #   # @param pricing_group_values [Hash{Symbol => String}] if pricing groups are used, this will contain the values used to calculate the
+          #   # @param pricing_group_values [Hash{Symbol=>String}] if pricing groups are used, this will contain the values used to calculate the
           #   #   price
           #   #
-          #   # @param product_custom_fields [Hash{Symbol => String}]
+          #   # @param product_custom_fields [Hash{Symbol=>String}]
           #   #
           #   # @param product_id [String]
           #   #
           #   # @param product_type [String]
           #   #
-          #   # @param professional_service_custom_fields [Hash{Symbol => String}] only present for beta contract invoices
+          #   # @param professional_service_custom_fields [Hash{Symbol=>String}] only present for beta contract invoices
           #   #
           #   # @param professional_service_id [String] only present for beta contract invoices
           #   #
@@ -543,7 +541,7 @@ module Metronome
           #   #
           #   # @param reseller_type [String]
           #   #
-          #   # @param scheduled_charge_custom_fields [Hash{Symbol => String}]
+          #   # @param scheduled_charge_custom_fields [Hash{Symbol=>String}]
           #   #
           #   # @param scheduled_charge_id [String] only present for beta contract invoices
           #   #
@@ -600,7 +598,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # applied_commit_or_credit => {
           #   id: String,
@@ -632,7 +629,6 @@ module Metronome
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
             # @example
-            #
             # ```ruby
             # case type
             # in :PREPAID
@@ -653,7 +649,6 @@ module Metronome
           end
 
           # @example
-          #
           # ```ruby
           # postpaid_commit => {
           #   id: String
@@ -676,7 +671,6 @@ module Metronome
           end
 
           # @example
-          #
           # ```ruby
           # case reseller_type
           # in :AWS
@@ -699,7 +693,6 @@ module Metronome
           end
 
           # @example
-          #
           # ```ruby
           # sub_line_item => {
           #   custom_fields: -> { Metronome::HashOf[String] === _1 },
@@ -713,7 +706,7 @@ module Metronome
           class SubLineItem < Metronome::BaseModel
             # @!attribute custom_fields
             #
-            #   @return [Hash{Symbol => String}]
+            #   @return [Hash{Symbol=>String}]
             required :custom_fields, Metronome::HashOf[String]
 
             # @!attribute name
@@ -777,7 +770,7 @@ module Metronome
                      }
 
             # @!parse
-            #   # @param custom_fields [Hash{Symbol => String}]
+            #   # @param custom_fields [Hash{Symbol=>String}]
             #   #
             #   # @param name [String]
             #   #
@@ -820,7 +813,6 @@ module Metronome
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
             # @example
-            #
             # ```ruby
             # tier_period => {
             #   starting_at: Time,
@@ -850,7 +842,6 @@ module Metronome
             end
 
             # @example
-            #
             # ```ruby
             # tier => {
             #   price: Float,
@@ -897,7 +888,6 @@ module Metronome
           end
 
           # @example
-          #
           # ```ruby
           # tier => {
           #   level: Float,
@@ -935,7 +925,6 @@ module Metronome
         # This field's availability is dependent on your client's configuration.
         #
         # @example
-        #
         # ```ruby
         # case billable_status
         # in :billable
@@ -952,7 +941,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # correction_record => {
         #   corrected_invoice_id: String,
@@ -994,7 +982,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # corrected_external_invoice => {
           #   billing_provider_type: enum: Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType,
@@ -1041,7 +1028,6 @@ module Metronome
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
             # @example
-            #
             # ```ruby
             # case billing_provider_type
             # in :aws_marketplace
@@ -1072,7 +1058,6 @@ module Metronome
             end
 
             # @example
-            #
             # ```ruby
             # case external_status
             # in :DRAFT
@@ -1108,7 +1093,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # external_invoice => {
         #   billing_provider_type: enum: Metronome::Models::Customers::Invoice::ExternalInvoice::BillingProviderType,
@@ -1151,7 +1135,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # case billing_provider_type
           # in :aws_marketplace
@@ -1182,7 +1165,6 @@ module Metronome
           end
 
           # @example
-          #
           # ```ruby
           # case external_status
           # in :DRAFT
@@ -1217,7 +1199,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # invoice_adjustment => {
         #   credit_type: Metronome::Models::CreditTypeData,
@@ -1245,7 +1226,7 @@ module Metronome
 
           # @!attribute credit_grant_custom_fields
           #
-          #   @return [Hash{Symbol => String}]
+          #   @return [Hash{Symbol=>String}]
           optional :credit_grant_custom_fields, Metronome::HashOf[String]
 
           # @!attribute credit_grant_id
@@ -1257,7 +1238,7 @@ module Metronome
           #   # @param credit_type [Metronome::Models::CreditTypeData]
           #   # @param name [String]
           #   # @param total [Float]
-          #   # @param credit_grant_custom_fields [Hash{Symbol => String}]
+          #   # @param credit_grant_custom_fields [Hash{Symbol=>String}]
           #   # @param credit_grant_id [String]
           #   #
           #   def initialize(credit_type:, name:, total:, credit_grant_custom_fields: nil, credit_grant_id: nil, **) = super
@@ -1266,7 +1247,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # reseller_royalty => {
         #   fraction: String,
@@ -1319,7 +1299,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # case reseller_type
           # in :AWS
@@ -1342,7 +1321,6 @@ module Metronome
           end
 
           # @example
-          #
           # ```ruby
           # aws_options => {
           #   aws_account_number: String,
@@ -1377,7 +1355,6 @@ module Metronome
           end
 
           # @example
-          #
           # ```ruby
           # gcp_options => {
           #   gcp_account_id: String,

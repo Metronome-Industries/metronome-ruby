@@ -4,7 +4,6 @@ module Metronome
   module Models
     module Customers
       # @example
-      #
       # ```ruby
       # customer_alert => {
       #   alert: Metronome::Models::Customers::CustomerAlert::Alert,
@@ -43,7 +42,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # alert => {
         #   id: String,
@@ -186,7 +184,6 @@ module Metronome
           # Status of the alert
           #
           # @example
-          #
           # ```ruby
           # case status
           # in :enabled
@@ -208,7 +205,6 @@ module Metronome
           # Type of the alert
           #
           # @example
-          #
           # ```ruby
           # case type
           # in :low_credit_balance_reached
@@ -245,7 +241,6 @@ module Metronome
           end
 
           # @example
-          #
           # ```ruby
           # custom_field_filter => {
           #   entity: enum: Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter::Entity,
@@ -282,7 +277,6 @@ module Metronome
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
             # @example
-            #
             # ```ruby
             # case entity
             # in :Contract
@@ -303,7 +297,6 @@ module Metronome
           end
 
           # @example
-          #
           # ```ruby
           # group_key_filter => {
           #   key: String,
@@ -337,7 +330,6 @@ module Metronome
         # The status of the customer alert. If the alert is archived, null will be returned.
         #
         # @example
-        #
         # ```ruby
         # case customer_status
         # in :ok

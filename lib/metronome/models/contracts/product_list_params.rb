@@ -36,7 +36,6 @@ module Metronome
         # Filter options for the product list
         #
         # @example
-        #
         # ```ruby
         # case archive_filter
         # in :ARCHIVED

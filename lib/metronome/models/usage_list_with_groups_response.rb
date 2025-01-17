@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # usage_list_with_groups_response => {
     #   ending_before: Time,

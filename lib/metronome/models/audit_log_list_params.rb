@@ -81,7 +81,6 @@ module Metronome
       # Sort order by timestamp, e.g. date_asc or date_desc. Defaults to date_asc.
       #
       # @example
-      #
       # ```ruby
       # case sort
       # in :date_asc

@@ -5,7 +5,6 @@ module Metronome
     module Contracts
       module RateCards
         # @example
-        #
         # ```ruby
         # rate_add_many_response => {
         #   data: Metronome::Models::ID

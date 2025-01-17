@@ -55,7 +55,6 @@ module Metronome
       # The type of dashboard to retrieve.
       #
       # @example
-      #
       # ```ruby
       # case dashboard
       # in :invoices
@@ -75,7 +74,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # bm_group_key_override => {
       #   group_key_name: String,
@@ -99,7 +97,7 @@ module Metronome
         # @!attribute value_display_names
         #   <key, value> pairs of the billable metric group key values and their display names. e.g. {"a": "Asia", "b": "Euro"}
         #
-        #   @return [Hash{Symbol => Object}]
+        #   @return [Hash{Symbol=>Object}]
         optional :value_display_names, Metronome::HashOf[Metronome::Unknown]
 
         # @!parse
@@ -107,7 +105,7 @@ module Metronome
         #   #
         #   # @param display_name [String] The display name for the billable metric group key
         #   #
-        #   # @param value_display_names [Hash{Symbol => Object}] <key, value> pairs of the billable metric group key values and their display
+        #   # @param value_display_names [Hash{Symbol=>Object}] <key, value> pairs of the billable metric group key values and their display
         #   #   names. e.g. {"a": "Asia", "b": "Euro"}
         #   #
         #   def initialize(group_key_name:, display_name: nil, value_display_names: nil, **) = super
@@ -116,7 +114,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # color_override => {
       #   name: enum: Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride::Name,
@@ -148,7 +145,6 @@ module Metronome
         # The color to override
         #
         # @example
-        #
         # ```ruby
         # case name
         # in :Gray_dark
@@ -191,7 +187,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # dashboard_option => {
       #   key: String,

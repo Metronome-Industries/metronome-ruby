@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # schedule_duration => {
     #   schedule_items: -> { Metronome::ArrayOf[Metronome::Models::ScheduleDuration::ScheduleItem] === _1 },
@@ -30,7 +29,6 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # schedule_item => {
       #   id: String,

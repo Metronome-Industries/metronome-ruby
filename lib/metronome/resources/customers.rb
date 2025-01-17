@@ -26,13 +26,13 @@ module Metronome
 
       # Create a new customer
       #
-      # @param params [Metronome::Models::CustomerCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :name This will be truncated to 160 characters if the provided name is longer.
       #
       #   @option params [Metronome::Models::CustomerCreateParams::BillingConfig] :billing_config
       #
-      #   @option params [Hash{Symbol => String}] :custom_fields
+      #   @option params [Hash{Symbol=>String}] :custom_fields
       #
       #   @option params [Array<Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration>] :customer_billing_provider_configurations
       #
@@ -41,7 +41,7 @@ module Metronome
       #
       #   @option params [Array<String>] :ingest_aliases Aliases that can be used to refer to this customer in usage events
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CustomerCreateResponse]
       #
@@ -58,11 +58,11 @@ module Metronome
 
       # Get a customer by Metronome ID.
       #
-      # @param params [Metronome::Models::CustomerRetrieveParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerRetrieveParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :customer_id
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CustomerRetrieveResponse]
       #
@@ -81,7 +81,7 @@ module Metronome
 
       # List all customers.
       #
-      # @param params [Metronome::Models::CustomerListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Array<String>] :customer_ids Filter the customer list by customer_id. Up to 100 ids can be provided.
       #
@@ -96,7 +96,7 @@ module Metronome
       #   @option params [Array<String>] :salesforce_account_ids Filter the customer list by salesforce_account_id. Up to 100 ids can be
       #     provided.
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::CustomerDetail>]
       #
@@ -114,11 +114,11 @@ module Metronome
 
       # Archive a customer
       #
-      # @param params [Metronome::Models::CustomerArchiveParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerArchiveParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :id
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CustomerArchiveResponse]
       #
@@ -135,7 +135,7 @@ module Metronome
 
       # Get all billable metrics for a given customer.
       #
-      # @param params [Metronome::Models::CustomerListBillableMetricsParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerListBillableMetricsParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :customer_id Path param:
       #
@@ -148,7 +148,7 @@ module Metronome
       #   @option params [Boolean] :on_current_plan Query param: If true, the list of metrics will be filtered to just ones that are
       #     on the customer's current plan
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::CustomerListBillableMetricsResponse>]
       #
@@ -171,7 +171,7 @@ module Metronome
       #   and line items. Note: this is not supported for customers whose plan includes a
       #   UNIQUE-type billable metric.
       #
-      # @param params [Metronome::Models::CustomerListCostsParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerListCostsParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :customer_id Path param:
       #
@@ -183,7 +183,7 @@ module Metronome
       #
       #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::CustomerListCostsResponse>]
       #
@@ -206,13 +206,13 @@ module Metronome
       #   `customer_id` field when sending usage events to Metronome. This call is
       #   idempotent. It fully replaces the set of ingest aliases for the given customer.
       #
-      # @param params [Metronome::Models::CustomerSetIngestAliasesParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerSetIngestAliasesParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :customer_id Path param:
       #
       #   @option params [Array<String>] :ingest_aliases Body param:
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       #
@@ -232,14 +232,14 @@ module Metronome
 
       # Updates the specified customer's name.
       #
-      # @param params [Metronome::Models::CustomerSetNameParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerSetNameParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :customer_id Path param:
       #
       #   @option params [String] :name Body param: The new name for the customer. This will be truncated to 160
       #     characters if the provided name is longer.
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CustomerSetNameResponse]
       #
@@ -259,7 +259,7 @@ module Metronome
 
       # Updates the specified customer's config.
       #
-      # @param params [Metronome::Models::CustomerUpdateConfigParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerUpdateConfigParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :customer_id Path param:
       #
@@ -268,7 +268,7 @@ module Metronome
       #
       #   @option params [String, nil] :salesforce_account_id Body param: The Salesforce account ID for the customer
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       #

@@ -6,7 +6,7 @@ module Metronome
       class Credits
         # Create a new credit at the customer level.
         #
-        # @param params [Metronome::Models::Customers::CreditCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::CreditCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [Metronome::Models::Customers::CreditCreateParams::AccessSchedule] :access_schedule Schedule for distributing the credit to the customer.
         #
@@ -26,7 +26,7 @@ module Metronome
         #   @option params [Array<String>] :applicable_product_tags Which tags the credit applies to. If both applicable_product_ids and
         #     applicable_product_tags are not provided, the credit applies to all products.
         #
-        #   @option params [Hash{Symbol => String}] :custom_fields
+        #   @option params [Hash{Symbol=>String}] :custom_fields
         #
         #   @option params [String] :description Used only in UI/API. It is not exposed to end customers.
         #
@@ -43,7 +43,7 @@ module Metronome
         #     credit, a new record will not be created and the request will fail with a 409
         #     error.
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Customers::CreditCreateResponse]
         #
@@ -60,7 +60,7 @@ module Metronome
 
         # List credits.
         #
-        # @param params [Metronome::Models::Customers::CreditListParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::CreditListParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id
         #
@@ -84,7 +84,7 @@ module Metronome
         #
         #   @option params [Time] :starting_at Include only credits that have any access on or after the provided date
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Customers::CreditListResponse]
         #
@@ -101,7 +101,7 @@ module Metronome
 
         # Update the end date of a credit
         #
-        # @param params [Metronome::Models::Customers::CreditUpdateEndDateParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::CreditUpdateEndDateParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [Time] :access_ending_before RFC 3339 timestamp indicating when access to the credit will end and it will no
         #     longer be possible to draw it down (exclusive).
@@ -110,7 +110,7 @@ module Metronome
         #
         #   @option params [String] :customer_id ID of the customer whose credit is to be updated
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Customers::CreditUpdateEndDateResponse]
         #

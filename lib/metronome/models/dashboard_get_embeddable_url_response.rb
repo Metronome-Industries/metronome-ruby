@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # dashboard_get_embeddable_url_response => {
     #   data: Metronome::Models::DashboardGetEmbeddableURLResponse::Data
@@ -23,7 +22,6 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # data => {
       #   url: String

@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # plan_detail => {
     #   id: String,
@@ -22,7 +21,7 @@ module Metronome
 
       # @!attribute custom_fields
       #
-      #   @return [Hash{Symbol => String}]
+      #   @return [Hash{Symbol=>String}]
       required :custom_fields, Metronome::HashOf[String]
 
       # @!attribute name
@@ -52,7 +51,7 @@ module Metronome
 
       # @!parse
       #   # @param id [String]
-      #   # @param custom_fields [Hash{Symbol => String}]
+      #   # @param custom_fields [Hash{Symbol=>String}]
       #   # @param name [String]
       #   # @param credit_grants [Array<Metronome::Models::PlanDetail::CreditGrant>]
       #   # @param description [String]
@@ -64,7 +63,6 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # credit_grant => {
       #   amount_granted: Float,
@@ -165,7 +163,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # minimum => {
       #   credit_type: Metronome::Models::CreditTypeData,
@@ -212,7 +209,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # overage_rate => {
       #   credit_type: Metronome::Models::CreditTypeData,

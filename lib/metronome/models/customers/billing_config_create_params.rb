@@ -66,7 +66,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # case billing_provider_type
         # in :aws_marketplace
@@ -97,7 +96,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # case aws_region
         # in :"af-south-1"
@@ -145,7 +143,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # case stripe_collection_method
         # in :charge_automatically

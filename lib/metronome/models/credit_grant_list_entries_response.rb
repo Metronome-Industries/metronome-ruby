@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # credit_grant_list_entries_response => {
     #   data: -> { Metronome::ArrayOf[Metronome::Models::CreditGrantListEntriesResponse::Data] === _1 },
@@ -30,7 +29,6 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # data => {
       #   customer_id: String,
@@ -58,7 +56,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # ledger => {
         #   credit_type: Metronome::Models::CreditTypeData,
@@ -113,7 +110,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # ending_balance => {
           #   effective_at: Time,
@@ -159,7 +155,6 @@ module Metronome
           end
 
           # @example
-          #
           # ```ruby
           # starting_balance => {
           #   effective_at: Time,

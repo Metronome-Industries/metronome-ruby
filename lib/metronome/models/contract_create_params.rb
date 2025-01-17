@@ -33,7 +33,7 @@ module Metronome
 
       # @!attribute custom_fields
       #
-      #   @return [Hash{Symbol => String}]
+      #   @return [Hash{Symbol=>String}]
       optional :custom_fields, Metronome::HashOf[String]
 
       # @!attribute discounts
@@ -161,7 +161,7 @@ module Metronome
       #   #
       #   # @param credits [Array<Metronome::Models::ContractCreateParams::Credit>]
       #   #
-      #   # @param custom_fields [Hash{Symbol => String}]
+      #   # @param custom_fields [Hash{Symbol=>String}]
       #   #
       #   # @param discounts [Array<Metronome::Models::ContractCreateParams::Discount>] This field's availability is dependent on your client's configuration.
       #   #
@@ -245,7 +245,6 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # billing_provider_configuration => {
       #   billing_provider: enum: Metronome::Models::ContractCreateParams::BillingProviderConfiguration::BillingProvider,
@@ -290,7 +289,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # case billing_provider
         # in :aws_marketplace
@@ -316,7 +314,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # case delivery_method
         # in :direct_to_billing_provider
@@ -340,7 +337,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # commit => {
       #   product_id: String,
@@ -388,7 +384,7 @@ module Metronome
 
         # @!attribute custom_fields
         #
-        #   @return [Hash{Symbol => String}]
+        #   @return [Hash{Symbol=>String}]
         optional :custom_fields, Metronome::HashOf[String]
 
         # @!attribute description
@@ -455,7 +451,7 @@ module Metronome
         #   # @param applicable_product_tags [Array<String>] Which tags the commit applies to. If both applicable_product_ids and
         #   #   applicable_product_tags are not provided, the commit applies to all products.
         #   #
-        #   # @param custom_fields [Hash{Symbol => String}]
+        #   # @param custom_fields [Hash{Symbol=>String}]
         #   #
         #   # @param description [String] Used only in UI/API. It is not exposed to end customers.
         #   #
@@ -502,7 +498,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # case type
         # in :PREPAID
@@ -519,7 +514,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # access_schedule => {
         #   schedule_items: -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Commit::AccessSchedule::ScheduleItem] === _1 },
@@ -555,7 +549,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # schedule_item => {
           #   amount: Float,
@@ -595,7 +588,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # invoice_schedule => {
         #   credit_type_id: String,
@@ -645,7 +637,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # recurring_schedule => {
           #   amount_distribution: enum: Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::AmountDistribution,
@@ -744,7 +735,6 @@ module Metronome
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
             # @example
-            #
             # ```ruby
             # case amount_distribution
             # in :DIVIDED
@@ -764,7 +754,6 @@ module Metronome
             end
 
             # @example
-            #
             # ```ruby
             # case frequency
             # in :MONTHLY
@@ -788,7 +777,6 @@ module Metronome
           end
 
           # @example
-          #
           # ```ruby
           # schedule_item => {
           #   timestamp: Time,
@@ -844,7 +832,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # case rate_type
         # in :COMMIT_RATE
@@ -868,7 +855,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # credit => {
       #   access_schedule: Metronome::Models::ContractCreateParams::Credit::AccessSchedule,
@@ -905,7 +891,7 @@ module Metronome
 
         # @!attribute custom_fields
         #
-        #   @return [Hash{Symbol => String}]
+        #   @return [Hash{Symbol=>String}]
         optional :custom_fields, Metronome::HashOf[String]
 
         # @!attribute description
@@ -948,7 +934,7 @@ module Metronome
         #   # @param applicable_product_tags [Array<String>] Which tags the credit applies to. If both applicable_product_ids and
         #   #   applicable_product_tags are not provided, the credit applies to all products.
         #   #
-        #   # @param custom_fields [Hash{Symbol => String}]
+        #   # @param custom_fields [Hash{Symbol=>String}]
         #   #
         #   # @param description [String] Used only in UI/API. It is not exposed to end customers.
         #   #
@@ -980,7 +966,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # access_schedule => {
         #   schedule_items: -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Credit::AccessSchedule::ScheduleItem] === _1 },
@@ -1014,7 +999,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # schedule_item => {
           #   amount: Float,
@@ -1054,7 +1038,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # case rate_type
         # in :COMMIT_RATE
@@ -1078,7 +1061,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # discount => {
       #   product_id: String,
@@ -1102,7 +1084,7 @@ module Metronome
 
         # @!attribute custom_fields
         #
-        #   @return [Hash{Symbol => String}]
+        #   @return [Hash{Symbol=>String}]
         optional :custom_fields, Metronome::HashOf[String]
 
         # @!attribute name
@@ -1122,7 +1104,7 @@ module Metronome
         #   #
         #   # @param schedule [Metronome::Models::ContractCreateParams::Discount::Schedule] Must provide either schedule_items or recurring_schedule.
         #   #
-        #   # @param custom_fields [Hash{Symbol => String}]
+        #   # @param custom_fields [Hash{Symbol=>String}]
         #   #
         #   # @param name [String] displayed on invoices
         #   #
@@ -1133,7 +1115,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # schedule => {
         #   credit_type_id: String,
@@ -1180,7 +1161,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # recurring_schedule => {
           #   amount_distribution: enum: Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule::AmountDistribution,
@@ -1279,7 +1259,6 @@ module Metronome
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
             # @example
-            #
             # ```ruby
             # case amount_distribution
             # in :DIVIDED
@@ -1299,7 +1278,6 @@ module Metronome
             end
 
             # @example
-            #
             # ```ruby
             # case frequency
             # in :MONTHLY
@@ -1323,7 +1301,6 @@ module Metronome
           end
 
           # @example
-          #
           # ```ruby
           # schedule_item => {
           #   timestamp: Time,
@@ -1382,7 +1359,6 @@ module Metronome
       # Defaults to LOWEST_MULTIPLIER, which applies the greatest discount to list prices automatically. EXPLICIT prioritization requires specifying priorities for each multiplier; the one with the lowest priority value will be prioritized first. If tiered overrides are used, prioritization must be explicit.
       #
       # @example
-      #
       # ```ruby
       # case multiplier_override_prioritization
       # in :LOWEST_MULTIPLIER
@@ -1399,7 +1375,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # override => {
       #   starting_at: Time,
@@ -1551,7 +1526,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # override_specifier => {
         #   commit_ids: -> { Metronome::ArrayOf[String] === _1 },
@@ -1571,13 +1545,13 @@ module Metronome
           # @!attribute presentation_group_values
           #   A map of group names to values. The override will only apply to line items with the specified presentation group values. Can only be used for multiplier overrides.
           #
-          #   @return [Hash{Symbol => String}]
+          #   @return [Hash{Symbol=>String}]
           optional :presentation_group_values, Metronome::HashOf[String]
 
           # @!attribute pricing_group_values
           #   A map of pricing group names to values. The override will only apply to products with the specified pricing group values.
           #
-          #   @return [Hash{Symbol => String}]
+          #   @return [Hash{Symbol=>String}]
           optional :pricing_group_values, Metronome::HashOf[String]
 
           # @!attribute product_id
@@ -1598,11 +1572,11 @@ module Metronome
           #   #   presentation_group_values. If provided, the override will only apply to the
           #   #   specified commits. If not provided, the override will apply to all commits.
           #   #
-          #   # @param presentation_group_values [Hash{Symbol => String}] A map of group names to values. The override will only apply to line items with
+          #   # @param presentation_group_values [Hash{Symbol=>String}] A map of group names to values. The override will only apply to line items with
           #   #   the specified presentation group values. Can only be used for multiplier
           #   #   overrides.
           #   #
-          #   # @param pricing_group_values [Hash{Symbol => String}] A map of pricing group names to values. The override will only apply to products
+          #   # @param pricing_group_values [Hash{Symbol=>String}] A map of pricing group names to values. The override will only apply to products
           #   #   with the specified pricing group values.
           #   #
           #   # @param product_id [String] If provided, the override will only apply to the product with the specified ID.
@@ -1625,7 +1599,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # overwrite_rate => {
         #   rate_type: enum: Metronome::Models::ContractCreateParams::Override::OverwriteRate::RateType,
@@ -1651,7 +1624,7 @@ module Metronome
           # @!attribute custom_rate
           #   Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.
           #
-          #   @return [Hash{Symbol => Object}]
+          #   @return [Hash{Symbol=>Object}]
           optional :custom_rate, Metronome::HashOf[Metronome::Unknown]
 
           # @!attribute is_prorated
@@ -1685,7 +1658,7 @@ module Metronome
           #   #
           #   # @param credit_type_id [String]
           #   #
-          #   # @param custom_rate [Hash{Symbol => Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate
+          #   # @param custom_rate [Hash{Symbol=>Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate
           #   #   processors.
           #   #
           #   # @param is_prorated [Boolean] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
@@ -1714,7 +1687,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # case rate_type
           # in :FLAT
@@ -1743,7 +1715,6 @@ module Metronome
         # Indicates whether the override applies to commit rates or list rates. Can only be used for overrides that have `is_commit_specific` set to `true`. Defaults to `"LIST_RATE"`.
         #
         # @example
-        #
         # ```ruby
         # case target
         # in :COMMIT_RATE
@@ -1766,7 +1737,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # tier => {
         #   multiplier: Float,
@@ -1796,7 +1766,6 @@ module Metronome
         # Overwrites are prioritized over multipliers and tiered overrides.
         #
         # @example
-        #
         # ```ruby
         # case type
         # in :OVERWRITE
@@ -1817,7 +1786,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # professional_service => {
       #   max_amount: Float,
@@ -1854,7 +1822,7 @@ module Metronome
 
         # @!attribute custom_fields
         #
-        #   @return [Hash{Symbol => String}]
+        #   @return [Hash{Symbol=>String}]
         optional :custom_fields, Metronome::HashOf[String]
 
         # @!attribute description
@@ -1879,7 +1847,7 @@ module Metronome
         #   # @param unit_price [Float] Unit price for the charge. Will be multiplied by quantity to determine the
         #   #   amount and must be specified.
         #   #
-        #   # @param custom_fields [Hash{Symbol => String}]
+        #   # @param custom_fields [Hash{Symbol=>String}]
         #   #
         #   # @param description [String]
         #   #
@@ -1902,7 +1870,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # reseller_royalty => {
       #   fraction: Float,
@@ -2007,7 +1974,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # case reseller_type
         # in :AWS
@@ -2030,7 +1996,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # aws_options => {
         #   aws_account_number: String,
@@ -2065,7 +2030,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # gcp_options => {
         #   gcp_account_id: String,
@@ -2094,7 +2058,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # scheduled_charge => {
       #   product_id: String,
@@ -2141,7 +2104,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # schedule => {
         #   credit_type_id: String,
@@ -2188,7 +2150,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # recurring_schedule => {
           #   amount_distribution: enum: Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::AmountDistribution,
@@ -2287,7 +2248,6 @@ module Metronome
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
             # @example
-            #
             # ```ruby
             # case amount_distribution
             # in :DIVIDED
@@ -2307,7 +2267,6 @@ module Metronome
             end
 
             # @example
-            #
             # ```ruby
             # case frequency
             # in :MONTHLY
@@ -2331,7 +2290,6 @@ module Metronome
           end
 
           # @example
-          #
           # ```ruby
           # schedule_item => {
           #   timestamp: Time,
@@ -2390,7 +2348,6 @@ module Metronome
       # Determines which scheduled and commit charges to consolidate onto the Contract's usage invoice. The charge's `timestamp` must match the usage invoice's `ending_before` date for consolidation to occur. This field cannot be modified after a Contract has been created. If this field is omitted, charges will appear on a separate invoice from usage charges.
       #
       # @example
-      #
       # ```ruby
       # case scheduled_charges_on_usage_invoices
       # in :ALL
@@ -2404,7 +2361,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # transition => {
       #   from_contract_id: String,
@@ -2444,7 +2400,6 @@ module Metronome
         # This field's available values may vary based on your client's configuration.
         #
         # @example
-        #
         # ```ruby
         # case type
         # in :SUPERSEDE
@@ -2461,7 +2416,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # future_invoice_behavior => {
         #   trueup: enum: Metronome::Models::ContractCreateParams::Transition::FutureInvoiceBehavior::Trueup
@@ -2488,7 +2442,6 @@ module Metronome
           # Controls whether future trueup invoices are billed or removed. Default behavior is AS_IS if not specified.
           #
           # @example
-          #
           # ```ruby
           # case trueup
           # in :REMOVE
@@ -2507,7 +2460,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # usage_statement_schedule => {
       #   frequency: enum: Metronome::Models::ContractCreateParams::UsageStatementSchedule::Frequency,
@@ -2562,7 +2514,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # case frequency
         # in :MONTHLY
@@ -2584,7 +2535,6 @@ module Metronome
         # If not provided, defaults to the first day of the month.
         #
         # @example
-        #
         # ```ruby
         # case day
         # in :FIRST_OF_MONTH

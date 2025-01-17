@@ -5,7 +5,7 @@ module Metronome
     class Alerts
       # Create a new alert
       #
-      # @param params [Metronome::Models::AlertCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::AlertCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Symbol, Metronome::Models::AlertCreateParams::AlertType] :alert_type Type of the alert
       #
@@ -47,7 +47,7 @@ module Metronome
       #     with a previously used uniqueness key, a new record will not be created and the
       #     request will fail with a 409 error.
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::AlertCreateResponse]
       #
@@ -64,13 +64,13 @@ module Metronome
 
       # Archive an existing alert
       #
-      # @param params [Metronome::Models::AlertArchiveParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::AlertArchiveParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :id The Metronome ID of the alert
       #
       #   @option params [Boolean] :release_uniqueness_key If true, resets the uniqueness key on this alert so it can be re-used
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::AlertArchiveResponse]
       #

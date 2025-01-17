@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # customer_list_billable_metrics_response => {
     #   id: String,
@@ -58,7 +57,7 @@ module Metronome
 
       # @!attribute custom_fields
       #
-      #   @return [Hash{Symbol => String}]
+      #   @return [Hash{Symbol=>String}]
       optional :custom_fields, Metronome::HashOf[String]
 
       # @!attribute event_type_filter
@@ -70,7 +69,7 @@ module Metronome
       # @!attribute filter
       #   (DEPRECATED) use property_filters & event_type_filter instead
       #
-      #   @return [Hash{Symbol => Object}]
+      #   @return [Hash{Symbol=>Object}]
       optional :filter, Metronome::HashOf[Metronome::Unknown]
 
       # @!attribute group_by
@@ -115,11 +114,11 @@ module Metronome
       #   # @param archived_at [String] RFC 3339 timestamp indicating when the billable metric was archived. If not
       #   #   provided, the billable metric is not archived.
       #   #
-      #   # @param custom_fields [Hash{Symbol => String}]
+      #   # @param custom_fields [Hash{Symbol=>String}]
       #   #
       #   # @param event_type_filter [Metronome::Models::EventTypeFilter] An optional filtering rule to match the 'event_type' property of an event.
       #   #
-      #   # @param filter [Hash{Symbol => Object}] (DEPRECATED) use property_filters & event_type_filter instead
+      #   # @param filter [Hash{Symbol=>Object}] (DEPRECATED) use property_filters & event_type_filter instead
       #   #
       #   # @param group_by [Array<String>] (DEPRECATED) use group_keys instead
       #   #
@@ -157,7 +156,6 @@ module Metronome
       # Specifies the type of aggregation performed on matching events.
       #
       # @example
-      #
       # ```ruby
       # case aggregation_type
       # in :COUNT

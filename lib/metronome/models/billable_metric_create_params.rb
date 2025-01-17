@@ -24,7 +24,7 @@ module Metronome
       # @!attribute custom_fields
       #   Custom fields to attach to the billable metric.
       #
-      #   @return [Hash{Symbol => String}]
+      #   @return [Hash{Symbol=>String}]
       optional :custom_fields, Metronome::HashOf[String]
 
       # @!attribute event_type_filter
@@ -59,7 +59,7 @@ module Metronome
       #   #
       #   # @param aggregation_type [String] Specifies the type of aggregation performed on matching events.
       #   #
-      #   # @param custom_fields [Hash{Symbol => String}] Custom fields to attach to the billable metric.
+      #   # @param custom_fields [Hash{Symbol=>String}] Custom fields to attach to the billable metric.
       #   #
       #   # @param event_type_filter [Metronome::Models::EventTypeFilter] An optional filtering rule to match the 'event_type' property of an event.
       #   #
@@ -94,7 +94,6 @@ module Metronome
       # Specifies the type of aggregation performed on matching events.
       #
       # @example
-      #
       # ```ruby
       # case aggregation_type
       # in :COUNT

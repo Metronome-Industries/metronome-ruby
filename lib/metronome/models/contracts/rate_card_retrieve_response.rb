@@ -4,7 +4,6 @@ module Metronome
   module Models
     module Contracts
       # @example
-      #
       # ```ruby
       # rate_card_retrieve_response => {
       #   data: Metronome::Models::Contracts::RateCardRetrieveResponse::Data
@@ -24,7 +23,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # data => {
         #   id: String,
@@ -74,7 +72,7 @@ module Metronome
 
           # @!attribute custom_fields
           #
-          #   @return [Hash{Symbol => String}]
+          #   @return [Hash{Symbol=>String}]
           optional :custom_fields, Metronome::HashOf[String]
 
           # @!attribute description
@@ -94,7 +92,7 @@ module Metronome
           #   # @param name [String]
           #   # @param aliases [Array<Metronome::Models::Contracts::RateCardRetrieveResponse::Data::Alias>]
           #   # @param credit_type_conversions [Array<Metronome::Models::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion>]
-          #   # @param custom_fields [Hash{Symbol => String}]
+          #   # @param custom_fields [Hash{Symbol=>String}]
           #   # @param description [String]
           #   # @param fiat_credit_type [Metronome::Models::CreditTypeData]
           #   #
@@ -116,7 +114,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # alias => {
           #   name: String,
@@ -151,7 +148,6 @@ module Metronome
           end
 
           # @example
-          #
           # ```ruby
           # credit_type_conversion => {
           #   custom_credit_type: Metronome::Models::CreditTypeData,

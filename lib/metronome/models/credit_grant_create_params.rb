@@ -46,7 +46,7 @@ module Metronome
       # @!attribute custom_fields
       #   Custom fields to attach to the credit grant.
       #
-      #   @return [Hash{Symbol => String}]
+      #   @return [Hash{Symbol=>String}]
       optional :custom_fields, Metronome::HashOf[String]
 
       # @!attribute effective_at
@@ -99,7 +99,7 @@ module Metronome
       #   #
       #   # @param credit_grant_type [String]
       #   #
-      #   # @param custom_fields [Hash{Symbol => String}] Custom fields to attach to the credit grant.
+      #   # @param custom_fields [Hash{Symbol=>String}] Custom fields to attach to the credit grant.
       #   #
       #   # @param effective_at [String] The credit grant will only apply to usage or charges dated on or after this
       #   #   timestamp
@@ -144,7 +144,6 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # grant_amount => {
       #   amount: Float,
@@ -176,7 +175,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # paid_amount => {
       #   amount: Float,
@@ -208,7 +206,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # rollover_settings => {
       #   expires_at: Time,
@@ -255,7 +252,6 @@ module Metronome
         # Specify how much to rollover to the rollover credit grant
         #
         # @example
-        #
         # ```ruby
         # case rollover_amount
         # in Metronome::Models::RolloverAmountMaxPercentage

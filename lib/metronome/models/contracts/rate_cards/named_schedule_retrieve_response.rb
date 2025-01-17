@@ -5,7 +5,6 @@ module Metronome
     module Contracts
       module RateCards
         # @example
-        #
         # ```ruby
         # named_schedule_retrieve_response => {
         #   data: -> { Metronome::ArrayOf[Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse::Data] === _1 }
@@ -28,7 +27,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # data => {
           #   starting_at: Time,

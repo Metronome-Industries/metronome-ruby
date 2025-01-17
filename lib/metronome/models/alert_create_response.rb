@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # alert_create_response => {
     #   data: Metronome::Models::ID

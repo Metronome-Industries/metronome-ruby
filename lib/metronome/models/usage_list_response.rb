@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # usage_list_response => {
     #   data: -> { Metronome::ArrayOf[Metronome::Models::UsageListResponse::Data] === _1 },
@@ -30,7 +29,6 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # data => {
       #   billable_metric_id: String,
@@ -75,7 +73,7 @@ module Metronome
         # @!attribute groups
         #   Values will be either a number or null. Null indicates that there were no matches for the group_by value.
         #
-        #   @return [Hash{Symbol => Float}, nil]
+        #   @return [Hash{Symbol=>Float}, nil]
         optional :groups, Metronome::HashOf[Float]
 
         # @!parse
@@ -91,7 +89,7 @@ module Metronome
         #   #
         #   # @param value [Float, nil]
         #   #
-        #   # @param groups [Hash{Symbol => Float}, nil] Values will be either a number or null. Null indicates that there were no
+        #   # @param groups [Hash{Symbol=>Float}, nil] Values will be either a number or null. Null indicates that there were no
         #   #   matches for the group_by value.
         #   #
         #   def initialize(

@@ -4,7 +4,6 @@ module Metronome
   module Models
     module Contracts
       # @example
-      #
       # ```ruby
       # product_list_item_state => {
       #   created_at: Time,

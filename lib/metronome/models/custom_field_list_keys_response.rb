@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # custom_field_list_keys_response => {
     #   data: -> { Metronome::ArrayOf[Metronome::Models::CustomFieldListKeysResponse::Data] === _1 },
@@ -30,7 +29,6 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # data => {
       #   enforce_uniqueness: Metronome::BooleanModel,
@@ -64,7 +62,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # case entity
         # in :alert

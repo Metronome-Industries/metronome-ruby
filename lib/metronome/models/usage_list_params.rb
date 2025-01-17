@@ -64,7 +64,6 @@ module Metronome
       # A window_size of "day" or "hour" will return the usage for the specified period segmented into daily or hourly aggregates. A window_size of "none" will return a single usage aggregate for the entirety of the specified period.
       #
       # @example
-      #
       # ```ruby
       # case window_size
       # in :HOUR
@@ -84,7 +83,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # billable_metric => {
       #   id: String,
@@ -111,7 +109,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # group_by => {
         #   key: String,

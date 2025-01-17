@@ -7,7 +7,7 @@ module Metronome
         # Get a named schedule for the given rate card. This endpoint's availability is
         #   dependent on your client's configuration.
         #
-        # @param params [Metronome::Models::Contracts::NamedScheduleRetrieveParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::NamedScheduleRetrieveParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :rate_card_id ID of the rate card whose named schedule is to be retrieved
         #
@@ -16,7 +16,7 @@ module Metronome
         #   @option params [Time] :covering_date If provided, at most one schedule segment will be returned (the one that covers
         #     this date). If not provided, all segments will be returned.
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Contracts::NamedScheduleRetrieveResponse]
         #
@@ -34,7 +34,7 @@ module Metronome
         # Update a named schedule for the given rate card. This endpoint's availability is
         #   dependent on your client's configuration.
         #
-        # @param params [Metronome::Models::Contracts::NamedScheduleUpdateParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::NamedScheduleUpdateParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :rate_card_id ID of the rate card whose named schedule is to be updated
         #
@@ -47,7 +47,7 @@ module Metronome
         #
         #   @option params [Time] :ending_before
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [nil]
         #

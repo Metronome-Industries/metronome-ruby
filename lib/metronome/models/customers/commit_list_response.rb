@@ -4,7 +4,6 @@ module Metronome
   module Models
     module Customers
       # @example
-      #
       # ```ruby
       # commit_list_response => {
       #   data: -> { Metronome::ArrayOf[Metronome::Models::Commit] === _1 },

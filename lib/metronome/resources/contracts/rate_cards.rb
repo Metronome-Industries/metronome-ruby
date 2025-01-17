@@ -15,7 +15,7 @@ module Metronome
 
         # Create a new rate card
         #
-        # @param params [Metronome::Models::Contracts::RateCardCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::RateCardCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :name Used only in UI/API. It is not exposed to end customers.
         #
@@ -25,14 +25,14 @@ module Metronome
         #
         #   @option params [Array<Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion>] :credit_type_conversions Required when using custom pricing units in rates.
         #
-        #   @option params [Hash{Symbol => String}] :custom_fields
+        #   @option params [Hash{Symbol=>String}] :custom_fields
         #
         #   @option params [String] :description
         #
         #   @option params [String] :fiat_credit_type_id The Metronome ID of the credit type to associate with the rate card, defaults to
         #     USD (cents) if not passed.
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Contracts::RateCardCreateResponse]
         #
@@ -50,11 +50,11 @@ module Metronome
         # Get a specific rate card NOTE: Use `/contract-pricing/rate-cards/getRates` to
         #   retrieve rate card rates.
         #
-        # @param params [Metronome::Models::Contracts::RateCardRetrieveParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::RateCardRetrieveParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :id
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Contracts::RateCardRetrieveResponse]
         #
@@ -71,7 +71,7 @@ module Metronome
 
         # Update a rate card
         #
-        # @param params [Metronome::Models::Contracts::RateCardUpdateParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::RateCardUpdateParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :rate_card_id ID of the rate card to update
         #
@@ -83,7 +83,7 @@ module Metronome
         #
         #   @option params [String] :name Used only in UI/API. It is not exposed to end customers.
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Contracts::RateCardUpdateResponse]
         #
@@ -101,7 +101,7 @@ module Metronome
         # List rate cards NOTE: Use `/contract-pricing/rate-cards/getRates` to retrieve
         #   rate card rates.
         #
-        # @param params [Metronome::Models::Contracts::RateCardListParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::RateCardListParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [Object] :body Body param:
         #
@@ -109,7 +109,7 @@ module Metronome
         #
         #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::CursorPage<Metronome::Models::Contracts::RateCardListResponse>]
         #
@@ -129,7 +129,7 @@ module Metronome
         # Get all rates for a rate card from starting_at (either in perpetuity or until
         #   ending_before, if provided)
         #
-        # @param params [Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :rate_card_id Body param: ID of the rate card to get the schedule for
         #
@@ -146,7 +146,7 @@ module Metronome
         #     included in the response Passing no selectors will result in all rates being
         #     returned.
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse]
         #

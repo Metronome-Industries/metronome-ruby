@@ -57,7 +57,7 @@ module Metronome
 
     # @private
     #
-    # @return [Hash{String => String}]
+    # @return [Hash{String=>String}]
     #
     private def auth_headers
       {"Authorization" => "Bearer #{@bearer_token}"}

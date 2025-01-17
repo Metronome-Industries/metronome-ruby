@@ -30,7 +30,7 @@ module Metronome
 
         # @!attribute custom_fields
         #
-        #   @return [Hash{Symbol => String}]
+        #   @return [Hash{Symbol=>String}]
         optional :custom_fields, Metronome::HashOf[String]
 
         # @!attribute description
@@ -53,7 +53,7 @@ module Metronome
         #   #
         #   # @param credit_type_conversions [Array<Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion>] Required when using custom pricing units in rates.
         #   #
-        #   # @param custom_fields [Hash{Symbol => String}]
+        #   # @param custom_fields [Hash{Symbol=>String}]
         #   #
         #   # @param description [String]
         #   #
@@ -75,7 +75,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # alias => {
         #   name: String,
@@ -110,7 +109,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # credit_type_conversion => {
         #   custom_credit_type_id: String,

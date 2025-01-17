@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # invoice_regenerate_response => {
     #   data: Metronome::Models::InvoiceRegenerateResponse::Data
@@ -23,7 +22,6 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # data => {
       #   id: String

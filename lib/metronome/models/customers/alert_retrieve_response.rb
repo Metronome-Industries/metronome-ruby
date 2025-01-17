@@ -4,7 +4,6 @@ module Metronome
   module Models
     module Customers
       # @example
-      #
       # ```ruby
       # alert_retrieve_response => {
       #   data: Metronome::Models::Customers::CustomerAlert

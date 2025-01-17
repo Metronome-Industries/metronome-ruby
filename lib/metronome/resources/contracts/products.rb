@@ -6,7 +6,7 @@ module Metronome
       class Products
         # Create a new product
         #
-        # @param params [Metronome::Models::Contracts::ProductCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::ProductCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :name displayed on invoices
         #
@@ -52,7 +52,7 @@ module Metronome
         #
         #   @option params [Array<String>] :tags
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Contracts::ProductCreateResponse]
         #
@@ -69,11 +69,11 @@ module Metronome
 
         # Get a specific product
         #
-        # @param params [Metronome::Models::Contracts::ProductRetrieveParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::ProductRetrieveParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :id
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Contracts::ProductRetrieveResponse]
         #
@@ -90,7 +90,7 @@ module Metronome
 
         # Update a product
         #
-        # @param params [Metronome::Models::Contracts::ProductUpdateParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::ProductUpdateParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :product_id ID of the product to update
         #
@@ -145,7 +145,7 @@ module Metronome
         #
         #   @option params [Array<String>] :tags If not provided, defaults to product's current tags
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Contracts::ProductUpdateResponse]
         #
@@ -162,7 +162,7 @@ module Metronome
 
         # List products
         #
-        # @param params [Metronome::Models::Contracts::ProductListParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::ProductListParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [Integer] :limit Query param: Max number of results that should be returned
         #
@@ -170,7 +170,7 @@ module Metronome
         #
         #   @option params [Symbol, Metronome::Models::Contracts::ProductListParams::ArchiveFilter] :archive_filter Body param: Filter options for the product list
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::CursorPage<Metronome::Models::Contracts::ProductListResponse>]
         #
@@ -190,11 +190,11 @@ module Metronome
 
         # Archive a product
         #
-        # @param params [Metronome::Models::Contracts::ProductArchiveParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::ProductArchiveParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :product_id ID of the product to be archived
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Contracts::ProductArchiveResponse]
         #

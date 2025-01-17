@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # customer_detail => {
     #   id: String,
@@ -23,7 +22,7 @@ module Metronome
 
       # @!attribute custom_fields
       #
-      #   @return [Hash{Symbol => String}]
+      #   @return [Hash{Symbol=>String}]
       required :custom_fields, Metronome::HashOf[String]
 
       # @!attribute customer_config
@@ -57,7 +56,7 @@ module Metronome
       # @!parse
       #   # @param id [String] the Metronome ID of the customer
       #   #
-      #   # @param custom_fields [Hash{Symbol => String}]
+      #   # @param custom_fields [Hash{Symbol=>String}]
       #   #
       #   # @param customer_config [Metronome::Models::CustomerDetail::CustomerConfig]
       #   #
@@ -87,7 +86,6 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # customer_config => {
       #   salesforce_account_id: String
@@ -109,7 +107,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # current_billable_status => {
       #   value: enum: Metronome::Models::CustomerDetail::CurrentBillableStatus::Value,
@@ -138,7 +135,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # case value
         # in :billable
