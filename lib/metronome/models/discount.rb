@@ -9,8 +9,8 @@ module Metronome
     #   id: String,
     #   product: Metronome::Models::Discount::Product,
     #   schedule: Metronome::Models::SchedulePointInTime,
-    #   name: String,
-    #   netsuite_sales_order_id: String
+    #   custom_fields: -> { Metronome::HashOf[String] === _1 },
+    #   name: String
     # }
     # ```
     class Discount < Metronome::BaseModel
@@ -28,6 +28,11 @@ module Metronome
       #
       #   @return [Metronome::Models::SchedulePointInTime]
       required :schedule, -> { Metronome::Models::SchedulePointInTime }
+
+      # @!attribute custom_fields
+      #
+      #   @return [Hash{Symbol => String}]
+      optional :custom_fields, Metronome::HashOf[String]
 
       # @!attribute name
       #
@@ -47,11 +52,13 @@ module Metronome
       #   #
       #   # @param schedule [Metronome::Models::SchedulePointInTime]
       #   #
+      #   # @param custom_fields [Hash{Symbol => String}]
+      #   #
       #   # @param name [String]
       #   #
       #   # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
       #   #
-      #   def initialize(id:, product:, schedule:, name: nil, netsuite_sales_order_id: nil, **) = super
+      #   def initialize(id:, product:, schedule:, custom_fields: nil, name: nil, netsuite_sales_order_id: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 

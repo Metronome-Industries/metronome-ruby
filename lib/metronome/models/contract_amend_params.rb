@@ -880,6 +880,7 @@ module Metronome
       # discount => {
       #   product_id: String,
       #   schedule: Metronome::Models::ContractAmendParams::Discount::Schedule,
+      #   custom_fields: -> { Metronome::HashOf[String] === _1 },
       #   name: String,
       #   netsuite_sales_order_id: String
       # }
@@ -895,6 +896,11 @@ module Metronome
         #
         #   @return [Metronome::Models::ContractAmendParams::Discount::Schedule]
         required :schedule, -> { Metronome::Models::ContractAmendParams::Discount::Schedule }
+
+        # @!attribute custom_fields
+        #
+        #   @return [Hash{Symbol => String}]
+        optional :custom_fields, Metronome::HashOf[String]
 
         # @!attribute name
         #   displayed on invoices
@@ -913,11 +919,13 @@ module Metronome
         #   #
         #   # @param schedule [Metronome::Models::ContractAmendParams::Discount::Schedule] Must provide either schedule_items or recurring_schedule.
         #   #
+        #   # @param custom_fields [Hash{Symbol => String}]
+        #   #
         #   # @param name [String] displayed on invoices
         #   #
         #   # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
         #   #
-        #   def initialize(product_id:, schedule:, name: nil, netsuite_sales_order_id: nil, **) = super
+        #   def initialize(product_id:, schedule:, custom_fields: nil, name: nil, netsuite_sales_order_id: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
