@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # credit => {
     #   id: String,
@@ -64,7 +63,7 @@ module Metronome
 
       # @!attribute custom_fields
       #
-      #   @return [Hash{Symbol => String}]
+      #   @return [Hash{Symbol=>String}]
       optional :custom_fields, Metronome::HashOf[String]
 
       # @!attribute description
@@ -138,7 +137,7 @@ module Metronome
       #   #
       #   # @param contract [Metronome::Models::Credit::Contract]
       #   #
-      #   # @param custom_fields [Hash{Symbol => String}]
+      #   # @param custom_fields [Hash{Symbol=>String}]
       #   #
       #   # @param description [String]
       #   #
@@ -188,7 +187,6 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # product => {
       #   id: String,
@@ -216,7 +214,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # case type
       # in :CREDIT
@@ -230,7 +227,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # contract => {
       #   id: String
@@ -251,7 +247,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # case ledger
       # in Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry
@@ -282,7 +277,6 @@ module Metronome
         variant -> { Metronome::Models::Credit::Ledger::CreditManualLedgerEntry }
 
         # @example
-        #
         # ```ruby
         # credit_segment_start_ledger_entry => {
         #   amount: Float,
@@ -323,7 +317,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # case type
           # in :CREDIT_SEGMENT_START
@@ -338,7 +331,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # credit_automated_invoice_deduction_ledger_entry => {
         #   amount: Float,
@@ -389,7 +381,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # case type
           # in :CREDIT_AUTOMATED_INVOICE_DEDUCTION
@@ -404,7 +395,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # credit_expiration_ledger_entry => {
         #   amount: Float,
@@ -445,7 +435,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # case type
           # in :CREDIT_EXPIRATION
@@ -460,7 +449,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # credit_canceled_ledger_entry => {
         #   amount: Float,
@@ -508,7 +496,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # case type
           # in :CREDIT_CANCELED
@@ -523,7 +510,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # credit_credited_ledger_entry => {
         #   amount: Float,
@@ -571,7 +557,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # case type
           # in :CREDIT_CREDITED
@@ -586,7 +571,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # credit_manual_ledger_entry => {
         #   amount: Float,
@@ -627,7 +611,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # case type
           # in :CREDIT_MANUAL
@@ -643,7 +626,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # case rate_type
       # in :COMMIT_RATE

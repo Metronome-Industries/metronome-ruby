@@ -6,7 +6,7 @@ module Metronome
       class Commits
         # Create a new commit at the customer level.
         #
-        # @param params [Metronome::Models::Customers::CommitCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::CommitCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [Metronome::Models::Customers::CommitCreateParams::AccessSchedule] :access_schedule Schedule for distributing the commit to the customer. For "POSTPAID" commits
         #     only one schedule item is allowed and amount must match invoice_schedule total.
@@ -30,7 +30,7 @@ module Metronome
         #   @option params [Array<String>] :applicable_product_tags Which tags the commit applies to. If both applicable_product_ids and
         #     applicable_product_tags are not provided, the commit applies to all products.
         #
-        #   @option params [Hash{Symbol => String}] :custom_fields
+        #   @option params [Hash{Symbol=>String}] :custom_fields
         #
         #   @option params [String] :description Used only in UI/API. It is not exposed to end customers.
         #
@@ -56,7 +56,7 @@ module Metronome
         #     credit, a new record will not be created and the request will fail with a 409
         #     error.
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Customers::CommitCreateResponse]
         #
@@ -73,7 +73,7 @@ module Metronome
 
         # List commits.
         #
-        # @param params [Metronome::Models::Customers::CommitListParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::CommitListParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id
         #
@@ -97,7 +97,7 @@ module Metronome
         #
         #   @option params [Time] :starting_at Include only commits that have any access on or after the provided date
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Customers::CommitListResponse]
         #
@@ -114,7 +114,7 @@ module Metronome
 
         # Update the end date of a PREPAID commit
         #
-        # @param params [Metronome::Models::Customers::CommitUpdateEndDateParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::CommitUpdateEndDateParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :commit_id ID of the commit to update. Only supports "PREPAID" commits.
         #
@@ -127,7 +127,7 @@ module Metronome
         #   @option params [Time] :invoices_ending_before RFC 3339 timestamp indicating when the commit will stop being invoiced
         #     (exclusive). If not provided, the invoice schedule will not be updated.
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Customers::CommitUpdateEndDateResponse]
         #

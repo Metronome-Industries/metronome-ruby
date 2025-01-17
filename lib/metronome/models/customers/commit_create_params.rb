@@ -52,7 +52,7 @@ module Metronome
 
         # @!attribute custom_fields
         #
-        #   @return [Hash{Symbol => String}]
+        #   @return [Hash{Symbol=>String}]
         optional :custom_fields, Metronome::HashOf[String]
 
         # @!attribute description
@@ -125,7 +125,7 @@ module Metronome
         #   # @param applicable_product_tags [Array<String>] Which tags the commit applies to. If both applicable_product_ids and
         #   #   applicable_product_tags are not provided, the commit applies to all products.
         #   #
-        #   # @param custom_fields [Hash{Symbol => String}]
+        #   # @param custom_fields [Hash{Symbol=>String}]
         #   #
         #   # @param description [String] Used only in UI/API. It is not exposed to end customers.
         #   #
@@ -177,7 +177,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # access_schedule => {
         #   schedule_items: -> { Metronome::ArrayOf[Metronome::Models::Customers::CommitCreateParams::AccessSchedule::ScheduleItem] === _1 },
@@ -212,7 +211,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # schedule_item => {
           #   amount: Float,
@@ -252,7 +250,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # case type
         # in :PREPAID
@@ -269,7 +266,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # invoice_schedule => {
         #   credit_type_id: String,
@@ -319,7 +315,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # recurring_schedule => {
           #   amount_distribution: enum: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::AmountDistribution,
@@ -418,7 +413,6 @@ module Metronome
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
             # @example
-            #
             # ```ruby
             # case amount_distribution
             # in :DIVIDED
@@ -438,7 +432,6 @@ module Metronome
             end
 
             # @example
-            #
             # ```ruby
             # case frequency
             # in :MONTHLY
@@ -462,7 +455,6 @@ module Metronome
           end
 
           # @example
-          #
           # ```ruby
           # schedule_item => {
           #   timestamp: Time,
@@ -518,7 +510,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # case rate_type
         # in :COMMIT_RATE

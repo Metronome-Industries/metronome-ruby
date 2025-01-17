@@ -4,7 +4,6 @@ module Metronome
   module Models
     module Customers
       # @example
-      #
       # ```ruby
       # plan_list_price_adjustments_response => {
       #   charge_id: String,
@@ -56,7 +55,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # case charge_type
         # in :usage
@@ -82,7 +80,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # price => {
         #   adjustment_type: enum: Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType,
@@ -125,7 +122,6 @@ module Metronome
           # Determines how the value will be applied.
           #
           # @example
-          #
           # ```ruby
           # case adjustment_type
           # in :fixed

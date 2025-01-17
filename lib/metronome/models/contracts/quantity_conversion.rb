@@ -4,7 +4,6 @@ module Metronome
   module Models
     module Contracts
       # @example
-      #
       # ```ruby
       # quantity_conversion => {
       #   conversion_factor: Float,
@@ -53,7 +52,6 @@ module Metronome
         # The operation to perform on the quantity
         #
         # @example
-        #
         # ```ruby
         # case operation
         # in :MULTIPLY

@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # contract_retrieve_response => {
     #   data: Metronome::Models::ContractRetrieveResponse::Data
@@ -23,7 +22,6 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # data => {
       #   id: String,
@@ -69,7 +67,7 @@ module Metronome
 
         # @!attribute custom_fields
         #
-        #   @return [Hash{Symbol => String}]
+        #   @return [Hash{Symbol=>String}]
         optional :custom_fields, Metronome::HashOf[String]
 
         # @!attribute customer_billing_provider_configuration
@@ -108,7 +106,7 @@ module Metronome
         #   # @param archived_at [String] RFC 3339 timestamp indicating when the contract was archived. If not returned,
         #   #   the contract is not archived.
         #   #
-        #   # @param custom_fields [Hash{Symbol => String}]
+        #   # @param custom_fields [Hash{Symbol=>String}]
         #   #
         #   # @param customer_billing_provider_configuration [Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration] The billing provider configuration associated with a contract.
         #   #
@@ -141,7 +139,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # amendment => {
         #   id: String,
@@ -275,7 +272,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # reseller_royalty => {
           #   reseller_type: enum: Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty::ResellerType,
@@ -378,7 +374,6 @@ module Metronome
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
             # @example
-            #
             # ```ruby
             # case reseller_type
             # in :AWS
@@ -403,7 +398,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # customer_billing_provider_configuration => {
         #   billing_provider: enum: Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::BillingProvider,
@@ -438,7 +432,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # case billing_provider
           # in :aws_marketplace
@@ -469,7 +462,6 @@ module Metronome
           end
 
           # @example
-          #
           # ```ruby
           # case delivery_method
           # in :direct_to_billing_provider
@@ -495,7 +487,6 @@ module Metronome
         # Determines which scheduled and commit charges to consolidate onto the Contract's usage invoice. The charge's `timestamp` must match the usage invoice's `ending_before` date for consolidation to occur. This field cannot be modified after a Contract has been created. If this field is omitted, charges will appear on a separate invoice from usage charges.
         #
         # @example
-        #
         # ```ruby
         # case scheduled_charges_on_usage_invoices
         # in :ALL

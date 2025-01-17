@@ -4,7 +4,6 @@ module Metronome
   module Models
     module Contracts
       # @example
-      #
       # ```ruby
       # rate_card_update_response => {
       #   data: Metronome::Models::ID

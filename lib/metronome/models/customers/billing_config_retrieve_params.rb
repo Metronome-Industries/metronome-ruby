@@ -24,7 +24,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # case billing_provider_type
         # in :aws_marketplace

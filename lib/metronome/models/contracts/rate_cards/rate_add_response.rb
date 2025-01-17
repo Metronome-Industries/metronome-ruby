@@ -5,7 +5,6 @@ module Metronome
     module Contracts
       module RateCards
         # @example
-        #
         # ```ruby
         # rate_add_response => {
         #   data: Metronome::Models::Contracts::RateCards::RateAddResponse::Data
@@ -25,7 +24,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # data => {
           #   rate_type: enum: Metronome::Models::Contracts::RateCards::RateAddResponse::Data::RateType,
@@ -62,7 +60,7 @@ module Metronome
             # @!attribute custom_rate
             #   Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.
             #
-            #   @return [Hash{Symbol => Object}]
+            #   @return [Hash{Symbol=>Object}]
             optional :custom_rate, Metronome::HashOf[Metronome::Unknown]
 
             # @!attribute is_prorated
@@ -80,7 +78,7 @@ module Metronome
             # @!attribute pricing_group_values
             #   if pricing groups are used, this will contain the values used to calculate the price
             #
-            #   @return [Hash{Symbol => String}]
+            #   @return [Hash{Symbol=>String}]
             optional :pricing_group_values, Metronome::HashOf[String]
 
             # @!attribute quantity
@@ -109,7 +107,7 @@ module Metronome
             #   #
             #   # @param credit_type [Metronome::Models::CreditTypeData]
             #   #
-            #   # @param custom_rate [Hash{Symbol => Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate
+            #   # @param custom_rate [Hash{Symbol=>Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate
             #   #   processors.
             #   #
             #   # @param is_prorated [Boolean] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
@@ -118,7 +116,7 @@ module Metronome
             #   # @param price [Float] Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
             #   #   this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
             #   #
-            #   # @param pricing_group_values [Hash{Symbol => String}] if pricing groups are used, this will contain the values used to calculate the
+            #   # @param pricing_group_values [Hash{Symbol=>String}] if pricing groups are used, this will contain the values used to calculate the
             #   #   price
             #   #
             #   # @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
@@ -148,7 +146,6 @@ module Metronome
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
             # @example
-            #
             # ```ruby
             # case rate_type
             # in :FLAT
@@ -181,7 +178,6 @@ module Metronome
             end
 
             # @example
-            #
             # ```ruby
             # commit_rate => {
             #   rate_type: enum: Metronome::Models::Contracts::RateCards::RateAddResponse::Data::CommitRate::RateType,
@@ -225,7 +221,6 @@ module Metronome
               # def initialize: (Hash | Metronome::BaseModel) -> void
 
               # @example
-              #
               # ```ruby
               # case rate_type
               # in :FLAT

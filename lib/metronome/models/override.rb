@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # override => {
     #   id: String,
@@ -122,7 +121,7 @@ module Metronome
       # @!attribute value
       #   Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.
       #
-      #   @return [Hash{Symbol => Object}]
+      #   @return [Hash{Symbol=>Object}]
       optional :value, Metronome::HashOf[Metronome::Unknown]
 
       # @!parse
@@ -168,7 +167,7 @@ module Metronome
       #   #
       #   # @param type [String]
       #   #
-      #   # @param value [Hash{Symbol => Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate
+      #   # @param value [Hash{Symbol=>Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate
       #   #   processors.
       #   #
       #   def initialize(
@@ -201,7 +200,6 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # override_specifier => {
       #   commit_ids: -> { Metronome::ArrayOf[String] === _1 },
@@ -219,12 +217,12 @@ module Metronome
 
         # @!attribute presentation_group_values
         #
-        #   @return [Hash{Symbol => String}, nil]
+        #   @return [Hash{Symbol=>String}, nil]
         optional :presentation_group_values, Metronome::HashOf[String]
 
         # @!attribute pricing_group_values
         #
-        #   @return [Hash{Symbol => String}]
+        #   @return [Hash{Symbol=>String}]
         optional :pricing_group_values, Metronome::HashOf[String]
 
         # @!attribute product_id
@@ -239,8 +237,8 @@ module Metronome
 
         # @!parse
         #   # @param commit_ids [Array<String>]
-        #   # @param presentation_group_values [Hash{Symbol => String}, nil]
-        #   # @param pricing_group_values [Hash{Symbol => String}]
+        #   # @param presentation_group_values [Hash{Symbol=>String}, nil]
+        #   # @param pricing_group_values [Hash{Symbol=>String}]
         #   # @param product_id [String]
         #   # @param product_tags [Array<String>]
         #   #
@@ -259,7 +257,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # override_tier => {
       #   multiplier: Float,
@@ -287,7 +284,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # overwrite_rate => {
       #   rate_type: enum: Metronome::Models::Override::OverwriteRate::RateType,
@@ -312,7 +308,7 @@ module Metronome
         # @!attribute custom_rate
         #   Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.
         #
-        #   @return [Hash{Symbol => Object}]
+        #   @return [Hash{Symbol=>Object}]
         optional :custom_rate, Metronome::HashOf[Metronome::Unknown]
 
         # @!attribute is_prorated
@@ -344,7 +340,7 @@ module Metronome
         #   #
         #   # @param credit_type [Metronome::Models::CreditTypeData]
         #   #
-        #   # @param custom_rate [Hash{Symbol => Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate
+        #   # @param custom_rate [Hash{Symbol=>Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate
         #   #   processors.
         #   #
         #   # @param is_prorated [Boolean] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
@@ -373,7 +369,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # case rate_type
         # in :FLAT
@@ -400,7 +395,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # product => {
       #   id: String,
@@ -428,7 +422,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # case rate_type
       # in :FLAT
@@ -454,7 +447,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # case target
       # in :COMMIT_RATE
@@ -471,7 +463,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # case type
       # in :OVERWRITE

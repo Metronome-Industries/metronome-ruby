@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # audit_log_list_response => {
     #   id: String,
@@ -89,7 +88,6 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # request => {
       #   id: String,
@@ -124,7 +122,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # actor => {
       #   id: String,
@@ -159,7 +156,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # case status
       # in :success

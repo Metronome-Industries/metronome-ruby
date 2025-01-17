@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # contract_without_amendments => {
     #   commits: -> { Metronome::ArrayOf[Metronome::Models::Commit] === _1 },
@@ -210,7 +209,6 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # transition => {
       #   from_contract_id: String,
@@ -244,7 +242,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # case type
         # in :SUPERSEDE
@@ -262,7 +259,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # usage_statement_schedule => {
       #   billing_anchor_date: Time,
@@ -292,7 +288,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # case frequency
         # in :MONTHLY
@@ -313,7 +308,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # reseller_royalty => {
       #   fraction: Float,
@@ -428,7 +422,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # case reseller_type
         # in :AWS
@@ -454,7 +447,6 @@ module Metronome
       # Determines which scheduled and commit charges to consolidate onto the Contract's usage invoice. The charge's `timestamp` must match the usage invoice's `ending_before` date for consolidation to occur. This field cannot be modified after a Contract has been created. If this field is omitted, charges will appear on a separate invoice from usage charges.
       #
       # @example
-      #
       # ```ruby
       # case scheduled_charges_on_usage_invoices
       # in :ALL
@@ -468,7 +460,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # usage_filter => {
       #   current: Metronome::Models::BaseUsageFilter,
@@ -503,7 +494,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # update => {
         #   group_key: String,

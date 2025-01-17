@@ -63,7 +63,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # selector => {
         #   partial_pricing_group_values: -> { Metronome::HashOf[String] === _1 },
@@ -75,13 +74,13 @@ module Metronome
           # @!attribute partial_pricing_group_values
           #   List of pricing group key value pairs, rates containing the matching key / value pairs will be included in the response.
           #
-          #   @return [Hash{Symbol => String}]
+          #   @return [Hash{Symbol=>String}]
           optional :partial_pricing_group_values, Metronome::HashOf[String]
 
           # @!attribute pricing_group_values
           #   List of pricing group key value pairs, rates matching all of the key / value pairs will be included in the response.
           #
-          #   @return [Hash{Symbol => String}]
+          #   @return [Hash{Symbol=>String}]
           optional :pricing_group_values, Metronome::HashOf[String]
 
           # @!attribute product_id
@@ -91,10 +90,10 @@ module Metronome
           optional :product_id, String
 
           # @!parse
-          #   # @param partial_pricing_group_values [Hash{Symbol => String}] List of pricing group key value pairs, rates containing the matching key / value
+          #   # @param partial_pricing_group_values [Hash{Symbol=>String}] List of pricing group key value pairs, rates containing the matching key / value
           #   #   pairs will be included in the response.
           #   #
-          #   # @param pricing_group_values [Hash{Symbol => String}] List of pricing group key value pairs, rates matching all of the key / value
+          #   # @param pricing_group_values [Hash{Symbol=>String}] List of pricing group key value pairs, rates matching all of the key / value
           #   #   pairs will be included in the response.
           #   #
           #   # @param product_id [String] Rates matching the product id will be included in the response.

@@ -4,7 +4,6 @@ module Metronome
   module Models
     module Customers
       # @example
-      #
       # ```ruby
       # billing_config_retrieve_response => {
       #   data: Metronome::Models::Customers::BillingConfigRetrieveResponse::Data
@@ -24,7 +23,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # data => {
         #   aws_expiration_date: Time,
@@ -134,7 +132,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # case aws_region
           # in :"af-south-1"
@@ -182,7 +179,6 @@ module Metronome
           end
 
           # @example
-          #
           # ```ruby
           # case azure_subscription_status
           # in :Subscribed
@@ -205,7 +201,6 @@ module Metronome
           end
 
           # @example
-          #
           # ```ruby
           # case stripe_collection_method
           # in :charge_automatically

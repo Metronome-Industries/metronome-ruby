@@ -114,7 +114,6 @@ module Metronome
         # Invoice sort order by issued_at, e.g. date_asc or date_desc.  Defaults to date_asc.
         #
         # @example
-        #
         # ```ruby
         # case sort
         # in :date_asc
@@ -133,7 +132,6 @@ module Metronome
         # The granularity of the breakdowns to return. Defaults to day.
         #
         # @example
-        #
         # ```ruby
         # case window_size
         # in :HOUR

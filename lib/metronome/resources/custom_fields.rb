@@ -6,7 +6,7 @@ module Metronome
       # Add a key to the allow list for a given entity. There is a 100 character limit
       #   on custom field keys.
       #
-      # @param params [Metronome::Models::CustomFieldAddKeyParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomFieldAddKeyParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Boolean] :enforce_uniqueness
       #
@@ -14,7 +14,7 @@ module Metronome
       #
       #   @option params [String] :key
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       #
@@ -31,7 +31,7 @@ module Metronome
 
       # Deletes one or more custom fields on an instance of a Metronome entity.
       #
-      # @param params [Metronome::Models::CustomFieldDeleteValuesParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomFieldDeleteValuesParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Symbol, Metronome::Models::CustomFieldDeleteValuesParams::Entity] :entity
       #
@@ -39,7 +39,7 @@ module Metronome
       #
       #   @option params [Array<String>] :keys
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       #
@@ -56,13 +56,13 @@ module Metronome
 
       # List all active custom field keys, optionally filtered by entity type.
       #
-      # @param params [Metronome::Models::CustomFieldListKeysParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomFieldListKeysParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
       #
       #   @option params [Array<Symbol, Metronome::Models::CustomFieldListKeysParams::Entity>] :entities Body param: Optional list of entity types to return keys for
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CustomFieldListKeysResponse]
       #
@@ -81,13 +81,13 @@ module Metronome
 
       # Remove a key from the allow list for a given entity.
       #
-      # @param params [Metronome::Models::CustomFieldRemoveKeyParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomFieldRemoveKeyParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Symbol, Metronome::Models::CustomFieldRemoveKeyParams::Entity] :entity
       #
       #   @option params [String] :key
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       #
@@ -110,15 +110,15 @@ module Metronome
       #   updates are not supported. There is a 200 character limit on custom field
       #   values.
       #
-      # @param params [Metronome::Models::CustomFieldSetValuesParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomFieldSetValuesParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
-      #   @option params [Hash{Symbol => String}] :custom_fields
+      #   @option params [Hash{Symbol=>String}] :custom_fields
       #
       #   @option params [Symbol, Metronome::Models::CustomFieldSetValuesParams::Entity] :entity
       #
       #   @option params [String] :entity_id
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       #

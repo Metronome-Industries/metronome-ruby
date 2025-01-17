@@ -66,7 +66,6 @@ module Metronome
       # **Note:** `ended,upcoming` combination is not yet supported.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :all

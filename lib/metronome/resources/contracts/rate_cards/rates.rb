@@ -7,7 +7,7 @@ module Metronome
         class Rates
           # Get all rates for a rate card at a point in time
           #
-          # @param params [Metronome::Models::Contracts::RateCards::RateListParams, Hash{Symbol => Object}] Attributes to send in this request.
+          # @param params [Metronome::Models::Contracts::RateCards::RateListParams, Hash{Symbol=>Object}] Attributes to send in this request.
           #
           #   @option params [Time] :at Body param: inclusive starting point for the rates schedule
           #
@@ -21,7 +21,7 @@ module Metronome
           #     included in the response Passing no selectors will result in all rates being
           #     returned.
           #
-          # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+          # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
           #
           # @return [Metronome::CursorPage<Metronome::Models::Contracts::RateCards::RateListResponse>]
           #
@@ -41,7 +41,7 @@ module Metronome
 
           # Add a new rate
           #
-          # @param params [Metronome::Models::Contracts::RateCards::RateAddParams, Hash{Symbol => Object}] Attributes to send in this request.
+          # @param params [Metronome::Models::Contracts::RateCards::RateAddParams, Hash{Symbol=>Object}] Attributes to send in this request.
           #
           #   @option params [Boolean] :entitled
           #
@@ -60,7 +60,7 @@ module Metronome
           #     (cents) if not passed. Used by all rate_types except type PERCENTAGE. PERCENTAGE
           #     rates use the credit type of associated rates.
           #
-          #   @option params [Hash{Symbol => Object}] :custom_rate Only set for CUSTOM rate_type. This field is interpreted by custom rate
+          #   @option params [Hash{Symbol=>Object}] :custom_rate Only set for CUSTOM rate_type. This field is interpreted by custom rate
           #     processors.
           #
           #   @option params [Time] :ending_before exclusive end date
@@ -72,7 +72,7 @@ module Metronome
           #     PERCENTAGE rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this
           #     must be >=0 and <=1.
           #
-          #   @option params [Hash{Symbol => String}] :pricing_group_values Optional. List of pricing group key value pairs which will be used to calculate
+          #   @option params [Hash{Symbol=>String}] :pricing_group_values Optional. List of pricing group key value pairs which will be used to calculate
           #     the price.
           #
           #   @option params [Float] :quantity Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
@@ -83,7 +83,7 @@ module Metronome
           #     using list prices rather than the standard rates for this product on the
           #     contract.
           #
-          # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+          # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
           #
           # @return [Metronome::Models::Contracts::RateCards::RateAddResponse]
           #
@@ -100,13 +100,13 @@ module Metronome
 
           # Add new rates
           #
-          # @param params [Metronome::Models::Contracts::RateCards::RateAddManyParams, Hash{Symbol => Object}] Attributes to send in this request.
+          # @param params [Metronome::Models::Contracts::RateCards::RateAddManyParams, Hash{Symbol=>Object}] Attributes to send in this request.
           #
           #   @option params [String] :rate_card_id
           #
           #   @option params [Array<Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate>] :rates
           #
-          # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+          # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
           #
           # @return [Metronome::Models::Contracts::RateCards::RateAddManyResponse]
           #

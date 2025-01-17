@@ -7,13 +7,13 @@ module Metronome
         class ProductOrders
           # Updates ordering of specified products
           #
-          # @param params [Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams, Hash{Symbol => Object}] Attributes to send in this request.
+          # @param params [Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams, Hash{Symbol=>Object}] Attributes to send in this request.
           #
           #   @option params [Array<Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove>] :product_moves
           #
           #   @option params [String] :rate_card_id ID of the rate card to update
           #
-          # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+          # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
           #
           # @return [Metronome::Models::Contracts::RateCards::ProductOrderUpdateResponse]
           #
@@ -30,13 +30,13 @@ module Metronome
 
           # Sets the ordering of products within a rate card
           #
-          # @param params [Metronome::Models::Contracts::RateCards::ProductOrderSetParams, Hash{Symbol => Object}] Attributes to send in this request.
+          # @param params [Metronome::Models::Contracts::RateCards::ProductOrderSetParams, Hash{Symbol=>Object}] Attributes to send in this request.
           #
           #   @option params [Array<String>] :product_order
           #
           #   @option params [String] :rate_card_id ID of the rate card to update
           #
-          # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+          # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
           #
           # @return [Metronome::Models::Contracts::RateCards::ProductOrderSetResponse]
           #

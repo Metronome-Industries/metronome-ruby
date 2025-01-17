@@ -5,7 +5,6 @@ module Metronome
     module Contracts
       module RateCards
         # @example
-        #
         # ```ruby
         # product_order_set_response => {
         #   data: Metronome::Models::ID

@@ -146,7 +146,6 @@ module Metronome
       # Type of the alert
       #
       # @example
-      #
       # ```ruby
       # case alert_type
       # in :low_credit_balance_reached
@@ -183,7 +182,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # custom_field_filter => {
       #   entity: enum: Metronome::Models::AlertCreateParams::CustomFieldFilter::Entity,
@@ -217,7 +215,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # case entity
         # in :Contract
@@ -238,7 +235,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # group_key_filter => {
       #   key: String,

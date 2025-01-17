@@ -29,7 +29,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # product_move => {
           #   position: Float,

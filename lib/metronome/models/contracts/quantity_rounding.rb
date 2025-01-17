@@ -4,7 +4,6 @@ module Metronome
   module Models
     module Contracts
       # @example
-      #
       # ```ruby
       # quantity_rounding => {
       #   decimal_places: Float,
@@ -36,7 +35,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # case rounding_method
         # in :ROUND_UP

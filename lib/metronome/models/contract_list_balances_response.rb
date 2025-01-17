@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # contract_list_balances_response => {
     #   data: -> { Metronome::ArrayOf[union: Metronome::Models::ContractListBalancesResponse::Data] === _1 },
@@ -30,7 +29,6 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # case data
       # in Metronome::Models::Commit

@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # schedule_point_in_time => {
     #   credit_type: Metronome::Models::CreditTypeData,
@@ -33,7 +32,6 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # schedule_item => {
       #   id: String,

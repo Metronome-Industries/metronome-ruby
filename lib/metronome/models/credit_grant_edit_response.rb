@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # credit_grant_edit_response => {
     #   data: Metronome::Models::ID

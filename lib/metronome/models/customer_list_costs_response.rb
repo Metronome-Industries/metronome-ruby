@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # customer_list_costs_response => {
     #   credit_types: -> { Metronome::HashOf[Metronome::Models::CustomerListCostsResponse::CreditType] === _1 },
@@ -14,7 +13,7 @@ module Metronome
     class CustomerListCostsResponse < Metronome::BaseModel
       # @!attribute credit_types
       #
-      #   @return [Hash{Symbol => Metronome::Models::CustomerListCostsResponse::CreditType}]
+      #   @return [Hash{Symbol=>Metronome::Models::CustomerListCostsResponse::CreditType}]
       required :credit_types,
                -> {
                  Metronome::HashOf[Metronome::Models::CustomerListCostsResponse::CreditType]
@@ -31,7 +30,7 @@ module Metronome
       required :start_timestamp, Time
 
       # @!parse
-      #   # @param credit_types [Hash{Symbol => Metronome::Models::CustomerListCostsResponse::CreditType}]
+      #   # @param credit_types [Hash{Symbol=>Metronome::Models::CustomerListCostsResponse::CreditType}]
       #   # @param end_timestamp [String]
       #   # @param start_timestamp [String]
       #   #
@@ -40,7 +39,6 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # credit_type => {
       #   cost: Float,
@@ -77,7 +75,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # line_item_breakdown => {
         #   cost: Float,

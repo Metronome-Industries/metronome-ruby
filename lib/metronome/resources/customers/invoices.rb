@@ -6,7 +6,7 @@ module Metronome
       class Invoices
         # Fetch a specific invoice for a given customer.
         #
-        # @param params [Metronome::Models::Customers::InvoiceRetrieveParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::InvoiceRetrieveParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id Path param:
         #
@@ -15,7 +15,7 @@ module Metronome
         #   @option params [Boolean] :skip_zero_qty_line_items Query param: If set, all zero quantity line items will be filtered out of the
         #     response
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Customers::InvoiceRetrieveResponse]
         #
@@ -39,7 +39,7 @@ module Metronome
         # List all invoices for a given customer, optionally filtered by status, date
         #   range, and/or credit type.
         #
-        # @param params [Metronome::Models::Customers::InvoiceListParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::InvoiceListParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id Path param:
         #
@@ -63,7 +63,7 @@ module Metronome
         #
         #   @option params [String] :status Query param: Invoice status, e.g. DRAFT, FINALIZED, or VOID
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::CursorPage<Metronome::Models::Customers::Invoice>]
         #
@@ -84,7 +84,7 @@ module Metronome
 
         # Add a one time charge to the specified invoice
         #
-        # @param params [Metronome::Models::Customers::InvoiceAddChargeParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::InvoiceAddChargeParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id Path param:
         #
@@ -103,7 +103,7 @@ module Metronome
         #
         #   @option params [Float] :quantity Body param:
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Customers::InvoiceAddChargeResponse]
         #
@@ -124,7 +124,7 @@ module Metronome
         # List daily or hourly invoice breakdowns for a given customer, optionally
         #   filtered by status, date range, and/or credit type.
         #
-        # @param params [Metronome::Models::Customers::InvoiceListBreakdownsParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::InvoiceListBreakdownsParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id Path param:
         #
@@ -153,7 +153,7 @@ module Metronome
         #
         #   @option params [Symbol, Metronome::Models::Customers::InvoiceListBreakdownsParams::WindowSize] :window_size Query param: The granularity of the breakdowns to return. Defaults to day.
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::CursorPage<Metronome::Models::Customers::InvoiceListBreakdownsResponse>]
         #

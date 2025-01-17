@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # event_type_filter => {
     #   in_values: -> { Metronome::ArrayOf[String] === _1 },

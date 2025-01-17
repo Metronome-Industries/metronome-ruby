@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # customer_create_response => {
     #   data: Metronome::Models::Customer

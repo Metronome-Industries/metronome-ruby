@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # pro_service => {
     #   id: String,
@@ -45,7 +44,7 @@ module Metronome
 
       # @!attribute custom_fields
       #
-      #   @return [Hash{Symbol => String}]
+      #   @return [Hash{Symbol=>String}]
       optional :custom_fields, Metronome::HashOf[String]
 
       # @!attribute description
@@ -72,7 +71,7 @@ module Metronome
       #   # @param unit_price [Float] Unit price for the charge. Will be multiplied by quantity to determine the
       #   #   amount and must be specified.
       #   #
-      #   # @param custom_fields [Hash{Symbol => String}]
+      #   # @param custom_fields [Hash{Symbol=>String}]
       #   #
       #   # @param description [String]
       #   #

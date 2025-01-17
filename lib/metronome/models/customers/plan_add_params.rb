@@ -95,7 +95,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # overage_rate_adjustment => {
         #   custom_credit_type_id: String,
@@ -133,7 +132,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # price_adjustment => {
         #   adjustment_type: enum: Metronome::Models::Customers::PlanAddParams::PriceAdjustment::AdjustmentType,
@@ -200,7 +198,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # case adjustment_type
           # in :percentage
@@ -224,7 +221,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # trial_spec => {
         #   length_in_days: Float,
@@ -257,7 +253,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # spending_cap => {
           #   amount: Float,

@@ -6,7 +6,7 @@ module Metronome
       # Fetch aggregated usage data for multiple customers and billable-metrics, broken
       #   into intervals of the specified length.
       #
-      # @param params [Metronome::Models::UsageListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::UsageListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Time] :ending_before Body param:
       #
@@ -25,7 +25,7 @@ module Metronome
       #   @option params [Array<String>] :customer_ids Body param: A list of Metronome customer IDs to fetch usage for. If absent,
       #     usage for all customers will be returned.
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::UsageListResponse]
       #
@@ -48,11 +48,11 @@ module Metronome
       #   [Getting usage into Metronome](https://docs.metronome.com/connect-metronome/) to
       #   learn more about usage events.
       #
-      # @param params [Metronome::Models::UsageIngestParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::UsageIngestParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Array<Metronome::Models::UsageIngestParams::Usage>] :usage
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [nil]
       #
@@ -70,7 +70,7 @@ module Metronome
       # Fetch aggregated usage data for the specified customer, billable-metric, and
       #   optional group, broken into intervals of the specified length.
       #
-      # @param params [Metronome::Models::UsageListWithGroupsParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::UsageListWithGroupsParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :billable_metric_id Body param:
       #
@@ -95,7 +95,7 @@ module Metronome
       #
       #   @option params [Time] :starting_on Body param:
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::UsageListWithGroupsResponse>]
       #

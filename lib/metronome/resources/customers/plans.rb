@@ -6,7 +6,7 @@ module Metronome
       class Plans
         # List the given customer's plans in reverse-chronological order.
         #
-        # @param params [Metronome::Models::Customers::PlanListParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::PlanListParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id Path param:
         #
@@ -14,7 +14,7 @@ module Metronome
         #
         #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::CursorPage<Metronome::Models::Customers::PlanListResponse>]
         #
@@ -37,7 +37,7 @@ module Metronome
         #   [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments)
         #   for details on the price adjustments.
         #
-        # @param params [Metronome::Models::Customers::PlanAddParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::PlanAddParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id Path param:
         #
@@ -64,7 +64,7 @@ module Metronome
         #     [trial configuration documentation](https://docs.metronome.com/provisioning/configure-trials/)
         #     for details.
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Customers::PlanAddResponse]
         #
@@ -84,7 +84,7 @@ module Metronome
 
         # Change the end date of a customer's plan.
         #
-        # @param params [Metronome::Models::Customers::PlanEndParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::PlanEndParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id Path param:
         #
@@ -102,7 +102,7 @@ module Metronome
         #     invoice (if any). Stripe invoices will be voided if finalized or deleted if
         #     still in draft state.
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::Models::Customers::PlanEndResponse]
         #
@@ -127,7 +127,7 @@ module Metronome
         #   [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments)
         #   for details.
         #
-        # @param params [Metronome::Models::Customers::PlanListPriceAdjustmentsParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::PlanListPriceAdjustmentsParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :customer_id Path param:
         #
@@ -137,7 +137,7 @@ module Metronome
         #
         #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
         #
-        # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Metronome::CursorPage<Metronome::Models::Customers::PlanListPriceAdjustmentsResponse>]
         #

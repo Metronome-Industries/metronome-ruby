@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # credit_grant_list_credit_types_response => {
     #   id: String,

@@ -25,7 +25,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # rate => {
           #   entitled: Metronome::BooleanModel,
@@ -78,7 +77,7 @@ module Metronome
             # @!attribute custom_rate
             #   Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.
             #
-            #   @return [Hash{Symbol => Object}]
+            #   @return [Hash{Symbol=>Object}]
             optional :custom_rate, Metronome::HashOf[Metronome::Unknown]
 
             # @!attribute ending_before
@@ -102,7 +101,7 @@ module Metronome
             # @!attribute pricing_group_values
             #   Optional. List of pricing group key value pairs which will be used to calculate the price.
             #
-            #   @return [Hash{Symbol => String}]
+            #   @return [Hash{Symbol=>String}]
             optional :pricing_group_values, Metronome::HashOf[String]
 
             # @!attribute quantity
@@ -139,7 +138,7 @@ module Metronome
             #   #   (cents) if not passed. Used by all rate_types except type PERCENTAGE. PERCENTAGE
             #   #   rates use the credit type of associated rates."
             #   #
-            #   # @param custom_rate [Hash{Symbol => Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate
+            #   # @param custom_rate [Hash{Symbol=>Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate
             #   #   processors.
             #   #
             #   # @param ending_before [String] exclusive end date
@@ -151,7 +150,7 @@ module Metronome
             #   #   PERCENTAGE rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this
             #   #   must be >=0 and <=1.
             #   #
-            #   # @param pricing_group_values [Hash{Symbol => String}] Optional. List of pricing group key value pairs which will be used to calculate
+            #   # @param pricing_group_values [Hash{Symbol=>String}] Optional. List of pricing group key value pairs which will be used to calculate
             #   #   the price.
             #   #
             #   # @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
@@ -185,7 +184,6 @@ module Metronome
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
             # @example
-            #
             # ```ruby
             # case rate_type
             # in :FLAT
@@ -211,7 +209,6 @@ module Metronome
             end
 
             # @example
-            #
             # ```ruby
             # commit_rate => {
             #   rate_type: enum: Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::RateType,
@@ -255,7 +252,6 @@ module Metronome
               # def initialize: (Hash | Metronome::BaseModel) -> void
 
               # @example
-              #
               # ```ruby
               # case rate_type
               # in :FLAT

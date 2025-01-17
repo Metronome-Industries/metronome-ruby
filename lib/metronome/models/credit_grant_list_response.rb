@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # credit_grant_list_response => {
     #   id: String,
@@ -29,7 +28,7 @@ module Metronome
 
       # @!attribute custom_fields
       #
-      #   @return [Hash{Symbol => String}]
+      #   @return [Hash{Symbol=>String}]
       required :custom_fields, Metronome::HashOf[String]
 
       # @!attribute customer_id
@@ -115,7 +114,7 @@ module Metronome
       #   #   billing period. Expiration deductions will be included only if the grant expires
       #   #   before the end of the current billing period.
       #   #
-      #   # @param custom_fields [Hash{Symbol => String}]
+      #   # @param custom_fields [Hash{Symbol=>String}]
       #   #
       #   # @param customer_id [String] the Metronome ID of the customer
       #   #
@@ -175,7 +174,6 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # balance => {
       #   effective_at: Time,
@@ -222,7 +220,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # grant_amount => {
       #   amount: Float,
@@ -254,7 +251,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # paid_amount => {
       #   amount: Float,
@@ -286,7 +282,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # product => {
       #   id: String,

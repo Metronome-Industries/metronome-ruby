@@ -68,7 +68,6 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # line_item => {
       #   professional_service_id: String,

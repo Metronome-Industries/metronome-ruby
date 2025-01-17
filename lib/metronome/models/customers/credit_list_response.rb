@@ -4,7 +4,6 @@ module Metronome
   module Models
     module Customers
       # @example
-      #
       # ```ruby
       # credit_list_response => {
       #   data: -> { Metronome::ArrayOf[Metronome::Models::Credit] === _1 },

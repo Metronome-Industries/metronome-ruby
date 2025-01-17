@@ -99,7 +99,6 @@ module Metronome
         # Invoice sort order by issued_at, e.g. date_asc or date_desc.  Defaults to date_asc.
         #
         # @example
-        #
         # ```ruby
         # case sort
         # in :date_asc

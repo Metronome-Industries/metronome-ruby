@@ -2,7 +2,6 @@
 
 module Metronome
   # @example
-  #
   # ```ruby
   # if cursor_page.has_next?
   #   page = cursor_page.next_page
@@ -10,7 +9,6 @@ module Metronome
   # ```
   #
   # @example
-  #
   # ```ruby
   # cursor_page.auto_paging_each do |item|
   # #   item ...
@@ -18,7 +16,6 @@ module Metronome
   # ```
   #
   # @example
-  #
   # ```ruby
   # items = cursor_page.to_enum.take(2)
   #
@@ -34,10 +31,10 @@ module Metronome
     # @private
     #
     # @param client [Metronome::BaseClient]
-    # @param req [Hash{Symbol => Object}]
-    # @param opts [Hash{Symbol => Object}]
-    # @param headers [Hash{String => String}]
-    # @param unwrapped [Hash{Symbol => Object}]
+    # @param req [Hash{Symbol=>Object}]
+    # @param opts [Hash{Symbol=>Object}]
+    # @param headers [Hash{String=>String}]
+    # @param unwrapped [Hash{Symbol=>Object}]
     #
     def initialize(client:, req:, opts:, headers:, unwrapped:)
       case unwrapped

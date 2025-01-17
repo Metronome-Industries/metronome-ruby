@@ -4,7 +4,6 @@ module Metronome
   module Models
     module Customers
       # @example
-      #
       # ```ruby
       # credit_create_response => {
       #   data: Metronome::Models::ID

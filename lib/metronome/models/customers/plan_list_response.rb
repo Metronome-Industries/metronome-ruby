@@ -4,7 +4,6 @@ module Metronome
   module Models
     module Customers
       # @example
-      #
       # ```ruby
       # plan_list_response => {
       #   id: String,
@@ -24,7 +23,7 @@ module Metronome
 
         # @!attribute custom_fields
         #
-        #   @return [Hash{Symbol => String}]
+        #   @return [Hash{Symbol=>String}]
         required :custom_fields, Metronome::HashOf[String]
 
         # @!attribute plan_description
@@ -66,7 +65,7 @@ module Metronome
         # @!parse
         #   # @param id [String] the ID of the customer plan
         #   #
-        #   # @param custom_fields [Hash{Symbol => String}]
+        #   # @param custom_fields [Hash{Symbol=>String}]
         #   #
         #   # @param plan_description [String]
         #   #
@@ -100,7 +99,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # trial_info => {
         #   ending_before: Time,
@@ -130,7 +128,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # spending_cap => {
           #   amount: Float,

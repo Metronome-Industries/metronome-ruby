@@ -5,7 +5,6 @@ module Metronome
     module Contracts
       module RateCards
         # @example
-        #
         # ```ruby
         # rate_list_response => {
         #   entitled: Metronome::BooleanModel,
@@ -24,7 +23,7 @@ module Metronome
 
           # @!attribute product_custom_fields
           #
-          #   @return [Hash{Symbol => String}]
+          #   @return [Hash{Symbol=>String}]
           required :product_custom_fields, Metronome::HashOf[String]
 
           # @!attribute product_id
@@ -65,13 +64,13 @@ module Metronome
 
           # @!attribute pricing_group_values
           #
-          #   @return [Hash{Symbol => String}]
+          #   @return [Hash{Symbol=>String}]
           optional :pricing_group_values, Metronome::HashOf[String]
 
           # @!parse
           #   # @param entitled [Boolean]
           #   #
-          #   # @param product_custom_fields [Hash{Symbol => String}]
+          #   # @param product_custom_fields [Hash{Symbol=>String}]
           #   #
           #   # @param product_id [String]
           #   #
@@ -88,7 +87,7 @@ module Metronome
           #   #
           #   # @param ending_before [String]
           #   #
-          #   # @param pricing_group_values [Hash{Symbol => String}]
+          #   # @param pricing_group_values [Hash{Symbol=>String}]
           #   #
           #   def initialize(
           #     entitled:,
@@ -109,7 +108,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # commit_rate => {
           #   rate_type: enum: Metronome::Models::Contracts::RateCards::RateListResponse::CommitRate::RateType,
@@ -153,7 +151,6 @@ module Metronome
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
             # @example
-            #
             # ```ruby
             # case rate_type
             # in :FLAT

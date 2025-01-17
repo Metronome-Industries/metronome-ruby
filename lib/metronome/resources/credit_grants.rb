@@ -5,7 +5,7 @@ module Metronome
     class CreditGrants
       # Create a new credit grant
       #
-      # @param params [Metronome::Models::CreditGrantCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CreditGrantCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :customer_id the Metronome ID of the customer
       #
@@ -21,7 +21,7 @@ module Metronome
       #
       #   @option params [String] :credit_grant_type
       #
-      #   @option params [Hash{Symbol => String}] :custom_fields Custom fields to attach to the credit grant.
+      #   @option params [Hash{Symbol=>String}] :custom_fields Custom fields to attach to the credit grant.
       #
       #   @option params [Time] :effective_at The credit grant will only apply to usage or charges dated on or after this
       #     timestamp
@@ -43,7 +43,7 @@ module Metronome
       #     with a previously used uniqueness key, a new record will not be created and the
       #     request will fail with a 409 error.
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CreditGrantCreateResponse]
       #
@@ -60,7 +60,7 @@ module Metronome
 
       # List credit grants. This list does not included voided grants.
       #
-      # @param params [Metronome::Models::CreditGrantListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CreditGrantListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Integer] :limit Query param: Max number of results that should be returned
       #
@@ -80,7 +80,7 @@ module Metronome
       #
       #   @option params [Time] :not_expiring_before Body param: Only return credit grants that expire at or after this timestamp.
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::CreditGrantListResponse>]
       #
@@ -100,7 +100,7 @@ module Metronome
 
       # Edit an existing credit grant
       #
-      # @param params [Metronome::Models::CreditGrantEditParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CreditGrantEditParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :id the ID of the credit grant
       #
@@ -110,7 +110,7 @@ module Metronome
       #
       #   @option params [String] :name the updated name for the credit grant
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CreditGrantEditResponse]
       #
@@ -127,13 +127,13 @@ module Metronome
 
       # List all pricing units (known in the API by the legacy term "credit types").
       #
-      # @param params [Metronome::Models::CreditGrantListCreditTypesParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CreditGrantListCreditTypesParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Integer] :limit Max number of results that should be returned
       #
       #   @option params [String] :next_page Cursor that indicates where the next page of results should start.
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::CursorPage<Metronome::Models::CreditGrantListCreditTypesResponse>]
       #
@@ -153,7 +153,7 @@ module Metronome
       #   Ledger entries are returned in chronological order. Ledger entries associated
       #   with voided credit grants are not included.
       #
-      # @param params [Metronome::Models::CreditGrantListEntriesParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CreditGrantListEntriesParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
       #
@@ -171,7 +171,7 @@ module Metronome
       #   @option params [Time] :starting_on Body param: If supplied, only ledger entries effective at or after this time
       #     will be returned.
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CreditGrantListEntriesResponse]
       #
@@ -190,7 +190,7 @@ module Metronome
 
       # Void a credit grant
       #
-      # @param params [Metronome::Models::CreditGrantVoidParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CreditGrantVoidParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :id
       #
@@ -198,7 +198,7 @@ module Metronome
       #
       #   @option params [Boolean] :void_credit_purchase_invoice If true, void the purchase invoice associated with the grant
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::CreditGrantVoidResponse]
       #

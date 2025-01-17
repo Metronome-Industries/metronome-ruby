@@ -4,7 +4,6 @@ module Metronome
   module Models
     module Contracts
       # @example
-      #
       # ```ruby
       # product_list_response => {
       #   id: String,
@@ -51,7 +50,7 @@ module Metronome
 
         # @!attribute custom_fields
         #
-        #   @return [Hash{Symbol => String}]
+        #   @return [Hash{Symbol=>String}]
         optional :custom_fields, Metronome::HashOf[String]
 
         # @!parse
@@ -61,14 +60,13 @@ module Metronome
         #   # @param type [String]
         #   # @param updates [Array<Metronome::Models::Contracts::ProductListResponse::Update>]
         #   # @param archived_at [String, nil]
-        #   # @param custom_fields [Hash{Symbol => String}]
+        #   # @param custom_fields [Hash{Symbol=>String}]
         #   #
         #   def initialize(id:, current:, initial:, type:, updates:, archived_at: nil, custom_fields: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # case type
         # in :USAGE
@@ -94,7 +92,6 @@ module Metronome
         end
 
         # @example
-        #
         # ```ruby
         # update => {
         #   created_at: Time,

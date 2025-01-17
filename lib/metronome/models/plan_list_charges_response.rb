@@ -3,7 +3,6 @@
 module Metronome
   module Models
     # @example
-    #
     # ```ruby
     # plan_list_charges_response => {
     #   id: String,
@@ -32,7 +31,7 @@ module Metronome
 
       # @!attribute custom_fields
       #
-      #   @return [Hash{Symbol => String}]
+      #   @return [Hash{Symbol=>String}]
       required :custom_fields, Metronome::HashOf[String]
 
       # @!attribute name
@@ -85,7 +84,7 @@ module Metronome
       #   #
       #   # @param credit_type [Metronome::Models::CreditTypeData]
       #   #
-      #   # @param custom_fields [Hash{Symbol => String}]
+      #   # @param custom_fields [Hash{Symbol=>String}]
       #   #
       #   # @param name [String]
       #   #
@@ -126,7 +125,6 @@ module Metronome
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # case charge_type
       # in :usage
@@ -152,7 +150,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # price => {
       #   tier: Float,
@@ -206,7 +203,6 @@ module Metronome
       end
 
       # @example
-      #
       # ```ruby
       # unit_conversion => {
       #   division_factor: Float,
@@ -242,7 +238,6 @@ module Metronome
         # Whether usage should be rounded down or up to the nearest whole number. If null, quantity will be rounded to 20 decimal places.
         #
         # @example
-        #
         # ```ruby
         # case rounding_behavior
         # in :floor

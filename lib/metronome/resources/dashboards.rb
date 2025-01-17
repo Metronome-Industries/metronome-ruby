@@ -7,7 +7,7 @@ module Metronome
       #   embedded using an iframe in a website. This will show information such as usage
       #   data and customer invoices.
       #
-      # @param params [Metronome::Models::DashboardGetEmbeddableURLParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::DashboardGetEmbeddableURLParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :customer_id
       #
@@ -19,7 +19,7 @@ module Metronome
       #
       #   @option params [Array<Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption>] :dashboard_options Optional dashboard specific options
       #
-      # @param opts [Hash{Symbol => Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Metronome::Models::DashboardGetEmbeddableURLResponse]
       #
