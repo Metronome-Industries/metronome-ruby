@@ -16,7 +16,7 @@ module Metronome
       required :customer_id, String
 
       # @!attribute allow_ending_before_finalized_invoice
-      #   If true, allows setting the contract end date earlier than the end_timestamp of existing finalized invoices. Finalized invoices will be unchanged; if you want to incorporate the new end date, you can void and regenerate finalized usage invoices. Defaults to false.
+      #   If true, allows setting the contract end date earlier than the end_timestamp of existing finalized invoices. Finalized invoices will be unchanged; if you want to incorporate the new end date, you can void and regenerate finalized usage invoices.
       #
       #   @return [Boolean]
       optional :allow_ending_before_finalized_invoice, Metronome::BooleanModel
@@ -35,7 +35,7 @@ module Metronome
       #   # @param allow_ending_before_finalized_invoice [Boolean] If true, allows setting the contract end date earlier than the end_timestamp of
       #   #   existing finalized invoices. Finalized invoices will be unchanged; if you want
       #   #   to incorporate the new end date, you can void and regenerate finalized usage
-      #   #   invoices. Defaults to false.
+      #   #   invoices.
       #   #
       #   # @param ending_before [String] RFC 3339 timestamp indicating when the contract will end (exclusive). If not
       #   #   provided, the contract will be updated to be open-ended.
