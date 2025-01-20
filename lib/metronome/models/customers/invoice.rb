@@ -50,119 +50,199 @@ module Metronome
         #   @return [String]
         required :type, String
 
-        # @!attribute amendment_id
+        # @!attribute [r] amendment_id
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :amendment_id, String
 
-        # @!attribute billable_status
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :amendment_id
+
+        # @!attribute [r] billable_status
         #   This field's availability is dependent on your client's configuration.
         #
-        #   @return [Symbol, Metronome::Models::Customers::Invoice::BillableStatus]
+        #   @return [Symbol, Metronome::Models::Customers::Invoice::BillableStatus, nil]
         optional :billable_status, enum: -> { Metronome::Models::Customers::Invoice::BillableStatus }
 
-        # @!attribute contract_custom_fields
+        # @!parse
+        #   # @return [Symbol, Metronome::Models::Customers::Invoice::BillableStatus]
+        #   attr_writer :billable_status
+
+        # @!attribute [r] contract_custom_fields
         #
-        #   @return [Hash{Symbol=>String}]
+        #   @return [Hash{Symbol=>String}, nil]
         optional :contract_custom_fields, Metronome::HashOf[String]
 
-        # @!attribute contract_id
+        # @!parse
+        #   # @return [Hash{Symbol=>String}]
+        #   attr_writer :contract_custom_fields
+
+        # @!attribute [r] contract_id
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :contract_id, String
 
-        # @!attribute correction_record
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :contract_id
+
+        # @!attribute [r] correction_record
         #
-        #   @return [Metronome::Models::Customers::Invoice::CorrectionRecord]
+        #   @return [Metronome::Models::Customers::Invoice::CorrectionRecord, nil]
         optional :correction_record, -> { Metronome::Models::Customers::Invoice::CorrectionRecord }
 
-        # @!attribute created_at
+        # @!parse
+        #   # @return [Metronome::Models::Customers::Invoice::CorrectionRecord]
+        #   attr_writer :correction_record
+
+        # @!attribute [r] created_at
         #   When the invoice was created (UTC). This field is present for correction invoices only.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :created_at, Time
 
-        # @!attribute custom_fields
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :created_at
+
+        # @!attribute [r] custom_fields
         #
-        #   @return [Hash{Symbol=>Object}]
+        #   @return [Hash{Symbol=>Object}, nil]
         optional :custom_fields, Metronome::HashOf[Metronome::Unknown]
 
-        # @!attribute customer_custom_fields
+        # @!parse
+        #   # @return [Hash{Symbol=>Object}]
+        #   attr_writer :custom_fields
+
+        # @!attribute [r] customer_custom_fields
         #
-        #   @return [Hash{Symbol=>String}]
+        #   @return [Hash{Symbol=>String}, nil]
         optional :customer_custom_fields, Metronome::HashOf[String]
 
-        # @!attribute end_timestamp
+        # @!parse
+        #   # @return [Hash{Symbol=>String}]
+        #   attr_writer :customer_custom_fields
+
+        # @!attribute [r] end_timestamp
         #   End of the usage period this invoice covers (UTC)
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :end_timestamp, Time
+
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :end_timestamp
 
         # @!attribute external_invoice
         #
         #   @return [Metronome::Models::Customers::Invoice::ExternalInvoice, nil]
-        optional :external_invoice, -> { Metronome::Models::Customers::Invoice::ExternalInvoice }
+        optional :external_invoice, -> { Metronome::Models::Customers::Invoice::ExternalInvoice }, nil?: true
 
-        # @!attribute invoice_adjustments
+        # @!attribute [r] invoice_adjustments
         #
         #   @return [Array<Metronome::Models::Customers::Invoice::InvoiceAdjustment>]
         optional :invoice_adjustments,
                  -> { Metronome::ArrayOf[Metronome::Models::Customers::Invoice::InvoiceAdjustment] }
 
-        # @!attribute issued_at
+        # @!parse
+        #   # @return [Array<Metronome::Models::Customers::Invoice::InvoiceAdjustment>]
+        #   attr_writer :invoice_adjustments
+
+        # @!attribute [r] issued_at
         #   When the invoice was issued (UTC)
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :issued_at, Time
 
-        # @!attribute net_payment_terms_days
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :issued_at
+
+        # @!attribute [r] net_payment_terms_days
         #
-        #   @return [Float]
+        #   @return [Float, nil]
         optional :net_payment_terms_days, Float
 
-        # @!attribute netsuite_sales_order_id
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :net_payment_terms_days
+
+        # @!attribute [r] netsuite_sales_order_id
         #   This field's availability is dependent on your client's configuration.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :netsuite_sales_order_id, String
 
-        # @!attribute plan_custom_fields
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :netsuite_sales_order_id
+
+        # @!attribute [r] plan_custom_fields
         #
-        #   @return [Hash{Symbol=>String}]
+        #   @return [Hash{Symbol=>String}, nil]
         optional :plan_custom_fields, Metronome::HashOf[String]
 
-        # @!attribute plan_id
+        # @!parse
+        #   # @return [Hash{Symbol=>String}]
+        #   attr_writer :plan_custom_fields
+
+        # @!attribute [r] plan_id
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :plan_id, String
 
-        # @!attribute plan_name
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :plan_id
+
+        # @!attribute [r] plan_name
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :plan_name, String
 
-        # @!attribute reseller_royalty
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :plan_name
+
+        # @!attribute [r] reseller_royalty
         #   only present for beta contract invoices with reseller royalties
         #
-        #   @return [Metronome::Models::Customers::Invoice::ResellerRoyalty]
+        #   @return [Metronome::Models::Customers::Invoice::ResellerRoyalty, nil]
         optional :reseller_royalty, -> { Metronome::Models::Customers::Invoice::ResellerRoyalty }
 
-        # @!attribute salesforce_opportunity_id
+        # @!parse
+        #   # @return [Metronome::Models::Customers::Invoice::ResellerRoyalty]
+        #   attr_writer :reseller_royalty
+
+        # @!attribute [r] salesforce_opportunity_id
         #   This field's availability is dependent on your client's configuration.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :salesforce_opportunity_id, String
 
-        # @!attribute start_timestamp
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :salesforce_opportunity_id
+
+        # @!attribute [r] start_timestamp
         #   Beginning of the usage period this invoice covers (UTC)
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :start_timestamp, Time
 
-        # @!attribute subtotal
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :start_timestamp
+
+        # @!attribute [r] subtotal
         #
-        #   @return [Float]
+        #   @return [Float, nil]
         optional :subtotal, Float
+
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :subtotal
 
         # @!parse
         #   # @param id [String]
@@ -285,193 +365,321 @@ module Metronome
           #   @return [Float]
           required :total, Float
 
-          # @!attribute applied_commit_or_credit
+          # @!attribute [r] applied_commit_or_credit
           #   only present for beta contract invoices
           #
-          #   @return [Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit]
+          #   @return [Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit, nil]
           optional :applied_commit_or_credit,
                    -> { Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit }
 
-          # @!attribute commit_custom_fields
+          # @!parse
+          #   # @return [Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit]
+          #   attr_writer :applied_commit_or_credit
+
+          # @!attribute [r] commit_custom_fields
           #   only present for beta contract invoices
           #
-          #   @return [Hash{Symbol=>String}]
+          #   @return [Hash{Symbol=>String}, nil]
           optional :commit_custom_fields, Metronome::HashOf[String]
 
-          # @!attribute commit_id
+          # @!parse
+          #   # @return [Hash{Symbol=>String}]
+          #   attr_writer :commit_custom_fields
+
+          # @!attribute [r] commit_id
           #   only present for beta contract invoices
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :commit_id, String
 
-          # @!attribute commit_netsuite_item_id
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :commit_id
+
+          # @!attribute [r] commit_netsuite_item_id
           #   only present for beta contract invoices. This field's availability is dependent on your client's configuration.
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :commit_netsuite_item_id, String
 
-          # @!attribute commit_netsuite_sales_order_id
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :commit_netsuite_item_id
+
+          # @!attribute [r] commit_netsuite_sales_order_id
           #   only present for beta contract invoices. This field's availability is dependent on your client's configuration.
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :commit_netsuite_sales_order_id, String
 
-          # @!attribute commit_segment_id
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :commit_netsuite_sales_order_id
+
+          # @!attribute [r] commit_segment_id
           #   only present for beta contract invoices
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :commit_segment_id, String
 
-          # @!attribute commit_type
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :commit_segment_id
+
+          # @!attribute [r] commit_type
           #   only present for beta contract invoices
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :commit_type, String
 
-          # @!attribute custom_fields
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :commit_type
+
+          # @!attribute [r] custom_fields
           #
-          #   @return [Hash{Symbol=>String}]
+          #   @return [Hash{Symbol=>String}, nil]
           optional :custom_fields, Metronome::HashOf[String]
 
-          # @!attribute ending_before
+          # @!parse
+          #   # @return [Hash{Symbol=>String}]
+          #   attr_writer :custom_fields
+
+          # @!attribute [r] ending_before
           #   only present for beta contract invoices
           #
-          #   @return [Time]
+          #   @return [Time, nil]
           optional :ending_before, Time
 
-          # @!attribute group_key
+          # @!parse
+          #   # @return [Time]
+          #   attr_writer :ending_before
+
+          # @!attribute [r] group_key
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :group_key, String
+
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :group_key
 
           # @!attribute group_value
           #
           #   @return [String, nil]
-          optional :group_value, String
+          optional :group_value, String, nil?: true
 
-          # @!attribute is_prorated
+          # @!attribute [r] is_prorated
           #   only present for beta contract invoices
           #
-          #   @return [Boolean]
+          #   @return [Boolean, nil]
           optional :is_prorated, Metronome::BooleanModel
 
-          # @!attribute list_price
+          # @!parse
+          #   # @return [Boolean]
+          #   attr_writer :is_prorated
+
+          # @!attribute [r] list_price
           #   Only present for contract invoices and when the include_list_prices query parameter is set to true. This will include the list rate for the charge if applicable.  Only present for usage and subscription line items.
           #
-          #   @return [Metronome::Models::Rate]
+          #   @return [Metronome::Models::Rate, nil]
           optional :list_price, -> { Metronome::Models::Rate }
 
-          # @!attribute metadata
+          # @!parse
+          #   # @return [Metronome::Models::Rate]
+          #   attr_writer :list_price
+
+          # @!attribute [r] metadata
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :metadata, String
 
-          # @!attribute netsuite_invoice_billing_end
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :metadata
+
+          # @!attribute [r] netsuite_invoice_billing_end
           #   The end date for the billing period on the invoice.
           #
-          #   @return [Time]
+          #   @return [Time, nil]
           optional :netsuite_invoice_billing_end, Time
 
-          # @!attribute netsuite_invoice_billing_start
+          # @!parse
+          #   # @return [Time]
+          #   attr_writer :netsuite_invoice_billing_end
+
+          # @!attribute [r] netsuite_invoice_billing_start
           #   The start date for the billing period on the invoice.
           #
-          #   @return [Time]
+          #   @return [Time, nil]
           optional :netsuite_invoice_billing_start, Time
 
-          # @!attribute netsuite_item_id
+          # @!parse
+          #   # @return [Time]
+          #   attr_writer :netsuite_invoice_billing_start
+
+          # @!attribute [r] netsuite_item_id
           #   only present for beta contract invoices. This field's availability is dependent on your client's configuration.
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :netsuite_item_id, String
 
-          # @!attribute postpaid_commit
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :netsuite_item_id
+
+          # @!attribute [r] postpaid_commit
           #   only present for beta contract invoices
           #
-          #   @return [Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit]
+          #   @return [Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit, nil]
           optional :postpaid_commit, -> { Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit }
 
-          # @!attribute presentation_group_values
+          # @!parse
+          #   # @return [Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit]
+          #   attr_writer :postpaid_commit
+
+          # @!attribute [r] presentation_group_values
           #   if presentation groups are used, this will contain the values used to break down the line item
           #
           #   @return [Hash{Symbol=>String}, nil]
           optional :presentation_group_values, Metronome::HashOf[String]
 
-          # @!attribute pricing_group_values
+          # @!parse
+          #   # @return [Hash{Symbol=>String}, nil]
+          #   attr_writer :presentation_group_values
+
+          # @!attribute [r] pricing_group_values
           #   if pricing groups are used, this will contain the values used to calculate the price
           #
-          #   @return [Hash{Symbol=>String}]
+          #   @return [Hash{Symbol=>String}, nil]
           optional :pricing_group_values, Metronome::HashOf[String]
 
-          # @!attribute product_custom_fields
+          # @!parse
+          #   # @return [Hash{Symbol=>String}]
+          #   attr_writer :pricing_group_values
+
+          # @!attribute [r] product_custom_fields
           #
-          #   @return [Hash{Symbol=>String}]
+          #   @return [Hash{Symbol=>String}, nil]
           optional :product_custom_fields, Metronome::HashOf[String]
 
-          # @!attribute product_id
+          # @!parse
+          #   # @return [Hash{Symbol=>String}]
+          #   attr_writer :product_custom_fields
+
+          # @!attribute [r] product_id
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :product_id, String
 
-          # @!attribute product_type
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :product_id
+
+          # @!attribute [r] product_type
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :product_type, String
 
-          # @!attribute professional_service_custom_fields
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :product_type
+
+          # @!attribute [r] professional_service_custom_fields
           #   only present for beta contract invoices
           #
-          #   @return [Hash{Symbol=>String}]
+          #   @return [Hash{Symbol=>String}, nil]
           optional :professional_service_custom_fields, Metronome::HashOf[String]
 
-          # @!attribute professional_service_id
+          # @!parse
+          #   # @return [Hash{Symbol=>String}]
+          #   attr_writer :professional_service_custom_fields
+
+          # @!attribute [r] professional_service_id
           #   only present for beta contract invoices
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :professional_service_id, String
 
-          # @!attribute quantity
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :professional_service_id
+
+          # @!attribute [r] quantity
           #
-          #   @return [Float]
+          #   @return [Float, nil]
           optional :quantity, Float
 
-          # @!attribute reseller_type
+          # @!parse
+          #   # @return [Float]
+          #   attr_writer :quantity
+
+          # @!attribute [r] reseller_type
           #
-          #   @return [Symbol, Metronome::Models::Customers::Invoice::LineItem::ResellerType]
+          #   @return [Symbol, Metronome::Models::Customers::Invoice::LineItem::ResellerType, nil]
           optional :reseller_type, enum: -> { Metronome::Models::Customers::Invoice::LineItem::ResellerType }
 
-          # @!attribute scheduled_charge_custom_fields
+          # @!parse
+          #   # @return [Symbol, Metronome::Models::Customers::Invoice::LineItem::ResellerType]
+          #   attr_writer :reseller_type
+
+          # @!attribute [r] scheduled_charge_custom_fields
           #
-          #   @return [Hash{Symbol=>String}]
+          #   @return [Hash{Symbol=>String}, nil]
           optional :scheduled_charge_custom_fields, Metronome::HashOf[String]
 
-          # @!attribute scheduled_charge_id
+          # @!parse
+          #   # @return [Hash{Symbol=>String}]
+          #   attr_writer :scheduled_charge_custom_fields
+
+          # @!attribute [r] scheduled_charge_id
           #   only present for beta contract invoices
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :scheduled_charge_id, String
 
-          # @!attribute starting_at
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :scheduled_charge_id
+
+          # @!attribute [r] starting_at
           #   only present for beta contract invoices
           #
-          #   @return [Time]
+          #   @return [Time, nil]
           optional :starting_at, Time
 
-          # @!attribute sub_line_items
+          # @!parse
+          #   # @return [Time]
+          #   attr_writer :starting_at
+
+          # @!attribute [r] sub_line_items
           #
           #   @return [Array<Metronome::Models::Customers::Invoice::LineItem::SubLineItem>]
           optional :sub_line_items,
                    -> { Metronome::ArrayOf[Metronome::Models::Customers::Invoice::LineItem::SubLineItem] }
 
-          # @!attribute tier
+          # @!parse
+          #   # @return [Array<Metronome::Models::Customers::Invoice::LineItem::SubLineItem>]
+          #   attr_writer :sub_line_items
+
+          # @!attribute [r] tier
           #
-          #   @return [Metronome::Models::Customers::Invoice::LineItem::Tier]
+          #   @return [Metronome::Models::Customers::Invoice::LineItem::Tier, nil]
           optional :tier, -> { Metronome::Models::Customers::Invoice::LineItem::Tier }
 
-          # @!attribute unit_price
+          # @!parse
+          #   # @return [Metronome::Models::Customers::Invoice::LineItem::Tier]
+          #   attr_writer :tier
+
+          # @!attribute [r] unit_price
           #   only present for beta contract invoices
           #
-          #   @return [Float]
+          #   @return [Float, nil]
           optional :unit_price, Float
+
+          # @!parse
+          #   # @return [Float]
+          #   attr_writer :unit_price
 
           # @!parse
           #   # @param credit_type [Metronome::Models::CreditTypeData]
@@ -724,50 +932,78 @@ module Metronome
             #   @return [Float]
             required :subtotal, Float
 
-            # @!attribute charge_id
+            # @!attribute [r] charge_id
             #
-            #   @return [String]
+            #   @return [String, nil]
             optional :charge_id, String
 
-            # @!attribute credit_grant_id
+            # @!parse
+            #   # @return [String]
+            #   attr_writer :charge_id
+
+            # @!attribute [r] credit_grant_id
             #
-            #   @return [String]
+            #   @return [String, nil]
             optional :credit_grant_id, String
 
-            # @!attribute end_date
+            # @!parse
+            #   # @return [String]
+            #   attr_writer :credit_grant_id
+
+            # @!attribute [r] end_date
             #   The end date for the charge (for seats charges only).
             #
-            #   @return [Time]
+            #   @return [Time, nil]
             optional :end_date, Time
 
-            # @!attribute price
+            # @!parse
+            #   # @return [Time]
+            #   attr_writer :end_date
+
+            # @!attribute [r] price
             #   the unit price for this charge, present only if the charge is not tiered and the quantity is nonzero
             #
-            #   @return [Float]
+            #   @return [Float, nil]
             optional :price, Float
 
-            # @!attribute start_date
+            # @!parse
+            #   # @return [Float]
+            #   attr_writer :price
+
+            # @!attribute [r] start_date
             #   The start date for the charge (for seats charges only).
             #
-            #   @return [Time]
+            #   @return [Time, nil]
             optional :start_date, Time
 
-            # @!attribute tier_period
+            # @!parse
+            #   # @return [Time]
+            #   attr_writer :start_date
+
+            # @!attribute [r] tier_period
             #   when the current tier started and ends (for tiered charges only)
             #
-            #   @return [Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod]
+            #   @return [Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod, nil]
             optional :tier_period,
                      -> {
                        Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod
                      }
 
-            # @!attribute tiers
+            # @!parse
+            #   # @return [Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod]
+            #   attr_writer :tier_period
+
+            # @!attribute [r] tiers
             #
             #   @return [Array<Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier>]
             optional :tiers,
                      -> {
                        Metronome::ArrayOf[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]
                      }
+
+            # @!parse
+            #   # @return [Array<Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier>]
+            #   attr_writer :tiers
 
             # @!parse
             #   # @param custom_fields [Hash{Symbol=>String}]
@@ -825,10 +1061,14 @@ module Metronome
               #   @return [Time]
               required :starting_at, Time
 
-              # @!attribute ending_before
+              # @!attribute [r] ending_before
               #
-              #   @return [Time]
+              #   @return [Time, nil]
               optional :ending_before, Time
+
+              # @!parse
+              #   # @return [Time]
+              #   attr_writer :ending_before
 
               # @!parse
               #   # when the current tier started and ends (for tiered charges only)
@@ -909,7 +1149,7 @@ module Metronome
             # @!attribute size
             #
             #   @return [String, nil]
-            optional :size, String
+            optional :size, String, nil?: true
 
             # @!parse
             #   # @param level [Float]
@@ -965,11 +1205,15 @@ module Metronome
           #   @return [String]
           required :reason, String
 
-          # @!attribute corrected_external_invoice
+          # @!attribute [r] corrected_external_invoice
           #
-          #   @return [Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice]
+          #   @return [Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice, nil]
           optional :corrected_external_invoice,
                    -> { Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice }
+
+          # @!parse
+          #   # @return [Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice]
+          #   attr_writer :corrected_external_invoice
 
           # @!parse
           #   # @param corrected_invoice_id [String]
@@ -999,23 +1243,35 @@ module Metronome
                        Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType
                      }
 
-            # @!attribute external_status
+            # @!attribute [r] external_status
             #
-            #   @return [Symbol, Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus]
+            #   @return [Symbol, Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus, nil]
             optional :external_status,
                      enum: -> {
                        Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus
                      }
 
-            # @!attribute invoice_id
+            # @!parse
+            #   # @return [Symbol, Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus]
+            #   attr_writer :external_status
+
+            # @!attribute [r] invoice_id
             #
-            #   @return [String]
+            #   @return [String, nil]
             optional :invoice_id, String
 
-            # @!attribute issued_at_timestamp
+            # @!parse
+            #   # @return [String]
+            #   attr_writer :invoice_id
+
+            # @!attribute [r] issued_at_timestamp
             #
-            #   @return [Time]
+            #   @return [Time, nil]
             optional :issued_at_timestamp, Time
+
+            # @!parse
+            #   # @return [Time]
+            #   attr_writer :issued_at_timestamp
 
             # @!parse
             #   # @param billing_provider_type [String]
@@ -1108,21 +1364,33 @@ module Metronome
           required :billing_provider_type,
                    enum: -> { Metronome::Models::Customers::Invoice::ExternalInvoice::BillingProviderType }
 
-          # @!attribute external_status
+          # @!attribute [r] external_status
           #
-          #   @return [Symbol, Metronome::Models::Customers::Invoice::ExternalInvoice::ExternalStatus]
+          #   @return [Symbol, Metronome::Models::Customers::Invoice::ExternalInvoice::ExternalStatus, nil]
           optional :external_status,
                    enum: -> { Metronome::Models::Customers::Invoice::ExternalInvoice::ExternalStatus }
 
-          # @!attribute invoice_id
+          # @!parse
+          #   # @return [Symbol, Metronome::Models::Customers::Invoice::ExternalInvoice::ExternalStatus]
+          #   attr_writer :external_status
+
+          # @!attribute [r] invoice_id
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :invoice_id, String
 
-          # @!attribute issued_at_timestamp
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :invoice_id
+
+          # @!attribute [r] issued_at_timestamp
           #
-          #   @return [Time]
+          #   @return [Time, nil]
           optional :issued_at_timestamp, Time
+
+          # @!parse
+          #   # @return [Time]
+          #   attr_writer :issued_at_timestamp
 
           # @!parse
           #   # @param billing_provider_type [String]
@@ -1224,15 +1492,23 @@ module Metronome
           #   @return [Float]
           required :total, Float
 
-          # @!attribute credit_grant_custom_fields
+          # @!attribute [r] credit_grant_custom_fields
           #
-          #   @return [Hash{Symbol=>String}]
+          #   @return [Hash{Symbol=>String}, nil]
           optional :credit_grant_custom_fields, Metronome::HashOf[String]
 
-          # @!attribute credit_grant_id
+          # @!parse
+          #   # @return [Hash{Symbol=>String}]
+          #   attr_writer :credit_grant_custom_fields
+
+          # @!attribute [r] credit_grant_id
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :credit_grant_id, String
+
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :credit_grant_id
 
           # @!parse
           #   # @param credit_type [Metronome::Models::CreditTypeData]
@@ -1275,15 +1551,23 @@ module Metronome
                      Metronome::Models::Customers::Invoice::ResellerRoyalty::ResellerType
                    }
 
-          # @!attribute aws_options
+          # @!attribute [r] aws_options
           #
-          #   @return [Metronome::Models::Customers::Invoice::ResellerRoyalty::AwsOptions]
+          #   @return [Metronome::Models::Customers::Invoice::ResellerRoyalty::AwsOptions, nil]
           optional :aws_options, -> { Metronome::Models::Customers::Invoice::ResellerRoyalty::AwsOptions }
 
-          # @!attribute gcp_options
+          # @!parse
+          #   # @return [Metronome::Models::Customers::Invoice::ResellerRoyalty::AwsOptions]
+          #   attr_writer :aws_options
+
+          # @!attribute [r] gcp_options
           #
-          #   @return [Metronome::Models::Customers::Invoice::ResellerRoyalty::GcpOptions]
+          #   @return [Metronome::Models::Customers::Invoice::ResellerRoyalty::GcpOptions, nil]
           optional :gcp_options, -> { Metronome::Models::Customers::Invoice::ResellerRoyalty::GcpOptions }
+
+          # @!parse
+          #   # @return [Metronome::Models::Customers::Invoice::ResellerRoyalty::GcpOptions]
+          #   attr_writer :gcp_options
 
           # @!parse
           #   # only present for beta contract invoices with reseller royalties
@@ -1329,20 +1613,32 @@ module Metronome
           # }
           # ```
           class AwsOptions < Metronome::BaseModel
-            # @!attribute aws_account_number
+            # @!attribute [r] aws_account_number
             #
-            #   @return [String]
+            #   @return [String, nil]
             optional :aws_account_number, String
 
-            # @!attribute aws_offer_id
+            # @!parse
+            #   # @return [String]
+            #   attr_writer :aws_account_number
+
+            # @!attribute [r] aws_offer_id
             #
-            #   @return [String]
+            #   @return [String, nil]
             optional :aws_offer_id, String
 
-            # @!attribute aws_payer_reference_id
+            # @!parse
+            #   # @return [String]
+            #   attr_writer :aws_offer_id
+
+            # @!attribute [r] aws_payer_reference_id
             #
-            #   @return [String]
+            #   @return [String, nil]
             optional :aws_payer_reference_id, String
+
+            # @!parse
+            #   # @return [String]
+            #   attr_writer :aws_payer_reference_id
 
             # @!parse
             #   # @param aws_account_number [String]
@@ -1362,15 +1658,23 @@ module Metronome
           # }
           # ```
           class GcpOptions < Metronome::BaseModel
-            # @!attribute gcp_account_id
+            # @!attribute [r] gcp_account_id
             #
-            #   @return [String]
+            #   @return [String, nil]
             optional :gcp_account_id, String
 
-            # @!attribute gcp_offer_id
+            # @!parse
+            #   # @return [String]
+            #   attr_writer :gcp_account_id
+
+            # @!attribute [r] gcp_offer_id
             #
-            #   @return [String]
+            #   @return [String, nil]
             optional :gcp_offer_id, String
+
+            # @!parse
+            #   # @return [String]
+            #   attr_writer :gcp_offer_id
 
             # @!parse
             #   # @param gcp_account_id [String]

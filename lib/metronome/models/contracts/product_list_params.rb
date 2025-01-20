@@ -4,23 +4,35 @@ module Metronome
   module Models
     module Contracts
       class ProductListParams < Metronome::BaseModel
-        # @!attribute limit
+        # @!attribute [r] limit
         #   Max number of results that should be returned
         #
-        #   @return [Integer]
+        #   @return [Integer, nil]
         optional :limit, Integer
 
-        # @!attribute next_page
+        # @!parse
+        #   # @return [Integer]
+        #   attr_writer :limit
+
+        # @!attribute [r] next_page
         #   Cursor that indicates where the next page of results should start.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :next_page, String
 
-        # @!attribute archive_filter
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :next_page
+
+        # @!attribute [r] archive_filter
         #   Filter options for the product list
         #
-        #   @return [Symbol, Metronome::Models::Contracts::ProductListParams::ArchiveFilter]
+        #   @return [Symbol, Metronome::Models::Contracts::ProductListParams::ArchiveFilter, nil]
         optional :archive_filter, enum: -> { Metronome::Models::Contracts::ProductListParams::ArchiveFilter }
+
+        # @!parse
+        #   # @return [Symbol, Metronome::Models::Contracts::ProductListParams::ArchiveFilter]
+        #   attr_writer :archive_filter
 
         # @!parse
         #   # @param limit [Integer] Max number of results that should be returned

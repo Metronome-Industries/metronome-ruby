@@ -33,17 +33,25 @@ module Metronome
       #   @return [String]
       required :segment_id, String
 
-      # @!attribute contract_id
+      # @!attribute [r] contract_id
       #   ID of the contract to update. Leave blank to update a customer level balance.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :contract_id, String
 
-      # @!attribute timestamp
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :contract_id
+
+      # @!attribute [r] timestamp
       #   RFC 3339 timestamp indicating when the manual adjustment takes place. If not provided, it will default to the start of the segment.
       #
-      #   @return [Time]
+      #   @return [Time, nil]
       optional :timestamp, Time
+
+      # @!parse
+      #   # @return [Time]
+      #   attr_writer :timestamp
 
       # @!parse
       #   # @param id [String] ID of the balance (commit or credit) to update.

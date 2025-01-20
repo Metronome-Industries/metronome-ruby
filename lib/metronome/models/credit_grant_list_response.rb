@@ -82,30 +82,34 @@ module Metronome
       # @!attribute credit_grant_type
       #
       #   @return [String, nil]
-      optional :credit_grant_type, String
+      optional :credit_grant_type, String, nil?: true
 
       # @!attribute invoice_id
       #   the Metronome ID of the invoice with the purchase charge for this credit grant, if applicable
       #
       #   @return [String, nil]
-      optional :invoice_id, String
+      optional :invoice_id, String, nil?: true
 
-      # @!attribute products
+      # @!attribute [r] products
       #   The products which these credits will be applied to. (If unspecified, the credits will be applied to charges for all products.)
       #
       #   @return [Array<Metronome::Models::CreditGrantListResponse::Product>]
       optional :products, -> { Metronome::ArrayOf[Metronome::Models::CreditGrantListResponse::Product] }
 
+      # @!parse
+      #   # @return [Array<Metronome::Models::CreditGrantListResponse::Product>]
+      #   attr_writer :products
+
       # @!attribute reason
       #
       #   @return [String, nil]
-      optional :reason, String
+      optional :reason, String, nil?: true
 
       # @!attribute uniqueness_key
       #   Prevents the creation of duplicates. If a request to create a record is made with a previously used uniqueness key, a new record will not be created and the request will fail with a 409 error.
       #
       #   @return [String, nil]
-      optional :uniqueness_key, String
+      optional :uniqueness_key, String, nil?: true
 
       # @!parse
       #   # @param id [String] the Metronome ID of the credit grant

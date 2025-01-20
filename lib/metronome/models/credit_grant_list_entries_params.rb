@@ -3,35 +3,55 @@
 module Metronome
   module Models
     class CreditGrantListEntriesParams < Metronome::BaseModel
-      # @!attribute next_page
+      # @!attribute [r] next_page
       #   Cursor that indicates where the next page of results should start.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :next_page, String
 
-      # @!attribute credit_type_ids
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :next_page
+
+      # @!attribute [r] credit_type_ids
       #   A list of Metronome credit type IDs to fetch ledger entries for. If absent, ledger entries for all credit types will be returned.
       #
       #   @return [Array<String>]
       optional :credit_type_ids, Metronome::ArrayOf[String]
 
-      # @!attribute customer_ids
+      # @!parse
+      #   # @return [Array<String>]
+      #   attr_writer :credit_type_ids
+
+      # @!attribute [r] customer_ids
       #   A list of Metronome customer IDs to fetch ledger entries for. If absent, ledger entries for all customers will be returned.
       #
       #   @return [Array<String>]
       optional :customer_ids, Metronome::ArrayOf[String]
 
-      # @!attribute ending_before
+      # @!parse
+      #   # @return [Array<String>]
+      #   attr_writer :customer_ids
+
+      # @!attribute [r] ending_before
       #   If supplied, ledger entries will only be returned with an effective_at before this time. This timestamp must not be in the future. If no timestamp is supplied, all entries up to the start of the customer's next billing period will be returned.
       #
-      #   @return [Time]
+      #   @return [Time, nil]
       optional :ending_before, Time
 
-      # @!attribute starting_on
+      # @!parse
+      #   # @return [Time]
+      #   attr_writer :ending_before
+
+      # @!attribute [r] starting_on
       #   If supplied, only ledger entries effective at or after this time will be returned.
       #
-      #   @return [Time]
+      #   @return [Time, nil]
       optional :starting_on, Time
+
+      # @!parse
+      #   # @return [Time]
+      #   attr_writer :starting_on
 
       # @!parse
       #   # @param next_page [String] Cursor that indicates where the next page of results should start.

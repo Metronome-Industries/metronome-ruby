@@ -29,115 +29,195 @@ module Metronome
       #   @return [Symbol, Metronome::Models::Commit::Type]
       required :type, enum: -> { Metronome::Models::Commit::Type }
 
-      # @!attribute access_schedule
+      # @!attribute [r] access_schedule
       #   The schedule that the customer will gain access to the credits purposed with this commit.
       #
-      #   @return [Metronome::Models::ScheduleDuration]
+      #   @return [Metronome::Models::ScheduleDuration, nil]
       optional :access_schedule, -> { Metronome::Models::ScheduleDuration }
 
-      # @!attribute amount
+      # @!parse
+      #   # @return [Metronome::Models::ScheduleDuration]
+      #   attr_writer :access_schedule
+
+      # @!attribute [r] amount
       #   (DEPRECATED) Use access_schedule + invoice_schedule instead.
       #
-      #   @return [Float]
+      #   @return [Float, nil]
       optional :amount, Float
 
-      # @!attribute applicable_contract_ids
+      # @!parse
+      #   # @return [Float]
+      #   attr_writer :amount
+
+      # @!attribute [r] applicable_contract_ids
       #
       #   @return [Array<String>]
       optional :applicable_contract_ids, Metronome::ArrayOf[String]
 
-      # @!attribute applicable_product_ids
+      # @!parse
+      #   # @return [Array<String>]
+      #   attr_writer :applicable_contract_ids
+
+      # @!attribute [r] applicable_product_ids
       #
       #   @return [Array<String>]
       optional :applicable_product_ids, Metronome::ArrayOf[String]
 
-      # @!attribute applicable_product_tags
+      # @!parse
+      #   # @return [Array<String>]
+      #   attr_writer :applicable_product_ids
+
+      # @!attribute [r] applicable_product_tags
       #
       #   @return [Array<String>]
       optional :applicable_product_tags, Metronome::ArrayOf[String]
 
-      # @!attribute balance
+      # @!parse
+      #   # @return [Array<String>]
+      #   attr_writer :applicable_product_tags
+
+      # @!attribute [r] balance
       #   The current balance of the credit or commit. This balance reflects the amount of credit or commit that the customer has access to use at this moment - thus, expired and upcoming credit or commit segments contribute 0 to the balance. The balance will match the sum of all ledger entries with the exception of the case where the sum of negative manual ledger entries exceeds the positive amount remaining on the credit or commit - in that case, the balance will be 0. All manual ledger entries associated with active credit or commit segments are included in the balance, including future-dated manual ledger entries.
       #
-      #   @return [Float]
+      #   @return [Float, nil]
       optional :balance, Float
 
-      # @!attribute contract
+      # @!parse
+      #   # @return [Float]
+      #   attr_writer :balance
+
+      # @!attribute [r] contract
       #
-      #   @return [Metronome::Models::Commit::Contract]
+      #   @return [Metronome::Models::Commit::Contract, nil]
       optional :contract, -> { Metronome::Models::Commit::Contract }
 
-      # @!attribute custom_fields
+      # @!parse
+      #   # @return [Metronome::Models::Commit::Contract]
+      #   attr_writer :contract
+
+      # @!attribute [r] custom_fields
       #
-      #   @return [Hash{Symbol=>String}]
+      #   @return [Hash{Symbol=>String}, nil]
       optional :custom_fields, Metronome::HashOf[String]
 
-      # @!attribute description
+      # @!parse
+      #   # @return [Hash{Symbol=>String}]
+      #   attr_writer :custom_fields
+
+      # @!attribute [r] description
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :description, String
 
-      # @!attribute invoice_contract
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :description
+
+      # @!attribute [r] invoice_contract
       #   The contract that this commit will be billed on.
       #
-      #   @return [Metronome::Models::Commit::InvoiceContract]
+      #   @return [Metronome::Models::Commit::InvoiceContract, nil]
       optional :invoice_contract, -> { Metronome::Models::Commit::InvoiceContract }
 
-      # @!attribute invoice_schedule
+      # @!parse
+      #   # @return [Metronome::Models::Commit::InvoiceContract]
+      #   attr_writer :invoice_contract
+
+      # @!attribute [r] invoice_schedule
       #   The schedule that the customer will be invoiced for this commit.
       #
-      #   @return [Metronome::Models::SchedulePointInTime]
+      #   @return [Metronome::Models::SchedulePointInTime, nil]
       optional :invoice_schedule, -> { Metronome::Models::SchedulePointInTime }
 
-      # @!attribute ledger
+      # @!parse
+      #   # @return [Metronome::Models::SchedulePointInTime]
+      #   attr_writer :invoice_schedule
+
+      # @!attribute [r] ledger
       #   A list of ordered events that impact the balance of a commit. For example, an invoice deduction or a rollover.
       #
       #   @return [Array<Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry>]
       optional :ledger, -> { Metronome::ArrayOf[union: Metronome::Models::Commit::Ledger] }
 
-      # @!attribute name
+      # @!parse
+      #   # @return [Array<Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry>]
+      #   attr_writer :ledger
+
+      # @!attribute [r] name
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :name, String
 
-      # @!attribute netsuite_sales_order_id
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :name
+
+      # @!attribute [r] netsuite_sales_order_id
       #   This field's availability is dependent on your client's configuration.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :netsuite_sales_order_id, String
 
-      # @!attribute priority
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :netsuite_sales_order_id
+
+      # @!attribute [r] priority
       #   If multiple credits or commits are applicable, the one with the lower priority will apply first.
       #
-      #   @return [Float]
+      #   @return [Float, nil]
       optional :priority, Float
 
-      # @!attribute rate_type
+      # @!parse
+      #   # @return [Float]
+      #   attr_writer :priority
+
+      # @!attribute [r] rate_type
       #
-      #   @return [Symbol, Metronome::Models::Commit::RateType]
+      #   @return [Symbol, Metronome::Models::Commit::RateType, nil]
       optional :rate_type, enum: -> { Metronome::Models::Commit::RateType }
 
-      # @!attribute rolled_over_from
+      # @!parse
+      #   # @return [Symbol, Metronome::Models::Commit::RateType]
+      #   attr_writer :rate_type
+
+      # @!attribute [r] rolled_over_from
       #
-      #   @return [Metronome::Models::Commit::RolledOverFrom]
+      #   @return [Metronome::Models::Commit::RolledOverFrom, nil]
       optional :rolled_over_from, -> { Metronome::Models::Commit::RolledOverFrom }
 
-      # @!attribute rollover_fraction
+      # @!parse
+      #   # @return [Metronome::Models::Commit::RolledOverFrom]
+      #   attr_writer :rolled_over_from
+
+      # @!attribute [r] rollover_fraction
       #
-      #   @return [Float]
+      #   @return [Float, nil]
       optional :rollover_fraction, Float
 
-      # @!attribute salesforce_opportunity_id
+      # @!parse
+      #   # @return [Float]
+      #   attr_writer :rollover_fraction
+
+      # @!attribute [r] salesforce_opportunity_id
       #   This field's availability is dependent on your client's configuration.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :salesforce_opportunity_id, String
 
-      # @!attribute uniqueness_key
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :salesforce_opportunity_id
+
+      # @!attribute [r] uniqueness_key
       #   Prevents the creation of duplicates. If a request to create a commit or credit is made with a uniqueness key that was previously used to create a commit or credit, a new record will not be created and the request will fail with a 409 error.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :uniqueness_key, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :uniqueness_key
 
       # @!parse
       #   # @param id [String]

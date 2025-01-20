@@ -21,10 +21,14 @@ module Metronome
       #   @return [Array<String>]
       required :group_values, Metronome::ArrayOf[String]
 
-      # @!attribute starting_at
+      # @!attribute [r] starting_at
       #
-      #   @return [Time]
+      #   @return [Time, nil]
       optional :starting_at, Time
+
+      # @!parse
+      #   # @return [Time]
+      #   attr_writer :starting_at
 
       # @!parse
       #   # @param group_key [String]

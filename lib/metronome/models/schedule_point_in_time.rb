@@ -10,18 +10,26 @@ module Metronome
     # }
     # ```
     class SchedulePointInTime < Metronome::BaseModel
-      # @!attribute credit_type
+      # @!attribute [r] credit_type
       #
-      #   @return [Metronome::Models::CreditTypeData]
+      #   @return [Metronome::Models::CreditTypeData, nil]
       optional :credit_type, -> { Metronome::Models::CreditTypeData }
 
-      # @!attribute schedule_items
+      # @!parse
+      #   # @return [Metronome::Models::CreditTypeData]
+      #   attr_writer :credit_type
+
+      # @!attribute [r] schedule_items
       #
       #   @return [Array<Metronome::Models::SchedulePointInTime::ScheduleItem>]
       optional :schedule_items,
                -> {
                  Metronome::ArrayOf[Metronome::Models::SchedulePointInTime::ScheduleItem]
                }
+
+      # @!parse
+      #   # @return [Array<Metronome::Models::SchedulePointInTime::ScheduleItem>]
+      #   attr_writer :schedule_items
 
       # @!parse
       #   # @param credit_type [Metronome::Models::CreditTypeData]

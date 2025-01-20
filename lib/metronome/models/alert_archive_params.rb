@@ -9,11 +9,15 @@ module Metronome
       #   @return [String]
       required :id, String
 
-      # @!attribute release_uniqueness_key
+      # @!attribute [r] release_uniqueness_key
       #   If true, resets the uniqueness key on this alert so it can be re-used
       #
-      #   @return [Boolean]
+      #   @return [Boolean, nil]
       optional :release_uniqueness_key, Metronome::BooleanModel
+
+      # @!parse
+      #   # @return [Boolean]
+      #   attr_writer :release_uniqueness_key
 
       # @!parse
       #   # @param id [String] The Metronome ID of the alert

@@ -10,18 +10,26 @@ module Metronome
         #   @return [String]
         required :customer_id, String
 
-        # @!attribute next_page
+        # @!attribute [r] next_page
         #   Cursor that indicates where the next page of results should start.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :next_page, String
 
-        # @!attribute alert_statuses
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :next_page
+
+        # @!attribute [r] alert_statuses
         #   Optionally filter by alert status. If absent, only enabled alerts will be returned.
         #
         #   @return [Array<Symbol, Metronome::Models::Customers::AlertListParams::AlertStatus>]
         optional :alert_statuses,
                  -> { Metronome::ArrayOf[enum: Metronome::Models::Customers::AlertListParams::AlertStatus] }
+
+        # @!parse
+        #   # @return [Array<Symbol, Metronome::Models::Customers::AlertListParams::AlertStatus>]
+        #   attr_writer :alert_statuses
 
         # @!parse
         #   # @param customer_id [String] The Metronome ID of the customer

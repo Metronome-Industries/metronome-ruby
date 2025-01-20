@@ -19,52 +19,84 @@ module Metronome
       #   @return [Symbol, Metronome::Models::Rate::RateType]
       required :rate_type, enum: -> { Metronome::Models::Rate::RateType }
 
-      # @!attribute credit_type
+      # @!attribute [r] credit_type
       #
-      #   @return [Metronome::Models::CreditTypeData]
+      #   @return [Metronome::Models::CreditTypeData, nil]
       optional :credit_type, -> { Metronome::Models::CreditTypeData }
 
-      # @!attribute custom_rate
+      # @!parse
+      #   # @return [Metronome::Models::CreditTypeData]
+      #   attr_writer :credit_type
+
+      # @!attribute [r] custom_rate
       #   Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.
       #
-      #   @return [Hash{Symbol=>Object}]
+      #   @return [Hash{Symbol=>Object}, nil]
       optional :custom_rate, Metronome::HashOf[Metronome::Unknown]
 
-      # @!attribute is_prorated
+      # @!parse
+      #   # @return [Hash{Symbol=>Object}]
+      #   attr_writer :custom_rate
+
+      # @!attribute [r] is_prorated
       #   Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be set to true.
       #
-      #   @return [Boolean]
+      #   @return [Boolean, nil]
       optional :is_prorated, Metronome::BooleanModel
 
-      # @!attribute price
+      # @!parse
+      #   # @return [Boolean]
+      #   attr_writer :is_prorated
+
+      # @!attribute [r] price
       #   Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
       #
-      #   @return [Float]
+      #   @return [Float, nil]
       optional :price, Float
 
-      # @!attribute pricing_group_values
+      # @!parse
+      #   # @return [Float]
+      #   attr_writer :price
+
+      # @!attribute [r] pricing_group_values
       #   if pricing groups are used, this will contain the values used to calculate the price
       #
-      #   @return [Hash{Symbol=>String}]
+      #   @return [Hash{Symbol=>String}, nil]
       optional :pricing_group_values, Metronome::HashOf[String]
 
-      # @!attribute quantity
+      # @!parse
+      #   # @return [Hash{Symbol=>String}]
+      #   attr_writer :pricing_group_values
+
+      # @!attribute [r] quantity
       #   Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
       #
-      #   @return [Float]
+      #   @return [Float, nil]
       optional :quantity, Float
 
-      # @!attribute tiers
+      # @!parse
+      #   # @return [Float]
+      #   attr_writer :quantity
+
+      # @!attribute [r] tiers
       #   Only set for TIERED rate_type.
       #
       #   @return [Array<Metronome::Models::Tier>]
       optional :tiers, -> { Metronome::ArrayOf[Metronome::Models::Tier] }
 
-      # @!attribute use_list_prices
+      # @!parse
+      #   # @return [Array<Metronome::Models::Tier>]
+      #   attr_writer :tiers
+
+      # @!attribute [r] use_list_prices
       #   Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed using list prices rather than the standard rates for this product on the contract.
       #
-      #   @return [Boolean]
+      #   @return [Boolean, nil]
       optional :use_list_prices, Metronome::BooleanModel
+
+      # @!parse
+      #   # @return [Boolean]
+      #   attr_writer :use_list_prices
 
       # @!parse
       #   # @param rate_type [String]

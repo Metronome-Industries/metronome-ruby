@@ -9,17 +9,25 @@ module Metronome
       #   @return [String]
       required :name, String
 
-      # @!attribute billing_config
+      # @!attribute [r] billing_config
       #
-      #   @return [Metronome::Models::CustomerCreateParams::BillingConfig]
+      #   @return [Metronome::Models::CustomerCreateParams::BillingConfig, nil]
       optional :billing_config, -> { Metronome::Models::CustomerCreateParams::BillingConfig }
 
-      # @!attribute custom_fields
+      # @!parse
+      #   # @return [Metronome::Models::CustomerCreateParams::BillingConfig]
+      #   attr_writer :billing_config
+
+      # @!attribute [r] custom_fields
       #
-      #   @return [Hash{Symbol=>String}]
+      #   @return [Hash{Symbol=>String}, nil]
       optional :custom_fields, Metronome::HashOf[String]
 
-      # @!attribute customer_billing_provider_configurations
+      # @!parse
+      #   # @return [Hash{Symbol=>String}]
+      #   attr_writer :custom_fields
+
+      # @!attribute [r] customer_billing_provider_configurations
       #
       #   @return [Array<Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration>]
       optional :customer_billing_provider_configurations,
@@ -27,17 +35,29 @@ module Metronome
                  Metronome::ArrayOf[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration]
                }
 
-      # @!attribute external_id
+      # @!parse
+      #   # @return [Array<Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration>]
+      #   attr_writer :customer_billing_provider_configurations
+
+      # @!attribute [r] external_id
       #   (deprecated, use ingest_aliases instead) an alias that can be used to refer to this customer in usage events
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :external_id, String
 
-      # @!attribute ingest_aliases
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :external_id
+
+      # @!attribute [r] ingest_aliases
       #   Aliases that can be used to refer to this customer in usage events
       #
       #   @return [Array<String>]
       optional :ingest_aliases, Metronome::ArrayOf[String]
+
+      # @!parse
+      #   # @return [Array<String>]
+      #   attr_writer :ingest_aliases
 
       # @!parse
       #   # @param name [String] This will be truncated to 160 characters if the provided name is longer.
@@ -89,27 +109,43 @@ module Metronome
         required :billing_provider_type,
                  enum: -> { Metronome::Models::CustomerCreateParams::BillingConfig::BillingProviderType }
 
-        # @!attribute aws_is_subscription_product
+        # @!attribute [r] aws_is_subscription_product
         #   True if the aws_product_code is a SAAS subscription product, false otherwise.
         #
-        #   @return [Boolean]
+        #   @return [Boolean, nil]
         optional :aws_is_subscription_product, Metronome::BooleanModel
 
-        # @!attribute aws_product_code
+        # @!parse
+        #   # @return [Boolean]
+        #   attr_writer :aws_is_subscription_product
+
+        # @!attribute [r] aws_product_code
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :aws_product_code, String
 
-        # @!attribute aws_region
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :aws_product_code
+
+        # @!attribute [r] aws_region
         #
-        #   @return [Symbol, Metronome::Models::CustomerCreateParams::BillingConfig::AwsRegion]
+        #   @return [Symbol, Metronome::Models::CustomerCreateParams::BillingConfig::AwsRegion, nil]
         optional :aws_region, enum: -> { Metronome::Models::CustomerCreateParams::BillingConfig::AwsRegion }
 
-        # @!attribute stripe_collection_method
+        # @!parse
+        #   # @return [Symbol, Metronome::Models::CustomerCreateParams::BillingConfig::AwsRegion]
+        #   attr_writer :aws_region
+
+        # @!attribute [r] stripe_collection_method
         #
-        #   @return [Symbol, Metronome::Models::CustomerCreateParams::BillingConfig::StripeCollectionMethod]
+        #   @return [Symbol, Metronome::Models::CustomerCreateParams::BillingConfig::StripeCollectionMethod, nil]
         optional :stripe_collection_method,
                  enum: -> { Metronome::Models::CustomerCreateParams::BillingConfig::StripeCollectionMethod }
+
+        # @!parse
+        #   # @return [Symbol, Metronome::Models::CustomerCreateParams::BillingConfig::StripeCollectionMethod]
+        #   attr_writer :stripe_collection_method
 
         # @!parse
         #   # @param billing_provider_customer_id [String]
@@ -251,26 +287,38 @@ module Metronome
                    Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::BillingProvider
                  }
 
-        # @!attribute configuration
+        # @!attribute [r] configuration
         #   Configuration for the billing provider. The structure of this object is specific to the billing provider and delivery provider combination. Defaults to an empty object, however, for most billing provider + delivery method combinations, it will not be a valid configuration.
         #
-        #   @return [Hash{Symbol=>Object}]
+        #   @return [Hash{Symbol=>Object}, nil]
         optional :configuration, Metronome::HashOf[Metronome::Unknown]
 
-        # @!attribute delivery_method
+        # @!parse
+        #   # @return [Hash{Symbol=>Object}]
+        #   attr_writer :configuration
+
+        # @!attribute [r] delivery_method
         #   The method to use for delivering invoices to this customer. If not provided, the `delivery_method_id` must be provided.
         #
-        #   @return [Symbol, Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod]
+        #   @return [Symbol, Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod, nil]
         optional :delivery_method,
                  enum: -> {
                    Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod
                  }
 
-        # @!attribute delivery_method_id
+        # @!parse
+        #   # @return [Symbol, Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod]
+        #   attr_writer :delivery_method
+
+        # @!attribute [r] delivery_method_id
         #   ID of the delivery method to use for this customer. If not provided, the `delivery_method` must be provided.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :delivery_method_id, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :delivery_method_id
 
         # @!parse
         #   # @param billing_provider [String] The billing provider set for this configuration.

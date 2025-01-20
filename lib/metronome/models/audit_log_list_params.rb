@@ -3,47 +3,75 @@
 module Metronome
   module Models
     class AuditLogListParams < Metronome::BaseModel
-      # @!attribute ending_before
+      # @!attribute [r] ending_before
       #   RFC 3339 timestamp (exclusive). Cannot be used with 'next_page'.
       #
-      #   @return [Time]
+      #   @return [Time, nil]
       optional :ending_before, Time
 
-      # @!attribute limit
+      # @!parse
+      #   # @return [Time]
+      #   attr_writer :ending_before
+
+      # @!attribute [r] limit
       #   Max number of results that should be returned
       #
-      #   @return [Integer]
+      #   @return [Integer, nil]
       optional :limit, Integer
 
-      # @!attribute next_page
+      # @!parse
+      #   # @return [Integer]
+      #   attr_writer :limit
+
+      # @!attribute [r] next_page
       #   Cursor that indicates where the next page of results should start.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :next_page, String
 
-      # @!attribute resource_id
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :next_page
+
+      # @!attribute [r] resource_id
       #   Optional parameter that can be used to filter which audit logs are returned. If you specify resource_id, you must also specify resource_type.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :resource_id, String
 
-      # @!attribute resource_type
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :resource_id
+
+      # @!attribute [r] resource_type
       #   Optional parameter that can be used to filter which audit logs are returned. If you specify resource_type, you must also specify resource_id.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :resource_type, String
 
-      # @!attribute sort
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :resource_type
+
+      # @!attribute [r] sort
       #   Sort order by timestamp, e.g. date_asc or date_desc. Defaults to date_asc.
       #
-      #   @return [Symbol, Metronome::Models::AuditLogListParams::Sort]
+      #   @return [Symbol, Metronome::Models::AuditLogListParams::Sort, nil]
       optional :sort, enum: -> { Metronome::Models::AuditLogListParams::Sort }
 
-      # @!attribute starting_on
+      # @!parse
+      #   # @return [Symbol, Metronome::Models::AuditLogListParams::Sort]
+      #   attr_writer :sort
+
+      # @!attribute [r] starting_on
       #   RFC 3339 timestamp of the earliest audit log to return. Cannot be used with 'next_page'.
       #
-      #   @return [Time]
+      #   @return [Time, nil]
       optional :starting_on, Time
+
+      # @!parse
+      #   # @return [Time]
+      #   attr_writer :starting_on
 
       # @!parse
       #   # @param ending_before [String] RFC 3339 timestamp (exclusive). Cannot be used with 'next_page'.

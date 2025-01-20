@@ -23,11 +23,15 @@ module Metronome
           #   @return [String]
           required :schedule_name, String
 
-          # @!attribute covering_date
+          # @!attribute [r] covering_date
           #   If provided, at most one schedule segment will be returned (the one that covers this date). If not provided, all segments will be returned.
           #
-          #   @return [Time]
+          #   @return [Time, nil]
           optional :covering_date, Time
+
+          # @!parse
+          #   # @return [Time]
+          #   attr_writer :covering_date
 
           # @!parse
           #   # @param contract_id [String] ID of the contract whose named schedule is to be retrieved

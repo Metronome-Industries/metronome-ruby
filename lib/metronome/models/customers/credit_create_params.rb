@@ -26,63 +26,103 @@ module Metronome
         #   @return [String]
         required :product_id, String
 
-        # @!attribute applicable_contract_ids
+        # @!attribute [r] applicable_contract_ids
         #   Which contract the credit applies to. If not provided, the credit applies to all contracts.
         #
         #   @return [Array<String>]
         optional :applicable_contract_ids, Metronome::ArrayOf[String]
 
-        # @!attribute applicable_product_ids
+        # @!parse
+        #   # @return [Array<String>]
+        #   attr_writer :applicable_contract_ids
+
+        # @!attribute [r] applicable_product_ids
         #   Which products the credit applies to. If both applicable_product_ids and applicable_product_tags are not provided, the credit applies to all products.
         #
         #   @return [Array<String>]
         optional :applicable_product_ids, Metronome::ArrayOf[String]
 
-        # @!attribute applicable_product_tags
+        # @!parse
+        #   # @return [Array<String>]
+        #   attr_writer :applicable_product_ids
+
+        # @!attribute [r] applicable_product_tags
         #   Which tags the credit applies to. If both applicable_product_ids and applicable_product_tags are not provided, the credit applies to all products.
         #
         #   @return [Array<String>]
         optional :applicable_product_tags, Metronome::ArrayOf[String]
 
-        # @!attribute custom_fields
+        # @!parse
+        #   # @return [Array<String>]
+        #   attr_writer :applicable_product_tags
+
+        # @!attribute [r] custom_fields
         #
-        #   @return [Hash{Symbol=>String}]
+        #   @return [Hash{Symbol=>String}, nil]
         optional :custom_fields, Metronome::HashOf[String]
 
-        # @!attribute description
+        # @!parse
+        #   # @return [Hash{Symbol=>String}]
+        #   attr_writer :custom_fields
+
+        # @!attribute [r] description
         #   Used only in UI/API. It is not exposed to end customers.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :description, String
 
-        # @!attribute name
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :description
+
+        # @!attribute [r] name
         #   displayed on invoices
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :name, String
 
-        # @!attribute netsuite_sales_order_id
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :name
+
+        # @!attribute [r] netsuite_sales_order_id
         #   This field's availability is dependent on your client's configuration.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :netsuite_sales_order_id, String
 
-        # @!attribute rate_type
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :netsuite_sales_order_id
+
+        # @!attribute [r] rate_type
         #
-        #   @return [Symbol, Metronome::Models::Customers::CreditCreateParams::RateType]
+        #   @return [Symbol, Metronome::Models::Customers::CreditCreateParams::RateType, nil]
         optional :rate_type, enum: -> { Metronome::Models::Customers::CreditCreateParams::RateType }
 
-        # @!attribute salesforce_opportunity_id
+        # @!parse
+        #   # @return [Symbol, Metronome::Models::Customers::CreditCreateParams::RateType]
+        #   attr_writer :rate_type
+
+        # @!attribute [r] salesforce_opportunity_id
         #   This field's availability is dependent on your client's configuration.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :salesforce_opportunity_id, String
 
-        # @!attribute uniqueness_key
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :salesforce_opportunity_id
+
+        # @!attribute [r] uniqueness_key
         #   Prevents the creation of duplicates. If a request to create a commit or credit is made with a uniqueness key that was previously used to create a commit or credit, a new record will not be created and the request will fail with a 409 error.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :uniqueness_key, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :uniqueness_key
 
         # @!parse
         #   # @param access_schedule [Metronome::Models::Customers::CreditCreateParams::AccessSchedule] Schedule for distributing the credit to the customer.
@@ -158,11 +198,15 @@ module Metronome
                      Metronome::ArrayOf[Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem]
                    }
 
-          # @!attribute credit_type_id
+          # @!attribute [r] credit_type_id
           #   Defaults to USD (cents) if not passed
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :credit_type_id, String
+
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :credit_type_id
 
           # @!parse
           #   # Schedule for distributing the credit to the customer.

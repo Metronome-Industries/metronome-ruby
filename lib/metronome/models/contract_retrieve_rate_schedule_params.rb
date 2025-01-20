@@ -15,30 +15,46 @@ module Metronome
       #   @return [String]
       required :customer_id, String
 
-      # @!attribute limit
+      # @!attribute [r] limit
       #   Max number of results that should be returned
       #
-      #   @return [Integer]
+      #   @return [Integer, nil]
       optional :limit, Integer
 
-      # @!attribute next_page
+      # @!parse
+      #   # @return [Integer]
+      #   attr_writer :limit
+
+      # @!attribute [r] next_page
       #   Cursor that indicates where the next page of results should start.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :next_page, String
 
-      # @!attribute at
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :next_page
+
+      # @!attribute [r] at
       #   optional timestamp which overlaps with the returned rate schedule segments. When not specified, the current timestamp will be used.
       #
-      #   @return [Time]
+      #   @return [Time, nil]
       optional :at, Time
 
-      # @!attribute selectors
+      # @!parse
+      #   # @return [Time]
+      #   attr_writer :at
+
+      # @!attribute [r] selectors
       #   List of rate selectors, rates matching ANY of the selectors will be included in the response. Passing no selectors will result in all rates being returned.
       #
       #   @return [Array<Metronome::Models::ContractRetrieveRateScheduleParams::Selector>]
       optional :selectors,
                -> { Metronome::ArrayOf[Metronome::Models::ContractRetrieveRateScheduleParams::Selector] }
+
+      # @!parse
+      #   # @return [Array<Metronome::Models::ContractRetrieveRateScheduleParams::Selector>]
+      #   attr_writer :selectors
 
       # @!parse
       #   # @param contract_id [String] ID of the contract to get the rate schedule for.
@@ -69,29 +85,45 @@ module Metronome
       # }
       # ```
       class Selector < Metronome::BaseModel
-        # @!attribute partial_pricing_group_values
+        # @!attribute [r] partial_pricing_group_values
         #   List of pricing group key value pairs, rates containing the matching key / value pairs will be included in the response.
         #
-        #   @return [Hash{Symbol=>String}]
+        #   @return [Hash{Symbol=>String}, nil]
         optional :partial_pricing_group_values, Metronome::HashOf[String]
 
-        # @!attribute pricing_group_values
+        # @!parse
+        #   # @return [Hash{Symbol=>String}]
+        #   attr_writer :partial_pricing_group_values
+
+        # @!attribute [r] pricing_group_values
         #   List of pricing group key value pairs, rates matching all of the key / value pairs will be included in the response.
         #
-        #   @return [Hash{Symbol=>String}]
+        #   @return [Hash{Symbol=>String}, nil]
         optional :pricing_group_values, Metronome::HashOf[String]
 
-        # @!attribute product_id
+        # @!parse
+        #   # @return [Hash{Symbol=>String}]
+        #   attr_writer :pricing_group_values
+
+        # @!attribute [r] product_id
         #   Rates matching the product id will be included in the response.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :product_id, String
 
-        # @!attribute product_tags
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :product_id
+
+        # @!attribute [r] product_tags
         #   List of product tags, rates matching any of the tags will be included in the response.
         #
         #   @return [Array<String>]
         optional :product_tags, Metronome::ArrayOf[String]
+
+        # @!parse
+        #   # @return [Array<String>]
+        #   attr_writer :product_tags
 
         # @!parse
         #   # @param partial_pricing_group_values [Hash{Symbol=>String}] List of pricing group key value pairs, rates containing the matching key / value

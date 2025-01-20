@@ -9,58 +9,94 @@ module Metronome
         #   @return [String]
         required :customer_id, String
 
-        # @!attribute commit_id
+        # @!attribute [r] commit_id
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :commit_id, String
 
-        # @!attribute covering_date
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :commit_id
+
+        # @!attribute [r] covering_date
         #   Include only commits that have access schedules that "cover" the provided date
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :covering_date, Time
 
-        # @!attribute effective_before
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :covering_date
+
+        # @!attribute [r] effective_before
         #   Include only commits that have any access before the provided date (exclusive)
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :effective_before, Time
 
-        # @!attribute include_archived
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :effective_before
+
+        # @!attribute [r] include_archived
         #   Include commits from archived contracts.
         #
-        #   @return [Boolean]
+        #   @return [Boolean, nil]
         optional :include_archived, Metronome::BooleanModel
 
-        # @!attribute include_balance
+        # @!parse
+        #   # @return [Boolean]
+        #   attr_writer :include_archived
+
+        # @!attribute [r] include_balance
         #   Include the balance in the response. Setting this flag may cause the query to be slower.
         #
-        #   @return [Boolean]
+        #   @return [Boolean, nil]
         optional :include_balance, Metronome::BooleanModel
 
-        # @!attribute include_contract_commits
+        # @!parse
+        #   # @return [Boolean]
+        #   attr_writer :include_balance
+
+        # @!attribute [r] include_contract_commits
         #   Include commits on the contract level.
         #
-        #   @return [Boolean]
+        #   @return [Boolean, nil]
         optional :include_contract_commits, Metronome::BooleanModel
 
-        # @!attribute include_ledgers
+        # @!parse
+        #   # @return [Boolean]
+        #   attr_writer :include_contract_commits
+
+        # @!attribute [r] include_ledgers
         #   Include commit ledgers in the response. Setting this flag may cause the query to be slower.
         #
-        #   @return [Boolean]
+        #   @return [Boolean, nil]
         optional :include_ledgers, Metronome::BooleanModel
 
-        # @!attribute next_page
+        # @!parse
+        #   # @return [Boolean]
+        #   attr_writer :include_ledgers
+
+        # @!attribute [r] next_page
         #   The next page token from a previous response.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :next_page, String
 
-        # @!attribute starting_at
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :next_page
+
+        # @!attribute [r] starting_at
         #   Include only commits that have any access on or after the provided date
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :starting_at, Time
+
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :starting_at
 
         # @!parse
         #   # @param customer_id [String]

@@ -9,47 +9,75 @@ module Metronome
       #   @return [String]
       required :name, String
 
-      # @!attribute aggregation_key
+      # @!attribute [r] aggregation_key
       #   Specifies the type of aggregation performed on matching events. Required if `sql` is not provided.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :aggregation_key, String
 
-      # @!attribute aggregation_type
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :aggregation_key
+
+      # @!attribute [r] aggregation_type
       #   Specifies the type of aggregation performed on matching events.
       #
-      #   @return [Symbol, Metronome::Models::BillableMetricCreateParams::AggregationType]
+      #   @return [Symbol, Metronome::Models::BillableMetricCreateParams::AggregationType, nil]
       optional :aggregation_type, enum: -> { Metronome::Models::BillableMetricCreateParams::AggregationType }
 
-      # @!attribute custom_fields
+      # @!parse
+      #   # @return [Symbol, Metronome::Models::BillableMetricCreateParams::AggregationType]
+      #   attr_writer :aggregation_type
+
+      # @!attribute [r] custom_fields
       #   Custom fields to attach to the billable metric.
       #
-      #   @return [Hash{Symbol=>String}]
+      #   @return [Hash{Symbol=>String}, nil]
       optional :custom_fields, Metronome::HashOf[String]
 
-      # @!attribute event_type_filter
+      # @!parse
+      #   # @return [Hash{Symbol=>String}]
+      #   attr_writer :custom_fields
+
+      # @!attribute [r] event_type_filter
       #   An optional filtering rule to match the 'event_type' property of an event.
       #
-      #   @return [Metronome::Models::EventTypeFilter]
+      #   @return [Metronome::Models::EventTypeFilter, nil]
       optional :event_type_filter, -> { Metronome::Models::EventTypeFilter }
 
-      # @!attribute group_keys
+      # @!parse
+      #   # @return [Metronome::Models::EventTypeFilter]
+      #   attr_writer :event_type_filter
+
+      # @!attribute [r] group_keys
       #   Property names that are used to group usage costs on an invoice. Each entry represents a set of properties used to slice events into distinct buckets.
       #
       #   @return [Array<Array<String>>]
       optional :group_keys, Metronome::ArrayOf[Metronome::ArrayOf[String]]
 
-      # @!attribute property_filters
+      # @!parse
+      #   # @return [Array<Array<String>>]
+      #   attr_writer :group_keys
+
+      # @!attribute [r] property_filters
       #   A list of filters to match events to this billable metric. Each filter defines a rule on an event property. All rules must pass for the event to match the billable metric.
       #
       #   @return [Array<Metronome::Models::PropertyFilter>]
       optional :property_filters, -> { Metronome::ArrayOf[Metronome::Models::PropertyFilter] }
 
-      # @!attribute sql
+      # @!parse
+      #   # @return [Array<Metronome::Models::PropertyFilter>]
+      #   attr_writer :property_filters
+
+      # @!attribute [r] sql
       #   The SQL query associated with the billable metric. This field is mutually exclusive with aggregation_type, event_type_filter, property_filters, aggregation_key, and group_keys. If provided, these other fields must be omitted.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :sql, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :sql
 
       # @!parse
       #   # @param name [String] The display name of the billable metric.

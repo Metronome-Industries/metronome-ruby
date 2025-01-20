@@ -69,7 +69,7 @@ module Metronome
         #   The end date of the plan
         #
         #   @return [Time, nil]
-        optional :ending_before, Time
+        optional :ending_before, Time, nil?: true
 
         # @!parse
         #   # @param id [String]

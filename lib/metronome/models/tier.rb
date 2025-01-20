@@ -15,10 +15,14 @@ module Metronome
       #   @return [Float]
       required :price, Float
 
-      # @!attribute size
+      # @!attribute [r] size
       #
-      #   @return [Float]
+      #   @return [Float, nil]
       optional :size, Float
+
+      # @!parse
+      #   # @return [Float]
+      #   attr_writer :size
 
       # @!parse
       #   # @param price [Float]

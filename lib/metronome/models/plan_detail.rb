@@ -29,25 +29,41 @@ module Metronome
       #   @return [String]
       required :name, String
 
-      # @!attribute credit_grants
+      # @!attribute [r] credit_grants
       #
       #   @return [Array<Metronome::Models::PlanDetail::CreditGrant>]
       optional :credit_grants, -> { Metronome::ArrayOf[Metronome::Models::PlanDetail::CreditGrant] }
 
-      # @!attribute description
+      # @!parse
+      #   # @return [Array<Metronome::Models::PlanDetail::CreditGrant>]
+      #   attr_writer :credit_grants
+
+      # @!attribute [r] description
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :description, String
 
-      # @!attribute minimums
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :description
+
+      # @!attribute [r] minimums
       #
       #   @return [Array<Metronome::Models::PlanDetail::Minimum>]
       optional :minimums, -> { Metronome::ArrayOf[Metronome::Models::PlanDetail::Minimum] }
 
-      # @!attribute overage_rates
+      # @!parse
+      #   # @return [Array<Metronome::Models::PlanDetail::Minimum>]
+      #   attr_writer :minimums
+
+      # @!attribute [r] overage_rates
       #
       #   @return [Array<Metronome::Models::PlanDetail::OverageRate>]
       optional :overage_rates, -> { Metronome::ArrayOf[Metronome::Models::PlanDetail::OverageRate] }
+
+      # @!parse
+      #   # @return [Array<Metronome::Models::PlanDetail::OverageRate>]
+      #   attr_writer :overage_rates
 
       # @!parse
       #   # @param id [String]
@@ -114,20 +130,32 @@ module Metronome
         #   @return [Boolean]
         required :send_invoice, Metronome::BooleanModel
 
-        # @!attribute reason
+        # @!attribute [r] reason
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :reason, String
 
-        # @!attribute recurrence_duration
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :reason
+
+        # @!attribute [r] recurrence_duration
         #
-        #   @return [Float]
+        #   @return [Float, nil]
         optional :recurrence_duration, Float
 
-        # @!attribute recurrence_interval
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :recurrence_duration
+
+        # @!attribute [r] recurrence_interval
         #
-        #   @return [Float]
+        #   @return [Float, nil]
         optional :recurrence_interval, Float
+
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :recurrence_interval
 
         # @!parse
         #   # @param amount_granted [Float]

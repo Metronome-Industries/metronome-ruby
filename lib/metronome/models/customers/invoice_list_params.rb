@@ -9,53 +9,85 @@ module Metronome
         #   @return [String]
         required :customer_id, String
 
-        # @!attribute credit_type_id
+        # @!attribute [r] credit_type_id
         #   Only return invoices for the specified credit type
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :credit_type_id, String
 
-        # @!attribute ending_before
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :credit_type_id
+
+        # @!attribute [r] ending_before
         #   RFC 3339 timestamp (exclusive). Invoices will only be returned for billing periods that end before this time.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :ending_before, Time
 
-        # @!attribute limit
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :ending_before
+
+        # @!attribute [r] limit
         #   Max number of results that should be returned
         #
-        #   @return [Integer]
+        #   @return [Integer, nil]
         optional :limit, Integer
 
-        # @!attribute next_page
+        # @!parse
+        #   # @return [Integer]
+        #   attr_writer :limit
+
+        # @!attribute [r] next_page
         #   Cursor that indicates where the next page of results should start.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :next_page, String
 
-        # @!attribute skip_zero_qty_line_items
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :next_page
+
+        # @!attribute [r] skip_zero_qty_line_items
         #   If set, all zero quantity line items will be filtered out of the response
         #
-        #   @return [Boolean]
+        #   @return [Boolean, nil]
         optional :skip_zero_qty_line_items, Metronome::BooleanModel
 
-        # @!attribute sort
+        # @!parse
+        #   # @return [Boolean]
+        #   attr_writer :skip_zero_qty_line_items
+
+        # @!attribute [r] sort
         #   Invoice sort order by issued_at, e.g. date_asc or date_desc.  Defaults to date_asc.
         #
-        #   @return [Symbol, Metronome::Models::Customers::InvoiceListParams::Sort]
+        #   @return [Symbol, Metronome::Models::Customers::InvoiceListParams::Sort, nil]
         optional :sort, enum: -> { Metronome::Models::Customers::InvoiceListParams::Sort }
 
-        # @!attribute starting_on
+        # @!parse
+        #   # @return [Symbol, Metronome::Models::Customers::InvoiceListParams::Sort]
+        #   attr_writer :sort
+
+        # @!attribute [r] starting_on
         #   RFC 3339 timestamp (inclusive). Invoices will only be returned for billing periods that start at or after this time.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :starting_on, Time
 
-        # @!attribute status
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :starting_on
+
+        # @!attribute [r] status
         #   Invoice status, e.g. DRAFT, FINALIZED, or VOID
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :status, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :status
 
         # @!parse
         #   # @param customer_id [String]

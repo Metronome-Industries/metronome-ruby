@@ -21,12 +21,12 @@ module Metronome
       # @!attribute group_key
       #
       #   @return [String, nil]
-      required :group_key, String
+      required :group_key, String, nil?: true
 
       # @!attribute group_value
       #
       #   @return [String, nil]
-      required :group_value, String
+      required :group_value, String, nil?: true
 
       # @!attribute starting_on
       #
@@ -36,7 +36,7 @@ module Metronome
       # @!attribute value
       #
       #   @return [Float, nil]
-      required :value, Float
+      required :value, Float, nil?: true
 
       # @!parse
       #   # @param ending_before [String]

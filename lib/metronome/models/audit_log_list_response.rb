@@ -29,35 +29,59 @@ module Metronome
       #   @return [Time]
       required :timestamp, Time
 
-      # @!attribute action
+      # @!attribute [r] action
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :action, String
 
-      # @!attribute actor
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :action
+
+      # @!attribute [r] actor
       #
-      #   @return [Metronome::Models::AuditLogListResponse::Actor]
+      #   @return [Metronome::Models::AuditLogListResponse::Actor, nil]
       optional :actor, -> { Metronome::Models::AuditLogListResponse::Actor }
 
-      # @!attribute description
+      # @!parse
+      #   # @return [Metronome::Models::AuditLogListResponse::Actor]
+      #   attr_writer :actor
+
+      # @!attribute [r] description
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :description, String
 
-      # @!attribute resource_id
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :description
+
+      # @!attribute [r] resource_id
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :resource_id, String
 
-      # @!attribute resource_type
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :resource_id
+
+      # @!attribute [r] resource_type
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :resource_type, String
 
-      # @!attribute status
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :resource_type
+
+      # @!attribute [r] status
       #
-      #   @return [Symbol, Metronome::Models::AuditLogListResponse::Status]
+      #   @return [Symbol, Metronome::Models::AuditLogListResponse::Status, nil]
       optional :status, enum: -> { Metronome::Models::AuditLogListResponse::Status }
+
+      # @!parse
+      #   # @return [Symbol, Metronome::Models::AuditLogListResponse::Status]
+      #   attr_writer :status
 
       # @!parse
       #   # @param id [String]
@@ -101,15 +125,23 @@ module Metronome
         #   @return [String]
         required :id, String
 
-        # @!attribute ip
+        # @!attribute [r] ip
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :ip, String
 
-        # @!attribute user_agent
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :ip
+
+        # @!attribute [r] user_agent
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :user_agent, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :user_agent
 
         # @!parse
         #   # @param id [String]
@@ -140,10 +172,14 @@ module Metronome
         #   @return [String]
         required :name, String
 
-        # @!attribute email
+        # @!attribute [r] email
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :email, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :email
 
         # @!parse
         #   # @param id [String]

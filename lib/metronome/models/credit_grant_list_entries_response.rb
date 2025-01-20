@@ -18,7 +18,7 @@ module Metronome
       # @!attribute next_page
       #
       #   @return [String, nil]
-      required :next_page, String
+      required :next_page, String, nil?: true
 
       # @!parse
       #   # @param data [Array<Metronome::Models::CreditGrantListEntriesResponse::Data>]

@@ -18,7 +18,7 @@ module Metronome
       # @!attribute next_page
       #
       #   @return [String, nil]
-      optional :next_page, String
+      optional :next_page, String, nil?: true
 
       # @!parse
       #   # @param data [Array<Metronome::Models::ContractRetrieveRateScheduleResponse::Data>]
@@ -80,29 +80,45 @@ module Metronome
         #   @return [Time]
         required :starting_at, Time
 
-        # @!attribute commit_rate
+        # @!attribute [r] commit_rate
         #   A distinct rate on the rate card. You can choose to use this rate rather than list rate when consuming a credit or commit.
         #
-        #   @return [Metronome::Models::ContractRetrieveRateScheduleResponse::Data::CommitRate]
+        #   @return [Metronome::Models::ContractRetrieveRateScheduleResponse::Data::CommitRate, nil]
         optional :commit_rate,
                  -> {
                    Metronome::Models::ContractRetrieveRateScheduleResponse::Data::CommitRate
                  }
 
-        # @!attribute ending_before
+        # @!parse
+        #   # @return [Metronome::Models::ContractRetrieveRateScheduleResponse::Data::CommitRate]
+        #   attr_writer :commit_rate
+
+        # @!attribute [r] ending_before
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :ending_before, Time
 
-        # @!attribute override_rate
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :ending_before
+
+        # @!attribute [r] override_rate
         #
-        #   @return [Metronome::Models::Rate]
+        #   @return [Metronome::Models::Rate, nil]
         optional :override_rate, -> { Metronome::Models::Rate }
 
-        # @!attribute pricing_group_values
+        # @!parse
+        #   # @return [Metronome::Models::Rate]
+        #   attr_writer :override_rate
+
+        # @!attribute [r] pricing_group_values
         #
-        #   @return [Hash{Symbol=>String}]
+        #   @return [Hash{Symbol=>String}, nil]
         optional :pricing_group_values, Metronome::HashOf[String]
+
+        # @!parse
+        #   # @return [Hash{Symbol=>String}]
+        #   attr_writer :pricing_group_values
 
         # @!parse
         #   # @param entitled [Boolean]
@@ -167,17 +183,25 @@ module Metronome
                      Metronome::Models::ContractRetrieveRateScheduleResponse::Data::CommitRate::RateType
                    }
 
-          # @!attribute price
+          # @!attribute [r] price
           #   Commit rate price. For FLAT rate_type, this must be >=0.
           #
-          #   @return [Float]
+          #   @return [Float, nil]
           optional :price, Float
 
-          # @!attribute tiers
+          # @!parse
+          #   # @return [Float]
+          #   attr_writer :price
+
+          # @!attribute [r] tiers
           #   Only set for TIERED rate_type.
           #
           #   @return [Array<Metronome::Models::Tier>]
           optional :tiers, -> { Metronome::ArrayOf[Metronome::Models::Tier] }
+
+          # @!parse
+          #   # @return [Array<Metronome::Models::Tier>]
+          #   attr_writer :tiers
 
           # @!parse
           #   # A distinct rate on the rate card. You can choose to use this rate rather than

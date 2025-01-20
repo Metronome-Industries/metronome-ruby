@@ -10,7 +10,7 @@ module Metronome
         #   @return [String]
         required :name, String
 
-        # @!attribute aliases
+        # @!attribute [r] aliases
         #   Reference this alias when creating a contract. If the same alias is assigned to multiple rate cards, it will reference the rate card to which it was most recently assigned. It is not exposed to end customers.
         #
         #   @return [Array<Metronome::Models::Contracts::RateCardCreateParams::Alias>]
@@ -19,7 +19,11 @@ module Metronome
                    Metronome::ArrayOf[Metronome::Models::Contracts::RateCardCreateParams::Alias]
                  }
 
-        # @!attribute credit_type_conversions
+        # @!parse
+        #   # @return [Array<Metronome::Models::Contracts::RateCardCreateParams::Alias>]
+        #   attr_writer :aliases
+
+        # @!attribute [r] credit_type_conversions
         #   Required when using custom pricing units in rates.
         #
         #   @return [Array<Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion>]
@@ -28,21 +32,37 @@ module Metronome
                    Metronome::ArrayOf[Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion]
                  }
 
-        # @!attribute custom_fields
+        # @!parse
+        #   # @return [Array<Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion>]
+        #   attr_writer :credit_type_conversions
+
+        # @!attribute [r] custom_fields
         #
-        #   @return [Hash{Symbol=>String}]
+        #   @return [Hash{Symbol=>String}, nil]
         optional :custom_fields, Metronome::HashOf[String]
 
-        # @!attribute description
+        # @!parse
+        #   # @return [Hash{Symbol=>String}]
+        #   attr_writer :custom_fields
+
+        # @!attribute [r] description
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :description, String
 
-        # @!attribute fiat_credit_type_id
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :description
+
+        # @!attribute [r] fiat_credit_type_id
         #   The Metronome ID of the credit type to associate with the rate card, defaults to USD (cents) if not passed.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :fiat_credit_type_id, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :fiat_credit_type_id
 
         # @!parse
         #   # @param name [String] Used only in UI/API. It is not exposed to end customers.
@@ -88,15 +108,23 @@ module Metronome
           #   @return [String]
           required :name, String
 
-          # @!attribute ending_before
+          # @!attribute [r] ending_before
           #
-          #   @return [Time]
+          #   @return [Time, nil]
           optional :ending_before, Time
 
-          # @!attribute starting_at
+          # @!parse
+          #   # @return [Time]
+          #   attr_writer :ending_before
+
+          # @!attribute [r] starting_at
           #
-          #   @return [Time]
+          #   @return [Time, nil]
           optional :starting_at, Time
+
+          # @!parse
+          #   # @return [Time]
+          #   attr_writer :starting_at
 
           # @!parse
           #   # @param name [String]

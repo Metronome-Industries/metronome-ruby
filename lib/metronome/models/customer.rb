@@ -36,10 +36,14 @@ module Metronome
       #   @return [String]
       required :name, String
 
-      # @!attribute custom_fields
+      # @!attribute [r] custom_fields
       #
-      #   @return [Hash{Symbol=>String}]
+      #   @return [Hash{Symbol=>String}, nil]
       optional :custom_fields, Metronome::HashOf[String]
+
+      # @!parse
+      #   # @return [Hash{Symbol=>String}]
+      #   attr_writer :custom_fields
 
       # @!parse
       #   # @param id [String] the Metronome ID of the customer

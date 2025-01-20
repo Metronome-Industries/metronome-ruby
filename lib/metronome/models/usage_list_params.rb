@@ -19,13 +19,17 @@ module Metronome
       #   @return [Symbol, Metronome::Models::UsageListParams::WindowSize]
       required :window_size, enum: -> { Metronome::Models::UsageListParams::WindowSize }
 
-      # @!attribute next_page
+      # @!attribute [r] next_page
       #   Cursor that indicates where the next page of results should start.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :next_page, String
 
-      # @!attribute billable_metrics
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :next_page
+
+      # @!attribute [r] billable_metrics
       #   A list of billable metrics to fetch usage for. If absent, all billable metrics will be returned.
       #
       #   @return [Array<Metronome::Models::UsageListParams::BillableMetric>]
@@ -34,11 +38,19 @@ module Metronome
                  Metronome::ArrayOf[Metronome::Models::UsageListParams::BillableMetric]
                }
 
-      # @!attribute customer_ids
+      # @!parse
+      #   # @return [Array<Metronome::Models::UsageListParams::BillableMetric>]
+      #   attr_writer :billable_metrics
+
+      # @!attribute [r] customer_ids
       #   A list of Metronome customer IDs to fetch usage for. If absent, usage for all customers will be returned.
       #
       #   @return [Array<String>]
       optional :customer_ids, Metronome::ArrayOf[String]
+
+      # @!parse
+      #   # @return [Array<String>]
+      #   attr_writer :customer_ids
 
       # @!parse
       #   # @param ending_before [String]
@@ -95,10 +107,14 @@ module Metronome
         #   @return [String]
         required :id, String
 
-        # @!attribute group_by
+        # @!attribute [r] group_by
         #
-        #   @return [Metronome::Models::UsageListParams::BillableMetric::GroupBy]
+        #   @return [Metronome::Models::UsageListParams::BillableMetric::GroupBy, nil]
         optional :group_by, -> { Metronome::Models::UsageListParams::BillableMetric::GroupBy }
+
+        # @!parse
+        #   # @return [Metronome::Models::UsageListParams::BillableMetric::GroupBy]
+        #   attr_writer :group_by
 
         # @!parse
         #   # @param id [String]
@@ -122,11 +138,15 @@ module Metronome
           #   @return [String]
           required :key, String
 
-          # @!attribute values
+          # @!attribute [r] values
           #   Values of the group_by key to return in the query. If this field is omitted, all available values will be returned, up to a maximum of 200.
           #
           #   @return [Array<String>]
           optional :values, Metronome::ArrayOf[String]
+
+          # @!parse
+          #   # @return [Array<String>]
+          #   attr_writer :values
 
           # @!parse
           #   # @param key [String] The name of the group_by key to use

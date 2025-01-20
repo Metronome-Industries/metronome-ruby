@@ -24,11 +24,15 @@ module Metronome
         #   @return [Symbol, Metronome::Models::Contracts::QuantityConversion::Operation]
         required :operation, enum: -> { Metronome::Models::Contracts::QuantityConversion::Operation }
 
-        # @!attribute name
+        # @!attribute [r] name
         #   Optional name for this conversion.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :name, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :name
 
         # @!parse
         #   # Optional. Only valid for USAGE products. If provided, the quantity will be

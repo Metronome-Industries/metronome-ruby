@@ -65,12 +65,16 @@ module Metronome
           # @!attribute archived_at
           #
           #   @return [Time, nil]
-          optional :archived_at, Time
+          optional :archived_at, Time, nil?: true
 
-          # @!attribute custom_fields
+          # @!attribute [r] custom_fields
           #
-          #   @return [Hash{Symbol=>String}]
+          #   @return [Hash{Symbol=>String}, nil]
           optional :custom_fields, Metronome::HashOf[String]
+
+          # @!parse
+          #   # @return [Hash{Symbol=>String}]
+          #   attr_writer :custom_fields
 
           # @!parse
           #   # @param id [String]
@@ -132,81 +136,129 @@ module Metronome
             #   @return [String]
             required :created_by, String
 
-            # @!attribute billable_metric_id
+            # @!attribute [r] billable_metric_id
             #
-            #   @return [String]
+            #   @return [String, nil]
             optional :billable_metric_id, String
 
-            # @!attribute composite_product_ids
+            # @!parse
+            #   # @return [String]
+            #   attr_writer :billable_metric_id
+
+            # @!attribute [r] composite_product_ids
             #
             #   @return [Array<String>]
             optional :composite_product_ids, Metronome::ArrayOf[String]
 
-            # @!attribute composite_tags
+            # @!parse
+            #   # @return [Array<String>]
+            #   attr_writer :composite_product_ids
+
+            # @!attribute [r] composite_tags
             #
             #   @return [Array<String>]
             optional :composite_tags, Metronome::ArrayOf[String]
 
-            # @!attribute exclude_free_usage
+            # @!parse
+            #   # @return [Array<String>]
+            #   attr_writer :composite_tags
+
+            # @!attribute [r] exclude_free_usage
             #
-            #   @return [Boolean]
+            #   @return [Boolean, nil]
             optional :exclude_free_usage, Metronome::BooleanModel
 
-            # @!attribute is_refundable
+            # @!parse
+            #   # @return [Boolean]
+            #   attr_writer :exclude_free_usage
+
+            # @!attribute [r] is_refundable
             #
-            #   @return [Boolean]
+            #   @return [Boolean, nil]
             optional :is_refundable, Metronome::BooleanModel
 
-            # @!attribute name
+            # @!parse
+            #   # @return [Boolean]
+            #   attr_writer :is_refundable
+
+            # @!attribute [r] name
             #
-            #   @return [String]
+            #   @return [String, nil]
             optional :name, String
 
-            # @!attribute netsuite_internal_item_id
+            # @!parse
+            #   # @return [String]
+            #   attr_writer :name
+
+            # @!attribute [r] netsuite_internal_item_id
             #   This field's availability is dependent on your client's configuration.
             #
-            #   @return [String]
+            #   @return [String, nil]
             optional :netsuite_internal_item_id, String
 
-            # @!attribute netsuite_overage_item_id
+            # @!parse
+            #   # @return [String]
+            #   attr_writer :netsuite_internal_item_id
+
+            # @!attribute [r] netsuite_overage_item_id
             #   This field's availability is dependent on your client's configuration.
             #
-            #   @return [String]
+            #   @return [String, nil]
             optional :netsuite_overage_item_id, String
 
-            # @!attribute presentation_group_key
+            # @!parse
+            #   # @return [String]
+            #   attr_writer :netsuite_overage_item_id
+
+            # @!attribute [r] presentation_group_key
             #   For USAGE products only. Groups usage line items on invoices. The superset of values in the pricing group key and presentation group key must be set as one compound group key on the billable metric.
             #
             #   @return [Array<String>]
             optional :presentation_group_key, Metronome::ArrayOf[String]
 
-            # @!attribute pricing_group_key
+            # @!parse
+            #   # @return [Array<String>]
+            #   attr_writer :presentation_group_key
+
+            # @!attribute [r] pricing_group_key
             #   For USAGE products only. If set, pricing for this product will be determined for each pricing_group_key value, as opposed to the product as a whole. The superset of values in the pricing group key and presentation group key must be set as one compound group key on the billable metric.
             #
             #   @return [Array<String>]
             optional :pricing_group_key, Metronome::ArrayOf[String]
 
+            # @!parse
+            #   # @return [Array<String>]
+            #   attr_writer :pricing_group_key
+
             # @!attribute quantity_conversion
             #   Optional. Only valid for USAGE products. If provided, the quantity will be converted using the provided conversion factor and operation. For example, if the operation is "multiply" and the conversion factor is 100, then the quantity will be multiplied by 100. This can be used in cases where data is sent in one unit and priced in another.  For example, data could be sent in MB and priced in GB. In this case, the conversion factor would be 1024 and the operation would be "divide".
             #
             #   @return [Metronome::Models::Contracts::QuantityConversion, nil]
-            optional :quantity_conversion, -> { Metronome::Models::Contracts::QuantityConversion }
+            optional :quantity_conversion, -> { Metronome::Models::Contracts::QuantityConversion }, nil?: true
 
             # @!attribute quantity_rounding
             #   Optional. Only valid for USAGE products. If provided, the quantity will be rounded using the provided rounding method and decimal places. For example, if the method is "round up" and the decimal places is 0, then the quantity will be rounded up to the nearest integer.
             #
             #   @return [Metronome::Models::Contracts::QuantityRounding, nil]
-            optional :quantity_rounding, -> { Metronome::Models::Contracts::QuantityRounding }
+            optional :quantity_rounding, -> { Metronome::Models::Contracts::QuantityRounding }, nil?: true
 
-            # @!attribute starting_at
+            # @!attribute [r] starting_at
             #
-            #   @return [Time]
+            #   @return [Time, nil]
             optional :starting_at, Time
 
-            # @!attribute tags
+            # @!parse
+            #   # @return [Time]
+            #   attr_writer :starting_at
+
+            # @!attribute [r] tags
             #
             #   @return [Array<String>]
             optional :tags, Metronome::ArrayOf[String]
+
+            # @!parse
+            #   # @return [Array<String>]
+            #   attr_writer :tags
 
             # @!parse
             #   # @param created_at [String]

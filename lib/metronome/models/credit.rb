@@ -29,87 +29,147 @@ module Metronome
       #   @return [Symbol, Metronome::Models::Credit::Type]
       required :type, enum: -> { Metronome::Models::Credit::Type }
 
-      # @!attribute access_schedule
+      # @!attribute [r] access_schedule
       #   The schedule that the customer will gain access to the credits.
       #
-      #   @return [Metronome::Models::ScheduleDuration]
+      #   @return [Metronome::Models::ScheduleDuration, nil]
       optional :access_schedule, -> { Metronome::Models::ScheduleDuration }
 
-      # @!attribute applicable_contract_ids
+      # @!parse
+      #   # @return [Metronome::Models::ScheduleDuration]
+      #   attr_writer :access_schedule
+
+      # @!attribute [r] applicable_contract_ids
       #
       #   @return [Array<String>]
       optional :applicable_contract_ids, Metronome::ArrayOf[String]
 
-      # @!attribute applicable_product_ids
+      # @!parse
+      #   # @return [Array<String>]
+      #   attr_writer :applicable_contract_ids
+
+      # @!attribute [r] applicable_product_ids
       #
       #   @return [Array<String>]
       optional :applicable_product_ids, Metronome::ArrayOf[String]
 
-      # @!attribute applicable_product_tags
+      # @!parse
+      #   # @return [Array<String>]
+      #   attr_writer :applicable_product_ids
+
+      # @!attribute [r] applicable_product_tags
       #
       #   @return [Array<String>]
       optional :applicable_product_tags, Metronome::ArrayOf[String]
 
-      # @!attribute balance
+      # @!parse
+      #   # @return [Array<String>]
+      #   attr_writer :applicable_product_tags
+
+      # @!attribute [r] balance
       #   The current balance of the credit or commit. This balance reflects the amount of credit or commit that the customer has access to use at this moment - thus, expired and upcoming credit or commit segments contribute 0 to the balance. The balance will match the sum of all ledger entries with the exception of the case where the sum of negative manual ledger entries exceeds the positive amount remaining on the credit or commit - in that case, the balance will be 0. All manual ledger entries associated with active credit or commit segments are included in the balance, including future-dated manual ledger entries.
       #
-      #   @return [Float]
+      #   @return [Float, nil]
       optional :balance, Float
 
-      # @!attribute contract
+      # @!parse
+      #   # @return [Float]
+      #   attr_writer :balance
+
+      # @!attribute [r] contract
       #
-      #   @return [Metronome::Models::Credit::Contract]
+      #   @return [Metronome::Models::Credit::Contract, nil]
       optional :contract, -> { Metronome::Models::Credit::Contract }
 
-      # @!attribute custom_fields
+      # @!parse
+      #   # @return [Metronome::Models::Credit::Contract]
+      #   attr_writer :contract
+
+      # @!attribute [r] custom_fields
       #
-      #   @return [Hash{Symbol=>String}]
+      #   @return [Hash{Symbol=>String}, nil]
       optional :custom_fields, Metronome::HashOf[String]
 
-      # @!attribute description
+      # @!parse
+      #   # @return [Hash{Symbol=>String}]
+      #   attr_writer :custom_fields
+
+      # @!attribute [r] description
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :description, String
 
-      # @!attribute ledger
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :description
+
+      # @!attribute [r] ledger
       #   A list of ordered events that impact the balance of a credit. For example, an invoice deduction or an expiration.
       #
       #   @return [Array<Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry, Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry, Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry, Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry, Metronome::Models::Credit::Ledger::CreditManualLedgerEntry>]
       optional :ledger, -> { Metronome::ArrayOf[union: Metronome::Models::Credit::Ledger] }
 
-      # @!attribute name
+      # @!parse
+      #   # @return [Array<Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry, Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry, Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry, Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry, Metronome::Models::Credit::Ledger::CreditManualLedgerEntry>]
+      #   attr_writer :ledger
+
+      # @!attribute [r] name
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :name, String
 
-      # @!attribute netsuite_sales_order_id
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :name
+
+      # @!attribute [r] netsuite_sales_order_id
       #   This field's availability is dependent on your client's configuration.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :netsuite_sales_order_id, String
 
-      # @!attribute priority
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :netsuite_sales_order_id
+
+      # @!attribute [r] priority
       #   If multiple credits or commits are applicable, the one with the lower priority will apply first.
       #
-      #   @return [Float]
+      #   @return [Float, nil]
       optional :priority, Float
 
-      # @!attribute rate_type
+      # @!parse
+      #   # @return [Float]
+      #   attr_writer :priority
+
+      # @!attribute [r] rate_type
       #
-      #   @return [Symbol, Metronome::Models::Credit::RateType]
+      #   @return [Symbol, Metronome::Models::Credit::RateType, nil]
       optional :rate_type, enum: -> { Metronome::Models::Credit::RateType }
 
-      # @!attribute salesforce_opportunity_id
+      # @!parse
+      #   # @return [Symbol, Metronome::Models::Credit::RateType]
+      #   attr_writer :rate_type
+
+      # @!attribute [r] salesforce_opportunity_id
       #   This field's availability is dependent on your client's configuration.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :salesforce_opportunity_id, String
 
-      # @!attribute uniqueness_key
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :salesforce_opportunity_id
+
+      # @!attribute [r] uniqueness_key
       #   Prevents the creation of duplicates. If a request to create a commit or credit is made with a uniqueness key that was previously used to create a commit or credit, a new record will not be created and the request will fail with a 409 error.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :uniqueness_key, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :uniqueness_key
 
       # @!parse
       #   # @param id [String]

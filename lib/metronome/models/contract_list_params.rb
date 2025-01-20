@@ -8,35 +8,55 @@ module Metronome
       #   @return [String]
       required :customer_id, String
 
-      # @!attribute covering_date
+      # @!attribute [r] covering_date
       #   Optional RFC 3339 timestamp. If provided, the response will include only contracts effective on the provided date.  This cannot be provided if the starting_at filter is provided.
       #
-      #   @return [Time]
+      #   @return [Time, nil]
       optional :covering_date, Time
 
-      # @!attribute include_archived
+      # @!parse
+      #   # @return [Time]
+      #   attr_writer :covering_date
+
+      # @!attribute [r] include_archived
       #   Include archived contracts in the response
       #
-      #   @return [Boolean]
+      #   @return [Boolean, nil]
       optional :include_archived, Metronome::BooleanModel
 
-      # @!attribute include_balance
+      # @!parse
+      #   # @return [Boolean]
+      #   attr_writer :include_archived
+
+      # @!attribute [r] include_balance
       #   Include the balance of credits and commits in the response. Setting this flag may cause the query to be slower.
       #
-      #   @return [Boolean]
+      #   @return [Boolean, nil]
       optional :include_balance, Metronome::BooleanModel
 
-      # @!attribute include_ledgers
+      # @!parse
+      #   # @return [Boolean]
+      #   attr_writer :include_balance
+
+      # @!attribute [r] include_ledgers
       #   Include commit ledgers in the response. Setting this flag may cause the query to be slower.
       #
-      #   @return [Boolean]
+      #   @return [Boolean, nil]
       optional :include_ledgers, Metronome::BooleanModel
 
-      # @!attribute starting_at
+      # @!parse
+      #   # @return [Boolean]
+      #   attr_writer :include_ledgers
+
+      # @!attribute [r] starting_at
       #   Optional RFC 3339 timestamp. If provided, the response will include only contracts where effective_at is on or after the provided date.  This cannot be provided if the covering_date filter is provided.
       #
-      #   @return [Time]
+      #   @return [Time, nil]
       optional :starting_at, Time
+
+      # @!parse
+      #   # @return [Time]
+      #   attr_writer :starting_at
 
       # @!parse
       #   # @param customer_id [String]

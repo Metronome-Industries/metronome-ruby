@@ -9,17 +9,25 @@ module Metronome
         #   @return [Object]
         required :body, Metronome::Unknown
 
-        # @!attribute limit
+        # @!attribute [r] limit
         #   Max number of results that should be returned
         #
-        #   @return [Integer]
+        #   @return [Integer, nil]
         optional :limit, Integer
 
-        # @!attribute next_page
+        # @!parse
+        #   # @return [Integer]
+        #   attr_writer :limit
+
+        # @!attribute [r] next_page
         #   Cursor that indicates where the next page of results should start.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :next_page, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :next_page
 
         # @!parse
         #   # @param body [Object]

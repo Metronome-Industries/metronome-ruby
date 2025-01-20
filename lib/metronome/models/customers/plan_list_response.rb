@@ -47,20 +47,32 @@ module Metronome
         #   @return [Time]
         required :starting_on, Time
 
-        # @!attribute ending_before
+        # @!attribute [r] ending_before
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :ending_before, Time
 
-        # @!attribute net_payment_terms_days
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :ending_before
+
+        # @!attribute [r] net_payment_terms_days
         #
-        #   @return [Float]
+        #   @return [Float, nil]
         optional :net_payment_terms_days, Float
 
-        # @!attribute trial_info
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :net_payment_terms_days
+
+        # @!attribute [r] trial_info
         #
-        #   @return [Metronome::Models::Customers::PlanListResponse::TrialInfo]
+        #   @return [Metronome::Models::Customers::PlanListResponse::TrialInfo, nil]
         optional :trial_info, -> { Metronome::Models::Customers::PlanListResponse::TrialInfo }
+
+        # @!parse
+        #   # @return [Metronome::Models::Customers::PlanListResponse::TrialInfo]
+        #   attr_writer :trial_info
 
         # @!parse
         #   # @param id [String] the ID of the customer plan

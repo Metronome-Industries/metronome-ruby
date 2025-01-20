@@ -28,10 +28,14 @@ module Metronome
       # }
       # ```
       class Data < Metronome::BaseModel
-        # @!attribute url
+        # @!attribute [r] url
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :url, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :url
 
         # @!parse
         #   # @param url [String]

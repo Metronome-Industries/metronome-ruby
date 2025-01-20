@@ -8,19 +8,27 @@ module Metronome
       #   @return [String]
       required :plan_id, String
 
-      # @!attribute limit
+      # @!attribute [r] limit
       #   Max number of results that should be returned
       #
-      #   @return [Integer]
+      #   @return [Integer, nil]
       optional :limit, Integer
 
-      # @!attribute next_page
+      # @!parse
+      #   # @return [Integer]
+      #   attr_writer :limit
+
+      # @!attribute [r] next_page
       #   Cursor that indicates where the next page of results should start.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :next_page, String
 
-      # @!attribute status
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :next_page
+
+      # @!attribute [r] status
       #   Status of customers on a given plan. Defaults to `active`.
       #
       # * `all` - Return current, past, and upcoming customers of the plan.
@@ -31,8 +39,12 @@ module Metronome
       # Multiple statuses can be OR'd together using commas, e.g. `active,ended`.
       # **Note:** `ended,upcoming` combination is not yet supported.
       #
-      #   @return [Symbol, Metronome::Models::PlanListCustomersParams::Status]
+      #   @return [Symbol, Metronome::Models::PlanListCustomersParams::Status, nil]
       optional :status, enum: -> { Metronome::Models::PlanListCustomersParams::Status }
+
+      # @!parse
+      #   # @return [Symbol, Metronome::Models::PlanListCustomersParams::Status]
+      #   attr_writer :status
 
       # @!parse
       #   # @param plan_id [String]

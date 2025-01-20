@@ -10,7 +10,7 @@ module Metronome
         #   @return [String]
         required :rate_card_id, String
 
-        # @!attribute aliases
+        # @!attribute [r] aliases
         #   Reference this alias when creating a contract. If the same alias is assigned to multiple rate cards, it will reference the rate card to which it was most recently assigned. It is not exposed to end customers.
         #
         #   @return [Array<Metronome::Models::Contracts::RateCardUpdateParams::Alias>]
@@ -19,16 +19,28 @@ module Metronome
                    Metronome::ArrayOf[Metronome::Models::Contracts::RateCardUpdateParams::Alias]
                  }
 
-        # @!attribute description
+        # @!parse
+        #   # @return [Array<Metronome::Models::Contracts::RateCardUpdateParams::Alias>]
+        #   attr_writer :aliases
+
+        # @!attribute [r] description
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :description, String
 
-        # @!attribute name
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :description
+
+        # @!attribute [r] name
         #   Used only in UI/API. It is not exposed to end customers.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :name, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :name
 
         # @!parse
         #   # @param rate_card_id [String] ID of the rate card to update
@@ -59,15 +71,23 @@ module Metronome
           #   @return [String]
           required :name, String
 
-          # @!attribute ending_before
+          # @!attribute [r] ending_before
           #
-          #   @return [Time]
+          #   @return [Time, nil]
           optional :ending_before, Time
 
-          # @!attribute starting_at
+          # @!parse
+          #   # @return [Time]
+          #   attr_writer :ending_before
+
+          # @!attribute [r] starting_at
           #
-          #   @return [Time]
+          #   @return [Time, nil]
           optional :starting_at, Time
+
+          # @!parse
+          #   # @return [Time]
+          #   attr_writer :starting_at
 
           # @!parse
           #   # @param name [String]
