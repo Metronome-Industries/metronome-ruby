@@ -9,10 +9,14 @@ module Metronome
     # }
     # ```
     class InvoiceRegenerateResponse < Metronome::BaseModel
-      # @!attribute data
+      # @!attribute [r] data
       #
-      #   @return [Metronome::Models::InvoiceRegenerateResponse::Data]
+      #   @return [Metronome::Models::InvoiceRegenerateResponse::Data, nil]
       optional :data, -> { Metronome::Models::InvoiceRegenerateResponse::Data }
+
+      # @!parse
+      #   # @return [Metronome::Models::InvoiceRegenerateResponse::Data]
+      #   attr_writer :data
 
       # @!parse
       #   # @param data [Metronome::Models::InvoiceRegenerateResponse::Data]

@@ -15,10 +15,14 @@ module Metronome
       #   @return [Array<Metronome::Models::ScheduleDuration::ScheduleItem>]
       required :schedule_items, -> { Metronome::ArrayOf[Metronome::Models::ScheduleDuration::ScheduleItem] }
 
-      # @!attribute credit_type
+      # @!attribute [r] credit_type
       #
-      #   @return [Metronome::Models::CreditTypeData]
+      #   @return [Metronome::Models::CreditTypeData, nil]
       optional :credit_type, -> { Metronome::Models::CreditTypeData }
+
+      # @!parse
+      #   # @return [Metronome::Models::CreditTypeData]
+      #   attr_writer :credit_type
 
       # @!parse
       #   # @param schedule_items [Array<Metronome::Models::ScheduleDuration::ScheduleItem>]

@@ -28,17 +28,25 @@ module Metronome
                  Metronome::ArrayOf[Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem]
                }
 
-      # @!attribute netsuite_invoice_header_end
+      # @!attribute [r] netsuite_invoice_header_end
       #   The end date of the invoice header in Netsuite
       #
-      #   @return [Time]
+      #   @return [Time, nil]
       optional :netsuite_invoice_header_end, Time
 
-      # @!attribute netsuite_invoice_header_start
+      # @!parse
+      #   # @return [Time]
+      #   attr_writer :netsuite_invoice_header_end
+
+      # @!attribute [r] netsuite_invoice_header_start
       #   The start date of the invoice header in Netsuite
       #
-      #   @return [Time]
+      #   @return [Time, nil]
       optional :netsuite_invoice_header_start, Time
+
+      # @!parse
+      #   # @return [Time]
+      #   attr_writer :netsuite_invoice_header_start
 
       # @!parse
       #   # @param contract_id [String]
@@ -84,47 +92,75 @@ module Metronome
         #   @return [String]
         required :professional_service_id, String
 
-        # @!attribute amendment_id
+        # @!attribute [r] amendment_id
         #   If the professional_service_id was added on an amendment, this is required.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :amendment_id, String
 
-        # @!attribute amount
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :amendment_id
+
+        # @!attribute [r] amount
         #   Amount for the term on the new invoice.
         #
-        #   @return [Float]
+        #   @return [Float, nil]
         optional :amount, Float
 
-        # @!attribute metadata
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :amount
+
+        # @!attribute [r] metadata
         #   For client use.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :metadata, String
 
-        # @!attribute netsuite_invoice_billing_end
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :metadata
+
+        # @!attribute [r] netsuite_invoice_billing_end
         #   The end date for the billing period on the invoice.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :netsuite_invoice_billing_end, Time
 
-        # @!attribute netsuite_invoice_billing_start
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :netsuite_invoice_billing_end
+
+        # @!attribute [r] netsuite_invoice_billing_start
         #   The start date for the billing period on the invoice.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :netsuite_invoice_billing_start, Time
 
-        # @!attribute quantity
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :netsuite_invoice_billing_start
+
+        # @!attribute [r] quantity
         #   Quantity for the charge. Will be multiplied by unit_price to determine the amount.
         #
-        #   @return [Float]
+        #   @return [Float, nil]
         optional :quantity, Float
 
-        # @!attribute unit_price
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :quantity
+
+        # @!attribute [r] unit_price
         #   If specified, this overrides the unit price on the pro service term. Must also provide quantity (but not amount) if providing unit_price.
         #
-        #   @return [Float]
+        #   @return [Float, nil]
         optional :unit_price, Float
+
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :unit_price
 
         # @!parse
         #   # Describes the line item for a professional service charge on an invoice.

@@ -21,13 +21,15 @@ module Metronome
         #   The status of the customer alert. If the alert is archived, null will be returned.
         #
         #   @return [Symbol, Metronome::Models::Customers::CustomerAlert::CustomerStatus, nil]
-        required :customer_status, enum: -> { Metronome::Models::Customers::CustomerAlert::CustomerStatus }
+        required :customer_status,
+                 enum: -> { Metronome::Models::Customers::CustomerAlert::CustomerStatus },
+                 nil?: true
 
         # @!attribute triggered_by
         #   If present, indicates the reason the alert was triggered.
         #
         #   @return [String, nil]
-        optional :triggered_by, String
+        optional :triggered_by, String, nil?: true
 
         # @!parse
         #   # @param alert [Metronome::Models::Customers::CustomerAlert::Alert]
@@ -89,18 +91,22 @@ module Metronome
           #   @return [Time]
           required :updated_at, Time
 
-          # @!attribute credit_grant_type_filters
+          # @!attribute [r] credit_grant_type_filters
           #   An array of strings, representing a way to filter the credit grant this alert applies to, by looking at the credit_grant_type field on the credit grant. This field is only defined for CreditPercentage and CreditBalance alerts
           #
           #   @return [Array<String>]
           optional :credit_grant_type_filters, Metronome::ArrayOf[String]
 
+          # @!parse
+          #   # @return [Array<String>]
+          #   attr_writer :credit_grant_type_filters
+
           # @!attribute credit_type
           #
           #   @return [Metronome::Models::CreditTypeData, nil]
-          optional :credit_type, -> { Metronome::Models::CreditTypeData }
+          optional :credit_type, -> { Metronome::Models::CreditTypeData }, nil?: true
 
-          # @!attribute custom_field_filters
+          # @!attribute [r] custom_field_filters
           #   A list of custom field filters for alert types that support advanced filtering
           #
           #   @return [Array<Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter>]
@@ -109,26 +115,42 @@ module Metronome
                      Metronome::ArrayOf[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter]
                    }
 
-          # @!attribute group_key_filter
+          # @!parse
+          #   # @return [Array<Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter>]
+          #   attr_writer :custom_field_filters
+
+          # @!attribute [r] group_key_filter
           #   Scopes alert evaluation to a specific presentation group key on individual line items. Only present for spend alerts.
           #
-          #   @return [Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter]
+          #   @return [Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter, nil]
           optional :group_key_filter,
                    -> {
                      Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter
                    }
 
-          # @!attribute invoice_types_filter
+          # @!parse
+          #   # @return [Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter]
+          #   attr_writer :group_key_filter
+
+          # @!attribute [r] invoice_types_filter
           #   Only supported for invoice_total_reached alerts. A list of invoice types to evaluate.
           #
           #   @return [Array<String>]
           optional :invoice_types_filter, Metronome::ArrayOf[String]
 
-          # @!attribute uniqueness_key
+          # @!parse
+          #   # @return [Array<String>]
+          #   attr_writer :invoice_types_filter
+
+          # @!attribute [r] uniqueness_key
           #   Prevents the creation of duplicates. If a request to create a record is made with a previously used uniqueness key, a new record will not be created and the request will fail with a 409 error.
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :uniqueness_key, String
+
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :uniqueness_key
 
           # @!parse
           #   # @param id [String] the Metronome ID of the alert

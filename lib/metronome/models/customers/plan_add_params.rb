@@ -20,37 +20,57 @@ module Metronome
         #   @return [Time]
         required :starting_on, Time
 
-        # @!attribute ending_before
+        # @!attribute [r] ending_before
         #   RFC 3339 timestamp for when the plan ends (exclusive) for this customer. Must be at 0:00 UTC (midnight).
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :ending_before, Time
 
-        # @!attribute net_payment_terms_days
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :ending_before
+
+        # @!attribute [r] net_payment_terms_days
         #   Number of days after issuance of invoice after which the invoice is due (e.g. Net 30).
         #
-        #   @return [Float]
+        #   @return [Float, nil]
         optional :net_payment_terms_days, Float
 
-        # @!attribute overage_rate_adjustments
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :net_payment_terms_days
+
+        # @!attribute [r] overage_rate_adjustments
         #   An optional list of overage rates that override the rates of the original plan configuration. These new rates will apply to all pricing ramps.
         #
         #   @return [Array<Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment>]
         optional :overage_rate_adjustments,
                  -> { Metronome::ArrayOf[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment] }
 
-        # @!attribute price_adjustments
+        # @!parse
+        #   # @return [Array<Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment>]
+        #   attr_writer :overage_rate_adjustments
+
+        # @!attribute [r] price_adjustments
         #   A list of price adjustments can be applied on top of the pricing in the plans. See the [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments) for details.
         #
         #   @return [Array<Metronome::Models::Customers::PlanAddParams::PriceAdjustment>]
         optional :price_adjustments,
                  -> { Metronome::ArrayOf[Metronome::Models::Customers::PlanAddParams::PriceAdjustment] }
 
-        # @!attribute trial_spec
+        # @!parse
+        #   # @return [Array<Metronome::Models::Customers::PlanAddParams::PriceAdjustment>]
+        #   attr_writer :price_adjustments
+
+        # @!attribute [r] trial_spec
         #   A custom trial can be set for the customer's plan. See the [trial configuration documentation](https://docs.metronome.com/provisioning/configure-trials/) for details.
         #
-        #   @return [Metronome::Models::Customers::PlanAddParams::TrialSpec]
+        #   @return [Metronome::Models::Customers::PlanAddParams::TrialSpec, nil]
         optional :trial_spec, -> { Metronome::Models::Customers::PlanAddParams::TrialSpec }
+
+        # @!parse
+        #   # @return [Metronome::Models::Customers::PlanAddParams::TrialSpec]
+        #   attr_writer :trial_spec
 
         # @!parse
         #   # @param customer_id [String]
@@ -159,23 +179,35 @@ module Metronome
           #   @return [Float]
           required :start_period, Float
 
-          # @!attribute quantity
+          # @!attribute [r] quantity
           #   the overridden quantity for a fixed charge
           #
-          #   @return [Float]
+          #   @return [Float, nil]
           optional :quantity, Float
 
-          # @!attribute tier
+          # @!parse
+          #   # @return [Float]
+          #   attr_writer :quantity
+
+          # @!attribute [r] tier
           #   Used in pricing tiers.  Indicates at what metric value the price applies.
           #
-          #   @return [Float]
+          #   @return [Float, nil]
           optional :tier, Float
 
-          # @!attribute value
+          # @!parse
+          #   # @return [Float]
+          #   attr_writer :tier
+
+          # @!attribute [r] value
           #   The amount of change to a price. Percentage and fixed adjustments can be positive or negative. Percentage-based adjustments should be decimals, e.g. -0.05 for a 5% discount.
           #
-          #   @return [Float]
+          #   @return [Float, nil]
           optional :value, Float
+
+          # @!parse
+          #   # @return [Float]
+          #   attr_writer :value
 
           # @!parse
           #   # @param adjustment_type [String]
@@ -234,10 +266,14 @@ module Metronome
           #   @return [Float]
           required :length_in_days, Float
 
-          # @!attribute spending_cap
+          # @!attribute [r] spending_cap
           #
-          #   @return [Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap]
+          #   @return [Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap, nil]
           optional :spending_cap, -> { Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap }
+
+          # @!parse
+          #   # @return [Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap]
+          #   attr_writer :spending_cap
 
           # @!parse
           #   # A custom trial can be set for the customer's plan. See the

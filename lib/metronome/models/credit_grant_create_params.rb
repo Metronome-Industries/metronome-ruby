@@ -38,51 +38,83 @@ module Metronome
       #   @return [Float]
       required :priority, Float
 
-      # @!attribute credit_grant_type
+      # @!attribute [r] credit_grant_type
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :credit_grant_type, String
 
-      # @!attribute custom_fields
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :credit_grant_type
+
+      # @!attribute [r] custom_fields
       #   Custom fields to attach to the credit grant.
       #
-      #   @return [Hash{Symbol=>String}]
+      #   @return [Hash{Symbol=>String}, nil]
       optional :custom_fields, Metronome::HashOf[String]
 
-      # @!attribute effective_at
+      # @!parse
+      #   # @return [Hash{Symbol=>String}]
+      #   attr_writer :custom_fields
+
+      # @!attribute [r] effective_at
       #   The credit grant will only apply to usage or charges dated on or after this timestamp
       #
-      #   @return [Time]
+      #   @return [Time, nil]
       optional :effective_at, Time
 
-      # @!attribute invoice_date
+      # @!parse
+      #   # @return [Time]
+      #   attr_writer :effective_at
+
+      # @!attribute [r] invoice_date
       #   The date to issue an invoice for the paid_amount.
       #
-      #   @return [Time]
+      #   @return [Time, nil]
       optional :invoice_date, Time
 
-      # @!attribute product_ids
+      # @!parse
+      #   # @return [Time]
+      #   attr_writer :invoice_date
+
+      # @!attribute [r] product_ids
       #   The product(s) which these credits will be applied to. (If unspecified, the credits will be applied to charges for all products.). The array ordering specified here will be used to determine the order in which credits will be applied to invoice line items
       #
       #   @return [Array<String>]
       optional :product_ids, Metronome::ArrayOf[String]
 
-      # @!attribute reason
+      # @!parse
+      #   # @return [Array<String>]
+      #   attr_writer :product_ids
+
+      # @!attribute [r] reason
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :reason, String
 
-      # @!attribute rollover_settings
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :reason
+
+      # @!attribute [r] rollover_settings
       #   Configure a rollover for this credit grant so if it expires it rolls over a configured amount to a new credit grant. This feature is currently opt-in only. Contact Metronome to be added to the beta.
       #
-      #   @return [Metronome::Models::CreditGrantCreateParams::RolloverSettings]
+      #   @return [Metronome::Models::CreditGrantCreateParams::RolloverSettings, nil]
       optional :rollover_settings, -> { Metronome::Models::CreditGrantCreateParams::RolloverSettings }
 
-      # @!attribute uniqueness_key
+      # @!parse
+      #   # @return [Metronome::Models::CreditGrantCreateParams::RolloverSettings]
+      #   attr_writer :rollover_settings
+
+      # @!attribute [r] uniqueness_key
       #   Prevents the creation of duplicates. If a request to create a record is made with a previously used uniqueness key, a new record will not be created and the request will fail with a 409 error.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :uniqueness_key, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :uniqueness_key
 
       # @!parse
       #   # @param customer_id [String] the Metronome ID of the customer

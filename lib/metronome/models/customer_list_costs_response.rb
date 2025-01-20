@@ -47,12 +47,16 @@ module Metronome
       # }
       # ```
       class CreditType < Metronome::BaseModel
-        # @!attribute cost
+        # @!attribute [r] cost
         #
-        #   @return [Float]
+        #   @return [Float, nil]
         optional :cost, Float
 
-        # @!attribute line_item_breakdown
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :cost
+
+        # @!attribute [r] line_item_breakdown
         #
         #   @return [Array<Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown>]
         optional :line_item_breakdown,
@@ -60,10 +64,18 @@ module Metronome
                    Metronome::ArrayOf[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown]
                  }
 
-        # @!attribute name
+        # @!parse
+        #   # @return [Array<Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown>]
+        #   attr_writer :line_item_breakdown
+
+        # @!attribute [r] name
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :name, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :name
 
         # @!parse
         #   # @param cost [Float]
@@ -94,15 +106,19 @@ module Metronome
           #   @return [String]
           required :name, String
 
-          # @!attribute group_key
+          # @!attribute [r] group_key
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :group_key, String
+
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :group_key
 
           # @!attribute group_value
           #
           #   @return [String, nil]
-          optional :group_value, String
+          optional :group_value, String, nil?: true
 
           # @!parse
           #   # @param cost [Float]

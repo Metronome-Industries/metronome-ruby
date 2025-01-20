@@ -11,20 +11,32 @@ module Metronome
     # }
     # ```
     class CreditGrantListCreditTypesResponse < Metronome::BaseModel
-      # @!attribute id
+      # @!attribute [r] id
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :id, String
 
-      # @!attribute is_currency
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :id
+
+      # @!attribute [r] is_currency
       #
-      #   @return [Boolean]
+      #   @return [Boolean, nil]
       optional :is_currency, Metronome::BooleanModel
 
-      # @!attribute name
+      # @!parse
+      #   # @return [Boolean]
+      #   attr_writer :is_currency
+
+      # @!attribute [r] name
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :name, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :name
 
       # @!parse
       #   # @param id [String]

@@ -24,105 +24,181 @@ module Metronome
       #   @return [Time]
       required :starting_at, Time
 
-      # @!attribute applicable_product_tags
+      # @!attribute [r] applicable_product_tags
       #
       #   @return [Array<String>]
       optional :applicable_product_tags, Metronome::ArrayOf[String]
 
-      # @!attribute credit_type
+      # @!parse
+      #   # @return [Array<String>]
+      #   attr_writer :applicable_product_tags
+
+      # @!attribute [r] credit_type
       #
-      #   @return [Metronome::Models::CreditTypeData]
+      #   @return [Metronome::Models::CreditTypeData, nil]
       optional :credit_type, -> { Metronome::Models::CreditTypeData }
 
-      # @!attribute ending_before
+      # @!parse
+      #   # @return [Metronome::Models::CreditTypeData]
+      #   attr_writer :credit_type
+
+      # @!attribute [r] ending_before
       #
-      #   @return [Time]
+      #   @return [Time, nil]
       optional :ending_before, Time
 
-      # @!attribute entitled
+      # @!parse
+      #   # @return [Time]
+      #   attr_writer :ending_before
+
+      # @!attribute [r] entitled
       #
-      #   @return [Boolean]
+      #   @return [Boolean, nil]
       optional :entitled, Metronome::BooleanModel
 
-      # @!attribute is_commit_specific
+      # @!parse
+      #   # @return [Boolean]
+      #   attr_writer :entitled
+
+      # @!attribute [r] is_commit_specific
       #
-      #   @return [Boolean]
+      #   @return [Boolean, nil]
       optional :is_commit_specific, Metronome::BooleanModel
 
-      # @!attribute is_prorated
+      # @!parse
+      #   # @return [Boolean]
+      #   attr_writer :is_commit_specific
+
+      # @!attribute [r] is_prorated
       #   Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be set to true.
       #
-      #   @return [Boolean]
+      #   @return [Boolean, nil]
       optional :is_prorated, Metronome::BooleanModel
 
-      # @!attribute multiplier
+      # @!parse
+      #   # @return [Boolean]
+      #   attr_writer :is_prorated
+
+      # @!attribute [r] multiplier
       #
-      #   @return [Float]
+      #   @return [Float, nil]
       optional :multiplier, Float
 
-      # @!attribute override_specifiers
+      # @!parse
+      #   # @return [Float]
+      #   attr_writer :multiplier
+
+      # @!attribute [r] override_specifiers
       #
       #   @return [Array<Metronome::Models::Override::OverrideSpecifier>]
       optional :override_specifiers, -> { Metronome::ArrayOf[Metronome::Models::Override::OverrideSpecifier] }
 
-      # @!attribute override_tiers
+      # @!parse
+      #   # @return [Array<Metronome::Models::Override::OverrideSpecifier>]
+      #   attr_writer :override_specifiers
+
+      # @!attribute [r] override_tiers
       #
       #   @return [Array<Metronome::Models::Override::OverrideTier>]
       optional :override_tiers, -> { Metronome::ArrayOf[Metronome::Models::Override::OverrideTier] }
 
-      # @!attribute overwrite_rate
+      # @!parse
+      #   # @return [Array<Metronome::Models::Override::OverrideTier>]
+      #   attr_writer :override_tiers
+
+      # @!attribute [r] overwrite_rate
       #
-      #   @return [Metronome::Models::Override::OverwriteRate]
+      #   @return [Metronome::Models::Override::OverwriteRate, nil]
       optional :overwrite_rate, -> { Metronome::Models::Override::OverwriteRate }
 
-      # @!attribute price
+      # @!parse
+      #   # @return [Metronome::Models::Override::OverwriteRate]
+      #   attr_writer :overwrite_rate
+
+      # @!attribute [r] price
       #   Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
       #
-      #   @return [Float]
+      #   @return [Float, nil]
       optional :price, Float
 
-      # @!attribute priority
+      # @!parse
+      #   # @return [Float]
+      #   attr_writer :price
+
+      # @!attribute [r] priority
       #
-      #   @return [Float]
+      #   @return [Float, nil]
       optional :priority, Float
 
-      # @!attribute product
+      # @!parse
+      #   # @return [Float]
+      #   attr_writer :priority
+
+      # @!attribute [r] product
       #
-      #   @return [Metronome::Models::Override::Product]
+      #   @return [Metronome::Models::Override::Product, nil]
       optional :product, -> { Metronome::Models::Override::Product }
 
-      # @!attribute quantity
+      # @!parse
+      #   # @return [Metronome::Models::Override::Product]
+      #   attr_writer :product
+
+      # @!attribute [r] quantity
       #   Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
       #
-      #   @return [Float]
+      #   @return [Float, nil]
       optional :quantity, Float
 
-      # @!attribute rate_type
+      # @!parse
+      #   # @return [Float]
+      #   attr_writer :quantity
+
+      # @!attribute [r] rate_type
       #
-      #   @return [Symbol, Metronome::Models::Override::RateType]
+      #   @return [Symbol, Metronome::Models::Override::RateType, nil]
       optional :rate_type, enum: -> { Metronome::Models::Override::RateType }
 
-      # @!attribute target
+      # @!parse
+      #   # @return [Symbol, Metronome::Models::Override::RateType]
+      #   attr_writer :rate_type
+
+      # @!attribute [r] target
       #
-      #   @return [Symbol, Metronome::Models::Override::Target]
+      #   @return [Symbol, Metronome::Models::Override::Target, nil]
       optional :target, enum: -> { Metronome::Models::Override::Target }
 
-      # @!attribute tiers
+      # @!parse
+      #   # @return [Symbol, Metronome::Models::Override::Target]
+      #   attr_writer :target
+
+      # @!attribute [r] tiers
       #   Only set for TIERED rate_type.
       #
       #   @return [Array<Metronome::Models::Tier>]
       optional :tiers, -> { Metronome::ArrayOf[Metronome::Models::Tier] }
 
-      # @!attribute type
+      # @!parse
+      #   # @return [Array<Metronome::Models::Tier>]
+      #   attr_writer :tiers
+
+      # @!attribute [r] type
       #
-      #   @return [Symbol, Metronome::Models::Override::Type]
+      #   @return [Symbol, Metronome::Models::Override::Type, nil]
       optional :type, enum: -> { Metronome::Models::Override::Type }
 
-      # @!attribute value
+      # @!parse
+      #   # @return [Symbol, Metronome::Models::Override::Type]
+      #   attr_writer :type
+
+      # @!attribute [r] value
       #   Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.
       #
-      #   @return [Hash{Symbol=>Object}]
+      #   @return [Hash{Symbol=>Object}, nil]
       optional :value, Metronome::HashOf[Metronome::Unknown]
+
+      # @!parse
+      #   # @return [Hash{Symbol=>Object}]
+      #   attr_writer :value
 
       # @!parse
       #   # @param id [String]
@@ -210,30 +286,50 @@ module Metronome
       # }
       # ```
       class OverrideSpecifier < Metronome::BaseModel
-        # @!attribute commit_ids
+        # @!attribute [r] commit_ids
         #
         #   @return [Array<String>]
         optional :commit_ids, Metronome::ArrayOf[String]
 
-        # @!attribute presentation_group_values
+        # @!parse
+        #   # @return [Array<String>]
+        #   attr_writer :commit_ids
+
+        # @!attribute [r] presentation_group_values
         #
         #   @return [Hash{Symbol=>String}, nil]
         optional :presentation_group_values, Metronome::HashOf[String]
 
-        # @!attribute pricing_group_values
+        # @!parse
+        #   # @return [Hash{Symbol=>String}, nil]
+        #   attr_writer :presentation_group_values
+
+        # @!attribute [r] pricing_group_values
         #
-        #   @return [Hash{Symbol=>String}]
+        #   @return [Hash{Symbol=>String}, nil]
         optional :pricing_group_values, Metronome::HashOf[String]
 
-        # @!attribute product_id
+        # @!parse
+        #   # @return [Hash{Symbol=>String}]
+        #   attr_writer :pricing_group_values
+
+        # @!attribute [r] product_id
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :product_id, String
 
-        # @!attribute product_tags
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :product_id
+
+        # @!attribute [r] product_tags
         #
         #   @return [Array<String>]
         optional :product_tags, Metronome::ArrayOf[String]
+
+        # @!parse
+        #   # @return [Array<String>]
+        #   attr_writer :product_tags
 
         # @!parse
         #   # @param commit_ids [Array<String>]
@@ -269,10 +365,14 @@ module Metronome
         #   @return [Float]
         required :multiplier, Float
 
-        # @!attribute size
+        # @!attribute [r] size
         #
-        #   @return [Float]
+        #   @return [Float, nil]
         optional :size, Float
+
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :size
 
         # @!parse
         #   # @param multiplier [Float]
@@ -300,40 +400,64 @@ module Metronome
         #   @return [Symbol, Metronome::Models::Override::OverwriteRate::RateType]
         required :rate_type, enum: -> { Metronome::Models::Override::OverwriteRate::RateType }
 
-        # @!attribute credit_type
+        # @!attribute [r] credit_type
         #
-        #   @return [Metronome::Models::CreditTypeData]
+        #   @return [Metronome::Models::CreditTypeData, nil]
         optional :credit_type, -> { Metronome::Models::CreditTypeData }
 
-        # @!attribute custom_rate
+        # @!parse
+        #   # @return [Metronome::Models::CreditTypeData]
+        #   attr_writer :credit_type
+
+        # @!attribute [r] custom_rate
         #   Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.
         #
-        #   @return [Hash{Symbol=>Object}]
+        #   @return [Hash{Symbol=>Object}, nil]
         optional :custom_rate, Metronome::HashOf[Metronome::Unknown]
 
-        # @!attribute is_prorated
+        # @!parse
+        #   # @return [Hash{Symbol=>Object}]
+        #   attr_writer :custom_rate
+
+        # @!attribute [r] is_prorated
         #   Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be set to true.
         #
-        #   @return [Boolean]
+        #   @return [Boolean, nil]
         optional :is_prorated, Metronome::BooleanModel
 
-        # @!attribute price
+        # @!parse
+        #   # @return [Boolean]
+        #   attr_writer :is_prorated
+
+        # @!attribute [r] price
         #   Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
         #
-        #   @return [Float]
+        #   @return [Float, nil]
         optional :price, Float
 
-        # @!attribute quantity
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :price
+
+        # @!attribute [r] quantity
         #   Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
         #
-        #   @return [Float]
+        #   @return [Float, nil]
         optional :quantity, Float
 
-        # @!attribute tiers
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :quantity
+
+        # @!attribute [r] tiers
         #   Only set for TIERED rate_type.
         #
         #   @return [Array<Metronome::Models::Tier>]
         optional :tiers, -> { Metronome::ArrayOf[Metronome::Models::Tier] }
+
+        # @!parse
+        #   # @return [Array<Metronome::Models::Tier>]
+        #   attr_writer :tiers
 
         # @!parse
         #   # @param rate_type [String]

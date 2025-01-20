@@ -14,141 +14,233 @@ module Metronome
       #   @return [Time]
       required :starting_at, Time
 
-      # @!attribute billing_provider_configuration
+      # @!attribute [r] billing_provider_configuration
       #   The billing provider configuration associated with a contract.
       #
-      #   @return [Metronome::Models::ContractCreateParams::BillingProviderConfiguration]
+      #   @return [Metronome::Models::ContractCreateParams::BillingProviderConfiguration, nil]
       optional :billing_provider_configuration,
                -> { Metronome::Models::ContractCreateParams::BillingProviderConfiguration }
 
-      # @!attribute commits
+      # @!parse
+      #   # @return [Metronome::Models::ContractCreateParams::BillingProviderConfiguration]
+      #   attr_writer :billing_provider_configuration
+
+      # @!attribute [r] commits
       #
       #   @return [Array<Metronome::Models::ContractCreateParams::Commit>]
       optional :commits, -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Commit] }
 
-      # @!attribute credits
+      # @!parse
+      #   # @return [Array<Metronome::Models::ContractCreateParams::Commit>]
+      #   attr_writer :commits
+
+      # @!attribute [r] credits
       #
       #   @return [Array<Metronome::Models::ContractCreateParams::Credit>]
       optional :credits, -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Credit] }
 
-      # @!attribute custom_fields
+      # @!parse
+      #   # @return [Array<Metronome::Models::ContractCreateParams::Credit>]
+      #   attr_writer :credits
+
+      # @!attribute [r] custom_fields
       #
-      #   @return [Hash{Symbol=>String}]
+      #   @return [Hash{Symbol=>String}, nil]
       optional :custom_fields, Metronome::HashOf[String]
 
-      # @!attribute discounts
+      # @!parse
+      #   # @return [Hash{Symbol=>String}]
+      #   attr_writer :custom_fields
+
+      # @!attribute [r] discounts
       #   This field's availability is dependent on your client's configuration.
       #
       #   @return [Array<Metronome::Models::ContractCreateParams::Discount>]
       optional :discounts, -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Discount] }
 
-      # @!attribute ending_before
+      # @!parse
+      #   # @return [Array<Metronome::Models::ContractCreateParams::Discount>]
+      #   attr_writer :discounts
+
+      # @!attribute [r] ending_before
       #   exclusive contract end time
       #
-      #   @return [Time]
+      #   @return [Time, nil]
       optional :ending_before, Time
 
-      # @!attribute multiplier_override_prioritization
+      # @!parse
+      #   # @return [Time]
+      #   attr_writer :ending_before
+
+      # @!attribute [r] multiplier_override_prioritization
       #   Defaults to LOWEST_MULTIPLIER, which applies the greatest discount to list prices automatically. EXPLICIT prioritization requires specifying priorities for each multiplier; the one with the lowest priority value will be prioritized first. If tiered overrides are used, prioritization must be explicit.
       #
-      #   @return [Symbol, Metronome::Models::ContractCreateParams::MultiplierOverridePrioritization]
+      #   @return [Symbol, Metronome::Models::ContractCreateParams::MultiplierOverridePrioritization, nil]
       optional :multiplier_override_prioritization,
                enum: -> { Metronome::Models::ContractCreateParams::MultiplierOverridePrioritization }
 
-      # @!attribute name
+      # @!parse
+      #   # @return [Symbol, Metronome::Models::ContractCreateParams::MultiplierOverridePrioritization]
+      #   attr_writer :multiplier_override_prioritization
+
+      # @!attribute [r] name
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :name, String
 
-      # @!attribute net_payment_terms_days
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :name
+
+      # @!attribute [r] net_payment_terms_days
       #
-      #   @return [Float]
+      #   @return [Float, nil]
       optional :net_payment_terms_days, Float
 
-      # @!attribute netsuite_sales_order_id
+      # @!parse
+      #   # @return [Float]
+      #   attr_writer :net_payment_terms_days
+
+      # @!attribute [r] netsuite_sales_order_id
       #   This field's availability is dependent on your client's configuration.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :netsuite_sales_order_id, String
 
-      # @!attribute overrides
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :netsuite_sales_order_id
+
+      # @!attribute [r] overrides
       #
       #   @return [Array<Metronome::Models::ContractCreateParams::Override>]
       optional :overrides, -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Override] }
 
-      # @!attribute professional_services
+      # @!parse
+      #   # @return [Array<Metronome::Models::ContractCreateParams::Override>]
+      #   attr_writer :overrides
+
+      # @!attribute [r] professional_services
       #   This field's availability is dependent on your client's configuration.
       #
       #   @return [Array<Metronome::Models::ContractCreateParams::ProfessionalService>]
       optional :professional_services,
                -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::ProfessionalService] }
 
-      # @!attribute rate_card_alias
+      # @!parse
+      #   # @return [Array<Metronome::Models::ContractCreateParams::ProfessionalService>]
+      #   attr_writer :professional_services
+
+      # @!attribute [r] rate_card_alias
       #   Selects the rate card linked to the specified alias as of the contract's start date.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :rate_card_alias, String
 
-      # @!attribute rate_card_id
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :rate_card_alias
+
+      # @!attribute [r] rate_card_id
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :rate_card_id, String
 
-      # @!attribute reseller_royalties
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :rate_card_id
+
+      # @!attribute [r] reseller_royalties
       #   This field's availability is dependent on your client's configuration.
       #
       #   @return [Array<Metronome::Models::ContractCreateParams::ResellerRoyalty>]
       optional :reseller_royalties,
                -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::ResellerRoyalty] }
 
-      # @!attribute salesforce_opportunity_id
+      # @!parse
+      #   # @return [Array<Metronome::Models::ContractCreateParams::ResellerRoyalty>]
+      #   attr_writer :reseller_royalties
+
+      # @!attribute [r] salesforce_opportunity_id
       #   This field's availability is dependent on your client's configuration.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :salesforce_opportunity_id, String
 
-      # @!attribute scheduled_charges
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :salesforce_opportunity_id
+
+      # @!attribute [r] scheduled_charges
       #
       #   @return [Array<Metronome::Models::ContractCreateParams::ScheduledCharge>]
       optional :scheduled_charges,
                -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::ScheduledCharge] }
 
-      # @!attribute scheduled_charges_on_usage_invoices
+      # @!parse
+      #   # @return [Array<Metronome::Models::ContractCreateParams::ScheduledCharge>]
+      #   attr_writer :scheduled_charges
+
+      # @!attribute [r] scheduled_charges_on_usage_invoices
       #   Determines which scheduled and commit charges to consolidate onto the Contract's usage invoice. The charge's `timestamp` must match the usage invoice's `ending_before` date for consolidation to occur. This field cannot be modified after a Contract has been created. If this field is omitted, charges will appear on a separate invoice from usage charges.
       #
-      #   @return [Symbol, Metronome::Models::ContractCreateParams::ScheduledChargesOnUsageInvoices]
+      #   @return [Symbol, Metronome::Models::ContractCreateParams::ScheduledChargesOnUsageInvoices, nil]
       optional :scheduled_charges_on_usage_invoices,
                enum: -> { Metronome::Models::ContractCreateParams::ScheduledChargesOnUsageInvoices }
 
-      # @!attribute total_contract_value
+      # @!parse
+      #   # @return [Symbol, Metronome::Models::ContractCreateParams::ScheduledChargesOnUsageInvoices]
+      #   attr_writer :scheduled_charges_on_usage_invoices
+
+      # @!attribute [r] total_contract_value
       #   This field's availability is dependent on your client's configuration.
       #
-      #   @return [Float]
+      #   @return [Float, nil]
       optional :total_contract_value, Float
 
-      # @!attribute transition
+      # @!parse
+      #   # @return [Float]
+      #   attr_writer :total_contract_value
+
+      # @!attribute [r] transition
       #
-      #   @return [Metronome::Models::ContractCreateParams::Transition]
+      #   @return [Metronome::Models::ContractCreateParams::Transition, nil]
       optional :transition, -> { Metronome::Models::ContractCreateParams::Transition }
 
-      # @!attribute uniqueness_key
+      # @!parse
+      #   # @return [Metronome::Models::ContractCreateParams::Transition]
+      #   attr_writer :transition
+
+      # @!attribute [r] uniqueness_key
       #   Prevents the creation of duplicates. If a request to create a record is made with a previously used uniqueness key, a new record will not be created and the request will fail with a 409 error.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :uniqueness_key, String
 
-      # @!attribute usage_filter
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :uniqueness_key
+
+      # @!attribute [r] usage_filter
       #
-      #   @return [Metronome::Models::BaseUsageFilter]
+      #   @return [Metronome::Models::BaseUsageFilter, nil]
       optional :usage_filter, -> { Metronome::Models::BaseUsageFilter }
 
-      # @!attribute usage_statement_schedule
+      # @!parse
+      #   # @return [Metronome::Models::BaseUsageFilter]
+      #   attr_writer :usage_filter
+
+      # @!attribute [r] usage_statement_schedule
       #
-      #   @return [Metronome::Models::ContractCreateParams::UsageStatementSchedule]
+      #   @return [Metronome::Models::ContractCreateParams::UsageStatementSchedule, nil]
       optional :usage_statement_schedule,
                -> {
                  Metronome::Models::ContractCreateParams::UsageStatementSchedule
                }
+
+      # @!parse
+      #   # @return [Metronome::Models::ContractCreateParams::UsageStatementSchedule]
+      #   attr_writer :usage_statement_schedule
 
       # @!parse
       #   # @param customer_id [String]
@@ -253,27 +345,39 @@ module Metronome
       # }
       # ```
       class BillingProviderConfiguration < Metronome::BaseModel
-        # @!attribute billing_provider
+        # @!attribute [r] billing_provider
         #
-        #   @return [Symbol, Metronome::Models::ContractCreateParams::BillingProviderConfiguration::BillingProvider]
+        #   @return [Symbol, Metronome::Models::ContractCreateParams::BillingProviderConfiguration::BillingProvider, nil]
         optional :billing_provider,
                  enum: -> {
                    Metronome::Models::ContractCreateParams::BillingProviderConfiguration::BillingProvider
                  }
 
-        # @!attribute billing_provider_configuration_id
+        # @!parse
+        #   # @return [Symbol, Metronome::Models::ContractCreateParams::BillingProviderConfiguration::BillingProvider]
+        #   attr_writer :billing_provider
+
+        # @!attribute [r] billing_provider_configuration_id
         #   The Metronome ID of the billing provider configuration
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :billing_provider_configuration_id, String
 
-        # @!attribute delivery_method
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :billing_provider_configuration_id
+
+        # @!attribute [r] delivery_method
         #
-        #   @return [Symbol, Metronome::Models::ContractCreateParams::BillingProviderConfiguration::DeliveryMethod]
+        #   @return [Symbol, Metronome::Models::ContractCreateParams::BillingProviderConfiguration::DeliveryMethod, nil]
         optional :delivery_method,
                  enum: -> {
                    Metronome::Models::ContractCreateParams::BillingProviderConfiguration::DeliveryMethod
                  }
+
+        # @!parse
+        #   # @return [Symbol, Metronome::Models::ContractCreateParams::BillingProviderConfiguration::DeliveryMethod]
+        #   attr_writer :delivery_method
 
         # @!parse
         #   # The billing provider configuration associated with a contract.
@@ -358,81 +462,133 @@ module Metronome
         #   @return [Symbol, Metronome::Models::ContractCreateParams::Commit::Type]
         required :type, enum: -> { Metronome::Models::ContractCreateParams::Commit::Type }
 
-        # @!attribute access_schedule
+        # @!attribute [r] access_schedule
         #   Required: Schedule for distributing the commit to the customer. For "POSTPAID" commits only one schedule item is allowed and amount must match invoice_schedule total.
         #
-        #   @return [Metronome::Models::ContractCreateParams::Commit::AccessSchedule]
+        #   @return [Metronome::Models::ContractCreateParams::Commit::AccessSchedule, nil]
         optional :access_schedule, -> { Metronome::Models::ContractCreateParams::Commit::AccessSchedule }
 
-        # @!attribute amount
+        # @!parse
+        #   # @return [Metronome::Models::ContractCreateParams::Commit::AccessSchedule]
+        #   attr_writer :access_schedule
+
+        # @!attribute [r] amount
         #   (DEPRECATED) Use access_schedule and invoice_schedule instead.
         #
-        #   @return [Float]
+        #   @return [Float, nil]
         optional :amount, Float
 
-        # @!attribute applicable_product_ids
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :amount
+
+        # @!attribute [r] applicable_product_ids
         #   Which products the commit applies to. If both applicable_product_ids and applicable_product_tags are not provided, the commit applies to all products.
         #
         #   @return [Array<String>]
         optional :applicable_product_ids, Metronome::ArrayOf[String]
 
-        # @!attribute applicable_product_tags
+        # @!parse
+        #   # @return [Array<String>]
+        #   attr_writer :applicable_product_ids
+
+        # @!attribute [r] applicable_product_tags
         #   Which tags the commit applies to. If both applicable_product_ids and applicable_product_tags are not provided, the commit applies to all products.
         #
         #   @return [Array<String>]
         optional :applicable_product_tags, Metronome::ArrayOf[String]
 
-        # @!attribute custom_fields
+        # @!parse
+        #   # @return [Array<String>]
+        #   attr_writer :applicable_product_tags
+
+        # @!attribute [r] custom_fields
         #
-        #   @return [Hash{Symbol=>String}]
+        #   @return [Hash{Symbol=>String}, nil]
         optional :custom_fields, Metronome::HashOf[String]
 
-        # @!attribute description
+        # @!parse
+        #   # @return [Hash{Symbol=>String}]
+        #   attr_writer :custom_fields
+
+        # @!attribute [r] description
         #   Used only in UI/API. It is not exposed to end customers.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :description, String
 
-        # @!attribute invoice_schedule
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :description
+
+        # @!attribute [r] invoice_schedule
         #   Required for "POSTPAID" commits: the true up invoice will be generated at this time and only one schedule item is allowed; the total must match access_schedule amount. Optional for "PREPAID" commits: if not provided, this will be a "complimentary" commit with no invoice.
         #
-        #   @return [Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule]
+        #   @return [Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule, nil]
         optional :invoice_schedule, -> { Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule }
 
-        # @!attribute name
+        # @!parse
+        #   # @return [Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule]
+        #   attr_writer :invoice_schedule
+
+        # @!attribute [r] name
         #   displayed on invoices
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :name, String
 
-        # @!attribute netsuite_sales_order_id
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :name
+
+        # @!attribute [r] netsuite_sales_order_id
         #   This field's availability is dependent on your client's configuration.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :netsuite_sales_order_id, String
 
-        # @!attribute priority
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :netsuite_sales_order_id
+
+        # @!attribute [r] priority
         #   If multiple commits are applicable, the one with the lower priority will apply first.
         #
-        #   @return [Float]
+        #   @return [Float, nil]
         optional :priority, Float
 
-        # @!attribute rate_type
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :priority
+
+        # @!attribute [r] rate_type
         #
-        #   @return [Symbol, Metronome::Models::ContractCreateParams::Commit::RateType]
+        #   @return [Symbol, Metronome::Models::ContractCreateParams::Commit::RateType, nil]
         optional :rate_type, enum: -> { Metronome::Models::ContractCreateParams::Commit::RateType }
 
-        # @!attribute rollover_fraction
+        # @!parse
+        #   # @return [Symbol, Metronome::Models::ContractCreateParams::Commit::RateType]
+        #   attr_writer :rate_type
+
+        # @!attribute [r] rollover_fraction
         #   Fraction of unused segments that will be rolled over. Must be between 0 and 1.
         #
-        #   @return [Float]
+        #   @return [Float, nil]
         optional :rollover_fraction, Float
 
-        # @!attribute temporary_id
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :rollover_fraction
+
+        # @!attribute [r] temporary_id
         #   A temporary ID for the commit that can be used to reference the commit for commit specific overrides.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :temporary_id, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :temporary_id
 
         # @!parse
         #   # @param product_id [String]
@@ -529,11 +685,15 @@ module Metronome
                      Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Commit::AccessSchedule::ScheduleItem]
                    }
 
-          # @!attribute credit_type_id
+          # @!attribute [r] credit_type_id
           #   Defaults to USD (cents) if not passed
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :credit_type_id, String
+
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :credit_type_id
 
           # @!parse
           #   # Required: Schedule for distributing the commit to the customer. For "POSTPAID"
@@ -596,20 +756,28 @@ module Metronome
         # }
         # ```
         class InvoiceSchedule < Metronome::BaseModel
-          # @!attribute credit_type_id
+          # @!attribute [r] credit_type_id
           #   Defaults to USD (cents) if not passed.
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :credit_type_id, String
 
-          # @!attribute recurring_schedule
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :credit_type_id
+
+          # @!attribute [r] recurring_schedule
           #   Enter the unit price and quantity for the charge or instead only send the amount. If amount is sent, the unit price is assumed to be the amount and quantity is inferred to be 1.
           #
-          #   @return [Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule]
+          #   @return [Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule, nil]
           optional :recurring_schedule,
                    -> { Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule }
 
-          # @!attribute schedule_items
+          # @!parse
+          #   # @return [Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule]
+          #   attr_writer :recurring_schedule
+
+          # @!attribute [r] schedule_items
           #   Either provide amount or provide both unit_price and quantity.
           #
           #   @return [Array<Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::ScheduleItem>]
@@ -617,6 +785,10 @@ module Metronome
                    -> {
                      Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::ScheduleItem]
                    }
+
+          # @!parse
+          #   # @return [Array<Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::ScheduleItem>]
+          #   attr_writer :schedule_items
 
           # @!parse
           #   # Required for "POSTPAID" commits: the true up invoice will be generated at this
@@ -676,23 +848,35 @@ module Metronome
             #   @return [Time]
             required :starting_at, Time
 
-            # @!attribute amount
+            # @!attribute [r] amount
             #   Amount for the charge. Can be provided instead of unit_price and quantity. If amount is sent, the unit_price is assumed to be the amount and quantity is inferred to be 1.
             #
-            #   @return [Float]
+            #   @return [Float, nil]
             optional :amount, Float
 
-            # @!attribute quantity
+            # @!parse
+            #   # @return [Float]
+            #   attr_writer :amount
+
+            # @!attribute [r] quantity
             #   Quantity for the charge. Will be multiplied by unit_price to determine the amount and must be specified with unit_price. If specified amount cannot be provided.
             #
-            #   @return [Float]
+            #   @return [Float, nil]
             optional :quantity, Float
 
-            # @!attribute unit_price
+            # @!parse
+            #   # @return [Float]
+            #   attr_writer :quantity
+
+            # @!attribute [r] unit_price
             #   Unit price for the charge. Will be multiplied by quantity to determine the amount and must be specified with quantity. If specified amount cannot be provided.
             #
-            #   @return [Float]
+            #   @return [Float, nil]
             optional :unit_price, Float
+
+            # @!parse
+            #   # @return [Float]
+            #   attr_writer :unit_price
 
             # @!parse
             #   # Enter the unit price and quantity for the charge or instead only send the
@@ -792,23 +976,35 @@ module Metronome
             #   @return [Time]
             required :timestamp, Time
 
-            # @!attribute amount
+            # @!attribute [r] amount
             #   Amount for the charge. Can be provided instead of unit_price and quantity. If amount is sent, the unit_price is assumed to be the amount and quantity is inferred to be 1.
             #
-            #   @return [Float]
+            #   @return [Float, nil]
             optional :amount, Float
 
-            # @!attribute quantity
+            # @!parse
+            #   # @return [Float]
+            #   attr_writer :amount
+
+            # @!attribute [r] quantity
             #   Quantity for the charge. Will be multiplied by unit_price to determine the amount and must be specified with unit_price. If specified amount cannot be provided.
             #
-            #   @return [Float]
+            #   @return [Float, nil]
             optional :quantity, Float
 
-            # @!attribute unit_price
+            # @!parse
+            #   # @return [Float]
+            #   attr_writer :quantity
+
+            # @!attribute [r] unit_price
             #   Unit price for the charge. Will be multiplied by quantity to determine the amount and must be specified with quantity. If specified amount cannot be provided.
             #
-            #   @return [Float]
+            #   @return [Float, nil]
             optional :unit_price, Float
+
+            # @!parse
+            #   # @return [Float]
+            #   attr_writer :unit_price
 
             # @!parse
             #   # @param timestamp [String] timestamp of the scheduled event
@@ -877,51 +1073,83 @@ module Metronome
         #   @return [String]
         required :product_id, String
 
-        # @!attribute applicable_product_ids
+        # @!attribute [r] applicable_product_ids
         #   Which products the credit applies to. If both applicable_product_ids and applicable_product_tags are not provided, the credit applies to all products.
         #
         #   @return [Array<String>]
         optional :applicable_product_ids, Metronome::ArrayOf[String]
 
-        # @!attribute applicable_product_tags
+        # @!parse
+        #   # @return [Array<String>]
+        #   attr_writer :applicable_product_ids
+
+        # @!attribute [r] applicable_product_tags
         #   Which tags the credit applies to. If both applicable_product_ids and applicable_product_tags are not provided, the credit applies to all products.
         #
         #   @return [Array<String>]
         optional :applicable_product_tags, Metronome::ArrayOf[String]
 
-        # @!attribute custom_fields
+        # @!parse
+        #   # @return [Array<String>]
+        #   attr_writer :applicable_product_tags
+
+        # @!attribute [r] custom_fields
         #
-        #   @return [Hash{Symbol=>String}]
+        #   @return [Hash{Symbol=>String}, nil]
         optional :custom_fields, Metronome::HashOf[String]
 
-        # @!attribute description
+        # @!parse
+        #   # @return [Hash{Symbol=>String}]
+        #   attr_writer :custom_fields
+
+        # @!attribute [r] description
         #   Used only in UI/API. It is not exposed to end customers.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :description, String
 
-        # @!attribute name
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :description
+
+        # @!attribute [r] name
         #   displayed on invoices
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :name, String
 
-        # @!attribute netsuite_sales_order_id
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :name
+
+        # @!attribute [r] netsuite_sales_order_id
         #   This field's availability is dependent on your client's configuration.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :netsuite_sales_order_id, String
 
-        # @!attribute priority
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :netsuite_sales_order_id
+
+        # @!attribute [r] priority
         #   If multiple credits are applicable, the one with the lower priority will apply first.
         #
-        #   @return [Float]
+        #   @return [Float, nil]
         optional :priority, Float
 
-        # @!attribute rate_type
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :priority
+
+        # @!attribute [r] rate_type
         #
-        #   @return [Symbol, Metronome::Models::ContractCreateParams::Credit::RateType]
+        #   @return [Symbol, Metronome::Models::ContractCreateParams::Credit::RateType, nil]
         optional :rate_type, enum: -> { Metronome::Models::ContractCreateParams::Credit::RateType }
+
+        # @!parse
+        #   # @return [Symbol, Metronome::Models::ContractCreateParams::Credit::RateType]
+        #   attr_writer :rate_type
 
         # @!parse
         #   # @param access_schedule [Metronome::Models::ContractCreateParams::Credit::AccessSchedule] Schedule for distributing the credit to the customer.
@@ -981,11 +1209,15 @@ module Metronome
                      Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Credit::AccessSchedule::ScheduleItem]
                    }
 
-          # @!attribute credit_type_id
+          # @!attribute [r] credit_type_id
           #   Defaults to USD (cents) if not passed
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :credit_type_id, String
+
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :credit_type_id
 
           # @!parse
           #   # Schedule for distributing the credit to the customer.
@@ -1082,22 +1314,34 @@ module Metronome
         #   @return [Metronome::Models::ContractCreateParams::Discount::Schedule]
         required :schedule, -> { Metronome::Models::ContractCreateParams::Discount::Schedule }
 
-        # @!attribute custom_fields
+        # @!attribute [r] custom_fields
         #
-        #   @return [Hash{Symbol=>String}]
+        #   @return [Hash{Symbol=>String}, nil]
         optional :custom_fields, Metronome::HashOf[String]
 
-        # @!attribute name
+        # @!parse
+        #   # @return [Hash{Symbol=>String}]
+        #   attr_writer :custom_fields
+
+        # @!attribute [r] name
         #   displayed on invoices
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :name, String
 
-        # @!attribute netsuite_sales_order_id
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :name
+
+        # @!attribute [r] netsuite_sales_order_id
         #   This field's availability is dependent on your client's configuration.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :netsuite_sales_order_id, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :netsuite_sales_order_id
 
         # @!parse
         #   # @param product_id [String]
@@ -1123,20 +1367,28 @@ module Metronome
         # }
         # ```
         class Schedule < Metronome::BaseModel
-          # @!attribute credit_type_id
+          # @!attribute [r] credit_type_id
           #   Defaults to USD (cents) if not passed.
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :credit_type_id, String
 
-          # @!attribute recurring_schedule
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :credit_type_id
+
+          # @!attribute [r] recurring_schedule
           #   Enter the unit price and quantity for the charge or instead only send the amount. If amount is sent, the unit price is assumed to be the amount and quantity is inferred to be 1.
           #
-          #   @return [Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule]
+          #   @return [Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule, nil]
           optional :recurring_schedule,
                    -> { Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule }
 
-          # @!attribute schedule_items
+          # @!parse
+          #   # @return [Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule]
+          #   attr_writer :recurring_schedule
+
+          # @!attribute [r] schedule_items
           #   Either provide amount or provide both unit_price and quantity.
           #
           #   @return [Array<Metronome::Models::ContractCreateParams::Discount::Schedule::ScheduleItem>]
@@ -1144,6 +1396,10 @@ module Metronome
                    -> {
                      Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Discount::Schedule::ScheduleItem]
                    }
+
+          # @!parse
+          #   # @return [Array<Metronome::Models::ContractCreateParams::Discount::Schedule::ScheduleItem>]
+          #   attr_writer :schedule_items
 
           # @!parse
           #   # Must provide either schedule_items or recurring_schedule.
@@ -1200,23 +1456,35 @@ module Metronome
             #   @return [Time]
             required :starting_at, Time
 
-            # @!attribute amount
+            # @!attribute [r] amount
             #   Amount for the charge. Can be provided instead of unit_price and quantity. If amount is sent, the unit_price is assumed to be the amount and quantity is inferred to be 1.
             #
-            #   @return [Float]
+            #   @return [Float, nil]
             optional :amount, Float
 
-            # @!attribute quantity
+            # @!parse
+            #   # @return [Float]
+            #   attr_writer :amount
+
+            # @!attribute [r] quantity
             #   Quantity for the charge. Will be multiplied by unit_price to determine the amount and must be specified with unit_price. If specified amount cannot be provided.
             #
-            #   @return [Float]
+            #   @return [Float, nil]
             optional :quantity, Float
 
-            # @!attribute unit_price
+            # @!parse
+            #   # @return [Float]
+            #   attr_writer :quantity
+
+            # @!attribute [r] unit_price
             #   Unit price for the charge. Will be multiplied by quantity to determine the amount and must be specified with quantity. If specified amount cannot be provided.
             #
-            #   @return [Float]
+            #   @return [Float, nil]
             optional :unit_price, Float
+
+            # @!parse
+            #   # @return [Float]
+            #   attr_writer :unit_price
 
             # @!parse
             #   # Enter the unit price and quantity for the charge or instead only send the
@@ -1316,23 +1584,35 @@ module Metronome
             #   @return [Time]
             required :timestamp, Time
 
-            # @!attribute amount
+            # @!attribute [r] amount
             #   Amount for the charge. Can be provided instead of unit_price and quantity. If amount is sent, the unit_price is assumed to be the amount and quantity is inferred to be 1.
             #
-            #   @return [Float]
+            #   @return [Float, nil]
             optional :amount, Float
 
-            # @!attribute quantity
+            # @!parse
+            #   # @return [Float]
+            #   attr_writer :amount
+
+            # @!attribute [r] quantity
             #   Quantity for the charge. Will be multiplied by unit_price to determine the amount and must be specified with unit_price. If specified amount cannot be provided.
             #
-            #   @return [Float]
+            #   @return [Float, nil]
             optional :quantity, Float
 
-            # @!attribute unit_price
+            # @!parse
+            #   # @return [Float]
+            #   attr_writer :quantity
+
+            # @!attribute [r] unit_price
             #   Unit price for the charge. Will be multiplied by quantity to determine the amount and must be specified with quantity. If specified amount cannot be provided.
             #
-            #   @return [Float]
+            #   @return [Float, nil]
             optional :unit_price, Float
+
+            # @!parse
+            #   # @return [Float]
+            #   attr_writer :unit_price
 
             # @!parse
             #   # @param timestamp [String] timestamp of the scheduled event
@@ -1392,36 +1672,56 @@ module Metronome
         #   @return [Time]
         required :starting_at, Time
 
-        # @!attribute applicable_product_tags
+        # @!attribute [r] applicable_product_tags
         #   tags identifying products whose rates are being overridden. Cannot be used in conjunction with override_specifiers.
         #
         #   @return [Array<String>]
         optional :applicable_product_tags, Metronome::ArrayOf[String]
 
-        # @!attribute ending_before
+        # @!parse
+        #   # @return [Array<String>]
+        #   attr_writer :applicable_product_tags
+
+        # @!attribute [r] ending_before
         #   RFC 3339 timestamp indicating when the override will stop applying (exclusive)
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :ending_before, Time
 
-        # @!attribute entitled
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :ending_before
+
+        # @!attribute [r] entitled
         #
-        #   @return [Boolean]
+        #   @return [Boolean, nil]
         optional :entitled, Metronome::BooleanModel
 
-        # @!attribute is_commit_specific
+        # @!parse
+        #   # @return [Boolean]
+        #   attr_writer :entitled
+
+        # @!attribute [r] is_commit_specific
         #   Indicates whether the override should only apply to commits. Defaults to `false`. If `true`, you can specify relevant commits in `override_specifiers` by passing `commit_ids`. if you do not specify `commit_ids`, then the override will apply when consuming any prepaid or postpaid commit.
         #
-        #   @return [Boolean]
+        #   @return [Boolean, nil]
         optional :is_commit_specific, Metronome::BooleanModel
 
-        # @!attribute multiplier
+        # @!parse
+        #   # @return [Boolean]
+        #   attr_writer :is_commit_specific
+
+        # @!attribute [r] multiplier
         #   Required for MULTIPLIER type. Must be >=0.
         #
-        #   @return [Float]
+        #   @return [Float, nil]
         optional :multiplier, Float
 
-        # @!attribute override_specifiers
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :multiplier
+
+        # @!attribute [r] override_specifiers
         #   Cannot be used in conjunction with product_id or applicable_product_tags. If provided, the override will apply to all products with the specified specifiers.
         #
         #   @return [Array<Metronome::Models::ContractCreateParams::Override::OverrideSpecifier>]
@@ -1430,41 +1730,69 @@ module Metronome
                    Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Override::OverrideSpecifier]
                  }
 
-        # @!attribute overwrite_rate
+        # @!parse
+        #   # @return [Array<Metronome::Models::ContractCreateParams::Override::OverrideSpecifier>]
+        #   attr_writer :override_specifiers
+
+        # @!attribute [r] overwrite_rate
         #   Required for OVERWRITE type.
         #
-        #   @return [Metronome::Models::ContractCreateParams::Override::OverwriteRate]
+        #   @return [Metronome::Models::ContractCreateParams::Override::OverwriteRate, nil]
         optional :overwrite_rate, -> { Metronome::Models::ContractCreateParams::Override::OverwriteRate }
 
-        # @!attribute priority
+        # @!parse
+        #   # @return [Metronome::Models::ContractCreateParams::Override::OverwriteRate]
+        #   attr_writer :overwrite_rate
+
+        # @!attribute [r] priority
         #   Required for EXPLICIT multiplier prioritization scheme and all TIERED overrides. Under EXPLICIT prioritization, overwrites are prioritized first, and then tiered and multiplier overrides are prioritized by their priority value (lowest first). Must be > 0.
         #
-        #   @return [Float]
+        #   @return [Float, nil]
         optional :priority, Float
 
-        # @!attribute product_id
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :priority
+
+        # @!attribute [r] product_id
         #   ID of the product whose rate is being overridden. Cannot be used in conjunction with override_specifiers.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :product_id, String
 
-        # @!attribute target
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :product_id
+
+        # @!attribute [r] target
         #   Indicates whether the override applies to commit rates or list rates. Can only be used for overrides that have `is_commit_specific` set to `true`. Defaults to `"LIST_RATE"`.
         #
-        #   @return [Symbol, Metronome::Models::ContractCreateParams::Override::Target]
+        #   @return [Symbol, Metronome::Models::ContractCreateParams::Override::Target, nil]
         optional :target, enum: -> { Metronome::Models::ContractCreateParams::Override::Target }
 
-        # @!attribute tiers
+        # @!parse
+        #   # @return [Symbol, Metronome::Models::ContractCreateParams::Override::Target]
+        #   attr_writer :target
+
+        # @!attribute [r] tiers
         #   Required for TIERED type. Must have at least one tier.
         #
         #   @return [Array<Metronome::Models::ContractCreateParams::Override::Tier>]
         optional :tiers, -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Override::Tier] }
 
-        # @!attribute type
+        # @!parse
+        #   # @return [Array<Metronome::Models::ContractCreateParams::Override::Tier>]
+        #   attr_writer :tiers
+
+        # @!attribute [r] type
         #   Overwrites are prioritized over multipliers and tiered overrides.
         #
-        #   @return [Symbol, Metronome::Models::ContractCreateParams::Override::Type]
+        #   @return [Symbol, Metronome::Models::ContractCreateParams::Override::Type, nil]
         optional :type, enum: -> { Metronome::Models::ContractCreateParams::Override::Type }
+
+        # @!parse
+        #   # @return [Symbol, Metronome::Models::ContractCreateParams::Override::Type]
+        #   attr_writer :type
 
         # @!parse
         #   # @param starting_at [String] RFC 3339 timestamp indicating when the override will start applying (inclusive)
@@ -1536,35 +1864,55 @@ module Metronome
         # }
         # ```
         class OverrideSpecifier < Metronome::BaseModel
-          # @!attribute commit_ids
+          # @!attribute [r] commit_ids
           #   Can only be used for commit specific overrides. Must be used in conjunction with one of product_id, product_tags, pricing_group_values, or presentation_group_values. If provided, the override will only apply to the specified commits. If not provided, the override will apply to all commits.
           #
           #   @return [Array<String>]
           optional :commit_ids, Metronome::ArrayOf[String]
 
-          # @!attribute presentation_group_values
+          # @!parse
+          #   # @return [Array<String>]
+          #   attr_writer :commit_ids
+
+          # @!attribute [r] presentation_group_values
           #   A map of group names to values. The override will only apply to line items with the specified presentation group values. Can only be used for multiplier overrides.
           #
-          #   @return [Hash{Symbol=>String}]
+          #   @return [Hash{Symbol=>String}, nil]
           optional :presentation_group_values, Metronome::HashOf[String]
 
-          # @!attribute pricing_group_values
+          # @!parse
+          #   # @return [Hash{Symbol=>String}]
+          #   attr_writer :presentation_group_values
+
+          # @!attribute [r] pricing_group_values
           #   A map of pricing group names to values. The override will only apply to products with the specified pricing group values.
           #
-          #   @return [Hash{Symbol=>String}]
+          #   @return [Hash{Symbol=>String}, nil]
           optional :pricing_group_values, Metronome::HashOf[String]
 
-          # @!attribute product_id
+          # @!parse
+          #   # @return [Hash{Symbol=>String}]
+          #   attr_writer :pricing_group_values
+
+          # @!attribute [r] product_id
           #   If provided, the override will only apply to the product with the specified ID.
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :product_id, String
 
-          # @!attribute product_tags
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :product_id
+
+          # @!attribute [r] product_tags
           #   If provided, the override will only apply to products with all the specified tags.
           #
           #   @return [Array<String>]
           optional :product_tags, Metronome::ArrayOf[String]
+
+          # @!parse
+          #   # @return [Array<String>]
+          #   attr_writer :product_tags
 
           # @!parse
           #   # @param commit_ids [Array<String>] Can only be used for commit specific overrides. Must be used in conjunction with
@@ -1616,40 +1964,64 @@ module Metronome
           required :rate_type,
                    enum: -> { Metronome::Models::ContractCreateParams::Override::OverwriteRate::RateType }
 
-          # @!attribute credit_type_id
+          # @!attribute [r] credit_type_id
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :credit_type_id, String
 
-          # @!attribute custom_rate
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :credit_type_id
+
+          # @!attribute [r] custom_rate
           #   Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.
           #
-          #   @return [Hash{Symbol=>Object}]
+          #   @return [Hash{Symbol=>Object}, nil]
           optional :custom_rate, Metronome::HashOf[Metronome::Unknown]
 
-          # @!attribute is_prorated
+          # @!parse
+          #   # @return [Hash{Symbol=>Object}]
+          #   attr_writer :custom_rate
+
+          # @!attribute [r] is_prorated
           #   Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be set to true.
           #
-          #   @return [Boolean]
+          #   @return [Boolean, nil]
           optional :is_prorated, Metronome::BooleanModel
 
-          # @!attribute price
+          # @!parse
+          #   # @return [Boolean]
+          #   attr_writer :is_prorated
+
+          # @!attribute [r] price
           #   Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
           #
-          #   @return [Float]
+          #   @return [Float, nil]
           optional :price, Float
 
-          # @!attribute quantity
+          # @!parse
+          #   # @return [Float]
+          #   attr_writer :price
+
+          # @!attribute [r] quantity
           #   Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
           #
-          #   @return [Float]
+          #   @return [Float, nil]
           optional :quantity, Float
 
-          # @!attribute tiers
+          # @!parse
+          #   # @return [Float]
+          #   attr_writer :quantity
+
+          # @!attribute [r] tiers
           #   Only set for TIERED rate_type.
           #
           #   @return [Array<Metronome::Models::Tier>]
           optional :tiers, -> { Metronome::ArrayOf[Metronome::Models::Tier] }
+
+          # @!parse
+          #   # @return [Array<Metronome::Models::Tier>]
+          #   attr_writer :tiers
 
           # @!parse
           #   # Required for OVERWRITE type.
@@ -1749,10 +2121,14 @@ module Metronome
           #   @return [Float]
           required :multiplier, Float
 
-          # @!attribute size
+          # @!attribute [r] size
           #
-          #   @return [Float]
+          #   @return [Float, nil]
           optional :size, Float
+
+          # @!parse
+          #   # @return [Float]
+          #   attr_writer :size
 
           # @!parse
           #   # @param multiplier [Float]
@@ -1820,21 +2196,33 @@ module Metronome
         #   @return [Float]
         required :unit_price, Float
 
-        # @!attribute custom_fields
+        # @!attribute [r] custom_fields
         #
-        #   @return [Hash{Symbol=>String}]
+        #   @return [Hash{Symbol=>String}, nil]
         optional :custom_fields, Metronome::HashOf[String]
 
-        # @!attribute description
+        # @!parse
+        #   # @return [Hash{Symbol=>String}]
+        #   attr_writer :custom_fields
+
+        # @!attribute [r] description
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :description, String
 
-        # @!attribute netsuite_sales_order_id
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :description
+
+        # @!attribute [r] netsuite_sales_order_id
         #   This field's availability is dependent on your client's configuration.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :netsuite_sales_order_id, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :netsuite_sales_order_id
 
         # @!parse
         #   # @param max_amount [Float] Maximum amount for the term.
@@ -1902,37 +2290,61 @@ module Metronome
         #   @return [Time]
         required :starting_at, Time
 
-        # @!attribute applicable_product_ids
+        # @!attribute [r] applicable_product_ids
         #   Must provide at least one of applicable_product_ids or applicable_product_tags.
         #
         #   @return [Array<String>]
         optional :applicable_product_ids, Metronome::ArrayOf[String]
 
-        # @!attribute applicable_product_tags
+        # @!parse
+        #   # @return [Array<String>]
+        #   attr_writer :applicable_product_ids
+
+        # @!attribute [r] applicable_product_tags
         #   Must provide at least one of applicable_product_ids or applicable_product_tags.
         #
         #   @return [Array<String>]
         optional :applicable_product_tags, Metronome::ArrayOf[String]
 
-        # @!attribute aws_options
+        # @!parse
+        #   # @return [Array<String>]
+        #   attr_writer :applicable_product_tags
+
+        # @!attribute [r] aws_options
         #
-        #   @return [Metronome::Models::ContractCreateParams::ResellerRoyalty::AwsOptions]
+        #   @return [Metronome::Models::ContractCreateParams::ResellerRoyalty::AwsOptions, nil]
         optional :aws_options, -> { Metronome::Models::ContractCreateParams::ResellerRoyalty::AwsOptions }
 
-        # @!attribute ending_before
+        # @!parse
+        #   # @return [Metronome::Models::ContractCreateParams::ResellerRoyalty::AwsOptions]
+        #   attr_writer :aws_options
+
+        # @!attribute [r] ending_before
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :ending_before, Time
 
-        # @!attribute gcp_options
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :ending_before
+
+        # @!attribute [r] gcp_options
         #
-        #   @return [Metronome::Models::ContractCreateParams::ResellerRoyalty::GcpOptions]
+        #   @return [Metronome::Models::ContractCreateParams::ResellerRoyalty::GcpOptions, nil]
         optional :gcp_options, -> { Metronome::Models::ContractCreateParams::ResellerRoyalty::GcpOptions }
 
-        # @!attribute reseller_contract_value
+        # @!parse
+        #   # @return [Metronome::Models::ContractCreateParams::ResellerRoyalty::GcpOptions]
+        #   attr_writer :gcp_options
+
+        # @!attribute [r] reseller_contract_value
         #
-        #   @return [Float]
+        #   @return [Float, nil]
         optional :reseller_contract_value, Float
+
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :reseller_contract_value
 
         # @!parse
         #   # @param fraction [Float]
@@ -2004,20 +2416,32 @@ module Metronome
         # }
         # ```
         class AwsOptions < Metronome::BaseModel
-          # @!attribute aws_account_number
+          # @!attribute [r] aws_account_number
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :aws_account_number, String
 
-          # @!attribute aws_offer_id
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :aws_account_number
+
+          # @!attribute [r] aws_offer_id
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :aws_offer_id, String
 
-          # @!attribute aws_payer_reference_id
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :aws_offer_id
+
+          # @!attribute [r] aws_payer_reference_id
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :aws_payer_reference_id, String
+
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :aws_payer_reference_id
 
           # @!parse
           #   # @param aws_account_number [String]
@@ -2037,15 +2461,23 @@ module Metronome
         # }
         # ```
         class GcpOptions < Metronome::BaseModel
-          # @!attribute gcp_account_id
+          # @!attribute [r] gcp_account_id
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :gcp_account_id, String
 
-          # @!attribute gcp_offer_id
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :gcp_account_id
+
+          # @!attribute [r] gcp_offer_id
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :gcp_offer_id, String
+
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :gcp_offer_id
 
           # @!parse
           #   # @param gcp_account_id [String]
@@ -2078,17 +2510,25 @@ module Metronome
         #   @return [Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule]
         required :schedule, -> { Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule }
 
-        # @!attribute name
+        # @!attribute [r] name
         #   displayed on invoices
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :name, String
 
-        # @!attribute netsuite_sales_order_id
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :name
+
+        # @!attribute [r] netsuite_sales_order_id
         #   This field's availability is dependent on your client's configuration.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :netsuite_sales_order_id, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :netsuite_sales_order_id
 
         # @!parse
         #   # @param product_id [String]
@@ -2112,20 +2552,28 @@ module Metronome
         # }
         # ```
         class Schedule < Metronome::BaseModel
-          # @!attribute credit_type_id
+          # @!attribute [r] credit_type_id
           #   Defaults to USD (cents) if not passed.
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :credit_type_id, String
 
-          # @!attribute recurring_schedule
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :credit_type_id
+
+          # @!attribute [r] recurring_schedule
           #   Enter the unit price and quantity for the charge or instead only send the amount. If amount is sent, the unit price is assumed to be the amount and quantity is inferred to be 1.
           #
-          #   @return [Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule]
+          #   @return [Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule, nil]
           optional :recurring_schedule,
                    -> { Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule }
 
-          # @!attribute schedule_items
+          # @!parse
+          #   # @return [Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule]
+          #   attr_writer :recurring_schedule
+
+          # @!attribute [r] schedule_items
           #   Either provide amount or provide both unit_price and quantity.
           #
           #   @return [Array<Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::ScheduleItem>]
@@ -2133,6 +2581,10 @@ module Metronome
                    -> {
                      Metronome::ArrayOf[Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::ScheduleItem]
                    }
+
+          # @!parse
+          #   # @return [Array<Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::ScheduleItem>]
+          #   attr_writer :schedule_items
 
           # @!parse
           #   # Must provide either schedule_items or recurring_schedule.
@@ -2189,23 +2641,35 @@ module Metronome
             #   @return [Time]
             required :starting_at, Time
 
-            # @!attribute amount
+            # @!attribute [r] amount
             #   Amount for the charge. Can be provided instead of unit_price and quantity. If amount is sent, the unit_price is assumed to be the amount and quantity is inferred to be 1.
             #
-            #   @return [Float]
+            #   @return [Float, nil]
             optional :amount, Float
 
-            # @!attribute quantity
+            # @!parse
+            #   # @return [Float]
+            #   attr_writer :amount
+
+            # @!attribute [r] quantity
             #   Quantity for the charge. Will be multiplied by unit_price to determine the amount and must be specified with unit_price. If specified amount cannot be provided.
             #
-            #   @return [Float]
+            #   @return [Float, nil]
             optional :quantity, Float
 
-            # @!attribute unit_price
+            # @!parse
+            #   # @return [Float]
+            #   attr_writer :quantity
+
+            # @!attribute [r] unit_price
             #   Unit price for the charge. Will be multiplied by quantity to determine the amount and must be specified with quantity. If specified amount cannot be provided.
             #
-            #   @return [Float]
+            #   @return [Float, nil]
             optional :unit_price, Float
+
+            # @!parse
+            #   # @return [Float]
+            #   attr_writer :unit_price
 
             # @!parse
             #   # Enter the unit price and quantity for the charge or instead only send the
@@ -2305,23 +2769,35 @@ module Metronome
             #   @return [Time]
             required :timestamp, Time
 
-            # @!attribute amount
+            # @!attribute [r] amount
             #   Amount for the charge. Can be provided instead of unit_price and quantity. If amount is sent, the unit_price is assumed to be the amount and quantity is inferred to be 1.
             #
-            #   @return [Float]
+            #   @return [Float, nil]
             optional :amount, Float
 
-            # @!attribute quantity
+            # @!parse
+            #   # @return [Float]
+            #   attr_writer :amount
+
+            # @!attribute [r] quantity
             #   Quantity for the charge. Will be multiplied by unit_price to determine the amount and must be specified with unit_price. If specified amount cannot be provided.
             #
-            #   @return [Float]
+            #   @return [Float, nil]
             optional :quantity, Float
 
-            # @!attribute unit_price
+            # @!parse
+            #   # @return [Float]
+            #   attr_writer :quantity
+
+            # @!attribute [r] unit_price
             #   Unit price for the charge. Will be multiplied by quantity to determine the amount and must be specified with quantity. If specified amount cannot be provided.
             #
-            #   @return [Float]
+            #   @return [Float, nil]
             optional :unit_price, Float
+
+            # @!parse
+            #   # @return [Float]
+            #   attr_writer :unit_price
 
             # @!parse
             #   # @param timestamp [String] timestamp of the scheduled event
@@ -2380,11 +2856,15 @@ module Metronome
         #   @return [Symbol, Metronome::Models::ContractCreateParams::Transition::Type]
         required :type, enum: -> { Metronome::Models::ContractCreateParams::Transition::Type }
 
-        # @!attribute future_invoice_behavior
+        # @!attribute [r] future_invoice_behavior
         #
-        #   @return [Metronome::Models::ContractCreateParams::Transition::FutureInvoiceBehavior]
+        #   @return [Metronome::Models::ContractCreateParams::Transition::FutureInvoiceBehavior, nil]
         optional :future_invoice_behavior,
                  -> { Metronome::Models::ContractCreateParams::Transition::FutureInvoiceBehavior }
+
+        # @!parse
+        #   # @return [Metronome::Models::ContractCreateParams::Transition::FutureInvoiceBehavior]
+        #   attr_writer :future_invoice_behavior
 
         # @!parse
         #   # @param from_contract_id [String]
@@ -2429,7 +2909,8 @@ module Metronome
           optional :trueup,
                    enum: -> {
                      Metronome::Models::ContractCreateParams::Transition::FutureInvoiceBehavior::Trueup
-                   }
+                   },
+                   nil?: true
 
           # @!parse
           #   # @param trueup [String, nil] Controls whether future trueup invoices are billed or removed. Default behavior
@@ -2475,23 +2956,35 @@ module Metronome
         required :frequency,
                  enum: -> { Metronome::Models::ContractCreateParams::UsageStatementSchedule::Frequency }
 
-        # @!attribute billing_anchor_date
+        # @!attribute [r] billing_anchor_date
         #   Required when using CUSTOM_DATE. This option lets you set a historical billing anchor date, aligning future billing cycles with a chosen cadence. For example, if a contract starts on 2024-09-15 and you set the anchor date to 2024-09-10 with a MONTHLY frequency, the first usage statement will cover 09-15 to 10-10. Subsequent statements will follow the 10th of each month.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :billing_anchor_date, Time
 
-        # @!attribute day
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :billing_anchor_date
+
+        # @!attribute [r] day
         #   If not provided, defaults to the first day of the month.
         #
-        #   @return [Symbol, Metronome::Models::ContractCreateParams::UsageStatementSchedule::Day]
+        #   @return [Symbol, Metronome::Models::ContractCreateParams::UsageStatementSchedule::Day, nil]
         optional :day, enum: -> { Metronome::Models::ContractCreateParams::UsageStatementSchedule::Day }
 
-        # @!attribute invoice_generation_starting_at
+        # @!parse
+        #   # @return [Symbol, Metronome::Models::ContractCreateParams::UsageStatementSchedule::Day]
+        #   attr_writer :day
+
+        # @!attribute [r] invoice_generation_starting_at
         #   The date Metronome should start generating usage invoices. If unspecified, contract start date will be used. This is useful to set if you want to import historical invoices via our 'Create Historical Invoices' API rather than having Metronome automatically generate them.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :invoice_generation_starting_at, Time
+
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :invoice_generation_starting_at
 
         # @!parse
         #   # @param frequency [String]

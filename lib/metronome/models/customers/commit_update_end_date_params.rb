@@ -16,17 +16,25 @@ module Metronome
         #   @return [String]
         required :customer_id, String
 
-        # @!attribute access_ending_before
+        # @!attribute [r] access_ending_before
         #   RFC 3339 timestamp indicating when access to the commit will end and it will no longer be possible to draw it down (exclusive). If not provided, the access will not be updated.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :access_ending_before, Time
 
-        # @!attribute invoices_ending_before
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :access_ending_before
+
+        # @!attribute [r] invoices_ending_before
         #   RFC 3339 timestamp indicating when the commit will stop being invoiced (exclusive). If not provided, the invoice schedule will not be updated.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :invoices_ending_before, Time
+
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :invoices_ending_before
 
         # @!parse
         #   # @param commit_id [String] ID of the commit to update. Only supports "PREPAID" commits.

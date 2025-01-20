@@ -54,7 +54,7 @@ module Metronome
           #   @return [String]
           required :name, String
 
-          # @!attribute aliases
+          # @!attribute [r] aliases
           #
           #   @return [Array<Metronome::Models::Contracts::RateCardRetrieveResponse::Data::Alias>]
           optional :aliases,
@@ -62,7 +62,11 @@ module Metronome
                      Metronome::ArrayOf[Metronome::Models::Contracts::RateCardRetrieveResponse::Data::Alias]
                    }
 
-          # @!attribute credit_type_conversions
+          # @!parse
+          #   # @return [Array<Metronome::Models::Contracts::RateCardRetrieveResponse::Data::Alias>]
+          #   attr_writer :aliases
+
+          # @!attribute [r] credit_type_conversions
           #
           #   @return [Array<Metronome::Models::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion>]
           optional :credit_type_conversions,
@@ -70,20 +74,36 @@ module Metronome
                      Metronome::ArrayOf[Metronome::Models::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion]
                    }
 
-          # @!attribute custom_fields
+          # @!parse
+          #   # @return [Array<Metronome::Models::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion>]
+          #   attr_writer :credit_type_conversions
+
+          # @!attribute [r] custom_fields
           #
-          #   @return [Hash{Symbol=>String}]
+          #   @return [Hash{Symbol=>String}, nil]
           optional :custom_fields, Metronome::HashOf[String]
 
-          # @!attribute description
+          # @!parse
+          #   # @return [Hash{Symbol=>String}]
+          #   attr_writer :custom_fields
+
+          # @!attribute [r] description
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :description, String
 
-          # @!attribute fiat_credit_type
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :description
+
+          # @!attribute [r] fiat_credit_type
           #
-          #   @return [Metronome::Models::CreditTypeData]
+          #   @return [Metronome::Models::CreditTypeData, nil]
           optional :fiat_credit_type, -> { Metronome::Models::CreditTypeData }
+
+          # @!parse
+          #   # @return [Metronome::Models::CreditTypeData]
+          #   attr_writer :fiat_credit_type
 
           # @!parse
           #   # @param id [String]
@@ -127,15 +147,23 @@ module Metronome
             #   @return [String]
             required :name, String
 
-            # @!attribute ending_before
+            # @!attribute [r] ending_before
             #
-            #   @return [Time]
+            #   @return [Time, nil]
             optional :ending_before, Time
 
-            # @!attribute starting_at
+            # @!parse
+            #   # @return [Time]
+            #   attr_writer :ending_before
+
+            # @!attribute [r] starting_at
             #
-            #   @return [Time]
+            #   @return [Time, nil]
             optional :starting_at, Time
+
+            # @!parse
+            #   # @return [Time]
+            #   attr_writer :starting_at
 
             # @!parse
             #   # @param name [String]

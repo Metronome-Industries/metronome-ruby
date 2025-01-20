@@ -21,50 +21,78 @@ module Metronome
         #   @return [Time]
         required :starting_on, Time
 
-        # @!attribute credit_type_id
+        # @!attribute [r] credit_type_id
         #   Only return invoices for the specified credit type
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :credit_type_id, String
 
-        # @!attribute limit
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :credit_type_id
+
+        # @!attribute [r] limit
         #   Max number of results that should be returned. For daily breakdowns, the response can return up to 35 days worth of breakdowns. For hourly breakdowns, the response can return up to 24 hours. If there are more results, a cursor to the next page is returned.
         #
-        #   @return [Integer]
+        #   @return [Integer, nil]
         optional :limit, Integer
 
-        # @!attribute next_page
+        # @!parse
+        #   # @return [Integer]
+        #   attr_writer :limit
+
+        # @!attribute [r] next_page
         #   Cursor that indicates where the next page of results should start.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :next_page, String
 
-        # @!attribute skip_zero_qty_line_items
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :next_page
+
+        # @!attribute [r] skip_zero_qty_line_items
         #   If set, all zero quantity line items will be filtered out of the response
         #
-        #   @return [Boolean]
+        #   @return [Boolean, nil]
         optional :skip_zero_qty_line_items, Metronome::BooleanModel
 
-        # @!attribute sort
+        # @!parse
+        #   # @return [Boolean]
+        #   attr_writer :skip_zero_qty_line_items
+
+        # @!attribute [r] sort
         #   Invoice sort order by issued_at, e.g. date_asc or date_desc.  Defaults to date_asc.
         #
-        #   @return [Symbol, Metronome::Models::Customers::InvoiceListBreakdownsParams::Sort]
+        #   @return [Symbol, Metronome::Models::Customers::InvoiceListBreakdownsParams::Sort, nil]
         optional :sort, enum: -> { Metronome::Models::Customers::InvoiceListBreakdownsParams::Sort }
 
-        # @!attribute status
+        # @!parse
+        #   # @return [Symbol, Metronome::Models::Customers::InvoiceListBreakdownsParams::Sort]
+        #   attr_writer :sort
+
+        # @!attribute [r] status
         #   Invoice status, e.g. DRAFT or FINALIZED
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :status, String
 
-        # @!attribute window_size
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :status
+
+        # @!attribute [r] window_size
         #   The granularity of the breakdowns to return. Defaults to day.
         #
-        #   @return [Symbol, Metronome::Models::Customers::InvoiceListBreakdownsParams::WindowSize]
+        #   @return [Symbol, Metronome::Models::Customers::InvoiceListBreakdownsParams::WindowSize, nil]
         optional :window_size,
                  enum: -> {
                    Metronome::Models::Customers::InvoiceListBreakdownsParams::WindowSize
                  }
+
+        # @!parse
+        #   # @return [Symbol, Metronome::Models::Customers::InvoiceListBreakdownsParams::WindowSize]
+        #   attr_writer :window_size
 
         # @!parse
         #   # @param customer_id [String]

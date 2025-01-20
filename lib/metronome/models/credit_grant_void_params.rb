@@ -8,17 +8,25 @@ module Metronome
       #   @return [String]
       required :id, String
 
-      # @!attribute release_uniqueness_key
+      # @!attribute [r] release_uniqueness_key
       #   If true, resets the uniqueness key on this grant so it can be re-used
       #
-      #   @return [Boolean]
+      #   @return [Boolean, nil]
       optional :release_uniqueness_key, Metronome::BooleanModel
 
-      # @!attribute void_credit_purchase_invoice
+      # @!parse
+      #   # @return [Boolean]
+      #   attr_writer :release_uniqueness_key
+
+      # @!attribute [r] void_credit_purchase_invoice
       #   If true, void the purchase invoice associated with the grant
       #
-      #   @return [Boolean]
+      #   @return [Boolean, nil]
       optional :void_credit_purchase_invoice, Metronome::BooleanModel
+
+      # @!parse
+      #   # @return [Boolean]
+      #   attr_writer :void_credit_purchase_invoice
 
       # @!parse
       #   # @param id [String]

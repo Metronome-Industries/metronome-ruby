@@ -21,21 +21,33 @@ module Metronome
         #   @return [String]
         required :billing_provider_customer_id, String
 
-        # @!attribute aws_product_code
+        # @!attribute [r] aws_product_code
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :aws_product_code, String
 
-        # @!attribute aws_region
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :aws_product_code
+
+        # @!attribute [r] aws_region
         #
-        #   @return [Symbol, Metronome::Models::Customers::BillingConfigCreateParams::AwsRegion]
+        #   @return [Symbol, Metronome::Models::Customers::BillingConfigCreateParams::AwsRegion, nil]
         optional :aws_region, enum: -> { Metronome::Models::Customers::BillingConfigCreateParams::AwsRegion }
 
-        # @!attribute stripe_collection_method
+        # @!parse
+        #   # @return [Symbol, Metronome::Models::Customers::BillingConfigCreateParams::AwsRegion]
+        #   attr_writer :aws_region
+
+        # @!attribute [r] stripe_collection_method
         #
-        #   @return [Symbol, Metronome::Models::Customers::BillingConfigCreateParams::StripeCollectionMethod]
+        #   @return [Symbol, Metronome::Models::Customers::BillingConfigCreateParams::StripeCollectionMethod, nil]
         optional :stripe_collection_method,
                  enum: -> { Metronome::Models::Customers::BillingConfigCreateParams::StripeCollectionMethod }
+
+        # @!parse
+        #   # @return [Symbol, Metronome::Models::Customers::BillingConfigCreateParams::StripeCollectionMethod]
+        #   attr_writer :stripe_collection_method
 
         # @!parse
         #   # @param customer_id [String]

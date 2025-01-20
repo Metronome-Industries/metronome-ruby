@@ -51,7 +51,7 @@ module Metronome
       #   if this entry is a deduction, the Metronome ID of the invoice where the credit deduction was consumed; if this entry is a grant, the Metronome ID of the invoice where the grant's paid_amount was charged
       #
       #   @return [String, nil]
-      optional :invoice_id, String
+      optional :invoice_id, String, nil?: true
 
       # @!parse
       #   # @param amount [Float] an amount representing the change to the customer's credit balance

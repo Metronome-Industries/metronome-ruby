@@ -72,27 +72,39 @@ module Metronome
                    Metronome::ArrayOf[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem]
                  }
 
-        # @!attribute billable_status
+        # @!attribute [r] billable_status
         #   This field's availability is dependent on your client's configuration.
         #
-        #   @return [Symbol, Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus]
+        #   @return [Symbol, Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus, nil]
         optional :billable_status,
                  enum: -> {
                    Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus
                  }
 
-        # @!attribute breakdown_granularity
+        # @!parse
+        #   # @return [Symbol, Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus]
+        #   attr_writer :billable_status
+
+        # @!attribute [r] breakdown_granularity
         #
-        #   @return [Symbol, Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity]
+        #   @return [Symbol, Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity, nil]
         optional :breakdown_granularity,
                  enum: -> {
                    Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity
                  }
 
-        # @!attribute custom_fields
+        # @!parse
+        #   # @return [Symbol, Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity]
+        #   attr_writer :breakdown_granularity
+
+        # @!attribute [r] custom_fields
         #
-        #   @return [Hash{Symbol=>String}]
+        #   @return [Hash{Symbol=>String}, nil]
         optional :custom_fields, Metronome::HashOf[String]
+
+        # @!parse
+        #   # @return [Hash{Symbol=>String}]
+        #   attr_writer :custom_fields
 
         # @!parse
         #   # @param contract_id [String]
@@ -160,28 +172,44 @@ module Metronome
           #   @return [String]
           required :product_id, String
 
-          # @!attribute presentation_group_values
+          # @!attribute [r] presentation_group_values
           #
-          #   @return [Hash{Symbol=>String}]
+          #   @return [Hash{Symbol=>String}, nil]
           optional :presentation_group_values, Metronome::HashOf[String]
 
-          # @!attribute pricing_group_values
+          # @!parse
+          #   # @return [Hash{Symbol=>String}]
+          #   attr_writer :presentation_group_values
+
+          # @!attribute [r] pricing_group_values
           #
-          #   @return [Hash{Symbol=>String}]
+          #   @return [Hash{Symbol=>String}, nil]
           optional :pricing_group_values, Metronome::HashOf[String]
 
-          # @!attribute quantity
+          # @!parse
+          #   # @return [Hash{Symbol=>String}]
+          #   attr_writer :pricing_group_values
+
+          # @!attribute [r] quantity
           #
-          #   @return [Float]
+          #   @return [Float, nil]
           optional :quantity, Float
 
-          # @!attribute subtotals_with_quantity
+          # @!parse
+          #   # @return [Float]
+          #   attr_writer :quantity
+
+          # @!attribute [r] subtotals_with_quantity
           #
           #   @return [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity>]
           optional :subtotals_with_quantity,
                    -> {
                      Metronome::ArrayOf[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
                    }
+
+          # @!parse
+          #   # @return [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity>]
+          #   attr_writer :subtotals_with_quantity
 
           # @!parse
           #   # @param exclusive_end_date [String]

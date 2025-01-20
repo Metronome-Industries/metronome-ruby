@@ -14,11 +14,15 @@ module Metronome
         #   @return [String]
         required :invoice_id, String
 
-        # @!attribute skip_zero_qty_line_items
+        # @!attribute [r] skip_zero_qty_line_items
         #   If set, all zero quantity line items will be filtered out of the response
         #
-        #   @return [Boolean]
+        #   @return [Boolean, nil]
         optional :skip_zero_qty_line_items, Metronome::BooleanModel
+
+        # @!parse
+        #   # @return [Boolean]
+        #   attr_writer :skip_zero_qty_line_items
 
         # @!parse
         #   # @param customer_id [String]

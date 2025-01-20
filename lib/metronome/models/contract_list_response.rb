@@ -61,36 +61,56 @@ module Metronome
         #   @return [Metronome::Models::ContractWithoutAmendments]
         required :initial, -> { Metronome::Models::ContractWithoutAmendments }
 
-        # @!attribute archived_at
+        # @!attribute [r] archived_at
         #   RFC 3339 timestamp indicating when the contract was archived. If not returned, the contract is not archived.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :archived_at, Time
 
-        # @!attribute custom_fields
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :archived_at
+
+        # @!attribute [r] custom_fields
         #
-        #   @return [Hash{Symbol=>String}]
+        #   @return [Hash{Symbol=>String}, nil]
         optional :custom_fields, Metronome::HashOf[String]
 
-        # @!attribute customer_billing_provider_configuration
+        # @!parse
+        #   # @return [Hash{Symbol=>String}]
+        #   attr_writer :custom_fields
+
+        # @!attribute [r] customer_billing_provider_configuration
         #   The billing provider configuration associated with a contract.
         #
-        #   @return [Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration]
+        #   @return [Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration, nil]
         optional :customer_billing_provider_configuration,
                  -> { Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration }
 
-        # @!attribute scheduled_charges_on_usage_invoices
+        # @!parse
+        #   # @return [Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration]
+        #   attr_writer :customer_billing_provider_configuration
+
+        # @!attribute [r] scheduled_charges_on_usage_invoices
         #   Determines which scheduled and commit charges to consolidate onto the Contract's usage invoice. The charge's `timestamp` must match the usage invoice's `ending_before` date for consolidation to occur. This field cannot be modified after a Contract has been created. If this field is omitted, charges will appear on a separate invoice from usage charges.
         #
-        #   @return [Symbol, Metronome::Models::ContractListResponse::Data::ScheduledChargesOnUsageInvoices]
+        #   @return [Symbol, Metronome::Models::ContractListResponse::Data::ScheduledChargesOnUsageInvoices, nil]
         optional :scheduled_charges_on_usage_invoices,
                  enum: -> { Metronome::Models::ContractListResponse::Data::ScheduledChargesOnUsageInvoices }
 
-        # @!attribute uniqueness_key
+        # @!parse
+        #   # @return [Symbol, Metronome::Models::ContractListResponse::Data::ScheduledChargesOnUsageInvoices]
+        #   attr_writer :scheduled_charges_on_usage_invoices
+
+        # @!attribute [r] uniqueness_key
         #   Prevents the creation of duplicates. If a request to create a record is made with a previously used uniqueness key, a new record will not be created and the request will fail with a 409 error.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :uniqueness_key, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :uniqueness_key
 
         # @!parse
         #   # @param id [String]
@@ -185,30 +205,46 @@ module Metronome
           #   @return [Time]
           required :starting_at, Time
 
-          # @!attribute credits
+          # @!attribute [r] credits
           #
           #   @return [Array<Metronome::Models::Credit>]
           optional :credits, -> { Metronome::ArrayOf[Metronome::Models::Credit] }
 
-          # @!attribute discounts
+          # @!parse
+          #   # @return [Array<Metronome::Models::Credit>]
+          #   attr_writer :credits
+
+          # @!attribute [r] discounts
           #   This field's availability is dependent on your client's configuration.
           #
           #   @return [Array<Metronome::Models::Discount>]
           optional :discounts, -> { Metronome::ArrayOf[Metronome::Models::Discount] }
 
-          # @!attribute netsuite_sales_order_id
+          # @!parse
+          #   # @return [Array<Metronome::Models::Discount>]
+          #   attr_writer :discounts
+
+          # @!attribute [r] netsuite_sales_order_id
           #   This field's availability is dependent on your client's configuration.
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :netsuite_sales_order_id, String
 
-          # @!attribute professional_services
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :netsuite_sales_order_id
+
+          # @!attribute [r] professional_services
           #   This field's availability is dependent on your client's configuration.
           #
           #   @return [Array<Metronome::Models::ProService>]
           optional :professional_services, -> { Metronome::ArrayOf[Metronome::Models::ProService] }
 
-          # @!attribute reseller_royalties
+          # @!parse
+          #   # @return [Array<Metronome::Models::ProService>]
+          #   attr_writer :professional_services
+
+          # @!attribute [r] reseller_royalties
           #   This field's availability is dependent on your client's configuration.
           #
           #   @return [Array<Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty>]
@@ -217,11 +253,19 @@ module Metronome
                      Metronome::ArrayOf[Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty]
                    }
 
-          # @!attribute salesforce_opportunity_id
+          # @!parse
+          #   # @return [Array<Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty>]
+          #   attr_writer :reseller_royalties
+
+          # @!attribute [r] salesforce_opportunity_id
           #   This field's availability is dependent on your client's configuration.
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :salesforce_opportunity_id, String
+
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :salesforce_opportunity_id
 
           # @!parse
           #   # @param id [String]
@@ -291,55 +335,91 @@ module Metronome
                        Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty::ResellerType
                      }
 
-            # @!attribute aws_account_number
+            # @!attribute [r] aws_account_number
             #
-            #   @return [String]
+            #   @return [String, nil]
             optional :aws_account_number, String
 
-            # @!attribute aws_offer_id
+            # @!parse
+            #   # @return [String]
+            #   attr_writer :aws_account_number
+
+            # @!attribute [r] aws_offer_id
             #
-            #   @return [String]
+            #   @return [String, nil]
             optional :aws_offer_id, String
 
-            # @!attribute aws_payer_reference_id
+            # @!parse
+            #   # @return [String]
+            #   attr_writer :aws_offer_id
+
+            # @!attribute [r] aws_payer_reference_id
             #
-            #   @return [String]
+            #   @return [String, nil]
             optional :aws_payer_reference_id, String
+
+            # @!parse
+            #   # @return [String]
+            #   attr_writer :aws_payer_reference_id
 
             # @!attribute ending_before
             #
             #   @return [Time, nil]
-            optional :ending_before, Time
+            optional :ending_before, Time, nil?: true
 
-            # @!attribute fraction
+            # @!attribute [r] fraction
             #
-            #   @return [Float]
+            #   @return [Float, nil]
             optional :fraction, Float
 
-            # @!attribute gcp_account_id
+            # @!parse
+            #   # @return [Float]
+            #   attr_writer :fraction
+
+            # @!attribute [r] gcp_account_id
             #
-            #   @return [String]
+            #   @return [String, nil]
             optional :gcp_account_id, String
 
-            # @!attribute gcp_offer_id
+            # @!parse
+            #   # @return [String]
+            #   attr_writer :gcp_account_id
+
+            # @!attribute [r] gcp_offer_id
             #
-            #   @return [String]
+            #   @return [String, nil]
             optional :gcp_offer_id, String
 
-            # @!attribute netsuite_reseller_id
+            # @!parse
+            #   # @return [String]
+            #   attr_writer :gcp_offer_id
+
+            # @!attribute [r] netsuite_reseller_id
             #
-            #   @return [String]
+            #   @return [String, nil]
             optional :netsuite_reseller_id, String
 
-            # @!attribute reseller_contract_value
+            # @!parse
+            #   # @return [String]
+            #   attr_writer :netsuite_reseller_id
+
+            # @!attribute [r] reseller_contract_value
             #
-            #   @return [Float]
+            #   @return [Float, nil]
             optional :reseller_contract_value, Float
 
-            # @!attribute starting_at
+            # @!parse
+            #   # @return [Float]
+            #   attr_writer :reseller_contract_value
+
+            # @!attribute [r] starting_at
             #
-            #   @return [Time]
+            #   @return [Time, nil]
             optional :starting_at, Time
+
+            # @!parse
+            #   # @return [Time]
+            #   attr_writer :starting_at
 
             # @!parse
             #   # @param reseller_type [String]

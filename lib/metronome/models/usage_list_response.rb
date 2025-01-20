@@ -18,7 +18,7 @@ module Metronome
       # @!attribute next_page
       #
       #   @return [String, nil]
-      required :next_page, String
+      required :next_page, String, nil?: true
 
       # @!parse
       #   # @param data [Array<Metronome::Models::UsageListResponse::Data>]
@@ -68,13 +68,17 @@ module Metronome
         # @!attribute value
         #
         #   @return [Float, nil]
-        required :value, Float
+        required :value, Float, nil?: true
 
-        # @!attribute groups
+        # @!attribute [r] groups
         #   Values will be either a number or null. Null indicates that there were no matches for the group_by value.
         #
         #   @return [Hash{Symbol=>Float}, nil]
         optional :groups, Metronome::HashOf[Float]
+
+        # @!parse
+        #   # @return [Hash{Symbol=>Float}, nil]
+        #   attr_writer :groups
 
         # @!parse
         #   # @param billable_metric_id [String]

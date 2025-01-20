@@ -19,38 +19,62 @@ module Metronome
       #   @return [Symbol, Metronome::Models::UsageListWithGroupsParams::WindowSize]
       required :window_size, enum: -> { Metronome::Models::UsageListWithGroupsParams::WindowSize }
 
-      # @!attribute limit
+      # @!attribute [r] limit
       #   Max number of results that should be returned
       #
-      #   @return [Integer]
+      #   @return [Integer, nil]
       optional :limit, Integer
 
-      # @!attribute next_page
+      # @!parse
+      #   # @return [Integer]
+      #   attr_writer :limit
+
+      # @!attribute [r] next_page
       #   Cursor that indicates where the next page of results should start.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :next_page, String
 
-      # @!attribute current_period
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :next_page
+
+      # @!attribute [r] current_period
       #   If true, will return the usage for the current billing period. Will return an error if the customer is currently uncontracted or starting_on and ending_before are specified when this is true.
       #
-      #   @return [Boolean]
+      #   @return [Boolean, nil]
       optional :current_period, Metronome::BooleanModel
 
-      # @!attribute ending_before
+      # @!parse
+      #   # @return [Boolean]
+      #   attr_writer :current_period
+
+      # @!attribute [r] ending_before
       #
-      #   @return [Time]
+      #   @return [Time, nil]
       optional :ending_before, Time
 
-      # @!attribute group_by
+      # @!parse
+      #   # @return [Time]
+      #   attr_writer :ending_before
+
+      # @!attribute [r] group_by
       #
-      #   @return [Metronome::Models::UsageListWithGroupsParams::GroupBy]
+      #   @return [Metronome::Models::UsageListWithGroupsParams::GroupBy, nil]
       optional :group_by, -> { Metronome::Models::UsageListWithGroupsParams::GroupBy }
 
-      # @!attribute starting_on
+      # @!parse
+      #   # @return [Metronome::Models::UsageListWithGroupsParams::GroupBy]
+      #   attr_writer :group_by
+
+      # @!attribute [r] starting_on
       #
-      #   @return [Time]
+      #   @return [Time, nil]
       optional :starting_on, Time
+
+      # @!parse
+      #   # @return [Time]
+      #   attr_writer :starting_on
 
       # @!parse
       #   # @param billable_metric_id [String]
@@ -127,11 +151,15 @@ module Metronome
         #   @return [String]
         required :key, String
 
-        # @!attribute values
+        # @!attribute [r] values
         #   Values of the group_by key to return in the query. Omit this if you'd like all values for the key returned.
         #
         #   @return [Array<String>]
         optional :values, Metronome::ArrayOf[String]
+
+        # @!parse
+        #   # @return [Array<String>]
+        #   attr_writer :values
 
         # @!parse
         #   # @param key [String] The name of the group_by key to use

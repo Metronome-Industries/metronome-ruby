@@ -38,10 +38,14 @@ module Metronome
         #   @return [Float]
         required :start_period, Float
 
-        # @!attribute quantity
+        # @!attribute [r] quantity
         #
-        #   @return [Float]
+        #   @return [Float, nil]
         optional :quantity, Float
+
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :quantity
 
         # @!parse
         #   # @param charge_id [String]
@@ -97,16 +101,24 @@ module Metronome
                      Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType
                    }
 
-          # @!attribute tier
+          # @!attribute [r] tier
           #   Used in pricing tiers.  Indicates at what metric value the price applies.
           #
-          #   @return [Float]
+          #   @return [Float, nil]
           optional :tier, Float
 
-          # @!attribute value
+          # @!parse
+          #   # @return [Float]
+          #   attr_writer :tier
+
+          # @!attribute [r] value
           #
-          #   @return [Float]
+          #   @return [Float, nil]
           optional :value, Float
+
+          # @!parse
+          #   # @return [Float]
+          #   attr_writer :value
 
           # @!parse
           #   # @param adjustment_type [String] Determines how the value will be applied.

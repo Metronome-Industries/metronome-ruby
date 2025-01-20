@@ -3,47 +3,75 @@
 module Metronome
   module Models
     class CreditGrantListParams < Metronome::BaseModel
-      # @!attribute limit
+      # @!attribute [r] limit
       #   Max number of results that should be returned
       #
-      #   @return [Integer]
+      #   @return [Integer, nil]
       optional :limit, Integer
 
-      # @!attribute next_page
+      # @!parse
+      #   # @return [Integer]
+      #   attr_writer :limit
+
+      # @!attribute [r] next_page
       #   Cursor that indicates where the next page of results should start.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :next_page, String
 
-      # @!attribute credit_grant_ids
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :next_page
+
+      # @!attribute [r] credit_grant_ids
       #   An array of credit grant IDs. If this is specified, neither credit_type_ids nor customer_ids may be specified.
       #
       #   @return [Array<String>]
       optional :credit_grant_ids, Metronome::ArrayOf[String]
 
-      # @!attribute credit_type_ids
+      # @!parse
+      #   # @return [Array<String>]
+      #   attr_writer :credit_grant_ids
+
+      # @!attribute [r] credit_type_ids
       #   An array of credit type IDs. This must not be specified if credit_grant_ids is specified.
       #
       #   @return [Array<String>]
       optional :credit_type_ids, Metronome::ArrayOf[String]
 
-      # @!attribute customer_ids
+      # @!parse
+      #   # @return [Array<String>]
+      #   attr_writer :credit_type_ids
+
+      # @!attribute [r] customer_ids
       #   An array of Metronome customer IDs. This must not be specified if credit_grant_ids is specified.
       #
       #   @return [Array<String>]
       optional :customer_ids, Metronome::ArrayOf[String]
 
-      # @!attribute effective_before
+      # @!parse
+      #   # @return [Array<String>]
+      #   attr_writer :customer_ids
+
+      # @!attribute [r] effective_before
       #   Only return credit grants that are effective before this timestamp (exclusive).
       #
-      #   @return [Time]
+      #   @return [Time, nil]
       optional :effective_before, Time
 
-      # @!attribute not_expiring_before
+      # @!parse
+      #   # @return [Time]
+      #   attr_writer :effective_before
+
+      # @!attribute [r] not_expiring_before
       #   Only return credit grants that expire at or after this timestamp.
       #
-      #   @return [Time]
+      #   @return [Time, nil]
       optional :not_expiring_before, Time
+
+      # @!parse
+      #   # @return [Time]
+      #   attr_writer :not_expiring_before
 
       # @!parse
       #   # @param limit [Integer] Max number of results that should be returned

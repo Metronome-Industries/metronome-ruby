@@ -47,10 +47,14 @@ module Metronome
         #   @return [String]
         required :transaction_id, String
 
-        # @!attribute properties
+        # @!attribute [r] properties
         #
-        #   @return [Hash{Symbol=>Object}]
+        #   @return [Hash{Symbol=>Object}, nil]
         optional :properties, Metronome::HashOf[Metronome::Unknown]
+
+        # @!parse
+        #   # @return [Hash{Symbol=>Object}]
+        #   attr_writer :properties
 
         # @!parse
         #   # @param customer_id [String]

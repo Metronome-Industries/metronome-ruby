@@ -54,28 +54,44 @@ module Metronome
       #   @return [String]
       required :product_name, String
 
-      # @!attribute quantity
+      # @!attribute [r] quantity
       #
-      #   @return [Float]
+      #   @return [Float, nil]
       optional :quantity, Float
 
-      # @!attribute start_period
+      # @!parse
+      #   # @return [Float]
+      #   attr_writer :quantity
+
+      # @!attribute [r] start_period
       #   Used in price ramps.  Indicates how many billing periods pass before the charge applies.
       #
-      #   @return [Float]
+      #   @return [Float, nil]
       optional :start_period, Float
 
-      # @!attribute tier_reset_frequency
+      # @!parse
+      #   # @return [Float]
+      #   attr_writer :start_period
+
+      # @!attribute [r] tier_reset_frequency
       #   Used in pricing tiers.  Indicates how often the tier resets. Default is 1 - the tier count resets every billing period.
       #
-      #   @return [Float]
+      #   @return [Float, nil]
       optional :tier_reset_frequency, Float
 
-      # @!attribute unit_conversion
+      # @!parse
+      #   # @return [Float]
+      #   attr_writer :tier_reset_frequency
+
+      # @!attribute [r] unit_conversion
       #   Specifies how quantities for usage based charges will be converted.
       #
-      #   @return [Metronome::Models::PlanListChargesResponse::UnitConversion]
+      #   @return [Metronome::Models::PlanListChargesResponse::UnitConversion, nil]
       optional :unit_conversion, -> { Metronome::Models::PlanListChargesResponse::UnitConversion }
+
+      # @!parse
+      #   # @return [Metronome::Models::PlanListChargesResponse::UnitConversion]
+      #   attr_writer :unit_conversion
 
       # @!parse
       #   # @param id [String]
@@ -171,20 +187,32 @@ module Metronome
         #   @return [Float]
         required :value, Float
 
-        # @!attribute collection_interval
+        # @!attribute [r] collection_interval
         #
-        #   @return [Float]
+        #   @return [Float, nil]
         optional :collection_interval, Float
 
-        # @!attribute collection_schedule
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :collection_interval
+
+        # @!attribute [r] collection_schedule
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :collection_schedule, String
 
-        # @!attribute quantity
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :collection_schedule
+
+        # @!attribute [r] quantity
         #
-        #   @return [Float]
+        #   @return [Float, nil]
         optional :quantity, Float
+
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :quantity
 
         # @!parse
         #   # @param tier [Float] Used in pricing tiers. Indicates at what metric value the price applies.
@@ -216,12 +244,16 @@ module Metronome
         #   @return [Float]
         required :division_factor, Float
 
-        # @!attribute rounding_behavior
+        # @!attribute [r] rounding_behavior
         #   Whether usage should be rounded down or up to the nearest whole number. If null, quantity will be rounded to 20 decimal places.
         #
-        #   @return [Symbol, Metronome::Models::PlanListChargesResponse::UnitConversion::RoundingBehavior]
+        #   @return [Symbol, Metronome::Models::PlanListChargesResponse::UnitConversion::RoundingBehavior, nil]
         optional :rounding_behavior,
                  enum: -> { Metronome::Models::PlanListChargesResponse::UnitConversion::RoundingBehavior }
+
+        # @!parse
+        #   # @return [Symbol, Metronome::Models::PlanListChargesResponse::UnitConversion::RoundingBehavior]
+        #   attr_writer :rounding_behavior
 
         # @!parse
         #   # Specifies how quantities for usage based charges will be converted.

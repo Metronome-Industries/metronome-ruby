@@ -27,10 +27,14 @@ module Metronome
         #   @return [Object]
         required :value, Metronome::Unknown
 
-        # @!attribute ending_before
+        # @!attribute [r] ending_before
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :ending_before, Time
+
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :ending_before
 
         # @!parse
         #   # @param rate_card_id [String] ID of the rate card whose named schedule is to be updated

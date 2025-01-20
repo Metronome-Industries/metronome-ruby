@@ -9,10 +9,14 @@ module Metronome
     # }
     # ```
     class InvoiceVoidResponse < Metronome::BaseModel
-      # @!attribute data
+      # @!attribute [r] data
       #
-      #   @return [Metronome::Models::InvoiceVoidResponse::Data]
+      #   @return [Metronome::Models::InvoiceVoidResponse::Data, nil]
       optional :data, -> { Metronome::Models::InvoiceVoidResponse::Data }
+
+      # @!parse
+      #   # @return [Metronome::Models::InvoiceVoidResponse::Data]
+      #   attr_writer :data
 
       # @!parse
       #   # @param data [Metronome::Models::InvoiceVoidResponse::Data]

@@ -42,21 +42,33 @@ module Metronome
       #   @return [Float]
       required :unit_price, Float
 
-      # @!attribute custom_fields
+      # @!attribute [r] custom_fields
       #
-      #   @return [Hash{Symbol=>String}]
+      #   @return [Hash{Symbol=>String}, nil]
       optional :custom_fields, Metronome::HashOf[String]
 
-      # @!attribute description
+      # @!parse
+      #   # @return [Hash{Symbol=>String}]
+      #   attr_writer :custom_fields
+
+      # @!attribute [r] description
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :description, String
 
-      # @!attribute netsuite_sales_order_id
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :description
+
+      # @!attribute [r] netsuite_sales_order_id
       #   This field's availability is dependent on your client's configuration.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :netsuite_sales_order_id, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :netsuite_sales_order_id
 
       # @!parse
       #   # @param id [String]

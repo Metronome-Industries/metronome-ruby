@@ -9,23 +9,35 @@ module Metronome
       #   @return [String]
       required :id, String
 
-      # @!attribute credit_grant_type
+      # @!attribute [r] credit_grant_type
       #   the updated credit grant type
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :credit_grant_type, String
 
-      # @!attribute expires_at
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :credit_grant_type
+
+      # @!attribute [r] expires_at
       #   the updated expiration date for the credit grant
       #
-      #   @return [Time]
+      #   @return [Time, nil]
       optional :expires_at, Time
 
-      # @!attribute name
+      # @!parse
+      #   # @return [Time]
+      #   attr_writer :expires_at
+
+      # @!attribute [r] name
       #   the updated name for the credit grant
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :name, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :name
 
       # @!parse
       #   # @param id [String] the ID of the credit grant

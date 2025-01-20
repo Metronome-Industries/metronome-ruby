@@ -14,7 +14,7 @@ module Metronome
       #   @return [Symbol, Metronome::Models::DashboardGetEmbeddableURLParams::Dashboard]
       required :dashboard, enum: -> { Metronome::Models::DashboardGetEmbeddableURLParams::Dashboard }
 
-      # @!attribute bm_group_key_overrides
+      # @!attribute [r] bm_group_key_overrides
       #   Optional list of billable metric group key overrides
       #
       #   @return [Array<Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>]
@@ -23,19 +23,31 @@ module Metronome
                  Metronome::ArrayOf[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride]
                }
 
-      # @!attribute color_overrides
+      # @!parse
+      #   # @return [Array<Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>]
+      #   attr_writer :bm_group_key_overrides
+
+      # @!attribute [r] color_overrides
       #   Optional list of colors to override
       #
       #   @return [Array<Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride>]
       optional :color_overrides,
                -> { Metronome::ArrayOf[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride] }
 
-      # @!attribute dashboard_options
+      # @!parse
+      #   # @return [Array<Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride>]
+      #   attr_writer :color_overrides
+
+      # @!attribute [r] dashboard_options
       #   Optional dashboard specific options
       #
       #   @return [Array<Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption>]
       optional :dashboard_options,
                -> { Metronome::ArrayOf[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption] }
+
+      # @!parse
+      #   # @return [Array<Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption>]
+      #   attr_writer :dashboard_options
 
       # @!parse
       #   # @param customer_id [String]
@@ -88,17 +100,25 @@ module Metronome
         #   @return [String]
         required :group_key_name, String
 
-        # @!attribute display_name
+        # @!attribute [r] display_name
         #   The display name for the billable metric group key
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :display_name, String
 
-        # @!attribute value_display_names
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :display_name
+
+        # @!attribute [r] value_display_names
         #   <key, value> pairs of the billable metric group key values and their display names. e.g. {"a": "Asia", "b": "Euro"}
         #
-        #   @return [Hash{Symbol=>Object}]
+        #   @return [Hash{Symbol=>Object}, nil]
         optional :value_display_names, Metronome::HashOf[Metronome::Unknown]
+
+        # @!parse
+        #   # @return [Hash{Symbol=>Object}]
+        #   attr_writer :value_display_names
 
         # @!parse
         #   # @param group_key_name [String] The name of the billable metric group key.
@@ -121,17 +141,25 @@ module Metronome
       # }
       # ```
       class ColorOverride < Metronome::BaseModel
-        # @!attribute name
+        # @!attribute [r] name
         #   The color to override
         #
-        #   @return [Symbol, Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride::Name]
+        #   @return [Symbol, Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride::Name, nil]
         optional :name, enum: -> { Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride::Name }
 
-        # @!attribute value
+        # @!parse
+        #   # @return [Symbol, Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride::Name]
+        #   attr_writer :name
+
+        # @!attribute [r] value
         #   Hex value representation of the color
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :value, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :value
 
         # @!parse
         #   # @param name [String] The color to override

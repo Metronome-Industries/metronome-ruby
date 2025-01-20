@@ -3,41 +3,65 @@
 module Metronome
   module Models
     class CustomerListParams < Metronome::BaseModel
-      # @!attribute customer_ids
+      # @!attribute [r] customer_ids
       #   Filter the customer list by customer_id.  Up to 100 ids can be provided.
       #
       #   @return [Array<String>]
       optional :customer_ids, Metronome::ArrayOf[String]
 
-      # @!attribute ingest_alias
+      # @!parse
+      #   # @return [Array<String>]
+      #   attr_writer :customer_ids
+
+      # @!attribute [r] ingest_alias
       #   Filter the customer list by ingest_alias
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :ingest_alias, String
 
-      # @!attribute limit
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :ingest_alias
+
+      # @!attribute [r] limit
       #   Max number of results that should be returned
       #
-      #   @return [Integer]
+      #   @return [Integer, nil]
       optional :limit, Integer
 
-      # @!attribute next_page
+      # @!parse
+      #   # @return [Integer]
+      #   attr_writer :limit
+
+      # @!attribute [r] next_page
       #   Cursor that indicates where the next page of results should start.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :next_page, String
 
-      # @!attribute only_archived
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :next_page
+
+      # @!attribute [r] only_archived
       #   Filter the customer list by only archived customers.
       #
-      #   @return [Boolean]
+      #   @return [Boolean, nil]
       optional :only_archived, Metronome::BooleanModel
 
-      # @!attribute salesforce_account_ids
+      # @!parse
+      #   # @return [Boolean]
+      #   attr_writer :only_archived
+
+      # @!attribute [r] salesforce_account_ids
       #   Filter the customer list by salesforce_account_id.  Up to 100 ids can be provided.
       #
       #   @return [Array<String>]
       optional :salesforce_account_ids, Metronome::ArrayOf[String]
+
+      # @!parse
+      #   # @return [Array<String>]
+      #   attr_writer :salesforce_account_ids
 
       # @!parse
       #   # @param customer_ids [Array<String>] Filter the customer list by customer_id. Up to 100 ids can be provided.
