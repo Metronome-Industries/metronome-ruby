@@ -13,6 +13,14 @@ module Metronome
         #
         #   @return [Time]
         required :breakdown_start_timestamp, Time
+
+        # @!parse
+        #   # @param breakdown_end_timestamp [String]
+        #   # @param breakdown_start_timestamp [String]
+        #   #
+        #   def initialize(breakdown_end_timestamp:, breakdown_start_timestamp:, **) = super
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
       end
     end
   end
