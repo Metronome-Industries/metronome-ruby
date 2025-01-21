@@ -15,10 +15,10 @@ require "uri"
 require "connection_pool"
 
 # Package files.
-require_relative "metronome/base_client"
 require_relative "metronome/base_model"
 require_relative "metronome/errors"
 require_relative "metronome/pooled_net_requester"
+require_relative "metronome/base_client"
 require_relative "metronome/base_page"
 require_relative "metronome/request_options"
 require_relative "metronome/util"
