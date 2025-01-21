@@ -347,8 +347,7 @@ module Metronome
       end
     end
 
-    # Execute the request specified by req + opts. This is the method that all
-    # resource methods call into.
+    # Execute the request specified by req + opts. This is the method that all resource methods call into.
     # Params req & opts are kept separate up until this point so that we can
     # @param req [Hash{Symbol => Object}, Array<Object>]
     # @param opts [Metronome::RequestOptions, Hash{Symbol => Object}]
