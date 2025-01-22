@@ -21,7 +21,9 @@ module Metronome
       required :id, String
 
       # @!attribute balance
-      #   The effective balance of the grant as of the end of the customer's current billing period. Expiration deductions will be included only if the grant expires before the end of the current billing period.
+      #   The effective balance of the grant as of the end of the customer's current
+      #     billing period. Expiration deductions will be included only if the grant expires
+      #     before the end of the current billing period.
       #
       #   @return [Metronome::Models::CreditGrantListResponse::Balance]
       required :balance, -> { Metronome::Models::CreditGrantListResponse::Balance }
@@ -85,13 +87,15 @@ module Metronome
       optional :credit_grant_type, String, nil?: true
 
       # @!attribute invoice_id
-      #   the Metronome ID of the invoice with the purchase charge for this credit grant, if applicable
+      #   the Metronome ID of the invoice with the purchase charge for this credit grant,
+      #     if applicable
       #
       #   @return [String, nil]
       optional :invoice_id, String, nil?: true
 
       # @!attribute [r] products
-      #   The products which these credits will be applied to. (If unspecified, the credits will be applied to charges for all products.)
+      #   The products which these credits will be applied to. (If unspecified, the
+      #     credits will be applied to charges for all products.)
       #
       #   @return [Array<Metronome::Models::CreditGrantListResponse::Product>]
       optional :products, -> { Metronome::ArrayOf[Metronome::Models::CreditGrantListResponse::Product] }
@@ -106,51 +110,31 @@ module Metronome
       optional :reason, String, nil?: true
 
       # @!attribute uniqueness_key
-      #   Prevents the creation of duplicates. If a request to create a record is made with a previously used uniqueness key, a new record will not be created and the request will fail with a 409 error.
+      #   Prevents the creation of duplicates. If a request to create a record is made
+      #     with a previously used uniqueness key, a new record will not be created and the
+      #     request will fail with a 409 error.
       #
       #   @return [String, nil]
       optional :uniqueness_key, String, nil?: true
 
       # @!parse
-      #   # @param id [String] the Metronome ID of the credit grant
-      #   #
-      #   # @param balance [Metronome::Models::CreditGrantListResponse::Balance] The effective balance of the grant as of the end of the customer's current
-      #   #   billing period. Expiration deductions will be included only if the grant expires
-      #   #   before the end of the current billing period.
-      #   #
+      #   # @param id [String]
+      #   # @param balance [Metronome::Models::CreditGrantListResponse::Balance]
       #   # @param custom_fields [Hash{Symbol=>String}]
-      #   #
-      #   # @param customer_id [String] the Metronome ID of the customer
-      #   #
+      #   # @param customer_id [String]
       #   # @param deductions [Array<Metronome::Models::CreditLedgerEntry>]
-      #   #
       #   # @param effective_at [String]
-      #   #
       #   # @param expires_at [String]
-      #   #
-      #   # @param grant_amount [Metronome::Models::CreditGrantListResponse::GrantAmount] the amount of credits initially granted
-      #   #
+      #   # @param grant_amount [Metronome::Models::CreditGrantListResponse::GrantAmount]
       #   # @param name [String]
-      #   #
-      #   # @param paid_amount [Metronome::Models::CreditGrantListResponse::PaidAmount] the amount paid for this credit grant
-      #   #
+      #   # @param paid_amount [Metronome::Models::CreditGrantListResponse::PaidAmount]
       #   # @param pending_deductions [Array<Metronome::Models::CreditLedgerEntry>]
-      #   #
       #   # @param priority [Float]
-      #   #
       #   # @param credit_grant_type [String, nil]
-      #   #
-      #   # @param invoice_id [String, nil] the Metronome ID of the invoice with the purchase charge for this credit grant,
-      #   #   if applicable
-      #   #
-      #   # @param products [Array<Metronome::Models::CreditGrantListResponse::Product>] The products which these credits will be applied to. (If unspecified, the
-      #   #   credits will be applied to charges for all products.)
-      #   #
+      #   # @param invoice_id [String, nil]
+      #   # @param products [Array<Metronome::Models::CreditGrantListResponse::Product>]
       #   # @param reason [String, nil]
-      #   #
-      #   # @param uniqueness_key [String, nil] Prevents the creation of duplicates. If a request to create a record is made
-      #   #   with a previously used uniqueness key, a new record will not be created and the
-      #   #   request will fail with a 409 error.
+      #   # @param uniqueness_key [String, nil]
       #   #
       #   def initialize(
       #     id:,
@@ -193,13 +177,16 @@ module Metronome
         required :effective_at, Time
 
         # @!attribute excluding_pending
-        #   The grant's current balance including all posted deductions. If the grant has expired, this amount will be 0.
+        #   The grant's current balance including all posted deductions. If the grant has
+        #     expired, this amount will be 0.
         #
         #   @return [Float]
         required :excluding_pending, Float
 
         # @!attribute including_pending
-        #   The grant's current balance including all posted and pending deductions. If the grant expires before the end of the customer's current billing period, this amount will be 0.
+        #   The grant's current balance including all posted and pending deductions. If the
+        #     grant expires before the end of the customer's current billing period, this
+        #     amount will be 0.
         #
         #   @return [Float]
         required :including_pending, Float
@@ -209,14 +196,9 @@ module Metronome
         #   #   billing period. Expiration deductions will be included only if the grant expires
         #   #   before the end of the current billing period.
         #   #
-        #   # @param effective_at [String] The end_date of the customer's current billing period.
-        #   #
-        #   # @param excluding_pending [Float] The grant's current balance including all posted deductions. If the grant has
-        #   #   expired, this amount will be 0.
-        #   #
-        #   # @param including_pending [Float] The grant's current balance including all posted and pending deductions. If the
-        #   #   grant expires before the end of the customer's current billing period, this
-        #   #   amount will be 0.
+        #   # @param effective_at [String]
+        #   # @param excluding_pending [Float]
+        #   # @param including_pending [Float]
         #   #
         #   def initialize(effective_at:, excluding_pending:, including_pending:, **) = super
 
@@ -246,8 +228,7 @@ module Metronome
         #   # the amount of credits initially granted
         #   #
         #   # @param amount [Float]
-        #   #
-        #   # @param credit_type [Metronome::Models::CreditTypeData] the credit type for the amount granted
+        #   # @param credit_type [Metronome::Models::CreditTypeData]
         #   #
         #   def initialize(amount:, credit_type:, **) = super
 
@@ -277,8 +258,7 @@ module Metronome
         #   # the amount paid for this credit grant
         #   #
         #   # @param amount [Float]
-        #   #
-        #   # @param credit_type [Metronome::Models::CreditTypeData] the credit type for the amount paid
+        #   # @param credit_type [Metronome::Models::CreditTypeData]
         #   #
         #   def initialize(amount:, credit_type:, **) = super
 

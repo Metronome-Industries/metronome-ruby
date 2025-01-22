@@ -20,7 +20,8 @@ module Metronome
         #   attr_writer :credit_type_id
 
         # @!attribute [r] ending_before
-        #   RFC 3339 timestamp (exclusive). Invoices will only be returned for billing periods that end before this time.
+        #   RFC 3339 timestamp (exclusive). Invoices will only be returned for billing
+        #     periods that end before this time.
         #
         #   @return [Time, nil]
         optional :ending_before, Time
@@ -60,7 +61,8 @@ module Metronome
         #   attr_writer :skip_zero_qty_line_items
 
         # @!attribute [r] sort
-        #   Invoice sort order by issued_at, e.g. date_asc or date_desc.  Defaults to date_asc.
+        #   Invoice sort order by issued_at, e.g. date_asc or date_desc. Defaults to
+        #     date_asc.
         #
         #   @return [Symbol, Metronome::Models::Customers::InvoiceListParams::Sort, nil]
         optional :sort, enum: -> { Metronome::Models::Customers::InvoiceListParams::Sort }
@@ -70,7 +72,8 @@ module Metronome
         #   attr_writer :sort
 
         # @!attribute [r] starting_on
-        #   RFC 3339 timestamp (inclusive). Invoices will only be returned for billing periods that start at or after this time.
+        #   RFC 3339 timestamp (inclusive). Invoices will only be returned for billing
+        #     periods that start at or after this time.
         #
         #   @return [Time, nil]
         optional :starting_on, Time
@@ -91,25 +94,14 @@ module Metronome
 
         # @!parse
         #   # @param customer_id [String]
-        #   #
-        #   # @param credit_type_id [String] Only return invoices for the specified credit type
-        #   #
-        #   # @param ending_before [String] RFC 3339 timestamp (exclusive). Invoices will only be returned for billing
-        #   #   periods that end before this time.
-        #   #
-        #   # @param limit [Integer] Max number of results that should be returned
-        #   #
-        #   # @param next_page [String] Cursor that indicates where the next page of results should start.
-        #   #
-        #   # @param skip_zero_qty_line_items [Boolean] If set, all zero quantity line items will be filtered out of the response
-        #   #
-        #   # @param sort [String] Invoice sort order by issued_at, e.g. date_asc or date_desc. Defaults to
-        #   #   date_asc.
-        #   #
-        #   # @param starting_on [String] RFC 3339 timestamp (inclusive). Invoices will only be returned for billing
-        #   #   periods that start at or after this time.
-        #   #
-        #   # @param status [String] Invoice status, e.g. DRAFT, FINALIZED, or VOID
+        #   # @param credit_type_id [String]
+        #   # @param ending_before [String]
+        #   # @param limit [Integer]
+        #   # @param next_page [String]
+        #   # @param skip_zero_qty_line_items [Boolean]
+        #   # @param sort [String]
+        #   # @param starting_on [String]
+        #   # @param status [String]
         #   #
         #   def initialize(
         #     customer_id:,
@@ -128,7 +120,8 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
-        # Invoice sort order by issued_at, e.g. date_asc or date_desc.  Defaults to date_asc.
+        # Invoice sort order by issued_at, e.g. date_asc or date_desc. Defaults to
+        #   date_asc.
         #
         # @example
         # ```ruby

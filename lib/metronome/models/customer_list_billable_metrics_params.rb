@@ -39,7 +39,8 @@ module Metronome
       #   attr_writer :next_page
 
       # @!attribute [r] on_current_plan
-      #   If true, the list of metrics will be filtered to just ones that are on the customer's current plan
+      #   If true, the list of metrics will be filtered to just ones that are on the
+      #     customer's current plan
       #
       #   @return [Boolean, nil]
       optional :on_current_plan, Metronome::BooleanModel
@@ -50,15 +51,10 @@ module Metronome
 
       # @!parse
       #   # @param customer_id [String]
-      #   #
-      #   # @param include_archived [Boolean] If true, the list of returned metrics will include archived metrics
-      #   #
-      #   # @param limit [Integer] Max number of results that should be returned
-      #   #
-      #   # @param next_page [String] Cursor that indicates where the next page of results should start.
-      #   #
-      #   # @param on_current_plan [Boolean] If true, the list of metrics will be filtered to just ones that are on the
-      #   #   customer's current plan
+      #   # @param include_archived [Boolean]
+      #   # @param limit [Integer]
+      #   # @param next_page [String]
+      #   # @param on_current_plan [Boolean]
       #   #
       #   def initialize(customer_id:, include_archived: nil, limit: nil, next_page: nil, on_current_plan: nil, **) = super
 

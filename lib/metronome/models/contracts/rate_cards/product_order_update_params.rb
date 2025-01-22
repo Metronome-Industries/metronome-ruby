@@ -21,8 +21,7 @@ module Metronome
 
           # @!parse
           #   # @param product_moves [Array<Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove>]
-          #   #
-          #   # @param rate_card_id [String] ID of the rate card to update
+          #   # @param rate_card_id [String]
           #   #
           #   def initialize(product_moves:, rate_card_id:, **) = super
 
@@ -49,9 +48,8 @@ module Metronome
             required :product_id, String
 
             # @!parse
-            #   # @param position [Float] 0-based index of the new position of the product
-            #   #
-            #   # @param product_id [String] ID of the product to move
+            #   # @param position [Float]
+            #   # @param product_id [String]
             #   #
             #   def initialize(position:, product_id:, **) = super
 

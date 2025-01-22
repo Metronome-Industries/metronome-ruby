@@ -39,7 +39,7 @@ module Metronome
         required :id, String
 
         # @!parse
-        #   # @param id [String] The new invoice id
+        #   # @param id [String]
         #   #
         #   def initialize(id:, **) = super
 

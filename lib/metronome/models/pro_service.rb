@@ -31,13 +31,15 @@ module Metronome
       required :product_id, String
 
       # @!attribute quantity
-      #   Quantity for the charge. Will be multiplied by unit_price to determine the amount.
+      #   Quantity for the charge. Will be multiplied by unit_price to determine the
+      #     amount.
       #
       #   @return [Float]
       required :quantity, Float
 
       # @!attribute unit_price
-      #   Unit price for the charge. Will be multiplied by quantity to determine the amount and must be specified.
+      #   Unit price for the charge. Will be multiplied by quantity to determine the
+      #     amount and must be specified.
       #
       #   @return [Float]
       required :unit_price, Float
@@ -72,22 +74,13 @@ module Metronome
 
       # @!parse
       #   # @param id [String]
-      #   #
-      #   # @param max_amount [Float] Maximum amount for the term.
-      #   #
+      #   # @param max_amount [Float]
       #   # @param product_id [String]
-      #   #
-      #   # @param quantity [Float] Quantity for the charge. Will be multiplied by unit_price to determine the
-      #   #   amount.
-      #   #
-      #   # @param unit_price [Float] Unit price for the charge. Will be multiplied by quantity to determine the
-      #   #   amount and must be specified.
-      #   #
+      #   # @param quantity [Float]
+      #   # @param unit_price [Float]
       #   # @param custom_fields [Hash{Symbol=>String}]
-      #   #
       #   # @param description [String]
-      #   #
-      #   # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
+      #   # @param netsuite_sales_order_id [String]
       #   #
       #   def initialize(
       #     id:,

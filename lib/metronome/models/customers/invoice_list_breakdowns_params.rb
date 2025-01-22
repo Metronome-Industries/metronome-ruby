@@ -10,13 +10,15 @@ module Metronome
         required :customer_id, String
 
         # @!attribute ending_before
-        #   RFC 3339 timestamp. Breakdowns will only be returned for time windows that end on or before this time.
+        #   RFC 3339 timestamp. Breakdowns will only be returned for time windows that end
+        #     on or before this time.
         #
         #   @return [Time]
         required :ending_before, Time
 
         # @!attribute starting_on
-        #   RFC 3339 timestamp. Breakdowns will only be returned for time windows that start on or after this time.
+        #   RFC 3339 timestamp. Breakdowns will only be returned for time windows that start
+        #     on or after this time.
         #
         #   @return [Time]
         required :starting_on, Time
@@ -32,7 +34,10 @@ module Metronome
         #   attr_writer :credit_type_id
 
         # @!attribute [r] limit
-        #   Max number of results that should be returned. For daily breakdowns, the response can return up to 35 days worth of breakdowns. For hourly breakdowns, the response can return up to 24 hours. If there are more results, a cursor to the next page is returned.
+        #   Max number of results that should be returned. For daily breakdowns, the
+        #     response can return up to 35 days worth of breakdowns. For hourly breakdowns,
+        #     the response can return up to 24 hours. If there are more results, a cursor to
+        #     the next page is returned.
         #
         #   @return [Integer, nil]
         optional :limit, Integer
@@ -62,7 +67,8 @@ module Metronome
         #   attr_writer :skip_zero_qty_line_items
 
         # @!attribute [r] sort
-        #   Invoice sort order by issued_at, e.g. date_asc or date_desc.  Defaults to date_asc.
+        #   Invoice sort order by issued_at, e.g. date_asc or date_desc. Defaults to
+        #     date_asc.
         #
         #   @return [Symbol, Metronome::Models::Customers::InvoiceListBreakdownsParams::Sort, nil]
         optional :sort, enum: -> { Metronome::Models::Customers::InvoiceListBreakdownsParams::Sort }
@@ -96,30 +102,15 @@ module Metronome
 
         # @!parse
         #   # @param customer_id [String]
-        #   #
-        #   # @param ending_before [String] RFC 3339 timestamp. Breakdowns will only be returned for time windows that end
-        #   #   on or before this time.
-        #   #
-        #   # @param starting_on [String] RFC 3339 timestamp. Breakdowns will only be returned for time windows that start
-        #   #   on or after this time.
-        #   #
-        #   # @param credit_type_id [String] Only return invoices for the specified credit type
-        #   #
-        #   # @param limit [Integer] Max number of results that should be returned. For daily breakdowns, the
-        #   #   response can return up to 35 days worth of breakdowns. For hourly breakdowns,
-        #   #   the response can return up to 24 hours. If there are more results, a cursor to
-        #   #   the next page is returned.
-        #   #
-        #   # @param next_page [String] Cursor that indicates where the next page of results should start.
-        #   #
-        #   # @param skip_zero_qty_line_items [Boolean] If set, all zero quantity line items will be filtered out of the response
-        #   #
-        #   # @param sort [String] Invoice sort order by issued_at, e.g. date_asc or date_desc. Defaults to
-        #   #   date_asc.
-        #   #
-        #   # @param status [String] Invoice status, e.g. DRAFT or FINALIZED
-        #   #
-        #   # @param window_size [String] The granularity of the breakdowns to return. Defaults to day.
+        #   # @param ending_before [String]
+        #   # @param starting_on [String]
+        #   # @param credit_type_id [String]
+        #   # @param limit [Integer]
+        #   # @param next_page [String]
+        #   # @param skip_zero_qty_line_items [Boolean]
+        #   # @param sort [String]
+        #   # @param status [String]
+        #   # @param window_size [String]
         #   #
         #   def initialize(
         #     customer_id:,
@@ -139,7 +130,8 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
-        # Invoice sort order by issued_at, e.g. date_asc or date_desc.  Defaults to date_asc.
+        # Invoice sort order by issued_at, e.g. date_asc or date_desc. Defaults to
+        #   date_asc.
         #
         # @example
         # ```ruby

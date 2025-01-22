@@ -16,7 +16,8 @@ module Metronome
                  enum: -> { Metronome::Models::Customers::BillingConfigCreateParams::BillingProviderType }
 
         # @!attribute billing_provider_customer_id
-        #   The customer ID in the billing provider's system. For Azure, this is the subscription ID.
+        #   The customer ID in the billing provider's system. For Azure, this is the
+        #     subscription ID.
         #
         #   @return [String]
         required :billing_provider_customer_id, String
@@ -51,16 +52,10 @@ module Metronome
 
         # @!parse
         #   # @param customer_id [String]
-        #   #
         #   # @param billing_provider_type [String]
-        #   #
-        #   # @param billing_provider_customer_id [String] The customer ID in the billing provider's system. For Azure, this is the
-        #   #   subscription ID.
-        #   #
+        #   # @param billing_provider_customer_id [String]
         #   # @param aws_product_code [String]
-        #   #
         #   # @param aws_region [String]
-        #   #
         #   # @param stripe_collection_method [String]
         #   #
         #   def initialize(

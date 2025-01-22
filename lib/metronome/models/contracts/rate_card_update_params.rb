@@ -11,7 +11,9 @@ module Metronome
         required :rate_card_id, String
 
         # @!attribute [r] aliases
-        #   Reference this alias when creating a contract. If the same alias is assigned to multiple rate cards, it will reference the rate card to which it was most recently assigned. It is not exposed to end customers.
+        #   Reference this alias when creating a contract. If the same alias is assigned to
+        #     multiple rate cards, it will reference the rate card to which it was most
+        #     recently assigned. It is not exposed to end customers.
         #
         #   @return [Array<Metronome::Models::Contracts::RateCardUpdateParams::Alias>]
         optional :aliases,
@@ -43,15 +45,10 @@ module Metronome
         #   attr_writer :name
 
         # @!parse
-        #   # @param rate_card_id [String] ID of the rate card to update
-        #   #
-        #   # @param aliases [Array<Metronome::Models::Contracts::RateCardUpdateParams::Alias>] Reference this alias when creating a contract. If the same alias is assigned to
-        #   #   multiple rate cards, it will reference the rate card to which it was most
-        #   #   recently assigned. It is not exposed to end customers.
-        #   #
+        #   # @param rate_card_id [String]
+        #   # @param aliases [Array<Metronome::Models::Contracts::RateCardUpdateParams::Alias>]
         #   # @param description [String]
-        #   #
-        #   # @param name [String] Used only in UI/API. It is not exposed to end customers.
+        #   # @param name [String]
         #   #
         #   def initialize(rate_card_id:, aliases: nil, description: nil, name: nil, **) = super
 

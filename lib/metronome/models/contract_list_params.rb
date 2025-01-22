@@ -9,7 +9,9 @@ module Metronome
       required :customer_id, String
 
       # @!attribute [r] covering_date
-      #   Optional RFC 3339 timestamp. If provided, the response will include only contracts effective on the provided date.  This cannot be provided if the starting_at filter is provided.
+      #   Optional RFC 3339 timestamp. If provided, the response will include only
+      #     contracts effective on the provided date. This cannot be provided if the
+      #     starting_at filter is provided.
       #
       #   @return [Time, nil]
       optional :covering_date, Time
@@ -29,7 +31,8 @@ module Metronome
       #   attr_writer :include_archived
 
       # @!attribute [r] include_balance
-      #   Include the balance of credits and commits in the response. Setting this flag may cause the query to be slower.
+      #   Include the balance of credits and commits in the response. Setting this flag
+      #     may cause the query to be slower.
       #
       #   @return [Boolean, nil]
       optional :include_balance, Metronome::BooleanModel
@@ -39,7 +42,8 @@ module Metronome
       #   attr_writer :include_balance
 
       # @!attribute [r] include_ledgers
-      #   Include commit ledgers in the response. Setting this flag may cause the query to be slower.
+      #   Include commit ledgers in the response. Setting this flag may cause the query to
+      #     be slower.
       #
       #   @return [Boolean, nil]
       optional :include_ledgers, Metronome::BooleanModel
@@ -49,7 +53,9 @@ module Metronome
       #   attr_writer :include_ledgers
 
       # @!attribute [r] starting_at
-      #   Optional RFC 3339 timestamp. If provided, the response will include only contracts where effective_at is on or after the provided date.  This cannot be provided if the covering_date filter is provided.
+      #   Optional RFC 3339 timestamp. If provided, the response will include only
+      #     contracts where effective_at is on or after the provided date. This cannot be
+      #     provided if the covering_date filter is provided.
       #
       #   @return [Time, nil]
       optional :starting_at, Time
@@ -60,22 +66,11 @@ module Metronome
 
       # @!parse
       #   # @param customer_id [String]
-      #   #
-      #   # @param covering_date [String] Optional RFC 3339 timestamp. If provided, the response will include only
-      #   #   contracts effective on the provided date. This cannot be provided if the
-      #   #   starting_at filter is provided.
-      #   #
-      #   # @param include_archived [Boolean] Include archived contracts in the response
-      #   #
-      #   # @param include_balance [Boolean] Include the balance of credits and commits in the response. Setting this flag
-      #   #   may cause the query to be slower.
-      #   #
-      #   # @param include_ledgers [Boolean] Include commit ledgers in the response. Setting this flag may cause the query to
-      #   #   be slower.
-      #   #
-      #   # @param starting_at [String] Optional RFC 3339 timestamp. If provided, the response will include only
-      #   #   contracts where effective_at is on or after the provided date. This cannot be
-      #   #   provided if the covering_date filter is provided.
+      #   # @param covering_date [String]
+      #   # @param include_archived [Boolean]
+      #   # @param include_balance [Boolean]
+      #   # @param include_ledgers [Boolean]
+      #   # @param starting_at [String]
       #   #
       #   def initialize(
       #     customer_id:,

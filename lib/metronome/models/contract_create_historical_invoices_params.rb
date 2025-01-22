@@ -108,23 +108,14 @@ module Metronome
 
         # @!parse
         #   # @param contract_id [String]
-        #   #
         #   # @param credit_type_id [String]
-        #   #
         #   # @param customer_id [String]
-        #   #
         #   # @param exclusive_end_date [String]
-        #   #
         #   # @param inclusive_start_date [String]
-        #   #
         #   # @param issue_date [String]
-        #   #
         #   # @param usage_line_items [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem>]
-        #   #
-        #   # @param billable_status [String] This field's availability is dependent on your client's configuration.
-        #   #
+        #   # @param billable_status [String]
         #   # @param breakdown_granularity [String]
-        #   #
         #   # @param custom_fields [Hash{Symbol=>String}]
         #   #
         #   def initialize(

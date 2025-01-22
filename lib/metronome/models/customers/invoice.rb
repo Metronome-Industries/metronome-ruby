@@ -97,7 +97,8 @@ module Metronome
         #   attr_writer :correction_record
 
         # @!attribute [r] created_at
-        #   When the invoice was created (UTC). This field is present for correction invoices only.
+        #   When the invoice was created (UTC). This field is present for correction
+        #     invoices only.
         #
         #   @return [Time, nil]
         optional :created_at, Time
@@ -246,60 +247,32 @@ module Metronome
 
         # @!parse
         #   # @param id [String]
-        #   #
         #   # @param credit_type [Metronome::Models::CreditTypeData]
-        #   #
         #   # @param customer_id [String]
-        #   #
         #   # @param line_items [Array<Metronome::Models::Customers::Invoice::LineItem>]
-        #   #
         #   # @param status [String]
-        #   #
         #   # @param total [Float]
-        #   #
         #   # @param type [String]
-        #   #
         #   # @param amendment_id [String]
-        #   #
-        #   # @param billable_status [String] This field's availability is dependent on your client's configuration.
-        #   #
+        #   # @param billable_status [String]
         #   # @param contract_custom_fields [Hash{Symbol=>String}]
-        #   #
         #   # @param contract_id [String]
-        #   #
         #   # @param correction_record [Metronome::Models::Customers::Invoice::CorrectionRecord]
-        #   #
-        #   # @param created_at [String] When the invoice was created (UTC). This field is present for correction
-        #   #   invoices only.
-        #   #
+        #   # @param created_at [String]
         #   # @param custom_fields [Hash{Symbol=>Object}]
-        #   #
         #   # @param customer_custom_fields [Hash{Symbol=>String}]
-        #   #
-        #   # @param end_timestamp [String] End of the usage period this invoice covers (UTC)
-        #   #
+        #   # @param end_timestamp [String]
         #   # @param external_invoice [Metronome::Models::Customers::Invoice::ExternalInvoice, nil]
-        #   #
         #   # @param invoice_adjustments [Array<Metronome::Models::Customers::Invoice::InvoiceAdjustment>]
-        #   #
-        #   # @param issued_at [String] When the invoice was issued (UTC)
-        #   #
+        #   # @param issued_at [String]
         #   # @param net_payment_terms_days [Float]
-        #   #
-        #   # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
-        #   #
+        #   # @param netsuite_sales_order_id [String]
         #   # @param plan_custom_fields [Hash{Symbol=>String}]
-        #   #
         #   # @param plan_id [String]
-        #   #
         #   # @param plan_name [String]
-        #   #
-        #   # @param reseller_royalty [Metronome::Models::Customers::Invoice::ResellerRoyalty] only present for beta contract invoices with reseller royalties
-        #   #
-        #   # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
-        #   #
-        #   # @param start_timestamp [String] Beginning of the usage period this invoice covers (UTC)
-        #   #
+        #   # @param reseller_royalty [Metronome::Models::Customers::Invoice::ResellerRoyalty]
+        #   # @param salesforce_opportunity_id [String]
+        #   # @param start_timestamp [String]
         #   # @param subtotal [Float]
         #   #
         #   def initialize(
@@ -397,7 +370,8 @@ module Metronome
           #   attr_writer :commit_id
 
           # @!attribute [r] commit_netsuite_item_id
-          #   only present for beta contract invoices. This field's availability is dependent on your client's configuration.
+          #   only present for beta contract invoices. This field's availability is dependent
+          #     on your client's configuration.
           #
           #   @return [String, nil]
           optional :commit_netsuite_item_id, String
@@ -407,7 +381,8 @@ module Metronome
           #   attr_writer :commit_netsuite_item_id
 
           # @!attribute [r] commit_netsuite_sales_order_id
-          #   only present for beta contract invoices. This field's availability is dependent on your client's configuration.
+          #   only present for beta contract invoices. This field's availability is dependent
+          #     on your client's configuration.
           #
           #   @return [String, nil]
           optional :commit_netsuite_sales_order_id, String
@@ -480,7 +455,9 @@ module Metronome
           #   attr_writer :is_prorated
 
           # @!attribute [r] list_price
-          #   Only present for contract invoices and when the include_list_prices query parameter is set to true. This will include the list rate for the charge if applicable.  Only present for usage and subscription line items.
+          #   Only present for contract invoices and when the include_list_prices query
+          #     parameter is set to true. This will include the list rate for the charge if
+          #     applicable. Only present for usage and subscription line items.
           #
           #   @return [Metronome::Models::Rate, nil]
           optional :list_price, -> { Metronome::Models::Rate }
@@ -519,7 +496,8 @@ module Metronome
           #   attr_writer :netsuite_invoice_billing_start
 
           # @!attribute [r] netsuite_item_id
-          #   only present for beta contract invoices. This field's availability is dependent on your client's configuration.
+          #   only present for beta contract invoices. This field's availability is dependent
+          #     on your client's configuration.
           #
           #   @return [String, nil]
           optional :netsuite_item_id, String
@@ -539,7 +517,8 @@ module Metronome
           #   attr_writer :postpaid_commit
 
           # @!attribute [r] presentation_group_values
-          #   if presentation groups are used, this will contain the values used to break down the line item
+          #   if presentation groups are used, this will contain the values used to break down
+          #     the line item
           #
           #   @return [Hash{Symbol=>String}, nil]
           optional :presentation_group_values, Metronome::HashOf[String]
@@ -549,7 +528,8 @@ module Metronome
           #   attr_writer :presentation_group_values
 
           # @!attribute [r] pricing_group_values
-          #   if pricing groups are used, this will contain the values used to calculate the price
+          #   if pricing groups are used, this will contain the values used to calculate the
+          #     price
           #
           #   @return [Hash{Symbol=>String}, nil]
           optional :pricing_group_values, Metronome::HashOf[String]
@@ -683,83 +663,41 @@ module Metronome
 
           # @!parse
           #   # @param credit_type [Metronome::Models::CreditTypeData]
-          #   #
           #   # @param name [String]
-          #   #
           #   # @param total [Float]
-          #   #
-          #   # @param applied_commit_or_credit [Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit] only present for beta contract invoices
-          #   #
-          #   # @param commit_custom_fields [Hash{Symbol=>String}] only present for beta contract invoices
-          #   #
-          #   # @param commit_id [String] only present for beta contract invoices
-          #   #
-          #   # @param commit_netsuite_item_id [String] only present for beta contract invoices. This field's availability is dependent
-          #   #   on your client's configuration.
-          #   #
-          #   # @param commit_netsuite_sales_order_id [String] only present for beta contract invoices. This field's availability is dependent
-          #   #   on your client's configuration.
-          #   #
-          #   # @param commit_segment_id [String] only present for beta contract invoices
-          #   #
-          #   # @param commit_type [String] only present for beta contract invoices
-          #   #
+          #   # @param applied_commit_or_credit [Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit]
+          #   # @param commit_custom_fields [Hash{Symbol=>String}]
+          #   # @param commit_id [String]
+          #   # @param commit_netsuite_item_id [String]
+          #   # @param commit_netsuite_sales_order_id [String]
+          #   # @param commit_segment_id [String]
+          #   # @param commit_type [String]
           #   # @param custom_fields [Hash{Symbol=>String}]
-          #   #
-          #   # @param ending_before [String] only present for beta contract invoices
-          #   #
+          #   # @param ending_before [String]
           #   # @param group_key [String]
-          #   #
           #   # @param group_value [String, nil]
-          #   #
-          #   # @param is_prorated [Boolean] only present for beta contract invoices
-          #   #
-          #   # @param list_price [Metronome::Models::Rate] Only present for contract invoices and when the include_list_prices query
-          #   #   parameter is set to true. This will include the list rate for the charge if
-          #   #   applicable. Only present for usage and subscription line items.
-          #   #
+          #   # @param is_prorated [Boolean]
+          #   # @param list_price [Metronome::Models::Rate]
           #   # @param metadata [String]
-          #   #
-          #   # @param netsuite_invoice_billing_end [String] The end date for the billing period on the invoice.
-          #   #
-          #   # @param netsuite_invoice_billing_start [String] The start date for the billing period on the invoice.
-          #   #
-          #   # @param netsuite_item_id [String] only present for beta contract invoices. This field's availability is dependent
-          #   #   on your client's configuration.
-          #   #
-          #   # @param postpaid_commit [Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit] only present for beta contract invoices
-          #   #
-          #   # @param presentation_group_values [Hash{Symbol=>String}, nil] if presentation groups are used, this will contain the values used to break down
-          #   #   the line item
-          #   #
-          #   # @param pricing_group_values [Hash{Symbol=>String}] if pricing groups are used, this will contain the values used to calculate the
-          #   #   price
-          #   #
+          #   # @param netsuite_invoice_billing_end [String]
+          #   # @param netsuite_invoice_billing_start [String]
+          #   # @param netsuite_item_id [String]
+          #   # @param postpaid_commit [Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit]
+          #   # @param presentation_group_values [Hash{Symbol=>String}, nil]
+          #   # @param pricing_group_values [Hash{Symbol=>String}]
           #   # @param product_custom_fields [Hash{Symbol=>String}]
-          #   #
           #   # @param product_id [String]
-          #   #
           #   # @param product_type [String]
-          #   #
-          #   # @param professional_service_custom_fields [Hash{Symbol=>String}] only present for beta contract invoices
-          #   #
-          #   # @param professional_service_id [String] only present for beta contract invoices
-          #   #
+          #   # @param professional_service_custom_fields [Hash{Symbol=>String}]
+          #   # @param professional_service_id [String]
           #   # @param quantity [Float]
-          #   #
           #   # @param reseller_type [String]
-          #   #
           #   # @param scheduled_charge_custom_fields [Hash{Symbol=>String}]
-          #   #
-          #   # @param scheduled_charge_id [String] only present for beta contract invoices
-          #   #
-          #   # @param starting_at [String] only present for beta contract invoices
-          #   #
+          #   # @param scheduled_charge_id [String]
+          #   # @param starting_at [String]
           #   # @param sub_line_items [Array<Metronome::Models::Customers::Invoice::LineItem::SubLineItem>]
-          #   #
           #   # @param tier [Metronome::Models::Customers::Invoice::LineItem::Tier]
-          #   #
-          #   # @param unit_price [Float] only present for beta contract invoices
+          #   # @param unit_price [Float]
           #   #
           #   def initialize(
           #     credit_type:,
@@ -809,7 +747,7 @@ module Metronome
           # ```ruby
           # applied_commit_or_credit => {
           #   id: String,
-          #   type: enum: Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type
+          #   type: Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type
           # }
           # ```
           class AppliedCommitOrCredit < Metronome::BaseModel
@@ -961,7 +899,8 @@ module Metronome
             #   attr_writer :end_date
 
             # @!attribute [r] price
-            #   the unit price for this charge, present only if the charge is not tiered and the quantity is nonzero
+            #   the unit price for this charge, present only if the charge is not tiered and the
+            #     quantity is nonzero
             #
             #   @return [Float, nil]
             optional :price, Float
@@ -1007,26 +946,15 @@ module Metronome
 
             # @!parse
             #   # @param custom_fields [Hash{Symbol=>String}]
-            #   #
             #   # @param name [String]
-            #   #
             #   # @param quantity [Float]
-            #   #
             #   # @param subtotal [Float]
-            #   #
             #   # @param charge_id [String]
-            #   #
             #   # @param credit_grant_id [String]
-            #   #
-            #   # @param end_date [String] The end date for the charge (for seats charges only).
-            #   #
-            #   # @param price [Float] the unit price for this charge, present only if the charge is not tiered and the
-            #   #   quantity is nonzero
-            #   #
-            #   # @param start_date [String] The start date for the charge (for seats charges only).
-            #   #
-            #   # @param tier_period [Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod] when the current tier started and ends (for tiered charges only)
-            #   #
+            #   # @param end_date [String]
+            #   # @param price [Float]
+            #   # @param start_date [String]
+            #   # @param tier_period [Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod]
             #   # @param tiers [Array<Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier>]
             #   #
             #   def initialize(
@@ -1114,11 +1042,8 @@ module Metronome
 
               # @!parse
               #   # @param price [Float]
-              #   #
               #   # @param quantity [Float]
-              #   #
-              #   # @param starting_at [Float] at what metric amount this tier begins
-              #   #
+              #   # @param starting_at [Float]
               #   # @param subtotal [Float]
               #   #
               #   def initialize(price:, quantity:, starting_at:, subtotal:, **) = super
@@ -1228,8 +1153,8 @@ module Metronome
           # @example
           # ```ruby
           # corrected_external_invoice => {
-          #   billing_provider_type: enum: Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType,
-          #   external_status: enum: Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus,
+          #   billing_provider_type: Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType,
+          #   external_status: Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus,
           #   invoice_id: String,
           #   issued_at_timestamp: Time
           # }
@@ -1351,8 +1276,8 @@ module Metronome
         # @example
         # ```ruby
         # external_invoice => {
-        #   billing_provider_type: enum: Metronome::Models::Customers::Invoice::ExternalInvoice::BillingProviderType,
-        #   external_status: enum: Metronome::Models::Customers::Invoice::ExternalInvoice::ExternalStatus,
+        #   billing_provider_type: Metronome::Models::Customers::Invoice::ExternalInvoice::BillingProviderType,
+        #   external_status: Metronome::Models::Customers::Invoice::ExternalInvoice::ExternalStatus,
         #   invoice_id: String,
         #   issued_at_timestamp: Time
         # }
@@ -1527,7 +1452,7 @@ module Metronome
         # reseller_royalty => {
         #   fraction: String,
         #   netsuite_reseller_id: String,
-        #   reseller_type: enum: Metronome::Models::Customers::Invoice::ResellerRoyalty::ResellerType,
+        #   reseller_type: Metronome::Models::Customers::Invoice::ResellerRoyalty::ResellerType,
         #   aws_options: Metronome::Models::Customers::Invoice::ResellerRoyalty::AwsOptions,
         #   gcp_options: Metronome::Models::Customers::Invoice::ResellerRoyalty::GcpOptions
         # }

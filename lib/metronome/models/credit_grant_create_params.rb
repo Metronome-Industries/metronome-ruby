@@ -58,7 +58,8 @@ module Metronome
       #   attr_writer :custom_fields
 
       # @!attribute [r] effective_at
-      #   The credit grant will only apply to usage or charges dated on or after this timestamp
+      #   The credit grant will only apply to usage or charges dated on or after this
+      #     timestamp
       #
       #   @return [Time, nil]
       optional :effective_at, Time
@@ -78,7 +79,10 @@ module Metronome
       #   attr_writer :invoice_date
 
       # @!attribute [r] product_ids
-      #   The product(s) which these credits will be applied to. (If unspecified, the credits will be applied to charges for all products.). The array ordering specified here will be used to determine the order in which credits will be applied to invoice line items
+      #   The product(s) which these credits will be applied to. (If unspecified, the
+      #     credits will be applied to charges for all products.). The array ordering
+      #     specified here will be used to determine the order in which credits will be
+      #     applied to invoice line items
       #
       #   @return [Array<String>]
       optional :product_ids, Metronome::ArrayOf[String]
@@ -97,7 +101,9 @@ module Metronome
       #   attr_writer :reason
 
       # @!attribute [r] rollover_settings
-      #   Configure a rollover for this credit grant so if it expires it rolls over a configured amount to a new credit grant. This feature is currently opt-in only. Contact Metronome to be added to the beta.
+      #   Configure a rollover for this credit grant so if it expires it rolls over a
+      #     configured amount to a new credit grant. This feature is currently opt-in only.
+      #     Contact Metronome to be added to the beta.
       #
       #   @return [Metronome::Models::CreditGrantCreateParams::RolloverSettings, nil]
       optional :rollover_settings, -> { Metronome::Models::CreditGrantCreateParams::RolloverSettings }
@@ -107,7 +113,9 @@ module Metronome
       #   attr_writer :rollover_settings
 
       # @!attribute [r] uniqueness_key
-      #   Prevents the creation of duplicates. If a request to create a record is made with a previously used uniqueness key, a new record will not be created and the request will fail with a 409 error.
+      #   Prevents the creation of duplicates. If a request to create a record is made
+      #     with a previously used uniqueness key, a new record will not be created and the
+      #     request will fail with a 409 error.
       #
       #   @return [String, nil]
       optional :uniqueness_key, String
@@ -117,41 +125,20 @@ module Metronome
       #   attr_writer :uniqueness_key
 
       # @!parse
-      #   # @param customer_id [String] the Metronome ID of the customer
-      #   #
-      #   # @param expires_at [String] The credit grant will only apply to usage or charges dated before this timestamp
-      #   #
-      #   # @param grant_amount [Metronome::Models::CreditGrantCreateParams::GrantAmount] the amount of credits granted
-      #   #
-      #   # @param name [String] the name of the credit grant as it will appear on invoices
-      #   #
-      #   # @param paid_amount [Metronome::Models::CreditGrantCreateParams::PaidAmount] the amount paid for this credit grant
-      #   #
+      #   # @param customer_id [String]
+      #   # @param expires_at [String]
+      #   # @param grant_amount [Metronome::Models::CreditGrantCreateParams::GrantAmount]
+      #   # @param name [String]
+      #   # @param paid_amount [Metronome::Models::CreditGrantCreateParams::PaidAmount]
       #   # @param priority [Float]
-      #   #
       #   # @param credit_grant_type [String]
-      #   #
-      #   # @param custom_fields [Hash{Symbol=>String}] Custom fields to attach to the credit grant.
-      #   #
-      #   # @param effective_at [String] The credit grant will only apply to usage or charges dated on or after this
-      #   #   timestamp
-      #   #
-      #   # @param invoice_date [String] The date to issue an invoice for the paid_amount.
-      #   #
-      #   # @param product_ids [Array<String>] The product(s) which these credits will be applied to. (If unspecified, the
-      #   #   credits will be applied to charges for all products.). The array ordering
-      #   #   specified here will be used to determine the order in which credits will be
-      #   #   applied to invoice line items
-      #   #
+      #   # @param custom_fields [Hash{Symbol=>String}]
+      #   # @param effective_at [String]
+      #   # @param invoice_date [String]
+      #   # @param product_ids [Array<String>]
       #   # @param reason [String]
-      #   #
-      #   # @param rollover_settings [Metronome::Models::CreditGrantCreateParams::RolloverSettings] Configure a rollover for this credit grant so if it expires it rolls over a
-      #   #   configured amount to a new credit grant. This feature is currently opt-in only.
-      #   #   Contact Metronome to be added to the beta.
-      #   #
-      #   # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made
-      #   #   with a previously used uniqueness key, a new record will not be created and the
-      #   #   request will fail with a 409 error.
+      #   # @param rollover_settings [Metronome::Models::CreditGrantCreateParams::RolloverSettings]
+      #   # @param uniqueness_key [String]
       #   #
       #   def initialize(
       #     customer_id:,
@@ -198,8 +185,7 @@ module Metronome
         #   # the amount of credits granted
         #   #
         #   # @param amount [Float]
-        #   #
-        #   # @param credit_type_id [String] the ID of the pricing unit to be used. Defaults to USD (cents) if not passed.
+        #   # @param credit_type_id [String]
         #   #
         #   def initialize(amount:, credit_type_id:, **) = super
 
@@ -229,8 +215,7 @@ module Metronome
         #   # the amount paid for this credit grant
         #   #
         #   # @param amount [Float]
-        #   #
-        #   # @param credit_type_id [String] the ID of the pricing unit to be used. Defaults to USD (cents) if not passed.
+        #   # @param credit_type_id [String]
         #   #
         #   def initialize(amount:, credit_type_id:, **) = super
 
@@ -242,7 +227,7 @@ module Metronome
       # rollover_settings => {
       #   expires_at: Time,
       #   priority: Float,
-      #   rollover_amount: union: Metronome::Models::CreditGrantCreateParams::RolloverSettings::RolloverAmount
+      #   rollover_amount: Metronome::Models::CreditGrantCreateParams::RolloverSettings::RolloverAmount
       # }
       # ```
       class RolloverSettings < Metronome::BaseModel
@@ -253,7 +238,8 @@ module Metronome
         required :expires_at, Time
 
         # @!attribute priority
-        #   The priority to give the rollover credit grant that gets created when a rollover happens.
+        #   The priority to give the rollover credit grant that gets created when a rollover
+        #     happens.
         #
         #   @return [Float]
         required :priority, Float
@@ -270,12 +256,9 @@ module Metronome
         #   #   configured amount to a new credit grant. This feature is currently opt-in only.
         #   #   Contact Metronome to be added to the beta.
         #   #
-        #   # @param expires_at [String] The date to expire the rollover credits.
-        #   #
-        #   # @param priority [Float] The priority to give the rollover credit grant that gets created when a rollover
-        #   #   happens.
-        #   #
-        #   # @param rollover_amount [Metronome::Models::RolloverAmountMaxPercentage, Metronome::Models::RolloverAmountMaxAmount] Specify how much to rollover to the rollover credit grant
+        #   # @param expires_at [String]
+        #   # @param priority [Float]
+        #   # @param rollover_amount [Metronome::Models::RolloverAmountMaxPercentage, Metronome::Models::RolloverAmountMaxAmount]
         #   #
         #   def initialize(expires_at:, priority:, rollover_amount:, **) = super
 

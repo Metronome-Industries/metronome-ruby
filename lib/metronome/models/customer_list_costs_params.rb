@@ -42,14 +42,10 @@ module Metronome
 
       # @!parse
       #   # @param customer_id [String]
-      #   #
-      #   # @param ending_before [String] RFC 3339 timestamp (exclusive)
-      #   #
-      #   # @param starting_on [String] RFC 3339 timestamp (inclusive)
-      #   #
-      #   # @param limit [Integer] Max number of results that should be returned
-      #   #
-      #   # @param next_page [String] Cursor that indicates where the next page of results should start.
+      #   # @param ending_before [String]
+      #   # @param starting_on [String]
+      #   # @param limit [Integer]
+      #   # @param next_page [String]
       #   #
       #   def initialize(customer_id:, ending_before:, starting_on:, limit: nil, next_page: nil, **) = super
 

@@ -51,14 +51,10 @@ module Metronome
 
       # @!parse
       #   # @param customer_id [String]
-      #   #
-      #   # @param dashboard [String] The type of dashboard to retrieve.
-      #   #
-      #   # @param bm_group_key_overrides [Array<Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>] Optional list of billable metric group key overrides
-      #   #
-      #   # @param color_overrides [Array<Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride>] Optional list of colors to override
-      #   #
-      #   # @param dashboard_options [Array<Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption>] Optional dashboard specific options
+      #   # @param dashboard [String]
+      #   # @param bm_group_key_overrides [Array<Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>]
+      #   # @param color_overrides [Array<Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride>]
+      #   # @param dashboard_options [Array<Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption>]
       #   #
       #   def initialize(customer_id:, dashboard:, bm_group_key_overrides: nil, color_overrides: nil, dashboard_options: nil, **) = super
 
@@ -111,7 +107,8 @@ module Metronome
         #   attr_writer :display_name
 
         # @!attribute [r] value_display_names
-        #   <key, value> pairs of the billable metric group key values and their display names. e.g. {"a": "Asia", "b": "Euro"}
+        #   <key, value> pairs of the billable metric group key values and their display
+        #     names. e.g. {"a": "Asia", "b": "Euro"}
         #
         #   @return [Hash{Symbol=>Object}, nil]
         optional :value_display_names, Metronome::HashOf[Metronome::Unknown]
@@ -121,12 +118,9 @@ module Metronome
         #   attr_writer :value_display_names
 
         # @!parse
-        #   # @param group_key_name [String] The name of the billable metric group key.
-        #   #
-        #   # @param display_name [String] The display name for the billable metric group key
-        #   #
-        #   # @param value_display_names [Hash{Symbol=>Object}] <key, value> pairs of the billable metric group key values and their display
-        #   #   names. e.g. {"a": "Asia", "b": "Euro"}
+        #   # @param group_key_name [String]
+        #   # @param display_name [String]
+        #   # @param value_display_names [Hash{Symbol=>Object}]
         #   #
         #   def initialize(group_key_name:, display_name: nil, value_display_names: nil, **) = super
 
@@ -136,7 +130,7 @@ module Metronome
       # @example
       # ```ruby
       # color_override => {
-      #   name: enum: Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride::Name,
+      #   name: Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride::Name,
       #   value: String
       # }
       # ```
@@ -162,9 +156,8 @@ module Metronome
         #   attr_writer :value
 
         # @!parse
-        #   # @param name [String] The color to override
-        #   #
-        #   # @param value [String] Hex value representation of the color
+        #   # @param name [String]
+        #   # @param value [String]
         #   #
         #   def initialize(name: nil, value: nil, **) = super
 
@@ -235,9 +228,8 @@ module Metronome
         required :value, String
 
         # @!parse
-        #   # @param key [String] The option key name
-        #   #
-        #   # @param value [String] The option value
+        #   # @param key [String]
+        #   # @param value [String]
         #   #
         #   def initialize(key:, value:, **) = super
 

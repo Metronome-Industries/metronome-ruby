@@ -59,16 +59,11 @@ module Metronome
 
       # @!parse
       #   # @param id [String]
-      #   #
       #   # @param product [Metronome::Models::ScheduledCharge::Product]
-      #   #
       #   # @param schedule [Metronome::Models::SchedulePointInTime]
-      #   #
       #   # @param custom_fields [Hash{Symbol=>String}]
-      #   #
-      #   # @param name [String] displayed on invoices
-      #   #
-      #   # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
+      #   # @param name [String]
+      #   # @param netsuite_sales_order_id [String]
       #   #
       #   def initialize(id:, product:, schedule:, custom_fields: nil, name: nil, netsuite_sales_order_id: nil, **) = super
 

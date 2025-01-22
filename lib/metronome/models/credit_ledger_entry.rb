@@ -42,34 +42,28 @@ module Metronome
       required :reason, String
 
       # @!attribute running_balance
-      #   the running balance for this credit type at the time of the ledger entry, including all preceding charges
+      #   the running balance for this credit type at the time of the ledger entry,
+      #     including all preceding charges
       #
       #   @return [Float]
       required :running_balance, Float
 
       # @!attribute invoice_id
-      #   if this entry is a deduction, the Metronome ID of the invoice where the credit deduction was consumed; if this entry is a grant, the Metronome ID of the invoice where the grant's paid_amount was charged
+      #   if this entry is a deduction, the Metronome ID of the invoice where the credit
+      #     deduction was consumed; if this entry is a grant, the Metronome ID of the
+      #     invoice where the grant's paid_amount was charged
       #
       #   @return [String, nil]
       optional :invoice_id, String, nil?: true
 
       # @!parse
-      #   # @param amount [Float] an amount representing the change to the customer's credit balance
-      #   #
+      #   # @param amount [Float]
       #   # @param created_by [String]
-      #   #
-      #   # @param credit_grant_id [String] the credit grant this entry is related to
-      #   #
+      #   # @param credit_grant_id [String]
       #   # @param effective_at [String]
-      #   #
       #   # @param reason [String]
-      #   #
-      #   # @param running_balance [Float] the running balance for this credit type at the time of the ledger entry,
-      #   #   including all preceding charges
-      #   #
-      #   # @param invoice_id [String, nil] if this entry is a deduction, the Metronome ID of the invoice where the credit
-      #   #   deduction was consumed; if this entry is a grant, the Metronome ID of the
-      #   #   invoice where the grant's paid_amount was charged
+      #   # @param running_balance [Float]
+      #   # @param invoice_id [String, nil]
       #   #
       #   def initialize(amount:, created_by:, credit_grant_id:, effective_at:, reason:, running_balance:, invoice_id: nil, **) = super
 

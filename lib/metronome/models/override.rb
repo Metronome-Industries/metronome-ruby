@@ -70,7 +70,8 @@ module Metronome
       #   attr_writer :is_commit_specific
 
       # @!attribute [r] is_prorated
-      #   Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be set to true.
+      #   Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
+      #     set to true.
       #
       #   @return [Boolean, nil]
       optional :is_prorated, Metronome::BooleanModel
@@ -116,7 +117,8 @@ module Metronome
       #   attr_writer :overwrite_rate
 
       # @!attribute [r] price
-      #   Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
+      #   Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
+      #     this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
       #
       #   @return [Float, nil]
       optional :price, Float
@@ -191,7 +193,8 @@ module Metronome
       #   attr_writer :type
 
       # @!attribute [r] value
-      #   Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.
+      #   Only set for CUSTOM rate_type. This field is interpreted by custom rate
+      #     processors.
       #
       #   @return [Hash{Symbol=>Object}, nil]
       optional :value, Metronome::HashOf[Metronome::Unknown]
@@ -202,49 +205,26 @@ module Metronome
 
       # @!parse
       #   # @param id [String]
-      #   #
       #   # @param starting_at [String]
-      #   #
       #   # @param applicable_product_tags [Array<String>]
-      #   #
       #   # @param credit_type [Metronome::Models::CreditTypeData]
-      #   #
       #   # @param ending_before [String]
-      #   #
       #   # @param entitled [Boolean]
-      #   #
       #   # @param is_commit_specific [Boolean]
-      #   #
-      #   # @param is_prorated [Boolean] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
-      #   #   set to true.
-      #   #
+      #   # @param is_prorated [Boolean]
       #   # @param multiplier [Float]
-      #   #
       #   # @param override_specifiers [Array<Metronome::Models::Override::OverrideSpecifier>]
-      #   #
       #   # @param override_tiers [Array<Metronome::Models::Override::OverrideTier>]
-      #   #
       #   # @param overwrite_rate [Metronome::Models::Override::OverwriteRate]
-      #   #
-      #   # @param price [Float] Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
-      #   #   this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
-      #   #
+      #   # @param price [Float]
       #   # @param priority [Float]
-      #   #
       #   # @param product [Metronome::Models::Override::Product]
-      #   #
-      #   # @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
-      #   #
+      #   # @param quantity [Float]
       #   # @param rate_type [String]
-      #   #
       #   # @param target [String]
-      #   #
-      #   # @param tiers [Array<Metronome::Models::Tier>] Only set for TIERED rate_type.
-      #   #
+      #   # @param tiers [Array<Metronome::Models::Tier>]
       #   # @param type [String]
-      #   #
-      #   # @param value [Hash{Symbol=>Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate
-      #   #   processors.
+      #   # @param value [Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     id:,
@@ -386,7 +366,7 @@ module Metronome
       # @example
       # ```ruby
       # overwrite_rate => {
-      #   rate_type: enum: Metronome::Models::Override::OverwriteRate::RateType,
+      #   rate_type: Metronome::Models::Override::OverwriteRate::RateType,
       #   credit_type: Metronome::Models::CreditTypeData,
       #   custom_rate: -> { Metronome::HashOf[Metronome::Unknown] === _1 },
       #   is_prorated: Metronome::BooleanModel,
@@ -410,7 +390,8 @@ module Metronome
         #   attr_writer :credit_type
 
         # @!attribute [r] custom_rate
-        #   Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.
+        #   Only set for CUSTOM rate_type. This field is interpreted by custom rate
+        #     processors.
         #
         #   @return [Hash{Symbol=>Object}, nil]
         optional :custom_rate, Metronome::HashOf[Metronome::Unknown]
@@ -420,7 +401,8 @@ module Metronome
         #   attr_writer :custom_rate
 
         # @!attribute [r] is_prorated
-        #   Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be set to true.
+        #   Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
+        #     set to true.
         #
         #   @return [Boolean, nil]
         optional :is_prorated, Metronome::BooleanModel
@@ -430,7 +412,8 @@ module Metronome
         #   attr_writer :is_prorated
 
         # @!attribute [r] price
-        #   Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
+        #   Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
+        #     this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
         #
         #   @return [Float, nil]
         optional :price, Float
@@ -461,21 +444,12 @@ module Metronome
 
         # @!parse
         #   # @param rate_type [String]
-        #   #
         #   # @param credit_type [Metronome::Models::CreditTypeData]
-        #   #
-        #   # @param custom_rate [Hash{Symbol=>Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate
-        #   #   processors.
-        #   #
-        #   # @param is_prorated [Boolean] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
-        #   #   set to true.
-        #   #
-        #   # @param price [Float] Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
-        #   #   this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
-        #   #
-        #   # @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
-        #   #
-        #   # @param tiers [Array<Metronome::Models::Tier>] Only set for TIERED rate_type.
+        #   # @param custom_rate [Hash{Symbol=>Object}]
+        #   # @param is_prorated [Boolean]
+        #   # @param price [Float]
+        #   # @param quantity [Float]
+        #   # @param tiers [Array<Metronome::Models::Tier>]
         #   #
         #   def initialize(
         #     rate_type:,

@@ -5,7 +5,7 @@ module Metronome
     # @example
     # ```ruby
     # rollover_amount_max_percentage => {
-    #   type: enum: Metronome::Models::RolloverAmountMaxPercentage::Type,
+    #   type: Metronome::Models::RolloverAmountMaxPercentage::Type,
     #   value: Float
     # }
     # ```
@@ -23,9 +23,8 @@ module Metronome
       required :value, Float
 
       # @!parse
-      #   # @param type [String] Rollover up to a percentage of the original credit grant amount.
-      #   #
-      #   # @param value [Float] The maximum percentage (0-1) of the original credit grant to rollover.
+      #   # @param type [String]
+      #   # @param value [Float]
       #   #
       #   def initialize(type:, value:, **) = super
 

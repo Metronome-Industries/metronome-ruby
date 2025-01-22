@@ -18,8 +18,7 @@ module Metronome
 
           # @!parse
           #   # @param product_order [Array<String>]
-          #   #
-          #   # @param rate_card_id [String] ID of the rate card to update
+          #   # @param rate_card_id [String]
           #   #
           #   def initialize(product_order:, rate_card_id:, **) = super
 

@@ -44,7 +44,8 @@ module Metronome
       #   attr_writer :contract_id
 
       # @!attribute [r] timestamp
-      #   RFC 3339 timestamp indicating when the manual adjustment takes place. If not provided, it will default to the start of the segment.
+      #   RFC 3339 timestamp indicating when the manual adjustment takes place. If not
+      #     provided, it will default to the start of the segment.
       #
       #   @return [Time, nil]
       optional :timestamp, Time
@@ -54,20 +55,13 @@ module Metronome
       #   attr_writer :timestamp
 
       # @!parse
-      #   # @param id [String] ID of the balance (commit or credit) to update.
-      #   #
-      #   # @param amount [Float] Amount to add to the segment. A negative number will draw down from the balance.
-      #   #
-      #   # @param customer_id [String] ID of the customer whose balance is to be updated.
-      #   #
-      #   # @param reason [String] Reason for the manual adjustment. This will be displayed in the ledger.
-      #   #
-      #   # @param segment_id [String] ID of the segment to update.
-      #   #
-      #   # @param contract_id [String] ID of the contract to update. Leave blank to update a customer level balance.
-      #   #
-      #   # @param timestamp [String] RFC 3339 timestamp indicating when the manual adjustment takes place. If not
-      #   #   provided, it will default to the start of the segment.
+      #   # @param id [String]
+      #   # @param amount [Float]
+      #   # @param customer_id [String]
+      #   # @param reason [String]
+      #   # @param segment_id [String]
+      #   # @param contract_id [String]
+      #   # @param timestamp [String]
       #   #
       #   def initialize(id:, amount:, customer_id:, reason:, segment_id:, contract_id: nil, timestamp: nil, **) = super
 

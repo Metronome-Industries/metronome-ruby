@@ -155,7 +155,11 @@ module Metronome
       #   attr_writer :salesforce_opportunity_id
 
       # @!attribute [r] scheduled_charges_on_usage_invoices
-      #   Determines which scheduled and commit charges to consolidate onto the Contract's usage invoice. The charge's `timestamp` must match the usage invoice's `ending_before` date for consolidation to occur. This field cannot be modified after a Contract has been created. If this field is omitted, charges will appear on a separate invoice from usage charges.
+      #   Determines which scheduled and commit charges to consolidate onto the Contract's
+      #     usage invoice. The charge's `timestamp` must match the usage invoice's
+      #     `ending_before` date for consolidation to occur. This field cannot be modified
+      #     after a Contract has been created. If this field is omitted, charges will appear
+      #     on a separate invoice from usage charges.
       #
       #   @return [Symbol, Metronome::Models::ContractWithoutAmendments::ScheduledChargesOnUsageInvoices, nil]
       optional :scheduled_charges_on_usage_invoices,
@@ -186,49 +190,25 @@ module Metronome
 
       # @!parse
       #   # @param commits [Array<Metronome::Models::Commit>]
-      #   #
       #   # @param created_at [String]
-      #   #
       #   # @param created_by [String]
-      #   #
       #   # @param overrides [Array<Metronome::Models::Override>]
-      #   #
       #   # @param scheduled_charges [Array<Metronome::Models::ScheduledCharge>]
-      #   #
       #   # @param starting_at [String]
-      #   #
       #   # @param transitions [Array<Metronome::Models::ContractWithoutAmendments::Transition>]
-      #   #
       #   # @param usage_statement_schedule [Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule]
-      #   #
       #   # @param credits [Array<Metronome::Models::Credit>]
-      #   #
-      #   # @param discounts [Array<Metronome::Models::Discount>] This field's availability is dependent on your client's configuration.
-      #   #
+      #   # @param discounts [Array<Metronome::Models::Discount>]
       #   # @param ending_before [String]
-      #   #
       #   # @param name [String]
-      #   #
       #   # @param net_payment_terms_days [Float]
-      #   #
-      #   # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
-      #   #
-      #   # @param professional_services [Array<Metronome::Models::ProService>] This field's availability is dependent on your client's configuration.
-      #   #
+      #   # @param netsuite_sales_order_id [String]
+      #   # @param professional_services [Array<Metronome::Models::ProService>]
       #   # @param rate_card_id [String]
-      #   #
-      #   # @param reseller_royalties [Array<Metronome::Models::ContractWithoutAmendments::ResellerRoyalty>] This field's availability is dependent on your client's configuration.
-      #   #
-      #   # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
-      #   #
-      #   # @param scheduled_charges_on_usage_invoices [String] Determines which scheduled and commit charges to consolidate onto the Contract's
-      #   #   usage invoice. The charge's `timestamp` must match the usage invoice's
-      #   #   `ending_before` date for consolidation to occur. This field cannot be modified
-      #   #   after a Contract has been created. If this field is omitted, charges will appear
-      #   #   on a separate invoice from usage charges.
-      #   #
-      #   # @param total_contract_value [Float] This field's availability is dependent on your client's configuration.
-      #   #
+      #   # @param reseller_royalties [Array<Metronome::Models::ContractWithoutAmendments::ResellerRoyalty>]
+      #   # @param salesforce_opportunity_id [String]
+      #   # @param scheduled_charges_on_usage_invoices [String]
+      #   # @param total_contract_value [Float]
       #   # @param usage_filter [Metronome::Models::ContractWithoutAmendments::UsageFilter]
       #   #
       #   def initialize(
@@ -265,7 +245,7 @@ module Metronome
       # transition => {
       #   from_contract_id: String,
       #   to_contract_id: String,
-      #   type: enum: Metronome::Models::ContractWithoutAmendments::Transition::Type
+      #   type: Metronome::Models::ContractWithoutAmendments::Transition::Type
       # }
       # ```
       class Transition < Metronome::BaseModel
@@ -314,7 +294,7 @@ module Metronome
       # ```ruby
       # usage_statement_schedule => {
       #   billing_anchor_date: Time,
-      #   frequency: enum: Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule::Frequency
+      #   frequency: Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule::Frequency
       # }
       # ```
       class UsageStatementSchedule < Metronome::BaseModel
@@ -331,8 +311,7 @@ module Metronome
                  enum: -> { Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule::Frequency }
 
         # @!parse
-        #   # @param billing_anchor_date [String] Contract usage statements follow a selected cadence based on this date.
-        #   #
+        #   # @param billing_anchor_date [String]
         #   # @param frequency [String]
         #   #
         #   def initialize(billing_anchor_date:, frequency:, **) = super
@@ -364,7 +343,7 @@ module Metronome
       # reseller_royalty => {
       #   fraction: Float,
       #   netsuite_reseller_id: String,
-      #   reseller_type: enum: Metronome::Models::ContractWithoutAmendments::ResellerRoyalty::ResellerType,
+      #   reseller_type: Metronome::Models::ContractWithoutAmendments::ResellerRoyalty::ResellerType,
       #   starting_at: Time,
       #   applicable_product_ids: -> { Metronome::ArrayOf[String] === _1 },
       #   **_
@@ -532,7 +511,11 @@ module Metronome
         end
       end
 
-      # Determines which scheduled and commit charges to consolidate onto the Contract's usage invoice. The charge's `timestamp` must match the usage invoice's `ending_before` date for consolidation to occur. This field cannot be modified after a Contract has been created. If this field is omitted, charges will appear on a separate invoice from usage charges.
+      # Determines which scheduled and commit charges to consolidate onto the Contract's
+      #   usage invoice. The charge's `timestamp` must match the usage invoice's
+      #   `ending_before` date for consolidation to occur. This field cannot be modified
+      #   after a Contract has been created. If this field is omitted, charges will appear
+      #   on a separate invoice from usage charges.
       #
       # @example
       # ```ruby

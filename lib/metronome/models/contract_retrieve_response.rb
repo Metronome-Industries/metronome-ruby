@@ -60,7 +60,8 @@ module Metronome
         required :initial, -> { Metronome::Models::ContractWithoutAmendments }
 
         # @!attribute [r] archived_at
-        #   RFC 3339 timestamp indicating when the contract was archived. If not returned, the contract is not archived.
+        #   RFC 3339 timestamp indicating when the contract was archived. If not returned,
+        #     the contract is not archived.
         #
         #   @return [Time, nil]
         optional :archived_at, Time
@@ -90,7 +91,11 @@ module Metronome
         #   attr_writer :customer_billing_provider_configuration
 
         # @!attribute [r] scheduled_charges_on_usage_invoices
-        #   Determines which scheduled and commit charges to consolidate onto the Contract's usage invoice. The charge's `timestamp` must match the usage invoice's `ending_before` date for consolidation to occur. This field cannot be modified after a Contract has been created. If this field is omitted, charges will appear on a separate invoice from usage charges.
+        #   Determines which scheduled and commit charges to consolidate onto the Contract's
+        #     usage invoice. The charge's `timestamp` must match the usage invoice's
+        #     `ending_before` date for consolidation to occur. This field cannot be modified
+        #     after a Contract has been created. If this field is omitted, charges will appear
+        #     on a separate invoice from usage charges.
         #
         #   @return [Symbol, Metronome::Models::ContractRetrieveResponse::Data::ScheduledChargesOnUsageInvoices, nil]
         optional :scheduled_charges_on_usage_invoices,
@@ -103,7 +108,9 @@ module Metronome
         #   attr_writer :scheduled_charges_on_usage_invoices
 
         # @!attribute [r] uniqueness_key
-        #   Prevents the creation of duplicates. If a request to create a record is made with a previously used uniqueness key, a new record will not be created and the request will fail with a 409 error.
+        #   Prevents the creation of duplicates. If a request to create a record is made
+        #     with a previously used uniqueness key, a new record will not be created and the
+        #     request will fail with a 409 error.
         #
         #   @return [String, nil]
         optional :uniqueness_key, String
@@ -114,31 +121,15 @@ module Metronome
 
         # @!parse
         #   # @param id [String]
-        #   #
         #   # @param amendments [Array<Metronome::Models::ContractRetrieveResponse::Data::Amendment>]
-        #   #
         #   # @param current [Metronome::Models::ContractWithoutAmendments]
-        #   #
         #   # @param customer_id [String]
-        #   #
         #   # @param initial [Metronome::Models::ContractWithoutAmendments]
-        #   #
-        #   # @param archived_at [String] RFC 3339 timestamp indicating when the contract was archived. If not returned,
-        #   #   the contract is not archived.
-        #   #
+        #   # @param archived_at [String]
         #   # @param custom_fields [Hash{Symbol=>String}]
-        #   #
-        #   # @param customer_billing_provider_configuration [Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration] The billing provider configuration associated with a contract.
-        #   #
-        #   # @param scheduled_charges_on_usage_invoices [String] Determines which scheduled and commit charges to consolidate onto the Contract's
-        #   #   usage invoice. The charge's `timestamp` must match the usage invoice's
-        #   #   `ending_before` date for consolidation to occur. This field cannot be modified
-        #   #   after a Contract has been created. If this field is omitted, charges will appear
-        #   #   on a separate invoice from usage charges.
-        #   #
-        #   # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made
-        #   #   with a previously used uniqueness key, a new record will not be created and the
-        #   #   request will fail with a 409 error.
+        #   # @param customer_billing_provider_configuration [Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration]
+        #   # @param scheduled_charges_on_usage_invoices [String]
+        #   # @param uniqueness_key [String]
         #   #
         #   def initialize(
         #     id:,
@@ -269,30 +260,18 @@ module Metronome
 
           # @!parse
           #   # @param id [String]
-          #   #
           #   # @param commits [Array<Metronome::Models::Commit>]
-          #   #
           #   # @param created_at [String]
-          #   #
           #   # @param created_by [String]
-          #   #
           #   # @param overrides [Array<Metronome::Models::Override>]
-          #   #
           #   # @param scheduled_charges [Array<Metronome::Models::ScheduledCharge>]
-          #   #
           #   # @param starting_at [String]
-          #   #
           #   # @param credits [Array<Metronome::Models::Credit>]
-          #   #
-          #   # @param discounts [Array<Metronome::Models::Discount>] This field's availability is dependent on your client's configuration.
-          #   #
-          #   # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
-          #   #
-          #   # @param professional_services [Array<Metronome::Models::ProService>] This field's availability is dependent on your client's configuration.
-          #   #
-          #   # @param reseller_royalties [Array<Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty>] This field's availability is dependent on your client's configuration.
-          #   #
-          #   # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
+          #   # @param discounts [Array<Metronome::Models::Discount>]
+          #   # @param netsuite_sales_order_id [String]
+          #   # @param professional_services [Array<Metronome::Models::ProService>]
+          #   # @param reseller_royalties [Array<Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty>]
+          #   # @param salesforce_opportunity_id [String]
           #   #
           #   def initialize(
           #     id:,
@@ -318,7 +297,7 @@ module Metronome
           # @example
           # ```ruby
           # reseller_royalty => {
-          #   reseller_type: enum: Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty::ResellerType,
+          #   reseller_type: Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty::ResellerType,
           #   aws_account_number: String,
           #   aws_offer_id: String,
           #   aws_payer_reference_id: String,
@@ -480,8 +459,8 @@ module Metronome
         # @example
         # ```ruby
         # customer_billing_provider_configuration => {
-        #   billing_provider: enum: Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::BillingProvider,
-        #   delivery_method: enum: Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod
+        #   billing_provider: Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::BillingProvider,
+        #   delivery_method: Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod
         # }
         # ```
         class CustomerBillingProviderConfiguration < Metronome::BaseModel
@@ -564,7 +543,11 @@ module Metronome
           end
         end
 
-        # Determines which scheduled and commit charges to consolidate onto the Contract's usage invoice. The charge's `timestamp` must match the usage invoice's `ending_before` date for consolidation to occur. This field cannot be modified after a Contract has been created. If this field is omitted, charges will appear on a separate invoice from usage charges.
+        # Determines which scheduled and commit charges to consolidate onto the Contract's
+        #   usage invoice. The charge's `timestamp` must match the usage invoice's
+        #   `ending_before` date for consolidation to occur. This field cannot be modified
+        #   after a Contract has been created. If this field is omitted, charges will appear
+        #   on a separate invoice from usage charges.
         #
         # @example
         # ```ruby

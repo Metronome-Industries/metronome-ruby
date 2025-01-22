@@ -14,7 +14,9 @@ module Metronome
       required :starting_on, Time
 
       # @!attribute window_size
-      #   A window_size of "day" or "hour" will return the usage for the specified period segmented into daily or hourly aggregates. A window_size of "none" will return a single usage aggregate for the entirety of the specified period.
+      #   A window_size of "day" or "hour" will return the usage for the specified period
+      #     segmented into daily or hourly aggregates. A window_size of "none" will return a
+      #     single usage aggregate for the entirety of the specified period.
       #
       #   @return [Symbol, Metronome::Models::UsageListParams::WindowSize]
       required :window_size, enum: -> { Metronome::Models::UsageListParams::WindowSize }
@@ -30,7 +32,8 @@ module Metronome
       #   attr_writer :next_page
 
       # @!attribute [r] billable_metrics
-      #   A list of billable metrics to fetch usage for. If absent, all billable metrics will be returned.
+      #   A list of billable metrics to fetch usage for. If absent, all billable metrics
+      #     will be returned.
       #
       #   @return [Array<Metronome::Models::UsageListParams::BillableMetric>]
       optional :billable_metrics,
@@ -43,7 +46,8 @@ module Metronome
       #   attr_writer :billable_metrics
 
       # @!attribute [r] customer_ids
-      #   A list of Metronome customer IDs to fetch usage for. If absent, usage for all customers will be returned.
+      #   A list of Metronome customer IDs to fetch usage for. If absent, usage for all
+      #     customers will be returned.
       #
       #   @return [Array<String>]
       optional :customer_ids, Metronome::ArrayOf[String]
@@ -54,26 +58,19 @@ module Metronome
 
       # @!parse
       #   # @param ending_before [String]
-      #   #
       #   # @param starting_on [String]
-      #   #
-      #   # @param window_size [String] A window_size of "day" or "hour" will return the usage for the specified period
-      #   #   segmented into daily or hourly aggregates. A window_size of "none" will return a
-      #   #   single usage aggregate for the entirety of the specified period.
-      #   #
-      #   # @param next_page [String] Cursor that indicates where the next page of results should start.
-      #   #
-      #   # @param billable_metrics [Array<Metronome::Models::UsageListParams::BillableMetric>] A list of billable metrics to fetch usage for. If absent, all billable metrics
-      #   #   will be returned.
-      #   #
-      #   # @param customer_ids [Array<String>] A list of Metronome customer IDs to fetch usage for. If absent, usage for all
-      #   #   customers will be returned.
+      #   # @param window_size [String]
+      #   # @param next_page [String]
+      #   # @param billable_metrics [Array<Metronome::Models::UsageListParams::BillableMetric>]
+      #   # @param customer_ids [Array<String>]
       #   #
       #   def initialize(ending_before:, starting_on:, window_size:, next_page: nil, billable_metrics: nil, customer_ids: nil, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
-      # A window_size of "day" or "hour" will return the usage for the specified period segmented into daily or hourly aggregates. A window_size of "none" will return a single usage aggregate for the entirety of the specified period.
+      # A window_size of "day" or "hour" will return the usage for the specified period
+      #   segmented into daily or hourly aggregates. A window_size of "none" will return a
+      #   single usage aggregate for the entirety of the specified period.
       #
       # @example
       # ```ruby
@@ -139,7 +136,8 @@ module Metronome
           required :key, String
 
           # @!attribute [r] values
-          #   Values of the group_by key to return in the query. If this field is omitted, all available values will be returned, up to a maximum of 200.
+          #   Values of the group_by key to return in the query. If this field is omitted, all
+          #     available values will be returned, up to a maximum of 200.
           #
           #   @return [Array<String>]
           optional :values, Metronome::ArrayOf[String]
@@ -149,10 +147,8 @@ module Metronome
           #   attr_writer :values
 
           # @!parse
-          #   # @param key [String] The name of the group_by key to use
-          #   #
-          #   # @param values [Array<String>] Values of the group_by key to return in the query. If this field is omitted, all
-          #   #   available values will be returned, up to a maximum of 200.
+          #   # @param key [String]
+          #   # @param values [Array<String>]
           #   #
           #   def initialize(key:, values: nil, **) = super
 

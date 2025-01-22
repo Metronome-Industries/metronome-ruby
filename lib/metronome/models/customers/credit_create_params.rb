@@ -16,7 +16,8 @@ module Metronome
         required :customer_id, String
 
         # @!attribute priority
-        #   If multiple credits or commits are applicable, the one with the lower priority will apply first.
+        #   If multiple credits or commits are applicable, the one with the lower priority
+        #     will apply first.
         #
         #   @return [Float]
         required :priority, Float
@@ -27,7 +28,8 @@ module Metronome
         required :product_id, String
 
         # @!attribute [r] applicable_contract_ids
-        #   Which contract the credit applies to. If not provided, the credit applies to all contracts.
+        #   Which contract the credit applies to. If not provided, the credit applies to all
+        #     contracts.
         #
         #   @return [Array<String>]
         optional :applicable_contract_ids, Metronome::ArrayOf[String]
@@ -37,7 +39,8 @@ module Metronome
         #   attr_writer :applicable_contract_ids
 
         # @!attribute [r] applicable_product_ids
-        #   Which products the credit applies to. If both applicable_product_ids and applicable_product_tags are not provided, the credit applies to all products.
+        #   Which products the credit applies to. If both applicable_product_ids and
+        #     applicable_product_tags are not provided, the credit applies to all products.
         #
         #   @return [Array<String>]
         optional :applicable_product_ids, Metronome::ArrayOf[String]
@@ -47,7 +50,8 @@ module Metronome
         #   attr_writer :applicable_product_ids
 
         # @!attribute [r] applicable_product_tags
-        #   Which tags the credit applies to. If both applicable_product_ids and applicable_product_tags are not provided, the credit applies to all products.
+        #   Which tags the credit applies to. If both applicable_product_ids and
+        #     applicable_product_tags are not provided, the credit applies to all products.
         #
         #   @return [Array<String>]
         optional :applicable_product_tags, Metronome::ArrayOf[String]
@@ -115,7 +119,10 @@ module Metronome
         #   attr_writer :salesforce_opportunity_id
 
         # @!attribute [r] uniqueness_key
-        #   Prevents the creation of duplicates. If a request to create a commit or credit is made with a uniqueness key that was previously used to create a commit or credit, a new record will not be created and the request will fail with a 409 error.
+        #   Prevents the creation of duplicates. If a request to create a commit or credit
+        #     is made with a uniqueness key that was previously used to create a commit or
+        #     credit, a new record will not be created and the request will fail with a 409
+        #     error.
         #
         #   @return [String, nil]
         optional :uniqueness_key, String
@@ -125,40 +132,20 @@ module Metronome
         #   attr_writer :uniqueness_key
 
         # @!parse
-        #   # @param access_schedule [Metronome::Models::Customers::CreditCreateParams::AccessSchedule] Schedule for distributing the credit to the customer.
-        #   #
+        #   # @param access_schedule [Metronome::Models::Customers::CreditCreateParams::AccessSchedule]
         #   # @param customer_id [String]
-        #   #
-        #   # @param priority [Float] If multiple credits or commits are applicable, the one with the lower priority
-        #   #   will apply first.
-        #   #
+        #   # @param priority [Float]
         #   # @param product_id [String]
-        #   #
-        #   # @param applicable_contract_ids [Array<String>] Which contract the credit applies to. If not provided, the credit applies to all
-        #   #   contracts.
-        #   #
-        #   # @param applicable_product_ids [Array<String>] Which products the credit applies to. If both applicable_product_ids and
-        #   #   applicable_product_tags are not provided, the credit applies to all products.
-        #   #
-        #   # @param applicable_product_tags [Array<String>] Which tags the credit applies to. If both applicable_product_ids and
-        #   #   applicable_product_tags are not provided, the credit applies to all products.
-        #   #
+        #   # @param applicable_contract_ids [Array<String>]
+        #   # @param applicable_product_ids [Array<String>]
+        #   # @param applicable_product_tags [Array<String>]
         #   # @param custom_fields [Hash{Symbol=>String}]
-        #   #
-        #   # @param description [String] Used only in UI/API. It is not exposed to end customers.
-        #   #
-        #   # @param name [String] displayed on invoices
-        #   #
-        #   # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
-        #   #
+        #   # @param description [String]
+        #   # @param name [String]
+        #   # @param netsuite_sales_order_id [String]
         #   # @param rate_type [String]
-        #   #
-        #   # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
-        #   #
-        #   # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a commit or credit
-        #   #   is made with a uniqueness key that was previously used to create a commit or
-        #   #   credit, a new record will not be created and the request will fail with a 409
-        #   #   error.
+        #   # @param salesforce_opportunity_id [String]
+        #   # @param uniqueness_key [String]
         #   #
         #   def initialize(
         #     access_schedule:,
@@ -212,8 +199,7 @@ module Metronome
           #   # Schedule for distributing the credit to the customer.
           #   #
           #   # @param schedule_items [Array<Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem>]
-          #   #
-          #   # @param credit_type_id [String] Defaults to USD (cents) if not passed
+          #   # @param credit_type_id [String]
           #   #
           #   def initialize(schedule_items:, credit_type_id: nil, **) = super
 
@@ -247,10 +233,8 @@ module Metronome
 
             # @!parse
             #   # @param amount [Float]
-            #   #
-            #   # @param ending_before [String] RFC 3339 timestamp (exclusive)
-            #   #
-            #   # @param starting_at [String] RFC 3339 timestamp (inclusive)
+            #   # @param ending_before [String]
+            #   # @param starting_at [String]
             #   #
             #   def initialize(amount:, ending_before:, starting_at:, **) = super
 

@@ -6,7 +6,7 @@ module Metronome
     # ```ruby
     # plan_list_charges_response => {
     #   id: String,
-    #   charge_type: enum: Metronome::Models::PlanListChargesResponse::ChargeType,
+    #   charge_type: Metronome::Models::PlanListChargesResponse::ChargeType,
     #   credit_type: Metronome::Models::CreditTypeData,
     #   custom_fields: -> { Metronome::HashOf[String] === _1 },
     #   name: String,
@@ -64,7 +64,8 @@ module Metronome
       #   attr_writer :quantity
 
       # @!attribute [r] start_period
-      #   Used in price ramps.  Indicates how many billing periods pass before the charge applies.
+      #   Used in price ramps. Indicates how many billing periods pass before the charge
+      #     applies.
       #
       #   @return [Float, nil]
       optional :start_period, Float
@@ -74,7 +75,8 @@ module Metronome
       #   attr_writer :start_period
 
       # @!attribute [r] tier_reset_frequency
-      #   Used in pricing tiers.  Indicates how often the tier resets. Default is 1 - the tier count resets every billing period.
+      #   Used in pricing tiers. Indicates how often the tier resets. Default is 1 - the
+      #     tier count resets every billing period.
       #
       #   @return [Float, nil]
       optional :tier_reset_frequency, Float
@@ -95,30 +97,17 @@ module Metronome
 
       # @!parse
       #   # @param id [String]
-      #   #
       #   # @param charge_type [String]
-      #   #
       #   # @param credit_type [Metronome::Models::CreditTypeData]
-      #   #
       #   # @param custom_fields [Hash{Symbol=>String}]
-      #   #
       #   # @param name [String]
-      #   #
       #   # @param prices [Array<Metronome::Models::PlanListChargesResponse::Price>]
-      #   #
       #   # @param product_id [String]
-      #   #
       #   # @param product_name [String]
-      #   #
       #   # @param quantity [Float]
-      #   #
-      #   # @param start_period [Float] Used in price ramps. Indicates how many billing periods pass before the charge
-      #   #   applies.
-      #   #
-      #   # @param tier_reset_frequency [Float] Used in pricing tiers. Indicates how often the tier resets. Default is 1 - the
-      #   #   tier count resets every billing period.
-      #   #
-      #   # @param unit_conversion [Metronome::Models::PlanListChargesResponse::UnitConversion] Specifies how quantities for usage based charges will be converted.
+      #   # @param start_period [Float]
+      #   # @param tier_reset_frequency [Float]
+      #   # @param unit_conversion [Metronome::Models::PlanListChargesResponse::UnitConversion]
       #   #
       #   def initialize(
       #     id:,
@@ -177,7 +166,7 @@ module Metronome
       # ```
       class Price < Metronome::BaseModel
         # @!attribute tier
-        #   Used in pricing tiers.  Indicates at what metric value the price applies.
+        #   Used in pricing tiers. Indicates at what metric value the price applies.
         #
         #   @return [Float]
         required :tier, Float
@@ -215,14 +204,10 @@ module Metronome
         #   attr_writer :quantity
 
         # @!parse
-        #   # @param tier [Float] Used in pricing tiers. Indicates at what metric value the price applies.
-        #   #
+        #   # @param tier [Float]
         #   # @param value [Float]
-        #   #
         #   # @param collection_interval [Float]
-        #   #
         #   # @param collection_schedule [String]
-        #   #
         #   # @param quantity [Float]
         #   #
         #   def initialize(tier:, value:, collection_interval: nil, collection_schedule: nil, quantity: nil, **) = super
@@ -234,7 +219,7 @@ module Metronome
       # ```ruby
       # unit_conversion => {
       #   division_factor: Float,
-      #   rounding_behavior: enum: Metronome::Models::PlanListChargesResponse::UnitConversion::RoundingBehavior
+      #   rounding_behavior: Metronome::Models::PlanListChargesResponse::UnitConversion::RoundingBehavior
       # }
       # ```
       class UnitConversion < Metronome::BaseModel
@@ -245,7 +230,8 @@ module Metronome
         required :division_factor, Float
 
         # @!attribute [r] rounding_behavior
-        #   Whether usage should be rounded down or up to the nearest whole number. If null, quantity will be rounded to 20 decimal places.
+        #   Whether usage should be rounded down or up to the nearest whole number. If null,
+        #     quantity will be rounded to 20 decimal places.
         #
         #   @return [Symbol, Metronome::Models::PlanListChargesResponse::UnitConversion::RoundingBehavior, nil]
         optional :rounding_behavior,
@@ -258,16 +244,15 @@ module Metronome
         # @!parse
         #   # Specifies how quantities for usage based charges will be converted.
         #   #
-        #   # @param division_factor [Float] The conversion factor
-        #   #
-        #   # @param rounding_behavior [String] Whether usage should be rounded down or up to the nearest whole number. If null,
-        #   #   quantity will be rounded to 20 decimal places.
+        #   # @param division_factor [Float]
+        #   # @param rounding_behavior [String]
         #   #
         #   def initialize(division_factor:, rounding_behavior: nil, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
-        # Whether usage should be rounded down or up to the nearest whole number. If null, quantity will be rounded to 20 decimal places.
+        # Whether usage should be rounded down or up to the nearest whole number. If null,
+        #   quantity will be rounded to 20 decimal places.
         #
         # @example
         # ```ruby

@@ -30,10 +30,8 @@ module Metronome
 
       # @!parse
       #   # @param id [String]
-      #   #
-      #   # @param release_uniqueness_key [Boolean] If true, resets the uniqueness key on this grant so it can be re-used
-      #   #
-      #   # @param void_credit_purchase_invoice [Boolean] If true, void the purchase invoice associated with the grant
+      #   # @param release_uniqueness_key [Boolean]
+      #   # @param void_credit_purchase_invoice [Boolean]
       #   #
       #   def initialize(id:, release_uniqueness_key: nil, void_credit_purchase_invoice: nil, **) = super
 

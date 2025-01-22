@@ -96,13 +96,9 @@ module Metronome
 
           # @!parse
           #   # @param credit_type [Metronome::Models::CreditTypeData]
-          #   #
-          #   # @param ending_balance [Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance] the effective balances at the end of the specified time window
-          #   #
+          #   # @param ending_balance [Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance]
           #   # @param entries [Array<Metronome::Models::CreditLedgerEntry>]
-          #   #
           #   # @param pending_entries [Array<Metronome::Models::CreditLedgerEntry>]
-          #   #
           #   # @param starting_balance [Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance]
           #   #
           #   def initialize(credit_type:, ending_balance:, entries:, pending_entries:, starting_balance:, **) = super
@@ -119,19 +115,23 @@ module Metronome
           # ```
           class EndingBalance < Metronome::BaseModel
             # @!attribute effective_at
-            #   the ending_before request parameter (if supplied) or the current billing period's end date
+            #   the ending_before request parameter (if supplied) or the current billing
+            #     period's end date
             #
             #   @return [Time]
             required :effective_at, Time
 
             # @!attribute excluding_pending
-            #   the ending balance, including the balance of all grants that have not expired before the effective_at date and deductions that happened before the effective_at date
+            #   the ending balance, including the balance of all grants that have not expired
+            #     before the effective_at date and deductions that happened before the
+            #     effective_at date
             #
             #   @return [Float]
             required :excluding_pending, Float
 
             # @!attribute including_pending
-            #   the excluding_pending balance plus any pending invoice deductions and expirations that will happen by the effective_at date
+            #   the excluding_pending balance plus any pending invoice deductions and
+            #     expirations that will happen by the effective_at date
             #
             #   @return [Float]
             required :including_pending, Float
@@ -139,15 +139,9 @@ module Metronome
             # @!parse
             #   # the effective balances at the end of the specified time window
             #   #
-            #   # @param effective_at [String] the ending_before request parameter (if supplied) or the current billing
-            #   #   period's end date
-            #   #
-            #   # @param excluding_pending [Float] the ending balance, including the balance of all grants that have not expired
-            #   #   before the effective_at date and deductions that happened before the
-            #   #   effective_at date
-            #   #
-            #   # @param including_pending [Float] the excluding_pending balance plus any pending invoice deductions and
-            #   #   expirations that will happen by the effective_at date
+            #   # @param effective_at [String]
+            #   # @param excluding_pending [Float]
+            #   # @param including_pending [Float]
             #   #
             #   def initialize(effective_at:, excluding_pending:, including_pending:, **) = super
 
@@ -164,32 +158,30 @@ module Metronome
           # ```
           class StartingBalance < Metronome::BaseModel
             # @!attribute effective_at
-            #   the starting_on request parameter (if supplied) or the first credit grant's effective_at date
+            #   the starting_on request parameter (if supplied) or the first credit grant's
+            #     effective_at date
             #
             #   @return [Time]
             required :effective_at, Time
 
             # @!attribute excluding_pending
-            #   the starting balance, including all posted grants, deductions, and expirations that happened at or before the effective_at timestamp
+            #   the starting balance, including all posted grants, deductions, and expirations
+            #     that happened at or before the effective_at timestamp
             #
             #   @return [Float]
             required :excluding_pending, Float
 
             # @!attribute including_pending
-            #   the excluding_pending balance plus any pending activity that has not been posted at the time of the query
+            #   the excluding_pending balance plus any pending activity that has not been posted
+            #     at the time of the query
             #
             #   @return [Float]
             required :including_pending, Float
 
             # @!parse
-            #   # @param effective_at [String] the starting_on request parameter (if supplied) or the first credit grant's
-            #   #   effective_at date
-            #   #
-            #   # @param excluding_pending [Float] the starting balance, including all posted grants, deductions, and expirations
-            #   #   that happened at or before the effective_at timestamp
-            #   #
-            #   # @param including_pending [Float] the excluding_pending balance plus any pending activity that has not been posted
-            #   #   at the time of the query
+            #   # @param effective_at [String]
+            #   # @param excluding_pending [Float]
+            #   # @param including_pending [Float]
             #   #
             #   def initialize(effective_at:, excluding_pending:, including_pending:, **) = super
 

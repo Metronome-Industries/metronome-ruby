@@ -20,13 +20,15 @@ module Metronome
       required :id, String
 
       # @!attribute external_id
-      #   (deprecated, use ingest_aliases instead) the first ID (Metronome or ingest alias) that can be used in usage events
+      #   (deprecated, use ingest_aliases instead) the first ID (Metronome or ingest
+      #     alias) that can be used in usage events
       #
       #   @return [String]
       required :external_id, String
 
       # @!attribute ingest_aliases
-      #   aliases for this customer that can be used instead of the Metronome customer ID in usage events
+      #   aliases for this customer that can be used instead of the Metronome customer ID
+      #     in usage events
       #
       #   @return [Array<String>]
       required :ingest_aliases, Metronome::ArrayOf[String]
@@ -46,16 +48,10 @@ module Metronome
       #   attr_writer :custom_fields
 
       # @!parse
-      #   # @param id [String] the Metronome ID of the customer
-      #   #
-      #   # @param external_id [String] (deprecated, use ingest_aliases instead) the first ID (Metronome or ingest
-      #   #   alias) that can be used in usage events
-      #   #
-      #   # @param ingest_aliases [Array<String>] aliases for this customer that can be used instead of the Metronome customer ID
-      #   #   in usage events
-      #   #
+      #   # @param id [String]
+      #   # @param external_id [String]
+      #   # @param ingest_aliases [Array<String>]
       #   # @param name [String]
-      #   #
       #   # @param custom_fields [Hash{Symbol=>String}]
       #   #
       #   def initialize(id:, external_id:, ingest_aliases:, name:, custom_fields: nil, **) = super

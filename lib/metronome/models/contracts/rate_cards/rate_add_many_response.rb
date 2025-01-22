@@ -18,7 +18,7 @@ module Metronome
           required :data, -> { Metronome::Models::ID }
 
           # @!parse
-          #   # @param data [Metronome::Models::ID] The ID of the rate card to which the rates were added.
+          #   # @param data [Metronome::Models::ID]
           #   #
           #   def initialize(data:, **) = super
 

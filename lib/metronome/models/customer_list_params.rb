@@ -4,7 +4,7 @@ module Metronome
   module Models
     class CustomerListParams < Metronome::BaseModel
       # @!attribute [r] customer_ids
-      #   Filter the customer list by customer_id.  Up to 100 ids can be provided.
+      #   Filter the customer list by customer_id. Up to 100 ids can be provided.
       #
       #   @return [Array<String>]
       optional :customer_ids, Metronome::ArrayOf[String]
@@ -54,7 +54,8 @@ module Metronome
       #   attr_writer :only_archived
 
       # @!attribute [r] salesforce_account_ids
-      #   Filter the customer list by salesforce_account_id.  Up to 100 ids can be provided.
+      #   Filter the customer list by salesforce_account_id. Up to 100 ids can be
+      #     provided.
       #
       #   @return [Array<String>]
       optional :salesforce_account_ids, Metronome::ArrayOf[String]
@@ -64,18 +65,12 @@ module Metronome
       #   attr_writer :salesforce_account_ids
 
       # @!parse
-      #   # @param customer_ids [Array<String>] Filter the customer list by customer_id. Up to 100 ids can be provided.
-      #   #
-      #   # @param ingest_alias [String] Filter the customer list by ingest_alias
-      #   #
-      #   # @param limit [Integer] Max number of results that should be returned
-      #   #
-      #   # @param next_page [String] Cursor that indicates where the next page of results should start.
-      #   #
-      #   # @param only_archived [Boolean] Filter the customer list by only archived customers.
-      #   #
-      #   # @param salesforce_account_ids [Array<String>] Filter the customer list by salesforce_account_id. Up to 100 ids can be
-      #   #   provided.
+      #   # @param customer_ids [Array<String>]
+      #   # @param ingest_alias [String]
+      #   # @param limit [Integer]
+      #   # @param next_page [String]
+      #   # @param only_archived [Boolean]
+      #   # @param salesforce_account_ids [Array<String>]
       #   #
       #   def initialize(
       #     customer_ids: nil,

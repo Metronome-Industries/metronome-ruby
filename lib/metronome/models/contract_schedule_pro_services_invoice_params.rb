@@ -50,16 +50,11 @@ module Metronome
 
       # @!parse
       #   # @param contract_id [String]
-      #   #
       #   # @param customer_id [String]
-      #   #
-      #   # @param issued_at [String] The date the invoice is issued
-      #   #
-      #   # @param line_items [Array<Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem>] Each line requires an amount or both unit_price and quantity.
-      #   #
-      #   # @param netsuite_invoice_header_end [String] The end date of the invoice header in Netsuite
-      #   #
-      #   # @param netsuite_invoice_header_start [String] The start date of the invoice header in Netsuite
+      #   # @param issued_at [String]
+      #   # @param line_items [Array<Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem>]
+      #   # @param netsuite_invoice_header_end [String]
+      #   # @param netsuite_invoice_header_start [String]
       #   #
       #   def initialize(
       #     contract_id:,
@@ -143,7 +138,8 @@ module Metronome
         #   attr_writer :netsuite_invoice_billing_start
 
         # @!attribute [r] quantity
-        #   Quantity for the charge. Will be multiplied by unit_price to determine the amount.
+        #   Quantity for the charge. Will be multiplied by unit_price to determine the
+        #     amount.
         #
         #   @return [Float, nil]
         optional :quantity, Float
@@ -153,7 +149,8 @@ module Metronome
         #   attr_writer :quantity
 
         # @!attribute [r] unit_price
-        #   If specified, this overrides the unit price on the pro service term. Must also provide quantity (but not amount) if providing unit_price.
+        #   If specified, this overrides the unit price on the pro service term. Must also
+        #     provide quantity (but not amount) if providing unit_price.
         #
         #   @return [Float, nil]
         optional :unit_price, Float
@@ -166,22 +163,13 @@ module Metronome
         #   # Describes the line item for a professional service charge on an invoice.
         #   #
         #   # @param professional_service_id [String]
-        #   #
-        #   # @param amendment_id [String] If the professional_service_id was added on an amendment, this is required.
-        #   #
-        #   # @param amount [Float] Amount for the term on the new invoice.
-        #   #
-        #   # @param metadata [String] For client use.
-        #   #
-        #   # @param netsuite_invoice_billing_end [String] The end date for the billing period on the invoice.
-        #   #
-        #   # @param netsuite_invoice_billing_start [String] The start date for the billing period on the invoice.
-        #   #
-        #   # @param quantity [Float] Quantity for the charge. Will be multiplied by unit_price to determine the
-        #   #   amount.
-        #   #
-        #   # @param unit_price [Float] If specified, this overrides the unit price on the pro service term. Must also
-        #   #   provide quantity (but not amount) if providing unit_price.
+        #   # @param amendment_id [String]
+        #   # @param amount [Float]
+        #   # @param metadata [String]
+        #   # @param netsuite_invoice_billing_end [String]
+        #   # @param netsuite_invoice_billing_start [String]
+        #   # @param quantity [Float]
+        #   # @param unit_price [Float]
         #   #
         #   def initialize(
         #     professional_service_id:,

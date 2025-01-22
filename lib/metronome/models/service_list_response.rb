@@ -26,7 +26,7 @@ module Metronome
       # service => {
       #   ips: -> { Metronome::ArrayOf[String] === _1 },
       #   name: String,
-      #   usage: enum: Metronome::Models::ServiceListResponse::Service::Usage
+      #   usage: Metronome::Models::ServiceListResponse::Service::Usage
       # }
       # ```
       class Service < Metronome::BaseModel

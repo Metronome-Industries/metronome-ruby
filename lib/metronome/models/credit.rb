@@ -7,7 +7,7 @@ module Metronome
     # credit => {
     #   id: String,
     #   product: Metronome::Models::Credit::Product,
-    #   type: enum: Metronome::Models::Credit::Type,
+    #   type: Metronome::Models::Credit::Type,
     #   access_schedule: Metronome::Models::ScheduleDuration,
     #   applicable_contract_ids: -> { Metronome::ArrayOf[String] === _1 },
     #   **_
@@ -67,7 +67,14 @@ module Metronome
       #   attr_writer :applicable_product_tags
 
       # @!attribute [r] balance
-      #   The current balance of the credit or commit. This balance reflects the amount of credit or commit that the customer has access to use at this moment - thus, expired and upcoming credit or commit segments contribute 0 to the balance. The balance will match the sum of all ledger entries with the exception of the case where the sum of negative manual ledger entries exceeds the positive amount remaining on the credit or commit - in that case, the balance will be 0. All manual ledger entries associated with active credit or commit segments are included in the balance, including future-dated manual ledger entries.
+      #   The current balance of the credit or commit. This balance reflects the amount of
+      #     credit or commit that the customer has access to use at this moment - thus,
+      #     expired and upcoming credit or commit segments contribute 0 to the balance. The
+      #     balance will match the sum of all ledger entries with the exception of the case
+      #     where the sum of negative manual ledger entries exceeds the positive amount
+      #     remaining on the credit or commit - in that case, the balance will be 0. All
+      #     manual ledger entries associated with active credit or commit segments are
+      #     included in the balance, including future-dated manual ledger entries.
       #
       #   @return [Float, nil]
       optional :balance, Float
@@ -104,7 +111,8 @@ module Metronome
       #   attr_writer :description
 
       # @!attribute [r] ledger
-      #   A list of ordered events that impact the balance of a credit. For example, an invoice deduction or an expiration.
+      #   A list of ordered events that impact the balance of a credit. For example, an
+      #     invoice deduction or an expiration.
       #
       #   @return [Array<Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry, Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry, Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry, Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry, Metronome::Models::Credit::Ledger::CreditManualLedgerEntry>]
       optional :ledger, -> { Metronome::ArrayOf[union: Metronome::Models::Credit::Ledger] }
@@ -133,7 +141,8 @@ module Metronome
       #   attr_writer :netsuite_sales_order_id
 
       # @!attribute [r] priority
-      #   If multiple credits or commits are applicable, the one with the lower priority will apply first.
+      #   If multiple credits or commits are applicable, the one with the lower priority
+      #     will apply first.
       #
       #   @return [Float, nil]
       optional :priority, Float
@@ -162,7 +171,10 @@ module Metronome
       #   attr_writer :salesforce_opportunity_id
 
       # @!attribute [r] uniqueness_key
-      #   Prevents the creation of duplicates. If a request to create a commit or credit is made with a uniqueness key that was previously used to create a commit or credit, a new record will not be created and the request will fail with a 409 error.
+      #   Prevents the creation of duplicates. If a request to create a commit or credit
+      #     is made with a uniqueness key that was previously used to create a commit or
+      #     credit, a new record will not be created and the request will fail with a 409
+      #     error.
       #
       #   @return [String, nil]
       optional :uniqueness_key, String
@@ -173,52 +185,23 @@ module Metronome
 
       # @!parse
       #   # @param id [String]
-      #   #
       #   # @param product [Metronome::Models::Credit::Product]
-      #   #
       #   # @param type [String]
-      #   #
-      #   # @param access_schedule [Metronome::Models::ScheduleDuration] The schedule that the customer will gain access to the credits.
-      #   #
+      #   # @param access_schedule [Metronome::Models::ScheduleDuration]
       #   # @param applicable_contract_ids [Array<String>]
-      #   #
       #   # @param applicable_product_ids [Array<String>]
-      #   #
       #   # @param applicable_product_tags [Array<String>]
-      #   #
-      #   # @param balance [Float] The current balance of the credit or commit. This balance reflects the amount of
-      #   #   credit or commit that the customer has access to use at this moment - thus,
-      #   #   expired and upcoming credit or commit segments contribute 0 to the balance. The
-      #   #   balance will match the sum of all ledger entries with the exception of the case
-      #   #   where the sum of negative manual ledger entries exceeds the positive amount
-      #   #   remaining on the credit or commit - in that case, the balance will be 0. All
-      #   #   manual ledger entries associated with active credit or commit segments are
-      #   #   included in the balance, including future-dated manual ledger entries.
-      #   #
+      #   # @param balance [Float]
       #   # @param contract [Metronome::Models::Credit::Contract]
-      #   #
       #   # @param custom_fields [Hash{Symbol=>String}]
-      #   #
       #   # @param description [String]
-      #   #
-      #   # @param ledger [Array<Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry, Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry, Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry, Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry, Metronome::Models::Credit::Ledger::CreditManualLedgerEntry>] A list of ordered events that impact the balance of a credit. For example, an
-      #   #   invoice deduction or an expiration.
-      #   #
+      #   # @param ledger [Array<Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry, Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry, Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry, Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry, Metronome::Models::Credit::Ledger::CreditManualLedgerEntry>]
       #   # @param name [String]
-      #   #
-      #   # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
-      #   #
-      #   # @param priority [Float] If multiple credits or commits are applicable, the one with the lower priority
-      #   #   will apply first.
-      #   #
+      #   # @param netsuite_sales_order_id [String]
+      #   # @param priority [Float]
       #   # @param rate_type [String]
-      #   #
-      #   # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
-      #   #
-      #   # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a commit or credit
-      #   #   is made with a uniqueness key that was previously used to create a commit or
-      #   #   credit, a new record will not be created and the request will fail with a 409
-      #   #   error.
+      #   # @param salesforce_opportunity_id [String]
+      #   # @param uniqueness_key [String]
       #   #
       #   def initialize(
       #     id:,
@@ -342,7 +325,7 @@ module Metronome
         #   amount: Float,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: enum: Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry::Type
+        #   type: Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry::Type
         # }
         # ```
         class CreditSegmentStartLedgerEntry < Metronome::BaseModel
@@ -397,7 +380,7 @@ module Metronome
         #   invoice_id: String,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: enum: Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type
+        #   type: Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type
         # }
         # ```
         class CreditAutomatedInvoiceDeductionLedgerEntry < Metronome::BaseModel
@@ -460,7 +443,7 @@ module Metronome
         #   amount: Float,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: enum: Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry::Type
+        #   type: Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry::Type
         # }
         # ```
         class CreditExpirationLedgerEntry < Metronome::BaseModel
@@ -515,7 +498,7 @@ module Metronome
         #   invoice_id: String,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: enum: Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry::Type
+        #   type: Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry::Type
         # }
         # ```
         class CreditCanceledLedgerEntry < Metronome::BaseModel
@@ -576,7 +559,7 @@ module Metronome
         #   invoice_id: String,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: enum: Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry::Type
+        #   type: Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry::Type
         # }
         # ```
         class CreditCreditedLedgerEntry < Metronome::BaseModel
@@ -636,7 +619,7 @@ module Metronome
         #   amount: Float,
         #   reason: String,
         #   timestamp: Time,
-        #   type: enum: Metronome::Models::Credit::Ledger::CreditManualLedgerEntry::Type
+        #   type: Metronome::Models::Credit::Ledger::CreditManualLedgerEntry::Type
         # }
         # ```
         class CreditManualLedgerEntry < Metronome::BaseModel

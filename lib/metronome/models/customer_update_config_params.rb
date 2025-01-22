@@ -9,7 +9,8 @@ module Metronome
       required :customer_id, String
 
       # @!attribute leave_stripe_invoices_in_draft
-      #   Leave in draft or set to auto-advance on invoices sent to Stripe. Falls back to the client-level config if unset, which defaults to true if unset.
+      #   Leave in draft or set to auto-advance on invoices sent to Stripe. Falls back to
+      #     the client-level config if unset, which defaults to true if unset.
       #
       #   @return [Boolean, nil]
       optional :leave_stripe_invoices_in_draft, Metronome::BooleanModel, nil?: true
@@ -22,11 +23,8 @@ module Metronome
 
       # @!parse
       #   # @param customer_id [String]
-      #   #
-      #   # @param leave_stripe_invoices_in_draft [Boolean, nil] Leave in draft or set to auto-advance on invoices sent to Stripe. Falls back to
-      #   #   the client-level config if unset, which defaults to true if unset.
-      #   #
-      #   # @param salesforce_account_id [String, nil] The Salesforce account ID for the customer
+      #   # @param leave_stripe_invoices_in_draft [Boolean, nil]
+      #   # @param salesforce_account_id [String, nil]
       #   #
       #   def initialize(customer_id:, leave_stripe_invoices_in_draft: nil, salesforce_account_id: nil, **) = super
 
