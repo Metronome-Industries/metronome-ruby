@@ -75,22 +75,14 @@ module Metronome
         #   attr_writer :trial_info
 
         # @!parse
-        #   # @param id [String] the ID of the customer plan
-        #   #
+        #   # @param id [String]
         #   # @param custom_fields [Hash{Symbol=>String}]
-        #   #
         #   # @param plan_description [String]
-        #   #
-        #   # @param plan_id [String] the ID of the plan
-        #   #
+        #   # @param plan_id [String]
         #   # @param plan_name [String]
-        #   #
         #   # @param starting_on [String]
-        #   #
         #   # @param ending_before [String]
-        #   #
         #   # @param net_payment_terms_days [Float]
-        #   #
         #   # @param trial_info [Metronome::Models::Customers::PlanListResponse::TrialInfo]
         #   #
         #   def initialize(

@@ -9,16 +9,15 @@ module Metronome
       required :customer_id, String
 
       # @!attribute name
-      #   The new name for the customer. This will be truncated to 160 characters if the provided name is longer.
+      #   The new name for the customer. This will be truncated to 160 characters if the
+      #     provided name is longer.
       #
       #   @return [String]
       required :name, String
 
       # @!parse
       #   # @param customer_id [String]
-      #   #
-      #   # @param name [String] The new name for the customer. This will be truncated to 160 characters if the
-      #   #   provided name is longer.
+      #   # @param name [String]
       #   #
       #   def initialize(customer_id:, name:, **) = super
 

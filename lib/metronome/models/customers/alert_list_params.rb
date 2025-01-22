@@ -21,7 +21,8 @@ module Metronome
         #   attr_writer :next_page
 
         # @!attribute [r] alert_statuses
-        #   Optionally filter by alert status. If absent, only enabled alerts will be returned.
+        #   Optionally filter by alert status. If absent, only enabled alerts will be
+        #     returned.
         #
         #   @return [Array<Symbol, Metronome::Models::Customers::AlertListParams::AlertStatus>]
         optional :alert_statuses,
@@ -32,12 +33,9 @@ module Metronome
         #   attr_writer :alert_statuses
 
         # @!parse
-        #   # @param customer_id [String] The Metronome ID of the customer
-        #   #
-        #   # @param next_page [String] Cursor that indicates where the next page of results should start.
-        #   #
-        #   # @param alert_statuses [Array<String>] Optionally filter by alert status. If absent, only enabled alerts will be
-        #   #   returned.
+        #   # @param customer_id [String]
+        #   # @param next_page [String]
+        #   # @param alert_statuses [Array<String>]
         #   #
         #   def initialize(customer_id:, next_page: nil, alert_statuses: nil, **) = super
 

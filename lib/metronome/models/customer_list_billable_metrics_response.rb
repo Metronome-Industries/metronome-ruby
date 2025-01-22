@@ -45,7 +45,9 @@ module Metronome
       #   attr_writer :aggregate_keys
 
       # @!attribute [r] aggregation_key
-      #   A key that specifies which property of the event is used to aggregate data. This key must be one of the property filter names and is not applicable when the aggregation type is 'count'.
+      #   A key that specifies which property of the event is used to aggregate data. This
+      #     key must be one of the property filter names and is not applicable when the
+      #     aggregation type is 'count'.
       #
       #   @return [String, nil]
       optional :aggregation_key, String
@@ -66,7 +68,8 @@ module Metronome
       #   attr_writer :aggregation_type
 
       # @!attribute [r] archived_at
-      #   RFC 3339 timestamp indicating when the billable metric was archived. If not provided, the billable metric is not archived.
+      #   RFC 3339 timestamp indicating when the billable metric was archived. If not
+      #     provided, the billable metric is not archived.
       #
       #   @return [Time, nil]
       optional :archived_at, Time
@@ -115,7 +118,8 @@ module Metronome
       #   attr_writer :group_by
 
       # @!attribute [r] group_keys
-      #   Property names that are used to group usage costs on an invoice. Each entry represents a set of properties used to slice events into distinct buckets.
+      #   Property names that are used to group usage costs on an invoice. Each entry
+      #     represents a set of properties used to slice events into distinct buckets.
       #
       #   @return [Array<Array<String>>]
       optional :group_keys, Metronome::ArrayOf[Metronome::ArrayOf[String]]
@@ -125,7 +129,9 @@ module Metronome
       #   attr_writer :group_keys
 
       # @!attribute [r] property_filters
-      #   A list of filters to match events to this billable metric. Each filter defines a rule on an event property. All rules must pass for the event to match the billable metric.
+      #   A list of filters to match events to this billable metric. Each filter defines a
+      #     rule on an event property. All rules must pass for the event to match the
+      #     billable metric.
       #
       #   @return [Array<Metronome::Models::PropertyFilter>]
       optional :property_filters, -> { Metronome::ArrayOf[Metronome::Models::PropertyFilter] }
@@ -146,38 +152,19 @@ module Metronome
 
       # @!parse
       #   # @param id [String]
-      #   #
       #   # @param name [String]
-      #   #
-      #   # @param aggregate [String] (DEPRECATED) use aggregation_type instead
-      #   #
-      #   # @param aggregate_keys [Array<String>] (DEPRECATED) use aggregation_key instead
-      #   #
-      #   # @param aggregation_key [String] A key that specifies which property of the event is used to aggregate data. This
-      #   #   key must be one of the property filter names and is not applicable when the
-      #   #   aggregation type is 'count'.
-      #   #
-      #   # @param aggregation_type [String] Specifies the type of aggregation performed on matching events.
-      #   #
-      #   # @param archived_at [String] RFC 3339 timestamp indicating when the billable metric was archived. If not
-      #   #   provided, the billable metric is not archived.
-      #   #
+      #   # @param aggregate [String]
+      #   # @param aggregate_keys [Array<String>]
+      #   # @param aggregation_key [String]
+      #   # @param aggregation_type [String]
+      #   # @param archived_at [String]
       #   # @param custom_fields [Hash{Symbol=>String}]
-      #   #
-      #   # @param event_type_filter [Metronome::Models::EventTypeFilter] An optional filtering rule to match the 'event_type' property of an event.
-      #   #
-      #   # @param filter [Hash{Symbol=>Object}] (DEPRECATED) use property_filters & event_type_filter instead
-      #   #
-      #   # @param group_by [Array<String>] (DEPRECATED) use group_keys instead
-      #   #
-      #   # @param group_keys [Array<Array<String>>] Property names that are used to group usage costs on an invoice. Each entry
-      #   #   represents a set of properties used to slice events into distinct buckets.
-      #   #
-      #   # @param property_filters [Array<Metronome::Models::PropertyFilter>] A list of filters to match events to this billable metric. Each filter defines a
-      #   #   rule on an event property. All rules must pass for the event to match the
-      #   #   billable metric.
-      #   #
-      #   # @param sql [String] The SQL query associated with the billable metric
+      #   # @param event_type_filter [Metronome::Models::EventTypeFilter]
+      #   # @param filter [Hash{Symbol=>Object}]
+      #   # @param group_by [Array<String>]
+      #   # @param group_keys [Array<Array<String>>]
+      #   # @param property_filters [Array<Metronome::Models::PropertyFilter>]
+      #   # @param sql [String]
       #   #
       #   def initialize(
       #     id:,

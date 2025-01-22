@@ -211,7 +211,8 @@ module Metronome
         required :name, String
 
         # @!attribute start_period
-        #   Used in price ramps.  Indicates how many billing periods pass before the charge applies.
+        #   Used in price ramps. Indicates how many billing periods pass before the charge
+        #     applies.
         #
         #   @return [Float]
         required :start_period, Float
@@ -223,12 +224,8 @@ module Metronome
 
         # @!parse
         #   # @param credit_type [Metronome::Models::CreditTypeData]
-        #   #
         #   # @param name [String]
-        #   #
-        #   # @param start_period [Float] Used in price ramps. Indicates how many billing periods pass before the charge
-        #   #   applies.
-        #   #
+        #   # @param start_period [Float]
         #   # @param value [Float]
         #   #
         #   def initialize(credit_type:, name:, start_period:, value:, **) = super
@@ -257,7 +254,8 @@ module Metronome
         required :fiat_credit_type, -> { Metronome::Models::CreditTypeData }
 
         # @!attribute start_period
-        #   Used in price ramps.  Indicates how many billing periods pass before the charge applies.
+        #   Used in price ramps. Indicates how many billing periods pass before the charge
+        #     applies.
         #
         #   @return [Float]
         required :start_period, Float
@@ -269,12 +267,8 @@ module Metronome
 
         # @!parse
         #   # @param credit_type [Metronome::Models::CreditTypeData]
-        #   #
         #   # @param fiat_credit_type [Metronome::Models::CreditTypeData]
-        #   #
-        #   # @param start_period [Float] Used in price ramps. Indicates how many billing periods pass before the charge
-        #   #   applies.
-        #   #
+        #   # @param start_period [Float]
         #   # @param to_fiat_conversion_factor [Float]
         #   #
         #   def initialize(credit_type:, fiat_credit_type:, start_period:, to_fiat_conversion_factor:, **) = super

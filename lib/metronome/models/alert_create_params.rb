@@ -16,13 +16,15 @@ module Metronome
       required :name, String
 
       # @!attribute threshold
-      #   Threshold value of the alert policy.  Depending upon the alert type, this number may represent a financial amount, the days remaining, or a percentage reached.
+      #   Threshold value of the alert policy. Depending upon the alert type, this number
+      #     may represent a financial amount, the days remaining, or a percentage reached.
       #
       #   @return [Float]
       required :threshold, Float
 
       # @!attribute [r] billable_metric_id
-      #   For alerts of type `usage_threshold_reached`, specifies which billable metric to track the usage for.
+      #   For alerts of type `usage_threshold_reached`, specifies which billable metric to
+      #     track the usage for.
       #
       #   @return [String, nil]
       optional :billable_metric_id, String
@@ -32,7 +34,9 @@ module Metronome
       #   attr_writer :billable_metric_id
 
       # @!attribute [r] credit_grant_type_filters
-      #   An array of strings, representing a way to filter the credit grant this alert applies to, by looking at the credit_grant_type field on the credit grant. This field is only defined for CreditPercentage and CreditBalance alerts
+      #   An array of strings, representing a way to filter the credit grant this alert
+      #     applies to, by looking at the credit_grant_type field on the credit grant. This
+      #     field is only defined for CreditPercentage and CreditBalance alerts
       #
       #   @return [Array<String>]
       optional :credit_grant_type_filters, Metronome::ArrayOf[String]
@@ -51,7 +55,9 @@ module Metronome
       #   attr_writer :credit_type_id
 
       # @!attribute [r] custom_field_filters
-      #   Only present for beta contract invoices. This field's availability is dependent on your client's configuration. A list of custom field filters for alert types that support advanced filtering
+      #   Only present for beta contract invoices. This field's availability is dependent
+      #     on your client's configuration. A list of custom field filters for alert types
+      #     that support advanced filtering
       #
       #   @return [Array<Metronome::Models::AlertCreateParams::CustomFieldFilter>]
       optional :custom_field_filters,
@@ -62,7 +68,8 @@ module Metronome
       #   attr_writer :custom_field_filters
 
       # @!attribute [r] customer_id
-      #   If provided, will create this alert for this specific customer. To create an alert for all customers, do not specify `customer_id` or `plan_id`.
+      #   If provided, will create this alert for this specific customer. To create an
+      #     alert for all customers, do not specify `customer_id` or `plan_id`.
       #
       #   @return [String, nil]
       optional :customer_id, String
@@ -72,7 +79,9 @@ module Metronome
       #   attr_writer :customer_id
 
       # @!attribute [r] evaluate_on_create
-      #   If true, the alert will evaluate immediately on customers that already meet the alert threshold. If false, it will only evaluate on future customers that trigger the alert threshold. Defaults to true.
+      #   If true, the alert will evaluate immediately on customers that already meet the
+      #     alert threshold. If false, it will only evaluate on future customers that
+      #     trigger the alert threshold. Defaults to true.
       #
       #   @return [Boolean, nil]
       optional :evaluate_on_create, Metronome::BooleanModel
@@ -82,7 +91,8 @@ module Metronome
       #   attr_writer :evaluate_on_create
 
       # @!attribute [r] group_key_filter
-      #   Scopes alert evaluation to a specific presentation group key on individual line items. Only present for spend alerts.
+      #   Scopes alert evaluation to a specific presentation group key on individual line
+      #     items. Only present for spend alerts.
       #
       #   @return [Metronome::Models::AlertCreateParams::GroupKeyFilter, nil]
       optional :group_key_filter, -> { Metronome::Models::AlertCreateParams::GroupKeyFilter }
@@ -92,7 +102,8 @@ module Metronome
       #   attr_writer :group_key_filter
 
       # @!attribute [r] invoice_types_filter
-      #   Only supported for invoice_total_reached alerts. A list of invoice types to evaluate.
+      #   Only supported for invoice_total_reached alerts. A list of invoice types to
+      #     evaluate.
       #
       #   @return [Array<String>]
       optional :invoice_types_filter, Metronome::ArrayOf[String]
@@ -102,7 +113,8 @@ module Metronome
       #   attr_writer :invoice_types_filter
 
       # @!attribute [r] plan_id
-      #   If provided, will create this alert for this specific plan. To create an alert for all customers, do not specify `customer_id` or `plan_id`.
+      #   If provided, will create this alert for this specific plan. To create an alert
+      #     for all customers, do not specify `customer_id` or `plan_id`.
       #
       #   @return [String, nil]
       optional :plan_id, String
@@ -112,7 +124,9 @@ module Metronome
       #   attr_writer :plan_id
 
       # @!attribute [r] uniqueness_key
-      #   Prevents the creation of duplicates. If a request to create a record is made with a previously used uniqueness key, a new record will not be created and the request will fail with a 409 error.
+      #   Prevents the creation of duplicates. If a request to create a record is made
+      #     with a previously used uniqueness key, a new record will not be created and the
+      #     request will fail with a 409 error.
       #
       #   @return [String, nil]
       optional :uniqueness_key, String
@@ -122,45 +136,19 @@ module Metronome
       #   attr_writer :uniqueness_key
 
       # @!parse
-      #   # @param alert_type [String] Type of the alert
-      #   #
-      #   # @param name [String] Name of the alert
-      #   #
-      #   # @param threshold [Float] Threshold value of the alert policy. Depending upon the alert type, this number
-      #   #   may represent a financial amount, the days remaining, or a percentage reached.
-      #   #
-      #   # @param billable_metric_id [String] For alerts of type `usage_threshold_reached`, specifies which billable metric to
-      #   #   track the usage for.
-      #   #
-      #   # @param credit_grant_type_filters [Array<String>] An array of strings, representing a way to filter the credit grant this alert
-      #   #   applies to, by looking at the credit_grant_type field on the credit grant. This
-      #   #   field is only defined for CreditPercentage and CreditBalance alerts
-      #   #
+      #   # @param alert_type [String]
+      #   # @param name [String]
+      #   # @param threshold [Float]
+      #   # @param billable_metric_id [String]
+      #   # @param credit_grant_type_filters [Array<String>]
       #   # @param credit_type_id [String]
-      #   #
-      #   # @param custom_field_filters [Array<Metronome::Models::AlertCreateParams::CustomFieldFilter>] Only present for beta contract invoices. This field's availability is dependent
-      #   #   on your client's configuration. A list of custom field filters for alert types
-      #   #   that support advanced filtering
-      #   #
-      #   # @param customer_id [String] If provided, will create this alert for this specific customer. To create an
-      #   #   alert for all customers, do not specify `customer_id` or `plan_id`.
-      #   #
-      #   # @param evaluate_on_create [Boolean] If true, the alert will evaluate immediately on customers that already meet the
-      #   #   alert threshold. If false, it will only evaluate on future customers that
-      #   #   trigger the alert threshold. Defaults to true.
-      #   #
-      #   # @param group_key_filter [Metronome::Models::AlertCreateParams::GroupKeyFilter] Scopes alert evaluation to a specific presentation group key on individual line
-      #   #   items. Only present for spend alerts.
-      #   #
-      #   # @param invoice_types_filter [Array<String>] Only supported for invoice_total_reached alerts. A list of invoice types to
-      #   #   evaluate.
-      #   #
-      #   # @param plan_id [String] If provided, will create this alert for this specific plan. To create an alert
-      #   #   for all customers, do not specify `customer_id` or `plan_id`.
-      #   #
-      #   # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made
-      #   #   with a previously used uniqueness key, a new record will not be created and the
-      #   #   request will fail with a 409 error.
+      #   # @param custom_field_filters [Array<Metronome::Models::AlertCreateParams::CustomFieldFilter>]
+      #   # @param customer_id [String]
+      #   # @param evaluate_on_create [Boolean]
+      #   # @param group_key_filter [Metronome::Models::AlertCreateParams::GroupKeyFilter]
+      #   # @param invoice_types_filter [Array<String>]
+      #   # @param plan_id [String]
+      #   # @param uniqueness_key [String]
       #   #
       #   def initialize(
       #     alert_type:,
@@ -224,7 +212,7 @@ module Metronome
       # @example
       # ```ruby
       # custom_field_filter => {
-      #   entity: enum: Metronome::Models::AlertCreateParams::CustomFieldFilter::Entity,
+      #   entity: Metronome::Models::AlertCreateParams::CustomFieldFilter::Entity,
       #   key: String,
       #   value: String
       # }

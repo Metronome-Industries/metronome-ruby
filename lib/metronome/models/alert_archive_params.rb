@@ -20,9 +20,8 @@ module Metronome
       #   attr_writer :release_uniqueness_key
 
       # @!parse
-      #   # @param id [String] The Metronome ID of the alert
-      #   #
-      #   # @param release_uniqueness_key [Boolean] If true, resets the uniqueness key on this alert so it can be re-used
+      #   # @param id [String]
+      #   # @param release_uniqueness_key [Boolean]
       #   #
       #   def initialize(id:, release_uniqueness_key: nil, **) = super
 

@@ -35,11 +35,9 @@ module Metronome
         #   attr_writer :archive_filter
 
         # @!parse
-        #   # @param limit [Integer] Max number of results that should be returned
-        #   #
-        #   # @param next_page [String] Cursor that indicates where the next page of results should start.
-        #   #
-        #   # @param archive_filter [String] Filter options for the product list
+        #   # @param limit [Integer]
+        #   # @param next_page [String]
+        #   # @param archive_filter [String]
         #   #
         #   def initialize(limit: nil, next_page: nil, archive_filter: nil, **) = super
 

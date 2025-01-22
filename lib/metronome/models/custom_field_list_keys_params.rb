@@ -27,9 +27,8 @@ module Metronome
       #   attr_writer :entities
 
       # @!parse
-      #   # @param next_page [String] Cursor that indicates where the next page of results should start.
-      #   #
-      #   # @param entities [Array<String>] Optional list of entity types to return keys for
+      #   # @param next_page [String]
+      #   # @param entities [Array<String>]
       #   #
       #   def initialize(next_page: nil, entities: nil, **) = super
 

@@ -10,7 +10,7 @@ module Metronome
       required :id, String
 
       # @!parse
-      #   # @param id [String] The invoice id to regenerate
+      #   # @param id [String]
       #   #
       #   def initialize(id:, **) = super
 

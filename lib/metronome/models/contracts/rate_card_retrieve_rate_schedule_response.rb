@@ -80,7 +80,8 @@ module Metronome
           required :starting_at, Time
 
           # @!attribute [r] commit_rate
-          #   A distinct rate on the rate card. You can choose to use this rate rather than list rate when consuming a credit or commit.
+          #   A distinct rate on the rate card. You can choose to use this rate rather than
+          #     list rate when consuming a credit or commit.
           #
           #   @return [Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Data::CommitRate, nil]
           optional :commit_rate,
@@ -110,24 +111,14 @@ module Metronome
 
           # @!parse
           #   # @param entitled [Boolean]
-          #   #
           #   # @param product_custom_fields [Hash{Symbol=>String}]
-          #   #
           #   # @param product_id [String]
-          #   #
           #   # @param product_name [String]
-          #   #
           #   # @param product_tags [Array<String>]
-          #   #
           #   # @param rate [Metronome::Models::Rate]
-          #   #
           #   # @param starting_at [String]
-          #   #
-          #   # @param commit_rate [Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Data::CommitRate] A distinct rate on the rate card. You can choose to use this rate rather than
-          #   #   list rate when consuming a credit or commit.
-          #   #
+          #   # @param commit_rate [Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Data::CommitRate]
           #   # @param ending_before [String]
-          #   #
           #   # @param pricing_group_values [Hash{Symbol=>String}]
           #   #
           #   def initialize(
@@ -151,7 +142,7 @@ module Metronome
           # @example
           # ```ruby
           # commit_rate => {
-          #   rate_type: enum: Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Data::CommitRate::RateType,
+          #   rate_type: Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Data::CommitRate::RateType,
           #   price: Float,
           #   tiers: -> { Metronome::ArrayOf[Metronome::Models::Tier] === _1 }
           # }
@@ -190,10 +181,8 @@ module Metronome
             #   #   list rate when consuming a credit or commit.
             #   #
             #   # @param rate_type [String]
-            #   #
-            #   # @param price [Float] Commit rate price. For FLAT rate_type, this must be >=0.
-            #   #
-            #   # @param tiers [Array<Metronome::Models::Tier>] Only set for TIERED rate_type.
+            #   # @param price [Float]
+            #   # @param tiers [Array<Metronome::Models::Tier>]
             #   #
             #   def initialize(rate_type:, price: nil, tiers: nil, **) = super
 

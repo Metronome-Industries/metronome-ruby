@@ -14,7 +14,8 @@ module Metronome
       required :customer_id, String
 
       # @!attribute [r] include_balance
-      #   Include the balance of credits and commits in the response. Setting this flag may cause the query to be slower.
+      #   Include the balance of credits and commits in the response. Setting this flag
+      #     may cause the query to be slower.
       #
       #   @return [Boolean, nil]
       optional :include_balance, Metronome::BooleanModel
@@ -24,7 +25,8 @@ module Metronome
       #   attr_writer :include_balance
 
       # @!attribute [r] include_ledgers
-      #   Include commit ledgers in the response. Setting this flag may cause the query to be slower.
+      #   Include commit ledgers in the response. Setting this flag may cause the query to
+      #     be slower.
       #
       #   @return [Boolean, nil]
       optional :include_ledgers, Metronome::BooleanModel
@@ -35,14 +37,9 @@ module Metronome
 
       # @!parse
       #   # @param contract_id [String]
-      #   #
       #   # @param customer_id [String]
-      #   #
-      #   # @param include_balance [Boolean] Include the balance of credits and commits in the response. Setting this flag
-      #   #   may cause the query to be slower.
-      #   #
-      #   # @param include_ledgers [Boolean] Include commit ledgers in the response. Setting this flag may cause the query to
-      #   #   be slower.
+      #   # @param include_balance [Boolean]
+      #   # @param include_ledgers [Boolean]
       #   #
       #   def initialize(contract_id:, customer_id:, include_balance: nil, include_ledgers: nil, **) = super
 

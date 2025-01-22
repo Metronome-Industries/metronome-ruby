@@ -17,9 +17,8 @@ module Metronome
         required :customer_id, String
 
         # @!parse
-        #   # @param alert_id [String] The Metronome ID of the alert
-        #   #
-        #   # @param customer_id [String] The Metronome ID of the customer
+        #   # @param alert_id [String]
+        #   # @param customer_id [String]
         #   #
         #   def initialize(alert_id:, customer_id:, **) = super
 

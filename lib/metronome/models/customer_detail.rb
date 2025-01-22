@@ -31,13 +31,15 @@ module Metronome
       required :customer_config, -> { Metronome::Models::CustomerDetail::CustomerConfig }
 
       # @!attribute external_id
-      #   (deprecated, use ingest_aliases instead) the first ID (Metronome or ingest alias) that can be used in usage events
+      #   (deprecated, use ingest_aliases instead) the first ID (Metronome or ingest
+      #     alias) that can be used in usage events
       #
       #   @return [String]
       required :external_id, String
 
       # @!attribute ingest_aliases
-      #   aliases for this customer that can be used instead of the Metronome customer ID in usage events
+      #   aliases for this customer that can be used instead of the Metronome customer ID
+      #     in usage events
       #
       #   @return [Array<String>]
       required :ingest_aliases, Metronome::ArrayOf[String]
@@ -58,21 +60,13 @@ module Metronome
       #   attr_writer :current_billable_status
 
       # @!parse
-      #   # @param id [String] the Metronome ID of the customer
-      #   #
+      #   # @param id [String]
       #   # @param custom_fields [Hash{Symbol=>String}]
-      #   #
       #   # @param customer_config [Metronome::Models::CustomerDetail::CustomerConfig]
-      #   #
-      #   # @param external_id [String] (deprecated, use ingest_aliases instead) the first ID (Metronome or ingest
-      #   #   alias) that can be used in usage events
-      #   #
-      #   # @param ingest_aliases [Array<String>] aliases for this customer that can be used instead of the Metronome customer ID
-      #   #   in usage events
-      #   #
+      #   # @param external_id [String]
+      #   # @param ingest_aliases [Array<String>]
       #   # @param name [String]
-      #   #
-      #   # @param current_billable_status [Metronome::Models::CustomerDetail::CurrentBillableStatus] This field's availability is dependent on your client's configuration.
+      #   # @param current_billable_status [Metronome::Models::CustomerDetail::CurrentBillableStatus]
       #   #
       #   def initialize(
       #     id:,
@@ -103,7 +97,7 @@ module Metronome
         required :salesforce_account_id, String, nil?: true
 
         # @!parse
-        #   # @param salesforce_account_id [String, nil] The Salesforce account ID for the customer
+        #   # @param salesforce_account_id [String, nil]
         #   #
         #   def initialize(salesforce_account_id:, **) = super
 
@@ -113,7 +107,7 @@ module Metronome
       # @example
       # ```ruby
       # current_billable_status => {
-      #   value: enum: Metronome::Models::CustomerDetail::CurrentBillableStatus::Value,
+      #   value: Metronome::Models::CustomerDetail::CurrentBillableStatus::Value,
       #   effective_at: Time
       # }
       # ```

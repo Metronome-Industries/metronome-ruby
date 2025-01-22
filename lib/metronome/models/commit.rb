@@ -7,7 +7,7 @@ module Metronome
     # commit => {
     #   id: String,
     #   product: Metronome::Models::Commit::Product,
-    #   type: enum: Metronome::Models::Commit::Type,
+    #   type: Metronome::Models::Commit::Type,
     #   access_schedule: Metronome::Models::ScheduleDuration,
     #   amount: Float,
     #   **_
@@ -30,7 +30,8 @@ module Metronome
       required :type, enum: -> { Metronome::Models::Commit::Type }
 
       # @!attribute [r] access_schedule
-      #   The schedule that the customer will gain access to the credits purposed with this commit.
+      #   The schedule that the customer will gain access to the credits purposed with
+      #     this commit.
       #
       #   @return [Metronome::Models::ScheduleDuration, nil]
       optional :access_schedule, -> { Metronome::Models::ScheduleDuration }
@@ -77,7 +78,14 @@ module Metronome
       #   attr_writer :applicable_product_tags
 
       # @!attribute [r] balance
-      #   The current balance of the credit or commit. This balance reflects the amount of credit or commit that the customer has access to use at this moment - thus, expired and upcoming credit or commit segments contribute 0 to the balance. The balance will match the sum of all ledger entries with the exception of the case where the sum of negative manual ledger entries exceeds the positive amount remaining on the credit or commit - in that case, the balance will be 0. All manual ledger entries associated with active credit or commit segments are included in the balance, including future-dated manual ledger entries.
+      #   The current balance of the credit or commit. This balance reflects the amount of
+      #     credit or commit that the customer has access to use at this moment - thus,
+      #     expired and upcoming credit or commit segments contribute 0 to the balance. The
+      #     balance will match the sum of all ledger entries with the exception of the case
+      #     where the sum of negative manual ledger entries exceeds the positive amount
+      #     remaining on the credit or commit - in that case, the balance will be 0. All
+      #     manual ledger entries associated with active credit or commit segments are
+      #     included in the balance, including future-dated manual ledger entries.
       #
       #   @return [Float, nil]
       optional :balance, Float
@@ -134,7 +142,8 @@ module Metronome
       #   attr_writer :invoice_schedule
 
       # @!attribute [r] ledger
-      #   A list of ordered events that impact the balance of a commit. For example, an invoice deduction or a rollover.
+      #   A list of ordered events that impact the balance of a commit. For example, an
+      #     invoice deduction or a rollover.
       #
       #   @return [Array<Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry>]
       optional :ledger, -> { Metronome::ArrayOf[union: Metronome::Models::Commit::Ledger] }
@@ -163,7 +172,8 @@ module Metronome
       #   attr_writer :netsuite_sales_order_id
 
       # @!attribute [r] priority
-      #   If multiple credits or commits are applicable, the one with the lower priority will apply first.
+      #   If multiple credits or commits are applicable, the one with the lower priority
+      #     will apply first.
       #
       #   @return [Float, nil]
       optional :priority, Float
@@ -210,7 +220,10 @@ module Metronome
       #   attr_writer :salesforce_opportunity_id
 
       # @!attribute [r] uniqueness_key
-      #   Prevents the creation of duplicates. If a request to create a commit or credit is made with a uniqueness key that was previously used to create a commit or credit, a new record will not be created and the request will fail with a 409 error.
+      #   Prevents the creation of duplicates. If a request to create a commit or credit
+      #     is made with a uniqueness key that was previously used to create a commit or
+      #     credit, a new record will not be created and the request will fail with a 409
+      #     error.
       #
       #   @return [String, nil]
       optional :uniqueness_key, String
@@ -221,63 +234,28 @@ module Metronome
 
       # @!parse
       #   # @param id [String]
-      #   #
       #   # @param product [Metronome::Models::Commit::Product]
-      #   #
       #   # @param type [String]
-      #   #
-      #   # @param access_schedule [Metronome::Models::ScheduleDuration] The schedule that the customer will gain access to the credits purposed with
-      #   #   this commit.
-      #   #
-      #   # @param amount [Float] (DEPRECATED) Use access_schedule + invoice_schedule instead.
-      #   #
+      #   # @param access_schedule [Metronome::Models::ScheduleDuration]
+      #   # @param amount [Float]
       #   # @param applicable_contract_ids [Array<String>]
-      #   #
       #   # @param applicable_product_ids [Array<String>]
-      #   #
       #   # @param applicable_product_tags [Array<String>]
-      #   #
-      #   # @param balance [Float] The current balance of the credit or commit. This balance reflects the amount of
-      #   #   credit or commit that the customer has access to use at this moment - thus,
-      #   #   expired and upcoming credit or commit segments contribute 0 to the balance. The
-      #   #   balance will match the sum of all ledger entries with the exception of the case
-      #   #   where the sum of negative manual ledger entries exceeds the positive amount
-      #   #   remaining on the credit or commit - in that case, the balance will be 0. All
-      #   #   manual ledger entries associated with active credit or commit segments are
-      #   #   included in the balance, including future-dated manual ledger entries.
-      #   #
+      #   # @param balance [Float]
       #   # @param contract [Metronome::Models::Commit::Contract]
-      #   #
       #   # @param custom_fields [Hash{Symbol=>String}]
-      #   #
       #   # @param description [String]
-      #   #
-      #   # @param invoice_contract [Metronome::Models::Commit::InvoiceContract] The contract that this commit will be billed on.
-      #   #
-      #   # @param invoice_schedule [Metronome::Models::SchedulePointInTime] The schedule that the customer will be invoiced for this commit.
-      #   #
-      #   # @param ledger [Array<Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry>] A list of ordered events that impact the balance of a commit. For example, an
-      #   #   invoice deduction or a rollover.
-      #   #
+      #   # @param invoice_contract [Metronome::Models::Commit::InvoiceContract]
+      #   # @param invoice_schedule [Metronome::Models::SchedulePointInTime]
+      #   # @param ledger [Array<Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry>]
       #   # @param name [String]
-      #   #
-      #   # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
-      #   #
-      #   # @param priority [Float] If multiple credits or commits are applicable, the one with the lower priority
-      #   #   will apply first.
-      #   #
+      #   # @param netsuite_sales_order_id [String]
+      #   # @param priority [Float]
       #   # @param rate_type [String]
-      #   #
       #   # @param rolled_over_from [Metronome::Models::Commit::RolledOverFrom]
-      #   #
       #   # @param rollover_fraction [Float]
-      #   #
-      #   # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
-      #   #
-      #   # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a commit or credit
-      #   #   is made with a uniqueness key that was previously used to create a commit or
-      #   #   credit, a new record will not be created and the request will fail with a 409
-      #   #   error.
+      #   # @param salesforce_opportunity_id [String]
+      #   # @param uniqueness_key [String]
       #   #
       #   def initialize(
       #     id:,
@@ -459,7 +437,7 @@ module Metronome
         #   amount: Float,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: enum: Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type
+        #   type: Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type
         # }
         # ```
         class PrepaidCommitSegmentStartLedgerEntry < Metronome::BaseModel
@@ -517,7 +495,7 @@ module Metronome
         #   invoice_id: String,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: enum: Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type
+        #   type: Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type
         # }
         # ```
         class PrepaidCommitAutomatedInvoiceDeductionLedgerEntry < Metronome::BaseModel
@@ -581,7 +559,7 @@ module Metronome
         #   new_contract_id: String,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: enum: Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type
+        #   type: Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type
         # }
         # ```
         class PrepaidCommitRolloverLedgerEntry < Metronome::BaseModel
@@ -644,7 +622,7 @@ module Metronome
         #   amount: Float,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: enum: Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type
+        #   type: Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type
         # }
         # ```
         class PrepaidCommitExpirationLedgerEntry < Metronome::BaseModel
@@ -702,7 +680,7 @@ module Metronome
         #   invoice_id: String,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: enum: Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type
+        #   type: Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type
         # }
         # ```
         class PrepaidCommitCanceledLedgerEntry < Metronome::BaseModel
@@ -766,7 +744,7 @@ module Metronome
         #   invoice_id: String,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: enum: Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type
+        #   type: Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type
         # }
         # ```
         class PrepaidCommitCreditedLedgerEntry < Metronome::BaseModel
@@ -828,7 +806,7 @@ module Metronome
         # postpaid_commit_initial_balance_ledger_entry => {
         #   amount: Float,
         #   timestamp: Time,
-        #   type: enum: Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type
+        #   type: Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type
         # }
         # ```
         class PostpaidCommitInitialBalanceLedgerEntry < Metronome::BaseModel
@@ -880,7 +858,7 @@ module Metronome
         #   invoice_id: String,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: enum: Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type
+        #   type: Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type
         # }
         # ```
         class PostpaidCommitAutomatedInvoiceDeductionLedgerEntry < Metronome::BaseModel
@@ -944,7 +922,7 @@ module Metronome
         #   new_contract_id: String,
         #   segment_id: String,
         #   timestamp: Time,
-        #   type: enum: Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type
+        #   type: Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type
         # }
         # ```
         class PostpaidCommitRolloverLedgerEntry < Metronome::BaseModel
@@ -1007,7 +985,7 @@ module Metronome
         #   amount: Float,
         #   invoice_id: String,
         #   timestamp: Time,
-        #   type: enum: Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type
+        #   type: Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type
         # }
         # ```
         class PostpaidCommitTrueupLedgerEntry < Metronome::BaseModel
@@ -1064,7 +1042,7 @@ module Metronome
         #   amount: Float,
         #   reason: String,
         #   timestamp: Time,
-        #   type: enum: Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry::Type
+        #   type: Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry::Type
         # }
         # ```
         class PrepaidCommitManualLedgerEntry < Metronome::BaseModel
@@ -1118,7 +1096,7 @@ module Metronome
         #   amount: Float,
         #   reason: String,
         #   timestamp: Time,
-        #   type: enum: Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type
+        #   type: Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type
         # }
         # ```
         class PostpaidCommitManualLedgerEntry < Metronome::BaseModel
@@ -1174,7 +1152,7 @@ module Metronome
         # postpaid_commit_expiration_ledger_entry => {
         #   amount: Float,
         #   timestamp: Time,
-        #   type: enum: Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type
+        #   type: Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type
         # }
         # ```
         class PostpaidCommitExpirationLedgerEntry < Metronome::BaseModel

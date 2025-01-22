@@ -16,7 +16,10 @@ module Metronome
       required :customer_id, String
 
       # @!attribute [r] allow_ending_before_finalized_invoice
-      #   If true, allows setting the contract end date earlier than the end_timestamp of existing finalized invoices. Finalized invoices will be unchanged; if you want to incorporate the new end date, you can void and regenerate finalized usage invoices. Defaults to true.
+      #   If true, allows setting the contract end date earlier than the end_timestamp of
+      #     existing finalized invoices. Finalized invoices will be unchanged; if you want
+      #     to incorporate the new end date, you can void and regenerate finalized usage
+      #     invoices. Defaults to true.
       #
       #   @return [Boolean, nil]
       optional :allow_ending_before_finalized_invoice, Metronome::BooleanModel
@@ -26,7 +29,8 @@ module Metronome
       #   attr_writer :allow_ending_before_finalized_invoice
 
       # @!attribute [r] ending_before
-      #   RFC 3339 timestamp indicating when the contract will end (exclusive). If not provided, the contract will be updated to be open-ended.
+      #   RFC 3339 timestamp indicating when the contract will end (exclusive). If not
+      #     provided, the contract will be updated to be open-ended.
       #
       #   @return [Time, nil]
       optional :ending_before, Time
@@ -36,17 +40,10 @@ module Metronome
       #   attr_writer :ending_before
 
       # @!parse
-      #   # @param contract_id [String] ID of the contract to update
-      #   #
-      #   # @param customer_id [String] ID of the customer whose contract is to be updated
-      #   #
-      #   # @param allow_ending_before_finalized_invoice [Boolean] If true, allows setting the contract end date earlier than the end_timestamp of
-      #   #   existing finalized invoices. Finalized invoices will be unchanged; if you want
-      #   #   to incorporate the new end date, you can void and regenerate finalized usage
-      #   #   invoices. Defaults to true.
-      #   #
-      #   # @param ending_before [String] RFC 3339 timestamp indicating when the contract will end (exclusive). If not
-      #   #   provided, the contract will be updated to be open-ended.
+      #   # @param contract_id [String]
+      #   # @param customer_id [String]
+      #   # @param allow_ending_before_finalized_invoice [Boolean]
+      #   # @param ending_before [String]
       #   #
       #   def initialize(contract_id:, customer_id:, allow_ending_before_finalized_invoice: nil, ending_before: nil, **) = super
 

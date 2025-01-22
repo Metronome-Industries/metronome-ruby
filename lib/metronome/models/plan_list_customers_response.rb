@@ -73,16 +73,11 @@ module Metronome
 
         # @!parse
         #   # @param id [String]
-        #   #
         #   # @param custom_fields [Hash{Symbol=>String}]
-        #   #
         #   # @param customer_plan_id [String]
-        #   #
         #   # @param name [String]
-        #   #
-        #   # @param starting_on [String] The start date of the plan
-        #   #
-        #   # @param ending_before [String, nil] The end date of the plan
+        #   # @param starting_on [String]
+        #   # @param ending_before [String, nil]
         #   #
         #   def initialize(id:, custom_fields:, customer_plan_id:, name:, starting_on:, ending_before: nil, **) = super
 

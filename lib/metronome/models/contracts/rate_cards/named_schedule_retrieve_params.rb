@@ -24,7 +24,8 @@ module Metronome
           required :schedule_name, String
 
           # @!attribute [r] covering_date
-          #   If provided, at most one schedule segment will be returned (the one that covers this date). If not provided, all segments will be returned.
+          #   If provided, at most one schedule segment will be returned (the one that covers
+          #     this date). If not provided, all segments will be returned.
           #
           #   @return [Time, nil]
           optional :covering_date, Time
@@ -34,14 +35,10 @@ module Metronome
           #   attr_writer :covering_date
 
           # @!parse
-          #   # @param contract_id [String] ID of the contract whose named schedule is to be retrieved
-          #   #
-          #   # @param customer_id [String] ID of the customer whose named schedule is to be retrieved
-          #   #
-          #   # @param schedule_name [String] The identifier for the schedule to be retrieved
-          #   #
-          #   # @param covering_date [String] If provided, at most one schedule segment will be returned (the one that covers
-          #   #   this date). If not provided, all segments will be returned.
+          #   # @param contract_id [String]
+          #   # @param customer_id [String]
+          #   # @param schedule_name [String]
+          #   # @param covering_date [String]
           #   #
           #   def initialize(contract_id:, customer_id:, schedule_name:, covering_date: nil, **) = super
 

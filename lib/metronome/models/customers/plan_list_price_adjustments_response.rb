@@ -7,7 +7,7 @@ module Metronome
       # ```ruby
       # plan_list_price_adjustments_response => {
       #   charge_id: String,
-      #   charge_type: enum: Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::ChargeType,
+      #   charge_type: Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::ChargeType,
       #   prices: -> { Metronome::ArrayOf[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price] === _1 },
       #   start_period: Float,
       #   quantity: Float
@@ -86,7 +86,7 @@ module Metronome
         # @example
         # ```ruby
         # price => {
-        #   adjustment_type: enum: Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType,
+        #   adjustment_type: Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType,
         #   tier: Float,
         #   value: Float
         # }
@@ -102,7 +102,7 @@ module Metronome
                    }
 
           # @!attribute [r] tier
-          #   Used in pricing tiers.  Indicates at what metric value the price applies.
+          #   Used in pricing tiers. Indicates at what metric value the price applies.
           #
           #   @return [Float, nil]
           optional :tier, Float
@@ -121,10 +121,8 @@ module Metronome
           #   attr_writer :value
 
           # @!parse
-          #   # @param adjustment_type [String] Determines how the value will be applied.
-          #   #
-          #   # @param tier [Float] Used in pricing tiers. Indicates at what metric value the price applies.
-          #   #
+          #   # @param adjustment_type [String]
+          #   # @param tier [Float]
           #   # @param value [Float]
           #   #
           #   def initialize(adjustment_type:, tier: nil, value: nil, **) = super

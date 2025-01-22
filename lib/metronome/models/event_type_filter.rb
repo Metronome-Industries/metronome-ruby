@@ -11,7 +11,9 @@ module Metronome
     # ```
     class EventTypeFilter < Metronome::BaseModel
       # @!attribute [r] in_values
-      #   A list of event types that are explicitly included in the billable metric. If specified, only events of these types will match the billable metric. Must be non-empty if present.
+      #   A list of event types that are explicitly included in the billable metric. If
+      #     specified, only events of these types will match the billable metric. Must be
+      #     non-empty if present.
       #
       #   @return [Array<String>]
       optional :in_values, Metronome::ArrayOf[String]
@@ -21,7 +23,9 @@ module Metronome
       #   attr_writer :in_values
 
       # @!attribute [r] not_in_values
-      #   A list of event types that are explicitly excluded from the billable metric. If specified, events of these types will not match the billable metric. Must be non-empty if present.
+      #   A list of event types that are explicitly excluded from the billable metric. If
+      #     specified, events of these types will not match the billable metric. Must be
+      #     non-empty if present.
       #
       #   @return [Array<String>]
       optional :not_in_values, Metronome::ArrayOf[String]
@@ -33,13 +37,8 @@ module Metronome
       # @!parse
       #   # An optional filtering rule to match the 'event_type' property of an event.
       #   #
-      #   # @param in_values [Array<String>] A list of event types that are explicitly included in the billable metric. If
-      #   #   specified, only events of these types will match the billable metric. Must be
-      #   #   non-empty if present.
-      #   #
-      #   # @param not_in_values [Array<String>] A list of event types that are explicitly excluded from the billable metric. If
-      #   #   specified, events of these types will not match the billable metric. Must be
-      #   #   non-empty if present.
+      #   # @param in_values [Array<String>]
+      #   # @param not_in_values [Array<String>]
       #   #
       #   def initialize(in_values: nil, not_in_values: nil, **) = super
 

@@ -11,7 +11,7 @@ module Metronome
         required :product_id, String
 
         # @!parse
-        #   # @param product_id [String] ID of the product to be archived
+        #   # @param product_id [String]
         #   #
         #   def initialize(product_id:, **) = super
 

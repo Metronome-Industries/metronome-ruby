@@ -58,13 +58,9 @@ module Metronome
 
         # @!parse
         #   # @param customer_id [String]
-        #   #
         #   # @param event_type [String]
-        #   #
-        #   # @param timestamp [String] RFC 3339 formatted
-        #   #
+        #   # @param timestamp [String]
         #   # @param transaction_id [String]
-        #   #
         #   # @param properties [Hash{Symbol=>Object}]
         #   #
         #   def initialize(customer_id:, event_type:, timestamp:, transaction_id:, properties: nil, **) = super

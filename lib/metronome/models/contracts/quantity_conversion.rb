@@ -7,7 +7,7 @@ module Metronome
       # ```ruby
       # quantity_conversion => {
       #   conversion_factor: Float,
-      #   operation: enum: Metronome::Models::Contracts::QuantityConversion::Operation,
+      #   operation: Metronome::Models::Contracts::QuantityConversion::Operation,
       #   name: String
       # }
       # ```
@@ -43,11 +43,9 @@ module Metronome
         #   #   GB. In this case, the conversion factor would be 1024 and the operation would be
         #   #   "divide".
         #   #
-        #   # @param conversion_factor [Float] The factor to multiply or divide the quantity by.
-        #   #
-        #   # @param operation [String] The operation to perform on the quantity
-        #   #
-        #   # @param name [String] Optional name for this conversion.
+        #   # @param conversion_factor [Float]
+        #   # @param operation [String]
+        #   # @param name [String]
         #   #
         #   def initialize(conversion_factor:, operation:, name: nil, **) = super
 

@@ -24,7 +24,8 @@ module Metronome
       #   attr_writer :next_page
 
       # @!attribute [r] credit_grant_ids
-      #   An array of credit grant IDs. If this is specified, neither credit_type_ids nor customer_ids may be specified.
+      #   An array of credit grant IDs. If this is specified, neither credit_type_ids nor
+      #     customer_ids may be specified.
       #
       #   @return [Array<String>]
       optional :credit_grant_ids, Metronome::ArrayOf[String]
@@ -34,7 +35,8 @@ module Metronome
       #   attr_writer :credit_grant_ids
 
       # @!attribute [r] credit_type_ids
-      #   An array of credit type IDs. This must not be specified if credit_grant_ids is specified.
+      #   An array of credit type IDs. This must not be specified if credit_grant_ids is
+      #     specified.
       #
       #   @return [Array<String>]
       optional :credit_type_ids, Metronome::ArrayOf[String]
@@ -44,7 +46,8 @@ module Metronome
       #   attr_writer :credit_type_ids
 
       # @!attribute [r] customer_ids
-      #   An array of Metronome customer IDs. This must not be specified if credit_grant_ids is specified.
+      #   An array of Metronome customer IDs. This must not be specified if
+      #     credit_grant_ids is specified.
       #
       #   @return [Array<String>]
       optional :customer_ids, Metronome::ArrayOf[String]
@@ -74,22 +77,13 @@ module Metronome
       #   attr_writer :not_expiring_before
 
       # @!parse
-      #   # @param limit [Integer] Max number of results that should be returned
-      #   #
-      #   # @param next_page [String] Cursor that indicates where the next page of results should start.
-      #   #
-      #   # @param credit_grant_ids [Array<String>] An array of credit grant IDs. If this is specified, neither credit_type_ids nor
-      #   #   customer_ids may be specified.
-      #   #
-      #   # @param credit_type_ids [Array<String>] An array of credit type IDs. This must not be specified if credit_grant_ids is
-      #   #   specified.
-      #   #
-      #   # @param customer_ids [Array<String>] An array of Metronome customer IDs. This must not be specified if
-      #   #   credit_grant_ids is specified.
-      #   #
-      #   # @param effective_before [String] Only return credit grants that are effective before this timestamp (exclusive).
-      #   #
-      #   # @param not_expiring_before [String] Only return credit grants that expire at or after this timestamp.
+      #   # @param limit [Integer]
+      #   # @param next_page [String]
+      #   # @param credit_grant_ids [Array<String>]
+      #   # @param credit_type_ids [Array<String>]
+      #   # @param customer_ids [Array<String>]
+      #   # @param effective_before [String]
+      #   # @param not_expiring_before [String]
       #   #
       #   def initialize(
       #     limit: nil,

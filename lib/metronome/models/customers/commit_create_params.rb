@@ -5,7 +5,8 @@ module Metronome
     module Customers
       class CommitCreateParams < Metronome::BaseModel
         # @!attribute access_schedule
-        #   Schedule for distributing the commit to the customer. For "POSTPAID" commits only one schedule item is allowed and amount must match invoice_schedule total.
+        #   Schedule for distributing the commit to the customer. For "POSTPAID" commits
+        #     only one schedule item is allowed and amount must match invoice_schedule total.
         #
         #   @return [Metronome::Models::Customers::CommitCreateParams::AccessSchedule]
         required :access_schedule, -> { Metronome::Models::Customers::CommitCreateParams::AccessSchedule }
@@ -16,13 +17,15 @@ module Metronome
         required :customer_id, String
 
         # @!attribute priority
-        #   If multiple credits or commits are applicable, the one with the lower priority will apply first.
+        #   If multiple credits or commits are applicable, the one with the lower priority
+        #     will apply first.
         #
         #   @return [Float]
         required :priority, Float
 
         # @!attribute product_id
-        #   ID of the fixed product associated with the commit. This is required because products are used to invoice the commit amount.
+        #   ID of the fixed product associated with the commit. This is required because
+        #     products are used to invoice the commit amount.
         #
         #   @return [String]
         required :product_id, String
@@ -33,7 +36,8 @@ module Metronome
         required :type, enum: -> { Metronome::Models::Customers::CommitCreateParams::Type }
 
         # @!attribute [r] applicable_contract_ids
-        #   Which contract the commit applies to. If not provided, the commit applies to all contracts.
+        #   Which contract the commit applies to. If not provided, the commit applies to all
+        #     contracts.
         #
         #   @return [Array<String>]
         optional :applicable_contract_ids, Metronome::ArrayOf[String]
@@ -43,7 +47,8 @@ module Metronome
         #   attr_writer :applicable_contract_ids
 
         # @!attribute [r] applicable_product_ids
-        #   Which products the commit applies to. If both applicable_product_ids and applicable_product_tags are not provided, the commit applies to all products.
+        #   Which products the commit applies to. If both applicable_product_ids and
+        #     applicable_product_tags are not provided, the commit applies to all products.
         #
         #   @return [Array<String>]
         optional :applicable_product_ids, Metronome::ArrayOf[String]
@@ -53,7 +58,8 @@ module Metronome
         #   attr_writer :applicable_product_ids
 
         # @!attribute [r] applicable_product_tags
-        #   Which tags the commit applies to. If both applicable_product_ids and applicable_product_tags are not provided, the commit applies to all products.
+        #   Which tags the commit applies to. If both applicable_product_ids and
+        #     applicable_product_tags are not provided, the commit applies to all products.
         #
         #   @return [Array<String>]
         optional :applicable_product_tags, Metronome::ArrayOf[String]
@@ -82,7 +88,9 @@ module Metronome
         #   attr_writer :description
 
         # @!attribute [r] invoice_contract_id
-        #   The contract that this commit will be billed on. This is required for "POSTPAID" commits and for "PREPAID" commits unless there is no invoice schedule above (i.e., the commit is 'free').
+        #   The contract that this commit will be billed on. This is required for "POSTPAID"
+        #     commits and for "PREPAID" commits unless there is no invoice schedule above
+        #     (i.e., the commit is 'free').
         #
         #   @return [String, nil]
         optional :invoice_contract_id, String
@@ -92,7 +100,10 @@ module Metronome
         #   attr_writer :invoice_contract_id
 
         # @!attribute [r] invoice_schedule
-        #   Required for "POSTPAID" commits: the true up invoice will be generated at this time and only one schedule item is allowed; the total must match accesss_schedule amount. Optional for "PREPAID" commits: if not provided, this will be a "complimentary" commit with no invoice.
+        #   Required for "POSTPAID" commits: the true up invoice will be generated at this
+        #     time and only one schedule item is allowed; the total must match
+        #     accesss_schedule amount. Optional for "PREPAID" commits: if not provided, this
+        #     will be a "complimentary" commit with no invoice.
         #
         #   @return [Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule, nil]
         optional :invoice_schedule, -> { Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule }
@@ -141,7 +152,10 @@ module Metronome
         #   attr_writer :salesforce_opportunity_id
 
         # @!attribute [r] uniqueness_key
-        #   Prevents the creation of duplicates. If a request to create a commit or credit is made with a uniqueness key that was previously used to create a commit or credit, a new record will not be created and the request will fail with a 409 error.
+        #   Prevents the creation of duplicates. If a request to create a commit or credit
+        #     is made with a uniqueness key that was previously used to create a commit or
+        #     credit, a new record will not be created and the request will fail with a 409
+        #     error.
         #
         #   @return [String, nil]
         optional :uniqueness_key, String
@@ -151,53 +165,23 @@ module Metronome
         #   attr_writer :uniqueness_key
 
         # @!parse
-        #   # @param access_schedule [Metronome::Models::Customers::CommitCreateParams::AccessSchedule] Schedule for distributing the commit to the customer. For "POSTPAID" commits
-        #   #   only one schedule item is allowed and amount must match invoice_schedule total.
-        #   #
+        #   # @param access_schedule [Metronome::Models::Customers::CommitCreateParams::AccessSchedule]
         #   # @param customer_id [String]
-        #   #
-        #   # @param priority [Float] If multiple credits or commits are applicable, the one with the lower priority
-        #   #   will apply first.
-        #   #
-        #   # @param product_id [String] ID of the fixed product associated with the commit. This is required because
-        #   #   products are used to invoice the commit amount.
-        #   #
+        #   # @param priority [Float]
+        #   # @param product_id [String]
         #   # @param type [String]
-        #   #
-        #   # @param applicable_contract_ids [Array<String>] Which contract the commit applies to. If not provided, the commit applies to all
-        #   #   contracts.
-        #   #
-        #   # @param applicable_product_ids [Array<String>] Which products the commit applies to. If both applicable_product_ids and
-        #   #   applicable_product_tags are not provided, the commit applies to all products.
-        #   #
-        #   # @param applicable_product_tags [Array<String>] Which tags the commit applies to. If both applicable_product_ids and
-        #   #   applicable_product_tags are not provided, the commit applies to all products.
-        #   #
+        #   # @param applicable_contract_ids [Array<String>]
+        #   # @param applicable_product_ids [Array<String>]
+        #   # @param applicable_product_tags [Array<String>]
         #   # @param custom_fields [Hash{Symbol=>String}]
-        #   #
-        #   # @param description [String] Used only in UI/API. It is not exposed to end customers.
-        #   #
-        #   # @param invoice_contract_id [String] The contract that this commit will be billed on. This is required for "POSTPAID"
-        #   #   commits and for "PREPAID" commits unless there is no invoice schedule above
-        #   #   (i.e., the commit is 'free').
-        #   #
-        #   # @param invoice_schedule [Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule] Required for "POSTPAID" commits: the true up invoice will be generated at this
-        #   #   time and only one schedule item is allowed; the total must match
-        #   #   accesss_schedule amount. Optional for "PREPAID" commits: if not provided, this
-        #   #   will be a "complimentary" commit with no invoice.
-        #   #
-        #   # @param name [String] displayed on invoices
-        #   #
-        #   # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
-        #   #
+        #   # @param description [String]
+        #   # @param invoice_contract_id [String]
+        #   # @param invoice_schedule [Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule]
+        #   # @param name [String]
+        #   # @param netsuite_sales_order_id [String]
         #   # @param rate_type [String]
-        #   #
-        #   # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
-        #   #
-        #   # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a commit or credit
-        #   #   is made with a uniqueness key that was previously used to create a commit or
-        #   #   credit, a new record will not be created and the request will fail with a 409
-        #   #   error.
+        #   # @param salesforce_opportunity_id [String]
+        #   # @param uniqueness_key [String]
         #   #
         #   def initialize(
         #     access_schedule:,
@@ -255,8 +239,7 @@ module Metronome
           #   #   only one schedule item is allowed and amount must match invoice_schedule total.
           #   #
           #   # @param schedule_items [Array<Metronome::Models::Customers::CommitCreateParams::AccessSchedule::ScheduleItem>]
-          #   #
-          #   # @param credit_type_id [String] Defaults to USD (cents) if not passed
+          #   # @param credit_type_id [String]
           #   #
           #   def initialize(schedule_items:, credit_type_id: nil, **) = super
 
@@ -290,10 +273,8 @@ module Metronome
 
             # @!parse
             #   # @param amount [Float]
-            #   #
-            #   # @param ending_before [String] RFC 3339 timestamp (exclusive)
-            #   #
-            #   # @param starting_at [String] RFC 3339 timestamp (inclusive)
+            #   # @param ending_before [String]
+            #   # @param starting_at [String]
             #   #
             #   def initialize(amount:, ending_before:, starting_at:, **) = super
 
@@ -337,7 +318,9 @@ module Metronome
           #   attr_writer :credit_type_id
 
           # @!attribute [r] recurring_schedule
-          #   Enter the unit price and quantity for the charge or instead only send the amount. If amount is sent, the unit price is assumed to be the amount and quantity is inferred to be 1.
+          #   Enter the unit price and quantity for the charge or instead only send the
+          #     amount. If amount is sent, the unit price is assumed to be the amount and
+          #     quantity is inferred to be 1.
           #
           #   @return [Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule, nil]
           optional :recurring_schedule,
@@ -366,13 +349,9 @@ module Metronome
           #   #   accesss_schedule amount. Optional for "PREPAID" commits: if not provided, this
           #   #   will be a "complimentary" commit with no invoice.
           #   #
-          #   # @param credit_type_id [String] Defaults to USD (cents) if not passed.
-          #   #
-          #   # @param recurring_schedule [Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule] Enter the unit price and quantity for the charge or instead only send the
-          #   #   amount. If amount is sent, the unit price is assumed to be the amount and
-          #   #   quantity is inferred to be 1.
-          #   #
-          #   # @param schedule_items [Array<Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem>] Either provide amount or provide both unit_price and quantity.
+          #   # @param credit_type_id [String]
+          #   # @param recurring_schedule [Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule]
+          #   # @param schedule_items [Array<Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem>]
           #   #
           #   def initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil, **) = super
 
@@ -381,9 +360,9 @@ module Metronome
           # @example
           # ```ruby
           # recurring_schedule => {
-          #   amount_distribution: enum: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::AmountDistribution,
+          #   amount_distribution: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::AmountDistribution,
           #   ending_before: Time,
-          #   frequency: enum: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::Frequency,
+          #   frequency: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::Frequency,
           #   starting_at: Time,
           #   amount: Float,
           #   **_
@@ -419,7 +398,9 @@ module Metronome
             required :starting_at, Time
 
             # @!attribute [r] amount
-            #   Amount for the charge. Can be provided instead of unit_price and quantity. If amount is sent, the unit_price is assumed to be the amount and quantity is inferred to be 1.
+            #   Amount for the charge. Can be provided instead of unit_price and quantity. If
+            #     amount is sent, the unit_price is assumed to be the amount and quantity is
+            #     inferred to be 1.
             #
             #   @return [Float, nil]
             optional :amount, Float
@@ -429,7 +410,9 @@ module Metronome
             #   attr_writer :amount
 
             # @!attribute [r] quantity
-            #   Quantity for the charge. Will be multiplied by unit_price to determine the amount and must be specified with unit_price. If specified amount cannot be provided.
+            #   Quantity for the charge. Will be multiplied by unit_price to determine the
+            #     amount and must be specified with unit_price. If specified amount cannot be
+            #     provided.
             #
             #   @return [Float, nil]
             optional :quantity, Float
@@ -439,7 +422,9 @@ module Metronome
             #   attr_writer :quantity
 
             # @!attribute [r] unit_price
-            #   Unit price for the charge. Will be multiplied by quantity to determine the amount and must be specified with quantity. If specified amount cannot be provided.
+            #   Unit price for the charge. Will be multiplied by quantity to determine the
+            #     amount and must be specified with quantity. If specified amount cannot be
+            #     provided.
             #
             #   @return [Float, nil]
             optional :unit_price, Float
@@ -454,24 +439,12 @@ module Metronome
             #   #   quantity is inferred to be 1.
             #   #
             #   # @param amount_distribution [String]
-            #   #
-            #   # @param ending_before [String] RFC 3339 timestamp (exclusive).
-            #   #
+            #   # @param ending_before [String]
             #   # @param frequency [String]
-            #   #
-            #   # @param starting_at [String] RFC 3339 timestamp (inclusive).
-            #   #
-            #   # @param amount [Float] Amount for the charge. Can be provided instead of unit_price and quantity. If
-            #   #   amount is sent, the unit_price is assumed to be the amount and quantity is
-            #   #   inferred to be 1.
-            #   #
-            #   # @param quantity [Float] Quantity for the charge. Will be multiplied by unit_price to determine the
-            #   #   amount and must be specified with unit_price. If specified amount cannot be
-            #   #   provided.
-            #   #
-            #   # @param unit_price [Float] Unit price for the charge. Will be multiplied by quantity to determine the
-            #   #   amount and must be specified with quantity. If specified amount cannot be
-            #   #   provided.
+            #   # @param starting_at [String]
+            #   # @param amount [Float]
+            #   # @param quantity [Float]
+            #   # @param unit_price [Float]
             #   #
             #   def initialize(
             #     amount_distribution:,
@@ -547,7 +520,9 @@ module Metronome
             required :timestamp, Time
 
             # @!attribute [r] amount
-            #   Amount for the charge. Can be provided instead of unit_price and quantity. If amount is sent, the unit_price is assumed to be the amount and quantity is inferred to be 1.
+            #   Amount for the charge. Can be provided instead of unit_price and quantity. If
+            #     amount is sent, the unit_price is assumed to be the amount and quantity is
+            #     inferred to be 1.
             #
             #   @return [Float, nil]
             optional :amount, Float
@@ -557,7 +532,9 @@ module Metronome
             #   attr_writer :amount
 
             # @!attribute [r] quantity
-            #   Quantity for the charge. Will be multiplied by unit_price to determine the amount and must be specified with unit_price. If specified amount cannot be provided.
+            #   Quantity for the charge. Will be multiplied by unit_price to determine the
+            #     amount and must be specified with unit_price. If specified amount cannot be
+            #     provided.
             #
             #   @return [Float, nil]
             optional :quantity, Float
@@ -567,7 +544,9 @@ module Metronome
             #   attr_writer :quantity
 
             # @!attribute [r] unit_price
-            #   Unit price for the charge. Will be multiplied by quantity to determine the amount and must be specified with quantity. If specified amount cannot be provided.
+            #   Unit price for the charge. Will be multiplied by quantity to determine the
+            #     amount and must be specified with quantity. If specified amount cannot be
+            #     provided.
             #
             #   @return [Float, nil]
             optional :unit_price, Float
@@ -577,19 +556,10 @@ module Metronome
             #   attr_writer :unit_price
 
             # @!parse
-            #   # @param timestamp [String] timestamp of the scheduled event
-            #   #
-            #   # @param amount [Float] Amount for the charge. Can be provided instead of unit_price and quantity. If
-            #   #   amount is sent, the unit_price is assumed to be the amount and quantity is
-            #   #   inferred to be 1.
-            #   #
-            #   # @param quantity [Float] Quantity for the charge. Will be multiplied by unit_price to determine the
-            #   #   amount and must be specified with unit_price. If specified amount cannot be
-            #   #   provided.
-            #   #
-            #   # @param unit_price [Float] Unit price for the charge. Will be multiplied by quantity to determine the
-            #   #   amount and must be specified with quantity. If specified amount cannot be
-            #   #   provided.
+            #   # @param timestamp [String]
+            #   # @param amount [Float]
+            #   # @param quantity [Float]
+            #   # @param unit_price [Float]
             #   #
             #   def initialize(timestamp:, amount: nil, quantity: nil, unit_price: nil, **) = super
 

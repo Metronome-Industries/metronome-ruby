@@ -40,13 +40,10 @@ module Metronome
       #   attr_writer :name
 
       # @!parse
-      #   # @param id [String] the ID of the credit grant
-      #   #
-      #   # @param credit_grant_type [String] the updated credit grant type
-      #   #
-      #   # @param expires_at [String] the updated expiration date for the credit grant
-      #   #
-      #   # @param name [String] the updated name for the credit grant
+      #   # @param id [String]
+      #   # @param credit_grant_type [String]
+      #   # @param expires_at [String]
+      #   # @param name [String]
       #   #
       #   def initialize(id:, credit_grant_type: nil, expires_at: nil, name: nil, **) = super
 

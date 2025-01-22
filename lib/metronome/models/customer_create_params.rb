@@ -40,7 +40,8 @@ module Metronome
       #   attr_writer :customer_billing_provider_configurations
 
       # @!attribute [r] external_id
-      #   (deprecated, use ingest_aliases instead) an alias that can be used to refer to this customer in usage events
+      #   (deprecated, use ingest_aliases instead) an alias that can be used to refer to
+      #     this customer in usage events
       #
       #   @return [String, nil]
       optional :external_id, String
@@ -60,18 +61,12 @@ module Metronome
       #   attr_writer :ingest_aliases
 
       # @!parse
-      #   # @param name [String] This will be truncated to 160 characters if the provided name is longer.
-      #   #
+      #   # @param name [String]
       #   # @param billing_config [Metronome::Models::CustomerCreateParams::BillingConfig]
-      #   #
       #   # @param custom_fields [Hash{Symbol=>String}]
-      #   #
       #   # @param customer_billing_provider_configurations [Array<Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration>]
-      #   #
-      #   # @param external_id [String] (deprecated, use ingest_aliases instead) an alias that can be used to refer to
-      #   #   this customer in usage events
-      #   #
-      #   # @param ingest_aliases [Array<String>] Aliases that can be used to refer to this customer in usage events
+      #   # @param external_id [String]
+      #   # @param ingest_aliases [Array<String>]
       #   #
       #   def initialize(
       #     name:,
@@ -91,10 +86,10 @@ module Metronome
       # ```ruby
       # billing_config => {
       #   billing_provider_customer_id: String,
-      #   billing_provider_type: enum: Metronome::Models::CustomerCreateParams::BillingConfig::BillingProviderType,
+      #   billing_provider_type: Metronome::Models::CustomerCreateParams::BillingConfig::BillingProviderType,
       #   aws_is_subscription_product: Metronome::BooleanModel,
       #   aws_product_code: String,
-      #   aws_region: enum: Metronome::Models::CustomerCreateParams::BillingConfig::AwsRegion
+      #   aws_region: Metronome::Models::CustomerCreateParams::BillingConfig::AwsRegion
       # }
       # ```
       class BillingConfig < Metronome::BaseModel
@@ -149,15 +144,10 @@ module Metronome
 
         # @!parse
         #   # @param billing_provider_customer_id [String]
-        #   #
         #   # @param billing_provider_type [String]
-        #   #
-        #   # @param aws_is_subscription_product [Boolean] True if the aws_product_code is a SAAS subscription product, false otherwise.
-        #   #
+        #   # @param aws_is_subscription_product [Boolean]
         #   # @param aws_product_code [String]
-        #   #
         #   # @param aws_region [String]
-        #   #
         #   # @param stripe_collection_method [String]
         #   #
         #   def initialize(
@@ -271,9 +261,9 @@ module Metronome
       # @example
       # ```ruby
       # customer_billing_provider_configuration => {
-      #   billing_provider: enum: Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::BillingProvider,
+      #   billing_provider: Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::BillingProvider,
       #   configuration: -> { Metronome::HashOf[Metronome::Unknown] === _1 },
-      #   delivery_method: enum: Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod,
+      #   delivery_method: Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod,
       #   delivery_method_id: String
       # }
       # ```
@@ -288,7 +278,10 @@ module Metronome
                  }
 
         # @!attribute [r] configuration
-        #   Configuration for the billing provider. The structure of this object is specific to the billing provider and delivery provider combination. Defaults to an empty object, however, for most billing provider + delivery method combinations, it will not be a valid configuration.
+        #   Configuration for the billing provider. The structure of this object is specific
+        #     to the billing provider and delivery provider combination. Defaults to an empty
+        #     object, however, for most billing provider + delivery method combinations, it
+        #     will not be a valid configuration.
         #
         #   @return [Hash{Symbol=>Object}, nil]
         optional :configuration, Metronome::HashOf[Metronome::Unknown]
@@ -298,7 +291,8 @@ module Metronome
         #   attr_writer :configuration
 
         # @!attribute [r] delivery_method
-        #   The method to use for delivering invoices to this customer. If not provided, the `delivery_method_id` must be provided.
+        #   The method to use for delivering invoices to this customer. If not provided, the
+        #     `delivery_method_id` must be provided.
         #
         #   @return [Symbol, Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod, nil]
         optional :delivery_method,
@@ -311,7 +305,8 @@ module Metronome
         #   attr_writer :delivery_method
 
         # @!attribute [r] delivery_method_id
-        #   ID of the delivery method to use for this customer. If not provided, the `delivery_method` must be provided.
+        #   ID of the delivery method to use for this customer. If not provided, the
+        #     `delivery_method` must be provided.
         #
         #   @return [String, nil]
         optional :delivery_method_id, String
@@ -321,18 +316,10 @@ module Metronome
         #   attr_writer :delivery_method_id
 
         # @!parse
-        #   # @param billing_provider [String] The billing provider set for this configuration.
-        #   #
-        #   # @param configuration [Hash{Symbol=>Object}] Configuration for the billing provider. The structure of this object is specific
-        #   #   to the billing provider and delivery provider combination. Defaults to an empty
-        #   #   object, however, for most billing provider + delivery method combinations, it
-        #   #   will not be a valid configuration.
-        #   #
-        #   # @param delivery_method [String] The method to use for delivering invoices to this customer. If not provided, the
-        #   #   `delivery_method_id` must be provided.
-        #   #
-        #   # @param delivery_method_id [String] ID of the delivery method to use for this customer. If not provided, the
-        #   #   `delivery_method` must be provided.
+        #   # @param billing_provider [String]
+        #   # @param configuration [Hash{Symbol=>Object}]
+        #   # @param delivery_method [String]
+        #   # @param delivery_method_id [String]
         #   #
         #   def initialize(billing_provider:, configuration: nil, delivery_method: nil, delivery_method_id: nil, **) = super
 
@@ -365,7 +352,8 @@ module Metronome
           finalize!
         end
 
-        # The method to use for delivering invoices to this customer. If not provided, the `delivery_method_id` must be provided.
+        # The method to use for delivering invoices to this customer. If not provided, the
+        #   `delivery_method_id` must be provided.
         #
         # @example
         # ```ruby

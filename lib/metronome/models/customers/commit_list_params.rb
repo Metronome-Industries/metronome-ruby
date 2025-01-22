@@ -49,7 +49,8 @@ module Metronome
         #   attr_writer :include_archived
 
         # @!attribute [r] include_balance
-        #   Include the balance in the response. Setting this flag may cause the query to be slower.
+        #   Include the balance in the response. Setting this flag may cause the query to be
+        #     slower.
         #
         #   @return [Boolean, nil]
         optional :include_balance, Metronome::BooleanModel
@@ -69,7 +70,8 @@ module Metronome
         #   attr_writer :include_contract_commits
 
         # @!attribute [r] include_ledgers
-        #   Include commit ledgers in the response. Setting this flag may cause the query to be slower.
+        #   Include commit ledgers in the response. Setting this flag may cause the query to
+        #     be slower.
         #
         #   @return [Boolean, nil]
         optional :include_ledgers, Metronome::BooleanModel
@@ -100,26 +102,15 @@ module Metronome
 
         # @!parse
         #   # @param customer_id [String]
-        #   #
         #   # @param commit_id [String]
-        #   #
-        #   # @param covering_date [String] Include only commits that have access schedules that "cover" the provided date
-        #   #
-        #   # @param effective_before [String] Include only commits that have any access before the provided date (exclusive)
-        #   #
-        #   # @param include_archived [Boolean] Include commits from archived contracts.
-        #   #
-        #   # @param include_balance [Boolean] Include the balance in the response. Setting this flag may cause the query to be
-        #   #   slower.
-        #   #
-        #   # @param include_contract_commits [Boolean] Include commits on the contract level.
-        #   #
-        #   # @param include_ledgers [Boolean] Include commit ledgers in the response. Setting this flag may cause the query to
-        #   #   be slower.
-        #   #
-        #   # @param next_page [String] The next page token from a previous response.
-        #   #
-        #   # @param starting_at [String] Include only commits that have any access on or after the provided date
+        #   # @param covering_date [String]
+        #   # @param effective_before [String]
+        #   # @param include_archived [Boolean]
+        #   # @param include_balance [Boolean]
+        #   # @param include_contract_commits [Boolean]
+        #   # @param include_ledgers [Boolean]
+        #   # @param next_page [String]
+        #   # @param starting_at [String]
         #   #
         #   def initialize(
         #     customer_id:,

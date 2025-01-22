@@ -22,7 +22,8 @@ module Metronome
         required :starting_at, Time
 
         # @!attribute value
-        #   The value to set for the named schedule. The structure of this object is specific to the named schedule.
+        #   The value to set for the named schedule. The structure of this object is
+        #     specific to the named schedule.
         #
         #   @return [Object]
         required :value, Metronome::Unknown
@@ -37,15 +38,10 @@ module Metronome
         #   attr_writer :ending_before
 
         # @!parse
-        #   # @param rate_card_id [String] ID of the rate card whose named schedule is to be updated
-        #   #
-        #   # @param schedule_name [String] The identifier for the schedule to be updated
-        #   #
+        #   # @param rate_card_id [String]
+        #   # @param schedule_name [String]
         #   # @param starting_at [String]
-        #   #
-        #   # @param value [Object] The value to set for the named schedule. The structure of this object is
-        #   #   specific to the named schedule.
-        #   #
+        #   # @param value [Object]
         #   # @param ending_before [String]
         #   #
         #   def initialize(rate_card_id:, schedule_name:, starting_at:, value:, ending_before: nil, **) = super

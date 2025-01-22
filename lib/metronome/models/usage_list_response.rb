@@ -71,7 +71,8 @@ module Metronome
         required :value, Float, nil?: true
 
         # @!attribute [r] groups
-        #   Values will be either a number or null. Null indicates that there were no matches for the group_by value.
+        #   Values will be either a number or null. Null indicates that there were no
+        #     matches for the group_by value.
         #
         #   @return [Hash{Symbol=>Float}, nil]
         optional :groups, Metronome::HashOf[Float]
@@ -82,19 +83,12 @@ module Metronome
 
         # @!parse
         #   # @param billable_metric_id [String]
-        #   #
         #   # @param billable_metric_name [String]
-        #   #
         #   # @param customer_id [String]
-        #   #
         #   # @param end_timestamp [String]
-        #   #
         #   # @param start_timestamp [String]
-        #   #
         #   # @param value [Float, nil]
-        #   #
-        #   # @param groups [Hash{Symbol=>Float}, nil] Values will be either a number or null. Null indicates that there were no
-        #   #   matches for the group_by value.
+        #   # @param groups [Hash{Symbol=>Float}, nil]
         #   #
         #   def initialize(
         #     billable_metric_id:,

@@ -32,7 +32,7 @@ module Metronome
       # ```ruby
       # data => {
       #   enforce_uniqueness: Metronome::BooleanModel,
-      #   entity: enum: Metronome::Models::CustomFieldListKeysResponse::Data::Entity,
+      #   entity: Metronome::Models::CustomFieldListKeysResponse::Data::Entity,
       #   key: String
       # }
       # ```

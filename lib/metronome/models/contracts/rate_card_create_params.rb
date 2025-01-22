@@ -11,7 +11,9 @@ module Metronome
         required :name, String
 
         # @!attribute [r] aliases
-        #   Reference this alias when creating a contract. If the same alias is assigned to multiple rate cards, it will reference the rate card to which it was most recently assigned. It is not exposed to end customers.
+        #   Reference this alias when creating a contract. If the same alias is assigned to
+        #     multiple rate cards, it will reference the rate card to which it was most
+        #     recently assigned. It is not exposed to end customers.
         #
         #   @return [Array<Metronome::Models::Contracts::RateCardCreateParams::Alias>]
         optional :aliases,
@@ -55,7 +57,8 @@ module Metronome
         #   attr_writer :description
 
         # @!attribute [r] fiat_credit_type_id
-        #   The Metronome ID of the credit type to associate with the rate card, defaults to USD (cents) if not passed.
+        #   The Metronome ID of the credit type to associate with the rate card, defaults to
+        #     USD (cents) if not passed.
         #
         #   @return [String, nil]
         optional :fiat_credit_type_id, String
@@ -65,20 +68,12 @@ module Metronome
         #   attr_writer :fiat_credit_type_id
 
         # @!parse
-        #   # @param name [String] Used only in UI/API. It is not exposed to end customers.
-        #   #
-        #   # @param aliases [Array<Metronome::Models::Contracts::RateCardCreateParams::Alias>] Reference this alias when creating a contract. If the same alias is assigned to
-        #   #   multiple rate cards, it will reference the rate card to which it was most
-        #   #   recently assigned. It is not exposed to end customers.
-        #   #
-        #   # @param credit_type_conversions [Array<Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion>] Required when using custom pricing units in rates.
-        #   #
+        #   # @param name [String]
+        #   # @param aliases [Array<Metronome::Models::Contracts::RateCardCreateParams::Alias>]
+        #   # @param credit_type_conversions [Array<Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion>]
         #   # @param custom_fields [Hash{Symbol=>String}]
-        #   #
         #   # @param description [String]
-        #   #
-        #   # @param fiat_credit_type_id [String] The Metronome ID of the credit type to associate with the rate card, defaults to
-        #   #   USD (cents) if not passed.
+        #   # @param fiat_credit_type_id [String]
         #   #
         #   def initialize(
         #     name:,

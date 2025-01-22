@@ -5,7 +5,8 @@ module Metronome
     module Customers
       class CreditUpdateEndDateParams < Metronome::BaseModel
         # @!attribute access_ending_before
-        #   RFC 3339 timestamp indicating when access to the credit will end and it will no longer be possible to draw it down (exclusive).
+        #   RFC 3339 timestamp indicating when access to the credit will end and it will no
+        #     longer be possible to draw it down (exclusive).
         #
         #   @return [Time]
         required :access_ending_before, Time
@@ -23,12 +24,9 @@ module Metronome
         required :customer_id, String
 
         # @!parse
-        #   # @param access_ending_before [String] RFC 3339 timestamp indicating when access to the credit will end and it will no
-        #   #   longer be possible to draw it down (exclusive).
-        #   #
-        #   # @param credit_id [String] ID of the commit to update
-        #   #
-        #   # @param customer_id [String] ID of the customer whose credit is to be updated
+        #   # @param access_ending_before [String]
+        #   # @param credit_id [String]
+        #   # @param customer_id [String]
         #   #
         #   def initialize(access_ending_before:, credit_id:, customer_id:, **) = super
 
