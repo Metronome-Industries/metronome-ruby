@@ -79,7 +79,7 @@ module Metronome
     #
     #   @option req [Class, nil] :page
     #
-    #   @option req [Class, Metronome::Converter] :model
+    #   @option req [Class, Metronome::Converter, Symbol, Boolean, Integer, Float] :model
     #
     # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] .
     #
@@ -374,7 +374,7 @@ module Metronome
     #
     #   @option req [Class, nil] :page
     #
-    #   @option req [Class, Metronome::Converter] :model
+    #   @option req [Class, Metronome::Converter, Symbol, Boolean, Integer, Float] :model
     #
     # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] .
     #
@@ -427,7 +427,7 @@ module Metronome
     #
     #   @option req [Class, nil] :page
     #
-    #   @option req [Class, Metronome::Converter] :model
+    #   @option req [Class, Metronome::Converter, Symbol, Boolean, Integer, Float] :model
     #
     # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] .
     #
