@@ -6,7 +6,7 @@ module Metronome
       # Fetch aggregated usage data for multiple customers and billable-metrics, broken
       #   into intervals of the specified length.
       #
-      # @param params [Metronome::Models::UsageListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::UsageListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Time] :ending_before Body param:
       #
@@ -25,21 +25,21 @@ module Metronome
       #   @option params [Array<String>] :customer_ids Body param: A list of Metronome customer IDs to fetch usage for. If absent,
       #     usage for all customers will be returned.
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::UsageListResponse]
       #
-      def list(params = {}, opts = {})
-        parsed = Metronome::Models::UsageListParams.dump(params)
+      def list(params)
+        parsed, options = Metronome::Models::UsageListParams.dump_request(params)
         query_params = [:next_page]
-        req = {
+        @client.request(
           method: :post,
           path: "usage",
           query: parsed.slice(*query_params),
           body: parsed.except(*query_params),
-          model: Metronome::Models::UsageListResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::UsageListResponse,
+          options: options
+        )
       end
 
       # Send usage events to Metronome. The body of this request is expected to be a
@@ -48,29 +48,29 @@ module Metronome
       #   [Getting usage into Metronome](https://docs.metronome.com/connect-metronome/) to
       #   learn more about usage events.
       #
-      # @param params [Metronome::Models::UsageIngestParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::UsageIngestParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Array<Metronome::Models::UsageIngestParams::Usage>] :usage
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [nil]
       #
-      def ingest(params = {}, opts = {})
-        parsed = Metronome::Models::UsageIngestParams.dump(params)
-        req = {
+      def ingest(params)
+        parsed, options = Metronome::Models::UsageIngestParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "ingest",
           body: parsed[:usage],
-          model: NilClass
-        }
-        @client.request(req, opts)
+          model: NilClass,
+          options: options
+        )
       end
 
       # Fetch aggregated usage data for the specified customer, billable-metric, and
       #   optional group, broken into intervals of the specified length.
       #
-      # @param params [Metronome::Models::UsageListWithGroupsParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::UsageListWithGroupsParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :billable_metric_id Body param:
       #
@@ -95,22 +95,22 @@ module Metronome
       #
       #   @option params [Time] :starting_on Body param:
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::CursorPage<Metronome::Models::UsageListWithGroupsResponse>]
       #
-      def list_with_groups(params = {}, opts = {})
-        parsed = Metronome::Models::UsageListWithGroupsParams.dump(params)
+      def list_with_groups(params)
+        parsed, options = Metronome::Models::UsageListWithGroupsParams.dump_request(params)
         query_params = [:limit, :next_page]
-        req = {
+        @client.request(
           method: :post,
           path: "usage/groups",
           query: parsed.slice(*query_params),
           body: parsed.except(*query_params),
           page: Metronome::CursorPage,
-          model: Metronome::Models::UsageListWithGroupsResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::UsageListWithGroupsResponse,
+          options: options
+        )
       end
 
       # @param client [Metronome::Client]

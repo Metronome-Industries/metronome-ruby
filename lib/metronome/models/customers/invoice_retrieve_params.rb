@@ -4,6 +4,10 @@ module Metronome
   module Models
     module Customers
       class InvoiceRetrieveParams < Metronome::BaseModel
+        # @!parse
+        #   extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
         # @!attribute customer_id
         #
         #   @return [String]
@@ -28,8 +32,9 @@ module Metronome
         #   # @param customer_id [String]
         #   # @param invoice_id [String]
         #   # @param skip_zero_qty_line_items [Boolean]
+        #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
-        #   def initialize(customer_id:, invoice_id:, skip_zero_qty_line_items: nil, **) = super
+        #   def initialize(customer_id:, invoice_id:, skip_zero_qty_line_items: nil, request_options: {}, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class ContractScheduleProServicesInvoiceParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute contract_id
       #
       #   @return [String]
@@ -55,6 +59,7 @@ module Metronome
       #   # @param line_items [Array<Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem>]
       #   # @param netsuite_invoice_header_end [String]
       #   # @param netsuite_invoice_header_start [String]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     contract_id:,
@@ -63,6 +68,7 @@ module Metronome
       #     line_items:,
       #     netsuite_invoice_header_end: nil,
       #     netsuite_invoice_header_start: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

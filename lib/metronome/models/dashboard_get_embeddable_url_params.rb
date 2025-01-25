@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class DashboardGetEmbeddableURLParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute customer_id
       #
       #   @return [String]
@@ -55,8 +59,19 @@ module Metronome
       #   # @param bm_group_key_overrides [Array<Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>]
       #   # @param color_overrides [Array<Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride>]
       #   # @param dashboard_options [Array<Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption>]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(customer_id:, dashboard:, bm_group_key_overrides: nil, color_overrides: nil, dashboard_options: nil, **) = super
+      #   def initialize(
+      #     customer_id:,
+      #     dashboard:,
+      #     bm_group_key_overrides: nil,
+      #     color_overrides: nil,
+      #     dashboard_options: nil,
+      #     request_options: {},
+      #     **
+      #   )
+      #     super
+      #   end
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 

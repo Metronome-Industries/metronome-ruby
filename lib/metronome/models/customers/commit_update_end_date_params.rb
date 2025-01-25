@@ -4,6 +4,10 @@ module Metronome
   module Models
     module Customers
       class CommitUpdateEndDateParams < Metronome::BaseModel
+        # @!parse
+        #   extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
         # @!attribute commit_id
         #   ID of the commit to update. Only supports "PREPAID" commits.
         #
@@ -44,8 +48,9 @@ module Metronome
         #   # @param customer_id [String]
         #   # @param access_ending_before [String]
         #   # @param invoices_ending_before [String]
+        #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
-        #   def initialize(commit_id:, customer_id:, access_ending_before: nil, invoices_ending_before: nil, **) = super
+        #   def initialize(commit_id:, customer_id:, access_ending_before: nil, invoices_ending_before: nil, request_options: {}, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

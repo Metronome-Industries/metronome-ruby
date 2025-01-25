@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class CustomFieldDeleteValuesParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute entity
       #
       #   @return [Symbol, Metronome::Models::CustomFieldDeleteValuesParams::Entity]
@@ -22,8 +26,9 @@ module Metronome
       #   # @param entity [String]
       #   # @param entity_id [String]
       #   # @param keys [Array<String>]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(entity:, entity_id:, keys:, **) = super
+      #   def initialize(entity:, entity_id:, keys:, request_options: {}, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 

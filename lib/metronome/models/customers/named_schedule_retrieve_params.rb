@@ -4,6 +4,10 @@ module Metronome
   module Models
     module Customers
       class NamedScheduleRetrieveParams < Metronome::BaseModel
+        # @!parse
+        #   extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
         # @!attribute customer_id
         #   ID of the customer whose named schedule is to be retrieved
         #
@@ -31,8 +35,9 @@ module Metronome
         #   # @param customer_id [String]
         #   # @param schedule_name [String]
         #   # @param covering_date [String]
+        #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
-        #   def initialize(customer_id:, schedule_name:, covering_date: nil, **) = super
+        #   def initialize(customer_id:, schedule_name:, covering_date: nil, request_options: {}, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

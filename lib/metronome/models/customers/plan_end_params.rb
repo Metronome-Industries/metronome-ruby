@@ -4,6 +4,10 @@ module Metronome
   module Models
     module Customers
       class PlanEndParams < Metronome::BaseModel
+        # @!parse
+        #   extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
         # @!attribute customer_id
         #
         #   @return [String]
@@ -54,8 +58,19 @@ module Metronome
         #   # @param ending_before [String]
         #   # @param void_invoices [Boolean]
         #   # @param void_stripe_invoices [Boolean]
+        #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
-        #   def initialize(customer_id:, customer_plan_id:, ending_before: nil, void_invoices: nil, void_stripe_invoices: nil, **) = super
+        #   def initialize(
+        #     customer_id:,
+        #     customer_plan_id:,
+        #     ending_before: nil,
+        #     void_invoices: nil,
+        #     void_stripe_invoices: nil,
+        #     request_options: {},
+        #     **
+        #   )
+        #     super
+        #   end
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

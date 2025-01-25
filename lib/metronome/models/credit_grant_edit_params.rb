@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class CreditGrantEditParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute id
       #   the ID of the credit grant
       #
@@ -44,8 +48,9 @@ module Metronome
       #   # @param credit_grant_type [String]
       #   # @param expires_at [String]
       #   # @param name [String]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(id:, credit_grant_type: nil, expires_at: nil, name: nil, **) = super
+      #   def initialize(id:, credit_grant_type: nil, expires_at: nil, name: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

@@ -8,7 +8,7 @@ module Metronome
       #   subsequent requests using the same next_page value will be in the returned data
       #   array, ensuring a continuous and uninterrupted reading of audit logs.
       #
-      # @param params [Metronome::Models::AuditLogListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::AuditLogListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Time] :ending_before RFC 3339 timestamp (exclusive). Cannot be used with 'next_page'.
       #
@@ -27,20 +27,20 @@ module Metronome
       #   @option params [Time] :starting_on RFC 3339 timestamp of the earliest audit log to return. Cannot be used with
       #     'next_page'.
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::CursorPage<Metronome::Models::AuditLogListResponse>]
       #
-      def list(params = {}, opts = {})
-        parsed = Metronome::Models::AuditLogListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Metronome::Models::AuditLogListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "auditLogs",
           query: parsed,
           page: Metronome::CursorPage,
-          model: Metronome::Models::AuditLogListResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::AuditLogListResponse,
+          options: options
+        )
       end
 
       # @param client [Metronome::Client]

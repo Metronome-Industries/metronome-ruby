@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class ContractCreateHistoricalInvoicesParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute invoices
       #
       #   @return [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice>]
@@ -17,8 +21,9 @@ module Metronome
       # @!parse
       #   # @param invoices [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice>]
       #   # @param preview [Boolean]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(invoices:, preview:, **) = super
+      #   def initialize(invoices:, preview:, request_options: {}, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 

@@ -4,6 +4,10 @@ module Metronome
   module Models
     module Customers
       class BillingConfigCreateParams < Metronome::BaseModel
+        # @!parse
+        #   extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
         # @!attribute customer_id
         #
         #   @return [String]
@@ -57,6 +61,7 @@ module Metronome
         #   # @param aws_product_code [String]
         #   # @param aws_region [String]
         #   # @param stripe_collection_method [String]
+        #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
         #   def initialize(
         #     customer_id:,
@@ -65,6 +70,7 @@ module Metronome
         #     aws_product_code: nil,
         #     aws_region: nil,
         #     stripe_collection_method: nil,
+        #     request_options: {},
         #     **
         #   )
         #     super

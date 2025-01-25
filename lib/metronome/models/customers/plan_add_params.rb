@@ -4,6 +4,10 @@ module Metronome
   module Models
     module Customers
       class PlanAddParams < Metronome::BaseModel
+        # @!parse
+        #   extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
         # @!attribute customer_id
         #
         #   @return [String]
@@ -90,6 +94,7 @@ module Metronome
         #   # @param overage_rate_adjustments [Array<Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment>]
         #   # @param price_adjustments [Array<Metronome::Models::Customers::PlanAddParams::PriceAdjustment>]
         #   # @param trial_spec [Metronome::Models::Customers::PlanAddParams::TrialSpec]
+        #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
         #   def initialize(
         #     customer_id:,
@@ -100,6 +105,7 @@ module Metronome
         #     overage_rate_adjustments: nil,
         #     price_adjustments: nil,
         #     trial_spec: nil,
+        #     request_options: {},
         #     **
         #   )
         #     super

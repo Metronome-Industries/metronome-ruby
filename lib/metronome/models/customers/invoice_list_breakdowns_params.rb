@@ -4,6 +4,10 @@ module Metronome
   module Models
     module Customers
       class InvoiceListBreakdownsParams < Metronome::BaseModel
+        # @!parse
+        #   extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
         # @!attribute customer_id
         #
         #   @return [String]
@@ -111,6 +115,7 @@ module Metronome
         #   # @param sort [String]
         #   # @param status [String]
         #   # @param window_size [String]
+        #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
         #   def initialize(
         #     customer_id:,
@@ -123,6 +128,7 @@ module Metronome
         #     sort: nil,
         #     status: nil,
         #     window_size: nil,
+        #     request_options: {},
         #     **
         #   )
         #     super

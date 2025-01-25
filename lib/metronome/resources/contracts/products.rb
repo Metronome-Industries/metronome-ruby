@@ -6,7 +6,7 @@ module Metronome
       class Products
         # Create a new product
         #
-        # @param params [Metronome::Models::Contracts::ProductCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::ProductCreateParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :name displayed on invoices
         #
@@ -52,45 +52,45 @@ module Metronome
         #
         #   @option params [Array<String>] :tags
         #
-        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Metronome::Models::Contracts::ProductCreateResponse]
         #
-        def create(params = {}, opts = {})
-          parsed = Metronome::Models::Contracts::ProductCreateParams.dump(params)
-          req = {
+        def create(params)
+          parsed, options = Metronome::Models::Contracts::ProductCreateParams.dump_request(params)
+          @client.request(
             method: :post,
             path: "contract-pricing/products/create",
             body: parsed,
-            model: Metronome::Models::Contracts::ProductCreateResponse
-          }
-          @client.request(req, opts)
+            model: Metronome::Models::Contracts::ProductCreateResponse,
+            options: options
+          )
         end
 
         # Get a specific product
         #
-        # @param params [Metronome::Models::Contracts::ProductRetrieveParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::ProductRetrieveParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :id
         #
-        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Metronome::Models::Contracts::ProductRetrieveResponse]
         #
-        def retrieve(params = {}, opts = {})
-          parsed = Metronome::Models::Contracts::ProductRetrieveParams.dump(params)
-          req = {
+        def retrieve(params)
+          parsed, options = Metronome::Models::Contracts::ProductRetrieveParams.dump_request(params)
+          @client.request(
             method: :post,
             path: "contract-pricing/products/get",
             body: parsed,
-            model: Metronome::Models::Contracts::ProductRetrieveResponse
-          }
-          @client.request(req, opts)
+            model: Metronome::Models::Contracts::ProductRetrieveResponse,
+            options: options
+          )
         end
 
         # Update a product
         #
-        # @param params [Metronome::Models::Contracts::ProductUpdateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::ProductUpdateParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :product_id ID of the product to update
         #
@@ -145,24 +145,24 @@ module Metronome
         #
         #   @option params [Array<String>] :tags If not provided, defaults to product's current tags
         #
-        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Metronome::Models::Contracts::ProductUpdateResponse]
         #
-        def update(params = {}, opts = {})
-          parsed = Metronome::Models::Contracts::ProductUpdateParams.dump(params)
-          req = {
+        def update(params)
+          parsed, options = Metronome::Models::Contracts::ProductUpdateParams.dump_request(params)
+          @client.request(
             method: :post,
             path: "contract-pricing/products/update",
             body: parsed,
-            model: Metronome::Models::Contracts::ProductUpdateResponse
-          }
-          @client.request(req, opts)
+            model: Metronome::Models::Contracts::ProductUpdateResponse,
+            options: options
+          )
         end
 
         # List products
         #
-        # @param params [Metronome::Models::Contracts::ProductListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::ProductListParams, Hash{Symbol=>Object}] .
         #
         #   @option params [Integer] :limit Query param: Max number of results that should be returned
         #
@@ -170,43 +170,43 @@ module Metronome
         #
         #   @option params [Symbol, Metronome::Models::Contracts::ProductListParams::ArchiveFilter] :archive_filter Body param: Filter options for the product list
         #
-        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Metronome::CursorPage<Metronome::Models::Contracts::ProductListResponse>]
         #
-        def list(params = {}, opts = {})
-          parsed = Metronome::Models::Contracts::ProductListParams.dump(params)
+        def list(params = {})
+          parsed, options = Metronome::Models::Contracts::ProductListParams.dump_request(params)
           query_params = [:limit, :next_page]
-          req = {
+          @client.request(
             method: :post,
             path: "contract-pricing/products/list",
             query: parsed.slice(*query_params),
             body: parsed.except(*query_params),
             page: Metronome::CursorPage,
-            model: Metronome::Models::Contracts::ProductListResponse
-          }
-          @client.request(req, opts)
+            model: Metronome::Models::Contracts::ProductListResponse,
+            options: options
+          )
         end
 
         # Archive a product
         #
-        # @param params [Metronome::Models::Contracts::ProductArchiveParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::ProductArchiveParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :product_id ID of the product to be archived
         #
-        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Metronome::Models::Contracts::ProductArchiveResponse]
         #
-        def archive(params = {}, opts = {})
-          parsed = Metronome::Models::Contracts::ProductArchiveParams.dump(params)
-          req = {
+        def archive(params)
+          parsed, options = Metronome::Models::Contracts::ProductArchiveParams.dump_request(params)
+          @client.request(
             method: :post,
             path: "contract-pricing/products/archive",
             body: parsed,
-            model: Metronome::Models::Contracts::ProductArchiveResponse
-          }
-          @client.request(req, opts)
+            model: Metronome::Models::Contracts::ProductArchiveResponse,
+            options: options
+          )
         end
 
         # @param client [Metronome::Client]

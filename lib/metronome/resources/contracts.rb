@@ -14,7 +14,7 @@ module Metronome
 
       # Create a new contract
       #
-      # @param params [Metronome::Models::ContractCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::ContractCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :customer_id
       #
@@ -76,24 +76,24 @@ module Metronome
       #
       #   @option params [Metronome::Models::ContractCreateParams::UsageStatementSchedule] :usage_statement_schedule
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::ContractCreateResponse]
       #
-      def create(params = {}, opts = {})
-        parsed = Metronome::Models::ContractCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Metronome::Models::ContractCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "contracts/create",
           body: parsed,
-          model: Metronome::Models::ContractCreateResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::ContractCreateResponse,
+          options: options
+        )
       end
 
       # Get a specific contract
       #
-      # @param params [Metronome::Models::ContractRetrieveParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::ContractRetrieveParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :contract_id
       #
@@ -105,24 +105,24 @@ module Metronome
       #   @option params [Boolean] :include_ledgers Include commit ledgers in the response. Setting this flag may cause the query to
       #     be slower.
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::ContractRetrieveResponse]
       #
-      def retrieve(params = {}, opts = {})
-        parsed = Metronome::Models::ContractRetrieveParams.dump(params)
-        req = {
+      def retrieve(params)
+        parsed, options = Metronome::Models::ContractRetrieveParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "contracts/get",
           body: parsed,
-          model: Metronome::Models::ContractRetrieveResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::ContractRetrieveResponse,
+          options: options
+        )
       end
 
       # List all contracts for a customer
       #
-      # @param params [Metronome::Models::ContractListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::ContractListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :customer_id
       #
@@ -142,24 +142,24 @@ module Metronome
       #     contracts where effective_at is on or after the provided date. This cannot be
       #     provided if the covering_date filter is provided.
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::ContractListResponse]
       #
-      def list(params = {}, opts = {})
-        parsed = Metronome::Models::ContractListParams.dump(params)
-        req = {
+      def list(params)
+        parsed, options = Metronome::Models::ContractListParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "contracts/list",
           body: parsed,
-          model: Metronome::Models::ContractListResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::ContractListResponse,
+          options: options
+        )
       end
 
       # Add a manual balance entry
       #
-      # @param params [Metronome::Models::ContractAddManualBalanceEntryParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::ContractAddManualBalanceEntryParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :id ID of the balance (commit or credit) to update.
       #
@@ -176,24 +176,24 @@ module Metronome
       #   @option params [Time] :timestamp RFC 3339 timestamp indicating when the manual adjustment takes place. If not
       #     provided, it will default to the start of the segment.
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [nil]
       #
-      def add_manual_balance_entry(params = {}, opts = {})
-        parsed = Metronome::Models::ContractAddManualBalanceEntryParams.dump(params)
-        req = {
+      def add_manual_balance_entry(params)
+        parsed, options = Metronome::Models::ContractAddManualBalanceEntryParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "contracts/addManualBalanceLedgerEntry",
           body: parsed,
-          model: NilClass
-        }
-        @client.request(req, opts)
+          model: NilClass,
+          options: options
+        )
       end
 
       # Amend a contract
       #
-      # @param params [Metronome::Models::ContractAmendParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::ContractAmendParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :contract_id ID of the contract to amend
       #
@@ -223,24 +223,24 @@ module Metronome
       #
       #   @option params [Float] :total_contract_value This field's availability is dependent on your client's configuration.
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::ContractAmendResponse]
       #
-      def amend(params = {}, opts = {})
-        parsed = Metronome::Models::ContractAmendParams.dump(params)
-        req = {
+      def amend(params)
+        parsed, options = Metronome::Models::ContractAmendParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "contracts/amend",
           body: parsed,
-          model: Metronome::Models::ContractAmendResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::ContractAmendResponse,
+          options: options
+        )
       end
 
       # Archive a contract
       #
-      # @param params [Metronome::Models::ContractArchiveParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::ContractArchiveParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :contract_id ID of the contract to archive
       #
@@ -249,47 +249,47 @@ module Metronome
       #   @option params [Boolean] :void_invoices If false, the existing finalized invoices will remain after the contract is
       #     archived.
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::ContractArchiveResponse]
       #
-      def archive(params = {}, opts = {})
-        parsed = Metronome::Models::ContractArchiveParams.dump(params)
-        req = {
+      def archive(params)
+        parsed, options = Metronome::Models::ContractArchiveParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "contracts/archive",
           body: parsed,
-          model: Metronome::Models::ContractArchiveResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::ContractArchiveResponse,
+          options: options
+        )
       end
 
       # Creates historical usage invoices for a contract
       #
-      # @param params [Metronome::Models::ContractCreateHistoricalInvoicesParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::ContractCreateHistoricalInvoicesParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice>] :invoices
       #
       #   @option params [Boolean] :preview
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::ContractCreateHistoricalInvoicesResponse]
       #
-      def create_historical_invoices(params = {}, opts = {})
-        parsed = Metronome::Models::ContractCreateHistoricalInvoicesParams.dump(params)
-        req = {
+      def create_historical_invoices(params)
+        parsed, options = Metronome::Models::ContractCreateHistoricalInvoicesParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "contracts/createHistoricalInvoices",
           body: parsed,
-          model: Metronome::Models::ContractCreateHistoricalInvoicesResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::ContractCreateHistoricalInvoicesResponse,
+          options: options
+        )
       end
 
       # List balances (commits and credits).
       #
-      # @param params [Metronome::Models::ContractListBalancesParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::ContractListBalancesParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :customer_id
       #
@@ -313,24 +313,24 @@ module Metronome
       #
       #   @option params [Time] :starting_at Include only balances that have any access on or after the provided date
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::ContractListBalancesResponse]
       #
-      def list_balances(params = {}, opts = {})
-        parsed = Metronome::Models::ContractListBalancesParams.dump(params)
-        req = {
+      def list_balances(params)
+        parsed, options = Metronome::Models::ContractListBalancesParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "contracts/customerBalances/list",
           body: parsed,
-          model: Metronome::Models::ContractListBalancesResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::ContractListBalancesResponse,
+          options: options
+        )
       end
 
       # Get the rate schedule for the rate card on a given contract.
       #
-      # @param params [Metronome::Models::ContractRetrieveRateScheduleParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::ContractRetrieveRateScheduleParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :contract_id Body param: ID of the contract to get the rate schedule for.
       #
@@ -347,27 +347,27 @@ module Metronome
       #     included in the response. Passing no selectors will result in all rates being
       #     returned.
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::ContractRetrieveRateScheduleResponse]
       #
-      def retrieve_rate_schedule(params = {}, opts = {})
-        parsed = Metronome::Models::ContractRetrieveRateScheduleParams.dump(params)
+      def retrieve_rate_schedule(params)
+        parsed, options = Metronome::Models::ContractRetrieveRateScheduleParams.dump_request(params)
         query_params = [:limit, :next_page]
-        req = {
+        @client.request(
           method: :post,
           path: "contracts/getContractRateSchedule",
           query: parsed.slice(*query_params),
           body: parsed.except(*query_params),
-          model: Metronome::Models::ContractRetrieveRateScheduleResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::ContractRetrieveRateScheduleResponse,
+          options: options
+        )
       end
 
       # Create a new scheduled invoice for Professional Services terms on a contract.
       #   This endpoint's availability is dependent on your client's configuration.
       #
-      # @param params [Metronome::Models::ContractScheduleProServicesInvoiceParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::ContractScheduleProServicesInvoiceParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :contract_id
       #
@@ -381,24 +381,24 @@ module Metronome
       #
       #   @option params [Time] :netsuite_invoice_header_start The start date of the invoice header in Netsuite
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::ContractScheduleProServicesInvoiceResponse]
       #
-      def schedule_pro_services_invoice(params = {}, opts = {})
-        parsed = Metronome::Models::ContractScheduleProServicesInvoiceParams.dump(params)
-        req = {
+      def schedule_pro_services_invoice(params)
+        parsed, options = Metronome::Models::ContractScheduleProServicesInvoiceParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "contracts/scheduleProServicesInvoice",
           body: parsed,
-          model: Metronome::Models::ContractScheduleProServicesInvoiceResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::ContractScheduleProServicesInvoiceResponse,
+          options: options
+        )
       end
 
       # Set usage filter for a contract
       #
-      # @param params [Metronome::Models::ContractSetUsageFilterParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::ContractSetUsageFilterParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :contract_id
       #
@@ -410,24 +410,24 @@ module Metronome
       #
       #   @option params [Time] :starting_at
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [nil]
       #
-      def set_usage_filter(params = {}, opts = {})
-        parsed = Metronome::Models::ContractSetUsageFilterParams.dump(params)
-        req = {
+      def set_usage_filter(params)
+        parsed, options = Metronome::Models::ContractSetUsageFilterParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "contracts/setUsageFilter",
           body: parsed,
-          model: NilClass
-        }
-        @client.request(req, opts)
+          model: NilClass,
+          options: options
+        )
       end
 
       # Update the end date of a contract
       #
-      # @param params [Metronome::Models::ContractUpdateEndDateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::ContractUpdateEndDateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :contract_id ID of the contract to update
       #
@@ -441,19 +441,19 @@ module Metronome
       #   @option params [Time] :ending_before RFC 3339 timestamp indicating when the contract will end (exclusive). If not
       #     provided, the contract will be updated to be open-ended.
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::ContractUpdateEndDateResponse]
       #
-      def update_end_date(params = {}, opts = {})
-        parsed = Metronome::Models::ContractUpdateEndDateParams.dump(params)
-        req = {
+      def update_end_date(params)
+        parsed, options = Metronome::Models::ContractUpdateEndDateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "contracts/updateEndDate",
           body: parsed,
-          model: Metronome::Models::ContractUpdateEndDateResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::ContractUpdateEndDateResponse,
+          options: options
+        )
       end
 
       # @param client [Metronome::Client]

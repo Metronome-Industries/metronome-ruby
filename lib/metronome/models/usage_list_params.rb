@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class UsageListParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute ending_before
       #
       #   @return [Time]
@@ -63,8 +67,20 @@ module Metronome
       #   # @param next_page [String]
       #   # @param billable_metrics [Array<Metronome::Models::UsageListParams::BillableMetric>]
       #   # @param customer_ids [Array<String>]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(ending_before:, starting_on:, window_size:, next_page: nil, billable_metrics: nil, customer_ids: nil, **) = super
+      #   def initialize(
+      #     ending_before:,
+      #     starting_on:,
+      #     window_size:,
+      #     next_page: nil,
+      #     billable_metrics: nil,
+      #     customer_ids: nil,
+      #     request_options: {},
+      #     **
+      #   )
+      #     super
+      #   end
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 

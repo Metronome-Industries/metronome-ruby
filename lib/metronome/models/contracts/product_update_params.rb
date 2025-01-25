@@ -4,6 +4,10 @@ module Metronome
   module Models
     module Contracts
       class ProductUpdateParams < Metronome::BaseModel
+        # @!parse
+        #   extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
         # @!attribute product_id
         #   ID of the product to update
         #
@@ -177,6 +181,7 @@ module Metronome
         #   # @param quantity_conversion [Metronome::Models::Contracts::QuantityConversion, nil]
         #   # @param quantity_rounding [Metronome::Models::Contracts::QuantityRounding, nil]
         #   # @param tags [Array<String>]
+        #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
         #   def initialize(
         #     product_id:,
@@ -194,6 +199,7 @@ module Metronome
         #     quantity_conversion: nil,
         #     quantity_rounding: nil,
         #     tags: nil,
+        #     request_options: {},
         #     **
         #   )
         #     super

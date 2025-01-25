@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class BillableMetricListParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute [r] include_archived
       #   If true, the list of returned metrics will include archived metrics
       #
@@ -37,8 +41,9 @@ module Metronome
       #   # @param include_archived [Boolean]
       #   # @param limit [Integer]
       #   # @param next_page [String]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(include_archived: nil, limit: nil, next_page: nil, **) = super
+      #   def initialize(include_archived: nil, limit: nil, next_page: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

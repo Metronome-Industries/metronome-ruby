@@ -7,7 +7,7 @@ module Metronome
       #   embedded using an iframe in a website. This will show information such as usage
       #   data and customer invoices.
       #
-      # @param params [Metronome::Models::DashboardGetEmbeddableURLParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::DashboardGetEmbeddableURLParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :customer_id
       #
@@ -19,19 +19,19 @@ module Metronome
       #
       #   @option params [Array<Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption>] :dashboard_options Optional dashboard specific options
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::DashboardGetEmbeddableURLResponse]
       #
-      def get_embeddable_url(params = {}, opts = {})
-        parsed = Metronome::Models::DashboardGetEmbeddableURLParams.dump(params)
-        req = {
+      def get_embeddable_url(params)
+        parsed, options = Metronome::Models::DashboardGetEmbeddableURLParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "dashboards/getEmbeddableUrl",
           body: parsed,
-          model: Metronome::Models::DashboardGetEmbeddableURLResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::DashboardGetEmbeddableURLResponse,
+          options: options
+        )
       end
 
       # @param client [Metronome::Client]

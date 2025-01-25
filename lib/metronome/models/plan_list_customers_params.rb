@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class PlanListCustomersParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute plan_id
       #
       #   @return [String]
@@ -51,8 +55,9 @@ module Metronome
       #   # @param limit [Integer]
       #   # @param next_page [String]
       #   # @param status [String]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(plan_id:, limit: nil, next_page: nil, status: nil, **) = super
+      #   def initialize(plan_id:, limit: nil, next_page: nil, status: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 

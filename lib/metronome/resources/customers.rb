@@ -26,7 +26,7 @@ module Metronome
 
       # Create a new customer
       #
-      # @param params [Metronome::Models::CustomerCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :name This will be truncated to 160 characters if the provided name is longer.
       #
@@ -41,47 +41,47 @@ module Metronome
       #
       #   @option params [Array<String>] :ingest_aliases Aliases that can be used to refer to this customer in usage events
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::CustomerCreateResponse]
       #
-      def create(params = {}, opts = {})
-        parsed = Metronome::Models::CustomerCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Metronome::Models::CustomerCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "customers",
           body: parsed,
-          model: Metronome::Models::CustomerCreateResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::CustomerCreateResponse,
+          options: options
+        )
       end
 
       # Get a customer by Metronome ID.
       #
-      # @param params [Metronome::Models::CustomerRetrieveParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerRetrieveParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :customer_id
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::CustomerRetrieveResponse]
       #
-      def retrieve(params = {}, opts = {})
-        parsed = Metronome::Models::CustomerRetrieveParams.dump(params)
+      def retrieve(params)
+        parsed, options = Metronome::Models::CustomerRetrieveParams.dump_request(params)
         customer_id = parsed.fetch(:customer_id) do
           raise ArgumentError.new("missing required path argument #{_1}")
         end
-        req = {
+        @client.request(
           method: :get,
           path: ["customers/%0s", customer_id],
-          model: Metronome::Models::CustomerRetrieveResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::CustomerRetrieveResponse,
+          options: options
+        )
       end
 
       # List all customers.
       #
-      # @param params [Metronome::Models::CustomerListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Array<String>] :customer_ids Filter the customer list by customer_id. Up to 100 ids can be provided.
       #
@@ -96,46 +96,46 @@ module Metronome
       #   @option params [Array<String>] :salesforce_account_ids Filter the customer list by salesforce_account_id. Up to 100 ids can be
       #     provided.
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::CursorPage<Metronome::Models::CustomerDetail>]
       #
-      def list(params = {}, opts = {})
-        parsed = Metronome::Models::CustomerListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Metronome::Models::CustomerListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "customers",
           query: parsed,
           page: Metronome::CursorPage,
-          model: Metronome::Models::CustomerDetail
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::CustomerDetail,
+          options: options
+        )
       end
 
       # Archive a customer
       #
-      # @param params [Metronome::Models::CustomerArchiveParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerArchiveParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :id
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::CustomerArchiveResponse]
       #
-      def archive(params = {}, opts = {})
-        parsed = Metronome::Models::CustomerArchiveParams.dump(params)
-        req = {
+      def archive(params)
+        parsed, options = Metronome::Models::CustomerArchiveParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "customers/archive",
           body: parsed,
-          model: Metronome::Models::CustomerArchiveResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::CustomerArchiveResponse,
+          options: options
+        )
       end
 
       # Get all billable metrics for a given customer.
       #
-      # @param params [Metronome::Models::CustomerListBillableMetricsParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerListBillableMetricsParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :customer_id Path param:
       #
@@ -148,30 +148,30 @@ module Metronome
       #   @option params [Boolean] :on_current_plan Query param: If true, the list of metrics will be filtered to just ones that are
       #     on the customer's current plan
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::CursorPage<Metronome::Models::CustomerListBillableMetricsResponse>]
       #
-      def list_billable_metrics(params = {}, opts = {})
-        parsed = Metronome::Models::CustomerListBillableMetricsParams.dump(params)
+      def list_billable_metrics(params)
+        parsed, options = Metronome::Models::CustomerListBillableMetricsParams.dump_request(params)
         customer_id = parsed.fetch(:customer_id) do
           raise ArgumentError.new("missing required path argument #{_1}")
         end
-        req = {
+        @client.request(
           method: :get,
           path: ["customers/%0s/billable-metrics", customer_id],
           query: parsed.except(:customer_id),
           page: Metronome::CursorPage,
-          model: Metronome::Models::CustomerListBillableMetricsResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::CustomerListBillableMetricsResponse,
+          options: options
+        )
       end
 
       # Fetch daily pending costs for the specified customer, broken down by credit type
       #   and line items. Note: this is not supported for customers whose plan includes a
       #   UNIQUE-type billable metric.
       #
-      # @param params [Metronome::Models::CustomerListCostsParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerListCostsParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :customer_id Path param:
       #
@@ -183,83 +183,83 @@ module Metronome
       #
       #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::CursorPage<Metronome::Models::CustomerListCostsResponse>]
       #
-      def list_costs(params = {}, opts = {})
-        parsed = Metronome::Models::CustomerListCostsParams.dump(params)
+      def list_costs(params)
+        parsed, options = Metronome::Models::CustomerListCostsParams.dump_request(params)
         customer_id = parsed.fetch(:customer_id) do
           raise ArgumentError.new("missing required path argument #{_1}")
         end
-        req = {
+        @client.request(
           method: :get,
           path: ["customers/%0s/costs", customer_id],
           query: parsed.except(:customer_id),
           page: Metronome::CursorPage,
-          model: Metronome::Models::CustomerListCostsResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::CustomerListCostsResponse,
+          options: options
+        )
       end
 
       # Sets the ingest aliases for a customer. Ingest aliases can be used in the
       #   `customer_id` field when sending usage events to Metronome. This call is
       #   idempotent. It fully replaces the set of ingest aliases for the given customer.
       #
-      # @param params [Metronome::Models::CustomerSetIngestAliasesParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerSetIngestAliasesParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :customer_id Path param:
       #
       #   @option params [Array<String>] :ingest_aliases Body param:
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [nil]
       #
-      def set_ingest_aliases(params = {}, opts = {})
-        parsed = Metronome::Models::CustomerSetIngestAliasesParams.dump(params)
+      def set_ingest_aliases(params)
+        parsed, options = Metronome::Models::CustomerSetIngestAliasesParams.dump_request(params)
         customer_id = parsed.fetch(:customer_id) do
           raise ArgumentError.new("missing required path argument #{_1}")
         end
-        req = {
+        @client.request(
           method: :post,
           path: ["customers/%0s/setIngestAliases", customer_id],
           body: parsed.except(:customer_id),
-          model: NilClass
-        }
-        @client.request(req, opts)
+          model: NilClass,
+          options: options
+        )
       end
 
       # Updates the specified customer's name.
       #
-      # @param params [Metronome::Models::CustomerSetNameParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerSetNameParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :customer_id Path param:
       #
       #   @option params [String] :name Body param: The new name for the customer. This will be truncated to 160
       #     characters if the provided name is longer.
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::CustomerSetNameResponse]
       #
-      def set_name(params = {}, opts = {})
-        parsed = Metronome::Models::CustomerSetNameParams.dump(params)
+      def set_name(params)
+        parsed, options = Metronome::Models::CustomerSetNameParams.dump_request(params)
         customer_id = parsed.fetch(:customer_id) do
           raise ArgumentError.new("missing required path argument #{_1}")
         end
-        req = {
+        @client.request(
           method: :post,
           path: ["customers/%0s/setName", customer_id],
           body: parsed.except(:customer_id),
-          model: Metronome::Models::CustomerSetNameResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::CustomerSetNameResponse,
+          options: options
+        )
       end
 
       # Updates the specified customer's config.
       #
-      # @param params [Metronome::Models::CustomerUpdateConfigParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CustomerUpdateConfigParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :customer_id Path param:
       #
@@ -268,22 +268,22 @@ module Metronome
       #
       #   @option params [String, nil] :salesforce_account_id Body param: The Salesforce account ID for the customer
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [nil]
       #
-      def update_config(params = {}, opts = {})
-        parsed = Metronome::Models::CustomerUpdateConfigParams.dump(params)
+      def update_config(params)
+        parsed, options = Metronome::Models::CustomerUpdateConfigParams.dump_request(params)
         customer_id = parsed.fetch(:customer_id) do
           raise ArgumentError.new("missing required path argument #{_1}")
         end
-        req = {
+        @client.request(
           method: :post,
           path: ["customers/%0s/updateConfig", customer_id],
           body: parsed.except(:customer_id),
-          model: NilClass
-        }
-        @client.request(req, opts)
+          model: NilClass,
+          options: options
+        )
       end
 
       # @param client [Metronome::Client]

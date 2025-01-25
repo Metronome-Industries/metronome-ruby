@@ -4,6 +4,10 @@ module Metronome
   module Models
     module Contracts
       class RateCardRetrieveRateScheduleParams < Metronome::BaseModel
+        # @!parse
+        #   extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
         # @!attribute rate_card_id
         #   ID of the rate card to get the schedule for
         #
@@ -68,8 +72,20 @@ module Metronome
         #   # @param next_page [String]
         #   # @param ending_before [String]
         #   # @param selectors [Array<Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams::Selector>]
+        #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
-        #   def initialize(rate_card_id:, starting_at:, limit: nil, next_page: nil, ending_before: nil, selectors: nil, **) = super
+        #   def initialize(
+        #     rate_card_id:,
+        #     starting_at:,
+        #     limit: nil,
+        #     next_page: nil,
+        #     ending_before: nil,
+        #     selectors: nil,
+        #     request_options: {},
+        #     **
+        #   )
+        #     super
+        #   end
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 

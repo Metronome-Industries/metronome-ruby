@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class CreditGrantListParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute [r] limit
       #   Max number of results that should be returned
       #
@@ -84,6 +88,7 @@ module Metronome
       #   # @param customer_ids [Array<String>]
       #   # @param effective_before [String]
       #   # @param not_expiring_before [String]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     limit: nil,
@@ -93,6 +98,7 @@ module Metronome
       #     customer_ids: nil,
       #     effective_before: nil,
       #     not_expiring_before: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

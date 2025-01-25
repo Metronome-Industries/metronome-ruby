@@ -5,6 +5,10 @@ module Metronome
     module Contracts
       module RateCards
         class ProductOrderUpdateParams < Metronome::BaseModel
+          # @!parse
+          #   extend Metronome::RequestParameters::Converter
+          include Metronome::RequestParameters
+
           # @!attribute product_moves
           #
           #   @return [Array<Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove>]
@@ -22,8 +26,9 @@ module Metronome
           # @!parse
           #   # @param product_moves [Array<Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove>]
           #   # @param rate_card_id [String]
+          #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
           #   #
-          #   def initialize(product_moves:, rate_card_id:, **) = super
+          #   def initialize(product_moves:, rate_card_id:, request_options: {}, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 

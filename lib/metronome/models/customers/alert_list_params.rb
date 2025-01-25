@@ -4,6 +4,10 @@ module Metronome
   module Models
     module Customers
       class AlertListParams < Metronome::BaseModel
+        # @!parse
+        #   extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
         # @!attribute customer_id
         #   The Metronome ID of the customer
         #
@@ -36,8 +40,9 @@ module Metronome
         #   # @param customer_id [String]
         #   # @param next_page [String]
         #   # @param alert_statuses [Array<String>]
+        #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
-        #   def initialize(customer_id:, next_page: nil, alert_statuses: nil, **) = super
+        #   def initialize(customer_id:, next_page: nil, alert_statuses: nil, request_options: {}, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 

@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class AuditLogListParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute [r] ending_before
       #   RFC 3339 timestamp (exclusive). Cannot be used with 'next_page'.
       #
@@ -84,6 +88,7 @@ module Metronome
       #   # @param resource_type [String]
       #   # @param sort [String]
       #   # @param starting_on [String]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     ending_before: nil,
@@ -93,6 +98,7 @@ module Metronome
       #     resource_type: nil,
       #     sort: nil,
       #     starting_on: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

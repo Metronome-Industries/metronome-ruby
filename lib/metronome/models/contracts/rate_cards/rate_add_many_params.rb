@@ -5,6 +5,10 @@ module Metronome
     module Contracts
       module RateCards
         class RateAddManyParams < Metronome::BaseModel
+          # @!parse
+          #   extend Metronome::RequestParameters::Converter
+          include Metronome::RequestParameters
+
           # @!attribute rate_card_id
           #
           #   @return [String]
@@ -19,8 +23,9 @@ module Metronome
           # @!parse
           #   # @param rate_card_id [String]
           #   # @param rates [Array<Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate>]
+          #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
           #   #
-          #   def initialize(rate_card_id:, rates:, **) = super
+          #   def initialize(rate_card_id:, rates:, request_options: {}, **) = super
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 

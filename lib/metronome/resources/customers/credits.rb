@@ -6,7 +6,7 @@ module Metronome
       class Credits
         # Create a new credit at the customer level.
         #
-        # @param params [Metronome::Models::Customers::CreditCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::CreditCreateParams, Hash{Symbol=>Object}] .
         #
         #   @option params [Metronome::Models::Customers::CreditCreateParams::AccessSchedule] :access_schedule Schedule for distributing the credit to the customer.
         #
@@ -43,24 +43,24 @@ module Metronome
         #     credit, a new record will not be created and the request will fail with a 409
         #     error.
         #
-        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Metronome::Models::Customers::CreditCreateResponse]
         #
-        def create(params = {}, opts = {})
-          parsed = Metronome::Models::Customers::CreditCreateParams.dump(params)
-          req = {
+        def create(params)
+          parsed, options = Metronome::Models::Customers::CreditCreateParams.dump_request(params)
+          @client.request(
             method: :post,
             path: "contracts/customerCredits/create",
             body: parsed,
-            model: Metronome::Models::Customers::CreditCreateResponse
-          }
-          @client.request(req, opts)
+            model: Metronome::Models::Customers::CreditCreateResponse,
+            options: options
+          )
         end
 
         # List credits.
         #
-        # @param params [Metronome::Models::Customers::CreditListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::CreditListParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :customer_id
         #
@@ -84,24 +84,24 @@ module Metronome
         #
         #   @option params [Time] :starting_at Include only credits that have any access on or after the provided date
         #
-        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Metronome::Models::Customers::CreditListResponse]
         #
-        def list(params = {}, opts = {})
-          parsed = Metronome::Models::Customers::CreditListParams.dump(params)
-          req = {
+        def list(params)
+          parsed, options = Metronome::Models::Customers::CreditListParams.dump_request(params)
+          @client.request(
             method: :post,
             path: "contracts/customerCredits/list",
             body: parsed,
-            model: Metronome::Models::Customers::CreditListResponse
-          }
-          @client.request(req, opts)
+            model: Metronome::Models::Customers::CreditListResponse,
+            options: options
+          )
         end
 
         # Update the end date of a credit
         #
-        # @param params [Metronome::Models::Customers::CreditUpdateEndDateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::CreditUpdateEndDateParams, Hash{Symbol=>Object}] .
         #
         #   @option params [Time] :access_ending_before RFC 3339 timestamp indicating when access to the credit will end and it will no
         #     longer be possible to draw it down (exclusive).
@@ -110,19 +110,19 @@ module Metronome
         #
         #   @option params [String] :customer_id ID of the customer whose credit is to be updated
         #
-        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Metronome::Models::Customers::CreditUpdateEndDateResponse]
         #
-        def update_end_date(params = {}, opts = {})
-          parsed = Metronome::Models::Customers::CreditUpdateEndDateParams.dump(params)
-          req = {
+        def update_end_date(params)
+          parsed, options = Metronome::Models::Customers::CreditUpdateEndDateParams.dump_request(params)
+          @client.request(
             method: :post,
             path: "contracts/customerCredits/updateEndDate",
             body: parsed,
-            model: Metronome::Models::Customers::CreditUpdateEndDateResponse
-          }
-          @client.request(req, opts)
+            model: Metronome::Models::Customers::CreditUpdateEndDateResponse,
+            options: options
+          )
         end
 
         # @param client [Metronome::Client]

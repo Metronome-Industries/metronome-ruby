@@ -4,6 +4,10 @@ module Metronome
   module Models
     module Contracts
       class NamedScheduleUpdateParams < Metronome::BaseModel
+        # @!parse
+        #   extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
         # @!attribute rate_card_id
         #   ID of the rate card whose named schedule is to be updated
         #
@@ -43,8 +47,9 @@ module Metronome
         #   # @param starting_at [String]
         #   # @param value [Object]
         #   # @param ending_before [String]
+        #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
-        #   def initialize(rate_card_id:, schedule_name:, starting_at:, value:, ending_before: nil, **) = super
+        #   def initialize(rate_card_id:, schedule_name:, starting_at:, value:, ending_before: nil, request_options: {}, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

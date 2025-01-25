@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class ContractRetrieveRateScheduleParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute contract_id
       #   ID of the contract to get the rate schedule for.
       #
@@ -65,8 +69,9 @@ module Metronome
       #   # @param next_page [String]
       #   # @param at [String]
       #   # @param selectors [Array<Metronome::Models::ContractRetrieveRateScheduleParams::Selector>]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(contract_id:, customer_id:, limit: nil, next_page: nil, at: nil, selectors: nil, **) = super
+      #   def initialize(contract_id:, customer_id:, limit: nil, next_page: nil, at: nil, selectors: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 

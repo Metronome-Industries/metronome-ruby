@@ -130,8 +130,9 @@ class MetronomeTest < Minitest::Test
 
     assert_raises(Metronome::InternalServerError) do
       metronome.contracts.create(
-        {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"},
-        max_retries: 3
+        customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+        starting_at: "2020-01-01T00:00:00.000Z",
+        request_options: {max_retries: 3}
       )
     end
 
@@ -149,8 +150,9 @@ class MetronomeTest < Minitest::Test
 
     assert_raises(Metronome::InternalServerError) do
       metronome.contracts.create(
-        {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"},
-        max_retries: 4
+        customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+        starting_at: "2020-01-01T00:00:00.000Z",
+        request_options: {max_retries: 4}
       )
     end
 
@@ -242,8 +244,9 @@ class MetronomeTest < Minitest::Test
 
     assert_raises(Metronome::InternalServerError) do
       metronome.contracts.create(
-        {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"},
-        extra_headers: {"x-stainless-retry-count" => nil}
+        customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+        starting_at: "2020-01-01T00:00:00.000Z",
+        request_options: {extra_headers: {"x-stainless-retry-count" => nil}}
       )
     end
 
@@ -258,8 +261,9 @@ class MetronomeTest < Minitest::Test
 
     assert_raises(Metronome::InternalServerError) do
       metronome.contracts.create(
-        {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"},
-        extra_headers: {"x-stainless-retry-count" => "42"}
+        customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+        starting_at: "2020-01-01T00:00:00.000Z",
+        request_options: {extra_headers: {"x-stainless-retry-count" => "42"}}
       )
     end
 
@@ -274,8 +278,9 @@ class MetronomeTest < Minitest::Test
 
     assert_raises(Metronome::APIConnectionError) do
       metronome.contracts.create(
-        {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"},
-        extra_headers: {}
+        customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+        starting_at: "2020-01-01T00:00:00.000Z",
+        request_options: {extra_headers: {}}
       )
     end
 
@@ -295,8 +300,9 @@ class MetronomeTest < Minitest::Test
 
     assert_raises(Metronome::APIConnectionError) do
       metronome.contracts.create(
-        {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"},
-        extra_headers: {}
+        customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+        starting_at: "2020-01-01T00:00:00.000Z",
+        request_options: {extra_headers: {}}
       )
     end
 
@@ -313,8 +319,9 @@ class MetronomeTest < Minitest::Test
 
     assert_raises(Metronome::APIConnectionError) do
       metronome.contracts.create(
-        {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"},
-        extra_headers: {"Authorization" => "Bearer xyz"}
+        customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+        starting_at: "2020-01-01T00:00:00.000Z",
+        request_options: {extra_headers: {"Authorization" => "Bearer xyz"}}
       )
     end
 
@@ -331,8 +338,9 @@ class MetronomeTest < Minitest::Test
 
     assert_raises(Metronome::APIConnectionError) do
       metronome.contracts.create(
-        {customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d", starting_at: "2020-01-01T00:00:00.000Z"},
-        extra_headers: {"Authorization" => "Bearer xyz"}
+        customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+        starting_at: "2020-01-01T00:00:00.000Z",
+        request_options: {extra_headers: {"Authorization" => "Bearer xyz"}}
       )
     end
 

@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class CustomFieldListKeysParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute [r] next_page
       #   Cursor that indicates where the next page of results should start.
       #
@@ -29,8 +33,9 @@ module Metronome
       # @!parse
       #   # @param next_page [String]
       #   # @param entities [Array<String>]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(next_page: nil, entities: nil, **) = super
+      #   def initialize(next_page: nil, entities: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 

@@ -8,17 +8,19 @@ module Metronome
       #   addresses will appear in the list at least 30 days before they are used for the
       #   first time.
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Metronome::Models::ServiceListParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::ServiceListResponse]
       #
-      def list(opts = {})
-        req = {
+      def list(params = {})
+        @client.request(
           method: :get,
           path: "services",
-          model: Metronome::Models::ServiceListResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::ServiceListResponse,
+          options: params[:request_options]
+        )
       end
 
       # @param client [Metronome::Client]

@@ -4,6 +4,10 @@ module Metronome
   module Models
     module Customers
       class BillingConfigDeleteParams < Metronome::BaseModel
+        # @!parse
+        #   extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
         # @!attribute customer_id
         #
         #   @return [String]
@@ -18,8 +22,9 @@ module Metronome
         # @!parse
         #   # @param customer_id [String]
         #   # @param billing_provider_type [String]
+        #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
-        #   def initialize(customer_id:, billing_provider_type:, **) = super
+        #   def initialize(customer_id:, billing_provider_type:, request_options: {}, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 

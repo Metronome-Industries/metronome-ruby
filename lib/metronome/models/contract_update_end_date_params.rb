@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class ContractUpdateEndDateParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute contract_id
       #   ID of the contract to update
       #
@@ -44,8 +48,18 @@ module Metronome
       #   # @param customer_id [String]
       #   # @param allow_ending_before_finalized_invoice [Boolean]
       #   # @param ending_before [String]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(contract_id:, customer_id:, allow_ending_before_finalized_invoice: nil, ending_before: nil, **) = super
+      #   def initialize(
+      #     contract_id:,
+      #     customer_id:,
+      #     allow_ending_before_finalized_invoice: nil,
+      #     ending_before: nil,
+      #     request_options: {},
+      #     **
+      #   )
+      #     super
+      #   end
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

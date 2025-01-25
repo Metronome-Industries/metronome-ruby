@@ -4,6 +4,10 @@ module Metronome
   module Models
     module Contracts
       class RateCardListParams < Metronome::BaseModel
+        # @!parse
+        #   extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
         # @!attribute body
         #
         #   @return [Object]
@@ -33,8 +37,9 @@ module Metronome
         #   # @param body [Object]
         #   # @param limit [Integer]
         #   # @param next_page [String]
+        #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
-        #   def initialize(body:, limit: nil, next_page: nil, **) = super
+        #   def initialize(body:, limit: nil, next_page: nil, request_options: {}, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

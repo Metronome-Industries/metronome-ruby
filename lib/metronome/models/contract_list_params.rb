@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class ContractListParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute customer_id
       #
       #   @return [String]
@@ -71,6 +75,7 @@ module Metronome
       #   # @param include_balance [Boolean]
       #   # @param include_ledgers [Boolean]
       #   # @param starting_at [String]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     customer_id:,
@@ -79,6 +84,7 @@ module Metronome
       #     include_balance: nil,
       #     include_ledgers: nil,
       #     starting_at: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

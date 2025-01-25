@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class CustomFieldRemoveKeyParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute entity
       #
       #   @return [Symbol, Metronome::Models::CustomFieldRemoveKeyParams::Entity]
@@ -16,8 +20,9 @@ module Metronome
       # @!parse
       #   # @param entity [String]
       #   # @param key [String]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(entity:, key:, **) = super
+      #   def initialize(entity:, key:, request_options: {}, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
