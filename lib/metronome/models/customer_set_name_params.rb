@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class CustomerSetNameParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute customer_id
       #
       #   @return [String]
@@ -18,8 +22,9 @@ module Metronome
       # @!parse
       #   # @param customer_id [String]
       #   # @param name [String]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(customer_id:, name:, **) = super
+      #   def initialize(customer_id:, name:, request_options: {}, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

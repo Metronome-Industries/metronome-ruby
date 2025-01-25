@@ -7,7 +7,7 @@ module Metronome
         class Rates
           # Get all rates for a rate card at a point in time
           #
-          # @param params [Metronome::Models::Contracts::RateCards::RateListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+          # @param params [Metronome::Models::Contracts::RateCards::RateListParams, Hash{Symbol=>Object}] .
           #
           #   @option params [Time] :at Body param: inclusive starting point for the rates schedule
           #
@@ -21,27 +21,27 @@ module Metronome
           #     included in the response Passing no selectors will result in all rates being
           #     returned.
           #
-          # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+          #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
           #
           # @return [Metronome::CursorPage<Metronome::Models::Contracts::RateCards::RateListResponse>]
           #
-          def list(params = {}, opts = {})
-            parsed = Metronome::Models::Contracts::RateCards::RateListParams.dump(params)
+          def list(params)
+            parsed, options = Metronome::Models::Contracts::RateCards::RateListParams.dump_request(params)
             query_params = [:limit, :next_page]
-            req = {
+            @client.request(
               method: :post,
               path: "contract-pricing/rate-cards/getRates",
               query: parsed.slice(*query_params),
               body: parsed.except(*query_params),
               page: Metronome::CursorPage,
-              model: Metronome::Models::Contracts::RateCards::RateListResponse
-            }
-            @client.request(req, opts)
+              model: Metronome::Models::Contracts::RateCards::RateListResponse,
+              options: options
+            )
           end
 
           # Add a new rate
           #
-          # @param params [Metronome::Models::Contracts::RateCards::RateAddParams, Hash{Symbol=>Object}] Attributes to send in this request.
+          # @param params [Metronome::Models::Contracts::RateCards::RateAddParams, Hash{Symbol=>Object}] .
           #
           #   @option params [Boolean] :entitled
           #
@@ -83,42 +83,42 @@ module Metronome
           #     using list prices rather than the standard rates for this product on the
           #     contract.
           #
-          # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+          #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
           #
           # @return [Metronome::Models::Contracts::RateCards::RateAddResponse]
           #
-          def add(params = {}, opts = {})
-            parsed = Metronome::Models::Contracts::RateCards::RateAddParams.dump(params)
-            req = {
+          def add(params)
+            parsed, options = Metronome::Models::Contracts::RateCards::RateAddParams.dump_request(params)
+            @client.request(
               method: :post,
               path: "contract-pricing/rate-cards/addRate",
               body: parsed,
-              model: Metronome::Models::Contracts::RateCards::RateAddResponse
-            }
-            @client.request(req, opts)
+              model: Metronome::Models::Contracts::RateCards::RateAddResponse,
+              options: options
+            )
           end
 
           # Add new rates
           #
-          # @param params [Metronome::Models::Contracts::RateCards::RateAddManyParams, Hash{Symbol=>Object}] Attributes to send in this request.
+          # @param params [Metronome::Models::Contracts::RateCards::RateAddManyParams, Hash{Symbol=>Object}] .
           #
           #   @option params [String] :rate_card_id
           #
           #   @option params [Array<Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate>] :rates
           #
-          # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+          #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
           #
           # @return [Metronome::Models::Contracts::RateCards::RateAddManyResponse]
           #
-          def add_many(params = {}, opts = {})
-            parsed = Metronome::Models::Contracts::RateCards::RateAddManyParams.dump(params)
-            req = {
+          def add_many(params)
+            parsed, options = Metronome::Models::Contracts::RateCards::RateAddManyParams.dump_request(params)
+            @client.request(
               method: :post,
               path: "contract-pricing/rate-cards/addRates",
               body: parsed,
-              model: Metronome::Models::Contracts::RateCards::RateAddManyResponse
-            }
-            @client.request(req, opts)
+              model: Metronome::Models::Contracts::RateCards::RateAddManyResponse,
+              options: options
+            )
           end
 
           # @param client [Metronome::Client]

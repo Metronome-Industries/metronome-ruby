@@ -4,6 +4,10 @@ module Metronome
   module Models
     module Customers
       class InvoiceAddChargeParams < Metronome::BaseModel
+        # @!parse
+        #   extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
         # @!attribute customer_id
         #
         #   @return [String]
@@ -54,8 +58,21 @@ module Metronome
         #   # @param invoice_start_timestamp [String]
         #   # @param price [Float]
         #   # @param quantity [Float]
+        #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
-        #   def initialize(customer_id:, charge_id:, customer_plan_id:, description:, invoice_start_timestamp:, price:, quantity:, **) = super
+        #   def initialize(
+        #     customer_id:,
+        #     charge_id:,
+        #     customer_plan_id:,
+        #     description:,
+        #     invoice_start_timestamp:,
+        #     price:,
+        #     quantity:,
+        #     request_options: {},
+        #     **
+        #   )
+        #     super
+        #   end
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

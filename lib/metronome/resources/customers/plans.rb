@@ -6,7 +6,7 @@ module Metronome
       class Plans
         # List the given customer's plans in reverse-chronological order.
         #
-        # @param params [Metronome::Models::Customers::PlanListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::PlanListParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :customer_id Path param:
         #
@@ -14,30 +14,30 @@ module Metronome
         #
         #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
         #
-        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Metronome::CursorPage<Metronome::Models::Customers::PlanListResponse>]
         #
-        def list(params = {}, opts = {})
-          parsed = Metronome::Models::Customers::PlanListParams.dump(params)
+        def list(params)
+          parsed, options = Metronome::Models::Customers::PlanListParams.dump_request(params)
           customer_id = parsed.fetch(:customer_id) do
             raise ArgumentError.new("missing required path argument #{_1}")
           end
-          req = {
+          @client.request(
             method: :get,
             path: ["customers/%0s/plans", customer_id],
             query: parsed.except(:customer_id),
             page: Metronome::CursorPage,
-            model: Metronome::Models::Customers::PlanListResponse
-          }
-          @client.request(req, opts)
+            model: Metronome::Models::Customers::PlanListResponse,
+            options: options
+          )
         end
 
         # Associate an existing customer with a plan for a specified date range. See the
         #   [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments)
         #   for details on the price adjustments.
         #
-        # @param params [Metronome::Models::Customers::PlanAddParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::PlanAddParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :customer_id Path param:
         #
@@ -64,27 +64,27 @@ module Metronome
         #     [trial configuration documentation](https://docs.metronome.com/provisioning/configure-trials/)
         #     for details.
         #
-        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Metronome::Models::Customers::PlanAddResponse]
         #
-        def add(params = {}, opts = {})
-          parsed = Metronome::Models::Customers::PlanAddParams.dump(params)
+        def add(params)
+          parsed, options = Metronome::Models::Customers::PlanAddParams.dump_request(params)
           customer_id = parsed.fetch(:customer_id) do
             raise ArgumentError.new("missing required path argument #{_1}")
           end
-          req = {
+          @client.request(
             method: :post,
             path: ["customers/%0s/plans/add", customer_id],
             body: parsed.except(:customer_id),
-            model: Metronome::Models::Customers::PlanAddResponse
-          }
-          @client.request(req, opts)
+            model: Metronome::Models::Customers::PlanAddResponse,
+            options: options
+          )
         end
 
         # Change the end date of a customer's plan.
         #
-        # @param params [Metronome::Models::Customers::PlanEndParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::PlanEndParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :customer_id Path param:
         #
@@ -102,32 +102,32 @@ module Metronome
         #     invoice (if any). Stripe invoices will be voided if finalized or deleted if
         #     still in draft state.
         #
-        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Metronome::Models::Customers::PlanEndResponse]
         #
-        def end_(params = {}, opts = {})
-          parsed = Metronome::Models::Customers::PlanEndParams.dump(params)
+        def end_(params)
+          parsed, options = Metronome::Models::Customers::PlanEndParams.dump_request(params)
           customer_id = parsed.fetch(:customer_id) do
             raise ArgumentError.new("missing required path argument #{_1}")
           end
           customer_plan_id = parsed.fetch(:customer_plan_id) do
             raise ArgumentError.new("missing required path argument #{_1}")
           end
-          req = {
+          @client.request(
             method: :post,
             path: ["customers/%0s/plans/%1s/end", customer_id, customer_plan_id],
             body: parsed.except(:customer_id, :customer_plan_id),
-            model: Metronome::Models::Customers::PlanEndResponse
-          }
-          @client.request(req, opts)
+            model: Metronome::Models::Customers::PlanEndResponse,
+            options: options
+          )
         end
 
         # Lists a customer plans adjustments. See the
         #   [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments)
         #   for details.
         #
-        # @param params [Metronome::Models::Customers::PlanListPriceAdjustmentsParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::PlanListPriceAdjustmentsParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :customer_id Path param:
         #
@@ -137,26 +137,26 @@ module Metronome
         #
         #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
         #
-        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Metronome::CursorPage<Metronome::Models::Customers::PlanListPriceAdjustmentsResponse>]
         #
-        def list_price_adjustments(params = {}, opts = {})
-          parsed = Metronome::Models::Customers::PlanListPriceAdjustmentsParams.dump(params)
+        def list_price_adjustments(params)
+          parsed, options = Metronome::Models::Customers::PlanListPriceAdjustmentsParams.dump_request(params)
           customer_id = parsed.fetch(:customer_id) do
             raise ArgumentError.new("missing required path argument #{_1}")
           end
           customer_plan_id = parsed.fetch(:customer_plan_id) do
             raise ArgumentError.new("missing required path argument #{_1}")
           end
-          req = {
+          @client.request(
             method: :get,
             path: ["customers/%0s/plans/%1s/priceAdjustments", customer_id, customer_plan_id],
             query: parsed.except(:customer_id, :customer_plan_id),
             page: Metronome::CursorPage,
-            model: Metronome::Models::Customers::PlanListPriceAdjustmentsResponse
-          }
-          @client.request(req, opts)
+            model: Metronome::Models::Customers::PlanListPriceAdjustmentsResponse,
+            options: options
+          )
         end
 
         # @param client [Metronome::Client]

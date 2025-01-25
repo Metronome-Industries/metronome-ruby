@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class CustomFieldAddKeyParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute enforce_uniqueness
       #
       #   @return [Boolean]
@@ -22,8 +26,9 @@ module Metronome
       #   # @param enforce_uniqueness [Boolean]
       #   # @param entity [String]
       #   # @param key [String]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(enforce_uniqueness:, entity:, key:, **) = super
+      #   def initialize(enforce_uniqueness:, entity:, key:, request_options: {}, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 

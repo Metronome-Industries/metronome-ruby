@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class ContractArchiveParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute contract_id
       #   ID of the contract to archive
       #
@@ -26,8 +30,9 @@ module Metronome
       #   # @param contract_id [String]
       #   # @param customer_id [String]
       #   # @param void_invoices [Boolean]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(contract_id:, customer_id:, void_invoices:, **) = super
+      #   def initialize(contract_id:, customer_id:, void_invoices:, request_options: {}, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

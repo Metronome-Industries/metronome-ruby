@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class CustomerListParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute [r] customer_ids
       #   Filter the customer list by customer_id. Up to 100 ids can be provided.
       #
@@ -71,6 +75,7 @@ module Metronome
       #   # @param next_page [String]
       #   # @param only_archived [Boolean]
       #   # @param salesforce_account_ids [Array<String>]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     customer_ids: nil,
@@ -79,6 +84,7 @@ module Metronome
       #     next_page: nil,
       #     only_archived: nil,
       #     salesforce_account_ids: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

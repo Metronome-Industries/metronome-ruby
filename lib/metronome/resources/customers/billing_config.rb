@@ -6,7 +6,7 @@ module Metronome
       class BillingConfig
         # Set the billing configuration for a given customer.
         #
-        # @param params [Metronome::Models::Customers::BillingConfigCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::BillingConfigCreateParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :customer_id Path param:
         #
@@ -21,82 +21,82 @@ module Metronome
         #
         #   @option params [Symbol, Metronome::Models::Customers::BillingConfigCreateParams::StripeCollectionMethod] :stripe_collection_method Body param:
         #
-        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [nil]
         #
-        def create(params = {}, opts = {})
-          parsed = Metronome::Models::Customers::BillingConfigCreateParams.dump(params)
+        def create(params)
+          parsed, options = Metronome::Models::Customers::BillingConfigCreateParams.dump_request(params)
           customer_id = parsed.fetch(:customer_id) do
             raise ArgumentError.new("missing required path argument #{_1}")
           end
           billing_provider_type = parsed.fetch(:billing_provider_type) do
             raise ArgumentError.new("missing required path argument #{_1}")
           end
-          req = {
+          @client.request(
             method: :post,
             path: ["customers/%0s/billing-config/%1s", customer_id, billing_provider_type],
             body: parsed.except(:customer_id, :billing_provider_type),
-            model: NilClass
-          }
-          @client.request(req, opts)
+            model: NilClass,
+            options: options
+          )
         end
 
         # Fetch the billing configuration for the given customer.
         #
-        # @param params [Metronome::Models::Customers::BillingConfigRetrieveParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::BillingConfigRetrieveParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :customer_id
         #
         #   @option params [Symbol, Metronome::Models::Customers::BillingConfigRetrieveParams::BillingProviderType] :billing_provider_type The billing provider (e.g. stripe)
         #
-        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Metronome::Models::Customers::BillingConfigRetrieveResponse]
         #
-        def retrieve(params = {}, opts = {})
-          parsed = Metronome::Models::Customers::BillingConfigRetrieveParams.dump(params)
+        def retrieve(params)
+          parsed, options = Metronome::Models::Customers::BillingConfigRetrieveParams.dump_request(params)
           customer_id = parsed.fetch(:customer_id) do
             raise ArgumentError.new("missing required path argument #{_1}")
           end
           billing_provider_type = parsed.fetch(:billing_provider_type) do
             raise ArgumentError.new("missing required path argument #{_1}")
           end
-          req = {
+          @client.request(
             method: :get,
             path: ["customers/%0s/billing-config/%1s", customer_id, billing_provider_type],
-            model: Metronome::Models::Customers::BillingConfigRetrieveResponse
-          }
-          @client.request(req, opts)
+            model: Metronome::Models::Customers::BillingConfigRetrieveResponse,
+            options: options
+          )
         end
 
         # Delete the billing configuration for a given customer. Note: this is unsupported
         #   for Azure and AWS Marketplace customers.
         #
-        # @param params [Metronome::Models::Customers::BillingConfigDeleteParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::BillingConfigDeleteParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :customer_id
         #
         #   @option params [Symbol, Metronome::Models::Customers::BillingConfigDeleteParams::BillingProviderType] :billing_provider_type The billing provider (e.g. stripe)
         #
-        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [nil]
         #
-        def delete(params = {}, opts = {})
-          parsed = Metronome::Models::Customers::BillingConfigDeleteParams.dump(params)
+        def delete(params)
+          parsed, options = Metronome::Models::Customers::BillingConfigDeleteParams.dump_request(params)
           customer_id = parsed.fetch(:customer_id) do
             raise ArgumentError.new("missing required path argument #{_1}")
           end
           billing_provider_type = parsed.fetch(:billing_provider_type) do
             raise ArgumentError.new("missing required path argument #{_1}")
           end
-          req = {
+          @client.request(
             method: :delete,
             path: ["customers/%0s/billing-config/%1s", customer_id, billing_provider_type],
-            model: NilClass
-          }
-          @client.request(req, opts)
+            model: NilClass,
+            options: options
+          )
         end
 
         # @param client [Metronome::Client]

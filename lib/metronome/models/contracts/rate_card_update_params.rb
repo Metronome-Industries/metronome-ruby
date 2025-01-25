@@ -4,6 +4,10 @@ module Metronome
   module Models
     module Contracts
       class RateCardUpdateParams < Metronome::BaseModel
+        # @!parse
+        #   extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
         # @!attribute rate_card_id
         #   ID of the rate card to update
         #
@@ -49,8 +53,9 @@ module Metronome
         #   # @param aliases [Array<Metronome::Models::Contracts::RateCardUpdateParams::Alias>]
         #   # @param description [String]
         #   # @param name [String]
+        #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
-        #   def initialize(rate_card_id:, aliases: nil, description: nil, name: nil, **) = super
+        #   def initialize(rate_card_id:, aliases: nil, description: nil, name: nil, request_options: {}, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 

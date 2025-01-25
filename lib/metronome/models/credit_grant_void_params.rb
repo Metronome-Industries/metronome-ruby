@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class CreditGrantVoidParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute id
       #
       #   @return [String]
@@ -32,8 +36,9 @@ module Metronome
       #   # @param id [String]
       #   # @param release_uniqueness_key [Boolean]
       #   # @param void_credit_purchase_invoice [Boolean]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(id:, release_uniqueness_key: nil, void_credit_purchase_invoice: nil, **) = super
+      #   def initialize(id:, release_uniqueness_key: nil, void_credit_purchase_invoice: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

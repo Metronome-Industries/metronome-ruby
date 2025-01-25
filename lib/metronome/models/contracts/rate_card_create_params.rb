@@ -4,6 +4,10 @@ module Metronome
   module Models
     module Contracts
       class RateCardCreateParams < Metronome::BaseModel
+        # @!parse
+        #   extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
         # @!attribute name
         #   Used only in UI/API. It is not exposed to end customers.
         #
@@ -74,6 +78,7 @@ module Metronome
         #   # @param custom_fields [Hash{Symbol=>String}]
         #   # @param description [String]
         #   # @param fiat_credit_type_id [String]
+        #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
         #   def initialize(
         #     name:,
@@ -82,6 +87,7 @@ module Metronome
         #     custom_fields: nil,
         #     description: nil,
         #     fiat_credit_type_id: nil,
+        #     request_options: {},
         #     **
         #   )
         #     super

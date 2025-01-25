@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class CreditGrantListEntriesParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute [r] next_page
       #   Cursor that indicates where the next page of results should start.
       #
@@ -65,8 +69,19 @@ module Metronome
       #   # @param customer_ids [Array<String>]
       #   # @param ending_before [String]
       #   # @param starting_on [String]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(next_page: nil, credit_type_ids: nil, customer_ids: nil, ending_before: nil, starting_on: nil, **) = super
+      #   def initialize(
+      #     next_page: nil,
+      #     credit_type_ids: nil,
+      #     customer_ids: nil,
+      #     ending_before: nil,
+      #     starting_on: nil,
+      #     request_options: {},
+      #     **
+      #   )
+      #     super
+      #   end
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

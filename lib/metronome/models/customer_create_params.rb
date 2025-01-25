@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class CustomerCreateParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute name
       #   This will be truncated to 160 characters if the provided name is longer.
       #
@@ -67,6 +71,7 @@ module Metronome
       #   # @param customer_billing_provider_configurations [Array<Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration>]
       #   # @param external_id [String]
       #   # @param ingest_aliases [Array<String>]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     name:,
@@ -75,6 +80,7 @@ module Metronome
       #     customer_billing_provider_configurations: nil,
       #     external_id: nil,
       #     ingest_aliases: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class AlertCreateParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute alert_type
       #   Type of the alert
       #
@@ -149,6 +153,7 @@ module Metronome
       #   # @param invoice_types_filter [Array<String>]
       #   # @param plan_id [String]
       #   # @param uniqueness_key [String]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     alert_type:,
@@ -164,6 +169,7 @@ module Metronome
       #     invoice_types_filter: nil,
       #     plan_id: nil,
       #     uniqueness_key: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class BillableMetricCreateParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute name
       #   The display name of the billable metric.
       #
@@ -95,6 +99,7 @@ module Metronome
       #   # @param group_keys [Array<Array<String>>]
       #   # @param property_filters [Array<Metronome::Models::PropertyFilter>]
       #   # @param sql [String]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     name:,
@@ -105,6 +110,7 @@ module Metronome
       #     group_keys: nil,
       #     property_filters: nil,
       #     sql: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

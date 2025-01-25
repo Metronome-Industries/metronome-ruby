@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class AlertArchiveParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute id
       #   The Metronome ID of the alert
       #
@@ -22,8 +26,9 @@ module Metronome
       # @!parse
       #   # @param id [String]
       #   # @param release_uniqueness_key [Boolean]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(id:, release_uniqueness_key: nil, **) = super
+      #   def initialize(id:, release_uniqueness_key: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

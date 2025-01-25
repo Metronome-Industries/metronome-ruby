@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class ContractAmendParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute contract_id
       #   ID of the contract to amend
       #
@@ -144,6 +148,7 @@ module Metronome
       #   # @param salesforce_opportunity_id [String]
       #   # @param scheduled_charges [Array<Metronome::Models::ContractAmendParams::ScheduledCharge>]
       #   # @param total_contract_value [Float]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     contract_id:,
@@ -160,6 +165,7 @@ module Metronome
       #     salesforce_opportunity_id: nil,
       #     scheduled_charges: nil,
       #     total_contract_value: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

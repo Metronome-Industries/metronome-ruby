@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class ContractSetUsageFilterParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute contract_id
       #
       #   @return [String]
@@ -34,8 +38,9 @@ module Metronome
       #   # @param group_key [String]
       #   # @param group_values [Array<String>]
       #   # @param starting_at [String]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(contract_id:, customer_id:, group_key:, group_values:, starting_at:, **) = super
+      #   def initialize(contract_id:, customer_id:, group_key:, group_values:, starting_at:, request_options: {}, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

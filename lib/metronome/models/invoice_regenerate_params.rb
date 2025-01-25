@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class InvoiceRegenerateParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute id
       #   The invoice id to regenerate
       #
@@ -11,8 +15,9 @@ module Metronome
 
       # @!parse
       #   # @param id [String]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(id:, **) = super
+      #   def initialize(id:, request_options: {}, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

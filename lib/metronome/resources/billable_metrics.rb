@@ -5,7 +5,7 @@ module Metronome
     class BillableMetrics
       # Creates a new Billable Metric.
       #
-      # @param params [Metronome::Models::BillableMetricCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::BillableMetricCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :name The display name of the billable metric.
       #
@@ -30,47 +30,47 @@ module Metronome
       #     aggregation_key, and group_keys. If provided, these other fields must be
       #     omitted.
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::BillableMetricCreateResponse]
       #
-      def create(params = {}, opts = {})
-        parsed = Metronome::Models::BillableMetricCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Metronome::Models::BillableMetricCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "billable-metrics/create",
           body: parsed,
-          model: Metronome::Models::BillableMetricCreateResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::BillableMetricCreateResponse,
+          options: options
+        )
       end
 
       # Get a billable metric.
       #
-      # @param params [Metronome::Models::BillableMetricRetrieveParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::BillableMetricRetrieveParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :billable_metric_id
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::BillableMetricRetrieveResponse]
       #
-      def retrieve(params = {}, opts = {})
-        parsed = Metronome::Models::BillableMetricRetrieveParams.dump(params)
+      def retrieve(params)
+        parsed, options = Metronome::Models::BillableMetricRetrieveParams.dump_request(params)
         billable_metric_id = parsed.fetch(:billable_metric_id) do
           raise ArgumentError.new("missing required path argument #{_1}")
         end
-        req = {
+        @client.request(
           method: :get,
           path: ["billable-metrics/%0s", billable_metric_id],
-          model: Metronome::Models::BillableMetricRetrieveResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::BillableMetricRetrieveResponse,
+          options: options
+        )
       end
 
       # List all billable metrics.
       #
-      # @param params [Metronome::Models::BillableMetricListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::BillableMetricListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Boolean] :include_archived If true, the list of returned metrics will include archived metrics
       #
@@ -78,41 +78,41 @@ module Metronome
       #
       #   @option params [String] :next_page Cursor that indicates where the next page of results should start.
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::CursorPage<Metronome::Models::BillableMetricListResponse>]
       #
-      def list(params = {}, opts = {})
-        parsed = Metronome::Models::BillableMetricListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Metronome::Models::BillableMetricListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "billable-metrics",
           query: parsed,
           page: Metronome::CursorPage,
-          model: Metronome::Models::BillableMetricListResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::BillableMetricListResponse,
+          options: options
+        )
       end
 
       # Archive an existing billable metric.
       #
-      # @param params [Metronome::Models::BillableMetricArchiveParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::BillableMetricArchiveParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :id
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::BillableMetricArchiveResponse]
       #
-      def archive(params = {}, opts = {})
-        parsed = Metronome::Models::BillableMetricArchiveParams.dump(params)
-        req = {
+      def archive(params)
+        parsed, options = Metronome::Models::BillableMetricArchiveParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "billable-metrics/archive",
           body: parsed,
-          model: Metronome::Models::BillableMetricArchiveResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::BillableMetricArchiveResponse,
+          options: options
+        )
       end
 
       # @param client [Metronome::Client]

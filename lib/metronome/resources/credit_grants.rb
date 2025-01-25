@@ -5,7 +5,7 @@ module Metronome
     class CreditGrants
       # Create a new credit grant
       #
-      # @param params [Metronome::Models::CreditGrantCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CreditGrantCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :customer_id the Metronome ID of the customer
       #
@@ -43,24 +43,24 @@ module Metronome
       #     with a previously used uniqueness key, a new record will not be created and the
       #     request will fail with a 409 error.
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::CreditGrantCreateResponse]
       #
-      def create(params = {}, opts = {})
-        parsed = Metronome::Models::CreditGrantCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Metronome::Models::CreditGrantCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "credits/createGrant",
           body: parsed,
-          model: Metronome::Models::CreditGrantCreateResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::CreditGrantCreateResponse,
+          options: options
+        )
       end
 
       # List credit grants. This list does not included voided grants.
       #
-      # @param params [Metronome::Models::CreditGrantListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CreditGrantListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Integer] :limit Query param: Max number of results that should be returned
       #
@@ -80,27 +80,27 @@ module Metronome
       #
       #   @option params [Time] :not_expiring_before Body param: Only return credit grants that expire at or after this timestamp.
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::CursorPage<Metronome::Models::CreditGrantListResponse>]
       #
-      def list(params = {}, opts = {})
-        parsed = Metronome::Models::CreditGrantListParams.dump(params)
+      def list(params = {})
+        parsed, options = Metronome::Models::CreditGrantListParams.dump_request(params)
         query_params = [:limit, :next_page]
-        req = {
+        @client.request(
           method: :post,
           path: "credits/listGrants",
           query: parsed.slice(*query_params),
           body: parsed.except(*query_params),
           page: Metronome::CursorPage,
-          model: Metronome::Models::CreditGrantListResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::CreditGrantListResponse,
+          options: options
+        )
       end
 
       # Edit an existing credit grant
       #
-      # @param params [Metronome::Models::CreditGrantEditParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CreditGrantEditParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :id the ID of the credit grant
       #
@@ -110,50 +110,50 @@ module Metronome
       #
       #   @option params [String] :name the updated name for the credit grant
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::CreditGrantEditResponse]
       #
-      def edit(params = {}, opts = {})
-        parsed = Metronome::Models::CreditGrantEditParams.dump(params)
-        req = {
+      def edit(params)
+        parsed, options = Metronome::Models::CreditGrantEditParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "credits/editGrant",
           body: parsed,
-          model: Metronome::Models::CreditGrantEditResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::CreditGrantEditResponse,
+          options: options
+        )
       end
 
       # List all pricing units (known in the API by the legacy term "credit types").
       #
-      # @param params [Metronome::Models::CreditGrantListCreditTypesParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CreditGrantListCreditTypesParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Integer] :limit Max number of results that should be returned
       #
       #   @option params [String] :next_page Cursor that indicates where the next page of results should start.
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::CursorPage<Metronome::Models::CreditGrantListCreditTypesResponse>]
       #
-      def list_credit_types(params = {}, opts = {})
-        parsed = Metronome::Models::CreditGrantListCreditTypesParams.dump(params)
-        req = {
+      def list_credit_types(params = {})
+        parsed, options = Metronome::Models::CreditGrantListCreditTypesParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "credit-types/list",
           query: parsed,
           page: Metronome::CursorPage,
-          model: Metronome::Models::CreditGrantListCreditTypesResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::CreditGrantListCreditTypesResponse,
+          options: options
+        )
       end
 
       # Fetches a list of credit ledger entries. Returns lists of ledgers per customer.
       #   Ledger entries are returned in chronological order. Ledger entries associated
       #   with voided credit grants are not included.
       #
-      # @param params [Metronome::Models::CreditGrantListEntriesParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CreditGrantListEntriesParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
       #
@@ -171,26 +171,26 @@ module Metronome
       #   @option params [Time] :starting_on Body param: If supplied, only ledger entries effective at or after this time
       #     will be returned.
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::CreditGrantListEntriesResponse]
       #
-      def list_entries(params = {}, opts = {})
-        parsed = Metronome::Models::CreditGrantListEntriesParams.dump(params)
+      def list_entries(params = {})
+        parsed, options = Metronome::Models::CreditGrantListEntriesParams.dump_request(params)
         query_params = [:next_page]
-        req = {
+        @client.request(
           method: :post,
           path: "credits/listEntries",
           query: parsed.slice(*query_params),
           body: parsed.except(*query_params),
-          model: Metronome::Models::CreditGrantListEntriesResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::CreditGrantListEntriesResponse,
+          options: options
+        )
       end
 
       # Void a credit grant
       #
-      # @param params [Metronome::Models::CreditGrantVoidParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::CreditGrantVoidParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :id
       #
@@ -198,19 +198,19 @@ module Metronome
       #
       #   @option params [Boolean] :void_credit_purchase_invoice If true, void the purchase invoice associated with the grant
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::CreditGrantVoidResponse]
       #
-      def void(params = {}, opts = {})
-        parsed = Metronome::Models::CreditGrantVoidParams.dump(params)
-        req = {
+      def void(params)
+        parsed, options = Metronome::Models::CreditGrantVoidParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "credits/voidGrant",
           body: parsed,
-          model: Metronome::Models::CreditGrantVoidResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::CreditGrantVoidResponse,
+          options: options
+        )
       end
 
       # @param client [Metronome::Client]

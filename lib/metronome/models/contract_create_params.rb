@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class ContractCreateParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute customer_id
       #
       #   @return [String]
@@ -278,6 +282,7 @@ module Metronome
       #   # @param uniqueness_key [String]
       #   # @param usage_filter [Metronome::Models::BaseUsageFilter]
       #   # @param usage_statement_schedule [Metronome::Models::ContractCreateParams::UsageStatementSchedule]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     customer_id:,
@@ -305,6 +310,7 @@ module Metronome
       #     uniqueness_key: nil,
       #     usage_filter: nil,
       #     usage_statement_schedule: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

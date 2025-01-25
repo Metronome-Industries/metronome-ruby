@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class CreditGrantCreateParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute customer_id
       #   the Metronome ID of the customer
       #
@@ -139,6 +143,7 @@ module Metronome
       #   # @param reason [String]
       #   # @param rollover_settings [Metronome::Models::CreditGrantCreateParams::RolloverSettings]
       #   # @param uniqueness_key [String]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     customer_id:,
@@ -155,6 +160,7 @@ module Metronome
       #     reason: nil,
       #     rollover_settings: nil,
       #     uniqueness_key: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class UsageListWithGroupsParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute billable_metric_id
       #
       #   @return [String]
@@ -90,6 +94,7 @@ module Metronome
       #   # @param ending_before [String]
       #   # @param group_by [Metronome::Models::UsageListWithGroupsParams::GroupBy]
       #   # @param starting_on [String]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     billable_metric_id:,
@@ -101,6 +106,7 @@ module Metronome
       #     ending_before: nil,
       #     group_by: nil,
       #     starting_on: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

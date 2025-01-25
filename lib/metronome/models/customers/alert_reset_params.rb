@@ -4,6 +4,10 @@ module Metronome
   module Models
     module Customers
       class AlertResetParams < Metronome::BaseModel
+        # @!parse
+        #   extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
         # @!attribute alert_id
         #   The Metronome ID of the alert
         #
@@ -19,8 +23,9 @@ module Metronome
         # @!parse
         #   # @param alert_id [String]
         #   # @param customer_id [String]
+        #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
-        #   def initialize(alert_id:, customer_id:, **) = super
+        #   def initialize(alert_id:, customer_id:, request_options: {}, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

@@ -32,11 +32,10 @@ module Metronome
     #
     # @param client [Metronome::BaseClient]
     # @param req [Hash{Symbol=>Object}]
-    # @param opts [Hash{Symbol=>Object}]
     # @param headers [Hash{String=>String}]
     # @param unwrapped [Hash{Symbol=>Object}]
     #
-    def initialize(client:, req:, opts:, headers:, unwrapped:)
+    def initialize(client:, req:, headers:, unwrapped:)
       case unwrapped
       in {next_page: next_page_} if next_page_.is_a?(String) || next_page_.is_nil?
         @next_page_ = next_page_
@@ -69,7 +68,7 @@ module Metronome
       end
 
       req = Metronome::Util.deep_merge(@req, {query: {next_page: next_page_}})
-      @client.request(req, @opts)
+      @client.request(req)
     end
 
     # @param blk [Proc]

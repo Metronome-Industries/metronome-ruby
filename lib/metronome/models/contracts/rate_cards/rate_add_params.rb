@@ -5,6 +5,10 @@ module Metronome
     module Contracts
       module RateCards
         class RateAddParams < Metronome::BaseModel
+          # @!parse
+          #   extend Metronome::RequestParameters::Converter
+          include Metronome::RequestParameters
+
           # @!attribute entitled
           #
           #   @return [Boolean]
@@ -159,6 +163,7 @@ module Metronome
           #   # @param quantity [Float]
           #   # @param tiers [Array<Metronome::Models::Tier>]
           #   # @param use_list_prices [Boolean]
+          #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
           #   #
           #   def initialize(
           #     entitled:,
@@ -176,6 +181,7 @@ module Metronome
           #     quantity: nil,
           #     tiers: nil,
           #     use_list_prices: nil,
+          #     request_options: {},
           #     **
           #   )
           #     super

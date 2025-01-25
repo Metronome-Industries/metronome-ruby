@@ -5,7 +5,7 @@ module Metronome
     class Alerts
       # Create a new alert
       #
-      # @param params [Metronome::Models::AlertCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::AlertCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Symbol, Metronome::Models::AlertCreateParams::AlertType] :alert_type Type of the alert
       #
@@ -47,42 +47,42 @@ module Metronome
       #     with a previously used uniqueness key, a new record will not be created and the
       #     request will fail with a 409 error.
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::AlertCreateResponse]
       #
-      def create(params = {}, opts = {})
-        parsed = Metronome::Models::AlertCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Metronome::Models::AlertCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "alerts/create",
           body: parsed,
-          model: Metronome::Models::AlertCreateResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::AlertCreateResponse,
+          options: options
+        )
       end
 
       # Archive an existing alert
       #
-      # @param params [Metronome::Models::AlertArchiveParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::AlertArchiveParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :id The Metronome ID of the alert
       #
       #   @option params [Boolean] :release_uniqueness_key If true, resets the uniqueness key on this alert so it can be re-used
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::AlertArchiveResponse]
       #
-      def archive(params = {}, opts = {})
-        parsed = Metronome::Models::AlertArchiveParams.dump(params)
-        req = {
+      def archive(params)
+        parsed, options = Metronome::Models::AlertArchiveParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "alerts/archive",
           body: parsed,
-          model: Metronome::Models::AlertArchiveResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::AlertArchiveResponse,
+          options: options
+        )
       end
 
       # @param client [Metronome::Client]

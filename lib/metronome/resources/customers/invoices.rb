@@ -6,7 +6,7 @@ module Metronome
       class Invoices
         # Fetch a specific invoice for a given customer.
         #
-        # @param params [Metronome::Models::Customers::InvoiceRetrieveParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::InvoiceRetrieveParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :customer_id Path param:
         #
@@ -15,31 +15,31 @@ module Metronome
         #   @option params [Boolean] :skip_zero_qty_line_items Query param: If set, all zero quantity line items will be filtered out of the
         #     response
         #
-        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Metronome::Models::Customers::InvoiceRetrieveResponse]
         #
-        def retrieve(params = {}, opts = {})
-          parsed = Metronome::Models::Customers::InvoiceRetrieveParams.dump(params)
+        def retrieve(params)
+          parsed, options = Metronome::Models::Customers::InvoiceRetrieveParams.dump_request(params)
           customer_id = parsed.fetch(:customer_id) do
             raise ArgumentError.new("missing required path argument #{_1}")
           end
           invoice_id = parsed.fetch(:invoice_id) do
             raise ArgumentError.new("missing required path argument #{_1}")
           end
-          req = {
+          @client.request(
             method: :get,
             path: ["customers/%0s/invoices/%1s", customer_id, invoice_id],
             query: parsed.except(:customer_id, :invoice_id),
-            model: Metronome::Models::Customers::InvoiceRetrieveResponse
-          }
-          @client.request(req, opts)
+            model: Metronome::Models::Customers::InvoiceRetrieveResponse,
+            options: options
+          )
         end
 
         # List all invoices for a given customer, optionally filtered by status, date
         #   range, and/or credit type.
         #
-        # @param params [Metronome::Models::Customers::InvoiceListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::InvoiceListParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :customer_id Path param:
         #
@@ -63,28 +63,28 @@ module Metronome
         #
         #   @option params [String] :status Query param: Invoice status, e.g. DRAFT, FINALIZED, or VOID
         #
-        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Metronome::CursorPage<Metronome::Models::Customers::Invoice>]
         #
-        def list(params = {}, opts = {})
-          parsed = Metronome::Models::Customers::InvoiceListParams.dump(params)
+        def list(params)
+          parsed, options = Metronome::Models::Customers::InvoiceListParams.dump_request(params)
           customer_id = parsed.fetch(:customer_id) do
             raise ArgumentError.new("missing required path argument #{_1}")
           end
-          req = {
+          @client.request(
             method: :get,
             path: ["customers/%0s/invoices", customer_id],
             query: parsed.except(:customer_id),
             page: Metronome::CursorPage,
-            model: Metronome::Models::Customers::Invoice
-          }
-          @client.request(req, opts)
+            model: Metronome::Models::Customers::Invoice,
+            options: options
+          )
         end
 
         # Add a one time charge to the specified invoice
         #
-        # @param params [Metronome::Models::Customers::InvoiceAddChargeParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::InvoiceAddChargeParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :customer_id Path param:
         #
@@ -103,28 +103,28 @@ module Metronome
         #
         #   @option params [Float] :quantity Body param:
         #
-        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Metronome::Models::Customers::InvoiceAddChargeResponse]
         #
-        def add_charge(params = {}, opts = {})
-          parsed = Metronome::Models::Customers::InvoiceAddChargeParams.dump(params)
+        def add_charge(params)
+          parsed, options = Metronome::Models::Customers::InvoiceAddChargeParams.dump_request(params)
           customer_id = parsed.fetch(:customer_id) do
             raise ArgumentError.new("missing required path argument #{_1}")
           end
-          req = {
+          @client.request(
             method: :post,
             path: ["customers/%0s/addCharge", customer_id],
             body: parsed.except(:customer_id),
-            model: Metronome::Models::Customers::InvoiceAddChargeResponse
-          }
-          @client.request(req, opts)
+            model: Metronome::Models::Customers::InvoiceAddChargeResponse,
+            options: options
+          )
         end
 
         # List daily or hourly invoice breakdowns for a given customer, optionally
         #   filtered by status, date range, and/or credit type.
         #
-        # @param params [Metronome::Models::Customers::InvoiceListBreakdownsParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Customers::InvoiceListBreakdownsParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :customer_id Path param:
         #
@@ -153,23 +153,23 @@ module Metronome
         #
         #   @option params [Symbol, Metronome::Models::Customers::InvoiceListBreakdownsParams::WindowSize] :window_size Query param: The granularity of the breakdowns to return. Defaults to day.
         #
-        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Metronome::CursorPage<Metronome::Models::Customers::InvoiceListBreakdownsResponse>]
         #
-        def list_breakdowns(params = {}, opts = {})
-          parsed = Metronome::Models::Customers::InvoiceListBreakdownsParams.dump(params)
+        def list_breakdowns(params)
+          parsed, options = Metronome::Models::Customers::InvoiceListBreakdownsParams.dump_request(params)
           customer_id = parsed.fetch(:customer_id) do
             raise ArgumentError.new("missing required path argument #{_1}")
           end
-          req = {
+          @client.request(
             method: :get,
             path: ["customers/%0s/invoices/breakdowns", customer_id],
             query: parsed.except(:customer_id),
             page: Metronome::CursorPage,
-            model: Metronome::Models::Customers::InvoiceListBreakdownsResponse
-          }
-          @client.request(req, opts)
+            model: Metronome::Models::Customers::InvoiceListBreakdownsResponse,
+            options: options
+          )
         end
 
         # @param client [Metronome::Client]

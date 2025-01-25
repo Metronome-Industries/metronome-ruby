@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class ContractAddManualBalanceEntryParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute id
       #   ID of the balance (commit or credit) to update.
       #
@@ -62,8 +66,21 @@ module Metronome
       #   # @param segment_id [String]
       #   # @param contract_id [String]
       #   # @param timestamp [String]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(id:, amount:, customer_id:, reason:, segment_id:, contract_id: nil, timestamp: nil, **) = super
+      #   def initialize(
+      #     id:,
+      #     amount:,
+      #     customer_id:,
+      #     reason:,
+      #     segment_id:,
+      #     contract_id: nil,
+      #     timestamp: nil,
+      #     request_options: {},
+      #     **
+      #   )
+      #     super
+      #   end
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
     end

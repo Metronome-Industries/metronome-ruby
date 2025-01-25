@@ -5,44 +5,44 @@ module Metronome
     class Invoices
       # Regenerate a voided contract invoice
       #
-      # @param params [Metronome::Models::InvoiceRegenerateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::InvoiceRegenerateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :id The invoice id to regenerate
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::InvoiceRegenerateResponse]
       #
-      def regenerate(params = {}, opts = {})
-        parsed = Metronome::Models::InvoiceRegenerateParams.dump(params)
-        req = {
+      def regenerate(params)
+        parsed, options = Metronome::Models::InvoiceRegenerateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "invoices/regenerate",
           body: parsed,
-          model: Metronome::Models::InvoiceRegenerateResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::InvoiceRegenerateResponse,
+          options: options
+        )
       end
 
       # Void an invoice
       #
-      # @param params [Metronome::Models::InvoiceVoidParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Metronome::Models::InvoiceVoidParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :id The invoice id to void
       #
-      # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Metronome::Models::InvoiceVoidResponse]
       #
-      def void(params = {}, opts = {})
-        parsed = Metronome::Models::InvoiceVoidParams.dump(params)
-        req = {
+      def void(params)
+        parsed, options = Metronome::Models::InvoiceVoidParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "invoices/void",
           body: parsed,
-          model: Metronome::Models::InvoiceVoidResponse
-        }
-        @client.request(req, opts)
+          model: Metronome::Models::InvoiceVoidResponse,
+          options: options
+        )
       end
 
       # @param client [Metronome::Client]

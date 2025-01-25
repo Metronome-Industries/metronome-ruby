@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class CustomFieldSetValuesParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute custom_fields
       #
       #   @return [Hash{Symbol=>String}]
@@ -22,8 +26,9 @@ module Metronome
       #   # @param custom_fields [Hash{Symbol=>String}]
       #   # @param entity [String]
       #   # @param entity_id [String]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(custom_fields:, entity:, entity_id:, **) = super
+      #   def initialize(custom_fields:, entity:, entity_id:, request_options: {}, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 

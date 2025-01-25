@@ -15,7 +15,7 @@ module Metronome
 
         # Create a new rate card
         #
-        # @param params [Metronome::Models::Contracts::RateCardCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::RateCardCreateParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :name Used only in UI/API. It is not exposed to end customers.
         #
@@ -32,46 +32,46 @@ module Metronome
         #   @option params [String] :fiat_credit_type_id The Metronome ID of the credit type to associate with the rate card, defaults to
         #     USD (cents) if not passed.
         #
-        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Metronome::Models::Contracts::RateCardCreateResponse]
         #
-        def create(params = {}, opts = {})
-          parsed = Metronome::Models::Contracts::RateCardCreateParams.dump(params)
-          req = {
+        def create(params)
+          parsed, options = Metronome::Models::Contracts::RateCardCreateParams.dump_request(params)
+          @client.request(
             method: :post,
             path: "contract-pricing/rate-cards/create",
             body: parsed,
-            model: Metronome::Models::Contracts::RateCardCreateResponse
-          }
-          @client.request(req, opts)
+            model: Metronome::Models::Contracts::RateCardCreateResponse,
+            options: options
+          )
         end
 
         # Get a specific rate card NOTE: Use `/contract-pricing/rate-cards/getRates` to
         #   retrieve rate card rates.
         #
-        # @param params [Metronome::Models::Contracts::RateCardRetrieveParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::RateCardRetrieveParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :id
         #
-        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Metronome::Models::Contracts::RateCardRetrieveResponse]
         #
-        def retrieve(params = {}, opts = {})
-          parsed = Metronome::Models::Contracts::RateCardRetrieveParams.dump(params)
-          req = {
+        def retrieve(params)
+          parsed, options = Metronome::Models::Contracts::RateCardRetrieveParams.dump_request(params)
+          @client.request(
             method: :post,
             path: "contract-pricing/rate-cards/get",
             body: parsed,
-            model: Metronome::Models::Contracts::RateCardRetrieveResponse
-          }
-          @client.request(req, opts)
+            model: Metronome::Models::Contracts::RateCardRetrieveResponse,
+            options: options
+          )
         end
 
         # Update a rate card
         #
-        # @param params [Metronome::Models::Contracts::RateCardUpdateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::RateCardUpdateParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :rate_card_id ID of the rate card to update
         #
@@ -83,25 +83,25 @@ module Metronome
         #
         #   @option params [String] :name Used only in UI/API. It is not exposed to end customers.
         #
-        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Metronome::Models::Contracts::RateCardUpdateResponse]
         #
-        def update(params = {}, opts = {})
-          parsed = Metronome::Models::Contracts::RateCardUpdateParams.dump(params)
-          req = {
+        def update(params)
+          parsed, options = Metronome::Models::Contracts::RateCardUpdateParams.dump_request(params)
+          @client.request(
             method: :post,
             path: "contract-pricing/rate-cards/update",
             body: parsed,
-            model: Metronome::Models::Contracts::RateCardUpdateResponse
-          }
-          @client.request(req, opts)
+            model: Metronome::Models::Contracts::RateCardUpdateResponse,
+            options: options
+          )
         end
 
         # List rate cards NOTE: Use `/contract-pricing/rate-cards/getRates` to retrieve
         #   rate card rates.
         #
-        # @param params [Metronome::Models::Contracts::RateCardListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::RateCardListParams, Hash{Symbol=>Object}] .
         #
         #   @option params [Object] :body Body param:
         #
@@ -109,27 +109,27 @@ module Metronome
         #
         #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
         #
-        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Metronome::CursorPage<Metronome::Models::Contracts::RateCardListResponse>]
         #
-        def list(params = {}, opts = {})
-          parsed = Metronome::Models::Contracts::RateCardListParams.dump(params)
-          req = {
+        def list(params)
+          parsed, options = Metronome::Models::Contracts::RateCardListParams.dump_request(params)
+          @client.request(
             method: :post,
             path: "contract-pricing/rate-cards/list",
             query: parsed.except(:body),
             body: parsed[:body],
             page: Metronome::CursorPage,
-            model: Metronome::Models::Contracts::RateCardListResponse
-          }
-          @client.request(req, opts)
+            model: Metronome::Models::Contracts::RateCardListResponse,
+            options: options
+          )
         end
 
         # Get all rates for a rate card from starting_at (either in perpetuity or until
         #   ending_before, if provided)
         #
-        # @param params [Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :rate_card_id Body param: ID of the rate card to get the schedule for
         #
@@ -146,21 +146,21 @@ module Metronome
         #     included in the response Passing no selectors will result in all rates being
         #     returned.
         #
-        # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse]
         #
-        def retrieve_rate_schedule(params = {}, opts = {})
-          parsed = Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams.dump(params)
+        def retrieve_rate_schedule(params)
+          parsed, options = Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams.dump_request(params)
           query_params = [:limit, :next_page]
-          req = {
+          @client.request(
             method: :post,
             path: "contract-pricing/rate-cards/getRateSchedule",
             query: parsed.slice(*query_params),
             body: parsed.except(*query_params),
-            model: Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse
-          }
-          @client.request(req, opts)
+            model: Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse,
+            options: options
+          )
         end
 
         # @param client [Metronome::Client]

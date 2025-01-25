@@ -4,6 +4,10 @@ module Metronome
   module Models
     module Customers
       class CreditCreateParams < Metronome::BaseModel
+        # @!parse
+        #   extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
         # @!attribute access_schedule
         #   Schedule for distributing the credit to the customer.
         #
@@ -146,6 +150,7 @@ module Metronome
         #   # @param rate_type [String]
         #   # @param salesforce_opportunity_id [String]
         #   # @param uniqueness_key [String]
+        #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
         #   def initialize(
         #     access_schedule:,
@@ -162,6 +167,7 @@ module Metronome
         #     rate_type: nil,
         #     salesforce_opportunity_id: nil,
         #     uniqueness_key: nil,
+        #     request_options: {},
         #     **
         #   )
         #     super

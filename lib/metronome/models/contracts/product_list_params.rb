@@ -4,6 +4,10 @@ module Metronome
   module Models
     module Contracts
       class ProductListParams < Metronome::BaseModel
+        # @!parse
+        #   extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
         # @!attribute [r] limit
         #   Max number of results that should be returned
         #
@@ -38,8 +42,9 @@ module Metronome
         #   # @param limit [Integer]
         #   # @param next_page [String]
         #   # @param archive_filter [String]
+        #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
-        #   def initialize(limit: nil, next_page: nil, archive_filter: nil, **) = super
+        #   def initialize(limit: nil, next_page: nil, archive_filter: nil, request_options: {}, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 

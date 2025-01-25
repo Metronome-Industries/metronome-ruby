@@ -3,6 +3,10 @@
 module Metronome
   module Models
     class UsageIngestParams < Metronome::BaseModel
+      # @!parse
+      #   extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
       # @!attribute usage
       #
       #   @return [Array<Metronome::Models::UsageIngestParams::Usage>]
@@ -10,8 +14,9 @@ module Metronome
 
       # @!parse
       #   # @param usage [Array<Metronome::Models::UsageIngestParams::Usage>]
+      #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(usage:, **) = super
+      #   def initialize(usage:, request_options: {}, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 

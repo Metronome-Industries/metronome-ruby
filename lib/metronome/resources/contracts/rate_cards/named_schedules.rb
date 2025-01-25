@@ -8,7 +8,7 @@ module Metronome
           # Get a named schedule for the given contract. This endpoint's availability is
           #   dependent on your client's configuration.
           #
-          # @param params [Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveParams, Hash{Symbol=>Object}] Attributes to send in this request.
+          # @param params [Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveParams, Hash{Symbol=>Object}] .
           #
           #   @option params [String] :contract_id ID of the contract whose named schedule is to be retrieved
           #
@@ -19,25 +19,25 @@ module Metronome
           #   @option params [Time] :covering_date If provided, at most one schedule segment will be returned (the one that covers
           #     this date). If not provided, all segments will be returned.
           #
-          # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+          #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
           #
           # @return [Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse]
           #
-          def retrieve(params = {}, opts = {})
-            parsed = Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveParams.dump(params)
-            req = {
+          def retrieve(params)
+            parsed, options = Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveParams.dump_request(params)
+            @client.request(
               method: :post,
               path: "contracts/getNamedSchedule",
               body: parsed,
-              model: Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse
-            }
-            @client.request(req, opts)
+              model: Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse,
+              options: options
+            )
           end
 
           # Update a named schedule for the given contract. This endpoint's availability is
           #   dependent on your client's configuration.
           #
-          # @param params [Metronome::Models::Contracts::RateCards::NamedScheduleUpdateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+          # @param params [Metronome::Models::Contracts::RateCards::NamedScheduleUpdateParams, Hash{Symbol=>Object}] .
           #
           #   @option params [String] :contract_id ID of the contract whose named schedule is to be updated
           #
@@ -52,19 +52,19 @@ module Metronome
           #
           #   @option params [Time] :ending_before
           #
-          # @param opts [Hash{Symbol=>Object}, Metronome::RequestOptions] Options to specify HTTP behaviour for this request.
+          #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
           #
           # @return [nil]
           #
-          def update(params = {}, opts = {})
-            parsed = Metronome::Models::Contracts::RateCards::NamedScheduleUpdateParams.dump(params)
-            req = {
+          def update(params)
+            parsed, options = Metronome::Models::Contracts::RateCards::NamedScheduleUpdateParams.dump_request(params)
+            @client.request(
               method: :post,
               path: "contracts/updateNamedSchedule",
               body: parsed,
-              model: NilClass
-            }
-            @client.request(req, opts)
+              model: NilClass,
+              options: options
+            )
           end
 
           # @param client [Metronome::Client]
