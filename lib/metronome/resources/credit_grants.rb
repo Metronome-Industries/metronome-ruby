@@ -125,30 +125,6 @@ module Metronome
         )
       end
 
-      # List all pricing units (known in the API by the legacy term "credit types").
-      #
-      # @param params [Metronome::Models::CreditGrantListCreditTypesParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Integer] :limit Max number of results that should be returned
-      #
-      #   @option params [String] :next_page Cursor that indicates where the next page of results should start.
-      #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
-      #
-      # @return [Metronome::CursorPage<Metronome::Models::CreditGrantListCreditTypesResponse>]
-      #
-      def list_credit_types(params = {})
-        parsed, options = Metronome::Models::CreditGrantListCreditTypesParams.dump_request(params)
-        @client.request(
-          method: :get,
-          path: "credit-types/list",
-          query: parsed,
-          page: Metronome::CursorPage,
-          model: Metronome::Models::CreditGrantListCreditTypesResponse,
-          options: options
-        )
-      end
-
       # Fetches a list of credit ledger entries. Returns lists of ledgers per customer.
       #   Ledger entries are returned in chronological order. Ledger entries associated
       #   with voided credit grants are not included.

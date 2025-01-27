@@ -28,6 +28,9 @@ module Metronome
     # @return [Metronome::Resources::CreditGrants]
     attr_reader :credit_grants
 
+    # @return [Metronome::Resources::PricingUnits]
+    attr_reader :pricing_units
+
     # @return [Metronome::Resources::Customers]
     attr_reader :customers
 
@@ -104,6 +107,7 @@ module Metronome
       @alerts = Metronome::Resources::Alerts.new(client: self)
       @plans = Metronome::Resources::Plans.new(client: self)
       @credit_grants = Metronome::Resources::CreditGrants.new(client: self)
+      @pricing_units = Metronome::Resources::PricingUnits.new(client: self)
       @customers = Metronome::Resources::Customers.new(client: self)
       @dashboards = Metronome::Resources::Dashboards.new(client: self)
       @usage = Metronome::Resources::Usage.new(client: self)
