@@ -4,13 +4,13 @@ module Metronome
   module Models
     # @example
     # ```ruby
-    # credit_grant_list_credit_types_response => {
+    # pricing_unit_list_response => {
     #   id: String,
     #   is_currency: Metronome::BooleanModel,
     #   name: String
     # }
     # ```
-    class CreditGrantListCreditTypesResponse < Metronome::BaseModel
+    class PricingUnitListResponse < Metronome::BaseModel
       # @!attribute [r] id
       #
       #   @return [String, nil]

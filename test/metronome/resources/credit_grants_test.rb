@@ -46,19 +46,6 @@ class Metronome::Test::Resources::CreditGrantsTest < Minitest::Test
     end
   end
 
-  def test_list_credit_types
-    response = @metronome.credit_grants.list_credit_types
-
-    assert_pattern do
-      response => Metronome::CursorPage
-    end
-
-    page = response.next_page
-    assert_pattern do
-      page => Metronome::CursorPage
-    end
-  end
-
   def test_list_entries
     response = @metronome.credit_grants.list_entries
 

@@ -2,7 +2,7 @@
 
 module Metronome
   module Models
-    class CreditGrantListCreditTypesParams < Metronome::BaseModel
+    class PricingUnitListParams < Metronome::BaseModel
       # @!parse
       #   extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
