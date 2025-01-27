@@ -42,7 +42,7 @@ module Metronome
           #   # @param contract_id [String]
           #   # @param customer_id [String]
           #   # @param schedule_name [String]
-          #   # @param covering_date [String]
+          #   # @param covering_date [Time]
           #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
           #   #
           #   def initialize(contract_id:, customer_id:, schedule_name:, covering_date: nil, request_options: {}, **) = super

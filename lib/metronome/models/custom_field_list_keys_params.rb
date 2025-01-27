@@ -32,7 +32,7 @@ module Metronome
 
       # @!parse
       #   # @param next_page [String]
-      #   # @param entities [Array<String>]
+      #   # @param entities [Array<Symbol, Metronome::Models::CustomFieldListKeysParams::Entity>]
       #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(next_page: nil, entities: nil, request_options: {}, **) = super

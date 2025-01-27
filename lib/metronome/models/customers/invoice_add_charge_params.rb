@@ -55,7 +55,7 @@ module Metronome
         #   # @param charge_id [String]
         #   # @param customer_plan_id [String]
         #   # @param description [String]
-        #   # @param invoice_start_timestamp [String]
+        #   # @param invoice_start_timestamp [Time]
         #   # @param price [Float]
         #   # @param quantity [Float]
         #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]

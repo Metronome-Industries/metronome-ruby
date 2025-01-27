@@ -85,8 +85,8 @@ module Metronome
         #   # @param billable_metric_id [String]
         #   # @param billable_metric_name [String]
         #   # @param customer_id [String]
-        #   # @param end_timestamp [String]
-        #   # @param start_timestamp [String]
+        #   # @param end_timestamp [Time]
+        #   # @param start_timestamp [Time]
         #   # @param value [Float, nil]
         #   # @param groups [Hash{Symbol=>Float}, nil]
         #   #

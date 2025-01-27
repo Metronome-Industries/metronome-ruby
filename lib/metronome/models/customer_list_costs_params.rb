@@ -46,8 +46,8 @@ module Metronome
 
       # @!parse
       #   # @param customer_id [String]
-      #   # @param ending_before [String]
-      #   # @param starting_on [String]
+      #   # @param ending_before [Time]
+      #   # @param starting_on [Time]
       #   # @param limit [Integer]
       #   # @param next_page [String]
       #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]

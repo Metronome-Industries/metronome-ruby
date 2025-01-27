@@ -55,7 +55,7 @@ module Metronome
 
       # @!parse
       #   # @param customer_id [String]
-      #   # @param dashboard [String]
+      #   # @param dashboard [Symbol, Metronome::Models::DashboardGetEmbeddableURLParams::Dashboard]
       #   # @param bm_group_key_overrides [Array<Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>]
       #   # @param color_overrides [Array<Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride>]
       #   # @param dashboard_options [Array<Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption>]
@@ -171,7 +171,7 @@ module Metronome
         #   attr_writer :value
 
         # @!parse
-        #   # @param name [String]
+        #   # @param name [Symbol, Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride::Name]
         #   # @param value [String]
         #   #
         #   def initialize(name: nil, value: nil, **) = super

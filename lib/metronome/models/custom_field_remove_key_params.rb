@@ -18,7 +18,7 @@ module Metronome
       required :key, String
 
       # @!parse
-      #   # @param entity [String]
+      #   # @param entity [Symbol, Metronome::Models::CustomFieldRemoveKeyParams::Entity]
       #   # @param key [String]
       #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #

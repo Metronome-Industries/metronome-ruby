@@ -254,17 +254,17 @@ module Metronome
         #   # @param total [Float]
         #   # @param type [String]
         #   # @param amendment_id [String]
-        #   # @param billable_status [String]
+        #   # @param billable_status [Symbol, Metronome::Models::Customers::Invoice::BillableStatus]
         #   # @param contract_custom_fields [Hash{Symbol=>String}]
         #   # @param contract_id [String]
         #   # @param correction_record [Metronome::Models::Customers::Invoice::CorrectionRecord]
-        #   # @param created_at [String]
+        #   # @param created_at [Time]
         #   # @param custom_fields [Hash{Symbol=>Object}]
         #   # @param customer_custom_fields [Hash{Symbol=>String}]
-        #   # @param end_timestamp [String]
+        #   # @param end_timestamp [Time]
         #   # @param external_invoice [Metronome::Models::Customers::Invoice::ExternalInvoice, nil]
         #   # @param invoice_adjustments [Array<Metronome::Models::Customers::Invoice::InvoiceAdjustment>]
-        #   # @param issued_at [String]
+        #   # @param issued_at [Time]
         #   # @param net_payment_terms_days [Float]
         #   # @param netsuite_sales_order_id [String]
         #   # @param plan_custom_fields [Hash{Symbol=>String}]
@@ -272,7 +272,7 @@ module Metronome
         #   # @param plan_name [String]
         #   # @param reseller_royalty [Metronome::Models::Customers::Invoice::ResellerRoyalty]
         #   # @param salesforce_opportunity_id [String]
-        #   # @param start_timestamp [String]
+        #   # @param start_timestamp [Time]
         #   # @param subtotal [Float]
         #   #
         #   def initialize(
@@ -673,14 +673,14 @@ module Metronome
           #   # @param commit_segment_id [String]
           #   # @param commit_type [String]
           #   # @param custom_fields [Hash{Symbol=>String}]
-          #   # @param ending_before [String]
+          #   # @param ending_before [Time]
           #   # @param group_key [String]
           #   # @param group_value [String, nil]
           #   # @param is_prorated [Boolean]
           #   # @param list_price [Metronome::Models::Rate]
           #   # @param metadata [String]
-          #   # @param netsuite_invoice_billing_end [String]
-          #   # @param netsuite_invoice_billing_start [String]
+          #   # @param netsuite_invoice_billing_end [Time]
+          #   # @param netsuite_invoice_billing_start [Time]
           #   # @param netsuite_item_id [String]
           #   # @param postpaid_commit [Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit]
           #   # @param presentation_group_values [Hash{Symbol=>String}, nil]
@@ -691,10 +691,10 @@ module Metronome
           #   # @param professional_service_custom_fields [Hash{Symbol=>String}]
           #   # @param professional_service_id [String]
           #   # @param quantity [Float]
-          #   # @param reseller_type [String]
+          #   # @param reseller_type [Symbol, Metronome::Models::Customers::Invoice::LineItem::ResellerType]
           #   # @param scheduled_charge_custom_fields [Hash{Symbol=>String}]
           #   # @param scheduled_charge_id [String]
-          #   # @param starting_at [String]
+          #   # @param starting_at [Time]
           #   # @param sub_line_items [Array<Metronome::Models::Customers::Invoice::LineItem::SubLineItem>]
           #   # @param tier [Metronome::Models::Customers::Invoice::LineItem::Tier]
           #   # @param unit_price [Float]
@@ -768,7 +768,7 @@ module Metronome
             #   # only present for beta contract invoices
             #   #
             #   # @param id [String]
-            #   # @param type [String]
+            #   # @param type [Symbol, Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type]
             #   #
             #   def initialize(id:, type:, **) = super
 
@@ -951,9 +951,9 @@ module Metronome
             #   # @param subtotal [Float]
             #   # @param charge_id [String]
             #   # @param credit_grant_id [String]
-            #   # @param end_date [String]
+            #   # @param end_date [Time]
             #   # @param price [Float]
-            #   # @param start_date [String]
+            #   # @param start_date [Time]
             #   # @param tier_period [Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod]
             #   # @param tiers [Array<Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier>]
             #   #
@@ -1001,8 +1001,8 @@ module Metronome
               # @!parse
               #   # when the current tier started and ends (for tiered charges only)
               #   #
-              #   # @param starting_at [String]
-              #   # @param ending_before [String]
+              #   # @param starting_at [Time]
+              #   # @param ending_before [Time]
               #   #
               #   def initialize(starting_at:, ending_before: nil, **) = super
 
@@ -1199,10 +1199,10 @@ module Metronome
             #   attr_writer :issued_at_timestamp
 
             # @!parse
-            #   # @param billing_provider_type [String]
-            #   # @param external_status [String]
+            #   # @param billing_provider_type [Symbol, Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType]
+            #   # @param external_status [Symbol, Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus]
             #   # @param invoice_id [String]
-            #   # @param issued_at_timestamp [String]
+            #   # @param issued_at_timestamp [Time]
             #   #
             #   def initialize(billing_provider_type:, external_status: nil, invoice_id: nil, issued_at_timestamp: nil, **) = super
 
@@ -1318,10 +1318,10 @@ module Metronome
           #   attr_writer :issued_at_timestamp
 
           # @!parse
-          #   # @param billing_provider_type [String]
-          #   # @param external_status [String]
+          #   # @param billing_provider_type [Symbol, Metronome::Models::Customers::Invoice::ExternalInvoice::BillingProviderType]
+          #   # @param external_status [Symbol, Metronome::Models::Customers::Invoice::ExternalInvoice::ExternalStatus]
           #   # @param invoice_id [String]
-          #   # @param issued_at_timestamp [String]
+          #   # @param issued_at_timestamp [Time]
           #   #
           #   def initialize(billing_provider_type:, external_status: nil, invoice_id: nil, issued_at_timestamp: nil, **) = super
 
@@ -1499,7 +1499,7 @@ module Metronome
           #   #
           #   # @param fraction [String]
           #   # @param netsuite_reseller_id [String]
-          #   # @param reseller_type [String]
+          #   # @param reseller_type [Symbol, Metronome::Models::Customers::Invoice::ResellerRoyalty::ResellerType]
           #   # @param aws_options [Metronome::Models::Customers::Invoice::ResellerRoyalty::AwsOptions]
           #   # @param gcp_options [Metronome::Models::Customers::Invoice::ResellerRoyalty::GcpOptions]
           #   #

@@ -161,7 +161,7 @@ module Metronome
         #   attr_writer :tags
 
         # @!parse
-        #   # @param created_at [String]
+        #   # @param created_at [Time]
         #   # @param created_by [String]
         #   # @param name [String]
         #   # @param billable_metric_id [String]
@@ -175,7 +175,7 @@ module Metronome
         #   # @param pricing_group_key [Array<String>]
         #   # @param quantity_conversion [Metronome::Models::Contracts::QuantityConversion, nil]
         #   # @param quantity_rounding [Metronome::Models::Contracts::QuantityRounding, nil]
-        #   # @param starting_at [String]
+        #   # @param starting_at [Time]
         #   # @param tags [Array<String>]
         #   #
         #   def initialize(

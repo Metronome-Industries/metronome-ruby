@@ -56,11 +56,11 @@ module Metronome
 
         # @!parse
         #   # @param customer_id [String]
-        #   # @param billing_provider_type [String]
+        #   # @param billing_provider_type [Symbol, Metronome::Models::Customers::BillingConfigCreateParams::BillingProviderType]
         #   # @param billing_provider_customer_id [String]
         #   # @param aws_product_code [String]
-        #   # @param aws_region [String]
-        #   # @param stripe_collection_method [String]
+        #   # @param aws_region [Symbol, Metronome::Models::Customers::BillingConfigCreateParams::AwsRegion]
+        #   # @param stripe_collection_method [Symbol, Metronome::Models::Customers::BillingConfigCreateParams::StripeCollectionMethod]
         #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
         #   def initialize(

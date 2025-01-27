@@ -106,15 +106,15 @@ module Metronome
 
         # @!parse
         #   # @param customer_id [String]
-        #   # @param ending_before [String]
-        #   # @param starting_on [String]
+        #   # @param ending_before [Time]
+        #   # @param starting_on [Time]
         #   # @param credit_type_id [String]
         #   # @param limit [Integer]
         #   # @param next_page [String]
         #   # @param skip_zero_qty_line_items [Boolean]
-        #   # @param sort [String]
+        #   # @param sort [Symbol, Metronome::Models::Customers::InvoiceListBreakdownsParams::Sort]
         #   # @param status [String]
-        #   # @param window_size [String]
+        #   # @param window_size [Symbol, Metronome::Models::Customers::InvoiceListBreakdownsParams::WindowSize]
         #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
         #   def initialize(

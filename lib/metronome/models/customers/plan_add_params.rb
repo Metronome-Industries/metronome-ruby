@@ -88,8 +88,8 @@ module Metronome
         # @!parse
         #   # @param customer_id [String]
         #   # @param plan_id [String]
-        #   # @param starting_on [String]
-        #   # @param ending_before [String]
+        #   # @param starting_on [Time]
+        #   # @param ending_before [Time]
         #   # @param net_payment_terms_days [Float]
         #   # @param overage_rate_adjustments [Array<Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment>]
         #   # @param price_adjustments [Array<Metronome::Models::Customers::PlanAddParams::PriceAdjustment>]
@@ -210,7 +210,7 @@ module Metronome
           #   attr_writer :value
 
           # @!parse
-          #   # @param adjustment_type [String]
+          #   # @param adjustment_type [Symbol, Metronome::Models::Customers::PlanAddParams::PriceAdjustment::AdjustmentType]
           #   # @param charge_id [String]
           #   # @param start_period [Float]
           #   # @param quantity [Float]

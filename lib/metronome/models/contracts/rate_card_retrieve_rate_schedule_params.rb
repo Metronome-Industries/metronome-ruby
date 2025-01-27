@@ -67,10 +67,10 @@ module Metronome
 
         # @!parse
         #   # @param rate_card_id [String]
-        #   # @param starting_at [String]
+        #   # @param starting_at [Time]
         #   # @param limit [Integer]
         #   # @param next_page [String]
-        #   # @param ending_before [String]
+        #   # @param ending_before [Time]
         #   # @param selectors [Array<Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams::Selector>]
         #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #

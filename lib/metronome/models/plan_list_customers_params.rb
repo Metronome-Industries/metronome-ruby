@@ -54,7 +54,7 @@ module Metronome
       #   # @param plan_id [String]
       #   # @param limit [Integer]
       #   # @param next_page [String]
-      #   # @param status [String]
+      #   # @param status [Symbol, Metronome::Models::PlanListCustomersParams::Status]
       #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(plan_id:, limit: nil, next_page: nil, status: nil, request_options: {}, **) = super

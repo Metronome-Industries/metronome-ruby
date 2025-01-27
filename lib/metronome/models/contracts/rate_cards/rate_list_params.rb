@@ -56,7 +56,7 @@ module Metronome
           #   attr_writer :selectors
 
           # @!parse
-          #   # @param at [String]
+          #   # @param at [Time]
           #   # @param rate_card_id [String]
           #   # @param limit [Integer]
           #   # @param next_page [String]

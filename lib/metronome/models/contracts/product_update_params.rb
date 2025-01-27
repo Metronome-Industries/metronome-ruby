@@ -167,7 +167,7 @@ module Metronome
 
         # @!parse
         #   # @param product_id [String]
-        #   # @param starting_at [String]
+        #   # @param starting_at [Time]
         #   # @param billable_metric_id [String]
         #   # @param composite_product_ids [Array<String>]
         #   # @param composite_tags [Array<String>]

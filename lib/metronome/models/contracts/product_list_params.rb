@@ -41,7 +41,7 @@ module Metronome
         # @!parse
         #   # @param limit [Integer]
         #   # @param next_page [String]
-        #   # @param archive_filter [String]
+        #   # @param archive_filter [Symbol, Metronome::Models::Contracts::ProductListParams::ArchiveFilter]
         #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
         #   def initialize(limit: nil, next_page: nil, archive_filter: nil, request_options: {}, **) = super

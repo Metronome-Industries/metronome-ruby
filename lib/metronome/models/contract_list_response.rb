@@ -125,10 +125,10 @@ module Metronome
         #   # @param current [Metronome::Models::ContractWithoutAmendments]
         #   # @param customer_id [String]
         #   # @param initial [Metronome::Models::ContractWithoutAmendments]
-        #   # @param archived_at [String]
+        #   # @param archived_at [Time]
         #   # @param custom_fields [Hash{Symbol=>String}]
         #   # @param customer_billing_provider_configuration [Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration]
-        #   # @param scheduled_charges_on_usage_invoices [String]
+        #   # @param scheduled_charges_on_usage_invoices [Symbol, Metronome::Models::ContractListResponse::Data::ScheduledChargesOnUsageInvoices]
         #   # @param uniqueness_key [String]
         #   #
         #   def initialize(
@@ -261,11 +261,11 @@ module Metronome
           # @!parse
           #   # @param id [String]
           #   # @param commits [Array<Metronome::Models::Commit>]
-          #   # @param created_at [String]
+          #   # @param created_at [Time]
           #   # @param created_by [String]
           #   # @param overrides [Array<Metronome::Models::Override>]
           #   # @param scheduled_charges [Array<Metronome::Models::ScheduledCharge>]
-          #   # @param starting_at [String]
+          #   # @param starting_at [Time]
           #   # @param credits [Array<Metronome::Models::Credit>]
           #   # @param discounts [Array<Metronome::Models::Discount>]
           #   # @param netsuite_sales_order_id [String]
@@ -401,17 +401,17 @@ module Metronome
             #   attr_writer :starting_at
 
             # @!parse
-            #   # @param reseller_type [String]
+            #   # @param reseller_type [Symbol, Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty::ResellerType]
             #   # @param aws_account_number [String]
             #   # @param aws_offer_id [String]
             #   # @param aws_payer_reference_id [String]
-            #   # @param ending_before [String, nil]
+            #   # @param ending_before [Time, nil]
             #   # @param fraction [Float]
             #   # @param gcp_account_id [String]
             #   # @param gcp_offer_id [String]
             #   # @param netsuite_reseller_id [String]
             #   # @param reseller_contract_value [Float]
-            #   # @param starting_at [String]
+            #   # @param starting_at [Time]
             #   #
             #   def initialize(
             #     reseller_type:,
@@ -483,8 +483,8 @@ module Metronome
           # @!parse
           #   # The billing provider configuration associated with a contract.
           #   #
-          #   # @param billing_provider [String]
-          #   # @param delivery_method [String]
+          #   # @param billing_provider [Symbol, Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration::BillingProvider]
+          #   # @param delivery_method [Symbol, Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod]
           #   #
           #   def initialize(billing_provider:, delivery_method:, **) = super
 

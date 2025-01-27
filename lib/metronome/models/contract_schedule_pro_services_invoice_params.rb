@@ -55,10 +55,10 @@ module Metronome
       # @!parse
       #   # @param contract_id [String]
       #   # @param customer_id [String]
-      #   # @param issued_at [String]
+      #   # @param issued_at [Time]
       #   # @param line_items [Array<Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem>]
-      #   # @param netsuite_invoice_header_end [String]
-      #   # @param netsuite_invoice_header_start [String]
+      #   # @param netsuite_invoice_header_end [Time]
+      #   # @param netsuite_invoice_header_start [Time]
       #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
@@ -172,8 +172,8 @@ module Metronome
         #   # @param amendment_id [String]
         #   # @param amount [Float]
         #   # @param metadata [String]
-        #   # @param netsuite_invoice_billing_end [String]
-        #   # @param netsuite_invoice_billing_start [String]
+        #   # @param netsuite_invoice_billing_end [Time]
+        #   # @param netsuite_invoice_billing_start [Time]
         #   # @param quantity [Float]
         #   # @param unit_price [Float]
         #   #

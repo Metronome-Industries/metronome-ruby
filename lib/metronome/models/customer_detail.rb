@@ -125,8 +125,8 @@ module Metronome
         # @!parse
         #   # This field's availability is dependent on your client's configuration.
         #   #
-        #   # @param value [String]
-        #   # @param effective_at [String, nil]
+        #   # @param value [Symbol, Metronome::Models::CustomerDetail::CurrentBillableStatus::Value]
+        #   # @param effective_at [Time, nil]
         #   #
         #   def initialize(value:, effective_at: nil, **) = super
 

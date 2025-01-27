@@ -46,8 +46,8 @@ module Metronome
         # @!parse
         #   # @param commit_id [String]
         #   # @param customer_id [String]
-        #   # @param access_ending_before [String]
-        #   # @param invoices_ending_before [String]
+        #   # @param access_ending_before [Time]
+        #   # @param invoices_ending_before [Time]
         #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
         #   def initialize(commit_id:, customer_id:, access_ending_before: nil, invoices_ending_before: nil, request_options: {}, **) = super

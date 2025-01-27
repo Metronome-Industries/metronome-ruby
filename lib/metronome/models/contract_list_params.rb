@@ -70,11 +70,11 @@ module Metronome
 
       # @!parse
       #   # @param customer_id [String]
-      #   # @param covering_date [String]
+      #   # @param covering_date [Time]
       #   # @param include_archived [Boolean]
       #   # @param include_balance [Boolean]
       #   # @param include_ledgers [Boolean]
-      #   # @param starting_at [String]
+      #   # @param starting_at [Time]
       #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(

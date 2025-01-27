@@ -65,7 +65,7 @@ module Metronome
       #   # @param reason [String]
       #   # @param segment_id [String]
       #   # @param contract_id [String]
-      #   # @param timestamp [String]
+      #   # @param timestamp [Time]
       #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(

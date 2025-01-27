@@ -148,7 +148,7 @@ module Metronome
 
         # @!parse
         #   # @param name [String]
-        #   # @param type [String]
+        #   # @param type [Symbol, Metronome::Models::Contracts::ProductCreateParams::Type]
         #   # @param billable_metric_id [String]
         #   # @param composite_product_ids [Array<String>]
         #   # @param composite_tags [Array<String>]

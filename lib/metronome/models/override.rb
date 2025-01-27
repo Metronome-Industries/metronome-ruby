@@ -205,10 +205,10 @@ module Metronome
 
       # @!parse
       #   # @param id [String]
-      #   # @param starting_at [String]
+      #   # @param starting_at [Time]
       #   # @param applicable_product_tags [Array<String>]
       #   # @param credit_type [Metronome::Models::CreditTypeData]
-      #   # @param ending_before [String]
+      #   # @param ending_before [Time]
       #   # @param entitled [Boolean]
       #   # @param is_commit_specific [Boolean]
       #   # @param is_prorated [Boolean]
@@ -220,10 +220,10 @@ module Metronome
       #   # @param priority [Float]
       #   # @param product [Metronome::Models::Override::Product]
       #   # @param quantity [Float]
-      #   # @param rate_type [String]
-      #   # @param target [String]
+      #   # @param rate_type [Symbol, Metronome::Models::Override::RateType]
+      #   # @param target [Symbol, Metronome::Models::Override::Target]
       #   # @param tiers [Array<Metronome::Models::Tier>]
-      #   # @param type [String]
+      #   # @param type [Symbol, Metronome::Models::Override::Type]
       #   # @param value [Hash{Symbol=>Object}]
       #   #
       #   def initialize(
@@ -443,7 +443,7 @@ module Metronome
         #   attr_writer :tiers
 
         # @!parse
-        #   # @param rate_type [String]
+        #   # @param rate_type [Symbol, Metronome::Models::Override::OverwriteRate::RateType]
         #   # @param credit_type [Metronome::Models::CreditTypeData]
         #   # @param custom_rate [Hash{Symbol=>Object}]
         #   # @param is_prorated [Boolean]

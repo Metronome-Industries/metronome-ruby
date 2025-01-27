@@ -48,7 +48,7 @@ module Metronome
         # @!parse
         #   # @param ips [Array<String>]
         #   # @param name [String]
-        #   # @param usage [String]
+        #   # @param usage [Symbol, Metronome::Models::ServiceListResponse::Service::Usage]
         #   #
         #   def initialize(ips:, name:, usage:, **) = super
 

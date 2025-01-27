@@ -44,7 +44,7 @@ module Metronome
         #   #   "divide".
         #   #
         #   # @param conversion_factor [Float]
-        #   # @param operation [String]
+        #   # @param operation [Symbol, Metronome::Models::Contracts::QuantityConversion::Operation]
         #   # @param name [String]
         #   #
         #   def initialize(conversion_factor:, operation:, name: nil, **) = super

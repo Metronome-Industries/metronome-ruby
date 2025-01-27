@@ -81,13 +81,13 @@ module Metronome
       #   attr_writer :starting_on
 
       # @!parse
-      #   # @param ending_before [String]
+      #   # @param ending_before [Time]
       #   # @param limit [Integer]
       #   # @param next_page [String]
       #   # @param resource_id [String]
       #   # @param resource_type [String]
-      #   # @param sort [String]
-      #   # @param starting_on [String]
+      #   # @param sort [Symbol, Metronome::Models::AuditLogListParams::Sort]
+      #   # @param starting_on [Time]
       #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(

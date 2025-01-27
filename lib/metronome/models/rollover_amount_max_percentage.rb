@@ -23,7 +23,7 @@ module Metronome
       required :value, Float
 
       # @!parse
-      #   # @param type [String]
+      #   # @param type [Symbol, Metronome::Models::RolloverAmountMaxPercentage::Type]
       #   # @param value [Float]
       #   #
       #   def initialize(type:, value:, **) = super

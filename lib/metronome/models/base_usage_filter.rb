@@ -33,7 +33,7 @@ module Metronome
       # @!parse
       #   # @param group_key [String]
       #   # @param group_values [Array<String>]
-      #   # @param starting_at [String]
+      #   # @param starting_at [Time]
       #   #
       #   def initialize(group_key:, group_values:, starting_at: nil, **) = super
 

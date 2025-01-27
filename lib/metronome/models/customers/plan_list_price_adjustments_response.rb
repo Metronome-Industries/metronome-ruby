@@ -49,7 +49,7 @@ module Metronome
 
         # @!parse
         #   # @param charge_id [String]
-        #   # @param charge_type [String]
+        #   # @param charge_type [Symbol, Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::ChargeType]
         #   # @param prices [Array<Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price>]
         #   # @param start_period [Float]
         #   # @param quantity [Float]
@@ -121,7 +121,7 @@ module Metronome
           #   attr_writer :value
 
           # @!parse
-          #   # @param adjustment_type [String]
+          #   # @param adjustment_type [Symbol, Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType]
           #   # @param tier [Float]
           #   # @param value [Float]
           #   #

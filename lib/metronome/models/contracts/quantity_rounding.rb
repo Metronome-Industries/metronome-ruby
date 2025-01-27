@@ -28,7 +28,7 @@ module Metronome
         #   #   rounded up to the nearest integer.
         #   #
         #   # @param decimal_places [Float]
-        #   # @param rounding_method [String]
+        #   # @param rounding_method [Symbol, Metronome::Models::Contracts::QuantityRounding::RoundingMethod]
         #   #
         #   def initialize(decimal_places:, rounding_method:, **) = super
 

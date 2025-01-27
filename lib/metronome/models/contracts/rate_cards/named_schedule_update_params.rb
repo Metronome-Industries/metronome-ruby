@@ -52,9 +52,9 @@ module Metronome
           #   # @param contract_id [String]
           #   # @param customer_id [String]
           #   # @param schedule_name [String]
-          #   # @param starting_at [String]
+          #   # @param starting_at [Time]
           #   # @param value [Object]
-          #   # @param ending_before [String]
+          #   # @param ending_before [Time]
           #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
           #   #
           #   def initialize(

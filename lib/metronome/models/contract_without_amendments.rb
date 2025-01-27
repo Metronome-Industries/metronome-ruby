@@ -190,16 +190,16 @@ module Metronome
 
       # @!parse
       #   # @param commits [Array<Metronome::Models::Commit>]
-      #   # @param created_at [String]
+      #   # @param created_at [Time]
       #   # @param created_by [String]
       #   # @param overrides [Array<Metronome::Models::Override>]
       #   # @param scheduled_charges [Array<Metronome::Models::ScheduledCharge>]
-      #   # @param starting_at [String]
+      #   # @param starting_at [Time]
       #   # @param transitions [Array<Metronome::Models::ContractWithoutAmendments::Transition>]
       #   # @param usage_statement_schedule [Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule]
       #   # @param credits [Array<Metronome::Models::Credit>]
       #   # @param discounts [Array<Metronome::Models::Discount>]
-      #   # @param ending_before [String]
+      #   # @param ending_before [Time]
       #   # @param name [String]
       #   # @param net_payment_terms_days [Float]
       #   # @param netsuite_sales_order_id [String]
@@ -207,7 +207,7 @@ module Metronome
       #   # @param rate_card_id [String]
       #   # @param reseller_royalties [Array<Metronome::Models::ContractWithoutAmendments::ResellerRoyalty>]
       #   # @param salesforce_opportunity_id [String]
-      #   # @param scheduled_charges_on_usage_invoices [String]
+      #   # @param scheduled_charges_on_usage_invoices [Symbol, Metronome::Models::ContractWithoutAmendments::ScheduledChargesOnUsageInvoices]
       #   # @param total_contract_value [Float]
       #   # @param usage_filter [Metronome::Models::ContractWithoutAmendments::UsageFilter]
       #   #
@@ -267,7 +267,7 @@ module Metronome
         # @!parse
         #   # @param from_contract_id [String]
         #   # @param to_contract_id [String]
-        #   # @param type [String]
+        #   # @param type [Symbol, Metronome::Models::ContractWithoutAmendments::Transition::Type]
         #   #
         #   def initialize(from_contract_id:, to_contract_id:, type:, **) = super
 
@@ -311,8 +311,8 @@ module Metronome
                  enum: -> { Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule::Frequency }
 
         # @!parse
-        #   # @param billing_anchor_date [String]
-        #   # @param frequency [String]
+        #   # @param billing_anchor_date [Time]
+        #   # @param frequency [Symbol, Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule::Frequency]
         #   #
         #   def initialize(billing_anchor_date:, frequency:, **) = super
 
@@ -455,14 +455,14 @@ module Metronome
         # @!parse
         #   # @param fraction [Float]
         #   # @param netsuite_reseller_id [String]
-        #   # @param reseller_type [String]
-        #   # @param starting_at [String]
+        #   # @param reseller_type [Symbol, Metronome::Models::ContractWithoutAmendments::ResellerRoyalty::ResellerType]
+        #   # @param starting_at [Time]
         #   # @param applicable_product_ids [Array<String>]
         #   # @param applicable_product_tags [Array<String>]
         #   # @param aws_account_number [String]
         #   # @param aws_offer_id [String]
         #   # @param aws_payer_reference_id [String]
-        #   # @param ending_before [String]
+        #   # @param ending_before [Time]
         #   # @param gcp_account_id [String]
         #   # @param gcp_offer_id [String]
         #   # @param reseller_contract_value [Float]
@@ -591,7 +591,7 @@ module Metronome
           # @!parse
           #   # @param group_key [String]
           #   # @param group_values [Array<String>]
-          #   # @param starting_at [String]
+          #   # @param starting_at [Time]
           #   #
           #   def initialize(group_key:, group_values:, starting_at:, **) = super
 

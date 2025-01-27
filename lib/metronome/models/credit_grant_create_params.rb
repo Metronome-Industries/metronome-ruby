@@ -130,15 +130,15 @@ module Metronome
 
       # @!parse
       #   # @param customer_id [String]
-      #   # @param expires_at [String]
+      #   # @param expires_at [Time]
       #   # @param grant_amount [Metronome::Models::CreditGrantCreateParams::GrantAmount]
       #   # @param name [String]
       #   # @param paid_amount [Metronome::Models::CreditGrantCreateParams::PaidAmount]
       #   # @param priority [Float]
       #   # @param credit_grant_type [String]
       #   # @param custom_fields [Hash{Symbol=>String}]
-      #   # @param effective_at [String]
-      #   # @param invoice_date [String]
+      #   # @param effective_at [Time]
+      #   # @param invoice_date [Time]
       #   # @param product_ids [Array<String>]
       #   # @param reason [String]
       #   # @param rollover_settings [Metronome::Models::CreditGrantCreateParams::RolloverSettings]
@@ -262,7 +262,7 @@ module Metronome
         #   #   configured amount to a new credit grant. This feature is currently opt-in only.
         #   #   Contact Metronome to be added to the beta.
         #   #
-        #   # @param expires_at [String]
+        #   # @param expires_at [Time]
         #   # @param priority [Float]
         #   # @param rollover_amount [Metronome::Models::RolloverAmountMaxPercentage, Metronome::Models::RolloverAmountMaxAmount]
         #   #

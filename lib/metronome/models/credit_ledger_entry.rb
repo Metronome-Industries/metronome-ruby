@@ -60,7 +60,7 @@ module Metronome
       #   # @param amount [Float]
       #   # @param created_by [String]
       #   # @param credit_grant_id [String]
-      #   # @param effective_at [String]
+      #   # @param effective_at [Time]
       #   # @param reason [String]
       #   # @param running_balance [Float]
       #   # @param invoice_id [String, nil]
