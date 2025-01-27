@@ -86,8 +86,8 @@ module Metronome
       #   # @param credit_grant_ids [Array<String>]
       #   # @param credit_type_ids [Array<String>]
       #   # @param customer_ids [Array<String>]
-      #   # @param effective_before [String]
-      #   # @param not_expiring_before [String]
+      #   # @param effective_before [Time]
+      #   # @param not_expiring_before [Time]
       #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(

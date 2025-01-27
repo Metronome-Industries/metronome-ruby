@@ -116,9 +116,9 @@ module Metronome
           #   # @param product_name [String]
           #   # @param product_tags [Array<String>]
           #   # @param rate [Metronome::Models::Rate]
-          #   # @param starting_at [String]
+          #   # @param starting_at [Time]
           #   # @param commit_rate [Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Data::CommitRate]
-          #   # @param ending_before [String]
+          #   # @param ending_before [Time]
           #   # @param pricing_group_values [Hash{Symbol=>String}]
           #   #
           #   def initialize(
@@ -180,7 +180,7 @@ module Metronome
             #   # A distinct rate on the rate card. You can choose to use this rate rather than
             #   #   list rate when consuming a credit or commit.
             #   #
-            #   # @param rate_type [String]
+            #   # @param rate_type [Symbol, Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Data::CommitRate::RateType]
             #   # @param price [Float]
             #   # @param tiers [Array<Metronome::Models::Tier>]
             #   #

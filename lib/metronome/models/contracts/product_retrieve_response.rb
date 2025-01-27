@@ -80,9 +80,9 @@ module Metronome
           #   # @param id [String]
           #   # @param current [Metronome::Models::Contracts::ProductListItemState]
           #   # @param initial [Metronome::Models::Contracts::ProductListItemState]
-          #   # @param type [String]
+          #   # @param type [Symbol, Metronome::Models::Contracts::ProductRetrieveResponse::Data::Type]
           #   # @param updates [Array<Metronome::Models::Contracts::ProductRetrieveResponse::Data::Update>]
-          #   # @param archived_at [String, nil]
+          #   # @param archived_at [Time, nil]
           #   # @param custom_fields [Hash{Symbol=>String}]
           #   #
           #   def initialize(id:, current:, initial:, type:, updates:, archived_at: nil, custom_fields: nil, **) = super
@@ -275,7 +275,7 @@ module Metronome
             #   attr_writer :tags
 
             # @!parse
-            #   # @param created_at [String]
+            #   # @param created_at [Time]
             #   # @param created_by [String]
             #   # @param billable_metric_id [String]
             #   # @param composite_product_ids [Array<String>]
@@ -289,7 +289,7 @@ module Metronome
             #   # @param pricing_group_key [Array<String>]
             #   # @param quantity_conversion [Metronome::Models::Contracts::QuantityConversion, nil]
             #   # @param quantity_rounding [Metronome::Models::Contracts::QuantityRounding, nil]
-            #   # @param starting_at [String]
+            #   # @param starting_at [Time]
             #   # @param tags [Array<String>]
             #   #
             #   def initialize(

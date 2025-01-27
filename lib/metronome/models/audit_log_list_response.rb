@@ -86,13 +86,13 @@ module Metronome
       # @!parse
       #   # @param id [String]
       #   # @param request [Metronome::Models::AuditLogListResponse::Request]
-      #   # @param timestamp [String]
+      #   # @param timestamp [Time]
       #   # @param action [String]
       #   # @param actor [Metronome::Models::AuditLogListResponse::Actor]
       #   # @param description [String]
       #   # @param resource_id [String]
       #   # @param resource_type [String]
-      #   # @param status [String]
+      #   # @param status [Symbol, Metronome::Models::AuditLogListResponse::Status]
       #   #
       #   def initialize(
       #     id:,

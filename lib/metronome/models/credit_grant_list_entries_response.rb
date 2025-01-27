@@ -139,7 +139,7 @@ module Metronome
             # @!parse
             #   # the effective balances at the end of the specified time window
             #   #
-            #   # @param effective_at [String]
+            #   # @param effective_at [Time]
             #   # @param excluding_pending [Float]
             #   # @param including_pending [Float]
             #   #
@@ -179,7 +179,7 @@ module Metronome
             required :including_pending, Float
 
             # @!parse
-            #   # @param effective_at [String]
+            #   # @param effective_at [Time]
             #   # @param excluding_pending [Float]
             #   # @param including_pending [Float]
             #   #

@@ -24,7 +24,7 @@ module Metronome
 
       # @!parse
       #   # @param custom_fields [Hash{Symbol=>String}]
-      #   # @param entity [String]
+      #   # @param entity [Symbol, Metronome::Models::CustomFieldSetValuesParams::Entity]
       #   # @param entity_id [String]
       #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #

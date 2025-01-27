@@ -186,7 +186,7 @@ module Metronome
       # @!parse
       #   # @param id [String]
       #   # @param product [Metronome::Models::Credit::Product]
-      #   # @param type [String]
+      #   # @param type [Symbol, Metronome::Models::Credit::Type]
       #   # @param access_schedule [Metronome::Models::ScheduleDuration]
       #   # @param applicable_contract_ids [Array<String>]
       #   # @param applicable_product_ids [Array<String>]
@@ -199,7 +199,7 @@ module Metronome
       #   # @param name [String]
       #   # @param netsuite_sales_order_id [String]
       #   # @param priority [Float]
-      #   # @param rate_type [String]
+      #   # @param rate_type [Symbol, Metronome::Models::Credit::RateType]
       #   # @param salesforce_opportunity_id [String]
       #   # @param uniqueness_key [String]
       #   #
@@ -352,8 +352,8 @@ module Metronome
           # @!parse
           #   # @param amount [Float]
           #   # @param segment_id [String]
-          #   # @param timestamp [String]
-          #   # @param type [String]
+          #   # @param timestamp [Time]
+          #   # @param type [Symbol, Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry::Type]
           #   #
           #   def initialize(amount:, segment_id:, timestamp:, type:, **) = super
 
@@ -416,8 +416,8 @@ module Metronome
           #   # @param amount [Float]
           #   # @param invoice_id [String]
           #   # @param segment_id [String]
-          #   # @param timestamp [String]
-          #   # @param type [String]
+          #   # @param timestamp [Time]
+          #   # @param type [Symbol, Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type]
           #   #
           #   def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, **) = super
 
@@ -470,8 +470,8 @@ module Metronome
           # @!parse
           #   # @param amount [Float]
           #   # @param segment_id [String]
-          #   # @param timestamp [String]
-          #   # @param type [String]
+          #   # @param timestamp [Time]
+          #   # @param type [Symbol, Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry::Type]
           #   #
           #   def initialize(amount:, segment_id:, timestamp:, type:, **) = super
 
@@ -531,8 +531,8 @@ module Metronome
           #   # @param amount [Float]
           #   # @param invoice_id [String]
           #   # @param segment_id [String]
-          #   # @param timestamp [String]
-          #   # @param type [String]
+          #   # @param timestamp [Time]
+          #   # @param type [Symbol, Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry::Type]
           #   #
           #   def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, **) = super
 
@@ -592,8 +592,8 @@ module Metronome
           #   # @param amount [Float]
           #   # @param invoice_id [String]
           #   # @param segment_id [String]
-          #   # @param timestamp [String]
-          #   # @param type [String]
+          #   # @param timestamp [Time]
+          #   # @param type [Symbol, Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry::Type]
           #   #
           #   def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, **) = super
 
@@ -646,8 +646,8 @@ module Metronome
           # @!parse
           #   # @param amount [Float]
           #   # @param reason [String]
-          #   # @param timestamp [String]
-          #   # @param type [String]
+          #   # @param timestamp [Time]
+          #   # @param type [Symbol, Metronome::Models::Credit::Ledger::CreditManualLedgerEntry::Type]
           #   #
           #   def initialize(amount:, reason:, timestamp:, type:, **) = super
 

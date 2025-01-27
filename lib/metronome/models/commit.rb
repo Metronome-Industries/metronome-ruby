@@ -235,7 +235,7 @@ module Metronome
       # @!parse
       #   # @param id [String]
       #   # @param product [Metronome::Models::Commit::Product]
-      #   # @param type [String]
+      #   # @param type [Symbol, Metronome::Models::Commit::Type]
       #   # @param access_schedule [Metronome::Models::ScheduleDuration]
       #   # @param amount [Float]
       #   # @param applicable_contract_ids [Array<String>]
@@ -251,7 +251,7 @@ module Metronome
       #   # @param name [String]
       #   # @param netsuite_sales_order_id [String]
       #   # @param priority [Float]
-      #   # @param rate_type [String]
+      #   # @param rate_type [Symbol, Metronome::Models::Commit::RateType]
       #   # @param rolled_over_from [Metronome::Models::Commit::RolledOverFrom]
       #   # @param rollover_fraction [Float]
       #   # @param salesforce_opportunity_id [String]
@@ -467,8 +467,8 @@ module Metronome
           # @!parse
           #   # @param amount [Float]
           #   # @param segment_id [String]
-          #   # @param timestamp [String]
-          #   # @param type [String]
+          #   # @param timestamp [Time]
+          #   # @param type [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type]
           #   #
           #   def initialize(amount:, segment_id:, timestamp:, type:, **) = super
 
@@ -531,8 +531,8 @@ module Metronome
           #   # @param amount [Float]
           #   # @param invoice_id [String]
           #   # @param segment_id [String]
-          #   # @param timestamp [String]
-          #   # @param type [String]
+          #   # @param timestamp [Time]
+          #   # @param type [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
           #   #
           #   def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, **) = super
 
@@ -595,8 +595,8 @@ module Metronome
           #   # @param amount [Float]
           #   # @param new_contract_id [String]
           #   # @param segment_id [String]
-          #   # @param timestamp [String]
-          #   # @param type [String]
+          #   # @param timestamp [Time]
+          #   # @param type [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type]
           #   #
           #   def initialize(amount:, new_contract_id:, segment_id:, timestamp:, type:, **) = super
 
@@ -652,8 +652,8 @@ module Metronome
           # @!parse
           #   # @param amount [Float]
           #   # @param segment_id [String]
-          #   # @param timestamp [String]
-          #   # @param type [String]
+          #   # @param timestamp [Time]
+          #   # @param type [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type]
           #   #
           #   def initialize(amount:, segment_id:, timestamp:, type:, **) = super
 
@@ -716,8 +716,8 @@ module Metronome
           #   # @param amount [Float]
           #   # @param invoice_id [String]
           #   # @param segment_id [String]
-          #   # @param timestamp [String]
-          #   # @param type [String]
+          #   # @param timestamp [Time]
+          #   # @param type [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type]
           #   #
           #   def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, **) = super
 
@@ -780,8 +780,8 @@ module Metronome
           #   # @param amount [Float]
           #   # @param invoice_id [String]
           #   # @param segment_id [String]
-          #   # @param timestamp [String]
-          #   # @param type [String]
+          #   # @param timestamp [Time]
+          #   # @param type [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type]
           #   #
           #   def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, **) = super
 
@@ -830,8 +830,8 @@ module Metronome
 
           # @!parse
           #   # @param amount [Float]
-          #   # @param timestamp [String]
-          #   # @param type [String]
+          #   # @param timestamp [Time]
+          #   # @param type [Symbol, Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type]
           #   #
           #   def initialize(amount:, timestamp:, type:, **) = super
 
@@ -894,8 +894,8 @@ module Metronome
           #   # @param amount [Float]
           #   # @param invoice_id [String]
           #   # @param segment_id [String]
-          #   # @param timestamp [String]
-          #   # @param type [String]
+          #   # @param timestamp [Time]
+          #   # @param type [Symbol, Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
           #   #
           #   def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, **) = super
 
@@ -958,8 +958,8 @@ module Metronome
           #   # @param amount [Float]
           #   # @param new_contract_id [String]
           #   # @param segment_id [String]
-          #   # @param timestamp [String]
-          #   # @param type [String]
+          #   # @param timestamp [Time]
+          #   # @param type [Symbol, Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type]
           #   #
           #   def initialize(amount:, new_contract_id:, segment_id:, timestamp:, type:, **) = super
 
@@ -1015,8 +1015,8 @@ module Metronome
           # @!parse
           #   # @param amount [Float]
           #   # @param invoice_id [String]
-          #   # @param timestamp [String]
-          #   # @param type [String]
+          #   # @param timestamp [Time]
+          #   # @param type [Symbol, Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type]
           #   #
           #   def initialize(amount:, invoice_id:, timestamp:, type:, **) = super
 
@@ -1069,8 +1069,8 @@ module Metronome
           # @!parse
           #   # @param amount [Float]
           #   # @param reason [String]
-          #   # @param timestamp [String]
-          #   # @param type [String]
+          #   # @param timestamp [Time]
+          #   # @param type [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry::Type]
           #   #
           #   def initialize(amount:, reason:, timestamp:, type:, **) = super
 
@@ -1126,8 +1126,8 @@ module Metronome
           # @!parse
           #   # @param amount [Float]
           #   # @param reason [String]
-          #   # @param timestamp [String]
-          #   # @param type [String]
+          #   # @param timestamp [Time]
+          #   # @param type [Symbol, Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type]
           #   #
           #   def initialize(amount:, reason:, timestamp:, type:, **) = super
 
@@ -1176,8 +1176,8 @@ module Metronome
 
           # @!parse
           #   # @param amount [Float]
-          #   # @param timestamp [String]
-          #   # @param type [String]
+          #   # @param timestamp [Time]
+          #   # @param type [Symbol, Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type]
           #   #
           #   def initialize(amount:, timestamp:, type:, **) = super
 

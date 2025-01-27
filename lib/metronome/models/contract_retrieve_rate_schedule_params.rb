@@ -67,7 +67,7 @@ module Metronome
       #   # @param customer_id [String]
       #   # @param limit [Integer]
       #   # @param next_page [String]
-      #   # @param at [String]
+      #   # @param at [Time]
       #   # @param selectors [Array<Metronome::Models::ContractRetrieveRateScheduleParams::Selector>]
       #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #

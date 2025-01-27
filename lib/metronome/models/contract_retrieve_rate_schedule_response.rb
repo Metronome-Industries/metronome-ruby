@@ -129,9 +129,9 @@ module Metronome
         #   # @param product_name [String]
         #   # @param product_tags [Array<String>]
         #   # @param rate_card_id [String]
-        #   # @param starting_at [String]
+        #   # @param starting_at [Time]
         #   # @param commit_rate [Metronome::Models::ContractRetrieveRateScheduleResponse::Data::CommitRate]
-        #   # @param ending_before [String]
+        #   # @param ending_before [Time]
         #   # @param override_rate [Metronome::Models::Rate]
         #   # @param pricing_group_values [Hash{Symbol=>String}]
         #   #
@@ -196,7 +196,7 @@ module Metronome
           #   # A distinct rate on the rate card. You can choose to use this rate rather than
           #   #   list rate when consuming a credit or commit.
           #   #
-          #   # @param rate_type [String]
+          #   # @param rate_type [Symbol, Metronome::Models::ContractRetrieveRateScheduleResponse::Data::CommitRate::RateType]
           #   # @param price [Float]
           #   # @param tiers [Array<Metronome::Models::Tier>]
           #   #

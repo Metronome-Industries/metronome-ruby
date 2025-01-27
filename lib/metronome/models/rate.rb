@@ -105,7 +105,7 @@ module Metronome
       #   attr_writer :use_list_prices
 
       # @!parse
-      #   # @param rate_type [String]
+      #   # @param rate_type [Symbol, Metronome::Models::Rate::RateType]
       #   # @param credit_type [Metronome::Models::CreditTypeData]
       #   # @param custom_rate [Hash{Symbol=>Object}]
       #   # @param is_prorated [Boolean]

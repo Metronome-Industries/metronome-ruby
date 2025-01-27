@@ -15,8 +15,8 @@ module Metronome
         required :breakdown_start_timestamp, Time
 
         # @!parse
-        #   # @param breakdown_end_timestamp [String]
-        #   # @param breakdown_start_timestamp [String]
+        #   # @param breakdown_end_timestamp [Time]
+        #   # @param breakdown_start_timestamp [Time]
         #   #
         #   def initialize(breakdown_end_timestamp:, breakdown_start_timestamp:, **) = super
 

@@ -55,7 +55,7 @@ module Metronome
         # @!parse
         #   # @param customer_id [String]
         #   # @param customer_plan_id [String]
-        #   # @param ending_before [String]
+        #   # @param ending_before [Time]
         #   # @param void_invoices [Boolean]
         #   # @param void_stripe_invoices [Boolean]
         #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]

@@ -31,8 +31,8 @@ module Metronome
 
       # @!parse
       #   # @param credit_types [Hash{Symbol=>Metronome::Models::CustomerListCostsResponse::CreditType}]
-      #   # @param end_timestamp [String]
-      #   # @param start_timestamp [String]
+      #   # @param end_timestamp [Time]
+      #   # @param start_timestamp [Time]
       #   #
       #   def initialize(credit_types:, end_timestamp:, start_timestamp:, **) = super
 

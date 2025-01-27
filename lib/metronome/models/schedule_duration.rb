@@ -65,8 +65,8 @@ module Metronome
         # @!parse
         #   # @param id [String]
         #   # @param amount [Float]
-        #   # @param ending_before [String]
-        #   # @param starting_at [String]
+        #   # @param ending_before [Time]
+        #   # @param starting_at [Time]
         #   #
         #   def initialize(id:, amount:, ending_before:, starting_at:, **) = super
 

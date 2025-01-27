@@ -132,15 +132,15 @@ module Metronome
           #   attr_writer :stripe_collection_method
 
           # @!parse
-          #   # @param aws_expiration_date [String]
+          #   # @param aws_expiration_date [Time]
           #   # @param aws_product_code [String]
-          #   # @param aws_region [String]
-          #   # @param azure_expiration_date [String]
+          #   # @param aws_region [Symbol, Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::AwsRegion]
+          #   # @param azure_expiration_date [Time]
           #   # @param azure_plan_id [String]
-          #   # @param azure_start_date [String]
-          #   # @param azure_subscription_status [String]
+          #   # @param azure_start_date [Time]
+          #   # @param azure_subscription_status [Symbol, Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::AzureSubscriptionStatus]
           #   # @param billing_provider_customer_id [String]
-          #   # @param stripe_collection_method [String]
+          #   # @param stripe_collection_method [Symbol, Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::StripeCollectionMethod]
           #   #
           #   def initialize(
           #     aws_expiration_date: nil,

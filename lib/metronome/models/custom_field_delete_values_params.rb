@@ -23,7 +23,7 @@ module Metronome
       required :keys, Metronome::ArrayOf[String]
 
       # @!parse
-      #   # @param entity [String]
+      #   # @param entity [Symbol, Metronome::Models::CustomFieldDeleteValuesParams::Entity]
       #   # @param entity_id [String]
       #   # @param keys [Array<String>]
       #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]

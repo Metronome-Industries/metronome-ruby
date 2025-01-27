@@ -46,7 +46,7 @@ module Metronome
       # @!parse
       #   # @param id [String]
       #   # @param credit_grant_type [String]
-      #   # @param expires_at [String]
+      #   # @param expires_at [Time]
       #   # @param name [String]
       #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #

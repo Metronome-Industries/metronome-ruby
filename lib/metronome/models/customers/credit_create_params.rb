@@ -147,7 +147,7 @@ module Metronome
         #   # @param description [String]
         #   # @param name [String]
         #   # @param netsuite_sales_order_id [String]
-        #   # @param rate_type [String]
+        #   # @param rate_type [Symbol, Metronome::Models::Customers::CreditCreateParams::RateType]
         #   # @param salesforce_opportunity_id [String]
         #   # @param uniqueness_key [String]
         #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
@@ -239,8 +239,8 @@ module Metronome
 
             # @!parse
             #   # @param amount [Float]
-            #   # @param ending_before [String]
-            #   # @param starting_at [String]
+            #   # @param ending_before [Time]
+            #   # @param starting_at [Time]
             #   #
             #   def initialize(amount:, ending_before:, starting_at:, **) = super
 

@@ -52,9 +52,9 @@ module Metronome
           #   attr_writer :ending_before
 
           # @!parse
-          #   # @param starting_at [String]
+          #   # @param starting_at [Time]
           #   # @param value [Object]
-          #   # @param ending_before [String]
+          #   # @param ending_before [Time]
           #   #
           #   def initialize(starting_at:, value:, ending_before: nil, **) = super
 

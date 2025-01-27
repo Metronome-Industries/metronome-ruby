@@ -37,7 +37,7 @@ module Metronome
       #   # @param customer_id [String]
       #   # @param group_key [String]
       #   # @param group_values [Array<String>]
-      #   # @param starting_at [String]
+      #   # @param starting_at [Time]
       #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(contract_id:, customer_id:, group_key:, group_values:, starting_at:, request_options: {}, **) = super

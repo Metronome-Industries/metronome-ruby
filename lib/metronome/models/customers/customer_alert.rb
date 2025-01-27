@@ -34,7 +34,7 @@ module Metronome
 
         # @!parse
         #   # @param alert [Metronome::Models::Customers::CustomerAlert::Alert]
-        #   # @param customer_status [String, nil]
+        #   # @param customer_status [Symbol, Metronome::Models::Customers::CustomerAlert::CustomerStatus, nil]
         #   # @param triggered_by [String, nil]
         #   #
         #   def initialize(alert:, customer_status:, triggered_by: nil, **) = super
@@ -159,10 +159,10 @@ module Metronome
           # @!parse
           #   # @param id [String]
           #   # @param name [String]
-          #   # @param status [String]
+          #   # @param status [Symbol, Metronome::Models::Customers::CustomerAlert::Alert::Status]
           #   # @param threshold [Float]
-          #   # @param type [String]
-          #   # @param updated_at [String]
+          #   # @param type [Symbol, Metronome::Models::Customers::CustomerAlert::Alert::Type]
+          #   # @param updated_at [Time]
           #   # @param credit_grant_type_filters [Array<String>]
           #   # @param credit_type [Metronome::Models::CreditTypeData, nil]
           #   # @param custom_field_filters [Array<Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter>]
@@ -277,7 +277,7 @@ module Metronome
             required :value, String
 
             # @!parse
-            #   # @param entity [String]
+            #   # @param entity [Symbol, Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter::Entity]
             #   # @param key [String]
             #   # @param value [String]
             #   #

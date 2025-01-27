@@ -143,7 +143,7 @@ module Metronome
             #   attr_writer :use_list_prices
 
             # @!parse
-            #   # @param rate_type [String]
+            #   # @param rate_type [Symbol, Metronome::Models::Contracts::RateCards::RateAddResponse::Data::RateType]
             #   # @param commit_rate [Metronome::Models::Contracts::RateCards::RateAddResponse::Data::CommitRate]
             #   # @param credit_type [Metronome::Models::CreditTypeData]
             #   # @param custom_rate [Hash{Symbol=>Object}]
@@ -245,7 +245,7 @@ module Metronome
               #   # A distinct rate on the rate card. You can choose to use this rate rather than
               #   #   list rate when consuming a credit or commit.
               #   #
-              #   # @param rate_type [String]
+              #   # @param rate_type [Symbol, Metronome::Models::Contracts::RateCards::RateAddResponse::Data::CommitRate::RateType]
               #   # @param price [Float]
               #   # @param tiers [Array<Metronome::Models::Tier>]
               #   #

@@ -61,9 +61,9 @@ module Metronome
       #   attr_writer :customer_ids
 
       # @!parse
-      #   # @param ending_before [String]
-      #   # @param starting_on [String]
-      #   # @param window_size [String]
+      #   # @param ending_before [Time]
+      #   # @param starting_on [Time]
+      #   # @param window_size [Symbol, Metronome::Models::UsageListParams::WindowSize]
       #   # @param next_page [String]
       #   # @param billable_metrics [Array<Metronome::Models::UsageListParams::BillableMetric>]
       #   # @param customer_ids [Array<String>]

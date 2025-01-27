@@ -150,11 +150,11 @@ module Metronome
 
         # @!parse
         #   # @param billing_provider_customer_id [String]
-        #   # @param billing_provider_type [String]
+        #   # @param billing_provider_type [Symbol, Metronome::Models::CustomerCreateParams::BillingConfig::BillingProviderType]
         #   # @param aws_is_subscription_product [Boolean]
         #   # @param aws_product_code [String]
-        #   # @param aws_region [String]
-        #   # @param stripe_collection_method [String]
+        #   # @param aws_region [Symbol, Metronome::Models::CustomerCreateParams::BillingConfig::AwsRegion]
+        #   # @param stripe_collection_method [Symbol, Metronome::Models::CustomerCreateParams::BillingConfig::StripeCollectionMethod]
         #   #
         #   def initialize(
         #     billing_provider_customer_id:,
@@ -322,9 +322,9 @@ module Metronome
         #   attr_writer :delivery_method_id
 
         # @!parse
-        #   # @param billing_provider [String]
+        #   # @param billing_provider [Symbol, Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::BillingProvider]
         #   # @param configuration [Hash{Symbol=>Object}]
-        #   # @param delivery_method [String]
+        #   # @param delivery_method [Symbol, Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod]
         #   # @param delivery_method_id [String]
         #   #
         #   def initialize(billing_provider:, configuration: nil, delivery_method: nil, delivery_method_id: nil, **) = super

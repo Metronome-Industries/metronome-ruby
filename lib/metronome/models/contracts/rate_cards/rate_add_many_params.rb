@@ -180,12 +180,12 @@ module Metronome
             # @!parse
             #   # @param entitled [Boolean]
             #   # @param product_id [String]
-            #   # @param rate_type [String]
-            #   # @param starting_at [String]
+            #   # @param rate_type [Symbol, Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate::RateType]
+            #   # @param starting_at [Time]
             #   # @param commit_rate [Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate::CommitRate]
             #   # @param credit_type_id [String]
             #   # @param custom_rate [Hash{Symbol=>Object}]
-            #   # @param ending_before [String]
+            #   # @param ending_before [Time]
             #   # @param is_prorated [Boolean]
             #   # @param price [Float]
             #   # @param pricing_group_values [Hash{Symbol=>String}]
@@ -281,7 +281,7 @@ module Metronome
               #   # A distinct rate on the rate card. You can choose to use this rate rather than
               #   #   list rate when consuming a credit or commit.
               #   #
-              #   # @param rate_type [String]
+              #   # @param rate_type [Symbol, Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::RateType]
               #   # @param price [Float]
               #   # @param tiers [Array<Metronome::Models::Tier>]
               #   #

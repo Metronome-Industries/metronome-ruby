@@ -107,7 +107,7 @@ module Metronome
 
           # @!parse
           #   # @param id [String]
-          #   # @param created_at [String]
+          #   # @param created_at [Time]
           #   # @param created_by [String]
           #   # @param name [String]
           #   # @param aliases [Array<Metronome::Models::Contracts::RateCardRetrieveResponse::Data::Alias>]
@@ -167,8 +167,8 @@ module Metronome
 
             # @!parse
             #   # @param name [String]
-            #   # @param ending_before [String]
-            #   # @param starting_at [String]
+            #   # @param ending_before [Time]
+            #   # @param starting_at [Time]
             #   #
             #   def initialize(name:, ending_before: nil, starting_at: nil, **) = super
 

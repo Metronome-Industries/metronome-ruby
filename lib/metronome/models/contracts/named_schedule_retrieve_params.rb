@@ -34,7 +34,7 @@ module Metronome
         # @!parse
         #   # @param rate_card_id [String]
         #   # @param schedule_name [String]
-        #   # @param covering_date [String]
+        #   # @param covering_date [Time]
         #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
         #   def initialize(rate_card_id:, schedule_name:, covering_date: nil, request_options: {}, **) = super

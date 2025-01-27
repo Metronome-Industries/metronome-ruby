@@ -21,7 +21,7 @@ module Metronome
 
         # @!parse
         #   # @param customer_id [String]
-        #   # @param billing_provider_type [String]
+        #   # @param billing_provider_type [Symbol, Metronome::Models::Customers::BillingConfigRetrieveParams::BillingProviderType]
         #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
         #   def initialize(customer_id:, billing_provider_type:, request_options: {}, **) = super

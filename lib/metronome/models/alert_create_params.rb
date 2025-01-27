@@ -140,7 +140,7 @@ module Metronome
       #   attr_writer :uniqueness_key
 
       # @!parse
-      #   # @param alert_type [String]
+      #   # @param alert_type [Symbol, Metronome::Models::AlertCreateParams::AlertType]
       #   # @param name [String]
       #   # @param threshold [Float]
       #   # @param billable_metric_id [String]
@@ -240,7 +240,7 @@ module Metronome
         required :value, String
 
         # @!parse
-        #   # @param entity [String]
+        #   # @param entity [Symbol, Metronome::Models::AlertCreateParams::CustomFieldFilter::Entity]
         #   # @param key [String]
         #   # @param value [String]
         #   #

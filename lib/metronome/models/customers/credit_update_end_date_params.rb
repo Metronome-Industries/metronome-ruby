@@ -28,7 +28,7 @@ module Metronome
         required :customer_id, String
 
         # @!parse
-        #   # @param access_ending_before [String]
+        #   # @param access_ending_before [Time]
         #   # @param credit_id [String]
         #   # @param customer_id [String]
         #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]

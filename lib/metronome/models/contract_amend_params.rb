@@ -136,7 +136,7 @@ module Metronome
       # @!parse
       #   # @param contract_id [String]
       #   # @param customer_id [String]
-      #   # @param starting_at [String]
+      #   # @param starting_at [Time]
       #   # @param commits [Array<Metronome::Models::ContractAmendParams::Commit>]
       #   # @param credits [Array<Metronome::Models::ContractAmendParams::Credit>]
       #   # @param custom_fields [Hash{Symbol=>String}]
@@ -334,7 +334,7 @@ module Metronome
 
         # @!parse
         #   # @param product_id [String]
-        #   # @param type [String]
+        #   # @param type [Symbol, Metronome::Models::ContractAmendParams::Commit::Type]
         #   # @param access_schedule [Metronome::Models::ContractAmendParams::Commit::AccessSchedule]
         #   # @param amount [Float]
         #   # @param applicable_product_ids [Array<String>]
@@ -345,7 +345,7 @@ module Metronome
         #   # @param name [String]
         #   # @param netsuite_sales_order_id [String]
         #   # @param priority [Float]
-        #   # @param rate_type [String]
+        #   # @param rate_type [Symbol, Metronome::Models::ContractAmendParams::Commit::RateType]
         #   # @param rollover_fraction [Float]
         #   # @param temporary_id [String]
         #   #
@@ -454,8 +454,8 @@ module Metronome
 
             # @!parse
             #   # @param amount [Float]
-            #   # @param ending_before [String]
-            #   # @param starting_at [String]
+            #   # @param ending_before [Time]
+            #   # @param starting_at [Time]
             #   #
             #   def initialize(amount:, ending_before:, starting_at:, **) = super
 
@@ -603,10 +603,10 @@ module Metronome
             #   #   amount. If amount is sent, the unit price is assumed to be the amount and
             #   #   quantity is inferred to be 1.
             #   #
-            #   # @param amount_distribution [String]
-            #   # @param ending_before [String]
-            #   # @param frequency [String]
-            #   # @param starting_at [String]
+            #   # @param amount_distribution [Symbol, Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule::RecurringSchedule::AmountDistribution]
+            #   # @param ending_before [Time]
+            #   # @param frequency [Symbol, Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule::RecurringSchedule::Frequency]
+            #   # @param starting_at [Time]
             #   # @param amount [Float]
             #   # @param quantity [Float]
             #   # @param unit_price [Float]
@@ -721,7 +721,7 @@ module Metronome
             #   attr_writer :unit_price
 
             # @!parse
-            #   # @param timestamp [String]
+            #   # @param timestamp [Time]
             #   # @param amount [Float]
             #   # @param quantity [Float]
             #   # @param unit_price [Float]
@@ -869,7 +869,7 @@ module Metronome
         #   # @param name [String]
         #   # @param netsuite_sales_order_id [String]
         #   # @param priority [Float]
-        #   # @param rate_type [String]
+        #   # @param rate_type [Symbol, Metronome::Models::ContractAmendParams::Credit::RateType]
         #   #
         #   def initialize(
         #     access_schedule:,
@@ -953,8 +953,8 @@ module Metronome
 
             # @!parse
             #   # @param amount [Float]
-            #   # @param ending_before [String]
-            #   # @param starting_at [String]
+            #   # @param ending_before [Time]
+            #   # @param starting_at [Time]
             #   #
             #   def initialize(amount:, ending_before:, starting_at:, **) = super
 
@@ -1184,10 +1184,10 @@ module Metronome
             #   #   amount. If amount is sent, the unit price is assumed to be the amount and
             #   #   quantity is inferred to be 1.
             #   #
-            #   # @param amount_distribution [String]
-            #   # @param ending_before [String]
-            #   # @param frequency [String]
-            #   # @param starting_at [String]
+            #   # @param amount_distribution [Symbol, Metronome::Models::ContractAmendParams::Discount::Schedule::RecurringSchedule::AmountDistribution]
+            #   # @param ending_before [Time]
+            #   # @param frequency [Symbol, Metronome::Models::ContractAmendParams::Discount::Schedule::RecurringSchedule::Frequency]
+            #   # @param starting_at [Time]
             #   # @param amount [Float]
             #   # @param quantity [Float]
             #   # @param unit_price [Float]
@@ -1302,7 +1302,7 @@ module Metronome
             #   attr_writer :unit_price
 
             # @!parse
-            #   # @param timestamp [String]
+            #   # @param timestamp [Time]
             #   # @param amount [Float]
             #   # @param quantity [Float]
             #   # @param unit_price [Float]
@@ -1466,9 +1466,9 @@ module Metronome
         #   attr_writer :type
 
         # @!parse
-        #   # @param starting_at [String]
+        #   # @param starting_at [Time]
         #   # @param applicable_product_tags [Array<String>]
-        #   # @param ending_before [String]
+        #   # @param ending_before [Time]
         #   # @param entitled [Boolean]
         #   # @param is_commit_specific [Boolean]
         #   # @param multiplier [Float]
@@ -1476,9 +1476,9 @@ module Metronome
         #   # @param overwrite_rate [Metronome::Models::ContractAmendParams::Override::OverwriteRate]
         #   # @param priority [Float]
         #   # @param product_id [String]
-        #   # @param target [String]
+        #   # @param target [Symbol, Metronome::Models::ContractAmendParams::Override::Target]
         #   # @param tiers [Array<Metronome::Models::ContractAmendParams::Override::Tier>]
-        #   # @param type [String]
+        #   # @param type [Symbol, Metronome::Models::ContractAmendParams::Override::Type]
         #   #
         #   def initialize(
         #     starting_at:,
@@ -1673,7 +1673,7 @@ module Metronome
           # @!parse
           #   # Required for OVERWRITE type.
           #   #
-          #   # @param rate_type [String]
+          #   # @param rate_type [Symbol, Metronome::Models::ContractAmendParams::Override::OverwriteRate::RateType]
           #   # @param credit_type_id [String]
           #   # @param custom_rate [Hash{Symbol=>Object}]
           #   # @param is_prorated [Boolean]
@@ -1990,16 +1990,16 @@ module Metronome
         #   attr_writer :starting_at
 
         # @!parse
-        #   # @param reseller_type [String]
+        #   # @param reseller_type [Symbol, Metronome::Models::ContractAmendParams::ResellerRoyalty::ResellerType]
         #   # @param applicable_product_ids [Array<String>]
         #   # @param applicable_product_tags [Array<String>]
         #   # @param aws_options [Metronome::Models::ContractAmendParams::ResellerRoyalty::AwsOptions]
-        #   # @param ending_before [String, nil]
+        #   # @param ending_before [Time, nil]
         #   # @param fraction [Float]
         #   # @param gcp_options [Metronome::Models::ContractAmendParams::ResellerRoyalty::GcpOptions]
         #   # @param netsuite_reseller_id [String]
         #   # @param reseller_contract_value [Float]
-        #   # @param starting_at [String]
+        #   # @param starting_at [Time]
         #   #
         #   def initialize(
         #     reseller_type:,
@@ -2311,10 +2311,10 @@ module Metronome
             #   #   amount. If amount is sent, the unit price is assumed to be the amount and
             #   #   quantity is inferred to be 1.
             #   #
-            #   # @param amount_distribution [String]
-            #   # @param ending_before [String]
-            #   # @param frequency [String]
-            #   # @param starting_at [String]
+            #   # @param amount_distribution [Symbol, Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule::RecurringSchedule::AmountDistribution]
+            #   # @param ending_before [Time]
+            #   # @param frequency [Symbol, Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule::RecurringSchedule::Frequency]
+            #   # @param starting_at [Time]
             #   # @param amount [Float]
             #   # @param quantity [Float]
             #   # @param unit_price [Float]
@@ -2429,7 +2429,7 @@ module Metronome
             #   attr_writer :unit_price
 
             # @!parse
-            #   # @param timestamp [String]
+            #   # @param timestamp [Time]
             #   # @param amount [Float]
             #   # @param quantity [Float]
             #   # @param unit_price [Float]

@@ -97,7 +97,7 @@ module Metronome
 
       # @!parse
       #   # @param id [String]
-      #   # @param charge_type [String]
+      #   # @param charge_type [Symbol, Metronome::Models::PlanListChargesResponse::ChargeType]
       #   # @param credit_type [Metronome::Models::CreditTypeData]
       #   # @param custom_fields [Hash{Symbol=>String}]
       #   # @param name [String]
@@ -245,7 +245,7 @@ module Metronome
         #   # Specifies how quantities for usage based charges will be converted.
         #   #
         #   # @param division_factor [Float]
-        #   # @param rounding_behavior [String]
+        #   # @param rounding_behavior [Symbol, Metronome::Models::PlanListChargesResponse::UnitConversion::RoundingBehavior]
         #   #
         #   def initialize(division_factor:, rounding_behavior: nil, **) = super
 

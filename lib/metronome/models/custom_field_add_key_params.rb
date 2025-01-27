@@ -24,7 +24,7 @@ module Metronome
 
       # @!parse
       #   # @param enforce_uniqueness [Boolean]
-      #   # @param entity [String]
+      #   # @param entity [Symbol, Metronome::Models::CustomFieldAddKeyParams::Entity]
       #   # @param key [String]
       #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #

@@ -39,7 +39,7 @@ module Metronome
         # @!parse
         #   # @param customer_id [String]
         #   # @param next_page [String]
-        #   # @param alert_statuses [Array<String>]
+        #   # @param alert_statuses [Array<Symbol, Metronome::Models::Customers::AlertListParams::AlertStatus>]
         #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
         #   def initialize(customer_id:, next_page: nil, alert_statuses: nil, request_options: {}, **) = super

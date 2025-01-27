@@ -67,8 +67,8 @@ module Metronome
       #   # @param next_page [String]
       #   # @param credit_type_ids [Array<String>]
       #   # @param customer_ids [Array<String>]
-      #   # @param ending_before [String]
-      #   # @param starting_on [String]
+      #   # @param ending_before [Time]
+      #   # @param starting_on [Time]
       #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(

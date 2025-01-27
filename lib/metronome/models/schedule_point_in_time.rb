@@ -85,7 +85,7 @@ module Metronome
         #   # @param amount [Float]
         #   # @param invoice_id [String]
         #   # @param quantity [Float]
-        #   # @param timestamp [String]
+        #   # @param timestamp [Time]
         #   # @param unit_price [Float]
         #   #
         #   def initialize(id:, amount:, invoice_id:, quantity:, timestamp:, unit_price:, **) = super

@@ -93,7 +93,7 @@ module Metronome
       # @!parse
       #   # @param name [String]
       #   # @param aggregation_key [String]
-      #   # @param aggregation_type [String]
+      #   # @param aggregation_type [Symbol, Metronome::Models::BillableMetricCreateParams::AggregationType]
       #   # @param custom_fields [Hash{Symbol=>String}]
       #   # @param event_type_filter [Metronome::Models::EventTypeFilter]
       #   # @param group_keys [Array<Array<String>>]

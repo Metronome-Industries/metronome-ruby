@@ -115,12 +115,12 @@ module Metronome
         #   # @param contract_id [String]
         #   # @param credit_type_id [String]
         #   # @param customer_id [String]
-        #   # @param exclusive_end_date [String]
-        #   # @param inclusive_start_date [String]
-        #   # @param issue_date [String]
+        #   # @param exclusive_end_date [Time]
+        #   # @param inclusive_start_date [Time]
+        #   # @param issue_date [Time]
         #   # @param usage_line_items [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem>]
-        #   # @param billable_status [String]
-        #   # @param breakdown_granularity [String]
+        #   # @param billable_status [Symbol, Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus]
+        #   # @param breakdown_granularity [Symbol, Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity]
         #   # @param custom_fields [Hash{Symbol=>String}]
         #   #
         #   def initialize(
@@ -208,8 +208,8 @@ module Metronome
           #   attr_writer :subtotals_with_quantity
 
           # @!parse
-          #   # @param exclusive_end_date [String]
-          #   # @param inclusive_start_date [String]
+          #   # @param exclusive_end_date [Time]
+          #   # @param inclusive_start_date [Time]
           #   # @param product_id [String]
           #   # @param presentation_group_values [Hash{Symbol=>String}]
           #   # @param pricing_group_values [Hash{Symbol=>String}]
@@ -256,8 +256,8 @@ module Metronome
             required :quantity, Float
 
             # @!parse
-            #   # @param exclusive_end_date [String]
-            #   # @param inclusive_start_date [String]
+            #   # @param exclusive_end_date [Time]
+            #   # @param inclusive_start_date [Time]
             #   # @param quantity [Float]
             #   #
             #   def initialize(exclusive_end_date:, inclusive_start_date:, quantity:, **) = super

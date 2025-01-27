@@ -87,13 +87,13 @@ module Metronome
       # @!parse
       #   # @param billable_metric_id [String]
       #   # @param customer_id [String]
-      #   # @param window_size [String]
+      #   # @param window_size [Symbol, Metronome::Models::UsageListWithGroupsParams::WindowSize]
       #   # @param limit [Integer]
       #   # @param next_page [String]
       #   # @param current_period [Boolean]
-      #   # @param ending_before [String]
+      #   # @param ending_before [Time]
       #   # @param group_by [Metronome::Models::UsageListWithGroupsParams::GroupBy]
-      #   # @param starting_on [String]
+      #   # @param starting_on [Time]
       #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(

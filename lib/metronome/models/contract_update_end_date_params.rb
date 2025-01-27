@@ -47,7 +47,7 @@ module Metronome
       #   # @param contract_id [String]
       #   # @param customer_id [String]
       #   # @param allow_ending_before_finalized_invoice [Boolean]
-      #   # @param ending_before [String]
+      #   # @param ending_before [Time]
       #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(

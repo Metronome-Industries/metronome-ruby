@@ -54,7 +54,7 @@ module Metronome
 
         # @!parse
         #   # @param enforce_uniqueness [Boolean]
-        #   # @param entity [String]
+        #   # @param entity [Symbol, Metronome::Models::CustomFieldListKeysResponse::Data::Entity]
         #   # @param key [String]
         #   #
         #   def initialize(enforce_uniqueness:, entity:, key:, **) = super

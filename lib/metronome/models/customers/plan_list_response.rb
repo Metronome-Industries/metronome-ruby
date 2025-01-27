@@ -80,8 +80,8 @@ module Metronome
         #   # @param plan_description [String]
         #   # @param plan_id [String]
         #   # @param plan_name [String]
-        #   # @param starting_on [String]
-        #   # @param ending_before [String]
+        #   # @param starting_on [Time]
+        #   # @param ending_before [Time]
         #   # @param net_payment_terms_days [Float]
         #   # @param trial_info [Metronome::Models::Customers::PlanListResponse::TrialInfo]
         #   #
@@ -124,7 +124,7 @@ module Metronome
                    }
 
           # @!parse
-          #   # @param ending_before [String]
+          #   # @param ending_before [Time]
           #   # @param spending_caps [Array<Metronome::Models::Customers::PlanListResponse::TrialInfo::SpendingCap>]
           #   #
           #   def initialize(ending_before:, spending_caps:, **) = super

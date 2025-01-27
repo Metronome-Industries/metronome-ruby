@@ -123,8 +123,8 @@ module Metronome
       #   # @param custom_fields [Hash{Symbol=>String}]
       #   # @param customer_id [String]
       #   # @param deductions [Array<Metronome::Models::CreditLedgerEntry>]
-      #   # @param effective_at [String]
-      #   # @param expires_at [String]
+      #   # @param effective_at [Time]
+      #   # @param expires_at [Time]
       #   # @param grant_amount [Metronome::Models::CreditGrantListResponse::GrantAmount]
       #   # @param name [String]
       #   # @param paid_amount [Metronome::Models::CreditGrantListResponse::PaidAmount]
@@ -196,7 +196,7 @@ module Metronome
         #   #   billing period. Expiration deductions will be included only if the grant expires
         #   #   before the end of the current billing period.
         #   #
-        #   # @param effective_at [String]
+        #   # @param effective_at [Time]
         #   # @param excluding_pending [Float]
         #   # @param including_pending [Float]
         #   #
