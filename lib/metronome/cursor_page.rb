@@ -21,7 +21,9 @@ module Metronome
   #
   # items => Array
   # ```
-  class CursorPage < Metronome::BasePage
+  class CursorPage
+    include Metronome::BasePage
+
     # @return [String]
     attr_accessor :next_page_
 
@@ -36,6 +38,9 @@ module Metronome
     # @param unwrapped [Hash{Symbol=>Object}]
     #
     def initialize(client:, req:, headers:, unwrapped:)
+      @client = client
+      @req = req
+
       case unwrapped
       in {next_page: next_page_} if next_page_.is_a?(String) || next_page_.is_nil?
         @next_page_ = next_page_
@@ -49,8 +54,6 @@ module Metronome
         @data = data&.map { |row| model.coerce(row) }
       else
       end
-
-      super
     end
 
     # @return [Boolean]
