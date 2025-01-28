@@ -578,19 +578,13 @@ module Metronome
         # case rate_type
         # in :COMMIT_RATE
         #   # ...
-        # in :commit_rate
-        #   # ...
         # in :LIST_RATE
-        #   # ...
-        # in :list_rate
         #   # ...
         # end
         # ```
         class RateType < Metronome::Enum
           COMMIT_RATE = :COMMIT_RATE
-          COMMIT_RATE = :commit_rate
           LIST_RATE = :LIST_RATE
-          LIST_RATE = :list_rate
 
           finalize!
         end
