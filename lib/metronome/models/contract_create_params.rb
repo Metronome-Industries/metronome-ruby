@@ -984,19 +984,13 @@ module Metronome
         # case rate_type
         # in :COMMIT_RATE
         #   # ...
-        # in :commit_rate
-        #   # ...
         # in :LIST_RATE
-        #   # ...
-        # in :list_rate
         #   # ...
         # end
         # ```
         class RateType < Metronome::Enum
           COMMIT_RATE = :COMMIT_RATE
-          COMMIT_RATE = :commit_rate
           LIST_RATE = :LIST_RATE
-          LIST_RATE = :list_rate
 
           finalize!
         end
@@ -1214,19 +1208,13 @@ module Metronome
         # case rate_type
         # in :COMMIT_RATE
         #   # ...
-        # in :commit_rate
-        #   # ...
         # in :LIST_RATE
-        #   # ...
-        # in :list_rate
         #   # ...
         # end
         # ```
         class RateType < Metronome::Enum
           COMMIT_RATE = :COMMIT_RATE
-          COMMIT_RATE = :commit_rate
           LIST_RATE = :LIST_RATE
-          LIST_RATE = :list_rate
 
           finalize!
         end
@@ -1999,19 +1987,13 @@ module Metronome
         # case target
         # in :COMMIT_RATE
         #   # ...
-        # in :commit_rate
-        #   # ...
         # in :LIST_RATE
-        #   # ...
-        # in :list_rate
         #   # ...
         # end
         # ```
         class Target < Metronome::Enum
           COMMIT_RATE = :COMMIT_RATE
-          COMMIT_RATE = :commit_rate
           LIST_RATE = :LIST_RATE
-          LIST_RATE = :list_rate
 
           finalize!
         end
@@ -2915,15 +2897,12 @@ module Metronome
         #   # ...
         # in :CUSTOM_DATE
         #   # ...
-        # in :custom_date
-        #   # ...
         # end
         # ```
         class Day < Metronome::Enum
           FIRST_OF_MONTH = :FIRST_OF_MONTH
           CONTRACT_START = :CONTRACT_START
           CUSTOM_DATE = :CUSTOM_DATE
-          CUSTOM_DATE = :custom_date
 
           finalize!
         end

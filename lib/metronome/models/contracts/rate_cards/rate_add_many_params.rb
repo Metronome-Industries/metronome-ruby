@@ -294,29 +294,22 @@ module Metronome
               # case rate_type
               # in :FLAT
               #   # ...
-              # in :flat
-              #   # ...
               # in :PERCENTAGE
-              #   # ...
-              # in :percentage
               #   # ...
               # in :SUBSCRIPTION
               #   # ...
-              # in ...
-              #   #...
+              # in :TIERED
+              #   # ...
+              # in :CUSTOM
+              #   # ...
               # end
               # ```
               class RateType < Metronome::Enum
                 FLAT = :FLAT
-                FLAT = :flat
                 PERCENTAGE = :PERCENTAGE
-                PERCENTAGE = :percentage
                 SUBSCRIPTION = :SUBSCRIPTION
-                SUBSCRIPTION = :subscription
                 TIERED = :TIERED
-                TIERED = :tiered
                 CUSTOM = :CUSTOM
-                CUSTOM = :custom
 
                 finalize!
               end
