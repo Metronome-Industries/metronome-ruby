@@ -1,0 +1,21 @@
+module Metronome
+  module Models
+    module Customers
+      type alert_retrieve_response =
+        { data: Metronome::Models::Customers::CustomerAlert }
+
+      class AlertRetrieveResponse < Metronome::BaseModel
+        attr_accessor data: Metronome::Models::Customers::CustomerAlert
+
+        def initialize:
+          (data: Metronome::Models::Customers::CustomerAlert) -> void
+          | (
+            ?Metronome::Models::Customers::alert_retrieve_response
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::Customers::alert_retrieve_response
+      end
+    end
+  end
+end

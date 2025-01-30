@@ -1,0 +1,19 @@
+module Metronome
+  module Models
+    type billable_metric_archive_params = {  } & Metronome::request_parameters
+
+    class BillableMetricArchiveParams < Metronome::Models::ID
+      extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
+      def initialize:
+        (request_options: Metronome::request_opts) -> void
+        | (
+          ?Metronome::Models::billable_metric_archive_params
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::billable_metric_archive_params
+    end
+  end
+end

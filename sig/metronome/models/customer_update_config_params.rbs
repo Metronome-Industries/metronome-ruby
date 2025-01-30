@@ -1,0 +1,36 @@
+module Metronome
+  module Models
+    type customer_update_config_params =
+      {
+        customer_id: String,
+        leave_stripe_invoices_in_draft: bool?,
+        salesforce_account_id: String?
+      }
+      & Metronome::request_parameters
+
+    class CustomerUpdateConfigParams < Metronome::BaseModel
+      extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
+      attr_accessor customer_id: String
+
+      attr_accessor leave_stripe_invoices_in_draft: bool?
+
+      attr_accessor salesforce_account_id: String?
+
+      def initialize:
+        (
+          customer_id: String,
+          leave_stripe_invoices_in_draft: bool?,
+          salesforce_account_id: String?,
+          request_options: Metronome::request_opts
+        ) -> void
+        | (
+          ?Metronome::Models::customer_update_config_params
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::customer_update_config_params
+    end
+  end
+end

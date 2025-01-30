@@ -1,0 +1,20 @@
+module Metronome
+  module Models
+    type invoice_void_params = { id: String } & Metronome::request_parameters
+
+    class InvoiceVoidParams < Metronome::BaseModel
+      extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
+      attr_accessor id: String
+
+      def initialize:
+        (id: String, request_options: Metronome::request_opts) -> void
+        | (
+          ?Metronome::Models::invoice_void_params | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::invoice_void_params
+    end
+  end
+end

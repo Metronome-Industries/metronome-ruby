@@ -1,0 +1,1003 @@
+module Metronome
+  module Models
+    module Customers
+      type invoice =
+        {
+          id: String,
+          credit_type: Metronome::Models::CreditTypeData,
+          customer_id: String,
+          line_items: Array[Metronome::Models::Customers::Invoice::LineItem],
+          status: String,
+          total: Float,
+          type: String,
+          amendment_id: String,
+          billable_status: Metronome::Models::Customers::Invoice::billable_status,
+          contract_custom_fields: Hash[Symbol, String],
+          contract_id: String,
+          correction_record: Metronome::Models::Customers::Invoice::CorrectionRecord,
+          created_at: Time,
+          custom_fields: Hash[Symbol, top],
+          customer_custom_fields: Hash[Symbol, String],
+          end_timestamp: Time,
+          external_invoice: Metronome::Models::Customers::Invoice::ExternalInvoice?,
+          invoice_adjustments: Array[Metronome::Models::Customers::Invoice::InvoiceAdjustment],
+          issued_at: Time,
+          net_payment_terms_days: Float,
+          netsuite_sales_order_id: String,
+          plan_custom_fields: Hash[Symbol, String],
+          plan_id: String,
+          plan_name: String,
+          reseller_royalty: Metronome::Models::Customers::Invoice::ResellerRoyalty,
+          salesforce_opportunity_id: String,
+          start_timestamp: Time,
+          subtotal: Float
+        }
+
+      class Invoice < Metronome::BaseModel
+        attr_accessor id: String
+
+        attr_accessor credit_type: Metronome::Models::CreditTypeData
+
+        attr_accessor customer_id: String
+
+        attr_accessor line_items: Array[Metronome::Models::Customers::Invoice::LineItem]
+
+        attr_accessor status: String
+
+        attr_accessor total: Float
+
+        attr_accessor type: String
+
+        attr_reader amendment_id: String?
+
+        def amendment_id=: (String) -> void
+
+        attr_reader billable_status: Metronome::Models::Customers::Invoice::billable_status?
+
+        def billable_status=: (
+          Metronome::Models::Customers::Invoice::billable_status
+        ) -> void
+
+        attr_reader contract_custom_fields: Hash[Symbol, String]?
+
+        def contract_custom_fields=: (Hash[Symbol, String]) -> void
+
+        attr_reader contract_id: String?
+
+        def contract_id=: (String) -> void
+
+        attr_reader correction_record: Metronome::Models::Customers::Invoice::CorrectionRecord?
+
+        def correction_record=: (
+          Metronome::Models::Customers::Invoice::CorrectionRecord
+        ) -> void
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> void
+
+        attr_reader custom_fields: Hash[Symbol, top]?
+
+        def custom_fields=: (Hash[Symbol, top]) -> void
+
+        attr_reader customer_custom_fields: Hash[Symbol, String]?
+
+        def customer_custom_fields=: (Hash[Symbol, String]) -> void
+
+        attr_reader end_timestamp: Time?
+
+        def end_timestamp=: (Time) -> void
+
+        attr_accessor external_invoice: Metronome::Models::Customers::Invoice::ExternalInvoice?
+
+        attr_reader invoice_adjustments: Array[Metronome::Models::Customers::Invoice::InvoiceAdjustment]
+
+        def invoice_adjustments=: (
+          Array[Metronome::Models::Customers::Invoice::InvoiceAdjustment]
+        ) -> void
+
+        attr_reader issued_at: Time?
+
+        def issued_at=: (Time) -> void
+
+        attr_reader net_payment_terms_days: Float?
+
+        def net_payment_terms_days=: (Float) -> void
+
+        attr_reader netsuite_sales_order_id: String?
+
+        def netsuite_sales_order_id=: (String) -> void
+
+        attr_reader plan_custom_fields: Hash[Symbol, String]?
+
+        def plan_custom_fields=: (Hash[Symbol, String]) -> void
+
+        attr_reader plan_id: String?
+
+        def plan_id=: (String) -> void
+
+        attr_reader plan_name: String?
+
+        def plan_name=: (String) -> void
+
+        attr_reader reseller_royalty: Metronome::Models::Customers::Invoice::ResellerRoyalty?
+
+        def reseller_royalty=: (
+          Metronome::Models::Customers::Invoice::ResellerRoyalty
+        ) -> void
+
+        attr_reader salesforce_opportunity_id: String?
+
+        def salesforce_opportunity_id=: (String) -> void
+
+        attr_reader start_timestamp: Time?
+
+        def start_timestamp=: (Time) -> void
+
+        attr_reader subtotal: Float?
+
+        def subtotal=: (Float) -> void
+
+        def initialize:
+          (
+            id: String,
+            credit_type: Metronome::Models::CreditTypeData,
+            customer_id: String,
+            line_items: Array[Metronome::Models::Customers::Invoice::LineItem],
+            status: String,
+            total: Float,
+            type: String,
+            amendment_id: String,
+            billable_status: Metronome::Models::Customers::Invoice::billable_status,
+            contract_custom_fields: Hash[Symbol, String],
+            contract_id: String,
+            correction_record: Metronome::Models::Customers::Invoice::CorrectionRecord,
+            created_at: Time,
+            custom_fields: Hash[Symbol, top],
+            customer_custom_fields: Hash[Symbol, String],
+            end_timestamp: Time,
+            external_invoice: Metronome::Models::Customers::Invoice::ExternalInvoice?,
+            invoice_adjustments: Array[Metronome::Models::Customers::Invoice::InvoiceAdjustment],
+            issued_at: Time,
+            net_payment_terms_days: Float,
+            netsuite_sales_order_id: String,
+            plan_custom_fields: Hash[Symbol, String],
+            plan_id: String,
+            plan_name: String,
+            reseller_royalty: Metronome::Models::Customers::Invoice::ResellerRoyalty,
+            salesforce_opportunity_id: String,
+            start_timestamp: Time,
+            subtotal: Float
+          ) -> void
+          | (
+            ?Metronome::Models::Customers::invoice | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::Customers::invoice
+
+        type line_item =
+          {
+            credit_type: Metronome::Models::CreditTypeData,
+            name: String,
+            total: Float,
+            applied_commit_or_credit: Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit,
+            commit_custom_fields: Hash[Symbol, String],
+            commit_id: String,
+            commit_netsuite_item_id: String,
+            commit_netsuite_sales_order_id: String,
+            commit_segment_id: String,
+            commit_type: String,
+            custom_fields: Hash[Symbol, String],
+            ending_before: Time,
+            group_key: String,
+            group_value: String?,
+            is_prorated: bool,
+            list_price: Metronome::Models::Rate,
+            metadata: String,
+            netsuite_invoice_billing_end: Time,
+            netsuite_invoice_billing_start: Time,
+            netsuite_item_id: String,
+            postpaid_commit: Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit,
+            presentation_group_values: Hash[Symbol, String?]?,
+            pricing_group_values: Hash[Symbol, String],
+            product_custom_fields: Hash[Symbol, String],
+            product_id: String,
+            product_type: String,
+            professional_service_custom_fields: Hash[Symbol, String],
+            professional_service_id: String,
+            quantity: Float,
+            reseller_type: Metronome::Models::Customers::Invoice::LineItem::reseller_type,
+            scheduled_charge_custom_fields: Hash[Symbol, String],
+            scheduled_charge_id: String,
+            starting_at: Time,
+            sub_line_items: Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem],
+            tier: Metronome::Models::Customers::Invoice::LineItem::Tier,
+            unit_price: Float
+          }
+
+        class LineItem < Metronome::BaseModel
+          attr_accessor credit_type: Metronome::Models::CreditTypeData
+
+          attr_accessor name: String
+
+          attr_accessor total: Float
+
+          attr_reader applied_commit_or_credit: Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit?
+
+          def applied_commit_or_credit=: (
+            Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit
+          ) -> void
+
+          attr_reader commit_custom_fields: Hash[Symbol, String]?
+
+          def commit_custom_fields=: (Hash[Symbol, String]) -> void
+
+          attr_reader commit_id: String?
+
+          def commit_id=: (String) -> void
+
+          attr_reader commit_netsuite_item_id: String?
+
+          def commit_netsuite_item_id=: (String) -> void
+
+          attr_reader commit_netsuite_sales_order_id: String?
+
+          def commit_netsuite_sales_order_id=: (String) -> void
+
+          attr_reader commit_segment_id: String?
+
+          def commit_segment_id=: (String) -> void
+
+          attr_reader commit_type: String?
+
+          def commit_type=: (String) -> void
+
+          attr_reader custom_fields: Hash[Symbol, String]?
+
+          def custom_fields=: (Hash[Symbol, String]) -> void
+
+          attr_reader ending_before: Time?
+
+          def ending_before=: (Time) -> void
+
+          attr_reader group_key: String?
+
+          def group_key=: (String) -> void
+
+          attr_accessor group_value: String?
+
+          attr_reader is_prorated: bool?
+
+          def is_prorated=: (bool) -> void
+
+          attr_reader list_price: Metronome::Models::Rate?
+
+          def list_price=: (Metronome::Models::Rate) -> void
+
+          attr_reader metadata: String?
+
+          def metadata=: (String) -> void
+
+          attr_reader netsuite_invoice_billing_end: Time?
+
+          def netsuite_invoice_billing_end=: (Time) -> void
+
+          attr_reader netsuite_invoice_billing_start: Time?
+
+          def netsuite_invoice_billing_start=: (Time) -> void
+
+          attr_reader netsuite_item_id: String?
+
+          def netsuite_item_id=: (String) -> void
+
+          attr_reader postpaid_commit: Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit?
+
+          def postpaid_commit=: (
+            Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit
+          ) -> void
+
+          attr_reader presentation_group_values: Hash[Symbol, String?]?
+
+          def presentation_group_values=: (Hash[Symbol, String?]?) -> void
+
+          attr_reader pricing_group_values: Hash[Symbol, String]?
+
+          def pricing_group_values=: (Hash[Symbol, String]) -> void
+
+          attr_reader product_custom_fields: Hash[Symbol, String]?
+
+          def product_custom_fields=: (Hash[Symbol, String]) -> void
+
+          attr_reader product_id: String?
+
+          def product_id=: (String) -> void
+
+          attr_reader product_type: String?
+
+          def product_type=: (String) -> void
+
+          attr_reader professional_service_custom_fields: Hash[Symbol, String]?
+
+          def professional_service_custom_fields=: (
+            Hash[Symbol, String]
+          ) -> void
+
+          attr_reader professional_service_id: String?
+
+          def professional_service_id=: (String) -> void
+
+          attr_reader quantity: Float?
+
+          def quantity=: (Float) -> void
+
+          attr_reader reseller_type: Metronome::Models::Customers::Invoice::LineItem::reseller_type?
+
+          def reseller_type=: (
+            Metronome::Models::Customers::Invoice::LineItem::reseller_type
+          ) -> void
+
+          attr_reader scheduled_charge_custom_fields: Hash[Symbol, String]?
+
+          def scheduled_charge_custom_fields=: (Hash[Symbol, String]) -> void
+
+          attr_reader scheduled_charge_id: String?
+
+          def scheduled_charge_id=: (String) -> void
+
+          attr_reader starting_at: Time?
+
+          def starting_at=: (Time) -> void
+
+          attr_reader sub_line_items: Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem]
+
+          def sub_line_items=: (
+            Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem]
+          ) -> void
+
+          attr_reader tier: Metronome::Models::Customers::Invoice::LineItem::Tier?
+
+          def tier=: (
+            Metronome::Models::Customers::Invoice::LineItem::Tier
+          ) -> void
+
+          attr_reader unit_price: Float?
+
+          def unit_price=: (Float) -> void
+
+          def initialize:
+            (
+              credit_type: Metronome::Models::CreditTypeData,
+              name: String,
+              total: Float,
+              applied_commit_or_credit: Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit,
+              commit_custom_fields: Hash[Symbol, String],
+              commit_id: String,
+              commit_netsuite_item_id: String,
+              commit_netsuite_sales_order_id: String,
+              commit_segment_id: String,
+              commit_type: String,
+              custom_fields: Hash[Symbol, String],
+              ending_before: Time,
+              group_key: String,
+              group_value: String?,
+              is_prorated: bool,
+              list_price: Metronome::Models::Rate,
+              metadata: String,
+              netsuite_invoice_billing_end: Time,
+              netsuite_invoice_billing_start: Time,
+              netsuite_item_id: String,
+              postpaid_commit: Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit,
+              presentation_group_values: Hash[Symbol, String?]?,
+              pricing_group_values: Hash[Symbol, String],
+              product_custom_fields: Hash[Symbol, String],
+              product_id: String,
+              product_type: String,
+              professional_service_custom_fields: Hash[Symbol, String],
+              professional_service_id: String,
+              quantity: Float,
+              reseller_type: Metronome::Models::Customers::Invoice::LineItem::reseller_type,
+              scheduled_charge_custom_fields: Hash[Symbol, String],
+              scheduled_charge_id: String,
+              starting_at: Time,
+              sub_line_items: Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem],
+              tier: Metronome::Models::Customers::Invoice::LineItem::Tier,
+              unit_price: Float
+            ) -> void
+            | (
+              ?Metronome::Models::Customers::Invoice::line_item
+              | Metronome::BaseModel data
+            ) -> void
+
+          def to_h: -> Metronome::Models::Customers::Invoice::line_item
+
+          type applied_commit_or_credit =
+            {
+              id: String,
+              type: Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit::type_
+            }
+
+          class AppliedCommitOrCredit < Metronome::BaseModel
+            attr_accessor id: String
+
+            attr_accessor type: Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit::type_
+
+            def initialize:
+              (
+                id: String,
+                type: Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit::type_
+              ) -> void
+              | (
+                ?Metronome::Models::Customers::Invoice::LineItem::applied_commit_or_credit
+                | Metronome::BaseModel data
+              ) -> void
+
+            def to_h: -> Metronome::Models::Customers::Invoice::LineItem::applied_commit_or_credit
+
+            type type_ = :PREPAID | :POSTPAID | :CREDIT
+
+            class Type < Metronome::Enum
+              PREPAID: :PREPAID
+              POSTPAID: :POSTPAID
+              CREDIT: :CREDIT
+
+              def self.values: -> Array[Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit::type_]
+            end
+          end
+
+          type postpaid_commit = { id: String }
+
+          class PostpaidCommit < Metronome::BaseModel
+            attr_accessor id: String
+
+            def initialize:
+              (id: String) -> void
+              | (
+                ?Metronome::Models::Customers::Invoice::LineItem::postpaid_commit
+                | Metronome::BaseModel data
+              ) -> void
+
+            def to_h: -> Metronome::Models::Customers::Invoice::LineItem::postpaid_commit
+          end
+
+          type reseller_type = :AWS | :AWS_PRO_SERVICE | :GCP | :GCP_PRO_SERVICE
+
+          class ResellerType < Metronome::Enum
+            AWS: :AWS
+            AWS_PRO_SERVICE: :AWS_PRO_SERVICE
+            GCP: :GCP
+            GCP_PRO_SERVICE: :GCP_PRO_SERVICE
+
+            def self.values: -> Array[Metronome::Models::Customers::Invoice::LineItem::reseller_type]
+          end
+
+          type sub_line_item =
+            {
+              custom_fields: Hash[Symbol, String],
+              name: String,
+              quantity: Float,
+              subtotal: Float,
+              charge_id: String,
+              credit_grant_id: String,
+              end_date: Time,
+              price: Float,
+              start_date: Time,
+              tier_period: Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod,
+              tiers: Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]
+            }
+
+          class SubLineItem < Metronome::BaseModel
+            attr_accessor custom_fields: Hash[Symbol, String]
+
+            attr_accessor name: String
+
+            attr_accessor quantity: Float
+
+            attr_accessor subtotal: Float
+
+            attr_reader charge_id: String?
+
+            def charge_id=: (String) -> void
+
+            attr_reader credit_grant_id: String?
+
+            def credit_grant_id=: (String) -> void
+
+            attr_reader end_date: Time?
+
+            def end_date=: (Time) -> void
+
+            attr_reader price: Float?
+
+            def price=: (Float) -> void
+
+            attr_reader start_date: Time?
+
+            def start_date=: (Time) -> void
+
+            attr_reader tier_period: Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod?
+
+            def tier_period=: (
+              Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod
+            ) -> void
+
+            attr_reader tiers: Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]
+
+            def tiers=: (
+              Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]
+            ) -> void
+
+            def initialize:
+              (
+                custom_fields: Hash[Symbol, String],
+                name: String,
+                quantity: Float,
+                subtotal: Float,
+                charge_id: String,
+                credit_grant_id: String,
+                end_date: Time,
+                price: Float,
+                start_date: Time,
+                tier_period: Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod,
+                tiers: Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]
+              ) -> void
+              | (
+                ?Metronome::Models::Customers::Invoice::LineItem::sub_line_item
+                | Metronome::BaseModel data
+              ) -> void
+
+            def to_h: -> Metronome::Models::Customers::Invoice::LineItem::sub_line_item
+
+            type tier_period = { starting_at: Time, ending_before: Time }
+
+            class TierPeriod < Metronome::BaseModel
+              attr_accessor starting_at: Time
+
+              attr_reader ending_before: Time?
+
+              def ending_before=: (Time) -> void
+
+              def initialize:
+                (starting_at: Time, ending_before: Time) -> void
+                | (
+                  ?Metronome::Models::Customers::Invoice::LineItem::SubLineItem::tier_period
+                  | Metronome::BaseModel data
+                ) -> void
+
+              def to_h: -> Metronome::Models::Customers::Invoice::LineItem::SubLineItem::tier_period
+            end
+
+            type tier =
+              {
+                price: Float,
+                quantity: Float,
+                starting_at: Float,
+                subtotal: Float
+              }
+
+            class Tier < Metronome::BaseModel
+              attr_accessor price: Float
+
+              attr_accessor quantity: Float
+
+              attr_accessor starting_at: Float
+
+              attr_accessor subtotal: Float
+
+              def initialize:
+                (
+                  price: Float,
+                  quantity: Float,
+                  starting_at: Float,
+                  subtotal: Float
+                ) -> void
+                | (
+                  ?Metronome::Models::Customers::Invoice::LineItem::SubLineItem::tier
+                  | Metronome::BaseModel data
+                ) -> void
+
+              def to_h: -> Metronome::Models::Customers::Invoice::LineItem::SubLineItem::tier
+            end
+          end
+
+          type tier = { level: Float, starting_at: String, size: String? }
+
+          class Tier < Metronome::BaseModel
+            attr_accessor level: Float
+
+            attr_accessor starting_at: String
+
+            attr_accessor size: String?
+
+            def initialize:
+              (level: Float, starting_at: String, size: String?) -> void
+              | (
+                ?Metronome::Models::Customers::Invoice::LineItem::tier
+                | Metronome::BaseModel data
+              ) -> void
+
+            def to_h: -> Metronome::Models::Customers::Invoice::LineItem::tier
+          end
+        end
+
+        type billable_status = :billable | :unbillable
+
+        class BillableStatus < Metronome::Enum
+          BILLABLE: :billable
+          UNBILLABLE: :unbillable
+
+          def self.values: -> Array[Metronome::Models::Customers::Invoice::billable_status]
+        end
+
+        type correction_record =
+          {
+            corrected_invoice_id: String,
+            memo: String,
+            reason: String,
+            corrected_external_invoice: Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice
+          }
+
+        class CorrectionRecord < Metronome::BaseModel
+          attr_accessor corrected_invoice_id: String
+
+          attr_accessor memo: String
+
+          attr_accessor reason: String
+
+          attr_reader corrected_external_invoice: Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice?
+
+          def corrected_external_invoice=: (
+            Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice
+          ) -> void
+
+          def initialize:
+            (
+              corrected_invoice_id: String,
+              memo: String,
+              reason: String,
+              corrected_external_invoice: Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice
+            ) -> void
+            | (
+              ?Metronome::Models::Customers::Invoice::correction_record
+              | Metronome::BaseModel data
+            ) -> void
+
+          def to_h: -> Metronome::Models::Customers::Invoice::correction_record
+
+          type corrected_external_invoice =
+            {
+              billing_provider_type: Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type,
+              external_status: Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status,
+              invoice_id: String,
+              issued_at_timestamp: Time
+            }
+
+          class CorrectedExternalInvoice < Metronome::BaseModel
+            attr_accessor billing_provider_type: Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type
+
+            attr_reader external_status: Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status?
+
+            def external_status=: (
+              Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status
+            ) -> void
+
+            attr_reader invoice_id: String?
+
+            def invoice_id=: (String) -> void
+
+            attr_reader issued_at_timestamp: Time?
+
+            def issued_at_timestamp=: (Time) -> void
+
+            def initialize:
+              (
+                billing_provider_type: Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type,
+                external_status: Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status,
+                invoice_id: String,
+                issued_at_timestamp: Time
+              ) -> void
+              | (
+                ?Metronome::Models::Customers::Invoice::CorrectionRecord::corrected_external_invoice
+                | Metronome::BaseModel data
+              ) -> void
+
+            def to_h: -> Metronome::Models::Customers::Invoice::CorrectionRecord::corrected_external_invoice
+
+            type billing_provider_type =
+              :aws_marketplace
+              | :stripe
+              | :netsuite
+              | :custom
+              | :azure_marketplace
+              | :quickbooks_online
+              | :workday
+              | :gcp_marketplace
+
+            class BillingProviderType < Metronome::Enum
+              AWS_MARKETPLACE: :aws_marketplace
+              STRIPE: :stripe
+              NETSUITE: :netsuite
+              CUSTOM: :custom
+              AZURE_MARKETPLACE: :azure_marketplace
+              QUICKBOOKS_ONLINE: :quickbooks_online
+              WORKDAY: :workday
+              GCP_MARKETPLACE: :gcp_marketplace
+
+              def self.values: -> Array[Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type]
+            end
+
+            type external_status =
+              :DRAFT
+              | :FINALIZED
+              | :PAID
+              | :UNCOLLECTIBLE
+              | :VOID
+              | :DELETED
+              | :PAYMENT_FAILED
+              | :INVALID_REQUEST_ERROR
+              | :SKIPPED
+              | :SENT
+              | :QUEUED
+
+            class ExternalStatus < Metronome::Enum
+              DRAFT: :DRAFT
+              FINALIZED: :FINALIZED
+              PAID: :PAID
+              UNCOLLECTIBLE: :UNCOLLECTIBLE
+              VOID: :VOID
+              DELETED: :DELETED
+              PAYMENT_FAILED: :PAYMENT_FAILED
+              INVALID_REQUEST_ERROR: :INVALID_REQUEST_ERROR
+              SKIPPED: :SKIPPED
+              SENT: :SENT
+              QUEUED: :QUEUED
+
+              def self.values: -> Array[Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status]
+            end
+          end
+        end
+
+        type external_invoice =
+          {
+            billing_provider_type: Metronome::Models::Customers::Invoice::ExternalInvoice::billing_provider_type,
+            external_status: Metronome::Models::Customers::Invoice::ExternalInvoice::external_status,
+            invoice_id: String,
+            issued_at_timestamp: Time
+          }
+
+        class ExternalInvoice < Metronome::BaseModel
+          attr_accessor billing_provider_type: Metronome::Models::Customers::Invoice::ExternalInvoice::billing_provider_type
+
+          attr_reader external_status: Metronome::Models::Customers::Invoice::ExternalInvoice::external_status?
+
+          def external_status=: (
+            Metronome::Models::Customers::Invoice::ExternalInvoice::external_status
+          ) -> void
+
+          attr_reader invoice_id: String?
+
+          def invoice_id=: (String) -> void
+
+          attr_reader issued_at_timestamp: Time?
+
+          def issued_at_timestamp=: (Time) -> void
+
+          def initialize:
+            (
+              billing_provider_type: Metronome::Models::Customers::Invoice::ExternalInvoice::billing_provider_type,
+              external_status: Metronome::Models::Customers::Invoice::ExternalInvoice::external_status,
+              invoice_id: String,
+              issued_at_timestamp: Time
+            ) -> void
+            | (
+              ?Metronome::Models::Customers::Invoice::external_invoice
+              | Metronome::BaseModel data
+            ) -> void
+
+          def to_h: -> Metronome::Models::Customers::Invoice::external_invoice
+
+          type billing_provider_type =
+            :aws_marketplace
+            | :stripe
+            | :netsuite
+            | :custom
+            | :azure_marketplace
+            | :quickbooks_online
+            | :workday
+            | :gcp_marketplace
+
+          class BillingProviderType < Metronome::Enum
+            AWS_MARKETPLACE: :aws_marketplace
+            STRIPE: :stripe
+            NETSUITE: :netsuite
+            CUSTOM: :custom
+            AZURE_MARKETPLACE: :azure_marketplace
+            QUICKBOOKS_ONLINE: :quickbooks_online
+            WORKDAY: :workday
+            GCP_MARKETPLACE: :gcp_marketplace
+
+            def self.values: -> Array[Metronome::Models::Customers::Invoice::ExternalInvoice::billing_provider_type]
+          end
+
+          type external_status =
+            :DRAFT
+            | :FINALIZED
+            | :PAID
+            | :UNCOLLECTIBLE
+            | :VOID
+            | :DELETED
+            | :PAYMENT_FAILED
+            | :INVALID_REQUEST_ERROR
+            | :SKIPPED
+            | :SENT
+            | :QUEUED
+
+          class ExternalStatus < Metronome::Enum
+            DRAFT: :DRAFT
+            FINALIZED: :FINALIZED
+            PAID: :PAID
+            UNCOLLECTIBLE: :UNCOLLECTIBLE
+            VOID: :VOID
+            DELETED: :DELETED
+            PAYMENT_FAILED: :PAYMENT_FAILED
+            INVALID_REQUEST_ERROR: :INVALID_REQUEST_ERROR
+            SKIPPED: :SKIPPED
+            SENT: :SENT
+            QUEUED: :QUEUED
+
+            def self.values: -> Array[Metronome::Models::Customers::Invoice::ExternalInvoice::external_status]
+          end
+        end
+
+        type invoice_adjustment =
+          {
+            credit_type: Metronome::Models::CreditTypeData,
+            name: String,
+            total: Float,
+            credit_grant_custom_fields: Hash[Symbol, String],
+            credit_grant_id: String
+          }
+
+        class InvoiceAdjustment < Metronome::BaseModel
+          attr_accessor credit_type: Metronome::Models::CreditTypeData
+
+          attr_accessor name: String
+
+          attr_accessor total: Float
+
+          attr_reader credit_grant_custom_fields: Hash[Symbol, String]?
+
+          def credit_grant_custom_fields=: (Hash[Symbol, String]) -> void
+
+          attr_reader credit_grant_id: String?
+
+          def credit_grant_id=: (String) -> void
+
+          def initialize:
+            (
+              credit_type: Metronome::Models::CreditTypeData,
+              name: String,
+              total: Float,
+              credit_grant_custom_fields: Hash[Symbol, String],
+              credit_grant_id: String
+            ) -> void
+            | (
+              ?Metronome::Models::Customers::Invoice::invoice_adjustment
+              | Metronome::BaseModel data
+            ) -> void
+
+          def to_h: -> Metronome::Models::Customers::Invoice::invoice_adjustment
+        end
+
+        type reseller_royalty =
+          {
+            fraction: String,
+            netsuite_reseller_id: String,
+            reseller_type: Metronome::Models::Customers::Invoice::ResellerRoyalty::reseller_type,
+            aws_options: Metronome::Models::Customers::Invoice::ResellerRoyalty::AwsOptions,
+            gcp_options: Metronome::Models::Customers::Invoice::ResellerRoyalty::GcpOptions
+          }
+
+        class ResellerRoyalty < Metronome::BaseModel
+          attr_accessor fraction: String
+
+          attr_accessor netsuite_reseller_id: String
+
+          attr_accessor reseller_type: Metronome::Models::Customers::Invoice::ResellerRoyalty::reseller_type
+
+          attr_reader aws_options: Metronome::Models::Customers::Invoice::ResellerRoyalty::AwsOptions?
+
+          def aws_options=: (
+            Metronome::Models::Customers::Invoice::ResellerRoyalty::AwsOptions
+          ) -> void
+
+          attr_reader gcp_options: Metronome::Models::Customers::Invoice::ResellerRoyalty::GcpOptions?
+
+          def gcp_options=: (
+            Metronome::Models::Customers::Invoice::ResellerRoyalty::GcpOptions
+          ) -> void
+
+          def initialize:
+            (
+              fraction: String,
+              netsuite_reseller_id: String,
+              reseller_type: Metronome::Models::Customers::Invoice::ResellerRoyalty::reseller_type,
+              aws_options: Metronome::Models::Customers::Invoice::ResellerRoyalty::AwsOptions,
+              gcp_options: Metronome::Models::Customers::Invoice::ResellerRoyalty::GcpOptions
+            ) -> void
+            | (
+              ?Metronome::Models::Customers::Invoice::reseller_royalty
+              | Metronome::BaseModel data
+            ) -> void
+
+          def to_h: -> Metronome::Models::Customers::Invoice::reseller_royalty
+
+          type reseller_type = :AWS | :AWS_PRO_SERVICE | :GCP | :GCP_PRO_SERVICE
+
+          class ResellerType < Metronome::Enum
+            AWS: :AWS
+            AWS_PRO_SERVICE: :AWS_PRO_SERVICE
+            GCP: :GCP
+            GCP_PRO_SERVICE: :GCP_PRO_SERVICE
+
+            def self.values: -> Array[Metronome::Models::Customers::Invoice::ResellerRoyalty::reseller_type]
+          end
+
+          type aws_options =
+            {
+              aws_account_number: String,
+              aws_offer_id: String,
+              aws_payer_reference_id: String
+            }
+
+          class AwsOptions < Metronome::BaseModel
+            attr_reader aws_account_number: String?
+
+            def aws_account_number=: (String) -> void
+
+            attr_reader aws_offer_id: String?
+
+            def aws_offer_id=: (String) -> void
+
+            attr_reader aws_payer_reference_id: String?
+
+            def aws_payer_reference_id=: (String) -> void
+
+            def initialize:
+              (
+                aws_account_number: String,
+                aws_offer_id: String,
+                aws_payer_reference_id: String
+              ) -> void
+              | (
+                ?Metronome::Models::Customers::Invoice::ResellerRoyalty::aws_options
+                | Metronome::BaseModel data
+              ) -> void
+
+            def to_h: -> Metronome::Models::Customers::Invoice::ResellerRoyalty::aws_options
+          end
+
+          type gcp_options = { gcp_account_id: String, gcp_offer_id: String }
+
+          class GcpOptions < Metronome::BaseModel
+            attr_reader gcp_account_id: String?
+
+            def gcp_account_id=: (String) -> void
+
+            attr_reader gcp_offer_id: String?
+
+            def gcp_offer_id=: (String) -> void
+
+            def initialize:
+              (gcp_account_id: String, gcp_offer_id: String) -> void
+              | (
+                ?Metronome::Models::Customers::Invoice::ResellerRoyalty::gcp_options
+                | Metronome::BaseModel data
+              ) -> void
+
+            def to_h: -> Metronome::Models::Customers::Invoice::ResellerRoyalty::gcp_options
+          end
+        end
+      end
+    end
+  end
+end

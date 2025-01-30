@@ -1,0 +1,16 @@
+module Metronome
+  class CursorPage[Elem]
+    include Metronome::BasePage[Elem]
+
+    attr_accessor next_page_: String
+
+    attr_accessor data: Array[Elem]
+
+    def initialize: (
+      client: Metronome::BaseClient,
+      req: Metronome::BaseClient::request,
+      headers: Hash[String, String],
+      unwrapped: Hash[Symbol, top]
+    ) -> void
+  end
+end

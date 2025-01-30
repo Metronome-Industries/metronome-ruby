@@ -1,0 +1,84 @@
+module Metronome
+  module Models
+    type billable_metric_create_params =
+      {
+        name: String,
+        aggregation_key: String,
+        aggregation_type: Metronome::Models::BillableMetricCreateParams::aggregation_type,
+        custom_fields: Hash[Symbol, String],
+        event_type_filter: Metronome::Models::EventTypeFilter,
+        group_keys: Array[Array[String]],
+        property_filters: Array[Metronome::Models::PropertyFilter],
+        sql: String
+      }
+      & Metronome::request_parameters
+
+    class BillableMetricCreateParams < Metronome::BaseModel
+      extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
+      attr_accessor name: String
+
+      attr_reader aggregation_key: String?
+
+      def aggregation_key=: (String) -> void
+
+      attr_reader aggregation_type: Metronome::Models::BillableMetricCreateParams::aggregation_type?
+
+      def aggregation_type=: (
+        Metronome::Models::BillableMetricCreateParams::aggregation_type
+      ) -> void
+
+      attr_reader custom_fields: Hash[Symbol, String]?
+
+      def custom_fields=: (Hash[Symbol, String]) -> void
+
+      attr_reader event_type_filter: Metronome::Models::EventTypeFilter?
+
+      def event_type_filter=: (Metronome::Models::EventTypeFilter) -> void
+
+      attr_reader group_keys: Array[Array[String]]
+
+      def group_keys=: (Array[Array[String]]) -> void
+
+      attr_reader property_filters: Array[Metronome::Models::PropertyFilter]
+
+      def property_filters=: (Array[Metronome::Models::PropertyFilter]) -> void
+
+      attr_reader sql: String?
+
+      def sql=: (String) -> void
+
+      def initialize:
+        (
+          name: String,
+          aggregation_key: String,
+          aggregation_type: Metronome::Models::BillableMetricCreateParams::aggregation_type,
+          custom_fields: Hash[Symbol, String],
+          event_type_filter: Metronome::Models::EventTypeFilter,
+          group_keys: Array[Array[String]],
+          property_filters: Array[Metronome::Models::PropertyFilter],
+          sql: String,
+          request_options: Metronome::request_opts
+        ) -> void
+        | (
+          ?Metronome::Models::billable_metric_create_params
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::billable_metric_create_params
+
+      type aggregation_type = :COUNT | :LATEST | :MAX | :SUM | :UNIQUE
+
+      class AggregationType < Metronome::Enum
+        COUNT: :COUNT
+        LATEST: :LATEST
+        MAX: :MAX
+        SUM: :SUM
+        UNIQUE: :UNIQUE
+
+        def self.values: -> Array[Metronome::Models::BillableMetricCreateParams::aggregation_type]
+      end
+    end
+  end
+end

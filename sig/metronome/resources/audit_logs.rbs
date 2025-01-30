@@ -1,0 +1,22 @@
+module Metronome
+  module Resources
+    class AuditLogs
+      def list:
+        (
+          ?Metronome::Models::AuditLogListParams | Hash[Symbol, top] params
+        ) -> Metronome::CursorPage[Metronome::Models::AuditLogListResponse]
+        | (
+          ending_before: Time,
+          limit: Integer,
+          next_page: String,
+          resource_id: String,
+          resource_type: String,
+          sort: Metronome::Models::AuditLogListParams::sort,
+          starting_on: Time,
+          request_options: Metronome::request_opts
+        ) -> Metronome::CursorPage[Metronome::Models::AuditLogListResponse]
+
+      def initialize: (client: Metronome::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,102 @@
+module Metronome
+  module Models
+    module Customers
+      type invoice_list_breakdowns_params =
+        {
+          customer_id: String,
+          ending_before: Time,
+          starting_on: Time,
+          credit_type_id: String,
+          limit: Integer,
+          next_page: String,
+          skip_zero_qty_line_items: bool,
+          sort: Metronome::Models::Customers::InvoiceListBreakdownsParams::sort,
+          status: String,
+          window_size: Metronome::Models::Customers::InvoiceListBreakdownsParams::window_size
+        }
+        & Metronome::request_parameters
+
+      class InvoiceListBreakdownsParams < Metronome::BaseModel
+        extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
+        attr_accessor customer_id: String
+
+        attr_accessor ending_before: Time
+
+        attr_accessor starting_on: Time
+
+        attr_reader credit_type_id: String?
+
+        def credit_type_id=: (String) -> void
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> void
+
+        attr_reader next_page: String?
+
+        def next_page=: (String) -> void
+
+        attr_reader skip_zero_qty_line_items: bool?
+
+        def skip_zero_qty_line_items=: (bool) -> void
+
+        attr_reader sort: Metronome::Models::Customers::InvoiceListBreakdownsParams::sort?
+
+        def sort=: (
+          Metronome::Models::Customers::InvoiceListBreakdownsParams::sort
+        ) -> void
+
+        attr_reader status: String?
+
+        def status=: (String) -> void
+
+        attr_reader window_size: Metronome::Models::Customers::InvoiceListBreakdownsParams::window_size?
+
+        def window_size=: (
+          Metronome::Models::Customers::InvoiceListBreakdownsParams::window_size
+        ) -> void
+
+        def initialize:
+          (
+            customer_id: String,
+            ending_before: Time,
+            starting_on: Time,
+            credit_type_id: String,
+            limit: Integer,
+            next_page: String,
+            skip_zero_qty_line_items: bool,
+            sort: Metronome::Models::Customers::InvoiceListBreakdownsParams::sort,
+            status: String,
+            window_size: Metronome::Models::Customers::InvoiceListBreakdownsParams::window_size,
+            request_options: Metronome::request_opts
+          ) -> void
+          | (
+            ?Metronome::Models::Customers::invoice_list_breakdowns_params
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::Customers::invoice_list_breakdowns_params
+
+        type sort = :date_asc | :date_desc
+
+        class Sort < Metronome::Enum
+          DATE_ASC: :date_asc
+          DATE_DESC: :date_desc
+
+          def self.values: -> Array[Metronome::Models::Customers::InvoiceListBreakdownsParams::sort]
+        end
+
+        type window_size = :HOUR | :DAY
+
+        class WindowSize < Metronome::Enum
+          HOUR: :HOUR
+          DAY: :DAY
+
+          def self.values: -> Array[Metronome::Models::Customers::InvoiceListBreakdownsParams::window_size]
+        end
+      end
+    end
+  end
+end

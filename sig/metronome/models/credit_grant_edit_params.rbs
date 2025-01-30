@@ -1,0 +1,41 @@
+module Metronome
+  module Models
+    type credit_grant_edit_params =
+      { id: String, credit_grant_type: String, expires_at: Time, name: String }
+      & Metronome::request_parameters
+
+    class CreditGrantEditParams < Metronome::BaseModel
+      extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
+      attr_accessor id: String
+
+      attr_reader credit_grant_type: String?
+
+      def credit_grant_type=: (String) -> void
+
+      attr_reader expires_at: Time?
+
+      def expires_at=: (Time) -> void
+
+      attr_reader name: String?
+
+      def name=: (String) -> void
+
+      def initialize:
+        (
+          id: String,
+          credit_grant_type: String,
+          expires_at: Time,
+          name: String,
+          request_options: Metronome::request_opts
+        ) -> void
+        | (
+          ?Metronome::Models::credit_grant_edit_params
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::credit_grant_edit_params
+    end
+  end
+end

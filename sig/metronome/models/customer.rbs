@@ -1,0 +1,38 @@
+module Metronome
+  module Models
+    type customer =
+      {
+        id: String,
+        external_id: String,
+        ingest_aliases: Array[String],
+        name: String,
+        custom_fields: Hash[Symbol, String]
+      }
+
+    class Customer < Metronome::BaseModel
+      attr_accessor id: String
+
+      attr_accessor external_id: String
+
+      attr_accessor ingest_aliases: Array[String]
+
+      attr_accessor name: String
+
+      attr_reader custom_fields: Hash[Symbol, String]?
+
+      def custom_fields=: (Hash[Symbol, String]) -> void
+
+      def initialize:
+        (
+          id: String,
+          external_id: String,
+          ingest_aliases: Array[String],
+          name: String,
+          custom_fields: Hash[Symbol, String]
+        ) -> void
+        | (?Metronome::Models::customer | Metronome::BaseModel data) -> void
+
+      def to_h: -> Metronome::Models::customer
+    end
+  end
+end

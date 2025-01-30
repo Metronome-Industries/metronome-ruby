@@ -1,0 +1,77 @@
+module Metronome
+  module Models
+    type custom_field_delete_values_params =
+      {
+        entity: Metronome::Models::CustomFieldDeleteValuesParams::entity,
+        entity_id: String,
+        keys: Array[String]
+      }
+      & Metronome::request_parameters
+
+    class CustomFieldDeleteValuesParams < Metronome::BaseModel
+      extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
+      attr_accessor entity: Metronome::Models::CustomFieldDeleteValuesParams::entity
+
+      attr_accessor entity_id: String
+
+      attr_accessor keys: Array[String]
+
+      def initialize:
+        (
+          entity: Metronome::Models::CustomFieldDeleteValuesParams::entity,
+          entity_id: String,
+          keys: Array[String],
+          request_options: Metronome::request_opts
+        ) -> void
+        | (
+          ?Metronome::Models::custom_field_delete_values_params
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::custom_field_delete_values_params
+
+      type entity =
+        :alert
+        | :billable_metric
+        | :charge
+        | :commit
+        | :contract_credit
+        | :contract_product
+        | :contract
+        | :credit_grant
+        | :customer_plan
+        | :customer
+        | :discount
+        | :invoice
+        | :plan
+        | :professional_service
+        | :product
+        | :rate_card
+        | :scheduled_charge
+
+      class Entity < Metronome::Enum
+        ALERT: :alert
+        BILLABLE_METRIC: :billable_metric
+        CHARGE: :charge
+        COMMIT: :commit
+        CONTRACT_CREDIT: :contract_credit
+        CONTRACT_PRODUCT: :contract_product
+        CONTRACT: :contract
+        CREDIT_GRANT: :credit_grant
+        CUSTOMER_PLAN: :customer_plan
+        CUSTOMER: :customer
+        DISCOUNT: :discount
+        INVOICE: :invoice
+        PLAN: :plan
+        PROFESSIONAL_SERVICE: :professional_service
+        PRODUCT: :product
+        RATE_CARD: :rate_card
+        SCHEDULED_CHARGE: :scheduled_charge
+
+        def self.values: -> Array[Metronome::Models::CustomFieldDeleteValuesParams::entity]
+      end
+    end
+  end
+end

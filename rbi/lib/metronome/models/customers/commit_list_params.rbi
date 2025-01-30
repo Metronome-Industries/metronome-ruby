@@ -1,0 +1,119 @@
+# typed: strong
+
+module Metronome
+  module Models
+    module Customers
+      class CommitListParams < Metronome::BaseModel
+        extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
+        Shape = T.type_alias do
+          T.all(
+            {
+              customer_id: String,
+              commit_id: String,
+              covering_date: Time,
+              effective_before: Time,
+              include_archived: T::Boolean,
+              include_balance: T::Boolean,
+              include_contract_commits: T::Boolean,
+              include_ledgers: T::Boolean,
+              next_page: String,
+              starting_at: Time
+            },
+            Metronome::RequestParameters::Shape
+          )
+        end
+
+        sig { returns(String) }
+        attr_accessor :customer_id
+
+        sig { returns(T.nilable(String)) }
+        attr_reader :commit_id
+
+        sig { params(commit_id: String).void }
+        attr_writer :commit_id
+
+        sig { returns(T.nilable(Time)) }
+        attr_reader :covering_date
+
+        sig { params(covering_date: Time).void }
+        attr_writer :covering_date
+
+        sig { returns(T.nilable(Time)) }
+        attr_reader :effective_before
+
+        sig { params(effective_before: Time).void }
+        attr_writer :effective_before
+
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :include_archived
+
+        sig { params(include_archived: T::Boolean).void }
+        attr_writer :include_archived
+
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :include_balance
+
+        sig { params(include_balance: T::Boolean).void }
+        attr_writer :include_balance
+
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :include_contract_commits
+
+        sig { params(include_contract_commits: T::Boolean).void }
+        attr_writer :include_contract_commits
+
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :include_ledgers
+
+        sig { params(include_ledgers: T::Boolean).void }
+        attr_writer :include_ledgers
+
+        sig { returns(T.nilable(String)) }
+        attr_reader :next_page
+
+        sig { params(next_page: String).void }
+        attr_writer :next_page
+
+        sig { returns(T.nilable(Time)) }
+        attr_reader :starting_at
+
+        sig { params(starting_at: Time).void }
+        attr_writer :starting_at
+
+        sig do
+          params(
+            customer_id: String,
+            commit_id: String,
+            covering_date: Time,
+            effective_before: Time,
+            include_archived: T::Boolean,
+            include_balance: T::Boolean,
+            include_contract_commits: T::Boolean,
+            include_ledgers: T::Boolean,
+            next_page: String,
+            starting_at: Time,
+            request_options: Metronome::RequestOpts
+          ).void
+        end
+        def initialize(
+          customer_id:,
+          commit_id: nil,
+          covering_date: nil,
+          effective_before: nil,
+          include_archived: nil,
+          include_balance: nil,
+          include_contract_commits: nil,
+          include_ledgers: nil,
+          next_page: nil,
+          starting_at: nil,
+          request_options: {}
+        ); end
+
+        sig { returns(Metronome::Models::Customers::CommitListParams::Shape) }
+        def to_h; end
+      end
+    end
+  end
+end

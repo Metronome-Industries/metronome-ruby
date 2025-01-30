@@ -10,9 +10,9 @@ module Metronome
     #
     #   @option spec [NilClass, TrueClass, FalseClass, Integer, Float, Symbol] :const
     #
-    #   @option spec [Proc, Metronome::Converter, Class] :enum
+    #   @option spec [Proc] :enum
     #
-    #   @option spec [Proc, Metronome::Converter, Class] :union
+    #   @option spec [Proc] :union
     #
     #   @option spec [Boolean] :"nil?"
     #
@@ -28,7 +28,7 @@ module Metronome
         -> { spec }
       in true | false
         -> { Metronome::BooleanModel }
-      in NilClass | Symbol | Integer | Float
+      in NilClass | true | false | Symbol | Integer | Float
         -> { spec.class }
       end
     end
@@ -353,6 +353,7 @@ module Metronome
   # @private
   #
   class Union
+    extend Metronome::Extern
     extend Metronome::Converter
 
     # @private
@@ -363,14 +364,16 @@ module Metronome
     #
     private_class_method def self.known_variants = (@known_variants ||= [])
 
-    # @private
-    #
-    # All of the specified variants for this union.
-    #
-    # @return [Array<Array(Symbol, Object)>]
-    #
-    def self.variants
-      @known_variants.map { |key, variant_fn| [key, variant_fn.call] }
+    class << self
+      # @private
+      #
+      # All of the specified variants for this union.
+      #
+      # @return [Array<Array(Symbol, Object)>]
+      #
+      protected def variants
+        @known_variants.map { |key, variant_fn| [key, variant_fn.call] }
+      end
     end
 
     # @private
@@ -386,15 +389,15 @@ module Metronome
 
     # @private
     #
-    # @param key [Symbol, nil]
+    # @param key [Symbol, Hash{Symbol=>Object}, Proc, Metronome::Converter, Class]
     #
     # @param spec [Hash{Symbol=>Object}, Proc, Metronome::Converter, Class] .
     #
     #   @option spec [NilClass, TrueClass, FalseClass, Integer, Float, Symbol] :const
     #
-    #   @option spec [Proc, Metronome::Converter, Class] :enum
+    #   @option spec [Proc] :enum
     #
-    #   @option spec [Proc, Metronome::Converter, Class] :union
+    #   @option spec [Proc] :union
     #
     #   @option spec [Boolean] :"nil?"
     #
@@ -653,21 +656,21 @@ module Metronome
 
     # @private
     #
-    # @return [Class]
+    # @return [Metronome::Converter, Class]
     #
     protected def item_type = @item_type_fn.call
 
     # @private
     #
-    # @param type_info [Object]
+    # @param type_info [Hash{Symbol=>Object}, Proc, Metronome::Converter, Class]
     #
-    # @param spec [Hash{Symbol=>Object}, Proc, Metronome::Converter, Class] .
+    # @param spec [Hash{Symbol=>Object}] .
     #
     #   @option spec [NilClass, TrueClass, FalseClass, Integer, Float, Symbol] :const
     #
-    #   @option spec [Proc, Metronome::Converter, Class] :enum
+    #   @option spec [Proc] :enum
     #
-    #   @option spec [Proc, Metronome::Converter, Class] :union
+    #   @option spec [Proc] :union
     #
     #   @option spec [Boolean] :"nil?"
     #
@@ -791,21 +794,21 @@ module Metronome
 
     # @private
     #
-    # @return [Class]
+    # @return [Metronome::Converter, Class]
     #
     protected def item_type = @item_type_fn.call
 
     # @private
     #
-    # @param type_info [Object]
+    # @param type_info [Hash{Symbol=>Object}, Proc, Metronome::Converter, Class]
     #
-    # @param spec [Hash{Symbol=>Object}, Proc, Metronome::Converter, Class] .
+    # @param spec [Hash{Symbol=>Object}] .
     #
     #   @option spec [NilClass, TrueClass, FalseClass, Integer, Float, Symbol] :const
     #
-    #   @option spec [Proc, Metronome::Converter, Class] :enum
+    #   @option spec [Proc] :enum
     #
-    #   @option spec [Proc, Metronome::Converter, Class] :union
+    #   @option spec [Proc] :union
     #
     #   @option spec [Boolean] :"nil?"
     #
@@ -817,6 +820,7 @@ module Metronome
   # @private
   #
   class BaseModel
+    extend Metronome::Extern
     extend Metronome::Converter
 
     # @private
@@ -830,13 +834,15 @@ module Metronome
       @known_fields ||= (self < Metronome::BaseModel ? superclass.known_fields.dup : {})
     end
 
-    # @private
-    #
-    # @return [Hash{Symbol=>Hash{Symbol=>Object}}]
-    #
-    def self.fields
-      known_fields.transform_values do |field|
-        {**field, type: field.fetch(:type_fn).call}
+    class << self
+      # @private
+      #
+      # @return [Hash{Symbol=>Hash{Symbol=>Object}}]
+      #
+      def fields
+        known_fields.transform_values do |field|
+          {**field.except(:type_fn), type: field.fetch(:type_fn).call}
+        end
       end
     end
 
@@ -852,15 +858,15 @@ module Metronome
     #
     # @param required [Boolean]
     #
-    # @param type_info [Proc, Metronome::Converter, Class, Hash{Symbol=>Object}, nil]
+    # @param type_info [Hash{Symbol=>Object}, Proc, Metronome::Converter, Class]
     #
-    # @param spec [Hash{Symbol=>Object}, Proc, Metronome::Converter, Class] .
+    # @param spec [Hash{Symbol=>Object}] .
     #
     #   @option spec [NilClass, TrueClass, FalseClass, Integer, Float, Symbol] :const
     #
-    #   @option spec [Proc, Metronome::Converter, Class] :enum
+    #   @option spec [Proc] :enum
     #
-    #   @option spec [Proc, Metronome::Converter, Class] :union
+    #   @option spec [Proc] :union
     #
     #   @option spec [Boolean] :"nil?"
     #
@@ -906,19 +912,19 @@ module Metronome
     #
     # @param name_sym [Symbol]
     #
-    # @param type_info [Proc, Metronome::Converter, Class, Hash{Symbol=>Object}, nil]
+    # @param type_info [Hash{Symbol=>Object}, Proc, Metronome::Converter, Class]
     #
-    # @param spec [Hash{Symbol=>Object}, Proc, Metronome::Converter, Class] .
+    # @param spec [Hash{Symbol=>Object}] .
     #
     #   @option spec [NilClass, TrueClass, FalseClass, Integer, Float, Symbol] :const
     #
-    #   @option spec [Proc, Metronome::Converter, Class] :enum
+    #   @option spec [Proc] :enum
     #
-    #   @option spec [Proc, Metronome::Converter, Class] :union
+    #   @option spec [Proc] :union
     #
     #   @option spec [Boolean] :"nil?"
     #
-    def self.required(name_sym, type_info = nil, spec = {})
+    def self.required(name_sym, type_info, spec = {})
       add_field(name_sym, required: true, type_info: type_info, spec: spec)
     end
 
@@ -926,19 +932,19 @@ module Metronome
     #
     # @param name_sym [Symbol]
     #
-    # @param type_info [Proc, Metronome::Converter, Class, Hash{Symbol=>Object}, nil]
+    # @param type_info [Hash{Symbol=>Object}, Proc, Metronome::Converter, Class]
     #
-    # @param spec [Hash{Symbol=>Object}, Proc, Metronome::Converter, Class] .
+    # @param spec [Hash{Symbol=>Object}] .
     #
     #   @option spec [NilClass, TrueClass, FalseClass, Integer, Float, Symbol] :const
     #
-    #   @option spec [Proc, Metronome::Converter, Class] :enum
+    #   @option spec [Proc] :enum
     #
-    #   @option spec [Proc, Metronome::Converter, Class] :union
+    #   @option spec [Proc] :union
     #
     #   @option spec [Boolean] :"nil?"
     #
-    def self.optional(name_sym, type_info = nil, spec = {})
+    def self.optional(name_sym, type_info, spec = {})
       add_field(name_sym, required: false, type_info: type_info, spec: spec)
     end
 
@@ -1125,7 +1131,7 @@ module Metronome
     # @return [Hash{Symbol=>Object}]
     #
     def deconstruct_keys(keys)
-      (keys || self.class.fields.keys).filter_map do |k|
+      (keys || self.class.known_fields.keys).filter_map do |k|
         unless self.class.known_fields.key?(k)
           next
         end

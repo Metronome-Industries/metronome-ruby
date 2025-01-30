@@ -1,0 +1,44 @@
+module Metronome
+  module Models
+    type contract_retrieve_params =
+      {
+        contract_id: String,
+        customer_id: String,
+        include_balance: bool,
+        include_ledgers: bool
+      }
+      & Metronome::request_parameters
+
+    class ContractRetrieveParams < Metronome::BaseModel
+      extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
+      attr_accessor contract_id: String
+
+      attr_accessor customer_id: String
+
+      attr_reader include_balance: bool?
+
+      def include_balance=: (bool) -> void
+
+      attr_reader include_ledgers: bool?
+
+      def include_ledgers=: (bool) -> void
+
+      def initialize:
+        (
+          contract_id: String,
+          customer_id: String,
+          include_balance: bool,
+          include_ledgers: bool,
+          request_options: Metronome::request_opts
+        ) -> void
+        | (
+          ?Metronome::Models::contract_retrieve_params
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::contract_retrieve_params
+    end
+  end
+end

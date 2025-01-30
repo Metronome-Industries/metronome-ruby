@@ -1,0 +1,38 @@
+module Metronome
+  module Models
+    type billable_metric_list_params =
+      { include_archived: bool, limit: Integer, next_page: String }
+      & Metronome::request_parameters
+
+    class BillableMetricListParams < Metronome::BaseModel
+      extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
+      attr_reader include_archived: bool?
+
+      def include_archived=: (bool) -> void
+
+      attr_reader limit: Integer?
+
+      def limit=: (Integer) -> void
+
+      attr_reader next_page: String?
+
+      def next_page=: (String) -> void
+
+      def initialize:
+        (
+          include_archived: bool,
+          limit: Integer,
+          next_page: String,
+          request_options: Metronome::request_opts
+        ) -> void
+        | (
+          ?Metronome::Models::billable_metric_list_params
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::billable_metric_list_params
+    end
+  end
+end

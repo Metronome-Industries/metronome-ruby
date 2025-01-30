@@ -1,0 +1,55 @@
+module Metronome
+  module Models
+    type schedule_duration =
+      {
+        schedule_items: Array[Metronome::Models::ScheduleDuration::ScheduleItem],
+        credit_type: Metronome::Models::CreditTypeData
+      }
+
+    class ScheduleDuration < Metronome::BaseModel
+      attr_accessor schedule_items: Array[Metronome::Models::ScheduleDuration::ScheduleItem]
+
+      attr_reader credit_type: Metronome::Models::CreditTypeData?
+
+      def credit_type=: (Metronome::Models::CreditTypeData) -> void
+
+      def initialize:
+        (
+          schedule_items: Array[Metronome::Models::ScheduleDuration::ScheduleItem],
+          credit_type: Metronome::Models::CreditTypeData
+        ) -> void
+        | (
+          ?Metronome::Models::schedule_duration | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::schedule_duration
+
+      type schedule_item =
+        { id: String, amount: Float, ending_before: Time, starting_at: Time }
+
+      class ScheduleItem < Metronome::BaseModel
+        attr_accessor id: String
+
+        attr_accessor amount: Float
+
+        attr_accessor ending_before: Time
+
+        attr_accessor starting_at: Time
+
+        def initialize:
+          (
+            id: String,
+            amount: Float,
+            ending_before: Time,
+            starting_at: Time
+          ) -> void
+          | (
+            ?Metronome::Models::ScheduleDuration::schedule_item
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::ScheduleDuration::schedule_item
+      end
+    end
+  end
+end

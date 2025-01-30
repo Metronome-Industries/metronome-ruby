@@ -1,0 +1,334 @@
+module Metronome
+  module Models
+    type override =
+      {
+        id: String,
+        starting_at: Time,
+        applicable_product_tags: Array[String],
+        credit_type: Metronome::Models::CreditTypeData,
+        ending_before: Time,
+        entitled: bool,
+        is_commit_specific: bool,
+        is_prorated: bool,
+        multiplier: Float,
+        override_specifiers: Array[Metronome::Models::Override::OverrideSpecifier],
+        override_tiers: Array[Metronome::Models::Override::OverrideTier],
+        overwrite_rate: Metronome::Models::Override::OverwriteRate,
+        price: Float,
+        priority: Float,
+        product: Metronome::Models::Override::Product,
+        quantity: Float,
+        rate_type: Metronome::Models::Override::rate_type,
+        target: Metronome::Models::Override::target,
+        tiers: Array[Metronome::Models::Tier],
+        type: Metronome::Models::Override::type_,
+        value: Hash[Symbol, top]
+      }
+
+    class Override < Metronome::BaseModel
+      attr_accessor id: String
+
+      attr_accessor starting_at: Time
+
+      attr_reader applicable_product_tags: Array[String]
+
+      def applicable_product_tags=: (Array[String]) -> void
+
+      attr_reader credit_type: Metronome::Models::CreditTypeData?
+
+      def credit_type=: (Metronome::Models::CreditTypeData) -> void
+
+      attr_reader ending_before: Time?
+
+      def ending_before=: (Time) -> void
+
+      attr_reader entitled: bool?
+
+      def entitled=: (bool) -> void
+
+      attr_reader is_commit_specific: bool?
+
+      def is_commit_specific=: (bool) -> void
+
+      attr_reader is_prorated: bool?
+
+      def is_prorated=: (bool) -> void
+
+      attr_reader multiplier: Float?
+
+      def multiplier=: (Float) -> void
+
+      attr_reader override_specifiers: Array[Metronome::Models::Override::OverrideSpecifier]
+
+      def override_specifiers=: (
+        Array[Metronome::Models::Override::OverrideSpecifier]
+      ) -> void
+
+      attr_reader override_tiers: Array[Metronome::Models::Override::OverrideTier]
+
+      def override_tiers=: (
+        Array[Metronome::Models::Override::OverrideTier]
+      ) -> void
+
+      attr_reader overwrite_rate: Metronome::Models::Override::OverwriteRate?
+
+      def overwrite_rate=: (Metronome::Models::Override::OverwriteRate) -> void
+
+      attr_reader price: Float?
+
+      def price=: (Float) -> void
+
+      attr_reader priority: Float?
+
+      def priority=: (Float) -> void
+
+      attr_reader product: Metronome::Models::Override::Product?
+
+      def product=: (Metronome::Models::Override::Product) -> void
+
+      attr_reader quantity: Float?
+
+      def quantity=: (Float) -> void
+
+      attr_reader rate_type: Metronome::Models::Override::rate_type?
+
+      def rate_type=: (Metronome::Models::Override::rate_type) -> void
+
+      attr_reader target: Metronome::Models::Override::target?
+
+      def target=: (Metronome::Models::Override::target) -> void
+
+      attr_reader tiers: Array[Metronome::Models::Tier]
+
+      def tiers=: (Array[Metronome::Models::Tier]) -> void
+
+      attr_reader type: Metronome::Models::Override::type_?
+
+      def type=: (Metronome::Models::Override::type_) -> void
+
+      attr_reader value: Hash[Symbol, top]?
+
+      def value=: (Hash[Symbol, top]) -> void
+
+      def initialize:
+        (
+          id: String,
+          starting_at: Time,
+          applicable_product_tags: Array[String],
+          credit_type: Metronome::Models::CreditTypeData,
+          ending_before: Time,
+          entitled: bool,
+          is_commit_specific: bool,
+          is_prorated: bool,
+          multiplier: Float,
+          override_specifiers: Array[Metronome::Models::Override::OverrideSpecifier],
+          override_tiers: Array[Metronome::Models::Override::OverrideTier],
+          overwrite_rate: Metronome::Models::Override::OverwriteRate,
+          price: Float,
+          priority: Float,
+          product: Metronome::Models::Override::Product,
+          quantity: Float,
+          rate_type: Metronome::Models::Override::rate_type,
+          target: Metronome::Models::Override::target,
+          tiers: Array[Metronome::Models::Tier],
+          type: Metronome::Models::Override::type_,
+          value: Hash[Symbol, top]
+        ) -> void
+        | (?Metronome::Models::override | Metronome::BaseModel data) -> void
+
+      def to_h: -> Metronome::Models::override
+
+      type override_specifier =
+        {
+          commit_ids: Array[String],
+          presentation_group_values: Hash[Symbol, String?]?,
+          pricing_group_values: Hash[Symbol, String],
+          product_id: String,
+          product_tags: Array[String],
+          recurring_commit_ids: Array[String],
+          recurring_credit_ids: Array[String]
+        }
+
+      class OverrideSpecifier < Metronome::BaseModel
+        attr_reader commit_ids: Array[String]
+
+        def commit_ids=: (Array[String]) -> void
+
+        attr_reader presentation_group_values: Hash[Symbol, String?]?
+
+        def presentation_group_values=: (Hash[Symbol, String?]?) -> void
+
+        attr_reader pricing_group_values: Hash[Symbol, String]?
+
+        def pricing_group_values=: (Hash[Symbol, String]) -> void
+
+        attr_reader product_id: String?
+
+        def product_id=: (String) -> void
+
+        attr_reader product_tags: Array[String]
+
+        def product_tags=: (Array[String]) -> void
+
+        attr_reader recurring_commit_ids: Array[String]
+
+        def recurring_commit_ids=: (Array[String]) -> void
+
+        attr_reader recurring_credit_ids: Array[String]
+
+        def recurring_credit_ids=: (Array[String]) -> void
+
+        def initialize:
+          (
+            commit_ids: Array[String],
+            presentation_group_values: Hash[Symbol, String?]?,
+            pricing_group_values: Hash[Symbol, String],
+            product_id: String,
+            product_tags: Array[String],
+            recurring_commit_ids: Array[String],
+            recurring_credit_ids: Array[String]
+          ) -> void
+          | (
+            ?Metronome::Models::Override::override_specifier
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::Override::override_specifier
+      end
+
+      type override_tier = { multiplier: Float, size: Float }
+
+      class OverrideTier < Metronome::BaseModel
+        attr_accessor multiplier: Float
+
+        attr_reader size: Float?
+
+        def size=: (Float) -> void
+
+        def initialize:
+          (multiplier: Float, size: Float) -> void
+          | (
+            ?Metronome::Models::Override::override_tier
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::Override::override_tier
+      end
+
+      type overwrite_rate =
+        {
+          rate_type: Metronome::Models::Override::OverwriteRate::rate_type,
+          credit_type: Metronome::Models::CreditTypeData,
+          custom_rate: Hash[Symbol, top],
+          is_prorated: bool,
+          price: Float,
+          quantity: Float,
+          tiers: Array[Metronome::Models::Tier]
+        }
+
+      class OverwriteRate < Metronome::BaseModel
+        attr_accessor rate_type: Metronome::Models::Override::OverwriteRate::rate_type
+
+        attr_reader credit_type: Metronome::Models::CreditTypeData?
+
+        def credit_type=: (Metronome::Models::CreditTypeData) -> void
+
+        attr_reader custom_rate: Hash[Symbol, top]?
+
+        def custom_rate=: (Hash[Symbol, top]) -> void
+
+        attr_reader is_prorated: bool?
+
+        def is_prorated=: (bool) -> void
+
+        attr_reader price: Float?
+
+        def price=: (Float) -> void
+
+        attr_reader quantity: Float?
+
+        def quantity=: (Float) -> void
+
+        attr_reader tiers: Array[Metronome::Models::Tier]
+
+        def tiers=: (Array[Metronome::Models::Tier]) -> void
+
+        def initialize:
+          (
+            rate_type: Metronome::Models::Override::OverwriteRate::rate_type,
+            credit_type: Metronome::Models::CreditTypeData,
+            custom_rate: Hash[Symbol, top],
+            is_prorated: bool,
+            price: Float,
+            quantity: Float,
+            tiers: Array[Metronome::Models::Tier]
+          ) -> void
+          | (
+            ?Metronome::Models::Override::overwrite_rate
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::Override::overwrite_rate
+
+        type rate_type = :FLAT | :PERCENTAGE | :SUBSCRIPTION | :TIERED | :CUSTOM
+
+        class RateType < Metronome::Enum
+          FLAT: :FLAT
+          PERCENTAGE: :PERCENTAGE
+          SUBSCRIPTION: :SUBSCRIPTION
+          TIERED: :TIERED
+          CUSTOM: :CUSTOM
+
+          def self.values: -> Array[Metronome::Models::Override::OverwriteRate::rate_type]
+        end
+      end
+
+      type product = { id: String, name: String }
+
+      class Product < Metronome::BaseModel
+        attr_accessor id: String
+
+        attr_accessor name: String
+
+        def initialize:
+          (id: String, name: String) -> void
+          | (
+            ?Metronome::Models::Override::product | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::Override::product
+      end
+
+      type rate_type = :FLAT | :PERCENTAGE | :SUBSCRIPTION | :TIERED | :CUSTOM
+
+      class RateType < Metronome::Enum
+        FLAT: :FLAT
+        PERCENTAGE: :PERCENTAGE
+        SUBSCRIPTION: :SUBSCRIPTION
+        TIERED: :TIERED
+        CUSTOM: :CUSTOM
+
+        def self.values: -> Array[Metronome::Models::Override::rate_type]
+      end
+
+      type target = :COMMIT_RATE | :LIST_RATE
+
+      class Target < Metronome::Enum
+        COMMIT_RATE: :COMMIT_RATE
+        LIST_RATE: :LIST_RATE
+
+        def self.values: -> Array[Metronome::Models::Override::target]
+      end
+
+      type type_ = :OVERWRITE | :MULTIPLIER | :TIERED
+
+      class Type < Metronome::Enum
+        OVERWRITE: :OVERWRITE
+        MULTIPLIER: :MULTIPLIER
+        TIERED: :TIERED
+
+        def self.values: -> Array[Metronome::Models::Override::type_]
+      end
+    end
+  end
+end

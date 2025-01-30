@@ -1,0 +1,25 @@
+module Metronome
+  module Models
+    type billable_metric_retrieve_params =
+      { billable_metric_id: String } & Metronome::request_parameters
+
+    class BillableMetricRetrieveParams < Metronome::BaseModel
+      extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
+      attr_accessor billable_metric_id: String
+
+      def initialize:
+        (
+          billable_metric_id: String,
+          request_options: Metronome::request_opts
+        ) -> void
+        | (
+          ?Metronome::Models::billable_metric_retrieve_params
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::billable_metric_retrieve_params
+    end
+  end
+end

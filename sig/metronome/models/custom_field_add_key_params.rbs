@@ -1,0 +1,77 @@
+module Metronome
+  module Models
+    type custom_field_add_key_params =
+      {
+        enforce_uniqueness: bool,
+        entity: Metronome::Models::CustomFieldAddKeyParams::entity,
+        key: String
+      }
+      & Metronome::request_parameters
+
+    class CustomFieldAddKeyParams < Metronome::BaseModel
+      extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
+      attr_accessor enforce_uniqueness: bool
+
+      attr_accessor entity: Metronome::Models::CustomFieldAddKeyParams::entity
+
+      attr_accessor key: String
+
+      def initialize:
+        (
+          enforce_uniqueness: bool,
+          entity: Metronome::Models::CustomFieldAddKeyParams::entity,
+          key: String,
+          request_options: Metronome::request_opts
+        ) -> void
+        | (
+          ?Metronome::Models::custom_field_add_key_params
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::custom_field_add_key_params
+
+      type entity =
+        :alert
+        | :billable_metric
+        | :charge
+        | :commit
+        | :contract_credit
+        | :contract_product
+        | :contract
+        | :credit_grant
+        | :customer_plan
+        | :customer
+        | :discount
+        | :invoice
+        | :plan
+        | :professional_service
+        | :product
+        | :rate_card
+        | :scheduled_charge
+
+      class Entity < Metronome::Enum
+        ALERT: :alert
+        BILLABLE_METRIC: :billable_metric
+        CHARGE: :charge
+        COMMIT: :commit
+        CONTRACT_CREDIT: :contract_credit
+        CONTRACT_PRODUCT: :contract_product
+        CONTRACT: :contract
+        CREDIT_GRANT: :credit_grant
+        CUSTOMER_PLAN: :customer_plan
+        CUSTOMER: :customer
+        DISCOUNT: :discount
+        INVOICE: :invoice
+        PLAN: :plan
+        PROFESSIONAL_SERVICE: :professional_service
+        PRODUCT: :product
+        RATE_CARD: :rate_card
+        SCHEDULED_CHARGE: :scheduled_charge
+
+        def self.values: -> Array[Metronome::Models::CustomFieldAddKeyParams::entity]
+      end
+    end
+  end
+end

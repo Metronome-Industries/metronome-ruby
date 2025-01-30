@@ -1,0 +1,333 @@
+module Metronome
+  module Models
+    module Customers
+      type commit_create_params =
+        {
+          access_schedule: Metronome::Models::Customers::CommitCreateParams::AccessSchedule,
+          customer_id: String,
+          priority: Float,
+          product_id: String,
+          type: Metronome::Models::Customers::CommitCreateParams::type_,
+          applicable_contract_ids: Array[String],
+          applicable_product_ids: Array[String],
+          applicable_product_tags: Array[String],
+          custom_fields: Hash[Symbol, String],
+          description: String,
+          invoice_contract_id: String,
+          invoice_schedule: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule,
+          name: String,
+          netsuite_sales_order_id: String,
+          rate_type: Metronome::Models::Customers::CommitCreateParams::rate_type,
+          salesforce_opportunity_id: String,
+          uniqueness_key: String
+        }
+        & Metronome::request_parameters
+
+      class CommitCreateParams < Metronome::BaseModel
+        extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
+        attr_accessor access_schedule: Metronome::Models::Customers::CommitCreateParams::AccessSchedule
+
+        attr_accessor customer_id: String
+
+        attr_accessor priority: Float
+
+        attr_accessor product_id: String
+
+        attr_accessor type: Metronome::Models::Customers::CommitCreateParams::type_
+
+        attr_reader applicable_contract_ids: Array[String]
+
+        def applicable_contract_ids=: (Array[String]) -> void
+
+        attr_reader applicable_product_ids: Array[String]
+
+        def applicable_product_ids=: (Array[String]) -> void
+
+        attr_reader applicable_product_tags: Array[String]
+
+        def applicable_product_tags=: (Array[String]) -> void
+
+        attr_reader custom_fields: Hash[Symbol, String]?
+
+        def custom_fields=: (Hash[Symbol, String]) -> void
+
+        attr_reader description: String?
+
+        def description=: (String) -> void
+
+        attr_reader invoice_contract_id: String?
+
+        def invoice_contract_id=: (String) -> void
+
+        attr_reader invoice_schedule: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule?
+
+        def invoice_schedule=: (
+          Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule
+        ) -> void
+
+        attr_reader name: String?
+
+        def name=: (String) -> void
+
+        attr_reader netsuite_sales_order_id: String?
+
+        def netsuite_sales_order_id=: (String) -> void
+
+        attr_reader rate_type: Metronome::Models::Customers::CommitCreateParams::rate_type?
+
+        def rate_type=: (
+          Metronome::Models::Customers::CommitCreateParams::rate_type
+        ) -> void
+
+        attr_reader salesforce_opportunity_id: String?
+
+        def salesforce_opportunity_id=: (String) -> void
+
+        attr_reader uniqueness_key: String?
+
+        def uniqueness_key=: (String) -> void
+
+        def initialize:
+          (
+            access_schedule: Metronome::Models::Customers::CommitCreateParams::AccessSchedule,
+            customer_id: String,
+            priority: Float,
+            product_id: String,
+            type: Metronome::Models::Customers::CommitCreateParams::type_,
+            applicable_contract_ids: Array[String],
+            applicable_product_ids: Array[String],
+            applicable_product_tags: Array[String],
+            custom_fields: Hash[Symbol, String],
+            description: String,
+            invoice_contract_id: String,
+            invoice_schedule: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule,
+            name: String,
+            netsuite_sales_order_id: String,
+            rate_type: Metronome::Models::Customers::CommitCreateParams::rate_type,
+            salesforce_opportunity_id: String,
+            uniqueness_key: String,
+            request_options: Metronome::request_opts
+          ) -> void
+          | (
+            ?Metronome::Models::Customers::commit_create_params
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::Customers::commit_create_params
+
+        type access_schedule =
+          {
+            schedule_items: Array[Metronome::Models::Customers::CommitCreateParams::AccessSchedule::ScheduleItem],
+            credit_type_id: String
+          }
+
+        class AccessSchedule < Metronome::BaseModel
+          attr_accessor schedule_items: Array[Metronome::Models::Customers::CommitCreateParams::AccessSchedule::ScheduleItem]
+
+          attr_reader credit_type_id: String?
+
+          def credit_type_id=: (String) -> void
+
+          def initialize:
+            (
+              schedule_items: Array[Metronome::Models::Customers::CommitCreateParams::AccessSchedule::ScheduleItem],
+              credit_type_id: String
+            ) -> void
+            | (
+              ?Metronome::Models::Customers::CommitCreateParams::access_schedule
+              | Metronome::BaseModel data
+            ) -> void
+
+          def to_h: -> Metronome::Models::Customers::CommitCreateParams::access_schedule
+
+          type schedule_item =
+            { amount: Float, ending_before: Time, starting_at: Time }
+
+          class ScheduleItem < Metronome::BaseModel
+            attr_accessor amount: Float
+
+            attr_accessor ending_before: Time
+
+            attr_accessor starting_at: Time
+
+            def initialize:
+              (amount: Float, ending_before: Time, starting_at: Time) -> void
+              | (
+                ?Metronome::Models::Customers::CommitCreateParams::AccessSchedule::schedule_item
+                | Metronome::BaseModel data
+              ) -> void
+
+            def to_h: -> Metronome::Models::Customers::CommitCreateParams::AccessSchedule::schedule_item
+          end
+        end
+
+        type type_ = :PREPAID | :POSTPAID
+
+        class Type < Metronome::Enum
+          PREPAID: :PREPAID
+          POSTPAID: :POSTPAID
+
+          def self.values: -> Array[Metronome::Models::Customers::CommitCreateParams::type_]
+        end
+
+        type invoice_schedule =
+          {
+            credit_type_id: String,
+            recurring_schedule: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule,
+            schedule_items: Array[Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]
+          }
+
+        class InvoiceSchedule < Metronome::BaseModel
+          attr_reader credit_type_id: String?
+
+          def credit_type_id=: (String) -> void
+
+          attr_reader recurring_schedule: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule?
+
+          def recurring_schedule=: (
+            Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule
+          ) -> void
+
+          attr_reader schedule_items: Array[Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]
+
+          def schedule_items=: (
+            Array[Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]
+          ) -> void
+
+          def initialize:
+            (
+              credit_type_id: String,
+              recurring_schedule: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule,
+              schedule_items: Array[Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]
+            ) -> void
+            | (
+              ?Metronome::Models::Customers::CommitCreateParams::invoice_schedule
+              | Metronome::BaseModel data
+            ) -> void
+
+          def to_h: -> Metronome::Models::Customers::CommitCreateParams::invoice_schedule
+
+          type recurring_schedule =
+            {
+              amount_distribution: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::amount_distribution,
+              ending_before: Time,
+              frequency: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::frequency,
+              starting_at: Time,
+              amount: Float,
+              quantity: Float,
+              unit_price: Float
+            }
+
+          class RecurringSchedule < Metronome::BaseModel
+            attr_accessor amount_distribution: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::amount_distribution
+
+            attr_accessor ending_before: Time
+
+            attr_accessor frequency: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::frequency
+
+            attr_accessor starting_at: Time
+
+            attr_reader amount: Float?
+
+            def amount=: (Float) -> void
+
+            attr_reader quantity: Float?
+
+            def quantity=: (Float) -> void
+
+            attr_reader unit_price: Float?
+
+            def unit_price=: (Float) -> void
+
+            def initialize:
+              (
+                amount_distribution: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::amount_distribution,
+                ending_before: Time,
+                frequency: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::frequency,
+                starting_at: Time,
+                amount: Float,
+                quantity: Float,
+                unit_price: Float
+              ) -> void
+              | (
+                ?Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::recurring_schedule
+                | Metronome::BaseModel data
+              ) -> void
+
+            def to_h: -> Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::recurring_schedule
+
+            type amount_distribution = :DIVIDED | :DIVIDED_ROUNDED | :EACH
+
+            class AmountDistribution < Metronome::Enum
+              DIVIDED: :DIVIDED
+              DIVIDED_ROUNDED: :DIVIDED_ROUNDED
+              EACH: :EACH
+
+              def self.values: -> Array[Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::amount_distribution]
+            end
+
+            type frequency = :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL
+
+            class Frequency < Metronome::Enum
+              MONTHLY: :MONTHLY
+              QUARTERLY: :QUARTERLY
+              SEMI_ANNUAL: :SEMI_ANNUAL
+              ANNUAL: :ANNUAL
+
+              def self.values: -> Array[Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::frequency]
+            end
+          end
+
+          type schedule_item =
+            {
+              timestamp: Time,
+              amount: Float,
+              quantity: Float,
+              unit_price: Float
+            }
+
+          class ScheduleItem < Metronome::BaseModel
+            attr_accessor timestamp: Time
+
+            attr_reader amount: Float?
+
+            def amount=: (Float) -> void
+
+            attr_reader quantity: Float?
+
+            def quantity=: (Float) -> void
+
+            attr_reader unit_price: Float?
+
+            def unit_price=: (Float) -> void
+
+            def initialize:
+              (
+                timestamp: Time,
+                amount: Float,
+                quantity: Float,
+                unit_price: Float
+              ) -> void
+              | (
+                ?Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::schedule_item
+                | Metronome::BaseModel data
+              ) -> void
+
+            def to_h: -> Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::schedule_item
+          end
+        end
+
+        type rate_type = :COMMIT_RATE | :LIST_RATE
+
+        class RateType < Metronome::Enum
+          COMMIT_RATE: :COMMIT_RATE
+          LIST_RATE: :LIST_RATE
+
+          def self.values: -> Array[Metronome::Models::Customers::CommitCreateParams::rate_type]
+        end
+      end
+    end
+  end
+end

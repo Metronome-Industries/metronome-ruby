@@ -1,0 +1,57 @@
+module Metronome
+  module Models
+    type plan_list_customers_params =
+      {
+        plan_id: String,
+        limit: Integer,
+        next_page: String,
+        status: Metronome::Models::PlanListCustomersParams::status
+      }
+      & Metronome::request_parameters
+
+    class PlanListCustomersParams < Metronome::BaseModel
+      extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
+      attr_accessor plan_id: String
+
+      attr_reader limit: Integer?
+
+      def limit=: (Integer) -> void
+
+      attr_reader next_page: String?
+
+      def next_page=: (String) -> void
+
+      attr_reader status: Metronome::Models::PlanListCustomersParams::status?
+
+      def status=: (Metronome::Models::PlanListCustomersParams::status) -> void
+
+      def initialize:
+        (
+          plan_id: String,
+          limit: Integer,
+          next_page: String,
+          status: Metronome::Models::PlanListCustomersParams::status,
+          request_options: Metronome::request_opts
+        ) -> void
+        | (
+          ?Metronome::Models::plan_list_customers_params
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::plan_list_customers_params
+
+      type status = :all | :active | :ended | :upcoming
+
+      class Status < Metronome::Enum
+        ALL: :all
+        ACTIVE: :active
+        ENDED: :ended
+        UPCOMING: :upcoming
+
+        def self.values: -> Array[Metronome::Models::PlanListCustomersParams::status]
+      end
+    end
+  end
+end

@@ -1,0 +1,57 @@
+module Metronome
+  module Models
+    type service_list_response =
+      { services: Array[Metronome::Models::ServiceListResponse::Service] }
+
+    class ServiceListResponse < Metronome::BaseModel
+      attr_accessor services: Array[Metronome::Models::ServiceListResponse::Service]
+
+      def initialize:
+        (
+          services: Array[Metronome::Models::ServiceListResponse::Service]
+        ) -> void
+        | (
+          ?Metronome::Models::service_list_response | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::service_list_response
+
+      type service =
+        {
+          ips: Array[String],
+          name: String,
+          usage: Metronome::Models::ServiceListResponse::Service::usage
+        }
+
+      class Service < Metronome::BaseModel
+        attr_accessor ips: Array[String]
+
+        attr_accessor name: String
+
+        attr_accessor usage: Metronome::Models::ServiceListResponse::Service::usage
+
+        def initialize:
+          (
+            ips: Array[String],
+            name: String,
+            usage: Metronome::Models::ServiceListResponse::Service::usage
+          ) -> void
+          | (
+            ?Metronome::Models::ServiceListResponse::service
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::ServiceListResponse::service
+
+        type usage = :makes_connections_from | :accepts_connections_at
+
+        class Usage < Metronome::Enum
+          MAKES_CONNECTIONS_FROM: :makes_connections_from
+          ACCEPTS_CONNECTIONS_AT: :accepts_connections_at
+
+          def self.values: -> Array[Metronome::Models::ServiceListResponse::Service::usage]
+        end
+      end
+    end
+  end
+end

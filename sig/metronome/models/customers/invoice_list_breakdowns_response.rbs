@@ -1,0 +1,26 @@
+module Metronome
+  module Models
+    module Customers
+      type invoice_list_breakdowns_response =
+        { breakdown_end_timestamp: Time, breakdown_start_timestamp: Time }
+
+      class InvoiceListBreakdownsResponse < Metronome::Models::Customers::Invoice
+        attr_accessor breakdown_end_timestamp: Time
+
+        attr_accessor breakdown_start_timestamp: Time
+
+        def initialize:
+          (
+            breakdown_end_timestamp: Time,
+            breakdown_start_timestamp: Time
+          ) -> void
+          | (
+            ?Metronome::Models::Customers::invoice_list_breakdowns_response
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::Customers::invoice_list_breakdowns_response
+      end
+    end
+  end
+end

@@ -1,0 +1,29 @@
+module Metronome
+  module Models
+    type pricing_unit_list_response =
+      { id: String, is_currency: bool, name: String }
+
+    class PricingUnitListResponse < Metronome::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> void
+
+      attr_reader is_currency: bool?
+
+      def is_currency=: (bool) -> void
+
+      attr_reader name: String?
+
+      def name=: (String) -> void
+
+      def initialize:
+        (id: String, is_currency: bool, name: String) -> void
+        | (
+          ?Metronome::Models::pricing_unit_list_response
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::pricing_unit_list_response
+    end
+  end
+end

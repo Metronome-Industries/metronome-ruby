@@ -1,0 +1,46 @@
+module Metronome
+  module Models
+    module Customers
+      type named_schedule_retrieve_response =
+        {
+          data: Array[Metronome::Models::Customers::NamedScheduleRetrieveResponse::Data]
+        }
+
+      class NamedScheduleRetrieveResponse < Metronome::BaseModel
+        attr_accessor data: Array[Metronome::Models::Customers::NamedScheduleRetrieveResponse::Data]
+
+        def initialize:
+          (
+            data: Array[Metronome::Models::Customers::NamedScheduleRetrieveResponse::Data]
+          ) -> void
+          | (
+            ?Metronome::Models::Customers::named_schedule_retrieve_response
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::Customers::named_schedule_retrieve_response
+
+        type data = { starting_at: Time, value: top, ending_before: Time }
+
+        class Data < Metronome::BaseModel
+          attr_accessor starting_at: Time
+
+          attr_accessor value: top
+
+          attr_reader ending_before: Time?
+
+          def ending_before=: (Time) -> void
+
+          def initialize:
+            (starting_at: Time, value: top, ending_before: Time) -> void
+            | (
+              ?Metronome::Models::Customers::NamedScheduleRetrieveResponse::data
+              | Metronome::BaseModel data
+            ) -> void
+
+          def to_h: -> Metronome::Models::Customers::NamedScheduleRetrieveResponse::data
+        end
+      end
+    end
+  end
+end

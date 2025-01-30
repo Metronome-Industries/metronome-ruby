@@ -1,0 +1,58 @@
+# typed: strong
+
+module Metronome
+  module Models
+    module Customers
+      class AlertListParams < Metronome::BaseModel
+        extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
+        Shape = T.type_alias do
+          T.all(
+            {customer_id: String, next_page: String, alert_statuses: T::Array[Symbol]},
+            Metronome::RequestParameters::Shape
+          )
+        end
+
+        sig { returns(String) }
+        attr_accessor :customer_id
+
+        sig { returns(T.nilable(String)) }
+        attr_reader :next_page
+
+        sig { params(next_page: String).void }
+        attr_writer :next_page
+
+        sig { returns(T::Array[Symbol]) }
+        attr_reader :alert_statuses
+
+        sig { params(alert_statuses: T::Array[Symbol]).void }
+        attr_writer :alert_statuses
+
+        sig do
+          params(
+            customer_id: String,
+            next_page: String,
+            alert_statuses: T::Array[Symbol],
+            request_options: Metronome::RequestOpts
+          ).void
+        end
+        def initialize(customer_id:, next_page: nil, alert_statuses: nil, request_options: {}); end
+
+        sig { returns(Metronome::Models::Customers::AlertListParams::Shape) }
+        def to_h; end
+
+        class AlertStatus < Metronome::Enum
+          abstract!
+
+          ENABLED = :ENABLED
+          DISABLED = :DISABLED
+          ARCHIVED = :ARCHIVED
+
+          sig { returns(T::Array[Symbol]) }
+          def self.values; end
+        end
+      end
+    end
+  end
+end

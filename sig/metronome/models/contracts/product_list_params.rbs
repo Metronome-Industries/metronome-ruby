@@ -1,0 +1,56 @@
+module Metronome
+  module Models
+    module Contracts
+      type product_list_params =
+        {
+          limit: Integer,
+          next_page: String,
+          archive_filter: Metronome::Models::Contracts::ProductListParams::archive_filter
+        }
+        & Metronome::request_parameters
+
+      class ProductListParams < Metronome::BaseModel
+        extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> void
+
+        attr_reader next_page: String?
+
+        def next_page=: (String) -> void
+
+        attr_reader archive_filter: Metronome::Models::Contracts::ProductListParams::archive_filter?
+
+        def archive_filter=: (
+          Metronome::Models::Contracts::ProductListParams::archive_filter
+        ) -> void
+
+        def initialize:
+          (
+            limit: Integer,
+            next_page: String,
+            archive_filter: Metronome::Models::Contracts::ProductListParams::archive_filter,
+            request_options: Metronome::request_opts
+          ) -> void
+          | (
+            ?Metronome::Models::Contracts::product_list_params
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::Contracts::product_list_params
+
+        type archive_filter = :ARCHIVED | :NOT_ARCHIVED | :ALL
+
+        class ArchiveFilter < Metronome::Enum
+          ARCHIVED: :ARCHIVED
+          NOT_ARCHIVED: :NOT_ARCHIVED
+          ALL: :ALL
+
+          def self.values: -> Array[Metronome::Models::Contracts::ProductListParams::archive_filter]
+        end
+      end
+    end
+  end
+end

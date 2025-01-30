@@ -1,0 +1,40 @@
+module Metronome
+  module Models
+    type property_filter =
+      {
+        name: String,
+        exists: bool,
+        in_values: Array[String],
+        not_in_values: Array[String]
+      }
+
+    class PropertyFilter < Metronome::BaseModel
+      attr_accessor name: String
+
+      attr_reader exists: bool?
+
+      def exists=: (bool) -> void
+
+      attr_reader in_values: Array[String]
+
+      def in_values=: (Array[String]) -> void
+
+      attr_reader not_in_values: Array[String]
+
+      def not_in_values=: (Array[String]) -> void
+
+      def initialize:
+        (
+          name: String,
+          exists: bool,
+          in_values: Array[String],
+          not_in_values: Array[String]
+        ) -> void
+        | (
+          ?Metronome::Models::property_filter | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::property_filter
+    end
+  end
+end

@@ -1,0 +1,44 @@
+module Metronome
+  module Models
+    type contract_update_end_date_params =
+      {
+        contract_id: String,
+        customer_id: String,
+        allow_ending_before_finalized_invoice: bool,
+        ending_before: Time
+      }
+      & Metronome::request_parameters
+
+    class ContractUpdateEndDateParams < Metronome::BaseModel
+      extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
+      attr_accessor contract_id: String
+
+      attr_accessor customer_id: String
+
+      attr_reader allow_ending_before_finalized_invoice: bool?
+
+      def allow_ending_before_finalized_invoice=: (bool) -> void
+
+      attr_reader ending_before: Time?
+
+      def ending_before=: (Time) -> void
+
+      def initialize:
+        (
+          contract_id: String,
+          customer_id: String,
+          allow_ending_before_finalized_invoice: bool,
+          ending_before: Time,
+          request_options: Metronome::request_opts
+        ) -> void
+        | (
+          ?Metronome::Models::contract_update_end_date_params
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::contract_update_end_date_params
+    end
+  end
+end

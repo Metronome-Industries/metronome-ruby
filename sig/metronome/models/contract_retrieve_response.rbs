@@ -1,0 +1,330 @@
+module Metronome
+  module Models
+    type contract_retrieve_response =
+      { data: Metronome::Models::ContractRetrieveResponse::Data }
+
+    class ContractRetrieveResponse < Metronome::BaseModel
+      attr_accessor data: Metronome::Models::ContractRetrieveResponse::Data
+
+      def initialize:
+        (data: Metronome::Models::ContractRetrieveResponse::Data) -> void
+        | (
+          ?Metronome::Models::contract_retrieve_response
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::contract_retrieve_response
+
+      type data =
+        {
+          id: String,
+          amendments: Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment],
+          current: Metronome::Models::ContractWithoutAmendments,
+          customer_id: String,
+          initial: Metronome::Models::ContractWithoutAmendments,
+          archived_at: Time,
+          custom_fields: Hash[Symbol, String],
+          customer_billing_provider_configuration: Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration,
+          scheduled_charges_on_usage_invoices: Metronome::Models::ContractRetrieveResponse::Data::scheduled_charges_on_usage_invoices,
+          uniqueness_key: String
+        }
+
+      class Data < Metronome::BaseModel
+        attr_accessor id: String
+
+        attr_accessor amendments: Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment]
+
+        attr_accessor current: Metronome::Models::ContractWithoutAmendments
+
+        attr_accessor customer_id: String
+
+        attr_accessor initial: Metronome::Models::ContractWithoutAmendments
+
+        attr_reader archived_at: Time?
+
+        def archived_at=: (Time) -> void
+
+        attr_reader custom_fields: Hash[Symbol, String]?
+
+        def custom_fields=: (Hash[Symbol, String]) -> void
+
+        attr_reader customer_billing_provider_configuration: Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration?
+
+        def customer_billing_provider_configuration=: (
+          Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration
+        ) -> void
+
+        attr_reader scheduled_charges_on_usage_invoices: Metronome::Models::ContractRetrieveResponse::Data::scheduled_charges_on_usage_invoices?
+
+        def scheduled_charges_on_usage_invoices=: (
+          Metronome::Models::ContractRetrieveResponse::Data::scheduled_charges_on_usage_invoices
+        ) -> void
+
+        attr_reader uniqueness_key: String?
+
+        def uniqueness_key=: (String) -> void
+
+        def initialize:
+          (
+            id: String,
+            amendments: Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment],
+            current: Metronome::Models::ContractWithoutAmendments,
+            customer_id: String,
+            initial: Metronome::Models::ContractWithoutAmendments,
+            archived_at: Time,
+            custom_fields: Hash[Symbol, String],
+            customer_billing_provider_configuration: Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration,
+            scheduled_charges_on_usage_invoices: Metronome::Models::ContractRetrieveResponse::Data::scheduled_charges_on_usage_invoices,
+            uniqueness_key: String
+          ) -> void
+          | (
+            ?Metronome::Models::ContractRetrieveResponse::data
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::ContractRetrieveResponse::data
+
+        type amendment =
+          {
+            id: String,
+            commits: Array[Metronome::Models::Commit],
+            created_at: Time,
+            created_by: String,
+            overrides: Array[Metronome::Models::Override],
+            scheduled_charges: Array[Metronome::Models::ScheduledCharge],
+            starting_at: Time,
+            credits: Array[Metronome::Models::Credit],
+            discounts: Array[Metronome::Models::Discount],
+            netsuite_sales_order_id: String,
+            professional_services: Array[Metronome::Models::ProService],
+            reseller_royalties: Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty],
+            salesforce_opportunity_id: String
+          }
+
+        class Amendment < Metronome::BaseModel
+          attr_accessor id: String
+
+          attr_accessor commits: Array[Metronome::Models::Commit]
+
+          attr_accessor created_at: Time
+
+          attr_accessor created_by: String
+
+          attr_accessor overrides: Array[Metronome::Models::Override]
+
+          attr_accessor scheduled_charges: Array[Metronome::Models::ScheduledCharge]
+
+          attr_accessor starting_at: Time
+
+          attr_reader credits: Array[Metronome::Models::Credit]
+
+          def credits=: (Array[Metronome::Models::Credit]) -> void
+
+          attr_reader discounts: Array[Metronome::Models::Discount]
+
+          def discounts=: (Array[Metronome::Models::Discount]) -> void
+
+          attr_reader netsuite_sales_order_id: String?
+
+          def netsuite_sales_order_id=: (String) -> void
+
+          attr_reader professional_services: Array[Metronome::Models::ProService]
+
+          def professional_services=: (
+            Array[Metronome::Models::ProService]
+          ) -> void
+
+          attr_reader reseller_royalties: Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty]
+
+          def reseller_royalties=: (
+            Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty]
+          ) -> void
+
+          attr_reader salesforce_opportunity_id: String?
+
+          def salesforce_opportunity_id=: (String) -> void
+
+          def initialize:
+            (
+              id: String,
+              commits: Array[Metronome::Models::Commit],
+              created_at: Time,
+              created_by: String,
+              overrides: Array[Metronome::Models::Override],
+              scheduled_charges: Array[Metronome::Models::ScheduledCharge],
+              starting_at: Time,
+              credits: Array[Metronome::Models::Credit],
+              discounts: Array[Metronome::Models::Discount],
+              netsuite_sales_order_id: String,
+              professional_services: Array[Metronome::Models::ProService],
+              reseller_royalties: Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty],
+              salesforce_opportunity_id: String
+            ) -> void
+            | (
+              ?Metronome::Models::ContractRetrieveResponse::Data::amendment
+              | Metronome::BaseModel data
+            ) -> void
+
+          def to_h: -> Metronome::Models::ContractRetrieveResponse::Data::amendment
+
+          type reseller_royalty =
+            {
+              reseller_type: Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty::reseller_type,
+              aws_account_number: String,
+              aws_offer_id: String,
+              aws_payer_reference_id: String,
+              ending_before: Time?,
+              fraction: Float,
+              gcp_account_id: String,
+              gcp_offer_id: String,
+              netsuite_reseller_id: String,
+              reseller_contract_value: Float,
+              starting_at: Time
+            }
+
+          class ResellerRoyalty < Metronome::BaseModel
+            attr_accessor reseller_type: Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty::reseller_type
+
+            attr_reader aws_account_number: String?
+
+            def aws_account_number=: (String) -> void
+
+            attr_reader aws_offer_id: String?
+
+            def aws_offer_id=: (String) -> void
+
+            attr_reader aws_payer_reference_id: String?
+
+            def aws_payer_reference_id=: (String) -> void
+
+            attr_accessor ending_before: Time?
+
+            attr_reader fraction: Float?
+
+            def fraction=: (Float) -> void
+
+            attr_reader gcp_account_id: String?
+
+            def gcp_account_id=: (String) -> void
+
+            attr_reader gcp_offer_id: String?
+
+            def gcp_offer_id=: (String) -> void
+
+            attr_reader netsuite_reseller_id: String?
+
+            def netsuite_reseller_id=: (String) -> void
+
+            attr_reader reseller_contract_value: Float?
+
+            def reseller_contract_value=: (Float) -> void
+
+            attr_reader starting_at: Time?
+
+            def starting_at=: (Time) -> void
+
+            def initialize:
+              (
+                reseller_type: Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty::reseller_type,
+                aws_account_number: String,
+                aws_offer_id: String,
+                aws_payer_reference_id: String,
+                ending_before: Time?,
+                fraction: Float,
+                gcp_account_id: String,
+                gcp_offer_id: String,
+                netsuite_reseller_id: String,
+                reseller_contract_value: Float,
+                starting_at: Time
+              ) -> void
+              | (
+                ?Metronome::Models::ContractRetrieveResponse::Data::Amendment::reseller_royalty
+                | Metronome::BaseModel data
+              ) -> void
+
+            def to_h: -> Metronome::Models::ContractRetrieveResponse::Data::Amendment::reseller_royalty
+
+            type reseller_type =
+              :AWS | :AWS_PRO_SERVICE | :GCP | :GCP_PRO_SERVICE
+
+            class ResellerType < Metronome::Enum
+              AWS: :AWS
+              AWS_PRO_SERVICE: :AWS_PRO_SERVICE
+              GCP: :GCP
+              GCP_PRO_SERVICE: :GCP_PRO_SERVICE
+
+              def self.values: -> Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty::reseller_type]
+            end
+          end
+        end
+
+        type customer_billing_provider_configuration =
+          {
+            billing_provider: Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::billing_provider,
+            delivery_method: Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::delivery_method
+          }
+
+        class CustomerBillingProviderConfiguration < Metronome::BaseModel
+          attr_accessor billing_provider: Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::billing_provider
+
+          attr_accessor delivery_method: Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::delivery_method
+
+          def initialize:
+            (
+              billing_provider: Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::billing_provider,
+              delivery_method: Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::delivery_method
+            ) -> void
+            | (
+              ?Metronome::Models::ContractRetrieveResponse::Data::customer_billing_provider_configuration
+              | Metronome::BaseModel data
+            ) -> void
+
+          def to_h: -> Metronome::Models::ContractRetrieveResponse::Data::customer_billing_provider_configuration
+
+          type billing_provider =
+            :aws_marketplace
+            | :stripe
+            | :netsuite
+            | :custom
+            | :azure_marketplace
+            | :quickbooks_online
+            | :workday
+            | :gcp_marketplace
+
+          class BillingProvider < Metronome::Enum
+            AWS_MARKETPLACE: :aws_marketplace
+            STRIPE: :stripe
+            NETSUITE: :netsuite
+            CUSTOM: :custom
+            AZURE_MARKETPLACE: :azure_marketplace
+            QUICKBOOKS_ONLINE: :quickbooks_online
+            WORKDAY: :workday
+            GCP_MARKETPLACE: :gcp_marketplace
+
+            def self.values: -> Array[Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::billing_provider]
+          end
+
+          type delivery_method =
+            :direct_to_billing_provider | :aws_sqs | :tackle | :aws_sns
+
+          class DeliveryMethod < Metronome::Enum
+            DIRECT_TO_BILLING_PROVIDER: :direct_to_billing_provider
+            AWS_SQS: :aws_sqs
+            TACKLE: :tackle
+            AWS_SNS: :aws_sns
+
+            def self.values: -> Array[Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::delivery_method]
+          end
+        end
+
+        type scheduled_charges_on_usage_invoices = :ALL
+
+        class ScheduledChargesOnUsageInvoices < Metronome::Enum
+          ALL: :ALL
+
+          def self.values: -> Array[Metronome::Models::ContractRetrieveResponse::Data::scheduled_charges_on_usage_invoices]
+        end
+      end
+    end
+  end
+end

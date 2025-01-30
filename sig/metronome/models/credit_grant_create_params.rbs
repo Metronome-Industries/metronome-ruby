@@ -1,0 +1,168 @@
+module Metronome
+  module Models
+    type credit_grant_create_params =
+      {
+        customer_id: String,
+        expires_at: Time,
+        grant_amount: Metronome::Models::CreditGrantCreateParams::GrantAmount,
+        name: String,
+        paid_amount: Metronome::Models::CreditGrantCreateParams::PaidAmount,
+        priority: Float,
+        credit_grant_type: String,
+        custom_fields: Hash[Symbol, String],
+        effective_at: Time,
+        invoice_date: Time,
+        product_ids: Array[String],
+        reason: String,
+        rollover_settings: Metronome::Models::CreditGrantCreateParams::RolloverSettings,
+        uniqueness_key: String
+      }
+      & Metronome::request_parameters
+
+    class CreditGrantCreateParams < Metronome::BaseModel
+      extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
+      attr_accessor customer_id: String
+
+      attr_accessor expires_at: Time
+
+      attr_accessor grant_amount: Metronome::Models::CreditGrantCreateParams::GrantAmount
+
+      attr_accessor name: String
+
+      attr_accessor paid_amount: Metronome::Models::CreditGrantCreateParams::PaidAmount
+
+      attr_accessor priority: Float
+
+      attr_reader credit_grant_type: String?
+
+      def credit_grant_type=: (String) -> void
+
+      attr_reader custom_fields: Hash[Symbol, String]?
+
+      def custom_fields=: (Hash[Symbol, String]) -> void
+
+      attr_reader effective_at: Time?
+
+      def effective_at=: (Time) -> void
+
+      attr_reader invoice_date: Time?
+
+      def invoice_date=: (Time) -> void
+
+      attr_reader product_ids: Array[String]
+
+      def product_ids=: (Array[String]) -> void
+
+      attr_reader reason: String?
+
+      def reason=: (String) -> void
+
+      attr_reader rollover_settings: Metronome::Models::CreditGrantCreateParams::RolloverSettings?
+
+      def rollover_settings=: (
+        Metronome::Models::CreditGrantCreateParams::RolloverSettings
+      ) -> void
+
+      attr_reader uniqueness_key: String?
+
+      def uniqueness_key=: (String) -> void
+
+      def initialize:
+        (
+          customer_id: String,
+          expires_at: Time,
+          grant_amount: Metronome::Models::CreditGrantCreateParams::GrantAmount,
+          name: String,
+          paid_amount: Metronome::Models::CreditGrantCreateParams::PaidAmount,
+          priority: Float,
+          credit_grant_type: String,
+          custom_fields: Hash[Symbol, String],
+          effective_at: Time,
+          invoice_date: Time,
+          product_ids: Array[String],
+          reason: String,
+          rollover_settings: Metronome::Models::CreditGrantCreateParams::RolloverSettings,
+          uniqueness_key: String,
+          request_options: Metronome::request_opts
+        ) -> void
+        | (
+          ?Metronome::Models::credit_grant_create_params
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::credit_grant_create_params
+
+      type grant_amount = { amount: Float, credit_type_id: String }
+
+      class GrantAmount < Metronome::BaseModel
+        attr_accessor amount: Float
+
+        attr_accessor credit_type_id: String
+
+        def initialize:
+          (amount: Float, credit_type_id: String) -> void
+          | (
+            ?Metronome::Models::CreditGrantCreateParams::grant_amount
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::CreditGrantCreateParams::grant_amount
+      end
+
+      type paid_amount = { amount: Float, credit_type_id: String }
+
+      class PaidAmount < Metronome::BaseModel
+        attr_accessor amount: Float
+
+        attr_accessor credit_type_id: String
+
+        def initialize:
+          (amount: Float, credit_type_id: String) -> void
+          | (
+            ?Metronome::Models::CreditGrantCreateParams::paid_amount
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::CreditGrantCreateParams::paid_amount
+      end
+
+      type rollover_settings =
+        {
+          expires_at: Time,
+          priority: Float,
+          rollover_amount: Metronome::Models::CreditGrantCreateParams::RolloverSettings::rollover_amount
+        }
+
+      class RolloverSettings < Metronome::BaseModel
+        attr_accessor expires_at: Time
+
+        attr_accessor priority: Float
+
+        attr_accessor rollover_amount: Metronome::Models::CreditGrantCreateParams::RolloverSettings::rollover_amount
+
+        def initialize:
+          (
+            expires_at: Time,
+            priority: Float,
+            rollover_amount: Metronome::Models::CreditGrantCreateParams::RolloverSettings::rollover_amount
+          ) -> void
+          | (
+            ?Metronome::Models::CreditGrantCreateParams::rollover_settings
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::CreditGrantCreateParams::rollover_settings
+
+        type rollover_amount =
+          Metronome::Models::RolloverAmountMaxPercentage
+          | Metronome::Models::RolloverAmountMaxAmount
+
+        class RolloverAmount < Metronome::Union
+          private def self.variants: -> [[nil, Metronome::Models::RolloverAmountMaxPercentage], [nil, Metronome::Models::RolloverAmountMaxAmount]]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,19 @@
+module Metronome
+  module Models
+    type tier = { price: Float, size: Float }
+
+    class Tier < Metronome::BaseModel
+      attr_accessor price: Float
+
+      attr_reader size: Float?
+
+      def size=: (Float) -> void
+
+      def initialize:
+        (price: Float, size: Float) -> void
+        | (?Metronome::Models::tier | Metronome::BaseModel data) -> void
+
+      def to_h: -> Metronome::Models::tier
+    end
+  end
+end

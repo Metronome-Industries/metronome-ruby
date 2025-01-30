@@ -1,0 +1,98 @@
+module Metronome
+  module Models
+    module Customers
+      type plan_list_price_adjustments_response =
+        {
+          charge_id: String,
+          charge_type: Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::charge_type,
+          prices: Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price],
+          start_period: Float,
+          quantity: Float
+        }
+
+      class PlanListPriceAdjustmentsResponse < Metronome::BaseModel
+        attr_accessor charge_id: String
+
+        attr_accessor charge_type: Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::charge_type
+
+        attr_accessor prices: Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price]
+
+        attr_accessor start_period: Float
+
+        attr_reader quantity: Float?
+
+        def quantity=: (Float) -> void
+
+        def initialize:
+          (
+            charge_id: String,
+            charge_type: Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::charge_type,
+            prices: Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price],
+            start_period: Float,
+            quantity: Float
+          ) -> void
+          | (
+            ?Metronome::Models::Customers::plan_list_price_adjustments_response
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::Customers::plan_list_price_adjustments_response
+
+        type charge_type = :usage | :fixed | :composite | :minimum | :seat
+
+        class ChargeType < Metronome::Enum
+          USAGE: :usage
+          FIXED: :fixed
+          COMPOSITE: :composite
+          MINIMUM: :minimum
+          SEAT: :seat
+
+          def self.values: -> Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::charge_type]
+        end
+
+        type price =
+          {
+            adjustment_type: Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price::adjustment_type,
+            tier: Float,
+            value: Float
+          }
+
+        class Price < Metronome::BaseModel
+          attr_accessor adjustment_type: Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price::adjustment_type
+
+          attr_reader tier: Float?
+
+          def tier=: (Float) -> void
+
+          attr_reader value: Float?
+
+          def value=: (Float) -> void
+
+          def initialize:
+            (
+              adjustment_type: Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price::adjustment_type,
+              tier: Float,
+              value: Float
+            ) -> void
+            | (
+              ?Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::price
+              | Metronome::BaseModel data
+            ) -> void
+
+          def to_h: -> Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::price
+
+          type adjustment_type = :fixed | :quantity | :percentage | :override
+
+          class AdjustmentType < Metronome::Enum
+            FIXED: :fixed
+            QUANTITY: :quantity
+            PERCENTAGE: :percentage
+            OVERRIDE: :override
+
+            def self.values: -> Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price::adjustment_type]
+          end
+        end
+      end
+    end
+  end
+end

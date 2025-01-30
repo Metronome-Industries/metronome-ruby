@@ -1,0 +1,19 @@
+module Metronome
+  module Models
+    type contract_schedule_pro_services_invoice_response =
+      { data: Array[Metronome::Models::Customers::Invoice] }
+
+    class ContractScheduleProServicesInvoiceResponse < Metronome::BaseModel
+      attr_accessor data: Array[Metronome::Models::Customers::Invoice]
+
+      def initialize:
+        (data: Array[Metronome::Models::Customers::Invoice]) -> void
+        | (
+          ?Metronome::Models::contract_schedule_pro_services_invoice_response
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::contract_schedule_pro_services_invoice_response
+    end
+  end
+end

@@ -1,0 +1,50 @@
+module Metronome
+  module Resources
+    class Usage
+      def list:
+        (
+          Metronome::Models::UsageListParams | Hash[Symbol, top] params
+        ) -> Metronome::Models::UsageListResponse
+        | (
+          Metronome::Models::UsageListParams | Hash[Symbol, top] params,
+          ending_before: Time,
+          starting_on: Time,
+          window_size: Metronome::Models::UsageListParams::window_size,
+          next_page: String,
+          billable_metrics: Array[Metronome::Models::UsageListParams::BillableMetric],
+          customer_ids: Array[String],
+          request_options: Metronome::request_opts
+        ) -> Metronome::Models::UsageListResponse
+
+      def ingest:
+        (Metronome::Models::UsageIngestParams | Hash[Symbol, top] params) -> nil
+        | (
+          Metronome::Models::UsageIngestParams | Hash[Symbol, top] params,
+          usage: Array[Metronome::Models::UsageIngestParams::Usage],
+          request_options: Metronome::request_opts
+        ) -> nil
+
+      def list_with_groups:
+        (
+          Metronome::Models::UsageListWithGroupsParams
+          | Hash[Symbol, top] params
+        ) -> Metronome::CursorPage[Metronome::Models::UsageListWithGroupsResponse]
+        | (
+          Metronome::Models::UsageListWithGroupsParams
+          | Hash[Symbol, top] params,
+          billable_metric_id: String,
+          customer_id: String,
+          window_size: Metronome::Models::UsageListWithGroupsParams::window_size,
+          limit: Integer,
+          next_page: String,
+          current_period: bool,
+          ending_before: Time,
+          group_by: Metronome::Models::UsageListWithGroupsParams::GroupBy,
+          starting_on: Time,
+          request_options: Metronome::request_opts
+        ) -> Metronome::CursorPage[Metronome::Models::UsageListWithGroupsResponse]
+
+      def initialize: (client: Metronome::Client) -> void
+    end
+  end
+end

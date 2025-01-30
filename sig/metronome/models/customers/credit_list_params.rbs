@@ -1,0 +1,84 @@
+module Metronome
+  module Models
+    module Customers
+      type credit_list_params =
+        {
+          customer_id: String,
+          covering_date: Time,
+          credit_id: String,
+          effective_before: Time,
+          include_archived: bool,
+          include_balance: bool,
+          include_contract_credits: bool,
+          include_ledgers: bool,
+          next_page: String,
+          starting_at: Time
+        }
+        & Metronome::request_parameters
+
+      class CreditListParams < Metronome::BaseModel
+        extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
+        attr_accessor customer_id: String
+
+        attr_reader covering_date: Time?
+
+        def covering_date=: (Time) -> void
+
+        attr_reader credit_id: String?
+
+        def credit_id=: (String) -> void
+
+        attr_reader effective_before: Time?
+
+        def effective_before=: (Time) -> void
+
+        attr_reader include_archived: bool?
+
+        def include_archived=: (bool) -> void
+
+        attr_reader include_balance: bool?
+
+        def include_balance=: (bool) -> void
+
+        attr_reader include_contract_credits: bool?
+
+        def include_contract_credits=: (bool) -> void
+
+        attr_reader include_ledgers: bool?
+
+        def include_ledgers=: (bool) -> void
+
+        attr_reader next_page: String?
+
+        def next_page=: (String) -> void
+
+        attr_reader starting_at: Time?
+
+        def starting_at=: (Time) -> void
+
+        def initialize:
+          (
+            customer_id: String,
+            covering_date: Time,
+            credit_id: String,
+            effective_before: Time,
+            include_archived: bool,
+            include_balance: bool,
+            include_contract_credits: bool,
+            include_ledgers: bool,
+            next_page: String,
+            starting_at: Time,
+            request_options: Metronome::request_opts
+          ) -> void
+          | (
+            ?Metronome::Models::Customers::credit_list_params
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::Customers::credit_list_params
+      end
+    end
+  end
+end

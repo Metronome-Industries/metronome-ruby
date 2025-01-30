@@ -1,0 +1,36 @@
+module Metronome
+  module Models
+    type invoice_regenerate_response =
+      { data: Metronome::Models::InvoiceRegenerateResponse::Data }
+
+    class InvoiceRegenerateResponse < Metronome::BaseModel
+      attr_reader data: Metronome::Models::InvoiceRegenerateResponse::Data?
+
+      def data=: (Metronome::Models::InvoiceRegenerateResponse::Data) -> void
+
+      def initialize:
+        (data: Metronome::Models::InvoiceRegenerateResponse::Data) -> void
+        | (
+          ?Metronome::Models::invoice_regenerate_response
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::invoice_regenerate_response
+
+      type data = { id: String }
+
+      class Data < Metronome::BaseModel
+        attr_accessor id: String
+
+        def initialize:
+          (id: String) -> void
+          | (
+            ?Metronome::Models::InvoiceRegenerateResponse::data
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::InvoiceRegenerateResponse::data
+      end
+    end
+  end
+end
