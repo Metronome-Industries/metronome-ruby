@@ -158,6 +158,26 @@ module Metronome
       #   # @return [String]
       #   attr_writer :rate_card_id
 
+      # @!attribute [r] recurring_commits
+      #
+      #   @return [Array<Metronome::Models::ContractCreateParams::RecurringCommit>]
+      optional :recurring_commits,
+               -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::RecurringCommit] }
+
+      # @!parse
+      #   # @return [Array<Metronome::Models::ContractCreateParams::RecurringCommit>]
+      #   attr_writer :recurring_commits
+
+      # @!attribute [r] recurring_credits
+      #
+      #   @return [Array<Metronome::Models::ContractCreateParams::RecurringCredit>]
+      optional :recurring_credits,
+               -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::RecurringCredit] }
+
+      # @!parse
+      #   # @return [Array<Metronome::Models::ContractCreateParams::RecurringCredit>]
+      #   attr_writer :recurring_credits
+
       # @!attribute [r] reseller_royalties
       #   This field's availability is dependent on your client's configuration.
       #
@@ -273,6 +293,8 @@ module Metronome
       #   # @param professional_services [Array<Metronome::Models::ContractCreateParams::ProfessionalService>]
       #   # @param rate_card_alias [String]
       #   # @param rate_card_id [String]
+      #   # @param recurring_commits [Array<Metronome::Models::ContractCreateParams::RecurringCommit>]
+      #   # @param recurring_credits [Array<Metronome::Models::ContractCreateParams::RecurringCredit>]
       #   # @param reseller_royalties [Array<Metronome::Models::ContractCreateParams::ResellerRoyalty>]
       #   # @param salesforce_opportunity_id [String]
       #   # @param scheduled_charges [Array<Metronome::Models::ContractCreateParams::ScheduledCharge>]
@@ -301,6 +323,8 @@ module Metronome
       #     professional_services: nil,
       #     rate_card_alias: nil,
       #     rate_card_id: nil,
+      #     recurring_commits: nil,
+      #     recurring_credits: nil,
       #     reseller_royalties: nil,
       #     salesforce_opportunity_id: nil,
       #     scheduled_charges: nil,
@@ -1764,7 +1788,8 @@ module Metronome
         #   presentation_group_values: -> { Metronome::HashOf[String] === _1 },
         #   pricing_group_values: -> { Metronome::HashOf[String] === _1 },
         #   product_id: String,
-        #   product_tags: -> { Metronome::ArrayOf[String] === _1 }
+        #   product_tags: -> { Metronome::ArrayOf[String] === _1 },
+        #   **_
         # }
         # ```
         class OverrideSpecifier < Metronome::BaseModel
@@ -1825,12 +1850,40 @@ module Metronome
           #   # @return [Array<String>]
           #   attr_writer :product_tags
 
+          # @!attribute [r] recurring_commit_ids
+          #   Can only be used for commit specific overrides. Must be used in conjunction with
+          #     one of product_id, product_tags, pricing_group_values, or
+          #     presentation_group_values. If provided, the override will only apply to commits
+          #     created by the specified recurring commit ids.
+          #
+          #   @return [Array<String>]
+          optional :recurring_commit_ids, Metronome::ArrayOf[String]
+
+          # @!parse
+          #   # @return [Array<String>]
+          #   attr_writer :recurring_commit_ids
+
+          # @!attribute [r] recurring_credit_ids
+          #   Can only be used for commit specific overrides. Must be used in conjunction with
+          #     one of product_id, product_tags, pricing_group_values, or
+          #     presentation_group_values. If provided, the override will only apply to credits
+          #     created by the specified recurring credit ids.
+          #
+          #   @return [Array<String>]
+          optional :recurring_credit_ids, Metronome::ArrayOf[String]
+
+          # @!parse
+          #   # @return [Array<String>]
+          #   attr_writer :recurring_credit_ids
+
           # @!parse
           #   # @param commit_ids [Array<String>]
           #   # @param presentation_group_values [Hash{Symbol=>String}]
           #   # @param pricing_group_values [Hash{Symbol=>String}]
           #   # @param product_id [String]
           #   # @param product_tags [Array<String>]
+          #   # @param recurring_commit_ids [Array<String>]
+          #   # @param recurring_credit_ids [Array<String>]
           #   #
           #   def initialize(
           #     commit_ids: nil,
@@ -1838,6 +1891,8 @@ module Metronome
           #     pricing_group_values: nil,
           #     product_id: nil,
           #     product_tags: nil,
+          #     recurring_commit_ids: nil,
+          #     recurring_credit_ids: nil,
           #     **
           #   )
           #     super
@@ -2139,6 +2194,652 @@ module Metronome
         #   end
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
+      end
+
+      # @example
+      # ```ruby
+      # recurring_commit => {
+      #   access_amount: Metronome::Models::ContractCreateParams::RecurringCommit::AccessAmount,
+      #   commit_duration: Metronome::Models::ContractCreateParams::RecurringCommit::CommitDuration,
+      #   priority: Float,
+      #   product_id: String,
+      #   starting_at: Time,
+      #   **_
+      # }
+      # ```
+      class RecurringCommit < Metronome::BaseModel
+        # @!attribute access_amount
+        #   The amount of commit to grant.
+        #
+        #   @return [Metronome::Models::ContractCreateParams::RecurringCommit::AccessAmount]
+        required :access_amount, -> { Metronome::Models::ContractCreateParams::RecurringCommit::AccessAmount }
+
+        # @!attribute commit_duration
+        #   The amount of time the created commits will be valid for.
+        #
+        #   @return [Metronome::Models::ContractCreateParams::RecurringCommit::CommitDuration]
+        required :commit_duration,
+                 -> {
+                   Metronome::Models::ContractCreateParams::RecurringCommit::CommitDuration
+                 }
+
+        # @!attribute priority
+        #   Will be passed down to the individual commits
+        #
+        #   @return [Float]
+        required :priority, Float
+
+        # @!attribute product_id
+        #
+        #   @return [String]
+        required :product_id, String
+
+        # @!attribute starting_at
+        #   determines the start time for the first commit
+        #
+        #   @return [Time]
+        required :starting_at, Time
+
+        # @!attribute [r] applicable_product_ids
+        #   Will be passed down to the individual commits
+        #
+        #   @return [Array<String>]
+        optional :applicable_product_ids, Metronome::ArrayOf[String]
+
+        # @!parse
+        #   # @return [Array<String>]
+        #   attr_writer :applicable_product_ids
+
+        # @!attribute [r] applicable_product_tags
+        #   Will be passed down to the individual commits
+        #
+        #   @return [Array<String>]
+        optional :applicable_product_tags, Metronome::ArrayOf[String]
+
+        # @!parse
+        #   # @return [Array<String>]
+        #   attr_writer :applicable_product_tags
+
+        # @!attribute [r] description
+        #   Will be passed down to the individual commits
+        #
+        #   @return [String, nil]
+        optional :description, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :description
+
+        # @!attribute [r] ending_before
+        #   determines when the contract will stop creating recurring commits. optional
+        #
+        #   @return [Time, nil]
+        optional :ending_before, Time
+
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :ending_before
+
+        # @!attribute [r] invoice_amount
+        #   The amount the customer should be billed for the commit. Not required.
+        #
+        #   @return [Metronome::Models::ContractCreateParams::RecurringCommit::InvoiceAmount, nil]
+        optional :invoice_amount,
+                 -> {
+                   Metronome::Models::ContractCreateParams::RecurringCommit::InvoiceAmount
+                 }
+
+        # @!parse
+        #   # @return [Metronome::Models::ContractCreateParams::RecurringCommit::InvoiceAmount]
+        #   attr_writer :invoice_amount
+
+        # @!attribute [r] name
+        #   displayed on invoices. will be passed through to the individual commits
+        #
+        #   @return [String, nil]
+        optional :name, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :name
+
+        # @!attribute [r] netsuite_sales_order_id
+        #   Will be passed down to the individual commits
+        #
+        #   @return [String, nil]
+        optional :netsuite_sales_order_id, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :netsuite_sales_order_id
+
+        # @!attribute [r] rate_type
+        #   Whether the created commits will use the commit rate or list rate
+        #
+        #   @return [Symbol, Metronome::Models::ContractCreateParams::RecurringCommit::RateType, nil]
+        optional :rate_type, enum: -> { Metronome::Models::ContractCreateParams::RecurringCommit::RateType }
+
+        # @!parse
+        #   # @return [Symbol, Metronome::Models::ContractCreateParams::RecurringCommit::RateType]
+        #   attr_writer :rate_type
+
+        # @!attribute [r] rollover_fraction
+        #   Will be passed down to the individual commits. This controls how much of an
+        #     individual unexpired commit will roll over upon contract transition
+        #
+        #   @return [Float, nil]
+        optional :rollover_fraction, Float
+
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :rollover_fraction
+
+        # @!attribute [r] temporary_id
+        #   A temporary ID that can be used to reference the recurring commit for commit
+        #     specific overrides.
+        #
+        #   @return [String, nil]
+        optional :temporary_id, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :temporary_id
+
+        # @!parse
+        #   # @param access_amount [Metronome::Models::ContractCreateParams::RecurringCommit::AccessAmount]
+        #   # @param commit_duration [Metronome::Models::ContractCreateParams::RecurringCommit::CommitDuration]
+        #   # @param priority [Float]
+        #   # @param product_id [String]
+        #   # @param starting_at [Time]
+        #   # @param applicable_product_ids [Array<String>]
+        #   # @param applicable_product_tags [Array<String>]
+        #   # @param description [String]
+        #   # @param ending_before [Time]
+        #   # @param invoice_amount [Metronome::Models::ContractCreateParams::RecurringCommit::InvoiceAmount]
+        #   # @param name [String]
+        #   # @param netsuite_sales_order_id [String]
+        #   # @param rate_type [Symbol, Metronome::Models::ContractCreateParams::RecurringCommit::RateType]
+        #   # @param rollover_fraction [Float]
+        #   # @param temporary_id [String]
+        #   #
+        #   def initialize(
+        #     access_amount:,
+        #     commit_duration:,
+        #     priority:,
+        #     product_id:,
+        #     starting_at:,
+        #     applicable_product_ids: nil,
+        #     applicable_product_tags: nil,
+        #     description: nil,
+        #     ending_before: nil,
+        #     invoice_amount: nil,
+        #     name: nil,
+        #     netsuite_sales_order_id: nil,
+        #     rate_type: nil,
+        #     rollover_fraction: nil,
+        #     temporary_id: nil,
+        #     **
+        #   )
+        #     super
+        #   end
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
+        # @example
+        # ```ruby
+        # access_amount => {
+        #   credit_type_id: String,
+        #   quantity: Float,
+        #   unit_price: Float
+        # }
+        # ```
+        class AccessAmount < Metronome::BaseModel
+          # @!attribute credit_type_id
+          #
+          #   @return [String]
+          required :credit_type_id, String
+
+          # @!attribute quantity
+          #
+          #   @return [Float]
+          required :quantity, Float
+
+          # @!attribute unit_price
+          #
+          #   @return [Float]
+          required :unit_price, Float
+
+          # @!parse
+          #   # The amount of commit to grant.
+          #   #
+          #   # @param credit_type_id [String]
+          #   # @param quantity [Float]
+          #   # @param unit_price [Float]
+          #   #
+          #   def initialize(credit_type_id:, quantity:, unit_price:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+        end
+
+        # @example
+        # ```ruby
+        # commit_duration => {
+        #   unit: Metronome::Models::ContractCreateParams::RecurringCommit::CommitDuration::Unit,
+        #   value: Float
+        # }
+        # ```
+        class CommitDuration < Metronome::BaseModel
+          # @!attribute unit
+          #
+          #   @return [Symbol, Metronome::Models::ContractCreateParams::RecurringCommit::CommitDuration::Unit]
+          required :unit,
+                   enum: -> { Metronome::Models::ContractCreateParams::RecurringCommit::CommitDuration::Unit }
+
+          # @!attribute value
+          #
+          #   @return [Float]
+          required :value, Float
+
+          # @!parse
+          #   # The amount of time the created commits will be valid for.
+          #   #
+          #   # @param unit [Symbol, Metronome::Models::ContractCreateParams::RecurringCommit::CommitDuration::Unit]
+          #   # @param value [Float]
+          #   #
+          #   def initialize(unit:, value:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
+          # @example
+          # ```ruby
+          # case unit
+          # in :PERIODS
+          #   # ...
+          # end
+          # ```
+          class Unit < Metronome::Enum
+            PERIODS = :PERIODS
+
+            finalize!
+          end
+        end
+
+        # @example
+        # ```ruby
+        # invoice_amount => {
+        #   credit_type_id: String,
+        #   quantity: Float,
+        #   unit_price: Float
+        # }
+        # ```
+        class InvoiceAmount < Metronome::BaseModel
+          # @!attribute credit_type_id
+          #
+          #   @return [String]
+          required :credit_type_id, String
+
+          # @!attribute quantity
+          #
+          #   @return [Float]
+          required :quantity, Float
+
+          # @!attribute unit_price
+          #
+          #   @return [Float]
+          required :unit_price, Float
+
+          # @!parse
+          #   # The amount the customer should be billed for the commit. Not required.
+          #   #
+          #   # @param credit_type_id [String]
+          #   # @param quantity [Float]
+          #   # @param unit_price [Float]
+          #   #
+          #   def initialize(credit_type_id:, quantity:, unit_price:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+        end
+
+        # Whether the created commits will use the commit rate or list rate
+        #
+        # @example
+        # ```ruby
+        # case rate_type
+        # in :COMMIT_RATE
+        #   # ...
+        # in :LIST_RATE
+        #   # ...
+        # end
+        # ```
+        class RateType < Metronome::Enum
+          COMMIT_RATE = :COMMIT_RATE
+          LIST_RATE = :LIST_RATE
+
+          finalize!
+        end
+      end
+
+      # @example
+      # ```ruby
+      # recurring_credit => {
+      #   access_amount: Metronome::Models::ContractCreateParams::RecurringCredit::AccessAmount,
+      #   commit_duration: Metronome::Models::ContractCreateParams::RecurringCredit::CommitDuration,
+      #   priority: Float,
+      #   product_id: String,
+      #   starting_at: Time,
+      #   **_
+      # }
+      # ```
+      class RecurringCredit < Metronome::BaseModel
+        # @!attribute access_amount
+        #   The amount of commit to grant.
+        #
+        #   @return [Metronome::Models::ContractCreateParams::RecurringCredit::AccessAmount]
+        required :access_amount, -> { Metronome::Models::ContractCreateParams::RecurringCredit::AccessAmount }
+
+        # @!attribute commit_duration
+        #   The amount of time the created commits will be valid for.
+        #
+        #   @return [Metronome::Models::ContractCreateParams::RecurringCredit::CommitDuration]
+        required :commit_duration,
+                 -> {
+                   Metronome::Models::ContractCreateParams::RecurringCredit::CommitDuration
+                 }
+
+        # @!attribute priority
+        #   Will be passed down to the individual commits
+        #
+        #   @return [Float]
+        required :priority, Float
+
+        # @!attribute product_id
+        #
+        #   @return [String]
+        required :product_id, String
+
+        # @!attribute starting_at
+        #   determines the start time for the first commit
+        #
+        #   @return [Time]
+        required :starting_at, Time
+
+        # @!attribute [r] applicable_product_ids
+        #   Will be passed down to the individual commits
+        #
+        #   @return [Array<String>]
+        optional :applicable_product_ids, Metronome::ArrayOf[String]
+
+        # @!parse
+        #   # @return [Array<String>]
+        #   attr_writer :applicable_product_ids
+
+        # @!attribute [r] applicable_product_tags
+        #   Will be passed down to the individual commits
+        #
+        #   @return [Array<String>]
+        optional :applicable_product_tags, Metronome::ArrayOf[String]
+
+        # @!parse
+        #   # @return [Array<String>]
+        #   attr_writer :applicable_product_tags
+
+        # @!attribute [r] description
+        #   Will be passed down to the individual commits
+        #
+        #   @return [String, nil]
+        optional :description, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :description
+
+        # @!attribute [r] ending_before
+        #   determines when the contract will stop creating recurring commits. optional
+        #
+        #   @return [Time, nil]
+        optional :ending_before, Time
+
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :ending_before
+
+        # @!attribute [r] invoice_amount
+        #   The amount the customer should be billed for the commit. Not required.
+        #
+        #   @return [Metronome::Models::ContractCreateParams::RecurringCredit::InvoiceAmount, nil]
+        optional :invoice_amount,
+                 -> {
+                   Metronome::Models::ContractCreateParams::RecurringCredit::InvoiceAmount
+                 }
+
+        # @!parse
+        #   # @return [Metronome::Models::ContractCreateParams::RecurringCredit::InvoiceAmount]
+        #   attr_writer :invoice_amount
+
+        # @!attribute [r] name
+        #   displayed on invoices. will be passed through to the individual commits
+        #
+        #   @return [String, nil]
+        optional :name, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :name
+
+        # @!attribute [r] netsuite_sales_order_id
+        #   Will be passed down to the individual commits
+        #
+        #   @return [String, nil]
+        optional :netsuite_sales_order_id, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :netsuite_sales_order_id
+
+        # @!attribute [r] rate_type
+        #   Whether the created commits will use the commit rate or list rate
+        #
+        #   @return [Symbol, Metronome::Models::ContractCreateParams::RecurringCredit::RateType, nil]
+        optional :rate_type, enum: -> { Metronome::Models::ContractCreateParams::RecurringCredit::RateType }
+
+        # @!parse
+        #   # @return [Symbol, Metronome::Models::ContractCreateParams::RecurringCredit::RateType]
+        #   attr_writer :rate_type
+
+        # @!attribute [r] rollover_fraction
+        #   Will be passed down to the individual commits. This controls how much of an
+        #     individual unexpired commit will roll over upon contract transition
+        #
+        #   @return [Float, nil]
+        optional :rollover_fraction, Float
+
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :rollover_fraction
+
+        # @!attribute [r] temporary_id
+        #   A temporary ID that can be used to reference the recurring commit for commit
+        #     specific overrides.
+        #
+        #   @return [String, nil]
+        optional :temporary_id, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :temporary_id
+
+        # @!parse
+        #   # @param access_amount [Metronome::Models::ContractCreateParams::RecurringCredit::AccessAmount]
+        #   # @param commit_duration [Metronome::Models::ContractCreateParams::RecurringCredit::CommitDuration]
+        #   # @param priority [Float]
+        #   # @param product_id [String]
+        #   # @param starting_at [Time]
+        #   # @param applicable_product_ids [Array<String>]
+        #   # @param applicable_product_tags [Array<String>]
+        #   # @param description [String]
+        #   # @param ending_before [Time]
+        #   # @param invoice_amount [Metronome::Models::ContractCreateParams::RecurringCredit::InvoiceAmount]
+        #   # @param name [String]
+        #   # @param netsuite_sales_order_id [String]
+        #   # @param rate_type [Symbol, Metronome::Models::ContractCreateParams::RecurringCredit::RateType]
+        #   # @param rollover_fraction [Float]
+        #   # @param temporary_id [String]
+        #   #
+        #   def initialize(
+        #     access_amount:,
+        #     commit_duration:,
+        #     priority:,
+        #     product_id:,
+        #     starting_at:,
+        #     applicable_product_ids: nil,
+        #     applicable_product_tags: nil,
+        #     description: nil,
+        #     ending_before: nil,
+        #     invoice_amount: nil,
+        #     name: nil,
+        #     netsuite_sales_order_id: nil,
+        #     rate_type: nil,
+        #     rollover_fraction: nil,
+        #     temporary_id: nil,
+        #     **
+        #   )
+        #     super
+        #   end
+
+        # def initialize: (Hash | Metronome::BaseModel) -> void
+
+        # @example
+        # ```ruby
+        # access_amount => {
+        #   credit_type_id: String,
+        #   quantity: Float,
+        #   unit_price: Float
+        # }
+        # ```
+        class AccessAmount < Metronome::BaseModel
+          # @!attribute credit_type_id
+          #
+          #   @return [String]
+          required :credit_type_id, String
+
+          # @!attribute quantity
+          #
+          #   @return [Float]
+          required :quantity, Float
+
+          # @!attribute unit_price
+          #
+          #   @return [Float]
+          required :unit_price, Float
+
+          # @!parse
+          #   # The amount of commit to grant.
+          #   #
+          #   # @param credit_type_id [String]
+          #   # @param quantity [Float]
+          #   # @param unit_price [Float]
+          #   #
+          #   def initialize(credit_type_id:, quantity:, unit_price:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+        end
+
+        # @example
+        # ```ruby
+        # commit_duration => {
+        #   unit: Metronome::Models::ContractCreateParams::RecurringCredit::CommitDuration::Unit,
+        #   value: Float
+        # }
+        # ```
+        class CommitDuration < Metronome::BaseModel
+          # @!attribute unit
+          #
+          #   @return [Symbol, Metronome::Models::ContractCreateParams::RecurringCredit::CommitDuration::Unit]
+          required :unit,
+                   enum: -> { Metronome::Models::ContractCreateParams::RecurringCredit::CommitDuration::Unit }
+
+          # @!attribute value
+          #
+          #   @return [Float]
+          required :value, Float
+
+          # @!parse
+          #   # The amount of time the created commits will be valid for.
+          #   #
+          #   # @param unit [Symbol, Metronome::Models::ContractCreateParams::RecurringCredit::CommitDuration::Unit]
+          #   # @param value [Float]
+          #   #
+          #   def initialize(unit:, value:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+
+          # @example
+          # ```ruby
+          # case unit
+          # in :PERIODS
+          #   # ...
+          # end
+          # ```
+          class Unit < Metronome::Enum
+            PERIODS = :PERIODS
+
+            finalize!
+          end
+        end
+
+        # @example
+        # ```ruby
+        # invoice_amount => {
+        #   credit_type_id: String,
+        #   quantity: Float,
+        #   unit_price: Float
+        # }
+        # ```
+        class InvoiceAmount < Metronome::BaseModel
+          # @!attribute credit_type_id
+          #
+          #   @return [String]
+          required :credit_type_id, String
+
+          # @!attribute quantity
+          #
+          #   @return [Float]
+          required :quantity, Float
+
+          # @!attribute unit_price
+          #
+          #   @return [Float]
+          required :unit_price, Float
+
+          # @!parse
+          #   # The amount the customer should be billed for the commit. Not required.
+          #   #
+          #   # @param credit_type_id [String]
+          #   # @param quantity [Float]
+          #   # @param unit_price [Float]
+          #   #
+          #   def initialize(credit_type_id:, quantity:, unit_price:, **) = super
+
+          # def initialize: (Hash | Metronome::BaseModel) -> void
+        end
+
+        # Whether the created commits will use the commit rate or list rate
+        #
+        # @example
+        # ```ruby
+        # case rate_type
+        # in :COMMIT_RATE
+        #   # ...
+        # in :LIST_RATE
+        #   # ...
+        # end
+        # ```
+        class RateType < Metronome::Enum
+          COMMIT_RATE = :COMMIT_RATE
+          LIST_RATE = :LIST_RATE
+
+          finalize!
+        end
       end
 
       # @example
