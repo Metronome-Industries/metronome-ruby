@@ -136,7 +136,7 @@ module Metronome
           customer_id: String,
           ingest_aliases: T::Array[String],
           request_options: Metronome::RequestOpts
-        ).returns(NilClass)
+        ).void
       end
       def set_ingest_aliases(params, customer_id:, ingest_aliases:, request_options: {}); end
 
@@ -157,7 +157,7 @@ module Metronome
           leave_stripe_invoices_in_draft: T.nilable(T::Boolean),
           salesforce_account_id: T.nilable(String),
           request_options: Metronome::RequestOpts
-        ).returns(NilClass)
+        ).void
       end
       def update_config(
         params,

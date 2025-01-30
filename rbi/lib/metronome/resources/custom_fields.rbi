@@ -10,7 +10,7 @@ module Metronome
           entity: Symbol,
           key: String,
           request_options: Metronome::RequestOpts
-        ).returns(NilClass)
+        ).void
       end
       def add_key(params, enforce_uniqueness:, entity:, key:, request_options: {}); end
 
@@ -21,7 +21,7 @@ module Metronome
           entity_id: String,
           keys: T::Array[String],
           request_options: Metronome::RequestOpts
-        ).returns(NilClass)
+        ).void
       end
       def delete_values(params, entity:, entity_id:, keys:, request_options: {}); end
 
@@ -40,7 +40,7 @@ module Metronome
           entity: Symbol,
           key: String,
           request_options: Metronome::RequestOpts
-        ).returns(NilClass)
+        ).void
       end
       def remove_key(params, entity:, key:, request_options: {}); end
 
@@ -51,7 +51,7 @@ module Metronome
           entity: Symbol,
           entity_id: String,
           request_options: Metronome::RequestOpts
-        ).returns(NilClass)
+        ).void
       end
       def set_values(params, custom_fields:, entity:, entity_id:, request_options: {}); end
 
