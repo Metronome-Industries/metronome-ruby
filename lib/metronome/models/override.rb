@@ -262,7 +262,8 @@ module Metronome
       #   presentation_group_values: -> { Metronome::HashOf[String] === _1 },
       #   pricing_group_values: -> { Metronome::HashOf[String] === _1 },
       #   product_id: String,
-      #   product_tags: -> { Metronome::ArrayOf[String] === _1 }
+      #   product_tags: -> { Metronome::ArrayOf[String] === _1 },
+      #   **_
       # }
       # ```
       class OverrideSpecifier < Metronome::BaseModel
@@ -311,12 +312,32 @@ module Metronome
         #   # @return [Array<String>]
         #   attr_writer :product_tags
 
+        # @!attribute [r] recurring_commit_ids
+        #
+        #   @return [Array<String>]
+        optional :recurring_commit_ids, Metronome::ArrayOf[String]
+
+        # @!parse
+        #   # @return [Array<String>]
+        #   attr_writer :recurring_commit_ids
+
+        # @!attribute [r] recurring_credit_ids
+        #
+        #   @return [Array<String>]
+        optional :recurring_credit_ids, Metronome::ArrayOf[String]
+
+        # @!parse
+        #   # @return [Array<String>]
+        #   attr_writer :recurring_credit_ids
+
         # @!parse
         #   # @param commit_ids [Array<String>]
         #   # @param presentation_group_values [Hash{Symbol=>String}, nil]
         #   # @param pricing_group_values [Hash{Symbol=>String}]
         #   # @param product_id [String]
         #   # @param product_tags [Array<String>]
+        #   # @param recurring_commit_ids [Array<String>]
+        #   # @param recurring_credit_ids [Array<String>]
         #   #
         #   def initialize(
         #     commit_ids: nil,
@@ -324,6 +345,8 @@ module Metronome
         #     pricing_group_values: nil,
         #     product_id: nil,
         #     product_tags: nil,
+        #     recurring_commit_ids: nil,
+        #     recurring_credit_ids: nil,
         #     **
         #   )
         #     super

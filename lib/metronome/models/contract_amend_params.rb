@@ -1496,7 +1496,8 @@ module Metronome
         #   presentation_group_values: -> { Metronome::HashOf[String] === _1 },
         #   pricing_group_values: -> { Metronome::HashOf[String] === _1 },
         #   product_id: String,
-        #   product_tags: -> { Metronome::ArrayOf[String] === _1 }
+        #   product_tags: -> { Metronome::ArrayOf[String] === _1 },
+        #   **_
         # }
         # ```
         class OverrideSpecifier < Metronome::BaseModel
@@ -1557,12 +1558,40 @@ module Metronome
           #   # @return [Array<String>]
           #   attr_writer :product_tags
 
+          # @!attribute [r] recurring_commit_ids
+          #   Can only be used for commit specific overrides. Must be used in conjunction with
+          #     one of product_id, product_tags, pricing_group_values, or
+          #     presentation_group_values. If provided, the override will only apply to commits
+          #     created by the specified recurring commit ids.
+          #
+          #   @return [Array<String>]
+          optional :recurring_commit_ids, Metronome::ArrayOf[String]
+
+          # @!parse
+          #   # @return [Array<String>]
+          #   attr_writer :recurring_commit_ids
+
+          # @!attribute [r] recurring_credit_ids
+          #   Can only be used for commit specific overrides. Must be used in conjunction with
+          #     one of product_id, product_tags, pricing_group_values, or
+          #     presentation_group_values. If provided, the override will only apply to credits
+          #     created by the specified recurring credit ids.
+          #
+          #   @return [Array<String>]
+          optional :recurring_credit_ids, Metronome::ArrayOf[String]
+
+          # @!parse
+          #   # @return [Array<String>]
+          #   attr_writer :recurring_credit_ids
+
           # @!parse
           #   # @param commit_ids [Array<String>]
           #   # @param presentation_group_values [Hash{Symbol=>String}]
           #   # @param pricing_group_values [Hash{Symbol=>String}]
           #   # @param product_id [String]
           #   # @param product_tags [Array<String>]
+          #   # @param recurring_commit_ids [Array<String>]
+          #   # @param recurring_credit_ids [Array<String>]
           #   #
           #   def initialize(
           #     commit_ids: nil,
@@ -1570,6 +1599,8 @@ module Metronome
           #     pricing_group_values: nil,
           #     product_id: nil,
           #     product_tags: nil,
+          #     recurring_commit_ids: nil,
+          #     recurring_credit_ids: nil,
           #     **
           #   )
           #     super

@@ -52,6 +52,10 @@ module Metronome
       #
       #   @option params [String] :rate_card_id
       #
+      #   @option params [Array<Metronome::Models::ContractCreateParams::RecurringCommit>] :recurring_commits
+      #
+      #   @option params [Array<Metronome::Models::ContractCreateParams::RecurringCredit>] :recurring_credits
+      #
       #   @option params [Array<Metronome::Models::ContractCreateParams::ResellerRoyalty>] :reseller_royalties This field's availability is dependent on your client's configuration.
       #
       #   @option params [String] :salesforce_opportunity_id This field's availability is dependent on your client's configuration.
