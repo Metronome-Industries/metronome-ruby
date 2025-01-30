@@ -190,6 +190,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # Status of the alert
           #
           # @example
@@ -209,8 +211,15 @@ module Metronome
             DISABLED = :disabled
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # Type of the alert
           #
           # @example
@@ -247,6 +256,11 @@ module Metronome
             INVOICE_TOTAL_REACHED = :invoice_total_reached
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @example
@@ -285,6 +299,8 @@ module Metronome
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
+            # @abstract
+            #
             # @example
             # ```ruby
             # case entity
@@ -302,6 +318,11 @@ module Metronome
               CONTRACT_CREDIT = :ContractCredit
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
 
@@ -336,6 +357,8 @@ module Metronome
           end
         end
 
+        # @abstract
+        #
         # The status of the customer alert. If the alert is archived, null will be
         #   returned.
         #
@@ -356,6 +379,11 @@ module Metronome
           EVALUATING = :evaluating
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

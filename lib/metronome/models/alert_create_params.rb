@@ -177,6 +177,8 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
+      # @abstract
+      #
       # Type of the alert
       #
       # @example
@@ -213,6 +215,11 @@ module Metronome
         INVOICE_TOTAL_REACHED = :invoice_total_reached
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -248,6 +255,8 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case entity
@@ -265,6 +274,11 @@ module Metronome
           CONTRACT_CREDIT = :ContractCredit
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 

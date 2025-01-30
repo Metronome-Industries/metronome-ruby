@@ -300,7 +300,7 @@ module Metronome
           PREPAID = :PREPAID
           POSTPAID = :POSTPAID
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
 
@@ -483,7 +483,7 @@ module Metronome
               DIVIDED_ROUNDED = :DIVIDED_ROUNDED
               EACH = :EACH
 
-              sig { returns(T::Array[Symbol]) }
+              sig { override.returns(T::Array[Symbol]) }
               def self.values; end
             end
 
@@ -495,7 +495,7 @@ module Metronome
               SEMI_ANNUAL = :SEMI_ANNUAL
               ANNUAL = :ANNUAL
 
-              sig { returns(T::Array[Symbol]) }
+              sig { override.returns(T::Array[Symbol]) }
               def self.values; end
             end
           end
@@ -540,7 +540,7 @@ module Metronome
           COMMIT_RATE = :COMMIT_RATE
           LIST_RATE = :LIST_RATE
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
       end
@@ -703,7 +703,7 @@ module Metronome
           COMMIT_RATE = :COMMIT_RATE
           LIST_RATE = :LIST_RATE
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
       end
@@ -879,7 +879,7 @@ module Metronome
               DIVIDED_ROUNDED = :DIVIDED_ROUNDED
               EACH = :EACH
 
-              sig { returns(T::Array[Symbol]) }
+              sig { override.returns(T::Array[Symbol]) }
               def self.values; end
             end
 
@@ -891,7 +891,7 @@ module Metronome
               SEMI_ANNUAL = :SEMI_ANNUAL
               ANNUAL = :ANNUAL
 
-              sig { returns(T::Array[Symbol]) }
+              sig { override.returns(T::Array[Symbol]) }
               def self.values; end
             end
           end
@@ -1227,7 +1227,7 @@ module Metronome
             TIERED = :TIERED
             CUSTOM = :CUSTOM
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end
@@ -1238,7 +1238,7 @@ module Metronome
           COMMIT_RATE = :COMMIT_RATE
           LIST_RATE = :LIST_RATE
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
 
@@ -1268,7 +1268,7 @@ module Metronome
           MULTIPLIER = :MULTIPLIER
           TIERED = :TIERED
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
       end
@@ -1449,7 +1449,7 @@ module Metronome
           GCP = :GCP
           GCP_PRO_SERVICE = :GCP_PRO_SERVICE
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
 
@@ -1676,7 +1676,7 @@ module Metronome
               DIVIDED_ROUNDED = :DIVIDED_ROUNDED
               EACH = :EACH
 
-              sig { returns(T::Array[Symbol]) }
+              sig { override.returns(T::Array[Symbol]) }
               def self.values; end
             end
 
@@ -1688,7 +1688,7 @@ module Metronome
               SEMI_ANNUAL = :SEMI_ANNUAL
               ANNUAL = :ANNUAL
 
-              sig { returns(T::Array[Symbol]) }
+              sig { override.returns(T::Array[Symbol]) }
               def self.values; end
             end
           end

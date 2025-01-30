@@ -95,7 +95,7 @@ module Metronome
         DATE_ASC = :date_asc
         DATE_DESC = :date_desc
 
-        sig { returns(T::Array[Symbol]) }
+        sig { override.returns(T::Array[Symbol]) }
         def self.values; end
       end
     end

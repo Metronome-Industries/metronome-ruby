@@ -396,6 +396,8 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case billing_provider
@@ -419,8 +421,15 @@ module Metronome
           NETSUITE = :netsuite
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case delivery_method
@@ -441,6 +450,11 @@ module Metronome
           AWS_SNS = :aws_sns
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -643,6 +657,8 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case type
@@ -657,6 +673,11 @@ module Metronome
           POSTPAID = :POSTPAID
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @example
@@ -897,6 +918,8 @@ module Metronome
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
+            # @abstract
+            #
             # @example
             # ```ruby
             # case amount_distribution
@@ -914,8 +937,15 @@ module Metronome
               EACH = :EACH
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
+            # @abstract
+            #
             # @example
             # ```ruby
             # case frequency
@@ -936,6 +966,11 @@ module Metronome
               ANNUAL = :ANNUAL
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
 
@@ -1003,6 +1038,8 @@ module Metronome
           end
         end
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case rate_type
@@ -1017,6 +1054,11 @@ module Metronome
           LIST_RATE = :LIST_RATE
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -1227,6 +1269,8 @@ module Metronome
           end
         end
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case rate_type
@@ -1241,6 +1285,11 @@ module Metronome
           LIST_RATE = :LIST_RATE
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -1466,6 +1515,8 @@ module Metronome
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
+            # @abstract
+            #
             # @example
             # ```ruby
             # case amount_distribution
@@ -1483,8 +1534,15 @@ module Metronome
               EACH = :EACH
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
+            # @abstract
+            #
             # @example
             # ```ruby
             # case frequency
@@ -1505,6 +1563,11 @@ module Metronome
               ANNUAL = :ANNUAL
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
 
@@ -1573,6 +1636,8 @@ module Metronome
         end
       end
 
+      # @abstract
+      #
       # Defaults to LOWEST_MULTIPLIER, which applies the greatest discount to list
       #   prices automatically. EXPLICIT prioritization requires specifying priorities for
       #   each multiplier; the one with the lowest priority value will be prioritized
@@ -1592,6 +1657,11 @@ module Metronome
         EXPLICIT = :EXPLICIT
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -2007,6 +2077,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case rate_type
@@ -2030,9 +2102,16 @@ module Metronome
             CUSTOM = :CUSTOM
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
+        # @abstract
+        #
         # Indicates whether the override applies to commit rates or list rates. Can only
         #   be used for overrides that have `is_commit_specific` set to `true`. Defaults to
         #   `"LIST_RATE"`.
@@ -2051,6 +2130,11 @@ module Metronome
           LIST_RATE = :LIST_RATE
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @example
@@ -2084,6 +2168,8 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
         end
 
+        # @abstract
+        #
         # Overwrites are prioritized over multipliers and tiered overrides.
         #
         # @example
@@ -2103,6 +2189,11 @@ module Metronome
           TIERED = :TIERED
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -2450,6 +2541,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case unit
@@ -2461,6 +2554,11 @@ module Metronome
             PERIODS = :PERIODS
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -2500,6 +2598,8 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
         end
 
+        # @abstract
+        #
         # Whether the created commits will use the commit rate or list rate
         #
         # @example
@@ -2516,6 +2616,11 @@ module Metronome
           LIST_RATE = :LIST_RATE
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -2773,6 +2878,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case unit
@@ -2784,6 +2891,11 @@ module Metronome
             PERIODS = :PERIODS
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -2823,6 +2935,8 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
         end
 
+        # @abstract
+        #
         # Whether the created commits will use the commit rate or list rate
         #
         # @example
@@ -2839,6 +2953,11 @@ module Metronome
           LIST_RATE = :LIST_RATE
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -2961,6 +3080,8 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case reseller_type
@@ -2981,6 +3102,11 @@ module Metronome
           GCP_PRO_SERVICE = :GCP_PRO_SERVICE
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @example
@@ -3276,6 +3402,8 @@ module Metronome
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
+            # @abstract
+            #
             # @example
             # ```ruby
             # case amount_distribution
@@ -3293,8 +3421,15 @@ module Metronome
               EACH = :EACH
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
+            # @abstract
+            #
             # @example
             # ```ruby
             # case frequency
@@ -3315,6 +3450,11 @@ module Metronome
               ANNUAL = :ANNUAL
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
 
@@ -3383,6 +3523,8 @@ module Metronome
         end
       end
 
+      # @abstract
+      #
       # Determines which scheduled and commit charges to consolidate onto the Contract's
       #   usage invoice. The charge's `timestamp` must match the usage invoice's
       #   `ending_before` date for consolidation to occur. This field cannot be modified
@@ -3400,6 +3542,11 @@ module Metronome
         ALL = :ALL
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -3441,6 +3588,8 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @abstract
+        #
         # This field's available values may vary based on your client's configuration.
         #
         # @example
@@ -3457,6 +3606,11 @@ module Metronome
           RENEWAL = :RENEWAL
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @example
@@ -3484,6 +3638,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # Controls whether future trueup invoices are billed or removed. Default behavior
           #   is AS_IS if not specified.
           #
@@ -3501,6 +3657,11 @@ module Metronome
             AS_IS = :AS_IS
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
       end
@@ -3568,6 +3729,8 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case frequency
@@ -3585,8 +3748,15 @@ module Metronome
           ANNUAL = :ANNUAL
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
+        # @abstract
+        #
         # If not provided, defaults to the first day of the month.
         #
         # @example
@@ -3606,6 +3776,11 @@ module Metronome
           CUSTOM_DATE = :CUSTOM_DATE
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

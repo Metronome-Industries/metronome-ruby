@@ -25,7 +25,7 @@ module Metronome
           ROUND_DOWN = :ROUND_DOWN
           ROUND_HALF_UP = :ROUND_HALF_UP
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
       end

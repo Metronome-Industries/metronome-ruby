@@ -129,6 +129,8 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
+      # @abstract
+      #
       # @example
       # ```ruby
       # case charge_type
@@ -152,6 +154,11 @@ module Metronome
         SEAT = :seat
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -251,6 +258,8 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @abstract
+        #
         # Whether usage should be rounded down or up to the nearest whole number. If null,
         #   quantity will be rounded to 20 decimal places.
         #
@@ -268,6 +277,11 @@ module Metronome
           CEILING = :ceiling
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

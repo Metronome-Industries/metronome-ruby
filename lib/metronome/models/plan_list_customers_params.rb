@@ -61,6 +61,8 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
+      # @abstract
+      #
       # Status of customers on a given plan. Defaults to `active`.
       #
       #   - `all` - Return current, past, and upcoming customers of the plan.
@@ -91,6 +93,11 @@ module Metronome
         UPCOMING = :upcoming
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

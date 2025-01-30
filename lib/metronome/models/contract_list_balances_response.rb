@@ -28,6 +28,8 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
+      # @abstract
+      #
       # @example
       # ```ruby
       # case data

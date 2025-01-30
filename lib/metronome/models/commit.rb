@@ -315,6 +315,8 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # @example
       # ```ruby
       # case type
@@ -329,6 +331,11 @@ module Metronome
         POSTPAID = :POSTPAID
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -373,6 +380,8 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # @example
       # ```ruby
       # case ledger
@@ -474,6 +483,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case type
@@ -485,6 +496,11 @@ module Metronome
             PREPAID_COMMIT_SEGMENT_START = :PREPAID_COMMIT_SEGMENT_START
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -538,6 +554,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case type
@@ -549,6 +567,11 @@ module Metronome
             PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION = :PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -602,6 +625,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case type
@@ -613,6 +638,11 @@ module Metronome
             PREPAID_COMMIT_ROLLOVER = :PREPAID_COMMIT_ROLLOVER
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -659,6 +689,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case type
@@ -670,6 +702,11 @@ module Metronome
             PREPAID_COMMIT_EXPIRATION = :PREPAID_COMMIT_EXPIRATION
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -723,6 +760,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case type
@@ -734,6 +773,11 @@ module Metronome
             PREPAID_COMMIT_CANCELED = :PREPAID_COMMIT_CANCELED
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -787,6 +831,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case type
@@ -798,6 +844,11 @@ module Metronome
             PREPAID_COMMIT_CREDITED = :PREPAID_COMMIT_CREDITED
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -837,6 +888,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case type
@@ -848,6 +901,11 @@ module Metronome
             POSTPAID_COMMIT_INITIAL_BALANCE = :POSTPAID_COMMIT_INITIAL_BALANCE
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -901,6 +959,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case type
@@ -912,6 +972,11 @@ module Metronome
             POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION = :POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -965,6 +1030,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case type
@@ -976,6 +1043,11 @@ module Metronome
             POSTPAID_COMMIT_ROLLOVER = :POSTPAID_COMMIT_ROLLOVER
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -1022,6 +1094,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case type
@@ -1033,6 +1107,11 @@ module Metronome
             POSTPAID_COMMIT_TRUEUP = :POSTPAID_COMMIT_TRUEUP
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -1076,6 +1155,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case type
@@ -1087,6 +1168,11 @@ module Metronome
             PREPAID_COMMIT_MANUAL = :PREPAID_COMMIT_MANUAL
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -1133,6 +1219,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case type
@@ -1144,6 +1232,11 @@ module Metronome
             POSTPAID_COMMIT_MANUAL = :POSTPAID_COMMIT_MANUAL
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -1183,6 +1276,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case type
@@ -1194,10 +1289,17 @@ module Metronome
             POSTPAID_COMMIT_EXPIRATION = :POSTPAID_COMMIT_EXPIRATION
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
       end
 
+      # @abstract
+      #
       # @example
       # ```ruby
       # case rate_type
@@ -1212,6 +1314,11 @@ module Metronome
         LIST_RATE = :LIST_RATE
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example

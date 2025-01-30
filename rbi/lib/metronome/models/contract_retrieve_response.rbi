@@ -348,7 +348,7 @@ module Metronome
               GCP = :GCP
               GCP_PRO_SERVICE = :GCP_PRO_SERVICE
 
-              sig { returns(T::Array[Symbol]) }
+              sig { override.returns(T::Array[Symbol]) }
               def self.values; end
             end
           end
@@ -383,7 +383,7 @@ module Metronome
             WORKDAY = :workday
             GCP_MARKETPLACE = :gcp_marketplace
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
 
@@ -395,7 +395,7 @@ module Metronome
             TACKLE = :tackle
             AWS_SNS = :aws_sns
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end
@@ -405,7 +405,7 @@ module Metronome
 
           ALL = :ALL
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
       end

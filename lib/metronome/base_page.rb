@@ -3,6 +3,8 @@
 module Metronome
   # @private
   #
+  # @abstract
+  #
   module BasePage
     # rubocop:disable Lint/UnusedMethodArgument
 

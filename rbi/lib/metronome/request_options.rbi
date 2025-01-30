@@ -6,6 +6,8 @@ module Metronome
   end
 
   module RequestParameters
+    abstract!
+
     Shape = T.type_alias { {request_options: Metronome::RequestOpts} }
 
     sig { returns(Metronome::RequestOpts) }

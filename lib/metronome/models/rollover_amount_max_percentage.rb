@@ -30,6 +30,8 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
+      # @abstract
+      #
       # Rollover up to a percentage of the original credit grant amount.
       #
       # @example
@@ -43,6 +45,11 @@ module Metronome
         MAX_PERCENTAGE = :MAX_PERCENTAGE
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

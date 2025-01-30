@@ -141,6 +141,8 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
+      # @abstract
+      #
       # Specifies the type of aggregation performed on matching events.
       #
       # @example
@@ -166,6 +168,11 @@ module Metronome
         UNIQUE = :UNIQUE
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

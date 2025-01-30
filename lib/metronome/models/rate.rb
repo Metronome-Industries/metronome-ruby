@@ -132,6 +132,8 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
+      # @abstract
+      #
       # @example
       # ```ruby
       # case rate_type
@@ -155,6 +157,11 @@ module Metronome
         TIERED = :TIERED
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

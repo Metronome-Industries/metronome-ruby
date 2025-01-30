@@ -179,7 +179,7 @@ module Metronome
               TIERED = :TIERED
               CUSTOM = :CUSTOM
 
-              sig { returns(T::Array[Symbol]) }
+              sig { override.returns(T::Array[Symbol]) }
               def self.values; end
             end
 
@@ -220,7 +220,7 @@ module Metronome
                 TIERED = :TIERED
                 CUSTOM = :CUSTOM
 
-                sig { returns(T::Array[Symbol]) }
+                sig { override.returns(T::Array[Symbol]) }
                 def self.values; end
               end
             end

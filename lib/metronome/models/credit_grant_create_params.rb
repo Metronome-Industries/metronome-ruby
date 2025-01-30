@@ -270,6 +270,8 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @abstract
+        #
         # Specify how much to rollover to the rollover credit grant
         #
         # @example

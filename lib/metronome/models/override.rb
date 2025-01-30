@@ -489,6 +489,8 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case rate_type
@@ -512,6 +514,11 @@ module Metronome
           CUSTOM = :CUSTOM
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -542,6 +549,8 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # @example
       # ```ruby
       # case rate_type
@@ -565,8 +574,15 @@ module Metronome
         CUSTOM = :CUSTOM
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # @example
       # ```ruby
       # case target
@@ -581,8 +597,15 @@ module Metronome
         LIST_RATE = :LIST_RATE
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # @example
       # ```ruby
       # case type
@@ -600,6 +623,11 @@ module Metronome
         TIERED = :TIERED
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

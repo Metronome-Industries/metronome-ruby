@@ -51,6 +51,8 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @abstract
+        #
         # The operation to perform on the quantity
         #
         # @example
@@ -67,6 +69,11 @@ module Metronome
           DIVIDE = :DIVIDE
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

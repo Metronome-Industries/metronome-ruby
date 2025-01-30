@@ -266,6 +266,8 @@ module Metronome
           end
         end
 
+        # @abstract
+        #
         # This field's availability is dependent on your client's configuration.
         #
         # @example
@@ -282,8 +284,15 @@ module Metronome
           UNBILLABLE = :unbillable
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case breakdown_granularity
@@ -298,6 +307,11 @@ module Metronome
           DAY = :DAY
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

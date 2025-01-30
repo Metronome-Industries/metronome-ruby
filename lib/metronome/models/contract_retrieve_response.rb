@@ -432,6 +432,8 @@ module Metronome
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
+            # @abstract
+            #
             # @example
             # ```ruby
             # case reseller_type
@@ -452,6 +454,11 @@ module Metronome
               GCP_PRO_SERVICE = :GCP_PRO_SERVICE
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
         end
@@ -490,6 +497,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case billing_provider
@@ -518,8 +527,15 @@ module Metronome
             GCP_MARKETPLACE = :gcp_marketplace
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case delivery_method
@@ -540,9 +556,16 @@ module Metronome
             AWS_SNS = :aws_sns
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
+        # @abstract
+        #
         # Determines which scheduled and commit charges to consolidate onto the Contract's
         #   usage invoice. The charge's `timestamp` must match the usage invoice's
         #   `ending_before` date for consolidation to occur. This field cannot be modified
@@ -560,6 +583,11 @@ module Metronome
           ALL = :ALL
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

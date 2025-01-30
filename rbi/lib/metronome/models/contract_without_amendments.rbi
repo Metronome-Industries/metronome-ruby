@@ -231,7 +231,7 @@ module Metronome
           SUPERSEDE = :SUPERSEDE
           RENEWAL = :RENEWAL
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
       end
@@ -258,7 +258,7 @@ module Metronome
           QUARTERLY = :QUARTERLY
           ANNUAL = :ANNUAL
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
       end
@@ -450,7 +450,7 @@ module Metronome
 
             PERIODS = :PERIODS
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end
@@ -477,7 +477,7 @@ module Metronome
           COMMIT_RATE = :COMMIT_RATE
           LIST_RATE = :LIST_RATE
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
 
@@ -701,7 +701,7 @@ module Metronome
 
             PERIODS = :PERIODS
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end
@@ -728,7 +728,7 @@ module Metronome
           COMMIT_RATE = :COMMIT_RATE
           LIST_RATE = :LIST_RATE
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
 
@@ -894,7 +894,7 @@ module Metronome
           GCP = :GCP
           GCP_PRO_SERVICE = :GCP_PRO_SERVICE
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
       end
@@ -904,7 +904,7 @@ module Metronome
 
         ALL = :ALL
 
-        sig { returns(T::Array[Symbol]) }
+        sig { override.returns(T::Array[Symbol]) }
         def self.values; end
       end
 

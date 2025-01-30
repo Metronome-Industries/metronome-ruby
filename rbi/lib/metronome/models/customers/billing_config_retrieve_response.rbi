@@ -141,7 +141,7 @@ module Metronome
             US_WEST_1 = :"us-west-1"
             US_WEST_2 = :"us-west-2"
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
 
@@ -153,7 +153,7 @@ module Metronome
             SUSPENDED = :Suspended
             PENDING_FULFILLMENT_START = :PendingFulfillmentStart
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
 
@@ -163,7 +163,7 @@ module Metronome
             CHARGE_AUTOMATICALLY = :charge_automatically
             SEND_INVOICE = :send_invoice
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end

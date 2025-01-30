@@ -248,6 +248,8 @@ module Metronome
           end
         end
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case rate_type
@@ -262,6 +264,11 @@ module Metronome
           LIST_RATE = :LIST_RATE
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

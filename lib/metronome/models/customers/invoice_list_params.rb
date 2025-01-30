@@ -126,6 +126,8 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @abstract
+        #
         # Invoice sort order by issued_at, e.g. date_asc or date_desc. Defaults to
         #   date_asc.
         #
@@ -143,6 +145,11 @@ module Metronome
           DATE_DESC = :date_desc
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

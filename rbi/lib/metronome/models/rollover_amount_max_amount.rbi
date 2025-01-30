@@ -22,7 +22,7 @@ module Metronome
 
         MAX_AMOUNT = :MAX_AMOUNT
 
-        sig { returns(T::Array[Symbol]) }
+        sig { override.returns(T::Array[Symbol]) }
         def self.values; end
       end
     end
