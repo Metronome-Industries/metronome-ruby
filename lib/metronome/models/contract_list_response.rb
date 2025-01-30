@@ -198,7 +198,7 @@ module Metronome
 
           # @!attribute [r] credits
           #
-          #   @return [Array<Metronome::Models::Credit>]
+          #   @return [Array<Metronome::Models::Credit>, nil]
           optional :credits, -> { Metronome::ArrayOf[Metronome::Models::Credit] }
 
           # @!parse
@@ -208,7 +208,7 @@ module Metronome
           # @!attribute [r] discounts
           #   This field's availability is dependent on your client's configuration.
           #
-          #   @return [Array<Metronome::Models::Discount>]
+          #   @return [Array<Metronome::Models::Discount>, nil]
           optional :discounts, -> { Metronome::ArrayOf[Metronome::Models::Discount] }
 
           # @!parse
@@ -228,7 +228,7 @@ module Metronome
           # @!attribute [r] professional_services
           #   This field's availability is dependent on your client's configuration.
           #
-          #   @return [Array<Metronome::Models::ProService>]
+          #   @return [Array<Metronome::Models::ProService>, nil]
           optional :professional_services, -> { Metronome::ArrayOf[Metronome::Models::ProService] }
 
           # @!parse
@@ -238,7 +238,7 @@ module Metronome
           # @!attribute [r] reseller_royalties
           #   This field's availability is dependent on your client's configuration.
           #
-          #   @return [Array<Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty>]
+          #   @return [Array<Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty>, nil]
           optional :reseller_royalties,
                    -> {
                      Metronome::ArrayOf[Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty]

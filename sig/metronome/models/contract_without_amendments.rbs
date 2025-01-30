@@ -44,11 +44,11 @@ module Metronome
 
       attr_accessor usage_statement_schedule: Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule
 
-      attr_reader credits: Array[Metronome::Models::Credit]
+      attr_reader credits: Array[Metronome::Models::Credit]?
 
       def credits=: (Array[Metronome::Models::Credit]) -> void
 
-      attr_reader discounts: Array[Metronome::Models::Discount]
+      attr_reader discounts: Array[Metronome::Models::Discount]?
 
       def discounts=: (Array[Metronome::Models::Discount]) -> void
 
@@ -68,7 +68,7 @@ module Metronome
 
       def netsuite_sales_order_id=: (String) -> void
 
-      attr_reader professional_services: Array[Metronome::Models::ProService]
+      attr_reader professional_services: Array[Metronome::Models::ProService]?
 
       def professional_services=: (Array[Metronome::Models::ProService]) -> void
 
@@ -76,19 +76,19 @@ module Metronome
 
       def rate_card_id=: (String) -> void
 
-      attr_reader recurring_commits: Array[Metronome::Models::ContractWithoutAmendments::RecurringCommit]
+      attr_reader recurring_commits: Array[Metronome::Models::ContractWithoutAmendments::RecurringCommit]?
 
       def recurring_commits=: (
         Array[Metronome::Models::ContractWithoutAmendments::RecurringCommit]
       ) -> void
 
-      attr_reader recurring_credits: Array[Metronome::Models::ContractWithoutAmendments::RecurringCredit]
+      attr_reader recurring_credits: Array[Metronome::Models::ContractWithoutAmendments::RecurringCredit]?
 
       def recurring_credits=: (
         Array[Metronome::Models::ContractWithoutAmendments::RecurringCredit]
       ) -> void
 
-      attr_reader reseller_royalties: Array[Metronome::Models::ContractWithoutAmendments::ResellerRoyalty]
+      attr_reader reseller_royalties: Array[Metronome::Models::ContractWithoutAmendments::ResellerRoyalty]?
 
       def reseller_royalties=: (
         Array[Metronome::Models::ContractWithoutAmendments::ResellerRoyalty]
@@ -253,11 +253,11 @@ module Metronome
 
         attr_accessor starting_at: Time
 
-        attr_reader applicable_product_ids: Array[String]
+        attr_reader applicable_product_ids: Array[String]?
 
         def applicable_product_ids=: (Array[String]) -> void
 
-        attr_reader applicable_product_tags: Array[String]
+        attr_reader applicable_product_tags: Array[String]?
 
         def applicable_product_tags=: (Array[String]) -> void
 
@@ -472,11 +472,11 @@ module Metronome
 
         attr_accessor starting_at: Time
 
-        attr_reader applicable_product_ids: Array[String]
+        attr_reader applicable_product_ids: Array[String]?
 
         def applicable_product_ids=: (Array[String]) -> void
 
-        attr_reader applicable_product_tags: Array[String]
+        attr_reader applicable_product_tags: Array[String]?
 
         def applicable_product_tags=: (Array[String]) -> void
 
@@ -682,11 +682,11 @@ module Metronome
 
         attr_accessor starting_at: Time
 
-        attr_reader applicable_product_ids: Array[String]
+        attr_reader applicable_product_ids: Array[String]?
 
         def applicable_product_ids=: (Array[String]) -> void
 
-        attr_reader applicable_product_tags: Array[String]
+        attr_reader applicable_product_tags: Array[String]?
 
         def applicable_product_tags=: (Array[String]) -> void
 

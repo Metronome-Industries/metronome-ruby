@@ -16,7 +16,7 @@ module Metronome
       sig { params(next_page: String).void }
       attr_writer :next_page
 
-      sig { returns(T::Array[Symbol]) }
+      sig { returns(T.nilable(T::Array[Symbol])) }
       attr_reader :entities
 
       sig { params(entities: T::Array[Symbol]).void }

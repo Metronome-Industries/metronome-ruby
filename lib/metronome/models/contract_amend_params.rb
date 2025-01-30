@@ -27,7 +27,7 @@ module Metronome
 
       # @!attribute [r] commits
       #
-      #   @return [Array<Metronome::Models::ContractAmendParams::Commit>]
+      #   @return [Array<Metronome::Models::ContractAmendParams::Commit>, nil]
       optional :commits, -> { Metronome::ArrayOf[Metronome::Models::ContractAmendParams::Commit] }
 
       # @!parse
@@ -36,7 +36,7 @@ module Metronome
 
       # @!attribute [r] credits
       #
-      #   @return [Array<Metronome::Models::ContractAmendParams::Credit>]
+      #   @return [Array<Metronome::Models::ContractAmendParams::Credit>, nil]
       optional :credits, -> { Metronome::ArrayOf[Metronome::Models::ContractAmendParams::Credit] }
 
       # @!parse
@@ -55,7 +55,7 @@ module Metronome
       # @!attribute [r] discounts
       #   This field's availability is dependent on your client's configuration.
       #
-      #   @return [Array<Metronome::Models::ContractAmendParams::Discount>]
+      #   @return [Array<Metronome::Models::ContractAmendParams::Discount>, nil]
       optional :discounts, -> { Metronome::ArrayOf[Metronome::Models::ContractAmendParams::Discount] }
 
       # @!parse
@@ -74,7 +74,7 @@ module Metronome
 
       # @!attribute [r] overrides
       #
-      #   @return [Array<Metronome::Models::ContractAmendParams::Override>]
+      #   @return [Array<Metronome::Models::ContractAmendParams::Override>, nil]
       optional :overrides, -> { Metronome::ArrayOf[Metronome::Models::ContractAmendParams::Override] }
 
       # @!parse
@@ -84,7 +84,7 @@ module Metronome
       # @!attribute [r] professional_services
       #   This field's availability is dependent on your client's configuration.
       #
-      #   @return [Array<Metronome::Models::ContractAmendParams::ProfessionalService>]
+      #   @return [Array<Metronome::Models::ContractAmendParams::ProfessionalService>, nil]
       optional :professional_services,
                -> { Metronome::ArrayOf[Metronome::Models::ContractAmendParams::ProfessionalService] }
 
@@ -95,7 +95,7 @@ module Metronome
       # @!attribute [r] reseller_royalties
       #   This field's availability is dependent on your client's configuration.
       #
-      #   @return [Array<Metronome::Models::ContractAmendParams::ResellerRoyalty>]
+      #   @return [Array<Metronome::Models::ContractAmendParams::ResellerRoyalty>, nil]
       optional :reseller_royalties,
                -> { Metronome::ArrayOf[Metronome::Models::ContractAmendParams::ResellerRoyalty] }
 
@@ -115,7 +115,7 @@ module Metronome
 
       # @!attribute [r] scheduled_charges
       #
-      #   @return [Array<Metronome::Models::ContractAmendParams::ScheduledCharge>]
+      #   @return [Array<Metronome::Models::ContractAmendParams::ScheduledCharge>, nil]
       optional :scheduled_charges,
                -> { Metronome::ArrayOf[Metronome::Models::ContractAmendParams::ScheduledCharge] }
 
@@ -221,7 +221,7 @@ module Metronome
         #   Which products the commit applies to. If both applicable_product_ids and
         #     applicable_product_tags are not provided, the commit applies to all products.
         #
-        #   @return [Array<String>]
+        #   @return [Array<String>, nil]
         optional :applicable_product_ids, Metronome::ArrayOf[String]
 
         # @!parse
@@ -232,7 +232,7 @@ module Metronome
         #   Which tags the commit applies to. If both applicable_product_ids and
         #     applicable_product_tags are not provided, the commit applies to all products.
         #
-        #   @return [Array<String>]
+        #   @return [Array<String>, nil]
         optional :applicable_product_tags, Metronome::ArrayOf[String]
 
         # @!parse
@@ -505,7 +505,7 @@ module Metronome
           # @!attribute [r] schedule_items
           #   Either provide amount or provide both unit_price and quantity.
           #
-          #   @return [Array<Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule::ScheduleItem>]
+          #   @return [Array<Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule::ScheduleItem>, nil]
           optional :schedule_items,
                    -> {
                      Metronome::ArrayOf[Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule::ScheduleItem]
@@ -804,7 +804,7 @@ module Metronome
         #   Which products the credit applies to. If both applicable_product_ids and
         #     applicable_product_tags are not provided, the credit applies to all products.
         #
-        #   @return [Array<String>]
+        #   @return [Array<String>, nil]
         optional :applicable_product_ids, Metronome::ArrayOf[String]
 
         # @!parse
@@ -815,7 +815,7 @@ module Metronome
         #   Which tags the credit applies to. If both applicable_product_ids and
         #     applicable_product_tags are not provided, the credit applies to all products.
         #
-        #   @return [Array<String>]
+        #   @return [Array<String>, nil]
         optional :applicable_product_tags, Metronome::ArrayOf[String]
 
         # @!parse
@@ -1105,7 +1105,7 @@ module Metronome
           # @!attribute [r] schedule_items
           #   Either provide amount or provide both unit_price and quantity.
           #
-          #   @return [Array<Metronome::Models::ContractAmendParams::Discount::Schedule::ScheduleItem>]
+          #   @return [Array<Metronome::Models::ContractAmendParams::Discount::Schedule::ScheduleItem>, nil]
           optional :schedule_items,
                    -> {
                      Metronome::ArrayOf[Metronome::Models::ContractAmendParams::Discount::Schedule::ScheduleItem]
@@ -1373,7 +1373,7 @@ module Metronome
         #   tags identifying products whose rates are being overridden. Cannot be used in
         #     conjunction with override_specifiers.
         #
-        #   @return [Array<String>]
+        #   @return [Array<String>, nil]
         optional :applicable_product_tags, Metronome::ArrayOf[String]
 
         # @!parse
@@ -1426,7 +1426,7 @@ module Metronome
         #   Cannot be used in conjunction with product_id or applicable_product_tags. If
         #     provided, the override will apply to all products with the specified specifiers.
         #
-        #   @return [Array<Metronome::Models::ContractAmendParams::Override::OverrideSpecifier>]
+        #   @return [Array<Metronome::Models::ContractAmendParams::Override::OverrideSpecifier>, nil]
         optional :override_specifiers,
                  -> {
                    Metronome::ArrayOf[Metronome::Models::ContractAmendParams::Override::OverrideSpecifier]
@@ -1485,7 +1485,7 @@ module Metronome
         # @!attribute [r] tiers
         #   Required for TIERED type. Must have at least one tier.
         #
-        #   @return [Array<Metronome::Models::ContractAmendParams::Override::Tier>]
+        #   @return [Array<Metronome::Models::ContractAmendParams::Override::Tier>, nil]
         optional :tiers, -> { Metronome::ArrayOf[Metronome::Models::ContractAmendParams::Override::Tier] }
 
         # @!parse
@@ -1556,7 +1556,7 @@ module Metronome
           #     presentation_group_values. If provided, the override will only apply to the
           #     specified commits. If not provided, the override will apply to all commits.
           #
-          #   @return [Array<String>]
+          #   @return [Array<String>, nil]
           optional :commit_ids, Metronome::ArrayOf[String]
 
           # @!parse
@@ -1600,7 +1600,7 @@ module Metronome
           #   If provided, the override will only apply to products with all the specified
           #     tags.
           #
-          #   @return [Array<String>]
+          #   @return [Array<String>, nil]
           optional :product_tags, Metronome::ArrayOf[String]
 
           # @!parse
@@ -1613,7 +1613,7 @@ module Metronome
           #     presentation_group_values. If provided, the override will only apply to commits
           #     created by the specified recurring commit ids.
           #
-          #   @return [Array<String>]
+          #   @return [Array<String>, nil]
           optional :recurring_commit_ids, Metronome::ArrayOf[String]
 
           # @!parse
@@ -1626,7 +1626,7 @@ module Metronome
           #     presentation_group_values. If provided, the override will only apply to credits
           #     created by the specified recurring credit ids.
           #
-          #   @return [Array<String>]
+          #   @return [Array<String>, nil]
           optional :recurring_credit_ids, Metronome::ArrayOf[String]
 
           # @!parse
@@ -1731,7 +1731,7 @@ module Metronome
           # @!attribute [r] tiers
           #   Only set for TIERED rate_type.
           #
-          #   @return [Array<Metronome::Models::Tier>]
+          #   @return [Array<Metronome::Models::Tier>, nil]
           optional :tiers, -> { Metronome::ArrayOf[Metronome::Models::Tier] }
 
           # @!parse
@@ -1995,7 +1995,7 @@ module Metronome
         # @!attribute [r] applicable_product_ids
         #   Must provide at least one of applicable_product_ids or applicable_product_tags.
         #
-        #   @return [Array<String>]
+        #   @return [Array<String>, nil]
         optional :applicable_product_ids, Metronome::ArrayOf[String]
 
         # @!parse
@@ -2005,7 +2005,7 @@ module Metronome
         # @!attribute [r] applicable_product_tags
         #   Must provide at least one of applicable_product_ids or applicable_product_tags.
         #
-        #   @return [Array<String>]
+        #   @return [Array<String>, nil]
         optional :applicable_product_tags, Metronome::ArrayOf[String]
 
         # @!parse
@@ -2299,7 +2299,7 @@ module Metronome
           # @!attribute [r] schedule_items
           #   Either provide amount or provide both unit_price and quantity.
           #
-          #   @return [Array<Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule::ScheduleItem>]
+          #   @return [Array<Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule::ScheduleItem>, nil]
           optional :schedule_items,
                    -> {
                      Metronome::ArrayOf[Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule::ScheduleItem]

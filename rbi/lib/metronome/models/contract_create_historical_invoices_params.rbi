@@ -162,7 +162,7 @@ module Metronome
           attr_writer :quantity
 
           sig do
-            returns(T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity])
+            returns(T.nilable(T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]))
           end
           attr_reader :subtotals_with_quantity
 

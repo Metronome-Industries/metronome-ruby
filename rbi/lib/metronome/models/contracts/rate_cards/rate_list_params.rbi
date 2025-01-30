@@ -39,7 +39,9 @@ module Metronome
           sig { params(next_page: String).void }
           attr_writer :next_page
 
-          sig { returns(T::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector]) }
+          sig do
+            returns(T.nilable(T::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector]))
+          end
           attr_reader :selectors
 
           sig do
@@ -91,7 +93,7 @@ module Metronome
             sig { params(product_id: String).void }
             attr_writer :product_id
 
-            sig { returns(T::Array[String]) }
+            sig { returns(T.nilable(T::Array[String])) }
             attr_reader :product_tags
 
             sig { params(product_tags: T::Array[String]).void }

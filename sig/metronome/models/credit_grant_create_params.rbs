@@ -51,7 +51,7 @@ module Metronome
 
       def invoice_date=: (Time) -> void
 
-      attr_reader product_ids: Array[String]
+      attr_reader product_ids: Array[String]?
 
       def product_ids=: (Array[String]) -> void
 

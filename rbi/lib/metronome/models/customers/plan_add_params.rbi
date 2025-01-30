@@ -44,7 +44,9 @@ module Metronome
         sig { params(net_payment_terms_days: Float).void }
         attr_writer :net_payment_terms_days
 
-        sig { returns(T::Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment]) }
+        sig do
+          returns(T.nilable(T::Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment]))
+        end
         attr_reader :overage_rate_adjustments
 
         sig do
@@ -54,7 +56,7 @@ module Metronome
         end
         attr_writer :overage_rate_adjustments
 
-        sig { returns(T::Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment]) }
+        sig { returns(T.nilable(T::Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment])) }
         attr_reader :price_adjustments
 
         sig do

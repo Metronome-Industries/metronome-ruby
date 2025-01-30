@@ -39,7 +39,7 @@ module Metronome
 
         def cost=: (Float) -> void
 
-        attr_reader line_item_breakdown: Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown]
+        attr_reader line_item_breakdown: Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown]?
 
         def line_item_breakdown=: (
           Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown]

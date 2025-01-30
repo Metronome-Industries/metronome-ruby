@@ -15,7 +15,7 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      attr_reader customer_ids: Array[String]
+      attr_reader customer_ids: Array[String]?
 
       def customer_ids=: (Array[String]) -> void
 
@@ -35,7 +35,7 @@ module Metronome
 
       def only_archived=: (bool) -> void
 
-      attr_reader salesforce_account_ids: Array[String]
+      attr_reader salesforce_account_ids: Array[String]?
 
       def salesforce_account_ids=: (Array[String]) -> void
 

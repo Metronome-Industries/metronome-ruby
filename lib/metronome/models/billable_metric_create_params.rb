@@ -58,7 +58,7 @@ module Metronome
       #   Property names that are used to group usage costs on an invoice. Each entry
       #     represents a set of properties used to slice events into distinct buckets.
       #
-      #   @return [Array<Array<String>>]
+      #   @return [Array<Array<String>>, nil]
       optional :group_keys, Metronome::ArrayOf[Metronome::ArrayOf[String]]
 
       # @!parse
@@ -70,7 +70,7 @@ module Metronome
       #     rule on an event property. All rules must pass for the event to match the
       #     billable metric.
       #
-      #   @return [Array<Metronome::Models::PropertyFilter>]
+      #   @return [Array<Metronome::Models::PropertyFilter>, nil]
       optional :property_filters, -> { Metronome::ArrayOf[Metronome::Models::PropertyFilter] }
 
       # @!parse

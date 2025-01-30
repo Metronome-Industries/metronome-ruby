@@ -18,11 +18,11 @@ module Metronome
 
       def next_page=: (String) -> void
 
-      attr_reader credit_type_ids: Array[String]
+      attr_reader credit_type_ids: Array[String]?
 
       def credit_type_ids=: (Array[String]) -> void
 
-      attr_reader customer_ids: Array[String]
+      attr_reader customer_ids: Array[String]?
 
       def customer_ids=: (Array[String]) -> void
 

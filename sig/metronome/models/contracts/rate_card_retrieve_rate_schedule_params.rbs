@@ -32,7 +32,7 @@ module Metronome
 
         def ending_before=: (Time) -> void
 
-        attr_reader selectors: Array[Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams::Selector]
+        attr_reader selectors: Array[Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams::Selector]?
 
         def selectors=: (
           Array[Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams::Selector]

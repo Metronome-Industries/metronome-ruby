@@ -142,7 +142,7 @@ module Metronome
 
         # @!attribute [r] invoice_adjustments
         #
-        #   @return [Array<Metronome::Models::Customers::Invoice::InvoiceAdjustment>]
+        #   @return [Array<Metronome::Models::Customers::Invoice::InvoiceAdjustment>, nil]
         optional :invoice_adjustments,
                  -> { Metronome::ArrayOf[Metronome::Models::Customers::Invoice::InvoiceAdjustment] }
 
@@ -520,11 +520,11 @@ module Metronome
           #   if presentation groups are used, this will contain the values used to break down
           #     the line item
           #
-          #   @return [Hash{Symbol=>String}, nil]
-          optional :presentation_group_values, Metronome::HashOf[String]
+          #   @return [Hash{Symbol=>String, nil}, nil]
+          optional :presentation_group_values, Metronome::HashOf[String, nil?: true]
 
           # @!parse
-          #   # @return [Hash{Symbol=>String}, nil]
+          #   # @return [Hash{Symbol=>String, nil}]
           #   attr_writer :presentation_group_values
 
           # @!attribute [r] pricing_group_values
@@ -634,7 +634,7 @@ module Metronome
 
           # @!attribute [r] sub_line_items
           #
-          #   @return [Array<Metronome::Models::Customers::Invoice::LineItem::SubLineItem>]
+          #   @return [Array<Metronome::Models::Customers::Invoice::LineItem::SubLineItem>, nil]
           optional :sub_line_items,
                    -> { Metronome::ArrayOf[Metronome::Models::Customers::Invoice::LineItem::SubLineItem] }
 
@@ -683,7 +683,7 @@ module Metronome
           #   # @param netsuite_invoice_billing_start [Time]
           #   # @param netsuite_item_id [String]
           #   # @param postpaid_commit [Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit]
-          #   # @param presentation_group_values [Hash{Symbol=>String}, nil]
+          #   # @param presentation_group_values [Hash{Symbol=>String, nil}]
           #   # @param pricing_group_values [Hash{Symbol=>String}]
           #   # @param product_custom_fields [Hash{Symbol=>String}]
           #   # @param product_id [String]
@@ -948,7 +948,7 @@ module Metronome
 
             # @!attribute [r] tiers
             #
-            #   @return [Array<Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier>]
+            #   @return [Array<Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier>, nil]
             optional :tiers,
                      -> {
                        Metronome::ArrayOf[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]

@@ -19,7 +19,7 @@ module Metronome
         #     multiple rate cards, it will reference the rate card to which it was most
         #     recently assigned. It is not exposed to end customers.
         #
-        #   @return [Array<Metronome::Models::Contracts::RateCardCreateParams::Alias>]
+        #   @return [Array<Metronome::Models::Contracts::RateCardCreateParams::Alias>, nil]
         optional :aliases,
                  -> {
                    Metronome::ArrayOf[Metronome::Models::Contracts::RateCardCreateParams::Alias]
@@ -32,7 +32,7 @@ module Metronome
         # @!attribute [r] credit_type_conversions
         #   Required when using custom pricing units in rates.
         #
-        #   @return [Array<Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion>]
+        #   @return [Array<Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion>, nil]
         optional :credit_type_conversions,
                  -> {
                    Metronome::ArrayOf[Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion]

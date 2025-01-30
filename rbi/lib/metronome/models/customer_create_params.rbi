@@ -35,7 +35,9 @@ module Metronome
       sig { params(custom_fields: T::Hash[Symbol, String]).void }
       attr_writer :custom_fields
 
-      sig { returns(T::Array[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration]) }
+      sig do
+        returns(T.nilable(T::Array[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration]))
+      end
       attr_reader :customer_billing_provider_configurations
 
       sig do
@@ -51,7 +53,7 @@ module Metronome
       sig { params(external_id: String).void }
       attr_writer :external_id
 
-      sig { returns(T::Array[String]) }
+      sig { returns(T.nilable(T::Array[String])) }
       attr_reader :ingest_aliases
 
       sig { params(ingest_aliases: T::Array[String]).void }

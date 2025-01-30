@@ -15,7 +15,7 @@ module Metronome
 
       def next_page=: (String) -> void
 
-      attr_reader entities: Array[Metronome::Models::CustomFieldListKeysParams::entity]
+      attr_reader entities: Array[Metronome::Models::CustomFieldListKeysParams::entity]?
 
       def entities=: (
         Array[Metronome::Models::CustomFieldListKeysParams::entity]

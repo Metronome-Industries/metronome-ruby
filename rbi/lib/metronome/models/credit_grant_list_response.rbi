@@ -67,7 +67,7 @@ module Metronome
       sig { returns(T.nilable(String)) }
       attr_accessor :invoice_id
 
-      sig { returns(T::Array[Metronome::Models::CreditGrantListResponse::Product]) }
+      sig { returns(T.nilable(T::Array[Metronome::Models::CreditGrantListResponse::Product])) }
       attr_reader :products
 
       sig { params(products: T::Array[Metronome::Models::CreditGrantListResponse::Product]).void }

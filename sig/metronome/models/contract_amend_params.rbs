@@ -29,13 +29,13 @@ module Metronome
 
       attr_accessor starting_at: Time
 
-      attr_reader commits: Array[Metronome::Models::ContractAmendParams::Commit]
+      attr_reader commits: Array[Metronome::Models::ContractAmendParams::Commit]?
 
       def commits=: (
         Array[Metronome::Models::ContractAmendParams::Commit]
       ) -> void
 
-      attr_reader credits: Array[Metronome::Models::ContractAmendParams::Credit]
+      attr_reader credits: Array[Metronome::Models::ContractAmendParams::Credit]?
 
       def credits=: (
         Array[Metronome::Models::ContractAmendParams::Credit]
@@ -45,7 +45,7 @@ module Metronome
 
       def custom_fields=: (Hash[Symbol, String]) -> void
 
-      attr_reader discounts: Array[Metronome::Models::ContractAmendParams::Discount]
+      attr_reader discounts: Array[Metronome::Models::ContractAmendParams::Discount]?
 
       def discounts=: (
         Array[Metronome::Models::ContractAmendParams::Discount]
@@ -55,19 +55,19 @@ module Metronome
 
       def netsuite_sales_order_id=: (String) -> void
 
-      attr_reader overrides: Array[Metronome::Models::ContractAmendParams::Override]
+      attr_reader overrides: Array[Metronome::Models::ContractAmendParams::Override]?
 
       def overrides=: (
         Array[Metronome::Models::ContractAmendParams::Override]
       ) -> void
 
-      attr_reader professional_services: Array[Metronome::Models::ContractAmendParams::ProfessionalService]
+      attr_reader professional_services: Array[Metronome::Models::ContractAmendParams::ProfessionalService]?
 
       def professional_services=: (
         Array[Metronome::Models::ContractAmendParams::ProfessionalService]
       ) -> void
 
-      attr_reader reseller_royalties: Array[Metronome::Models::ContractAmendParams::ResellerRoyalty]
+      attr_reader reseller_royalties: Array[Metronome::Models::ContractAmendParams::ResellerRoyalty]?
 
       def reseller_royalties=: (
         Array[Metronome::Models::ContractAmendParams::ResellerRoyalty]
@@ -77,7 +77,7 @@ module Metronome
 
       def salesforce_opportunity_id=: (String) -> void
 
-      attr_reader scheduled_charges: Array[Metronome::Models::ContractAmendParams::ScheduledCharge]
+      attr_reader scheduled_charges: Array[Metronome::Models::ContractAmendParams::ScheduledCharge]?
 
       def scheduled_charges=: (
         Array[Metronome::Models::ContractAmendParams::ScheduledCharge]
@@ -145,11 +145,11 @@ module Metronome
 
         def amount=: (Float) -> void
 
-        attr_reader applicable_product_ids: Array[String]
+        attr_reader applicable_product_ids: Array[String]?
 
         def applicable_product_ids=: (Array[String]) -> void
 
-        attr_reader applicable_product_tags: Array[String]
+        attr_reader applicable_product_tags: Array[String]?
 
         def applicable_product_tags=: (Array[String]) -> void
 
@@ -291,7 +291,7 @@ module Metronome
             Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule::RecurringSchedule
           ) -> void
 
-          attr_reader schedule_items: Array[Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule::ScheduleItem]
+          attr_reader schedule_items: Array[Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule::ScheduleItem]?
 
           def schedule_items=: (
             Array[Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule::ScheduleItem]
@@ -449,11 +449,11 @@ module Metronome
 
         attr_accessor product_id: String
 
-        attr_reader applicable_product_ids: Array[String]
+        attr_reader applicable_product_ids: Array[String]?
 
         def applicable_product_ids=: (Array[String]) -> void
 
-        attr_reader applicable_product_tags: Array[String]
+        attr_reader applicable_product_tags: Array[String]?
 
         def applicable_product_tags=: (Array[String]) -> void
 
@@ -618,7 +618,7 @@ module Metronome
             Metronome::Models::ContractAmendParams::Discount::Schedule::RecurringSchedule
           ) -> void
 
-          attr_reader schedule_items: Array[Metronome::Models::ContractAmendParams::Discount::Schedule::ScheduleItem]
+          attr_reader schedule_items: Array[Metronome::Models::ContractAmendParams::Discount::Schedule::ScheduleItem]?
 
           def schedule_items=: (
             Array[Metronome::Models::ContractAmendParams::Discount::Schedule::ScheduleItem]
@@ -768,7 +768,7 @@ module Metronome
       class Override < Metronome::BaseModel
         attr_accessor starting_at: Time
 
-        attr_reader applicable_product_tags: Array[String]
+        attr_reader applicable_product_tags: Array[String]?
 
         def applicable_product_tags=: (Array[String]) -> void
 
@@ -788,7 +788,7 @@ module Metronome
 
         def multiplier=: (Float) -> void
 
-        attr_reader override_specifiers: Array[Metronome::Models::ContractAmendParams::Override::OverrideSpecifier]
+        attr_reader override_specifiers: Array[Metronome::Models::ContractAmendParams::Override::OverrideSpecifier]?
 
         def override_specifiers=: (
           Array[Metronome::Models::ContractAmendParams::Override::OverrideSpecifier]
@@ -814,7 +814,7 @@ module Metronome
           Metronome::Models::ContractAmendParams::Override::target
         ) -> void
 
-        attr_reader tiers: Array[Metronome::Models::ContractAmendParams::Override::Tier]
+        attr_reader tiers: Array[Metronome::Models::ContractAmendParams::Override::Tier]?
 
         def tiers=: (
           Array[Metronome::Models::ContractAmendParams::Override::Tier]
@@ -861,7 +861,7 @@ module Metronome
           }
 
         class OverrideSpecifier < Metronome::BaseModel
-          attr_reader commit_ids: Array[String]
+          attr_reader commit_ids: Array[String]?
 
           def commit_ids=: (Array[String]) -> void
 
@@ -877,15 +877,15 @@ module Metronome
 
           def product_id=: (String) -> void
 
-          attr_reader product_tags: Array[String]
+          attr_reader product_tags: Array[String]?
 
           def product_tags=: (Array[String]) -> void
 
-          attr_reader recurring_commit_ids: Array[String]
+          attr_reader recurring_commit_ids: Array[String]?
 
           def recurring_commit_ids=: (Array[String]) -> void
 
-          attr_reader recurring_credit_ids: Array[String]
+          attr_reader recurring_credit_ids: Array[String]?
 
           def recurring_credit_ids=: (Array[String]) -> void
 
@@ -941,7 +941,7 @@ module Metronome
 
           def quantity=: (Float) -> void
 
-          attr_reader tiers: Array[Metronome::Models::Tier]
+          attr_reader tiers: Array[Metronome::Models::Tier]?
 
           def tiers=: (Array[Metronome::Models::Tier]) -> void
 
@@ -1082,11 +1082,11 @@ module Metronome
       class ResellerRoyalty < Metronome::BaseModel
         attr_accessor reseller_type: Metronome::Models::ContractAmendParams::ResellerRoyalty::reseller_type
 
-        attr_reader applicable_product_ids: Array[String]
+        attr_reader applicable_product_ids: Array[String]?
 
         def applicable_product_ids=: (Array[String]) -> void
 
-        attr_reader applicable_product_tags: Array[String]
+        attr_reader applicable_product_tags: Array[String]?
 
         def applicable_product_tags=: (Array[String]) -> void
 
@@ -1260,7 +1260,7 @@ module Metronome
             Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule::RecurringSchedule
           ) -> void
 
-          attr_reader schedule_items: Array[Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule::ScheduleItem]
+          attr_reader schedule_items: Array[Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule::ScheduleItem]?
 
           def schedule_items=: (
             Array[Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule::ScheduleItem]

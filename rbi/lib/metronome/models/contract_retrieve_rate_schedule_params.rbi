@@ -44,7 +44,7 @@ module Metronome
       sig { params(at: Time).void }
       attr_writer :at
 
-      sig { returns(T::Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector]) }
+      sig { returns(T.nilable(T::Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector])) }
       attr_reader :selectors
 
       sig do
@@ -105,7 +105,7 @@ module Metronome
         sig { params(product_id: String).void }
         attr_writer :product_id
 
-        sig { returns(T::Array[String]) }
+        sig { returns(T.nilable(T::Array[String])) }
         attr_reader :product_tags
 
         sig { params(product_tags: T::Array[String]).void }

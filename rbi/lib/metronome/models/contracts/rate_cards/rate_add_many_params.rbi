@@ -120,7 +120,7 @@ module Metronome
             sig { params(quantity: Float).void }
             attr_writer :quantity
 
-            sig { returns(T::Array[Metronome::Models::Tier]) }
+            sig { returns(T.nilable(T::Array[Metronome::Models::Tier])) }
             attr_reader :tiers
 
             sig { params(tiers: T::Array[Metronome::Models::Tier]).void }
@@ -197,7 +197,7 @@ module Metronome
               sig { params(price: Float).void }
               attr_writer :price
 
-              sig { returns(T::Array[Metronome::Models::Tier]) }
+              sig { returns(T.nilable(T::Array[Metronome::Models::Tier])) }
               attr_reader :tiers
 
               sig { params(tiers: T::Array[Metronome::Models::Tier]).void }

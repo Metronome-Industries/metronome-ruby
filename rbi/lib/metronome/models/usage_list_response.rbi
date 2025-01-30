@@ -30,7 +30,7 @@ module Metronome
             end_timestamp: Time,
             start_timestamp: Time,
             value: T.nilable(Float),
-            groups: T.nilable(T::Hash[Symbol, T.nilable(Float)])
+            groups: T::Hash[Symbol, T.nilable(Float)]
           }
         end
 
@@ -55,7 +55,7 @@ module Metronome
         sig { returns(T.nilable(T::Hash[Symbol, T.nilable(Float)])) }
         attr_reader :groups
 
-        sig { params(groups: T.nilable(T::Hash[Symbol, T.nilable(Float)])).void }
+        sig { params(groups: T::Hash[Symbol, T.nilable(Float)]).void }
         attr_writer :groups
 
         sig do
@@ -66,7 +66,7 @@ module Metronome
             end_timestamp: Time,
             start_timestamp: Time,
             value: T.nilable(Float),
-            groups: T.nilable(T::Hash[Symbol, T.nilable(Float)])
+            groups: T::Hash[Symbol, T.nilable(Float)]
           ).void
         end
         def initialize(

@@ -35,13 +35,13 @@ module Metronome
       sig { params(next_page: String).void }
       attr_writer :next_page
 
-      sig { returns(T::Array[Metronome::Models::UsageListParams::BillableMetric]) }
+      sig { returns(T.nilable(T::Array[Metronome::Models::UsageListParams::BillableMetric])) }
       attr_reader :billable_metrics
 
       sig { params(billable_metrics: T::Array[Metronome::Models::UsageListParams::BillableMetric]).void }
       attr_writer :billable_metrics
 
-      sig { returns(T::Array[String]) }
+      sig { returns(T.nilable(T::Array[String])) }
       attr_reader :customer_ids
 
       sig { params(customer_ids: T::Array[String]).void }
@@ -108,7 +108,7 @@ module Metronome
           sig { returns(String) }
           attr_accessor :key
 
-          sig { returns(T::Array[String]) }
+          sig { returns(T.nilable(T::Array[String])) }
           attr_reader :values
 
           sig { params(values: T::Array[String]).void }

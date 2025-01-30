@@ -58,7 +58,7 @@ module Metronome
 
         # @!attribute [r] line_item_breakdown
         #
-        #   @return [Array<Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown>]
+        #   @return [Array<Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown>, nil]
         optional :line_item_breakdown,
                  -> {
                    Metronome::ArrayOf[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown]

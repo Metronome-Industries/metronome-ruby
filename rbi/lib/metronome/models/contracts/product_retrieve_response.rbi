@@ -115,13 +115,13 @@ module Metronome
             sig { params(billable_metric_id: String).void }
             attr_writer :billable_metric_id
 
-            sig { returns(T::Array[String]) }
+            sig { returns(T.nilable(T::Array[String])) }
             attr_reader :composite_product_ids
 
             sig { params(composite_product_ids: T::Array[String]).void }
             attr_writer :composite_product_ids
 
-            sig { returns(T::Array[String]) }
+            sig { returns(T.nilable(T::Array[String])) }
             attr_reader :composite_tags
 
             sig { params(composite_tags: T::Array[String]).void }
@@ -157,13 +157,13 @@ module Metronome
             sig { params(netsuite_overage_item_id: String).void }
             attr_writer :netsuite_overage_item_id
 
-            sig { returns(T::Array[String]) }
+            sig { returns(T.nilable(T::Array[String])) }
             attr_reader :presentation_group_key
 
             sig { params(presentation_group_key: T::Array[String]).void }
             attr_writer :presentation_group_key
 
-            sig { returns(T::Array[String]) }
+            sig { returns(T.nilable(T::Array[String])) }
             attr_reader :pricing_group_key
 
             sig { params(pricing_group_key: T::Array[String]).void }
@@ -181,7 +181,7 @@ module Metronome
             sig { params(starting_at: Time).void }
             attr_writer :starting_at
 
-            sig { returns(T::Array[String]) }
+            sig { returns(T.nilable(T::Array[String])) }
             attr_reader :tags
 
             sig { params(tags: T::Array[String]).void }

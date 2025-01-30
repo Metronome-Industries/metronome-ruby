@@ -24,13 +24,15 @@ module Metronome
         sig { returns(String) }
         attr_accessor :name
 
-        sig { returns(T::Array[Metronome::Models::Contracts::RateCardCreateParams::Alias]) }
+        sig { returns(T.nilable(T::Array[Metronome::Models::Contracts::RateCardCreateParams::Alias])) }
         attr_reader :aliases
 
         sig { params(aliases: T::Array[Metronome::Models::Contracts::RateCardCreateParams::Alias]).void }
         attr_writer :aliases
 
-        sig { returns(T::Array[Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion]) }
+        sig do
+          returns(T.nilable(T::Array[Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion]))
+        end
         attr_reader :credit_type_conversions
 
         sig do

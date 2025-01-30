@@ -33,7 +33,7 @@ module Metronome
 
       # @!attribute [r] customer_billing_provider_configurations
       #
-      #   @return [Array<Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration>]
+      #   @return [Array<Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration>, nil]
       optional :customer_billing_provider_configurations,
                -> {
                  Metronome::ArrayOf[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration]
@@ -57,7 +57,7 @@ module Metronome
       # @!attribute [r] ingest_aliases
       #   Aliases that can be used to refer to this customer in usage events
       #
-      #   @return [Array<String>]
+      #   @return [Array<String>, nil]
       optional :ingest_aliases, Metronome::ArrayOf[String]
 
       # @!parse

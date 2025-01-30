@@ -27,7 +27,7 @@ module Metronome
 
       def aggregate=: (String) -> void
 
-      attr_reader aggregate_keys: Array[String]
+      attr_reader aggregate_keys: Array[String]?
 
       def aggregate_keys=: (Array[String]) -> void
 
@@ -57,15 +57,15 @@ module Metronome
 
       def filter=: (Hash[Symbol, top]) -> void
 
-      attr_reader group_by: Array[String]
+      attr_reader group_by: Array[String]?
 
       def group_by=: (Array[String]) -> void
 
-      attr_reader group_keys: Array[Array[String]]
+      attr_reader group_keys: Array[Array[String]]?
 
       def group_keys=: (Array[Array[String]]) -> void
 
-      attr_reader property_filters: Array[Metronome::Models::PropertyFilter]
+      attr_reader property_filters: Array[Metronome::Models::PropertyFilter]?
 
       def property_filters=: (Array[Metronome::Models::PropertyFilter]) -> void
 

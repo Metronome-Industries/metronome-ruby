@@ -32,15 +32,15 @@ module Metronome
 
         attr_accessor product_id: String
 
-        attr_reader applicable_contract_ids: Array[String]
+        attr_reader applicable_contract_ids: Array[String]?
 
         def applicable_contract_ids=: (Array[String]) -> void
 
-        attr_reader applicable_product_ids: Array[String]
+        attr_reader applicable_product_ids: Array[String]?
 
         def applicable_product_ids=: (Array[String]) -> void
 
-        attr_reader applicable_product_tags: Array[String]
+        attr_reader applicable_product_tags: Array[String]?
 
         def applicable_product_tags=: (Array[String]) -> void
 

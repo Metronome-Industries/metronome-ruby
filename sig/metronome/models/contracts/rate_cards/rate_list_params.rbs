@@ -28,7 +28,7 @@ module Metronome
 
           def next_page=: (String) -> void
 
-          attr_reader selectors: Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector]
+          attr_reader selectors: Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector]?
 
           def selectors=: (
             Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector]
@@ -71,7 +71,7 @@ module Metronome
 
             def product_id=: (String) -> void
 
-            attr_reader product_tags: Array[String]
+            attr_reader product_tags: Array[String]?
 
             def product_tags=: (Array[String]) -> void
 

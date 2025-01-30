@@ -37,15 +37,15 @@ module Metronome
 
         attr_accessor type: Metronome::Models::Customers::CommitCreateParams::type_
 
-        attr_reader applicable_contract_ids: Array[String]
+        attr_reader applicable_contract_ids: Array[String]?
 
         def applicable_contract_ids=: (Array[String]) -> void
 
-        attr_reader applicable_product_ids: Array[String]
+        attr_reader applicable_product_ids: Array[String]?
 
         def applicable_product_ids=: (Array[String]) -> void
 
-        attr_reader applicable_product_tags: Array[String]
+        attr_reader applicable_product_tags: Array[String]?
 
         def applicable_product_tags=: (Array[String]) -> void
 
@@ -190,7 +190,7 @@ module Metronome
             Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule
           ) -> void
 
-          attr_reader schedule_items: Array[Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]
+          attr_reader schedule_items: Array[Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]?
 
           def schedule_items=: (
             Array[Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]

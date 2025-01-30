@@ -37,11 +37,11 @@ module Metronome
 
       def event_type_filter=: (Metronome::Models::EventTypeFilter) -> void
 
-      attr_reader group_keys: Array[Array[String]]
+      attr_reader group_keys: Array[Array[String]]?
 
       def group_keys=: (Array[Array[String]]) -> void
 
-      attr_reader property_filters: Array[Metronome::Models::PropertyFilter]
+      attr_reader property_filters: Array[Metronome::Models::PropertyFilter]?
 
       def property_filters=: (Array[Metronome::Models::PropertyFilter]) -> void
 

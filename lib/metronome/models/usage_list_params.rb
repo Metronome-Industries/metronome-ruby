@@ -39,7 +39,7 @@ module Metronome
       #   A list of billable metrics to fetch usage for. If absent, all billable metrics
       #     will be returned.
       #
-      #   @return [Array<Metronome::Models::UsageListParams::BillableMetric>]
+      #   @return [Array<Metronome::Models::UsageListParams::BillableMetric>, nil]
       optional :billable_metrics,
                -> {
                  Metronome::ArrayOf[Metronome::Models::UsageListParams::BillableMetric]
@@ -53,7 +53,7 @@ module Metronome
       #   A list of Metronome customer IDs to fetch usage for. If absent, usage for all
       #     customers will be returned.
       #
-      #   @return [Array<String>]
+      #   @return [Array<String>, nil]
       optional :customer_ids, Metronome::ArrayOf[String]
 
       # @!parse
@@ -162,7 +162,7 @@ module Metronome
           #   Values of the group_by key to return in the query. If this field is omitted, all
           #     available values will be returned, up to a maximum of 200.
           #
-          #   @return [Array<String>]
+          #   @return [Array<String>, nil]
           optional :values, Metronome::ArrayOf[String]
 
           # @!parse

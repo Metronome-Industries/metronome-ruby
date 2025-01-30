@@ -97,7 +97,7 @@ module Metronome
       #   The products which these credits will be applied to. (If unspecified, the
       #     credits will be applied to charges for all products.)
       #
-      #   @return [Array<Metronome::Models::CreditGrantListResponse::Product>]
+      #   @return [Array<Metronome::Models::CreditGrantListResponse::Product>, nil]
       optional :products, -> { Metronome::ArrayOf[Metronome::Models::CreditGrantListResponse::Product] }
 
       # @!parse

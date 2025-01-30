@@ -37,7 +37,7 @@ module Metronome
 
         # @!attribute [r] aliases
         #
-        #   @return [Array<Metronome::Models::Contracts::RateCardListResponse::Alias>]
+        #   @return [Array<Metronome::Models::Contracts::RateCardListResponse::Alias>, nil]
         optional :aliases,
                  -> {
                    Metronome::ArrayOf[Metronome::Models::Contracts::RateCardListResponse::Alias]
@@ -49,7 +49,7 @@ module Metronome
 
         # @!attribute [r] credit_type_conversions
         #
-        #   @return [Array<Metronome::Models::Contracts::RateCardListResponse::CreditTypeConversion>]
+        #   @return [Array<Metronome::Models::Contracts::RateCardListResponse::CreditTypeConversion>, nil]
         optional :credit_type_conversions,
                  -> {
                    Metronome::ArrayOf[Metronome::Models::Contracts::RateCardListResponse::CreditTypeConversion]

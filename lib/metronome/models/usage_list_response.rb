@@ -74,11 +74,11 @@ module Metronome
         #   Values will be either a number or null. Null indicates that there were no
         #     matches for the group_by value.
         #
-        #   @return [Hash{Symbol=>Float}, nil]
-        optional :groups, Metronome::HashOf[Float]
+        #   @return [Hash{Symbol=>Float, nil}, nil]
+        optional :groups, Metronome::HashOf[Float, nil?: true]
 
         # @!parse
-        #   # @return [Hash{Symbol=>Float}, nil]
+        #   # @return [Hash{Symbol=>Float, nil}]
         #   attr_writer :groups
 
         # @!parse
@@ -88,7 +88,7 @@ module Metronome
         #   # @param end_timestamp [Time]
         #   # @param start_timestamp [Time]
         #   # @param value [Float, nil]
-        #   # @param groups [Hash{Symbol=>Float}, nil]
+        #   # @param groups [Hash{Symbol=>Float, nil}]
         #   #
         #   def initialize(
         #     billable_metric_id:,

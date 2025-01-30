@@ -21,7 +21,7 @@ module Metronome
       #   A list of Metronome credit type IDs to fetch ledger entries for. If absent,
       #     ledger entries for all credit types will be returned.
       #
-      #   @return [Array<String>]
+      #   @return [Array<String>, nil]
       optional :credit_type_ids, Metronome::ArrayOf[String]
 
       # @!parse
@@ -32,7 +32,7 @@ module Metronome
       #   A list of Metronome customer IDs to fetch ledger entries for. If absent, ledger
       #     entries for all customers will be returned.
       #
-      #   @return [Array<String>]
+      #   @return [Array<String>, nil]
       optional :customer_ids, Metronome::ArrayOf[String]
 
       # @!parse

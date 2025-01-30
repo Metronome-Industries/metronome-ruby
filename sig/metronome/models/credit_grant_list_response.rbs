@@ -50,7 +50,7 @@ module Metronome
 
       attr_accessor invoice_id: String?
 
-      attr_reader products: Array[Metronome::Models::CreditGrantListResponse::Product]
+      attr_reader products: Array[Metronome::Models::CreditGrantListResponse::Product]?
 
       def products=: (
         Array[Metronome::Models::CreditGrantListResponse::Product]

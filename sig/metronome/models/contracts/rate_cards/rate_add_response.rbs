@@ -68,7 +68,7 @@ module Metronome
 
             def quantity=: (Float) -> void
 
-            attr_reader tiers: Array[Metronome::Models::Tier]
+            attr_reader tiers: Array[Metronome::Models::Tier]?
 
             def tiers=: (Array[Metronome::Models::Tier]) -> void
 
@@ -123,7 +123,7 @@ module Metronome
 
               def price=: (Float) -> void
 
-              attr_reader tiers: Array[Metronome::Models::Tier]
+              attr_reader tiers: Array[Metronome::Models::Tier]?
 
               def tiers=: (Array[Metronome::Models::Tier]) -> void
 

@@ -19,7 +19,7 @@ module Metronome
         #     multiple rate cards, it will reference the rate card to which it was most
         #     recently assigned. It is not exposed to end customers.
         #
-        #   @return [Array<Metronome::Models::Contracts::RateCardUpdateParams::Alias>]
+        #   @return [Array<Metronome::Models::Contracts::RateCardUpdateParams::Alias>, nil]
         optional :aliases,
                  -> {
                    Metronome::ArrayOf[Metronome::Models::Contracts::RateCardUpdateParams::Alias]
