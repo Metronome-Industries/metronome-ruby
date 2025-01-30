@@ -18,19 +18,19 @@ module Metronome
 
       attr_accessor dashboard: Metronome::Models::DashboardGetEmbeddableURLParams::dashboard
 
-      attr_reader bm_group_key_overrides: Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride]
+      attr_reader bm_group_key_overrides: Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride]?
 
       def bm_group_key_overrides=: (
         Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride]
       ) -> void
 
-      attr_reader color_overrides: Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride]
+      attr_reader color_overrides: Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride]?
 
       def color_overrides=: (
         Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride]
       ) -> void
 
-      attr_reader dashboard_options: Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption]
+      attr_reader dashboard_options: Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption]?
 
       def dashboard_options=: (
         Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption]

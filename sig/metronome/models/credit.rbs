@@ -33,15 +33,15 @@ module Metronome
 
       def access_schedule=: (Metronome::Models::ScheduleDuration) -> void
 
-      attr_reader applicable_contract_ids: Array[String]
+      attr_reader applicable_contract_ids: Array[String]?
 
       def applicable_contract_ids=: (Array[String]) -> void
 
-      attr_reader applicable_product_ids: Array[String]
+      attr_reader applicable_product_ids: Array[String]?
 
       def applicable_product_ids=: (Array[String]) -> void
 
-      attr_reader applicable_product_tags: Array[String]
+      attr_reader applicable_product_tags: Array[String]?
 
       def applicable_product_tags=: (Array[String]) -> void
 
@@ -61,7 +61,7 @@ module Metronome
 
       def description=: (String) -> void
 
-      attr_reader ledger: Array[Metronome::Models::Credit::ledger]
+      attr_reader ledger: Array[Metronome::Models::Credit::ledger]?
 
       def ledger=: (Array[Metronome::Models::Credit::ledger]) -> void
 

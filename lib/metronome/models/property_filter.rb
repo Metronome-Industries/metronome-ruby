@@ -37,7 +37,7 @@ module Metronome
       #     undefined, all property values will pass the filter. Must be non-empty if
       #     present.
       #
-      #   @return [Array<String>]
+      #   @return [Array<String>, nil]
       optional :in_values, Metronome::ArrayOf[String]
 
       # @!parse
@@ -50,7 +50,7 @@ module Metronome
       #     or empty, all property values will pass the filter. Must be non-empty if
       #     present.
       #
-      #   @return [Array<String>]
+      #   @return [Array<String>, nil]
       optional :not_in_values, Metronome::ArrayOf[String]
 
       # @!parse

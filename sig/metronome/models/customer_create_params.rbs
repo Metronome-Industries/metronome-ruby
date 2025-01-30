@@ -27,7 +27,7 @@ module Metronome
 
       def custom_fields=: (Hash[Symbol, String]) -> void
 
-      attr_reader customer_billing_provider_configurations: Array[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration]
+      attr_reader customer_billing_provider_configurations: Array[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration]?
 
       def customer_billing_provider_configurations=: (
         Array[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration]
@@ -37,7 +37,7 @@ module Metronome
 
       def external_id=: (String) -> void
 
-      attr_reader ingest_aliases: Array[String]
+      attr_reader ingest_aliases: Array[String]?
 
       def ingest_aliases=: (Array[String]) -> void
 

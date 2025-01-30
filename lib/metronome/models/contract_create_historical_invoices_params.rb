@@ -197,7 +197,7 @@ module Metronome
 
           # @!attribute [r] subtotals_with_quantity
           #
-          #   @return [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity>]
+          #   @return [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity>, nil]
           optional :subtotals_with_quantity,
                    -> {
                      Metronome::ArrayOf[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]

@@ -30,7 +30,7 @@ module Metronome
           end_timestamp: Time,
           start_timestamp: Time,
           value: Float?,
-          groups: Hash[Symbol, Float?]?
+          groups: Hash[Symbol, Float?]
         }
 
       class Data < Metronome::BaseModel
@@ -48,7 +48,7 @@ module Metronome
 
         attr_reader groups: Hash[Symbol, Float?]?
 
-        def groups=: (Hash[Symbol, Float?]?) -> void
+        def groups=: (Hash[Symbol, Float?]) -> void
 
         def initialize:
           (
@@ -58,7 +58,7 @@ module Metronome
             end_timestamp: Time,
             start_timestamp: Time,
             value: Float?,
-            groups: Hash[Symbol, Float?]?
+            groups: Hash[Symbol, Float?]
           ) -> void
           | (
             ?Metronome::Models::UsageListResponse::data

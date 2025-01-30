@@ -55,13 +55,13 @@ module Metronome
       sig { returns(Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule) }
       attr_accessor :usage_statement_schedule
 
-      sig { returns(T::Array[Metronome::Models::Credit]) }
+      sig { returns(T.nilable(T::Array[Metronome::Models::Credit])) }
       attr_reader :credits
 
       sig { params(credits: T::Array[Metronome::Models::Credit]).void }
       attr_writer :credits
 
-      sig { returns(T::Array[Metronome::Models::Discount]) }
+      sig { returns(T.nilable(T::Array[Metronome::Models::Discount])) }
       attr_reader :discounts
 
       sig { params(discounts: T::Array[Metronome::Models::Discount]).void }
@@ -91,7 +91,7 @@ module Metronome
       sig { params(netsuite_sales_order_id: String).void }
       attr_writer :netsuite_sales_order_id
 
-      sig { returns(T::Array[Metronome::Models::ProService]) }
+      sig { returns(T.nilable(T::Array[Metronome::Models::ProService])) }
       attr_reader :professional_services
 
       sig { params(professional_services: T::Array[Metronome::Models::ProService]).void }
@@ -103,7 +103,7 @@ module Metronome
       sig { params(rate_card_id: String).void }
       attr_writer :rate_card_id
 
-      sig { returns(T::Array[Metronome::Models::ContractWithoutAmendments::RecurringCommit]) }
+      sig { returns(T.nilable(T::Array[Metronome::Models::ContractWithoutAmendments::RecurringCommit])) }
       attr_reader :recurring_commits
 
       sig do
@@ -111,7 +111,7 @@ module Metronome
       end
       attr_writer :recurring_commits
 
-      sig { returns(T::Array[Metronome::Models::ContractWithoutAmendments::RecurringCredit]) }
+      sig { returns(T.nilable(T::Array[Metronome::Models::ContractWithoutAmendments::RecurringCredit])) }
       attr_reader :recurring_credits
 
       sig do
@@ -119,7 +119,7 @@ module Metronome
       end
       attr_writer :recurring_credits
 
-      sig { returns(T::Array[Metronome::Models::ContractWithoutAmendments::ResellerRoyalty]) }
+      sig { returns(T.nilable(T::Array[Metronome::Models::ContractWithoutAmendments::ResellerRoyalty])) }
       attr_reader :reseller_royalties
 
       sig do
@@ -306,13 +306,13 @@ module Metronome
         sig { returns(Time) }
         attr_accessor :starting_at
 
-        sig { returns(T::Array[String]) }
+        sig { returns(T.nilable(T::Array[String])) }
         attr_reader :applicable_product_ids
 
         sig { params(applicable_product_ids: T::Array[String]).void }
         attr_writer :applicable_product_ids
 
-        sig { returns(T::Array[String]) }
+        sig { returns(T.nilable(T::Array[String])) }
         attr_reader :applicable_product_tags
 
         sig { params(applicable_product_tags: T::Array[String]).void }
@@ -557,13 +557,13 @@ module Metronome
         sig { returns(Time) }
         attr_accessor :starting_at
 
-        sig { returns(T::Array[String]) }
+        sig { returns(T.nilable(T::Array[String])) }
         attr_reader :applicable_product_ids
 
         sig { params(applicable_product_ids: T::Array[String]).void }
         attr_writer :applicable_product_ids
 
-        sig { returns(T::Array[String]) }
+        sig { returns(T.nilable(T::Array[String])) }
         attr_reader :applicable_product_tags
 
         sig { params(applicable_product_tags: T::Array[String]).void }
@@ -796,13 +796,13 @@ module Metronome
         sig { returns(Time) }
         attr_accessor :starting_at
 
-        sig { returns(T::Array[String]) }
+        sig { returns(T.nilable(T::Array[String])) }
         attr_reader :applicable_product_ids
 
         sig { params(applicable_product_ids: T::Array[String]).void }
         attr_writer :applicable_product_ids
 
-        sig { returns(T::Array[String]) }
+        sig { returns(T.nilable(T::Array[String])) }
         attr_reader :applicable_product_tags
 
         sig { params(applicable_product_tags: T::Array[String]).void }

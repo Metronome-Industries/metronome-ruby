@@ -23,13 +23,13 @@ module Metronome
 
         attr_accessor name: String
 
-        attr_reader aliases: Array[Metronome::Models::Contracts::RateCardListResponse::Alias]
+        attr_reader aliases: Array[Metronome::Models::Contracts::RateCardListResponse::Alias]?
 
         def aliases=: (
           Array[Metronome::Models::Contracts::RateCardListResponse::Alias]
         ) -> void
 
-        attr_reader credit_type_conversions: Array[Metronome::Models::Contracts::RateCardListResponse::CreditTypeConversion]
+        attr_reader credit_type_conversions: Array[Metronome::Models::Contracts::RateCardListResponse::CreditTypeConversion]?
 
         def credit_type_conversions=: (
           Array[Metronome::Models::Contracts::RateCardListResponse::CreditTypeConversion]

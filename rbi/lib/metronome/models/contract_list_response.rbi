@@ -151,13 +151,13 @@ module Metronome
           sig { returns(Time) }
           attr_accessor :starting_at
 
-          sig { returns(T::Array[Metronome::Models::Credit]) }
+          sig { returns(T.nilable(T::Array[Metronome::Models::Credit])) }
           attr_reader :credits
 
           sig { params(credits: T::Array[Metronome::Models::Credit]).void }
           attr_writer :credits
 
-          sig { returns(T::Array[Metronome::Models::Discount]) }
+          sig { returns(T.nilable(T::Array[Metronome::Models::Discount])) }
           attr_reader :discounts
 
           sig { params(discounts: T::Array[Metronome::Models::Discount]).void }
@@ -169,13 +169,15 @@ module Metronome
           sig { params(netsuite_sales_order_id: String).void }
           attr_writer :netsuite_sales_order_id
 
-          sig { returns(T::Array[Metronome::Models::ProService]) }
+          sig { returns(T.nilable(T::Array[Metronome::Models::ProService])) }
           attr_reader :professional_services
 
           sig { params(professional_services: T::Array[Metronome::Models::ProService]).void }
           attr_writer :professional_services
 
-          sig { returns(T::Array[Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty]) }
+          sig do
+            returns(T.nilable(T::Array[Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty]))
+          end
           attr_reader :reseller_royalties
 
           sig do

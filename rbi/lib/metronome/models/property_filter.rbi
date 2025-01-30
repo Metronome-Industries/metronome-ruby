@@ -16,13 +16,13 @@ module Metronome
       sig { params(exists: T::Boolean).void }
       attr_writer :exists
 
-      sig { returns(T::Array[String]) }
+      sig { returns(T.nilable(T::Array[String])) }
       attr_reader :in_values
 
       sig { params(in_values: T::Array[String]).void }
       attr_writer :in_values
 
-      sig { returns(T::Array[String]) }
+      sig { returns(T.nilable(T::Array[String])) }
       attr_reader :not_in_values
 
       sig { params(not_in_values: T::Array[String]).void }

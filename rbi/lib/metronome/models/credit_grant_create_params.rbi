@@ -70,7 +70,7 @@ module Metronome
       sig { params(invoice_date: Time).void }
       attr_writer :invoice_date
 
-      sig { returns(T::Array[String]) }
+      sig { returns(T.nilable(T::Array[String])) }
       attr_reader :product_ids
 
       sig { params(product_ids: T::Array[String]).void }

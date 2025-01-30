@@ -24,7 +24,7 @@ module Metronome
       sig { returns(String) }
       attr_accessor :name
 
-      sig { returns(T::Array[Metronome::Models::PlanDetail::CreditGrant]) }
+      sig { returns(T.nilable(T::Array[Metronome::Models::PlanDetail::CreditGrant])) }
       attr_reader :credit_grants
 
       sig { params(credit_grants: T::Array[Metronome::Models::PlanDetail::CreditGrant]).void }
@@ -36,13 +36,13 @@ module Metronome
       sig { params(description: String).void }
       attr_writer :description
 
-      sig { returns(T::Array[Metronome::Models::PlanDetail::Minimum]) }
+      sig { returns(T.nilable(T::Array[Metronome::Models::PlanDetail::Minimum])) }
       attr_reader :minimums
 
       sig { params(minimums: T::Array[Metronome::Models::PlanDetail::Minimum]).void }
       attr_writer :minimums
 
-      sig { returns(T::Array[Metronome::Models::PlanDetail::OverageRate]) }
+      sig { returns(T.nilable(T::Array[Metronome::Models::PlanDetail::OverageRate])) }
       attr_reader :overage_rates
 
       sig { params(overage_rates: T::Array[Metronome::Models::PlanDetail::OverageRate]).void }

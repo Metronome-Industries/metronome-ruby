@@ -41,19 +41,19 @@ module Metronome
         sig { returns(String) }
         attr_accessor :product_id
 
-        sig { returns(T::Array[String]) }
+        sig { returns(T.nilable(T::Array[String])) }
         attr_reader :applicable_contract_ids
 
         sig { params(applicable_contract_ids: T::Array[String]).void }
         attr_writer :applicable_contract_ids
 
-        sig { returns(T::Array[String]) }
+        sig { returns(T.nilable(T::Array[String])) }
         attr_reader :applicable_product_ids
 
         sig { params(applicable_product_ids: T::Array[String]).void }
         attr_writer :applicable_product_ids
 
-        sig { returns(T::Array[String]) }
+        sig { returns(T.nilable(T::Array[String])) }
         attr_reader :applicable_product_tags
 
         sig { params(applicable_product_tags: T::Array[String]).void }

@@ -115,7 +115,7 @@ module Metronome
         sig { returns(T.nilable(Metronome::Models::Customers::Invoice::ExternalInvoice)) }
         attr_accessor :external_invoice
 
-        sig { returns(T::Array[Metronome::Models::Customers::Invoice::InvoiceAdjustment]) }
+        sig { returns(T.nilable(T::Array[Metronome::Models::Customers::Invoice::InvoiceAdjustment])) }
         attr_reader :invoice_adjustments
 
         sig do
@@ -273,7 +273,7 @@ module Metronome
               netsuite_invoice_billing_start: Time,
               netsuite_item_id: String,
               postpaid_commit: Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit,
-              presentation_group_values: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+              presentation_group_values: T::Hash[Symbol, T.nilable(String)],
               pricing_group_values: T::Hash[Symbol, String],
               product_custom_fields: T::Hash[Symbol, String],
               product_id: String,
@@ -412,7 +412,7 @@ module Metronome
           sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
           attr_reader :presentation_group_values
 
-          sig { params(presentation_group_values: T.nilable(T::Hash[Symbol, T.nilable(String)])).void }
+          sig { params(presentation_group_values: T::Hash[Symbol, T.nilable(String)]).void }
           attr_writer :presentation_group_values
 
           sig { returns(T.nilable(T::Hash[Symbol, String])) }
@@ -481,7 +481,7 @@ module Metronome
           sig { params(starting_at: Time).void }
           attr_writer :starting_at
 
-          sig { returns(T::Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem]) }
+          sig { returns(T.nilable(T::Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem])) }
           attr_reader :sub_line_items
 
           sig do
@@ -524,7 +524,7 @@ module Metronome
               netsuite_invoice_billing_start: Time,
               netsuite_item_id: String,
               postpaid_commit: Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit,
-              presentation_group_values: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+              presentation_group_values: T::Hash[Symbol, T.nilable(String)],
               pricing_group_values: T::Hash[Symbol, String],
               product_custom_fields: T::Hash[Symbol, String],
               product_id: String,
@@ -704,7 +704,9 @@ module Metronome
             end
             attr_writer :tier_period
 
-            sig { returns(T::Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]) }
+            sig do
+              returns(T.nilable(T::Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]))
+            end
             attr_reader :tiers
 
             sig do

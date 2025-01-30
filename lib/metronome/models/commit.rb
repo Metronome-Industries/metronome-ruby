@@ -52,7 +52,7 @@ module Metronome
 
       # @!attribute [r] applicable_contract_ids
       #
-      #   @return [Array<String>]
+      #   @return [Array<String>, nil]
       optional :applicable_contract_ids, Metronome::ArrayOf[String]
 
       # @!parse
@@ -61,7 +61,7 @@ module Metronome
 
       # @!attribute [r] applicable_product_ids
       #
-      #   @return [Array<String>]
+      #   @return [Array<String>, nil]
       optional :applicable_product_ids, Metronome::ArrayOf[String]
 
       # @!parse
@@ -70,7 +70,7 @@ module Metronome
 
       # @!attribute [r] applicable_product_tags
       #
-      #   @return [Array<String>]
+      #   @return [Array<String>, nil]
       optional :applicable_product_tags, Metronome::ArrayOf[String]
 
       # @!parse
@@ -145,7 +145,7 @@ module Metronome
       #   A list of ordered events that impact the balance of a commit. For example, an
       #     invoice deduction or a rollover.
       #
-      #   @return [Array<Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry>]
+      #   @return [Array<Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry, Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry, Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry>, nil]
       optional :ledger, -> { Metronome::ArrayOf[union: Metronome::Models::Commit::Ledger] }
 
       # @!parse

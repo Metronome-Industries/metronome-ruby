@@ -71,7 +71,7 @@ module Metronome
           sig { returns(Time) }
           attr_accessor :updated_at
 
-          sig { returns(T::Array[String]) }
+          sig { returns(T.nilable(T::Array[String])) }
           attr_reader :credit_grant_type_filters
 
           sig { params(credit_grant_type_filters: T::Array[String]).void }
@@ -80,7 +80,9 @@ module Metronome
           sig { returns(T.nilable(Metronome::Models::CreditTypeData)) }
           attr_accessor :credit_type
 
-          sig { returns(T::Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter]) }
+          sig do
+            returns(T.nilable(T::Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter]))
+          end
           attr_reader :custom_field_filters
 
           sig do
@@ -98,7 +100,7 @@ module Metronome
           end
           attr_writer :group_key_filter
 
-          sig { returns(T::Array[String]) }
+          sig { returns(T.nilable(T::Array[String])) }
           attr_reader :invoice_types_filter
 
           sig { params(invoice_types_filter: T::Array[String]).void }

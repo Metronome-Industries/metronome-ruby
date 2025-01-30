@@ -55,7 +55,7 @@ module Metronome
         #   List of rate selectors, rates matching ANY of the selector will be included in
         #     the response Passing no selectors will result in all rates being returned.
         #
-        #   @return [Array<Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams::Selector>]
+        #   @return [Array<Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams::Selector>, nil]
         optional :selectors,
                  -> {
                    Metronome::ArrayOf[Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams::Selector]

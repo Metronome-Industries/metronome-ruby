@@ -32,13 +32,13 @@ module Metronome
 
         def net_payment_terms_days=: (Float) -> void
 
-        attr_reader overage_rate_adjustments: Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment]
+        attr_reader overage_rate_adjustments: Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment]?
 
         def overage_rate_adjustments=: (
           Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment]
         ) -> void
 
-        attr_reader price_adjustments: Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment]
+        attr_reader price_adjustments: Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment]?
 
         def price_adjustments=: (
           Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment]

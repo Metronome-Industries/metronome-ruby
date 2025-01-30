@@ -88,7 +88,7 @@ module Metronome
       #     specified here will be used to determine the order in which credits will be
       #     applied to invoice line items
       #
-      #   @return [Array<String>]
+      #   @return [Array<String>, nil]
       optional :product_ids, Metronome::ArrayOf[String]
 
       # @!parse

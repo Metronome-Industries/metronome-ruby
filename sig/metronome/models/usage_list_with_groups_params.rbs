@@ -85,7 +85,7 @@ module Metronome
       class GroupBy < Metronome::BaseModel
         attr_accessor key: String
 
-        attr_reader values: Array[String]
+        attr_reader values: Array[String]?
 
         def values=: (Array[String]) -> void
 

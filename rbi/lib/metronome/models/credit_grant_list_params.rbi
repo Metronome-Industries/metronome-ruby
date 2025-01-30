@@ -33,19 +33,19 @@ module Metronome
       sig { params(next_page: String).void }
       attr_writer :next_page
 
-      sig { returns(T::Array[String]) }
+      sig { returns(T.nilable(T::Array[String])) }
       attr_reader :credit_grant_ids
 
       sig { params(credit_grant_ids: T::Array[String]).void }
       attr_writer :credit_grant_ids
 
-      sig { returns(T::Array[String]) }
+      sig { returns(T.nilable(T::Array[String])) }
       attr_reader :credit_type_ids
 
       sig { params(credit_type_ids: T::Array[String]).void }
       attr_writer :credit_type_ids
 
-      sig { returns(T::Array[String]) }
+      sig { returns(T.nilable(T::Array[String])) }
       attr_reader :customer_ids
 
       sig { params(customer_ids: T::Array[String]).void }

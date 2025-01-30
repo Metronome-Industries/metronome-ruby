@@ -45,7 +45,9 @@ module Metronome
         sig { params(ending_before: Time).void }
         attr_writer :ending_before
 
-        sig { returns(T::Array[Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams::Selector]) }
+        sig do
+          returns(T.nilable(T::Array[Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams::Selector]))
+        end
         attr_reader :selectors
 
         sig do

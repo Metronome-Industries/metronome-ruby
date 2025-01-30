@@ -28,7 +28,7 @@ module Metronome
         #   Optionally filter by alert status. If absent, only enabled alerts will be
         #     returned.
         #
-        #   @return [Array<Symbol, Metronome::Models::Customers::AlertListParams::AlertStatus>]
+        #   @return [Array<Symbol, Metronome::Models::Customers::AlertListParams::AlertStatus>, nil]
         optional :alert_statuses,
                  -> { Metronome::ArrayOf[enum: Metronome::Models::Customers::AlertListParams::AlertStatus] }
 

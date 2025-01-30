@@ -15,11 +15,11 @@ module Metronome
 
       def exists=: (bool) -> void
 
-      attr_reader in_values: Array[String]
+      attr_reader in_values: Array[String]?
 
       def in_values=: (Array[String]) -> void
 
-      attr_reader not_in_values: Array[String]
+      attr_reader not_in_values: Array[String]?
 
       def not_in_values=: (Array[String]) -> void
 

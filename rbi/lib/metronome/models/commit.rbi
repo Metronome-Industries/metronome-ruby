@@ -52,19 +52,19 @@ module Metronome
       sig { params(amount: Float).void }
       attr_writer :amount
 
-      sig { returns(T::Array[String]) }
+      sig { returns(T.nilable(T::Array[String])) }
       attr_reader :applicable_contract_ids
 
       sig { params(applicable_contract_ids: T::Array[String]).void }
       attr_writer :applicable_contract_ids
 
-      sig { returns(T::Array[String]) }
+      sig { returns(T.nilable(T::Array[String])) }
       attr_reader :applicable_product_ids
 
       sig { params(applicable_product_ids: T::Array[String]).void }
       attr_writer :applicable_product_ids
 
-      sig { returns(T::Array[String]) }
+      sig { returns(T.nilable(T::Array[String])) }
       attr_reader :applicable_product_tags
 
       sig { params(applicable_product_tags: T::Array[String]).void }
@@ -106,7 +106,7 @@ module Metronome
       sig { params(invoice_schedule: Metronome::Models::SchedulePointInTime).void }
       attr_writer :invoice_schedule
 
-      sig { returns(T::Array[Metronome::Models::Commit::Ledger::Variants]) }
+      sig { returns(T.nilable(T::Array[Metronome::Models::Commit::Ledger::Variants])) }
       attr_reader :ledger
 
       sig { params(ledger: T::Array[Metronome::Models::Commit::Ledger::Variants]).void }

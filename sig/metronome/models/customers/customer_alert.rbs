@@ -60,13 +60,13 @@ module Metronome
 
           attr_accessor updated_at: Time
 
-          attr_reader credit_grant_type_filters: Array[String]
+          attr_reader credit_grant_type_filters: Array[String]?
 
           def credit_grant_type_filters=: (Array[String]) -> void
 
           attr_accessor credit_type: Metronome::Models::CreditTypeData?
 
-          attr_reader custom_field_filters: Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter]
+          attr_reader custom_field_filters: Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter]?
 
           def custom_field_filters=: (
             Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter]
@@ -78,7 +78,7 @@ module Metronome
             Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter
           ) -> void
 
-          attr_reader invoice_types_filter: Array[String]
+          attr_reader invoice_types_filter: Array[String]?
 
           def invoice_types_filter=: (Array[String]) -> void
 

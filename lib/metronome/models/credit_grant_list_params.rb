@@ -31,7 +31,7 @@ module Metronome
       #   An array of credit grant IDs. If this is specified, neither credit_type_ids nor
       #     customer_ids may be specified.
       #
-      #   @return [Array<String>]
+      #   @return [Array<String>, nil]
       optional :credit_grant_ids, Metronome::ArrayOf[String]
 
       # @!parse
@@ -42,7 +42,7 @@ module Metronome
       #   An array of credit type IDs. This must not be specified if credit_grant_ids is
       #     specified.
       #
-      #   @return [Array<String>]
+      #   @return [Array<String>, nil]
       optional :credit_type_ids, Metronome::ArrayOf[String]
 
       # @!parse
@@ -53,7 +53,7 @@ module Metronome
       #   An array of Metronome customer IDs. This must not be specified if
       #     credit_grant_ids is specified.
       #
-      #   @return [Array<String>]
+      #   @return [Array<String>, nil]
       optional :customer_ids, Metronome::ArrayOf[String]
 
       # @!parse

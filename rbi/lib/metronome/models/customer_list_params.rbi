@@ -20,7 +20,7 @@ module Metronome
         )
       end
 
-      sig { returns(T::Array[String]) }
+      sig { returns(T.nilable(T::Array[String])) }
       attr_reader :customer_ids
 
       sig { params(customer_ids: T::Array[String]).void }
@@ -50,7 +50,7 @@ module Metronome
       sig { params(only_archived: T::Boolean).void }
       attr_writer :only_archived
 
-      sig { returns(T::Array[String]) }
+      sig { returns(T.nilable(T::Array[String])) }
       attr_reader :salesforce_account_ids
 
       sig { params(salesforce_account_ids: T::Array[String]).void }

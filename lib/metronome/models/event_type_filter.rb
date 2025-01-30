@@ -15,7 +15,7 @@ module Metronome
       #     specified, only events of these types will match the billable metric. Must be
       #     non-empty if present.
       #
-      #   @return [Array<String>]
+      #   @return [Array<String>, nil]
       optional :in_values, Metronome::ArrayOf[String]
 
       # @!parse
@@ -27,7 +27,7 @@ module Metronome
       #     specified, events of these types will not match the billable metric. Must be
       #     non-empty if present.
       #
-      #   @return [Array<String>]
+      #   @return [Array<String>, nil]
       optional :not_in_values, Metronome::ArrayOf[String]
 
       # @!parse

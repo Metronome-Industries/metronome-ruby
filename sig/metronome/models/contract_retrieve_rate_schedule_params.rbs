@@ -31,7 +31,7 @@ module Metronome
 
       def at=: (Time) -> void
 
-      attr_reader selectors: Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector]
+      attr_reader selectors: Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector]?
 
       def selectors=: (
         Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector]
@@ -75,7 +75,7 @@ module Metronome
 
         def product_id=: (String) -> void
 
-        attr_reader product_tags: Array[String]
+        attr_reader product_tags: Array[String]?
 
         def product_tags=: (Array[String]) -> void
 

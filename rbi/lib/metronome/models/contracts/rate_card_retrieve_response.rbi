@@ -42,7 +42,9 @@ module Metronome
           sig { returns(String) }
           attr_accessor :name
 
-          sig { returns(T::Array[Metronome::Models::Contracts::RateCardRetrieveResponse::Data::Alias]) }
+          sig do
+            returns(T.nilable(T::Array[Metronome::Models::Contracts::RateCardRetrieveResponse::Data::Alias]))
+          end
           attr_reader :aliases
 
           sig do
@@ -51,7 +53,7 @@ module Metronome
           attr_writer :aliases
 
           sig do
-            returns(T::Array[Metronome::Models::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion])
+            returns(T.nilable(T::Array[Metronome::Models::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion]))
           end
           attr_reader :credit_type_conversions
 

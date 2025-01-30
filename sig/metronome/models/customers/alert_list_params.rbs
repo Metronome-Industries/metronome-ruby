@@ -19,7 +19,7 @@ module Metronome
 
         def next_page=: (String) -> void
 
-        attr_reader alert_statuses: Array[Metronome::Models::Customers::AlertListParams::alert_status]
+        attr_reader alert_statuses: Array[Metronome::Models::Customers::AlertListParams::alert_status]?
 
         def alert_statuses=: (
           Array[Metronome::Models::Customers::AlertListParams::alert_status]

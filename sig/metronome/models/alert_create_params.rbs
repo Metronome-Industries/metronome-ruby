@@ -32,7 +32,7 @@ module Metronome
 
       def billable_metric_id=: (String) -> void
 
-      attr_reader credit_grant_type_filters: Array[String]
+      attr_reader credit_grant_type_filters: Array[String]?
 
       def credit_grant_type_filters=: (Array[String]) -> void
 
@@ -40,7 +40,7 @@ module Metronome
 
       def credit_type_id=: (String) -> void
 
-      attr_reader custom_field_filters: Array[Metronome::Models::AlertCreateParams::CustomFieldFilter]
+      attr_reader custom_field_filters: Array[Metronome::Models::AlertCreateParams::CustomFieldFilter]?
 
       def custom_field_filters=: (
         Array[Metronome::Models::AlertCreateParams::CustomFieldFilter]
@@ -60,7 +60,7 @@ module Metronome
         Metronome::Models::AlertCreateParams::GroupKeyFilter
       ) -> void
 
-      attr_reader invoice_types_filter: Array[String]
+      attr_reader invoice_types_filter: Array[String]?
 
       def invoice_types_filter=: (Array[String]) -> void
 

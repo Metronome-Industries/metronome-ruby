@@ -35,7 +35,7 @@ module Metronome
       sig { returns(Time) }
       attr_accessor :starting_at
 
-      sig { returns(T::Array[String]) }
+      sig { returns(T.nilable(T::Array[String])) }
       attr_reader :applicable_product_tags
 
       sig { params(applicable_product_tags: T::Array[String]).void }
@@ -77,13 +77,13 @@ module Metronome
       sig { params(multiplier: Float).void }
       attr_writer :multiplier
 
-      sig { returns(T::Array[Metronome::Models::Override::OverrideSpecifier]) }
+      sig { returns(T.nilable(T::Array[Metronome::Models::Override::OverrideSpecifier])) }
       attr_reader :override_specifiers
 
       sig { params(override_specifiers: T::Array[Metronome::Models::Override::OverrideSpecifier]).void }
       attr_writer :override_specifiers
 
-      sig { returns(T::Array[Metronome::Models::Override::OverrideTier]) }
+      sig { returns(T.nilable(T::Array[Metronome::Models::Override::OverrideTier])) }
       attr_reader :override_tiers
 
       sig { params(override_tiers: T::Array[Metronome::Models::Override::OverrideTier]).void }
@@ -131,7 +131,7 @@ module Metronome
       sig { params(target: Symbol).void }
       attr_writer :target
 
-      sig { returns(T::Array[Metronome::Models::Tier]) }
+      sig { returns(T.nilable(T::Array[Metronome::Models::Tier])) }
       attr_reader :tiers
 
       sig { params(tiers: T::Array[Metronome::Models::Tier]).void }
@@ -205,7 +205,7 @@ module Metronome
         Shape = T.type_alias do
           {
             commit_ids: T::Array[String],
-            presentation_group_values: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+            presentation_group_values: T::Hash[Symbol, T.nilable(String)],
             pricing_group_values: T::Hash[Symbol, String],
             product_id: String,
             product_tags: T::Array[String],
@@ -214,7 +214,7 @@ module Metronome
           }
         end
 
-        sig { returns(T::Array[String]) }
+        sig { returns(T.nilable(T::Array[String])) }
         attr_reader :commit_ids
 
         sig { params(commit_ids: T::Array[String]).void }
@@ -223,7 +223,7 @@ module Metronome
         sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
         attr_reader :presentation_group_values
 
-        sig { params(presentation_group_values: T.nilable(T::Hash[Symbol, T.nilable(String)])).void }
+        sig { params(presentation_group_values: T::Hash[Symbol, T.nilable(String)]).void }
         attr_writer :presentation_group_values
 
         sig { returns(T.nilable(T::Hash[Symbol, String])) }
@@ -238,19 +238,19 @@ module Metronome
         sig { params(product_id: String).void }
         attr_writer :product_id
 
-        sig { returns(T::Array[String]) }
+        sig { returns(T.nilable(T::Array[String])) }
         attr_reader :product_tags
 
         sig { params(product_tags: T::Array[String]).void }
         attr_writer :product_tags
 
-        sig { returns(T::Array[String]) }
+        sig { returns(T.nilable(T::Array[String])) }
         attr_reader :recurring_commit_ids
 
         sig { params(recurring_commit_ids: T::Array[String]).void }
         attr_writer :recurring_commit_ids
 
-        sig { returns(T::Array[String]) }
+        sig { returns(T.nilable(T::Array[String])) }
         attr_reader :recurring_credit_ids
 
         sig { params(recurring_credit_ids: T::Array[String]).void }
@@ -259,7 +259,7 @@ module Metronome
         sig do
           params(
             commit_ids: T::Array[String],
-            presentation_group_values: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+            presentation_group_values: T::Hash[Symbol, T.nilable(String)],
             pricing_group_values: T::Hash[Symbol, String],
             product_id: String,
             product_tags: T::Array[String],
@@ -346,7 +346,7 @@ module Metronome
         sig { params(quantity: Float).void }
         attr_writer :quantity
 
-        sig { returns(T::Array[Metronome::Models::Tier]) }
+        sig { returns(T.nilable(T::Array[Metronome::Models::Tier])) }
         attr_reader :tiers
 
         sig { params(tiers: T::Array[Metronome::Models::Tier]).void }

@@ -85,7 +85,7 @@ module Metronome
       # @!attribute [r] tiers
       #   Only set for TIERED rate_type.
       #
-      #   @return [Array<Metronome::Models::Tier>]
+      #   @return [Array<Metronome::Models::Tier>, nil]
       optional :tiers, -> { Metronome::ArrayOf[Metronome::Models::Tier] }
 
       # @!parse

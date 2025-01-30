@@ -11,7 +11,7 @@ module Metronome
 
       def credit_type=: (Metronome::Models::CreditTypeData) -> void
 
-      attr_reader schedule_items: Array[Metronome::Models::SchedulePointInTime::ScheduleItem]
+      attr_reader schedule_items: Array[Metronome::Models::SchedulePointInTime::ScheduleItem]?
 
       def schedule_items=: (
         Array[Metronome::Models::SchedulePointInTime::ScheduleItem]

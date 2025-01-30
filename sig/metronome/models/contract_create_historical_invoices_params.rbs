@@ -123,7 +123,7 @@ module Metronome
 
           def quantity=: (Float) -> void
 
-          attr_reader subtotals_with_quantity: Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
+          attr_reader subtotals_with_quantity: Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]?
 
           def subtotals_with_quantity=: (
             Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]

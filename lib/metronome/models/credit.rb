@@ -41,7 +41,7 @@ module Metronome
 
       # @!attribute [r] applicable_contract_ids
       #
-      #   @return [Array<String>]
+      #   @return [Array<String>, nil]
       optional :applicable_contract_ids, Metronome::ArrayOf[String]
 
       # @!parse
@@ -50,7 +50,7 @@ module Metronome
 
       # @!attribute [r] applicable_product_ids
       #
-      #   @return [Array<String>]
+      #   @return [Array<String>, nil]
       optional :applicable_product_ids, Metronome::ArrayOf[String]
 
       # @!parse
@@ -59,7 +59,7 @@ module Metronome
 
       # @!attribute [r] applicable_product_tags
       #
-      #   @return [Array<String>]
+      #   @return [Array<String>, nil]
       optional :applicable_product_tags, Metronome::ArrayOf[String]
 
       # @!parse
@@ -114,7 +114,7 @@ module Metronome
       #   A list of ordered events that impact the balance of a credit. For example, an
       #     invoice deduction or an expiration.
       #
-      #   @return [Array<Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry, Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry, Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry, Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry, Metronome::Models::Credit::Ledger::CreditManualLedgerEntry>]
+      #   @return [Array<Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry, Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry, Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry, Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry, Metronome::Models::Credit::Ledger::CreditManualLedgerEntry>, nil]
       optional :ledger, -> { Metronome::ArrayOf[union: Metronome::Models::Credit::Ledger] }
 
       # @!parse

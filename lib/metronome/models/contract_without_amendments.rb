@@ -60,7 +60,7 @@ module Metronome
 
       # @!attribute [r] credits
       #
-      #   @return [Array<Metronome::Models::Credit>]
+      #   @return [Array<Metronome::Models::Credit>, nil]
       optional :credits, -> { Metronome::ArrayOf[Metronome::Models::Credit] }
 
       # @!parse
@@ -70,7 +70,7 @@ module Metronome
       # @!attribute [r] discounts
       #   This field's availability is dependent on your client's configuration.
       #
-      #   @return [Array<Metronome::Models::Discount>]
+      #   @return [Array<Metronome::Models::Discount>, nil]
       optional :discounts, -> { Metronome::ArrayOf[Metronome::Models::Discount] }
 
       # @!parse
@@ -117,7 +117,7 @@ module Metronome
       # @!attribute [r] professional_services
       #   This field's availability is dependent on your client's configuration.
       #
-      #   @return [Array<Metronome::Models::ProService>]
+      #   @return [Array<Metronome::Models::ProService>, nil]
       optional :professional_services, -> { Metronome::ArrayOf[Metronome::Models::ProService] }
 
       # @!parse
@@ -135,7 +135,7 @@ module Metronome
 
       # @!attribute [r] recurring_commits
       #
-      #   @return [Array<Metronome::Models::ContractWithoutAmendments::RecurringCommit>]
+      #   @return [Array<Metronome::Models::ContractWithoutAmendments::RecurringCommit>, nil]
       optional :recurring_commits,
                -> { Metronome::ArrayOf[Metronome::Models::ContractWithoutAmendments::RecurringCommit] }
 
@@ -145,7 +145,7 @@ module Metronome
 
       # @!attribute [r] recurring_credits
       #
-      #   @return [Array<Metronome::Models::ContractWithoutAmendments::RecurringCredit>]
+      #   @return [Array<Metronome::Models::ContractWithoutAmendments::RecurringCredit>, nil]
       optional :recurring_credits,
                -> { Metronome::ArrayOf[Metronome::Models::ContractWithoutAmendments::RecurringCredit] }
 
@@ -156,7 +156,7 @@ module Metronome
       # @!attribute [r] reseller_royalties
       #   This field's availability is dependent on your client's configuration.
       #
-      #   @return [Array<Metronome::Models::ContractWithoutAmendments::ResellerRoyalty>]
+      #   @return [Array<Metronome::Models::ContractWithoutAmendments::ResellerRoyalty>, nil]
       optional :reseller_royalties,
                -> { Metronome::ArrayOf[Metronome::Models::ContractWithoutAmendments::ResellerRoyalty] }
 
@@ -436,7 +436,7 @@ module Metronome
         # @!attribute [r] applicable_product_ids
         #   Will be passed down to the individual commits
         #
-        #   @return [Array<String>]
+        #   @return [Array<String>, nil]
         optional :applicable_product_ids, Metronome::ArrayOf[String]
 
         # @!parse
@@ -446,7 +446,7 @@ module Metronome
         # @!attribute [r] applicable_product_tags
         #   Will be passed down to the individual commits
         #
-        #   @return [Array<String>]
+        #   @return [Array<String>, nil]
         optional :applicable_product_tags, Metronome::ArrayOf[String]
 
         # @!parse
@@ -827,7 +827,7 @@ module Metronome
         # @!attribute [r] applicable_product_ids
         #   Will be passed down to the individual commits
         #
-        #   @return [Array<String>]
+        #   @return [Array<String>, nil]
         optional :applicable_product_ids, Metronome::ArrayOf[String]
 
         # @!parse
@@ -837,7 +837,7 @@ module Metronome
         # @!attribute [r] applicable_product_tags
         #   Will be passed down to the individual commits
         #
-        #   @return [Array<String>]
+        #   @return [Array<String>, nil]
         optional :applicable_product_tags, Metronome::ArrayOf[String]
 
         # @!parse
@@ -1193,7 +1193,7 @@ module Metronome
 
         # @!attribute [r] applicable_product_ids
         #
-        #   @return [Array<String>]
+        #   @return [Array<String>, nil]
         optional :applicable_product_ids, Metronome::ArrayOf[String]
 
         # @!parse
@@ -1202,7 +1202,7 @@ module Metronome
 
         # @!attribute [r] applicable_product_tags
         #
-        #   @return [Array<String>]
+        #   @return [Array<String>, nil]
         optional :applicable_product_tags, Metronome::ArrayOf[String]
 
         # @!parse

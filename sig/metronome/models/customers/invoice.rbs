@@ -90,7 +90,7 @@ module Metronome
 
         attr_accessor external_invoice: Metronome::Models::Customers::Invoice::ExternalInvoice?
 
-        attr_reader invoice_adjustments: Array[Metronome::Models::Customers::Invoice::InvoiceAdjustment]
+        attr_reader invoice_adjustments: Array[Metronome::Models::Customers::Invoice::InvoiceAdjustment]?
 
         def invoice_adjustments=: (
           Array[Metronome::Models::Customers::Invoice::InvoiceAdjustment]
@@ -198,7 +198,7 @@ module Metronome
             netsuite_invoice_billing_start: Time,
             netsuite_item_id: String,
             postpaid_commit: Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit,
-            presentation_group_values: Hash[Symbol, String?]?,
+            presentation_group_values: Hash[Symbol, String?],
             pricing_group_values: Hash[Symbol, String],
             product_custom_fields: Hash[Symbol, String],
             product_id: String,
@@ -298,7 +298,7 @@ module Metronome
 
           attr_reader presentation_group_values: Hash[Symbol, String?]?
 
-          def presentation_group_values=: (Hash[Symbol, String?]?) -> void
+          def presentation_group_values=: (Hash[Symbol, String?]) -> void
 
           attr_reader pricing_group_values: Hash[Symbol, String]?
 
@@ -348,7 +348,7 @@ module Metronome
 
           def starting_at=: (Time) -> void
 
-          attr_reader sub_line_items: Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem]
+          attr_reader sub_line_items: Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem]?
 
           def sub_line_items=: (
             Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem]
@@ -387,7 +387,7 @@ module Metronome
               netsuite_invoice_billing_start: Time,
               netsuite_item_id: String,
               postpaid_commit: Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit,
-              presentation_group_values: Hash[Symbol, String?]?,
+              presentation_group_values: Hash[Symbol, String?],
               pricing_group_values: Hash[Symbol, String],
               product_custom_fields: Hash[Symbol, String],
               product_id: String,
@@ -520,7 +520,7 @@ module Metronome
               Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod
             ) -> void
 
-            attr_reader tiers: Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]
+            attr_reader tiers: Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]?
 
             def tiers=: (
               Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]

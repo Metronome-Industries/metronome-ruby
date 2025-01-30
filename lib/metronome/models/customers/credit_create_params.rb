@@ -35,7 +35,7 @@ module Metronome
         #   Which contract the credit applies to. If not provided, the credit applies to all
         #     contracts.
         #
-        #   @return [Array<String>]
+        #   @return [Array<String>, nil]
         optional :applicable_contract_ids, Metronome::ArrayOf[String]
 
         # @!parse
@@ -46,7 +46,7 @@ module Metronome
         #   Which products the credit applies to. If both applicable_product_ids and
         #     applicable_product_tags are not provided, the credit applies to all products.
         #
-        #   @return [Array<String>]
+        #   @return [Array<String>, nil]
         optional :applicable_product_ids, Metronome::ArrayOf[String]
 
         # @!parse
@@ -57,7 +57,7 @@ module Metronome
         #   Which tags the credit applies to. If both applicable_product_ids and
         #     applicable_product_tags are not provided, the credit applies to all products.
         #
-        #   @return [Array<String>]
+        #   @return [Array<String>, nil]
         optional :applicable_product_tags, Metronome::ArrayOf[String]
 
         # @!parse

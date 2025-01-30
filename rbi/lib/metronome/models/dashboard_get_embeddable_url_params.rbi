@@ -25,7 +25,9 @@ module Metronome
       sig { returns(Symbol) }
       attr_accessor :dashboard
 
-      sig { returns(T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride]) }
+      sig do
+        returns(T.nilable(T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride]))
+      end
       attr_reader :bm_group_key_overrides
 
       sig do
@@ -35,7 +37,7 @@ module Metronome
       end
       attr_writer :bm_group_key_overrides
 
-      sig { returns(T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride]) }
+      sig { returns(T.nilable(T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride])) }
       attr_reader :color_overrides
 
       sig do
@@ -43,7 +45,9 @@ module Metronome
       end
       attr_writer :color_overrides
 
-      sig { returns(T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption]) }
+      sig do
+        returns(T.nilable(T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption]))
+      end
       attr_reader :dashboard_options
 
       sig do

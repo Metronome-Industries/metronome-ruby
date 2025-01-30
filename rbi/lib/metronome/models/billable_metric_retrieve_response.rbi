@@ -66,13 +66,13 @@ module Metronome
         sig { params(event_type_filter: Metronome::Models::EventTypeFilter).void }
         attr_writer :event_type_filter
 
-        sig { returns(T::Array[T::Array[String]]) }
+        sig { returns(T.nilable(T::Array[T::Array[String]])) }
         attr_reader :group_keys
 
         sig { params(group_keys: T::Array[T::Array[String]]).void }
         attr_writer :group_keys
 
-        sig { returns(T::Array[Metronome::Models::PropertyFilter]) }
+        sig { returns(T.nilable(T::Array[Metronome::Models::PropertyFilter])) }
         attr_reader :property_filters
 
         sig { params(property_filters: T::Array[Metronome::Models::PropertyFilter]).void }

@@ -43,7 +43,7 @@ module Metronome
         #   Which contract the commit applies to. If not provided, the commit applies to all
         #     contracts.
         #
-        #   @return [Array<String>]
+        #   @return [Array<String>, nil]
         optional :applicable_contract_ids, Metronome::ArrayOf[String]
 
         # @!parse
@@ -54,7 +54,7 @@ module Metronome
         #   Which products the commit applies to. If both applicable_product_ids and
         #     applicable_product_tags are not provided, the commit applies to all products.
         #
-        #   @return [Array<String>]
+        #   @return [Array<String>, nil]
         optional :applicable_product_ids, Metronome::ArrayOf[String]
 
         # @!parse
@@ -65,7 +65,7 @@ module Metronome
         #   Which tags the commit applies to. If both applicable_product_ids and
         #     applicable_product_tags are not provided, the commit applies to all products.
         #
-        #   @return [Array<String>]
+        #   @return [Array<String>, nil]
         optional :applicable_product_tags, Metronome::ArrayOf[String]
 
         # @!parse
@@ -346,7 +346,7 @@ module Metronome
           # @!attribute [r] schedule_items
           #   Either provide amount or provide both unit_price and quantity.
           #
-          #   @return [Array<Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem>]
+          #   @return [Array<Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem>, nil]
           optional :schedule_items,
                    -> {
                      Metronome::ArrayOf[Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]

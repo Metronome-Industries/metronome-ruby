@@ -26,7 +26,7 @@ module Metronome
 
       # @!attribute [r] applicable_product_tags
       #
-      #   @return [Array<String>]
+      #   @return [Array<String>, nil]
       optional :applicable_product_tags, Metronome::ArrayOf[String]
 
       # @!parse
@@ -91,7 +91,7 @@ module Metronome
 
       # @!attribute [r] override_specifiers
       #
-      #   @return [Array<Metronome::Models::Override::OverrideSpecifier>]
+      #   @return [Array<Metronome::Models::Override::OverrideSpecifier>, nil]
       optional :override_specifiers, -> { Metronome::ArrayOf[Metronome::Models::Override::OverrideSpecifier] }
 
       # @!parse
@@ -100,7 +100,7 @@ module Metronome
 
       # @!attribute [r] override_tiers
       #
-      #   @return [Array<Metronome::Models::Override::OverrideTier>]
+      #   @return [Array<Metronome::Models::Override::OverrideTier>, nil]
       optional :override_tiers, -> { Metronome::ArrayOf[Metronome::Models::Override::OverrideTier] }
 
       # @!parse
@@ -176,7 +176,7 @@ module Metronome
       # @!attribute [r] tiers
       #   Only set for TIERED rate_type.
       #
-      #   @return [Array<Metronome::Models::Tier>]
+      #   @return [Array<Metronome::Models::Tier>, nil]
       optional :tiers, -> { Metronome::ArrayOf[Metronome::Models::Tier] }
 
       # @!parse
@@ -259,7 +259,7 @@ module Metronome
       # ```ruby
       # override_specifier => {
       #   commit_ids: -> { Metronome::ArrayOf[String] === _1 },
-      #   presentation_group_values: -> { Metronome::HashOf[String] === _1 },
+      #   presentation_group_values: -> { Metronome::HashOf[String, nil?: true] === _1 },
       #   pricing_group_values: -> { Metronome::HashOf[String] === _1 },
       #   product_id: String,
       #   product_tags: -> { Metronome::ArrayOf[String] === _1 },
@@ -269,7 +269,7 @@ module Metronome
       class OverrideSpecifier < Metronome::BaseModel
         # @!attribute [r] commit_ids
         #
-        #   @return [Array<String>]
+        #   @return [Array<String>, nil]
         optional :commit_ids, Metronome::ArrayOf[String]
 
         # @!parse
@@ -278,11 +278,11 @@ module Metronome
 
         # @!attribute [r] presentation_group_values
         #
-        #   @return [Hash{Symbol=>String}, nil]
-        optional :presentation_group_values, Metronome::HashOf[String]
+        #   @return [Hash{Symbol=>String, nil}, nil]
+        optional :presentation_group_values, Metronome::HashOf[String, nil?: true]
 
         # @!parse
-        #   # @return [Hash{Symbol=>String}, nil]
+        #   # @return [Hash{Symbol=>String, nil}]
         #   attr_writer :presentation_group_values
 
         # @!attribute [r] pricing_group_values
@@ -305,7 +305,7 @@ module Metronome
 
         # @!attribute [r] product_tags
         #
-        #   @return [Array<String>]
+        #   @return [Array<String>, nil]
         optional :product_tags, Metronome::ArrayOf[String]
 
         # @!parse
@@ -314,7 +314,7 @@ module Metronome
 
         # @!attribute [r] recurring_commit_ids
         #
-        #   @return [Array<String>]
+        #   @return [Array<String>, nil]
         optional :recurring_commit_ids, Metronome::ArrayOf[String]
 
         # @!parse
@@ -323,7 +323,7 @@ module Metronome
 
         # @!attribute [r] recurring_credit_ids
         #
-        #   @return [Array<String>]
+        #   @return [Array<String>, nil]
         optional :recurring_credit_ids, Metronome::ArrayOf[String]
 
         # @!parse
@@ -332,7 +332,7 @@ module Metronome
 
         # @!parse
         #   # @param commit_ids [Array<String>]
-        #   # @param presentation_group_values [Hash{Symbol=>String}, nil]
+        #   # @param presentation_group_values [Hash{Symbol=>String, nil}]
         #   # @param pricing_group_values [Hash{Symbol=>String}]
         #   # @param product_id [String]
         #   # @param product_tags [Array<String>]
@@ -458,7 +458,7 @@ module Metronome
         # @!attribute [r] tiers
         #   Only set for TIERED rate_type.
         #
-        #   @return [Array<Metronome::Models::Tier>]
+        #   @return [Array<Metronome::Models::Tier>, nil]
         optional :tiers, -> { Metronome::ArrayOf[Metronome::Models::Tier] }
 
         # @!parse

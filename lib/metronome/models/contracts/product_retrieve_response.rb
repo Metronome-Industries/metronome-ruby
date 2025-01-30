@@ -154,7 +154,7 @@ module Metronome
 
             # @!attribute [r] composite_product_ids
             #
-            #   @return [Array<String>]
+            #   @return [Array<String>, nil]
             optional :composite_product_ids, Metronome::ArrayOf[String]
 
             # @!parse
@@ -163,7 +163,7 @@ module Metronome
 
             # @!attribute [r] composite_tags
             #
-            #   @return [Array<String>]
+            #   @return [Array<String>, nil]
             optional :composite_tags, Metronome::ArrayOf[String]
 
             # @!parse
@@ -222,7 +222,7 @@ module Metronome
             #     values in the pricing group key and presentation group key must be set as one
             #     compound group key on the billable metric.
             #
-            #   @return [Array<String>]
+            #   @return [Array<String>, nil]
             optional :presentation_group_key, Metronome::ArrayOf[String]
 
             # @!parse
@@ -235,7 +235,7 @@ module Metronome
             #     of values in the pricing group key and presentation group key must be set as one
             #     compound group key on the billable metric.
             #
-            #   @return [Array<String>]
+            #   @return [Array<String>, nil]
             optional :pricing_group_key, Metronome::ArrayOf[String]
 
             # @!parse
@@ -274,7 +274,7 @@ module Metronome
 
             # @!attribute [r] tags
             #
-            #   @return [Array<String>]
+            #   @return [Array<String>, nil]
             optional :tags, Metronome::ArrayOf[String]
 
             # @!parse

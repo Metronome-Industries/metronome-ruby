@@ -22,7 +22,7 @@ module Metronome
         sig { returns(String) }
         attr_accessor :rate_card_id
 
-        sig { returns(T::Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias]) }
+        sig { returns(T.nilable(T::Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias])) }
         attr_reader :aliases
 
         sig { params(aliases: T::Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias]).void }

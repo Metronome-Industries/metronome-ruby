@@ -115,11 +115,11 @@ module Metronome
 
           attr_accessor starting_at: Time
 
-          attr_reader credits: Array[Metronome::Models::Credit]
+          attr_reader credits: Array[Metronome::Models::Credit]?
 
           def credits=: (Array[Metronome::Models::Credit]) -> void
 
-          attr_reader discounts: Array[Metronome::Models::Discount]
+          attr_reader discounts: Array[Metronome::Models::Discount]?
 
           def discounts=: (Array[Metronome::Models::Discount]) -> void
 
@@ -127,13 +127,13 @@ module Metronome
 
           def netsuite_sales_order_id=: (String) -> void
 
-          attr_reader professional_services: Array[Metronome::Models::ProService]
+          attr_reader professional_services: Array[Metronome::Models::ProService]?
 
           def professional_services=: (
             Array[Metronome::Models::ProService]
           ) -> void
 
-          attr_reader reseller_royalties: Array[Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty]
+          attr_reader reseller_royalties: Array[Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty]?
 
           def reseller_royalties=: (
             Array[Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty]

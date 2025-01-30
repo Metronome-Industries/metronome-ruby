@@ -47,7 +47,9 @@ module Metronome
         sig { params(cost: Float).void }
         attr_writer :cost
 
-        sig { returns(T::Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown]) }
+        sig do
+          returns(T.nilable(T::Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown]))
+        end
         attr_reader :line_item_breakdown
 
         sig do

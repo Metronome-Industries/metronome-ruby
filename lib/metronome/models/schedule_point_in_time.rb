@@ -21,7 +21,7 @@ module Metronome
 
       # @!attribute [r] schedule_items
       #
-      #   @return [Array<Metronome::Models::SchedulePointInTime::ScheduleItem>]
+      #   @return [Array<Metronome::Models::SchedulePointInTime::ScheduleItem>, nil]
       optional :schedule_items,
                -> {
                  Metronome::ArrayOf[Metronome::Models::SchedulePointInTime::ScheduleItem]

@@ -20,7 +20,7 @@ module Metronome
       # @!attribute [r] entities
       #   Optional list of entity types to return keys for
       #
-      #   @return [Array<Symbol, Metronome::Models::CustomFieldListKeysParams::Entity>]
+      #   @return [Array<Symbol, Metronome::Models::CustomFieldListKeysParams::Entity>, nil]
       optional :entities,
                -> {
                  Metronome::ArrayOf[enum: Metronome::Models::CustomFieldListKeysParams::Entity]

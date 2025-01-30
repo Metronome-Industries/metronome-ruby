@@ -115,7 +115,7 @@ module Metronome
         sig { returns(String) }
         attr_accessor :key
 
-        sig { returns(T::Array[String]) }
+        sig { returns(T.nilable(T::Array[String])) }
         attr_reader :values
 
         sig { params(values: T::Array[String]).void }

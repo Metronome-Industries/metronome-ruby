@@ -21,7 +21,7 @@ module Metronome
       # @!attribute [r] bm_group_key_overrides
       #   Optional list of billable metric group key overrides
       #
-      #   @return [Array<Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>]
+      #   @return [Array<Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>, nil]
       optional :bm_group_key_overrides,
                -> {
                  Metronome::ArrayOf[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride]
@@ -34,7 +34,7 @@ module Metronome
       # @!attribute [r] color_overrides
       #   Optional list of colors to override
       #
-      #   @return [Array<Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride>]
+      #   @return [Array<Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride>, nil]
       optional :color_overrides,
                -> { Metronome::ArrayOf[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride] }
 
@@ -45,7 +45,7 @@ module Metronome
       # @!attribute [r] dashboard_options
       #   Optional dashboard specific options
       #
-      #   @return [Array<Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption>]
+      #   @return [Array<Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption>, nil]
       optional :dashboard_options,
                -> { Metronome::ArrayOf[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption] }
 

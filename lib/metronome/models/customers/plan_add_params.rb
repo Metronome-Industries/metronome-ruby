@@ -51,7 +51,7 @@ module Metronome
         #   An optional list of overage rates that override the rates of the original plan
         #     configuration. These new rates will apply to all pricing ramps.
         #
-        #   @return [Array<Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment>]
+        #   @return [Array<Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment>, nil]
         optional :overage_rate_adjustments,
                  -> { Metronome::ArrayOf[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment] }
 
@@ -65,7 +65,7 @@ module Metronome
         #     [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments)
         #     for details.
         #
-        #   @return [Array<Metronome::Models::Customers::PlanAddParams::PriceAdjustment>]
+        #   @return [Array<Metronome::Models::Customers::PlanAddParams::PriceAdjustment>, nil]
         optional :price_adjustments,
                  -> { Metronome::ArrayOf[Metronome::Models::Customers::PlanAddParams::PriceAdjustment] }
 

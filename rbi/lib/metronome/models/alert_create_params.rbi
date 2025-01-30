@@ -42,7 +42,7 @@ module Metronome
       sig { params(billable_metric_id: String).void }
       attr_writer :billable_metric_id
 
-      sig { returns(T::Array[String]) }
+      sig { returns(T.nilable(T::Array[String])) }
       attr_reader :credit_grant_type_filters
 
       sig { params(credit_grant_type_filters: T::Array[String]).void }
@@ -54,7 +54,7 @@ module Metronome
       sig { params(credit_type_id: String).void }
       attr_writer :credit_type_id
 
-      sig { returns(T::Array[Metronome::Models::AlertCreateParams::CustomFieldFilter]) }
+      sig { returns(T.nilable(T::Array[Metronome::Models::AlertCreateParams::CustomFieldFilter])) }
       attr_reader :custom_field_filters
 
       sig do
@@ -80,7 +80,7 @@ module Metronome
       sig { params(group_key_filter: Metronome::Models::AlertCreateParams::GroupKeyFilter).void }
       attr_writer :group_key_filter
 
-      sig { returns(T::Array[String]) }
+      sig { returns(T.nilable(T::Array[String])) }
       attr_reader :invoice_types_filter
 
       sig { params(invoice_types_filter: T::Array[String]).void }

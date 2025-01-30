@@ -42,7 +42,7 @@ module Metronome
       #     applies to, by looking at the credit_grant_type field on the credit grant. This
       #     field is only defined for CreditPercentage and CreditBalance alerts
       #
-      #   @return [Array<String>]
+      #   @return [Array<String>, nil]
       optional :credit_grant_type_filters, Metronome::ArrayOf[String]
 
       # @!parse
@@ -63,7 +63,7 @@ module Metronome
       #     on your client's configuration. A list of custom field filters for alert types
       #     that support advanced filtering
       #
-      #   @return [Array<Metronome::Models::AlertCreateParams::CustomFieldFilter>]
+      #   @return [Array<Metronome::Models::AlertCreateParams::CustomFieldFilter>, nil]
       optional :custom_field_filters,
                -> { Metronome::ArrayOf[Metronome::Models::AlertCreateParams::CustomFieldFilter] }
 
@@ -109,7 +109,7 @@ module Metronome
       #   Only supported for invoice_total_reached alerts. A list of invoice types to
       #     evaluate.
       #
-      #   @return [Array<String>]
+      #   @return [Array<String>, nil]
       optional :invoice_types_filter, Metronome::ArrayOf[String]
 
       # @!parse

@@ -16,7 +16,7 @@ module Metronome
       sig { params(credit_type: Metronome::Models::CreditTypeData).void }
       attr_writer :credit_type
 
-      sig { returns(T::Array[Metronome::Models::SchedulePointInTime::ScheduleItem]) }
+      sig { returns(T.nilable(T::Array[Metronome::Models::SchedulePointInTime::ScheduleItem])) }
       attr_reader :schedule_items
 
       sig { params(schedule_items: T::Array[Metronome::Models::SchedulePointInTime::ScheduleItem]).void }
