@@ -1,0 +1,22 @@
+module Metronome
+  module Models
+    type invoice_regenerate_params =
+      { id: String } & Metronome::request_parameters
+
+    class InvoiceRegenerateParams < Metronome::BaseModel
+      extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
+      attr_accessor id: String
+
+      def initialize:
+        (id: String, request_options: Metronome::request_opts) -> void
+        | (
+          ?Metronome::Models::invoice_regenerate_params
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::invoice_regenerate_params
+    end
+  end
+end

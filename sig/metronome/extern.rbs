@@ -1,0 +1,5 @@
+module Metronome
+  module Extern
+    def sorbet!: { -> void } -> void
+  end
+end

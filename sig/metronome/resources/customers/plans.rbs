@@ -1,0 +1,73 @@
+module Metronome
+  module Resources
+    class Customers
+      class Plans
+        def list:
+          (
+            Metronome::Models::Customers::PlanListParams
+            | Hash[Symbol, top] params
+          ) -> Metronome::CursorPage[Metronome::Models::Customers::PlanListResponse]
+          | (
+            Metronome::Models::Customers::PlanListParams
+            | Hash[Symbol, top] params,
+            customer_id: String,
+            limit: Integer,
+            next_page: String,
+            request_options: Metronome::request_opts
+          ) -> Metronome::CursorPage[Metronome::Models::Customers::PlanListResponse]
+
+        def add:
+          (
+            Metronome::Models::Customers::PlanAddParams
+            | Hash[Symbol, top] params
+          ) -> Metronome::Models::Customers::PlanAddResponse
+          | (
+            Metronome::Models::Customers::PlanAddParams
+            | Hash[Symbol, top] params,
+            customer_id: String,
+            plan_id: String,
+            starting_on: Time,
+            ending_before: Time,
+            net_payment_terms_days: Float,
+            overage_rate_adjustments: Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment],
+            price_adjustments: Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment],
+            trial_spec: Metronome::Models::Customers::PlanAddParams::TrialSpec,
+            request_options: Metronome::request_opts
+          ) -> Metronome::Models::Customers::PlanAddResponse
+
+        def end_:
+          (
+            Metronome::Models::Customers::PlanEndParams
+            | Hash[Symbol, top] params
+          ) -> Metronome::Models::Customers::PlanEndResponse
+          | (
+            Metronome::Models::Customers::PlanEndParams
+            | Hash[Symbol, top] params,
+            customer_id: String,
+            customer_plan_id: String,
+            ending_before: Time,
+            void_invoices: bool,
+            void_stripe_invoices: bool,
+            request_options: Metronome::request_opts
+          ) -> Metronome::Models::Customers::PlanEndResponse
+
+        def list_price_adjustments:
+          (
+            Metronome::Models::Customers::PlanListPriceAdjustmentsParams
+            | Hash[Symbol, top] params
+          ) -> Metronome::CursorPage[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse]
+          | (
+            Metronome::Models::Customers::PlanListPriceAdjustmentsParams
+            | Hash[Symbol, top] params,
+            customer_id: String,
+            customer_plan_id: String,
+            limit: Integer,
+            next_page: String,
+            request_options: Metronome::request_opts
+          ) -> Metronome::CursorPage[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse]
+
+        def initialize: (client: Metronome::Client) -> void
+      end
+    end
+  end
+end

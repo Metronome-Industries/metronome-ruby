@@ -1,0 +1,50 @@
+module Metronome
+  class Client < Metronome::BaseClient
+    DEFAULT_MAX_RETRIES: 2
+
+    DEFAULT_TIMEOUT_IN_SECONDS: Float
+
+    DEFAULT_INITIAL_RETRY_DELAY: Float
+
+    DEFAULT_MAX_RETRY_DELAY: Float
+
+    attr_reader bearer_token: String
+
+    attr_reader alerts: Metronome::Resources::Alerts
+
+    attr_reader plans: Metronome::Resources::Plans
+
+    attr_reader credit_grants: Metronome::Resources::CreditGrants
+
+    attr_reader pricing_units: Metronome::Resources::PricingUnits
+
+    attr_reader customers: Metronome::Resources::Customers
+
+    attr_reader dashboards: Metronome::Resources::Dashboards
+
+    attr_reader usage: Metronome::Resources::Usage
+
+    attr_reader audit_logs: Metronome::Resources::AuditLogs
+
+    attr_reader custom_fields: Metronome::Resources::CustomFields
+
+    attr_reader billable_metrics: Metronome::Resources::BillableMetrics
+
+    attr_reader services: Metronome::Resources::Services
+
+    attr_reader invoices: Metronome::Resources::Invoices
+
+    attr_reader contracts: Metronome::Resources::Contracts
+
+    private def auth_headers: -> Hash[String, String]
+
+    def initialize: (
+      base_url: String?,
+      bearer_token: String?,
+      max_retries: Integer,
+      timeout: Float,
+      initial_retry_delay: Float,
+      max_retry_delay: Float
+    ) -> void
+  end
+end

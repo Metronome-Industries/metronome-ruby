@@ -1,0 +1,178 @@
+module Metronome
+  module Models
+    type credit_grant_list_response =
+      {
+        id: String,
+        balance: Metronome::Models::CreditGrantListResponse::Balance,
+        custom_fields: Hash[Symbol, String],
+        customer_id: String,
+        deductions: Array[Metronome::Models::CreditLedgerEntry],
+        effective_at: Time,
+        expires_at: Time,
+        grant_amount: Metronome::Models::CreditGrantListResponse::GrantAmount,
+        name: String,
+        paid_amount: Metronome::Models::CreditGrantListResponse::PaidAmount,
+        pending_deductions: Array[Metronome::Models::CreditLedgerEntry],
+        priority: Float,
+        credit_grant_type: String?,
+        invoice_id: String?,
+        products: Array[Metronome::Models::CreditGrantListResponse::Product],
+        reason: String?,
+        uniqueness_key: String?
+      }
+
+    class CreditGrantListResponse < Metronome::BaseModel
+      attr_accessor id: String
+
+      attr_accessor balance: Metronome::Models::CreditGrantListResponse::Balance
+
+      attr_accessor custom_fields: Hash[Symbol, String]
+
+      attr_accessor customer_id: String
+
+      attr_accessor deductions: Array[Metronome::Models::CreditLedgerEntry]
+
+      attr_accessor effective_at: Time
+
+      attr_accessor expires_at: Time
+
+      attr_accessor grant_amount: Metronome::Models::CreditGrantListResponse::GrantAmount
+
+      attr_accessor name: String
+
+      attr_accessor paid_amount: Metronome::Models::CreditGrantListResponse::PaidAmount
+
+      attr_accessor pending_deductions: Array[Metronome::Models::CreditLedgerEntry]
+
+      attr_accessor priority: Float
+
+      attr_accessor credit_grant_type: String?
+
+      attr_accessor invoice_id: String?
+
+      attr_reader products: Array[Metronome::Models::CreditGrantListResponse::Product]
+
+      def products=: (
+        Array[Metronome::Models::CreditGrantListResponse::Product]
+      ) -> void
+
+      attr_accessor reason: String?
+
+      attr_accessor uniqueness_key: String?
+
+      def initialize:
+        (
+          id: String,
+          balance: Metronome::Models::CreditGrantListResponse::Balance,
+          custom_fields: Hash[Symbol, String],
+          customer_id: String,
+          deductions: Array[Metronome::Models::CreditLedgerEntry],
+          effective_at: Time,
+          expires_at: Time,
+          grant_amount: Metronome::Models::CreditGrantListResponse::GrantAmount,
+          name: String,
+          paid_amount: Metronome::Models::CreditGrantListResponse::PaidAmount,
+          pending_deductions: Array[Metronome::Models::CreditLedgerEntry],
+          priority: Float,
+          credit_grant_type: String?,
+          invoice_id: String?,
+          products: Array[Metronome::Models::CreditGrantListResponse::Product],
+          reason: String?,
+          uniqueness_key: String?
+        ) -> void
+        | (
+          ?Metronome::Models::credit_grant_list_response
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::credit_grant_list_response
+
+      type balance =
+        {
+          effective_at: Time,
+          excluding_pending: Float,
+          including_pending: Float
+        }
+
+      class Balance < Metronome::BaseModel
+        attr_accessor effective_at: Time
+
+        attr_accessor excluding_pending: Float
+
+        attr_accessor including_pending: Float
+
+        def initialize:
+          (
+            effective_at: Time,
+            excluding_pending: Float,
+            including_pending: Float
+          ) -> void
+          | (
+            ?Metronome::Models::CreditGrantListResponse::balance
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::CreditGrantListResponse::balance
+      end
+
+      type grant_amount =
+        { amount: Float, credit_type: Metronome::Models::CreditTypeData }
+
+      class GrantAmount < Metronome::BaseModel
+        attr_accessor amount: Float
+
+        attr_accessor credit_type: Metronome::Models::CreditTypeData
+
+        def initialize:
+          (
+            amount: Float,
+            credit_type: Metronome::Models::CreditTypeData
+          ) -> void
+          | (
+            ?Metronome::Models::CreditGrantListResponse::grant_amount
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::CreditGrantListResponse::grant_amount
+      end
+
+      type paid_amount =
+        { amount: Float, credit_type: Metronome::Models::CreditTypeData }
+
+      class PaidAmount < Metronome::BaseModel
+        attr_accessor amount: Float
+
+        attr_accessor credit_type: Metronome::Models::CreditTypeData
+
+        def initialize:
+          (
+            amount: Float,
+            credit_type: Metronome::Models::CreditTypeData
+          ) -> void
+          | (
+            ?Metronome::Models::CreditGrantListResponse::paid_amount
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::CreditGrantListResponse::paid_amount
+      end
+
+      type product = { id: String, name: String }
+
+      class Product < Metronome::BaseModel
+        attr_accessor id: String
+
+        attr_accessor name: String
+
+        def initialize:
+          (id: String, name: String) -> void
+          | (
+            ?Metronome::Models::CreditGrantListResponse::product
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::CreditGrantListResponse::product
+      end
+    end
+  end
+end

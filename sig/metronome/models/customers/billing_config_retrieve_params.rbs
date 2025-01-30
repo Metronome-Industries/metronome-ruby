@@ -1,0 +1,57 @@
+module Metronome
+  module Models
+    module Customers
+      type billing_config_retrieve_params =
+        {
+          customer_id: String,
+          billing_provider_type: Metronome::Models::Customers::BillingConfigRetrieveParams::billing_provider_type
+        }
+        & Metronome::request_parameters
+
+      class BillingConfigRetrieveParams < Metronome::BaseModel
+        extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
+        attr_accessor customer_id: String
+
+        attr_accessor billing_provider_type: Metronome::Models::Customers::BillingConfigRetrieveParams::billing_provider_type
+
+        def initialize:
+          (
+            customer_id: String,
+            billing_provider_type: Metronome::Models::Customers::BillingConfigRetrieveParams::billing_provider_type,
+            request_options: Metronome::request_opts
+          ) -> void
+          | (
+            ?Metronome::Models::Customers::billing_config_retrieve_params
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::Customers::billing_config_retrieve_params
+
+        type billing_provider_type =
+          :aws_marketplace
+          | :stripe
+          | :netsuite
+          | :custom
+          | :azure_marketplace
+          | :quickbooks_online
+          | :workday
+          | :gcp_marketplace
+
+        class BillingProviderType < Metronome::Enum
+          AWS_MARKETPLACE: :aws_marketplace
+          STRIPE: :stripe
+          NETSUITE: :netsuite
+          CUSTOM: :custom
+          AZURE_MARKETPLACE: :azure_marketplace
+          QUICKBOOKS_ONLINE: :quickbooks_online
+          WORKDAY: :workday
+          GCP_MARKETPLACE: :gcp_marketplace
+
+          def self.values: -> Array[Metronome::Models::Customers::BillingConfigRetrieveParams::billing_provider_type]
+        end
+      end
+    end
+  end
+end

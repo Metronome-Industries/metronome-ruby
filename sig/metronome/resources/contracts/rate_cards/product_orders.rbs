@@ -1,0 +1,37 @@
+module Metronome
+  module Resources
+    class Contracts
+      class RateCards
+        class ProductOrders
+          def update:
+            (
+              Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams
+              | Hash[Symbol, top] params
+            ) -> Metronome::Models::Contracts::RateCards::ProductOrderUpdateResponse
+            | (
+              Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams
+              | Hash[Symbol, top] params,
+              product_moves: Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove],
+              rate_card_id: String,
+              request_options: Metronome::request_opts
+            ) -> Metronome::Models::Contracts::RateCards::ProductOrderUpdateResponse
+
+          def set:
+            (
+              Metronome::Models::Contracts::RateCards::ProductOrderSetParams
+              | Hash[Symbol, top] params
+            ) -> Metronome::Models::Contracts::RateCards::ProductOrderSetResponse
+            | (
+              Metronome::Models::Contracts::RateCards::ProductOrderSetParams
+              | Hash[Symbol, top] params,
+              product_order: Array[String],
+              rate_card_id: String,
+              request_options: Metronome::request_opts
+            ) -> Metronome::Models::Contracts::RateCards::ProductOrderSetResponse
+
+          def initialize: (client: Metronome::Client) -> void
+        end
+      end
+    end
+  end
+end

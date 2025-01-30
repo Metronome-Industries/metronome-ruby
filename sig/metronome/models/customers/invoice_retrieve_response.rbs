@@ -1,0 +1,21 @@
+module Metronome
+  module Models
+    module Customers
+      type invoice_retrieve_response =
+        { data: Metronome::Models::Customers::Invoice }
+
+      class InvoiceRetrieveResponse < Metronome::BaseModel
+        attr_accessor data: Metronome::Models::Customers::Invoice
+
+        def initialize:
+          (data: Metronome::Models::Customers::Invoice) -> void
+          | (
+            ?Metronome::Models::Customers::invoice_retrieve_response
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::Customers::invoice_retrieve_response
+      end
+    end
+  end
+end

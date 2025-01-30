@@ -1,0 +1,17 @@
+module Metronome
+  module Models
+    type alert_create_response = { data: Metronome::Models::ID }
+
+    class AlertCreateResponse < Metronome::BaseModel
+      attr_accessor data: Metronome::Models::ID
+
+      def initialize:
+        (data: Metronome::Models::ID) -> void
+        | (
+          ?Metronome::Models::alert_create_response | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::alert_create_response
+    end
+  end
+end

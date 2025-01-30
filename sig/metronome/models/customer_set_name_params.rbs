@@ -1,0 +1,28 @@
+module Metronome
+  module Models
+    type customer_set_name_params =
+      { customer_id: String, name: String } & Metronome::request_parameters
+
+    class CustomerSetNameParams < Metronome::BaseModel
+      extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
+      attr_accessor customer_id: String
+
+      attr_accessor name: String
+
+      def initialize:
+        (
+          customer_id: String,
+          name: String,
+          request_options: Metronome::request_opts
+        ) -> void
+        | (
+          ?Metronome::Models::customer_set_name_params
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::customer_set_name_params
+    end
+  end
+end

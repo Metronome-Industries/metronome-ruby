@@ -1,0 +1,73 @@
+module Metronome
+  module Resources
+    class Customers
+      class Commits
+        def create:
+          (
+            Metronome::Models::Customers::CommitCreateParams
+            | Hash[Symbol, top] params
+          ) -> Metronome::Models::Customers::CommitCreateResponse
+          | (
+            Metronome::Models::Customers::CommitCreateParams
+            | Hash[Symbol, top] params,
+            access_schedule: Metronome::Models::Customers::CommitCreateParams::AccessSchedule,
+            customer_id: String,
+            priority: Float,
+            product_id: String,
+            type: Metronome::Models::Customers::CommitCreateParams::type_,
+            applicable_contract_ids: Array[String],
+            applicable_product_ids: Array[String],
+            applicable_product_tags: Array[String],
+            custom_fields: Hash[Symbol, String],
+            description: String,
+            invoice_contract_id: String,
+            invoice_schedule: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule,
+            name: String,
+            netsuite_sales_order_id: String,
+            rate_type: Metronome::Models::Customers::CommitCreateParams::rate_type,
+            salesforce_opportunity_id: String,
+            uniqueness_key: String,
+            request_options: Metronome::request_opts
+          ) -> Metronome::Models::Customers::CommitCreateResponse
+
+        def list:
+          (
+            Metronome::Models::Customers::CommitListParams
+            | Hash[Symbol, top] params
+          ) -> Metronome::Models::Customers::CommitListResponse
+          | (
+            Metronome::Models::Customers::CommitListParams
+            | Hash[Symbol, top] params,
+            customer_id: String,
+            commit_id: String,
+            covering_date: Time,
+            effective_before: Time,
+            include_archived: bool,
+            include_balance: bool,
+            include_contract_commits: bool,
+            include_ledgers: bool,
+            next_page: String,
+            starting_at: Time,
+            request_options: Metronome::request_opts
+          ) -> Metronome::Models::Customers::CommitListResponse
+
+        def update_end_date:
+          (
+            Metronome::Models::Customers::CommitUpdateEndDateParams
+            | Hash[Symbol, top] params
+          ) -> Metronome::Models::Customers::CommitUpdateEndDateResponse
+          | (
+            Metronome::Models::Customers::CommitUpdateEndDateParams
+            | Hash[Symbol, top] params,
+            commit_id: String,
+            customer_id: String,
+            access_ending_before: Time,
+            invoices_ending_before: Time,
+            request_options: Metronome::request_opts
+          ) -> Metronome::Models::Customers::CommitUpdateEndDateResponse
+
+        def initialize: (client: Metronome::Client) -> void
+      end
+    end
+  end
+end

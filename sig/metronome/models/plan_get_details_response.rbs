@@ -1,0 +1,18 @@
+module Metronome
+  module Models
+    type plan_get_details_response = { data: Metronome::Models::PlanDetail }
+
+    class PlanGetDetailsResponse < Metronome::BaseModel
+      attr_accessor data: Metronome::Models::PlanDetail
+
+      def initialize:
+        (data: Metronome::Models::PlanDetail) -> void
+        | (
+          ?Metronome::Models::plan_get_details_response
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::plan_get_details_response
+    end
+  end
+end

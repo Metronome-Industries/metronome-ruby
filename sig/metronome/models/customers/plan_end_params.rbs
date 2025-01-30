@@ -1,0 +1,52 @@
+module Metronome
+  module Models
+    module Customers
+      type plan_end_params =
+        {
+          customer_id: String,
+          customer_plan_id: String,
+          ending_before: Time,
+          void_invoices: bool,
+          void_stripe_invoices: bool
+        }
+        & Metronome::request_parameters
+
+      class PlanEndParams < Metronome::BaseModel
+        extend Metronome::RequestParameters::Converter
+        include Metronome::RequestParameters
+
+        attr_accessor customer_id: String
+
+        attr_accessor customer_plan_id: String
+
+        attr_reader ending_before: Time?
+
+        def ending_before=: (Time) -> void
+
+        attr_reader void_invoices: bool?
+
+        def void_invoices=: (bool) -> void
+
+        attr_reader void_stripe_invoices: bool?
+
+        def void_stripe_invoices=: (bool) -> void
+
+        def initialize:
+          (
+            customer_id: String,
+            customer_plan_id: String,
+            ending_before: Time,
+            void_invoices: bool,
+            void_stripe_invoices: bool,
+            request_options: Metronome::request_opts
+          ) -> void
+          | (
+            ?Metronome::Models::Customers::plan_end_params
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::Customers::plan_end_params
+      end
+    end
+  end
+end

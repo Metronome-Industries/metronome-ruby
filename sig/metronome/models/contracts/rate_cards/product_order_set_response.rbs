@@ -1,0 +1,22 @@
+module Metronome
+  module Models
+    module Contracts
+      module RateCards
+        type product_order_set_response = { data: Metronome::Models::ID }
+
+        class ProductOrderSetResponse < Metronome::BaseModel
+          attr_accessor data: Metronome::Models::ID
+
+          def initialize:
+            (data: Metronome::Models::ID) -> void
+            | (
+              ?Metronome::Models::Contracts::RateCards::product_order_set_response
+              | Metronome::BaseModel data
+            ) -> void
+
+          def to_h: -> Metronome::Models::Contracts::RateCards::product_order_set_response
+        end
+      end
+    end
+  end
+end

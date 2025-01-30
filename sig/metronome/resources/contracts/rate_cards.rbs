@@ -1,0 +1,90 @@
+module Metronome
+  module Resources
+    class Contracts
+      class RateCards
+        attr_reader product_orders: Metronome::Resources::Contracts::RateCards::ProductOrders
+
+        attr_reader rates: Metronome::Resources::Contracts::RateCards::Rates
+
+        attr_reader named_schedules: Metronome::Resources::Contracts::RateCards::NamedSchedules
+
+        def create:
+          (
+            Metronome::Models::Contracts::RateCardCreateParams
+            | Hash[Symbol, top] params
+          ) -> Metronome::Models::Contracts::RateCardCreateResponse
+          | (
+            Metronome::Models::Contracts::RateCardCreateParams
+            | Hash[Symbol, top] params,
+            name: String,
+            aliases: Array[Metronome::Models::Contracts::RateCardCreateParams::Alias],
+            credit_type_conversions: Array[Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion],
+            custom_fields: Hash[Symbol, String],
+            description: String,
+            fiat_credit_type_id: String,
+            request_options: Metronome::request_opts
+          ) -> Metronome::Models::Contracts::RateCardCreateResponse
+
+        def retrieve:
+          (
+            Metronome::Models::Contracts::RateCardRetrieveParams
+            | Hash[Symbol, top] params
+          ) -> Metronome::Models::Contracts::RateCardRetrieveResponse
+          | (
+            Metronome::Models::Contracts::RateCardRetrieveParams
+            | Hash[Symbol, top] params,
+            id: String,
+            request_options: Metronome::request_opts
+          ) -> Metronome::Models::Contracts::RateCardRetrieveResponse
+
+        def update:
+          (
+            Metronome::Models::Contracts::RateCardUpdateParams
+            | Hash[Symbol, top] params
+          ) -> Metronome::Models::Contracts::RateCardUpdateResponse
+          | (
+            Metronome::Models::Contracts::RateCardUpdateParams
+            | Hash[Symbol, top] params,
+            rate_card_id: String,
+            aliases: Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias],
+            description: String,
+            name: String,
+            request_options: Metronome::request_opts
+          ) -> Metronome::Models::Contracts::RateCardUpdateResponse
+
+        def list:
+          (
+            Metronome::Models::Contracts::RateCardListParams
+            | Hash[Symbol, top] params
+          ) -> Metronome::CursorPage[Metronome::Models::Contracts::RateCardListResponse]
+          | (
+            Metronome::Models::Contracts::RateCardListParams
+            | Hash[Symbol, top] params,
+            body: top,
+            limit: Integer,
+            next_page: String,
+            request_options: Metronome::request_opts
+          ) -> Metronome::CursorPage[Metronome::Models::Contracts::RateCardListResponse]
+
+        def retrieve_rate_schedule:
+          (
+            Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams
+            | Hash[Symbol, top] params
+          ) -> Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse
+          | (
+            Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams
+            | Hash[Symbol, top] params,
+            rate_card_id: String,
+            starting_at: Time,
+            limit: Integer,
+            next_page: String,
+            ending_before: Time,
+            selectors: Array[Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams::Selector],
+            request_options: Metronome::request_opts
+          ) -> Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse
+
+        def initialize: (client: Metronome::Client) -> void
+      end
+    end
+  end
+end

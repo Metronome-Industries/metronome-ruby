@@ -1,0 +1,59 @@
+module Metronome
+  module Models
+    type customer_list_params =
+      {
+        customer_ids: Array[String],
+        ingest_alias: String,
+        limit: Integer,
+        next_page: String,
+        only_archived: bool,
+        salesforce_account_ids: Array[String]
+      }
+      & Metronome::request_parameters
+
+    class CustomerListParams < Metronome::BaseModel
+      extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
+      attr_reader customer_ids: Array[String]
+
+      def customer_ids=: (Array[String]) -> void
+
+      attr_reader ingest_alias: String?
+
+      def ingest_alias=: (String) -> void
+
+      attr_reader limit: Integer?
+
+      def limit=: (Integer) -> void
+
+      attr_reader next_page: String?
+
+      def next_page=: (String) -> void
+
+      attr_reader only_archived: bool?
+
+      def only_archived=: (bool) -> void
+
+      attr_reader salesforce_account_ids: Array[String]
+
+      def salesforce_account_ids=: (Array[String]) -> void
+
+      def initialize:
+        (
+          customer_ids: Array[String],
+          ingest_alias: String,
+          limit: Integer,
+          next_page: String,
+          only_archived: bool,
+          salesforce_account_ids: Array[String],
+          request_options: Metronome::request_opts
+        ) -> void
+        | (
+          ?Metronome::Models::customer_list_params | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::customer_list_params
+    end
+  end
+end

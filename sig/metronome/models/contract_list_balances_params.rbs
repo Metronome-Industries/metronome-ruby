@@ -1,0 +1,82 @@
+module Metronome
+  module Models
+    type contract_list_balances_params =
+      {
+        customer_id: String,
+        id: String,
+        covering_date: Time,
+        effective_before: Time,
+        include_archived: bool,
+        include_balance: bool,
+        include_contract_balances: bool,
+        include_ledgers: bool,
+        next_page: String,
+        starting_at: Time
+      }
+      & Metronome::request_parameters
+
+    class ContractListBalancesParams < Metronome::BaseModel
+      extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
+      attr_accessor customer_id: String
+
+      attr_reader id: String?
+
+      def id=: (String) -> void
+
+      attr_reader covering_date: Time?
+
+      def covering_date=: (Time) -> void
+
+      attr_reader effective_before: Time?
+
+      def effective_before=: (Time) -> void
+
+      attr_reader include_archived: bool?
+
+      def include_archived=: (bool) -> void
+
+      attr_reader include_balance: bool?
+
+      def include_balance=: (bool) -> void
+
+      attr_reader include_contract_balances: bool?
+
+      def include_contract_balances=: (bool) -> void
+
+      attr_reader include_ledgers: bool?
+
+      def include_ledgers=: (bool) -> void
+
+      attr_reader next_page: String?
+
+      def next_page=: (String) -> void
+
+      attr_reader starting_at: Time?
+
+      def starting_at=: (Time) -> void
+
+      def initialize:
+        (
+          customer_id: String,
+          id: String,
+          covering_date: Time,
+          effective_before: Time,
+          include_archived: bool,
+          include_balance: bool,
+          include_contract_balances: bool,
+          include_ledgers: bool,
+          next_page: String,
+          starting_at: Time,
+          request_options: Metronome::request_opts
+        ) -> void
+        | (
+          ?Metronome::Models::contract_list_balances_params
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::contract_list_balances_params
+    end
+  end
+end

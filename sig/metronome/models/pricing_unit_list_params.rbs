@@ -1,0 +1,32 @@
+module Metronome
+  module Models
+    type pricing_unit_list_params =
+      { limit: Integer, next_page: String } & Metronome::request_parameters
+
+    class PricingUnitListParams < Metronome::BaseModel
+      extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
+      attr_reader limit: Integer?
+
+      def limit=: (Integer) -> void
+
+      attr_reader next_page: String?
+
+      def next_page=: (String) -> void
+
+      def initialize:
+        (
+          limit: Integer,
+          next_page: String,
+          request_options: Metronome::request_opts
+        ) -> void
+        | (
+          ?Metronome::Models::pricing_unit_list_params
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::pricing_unit_list_params
+    end
+  end
+end

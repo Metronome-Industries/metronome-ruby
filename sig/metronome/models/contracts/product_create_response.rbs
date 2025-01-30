@@ -1,0 +1,20 @@
+module Metronome
+  module Models
+    module Contracts
+      type product_create_response = { data: Metronome::Models::ID }
+
+      class ProductCreateResponse < Metronome::BaseModel
+        attr_accessor data: Metronome::Models::ID
+
+        def initialize:
+          (data: Metronome::Models::ID) -> void
+          | (
+            ?Metronome::Models::Contracts::product_create_response
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::Contracts::product_create_response
+      end
+    end
+  end
+end

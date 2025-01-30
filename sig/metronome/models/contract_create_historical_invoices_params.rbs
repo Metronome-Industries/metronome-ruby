@@ -1,0 +1,198 @@
+module Metronome
+  module Models
+    type contract_create_historical_invoices_params =
+      {
+        invoices: Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice],
+        preview: bool
+      }
+      & Metronome::request_parameters
+
+    class ContractCreateHistoricalInvoicesParams < Metronome::BaseModel
+      extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
+      attr_accessor invoices: Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice]
+
+      attr_accessor preview: bool
+
+      def initialize:
+        (
+          invoices: Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice],
+          preview: bool,
+          request_options: Metronome::request_opts
+        ) -> void
+        | (
+          ?Metronome::Models::contract_create_historical_invoices_params
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::contract_create_historical_invoices_params
+
+      type invoice =
+        {
+          contract_id: String,
+          credit_type_id: String,
+          customer_id: String,
+          exclusive_end_date: Time,
+          inclusive_start_date: Time,
+          issue_date: Time,
+          usage_line_items: Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem],
+          billable_status: Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::billable_status,
+          breakdown_granularity: Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::breakdown_granularity,
+          custom_fields: Hash[Symbol, String]
+        }
+
+      class Invoice < Metronome::BaseModel
+        attr_accessor contract_id: String
+
+        attr_accessor credit_type_id: String
+
+        attr_accessor customer_id: String
+
+        attr_accessor exclusive_end_date: Time
+
+        attr_accessor inclusive_start_date: Time
+
+        attr_accessor issue_date: Time
+
+        attr_accessor usage_line_items: Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem]
+
+        attr_reader billable_status: Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::billable_status?
+
+        def billable_status=: (
+          Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::billable_status
+        ) -> void
+
+        attr_reader breakdown_granularity: Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::breakdown_granularity?
+
+        def breakdown_granularity=: (
+          Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::breakdown_granularity
+        ) -> void
+
+        attr_reader custom_fields: Hash[Symbol, String]?
+
+        def custom_fields=: (Hash[Symbol, String]) -> void
+
+        def initialize:
+          (
+            contract_id: String,
+            credit_type_id: String,
+            customer_id: String,
+            exclusive_end_date: Time,
+            inclusive_start_date: Time,
+            issue_date: Time,
+            usage_line_items: Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem],
+            billable_status: Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::billable_status,
+            breakdown_granularity: Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::breakdown_granularity,
+            custom_fields: Hash[Symbol, String]
+          ) -> void
+          | (
+            ?Metronome::Models::ContractCreateHistoricalInvoicesParams::invoice
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::ContractCreateHistoricalInvoicesParams::invoice
+
+        type usage_line_item =
+          {
+            exclusive_end_date: Time,
+            inclusive_start_date: Time,
+            product_id: String,
+            presentation_group_values: Hash[Symbol, String],
+            pricing_group_values: Hash[Symbol, String],
+            quantity: Float,
+            subtotals_with_quantity: Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
+          }
+
+        class UsageLineItem < Metronome::BaseModel
+          attr_accessor exclusive_end_date: Time
+
+          attr_accessor inclusive_start_date: Time
+
+          attr_accessor product_id: String
+
+          attr_reader presentation_group_values: Hash[Symbol, String]?
+
+          def presentation_group_values=: (Hash[Symbol, String]) -> void
+
+          attr_reader pricing_group_values: Hash[Symbol, String]?
+
+          def pricing_group_values=: (Hash[Symbol, String]) -> void
+
+          attr_reader quantity: Float?
+
+          def quantity=: (Float) -> void
+
+          attr_reader subtotals_with_quantity: Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
+
+          def subtotals_with_quantity=: (
+            Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
+          ) -> void
+
+          def initialize:
+            (
+              exclusive_end_date: Time,
+              inclusive_start_date: Time,
+              product_id: String,
+              presentation_group_values: Hash[Symbol, String],
+              pricing_group_values: Hash[Symbol, String],
+              quantity: Float,
+              subtotals_with_quantity: Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
+            ) -> void
+            | (
+              ?Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::usage_line_item
+              | Metronome::BaseModel data
+            ) -> void
+
+          def to_h: -> Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::usage_line_item
+
+          type subtotals_with_quantity =
+            {
+              exclusive_end_date: Time,
+              inclusive_start_date: Time,
+              quantity: Float
+            }
+
+          class SubtotalsWithQuantity < Metronome::BaseModel
+            attr_accessor exclusive_end_date: Time
+
+            attr_accessor inclusive_start_date: Time
+
+            attr_accessor quantity: Float
+
+            def initialize:
+              (
+                exclusive_end_date: Time,
+                inclusive_start_date: Time,
+                quantity: Float
+              ) -> void
+              | (
+                ?Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::subtotals_with_quantity
+                | Metronome::BaseModel data
+              ) -> void
+
+            def to_h: -> Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::subtotals_with_quantity
+          end
+        end
+
+        type billable_status = :billable | :unbillable
+
+        class BillableStatus < Metronome::Enum
+          BILLABLE: :billable
+          UNBILLABLE: :unbillable
+
+          def self.values: -> Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::billable_status]
+        end
+
+        type breakdown_granularity = :HOUR | :DAY
+
+        class BreakdownGranularity < Metronome::Enum
+          HOUR: :HOUR
+          DAY: :DAY
+
+          def self.values: -> Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::breakdown_granularity]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,65 @@
+module Metronome
+  module Models
+    type scheduled_charge =
+      {
+        id: String,
+        product: Metronome::Models::ScheduledCharge::Product,
+        schedule: Metronome::Models::SchedulePointInTime,
+        custom_fields: Hash[Symbol, String],
+        name: String,
+        netsuite_sales_order_id: String
+      }
+
+    class ScheduledCharge < Metronome::BaseModel
+      attr_accessor id: String
+
+      attr_accessor product: Metronome::Models::ScheduledCharge::Product
+
+      attr_accessor schedule: Metronome::Models::SchedulePointInTime
+
+      attr_reader custom_fields: Hash[Symbol, String]?
+
+      def custom_fields=: (Hash[Symbol, String]) -> void
+
+      attr_reader name: String?
+
+      def name=: (String) -> void
+
+      attr_reader netsuite_sales_order_id: String?
+
+      def netsuite_sales_order_id=: (String) -> void
+
+      def initialize:
+        (
+          id: String,
+          product: Metronome::Models::ScheduledCharge::Product,
+          schedule: Metronome::Models::SchedulePointInTime,
+          custom_fields: Hash[Symbol, String],
+          name: String,
+          netsuite_sales_order_id: String
+        ) -> void
+        | (
+          ?Metronome::Models::scheduled_charge | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::scheduled_charge
+
+      type product = { id: String, name: String }
+
+      class Product < Metronome::BaseModel
+        attr_accessor id: String
+
+        attr_accessor name: String
+
+        def initialize:
+          (id: String, name: String) -> void
+          | (
+            ?Metronome::Models::ScheduledCharge::product
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::ScheduledCharge::product
+      end
+    end
+  end
+end

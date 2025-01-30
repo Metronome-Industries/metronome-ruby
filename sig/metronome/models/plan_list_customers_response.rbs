@@ -1,0 +1,67 @@
+module Metronome
+  module Models
+    type plan_list_customers_response =
+      {
+        customer_details: Metronome::Models::CustomerDetail,
+        plan_details: Metronome::Models::PlanListCustomersResponse::PlanDetails
+      }
+
+    class PlanListCustomersResponse < Metronome::BaseModel
+      attr_accessor customer_details: Metronome::Models::CustomerDetail
+
+      attr_accessor plan_details: Metronome::Models::PlanListCustomersResponse::PlanDetails
+
+      def initialize:
+        (
+          customer_details: Metronome::Models::CustomerDetail,
+          plan_details: Metronome::Models::PlanListCustomersResponse::PlanDetails
+        ) -> void
+        | (
+          ?Metronome::Models::plan_list_customers_response
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::plan_list_customers_response
+
+      type plan_details =
+        {
+          id: String,
+          custom_fields: Hash[Symbol, String],
+          customer_plan_id: String,
+          name: String,
+          starting_on: Time,
+          ending_before: Time?
+        }
+
+      class PlanDetails < Metronome::BaseModel
+        attr_accessor id: String
+
+        attr_accessor custom_fields: Hash[Symbol, String]
+
+        attr_accessor customer_plan_id: String
+
+        attr_accessor name: String
+
+        attr_accessor starting_on: Time
+
+        attr_accessor ending_before: Time?
+
+        def initialize:
+          (
+            id: String,
+            custom_fields: Hash[Symbol, String],
+            customer_plan_id: String,
+            name: String,
+            starting_on: Time,
+            ending_before: Time?
+          ) -> void
+          | (
+            ?Metronome::Models::PlanListCustomersResponse::plan_details
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::PlanListCustomersResponse::plan_details
+      end
+    end
+  end
+end

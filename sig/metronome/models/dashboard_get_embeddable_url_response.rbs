@@ -1,0 +1,38 @@
+module Metronome
+  module Models
+    type dashboard_get_embeddable_url_response =
+      { data: Metronome::Models::DashboardGetEmbeddableURLResponse::Data }
+
+    class DashboardGetEmbeddableURLResponse < Metronome::BaseModel
+      attr_accessor data: Metronome::Models::DashboardGetEmbeddableURLResponse::Data
+
+      def initialize:
+        (
+          data: Metronome::Models::DashboardGetEmbeddableURLResponse::Data
+        ) -> void
+        | (
+          ?Metronome::Models::dashboard_get_embeddable_url_response
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::dashboard_get_embeddable_url_response
+
+      type data = { url: String }
+
+      class Data < Metronome::BaseModel
+        attr_reader url: String?
+
+        def url=: (String) -> void
+
+        def initialize:
+          (url: String) -> void
+          | (
+            ?Metronome::Models::DashboardGetEmbeddableURLResponse::data
+            | Metronome::BaseModel data
+          ) -> void
+
+        def to_h: -> Metronome::Models::DashboardGetEmbeddableURLResponse::data
+      end
+    end
+  end
+end

@@ -1,0 +1,34 @@
+# typed: strong
+
+module Metronome
+  module Models
+    module Contracts
+      class QuantityRounding < Metronome::BaseModel
+        Shape = T.type_alias { {decimal_places: Float, rounding_method: Symbol} }
+
+        sig { returns(Float) }
+        attr_accessor :decimal_places
+
+        sig { returns(Symbol) }
+        attr_accessor :rounding_method
+
+        sig { params(decimal_places: Float, rounding_method: Symbol).void }
+        def initialize(decimal_places:, rounding_method:); end
+
+        sig { returns(Metronome::Models::Contracts::QuantityRounding::Shape) }
+        def to_h; end
+
+        class RoundingMethod < Metronome::Enum
+          abstract!
+
+          ROUND_UP = :ROUND_UP
+          ROUND_DOWN = :ROUND_DOWN
+          ROUND_HALF_UP = :ROUND_HALF_UP
+
+          sig { returns(T::Array[Symbol]) }
+          def self.values; end
+        end
+      end
+    end
+  end
+end

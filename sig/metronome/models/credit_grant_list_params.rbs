@@ -1,0 +1,66 @@
+module Metronome
+  module Models
+    type credit_grant_list_params =
+      {
+        limit: Integer,
+        next_page: String,
+        credit_grant_ids: Array[String],
+        credit_type_ids: Array[String],
+        customer_ids: Array[String],
+        effective_before: Time,
+        not_expiring_before: Time
+      }
+      & Metronome::request_parameters
+
+    class CreditGrantListParams < Metronome::BaseModel
+      extend Metronome::RequestParameters::Converter
+      include Metronome::RequestParameters
+
+      attr_reader limit: Integer?
+
+      def limit=: (Integer) -> void
+
+      attr_reader next_page: String?
+
+      def next_page=: (String) -> void
+
+      attr_reader credit_grant_ids: Array[String]
+
+      def credit_grant_ids=: (Array[String]) -> void
+
+      attr_reader credit_type_ids: Array[String]
+
+      def credit_type_ids=: (Array[String]) -> void
+
+      attr_reader customer_ids: Array[String]
+
+      def customer_ids=: (Array[String]) -> void
+
+      attr_reader effective_before: Time?
+
+      def effective_before=: (Time) -> void
+
+      attr_reader not_expiring_before: Time?
+
+      def not_expiring_before=: (Time) -> void
+
+      def initialize:
+        (
+          limit: Integer,
+          next_page: String,
+          credit_grant_ids: Array[String],
+          credit_type_ids: Array[String],
+          customer_ids: Array[String],
+          effective_before: Time,
+          not_expiring_before: Time,
+          request_options: Metronome::request_opts
+        ) -> void
+        | (
+          ?Metronome::Models::credit_grant_list_params
+          | Metronome::BaseModel data
+        ) -> void
+
+      def to_h: -> Metronome::Models::credit_grant_list_params
+    end
+  end
+end

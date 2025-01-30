@@ -1,0 +1,33 @@
+module Metronome
+  module Models
+    module Contracts
+      module RateCards
+        type product_order_set_params =
+          { product_order: Array[String], rate_card_id: String }
+          & Metronome::request_parameters
+
+        class ProductOrderSetParams < Metronome::BaseModel
+          extend Metronome::RequestParameters::Converter
+          include Metronome::RequestParameters
+
+          attr_accessor product_order: Array[String]
+
+          attr_accessor rate_card_id: String
+
+          def initialize:
+            (
+              product_order: Array[String],
+              rate_card_id: String,
+              request_options: Metronome::request_opts
+            ) -> void
+            | (
+              ?Metronome::Models::Contracts::RateCards::product_order_set_params
+              | Metronome::BaseModel data
+            ) -> void
+
+          def to_h: -> Metronome::Models::Contracts::RateCards::product_order_set_params
+        end
+      end
+    end
+  end
+end
