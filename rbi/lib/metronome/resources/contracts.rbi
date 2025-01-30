@@ -131,7 +131,7 @@ module Metronome
           contract_id: String,
           timestamp: Time,
           request_options: Metronome::RequestOpts
-        ).returns(NilClass)
+        ).void
       end
       def add_manual_balance_entry(
         params,
@@ -299,7 +299,7 @@ module Metronome
           group_values: T::Array[String],
           starting_at: Time,
           request_options: Metronome::RequestOpts
-        ).returns(NilClass)
+        ).void
       end
       def set_usage_filter(
         params,

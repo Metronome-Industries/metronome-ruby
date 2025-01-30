@@ -31,7 +31,7 @@ module Metronome
             alert_id: String,
             customer_id: String,
             request_options: Metronome::RequestOpts
-          ).returns(NilClass)
+          ).void
         end
         def reset(params, alert_id:, customer_id:, request_options: {}); end
 

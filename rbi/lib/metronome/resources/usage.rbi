@@ -31,7 +31,7 @@ module Metronome
           params: T.any(Metronome::Models::UsageIngestParams, T::Hash[Symbol, T.anything]),
           usage: T::Array[Metronome::Models::UsageIngestParams::Usage],
           request_options: Metronome::RequestOpts
-        ).returns(NilClass)
+        ).void
       end
       def ingest(params, usage:, request_options: {}); end
 

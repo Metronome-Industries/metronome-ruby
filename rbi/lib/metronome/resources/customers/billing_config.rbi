@@ -17,7 +17,7 @@ module Metronome
             aws_region: Symbol,
             stripe_collection_method: Symbol,
             request_options: Metronome::RequestOpts
-          ).returns(NilClass)
+          ).void
         end
         def create(
           params,
@@ -52,7 +52,7 @@ module Metronome
             customer_id: String,
             billing_provider_type: Symbol,
             request_options: Metronome::RequestOpts
-          ).returns(NilClass)
+          ).void
         end
         def delete(params, customer_id:, billing_provider_type:, request_options: {}); end
 

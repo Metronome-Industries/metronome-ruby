@@ -41,7 +41,7 @@ module Metronome
               value: T.anything,
               ending_before: Time,
               request_options: Metronome::RequestOpts
-            ).returns(NilClass)
+            ).void
           end
           def update(
             params,
