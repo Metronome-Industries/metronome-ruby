@@ -170,6 +170,8 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case billing_provider_type
@@ -198,8 +200,15 @@ module Metronome
           GCP_MARKETPLACE = :gcp_marketplace
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case aws_region
@@ -245,8 +254,15 @@ module Metronome
           US_WEST_2 = :"us-west-2"
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case stripe_collection_method
@@ -261,6 +277,11 @@ module Metronome
           SEND_INVOICE = :send_invoice
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -331,6 +352,8 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @abstract
+        #
         # The billing provider set for this configuration.
         #
         # @example
@@ -356,8 +379,15 @@ module Metronome
           NETSUITE = :netsuite
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
+        # @abstract
+        #
         # The method to use for delivering invoices to this customer. If not provided, the
         #   `delivery_method_id` must be provided.
         #
@@ -381,6 +411,11 @@ module Metronome
           AWS_SNS = :aws_sns
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

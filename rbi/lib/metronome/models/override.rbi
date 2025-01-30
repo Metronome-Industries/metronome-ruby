@@ -386,7 +386,7 @@ module Metronome
           TIERED = :TIERED
           CUSTOM = :CUSTOM
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
       end
@@ -416,7 +416,7 @@ module Metronome
         TIERED = :TIERED
         CUSTOM = :CUSTOM
 
-        sig { returns(T::Array[Symbol]) }
+        sig { override.returns(T::Array[Symbol]) }
         def self.values; end
       end
 
@@ -426,7 +426,7 @@ module Metronome
         COMMIT_RATE = :COMMIT_RATE
         LIST_RATE = :LIST_RATE
 
-        sig { returns(T::Array[Symbol]) }
+        sig { override.returns(T::Array[Symbol]) }
         def self.values; end
       end
 
@@ -437,7 +437,7 @@ module Metronome
         MULTIPLIER = :MULTIPLIER
         TIERED = :TIERED
 
-        sig { returns(T::Array[Symbol]) }
+        sig { override.returns(T::Array[Symbol]) }
         def self.values; end
       end
     end

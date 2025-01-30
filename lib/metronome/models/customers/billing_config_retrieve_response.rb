@@ -159,6 +159,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case aws_region
@@ -204,8 +206,15 @@ module Metronome
             US_WEST_2 = :"us-west-2"
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case azure_subscription_status
@@ -226,8 +235,15 @@ module Metronome
             PENDING_FULFILLMENT_START = :PendingFulfillmentStart
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case stripe_collection_method
@@ -242,6 +258,11 @@ module Metronome
             SEND_INVOICE = :send_invoice
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
       end

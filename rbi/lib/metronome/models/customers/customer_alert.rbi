@@ -151,7 +151,7 @@ module Metronome
             ARCHIVED = :archived
             DISABLED = :disabled
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
 
@@ -173,7 +173,7 @@ module Metronome
             LOW_REMAINING_CONTRACT_CREDIT_AND_COMMIT_BALANCE_REACHED = :low_remaining_contract_credit_and_commit_balance_reached
             INVOICE_TOTAL_REACHED = :invoice_total_reached
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
 
@@ -202,7 +202,7 @@ module Metronome
               COMMIT = :Commit
               CONTRACT_CREDIT = :ContractCredit
 
-              sig { returns(T::Array[Symbol]) }
+              sig { override.returns(T::Array[Symbol]) }
               def self.values; end
             end
           end
@@ -231,7 +231,7 @@ module Metronome
           IN_ALARM = T.let(:in_alarm, T.nilable(Symbol))
           EVALUATING = T.let(:evaluating, T.nilable(Symbol))
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
       end

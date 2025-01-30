@@ -75,6 +75,8 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
+      # @abstract
+      #
       # The type of dashboard to retrieve.
       #
       # @example
@@ -94,6 +96,11 @@ module Metronome
         CREDITS = :credits
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -178,6 +185,8 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @abstract
+        #
         # The color to override
         #
         # @example
@@ -219,6 +228,11 @@ module Metronome
           PRIMARY_RED = :Primary_red
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 

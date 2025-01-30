@@ -32,7 +32,9 @@ module Metronome
 
         Variants = T.type_alias { T.any(Metronome::Models::Commit, Metronome::Models::Credit) }
 
-        sig { returns([[NilClass, Metronome::Models::Commit], [NilClass, Metronome::Models::Credit]]) }
+        sig do
+          override.returns([[NilClass, Metronome::Models::Commit], [NilClass, Metronome::Models::Credit]])
+        end
         private_class_method def self.variants; end
       end
     end

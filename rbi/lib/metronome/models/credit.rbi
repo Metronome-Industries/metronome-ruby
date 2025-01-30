@@ -192,7 +192,7 @@ module Metronome
 
         CREDIT = :CREDIT
 
-        sig { returns(T::Array[Symbol]) }
+        sig { override.returns(T::Array[Symbol]) }
         def self.values; end
       end
 
@@ -249,7 +249,7 @@ module Metronome
 
             CREDIT_SEGMENT_START = :CREDIT_SEGMENT_START
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end
@@ -289,7 +289,7 @@ module Metronome
 
             CREDIT_AUTOMATED_INVOICE_DEDUCTION = :CREDIT_AUTOMATED_INVOICE_DEDUCTION
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end
@@ -320,7 +320,7 @@ module Metronome
 
             CREDIT_EXPIRATION = :CREDIT_EXPIRATION
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end
@@ -358,7 +358,7 @@ module Metronome
 
             CREDIT_CANCELED = :CREDIT_CANCELED
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end
@@ -396,7 +396,7 @@ module Metronome
 
             CREDIT_CREDITED = :CREDIT_CREDITED
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end
@@ -427,16 +427,19 @@ module Metronome
 
             CREDIT_MANUAL = :CREDIT_MANUAL
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end
 
         sig do
-          returns(
+          override.returns(
             [
               [NilClass, Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry],
-              [NilClass, Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry],
+              [
+                NilClass,
+                Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry
+              ],
               [NilClass, Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry],
               [NilClass, Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry],
               [NilClass, Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry],
@@ -453,7 +456,7 @@ module Metronome
         COMMIT_RATE = :COMMIT_RATE
         LIST_RATE = :LIST_RATE
 
-        sig { returns(T::Array[Symbol]) }
+        sig { override.returns(T::Array[Symbol]) }
         def self.values; end
       end
     end

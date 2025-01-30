@@ -288,6 +288,8 @@ module Metronome
           end
         end
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case type
@@ -302,6 +304,11 @@ module Metronome
           POSTPAID = :POSTPAID
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @example
@@ -467,6 +474,8 @@ module Metronome
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
+            # @abstract
+            #
             # @example
             # ```ruby
             # case amount_distribution
@@ -484,8 +493,15 @@ module Metronome
               EACH = :EACH
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
+            # @abstract
+            #
             # @example
             # ```ruby
             # case frequency
@@ -506,6 +522,11 @@ module Metronome
               ANNUAL = :ANNUAL
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
 
@@ -573,6 +594,8 @@ module Metronome
           end
         end
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case rate_type
@@ -587,6 +610,11 @@ module Metronome
           LIST_RATE = :LIST_RATE
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

@@ -238,7 +238,7 @@ module Metronome
         PREPAID = :PREPAID
         POSTPAID = :POSTPAID
 
-        sig { returns(T::Array[Symbol]) }
+        sig { override.returns(T::Array[Symbol]) }
         def self.values; end
       end
 
@@ -315,7 +315,7 @@ module Metronome
 
             PREPAID_COMMIT_SEGMENT_START = :PREPAID_COMMIT_SEGMENT_START
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end
@@ -355,7 +355,7 @@ module Metronome
 
             PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION = :PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end
@@ -399,7 +399,7 @@ module Metronome
 
             PREPAID_COMMIT_ROLLOVER = :PREPAID_COMMIT_ROLLOVER
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end
@@ -430,7 +430,7 @@ module Metronome
 
             PREPAID_COMMIT_EXPIRATION = :PREPAID_COMMIT_EXPIRATION
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end
@@ -468,7 +468,7 @@ module Metronome
 
             PREPAID_COMMIT_CANCELED = :PREPAID_COMMIT_CANCELED
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end
@@ -506,7 +506,7 @@ module Metronome
 
             PREPAID_COMMIT_CREDITED = :PREPAID_COMMIT_CREDITED
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end
@@ -534,7 +534,7 @@ module Metronome
 
             POSTPAID_COMMIT_INITIAL_BALANCE = :POSTPAID_COMMIT_INITIAL_BALANCE
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end
@@ -574,7 +574,7 @@ module Metronome
 
             POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION = :POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end
@@ -618,7 +618,7 @@ module Metronome
 
             POSTPAID_COMMIT_ROLLOVER = :POSTPAID_COMMIT_ROLLOVER
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end
@@ -649,7 +649,7 @@ module Metronome
 
             POSTPAID_COMMIT_TRUEUP = :POSTPAID_COMMIT_TRUEUP
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end
@@ -680,7 +680,7 @@ module Metronome
 
             PREPAID_COMMIT_MANUAL = :PREPAID_COMMIT_MANUAL
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end
@@ -711,7 +711,7 @@ module Metronome
 
             POSTPAID_COMMIT_MANUAL = :POSTPAID_COMMIT_MANUAL
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end
@@ -739,13 +739,13 @@ module Metronome
 
             POSTPAID_COMMIT_EXPIRATION = :POSTPAID_COMMIT_EXPIRATION
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end
 
         sig do
-          returns(
+          override.returns(
             [
               [NilClass, Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry],
               [
@@ -778,7 +778,7 @@ module Metronome
         COMMIT_RATE = :COMMIT_RATE
         LIST_RATE = :LIST_RATE
 
-        sig { returns(T::Array[Symbol]) }
+        sig { override.returns(T::Array[Symbol]) }
         def self.values; end
       end
 

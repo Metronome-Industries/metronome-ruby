@@ -199,7 +199,7 @@ module Metronome
           COMMIT_RATE = :COMMIT_RATE
           LIST_RATE = :LIST_RATE
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
       end

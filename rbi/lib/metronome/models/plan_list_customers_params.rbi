@@ -56,7 +56,7 @@ module Metronome
         ENDED = :ended
         UPCOMING = :upcoming
 
-        sig { returns(T::Array[Symbol]) }
+        sig { override.returns(T::Array[Symbol]) }
         def self.values; end
       end
     end

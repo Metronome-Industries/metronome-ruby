@@ -32,6 +32,8 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
+      # @abstract
+      #
       # @example
       # ```ruby
       # case entity
@@ -69,6 +71,11 @@ module Metronome
         SCHEDULED_CHARGE = :scheduled_charge
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

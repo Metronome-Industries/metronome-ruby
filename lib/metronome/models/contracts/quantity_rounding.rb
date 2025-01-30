@@ -34,6 +34,8 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case rounding_method
@@ -51,6 +53,11 @@ module Metronome
           ROUND_HALF_UP = :ROUND_HALF_UP
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

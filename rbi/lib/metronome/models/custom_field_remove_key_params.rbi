@@ -41,7 +41,7 @@ module Metronome
         RATE_CARD = :rate_card
         SCHEDULED_CHARGE = :scheduled_charge
 
-        sig { returns(T::Array[Symbol]) }
+        sig { override.returns(T::Array[Symbol]) }
         def self.values; end
       end
     end

@@ -84,6 +84,8 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
+      # @abstract
+      #
       # A window_size of "day" or "hour" will return the usage for the specified period
       #   segmented into daily or hourly aggregates. A window_size of "none" will return a
       #   single usage aggregate for the entirety of the specified period.
@@ -105,6 +107,11 @@ module Metronome
         NONE = :NONE
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example

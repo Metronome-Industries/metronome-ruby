@@ -372,6 +372,8 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case type
@@ -386,6 +388,11 @@ module Metronome
           POSTPAID = :POSTPAID
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @example
@@ -626,6 +633,8 @@ module Metronome
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
+            # @abstract
+            #
             # @example
             # ```ruby
             # case amount_distribution
@@ -643,8 +652,15 @@ module Metronome
               EACH = :EACH
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
+            # @abstract
+            #
             # @example
             # ```ruby
             # case frequency
@@ -665,6 +681,11 @@ module Metronome
               ANNUAL = :ANNUAL
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
 
@@ -732,6 +753,8 @@ module Metronome
           end
         end
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case rate_type
@@ -746,6 +769,11 @@ module Metronome
           LIST_RATE = :LIST_RATE
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -956,6 +984,8 @@ module Metronome
           end
         end
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case rate_type
@@ -970,6 +1000,11 @@ module Metronome
           LIST_RATE = :LIST_RATE
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -1195,6 +1230,8 @@ module Metronome
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
+            # @abstract
+            #
             # @example
             # ```ruby
             # case amount_distribution
@@ -1212,8 +1249,15 @@ module Metronome
               EACH = :EACH
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
+            # @abstract
+            #
             # @example
             # ```ruby
             # case frequency
@@ -1234,6 +1278,11 @@ module Metronome
               ANNUAL = :ANNUAL
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
 
@@ -1715,6 +1764,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case rate_type
@@ -1738,9 +1789,16 @@ module Metronome
             CUSTOM = :CUSTOM
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
+        # @abstract
+        #
         # Indicates whether the override applies to commit rates or list rates. Can only
         #   be used for overrides that have `is_commit_specific` set to `true`. Defaults to
         #   `"LIST_RATE"`.
@@ -1759,6 +1817,11 @@ module Metronome
           LIST_RATE = :LIST_RATE
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @example
@@ -1792,6 +1855,8 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
         end
 
+        # @abstract
+        #
         # Overwrites are prioritized over multipliers and tiered overrides.
         #
         # @example
@@ -1811,6 +1876,11 @@ module Metronome
           TIERED = :TIERED
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -2032,6 +2102,8 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case reseller_type
@@ -2052,6 +2124,11 @@ module Metronome
           GCP_PRO_SERVICE = :GCP_PRO_SERVICE
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @example
@@ -2347,6 +2424,8 @@ module Metronome
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
+            # @abstract
+            #
             # @example
             # ```ruby
             # case amount_distribution
@@ -2364,8 +2443,15 @@ module Metronome
               EACH = :EACH
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
+            # @abstract
+            #
             # @example
             # ```ruby
             # case frequency
@@ -2386,6 +2472,11 @@ module Metronome
               ANNUAL = :ANNUAL
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
 

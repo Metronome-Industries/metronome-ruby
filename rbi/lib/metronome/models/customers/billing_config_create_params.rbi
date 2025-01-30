@@ -84,7 +84,7 @@ module Metronome
           WORKDAY = :workday
           GCP_MARKETPLACE = :gcp_marketplace
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
 
@@ -117,7 +117,7 @@ module Metronome
           US_WEST_1 = :"us-west-1"
           US_WEST_2 = :"us-west-2"
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
 
@@ -127,7 +127,7 @@ module Metronome
           CHARGE_AUTOMATICALLY = :charge_automatically
           SEND_INVOICE = :send_invoice
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
       end

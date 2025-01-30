@@ -38,7 +38,7 @@ module Metronome
           MAKES_CONNECTIONS_FROM = :makes_connections_from
           ACCEPTS_CONNECTIONS_AT = :accepts_connections_at
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
       end

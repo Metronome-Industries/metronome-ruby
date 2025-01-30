@@ -80,7 +80,7 @@ module Metronome
         USAGE = :usage
         CREDITS = :credits
 
-        sig { returns(T::Array[Symbol]) }
+        sig { override.returns(T::Array[Symbol]) }
         def self.values; end
       end
 
@@ -161,7 +161,7 @@ module Metronome
           PRIMARY_GREEN = :Primary_green
           PRIMARY_RED = :Primary_red
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
       end

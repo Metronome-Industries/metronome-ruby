@@ -111,7 +111,7 @@ module Metronome
         MINIMUM = :minimum
         SEAT = :seat
 
-        sig { returns(T::Array[Symbol]) }
+        sig { override.returns(T::Array[Symbol]) }
         def self.values; end
       end
 
@@ -189,7 +189,7 @@ module Metronome
           FLOOR = :floor
           CEILING = :ceiling
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
       end

@@ -3,6 +3,8 @@
 module Metronome
   # @private
   #
+  # @abstract
+  #
   module Extern
     # @private
     #

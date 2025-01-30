@@ -605,7 +605,7 @@ module Metronome
               POSTPAID = :POSTPAID
               CREDIT = :CREDIT
 
-              sig { returns(T::Array[Symbol]) }
+              sig { override.returns(T::Array[Symbol]) }
               def self.values; end
             end
           end
@@ -631,7 +631,7 @@ module Metronome
             GCP = :GCP
             GCP_PRO_SERVICE = :GCP_PRO_SERVICE
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
 
@@ -812,7 +812,7 @@ module Metronome
           BILLABLE = :billable
           UNBILLABLE = :unbillable
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
 
@@ -924,7 +924,7 @@ module Metronome
               WORKDAY = :workday
               GCP_MARKETPLACE = :gcp_marketplace
 
-              sig { returns(T::Array[Symbol]) }
+              sig { override.returns(T::Array[Symbol]) }
               def self.values; end
             end
 
@@ -943,7 +943,7 @@ module Metronome
               SENT = :SENT
               QUEUED = :QUEUED
 
-              sig { returns(T::Array[Symbol]) }
+              sig { override.returns(T::Array[Symbol]) }
               def self.values; end
             end
           end
@@ -1011,7 +1011,7 @@ module Metronome
             WORKDAY = :workday
             GCP_MARKETPLACE = :gcp_marketplace
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
 
@@ -1030,7 +1030,7 @@ module Metronome
             SENT = :SENT
             QUEUED = :QUEUED
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end
@@ -1144,7 +1144,7 @@ module Metronome
             GCP = :GCP
             GCP_PRO_SERVICE = :GCP_PRO_SERVICE
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
 

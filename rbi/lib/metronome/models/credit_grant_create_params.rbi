@@ -206,7 +206,7 @@ module Metronome
           end
 
           sig do
-            returns(
+            override.returns(
               [
                 [NilClass, Metronome::Models::RolloverAmountMaxPercentage],
                 [NilClass, Metronome::Models::RolloverAmountMaxAmount]

@@ -55,7 +55,7 @@ module Metronome
           MINIMUM = :minimum
           SEAT = :seat
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
 
@@ -91,7 +91,7 @@ module Metronome
             PERCENTAGE = :percentage
             OVERRIDE = :override
 
-            sig { returns(T::Array[Symbol]) }
+            sig { override.returns(T::Array[Symbol]) }
             def self.values; end
           end
         end

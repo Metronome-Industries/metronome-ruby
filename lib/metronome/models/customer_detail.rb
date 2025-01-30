@@ -132,6 +132,8 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case value
@@ -146,6 +148,11 @@ module Metronome
           UNBILLABLE = :unbillable
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

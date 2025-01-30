@@ -30,7 +30,7 @@ module Metronome
           MULTIPLY = :MULTIPLY
           DIVIDE = :DIVIDE
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
       end

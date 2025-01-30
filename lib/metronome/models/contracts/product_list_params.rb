@@ -48,6 +48,8 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @abstract
+        #
         # Filter options for the product list
         #
         # @example
@@ -67,6 +69,11 @@ module Metronome
           ALL = :ALL
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

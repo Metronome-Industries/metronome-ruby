@@ -54,6 +54,8 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case usage
@@ -68,6 +70,11 @@ module Metronome
           ACCEPTS_CONNECTIONS_AT = :accepts_connections_at
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

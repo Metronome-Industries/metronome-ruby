@@ -28,6 +28,8 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case billing_provider_type
@@ -56,6 +58,11 @@ module Metronome
           GCP_MARKETPLACE = :gcp_marketplace
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

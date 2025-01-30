@@ -256,6 +256,8 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # @example
       # ```ruby
       # case type
@@ -267,6 +269,11 @@ module Metronome
         CREDIT = :CREDIT
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -289,6 +296,8 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # @example
       # ```ruby
       # case ledger
@@ -359,6 +368,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case type
@@ -370,6 +381,11 @@ module Metronome
             CREDIT_SEGMENT_START = :CREDIT_SEGMENT_START
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -423,6 +439,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case type
@@ -434,6 +452,11 @@ module Metronome
             CREDIT_AUTOMATED_INVOICE_DEDUCTION = :CREDIT_AUTOMATED_INVOICE_DEDUCTION
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -477,6 +500,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case type
@@ -488,6 +513,11 @@ module Metronome
             CREDIT_EXPIRATION = :CREDIT_EXPIRATION
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -538,6 +568,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case type
@@ -549,6 +581,11 @@ module Metronome
             CREDIT_CANCELED = :CREDIT_CANCELED
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -599,6 +636,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case type
@@ -610,6 +649,11 @@ module Metronome
             CREDIT_CREDITED = :CREDIT_CREDITED
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -653,6 +697,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case type
@@ -664,10 +710,17 @@ module Metronome
             CREDIT_MANUAL = :CREDIT_MANUAL
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
       end
 
+      # @abstract
+      #
       # @example
       # ```ruby
       # case rate_type
@@ -682,6 +735,11 @@ module Metronome
         LIST_RATE = :LIST_RATE
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

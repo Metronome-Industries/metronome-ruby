@@ -151,7 +151,7 @@ module Metronome
           PROFESSIONAL_SERVICE = :PROFESSIONAL_SERVICE
           PRO_SERVICE = :PRO_SERVICE
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
       end

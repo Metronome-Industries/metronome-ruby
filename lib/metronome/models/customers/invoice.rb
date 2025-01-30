@@ -774,6 +774,8 @@ module Metronome
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
+            # @abstract
+            #
             # @example
             # ```ruby
             # case type
@@ -791,6 +793,11 @@ module Metronome
               CREDIT = :CREDIT
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
 
@@ -816,6 +823,8 @@ module Metronome
             # def initialize: (Hash | Metronome::BaseModel) -> void
           end
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case reseller_type
@@ -836,6 +845,11 @@ module Metronome
             GCP_PRO_SERVICE = :GCP_PRO_SERVICE
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @example
@@ -1087,6 +1101,8 @@ module Metronome
           end
         end
 
+        # @abstract
+        #
         # This field's availability is dependent on your client's configuration.
         #
         # @example
@@ -1103,6 +1119,11 @@ module Metronome
           UNBILLABLE = :unbillable
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @example
@@ -1208,6 +1229,8 @@ module Metronome
 
             # def initialize: (Hash | Metronome::BaseModel) -> void
 
+            # @abstract
+            #
             # @example
             # ```ruby
             # case billing_provider_type
@@ -1236,8 +1259,15 @@ module Metronome
               GCP_MARKETPLACE = :gcp_marketplace
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
+            # @abstract
+            #
             # @example
             # ```ruby
             # case external_status
@@ -1269,6 +1299,11 @@ module Metronome
               QUEUED = :QUEUED
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
         end
@@ -1327,6 +1362,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case billing_provider_type
@@ -1355,8 +1392,15 @@ module Metronome
             GCP_MARKETPLACE = :gcp_marketplace
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case external_status
@@ -1388,6 +1432,11 @@ module Metronome
             QUEUED = :QUEUED
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -1507,6 +1556,8 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case reseller_type
@@ -1527,6 +1578,11 @@ module Metronome
             GCP_PRO_SERVICE = :GCP_PRO_SERVICE
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @example

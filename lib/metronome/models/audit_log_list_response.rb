@@ -191,6 +191,8 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # @example
       # ```ruby
       # case status
@@ -208,6 +210,11 @@ module Metronome
         PENDING = :pending
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end
