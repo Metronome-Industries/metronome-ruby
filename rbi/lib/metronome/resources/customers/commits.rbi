@@ -6,7 +6,6 @@ module Metronome
       class Commits
         sig do
           params(
-            params: T.any(Metronome::Models::Customers::CommitCreateParams, T::Hash[Symbol, T.anything]),
             access_schedule: Metronome::Models::Customers::CommitCreateParams::AccessSchedule,
             customer_id: String,
             priority: Float,
@@ -28,7 +27,6 @@ module Metronome
           ).returns(Metronome::Models::Customers::CommitCreateResponse)
         end
         def create(
-          params,
           access_schedule:,
           customer_id:,
           priority:,
@@ -51,7 +49,6 @@ module Metronome
 
         sig do
           params(
-            params: T.any(Metronome::Models::Customers::CommitListParams, T::Hash[Symbol, T.anything]),
             customer_id: String,
             commit_id: String,
             covering_date: Time,
@@ -66,7 +63,6 @@ module Metronome
           ).returns(Metronome::Models::Customers::CommitListResponse)
         end
         def list(
-          params,
           customer_id:,
           commit_id:,
           covering_date:,
@@ -82,10 +78,6 @@ module Metronome
 
         sig do
           params(
-            params: T.any(
-              Metronome::Models::Customers::CommitUpdateEndDateParams,
-              T::Hash[Symbol, T.anything]
-            ),
             commit_id: String,
             customer_id: String,
             access_ending_before: Time,
@@ -94,7 +86,6 @@ module Metronome
           ).returns(Metronome::Models::Customers::CommitUpdateEndDateResponse)
         end
         def update_end_date(
-          params,
           commit_id:,
           customer_id:,
           access_ending_before:,

@@ -7,8 +7,6 @@ module Metronome
           | Hash[Symbol, top] params
         ) -> Metronome::Models::DashboardGetEmbeddableURLResponse
         | (
-          Metronome::Models::DashboardGetEmbeddableURLParams
-          | Hash[Symbol, top] params,
           customer_id: String,
           dashboard: Metronome::Models::DashboardGetEmbeddableURLParams::dashboard,
           bm_group_key_overrides: Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride],

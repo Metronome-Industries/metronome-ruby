@@ -8,8 +8,6 @@ module Metronome
             | Hash[Symbol, top] params
           ) -> nil
           | (
-            Metronome::Models::Customers::BillingConfigCreateParams
-            | Hash[Symbol, top] params,
             customer_id: String,
             billing_provider_type: Metronome::Models::Customers::BillingConfigCreateParams::billing_provider_type,
             billing_provider_customer_id: String,
@@ -25,8 +23,6 @@ module Metronome
             | Hash[Symbol, top] params
           ) -> Metronome::Models::Customers::BillingConfigRetrieveResponse
           | (
-            Metronome::Models::Customers::BillingConfigRetrieveParams
-            | Hash[Symbol, top] params,
             customer_id: String,
             billing_provider_type: Metronome::Models::Customers::BillingConfigRetrieveParams::billing_provider_type,
             request_options: Metronome::request_opts
@@ -38,8 +34,6 @@ module Metronome
             | Hash[Symbol, top] params
           ) -> nil
           | (
-            Metronome::Models::Customers::BillingConfigDeleteParams
-            | Hash[Symbol, top] params,
             customer_id: String,
             billing_provider_type: Metronome::Models::Customers::BillingConfigDeleteParams::billing_provider_type,
             request_options: Metronome::request_opts

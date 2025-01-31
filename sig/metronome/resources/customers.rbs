@@ -20,7 +20,6 @@ module Metronome
           Metronome::Models::CustomerCreateParams | Hash[Symbol, top] params
         ) -> Metronome::Models::CustomerCreateResponse
         | (
-          Metronome::Models::CustomerCreateParams | Hash[Symbol, top] params,
           name: String,
           billing_config: Metronome::Models::CustomerCreateParams::BillingConfig,
           custom_fields: Hash[Symbol, String],
@@ -35,7 +34,6 @@ module Metronome
           Metronome::Models::CustomerRetrieveParams | Hash[Symbol, top] params
         ) -> Metronome::Models::CustomerRetrieveResponse
         | (
-          Metronome::Models::CustomerRetrieveParams | Hash[Symbol, top] params,
           customer_id: String,
           request_options: Metronome::request_opts
         ) -> Metronome::Models::CustomerRetrieveResponse
@@ -59,7 +57,6 @@ module Metronome
           Metronome::Models::CustomerArchiveParams | Hash[Symbol, top] params
         ) -> Metronome::Models::CustomerArchiveResponse
         | (
-          Metronome::Models::CustomerArchiveParams | Hash[Symbol, top] params,
           id: String,
           request_options: Metronome::request_opts
         ) -> Metronome::Models::CustomerArchiveResponse
@@ -70,8 +67,6 @@ module Metronome
           | Hash[Symbol, top] params
         ) -> Metronome::CursorPage[Metronome::Models::CustomerListBillableMetricsResponse]
         | (
-          Metronome::Models::CustomerListBillableMetricsParams
-          | Hash[Symbol, top] params,
           customer_id: String,
           include_archived: bool,
           limit: Integer,
@@ -85,7 +80,6 @@ module Metronome
           Metronome::Models::CustomerListCostsParams | Hash[Symbol, top] params
         ) -> Metronome::CursorPage[Metronome::Models::CustomerListCostsResponse]
         | (
-          Metronome::Models::CustomerListCostsParams | Hash[Symbol, top] params,
           customer_id: String,
           ending_before: Time,
           starting_on: Time,
@@ -100,8 +94,6 @@ module Metronome
           | Hash[Symbol, top] params
         ) -> nil
         | (
-          Metronome::Models::CustomerSetIngestAliasesParams
-          | Hash[Symbol, top] params,
           customer_id: String,
           ingest_aliases: Array[String],
           request_options: Metronome::request_opts
@@ -112,7 +104,6 @@ module Metronome
           Metronome::Models::CustomerSetNameParams | Hash[Symbol, top] params
         ) -> Metronome::Models::CustomerSetNameResponse
         | (
-          Metronome::Models::CustomerSetNameParams | Hash[Symbol, top] params,
           customer_id: String,
           name: String,
           request_options: Metronome::request_opts
@@ -124,8 +115,6 @@ module Metronome
           | Hash[Symbol, top] params
         ) -> nil
         | (
-          Metronome::Models::CustomerUpdateConfigParams
-          | Hash[Symbol, top] params,
           customer_id: String,
           leave_stripe_invoices_in_draft: bool?,
           salesforce_account_id: String?,

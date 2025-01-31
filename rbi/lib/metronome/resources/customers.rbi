@@ -26,7 +26,6 @@ module Metronome
 
       sig do
         params(
-          params: T.any(Metronome::Models::CustomerCreateParams, T::Hash[Symbol, T.anything]),
           name: String,
           billing_config: Metronome::Models::CustomerCreateParams::BillingConfig,
           custom_fields: T::Hash[Symbol, String],
@@ -37,7 +36,6 @@ module Metronome
         ).returns(Metronome::Models::CustomerCreateResponse)
       end
       def create(
-        params,
         name:,
         billing_config:,
         custom_fields:,
@@ -49,12 +47,11 @@ module Metronome
 
       sig do
         params(
-          params: T.any(Metronome::Models::CustomerRetrieveParams, T::Hash[Symbol, T.anything]),
           customer_id: String,
           request_options: Metronome::RequestOpts
         ).returns(Metronome::Models::CustomerRetrieveResponse)
       end
-      def retrieve(params, customer_id:, request_options: {}); end
+      def retrieve(customer_id:, request_options: {}); end
 
       sig do
         params(
@@ -79,16 +76,14 @@ module Metronome
 
       sig do
         params(
-          params: T.any(Metronome::Models::CustomerArchiveParams, T::Hash[Symbol, T.anything]),
           id: String,
           request_options: Metronome::RequestOpts
         ).returns(Metronome::Models::CustomerArchiveResponse)
       end
-      def archive(params, id:, request_options: {}); end
+      def archive(id:, request_options: {}); end
 
       sig do
         params(
-          params: T.any(Metronome::Models::CustomerListBillableMetricsParams, T::Hash[Symbol, T.anything]),
           customer_id: String,
           include_archived: T::Boolean,
           limit: Integer,
@@ -98,7 +93,6 @@ module Metronome
         ).returns(Metronome::CursorPage[Metronome::Models::CustomerListBillableMetricsResponse])
       end
       def list_billable_metrics(
-        params,
         customer_id:,
         include_archived:,
         limit:,
@@ -110,7 +104,6 @@ module Metronome
 
       sig do
         params(
-          params: T.any(Metronome::Models::CustomerListCostsParams, T::Hash[Symbol, T.anything]),
           customer_id: String,
           ending_before: Time,
           starting_on: Time,
@@ -119,40 +112,28 @@ module Metronome
           request_options: Metronome::RequestOpts
         ).returns(Metronome::CursorPage[Metronome::Models::CustomerListCostsResponse])
       end
-      def list_costs(
-        params,
-        customer_id:,
-        ending_before:,
-        starting_on:,
-        limit:,
-        next_page:,
-        request_options: {}
-      )
-      end
+      def list_costs(customer_id:, ending_before:, starting_on:, limit:, next_page:, request_options: {}); end
 
       sig do
         params(
-          params: T.any(Metronome::Models::CustomerSetIngestAliasesParams, T::Hash[Symbol, T.anything]),
           customer_id: String,
           ingest_aliases: T::Array[String],
           request_options: Metronome::RequestOpts
         ).void
       end
-      def set_ingest_aliases(params, customer_id:, ingest_aliases:, request_options: {}); end
+      def set_ingest_aliases(customer_id:, ingest_aliases:, request_options: {}); end
 
       sig do
         params(
-          params: T.any(Metronome::Models::CustomerSetNameParams, T::Hash[Symbol, T.anything]),
           customer_id: String,
           name: String,
           request_options: Metronome::RequestOpts
         ).returns(Metronome::Models::CustomerSetNameResponse)
       end
-      def set_name(params, customer_id:, name:, request_options: {}); end
+      def set_name(customer_id:, name:, request_options: {}); end
 
       sig do
         params(
-          params: T.any(Metronome::Models::CustomerUpdateConfigParams, T::Hash[Symbol, T.anything]),
           customer_id: String,
           leave_stripe_invoices_in_draft: T.nilable(T::Boolean),
           salesforce_account_id: T.nilable(String),
@@ -160,7 +141,6 @@ module Metronome
         ).void
       end
       def update_config(
-        params,
         customer_id:,
         leave_stripe_invoices_in_draft:,
         salesforce_account_id:,

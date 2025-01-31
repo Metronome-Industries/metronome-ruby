@@ -6,7 +6,6 @@ module Metronome
           Metronome::Models::CreditGrantCreateParams | Hash[Symbol, top] params
         ) -> Metronome::Models::CreditGrantCreateResponse
         | (
-          Metronome::Models::CreditGrantCreateParams | Hash[Symbol, top] params,
           customer_id: String,
           expires_at: Time,
           grant_amount: Metronome::Models::CreditGrantCreateParams::GrantAmount,
@@ -44,7 +43,6 @@ module Metronome
           Metronome::Models::CreditGrantEditParams | Hash[Symbol, top] params
         ) -> Metronome::Models::CreditGrantEditResponse
         | (
-          Metronome::Models::CreditGrantEditParams | Hash[Symbol, top] params,
           id: String,
           credit_grant_type: String,
           expires_at: Time,
@@ -71,7 +69,6 @@ module Metronome
           Metronome::Models::CreditGrantVoidParams | Hash[Symbol, top] params
         ) -> Metronome::Models::CreditGrantVoidResponse
         | (
-          Metronome::Models::CreditGrantVoidParams | Hash[Symbol, top] params,
           id: String,
           release_uniqueness_key: bool,
           void_credit_purchase_invoice: bool,

@@ -9,8 +9,6 @@ module Metronome
               | Hash[Symbol, top] params
             ) -> Metronome::Models::Contracts::RateCards::ProductOrderUpdateResponse
             | (
-              Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams
-              | Hash[Symbol, top] params,
               product_moves: Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove],
               rate_card_id: String,
               request_options: Metronome::request_opts
@@ -22,8 +20,6 @@ module Metronome
               | Hash[Symbol, top] params
             ) -> Metronome::Models::Contracts::RateCards::ProductOrderSetResponse
             | (
-              Metronome::Models::Contracts::RateCards::ProductOrderSetParams
-              | Hash[Symbol, top] params,
               product_order: Array[String],
               rate_card_id: String,
               request_options: Metronome::request_opts

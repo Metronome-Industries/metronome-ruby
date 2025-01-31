@@ -5,7 +5,6 @@ module Metronome
     class Usage
       sig do
         params(
-          params: T.any(Metronome::Models::UsageListParams, T::Hash[Symbol, T.anything]),
           ending_before: Time,
           starting_on: Time,
           window_size: Symbol,
@@ -16,7 +15,6 @@ module Metronome
         ).returns(Metronome::Models::UsageListResponse)
       end
       def list(
-        params,
         ending_before:,
         starting_on:,
         window_size:,
@@ -28,16 +26,14 @@ module Metronome
 
       sig do
         params(
-          params: T.any(Metronome::Models::UsageIngestParams, T::Hash[Symbol, T.anything]),
           usage: T::Array[Metronome::Models::UsageIngestParams::Usage],
           request_options: Metronome::RequestOpts
         ).void
       end
-      def ingest(params, usage:, request_options: {}); end
+      def ingest(usage:, request_options: {}); end
 
       sig do
         params(
-          params: T.any(Metronome::Models::UsageListWithGroupsParams, T::Hash[Symbol, T.anything]),
           billable_metric_id: String,
           customer_id: String,
           window_size: Symbol,
@@ -51,7 +47,6 @@ module Metronome
         ).returns(Metronome::CursorPage[Metronome::Models::UsageListWithGroupsResponse])
       end
       def list_with_groups(
-        params,
         billable_metric_id:,
         customer_id:,
         window_size:,

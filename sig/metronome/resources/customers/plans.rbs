@@ -8,8 +8,6 @@ module Metronome
             | Hash[Symbol, top] params
           ) -> Metronome::CursorPage[Metronome::Models::Customers::PlanListResponse]
           | (
-            Metronome::Models::Customers::PlanListParams
-            | Hash[Symbol, top] params,
             customer_id: String,
             limit: Integer,
             next_page: String,
@@ -22,8 +20,6 @@ module Metronome
             | Hash[Symbol, top] params
           ) -> Metronome::Models::Customers::PlanAddResponse
           | (
-            Metronome::Models::Customers::PlanAddParams
-            | Hash[Symbol, top] params,
             customer_id: String,
             plan_id: String,
             starting_on: Time,
@@ -41,8 +37,6 @@ module Metronome
             | Hash[Symbol, top] params
           ) -> Metronome::Models::Customers::PlanEndResponse
           | (
-            Metronome::Models::Customers::PlanEndParams
-            | Hash[Symbol, top] params,
             customer_id: String,
             customer_plan_id: String,
             ending_before: Time,
@@ -57,8 +51,6 @@ module Metronome
             | Hash[Symbol, top] params
           ) -> Metronome::CursorPage[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse]
           | (
-            Metronome::Models::Customers::PlanListPriceAdjustmentsParams
-            | Hash[Symbol, top] params,
             customer_id: String,
             customer_plan_id: String,
             limit: Integer,

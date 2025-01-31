@@ -5,7 +5,6 @@ module Metronome
     class Dashboards
       sig do
         params(
-          params: T.any(Metronome::Models::DashboardGetEmbeddableURLParams, T::Hash[Symbol, T.anything]),
           customer_id: String,
           dashboard: Symbol,
           bm_group_key_overrides: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride],
@@ -15,7 +14,6 @@ module Metronome
         ).returns(Metronome::Models::DashboardGetEmbeddableURLResponse)
       end
       def get_embeddable_url(
-        params,
         customer_id:,
         dashboard:,
         bm_group_key_overrides:,

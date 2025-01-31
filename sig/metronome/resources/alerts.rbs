@@ -6,7 +6,6 @@ module Metronome
           Metronome::Models::AlertCreateParams | Hash[Symbol, top] params
         ) -> Metronome::Models::AlertCreateResponse
         | (
-          Metronome::Models::AlertCreateParams | Hash[Symbol, top] params,
           alert_type: Metronome::Models::AlertCreateParams::alert_type,
           name: String,
           threshold: Float,
@@ -28,7 +27,6 @@ module Metronome
           Metronome::Models::AlertArchiveParams | Hash[Symbol, top] params
         ) -> Metronome::Models::AlertArchiveResponse
         | (
-          Metronome::Models::AlertArchiveParams | Hash[Symbol, top] params,
           id: String,
           release_uniqueness_key: bool,
           request_options: Metronome::request_opts

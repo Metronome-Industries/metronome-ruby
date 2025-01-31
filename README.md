@@ -36,6 +36,7 @@ bundle update metronome
 ## Usage
 
 ```ruby
+require "bundler/setup"
 require "metronome"
 
 metronome = Metronome::Client.new(

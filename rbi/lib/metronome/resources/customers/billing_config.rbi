@@ -6,10 +6,6 @@ module Metronome
       class BillingConfig
         sig do
           params(
-            params: T.any(
-              Metronome::Models::Customers::BillingConfigCreateParams,
-              T::Hash[Symbol, T.anything]
-            ),
             customer_id: String,
             billing_provider_type: Symbol,
             billing_provider_customer_id: String,
@@ -20,7 +16,6 @@ module Metronome
           ).void
         end
         def create(
-          params,
           customer_id:,
           billing_provider_type:,
           billing_provider_customer_id:,
@@ -32,29 +27,21 @@ module Metronome
 
         sig do
           params(
-            params: T.any(
-              Metronome::Models::Customers::BillingConfigRetrieveParams,
-              T::Hash[Symbol, T.anything]
-            ),
             customer_id: String,
             billing_provider_type: Symbol,
             request_options: Metronome::RequestOpts
           ).returns(Metronome::Models::Customers::BillingConfigRetrieveResponse)
         end
-        def retrieve(params, customer_id:, billing_provider_type:, request_options: {}); end
+        def retrieve(customer_id:, billing_provider_type:, request_options: {}); end
 
         sig do
           params(
-            params: T.any(
-              Metronome::Models::Customers::BillingConfigDeleteParams,
-              T::Hash[Symbol, T.anything]
-            ),
             customer_id: String,
             billing_provider_type: Symbol,
             request_options: Metronome::RequestOpts
           ).void
         end
-        def delete(params, customer_id:, billing_provider_type:, request_options: {}); end
+        def delete(customer_id:, billing_provider_type:, request_options: {}); end
 
         sig { params(client: Metronome::Client).void }
         def initialize(client:); end

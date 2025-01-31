@@ -8,8 +8,6 @@ module Metronome
             | Hash[Symbol, top] params
           ) -> Metronome::Models::Contracts::NamedScheduleRetrieveResponse
           | (
-            Metronome::Models::Contracts::NamedScheduleRetrieveParams
-            | Hash[Symbol, top] params,
             rate_card_id: String,
             schedule_name: String,
             covering_date: Time,
@@ -22,8 +20,6 @@ module Metronome
             | Hash[Symbol, top] params
           ) -> nil
           | (
-            Metronome::Models::Contracts::NamedScheduleUpdateParams
-            | Hash[Symbol, top] params,
             rate_card_id: String,
             schedule_name: String,
             starting_at: Time,
