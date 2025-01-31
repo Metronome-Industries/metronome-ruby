@@ -16,7 +16,6 @@ module Metronome
           Metronome::Models::PlanGetDetailsParams | Hash[Symbol, top] params
         ) -> Metronome::Models::PlanGetDetailsResponse
         | (
-          Metronome::Models::PlanGetDetailsParams | Hash[Symbol, top] params,
           plan_id: String,
           request_options: Metronome::request_opts
         ) -> Metronome::Models::PlanGetDetailsResponse
@@ -26,7 +25,6 @@ module Metronome
           Metronome::Models::PlanListChargesParams | Hash[Symbol, top] params
         ) -> Metronome::CursorPage[Metronome::Models::PlanListChargesResponse]
         | (
-          Metronome::Models::PlanListChargesParams | Hash[Symbol, top] params,
           plan_id: String,
           limit: Integer,
           next_page: String,
@@ -38,7 +36,6 @@ module Metronome
           Metronome::Models::PlanListCustomersParams | Hash[Symbol, top] params
         ) -> Metronome::CursorPage[Metronome::Models::PlanListCustomersResponse]
         | (
-          Metronome::Models::PlanListCustomersParams | Hash[Symbol, top] params,
           plan_id: String,
           limit: Integer,
           next_page: String,

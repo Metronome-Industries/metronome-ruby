@@ -7,10 +7,6 @@ module Metronome
         class NamedSchedules
           sig do
             params(
-              params: T.any(
-                Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveParams,
-                T::Hash[Symbol, T.anything]
-              ),
               contract_id: String,
               customer_id: String,
               schedule_name: String,
@@ -18,22 +14,10 @@ module Metronome
               request_options: Metronome::RequestOpts
             ).returns(Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse)
           end
-          def retrieve(
-            params,
-            contract_id:,
-            customer_id:,
-            schedule_name:,
-            covering_date:,
-            request_options: {}
-          )
-          end
+          def retrieve(contract_id:, customer_id:, schedule_name:, covering_date:, request_options: {}); end
 
           sig do
             params(
-              params: T.any(
-                Metronome::Models::Contracts::RateCards::NamedScheduleUpdateParams,
-                T::Hash[Symbol, T.anything]
-              ),
               contract_id: String,
               customer_id: String,
               schedule_name: String,
@@ -44,7 +28,6 @@ module Metronome
             ).void
           end
           def update(
-            params,
             contract_id:,
             customer_id:,
             schedule_name:,
@@ -52,7 +35,8 @@ module Metronome
             value:,
             ending_before:,
             request_options: {}
-          ); end
+          )
+          end
 
           sig { params(client: Metronome::Client).void }
           def initialize(client:); end

@@ -6,18 +6,16 @@ module Metronome
       class Invoices
         sig do
           params(
-            params: T.any(Metronome::Models::Customers::InvoiceRetrieveParams, T::Hash[Symbol, T.anything]),
             customer_id: String,
             invoice_id: String,
             skip_zero_qty_line_items: T::Boolean,
             request_options: Metronome::RequestOpts
           ).returns(Metronome::Models::Customers::InvoiceRetrieveResponse)
         end
-        def retrieve(params, customer_id:, invoice_id:, skip_zero_qty_line_items:, request_options: {}); end
+        def retrieve(customer_id:, invoice_id:, skip_zero_qty_line_items:, request_options: {}); end
 
         sig do
           params(
-            params: T.any(Metronome::Models::Customers::InvoiceListParams, T::Hash[Symbol, T.anything]),
             customer_id: String,
             credit_type_id: String,
             ending_before: Time,
@@ -31,7 +29,6 @@ module Metronome
           ).returns(Metronome::CursorPage[Metronome::Models::Customers::Invoice])
         end
         def list(
-          params,
           customer_id:,
           credit_type_id:,
           ending_before:,
@@ -46,7 +43,6 @@ module Metronome
 
         sig do
           params(
-            params: T.any(Metronome::Models::Customers::InvoiceAddChargeParams, T::Hash[Symbol, T.anything]),
             customer_id: String,
             charge_id: String,
             customer_plan_id: String,
@@ -58,7 +54,6 @@ module Metronome
           ).returns(Metronome::Models::Customers::InvoiceAddChargeResponse)
         end
         def add_charge(
-          params,
           customer_id:,
           charge_id:,
           customer_plan_id:,
@@ -71,10 +66,6 @@ module Metronome
 
         sig do
           params(
-            params: T.any(
-              Metronome::Models::Customers::InvoiceListBreakdownsParams,
-              T::Hash[Symbol, T.anything]
-            ),
             customer_id: String,
             ending_before: Time,
             starting_on: Time,
@@ -89,7 +80,6 @@ module Metronome
           ).returns(Metronome::CursorPage[Metronome::Models::Customers::InvoiceListBreakdownsResponse])
         end
         def list_breakdowns(
-          params,
           customer_id:,
           ending_before:,
           starting_on:,

@@ -5,7 +5,6 @@ module Metronome
     class BillableMetrics
       sig do
         params(
-          params: T.any(Metronome::Models::BillableMetricCreateParams, T::Hash[Symbol, T.anything]),
           name: String,
           aggregation_key: String,
           aggregation_type: Symbol,
@@ -18,7 +17,6 @@ module Metronome
         ).returns(Metronome::Models::BillableMetricCreateResponse)
       end
       def create(
-        params,
         name:,
         aggregation_key:,
         aggregation_type:,
@@ -32,12 +30,11 @@ module Metronome
 
       sig do
         params(
-          params: T.any(Metronome::Models::BillableMetricRetrieveParams, T::Hash[Symbol, T.anything]),
           billable_metric_id: String,
           request_options: Metronome::RequestOpts
         ).returns(Metronome::Models::BillableMetricRetrieveResponse)
       end
-      def retrieve(params, billable_metric_id:, request_options: {}); end
+      def retrieve(billable_metric_id:, request_options: {}); end
 
       sig do
         params(
@@ -51,12 +48,11 @@ module Metronome
 
       sig do
         params(
-          params: T.any(Metronome::Models::BillableMetricArchiveParams, T::Hash[Symbol, T.anything]),
           id: String,
           request_options: Metronome::RequestOpts
         ).returns(Metronome::Models::BillableMetricArchiveResponse)
       end
-      def archive(params, id:, request_options: {}); end
+      def archive(id:, request_options: {}); end
 
       sig { params(client: Metronome::Client).void }
       def initialize(client:); end

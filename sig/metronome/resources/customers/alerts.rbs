@@ -8,8 +8,6 @@ module Metronome
             | Hash[Symbol, top] params
           ) -> Metronome::Models::Customers::AlertRetrieveResponse
           | (
-            Metronome::Models::Customers::AlertRetrieveParams
-            | Hash[Symbol, top] params,
             alert_id: String,
             customer_id: String,
             request_options: Metronome::request_opts
@@ -21,8 +19,6 @@ module Metronome
             | Hash[Symbol, top] params
           ) -> Metronome::Models::Customers::AlertListResponse
           | (
-            Metronome::Models::Customers::AlertListParams
-            | Hash[Symbol, top] params,
             customer_id: String,
             next_page: String,
             alert_statuses: Array[Metronome::Models::Customers::AlertListParams::alert_status],
@@ -35,8 +31,6 @@ module Metronome
             | Hash[Symbol, top] params
           ) -> nil
           | (
-            Metronome::Models::Customers::AlertResetParams
-            | Hash[Symbol, top] params,
             alert_id: String,
             customer_id: String,
             request_options: Metronome::request_opts

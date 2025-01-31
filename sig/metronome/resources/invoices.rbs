@@ -6,7 +6,6 @@ module Metronome
           Metronome::Models::InvoiceRegenerateParams | Hash[Symbol, top] params
         ) -> Metronome::Models::InvoiceRegenerateResponse
         | (
-          Metronome::Models::InvoiceRegenerateParams | Hash[Symbol, top] params,
           id: String,
           request_options: Metronome::request_opts
         ) -> Metronome::Models::InvoiceRegenerateResponse
@@ -16,7 +15,6 @@ module Metronome
           Metronome::Models::InvoiceVoidParams | Hash[Symbol, top] params
         ) -> Metronome::Models::InvoiceVoidResponse
         | (
-          Metronome::Models::InvoiceVoidParams | Hash[Symbol, top] params,
           id: String,
           request_options: Metronome::request_opts
         ) -> Metronome::Models::InvoiceVoidResponse

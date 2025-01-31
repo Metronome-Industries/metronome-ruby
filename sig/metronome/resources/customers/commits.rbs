@@ -8,8 +8,6 @@ module Metronome
             | Hash[Symbol, top] params
           ) -> Metronome::Models::Customers::CommitCreateResponse
           | (
-            Metronome::Models::Customers::CommitCreateParams
-            | Hash[Symbol, top] params,
             access_schedule: Metronome::Models::Customers::CommitCreateParams::AccessSchedule,
             customer_id: String,
             priority: Float,
@@ -36,8 +34,6 @@ module Metronome
             | Hash[Symbol, top] params
           ) -> Metronome::Models::Customers::CommitListResponse
           | (
-            Metronome::Models::Customers::CommitListParams
-            | Hash[Symbol, top] params,
             customer_id: String,
             commit_id: String,
             covering_date: Time,
@@ -57,8 +53,6 @@ module Metronome
             | Hash[Symbol, top] params
           ) -> Metronome::Models::Customers::CommitUpdateEndDateResponse
           | (
-            Metronome::Models::Customers::CommitUpdateEndDateParams
-            | Hash[Symbol, top] params,
             commit_id: String,
             customer_id: String,
             access_ending_before: Time,

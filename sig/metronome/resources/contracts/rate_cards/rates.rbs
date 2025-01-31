@@ -9,8 +9,6 @@ module Metronome
               | Hash[Symbol, top] params
             ) -> Metronome::CursorPage[Metronome::Models::Contracts::RateCards::RateListResponse]
             | (
-              Metronome::Models::Contracts::RateCards::RateListParams
-              | Hash[Symbol, top] params,
               at: Time,
               rate_card_id: String,
               limit: Integer,
@@ -25,8 +23,6 @@ module Metronome
               | Hash[Symbol, top] params
             ) -> Metronome::Models::Contracts::RateCards::RateAddResponse
             | (
-              Metronome::Models::Contracts::RateCards::RateAddParams
-              | Hash[Symbol, top] params,
               entitled: bool,
               product_id: String,
               rate_card_id: String,
@@ -51,8 +47,6 @@ module Metronome
               | Hash[Symbol, top] params
             ) -> Metronome::Models::Contracts::RateCards::RateAddManyResponse
             | (
-              Metronome::Models::Contracts::RateCards::RateAddManyParams
-              | Hash[Symbol, top] params,
               rate_card_id: String,
               rates: Array[Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate],
               request_options: Metronome::request_opts

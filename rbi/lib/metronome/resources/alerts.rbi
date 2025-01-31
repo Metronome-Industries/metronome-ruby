@@ -5,7 +5,6 @@ module Metronome
     class Alerts
       sig do
         params(
-          params: T.any(Metronome::Models::AlertCreateParams, T::Hash[Symbol, T.anything]),
           alert_type: Symbol,
           name: String,
           threshold: Float,
@@ -23,7 +22,6 @@ module Metronome
         ).returns(Metronome::Models::AlertCreateResponse)
       end
       def create(
-        params,
         alert_type:,
         name:,
         threshold:,
@@ -42,13 +40,12 @@ module Metronome
 
       sig do
         params(
-          params: T.any(Metronome::Models::AlertArchiveParams, T::Hash[Symbol, T.anything]),
           id: String,
           release_uniqueness_key: T::Boolean,
           request_options: Metronome::RequestOpts
         ).returns(Metronome::Models::AlertArchiveResponse)
       end
-      def archive(params, id:, release_uniqueness_key:, request_options: {}); end
+      def archive(id:, release_uniqueness_key:, request_options: {}); end
 
       sig { params(client: Metronome::Client).void }
       def initialize(client:); end

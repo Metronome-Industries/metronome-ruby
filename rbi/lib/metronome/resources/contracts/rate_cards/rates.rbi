@@ -7,10 +7,6 @@ module Metronome
         class Rates
           sig do
             params(
-              params: T.any(
-                Metronome::Models::Contracts::RateCards::RateListParams,
-                T::Hash[Symbol, T.anything]
-              ),
               at: Time,
               rate_card_id: String,
               limit: Integer,
@@ -19,14 +15,10 @@ module Metronome
               request_options: Metronome::RequestOpts
             ).returns(Metronome::CursorPage[Metronome::Models::Contracts::RateCards::RateListResponse])
           end
-          def list(params, at:, rate_card_id:, limit:, next_page:, selectors:, request_options: {}); end
+          def list(at:, rate_card_id:, limit:, next_page:, selectors:, request_options: {}); end
 
           sig do
             params(
-              params: T.any(
-                Metronome::Models::Contracts::RateCards::RateAddParams,
-                T::Hash[Symbol, T.anything]
-              ),
               entitled: T::Boolean,
               product_id: String,
               rate_card_id: String,
@@ -46,7 +38,6 @@ module Metronome
             ).returns(Metronome::Models::Contracts::RateCards::RateAddResponse)
           end
           def add(
-            params,
             entitled:,
             product_id:,
             rate_card_id:,
@@ -67,16 +58,12 @@ module Metronome
 
           sig do
             params(
-              params: T.any(
-                Metronome::Models::Contracts::RateCards::RateAddManyParams,
-                T::Hash[Symbol, T.anything]
-              ),
               rate_card_id: String,
               rates: T::Array[Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate],
               request_options: Metronome::RequestOpts
             ).returns(Metronome::Models::Contracts::RateCards::RateAddManyResponse)
           end
-          def add_many(params, rate_card_id:, rates:, request_options: {}); end
+          def add_many(rate_card_id:, rates:, request_options: {}); end
 
           sig { params(client: Metronome::Client).void }
           def initialize(client:); end

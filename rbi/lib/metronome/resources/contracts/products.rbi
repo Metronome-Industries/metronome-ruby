@@ -6,7 +6,6 @@ module Metronome
       class Products
         sig do
           params(
-            params: T.any(Metronome::Models::Contracts::ProductCreateParams, T::Hash[Symbol, T.anything]),
             name: String,
             type: Symbol,
             billable_metric_id: String,
@@ -25,7 +24,6 @@ module Metronome
           ).returns(Metronome::Models::Contracts::ProductCreateResponse)
         end
         def create(
-          params,
           name:,
           type:,
           billable_metric_id:,
@@ -45,16 +43,14 @@ module Metronome
 
         sig do
           params(
-            params: T.any(Metronome::Models::Contracts::ProductRetrieveParams, T::Hash[Symbol, T.anything]),
             id: String,
             request_options: Metronome::RequestOpts
           ).returns(Metronome::Models::Contracts::ProductRetrieveResponse)
         end
-        def retrieve(params, id:, request_options: {}); end
+        def retrieve(id:, request_options: {}); end
 
         sig do
           params(
-            params: T.any(Metronome::Models::Contracts::ProductUpdateParams, T::Hash[Symbol, T.anything]),
             product_id: String,
             starting_at: Time,
             billable_metric_id: String,
@@ -74,7 +70,6 @@ module Metronome
           ).returns(Metronome::Models::Contracts::ProductUpdateResponse)
         end
         def update(
-          params,
           product_id:,
           starting_at:,
           billable_metric_id:,
@@ -105,12 +100,11 @@ module Metronome
 
         sig do
           params(
-            params: T.any(Metronome::Models::Contracts::ProductArchiveParams, T::Hash[Symbol, T.anything]),
             product_id: String,
             request_options: Metronome::RequestOpts
           ).returns(Metronome::Models::Contracts::ProductArchiveResponse)
         end
-        def archive(params, product_id:, request_options: {}); end
+        def archive(product_id:, request_options: {}); end
 
         sig { params(client: Metronome::Client).void }
         def initialize(client:); end

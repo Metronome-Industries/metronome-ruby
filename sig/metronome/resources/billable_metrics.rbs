@@ -7,8 +7,6 @@ module Metronome
           | Hash[Symbol, top] params
         ) -> Metronome::Models::BillableMetricCreateResponse
         | (
-          Metronome::Models::BillableMetricCreateParams
-          | Hash[Symbol, top] params,
           name: String,
           aggregation_key: String,
           aggregation_type: Metronome::Models::BillableMetricCreateParams::aggregation_type,
@@ -26,8 +24,6 @@ module Metronome
           | Hash[Symbol, top] params
         ) -> Metronome::Models::BillableMetricRetrieveResponse
         | (
-          Metronome::Models::BillableMetricRetrieveParams
-          | Hash[Symbol, top] params,
           billable_metric_id: String,
           request_options: Metronome::request_opts
         ) -> Metronome::Models::BillableMetricRetrieveResponse
@@ -50,8 +46,6 @@ module Metronome
           | Hash[Symbol, top] params
         ) -> Metronome::Models::BillableMetricArchiveResponse
         | (
-          Metronome::Models::BillableMetricArchiveParams
-          | Hash[Symbol, top] params,
           id: String,
           request_options: Metronome::request_opts
         ) -> Metronome::Models::BillableMetricArchiveResponse

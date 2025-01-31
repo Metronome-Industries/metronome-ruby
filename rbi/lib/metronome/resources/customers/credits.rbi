@@ -6,7 +6,6 @@ module Metronome
       class Credits
         sig do
           params(
-            params: T.any(Metronome::Models::Customers::CreditCreateParams, T::Hash[Symbol, T.anything]),
             access_schedule: Metronome::Models::Customers::CreditCreateParams::AccessSchedule,
             customer_id: String,
             priority: Float,
@@ -25,7 +24,6 @@ module Metronome
           ).returns(Metronome::Models::Customers::CreditCreateResponse)
         end
         def create(
-          params,
           access_schedule:,
           customer_id:,
           priority:,
@@ -45,7 +43,6 @@ module Metronome
 
         sig do
           params(
-            params: T.any(Metronome::Models::Customers::CreditListParams, T::Hash[Symbol, T.anything]),
             customer_id: String,
             covering_date: Time,
             credit_id: String,
@@ -60,7 +57,6 @@ module Metronome
           ).returns(Metronome::Models::Customers::CreditListResponse)
         end
         def list(
-          params,
           customer_id:,
           covering_date:,
           credit_id:,
@@ -76,17 +72,13 @@ module Metronome
 
         sig do
           params(
-            params: T.any(
-              Metronome::Models::Customers::CreditUpdateEndDateParams,
-              T::Hash[Symbol, T.anything]
-            ),
             access_ending_before: Time,
             credit_id: String,
             customer_id: String,
             request_options: Metronome::RequestOpts
           ).returns(Metronome::Models::Customers::CreditUpdateEndDateResponse)
         end
-        def update_end_date(params, access_ending_before:, credit_id:, customer_id:, request_options: {}); end
+        def update_end_date(access_ending_before:, credit_id:, customer_id:, request_options: {}); end
 
         sig { params(client: Metronome::Client).void }
         def initialize(client:); end

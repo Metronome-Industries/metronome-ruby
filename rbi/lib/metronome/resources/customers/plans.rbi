@@ -6,18 +6,16 @@ module Metronome
       class Plans
         sig do
           params(
-            params: T.any(Metronome::Models::Customers::PlanListParams, T::Hash[Symbol, T.anything]),
             customer_id: String,
             limit: Integer,
             next_page: String,
             request_options: Metronome::RequestOpts
           ).returns(Metronome::CursorPage[Metronome::Models::Customers::PlanListResponse])
         end
-        def list(params, customer_id:, limit:, next_page:, request_options: {}); end
+        def list(customer_id:, limit:, next_page:, request_options: {}); end
 
         sig do
           params(
-            params: T.any(Metronome::Models::Customers::PlanAddParams, T::Hash[Symbol, T.anything]),
             customer_id: String,
             plan_id: String,
             starting_on: Time,
@@ -30,7 +28,6 @@ module Metronome
           ).returns(Metronome::Models::Customers::PlanAddResponse)
         end
         def add(
-          params,
           customer_id:,
           plan_id:,
           starting_on:,
@@ -44,7 +41,6 @@ module Metronome
 
         sig do
           params(
-            params: T.any(Metronome::Models::Customers::PlanEndParams, T::Hash[Symbol, T.anything]),
             customer_id: String,
             customer_plan_id: String,
             ending_before: Time,
@@ -54,7 +50,6 @@ module Metronome
           ).returns(Metronome::Models::Customers::PlanEndResponse)
         end
         def end_(
-          params,
           customer_id:,
           customer_plan_id:,
           ending_before:,
@@ -65,10 +60,6 @@ module Metronome
 
         sig do
           params(
-            params: T.any(
-              Metronome::Models::Customers::PlanListPriceAdjustmentsParams,
-              T::Hash[Symbol, T.anything]
-            ),
             customer_id: String,
             customer_plan_id: String,
             limit: Integer,
@@ -76,14 +67,7 @@ module Metronome
             request_options: Metronome::RequestOpts
           ).returns(Metronome::CursorPage[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse])
         end
-        def list_price_adjustments(
-          params,
-          customer_id:,
-          customer_plan_id:,
-          limit:,
-          next_page:,
-          request_options: {}
-        )
+        def list_price_adjustments(customer_id:, customer_plan_id:, limit:, next_page:, request_options: {})
         end
 
         sig { params(client: Metronome::Client).void }

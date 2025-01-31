@@ -14,7 +14,6 @@ module Metronome
 
       sig do
         params(
-          params: T.any(Metronome::Models::ContractCreateParams, T::Hash[Symbol, T.anything]),
           customer_id: String,
           starting_at: Time,
           billing_provider_configuration: Metronome::Models::ContractCreateParams::BillingProviderConfiguration,
@@ -46,7 +45,6 @@ module Metronome
         ).returns(Metronome::Models::ContractCreateResponse)
       end
       def create(
-        params,
         customer_id:,
         starting_at:,
         billing_provider_configuration:,
@@ -79,7 +77,6 @@ module Metronome
 
       sig do
         params(
-          params: T.any(Metronome::Models::ContractRetrieveParams, T::Hash[Symbol, T.anything]),
           contract_id: String,
           customer_id: String,
           include_balance: T::Boolean,
@@ -87,19 +84,10 @@ module Metronome
           request_options: Metronome::RequestOpts
         ).returns(Metronome::Models::ContractRetrieveResponse)
       end
-      def retrieve(
-        params,
-        contract_id:,
-        customer_id:,
-        include_balance:,
-        include_ledgers:,
-        request_options: {}
-      )
-      end
+      def retrieve(contract_id:, customer_id:, include_balance:, include_ledgers:, request_options: {}); end
 
       sig do
         params(
-          params: T.any(Metronome::Models::ContractListParams, T::Hash[Symbol, T.anything]),
           customer_id: String,
           covering_date: Time,
           include_archived: T::Boolean,
@@ -110,7 +98,6 @@ module Metronome
         ).returns(Metronome::Models::ContractListResponse)
       end
       def list(
-        params,
         customer_id:,
         covering_date:,
         include_archived:,
@@ -122,7 +109,6 @@ module Metronome
 
       sig do
         params(
-          params: T.any(Metronome::Models::ContractAddManualBalanceEntryParams, T::Hash[Symbol, T.anything]),
           id: String,
           amount: Float,
           customer_id: String,
@@ -134,7 +120,6 @@ module Metronome
         ).void
       end
       def add_manual_balance_entry(
-        params,
         id:,
         amount:,
         customer_id:,
@@ -148,7 +133,6 @@ module Metronome
 
       sig do
         params(
-          params: T.any(Metronome::Models::ContractAmendParams, T::Hash[Symbol, T.anything]),
           contract_id: String,
           customer_id: String,
           starting_at: Time,
@@ -167,7 +151,6 @@ module Metronome
         ).returns(Metronome::Models::ContractAmendResponse)
       end
       def amend(
-        params,
         contract_id:,
         customer_id:,
         starting_at:,
@@ -187,31 +170,25 @@ module Metronome
 
       sig do
         params(
-          params: T.any(Metronome::Models::ContractArchiveParams, T::Hash[Symbol, T.anything]),
           contract_id: String,
           customer_id: String,
           void_invoices: T::Boolean,
           request_options: Metronome::RequestOpts
         ).returns(Metronome::Models::ContractArchiveResponse)
       end
-      def archive(params, contract_id:, customer_id:, void_invoices:, request_options: {}); end
+      def archive(contract_id:, customer_id:, void_invoices:, request_options: {}); end
 
       sig do
         params(
-          params: T.any(
-            Metronome::Models::ContractCreateHistoricalInvoicesParams,
-            T::Hash[Symbol, T.anything]
-          ),
           invoices: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice],
           preview: T::Boolean,
           request_options: Metronome::RequestOpts
         ).returns(Metronome::Models::ContractCreateHistoricalInvoicesResponse)
       end
-      def create_historical_invoices(params, invoices:, preview:, request_options: {}); end
+      def create_historical_invoices(invoices:, preview:, request_options: {}); end
 
       sig do
         params(
-          params: T.any(Metronome::Models::ContractListBalancesParams, T::Hash[Symbol, T.anything]),
           customer_id: String,
           id: String,
           covering_date: Time,
@@ -226,7 +203,6 @@ module Metronome
         ).returns(Metronome::Models::ContractListBalancesResponse)
       end
       def list_balances(
-        params,
         customer_id:,
         id:,
         covering_date:,
@@ -242,7 +218,6 @@ module Metronome
 
       sig do
         params(
-          params: T.any(Metronome::Models::ContractRetrieveRateScheduleParams, T::Hash[Symbol, T.anything]),
           contract_id: String,
           customer_id: String,
           limit: Integer,
@@ -253,7 +228,6 @@ module Metronome
         ).returns(Metronome::Models::ContractRetrieveRateScheduleResponse)
       end
       def retrieve_rate_schedule(
-        params,
         contract_id:,
         customer_id:,
         limit:,
@@ -266,10 +240,6 @@ module Metronome
 
       sig do
         params(
-          params: T.any(
-            Metronome::Models::ContractScheduleProServicesInvoiceParams,
-            T::Hash[Symbol, T.anything]
-          ),
           contract_id: String,
           customer_id: String,
           issued_at: Time,
@@ -280,7 +250,6 @@ module Metronome
         ).returns(Metronome::Models::ContractScheduleProServicesInvoiceResponse)
       end
       def schedule_pro_services_invoice(
-        params,
         contract_id:,
         customer_id:,
         issued_at:,
@@ -292,7 +261,6 @@ module Metronome
 
       sig do
         params(
-          params: T.any(Metronome::Models::ContractSetUsageFilterParams, T::Hash[Symbol, T.anything]),
           contract_id: String,
           customer_id: String,
           group_key: String,
@@ -302,7 +270,6 @@ module Metronome
         ).void
       end
       def set_usage_filter(
-        params,
         contract_id:,
         customer_id:,
         group_key:,
@@ -314,7 +281,6 @@ module Metronome
 
       sig do
         params(
-          params: T.any(Metronome::Models::ContractUpdateEndDateParams, T::Hash[Symbol, T.anything]),
           contract_id: String,
           customer_id: String,
           allow_ending_before_finalized_invoice: T::Boolean,
@@ -323,13 +289,13 @@ module Metronome
         ).returns(Metronome::Models::ContractUpdateEndDateResponse)
       end
       def update_end_date(
-        params,
         contract_id:,
         customer_id:,
         allow_ending_before_finalized_invoice:,
         ending_before:,
         request_options: {}
-      ); end
+      )
+      end
 
       sig { params(client: Metronome::Client).void }
       def initialize(client:); end

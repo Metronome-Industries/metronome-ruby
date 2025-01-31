@@ -8,8 +8,6 @@ module Metronome
             | Hash[Symbol, top] params
           ) -> Metronome::Models::Contracts::ProductCreateResponse
           | (
-            Metronome::Models::Contracts::ProductCreateParams
-            | Hash[Symbol, top] params,
             name: String,
             type: Metronome::Models::Contracts::ProductCreateParams::type_,
             billable_metric_id: String,
@@ -33,8 +31,6 @@ module Metronome
             | Hash[Symbol, top] params
           ) -> Metronome::Models::Contracts::ProductRetrieveResponse
           | (
-            Metronome::Models::Contracts::ProductRetrieveParams
-            | Hash[Symbol, top] params,
             id: String,
             request_options: Metronome::request_opts
           ) -> Metronome::Models::Contracts::ProductRetrieveResponse
@@ -45,8 +41,6 @@ module Metronome
             | Hash[Symbol, top] params
           ) -> Metronome::Models::Contracts::ProductUpdateResponse
           | (
-            Metronome::Models::Contracts::ProductUpdateParams
-            | Hash[Symbol, top] params,
             product_id: String,
             starting_at: Time,
             billable_metric_id: String,
@@ -83,8 +77,6 @@ module Metronome
             | Hash[Symbol, top] params
           ) -> Metronome::Models::Contracts::ProductArchiveResponse
           | (
-            Metronome::Models::Contracts::ProductArchiveParams
-            | Hash[Symbol, top] params,
             product_id: String,
             request_options: Metronome::request_opts
           ) -> Metronome::Models::Contracts::ProductArchiveResponse

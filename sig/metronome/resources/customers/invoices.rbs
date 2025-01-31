@@ -8,8 +8,6 @@ module Metronome
             | Hash[Symbol, top] params
           ) -> Metronome::Models::Customers::InvoiceRetrieveResponse
           | (
-            Metronome::Models::Customers::InvoiceRetrieveParams
-            | Hash[Symbol, top] params,
             customer_id: String,
             invoice_id: String,
             skip_zero_qty_line_items: bool,
@@ -22,8 +20,6 @@ module Metronome
             | Hash[Symbol, top] params
           ) -> Metronome::CursorPage[Metronome::Models::Customers::Invoice]
           | (
-            Metronome::Models::Customers::InvoiceListParams
-            | Hash[Symbol, top] params,
             customer_id: String,
             credit_type_id: String,
             ending_before: Time,
@@ -42,8 +38,6 @@ module Metronome
             | Hash[Symbol, top] params
           ) -> Metronome::Models::Customers::InvoiceAddChargeResponse
           | (
-            Metronome::Models::Customers::InvoiceAddChargeParams
-            | Hash[Symbol, top] params,
             customer_id: String,
             charge_id: String,
             customer_plan_id: String,
@@ -60,8 +54,6 @@ module Metronome
             | Hash[Symbol, top] params
           ) -> Metronome::CursorPage[Metronome::Models::Customers::InvoiceListBreakdownsResponse]
           | (
-            Metronome::Models::Customers::InvoiceListBreakdownsParams
-            | Hash[Symbol, top] params,
             customer_id: String,
             ending_before: Time,
             starting_on: Time,

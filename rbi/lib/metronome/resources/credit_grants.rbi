@@ -5,7 +5,6 @@ module Metronome
     class CreditGrants
       sig do
         params(
-          params: T.any(Metronome::Models::CreditGrantCreateParams, T::Hash[Symbol, T.anything]),
           customer_id: String,
           expires_at: Time,
           grant_amount: Metronome::Models::CreditGrantCreateParams::GrantAmount,
@@ -24,7 +23,6 @@ module Metronome
         ).returns(Metronome::Models::CreditGrantCreateResponse)
       end
       def create(
-        params,
         customer_id:,
         expires_at:,
         grant_amount:,
@@ -67,7 +65,6 @@ module Metronome
 
       sig do
         params(
-          params: T.any(Metronome::Models::CreditGrantEditParams, T::Hash[Symbol, T.anything]),
           id: String,
           credit_grant_type: String,
           expires_at: Time,
@@ -75,7 +72,7 @@ module Metronome
           request_options: Metronome::RequestOpts
         ).returns(Metronome::Models::CreditGrantEditResponse)
       end
-      def edit(params, id:, credit_grant_type:, expires_at:, name:, request_options: {}); end
+      def edit(id:, credit_grant_type:, expires_at:, name:, request_options: {}); end
 
       sig do
         params(
@@ -99,14 +96,13 @@ module Metronome
 
       sig do
         params(
-          params: T.any(Metronome::Models::CreditGrantVoidParams, T::Hash[Symbol, T.anything]),
           id: String,
           release_uniqueness_key: T::Boolean,
           void_credit_purchase_invoice: T::Boolean,
           request_options: Metronome::RequestOpts
         ).returns(Metronome::Models::CreditGrantVoidResponse)
       end
-      def void(params, id:, release_uniqueness_key:, void_credit_purchase_invoice:, request_options: {}); end
+      def void(id:, release_uniqueness_key:, void_credit_purchase_invoice:, request_options: {}); end
 
       sig { params(client: Metronome::Client).void }
       def initialize(client:); end

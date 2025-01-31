@@ -15,7 +15,6 @@ module Metronome
 
         sig do
           params(
-            params: T.any(Metronome::Models::Contracts::RateCardCreateParams, T::Hash[Symbol, T.anything]),
             name: String,
             aliases: T::Array[Metronome::Models::Contracts::RateCardCreateParams::Alias],
             credit_type_conversions: T::Array[Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion],
@@ -26,7 +25,6 @@ module Metronome
           ).returns(Metronome::Models::Contracts::RateCardCreateResponse)
         end
         def create(
-          params,
           name:,
           aliases:,
           credit_type_conversions:,
@@ -38,16 +36,14 @@ module Metronome
 
         sig do
           params(
-            params: T.any(Metronome::Models::Contracts::RateCardRetrieveParams, T::Hash[Symbol, T.anything]),
             id: String,
             request_options: Metronome::RequestOpts
           ).returns(Metronome::Models::Contracts::RateCardRetrieveResponse)
         end
-        def retrieve(params, id:, request_options: {}); end
+        def retrieve(id:, request_options: {}); end
 
         sig do
           params(
-            params: T.any(Metronome::Models::Contracts::RateCardUpdateParams, T::Hash[Symbol, T.anything]),
             rate_card_id: String,
             aliases: T::Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias],
             description: String,
@@ -55,25 +51,20 @@ module Metronome
             request_options: Metronome::RequestOpts
           ).returns(Metronome::Models::Contracts::RateCardUpdateResponse)
         end
-        def update(params, rate_card_id:, aliases:, description:, name:, request_options: {}); end
+        def update(rate_card_id:, aliases:, description:, name:, request_options: {}); end
 
         sig do
           params(
-            params: T.any(Metronome::Models::Contracts::RateCardListParams, T::Hash[Symbol, T.anything]),
             body: T.anything,
             limit: Integer,
             next_page: String,
             request_options: Metronome::RequestOpts
           ).returns(Metronome::CursorPage[Metronome::Models::Contracts::RateCardListResponse])
         end
-        def list(params, body:, limit:, next_page:, request_options: {}); end
+        def list(body:, limit:, next_page:, request_options: {}); end
 
         sig do
           params(
-            params: T.any(
-              Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams,
-              T::Hash[Symbol, T.anything]
-            ),
             rate_card_id: String,
             starting_at: Time,
             limit: Integer,
@@ -84,7 +75,6 @@ module Metronome
           ).returns(Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse)
         end
         def retrieve_rate_schedule(
-          params,
           rate_card_id:,
           starting_at:,
           limit:,
