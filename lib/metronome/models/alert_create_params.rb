@@ -59,9 +59,8 @@ module Metronome
       #   attr_writer :credit_type_id
 
       # @!attribute [r] custom_field_filters
-      #   Only present for beta contract invoices. This field's availability is dependent
-      #     on your client's configuration. A list of custom field filters for alert types
-      #     that support advanced filtering
+      #   A list of custom field filters for alert types that support advanced filtering.
+      #     Only present for contract invoices.
       #
       #   @return [Array<Metronome::Models::AlertCreateParams::CustomFieldFilter>, nil]
       optional :custom_field_filters,
