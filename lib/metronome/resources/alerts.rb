@@ -23,9 +23,8 @@ module Metronome
       #
       #   @option params [String] :credit_type_id
       #
-      #   @option params [Array<Metronome::Models::AlertCreateParams::CustomFieldFilter>] :custom_field_filters Only present for beta contract invoices. This field's availability is dependent
-      #     on your client's configuration. A list of custom field filters for alert types
-      #     that support advanced filtering
+      #   @option params [Array<Metronome::Models::AlertCreateParams::CustomFieldFilter>] :custom_field_filters A list of custom field filters for alert types that support advanced filtering.
+      #     Only present for contract invoices.
       #
       #   @option params [String] :customer_id If provided, will create this alert for this specific customer. To create an
       #     alert for all customers, do not specify `customer_id` or `plan_id`.

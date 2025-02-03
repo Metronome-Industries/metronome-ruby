@@ -1878,8 +1878,7 @@ module Metronome
 
           # @!attribute [r] presentation_group_values
           #   A map of group names to values. The override will only apply to line items with
-          #     the specified presentation group values. Can only be used for multiplier
-          #     overrides.
+          #     the specified presentation group values.
           #
           #   @return [Hash{Symbol=>String}, nil]
           optional :presentation_group_values, Metronome::HashOf[String]
