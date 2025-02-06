@@ -28,7 +28,7 @@ class Metronome::Test::Resources::Contracts::RateCards::NamedSchedulesTest < Min
       customer_id: "9b85c1c1-5238-4f2a-a409-61412905e1e1",
       schedule_name: "my-schedule",
       starting_at: "2022-02-01T00:00:00Z",
-      value: {"my_key" => "my_value"}
+      value: {my_key: "my_value"}
     )
 
     assert_pattern do

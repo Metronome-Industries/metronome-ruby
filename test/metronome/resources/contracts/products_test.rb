@@ -11,7 +11,7 @@ class Metronome::Test::Resources::Contracts::ProductsTest < Minitest::Test
   end
 
   def test_create_required_params
-    response = @metronome.contracts.products.create(name: "My Product", type: "FIXED")
+    response = @metronome.contracts.products.create(name: "My Product", type: :FIXED)
 
     assert_pattern do
       response => Metronome::Models::Contracts::ProductCreateResponse

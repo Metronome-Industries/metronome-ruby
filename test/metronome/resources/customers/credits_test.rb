@@ -13,11 +13,11 @@ class Metronome::Test::Resources::Customers::CreditsTest < Minitest::Test
   def test_create_required_params
     response = @metronome.customers.credits.create(
       access_schedule: {
-        "schedule_items" => [
+        schedule_items: [
           {
-            "amount" => 1000,
-            "ending_before" => "2020-02-01T00:00:00.000Z",
-            "starting_at" => "2020-01-01T00:00:00.000Z"
+            amount: 1000,
+            ending_before: "2020-02-01T00:00:00.000Z",
+            starting_at: "2020-01-01T00:00:00.000Z"
           }
         ]
       },

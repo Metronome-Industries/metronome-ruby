@@ -12,7 +12,7 @@ class Metronome::Test::Resources::AlertsTest < Minitest::Test
 
   def test_create_required_params
     response = @metronome.alerts.create(
-      alert_type: "low_credit_balance_reached",
+      alert_type: :low_credit_balance_reached,
       name: "$100 spend threshold reached",
       threshold: 10_000
     )
