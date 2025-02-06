@@ -12,7 +12,7 @@ module Metronome
             request_options: Metronome::RequestOpts
           ).returns(Metronome::Models::Customers::InvoiceRetrieveResponse)
         end
-        def retrieve(customer_id:, invoice_id:, skip_zero_qty_line_items:, request_options: {}); end
+        def retrieve(customer_id:, invoice_id:, skip_zero_qty_line_items: nil, request_options: {}); end
 
         sig do
           params(
@@ -30,14 +30,14 @@ module Metronome
         end
         def list(
           customer_id:,
-          credit_type_id:,
-          ending_before:,
-          limit:,
-          next_page:,
-          skip_zero_qty_line_items:,
-          sort:,
-          starting_on:,
-          status:,
+          credit_type_id: nil,
+          ending_before: nil,
+          limit: nil,
+          next_page: nil,
+          skip_zero_qty_line_items: nil,
+          sort: nil,
+          starting_on: nil,
+          status: nil,
           request_options: {}
         ); end
 
@@ -83,13 +83,13 @@ module Metronome
           customer_id:,
           ending_before:,
           starting_on:,
-          credit_type_id:,
-          limit:,
-          next_page:,
-          skip_zero_qty_line_items:,
-          sort:,
-          status:,
-          window_size:,
+          credit_type_id: nil,
+          limit: nil,
+          next_page: nil,
+          skip_zero_qty_line_items: nil,
+          sort: nil,
+          status: nil,
+          window_size: nil,
           request_options: {}
         ); end
 

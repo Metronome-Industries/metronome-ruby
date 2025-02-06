@@ -10,7 +10,7 @@ module Metronome
           request_options: Metronome::RequestOpts
         ).returns(Metronome::CursorPage[Metronome::Models::PlanListResponse])
       end
-      def list(limit:, next_page:, request_options: {}); end
+      def list(limit: nil, next_page: nil, request_options: {}); end
 
       sig do
         params(
@@ -28,7 +28,7 @@ module Metronome
           request_options: Metronome::RequestOpts
         ).returns(Metronome::CursorPage[Metronome::Models::PlanListChargesResponse])
       end
-      def list_charges(plan_id:, limit:, next_page:, request_options: {}); end
+      def list_charges(plan_id:, limit: nil, next_page: nil, request_options: {}); end
 
       sig do
         params(
@@ -39,7 +39,7 @@ module Metronome
           request_options: Metronome::RequestOpts
         ).returns(Metronome::CursorPage[Metronome::Models::PlanListCustomersResponse])
       end
-      def list_customers(plan_id:, limit:, next_page:, status:, request_options: {}); end
+      def list_customers(plan_id:, limit: nil, next_page: nil, status: nil, request_options: {}); end
 
       sig { params(client: Metronome::Client).void }
       def initialize(client:); end

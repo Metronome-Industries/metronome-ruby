@@ -37,11 +37,11 @@ module Metronome
       end
       def create(
         name:,
-        billing_config:,
-        custom_fields:,
-        customer_billing_provider_configurations:,
-        external_id:,
-        ingest_aliases:,
+        billing_config: nil,
+        custom_fields: nil,
+        customer_billing_provider_configurations: nil,
+        external_id: nil,
+        ingest_aliases: nil,
         request_options: {}
       ); end
 
@@ -65,12 +65,12 @@ module Metronome
         ).returns(Metronome::CursorPage[Metronome::Models::CustomerDetail])
       end
       def list(
-        customer_ids:,
-        ingest_alias:,
-        limit:,
-        next_page:,
-        only_archived:,
-        salesforce_account_ids:,
+        customer_ids: nil,
+        ingest_alias: nil,
+        limit: nil,
+        next_page: nil,
+        only_archived: nil,
+        salesforce_account_ids: nil,
         request_options: {}
       ); end
 
@@ -94,10 +94,10 @@ module Metronome
       end
       def list_billable_metrics(
         customer_id:,
-        include_archived:,
-        limit:,
-        next_page:,
-        on_current_plan:,
+        include_archived: nil,
+        limit: nil,
+        next_page: nil,
+        on_current_plan: nil,
         request_options: {}
       )
       end
@@ -112,7 +112,15 @@ module Metronome
           request_options: Metronome::RequestOpts
         ).returns(Metronome::CursorPage[Metronome::Models::CustomerListCostsResponse])
       end
-      def list_costs(customer_id:, ending_before:, starting_on:, limit:, next_page:, request_options: {}); end
+      def list_costs(
+        customer_id:,
+        ending_before:,
+        starting_on:,
+        limit: nil,
+        next_page: nil,
+        request_options: {}
+      )
+      end
 
       sig do
         params(
@@ -142,8 +150,8 @@ module Metronome
       end
       def update_config(
         customer_id:,
-        leave_stripe_invoices_in_draft:,
-        salesforce_account_id:,
+        leave_stripe_invoices_in_draft: nil,
+        salesforce_account_id: nil,
         request_options: {}
       )
       end

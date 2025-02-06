@@ -29,14 +29,14 @@ module Metronome
         name:,
         paid_amount:,
         priority:,
-        credit_grant_type:,
-        custom_fields:,
-        effective_at:,
-        invoice_date:,
-        product_ids:,
-        reason:,
-        rollover_settings:,
-        uniqueness_key:,
+        credit_grant_type: nil,
+        custom_fields: nil,
+        effective_at: nil,
+        invoice_date: nil,
+        product_ids: nil,
+        reason: nil,
+        rollover_settings: nil,
+        uniqueness_key: nil,
         request_options: {}
       ); end
 
@@ -53,13 +53,13 @@ module Metronome
         ).returns(Metronome::CursorPage[Metronome::Models::CreditGrantListResponse])
       end
       def list(
-        limit:,
-        next_page:,
-        credit_grant_ids:,
-        credit_type_ids:,
-        customer_ids:,
-        effective_before:,
-        not_expiring_before:,
+        limit: nil,
+        next_page: nil,
+        credit_grant_ids: nil,
+        credit_type_ids: nil,
+        customer_ids: nil,
+        effective_before: nil,
+        not_expiring_before: nil,
         request_options: {}
       ); end
 
@@ -72,7 +72,7 @@ module Metronome
           request_options: Metronome::RequestOpts
         ).returns(Metronome::Models::CreditGrantEditResponse)
       end
-      def edit(id:, credit_grant_type:, expires_at:, name:, request_options: {}); end
+      def edit(id:, credit_grant_type: nil, expires_at: nil, name: nil, request_options: {}); end
 
       sig do
         params(
@@ -85,14 +85,13 @@ module Metronome
         ).returns(Metronome::Models::CreditGrantListEntriesResponse)
       end
       def list_entries(
-        next_page:,
-        credit_type_ids:,
-        customer_ids:,
-        ending_before:,
-        starting_on:,
+        next_page: nil,
+        credit_type_ids: nil,
+        customer_ids: nil,
+        ending_before: nil,
+        starting_on: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
         params(
@@ -102,7 +101,7 @@ module Metronome
           request_options: Metronome::RequestOpts
         ).returns(Metronome::Models::CreditGrantVoidResponse)
       end
-      def void(id:, release_uniqueness_key:, void_credit_purchase_invoice:, request_options: {}); end
+      def void(id:, release_uniqueness_key: nil, void_credit_purchase_invoice: nil, request_options: {}); end
 
       sig { params(client: Metronome::Client).void }
       def initialize(client:); end

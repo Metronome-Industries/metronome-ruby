@@ -25,16 +25,16 @@ module Metronome
         alert_type:,
         name:,
         threshold:,
-        billable_metric_id:,
-        credit_grant_type_filters:,
-        credit_type_id:,
-        custom_field_filters:,
-        customer_id:,
-        evaluate_on_create:,
-        group_key_filter:,
-        invoice_types_filter:,
-        plan_id:,
-        uniqueness_key:,
+        billable_metric_id: nil,
+        credit_grant_type_filters: nil,
+        credit_type_id: nil,
+        custom_field_filters: nil,
+        customer_id: nil,
+        evaluate_on_create: nil,
+        group_key_filter: nil,
+        invoice_types_filter: nil,
+        plan_id: nil,
+        uniqueness_key: nil,
         request_options: {}
       ); end
 
@@ -45,7 +45,7 @@ module Metronome
           request_options: Metronome::RequestOpts
         ).returns(Metronome::Models::AlertArchiveResponse)
       end
-      def archive(id:, release_uniqueness_key:, request_options: {}); end
+      def archive(id:, release_uniqueness_key: nil, request_options: {}); end
 
       sig { params(client: Metronome::Client).void }
       def initialize(client:); end

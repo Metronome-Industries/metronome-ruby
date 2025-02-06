@@ -18,9 +18,9 @@ module Metronome
         ending_before:,
         starting_on:,
         window_size:,
-        next_page:,
-        billable_metrics:,
-        customer_ids:,
+        next_page: nil,
+        billable_metrics: nil,
+        customer_ids: nil,
         request_options: {}
       ); end
 
@@ -50,12 +50,12 @@ module Metronome
         billable_metric_id:,
         customer_id:,
         window_size:,
-        limit:,
-        next_page:,
-        current_period:,
-        ending_before:,
-        group_by:,
-        starting_on:,
+        limit: nil,
+        next_page: nil,
+        current_period: nil,
+        ending_before: nil,
+        group_by: nil,
+        starting_on: nil,
         request_options: {}
       ); end
 

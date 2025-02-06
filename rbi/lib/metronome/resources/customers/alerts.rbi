@@ -21,7 +21,7 @@ module Metronome
             request_options: Metronome::RequestOpts
           ).returns(Metronome::Models::Customers::AlertListResponse)
         end
-        def list(customer_id:, next_page:, alert_statuses:, request_options: {}); end
+        def list(customer_id:, next_page: nil, alert_statuses: nil, request_options: {}); end
 
         sig { params(alert_id: String, customer_id: String, request_options: Metronome::RequestOpts).void }
         def reset(alert_id:, customer_id:, request_options: {}); end

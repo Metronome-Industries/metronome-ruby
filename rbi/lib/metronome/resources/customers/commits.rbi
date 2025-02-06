@@ -32,18 +32,18 @@ module Metronome
           priority:,
           product_id:,
           type:,
-          applicable_contract_ids:,
-          applicable_product_ids:,
-          applicable_product_tags:,
-          custom_fields:,
-          description:,
-          invoice_contract_id:,
-          invoice_schedule:,
-          name:,
-          netsuite_sales_order_id:,
-          rate_type:,
-          salesforce_opportunity_id:,
-          uniqueness_key:,
+          applicable_contract_ids: nil,
+          applicable_product_ids: nil,
+          applicable_product_tags: nil,
+          custom_fields: nil,
+          description: nil,
+          invoice_contract_id: nil,
+          invoice_schedule: nil,
+          name: nil,
+          netsuite_sales_order_id: nil,
+          rate_type: nil,
+          salesforce_opportunity_id: nil,
+          uniqueness_key: nil,
           request_options: {}
         ); end
 
@@ -64,15 +64,15 @@ module Metronome
         end
         def list(
           customer_id:,
-          commit_id:,
-          covering_date:,
-          effective_before:,
-          include_archived:,
-          include_balance:,
-          include_contract_commits:,
-          include_ledgers:,
-          next_page:,
-          starting_at:,
+          commit_id: nil,
+          covering_date: nil,
+          effective_before: nil,
+          include_archived: nil,
+          include_balance: nil,
+          include_contract_commits: nil,
+          include_ledgers: nil,
+          next_page: nil,
+          starting_at: nil,
           request_options: {}
         ); end
 
@@ -88,8 +88,8 @@ module Metronome
         def update_end_date(
           commit_id:,
           customer_id:,
-          access_ending_before:,
-          invoices_ending_before:,
+          access_ending_before: nil,
+          invoices_ending_before: nil,
           request_options: {}
         )
         end
