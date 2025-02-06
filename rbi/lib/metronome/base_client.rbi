@@ -37,7 +37,7 @@ module Metronome
 
     MAX_REDIRECTS = 20
 
-    sig { params(req: RequestShape).void }
+    sig { params(req: Metronome::BaseClient::RequestShape).void }
     def self.validate!(req); end
 
     # @private
