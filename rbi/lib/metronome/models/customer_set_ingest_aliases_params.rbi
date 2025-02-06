@@ -6,10 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all({customer_id: String, ingest_aliases: T::Array[String]}, Metronome::RequestParameters::Shape)
-      end
-
       sig { returns(String) }
       attr_accessor :customer_id
 
@@ -20,13 +16,21 @@ module Metronome
         params(
           customer_id: String,
           ingest_aliases: T::Array[String],
-          request_options: Metronome::RequestOpts
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(customer_id:, ingest_aliases:, request_options: {}); end
 
-      sig { returns(Metronome::Models::CustomerSetIngestAliasesParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            customer_id: String,
+            ingest_aliases: T::Array[String],
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

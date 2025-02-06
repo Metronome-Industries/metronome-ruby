@@ -10,7 +10,7 @@ module Metronome
           bm_group_key_overrides: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride],
           color_overrides: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride],
           dashboard_options: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption],
-          request_options: Metronome::RequestOpts
+          request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Metronome::Models::DashboardGetEmbeddableURLResponse)
       end
       def get_embeddable_url(

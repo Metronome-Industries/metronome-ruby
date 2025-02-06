@@ -28,7 +28,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Contracts::RateCards::rate_add_many_params
+          def to_hash: -> Metronome::Models::Contracts::RateCards::rate_add_many_params
 
           type rate =
             {
@@ -121,7 +121,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::Contracts::RateCards::RateAddManyParams::rate
+            def to_hash: -> Metronome::Models::Contracts::RateCards::RateAddManyParams::rate
 
             type rate_type =
               :FLAT | :PERCENTAGE | :SUBSCRIPTION | :TIERED | :CUSTOM
@@ -165,7 +165,7 @@ module Metronome
                   | Metronome::BaseModel data
                 ) -> void
 
-              def to_h: -> Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate::commit_rate
+              def to_hash: -> Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate::commit_rate
 
               type rate_type =
                 :FLAT | :PERCENTAGE | :SUBSCRIPTION | :TIERED | :CUSTOM

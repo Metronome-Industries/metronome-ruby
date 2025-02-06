@@ -9,7 +9,7 @@ module Metronome
         (id: String) -> void
         | (?Metronome::Models::id | Metronome::BaseModel data) -> void
 
-      def to_h: -> Metronome::Models::id
+      def to_hash: -> Metronome::Models::id
     end
   end
 end

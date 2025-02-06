@@ -3,32 +3,6 @@
 module Metronome
   module Models
     class Override < Metronome::BaseModel
-      Shape = T.type_alias do
-        {
-          id: String,
-          starting_at: Time,
-          applicable_product_tags: T::Array[String],
-          credit_type: Metronome::Models::CreditTypeData,
-          ending_before: Time,
-          entitled: T::Boolean,
-          is_commit_specific: T::Boolean,
-          is_prorated: T::Boolean,
-          multiplier: Float,
-          override_specifiers: T::Array[Metronome::Models::Override::OverrideSpecifier],
-          override_tiers: T::Array[Metronome::Models::Override::OverrideTier],
-          overwrite_rate: Metronome::Models::Override::OverwriteRate,
-          price: Float,
-          priority: Float,
-          product: Metronome::Models::Override::Product,
-          quantity: Float,
-          rate_type: Symbol,
-          target: Symbol,
-          tiers: T::Array[Metronome::Models::Tier],
-          type: Symbol,
-          value: T::Hash[Symbol, T.anything]
-        }
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -198,22 +172,36 @@ module Metronome
         value: nil
       ); end
 
-      sig { returns(Metronome::Models::Override::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: String,
+            starting_at: Time,
+            applicable_product_tags: T::Array[String],
+            credit_type: Metronome::Models::CreditTypeData,
+            ending_before: Time,
+            entitled: T::Boolean,
+            is_commit_specific: T::Boolean,
+            is_prorated: T::Boolean,
+            multiplier: Float,
+            override_specifiers: T::Array[Metronome::Models::Override::OverrideSpecifier],
+            override_tiers: T::Array[Metronome::Models::Override::OverrideTier],
+            overwrite_rate: Metronome::Models::Override::OverwriteRate,
+            price: Float,
+            priority: Float,
+            product: Metronome::Models::Override::Product,
+            quantity: Float,
+            rate_type: Symbol,
+            target: Symbol,
+            tiers: T::Array[Metronome::Models::Tier],
+            type: Symbol,
+            value: T::Hash[Symbol, T.anything]
+          }
+        )
+      end
+      def to_hash; end
 
       class OverrideSpecifier < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            commit_ids: T::Array[String],
-            presentation_group_values: T::Hash[Symbol, T.nilable(String)],
-            pricing_group_values: T::Hash[Symbol, String],
-            product_id: String,
-            product_tags: T::Array[String],
-            recurring_commit_ids: T::Array[String],
-            recurring_credit_ids: T::Array[String]
-          }
-        end
-
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :commit_ids
 
@@ -277,13 +265,23 @@ module Metronome
           recurring_credit_ids: nil
         ); end
 
-        sig { returns(Metronome::Models::Override::OverrideSpecifier::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              commit_ids: T::Array[String],
+              presentation_group_values: T::Hash[Symbol, T.nilable(String)],
+              pricing_group_values: T::Hash[Symbol, String],
+              product_id: String,
+              product_tags: T::Array[String],
+              recurring_commit_ids: T::Array[String],
+              recurring_credit_ids: T::Array[String]
+            }
+          )
+        end
+        def to_hash; end
       end
 
       class OverrideTier < Metronome::BaseModel
-        Shape = T.type_alias { {multiplier: Float, size: Float} }
-
         sig { returns(Float) }
         attr_accessor :multiplier
 
@@ -296,23 +294,11 @@ module Metronome
         sig { params(multiplier: Float, size: Float).void }
         def initialize(multiplier:, size: nil); end
 
-        sig { returns(Metronome::Models::Override::OverrideTier::Shape) }
-        def to_h; end
+        sig { override.returns({multiplier: Float, size: Float}) }
+        def to_hash; end
       end
 
       class OverwriteRate < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            rate_type: Symbol,
-            credit_type: Metronome::Models::CreditTypeData,
-            custom_rate: T::Hash[Symbol, T.anything],
-            is_prorated: T::Boolean,
-            price: Float,
-            quantity: Float,
-            tiers: T::Array[Metronome::Models::Tier]
-          }
-        end
-
         sig { returns(Symbol) }
         attr_accessor :rate_type
 
@@ -374,8 +360,20 @@ module Metronome
         )
         end
 
-        sig { returns(Metronome::Models::Override::OverwriteRate::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              rate_type: Symbol,
+              credit_type: Metronome::Models::CreditTypeData,
+              custom_rate: T::Hash[Symbol, T.anything],
+              is_prorated: T::Boolean,
+              price: Float,
+              quantity: Float,
+              tiers: T::Array[Metronome::Models::Tier]
+            }
+          )
+        end
+        def to_hash; end
 
         class RateType < Metronome::Enum
           abstract!
@@ -392,8 +390,6 @@ module Metronome
       end
 
       class Product < Metronome::BaseModel
-        Shape = T.type_alias { {id: String, name: String} }
-
         sig { returns(String) }
         attr_accessor :id
 
@@ -403,8 +399,8 @@ module Metronome
         sig { params(id: String, name: String).void }
         def initialize(id:, name:); end
 
-        sig { returns(Metronome::Models::Override::Product::Shape) }
-        def to_h; end
+        sig { override.returns({id: String, name: String}) }
+        def to_hash; end
       end
 
       class RateType < Metronome::Enum

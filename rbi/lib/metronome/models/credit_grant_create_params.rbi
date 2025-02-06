@@ -6,28 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            customer_id: String,
-            expires_at: Time,
-            grant_amount: Metronome::Models::CreditGrantCreateParams::GrantAmount,
-            name: String,
-            paid_amount: Metronome::Models::CreditGrantCreateParams::PaidAmount,
-            priority: Float,
-            credit_grant_type: String,
-            custom_fields: T::Hash[Symbol, String],
-            effective_at: Time,
-            invoice_date: Time,
-            product_ids: T::Array[String],
-            reason: String,
-            rollover_settings: Metronome::Models::CreditGrantCreateParams::RolloverSettings,
-            uniqueness_key: String
-          },
-          Metronome::RequestParameters::Shape
-        )
-      end
-
       sig { returns(String) }
       attr_accessor :customer_id
 
@@ -110,7 +88,7 @@ module Metronome
           reason: String,
           rollover_settings: Metronome::Models::CreditGrantCreateParams::RolloverSettings,
           uniqueness_key: String,
-          request_options: Metronome::RequestOpts
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -131,12 +109,30 @@ module Metronome
         request_options: {}
       ); end
 
-      sig { returns(Metronome::Models::CreditGrantCreateParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            customer_id: String,
+            expires_at: Time,
+            grant_amount: Metronome::Models::CreditGrantCreateParams::GrantAmount,
+            name: String,
+            paid_amount: Metronome::Models::CreditGrantCreateParams::PaidAmount,
+            priority: Float,
+            credit_grant_type: String,
+            custom_fields: T::Hash[Symbol, String],
+            effective_at: Time,
+            invoice_date: Time,
+            product_ids: T::Array[String],
+            reason: String,
+            rollover_settings: Metronome::Models::CreditGrantCreateParams::RolloverSettings,
+            uniqueness_key: String,
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class GrantAmount < Metronome::BaseModel
-        Shape = T.type_alias { {amount: Float, credit_type_id: String} }
-
         sig { returns(Float) }
         attr_accessor :amount
 
@@ -146,13 +142,11 @@ module Metronome
         sig { params(amount: Float, credit_type_id: String).void }
         def initialize(amount:, credit_type_id:); end
 
-        sig { returns(Metronome::Models::CreditGrantCreateParams::GrantAmount::Shape) }
-        def to_h; end
+        sig { override.returns({amount: Float, credit_type_id: String}) }
+        def to_hash; end
       end
 
       class PaidAmount < Metronome::BaseModel
-        Shape = T.type_alias { {amount: Float, credit_type_id: String} }
-
         sig { returns(Float) }
         attr_accessor :amount
 
@@ -162,19 +156,11 @@ module Metronome
         sig { params(amount: Float, credit_type_id: String).void }
         def initialize(amount:, credit_type_id:); end
 
-        sig { returns(Metronome::Models::CreditGrantCreateParams::PaidAmount::Shape) }
-        def to_h; end
+        sig { override.returns({amount: Float, credit_type_id: String}) }
+        def to_hash; end
       end
 
       class RolloverSettings < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            expires_at: Time,
-            priority: Float,
-            rollover_amount: Metronome::Models::CreditGrantCreateParams::RolloverSettings::RolloverAmount::Variants
-          }
-        end
-
         sig { returns(Time) }
         attr_accessor :expires_at
 
@@ -182,7 +168,12 @@ module Metronome
         attr_accessor :priority
 
         sig do
-          returns(Metronome::Models::CreditGrantCreateParams::RolloverSettings::RolloverAmount::Variants)
+          returns(
+            T.any(
+              Metronome::Models::RolloverAmountMaxPercentage,
+              Metronome::Models::RolloverAmountMaxAmount
+            )
+          )
         end
         attr_accessor :rollover_amount
 
@@ -190,20 +181,30 @@ module Metronome
           params(
             expires_at: Time,
             priority: Float,
-            rollover_amount: Metronome::Models::CreditGrantCreateParams::RolloverSettings::RolloverAmount::Variants
+            rollover_amount: T.any(
+              Metronome::Models::RolloverAmountMaxPercentage,
+              Metronome::Models::RolloverAmountMaxAmount
+            )
           ).void
         end
         def initialize(expires_at:, priority:, rollover_amount:); end
 
-        sig { returns(Metronome::Models::CreditGrantCreateParams::RolloverSettings::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              expires_at: Time,
+              priority: Float,
+              rollover_amount: T.any(
+                Metronome::Models::RolloverAmountMaxPercentage,
+                Metronome::Models::RolloverAmountMaxAmount
+              )
+            }
+          )
+        end
+        def to_hash; end
 
         class RolloverAmount < Metronome::Union
           abstract!
-
-          Variants = T.type_alias do
-            T.any(Metronome::Models::RolloverAmountMaxPercentage, Metronome::Models::RolloverAmountMaxAmount)
-          end
 
           sig do
             override.returns(

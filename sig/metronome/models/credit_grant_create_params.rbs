@@ -92,7 +92,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::credit_grant_create_params
+      def to_hash: -> Metronome::Models::credit_grant_create_params
 
       type grant_amount = { amount: Float, credit_type_id: String }
 
@@ -108,7 +108,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::CreditGrantCreateParams::grant_amount
+        def to_hash: -> Metronome::Models::CreditGrantCreateParams::grant_amount
       end
 
       type paid_amount = { amount: Float, credit_type_id: String }
@@ -125,7 +125,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::CreditGrantCreateParams::paid_amount
+        def to_hash: -> Metronome::Models::CreditGrantCreateParams::paid_amount
       end
 
       type rollover_settings =
@@ -153,7 +153,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::CreditGrantCreateParams::rollover_settings
+        def to_hash: -> Metronome::Models::CreditGrantCreateParams::rollover_settings
 
         type rollover_amount =
           Metronome::Models::RolloverAmountMaxPercentage

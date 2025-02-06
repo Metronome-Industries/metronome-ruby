@@ -8,13 +8,6 @@ module Metronome
           extend Metronome::RequestParameters::Converter
           include Metronome::RequestParameters
 
-          Shape = T.type_alias do
-            T.all(
-              {product_order: T::Array[String], rate_card_id: String},
-              Metronome::RequestParameters::Shape
-            )
-          end
-
           sig { returns(T::Array[String]) }
           attr_accessor :product_order
 
@@ -25,13 +18,21 @@ module Metronome
             params(
               product_order: T::Array[String],
               rate_card_id: String,
-              request_options: Metronome::RequestOpts
+              request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
             ).void
           end
           def initialize(product_order:, rate_card_id:, request_options: {}); end
 
-          sig { returns(Metronome::Models::Contracts::RateCards::ProductOrderSetParams::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                product_order: T::Array[String],
+                rate_card_id: String,
+                request_options: Metronome::RequestOptions
+              }
+            )
+          end
+          def to_hash; end
         end
       end
     end

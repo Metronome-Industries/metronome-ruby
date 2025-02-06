@@ -8,19 +8,6 @@ module Metronome
           extend Metronome::RequestParameters::Converter
           include Metronome::RequestParameters
 
-          Shape = T.type_alias do
-            T.all(
-              {
-                at: Time,
-                rate_card_id: String,
-                limit: Integer,
-                next_page: String,
-                selectors: T::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector]
-              },
-              Metronome::RequestParameters::Shape
-            )
-          end
-
           sig { returns(Time) }
           attr_accessor :at
 
@@ -56,25 +43,27 @@ module Metronome
               limit: Integer,
               next_page: String,
               selectors: T::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector],
-              request_options: Metronome::RequestOpts
+              request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
             ).void
           end
           def initialize(at:, rate_card_id:, limit: nil, next_page: nil, selectors: nil, request_options: {})
           end
 
-          sig { returns(Metronome::Models::Contracts::RateCards::RateListParams::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                at: Time,
+                rate_card_id: String,
+                limit: Integer,
+                next_page: String,
+                selectors: T::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector],
+                request_options: Metronome::RequestOptions
+              }
+            )
+          end
+          def to_hash; end
 
           class Selector < Metronome::BaseModel
-            Shape = T.type_alias do
-              {
-                partial_pricing_group_values: T::Hash[Symbol, String],
-                pricing_group_values: T::Hash[Symbol, String],
-                product_id: String,
-                product_tags: T::Array[String]
-              }
-            end
-
             sig { returns(T.nilable(T::Hash[Symbol, String])) }
             attr_reader :partial_pricing_group_values
 
@@ -115,8 +104,17 @@ module Metronome
             )
             end
 
-            sig { returns(Metronome::Models::Contracts::RateCards::RateListParams::Selector::Shape) }
-            def to_h; end
+            sig do
+              override.returns(
+                {
+                  partial_pricing_group_values: T::Hash[Symbol, String],
+                  pricing_group_values: T::Hash[Symbol, String],
+                  product_id: String,
+                  product_tags: T::Array[String]
+                }
+              )
+            end
+            def to_hash; end
           end
         end
       end

@@ -11,7 +11,7 @@ module Metronome
           next_page: String,
           billable_metrics: T::Array[Metronome::Models::UsageListParams::BillableMetric],
           customer_ids: T::Array[String],
-          request_options: Metronome::RequestOpts
+          request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Metronome::Models::UsageListResponse)
       end
       def list(
@@ -27,7 +27,7 @@ module Metronome
       sig do
         params(
           usage: T::Array[Metronome::Models::UsageIngestParams::Usage],
-          request_options: Metronome::RequestOpts
+          request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).void
       end
       def ingest(usage:, request_options: {}); end
@@ -43,7 +43,7 @@ module Metronome
           ending_before: Time,
           group_by: Metronome::Models::UsageListWithGroupsParams::GroupBy,
           starting_on: Time,
-          request_options: Metronome::RequestOpts
+          request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Metronome::CursorPage[Metronome::Models::UsageListWithGroupsResponse])
       end
       def list_with_groups(

@@ -85,7 +85,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::credit_grant_list_response
+      def to_hash: -> Metronome::Models::credit_grant_list_response
 
       type balance =
         {
@@ -112,7 +112,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::CreditGrantListResponse::balance
+        def to_hash: -> Metronome::Models::CreditGrantListResponse::balance
       end
 
       type grant_amount =
@@ -133,7 +133,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::CreditGrantListResponse::grant_amount
+        def to_hash: -> Metronome::Models::CreditGrantListResponse::grant_amount
       end
 
       type paid_amount =
@@ -154,7 +154,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::CreditGrantListResponse::paid_amount
+        def to_hash: -> Metronome::Models::CreditGrantListResponse::paid_amount
       end
 
       type product = { id: String, name: String }
@@ -171,7 +171,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::CreditGrantListResponse::product
+        def to_hash: -> Metronome::Models::CreditGrantListResponse::product
       end
     end
   end

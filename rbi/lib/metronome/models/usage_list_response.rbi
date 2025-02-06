@@ -3,10 +3,6 @@
 module Metronome
   module Models
     class UsageListResponse < Metronome::BaseModel
-      Shape = T.type_alias do
-        {data: T::Array[Metronome::Models::UsageListResponse::Data], next_page: T.nilable(String)}
-      end
-
       sig { returns(T::Array[Metronome::Models::UsageListResponse::Data]) }
       attr_accessor :data
 
@@ -18,22 +14,17 @@ module Metronome
       end
       def initialize(data:, next_page:); end
 
-      sig { returns(Metronome::Models::UsageListResponse::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            data: T::Array[Metronome::Models::UsageListResponse::Data],
+            next_page: T.nilable(String)
+          }
+        )
+      end
+      def to_hash; end
 
       class Data < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            billable_metric_id: String,
-            billable_metric_name: String,
-            customer_id: String,
-            end_timestamp: Time,
-            start_timestamp: Time,
-            value: T.nilable(Float),
-            groups: T::Hash[Symbol, T.nilable(Float)]
-          }
-        end
-
         sig { returns(String) }
         attr_accessor :billable_metric_id
 
@@ -79,8 +70,20 @@ module Metronome
           groups: nil
         ); end
 
-        sig { returns(Metronome::Models::UsageListResponse::Data::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              billable_metric_id: String,
+              billable_metric_name: String,
+              customer_id: String,
+              end_timestamp: Time,
+              start_timestamp: Time,
+              value: T.nilable(Float),
+              groups: T::Hash[Symbol, T.nilable(Float)]
+            }
+          )
+        end
+        def to_hash; end
       end
     end
   end

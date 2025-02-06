@@ -6,24 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            customer_id: String,
-            id: String,
-            covering_date: Time,
-            effective_before: Time,
-            include_archived: T::Boolean,
-            include_balance: T::Boolean,
-            include_contract_balances: T::Boolean,
-            include_ledgers: T::Boolean,
-            next_page: String,
-            starting_at: Time
-          },
-          Metronome::RequestParameters::Shape
-        )
-      end
-
       sig { returns(String) }
       attr_accessor :customer_id
 
@@ -93,7 +75,7 @@ module Metronome
           include_ledgers: T::Boolean,
           next_page: String,
           starting_at: Time,
-          request_options: Metronome::RequestOpts
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -110,8 +92,24 @@ module Metronome
         request_options: {}
       ); end
 
-      sig { returns(Metronome::Models::ContractListBalancesParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            customer_id: String,
+            id: String,
+            covering_date: Time,
+            effective_before: Time,
+            include_archived: T::Boolean,
+            include_balance: T::Boolean,
+            include_contract_balances: T::Boolean,
+            include_ledgers: T::Boolean,
+            next_page: String,
+            starting_at: Time,
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

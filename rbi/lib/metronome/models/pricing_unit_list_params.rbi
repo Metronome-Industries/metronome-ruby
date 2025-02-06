@@ -6,8 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias { T.all({limit: Integer, next_page: String}, Metronome::RequestParameters::Shape) }
-
       sig { returns(T.nilable(Integer)) }
       attr_reader :limit
 
@@ -20,11 +18,19 @@ module Metronome
       sig { params(next_page: String).void }
       attr_writer :next_page
 
-      sig { params(limit: Integer, next_page: String, request_options: Metronome::RequestOpts).void }
+      sig do
+        params(
+          limit: Integer,
+          next_page: String,
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
+        ).void
+      end
       def initialize(limit: nil, next_page: nil, request_options: {}); end
 
-      sig { returns(Metronome::Models::PricingUnitListParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns({limit: Integer, next_page: String, request_options: Metronome::RequestOptions})
+      end
+      def to_hash; end
     end
   end
 end

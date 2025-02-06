@@ -32,7 +32,7 @@ module Metronome
         #   @option params [String] :fiat_credit_type_id The Metronome ID of the credit type to associate with the rate card, defaults to
         #     USD (cents) if not passed.
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Metronome::Models::Contracts::RateCardCreateResponse]
         #
@@ -54,7 +54,7 @@ module Metronome
         #
         #   @option params [String] :id
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Metronome::Models::Contracts::RateCardRetrieveResponse]
         #
@@ -83,7 +83,7 @@ module Metronome
         #
         #   @option params [String] :name Used only in UI/API. It is not exposed to end customers.
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Metronome::Models::Contracts::RateCardUpdateResponse]
         #
@@ -109,7 +109,7 @@ module Metronome
         #
         #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Metronome::CursorPage<Metronome::Models::Contracts::RateCardListResponse>]
         #
@@ -146,7 +146,7 @@ module Metronome
         #     included in the response Passing no selectors will result in all rates being
         #     returned.
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse]
         #

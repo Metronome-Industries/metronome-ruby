@@ -6,28 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            contract_id: String,
-            customer_id: String,
-            starting_at: Time,
-            commits: T::Array[Metronome::Models::ContractAmendParams::Commit],
-            credits: T::Array[Metronome::Models::ContractAmendParams::Credit],
-            custom_fields: T::Hash[Symbol, String],
-            discounts: T::Array[Metronome::Models::ContractAmendParams::Discount],
-            netsuite_sales_order_id: String,
-            overrides: T::Array[Metronome::Models::ContractAmendParams::Override],
-            professional_services: T::Array[Metronome::Models::ContractAmendParams::ProfessionalService],
-            reseller_royalties: T::Array[Metronome::Models::ContractAmendParams::ResellerRoyalty],
-            salesforce_opportunity_id: String,
-            scheduled_charges: T::Array[Metronome::Models::ContractAmendParams::ScheduledCharge],
-            total_contract_value: Float
-          },
-          Metronome::RequestParameters::Shape
-        )
-      end
-
       sig { returns(String) }
       attr_accessor :contract_id
 
@@ -125,7 +103,7 @@ module Metronome
           salesforce_opportunity_id: String,
           scheduled_charges: T::Array[Metronome::Models::ContractAmendParams::ScheduledCharge],
           total_contract_value: Float,
-          request_options: Metronome::RequestOpts
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -146,30 +124,30 @@ module Metronome
         request_options: {}
       ); end
 
-      sig { returns(Metronome::Models::ContractAmendParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            contract_id: String,
+            customer_id: String,
+            starting_at: Time,
+            commits: T::Array[Metronome::Models::ContractAmendParams::Commit],
+            credits: T::Array[Metronome::Models::ContractAmendParams::Credit],
+            custom_fields: T::Hash[Symbol, String],
+            discounts: T::Array[Metronome::Models::ContractAmendParams::Discount],
+            netsuite_sales_order_id: String,
+            overrides: T::Array[Metronome::Models::ContractAmendParams::Override],
+            professional_services: T::Array[Metronome::Models::ContractAmendParams::ProfessionalService],
+            reseller_royalties: T::Array[Metronome::Models::ContractAmendParams::ResellerRoyalty],
+            salesforce_opportunity_id: String,
+            scheduled_charges: T::Array[Metronome::Models::ContractAmendParams::ScheduledCharge],
+            total_contract_value: Float,
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class Commit < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            product_id: String,
-            type: Symbol,
-            access_schedule: Metronome::Models::ContractAmendParams::Commit::AccessSchedule,
-            amount: Float,
-            applicable_product_ids: T::Array[String],
-            applicable_product_tags: T::Array[String],
-            custom_fields: T::Hash[Symbol, String],
-            description: String,
-            invoice_schedule: Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule,
-            name: String,
-            netsuite_sales_order_id: String,
-            priority: Float,
-            rate_type: Symbol,
-            rollover_fraction: Float,
-            temporary_id: String
-          }
-        end
-
         sig { returns(String) }
         attr_accessor :product_id
 
@@ -291,8 +269,28 @@ module Metronome
           temporary_id: nil
         ); end
 
-        sig { returns(Metronome::Models::ContractAmendParams::Commit::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              product_id: String,
+              type: Symbol,
+              access_schedule: Metronome::Models::ContractAmendParams::Commit::AccessSchedule,
+              amount: Float,
+              applicable_product_ids: T::Array[String],
+              applicable_product_tags: T::Array[String],
+              custom_fields: T::Hash[Symbol, String],
+              description: String,
+              invoice_schedule: Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule,
+              name: String,
+              netsuite_sales_order_id: String,
+              priority: Float,
+              rate_type: Symbol,
+              rollover_fraction: Float,
+              temporary_id: String
+            }
+          )
+        end
+        def to_hash; end
 
         class Type < Metronome::Enum
           abstract!
@@ -305,13 +303,6 @@ module Metronome
         end
 
         class AccessSchedule < Metronome::BaseModel
-          Shape = T.type_alias do
-            {
-              schedule_items: T::Array[Metronome::Models::ContractAmendParams::Commit::AccessSchedule::ScheduleItem],
-              credit_type_id: String
-            }
-          end
-
           sig do
             returns(T::Array[Metronome::Models::ContractAmendParams::Commit::AccessSchedule::ScheduleItem])
           end
@@ -331,12 +322,16 @@ module Metronome
           end
           def initialize(schedule_items:, credit_type_id: nil); end
 
-          sig { returns(Metronome::Models::ContractAmendParams::Commit::AccessSchedule::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                schedule_items: T::Array[Metronome::Models::ContractAmendParams::Commit::AccessSchedule::ScheduleItem], credit_type_id: String
+              }
+            )
+          end
+          def to_hash; end
 
           class ScheduleItem < Metronome::BaseModel
-            Shape = T.type_alias { {amount: Float, ending_before: Time, starting_at: Time} }
-
             sig { returns(Float) }
             attr_accessor :amount
 
@@ -349,22 +344,12 @@ module Metronome
             sig { params(amount: Float, ending_before: Time, starting_at: Time).void }
             def initialize(amount:, ending_before:, starting_at:); end
 
-            sig do
-              returns(Metronome::Models::ContractAmendParams::Commit::AccessSchedule::ScheduleItem::Shape)
-            end
-            def to_h; end
+            sig { override.returns({amount: Float, ending_before: Time, starting_at: Time}) }
+            def to_hash; end
           end
         end
 
         class InvoiceSchedule < Metronome::BaseModel
-          Shape = T.type_alias do
-            {
-              credit_type_id: String,
-              recurring_schedule: Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule::RecurringSchedule,
-              schedule_items: T::Array[Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule::ScheduleItem]
-            }
-          end
-
           sig { returns(T.nilable(String)) }
           attr_reader :credit_type_id
 
@@ -404,22 +389,18 @@ module Metronome
           end
           def initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil); end
 
-          sig { returns(Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                credit_type_id: String,
+                recurring_schedule: Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule::RecurringSchedule,
+                schedule_items: T::Array[Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule::ScheduleItem]
+              }
+            )
+          end
+          def to_hash; end
 
           class RecurringSchedule < Metronome::BaseModel
-            Shape = T.type_alias do
-              {
-                amount_distribution: Symbol,
-                ending_before: Time,
-                frequency: Symbol,
-                starting_at: Time,
-                amount: Float,
-                quantity: Float,
-                unit_price: Float
-              }
-            end
-
             sig { returns(Symbol) }
             attr_accessor :amount_distribution
 
@@ -472,9 +453,19 @@ module Metronome
             ); end
 
             sig do
-              returns(Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule::RecurringSchedule::Shape)
+              override.returns(
+                {
+                  amount_distribution: Symbol,
+                  ending_before: Time,
+                  frequency: Symbol,
+                  starting_at: Time,
+                  amount: Float,
+                  quantity: Float,
+                  unit_price: Float
+                }
+              )
             end
-            def to_h; end
+            def to_hash; end
 
             class AmountDistribution < Metronome::Enum
               abstract!
@@ -501,8 +492,6 @@ module Metronome
           end
 
           class ScheduleItem < Metronome::BaseModel
-            Shape = T.type_alias { {timestamp: Time, amount: Float, quantity: Float, unit_price: Float} }
-
             sig { returns(Time) }
             attr_accessor :timestamp
 
@@ -527,10 +516,8 @@ module Metronome
             sig { params(timestamp: Time, amount: Float, quantity: Float, unit_price: Float).void }
             def initialize(timestamp:, amount: nil, quantity: nil, unit_price: nil); end
 
-            sig do
-              returns(Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule::ScheduleItem::Shape)
-            end
-            def to_h; end
+            sig { override.returns({timestamp: Time, amount: Float, quantity: Float, unit_price: Float}) }
+            def to_hash; end
           end
         end
 
@@ -546,21 +533,6 @@ module Metronome
       end
 
       class Credit < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            access_schedule: Metronome::Models::ContractAmendParams::Credit::AccessSchedule,
-            product_id: String,
-            applicable_product_ids: T::Array[String],
-            applicable_product_tags: T::Array[String],
-            custom_fields: T::Hash[Symbol, String],
-            description: String,
-            name: String,
-            netsuite_sales_order_id: String,
-            priority: Float,
-            rate_type: Symbol
-          }
-        end
-
         sig { returns(Metronome::Models::ContractAmendParams::Credit::AccessSchedule) }
         attr_accessor :access_schedule
 
@@ -642,17 +614,25 @@ module Metronome
           rate_type: nil
         ); end
 
-        sig { returns(Metronome::Models::ContractAmendParams::Credit::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              access_schedule: Metronome::Models::ContractAmendParams::Credit::AccessSchedule,
+              product_id: String,
+              applicable_product_ids: T::Array[String],
+              applicable_product_tags: T::Array[String],
+              custom_fields: T::Hash[Symbol, String],
+              description: String,
+              name: String,
+              netsuite_sales_order_id: String,
+              priority: Float,
+              rate_type: Symbol
+            }
+          )
+        end
+        def to_hash; end
 
         class AccessSchedule < Metronome::BaseModel
-          Shape = T.type_alias do
-            {
-              schedule_items: T::Array[Metronome::Models::ContractAmendParams::Credit::AccessSchedule::ScheduleItem],
-              credit_type_id: String
-            }
-          end
-
           sig do
             returns(T::Array[Metronome::Models::ContractAmendParams::Credit::AccessSchedule::ScheduleItem])
           end
@@ -672,12 +652,16 @@ module Metronome
           end
           def initialize(schedule_items:, credit_type_id: nil); end
 
-          sig { returns(Metronome::Models::ContractAmendParams::Credit::AccessSchedule::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                schedule_items: T::Array[Metronome::Models::ContractAmendParams::Credit::AccessSchedule::ScheduleItem], credit_type_id: String
+              }
+            )
+          end
+          def to_hash; end
 
           class ScheduleItem < Metronome::BaseModel
-            Shape = T.type_alias { {amount: Float, ending_before: Time, starting_at: Time} }
-
             sig { returns(Float) }
             attr_accessor :amount
 
@@ -690,10 +674,8 @@ module Metronome
             sig { params(amount: Float, ending_before: Time, starting_at: Time).void }
             def initialize(amount:, ending_before:, starting_at:); end
 
-            sig do
-              returns(Metronome::Models::ContractAmendParams::Credit::AccessSchedule::ScheduleItem::Shape)
-            end
-            def to_h; end
+            sig { override.returns({amount: Float, ending_before: Time, starting_at: Time}) }
+            def to_hash; end
           end
         end
 
@@ -709,16 +691,6 @@ module Metronome
       end
 
       class Discount < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            product_id: String,
-            schedule: Metronome::Models::ContractAmendParams::Discount::Schedule,
-            custom_fields: T::Hash[Symbol, String],
-            name: String,
-            netsuite_sales_order_id: String
-          }
-        end
-
         sig { returns(String) }
         attr_accessor :product_id
 
@@ -755,18 +727,20 @@ module Metronome
         def initialize(product_id:, schedule:, custom_fields: nil, name: nil, netsuite_sales_order_id: nil)
         end
 
-        sig { returns(Metronome::Models::ContractAmendParams::Discount::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              product_id: String,
+              schedule: Metronome::Models::ContractAmendParams::Discount::Schedule,
+              custom_fields: T::Hash[Symbol, String],
+              name: String,
+              netsuite_sales_order_id: String
+            }
+          )
+        end
+        def to_hash; end
 
         class Schedule < Metronome::BaseModel
-          Shape = T.type_alias do
-            {
-              credit_type_id: String,
-              recurring_schedule: Metronome::Models::ContractAmendParams::Discount::Schedule::RecurringSchedule,
-              schedule_items: T::Array[Metronome::Models::ContractAmendParams::Discount::Schedule::ScheduleItem]
-            }
-          end
-
           sig { returns(T.nilable(String)) }
           attr_reader :credit_type_id
 
@@ -802,22 +776,18 @@ module Metronome
           end
           def initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil); end
 
-          sig { returns(Metronome::Models::ContractAmendParams::Discount::Schedule::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                credit_type_id: String,
+                recurring_schedule: Metronome::Models::ContractAmendParams::Discount::Schedule::RecurringSchedule,
+                schedule_items: T::Array[Metronome::Models::ContractAmendParams::Discount::Schedule::ScheduleItem]
+              }
+            )
+          end
+          def to_hash; end
 
           class RecurringSchedule < Metronome::BaseModel
-            Shape = T.type_alias do
-              {
-                amount_distribution: Symbol,
-                ending_before: Time,
-                frequency: Symbol,
-                starting_at: Time,
-                amount: Float,
-                quantity: Float,
-                unit_price: Float
-              }
-            end
-
             sig { returns(Symbol) }
             attr_accessor :amount_distribution
 
@@ -870,9 +840,19 @@ module Metronome
             ); end
 
             sig do
-              returns(Metronome::Models::ContractAmendParams::Discount::Schedule::RecurringSchedule::Shape)
+              override.returns(
+                {
+                  amount_distribution: Symbol,
+                  ending_before: Time,
+                  frequency: Symbol,
+                  starting_at: Time,
+                  amount: Float,
+                  quantity: Float,
+                  unit_price: Float
+                }
+              )
             end
-            def to_h; end
+            def to_hash; end
 
             class AmountDistribution < Metronome::Enum
               abstract!
@@ -899,8 +879,6 @@ module Metronome
           end
 
           class ScheduleItem < Metronome::BaseModel
-            Shape = T.type_alias { {timestamp: Time, amount: Float, quantity: Float, unit_price: Float} }
-
             sig { returns(Time) }
             attr_accessor :timestamp
 
@@ -925,31 +903,13 @@ module Metronome
             sig { params(timestamp: Time, amount: Float, quantity: Float, unit_price: Float).void }
             def initialize(timestamp:, amount: nil, quantity: nil, unit_price: nil); end
 
-            sig { returns(Metronome::Models::ContractAmendParams::Discount::Schedule::ScheduleItem::Shape) }
-            def to_h; end
+            sig { override.returns({timestamp: Time, amount: Float, quantity: Float, unit_price: Float}) }
+            def to_hash; end
           end
         end
       end
 
       class Override < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            starting_at: Time,
-            applicable_product_tags: T::Array[String],
-            ending_before: Time,
-            entitled: T::Boolean,
-            is_commit_specific: T::Boolean,
-            multiplier: Float,
-            override_specifiers: T::Array[Metronome::Models::ContractAmendParams::Override::OverrideSpecifier],
-            overwrite_rate: Metronome::Models::ContractAmendParams::Override::OverwriteRate,
-            priority: Float,
-            product_id: String,
-            target: Symbol,
-            tiers: T::Array[Metronome::Models::ContractAmendParams::Override::Tier],
-            type: Symbol
-          }
-        end
-
         sig { returns(Time) }
         attr_accessor :starting_at
 
@@ -1062,22 +1022,28 @@ module Metronome
           type: nil
         ); end
 
-        sig { returns(Metronome::Models::ContractAmendParams::Override::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              starting_at: Time,
+              applicable_product_tags: T::Array[String],
+              ending_before: Time,
+              entitled: T::Boolean,
+              is_commit_specific: T::Boolean,
+              multiplier: Float,
+              override_specifiers: T::Array[Metronome::Models::ContractAmendParams::Override::OverrideSpecifier],
+              overwrite_rate: Metronome::Models::ContractAmendParams::Override::OverwriteRate,
+              priority: Float,
+              product_id: String,
+              target: Symbol,
+              tiers: T::Array[Metronome::Models::ContractAmendParams::Override::Tier],
+              type: Symbol
+            }
+          )
+        end
+        def to_hash; end
 
         class OverrideSpecifier < Metronome::BaseModel
-          Shape = T.type_alias do
-            {
-              commit_ids: T::Array[String],
-              presentation_group_values: T::Hash[Symbol, String],
-              pricing_group_values: T::Hash[Symbol, String],
-              product_id: String,
-              product_tags: T::Array[String],
-              recurring_commit_ids: T::Array[String],
-              recurring_credit_ids: T::Array[String]
-            }
-          end
-
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :commit_ids
 
@@ -1141,23 +1107,23 @@ module Metronome
             recurring_credit_ids: nil
           ); end
 
-          sig { returns(Metronome::Models::ContractAmendParams::Override::OverrideSpecifier::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                commit_ids: T::Array[String],
+                presentation_group_values: T::Hash[Symbol, String],
+                pricing_group_values: T::Hash[Symbol, String],
+                product_id: String,
+                product_tags: T::Array[String],
+                recurring_commit_ids: T::Array[String],
+                recurring_credit_ids: T::Array[String]
+              }
+            )
+          end
+          def to_hash; end
         end
 
         class OverwriteRate < Metronome::BaseModel
-          Shape = T.type_alias do
-            {
-              rate_type: Symbol,
-              credit_type_id: String,
-              custom_rate: T::Hash[Symbol, T.anything],
-              is_prorated: T::Boolean,
-              price: Float,
-              quantity: Float,
-              tiers: T::Array[Metronome::Models::Tier]
-            }
-          end
-
           sig { returns(Symbol) }
           attr_accessor :rate_type
 
@@ -1219,8 +1185,20 @@ module Metronome
           )
           end
 
-          sig { returns(Metronome::Models::ContractAmendParams::Override::OverwriteRate::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                rate_type: Symbol,
+                credit_type_id: String,
+                custom_rate: T::Hash[Symbol, T.anything],
+                is_prorated: T::Boolean,
+                price: Float,
+                quantity: Float,
+                tiers: T::Array[Metronome::Models::Tier]
+              }
+            )
+          end
+          def to_hash; end
 
           class RateType < Metronome::Enum
             abstract!
@@ -1247,8 +1225,6 @@ module Metronome
         end
 
         class Tier < Metronome::BaseModel
-          Shape = T.type_alias { {multiplier: Float, size: Float} }
-
           sig { returns(Float) }
           attr_accessor :multiplier
 
@@ -1261,8 +1237,8 @@ module Metronome
           sig { params(multiplier: Float, size: Float).void }
           def initialize(multiplier:, size: nil); end
 
-          sig { returns(Metronome::Models::ContractAmendParams::Override::Tier::Shape) }
-          def to_h; end
+          sig { override.returns({multiplier: Float, size: Float}) }
+          def to_hash; end
         end
 
         class Type < Metronome::Enum
@@ -1278,18 +1254,6 @@ module Metronome
       end
 
       class ProfessionalService < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            max_amount: Float,
-            product_id: String,
-            quantity: Float,
-            unit_price: Float,
-            custom_fields: T::Hash[Symbol, String],
-            description: String,
-            netsuite_sales_order_id: String
-          }
-        end
-
         sig { returns(Float) }
         attr_accessor :max_amount
 
@@ -1341,26 +1305,23 @@ module Metronome
           netsuite_sales_order_id: nil
         ); end
 
-        sig { returns(Metronome::Models::ContractAmendParams::ProfessionalService::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              max_amount: Float,
+              product_id: String,
+              quantity: Float,
+              unit_price: Float,
+              custom_fields: T::Hash[Symbol, String],
+              description: String,
+              netsuite_sales_order_id: String
+            }
+          )
+        end
+        def to_hash; end
       end
 
       class ResellerRoyalty < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            reseller_type: Symbol,
-            applicable_product_ids: T::Array[String],
-            applicable_product_tags: T::Array[String],
-            aws_options: Metronome::Models::ContractAmendParams::ResellerRoyalty::AwsOptions,
-            ending_before: T.nilable(Time),
-            fraction: Float,
-            gcp_options: Metronome::Models::ContractAmendParams::ResellerRoyalty::GcpOptions,
-            netsuite_reseller_id: String,
-            reseller_contract_value: Float,
-            starting_at: Time
-          }
-        end
-
         sig { returns(Symbol) }
         attr_accessor :reseller_type
 
@@ -1442,8 +1403,23 @@ module Metronome
           starting_at: nil
         ); end
 
-        sig { returns(Metronome::Models::ContractAmendParams::ResellerRoyalty::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              reseller_type: Symbol,
+              applicable_product_ids: T::Array[String],
+              applicable_product_tags: T::Array[String],
+              aws_options: Metronome::Models::ContractAmendParams::ResellerRoyalty::AwsOptions,
+              ending_before: T.nilable(Time),
+              fraction: Float,
+              gcp_options: Metronome::Models::ContractAmendParams::ResellerRoyalty::GcpOptions,
+              netsuite_reseller_id: String,
+              reseller_contract_value: Float,
+              starting_at: Time
+            }
+          )
+        end
+        def to_hash; end
 
         class ResellerType < Metronome::Enum
           abstract!
@@ -1458,10 +1434,6 @@ module Metronome
         end
 
         class AwsOptions < Metronome::BaseModel
-          Shape = T.type_alias do
-            {aws_account_number: String, aws_offer_id: String, aws_payer_reference_id: String}
-          end
-
           sig { returns(T.nilable(String)) }
           attr_reader :aws_account_number
 
@@ -1485,13 +1457,19 @@ module Metronome
           end
           def initialize(aws_account_number: nil, aws_offer_id: nil, aws_payer_reference_id: nil); end
 
-          sig { returns(Metronome::Models::ContractAmendParams::ResellerRoyalty::AwsOptions::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                aws_account_number: String,
+                aws_offer_id: String,
+                aws_payer_reference_id: String
+              }
+            )
+          end
+          def to_hash; end
         end
 
         class GcpOptions < Metronome::BaseModel
-          Shape = T.type_alias { {gcp_account_id: String, gcp_offer_id: String} }
-
           sig { returns(T.nilable(String)) }
           attr_reader :gcp_account_id
 
@@ -1507,21 +1485,12 @@ module Metronome
           sig { params(gcp_account_id: String, gcp_offer_id: String).void }
           def initialize(gcp_account_id: nil, gcp_offer_id: nil); end
 
-          sig { returns(Metronome::Models::ContractAmendParams::ResellerRoyalty::GcpOptions::Shape) }
-          def to_h; end
+          sig { override.returns({gcp_account_id: String, gcp_offer_id: String}) }
+          def to_hash; end
         end
       end
 
       class ScheduledCharge < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            product_id: String,
-            schedule: Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule,
-            name: String,
-            netsuite_sales_order_id: String
-          }
-        end
-
         sig { returns(String) }
         attr_accessor :product_id
 
@@ -1550,18 +1519,19 @@ module Metronome
         end
         def initialize(product_id:, schedule:, name: nil, netsuite_sales_order_id: nil); end
 
-        sig { returns(Metronome::Models::ContractAmendParams::ScheduledCharge::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              product_id: String,
+              schedule: Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule,
+              name: String,
+              netsuite_sales_order_id: String
+            }
+          )
+        end
+        def to_hash; end
 
         class Schedule < Metronome::BaseModel
-          Shape = T.type_alias do
-            {
-              credit_type_id: String,
-              recurring_schedule: Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule::RecurringSchedule,
-              schedule_items: T::Array[Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule::ScheduleItem]
-            }
-          end
-
           sig { returns(T.nilable(String)) }
           attr_reader :credit_type_id
 
@@ -1601,22 +1571,18 @@ module Metronome
           end
           def initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil); end
 
-          sig { returns(Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                credit_type_id: String,
+                recurring_schedule: Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule::RecurringSchedule,
+                schedule_items: T::Array[Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule::ScheduleItem]
+              }
+            )
+          end
+          def to_hash; end
 
           class RecurringSchedule < Metronome::BaseModel
-            Shape = T.type_alias do
-              {
-                amount_distribution: Symbol,
-                ending_before: Time,
-                frequency: Symbol,
-                starting_at: Time,
-                amount: Float,
-                quantity: Float,
-                unit_price: Float
-              }
-            end
-
             sig { returns(Symbol) }
             attr_accessor :amount_distribution
 
@@ -1669,9 +1635,19 @@ module Metronome
             ); end
 
             sig do
-              returns(Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule::RecurringSchedule::Shape)
+              override.returns(
+                {
+                  amount_distribution: Symbol,
+                  ending_before: Time,
+                  frequency: Symbol,
+                  starting_at: Time,
+                  amount: Float,
+                  quantity: Float,
+                  unit_price: Float
+                }
+              )
             end
-            def to_h; end
+            def to_hash; end
 
             class AmountDistribution < Metronome::Enum
               abstract!
@@ -1698,8 +1674,6 @@ module Metronome
           end
 
           class ScheduleItem < Metronome::BaseModel
-            Shape = T.type_alias { {timestamp: Time, amount: Float, quantity: Float, unit_price: Float} }
-
             sig { returns(Time) }
             attr_accessor :timestamp
 
@@ -1724,10 +1698,8 @@ module Metronome
             sig { params(timestamp: Time, amount: Float, quantity: Float, unit_price: Float).void }
             def initialize(timestamp:, amount: nil, quantity: nil, unit_price: nil); end
 
-            sig do
-              returns(Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule::ScheduleItem::Shape)
-            end
-            def to_h; end
+            sig { override.returns({timestamp: Time, amount: Float, quantity: Float, unit_price: Float}) }
+            def to_hash; end
           end
         end
       end

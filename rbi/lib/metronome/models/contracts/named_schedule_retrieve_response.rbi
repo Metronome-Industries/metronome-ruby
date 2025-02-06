@@ -4,22 +4,18 @@ module Metronome
   module Models
     module Contracts
       class NamedScheduleRetrieveResponse < Metronome::BaseModel
-        Shape = T.type_alias do
-          {data: T::Array[Metronome::Models::Contracts::NamedScheduleRetrieveResponse::Data]}
-        end
-
         sig { returns(T::Array[Metronome::Models::Contracts::NamedScheduleRetrieveResponse::Data]) }
         attr_accessor :data
 
         sig { params(data: T::Array[Metronome::Models::Contracts::NamedScheduleRetrieveResponse::Data]).void }
         def initialize(data:); end
 
-        sig { returns(Metronome::Models::Contracts::NamedScheduleRetrieveResponse::Shape) }
-        def to_h; end
+        sig do
+          override.returns({data: T::Array[Metronome::Models::Contracts::NamedScheduleRetrieveResponse::Data]})
+        end
+        def to_hash; end
 
         class Data < Metronome::BaseModel
-          Shape = T.type_alias { {starting_at: Time, value: T.anything, ending_before: Time} }
-
           sig { returns(Time) }
           attr_accessor :starting_at
 
@@ -35,8 +31,8 @@ module Metronome
           sig { params(starting_at: Time, value: T.anything, ending_before: Time).void }
           def initialize(starting_at:, value:, ending_before: nil); end
 
-          sig { returns(Metronome::Models::Contracts::NamedScheduleRetrieveResponse::Data::Shape) }
-          def to_h; end
+          sig { override.returns({starting_at: Time, value: T.anything, ending_before: Time}) }
+          def to_hash; end
         end
       end
     end

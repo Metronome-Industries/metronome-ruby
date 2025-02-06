@@ -12,7 +12,7 @@ module Metronome
           ?Metronome::Models::contract_list_response | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::contract_list_response
+      def to_hash: -> Metronome::Models::contract_list_response
 
       type data =
         {
@@ -81,7 +81,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::ContractListResponse::data
+        def to_hash: -> Metronome::Models::ContractListResponse::data
 
         type amendment =
           {
@@ -164,7 +164,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::ContractListResponse::Data::amendment
+          def to_hash: -> Metronome::Models::ContractListResponse::Data::amendment
 
           type reseller_royalty =
             {
@@ -241,7 +241,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::ContractListResponse::Data::Amendment::reseller_royalty
+            def to_hash: -> Metronome::Models::ContractListResponse::Data::Amendment::reseller_royalty
 
             type reseller_type =
               :AWS | :AWS_PRO_SERVICE | :GCP | :GCP_PRO_SERVICE
@@ -278,7 +278,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::ContractListResponse::Data::customer_billing_provider_configuration
+          def to_hash: -> Metronome::Models::ContractListResponse::Data::customer_billing_provider_configuration
 
           type billing_provider =
             :aws_marketplace

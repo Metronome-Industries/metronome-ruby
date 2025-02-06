@@ -6,13 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {id: String, credit_grant_type: String, expires_at: Time, name: String},
-          Metronome::RequestParameters::Shape
-        )
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -40,13 +33,23 @@ module Metronome
           credit_grant_type: String,
           expires_at: Time,
           name: String,
-          request_options: Metronome::RequestOpts
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(id:, credit_grant_type: nil, expires_at: nil, name: nil, request_options: {}); end
 
-      sig { returns(Metronome::Models::CreditGrantEditParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: String,
+            credit_grant_type: String,
+            expires_at: Time,
+            name: String,
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

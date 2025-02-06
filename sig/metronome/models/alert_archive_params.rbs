@@ -24,7 +24,7 @@ module Metronome
           ?Metronome::Models::alert_archive_params | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::alert_archive_params
+      def to_hash: -> Metronome::Models::alert_archive_params
     end
   end
 end

@@ -109,7 +109,7 @@ module Metronome
           ?Metronome::Models::contract_amend_params | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::contract_amend_params
+      def to_hash: -> Metronome::Models::contract_amend_params
 
       type commit =
         {
@@ -216,7 +216,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::ContractAmendParams::commit
+        def to_hash: -> Metronome::Models::ContractAmendParams::commit
 
         type type_ = :PREPAID | :POSTPAID
 
@@ -250,7 +250,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::ContractAmendParams::Commit::access_schedule
+          def to_hash: -> Metronome::Models::ContractAmendParams::Commit::access_schedule
 
           type schedule_item =
             { amount: Float, ending_before: Time, starting_at: Time }
@@ -269,7 +269,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::ContractAmendParams::Commit::AccessSchedule::schedule_item
+            def to_hash: -> Metronome::Models::ContractAmendParams::Commit::AccessSchedule::schedule_item
           end
         end
 
@@ -308,7 +308,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::ContractAmendParams::Commit::invoice_schedule
+          def to_hash: -> Metronome::Models::ContractAmendParams::Commit::invoice_schedule
 
           type recurring_schedule =
             {
@@ -357,7 +357,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule::recurring_schedule
+            def to_hash: -> Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule::recurring_schedule
 
             type amount_distribution = :DIVIDED | :DIVIDED_ROUNDED | :EACH
 
@@ -416,7 +416,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule::schedule_item
+            def to_hash: -> Metronome::Models::ContractAmendParams::Commit::InvoiceSchedule::schedule_item
           end
         end
 
@@ -501,7 +501,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::ContractAmendParams::credit
+        def to_hash: -> Metronome::Models::ContractAmendParams::credit
 
         type access_schedule =
           {
@@ -526,7 +526,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::ContractAmendParams::Credit::access_schedule
+          def to_hash: -> Metronome::Models::ContractAmendParams::Credit::access_schedule
 
           type schedule_item =
             { amount: Float, ending_before: Time, starting_at: Time }
@@ -545,7 +545,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::ContractAmendParams::Credit::AccessSchedule::schedule_item
+            def to_hash: -> Metronome::Models::ContractAmendParams::Credit::AccessSchedule::schedule_item
           end
         end
 
@@ -598,7 +598,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::ContractAmendParams::discount
+        def to_hash: -> Metronome::Models::ContractAmendParams::discount
 
         type schedule =
           {
@@ -635,7 +635,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::ContractAmendParams::Discount::schedule
+          def to_hash: -> Metronome::Models::ContractAmendParams::Discount::schedule
 
           type recurring_schedule =
             {
@@ -684,7 +684,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::ContractAmendParams::Discount::Schedule::recurring_schedule
+            def to_hash: -> Metronome::Models::ContractAmendParams::Discount::Schedule::recurring_schedule
 
             type amount_distribution = :DIVIDED | :DIVIDED_ROUNDED | :EACH
 
@@ -743,7 +743,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::ContractAmendParams::Discount::Schedule::schedule_item
+            def to_hash: -> Metronome::Models::ContractAmendParams::Discount::Schedule::schedule_item
           end
         end
       end
@@ -847,7 +847,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::ContractAmendParams::override
+        def to_hash: -> Metronome::Models::ContractAmendParams::override
 
         type override_specifier =
           {
@@ -904,7 +904,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::ContractAmendParams::Override::override_specifier
+          def to_hash: -> Metronome::Models::ContractAmendParams::Override::override_specifier
         end
 
         type overwrite_rate =
@@ -960,7 +960,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::ContractAmendParams::Override::overwrite_rate
+          def to_hash: -> Metronome::Models::ContractAmendParams::Override::overwrite_rate
 
           type rate_type =
             :FLAT | :PERCENTAGE | :SUBSCRIPTION | :TIERED | :CUSTOM
@@ -1001,7 +1001,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::ContractAmendParams::Override::tier
+          def to_hash: -> Metronome::Models::ContractAmendParams::Override::tier
         end
 
         type type_ = :OVERWRITE | :MULTIPLIER | :TIERED
@@ -1062,7 +1062,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::ContractAmendParams::professional_service
+        def to_hash: -> Metronome::Models::ContractAmendParams::professional_service
       end
 
       type reseller_royalty =
@@ -1138,7 +1138,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::ContractAmendParams::reseller_royalty
+        def to_hash: -> Metronome::Models::ContractAmendParams::reseller_royalty
 
         type reseller_type = :AWS | :AWS_PRO_SERVICE | :GCP | :GCP_PRO_SERVICE
 
@@ -1182,7 +1182,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::ContractAmendParams::ResellerRoyalty::aws_options
+          def to_hash: -> Metronome::Models::ContractAmendParams::ResellerRoyalty::aws_options
         end
 
         type gcp_options = { gcp_account_id: String, gcp_offer_id: String }
@@ -1203,7 +1203,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::ContractAmendParams::ResellerRoyalty::gcp_options
+          def to_hash: -> Metronome::Models::ContractAmendParams::ResellerRoyalty::gcp_options
         end
       end
 
@@ -1240,7 +1240,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::ContractAmendParams::scheduled_charge
+        def to_hash: -> Metronome::Models::ContractAmendParams::scheduled_charge
 
         type schedule =
           {
@@ -1277,7 +1277,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::ContractAmendParams::ScheduledCharge::schedule
+          def to_hash: -> Metronome::Models::ContractAmendParams::ScheduledCharge::schedule
 
           type recurring_schedule =
             {
@@ -1326,7 +1326,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule::recurring_schedule
+            def to_hash: -> Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule::recurring_schedule
 
             type amount_distribution = :DIVIDED | :DIVIDED_ROUNDED | :EACH
 
@@ -1385,7 +1385,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule::schedule_item
+            def to_hash: -> Metronome::Models::ContractAmendParams::ScheduledCharge::Schedule::schedule_item
           end
         end
       end

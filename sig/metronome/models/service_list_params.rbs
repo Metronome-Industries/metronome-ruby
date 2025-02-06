@@ -12,7 +12,7 @@ module Metronome
           ?Metronome::Models::service_list_params | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::service_list_params
+      def to_hash: -> Metronome::Models::service_list_params
     end
   end
 end

@@ -22,7 +22,7 @@ module Metronome
           ?Metronome::Models::schedule_duration | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::schedule_duration
+      def to_hash: -> Metronome::Models::schedule_duration
 
       type schedule_item =
         { id: String, amount: Float, ending_before: Time, starting_at: Time }
@@ -48,7 +48,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::ScheduleDuration::schedule_item
+        def to_hash: -> Metronome::Models::ScheduleDuration::schedule_item
       end
     end
   end

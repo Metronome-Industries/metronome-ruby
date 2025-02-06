@@ -4,32 +4,16 @@ module Metronome
   module Models
     module Customers
       class BillingConfigRetrieveResponse < Metronome::BaseModel
-        Shape = T.type_alias { {data: Metronome::Models::Customers::BillingConfigRetrieveResponse::Data} }
-
         sig { returns(Metronome::Models::Customers::BillingConfigRetrieveResponse::Data) }
         attr_accessor :data
 
         sig { params(data: Metronome::Models::Customers::BillingConfigRetrieveResponse::Data).void }
         def initialize(data:); end
 
-        sig { returns(Metronome::Models::Customers::BillingConfigRetrieveResponse::Shape) }
-        def to_h; end
+        sig { override.returns({data: Metronome::Models::Customers::BillingConfigRetrieveResponse::Data}) }
+        def to_hash; end
 
         class Data < Metronome::BaseModel
-          Shape = T.type_alias do
-            {
-              aws_expiration_date: Time,
-              aws_product_code: String,
-              aws_region: Symbol,
-              azure_expiration_date: Time,
-              azure_plan_id: String,
-              azure_start_date: Time,
-              azure_subscription_status: Symbol,
-              billing_provider_customer_id: String,
-              stripe_collection_method: Symbol
-            }
-          end
-
           sig { returns(T.nilable(Time)) }
           attr_reader :aws_expiration_date
 
@@ -109,8 +93,22 @@ module Metronome
             stripe_collection_method: nil
           ); end
 
-          sig { returns(Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                aws_expiration_date: Time,
+                aws_product_code: String,
+                aws_region: Symbol,
+                azure_expiration_date: Time,
+                azure_plan_id: String,
+                azure_start_date: Time,
+                azure_subscription_status: Symbol,
+                billing_provider_customer_id: String,
+                stripe_collection_method: Symbol
+              }
+            )
+          end
+          def to_hash; end
 
           class AwsRegion < Metronome::Enum
             abstract!

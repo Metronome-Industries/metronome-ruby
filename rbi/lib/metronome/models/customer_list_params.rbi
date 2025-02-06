@@ -6,20 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            customer_ids: T::Array[String],
-            ingest_alias: String,
-            limit: Integer,
-            next_page: String,
-            only_archived: T::Boolean,
-            salesforce_account_ids: T::Array[String]
-          },
-          Metronome::RequestParameters::Shape
-        )
-      end
-
       sig { returns(T.nilable(T::Array[String])) }
       attr_reader :customer_ids
 
@@ -64,7 +50,7 @@ module Metronome
           next_page: String,
           only_archived: T::Boolean,
           salesforce_account_ids: T::Array[String],
-          request_options: Metronome::RequestOpts
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -77,8 +63,20 @@ module Metronome
         request_options: {}
       ); end
 
-      sig { returns(Metronome::Models::CustomerListParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            customer_ids: T::Array[String],
+            ingest_alias: String,
+            limit: Integer,
+            next_page: String,
+            only_archived: T::Boolean,
+            salesforce_account_ids: T::Array[String],
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

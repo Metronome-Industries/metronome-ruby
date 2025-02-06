@@ -28,7 +28,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Contracts::RateCards::product_order_update_params
+          def to_hash: -> Metronome::Models::Contracts::RateCards::product_order_update_params
 
           type product_move = { position: Float, product_id: String }
 
@@ -44,7 +44,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::product_move
+            def to_hash: -> Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::product_move
           end
         end
       end

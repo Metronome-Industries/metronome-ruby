@@ -12,7 +12,7 @@ module Metronome
             aws_product_code: String,
             aws_region: Symbol,
             stripe_collection_method: Symbol,
-            request_options: Metronome::RequestOpts
+            request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).void
         end
         def create(
@@ -29,7 +29,7 @@ module Metronome
           params(
             customer_id: String,
             billing_provider_type: Symbol,
-            request_options: Metronome::RequestOpts
+            request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::Models::Customers::BillingConfigRetrieveResponse)
         end
         def retrieve(customer_id:, billing_provider_type:, request_options: {}); end
@@ -38,7 +38,7 @@ module Metronome
           params(
             customer_id: String,
             billing_provider_type: Symbol,
-            request_options: Metronome::RequestOpts
+            request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).void
         end
         def delete(customer_id:, billing_provider_type:, request_options: {}); end

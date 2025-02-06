@@ -7,19 +7,6 @@ module Metronome
         extend Metronome::RequestParameters::Converter
         include Metronome::RequestParameters
 
-        Shape = T.type_alias do
-          T.all(
-            {
-              customer_id: String,
-              schedule_name: String,
-              starting_at: Time,
-              value: T.anything,
-              ending_before: Time
-            },
-            Metronome::RequestParameters::Shape
-          )
-        end
-
         sig { returns(String) }
         attr_accessor :customer_id
 
@@ -45,7 +32,7 @@ module Metronome
             starting_at: Time,
             value: T.anything,
             ending_before: Time,
-            request_options: Metronome::RequestOpts
+            request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
           ).void
         end
         def initialize(
@@ -58,8 +45,19 @@ module Metronome
         )
         end
 
-        sig { returns(Metronome::Models::Customers::NamedScheduleUpdateParams::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              customer_id: String,
+              schedule_name: String,
+              starting_at: Time,
+              value: T.anything,
+              ending_before: Time,
+              request_options: Metronome::RequestOptions
+            }
+          )
+        end
+        def to_hash; end
       end
     end
   end

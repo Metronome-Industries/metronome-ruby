@@ -3,20 +3,16 @@
 module Metronome
   module Models
     class ServiceListResponse < Metronome::BaseModel
-      Shape = T.type_alias { {services: T::Array[Metronome::Models::ServiceListResponse::Service]} }
-
       sig { returns(T::Array[Metronome::Models::ServiceListResponse::Service]) }
       attr_accessor :services
 
       sig { params(services: T::Array[Metronome::Models::ServiceListResponse::Service]).void }
       def initialize(services:); end
 
-      sig { returns(Metronome::Models::ServiceListResponse::Shape) }
-      def to_h; end
+      sig { override.returns({services: T::Array[Metronome::Models::ServiceListResponse::Service]}) }
+      def to_hash; end
 
       class Service < Metronome::BaseModel
-        Shape = T.type_alias { {ips: T::Array[String], name: String, usage: Symbol} }
-
         sig { returns(T::Array[String]) }
         attr_accessor :ips
 
@@ -29,8 +25,8 @@ module Metronome
         sig { params(ips: T::Array[String], name: String, usage: Symbol).void }
         def initialize(ips:, name:, usage:); end
 
-        sig { returns(Metronome::Models::ServiceListResponse::Service::Shape) }
-        def to_h; end
+        sig { override.returns({ips: T::Array[String], name: String, usage: Symbol}) }
+        def to_hash; end
 
         class Usage < Metronome::Enum
           abstract!

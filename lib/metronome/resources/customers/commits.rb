@@ -56,7 +56,7 @@ module Metronome
         #     credit, a new record will not be created and the request will fail with a 409
         #     error.
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Metronome::Models::Customers::CommitCreateResponse]
         #
@@ -97,7 +97,7 @@ module Metronome
         #
         #   @option params [Time] :starting_at Include only commits that have any access on or after the provided date
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Metronome::Models::Customers::CommitListResponse]
         #
@@ -127,7 +127,7 @@ module Metronome
         #   @option params [Time] :invoices_ending_before RFC 3339 timestamp indicating when the commit will stop being invoiced
         #     (exclusive). If not provided, the invoice schedule will not be updated.
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Metronome::Models::Customers::CommitUpdateEndDateResponse]
         #

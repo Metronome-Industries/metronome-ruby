@@ -3,8 +3,6 @@
 module Metronome
   module Models
     class BaseUsageFilter < Metronome::BaseModel
-      Shape = T.type_alias { {group_key: String, group_values: T::Array[String], starting_at: Time} }
-
       sig { returns(String) }
       attr_accessor :group_key
 
@@ -20,8 +18,8 @@ module Metronome
       sig { params(group_key: String, group_values: T::Array[String], starting_at: Time).void }
       def initialize(group_key:, group_values:, starting_at: nil); end
 
-      sig { returns(Metronome::Models::BaseUsageFilter::Shape) }
-      def to_h; end
+      sig { override.returns({group_key: String, group_values: T::Array[String], starting_at: Time}) }
+      def to_hash; end
     end
   end
 end

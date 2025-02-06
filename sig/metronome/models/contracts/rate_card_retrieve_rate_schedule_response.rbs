@@ -22,7 +22,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Contracts::rate_card_retrieve_rate_schedule_response
+        def to_hash: -> Metronome::Models::Contracts::rate_card_retrieve_rate_schedule_response
 
         type data =
           {
@@ -85,7 +85,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::data
+          def to_hash: -> Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::data
 
           type commit_rate =
             {
@@ -116,7 +116,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Data::commit_rate
+            def to_hash: -> Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Data::commit_rate
 
             type rate_type =
               :FLAT | :PERCENTAGE | :SUBSCRIPTION | :TIERED | :CUSTOM

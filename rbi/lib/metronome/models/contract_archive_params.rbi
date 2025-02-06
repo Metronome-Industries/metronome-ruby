@@ -6,13 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {contract_id: String, customer_id: String, void_invoices: T::Boolean},
-          Metronome::RequestParameters::Shape
-        )
-      end
-
       sig { returns(String) }
       attr_accessor :contract_id
 
@@ -27,13 +20,22 @@ module Metronome
           contract_id: String,
           customer_id: String,
           void_invoices: T::Boolean,
-          request_options: Metronome::RequestOpts
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(contract_id:, customer_id:, void_invoices:, request_options: {}); end
 
-      sig { returns(Metronome::Models::ContractArchiveParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            contract_id: String,
+            customer_id: String,
+            void_invoices: T::Boolean,
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

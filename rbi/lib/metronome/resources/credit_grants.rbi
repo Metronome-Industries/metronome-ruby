@@ -19,7 +19,7 @@ module Metronome
           reason: String,
           rollover_settings: Metronome::Models::CreditGrantCreateParams::RolloverSettings,
           uniqueness_key: String,
-          request_options: Metronome::RequestOpts
+          request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Metronome::Models::CreditGrantCreateResponse)
       end
       def create(
@@ -49,7 +49,7 @@ module Metronome
           customer_ids: T::Array[String],
           effective_before: Time,
           not_expiring_before: Time,
-          request_options: Metronome::RequestOpts
+          request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Metronome::CursorPage[Metronome::Models::CreditGrantListResponse])
       end
       def list(
@@ -69,7 +69,7 @@ module Metronome
           credit_grant_type: String,
           expires_at: Time,
           name: String,
-          request_options: Metronome::RequestOpts
+          request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Metronome::Models::CreditGrantEditResponse)
       end
       def edit(id:, credit_grant_type: nil, expires_at: nil, name: nil, request_options: {}); end
@@ -81,7 +81,7 @@ module Metronome
           customer_ids: T::Array[String],
           ending_before: Time,
           starting_on: Time,
-          request_options: Metronome::RequestOpts
+          request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Metronome::Models::CreditGrantListEntriesResponse)
       end
       def list_entries(
@@ -98,7 +98,7 @@ module Metronome
           id: String,
           release_uniqueness_key: T::Boolean,
           void_credit_purchase_invoice: T::Boolean,
-          request_options: Metronome::RequestOpts
+          request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Metronome::Models::CreditGrantVoidResponse)
       end
       def void(id:, release_uniqueness_key: nil, void_credit_purchase_invoice: nil, request_options: {}); end

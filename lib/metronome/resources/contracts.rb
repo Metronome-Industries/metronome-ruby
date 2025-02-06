@@ -80,7 +80,7 @@ module Metronome
       #
       #   @option params [Metronome::Models::ContractCreateParams::UsageStatementSchedule] :usage_statement_schedule
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::ContractCreateResponse]
       #
@@ -109,7 +109,7 @@ module Metronome
       #   @option params [Boolean] :include_ledgers Include commit ledgers in the response. Setting this flag may cause the query to
       #     be slower.
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::ContractRetrieveResponse]
       #
@@ -146,7 +146,7 @@ module Metronome
       #     contracts where effective_at is on or after the provided date. This cannot be
       #     provided if the covering_date filter is provided.
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::ContractListResponse]
       #
@@ -180,7 +180,7 @@ module Metronome
       #   @option params [Time] :timestamp RFC 3339 timestamp indicating when the manual adjustment takes place. If not
       #     provided, it will default to the start of the segment.
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [nil]
       #
@@ -227,7 +227,7 @@ module Metronome
       #
       #   @option params [Float] :total_contract_value This field's availability is dependent on your client's configuration.
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::ContractAmendResponse]
       #
@@ -253,7 +253,7 @@ module Metronome
       #   @option params [Boolean] :void_invoices If false, the existing finalized invoices will remain after the contract is
       #     archived.
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::ContractArchiveResponse]
       #
@@ -276,7 +276,7 @@ module Metronome
       #
       #   @option params [Boolean] :preview
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::ContractCreateHistoricalInvoicesResponse]
       #
@@ -317,7 +317,7 @@ module Metronome
       #
       #   @option params [Time] :starting_at Include only balances that have any access on or after the provided date
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::ContractListBalancesResponse]
       #
@@ -351,7 +351,7 @@ module Metronome
       #     included in the response. Passing no selectors will result in all rates being
       #     returned.
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::ContractRetrieveRateScheduleResponse]
       #
@@ -385,7 +385,7 @@ module Metronome
       #
       #   @option params [Time] :netsuite_invoice_header_start The start date of the invoice header in Netsuite
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::ContractScheduleProServicesInvoiceResponse]
       #
@@ -414,7 +414,7 @@ module Metronome
       #
       #   @option params [Time] :starting_at
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [nil]
       #
@@ -445,7 +445,7 @@ module Metronome
       #   @option params [Time] :ending_before RFC 3339 timestamp indicating when the contract will end (exclusive). If not
       #     provided, the contract will be updated to be open-ended.
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::ContractUpdateEndDateResponse]
       #

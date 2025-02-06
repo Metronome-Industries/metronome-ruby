@@ -64,7 +64,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Contracts::rate_card_list_response
+        def to_hash: -> Metronome::Models::Contracts::rate_card_list_response
 
         type alias_ = { name: String, ending_before: Time, starting_at: Time }
 
@@ -86,7 +86,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Contracts::RateCardListResponse::alias_
+          def to_hash: -> Metronome::Models::Contracts::RateCardListResponse::alias_
         end
 
         type credit_type_conversion =
@@ -110,7 +110,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Contracts::RateCardListResponse::credit_type_conversion
+          def to_hash: -> Metronome::Models::Contracts::RateCardListResponse::credit_type_conversion
         end
       end
     end

@@ -3,17 +3,6 @@
 module Metronome
   module Models
     class ScheduledCharge < Metronome::BaseModel
-      Shape = T.type_alias do
-        {
-          id: String,
-          product: Metronome::Models::ScheduledCharge::Product,
-          schedule: Metronome::Models::SchedulePointInTime,
-          custom_fields: T::Hash[Symbol, String],
-          name: String,
-          netsuite_sales_order_id: String
-        }
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -54,12 +43,21 @@ module Metronome
       def initialize(id:, product:, schedule:, custom_fields: nil, name: nil, netsuite_sales_order_id: nil)
       end
 
-      sig { returns(Metronome::Models::ScheduledCharge::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: String,
+            product: Metronome::Models::ScheduledCharge::Product,
+            schedule: Metronome::Models::SchedulePointInTime,
+            custom_fields: T::Hash[Symbol, String],
+            name: String,
+            netsuite_sales_order_id: String
+          }
+        )
+      end
+      def to_hash; end
 
       class Product < Metronome::BaseModel
-        Shape = T.type_alias { {id: String, name: String} }
-
         sig { returns(String) }
         attr_accessor :id
 
@@ -69,8 +67,8 @@ module Metronome
         sig { params(id: String, name: String).void }
         def initialize(id:, name:); end
 
-        sig { returns(Metronome::Models::ScheduledCharge::Product::Shape) }
-        def to_h; end
+        sig { override.returns({id: String, name: String}) }
+        def to_hash; end
       end
     end
   end

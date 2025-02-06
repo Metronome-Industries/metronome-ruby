@@ -14,7 +14,7 @@ module Metronome
           ?Metronome::Models::invoice_void_response | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::invoice_void_response
+      def to_hash: -> Metronome::Models::invoice_void_response
 
       type data = { id: String }
 
@@ -28,7 +28,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::InvoiceVoidResponse::data
+        def to_hash: -> Metronome::Models::InvoiceVoidResponse::data
       end
     end
   end

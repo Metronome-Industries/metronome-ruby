@@ -34,7 +34,7 @@ module Metronome
           ?Metronome::Models::property_filter | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::property_filter
+      def to_hash: -> Metronome::Models::property_filter
     end
   end
 end

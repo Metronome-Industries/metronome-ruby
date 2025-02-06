@@ -6,13 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {include_archived: T::Boolean, limit: Integer, next_page: String},
-          Metronome::RequestParameters::Shape
-        )
-      end
-
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :include_archived
 
@@ -36,13 +29,22 @@ module Metronome
           include_archived: T::Boolean,
           limit: Integer,
           next_page: String,
-          request_options: Metronome::RequestOpts
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(include_archived: nil, limit: nil, next_page: nil, request_options: {}); end
 
-      sig { returns(Metronome::Models::BillableMetricListParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            include_archived: T::Boolean,
+            limit: Integer,
+            next_page: String,
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

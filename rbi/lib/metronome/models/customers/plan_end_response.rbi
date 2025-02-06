@@ -4,13 +4,11 @@ module Metronome
   module Models
     module Customers
       class PlanEndResponse < Metronome::BaseModel
-        Shape = T.type_alias { {} }
-
         sig { void }
         def initialize; end
 
-        sig { returns(Metronome::Models::Customers::PlanEndResponse::Shape) }
-        def to_h; end
+        sig { override.returns({}) }
+        def to_hash; end
       end
     end
   end

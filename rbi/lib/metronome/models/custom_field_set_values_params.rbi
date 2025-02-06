@@ -6,13 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {custom_fields: T::Hash[Symbol, String], entity: Symbol, entity_id: String},
-          Metronome::RequestParameters::Shape
-        )
-      end
-
       sig { returns(T::Hash[Symbol, String]) }
       attr_accessor :custom_fields
 
@@ -27,13 +20,22 @@ module Metronome
           custom_fields: T::Hash[Symbol, String],
           entity: Symbol,
           entity_id: String,
-          request_options: Metronome::RequestOpts
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(custom_fields:, entity:, entity_id:, request_options: {}); end
 
-      sig { returns(Metronome::Models::CustomFieldSetValuesParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            custom_fields: T::Hash[Symbol, String],
+            entity: Symbol,
+            entity_id: String,
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class Entity < Metronome::Enum
         abstract!

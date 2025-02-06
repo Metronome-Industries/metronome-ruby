@@ -19,7 +19,7 @@ module Metronome
           #   @option params [Time] :covering_date If provided, at most one schedule segment will be returned (the one that covers
           #     this date). If not provided, all segments will be returned.
           #
-          #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+          #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse]
           #
@@ -52,7 +52,7 @@ module Metronome
           #
           #   @option params [Time] :ending_before
           #
-          #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+          #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [nil]
           #

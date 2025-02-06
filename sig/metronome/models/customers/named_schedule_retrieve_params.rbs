@@ -29,7 +29,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Customers::named_schedule_retrieve_params
+        def to_hash: -> Metronome::Models::Customers::named_schedule_retrieve_params
       end
     end
   end

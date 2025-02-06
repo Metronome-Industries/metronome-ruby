@@ -21,7 +21,7 @@ module Metronome
           #     included in the response Passing no selectors will result in all rates being
           #     returned.
           #
-          #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+          #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Metronome::CursorPage<Metronome::Models::Contracts::RateCards::RateListResponse>]
           #
@@ -83,7 +83,7 @@ module Metronome
           #     using list prices rather than the standard rates for this product on the
           #     contract.
           #
-          #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+          #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Metronome::Models::Contracts::RateCards::RateAddResponse]
           #
@@ -106,7 +106,7 @@ module Metronome
           #
           #   @option params [Array<Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate>] :rates
           #
-          #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+          #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Metronome::Models::Contracts::RateCards::RateAddManyResponse]
           #

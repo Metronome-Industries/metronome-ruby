@@ -7,20 +7,6 @@ module Metronome
         extend Metronome::RequestParameters::Converter
         include Metronome::RequestParameters
 
-        Shape = T.type_alias do
-          T.all(
-            {
-              customer_id: String,
-              billing_provider_type: Symbol,
-              billing_provider_customer_id: String,
-              aws_product_code: String,
-              aws_region: Symbol,
-              stripe_collection_method: Symbol
-            },
-            Metronome::RequestParameters::Shape
-          )
-        end
-
         sig { returns(String) }
         attr_accessor :customer_id
 
@@ -56,7 +42,7 @@ module Metronome
             aws_product_code: String,
             aws_region: Symbol,
             stripe_collection_method: Symbol,
-            request_options: Metronome::RequestOpts
+            request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
           ).void
         end
         def initialize(
@@ -69,8 +55,20 @@ module Metronome
           request_options: {}
         ); end
 
-        sig { returns(Metronome::Models::Customers::BillingConfigCreateParams::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              customer_id: String,
+              billing_provider_type: Symbol,
+              billing_provider_customer_id: String,
+              aws_product_code: String,
+              aws_region: Symbol,
+              stripe_collection_method: Symbol,
+              request_options: Metronome::RequestOptions
+            }
+          )
+        end
+        def to_hash; end
 
         class BillingProviderType < Metronome::Enum
           abstract!

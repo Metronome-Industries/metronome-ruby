@@ -62,7 +62,7 @@ module Metronome
         ) -> void
         | (?Metronome::Models::rate | Metronome::BaseModel data) -> void
 
-      def to_h: -> Metronome::Models::rate
+      def to_hash: -> Metronome::Models::rate
 
       type rate_type = :FLAT | :PERCENTAGE | :SUBSCRIPTION | :CUSTOM | :TIERED
 

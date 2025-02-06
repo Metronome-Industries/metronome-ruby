@@ -144,7 +144,7 @@ module Metronome
         ) -> void
         | (?Metronome::Models::commit | Metronome::BaseModel data) -> void
 
-      def to_h: -> Metronome::Models::commit
+      def to_hash: -> Metronome::Models::commit
 
       type product = { id: String, name: String }
 
@@ -159,7 +159,7 @@ module Metronome
             ?Metronome::Models::Commit::product | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Commit::product
+        def to_hash: -> Metronome::Models::Commit::product
       end
 
       type type_ = :PREPAID | :POSTPAID
@@ -182,7 +182,7 @@ module Metronome
             ?Metronome::Models::Commit::contract | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Commit::contract
+        def to_hash: -> Metronome::Models::Commit::contract
       end
 
       type invoice_contract = { id: String }
@@ -197,7 +197,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Commit::invoice_contract
+        def to_hash: -> Metronome::Models::Commit::invoice_contract
       end
 
       type ledger =
@@ -245,7 +245,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Commit::Ledger::prepaid_commit_segment_start_ledger_entry
+          def to_hash: -> Metronome::Models::Commit::Ledger::prepaid_commit_segment_start_ledger_entry
 
           type type_ = :PREPAID_COMMIT_SEGMENT_START
 
@@ -289,7 +289,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Commit::Ledger::prepaid_commit_automated_invoice_deduction_ledger_entry
+          def to_hash: -> Metronome::Models::Commit::Ledger::prepaid_commit_automated_invoice_deduction_ledger_entry
 
           type type_ = :PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
 
@@ -333,7 +333,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Commit::Ledger::prepaid_commit_rollover_ledger_entry
+          def to_hash: -> Metronome::Models::Commit::Ledger::prepaid_commit_rollover_ledger_entry
 
           type type_ = :PREPAID_COMMIT_ROLLOVER
 
@@ -373,7 +373,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Commit::Ledger::prepaid_commit_expiration_ledger_entry
+          def to_hash: -> Metronome::Models::Commit::Ledger::prepaid_commit_expiration_ledger_entry
 
           type type_ = :PREPAID_COMMIT_EXPIRATION
 
@@ -417,7 +417,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Commit::Ledger::prepaid_commit_canceled_ledger_entry
+          def to_hash: -> Metronome::Models::Commit::Ledger::prepaid_commit_canceled_ledger_entry
 
           type type_ = :PREPAID_COMMIT_CANCELED
 
@@ -461,7 +461,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Commit::Ledger::prepaid_commit_credited_ledger_entry
+          def to_hash: -> Metronome::Models::Commit::Ledger::prepaid_commit_credited_ledger_entry
 
           type type_ = :PREPAID_COMMIT_CREDITED
 
@@ -497,7 +497,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Commit::Ledger::postpaid_commit_initial_balance_ledger_entry
+          def to_hash: -> Metronome::Models::Commit::Ledger::postpaid_commit_initial_balance_ledger_entry
 
           type type_ = :POSTPAID_COMMIT_INITIAL_BALANCE
 
@@ -541,7 +541,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Commit::Ledger::postpaid_commit_automated_invoice_deduction_ledger_entry
+          def to_hash: -> Metronome::Models::Commit::Ledger::postpaid_commit_automated_invoice_deduction_ledger_entry
 
           type type_ = :POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
 
@@ -585,7 +585,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Commit::Ledger::postpaid_commit_rollover_ledger_entry
+          def to_hash: -> Metronome::Models::Commit::Ledger::postpaid_commit_rollover_ledger_entry
 
           type type_ = :POSTPAID_COMMIT_ROLLOVER
 
@@ -625,7 +625,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Commit::Ledger::postpaid_commit_trueup_ledger_entry
+          def to_hash: -> Metronome::Models::Commit::Ledger::postpaid_commit_trueup_ledger_entry
 
           type type_ = :POSTPAID_COMMIT_TRUEUP
 
@@ -665,7 +665,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Commit::Ledger::prepaid_commit_manual_ledger_entry
+          def to_hash: -> Metronome::Models::Commit::Ledger::prepaid_commit_manual_ledger_entry
 
           type type_ = :PREPAID_COMMIT_MANUAL
 
@@ -705,7 +705,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Commit::Ledger::postpaid_commit_manual_ledger_entry
+          def to_hash: -> Metronome::Models::Commit::Ledger::postpaid_commit_manual_ledger_entry
 
           type type_ = :POSTPAID_COMMIT_MANUAL
 
@@ -741,7 +741,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Commit::Ledger::postpaid_commit_expiration_ledger_entry
+          def to_hash: -> Metronome::Models::Commit::Ledger::postpaid_commit_expiration_ledger_entry
 
           type type_ = :POSTPAID_COMMIT_EXPIRATION
 
@@ -778,7 +778,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Commit::rolled_over_from
+        def to_hash: -> Metronome::Models::Commit::rolled_over_from
       end
     end
   end

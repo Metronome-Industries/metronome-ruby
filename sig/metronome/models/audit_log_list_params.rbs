@@ -59,7 +59,7 @@ module Metronome
           ?Metronome::Models::audit_log_list_params | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::audit_log_list_params
+      def to_hash: -> Metronome::Models::audit_log_list_params
 
       type sort = :date_asc | :date_desc
 

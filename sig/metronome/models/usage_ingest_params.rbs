@@ -19,7 +19,7 @@ module Metronome
           ?Metronome::Models::usage_ingest_params | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::usage_ingest_params
+      def to_hash: -> Metronome::Models::usage_ingest_params
 
       type usage =
         {
@@ -56,7 +56,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::UsageIngestParams::usage
+        def to_hash: -> Metronome::Models::UsageIngestParams::usage
       end
     end
   end

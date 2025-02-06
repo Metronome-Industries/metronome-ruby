@@ -173,7 +173,7 @@ module Metronome
             ?Metronome::Models::Customers::invoice | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Customers::invoice
+        def to_hash: -> Metronome::Models::Customers::invoice
 
         type line_item =
           {
@@ -408,7 +408,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Customers::Invoice::line_item
+          def to_hash: -> Metronome::Models::Customers::Invoice::line_item
 
           type applied_commit_or_credit =
             {
@@ -431,7 +431,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::Customers::Invoice::LineItem::applied_commit_or_credit
+            def to_hash: -> Metronome::Models::Customers::Invoice::LineItem::applied_commit_or_credit
 
             type type_ = :PREPAID | :POSTPAID | :CREDIT
 
@@ -456,7 +456,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::Customers::Invoice::LineItem::postpaid_commit
+            def to_hash: -> Metronome::Models::Customers::Invoice::LineItem::postpaid_commit
           end
 
           type reseller_type = :AWS | :AWS_PRO_SERVICE | :GCP | :GCP_PRO_SERVICE
@@ -545,7 +545,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::Customers::Invoice::LineItem::sub_line_item
+            def to_hash: -> Metronome::Models::Customers::Invoice::LineItem::sub_line_item
 
             type tier_period = { starting_at: Time, ending_before: Time }
 
@@ -563,7 +563,7 @@ module Metronome
                   | Metronome::BaseModel data
                 ) -> void
 
-              def to_h: -> Metronome::Models::Customers::Invoice::LineItem::SubLineItem::tier_period
+              def to_hash: -> Metronome::Models::Customers::Invoice::LineItem::SubLineItem::tier_period
             end
 
             type tier =
@@ -595,7 +595,7 @@ module Metronome
                   | Metronome::BaseModel data
                 ) -> void
 
-              def to_h: -> Metronome::Models::Customers::Invoice::LineItem::SubLineItem::tier
+              def to_hash: -> Metronome::Models::Customers::Invoice::LineItem::SubLineItem::tier
             end
           end
 
@@ -615,7 +615,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::Customers::Invoice::LineItem::tier
+            def to_hash: -> Metronome::Models::Customers::Invoice::LineItem::tier
           end
         end
 
@@ -661,7 +661,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Customers::Invoice::correction_record
+          def to_hash: -> Metronome::Models::Customers::Invoice::correction_record
 
           type corrected_external_invoice =
             {
@@ -700,7 +700,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::Customers::Invoice::CorrectionRecord::corrected_external_invoice
+            def to_hash: -> Metronome::Models::Customers::Invoice::CorrectionRecord::corrected_external_invoice
 
             type billing_provider_type =
               :aws_marketplace
@@ -793,7 +793,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Customers::Invoice::external_invoice
+          def to_hash: -> Metronome::Models::Customers::Invoice::external_invoice
 
           type billing_provider_type =
             :aws_marketplace
@@ -885,7 +885,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Customers::Invoice::invoice_adjustment
+          def to_hash: -> Metronome::Models::Customers::Invoice::invoice_adjustment
         end
 
         type reseller_royalty =
@@ -929,7 +929,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Customers::Invoice::reseller_royalty
+          def to_hash: -> Metronome::Models::Customers::Invoice::reseller_royalty
 
           type reseller_type = :AWS | :AWS_PRO_SERVICE | :GCP | :GCP_PRO_SERVICE
 
@@ -973,7 +973,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::Customers::Invoice::ResellerRoyalty::aws_options
+            def to_hash: -> Metronome::Models::Customers::Invoice::ResellerRoyalty::aws_options
           end
 
           type gcp_options = { gcp_account_id: String, gcp_offer_id: String }
@@ -994,7 +994,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::Customers::Invoice::ResellerRoyalty::gcp_options
+            def to_hash: -> Metronome::Models::Customers::Invoice::ResellerRoyalty::gcp_options
           end
         end
       end

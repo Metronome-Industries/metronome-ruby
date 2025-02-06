@@ -6,20 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            ending_before: Time,
-            starting_on: Time,
-            window_size: Symbol,
-            next_page: String,
-            billable_metrics: T::Array[Metronome::Models::UsageListParams::BillableMetric],
-            customer_ids: T::Array[String]
-          },
-          Metronome::RequestParameters::Shape
-        )
-      end
-
       sig { returns(Time) }
       attr_accessor :ending_before
 
@@ -55,7 +41,7 @@ module Metronome
           next_page: String,
           billable_metrics: T::Array[Metronome::Models::UsageListParams::BillableMetric],
           customer_ids: T::Array[String],
-          request_options: Metronome::RequestOpts
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -68,8 +54,20 @@ module Metronome
         request_options: {}
       ); end
 
-      sig { returns(Metronome::Models::UsageListParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            ending_before: Time,
+            starting_on: Time,
+            window_size: Symbol,
+            next_page: String,
+            billable_metrics: T::Array[Metronome::Models::UsageListParams::BillableMetric],
+            customer_ids: T::Array[String],
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class WindowSize < Metronome::Enum
         abstract!
@@ -83,10 +81,6 @@ module Metronome
       end
 
       class BillableMetric < Metronome::BaseModel
-        Shape = T.type_alias do
-          {id: String, group_by: Metronome::Models::UsageListParams::BillableMetric::GroupBy}
-        end
-
         sig { returns(String) }
         attr_accessor :id
 
@@ -99,12 +93,17 @@ module Metronome
         sig { params(id: String, group_by: Metronome::Models::UsageListParams::BillableMetric::GroupBy).void }
         def initialize(id:, group_by: nil); end
 
-        sig { returns(Metronome::Models::UsageListParams::BillableMetric::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              id: String,
+              group_by: Metronome::Models::UsageListParams::BillableMetric::GroupBy
+            }
+          )
+        end
+        def to_hash; end
 
         class GroupBy < Metronome::BaseModel
-          Shape = T.type_alias { {key: String, values: T::Array[String]} }
-
           sig { returns(String) }
           attr_accessor :key
 
@@ -117,8 +116,8 @@ module Metronome
           sig { params(key: String, values: T::Array[String]).void }
           def initialize(key:, values: nil); end
 
-          sig { returns(Metronome::Models::UsageListParams::BillableMetric::GroupBy::Shape) }
-          def to_h; end
+          sig { override.returns({key: String, values: T::Array[String]}) }
+          def to_hash; end
         end
       end
     end

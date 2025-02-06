@@ -4,20 +4,6 @@ module Metronome
   module Models
     module Contracts
       class RateCardListResponse < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            id: String,
-            created_at: Time,
-            created_by: String,
-            name: String,
-            aliases: T::Array[Metronome::Models::Contracts::RateCardListResponse::Alias],
-            credit_type_conversions: T::Array[Metronome::Models::Contracts::RateCardListResponse::CreditTypeConversion],
-            custom_fields: T::Hash[Symbol, String],
-            description: String,
-            fiat_credit_type: Metronome::Models::CreditTypeData
-          }
-        end
-
         sig { returns(String) }
         attr_accessor :id
 
@@ -91,12 +77,24 @@ module Metronome
           fiat_credit_type: nil
         ); end
 
-        sig { returns(Metronome::Models::Contracts::RateCardListResponse::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              id: String,
+              created_at: Time,
+              created_by: String,
+              name: String,
+              aliases: T::Array[Metronome::Models::Contracts::RateCardListResponse::Alias],
+              credit_type_conversions: T::Array[Metronome::Models::Contracts::RateCardListResponse::CreditTypeConversion],
+              custom_fields: T::Hash[Symbol, String],
+              description: String,
+              fiat_credit_type: Metronome::Models::CreditTypeData
+            }
+          )
+        end
+        def to_hash; end
 
         class Alias < Metronome::BaseModel
-          Shape = T.type_alias { {name: String, ending_before: Time, starting_at: Time} }
-
           sig { returns(String) }
           attr_accessor :name
 
@@ -115,15 +113,11 @@ module Metronome
           sig { params(name: String, ending_before: Time, starting_at: Time).void }
           def initialize(name:, ending_before: nil, starting_at: nil); end
 
-          sig { returns(Metronome::Models::Contracts::RateCardListResponse::Alias::Shape) }
-          def to_h; end
+          sig { override.returns({name: String, ending_before: Time, starting_at: Time}) }
+          def to_hash; end
         end
 
         class CreditTypeConversion < Metronome::BaseModel
-          Shape = T.type_alias do
-            {custom_credit_type: Metronome::Models::CreditTypeData, fiat_per_custom_credit: String}
-          end
-
           sig { returns(Metronome::Models::CreditTypeData) }
           attr_accessor :custom_credit_type
 
@@ -135,8 +129,15 @@ module Metronome
           end
           def initialize(custom_credit_type:, fiat_per_custom_credit:); end
 
-          sig { returns(Metronome::Models::Contracts::RateCardListResponse::CreditTypeConversion::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                custom_credit_type: Metronome::Models::CreditTypeData,
+                fiat_per_custom_credit: String
+              }
+            )
+          end
+          def to_hash; end
         end
       end
     end

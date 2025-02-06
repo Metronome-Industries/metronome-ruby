@@ -52,7 +52,7 @@ module Metronome
         #
         #   @option params [Array<String>] :tags
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Metronome::Models::Contracts::ProductCreateResponse]
         #
@@ -73,7 +73,7 @@ module Metronome
         #
         #   @option params [String] :id
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Metronome::Models::Contracts::ProductRetrieveResponse]
         #
@@ -145,7 +145,7 @@ module Metronome
         #
         #   @option params [Array<String>] :tags If not provided, defaults to product's current tags
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Metronome::Models::Contracts::ProductUpdateResponse]
         #
@@ -170,7 +170,7 @@ module Metronome
         #
         #   @option params [Symbol, Metronome::Models::Contracts::ProductListParams::ArchiveFilter] :archive_filter Body param: Filter options for the product list
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Metronome::CursorPage<Metronome::Models::Contracts::ProductListResponse>]
         #
@@ -194,7 +194,7 @@ module Metronome
         #
         #   @option params [String] :product_id ID of the product to be archived
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Metronome::Models::Contracts::ProductArchiveResponse]
         #

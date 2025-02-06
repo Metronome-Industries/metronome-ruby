@@ -3,10 +3,6 @@
 module Metronome
   module Models
     class PropertyFilter < Metronome::BaseModel
-      Shape = T.type_alias do
-        {name: String, exists: T::Boolean, in_values: T::Array[String], not_in_values: T::Array[String]}
-      end
-
       sig { returns(String) }
       attr_accessor :name
 
@@ -38,8 +34,17 @@ module Metronome
       end
       def initialize(name:, exists: nil, in_values: nil, not_in_values: nil); end
 
-      sig { returns(Metronome::Models::PropertyFilter::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            name: String,
+            exists: T::Boolean,
+            in_values: T::Array[String],
+            not_in_values: T::Array[String]
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

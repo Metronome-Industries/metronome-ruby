@@ -53,7 +53,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Customers::billing_config_create_params
+        def to_hash: -> Metronome::Models::Customers::billing_config_create_params
 
         type billing_provider_type =
           :aws_marketplace

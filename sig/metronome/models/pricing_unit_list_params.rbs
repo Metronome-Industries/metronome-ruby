@@ -26,7 +26,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::pricing_unit_list_params
+      def to_hash: -> Metronome::Models::pricing_unit_list_params
     end
   end
 end

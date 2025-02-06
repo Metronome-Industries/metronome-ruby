@@ -46,7 +46,7 @@ module Metronome
       #     with a previously used uniqueness key, a new record will not be created and the
       #     request will fail with a 409 error.
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::AlertCreateResponse]
       #
@@ -69,7 +69,7 @@ module Metronome
       #
       #   @option params [Boolean] :release_uniqueness_key If true, resets the uniqueness key on this alert so it can be re-used
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::AlertArchiveResponse]
       #

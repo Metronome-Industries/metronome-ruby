@@ -13,7 +13,7 @@ module Metronome
         (price: Float, size: Float) -> void
         | (?Metronome::Models::tier | Metronome::BaseModel data) -> void
 
-      def to_h: -> Metronome::Models::tier
+      def to_hash: -> Metronome::Models::tier
     end
   end
 end

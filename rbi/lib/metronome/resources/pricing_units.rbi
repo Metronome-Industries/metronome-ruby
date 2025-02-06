@@ -7,7 +7,7 @@ module Metronome
         params(
           limit: Integer,
           next_page: String,
-          request_options: Metronome::RequestOpts
+          request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Metronome::CursorPage[Metronome::Models::PricingUnitListResponse])
       end
       def list(limit: nil, next_page: nil, request_options: {}); end

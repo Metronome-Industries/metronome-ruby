@@ -46,7 +46,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::contract_schedule_pro_services_invoice_params
+      def to_hash: -> Metronome::Models::contract_schedule_pro_services_invoice_params
 
       type line_item =
         {
@@ -107,7 +107,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::ContractScheduleProServicesInvoiceParams::line_item
+        def to_hash: -> Metronome::Models::ContractScheduleProServicesInvoiceParams::line_item
       end
     end
   end

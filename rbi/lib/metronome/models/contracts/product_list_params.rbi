@@ -7,13 +7,6 @@ module Metronome
         extend Metronome::RequestParameters::Converter
         include Metronome::RequestParameters
 
-        Shape = T.type_alias do
-          T.all(
-            {limit: Integer, next_page: String, archive_filter: Symbol},
-            Metronome::RequestParameters::Shape
-          )
-        end
-
         sig { returns(T.nilable(Integer)) }
         attr_reader :limit
 
@@ -37,13 +30,22 @@ module Metronome
             limit: Integer,
             next_page: String,
             archive_filter: Symbol,
-            request_options: Metronome::RequestOpts
+            request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
           ).void
         end
         def initialize(limit: nil, next_page: nil, archive_filter: nil, request_options: {}); end
 
-        sig { returns(Metronome::Models::Contracts::ProductListParams::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              limit: Integer,
+              next_page: String,
+              archive_filter: Symbol,
+              request_options: Metronome::RequestOptions
+            }
+          )
+        end
+        def to_hash; end
 
         class ArchiveFilter < Metronome::Enum
           abstract!

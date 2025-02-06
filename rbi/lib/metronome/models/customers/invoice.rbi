@@ -4,39 +4,6 @@ module Metronome
   module Models
     module Customers
       class Invoice < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            id: String,
-            credit_type: Metronome::Models::CreditTypeData,
-            customer_id: String,
-            line_items: T::Array[Metronome::Models::Customers::Invoice::LineItem],
-            status: String,
-            total: Float,
-            type: String,
-            amendment_id: String,
-            billable_status: Symbol,
-            contract_custom_fields: T::Hash[Symbol, String],
-            contract_id: String,
-            correction_record: Metronome::Models::Customers::Invoice::CorrectionRecord,
-            created_at: Time,
-            custom_fields: T::Hash[Symbol, T.anything],
-            customer_custom_fields: T::Hash[Symbol, String],
-            end_timestamp: Time,
-            external_invoice: T.nilable(Metronome::Models::Customers::Invoice::ExternalInvoice),
-            invoice_adjustments: T::Array[Metronome::Models::Customers::Invoice::InvoiceAdjustment],
-            issued_at: Time,
-            net_payment_terms_days: Float,
-            netsuite_sales_order_id: String,
-            plan_custom_fields: T::Hash[Symbol, String],
-            plan_id: String,
-            plan_name: String,
-            reseller_royalty: Metronome::Models::Customers::Invoice::ResellerRoyalty,
-            salesforce_opportunity_id: String,
-            start_timestamp: Time,
-            subtotal: Float
-          }
-        end
-
         sig { returns(String) }
         attr_accessor :id
 
@@ -246,51 +213,43 @@ module Metronome
           subtotal: nil
         ); end
 
-        sig { returns(Metronome::Models::Customers::Invoice::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              id: String,
+              credit_type: Metronome::Models::CreditTypeData,
+              customer_id: String,
+              line_items: T::Array[Metronome::Models::Customers::Invoice::LineItem],
+              status: String,
+              total: Float,
+              type: String,
+              amendment_id: String,
+              billable_status: Symbol,
+              contract_custom_fields: T::Hash[Symbol, String],
+              contract_id: String,
+              correction_record: Metronome::Models::Customers::Invoice::CorrectionRecord,
+              created_at: Time,
+              custom_fields: T::Hash[Symbol, T.anything],
+              customer_custom_fields: T::Hash[Symbol, String],
+              end_timestamp: Time,
+              external_invoice: T.nilable(Metronome::Models::Customers::Invoice::ExternalInvoice),
+              invoice_adjustments: T::Array[Metronome::Models::Customers::Invoice::InvoiceAdjustment],
+              issued_at: Time,
+              net_payment_terms_days: Float,
+              netsuite_sales_order_id: String,
+              plan_custom_fields: T::Hash[Symbol, String],
+              plan_id: String,
+              plan_name: String,
+              reseller_royalty: Metronome::Models::Customers::Invoice::ResellerRoyalty,
+              salesforce_opportunity_id: String,
+              start_timestamp: Time,
+              subtotal: Float
+            }
+          )
+        end
+        def to_hash; end
 
         class LineItem < Metronome::BaseModel
-          Shape = T.type_alias do
-            {
-              credit_type: Metronome::Models::CreditTypeData,
-              name: String,
-              total: Float,
-              applied_commit_or_credit: Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit,
-              commit_custom_fields: T::Hash[Symbol, String],
-              commit_id: String,
-              commit_netsuite_item_id: String,
-              commit_netsuite_sales_order_id: String,
-              commit_segment_id: String,
-              commit_type: String,
-              custom_fields: T::Hash[Symbol, String],
-              ending_before: Time,
-              group_key: String,
-              group_value: T.nilable(String),
-              is_prorated: T::Boolean,
-              list_price: Metronome::Models::Rate,
-              metadata: String,
-              netsuite_invoice_billing_end: Time,
-              netsuite_invoice_billing_start: Time,
-              netsuite_item_id: String,
-              postpaid_commit: Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit,
-              presentation_group_values: T::Hash[Symbol, T.nilable(String)],
-              pricing_group_values: T::Hash[Symbol, String],
-              product_custom_fields: T::Hash[Symbol, String],
-              product_id: String,
-              product_type: String,
-              professional_service_custom_fields: T::Hash[Symbol, String],
-              professional_service_id: String,
-              quantity: Float,
-              reseller_type: Symbol,
-              scheduled_charge_custom_fields: T::Hash[Symbol, String],
-              scheduled_charge_id: String,
-              starting_at: Time,
-              sub_line_items: T::Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem],
-              tier: Metronome::Models::Customers::Invoice::LineItem::Tier,
-              unit_price: Float
-            }
-          end
-
           sig { returns(Metronome::Models::CreditTypeData) }
           attr_accessor :credit_type
 
@@ -580,12 +539,51 @@ module Metronome
             unit_price: nil
           ); end
 
-          sig { returns(Metronome::Models::Customers::Invoice::LineItem::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                credit_type: Metronome::Models::CreditTypeData,
+                name: String,
+                total: Float,
+                applied_commit_or_credit: Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit,
+                commit_custom_fields: T::Hash[Symbol, String],
+                commit_id: String,
+                commit_netsuite_item_id: String,
+                commit_netsuite_sales_order_id: String,
+                commit_segment_id: String,
+                commit_type: String,
+                custom_fields: T::Hash[Symbol, String],
+                ending_before: Time,
+                group_key: String,
+                group_value: T.nilable(String),
+                is_prorated: T::Boolean,
+                list_price: Metronome::Models::Rate,
+                metadata: String,
+                netsuite_invoice_billing_end: Time,
+                netsuite_invoice_billing_start: Time,
+                netsuite_item_id: String,
+                postpaid_commit: Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit,
+                presentation_group_values: T::Hash[Symbol, T.nilable(String)],
+                pricing_group_values: T::Hash[Symbol, String],
+                product_custom_fields: T::Hash[Symbol, String],
+                product_id: String,
+                product_type: String,
+                professional_service_custom_fields: T::Hash[Symbol, String],
+                professional_service_id: String,
+                quantity: Float,
+                reseller_type: Symbol,
+                scheduled_charge_custom_fields: T::Hash[Symbol, String],
+                scheduled_charge_id: String,
+                starting_at: Time,
+                sub_line_items: T::Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem],
+                tier: Metronome::Models::Customers::Invoice::LineItem::Tier,
+                unit_price: Float
+              }
+            )
+          end
+          def to_hash; end
 
           class AppliedCommitOrCredit < Metronome::BaseModel
-            Shape = T.type_alias { {id: String, type: Symbol} }
-
             sig { returns(String) }
             attr_accessor :id
 
@@ -595,8 +593,8 @@ module Metronome
             sig { params(id: String, type: Symbol).void }
             def initialize(id:, type:); end
 
-            sig { returns(Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit::Shape) }
-            def to_h; end
+            sig { override.returns({id: String, type: Symbol}) }
+            def to_hash; end
 
             class Type < Metronome::Enum
               abstract!
@@ -611,16 +609,14 @@ module Metronome
           end
 
           class PostpaidCommit < Metronome::BaseModel
-            Shape = T.type_alias { {id: String} }
-
             sig { returns(String) }
             attr_accessor :id
 
             sig { params(id: String).void }
             def initialize(id:); end
 
-            sig { returns(Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit::Shape) }
-            def to_h; end
+            sig { override.returns({id: String}) }
+            def to_hash; end
           end
 
           class ResellerType < Metronome::Enum
@@ -636,22 +632,6 @@ module Metronome
           end
 
           class SubLineItem < Metronome::BaseModel
-            Shape = T.type_alias do
-              {
-                custom_fields: T::Hash[Symbol, String],
-                name: String,
-                quantity: Float,
-                subtotal: Float,
-                charge_id: String,
-                credit_grant_id: String,
-                end_date: Time,
-                price: Float,
-                start_date: Time,
-                tier_period: Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod,
-                tiers: T::Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]
-              }
-            end
-
             sig { returns(T::Hash[Symbol, String]) }
             attr_accessor :custom_fields
 
@@ -743,12 +723,26 @@ module Metronome
               tiers: nil
             ); end
 
-            sig { returns(Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Shape) }
-            def to_h; end
+            sig do
+              override.returns(
+                {
+                  custom_fields: T::Hash[Symbol, String],
+                  name: String,
+                  quantity: Float,
+                  subtotal: Float,
+                  charge_id: String,
+                  credit_grant_id: String,
+                  end_date: Time,
+                  price: Float,
+                  start_date: Time,
+                  tier_period: Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod,
+                  tiers: T::Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]
+                }
+              )
+            end
+            def to_hash; end
 
             class TierPeriod < Metronome::BaseModel
-              Shape = T.type_alias { {starting_at: Time, ending_before: Time} }
-
               sig { returns(Time) }
               attr_accessor :starting_at
 
@@ -761,13 +755,11 @@ module Metronome
               sig { params(starting_at: Time, ending_before: Time).void }
               def initialize(starting_at:, ending_before: nil); end
 
-              sig { returns(Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod::Shape) }
-              def to_h; end
+              sig { override.returns({starting_at: Time, ending_before: Time}) }
+              def to_hash; end
             end
 
             class Tier < Metronome::BaseModel
-              Shape = T.type_alias { {price: Float, quantity: Float, starting_at: Float, subtotal: Float} }
-
               sig { returns(Float) }
               attr_accessor :price
 
@@ -783,14 +775,12 @@ module Metronome
               sig { params(price: Float, quantity: Float, starting_at: Float, subtotal: Float).void }
               def initialize(price:, quantity:, starting_at:, subtotal:); end
 
-              sig { returns(Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier::Shape) }
-              def to_h; end
+              sig { override.returns({price: Float, quantity: Float, starting_at: Float, subtotal: Float}) }
+              def to_hash; end
             end
           end
 
           class Tier < Metronome::BaseModel
-            Shape = T.type_alias { {level: Float, starting_at: String, size: T.nilable(String)} }
-
             sig { returns(Float) }
             attr_accessor :level
 
@@ -803,8 +793,8 @@ module Metronome
             sig { params(level: Float, starting_at: String, size: T.nilable(String)).void }
             def initialize(level:, starting_at:, size: nil); end
 
-            sig { returns(Metronome::Models::Customers::Invoice::LineItem::Tier::Shape) }
-            def to_h; end
+            sig { override.returns({level: Float, starting_at: String, size: T.nilable(String)}) }
+            def to_hash; end
           end
         end
 
@@ -819,15 +809,6 @@ module Metronome
         end
 
         class CorrectionRecord < Metronome::BaseModel
-          Shape = T.type_alias do
-            {
-              corrected_invoice_id: String,
-              memo: String,
-              reason: String,
-              corrected_external_invoice: Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice
-            }
-          end
-
           sig { returns(String) }
           attr_accessor :corrected_invoice_id
 
@@ -859,19 +840,19 @@ module Metronome
           end
           def initialize(corrected_invoice_id:, memo:, reason:, corrected_external_invoice: nil); end
 
-          sig { returns(Metronome::Models::Customers::Invoice::CorrectionRecord::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                corrected_invoice_id: String,
+                memo: String,
+                reason: String,
+                corrected_external_invoice: Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice
+              }
+            )
+          end
+          def to_hash; end
 
           class CorrectedExternalInvoice < Metronome::BaseModel
-            Shape = T.type_alias do
-              {
-                billing_provider_type: Symbol,
-                external_status: Symbol,
-                invoice_id: String,
-                issued_at_timestamp: Time
-              }
-            end
-
             sig { returns(Symbol) }
             attr_accessor :billing_provider_type
 
@@ -910,9 +891,16 @@ module Metronome
             end
 
             sig do
-              returns(Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::Shape)
+              override.returns(
+                {
+                  billing_provider_type: Symbol,
+                  external_status: Symbol,
+                  invoice_id: String,
+                  issued_at_timestamp: Time
+                }
+              )
             end
-            def to_h; end
+            def to_hash; end
 
             class BillingProviderType < Metronome::Enum
               abstract!
@@ -952,15 +940,6 @@ module Metronome
         end
 
         class ExternalInvoice < Metronome::BaseModel
-          Shape = T.type_alias do
-            {
-              billing_provider_type: Symbol,
-              external_status: Symbol,
-              invoice_id: String,
-              issued_at_timestamp: Time
-            }
-          end
-
           sig { returns(Symbol) }
           attr_accessor :billing_provider_type
 
@@ -998,8 +977,17 @@ module Metronome
           )
           end
 
-          sig { returns(Metronome::Models::Customers::Invoice::ExternalInvoice::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                billing_provider_type: Symbol,
+                external_status: Symbol,
+                invoice_id: String,
+                issued_at_timestamp: Time
+              }
+            )
+          end
+          def to_hash; end
 
           class BillingProviderType < Metronome::Enum
             abstract!
@@ -1038,16 +1026,6 @@ module Metronome
         end
 
         class InvoiceAdjustment < Metronome::BaseModel
-          Shape = T.type_alias do
-            {
-              credit_type: Metronome::Models::CreditTypeData,
-              name: String,
-              total: Float,
-              credit_grant_custom_fields: T::Hash[Symbol, String],
-              credit_grant_id: String
-            }
-          end
-
           sig { returns(Metronome::Models::CreditTypeData) }
           attr_accessor :credit_type
 
@@ -1081,21 +1059,21 @@ module Metronome
           def initialize(credit_type:, name:, total:, credit_grant_custom_fields: nil, credit_grant_id: nil)
           end
 
-          sig { returns(Metronome::Models::Customers::Invoice::InvoiceAdjustment::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                credit_type: Metronome::Models::CreditTypeData,
+                name: String,
+                total: Float,
+                credit_grant_custom_fields: T::Hash[Symbol, String],
+                credit_grant_id: String
+              }
+            )
+          end
+          def to_hash; end
         end
 
         class ResellerRoyalty < Metronome::BaseModel
-          Shape = T.type_alias do
-            {
-              fraction: String,
-              netsuite_reseller_id: String,
-              reseller_type: Symbol,
-              aws_options: Metronome::Models::Customers::Invoice::ResellerRoyalty::AwsOptions,
-              gcp_options: Metronome::Models::Customers::Invoice::ResellerRoyalty::GcpOptions
-            }
-          end
-
           sig { returns(String) }
           attr_accessor :fraction
 
@@ -1135,8 +1113,18 @@ module Metronome
           )
           end
 
-          sig { returns(Metronome::Models::Customers::Invoice::ResellerRoyalty::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                fraction: String,
+                netsuite_reseller_id: String,
+                reseller_type: Symbol,
+                aws_options: Metronome::Models::Customers::Invoice::ResellerRoyalty::AwsOptions,
+                gcp_options: Metronome::Models::Customers::Invoice::ResellerRoyalty::GcpOptions
+              }
+            )
+          end
+          def to_hash; end
 
           class ResellerType < Metronome::Enum
             abstract!
@@ -1151,10 +1139,6 @@ module Metronome
           end
 
           class AwsOptions < Metronome::BaseModel
-            Shape = T.type_alias do
-              {aws_account_number: String, aws_offer_id: String, aws_payer_reference_id: String}
-            end
-
             sig { returns(T.nilable(String)) }
             attr_reader :aws_account_number
 
@@ -1178,13 +1162,19 @@ module Metronome
             end
             def initialize(aws_account_number: nil, aws_offer_id: nil, aws_payer_reference_id: nil); end
 
-            sig { returns(Metronome::Models::Customers::Invoice::ResellerRoyalty::AwsOptions::Shape) }
-            def to_h; end
+            sig do
+              override.returns(
+                {
+                  aws_account_number: String,
+                  aws_offer_id: String,
+                  aws_payer_reference_id: String
+                }
+              )
+            end
+            def to_hash; end
           end
 
           class GcpOptions < Metronome::BaseModel
-            Shape = T.type_alias { {gcp_account_id: String, gcp_offer_id: String} }
-
             sig { returns(T.nilable(String)) }
             attr_reader :gcp_account_id
 
@@ -1200,8 +1190,8 @@ module Metronome
             sig { params(gcp_account_id: String, gcp_offer_id: String).void }
             def initialize(gcp_account_id: nil, gcp_offer_id: nil); end
 
-            sig { returns(Metronome::Models::Customers::Invoice::ResellerRoyalty::GcpOptions::Shape) }
-            def to_h; end
+            sig { override.returns({gcp_account_id: String, gcp_offer_id: String}) }
+            def to_hash; end
           end
         end
       end

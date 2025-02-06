@@ -18,7 +18,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Customers::billing_config_retrieve_response
+        def to_hash: -> Metronome::Models::Customers::billing_config_retrieve_response
 
         type data =
           {
@@ -93,7 +93,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Customers::BillingConfigRetrieveResponse::data
+          def to_hash: -> Metronome::Models::Customers::BillingConfigRetrieveResponse::data
 
           type aws_region =
             :"af-south-1"

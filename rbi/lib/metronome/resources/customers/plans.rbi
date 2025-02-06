@@ -9,7 +9,7 @@ module Metronome
             customer_id: String,
             limit: Integer,
             next_page: String,
-            request_options: Metronome::RequestOpts
+            request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::CursorPage[Metronome::Models::Customers::PlanListResponse])
         end
         def list(customer_id:, limit: nil, next_page: nil, request_options: {}); end
@@ -24,7 +24,7 @@ module Metronome
             overage_rate_adjustments: T::Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment],
             price_adjustments: T::Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment],
             trial_spec: Metronome::Models::Customers::PlanAddParams::TrialSpec,
-            request_options: Metronome::RequestOpts
+            request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::Models::Customers::PlanAddResponse)
         end
         def add(
@@ -46,7 +46,7 @@ module Metronome
             ending_before: Time,
             void_invoices: T::Boolean,
             void_stripe_invoices: T::Boolean,
-            request_options: Metronome::RequestOpts
+            request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::Models::Customers::PlanEndResponse)
         end
         def end_(
@@ -64,7 +64,7 @@ module Metronome
             customer_plan_id: String,
             limit: Integer,
             next_page: String,
-            request_options: Metronome::RequestOpts
+            request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::CursorPage[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse])
         end
         def list_price_adjustments(

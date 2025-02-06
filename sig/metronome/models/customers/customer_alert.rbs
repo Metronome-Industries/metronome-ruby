@@ -29,7 +29,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Customers::customer_alert
+        def to_hash: -> Metronome::Models::Customers::customer_alert
 
         type alert =
           {
@@ -106,7 +106,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Customers::CustomerAlert::alert
+          def to_hash: -> Metronome::Models::Customers::CustomerAlert::alert
 
           type status = :enabled | :archived | :disabled
 
@@ -178,7 +178,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::Customers::CustomerAlert::Alert::custom_field_filter
+            def to_hash: -> Metronome::Models::Customers::CustomerAlert::Alert::custom_field_filter
 
             type entity = :Contract | :Commit | :ContractCredit
 
@@ -205,7 +205,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::Customers::CustomerAlert::Alert::group_key_filter
+            def to_hash: -> Metronome::Models::Customers::CustomerAlert::Alert::group_key_filter
           end
         end
 

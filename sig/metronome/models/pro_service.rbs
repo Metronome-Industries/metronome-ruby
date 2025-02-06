@@ -48,7 +48,7 @@ module Metronome
         ) -> void
         | (?Metronome::Models::pro_service | Metronome::BaseModel data) -> void
 
-      def to_h: -> Metronome::Models::pro_service
+      def to_hash: -> Metronome::Models::pro_service
     end
   end
 end

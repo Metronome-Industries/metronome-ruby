@@ -43,7 +43,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Contracts::rate_card_update_params
+        def to_hash: -> Metronome::Models::Contracts::rate_card_update_params
 
         type alias_ = { name: String, ending_before: Time, starting_at: Time }
 
@@ -65,7 +65,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Contracts::RateCardUpdateParams::alias_
+          def to_hash: -> Metronome::Models::Contracts::RateCardUpdateParams::alias_
         end
       end
     end

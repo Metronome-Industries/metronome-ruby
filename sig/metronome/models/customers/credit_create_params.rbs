@@ -97,7 +97,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Customers::credit_create_params
+        def to_hash: -> Metronome::Models::Customers::credit_create_params
 
         type access_schedule =
           {
@@ -122,7 +122,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Customers::CreditCreateParams::access_schedule
+          def to_hash: -> Metronome::Models::Customers::CreditCreateParams::access_schedule
 
           type schedule_item =
             { amount: Float, ending_before: Time, starting_at: Time }
@@ -141,7 +141,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::Customers::CreditCreateParams::AccessSchedule::schedule_item
+            def to_hash: -> Metronome::Models::Customers::CreditCreateParams::AccessSchedule::schedule_item
           end
         end
 

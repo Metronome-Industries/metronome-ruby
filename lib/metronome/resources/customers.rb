@@ -41,7 +41,7 @@ module Metronome
       #
       #   @option params [Array<String>] :ingest_aliases Aliases that can be used to refer to this customer in usage events
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::CustomerCreateResponse]
       #
@@ -62,7 +62,7 @@ module Metronome
       #
       #   @option params [String] :customer_id
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::CustomerRetrieveResponse]
       #
@@ -96,7 +96,7 @@ module Metronome
       #   @option params [Array<String>] :salesforce_account_ids Filter the customer list by salesforce_account_id. Up to 100 ids can be
       #     provided.
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::CursorPage<Metronome::Models::CustomerDetail>]
       #
@@ -118,7 +118,7 @@ module Metronome
       #
       #   @option params [String] :id
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::CustomerArchiveResponse]
       #
@@ -148,7 +148,7 @@ module Metronome
       #   @option params [Boolean] :on_current_plan Query param: If true, the list of metrics will be filtered to just ones that are
       #     on the customer's current plan
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::CursorPage<Metronome::Models::CustomerListBillableMetricsResponse>]
       #
@@ -183,7 +183,7 @@ module Metronome
       #
       #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::CursorPage<Metronome::Models::CustomerListCostsResponse>]
       #
@@ -212,7 +212,7 @@ module Metronome
       #
       #   @option params [Array<String>] :ingest_aliases Body param:
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [nil]
       #
@@ -239,7 +239,7 @@ module Metronome
       #   @option params [String] :name Body param: The new name for the customer. This will be truncated to 160
       #     characters if the provided name is longer.
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::CustomerSetNameResponse]
       #
@@ -268,7 +268,7 @@ module Metronome
       #
       #   @option params [String, nil] :salesforce_account_id Body param: The Salesforce account ID for the customer
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [nil]
       #

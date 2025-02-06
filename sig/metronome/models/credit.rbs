@@ -112,7 +112,7 @@ module Metronome
         ) -> void
         | (?Metronome::Models::credit | Metronome::BaseModel data) -> void
 
-      def to_h: -> Metronome::Models::credit
+      def to_hash: -> Metronome::Models::credit
 
       type product = { id: String, name: String }
 
@@ -127,7 +127,7 @@ module Metronome
             ?Metronome::Models::Credit::product | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Credit::product
+        def to_hash: -> Metronome::Models::Credit::product
       end
 
       type type_ = :CREDIT
@@ -149,7 +149,7 @@ module Metronome
             ?Metronome::Models::Credit::contract | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Credit::contract
+        def to_hash: -> Metronome::Models::Credit::contract
       end
 
       type ledger =
@@ -190,7 +190,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Credit::Ledger::credit_segment_start_ledger_entry
+          def to_hash: -> Metronome::Models::Credit::Ledger::credit_segment_start_ledger_entry
 
           type type_ = :CREDIT_SEGMENT_START
 
@@ -234,7 +234,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Credit::Ledger::credit_automated_invoice_deduction_ledger_entry
+          def to_hash: -> Metronome::Models::Credit::Ledger::credit_automated_invoice_deduction_ledger_entry
 
           type type_ = :CREDIT_AUTOMATED_INVOICE_DEDUCTION
 
@@ -274,7 +274,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Credit::Ledger::credit_expiration_ledger_entry
+          def to_hash: -> Metronome::Models::Credit::Ledger::credit_expiration_ledger_entry
 
           type type_ = :CREDIT_EXPIRATION
 
@@ -318,7 +318,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Credit::Ledger::credit_canceled_ledger_entry
+          def to_hash: -> Metronome::Models::Credit::Ledger::credit_canceled_ledger_entry
 
           type type_ = :CREDIT_CANCELED
 
@@ -362,7 +362,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Credit::Ledger::credit_credited_ledger_entry
+          def to_hash: -> Metronome::Models::Credit::Ledger::credit_credited_ledger_entry
 
           type type_ = :CREDIT_CREDITED
 
@@ -402,7 +402,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Credit::Ledger::credit_manual_ledger_entry
+          def to_hash: -> Metronome::Models::Credit::Ledger::credit_manual_ledger_entry
 
           type type_ = :CREDIT_MANUAL
 

@@ -30,7 +30,7 @@ module Metronome
       #     aggregation_key, and group_keys. If provided, these other fields must be
       #     omitted.
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::BillableMetricCreateResponse]
       #
@@ -51,7 +51,7 @@ module Metronome
       #
       #   @option params [String] :billable_metric_id
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::BillableMetricRetrieveResponse]
       #
@@ -78,7 +78,7 @@ module Metronome
       #
       #   @option params [String] :next_page Cursor that indicates where the next page of results should start.
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::CursorPage<Metronome::Models::BillableMetricListResponse>]
       #
@@ -100,7 +100,7 @@ module Metronome
       #
       #   @option params [String] :id
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::BillableMetricArchiveResponse]
       #

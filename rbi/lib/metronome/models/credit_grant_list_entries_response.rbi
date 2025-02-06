@@ -3,13 +3,6 @@
 module Metronome
   module Models
     class CreditGrantListEntriesResponse < Metronome::BaseModel
-      Shape = T.type_alias do
-        {
-          data: T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data],
-          next_page: T.nilable(String)
-        }
-      end
-
       sig { returns(T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data]) }
       attr_accessor :data
 
@@ -24,17 +17,17 @@ module Metronome
       end
       def initialize(data:, next_page:); end
 
-      sig { returns(Metronome::Models::CreditGrantListEntriesResponse::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            data: T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data],
+            next_page: T.nilable(String)
+          }
+        )
+      end
+      def to_hash; end
 
       class Data < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            customer_id: String,
-            ledgers: T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger]
-          }
-        end
-
         sig { returns(String) }
         attr_accessor :customer_id
 
@@ -49,20 +42,17 @@ module Metronome
         end
         def initialize(customer_id:, ledgers:); end
 
-        sig { returns(Metronome::Models::CreditGrantListEntriesResponse::Data::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              customer_id: String,
+              ledgers: T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger]
+            }
+          )
+        end
+        def to_hash; end
 
         class Ledger < Metronome::BaseModel
-          Shape = T.type_alias do
-            {
-              credit_type: Metronome::Models::CreditTypeData,
-              ending_balance: Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance,
-              entries: T::Array[Metronome::Models::CreditLedgerEntry],
-              pending_entries: T::Array[Metronome::Models::CreditLedgerEntry],
-              starting_balance: Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance
-            }
-          end
-
           sig { returns(Metronome::Models::CreditTypeData) }
           attr_accessor :credit_type
 
@@ -89,12 +79,20 @@ module Metronome
           end
           def initialize(credit_type:, ending_balance:, entries:, pending_entries:, starting_balance:); end
 
-          sig { returns(Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                credit_type: Metronome::Models::CreditTypeData,
+                ending_balance: Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance,
+                entries: T::Array[Metronome::Models::CreditLedgerEntry],
+                pending_entries: T::Array[Metronome::Models::CreditLedgerEntry],
+                starting_balance: Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance
+              }
+            )
+          end
+          def to_hash; end
 
           class EndingBalance < Metronome::BaseModel
-            Shape = T.type_alias { {effective_at: Time, excluding_pending: Float, including_pending: Float} }
-
             sig { returns(Time) }
             attr_accessor :effective_at
 
@@ -107,15 +105,11 @@ module Metronome
             sig { params(effective_at: Time, excluding_pending: Float, including_pending: Float).void }
             def initialize(effective_at:, excluding_pending:, including_pending:); end
 
-            sig do
-              returns(Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance::Shape)
-            end
-            def to_h; end
+            sig { override.returns({effective_at: Time, excluding_pending: Float, including_pending: Float}) }
+            def to_hash; end
           end
 
           class StartingBalance < Metronome::BaseModel
-            Shape = T.type_alias { {effective_at: Time, excluding_pending: Float, including_pending: Float} }
-
             sig { returns(Time) }
             attr_accessor :effective_at
 
@@ -128,10 +122,8 @@ module Metronome
             sig { params(effective_at: Time, excluding_pending: Float, including_pending: Float).void }
             def initialize(effective_at:, excluding_pending:, including_pending:); end
 
-            sig do
-              returns(Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance::Shape)
-            end
-            def to_h; end
+            sig { override.returns({effective_at: Time, excluding_pending: Float, including_pending: Float}) }
+            def to_hash; end
           end
         end
       end

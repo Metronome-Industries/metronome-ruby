@@ -6,27 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            alert_type: Symbol,
-            name: String,
-            threshold: Float,
-            billable_metric_id: String,
-            credit_grant_type_filters: T::Array[String],
-            credit_type_id: String,
-            custom_field_filters: T::Array[Metronome::Models::AlertCreateParams::CustomFieldFilter],
-            customer_id: String,
-            evaluate_on_create: T::Boolean,
-            group_key_filter: Metronome::Models::AlertCreateParams::GroupKeyFilter,
-            invoice_types_filter: T::Array[String],
-            plan_id: String,
-            uniqueness_key: String
-          },
-          Metronome::RequestParameters::Shape
-        )
-      end
-
       sig { returns(Symbol) }
       attr_accessor :alert_type
 
@@ -113,7 +92,7 @@ module Metronome
           invoice_types_filter: T::Array[String],
           plan_id: String,
           uniqueness_key: String,
-          request_options: Metronome::RequestOpts
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -133,8 +112,27 @@ module Metronome
         request_options: {}
       ); end
 
-      sig { returns(Metronome::Models::AlertCreateParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            alert_type: Symbol,
+            name: String,
+            threshold: Float,
+            billable_metric_id: String,
+            credit_grant_type_filters: T::Array[String],
+            credit_type_id: String,
+            custom_field_filters: T::Array[Metronome::Models::AlertCreateParams::CustomFieldFilter],
+            customer_id: String,
+            evaluate_on_create: T::Boolean,
+            group_key_filter: Metronome::Models::AlertCreateParams::GroupKeyFilter,
+            invoice_types_filter: T::Array[String],
+            plan_id: String,
+            uniqueness_key: String,
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class AlertType < Metronome::Enum
         abstract!
@@ -159,8 +157,6 @@ module Metronome
       end
 
       class CustomFieldFilter < Metronome::BaseModel
-        Shape = T.type_alias { {entity: Symbol, key: String, value: String} }
-
         sig { returns(Symbol) }
         attr_accessor :entity
 
@@ -173,8 +169,8 @@ module Metronome
         sig { params(entity: Symbol, key: String, value: String).void }
         def initialize(entity:, key:, value:); end
 
-        sig { returns(Metronome::Models::AlertCreateParams::CustomFieldFilter::Shape) }
-        def to_h; end
+        sig { override.returns({entity: Symbol, key: String, value: String}) }
+        def to_hash; end
 
         class Entity < Metronome::Enum
           abstract!
@@ -189,8 +185,6 @@ module Metronome
       end
 
       class GroupKeyFilter < Metronome::BaseModel
-        Shape = T.type_alias { {key: String, value: String} }
-
         sig { returns(String) }
         attr_accessor :key
 
@@ -200,8 +194,8 @@ module Metronome
         sig { params(key: String, value: String).void }
         def initialize(key:, value:); end
 
-        sig { returns(Metronome::Models::AlertCreateParams::GroupKeyFilter::Shape) }
-        def to_h; end
+        sig { override.returns({key: String, value: String}) }
+        def to_hash; end
       end
     end
   end

@@ -6,13 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {id: String, release_uniqueness_key: T::Boolean, void_credit_purchase_invoice: T::Boolean},
-          Metronome::RequestParameters::Shape
-        )
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -33,7 +26,7 @@ module Metronome
           id: String,
           release_uniqueness_key: T::Boolean,
           void_credit_purchase_invoice: T::Boolean,
-          request_options: Metronome::RequestOpts
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -44,8 +37,17 @@ module Metronome
       )
       end
 
-      sig { returns(Metronome::Models::CreditGrantVoidParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: String,
+            release_uniqueness_key: T::Boolean,
+            void_credit_purchase_invoice: T::Boolean,
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

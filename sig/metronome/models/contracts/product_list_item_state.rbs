@@ -100,7 +100,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Contracts::product_list_item_state
+        def to_hash: -> Metronome::Models::Contracts::product_list_item_state
       end
     end
   end

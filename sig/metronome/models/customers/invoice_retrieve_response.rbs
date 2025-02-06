@@ -14,7 +14,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Customers::invoice_retrieve_response
+        def to_hash: -> Metronome::Models::Customers::invoice_retrieve_response
       end
     end
   end

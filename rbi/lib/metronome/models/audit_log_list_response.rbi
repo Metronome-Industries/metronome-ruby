@@ -3,20 +3,6 @@
 module Metronome
   module Models
     class AuditLogListResponse < Metronome::BaseModel
-      Shape = T.type_alias do
-        {
-          id: String,
-          request: Metronome::Models::AuditLogListResponse::Request,
-          timestamp: Time,
-          action: String,
-          actor: Metronome::Models::AuditLogListResponse::Actor,
-          description: String,
-          resource_id: String,
-          resource_type: String,
-          status: Symbol
-        }
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -87,12 +73,24 @@ module Metronome
         status: nil
       ); end
 
-      sig { returns(Metronome::Models::AuditLogListResponse::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: String,
+            request: Metronome::Models::AuditLogListResponse::Request,
+            timestamp: Time,
+            action: String,
+            actor: Metronome::Models::AuditLogListResponse::Actor,
+            description: String,
+            resource_id: String,
+            resource_type: String,
+            status: Symbol
+          }
+        )
+      end
+      def to_hash; end
 
       class Request < Metronome::BaseModel
-        Shape = T.type_alias { {id: String, ip: String, user_agent: String} }
-
         sig { returns(String) }
         attr_accessor :id
 
@@ -111,13 +109,11 @@ module Metronome
         sig { params(id: String, ip: String, user_agent: String).void }
         def initialize(id:, ip: nil, user_agent: nil); end
 
-        sig { returns(Metronome::Models::AuditLogListResponse::Request::Shape) }
-        def to_h; end
+        sig { override.returns({id: String, ip: String, user_agent: String}) }
+        def to_hash; end
       end
 
       class Actor < Metronome::BaseModel
-        Shape = T.type_alias { {id: String, name: String, email: String} }
-
         sig { returns(String) }
         attr_accessor :id
 
@@ -133,8 +129,8 @@ module Metronome
         sig { params(id: String, name: String, email: String).void }
         def initialize(id:, name:, email: nil); end
 
-        sig { returns(Metronome::Models::AuditLogListResponse::Actor::Shape) }
-        def to_h; end
+        sig { override.returns({id: String, name: String, email: String}) }
+        def to_hash; end
       end
 
       class Status < Metronome::Enum

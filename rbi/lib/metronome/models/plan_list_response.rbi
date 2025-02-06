@@ -3,10 +3,6 @@
 module Metronome
   module Models
     class PlanListResponse < Metronome::BaseModel
-      Shape = T.type_alias do
-        {id: String, description: String, name: String, custom_fields: T::Hash[Symbol, String]}
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -27,8 +23,17 @@ module Metronome
       end
       def initialize(id:, description:, name:, custom_fields: nil); end
 
-      sig { returns(Metronome::Models::PlanListResponse::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: String,
+            description: String,
+            name: String,
+            custom_fields: T::Hash[Symbol, String]
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

@@ -3,23 +3,6 @@
 module Metronome
   module Models
     class PlanListChargesResponse < Metronome::BaseModel
-      Shape = T.type_alias do
-        {
-          id: String,
-          charge_type: Symbol,
-          credit_type: Metronome::Models::CreditTypeData,
-          custom_fields: T::Hash[Symbol, String],
-          name: String,
-          prices: T::Array[Metronome::Models::PlanListChargesResponse::Price],
-          product_id: String,
-          product_name: String,
-          quantity: Float,
-          start_period: Float,
-          tier_reset_frequency: Float,
-          unit_conversion: Metronome::Models::PlanListChargesResponse::UnitConversion
-        }
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -99,8 +82,25 @@ module Metronome
         unit_conversion: nil
       ); end
 
-      sig { returns(Metronome::Models::PlanListChargesResponse::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: String,
+            charge_type: Symbol,
+            credit_type: Metronome::Models::CreditTypeData,
+            custom_fields: T::Hash[Symbol, String],
+            name: String,
+            prices: T::Array[Metronome::Models::PlanListChargesResponse::Price],
+            product_id: String,
+            product_name: String,
+            quantity: Float,
+            start_period: Float,
+            tier_reset_frequency: Float,
+            unit_conversion: Metronome::Models::PlanListChargesResponse::UnitConversion
+          }
+        )
+      end
+      def to_hash; end
 
       class ChargeType < Metronome::Enum
         abstract!
@@ -116,16 +116,6 @@ module Metronome
       end
 
       class Price < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            tier: Float,
-            value: Float,
-            collection_interval: Float,
-            collection_schedule: String,
-            quantity: Float
-          }
-        end
-
         sig { returns(Float) }
         attr_accessor :tier
 
@@ -161,13 +151,21 @@ module Metronome
         end
         def initialize(tier:, value:, collection_interval: nil, collection_schedule: nil, quantity: nil); end
 
-        sig { returns(Metronome::Models::PlanListChargesResponse::Price::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              tier: Float,
+              value: Float,
+              collection_interval: Float,
+              collection_schedule: String,
+              quantity: Float
+            }
+          )
+        end
+        def to_hash; end
       end
 
       class UnitConversion < Metronome::BaseModel
-        Shape = T.type_alias { {division_factor: Float, rounding_behavior: Symbol} }
-
         sig { returns(Float) }
         attr_accessor :division_factor
 
@@ -180,8 +178,8 @@ module Metronome
         sig { params(division_factor: Float, rounding_behavior: Symbol).void }
         def initialize(division_factor:, rounding_behavior: nil); end
 
-        sig { returns(Metronome::Models::PlanListChargesResponse::UnitConversion::Shape) }
-        def to_h; end
+        sig { override.returns({division_factor: Float, rounding_behavior: Symbol}) }
+        def to_hash; end
 
         class RoundingBehavior < Metronome::Enum
           abstract!

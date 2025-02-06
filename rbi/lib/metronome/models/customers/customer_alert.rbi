@@ -6,14 +6,6 @@ module Metronome
 
     module Customers
       class CustomerAlert < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            alert: Metronome::Models::Customers::CustomerAlert::Alert,
-            customer_status: T.nilable(Symbol),
-            triggered_by: T.nilable(String)
-          }
-        end
-
         sig { returns(Metronome::Models::Customers::CustomerAlert::Alert) }
         attr_accessor :alert
 
@@ -32,27 +24,18 @@ module Metronome
         end
         def initialize(alert:, customer_status:, triggered_by: nil); end
 
-        sig { returns(Metronome::Models::Customers::CustomerAlert::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              alert: Metronome::Models::Customers::CustomerAlert::Alert,
+              customer_status: T.nilable(Symbol),
+              triggered_by: T.nilable(String)
+            }
+          )
+        end
+        def to_hash; end
 
         class Alert < Metronome::BaseModel
-          Shape = T.type_alias do
-            {
-              id: String,
-              name: String,
-              status: Symbol,
-              threshold: Float,
-              type: Symbol,
-              updated_at: Time,
-              credit_grant_type_filters: T::Array[String],
-              credit_type: T.nilable(Metronome::Models::CreditTypeData),
-              custom_field_filters: T::Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter],
-              group_key_filter: Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter,
-              invoice_types_filter: T::Array[String],
-              uniqueness_key: String
-            }
-          end
-
           sig { returns(String) }
           attr_accessor :id
 
@@ -143,8 +126,25 @@ module Metronome
             uniqueness_key: nil
           ); end
 
-          sig { returns(Metronome::Models::Customers::CustomerAlert::Alert::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                id: String,
+                name: String,
+                status: Symbol,
+                threshold: Float,
+                type: Symbol,
+                updated_at: Time,
+                credit_grant_type_filters: T::Array[String],
+                credit_type: T.nilable(Metronome::Models::CreditTypeData),
+                custom_field_filters: T::Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter],
+                group_key_filter: Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter,
+                invoice_types_filter: T::Array[String],
+                uniqueness_key: String
+              }
+            )
+          end
+          def to_hash; end
 
           class Status < Metronome::Enum
             abstract!
@@ -180,8 +180,6 @@ module Metronome
           end
 
           class CustomFieldFilter < Metronome::BaseModel
-            Shape = T.type_alias { {entity: Symbol, key: String, value: String} }
-
             sig { returns(Symbol) }
             attr_accessor :entity
 
@@ -194,8 +192,8 @@ module Metronome
             sig { params(entity: Symbol, key: String, value: String).void }
             def initialize(entity:, key:, value:); end
 
-            sig { returns(Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter::Shape) }
-            def to_h; end
+            sig { override.returns({entity: Symbol, key: String, value: String}) }
+            def to_hash; end
 
             class Entity < Metronome::Enum
               abstract!
@@ -210,8 +208,6 @@ module Metronome
           end
 
           class GroupKeyFilter < Metronome::BaseModel
-            Shape = T.type_alias { {key: String, value: String} }
-
             sig { returns(String) }
             attr_accessor :key
 
@@ -221,8 +217,8 @@ module Metronome
             sig { params(key: String, value: String).void }
             def initialize(key:, value:); end
 
-            sig { returns(Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter::Shape) }
-            def to_h; end
+            sig { override.returns({key: String, value: String}) }
+            def to_hash; end
           end
         end
 

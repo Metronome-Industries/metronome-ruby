@@ -7,28 +7,6 @@ module Metronome
         extend Metronome::RequestParameters::Converter
         include Metronome::RequestParameters
 
-        Shape = T.type_alias do
-          T.all(
-            {
-              access_schedule: Metronome::Models::Customers::CreditCreateParams::AccessSchedule,
-              customer_id: String,
-              priority: Float,
-              product_id: String,
-              applicable_contract_ids: T::Array[String],
-              applicable_product_ids: T::Array[String],
-              applicable_product_tags: T::Array[String],
-              custom_fields: T::Hash[Symbol, String],
-              description: String,
-              name: String,
-              netsuite_sales_order_id: String,
-              rate_type: Symbol,
-              salesforce_opportunity_id: String,
-              uniqueness_key: String
-            },
-            Metronome::RequestParameters::Shape
-          )
-        end
-
         sig { returns(Metronome::Models::Customers::CreditCreateParams::AccessSchedule) }
         attr_accessor :access_schedule
 
@@ -117,7 +95,7 @@ module Metronome
             rate_type: Symbol,
             salesforce_opportunity_id: String,
             uniqueness_key: String,
-            request_options: Metronome::RequestOpts
+            request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
           ).void
         end
         def initialize(
@@ -138,17 +116,30 @@ module Metronome
           request_options: {}
         ); end
 
-        sig { returns(Metronome::Models::Customers::CreditCreateParams::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              access_schedule: Metronome::Models::Customers::CreditCreateParams::AccessSchedule,
+              customer_id: String,
+              priority: Float,
+              product_id: String,
+              applicable_contract_ids: T::Array[String],
+              applicable_product_ids: T::Array[String],
+              applicable_product_tags: T::Array[String],
+              custom_fields: T::Hash[Symbol, String],
+              description: String,
+              name: String,
+              netsuite_sales_order_id: String,
+              rate_type: Symbol,
+              salesforce_opportunity_id: String,
+              uniqueness_key: String,
+              request_options: Metronome::RequestOptions
+            }
+          )
+        end
+        def to_hash; end
 
         class AccessSchedule < Metronome::BaseModel
-          Shape = T.type_alias do
-            {
-              schedule_items: T::Array[Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem],
-              credit_type_id: String
-            }
-          end
-
           sig do
             returns(T::Array[Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem])
           end
@@ -168,12 +159,16 @@ module Metronome
           end
           def initialize(schedule_items:, credit_type_id: nil); end
 
-          sig { returns(Metronome::Models::Customers::CreditCreateParams::AccessSchedule::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                schedule_items: T::Array[Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem], credit_type_id: String
+              }
+            )
+          end
+          def to_hash; end
 
           class ScheduleItem < Metronome::BaseModel
-            Shape = T.type_alias { {amount: Float, ending_before: Time, starting_at: Time} }
-
             sig { returns(Float) }
             attr_accessor :amount
 
@@ -186,10 +181,8 @@ module Metronome
             sig { params(amount: Float, ending_before: Time, starting_at: Time).void }
             def initialize(amount:, ending_before:, starting_at:); end
 
-            sig do
-              returns(Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem::Shape)
-            end
-            def to_h; end
+            sig { override.returns({amount: Float, ending_before: Time, starting_at: Time}) }
+            def to_hash; end
           end
         end
 

@@ -42,7 +42,7 @@ module Metronome
           ?Metronome::Models::scheduled_charge | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::scheduled_charge
+      def to_hash: -> Metronome::Models::scheduled_charge
 
       type product = { id: String, name: String }
 
@@ -58,7 +58,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::ScheduledCharge::product
+        def to_hash: -> Metronome::Models::ScheduledCharge::product
       end
     end
   end

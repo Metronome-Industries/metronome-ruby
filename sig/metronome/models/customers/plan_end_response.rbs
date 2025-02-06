@@ -11,7 +11,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Customers::plan_end_response
+        def to_hash: -> Metronome::Models::Customers::plan_end_response
       end
     end
   end

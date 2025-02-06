@@ -6,21 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            limit: Integer,
-            next_page: String,
-            credit_grant_ids: T::Array[String],
-            credit_type_ids: T::Array[String],
-            customer_ids: T::Array[String],
-            effective_before: Time,
-            not_expiring_before: Time
-          },
-          Metronome::RequestParameters::Shape
-        )
-      end
-
       sig { returns(T.nilable(Integer)) }
       attr_reader :limit
 
@@ -72,7 +57,7 @@ module Metronome
           customer_ids: T::Array[String],
           effective_before: Time,
           not_expiring_before: Time,
-          request_options: Metronome::RequestOpts
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -86,8 +71,21 @@ module Metronome
         request_options: {}
       ); end
 
-      sig { returns(Metronome::Models::CreditGrantListParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            limit: Integer,
+            next_page: String,
+            credit_grant_ids: T::Array[String],
+            credit_type_ids: T::Array[String],
+            customer_ids: T::Array[String],
+            effective_before: Time,
+            not_expiring_before: Time,
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

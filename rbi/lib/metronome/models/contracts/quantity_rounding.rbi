@@ -4,8 +4,6 @@ module Metronome
   module Models
     module Contracts
       class QuantityRounding < Metronome::BaseModel
-        Shape = T.type_alias { {decimal_places: Float, rounding_method: Symbol} }
-
         sig { returns(Float) }
         attr_accessor :decimal_places
 
@@ -15,8 +13,8 @@ module Metronome
         sig { params(decimal_places: Float, rounding_method: Symbol).void }
         def initialize(decimal_places:, rounding_method:); end
 
-        sig { returns(Metronome::Models::Contracts::QuantityRounding::Shape) }
-        def to_h; end
+        sig { override.returns({decimal_places: Float, rounding_method: Symbol}) }
+        def to_hash; end
 
         class RoundingMethod < Metronome::Enum
           abstract!

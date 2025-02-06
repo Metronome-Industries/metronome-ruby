@@ -3,25 +3,6 @@
 module Metronome
   module Models
     class CustomerListBillableMetricsResponse < Metronome::BaseModel
-      Shape = T.type_alias do
-        {
-          id: String,
-          name: String,
-          aggregate: String,
-          aggregate_keys: T::Array[String],
-          aggregation_key: String,
-          aggregation_type: Symbol,
-          archived_at: Time,
-          custom_fields: T::Hash[Symbol, String],
-          event_type_filter: Metronome::Models::EventTypeFilter,
-          filter: T::Hash[Symbol, T.anything],
-          group_by: T::Array[String],
-          group_keys: T::Array[T::Array[String]],
-          property_filters: T::Array[Metronome::Models::PropertyFilter],
-          sql: String
-        }
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -135,8 +116,27 @@ module Metronome
         sql: nil
       ); end
 
-      sig { returns(Metronome::Models::CustomerListBillableMetricsResponse::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: String,
+            name: String,
+            aggregate: String,
+            aggregate_keys: T::Array[String],
+            aggregation_key: String,
+            aggregation_type: Symbol,
+            archived_at: Time,
+            custom_fields: T::Hash[Symbol, String],
+            event_type_filter: Metronome::Models::EventTypeFilter,
+            filter: T::Hash[Symbol, T.anything],
+            group_by: T::Array[String],
+            group_keys: T::Array[T::Array[String]],
+            property_filters: T::Array[Metronome::Models::PropertyFilter],
+            sql: String
+          }
+        )
+      end
+      def to_hash; end
 
       class AggregationType < Metronome::Enum
         abstract!

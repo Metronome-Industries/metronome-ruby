@@ -14,7 +14,7 @@ module Metronome
           ?Metronome::Models::service_list_response | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::service_list_response
+      def to_hash: -> Metronome::Models::service_list_response
 
       type service =
         {
@@ -41,7 +41,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::ServiceListResponse::service
+        def to_hash: -> Metronome::Models::ServiceListResponse::service
 
         type usage = :makes_connections_from | :accepts_connections_at
 

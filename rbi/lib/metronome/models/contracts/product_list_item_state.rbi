@@ -4,27 +4,6 @@ module Metronome
   module Models
     module Contracts
       class ProductListItemState < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            created_at: Time,
-            created_by: String,
-            name: String,
-            billable_metric_id: String,
-            composite_product_ids: T::Array[String],
-            composite_tags: T::Array[String],
-            exclude_free_usage: T::Boolean,
-            is_refundable: T::Boolean,
-            netsuite_internal_item_id: String,
-            netsuite_overage_item_id: String,
-            presentation_group_key: T::Array[String],
-            pricing_group_key: T::Array[String],
-            quantity_conversion: T.nilable(Metronome::Models::Contracts::QuantityConversion),
-            quantity_rounding: T.nilable(Metronome::Models::Contracts::QuantityRounding),
-            starting_at: Time,
-            tags: T::Array[String]
-          }
-        end
-
         sig { returns(Time) }
         attr_accessor :created_at
 
@@ -145,8 +124,29 @@ module Metronome
           tags: nil
         ); end
 
-        sig { returns(Metronome::Models::Contracts::ProductListItemState::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              created_at: Time,
+              created_by: String,
+              name: String,
+              billable_metric_id: String,
+              composite_product_ids: T::Array[String],
+              composite_tags: T::Array[String],
+              exclude_free_usage: T::Boolean,
+              is_refundable: T::Boolean,
+              netsuite_internal_item_id: String,
+              netsuite_overage_item_id: String,
+              presentation_group_key: T::Array[String],
+              pricing_group_key: T::Array[String],
+              quantity_conversion: T.nilable(Metronome::Models::Contracts::QuantityConversion),
+              quantity_rounding: T.nilable(Metronome::Models::Contracts::QuantityRounding),
+              starting_at: Time,
+              tags: T::Array[String]
+            }
+          )
+        end
+        def to_hash; end
       end
     end
   end

@@ -21,7 +21,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::custom_field_list_keys_response
+      def to_hash: -> Metronome::Models::custom_field_list_keys_response
 
       type data =
         {
@@ -48,7 +48,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::CustomFieldListKeysResponse::data
+        def to_hash: -> Metronome::Models::CustomFieldListKeysResponse::data
 
         type entity =
           :alert

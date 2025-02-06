@@ -3,8 +3,6 @@
 module Metronome
   module Models
     class PricingUnitListResponse < Metronome::BaseModel
-      Shape = T.type_alias { {id: String, is_currency: T::Boolean, name: String} }
-
       sig { returns(T.nilable(String)) }
       attr_reader :id
 
@@ -26,8 +24,8 @@ module Metronome
       sig { params(id: String, is_currency: T::Boolean, name: String).void }
       def initialize(id: nil, is_currency: nil, name: nil); end
 
-      sig { returns(Metronome::Models::PricingUnitListResponse::Shape) }
-      def to_h; end
+      sig { override.returns({id: String, is_currency: T::Boolean, name: String}) }
+      def to_hash; end
     end
   end
 end

@@ -3,8 +3,6 @@
 module Metronome
   module Models
     class EventTypeFilter < Metronome::BaseModel
-      Shape = T.type_alias { {in_values: T::Array[String], not_in_values: T::Array[String]} }
-
       sig { returns(T.nilable(T::Array[String])) }
       attr_reader :in_values
 
@@ -20,8 +18,8 @@ module Metronome
       sig { params(in_values: T::Array[String], not_in_values: T::Array[String]).void }
       def initialize(in_values: nil, not_in_values: nil); end
 
-      sig { returns(Metronome::Models::EventTypeFilter::Shape) }
-      def to_h; end
+      sig { override.returns({in_values: T::Array[String], not_in_values: T::Array[String]}) }
+      def to_hash; end
     end
   end
 end

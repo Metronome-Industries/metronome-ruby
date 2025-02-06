@@ -3,16 +3,14 @@
 module Metronome
   module Models
     class BillableMetricArchiveResponse < Metronome::BaseModel
-      Shape = T.type_alias { {data: Metronome::Models::ID} }
-
       sig { returns(Metronome::Models::ID) }
       attr_accessor :data
 
       sig { params(data: Metronome::Models::ID).void }
       def initialize(data:); end
 
-      sig { returns(Metronome::Models::BillableMetricArchiveResponse::Shape) }
-      def to_h; end
+      sig { override.returns({data: Metronome::Models::ID}) }
+      def to_hash; end
     end
   end
 end

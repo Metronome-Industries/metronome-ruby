@@ -21,7 +21,7 @@ module Metronome
         #
         #   @option params [Symbol, Metronome::Models::Customers::BillingConfigCreateParams::StripeCollectionMethod] :stripe_collection_method Body param:
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [nil]
         #
@@ -50,7 +50,7 @@ module Metronome
         #
         #   @option params [Symbol, Metronome::Models::Customers::BillingConfigRetrieveParams::BillingProviderType] :billing_provider_type The billing provider (e.g. stripe)
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Metronome::Models::Customers::BillingConfigRetrieveResponse]
         #
@@ -79,7 +79,7 @@ module Metronome
         #
         #   @option params [Symbol, Metronome::Models::Customers::BillingConfigDeleteParams::BillingProviderType] :billing_provider_type The billing provider (e.g. stripe)
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [nil]
         #

@@ -48,7 +48,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Contracts::RateCards::rate_list_params
+          def to_hash: -> Metronome::Models::Contracts::RateCards::rate_list_params
 
           type selector =
             {
@@ -87,7 +87,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::Contracts::RateCards::RateListParams::selector
+            def to_hash: -> Metronome::Models::Contracts::RateCards::RateListParams::selector
           end
         end
       end

@@ -27,7 +27,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Customers::credit_update_end_date_params
+        def to_hash: -> Metronome::Models::Customers::credit_update_end_date_params
       end
     end
   end

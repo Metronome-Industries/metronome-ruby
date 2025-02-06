@@ -77,7 +77,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Customers::invoice_list_breakdowns_params
+        def to_hash: -> Metronome::Models::Customers::invoice_list_breakdowns_params
 
         type sort = :date_asc | :date_desc
 
