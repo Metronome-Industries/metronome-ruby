@@ -80,7 +80,8 @@ module Metronome
         start_period: nil,
         tier_reset_frequency: nil,
         unit_conversion: nil
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -100,7 +101,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class ChargeType < Metronome::Enum
         abstract!
@@ -112,7 +114,8 @@ module Metronome
         SEAT = :seat
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class Price < Metronome::BaseModel
@@ -149,7 +152,8 @@ module Metronome
             quantity: Float
           ).void
         end
-        def initialize(tier:, value:, collection_interval: nil, collection_schedule: nil, quantity: nil); end
+        def initialize(tier:, value:, collection_interval: nil, collection_schedule: nil, quantity: nil)
+        end
 
         sig do
           override.returns(
@@ -162,7 +166,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class UnitConversion < Metronome::BaseModel
@@ -176,10 +181,12 @@ module Metronome
         attr_writer :rounding_behavior
 
         sig { params(division_factor: Float, rounding_behavior: Symbol).void }
-        def initialize(division_factor:, rounding_behavior: nil); end
+        def initialize(division_factor:, rounding_behavior: nil)
+        end
 
         sig { override.returns({division_factor: Float, rounding_behavior: Symbol}) }
-        def to_hash; end
+        def to_hash
+        end
 
         class RoundingBehavior < Metronome::Enum
           abstract!
@@ -188,7 +195,8 @@ module Metronome
           CEILING = :ceiling
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

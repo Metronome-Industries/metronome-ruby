@@ -62,17 +62,20 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class CustomerConfig < Metronome::BaseModel
         sig { returns(T.nilable(String)) }
         attr_accessor :salesforce_account_id
 
         sig { params(salesforce_account_id: T.nilable(String)).void }
-        def initialize(salesforce_account_id:); end
+        def initialize(salesforce_account_id:)
+        end
 
         sig { override.returns({salesforce_account_id: T.nilable(String)}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class CurrentBillableStatus < Metronome::BaseModel
@@ -83,10 +86,12 @@ module Metronome
         attr_accessor :effective_at
 
         sig { params(value: Symbol, effective_at: T.nilable(Time)).void }
-        def initialize(value:, effective_at: nil); end
+        def initialize(value:, effective_at: nil)
+        end
 
         sig { override.returns({value: Symbol, effective_at: T.nilable(Time)}) }
-        def to_hash; end
+        def to_hash
+        end
 
         class Value < Metronome::Enum
           abstract!
@@ -95,7 +100,8 @@ module Metronome
           UNBILLABLE = :unbillable
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

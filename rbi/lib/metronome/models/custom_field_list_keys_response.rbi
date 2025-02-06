@@ -15,7 +15,8 @@ module Metronome
           next_page: T.nilable(String)
         ).void
       end
-      def initialize(data:, next_page:); end
+      def initialize(data:, next_page:)
+      end
 
       sig do
         override.returns(
@@ -25,7 +26,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Data < Metronome::BaseModel
         sig { returns(T::Boolean) }
@@ -38,10 +40,12 @@ module Metronome
         attr_accessor :key
 
         sig { params(enforce_uniqueness: T::Boolean, entity: Symbol, key: String).void }
-        def initialize(enforce_uniqueness:, entity:, key:); end
+        def initialize(enforce_uniqueness:, entity:, key:)
+        end
 
         sig { override.returns({enforce_uniqueness: T::Boolean, entity: Symbol, key: String}) }
-        def to_hash; end
+        def to_hash
+        end
 
         class Entity < Metronome::Enum
           abstract!
@@ -65,7 +69,8 @@ module Metronome
           SCHEDULED_CHARGE = :scheduled_charge
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

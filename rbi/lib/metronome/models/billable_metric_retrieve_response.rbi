@@ -7,10 +7,12 @@ module Metronome
       attr_accessor :data
 
       sig { params(data: Metronome::Models::BillableMetricRetrieveResponse::Data).void }
-      def initialize(data:); end
+      def initialize(data:)
+      end
 
       sig { override.returns({data: Metronome::Models::BillableMetricRetrieveResponse::Data}) }
-      def to_hash; end
+      def to_hash
+      end
 
       class Data < Metronome::BaseModel
         sig { returns(String) }
@@ -92,7 +94,8 @@ module Metronome
           group_keys: nil,
           property_filters: nil,
           sql: nil
-        ); end
+        )
+        end
 
         sig do
           override.returns(
@@ -110,7 +113,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class AggregationType < Metronome::Enum
           abstract!
@@ -122,7 +126,8 @@ module Metronome
           UNIQUE = :UNIQUE
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

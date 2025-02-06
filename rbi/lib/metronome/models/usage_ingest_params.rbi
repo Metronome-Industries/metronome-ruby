@@ -15,7 +15,8 @@ module Metronome
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
-      def initialize(usage:, request_options: {}); end
+      def initialize(usage:, request_options: {})
+      end
 
       sig do
         override.returns(
@@ -25,7 +26,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Usage < Metronome::BaseModel
         sig { returns(String) }
@@ -55,7 +57,8 @@ module Metronome
             properties: T::Hash[Symbol, T.anything]
           ).void
         end
-        def initialize(customer_id:, event_type:, timestamp:, transaction_id:, properties: nil); end
+        def initialize(customer_id:, event_type:, timestamp:, transaction_id:, properties: nil)
+        end
 
         sig do
           override.returns(
@@ -68,7 +71,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

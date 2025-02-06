@@ -38,7 +38,8 @@ module Metronome
         rollover_settings: nil,
         uniqueness_key: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -61,7 +62,8 @@ module Metronome
         effective_before: nil,
         not_expiring_before: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -72,7 +74,8 @@ module Metronome
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Metronome::Models::CreditGrantEditResponse)
       end
-      def edit(id:, credit_grant_type: nil, expires_at: nil, name: nil, request_options: {}); end
+      def edit(id:, credit_grant_type: nil, expires_at: nil, name: nil, request_options: {})
+      end
 
       sig do
         params(
@@ -91,7 +94,8 @@ module Metronome
         ending_before: nil,
         starting_on: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -101,10 +105,12 @@ module Metronome
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Metronome::Models::CreditGrantVoidResponse)
       end
-      def void(id:, release_uniqueness_key: nil, void_credit_purchase_invoice: nil, request_options: {}); end
+      def void(id:, release_uniqueness_key: nil, void_credit_purchase_invoice: nil, request_options: {})
+      end
 
       sig { params(client: Metronome::Client).void }
-      def initialize(client:); end
+      def initialize(client:)
+      end
     end
   end
 end

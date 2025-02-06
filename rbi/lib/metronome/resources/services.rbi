@@ -14,10 +14,12 @@ module Metronome
           )
         ).returns(Metronome::Models::ServiceListResponse)
       end
-      def list(request_options: {}); end
+      def list(request_options: {})
+      end
 
       sig { params(client: Metronome::Client).void }
-      def initialize(client:); end
+      def initialize(client:)
+      end
     end
   end
 end

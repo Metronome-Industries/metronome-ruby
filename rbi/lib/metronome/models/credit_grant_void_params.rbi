@@ -29,12 +29,7 @@ module Metronome
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
-      def initialize(
-        id:,
-        release_uniqueness_key: nil,
-        void_credit_purchase_invoice: nil,
-        request_options: {}
-      )
+      def initialize(id:, release_uniqueness_key: nil, void_credit_purchase_invoice: nil, request_options: {})
       end
 
       sig do
@@ -47,7 +42,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

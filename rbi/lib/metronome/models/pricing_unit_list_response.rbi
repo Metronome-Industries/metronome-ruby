@@ -22,10 +22,12 @@ module Metronome
       attr_writer :name
 
       sig { params(id: String, is_currency: T::Boolean, name: String).void }
-      def initialize(id: nil, is_currency: nil, name: nil); end
+      def initialize(id: nil, is_currency: nil, name: nil)
+      end
 
       sig { override.returns({id: String, is_currency: T::Boolean, name: String}) }
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

@@ -16,7 +16,8 @@ module Metronome
             next_page: T.nilable(String)
           ).void
         end
-        def initialize(data:, next_page: nil); end
+        def initialize(data:, next_page: nil)
+        end
 
         sig do
           override.returns(
@@ -26,7 +27,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class Data < Metronome::BaseModel
           sig { returns(T::Boolean) }
@@ -97,7 +99,8 @@ module Metronome
             commit_rate: nil,
             ending_before: nil,
             pricing_group_values: nil
-          ); end
+          )
+          end
 
           sig do
             override.returns(
@@ -115,7 +118,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class CommitRate < Metronome::BaseModel
             sig { returns(Symbol) }
@@ -134,12 +138,14 @@ module Metronome
             attr_writer :tiers
 
             sig { params(rate_type: Symbol, price: Float, tiers: T::Array[Metronome::Models::Tier]).void }
-            def initialize(rate_type:, price: nil, tiers: nil); end
+            def initialize(rate_type:, price: nil, tiers: nil)
+            end
 
             sig do
               override.returns({rate_type: Symbol, price: Float, tiers: T::Array[Metronome::Models::Tier]})
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class RateType < Metronome::Enum
               abstract!
@@ -151,7 +157,8 @@ module Metronome
               CUSTOM = :CUSTOM
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
           end
         end

@@ -71,7 +71,8 @@ module Metronome
         resource_id: nil,
         resource_type: nil,
         status: nil
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -88,7 +89,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Request < Metronome::BaseModel
         sig { returns(String) }
@@ -107,10 +109,12 @@ module Metronome
         attr_writer :user_agent
 
         sig { params(id: String, ip: String, user_agent: String).void }
-        def initialize(id:, ip: nil, user_agent: nil); end
+        def initialize(id:, ip: nil, user_agent: nil)
+        end
 
         sig { override.returns({id: String, ip: String, user_agent: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class Actor < Metronome::BaseModel
@@ -127,10 +131,12 @@ module Metronome
         attr_writer :email
 
         sig { params(id: String, name: String, email: String).void }
-        def initialize(id:, name:, email: nil); end
+        def initialize(id:, name:, email: nil)
+        end
 
         sig { override.returns({id: String, name: String, email: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class Status < Metronome::Enum
@@ -141,7 +147,8 @@ module Metronome
         PENDING = :pending
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

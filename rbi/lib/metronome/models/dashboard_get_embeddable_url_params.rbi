@@ -59,7 +59,8 @@ module Metronome
         color_overrides: nil,
         dashboard_options: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -73,7 +74,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Dashboard < Metronome::Enum
         abstract!
@@ -83,7 +85,8 @@ module Metronome
         CREDITS = :credits
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class BmGroupKeyOverride < Metronome::BaseModel
@@ -109,7 +112,8 @@ module Metronome
             value_display_names: T::Hash[Symbol, T.anything]
           ).void
         end
-        def initialize(group_key_name:, display_name: nil, value_display_names: nil); end
+        def initialize(group_key_name:, display_name: nil, value_display_names: nil)
+        end
 
         sig do
           override.returns(
@@ -120,7 +124,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class ColorOverride < Metronome::BaseModel
@@ -137,10 +142,12 @@ module Metronome
         attr_writer :value
 
         sig { params(name: Symbol, value: String).void }
-        def initialize(name: nil, value: nil); end
+        def initialize(name: nil, value: nil)
+        end
 
         sig { override.returns({name: Symbol, value: String}) }
-        def to_hash; end
+        def to_hash
+        end
 
         class Name < Metronome::Enum
           abstract!
@@ -166,7 +173,8 @@ module Metronome
           PRIMARY_RED = :Primary_red
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
 
@@ -178,10 +186,12 @@ module Metronome
         attr_accessor :value
 
         sig { params(key: String, value: String).void }
-        def initialize(key:, value:); end
+        def initialize(key:, value:)
+        end
 
         sig { override.returns({key: String, value: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

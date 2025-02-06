@@ -19,10 +19,12 @@ module Metronome
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
-      def initialize(entity:, key:, request_options: {}); end
+      def initialize(entity:, key:, request_options: {})
+      end
 
       sig { override.returns({entity: Symbol, key: String, request_options: Metronome::RequestOptions}) }
-      def to_hash; end
+      def to_hash
+      end
 
       class Entity < Metronome::Enum
         abstract!
@@ -46,7 +48,8 @@ module Metronome
         SCHEDULED_CHARGE = :scheduled_charge
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

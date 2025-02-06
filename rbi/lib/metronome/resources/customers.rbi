@@ -43,7 +43,8 @@ module Metronome
         external_id: nil,
         ingest_aliases: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -51,7 +52,8 @@ module Metronome
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Metronome::Models::CustomerRetrieveResponse)
       end
-      def retrieve(customer_id:, request_options: {}); end
+      def retrieve(customer_id:, request_options: {})
+      end
 
       sig do
         params(
@@ -72,7 +74,8 @@ module Metronome
         only_archived: nil,
         salesforce_account_ids: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -80,7 +83,8 @@ module Metronome
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Metronome::Models::CustomerArchiveResponse)
       end
-      def archive(id:, request_options: {}); end
+      def archive(id:, request_options: {})
+      end
 
       sig do
         params(
@@ -129,7 +133,8 @@ module Metronome
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).void
       end
-      def set_ingest_aliases(customer_id:, ingest_aliases:, request_options: {}); end
+      def set_ingest_aliases(customer_id:, ingest_aliases:, request_options: {})
+      end
 
       sig do
         params(
@@ -138,7 +143,8 @@ module Metronome
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Metronome::Models::CustomerSetNameResponse)
       end
-      def set_name(customer_id:, name:, request_options: {}); end
+      def set_name(customer_id:, name:, request_options: {})
+      end
 
       sig do
         params(
@@ -157,7 +163,8 @@ module Metronome
       end
 
       sig { params(client: Metronome::Client).void }
-      def initialize(client:); end
+      def initialize(client:)
+      end
     end
   end
 end

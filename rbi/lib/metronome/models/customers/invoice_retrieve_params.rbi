@@ -27,7 +27,8 @@ module Metronome
             request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
           ).void
         end
-        def initialize(customer_id:, invoice_id:, skip_zero_qty_line_items: nil, request_options: {}); end
+        def initialize(customer_id:, invoice_id:, skip_zero_qty_line_items: nil, request_options: {})
+        end
 
         sig do
           override.returns(
@@ -39,7 +40,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

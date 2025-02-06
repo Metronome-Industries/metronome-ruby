@@ -21,7 +21,8 @@ module Metronome
           schedule_items: T::Array[Metronome::Models::SchedulePointInTime::ScheduleItem]
         ).void
       end
-      def initialize(credit_type: nil, schedule_items: nil); end
+      def initialize(credit_type: nil, schedule_items: nil)
+      end
 
       sig do
         override.returns(
@@ -31,7 +32,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class ScheduleItem < Metronome::BaseModel
         sig { returns(String) }
@@ -62,7 +64,8 @@ module Metronome
             unit_price: Float
           ).void
         end
-        def initialize(id:, amount:, invoice_id:, quantity:, timestamp:, unit_price:); end
+        def initialize(id:, amount:, invoice_id:, quantity:, timestamp:, unit_price:)
+        end
 
         sig do
           override.returns(
@@ -76,7 +79,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

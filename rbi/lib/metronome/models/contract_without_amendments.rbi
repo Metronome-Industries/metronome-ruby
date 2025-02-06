@@ -174,7 +174,8 @@ module Metronome
         scheduled_charges_on_usage_invoices: nil,
         total_contract_value: nil,
         usage_filter: nil
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -205,7 +206,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Transition < Metronome::BaseModel
         sig { returns(String) }
@@ -218,10 +220,12 @@ module Metronome
         attr_accessor :type
 
         sig { params(from_contract_id: String, to_contract_id: String, type: Symbol).void }
-        def initialize(from_contract_id:, to_contract_id:, type:); end
+        def initialize(from_contract_id:, to_contract_id:, type:)
+        end
 
         sig { override.returns({from_contract_id: String, to_contract_id: String, type: Symbol}) }
-        def to_hash; end
+        def to_hash
+        end
 
         class Type < Metronome::Enum
           abstract!
@@ -230,7 +234,8 @@ module Metronome
           RENEWAL = :RENEWAL
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
 
@@ -242,10 +247,12 @@ module Metronome
         attr_accessor :frequency
 
         sig { params(billing_anchor_date: Time, frequency: Symbol).void }
-        def initialize(billing_anchor_date:, frequency:); end
+        def initialize(billing_anchor_date:, frequency:)
+        end
 
         sig { override.returns({billing_anchor_date: Time, frequency: Symbol}) }
-        def to_hash; end
+        def to_hash
+        end
 
         class Frequency < Metronome::Enum
           abstract!
@@ -255,7 +262,8 @@ module Metronome
           ANNUAL = :ANNUAL
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
 
@@ -376,7 +384,8 @@ module Metronome
           name: nil,
           netsuite_sales_order_id: nil,
           rollover_fraction: nil
-        ); end
+        )
+        end
 
         sig do
           override.returns(
@@ -400,7 +409,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class AccessAmount < Metronome::BaseModel
           sig { returns(String) }
@@ -413,10 +423,12 @@ module Metronome
           attr_accessor :unit_price
 
           sig { params(credit_type_id: String, quantity: Float, unit_price: Float).void }
-          def initialize(credit_type_id:, quantity:, unit_price:); end
+          def initialize(credit_type_id:, quantity:, unit_price:)
+          end
 
           sig { override.returns({credit_type_id: String, quantity: Float, unit_price: Float}) }
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class CommitDuration < Metronome::BaseModel
@@ -430,10 +442,12 @@ module Metronome
           attr_writer :unit
 
           sig { params(value: Float, unit: Symbol).void }
-          def initialize(value:, unit: nil); end
+          def initialize(value:, unit: nil)
+          end
 
           sig { override.returns({value: Float, unit: Symbol}) }
-          def to_hash; end
+          def to_hash
+          end
 
           class Unit < Metronome::Enum
             abstract!
@@ -441,7 +455,8 @@ module Metronome
             PERIODS = :PERIODS
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
 
@@ -453,10 +468,12 @@ module Metronome
           attr_accessor :name
 
           sig { params(id: String, name: String).void }
-          def initialize(id:, name:); end
+          def initialize(id:, name:)
+          end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class RateType < Metronome::Enum
@@ -466,7 +483,8 @@ module Metronome
           LIST_RATE = :LIST_RATE
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
         class Contract < Metronome::BaseModel
@@ -474,10 +492,12 @@ module Metronome
           attr_accessor :id
 
           sig { params(id: String).void }
-          def initialize(id:); end
+          def initialize(id:)
+          end
 
           sig { override.returns({id: String}) }
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class InvoiceAmount < Metronome::BaseModel
@@ -491,10 +511,12 @@ module Metronome
           attr_accessor :unit_price
 
           sig { params(credit_type_id: String, quantity: Float, unit_price: Float).void }
-          def initialize(credit_type_id:, quantity:, unit_price:); end
+          def initialize(credit_type_id:, quantity:, unit_price:)
+          end
 
           sig { override.returns({credit_type_id: String, quantity: Float, unit_price: Float}) }
-          def to_hash; end
+          def to_hash
+          end
         end
       end
 
@@ -615,7 +637,8 @@ module Metronome
           name: nil,
           netsuite_sales_order_id: nil,
           rollover_fraction: nil
-        ); end
+        )
+        end
 
         sig do
           override.returns(
@@ -639,7 +662,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class AccessAmount < Metronome::BaseModel
           sig { returns(String) }
@@ -652,10 +676,12 @@ module Metronome
           attr_accessor :unit_price
 
           sig { params(credit_type_id: String, quantity: Float, unit_price: Float).void }
-          def initialize(credit_type_id:, quantity:, unit_price:); end
+          def initialize(credit_type_id:, quantity:, unit_price:)
+          end
 
           sig { override.returns({credit_type_id: String, quantity: Float, unit_price: Float}) }
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class CommitDuration < Metronome::BaseModel
@@ -669,10 +695,12 @@ module Metronome
           attr_writer :unit
 
           sig { params(value: Float, unit: Symbol).void }
-          def initialize(value:, unit: nil); end
+          def initialize(value:, unit: nil)
+          end
 
           sig { override.returns({value: Float, unit: Symbol}) }
-          def to_hash; end
+          def to_hash
+          end
 
           class Unit < Metronome::Enum
             abstract!
@@ -680,7 +708,8 @@ module Metronome
             PERIODS = :PERIODS
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
 
@@ -692,10 +721,12 @@ module Metronome
           attr_accessor :name
 
           sig { params(id: String, name: String).void }
-          def initialize(id:, name:); end
+          def initialize(id:, name:)
+          end
 
           sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class RateType < Metronome::Enum
@@ -705,7 +736,8 @@ module Metronome
           LIST_RATE = :LIST_RATE
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
         class Contract < Metronome::BaseModel
@@ -713,10 +745,12 @@ module Metronome
           attr_accessor :id
 
           sig { params(id: String).void }
-          def initialize(id:); end
+          def initialize(id:)
+          end
 
           sig { override.returns({id: String}) }
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class InvoiceAmount < Metronome::BaseModel
@@ -730,10 +764,12 @@ module Metronome
           attr_accessor :unit_price
 
           sig { params(credit_type_id: String, quantity: Float, unit_price: Float).void }
-          def initialize(credit_type_id:, quantity:, unit_price:); end
+          def initialize(credit_type_id:, quantity:, unit_price:)
+          end
 
           sig { override.returns({credit_type_id: String, quantity: Float, unit_price: Float}) }
-          def to_hash; end
+          def to_hash
+          end
         end
       end
 
@@ -835,7 +871,8 @@ module Metronome
           gcp_account_id: nil,
           gcp_offer_id: nil,
           reseller_contract_value: nil
-        ); end
+        )
+        end
 
         sig do
           override.returns(
@@ -856,7 +893,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class ResellerType < Metronome::Enum
           abstract!
@@ -867,7 +905,8 @@ module Metronome
           GCP_PRO_SERVICE = :GCP_PRO_SERVICE
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
 
@@ -877,7 +916,8 @@ module Metronome
         ALL = :ALL
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class UsageFilter < Metronome::BaseModel
@@ -897,7 +937,8 @@ module Metronome
             updates: T::Array[Metronome::Models::ContractWithoutAmendments::UsageFilter::Update]
           ).void
         end
-        def initialize(current:, initial:, updates:); end
+        def initialize(current:, initial:, updates:)
+        end
 
         sig do
           override.returns(
@@ -908,7 +949,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class Update < Metronome::BaseModel
           sig { returns(String) }
@@ -921,10 +963,12 @@ module Metronome
           attr_accessor :starting_at
 
           sig { params(group_key: String, group_values: T::Array[String], starting_at: Time).void }
-          def initialize(group_key:, group_values:, starting_at:); end
+          def initialize(group_key:, group_values:, starting_at:)
+          end
 
           sig { override.returns({group_key: String, group_values: T::Array[String], starting_at: Time}) }
-          def to_hash; end
+          def to_hash
+          end
         end
       end
     end

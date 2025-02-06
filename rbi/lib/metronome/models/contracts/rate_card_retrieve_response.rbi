@@ -8,10 +8,12 @@ module Metronome
         attr_accessor :data
 
         sig { params(data: Metronome::Models::Contracts::RateCardRetrieveResponse::Data).void }
-        def initialize(data:); end
+        def initialize(data:)
+        end
 
         sig { override.returns({data: Metronome::Models::Contracts::RateCardRetrieveResponse::Data}) }
-        def to_hash; end
+        def to_hash
+        end
 
         class Data < Metronome::BaseModel
           sig { returns(String) }
@@ -89,7 +91,8 @@ module Metronome
             custom_fields: nil,
             description: nil,
             fiat_credit_type: nil
-          ); end
+          )
+          end
 
           sig do
             override.returns(
@@ -106,7 +109,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class Alias < Metronome::BaseModel
             sig { returns(String) }
@@ -125,10 +129,12 @@ module Metronome
             attr_writer :starting_at
 
             sig { params(name: String, ending_before: Time, starting_at: Time).void }
-            def initialize(name:, ending_before: nil, starting_at: nil); end
+            def initialize(name:, ending_before: nil, starting_at: nil)
+            end
 
             sig { override.returns({name: String, ending_before: Time, starting_at: Time}) }
-            def to_hash; end
+            def to_hash
+            end
           end
 
           class CreditTypeConversion < Metronome::BaseModel
@@ -144,7 +150,8 @@ module Metronome
                 fiat_per_custom_credit: String
               ).void
             end
-            def initialize(custom_credit_type:, fiat_per_custom_credit:); end
+            def initialize(custom_credit_type:, fiat_per_custom_credit:)
+            end
 
             sig do
               override.returns(
@@ -154,7 +161,8 @@ module Metronome
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
           end
         end
       end

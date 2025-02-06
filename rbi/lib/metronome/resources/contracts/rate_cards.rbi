@@ -32,7 +32,8 @@ module Metronome
           description: nil,
           fiat_credit_type_id: nil,
           request_options: {}
-        ); end
+        )
+        end
 
         sig do
           params(
@@ -40,7 +41,8 @@ module Metronome
             request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::Models::Contracts::RateCardRetrieveResponse)
         end
-        def retrieve(id:, request_options: {}); end
+        def retrieve(id:, request_options: {})
+        end
 
         sig do
           params(
@@ -51,7 +53,8 @@ module Metronome
             request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::Models::Contracts::RateCardUpdateResponse)
         end
-        def update(rate_card_id:, aliases: nil, description: nil, name: nil, request_options: {}); end
+        def update(rate_card_id:, aliases: nil, description: nil, name: nil, request_options: {})
+        end
 
         sig do
           params(
@@ -61,7 +64,8 @@ module Metronome
             request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::CursorPage[Metronome::Models::Contracts::RateCardListResponse])
         end
-        def list(body:, limit: nil, next_page: nil, request_options: {}); end
+        def list(body:, limit: nil, next_page: nil, request_options: {})
+        end
 
         sig do
           params(
@@ -82,10 +86,12 @@ module Metronome
           ending_before: nil,
           selectors: nil,
           request_options: {}
-        ); end
+        )
+        end
 
         sig { params(client: Metronome::Client).void }
-        def initialize(client:); end
+        def initialize(client:)
+        end
       end
     end
   end

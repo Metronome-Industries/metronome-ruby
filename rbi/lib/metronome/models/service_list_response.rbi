@@ -7,10 +7,12 @@ module Metronome
       attr_accessor :services
 
       sig { params(services: T::Array[Metronome::Models::ServiceListResponse::Service]).void }
-      def initialize(services:); end
+      def initialize(services:)
+      end
 
       sig { override.returns({services: T::Array[Metronome::Models::ServiceListResponse::Service]}) }
-      def to_hash; end
+      def to_hash
+      end
 
       class Service < Metronome::BaseModel
         sig { returns(T::Array[String]) }
@@ -23,10 +25,12 @@ module Metronome
         attr_accessor :usage
 
         sig { params(ips: T::Array[String], name: String, usage: Symbol).void }
-        def initialize(ips:, name:, usage:); end
+        def initialize(ips:, name:, usage:)
+        end
 
         sig { override.returns({ips: T::Array[String], name: String, usage: Symbol}) }
-        def to_hash; end
+        def to_hash
+        end
 
         class Usage < Metronome::Enum
           abstract!
@@ -35,7 +39,8 @@ module Metronome
           ACCEPTS_CONNECTIONS_AT = :accepts_connections_at
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

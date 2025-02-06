@@ -60,7 +60,8 @@ module Metronome
           ending_before: nil,
           selectors: nil,
           request_options: {}
-        ); end
+        )
+        end
 
         sig do
           override.returns(
@@ -75,7 +76,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class Selector < Metronome::BaseModel
           sig { returns(T.nilable(T::Hash[Symbol, String])) }
@@ -103,7 +105,8 @@ module Metronome
               product_id: String
             ).void
           end
-          def initialize(partial_pricing_group_values: nil, pricing_group_values: nil, product_id: nil); end
+          def initialize(partial_pricing_group_values: nil, pricing_group_values: nil, product_id: nil)
+          end
 
           sig do
             override.returns(
@@ -114,7 +117,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
         end
       end
     end

@@ -71,7 +71,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class CreditGrant < Metronome::BaseModel
         sig { returns(Float) }
@@ -143,7 +144,8 @@ module Metronome
           reason: nil,
           recurrence_duration: nil,
           recurrence_interval: nil
-        ); end
+        )
+        end
 
         sig do
           override.returns(
@@ -162,7 +164,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class Minimum < Metronome::BaseModel
@@ -186,7 +189,8 @@ module Metronome
             value: Float
           ).void
         end
-        def initialize(credit_type:, name:, start_period:, value:); end
+        def initialize(credit_type:, name:, start_period:, value:)
+        end
 
         sig do
           override.returns(
@@ -198,7 +202,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class OverageRate < Metronome::BaseModel
@@ -222,7 +227,8 @@ module Metronome
             to_fiat_conversion_factor: Float
           ).void
         end
-        def initialize(credit_type:, fiat_credit_type:, start_period:, to_fiat_conversion_factor:); end
+        def initialize(credit_type:, fiat_credit_type:, start_period:, to_fiat_conversion_factor:)
+        end
 
         sig do
           override.returns(
@@ -234,7 +240,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

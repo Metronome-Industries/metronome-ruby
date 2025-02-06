@@ -22,7 +22,8 @@ module Metronome
         billable_metrics: nil,
         customer_ids: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -30,7 +31,8 @@ module Metronome
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).void
       end
-      def ingest(usage:, request_options: {}); end
+      def ingest(usage:, request_options: {})
+      end
 
       sig do
         params(
@@ -57,10 +59,12 @@ module Metronome
         group_by: nil,
         starting_on: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig { params(client: Metronome::Client).void }
-      def initialize(client:); end
+      def initialize(client:)
+      end
     end
   end
 end

@@ -17,10 +17,12 @@ module Metronome
         attr_writer :name
 
         sig { params(conversion_factor: Float, operation: Symbol, name: String).void }
-        def initialize(conversion_factor:, operation:, name: nil); end
+        def initialize(conversion_factor:, operation:, name: nil)
+        end
 
         sig { override.returns({conversion_factor: Float, operation: Symbol, name: String}) }
-        def to_hash; end
+        def to_hash
+        end
 
         class Operation < Metronome::Enum
           abstract!
@@ -29,7 +31,8 @@ module Metronome
           DIVIDE = :DIVIDE
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

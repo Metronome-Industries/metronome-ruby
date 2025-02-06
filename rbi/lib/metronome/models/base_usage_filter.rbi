@@ -16,10 +16,12 @@ module Metronome
       attr_writer :starting_at
 
       sig { params(group_key: String, group_values: T::Array[String], starting_at: Time).void }
-      def initialize(group_key:, group_values:, starting_at: nil); end
+      def initialize(group_key:, group_values:, starting_at: nil)
+      end
 
       sig { override.returns({group_key: String, group_values: T::Array[String], starting_at: Time}) }
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

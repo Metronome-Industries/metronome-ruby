@@ -8,12 +8,14 @@ module Metronome
         attr_accessor :data
 
         sig { params(data: T::Array[Metronome::Models::Contracts::NamedScheduleRetrieveResponse::Data]).void }
-        def initialize(data:); end
+        def initialize(data:)
+        end
 
         sig do
           override.returns({data: T::Array[Metronome::Models::Contracts::NamedScheduleRetrieveResponse::Data]})
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class Data < Metronome::BaseModel
           sig { returns(Time) }
@@ -29,10 +31,12 @@ module Metronome
           attr_writer :ending_before
 
           sig { params(starting_at: Time, value: T.anything, ending_before: Time).void }
-          def initialize(starting_at:, value:, ending_before: nil); end
+          def initialize(starting_at:, value:, ending_before: nil)
+          end
 
           sig { override.returns({starting_at: Time, value: T.anything, ending_before: Time}) }
-          def to_hash; end
+          def to_hash
+          end
         end
       end
     end

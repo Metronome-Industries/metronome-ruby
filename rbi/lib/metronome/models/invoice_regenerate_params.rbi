@@ -18,10 +18,12 @@ module Metronome
           )
         ).void
       end
-      def initialize(id:, request_options: {}); end
+      def initialize(id:, request_options: {})
+      end
 
       sig { override.returns({id: String, request_options: Metronome::RequestOptions}) }
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

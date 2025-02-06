@@ -39,7 +39,8 @@ module Metronome
           quantity_rounding: nil,
           tags: nil,
           request_options: {}
-        ); end
+        )
+        end
 
         sig do
           params(
@@ -47,7 +48,8 @@ module Metronome
             request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::Models::Contracts::ProductRetrieveResponse)
         end
-        def retrieve(id:, request_options: {}); end
+        def retrieve(id:, request_options: {})
+        end
 
         sig do
           params(
@@ -86,7 +88,8 @@ module Metronome
           quantity_rounding: nil,
           tags: nil,
           request_options: {}
-        ); end
+        )
+        end
 
         sig do
           params(
@@ -96,7 +99,8 @@ module Metronome
             request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::CursorPage[Metronome::Models::Contracts::ProductListResponse])
         end
-        def list(limit: nil, next_page: nil, archive_filter: nil, request_options: {}); end
+        def list(limit: nil, next_page: nil, archive_filter: nil, request_options: {})
+        end
 
         sig do
           params(
@@ -104,10 +108,12 @@ module Metronome
             request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::Models::Contracts::ProductArchiveResponse)
         end
-        def archive(product_id:, request_options: {}); end
+        def archive(product_id:, request_options: {})
+        end
 
         sig { params(client: Metronome::Client).void }
-        def initialize(client:); end
+        def initialize(client:)
+        end
       end
     end
   end

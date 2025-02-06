@@ -77,7 +77,8 @@ module Metronome
         quantity: nil,
         tiers: nil,
         use_list_prices: nil
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -94,7 +95,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class RateType < Metronome::Enum
         abstract!
@@ -106,7 +108,8 @@ module Metronome
         TIERED = :TIERED
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

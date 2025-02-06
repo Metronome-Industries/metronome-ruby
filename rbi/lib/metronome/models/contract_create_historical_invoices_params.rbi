@@ -19,7 +19,8 @@ module Metronome
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
-      def initialize(invoices:, preview:, request_options: {}); end
+      def initialize(invoices:, preview:, request_options: {})
+      end
 
       sig do
         override.returns(
@@ -30,7 +31,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Invoice < Metronome::BaseModel
         sig { returns(String) }
@@ -99,7 +101,8 @@ module Metronome
           billable_status: nil,
           breakdown_granularity: nil,
           custom_fields: nil
-        ); end
+        )
+        end
 
         sig do
           override.returns(
@@ -117,7 +120,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class UsageLineItem < Metronome::BaseModel
           sig { returns(Time) }
@@ -178,7 +182,8 @@ module Metronome
             pricing_group_values: nil,
             quantity: nil,
             subtotals_with_quantity: nil
-          ); end
+          )
+          end
 
           sig do
             override.returns(
@@ -193,7 +198,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class SubtotalsWithQuantity < Metronome::BaseModel
             sig { returns(Time) }
@@ -206,10 +212,12 @@ module Metronome
             attr_accessor :quantity
 
             sig { params(exclusive_end_date: Time, inclusive_start_date: Time, quantity: Float).void }
-            def initialize(exclusive_end_date:, inclusive_start_date:, quantity:); end
+            def initialize(exclusive_end_date:, inclusive_start_date:, quantity:)
+            end
 
             sig { override.returns({exclusive_end_date: Time, inclusive_start_date: Time, quantity: Float}) }
-            def to_hash; end
+            def to_hash
+            end
           end
         end
 
@@ -220,7 +228,8 @@ module Metronome
           UNBILLABLE = :unbillable
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
         class BreakdownGranularity < Metronome::Enum
@@ -230,7 +239,8 @@ module Metronome
           DAY = :DAY
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

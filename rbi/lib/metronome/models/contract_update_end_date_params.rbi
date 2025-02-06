@@ -39,7 +39,8 @@ module Metronome
         allow_ending_before_finalized_invoice: nil,
         ending_before: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -52,7 +53,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

@@ -36,7 +36,8 @@ module Metronome
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
-      def initialize(plan_id:, limit: nil, next_page: nil, status: nil, request_options: {}); end
+      def initialize(plan_id:, limit: nil, next_page: nil, status: nil, request_options: {})
+      end
 
       sig do
         override.returns(
@@ -49,7 +50,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Status < Metronome::Enum
         abstract!
@@ -60,7 +62,8 @@ module Metronome
         UPCOMING = :upcoming
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

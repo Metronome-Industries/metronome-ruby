@@ -12,7 +12,8 @@ module Metronome
             request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::Models::Customers::InvoiceRetrieveResponse)
         end
-        def retrieve(customer_id:, invoice_id:, skip_zero_qty_line_items: nil, request_options: {}); end
+        def retrieve(customer_id:, invoice_id:, skip_zero_qty_line_items: nil, request_options: {})
+        end
 
         sig do
           params(
@@ -39,7 +40,8 @@ module Metronome
           starting_on: nil,
           status: nil,
           request_options: {}
-        ); end
+        )
+        end
 
         sig do
           params(
@@ -62,7 +64,8 @@ module Metronome
           price:,
           quantity:,
           request_options: {}
-        ); end
+        )
+        end
 
         sig do
           params(
@@ -91,10 +94,12 @@ module Metronome
           status: nil,
           window_size: nil,
           request_options: {}
-        ); end
+        )
+        end
 
         sig { params(client: Metronome::Client).void }
-        def initialize(client:); end
+        def initialize(client:)
+        end
       end
     end
   end

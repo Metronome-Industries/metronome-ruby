@@ -11,10 +11,12 @@ module Metronome
         attr_accessor :rounding_method
 
         sig { params(decimal_places: Float, rounding_method: Symbol).void }
-        def initialize(decimal_places:, rounding_method:); end
+        def initialize(decimal_places:, rounding_method:)
+        end
 
         sig { override.returns({decimal_places: Float, rounding_method: Symbol}) }
-        def to_hash; end
+        def to_hash
+        end
 
         class RoundingMethod < Metronome::Enum
           abstract!
@@ -24,7 +26,8 @@ module Metronome
           ROUND_HALF_UP = :ROUND_HALF_UP
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

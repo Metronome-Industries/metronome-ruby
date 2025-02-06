@@ -11,10 +11,12 @@ module Metronome
         attr_accessor :next_page
 
         sig { params(data: T::Array[Metronome::Models::Commit], next_page: T.nilable(String)).void }
-        def initialize(data:, next_page:); end
+        def initialize(data:, next_page:)
+        end
 
         sig { override.returns({data: T::Array[Metronome::Models::Commit], next_page: T.nilable(String)}) }
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

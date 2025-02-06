@@ -76,7 +76,8 @@ module Metronome
         group_by: nil,
         starting_on: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -94,7 +95,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class WindowSize < Metronome::Enum
         abstract!
@@ -104,7 +106,8 @@ module Metronome
         NONE = :NONE
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class GroupBy < Metronome::BaseModel
@@ -118,10 +121,12 @@ module Metronome
         attr_writer :values
 
         sig { params(key: String, values: T::Array[String]).void }
-        def initialize(key:, values: nil); end
+        def initialize(key:, values: nil)
+        end
 
         sig { override.returns({key: String, values: T::Array[String]}) }
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

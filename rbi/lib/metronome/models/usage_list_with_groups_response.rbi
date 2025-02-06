@@ -27,7 +27,8 @@ module Metronome
           value: T.nilable(Float)
         ).void
       end
-      def initialize(ending_before:, group_key:, group_value:, starting_on:, value:); end
+      def initialize(ending_before:, group_key:, group_value:, starting_on:, value:)
+      end
 
       sig do
         override.returns(
@@ -40,7 +41,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

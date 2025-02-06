@@ -33,7 +33,8 @@ module Metronome
             request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
           ).void
         end
-        def initialize(limit: nil, next_page: nil, archive_filter: nil, request_options: {}); end
+        def initialize(limit: nil, next_page: nil, archive_filter: nil, request_options: {})
+        end
 
         sig do
           override.returns(
@@ -45,7 +46,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class ArchiveFilter < Metronome::Enum
           abstract!
@@ -55,7 +57,8 @@ module Metronome
           ALL = :ALL
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

@@ -12,7 +12,8 @@ module Metronome
             request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::Models::Contracts::NamedScheduleRetrieveResponse)
         end
-        def retrieve(rate_card_id:, schedule_name:, covering_date: nil, request_options: {}); end
+        def retrieve(rate_card_id:, schedule_name:, covering_date: nil, request_options: {})
+        end
 
         sig do
           params(
@@ -35,7 +36,8 @@ module Metronome
         end
 
         sig { params(client: Metronome::Client).void }
-        def initialize(client:); end
+        def initialize(client:)
+        end
       end
     end
   end

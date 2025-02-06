@@ -69,7 +69,8 @@ module Metronome
         sort: nil,
         starting_on: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -85,7 +86,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Sort < Metronome::Enum
         abstract!
@@ -94,7 +96,8 @@ module Metronome
         DATE_DESC = :date_desc
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

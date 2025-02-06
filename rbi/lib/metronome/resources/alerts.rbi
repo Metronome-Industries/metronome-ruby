@@ -36,7 +36,8 @@ module Metronome
         plan_id: nil,
         uniqueness_key: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -45,10 +46,12 @@ module Metronome
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Metronome::Models::AlertArchiveResponse)
       end
-      def archive(id:, release_uniqueness_key: nil, request_options: {}); end
+      def archive(id:, release_uniqueness_key: nil, request_options: {})
+      end
 
       sig { params(client: Metronome::Client).void }
-      def initialize(client:); end
+      def initialize(client:)
+      end
     end
   end
 end
