@@ -63,7 +63,8 @@ module Metronome
           ending_before: nil,
           net_payment_terms_days: nil,
           trial_info: nil
-        ); end
+        )
+        end
 
         sig do
           override.returns(
@@ -80,7 +81,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class TrialInfo < Metronome::BaseModel
           sig { returns(Time) }
@@ -95,7 +97,8 @@ module Metronome
               spending_caps: T::Array[Metronome::Models::Customers::PlanListResponse::TrialInfo::SpendingCap]
             ).void
           end
-          def initialize(ending_before:, spending_caps:); end
+          def initialize(ending_before:, spending_caps:)
+          end
 
           sig do
             override.returns(
@@ -105,7 +108,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class SpendingCap < Metronome::BaseModel
             sig { returns(Float) }
@@ -124,7 +128,8 @@ module Metronome
                 credit_type: Metronome::Models::CreditTypeData
               ).void
             end
-            def initialize(amount:, amount_remaining:, credit_type:); end
+            def initialize(amount:, amount_remaining:, credit_type:)
+            end
 
             sig do
               override.returns(
@@ -135,7 +140,8 @@ module Metronome
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
           end
         end
       end

@@ -8,10 +8,12 @@ module Metronome
         attr_accessor :data
 
         sig { params(data: Metronome::Models::Customers::BillingConfigRetrieveResponse::Data).void }
-        def initialize(data:); end
+        def initialize(data:)
+        end
 
         sig { override.returns({data: Metronome::Models::Customers::BillingConfigRetrieveResponse::Data}) }
-        def to_hash; end
+        def to_hash
+        end
 
         class Data < Metronome::BaseModel
           sig { returns(T.nilable(Time)) }
@@ -91,7 +93,8 @@ module Metronome
             azure_subscription_status: nil,
             billing_provider_customer_id: nil,
             stripe_collection_method: nil
-          ); end
+          )
+          end
 
           sig do
             override.returns(
@@ -108,7 +111,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class AwsRegion < Metronome::Enum
             abstract!
@@ -140,7 +144,8 @@ module Metronome
             US_WEST_2 = :"us-west-2"
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
 
           class AzureSubscriptionStatus < Metronome::Enum
@@ -152,7 +157,8 @@ module Metronome
             PENDING_FULFILLMENT_START = :PendingFulfillmentStart
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
 
           class StripeCollectionMethod < Metronome::Enum
@@ -162,7 +168,8 @@ module Metronome
             SEND_INVOICE = :send_invoice
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
       end

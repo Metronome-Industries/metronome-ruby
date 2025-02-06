@@ -23,7 +23,8 @@ module Metronome
               request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
             ).void
           end
-          def initialize(product_moves:, rate_card_id:, request_options: {}); end
+          def initialize(product_moves:, rate_card_id:, request_options: {})
+          end
 
           sig do
             override.returns(
@@ -32,7 +33,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class ProductMove < Metronome::BaseModel
             sig { returns(Float) }
@@ -42,10 +44,12 @@ module Metronome
             attr_accessor :product_id
 
             sig { params(position: Float, product_id: String).void }
-            def initialize(position:, product_id:); end
+            def initialize(position:, product_id:)
+            end
 
             sig { override.returns({position: Float, product_id: String}) }
-            def to_hash; end
+            def to_hash
+            end
           end
         end
       end

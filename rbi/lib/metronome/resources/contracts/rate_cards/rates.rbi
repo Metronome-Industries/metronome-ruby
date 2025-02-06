@@ -15,7 +15,8 @@ module Metronome
               request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
             ).returns(Metronome::CursorPage[Metronome::Models::Contracts::RateCards::RateListResponse])
           end
-          def list(at:, rate_card_id:, limit: nil, next_page: nil, selectors: nil, request_options: {}); end
+          def list(at:, rate_card_id:, limit: nil, next_page: nil, selectors: nil, request_options: {})
+          end
 
           sig do
             params(
@@ -54,7 +55,8 @@ module Metronome
             tiers: nil,
             use_list_prices: nil,
             request_options: {}
-          ); end
+          )
+          end
 
           sig do
             params(
@@ -63,10 +65,12 @@ module Metronome
               request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
             ).returns(Metronome::Models::Contracts::RateCards::RateAddManyResponse)
           end
-          def add_many(rate_card_id:, rates:, request_options: {}); end
+          def add_many(rate_card_id:, rates:, request_options: {})
+          end
 
           sig { params(client: Metronome::Client).void }
-          def initialize(client:); end
+          def initialize(client:)
+          end
         end
       end
     end

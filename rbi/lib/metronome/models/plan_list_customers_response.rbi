@@ -15,7 +15,8 @@ module Metronome
           plan_details: Metronome::Models::PlanListCustomersResponse::PlanDetails
         ).void
       end
-      def initialize(customer_details:, plan_details:); end
+      def initialize(customer_details:, plan_details:)
+      end
 
       sig do
         override.returns(
@@ -25,7 +26,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class PlanDetails < Metronome::BaseModel
         sig { returns(String) }
@@ -56,7 +58,8 @@ module Metronome
             ending_before: T.nilable(Time)
           ).void
         end
-        def initialize(id:, custom_fields:, customer_plan_id:, name:, starting_on:, ending_before: nil); end
+        def initialize(id:, custom_fields:, customer_plan_id:, name:, starting_on:, ending_before: nil)
+        end
 
         sig do
           override.returns(
@@ -70,7 +73,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

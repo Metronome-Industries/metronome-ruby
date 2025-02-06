@@ -19,7 +19,8 @@ module Metronome
           start_timestamp: Time
         ).void
       end
-      def initialize(credit_types:, end_timestamp:, start_timestamp:); end
+      def initialize(credit_types:, end_timestamp:, start_timestamp:)
+      end
 
       sig do
         override.returns(
@@ -30,7 +31,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class CreditType < Metronome::BaseModel
         sig { returns(T.nilable(Float)) }
@@ -64,7 +66,8 @@ module Metronome
             name: String
           ).void
         end
-        def initialize(cost: nil, line_item_breakdown: nil, name: nil); end
+        def initialize(cost: nil, line_item_breakdown: nil, name: nil)
+        end
 
         sig do
           override.returns(
@@ -75,7 +78,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class LineItemBreakdown < Metronome::BaseModel
           sig { returns(Float) }
@@ -94,12 +98,14 @@ module Metronome
           attr_accessor :group_value
 
           sig { params(cost: Float, name: String, group_key: String, group_value: T.nilable(String)).void }
-          def initialize(cost:, name:, group_key: nil, group_value: nil); end
+          def initialize(cost:, name:, group_key: nil, group_value: nil)
+          end
 
           sig do
             override.returns({cost: Float, name: String, group_key: String, group_value: T.nilable(String)})
           end
-          def to_hash; end
+          def to_hash
+          end
         end
       end
     end

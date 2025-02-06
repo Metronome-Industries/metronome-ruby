@@ -32,7 +32,8 @@ module Metronome
           not_in_values: T::Array[String]
         ).void
       end
-      def initialize(name:, exists: nil, in_values: nil, not_in_values: nil); end
+      def initialize(name:, exists: nil, in_values: nil, not_in_values: nil)
+      end
 
       sig do
         override.returns(
@@ -44,7 +45,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

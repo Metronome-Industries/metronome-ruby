@@ -49,7 +49,8 @@ module Metronome
         netsuite_invoice_header_end: nil,
         netsuite_invoice_header_start: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -64,7 +65,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class LineItem < Metronome::BaseModel
         sig { returns(String) }
@@ -133,7 +135,8 @@ module Metronome
           netsuite_invoice_billing_start: nil,
           quantity: nil,
           unit_price: nil
-        ); end
+        )
+        end
 
         sig do
           override.returns(
@@ -149,7 +152,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

@@ -77,7 +77,8 @@ module Metronome
           price_adjustments: nil,
           trial_spec: nil,
           request_options: {}
-        ); end
+        )
+        end
 
         sig do
           override.returns(
@@ -94,7 +95,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class OverageRateAdjustment < Metronome::BaseModel
           sig { returns(String) }
@@ -125,7 +127,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class PriceAdjustment < Metronome::BaseModel
@@ -181,7 +184,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class AdjustmentType < Metronome::Enum
             abstract!
@@ -192,7 +196,8 @@ module Metronome
             QUANTITY = :quantity
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
 
@@ -214,7 +219,8 @@ module Metronome
               spending_cap: Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap
             ).void
           end
-          def initialize(length_in_days:, spending_cap: nil); end
+          def initialize(length_in_days:, spending_cap: nil)
+          end
 
           sig do
             override.returns(
@@ -224,7 +230,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class SpendingCap < Metronome::BaseModel
             sig { returns(Float) }
@@ -234,10 +241,12 @@ module Metronome
             attr_accessor :credit_type_id
 
             sig { params(amount: Float, credit_type_id: String).void }
-            def initialize(amount:, credit_type_id:); end
+            def initialize(amount:, credit_type_id:)
+            end
 
             sig { override.returns({amount: Float, credit_type_id: String}) }
-            def to_hash; end
+            def to_hash
+            end
           end
         end
       end

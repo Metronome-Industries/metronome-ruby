@@ -8,10 +8,12 @@ module Metronome
         attr_accessor :data
 
         sig { params(data: Metronome::Models::Contracts::ProductRetrieveResponse::Data).void }
-        def initialize(data:); end
+        def initialize(data:)
+        end
 
         sig { override.returns({data: Metronome::Models::Contracts::ProductRetrieveResponse::Data}) }
-        def to_hash; end
+        def to_hash
+        end
 
         class Data < Metronome::BaseModel
           sig { returns(String) }
@@ -49,7 +51,8 @@ module Metronome
               custom_fields: T::Hash[Symbol, String]
             ).void
           end
-          def initialize(id:, current:, initial:, type:, updates:, archived_at: nil, custom_fields: nil); end
+          def initialize(id:, current:, initial:, type:, updates:, archived_at: nil, custom_fields: nil)
+          end
 
           sig do
             override.returns(
@@ -64,7 +67,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class Type < Metronome::Enum
             abstract!
@@ -76,7 +80,8 @@ module Metronome
             PRO_SERVICE = :PRO_SERVICE
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
 
           class Update < Metronome::BaseModel
@@ -201,7 +206,8 @@ module Metronome
               quantity_rounding: nil,
               starting_at: nil,
               tags: nil
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -225,7 +231,8 @@ module Metronome
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
           end
         end
       end

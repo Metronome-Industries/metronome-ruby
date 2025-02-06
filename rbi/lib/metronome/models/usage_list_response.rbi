@@ -12,7 +12,8 @@ module Metronome
       sig do
         params(data: T::Array[Metronome::Models::UsageListResponse::Data], next_page: T.nilable(String)).void
       end
-      def initialize(data:, next_page:); end
+      def initialize(data:, next_page:)
+      end
 
       sig do
         override.returns(
@@ -22,7 +23,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Data < Metronome::BaseModel
         sig { returns(String) }
@@ -68,7 +70,8 @@ module Metronome
           start_timestamp:,
           value:,
           groups: nil
-        ); end
+        )
+        end
 
         sig do
           override.returns(
@@ -83,7 +86,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

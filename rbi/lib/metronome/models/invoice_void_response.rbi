@@ -10,20 +10,24 @@ module Metronome
       attr_writer :data
 
       sig { params(data: Metronome::Models::InvoiceVoidResponse::Data).void }
-      def initialize(data: nil); end
+      def initialize(data: nil)
+      end
 
       sig { override.returns({data: Metronome::Models::InvoiceVoidResponse::Data}) }
-      def to_hash; end
+      def to_hash
+      end
 
       class Data < Metronome::BaseModel
         sig { returns(String) }
         attr_accessor :id
 
         sig { params(id: String).void }
-        def initialize(id:); end
+        def initialize(id:)
+        end
 
         sig { override.returns({id: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

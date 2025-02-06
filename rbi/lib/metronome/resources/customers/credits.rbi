@@ -39,7 +39,8 @@ module Metronome
           salesforce_opportunity_id: nil,
           uniqueness_key: nil,
           request_options: {}
-        ); end
+        )
+        end
 
         sig do
           params(
@@ -68,7 +69,8 @@ module Metronome
           next_page: nil,
           starting_at: nil,
           request_options: {}
-        ); end
+        )
+        end
 
         sig do
           params(
@@ -78,10 +80,12 @@ module Metronome
             request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::Models::Customers::CreditUpdateEndDateResponse)
         end
-        def update_end_date(access_ending_before:, credit_id:, customer_id:, request_options: {}); end
+        def update_end_date(access_ending_before:, credit_id:, customer_id:, request_options: {})
+        end
 
         sig { params(client: Metronome::Client).void }
-        def initialize(client:); end
+        def initialize(client:)
+        end
       end
     end
   end

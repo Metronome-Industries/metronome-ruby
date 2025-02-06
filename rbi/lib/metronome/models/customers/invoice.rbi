@@ -211,7 +211,8 @@ module Metronome
           salesforce_opportunity_id: nil,
           start_timestamp: nil,
           subtotal: nil
-        ); end
+        )
+        end
 
         sig do
           override.returns(
@@ -247,7 +248,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class LineItem < Metronome::BaseModel
           sig { returns(Metronome::Models::CreditTypeData) }
@@ -537,7 +539,8 @@ module Metronome
             sub_line_items: nil,
             tier: nil,
             unit_price: nil
-          ); end
+          )
+          end
 
           sig do
             override.returns(
@@ -581,7 +584,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class AppliedCommitOrCredit < Metronome::BaseModel
             sig { returns(String) }
@@ -591,10 +595,12 @@ module Metronome
             attr_accessor :type
 
             sig { params(id: String, type: Symbol).void }
-            def initialize(id:, type:); end
+            def initialize(id:, type:)
+            end
 
             sig { override.returns({id: String, type: Symbol}) }
-            def to_hash; end
+            def to_hash
+            end
 
             class Type < Metronome::Enum
               abstract!
@@ -604,7 +610,8 @@ module Metronome
               CREDIT = :CREDIT
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
           end
 
@@ -613,10 +620,12 @@ module Metronome
             attr_accessor :id
 
             sig { params(id: String).void }
-            def initialize(id:); end
+            def initialize(id:)
+            end
 
             sig { override.returns({id: String}) }
-            def to_hash; end
+            def to_hash
+            end
           end
 
           class ResellerType < Metronome::Enum
@@ -628,7 +637,8 @@ module Metronome
             GCP_PRO_SERVICE = :GCP_PRO_SERVICE
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
 
           class SubLineItem < Metronome::BaseModel
@@ -721,7 +731,8 @@ module Metronome
               start_date: nil,
               tier_period: nil,
               tiers: nil
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -740,7 +751,8 @@ module Metronome
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class TierPeriod < Metronome::BaseModel
               sig { returns(Time) }
@@ -753,10 +765,12 @@ module Metronome
               attr_writer :ending_before
 
               sig { params(starting_at: Time, ending_before: Time).void }
-              def initialize(starting_at:, ending_before: nil); end
+              def initialize(starting_at:, ending_before: nil)
+              end
 
               sig { override.returns({starting_at: Time, ending_before: Time}) }
-              def to_hash; end
+              def to_hash
+              end
             end
 
             class Tier < Metronome::BaseModel
@@ -773,10 +787,12 @@ module Metronome
               attr_accessor :subtotal
 
               sig { params(price: Float, quantity: Float, starting_at: Float, subtotal: Float).void }
-              def initialize(price:, quantity:, starting_at:, subtotal:); end
+              def initialize(price:, quantity:, starting_at:, subtotal:)
+              end
 
               sig { override.returns({price: Float, quantity: Float, starting_at: Float, subtotal: Float}) }
-              def to_hash; end
+              def to_hash
+              end
             end
           end
 
@@ -791,10 +807,12 @@ module Metronome
             attr_accessor :size
 
             sig { params(level: Float, starting_at: String, size: T.nilable(String)).void }
-            def initialize(level:, starting_at:, size: nil); end
+            def initialize(level:, starting_at:, size: nil)
+            end
 
             sig { override.returns({level: Float, starting_at: String, size: T.nilable(String)}) }
-            def to_hash; end
+            def to_hash
+            end
           end
         end
 
@@ -805,7 +823,8 @@ module Metronome
           UNBILLABLE = :unbillable
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
         class CorrectionRecord < Metronome::BaseModel
@@ -838,7 +857,8 @@ module Metronome
               corrected_external_invoice: Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice
             ).void
           end
-          def initialize(corrected_invoice_id:, memo:, reason:, corrected_external_invoice: nil); end
+          def initialize(corrected_invoice_id:, memo:, reason:, corrected_external_invoice: nil)
+          end
 
           sig do
             override.returns(
@@ -850,7 +870,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class CorrectedExternalInvoice < Metronome::BaseModel
             sig { returns(Symbol) }
@@ -900,7 +921,8 @@ module Metronome
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class BillingProviderType < Metronome::Enum
               abstract!
@@ -915,7 +937,8 @@ module Metronome
               GCP_MARKETPLACE = :gcp_marketplace
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class ExternalStatus < Metronome::Enum
@@ -934,7 +957,8 @@ module Metronome
               QUEUED = :QUEUED
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
           end
         end
@@ -987,7 +1011,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class BillingProviderType < Metronome::Enum
             abstract!
@@ -1002,7 +1027,8 @@ module Metronome
             GCP_MARKETPLACE = :gcp_marketplace
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
 
           class ExternalStatus < Metronome::Enum
@@ -1021,7 +1047,8 @@ module Metronome
             QUEUED = :QUEUED
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
 
@@ -1070,7 +1097,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class ResellerRoyalty < Metronome::BaseModel
@@ -1104,13 +1132,7 @@ module Metronome
               gcp_options: Metronome::Models::Customers::Invoice::ResellerRoyalty::GcpOptions
             ).void
           end
-          def initialize(
-            fraction:,
-            netsuite_reseller_id:,
-            reseller_type:,
-            aws_options: nil,
-            gcp_options: nil
-          )
+          def initialize(fraction:, netsuite_reseller_id:, reseller_type:, aws_options: nil, gcp_options: nil)
           end
 
           sig do
@@ -1124,7 +1146,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class ResellerType < Metronome::Enum
             abstract!
@@ -1135,7 +1158,8 @@ module Metronome
             GCP_PRO_SERVICE = :GCP_PRO_SERVICE
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
 
           class AwsOptions < Metronome::BaseModel
@@ -1160,7 +1184,8 @@ module Metronome
             sig do
               params(aws_account_number: String, aws_offer_id: String, aws_payer_reference_id: String).void
             end
-            def initialize(aws_account_number: nil, aws_offer_id: nil, aws_payer_reference_id: nil); end
+            def initialize(aws_account_number: nil, aws_offer_id: nil, aws_payer_reference_id: nil)
+            end
 
             sig do
               override.returns(
@@ -1171,7 +1196,8 @@ module Metronome
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
           end
 
           class GcpOptions < Metronome::BaseModel
@@ -1188,10 +1214,12 @@ module Metronome
             attr_writer :gcp_offer_id
 
             sig { params(gcp_account_id: String, gcp_offer_id: String).void }
-            def initialize(gcp_account_id: nil, gcp_offer_id: nil); end
+            def initialize(gcp_account_id: nil, gcp_offer_id: nil)
+            end
 
             sig { override.returns({gcp_account_id: String, gcp_offer_id: String}) }
-            def to_hash; end
+            def to_hash
+            end
           end
         end
       end

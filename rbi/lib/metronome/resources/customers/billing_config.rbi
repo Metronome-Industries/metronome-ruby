@@ -23,7 +23,8 @@ module Metronome
           aws_region: nil,
           stripe_collection_method: nil,
           request_options: {}
-        ); end
+        )
+        end
 
         sig do
           params(
@@ -32,7 +33,8 @@ module Metronome
             request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::Models::Customers::BillingConfigRetrieveResponse)
         end
-        def retrieve(customer_id:, billing_provider_type:, request_options: {}); end
+        def retrieve(customer_id:, billing_provider_type:, request_options: {})
+        end
 
         sig do
           params(
@@ -41,10 +43,12 @@ module Metronome
             request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).void
         end
-        def delete(customer_id:, billing_provider_type:, request_options: {}); end
+        def delete(customer_id:, billing_provider_type:, request_options: {})
+        end
 
         sig { params(client: Metronome::Client).void }
-        def initialize(client:); end
+        def initialize(client:)
+        end
       end
     end
   end

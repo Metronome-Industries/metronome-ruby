@@ -21,7 +21,8 @@ module Metronome
               request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
             ).void
           end
-          def initialize(rate_card_id:, rates:, request_options: {}); end
+          def initialize(rate_card_id:, rates:, request_options: {})
+          end
 
           sig do
             override.returns(
@@ -32,7 +33,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class Rate < Metronome::BaseModel
             sig { returns(T::Boolean) }
@@ -144,7 +146,8 @@ module Metronome
               quantity: nil,
               tiers: nil,
               use_list_prices: nil
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -166,7 +169,8 @@ module Metronome
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class RateType < Metronome::Enum
               abstract!
@@ -178,7 +182,8 @@ module Metronome
               CUSTOM = :CUSTOM
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
 
             class CommitRate < Metronome::BaseModel
@@ -198,12 +203,14 @@ module Metronome
               attr_writer :tiers
 
               sig { params(rate_type: Symbol, price: Float, tiers: T::Array[Metronome::Models::Tier]).void }
-              def initialize(rate_type:, price: nil, tiers: nil); end
+              def initialize(rate_type:, price: nil, tiers: nil)
+              end
 
               sig do
                 override.returns({rate_type: Symbol, price: Float, tiers: T::Array[Metronome::Models::Tier]})
               end
-              def to_hash; end
+              def to_hash
+              end
 
               class RateType < Metronome::Enum
                 abstract!
@@ -215,7 +222,8 @@ module Metronome
                 CUSTOM = :CUSTOM
 
                 sig { override.returns(T::Array[Symbol]) }
-                def self.values; end
+                def self.values
+                end
               end
             end
           end

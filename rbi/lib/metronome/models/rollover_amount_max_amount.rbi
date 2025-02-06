@@ -10,10 +10,12 @@ module Metronome
       attr_accessor :value
 
       sig { params(type: Symbol, value: Float).void }
-      def initialize(type:, value:); end
+      def initialize(type:, value:)
+      end
 
       sig { override.returns({type: Symbol, value: Float}) }
-      def to_hash; end
+      def to_hash
+      end
 
       class Type < Metronome::Enum
         abstract!
@@ -21,7 +23,8 @@ module Metronome
         MAX_AMOUNT = :MAX_AMOUNT
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

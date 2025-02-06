@@ -73,7 +73,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Selector < Metronome::BaseModel
         sig { returns(T.nilable(T::Hash[Symbol, String])) }
@@ -126,7 +127,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

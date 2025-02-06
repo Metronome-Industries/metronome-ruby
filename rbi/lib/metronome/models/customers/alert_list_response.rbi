@@ -16,7 +16,8 @@ module Metronome
             next_page: T.nilable(String)
           ).void
         end
-        def initialize(data:, next_page:); end
+        def initialize(data:, next_page:)
+        end
 
         sig do
           override.returns(
@@ -26,7 +27,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

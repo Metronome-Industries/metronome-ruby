@@ -114,7 +114,8 @@ module Metronome
           quantity_rounding: nil,
           tags: nil,
           request_options: {}
-        ); end
+        )
+        end
 
         sig do
           override.returns(
@@ -137,7 +138,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class Type < Metronome::Enum
           abstract!
@@ -150,7 +152,8 @@ module Metronome
           PRO_SERVICE = :PRO_SERVICE
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

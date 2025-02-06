@@ -110,7 +110,8 @@ module Metronome
         plan_id: nil,
         uniqueness_key: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -132,7 +133,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class AlertType < Metronome::Enum
         abstract!
@@ -153,7 +155,8 @@ module Metronome
         INVOICE_TOTAL_REACHED = :invoice_total_reached
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class CustomFieldFilter < Metronome::BaseModel
@@ -167,10 +170,12 @@ module Metronome
         attr_accessor :value
 
         sig { params(entity: Symbol, key: String, value: String).void }
-        def initialize(entity:, key:, value:); end
+        def initialize(entity:, key:, value:)
+        end
 
         sig { override.returns({entity: Symbol, key: String, value: String}) }
-        def to_hash; end
+        def to_hash
+        end
 
         class Entity < Metronome::Enum
           abstract!
@@ -180,7 +185,8 @@ module Metronome
           CONTRACT_CREDIT = :ContractCredit
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
 
@@ -192,10 +198,12 @@ module Metronome
         attr_accessor :value
 
         sig { params(key: String, value: String).void }
-        def initialize(key:, value:); end
+        def initialize(key:, value:)
+        end
 
         sig { override.returns({key: String, value: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

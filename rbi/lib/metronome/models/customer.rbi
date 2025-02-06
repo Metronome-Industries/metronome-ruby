@@ -30,7 +30,8 @@ module Metronome
           custom_fields: T::Hash[Symbol, String]
         ).void
       end
-      def initialize(id:, external_id:, ingest_aliases:, name:, custom_fields: nil); end
+      def initialize(id:, external_id:, ingest_aliases:, name:, custom_fields: nil)
+      end
 
       sig do
         override.returns(
@@ -43,7 +44,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

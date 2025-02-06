@@ -31,7 +31,8 @@ module Metronome
             quantity: Float
           ).void
         end
-        def initialize(charge_id:, charge_type:, prices:, start_period:, quantity: nil); end
+        def initialize(charge_id:, charge_type:, prices:, start_period:, quantity: nil)
+        end
 
         sig do
           override.returns(
@@ -44,7 +45,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class ChargeType < Metronome::Enum
           abstract!
@@ -56,7 +58,8 @@ module Metronome
           SEAT = :seat
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
         class Price < Metronome::BaseModel
@@ -76,10 +79,12 @@ module Metronome
           attr_writer :value
 
           sig { params(adjustment_type: Symbol, tier: Float, value: Float).void }
-          def initialize(adjustment_type:, tier: nil, value: nil); end
+          def initialize(adjustment_type:, tier: nil, value: nil)
+          end
 
           sig { override.returns({adjustment_type: Symbol, tier: Float, value: Float}) }
-          def to_hash; end
+          def to_hash
+          end
 
           class AdjustmentType < Metronome::Enum
             abstract!
@@ -90,7 +95,8 @@ module Metronome
             OVERRIDE = :override
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
       end

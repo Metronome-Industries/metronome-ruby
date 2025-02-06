@@ -170,7 +170,8 @@ module Metronome
         tiers: nil,
         type: nil,
         value: nil
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -199,7 +200,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class OverrideSpecifier < Metronome::BaseModel
         sig { returns(T.nilable(T::Array[String])) }
@@ -263,7 +265,8 @@ module Metronome
           product_tags: nil,
           recurring_commit_ids: nil,
           recurring_credit_ids: nil
-        ); end
+        )
+        end
 
         sig do
           override.returns(
@@ -278,7 +281,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class OverrideTier < Metronome::BaseModel
@@ -292,10 +296,12 @@ module Metronome
         attr_writer :size
 
         sig { params(multiplier: Float, size: Float).void }
-        def initialize(multiplier:, size: nil); end
+        def initialize(multiplier:, size: nil)
+        end
 
         sig { override.returns({multiplier: Float, size: Float}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class OverwriteRate < Metronome::BaseModel
@@ -373,7 +379,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class RateType < Metronome::Enum
           abstract!
@@ -385,7 +392,8 @@ module Metronome
           CUSTOM = :CUSTOM
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
 
@@ -397,10 +405,12 @@ module Metronome
         attr_accessor :name
 
         sig { params(id: String, name: String).void }
-        def initialize(id:, name:); end
+        def initialize(id:, name:)
+        end
 
         sig { override.returns({id: String, name: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class RateType < Metronome::Enum
@@ -413,7 +423,8 @@ module Metronome
         CUSTOM = :CUSTOM
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class Target < Metronome::Enum
@@ -423,7 +434,8 @@ module Metronome
         LIST_RATE = :LIST_RATE
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class Type < Metronome::Enum
@@ -434,7 +446,8 @@ module Metronome
         TIERED = :TIERED
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

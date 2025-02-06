@@ -5,10 +5,12 @@ module Metronome
     module Customers
       class PlanEndResponse < Metronome::BaseModel
         sig { void }
-        def initialize; end
+        def initialize
+        end
 
         sig { override.returns({}) }
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

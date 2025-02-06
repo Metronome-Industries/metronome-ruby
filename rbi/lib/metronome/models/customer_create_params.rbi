@@ -64,7 +64,8 @@ module Metronome
         external_id: nil,
         ingest_aliases: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -79,7 +80,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class BillingConfig < Metronome::BaseModel
         sig { returns(String) }
@@ -129,7 +131,8 @@ module Metronome
           aws_product_code: nil,
           aws_region: nil,
           stripe_collection_method: nil
-        ); end
+        )
+        end
 
         sig do
           override.returns(
@@ -143,7 +146,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillingProviderType < Metronome::Enum
           abstract!
@@ -158,7 +162,8 @@ module Metronome
           GCP_MARKETPLACE = :gcp_marketplace
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
         class AwsRegion < Metronome::Enum
@@ -191,7 +196,8 @@ module Metronome
           US_WEST_2 = :"us-west-2"
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
         class StripeCollectionMethod < Metronome::Enum
@@ -201,7 +207,8 @@ module Metronome
           SEND_INVOICE = :send_invoice
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
 
@@ -248,7 +255,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillingProvider < Metronome::Enum
           abstract!
@@ -260,7 +268,8 @@ module Metronome
           NETSUITE = :netsuite
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
         class DeliveryMethod < Metronome::Enum
@@ -272,7 +281,8 @@ module Metronome
           AWS_SNS = :aws_sns
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

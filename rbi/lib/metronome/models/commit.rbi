@@ -235,7 +235,8 @@ module Metronome
         rollover_fraction: nil,
         salesforce_opportunity_id: nil,
         uniqueness_key: nil
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -280,7 +281,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Product < Metronome::BaseModel
         sig { returns(String) }
@@ -290,10 +292,12 @@ module Metronome
         attr_accessor :name
 
         sig { params(id: String, name: String).void }
-        def initialize(id:, name:); end
+        def initialize(id:, name:)
+        end
 
         sig { override.returns({id: String, name: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class Type < Metronome::Enum
@@ -303,7 +307,8 @@ module Metronome
         POSTPAID = :POSTPAID
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class Contract < Metronome::BaseModel
@@ -311,10 +316,12 @@ module Metronome
         attr_accessor :id
 
         sig { params(id: String).void }
-        def initialize(id:); end
+        def initialize(id:)
+        end
 
         sig { override.returns({id: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class InvoiceContract < Metronome::BaseModel
@@ -322,10 +329,12 @@ module Metronome
         attr_accessor :id
 
         sig { params(id: String).void }
-        def initialize(id:); end
+        def initialize(id:)
+        end
 
         sig { override.returns({id: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class Ledger < Metronome::Union
@@ -345,10 +354,12 @@ module Metronome
           attr_accessor :type
 
           sig { params(amount: Float, segment_id: String, timestamp: Time, type: Symbol).void }
-          def initialize(amount:, segment_id:, timestamp:, type:); end
+          def initialize(amount:, segment_id:, timestamp:, type:)
+          end
 
           sig { override.returns({amount: Float, segment_id: String, timestamp: Time, type: Symbol}) }
-          def to_hash; end
+          def to_hash
+          end
 
           class Type < Metronome::Enum
             abstract!
@@ -356,7 +367,8 @@ module Metronome
             PREPAID_COMMIT_SEGMENT_START = :PREPAID_COMMIT_SEGMENT_START
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
 
@@ -379,7 +391,8 @@ module Metronome
           sig do
             params(amount: Float, invoice_id: String, segment_id: String, timestamp: Time, type: Symbol).void
           end
-          def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:); end
+          def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
+          end
 
           sig do
             override.returns(
@@ -392,7 +405,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class Type < Metronome::Enum
             abstract!
@@ -400,7 +414,8 @@ module Metronome
             PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION = :PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
 
@@ -429,7 +444,8 @@ module Metronome
               type: Symbol
             ).void
           end
-          def initialize(amount:, new_contract_id:, segment_id:, timestamp:, type:); end
+          def initialize(amount:, new_contract_id:, segment_id:, timestamp:, type:)
+          end
 
           sig do
             override.returns(
@@ -442,7 +458,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class Type < Metronome::Enum
             abstract!
@@ -450,7 +467,8 @@ module Metronome
             PREPAID_COMMIT_ROLLOVER = :PREPAID_COMMIT_ROLLOVER
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
 
@@ -468,10 +486,12 @@ module Metronome
           attr_accessor :type
 
           sig { params(amount: Float, segment_id: String, timestamp: Time, type: Symbol).void }
-          def initialize(amount:, segment_id:, timestamp:, type:); end
+          def initialize(amount:, segment_id:, timestamp:, type:)
+          end
 
           sig { override.returns({amount: Float, segment_id: String, timestamp: Time, type: Symbol}) }
-          def to_hash; end
+          def to_hash
+          end
 
           class Type < Metronome::Enum
             abstract!
@@ -479,7 +499,8 @@ module Metronome
             PREPAID_COMMIT_EXPIRATION = :PREPAID_COMMIT_EXPIRATION
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
 
@@ -502,7 +523,8 @@ module Metronome
           sig do
             params(amount: Float, invoice_id: String, segment_id: String, timestamp: Time, type: Symbol).void
           end
-          def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:); end
+          def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
+          end
 
           sig do
             override.returns(
@@ -515,7 +537,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class Type < Metronome::Enum
             abstract!
@@ -523,7 +546,8 @@ module Metronome
             PREPAID_COMMIT_CANCELED = :PREPAID_COMMIT_CANCELED
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
 
@@ -546,7 +570,8 @@ module Metronome
           sig do
             params(amount: Float, invoice_id: String, segment_id: String, timestamp: Time, type: Symbol).void
           end
-          def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:); end
+          def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
+          end
 
           sig do
             override.returns(
@@ -559,7 +584,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class Type < Metronome::Enum
             abstract!
@@ -567,7 +593,8 @@ module Metronome
             PREPAID_COMMIT_CREDITED = :PREPAID_COMMIT_CREDITED
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
 
@@ -582,10 +609,12 @@ module Metronome
           attr_accessor :type
 
           sig { params(amount: Float, timestamp: Time, type: Symbol).void }
-          def initialize(amount:, timestamp:, type:); end
+          def initialize(amount:, timestamp:, type:)
+          end
 
           sig { override.returns({amount: Float, timestamp: Time, type: Symbol}) }
-          def to_hash; end
+          def to_hash
+          end
 
           class Type < Metronome::Enum
             abstract!
@@ -593,7 +622,8 @@ module Metronome
             POSTPAID_COMMIT_INITIAL_BALANCE = :POSTPAID_COMMIT_INITIAL_BALANCE
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
 
@@ -616,7 +646,8 @@ module Metronome
           sig do
             params(amount: Float, invoice_id: String, segment_id: String, timestamp: Time, type: Symbol).void
           end
-          def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:); end
+          def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
+          end
 
           sig do
             override.returns(
@@ -629,7 +660,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class Type < Metronome::Enum
             abstract!
@@ -637,7 +669,8 @@ module Metronome
             POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION = :POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
 
@@ -666,7 +699,8 @@ module Metronome
               type: Symbol
             ).void
           end
-          def initialize(amount:, new_contract_id:, segment_id:, timestamp:, type:); end
+          def initialize(amount:, new_contract_id:, segment_id:, timestamp:, type:)
+          end
 
           sig do
             override.returns(
@@ -679,7 +713,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class Type < Metronome::Enum
             abstract!
@@ -687,7 +722,8 @@ module Metronome
             POSTPAID_COMMIT_ROLLOVER = :POSTPAID_COMMIT_ROLLOVER
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
 
@@ -705,10 +741,12 @@ module Metronome
           attr_accessor :type
 
           sig { params(amount: Float, invoice_id: String, timestamp: Time, type: Symbol).void }
-          def initialize(amount:, invoice_id:, timestamp:, type:); end
+          def initialize(amount:, invoice_id:, timestamp:, type:)
+          end
 
           sig { override.returns({amount: Float, invoice_id: String, timestamp: Time, type: Symbol}) }
-          def to_hash; end
+          def to_hash
+          end
 
           class Type < Metronome::Enum
             abstract!
@@ -716,7 +754,8 @@ module Metronome
             POSTPAID_COMMIT_TRUEUP = :POSTPAID_COMMIT_TRUEUP
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
 
@@ -734,10 +773,12 @@ module Metronome
           attr_accessor :type
 
           sig { params(amount: Float, reason: String, timestamp: Time, type: Symbol).void }
-          def initialize(amount:, reason:, timestamp:, type:); end
+          def initialize(amount:, reason:, timestamp:, type:)
+          end
 
           sig { override.returns({amount: Float, reason: String, timestamp: Time, type: Symbol}) }
-          def to_hash; end
+          def to_hash
+          end
 
           class Type < Metronome::Enum
             abstract!
@@ -745,7 +786,8 @@ module Metronome
             PREPAID_COMMIT_MANUAL = :PREPAID_COMMIT_MANUAL
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
 
@@ -763,10 +805,12 @@ module Metronome
           attr_accessor :type
 
           sig { params(amount: Float, reason: String, timestamp: Time, type: Symbol).void }
-          def initialize(amount:, reason:, timestamp:, type:); end
+          def initialize(amount:, reason:, timestamp:, type:)
+          end
 
           sig { override.returns({amount: Float, reason: String, timestamp: Time, type: Symbol}) }
-          def to_hash; end
+          def to_hash
+          end
 
           class Type < Metronome::Enum
             abstract!
@@ -774,7 +818,8 @@ module Metronome
             POSTPAID_COMMIT_MANUAL = :POSTPAID_COMMIT_MANUAL
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
 
@@ -789,10 +834,12 @@ module Metronome
           attr_accessor :type
 
           sig { params(amount: Float, timestamp: Time, type: Symbol).void }
-          def initialize(amount:, timestamp:, type:); end
+          def initialize(amount:, timestamp:, type:)
+          end
 
           sig { override.returns({amount: Float, timestamp: Time, type: Symbol}) }
-          def to_hash; end
+          def to_hash
+          end
 
           class Type < Metronome::Enum
             abstract!
@@ -800,7 +847,8 @@ module Metronome
             POSTPAID_COMMIT_EXPIRATION = :POSTPAID_COMMIT_EXPIRATION
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
 
@@ -829,7 +877,8 @@ module Metronome
             ]
           )
         end
-        private_class_method def self.variants; end
+        private_class_method def self.variants
+        end
       end
 
       class RateType < Metronome::Enum
@@ -839,7 +888,8 @@ module Metronome
         LIST_RATE = :LIST_RATE
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class RolledOverFrom < Metronome::BaseModel
@@ -850,10 +900,12 @@ module Metronome
         attr_accessor :contract_id
 
         sig { params(commit_id: String, contract_id: String).void }
-        def initialize(commit_id:, contract_id:); end
+        def initialize(commit_id:, contract_id:)
+        end
 
         sig { override.returns({commit_id: String, contract_id: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

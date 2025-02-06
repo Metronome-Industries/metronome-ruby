@@ -18,7 +18,8 @@ module Metronome
           credit_type: Metronome::Models::CreditTypeData
         ).void
       end
-      def initialize(schedule_items:, credit_type: nil); end
+      def initialize(schedule_items:, credit_type: nil)
+      end
 
       sig do
         override.returns(
@@ -28,7 +29,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class ScheduleItem < Metronome::BaseModel
         sig { returns(String) }
@@ -44,10 +46,12 @@ module Metronome
         attr_accessor :starting_at
 
         sig { params(id: String, amount: Float, ending_before: Time, starting_at: Time).void }
-        def initialize(id:, amount:, ending_before:, starting_at:); end
+        def initialize(id:, amount:, ending_before:, starting_at:)
+        end
 
         sig { override.returns({id: String, amount: Float, ending_before: Time, starting_at: Time}) }
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

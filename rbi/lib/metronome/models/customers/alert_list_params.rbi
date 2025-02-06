@@ -30,7 +30,8 @@ module Metronome
             request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
           ).void
         end
-        def initialize(customer_id:, next_page: nil, alert_statuses: nil, request_options: {}); end
+        def initialize(customer_id:, next_page: nil, alert_statuses: nil, request_options: {})
+        end
 
         sig do
           override.returns(
@@ -42,7 +43,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class AlertStatus < Metronome::Enum
           abstract!
@@ -52,7 +54,8 @@ module Metronome
           ARCHIVED = :ARCHIVED
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

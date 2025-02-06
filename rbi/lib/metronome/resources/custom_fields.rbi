@@ -11,7 +11,8 @@ module Metronome
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).void
       end
-      def add_key(enforce_uniqueness:, entity:, key:, request_options: {}); end
+      def add_key(enforce_uniqueness:, entity:, key:, request_options: {})
+      end
 
       sig do
         params(
@@ -21,7 +22,8 @@ module Metronome
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).void
       end
-      def delete_values(entity:, entity_id:, keys:, request_options: {}); end
+      def delete_values(entity:, entity_id:, keys:, request_options: {})
+      end
 
       sig do
         params(
@@ -30,7 +32,8 @@ module Metronome
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Metronome::Models::CustomFieldListKeysResponse)
       end
-      def list_keys(next_page: nil, entities: nil, request_options: {}); end
+      def list_keys(next_page: nil, entities: nil, request_options: {})
+      end
 
       sig do
         params(
@@ -39,7 +42,8 @@ module Metronome
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).void
       end
-      def remove_key(entity:, key:, request_options: {}); end
+      def remove_key(entity:, key:, request_options: {})
+      end
 
       sig do
         params(
@@ -49,10 +53,12 @@ module Metronome
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).void
       end
-      def set_values(custom_fields:, entity:, entity_id:, request_options: {}); end
+      def set_values(custom_fields:, entity:, entity_id:, request_options: {})
+      end
 
       sig { params(client: Metronome::Client).void }
-      def initialize(client:); end
+      def initialize(client:)
+      end
     end
   end
 end

@@ -107,7 +107,8 @@ module Metronome
         rollover_settings: nil,
         uniqueness_key: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -130,7 +131,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class GrantAmount < Metronome::BaseModel
         sig { returns(Float) }
@@ -140,10 +142,12 @@ module Metronome
         attr_accessor :credit_type_id
 
         sig { params(amount: Float, credit_type_id: String).void }
-        def initialize(amount:, credit_type_id:); end
+        def initialize(amount:, credit_type_id:)
+        end
 
         sig { override.returns({amount: Float, credit_type_id: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class PaidAmount < Metronome::BaseModel
@@ -154,10 +158,12 @@ module Metronome
         attr_accessor :credit_type_id
 
         sig { params(amount: Float, credit_type_id: String).void }
-        def initialize(amount:, credit_type_id:); end
+        def initialize(amount:, credit_type_id:)
+        end
 
         sig { override.returns({amount: Float, credit_type_id: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class RolloverSettings < Metronome::BaseModel
@@ -187,7 +193,8 @@ module Metronome
             )
           ).void
         end
-        def initialize(expires_at:, priority:, rollover_amount:); end
+        def initialize(expires_at:, priority:, rollover_amount:)
+        end
 
         sig do
           override.returns(
@@ -201,7 +208,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class RolloverAmount < Metronome::Union
           abstract!
@@ -214,7 +222,8 @@ module Metronome
               ]
             )
           end
-          private_class_method def self.variants; end
+          private_class_method def self.variants
+          end
         end
       end
     end

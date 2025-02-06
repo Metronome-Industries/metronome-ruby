@@ -114,7 +114,8 @@ module Metronome
           salesforce_opportunity_id: nil,
           uniqueness_key: nil,
           request_options: {}
-        ); end
+        )
+        end
 
         sig do
           override.returns(
@@ -137,7 +138,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class AccessSchedule < Metronome::BaseModel
           sig do
@@ -157,7 +159,8 @@ module Metronome
               credit_type_id: String
             ).void
           end
-          def initialize(schedule_items:, credit_type_id: nil); end
+          def initialize(schedule_items:, credit_type_id: nil)
+          end
 
           sig do
             override.returns(
@@ -166,7 +169,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class ScheduleItem < Metronome::BaseModel
             sig { returns(Float) }
@@ -179,10 +183,12 @@ module Metronome
             attr_accessor :starting_at
 
             sig { params(amount: Float, ending_before: Time, starting_at: Time).void }
-            def initialize(amount:, ending_before:, starting_at:); end
+            def initialize(amount:, ending_before:, starting_at:)
+            end
 
             sig { override.returns({amount: Float, ending_before: Time, starting_at: Time}) }
-            def to_hash; end
+            def to_hash
+            end
           end
         end
 
@@ -193,7 +199,8 @@ module Metronome
           LIST_RATE = :LIST_RATE
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

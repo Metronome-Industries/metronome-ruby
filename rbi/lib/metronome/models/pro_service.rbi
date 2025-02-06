@@ -57,7 +57,8 @@ module Metronome
         custom_fields: nil,
         description: nil,
         netsuite_sales_order_id: nil
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -73,7 +74,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

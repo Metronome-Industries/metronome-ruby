@@ -15,7 +15,8 @@ module Metronome
           next_page: T.nilable(String)
         ).void
       end
-      def initialize(data:, next_page:); end
+      def initialize(data:, next_page:)
+      end
 
       sig do
         override.returns(
@@ -25,7 +26,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Data < Metronome::Union
         abstract!
@@ -33,7 +35,8 @@ module Metronome
         sig do
           override.returns([[NilClass, Metronome::Models::Commit], [NilClass, Metronome::Models::Credit]])
         end
-        private_class_method def self.variants; end
+        private_class_method def self.variants
+        end
       end
     end
   end

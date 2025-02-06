@@ -7,10 +7,12 @@ module Metronome
       attr_accessor :data
 
       sig { params(data: T::Array[Metronome::Models::ContractListResponse::Data]).void }
-      def initialize(data:); end
+      def initialize(data:)
+      end
 
       sig { override.returns({data: T::Array[Metronome::Models::ContractListResponse::Data]}) }
-      def to_hash; end
+      def to_hash
+      end
 
       class Data < Metronome::BaseModel
         sig { returns(String) }
@@ -89,7 +91,8 @@ module Metronome
           customer_billing_provider_configuration: nil,
           scheduled_charges_on_usage_invoices: nil,
           uniqueness_key: nil
-        ); end
+        )
+        end
 
         sig do
           override.returns(
@@ -107,7 +110,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class Amendment < Metronome::BaseModel
           sig { returns(String) }
@@ -204,7 +208,8 @@ module Metronome
             professional_services: nil,
             reseller_royalties: nil,
             salesforce_opportunity_id: nil
-          ); end
+          )
+          end
 
           sig do
             override.returns(
@@ -225,7 +230,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class ResellerRoyalty < Metronome::BaseModel
             sig { returns(Symbol) }
@@ -315,7 +321,8 @@ module Metronome
               netsuite_reseller_id: nil,
               reseller_contract_value: nil,
               starting_at: nil
-            ); end
+            )
+            end
 
             sig do
               override.returns(
@@ -334,7 +341,8 @@ module Metronome
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             class ResellerType < Metronome::Enum
               abstract!
@@ -345,7 +353,8 @@ module Metronome
               GCP_PRO_SERVICE = :GCP_PRO_SERVICE
 
               sig { override.returns(T::Array[Symbol]) }
-              def self.values; end
+              def self.values
+              end
             end
           end
         end
@@ -358,10 +367,12 @@ module Metronome
           attr_accessor :delivery_method
 
           sig { params(billing_provider: Symbol, delivery_method: Symbol).void }
-          def initialize(billing_provider:, delivery_method:); end
+          def initialize(billing_provider:, delivery_method:)
+          end
 
           sig { override.returns({billing_provider: Symbol, delivery_method: Symbol}) }
-          def to_hash; end
+          def to_hash
+          end
 
           class BillingProvider < Metronome::Enum
             abstract!
@@ -376,7 +387,8 @@ module Metronome
             GCP_MARKETPLACE = :gcp_marketplace
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
 
           class DeliveryMethod < Metronome::Enum
@@ -388,7 +400,8 @@ module Metronome
             AWS_SNS = :aws_sns
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
 
@@ -398,7 +411,8 @@ module Metronome
           ALL = :ALL
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

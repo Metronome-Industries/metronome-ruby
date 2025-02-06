@@ -7,10 +7,12 @@ module Metronome
       attr_accessor :data
 
       sig { params(data: Metronome::Models::ID).void }
-      def initialize(data:); end
+      def initialize(data:)
+      end
 
       sig { override.returns({data: Metronome::Models::ID}) }
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

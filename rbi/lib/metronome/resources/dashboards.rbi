@@ -20,10 +20,12 @@ module Metronome
         color_overrides: nil,
         dashboard_options: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig { params(client: Metronome::Client).void }
-      def initialize(client:); end
+      def initialize(client:)
+      end
     end
   end
 end

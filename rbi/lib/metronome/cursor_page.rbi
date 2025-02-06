@@ -20,6 +20,7 @@ module Metronome
         unwrapped: T::Hash[Symbol, T.anything]
       ).void
     end
-    def initialize(client:, req:, headers:, unwrapped:); end
+    def initialize(client:, req:, headers:, unwrapped:)
+    end
   end
 end

@@ -114,7 +114,8 @@ module Metronome
         group_keys: nil,
         property_filters: nil,
         sql: nil
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -136,7 +137,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class AggregationType < Metronome::Enum
         abstract!
@@ -148,7 +150,8 @@ module Metronome
         UNIQUE = :UNIQUE
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

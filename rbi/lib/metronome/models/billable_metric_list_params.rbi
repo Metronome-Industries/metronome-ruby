@@ -32,7 +32,8 @@ module Metronome
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
-      def initialize(include_archived: nil, limit: nil, next_page: nil, request_options: {}); end
+      def initialize(include_archived: nil, limit: nil, next_page: nil, request_options: {})
+      end
 
       sig do
         override.returns(
@@ -44,7 +45,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

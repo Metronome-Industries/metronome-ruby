@@ -15,7 +15,8 @@ module Metronome
           next_page: T.nilable(String)
         ).void
       end
-      def initialize(data:, next_page:); end
+      def initialize(data:, next_page:)
+      end
 
       sig do
         override.returns(
@@ -25,7 +26,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Data < Metronome::BaseModel
         sig { returns(String) }
@@ -40,7 +42,8 @@ module Metronome
             ledgers: T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger]
           ).void
         end
-        def initialize(customer_id:, ledgers:); end
+        def initialize(customer_id:, ledgers:)
+        end
 
         sig do
           override.returns(
@@ -50,7 +53,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class Ledger < Metronome::BaseModel
           sig { returns(Metronome::Models::CreditTypeData) }
@@ -77,7 +81,8 @@ module Metronome
               starting_balance: Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance
             ).void
           end
-          def initialize(credit_type:, ending_balance:, entries:, pending_entries:, starting_balance:); end
+          def initialize(credit_type:, ending_balance:, entries:, pending_entries:, starting_balance:)
+          end
 
           sig do
             override.returns(
@@ -90,7 +95,8 @@ module Metronome
               }
             )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class EndingBalance < Metronome::BaseModel
             sig { returns(Time) }
@@ -103,10 +109,12 @@ module Metronome
             attr_accessor :including_pending
 
             sig { params(effective_at: Time, excluding_pending: Float, including_pending: Float).void }
-            def initialize(effective_at:, excluding_pending:, including_pending:); end
+            def initialize(effective_at:, excluding_pending:, including_pending:)
+            end
 
             sig { override.returns({effective_at: Time, excluding_pending: Float, including_pending: Float}) }
-            def to_hash; end
+            def to_hash
+            end
           end
 
           class StartingBalance < Metronome::BaseModel
@@ -120,10 +128,12 @@ module Metronome
             attr_accessor :including_pending
 
             sig { params(effective_at: Time, excluding_pending: Float, including_pending: Float).void }
-            def initialize(effective_at:, excluding_pending:, including_pending:); end
+            def initialize(effective_at:, excluding_pending:, including_pending:)
+            end
 
             sig { override.returns({effective_at: Time, excluding_pending: Float, including_pending: Float}) }
-            def to_hash; end
+            def to_hash
+            end
           end
         end
       end

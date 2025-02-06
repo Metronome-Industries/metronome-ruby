@@ -12,7 +12,8 @@ module Metronome
             request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::CursorPage[Metronome::Models::Customers::PlanListResponse])
         end
-        def list(customer_id:, limit: nil, next_page: nil, request_options: {}); end
+        def list(customer_id:, limit: nil, next_page: nil, request_options: {})
+        end
 
         sig do
           params(
@@ -37,7 +38,8 @@ module Metronome
           price_adjustments: nil,
           trial_spec: nil,
           request_options: {}
-        ); end
+        )
+        end
 
         sig do
           params(
@@ -56,7 +58,8 @@ module Metronome
           void_invoices: nil,
           void_stripe_invoices: nil,
           request_options: {}
-        ); end
+        )
+        end
 
         sig do
           params(
@@ -77,7 +80,8 @@ module Metronome
         end
 
         sig { params(client: Metronome::Client).void }
-        def initialize(client:); end
+        def initialize(client:)
+        end
       end
     end
   end

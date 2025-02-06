@@ -37,7 +37,8 @@ module Metronome
             request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
           ).void
         end
-        def initialize(rate_card_id:, aliases: nil, description: nil, name: nil, request_options: {}); end
+        def initialize(rate_card_id:, aliases: nil, description: nil, name: nil, request_options: {})
+        end
 
         sig do
           override.returns(
@@ -50,7 +51,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class Alias < Metronome::BaseModel
           sig { returns(String) }
@@ -69,10 +71,12 @@ module Metronome
           attr_writer :starting_at
 
           sig { params(name: String, ending_before: Time, starting_at: Time).void }
-          def initialize(name:, ending_before: nil, starting_at: nil); end
+          def initialize(name:, ending_before: nil, starting_at: nil)
+          end
 
           sig { override.returns({name: String, ending_before: Time, starting_at: Time}) }
-          def to_hash; end
+          def to_hash
+          end
         end
       end
     end

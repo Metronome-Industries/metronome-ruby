@@ -45,7 +45,8 @@ module Metronome
           salesforce_opportunity_id: nil,
           uniqueness_key: nil,
           request_options: {}
-        ); end
+        )
+        end
 
         sig do
           params(
@@ -74,7 +75,8 @@ module Metronome
           next_page: nil,
           starting_at: nil,
           request_options: {}
-        ); end
+        )
+        end
 
         sig do
           params(
@@ -95,7 +97,8 @@ module Metronome
         end
 
         sig { params(client: Metronome::Client).void }
-        def initialize(client:); end
+        def initialize(client:)
+        end
       end
     end
   end

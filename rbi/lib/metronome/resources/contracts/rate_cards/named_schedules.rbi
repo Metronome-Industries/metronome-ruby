@@ -40,7 +40,8 @@ module Metronome
           end
 
           sig { params(client: Metronome::Client).void }
-          def initialize(client:); end
+          def initialize(client:)
+          end
         end
       end
     end

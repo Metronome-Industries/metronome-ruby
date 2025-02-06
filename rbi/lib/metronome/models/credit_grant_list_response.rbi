@@ -96,7 +96,8 @@ module Metronome
         products: nil,
         reason: nil,
         uniqueness_key: nil
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -121,7 +122,8 @@ module Metronome
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Balance < Metronome::BaseModel
         sig { returns(Time) }
@@ -134,10 +136,12 @@ module Metronome
         attr_accessor :including_pending
 
         sig { params(effective_at: Time, excluding_pending: Float, including_pending: Float).void }
-        def initialize(effective_at:, excluding_pending:, including_pending:); end
+        def initialize(effective_at:, excluding_pending:, including_pending:)
+        end
 
         sig { override.returns({effective_at: Time, excluding_pending: Float, including_pending: Float}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class GrantAmount < Metronome::BaseModel
@@ -148,10 +152,12 @@ module Metronome
         attr_accessor :credit_type
 
         sig { params(amount: Float, credit_type: Metronome::Models::CreditTypeData).void }
-        def initialize(amount:, credit_type:); end
+        def initialize(amount:, credit_type:)
+        end
 
         sig { override.returns({amount: Float, credit_type: Metronome::Models::CreditTypeData}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class PaidAmount < Metronome::BaseModel
@@ -162,10 +168,12 @@ module Metronome
         attr_accessor :credit_type
 
         sig { params(amount: Float, credit_type: Metronome::Models::CreditTypeData).void }
-        def initialize(amount:, credit_type:); end
+        def initialize(amount:, credit_type:)
+        end
 
         sig { override.returns({amount: Float, credit_type: Metronome::Models::CreditTypeData}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class Product < Metronome::BaseModel
@@ -176,10 +184,12 @@ module Metronome
         attr_accessor :name
 
         sig { params(id: String, name: String).void }
-        def initialize(id:, name:); end
+        def initialize(id:, name:)
+        end
 
         sig { override.returns({id: String, name: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

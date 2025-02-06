@@ -73,7 +73,8 @@ module Metronome
         usage_filter: nil,
         usage_statement_schedule: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -112,7 +113,8 @@ module Metronome
         include_ledgers: nil,
         starting_at: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -173,7 +175,8 @@ module Metronome
         scheduled_charges: nil,
         total_contract_value: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -183,7 +186,8 @@ module Metronome
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Metronome::Models::ContractArchiveResponse)
       end
-      def archive(contract_id:, customer_id:, void_invoices:, request_options: {}); end
+      def archive(contract_id:, customer_id:, void_invoices:, request_options: {})
+      end
 
       sig do
         params(
@@ -192,7 +196,8 @@ module Metronome
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Metronome::Models::ContractCreateHistoricalInvoicesResponse)
       end
-      def create_historical_invoices(invoices:, preview:, request_options: {}); end
+      def create_historical_invoices(invoices:, preview:, request_options: {})
+      end
 
       sig do
         params(
@@ -221,7 +226,8 @@ module Metronome
         next_page: nil,
         starting_at: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -264,7 +270,8 @@ module Metronome
         netsuite_invoice_header_end: nil,
         netsuite_invoice_header_start: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig do
         params(
@@ -301,10 +308,12 @@ module Metronome
         allow_ending_before_finalized_invoice: nil,
         ending_before: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig { params(client: Metronome::Client).void }
-      def initialize(client:); end
+      def initialize(client:)
+      end
     end
   end
 end

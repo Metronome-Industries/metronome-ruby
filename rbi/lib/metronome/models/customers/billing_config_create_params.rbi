@@ -53,7 +53,8 @@ module Metronome
           aws_region: nil,
           stripe_collection_method: nil,
           request_options: {}
-        ); end
+        )
+        end
 
         sig do
           override.returns(
@@ -68,7 +69,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class BillingProviderType < Metronome::Enum
           abstract!
@@ -83,7 +85,8 @@ module Metronome
           GCP_MARKETPLACE = :gcp_marketplace
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
         class AwsRegion < Metronome::Enum
@@ -116,7 +119,8 @@ module Metronome
           US_WEST_2 = :"us-west-2"
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
         class StripeCollectionMethod < Metronome::Enum
@@ -126,7 +130,8 @@ module Metronome
           SEND_INVOICE = :send_invoice
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

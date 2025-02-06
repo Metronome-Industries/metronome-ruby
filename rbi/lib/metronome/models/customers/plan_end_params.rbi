@@ -48,7 +48,8 @@ module Metronome
           void_invoices: nil,
           void_stripe_invoices: nil,
           request_options: {}
-        ); end
+        )
+        end
 
         sig do
           override.returns(
@@ -62,7 +63,8 @@ module Metronome
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

@@ -13,10 +13,12 @@ module Metronome
       attr_writer :size
 
       sig { params(price: Float, size: Float).void }
-      def initialize(price:, size: nil); end
+      def initialize(price:, size: nil)
+      end
 
       sig { override.returns({price: Float, size: Float}) }
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

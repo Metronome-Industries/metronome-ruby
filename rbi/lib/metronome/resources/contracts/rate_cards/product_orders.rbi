@@ -12,7 +12,8 @@ module Metronome
               request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
             ).returns(Metronome::Models::Contracts::RateCards::ProductOrderUpdateResponse)
           end
-          def update(product_moves:, rate_card_id:, request_options: {}); end
+          def update(product_moves:, rate_card_id:, request_options: {})
+          end
 
           sig do
             params(
@@ -21,10 +22,12 @@ module Metronome
               request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
             ).returns(Metronome::Models::Contracts::RateCards::ProductOrderSetResponse)
           end
-          def set(product_order:, rate_card_id:, request_options: {}); end
+          def set(product_order:, rate_card_id:, request_options: {})
+          end
 
           sig { params(client: Metronome::Client).void }
-          def initialize(client:); end
+          def initialize(client:)
+          end
         end
       end
     end
