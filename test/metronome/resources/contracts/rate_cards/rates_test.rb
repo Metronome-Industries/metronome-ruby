@@ -31,7 +31,7 @@ class Metronome::Test::Resources::Contracts::RateCards::RatesTest < Minitest::Te
       entitled: true,
       product_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
       rate_card_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
-      rate_type: "FLAT",
+      rate_type: :FLAT,
       starting_at: "2020-01-01T00:00:00.000Z"
     )
 
@@ -45,16 +45,16 @@ class Metronome::Test::Resources::Contracts::RateCards::RatesTest < Minitest::Te
       rate_card_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
       rates: [
         {
-          "entitled" => true,
-          "product_id" => "13117714-3f05-48e5-a6e9-a66093f13b4d",
-          "rate_type" => "FLAT",
-          "starting_at" => "2020-01-01T00:00:00.000Z"
+          entitled: true,
+          product_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+          rate_type: :FLAT,
+          starting_at: "2020-01-01T00:00:00.000Z"
         },
         {
-          "entitled" => true,
-          "product_id" => "13117714-3f05-48e5-a6e9-a66093f13b4d",
-          "rate_type" => "FLAT",
-          "starting_at" => "2020-01-01T00:00:00.000Z"
+          entitled: true,
+          product_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+          rate_type: :FLAT,
+          starting_at: "2020-01-01T00:00:00.000Z"
         }
       ]
     )

@@ -13,7 +13,7 @@ class Metronome::Test::Resources::DashboardsTest < Minitest::Test
   def test_get_embeddable_url_required_params
     response = @metronome.dashboards.get_embeddable_url(
       customer_id: "4db51251-61de-4bfe-b9ce-495e244f3491",
-      dashboard: "invoices"
+      dashboard: :invoices
     )
 
     assert_pattern do

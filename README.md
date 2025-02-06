@@ -56,7 +56,7 @@ non-success status code (i.e., 4xx or 5xx response), a subclass of
 begin
   contract = metronome.contracts.create
 rescue Metronome::Error => e
-  puts(e.code) # 400
+  puts(e.status) # 400
 end
 ```
 
@@ -92,7 +92,7 @@ metronome = Metronome::Client.new(
 )
 
 # Or, configure per-request:
-metronome.contracts.create(max_retries: 5)
+metronome.contracts.create(request_options: {max_retries: 5})
 ```
 
 ### Timeouts
@@ -110,7 +110,7 @@ metronome = Metronome::Client.new(
 )
 
 # Or, configure per-request:
-metronome.contracts.create(timeout: 5)
+metronome.contracts.create(request_options: {timeout: 5})
 ```
 
 ## Versioning

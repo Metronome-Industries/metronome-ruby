@@ -14,9 +14,9 @@ class Metronome::Test::Resources::CreditGrantsTest < Minitest::Test
     response = @metronome.credit_grants.create(
       customer_id: "9b85c1c1-5238-4f2a-a409-61412905e1e1",
       expires_at: "2022-04-01T00:00:00Z",
-      grant_amount: {"amount" => 1000, "credit_type_id" => "5ae401dc-a648-4b49-9ac3-391bb5bc4d7b"},
+      grant_amount: {amount: 1000, credit_type_id: "5ae401dc-a648-4b49-9ac3-391bb5bc4d7b"},
       name: "Acme Corp Promotional Credit Grant",
-      paid_amount: {"amount" => 5000, "credit_type_id" => "2714e483-4ff1-48e4-9e25-ac732e8f24f2"},
+      paid_amount: {amount: 5000, credit_type_id: "2714e483-4ff1-48e4-9e25-ac732e8f24f2"},
       priority: 0.5
     )
 
