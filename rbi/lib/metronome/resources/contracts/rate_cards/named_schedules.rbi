@@ -14,7 +14,8 @@ module Metronome
               request_options: Metronome::RequestOpts
             ).returns(Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse)
           end
-          def retrieve(contract_id:, customer_id:, schedule_name:, covering_date:, request_options: {}); end
+          def retrieve(contract_id:, customer_id:, schedule_name:, covering_date: nil, request_options: {})
+          end
 
           sig do
             params(
@@ -33,7 +34,7 @@ module Metronome
             schedule_name:,
             starting_at:,
             value:,
-            ending_before:,
+            ending_before: nil,
             request_options: {}
           )
           end

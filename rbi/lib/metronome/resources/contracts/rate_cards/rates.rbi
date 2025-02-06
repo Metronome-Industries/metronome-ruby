@@ -15,7 +15,7 @@ module Metronome
               request_options: Metronome::RequestOpts
             ).returns(Metronome::CursorPage[Metronome::Models::Contracts::RateCards::RateListResponse])
           end
-          def list(at:, rate_card_id:, limit:, next_page:, selectors:, request_options: {}); end
+          def list(at:, rate_card_id:, limit: nil, next_page: nil, selectors: nil, request_options: {}); end
 
           sig do
             params(
@@ -43,16 +43,16 @@ module Metronome
             rate_card_id:,
             rate_type:,
             starting_at:,
-            commit_rate:,
-            credit_type_id:,
-            custom_rate:,
-            ending_before:,
-            is_prorated:,
-            price:,
-            pricing_group_values:,
-            quantity:,
-            tiers:,
-            use_list_prices:,
+            commit_rate: nil,
+            credit_type_id: nil,
+            custom_rate: nil,
+            ending_before: nil,
+            is_prorated: nil,
+            price: nil,
+            pricing_group_values: nil,
+            quantity: nil,
+            tiers: nil,
+            use_list_prices: nil,
             request_options: {}
           ); end
 

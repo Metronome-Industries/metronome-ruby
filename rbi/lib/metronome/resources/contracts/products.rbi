@@ -26,18 +26,18 @@ module Metronome
         def create(
           name:,
           type:,
-          billable_metric_id:,
-          composite_product_ids:,
-          composite_tags:,
-          exclude_free_usage:,
-          is_refundable:,
-          netsuite_internal_item_id:,
-          netsuite_overage_item_id:,
-          presentation_group_key:,
-          pricing_group_key:,
-          quantity_conversion:,
-          quantity_rounding:,
-          tags:,
+          billable_metric_id: nil,
+          composite_product_ids: nil,
+          composite_tags: nil,
+          exclude_free_usage: nil,
+          is_refundable: nil,
+          netsuite_internal_item_id: nil,
+          netsuite_overage_item_id: nil,
+          presentation_group_key: nil,
+          pricing_group_key: nil,
+          quantity_conversion: nil,
+          quantity_rounding: nil,
+          tags: nil,
           request_options: {}
         ); end
 
@@ -72,19 +72,19 @@ module Metronome
         def update(
           product_id:,
           starting_at:,
-          billable_metric_id:,
-          composite_product_ids:,
-          composite_tags:,
-          exclude_free_usage:,
-          is_refundable:,
-          name:,
-          netsuite_internal_item_id:,
-          netsuite_overage_item_id:,
-          presentation_group_key:,
-          pricing_group_key:,
-          quantity_conversion:,
-          quantity_rounding:,
-          tags:,
+          billable_metric_id: nil,
+          composite_product_ids: nil,
+          composite_tags: nil,
+          exclude_free_usage: nil,
+          is_refundable: nil,
+          name: nil,
+          netsuite_internal_item_id: nil,
+          netsuite_overage_item_id: nil,
+          presentation_group_key: nil,
+          pricing_group_key: nil,
+          quantity_conversion: nil,
+          quantity_rounding: nil,
+          tags: nil,
           request_options: {}
         ); end
 
@@ -96,7 +96,7 @@ module Metronome
             request_options: Metronome::RequestOpts
           ).returns(Metronome::CursorPage[Metronome::Models::Contracts::ProductListResponse])
         end
-        def list(limit:, next_page:, archive_filter:, request_options: {}); end
+        def list(limit: nil, next_page: nil, archive_filter: nil, request_options: {}); end
 
         sig do
           params(

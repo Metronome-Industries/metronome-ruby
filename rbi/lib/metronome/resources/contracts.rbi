@@ -47,31 +47,31 @@ module Metronome
       def create(
         customer_id:,
         starting_at:,
-        billing_provider_configuration:,
-        commits:,
-        credits:,
-        custom_fields:,
-        discounts:,
-        ending_before:,
-        multiplier_override_prioritization:,
-        name:,
-        net_payment_terms_days:,
-        netsuite_sales_order_id:,
-        overrides:,
-        professional_services:,
-        rate_card_alias:,
-        rate_card_id:,
-        recurring_commits:,
-        recurring_credits:,
-        reseller_royalties:,
-        salesforce_opportunity_id:,
-        scheduled_charges:,
-        scheduled_charges_on_usage_invoices:,
-        total_contract_value:,
-        transition:,
-        uniqueness_key:,
-        usage_filter:,
-        usage_statement_schedule:,
+        billing_provider_configuration: nil,
+        commits: nil,
+        credits: nil,
+        custom_fields: nil,
+        discounts: nil,
+        ending_before: nil,
+        multiplier_override_prioritization: nil,
+        name: nil,
+        net_payment_terms_days: nil,
+        netsuite_sales_order_id: nil,
+        overrides: nil,
+        professional_services: nil,
+        rate_card_alias: nil,
+        rate_card_id: nil,
+        recurring_commits: nil,
+        recurring_credits: nil,
+        reseller_royalties: nil,
+        salesforce_opportunity_id: nil,
+        scheduled_charges: nil,
+        scheduled_charges_on_usage_invoices: nil,
+        total_contract_value: nil,
+        transition: nil,
+        uniqueness_key: nil,
+        usage_filter: nil,
+        usage_statement_schedule: nil,
         request_options: {}
       ); end
 
@@ -84,7 +84,14 @@ module Metronome
           request_options: Metronome::RequestOpts
         ).returns(Metronome::Models::ContractRetrieveResponse)
       end
-      def retrieve(contract_id:, customer_id:, include_balance:, include_ledgers:, request_options: {}); end
+      def retrieve(
+        contract_id:,
+        customer_id:,
+        include_balance: nil,
+        include_ledgers: nil,
+        request_options: {}
+      )
+      end
 
       sig do
         params(
@@ -99,11 +106,11 @@ module Metronome
       end
       def list(
         customer_id:,
-        covering_date:,
-        include_archived:,
-        include_balance:,
-        include_ledgers:,
-        starting_at:,
+        covering_date: nil,
+        include_archived: nil,
+        include_balance: nil,
+        include_ledgers: nil,
+        starting_at: nil,
         request_options: {}
       ); end
 
@@ -125,8 +132,8 @@ module Metronome
         customer_id:,
         reason:,
         segment_id:,
-        contract_id:,
-        timestamp:,
+        contract_id: nil,
+        timestamp: nil,
         request_options: {}
       )
       end
@@ -154,17 +161,17 @@ module Metronome
         contract_id:,
         customer_id:,
         starting_at:,
-        commits:,
-        credits:,
-        custom_fields:,
-        discounts:,
-        netsuite_sales_order_id:,
-        overrides:,
-        professional_services:,
-        reseller_royalties:,
-        salesforce_opportunity_id:,
-        scheduled_charges:,
-        total_contract_value:,
+        commits: nil,
+        credits: nil,
+        custom_fields: nil,
+        discounts: nil,
+        netsuite_sales_order_id: nil,
+        overrides: nil,
+        professional_services: nil,
+        reseller_royalties: nil,
+        salesforce_opportunity_id: nil,
+        scheduled_charges: nil,
+        total_contract_value: nil,
         request_options: {}
       ); end
 
@@ -204,15 +211,15 @@ module Metronome
       end
       def list_balances(
         customer_id:,
-        id:,
-        covering_date:,
-        effective_before:,
-        include_archived:,
-        include_balance:,
-        include_contract_balances:,
-        include_ledgers:,
-        next_page:,
-        starting_at:,
+        id: nil,
+        covering_date: nil,
+        effective_before: nil,
+        include_archived: nil,
+        include_balance: nil,
+        include_contract_balances: nil,
+        include_ledgers: nil,
+        next_page: nil,
+        starting_at: nil,
         request_options: {}
       ); end
 
@@ -230,10 +237,10 @@ module Metronome
       def retrieve_rate_schedule(
         contract_id:,
         customer_id:,
-        limit:,
-        next_page:,
-        at:,
-        selectors:,
+        limit: nil,
+        next_page: nil,
+        at: nil,
+        selectors: nil,
         request_options: {}
       )
       end
@@ -254,8 +261,8 @@ module Metronome
         customer_id:,
         issued_at:,
         line_items:,
-        netsuite_invoice_header_end:,
-        netsuite_invoice_header_start:,
+        netsuite_invoice_header_end: nil,
+        netsuite_invoice_header_start: nil,
         request_options: {}
       ); end
 
@@ -291,11 +298,10 @@ module Metronome
       def update_end_date(
         contract_id:,
         customer_id:,
-        allow_ending_before_finalized_invoice:,
-        ending_before:,
+        allow_ending_before_finalized_invoice: nil,
+        ending_before: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig { params(client: Metronome::Client).void }
       def initialize(client:); end

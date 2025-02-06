@@ -28,16 +28,16 @@ module Metronome
           customer_id:,
           priority:,
           product_id:,
-          applicable_contract_ids:,
-          applicable_product_ids:,
-          applicable_product_tags:,
-          custom_fields:,
-          description:,
-          name:,
-          netsuite_sales_order_id:,
-          rate_type:,
-          salesforce_opportunity_id:,
-          uniqueness_key:,
+          applicable_contract_ids: nil,
+          applicable_product_ids: nil,
+          applicable_product_tags: nil,
+          custom_fields: nil,
+          description: nil,
+          name: nil,
+          netsuite_sales_order_id: nil,
+          rate_type: nil,
+          salesforce_opportunity_id: nil,
+          uniqueness_key: nil,
           request_options: {}
         ); end
 
@@ -58,15 +58,15 @@ module Metronome
         end
         def list(
           customer_id:,
-          covering_date:,
-          credit_id:,
-          effective_before:,
-          include_archived:,
-          include_balance:,
-          include_contract_credits:,
-          include_ledgers:,
-          next_page:,
-          starting_at:,
+          covering_date: nil,
+          credit_id: nil,
+          effective_before: nil,
+          include_archived: nil,
+          include_balance: nil,
+          include_contract_credits: nil,
+          include_ledgers: nil,
+          next_page: nil,
+          starting_at: nil,
           request_options: {}
         ); end
 

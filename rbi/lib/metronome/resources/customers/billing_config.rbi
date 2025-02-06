@@ -19,9 +19,9 @@ module Metronome
           customer_id:,
           billing_provider_type:,
           billing_provider_customer_id:,
-          aws_product_code:,
-          aws_region:,
-          stripe_collection_method:,
+          aws_product_code: nil,
+          aws_region: nil,
+          stripe_collection_method: nil,
           request_options: {}
         ); end
 

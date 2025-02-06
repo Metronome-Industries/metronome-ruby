@@ -26,11 +26,11 @@ module Metronome
         end
         def create(
           name:,
-          aliases:,
-          credit_type_conversions:,
-          custom_fields:,
-          description:,
-          fiat_credit_type_id:,
+          aliases: nil,
+          credit_type_conversions: nil,
+          custom_fields: nil,
+          description: nil,
+          fiat_credit_type_id: nil,
           request_options: {}
         ); end
 
@@ -51,7 +51,7 @@ module Metronome
             request_options: Metronome::RequestOpts
           ).returns(Metronome::Models::Contracts::RateCardUpdateResponse)
         end
-        def update(rate_card_id:, aliases:, description:, name:, request_options: {}); end
+        def update(rate_card_id:, aliases: nil, description: nil, name: nil, request_options: {}); end
 
         sig do
           params(
@@ -61,7 +61,7 @@ module Metronome
             request_options: Metronome::RequestOpts
           ).returns(Metronome::CursorPage[Metronome::Models::Contracts::RateCardListResponse])
         end
-        def list(body:, limit:, next_page:, request_options: {}); end
+        def list(body:, limit: nil, next_page: nil, request_options: {}); end
 
         sig do
           params(
@@ -77,13 +77,12 @@ module Metronome
         def retrieve_rate_schedule(
           rate_card_id:,
           starting_at:,
-          limit:,
-          next_page:,
-          ending_before:,
-          selectors:,
+          limit: nil,
+          next_page: nil,
+          ending_before: nil,
+          selectors: nil,
           request_options: {}
-        )
-        end
+        ); end
 
         sig { params(client: Metronome::Client).void }
         def initialize(client:); end

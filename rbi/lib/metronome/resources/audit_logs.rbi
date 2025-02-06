@@ -16,16 +16,15 @@ module Metronome
         ).returns(Metronome::CursorPage[Metronome::Models::AuditLogListResponse])
       end
       def list(
-        ending_before:,
-        limit:,
-        next_page:,
-        resource_id:,
-        resource_type:,
-        sort:,
-        starting_on:,
+        ending_before: nil,
+        limit: nil,
+        next_page: nil,
+        resource_id: nil,
+        resource_type: nil,
+        sort: nil,
+        starting_on: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig { params(client: Metronome::Client).void }
       def initialize(client:); end

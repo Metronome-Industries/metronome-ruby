@@ -18,13 +18,13 @@ module Metronome
       end
       def create(
         name:,
-        aggregation_key:,
-        aggregation_type:,
-        custom_fields:,
-        event_type_filter:,
-        group_keys:,
-        property_filters:,
-        sql:,
+        aggregation_key: nil,
+        aggregation_type: nil,
+        custom_fields: nil,
+        event_type_filter: nil,
+        group_keys: nil,
+        property_filters: nil,
+        sql: nil,
         request_options: {}
       ); end
 
@@ -44,7 +44,7 @@ module Metronome
           request_options: Metronome::RequestOpts
         ).returns(Metronome::CursorPage[Metronome::Models::BillableMetricListResponse])
       end
-      def list(include_archived:, limit:, next_page:, request_options: {}); end
+      def list(include_archived: nil, limit: nil, next_page: nil, request_options: {}); end
 
       sig do
         params(

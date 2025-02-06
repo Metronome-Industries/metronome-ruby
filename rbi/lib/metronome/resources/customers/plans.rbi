@@ -12,7 +12,7 @@ module Metronome
             request_options: Metronome::RequestOpts
           ).returns(Metronome::CursorPage[Metronome::Models::Customers::PlanListResponse])
         end
-        def list(customer_id:, limit:, next_page:, request_options: {}); end
+        def list(customer_id:, limit: nil, next_page: nil, request_options: {}); end
 
         sig do
           params(
@@ -31,11 +31,11 @@ module Metronome
           customer_id:,
           plan_id:,
           starting_on:,
-          ending_before:,
-          net_payment_terms_days:,
-          overage_rate_adjustments:,
-          price_adjustments:,
-          trial_spec:,
+          ending_before: nil,
+          net_payment_terms_days: nil,
+          overage_rate_adjustments: nil,
+          price_adjustments: nil,
+          trial_spec: nil,
           request_options: {}
         ); end
 
@@ -52,9 +52,9 @@ module Metronome
         def end_(
           customer_id:,
           customer_plan_id:,
-          ending_before:,
-          void_invoices:,
-          void_stripe_invoices:,
+          ending_before: nil,
+          void_invoices: nil,
+          void_stripe_invoices: nil,
           request_options: {}
         ); end
 
@@ -67,7 +67,13 @@ module Metronome
             request_options: Metronome::RequestOpts
           ).returns(Metronome::CursorPage[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse])
         end
-        def list_price_adjustments(customer_id:, customer_plan_id:, limit:, next_page:, request_options: {})
+        def list_price_adjustments(
+          customer_id:,
+          customer_plan_id:,
+          limit: nil,
+          next_page: nil,
+          request_options: {}
+        )
         end
 
         sig { params(client: Metronome::Client).void }

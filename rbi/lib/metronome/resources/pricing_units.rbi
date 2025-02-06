@@ -10,7 +10,7 @@ module Metronome
           request_options: Metronome::RequestOpts
         ).returns(Metronome::CursorPage[Metronome::Models::PricingUnitListResponse])
       end
-      def list(limit:, next_page:, request_options: {}); end
+      def list(limit: nil, next_page: nil, request_options: {}); end
 
       sig { params(client: Metronome::Client).void }
       def initialize(client:); end

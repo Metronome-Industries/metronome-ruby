@@ -30,7 +30,7 @@ module Metronome
           request_options: Metronome::RequestOpts
         ).returns(Metronome::Models::CustomFieldListKeysResponse)
       end
-      def list_keys(next_page:, entities:, request_options: {}); end
+      def list_keys(next_page: nil, entities: nil, request_options: {}); end
 
       sig { params(entity: Symbol, key: String, request_options: Metronome::RequestOpts).void }
       def remove_key(entity:, key:, request_options: {}); end

@@ -16,9 +16,9 @@ module Metronome
       def get_embeddable_url(
         customer_id:,
         dashboard:,
-        bm_group_key_overrides:,
-        color_overrides:,
-        dashboard_options:,
+        bm_group_key_overrides: nil,
+        color_overrides: nil,
+        dashboard_options: nil,
         request_options: {}
       ); end
 
