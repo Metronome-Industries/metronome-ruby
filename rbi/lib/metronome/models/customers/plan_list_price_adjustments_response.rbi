@@ -4,16 +4,6 @@ module Metronome
   module Models
     module Customers
       class PlanListPriceAdjustmentsResponse < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            charge_id: String,
-            charge_type: Symbol,
-            prices: T::Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price],
-            start_period: Float,
-            quantity: Float
-          }
-        end
-
         sig { returns(String) }
         attr_accessor :charge_id
 
@@ -43,8 +33,18 @@ module Metronome
         end
         def initialize(charge_id:, charge_type:, prices:, start_period:, quantity: nil); end
 
-        sig { returns(Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              charge_id: String,
+              charge_type: Symbol,
+              prices: T::Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price],
+              start_period: Float,
+              quantity: Float
+            }
+          )
+        end
+        def to_hash; end
 
         class ChargeType < Metronome::Enum
           abstract!
@@ -60,8 +60,6 @@ module Metronome
         end
 
         class Price < Metronome::BaseModel
-          Shape = T.type_alias { {adjustment_type: Symbol, tier: Float, value: Float} }
-
           sig { returns(Symbol) }
           attr_accessor :adjustment_type
 
@@ -80,8 +78,8 @@ module Metronome
           sig { params(adjustment_type: Symbol, tier: Float, value: Float).void }
           def initialize(adjustment_type:, tier: nil, value: nil); end
 
-          sig { returns(Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price::Shape) }
-          def to_h; end
+          sig { override.returns({adjustment_type: Symbol, tier: Float, value: Float}) }
+          def to_hash; end
 
           class AdjustmentType < Metronome::Enum
             abstract!

@@ -13,7 +13,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::billable_metric_retrieve_response
+      def to_hash: -> Metronome::Models::billable_metric_retrieve_response
 
       type data =
         {
@@ -88,7 +88,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::BillableMetricRetrieveResponse::data
+        def to_hash: -> Metronome::Models::BillableMetricRetrieveResponse::data
 
         type aggregation_type = :COUNT | :LATEST | :MAX | :SUM | :UNIQUE
 

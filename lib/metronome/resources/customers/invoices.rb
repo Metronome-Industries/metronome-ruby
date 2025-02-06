@@ -15,7 +15,7 @@ module Metronome
         #   @option params [Boolean] :skip_zero_qty_line_items Query param: If set, all zero quantity line items will be filtered out of the
         #     response
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Metronome::Models::Customers::InvoiceRetrieveResponse]
         #
@@ -63,7 +63,7 @@ module Metronome
         #
         #   @option params [String] :status Query param: Invoice status, e.g. DRAFT, FINALIZED, or VOID
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Metronome::CursorPage<Metronome::Models::Customers::Invoice>]
         #
@@ -103,7 +103,7 @@ module Metronome
         #
         #   @option params [Float] :quantity Body param:
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Metronome::Models::Customers::InvoiceAddChargeResponse]
         #
@@ -153,7 +153,7 @@ module Metronome
         #
         #   @option params [Symbol, Metronome::Models::Customers::InvoiceListBreakdownsParams::WindowSize] :window_size Query param: The granularity of the breakdowns to return. Defaults to day.
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Metronome::CursorPage<Metronome::Models::Customers::InvoiceListBreakdownsResponse>]
         #

@@ -3,28 +3,6 @@
 module Metronome
   module Models
     class CreditGrantListResponse < Metronome::BaseModel
-      Shape = T.type_alias do
-        {
-          id: String,
-          balance: Metronome::Models::CreditGrantListResponse::Balance,
-          custom_fields: T::Hash[Symbol, String],
-          customer_id: String,
-          deductions: T::Array[Metronome::Models::CreditLedgerEntry],
-          effective_at: Time,
-          expires_at: Time,
-          grant_amount: Metronome::Models::CreditGrantListResponse::GrantAmount,
-          name: String,
-          paid_amount: Metronome::Models::CreditGrantListResponse::PaidAmount,
-          pending_deductions: T::Array[Metronome::Models::CreditLedgerEntry],
-          priority: Float,
-          credit_grant_type: T.nilable(String),
-          invoice_id: T.nilable(String),
-          products: T::Array[Metronome::Models::CreditGrantListResponse::Product],
-          reason: T.nilable(String),
-          uniqueness_key: T.nilable(String)
-        }
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -120,12 +98,32 @@ module Metronome
         uniqueness_key: nil
       ); end
 
-      sig { returns(Metronome::Models::CreditGrantListResponse::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: String,
+            balance: Metronome::Models::CreditGrantListResponse::Balance,
+            custom_fields: T::Hash[Symbol, String],
+            customer_id: String,
+            deductions: T::Array[Metronome::Models::CreditLedgerEntry],
+            effective_at: Time,
+            expires_at: Time,
+            grant_amount: Metronome::Models::CreditGrantListResponse::GrantAmount,
+            name: String,
+            paid_amount: Metronome::Models::CreditGrantListResponse::PaidAmount,
+            pending_deductions: T::Array[Metronome::Models::CreditLedgerEntry],
+            priority: Float,
+            credit_grant_type: T.nilable(String),
+            invoice_id: T.nilable(String),
+            products: T::Array[Metronome::Models::CreditGrantListResponse::Product],
+            reason: T.nilable(String),
+            uniqueness_key: T.nilable(String)
+          }
+        )
+      end
+      def to_hash; end
 
       class Balance < Metronome::BaseModel
-        Shape = T.type_alias { {effective_at: Time, excluding_pending: Float, including_pending: Float} }
-
         sig { returns(Time) }
         attr_accessor :effective_at
 
@@ -138,13 +136,11 @@ module Metronome
         sig { params(effective_at: Time, excluding_pending: Float, including_pending: Float).void }
         def initialize(effective_at:, excluding_pending:, including_pending:); end
 
-        sig { returns(Metronome::Models::CreditGrantListResponse::Balance::Shape) }
-        def to_h; end
+        sig { override.returns({effective_at: Time, excluding_pending: Float, including_pending: Float}) }
+        def to_hash; end
       end
 
       class GrantAmount < Metronome::BaseModel
-        Shape = T.type_alias { {amount: Float, credit_type: Metronome::Models::CreditTypeData} }
-
         sig { returns(Float) }
         attr_accessor :amount
 
@@ -154,13 +150,11 @@ module Metronome
         sig { params(amount: Float, credit_type: Metronome::Models::CreditTypeData).void }
         def initialize(amount:, credit_type:); end
 
-        sig { returns(Metronome::Models::CreditGrantListResponse::GrantAmount::Shape) }
-        def to_h; end
+        sig { override.returns({amount: Float, credit_type: Metronome::Models::CreditTypeData}) }
+        def to_hash; end
       end
 
       class PaidAmount < Metronome::BaseModel
-        Shape = T.type_alias { {amount: Float, credit_type: Metronome::Models::CreditTypeData} }
-
         sig { returns(Float) }
         attr_accessor :amount
 
@@ -170,13 +164,11 @@ module Metronome
         sig { params(amount: Float, credit_type: Metronome::Models::CreditTypeData).void }
         def initialize(amount:, credit_type:); end
 
-        sig { returns(Metronome::Models::CreditGrantListResponse::PaidAmount::Shape) }
-        def to_h; end
+        sig { override.returns({amount: Float, credit_type: Metronome::Models::CreditTypeData}) }
+        def to_hash; end
       end
 
       class Product < Metronome::BaseModel
-        Shape = T.type_alias { {id: String, name: String} }
-
         sig { returns(String) }
         attr_accessor :id
 
@@ -186,8 +178,8 @@ module Metronome
         sig { params(id: String, name: String).void }
         def initialize(id:, name:); end
 
-        sig { returns(Metronome::Models::CreditGrantListResponse::Product::Shape) }
-        def to_h; end
+        sig { override.returns({id: String, name: String}) }
+        def to_hash; end
       end
     end
   end

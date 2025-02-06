@@ -14,7 +14,7 @@ module Metronome
       #
       #   @option params [String] :key
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [nil]
       #
@@ -39,7 +39,7 @@ module Metronome
       #
       #   @option params [Array<String>] :keys
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [nil]
       #
@@ -62,7 +62,7 @@ module Metronome
       #
       #   @option params [Array<Symbol, Metronome::Models::CustomFieldListKeysParams::Entity>] :entities Body param: Optional list of entity types to return keys for
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::CustomFieldListKeysResponse]
       #
@@ -87,7 +87,7 @@ module Metronome
       #
       #   @option params [String] :key
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [nil]
       #
@@ -118,7 +118,7 @@ module Metronome
       #
       #   @option params [String] :entity_id
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [nil]
       #

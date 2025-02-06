@@ -6,23 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            billable_metric_id: String,
-            customer_id: String,
-            window_size: Symbol,
-            limit: Integer,
-            next_page: String,
-            current_period: T::Boolean,
-            ending_before: Time,
-            group_by: Metronome::Models::UsageListWithGroupsParams::GroupBy,
-            starting_on: Time
-          },
-          Metronome::RequestParameters::Shape
-        )
-      end
-
       sig { returns(String) }
       attr_accessor :billable_metric_id
 
@@ -79,7 +62,7 @@ module Metronome
           ending_before: Time,
           group_by: Metronome::Models::UsageListWithGroupsParams::GroupBy,
           starting_on: Time,
-          request_options: Metronome::RequestOpts
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -95,8 +78,23 @@ module Metronome
         request_options: {}
       ); end
 
-      sig { returns(Metronome::Models::UsageListWithGroupsParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            billable_metric_id: String,
+            customer_id: String,
+            window_size: Symbol,
+            limit: Integer,
+            next_page: String,
+            current_period: T::Boolean,
+            ending_before: Time,
+            group_by: Metronome::Models::UsageListWithGroupsParams::GroupBy,
+            starting_on: Time,
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class WindowSize < Metronome::Enum
         abstract!
@@ -110,8 +108,6 @@ module Metronome
       end
 
       class GroupBy < Metronome::BaseModel
-        Shape = T.type_alias { {key: String, values: T::Array[String]} }
-
         sig { returns(String) }
         attr_accessor :key
 
@@ -124,8 +120,8 @@ module Metronome
         sig { params(key: String, values: T::Array[String]).void }
         def initialize(key:, values: nil); end
 
-        sig { returns(Metronome::Models::UsageListWithGroupsParams::GroupBy::Shape) }
-        def to_h; end
+        sig { override.returns({key: String, values: T::Array[String]}) }
+        def to_hash; end
       end
     end
   end

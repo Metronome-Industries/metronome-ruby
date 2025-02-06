@@ -22,7 +22,7 @@ module Metronome
           ?Metronome::Models::base_usage_filter | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::base_usage_filter
+      def to_hash: -> Metronome::Models::base_usage_filter
     end
   end
 end

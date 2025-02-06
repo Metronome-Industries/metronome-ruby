@@ -6,19 +6,25 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias { T.all({customer_id: String, name: String}, Metronome::RequestParameters::Shape) }
-
       sig { returns(String) }
       attr_accessor :customer_id
 
       sig { returns(String) }
       attr_accessor :name
 
-      sig { params(customer_id: String, name: String, request_options: Metronome::RequestOpts).void }
+      sig do
+        params(
+          customer_id: String,
+          name: String,
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
+        ).void
+      end
       def initialize(customer_id:, name:, request_options: {}); end
 
-      sig { returns(Metronome::Models::CustomerSetNameParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns({customer_id: String, name: String, request_options: Metronome::RequestOptions})
+      end
+      def to_hash; end
     end
   end
 end

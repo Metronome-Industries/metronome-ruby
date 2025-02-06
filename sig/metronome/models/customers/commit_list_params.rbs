@@ -77,7 +77,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Customers::commit_list_params
+        def to_hash: -> Metronome::Models::Customers::commit_list_params
       end
     end
   end

@@ -21,7 +21,7 @@ module Metronome
             custom_fields: T::Hash[Symbol, String],
             description: String,
             fiat_credit_type_id: String,
-            request_options: Metronome::RequestOpts
+            request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::Models::Contracts::RateCardCreateResponse)
         end
         def create(
@@ -37,7 +37,7 @@ module Metronome
         sig do
           params(
             id: String,
-            request_options: Metronome::RequestOpts
+            request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::Models::Contracts::RateCardRetrieveResponse)
         end
         def retrieve(id:, request_options: {}); end
@@ -48,7 +48,7 @@ module Metronome
             aliases: T::Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias],
             description: String,
             name: String,
-            request_options: Metronome::RequestOpts
+            request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::Models::Contracts::RateCardUpdateResponse)
         end
         def update(rate_card_id:, aliases: nil, description: nil, name: nil, request_options: {}); end
@@ -58,7 +58,7 @@ module Metronome
             body: T.anything,
             limit: Integer,
             next_page: String,
-            request_options: Metronome::RequestOpts
+            request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::CursorPage[Metronome::Models::Contracts::RateCardListResponse])
         end
         def list(body:, limit: nil, next_page: nil, request_options: {}); end
@@ -71,7 +71,7 @@ module Metronome
             next_page: String,
             ending_before: Time,
             selectors: T::Array[Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams::Selector],
-            request_options: Metronome::RequestOpts
+            request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse)
         end
         def retrieve_rate_schedule(

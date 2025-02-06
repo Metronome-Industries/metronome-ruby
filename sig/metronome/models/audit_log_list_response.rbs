@@ -61,7 +61,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::audit_log_list_response
+      def to_hash: -> Metronome::Models::audit_log_list_response
 
       type request = { id: String, ip: String, user_agent: String }
 
@@ -83,7 +83,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::AuditLogListResponse::request
+        def to_hash: -> Metronome::Models::AuditLogListResponse::request
       end
 
       type actor = { id: String, name: String, email: String }
@@ -104,7 +104,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::AuditLogListResponse::actor
+        def to_hash: -> Metronome::Models::AuditLogListResponse::actor
       end
 
       type status = :success | :failure | :pending

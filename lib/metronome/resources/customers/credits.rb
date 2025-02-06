@@ -43,7 +43,7 @@ module Metronome
         #     credit, a new record will not be created and the request will fail with a 409
         #     error.
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Metronome::Models::Customers::CreditCreateResponse]
         #
@@ -84,7 +84,7 @@ module Metronome
         #
         #   @option params [Time] :starting_at Include only credits that have any access on or after the provided date
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Metronome::Models::Customers::CreditListResponse]
         #
@@ -110,7 +110,7 @@ module Metronome
         #
         #   @option params [String] :customer_id ID of the customer whose credit is to be updated
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Metronome::Models::Customers::CreditUpdateEndDateResponse]
         #

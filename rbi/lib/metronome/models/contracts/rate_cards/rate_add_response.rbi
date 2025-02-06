@@ -5,33 +5,16 @@ module Metronome
     module Contracts
       module RateCards
         class RateAddResponse < Metronome::BaseModel
-          Shape = T.type_alias { {data: Metronome::Models::Contracts::RateCards::RateAddResponse::Data} }
-
           sig { returns(Metronome::Models::Contracts::RateCards::RateAddResponse::Data) }
           attr_accessor :data
 
           sig { params(data: Metronome::Models::Contracts::RateCards::RateAddResponse::Data).void }
           def initialize(data:); end
 
-          sig { returns(Metronome::Models::Contracts::RateCards::RateAddResponse::Shape) }
-          def to_h; end
+          sig { override.returns({data: Metronome::Models::Contracts::RateCards::RateAddResponse::Data}) }
+          def to_hash; end
 
           class Data < Metronome::BaseModel
-            Shape = T.type_alias do
-              {
-                rate_type: Symbol,
-                commit_rate: Metronome::Models::Contracts::RateCards::RateAddResponse::Data::CommitRate,
-                credit_type: Metronome::Models::CreditTypeData,
-                custom_rate: T::Hash[Symbol, T.anything],
-                is_prorated: T::Boolean,
-                price: Float,
-                pricing_group_values: T::Hash[Symbol, String],
-                quantity: Float,
-                tiers: T::Array[Metronome::Models::Tier],
-                use_list_prices: T::Boolean
-              }
-            end
-
             sig { returns(Symbol) }
             attr_accessor :rate_type
 
@@ -120,8 +103,23 @@ module Metronome
               use_list_prices: nil
             ); end
 
-            sig { returns(Metronome::Models::Contracts::RateCards::RateAddResponse::Data::Shape) }
-            def to_h; end
+            sig do
+              override.returns(
+                {
+                  rate_type: Symbol,
+                  commit_rate: Metronome::Models::Contracts::RateCards::RateAddResponse::Data::CommitRate,
+                  credit_type: Metronome::Models::CreditTypeData,
+                  custom_rate: T::Hash[Symbol, T.anything],
+                  is_prorated: T::Boolean,
+                  price: Float,
+                  pricing_group_values: T::Hash[Symbol, String],
+                  quantity: Float,
+                  tiers: T::Array[Metronome::Models::Tier],
+                  use_list_prices: T::Boolean
+                }
+              )
+            end
+            def to_hash; end
 
             class RateType < Metronome::Enum
               abstract!
@@ -137,10 +135,6 @@ module Metronome
             end
 
             class CommitRate < Metronome::BaseModel
-              Shape = T.type_alias do
-                {rate_type: Symbol, price: Float, tiers: T::Array[Metronome::Models::Tier]}
-              end
-
               sig { returns(Symbol) }
               attr_accessor :rate_type
 
@@ -160,9 +154,9 @@ module Metronome
               def initialize(rate_type:, price: nil, tiers: nil); end
 
               sig do
-                returns(Metronome::Models::Contracts::RateCards::RateAddResponse::Data::CommitRate::Shape)
+                override.returns({rate_type: Symbol, price: Float, tiers: T::Array[Metronome::Models::Tier]})
               end
-              def to_h; end
+              def to_hash; end
 
               class RateType < Metronome::Enum
                 abstract!

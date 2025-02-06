@@ -28,7 +28,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Contracts::quantity_conversion
+        def to_hash: -> Metronome::Models::Contracts::quantity_conversion
 
         type operation = :MULTIPLY | :DIVIDE
 

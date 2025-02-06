@@ -42,7 +42,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::customer_list_costs_params
+      def to_hash: -> Metronome::Models::customer_list_costs_params
     end
   end
 end

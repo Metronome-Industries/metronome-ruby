@@ -21,7 +21,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::rollover_amount_max_percentage
+      def to_hash: -> Metronome::Models::rollover_amount_max_percentage
 
       type type_ = :MAX_PERCENTAGE
 

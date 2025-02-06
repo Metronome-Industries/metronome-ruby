@@ -13,7 +13,7 @@ module Metronome
           #
           #   @option params [String] :rate_card_id ID of the rate card to update
           #
-          #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+          #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Metronome::Models::Contracts::RateCards::ProductOrderUpdateResponse]
           #
@@ -36,7 +36,7 @@ module Metronome
           #
           #   @option params [String] :rate_card_id ID of the rate card to update
           #
-          #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+          #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
           #
           # @return [Metronome::Models::Contracts::RateCards::ProductOrderSetResponse]
           #

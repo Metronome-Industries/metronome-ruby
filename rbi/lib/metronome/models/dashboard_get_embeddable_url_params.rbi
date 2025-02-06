@@ -6,19 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            customer_id: String,
-            dashboard: Symbol,
-            bm_group_key_overrides: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride],
-            color_overrides: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride],
-            dashboard_options: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption]
-          },
-          Metronome::RequestParameters::Shape
-        )
-      end
-
       sig { returns(String) }
       attr_accessor :customer_id
 
@@ -62,7 +49,7 @@ module Metronome
           bm_group_key_overrides: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride],
           color_overrides: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride],
           dashboard_options: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption],
-          request_options: Metronome::RequestOpts
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -74,8 +61,19 @@ module Metronome
         request_options: {}
       ); end
 
-      sig { returns(Metronome::Models::DashboardGetEmbeddableURLParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            customer_id: String,
+            dashboard: Symbol,
+            bm_group_key_overrides: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride],
+            color_overrides: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride],
+            dashboard_options: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption],
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class Dashboard < Metronome::Enum
         abstract!
@@ -89,10 +87,6 @@ module Metronome
       end
 
       class BmGroupKeyOverride < Metronome::BaseModel
-        Shape = T.type_alias do
-          {group_key_name: String, display_name: String, value_display_names: T::Hash[Symbol, T.anything]}
-        end
-
         sig { returns(String) }
         attr_accessor :group_key_name
 
@@ -117,13 +111,19 @@ module Metronome
         end
         def initialize(group_key_name:, display_name: nil, value_display_names: nil); end
 
-        sig { returns(Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              group_key_name: String,
+              display_name: String,
+              value_display_names: T::Hash[Symbol, T.anything]
+            }
+          )
+        end
+        def to_hash; end
       end
 
       class ColorOverride < Metronome::BaseModel
-        Shape = T.type_alias { {name: Symbol, value: String} }
-
         sig { returns(T.nilable(Symbol)) }
         attr_reader :name
 
@@ -139,8 +139,8 @@ module Metronome
         sig { params(name: Symbol, value: String).void }
         def initialize(name: nil, value: nil); end
 
-        sig { returns(Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride::Shape) }
-        def to_h; end
+        sig { override.returns({name: Symbol, value: String}) }
+        def to_hash; end
 
         class Name < Metronome::Enum
           abstract!
@@ -171,8 +171,6 @@ module Metronome
       end
 
       class DashboardOption < Metronome::BaseModel
-        Shape = T.type_alias { {key: String, value: String} }
-
         sig { returns(String) }
         attr_accessor :key
 
@@ -182,8 +180,8 @@ module Metronome
         sig { params(key: String, value: String).void }
         def initialize(key:, value:); end
 
-        sig { returns(Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption::Shape) }
-        def to_h; end
+        sig { override.returns({key: String, value: String}) }
+        def to_hash; end
       end
     end
   end

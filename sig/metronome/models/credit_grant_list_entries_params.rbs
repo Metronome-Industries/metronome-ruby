@@ -48,7 +48,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::credit_grant_list_entries_params
+      def to_hash: -> Metronome::Models::credit_grant_list_entries_params
     end
   end
 end

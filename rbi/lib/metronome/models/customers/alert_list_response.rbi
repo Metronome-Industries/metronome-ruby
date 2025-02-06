@@ -4,10 +4,6 @@ module Metronome
   module Models
     module Customers
       class AlertListResponse < Metronome::BaseModel
-        Shape = T.type_alias do
-          {data: T::Array[Metronome::Models::Customers::CustomerAlert], next_page: T.nilable(String)}
-        end
-
         sig { returns(T::Array[Metronome::Models::Customers::CustomerAlert]) }
         attr_accessor :data
 
@@ -22,8 +18,15 @@ module Metronome
         end
         def initialize(data:, next_page:); end
 
-        sig { returns(Metronome::Models::Customers::AlertListResponse::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              data: T::Array[Metronome::Models::Customers::CustomerAlert],
+              next_page: T.nilable(String)
+            }
+          )
+        end
+        def to_hash; end
       end
     end
   end

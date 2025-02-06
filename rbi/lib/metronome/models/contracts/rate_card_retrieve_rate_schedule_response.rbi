@@ -4,13 +4,6 @@ module Metronome
   module Models
     module Contracts
       class RateCardRetrieveRateScheduleResponse < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            data: T::Array[Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Data],
-            next_page: T.nilable(String)
-          }
-        end
-
         sig { returns(T::Array[Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Data]) }
         attr_accessor :data
 
@@ -25,25 +18,17 @@ module Metronome
         end
         def initialize(data:, next_page: nil); end
 
-        sig { returns(Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              data: T::Array[Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Data],
+              next_page: T.nilable(String)
+            }
+          )
+        end
+        def to_hash; end
 
         class Data < Metronome::BaseModel
-          Shape = T.type_alias do
-            {
-              entitled: T::Boolean,
-              product_custom_fields: T::Hash[Symbol, String],
-              product_id: String,
-              product_name: String,
-              product_tags: T::Array[String],
-              rate: Metronome::Models::Rate,
-              starting_at: Time,
-              commit_rate: Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Data::CommitRate,
-              ending_before: Time,
-              pricing_group_values: T::Hash[Symbol, String]
-            }
-          end
-
           sig { returns(T::Boolean) }
           attr_accessor :entitled
 
@@ -114,14 +99,25 @@ module Metronome
             pricing_group_values: nil
           ); end
 
-          sig { returns(Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Data::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                entitled: T::Boolean,
+                product_custom_fields: T::Hash[Symbol, String],
+                product_id: String,
+                product_name: String,
+                product_tags: T::Array[String],
+                rate: Metronome::Models::Rate,
+                starting_at: Time,
+                commit_rate: Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Data::CommitRate,
+                ending_before: Time,
+                pricing_group_values: T::Hash[Symbol, String]
+              }
+            )
+          end
+          def to_hash; end
 
           class CommitRate < Metronome::BaseModel
-            Shape = T.type_alias do
-              {rate_type: Symbol, price: Float, tiers: T::Array[Metronome::Models::Tier]}
-            end
-
             sig { returns(Symbol) }
             attr_accessor :rate_type
 
@@ -141,9 +137,9 @@ module Metronome
             def initialize(rate_type:, price: nil, tiers: nil); end
 
             sig do
-              returns(Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Data::CommitRate::Shape)
+              override.returns({rate_type: Symbol, price: Float, tiers: T::Array[Metronome::Models::Tier]})
             end
-            def to_h; end
+            def to_hash; end
 
             class RateType < Metronome::Enum
               abstract!

@@ -7,13 +7,6 @@ module Metronome
         extend Metronome::RequestParameters::Converter
         include Metronome::RequestParameters
 
-        Shape = T.type_alias do
-          T.all(
-            {customer_id: String, customer_plan_id: String, limit: Integer, next_page: String},
-            Metronome::RequestParameters::Shape
-          )
-        end
-
         sig { returns(String) }
         attr_accessor :customer_id
 
@@ -38,13 +31,23 @@ module Metronome
             customer_plan_id: String,
             limit: Integer,
             next_page: String,
-            request_options: Metronome::RequestOpts
+            request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
           ).void
         end
         def initialize(customer_id:, customer_plan_id:, limit: nil, next_page: nil, request_options: {}); end
 
-        sig { returns(Metronome::Models::Customers::PlanListPriceAdjustmentsParams::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              customer_id: String,
+              customer_plan_id: String,
+              limit: Integer,
+              next_page: String,
+              request_options: Metronome::RequestOptions
+            }
+          )
+        end
+        def to_hash; end
       end
     end
   end

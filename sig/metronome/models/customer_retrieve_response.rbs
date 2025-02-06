@@ -13,7 +13,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::customer_retrieve_response
+      def to_hash: -> Metronome::Models::customer_retrieve_response
     end
   end
 end

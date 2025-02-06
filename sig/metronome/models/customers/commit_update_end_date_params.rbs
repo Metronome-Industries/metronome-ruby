@@ -39,7 +39,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Customers::commit_update_end_date_params
+        def to_hash: -> Metronome::Models::Customers::commit_update_end_date_params
       end
     end
   end

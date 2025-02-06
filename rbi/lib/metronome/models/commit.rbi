@@ -3,34 +3,6 @@
 module Metronome
   module Models
     class Commit < Metronome::BaseModel
-      Shape = T.type_alias do
-        {
-          id: String,
-          product: Metronome::Models::Commit::Product,
-          type: Symbol,
-          access_schedule: Metronome::Models::ScheduleDuration,
-          amount: Float,
-          applicable_contract_ids: T::Array[String],
-          applicable_product_ids: T::Array[String],
-          applicable_product_tags: T::Array[String],
-          balance: Float,
-          contract: Metronome::Models::Commit::Contract,
-          custom_fields: T::Hash[Symbol, String],
-          description: String,
-          invoice_contract: Metronome::Models::Commit::InvoiceContract,
-          invoice_schedule: Metronome::Models::SchedulePointInTime,
-          ledger: T::Array[Metronome::Models::Commit::Ledger::Variants],
-          name: String,
-          netsuite_sales_order_id: String,
-          priority: Float,
-          rate_type: Symbol,
-          rolled_over_from: Metronome::Models::Commit::RolledOverFrom,
-          rollover_fraction: Float,
-          salesforce_opportunity_id: String,
-          uniqueness_key: String
-        }
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -106,10 +78,48 @@ module Metronome
       sig { params(invoice_schedule: Metronome::Models::SchedulePointInTime).void }
       attr_writer :invoice_schedule
 
-      sig { returns(T.nilable(T::Array[Metronome::Models::Commit::Ledger::Variants])) }
+      sig do
+        returns(
+          T.nilable(
+            T::Array[T.any(
+              Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry,
+              Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry,
+              Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry,
+              Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry,
+              Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry,
+              Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry,
+              Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry,
+              Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry,
+              Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry,
+              Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry,
+              Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry,
+              Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry,
+              Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry
+            )]
+          )
+        )
+      end
       attr_reader :ledger
 
-      sig { params(ledger: T::Array[Metronome::Models::Commit::Ledger::Variants]).void }
+      sig do
+        params(
+          ledger: T::Array[T.any(
+            Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry,
+            Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry,
+            Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry,
+            Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry,
+            Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry,
+            Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry,
+            Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry,
+            Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry,
+            Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry,
+            Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry,
+            Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry,
+            Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry,
+            Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry
+          )]
+        ).void
+      end
       attr_writer :ledger
 
       sig { returns(T.nilable(String)) }
@@ -176,7 +186,21 @@ module Metronome
           description: String,
           invoice_contract: Metronome::Models::Commit::InvoiceContract,
           invoice_schedule: Metronome::Models::SchedulePointInTime,
-          ledger: T::Array[Metronome::Models::Commit::Ledger::Variants],
+          ledger: T::Array[T.any(
+            Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry,
+            Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry,
+            Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry,
+            Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry,
+            Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry,
+            Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry,
+            Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry,
+            Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry,
+            Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry,
+            Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry,
+            Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry,
+            Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry,
+            Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry
+          )],
           name: String,
           netsuite_sales_order_id: String,
           priority: Float,
@@ -213,12 +237,52 @@ module Metronome
         uniqueness_key: nil
       ); end
 
-      sig { returns(Metronome::Models::Commit::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: String,
+            product: Metronome::Models::Commit::Product,
+            type: Symbol,
+            access_schedule: Metronome::Models::ScheduleDuration,
+            amount: Float,
+            applicable_contract_ids: T::Array[String],
+            applicable_product_ids: T::Array[String],
+            applicable_product_tags: T::Array[String],
+            balance: Float,
+            contract: Metronome::Models::Commit::Contract,
+            custom_fields: T::Hash[Symbol, String],
+            description: String,
+            invoice_contract: Metronome::Models::Commit::InvoiceContract,
+            invoice_schedule: Metronome::Models::SchedulePointInTime,
+            ledger: T::Array[T.any(
+              Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry,
+              Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry,
+              Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry,
+              Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry,
+              Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry,
+              Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry,
+              Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry,
+              Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry,
+              Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry,
+              Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry,
+              Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry,
+              Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry,
+              Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry
+            )],
+            name: String,
+            netsuite_sales_order_id: String,
+            priority: Float,
+            rate_type: Symbol,
+            rolled_over_from: Metronome::Models::Commit::RolledOverFrom,
+            rollover_fraction: Float,
+            salesforce_opportunity_id: String,
+            uniqueness_key: String
+          }
+        )
+      end
+      def to_hash; end
 
       class Product < Metronome::BaseModel
-        Shape = T.type_alias { {id: String, name: String} }
-
         sig { returns(String) }
         attr_accessor :id
 
@@ -228,8 +292,8 @@ module Metronome
         sig { params(id: String, name: String).void }
         def initialize(id:, name:); end
 
-        sig { returns(Metronome::Models::Commit::Product::Shape) }
-        def to_h; end
+        sig { override.returns({id: String, name: String}) }
+        def to_hash; end
       end
 
       class Type < Metronome::Enum
@@ -243,55 +307,31 @@ module Metronome
       end
 
       class Contract < Metronome::BaseModel
-        Shape = T.type_alias { {id: String} }
-
         sig { returns(String) }
         attr_accessor :id
 
         sig { params(id: String).void }
         def initialize(id:); end
 
-        sig { returns(Metronome::Models::Commit::Contract::Shape) }
-        def to_h; end
+        sig { override.returns({id: String}) }
+        def to_hash; end
       end
 
       class InvoiceContract < Metronome::BaseModel
-        Shape = T.type_alias { {id: String} }
-
         sig { returns(String) }
         attr_accessor :id
 
         sig { params(id: String).void }
         def initialize(id:); end
 
-        sig { returns(Metronome::Models::Commit::InvoiceContract::Shape) }
-        def to_h; end
+        sig { override.returns({id: String}) }
+        def to_hash; end
       end
 
       class Ledger < Metronome::Union
         abstract!
 
-        Variants = T.type_alias do
-          T.any(
-            Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry,
-            Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry,
-            Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry,
-            Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry,
-            Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry,
-            Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry,
-            Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry,
-            Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry,
-            Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry,
-            Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry,
-            Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry,
-            Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry,
-            Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry
-          )
-        end
-
         class PrepaidCommitSegmentStartLedgerEntry < Metronome::BaseModel
-          Shape = T.type_alias { {amount: Float, segment_id: String, timestamp: Time, type: Symbol} }
-
           sig { returns(Float) }
           attr_accessor :amount
 
@@ -307,8 +347,8 @@ module Metronome
           sig { params(amount: Float, segment_id: String, timestamp: Time, type: Symbol).void }
           def initialize(amount:, segment_id:, timestamp:, type:); end
 
-          sig { returns(Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Shape) }
-          def to_h; end
+          sig { override.returns({amount: Float, segment_id: String, timestamp: Time, type: Symbol}) }
+          def to_hash; end
 
           class Type < Metronome::Enum
             abstract!
@@ -321,10 +361,6 @@ module Metronome
         end
 
         class PrepaidCommitAutomatedInvoiceDeductionLedgerEntry < Metronome::BaseModel
-          Shape = T.type_alias do
-            {amount: Float, invoice_id: String, segment_id: String, timestamp: Time, type: Symbol}
-          end
-
           sig { returns(Float) }
           attr_accessor :amount
 
@@ -346,9 +382,17 @@ module Metronome
           def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:); end
 
           sig do
-            returns(Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Shape)
+            override.returns(
+              {
+                amount: Float,
+                invoice_id: String,
+                segment_id: String,
+                timestamp: Time,
+                type: Symbol
+              }
+            )
           end
-          def to_h; end
+          def to_hash; end
 
           class Type < Metronome::Enum
             abstract!
@@ -361,10 +405,6 @@ module Metronome
         end
 
         class PrepaidCommitRolloverLedgerEntry < Metronome::BaseModel
-          Shape = T.type_alias do
-            {amount: Float, new_contract_id: String, segment_id: String, timestamp: Time, type: Symbol}
-          end
-
           sig { returns(Float) }
           attr_accessor :amount
 
@@ -391,8 +431,18 @@ module Metronome
           end
           def initialize(amount:, new_contract_id:, segment_id:, timestamp:, type:); end
 
-          sig { returns(Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                amount: Float,
+                new_contract_id: String,
+                segment_id: String,
+                timestamp: Time,
+                type: Symbol
+              }
+            )
+          end
+          def to_hash; end
 
           class Type < Metronome::Enum
             abstract!
@@ -405,8 +455,6 @@ module Metronome
         end
 
         class PrepaidCommitExpirationLedgerEntry < Metronome::BaseModel
-          Shape = T.type_alias { {amount: Float, segment_id: String, timestamp: Time, type: Symbol} }
-
           sig { returns(Float) }
           attr_accessor :amount
 
@@ -422,8 +470,8 @@ module Metronome
           sig { params(amount: Float, segment_id: String, timestamp: Time, type: Symbol).void }
           def initialize(amount:, segment_id:, timestamp:, type:); end
 
-          sig { returns(Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Shape) }
-          def to_h; end
+          sig { override.returns({amount: Float, segment_id: String, timestamp: Time, type: Symbol}) }
+          def to_hash; end
 
           class Type < Metronome::Enum
             abstract!
@@ -436,10 +484,6 @@ module Metronome
         end
 
         class PrepaidCommitCanceledLedgerEntry < Metronome::BaseModel
-          Shape = T.type_alias do
-            {amount: Float, invoice_id: String, segment_id: String, timestamp: Time, type: Symbol}
-          end
-
           sig { returns(Float) }
           attr_accessor :amount
 
@@ -460,8 +504,18 @@ module Metronome
           end
           def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:); end
 
-          sig { returns(Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                amount: Float,
+                invoice_id: String,
+                segment_id: String,
+                timestamp: Time,
+                type: Symbol
+              }
+            )
+          end
+          def to_hash; end
 
           class Type < Metronome::Enum
             abstract!
@@ -474,10 +528,6 @@ module Metronome
         end
 
         class PrepaidCommitCreditedLedgerEntry < Metronome::BaseModel
-          Shape = T.type_alias do
-            {amount: Float, invoice_id: String, segment_id: String, timestamp: Time, type: Symbol}
-          end
-
           sig { returns(Float) }
           attr_accessor :amount
 
@@ -498,8 +548,18 @@ module Metronome
           end
           def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:); end
 
-          sig { returns(Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                amount: Float,
+                invoice_id: String,
+                segment_id: String,
+                timestamp: Time,
+                type: Symbol
+              }
+            )
+          end
+          def to_hash; end
 
           class Type < Metronome::Enum
             abstract!
@@ -512,8 +572,6 @@ module Metronome
         end
 
         class PostpaidCommitInitialBalanceLedgerEntry < Metronome::BaseModel
-          Shape = T.type_alias { {amount: Float, timestamp: Time, type: Symbol} }
-
           sig { returns(Float) }
           attr_accessor :amount
 
@@ -526,8 +584,8 @@ module Metronome
           sig { params(amount: Float, timestamp: Time, type: Symbol).void }
           def initialize(amount:, timestamp:, type:); end
 
-          sig { returns(Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Shape) }
-          def to_h; end
+          sig { override.returns({amount: Float, timestamp: Time, type: Symbol}) }
+          def to_hash; end
 
           class Type < Metronome::Enum
             abstract!
@@ -540,10 +598,6 @@ module Metronome
         end
 
         class PostpaidCommitAutomatedInvoiceDeductionLedgerEntry < Metronome::BaseModel
-          Shape = T.type_alias do
-            {amount: Float, invoice_id: String, segment_id: String, timestamp: Time, type: Symbol}
-          end
-
           sig { returns(Float) }
           attr_accessor :amount
 
@@ -565,9 +619,17 @@ module Metronome
           def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:); end
 
           sig do
-            returns(Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Shape)
+            override.returns(
+              {
+                amount: Float,
+                invoice_id: String,
+                segment_id: String,
+                timestamp: Time,
+                type: Symbol
+              }
+            )
           end
-          def to_h; end
+          def to_hash; end
 
           class Type < Metronome::Enum
             abstract!
@@ -580,10 +642,6 @@ module Metronome
         end
 
         class PostpaidCommitRolloverLedgerEntry < Metronome::BaseModel
-          Shape = T.type_alias do
-            {amount: Float, new_contract_id: String, segment_id: String, timestamp: Time, type: Symbol}
-          end
-
           sig { returns(Float) }
           attr_accessor :amount
 
@@ -610,8 +668,18 @@ module Metronome
           end
           def initialize(amount:, new_contract_id:, segment_id:, timestamp:, type:); end
 
-          sig { returns(Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                amount: Float,
+                new_contract_id: String,
+                segment_id: String,
+                timestamp: Time,
+                type: Symbol
+              }
+            )
+          end
+          def to_hash; end
 
           class Type < Metronome::Enum
             abstract!
@@ -624,8 +692,6 @@ module Metronome
         end
 
         class PostpaidCommitTrueupLedgerEntry < Metronome::BaseModel
-          Shape = T.type_alias { {amount: Float, invoice_id: String, timestamp: Time, type: Symbol} }
-
           sig { returns(Float) }
           attr_accessor :amount
 
@@ -641,8 +707,8 @@ module Metronome
           sig { params(amount: Float, invoice_id: String, timestamp: Time, type: Symbol).void }
           def initialize(amount:, invoice_id:, timestamp:, type:); end
 
-          sig { returns(Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Shape) }
-          def to_h; end
+          sig { override.returns({amount: Float, invoice_id: String, timestamp: Time, type: Symbol}) }
+          def to_hash; end
 
           class Type < Metronome::Enum
             abstract!
@@ -655,8 +721,6 @@ module Metronome
         end
 
         class PrepaidCommitManualLedgerEntry < Metronome::BaseModel
-          Shape = T.type_alias { {amount: Float, reason: String, timestamp: Time, type: Symbol} }
-
           sig { returns(Float) }
           attr_accessor :amount
 
@@ -672,8 +736,8 @@ module Metronome
           sig { params(amount: Float, reason: String, timestamp: Time, type: Symbol).void }
           def initialize(amount:, reason:, timestamp:, type:); end
 
-          sig { returns(Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry::Shape) }
-          def to_h; end
+          sig { override.returns({amount: Float, reason: String, timestamp: Time, type: Symbol}) }
+          def to_hash; end
 
           class Type < Metronome::Enum
             abstract!
@@ -686,8 +750,6 @@ module Metronome
         end
 
         class PostpaidCommitManualLedgerEntry < Metronome::BaseModel
-          Shape = T.type_alias { {amount: Float, reason: String, timestamp: Time, type: Symbol} }
-
           sig { returns(Float) }
           attr_accessor :amount
 
@@ -703,8 +765,8 @@ module Metronome
           sig { params(amount: Float, reason: String, timestamp: Time, type: Symbol).void }
           def initialize(amount:, reason:, timestamp:, type:); end
 
-          sig { returns(Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry::Shape) }
-          def to_h; end
+          sig { override.returns({amount: Float, reason: String, timestamp: Time, type: Symbol}) }
+          def to_hash; end
 
           class Type < Metronome::Enum
             abstract!
@@ -717,8 +779,6 @@ module Metronome
         end
 
         class PostpaidCommitExpirationLedgerEntry < Metronome::BaseModel
-          Shape = T.type_alias { {amount: Float, timestamp: Time, type: Symbol} }
-
           sig { returns(Float) }
           attr_accessor :amount
 
@@ -731,8 +791,8 @@ module Metronome
           sig { params(amount: Float, timestamp: Time, type: Symbol).void }
           def initialize(amount:, timestamp:, type:); end
 
-          sig { returns(Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Shape) }
-          def to_h; end
+          sig { override.returns({amount: Float, timestamp: Time, type: Symbol}) }
+          def to_hash; end
 
           class Type < Metronome::Enum
             abstract!
@@ -783,8 +843,6 @@ module Metronome
       end
 
       class RolledOverFrom < Metronome::BaseModel
-        Shape = T.type_alias { {commit_id: String, contract_id: String} }
-
         sig { returns(String) }
         attr_accessor :commit_id
 
@@ -794,8 +852,8 @@ module Metronome
         sig { params(commit_id: String, contract_id: String).void }
         def initialize(commit_id:, contract_id:); end
 
-        sig { returns(Metronome::Models::Commit::RolledOverFrom::Shape) }
-        def to_h; end
+        sig { override.returns({commit_id: String, contract_id: String}) }
+        def to_hash; end
       end
     end
   end

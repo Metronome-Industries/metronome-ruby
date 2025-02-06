@@ -6,13 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {enforce_uniqueness: T::Boolean, entity: Symbol, key: String},
-          Metronome::RequestParameters::Shape
-        )
-      end
-
       sig { returns(T::Boolean) }
       attr_accessor :enforce_uniqueness
 
@@ -27,13 +20,22 @@ module Metronome
           enforce_uniqueness: T::Boolean,
           entity: Symbol,
           key: String,
-          request_options: Metronome::RequestOpts
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(enforce_uniqueness:, entity:, key:, request_options: {}); end
 
-      sig { returns(Metronome::Models::CustomFieldAddKeyParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            enforce_uniqueness: T::Boolean,
+            entity: Symbol,
+            key: String,
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class Entity < Metronome::Enum
         abstract!

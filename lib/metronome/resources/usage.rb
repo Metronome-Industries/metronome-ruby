@@ -25,7 +25,7 @@ module Metronome
       #   @option params [Array<String>] :customer_ids Body param: A list of Metronome customer IDs to fetch usage for. If absent,
       #     usage for all customers will be returned.
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::UsageListResponse]
       #
@@ -52,7 +52,7 @@ module Metronome
       #
       #   @option params [Array<Metronome::Models::UsageIngestParams::Usage>] :usage
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [nil]
       #
@@ -95,7 +95,7 @@ module Metronome
       #
       #   @option params [Time] :starting_on Body param:
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::CursorPage<Metronome::Models::UsageListWithGroupsResponse>]
       #

@@ -3,18 +3,6 @@
 module Metronome
   module Models
     class PlanDetail < Metronome::BaseModel
-      Shape = T.type_alias do
-        {
-          id: String,
-          custom_fields: T::Hash[Symbol, String],
-          name: String,
-          credit_grants: T::Array[Metronome::Models::PlanDetail::CreditGrant],
-          description: String,
-          minimums: T::Array[Metronome::Models::PlanDetail::Minimum],
-          overage_rates: T::Array[Metronome::Models::PlanDetail::OverageRate]
-        }
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -70,26 +58,22 @@ module Metronome
       )
       end
 
-      sig { returns(Metronome::Models::PlanDetail::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: String,
+            custom_fields: T::Hash[Symbol, String],
+            name: String,
+            credit_grants: T::Array[Metronome::Models::PlanDetail::CreditGrant],
+            description: String,
+            minimums: T::Array[Metronome::Models::PlanDetail::Minimum],
+            overage_rates: T::Array[Metronome::Models::PlanDetail::OverageRate]
+          }
+        )
+      end
+      def to_hash; end
 
       class CreditGrant < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            amount_granted: Float,
-            amount_granted_credit_type: Metronome::Models::CreditTypeData,
-            amount_paid: Float,
-            amount_paid_credit_type: Metronome::Models::CreditTypeData,
-            effective_duration: Float,
-            name: String,
-            priority: String,
-            send_invoice: T::Boolean,
-            reason: String,
-            recurrence_duration: Float,
-            recurrence_interval: Float
-          }
-        end
-
         sig { returns(Float) }
         attr_accessor :amount_granted
 
@@ -161,15 +145,27 @@ module Metronome
           recurrence_interval: nil
         ); end
 
-        sig { returns(Metronome::Models::PlanDetail::CreditGrant::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              amount_granted: Float,
+              amount_granted_credit_type: Metronome::Models::CreditTypeData,
+              amount_paid: Float,
+              amount_paid_credit_type: Metronome::Models::CreditTypeData,
+              effective_duration: Float,
+              name: String,
+              priority: String,
+              send_invoice: T::Boolean,
+              reason: String,
+              recurrence_duration: Float,
+              recurrence_interval: Float
+            }
+          )
+        end
+        def to_hash; end
       end
 
       class Minimum < Metronome::BaseModel
-        Shape = T.type_alias do
-          {credit_type: Metronome::Models::CreditTypeData, name: String, start_period: Float, value: Float}
-        end
-
         sig { returns(Metronome::Models::CreditTypeData) }
         attr_accessor :credit_type
 
@@ -192,20 +188,20 @@ module Metronome
         end
         def initialize(credit_type:, name:, start_period:, value:); end
 
-        sig { returns(Metronome::Models::PlanDetail::Minimum::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              credit_type: Metronome::Models::CreditTypeData,
+              name: String,
+              start_period: Float,
+              value: Float
+            }
+          )
+        end
+        def to_hash; end
       end
 
       class OverageRate < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            credit_type: Metronome::Models::CreditTypeData,
-            fiat_credit_type: Metronome::Models::CreditTypeData,
-            start_period: Float,
-            to_fiat_conversion_factor: Float
-          }
-        end
-
         sig { returns(Metronome::Models::CreditTypeData) }
         attr_accessor :credit_type
 
@@ -228,8 +224,17 @@ module Metronome
         end
         def initialize(credit_type:, fiat_credit_type:, start_period:, to_fiat_conversion_factor:); end
 
-        sig { returns(Metronome::Models::PlanDetail::OverageRate::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              credit_type: Metronome::Models::CreditTypeData,
+              fiat_credit_type: Metronome::Models::CreditTypeData,
+              start_period: Float,
+              to_fiat_conversion_factor: Float
+            }
+          )
+        end
+        def to_hash; end
       end
     end
   end

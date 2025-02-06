@@ -7,10 +7,6 @@ module Metronome
         extend Metronome::RequestParameters::Converter
         include Metronome::RequestParameters
 
-        Shape = T.type_alias do
-          T.all({customer_id: String, billing_provider_type: Symbol}, Metronome::RequestParameters::Shape)
-        end
-
         sig { returns(String) }
         attr_accessor :customer_id
 
@@ -21,13 +17,21 @@ module Metronome
           params(
             customer_id: String,
             billing_provider_type: Symbol,
-            request_options: Metronome::RequestOpts
+            request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
           ).void
         end
         def initialize(customer_id:, billing_provider_type:, request_options: {}); end
 
-        sig { returns(Metronome::Models::Customers::BillingConfigDeleteParams::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              customer_id: String,
+              billing_provider_type: Symbol,
+              request_options: Metronome::RequestOptions
+            }
+          )
+        end
+        def to_hash; end
 
         class BillingProviderType < Metronome::Enum
           abstract!

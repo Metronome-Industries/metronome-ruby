@@ -21,7 +21,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::plan_list_customers_response
+      def to_hash: -> Metronome::Models::plan_list_customers_response
 
       type plan_details =
         {
@@ -60,7 +60,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::PlanListCustomersResponse::plan_details
+        def to_hash: -> Metronome::Models::PlanListCustomersResponse::plan_details
       end
     end
   end

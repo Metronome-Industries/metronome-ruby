@@ -18,7 +18,7 @@ module Metronome
           invoice_types_filter: T::Array[String],
           plan_id: String,
           uniqueness_key: String,
-          request_options: Metronome::RequestOpts
+          request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Metronome::Models::AlertCreateResponse)
       end
       def create(
@@ -42,7 +42,7 @@ module Metronome
         params(
           id: String,
           release_uniqueness_key: T::Boolean,
-          request_options: Metronome::RequestOpts
+          request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Metronome::Models::AlertArchiveResponse)
       end
       def archive(id:, release_uniqueness_key: nil, request_options: {}); end

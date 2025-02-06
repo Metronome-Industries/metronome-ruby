@@ -9,7 +9,7 @@ module Metronome
             rate_card_id: String,
             schedule_name: String,
             covering_date: Time,
-            request_options: Metronome::RequestOpts
+            request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::Models::Contracts::NamedScheduleRetrieveResponse)
         end
         def retrieve(rate_card_id:, schedule_name:, covering_date: nil, request_options: {}); end
@@ -21,7 +21,7 @@ module Metronome
             starting_at: Time,
             value: T.anything,
             ending_before: Time,
-            request_options: Metronome::RequestOpts
+            request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).void
         end
         def update(

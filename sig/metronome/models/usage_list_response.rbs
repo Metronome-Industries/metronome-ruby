@@ -20,7 +20,7 @@ module Metronome
           ?Metronome::Models::usage_list_response | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::usage_list_response
+      def to_hash: -> Metronome::Models::usage_list_response
 
       type data =
         {
@@ -65,7 +65,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::UsageListResponse::data
+        def to_hash: -> Metronome::Models::UsageListResponse::data
       end
     end
   end

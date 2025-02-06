@@ -33,7 +33,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::usage_list_with_groups_response
+      def to_hash: -> Metronome::Models::usage_list_with_groups_response
     end
   end
 end

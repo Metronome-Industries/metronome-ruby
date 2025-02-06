@@ -26,7 +26,7 @@ module Metronome
           ?Metronome::Models::schedule_point_in_time | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::schedule_point_in_time
+      def to_hash: -> Metronome::Models::schedule_point_in_time
 
       type schedule_item =
         {
@@ -65,7 +65,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::SchedulePointInTime::schedule_item
+        def to_hash: -> Metronome::Models::SchedulePointInTime::schedule_item
       end
     end
   end

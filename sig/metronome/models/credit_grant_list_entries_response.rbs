@@ -21,7 +21,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::credit_grant_list_entries_response
+      def to_hash: -> Metronome::Models::credit_grant_list_entries_response
 
       type data =
         {
@@ -44,7 +44,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::CreditGrantListEntriesResponse::data
+        def to_hash: -> Metronome::Models::CreditGrantListEntriesResponse::data
 
         type ledger =
           {
@@ -79,7 +79,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::CreditGrantListEntriesResponse::Data::ledger
+          def to_hash: -> Metronome::Models::CreditGrantListEntriesResponse::Data::ledger
 
           type ending_balance =
             {
@@ -106,7 +106,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::ending_balance
+            def to_hash: -> Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::ending_balance
           end
 
           type starting_balance =
@@ -134,7 +134,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::starting_balance
+            def to_hash: -> Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::starting_balance
           end
         end
       end

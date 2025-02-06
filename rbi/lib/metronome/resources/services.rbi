@@ -3,7 +3,17 @@
 module Metronome
   module Resources
     class Services
-      sig { params(request_options: Metronome::RequestOpts).returns(Metronome::Models::ServiceListResponse) }
+      sig do
+        params(
+          request_options: T.nilable(
+            T.any(
+              Metronome::RequestOptions,
+              T::Hash[Symbol,
+                      T.anything]
+            )
+          )
+        ).returns(Metronome::Models::ServiceListResponse)
+      end
       def list(request_options: {}); end
 
       sig { params(client: Metronome::Client).void }

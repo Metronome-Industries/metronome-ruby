@@ -3,19 +3,6 @@
 module Metronome
   module Models
     class ProService < Metronome::BaseModel
-      Shape = T.type_alias do
-        {
-          id: String,
-          max_amount: Float,
-          product_id: String,
-          quantity: Float,
-          unit_price: Float,
-          custom_fields: T::Hash[Symbol, String],
-          description: String,
-          netsuite_sales_order_id: String
-        }
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -72,8 +59,21 @@ module Metronome
         netsuite_sales_order_id: nil
       ); end
 
-      sig { returns(Metronome::Models::ProService::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: String,
+            max_amount: Float,
+            product_id: String,
+            quantity: Float,
+            unit_price: Float,
+            custom_fields: T::Hash[Symbol, String],
+            description: String,
+            netsuite_sales_order_id: String
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

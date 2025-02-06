@@ -7,29 +7,6 @@ module Metronome
         extend Metronome::RequestParameters::Converter
         include Metronome::RequestParameters
 
-        Shape = T.type_alias do
-          T.all(
-            {
-              product_id: String,
-              starting_at: Time,
-              billable_metric_id: String,
-              composite_product_ids: T::Array[String],
-              composite_tags: T::Array[String],
-              exclude_free_usage: T::Boolean,
-              is_refundable: T::Boolean,
-              name: String,
-              netsuite_internal_item_id: String,
-              netsuite_overage_item_id: String,
-              presentation_group_key: T::Array[String],
-              pricing_group_key: T::Array[String],
-              quantity_conversion: T.nilable(Metronome::Models::Contracts::QuantityConversion),
-              quantity_rounding: T.nilable(Metronome::Models::Contracts::QuantityRounding),
-              tags: T::Array[String]
-            },
-            Metronome::RequestParameters::Shape
-          )
-        end
-
         sig { returns(String) }
         attr_accessor :product_id
 
@@ -125,7 +102,7 @@ module Metronome
             quantity_conversion: T.nilable(Metronome::Models::Contracts::QuantityConversion),
             quantity_rounding: T.nilable(Metronome::Models::Contracts::QuantityRounding),
             tags: T::Array[String],
-            request_options: Metronome::RequestOpts
+            request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
           ).void
         end
         def initialize(
@@ -147,8 +124,29 @@ module Metronome
           request_options: {}
         ); end
 
-        sig { returns(Metronome::Models::Contracts::ProductUpdateParams::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              product_id: String,
+              starting_at: Time,
+              billable_metric_id: String,
+              composite_product_ids: T::Array[String],
+              composite_tags: T::Array[String],
+              exclude_free_usage: T::Boolean,
+              is_refundable: T::Boolean,
+              name: String,
+              netsuite_internal_item_id: String,
+              netsuite_overage_item_id: String,
+              presentation_group_key: T::Array[String],
+              pricing_group_key: T::Array[String],
+              quantity_conversion: T.nilable(Metronome::Models::Contracts::QuantityConversion),
+              quantity_rounding: T.nilable(Metronome::Models::Contracts::QuantityRounding),
+              tags: T::Array[String],
+              request_options: Metronome::RequestOptions
+            }
+          )
+        end
+        def to_hash; end
       end
     end
   end

@@ -71,7 +71,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::plan_list_charges_response
+      def to_hash: -> Metronome::Models::plan_list_charges_response
 
       type charge_type = :usage | :fixed | :composite | :minimum | :seat
 
@@ -124,7 +124,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::PlanListChargesResponse::price
+        def to_hash: -> Metronome::Models::PlanListChargesResponse::price
       end
 
       type unit_conversion =
@@ -152,7 +152,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::PlanListChargesResponse::unit_conversion
+        def to_hash: -> Metronome::Models::PlanListChargesResponse::unit_conversion
 
         type rounding_behavior = :floor | :ceiling
 

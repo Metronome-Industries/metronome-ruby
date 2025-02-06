@@ -6,21 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            id: String,
-            amount: Float,
-            customer_id: String,
-            reason: String,
-            segment_id: String,
-            contract_id: String,
-            timestamp: Time
-          },
-          Metronome::RequestParameters::Shape
-        )
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -57,7 +42,7 @@ module Metronome
           segment_id: String,
           contract_id: String,
           timestamp: Time,
-          request_options: Metronome::RequestOpts
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -72,8 +57,21 @@ module Metronome
       )
       end
 
-      sig { returns(Metronome::Models::ContractAddManualBalanceEntryParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: String,
+            amount: Float,
+            customer_id: String,
+            reason: String,
+            segment_id: String,
+            contract_id: String,
+            timestamp: Time,
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

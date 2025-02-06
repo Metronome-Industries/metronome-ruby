@@ -37,7 +37,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Customers::alert_list_params
+        def to_hash: -> Metronome::Models::Customers::alert_list_params
 
         type alert_status = :ENABLED | :DISABLED | :ARCHIVED
 

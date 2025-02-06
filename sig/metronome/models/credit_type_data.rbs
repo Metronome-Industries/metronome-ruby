@@ -13,7 +13,7 @@ module Metronome
           ?Metronome::Models::credit_type_data | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::credit_type_data
+      def to_hash: -> Metronome::Models::credit_type_data
     end
   end
 end

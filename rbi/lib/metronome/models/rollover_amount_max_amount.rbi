@@ -3,8 +3,6 @@
 module Metronome
   module Models
     class RolloverAmountMaxAmount < Metronome::BaseModel
-      Shape = T.type_alias { {type: Symbol, value: Float} }
-
       sig { returns(Symbol) }
       attr_accessor :type
 
@@ -14,8 +12,8 @@ module Metronome
       sig { params(type: Symbol, value: Float).void }
       def initialize(type:, value:); end
 
-      sig { returns(Metronome::Models::RolloverAmountMaxAmount::Shape) }
-      def to_h; end
+      sig { override.returns({type: Symbol, value: Float}) }
+      def to_hash; end
 
       class Type < Metronome::Enum
         abstract!

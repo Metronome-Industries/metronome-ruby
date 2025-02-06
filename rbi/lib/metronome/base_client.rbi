@@ -14,13 +14,7 @@ module Metronome
         unwrap: T.nilable(Symbol),
         page: T.nilable(T::Class[Metronome::BaseModel]),
         model: T.nilable(Metronome::Converter::Input),
-        options: T.nilable(
-          T.any(
-            Metronome::RequestOptions,
-            Metronome::RequestOptions::Shape,
-            T::Hash[Symbol, T.anything]
-          )
-        )
+        options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
       }
     end
 
@@ -75,7 +69,7 @@ module Metronome
     sig do
       params(
         req: Metronome::BaseClient::RequestShape,
-        opts: Metronome::RequestOptions::Shape
+        opts: T::Hash[Symbol, T.anything]
       ).returns(Metronome::BaseClient::NormalizedRequestShape)
     end
     private def build_request(req, opts); end
@@ -118,13 +112,7 @@ module Metronome
         unwrap: T.nilable(Symbol),
         page: T.nilable(T::Class[Metronome::BaseModel]),
         model: T.nilable(Metronome::Converter::Input),
-        options: T.nilable(
-          T.any(
-            Metronome::RequestOptions,
-            Metronome::RequestOptions::Shape,
-            T::Hash[Symbol, T.anything]
-          )
-        )
+        options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
       ).returns(T.anything)
     end
     def request(

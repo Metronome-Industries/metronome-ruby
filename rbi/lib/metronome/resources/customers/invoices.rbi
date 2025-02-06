@@ -9,7 +9,7 @@ module Metronome
             customer_id: String,
             invoice_id: String,
             skip_zero_qty_line_items: T::Boolean,
-            request_options: Metronome::RequestOpts
+            request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::Models::Customers::InvoiceRetrieveResponse)
         end
         def retrieve(customer_id:, invoice_id:, skip_zero_qty_line_items: nil, request_options: {}); end
@@ -25,7 +25,7 @@ module Metronome
             sort: Symbol,
             starting_on: Time,
             status: String,
-            request_options: Metronome::RequestOpts
+            request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::CursorPage[Metronome::Models::Customers::Invoice])
         end
         def list(
@@ -50,7 +50,7 @@ module Metronome
             invoice_start_timestamp: Time,
             price: Float,
             quantity: Float,
-            request_options: Metronome::RequestOpts
+            request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::Models::Customers::InvoiceAddChargeResponse)
         end
         def add_charge(
@@ -76,7 +76,7 @@ module Metronome
             sort: Symbol,
             status: String,
             window_size: Symbol,
-            request_options: Metronome::RequestOpts
+            request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::CursorPage[Metronome::Models::Customers::InvoiceListBreakdownsResponse])
         end
         def list_breakdowns(

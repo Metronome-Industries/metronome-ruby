@@ -32,7 +32,7 @@ module Metronome
         ) -> void
         | (?Metronome::Models::customer | Metronome::BaseModel data) -> void
 
-      def to_h: -> Metronome::Models::customer
+      def to_hash: -> Metronome::Models::customer
     end
   end
 end

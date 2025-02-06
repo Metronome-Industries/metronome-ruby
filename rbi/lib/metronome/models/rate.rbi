@@ -3,20 +3,6 @@
 module Metronome
   module Models
     class Rate < Metronome::BaseModel
-      Shape = T.type_alias do
-        {
-          rate_type: Symbol,
-          credit_type: Metronome::Models::CreditTypeData,
-          custom_rate: T::Hash[Symbol, T.anything],
-          is_prorated: T::Boolean,
-          price: Float,
-          pricing_group_values: T::Hash[Symbol, String],
-          quantity: Float,
-          tiers: T::Array[Metronome::Models::Tier],
-          use_list_prices: T::Boolean
-        }
-      end
-
       sig { returns(Symbol) }
       attr_accessor :rate_type
 
@@ -93,8 +79,22 @@ module Metronome
         use_list_prices: nil
       ); end
 
-      sig { returns(Metronome::Models::Rate::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            rate_type: Symbol,
+            credit_type: Metronome::Models::CreditTypeData,
+            custom_rate: T::Hash[Symbol, T.anything],
+            is_prorated: T::Boolean,
+            price: Float,
+            pricing_group_values: T::Hash[Symbol, String],
+            quantity: Float,
+            tiers: T::Array[Metronome::Models::Tier],
+            use_list_prices: T::Boolean
+          }
+        )
+      end
+      def to_hash; end
 
       class RateType < Metronome::Enum
         abstract!

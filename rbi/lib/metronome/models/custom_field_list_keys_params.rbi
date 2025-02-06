@@ -6,10 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all({next_page: String, entities: T::Array[Symbol]}, Metronome::RequestParameters::Shape)
-      end
-
       sig { returns(T.nilable(String)) }
       attr_reader :next_page
 
@@ -23,12 +19,24 @@ module Metronome
       attr_writer :entities
 
       sig do
-        params(next_page: String, entities: T::Array[Symbol], request_options: Metronome::RequestOpts).void
+        params(
+          next_page: String,
+          entities: T::Array[Symbol],
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
+        ).void
       end
       def initialize(next_page: nil, entities: nil, request_options: {}); end
 
-      sig { returns(Metronome::Models::CustomFieldListKeysParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            next_page: String,
+            entities: T::Array[Symbol],
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class Entity < Metronome::Enum
         abstract!

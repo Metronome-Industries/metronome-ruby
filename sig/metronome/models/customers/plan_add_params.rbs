@@ -67,7 +67,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Customers::plan_add_params
+        def to_hash: -> Metronome::Models::Customers::plan_add_params
 
         type overage_rate_adjustment =
           {
@@ -94,7 +94,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Customers::PlanAddParams::overage_rate_adjustment
+          def to_hash: -> Metronome::Models::Customers::PlanAddParams::overage_rate_adjustment
         end
 
         type price_adjustment =
@@ -140,7 +140,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Customers::PlanAddParams::price_adjustment
+          def to_hash: -> Metronome::Models::Customers::PlanAddParams::price_adjustment
 
           type adjustment_type = :percentage | :fixed | :override | :quantity
 
@@ -179,7 +179,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Customers::PlanAddParams::trial_spec
+          def to_hash: -> Metronome::Models::Customers::PlanAddParams::trial_spec
 
           type spending_cap = { amount: Float, credit_type_id: String }
 
@@ -195,7 +195,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::Customers::PlanAddParams::TrialSpec::spending_cap
+            def to_hash: -> Metronome::Models::Customers::PlanAddParams::TrialSpec::spending_cap
           end
         end
       end

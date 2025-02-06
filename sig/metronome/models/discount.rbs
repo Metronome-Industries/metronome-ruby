@@ -40,7 +40,7 @@ module Metronome
         ) -> void
         | (?Metronome::Models::discount | Metronome::BaseModel data) -> void
 
-      def to_h: -> Metronome::Models::discount
+      def to_hash: -> Metronome::Models::discount
 
       type product = { id: String, name: String }
 
@@ -55,7 +55,7 @@ module Metronome
             ?Metronome::Models::Discount::product | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Discount::product
+        def to_hash: -> Metronome::Models::Discount::product
       end
     end
   end

@@ -3,16 +3,6 @@
 module Metronome
   module Models
     class UsageListWithGroupsResponse < Metronome::BaseModel
-      Shape = T.type_alias do
-        {
-          ending_before: Time,
-          group_key: T.nilable(String),
-          group_value: T.nilable(String),
-          starting_on: Time,
-          value: T.nilable(Float)
-        }
-      end
-
       sig { returns(Time) }
       attr_accessor :ending_before
 
@@ -39,8 +29,18 @@ module Metronome
       end
       def initialize(ending_before:, group_key:, group_value:, starting_on:, value:); end
 
-      sig { returns(Metronome::Models::UsageListWithGroupsResponse::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            ending_before: Time,
+            group_key: T.nilable(String),
+            group_value: T.nilable(String),
+            starting_on: Time,
+            value: T.nilable(Float)
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

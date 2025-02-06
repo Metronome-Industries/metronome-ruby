@@ -52,7 +52,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::contract_retrieve_rate_schedule_params
+      def to_hash: -> Metronome::Models::contract_retrieve_rate_schedule_params
 
       type selector =
         {
@@ -91,7 +91,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::ContractRetrieveRateScheduleParams::selector
+        def to_hash: -> Metronome::Models::ContractRetrieveRateScheduleParams::selector
       end
     end
   end

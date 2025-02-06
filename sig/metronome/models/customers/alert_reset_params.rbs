@@ -24,7 +24,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Customers::alert_reset_params
+        def to_hash: -> Metronome::Models::Customers::alert_reset_params
       end
     end
   end

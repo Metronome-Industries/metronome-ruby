@@ -14,7 +14,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Contracts::product_retrieve_params
+        def to_hash: -> Metronome::Models::Contracts::product_retrieve_params
       end
     end
   end

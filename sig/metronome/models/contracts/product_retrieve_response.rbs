@@ -16,7 +16,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Contracts::product_retrieve_response
+        def to_hash: -> Metronome::Models::Contracts::product_retrieve_response
 
         type data =
           {
@@ -61,7 +61,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Contracts::ProductRetrieveResponse::data
+          def to_hash: -> Metronome::Models::Contracts::ProductRetrieveResponse::data
 
           type type_ =
             :USAGE | :SUBSCRIPTION | :COMPOSITE | :FIXED | :PRO_SERVICE
@@ -177,7 +177,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::Contracts::ProductRetrieveResponse::Data::update
+            def to_hash: -> Metronome::Models::Contracts::ProductRetrieveResponse::Data::update
           end
         end
       end

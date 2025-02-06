@@ -19,7 +19,7 @@ module Metronome
       #
       #   @option params [Array<Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption>] :dashboard_options Optional dashboard specific options
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::DashboardGetEmbeddableURLResponse]
       #

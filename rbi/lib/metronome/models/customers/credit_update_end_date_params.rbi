@@ -7,13 +7,6 @@ module Metronome
         extend Metronome::RequestParameters::Converter
         include Metronome::RequestParameters
 
-        Shape = T.type_alias do
-          T.all(
-            {access_ending_before: Time, credit_id: String, customer_id: String},
-            Metronome::RequestParameters::Shape
-          )
-        end
-
         sig { returns(Time) }
         attr_accessor :access_ending_before
 
@@ -28,13 +21,22 @@ module Metronome
             access_ending_before: Time,
             credit_id: String,
             customer_id: String,
-            request_options: Metronome::RequestOpts
+            request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
           ).void
         end
         def initialize(access_ending_before:, credit_id:, customer_id:, request_options: {}); end
 
-        sig { returns(Metronome::Models::Customers::CreditUpdateEndDateParams::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              access_ending_before: Time,
+              credit_id: String,
+              customer_id: String,
+              request_options: Metronome::RequestOptions
+            }
+          )
+        end
+        def to_hash; end
       end
     end
   end

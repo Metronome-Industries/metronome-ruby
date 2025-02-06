@@ -13,7 +13,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Contracts::rate_card_create_response
+        def to_hash: -> Metronome::Models::Contracts::rate_card_create_response
       end
     end
   end

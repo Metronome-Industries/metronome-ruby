@@ -46,7 +46,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::customer_list_billable_metrics_params
+      def to_hash: -> Metronome::Models::customer_list_billable_metrics_params
     end
   end
 end

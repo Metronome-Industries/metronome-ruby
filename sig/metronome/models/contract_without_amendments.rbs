@@ -145,7 +145,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::contract_without_amendments
+      def to_hash: -> Metronome::Models::contract_without_amendments
 
       type transition =
         {
@@ -172,7 +172,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::ContractWithoutAmendments::transition
+        def to_hash: -> Metronome::Models::ContractWithoutAmendments::transition
 
         type type_ = :SUPERSEDE | :RENEWAL
 
@@ -205,7 +205,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::ContractWithoutAmendments::usage_statement_schedule
+        def to_hash: -> Metronome::Models::ContractWithoutAmendments::usage_statement_schedule
 
         type frequency = :MONTHLY | :QUARTERLY | :ANNUAL
 
@@ -317,7 +317,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::ContractWithoutAmendments::recurring_commit
+        def to_hash: -> Metronome::Models::ContractWithoutAmendments::recurring_commit
 
         type access_amount =
           { credit_type_id: String, quantity: Float, unit_price: Float }
@@ -336,7 +336,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::ContractWithoutAmendments::RecurringCommit::access_amount
+          def to_hash: -> Metronome::Models::ContractWithoutAmendments::RecurringCommit::access_amount
         end
 
         type commit_duration =
@@ -364,7 +364,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::ContractWithoutAmendments::RecurringCommit::commit_duration
+          def to_hash: -> Metronome::Models::ContractWithoutAmendments::RecurringCommit::commit_duration
 
           type unit = :PERIODS
 
@@ -389,7 +389,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::ContractWithoutAmendments::RecurringCommit::product
+          def to_hash: -> Metronome::Models::ContractWithoutAmendments::RecurringCommit::product
         end
 
         type rate_type = :COMMIT_RATE | :LIST_RATE
@@ -413,7 +413,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::ContractWithoutAmendments::RecurringCommit::contract
+          def to_hash: -> Metronome::Models::ContractWithoutAmendments::RecurringCommit::contract
         end
 
         type invoice_amount =
@@ -433,7 +433,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::ContractWithoutAmendments::RecurringCommit::invoice_amount
+          def to_hash: -> Metronome::Models::ContractWithoutAmendments::RecurringCommit::invoice_amount
         end
       end
 
@@ -536,7 +536,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::ContractWithoutAmendments::recurring_credit
+        def to_hash: -> Metronome::Models::ContractWithoutAmendments::recurring_credit
 
         type access_amount =
           { credit_type_id: String, quantity: Float, unit_price: Float }
@@ -555,7 +555,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::ContractWithoutAmendments::RecurringCredit::access_amount
+          def to_hash: -> Metronome::Models::ContractWithoutAmendments::RecurringCredit::access_amount
         end
 
         type commit_duration =
@@ -583,7 +583,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::ContractWithoutAmendments::RecurringCredit::commit_duration
+          def to_hash: -> Metronome::Models::ContractWithoutAmendments::RecurringCredit::commit_duration
 
           type unit = :PERIODS
 
@@ -608,7 +608,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::ContractWithoutAmendments::RecurringCredit::product
+          def to_hash: -> Metronome::Models::ContractWithoutAmendments::RecurringCredit::product
         end
 
         type rate_type = :COMMIT_RATE | :LIST_RATE
@@ -632,7 +632,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::ContractWithoutAmendments::RecurringCredit::contract
+          def to_hash: -> Metronome::Models::ContractWithoutAmendments::RecurringCredit::contract
         end
 
         type invoice_amount =
@@ -652,7 +652,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::ContractWithoutAmendments::RecurringCredit::invoice_amount
+          def to_hash: -> Metronome::Models::ContractWithoutAmendments::RecurringCredit::invoice_amount
         end
       end
 
@@ -739,7 +739,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::ContractWithoutAmendments::reseller_royalty
+        def to_hash: -> Metronome::Models::ContractWithoutAmendments::reseller_royalty
 
         type reseller_type = :AWS | :AWS_PRO_SERVICE | :GCP | :GCP_PRO_SERVICE
 
@@ -786,7 +786,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::ContractWithoutAmendments::usage_filter
+        def to_hash: -> Metronome::Models::ContractWithoutAmendments::usage_filter
 
         type update =
           { group_key: String, group_values: Array[String], starting_at: Time }
@@ -809,7 +809,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::ContractWithoutAmendments::UsageFilter::update
+          def to_hash: -> Metronome::Models::ContractWithoutAmendments::UsageFilter::update
         end
       end
     end

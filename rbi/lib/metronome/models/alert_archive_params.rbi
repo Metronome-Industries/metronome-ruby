@@ -6,10 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all({id: String, release_uniqueness_key: T::Boolean}, Metronome::RequestParameters::Shape)
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -20,12 +16,24 @@ module Metronome
       attr_writer :release_uniqueness_key
 
       sig do
-        params(id: String, release_uniqueness_key: T::Boolean, request_options: Metronome::RequestOpts).void
+        params(
+          id: String,
+          release_uniqueness_key: T::Boolean,
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
+        ).void
       end
       def initialize(id:, release_uniqueness_key: nil, request_options: {}); end
 
-      sig { returns(Metronome::Models::AlertArchiveParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: String,
+            release_uniqueness_key: T::Boolean,
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

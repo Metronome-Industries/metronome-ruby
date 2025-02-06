@@ -3,33 +3,16 @@
 module Metronome
   module Models
     class BillableMetricRetrieveResponse < Metronome::BaseModel
-      Shape = T.type_alias { {data: Metronome::Models::BillableMetricRetrieveResponse::Data} }
-
       sig { returns(Metronome::Models::BillableMetricRetrieveResponse::Data) }
       attr_accessor :data
 
       sig { params(data: Metronome::Models::BillableMetricRetrieveResponse::Data).void }
       def initialize(data:); end
 
-      sig { returns(Metronome::Models::BillableMetricRetrieveResponse::Shape) }
-      def to_h; end
+      sig { override.returns({data: Metronome::Models::BillableMetricRetrieveResponse::Data}) }
+      def to_hash; end
 
       class Data < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            id: String,
-            name: String,
-            aggregation_key: String,
-            aggregation_type: Symbol,
-            archived_at: Time,
-            custom_fields: T::Hash[Symbol, String],
-            event_type_filter: Metronome::Models::EventTypeFilter,
-            group_keys: T::Array[T::Array[String]],
-            property_filters: T::Array[Metronome::Models::PropertyFilter],
-            sql: String
-          }
-        end
-
         sig { returns(String) }
         attr_accessor :id
 
@@ -111,8 +94,23 @@ module Metronome
           sql: nil
         ); end
 
-        sig { returns(Metronome::Models::BillableMetricRetrieveResponse::Data::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              id: String,
+              name: String,
+              aggregation_key: String,
+              aggregation_type: Symbol,
+              archived_at: Time,
+              custom_fields: T::Hash[Symbol, String],
+              event_type_filter: Metronome::Models::EventTypeFilter,
+              group_keys: T::Array[T::Array[String]],
+              property_filters: T::Array[Metronome::Models::PropertyFilter],
+              sql: String
+            }
+          )
+        end
+        def to_hash; end
 
         class AggregationType < Metronome::Enum
           abstract!

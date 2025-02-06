@@ -3,21 +3,6 @@
 module Metronome
   module Models
     class BillableMetricListResponse < Metronome::BaseModel
-      Shape = T.type_alias do
-        {
-          id: String,
-          name: String,
-          aggregation_key: String,
-          aggregation_type: Symbol,
-          archived_at: Time,
-          custom_fields: T::Hash[Symbol, String],
-          event_type_filter: Metronome::Models::EventTypeFilter,
-          group_keys: T::Array[T::Array[String]],
-          property_filters: T::Array[Metronome::Models::PropertyFilter],
-          sql: String
-        }
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -99,8 +84,23 @@ module Metronome
         sql: nil
       ); end
 
-      sig { returns(Metronome::Models::BillableMetricListResponse::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: String,
+            name: String,
+            aggregation_key: String,
+            aggregation_type: Symbol,
+            archived_at: Time,
+            custom_fields: T::Hash[Symbol, String],
+            event_type_filter: Metronome::Models::EventTypeFilter,
+            group_keys: T::Array[T::Array[String]],
+            property_filters: T::Array[Metronome::Models::PropertyFilter],
+            sql: String
+          }
+        )
+      end
+      def to_hash; end
 
       class AggregationType < Metronome::Enum
         abstract!

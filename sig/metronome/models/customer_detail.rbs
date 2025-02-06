@@ -44,7 +44,7 @@ module Metronome
           ?Metronome::Models::customer_detail | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::customer_detail
+      def to_hash: -> Metronome::Models::customer_detail
 
       type customer_config = { salesforce_account_id: String? }
 
@@ -58,7 +58,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::CustomerDetail::customer_config
+        def to_hash: -> Metronome::Models::CustomerDetail::customer_config
       end
 
       type current_billable_status =
@@ -82,7 +82,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::CustomerDetail::current_billable_status
+        def to_hash: -> Metronome::Models::CustomerDetail::current_billable_status
 
         type value = :billable | :unbillable
 

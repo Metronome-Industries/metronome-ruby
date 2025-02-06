@@ -7,22 +7,6 @@ module Metronome
         extend Metronome::RequestParameters::Converter
         include Metronome::RequestParameters
 
-        Shape = T.type_alias do
-          T.all(
-            {
-              customer_id: String,
-              plan_id: String,
-              starting_on: Time,
-              ending_before: Time,
-              net_payment_terms_days: Float,
-              overage_rate_adjustments: T::Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment],
-              price_adjustments: T::Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment],
-              trial_spec: Metronome::Models::Customers::PlanAddParams::TrialSpec
-            },
-            Metronome::RequestParameters::Shape
-          )
-        end
-
         sig { returns(String) }
         attr_accessor :customer_id
 
@@ -80,7 +64,7 @@ module Metronome
             overage_rate_adjustments: T::Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment],
             price_adjustments: T::Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment],
             trial_spec: Metronome::Models::Customers::PlanAddParams::TrialSpec,
-            request_options: Metronome::RequestOpts
+            request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
           ).void
         end
         def initialize(
@@ -95,18 +79,24 @@ module Metronome
           request_options: {}
         ); end
 
-        sig { returns(Metronome::Models::Customers::PlanAddParams::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              customer_id: String,
+              plan_id: String,
+              starting_on: Time,
+              ending_before: Time,
+              net_payment_terms_days: Float,
+              overage_rate_adjustments: T::Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment],
+              price_adjustments: T::Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment],
+              trial_spec: Metronome::Models::Customers::PlanAddParams::TrialSpec,
+              request_options: Metronome::RequestOptions
+            }
+          )
+        end
+        def to_hash; end
 
         class OverageRateAdjustment < Metronome::BaseModel
-          Shape = T.type_alias do
-            {
-              custom_credit_type_id: String,
-              fiat_currency_credit_type_id: String,
-              to_fiat_conversion_factor: Float
-            }
-          end
-
           sig { returns(String) }
           attr_accessor :custom_credit_type_id
 
@@ -126,22 +116,19 @@ module Metronome
           def initialize(custom_credit_type_id:, fiat_currency_credit_type_id:, to_fiat_conversion_factor:)
           end
 
-          sig { returns(Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                custom_credit_type_id: String,
+                fiat_currency_credit_type_id: String,
+                to_fiat_conversion_factor: Float
+              }
+            )
+          end
+          def to_hash; end
         end
 
         class PriceAdjustment < Metronome::BaseModel
-          Shape = T.type_alias do
-            {
-              adjustment_type: Symbol,
-              charge_id: String,
-              start_period: Float,
-              quantity: Float,
-              tier: Float,
-              value: Float
-            }
-          end
-
           sig { returns(Symbol) }
           attr_accessor :adjustment_type
 
@@ -182,8 +169,19 @@ module Metronome
           def initialize(adjustment_type:, charge_id:, start_period:, quantity: nil, tier: nil, value: nil)
           end
 
-          sig { returns(Metronome::Models::Customers::PlanAddParams::PriceAdjustment::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                adjustment_type: Symbol,
+                charge_id: String,
+                start_period: Float,
+                quantity: Float,
+                tier: Float,
+                value: Float
+              }
+            )
+          end
+          def to_hash; end
 
           class AdjustmentType < Metronome::Enum
             abstract!
@@ -199,13 +197,6 @@ module Metronome
         end
 
         class TrialSpec < Metronome::BaseModel
-          Shape = T.type_alias do
-            {
-              length_in_days: Float,
-              spending_cap: Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap
-            }
-          end
-
           sig { returns(Float) }
           attr_accessor :length_in_days
 
@@ -225,12 +216,17 @@ module Metronome
           end
           def initialize(length_in_days:, spending_cap: nil); end
 
-          sig { returns(Metronome::Models::Customers::PlanAddParams::TrialSpec::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                length_in_days: Float,
+                spending_cap: Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap
+              }
+            )
+          end
+          def to_hash; end
 
           class SpendingCap < Metronome::BaseModel
-            Shape = T.type_alias { {amount: Float, credit_type_id: String} }
-
             sig { returns(Float) }
             attr_accessor :amount
 
@@ -240,8 +236,8 @@ module Metronome
             sig { params(amount: Float, credit_type_id: String).void }
             def initialize(amount:, credit_type_id:); end
 
-            sig { returns(Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap::Shape) }
-            def to_h; end
+            sig { override.returns({amount: Float, credit_type_id: String}) }
+            def to_hash; end
           end
         end
       end

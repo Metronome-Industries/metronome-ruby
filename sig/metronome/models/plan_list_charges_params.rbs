@@ -30,7 +30,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::plan_list_charges_params
+      def to_hash: -> Metronome::Models::plan_list_charges_params
     end
   end
 end

@@ -6,21 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            ending_before: Time,
-            limit: Integer,
-            next_page: String,
-            resource_id: String,
-            resource_type: String,
-            sort: Symbol,
-            starting_on: Time
-          },
-          Metronome::RequestParameters::Shape
-        )
-      end
-
       sig { returns(T.nilable(Time)) }
       attr_reader :ending_before
 
@@ -72,7 +57,7 @@ module Metronome
           resource_type: String,
           sort: Symbol,
           starting_on: Time,
-          request_options: Metronome::RequestOpts
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -86,8 +71,21 @@ module Metronome
         request_options: {}
       ); end
 
-      sig { returns(Metronome::Models::AuditLogListParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            ending_before: Time,
+            limit: Integer,
+            next_page: String,
+            resource_id: String,
+            resource_type: String,
+            sort: Symbol,
+            starting_on: Time,
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class Sort < Metronome::Enum
         abstract!

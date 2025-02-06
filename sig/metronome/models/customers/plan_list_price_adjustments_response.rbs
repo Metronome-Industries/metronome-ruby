@@ -36,7 +36,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Customers::plan_list_price_adjustments_response
+        def to_hash: -> Metronome::Models::Customers::plan_list_price_adjustments_response
 
         type charge_type = :usage | :fixed | :composite | :minimum | :seat
 
@@ -79,7 +79,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::price
+          def to_hash: -> Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::price
 
           type adjustment_type = :fixed | :quantity | :percentage | :override
 

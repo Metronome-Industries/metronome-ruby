@@ -11,7 +11,7 @@ module Metronome
       #
       #   @option params [String] :next_page Cursor that indicates where the next page of results should start.
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::CursorPage<Metronome::Models::PricingUnitListResponse>]
       #

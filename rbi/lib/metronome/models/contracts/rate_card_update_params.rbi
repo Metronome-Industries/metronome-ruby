@@ -7,18 +7,6 @@ module Metronome
         extend Metronome::RequestParameters::Converter
         include Metronome::RequestParameters
 
-        Shape = T.type_alias do
-          T.all(
-            {
-              rate_card_id: String,
-              aliases: T::Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias],
-              description: String,
-              name: String
-            },
-            Metronome::RequestParameters::Shape
-          )
-        end
-
         sig { returns(String) }
         attr_accessor :rate_card_id
 
@@ -46,17 +34,25 @@ module Metronome
             aliases: T::Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias],
             description: String,
             name: String,
-            request_options: Metronome::RequestOpts
+            request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
           ).void
         end
         def initialize(rate_card_id:, aliases: nil, description: nil, name: nil, request_options: {}); end
 
-        sig { returns(Metronome::Models::Contracts::RateCardUpdateParams::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              rate_card_id: String,
+              aliases: T::Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias],
+              description: String,
+              name: String,
+              request_options: Metronome::RequestOptions
+            }
+          )
+        end
+        def to_hash; end
 
         class Alias < Metronome::BaseModel
-          Shape = T.type_alias { {name: String, ending_before: Time, starting_at: Time} }
-
           sig { returns(String) }
           attr_accessor :name
 
@@ -75,8 +71,8 @@ module Metronome
           sig { params(name: String, ending_before: Time, starting_at: Time).void }
           def initialize(name:, ending_before: nil, starting_at: nil); end
 
-          sig { returns(Metronome::Models::Contracts::RateCardUpdateParams::Alias::Shape) }
-          def to_h; end
+          sig { override.returns({name: String, ending_before: Time, starting_at: Time}) }
+          def to_hash; end
         end
       end
     end

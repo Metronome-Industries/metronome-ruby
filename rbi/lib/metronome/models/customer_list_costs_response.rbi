@@ -3,14 +3,6 @@
 module Metronome
   module Models
     class CustomerListCostsResponse < Metronome::BaseModel
-      Shape = T.type_alias do
-        {
-          credit_types: T::Hash[Symbol, Metronome::Models::CustomerListCostsResponse::CreditType],
-          end_timestamp: Time,
-          start_timestamp: Time
-        }
-      end
-
       sig { returns(T::Hash[Symbol, Metronome::Models::CustomerListCostsResponse::CreditType]) }
       attr_accessor :credit_types
 
@@ -29,18 +21,18 @@ module Metronome
       end
       def initialize(credit_types:, end_timestamp:, start_timestamp:); end
 
-      sig { returns(Metronome::Models::CustomerListCostsResponse::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            credit_types: T::Hash[Symbol, Metronome::Models::CustomerListCostsResponse::CreditType],
+            end_timestamp: Time,
+            start_timestamp: Time
+          }
+        )
+      end
+      def to_hash; end
 
       class CreditType < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            cost: Float,
-            line_item_breakdown: T::Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown],
-            name: String
-          }
-        end
-
         sig { returns(T.nilable(Float)) }
         attr_reader :cost
 
@@ -74,14 +66,18 @@ module Metronome
         end
         def initialize(cost: nil, line_item_breakdown: nil, name: nil); end
 
-        sig { returns(Metronome::Models::CustomerListCostsResponse::CreditType::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              cost: Float,
+              line_item_breakdown: T::Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown],
+              name: String
+            }
+          )
+        end
+        def to_hash; end
 
         class LineItemBreakdown < Metronome::BaseModel
-          Shape = T.type_alias do
-            {cost: Float, name: String, group_key: String, group_value: T.nilable(String)}
-          end
-
           sig { returns(Float) }
           attr_accessor :cost
 
@@ -100,8 +96,10 @@ module Metronome
           sig { params(cost: Float, name: String, group_key: String, group_value: T.nilable(String)).void }
           def initialize(cost:, name:, group_key: nil, group_value: nil); end
 
-          sig { returns(Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown::Shape) }
-          def to_h; end
+          sig do
+            override.returns({cost: Float, name: String, group_key: String, group_value: T.nilable(String)})
+          end
+          def to_hash; end
         end
       end
     end

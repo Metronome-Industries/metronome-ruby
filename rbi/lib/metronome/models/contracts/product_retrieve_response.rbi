@@ -4,30 +4,16 @@ module Metronome
   module Models
     module Contracts
       class ProductRetrieveResponse < Metronome::BaseModel
-        Shape = T.type_alias { {data: Metronome::Models::Contracts::ProductRetrieveResponse::Data} }
-
         sig { returns(Metronome::Models::Contracts::ProductRetrieveResponse::Data) }
         attr_accessor :data
 
         sig { params(data: Metronome::Models::Contracts::ProductRetrieveResponse::Data).void }
         def initialize(data:); end
 
-        sig { returns(Metronome::Models::Contracts::ProductRetrieveResponse::Shape) }
-        def to_h; end
+        sig { override.returns({data: Metronome::Models::Contracts::ProductRetrieveResponse::Data}) }
+        def to_hash; end
 
         class Data < Metronome::BaseModel
-          Shape = T.type_alias do
-            {
-              id: String,
-              current: Metronome::Models::Contracts::ProductListItemState,
-              initial: Metronome::Models::Contracts::ProductListItemState,
-              type: Symbol,
-              updates: T::Array[Metronome::Models::Contracts::ProductRetrieveResponse::Data::Update],
-              archived_at: T.nilable(Time),
-              custom_fields: T::Hash[Symbol, String]
-            }
-          end
-
           sig { returns(String) }
           attr_accessor :id
 
@@ -65,8 +51,20 @@ module Metronome
           end
           def initialize(id:, current:, initial:, type:, updates:, archived_at: nil, custom_fields: nil); end
 
-          sig { returns(Metronome::Models::Contracts::ProductRetrieveResponse::Data::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                id: String,
+                current: Metronome::Models::Contracts::ProductListItemState,
+                initial: Metronome::Models::Contracts::ProductListItemState,
+                type: Symbol,
+                updates: T::Array[Metronome::Models::Contracts::ProductRetrieveResponse::Data::Update],
+                archived_at: T.nilable(Time),
+                custom_fields: T::Hash[Symbol, String]
+              }
+            )
+          end
+          def to_hash; end
 
           class Type < Metronome::Enum
             abstract!
@@ -82,27 +80,6 @@ module Metronome
           end
 
           class Update < Metronome::BaseModel
-            Shape = T.type_alias do
-              {
-                created_at: Time,
-                created_by: String,
-                billable_metric_id: String,
-                composite_product_ids: T::Array[String],
-                composite_tags: T::Array[String],
-                exclude_free_usage: T::Boolean,
-                is_refundable: T::Boolean,
-                name: String,
-                netsuite_internal_item_id: String,
-                netsuite_overage_item_id: String,
-                presentation_group_key: T::Array[String],
-                pricing_group_key: T::Array[String],
-                quantity_conversion: T.nilable(Metronome::Models::Contracts::QuantityConversion),
-                quantity_rounding: T.nilable(Metronome::Models::Contracts::QuantityRounding),
-                starting_at: Time,
-                tags: T::Array[String]
-              }
-            end
-
             sig { returns(Time) }
             attr_accessor :created_at
 
@@ -226,8 +203,29 @@ module Metronome
               tags: nil
             ); end
 
-            sig { returns(Metronome::Models::Contracts::ProductRetrieveResponse::Data::Update::Shape) }
-            def to_h; end
+            sig do
+              override.returns(
+                {
+                  created_at: Time,
+                  created_by: String,
+                  billable_metric_id: String,
+                  composite_product_ids: T::Array[String],
+                  composite_tags: T::Array[String],
+                  exclude_free_usage: T::Boolean,
+                  is_refundable: T::Boolean,
+                  name: String,
+                  netsuite_internal_item_id: String,
+                  netsuite_overage_item_id: String,
+                  presentation_group_key: T::Array[String],
+                  pricing_group_key: T::Array[String],
+                  quantity_conversion: T.nilable(Metronome::Models::Contracts::QuantityConversion),
+                  quantity_rounding: T.nilable(Metronome::Models::Contracts::QuantityRounding),
+                  starting_at: Time,
+                  tags: T::Array[String]
+                }
+              )
+            end
+            def to_hash; end
           end
         end
       end

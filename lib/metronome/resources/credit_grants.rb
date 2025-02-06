@@ -43,7 +43,7 @@ module Metronome
       #     with a previously used uniqueness key, a new record will not be created and the
       #     request will fail with a 409 error.
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::CreditGrantCreateResponse]
       #
@@ -80,7 +80,7 @@ module Metronome
       #
       #   @option params [Time] :not_expiring_before Body param: Only return credit grants that expire at or after this timestamp.
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::CursorPage<Metronome::Models::CreditGrantListResponse>]
       #
@@ -110,7 +110,7 @@ module Metronome
       #
       #   @option params [String] :name the updated name for the credit grant
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::CreditGrantEditResponse]
       #
@@ -147,7 +147,7 @@ module Metronome
       #   @option params [Time] :starting_on Body param: If supplied, only ledger entries effective at or after this time
       #     will be returned.
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::CreditGrantListEntriesResponse]
       #
@@ -174,7 +174,7 @@ module Metronome
       #
       #   @option params [Boolean] :void_credit_purchase_invoice If true, void the purchase invoice associated with the grant
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::CreditGrantVoidResponse]
       #

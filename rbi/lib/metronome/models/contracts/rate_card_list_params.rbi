@@ -7,10 +7,6 @@ module Metronome
         extend Metronome::RequestParameters::Converter
         include Metronome::RequestParameters
 
-        Shape = T.type_alias do
-          T.all({body: T.anything, limit: Integer, next_page: String}, Metronome::RequestParameters::Shape)
-        end
-
         sig { returns(T.anything) }
         attr_accessor :body
 
@@ -31,13 +27,22 @@ module Metronome
             body: T.anything,
             limit: Integer,
             next_page: String,
-            request_options: Metronome::RequestOpts
+            request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
           ).void
         end
         def initialize(body:, limit: nil, next_page: nil, request_options: {}); end
 
-        sig { returns(Metronome::Models::Contracts::RateCardListParams::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              body: T.anything,
+              limit: Integer,
+              next_page: String,
+              request_options: Metronome::RequestOptions
+            }
+          )
+        end
+        def to_hash; end
       end
     end
   end

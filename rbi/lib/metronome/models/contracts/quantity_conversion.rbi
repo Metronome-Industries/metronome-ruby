@@ -4,8 +4,6 @@ module Metronome
   module Models
     module Contracts
       class QuantityConversion < Metronome::BaseModel
-        Shape = T.type_alias { {conversion_factor: Float, operation: Symbol, name: String} }
-
         sig { returns(Float) }
         attr_accessor :conversion_factor
 
@@ -21,8 +19,8 @@ module Metronome
         sig { params(conversion_factor: Float, operation: Symbol, name: String).void }
         def initialize(conversion_factor:, operation:, name: nil); end
 
-        sig { returns(Metronome::Models::Contracts::QuantityConversion::Shape) }
-        def to_h; end
+        sig { override.returns({conversion_factor: Float, operation: Symbol, name: String}) }
+        def to_hash; end
 
         class Operation < Metronome::Enum
           abstract!

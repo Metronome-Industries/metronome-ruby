@@ -22,7 +22,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Contracts::quantity_rounding
+        def to_hash: -> Metronome::Models::Contracts::quantity_rounding
 
         type rounding_method = :ROUND_UP | :ROUND_DOWN | :ROUND_HALF_UP
 

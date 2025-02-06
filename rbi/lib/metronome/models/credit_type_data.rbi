@@ -3,8 +3,6 @@
 module Metronome
   module Models
     class CreditTypeData < Metronome::BaseModel
-      Shape = T.type_alias { {id: String, name: String} }
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -14,8 +12,8 @@ module Metronome
       sig { params(id: String, name: String).void }
       def initialize(id:, name:); end
 
-      sig { returns(Metronome::Models::CreditTypeData::Shape) }
-      def to_h; end
+      sig { override.returns({id: String, name: String}) }
+      def to_hash; end
     end
   end
 end

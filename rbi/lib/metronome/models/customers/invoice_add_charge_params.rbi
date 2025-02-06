@@ -7,21 +7,6 @@ module Metronome
         extend Metronome::RequestParameters::Converter
         include Metronome::RequestParameters
 
-        Shape = T.type_alias do
-          T.all(
-            {
-              customer_id: String,
-              charge_id: String,
-              customer_plan_id: String,
-              description: String,
-              invoice_start_timestamp: Time,
-              price: Float,
-              quantity: Float
-            },
-            Metronome::RequestParameters::Shape
-          )
-        end
-
         sig { returns(String) }
         attr_accessor :customer_id
 
@@ -52,7 +37,7 @@ module Metronome
             invoice_start_timestamp: Time,
             price: Float,
             quantity: Float,
-            request_options: Metronome::RequestOpts
+            request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
           ).void
         end
         def initialize(
@@ -66,8 +51,21 @@ module Metronome
           request_options: {}
         ); end
 
-        sig { returns(Metronome::Models::Customers::InvoiceAddChargeParams::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              customer_id: String,
+              charge_id: String,
+              customer_plan_id: String,
+              description: String,
+              invoice_start_timestamp: Time,
+              price: Float,
+              quantity: Float,
+              request_options: Metronome::RequestOptions
+            }
+          )
+        end
+        def to_hash; end
       end
     end
   end

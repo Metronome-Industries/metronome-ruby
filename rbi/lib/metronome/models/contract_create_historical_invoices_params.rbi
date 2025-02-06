@@ -6,16 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            invoices: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice],
-            preview: T::Boolean
-          },
-          Metronome::RequestParameters::Shape
-        )
-      end
-
       sig { returns(T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice]) }
       attr_accessor :invoices
 
@@ -26,30 +16,23 @@ module Metronome
         params(
           invoices: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice],
           preview: T::Boolean,
-          request_options: Metronome::RequestOpts
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(invoices:, preview:, request_options: {}); end
 
-      sig { returns(Metronome::Models::ContractCreateHistoricalInvoicesParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            invoices: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice],
+            preview: T::Boolean,
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class Invoice < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            contract_id: String,
-            credit_type_id: String,
-            customer_id: String,
-            exclusive_end_date: Time,
-            inclusive_start_date: Time,
-            issue_date: Time,
-            usage_line_items: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem],
-            billable_status: Symbol,
-            breakdown_granularity: Symbol,
-            custom_fields: T::Hash[Symbol, String]
-          }
-        end
-
         sig { returns(String) }
         attr_accessor :contract_id
 
@@ -118,22 +101,25 @@ module Metronome
           custom_fields: nil
         ); end
 
-        sig { returns(Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::Shape) }
-        def to_h; end
-
-        class UsageLineItem < Metronome::BaseModel
-          Shape = T.type_alias do
+        sig do
+          override.returns(
             {
+              contract_id: String,
+              credit_type_id: String,
+              customer_id: String,
               exclusive_end_date: Time,
               inclusive_start_date: Time,
-              product_id: String,
-              presentation_group_values: T::Hash[Symbol, String],
-              pricing_group_values: T::Hash[Symbol, String],
-              quantity: Float,
-              subtotals_with_quantity: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
+              issue_date: Time,
+              usage_line_items: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem],
+              billable_status: Symbol,
+              breakdown_granularity: Symbol,
+              custom_fields: T::Hash[Symbol, String]
             }
-          end
+          )
+        end
+        def to_hash; end
 
+        class UsageLineItem < Metronome::BaseModel
           sig { returns(Time) }
           attr_accessor :exclusive_end_date
 
@@ -195,13 +181,21 @@ module Metronome
           ); end
 
           sig do
-            returns(Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::Shape)
+            override.returns(
+              {
+                exclusive_end_date: Time,
+                inclusive_start_date: Time,
+                product_id: String,
+                presentation_group_values: T::Hash[Symbol, String],
+                pricing_group_values: T::Hash[Symbol, String],
+                quantity: Float,
+                subtotals_with_quantity: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
+              }
+            )
           end
-          def to_h; end
+          def to_hash; end
 
           class SubtotalsWithQuantity < Metronome::BaseModel
-            Shape = T.type_alias { {exclusive_end_date: Time, inclusive_start_date: Time, quantity: Float} }
-
             sig { returns(Time) }
             attr_accessor :exclusive_end_date
 
@@ -214,10 +208,8 @@ module Metronome
             sig { params(exclusive_end_date: Time, inclusive_start_date: Time, quantity: Float).void }
             def initialize(exclusive_end_date:, inclusive_start_date:, quantity:); end
 
-            sig do
-              returns(Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity::Shape)
-            end
-            def to_h; end
+            sig { override.returns({exclusive_end_date: Time, inclusive_start_date: Time, quantity: Float}) }
+            def to_hash; end
           end
         end
 

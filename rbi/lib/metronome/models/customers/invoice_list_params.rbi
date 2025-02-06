@@ -7,23 +7,6 @@ module Metronome
         extend Metronome::RequestParameters::Converter
         include Metronome::RequestParameters
 
-        Shape = T.type_alias do
-          T.all(
-            {
-              customer_id: String,
-              credit_type_id: String,
-              ending_before: Time,
-              limit: Integer,
-              next_page: String,
-              skip_zero_qty_line_items: T::Boolean,
-              sort: Symbol,
-              starting_on: Time,
-              status: String
-            },
-            Metronome::RequestParameters::Shape
-          )
-        end
-
         sig { returns(String) }
         attr_accessor :customer_id
 
@@ -86,7 +69,7 @@ module Metronome
             sort: Symbol,
             starting_on: Time,
             status: String,
-            request_options: Metronome::RequestOpts
+            request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
           ).void
         end
         def initialize(
@@ -102,8 +85,23 @@ module Metronome
           request_options: {}
         ); end
 
-        sig { returns(Metronome::Models::Customers::InvoiceListParams::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              customer_id: String,
+              credit_type_id: String,
+              ending_before: Time,
+              limit: Integer,
+              next_page: String,
+              skip_zero_qty_line_items: T::Boolean,
+              sort: Symbol,
+              starting_on: Time,
+              status: String,
+              request_options: Metronome::RequestOptions
+            }
+          )
+        end
+        def to_hash; end
 
         class Sort < Metronome::Enum
           abstract!

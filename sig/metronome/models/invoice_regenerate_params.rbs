@@ -16,7 +16,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::invoice_regenerate_params
+      def to_hash: -> Metronome::Models::invoice_regenerate_params
     end
   end
 end

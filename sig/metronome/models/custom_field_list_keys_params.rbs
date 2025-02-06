@@ -32,7 +32,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::custom_field_list_keys_params
+      def to_hash: -> Metronome::Models::custom_field_list_keys_params
 
       type entity =
         :alert

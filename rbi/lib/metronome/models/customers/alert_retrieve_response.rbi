@@ -4,16 +4,14 @@ module Metronome
   module Models
     module Customers
       class AlertRetrieveResponse < Metronome::BaseModel
-        Shape = T.type_alias { {data: Metronome::Models::Customers::CustomerAlert} }
-
         sig { returns(Metronome::Models::Customers::CustomerAlert) }
         attr_accessor :data
 
         sig { params(data: Metronome::Models::Customers::CustomerAlert).void }
         def initialize(data:); end
 
-        sig { returns(Metronome::Models::Customers::AlertRetrieveResponse::Shape) }
-        def to_h; end
+        sig { override.returns({data: Metronome::Models::Customers::CustomerAlert}) }
+        def to_hash; end
       end
     end
   end

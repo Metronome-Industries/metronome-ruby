@@ -14,7 +14,7 @@ module Metronome
           ?Metronome::Models::invoice_void_params | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::invoice_void_params
+      def to_hash: -> Metronome::Models::invoice_void_params
     end
   end
 end

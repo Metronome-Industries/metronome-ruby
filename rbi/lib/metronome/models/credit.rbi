@@ -3,29 +3,6 @@
 module Metronome
   module Models
     class Credit < Metronome::BaseModel
-      Shape = T.type_alias do
-        {
-          id: String,
-          product: Metronome::Models::Credit::Product,
-          type: Symbol,
-          access_schedule: Metronome::Models::ScheduleDuration,
-          applicable_contract_ids: T::Array[String],
-          applicable_product_ids: T::Array[String],
-          applicable_product_tags: T::Array[String],
-          balance: Float,
-          contract: Metronome::Models::Credit::Contract,
-          custom_fields: T::Hash[Symbol, String],
-          description: String,
-          ledger: T::Array[Metronome::Models::Credit::Ledger::Variants],
-          name: String,
-          netsuite_sales_order_id: String,
-          priority: Float,
-          rate_type: Symbol,
-          salesforce_opportunity_id: String,
-          uniqueness_key: String
-        }
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -83,10 +60,34 @@ module Metronome
       sig { params(description: String).void }
       attr_writer :description
 
-      sig { returns(T.nilable(T::Array[Metronome::Models::Credit::Ledger::Variants])) }
+      sig do
+        returns(
+          T.nilable(
+            T::Array[T.any(
+              Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry,
+              Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry,
+              Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry,
+              Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry,
+              Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry,
+              Metronome::Models::Credit::Ledger::CreditManualLedgerEntry
+            )]
+          )
+        )
+      end
       attr_reader :ledger
 
-      sig { params(ledger: T::Array[Metronome::Models::Credit::Ledger::Variants]).void }
+      sig do
+        params(
+          ledger: T::Array[T.any(
+            Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry,
+            Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry,
+            Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry,
+            Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry,
+            Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry,
+            Metronome::Models::Credit::Ledger::CreditManualLedgerEntry
+          )]
+        ).void
+      end
       attr_writer :ledger
 
       sig { returns(T.nilable(String)) }
@@ -138,7 +139,14 @@ module Metronome
           contract: Metronome::Models::Credit::Contract,
           custom_fields: T::Hash[Symbol, String],
           description: String,
-          ledger: T::Array[Metronome::Models::Credit::Ledger::Variants],
+          ledger: T::Array[T.any(
+            Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry,
+            Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry,
+            Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry,
+            Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry,
+            Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry,
+            Metronome::Models::Credit::Ledger::CreditManualLedgerEntry
+          )],
           name: String,
           netsuite_sales_order_id: String,
           priority: Float,
@@ -168,12 +176,40 @@ module Metronome
         uniqueness_key: nil
       ); end
 
-      sig { returns(Metronome::Models::Credit::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: String,
+            product: Metronome::Models::Credit::Product,
+            type: Symbol,
+            access_schedule: Metronome::Models::ScheduleDuration,
+            applicable_contract_ids: T::Array[String],
+            applicable_product_ids: T::Array[String],
+            applicable_product_tags: T::Array[String],
+            balance: Float,
+            contract: Metronome::Models::Credit::Contract,
+            custom_fields: T::Hash[Symbol, String],
+            description: String,
+            ledger: T::Array[T.any(
+              Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry,
+              Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry,
+              Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry,
+              Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry,
+              Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry,
+              Metronome::Models::Credit::Ledger::CreditManualLedgerEntry
+            )],
+            name: String,
+            netsuite_sales_order_id: String,
+            priority: Float,
+            rate_type: Symbol,
+            salesforce_opportunity_id: String,
+            uniqueness_key: String
+          }
+        )
+      end
+      def to_hash; end
 
       class Product < Metronome::BaseModel
-        Shape = T.type_alias { {id: String, name: String} }
-
         sig { returns(String) }
         attr_accessor :id
 
@@ -183,8 +219,8 @@ module Metronome
         sig { params(id: String, name: String).void }
         def initialize(id:, name:); end
 
-        sig { returns(Metronome::Models::Credit::Product::Shape) }
-        def to_h; end
+        sig { override.returns({id: String, name: String}) }
+        def to_hash; end
       end
 
       class Type < Metronome::Enum
@@ -197,35 +233,20 @@ module Metronome
       end
 
       class Contract < Metronome::BaseModel
-        Shape = T.type_alias { {id: String} }
-
         sig { returns(String) }
         attr_accessor :id
 
         sig { params(id: String).void }
         def initialize(id:); end
 
-        sig { returns(Metronome::Models::Credit::Contract::Shape) }
-        def to_h; end
+        sig { override.returns({id: String}) }
+        def to_hash; end
       end
 
       class Ledger < Metronome::Union
         abstract!
 
-        Variants = T.type_alias do
-          T.any(
-            Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry,
-            Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry,
-            Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry,
-            Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry,
-            Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry,
-            Metronome::Models::Credit::Ledger::CreditManualLedgerEntry
-          )
-        end
-
         class CreditSegmentStartLedgerEntry < Metronome::BaseModel
-          Shape = T.type_alias { {amount: Float, segment_id: String, timestamp: Time, type: Symbol} }
-
           sig { returns(Float) }
           attr_accessor :amount
 
@@ -241,8 +262,8 @@ module Metronome
           sig { params(amount: Float, segment_id: String, timestamp: Time, type: Symbol).void }
           def initialize(amount:, segment_id:, timestamp:, type:); end
 
-          sig { returns(Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry::Shape) }
-          def to_h; end
+          sig { override.returns({amount: Float, segment_id: String, timestamp: Time, type: Symbol}) }
+          def to_hash; end
 
           class Type < Metronome::Enum
             abstract!
@@ -255,10 +276,6 @@ module Metronome
         end
 
         class CreditAutomatedInvoiceDeductionLedgerEntry < Metronome::BaseModel
-          Shape = T.type_alias do
-            {amount: Float, invoice_id: String, segment_id: String, timestamp: Time, type: Symbol}
-          end
-
           sig { returns(Float) }
           attr_accessor :amount
 
@@ -280,9 +297,17 @@ module Metronome
           def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:); end
 
           sig do
-            returns(Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Shape)
+            override.returns(
+              {
+                amount: Float,
+                invoice_id: String,
+                segment_id: String,
+                timestamp: Time,
+                type: Symbol
+              }
+            )
           end
-          def to_h; end
+          def to_hash; end
 
           class Type < Metronome::Enum
             abstract!
@@ -295,8 +320,6 @@ module Metronome
         end
 
         class CreditExpirationLedgerEntry < Metronome::BaseModel
-          Shape = T.type_alias { {amount: Float, segment_id: String, timestamp: Time, type: Symbol} }
-
           sig { returns(Float) }
           attr_accessor :amount
 
@@ -312,8 +335,8 @@ module Metronome
           sig { params(amount: Float, segment_id: String, timestamp: Time, type: Symbol).void }
           def initialize(amount:, segment_id:, timestamp:, type:); end
 
-          sig { returns(Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry::Shape) }
-          def to_h; end
+          sig { override.returns({amount: Float, segment_id: String, timestamp: Time, type: Symbol}) }
+          def to_hash; end
 
           class Type < Metronome::Enum
             abstract!
@@ -326,10 +349,6 @@ module Metronome
         end
 
         class CreditCanceledLedgerEntry < Metronome::BaseModel
-          Shape = T.type_alias do
-            {amount: Float, invoice_id: String, segment_id: String, timestamp: Time, type: Symbol}
-          end
-
           sig { returns(Float) }
           attr_accessor :amount
 
@@ -350,8 +369,18 @@ module Metronome
           end
           def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:); end
 
-          sig { returns(Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                amount: Float,
+                invoice_id: String,
+                segment_id: String,
+                timestamp: Time,
+                type: Symbol
+              }
+            )
+          end
+          def to_hash; end
 
           class Type < Metronome::Enum
             abstract!
@@ -364,10 +393,6 @@ module Metronome
         end
 
         class CreditCreditedLedgerEntry < Metronome::BaseModel
-          Shape = T.type_alias do
-            {amount: Float, invoice_id: String, segment_id: String, timestamp: Time, type: Symbol}
-          end
-
           sig { returns(Float) }
           attr_accessor :amount
 
@@ -388,8 +413,18 @@ module Metronome
           end
           def initialize(amount:, invoice_id:, segment_id:, timestamp:, type:); end
 
-          sig { returns(Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                amount: Float,
+                invoice_id: String,
+                segment_id: String,
+                timestamp: Time,
+                type: Symbol
+              }
+            )
+          end
+          def to_hash; end
 
           class Type < Metronome::Enum
             abstract!
@@ -402,8 +437,6 @@ module Metronome
         end
 
         class CreditManualLedgerEntry < Metronome::BaseModel
-          Shape = T.type_alias { {amount: Float, reason: String, timestamp: Time, type: Symbol} }
-
           sig { returns(Float) }
           attr_accessor :amount
 
@@ -419,8 +452,8 @@ module Metronome
           sig { params(amount: Float, reason: String, timestamp: Time, type: Symbol).void }
           def initialize(amount:, reason:, timestamp:, type:); end
 
-          sig { returns(Metronome::Models::Credit::Ledger::CreditManualLedgerEntry::Shape) }
-          def to_h; end
+          sig { override.returns({amount: Float, reason: String, timestamp: Time, type: Symbol}) }
+          def to_hash; end
 
           class Type < Metronome::Enum
             abstract!

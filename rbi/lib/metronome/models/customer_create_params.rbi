@@ -6,20 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            name: String,
-            billing_config: Metronome::Models::CustomerCreateParams::BillingConfig,
-            custom_fields: T::Hash[Symbol, String],
-            customer_billing_provider_configurations: T::Array[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration],
-            external_id: String,
-            ingest_aliases: T::Array[String]
-          },
-          Metronome::RequestParameters::Shape
-        )
-      end
-
       sig { returns(String) }
       attr_accessor :name
 
@@ -67,7 +53,7 @@ module Metronome
           customer_billing_provider_configurations: T::Array[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration],
           external_id: String,
           ingest_aliases: T::Array[String],
-          request_options: Metronome::RequestOpts
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -80,21 +66,22 @@ module Metronome
         request_options: {}
       ); end
 
-      sig { returns(Metronome::Models::CustomerCreateParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            name: String,
+            billing_config: Metronome::Models::CustomerCreateParams::BillingConfig,
+            custom_fields: T::Hash[Symbol, String],
+            customer_billing_provider_configurations: T::Array[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration],
+            external_id: String,
+            ingest_aliases: T::Array[String],
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class BillingConfig < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            billing_provider_customer_id: String,
-            billing_provider_type: Symbol,
-            aws_is_subscription_product: T::Boolean,
-            aws_product_code: String,
-            aws_region: Symbol,
-            stripe_collection_method: Symbol
-          }
-        end
-
         sig { returns(String) }
         attr_accessor :billing_provider_customer_id
 
@@ -144,8 +131,19 @@ module Metronome
           stripe_collection_method: nil
         ); end
 
-        sig { returns(Metronome::Models::CustomerCreateParams::BillingConfig::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              billing_provider_customer_id: String,
+              billing_provider_type: Symbol,
+              aws_is_subscription_product: T::Boolean,
+              aws_product_code: String,
+              aws_region: Symbol,
+              stripe_collection_method: Symbol
+            }
+          )
+        end
+        def to_hash; end
 
         class BillingProviderType < Metronome::Enum
           abstract!
@@ -208,15 +206,6 @@ module Metronome
       end
 
       class CustomerBillingProviderConfiguration < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            billing_provider: Symbol,
-            configuration: T::Hash[Symbol, T.anything],
-            delivery_method: Symbol,
-            delivery_method_id: String
-          }
-        end
-
         sig { returns(Symbol) }
         attr_accessor :billing_provider
 
@@ -249,8 +238,17 @@ module Metronome
         def initialize(billing_provider:, configuration: nil, delivery_method: nil, delivery_method_id: nil)
         end
 
-        sig { returns(Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              billing_provider: Symbol,
+              configuration: T::Hash[Symbol, T.anything],
+              delivery_method: Symbol,
+              delivery_method_id: String
+            }
+          )
+        end
+        def to_hash; end
 
         class BillingProvider < Metronome::Enum
           abstract!

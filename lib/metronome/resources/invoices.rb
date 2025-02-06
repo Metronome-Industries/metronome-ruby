@@ -9,7 +9,7 @@ module Metronome
       #
       #   @option params [String] :id The invoice id to regenerate
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::InvoiceRegenerateResponse]
       #
@@ -30,7 +30,7 @@ module Metronome
       #
       #   @option params [String] :id The invoice id to void
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::InvoiceVoidResponse]
       #

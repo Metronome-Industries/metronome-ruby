@@ -3,33 +3,16 @@
 module Metronome
   module Models
     class ContractListResponse < Metronome::BaseModel
-      Shape = T.type_alias { {data: T::Array[Metronome::Models::ContractListResponse::Data]} }
-
       sig { returns(T::Array[Metronome::Models::ContractListResponse::Data]) }
       attr_accessor :data
 
       sig { params(data: T::Array[Metronome::Models::ContractListResponse::Data]).void }
       def initialize(data:); end
 
-      sig { returns(Metronome::Models::ContractListResponse::Shape) }
-      def to_h; end
+      sig { override.returns({data: T::Array[Metronome::Models::ContractListResponse::Data]}) }
+      def to_hash; end
 
       class Data < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            id: String,
-            amendments: T::Array[Metronome::Models::ContractListResponse::Data::Amendment],
-            current: Metronome::Models::ContractWithoutAmendments,
-            customer_id: String,
-            initial: Metronome::Models::ContractWithoutAmendments,
-            archived_at: Time,
-            custom_fields: T::Hash[Symbol, String],
-            customer_billing_provider_configuration: Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration,
-            scheduled_charges_on_usage_invoices: Symbol,
-            uniqueness_key: String
-          }
-        end
-
         sig { returns(String) }
         attr_accessor :id
 
@@ -108,28 +91,25 @@ module Metronome
           uniqueness_key: nil
         ); end
 
-        sig { returns(Metronome::Models::ContractListResponse::Data::Shape) }
-        def to_h; end
-
-        class Amendment < Metronome::BaseModel
-          Shape = T.type_alias do
+        sig do
+          override.returns(
             {
               id: String,
-              commits: T::Array[Metronome::Models::Commit],
-              created_at: Time,
-              created_by: String,
-              overrides: T::Array[Metronome::Models::Override],
-              scheduled_charges: T::Array[Metronome::Models::ScheduledCharge],
-              starting_at: Time,
-              credits: T::Array[Metronome::Models::Credit],
-              discounts: T::Array[Metronome::Models::Discount],
-              netsuite_sales_order_id: String,
-              professional_services: T::Array[Metronome::Models::ProService],
-              reseller_royalties: T::Array[Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty],
-              salesforce_opportunity_id: String
+              amendments: T::Array[Metronome::Models::ContractListResponse::Data::Amendment],
+              current: Metronome::Models::ContractWithoutAmendments,
+              customer_id: String,
+              initial: Metronome::Models::ContractWithoutAmendments,
+              archived_at: Time,
+              custom_fields: T::Hash[Symbol, String],
+              customer_billing_provider_configuration: Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration,
+              scheduled_charges_on_usage_invoices: Symbol,
+              uniqueness_key: String
             }
-          end
+          )
+        end
+        def to_hash; end
 
+        class Amendment < Metronome::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
@@ -226,26 +206,28 @@ module Metronome
             salesforce_opportunity_id: nil
           ); end
 
-          sig { returns(Metronome::Models::ContractListResponse::Data::Amendment::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                id: String,
+                commits: T::Array[Metronome::Models::Commit],
+                created_at: Time,
+                created_by: String,
+                overrides: T::Array[Metronome::Models::Override],
+                scheduled_charges: T::Array[Metronome::Models::ScheduledCharge],
+                starting_at: Time,
+                credits: T::Array[Metronome::Models::Credit],
+                discounts: T::Array[Metronome::Models::Discount],
+                netsuite_sales_order_id: String,
+                professional_services: T::Array[Metronome::Models::ProService],
+                reseller_royalties: T::Array[Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty],
+                salesforce_opportunity_id: String
+              }
+            )
+          end
+          def to_hash; end
 
           class ResellerRoyalty < Metronome::BaseModel
-            Shape = T.type_alias do
-              {
-                reseller_type: Symbol,
-                aws_account_number: String,
-                aws_offer_id: String,
-                aws_payer_reference_id: String,
-                ending_before: T.nilable(Time),
-                fraction: Float,
-                gcp_account_id: String,
-                gcp_offer_id: String,
-                netsuite_reseller_id: String,
-                reseller_contract_value: Float,
-                starting_at: Time
-              }
-            end
-
             sig { returns(Symbol) }
             attr_accessor :reseller_type
 
@@ -335,8 +317,24 @@ module Metronome
               starting_at: nil
             ); end
 
-            sig { returns(Metronome::Models::ContractListResponse::Data::Amendment::ResellerRoyalty::Shape) }
-            def to_h; end
+            sig do
+              override.returns(
+                {
+                  reseller_type: Symbol,
+                  aws_account_number: String,
+                  aws_offer_id: String,
+                  aws_payer_reference_id: String,
+                  ending_before: T.nilable(Time),
+                  fraction: Float,
+                  gcp_account_id: String,
+                  gcp_offer_id: String,
+                  netsuite_reseller_id: String,
+                  reseller_contract_value: Float,
+                  starting_at: Time
+                }
+              )
+            end
+            def to_hash; end
 
             class ResellerType < Metronome::Enum
               abstract!
@@ -353,8 +351,6 @@ module Metronome
         end
 
         class CustomerBillingProviderConfiguration < Metronome::BaseModel
-          Shape = T.type_alias { {billing_provider: Symbol, delivery_method: Symbol} }
-
           sig { returns(Symbol) }
           attr_accessor :billing_provider
 
@@ -364,10 +360,8 @@ module Metronome
           sig { params(billing_provider: Symbol, delivery_method: Symbol).void }
           def initialize(billing_provider:, delivery_method:); end
 
-          sig do
-            returns(Metronome::Models::ContractListResponse::Data::CustomerBillingProviderConfiguration::Shape)
-          end
-          def to_h; end
+          sig { override.returns({billing_provider: Symbol, delivery_method: Symbol}) }
+          def to_hash; end
 
           class BillingProvider < Metronome::Enum
             abstract!

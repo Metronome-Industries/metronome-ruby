@@ -50,7 +50,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::contract_add_manual_balance_entry_params
+      def to_hash: -> Metronome::Models::contract_add_manual_balance_entry_params
     end
   end
 end

@@ -40,7 +40,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::plan_list_customers_params
+      def to_hash: -> Metronome::Models::plan_list_customers_params
 
       type status = :all | :active | :ended | :upcoming
 

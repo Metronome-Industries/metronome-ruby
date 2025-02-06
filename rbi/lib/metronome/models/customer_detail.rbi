@@ -3,18 +3,6 @@
 module Metronome
   module Models
     class CustomerDetail < Metronome::BaseModel
-      Shape = T.type_alias do
-        {
-          id: String,
-          custom_fields: T::Hash[Symbol, String],
-          customer_config: Metronome::Models::CustomerDetail::CustomerConfig,
-          external_id: String,
-          ingest_aliases: T::Array[String],
-          name: String,
-          current_billable_status: Metronome::Models::CustomerDetail::CurrentBillableStatus
-        }
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -61,25 +49,33 @@ module Metronome
       )
       end
 
-      sig { returns(Metronome::Models::CustomerDetail::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: String,
+            custom_fields: T::Hash[Symbol, String],
+            customer_config: Metronome::Models::CustomerDetail::CustomerConfig,
+            external_id: String,
+            ingest_aliases: T::Array[String],
+            name: String,
+            current_billable_status: Metronome::Models::CustomerDetail::CurrentBillableStatus
+          }
+        )
+      end
+      def to_hash; end
 
       class CustomerConfig < Metronome::BaseModel
-        Shape = T.type_alias { {salesforce_account_id: T.nilable(String)} }
-
         sig { returns(T.nilable(String)) }
         attr_accessor :salesforce_account_id
 
         sig { params(salesforce_account_id: T.nilable(String)).void }
         def initialize(salesforce_account_id:); end
 
-        sig { returns(Metronome::Models::CustomerDetail::CustomerConfig::Shape) }
-        def to_h; end
+        sig { override.returns({salesforce_account_id: T.nilable(String)}) }
+        def to_hash; end
       end
 
       class CurrentBillableStatus < Metronome::BaseModel
-        Shape = T.type_alias { {value: Symbol, effective_at: T.nilable(Time)} }
-
         sig { returns(Symbol) }
         attr_accessor :value
 
@@ -89,8 +85,8 @@ module Metronome
         sig { params(value: Symbol, effective_at: T.nilable(Time)).void }
         def initialize(value:, effective_at: nil); end
 
-        sig { returns(Metronome::Models::CustomerDetail::CurrentBillableStatus::Shape) }
-        def to_h; end
+        sig { override.returns({value: Symbol, effective_at: T.nilable(Time)}) }
+        def to_hash; end
 
         class Value < Metronome::Enum
           abstract!

@@ -6,19 +6,23 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias { T.all({entity: Symbol, key: String}, Metronome::RequestParameters::Shape) }
-
       sig { returns(Symbol) }
       attr_accessor :entity
 
       sig { returns(String) }
       attr_accessor :key
 
-      sig { params(entity: Symbol, key: String, request_options: Metronome::RequestOpts).void }
+      sig do
+        params(
+          entity: Symbol,
+          key: String,
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
+        ).void
+      end
       def initialize(entity:, key:, request_options: {}); end
 
-      sig { returns(Metronome::Models::CustomFieldRemoveKeyParams::Shape) }
-      def to_h; end
+      sig { override.returns({entity: Symbol, key: String, request_options: Metronome::RequestOptions}) }
+      def to_hash; end
 
       class Entity < Metronome::Enum
         abstract!

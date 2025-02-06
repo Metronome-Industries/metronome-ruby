@@ -32,7 +32,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::billable_metric_list_params
+      def to_hash: -> Metronome::Models::billable_metric_list_params
     end
   end
 end

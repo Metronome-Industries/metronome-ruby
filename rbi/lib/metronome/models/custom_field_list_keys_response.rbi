@@ -3,10 +3,6 @@
 module Metronome
   module Models
     class CustomFieldListKeysResponse < Metronome::BaseModel
-      Shape = T.type_alias do
-        {data: T::Array[Metronome::Models::CustomFieldListKeysResponse::Data], next_page: T.nilable(String)}
-      end
-
       sig { returns(T::Array[Metronome::Models::CustomFieldListKeysResponse::Data]) }
       attr_accessor :data
 
@@ -21,12 +17,17 @@ module Metronome
       end
       def initialize(data:, next_page:); end
 
-      sig { returns(Metronome::Models::CustomFieldListKeysResponse::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            data: T::Array[Metronome::Models::CustomFieldListKeysResponse::Data],
+            next_page: T.nilable(String)
+          }
+        )
+      end
+      def to_hash; end
 
       class Data < Metronome::BaseModel
-        Shape = T.type_alias { {enforce_uniqueness: T::Boolean, entity: Symbol, key: String} }
-
         sig { returns(T::Boolean) }
         attr_accessor :enforce_uniqueness
 
@@ -39,8 +40,8 @@ module Metronome
         sig { params(enforce_uniqueness: T::Boolean, entity: Symbol, key: String).void }
         def initialize(enforce_uniqueness:, entity:, key:); end
 
-        sig { returns(Metronome::Models::CustomFieldListKeysResponse::Data::Shape) }
-        def to_h; end
+        sig { override.returns({enforce_uniqueness: T::Boolean, entity: Symbol, key: String}) }
+        def to_hash; end
 
         class Entity < Metronome::Enum
           abstract!

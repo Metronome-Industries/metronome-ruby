@@ -58,7 +58,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Customers::plan_list_response
+        def to_hash: -> Metronome::Models::Customers::plan_list_response
 
         type trial_info =
           {
@@ -81,7 +81,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Customers::PlanListResponse::trial_info
+          def to_hash: -> Metronome::Models::Customers::PlanListResponse::trial_info
 
           type spending_cap =
             {
@@ -108,7 +108,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::Customers::PlanListResponse::TrialInfo::spending_cap
+            def to_hash: -> Metronome::Models::Customers::PlanListResponse::TrialInfo::spending_cap
           end
         end
       end

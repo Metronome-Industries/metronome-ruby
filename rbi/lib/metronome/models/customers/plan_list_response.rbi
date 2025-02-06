@@ -4,20 +4,6 @@ module Metronome
   module Models
     module Customers
       class PlanListResponse < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            id: String,
-            custom_fields: T::Hash[Symbol, String],
-            plan_description: String,
-            plan_id: String,
-            plan_name: String,
-            starting_on: Time,
-            ending_before: Time,
-            net_payment_terms_days: Float,
-            trial_info: Metronome::Models::Customers::PlanListResponse::TrialInfo
-          }
-        end
-
         sig { returns(String) }
         attr_accessor :id
 
@@ -79,17 +65,24 @@ module Metronome
           trial_info: nil
         ); end
 
-        sig { returns(Metronome::Models::Customers::PlanListResponse::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              id: String,
+              custom_fields: T::Hash[Symbol, String],
+              plan_description: String,
+              plan_id: String,
+              plan_name: String,
+              starting_on: Time,
+              ending_before: Time,
+              net_payment_terms_days: Float,
+              trial_info: Metronome::Models::Customers::PlanListResponse::TrialInfo
+            }
+          )
+        end
+        def to_hash; end
 
         class TrialInfo < Metronome::BaseModel
-          Shape = T.type_alias do
-            {
-              ending_before: Time,
-              spending_caps: T::Array[Metronome::Models::Customers::PlanListResponse::TrialInfo::SpendingCap]
-            }
-          end
-
           sig { returns(Time) }
           attr_accessor :ending_before
 
@@ -104,14 +97,17 @@ module Metronome
           end
           def initialize(ending_before:, spending_caps:); end
 
-          sig { returns(Metronome::Models::Customers::PlanListResponse::TrialInfo::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                ending_before: Time,
+                spending_caps: T::Array[Metronome::Models::Customers::PlanListResponse::TrialInfo::SpendingCap]
+              }
+            )
+          end
+          def to_hash; end
 
           class SpendingCap < Metronome::BaseModel
-            Shape = T.type_alias do
-              {amount: Float, amount_remaining: Float, credit_type: Metronome::Models::CreditTypeData}
-            end
-
             sig { returns(Float) }
             attr_accessor :amount
 
@@ -130,8 +126,16 @@ module Metronome
             end
             def initialize(amount:, amount_remaining:, credit_type:); end
 
-            sig { returns(Metronome::Models::Customers::PlanListResponse::TrialInfo::SpendingCap::Shape) }
-            def to_h; end
+            sig do
+              override.returns(
+                {
+                  amount: Float,
+                  amount_remaining: Float,
+                  credit_type: Metronome::Models::CreditTypeData
+                }
+              )
+            end
+            def to_hash; end
           end
         end
       end

@@ -8,16 +8,6 @@ module Metronome
           extend Metronome::RequestParameters::Converter
           include Metronome::RequestParameters
 
-          Shape = T.type_alias do
-            T.all(
-              {
-                product_moves: T::Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove],
-                rate_card_id: String
-              },
-              Metronome::RequestParameters::Shape
-            )
-          end
-
           sig do
             returns(T::Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove])
           end
@@ -30,17 +20,21 @@ module Metronome
             params(
               product_moves: T::Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove],
               rate_card_id: String,
-              request_options: Metronome::RequestOpts
+              request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
             ).void
           end
           def initialize(product_moves:, rate_card_id:, request_options: {}); end
 
-          sig { returns(Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::Shape) }
-          def to_h; end
+          sig do
+            override.returns(
+              {
+                product_moves: T::Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove], rate_card_id: String, request_options: Metronome::RequestOptions
+              }
+            )
+          end
+          def to_hash; end
 
           class ProductMove < Metronome::BaseModel
-            Shape = T.type_alias { {position: Float, product_id: String} }
-
             sig { returns(Float) }
             attr_accessor :position
 
@@ -50,10 +44,8 @@ module Metronome
             sig { params(position: Float, product_id: String).void }
             def initialize(position:, product_id:); end
 
-            sig do
-              returns(Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove::Shape)
-            end
-            def to_h; end
+            sig { override.returns({position: Float, product_id: String}) }
+            def to_hash; end
           end
         end
       end

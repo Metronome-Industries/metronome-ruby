@@ -3,13 +3,6 @@
 module Metronome
   module Models
     class SchedulePointInTime < Metronome::BaseModel
-      Shape = T.type_alias do
-        {
-          credit_type: Metronome::Models::CreditTypeData,
-          schedule_items: T::Array[Metronome::Models::SchedulePointInTime::ScheduleItem]
-        }
-      end
-
       sig { returns(T.nilable(Metronome::Models::CreditTypeData)) }
       attr_reader :credit_type
 
@@ -30,14 +23,17 @@ module Metronome
       end
       def initialize(credit_type: nil, schedule_items: nil); end
 
-      sig { returns(Metronome::Models::SchedulePointInTime::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            credit_type: Metronome::Models::CreditTypeData,
+            schedule_items: T::Array[Metronome::Models::SchedulePointInTime::ScheduleItem]
+          }
+        )
+      end
+      def to_hash; end
 
       class ScheduleItem < Metronome::BaseModel
-        Shape = T.type_alias do
-          {id: String, amount: Float, invoice_id: String, quantity: Float, timestamp: Time, unit_price: Float}
-        end
-
         sig { returns(String) }
         attr_accessor :id
 
@@ -68,8 +64,19 @@ module Metronome
         end
         def initialize(id:, amount:, invoice_id:, quantity:, timestamp:, unit_price:); end
 
-        sig { returns(Metronome::Models::SchedulePointInTime::ScheduleItem::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              id: String,
+              amount: Float,
+              invoice_id: String,
+              quantity: Float,
+              timestamp: Time,
+              unit_price: Float
+            }
+          )
+        end
+        def to_hash; end
       end
     end
   end

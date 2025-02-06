@@ -6,22 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            name: String,
-            aggregation_key: String,
-            aggregation_type: Symbol,
-            custom_fields: T::Hash[Symbol, String],
-            event_type_filter: Metronome::Models::EventTypeFilter,
-            group_keys: T::Array[T::Array[String]],
-            property_filters: T::Array[Metronome::Models::PropertyFilter],
-            sql: String
-          },
-          Metronome::RequestParameters::Shape
-        )
-      end
-
       sig { returns(String) }
       attr_accessor :name
 
@@ -77,7 +61,7 @@ module Metronome
           group_keys: T::Array[T::Array[String]],
           property_filters: T::Array[Metronome::Models::PropertyFilter],
           sql: String,
-          request_options: Metronome::RequestOpts
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -92,8 +76,22 @@ module Metronome
         request_options: {}
       ); end
 
-      sig { returns(Metronome::Models::BillableMetricCreateParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            name: String,
+            aggregation_key: String,
+            aggregation_type: Symbol,
+            custom_fields: T::Hash[Symbol, String],
+            event_type_filter: Metronome::Models::EventTypeFilter,
+            group_keys: T::Array[T::Array[String]],
+            property_filters: T::Array[Metronome::Models::PropertyFilter],
+            sql: String,
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class AggregationType < Metronome::Enum
         abstract!

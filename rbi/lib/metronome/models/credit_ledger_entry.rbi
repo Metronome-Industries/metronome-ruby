@@ -3,18 +3,6 @@
 module Metronome
   module Models
     class CreditLedgerEntry < Metronome::BaseModel
-      Shape = T.type_alias do
-        {
-          amount: Float,
-          created_by: String,
-          credit_grant_id: String,
-          effective_at: Time,
-          reason: String,
-          running_balance: Float,
-          invoice_id: T.nilable(String)
-        }
-      end
-
       sig { returns(Float) }
       attr_accessor :amount
 
@@ -58,8 +46,20 @@ module Metronome
       )
       end
 
-      sig { returns(Metronome::Models::CreditLedgerEntry::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            amount: Float,
+            created_by: String,
+            credit_grant_id: String,
+            effective_at: Time,
+            reason: String,
+            running_balance: Float,
+            invoice_id: T.nilable(String)
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

@@ -6,7 +6,7 @@ module Metronome
       sig do
         params(
           id: String,
-          request_options: Metronome::RequestOpts
+          request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Metronome::Models::InvoiceRegenerateResponse)
       end
       def regenerate(id:, request_options: {}); end
@@ -14,7 +14,7 @@ module Metronome
       sig do
         params(
           id: String,
-          request_options: Metronome::RequestOpts
+          request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(Metronome::Models::InvoiceVoidResponse)
       end
       def void(id:, request_options: {}); end

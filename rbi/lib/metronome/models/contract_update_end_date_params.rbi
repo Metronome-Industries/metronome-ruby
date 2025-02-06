@@ -6,18 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            contract_id: String,
-            customer_id: String,
-            allow_ending_before_finalized_invoice: T::Boolean,
-            ending_before: Time
-          },
-          Metronome::RequestParameters::Shape
-        )
-      end
-
       sig { returns(String) }
       attr_accessor :contract_id
 
@@ -42,7 +30,7 @@ module Metronome
           customer_id: String,
           allow_ending_before_finalized_invoice: T::Boolean,
           ending_before: Time,
-          request_options: Metronome::RequestOpts
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -53,8 +41,18 @@ module Metronome
         request_options: {}
       ); end
 
-      sig { returns(Metronome::Models::ContractUpdateEndDateParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            contract_id: String,
+            customer_id: String,
+            allow_ending_before_finalized_invoice: T::Boolean,
+            ending_before: Time,
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

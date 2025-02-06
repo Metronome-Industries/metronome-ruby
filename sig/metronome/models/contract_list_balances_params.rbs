@@ -76,7 +76,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::contract_list_balances_params
+      def to_hash: -> Metronome::Models::contract_list_balances_params
     end
   end
 end

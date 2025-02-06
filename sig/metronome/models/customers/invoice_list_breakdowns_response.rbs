@@ -19,7 +19,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Customers::invoice_list_breakdowns_response
+        def to_hash: -> Metronome::Models::Customers::invoice_list_breakdowns_response
       end
     end
   end

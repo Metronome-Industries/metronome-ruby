@@ -6,20 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            contract_id: String,
-            customer_id: String,
-            issued_at: Time,
-            line_items: T::Array[Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem],
-            netsuite_invoice_header_end: Time,
-            netsuite_invoice_header_start: Time
-          },
-          Metronome::RequestParameters::Shape
-        )
-      end
-
       sig { returns(String) }
       attr_accessor :contract_id
 
@@ -52,7 +38,7 @@ module Metronome
           line_items: T::Array[Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem],
           netsuite_invoice_header_end: Time,
           netsuite_invoice_header_start: Time,
-          request_options: Metronome::RequestOpts
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -65,23 +51,22 @@ module Metronome
         request_options: {}
       ); end
 
-      sig { returns(Metronome::Models::ContractScheduleProServicesInvoiceParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            contract_id: String,
+            customer_id: String,
+            issued_at: Time,
+            line_items: T::Array[Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem],
+            netsuite_invoice_header_end: Time,
+            netsuite_invoice_header_start: Time,
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class LineItem < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            professional_service_id: String,
-            amendment_id: String,
-            amount: Float,
-            metadata: String,
-            netsuite_invoice_billing_end: Time,
-            netsuite_invoice_billing_start: Time,
-            quantity: Float,
-            unit_price: Float
-          }
-        end
-
         sig { returns(String) }
         attr_accessor :professional_service_id
 
@@ -150,8 +135,21 @@ module Metronome
           unit_price: nil
         ); end
 
-        sig { returns(Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              professional_service_id: String,
+              amendment_id: String,
+              amount: Float,
+              metadata: String,
+              netsuite_invoice_billing_end: Time,
+              netsuite_invoice_billing_start: Time,
+              quantity: Float,
+              unit_price: Float
+            }
+          )
+        end
+        def to_hash; end
       end
     end
   end

@@ -49,7 +49,7 @@ module Metronome
           ?Metronome::Models::usage_list_params | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::usage_list_params
+      def to_hash: -> Metronome::Models::usage_list_params
 
       type window_size = :HOUR | :DAY | :NONE
 
@@ -86,7 +86,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::UsageListParams::billable_metric
+        def to_hash: -> Metronome::Models::UsageListParams::billable_metric
 
         type group_by = { key: String, values: Array[String] }
 
@@ -104,7 +104,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::UsageListParams::BillableMetric::group_by
+          def to_hash: -> Metronome::Models::UsageListParams::BillableMetric::group_by
         end
       end
     end

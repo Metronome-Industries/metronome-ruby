@@ -25,7 +25,7 @@ module Metronome
           ?Metronome::Models::plan_list_params | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::plan_list_params
+      def to_hash: -> Metronome::Models::plan_list_params
     end
   end
 end

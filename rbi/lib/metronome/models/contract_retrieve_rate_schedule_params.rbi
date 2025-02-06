@@ -6,20 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            contract_id: String,
-            customer_id: String,
-            limit: Integer,
-            next_page: String,
-            at: Time,
-            selectors: T::Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector]
-          },
-          Metronome::RequestParameters::Shape
-        )
-      end
-
       sig { returns(String) }
       attr_accessor :contract_id
 
@@ -60,7 +46,7 @@ module Metronome
           next_page: String,
           at: Time,
           selectors: T::Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector],
-          request_options: Metronome::RequestOpts
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -74,19 +60,22 @@ module Metronome
       )
       end
 
-      sig { returns(Metronome::Models::ContractRetrieveRateScheduleParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            contract_id: String,
+            customer_id: String,
+            limit: Integer,
+            next_page: String,
+            at: Time,
+            selectors: T::Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector],
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class Selector < Metronome::BaseModel
-        Shape = T.type_alias do
-          {
-            partial_pricing_group_values: T::Hash[Symbol, String],
-            pricing_group_values: T::Hash[Symbol, String],
-            product_id: String,
-            product_tags: T::Array[String]
-          }
-        end
-
         sig { returns(T.nilable(T::Hash[Symbol, String])) }
         attr_reader :partial_pricing_group_values
 
@@ -127,8 +116,17 @@ module Metronome
         )
         end
 
-        sig { returns(Metronome::Models::ContractRetrieveRateScheduleParams::Selector::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              partial_pricing_group_values: T::Hash[Symbol, String],
+              pricing_group_values: T::Hash[Symbol, String],
+              product_id: String,
+              product_tags: T::Array[String]
+            }
+          )
+        end
+        def to_hash; end
       end
     end
   end

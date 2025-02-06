@@ -6,19 +6,6 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            customer_id: String,
-            include_archived: T::Boolean,
-            limit: Integer,
-            next_page: String,
-            on_current_plan: T::Boolean
-          },
-          Metronome::RequestParameters::Shape
-        )
-      end
-
       sig { returns(String) }
       attr_accessor :customer_id
 
@@ -53,7 +40,7 @@ module Metronome
           limit: Integer,
           next_page: String,
           on_current_plan: T::Boolean,
-          request_options: Metronome::RequestOpts
+          request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -66,8 +53,19 @@ module Metronome
       )
       end
 
-      sig { returns(Metronome::Models::CustomerListBillableMetricsParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            customer_id: String,
+            include_archived: T::Boolean,
+            limit: Integer,
+            next_page: String,
+            on_current_plan: T::Boolean,
+            request_options: Metronome::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

@@ -13,7 +13,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::contract_schedule_pro_services_invoice_response
+      def to_hash: -> Metronome::Models::contract_schedule_pro_services_invoice_response
     end
   end
 end

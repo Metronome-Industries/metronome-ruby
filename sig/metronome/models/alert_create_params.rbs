@@ -93,7 +93,7 @@ module Metronome
           ?Metronome::Models::alert_create_params | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::alert_create_params
+      def to_hash: -> Metronome::Models::alert_create_params
 
       type alert_type =
         :low_credit_balance_reached
@@ -155,7 +155,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::AlertCreateParams::custom_field_filter
+        def to_hash: -> Metronome::Models::AlertCreateParams::custom_field_filter
 
         type entity = :Contract | :Commit | :ContractCredit
 
@@ -182,7 +182,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::AlertCreateParams::group_key_filter
+        def to_hash: -> Metronome::Models::AlertCreateParams::group_key_filter
       end
     end
   end

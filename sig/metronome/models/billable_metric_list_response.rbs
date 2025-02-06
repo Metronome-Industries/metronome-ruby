@@ -71,7 +71,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::billable_metric_list_response
+      def to_hash: -> Metronome::Models::billable_metric_list_response
 
       type aggregation_type = :COUNT | :LATEST | :MAX | :SUM | :UNIQUE
 

@@ -11,7 +11,7 @@ module Metronome
       #
       #   @option params [String] :next_page Cursor that indicates where the next page of results should start.
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::CursorPage<Metronome::Models::PlanListResponse>]
       #
@@ -33,7 +33,7 @@ module Metronome
       #
       #   @option params [String] :plan_id
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::Models::PlanGetDetailsResponse]
       #
@@ -60,7 +60,7 @@ module Metronome
       #
       #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::CursorPage<Metronome::Models::PlanListChargesResponse>]
       #
@@ -100,7 +100,7 @@ module Metronome
       #     Multiple statuses can be OR'd together using commas, e.g. `active,ended`.
       #     **Note:** `ended,upcoming` combination is not yet supported.
       #
-      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Metronome::CursorPage<Metronome::Models::PlanListCustomersResponse>]
       #

@@ -136,7 +136,7 @@ module Metronome
         ) -> void
         | (?Metronome::Models::override | Metronome::BaseModel data) -> void
 
-      def to_h: -> Metronome::Models::override
+      def to_hash: -> Metronome::Models::override
 
       type override_specifier =
         {
@@ -193,7 +193,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Override::override_specifier
+        def to_hash: -> Metronome::Models::Override::override_specifier
       end
 
       type override_tier = { multiplier: Float, size: Float }
@@ -212,7 +212,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Override::override_tier
+        def to_hash: -> Metronome::Models::Override::override_tier
       end
 
       type overwrite_rate =
@@ -268,7 +268,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Override::overwrite_rate
+        def to_hash: -> Metronome::Models::Override::overwrite_rate
 
         type rate_type = :FLAT | :PERCENTAGE | :SUBSCRIPTION | :TIERED | :CUSTOM
 
@@ -296,7 +296,7 @@ module Metronome
             ?Metronome::Models::Override::product | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Override::product
+        def to_hash: -> Metronome::Models::Override::product
       end
 
       type rate_type = :FLAT | :PERCENTAGE | :SUBSCRIPTION | :TIERED | :CUSTOM

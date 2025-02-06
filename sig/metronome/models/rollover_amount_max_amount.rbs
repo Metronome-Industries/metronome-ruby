@@ -18,7 +18,7 @@ module Metronome
           | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::rollover_amount_max_amount
+      def to_hash: -> Metronome::Models::rollover_amount_max_amount
 
       type type_ = :MAX_AMOUNT
 

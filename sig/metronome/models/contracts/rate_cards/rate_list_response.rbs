@@ -63,7 +63,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Contracts::RateCards::rate_list_response
+          def to_hash: -> Metronome::Models::Contracts::RateCards::rate_list_response
 
           type commit_rate =
             {
@@ -94,7 +94,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::Contracts::RateCards::RateListResponse::commit_rate
+            def to_hash: -> Metronome::Models::Contracts::RateCards::RateListResponse::commit_rate
 
             type rate_type =
               :FLAT | :PERCENTAGE | :SUBSCRIPTION | :TIERED | :CUSTOM

@@ -47,7 +47,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Customers::invoice_add_charge_params
+        def to_hash: -> Metronome::Models::Customers::invoice_add_charge_params
       end
     end
   end

@@ -13,7 +13,7 @@ module Metronome
         #
         #   @option params [String] :customer_id The Metronome ID of the customer
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Metronome::Models::Customers::AlertRetrieveResponse]
         #
@@ -39,7 +39,7 @@ module Metronome
         #   @option params [Array<Symbol, Metronome::Models::Customers::AlertListParams::AlertStatus>] :alert_statuses Body param: Optionally filter by alert status. If absent, only enabled alerts
         #     will be returned.
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Metronome::Models::Customers::AlertListResponse]
         #
@@ -64,7 +64,7 @@ module Metronome
         #
         #   @option params [String] :customer_id The Metronome ID of the customer
         #
-        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [nil]
         #

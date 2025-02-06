@@ -40,7 +40,7 @@ module Metronome
           ?Metronome::Models::credit_ledger_entry | Metronome::BaseModel data
         ) -> void
 
-      def to_h: -> Metronome::Models::credit_ledger_entry
+      def to_hash: -> Metronome::Models::credit_ledger_entry
     end
   end
 end

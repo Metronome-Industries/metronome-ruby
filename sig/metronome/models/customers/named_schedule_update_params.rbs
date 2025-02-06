@@ -41,7 +41,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::Customers::named_schedule_update_params
+        def to_hash: -> Metronome::Models::Customers::named_schedule_update_params
       end
     end
   end

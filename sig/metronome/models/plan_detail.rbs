@@ -50,7 +50,7 @@ module Metronome
         ) -> void
         | (?Metronome::Models::plan_detail | Metronome::BaseModel data) -> void
 
-      def to_h: -> Metronome::Models::plan_detail
+      def to_hash: -> Metronome::Models::plan_detail
 
       type credit_grant =
         {
@@ -115,7 +115,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::PlanDetail::credit_grant
+        def to_hash: -> Metronome::Models::PlanDetail::credit_grant
       end
 
       type minimum =
@@ -146,7 +146,7 @@ module Metronome
             ?Metronome::Models::PlanDetail::minimum | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::PlanDetail::minimum
+        def to_hash: -> Metronome::Models::PlanDetail::minimum
       end
 
       type overage_rate =
@@ -178,7 +178,7 @@ module Metronome
             | Metronome::BaseModel data
           ) -> void
 
-        def to_h: -> Metronome::Models::PlanDetail::overage_rate
+        def to_hash: -> Metronome::Models::PlanDetail::overage_rate
       end
     end
   end

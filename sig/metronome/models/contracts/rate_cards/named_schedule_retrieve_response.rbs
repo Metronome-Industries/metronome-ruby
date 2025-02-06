@@ -19,7 +19,7 @@ module Metronome
               | Metronome::BaseModel data
             ) -> void
 
-          def to_h: -> Metronome::Models::Contracts::RateCards::named_schedule_retrieve_response
+          def to_hash: -> Metronome::Models::Contracts::RateCards::named_schedule_retrieve_response
 
           type data = { starting_at: Time, value: top, ending_before: Time }
 
@@ -39,7 +39,7 @@ module Metronome
                 | Metronome::BaseModel data
               ) -> void
 
-            def to_h: -> Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse::data
+            def to_hash: -> Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse::data
           end
         end
       end

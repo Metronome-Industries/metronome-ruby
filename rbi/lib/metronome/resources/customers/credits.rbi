@@ -20,7 +20,7 @@ module Metronome
             rate_type: Symbol,
             salesforce_opportunity_id: String,
             uniqueness_key: String,
-            request_options: Metronome::RequestOpts
+            request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::Models::Customers::CreditCreateResponse)
         end
         def create(
@@ -53,7 +53,7 @@ module Metronome
             include_ledgers: T::Boolean,
             next_page: String,
             starting_at: Time,
-            request_options: Metronome::RequestOpts
+            request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::Models::Customers::CreditListResponse)
         end
         def list(
@@ -75,7 +75,7 @@ module Metronome
             access_ending_before: Time,
             credit_id: String,
             customer_id: String,
-            request_options: Metronome::RequestOpts
+            request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           ).returns(Metronome::Models::Customers::CreditUpdateEndDateResponse)
         end
         def update_end_date(access_ending_before:, credit_id:, customer_id:, request_options: {}); end
