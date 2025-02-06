@@ -2361,7 +2361,7 @@ module Metronome
         #   attr_writer :description
 
         # @!attribute [r] ending_before
-        #   Determines when the contract will stop creating recurring commits. optional
+        #   determines when the contract will stop creating recurring commits. optional
         #
         #   @return [Time, nil]
         optional :ending_before, Time
@@ -2415,8 +2415,7 @@ module Metronome
 
         # @!attribute [r] rollover_fraction
         #   Will be passed down to the individual commits. This controls how much of an
-        #     individual unexpired commit will roll over upon contract transition. Must be
-        #     between 0 and 1.
+        #     individual unexpired commit will roll over upon contract transition
         #
         #   @return [Float, nil]
         optional :rollover_fraction, Float
@@ -2699,7 +2698,7 @@ module Metronome
         #   attr_writer :description
 
         # @!attribute [r] ending_before
-        #   Determines when the contract will stop creating recurring commits. optional
+        #   determines when the contract will stop creating recurring commits. optional
         #
         #   @return [Time, nil]
         optional :ending_before, Time
@@ -2753,8 +2752,7 @@ module Metronome
 
         # @!attribute [r] rollover_fraction
         #   Will be passed down to the individual commits. This controls how much of an
-        #     individual unexpired commit will roll over upon contract transition. Must be
-        #     between 0 and 1.
+        #     individual unexpired commit will roll over upon contract transition
         #
         #   @return [Float, nil]
         optional :rollover_fraction, Float
