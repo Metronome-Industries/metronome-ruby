@@ -515,7 +515,8 @@ module Metronome
 
         # @!attribute [r] rollover_fraction
         #   Will be passed down to the individual commits. This controls how much of an
-        #     individual unexpired commit will roll over upon contract transition
+        #     individual unexpired commit will roll over upon contract transition. Must be
+        #     between 0 and 1.
         #
         #   @return [Float, nil]
         optional :rollover_fraction, Float
@@ -906,7 +907,8 @@ module Metronome
 
         # @!attribute [r] rollover_fraction
         #   Will be passed down to the individual commits. This controls how much of an
-        #     individual unexpired commit will roll over upon contract transition
+        #     individual unexpired commit will roll over upon contract transition. Must be
+        #     between 0 and 1.
         #
         #   @return [Float, nil]
         optional :rollover_fraction, Float
