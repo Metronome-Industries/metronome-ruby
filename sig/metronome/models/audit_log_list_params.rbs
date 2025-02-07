@@ -67,7 +67,7 @@ module Metronome
         DATE_ASC: :date_asc
         DATE_DESC: :date_desc
 
-        def self.values: -> Array[Metronome::Models::AuditLogListParams::sort]
+        def self.values: -> ::Array[Metronome::Models::AuditLogListParams::sort]
       end
     end
   end

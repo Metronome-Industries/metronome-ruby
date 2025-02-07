@@ -149,7 +149,7 @@ module Metronome
             US_WEST_1: :"us-west-1"
             US_WEST_2: :"us-west-2"
 
-            def self.values: -> Array[Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::aws_region]
+            def self.values: -> ::Array[Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::aws_region]
           end
 
           type azure_subscription_status =
@@ -161,7 +161,7 @@ module Metronome
             SUSPENDED: :Suspended
             PENDING_FULFILLMENT_START: :PendingFulfillmentStart
 
-            def self.values: -> Array[Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::azure_subscription_status]
+            def self.values: -> ::Array[Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::azure_subscription_status]
           end
 
           type stripe_collection_method = :charge_automatically | :send_invoice
@@ -170,7 +170,7 @@ module Metronome
             CHARGE_AUTOMATICALLY: :charge_automatically
             SEND_INVOICE: :send_invoice
 
-            def self.values: -> Array[Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::stripe_collection_method]
+            def self.values: -> ::Array[Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::stripe_collection_method]
           end
         end
       end

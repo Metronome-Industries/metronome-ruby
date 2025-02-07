@@ -4,7 +4,7 @@ module Metronome
       {
         entity: Metronome::Models::CustomFieldDeleteValuesParams::entity,
         entity_id: String,
-        keys: Array[String]
+        keys: ::Array[String]
       }
       & Metronome::request_parameters
 
@@ -16,13 +16,13 @@ module Metronome
 
       attr_accessor entity_id: String
 
-      attr_accessor keys: Array[String]
+      attr_accessor keys: ::Array[String]
 
       def initialize:
         (
           entity: Metronome::Models::CustomFieldDeleteValuesParams::entity,
           entity_id: String,
-          keys: Array[String],
+          keys: ::Array[String],
           request_options: Metronome::request_opts
         ) -> void
         | (
@@ -70,7 +70,7 @@ module Metronome
         RATE_CARD: :rate_card
         SCHEDULED_CHARGE: :scheduled_charge
 
-        def self.values: -> Array[Metronome::Models::CustomFieldDeleteValuesParams::entity]
+        def self.values: -> ::Array[Metronome::Models::CustomFieldDeleteValuesParams::entity]
       end
     end
   end

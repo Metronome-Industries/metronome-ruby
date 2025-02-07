@@ -4,9 +4,9 @@ module Metronome
       {
         customer_id: String,
         dashboard: Metronome::Models::DashboardGetEmbeddableURLParams::dashboard,
-        bm_group_key_overrides: Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride],
-        color_overrides: Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride],
-        dashboard_options: Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption]
+        bm_group_key_overrides: ::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride],
+        color_overrides: ::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride],
+        dashboard_options: ::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption]
       }
       & Metronome::request_parameters
 
@@ -18,31 +18,31 @@ module Metronome
 
       attr_accessor dashboard: Metronome::Models::DashboardGetEmbeddableURLParams::dashboard
 
-      attr_reader bm_group_key_overrides: Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride]?
+      attr_reader bm_group_key_overrides: ::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride]?
 
       def bm_group_key_overrides=: (
-        Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride]
+        ::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride]
       ) -> void
 
-      attr_reader color_overrides: Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride]?
+      attr_reader color_overrides: ::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride]?
 
       def color_overrides=: (
-        Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride]
+        ::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride]
       ) -> void
 
-      attr_reader dashboard_options: Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption]?
+      attr_reader dashboard_options: ::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption]?
 
       def dashboard_options=: (
-        Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption]
+        ::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption]
       ) -> void
 
       def initialize:
         (
           customer_id: String,
           dashboard: Metronome::Models::DashboardGetEmbeddableURLParams::dashboard,
-          bm_group_key_overrides: Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride],
-          color_overrides: Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride],
-          dashboard_options: Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption],
+          bm_group_key_overrides: ::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride],
+          color_overrides: ::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride],
+          dashboard_options: ::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption],
           request_options: Metronome::request_opts
         ) -> void
         | (
@@ -59,14 +59,14 @@ module Metronome
         USAGE: :usage
         CREDITS: :credits
 
-        def self.values: -> Array[Metronome::Models::DashboardGetEmbeddableURLParams::dashboard]
+        def self.values: -> ::Array[Metronome::Models::DashboardGetEmbeddableURLParams::dashboard]
       end
 
       type bm_group_key_override =
         {
           group_key_name: String,
           display_name: String,
-          value_display_names: Hash[Symbol, top]
+          value_display_names: ::Hash[Symbol, top]
         }
 
       class BmGroupKeyOverride < Metronome::BaseModel
@@ -76,15 +76,15 @@ module Metronome
 
         def display_name=: (String) -> void
 
-        attr_reader value_display_names: Hash[Symbol, top]?
+        attr_reader value_display_names: ::Hash[Symbol, top]?
 
-        def value_display_names=: (Hash[Symbol, top]) -> void
+        def value_display_names=: (::Hash[Symbol, top]) -> void
 
         def initialize:
           (
             group_key_name: String,
             display_name: String,
-            value_display_names: Hash[Symbol, top]
+            value_display_names: ::Hash[Symbol, top]
           ) -> void
           | (
             ?Metronome::Models::DashboardGetEmbeddableURLParams::bm_group_key_override
@@ -165,7 +165,7 @@ module Metronome
           PRIMARY_GREEN: :Primary_green
           PRIMARY_RED: :Primary_red
 
-          def self.values: -> Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride::name_]
+          def self.values: -> ::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride::name_]
         end
       end
 

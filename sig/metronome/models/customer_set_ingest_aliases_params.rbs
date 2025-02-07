@@ -1,7 +1,7 @@
 module Metronome
   module Models
     type customer_set_ingest_aliases_params =
-      { customer_id: String, ingest_aliases: Array[String] }
+      { customer_id: String, ingest_aliases: ::Array[String] }
       & Metronome::request_parameters
 
     class CustomerSetIngestAliasesParams < Metronome::BaseModel
@@ -10,12 +10,12 @@ module Metronome
 
       attr_accessor customer_id: String
 
-      attr_accessor ingest_aliases: Array[String]
+      attr_accessor ingest_aliases: ::Array[String]
 
       def initialize:
         (
           customer_id: String,
-          ingest_aliases: Array[String],
+          ingest_aliases: ::Array[String],
           request_options: Metronome::request_opts
         ) -> void
         | (

@@ -7,7 +7,7 @@ module Metronome
         product_id: String,
         quantity: Float,
         unit_price: Float,
-        custom_fields: Hash[Symbol, String],
+        custom_fields: ::Hash[Symbol, String],
         description: String,
         netsuite_sales_order_id: String
       }
@@ -23,9 +23,9 @@ module Metronome
 
       attr_accessor unit_price: Float
 
-      attr_reader custom_fields: Hash[Symbol, String]?
+      attr_reader custom_fields: ::Hash[Symbol, String]?
 
-      def custom_fields=: (Hash[Symbol, String]) -> void
+      def custom_fields=: (::Hash[Symbol, String]) -> void
 
       attr_reader description: String?
 
@@ -42,7 +42,7 @@ module Metronome
           product_id: String,
           quantity: Float,
           unit_price: Float,
-          custom_fields: Hash[Symbol, String],
+          custom_fields: ::Hash[Symbol, String],
           description: String,
           netsuite_sales_order_id: String
         ) -> void

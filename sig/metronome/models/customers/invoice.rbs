@@ -6,25 +6,25 @@ module Metronome
           id: String,
           credit_type: Metronome::Models::CreditTypeData,
           customer_id: String,
-          line_items: Array[Metronome::Models::Customers::Invoice::LineItem],
+          line_items: ::Array[Metronome::Models::Customers::Invoice::LineItem],
           status: String,
           total: Float,
           type: String,
           amendment_id: String,
           billable_status: Metronome::Models::Customers::Invoice::billable_status,
-          contract_custom_fields: Hash[Symbol, String],
+          contract_custom_fields: ::Hash[Symbol, String],
           contract_id: String,
           correction_record: Metronome::Models::Customers::Invoice::CorrectionRecord,
           created_at: Time,
-          custom_fields: Hash[Symbol, top],
-          customer_custom_fields: Hash[Symbol, String],
+          custom_fields: ::Hash[Symbol, top],
+          customer_custom_fields: ::Hash[Symbol, String],
           end_timestamp: Time,
           external_invoice: Metronome::Models::Customers::Invoice::ExternalInvoice?,
-          invoice_adjustments: Array[Metronome::Models::Customers::Invoice::InvoiceAdjustment],
+          invoice_adjustments: ::Array[Metronome::Models::Customers::Invoice::InvoiceAdjustment],
           issued_at: Time,
           net_payment_terms_days: Float,
           netsuite_sales_order_id: String,
-          plan_custom_fields: Hash[Symbol, String],
+          plan_custom_fields: ::Hash[Symbol, String],
           plan_id: String,
           plan_name: String,
           reseller_royalty: Metronome::Models::Customers::Invoice::ResellerRoyalty,
@@ -40,7 +40,7 @@ module Metronome
 
         attr_accessor customer_id: String
 
-        attr_accessor line_items: Array[Metronome::Models::Customers::Invoice::LineItem]
+        attr_accessor line_items: ::Array[Metronome::Models::Customers::Invoice::LineItem]
 
         attr_accessor status: String
 
@@ -58,9 +58,9 @@ module Metronome
           Metronome::Models::Customers::Invoice::billable_status
         ) -> void
 
-        attr_reader contract_custom_fields: Hash[Symbol, String]?
+        attr_reader contract_custom_fields: ::Hash[Symbol, String]?
 
-        def contract_custom_fields=: (Hash[Symbol, String]) -> void
+        def contract_custom_fields=: (::Hash[Symbol, String]) -> void
 
         attr_reader contract_id: String?
 
@@ -76,13 +76,13 @@ module Metronome
 
         def created_at=: (Time) -> void
 
-        attr_reader custom_fields: Hash[Symbol, top]?
+        attr_reader custom_fields: ::Hash[Symbol, top]?
 
-        def custom_fields=: (Hash[Symbol, top]) -> void
+        def custom_fields=: (::Hash[Symbol, top]) -> void
 
-        attr_reader customer_custom_fields: Hash[Symbol, String]?
+        attr_reader customer_custom_fields: ::Hash[Symbol, String]?
 
-        def customer_custom_fields=: (Hash[Symbol, String]) -> void
+        def customer_custom_fields=: (::Hash[Symbol, String]) -> void
 
         attr_reader end_timestamp: Time?
 
@@ -90,10 +90,10 @@ module Metronome
 
         attr_accessor external_invoice: Metronome::Models::Customers::Invoice::ExternalInvoice?
 
-        attr_reader invoice_adjustments: Array[Metronome::Models::Customers::Invoice::InvoiceAdjustment]?
+        attr_reader invoice_adjustments: ::Array[Metronome::Models::Customers::Invoice::InvoiceAdjustment]?
 
         def invoice_adjustments=: (
-          Array[Metronome::Models::Customers::Invoice::InvoiceAdjustment]
+          ::Array[Metronome::Models::Customers::Invoice::InvoiceAdjustment]
         ) -> void
 
         attr_reader issued_at: Time?
@@ -108,9 +108,9 @@ module Metronome
 
         def netsuite_sales_order_id=: (String) -> void
 
-        attr_reader plan_custom_fields: Hash[Symbol, String]?
+        attr_reader plan_custom_fields: ::Hash[Symbol, String]?
 
-        def plan_custom_fields=: (Hash[Symbol, String]) -> void
+        def plan_custom_fields=: (::Hash[Symbol, String]) -> void
 
         attr_reader plan_id: String?
 
@@ -143,25 +143,25 @@ module Metronome
             id: String,
             credit_type: Metronome::Models::CreditTypeData,
             customer_id: String,
-            line_items: Array[Metronome::Models::Customers::Invoice::LineItem],
+            line_items: ::Array[Metronome::Models::Customers::Invoice::LineItem],
             status: String,
             total: Float,
             type: String,
             amendment_id: String,
             billable_status: Metronome::Models::Customers::Invoice::billable_status,
-            contract_custom_fields: Hash[Symbol, String],
+            contract_custom_fields: ::Hash[Symbol, String],
             contract_id: String,
             correction_record: Metronome::Models::Customers::Invoice::CorrectionRecord,
             created_at: Time,
-            custom_fields: Hash[Symbol, top],
-            customer_custom_fields: Hash[Symbol, String],
+            custom_fields: ::Hash[Symbol, top],
+            customer_custom_fields: ::Hash[Symbol, String],
             end_timestamp: Time,
             external_invoice: Metronome::Models::Customers::Invoice::ExternalInvoice?,
-            invoice_adjustments: Array[Metronome::Models::Customers::Invoice::InvoiceAdjustment],
+            invoice_adjustments: ::Array[Metronome::Models::Customers::Invoice::InvoiceAdjustment],
             issued_at: Time,
             net_payment_terms_days: Float,
             netsuite_sales_order_id: String,
-            plan_custom_fields: Hash[Symbol, String],
+            plan_custom_fields: ::Hash[Symbol, String],
             plan_id: String,
             plan_name: String,
             reseller_royalty: Metronome::Models::Customers::Invoice::ResellerRoyalty,
@@ -181,13 +181,13 @@ module Metronome
             name: String,
             total: Float,
             applied_commit_or_credit: Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit,
-            commit_custom_fields: Hash[Symbol, String],
+            commit_custom_fields: ::Hash[Symbol, String],
             commit_id: String,
             commit_netsuite_item_id: String,
             commit_netsuite_sales_order_id: String,
             commit_segment_id: String,
             commit_type: String,
-            custom_fields: Hash[Symbol, String],
+            custom_fields: ::Hash[Symbol, String],
             ending_before: Time,
             group_key: String,
             group_value: String?,
@@ -198,19 +198,19 @@ module Metronome
             netsuite_invoice_billing_start: Time,
             netsuite_item_id: String,
             postpaid_commit: Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit,
-            presentation_group_values: Hash[Symbol, String?],
-            pricing_group_values: Hash[Symbol, String],
-            product_custom_fields: Hash[Symbol, String],
+            presentation_group_values: ::Hash[Symbol, String?],
+            pricing_group_values: ::Hash[Symbol, String],
+            product_custom_fields: ::Hash[Symbol, String],
             product_id: String,
             product_type: String,
-            professional_service_custom_fields: Hash[Symbol, String],
+            professional_service_custom_fields: ::Hash[Symbol, String],
             professional_service_id: String,
             quantity: Float,
             reseller_type: Metronome::Models::Customers::Invoice::LineItem::reseller_type,
-            scheduled_charge_custom_fields: Hash[Symbol, String],
+            scheduled_charge_custom_fields: ::Hash[Symbol, String],
             scheduled_charge_id: String,
             starting_at: Time,
-            sub_line_items: Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem],
+            sub_line_items: ::Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem],
             tier: Metronome::Models::Customers::Invoice::LineItem::Tier,
             unit_price: Float
           }
@@ -228,9 +228,9 @@ module Metronome
             Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit
           ) -> void
 
-          attr_reader commit_custom_fields: Hash[Symbol, String]?
+          attr_reader commit_custom_fields: ::Hash[Symbol, String]?
 
-          def commit_custom_fields=: (Hash[Symbol, String]) -> void
+          def commit_custom_fields=: (::Hash[Symbol, String]) -> void
 
           attr_reader commit_id: String?
 
@@ -252,9 +252,9 @@ module Metronome
 
           def commit_type=: (String) -> void
 
-          attr_reader custom_fields: Hash[Symbol, String]?
+          attr_reader custom_fields: ::Hash[Symbol, String]?
 
-          def custom_fields=: (Hash[Symbol, String]) -> void
+          def custom_fields=: (::Hash[Symbol, String]) -> void
 
           attr_reader ending_before: Time?
 
@@ -296,17 +296,17 @@ module Metronome
             Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit
           ) -> void
 
-          attr_reader presentation_group_values: Hash[Symbol, String?]?
+          attr_reader presentation_group_values: ::Hash[Symbol, String?]?
 
-          def presentation_group_values=: (Hash[Symbol, String?]) -> void
+          def presentation_group_values=: (::Hash[Symbol, String?]) -> void
 
-          attr_reader pricing_group_values: Hash[Symbol, String]?
+          attr_reader pricing_group_values: ::Hash[Symbol, String]?
 
-          def pricing_group_values=: (Hash[Symbol, String]) -> void
+          def pricing_group_values=: (::Hash[Symbol, String]) -> void
 
-          attr_reader product_custom_fields: Hash[Symbol, String]?
+          attr_reader product_custom_fields: ::Hash[Symbol, String]?
 
-          def product_custom_fields=: (Hash[Symbol, String]) -> void
+          def product_custom_fields=: (::Hash[Symbol, String]) -> void
 
           attr_reader product_id: String?
 
@@ -316,10 +316,10 @@ module Metronome
 
           def product_type=: (String) -> void
 
-          attr_reader professional_service_custom_fields: Hash[Symbol, String]?
+          attr_reader professional_service_custom_fields: ::Hash[Symbol, String]?
 
           def professional_service_custom_fields=: (
-            Hash[Symbol, String]
+            ::Hash[Symbol, String]
           ) -> void
 
           attr_reader professional_service_id: String?
@@ -336,9 +336,9 @@ module Metronome
             Metronome::Models::Customers::Invoice::LineItem::reseller_type
           ) -> void
 
-          attr_reader scheduled_charge_custom_fields: Hash[Symbol, String]?
+          attr_reader scheduled_charge_custom_fields: ::Hash[Symbol, String]?
 
-          def scheduled_charge_custom_fields=: (Hash[Symbol, String]) -> void
+          def scheduled_charge_custom_fields=: (::Hash[Symbol, String]) -> void
 
           attr_reader scheduled_charge_id: String?
 
@@ -348,10 +348,10 @@ module Metronome
 
           def starting_at=: (Time) -> void
 
-          attr_reader sub_line_items: Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem]?
+          attr_reader sub_line_items: ::Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem]?
 
           def sub_line_items=: (
-            Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem]
+            ::Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem]
           ) -> void
 
           attr_reader tier: Metronome::Models::Customers::Invoice::LineItem::Tier?
@@ -370,13 +370,13 @@ module Metronome
               name: String,
               total: Float,
               applied_commit_or_credit: Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit,
-              commit_custom_fields: Hash[Symbol, String],
+              commit_custom_fields: ::Hash[Symbol, String],
               commit_id: String,
               commit_netsuite_item_id: String,
               commit_netsuite_sales_order_id: String,
               commit_segment_id: String,
               commit_type: String,
-              custom_fields: Hash[Symbol, String],
+              custom_fields: ::Hash[Symbol, String],
               ending_before: Time,
               group_key: String,
               group_value: String?,
@@ -387,19 +387,19 @@ module Metronome
               netsuite_invoice_billing_start: Time,
               netsuite_item_id: String,
               postpaid_commit: Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit,
-              presentation_group_values: Hash[Symbol, String?],
-              pricing_group_values: Hash[Symbol, String],
-              product_custom_fields: Hash[Symbol, String],
+              presentation_group_values: ::Hash[Symbol, String?],
+              pricing_group_values: ::Hash[Symbol, String],
+              product_custom_fields: ::Hash[Symbol, String],
               product_id: String,
               product_type: String,
-              professional_service_custom_fields: Hash[Symbol, String],
+              professional_service_custom_fields: ::Hash[Symbol, String],
               professional_service_id: String,
               quantity: Float,
               reseller_type: Metronome::Models::Customers::Invoice::LineItem::reseller_type,
-              scheduled_charge_custom_fields: Hash[Symbol, String],
+              scheduled_charge_custom_fields: ::Hash[Symbol, String],
               scheduled_charge_id: String,
               starting_at: Time,
-              sub_line_items: Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem],
+              sub_line_items: ::Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem],
               tier: Metronome::Models::Customers::Invoice::LineItem::Tier,
               unit_price: Float
             ) -> void
@@ -440,7 +440,7 @@ module Metronome
               POSTPAID: :POSTPAID
               CREDIT: :CREDIT
 
-              def self.values: -> Array[Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit::type_]
+              def self.values: -> ::Array[Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit::type_]
             end
           end
 
@@ -467,12 +467,12 @@ module Metronome
             GCP: :GCP
             GCP_PRO_SERVICE: :GCP_PRO_SERVICE
 
-            def self.values: -> Array[Metronome::Models::Customers::Invoice::LineItem::reseller_type]
+            def self.values: -> ::Array[Metronome::Models::Customers::Invoice::LineItem::reseller_type]
           end
 
           type sub_line_item =
             {
-              custom_fields: Hash[Symbol, String],
+              custom_fields: ::Hash[Symbol, String],
               name: String,
               quantity: Float,
               subtotal: Float,
@@ -482,11 +482,11 @@ module Metronome
               price: Float,
               start_date: Time,
               tier_period: Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod,
-              tiers: Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]
+              tiers: ::Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]
             }
 
           class SubLineItem < Metronome::BaseModel
-            attr_accessor custom_fields: Hash[Symbol, String]
+            attr_accessor custom_fields: ::Hash[Symbol, String]
 
             attr_accessor name: String
 
@@ -520,15 +520,15 @@ module Metronome
               Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod
             ) -> void
 
-            attr_reader tiers: Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]?
+            attr_reader tiers: ::Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]?
 
             def tiers=: (
-              Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]
+              ::Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]
             ) -> void
 
             def initialize:
               (
-                custom_fields: Hash[Symbol, String],
+                custom_fields: ::Hash[Symbol, String],
                 name: String,
                 quantity: Float,
                 subtotal: Float,
@@ -538,7 +538,7 @@ module Metronome
                 price: Float,
                 start_date: Time,
                 tier_period: Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod,
-                tiers: Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]
+                tiers: ::Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]
               ) -> void
               | (
                 ?Metronome::Models::Customers::Invoice::LineItem::sub_line_item
@@ -625,7 +625,7 @@ module Metronome
           BILLABLE: :billable
           UNBILLABLE: :unbillable
 
-          def self.values: -> Array[Metronome::Models::Customers::Invoice::billable_status]
+          def self.values: -> ::Array[Metronome::Models::Customers::Invoice::billable_status]
         end
 
         type correction_record =
@@ -722,7 +722,7 @@ module Metronome
               WORKDAY: :workday
               GCP_MARKETPLACE: :gcp_marketplace
 
-              def self.values: -> Array[Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type]
+              def self.values: -> ::Array[Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type]
             end
 
             type external_status =
@@ -751,7 +751,7 @@ module Metronome
               SENT: :SENT
               QUEUED: :QUEUED
 
-              def self.values: -> Array[Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status]
+              def self.values: -> ::Array[Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status]
             end
           end
         end
@@ -815,7 +815,7 @@ module Metronome
             WORKDAY: :workday
             GCP_MARKETPLACE: :gcp_marketplace
 
-            def self.values: -> Array[Metronome::Models::Customers::Invoice::ExternalInvoice::billing_provider_type]
+            def self.values: -> ::Array[Metronome::Models::Customers::Invoice::ExternalInvoice::billing_provider_type]
           end
 
           type external_status =
@@ -844,7 +844,7 @@ module Metronome
             SENT: :SENT
             QUEUED: :QUEUED
 
-            def self.values: -> Array[Metronome::Models::Customers::Invoice::ExternalInvoice::external_status]
+            def self.values: -> ::Array[Metronome::Models::Customers::Invoice::ExternalInvoice::external_status]
           end
         end
 
@@ -853,7 +853,7 @@ module Metronome
             credit_type: Metronome::Models::CreditTypeData,
             name: String,
             total: Float,
-            credit_grant_custom_fields: Hash[Symbol, String],
+            credit_grant_custom_fields: ::Hash[Symbol, String],
             credit_grant_id: String
           }
 
@@ -864,9 +864,9 @@ module Metronome
 
           attr_accessor total: Float
 
-          attr_reader credit_grant_custom_fields: Hash[Symbol, String]?
+          attr_reader credit_grant_custom_fields: ::Hash[Symbol, String]?
 
-          def credit_grant_custom_fields=: (Hash[Symbol, String]) -> void
+          def credit_grant_custom_fields=: (::Hash[Symbol, String]) -> void
 
           attr_reader credit_grant_id: String?
 
@@ -877,7 +877,7 @@ module Metronome
               credit_type: Metronome::Models::CreditTypeData,
               name: String,
               total: Float,
-              credit_grant_custom_fields: Hash[Symbol, String],
+              credit_grant_custom_fields: ::Hash[Symbol, String],
               credit_grant_id: String
             ) -> void
             | (
@@ -939,7 +939,7 @@ module Metronome
             GCP: :GCP
             GCP_PRO_SERVICE: :GCP_PRO_SERVICE
 
-            def self.values: -> Array[Metronome::Models::Customers::Invoice::ResellerRoyalty::reseller_type]
+            def self.values: -> ::Array[Metronome::Models::Customers::Invoice::ResellerRoyalty::reseller_type]
           end
 
           type aws_options =

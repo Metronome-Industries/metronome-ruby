@@ -7,10 +7,10 @@ module Metronome
           customer_id: String,
           priority: Float,
           product_id: String,
-          applicable_contract_ids: Array[String],
-          applicable_product_ids: Array[String],
-          applicable_product_tags: Array[String],
-          custom_fields: Hash[Symbol, String],
+          applicable_contract_ids: ::Array[String],
+          applicable_product_ids: ::Array[String],
+          applicable_product_tags: ::Array[String],
+          custom_fields: ::Hash[Symbol, String],
           description: String,
           name: String,
           netsuite_sales_order_id: String,
@@ -32,21 +32,21 @@ module Metronome
 
         attr_accessor product_id: String
 
-        attr_reader applicable_contract_ids: Array[String]?
+        attr_reader applicable_contract_ids: ::Array[String]?
 
-        def applicable_contract_ids=: (Array[String]) -> void
+        def applicable_contract_ids=: (::Array[String]) -> void
 
-        attr_reader applicable_product_ids: Array[String]?
+        attr_reader applicable_product_ids: ::Array[String]?
 
-        def applicable_product_ids=: (Array[String]) -> void
+        def applicable_product_ids=: (::Array[String]) -> void
 
-        attr_reader applicable_product_tags: Array[String]?
+        attr_reader applicable_product_tags: ::Array[String]?
 
-        def applicable_product_tags=: (Array[String]) -> void
+        def applicable_product_tags=: (::Array[String]) -> void
 
-        attr_reader custom_fields: Hash[Symbol, String]?
+        attr_reader custom_fields: ::Hash[Symbol, String]?
 
-        def custom_fields=: (Hash[Symbol, String]) -> void
+        def custom_fields=: (::Hash[Symbol, String]) -> void
 
         attr_reader description: String?
 
@@ -80,10 +80,10 @@ module Metronome
             customer_id: String,
             priority: Float,
             product_id: String,
-            applicable_contract_ids: Array[String],
-            applicable_product_ids: Array[String],
-            applicable_product_tags: Array[String],
-            custom_fields: Hash[Symbol, String],
+            applicable_contract_ids: ::Array[String],
+            applicable_product_ids: ::Array[String],
+            applicable_product_tags: ::Array[String],
+            custom_fields: ::Hash[Symbol, String],
             description: String,
             name: String,
             netsuite_sales_order_id: String,
@@ -101,12 +101,12 @@ module Metronome
 
         type access_schedule =
           {
-            schedule_items: Array[Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem],
+            schedule_items: ::Array[Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem],
             credit_type_id: String
           }
 
         class AccessSchedule < Metronome::BaseModel
-          attr_accessor schedule_items: Array[Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem]
+          attr_accessor schedule_items: ::Array[Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem]
 
           attr_reader credit_type_id: String?
 
@@ -114,7 +114,7 @@ module Metronome
 
           def initialize:
             (
-              schedule_items: Array[Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem],
+              schedule_items: ::Array[Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem],
               credit_type_id: String
             ) -> void
             | (
@@ -151,7 +151,7 @@ module Metronome
           COMMIT_RATE: :COMMIT_RATE
           LIST_RATE: :LIST_RATE
 
-          def self.values: -> Array[Metronome::Models::Customers::CreditCreateParams::rate_type]
+          def self.values: -> ::Array[Metronome::Models::Customers::CreditCreateParams::rate_type]
         end
       end
     end

@@ -3,20 +3,20 @@ module Metronome
     class Alerts
       def create:
         (
-          Metronome::Models::AlertCreateParams | Hash[Symbol, top] params
+          Metronome::Models::AlertCreateParams | ::Hash[Symbol, top] params
         ) -> Metronome::Models::AlertCreateResponse
         | (
           alert_type: Metronome::Models::AlertCreateParams::alert_type,
           name: String,
           threshold: Float,
           billable_metric_id: String,
-          credit_grant_type_filters: Array[String],
+          credit_grant_type_filters: ::Array[String],
           credit_type_id: String,
-          custom_field_filters: Array[Metronome::Models::AlertCreateParams::CustomFieldFilter],
+          custom_field_filters: ::Array[Metronome::Models::AlertCreateParams::CustomFieldFilter],
           customer_id: String,
           evaluate_on_create: bool,
           group_key_filter: Metronome::Models::AlertCreateParams::GroupKeyFilter,
-          invoice_types_filter: Array[String],
+          invoice_types_filter: ::Array[String],
           plan_id: String,
           uniqueness_key: String,
           request_options: Metronome::request_opts
@@ -24,7 +24,7 @@ module Metronome
 
       def archive:
         (
-          Metronome::Models::AlertArchiveParams | Hash[Symbol, top] params
+          Metronome::Models::AlertArchiveParams | ::Hash[Symbol, top] params
         ) -> Metronome::Models::AlertArchiveResponse
         | (
           id: String,

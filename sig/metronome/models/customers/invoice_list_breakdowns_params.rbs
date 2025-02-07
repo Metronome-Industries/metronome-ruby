@@ -85,7 +85,7 @@ module Metronome
           DATE_ASC: :date_asc
           DATE_DESC: :date_desc
 
-          def self.values: -> Array[Metronome::Models::Customers::InvoiceListBreakdownsParams::sort]
+          def self.values: -> ::Array[Metronome::Models::Customers::InvoiceListBreakdownsParams::sort]
         end
 
         type window_size = :HOUR | :DAY
@@ -94,7 +94,7 @@ module Metronome
           HOUR: :HOUR
           DAY: :DAY
 
-          def self.values: -> Array[Metronome::Models::Customers::InvoiceListBreakdownsParams::window_size]
+          def self.values: -> ::Array[Metronome::Models::Customers::InvoiceListBreakdownsParams::window_size]
         end
       end
     end

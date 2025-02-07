@@ -1,13 +1,13 @@
 module Metronome
   module Models
     type contract_create_historical_invoices_response =
-      { data: Array[Metronome::Models::Customers::Invoice] }
+      { data: ::Array[Metronome::Models::Customers::Invoice] }
 
     class ContractCreateHistoricalInvoicesResponse < Metronome::BaseModel
-      attr_accessor data: Array[Metronome::Models::Customers::Invoice]
+      attr_accessor data: ::Array[Metronome::Models::Customers::Invoice]
 
       def initialize:
-        (data: Array[Metronome::Models::Customers::Invoice]) -> void
+        (data: ::Array[Metronome::Models::Customers::Invoice]) -> void
         | (
           ?Metronome::Models::contract_create_historical_invoices_response
           | Metronome::BaseModel data

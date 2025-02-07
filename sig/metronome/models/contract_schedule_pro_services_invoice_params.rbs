@@ -5,7 +5,7 @@ module Metronome
         contract_id: String,
         customer_id: String,
         issued_at: Time,
-        line_items: Array[Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem],
+        line_items: ::Array[Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem],
         netsuite_invoice_header_end: Time,
         netsuite_invoice_header_start: Time
       }
@@ -21,7 +21,7 @@ module Metronome
 
       attr_accessor issued_at: Time
 
-      attr_accessor line_items: Array[Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem]
+      attr_accessor line_items: ::Array[Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem]
 
       attr_reader netsuite_invoice_header_end: Time?
 
@@ -36,7 +36,7 @@ module Metronome
           contract_id: String,
           customer_id: String,
           issued_at: Time,
-          line_items: Array[Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem],
+          line_items: ::Array[Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem],
           netsuite_invoice_header_end: Time,
           netsuite_invoice_header_start: Time,
           request_options: Metronome::request_opts

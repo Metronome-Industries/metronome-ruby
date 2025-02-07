@@ -4,9 +4,9 @@ module Metronome
       {
         limit: Integer,
         next_page: String,
-        credit_grant_ids: Array[String],
-        credit_type_ids: Array[String],
-        customer_ids: Array[String],
+        credit_grant_ids: ::Array[String],
+        credit_type_ids: ::Array[String],
+        customer_ids: ::Array[String],
         effective_before: Time,
         not_expiring_before: Time
       }
@@ -24,17 +24,17 @@ module Metronome
 
       def next_page=: (String) -> void
 
-      attr_reader credit_grant_ids: Array[String]?
+      attr_reader credit_grant_ids: ::Array[String]?
 
-      def credit_grant_ids=: (Array[String]) -> void
+      def credit_grant_ids=: (::Array[String]) -> void
 
-      attr_reader credit_type_ids: Array[String]?
+      attr_reader credit_type_ids: ::Array[String]?
 
-      def credit_type_ids=: (Array[String]) -> void
+      def credit_type_ids=: (::Array[String]) -> void
 
-      attr_reader customer_ids: Array[String]?
+      attr_reader customer_ids: ::Array[String]?
 
-      def customer_ids=: (Array[String]) -> void
+      def customer_ids=: (::Array[String]) -> void
 
       attr_reader effective_before: Time?
 
@@ -48,9 +48,9 @@ module Metronome
         (
           limit: Integer,
           next_page: String,
-          credit_grant_ids: Array[String],
-          credit_type_ids: Array[String],
-          customer_ids: Array[String],
+          credit_grant_ids: ::Array[String],
+          credit_type_ids: ::Array[String],
+          customer_ids: ::Array[String],
           effective_before: Time,
           not_expiring_before: Time,
           request_options: Metronome::request_opts

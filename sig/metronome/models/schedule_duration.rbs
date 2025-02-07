@@ -2,12 +2,12 @@ module Metronome
   module Models
     type schedule_duration =
       {
-        schedule_items: Array[Metronome::Models::ScheduleDuration::ScheduleItem],
+        schedule_items: ::Array[Metronome::Models::ScheduleDuration::ScheduleItem],
         credit_type: Metronome::Models::CreditTypeData
       }
 
     class ScheduleDuration < Metronome::BaseModel
-      attr_accessor schedule_items: Array[Metronome::Models::ScheduleDuration::ScheduleItem]
+      attr_accessor schedule_items: ::Array[Metronome::Models::ScheduleDuration::ScheduleItem]
 
       attr_reader credit_type: Metronome::Models::CreditTypeData?
 
@@ -15,7 +15,7 @@ module Metronome
 
       def initialize:
         (
-          schedule_items: Array[Metronome::Models::ScheduleDuration::ScheduleItem],
+          schedule_items: ::Array[Metronome::Models::ScheduleDuration::ScheduleItem],
           credit_type: Metronome::Models::CreditTypeData
         ) -> void
         | (

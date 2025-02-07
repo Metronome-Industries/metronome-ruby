@@ -3,10 +3,10 @@ module Metronome
     type customer_detail =
       {
         id: String,
-        custom_fields: Hash[Symbol, String],
+        custom_fields: ::Hash[Symbol, String],
         customer_config: Metronome::Models::CustomerDetail::CustomerConfig,
         external_id: String,
-        ingest_aliases: Array[String],
+        ingest_aliases: ::Array[String],
         name: String,
         current_billable_status: Metronome::Models::CustomerDetail::CurrentBillableStatus
       }
@@ -14,13 +14,13 @@ module Metronome
     class CustomerDetail < Metronome::BaseModel
       attr_accessor id: String
 
-      attr_accessor custom_fields: Hash[Symbol, String]
+      attr_accessor custom_fields: ::Hash[Symbol, String]
 
       attr_accessor customer_config: Metronome::Models::CustomerDetail::CustomerConfig
 
       attr_accessor external_id: String
 
-      attr_accessor ingest_aliases: Array[String]
+      attr_accessor ingest_aliases: ::Array[String]
 
       attr_accessor name: String
 
@@ -33,10 +33,10 @@ module Metronome
       def initialize:
         (
           id: String,
-          custom_fields: Hash[Symbol, String],
+          custom_fields: ::Hash[Symbol, String],
           customer_config: Metronome::Models::CustomerDetail::CustomerConfig,
           external_id: String,
-          ingest_aliases: Array[String],
+          ingest_aliases: ::Array[String],
           name: String,
           current_billable_status: Metronome::Models::CustomerDetail::CurrentBillableStatus
         ) -> void
@@ -90,7 +90,7 @@ module Metronome
           BILLABLE: :billable
           UNBILLABLE: :unbillable
 
-          def self.values: -> Array[Metronome::Models::CustomerDetail::CurrentBillableStatus::value]
+          def self.values: -> ::Array[Metronome::Models::CustomerDetail::CurrentBillableStatus::value]
         end
       end
     end

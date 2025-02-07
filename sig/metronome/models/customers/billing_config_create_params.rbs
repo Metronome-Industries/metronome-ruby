@@ -75,7 +75,7 @@ module Metronome
           WORKDAY: :workday
           GCP_MARKETPLACE: :gcp_marketplace
 
-          def self.values: -> Array[Metronome::Models::Customers::BillingConfigCreateParams::billing_provider_type]
+          def self.values: -> ::Array[Metronome::Models::Customers::BillingConfigCreateParams::billing_provider_type]
         end
 
         type aws_region =
@@ -132,7 +132,7 @@ module Metronome
           US_WEST_1: :"us-west-1"
           US_WEST_2: :"us-west-2"
 
-          def self.values: -> Array[Metronome::Models::Customers::BillingConfigCreateParams::aws_region]
+          def self.values: -> ::Array[Metronome::Models::Customers::BillingConfigCreateParams::aws_region]
         end
 
         type stripe_collection_method = :charge_automatically | :send_invoice
@@ -141,7 +141,7 @@ module Metronome
           CHARGE_AUTOMATICALLY: :charge_automatically
           SEND_INVOICE: :send_invoice
 
-          def self.values: -> Array[Metronome::Models::Customers::BillingConfigCreateParams::stripe_collection_method]
+          def self.values: -> ::Array[Metronome::Models::Customers::BillingConfigCreateParams::stripe_collection_method]
         end
       end
     end

@@ -5,16 +5,16 @@ module Metronome
         id: String,
         name: String,
         aggregate: String,
-        aggregate_keys: Array[String],
+        aggregate_keys: ::Array[String],
         aggregation_key: String,
         aggregation_type: Metronome::Models::CustomerListBillableMetricsResponse::aggregation_type,
         archived_at: Time,
-        custom_fields: Hash[Symbol, String],
+        custom_fields: ::Hash[Symbol, String],
         event_type_filter: Metronome::Models::EventTypeFilter,
-        filter: Hash[Symbol, top],
-        group_by: Array[String],
-        group_keys: Array[Array[String]],
-        property_filters: Array[Metronome::Models::PropertyFilter],
+        filter: ::Hash[Symbol, top],
+        group_by: ::Array[String],
+        group_keys: ::Array[::Array[String]],
+        property_filters: ::Array[Metronome::Models::PropertyFilter],
         sql: String
       }
 
@@ -27,9 +27,9 @@ module Metronome
 
       def aggregate=: (String) -> void
 
-      attr_reader aggregate_keys: Array[String]?
+      attr_reader aggregate_keys: ::Array[String]?
 
-      def aggregate_keys=: (Array[String]) -> void
+      def aggregate_keys=: (::Array[String]) -> void
 
       attr_reader aggregation_key: String?
 
@@ -45,29 +45,31 @@ module Metronome
 
       def archived_at=: (Time) -> void
 
-      attr_reader custom_fields: Hash[Symbol, String]?
+      attr_reader custom_fields: ::Hash[Symbol, String]?
 
-      def custom_fields=: (Hash[Symbol, String]) -> void
+      def custom_fields=: (::Hash[Symbol, String]) -> void
 
       attr_reader event_type_filter: Metronome::Models::EventTypeFilter?
 
       def event_type_filter=: (Metronome::Models::EventTypeFilter) -> void
 
-      attr_reader filter: Hash[Symbol, top]?
+      attr_reader filter: ::Hash[Symbol, top]?
 
-      def filter=: (Hash[Symbol, top]) -> void
+      def filter=: (::Hash[Symbol, top]) -> void
 
-      attr_reader group_by: Array[String]?
+      attr_reader group_by: ::Array[String]?
 
-      def group_by=: (Array[String]) -> void
+      def group_by=: (::Array[String]) -> void
 
-      attr_reader group_keys: Array[Array[String]]?
+      attr_reader group_keys: ::Array[::Array[String]]?
 
-      def group_keys=: (Array[Array[String]]) -> void
+      def group_keys=: (::Array[::Array[String]]) -> void
 
-      attr_reader property_filters: Array[Metronome::Models::PropertyFilter]?
+      attr_reader property_filters: ::Array[Metronome::Models::PropertyFilter]?
 
-      def property_filters=: (Array[Metronome::Models::PropertyFilter]) -> void
+      def property_filters=: (
+        ::Array[Metronome::Models::PropertyFilter]
+      ) -> void
 
       attr_reader sql: String?
 
@@ -78,16 +80,16 @@ module Metronome
           id: String,
           name: String,
           aggregate: String,
-          aggregate_keys: Array[String],
+          aggregate_keys: ::Array[String],
           aggregation_key: String,
           aggregation_type: Metronome::Models::CustomerListBillableMetricsResponse::aggregation_type,
           archived_at: Time,
-          custom_fields: Hash[Symbol, String],
+          custom_fields: ::Hash[Symbol, String],
           event_type_filter: Metronome::Models::EventTypeFilter,
-          filter: Hash[Symbol, top],
-          group_by: Array[String],
-          group_keys: Array[Array[String]],
-          property_filters: Array[Metronome::Models::PropertyFilter],
+          filter: ::Hash[Symbol, top],
+          group_by: ::Array[String],
+          group_keys: ::Array[::Array[String]],
+          property_filters: ::Array[Metronome::Models::PropertyFilter],
           sql: String
         ) -> void
         | (
@@ -106,7 +108,7 @@ module Metronome
         SUM: :SUM
         UNIQUE: :UNIQUE
 
-        def self.values: -> Array[Metronome::Models::CustomerListBillableMetricsResponse::aggregation_type]
+        def self.values: -> ::Array[Metronome::Models::CustomerListBillableMetricsResponse::aggregation_type]
       end
     end
   end

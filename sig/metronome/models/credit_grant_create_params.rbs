@@ -9,10 +9,10 @@ module Metronome
         paid_amount: Metronome::Models::CreditGrantCreateParams::PaidAmount,
         priority: Float,
         credit_grant_type: String,
-        custom_fields: Hash[Symbol, String],
+        custom_fields: ::Hash[Symbol, String],
         effective_at: Time,
         invoice_date: Time,
-        product_ids: Array[String],
+        product_ids: ::Array[String],
         reason: String,
         rollover_settings: Metronome::Models::CreditGrantCreateParams::RolloverSettings,
         uniqueness_key: String
@@ -39,9 +39,9 @@ module Metronome
 
       def credit_grant_type=: (String) -> void
 
-      attr_reader custom_fields: Hash[Symbol, String]?
+      attr_reader custom_fields: ::Hash[Symbol, String]?
 
-      def custom_fields=: (Hash[Symbol, String]) -> void
+      def custom_fields=: (::Hash[Symbol, String]) -> void
 
       attr_reader effective_at: Time?
 
@@ -51,9 +51,9 @@ module Metronome
 
       def invoice_date=: (Time) -> void
 
-      attr_reader product_ids: Array[String]?
+      attr_reader product_ids: ::Array[String]?
 
-      def product_ids=: (Array[String]) -> void
+      def product_ids=: (::Array[String]) -> void
 
       attr_reader reason: String?
 
@@ -78,10 +78,10 @@ module Metronome
           paid_amount: Metronome::Models::CreditGrantCreateParams::PaidAmount,
           priority: Float,
           credit_grant_type: String,
-          custom_fields: Hash[Symbol, String],
+          custom_fields: ::Hash[Symbol, String],
           effective_at: Time,
           invoice_date: Time,
-          product_ids: Array[String],
+          product_ids: ::Array[String],
           reason: String,
           rollover_settings: Metronome::Models::CreditGrantCreateParams::RolloverSettings,
           uniqueness_key: String,

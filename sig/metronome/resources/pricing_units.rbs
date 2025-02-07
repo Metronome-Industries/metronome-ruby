@@ -3,7 +3,7 @@ module Metronome
     class PricingUnits
       def list:
         (
-          ?Metronome::Models::PricingUnitListParams | Hash[Symbol, top] params
+          ?Metronome::Models::PricingUnitListParams | ::Hash[Symbol, top] params
         ) -> Metronome::CursorPage[Metronome::Models::PricingUnitListResponse]
         | (
           limit: Integer,

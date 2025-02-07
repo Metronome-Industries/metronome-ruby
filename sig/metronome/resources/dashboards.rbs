@@ -4,14 +4,14 @@ module Metronome
       def get_embeddable_url:
         (
           Metronome::Models::DashboardGetEmbeddableURLParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Metronome::Models::DashboardGetEmbeddableURLResponse
         | (
           customer_id: String,
           dashboard: Metronome::Models::DashboardGetEmbeddableURLParams::dashboard,
-          bm_group_key_overrides: Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride],
-          color_overrides: Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride],
-          dashboard_options: Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption],
+          bm_group_key_overrides: ::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride],
+          color_overrides: ::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride],
+          dashboard_options: ::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption],
           request_options: Metronome::request_opts
         ) -> Metronome::Models::DashboardGetEmbeddableURLResponse
 

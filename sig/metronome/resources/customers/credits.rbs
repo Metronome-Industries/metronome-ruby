@@ -5,17 +5,17 @@ module Metronome
         def create:
           (
             Metronome::Models::Customers::CreditCreateParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Metronome::Models::Customers::CreditCreateResponse
           | (
             access_schedule: Metronome::Models::Customers::CreditCreateParams::AccessSchedule,
             customer_id: String,
             priority: Float,
             product_id: String,
-            applicable_contract_ids: Array[String],
-            applicable_product_ids: Array[String],
-            applicable_product_tags: Array[String],
-            custom_fields: Hash[Symbol, String],
+            applicable_contract_ids: ::Array[String],
+            applicable_product_ids: ::Array[String],
+            applicable_product_tags: ::Array[String],
+            custom_fields: ::Hash[Symbol, String],
             description: String,
             name: String,
             netsuite_sales_order_id: String,
@@ -28,7 +28,7 @@ module Metronome
         def list:
           (
             Metronome::Models::Customers::CreditListParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Metronome::Models::Customers::CreditListResponse
           | (
             customer_id: String,
@@ -47,7 +47,7 @@ module Metronome
         def update_end_date:
           (
             Metronome::Models::Customers::CreditUpdateEndDateParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Metronome::Models::Customers::CreditUpdateEndDateResponse
           | (
             access_ending_before: Time,

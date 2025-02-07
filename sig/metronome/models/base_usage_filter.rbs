@@ -1,12 +1,12 @@
 module Metronome
   module Models
     type base_usage_filter =
-      { group_key: String, group_values: Array[String], starting_at: Time }
+      { group_key: String, group_values: ::Array[String], starting_at: Time }
 
     class BaseUsageFilter < Metronome::BaseModel
       attr_accessor group_key: String
 
-      attr_accessor group_values: Array[String]
+      attr_accessor group_values: ::Array[String]
 
       attr_reader starting_at: Time?
 
@@ -15,7 +15,7 @@ module Metronome
       def initialize:
         (
           group_key: String,
-          group_values: Array[String],
+          group_values: ::Array[String],
           starting_at: Time
         ) -> void
         | (

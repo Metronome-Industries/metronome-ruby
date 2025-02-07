@@ -70,7 +70,7 @@ module Metronome
         RATE_CARD: :rate_card
         SCHEDULED_CHARGE: :scheduled_charge
 
-        def self.values: -> Array[Metronome::Models::CustomFieldAddKeyParams::entity]
+        def self.values: -> ::Array[Metronome::Models::CustomFieldAddKeyParams::entity]
       end
     end
   end

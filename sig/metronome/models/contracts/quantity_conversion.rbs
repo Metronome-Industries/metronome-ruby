@@ -36,7 +36,7 @@ module Metronome
           MULTIPLY: :MULTIPLY
           DIVIDE: :DIVIDE
 
-          def self.values: -> Array[Metronome::Models::Contracts::QuantityConversion::operation]
+          def self.values: -> ::Array[Metronome::Models::Contracts::QuantityConversion::operation]
         end
       end
     end

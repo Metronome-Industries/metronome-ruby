@@ -7,7 +7,7 @@ module Metronome
         limit: Integer,
         next_page: String,
         at: Time,
-        selectors: Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector]
+        selectors: ::Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector]
       }
       & Metronome::request_parameters
 
@@ -31,10 +31,10 @@ module Metronome
 
       def at=: (Time) -> void
 
-      attr_reader selectors: Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector]?
+      attr_reader selectors: ::Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector]?
 
       def selectors=: (
-        Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector]
+        ::Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector]
       ) -> void
 
       def initialize:
@@ -44,7 +44,7 @@ module Metronome
           limit: Integer,
           next_page: String,
           at: Time,
-          selectors: Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector],
+          selectors: ::Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector],
           request_options: Metronome::request_opts
         ) -> void
         | (
@@ -56,35 +56,35 @@ module Metronome
 
       type selector =
         {
-          partial_pricing_group_values: Hash[Symbol, String],
-          pricing_group_values: Hash[Symbol, String],
+          partial_pricing_group_values: ::Hash[Symbol, String],
+          pricing_group_values: ::Hash[Symbol, String],
           product_id: String,
-          product_tags: Array[String]
+          product_tags: ::Array[String]
         }
 
       class Selector < Metronome::BaseModel
-        attr_reader partial_pricing_group_values: Hash[Symbol, String]?
+        attr_reader partial_pricing_group_values: ::Hash[Symbol, String]?
 
-        def partial_pricing_group_values=: (Hash[Symbol, String]) -> void
+        def partial_pricing_group_values=: (::Hash[Symbol, String]) -> void
 
-        attr_reader pricing_group_values: Hash[Symbol, String]?
+        attr_reader pricing_group_values: ::Hash[Symbol, String]?
 
-        def pricing_group_values=: (Hash[Symbol, String]) -> void
+        def pricing_group_values=: (::Hash[Symbol, String]) -> void
 
         attr_reader product_id: String?
 
         def product_id=: (String) -> void
 
-        attr_reader product_tags: Array[String]?
+        attr_reader product_tags: ::Array[String]?
 
-        def product_tags=: (Array[String]) -> void
+        def product_tags=: (::Array[String]) -> void
 
         def initialize:
           (
-            partial_pricing_group_values: Hash[Symbol, String],
-            pricing_group_values: Hash[Symbol, String],
+            partial_pricing_group_values: ::Hash[Symbol, String],
+            pricing_group_values: ::Hash[Symbol, String],
             product_id: String,
-            product_tags: Array[String]
+            product_tags: ::Array[String]
           ) -> void
           | (
             ?Metronome::Models::ContractRetrieveRateScheduleParams::selector

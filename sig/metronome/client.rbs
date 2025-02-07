@@ -36,7 +36,7 @@ module Metronome
 
     attr_reader contracts: Metronome::Resources::Contracts
 
-    private def auth_headers: -> Hash[String, String]
+    private def auth_headers: -> ::Hash[String, String]
 
     def initialize: (
       base_url: String?,

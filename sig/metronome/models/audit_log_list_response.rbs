@@ -114,7 +114,7 @@ module Metronome
         FAILURE: :failure
         PENDING: :pending
 
-        def self.values: -> Array[Metronome::Models::AuditLogListResponse::status]
+        def self.values: -> ::Array[Metronome::Models::AuditLogListResponse::status]
       end
     end
   end

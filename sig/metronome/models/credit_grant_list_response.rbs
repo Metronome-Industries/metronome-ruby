@@ -4,19 +4,19 @@ module Metronome
       {
         id: String,
         balance: Metronome::Models::CreditGrantListResponse::Balance,
-        custom_fields: Hash[Symbol, String],
+        custom_fields: ::Hash[Symbol, String],
         customer_id: String,
-        deductions: Array[Metronome::Models::CreditLedgerEntry],
+        deductions: ::Array[Metronome::Models::CreditLedgerEntry],
         effective_at: Time,
         expires_at: Time,
         grant_amount: Metronome::Models::CreditGrantListResponse::GrantAmount,
         name: String,
         paid_amount: Metronome::Models::CreditGrantListResponse::PaidAmount,
-        pending_deductions: Array[Metronome::Models::CreditLedgerEntry],
+        pending_deductions: ::Array[Metronome::Models::CreditLedgerEntry],
         priority: Float,
         credit_grant_type: String?,
         invoice_id: String?,
-        products: Array[Metronome::Models::CreditGrantListResponse::Product],
+        products: ::Array[Metronome::Models::CreditGrantListResponse::Product],
         reason: String?,
         uniqueness_key: String?
       }
@@ -26,11 +26,11 @@ module Metronome
 
       attr_accessor balance: Metronome::Models::CreditGrantListResponse::Balance
 
-      attr_accessor custom_fields: Hash[Symbol, String]
+      attr_accessor custom_fields: ::Hash[Symbol, String]
 
       attr_accessor customer_id: String
 
-      attr_accessor deductions: Array[Metronome::Models::CreditLedgerEntry]
+      attr_accessor deductions: ::Array[Metronome::Models::CreditLedgerEntry]
 
       attr_accessor effective_at: Time
 
@@ -42,7 +42,7 @@ module Metronome
 
       attr_accessor paid_amount: Metronome::Models::CreditGrantListResponse::PaidAmount
 
-      attr_accessor pending_deductions: Array[Metronome::Models::CreditLedgerEntry]
+      attr_accessor pending_deductions: ::Array[Metronome::Models::CreditLedgerEntry]
 
       attr_accessor priority: Float
 
@@ -50,10 +50,10 @@ module Metronome
 
       attr_accessor invoice_id: String?
 
-      attr_reader products: Array[Metronome::Models::CreditGrantListResponse::Product]?
+      attr_reader products: ::Array[Metronome::Models::CreditGrantListResponse::Product]?
 
       def products=: (
-        Array[Metronome::Models::CreditGrantListResponse::Product]
+        ::Array[Metronome::Models::CreditGrantListResponse::Product]
       ) -> void
 
       attr_accessor reason: String?
@@ -64,19 +64,19 @@ module Metronome
         (
           id: String,
           balance: Metronome::Models::CreditGrantListResponse::Balance,
-          custom_fields: Hash[Symbol, String],
+          custom_fields: ::Hash[Symbol, String],
           customer_id: String,
-          deductions: Array[Metronome::Models::CreditLedgerEntry],
+          deductions: ::Array[Metronome::Models::CreditLedgerEntry],
           effective_at: Time,
           expires_at: Time,
           grant_amount: Metronome::Models::CreditGrantListResponse::GrantAmount,
           name: String,
           paid_amount: Metronome::Models::CreditGrantListResponse::PaidAmount,
-          pending_deductions: Array[Metronome::Models::CreditLedgerEntry],
+          pending_deductions: ::Array[Metronome::Models::CreditLedgerEntry],
           priority: Float,
           credit_grant_type: String?,
           invoice_id: String?,
-          products: Array[Metronome::Models::CreditGrantListResponse::Product],
+          products: ::Array[Metronome::Models::CreditGrantListResponse::Product],
           reason: String?,
           uniqueness_key: String?
         ) -> void
