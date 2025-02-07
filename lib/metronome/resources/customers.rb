@@ -91,7 +91,8 @@ module Metronome
       #
       #   @option params [String] :next_page Cursor that indicates where the next page of results should start.
       #
-      #   @option params [Boolean] :only_archived Filter the customer list by only archived customers.
+      #   @option params [Boolean] :only_archived Filter the customer list to only return archived customers. By default, only
+      #     active customers are returned.
       #
       #   @option params [Array<String>] :salesforce_account_ids Filter the customer list by salesforce_account_id. Up to 100 ids can be
       #     provided.

@@ -48,7 +48,8 @@ module Metronome
       #   attr_writer :next_page
 
       # @!attribute [r] only_archived
-      #   Filter the customer list by only archived customers.
+      #   Filter the customer list to only return archived customers. By default, only
+      #     active customers are returned.
       #
       #   @return [Boolean, nil]
       optional :only_archived, Metronome::BooleanModel

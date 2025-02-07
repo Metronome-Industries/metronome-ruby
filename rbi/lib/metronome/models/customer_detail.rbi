@@ -21,6 +21,9 @@ module Metronome
       sig { returns(String) }
       attr_accessor :name
 
+      sig { returns(T.nilable(Time)) }
+      attr_accessor :archived_at
+
       sig { returns(T.nilable(Metronome::Models::CustomerDetail::CurrentBillableStatus)) }
       attr_reader :current_billable_status
 
@@ -35,6 +38,7 @@ module Metronome
           external_id: String,
           ingest_aliases: T::Array[String],
           name: String,
+          archived_at: T.nilable(Time),
           current_billable_status: Metronome::Models::CustomerDetail::CurrentBillableStatus
         ).void
       end
@@ -45,6 +49,7 @@ module Metronome
         external_id:,
         ingest_aliases:,
         name:,
+        archived_at: nil,
         current_billable_status: nil
       )
       end
@@ -58,6 +63,7 @@ module Metronome
             external_id: String,
             ingest_aliases: T::Array[String],
             name: String,
+            archived_at: T.nilable(Time),
             current_billable_status: Metronome::Models::CustomerDetail::CurrentBillableStatus
           }
         )
