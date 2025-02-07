@@ -8,6 +8,7 @@ module Metronome
         external_id: String,
         ingest_aliases: ::Array[String],
         name: String,
+        archived_at: Time?,
         current_billable_status: Metronome::Models::CustomerDetail::CurrentBillableStatus
       }
 
@@ -24,6 +25,8 @@ module Metronome
 
       attr_accessor name: String
 
+      attr_accessor archived_at: Time?
+
       attr_reader current_billable_status: Metronome::Models::CustomerDetail::CurrentBillableStatus?
 
       def current_billable_status=: (
@@ -38,6 +41,7 @@ module Metronome
           external_id: String,
           ingest_aliases: ::Array[String],
           name: String,
+          archived_at: Time?,
           current_billable_status: Metronome::Models::CustomerDetail::CurrentBillableStatus
         ) -> void
         | (

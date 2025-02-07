@@ -49,6 +49,13 @@ module Metronome
       #   @return [String]
       required :name, String
 
+      # @!attribute archived_at
+      #   RFC 3339 timestamp indicating when the customer was archived. Null if the
+      #     customer is active.
+      #
+      #   @return [Time, nil]
+      optional :archived_at, Time, nil?: true
+
       # @!attribute [r] current_billable_status
       #   This field's availability is dependent on your client's configuration.
       #
@@ -66,6 +73,7 @@ module Metronome
       #   # @param external_id [String]
       #   # @param ingest_aliases [Array<String>]
       #   # @param name [String]
+      #   # @param archived_at [Time, nil]
       #   # @param current_billable_status [Metronome::Models::CustomerDetail::CurrentBillableStatus]
       #   #
       #   def initialize(
@@ -75,6 +83,7 @@ module Metronome
       #     external_id:,
       #     ingest_aliases:,
       #     name:,
+      #     archived_at: nil,
       #     current_billable_status: nil,
       #     **
       #   )
