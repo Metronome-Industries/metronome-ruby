@@ -3,7 +3,7 @@ module Metronome
     class AuditLogs
       def list:
         (
-          ?Metronome::Models::AuditLogListParams | Hash[Symbol, top] params
+          ?Metronome::Models::AuditLogListParams | ::Hash[Symbol, top] params
         ) -> Metronome::CursorPage[Metronome::Models::AuditLogListResponse]
         | (
           ending_before: Time,

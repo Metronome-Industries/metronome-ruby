@@ -2,13 +2,13 @@ module Metronome
   module Models
     type customer_list_costs_response =
       {
-        credit_types: Hash[Symbol, Metronome::Models::CustomerListCostsResponse::CreditType],
+        credit_types: ::Hash[Symbol, Metronome::Models::CustomerListCostsResponse::CreditType],
         end_timestamp: Time,
         start_timestamp: Time
       }
 
     class CustomerListCostsResponse < Metronome::BaseModel
-      attr_accessor credit_types: Hash[Symbol, Metronome::Models::CustomerListCostsResponse::CreditType]
+      attr_accessor credit_types: ::Hash[Symbol, Metronome::Models::CustomerListCostsResponse::CreditType]
 
       attr_accessor end_timestamp: Time
 
@@ -16,7 +16,7 @@ module Metronome
 
       def initialize:
         (
-          credit_types: Hash[Symbol, Metronome::Models::CustomerListCostsResponse::CreditType],
+          credit_types: ::Hash[Symbol, Metronome::Models::CustomerListCostsResponse::CreditType],
           end_timestamp: Time,
           start_timestamp: Time
         ) -> void
@@ -30,7 +30,7 @@ module Metronome
       type credit_type =
         {
           cost: Float,
-          line_item_breakdown: Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown],
+          line_item_breakdown: ::Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown],
           name: String
         }
 
@@ -39,10 +39,10 @@ module Metronome
 
         def cost=: (Float) -> void
 
-        attr_reader line_item_breakdown: Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown]?
+        attr_reader line_item_breakdown: ::Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown]?
 
         def line_item_breakdown=: (
-          Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown]
+          ::Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown]
         ) -> void
 
         attr_reader name: String?
@@ -52,7 +52,7 @@ module Metronome
         def initialize:
           (
             cost: Float,
-            line_item_breakdown: Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown],
+            line_item_breakdown: ::Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown],
             name: String
           ) -> void
           | (

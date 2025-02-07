@@ -2,7 +2,7 @@ module Metronome
   module Models
     type custom_field_set_values_params =
       {
-        custom_fields: Hash[Symbol, String],
+        custom_fields: ::Hash[Symbol, String],
         entity: Metronome::Models::CustomFieldSetValuesParams::entity,
         entity_id: String
       }
@@ -12,7 +12,7 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      attr_accessor custom_fields: Hash[Symbol, String]
+      attr_accessor custom_fields: ::Hash[Symbol, String]
 
       attr_accessor entity: Metronome::Models::CustomFieldSetValuesParams::entity
 
@@ -20,7 +20,7 @@ module Metronome
 
       def initialize:
         (
-          custom_fields: Hash[Symbol, String],
+          custom_fields: ::Hash[Symbol, String],
           entity: Metronome::Models::CustomFieldSetValuesParams::entity,
           entity_id: String,
           request_options: Metronome::request_opts
@@ -70,7 +70,7 @@ module Metronome
         RATE_CARD: :rate_card
         SCHEDULED_CHARGE: :scheduled_charge
 
-        def self.values: -> Array[Metronome::Models::CustomFieldSetValuesParams::entity]
+        def self.values: -> ::Array[Metronome::Models::CustomFieldSetValuesParams::entity]
       end
     end
   end

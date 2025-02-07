@@ -3,7 +3,8 @@ module Metronome
     class CreditGrants
       def create:
         (
-          Metronome::Models::CreditGrantCreateParams | Hash[Symbol, top] params
+          Metronome::Models::CreditGrantCreateParams
+          | ::Hash[Symbol, top] params
         ) -> Metronome::Models::CreditGrantCreateResponse
         | (
           customer_id: String,
@@ -13,10 +14,10 @@ module Metronome
           paid_amount: Metronome::Models::CreditGrantCreateParams::PaidAmount,
           priority: Float,
           credit_grant_type: String,
-          custom_fields: Hash[Symbol, String],
+          custom_fields: ::Hash[Symbol, String],
           effective_at: Time,
           invoice_date: Time,
-          product_ids: Array[String],
+          product_ids: ::Array[String],
           reason: String,
           rollover_settings: Metronome::Models::CreditGrantCreateParams::RolloverSettings,
           uniqueness_key: String,
@@ -25,14 +26,14 @@ module Metronome
 
       def list:
         (
-          ?Metronome::Models::CreditGrantListParams | Hash[Symbol, top] params
+          ?Metronome::Models::CreditGrantListParams | ::Hash[Symbol, top] params
         ) -> Metronome::CursorPage[Metronome::Models::CreditGrantListResponse]
         | (
           limit: Integer,
           next_page: String,
-          credit_grant_ids: Array[String],
-          credit_type_ids: Array[String],
-          customer_ids: Array[String],
+          credit_grant_ids: ::Array[String],
+          credit_type_ids: ::Array[String],
+          customer_ids: ::Array[String],
           effective_before: Time,
           not_expiring_before: Time,
           request_options: Metronome::request_opts
@@ -40,7 +41,7 @@ module Metronome
 
       def edit:
         (
-          Metronome::Models::CreditGrantEditParams | Hash[Symbol, top] params
+          Metronome::Models::CreditGrantEditParams | ::Hash[Symbol, top] params
         ) -> Metronome::Models::CreditGrantEditResponse
         | (
           id: String,
@@ -53,12 +54,12 @@ module Metronome
       def list_entries:
         (
           ?Metronome::Models::CreditGrantListEntriesParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Metronome::Models::CreditGrantListEntriesResponse
         | (
           next_page: String,
-          credit_type_ids: Array[String],
-          customer_ids: Array[String],
+          credit_type_ids: ::Array[String],
+          customer_ids: ::Array[String],
           ending_before: Time,
           starting_on: Time,
           request_options: Metronome::request_opts
@@ -66,7 +67,7 @@ module Metronome
 
       def `void`:
         (
-          Metronome::Models::CreditGrantVoidParams | Hash[Symbol, top] params
+          Metronome::Models::CreditGrantVoidParams | ::Hash[Symbol, top] params
         ) -> Metronome::Models::CreditGrantVoidResponse
         | (
           id: String,

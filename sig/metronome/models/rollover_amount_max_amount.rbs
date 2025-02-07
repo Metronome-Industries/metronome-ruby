@@ -25,7 +25,7 @@ module Metronome
       class Type < Metronome::Enum
         MAX_AMOUNT: :MAX_AMOUNT
 
-        def self.values: -> Array[Metronome::Models::RolloverAmountMaxAmount::type_]
+        def self.values: -> ::Array[Metronome::Models::RolloverAmountMaxAmount::type_]
       end
     end
   end

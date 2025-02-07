@@ -2,18 +2,18 @@ module Metronome
   module Models
     type custom_field_list_keys_response =
       {
-        data: Array[Metronome::Models::CustomFieldListKeysResponse::Data],
+        data: ::Array[Metronome::Models::CustomFieldListKeysResponse::Data],
         next_page: String?
       }
 
     class CustomFieldListKeysResponse < Metronome::BaseModel
-      attr_accessor data: Array[Metronome::Models::CustomFieldListKeysResponse::Data]
+      attr_accessor data: ::Array[Metronome::Models::CustomFieldListKeysResponse::Data]
 
       attr_accessor next_page: String?
 
       def initialize:
         (
-          data: Array[Metronome::Models::CustomFieldListKeysResponse::Data],
+          data: ::Array[Metronome::Models::CustomFieldListKeysResponse::Data],
           next_page: String?
         ) -> void
         | (
@@ -88,7 +88,7 @@ module Metronome
           RATE_CARD: :rate_card
           SCHEDULED_CHARGE: :scheduled_charge
 
-          def self.values: -> Array[Metronome::Models::CustomFieldListKeysResponse::Data::entity]
+          def self.values: -> ::Array[Metronome::Models::CustomFieldListKeysResponse::Data::entity]
         end
       end
     end

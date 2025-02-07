@@ -6,8 +6,8 @@ module Metronome
         starting_on: Time,
         window_size: Metronome::Models::UsageListParams::window_size,
         next_page: String,
-        billable_metrics: Array[Metronome::Models::UsageListParams::BillableMetric],
-        customer_ids: Array[String]
+        billable_metrics: ::Array[Metronome::Models::UsageListParams::BillableMetric],
+        customer_ids: ::Array[String]
       }
       & Metronome::request_parameters
 
@@ -25,15 +25,15 @@ module Metronome
 
       def next_page=: (String) -> void
 
-      attr_reader billable_metrics: Array[Metronome::Models::UsageListParams::BillableMetric]?
+      attr_reader billable_metrics: ::Array[Metronome::Models::UsageListParams::BillableMetric]?
 
       def billable_metrics=: (
-        Array[Metronome::Models::UsageListParams::BillableMetric]
+        ::Array[Metronome::Models::UsageListParams::BillableMetric]
       ) -> void
 
-      attr_reader customer_ids: Array[String]?
+      attr_reader customer_ids: ::Array[String]?
 
-      def customer_ids=: (Array[String]) -> void
+      def customer_ids=: (::Array[String]) -> void
 
       def initialize:
         (
@@ -41,8 +41,8 @@ module Metronome
           starting_on: Time,
           window_size: Metronome::Models::UsageListParams::window_size,
           next_page: String,
-          billable_metrics: Array[Metronome::Models::UsageListParams::BillableMetric],
-          customer_ids: Array[String],
+          billable_metrics: ::Array[Metronome::Models::UsageListParams::BillableMetric],
+          customer_ids: ::Array[String],
           request_options: Metronome::request_opts
         ) -> void
         | (
@@ -58,7 +58,7 @@ module Metronome
         DAY: :DAY
         NONE: :NONE
 
-        def self.values: -> Array[Metronome::Models::UsageListParams::window_size]
+        def self.values: -> ::Array[Metronome::Models::UsageListParams::window_size]
       end
 
       type billable_metric =
@@ -88,17 +88,17 @@ module Metronome
 
         def to_hash: -> Metronome::Models::UsageListParams::billable_metric
 
-        type group_by = { key: String, values: Array[String] }
+        type group_by = { key: String, values: ::Array[String] }
 
         class GroupBy < Metronome::BaseModel
           attr_accessor key: String
 
-          attr_reader values: Array[String]?
+          attr_reader values: ::Array[String]?
 
-          def values=: (Array[String]) -> void
+          def values=: (::Array[String]) -> void
 
           def initialize:
-            (key: String, values: Array[String]) -> void
+            (key: String, values: ::Array[String]) -> void
             | (
               ?Metronome::Models::UsageListParams::BillableMetric::group_by
               | Metronome::BaseModel data

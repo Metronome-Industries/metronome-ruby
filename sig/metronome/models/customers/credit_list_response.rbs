@@ -2,15 +2,15 @@ module Metronome
   module Models
     module Customers
       type credit_list_response =
-        { data: Array[Metronome::Models::Credit], next_page: String? }
+        { data: ::Array[Metronome::Models::Credit], next_page: String? }
 
       class CreditListResponse < Metronome::BaseModel
-        attr_accessor data: Array[Metronome::Models::Credit]
+        attr_accessor data: ::Array[Metronome::Models::Credit]
 
         attr_accessor next_page: String?
 
         def initialize:
-          (data: Array[Metronome::Models::Credit], next_page: String?) -> void
+          (data: ::Array[Metronome::Models::Credit], next_page: String?) -> void
           | (
             ?Metronome::Models::Customers::credit_list_response
             | Metronome::BaseModel data

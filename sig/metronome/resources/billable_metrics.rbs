@@ -4,16 +4,16 @@ module Metronome
       def create:
         (
           Metronome::Models::BillableMetricCreateParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Metronome::Models::BillableMetricCreateResponse
         | (
           name: String,
           aggregation_key: String,
           aggregation_type: Metronome::Models::BillableMetricCreateParams::aggregation_type,
-          custom_fields: Hash[Symbol, String],
+          custom_fields: ::Hash[Symbol, String],
           event_type_filter: Metronome::Models::EventTypeFilter,
-          group_keys: Array[Array[String]],
-          property_filters: Array[Metronome::Models::PropertyFilter],
+          group_keys: ::Array[::Array[String]],
+          property_filters: ::Array[Metronome::Models::PropertyFilter],
           sql: String,
           request_options: Metronome::request_opts
         ) -> Metronome::Models::BillableMetricCreateResponse
@@ -21,7 +21,7 @@ module Metronome
       def retrieve:
         (
           Metronome::Models::BillableMetricRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Metronome::Models::BillableMetricRetrieveResponse
         | (
           billable_metric_id: String,
@@ -31,7 +31,7 @@ module Metronome
       def list:
         (
           ?Metronome::Models::BillableMetricListParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Metronome::CursorPage[Metronome::Models::BillableMetricListResponse]
         | (
           include_archived: bool,
@@ -43,7 +43,7 @@ module Metronome
       def archive:
         (
           Metronome::Models::BillableMetricArchiveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Metronome::Models::BillableMetricArchiveResponse
         | (
           id: String,

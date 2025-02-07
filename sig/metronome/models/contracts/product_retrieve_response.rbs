@@ -24,9 +24,9 @@ module Metronome
             current: Metronome::Models::Contracts::ProductListItemState,
             initial: Metronome::Models::Contracts::ProductListItemState,
             type: Metronome::Models::Contracts::ProductRetrieveResponse::Data::type_,
-            updates: Array[Metronome::Models::Contracts::ProductRetrieveResponse::Data::Update],
+            updates: ::Array[Metronome::Models::Contracts::ProductRetrieveResponse::Data::Update],
             archived_at: Time?,
-            custom_fields: Hash[Symbol, String]
+            custom_fields: ::Hash[Symbol, String]
           }
 
         class Data < Metronome::BaseModel
@@ -38,13 +38,13 @@ module Metronome
 
           attr_accessor type: Metronome::Models::Contracts::ProductRetrieveResponse::Data::type_
 
-          attr_accessor updates: Array[Metronome::Models::Contracts::ProductRetrieveResponse::Data::Update]
+          attr_accessor updates: ::Array[Metronome::Models::Contracts::ProductRetrieveResponse::Data::Update]
 
           attr_accessor archived_at: Time?
 
-          attr_reader custom_fields: Hash[Symbol, String]?
+          attr_reader custom_fields: ::Hash[Symbol, String]?
 
-          def custom_fields=: (Hash[Symbol, String]) -> void
+          def custom_fields=: (::Hash[Symbol, String]) -> void
 
           def initialize:
             (
@@ -52,9 +52,9 @@ module Metronome
               current: Metronome::Models::Contracts::ProductListItemState,
               initial: Metronome::Models::Contracts::ProductListItemState,
               type: Metronome::Models::Contracts::ProductRetrieveResponse::Data::type_,
-              updates: Array[Metronome::Models::Contracts::ProductRetrieveResponse::Data::Update],
+              updates: ::Array[Metronome::Models::Contracts::ProductRetrieveResponse::Data::Update],
               archived_at: Time?,
-              custom_fields: Hash[Symbol, String]
+              custom_fields: ::Hash[Symbol, String]
             ) -> void
             | (
               ?Metronome::Models::Contracts::ProductRetrieveResponse::data
@@ -73,7 +73,7 @@ module Metronome
             FIXED: :FIXED
             PRO_SERVICE: :PRO_SERVICE
 
-            def self.values: -> Array[Metronome::Models::Contracts::ProductRetrieveResponse::Data::type_]
+            def self.values: -> ::Array[Metronome::Models::Contracts::ProductRetrieveResponse::Data::type_]
           end
 
           type update =
@@ -81,19 +81,19 @@ module Metronome
               created_at: Time,
               created_by: String,
               billable_metric_id: String,
-              composite_product_ids: Array[String],
-              composite_tags: Array[String],
+              composite_product_ids: ::Array[String],
+              composite_tags: ::Array[String],
               exclude_free_usage: bool,
               is_refundable: bool,
               name: String,
               netsuite_internal_item_id: String,
               netsuite_overage_item_id: String,
-              presentation_group_key: Array[String],
-              pricing_group_key: Array[String],
+              presentation_group_key: ::Array[String],
+              pricing_group_key: ::Array[String],
               quantity_conversion: Metronome::Models::Contracts::QuantityConversion?,
               quantity_rounding: Metronome::Models::Contracts::QuantityRounding?,
               starting_at: Time,
-              tags: Array[String]
+              tags: ::Array[String]
             }
 
           class Update < Metronome::BaseModel
@@ -105,13 +105,13 @@ module Metronome
 
             def billable_metric_id=: (String) -> void
 
-            attr_reader composite_product_ids: Array[String]?
+            attr_reader composite_product_ids: ::Array[String]?
 
-            def composite_product_ids=: (Array[String]) -> void
+            def composite_product_ids=: (::Array[String]) -> void
 
-            attr_reader composite_tags: Array[String]?
+            attr_reader composite_tags: ::Array[String]?
 
-            def composite_tags=: (Array[String]) -> void
+            def composite_tags=: (::Array[String]) -> void
 
             attr_reader exclude_free_usage: bool?
 
@@ -133,13 +133,13 @@ module Metronome
 
             def netsuite_overage_item_id=: (String) -> void
 
-            attr_reader presentation_group_key: Array[String]?
+            attr_reader presentation_group_key: ::Array[String]?
 
-            def presentation_group_key=: (Array[String]) -> void
+            def presentation_group_key=: (::Array[String]) -> void
 
-            attr_reader pricing_group_key: Array[String]?
+            attr_reader pricing_group_key: ::Array[String]?
 
-            def pricing_group_key=: (Array[String]) -> void
+            def pricing_group_key=: (::Array[String]) -> void
 
             attr_accessor quantity_conversion: Metronome::Models::Contracts::QuantityConversion?
 
@@ -149,28 +149,28 @@ module Metronome
 
             def starting_at=: (Time) -> void
 
-            attr_reader tags: Array[String]?
+            attr_reader tags: ::Array[String]?
 
-            def tags=: (Array[String]) -> void
+            def tags=: (::Array[String]) -> void
 
             def initialize:
               (
                 created_at: Time,
                 created_by: String,
                 billable_metric_id: String,
-                composite_product_ids: Array[String],
-                composite_tags: Array[String],
+                composite_product_ids: ::Array[String],
+                composite_tags: ::Array[String],
                 exclude_free_usage: bool,
                 is_refundable: bool,
                 name: String,
                 netsuite_internal_item_id: String,
                 netsuite_overage_item_id: String,
-                presentation_group_key: Array[String],
-                pricing_group_key: Array[String],
+                presentation_group_key: ::Array[String],
+                pricing_group_key: ::Array[String],
                 quantity_conversion: Metronome::Models::Contracts::QuantityConversion?,
                 quantity_rounding: Metronome::Models::Contracts::QuantityRounding?,
                 starting_at: Time,
-                tags: Array[String]
+                tags: ::Array[String]
               ) -> void
               | (
                 ?Metronome::Models::Contracts::ProductRetrieveResponse::Data::update

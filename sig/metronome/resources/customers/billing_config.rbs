@@ -5,7 +5,7 @@ module Metronome
         def create:
           (
             Metronome::Models::Customers::BillingConfigCreateParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> nil
           | (
             customer_id: String,
@@ -20,7 +20,7 @@ module Metronome
         def retrieve:
           (
             Metronome::Models::Customers::BillingConfigRetrieveParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Metronome::Models::Customers::BillingConfigRetrieveResponse
           | (
             customer_id: String,
@@ -31,7 +31,7 @@ module Metronome
         def delete:
           (
             Metronome::Models::Customers::BillingConfigDeleteParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> nil
           | (
             customer_id: String,

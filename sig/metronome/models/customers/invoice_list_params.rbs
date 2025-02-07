@@ -81,7 +81,7 @@ module Metronome
           DATE_ASC: :date_asc
           DATE_DESC: :date_desc
 
-          def self.values: -> Array[Metronome::Models::Customers::InvoiceListParams::sort]
+          def self.values: -> ::Array[Metronome::Models::Customers::InvoiceListParams::sort]
         end
       end
     end

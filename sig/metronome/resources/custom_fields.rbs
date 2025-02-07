@@ -3,7 +3,8 @@ module Metronome
     class CustomFields
       def add_key:
         (
-          Metronome::Models::CustomFieldAddKeyParams | Hash[Symbol, top] params
+          Metronome::Models::CustomFieldAddKeyParams
+          | ::Hash[Symbol, top] params
         ) -> nil
         | (
           enforce_uniqueness: bool,
@@ -15,30 +16,30 @@ module Metronome
       def delete_values:
         (
           Metronome::Models::CustomFieldDeleteValuesParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> nil
         | (
           entity: Metronome::Models::CustomFieldDeleteValuesParams::entity,
           entity_id: String,
-          keys: Array[String],
+          keys: ::Array[String],
           request_options: Metronome::request_opts
         ) -> nil
 
       def list_keys:
         (
           ?Metronome::Models::CustomFieldListKeysParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Metronome::Models::CustomFieldListKeysResponse
         | (
           next_page: String,
-          entities: Array[Metronome::Models::CustomFieldListKeysParams::entity],
+          entities: ::Array[Metronome::Models::CustomFieldListKeysParams::entity],
           request_options: Metronome::request_opts
         ) -> Metronome::Models::CustomFieldListKeysResponse
 
       def remove_key:
         (
           Metronome::Models::CustomFieldRemoveKeyParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> nil
         | (
           entity: Metronome::Models::CustomFieldRemoveKeyParams::entity,
@@ -49,10 +50,10 @@ module Metronome
       def set_values:
         (
           Metronome::Models::CustomFieldSetValuesParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> nil
         | (
-          custom_fields: Hash[Symbol, String],
+          custom_fields: ::Hash[Symbol, String],
           entity: Metronome::Models::CustomFieldSetValuesParams::entity,
           entity_id: String,
           request_options: Metronome::request_opts

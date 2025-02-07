@@ -8,7 +8,7 @@ module Metronome
             rate_card_id: String,
             limit: Integer,
             next_page: String,
-            selectors: Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector]
+            selectors: ::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector]
           }
           & Metronome::request_parameters
 
@@ -28,10 +28,10 @@ module Metronome
 
           def next_page=: (String) -> void
 
-          attr_reader selectors: Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector]?
+          attr_reader selectors: ::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector]?
 
           def selectors=: (
-            Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector]
+            ::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector]
           ) -> void
 
           def initialize:
@@ -40,7 +40,7 @@ module Metronome
               rate_card_id: String,
               limit: Integer,
               next_page: String,
-              selectors: Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector],
+              selectors: ::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector],
               request_options: Metronome::request_opts
             ) -> void
             | (
@@ -52,35 +52,35 @@ module Metronome
 
           type selector =
             {
-              partial_pricing_group_values: Hash[Symbol, String],
-              pricing_group_values: Hash[Symbol, String],
+              partial_pricing_group_values: ::Hash[Symbol, String],
+              pricing_group_values: ::Hash[Symbol, String],
               product_id: String,
-              product_tags: Array[String]
+              product_tags: ::Array[String]
             }
 
           class Selector < Metronome::BaseModel
-            attr_reader partial_pricing_group_values: Hash[Symbol, String]?
+            attr_reader partial_pricing_group_values: ::Hash[Symbol, String]?
 
-            def partial_pricing_group_values=: (Hash[Symbol, String]) -> void
+            def partial_pricing_group_values=: (::Hash[Symbol, String]) -> void
 
-            attr_reader pricing_group_values: Hash[Symbol, String]?
+            attr_reader pricing_group_values: ::Hash[Symbol, String]?
 
-            def pricing_group_values=: (Hash[Symbol, String]) -> void
+            def pricing_group_values=: (::Hash[Symbol, String]) -> void
 
             attr_reader product_id: String?
 
             def product_id=: (String) -> void
 
-            attr_reader product_tags: Array[String]?
+            attr_reader product_tags: ::Array[String]?
 
-            def product_tags=: (Array[String]) -> void
+            def product_tags=: (::Array[String]) -> void
 
             def initialize:
               (
-                partial_pricing_group_values: Hash[Symbol, String],
-                pricing_group_values: Hash[Symbol, String],
+                partial_pricing_group_values: ::Hash[Symbol, String],
+                pricing_group_values: ::Hash[Symbol, String],
                 product_id: String,
-                product_tags: Array[String]
+                product_tags: ::Array[String]
               ) -> void
               | (
                 ?Metronome::Models::Contracts::RateCards::RateListParams::selector

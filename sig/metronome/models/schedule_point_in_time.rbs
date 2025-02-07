@@ -3,7 +3,7 @@ module Metronome
     type schedule_point_in_time =
       {
         credit_type: Metronome::Models::CreditTypeData,
-        schedule_items: Array[Metronome::Models::SchedulePointInTime::ScheduleItem]
+        schedule_items: ::Array[Metronome::Models::SchedulePointInTime::ScheduleItem]
       }
 
     class SchedulePointInTime < Metronome::BaseModel
@@ -11,16 +11,16 @@ module Metronome
 
       def credit_type=: (Metronome::Models::CreditTypeData) -> void
 
-      attr_reader schedule_items: Array[Metronome::Models::SchedulePointInTime::ScheduleItem]?
+      attr_reader schedule_items: ::Array[Metronome::Models::SchedulePointInTime::ScheduleItem]?
 
       def schedule_items=: (
-        Array[Metronome::Models::SchedulePointInTime::ScheduleItem]
+        ::Array[Metronome::Models::SchedulePointInTime::ScheduleItem]
       ) -> void
 
       def initialize:
         (
           credit_type: Metronome::Models::CreditTypeData,
-          schedule_items: Array[Metronome::Models::SchedulePointInTime::ScheduleItem]
+          schedule_items: ::Array[Metronome::Models::SchedulePointInTime::ScheduleItem]
         ) -> void
         | (
           ?Metronome::Models::schedule_point_in_time | Metronome::BaseModel data

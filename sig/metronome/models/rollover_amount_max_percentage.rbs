@@ -28,7 +28,7 @@ module Metronome
       class Type < Metronome::Enum
         MAX_PERCENTAGE: :MAX_PERCENTAGE
 
-        def self.values: -> Array[Metronome::Models::RolloverAmountMaxPercentage::type_]
+        def self.values: -> ::Array[Metronome::Models::RolloverAmountMaxPercentage::type_]
       end
     end
   end

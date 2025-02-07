@@ -5,7 +5,7 @@ module Metronome
         def create:
           (
             Metronome::Models::Customers::CommitCreateParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Metronome::Models::Customers::CommitCreateResponse
           | (
             access_schedule: Metronome::Models::Customers::CommitCreateParams::AccessSchedule,
@@ -13,10 +13,10 @@ module Metronome
             priority: Float,
             product_id: String,
             type: Metronome::Models::Customers::CommitCreateParams::type_,
-            applicable_contract_ids: Array[String],
-            applicable_product_ids: Array[String],
-            applicable_product_tags: Array[String],
-            custom_fields: Hash[Symbol, String],
+            applicable_contract_ids: ::Array[String],
+            applicable_product_ids: ::Array[String],
+            applicable_product_tags: ::Array[String],
+            custom_fields: ::Hash[Symbol, String],
             description: String,
             invoice_contract_id: String,
             invoice_schedule: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule,
@@ -31,7 +31,7 @@ module Metronome
         def list:
           (
             Metronome::Models::Customers::CommitListParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Metronome::Models::Customers::CommitListResponse
           | (
             customer_id: String,
@@ -50,7 +50,7 @@ module Metronome
         def update_end_date:
           (
             Metronome::Models::Customers::CommitUpdateEndDateParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Metronome::Models::Customers::CommitUpdateEndDateResponse
           | (
             commit_id: String,

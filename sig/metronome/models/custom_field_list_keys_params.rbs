@@ -3,7 +3,7 @@ module Metronome
     type custom_field_list_keys_params =
       {
         next_page: String,
-        entities: Array[Metronome::Models::CustomFieldListKeysParams::entity]
+        entities: ::Array[Metronome::Models::CustomFieldListKeysParams::entity]
       }
       & Metronome::request_parameters
 
@@ -15,16 +15,16 @@ module Metronome
 
       def next_page=: (String) -> void
 
-      attr_reader entities: Array[Metronome::Models::CustomFieldListKeysParams::entity]?
+      attr_reader entities: ::Array[Metronome::Models::CustomFieldListKeysParams::entity]?
 
       def entities=: (
-        Array[Metronome::Models::CustomFieldListKeysParams::entity]
+        ::Array[Metronome::Models::CustomFieldListKeysParams::entity]
       ) -> void
 
       def initialize:
         (
           next_page: String,
-          entities: Array[Metronome::Models::CustomFieldListKeysParams::entity],
+          entities: ::Array[Metronome::Models::CustomFieldListKeysParams::entity],
           request_options: Metronome::request_opts
         ) -> void
         | (
@@ -72,7 +72,7 @@ module Metronome
         RATE_CARD: :rate_card
         SCHEDULED_CHARGE: :scheduled_charge
 
-        def self.values: -> Array[Metronome::Models::CustomFieldListKeysParams::entity]
+        def self.values: -> ::Array[Metronome::Models::CustomFieldListKeysParams::entity]
       end
     end
   end

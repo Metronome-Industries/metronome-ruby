@@ -5,7 +5,7 @@ module Metronome
         def retrieve:
           (
             Metronome::Models::Customers::InvoiceRetrieveParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Metronome::Models::Customers::InvoiceRetrieveResponse
           | (
             customer_id: String,
@@ -17,7 +17,7 @@ module Metronome
         def list:
           (
             Metronome::Models::Customers::InvoiceListParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Metronome::CursorPage[Metronome::Models::Customers::Invoice]
           | (
             customer_id: String,
@@ -35,7 +35,7 @@ module Metronome
         def add_charge:
           (
             Metronome::Models::Customers::InvoiceAddChargeParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Metronome::Models::Customers::InvoiceAddChargeResponse
           | (
             customer_id: String,
@@ -51,7 +51,7 @@ module Metronome
         def list_breakdowns:
           (
             Metronome::Models::Customers::InvoiceListBreakdownsParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Metronome::CursorPage[Metronome::Models::Customers::InvoiceListBreakdownsResponse]
           | (
             customer_id: String,

@@ -18,12 +18,12 @@ module Metronome
       type data =
         {
           id: String,
-          amendments: Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment],
+          amendments: ::Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment],
           current: Metronome::Models::ContractWithoutAmendments,
           customer_id: String,
           initial: Metronome::Models::ContractWithoutAmendments,
           archived_at: Time,
-          custom_fields: Hash[Symbol, String],
+          custom_fields: ::Hash[Symbol, String],
           customer_billing_provider_configuration: Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration,
           scheduled_charges_on_usage_invoices: Metronome::Models::ContractRetrieveResponse::Data::scheduled_charges_on_usage_invoices,
           uniqueness_key: String
@@ -32,7 +32,7 @@ module Metronome
       class Data < Metronome::BaseModel
         attr_accessor id: String
 
-        attr_accessor amendments: Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment]
+        attr_accessor amendments: ::Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment]
 
         attr_accessor current: Metronome::Models::ContractWithoutAmendments
 
@@ -44,9 +44,9 @@ module Metronome
 
         def archived_at=: (Time) -> void
 
-        attr_reader custom_fields: Hash[Symbol, String]?
+        attr_reader custom_fields: ::Hash[Symbol, String]?
 
-        def custom_fields=: (Hash[Symbol, String]) -> void
+        def custom_fields=: (::Hash[Symbol, String]) -> void
 
         attr_reader customer_billing_provider_configuration: Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration?
 
@@ -67,12 +67,12 @@ module Metronome
         def initialize:
           (
             id: String,
-            amendments: Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment],
+            amendments: ::Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment],
             current: Metronome::Models::ContractWithoutAmendments,
             customer_id: String,
             initial: Metronome::Models::ContractWithoutAmendments,
             archived_at: Time,
-            custom_fields: Hash[Symbol, String],
+            custom_fields: ::Hash[Symbol, String],
             customer_billing_provider_configuration: Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration,
             scheduled_charges_on_usage_invoices: Metronome::Models::ContractRetrieveResponse::Data::scheduled_charges_on_usage_invoices,
             uniqueness_key: String
@@ -87,57 +87,57 @@ module Metronome
         type amendment =
           {
             id: String,
-            commits: Array[Metronome::Models::Commit],
+            commits: ::Array[Metronome::Models::Commit],
             created_at: Time,
             created_by: String,
-            overrides: Array[Metronome::Models::Override],
-            scheduled_charges: Array[Metronome::Models::ScheduledCharge],
+            overrides: ::Array[Metronome::Models::Override],
+            scheduled_charges: ::Array[Metronome::Models::ScheduledCharge],
             starting_at: Time,
-            credits: Array[Metronome::Models::Credit],
-            discounts: Array[Metronome::Models::Discount],
+            credits: ::Array[Metronome::Models::Credit],
+            discounts: ::Array[Metronome::Models::Discount],
             netsuite_sales_order_id: String,
-            professional_services: Array[Metronome::Models::ProService],
-            reseller_royalties: Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty],
+            professional_services: ::Array[Metronome::Models::ProService],
+            reseller_royalties: ::Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty],
             salesforce_opportunity_id: String
           }
 
         class Amendment < Metronome::BaseModel
           attr_accessor id: String
 
-          attr_accessor commits: Array[Metronome::Models::Commit]
+          attr_accessor commits: ::Array[Metronome::Models::Commit]
 
           attr_accessor created_at: Time
 
           attr_accessor created_by: String
 
-          attr_accessor overrides: Array[Metronome::Models::Override]
+          attr_accessor overrides: ::Array[Metronome::Models::Override]
 
-          attr_accessor scheduled_charges: Array[Metronome::Models::ScheduledCharge]
+          attr_accessor scheduled_charges: ::Array[Metronome::Models::ScheduledCharge]
 
           attr_accessor starting_at: Time
 
-          attr_reader credits: Array[Metronome::Models::Credit]?
+          attr_reader credits: ::Array[Metronome::Models::Credit]?
 
-          def credits=: (Array[Metronome::Models::Credit]) -> void
+          def credits=: (::Array[Metronome::Models::Credit]) -> void
 
-          attr_reader discounts: Array[Metronome::Models::Discount]?
+          attr_reader discounts: ::Array[Metronome::Models::Discount]?
 
-          def discounts=: (Array[Metronome::Models::Discount]) -> void
+          def discounts=: (::Array[Metronome::Models::Discount]) -> void
 
           attr_reader netsuite_sales_order_id: String?
 
           def netsuite_sales_order_id=: (String) -> void
 
-          attr_reader professional_services: Array[Metronome::Models::ProService]?
+          attr_reader professional_services: ::Array[Metronome::Models::ProService]?
 
           def professional_services=: (
-            Array[Metronome::Models::ProService]
+            ::Array[Metronome::Models::ProService]
           ) -> void
 
-          attr_reader reseller_royalties: Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty]?
+          attr_reader reseller_royalties: ::Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty]?
 
           def reseller_royalties=: (
-            Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty]
+            ::Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty]
           ) -> void
 
           attr_reader salesforce_opportunity_id: String?
@@ -147,17 +147,17 @@ module Metronome
           def initialize:
             (
               id: String,
-              commits: Array[Metronome::Models::Commit],
+              commits: ::Array[Metronome::Models::Commit],
               created_at: Time,
               created_by: String,
-              overrides: Array[Metronome::Models::Override],
-              scheduled_charges: Array[Metronome::Models::ScheduledCharge],
+              overrides: ::Array[Metronome::Models::Override],
+              scheduled_charges: ::Array[Metronome::Models::ScheduledCharge],
               starting_at: Time,
-              credits: Array[Metronome::Models::Credit],
-              discounts: Array[Metronome::Models::Discount],
+              credits: ::Array[Metronome::Models::Credit],
+              discounts: ::Array[Metronome::Models::Discount],
               netsuite_sales_order_id: String,
-              professional_services: Array[Metronome::Models::ProService],
-              reseller_royalties: Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty],
+              professional_services: ::Array[Metronome::Models::ProService],
+              reseller_royalties: ::Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty],
               salesforce_opportunity_id: String
             ) -> void
             | (
@@ -253,7 +253,7 @@ module Metronome
               GCP: :GCP
               GCP_PRO_SERVICE: :GCP_PRO_SERVICE
 
-              def self.values: -> Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty::reseller_type]
+              def self.values: -> ::Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty::reseller_type]
             end
           end
         end
@@ -301,7 +301,7 @@ module Metronome
             WORKDAY: :workday
             GCP_MARKETPLACE: :gcp_marketplace
 
-            def self.values: -> Array[Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::billing_provider]
+            def self.values: -> ::Array[Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::billing_provider]
           end
 
           type delivery_method =
@@ -313,7 +313,7 @@ module Metronome
             TACKLE: :tackle
             AWS_SNS: :aws_sns
 
-            def self.values: -> Array[Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::delivery_method]
+            def self.values: -> ::Array[Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::delivery_method]
           end
         end
 
@@ -322,7 +322,7 @@ module Metronome
         class ScheduledChargesOnUsageInvoices < Metronome::Enum
           ALL: :ALL
 
-          def self.values: -> Array[Metronome::Models::ContractRetrieveResponse::Data::scheduled_charges_on_usage_invoices]
+          def self.values: -> ::Array[Metronome::Models::ContractRetrieveResponse::Data::scheduled_charges_on_usage_invoices]
         end
       end
     end

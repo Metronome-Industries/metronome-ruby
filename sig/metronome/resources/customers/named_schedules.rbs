@@ -5,7 +5,7 @@ module Metronome
         def retrieve:
           (
             Metronome::Models::Customers::NamedScheduleRetrieveParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Metronome::Models::Customers::NamedScheduleRetrieveResponse
           | (
             customer_id: String,
@@ -17,7 +17,7 @@ module Metronome
         def update:
           (
             Metronome::Models::Customers::NamedScheduleUpdateParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> nil
           | (
             customer_id: String,

@@ -7,16 +7,16 @@ module Metronome
         type: Metronome::Models::Commit::type_,
         access_schedule: Metronome::Models::ScheduleDuration,
         amount: Float,
-        applicable_contract_ids: Array[String],
-        applicable_product_ids: Array[String],
-        applicable_product_tags: Array[String],
+        applicable_contract_ids: ::Array[String],
+        applicable_product_ids: ::Array[String],
+        applicable_product_tags: ::Array[String],
         balance: Float,
         contract: Metronome::Models::Commit::Contract,
-        custom_fields: Hash[Symbol, String],
+        custom_fields: ::Hash[Symbol, String],
         description: String,
         invoice_contract: Metronome::Models::Commit::InvoiceContract,
         invoice_schedule: Metronome::Models::SchedulePointInTime,
-        ledger: Array[Metronome::Models::Commit::ledger],
+        ledger: ::Array[Metronome::Models::Commit::ledger],
         name: String,
         netsuite_sales_order_id: String,
         priority: Float,
@@ -42,17 +42,17 @@ module Metronome
 
       def amount=: (Float) -> void
 
-      attr_reader applicable_contract_ids: Array[String]?
+      attr_reader applicable_contract_ids: ::Array[String]?
 
-      def applicable_contract_ids=: (Array[String]) -> void
+      def applicable_contract_ids=: (::Array[String]) -> void
 
-      attr_reader applicable_product_ids: Array[String]?
+      attr_reader applicable_product_ids: ::Array[String]?
 
-      def applicable_product_ids=: (Array[String]) -> void
+      def applicable_product_ids=: (::Array[String]) -> void
 
-      attr_reader applicable_product_tags: Array[String]?
+      attr_reader applicable_product_tags: ::Array[String]?
 
-      def applicable_product_tags=: (Array[String]) -> void
+      def applicable_product_tags=: (::Array[String]) -> void
 
       attr_reader balance: Float?
 
@@ -62,9 +62,9 @@ module Metronome
 
       def contract=: (Metronome::Models::Commit::Contract) -> void
 
-      attr_reader custom_fields: Hash[Symbol, String]?
+      attr_reader custom_fields: ::Hash[Symbol, String]?
 
-      def custom_fields=: (Hash[Symbol, String]) -> void
+      def custom_fields=: (::Hash[Symbol, String]) -> void
 
       attr_reader description: String?
 
@@ -80,9 +80,9 @@ module Metronome
 
       def invoice_schedule=: (Metronome::Models::SchedulePointInTime) -> void
 
-      attr_reader ledger: Array[Metronome::Models::Commit::ledger]?
+      attr_reader ledger: ::Array[Metronome::Models::Commit::ledger]?
 
-      def ledger=: (Array[Metronome::Models::Commit::ledger]) -> void
+      def ledger=: (::Array[Metronome::Models::Commit::ledger]) -> void
 
       attr_reader name: String?
 
@@ -123,16 +123,16 @@ module Metronome
           type: Metronome::Models::Commit::type_,
           access_schedule: Metronome::Models::ScheduleDuration,
           amount: Float,
-          applicable_contract_ids: Array[String],
-          applicable_product_ids: Array[String],
-          applicable_product_tags: Array[String],
+          applicable_contract_ids: ::Array[String],
+          applicable_product_ids: ::Array[String],
+          applicable_product_tags: ::Array[String],
           balance: Float,
           contract: Metronome::Models::Commit::Contract,
-          custom_fields: Hash[Symbol, String],
+          custom_fields: ::Hash[Symbol, String],
           description: String,
           invoice_contract: Metronome::Models::Commit::InvoiceContract,
           invoice_schedule: Metronome::Models::SchedulePointInTime,
-          ledger: Array[Metronome::Models::Commit::ledger],
+          ledger: ::Array[Metronome::Models::Commit::ledger],
           name: String,
           netsuite_sales_order_id: String,
           priority: Float,
@@ -168,7 +168,7 @@ module Metronome
         PREPAID: :PREPAID
         POSTPAID: :POSTPAID
 
-        def self.values: -> Array[Metronome::Models::Commit::type_]
+        def self.values: -> ::Array[Metronome::Models::Commit::type_]
       end
 
       type contract = { id: String }
@@ -252,7 +252,7 @@ module Metronome
           class Type < Metronome::Enum
             PREPAID_COMMIT_SEGMENT_START: :PREPAID_COMMIT_SEGMENT_START
 
-            def self.values: -> Array[Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::type_]
+            def self.values: -> ::Array[Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::type_]
           end
         end
 
@@ -296,7 +296,7 @@ module Metronome
           class Type < Metronome::Enum
             PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION: :PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
 
-            def self.values: -> Array[Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::type_]
+            def self.values: -> ::Array[Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::type_]
           end
         end
 
@@ -340,7 +340,7 @@ module Metronome
           class Type < Metronome::Enum
             PREPAID_COMMIT_ROLLOVER: :PREPAID_COMMIT_ROLLOVER
 
-            def self.values: -> Array[Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::type_]
+            def self.values: -> ::Array[Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::type_]
           end
         end
 
@@ -380,7 +380,7 @@ module Metronome
           class Type < Metronome::Enum
             PREPAID_COMMIT_EXPIRATION: :PREPAID_COMMIT_EXPIRATION
 
-            def self.values: -> Array[Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::type_]
+            def self.values: -> ::Array[Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::type_]
           end
         end
 
@@ -424,7 +424,7 @@ module Metronome
           class Type < Metronome::Enum
             PREPAID_COMMIT_CANCELED: :PREPAID_COMMIT_CANCELED
 
-            def self.values: -> Array[Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::type_]
+            def self.values: -> ::Array[Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::type_]
           end
         end
 
@@ -468,7 +468,7 @@ module Metronome
           class Type < Metronome::Enum
             PREPAID_COMMIT_CREDITED: :PREPAID_COMMIT_CREDITED
 
-            def self.values: -> Array[Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::type_]
+            def self.values: -> ::Array[Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::type_]
           end
         end
 
@@ -504,7 +504,7 @@ module Metronome
           class Type < Metronome::Enum
             POSTPAID_COMMIT_INITIAL_BALANCE: :POSTPAID_COMMIT_INITIAL_BALANCE
 
-            def self.values: -> Array[Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::type_]
+            def self.values: -> ::Array[Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::type_]
           end
         end
 
@@ -548,7 +548,7 @@ module Metronome
           class Type < Metronome::Enum
             POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION: :POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
 
-            def self.values: -> Array[Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::type_]
+            def self.values: -> ::Array[Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::type_]
           end
         end
 
@@ -592,7 +592,7 @@ module Metronome
           class Type < Metronome::Enum
             POSTPAID_COMMIT_ROLLOVER: :POSTPAID_COMMIT_ROLLOVER
 
-            def self.values: -> Array[Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::type_]
+            def self.values: -> ::Array[Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::type_]
           end
         end
 
@@ -632,7 +632,7 @@ module Metronome
           class Type < Metronome::Enum
             POSTPAID_COMMIT_TRUEUP: :POSTPAID_COMMIT_TRUEUP
 
-            def self.values: -> Array[Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::type_]
+            def self.values: -> ::Array[Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::type_]
           end
         end
 
@@ -672,7 +672,7 @@ module Metronome
           class Type < Metronome::Enum
             PREPAID_COMMIT_MANUAL: :PREPAID_COMMIT_MANUAL
 
-            def self.values: -> Array[Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry::type_]
+            def self.values: -> ::Array[Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry::type_]
           end
         end
 
@@ -712,7 +712,7 @@ module Metronome
           class Type < Metronome::Enum
             POSTPAID_COMMIT_MANUAL: :POSTPAID_COMMIT_MANUAL
 
-            def self.values: -> Array[Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry::type_]
+            def self.values: -> ::Array[Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry::type_]
           end
         end
 
@@ -748,7 +748,7 @@ module Metronome
           class Type < Metronome::Enum
             POSTPAID_COMMIT_EXPIRATION: :POSTPAID_COMMIT_EXPIRATION
 
-            def self.values: -> Array[Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::type_]
+            def self.values: -> ::Array[Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::type_]
           end
         end
 
@@ -761,7 +761,7 @@ module Metronome
         COMMIT_RATE: :COMMIT_RATE
         LIST_RATE: :LIST_RATE
 
-        def self.values: -> Array[Metronome::Models::Commit::rate_type]
+        def self.values: -> ::Array[Metronome::Models::Commit::rate_type]
       end
 
       type rolled_over_from = { commit_id: String, contract_id: String }

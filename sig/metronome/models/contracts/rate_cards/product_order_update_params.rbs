@@ -4,7 +4,7 @@ module Metronome
       module RateCards
         type product_order_update_params =
           {
-            product_moves: Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove],
+            product_moves: ::Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove],
             rate_card_id: String
           }
           & Metronome::request_parameters
@@ -13,13 +13,13 @@ module Metronome
           extend Metronome::RequestParameters::Converter
           include Metronome::RequestParameters
 
-          attr_accessor product_moves: Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove]
+          attr_accessor product_moves: ::Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove]
 
           attr_accessor rate_card_id: String
 
           def initialize:
             (
-              product_moves: Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove],
+              product_moves: ::Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove],
               rate_card_id: String,
               request_options: Metronome::request_opts
             ) -> void

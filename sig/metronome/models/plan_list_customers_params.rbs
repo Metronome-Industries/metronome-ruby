@@ -50,7 +50,7 @@ module Metronome
         ENDED: :ended
         UPCOMING: :upcoming
 
-        def self.values: -> Array[Metronome::Models::PlanListCustomersParams::status]
+        def self.values: -> ::Array[Metronome::Models::PlanListCustomersParams::status]
       end
     end
   end

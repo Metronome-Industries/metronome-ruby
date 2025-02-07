@@ -3,8 +3,8 @@ module Metronome
     type credit_grant_list_entries_params =
       {
         next_page: String,
-        credit_type_ids: Array[String],
-        customer_ids: Array[String],
+        credit_type_ids: ::Array[String],
+        customer_ids: ::Array[String],
         ending_before: Time,
         starting_on: Time
       }
@@ -18,13 +18,13 @@ module Metronome
 
       def next_page=: (String) -> void
 
-      attr_reader credit_type_ids: Array[String]?
+      attr_reader credit_type_ids: ::Array[String]?
 
-      def credit_type_ids=: (Array[String]) -> void
+      def credit_type_ids=: (::Array[String]) -> void
 
-      attr_reader customer_ids: Array[String]?
+      attr_reader customer_ids: ::Array[String]?
 
-      def customer_ids=: (Array[String]) -> void
+      def customer_ids=: (::Array[String]) -> void
 
       attr_reader ending_before: Time?
 
@@ -37,8 +37,8 @@ module Metronome
       def initialize:
         (
           next_page: String,
-          credit_type_ids: Array[String],
-          customer_ids: Array[String],
+          credit_type_ids: ::Array[String],
+          customer_ids: ::Array[String],
           ending_before: Time,
           starting_on: Time,
           request_options: Metronome::request_opts

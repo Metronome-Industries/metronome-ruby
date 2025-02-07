@@ -3,7 +3,7 @@ module Metronome
     class Plans
       def list:
         (
-          ?Metronome::Models::PlanListParams | Hash[Symbol, top] params
+          ?Metronome::Models::PlanListParams | ::Hash[Symbol, top] params
         ) -> Metronome::CursorPage[Metronome::Models::PlanListResponse]
         | (
           limit: Integer,
@@ -13,7 +13,7 @@ module Metronome
 
       def get_details:
         (
-          Metronome::Models::PlanGetDetailsParams | Hash[Symbol, top] params
+          Metronome::Models::PlanGetDetailsParams | ::Hash[Symbol, top] params
         ) -> Metronome::Models::PlanGetDetailsResponse
         | (
           plan_id: String,
@@ -22,7 +22,7 @@ module Metronome
 
       def list_charges:
         (
-          Metronome::Models::PlanListChargesParams | Hash[Symbol, top] params
+          Metronome::Models::PlanListChargesParams | ::Hash[Symbol, top] params
         ) -> Metronome::CursorPage[Metronome::Models::PlanListChargesResponse]
         | (
           plan_id: String,
@@ -33,7 +33,8 @@ module Metronome
 
       def list_customers:
         (
-          Metronome::Models::PlanListCustomersParams | Hash[Symbol, top] params
+          Metronome::Models::PlanListCustomersParams
+          | ::Hash[Symbol, top] params
         ) -> Metronome::CursorPage[Metronome::Models::PlanListCustomersResponse]
         | (
           plan_id: String,

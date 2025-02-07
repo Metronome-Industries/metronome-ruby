@@ -3,15 +3,15 @@ module Metronome
     module Customers
       type named_schedule_retrieve_response =
         {
-          data: Array[Metronome::Models::Customers::NamedScheduleRetrieveResponse::Data]
+          data: ::Array[Metronome::Models::Customers::NamedScheduleRetrieveResponse::Data]
         }
 
       class NamedScheduleRetrieveResponse < Metronome::BaseModel
-        attr_accessor data: Array[Metronome::Models::Customers::NamedScheduleRetrieveResponse::Data]
+        attr_accessor data: ::Array[Metronome::Models::Customers::NamedScheduleRetrieveResponse::Data]
 
         def initialize:
           (
-            data: Array[Metronome::Models::Customers::NamedScheduleRetrieveResponse::Data]
+            data: ::Array[Metronome::Models::Customers::NamedScheduleRetrieveResponse::Data]
           ) -> void
           | (
             ?Metronome::Models::Customers::named_schedule_retrieve_response

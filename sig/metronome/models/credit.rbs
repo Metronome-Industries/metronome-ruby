@@ -6,14 +6,14 @@ module Metronome
         product: Metronome::Models::Credit::Product,
         type: Metronome::Models::Credit::type_,
         access_schedule: Metronome::Models::ScheduleDuration,
-        applicable_contract_ids: Array[String],
-        applicable_product_ids: Array[String],
-        applicable_product_tags: Array[String],
+        applicable_contract_ids: ::Array[String],
+        applicable_product_ids: ::Array[String],
+        applicable_product_tags: ::Array[String],
         balance: Float,
         contract: Metronome::Models::Credit::Contract,
-        custom_fields: Hash[Symbol, String],
+        custom_fields: ::Hash[Symbol, String],
         description: String,
-        ledger: Array[Metronome::Models::Credit::ledger],
+        ledger: ::Array[Metronome::Models::Credit::ledger],
         name: String,
         netsuite_sales_order_id: String,
         priority: Float,
@@ -33,17 +33,17 @@ module Metronome
 
       def access_schedule=: (Metronome::Models::ScheduleDuration) -> void
 
-      attr_reader applicable_contract_ids: Array[String]?
+      attr_reader applicable_contract_ids: ::Array[String]?
 
-      def applicable_contract_ids=: (Array[String]) -> void
+      def applicable_contract_ids=: (::Array[String]) -> void
 
-      attr_reader applicable_product_ids: Array[String]?
+      attr_reader applicable_product_ids: ::Array[String]?
 
-      def applicable_product_ids=: (Array[String]) -> void
+      def applicable_product_ids=: (::Array[String]) -> void
 
-      attr_reader applicable_product_tags: Array[String]?
+      attr_reader applicable_product_tags: ::Array[String]?
 
-      def applicable_product_tags=: (Array[String]) -> void
+      def applicable_product_tags=: (::Array[String]) -> void
 
       attr_reader balance: Float?
 
@@ -53,17 +53,17 @@ module Metronome
 
       def contract=: (Metronome::Models::Credit::Contract) -> void
 
-      attr_reader custom_fields: Hash[Symbol, String]?
+      attr_reader custom_fields: ::Hash[Symbol, String]?
 
-      def custom_fields=: (Hash[Symbol, String]) -> void
+      def custom_fields=: (::Hash[Symbol, String]) -> void
 
       attr_reader description: String?
 
       def description=: (String) -> void
 
-      attr_reader ledger: Array[Metronome::Models::Credit::ledger]?
+      attr_reader ledger: ::Array[Metronome::Models::Credit::ledger]?
 
-      def ledger=: (Array[Metronome::Models::Credit::ledger]) -> void
+      def ledger=: (::Array[Metronome::Models::Credit::ledger]) -> void
 
       attr_reader name: String?
 
@@ -95,14 +95,14 @@ module Metronome
           product: Metronome::Models::Credit::Product,
           type: Metronome::Models::Credit::type_,
           access_schedule: Metronome::Models::ScheduleDuration,
-          applicable_contract_ids: Array[String],
-          applicable_product_ids: Array[String],
-          applicable_product_tags: Array[String],
+          applicable_contract_ids: ::Array[String],
+          applicable_product_ids: ::Array[String],
+          applicable_product_tags: ::Array[String],
           balance: Float,
           contract: Metronome::Models::Credit::Contract,
-          custom_fields: Hash[Symbol, String],
+          custom_fields: ::Hash[Symbol, String],
           description: String,
-          ledger: Array[Metronome::Models::Credit::ledger],
+          ledger: ::Array[Metronome::Models::Credit::ledger],
           name: String,
           netsuite_sales_order_id: String,
           priority: Float,
@@ -135,7 +135,7 @@ module Metronome
       class Type < Metronome::Enum
         CREDIT: :CREDIT
 
-        def self.values: -> Array[Metronome::Models::Credit::type_]
+        def self.values: -> ::Array[Metronome::Models::Credit::type_]
       end
 
       type contract = { id: String }
@@ -197,7 +197,7 @@ module Metronome
           class Type < Metronome::Enum
             CREDIT_SEGMENT_START: :CREDIT_SEGMENT_START
 
-            def self.values: -> Array[Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry::type_]
+            def self.values: -> ::Array[Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry::type_]
           end
         end
 
@@ -241,7 +241,7 @@ module Metronome
           class Type < Metronome::Enum
             CREDIT_AUTOMATED_INVOICE_DEDUCTION: :CREDIT_AUTOMATED_INVOICE_DEDUCTION
 
-            def self.values: -> Array[Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::type_]
+            def self.values: -> ::Array[Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::type_]
           end
         end
 
@@ -281,7 +281,7 @@ module Metronome
           class Type < Metronome::Enum
             CREDIT_EXPIRATION: :CREDIT_EXPIRATION
 
-            def self.values: -> Array[Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry::type_]
+            def self.values: -> ::Array[Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry::type_]
           end
         end
 
@@ -325,7 +325,7 @@ module Metronome
           class Type < Metronome::Enum
             CREDIT_CANCELED: :CREDIT_CANCELED
 
-            def self.values: -> Array[Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry::type_]
+            def self.values: -> ::Array[Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry::type_]
           end
         end
 
@@ -369,7 +369,7 @@ module Metronome
           class Type < Metronome::Enum
             CREDIT_CREDITED: :CREDIT_CREDITED
 
-            def self.values: -> Array[Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry::type_]
+            def self.values: -> ::Array[Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry::type_]
           end
         end
 
@@ -409,7 +409,7 @@ module Metronome
           class Type < Metronome::Enum
             CREDIT_MANUAL: :CREDIT_MANUAL
 
-            def self.values: -> Array[Metronome::Models::Credit::Ledger::CreditManualLedgerEntry::type_]
+            def self.values: -> ::Array[Metronome::Models::Credit::Ledger::CreditManualLedgerEntry::type_]
           end
         end
 
@@ -422,7 +422,7 @@ module Metronome
         COMMIT_RATE: :COMMIT_RATE
         LIST_RATE: :LIST_RATE
 
-        def self.values: -> Array[Metronome::Models::Credit::rate_type]
+        def self.values: -> ::Array[Metronome::Models::Credit::rate_type]
       end
     end
   end

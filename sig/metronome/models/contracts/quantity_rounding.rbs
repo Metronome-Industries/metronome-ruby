@@ -31,7 +31,7 @@ module Metronome
           ROUND_DOWN: :ROUND_DOWN
           ROUND_HALF_UP: :ROUND_HALF_UP
 
-          def self.values: -> Array[Metronome::Models::Contracts::QuantityRounding::rounding_method]
+          def self.values: -> ::Array[Metronome::Models::Contracts::QuantityRounding::rounding_method]
         end
       end
     end

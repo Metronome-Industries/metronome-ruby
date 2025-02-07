@@ -4,8 +4,8 @@ module Metronome
       {
         name: String,
         exists: bool,
-        in_values: Array[String],
-        not_in_values: Array[String]
+        in_values: ::Array[String],
+        not_in_values: ::Array[String]
       }
 
     class PropertyFilter < Metronome::BaseModel
@@ -15,20 +15,20 @@ module Metronome
 
       def exists=: (bool) -> void
 
-      attr_reader in_values: Array[String]?
+      attr_reader in_values: ::Array[String]?
 
-      def in_values=: (Array[String]) -> void
+      def in_values=: (::Array[String]) -> void
 
-      attr_reader not_in_values: Array[String]?
+      attr_reader not_in_values: ::Array[String]?
 
-      def not_in_values=: (Array[String]) -> void
+      def not_in_values=: (::Array[String]) -> void
 
       def initialize:
         (
           name: String,
           exists: bool,
-          in_values: Array[String],
-          not_in_values: Array[String]
+          in_values: ::Array[String],
+          not_in_values: ::Array[String]
         ) -> void
         | (
           ?Metronome::Models::property_filter | Metronome::BaseModel data

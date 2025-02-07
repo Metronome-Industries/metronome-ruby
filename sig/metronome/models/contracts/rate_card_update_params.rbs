@@ -4,7 +4,7 @@ module Metronome
       type rate_card_update_params =
         {
           rate_card_id: String,
-          aliases: Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias],
+          aliases: ::Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias],
           description: String,
           name: String
         }
@@ -16,10 +16,10 @@ module Metronome
 
         attr_accessor rate_card_id: String
 
-        attr_reader aliases: Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias]?
+        attr_reader aliases: ::Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias]?
 
         def aliases=: (
-          Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias]
+          ::Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias]
         ) -> void
 
         attr_reader description: String?
@@ -33,7 +33,7 @@ module Metronome
         def initialize:
           (
             rate_card_id: String,
-            aliases: Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias],
+            aliases: ::Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias],
             description: String,
             name: String,
             request_options: Metronome::request_opts

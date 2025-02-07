@@ -77,20 +77,20 @@ module Metronome
         DAY: :DAY
         NONE: :NONE
 
-        def self.values: -> Array[Metronome::Models::UsageListWithGroupsParams::window_size]
+        def self.values: -> ::Array[Metronome::Models::UsageListWithGroupsParams::window_size]
       end
 
-      type group_by = { key: String, values: Array[String] }
+      type group_by = { key: String, values: ::Array[String] }
 
       class GroupBy < Metronome::BaseModel
         attr_accessor key: String
 
-        attr_reader values: Array[String]?
+        attr_reader values: ::Array[String]?
 
-        def values=: (Array[String]) -> void
+        def values=: (::Array[String]) -> void
 
         def initialize:
-          (key: String, values: Array[String]) -> void
+          (key: String, values: ::Array[String]) -> void
           | (
             ?Metronome::Models::UsageListWithGroupsParams::group_by
             | Metronome::BaseModel data

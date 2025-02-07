@@ -5,7 +5,7 @@ module Metronome
         def list:
           (
             Metronome::Models::Customers::PlanListParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Metronome::CursorPage[Metronome::Models::Customers::PlanListResponse]
           | (
             customer_id: String,
@@ -17,7 +17,7 @@ module Metronome
         def add:
           (
             Metronome::Models::Customers::PlanAddParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Metronome::Models::Customers::PlanAddResponse
           | (
             customer_id: String,
@@ -25,8 +25,8 @@ module Metronome
             starting_on: Time,
             ending_before: Time,
             net_payment_terms_days: Float,
-            overage_rate_adjustments: Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment],
-            price_adjustments: Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment],
+            overage_rate_adjustments: ::Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment],
+            price_adjustments: ::Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment],
             trial_spec: Metronome::Models::Customers::PlanAddParams::TrialSpec,
             request_options: Metronome::request_opts
           ) -> Metronome::Models::Customers::PlanAddResponse
@@ -34,7 +34,7 @@ module Metronome
         def end_:
           (
             Metronome::Models::Customers::PlanEndParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Metronome::Models::Customers::PlanEndResponse
           | (
             customer_id: String,
@@ -48,7 +48,7 @@ module Metronome
         def list_price_adjustments:
           (
             Metronome::Models::Customers::PlanListPriceAdjustmentsParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Metronome::CursorPage[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse]
           | (
             customer_id: String,

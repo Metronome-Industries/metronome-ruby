@@ -6,10 +6,10 @@ module Metronome
           def update:
             (
               Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams
-              | Hash[Symbol, top] params
+              | ::Hash[Symbol, top] params
             ) -> Metronome::Models::Contracts::RateCards::ProductOrderUpdateResponse
             | (
-              product_moves: Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove],
+              product_moves: ::Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove],
               rate_card_id: String,
               request_options: Metronome::request_opts
             ) -> Metronome::Models::Contracts::RateCards::ProductOrderUpdateResponse
@@ -17,10 +17,10 @@ module Metronome
           def set:
             (
               Metronome::Models::Contracts::RateCards::ProductOrderSetParams
-              | Hash[Symbol, top] params
+              | ::Hash[Symbol, top] params
             ) -> Metronome::Models::Contracts::RateCards::ProductOrderSetResponse
             | (
-              product_order: Array[String],
+              product_order: ::Array[String],
               rate_card_id: String,
               request_options: Metronome::request_opts
             ) -> Metronome::Models::Contracts::RateCards::ProductOrderSetResponse

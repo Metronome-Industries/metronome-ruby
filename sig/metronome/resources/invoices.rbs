@@ -3,7 +3,8 @@ module Metronome
     class Invoices
       def regenerate:
         (
-          Metronome::Models::InvoiceRegenerateParams | Hash[Symbol, top] params
+          Metronome::Models::InvoiceRegenerateParams
+          | ::Hash[Symbol, top] params
         ) -> Metronome::Models::InvoiceRegenerateResponse
         | (
           id: String,
@@ -12,7 +13,7 @@ module Metronome
 
       def `void`:
         (
-          Metronome::Models::InvoiceVoidParams | Hash[Symbol, top] params
+          Metronome::Models::InvoiceVoidParams | ::Hash[Symbol, top] params
         ) -> Metronome::Models::InvoiceVoidResponse
         | (
           id: String,

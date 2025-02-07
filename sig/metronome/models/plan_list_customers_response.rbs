@@ -26,7 +26,7 @@ module Metronome
       type plan_details =
         {
           id: String,
-          custom_fields: Hash[Symbol, String],
+          custom_fields: ::Hash[Symbol, String],
           customer_plan_id: String,
           name: String,
           starting_on: Time,
@@ -36,7 +36,7 @@ module Metronome
       class PlanDetails < Metronome::BaseModel
         attr_accessor id: String
 
-        attr_accessor custom_fields: Hash[Symbol, String]
+        attr_accessor custom_fields: ::Hash[Symbol, String]
 
         attr_accessor customer_plan_id: String
 
@@ -49,7 +49,7 @@ module Metronome
         def initialize:
           (
             id: String,
-            custom_fields: Hash[Symbol, String],
+            custom_fields: ::Hash[Symbol, String],
             customer_plan_id: String,
             name: String,
             starting_on: Time,

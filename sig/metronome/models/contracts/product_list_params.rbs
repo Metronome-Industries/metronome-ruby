@@ -48,7 +48,7 @@ module Metronome
           NOT_ARCHIVED: :NOT_ARCHIVED
           ALL: :ALL
 
-          def self.values: -> Array[Metronome::Models::Contracts::ProductListParams::archive_filter]
+          def self.values: -> ::Array[Metronome::Models::Contracts::ProductListParams::archive_filter]
         end
       end
     end

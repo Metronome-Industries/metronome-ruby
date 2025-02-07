@@ -8,7 +8,7 @@ module Metronome
           limit: Integer,
           next_page: String,
           ending_before: Time,
-          selectors: Array[Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams::Selector]
+          selectors: ::Array[Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams::Selector]
         }
         & Metronome::request_parameters
 
@@ -32,10 +32,10 @@ module Metronome
 
         def ending_before=: (Time) -> void
 
-        attr_reader selectors: Array[Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams::Selector]?
+        attr_reader selectors: ::Array[Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams::Selector]?
 
         def selectors=: (
-          Array[Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams::Selector]
+          ::Array[Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams::Selector]
         ) -> void
 
         def initialize:
@@ -45,7 +45,7 @@ module Metronome
             limit: Integer,
             next_page: String,
             ending_before: Time,
-            selectors: Array[Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams::Selector],
+            selectors: ::Array[Metronome::Models::Contracts::RateCardRetrieveRateScheduleParams::Selector],
             request_options: Metronome::request_opts
           ) -> void
           | (
@@ -57,19 +57,19 @@ module Metronome
 
         type selector =
           {
-            partial_pricing_group_values: Hash[Symbol, String],
-            pricing_group_values: Hash[Symbol, String],
+            partial_pricing_group_values: ::Hash[Symbol, String],
+            pricing_group_values: ::Hash[Symbol, String],
             product_id: String
           }
 
         class Selector < Metronome::BaseModel
-          attr_reader partial_pricing_group_values: Hash[Symbol, String]?
+          attr_reader partial_pricing_group_values: ::Hash[Symbol, String]?
 
-          def partial_pricing_group_values=: (Hash[Symbol, String]) -> void
+          def partial_pricing_group_values=: (::Hash[Symbol, String]) -> void
 
-          attr_reader pricing_group_values: Hash[Symbol, String]?
+          attr_reader pricing_group_values: ::Hash[Symbol, String]?
 
-          def pricing_group_values=: (Hash[Symbol, String]) -> void
+          def pricing_group_values=: (::Hash[Symbol, String]) -> void
 
           attr_reader product_id: String?
 
@@ -77,8 +77,8 @@ module Metronome
 
           def initialize:
             (
-              partial_pricing_group_values: Hash[Symbol, String],
-              pricing_group_values: Hash[Symbol, String],
+              partial_pricing_group_values: ::Hash[Symbol, String],
+              pricing_group_values: ::Hash[Symbol, String],
               product_id: String
             ) -> void
             | (

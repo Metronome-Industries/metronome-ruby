@@ -5,7 +5,7 @@ module Metronome
         {
           charge_id: String,
           charge_type: Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::charge_type,
-          prices: Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price],
+          prices: ::Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price],
           start_period: Float,
           quantity: Float
         }
@@ -15,7 +15,7 @@ module Metronome
 
         attr_accessor charge_type: Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::charge_type
 
-        attr_accessor prices: Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price]
+        attr_accessor prices: ::Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price]
 
         attr_accessor start_period: Float
 
@@ -27,7 +27,7 @@ module Metronome
           (
             charge_id: String,
             charge_type: Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::charge_type,
-            prices: Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price],
+            prices: ::Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price],
             start_period: Float,
             quantity: Float
           ) -> void
@@ -47,7 +47,7 @@ module Metronome
           MINIMUM: :minimum
           SEAT: :seat
 
-          def self.values: -> Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::charge_type]
+          def self.values: -> ::Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::charge_type]
         end
 
         type price =
@@ -89,7 +89,7 @@ module Metronome
             PERCENTAGE: :percentage
             OVERRIDE: :override
 
-            def self.values: -> Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price::adjustment_type]
+            def self.values: -> ::Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price::adjustment_type]
           end
         end
       end

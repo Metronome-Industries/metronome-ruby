@@ -5,9 +5,9 @@ module Metronome
         id: String,
         charge_type: Metronome::Models::PlanListChargesResponse::charge_type,
         credit_type: Metronome::Models::CreditTypeData,
-        custom_fields: Hash[Symbol, String],
+        custom_fields: ::Hash[Symbol, String],
         name: String,
-        prices: Array[Metronome::Models::PlanListChargesResponse::Price],
+        prices: ::Array[Metronome::Models::PlanListChargesResponse::Price],
         product_id: String,
         product_name: String,
         quantity: Float,
@@ -23,11 +23,11 @@ module Metronome
 
       attr_accessor credit_type: Metronome::Models::CreditTypeData
 
-      attr_accessor custom_fields: Hash[Symbol, String]
+      attr_accessor custom_fields: ::Hash[Symbol, String]
 
       attr_accessor name: String
 
-      attr_accessor prices: Array[Metronome::Models::PlanListChargesResponse::Price]
+      attr_accessor prices: ::Array[Metronome::Models::PlanListChargesResponse::Price]
 
       attr_accessor product_id: String
 
@@ -56,9 +56,9 @@ module Metronome
           id: String,
           charge_type: Metronome::Models::PlanListChargesResponse::charge_type,
           credit_type: Metronome::Models::CreditTypeData,
-          custom_fields: Hash[Symbol, String],
+          custom_fields: ::Hash[Symbol, String],
           name: String,
-          prices: Array[Metronome::Models::PlanListChargesResponse::Price],
+          prices: ::Array[Metronome::Models::PlanListChargesResponse::Price],
           product_id: String,
           product_name: String,
           quantity: Float,
@@ -82,7 +82,7 @@ module Metronome
         MINIMUM: :minimum
         SEAT: :seat
 
-        def self.values: -> Array[Metronome::Models::PlanListChargesResponse::charge_type]
+        def self.values: -> ::Array[Metronome::Models::PlanListChargesResponse::charge_type]
       end
 
       type price =
@@ -160,7 +160,7 @@ module Metronome
           FLOOR: :floor
           CEILING: :ceiling
 
-          def self.values: -> Array[Metronome::Models::PlanListChargesResponse::UnitConversion::rounding_behavior]
+          def self.values: -> ::Array[Metronome::Models::PlanListChargesResponse::UnitConversion::rounding_behavior]
         end
       end
     end

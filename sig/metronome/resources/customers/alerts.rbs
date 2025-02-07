@@ -5,7 +5,7 @@ module Metronome
         def retrieve:
           (
             Metronome::Models::Customers::AlertRetrieveParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Metronome::Models::Customers::AlertRetrieveResponse
           | (
             alert_id: String,
@@ -16,19 +16,19 @@ module Metronome
         def list:
           (
             Metronome::Models::Customers::AlertListParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Metronome::Models::Customers::AlertListResponse
           | (
             customer_id: String,
             next_page: String,
-            alert_statuses: Array[Metronome::Models::Customers::AlertListParams::alert_status],
+            alert_statuses: ::Array[Metronome::Models::Customers::AlertListParams::alert_status],
             request_options: Metronome::request_opts
           ) -> Metronome::Models::Customers::AlertListResponse
 
         def reset:
           (
             Metronome::Models::Customers::AlertResetParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> nil
           | (
             alert_id: String,

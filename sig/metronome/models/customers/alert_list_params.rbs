@@ -5,7 +5,7 @@ module Metronome
         {
           customer_id: String,
           next_page: String,
-          alert_statuses: Array[Metronome::Models::Customers::AlertListParams::alert_status]
+          alert_statuses: ::Array[Metronome::Models::Customers::AlertListParams::alert_status]
         }
         & Metronome::request_parameters
 
@@ -19,17 +19,17 @@ module Metronome
 
         def next_page=: (String) -> void
 
-        attr_reader alert_statuses: Array[Metronome::Models::Customers::AlertListParams::alert_status]?
+        attr_reader alert_statuses: ::Array[Metronome::Models::Customers::AlertListParams::alert_status]?
 
         def alert_statuses=: (
-          Array[Metronome::Models::Customers::AlertListParams::alert_status]
+          ::Array[Metronome::Models::Customers::AlertListParams::alert_status]
         ) -> void
 
         def initialize:
           (
             customer_id: String,
             next_page: String,
-            alert_statuses: Array[Metronome::Models::Customers::AlertListParams::alert_status],
+            alert_statuses: ::Array[Metronome::Models::Customers::AlertListParams::alert_status],
             request_options: Metronome::request_opts
           ) -> void
           | (
@@ -46,7 +46,7 @@ module Metronome
           DISABLED: :DISABLED
           ARCHIVED: :ARCHIVED
 
-          def self.values: -> Array[Metronome::Models::Customers::AlertListParams::alert_status]
+          def self.values: -> ::Array[Metronome::Models::Customers::AlertListParams::alert_status]
         end
       end
     end

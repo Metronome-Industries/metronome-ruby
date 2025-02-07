@@ -2,18 +2,18 @@ module Metronome
   module Models
     type credit_grant_list_entries_response =
       {
-        data: Array[Metronome::Models::CreditGrantListEntriesResponse::Data],
+        data: ::Array[Metronome::Models::CreditGrantListEntriesResponse::Data],
         next_page: String?
       }
 
     class CreditGrantListEntriesResponse < Metronome::BaseModel
-      attr_accessor data: Array[Metronome::Models::CreditGrantListEntriesResponse::Data]
+      attr_accessor data: ::Array[Metronome::Models::CreditGrantListEntriesResponse::Data]
 
       attr_accessor next_page: String?
 
       def initialize:
         (
-          data: Array[Metronome::Models::CreditGrantListEntriesResponse::Data],
+          data: ::Array[Metronome::Models::CreditGrantListEntriesResponse::Data],
           next_page: String?
         ) -> void
         | (
@@ -26,18 +26,18 @@ module Metronome
       type data =
         {
           customer_id: String,
-          ledgers: Array[Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger]
+          ledgers: ::Array[Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger]
         }
 
       class Data < Metronome::BaseModel
         attr_accessor customer_id: String
 
-        attr_accessor ledgers: Array[Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger]
+        attr_accessor ledgers: ::Array[Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger]
 
         def initialize:
           (
             customer_id: String,
-            ledgers: Array[Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger]
+            ledgers: ::Array[Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger]
           ) -> void
           | (
             ?Metronome::Models::CreditGrantListEntriesResponse::data
@@ -50,8 +50,8 @@ module Metronome
           {
             credit_type: Metronome::Models::CreditTypeData,
             ending_balance: Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance,
-            entries: Array[Metronome::Models::CreditLedgerEntry],
-            pending_entries: Array[Metronome::Models::CreditLedgerEntry],
+            entries: ::Array[Metronome::Models::CreditLedgerEntry],
+            pending_entries: ::Array[Metronome::Models::CreditLedgerEntry],
             starting_balance: Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance
           }
 
@@ -60,9 +60,9 @@ module Metronome
 
           attr_accessor ending_balance: Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance
 
-          attr_accessor entries: Array[Metronome::Models::CreditLedgerEntry]
+          attr_accessor entries: ::Array[Metronome::Models::CreditLedgerEntry]
 
-          attr_accessor pending_entries: Array[Metronome::Models::CreditLedgerEntry]
+          attr_accessor pending_entries: ::Array[Metronome::Models::CreditLedgerEntry]
 
           attr_accessor starting_balance: Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance
 
@@ -70,8 +70,8 @@ module Metronome
             (
               credit_type: Metronome::Models::CreditTypeData,
               ending_balance: Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance,
-              entries: Array[Metronome::Models::CreditLedgerEntry],
-              pending_entries: Array[Metronome::Models::CreditLedgerEntry],
+              entries: ::Array[Metronome::Models::CreditLedgerEntry],
+              pending_entries: ::Array[Metronome::Models::CreditLedgerEntry],
               starting_balance: Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance
             ) -> void
             | (

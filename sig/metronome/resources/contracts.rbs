@@ -9,30 +9,30 @@ module Metronome
 
       def create:
         (
-          Metronome::Models::ContractCreateParams | Hash[Symbol, top] params
+          Metronome::Models::ContractCreateParams | ::Hash[Symbol, top] params
         ) -> Metronome::Models::ContractCreateResponse
         | (
           customer_id: String,
           starting_at: Time,
           billing_provider_configuration: Metronome::Models::ContractCreateParams::BillingProviderConfiguration,
-          commits: Array[Metronome::Models::ContractCreateParams::Commit],
-          credits: Array[Metronome::Models::ContractCreateParams::Credit],
-          custom_fields: Hash[Symbol, String],
-          discounts: Array[Metronome::Models::ContractCreateParams::Discount],
+          commits: ::Array[Metronome::Models::ContractCreateParams::Commit],
+          credits: ::Array[Metronome::Models::ContractCreateParams::Credit],
+          custom_fields: ::Hash[Symbol, String],
+          discounts: ::Array[Metronome::Models::ContractCreateParams::Discount],
           ending_before: Time,
           multiplier_override_prioritization: Metronome::Models::ContractCreateParams::multiplier_override_prioritization,
           name: String,
           net_payment_terms_days: Float,
           netsuite_sales_order_id: String,
-          overrides: Array[Metronome::Models::ContractCreateParams::Override],
-          professional_services: Array[Metronome::Models::ContractCreateParams::ProfessionalService],
+          overrides: ::Array[Metronome::Models::ContractCreateParams::Override],
+          professional_services: ::Array[Metronome::Models::ContractCreateParams::ProfessionalService],
           rate_card_alias: String,
           rate_card_id: String,
-          recurring_commits: Array[Metronome::Models::ContractCreateParams::RecurringCommit],
-          recurring_credits: Array[Metronome::Models::ContractCreateParams::RecurringCredit],
-          reseller_royalties: Array[Metronome::Models::ContractCreateParams::ResellerRoyalty],
+          recurring_commits: ::Array[Metronome::Models::ContractCreateParams::RecurringCommit],
+          recurring_credits: ::Array[Metronome::Models::ContractCreateParams::RecurringCredit],
+          reseller_royalties: ::Array[Metronome::Models::ContractCreateParams::ResellerRoyalty],
           salesforce_opportunity_id: String,
-          scheduled_charges: Array[Metronome::Models::ContractCreateParams::ScheduledCharge],
+          scheduled_charges: ::Array[Metronome::Models::ContractCreateParams::ScheduledCharge],
           scheduled_charges_on_usage_invoices: Metronome::Models::ContractCreateParams::scheduled_charges_on_usage_invoices,
           total_contract_value: Float,
           transition: Metronome::Models::ContractCreateParams::Transition,
@@ -44,7 +44,7 @@ module Metronome
 
       def retrieve:
         (
-          Metronome::Models::ContractRetrieveParams | Hash[Symbol, top] params
+          Metronome::Models::ContractRetrieveParams | ::Hash[Symbol, top] params
         ) -> Metronome::Models::ContractRetrieveResponse
         | (
           contract_id: String,
@@ -56,7 +56,7 @@ module Metronome
 
       def list:
         (
-          Metronome::Models::ContractListParams | Hash[Symbol, top] params
+          Metronome::Models::ContractListParams | ::Hash[Symbol, top] params
         ) -> Metronome::Models::ContractListResponse
         | (
           customer_id: String,
@@ -71,7 +71,7 @@ module Metronome
       def add_manual_balance_entry:
         (
           Metronome::Models::ContractAddManualBalanceEntryParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> nil
         | (
           id: String,
@@ -86,29 +86,29 @@ module Metronome
 
       def amend:
         (
-          Metronome::Models::ContractAmendParams | Hash[Symbol, top] params
+          Metronome::Models::ContractAmendParams | ::Hash[Symbol, top] params
         ) -> Metronome::Models::ContractAmendResponse
         | (
           contract_id: String,
           customer_id: String,
           starting_at: Time,
-          commits: Array[Metronome::Models::ContractAmendParams::Commit],
-          credits: Array[Metronome::Models::ContractAmendParams::Credit],
-          custom_fields: Hash[Symbol, String],
-          discounts: Array[Metronome::Models::ContractAmendParams::Discount],
+          commits: ::Array[Metronome::Models::ContractAmendParams::Commit],
+          credits: ::Array[Metronome::Models::ContractAmendParams::Credit],
+          custom_fields: ::Hash[Symbol, String],
+          discounts: ::Array[Metronome::Models::ContractAmendParams::Discount],
           netsuite_sales_order_id: String,
-          overrides: Array[Metronome::Models::ContractAmendParams::Override],
-          professional_services: Array[Metronome::Models::ContractAmendParams::ProfessionalService],
-          reseller_royalties: Array[Metronome::Models::ContractAmendParams::ResellerRoyalty],
+          overrides: ::Array[Metronome::Models::ContractAmendParams::Override],
+          professional_services: ::Array[Metronome::Models::ContractAmendParams::ProfessionalService],
+          reseller_royalties: ::Array[Metronome::Models::ContractAmendParams::ResellerRoyalty],
           salesforce_opportunity_id: String,
-          scheduled_charges: Array[Metronome::Models::ContractAmendParams::ScheduledCharge],
+          scheduled_charges: ::Array[Metronome::Models::ContractAmendParams::ScheduledCharge],
           total_contract_value: Float,
           request_options: Metronome::request_opts
         ) -> Metronome::Models::ContractAmendResponse
 
       def archive:
         (
-          Metronome::Models::ContractArchiveParams | Hash[Symbol, top] params
+          Metronome::Models::ContractArchiveParams | ::Hash[Symbol, top] params
         ) -> Metronome::Models::ContractArchiveResponse
         | (
           contract_id: String,
@@ -120,10 +120,10 @@ module Metronome
       def create_historical_invoices:
         (
           Metronome::Models::ContractCreateHistoricalInvoicesParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Metronome::Models::ContractCreateHistoricalInvoicesResponse
         | (
-          invoices: Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice],
+          invoices: ::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice],
           preview: bool,
           request_options: Metronome::request_opts
         ) -> Metronome::Models::ContractCreateHistoricalInvoicesResponse
@@ -131,7 +131,7 @@ module Metronome
       def list_balances:
         (
           Metronome::Models::ContractListBalancesParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Metronome::Models::ContractListBalancesResponse
         | (
           customer_id: String,
@@ -150,7 +150,7 @@ module Metronome
       def retrieve_rate_schedule:
         (
           Metronome::Models::ContractRetrieveRateScheduleParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Metronome::Models::ContractRetrieveRateScheduleResponse
         | (
           contract_id: String,
@@ -158,20 +158,20 @@ module Metronome
           limit: Integer,
           next_page: String,
           at: Time,
-          selectors: Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector],
+          selectors: ::Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector],
           request_options: Metronome::request_opts
         ) -> Metronome::Models::ContractRetrieveRateScheduleResponse
 
       def schedule_pro_services_invoice:
         (
           Metronome::Models::ContractScheduleProServicesInvoiceParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Metronome::Models::ContractScheduleProServicesInvoiceResponse
         | (
           contract_id: String,
           customer_id: String,
           issued_at: Time,
-          line_items: Array[Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem],
+          line_items: ::Array[Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem],
           netsuite_invoice_header_end: Time,
           netsuite_invoice_header_start: Time,
           request_options: Metronome::request_opts
@@ -180,13 +180,13 @@ module Metronome
       def set_usage_filter:
         (
           Metronome::Models::ContractSetUsageFilterParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> nil
         | (
           contract_id: String,
           customer_id: String,
           group_key: String,
-          group_values: Array[String],
+          group_values: ::Array[String],
           starting_at: Time,
           request_options: Metronome::request_opts
         ) -> nil
@@ -194,7 +194,7 @@ module Metronome
       def update_end_date:
         (
           Metronome::Models::ContractUpdateEndDateParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Metronome::Models::ContractUpdateEndDateResponse
         | (
           contract_id: String,

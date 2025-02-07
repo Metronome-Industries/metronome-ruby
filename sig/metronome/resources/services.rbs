@@ -3,7 +3,7 @@ module Metronome
     class Services
       def list:
         (
-          ?Metronome::Models::ServiceListParams | Hash[Symbol, top] params
+          ?Metronome::Models::ServiceListParams | ::Hash[Symbol, top] params
         ) -> Metronome::Models::ServiceListResponse
         | (
           request_options: Metronome::request_opts

@@ -2,18 +2,18 @@ module Metronome
   module Models
     type usage_list_response =
       {
-        data: Array[Metronome::Models::UsageListResponse::Data],
+        data: ::Array[Metronome::Models::UsageListResponse::Data],
         next_page: String?
       }
 
     class UsageListResponse < Metronome::BaseModel
-      attr_accessor data: Array[Metronome::Models::UsageListResponse::Data]
+      attr_accessor data: ::Array[Metronome::Models::UsageListResponse::Data]
 
       attr_accessor next_page: String?
 
       def initialize:
         (
-          data: Array[Metronome::Models::UsageListResponse::Data],
+          data: ::Array[Metronome::Models::UsageListResponse::Data],
           next_page: String?
         ) -> void
         | (
@@ -30,7 +30,7 @@ module Metronome
           end_timestamp: Time,
           start_timestamp: Time,
           value: Float?,
-          groups: Hash[Symbol, Float?]
+          groups: ::Hash[Symbol, Float?]
         }
 
       class Data < Metronome::BaseModel
@@ -46,9 +46,9 @@ module Metronome
 
         attr_accessor value: Float?
 
-        attr_reader groups: Hash[Symbol, Float?]?
+        attr_reader groups: ::Hash[Symbol, Float?]?
 
-        def groups=: (Hash[Symbol, Float?]) -> void
+        def groups=: (::Hash[Symbol, Float?]) -> void
 
         def initialize:
           (
@@ -58,7 +58,7 @@ module Metronome
             end_timestamp: Time,
             start_timestamp: Time,
             value: Float?,
-            groups: Hash[Symbol, Float?]
+            groups: ::Hash[Symbol, Float?]
           ) -> void
           | (
             ?Metronome::Models::UsageListResponse::data

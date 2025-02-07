@@ -39,11 +39,11 @@ module Metronome
             threshold: Float,
             type: Metronome::Models::Customers::CustomerAlert::Alert::type_,
             updated_at: Time,
-            credit_grant_type_filters: Array[String],
+            credit_grant_type_filters: ::Array[String],
             credit_type: Metronome::Models::CreditTypeData?,
-            custom_field_filters: Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter],
+            custom_field_filters: ::Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter],
             group_key_filter: Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter,
-            invoice_types_filter: Array[String],
+            invoice_types_filter: ::Array[String],
             uniqueness_key: String
           }
 
@@ -60,16 +60,16 @@ module Metronome
 
           attr_accessor updated_at: Time
 
-          attr_reader credit_grant_type_filters: Array[String]?
+          attr_reader credit_grant_type_filters: ::Array[String]?
 
-          def credit_grant_type_filters=: (Array[String]) -> void
+          def credit_grant_type_filters=: (::Array[String]) -> void
 
           attr_accessor credit_type: Metronome::Models::CreditTypeData?
 
-          attr_reader custom_field_filters: Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter]?
+          attr_reader custom_field_filters: ::Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter]?
 
           def custom_field_filters=: (
-            Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter]
+            ::Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter]
           ) -> void
 
           attr_reader group_key_filter: Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter?
@@ -78,9 +78,9 @@ module Metronome
             Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter
           ) -> void
 
-          attr_reader invoice_types_filter: Array[String]?
+          attr_reader invoice_types_filter: ::Array[String]?
 
-          def invoice_types_filter=: (Array[String]) -> void
+          def invoice_types_filter=: (::Array[String]) -> void
 
           attr_reader uniqueness_key: String?
 
@@ -94,11 +94,11 @@ module Metronome
               threshold: Float,
               type: Metronome::Models::Customers::CustomerAlert::Alert::type_,
               updated_at: Time,
-              credit_grant_type_filters: Array[String],
+              credit_grant_type_filters: ::Array[String],
               credit_type: Metronome::Models::CreditTypeData?,
-              custom_field_filters: Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter],
+              custom_field_filters: ::Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter],
               group_key_filter: Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter,
-              invoice_types_filter: Array[String],
+              invoice_types_filter: ::Array[String],
               uniqueness_key: String
             ) -> void
             | (
@@ -115,7 +115,7 @@ module Metronome
             ARCHIVED: :archived
             DISABLED: :disabled
 
-            def self.values: -> Array[Metronome::Models::Customers::CustomerAlert::Alert::status]
+            def self.values: -> ::Array[Metronome::Models::Customers::CustomerAlert::Alert::status]
           end
 
           type type_ =
@@ -150,7 +150,7 @@ module Metronome
             LOW_REMAINING_CONTRACT_CREDIT_AND_COMMIT_BALANCE_REACHED: :low_remaining_contract_credit_and_commit_balance_reached
             INVOICE_TOTAL_REACHED: :invoice_total_reached
 
-            def self.values: -> Array[Metronome::Models::Customers::CustomerAlert::Alert::type_]
+            def self.values: -> ::Array[Metronome::Models::Customers::CustomerAlert::Alert::type_]
           end
 
           type custom_field_filter =
@@ -187,7 +187,7 @@ module Metronome
               COMMIT: :Commit
               CONTRACT_CREDIT: :ContractCredit
 
-              def self.values: -> Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter::entity]
+              def self.values: -> ::Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter::entity]
             end
           end
 
@@ -216,7 +216,7 @@ module Metronome
           IN_ALARM: :in_alarm
           EVALUATING: :evaluating
 
-          def self.values: -> Array[Metronome::Models::Customers::CustomerAlert::customer_status]
+          def self.values: -> ::Array[Metronome::Models::Customers::CustomerAlert::customer_status]
         end
       end
     end

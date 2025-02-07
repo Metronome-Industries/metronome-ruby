@@ -6,21 +6,21 @@ module Metronome
           def list:
             (
               Metronome::Models::Contracts::RateCards::RateListParams
-              | Hash[Symbol, top] params
+              | ::Hash[Symbol, top] params
             ) -> Metronome::CursorPage[Metronome::Models::Contracts::RateCards::RateListResponse]
             | (
               at: Time,
               rate_card_id: String,
               limit: Integer,
               next_page: String,
-              selectors: Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector],
+              selectors: ::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector],
               request_options: Metronome::request_opts
             ) -> Metronome::CursorPage[Metronome::Models::Contracts::RateCards::RateListResponse]
 
           def add:
             (
               Metronome::Models::Contracts::RateCards::RateAddParams
-              | Hash[Symbol, top] params
+              | ::Hash[Symbol, top] params
             ) -> Metronome::Models::Contracts::RateCards::RateAddResponse
             | (
               entitled: bool,
@@ -30,13 +30,13 @@ module Metronome
               starting_at: Time,
               commit_rate: Metronome::Models::Contracts::RateCards::RateAddParams::CommitRate,
               credit_type_id: String,
-              custom_rate: Hash[Symbol, top],
+              custom_rate: ::Hash[Symbol, top],
               ending_before: Time,
               is_prorated: bool,
               price: Float,
-              pricing_group_values: Hash[Symbol, String],
+              pricing_group_values: ::Hash[Symbol, String],
               quantity: Float,
-              tiers: Array[Metronome::Models::Tier],
+              tiers: ::Array[Metronome::Models::Tier],
               use_list_prices: bool,
               request_options: Metronome::request_opts
             ) -> Metronome::Models::Contracts::RateCards::RateAddResponse
@@ -44,11 +44,11 @@ module Metronome
           def add_many:
             (
               Metronome::Models::Contracts::RateCards::RateAddManyParams
-              | Hash[Symbol, top] params
+              | ::Hash[Symbol, top] params
             ) -> Metronome::Models::Contracts::RateCards::RateAddManyResponse
             | (
               rate_card_id: String,
-              rates: Array[Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate],
+              rates: ::Array[Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate],
               request_options: Metronome::request_opts
             ) -> Metronome::Models::Contracts::RateCards::RateAddManyResponse
 

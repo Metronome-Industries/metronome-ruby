@@ -6,13 +6,13 @@ module Metronome
         name: String,
         threshold: Float,
         billable_metric_id: String,
-        credit_grant_type_filters: Array[String],
+        credit_grant_type_filters: ::Array[String],
         credit_type_id: String,
-        custom_field_filters: Array[Metronome::Models::AlertCreateParams::CustomFieldFilter],
+        custom_field_filters: ::Array[Metronome::Models::AlertCreateParams::CustomFieldFilter],
         customer_id: String,
         evaluate_on_create: bool,
         group_key_filter: Metronome::Models::AlertCreateParams::GroupKeyFilter,
-        invoice_types_filter: Array[String],
+        invoice_types_filter: ::Array[String],
         plan_id: String,
         uniqueness_key: String
       }
@@ -32,18 +32,18 @@ module Metronome
 
       def billable_metric_id=: (String) -> void
 
-      attr_reader credit_grant_type_filters: Array[String]?
+      attr_reader credit_grant_type_filters: ::Array[String]?
 
-      def credit_grant_type_filters=: (Array[String]) -> void
+      def credit_grant_type_filters=: (::Array[String]) -> void
 
       attr_reader credit_type_id: String?
 
       def credit_type_id=: (String) -> void
 
-      attr_reader custom_field_filters: Array[Metronome::Models::AlertCreateParams::CustomFieldFilter]?
+      attr_reader custom_field_filters: ::Array[Metronome::Models::AlertCreateParams::CustomFieldFilter]?
 
       def custom_field_filters=: (
-        Array[Metronome::Models::AlertCreateParams::CustomFieldFilter]
+        ::Array[Metronome::Models::AlertCreateParams::CustomFieldFilter]
       ) -> void
 
       attr_reader customer_id: String?
@@ -60,9 +60,9 @@ module Metronome
         Metronome::Models::AlertCreateParams::GroupKeyFilter
       ) -> void
 
-      attr_reader invoice_types_filter: Array[String]?
+      attr_reader invoice_types_filter: ::Array[String]?
 
-      def invoice_types_filter=: (Array[String]) -> void
+      def invoice_types_filter=: (::Array[String]) -> void
 
       attr_reader plan_id: String?
 
@@ -78,13 +78,13 @@ module Metronome
           name: String,
           threshold: Float,
           billable_metric_id: String,
-          credit_grant_type_filters: Array[String],
+          credit_grant_type_filters: ::Array[String],
           credit_type_id: String,
-          custom_field_filters: Array[Metronome::Models::AlertCreateParams::CustomFieldFilter],
+          custom_field_filters: ::Array[Metronome::Models::AlertCreateParams::CustomFieldFilter],
           customer_id: String,
           evaluate_on_create: bool,
           group_key_filter: Metronome::Models::AlertCreateParams::GroupKeyFilter,
-          invoice_types_filter: Array[String],
+          invoice_types_filter: ::Array[String],
           plan_id: String,
           uniqueness_key: String,
           request_options: Metronome::request_opts
@@ -127,7 +127,7 @@ module Metronome
         LOW_REMAINING_CONTRACT_CREDIT_AND_COMMIT_BALANCE_REACHED: :low_remaining_contract_credit_and_commit_balance_reached
         INVOICE_TOTAL_REACHED: :invoice_total_reached
 
-        def self.values: -> Array[Metronome::Models::AlertCreateParams::alert_type]
+        def self.values: -> ::Array[Metronome::Models::AlertCreateParams::alert_type]
       end
 
       type custom_field_filter =
@@ -164,7 +164,7 @@ module Metronome
           COMMIT: :Commit
           CONTRACT_CREDIT: :ContractCredit
 
-          def self.values: -> Array[Metronome::Models::AlertCreateParams::CustomFieldFilter::entity]
+          def self.values: -> ::Array[Metronome::Models::AlertCreateParams::CustomFieldFilter::entity]
         end
       end
 

@@ -5,7 +5,7 @@ module Metronome
         id: String,
         product: Metronome::Models::Discount::Product,
         schedule: Metronome::Models::SchedulePointInTime,
-        custom_fields: Hash[Symbol, String],
+        custom_fields: ::Hash[Symbol, String],
         name: String,
         netsuite_sales_order_id: String
       }
@@ -17,9 +17,9 @@ module Metronome
 
       attr_accessor schedule: Metronome::Models::SchedulePointInTime
 
-      attr_reader custom_fields: Hash[Symbol, String]?
+      attr_reader custom_fields: ::Hash[Symbol, String]?
 
-      def custom_fields=: (Hash[Symbol, String]) -> void
+      def custom_fields=: (::Hash[Symbol, String]) -> void
 
       attr_reader name: String?
 
@@ -34,7 +34,7 @@ module Metronome
           id: String,
           product: Metronome::Models::Discount::Product,
           schedule: Metronome::Models::SchedulePointInTime,
-          custom_fields: Hash[Symbol, String],
+          custom_fields: ::Hash[Symbol, String],
           name: String,
           netsuite_sales_order_id: String
         ) -> void

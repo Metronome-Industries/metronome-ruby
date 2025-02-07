@@ -2,7 +2,7 @@ module Metronome
   module Models
     type contract_create_historical_invoices_params =
       {
-        invoices: Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice],
+        invoices: ::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice],
         preview: bool
       }
       & Metronome::request_parameters
@@ -11,13 +11,13 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      attr_accessor invoices: Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice]
+      attr_accessor invoices: ::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice]
 
       attr_accessor preview: bool
 
       def initialize:
         (
-          invoices: Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice],
+          invoices: ::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice],
           preview: bool,
           request_options: Metronome::request_opts
         ) -> void
@@ -36,10 +36,10 @@ module Metronome
           exclusive_end_date: Time,
           inclusive_start_date: Time,
           issue_date: Time,
-          usage_line_items: Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem],
+          usage_line_items: ::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem],
           billable_status: Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::billable_status,
           breakdown_granularity: Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::breakdown_granularity,
-          custom_fields: Hash[Symbol, String]
+          custom_fields: ::Hash[Symbol, String]
         }
 
       class Invoice < Metronome::BaseModel
@@ -55,7 +55,7 @@ module Metronome
 
         attr_accessor issue_date: Time
 
-        attr_accessor usage_line_items: Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem]
+        attr_accessor usage_line_items: ::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem]
 
         attr_reader billable_status: Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::billable_status?
 
@@ -69,9 +69,9 @@ module Metronome
           Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::breakdown_granularity
         ) -> void
 
-        attr_reader custom_fields: Hash[Symbol, String]?
+        attr_reader custom_fields: ::Hash[Symbol, String]?
 
-        def custom_fields=: (Hash[Symbol, String]) -> void
+        def custom_fields=: (::Hash[Symbol, String]) -> void
 
         def initialize:
           (
@@ -81,10 +81,10 @@ module Metronome
             exclusive_end_date: Time,
             inclusive_start_date: Time,
             issue_date: Time,
-            usage_line_items: Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem],
+            usage_line_items: ::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem],
             billable_status: Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::billable_status,
             breakdown_granularity: Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::breakdown_granularity,
-            custom_fields: Hash[Symbol, String]
+            custom_fields: ::Hash[Symbol, String]
           ) -> void
           | (
             ?Metronome::Models::ContractCreateHistoricalInvoicesParams::invoice
@@ -98,10 +98,10 @@ module Metronome
             exclusive_end_date: Time,
             inclusive_start_date: Time,
             product_id: String,
-            presentation_group_values: Hash[Symbol, String],
-            pricing_group_values: Hash[Symbol, String],
+            presentation_group_values: ::Hash[Symbol, String],
+            pricing_group_values: ::Hash[Symbol, String],
             quantity: Float,
-            subtotals_with_quantity: Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
+            subtotals_with_quantity: ::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
           }
 
         class UsageLineItem < Metronome::BaseModel
@@ -111,22 +111,22 @@ module Metronome
 
           attr_accessor product_id: String
 
-          attr_reader presentation_group_values: Hash[Symbol, String]?
+          attr_reader presentation_group_values: ::Hash[Symbol, String]?
 
-          def presentation_group_values=: (Hash[Symbol, String]) -> void
+          def presentation_group_values=: (::Hash[Symbol, String]) -> void
 
-          attr_reader pricing_group_values: Hash[Symbol, String]?
+          attr_reader pricing_group_values: ::Hash[Symbol, String]?
 
-          def pricing_group_values=: (Hash[Symbol, String]) -> void
+          def pricing_group_values=: (::Hash[Symbol, String]) -> void
 
           attr_reader quantity: Float?
 
           def quantity=: (Float) -> void
 
-          attr_reader subtotals_with_quantity: Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]?
+          attr_reader subtotals_with_quantity: ::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]?
 
           def subtotals_with_quantity=: (
-            Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
+            ::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
           ) -> void
 
           def initialize:
@@ -134,10 +134,10 @@ module Metronome
               exclusive_end_date: Time,
               inclusive_start_date: Time,
               product_id: String,
-              presentation_group_values: Hash[Symbol, String],
-              pricing_group_values: Hash[Symbol, String],
+              presentation_group_values: ::Hash[Symbol, String],
+              pricing_group_values: ::Hash[Symbol, String],
               quantity: Float,
-              subtotals_with_quantity: Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
+              subtotals_with_quantity: ::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
             ) -> void
             | (
               ?Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::usage_line_item
@@ -181,7 +181,7 @@ module Metronome
           BILLABLE: :billable
           UNBILLABLE: :unbillable
 
-          def self.values: -> Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::billable_status]
+          def self.values: -> ::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::billable_status]
         end
 
         type breakdown_granularity = :HOUR | :DAY
@@ -190,7 +190,7 @@ module Metronome
           HOUR: :HOUR
           DAY: :DAY
 
-          def self.values: -> Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::breakdown_granularity]
+          def self.values: -> ::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::breakdown_granularity]
         end
       end
     end
