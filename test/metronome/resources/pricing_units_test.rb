@@ -21,5 +21,10 @@ class Metronome::Test::Resources::PricingUnitsTest < Minitest::Test
     assert_pattern do
       page => Metronome::CursorPage
     end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Metronome::Models::PricingUnitListResponse
+    end
   end
 end

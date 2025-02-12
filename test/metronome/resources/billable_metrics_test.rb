@@ -37,6 +37,11 @@ class Metronome::Test::Resources::BillableMetricsTest < Minitest::Test
     assert_pattern do
       page => Metronome::CursorPage
     end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Metronome::Models::BillableMetricListResponse
+    end
   end
 
   def test_archive_required_params

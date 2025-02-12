@@ -21,6 +21,11 @@ class Metronome::Test::Resources::PlansTest < Minitest::Test
     assert_pattern do
       page => Metronome::CursorPage
     end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Metronome::Models::PlanListResponse
+    end
   end
 
   def test_get_details_required_params
@@ -42,6 +47,11 @@ class Metronome::Test::Resources::PlansTest < Minitest::Test
     assert_pattern do
       page => Metronome::CursorPage
     end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Metronome::Models::PlanListChargesResponse
+    end
   end
 
   def test_list_customers_required_params
@@ -54,6 +64,11 @@ class Metronome::Test::Resources::PlansTest < Minitest::Test
     page = response.next_page
     assert_pattern do
       page => Metronome::CursorPage
+    end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Metronome::Models::PlanListCustomersResponse
     end
   end
 end

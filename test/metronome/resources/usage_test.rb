@@ -54,5 +54,10 @@ class Metronome::Test::Resources::UsageTest < Minitest::Test
     assert_pattern do
       page => Metronome::CursorPage
     end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Metronome::Models::UsageListWithGroupsResponse
+    end
   end
 end

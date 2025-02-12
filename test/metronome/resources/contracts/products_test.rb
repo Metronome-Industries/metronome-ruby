@@ -48,6 +48,11 @@ class Metronome::Test::Resources::Contracts::ProductsTest < Minitest::Test
     assert_pattern do
       page => Metronome::CursorPage
     end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Metronome::Models::Contracts::ProductListResponse
+    end
   end
 
   def test_archive_required_params

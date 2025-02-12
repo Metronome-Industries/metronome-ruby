@@ -24,6 +24,11 @@ class Metronome::Test::Resources::Contracts::RateCards::RatesTest < Minitest::Te
     assert_pattern do
       page => Metronome::CursorPage
     end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Metronome::Models::Contracts::RateCards::RateListResponse
+    end
   end
 
   def test_add_required_params
