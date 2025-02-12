@@ -37,6 +37,11 @@ class Metronome::Test::Resources::CustomersTest < Minitest::Test
     assert_pattern do
       page => Metronome::CursorPage
     end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Metronome::Models::CustomerDetail
+    end
   end
 
   def test_archive_required_params
@@ -58,6 +63,11 @@ class Metronome::Test::Resources::CustomersTest < Minitest::Test
     assert_pattern do
       page => Metronome::CursorPage
     end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Metronome::Models::CustomerListBillableMetricsResponse
+    end
   end
 
   def test_list_costs_required_params
@@ -74,6 +84,11 @@ class Metronome::Test::Resources::CustomersTest < Minitest::Test
     page = response.next_page
     assert_pattern do
       page => Metronome::CursorPage
+    end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Metronome::Models::CustomerListCostsResponse
     end
   end
 

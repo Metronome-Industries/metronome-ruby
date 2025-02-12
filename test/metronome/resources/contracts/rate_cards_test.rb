@@ -45,6 +45,11 @@ class Metronome::Test::Resources::Contracts::RateCardsTest < Minitest::Test
     assert_pattern do
       page => Metronome::CursorPage
     end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Metronome::Models::Contracts::RateCardListResponse
+    end
   end
 
   def test_retrieve_rate_schedule_required_params
