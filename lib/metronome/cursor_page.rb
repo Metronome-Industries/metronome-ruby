@@ -40,14 +40,13 @@ module Metronome
     def initialize(client:, req:, headers:, unwrapped:)
       @client = client
       @req = req
+      model = req.fetch(:model)
 
       case unwrapped
       in {next_page: String | nil => next_page_}
         @next_page_ = next_page_
       else
       end
-
-      model = req.fetch(:model)
 
       case unwrapped
       in {data: Array | nil => data}
