@@ -2708,19 +2708,6 @@ module Metronome
         #   # @return [Time]
         #   attr_writer :ending_before
 
-        # @!attribute [r] invoice_amount
-        #   The amount the customer should be billed for the commit. Not required.
-        #
-        #   @return [Metronome::Models::ContractCreateParams::RecurringCredit::InvoiceAmount, nil]
-        optional :invoice_amount,
-                 -> {
-                   Metronome::Models::ContractCreateParams::RecurringCredit::InvoiceAmount
-                 }
-
-        # @!parse
-        #   # @return [Metronome::Models::ContractCreateParams::RecurringCredit::InvoiceAmount]
-        #   attr_writer :invoice_amount
-
         # @!attribute [r] name
         #   displayed on invoices. will be passed through to the individual commits
         #
@@ -2784,7 +2771,6 @@ module Metronome
         #   # @param applicable_product_tags [Array<String>]
         #   # @param description [String]
         #   # @param ending_before [Time]
-        #   # @param invoice_amount [Metronome::Models::ContractCreateParams::RecurringCredit::InvoiceAmount]
         #   # @param name [String]
         #   # @param netsuite_sales_order_id [String]
         #   # @param rate_type [Symbol, Metronome::Models::ContractCreateParams::RecurringCredit::RateType]
@@ -2801,7 +2787,6 @@ module Metronome
         #     applicable_product_tags: nil,
         #     description: nil,
         #     ending_before: nil,
-        #     invoice_amount: nil,
         #     name: nil,
         #     netsuite_sales_order_id: nil,
         #     rate_type: nil,
@@ -2898,42 +2883,6 @@ module Metronome
             #   #
             #   def self.values; end
           end
-        end
-
-        # @example
-        # ```ruby
-        # invoice_amount => {
-        #   credit_type_id: String,
-        #   quantity: Float,
-        #   unit_price: Float
-        # }
-        # ```
-        class InvoiceAmount < Metronome::BaseModel
-          # @!attribute credit_type_id
-          #
-          #   @return [String]
-          required :credit_type_id, String
-
-          # @!attribute quantity
-          #
-          #   @return [Float]
-          required :quantity, Float
-
-          # @!attribute unit_price
-          #
-          #   @return [Float]
-          required :unit_price, Float
-
-          # @!parse
-          #   # The amount the customer should be billed for the commit. Not required.
-          #   #
-          #   # @param credit_type_id [String]
-          #   # @param quantity [Float]
-          #   # @param unit_price [Float]
-          #   #
-          #   def initialize(credit_type_id:, quantity:, unit_price:, **) = super
-
-          # def initialize: (Hash | Metronome::BaseModel) -> void
         end
 
         # @abstract
