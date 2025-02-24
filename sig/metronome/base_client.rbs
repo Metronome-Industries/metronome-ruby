@@ -1,6 +1,6 @@
 module Metronome
   class BaseClient
-    type request =
+    type request_components =
       {
         method: Symbol,
         path: String | ::Array[String],
@@ -10,12 +10,10 @@ module Metronome
         unwrap: Symbol?,
         page: Class?,
         model: Metronome::Converter::input?,
-        options: (Metronome::RequestOptions
-        | Metronome::request_options
-        | ::Hash[Symbol, top])?
+        options: Metronome::request_opts?
       }
 
-    type normalized_request =
+    type request_input =
       {
         method: Symbol,
         url: URI::Generic,
@@ -27,7 +25,7 @@ module Metronome
 
     MAX_REDIRECTS: 20
 
-    def self.validate!: (Metronome::BaseClient::request req) -> void
+    def self.validate!: (Metronome::BaseClient::request_components req) -> void
 
     # @private
     attr_accessor requester: top
@@ -47,9 +45,9 @@ module Metronome
     private def generate_idempotency_key: -> String
 
     private def build_request: (
-      Metronome::BaseClient::request req,
+      Metronome::BaseClient::request_components req,
       Metronome::request_options opts
-    ) -> Metronome::BaseClient::normalized_request
+    ) -> Metronome::BaseClient::request_input
 
     private def should_retry?: (
       Integer status,
@@ -62,20 +60,20 @@ module Metronome
     ) -> Float
 
     private def follow_redirect: (
-      Metronome::BaseClient::normalized_request request,
+      Metronome::BaseClient::request_input request,
       status: Integer,
       location_header: String
-    ) -> Metronome::BaseClient::normalized_request
+    ) -> Metronome::BaseClient::request_input
 
     private def send_request: (
-      Metronome::BaseClient::normalized_request request,
+      Metronome::BaseClient::request_input request,
       redirect_count: Integer,
       retry_count: Integer,
       send_retry_header: bool
     ) -> top
 
     private def parse_response: (
-      Metronome::BaseClient::request req,
+      Metronome::BaseClient::request_components req,
       nil response
     ) -> top
 
@@ -89,11 +87,9 @@ module Metronome
         unwrap: Symbol?,
         page: Class?,
         model: Metronome::Converter::input?,
-        options: (Metronome::RequestOptions
-        | Metronome::request_options
-        | ::Hash[Symbol, top])?
+        options: Metronome::request_opts?
       ) -> top
-      | (Metronome::BaseClient::request req) -> top
+      | (Metronome::BaseClient::request_components req) -> top
 
     def inspect: -> String
   end
