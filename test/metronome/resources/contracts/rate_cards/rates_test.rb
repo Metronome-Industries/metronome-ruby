@@ -29,6 +29,21 @@ class Metronome::Test::Resources::Contracts::RateCards::RatesTest < Minitest::Te
     assert_pattern do
       row => Metronome::Models::Contracts::RateCards::RateListResponse
     end
+
+    assert_pattern do
+      row => {
+        entitled: Metronome::BooleanModel,
+        product_custom_fields: ^(Metronome::HashOf[String]),
+        product_id: String,
+        product_name: String,
+        product_tags: ^(Metronome::ArrayOf[String]),
+        rate: Metronome::Models::Rate,
+        starting_at: Time,
+        commit_rate: Metronome::Models::Contracts::RateCards::RateListResponse::CommitRate | nil,
+        ending_before: Time | nil,
+        pricing_group_values: ^(Metronome::HashOf[String]) | nil
+      }
+    end
   end
 
   def test_add_required_params
@@ -42,6 +57,12 @@ class Metronome::Test::Resources::Contracts::RateCards::RatesTest < Minitest::Te
 
     assert_pattern do
       response => Metronome::Models::Contracts::RateCards::RateAddResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::Contracts::RateCards::RateAddResponse::Data
+      }
     end
   end
 
@@ -66,6 +87,12 @@ class Metronome::Test::Resources::Contracts::RateCards::RatesTest < Minitest::Te
 
     assert_pattern do
       response => Metronome::Models::Contracts::RateCards::RateAddManyResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::ID
+      }
     end
   end
 end

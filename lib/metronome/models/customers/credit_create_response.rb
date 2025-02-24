@@ -3,12 +3,6 @@
 module Metronome
   module Models
     module Customers
-      # @example
-      # ```ruby
-      # credit_create_response => {
-      #   data: Metronome::Models::ID
-      # }
-      # ```
       class CreditCreateResponse < Metronome::BaseModel
         # @!attribute data
         #

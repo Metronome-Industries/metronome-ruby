@@ -2,17 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # rate => {
-    #   rate_type: Metronome::Models::Rate::RateType,
-    #   credit_type: Metronome::Models::CreditTypeData,
-    #   custom_rate: -> { Metronome::HashOf[Metronome::Unknown] === _1 },
-    #   is_prorated: Metronome::BooleanModel,
-    #   price: Float,
-    #   **_
-    # }
-    # ```
     class Rate < Metronome::BaseModel
       # @!attribute rate_type
       #

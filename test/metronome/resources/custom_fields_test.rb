@@ -36,6 +36,13 @@ class Metronome::Test::Resources::CustomFieldsTest < Minitest::Test
     assert_pattern do
       response => Metronome::Models::CustomFieldListKeysResponse
     end
+
+    assert_pattern do
+      response => {
+        data: ^(Metronome::ArrayOf[Metronome::Models::CustomFieldListKeysResponse::Data]),
+        next_page: String | nil
+      }
+    end
   end
 
   def test_remove_key_required_params

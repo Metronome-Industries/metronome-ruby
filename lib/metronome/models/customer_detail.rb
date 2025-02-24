@@ -2,17 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # customer_detail => {
-    #   id: String,
-    #   custom_fields: -> { Metronome::HashOf[String] === _1 },
-    #   customer_config: Metronome::Models::CustomerDetail::CustomerConfig,
-    #   external_id: String,
-    #   ingest_aliases: -> { Metronome::ArrayOf[String] === _1 },
-    #   **_
-    # }
-    # ```
     class CustomerDetail < Metronome::BaseModel
       # @!attribute id
       #   the Metronome ID of the customer
@@ -92,12 +81,6 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # customer_config => {
-      #   salesforce_account_id: String
-      # }
-      # ```
       class CustomerConfig < Metronome::BaseModel
         # @!attribute salesforce_account_id
         #   The Salesforce account ID for the customer
@@ -113,13 +96,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # current_billable_status => {
-      #   value: Metronome::Models::CustomerDetail::CurrentBillableStatus::Value,
-      #   effective_at: Time
-      # }
-      # ```
       class CurrentBillableStatus < Metronome::BaseModel
         # @!attribute value
         #

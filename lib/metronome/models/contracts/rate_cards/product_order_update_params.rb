@@ -30,13 +30,6 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # product_move => {
-          #   position: Float,
-          #   product_id: String
-          # }
-          # ```
           class ProductMove < Metronome::BaseModel
             # @!attribute position
             #   0-based index of the new position of the product

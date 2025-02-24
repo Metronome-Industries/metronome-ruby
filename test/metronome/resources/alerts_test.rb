@@ -20,6 +20,12 @@ class Metronome::Test::Resources::AlertsTest < Minitest::Test
     assert_pattern do
       response => Metronome::Models::AlertCreateResponse
     end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::ID
+      }
+    end
   end
 
   def test_archive_required_params
@@ -27,6 +33,12 @@ class Metronome::Test::Resources::AlertsTest < Minitest::Test
 
     assert_pattern do
       response => Metronome::Models::AlertArchiveResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::ID
+      }
     end
   end
 end

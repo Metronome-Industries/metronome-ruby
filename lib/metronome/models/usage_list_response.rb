@@ -2,13 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # usage_list_response => {
-    #   data: -> { Metronome::ArrayOf[Metronome::Models::UsageListResponse::Data] === _1 },
-    #   next_page: String
-    # }
-    # ```
     class UsageListResponse < Metronome::BaseModel
       # @!attribute data
       #
@@ -28,17 +21,6 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # data => {
-      #   billable_metric_id: String,
-      #   billable_metric_name: String,
-      #   customer_id: String,
-      #   end_timestamp: Time,
-      #   start_timestamp: Time,
-      #   **_
-      # }
-      # ```
       class Data < Metronome::BaseModel
         # @!attribute billable_metric_id
         #

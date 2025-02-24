@@ -2,14 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # pricing_unit_list_response => {
-    #   id: String,
-    #   is_currency: Metronome::BooleanModel,
-    #   name: String
-    # }
-    # ```
     class PricingUnitListResponse < Metronome::BaseModel
       # @!attribute [r] id
       #

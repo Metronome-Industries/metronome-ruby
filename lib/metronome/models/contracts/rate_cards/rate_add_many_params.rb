@@ -29,17 +29,6 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # rate => {
-          #   entitled: Metronome::BooleanModel,
-          #   product_id: String,
-          #   rate_type: Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate::RateType,
-          #   starting_at: Time,
-          #   commit_rate: Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate::CommitRate,
-          #   **_
-          # }
-          # ```
           class Rate < Metronome::BaseModel
             # @!attribute entitled
             #
@@ -244,14 +233,6 @@ module Metronome
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # commit_rate => {
-            #   rate_type: Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::RateType,
-            #   price: Float,
-            #   tiers: -> { Metronome::ArrayOf[Metronome::Models::Tier] === _1 }
-            # }
-            # ```
             class CommitRate < Metronome::BaseModel
               # @!attribute rate_type
               #

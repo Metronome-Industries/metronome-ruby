@@ -2,13 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # credit_type_data => {
-    #   id: String,
-    #   name: String
-    # }
-    # ```
     class CreditTypeData < Metronome::BaseModel
       # @!attribute id
       #

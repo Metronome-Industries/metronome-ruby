@@ -16,5 +16,11 @@ class Metronome::Test::Resources::ServicesTest < Minitest::Test
     assert_pattern do
       response => Metronome::Models::ServiceListResponse
     end
+
+    assert_pattern do
+      response => {
+        services: ^(Metronome::ArrayOf[Metronome::Models::ServiceListResponse::Service])
+      }
+    end
   end
 end

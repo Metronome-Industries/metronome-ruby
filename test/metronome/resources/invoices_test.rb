@@ -16,6 +16,12 @@ class Metronome::Test::Resources::InvoicesTest < Minitest::Test
     assert_pattern do
       response => Metronome::Models::InvoiceRegenerateResponse
     end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::InvoiceRegenerateResponse::Data | nil
+      }
+    end
   end
 
   def test_void_required_params
@@ -23,6 +29,12 @@ class Metronome::Test::Resources::InvoicesTest < Minitest::Test
 
     assert_pattern do
       response => Metronome::Models::InvoiceVoidResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::InvoiceVoidResponse::Data | nil
+      }
     end
   end
 end

@@ -221,14 +221,6 @@ module Metronome
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # custom_field_filter => {
-      #   entity: Metronome::Models::AlertCreateParams::CustomFieldFilter::Entity,
-      #   key: String,
-      #   value: String
-      # }
-      # ```
       class CustomFieldFilter < Metronome::BaseModel
         # @!attribute entity
         #
@@ -281,13 +273,6 @@ module Metronome
         end
       end
 
-      # @example
-      # ```ruby
-      # group_key_filter => {
-      #   key: String,
-      #   value: String
-      # }
-      # ```
       class GroupKeyFilter < Metronome::BaseModel
         # @!attribute key
         #

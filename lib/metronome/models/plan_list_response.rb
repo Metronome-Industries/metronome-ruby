@@ -2,15 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # plan_list_response => {
-    #   id: String,
-    #   description: String,
-    #   name: String,
-    #   custom_fields: -> { Metronome::HashOf[String] === _1 }
-    # }
-    # ```
     class PlanListResponse < Metronome::BaseModel
       # @!attribute id
       #

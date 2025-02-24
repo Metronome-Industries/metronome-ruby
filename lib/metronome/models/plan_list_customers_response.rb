@@ -2,13 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # plan_list_customers_response => {
-    #   customer_details: Metronome::Models::CustomerDetail,
-    #   plan_details: Metronome::Models::PlanListCustomersResponse::PlanDetails
-    # }
-    # ```
     class PlanListCustomersResponse < Metronome::BaseModel
       # @!attribute customer_details
       #
@@ -28,16 +21,6 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # plan_details => {
-      #   id: String,
-      #   custom_fields: -> { Metronome::HashOf[String] === _1 },
-      #   customer_plan_id: String,
-      #   name: String,
-      #   starting_on: Time
-      # }
-      # ```
       class PlanDetails < Metronome::BaseModel
         # @!attribute id
         #

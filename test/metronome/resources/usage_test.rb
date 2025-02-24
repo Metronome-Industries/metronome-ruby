@@ -20,6 +20,13 @@ class Metronome::Test::Resources::UsageTest < Minitest::Test
     assert_pattern do
       response => Metronome::Models::UsageListResponse
     end
+
+    assert_pattern do
+      response => {
+        data: ^(Metronome::ArrayOf[Metronome::Models::UsageListResponse::Data]),
+        next_page: String | nil
+      }
+    end
   end
 
   def test_ingest_required_params
@@ -58,6 +65,16 @@ class Metronome::Test::Resources::UsageTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Metronome::Models::UsageListWithGroupsResponse
+    end
+
+    assert_pattern do
+      row => {
+        ending_before: Time,
+        group_key: String | nil,
+        group_value: String | nil,
+        starting_on: Time,
+        value: Float | nil
+      }
     end
   end
 end

@@ -2,17 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # override => {
-    #   id: String,
-    #   starting_at: Time,
-    #   applicable_product_tags: -> { Metronome::ArrayOf[String] === _1 },
-    #   credit_type: Metronome::Models::CreditTypeData,
-    #   ending_before: Time,
-    #   **_
-    # }
-    # ```
     class Override < Metronome::BaseModel
       # @!attribute id
       #
@@ -255,17 +244,6 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # override_specifier => {
-      #   commit_ids: -> { Metronome::ArrayOf[String] === _1 },
-      #   presentation_group_values: -> { Metronome::HashOf[String, nil?: true] === _1 },
-      #   pricing_group_values: -> { Metronome::HashOf[String] === _1 },
-      #   product_id: String,
-      #   product_tags: -> { Metronome::ArrayOf[String] === _1 },
-      #   **_
-      # }
-      # ```
       class OverrideSpecifier < Metronome::BaseModel
         # @!attribute [r] commit_ids
         #
@@ -355,13 +333,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # override_tier => {
-      #   multiplier: Float,
-      #   size: Float
-      # }
-      # ```
       class OverrideTier < Metronome::BaseModel
         # @!attribute multiplier
         #
@@ -386,17 +357,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # overwrite_rate => {
-      #   rate_type: Metronome::Models::Override::OverwriteRate::RateType,
-      #   credit_type: Metronome::Models::CreditTypeData,
-      #   custom_rate: -> { Metronome::HashOf[Metronome::Unknown] === _1 },
-      #   is_prorated: Metronome::BooleanModel,
-      #   price: Float,
-      #   **_
-      # }
-      # ```
       class OverwriteRate < Metronome::BaseModel
         # @!attribute rate_type
         #
@@ -522,13 +482,6 @@ module Metronome
         end
       end
 
-      # @example
-      # ```ruby
-      # product => {
-      #   id: String,
-      #   name: String
-      # }
-      # ```
       class Product < Metronome::BaseModel
         # @!attribute id
         #

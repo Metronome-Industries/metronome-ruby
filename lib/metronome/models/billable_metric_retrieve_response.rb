@@ -2,12 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # billable_metric_retrieve_response => {
-    #   data: Metronome::Models::BillableMetricRetrieveResponse::Data
-    # }
-    # ```
     class BillableMetricRetrieveResponse < Metronome::BaseModel
       # @!attribute data
       #
@@ -21,17 +15,6 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # data => {
-      #   id: String,
-      #   name: String,
-      #   aggregation_key: String,
-      #   aggregation_type: Metronome::Models::BillableMetricRetrieveResponse::Data::AggregationType,
-      #   archived_at: Time,
-      #   **_
-      # }
-      # ```
       class Data < Metronome::BaseModel
         # @!attribute id
         #   ID of the billable metric

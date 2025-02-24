@@ -29,6 +29,12 @@ class Metronome::Test::Resources::Customers::CreditsTest < Minitest::Test
     assert_pattern do
       response => Metronome::Models::Customers::CreditCreateResponse
     end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::ID
+      }
+    end
   end
 
   def test_list_required_params
@@ -36,6 +42,13 @@ class Metronome::Test::Resources::Customers::CreditsTest < Minitest::Test
 
     assert_pattern do
       response => Metronome::Models::Customers::CreditListResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: ^(Metronome::ArrayOf[Metronome::Models::Credit]),
+        next_page: String | nil
+      }
     end
   end
 
@@ -48,6 +61,12 @@ class Metronome::Test::Resources::Customers::CreditsTest < Minitest::Test
 
     assert_pattern do
       response => Metronome::Models::Customers::CreditUpdateEndDateResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::ID
+      }
     end
   end
 end

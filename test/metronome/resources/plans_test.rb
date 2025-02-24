@@ -26,6 +26,15 @@ class Metronome::Test::Resources::PlansTest < Minitest::Test
     assert_pattern do
       row => Metronome::Models::PlanListResponse
     end
+
+    assert_pattern do
+      row => {
+        id: String,
+        description: String,
+        name: String,
+        custom_fields: ^(Metronome::HashOf[String]) | nil
+      }
+    end
   end
 
   def test_get_details_required_params
@@ -33,6 +42,12 @@ class Metronome::Test::Resources::PlansTest < Minitest::Test
 
     assert_pattern do
       response => Metronome::Models::PlanGetDetailsResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::PlanDetail
+      }
     end
   end
 
@@ -52,6 +67,23 @@ class Metronome::Test::Resources::PlansTest < Minitest::Test
     assert_pattern do
       row => Metronome::Models::PlanListChargesResponse
     end
+
+    assert_pattern do
+      row => {
+        id: String,
+        charge_type: Metronome::Models::PlanListChargesResponse::ChargeType,
+        credit_type: Metronome::Models::CreditTypeData,
+        custom_fields: ^(Metronome::HashOf[String]),
+        name: String,
+        prices: ^(Metronome::ArrayOf[Metronome::Models::PlanListChargesResponse::Price]),
+        product_id: String,
+        product_name: String,
+        quantity: Float | nil,
+        start_period: Float | nil,
+        tier_reset_frequency: Float | nil,
+        unit_conversion: Metronome::Models::PlanListChargesResponse::UnitConversion | nil
+      }
+    end
   end
 
   def test_list_customers_required_params
@@ -69,6 +101,13 @@ class Metronome::Test::Resources::PlansTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Metronome::Models::PlanListCustomersResponse
+    end
+
+    assert_pattern do
+      row => {
+        customer_details: Metronome::Models::CustomerDetail,
+        plan_details: Metronome::Models::PlanListCustomersResponse::PlanDetails
+      }
     end
   end
 end

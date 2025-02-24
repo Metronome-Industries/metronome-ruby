@@ -144,13 +144,6 @@ module Metronome
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # group_by => {
-      #   key: String,
-      #   values: -> { Metronome::ArrayOf[String] === _1 }
-      # }
-      # ```
       class GroupBy < Metronome::BaseModel
         # @!attribute key
         #   The name of the group_by key to use

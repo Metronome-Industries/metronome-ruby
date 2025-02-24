@@ -2,16 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # usage_list_with_groups_response => {
-    #   ending_before: Time,
-    #   group_key: String,
-    #   group_value: String,
-    #   starting_on: Time,
-    #   value: Float
-    # }
-    # ```
     class UsageListWithGroupsResponse < Metronome::BaseModel
       # @!attribute ending_before
       #

@@ -2,17 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # credit_grant_list_response => {
-    #   id: String,
-    #   balance: Metronome::Models::CreditGrantListResponse::Balance,
-    #   custom_fields: -> { Metronome::HashOf[String] === _1 },
-    #   customer_id: String,
-    #   deductions: -> { Metronome::ArrayOf[Metronome::Models::CreditLedgerEntry] === _1 },
-    #   **_
-    # }
-    # ```
     class CreditGrantListResponse < Metronome::BaseModel
       # @!attribute id
       #   the Metronome ID of the credit grant
@@ -161,14 +150,6 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # balance => {
-      #   effective_at: Time,
-      #   excluding_pending: Float,
-      #   including_pending: Float
-      # }
-      # ```
       class Balance < Metronome::BaseModel
         # @!attribute effective_at
         #   The end_date of the customer's current billing period.
@@ -205,13 +186,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # grant_amount => {
-      #   amount: Float,
-      #   credit_type: Metronome::Models::CreditTypeData
-      # }
-      # ```
       class GrantAmount < Metronome::BaseModel
         # @!attribute amount
         #
@@ -235,13 +209,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # paid_amount => {
-      #   amount: Float,
-      #   credit_type: Metronome::Models::CreditTypeData
-      # }
-      # ```
       class PaidAmount < Metronome::BaseModel
         # @!attribute amount
         #
@@ -265,13 +232,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # product => {
-      #   id: String,
-      #   name: String
-      # }
-      # ```
       class Product < Metronome::BaseModel
         # @!attribute id
         #

@@ -2,12 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # credit_grant_edit_response => {
-    #   data: Metronome::Models::ID
-    # }
-    # ```
     class CreditGrantEditResponse < Metronome::BaseModel
       # @!attribute data
       #

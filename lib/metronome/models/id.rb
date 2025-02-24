@@ -2,12 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # id => {
-    #   id: String
-    # }
-    # ```
     class ID < Metronome::BaseModel
       # @!attribute id
       #

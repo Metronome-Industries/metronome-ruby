@@ -2,17 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # contract_without_amendments => {
-    #   commits: -> { Metronome::ArrayOf[Metronome::Models::Commit] === _1 },
-    #   created_at: Time,
-    #   created_by: String,
-    #   overrides: -> { Metronome::ArrayOf[Metronome::Models::Override] === _1 },
-    #   scheduled_charges: -> { Metronome::ArrayOf[Metronome::Models::ScheduledCharge] === _1 },
-    #   **_
-    # }
-    # ```
     class ContractWithoutAmendments < Metronome::BaseModel
       # @!attribute commits
       #
@@ -261,14 +250,6 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # transition => {
-      #   from_contract_id: String,
-      #   to_contract_id: String,
-      #   type: Metronome::Models::ContractWithoutAmendments::Transition::Type
-      # }
-      # ```
       class Transition < Metronome::BaseModel
         # @!attribute from_contract_id
         #
@@ -318,13 +299,6 @@ module Metronome
         end
       end
 
-      # @example
-      # ```ruby
-      # usage_statement_schedule => {
-      #   billing_anchor_date: Time,
-      #   frequency: Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule::Frequency
-      # }
-      # ```
       class UsageStatementSchedule < Metronome::BaseModel
         # @!attribute billing_anchor_date
         #   Contract usage statements follow a selected cadence based on this date.
@@ -373,17 +347,6 @@ module Metronome
         end
       end
 
-      # @example
-      # ```ruby
-      # recurring_commit => {
-      #   id: String,
-      #   access_amount: Metronome::Models::ContractWithoutAmendments::RecurringCommit::AccessAmount,
-      #   commit_duration: Metronome::Models::ContractWithoutAmendments::RecurringCommit::CommitDuration,
-      #   priority: Float,
-      #   product: Metronome::Models::ContractWithoutAmendments::RecurringCommit::Product,
-      #   **_
-      # }
-      # ```
       class RecurringCommit < Metronome::BaseModel
         # @!attribute id
         #
@@ -561,14 +524,6 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # access_amount => {
-        #   credit_type_id: String,
-        #   quantity: Float,
-        #   unit_price: Float
-        # }
-        # ```
         class AccessAmount < Metronome::BaseModel
           # @!attribute credit_type_id
           #
@@ -597,13 +552,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # commit_duration => {
-        #   value: Float,
-        #   unit: Metronome::Models::ContractWithoutAmendments::RecurringCommit::CommitDuration::Unit
-        # }
-        # ```
         class CommitDuration < Metronome::BaseModel
           # @!attribute value
           #
@@ -651,13 +599,6 @@ module Metronome
           end
         end
 
-        # @example
-        # ```ruby
-        # product => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Product < Metronome::BaseModel
           # @!attribute id
           #
@@ -703,12 +644,6 @@ module Metronome
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # contract => {
-        #   id: String
-        # }
-        # ```
         class Contract < Metronome::BaseModel
           # @!attribute id
           #
@@ -723,14 +658,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # invoice_amount => {
-        #   credit_type_id: String,
-        #   quantity: Float,
-        #   unit_price: Float
-        # }
-        # ```
         class InvoiceAmount < Metronome::BaseModel
           # @!attribute credit_type_id
           #
@@ -760,17 +687,6 @@ module Metronome
         end
       end
 
-      # @example
-      # ```ruby
-      # recurring_credit => {
-      #   id: String,
-      #   access_amount: Metronome::Models::ContractWithoutAmendments::RecurringCredit::AccessAmount,
-      #   commit_duration: Metronome::Models::ContractWithoutAmendments::RecurringCredit::CommitDuration,
-      #   priority: Float,
-      #   product: Metronome::Models::ContractWithoutAmendments::RecurringCredit::Product,
-      #   **_
-      # }
-      # ```
       class RecurringCredit < Metronome::BaseModel
         # @!attribute id
         #
@@ -935,14 +851,6 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # access_amount => {
-        #   credit_type_id: String,
-        #   quantity: Float,
-        #   unit_price: Float
-        # }
-        # ```
         class AccessAmount < Metronome::BaseModel
           # @!attribute credit_type_id
           #
@@ -971,13 +879,6 @@ module Metronome
           # def initialize: (Hash | Metronome::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # commit_duration => {
-        #   value: Float,
-        #   unit: Metronome::Models::ContractWithoutAmendments::RecurringCredit::CommitDuration::Unit
-        # }
-        # ```
         class CommitDuration < Metronome::BaseModel
           # @!attribute value
           #
@@ -1025,13 +926,6 @@ module Metronome
           end
         end
 
-        # @example
-        # ```ruby
-        # product => {
-        #   id: String,
-        #   name: String
-        # }
-        # ```
         class Product < Metronome::BaseModel
           # @!attribute id
           #
@@ -1077,12 +971,6 @@ module Metronome
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # contract => {
-        #   id: String
-        # }
-        # ```
         class Contract < Metronome::BaseModel
           # @!attribute id
           #
@@ -1098,17 +986,6 @@ module Metronome
         end
       end
 
-      # @example
-      # ```ruby
-      # reseller_royalty => {
-      #   fraction: Float,
-      #   netsuite_reseller_id: String,
-      #   reseller_type: Metronome::Models::ContractWithoutAmendments::ResellerRoyalty::ResellerType,
-      #   starting_at: Time,
-      #   applicable_product_ids: -> { Metronome::ArrayOf[String] === _1 },
-      #   **_
-      # }
-      # ```
       class ResellerRoyalty < Metronome::BaseModel
         # @!attribute fraction
         #
@@ -1304,14 +1181,6 @@ module Metronome
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # usage_filter => {
-      #   current: Metronome::Models::BaseUsageFilter,
-      #   initial: Metronome::Models::BaseUsageFilter,
-      #   updates: -> { Metronome::ArrayOf[Metronome::Models::ContractWithoutAmendments::UsageFilter::Update] === _1 }
-      # }
-      # ```
       class UsageFilter < Metronome::BaseModel
         # @!attribute current
         #
@@ -1338,14 +1207,6 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # update => {
-        #   group_key: String,
-        #   group_values: -> { Metronome::ArrayOf[String] === _1 },
-        #   starting_at: Time
-        # }
-        # ```
         class Update < Metronome::BaseModel
           # @!attribute group_key
           #

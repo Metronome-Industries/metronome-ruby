@@ -2,17 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # billable_metric_list_response => {
-    #   id: String,
-    #   name: String,
-    #   aggregation_key: String,
-    #   aggregation_type: Metronome::Models::BillableMetricListResponse::AggregationType,
-    #   archived_at: Time,
-    #   **_
-    # }
-    # ```
     class BillableMetricListResponse < Metronome::BaseModel
       # @!attribute id
       #   ID of the billable metric

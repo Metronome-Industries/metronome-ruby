@@ -30,6 +30,12 @@ class Metronome::Test::Resources::Customers::CommitsTest < Minitest::Test
     assert_pattern do
       response => Metronome::Models::Customers::CommitCreateResponse
     end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::ID
+      }
+    end
   end
 
   def test_list_required_params
@@ -37,6 +43,13 @@ class Metronome::Test::Resources::Customers::CommitsTest < Minitest::Test
 
     assert_pattern do
       response => Metronome::Models::Customers::CommitListResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: ^(Metronome::ArrayOf[Metronome::Models::Commit]),
+        next_page: String | nil
+      }
     end
   end
 
@@ -48,6 +61,12 @@ class Metronome::Test::Resources::Customers::CommitsTest < Minitest::Test
 
     assert_pattern do
       response => Metronome::Models::Customers::CommitUpdateEndDateResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::ID
+      }
     end
   end
 end

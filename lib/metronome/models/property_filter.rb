@@ -2,15 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # property_filter => {
-    #   name: String,
-    #   exists: Metronome::BooleanModel,
-    #   in_values: -> { Metronome::ArrayOf[String] === _1 },
-    #   not_in_values: -> { Metronome::ArrayOf[String] === _1 }
-    # }
-    # ```
     class PropertyFilter < Metronome::BaseModel
       # @!attribute name
       #   The name of the event property.

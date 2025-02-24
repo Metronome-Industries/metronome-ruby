@@ -56,14 +56,6 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # alias => {
-        #   name: String,
-        #   ending_before: Time,
-        #   starting_at: Time
-        # }
-        # ```
         class Alias < Metronome::BaseModel
           # @!attribute name
           #

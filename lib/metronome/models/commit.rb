@@ -2,17 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # commit => {
-    #   id: String,
-    #   product: Metronome::Models::Commit::Product,
-    #   type: Metronome::Models::Commit::Type,
-    #   access_schedule: Metronome::Models::ScheduleDuration,
-    #   amount: Float,
-    #   **_
-    # }
-    # ```
     class Commit < Metronome::BaseModel
       # @!attribute id
       #
@@ -288,13 +277,6 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # product => {
-      #   id: String,
-      #   name: String
-      # }
-      # ```
       class Product < Metronome::BaseModel
         # @!attribute id
         #
@@ -338,12 +320,6 @@ module Metronome
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # contract => {
-      #   id: String
-      # }
-      # ```
       class Contract < Metronome::BaseModel
         # @!attribute id
         #
@@ -358,12 +334,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # invoice_contract => {
-      #   id: String
-      # }
-      # ```
       class InvoiceContract < Metronome::BaseModel
         # @!attribute id
         #
@@ -440,15 +410,6 @@ module Metronome
 
         variant -> { Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry }
 
-        # @example
-        # ```ruby
-        # prepaid_commit_segment_start_ledger_entry => {
-        #   amount: Float,
-        #   segment_id: String,
-        #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type
-        # }
-        # ```
         class PrepaidCommitSegmentStartLedgerEntry < Metronome::BaseModel
           # @!attribute amount
           #
@@ -501,16 +462,6 @@ module Metronome
           end
         end
 
-        # @example
-        # ```ruby
-        # prepaid_commit_automated_invoice_deduction_ledger_entry => {
-        #   amount: Float,
-        #   invoice_id: String,
-        #   segment_id: String,
-        #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type
-        # }
-        # ```
         class PrepaidCommitAutomatedInvoiceDeductionLedgerEntry < Metronome::BaseModel
           # @!attribute amount
           #
@@ -570,16 +521,6 @@ module Metronome
           end
         end
 
-        # @example
-        # ```ruby
-        # prepaid_commit_rollover_ledger_entry => {
-        #   amount: Float,
-        #   new_contract_id: String,
-        #   segment_id: String,
-        #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type
-        # }
-        # ```
         class PrepaidCommitRolloverLedgerEntry < Metronome::BaseModel
           # @!attribute amount
           #
@@ -638,15 +579,6 @@ module Metronome
           end
         end
 
-        # @example
-        # ```ruby
-        # prepaid_commit_expiration_ledger_entry => {
-        #   amount: Float,
-        #   segment_id: String,
-        #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type
-        # }
-        # ```
         class PrepaidCommitExpirationLedgerEntry < Metronome::BaseModel
           # @!attribute amount
           #
@@ -699,16 +631,6 @@ module Metronome
           end
         end
 
-        # @example
-        # ```ruby
-        # prepaid_commit_canceled_ledger_entry => {
-        #   amount: Float,
-        #   invoice_id: String,
-        #   segment_id: String,
-        #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type
-        # }
-        # ```
         class PrepaidCommitCanceledLedgerEntry < Metronome::BaseModel
           # @!attribute amount
           #
@@ -767,16 +689,6 @@ module Metronome
           end
         end
 
-        # @example
-        # ```ruby
-        # prepaid_commit_credited_ledger_entry => {
-        #   amount: Float,
-        #   invoice_id: String,
-        #   segment_id: String,
-        #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type
-        # }
-        # ```
         class PrepaidCommitCreditedLedgerEntry < Metronome::BaseModel
           # @!attribute amount
           #
@@ -835,14 +747,6 @@ module Metronome
           end
         end
 
-        # @example
-        # ```ruby
-        # postpaid_commit_initial_balance_ledger_entry => {
-        #   amount: Float,
-        #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type
-        # }
-        # ```
         class PostpaidCommitInitialBalanceLedgerEntry < Metronome::BaseModel
           # @!attribute amount
           #
@@ -890,16 +794,6 @@ module Metronome
           end
         end
 
-        # @example
-        # ```ruby
-        # postpaid_commit_automated_invoice_deduction_ledger_entry => {
-        #   amount: Float,
-        #   invoice_id: String,
-        #   segment_id: String,
-        #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type
-        # }
-        # ```
         class PostpaidCommitAutomatedInvoiceDeductionLedgerEntry < Metronome::BaseModel
           # @!attribute amount
           #
@@ -959,16 +853,6 @@ module Metronome
           end
         end
 
-        # @example
-        # ```ruby
-        # postpaid_commit_rollover_ledger_entry => {
-        #   amount: Float,
-        #   new_contract_id: String,
-        #   segment_id: String,
-        #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type
-        # }
-        # ```
         class PostpaidCommitRolloverLedgerEntry < Metronome::BaseModel
           # @!attribute amount
           #
@@ -1027,15 +911,6 @@ module Metronome
           end
         end
 
-        # @example
-        # ```ruby
-        # postpaid_commit_trueup_ledger_entry => {
-        #   amount: Float,
-        #   invoice_id: String,
-        #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type
-        # }
-        # ```
         class PostpaidCommitTrueupLedgerEntry < Metronome::BaseModel
           # @!attribute amount
           #
@@ -1088,15 +963,6 @@ module Metronome
           end
         end
 
-        # @example
-        # ```ruby
-        # prepaid_commit_manual_ledger_entry => {
-        #   amount: Float,
-        #   reason: String,
-        #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry::Type
-        # }
-        # ```
         class PrepaidCommitManualLedgerEntry < Metronome::BaseModel
           # @!attribute amount
           #
@@ -1149,15 +1015,6 @@ module Metronome
           end
         end
 
-        # @example
-        # ```ruby
-        # postpaid_commit_manual_ledger_entry => {
-        #   amount: Float,
-        #   reason: String,
-        #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type
-        # }
-        # ```
         class PostpaidCommitManualLedgerEntry < Metronome::BaseModel
           # @!attribute amount
           #
@@ -1210,14 +1067,6 @@ module Metronome
           end
         end
 
-        # @example
-        # ```ruby
-        # postpaid_commit_expiration_ledger_entry => {
-        #   amount: Float,
-        #   timestamp: Time,
-        #   type: Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type
-        # }
-        # ```
         class PostpaidCommitExpirationLedgerEntry < Metronome::BaseModel
           # @!attribute amount
           #
@@ -1288,13 +1137,6 @@ module Metronome
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # rolled_over_from => {
-      #   commit_id: String,
-      #   contract_id: String
-      # }
-      # ```
       class RolledOverFrom < Metronome::BaseModel
         # @!attribute commit_id
         #

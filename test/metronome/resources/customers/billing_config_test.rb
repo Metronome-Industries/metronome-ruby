@@ -31,6 +31,12 @@ class Metronome::Test::Resources::Customers::BillingConfigTest < Minitest::Test
     assert_pattern do
       response => Metronome::Models::Customers::BillingConfigRetrieveResponse
     end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::Customers::BillingConfigRetrieveResponse::Data
+      }
+    end
   end
 
   def test_delete_required_params

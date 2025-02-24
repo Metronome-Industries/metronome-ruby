@@ -16,6 +16,12 @@ class Metronome::Test::Resources::Contracts::ProductsTest < Minitest::Test
     assert_pattern do
       response => Metronome::Models::Contracts::ProductCreateResponse
     end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::ID
+      }
+    end
   end
 
   def test_retrieve_required_params
@@ -23,6 +29,12 @@ class Metronome::Test::Resources::Contracts::ProductsTest < Minitest::Test
 
     assert_pattern do
       response => Metronome::Models::Contracts::ProductRetrieveResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::Contracts::ProductRetrieveResponse::Data
+      }
     end
   end
 
@@ -34,6 +46,12 @@ class Metronome::Test::Resources::Contracts::ProductsTest < Minitest::Test
 
     assert_pattern do
       response => Metronome::Models::Contracts::ProductUpdateResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::ID
+      }
     end
   end
 
@@ -53,6 +71,18 @@ class Metronome::Test::Resources::Contracts::ProductsTest < Minitest::Test
     assert_pattern do
       row => Metronome::Models::Contracts::ProductListResponse
     end
+
+    assert_pattern do
+      row => {
+        id: String,
+        current: Metronome::Models::Contracts::ProductListItemState,
+        initial: Metronome::Models::Contracts::ProductListItemState,
+        type: Metronome::Models::Contracts::ProductListResponse::Type,
+        updates: ^(Metronome::ArrayOf[Metronome::Models::Contracts::ProductListResponse::Update]),
+        archived_at: Time | nil,
+        custom_fields: ^(Metronome::HashOf[String]) | nil
+      }
+    end
   end
 
   def test_archive_required_params
@@ -60,6 +90,12 @@ class Metronome::Test::Resources::Contracts::ProductsTest < Minitest::Test
 
     assert_pattern do
       response => Metronome::Models::Contracts::ProductArchiveResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::ID
+      }
     end
   end
 end
