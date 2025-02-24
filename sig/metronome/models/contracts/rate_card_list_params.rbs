@@ -2,14 +2,12 @@ module Metronome
   module Models
     module Contracts
       type rate_card_list_params =
-        { body: top, limit: Integer, next_page: String }
+        { limit: Integer, next_page: String, body: top }
         & Metronome::request_parameters
 
       class RateCardListParams < Metronome::BaseModel
         extend Metronome::RequestParameters::Converter
         include Metronome::RequestParameters
-
-        attr_accessor body: top
 
         attr_reader limit: Integer?
 
@@ -19,11 +17,15 @@ module Metronome
 
         def next_page=: (String) -> String
 
+        attr_reader body: top?
+
+        def body=: (top) -> top
+
         def initialize:
           (
-            body: top,
             limit: Integer,
             next_page: String,
+            body: top,
             request_options: Metronome::request_opts
           ) -> void
           | (

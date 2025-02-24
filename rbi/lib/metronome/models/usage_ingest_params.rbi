@@ -6,7 +6,7 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      sig { returns(T::Array[Metronome::Models::UsageIngestParams::Usage]) }
+      sig { returns(T.nilable(T::Array[Metronome::Models::UsageIngestParams::Usage])) }
       def usage
       end
 
@@ -24,7 +24,7 @@ module Metronome
         )
           .void
       end
-      def initialize(usage:, request_options: {})
+      def initialize(usage: nil, request_options: {})
       end
 
       sig do

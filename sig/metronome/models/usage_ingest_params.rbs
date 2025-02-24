@@ -8,7 +8,11 @@ module Metronome
       extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      attr_accessor usage: ::Array[Metronome::Models::UsageIngestParams::Usage]
+      attr_reader usage: ::Array[Metronome::Models::UsageIngestParams::Usage]?
+
+      def usage=: (
+        ::Array[Metronome::Models::UsageIngestParams::Usage]
+      ) -> ::Array[Metronome::Models::UsageIngestParams::Usage]
 
       def initialize:
         (

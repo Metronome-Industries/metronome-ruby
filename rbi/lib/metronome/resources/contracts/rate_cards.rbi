@@ -64,14 +64,14 @@ module Metronome
 
         sig do
           params(
-            body: T.anything,
             limit: Integer,
             next_page: String,
+            body: T.anything,
             request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
           )
             .returns(Metronome::CursorPage[Metronome::Models::Contracts::RateCardListResponse])
         end
-        def list(body:, limit: nil, next_page: nil, request_options: {})
+        def list(limit: nil, next_page: nil, body: nil, request_options: {})
         end
 
         sig do
