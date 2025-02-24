@@ -53,7 +53,8 @@ module Metronome
           end
 
           sig do
-            params(_: Metronome::Models::Contracts::RateCards::RateAddParams::CommitRate).returns(Metronome::Models::Contracts::RateCards::RateAddParams::CommitRate)
+            params(_: Metronome::Models::Contracts::RateCards::RateAddParams::CommitRate)
+              .returns(Metronome::Models::Contracts::RateCards::RateAddParams::CommitRate)
           end
           def commit_rate=(_)
           end
@@ -148,7 +149,8 @@ module Metronome
               tiers: T::Array[Metronome::Models::Tier],
               use_list_prices: T::Boolean,
               request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-            ).void
+            )
+              .void
           end
           def initialize(
             entitled:,
@@ -171,26 +173,27 @@ module Metronome
           end
 
           sig do
-            override.returns(
-              {
-                entitled: T::Boolean,
-                product_id: String,
-                rate_card_id: String,
-                rate_type: Symbol,
-                starting_at: Time,
-                commit_rate: Metronome::Models::Contracts::RateCards::RateAddParams::CommitRate,
-                credit_type_id: String,
-                custom_rate: T::Hash[Symbol, T.anything],
-                ending_before: Time,
-                is_prorated: T::Boolean,
-                price: Float,
-                pricing_group_values: T::Hash[Symbol, String],
-                quantity: Float,
-                tiers: T::Array[Metronome::Models::Tier],
-                use_list_prices: T::Boolean,
-                request_options: Metronome::RequestOptions
-              }
-            )
+            override
+              .returns(
+                {
+                  entitled: T::Boolean,
+                  product_id: String,
+                  rate_card_id: String,
+                  rate_type: Symbol,
+                  starting_at: Time,
+                  commit_rate: Metronome::Models::Contracts::RateCards::RateAddParams::CommitRate,
+                  credit_type_id: String,
+                  custom_rate: T::Hash[Symbol, T.anything],
+                  ending_before: Time,
+                  is_prorated: T::Boolean,
+                  price: Float,
+                  pricing_group_values: T::Hash[Symbol, String],
+                  quantity: Float,
+                  tiers: T::Array[Metronome::Models::Tier],
+                  use_list_prices: T::Boolean,
+                  request_options: Metronome::RequestOptions
+                }
+              )
           end
           def to_hash
           end
@@ -238,9 +241,7 @@ module Metronome
             def initialize(rate_type:, price: nil, tiers: nil)
             end
 
-            sig do
-              override.returns({rate_type: Symbol, price: Float, tiers: T::Array[Metronome::Models::Tier]})
-            end
+            sig { override.returns({rate_type: Symbol, price: Float, tiers: T::Array[Metronome::Models::Tier]}) }
             def to_hash
             end
 

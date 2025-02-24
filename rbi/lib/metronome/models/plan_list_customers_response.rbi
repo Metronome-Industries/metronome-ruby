@@ -16,7 +16,8 @@ module Metronome
       end
 
       sig do
-        params(_: Metronome::Models::PlanListCustomersResponse::PlanDetails).returns(Metronome::Models::PlanListCustomersResponse::PlanDetails)
+        params(_: Metronome::Models::PlanListCustomersResponse::PlanDetails)
+          .returns(Metronome::Models::PlanListCustomersResponse::PlanDetails)
       end
       def plan_details=(_)
       end
@@ -25,18 +26,20 @@ module Metronome
         params(
           customer_details: Metronome::Models::CustomerDetail,
           plan_details: Metronome::Models::PlanListCustomersResponse::PlanDetails
-        ).void
+        )
+          .void
       end
       def initialize(customer_details:, plan_details:)
       end
 
       sig do
-        override.returns(
-          {
-            customer_details: Metronome::Models::CustomerDetail,
-            plan_details: Metronome::Models::PlanListCustomersResponse::PlanDetails
-          }
-        )
+        override
+          .returns(
+            {
+              customer_details: Metronome::Models::CustomerDetail,
+              plan_details: Metronome::Models::PlanListCustomersResponse::PlanDetails
+            }
+          )
       end
       def to_hash
       end
@@ -98,22 +101,24 @@ module Metronome
             name: String,
             starting_on: Time,
             ending_before: T.nilable(Time)
-          ).void
+          )
+            .void
         end
         def initialize(id:, custom_fields:, customer_plan_id:, name:, starting_on:, ending_before: nil)
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              custom_fields: T::Hash[Symbol, String],
-              customer_plan_id: String,
-              name: String,
-              starting_on: Time,
-              ending_before: T.nilable(Time)
-            }
-          )
+          override
+            .returns(
+              {
+                id: String,
+                custom_fields: T::Hash[Symbol, String],
+                customer_plan_id: String,
+                name: String,
+                starting_on: Time,
+                ending_before: T.nilable(Time)
+              }
+            )
         end
         def to_hash
         end

@@ -22,14 +22,13 @@ module Metronome
       def dashboard=(_)
       end
 
-      sig do
-        returns(T.nilable(T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride]))
-      end
+      sig { returns(T.nilable(T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride])) }
       def bm_group_key_overrides
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride]).returns(T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride])
+        params(_: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride])
+          .returns(T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride])
       end
       def bm_group_key_overrides=(_)
       end
@@ -39,19 +38,19 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride]).returns(T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride])
+        params(_: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride])
+          .returns(T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride])
       end
       def color_overrides=(_)
       end
 
-      sig do
-        returns(T.nilable(T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption]))
-      end
+      sig { returns(T.nilable(T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption])) }
       def dashboard_options
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption]).returns(T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption])
+        params(_: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption])
+          .returns(T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption])
       end
       def dashboard_options=(_)
       end
@@ -64,7 +63,8 @@ module Metronome
           color_overrides: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride],
           dashboard_options: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption],
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         customer_id:,
@@ -77,16 +77,17 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            customer_id: String,
-            dashboard: Symbol,
-            bm_group_key_overrides: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride],
-            color_overrides: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride],
-            dashboard_options: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption],
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              customer_id: String,
+              dashboard: Symbol,
+              bm_group_key_overrides: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride],
+              color_overrides: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride],
+              dashboard_options: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption],
+              request_options: Metronome::RequestOptions
+            }
+          )
       end
       def to_hash
       end
@@ -139,13 +140,12 @@ module Metronome
         end
 
         sig do
-          override.returns(
-            {
-              group_key_name: String,
-              display_name: String,
-              value_display_names: T::Hash[Symbol, T.anything]
-            }
-          )
+          override
+            .returns({
+                       group_key_name: String,
+                       display_name: String,
+                       value_display_names: T::Hash[Symbol, T.anything]
+                     })
         end
         def to_hash
         end

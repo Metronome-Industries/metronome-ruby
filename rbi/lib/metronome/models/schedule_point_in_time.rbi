@@ -16,7 +16,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::SchedulePointInTime::ScheduleItem]).returns(T::Array[Metronome::Models::SchedulePointInTime::ScheduleItem])
+        params(_: T::Array[Metronome::Models::SchedulePointInTime::ScheduleItem])
+          .returns(T::Array[Metronome::Models::SchedulePointInTime::ScheduleItem])
       end
       def schedule_items=(_)
       end
@@ -25,18 +26,20 @@ module Metronome
         params(
           credit_type: Metronome::Models::CreditTypeData,
           schedule_items: T::Array[Metronome::Models::SchedulePointInTime::ScheduleItem]
-        ).void
+        )
+          .void
       end
       def initialize(credit_type: nil, schedule_items: nil)
       end
 
       sig do
-        override.returns(
-          {
-            credit_type: Metronome::Models::CreditTypeData,
-            schedule_items: T::Array[Metronome::Models::SchedulePointInTime::ScheduleItem]
-          }
-        )
+        override
+          .returns(
+            {
+              credit_type: Metronome::Models::CreditTypeData,
+              schedule_items: T::Array[Metronome::Models::SchedulePointInTime::ScheduleItem]
+            }
+          )
       end
       def to_hash
       end
@@ -98,22 +101,24 @@ module Metronome
             quantity: Float,
             timestamp: Time,
             unit_price: Float
-          ).void
+          )
+            .void
         end
         def initialize(id:, amount:, invoice_id:, quantity:, timestamp:, unit_price:)
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              amount: Float,
-              invoice_id: String,
-              quantity: Float,
-              timestamp: Time,
-              unit_price: Float
-            }
-          )
+          override
+            .returns(
+              {
+                id: String,
+                amount: Float,
+                invoice_id: String,
+                quantity: Float,
+                timestamp: Time,
+                unit_price: Float
+              }
+            )
         end
         def to_hash
         end

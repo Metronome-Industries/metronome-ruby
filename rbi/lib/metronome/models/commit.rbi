@@ -103,9 +103,7 @@ module Metronome
       def invoice_contract
       end
 
-      sig do
-        params(_: Metronome::Models::Commit::InvoiceContract).returns(Metronome::Models::Commit::InvoiceContract)
-      end
+      sig { params(_: Metronome::Models::Commit::InvoiceContract).returns(Metronome::Models::Commit::InvoiceContract) }
       def invoice_contract=(_)
       end
 
@@ -113,16 +111,15 @@ module Metronome
       def invoice_schedule
       end
 
-      sig do
-        params(_: Metronome::Models::SchedulePointInTime).returns(Metronome::Models::SchedulePointInTime)
-      end
+      sig { params(_: Metronome::Models::SchedulePointInTime).returns(Metronome::Models::SchedulePointInTime) }
       def invoice_schedule=(_)
       end
 
       sig do
         returns(
           T.nilable(
-            T::Array[T.any(
+            T::Array[
+            T.any(
               Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry,
               Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry,
               Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry,
@@ -136,7 +133,8 @@ module Metronome
               Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry,
               Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry,
               Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry
-            )]
+            )
+            ]
           )
         )
       end
@@ -145,7 +143,8 @@ module Metronome
 
       sig do
         params(
-          _: T::Array[T.any(
+          _: T::Array[
+          T.any(
             Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry,
             Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry,
             Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry,
@@ -159,22 +158,28 @@ module Metronome
             Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry,
             Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry,
             Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry
-          )]
-        ).returns(T::Array[T.any(
-          Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry,
-          Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry,
-          Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry,
-          Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry,
-          Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry,
-          Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry,
-          Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry,
-          Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry,
-          Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry,
-          Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry,
-          Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry,
-          Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry,
-          Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry
-        )])
+          )
+          ]
+        )
+          .returns(
+            T::Array[
+            T.any(
+              Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry,
+              Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry,
+              Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry,
+              Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry,
+              Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry,
+              Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry,
+              Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry,
+              Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry,
+              Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry,
+              Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry,
+              Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry,
+              Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry,
+              Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry
+            )
+            ]
+          )
       end
       def ledger=(_)
       end
@@ -215,9 +220,7 @@ module Metronome
       def rolled_over_from
       end
 
-      sig do
-        params(_: Metronome::Models::Commit::RolledOverFrom).returns(Metronome::Models::Commit::RolledOverFrom)
-      end
+      sig { params(_: Metronome::Models::Commit::RolledOverFrom).returns(Metronome::Models::Commit::RolledOverFrom) }
       def rolled_over_from=(_)
       end
 
@@ -261,7 +264,8 @@ module Metronome
           description: String,
           invoice_contract: Metronome::Models::Commit::InvoiceContract,
           invoice_schedule: Metronome::Models::SchedulePointInTime,
-          ledger: T::Array[T.any(
+          ledger: T::Array[
+          T.any(
             Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry,
             Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry,
             Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry,
@@ -275,7 +279,8 @@ module Metronome
             Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry,
             Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry,
             Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry
-          )],
+          )
+          ],
           name: String,
           netsuite_sales_order_id: String,
           priority: Float,
@@ -284,7 +289,8 @@ module Metronome
           rollover_fraction: Float,
           salesforce_opportunity_id: String,
           uniqueness_key: String
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -314,47 +320,50 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            product: Metronome::Models::Commit::Product,
-            type: Symbol,
-            access_schedule: Metronome::Models::ScheduleDuration,
-            amount: Float,
-            applicable_contract_ids: T::Array[String],
-            applicable_product_ids: T::Array[String],
-            applicable_product_tags: T::Array[String],
-            balance: Float,
-            contract: Metronome::Models::Commit::Contract,
-            custom_fields: T::Hash[Symbol, String],
-            description: String,
-            invoice_contract: Metronome::Models::Commit::InvoiceContract,
-            invoice_schedule: Metronome::Models::SchedulePointInTime,
-            ledger: T::Array[T.any(
-              Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry,
-              Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry,
-              Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry,
-              Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry,
-              Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry,
-              Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry,
-              Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry,
-              Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry,
-              Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry,
-              Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry,
-              Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry,
-              Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry,
-              Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry
-            )],
-            name: String,
-            netsuite_sales_order_id: String,
-            priority: Float,
-            rate_type: Symbol,
-            rolled_over_from: Metronome::Models::Commit::RolledOverFrom,
-            rollover_fraction: Float,
-            salesforce_opportunity_id: String,
-            uniqueness_key: String
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              product: Metronome::Models::Commit::Product,
+              type: Symbol,
+              access_schedule: Metronome::Models::ScheduleDuration,
+              amount: Float,
+              applicable_contract_ids: T::Array[String],
+              applicable_product_ids: T::Array[String],
+              applicable_product_tags: T::Array[String],
+              balance: Float,
+              contract: Metronome::Models::Commit::Contract,
+              custom_fields: T::Hash[Symbol, String],
+              description: String,
+              invoice_contract: Metronome::Models::Commit::InvoiceContract,
+              invoice_schedule: Metronome::Models::SchedulePointInTime,
+              ledger: T::Array[
+              T.any(
+                Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry,
+                Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry,
+                Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry,
+                Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry,
+                Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry,
+                Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry,
+                Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry,
+                Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry,
+                Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry,
+                Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry,
+                Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry,
+                Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry,
+                Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry
+              )
+              ],
+              name: String,
+              netsuite_sales_order_id: String,
+              priority: Float,
+              rate_type: Symbol,
+              rolled_over_from: Metronome::Models::Commit::RolledOverFrom,
+              rollover_fraction: Float,
+              salesforce_opportunity_id: String,
+              uniqueness_key: String
+            }
+          )
       end
       def to_hash
       end
@@ -613,15 +622,14 @@ module Metronome
           end
 
           sig do
-            override.returns(
-              {
-                amount: Float,
-                new_contract_id: String,
-                segment_id: String,
-                timestamp: Time,
-                type: Symbol
-              }
-            )
+            override
+              .returns({
+                         amount: Float,
+                         new_contract_id: String,
+                         segment_id: String,
+                         timestamp: Time,
+                         type: Symbol
+                       })
           end
           def to_hash
           end
@@ -1003,15 +1011,14 @@ module Metronome
           end
 
           sig do
-            override.returns(
-              {
-                amount: Float,
-                new_contract_id: String,
-                segment_id: String,
-                timestamp: Time,
-                type: Symbol
-              }
-            )
+            override
+              .returns({
+                         amount: Float,
+                         new_contract_id: String,
+                         segment_id: String,
+                         timestamp: Time,
+                         type: Symbol
+                       })
           end
           def to_hash
           end
@@ -1228,29 +1235,10 @@ module Metronome
         end
 
         sig do
-          override.returns(
-            [
-              [NilClass, Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry],
-              [
-                NilClass,
-                Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry
-              ],
-              [NilClass, Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry],
-              [NilClass, Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry],
-              [NilClass, Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry],
-              [NilClass, Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry],
-              [NilClass, Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry],
-              [
-                NilClass,
-                Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry
-              ],
-              [NilClass, Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry],
-              [NilClass, Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry],
-              [NilClass, Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry],
-              [NilClass, Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry],
-              [NilClass, Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry]
-            ]
-          )
+          override
+            .returns(
+              [[NilClass, Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry], [NilClass, Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry], [NilClass, Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry], [NilClass, Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry], [NilClass, Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry], [NilClass, Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry], [NilClass, Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry], [NilClass, Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry], [NilClass, Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry], [NilClass, Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry], [NilClass, Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry], [NilClass, Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry], [NilClass, Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry]]
+            )
         end
         private_class_method def self.variants
         end

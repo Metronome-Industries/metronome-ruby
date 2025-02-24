@@ -80,7 +80,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::Override::OverrideSpecifier]).returns(T::Array[Metronome::Models::Override::OverrideSpecifier])
+        params(_: T::Array[Metronome::Models::Override::OverrideSpecifier])
+          .returns(T::Array[Metronome::Models::Override::OverrideSpecifier])
       end
       def override_specifiers=(_)
       end
@@ -90,7 +91,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::Override::OverrideTier]).returns(T::Array[Metronome::Models::Override::OverrideTier])
+        params(_: T::Array[Metronome::Models::Override::OverrideTier])
+          .returns(T::Array[Metronome::Models::Override::OverrideTier])
       end
       def override_tiers=(_)
       end
@@ -99,9 +101,7 @@ module Metronome
       def overwrite_rate
       end
 
-      sig do
-        params(_: Metronome::Models::Override::OverwriteRate).returns(Metronome::Models::Override::OverwriteRate)
-      end
+      sig { params(_: Metronome::Models::Override::OverwriteRate).returns(Metronome::Models::Override::OverwriteRate) }
       def overwrite_rate=(_)
       end
 
@@ -200,7 +200,8 @@ module Metronome
           tiers: T::Array[Metronome::Models::Tier],
           type: Symbol,
           value: T::Hash[Symbol, T.anything]
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -228,31 +229,32 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            starting_at: Time,
-            applicable_product_tags: T::Array[String],
-            credit_type: Metronome::Models::CreditTypeData,
-            ending_before: Time,
-            entitled: T::Boolean,
-            is_commit_specific: T::Boolean,
-            is_prorated: T::Boolean,
-            multiplier: Float,
-            override_specifiers: T::Array[Metronome::Models::Override::OverrideSpecifier],
-            override_tiers: T::Array[Metronome::Models::Override::OverrideTier],
-            overwrite_rate: Metronome::Models::Override::OverwriteRate,
-            price: Float,
-            priority: Float,
-            product: Metronome::Models::Override::Product,
-            quantity: Float,
-            rate_type: Symbol,
-            target: Symbol,
-            tiers: T::Array[Metronome::Models::Tier],
-            type: Symbol,
-            value: T::Hash[Symbol, T.anything]
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              starting_at: Time,
+              applicable_product_tags: T::Array[String],
+              credit_type: Metronome::Models::CreditTypeData,
+              ending_before: Time,
+              entitled: T::Boolean,
+              is_commit_specific: T::Boolean,
+              is_prorated: T::Boolean,
+              multiplier: Float,
+              override_specifiers: T::Array[Metronome::Models::Override::OverrideSpecifier],
+              override_tiers: T::Array[Metronome::Models::Override::OverrideTier],
+              overwrite_rate: Metronome::Models::Override::OverwriteRate,
+              price: Float,
+              priority: Float,
+              product: Metronome::Models::Override::Product,
+              quantity: Float,
+              rate_type: Symbol,
+              target: Symbol,
+              tiers: T::Array[Metronome::Models::Tier],
+              type: Symbol,
+              value: T::Hash[Symbol, T.anything]
+            }
+          )
       end
       def to_hash
       end
@@ -323,7 +325,8 @@ module Metronome
             product_tags: T::Array[String],
             recurring_commit_ids: T::Array[String],
             recurring_credit_ids: T::Array[String]
-          ).void
+          )
+            .void
         end
         def initialize(
           commit_ids: nil,
@@ -337,17 +340,18 @@ module Metronome
         end
 
         sig do
-          override.returns(
-            {
-              commit_ids: T::Array[String],
-              presentation_group_values: T::Hash[Symbol, T.nilable(String)],
-              pricing_group_values: T::Hash[Symbol, String],
-              product_id: String,
-              product_tags: T::Array[String],
-              recurring_commit_ids: T::Array[String],
-              recurring_credit_ids: T::Array[String]
-            }
-          )
+          override
+            .returns(
+              {
+                commit_ids: T::Array[String],
+                presentation_group_values: T::Hash[Symbol, T.nilable(String)],
+                pricing_group_values: T::Hash[Symbol, String],
+                product_id: String,
+                product_tags: T::Array[String],
+                recurring_commit_ids: T::Array[String],
+                recurring_credit_ids: T::Array[String]
+              }
+            )
         end
         def to_hash
         end
@@ -445,7 +449,8 @@ module Metronome
             price: Float,
             quantity: Float,
             tiers: T::Array[Metronome::Models::Tier]
-          ).void
+          )
+            .void
         end
         def initialize(
           rate_type:,
@@ -459,17 +464,18 @@ module Metronome
         end
 
         sig do
-          override.returns(
-            {
-              rate_type: Symbol,
-              credit_type: Metronome::Models::CreditTypeData,
-              custom_rate: T::Hash[Symbol, T.anything],
-              is_prorated: T::Boolean,
-              price: Float,
-              quantity: Float,
-              tiers: T::Array[Metronome::Models::Tier]
-            }
-          )
+          override
+            .returns(
+              {
+                rate_type: Symbol,
+                credit_type: Metronome::Models::CreditTypeData,
+                custom_rate: T::Hash[Symbol, T.anything],
+                is_prorated: T::Boolean,
+                price: Float,
+                quantity: Float,
+                tiers: T::Array[Metronome::Models::Tier]
+              }
+            )
         end
         def to_hash
         end

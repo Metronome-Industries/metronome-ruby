@@ -27,19 +27,21 @@ module Metronome
           customer_id: String,
           ingest_aliases: T::Array[String],
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(customer_id:, ingest_aliases:, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            customer_id: String,
-            ingest_aliases: T::Array[String],
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              customer_id: String,
+              ingest_aliases: T::Array[String],
+              request_options: Metronome::RequestOptions
+            }
+          )
       end
       def to_hash
       end

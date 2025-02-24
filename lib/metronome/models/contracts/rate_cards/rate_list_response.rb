@@ -123,9 +123,7 @@ module Metronome
             #
             #   @return [Symbol, Metronome::Models::Contracts::RateCards::RateListResponse::CommitRate::RateType]
             required :rate_type,
-                     enum: -> {
-                       Metronome::Models::Contracts::RateCards::RateListResponse::CommitRate::RateType
-                     }
+                     enum: -> { Metronome::Models::Contracts::RateCards::RateListResponse::CommitRate::RateType }
 
             # @!attribute [r] price
             #   Commit rate price. For FLAT rate_type, this must be >=0.

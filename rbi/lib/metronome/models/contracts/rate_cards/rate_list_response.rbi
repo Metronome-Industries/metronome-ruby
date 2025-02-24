@@ -66,7 +66,8 @@ module Metronome
           end
 
           sig do
-            params(_: Metronome::Models::Contracts::RateCards::RateListResponse::CommitRate).returns(Metronome::Models::Contracts::RateCards::RateListResponse::CommitRate)
+            params(_: Metronome::Models::Contracts::RateCards::RateListResponse::CommitRate)
+              .returns(Metronome::Models::Contracts::RateCards::RateListResponse::CommitRate)
           end
           def commit_rate=(_)
           end
@@ -99,7 +100,8 @@ module Metronome
               commit_rate: Metronome::Models::Contracts::RateCards::RateListResponse::CommitRate,
               ending_before: Time,
               pricing_group_values: T::Hash[Symbol, String]
-            ).void
+            )
+              .void
           end
           def initialize(
             entitled:,
@@ -116,20 +118,21 @@ module Metronome
           end
 
           sig do
-            override.returns(
-              {
-                entitled: T::Boolean,
-                product_custom_fields: T::Hash[Symbol, String],
-                product_id: String,
-                product_name: String,
-                product_tags: T::Array[String],
-                rate: Metronome::Models::Rate,
-                starting_at: Time,
-                commit_rate: Metronome::Models::Contracts::RateCards::RateListResponse::CommitRate,
-                ending_before: Time,
-                pricing_group_values: T::Hash[Symbol, String]
-              }
-            )
+            override
+              .returns(
+                {
+                  entitled: T::Boolean,
+                  product_custom_fields: T::Hash[Symbol, String],
+                  product_id: String,
+                  product_name: String,
+                  product_tags: T::Array[String],
+                  rate: Metronome::Models::Rate,
+                  starting_at: Time,
+                  commit_rate: Metronome::Models::Contracts::RateCards::RateListResponse::CommitRate,
+                  ending_before: Time,
+                  pricing_group_values: T::Hash[Symbol, String]
+                }
+              )
           end
           def to_hash
           end
@@ -163,9 +166,7 @@ module Metronome
             def initialize(rate_type:, price: nil, tiers: nil)
             end
 
-            sig do
-              override.returns({rate_type: Symbol, price: Float, tiers: T::Array[Metronome::Models::Tier]})
-            end
+            sig { override.returns({rate_type: Symbol, price: Float, tiers: T::Array[Metronome::Models::Tier]}) }
             def to_hash
             end
 

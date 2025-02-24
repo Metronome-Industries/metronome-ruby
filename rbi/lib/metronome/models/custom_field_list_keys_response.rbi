@@ -8,7 +8,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::CustomFieldListKeysResponse::Data]).returns(T::Array[Metronome::Models::CustomFieldListKeysResponse::Data])
+        params(_: T::Array[Metronome::Models::CustomFieldListKeysResponse::Data])
+          .returns(T::Array[Metronome::Models::CustomFieldListKeysResponse::Data])
       end
       def data=(_)
       end
@@ -22,21 +23,17 @@ module Metronome
       end
 
       sig do
-        params(
-          data: T::Array[Metronome::Models::CustomFieldListKeysResponse::Data],
-          next_page: T.nilable(String)
-        ).void
+        params(data: T::Array[Metronome::Models::CustomFieldListKeysResponse::Data], next_page: T.nilable(String))
+          .void
       end
       def initialize(data:, next_page:)
       end
 
       sig do
-        override.returns(
-          {
-            data: T::Array[Metronome::Models::CustomFieldListKeysResponse::Data],
-            next_page: T.nilable(String)
-          }
-        )
+        override
+          .returns(
+            {data: T::Array[Metronome::Models::CustomFieldListKeysResponse::Data], next_page: T.nilable(String)}
+          )
       end
       def to_hash
       end

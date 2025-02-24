@@ -25,7 +25,8 @@ module Metronome
         end
 
         sig do
-          params(_: T::Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price]).returns(T::Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price])
+          params(_: T::Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price])
+            .returns(T::Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price])
         end
         def prices=(_)
         end
@@ -53,21 +54,23 @@ module Metronome
             prices: T::Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price],
             start_period: Float,
             quantity: Float
-          ).void
+          )
+            .void
         end
         def initialize(charge_id:, charge_type:, prices:, start_period:, quantity: nil)
         end
 
         sig do
-          override.returns(
-            {
-              charge_id: String,
-              charge_type: Symbol,
-              prices: T::Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price],
-              start_period: Float,
-              quantity: Float
-            }
-          )
+          override
+            .returns(
+              {
+                charge_id: String,
+                charge_type: Symbol,
+                prices: T::Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price],
+                start_period: Float,
+                quantity: Float
+              }
+            )
         end
         def to_hash
         end

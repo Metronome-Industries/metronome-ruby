@@ -47,14 +47,13 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            name: String,
-            exists: T::Boolean,
-            in_values: T::Array[String],
-            not_in_values: T::Array[String]
-          }
-        )
+        override
+          .returns({
+                     name: String,
+                     exists: T::Boolean,
+                     in_values: T::Array[String],
+                     not_in_values: T::Array[String]
+                   })
       end
       def to_hash
       end

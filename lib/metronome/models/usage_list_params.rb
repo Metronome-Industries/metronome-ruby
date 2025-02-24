@@ -40,10 +40,7 @@ module Metronome
       #     will be returned.
       #
       #   @return [Array<Metronome::Models::UsageListParams::BillableMetric>, nil]
-      optional :billable_metrics,
-               -> {
-                 Metronome::ArrayOf[Metronome::Models::UsageListParams::BillableMetric]
-               }
+      optional :billable_metrics, -> { Metronome::ArrayOf[Metronome::Models::UsageListParams::BillableMetric] }
 
       # @!parse
       #   # @return [Array<Metronome::Models::UsageListParams::BillableMetric>]

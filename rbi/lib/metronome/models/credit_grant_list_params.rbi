@@ -72,7 +72,8 @@ module Metronome
           effective_before: Time,
           not_expiring_before: Time,
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         limit: nil,
@@ -87,18 +88,19 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            limit: Integer,
-            next_page: String,
-            credit_grant_ids: T::Array[String],
-            credit_type_ids: T::Array[String],
-            customer_ids: T::Array[String],
-            effective_before: Time,
-            not_expiring_before: Time,
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              limit: Integer,
+              next_page: String,
+              credit_grant_ids: T::Array[String],
+              credit_type_ids: T::Array[String],
+              customer_ids: T::Array[String],
+              effective_before: Time,
+              not_expiring_before: Time,
+              request_options: Metronome::RequestOptions
+            }
+          )
       end
       def to_hash
       end

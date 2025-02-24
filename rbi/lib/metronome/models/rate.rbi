@@ -86,7 +86,8 @@ module Metronome
           quantity: Float,
           tiers: T::Array[Metronome::Models::Tier],
           use_list_prices: T::Boolean
-        ).void
+        )
+          .void
       end
       def initialize(
         rate_type:,
@@ -102,19 +103,20 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            rate_type: Symbol,
-            credit_type: Metronome::Models::CreditTypeData,
-            custom_rate: T::Hash[Symbol, T.anything],
-            is_prorated: T::Boolean,
-            price: Float,
-            pricing_group_values: T::Hash[Symbol, String],
-            quantity: Float,
-            tiers: T::Array[Metronome::Models::Tier],
-            use_list_prices: T::Boolean
-          }
-        )
+        override
+          .returns(
+            {
+              rate_type: Symbol,
+              credit_type: Metronome::Models::CreditTypeData,
+              custom_rate: T::Hash[Symbol, T.anything],
+              is_prorated: T::Boolean,
+              price: Float,
+              pricing_group_values: T::Hash[Symbol, String],
+              quantity: Float,
+              tiers: T::Array[Metronome::Models::Tier],
+              use_list_prices: T::Boolean
+            }
+          )
       end
       def to_hash
       end

@@ -78,7 +78,8 @@ module Metronome
         timeout: Float,
         initial_retry_delay: Float,
         max_retry_delay: Float
-      ).void
+      )
+        .void
     end
     def initialize(
       base_url: nil,

@@ -43,7 +43,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::UsageListParams::BillableMetric]).returns(T::Array[Metronome::Models::UsageListParams::BillableMetric])
+        params(_: T::Array[Metronome::Models::UsageListParams::BillableMetric])
+          .returns(T::Array[Metronome::Models::UsageListParams::BillableMetric])
       end
       def billable_metrics=(_)
       end
@@ -65,7 +66,8 @@ module Metronome
           billable_metrics: T::Array[Metronome::Models::UsageListParams::BillableMetric],
           customer_ids: T::Array[String],
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         ending_before:,
@@ -79,17 +81,18 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            ending_before: Time,
-            starting_on: Time,
-            window_size: Symbol,
-            next_page: String,
-            billable_metrics: T::Array[Metronome::Models::UsageListParams::BillableMetric],
-            customer_ids: T::Array[String],
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              ending_before: Time,
+              starting_on: Time,
+              window_size: Symbol,
+              next_page: String,
+              billable_metrics: T::Array[Metronome::Models::UsageListParams::BillableMetric],
+              customer_ids: T::Array[String],
+              request_options: Metronome::RequestOptions
+            }
+          )
       end
       def to_hash
       end
@@ -120,7 +123,8 @@ module Metronome
         end
 
         sig do
-          params(_: Metronome::Models::UsageListParams::BillableMetric::GroupBy).returns(Metronome::Models::UsageListParams::BillableMetric::GroupBy)
+          params(_: Metronome::Models::UsageListParams::BillableMetric::GroupBy)
+            .returns(Metronome::Models::UsageListParams::BillableMetric::GroupBy)
         end
         def group_by=(_)
         end
@@ -129,14 +133,7 @@ module Metronome
         def initialize(id:, group_by: nil)
         end
 
-        sig do
-          override.returns(
-            {
-              id: String,
-              group_by: Metronome::Models::UsageListParams::BillableMetric::GroupBy
-            }
-          )
-        end
+        sig { override.returns({id: String, group_by: Metronome::Models::UsageListParams::BillableMetric::GroupBy}) }
         def to_hash
         end
 

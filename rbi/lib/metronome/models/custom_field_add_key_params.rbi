@@ -36,20 +36,22 @@ module Metronome
           entity: Symbol,
           key: String,
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(enforce_uniqueness:, entity:, key:, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            enforce_uniqueness: T::Boolean,
-            entity: Symbol,
-            key: String,
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              enforce_uniqueness: T::Boolean,
+              entity: Symbol,
+              key: String,
+              request_options: Metronome::RequestOptions
+            }
+          )
       end
       def to_hash
       end

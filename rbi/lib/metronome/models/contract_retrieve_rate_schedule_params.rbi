@@ -51,7 +51,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector]).returns(T::Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector])
+        params(_: T::Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector])
+          .returns(T::Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector])
       end
       def selectors=(_)
       end
@@ -65,7 +66,8 @@ module Metronome
           at: Time,
           selectors: T::Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector],
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         contract_id:,
@@ -79,17 +81,18 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            contract_id: String,
-            customer_id: String,
-            limit: Integer,
-            next_page: String,
-            at: Time,
-            selectors: T::Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector],
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              contract_id: String,
+              customer_id: String,
+              limit: Integer,
+              next_page: String,
+              at: Time,
+              selectors: T::Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector],
+              request_options: Metronome::RequestOptions
+            }
+          )
       end
       def to_hash
       end
@@ -133,7 +136,8 @@ module Metronome
             pricing_group_values: T::Hash[Symbol, String],
             product_id: String,
             product_tags: T::Array[String]
-          ).void
+          )
+            .void
         end
         def initialize(
           partial_pricing_group_values: nil,
@@ -144,14 +148,15 @@ module Metronome
         end
 
         sig do
-          override.returns(
-            {
-              partial_pricing_group_values: T::Hash[Symbol, String],
-              pricing_group_values: T::Hash[Symbol, String],
-              product_id: String,
-              product_tags: T::Array[String]
-            }
-          )
+          override
+            .returns(
+              {
+                partial_pricing_group_values: T::Hash[Symbol, String],
+                pricing_group_values: T::Hash[Symbol, String],
+                product_id: String,
+                product_tags: T::Array[String]
+              }
+            )
         end
         def to_hash
         end

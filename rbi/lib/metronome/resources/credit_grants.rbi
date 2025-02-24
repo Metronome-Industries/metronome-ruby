@@ -20,7 +20,8 @@ module Metronome
           rollover_settings: Metronome::Models::CreditGrantCreateParams::RolloverSettings,
           uniqueness_key: String,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::Models::CreditGrantCreateResponse)
+        )
+          .returns(Metronome::Models::CreditGrantCreateResponse)
       end
       def create(
         customer_id:,
@@ -51,7 +52,8 @@ module Metronome
           effective_before: Time,
           not_expiring_before: Time,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::CursorPage[Metronome::Models::CreditGrantListResponse])
+        )
+          .returns(Metronome::CursorPage[Metronome::Models::CreditGrantListResponse])
       end
       def list(
         limit: nil,
@@ -72,7 +74,8 @@ module Metronome
           expires_at: Time,
           name: String,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::Models::CreditGrantEditResponse)
+        )
+          .returns(Metronome::Models::CreditGrantEditResponse)
       end
       def edit(id:, credit_grant_type: nil, expires_at: nil, name: nil, request_options: {})
       end
@@ -85,7 +88,8 @@ module Metronome
           ending_before: Time,
           starting_on: Time,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::Models::CreditGrantListEntriesResponse)
+        )
+          .returns(Metronome::Models::CreditGrantListEntriesResponse)
       end
       def list_entries(
         next_page: nil,
@@ -103,7 +107,8 @@ module Metronome
           release_uniqueness_key: T::Boolean,
           void_credit_purchase_invoice: T::Boolean,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::Models::CreditGrantVoidResponse)
+        )
+          .returns(Metronome::Models::CreditGrantVoidResponse)
       end
       def void(id:, release_uniqueness_key: nil, void_credit_purchase_invoice: nil, request_options: {})
       end

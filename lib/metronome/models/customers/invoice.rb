@@ -759,10 +759,7 @@ module Metronome
             # @!attribute type
             #
             #   @return [Symbol, Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type]
-            required :type,
-                     enum: -> {
-                       Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type
-                     }
+            required :type, enum: -> { Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type }
 
             # @!parse
             #   # only present for beta contract invoices
@@ -937,10 +934,7 @@ module Metronome
             #   when the current tier started and ends (for tiered charges only)
             #
             #   @return [Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod, nil]
-            optional :tier_period,
-                     -> {
-                       Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod
-                     }
+            optional :tier_period, -> { Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod }
 
             # @!parse
             #   # @return [Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod]
@@ -950,9 +944,7 @@ module Metronome
             #
             #   @return [Array<Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier>, nil]
             optional :tiers,
-                     -> {
-                       Metronome::ArrayOf[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]
-                     }
+                     -> { Metronome::ArrayOf[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier] }
 
             # @!parse
             #   # @return [Array<Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier>]
@@ -1185,17 +1177,13 @@ module Metronome
             #
             #   @return [Symbol, Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType]
             required :billing_provider_type,
-                     enum: -> {
-                       Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType
-                     }
+                     enum: -> { Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType }
 
             # @!attribute [r] external_status
             #
             #   @return [Symbol, Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus, nil]
             optional :external_status,
-                     enum: -> {
-                       Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus
-                     }
+                     enum: -> { Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus }
 
             # @!parse
             #   # @return [Symbol, Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus]
@@ -1520,10 +1508,7 @@ module Metronome
           # @!attribute reseller_type
           #
           #   @return [Symbol, Metronome::Models::Customers::Invoice::ResellerRoyalty::ResellerType]
-          required :reseller_type,
-                   enum: -> {
-                     Metronome::Models::Customers::Invoice::ResellerRoyalty::ResellerType
-                   }
+          required :reseller_type, enum: -> { Metronome::Models::Customers::Invoice::ResellerRoyalty::ResellerType }
 
           # @!attribute [r] aws_options
           #

@@ -37,20 +37,22 @@ module Metronome
             credit_id: String,
             customer_id: String,
             request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(access_ending_before:, credit_id:, customer_id:, request_options: {})
         end
 
         sig do
-          override.returns(
-            {
-              access_ending_before: Time,
-              credit_id: String,
-              customer_id: String,
-              request_options: Metronome::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                access_ending_before: Time,
+                credit_id: String,
+                customer_id: String,
+                request_options: Metronome::RequestOptions
+              }
+            )
         end
         def to_hash
         end

@@ -15,9 +15,7 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse::Data>]
           required :data,
-                   -> {
-                     Metronome::ArrayOf[Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse::Data]
-                   }
+                   -> { Metronome::ArrayOf[Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse::Data] }
 
           # @!parse
           #   # @param data [Array<Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse::Data>]

@@ -10,7 +10,8 @@ module Metronome
             limit: Integer,
             next_page: String,
             request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Metronome::CursorPage[Metronome::Models::Customers::PlanListResponse])
+          )
+            .returns(Metronome::CursorPage[Metronome::Models::Customers::PlanListResponse])
         end
         def list(customer_id:, limit: nil, next_page: nil, request_options: {})
         end
@@ -26,7 +27,8 @@ module Metronome
             price_adjustments: T::Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment],
             trial_spec: Metronome::Models::Customers::PlanAddParams::TrialSpec,
             request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Metronome::Models::Customers::PlanAddResponse)
+          )
+            .returns(Metronome::Models::Customers::PlanAddResponse)
         end
         def add(
           customer_id:,
@@ -49,7 +51,8 @@ module Metronome
             void_invoices: T::Boolean,
             void_stripe_invoices: T::Boolean,
             request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Metronome::Models::Customers::PlanEndResponse)
+          )
+            .returns(Metronome::Models::Customers::PlanEndResponse)
         end
         def end_(
           customer_id:,
@@ -68,7 +71,8 @@ module Metronome
             limit: Integer,
             next_page: String,
             request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Metronome::CursorPage[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse])
+          )
+            .returns(Metronome::CursorPage[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse])
         end
         def list_price_adjustments(
           customer_id:,

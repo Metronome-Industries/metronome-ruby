@@ -54,7 +54,8 @@ module Metronome
           limit: Integer,
           next_page: String,
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         customer_id:,
@@ -67,16 +68,17 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            customer_id: String,
-            ending_before: Time,
-            starting_on: Time,
-            limit: Integer,
-            next_page: String,
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              customer_id: String,
+              ending_before: Time,
+              starting_on: Time,
+              limit: Integer,
+              next_page: String,
+              request_options: Metronome::RequestOptions
+            }
+          )
       end
       def to_hash
       end

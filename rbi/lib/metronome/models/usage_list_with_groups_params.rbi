@@ -67,7 +67,8 @@ module Metronome
       end
 
       sig do
-        params(_: Metronome::Models::UsageListWithGroupsParams::GroupBy).returns(Metronome::Models::UsageListWithGroupsParams::GroupBy)
+        params(_: Metronome::Models::UsageListWithGroupsParams::GroupBy)
+          .returns(Metronome::Models::UsageListWithGroupsParams::GroupBy)
       end
       def group_by=(_)
       end
@@ -92,7 +93,8 @@ module Metronome
           group_by: Metronome::Models::UsageListWithGroupsParams::GroupBy,
           starting_on: Time,
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         billable_metric_id:,
@@ -109,20 +111,21 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            billable_metric_id: String,
-            customer_id: String,
-            window_size: Symbol,
-            limit: Integer,
-            next_page: String,
-            current_period: T::Boolean,
-            ending_before: Time,
-            group_by: Metronome::Models::UsageListWithGroupsParams::GroupBy,
-            starting_on: Time,
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              billable_metric_id: String,
+              customer_id: String,
+              window_size: Symbol,
+              limit: Integer,
+              next_page: String,
+              current_period: T::Boolean,
+              ending_before: Time,
+              group_by: Metronome::Models::UsageListWithGroupsParams::GroupBy,
+              starting_on: Time,
+              request_options: Metronome::RequestOptions
+            }
+          )
       end
       def to_hash
       end

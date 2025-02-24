@@ -12,7 +12,8 @@ module Metronome
         end
 
         sig do
-          params(_: Metronome::Models::Customers::CreditCreateParams::AccessSchedule).returns(Metronome::Models::Customers::CreditCreateParams::AccessSchedule)
+          params(_: Metronome::Models::Customers::CreditCreateParams::AccessSchedule)
+            .returns(Metronome::Models::Customers::CreditCreateParams::AccessSchedule)
         end
         def access_schedule=(_)
         end
@@ -138,7 +139,8 @@ module Metronome
             salesforce_opportunity_id: String,
             uniqueness_key: String,
             request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(
           access_schedule:,
@@ -160,38 +162,38 @@ module Metronome
         end
 
         sig do
-          override.returns(
-            {
-              access_schedule: Metronome::Models::Customers::CreditCreateParams::AccessSchedule,
-              customer_id: String,
-              priority: Float,
-              product_id: String,
-              applicable_contract_ids: T::Array[String],
-              applicable_product_ids: T::Array[String],
-              applicable_product_tags: T::Array[String],
-              custom_fields: T::Hash[Symbol, String],
-              description: String,
-              name: String,
-              netsuite_sales_order_id: String,
-              rate_type: Symbol,
-              salesforce_opportunity_id: String,
-              uniqueness_key: String,
-              request_options: Metronome::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                access_schedule: Metronome::Models::Customers::CreditCreateParams::AccessSchedule,
+                customer_id: String,
+                priority: Float,
+                product_id: String,
+                applicable_contract_ids: T::Array[String],
+                applicable_product_ids: T::Array[String],
+                applicable_product_tags: T::Array[String],
+                custom_fields: T::Hash[Symbol, String],
+                description: String,
+                name: String,
+                netsuite_sales_order_id: String,
+                rate_type: Symbol,
+                salesforce_opportunity_id: String,
+                uniqueness_key: String,
+                request_options: Metronome::RequestOptions
+              }
+            )
         end
         def to_hash
         end
 
         class AccessSchedule < Metronome::BaseModel
-          sig do
-            returns(T::Array[Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem])
-          end
+          sig { returns(T::Array[Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem]) }
           def schedule_items
           end
 
           sig do
-            params(_: T::Array[Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem]).returns(T::Array[Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem])
+            params(_: T::Array[Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem])
+              .returns(T::Array[Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem])
           end
           def schedule_items=(_)
           end
@@ -208,17 +210,20 @@ module Metronome
             params(
               schedule_items: T::Array[Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem],
               credit_type_id: String
-            ).void
+            )
+              .void
           end
           def initialize(schedule_items:, credit_type_id: nil)
           end
 
           sig do
-            override.returns(
-              {
-                schedule_items: T::Array[Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem], credit_type_id: String
-              }
-            )
+            override
+              .returns(
+                {
+                  schedule_items: T::Array[Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem],
+                  credit_type_id: String
+                }
+              )
           end
           def to_hash
           end

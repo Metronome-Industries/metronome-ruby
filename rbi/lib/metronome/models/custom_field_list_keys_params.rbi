@@ -27,19 +27,19 @@ module Metronome
           next_page: String,
           entities: T::Array[Symbol],
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(next_page: nil, entities: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            next_page: String,
-            entities: T::Array[Symbol],
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns({
+                     next_page: String,
+                     entities: T::Array[Symbol],
+                     request_options: Metronome::RequestOptions
+                   })
       end
       def to_hash
       end

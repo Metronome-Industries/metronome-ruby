@@ -9,7 +9,8 @@ module Metronome
         end
 
         sig do
-          params(_: T::Array[Metronome::Models::Customers::CustomerAlert]).returns(T::Array[Metronome::Models::Customers::CustomerAlert])
+          params(_: T::Array[Metronome::Models::Customers::CustomerAlert])
+            .returns(T::Array[Metronome::Models::Customers::CustomerAlert])
         end
         def data=(_)
         end
@@ -22,22 +23,13 @@ module Metronome
         def next_page=(_)
         end
 
-        sig do
-          params(
-            data: T::Array[Metronome::Models::Customers::CustomerAlert],
-            next_page: T.nilable(String)
-          ).void
-        end
+        sig { params(data: T::Array[Metronome::Models::Customers::CustomerAlert], next_page: T.nilable(String)).void }
         def initialize(data:, next_page:)
         end
 
         sig do
-          override.returns(
-            {
-              data: T::Array[Metronome::Models::Customers::CustomerAlert],
-              next_page: T.nilable(String)
-            }
-          )
+          override
+            .returns({data: T::Array[Metronome::Models::Customers::CustomerAlert], next_page: T.nilable(String)})
         end
         def to_hash
         end

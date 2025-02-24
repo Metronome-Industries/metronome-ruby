@@ -47,14 +47,13 @@ module Metronome
         def net_payment_terms_days=(_)
         end
 
-        sig do
-          returns(T.nilable(T::Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment]))
-        end
+        sig { returns(T.nilable(T::Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment])) }
         def overage_rate_adjustments
         end
 
         sig do
-          params(_: T::Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment]).returns(T::Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment])
+          params(_: T::Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment])
+            .returns(T::Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment])
         end
         def overage_rate_adjustments=(_)
         end
@@ -64,7 +63,8 @@ module Metronome
         end
 
         sig do
-          params(_: T::Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment]).returns(T::Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment])
+          params(_: T::Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment])
+            .returns(T::Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment])
         end
         def price_adjustments=(_)
         end
@@ -74,7 +74,8 @@ module Metronome
         end
 
         sig do
-          params(_: Metronome::Models::Customers::PlanAddParams::TrialSpec).returns(Metronome::Models::Customers::PlanAddParams::TrialSpec)
+          params(_: Metronome::Models::Customers::PlanAddParams::TrialSpec)
+            .returns(Metronome::Models::Customers::PlanAddParams::TrialSpec)
         end
         def trial_spec=(_)
         end
@@ -90,7 +91,8 @@ module Metronome
             price_adjustments: T::Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment],
             trial_spec: Metronome::Models::Customers::PlanAddParams::TrialSpec,
             request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(
           customer_id:,
@@ -106,19 +108,20 @@ module Metronome
         end
 
         sig do
-          override.returns(
-            {
-              customer_id: String,
-              plan_id: String,
-              starting_on: Time,
-              ending_before: Time,
-              net_payment_terms_days: Float,
-              overage_rate_adjustments: T::Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment],
-              price_adjustments: T::Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment],
-              trial_spec: Metronome::Models::Customers::PlanAddParams::TrialSpec,
-              request_options: Metronome::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                customer_id: String,
+                plan_id: String,
+                starting_on: Time,
+                ending_before: Time,
+                net_payment_terms_days: Float,
+                overage_rate_adjustments: T::Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment],
+                price_adjustments: T::Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment],
+                trial_spec: Metronome::Models::Customers::PlanAddParams::TrialSpec,
+                request_options: Metronome::RequestOptions
+              }
+            )
         end
         def to_hash
         end
@@ -153,19 +156,21 @@ module Metronome
               custom_credit_type_id: String,
               fiat_currency_credit_type_id: String,
               to_fiat_conversion_factor: Float
-            ).void
+            )
+              .void
           end
           def initialize(custom_credit_type_id:, fiat_currency_credit_type_id:, to_fiat_conversion_factor:)
           end
 
           sig do
-            override.returns(
-              {
-                custom_credit_type_id: String,
-                fiat_currency_credit_type_id: String,
-                to_fiat_conversion_factor: Float
-              }
-            )
+            override
+              .returns(
+                {
+                  custom_credit_type_id: String,
+                  fiat_currency_credit_type_id: String,
+                  to_fiat_conversion_factor: Float
+                }
+              )
           end
           def to_hash
           end
@@ -228,22 +233,24 @@ module Metronome
               quantity: Float,
               tier: Float,
               value: Float
-            ).void
+            )
+              .void
           end
           def initialize(adjustment_type:, charge_id:, start_period:, quantity: nil, tier: nil, value: nil)
           end
 
           sig do
-            override.returns(
-              {
-                adjustment_type: Symbol,
-                charge_id: String,
-                start_period: Float,
-                quantity: Float,
-                tier: Float,
-                value: Float
-              }
-            )
+            override
+              .returns(
+                {
+                  adjustment_type: Symbol,
+                  charge_id: String,
+                  start_period: Float,
+                  quantity: Float,
+                  tier: Float,
+                  value: Float
+                }
+              )
           end
           def to_hash
           end
@@ -276,7 +283,8 @@ module Metronome
           end
 
           sig do
-            params(_: Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap).returns(Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap)
+            params(_: Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap)
+              .returns(Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap)
           end
           def spending_cap=(_)
           end
@@ -285,18 +293,17 @@ module Metronome
             params(
               length_in_days: Float,
               spending_cap: Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap
-            ).void
+            )
+              .void
           end
           def initialize(length_in_days:, spending_cap: nil)
           end
 
           sig do
-            override.returns(
-              {
-                length_in_days: Float,
-                spending_cap: Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap
-              }
-            )
+            override
+              .returns(
+                {length_in_days: Float, spending_cap: Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap}
+              )
           end
           def to_hash
           end

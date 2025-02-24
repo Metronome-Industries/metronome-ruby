@@ -27,7 +27,8 @@ module Metronome
           customer_id: String,
           name: String,
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(customer_id:, name:, request_options: {})
       end

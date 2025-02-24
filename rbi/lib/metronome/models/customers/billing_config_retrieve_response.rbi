@@ -9,7 +9,8 @@ module Metronome
         end
 
         sig do
-          params(_: Metronome::Models::Customers::BillingConfigRetrieveResponse::Data).returns(Metronome::Models::Customers::BillingConfigRetrieveResponse::Data)
+          params(_: Metronome::Models::Customers::BillingConfigRetrieveResponse::Data)
+            .returns(Metronome::Models::Customers::BillingConfigRetrieveResponse::Data)
         end
         def data=(_)
         end
@@ -106,7 +107,8 @@ module Metronome
               azure_subscription_status: Symbol,
               billing_provider_customer_id: String,
               stripe_collection_method: Symbol
-            ).void
+            )
+              .void
           end
           def initialize(
             aws_expiration_date: nil,
@@ -122,19 +124,20 @@ module Metronome
           end
 
           sig do
-            override.returns(
-              {
-                aws_expiration_date: Time,
-                aws_product_code: String,
-                aws_region: Symbol,
-                azure_expiration_date: Time,
-                azure_plan_id: String,
-                azure_start_date: Time,
-                azure_subscription_status: Symbol,
-                billing_provider_customer_id: String,
-                stripe_collection_method: Symbol
-              }
-            )
+            override
+              .returns(
+                {
+                  aws_expiration_date: Time,
+                  aws_product_code: String,
+                  aws_region: Symbol,
+                  azure_expiration_date: Time,
+                  azure_plan_id: String,
+                  azure_start_date: Time,
+                  azure_subscription_status: Symbol,
+                  billing_provider_customer_id: String,
+                  stripe_collection_method: Symbol
+                }
+              )
           end
           def to_hash
           end

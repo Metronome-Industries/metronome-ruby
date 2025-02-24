@@ -47,9 +47,7 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::Contracts::RateCards::RateListParams::Selector>, nil]
           optional :selectors,
-                   -> {
-                     Metronome::ArrayOf[Metronome::Models::Contracts::RateCards::RateListParams::Selector]
-                   }
+                   -> { Metronome::ArrayOf[Metronome::Models::Contracts::RateCards::RateListParams::Selector] }
 
           # @!parse
           #   # @return [Array<Metronome::Models::Contracts::RateCards::RateListParams::Selector>]

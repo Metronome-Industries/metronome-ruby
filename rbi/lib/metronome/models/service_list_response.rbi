@@ -8,7 +8,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::ServiceListResponse::Service]).returns(T::Array[Metronome::Models::ServiceListResponse::Service])
+        params(_: T::Array[Metronome::Models::ServiceListResponse::Service])
+          .returns(T::Array[Metronome::Models::ServiceListResponse::Service])
       end
       def services=(_)
       end

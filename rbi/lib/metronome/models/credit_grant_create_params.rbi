@@ -27,7 +27,8 @@ module Metronome
       end
 
       sig do
-        params(_: Metronome::Models::CreditGrantCreateParams::GrantAmount).returns(Metronome::Models::CreditGrantCreateParams::GrantAmount)
+        params(_: Metronome::Models::CreditGrantCreateParams::GrantAmount)
+          .returns(Metronome::Models::CreditGrantCreateParams::GrantAmount)
       end
       def grant_amount=(_)
       end
@@ -45,7 +46,8 @@ module Metronome
       end
 
       sig do
-        params(_: Metronome::Models::CreditGrantCreateParams::PaidAmount).returns(Metronome::Models::CreditGrantCreateParams::PaidAmount)
+        params(_: Metronome::Models::CreditGrantCreateParams::PaidAmount)
+          .returns(Metronome::Models::CreditGrantCreateParams::PaidAmount)
       end
       def paid_amount=(_)
       end
@@ -111,7 +113,8 @@ module Metronome
       end
 
       sig do
-        params(_: Metronome::Models::CreditGrantCreateParams::RolloverSettings).returns(Metronome::Models::CreditGrantCreateParams::RolloverSettings)
+        params(_: Metronome::Models::CreditGrantCreateParams::RolloverSettings)
+          .returns(Metronome::Models::CreditGrantCreateParams::RolloverSettings)
       end
       def rollover_settings=(_)
       end
@@ -141,7 +144,8 @@ module Metronome
           rollover_settings: Metronome::Models::CreditGrantCreateParams::RolloverSettings,
           uniqueness_key: String,
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         customer_id:,
@@ -163,25 +167,26 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            customer_id: String,
-            expires_at: Time,
-            grant_amount: Metronome::Models::CreditGrantCreateParams::GrantAmount,
-            name: String,
-            paid_amount: Metronome::Models::CreditGrantCreateParams::PaidAmount,
-            priority: Float,
-            credit_grant_type: String,
-            custom_fields: T::Hash[Symbol, String],
-            effective_at: Time,
-            invoice_date: Time,
-            product_ids: T::Array[String],
-            reason: String,
-            rollover_settings: Metronome::Models::CreditGrantCreateParams::RolloverSettings,
-            uniqueness_key: String,
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              customer_id: String,
+              expires_at: Time,
+              grant_amount: Metronome::Models::CreditGrantCreateParams::GrantAmount,
+              name: String,
+              paid_amount: Metronome::Models::CreditGrantCreateParams::PaidAmount,
+              priority: Float,
+              credit_grant_type: String,
+              custom_fields: T::Hash[Symbol, String],
+              effective_at: Time,
+              invoice_date: Time,
+              product_ids: T::Array[String],
+              reason: String,
+              rollover_settings: Metronome::Models::CreditGrantCreateParams::RolloverSettings,
+              uniqueness_key: String,
+              request_options: Metronome::RequestOptions
+            }
+          )
       end
       def to_hash
       end
@@ -255,27 +260,15 @@ module Metronome
         def priority=(_)
         end
 
-        sig do
-          returns(
-            T.any(
-              Metronome::Models::RolloverAmountMaxPercentage,
-              Metronome::Models::RolloverAmountMaxAmount
-            )
-          )
-        end
+        sig { returns(T.any(Metronome::Models::RolloverAmountMaxPercentage, Metronome::Models::RolloverAmountMaxAmount)) }
         def rollover_amount
         end
 
         sig do
           params(
-            _: T.any(
-              Metronome::Models::RolloverAmountMaxPercentage,
-              Metronome::Models::RolloverAmountMaxAmount
-            )
-          ).returns(T.any(
-                      Metronome::Models::RolloverAmountMaxPercentage,
-                      Metronome::Models::RolloverAmountMaxAmount
-                    ))
+            _: T.any(Metronome::Models::RolloverAmountMaxPercentage, Metronome::Models::RolloverAmountMaxAmount)
+          )
+            .returns(T.any(Metronome::Models::RolloverAmountMaxPercentage, Metronome::Models::RolloverAmountMaxAmount))
         end
         def rollover_amount=(_)
         end
@@ -284,26 +277,22 @@ module Metronome
           params(
             expires_at: Time,
             priority: Float,
-            rollover_amount: T.any(
-              Metronome::Models::RolloverAmountMaxPercentage,
-              Metronome::Models::RolloverAmountMaxAmount
-            )
-          ).void
+            rollover_amount: T.any(Metronome::Models::RolloverAmountMaxPercentage, Metronome::Models::RolloverAmountMaxAmount)
+          )
+            .void
         end
         def initialize(expires_at:, priority:, rollover_amount:)
         end
 
         sig do
-          override.returns(
-            {
-              expires_at: Time,
-              priority: Float,
-              rollover_amount: T.any(
-                Metronome::Models::RolloverAmountMaxPercentage,
-                Metronome::Models::RolloverAmountMaxAmount
-              )
-            }
-          )
+          override
+            .returns(
+              {
+                expires_at: Time,
+                priority: Float,
+                rollover_amount: T.any(Metronome::Models::RolloverAmountMaxPercentage, Metronome::Models::RolloverAmountMaxAmount)
+              }
+            )
         end
         def to_hash
         end
@@ -312,12 +301,10 @@ module Metronome
           abstract!
 
           sig do
-            override.returns(
-              [
-                [NilClass, Metronome::Models::RolloverAmountMaxPercentage],
-                [NilClass, Metronome::Models::RolloverAmountMaxAmount]
-              ]
-            )
+            override
+              .returns(
+                [[NilClass, Metronome::Models::RolloverAmountMaxPercentage], [NilClass, Metronome::Models::RolloverAmountMaxAmount]]
+              )
           end
           private_class_method def self.variants
           end

@@ -73,7 +73,8 @@ module Metronome
         end
 
         sig do
-          params(_: Metronome::Models::Customers::PlanListResponse::TrialInfo).returns(Metronome::Models::Customers::PlanListResponse::TrialInfo)
+          params(_: Metronome::Models::Customers::PlanListResponse::TrialInfo)
+            .returns(Metronome::Models::Customers::PlanListResponse::TrialInfo)
         end
         def trial_info=(_)
         end
@@ -89,7 +90,8 @@ module Metronome
             ending_before: Time,
             net_payment_terms_days: Float,
             trial_info: Metronome::Models::Customers::PlanListResponse::TrialInfo
-          ).void
+          )
+            .void
         end
         def initialize(
           id:,
@@ -105,19 +107,20 @@ module Metronome
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              custom_fields: T::Hash[Symbol, String],
-              plan_description: String,
-              plan_id: String,
-              plan_name: String,
-              starting_on: Time,
-              ending_before: Time,
-              net_payment_terms_days: Float,
-              trial_info: Metronome::Models::Customers::PlanListResponse::TrialInfo
-            }
-          )
+          override
+            .returns(
+              {
+                id: String,
+                custom_fields: T::Hash[Symbol, String],
+                plan_description: String,
+                plan_id: String,
+                plan_name: String,
+                starting_on: Time,
+                ending_before: Time,
+                net_payment_terms_days: Float,
+                trial_info: Metronome::Models::Customers::PlanListResponse::TrialInfo
+              }
+            )
         end
         def to_hash
         end
@@ -136,7 +139,8 @@ module Metronome
           end
 
           sig do
-            params(_: T::Array[Metronome::Models::Customers::PlanListResponse::TrialInfo::SpendingCap]).returns(T::Array[Metronome::Models::Customers::PlanListResponse::TrialInfo::SpendingCap])
+            params(_: T::Array[Metronome::Models::Customers::PlanListResponse::TrialInfo::SpendingCap])
+              .returns(T::Array[Metronome::Models::Customers::PlanListResponse::TrialInfo::SpendingCap])
           end
           def spending_caps=(_)
           end
@@ -145,18 +149,20 @@ module Metronome
             params(
               ending_before: Time,
               spending_caps: T::Array[Metronome::Models::Customers::PlanListResponse::TrialInfo::SpendingCap]
-            ).void
+            )
+              .void
           end
           def initialize(ending_before:, spending_caps:)
           end
 
           sig do
-            override.returns(
-              {
-                ending_before: Time,
-                spending_caps: T::Array[Metronome::Models::Customers::PlanListResponse::TrialInfo::SpendingCap]
-              }
-            )
+            override
+              .returns(
+                {
+                  ending_before: Time,
+                  spending_caps: T::Array[Metronome::Models::Customers::PlanListResponse::TrialInfo::SpendingCap]
+                }
+              )
           end
           def to_hash
           end
@@ -186,25 +192,11 @@ module Metronome
             def credit_type=(_)
             end
 
-            sig do
-              params(
-                amount: Float,
-                amount_remaining: Float,
-                credit_type: Metronome::Models::CreditTypeData
-              ).void
-            end
+            sig { params(amount: Float, amount_remaining: Float, credit_type: Metronome::Models::CreditTypeData).void }
             def initialize(amount:, amount_remaining:, credit_type:)
             end
 
-            sig do
-              override.returns(
-                {
-                  amount: Float,
-                  amount_remaining: Float,
-                  credit_type: Metronome::Models::CreditTypeData
-                }
-              )
-            end
+            sig { override.returns({amount: Float, amount_remaining: Float, credit_type: Metronome::Models::CreditTypeData}) }
             def to_hash
             end
           end

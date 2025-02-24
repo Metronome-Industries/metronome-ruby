@@ -41,19 +41,19 @@ module Metronome
         end
 
         sig do
-          params(_: T::Array[Metronome::Models::Contracts::RateCardListResponse::Alias]).returns(T::Array[Metronome::Models::Contracts::RateCardListResponse::Alias])
+          params(_: T::Array[Metronome::Models::Contracts::RateCardListResponse::Alias])
+            .returns(T::Array[Metronome::Models::Contracts::RateCardListResponse::Alias])
         end
         def aliases=(_)
         end
 
-        sig do
-          returns(T.nilable(T::Array[Metronome::Models::Contracts::RateCardListResponse::CreditTypeConversion]))
-        end
+        sig { returns(T.nilable(T::Array[Metronome::Models::Contracts::RateCardListResponse::CreditTypeConversion])) }
         def credit_type_conversions
         end
 
         sig do
-          params(_: T::Array[Metronome::Models::Contracts::RateCardListResponse::CreditTypeConversion]).returns(T::Array[Metronome::Models::Contracts::RateCardListResponse::CreditTypeConversion])
+          params(_: T::Array[Metronome::Models::Contracts::RateCardListResponse::CreditTypeConversion])
+            .returns(T::Array[Metronome::Models::Contracts::RateCardListResponse::CreditTypeConversion])
         end
         def credit_type_conversions=(_)
         end
@@ -93,7 +93,8 @@ module Metronome
             custom_fields: T::Hash[Symbol, String],
             description: String,
             fiat_credit_type: Metronome::Models::CreditTypeData
-          ).void
+          )
+            .void
         end
         def initialize(
           id:,
@@ -109,19 +110,20 @@ module Metronome
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              created_at: Time,
-              created_by: String,
-              name: String,
-              aliases: T::Array[Metronome::Models::Contracts::RateCardListResponse::Alias],
-              credit_type_conversions: T::Array[Metronome::Models::Contracts::RateCardListResponse::CreditTypeConversion],
-              custom_fields: T::Hash[Symbol, String],
-              description: String,
-              fiat_credit_type: Metronome::Models::CreditTypeData
-            }
-          )
+          override
+            .returns(
+              {
+                id: String,
+                created_at: Time,
+                created_by: String,
+                name: String,
+                aliases: T::Array[Metronome::Models::Contracts::RateCardListResponse::Alias],
+                credit_type_conversions: T::Array[Metronome::Models::Contracts::RateCardListResponse::CreditTypeConversion],
+                custom_fields: T::Hash[Symbol, String],
+                description: String,
+                fiat_credit_type: Metronome::Models::CreditTypeData
+              }
+            )
         end
         def to_hash
         end
@@ -177,20 +179,11 @@ module Metronome
           def fiat_per_custom_credit=(_)
           end
 
-          sig do
-            params(custom_credit_type: Metronome::Models::CreditTypeData, fiat_per_custom_credit: String).void
-          end
+          sig { params(custom_credit_type: Metronome::Models::CreditTypeData, fiat_per_custom_credit: String).void }
           def initialize(custom_credit_type:, fiat_per_custom_credit:)
           end
 
-          sig do
-            override.returns(
-              {
-                custom_credit_type: Metronome::Models::CreditTypeData,
-                fiat_per_custom_credit: String
-              }
-            )
-          end
+          sig { override.returns({custom_credit_type: Metronome::Models::CreditTypeData, fiat_per_custom_credit: String}) }
           def to_hash
           end
         end

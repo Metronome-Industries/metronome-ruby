@@ -94,14 +94,16 @@ module Metronome
       sig do
         returns(
           T.nilable(
-            T::Array[T.any(
+            T::Array[
+            T.any(
               Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry,
               Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry,
               Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry,
               Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry,
               Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry,
               Metronome::Models::Credit::Ledger::CreditManualLedgerEntry
-            )]
+            )
+            ]
           )
         )
       end
@@ -110,22 +112,29 @@ module Metronome
 
       sig do
         params(
-          _: T::Array[T.any(
+          _: T::Array[
+          T.any(
             Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry,
             Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry,
             Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry,
             Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry,
             Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry,
             Metronome::Models::Credit::Ledger::CreditManualLedgerEntry
-          )]
-        ).returns(T::Array[T.any(
-          Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry,
-          Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry,
-          Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry,
-          Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry,
-          Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry,
-          Metronome::Models::Credit::Ledger::CreditManualLedgerEntry
-        )])
+          )
+          ]
+        )
+          .returns(
+            T::Array[
+            T.any(
+              Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry,
+              Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry,
+              Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry,
+              Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry,
+              Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry,
+              Metronome::Models::Credit::Ledger::CreditManualLedgerEntry
+            )
+            ]
+          )
       end
       def ledger=(_)
       end
@@ -191,21 +200,24 @@ module Metronome
           contract: Metronome::Models::Credit::Contract,
           custom_fields: T::Hash[Symbol, String],
           description: String,
-          ledger: T::Array[T.any(
+          ledger: T::Array[
+          T.any(
             Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry,
             Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry,
             Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry,
             Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry,
             Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry,
             Metronome::Models::Credit::Ledger::CreditManualLedgerEntry
-          )],
+          )
+          ],
           name: String,
           netsuite_sales_order_id: String,
           priority: Float,
           rate_type: Symbol,
           salesforce_opportunity_id: String,
           uniqueness_key: String
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -230,35 +242,38 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            product: Metronome::Models::Credit::Product,
-            type: Symbol,
-            access_schedule: Metronome::Models::ScheduleDuration,
-            applicable_contract_ids: T::Array[String],
-            applicable_product_ids: T::Array[String],
-            applicable_product_tags: T::Array[String],
-            balance: Float,
-            contract: Metronome::Models::Credit::Contract,
-            custom_fields: T::Hash[Symbol, String],
-            description: String,
-            ledger: T::Array[T.any(
-              Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry,
-              Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry,
-              Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry,
-              Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry,
-              Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry,
-              Metronome::Models::Credit::Ledger::CreditManualLedgerEntry
-            )],
-            name: String,
-            netsuite_sales_order_id: String,
-            priority: Float,
-            rate_type: Symbol,
-            salesforce_opportunity_id: String,
-            uniqueness_key: String
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              product: Metronome::Models::Credit::Product,
+              type: Symbol,
+              access_schedule: Metronome::Models::ScheduleDuration,
+              applicable_contract_ids: T::Array[String],
+              applicable_product_ids: T::Array[String],
+              applicable_product_tags: T::Array[String],
+              balance: Float,
+              contract: Metronome::Models::Credit::Contract,
+              custom_fields: T::Hash[Symbol, String],
+              description: String,
+              ledger: T::Array[
+              T.any(
+                Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry,
+                Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry,
+                Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry,
+                Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry,
+                Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry,
+                Metronome::Models::Credit::Ledger::CreditManualLedgerEntry
+              )
+              ],
+              name: String,
+              netsuite_sales_order_id: String,
+              priority: Float,
+              rate_type: Symbol,
+              salesforce_opportunity_id: String,
+              uniqueness_key: String
+            }
+          )
       end
       def to_hash
       end
@@ -693,19 +708,10 @@ module Metronome
         end
 
         sig do
-          override.returns(
-            [
-              [NilClass, Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry],
-              [
-                NilClass,
-                Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry
-              ],
-              [NilClass, Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry],
-              [NilClass, Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry],
-              [NilClass, Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry],
-              [NilClass, Metronome::Models::Credit::Ledger::CreditManualLedgerEntry]
-            ]
-          )
+          override
+            .returns(
+              [[NilClass, Metronome::Models::Credit::Ledger::CreditSegmentStartLedgerEntry], [NilClass, Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry], [NilClass, Metronome::Models::Credit::Ledger::CreditExpirationLedgerEntry], [NilClass, Metronome::Models::Credit::Ledger::CreditCanceledLedgerEntry], [NilClass, Metronome::Models::Credit::Ledger::CreditCreditedLedgerEntry], [NilClass, Metronome::Models::Credit::Ledger::CreditManualLedgerEntry]]
+            )
         end
         private_class_method def self.variants
         end

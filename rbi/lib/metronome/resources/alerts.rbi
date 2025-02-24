@@ -19,7 +19,8 @@ module Metronome
           plan_id: String,
           uniqueness_key: String,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::Models::AlertCreateResponse)
+        )
+          .returns(Metronome::Models::AlertCreateResponse)
       end
       def create(
         alert_type:,
@@ -44,7 +45,8 @@ module Metronome
           id: String,
           release_uniqueness_key: T::Boolean,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::Models::AlertArchiveResponse)
+        )
+          .returns(Metronome::Models::AlertArchiveResponse)
       end
       def archive(id:, release_uniqueness_key: nil, request_options: {})
       end

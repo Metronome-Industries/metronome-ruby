@@ -27,7 +27,8 @@ module Metronome
           limit: Integer,
           next_page: String,
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(limit: nil, next_page: nil, request_options: {})
       end

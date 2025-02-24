@@ -40,7 +40,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::ScheduledCharge]).returns(T::Array[Metronome::Models::ScheduledCharge])
+        params(_: T::Array[Metronome::Models::ScheduledCharge])
+          .returns(T::Array[Metronome::Models::ScheduledCharge])
       end
       def scheduled_charges=(_)
       end
@@ -58,7 +59,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::ContractWithoutAmendments::Transition]).returns(T::Array[Metronome::Models::ContractWithoutAmendments::Transition])
+        params(_: T::Array[Metronome::Models::ContractWithoutAmendments::Transition])
+          .returns(T::Array[Metronome::Models::ContractWithoutAmendments::Transition])
       end
       def transitions=(_)
       end
@@ -68,7 +70,8 @@ module Metronome
       end
 
       sig do
-        params(_: Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule).returns(Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule)
+        params(_: Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule)
+          .returns(Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule)
       end
       def usage_statement_schedule=(_)
       end
@@ -125,9 +128,7 @@ module Metronome
       def professional_services
       end
 
-      sig do
-        params(_: T::Array[Metronome::Models::ProService]).returns(T::Array[Metronome::Models::ProService])
-      end
+      sig { params(_: T::Array[Metronome::Models::ProService]).returns(T::Array[Metronome::Models::ProService]) }
       def professional_services=(_)
       end
 
@@ -144,7 +145,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::ContractWithoutAmendments::RecurringCommit]).returns(T::Array[Metronome::Models::ContractWithoutAmendments::RecurringCommit])
+        params(_: T::Array[Metronome::Models::ContractWithoutAmendments::RecurringCommit])
+          .returns(T::Array[Metronome::Models::ContractWithoutAmendments::RecurringCommit])
       end
       def recurring_commits=(_)
       end
@@ -154,7 +156,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::ContractWithoutAmendments::RecurringCredit]).returns(T::Array[Metronome::Models::ContractWithoutAmendments::RecurringCredit])
+        params(_: T::Array[Metronome::Models::ContractWithoutAmendments::RecurringCredit])
+          .returns(T::Array[Metronome::Models::ContractWithoutAmendments::RecurringCredit])
       end
       def recurring_credits=(_)
       end
@@ -164,7 +167,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::ContractWithoutAmendments::ResellerRoyalty]).returns(T::Array[Metronome::Models::ContractWithoutAmendments::ResellerRoyalty])
+        params(_: T::Array[Metronome::Models::ContractWithoutAmendments::ResellerRoyalty])
+          .returns(T::Array[Metronome::Models::ContractWithoutAmendments::ResellerRoyalty])
       end
       def reseller_royalties=(_)
       end
@@ -198,7 +202,8 @@ module Metronome
       end
 
       sig do
-        params(_: Metronome::Models::ContractWithoutAmendments::UsageFilter).returns(Metronome::Models::ContractWithoutAmendments::UsageFilter)
+        params(_: Metronome::Models::ContractWithoutAmendments::UsageFilter)
+          .returns(Metronome::Models::ContractWithoutAmendments::UsageFilter)
       end
       def usage_filter=(_)
       end
@@ -228,7 +233,8 @@ module Metronome
           scheduled_charges_on_usage_invoices: Symbol,
           total_contract_value: Float,
           usage_filter: Metronome::Models::ContractWithoutAmendments::UsageFilter
-        ).void
+        )
+          .void
       end
       def initialize(
         commits:,
@@ -258,33 +264,34 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            commits: T::Array[Metronome::Models::Commit],
-            created_at: Time,
-            created_by: String,
-            overrides: T::Array[Metronome::Models::Override],
-            scheduled_charges: T::Array[Metronome::Models::ScheduledCharge],
-            starting_at: Time,
-            transitions: T::Array[Metronome::Models::ContractWithoutAmendments::Transition],
-            usage_statement_schedule: Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule,
-            credits: T::Array[Metronome::Models::Credit],
-            discounts: T::Array[Metronome::Models::Discount],
-            ending_before: Time,
-            name: String,
-            net_payment_terms_days: Float,
-            netsuite_sales_order_id: String,
-            professional_services: T::Array[Metronome::Models::ProService],
-            rate_card_id: String,
-            recurring_commits: T::Array[Metronome::Models::ContractWithoutAmendments::RecurringCommit],
-            recurring_credits: T::Array[Metronome::Models::ContractWithoutAmendments::RecurringCredit],
-            reseller_royalties: T::Array[Metronome::Models::ContractWithoutAmendments::ResellerRoyalty],
-            salesforce_opportunity_id: String,
-            scheduled_charges_on_usage_invoices: Symbol,
-            total_contract_value: Float,
-            usage_filter: Metronome::Models::ContractWithoutAmendments::UsageFilter
-          }
-        )
+        override
+          .returns(
+            {
+              commits: T::Array[Metronome::Models::Commit],
+              created_at: Time,
+              created_by: String,
+              overrides: T::Array[Metronome::Models::Override],
+              scheduled_charges: T::Array[Metronome::Models::ScheduledCharge],
+              starting_at: Time,
+              transitions: T::Array[Metronome::Models::ContractWithoutAmendments::Transition],
+              usage_statement_schedule: Metronome::Models::ContractWithoutAmendments::UsageStatementSchedule,
+              credits: T::Array[Metronome::Models::Credit],
+              discounts: T::Array[Metronome::Models::Discount],
+              ending_before: Time,
+              name: String,
+              net_payment_terms_days: Float,
+              netsuite_sales_order_id: String,
+              professional_services: T::Array[Metronome::Models::ProService],
+              rate_card_id: String,
+              recurring_commits: T::Array[Metronome::Models::ContractWithoutAmendments::RecurringCommit],
+              recurring_credits: T::Array[Metronome::Models::ContractWithoutAmendments::RecurringCredit],
+              reseller_royalties: T::Array[Metronome::Models::ContractWithoutAmendments::ResellerRoyalty],
+              salesforce_opportunity_id: String,
+              scheduled_charges_on_usage_invoices: Symbol,
+              total_contract_value: Float,
+              usage_filter: Metronome::Models::ContractWithoutAmendments::UsageFilter
+            }
+          )
       end
       def to_hash
       end
@@ -386,7 +393,8 @@ module Metronome
         end
 
         sig do
-          params(_: Metronome::Models::ContractWithoutAmendments::RecurringCommit::AccessAmount).returns(Metronome::Models::ContractWithoutAmendments::RecurringCommit::AccessAmount)
+          params(_: Metronome::Models::ContractWithoutAmendments::RecurringCommit::AccessAmount)
+            .returns(Metronome::Models::ContractWithoutAmendments::RecurringCommit::AccessAmount)
         end
         def access_amount=(_)
         end
@@ -396,7 +404,8 @@ module Metronome
         end
 
         sig do
-          params(_: Metronome::Models::ContractWithoutAmendments::RecurringCommit::CommitDuration).returns(Metronome::Models::ContractWithoutAmendments::RecurringCommit::CommitDuration)
+          params(_: Metronome::Models::ContractWithoutAmendments::RecurringCommit::CommitDuration)
+            .returns(Metronome::Models::ContractWithoutAmendments::RecurringCommit::CommitDuration)
         end
         def commit_duration=(_)
         end
@@ -414,7 +423,8 @@ module Metronome
         end
 
         sig do
-          params(_: Metronome::Models::ContractWithoutAmendments::RecurringCommit::Product).returns(Metronome::Models::ContractWithoutAmendments::RecurringCommit::Product)
+          params(_: Metronome::Models::ContractWithoutAmendments::RecurringCommit::Product)
+            .returns(Metronome::Models::ContractWithoutAmendments::RecurringCommit::Product)
         end
         def product=(_)
         end
@@ -456,7 +466,8 @@ module Metronome
         end
 
         sig do
-          params(_: Metronome::Models::ContractWithoutAmendments::RecurringCommit::Contract).returns(Metronome::Models::ContractWithoutAmendments::RecurringCommit::Contract)
+          params(_: Metronome::Models::ContractWithoutAmendments::RecurringCommit::Contract)
+            .returns(Metronome::Models::ContractWithoutAmendments::RecurringCommit::Contract)
         end
         def contract=(_)
         end
@@ -477,14 +488,13 @@ module Metronome
         def ending_before=(_)
         end
 
-        sig do
-          returns(T.nilable(Metronome::Models::ContractWithoutAmendments::RecurringCommit::InvoiceAmount))
-        end
+        sig { returns(T.nilable(Metronome::Models::ContractWithoutAmendments::RecurringCommit::InvoiceAmount)) }
         def invoice_amount
         end
 
         sig do
-          params(_: Metronome::Models::ContractWithoutAmendments::RecurringCommit::InvoiceAmount).returns(Metronome::Models::ContractWithoutAmendments::RecurringCommit::InvoiceAmount)
+          params(_: Metronome::Models::ContractWithoutAmendments::RecurringCommit::InvoiceAmount)
+            .returns(Metronome::Models::ContractWithoutAmendments::RecurringCommit::InvoiceAmount)
         end
         def invoice_amount=(_)
         end
@@ -531,7 +541,8 @@ module Metronome
             name: String,
             netsuite_sales_order_id: String,
             rollover_fraction: Float
-          ).void
+          )
+            .void
         end
         def initialize(
           id:,
@@ -554,26 +565,27 @@ module Metronome
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              access_amount: Metronome::Models::ContractWithoutAmendments::RecurringCommit::AccessAmount,
-              commit_duration: Metronome::Models::ContractWithoutAmendments::RecurringCommit::CommitDuration,
-              priority: Float,
-              product: Metronome::Models::ContractWithoutAmendments::RecurringCommit::Product,
-              rate_type: Symbol,
-              starting_at: Time,
-              applicable_product_ids: T::Array[String],
-              applicable_product_tags: T::Array[String],
-              contract: Metronome::Models::ContractWithoutAmendments::RecurringCommit::Contract,
-              description: String,
-              ending_before: Time,
-              invoice_amount: Metronome::Models::ContractWithoutAmendments::RecurringCommit::InvoiceAmount,
-              name: String,
-              netsuite_sales_order_id: String,
-              rollover_fraction: Float
-            }
-          )
+          override
+            .returns(
+              {
+                id: String,
+                access_amount: Metronome::Models::ContractWithoutAmendments::RecurringCommit::AccessAmount,
+                commit_duration: Metronome::Models::ContractWithoutAmendments::RecurringCommit::CommitDuration,
+                priority: Float,
+                product: Metronome::Models::ContractWithoutAmendments::RecurringCommit::Product,
+                rate_type: Symbol,
+                starting_at: Time,
+                applicable_product_ids: T::Array[String],
+                applicable_product_tags: T::Array[String],
+                contract: Metronome::Models::ContractWithoutAmendments::RecurringCommit::Contract,
+                description: String,
+                ending_before: Time,
+                invoice_amount: Metronome::Models::ContractWithoutAmendments::RecurringCommit::InvoiceAmount,
+                name: String,
+                netsuite_sales_order_id: String,
+                rollover_fraction: Float
+              }
+            )
         end
         def to_hash
         end
@@ -752,7 +764,8 @@ module Metronome
         end
 
         sig do
-          params(_: Metronome::Models::ContractWithoutAmendments::RecurringCredit::AccessAmount).returns(Metronome::Models::ContractWithoutAmendments::RecurringCredit::AccessAmount)
+          params(_: Metronome::Models::ContractWithoutAmendments::RecurringCredit::AccessAmount)
+            .returns(Metronome::Models::ContractWithoutAmendments::RecurringCredit::AccessAmount)
         end
         def access_amount=(_)
         end
@@ -762,7 +775,8 @@ module Metronome
         end
 
         sig do
-          params(_: Metronome::Models::ContractWithoutAmendments::RecurringCredit::CommitDuration).returns(Metronome::Models::ContractWithoutAmendments::RecurringCredit::CommitDuration)
+          params(_: Metronome::Models::ContractWithoutAmendments::RecurringCredit::CommitDuration)
+            .returns(Metronome::Models::ContractWithoutAmendments::RecurringCredit::CommitDuration)
         end
         def commit_duration=(_)
         end
@@ -780,7 +794,8 @@ module Metronome
         end
 
         sig do
-          params(_: Metronome::Models::ContractWithoutAmendments::RecurringCredit::Product).returns(Metronome::Models::ContractWithoutAmendments::RecurringCredit::Product)
+          params(_: Metronome::Models::ContractWithoutAmendments::RecurringCredit::Product)
+            .returns(Metronome::Models::ContractWithoutAmendments::RecurringCredit::Product)
         end
         def product=(_)
         end
@@ -822,7 +837,8 @@ module Metronome
         end
 
         sig do
-          params(_: Metronome::Models::ContractWithoutAmendments::RecurringCredit::Contract).returns(Metronome::Models::ContractWithoutAmendments::RecurringCredit::Contract)
+          params(_: Metronome::Models::ContractWithoutAmendments::RecurringCredit::Contract)
+            .returns(Metronome::Models::ContractWithoutAmendments::RecurringCredit::Contract)
         end
         def contract=(_)
         end
@@ -884,7 +900,8 @@ module Metronome
             name: String,
             netsuite_sales_order_id: String,
             rollover_fraction: Float
-          ).void
+          )
+            .void
         end
         def initialize(
           id:,
@@ -906,25 +923,26 @@ module Metronome
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              access_amount: Metronome::Models::ContractWithoutAmendments::RecurringCredit::AccessAmount,
-              commit_duration: Metronome::Models::ContractWithoutAmendments::RecurringCredit::CommitDuration,
-              priority: Float,
-              product: Metronome::Models::ContractWithoutAmendments::RecurringCredit::Product,
-              rate_type: Symbol,
-              starting_at: Time,
-              applicable_product_ids: T::Array[String],
-              applicable_product_tags: T::Array[String],
-              contract: Metronome::Models::ContractWithoutAmendments::RecurringCredit::Contract,
-              description: String,
-              ending_before: Time,
-              name: String,
-              netsuite_sales_order_id: String,
-              rollover_fraction: Float
-            }
-          )
+          override
+            .returns(
+              {
+                id: String,
+                access_amount: Metronome::Models::ContractWithoutAmendments::RecurringCredit::AccessAmount,
+                commit_duration: Metronome::Models::ContractWithoutAmendments::RecurringCredit::CommitDuration,
+                priority: Float,
+                product: Metronome::Models::ContractWithoutAmendments::RecurringCredit::Product,
+                rate_type: Symbol,
+                starting_at: Time,
+                applicable_product_ids: T::Array[String],
+                applicable_product_tags: T::Array[String],
+                contract: Metronome::Models::ContractWithoutAmendments::RecurringCredit::Contract,
+                description: String,
+                ending_before: Time,
+                name: String,
+                netsuite_sales_order_id: String,
+                rollover_fraction: Float
+              }
+            )
         end
         def to_hash
         end
@@ -1175,7 +1193,8 @@ module Metronome
             gcp_account_id: String,
             gcp_offer_id: String,
             reseller_contract_value: Float
-          ).void
+          )
+            .void
         end
         def initialize(
           fraction:,
@@ -1195,23 +1214,24 @@ module Metronome
         end
 
         sig do
-          override.returns(
-            {
-              fraction: Float,
-              netsuite_reseller_id: String,
-              reseller_type: Symbol,
-              starting_at: Time,
-              applicable_product_ids: T::Array[String],
-              applicable_product_tags: T::Array[String],
-              aws_account_number: String,
-              aws_offer_id: String,
-              aws_payer_reference_id: String,
-              ending_before: Time,
-              gcp_account_id: String,
-              gcp_offer_id: String,
-              reseller_contract_value: Float
-            }
-          )
+          override
+            .returns(
+              {
+                fraction: Float,
+                netsuite_reseller_id: String,
+                reseller_type: Symbol,
+                starting_at: Time,
+                applicable_product_ids: T::Array[String],
+                applicable_product_tags: T::Array[String],
+                aws_account_number: String,
+                aws_offer_id: String,
+                aws_payer_reference_id: String,
+                ending_before: Time,
+                gcp_account_id: String,
+                gcp_offer_id: String,
+                reseller_contract_value: Float
+              }
+            )
         end
         def to_hash
         end
@@ -1246,7 +1266,8 @@ module Metronome
         end
 
         sig do
-          params(_: T.nilable(Metronome::Models::BaseUsageFilter)).returns(T.nilable(Metronome::Models::BaseUsageFilter))
+          params(_: T.nilable(Metronome::Models::BaseUsageFilter))
+            .returns(T.nilable(Metronome::Models::BaseUsageFilter))
         end
         def current=(_)
         end
@@ -1264,7 +1285,8 @@ module Metronome
         end
 
         sig do
-          params(_: T::Array[Metronome::Models::ContractWithoutAmendments::UsageFilter::Update]).returns(T::Array[Metronome::Models::ContractWithoutAmendments::UsageFilter::Update])
+          params(_: T::Array[Metronome::Models::ContractWithoutAmendments::UsageFilter::Update])
+            .returns(T::Array[Metronome::Models::ContractWithoutAmendments::UsageFilter::Update])
         end
         def updates=(_)
         end
@@ -1274,19 +1296,21 @@ module Metronome
             current: T.nilable(Metronome::Models::BaseUsageFilter),
             initial: Metronome::Models::BaseUsageFilter,
             updates: T::Array[Metronome::Models::ContractWithoutAmendments::UsageFilter::Update]
-          ).void
+          )
+            .void
         end
         def initialize(current:, initial:, updates:)
         end
 
         sig do
-          override.returns(
-            {
-              current: T.nilable(Metronome::Models::BaseUsageFilter),
-              initial: Metronome::Models::BaseUsageFilter,
-              updates: T::Array[Metronome::Models::ContractWithoutAmendments::UsageFilter::Update]
-            }
-          )
+          override
+            .returns(
+              {
+                current: T.nilable(Metronome::Models::BaseUsageFilter),
+                initial: Metronome::Models::BaseUsageFilter,
+                updates: T::Array[Metronome::Models::ContractWithoutAmendments::UsageFilter::Update]
+              }
+            )
         end
         def to_hash
         end

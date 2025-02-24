@@ -25,9 +25,7 @@ module Metronome
       def schedule
       end
 
-      sig do
-        params(_: Metronome::Models::SchedulePointInTime).returns(Metronome::Models::SchedulePointInTime)
-      end
+      sig { params(_: Metronome::Models::SchedulePointInTime).returns(Metronome::Models::SchedulePointInTime) }
       def schedule=(_)
       end
 
@@ -63,22 +61,24 @@ module Metronome
           custom_fields: T::Hash[Symbol, String],
           name: String,
           netsuite_sales_order_id: String
-        ).void
+        )
+          .void
       end
       def initialize(id:, product:, schedule:, custom_fields: nil, name: nil, netsuite_sales_order_id: nil)
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            product: Metronome::Models::ScheduledCharge::Product,
-            schedule: Metronome::Models::SchedulePointInTime,
-            custom_fields: T::Hash[Symbol, String],
-            name: String,
-            netsuite_sales_order_id: String
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              product: Metronome::Models::ScheduledCharge::Product,
+              schedule: Metronome::Models::SchedulePointInTime,
+              custom_fields: T::Hash[Symbol, String],
+              name: String,
+              netsuite_sales_order_id: String
+            }
+          )
       end
       def to_hash
       end

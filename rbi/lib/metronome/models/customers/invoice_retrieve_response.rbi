@@ -8,9 +8,7 @@ module Metronome
         def data
         end
 
-        sig do
-          params(_: Metronome::Models::Customers::Invoice).returns(Metronome::Models::Customers::Invoice)
-        end
+        sig { params(_: Metronome::Models::Customers::Invoice).returns(Metronome::Models::Customers::Invoice) }
         def data=(_)
         end
 

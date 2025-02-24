@@ -95,10 +95,7 @@ module Metronome
         #   The granularity of the breakdowns to return. Defaults to day.
         #
         #   @return [Symbol, Metronome::Models::Customers::InvoiceListBreakdownsParams::WindowSize, nil]
-        optional :window_size,
-                 enum: -> {
-                   Metronome::Models::Customers::InvoiceListBreakdownsParams::WindowSize
-                 }
+        optional :window_size, enum: -> { Metronome::Models::Customers::InvoiceListBreakdownsParams::WindowSize }
 
         # @!parse
         #   # @return [Symbol, Metronome::Models::Customers::InvoiceListBreakdownsParams::WindowSize]

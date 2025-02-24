@@ -424,9 +424,7 @@ module Metronome
           #
           #   @return [Symbol, Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type]
           required :type,
-                   enum: -> {
-                     Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type
-                   }
+                   enum: -> { Metronome::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type }
 
           # @!parse
           #   # @param amount [Float]

@@ -36,7 +36,8 @@ module Metronome
           leave_stripe_invoices_in_draft: T.nilable(T::Boolean),
           salesforce_account_id: T.nilable(String),
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         customer_id:,
@@ -47,14 +48,15 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            customer_id: String,
-            leave_stripe_invoices_in_draft: T.nilable(T::Boolean),
-            salesforce_account_id: T.nilable(String),
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              customer_id: String,
+              leave_stripe_invoices_in_draft: T.nilable(T::Boolean),
+              salesforce_account_id: T.nilable(String),
+              request_options: Metronome::RequestOptions
+            }
+          )
       end
       def to_hash
       end

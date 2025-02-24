@@ -21,7 +21,8 @@ module Metronome
             quantity_rounding: T.nilable(Metronome::Models::Contracts::QuantityRounding),
             tags: T::Array[String],
             request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Metronome::Models::Contracts::ProductCreateResponse)
+          )
+            .returns(Metronome::Models::Contracts::ProductCreateResponse)
         end
         def create(
           name:,
@@ -46,7 +47,8 @@ module Metronome
           params(
             id: String,
             request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Metronome::Models::Contracts::ProductRetrieveResponse)
+          )
+            .returns(Metronome::Models::Contracts::ProductRetrieveResponse)
         end
         def retrieve(id:, request_options: {})
         end
@@ -69,7 +71,8 @@ module Metronome
             quantity_rounding: T.nilable(Metronome::Models::Contracts::QuantityRounding),
             tags: T::Array[String],
             request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Metronome::Models::Contracts::ProductUpdateResponse)
+          )
+            .returns(Metronome::Models::Contracts::ProductUpdateResponse)
         end
         def update(
           product_id:,
@@ -97,7 +100,8 @@ module Metronome
             next_page: String,
             archive_filter: Symbol,
             request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Metronome::CursorPage[Metronome::Models::Contracts::ProductListResponse])
+          )
+            .returns(Metronome::CursorPage[Metronome::Models::Contracts::ProductListResponse])
         end
         def list(limit: nil, next_page: nil, archive_filter: nil, request_options: {})
         end
@@ -106,7 +110,8 @@ module Metronome
           params(
             product_id: String,
             request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Metronome::Models::Contracts::ProductArchiveResponse)
+          )
+            .returns(Metronome::Models::Contracts::ProductArchiveResponse)
         end
         def archive(product_id:, request_options: {})
         end

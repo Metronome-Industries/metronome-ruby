@@ -102,9 +102,7 @@ module Metronome
           #
           #   @return [Symbol, Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::AzureSubscriptionStatus, nil]
           optional :azure_subscription_status,
-                   enum: -> {
-                     Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::AzureSubscriptionStatus
-                   }
+                   enum: -> { Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::AzureSubscriptionStatus }
 
           # @!parse
           #   # @return [Symbol, Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::AzureSubscriptionStatus]
@@ -123,9 +121,7 @@ module Metronome
           #
           #   @return [Symbol, Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::StripeCollectionMethod, nil]
           optional :stripe_collection_method,
-                   enum: -> {
-                     Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::StripeCollectionMethod
-                   }
+                   enum: -> { Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::StripeCollectionMethod }
 
           # @!parse
           #   # @return [Symbol, Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::StripeCollectionMethod]

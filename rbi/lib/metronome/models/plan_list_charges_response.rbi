@@ -48,7 +48,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::PlanListChargesResponse::Price]).returns(T::Array[Metronome::Models::PlanListChargesResponse::Price])
+        params(_: T::Array[Metronome::Models::PlanListChargesResponse::Price])
+          .returns(T::Array[Metronome::Models::PlanListChargesResponse::Price])
       end
       def prices=(_)
       end
@@ -98,7 +99,8 @@ module Metronome
       end
 
       sig do
-        params(_: Metronome::Models::PlanListChargesResponse::UnitConversion).returns(Metronome::Models::PlanListChargesResponse::UnitConversion)
+        params(_: Metronome::Models::PlanListChargesResponse::UnitConversion)
+          .returns(Metronome::Models::PlanListChargesResponse::UnitConversion)
       end
       def unit_conversion=(_)
       end
@@ -117,7 +119,8 @@ module Metronome
           start_period: Float,
           tier_reset_frequency: Float,
           unit_conversion: Metronome::Models::PlanListChargesResponse::UnitConversion
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -136,22 +139,23 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            charge_type: Symbol,
-            credit_type: Metronome::Models::CreditTypeData,
-            custom_fields: T::Hash[Symbol, String],
-            name: String,
-            prices: T::Array[Metronome::Models::PlanListChargesResponse::Price],
-            product_id: String,
-            product_name: String,
-            quantity: Float,
-            start_period: Float,
-            tier_reset_frequency: Float,
-            unit_conversion: Metronome::Models::PlanListChargesResponse::UnitConversion
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              charge_type: Symbol,
+              credit_type: Metronome::Models::CreditTypeData,
+              custom_fields: T::Hash[Symbol, String],
+              name: String,
+              prices: T::Array[Metronome::Models::PlanListChargesResponse::Price],
+              product_id: String,
+              product_name: String,
+              quantity: Float,
+              start_period: Float,
+              tier_reset_frequency: Float,
+              unit_conversion: Metronome::Models::PlanListChargesResponse::UnitConversion
+            }
+          )
       end
       def to_hash
       end
@@ -218,21 +222,23 @@ module Metronome
             collection_interval: Float,
             collection_schedule: String,
             quantity: Float
-          ).void
+          )
+            .void
         end
         def initialize(tier:, value:, collection_interval: nil, collection_schedule: nil, quantity: nil)
         end
 
         sig do
-          override.returns(
-            {
-              tier: Float,
-              value: Float,
-              collection_interval: Float,
-              collection_schedule: String,
-              quantity: Float
-            }
-          )
+          override
+            .returns(
+              {
+                tier: Float,
+                value: Float,
+                collection_interval: Float,
+                collection_schedule: String,
+                quantity: Float
+              }
+            )
         end
         def to_hash
         end

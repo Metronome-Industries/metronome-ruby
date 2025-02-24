@@ -46,7 +46,8 @@ module Metronome
             access_ending_before: Time,
             invoices_ending_before: Time,
             request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(
           commit_id:,
@@ -58,15 +59,16 @@ module Metronome
         end
 
         sig do
-          override.returns(
-            {
-              commit_id: String,
-              customer_id: String,
-              access_ending_before: Time,
-              invoices_ending_before: Time,
-              request_options: Metronome::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                commit_id: String,
+                customer_id: String,
+                access_ending_before: Time,
+                invoices_ending_before: Time,
+                request_options: Metronome::RequestOptions
+              }
+            )
         end
         def to_hash
         end

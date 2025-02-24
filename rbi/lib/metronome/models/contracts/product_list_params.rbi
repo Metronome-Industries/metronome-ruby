@@ -37,20 +37,22 @@ module Metronome
             next_page: String,
             archive_filter: Symbol,
             request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(limit: nil, next_page: nil, archive_filter: nil, request_options: {})
         end
 
         sig do
-          override.returns(
-            {
-              limit: Integer,
-              next_page: String,
-              archive_filter: Symbol,
-              request_options: Metronome::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                limit: Integer,
+                next_page: String,
+                archive_filter: Symbol,
+                request_options: Metronome::RequestOptions
+              }
+            )
         end
         def to_hash
         end

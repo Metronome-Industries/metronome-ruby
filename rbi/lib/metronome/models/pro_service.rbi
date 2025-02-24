@@ -77,7 +77,8 @@ module Metronome
           custom_fields: T::Hash[Symbol, String],
           description: String,
           netsuite_sales_order_id: String
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -92,18 +93,19 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            max_amount: Float,
-            product_id: String,
-            quantity: Float,
-            unit_price: Float,
-            custom_fields: T::Hash[Symbol, String],
-            description: String,
-            netsuite_sales_order_id: String
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              max_amount: Float,
+              product_id: String,
+              quantity: Float,
+              unit_price: Float,
+              custom_fields: T::Hash[Symbol, String],
+              description: String,
+              netsuite_sales_order_id: String
+            }
+          )
       end
       def to_hash
       end

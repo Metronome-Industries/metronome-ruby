@@ -36,20 +36,20 @@ module Metronome
           limit: Integer,
           next_page: String,
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(plan_id:, limit: nil, next_page: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            plan_id: String,
-            limit: Integer,
-            next_page: String,
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns({
+                     plan_id: String,
+                     limit: Integer,
+                     next_page: String,
+                     request_options: Metronome::RequestOptions
+                   })
       end
       def to_hash
       end

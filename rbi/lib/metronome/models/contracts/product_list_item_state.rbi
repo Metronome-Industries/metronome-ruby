@@ -105,7 +105,8 @@ module Metronome
         end
 
         sig do
-          params(_: T.nilable(Metronome::Models::Contracts::QuantityConversion)).returns(T.nilable(Metronome::Models::Contracts::QuantityConversion))
+          params(_: T.nilable(Metronome::Models::Contracts::QuantityConversion))
+            .returns(T.nilable(Metronome::Models::Contracts::QuantityConversion))
         end
         def quantity_conversion=(_)
         end
@@ -115,7 +116,8 @@ module Metronome
         end
 
         sig do
-          params(_: T.nilable(Metronome::Models::Contracts::QuantityRounding)).returns(T.nilable(Metronome::Models::Contracts::QuantityRounding))
+          params(_: T.nilable(Metronome::Models::Contracts::QuantityRounding))
+            .returns(T.nilable(Metronome::Models::Contracts::QuantityRounding))
         end
         def quantity_rounding=(_)
         end
@@ -154,7 +156,8 @@ module Metronome
             quantity_rounding: T.nilable(Metronome::Models::Contracts::QuantityRounding),
             starting_at: Time,
             tags: T::Array[String]
-          ).void
+          )
+            .void
         end
         def initialize(
           created_at:,
@@ -177,26 +180,27 @@ module Metronome
         end
 
         sig do
-          override.returns(
-            {
-              created_at: Time,
-              created_by: String,
-              name: String,
-              billable_metric_id: String,
-              composite_product_ids: T::Array[String],
-              composite_tags: T::Array[String],
-              exclude_free_usage: T::Boolean,
-              is_refundable: T::Boolean,
-              netsuite_internal_item_id: String,
-              netsuite_overage_item_id: String,
-              presentation_group_key: T::Array[String],
-              pricing_group_key: T::Array[String],
-              quantity_conversion: T.nilable(Metronome::Models::Contracts::QuantityConversion),
-              quantity_rounding: T.nilable(Metronome::Models::Contracts::QuantityRounding),
-              starting_at: Time,
-              tags: T::Array[String]
-            }
-          )
+          override
+            .returns(
+              {
+                created_at: Time,
+                created_by: String,
+                name: String,
+                billable_metric_id: String,
+                composite_product_ids: T::Array[String],
+                composite_tags: T::Array[String],
+                exclude_free_usage: T::Boolean,
+                is_refundable: T::Boolean,
+                netsuite_internal_item_id: String,
+                netsuite_overage_item_id: String,
+                presentation_group_key: T::Array[String],
+                pricing_group_key: T::Array[String],
+                quantity_conversion: T.nilable(Metronome::Models::Contracts::QuantityConversion),
+                quantity_rounding: T.nilable(Metronome::Models::Contracts::QuantityRounding),
+                starting_at: Time,
+                tags: T::Array[String]
+              }
+            )
         end
         def to_hash
         end

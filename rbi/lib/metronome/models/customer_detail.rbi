@@ -24,7 +24,8 @@ module Metronome
       end
 
       sig do
-        params(_: Metronome::Models::CustomerDetail::CustomerConfig).returns(Metronome::Models::CustomerDetail::CustomerConfig)
+        params(_: Metronome::Models::CustomerDetail::CustomerConfig)
+          .returns(Metronome::Models::CustomerDetail::CustomerConfig)
       end
       def customer_config=(_)
       end
@@ -66,7 +67,8 @@ module Metronome
       end
 
       sig do
-        params(_: Metronome::Models::CustomerDetail::CurrentBillableStatus).returns(Metronome::Models::CustomerDetail::CurrentBillableStatus)
+        params(_: Metronome::Models::CustomerDetail::CurrentBillableStatus)
+          .returns(Metronome::Models::CustomerDetail::CurrentBillableStatus)
       end
       def current_billable_status=(_)
       end
@@ -81,7 +83,8 @@ module Metronome
           name: String,
           archived_at: T.nilable(Time),
           current_billable_status: Metronome::Models::CustomerDetail::CurrentBillableStatus
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -96,18 +99,19 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            custom_fields: T::Hash[Symbol, String],
-            customer_config: Metronome::Models::CustomerDetail::CustomerConfig,
-            external_id: String,
-            ingest_aliases: T::Array[String],
-            name: String,
-            archived_at: T.nilable(Time),
-            current_billable_status: Metronome::Models::CustomerDetail::CurrentBillableStatus
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              custom_fields: T::Hash[Symbol, String],
+              customer_config: Metronome::Models::CustomerDetail::CustomerConfig,
+              external_id: String,
+              ingest_aliases: T::Array[String],
+              name: String,
+              archived_at: T.nilable(Time),
+              current_billable_status: Metronome::Models::CustomerDetail::CurrentBillableStatus
+            }
+          )
       end
       def to_hash
       end

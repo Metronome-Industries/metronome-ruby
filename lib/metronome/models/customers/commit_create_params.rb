@@ -226,9 +226,7 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::Customers::CommitCreateParams::AccessSchedule::ScheduleItem>]
           required :schedule_items,
-                   -> {
-                     Metronome::ArrayOf[Metronome::Models::Customers::CommitCreateParams::AccessSchedule::ScheduleItem]
-                   }
+                   -> { Metronome::ArrayOf[Metronome::Models::Customers::CommitCreateParams::AccessSchedule::ScheduleItem] }
 
           # @!attribute [r] credit_type_id
           #   Defaults to USD (cents) if not passed
@@ -348,9 +346,7 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem>, nil]
           optional :schedule_items,
-                   -> {
-                     Metronome::ArrayOf[Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]
-                   }
+                   -> { Metronome::ArrayOf[Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem] }
 
           # @!parse
           #   # @return [Array<Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem>]
@@ -386,9 +382,7 @@ module Metronome
             #
             #   @return [Symbol, Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::AmountDistribution]
             required :amount_distribution,
-                     enum: -> {
-                       Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::AmountDistribution
-                     }
+                     enum: -> { Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::AmountDistribution }
 
             # @!attribute ending_before
             #   RFC 3339 timestamp (exclusive).
@@ -400,9 +394,7 @@ module Metronome
             #
             #   @return [Symbol, Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::Frequency]
             required :frequency,
-                     enum: -> {
-                       Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::Frequency
-                     }
+                     enum: -> { Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::Frequency }
 
             # @!attribute starting_at
             #   RFC 3339 timestamp (inclusive).

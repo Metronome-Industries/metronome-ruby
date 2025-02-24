@@ -59,7 +59,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::AlertCreateParams::CustomFieldFilter]).returns(T::Array[Metronome::Models::AlertCreateParams::CustomFieldFilter])
+        params(_: T::Array[Metronome::Models::AlertCreateParams::CustomFieldFilter])
+          .returns(T::Array[Metronome::Models::AlertCreateParams::CustomFieldFilter])
       end
       def custom_field_filters=(_)
       end
@@ -85,7 +86,8 @@ module Metronome
       end
 
       sig do
-        params(_: Metronome::Models::AlertCreateParams::GroupKeyFilter).returns(Metronome::Models::AlertCreateParams::GroupKeyFilter)
+        params(_: Metronome::Models::AlertCreateParams::GroupKeyFilter)
+          .returns(Metronome::Models::AlertCreateParams::GroupKeyFilter)
       end
       def group_key_filter=(_)
       end
@@ -130,7 +132,8 @@ module Metronome
           plan_id: String,
           uniqueness_key: String,
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         alert_type:,
@@ -151,24 +154,25 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            alert_type: Symbol,
-            name: String,
-            threshold: Float,
-            billable_metric_id: String,
-            credit_grant_type_filters: T::Array[String],
-            credit_type_id: String,
-            custom_field_filters: T::Array[Metronome::Models::AlertCreateParams::CustomFieldFilter],
-            customer_id: String,
-            evaluate_on_create: T::Boolean,
-            group_key_filter: Metronome::Models::AlertCreateParams::GroupKeyFilter,
-            invoice_types_filter: T::Array[String],
-            plan_id: String,
-            uniqueness_key: String,
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              alert_type: Symbol,
+              name: String,
+              threshold: Float,
+              billable_metric_id: String,
+              credit_grant_type_filters: T::Array[String],
+              credit_type_id: String,
+              custom_field_filters: T::Array[Metronome::Models::AlertCreateParams::CustomFieldFilter],
+              customer_id: String,
+              evaluate_on_create: T::Boolean,
+              group_key_filter: Metronome::Models::AlertCreateParams::GroupKeyFilter,
+              invoice_types_filter: T::Array[String],
+              plan_id: String,
+              uniqueness_key: String,
+              request_options: Metronome::RequestOptions
+            }
+          )
       end
       def to_hash
       end

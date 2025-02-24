@@ -9,7 +9,8 @@ module Metronome
         end
 
         sig do
-          params(_: T::Array[Metronome::Models::Customers::NamedScheduleRetrieveResponse::Data]).returns(T::Array[Metronome::Models::Customers::NamedScheduleRetrieveResponse::Data])
+          params(_: T::Array[Metronome::Models::Customers::NamedScheduleRetrieveResponse::Data])
+            .returns(T::Array[Metronome::Models::Customers::NamedScheduleRetrieveResponse::Data])
         end
         def data=(_)
         end
@@ -18,9 +19,7 @@ module Metronome
         def initialize(data:)
         end
 
-        sig do
-          override.returns({data: T::Array[Metronome::Models::Customers::NamedScheduleRetrieveResponse::Data]})
-        end
+        sig { override.returns({data: T::Array[Metronome::Models::Customers::NamedScheduleRetrieveResponse::Data]}) }
         def to_hash
         end
 
