@@ -1,6 +1,6 @@
 # Metronome Ruby API library
 
-The Metronome Ruby library provides convenient access to the Metronome REST API from any Ruby 3.0+
+The Metronome Ruby library provides convenient access to the Metronome REST API from any Ruby 3.0.0+
 application.
 
 It is generated with [Stainless](https://www.stainlessapi.com/).
