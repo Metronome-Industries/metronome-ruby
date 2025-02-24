@@ -52,8 +52,8 @@ class Metronome::Test::Resources::Contracts::RateCardsTest < Minitest::Test
     end
   end
 
-  def test_list_required_params
-    response = @metronome.contracts.rate_cards.list(body: {})
+  def test_list
+    response = @metronome.contracts.rate_cards.list
 
     assert_pattern do
       response => Metronome::CursorPage

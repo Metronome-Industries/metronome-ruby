@@ -17,7 +17,7 @@ module Metronome
 
       def ingest:
         (
-          Metronome::Models::UsageIngestParams | ::Hash[Symbol, top] params
+          ?Metronome::Models::UsageIngestParams | ::Hash[Symbol, top] params
         ) -> nil
         | (
           usage: ::Array[Metronome::Models::UsageIngestParams::Usage],

@@ -8,11 +8,6 @@ module Metronome
         #   extend Metronome::RequestParameters::Converter
         include Metronome::RequestParameters
 
-        # @!attribute body
-        #
-        #   @return [Object]
-        required :body, Metronome::Unknown
-
         # @!attribute [r] limit
         #   Max number of results that should be returned
         #
@@ -33,13 +28,22 @@ module Metronome
         #   # @return [String]
         #   attr_writer :next_page
 
+        # @!attribute [r] body
+        #
+        #   @return [Object, nil]
+        optional :body, Metronome::Unknown
+
         # @!parse
-        #   # @param body [Object]
+        #   # @return [Object]
+        #   attr_writer :body
+
+        # @!parse
         #   # @param limit [Integer]
         #   # @param next_page [String]
+        #   # @param body [Object]
         #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
         #   #
-        #   def initialize(body:, limit: nil, next_page: nil, request_options: {}, **) = super
+        #   def initialize(limit: nil, next_page: nil, body: nil, request_options: {}, **) = super
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end

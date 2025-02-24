@@ -29,17 +29,8 @@ class Metronome::Test::Resources::UsageTest < Minitest::Test
     end
   end
 
-  def test_ingest_required_params
-    response = @metronome.usage.ingest(
-      usage: [
-        {
-          customer_id: "team@example.com",
-          event_type: "heartbeat",
-          timestamp: "2021-01-01T00:00:00Z",
-          transaction_id: "2021-01-01T00:00:00Z_cluster42"
-        }
-      ]
-    )
+  def test_ingest
+    response = @metronome.usage.ingest
 
     assert_pattern do
       response => nil

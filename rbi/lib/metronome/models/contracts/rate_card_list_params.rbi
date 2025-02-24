@@ -7,14 +7,6 @@ module Metronome
         extend Metronome::RequestParameters::Converter
         include Metronome::RequestParameters
 
-        sig { returns(T.anything) }
-        def body
-        end
-
-        sig { params(_: T.anything).returns(T.anything) }
-        def body=(_)
-        end
-
         sig { returns(T.nilable(Integer)) }
         def limit
         end
@@ -31,24 +23,32 @@ module Metronome
         def next_page=(_)
         end
 
+        sig { returns(T.nilable(T.anything)) }
+        def body
+        end
+
+        sig { params(_: T.anything).returns(T.anything) }
+        def body=(_)
+        end
+
         sig do
           params(
-            body: T.anything,
             limit: Integer,
             next_page: String,
+            body: T.anything,
             request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
           )
             .void
         end
-        def initialize(body:, limit: nil, next_page: nil, request_options: {})
+        def initialize(limit: nil, next_page: nil, body: nil, request_options: {})
         end
 
         sig do
           override
             .returns({
-                       body: T.anything,
                        limit: Integer,
                        next_page: String,
+                       body: T.anything,
                        request_options: Metronome::RequestOptions
                      })
         end

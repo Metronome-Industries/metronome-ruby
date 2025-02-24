@@ -7,16 +7,20 @@ module Metronome
       #   extend Metronome::RequestParameters::Converter
       include Metronome::RequestParameters
 
-      # @!attribute usage
+      # @!attribute [r] usage
       #
-      #   @return [Array<Metronome::Models::UsageIngestParams::Usage>]
-      required :usage, -> { Metronome::ArrayOf[Metronome::Models::UsageIngestParams::Usage] }
+      #   @return [Array<Metronome::Models::UsageIngestParams::Usage>, nil]
+      optional :usage, -> { Metronome::ArrayOf[Metronome::Models::UsageIngestParams::Usage] }
+
+      # @!parse
+      #   # @return [Array<Metronome::Models::UsageIngestParams::Usage>]
+      #   attr_writer :usage
 
       # @!parse
       #   # @param usage [Array<Metronome::Models::UsageIngestParams::Usage>]
       #   # @param request_options [Metronome::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(usage:, request_options: {}, **) = super
+      #   def initialize(usage: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 

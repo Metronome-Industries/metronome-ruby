@@ -33,7 +33,7 @@ module Metronome
         )
           .void
       end
-      def ingest(usage:, request_options: {})
+      def ingest(usage: nil, request_options: {})
       end
 
       sig do

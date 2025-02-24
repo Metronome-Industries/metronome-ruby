@@ -56,7 +56,7 @@ module Metronome
       #
       # @return [nil]
       #
-      def ingest(params)
+      def ingest(params = {})
         parsed, options = Metronome::Models::UsageIngestParams.dump_request(params)
         @client.request(
           method: :post,

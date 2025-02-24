@@ -103,17 +103,17 @@ module Metronome
         #
         # @param params [Metronome::Models::Contracts::RateCardListParams, Hash{Symbol=>Object}] .
         #
-        #   @option params [Object] :body Body param:
-        #
         #   @option params [Integer] :limit Query param: Max number of results that should be returned
         #
         #   @option params [String] :next_page Query param: Cursor that indicates where the next page of results should start.
+        #
+        #   @option params [Object] :body Body param:
         #
         #   @option params [Metronome::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Metronome::CursorPage<Metronome::Models::Contracts::RateCardListResponse>]
         #
-        def list(params)
+        def list(params = {})
           parsed, options = Metronome::Models::Contracts::RateCardListParams.dump_request(params)
           @client.request(
             method: :post,
