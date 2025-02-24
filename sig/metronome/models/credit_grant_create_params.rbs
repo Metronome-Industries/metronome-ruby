@@ -37,37 +37,37 @@ module Metronome
 
       attr_reader credit_grant_type: String?
 
-      def credit_grant_type=: (String) -> void
+      def credit_grant_type=: (String) -> String
 
       attr_reader custom_fields: ::Hash[Symbol, String]?
 
-      def custom_fields=: (::Hash[Symbol, String]) -> void
+      def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
 
       attr_reader effective_at: Time?
 
-      def effective_at=: (Time) -> void
+      def effective_at=: (Time) -> Time
 
       attr_reader invoice_date: Time?
 
-      def invoice_date=: (Time) -> void
+      def invoice_date=: (Time) -> Time
 
       attr_reader product_ids: ::Array[String]?
 
-      def product_ids=: (::Array[String]) -> void
+      def product_ids=: (::Array[String]) -> ::Array[String]
 
       attr_reader reason: String?
 
-      def reason=: (String) -> void
+      def reason=: (String) -> String
 
       attr_reader rollover_settings: Metronome::Models::CreditGrantCreateParams::RolloverSettings?
 
       def rollover_settings=: (
         Metronome::Models::CreditGrantCreateParams::RolloverSettings
-      ) -> void
+      ) -> Metronome::Models::CreditGrantCreateParams::RolloverSettings
 
       attr_reader uniqueness_key: String?
 
-      def uniqueness_key=: (String) -> void
+      def uniqueness_key=: (String) -> String
 
       def initialize:
         (

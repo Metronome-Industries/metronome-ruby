@@ -4,10 +4,22 @@ module Metronome
   module Models
     class CustomFieldListKeysResponse < Metronome::BaseModel
       sig { returns(T::Array[Metronome::Models::CustomFieldListKeysResponse::Data]) }
-      attr_accessor :data
+      def data
+      end
+
+      sig do
+        params(_: T::Array[Metronome::Models::CustomFieldListKeysResponse::Data]).returns(T::Array[Metronome::Models::CustomFieldListKeysResponse::Data])
+      end
+      def data=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :next_page
+      def next_page
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def next_page=(_)
+      end
 
       sig do
         params(
@@ -31,13 +43,28 @@ module Metronome
 
       class Data < Metronome::BaseModel
         sig { returns(T::Boolean) }
-        attr_accessor :enforce_uniqueness
+        def enforce_uniqueness
+        end
+
+        sig { params(_: T::Boolean).returns(T::Boolean) }
+        def enforce_uniqueness=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :entity
+        def entity
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def entity=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :key
+        def key
+        end
+
+        sig { params(_: String).returns(String) }
+        def key=(_)
+        end
 
         sig { params(enforce_uniqueness: T::Boolean, entity: Symbol, key: String).void }
         def initialize(enforce_uniqueness:, entity:, key:)

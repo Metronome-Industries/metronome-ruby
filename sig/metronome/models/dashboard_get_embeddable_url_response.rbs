@@ -22,7 +22,7 @@ module Metronome
       class Data < Metronome::BaseModel
         attr_reader url: String?
 
-        def url=: (String) -> void
+        def url=: (String) -> String
 
         def initialize:
           (url: String) -> void

@@ -4,10 +4,22 @@ module Metronome
   module Models
     class UsageListResponse < Metronome::BaseModel
       sig { returns(T::Array[Metronome::Models::UsageListResponse::Data]) }
-      attr_accessor :data
+      def data
+      end
+
+      sig do
+        params(_: T::Array[Metronome::Models::UsageListResponse::Data]).returns(T::Array[Metronome::Models::UsageListResponse::Data])
+      end
+      def data=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :next_page
+      def next_page
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def next_page=(_)
+      end
 
       sig do
         params(data: T::Array[Metronome::Models::UsageListResponse::Data], next_page: T.nilable(String)).void
@@ -28,28 +40,60 @@ module Metronome
 
       class Data < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :billable_metric_id
+        def billable_metric_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def billable_metric_id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :billable_metric_name
+        def billable_metric_name
+        end
+
+        sig { params(_: String).returns(String) }
+        def billable_metric_name=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :customer_id
+        def customer_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def customer_id=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :end_timestamp
+        def end_timestamp
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def end_timestamp=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :start_timestamp
+        def start_timestamp
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def start_timestamp=(_)
+        end
 
         sig { returns(T.nilable(Float)) }
-        attr_accessor :value
+        def value
+        end
+
+        sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+        def value=(_)
+        end
 
         sig { returns(T.nilable(T::Hash[Symbol, T.nilable(Float)])) }
-        attr_reader :groups
+        def groups
+        end
 
-        sig { params(groups: T::Hash[Symbol, T.nilable(Float)]).void }
-        attr_writer :groups
+        sig { params(_: T::Hash[Symbol, T.nilable(Float)]).returns(T::Hash[Symbol, T.nilable(Float)]) }
+        def groups=(_)
+        end
 
         sig do
           params(

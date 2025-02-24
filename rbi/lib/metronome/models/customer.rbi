@@ -4,22 +4,44 @@ module Metronome
   module Models
     class Customer < Metronome::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :external_id
+      def external_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def external_id=(_)
+      end
 
       sig { returns(T::Array[String]) }
-      attr_accessor :ingest_aliases
+      def ingest_aliases
+      end
+
+      sig { params(_: T::Array[String]).returns(T::Array[String]) }
+      def ingest_aliases=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
-      attr_reader :custom_fields
+      def custom_fields
+      end
 
-      sig { params(custom_fields: T::Hash[Symbol, String]).void }
-      attr_writer :custom_fields
+      sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+      def custom_fields=(_)
+      end
 
       sig do
         params(

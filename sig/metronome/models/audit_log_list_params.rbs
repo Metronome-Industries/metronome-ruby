@@ -18,31 +18,33 @@ module Metronome
 
       attr_reader ending_before: Time?
 
-      def ending_before=: (Time) -> void
+      def ending_before=: (Time) -> Time
 
       attr_reader limit: Integer?
 
-      def limit=: (Integer) -> void
+      def limit=: (Integer) -> Integer
 
       attr_reader next_page: String?
 
-      def next_page=: (String) -> void
+      def next_page=: (String) -> String
 
       attr_reader resource_id: String?
 
-      def resource_id=: (String) -> void
+      def resource_id=: (String) -> String
 
       attr_reader resource_type: String?
 
-      def resource_type=: (String) -> void
+      def resource_type=: (String) -> String
 
       attr_reader sort: Metronome::Models::AuditLogListParams::sort?
 
-      def sort=: (Metronome::Models::AuditLogListParams::sort) -> void
+      def sort=: (
+        Metronome::Models::AuditLogListParams::sort
+      ) -> Metronome::Models::AuditLogListParams::sort
 
       attr_reader starting_on: Time?
 
-      def starting_on=: (Time) -> void
+      def starting_on=: (Time) -> Time
 
       def initialize:
         (

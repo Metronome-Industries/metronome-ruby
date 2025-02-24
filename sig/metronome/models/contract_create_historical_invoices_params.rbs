@@ -61,17 +61,17 @@ module Metronome
 
         def billable_status=: (
           Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::billable_status
-        ) -> void
+        ) -> Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::billable_status
 
         attr_reader breakdown_granularity: Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::breakdown_granularity?
 
         def breakdown_granularity=: (
           Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::breakdown_granularity
-        ) -> void
+        ) -> Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::breakdown_granularity
 
         attr_reader custom_fields: ::Hash[Symbol, String]?
 
-        def custom_fields=: (::Hash[Symbol, String]) -> void
+        def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
 
         def initialize:
           (
@@ -113,21 +113,25 @@ module Metronome
 
           attr_reader presentation_group_values: ::Hash[Symbol, String]?
 
-          def presentation_group_values=: (::Hash[Symbol, String]) -> void
+          def presentation_group_values=: (
+            ::Hash[Symbol, String]
+          ) -> ::Hash[Symbol, String]
 
           attr_reader pricing_group_values: ::Hash[Symbol, String]?
 
-          def pricing_group_values=: (::Hash[Symbol, String]) -> void
+          def pricing_group_values=: (
+            ::Hash[Symbol, String]
+          ) -> ::Hash[Symbol, String]
 
           attr_reader quantity: Float?
 
-          def quantity=: (Float) -> void
+          def quantity=: (Float) -> Float
 
           attr_reader subtotals_with_quantity: ::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]?
 
           def subtotals_with_quantity=: (
             ::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
-          ) -> void
+          ) -> ::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
 
           def initialize:
             (

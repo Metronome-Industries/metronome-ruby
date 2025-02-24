@@ -10,7 +10,7 @@ module Metronome
 
       attr_reader starting_at: Time?
 
-      def starting_at=: (Time) -> void
+      def starting_at=: (Time) -> Time
 
       def initialize:
         (

@@ -7,31 +7,54 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(Time) }
-      attr_accessor :ending_before
+      def ending_before
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def ending_before=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :starting_on
+      def starting_on
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def starting_on=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :window_size
+      def window_size
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def window_size=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :next_page
+      def next_page
+      end
 
-      sig { params(next_page: String).void }
-      attr_writer :next_page
+      sig { params(_: String).returns(String) }
+      def next_page=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Metronome::Models::UsageListParams::BillableMetric])) }
-      attr_reader :billable_metrics
+      def billable_metrics
+      end
 
-      sig { params(billable_metrics: T::Array[Metronome::Models::UsageListParams::BillableMetric]).void }
-      attr_writer :billable_metrics
+      sig do
+        params(_: T::Array[Metronome::Models::UsageListParams::BillableMetric]).returns(T::Array[Metronome::Models::UsageListParams::BillableMetric])
+      end
+      def billable_metrics=(_)
+      end
 
       sig { returns(T.nilable(T::Array[String])) }
-      attr_reader :customer_ids
+      def customer_ids
+      end
 
-      sig { params(customer_ids: T::Array[String]).void }
-      attr_writer :customer_ids
+      sig { params(_: T::Array[String]).returns(T::Array[String]) }
+      def customer_ids=(_)
+      end
 
       sig do
         params(
@@ -85,13 +108,22 @@ module Metronome
 
       class BillableMetric < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(T.nilable(Metronome::Models::UsageListParams::BillableMetric::GroupBy)) }
-        attr_reader :group_by
+        def group_by
+        end
 
-        sig { params(group_by: Metronome::Models::UsageListParams::BillableMetric::GroupBy).void }
-        attr_writer :group_by
+        sig do
+          params(_: Metronome::Models::UsageListParams::BillableMetric::GroupBy).returns(Metronome::Models::UsageListParams::BillableMetric::GroupBy)
+        end
+        def group_by=(_)
+        end
 
         sig { params(id: String, group_by: Metronome::Models::UsageListParams::BillableMetric::GroupBy).void }
         def initialize(id:, group_by: nil)
@@ -110,13 +142,20 @@ module Metronome
 
         class GroupBy < Metronome::BaseModel
           sig { returns(String) }
-          attr_accessor :key
+          def key
+          end
+
+          sig { params(_: String).returns(String) }
+          def key=(_)
+          end
 
           sig { returns(T.nilable(T::Array[String])) }
-          attr_reader :values
+          def values
+          end
 
-          sig { params(values: T::Array[String]).void }
-          attr_writer :values
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def values=(_)
+          end
 
           sig { params(key: String, values: T::Array[String]).void }
           def initialize(key:, values: nil)

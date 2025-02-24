@@ -22,27 +22,31 @@ module Metronome
 
       attr_reader action: String?
 
-      def action=: (String) -> void
+      def action=: (String) -> String
 
       attr_reader actor: Metronome::Models::AuditLogListResponse::Actor?
 
-      def actor=: (Metronome::Models::AuditLogListResponse::Actor) -> void
+      def actor=: (
+        Metronome::Models::AuditLogListResponse::Actor
+      ) -> Metronome::Models::AuditLogListResponse::Actor
 
       attr_reader description: String?
 
-      def description=: (String) -> void
+      def description=: (String) -> String
 
       attr_reader resource_id: String?
 
-      def resource_id=: (String) -> void
+      def resource_id=: (String) -> String
 
       attr_reader resource_type: String?
 
-      def resource_type=: (String) -> void
+      def resource_type=: (String) -> String
 
       attr_reader status: Metronome::Models::AuditLogListResponse::status?
 
-      def status=: (Metronome::Models::AuditLogListResponse::status) -> void
+      def status=: (
+        Metronome::Models::AuditLogListResponse::status
+      ) -> Metronome::Models::AuditLogListResponse::status
 
       def initialize:
         (
@@ -70,11 +74,11 @@ module Metronome
 
         attr_reader ip: String?
 
-        def ip=: (String) -> void
+        def ip=: (String) -> String
 
         attr_reader user_agent: String?
 
-        def user_agent=: (String) -> void
+        def user_agent=: (String) -> String
 
         def initialize:
           (id: String, ip: String, user_agent: String) -> void
@@ -95,7 +99,7 @@ module Metronome
 
         attr_reader email: String?
 
-        def email=: (String) -> void
+        def email=: (String) -> String
 
         def initialize:
           (id: String, name: String, email: String) -> void

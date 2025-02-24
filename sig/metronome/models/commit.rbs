@@ -36,85 +36,97 @@ module Metronome
 
       attr_reader access_schedule: Metronome::Models::ScheduleDuration?
 
-      def access_schedule=: (Metronome::Models::ScheduleDuration) -> void
+      def access_schedule=: (
+        Metronome::Models::ScheduleDuration
+      ) -> Metronome::Models::ScheduleDuration
 
       attr_reader amount: Float?
 
-      def amount=: (Float) -> void
+      def amount=: (Float) -> Float
 
       attr_reader applicable_contract_ids: ::Array[String]?
 
-      def applicable_contract_ids=: (::Array[String]) -> void
+      def applicable_contract_ids=: (::Array[String]) -> ::Array[String]
 
       attr_reader applicable_product_ids: ::Array[String]?
 
-      def applicable_product_ids=: (::Array[String]) -> void
+      def applicable_product_ids=: (::Array[String]) -> ::Array[String]
 
       attr_reader applicable_product_tags: ::Array[String]?
 
-      def applicable_product_tags=: (::Array[String]) -> void
+      def applicable_product_tags=: (::Array[String]) -> ::Array[String]
 
       attr_reader balance: Float?
 
-      def balance=: (Float) -> void
+      def balance=: (Float) -> Float
 
       attr_reader contract: Metronome::Models::Commit::Contract?
 
-      def contract=: (Metronome::Models::Commit::Contract) -> void
+      def contract=: (
+        Metronome::Models::Commit::Contract
+      ) -> Metronome::Models::Commit::Contract
 
       attr_reader custom_fields: ::Hash[Symbol, String]?
 
-      def custom_fields=: (::Hash[Symbol, String]) -> void
+      def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
 
       attr_reader description: String?
 
-      def description=: (String) -> void
+      def description=: (String) -> String
 
       attr_reader invoice_contract: Metronome::Models::Commit::InvoiceContract?
 
       def invoice_contract=: (
         Metronome::Models::Commit::InvoiceContract
-      ) -> void
+      ) -> Metronome::Models::Commit::InvoiceContract
 
       attr_reader invoice_schedule: Metronome::Models::SchedulePointInTime?
 
-      def invoice_schedule=: (Metronome::Models::SchedulePointInTime) -> void
+      def invoice_schedule=: (
+        Metronome::Models::SchedulePointInTime
+      ) -> Metronome::Models::SchedulePointInTime
 
       attr_reader ledger: ::Array[Metronome::Models::Commit::ledger]?
 
-      def ledger=: (::Array[Metronome::Models::Commit::ledger]) -> void
+      def ledger=: (
+        ::Array[Metronome::Models::Commit::ledger]
+      ) -> ::Array[Metronome::Models::Commit::ledger]
 
       attr_reader name: String?
 
-      def name=: (String) -> void
+      def name=: (String) -> String
 
       attr_reader netsuite_sales_order_id: String?
 
-      def netsuite_sales_order_id=: (String) -> void
+      def netsuite_sales_order_id=: (String) -> String
 
       attr_reader priority: Float?
 
-      def priority=: (Float) -> void
+      def priority=: (Float) -> Float
 
       attr_reader rate_type: Metronome::Models::Commit::rate_type?
 
-      def rate_type=: (Metronome::Models::Commit::rate_type) -> void
+      def rate_type=: (
+        Metronome::Models::Commit::rate_type
+      ) -> Metronome::Models::Commit::rate_type
 
       attr_reader rolled_over_from: Metronome::Models::Commit::RolledOverFrom?
 
-      def rolled_over_from=: (Metronome::Models::Commit::RolledOverFrom) -> void
+      def rolled_over_from=: (
+        Metronome::Models::Commit::RolledOverFrom
+      ) -> Metronome::Models::Commit::RolledOverFrom
 
       attr_reader rollover_fraction: Float?
 
-      def rollover_fraction=: (Float) -> void
+      def rollover_fraction=: (Float) -> Float
 
       attr_reader salesforce_opportunity_id: String?
 
-      def salesforce_opportunity_id=: (String) -> void
+      def salesforce_opportunity_id=: (String) -> String
 
       attr_reader uniqueness_key: String?
 
-      def uniqueness_key=: (String) -> void
+      def uniqueness_key=: (String) -> String
 
       def initialize:
         (

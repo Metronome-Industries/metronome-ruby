@@ -15,7 +15,7 @@ module Metronome
 
         attr_reader name: String?
 
-        def name=: (String) -> void
+        def name=: (String) -> String
 
         def initialize:
           (

@@ -4,19 +4,44 @@ module Metronome
   module Models
     class UsageListWithGroupsResponse < Metronome::BaseModel
       sig { returns(Time) }
-      attr_accessor :ending_before
+      def ending_before
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def ending_before=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :group_key
+      def group_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def group_key=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :group_value
+      def group_value
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def group_value=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :starting_on
+      def starting_on
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def starting_on=(_)
+      end
 
       sig { returns(T.nilable(Float)) }
-      attr_accessor :value
+      def value
+      end
+
+      sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+      def value=(_)
+      end
 
       sig do
         params(

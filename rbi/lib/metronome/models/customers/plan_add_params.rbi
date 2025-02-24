@@ -8,51 +8,76 @@ module Metronome
         include Metronome::RequestParameters
 
         sig { returns(String) }
-        attr_accessor :customer_id
+        def customer_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def customer_id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :plan_id
+        def plan_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def plan_id=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :starting_on
+        def starting_on
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def starting_on=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :ending_before
+        def ending_before
+        end
 
-        sig { params(ending_before: Time).void }
-        attr_writer :ending_before
+        sig { params(_: Time).returns(Time) }
+        def ending_before=(_)
+        end
 
         sig { returns(T.nilable(Float)) }
-        attr_reader :net_payment_terms_days
+        def net_payment_terms_days
+        end
 
-        sig { params(net_payment_terms_days: Float).void }
-        attr_writer :net_payment_terms_days
+        sig { params(_: Float).returns(Float) }
+        def net_payment_terms_days=(_)
+        end
 
         sig do
           returns(T.nilable(T::Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment]))
         end
-        attr_reader :overage_rate_adjustments
+        def overage_rate_adjustments
+        end
 
         sig do
-          params(
-            overage_rate_adjustments: T::Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment]
-          ).void
+          params(_: T::Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment]).returns(T::Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment])
         end
-        attr_writer :overage_rate_adjustments
+        def overage_rate_adjustments=(_)
+        end
 
         sig { returns(T.nilable(T::Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment])) }
-        attr_reader :price_adjustments
+        def price_adjustments
+        end
 
         sig do
-          params(price_adjustments: T::Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment]).void
+          params(_: T::Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment]).returns(T::Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment])
         end
-        attr_writer :price_adjustments
+        def price_adjustments=(_)
+        end
 
         sig { returns(T.nilable(Metronome::Models::Customers::PlanAddParams::TrialSpec)) }
-        attr_reader :trial_spec
+        def trial_spec
+        end
 
-        sig { params(trial_spec: Metronome::Models::Customers::PlanAddParams::TrialSpec).void }
-        attr_writer :trial_spec
+        sig do
+          params(_: Metronome::Models::Customers::PlanAddParams::TrialSpec).returns(Metronome::Models::Customers::PlanAddParams::TrialSpec)
+        end
+        def trial_spec=(_)
+        end
 
         sig do
           params(
@@ -100,13 +125,28 @@ module Metronome
 
         class OverageRateAdjustment < Metronome::BaseModel
           sig { returns(String) }
-          attr_accessor :custom_credit_type_id
+          def custom_credit_type_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def custom_credit_type_id=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :fiat_currency_credit_type_id
+          def fiat_currency_credit_type_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def fiat_currency_credit_type_id=(_)
+          end
 
           sig { returns(Float) }
-          attr_accessor :to_fiat_conversion_factor
+          def to_fiat_conversion_factor
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def to_fiat_conversion_factor=(_)
+          end
 
           sig do
             params(
@@ -133,31 +173,52 @@ module Metronome
 
         class PriceAdjustment < Metronome::BaseModel
           sig { returns(Symbol) }
-          attr_accessor :adjustment_type
+          def adjustment_type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def adjustment_type=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :charge_id
+          def charge_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def charge_id=(_)
+          end
 
           sig { returns(Float) }
-          attr_accessor :start_period
+          def start_period
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def start_period=(_)
+          end
 
           sig { returns(T.nilable(Float)) }
-          attr_reader :quantity
+          def quantity
+          end
 
-          sig { params(quantity: Float).void }
-          attr_writer :quantity
-
-          sig { returns(T.nilable(Float)) }
-          attr_reader :tier
-
-          sig { params(tier: Float).void }
-          attr_writer :tier
+          sig { params(_: Float).returns(Float) }
+          def quantity=(_)
+          end
 
           sig { returns(T.nilable(Float)) }
-          attr_reader :value
+          def tier
+          end
 
-          sig { params(value: Float).void }
-          attr_writer :value
+          sig { params(_: Float).returns(Float) }
+          def tier=(_)
+          end
+
+          sig { returns(T.nilable(Float)) }
+          def value
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def value=(_)
+          end
 
           sig do
             params(
@@ -203,15 +264,22 @@ module Metronome
 
         class TrialSpec < Metronome::BaseModel
           sig { returns(Float) }
-          attr_accessor :length_in_days
+          def length_in_days
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def length_in_days=(_)
+          end
 
           sig { returns(T.nilable(Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap)) }
-          attr_reader :spending_cap
+          def spending_cap
+          end
 
           sig do
-            params(spending_cap: Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap).void
+            params(_: Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap).returns(Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap)
           end
-          attr_writer :spending_cap
+          def spending_cap=(_)
+          end
 
           sig do
             params(
@@ -235,10 +303,20 @@ module Metronome
 
           class SpendingCap < Metronome::BaseModel
             sig { returns(Float) }
-            attr_accessor :amount
+            def amount
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def amount=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :credit_type_id
+            def credit_type_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def credit_type_id=(_)
+            end
 
             sig { params(amount: Float, credit_type_id: String).void }
             def initialize(amount:, credit_type_id:)

@@ -9,32 +9,48 @@ module Metronome
           include Metronome::RequestParameters
 
           sig { returns(Time) }
-          attr_accessor :at
+          def at
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def at=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :rate_card_id
+          def rate_card_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def rate_card_id=(_)
+          end
 
           sig { returns(T.nilable(Integer)) }
-          attr_reader :limit
+          def limit
+          end
 
-          sig { params(limit: Integer).void }
-          attr_writer :limit
+          sig { params(_: Integer).returns(Integer) }
+          def limit=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_reader :next_page
+          def next_page
+          end
 
-          sig { params(next_page: String).void }
-          attr_writer :next_page
+          sig { params(_: String).returns(String) }
+          def next_page=(_)
+          end
 
           sig do
             returns(T.nilable(T::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector]))
           end
-          attr_reader :selectors
+          def selectors
+          end
 
           sig do
-            params(selectors: T::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector]).void
+            params(_: T::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector]).returns(T::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector])
           end
-          attr_writer :selectors
+          def selectors=(_)
+          end
 
           sig do
             params(
@@ -66,28 +82,36 @@ module Metronome
 
           class Selector < Metronome::BaseModel
             sig { returns(T.nilable(T::Hash[Symbol, String])) }
-            attr_reader :partial_pricing_group_values
+            def partial_pricing_group_values
+            end
 
-            sig { params(partial_pricing_group_values: T::Hash[Symbol, String]).void }
-            attr_writer :partial_pricing_group_values
+            sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+            def partial_pricing_group_values=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, String])) }
-            attr_reader :pricing_group_values
+            def pricing_group_values
+            end
 
-            sig { params(pricing_group_values: T::Hash[Symbol, String]).void }
-            attr_writer :pricing_group_values
+            sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+            def pricing_group_values=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_reader :product_id
+            def product_id
+            end
 
-            sig { params(product_id: String).void }
-            attr_writer :product_id
+            sig { params(_: String).returns(String) }
+            def product_id=(_)
+            end
 
             sig { returns(T.nilable(T::Array[String])) }
-            attr_reader :product_tags
+            def product_tags
+            end
 
-            sig { params(product_tags: T::Array[String]).void }
-            attr_writer :product_tags
+            sig { params(_: T::Array[String]).returns(T::Array[String]) }
+            def product_tags=(_)
+            end
 
             sig do
               params(

@@ -5,7 +5,14 @@ module Metronome
     module Contracts
       class RateCardRetrieveResponse < Metronome::BaseModel
         sig { returns(Metronome::Models::Contracts::RateCardRetrieveResponse::Data) }
-        attr_accessor :data
+        def data
+        end
+
+        sig do
+          params(_: Metronome::Models::Contracts::RateCardRetrieveResponse::Data).returns(Metronome::Models::Contracts::RateCardRetrieveResponse::Data)
+        end
+        def data=(_)
+        end
 
         sig { params(data: Metronome::Models::Contracts::RateCardRetrieveResponse::Data).void }
         def initialize(data:)
@@ -17,56 +24,84 @@ module Metronome
 
         class Data < Metronome::BaseModel
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           sig { returns(Time) }
-          attr_accessor :created_at
+          def created_at
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def created_at=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :created_by
+          def created_by
+          end
+
+          sig { params(_: String).returns(String) }
+          def created_by=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :name
+          def name
+          end
+
+          sig { params(_: String).returns(String) }
+          def name=(_)
+          end
 
           sig do
             returns(T.nilable(T::Array[Metronome::Models::Contracts::RateCardRetrieveResponse::Data::Alias]))
           end
-          attr_reader :aliases
+          def aliases
+          end
 
           sig do
-            params(aliases: T::Array[Metronome::Models::Contracts::RateCardRetrieveResponse::Data::Alias]).void
+            params(_: T::Array[Metronome::Models::Contracts::RateCardRetrieveResponse::Data::Alias]).returns(T::Array[Metronome::Models::Contracts::RateCardRetrieveResponse::Data::Alias])
           end
-          attr_writer :aliases
+          def aliases=(_)
+          end
 
           sig do
             returns(T.nilable(T::Array[Metronome::Models::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion]))
           end
-          attr_reader :credit_type_conversions
+          def credit_type_conversions
+          end
 
           sig do
-            params(
-              credit_type_conversions: T::Array[Metronome::Models::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion]
-            ).void
+            params(_: T::Array[Metronome::Models::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion]).returns(T::Array[Metronome::Models::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion])
           end
-          attr_writer :credit_type_conversions
+          def credit_type_conversions=(_)
+          end
 
           sig { returns(T.nilable(T::Hash[Symbol, String])) }
-          attr_reader :custom_fields
+          def custom_fields
+          end
 
-          sig { params(custom_fields: T::Hash[Symbol, String]).void }
-          attr_writer :custom_fields
+          sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+          def custom_fields=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_reader :description
+          def description
+          end
 
-          sig { params(description: String).void }
-          attr_writer :description
+          sig { params(_: String).returns(String) }
+          def description=(_)
+          end
 
           sig { returns(T.nilable(Metronome::Models::CreditTypeData)) }
-          attr_reader :fiat_credit_type
+          def fiat_credit_type
+          end
 
-          sig { params(fiat_credit_type: Metronome::Models::CreditTypeData).void }
-          attr_writer :fiat_credit_type
+          sig { params(_: Metronome::Models::CreditTypeData).returns(Metronome::Models::CreditTypeData) }
+          def fiat_credit_type=(_)
+          end
 
           sig do
             params(
@@ -114,19 +149,28 @@ module Metronome
 
           class Alias < Metronome::BaseModel
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig { returns(T.nilable(Time)) }
-            attr_reader :ending_before
+            def ending_before
+            end
 
-            sig { params(ending_before: Time).void }
-            attr_writer :ending_before
+            sig { params(_: Time).returns(Time) }
+            def ending_before=(_)
+            end
 
             sig { returns(T.nilable(Time)) }
-            attr_reader :starting_at
+            def starting_at
+            end
 
-            sig { params(starting_at: Time).void }
-            attr_writer :starting_at
+            sig { params(_: Time).returns(Time) }
+            def starting_at=(_)
+            end
 
             sig { params(name: String, ending_before: Time, starting_at: Time).void }
             def initialize(name:, ending_before: nil, starting_at: nil)
@@ -139,10 +183,20 @@ module Metronome
 
           class CreditTypeConversion < Metronome::BaseModel
             sig { returns(Metronome::Models::CreditTypeData) }
-            attr_accessor :custom_credit_type
+            def custom_credit_type
+            end
+
+            sig { params(_: Metronome::Models::CreditTypeData).returns(Metronome::Models::CreditTypeData) }
+            def custom_credit_type=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :fiat_per_custom_credit
+            def fiat_per_custom_credit
+            end
+
+            sig { params(_: String).returns(String) }
+            def fiat_per_custom_credit=(_)
+            end
 
             sig do
               params(

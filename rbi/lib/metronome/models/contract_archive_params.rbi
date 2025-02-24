@@ -7,13 +7,28 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :contract_id
+      def contract_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def contract_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :customer_id
+      def customer_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def customer_id=(_)
+      end
 
       sig { returns(T::Boolean) }
-      attr_accessor :void_invoices
+      def void_invoices
+      end
+
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def void_invoices=(_)
+      end
 
       sig do
         params(

@@ -7,22 +7,36 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :contract_id
+      def contract_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def contract_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :customer_id
+      def customer_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def customer_id=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :include_balance
+      def include_balance
+      end
 
-      sig { params(include_balance: T::Boolean).void }
-      attr_writer :include_balance
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def include_balance=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :include_ledgers
+      def include_ledgers
+      end
 
-      sig { params(include_ledgers: T::Boolean).void }
-      attr_writer :include_ledgers
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def include_ledgers=(_)
+      end
 
       sig do
         params(

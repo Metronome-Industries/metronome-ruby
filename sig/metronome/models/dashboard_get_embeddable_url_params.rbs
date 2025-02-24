@@ -22,19 +22,19 @@ module Metronome
 
       def bm_group_key_overrides=: (
         ::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride]
-      ) -> void
+      ) -> ::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride]
 
       attr_reader color_overrides: ::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride]?
 
       def color_overrides=: (
         ::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride]
-      ) -> void
+      ) -> ::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride]
 
       attr_reader dashboard_options: ::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption]?
 
       def dashboard_options=: (
         ::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption]
-      ) -> void
+      ) -> ::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption]
 
       def initialize:
         (
@@ -74,11 +74,11 @@ module Metronome
 
         attr_reader display_name: String?
 
-        def display_name=: (String) -> void
+        def display_name=: (String) -> String
 
         attr_reader value_display_names: ::Hash[Symbol, top]?
 
-        def value_display_names=: (::Hash[Symbol, top]) -> void
+        def value_display_names=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
         def initialize:
           (
@@ -105,11 +105,11 @@ module Metronome
 
         def name=: (
           Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride::name_
-        ) -> void
+        ) -> Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride::name_
 
         attr_reader value: String?
 
-        def value=: (String) -> void
+        def value=: (String) -> String
 
         def initialize:
           (

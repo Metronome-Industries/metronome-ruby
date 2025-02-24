@@ -5,7 +5,14 @@ module Metronome
     module Customers
       class AlertRetrieveResponse < Metronome::BaseModel
         sig { returns(Metronome::Models::Customers::CustomerAlert) }
-        attr_accessor :data
+        def data
+        end
+
+        sig do
+          params(_: Metronome::Models::Customers::CustomerAlert).returns(Metronome::Models::Customers::CustomerAlert)
+        end
+        def data=(_)
+        end
 
         sig { params(data: Metronome::Models::Customers::CustomerAlert).void }
         def initialize(data:)

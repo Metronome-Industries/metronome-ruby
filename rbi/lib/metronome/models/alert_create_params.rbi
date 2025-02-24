@@ -7,75 +7,112 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(Symbol) }
-      attr_accessor :alert_type
+      def alert_type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def alert_type=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(Float) }
-      attr_accessor :threshold
+      def threshold
+      end
+
+      sig { params(_: Float).returns(Float) }
+      def threshold=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :billable_metric_id
+      def billable_metric_id
+      end
 
-      sig { params(billable_metric_id: String).void }
-      attr_writer :billable_metric_id
+      sig { params(_: String).returns(String) }
+      def billable_metric_id=(_)
+      end
 
       sig { returns(T.nilable(T::Array[String])) }
-      attr_reader :credit_grant_type_filters
+      def credit_grant_type_filters
+      end
 
-      sig { params(credit_grant_type_filters: T::Array[String]).void }
-      attr_writer :credit_grant_type_filters
+      sig { params(_: T::Array[String]).returns(T::Array[String]) }
+      def credit_grant_type_filters=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :credit_type_id
+      def credit_type_id
+      end
 
-      sig { params(credit_type_id: String).void }
-      attr_writer :credit_type_id
+      sig { params(_: String).returns(String) }
+      def credit_type_id=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Metronome::Models::AlertCreateParams::CustomFieldFilter])) }
-      attr_reader :custom_field_filters
+      def custom_field_filters
+      end
 
       sig do
-        params(custom_field_filters: T::Array[Metronome::Models::AlertCreateParams::CustomFieldFilter]).void
+        params(_: T::Array[Metronome::Models::AlertCreateParams::CustomFieldFilter]).returns(T::Array[Metronome::Models::AlertCreateParams::CustomFieldFilter])
       end
-      attr_writer :custom_field_filters
+      def custom_field_filters=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :customer_id
+      def customer_id
+      end
 
-      sig { params(customer_id: String).void }
-      attr_writer :customer_id
+      sig { params(_: String).returns(String) }
+      def customer_id=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :evaluate_on_create
+      def evaluate_on_create
+      end
 
-      sig { params(evaluate_on_create: T::Boolean).void }
-      attr_writer :evaluate_on_create
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def evaluate_on_create=(_)
+      end
 
       sig { returns(T.nilable(Metronome::Models::AlertCreateParams::GroupKeyFilter)) }
-      attr_reader :group_key_filter
+      def group_key_filter
+      end
 
-      sig { params(group_key_filter: Metronome::Models::AlertCreateParams::GroupKeyFilter).void }
-      attr_writer :group_key_filter
+      sig do
+        params(_: Metronome::Models::AlertCreateParams::GroupKeyFilter).returns(Metronome::Models::AlertCreateParams::GroupKeyFilter)
+      end
+      def group_key_filter=(_)
+      end
 
       sig { returns(T.nilable(T::Array[String])) }
-      attr_reader :invoice_types_filter
+      def invoice_types_filter
+      end
 
-      sig { params(invoice_types_filter: T::Array[String]).void }
-      attr_writer :invoice_types_filter
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :plan_id
-
-      sig { params(plan_id: String).void }
-      attr_writer :plan_id
+      sig { params(_: T::Array[String]).returns(T::Array[String]) }
+      def invoice_types_filter=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :uniqueness_key
+      def plan_id
+      end
 
-      sig { params(uniqueness_key: String).void }
-      attr_writer :uniqueness_key
+      sig { params(_: String).returns(String) }
+      def plan_id=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def uniqueness_key
+      end
+
+      sig { params(_: String).returns(String) }
+      def uniqueness_key=(_)
+      end
 
       sig do
         params(
@@ -161,13 +198,28 @@ module Metronome
 
       class CustomFieldFilter < Metronome::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :entity
+        def entity
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def entity=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :key
+        def key
+        end
+
+        sig { params(_: String).returns(String) }
+        def key=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :value
+        def value
+        end
+
+        sig { params(_: String).returns(String) }
+        def value=(_)
+        end
 
         sig { params(entity: Symbol, key: String, value: String).void }
         def initialize(entity:, key:, value:)
@@ -192,10 +244,20 @@ module Metronome
 
       class GroupKeyFilter < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :key
+        def key
+        end
+
+        sig { params(_: String).returns(String) }
+        def key=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :value
+        def value
+        end
+
+        sig { params(_: String).returns(String) }
+        def value=(_)
+        end
 
         sig { params(key: String, value: String).void }
         def initialize(key:, value:)

@@ -12,7 +12,7 @@ module Metronome
 
       attr_reader release_uniqueness_key: bool?
 
-      def release_uniqueness_key=: (bool) -> void
+      def release_uniqueness_key=: (bool) -> bool
 
       def initialize:
         (

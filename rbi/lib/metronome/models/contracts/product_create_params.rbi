@@ -8,76 +8,120 @@ module Metronome
         include Metronome::RequestParameters
 
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :type
+        def type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def type=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :billable_metric_id
+        def billable_metric_id
+        end
 
-        sig { params(billable_metric_id: String).void }
-        attr_writer :billable_metric_id
-
-        sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :composite_product_ids
-
-        sig { params(composite_product_ids: T::Array[String]).void }
-        attr_writer :composite_product_ids
+        sig { params(_: String).returns(String) }
+        def billable_metric_id=(_)
+        end
 
         sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :composite_tags
+        def composite_product_ids
+        end
 
-        sig { params(composite_tags: T::Array[String]).void }
-        attr_writer :composite_tags
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def composite_product_ids=(_)
+        end
+
+        sig { returns(T.nilable(T::Array[String])) }
+        def composite_tags
+        end
+
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def composite_tags=(_)
+        end
 
         sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :exclude_free_usage
+        def exclude_free_usage
+        end
 
-        sig { params(exclude_free_usage: T::Boolean).void }
-        attr_writer :exclude_free_usage
+        sig { params(_: T::Boolean).returns(T::Boolean) }
+        def exclude_free_usage=(_)
+        end
 
         sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :is_refundable
+        def is_refundable
+        end
 
-        sig { params(is_refundable: T::Boolean).void }
-        attr_writer :is_refundable
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :netsuite_internal_item_id
-
-        sig { params(netsuite_internal_item_id: String).void }
-        attr_writer :netsuite_internal_item_id
+        sig { params(_: T::Boolean).returns(T::Boolean) }
+        def is_refundable=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :netsuite_overage_item_id
+        def netsuite_internal_item_id
+        end
 
-        sig { params(netsuite_overage_item_id: String).void }
-        attr_writer :netsuite_overage_item_id
+        sig { params(_: String).returns(String) }
+        def netsuite_internal_item_id=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def netsuite_overage_item_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def netsuite_overage_item_id=(_)
+        end
 
         sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :presentation_group_key
+        def presentation_group_key
+        end
 
-        sig { params(presentation_group_key: T::Array[String]).void }
-        attr_writer :presentation_group_key
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def presentation_group_key=(_)
+        end
 
         sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :pricing_group_key
+        def pricing_group_key
+        end
 
-        sig { params(pricing_group_key: T::Array[String]).void }
-        attr_writer :pricing_group_key
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def pricing_group_key=(_)
+        end
 
         sig { returns(T.nilable(Metronome::Models::Contracts::QuantityConversion)) }
-        attr_accessor :quantity_conversion
+        def quantity_conversion
+        end
+
+        sig do
+          params(_: T.nilable(Metronome::Models::Contracts::QuantityConversion)).returns(T.nilable(Metronome::Models::Contracts::QuantityConversion))
+        end
+        def quantity_conversion=(_)
+        end
 
         sig { returns(T.nilable(Metronome::Models::Contracts::QuantityRounding)) }
-        attr_accessor :quantity_rounding
+        def quantity_rounding
+        end
+
+        sig do
+          params(_: T.nilable(Metronome::Models::Contracts::QuantityRounding)).returns(T.nilable(Metronome::Models::Contracts::QuantityRounding))
+        end
+        def quantity_rounding=(_)
+        end
 
         sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :tags
+        def tags
+        end
 
-        sig { params(tags: T::Array[String]).void }
-        attr_writer :tags
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def tags=(_)
+        end
 
         sig do
           params(

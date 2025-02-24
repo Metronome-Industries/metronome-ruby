@@ -4,16 +4,28 @@ module Metronome
   module Models
     class BaseUsageFilter < Metronome::BaseModel
       sig { returns(String) }
-      attr_accessor :group_key
+      def group_key
+      end
+
+      sig { params(_: String).returns(String) }
+      def group_key=(_)
+      end
 
       sig { returns(T::Array[String]) }
-      attr_accessor :group_values
+      def group_values
+      end
+
+      sig { params(_: T::Array[String]).returns(T::Array[String]) }
+      def group_values=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_reader :starting_at
+      def starting_at
+      end
 
-      sig { params(starting_at: Time).void }
-      attr_writer :starting_at
+      sig { params(_: Time).returns(Time) }
+      def starting_at=(_)
+      end
 
       sig { params(group_key: String, group_values: T::Array[String], starting_at: Time).void }
       def initialize(group_key:, group_values:, starting_at: nil)

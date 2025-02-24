@@ -41,7 +41,7 @@ module Metronome
 
         attr_reader properties: ::Hash[Symbol, top]?
 
-        def properties=: (::Hash[Symbol, top]) -> void
+        def properties=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
         def initialize:
           (

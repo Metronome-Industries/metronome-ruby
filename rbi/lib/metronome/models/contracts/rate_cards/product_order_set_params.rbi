@@ -9,10 +9,20 @@ module Metronome
           include Metronome::RequestParameters
 
           sig { returns(T::Array[String]) }
-          attr_accessor :product_order
+          def product_order
+          end
+
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def product_order=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :rate_card_id
+          def rate_card_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def rate_card_id=(_)
+          end
 
           sig do
             params(

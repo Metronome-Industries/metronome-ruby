@@ -6,7 +6,14 @@ module Metronome
       module RateCards
         class RateAddResponse < Metronome::BaseModel
           sig { returns(Metronome::Models::Contracts::RateCards::RateAddResponse::Data) }
-          attr_accessor :data
+          def data
+          end
+
+          sig do
+            params(_: Metronome::Models::Contracts::RateCards::RateAddResponse::Data).returns(Metronome::Models::Contracts::RateCards::RateAddResponse::Data)
+          end
+          def data=(_)
+          end
 
           sig { params(data: Metronome::Models::Contracts::RateCards::RateAddResponse::Data).void }
           def initialize(data:)
@@ -18,65 +25,88 @@ module Metronome
 
           class Data < Metronome::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :rate_type
+            def rate_type
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def rate_type=(_)
+            end
 
             sig do
               returns(T.nilable(Metronome::Models::Contracts::RateCards::RateAddResponse::Data::CommitRate))
             end
-            attr_reader :commit_rate
+            def commit_rate
+            end
 
             sig do
-              params(commit_rate: Metronome::Models::Contracts::RateCards::RateAddResponse::Data::CommitRate).void
+              params(_: Metronome::Models::Contracts::RateCards::RateAddResponse::Data::CommitRate).returns(Metronome::Models::Contracts::RateCards::RateAddResponse::Data::CommitRate)
             end
-            attr_writer :commit_rate
+            def commit_rate=(_)
+            end
 
             sig { returns(T.nilable(Metronome::Models::CreditTypeData)) }
-            attr_reader :credit_type
+            def credit_type
+            end
 
-            sig { params(credit_type: Metronome::Models::CreditTypeData).void }
-            attr_writer :credit_type
+            sig { params(_: Metronome::Models::CreditTypeData).returns(Metronome::Models::CreditTypeData) }
+            def credit_type=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
-            attr_reader :custom_rate
+            def custom_rate
+            end
 
-            sig { params(custom_rate: T::Hash[Symbol, T.anything]).void }
-            attr_writer :custom_rate
+            sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+            def custom_rate=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_reader :is_prorated
+            def is_prorated
+            end
 
-            sig { params(is_prorated: T::Boolean).void }
-            attr_writer :is_prorated
+            sig { params(_: T::Boolean).returns(T::Boolean) }
+            def is_prorated=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_reader :price
+            def price
+            end
 
-            sig { params(price: Float).void }
-            attr_writer :price
+            sig { params(_: Float).returns(Float) }
+            def price=(_)
+            end
 
             sig { returns(T.nilable(T::Hash[Symbol, String])) }
-            attr_reader :pricing_group_values
+            def pricing_group_values
+            end
 
-            sig { params(pricing_group_values: T::Hash[Symbol, String]).void }
-            attr_writer :pricing_group_values
+            sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+            def pricing_group_values=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_reader :quantity
+            def quantity
+            end
 
-            sig { params(quantity: Float).void }
-            attr_writer :quantity
+            sig { params(_: Float).returns(Float) }
+            def quantity=(_)
+            end
 
             sig { returns(T.nilable(T::Array[Metronome::Models::Tier])) }
-            attr_reader :tiers
+            def tiers
+            end
 
-            sig { params(tiers: T::Array[Metronome::Models::Tier]).void }
-            attr_writer :tiers
+            sig { params(_: T::Array[Metronome::Models::Tier]).returns(T::Array[Metronome::Models::Tier]) }
+            def tiers=(_)
+            end
 
             sig { returns(T.nilable(T::Boolean)) }
-            attr_reader :use_list_prices
+            def use_list_prices
+            end
 
-            sig { params(use_list_prices: T::Boolean).void }
-            attr_writer :use_list_prices
+            sig { params(_: T::Boolean).returns(T::Boolean) }
+            def use_list_prices=(_)
+            end
 
             sig do
               params(
@@ -141,19 +171,28 @@ module Metronome
 
             class CommitRate < Metronome::BaseModel
               sig { returns(Symbol) }
-              attr_accessor :rate_type
+              def rate_type
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def rate_type=(_)
+              end
 
               sig { returns(T.nilable(Float)) }
-              attr_reader :price
+              def price
+              end
 
-              sig { params(price: Float).void }
-              attr_writer :price
+              sig { params(_: Float).returns(Float) }
+              def price=(_)
+              end
 
               sig { returns(T.nilable(T::Array[Metronome::Models::Tier])) }
-              attr_reader :tiers
+              def tiers
+              end
 
-              sig { params(tiers: T::Array[Metronome::Models::Tier]).void }
-              attr_writer :tiers
+              sig { params(_: T::Array[Metronome::Models::Tier]).returns(T::Array[Metronome::Models::Tier]) }
+              def tiers=(_)
+              end
 
               sig { params(rate_type: Symbol, price: Float, tiers: T::Array[Metronome::Models::Tier]).void }
               def initialize(rate_type:, price: nil, tiers: nil)

@@ -18,19 +18,19 @@ module Metronome
 
       attr_reader include_archived: bool?
 
-      def include_archived=: (bool) -> void
+      def include_archived=: (bool) -> bool
 
       attr_reader limit: Integer?
 
-      def limit=: (Integer) -> void
+      def limit=: (Integer) -> Integer
 
       attr_reader next_page: String?
 
-      def next_page=: (String) -> void
+      def next_page=: (String) -> String
 
       attr_reader on_current_plan: bool?
 
-      def on_current_plan=: (bool) -> void
+      def on_current_plan=: (bool) -> bool
 
       def initialize:
         (

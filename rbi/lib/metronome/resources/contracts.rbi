@@ -4,13 +4,16 @@ module Metronome
   module Resources
     class Contracts
       sig { returns(Metronome::Resources::Contracts::Products) }
-      attr_reader :products
+      def products
+      end
 
       sig { returns(Metronome::Resources::Contracts::RateCards) }
-      attr_reader :rate_cards
+      def rate_cards
+      end
 
       sig { returns(Metronome::Resources::Contracts::NamedSchedules) }
-      attr_reader :named_schedules
+      def named_schedules
+      end
 
       sig do
         params(

@@ -5,10 +5,20 @@ module Metronome
     module Contracts
       class QuantityRounding < Metronome::BaseModel
         sig { returns(Float) }
-        attr_accessor :decimal_places
+        def decimal_places
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def decimal_places=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :rounding_method
+        def rounding_method
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def rounding_method=(_)
+        end
 
         sig { params(decimal_places: Float, rounding_method: Symbol).void }
         def initialize(decimal_places:, rounding_method:)

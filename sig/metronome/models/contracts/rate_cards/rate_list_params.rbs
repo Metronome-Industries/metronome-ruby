@@ -22,17 +22,17 @@ module Metronome
 
           attr_reader limit: Integer?
 
-          def limit=: (Integer) -> void
+          def limit=: (Integer) -> Integer
 
           attr_reader next_page: String?
 
-          def next_page=: (String) -> void
+          def next_page=: (String) -> String
 
           attr_reader selectors: ::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector]?
 
           def selectors=: (
             ::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector]
-          ) -> void
+          ) -> ::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector]
 
           def initialize:
             (
@@ -61,19 +61,23 @@ module Metronome
           class Selector < Metronome::BaseModel
             attr_reader partial_pricing_group_values: ::Hash[Symbol, String]?
 
-            def partial_pricing_group_values=: (::Hash[Symbol, String]) -> void
+            def partial_pricing_group_values=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
 
             attr_reader pricing_group_values: ::Hash[Symbol, String]?
 
-            def pricing_group_values=: (::Hash[Symbol, String]) -> void
+            def pricing_group_values=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
 
             attr_reader product_id: String?
 
-            def product_id=: (String) -> void
+            def product_id=: (String) -> String
 
             attr_reader product_tags: ::Array[String]?
 
-            def product_tags=: (::Array[String]) -> void
+            def product_tags=: (::Array[String]) -> ::Array[String]
 
             def initialize:
               (

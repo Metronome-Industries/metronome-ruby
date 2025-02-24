@@ -7,13 +7,28 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :customer_id
+      def customer_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def customer_id=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_accessor :leave_stripe_invoices_in_draft
+      def leave_stripe_invoices_in_draft
+      end
+
+      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+      def leave_stripe_invoices_in_draft=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :salesforce_account_id
+      def salesforce_account_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def salesforce_account_id=(_)
+      end
 
       sig do
         params(

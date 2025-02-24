@@ -8,22 +8,44 @@ module Metronome
         include Metronome::RequestParameters
 
         sig { returns(String) }
-        attr_accessor :customer_id
+        def customer_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def customer_id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :schedule_name
+        def schedule_name
+        end
+
+        sig { params(_: String).returns(String) }
+        def schedule_name=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :starting_at
+        def starting_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def starting_at=(_)
+        end
 
         sig { returns(T.anything) }
-        attr_accessor :value
+        def value
+        end
+
+        sig { params(_: T.anything).returns(T.anything) }
+        def value=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :ending_before
+        def ending_before
+        end
 
-        sig { params(ending_before: Time).void }
-        attr_writer :ending_before
+        sig { params(_: Time).returns(Time) }
+        def ending_before=(_)
+        end
 
         sig do
           params(

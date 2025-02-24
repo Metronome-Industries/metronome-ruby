@@ -7,10 +7,20 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(Symbol) }
-      attr_accessor :entity
+      def entity
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def entity=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :key
+      def key
+      end
+
+      sig { params(_: String).returns(String) }
+      def key=(_)
+      end
 
       sig do
         params(

@@ -4,7 +4,14 @@ module Metronome
   module Models
     class ServiceListResponse < Metronome::BaseModel
       sig { returns(T::Array[Metronome::Models::ServiceListResponse::Service]) }
-      attr_accessor :services
+      def services
+      end
+
+      sig do
+        params(_: T::Array[Metronome::Models::ServiceListResponse::Service]).returns(T::Array[Metronome::Models::ServiceListResponse::Service])
+      end
+      def services=(_)
+      end
 
       sig { params(services: T::Array[Metronome::Models::ServiceListResponse::Service]).void }
       def initialize(services:)
@@ -16,13 +23,28 @@ module Metronome
 
       class Service < Metronome::BaseModel
         sig { returns(T::Array[String]) }
-        attr_accessor :ips
+        def ips
+        end
+
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def ips=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :usage
+        def usage
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def usage=(_)
+        end
 
         sig { params(ips: T::Array[String], name: String, usage: Symbol).void }
         def initialize(ips:, name:, usage:)

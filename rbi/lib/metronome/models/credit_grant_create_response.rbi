@@ -4,7 +4,12 @@ module Metronome
   module Models
     class CreditGrantCreateResponse < Metronome::BaseModel
       sig { returns(Metronome::Models::ID) }
-      attr_accessor :data
+      def data
+      end
+
+      sig { params(_: Metronome::Models::ID).returns(Metronome::Models::ID) }
+      def data=(_)
+      end
 
       sig { params(data: Metronome::Models::ID).void }
       def initialize(data:)

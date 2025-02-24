@@ -46,75 +46,79 @@ module Metronome
 
       attr_reader credits: ::Array[Metronome::Models::Credit]?
 
-      def credits=: (::Array[Metronome::Models::Credit]) -> void
+      def credits=: (
+        ::Array[Metronome::Models::Credit]
+      ) -> ::Array[Metronome::Models::Credit]
 
       attr_reader discounts: ::Array[Metronome::Models::Discount]?
 
-      def discounts=: (::Array[Metronome::Models::Discount]) -> void
+      def discounts=: (
+        ::Array[Metronome::Models::Discount]
+      ) -> ::Array[Metronome::Models::Discount]
 
       attr_reader ending_before: Time?
 
-      def ending_before=: (Time) -> void
+      def ending_before=: (Time) -> Time
 
       attr_reader name: String?
 
-      def name=: (String) -> void
+      def name=: (String) -> String
 
       attr_reader net_payment_terms_days: Float?
 
-      def net_payment_terms_days=: (Float) -> void
+      def net_payment_terms_days=: (Float) -> Float
 
       attr_reader netsuite_sales_order_id: String?
 
-      def netsuite_sales_order_id=: (String) -> void
+      def netsuite_sales_order_id=: (String) -> String
 
       attr_reader professional_services: ::Array[Metronome::Models::ProService]?
 
       def professional_services=: (
         ::Array[Metronome::Models::ProService]
-      ) -> void
+      ) -> ::Array[Metronome::Models::ProService]
 
       attr_reader rate_card_id: String?
 
-      def rate_card_id=: (String) -> void
+      def rate_card_id=: (String) -> String
 
       attr_reader recurring_commits: ::Array[Metronome::Models::ContractWithoutAmendments::RecurringCommit]?
 
       def recurring_commits=: (
         ::Array[Metronome::Models::ContractWithoutAmendments::RecurringCommit]
-      ) -> void
+      ) -> ::Array[Metronome::Models::ContractWithoutAmendments::RecurringCommit]
 
       attr_reader recurring_credits: ::Array[Metronome::Models::ContractWithoutAmendments::RecurringCredit]?
 
       def recurring_credits=: (
         ::Array[Metronome::Models::ContractWithoutAmendments::RecurringCredit]
-      ) -> void
+      ) -> ::Array[Metronome::Models::ContractWithoutAmendments::RecurringCredit]
 
       attr_reader reseller_royalties: ::Array[Metronome::Models::ContractWithoutAmendments::ResellerRoyalty]?
 
       def reseller_royalties=: (
         ::Array[Metronome::Models::ContractWithoutAmendments::ResellerRoyalty]
-      ) -> void
+      ) -> ::Array[Metronome::Models::ContractWithoutAmendments::ResellerRoyalty]
 
       attr_reader salesforce_opportunity_id: String?
 
-      def salesforce_opportunity_id=: (String) -> void
+      def salesforce_opportunity_id=: (String) -> String
 
       attr_reader scheduled_charges_on_usage_invoices: Metronome::Models::ContractWithoutAmendments::scheduled_charges_on_usage_invoices?
 
       def scheduled_charges_on_usage_invoices=: (
         Metronome::Models::ContractWithoutAmendments::scheduled_charges_on_usage_invoices
-      ) -> void
+      ) -> Metronome::Models::ContractWithoutAmendments::scheduled_charges_on_usage_invoices
 
       attr_reader total_contract_value: Float?
 
-      def total_contract_value=: (Float) -> void
+      def total_contract_value=: (Float) -> Float
 
       attr_reader usage_filter: Metronome::Models::ContractWithoutAmendments::UsageFilter?
 
       def usage_filter=: (
         Metronome::Models::ContractWithoutAmendments::UsageFilter
-      ) -> void
+      ) -> Metronome::Models::ContractWithoutAmendments::UsageFilter
 
       def initialize:
         (
@@ -257,43 +261,43 @@ module Metronome
 
         attr_reader applicable_product_ids: ::Array[String]?
 
-        def applicable_product_ids=: (::Array[String]) -> void
+        def applicable_product_ids=: (::Array[String]) -> ::Array[String]
 
         attr_reader applicable_product_tags: ::Array[String]?
 
-        def applicable_product_tags=: (::Array[String]) -> void
+        def applicable_product_tags=: (::Array[String]) -> ::Array[String]
 
         attr_reader contract: Metronome::Models::ContractWithoutAmendments::RecurringCommit::Contract?
 
         def contract=: (
           Metronome::Models::ContractWithoutAmendments::RecurringCommit::Contract
-        ) -> void
+        ) -> Metronome::Models::ContractWithoutAmendments::RecurringCommit::Contract
 
         attr_reader description: String?
 
-        def description=: (String) -> void
+        def description=: (String) -> String
 
         attr_reader ending_before: Time?
 
-        def ending_before=: (Time) -> void
+        def ending_before=: (Time) -> Time
 
         attr_reader invoice_amount: Metronome::Models::ContractWithoutAmendments::RecurringCommit::InvoiceAmount?
 
         def invoice_amount=: (
           Metronome::Models::ContractWithoutAmendments::RecurringCommit::InvoiceAmount
-        ) -> void
+        ) -> Metronome::Models::ContractWithoutAmendments::RecurringCommit::InvoiceAmount
 
         attr_reader name: String?
 
-        def name=: (String) -> void
+        def name=: (String) -> String
 
         attr_reader netsuite_sales_order_id: String?
 
-        def netsuite_sales_order_id=: (String) -> void
+        def netsuite_sales_order_id=: (String) -> String
 
         attr_reader rollover_fraction: Float?
 
-        def rollover_fraction=: (Float) -> void
+        def rollover_fraction=: (Float) -> Float
 
         def initialize:
           (
@@ -354,7 +358,7 @@ module Metronome
 
           def unit=: (
             Metronome::Models::ContractWithoutAmendments::RecurringCommit::CommitDuration::unit
-          ) -> void
+          ) -> Metronome::Models::ContractWithoutAmendments::RecurringCommit::CommitDuration::unit
 
           def initialize:
             (
@@ -475,37 +479,37 @@ module Metronome
 
         attr_reader applicable_product_ids: ::Array[String]?
 
-        def applicable_product_ids=: (::Array[String]) -> void
+        def applicable_product_ids=: (::Array[String]) -> ::Array[String]
 
         attr_reader applicable_product_tags: ::Array[String]?
 
-        def applicable_product_tags=: (::Array[String]) -> void
+        def applicable_product_tags=: (::Array[String]) -> ::Array[String]
 
         attr_reader contract: Metronome::Models::ContractWithoutAmendments::RecurringCredit::Contract?
 
         def contract=: (
           Metronome::Models::ContractWithoutAmendments::RecurringCredit::Contract
-        ) -> void
+        ) -> Metronome::Models::ContractWithoutAmendments::RecurringCredit::Contract
 
         attr_reader description: String?
 
-        def description=: (String) -> void
+        def description=: (String) -> String
 
         attr_reader ending_before: Time?
 
-        def ending_before=: (Time) -> void
+        def ending_before=: (Time) -> Time
 
         attr_reader name: String?
 
-        def name=: (String) -> void
+        def name=: (String) -> String
 
         attr_reader netsuite_sales_order_id: String?
 
-        def netsuite_sales_order_id=: (String) -> void
+        def netsuite_sales_order_id=: (String) -> String
 
         attr_reader rollover_fraction: Float?
 
-        def rollover_fraction=: (Float) -> void
+        def rollover_fraction=: (Float) -> Float
 
         def initialize:
           (
@@ -565,7 +569,7 @@ module Metronome
 
           def unit=: (
             Metronome::Models::ContractWithoutAmendments::RecurringCredit::CommitDuration::unit
-          ) -> void
+          ) -> Metronome::Models::ContractWithoutAmendments::RecurringCredit::CommitDuration::unit
 
           def initialize:
             (
@@ -658,39 +662,39 @@ module Metronome
 
         attr_reader applicable_product_ids: ::Array[String]?
 
-        def applicable_product_ids=: (::Array[String]) -> void
+        def applicable_product_ids=: (::Array[String]) -> ::Array[String]
 
         attr_reader applicable_product_tags: ::Array[String]?
 
-        def applicable_product_tags=: (::Array[String]) -> void
+        def applicable_product_tags=: (::Array[String]) -> ::Array[String]
 
         attr_reader aws_account_number: String?
 
-        def aws_account_number=: (String) -> void
+        def aws_account_number=: (String) -> String
 
         attr_reader aws_offer_id: String?
 
-        def aws_offer_id=: (String) -> void
+        def aws_offer_id=: (String) -> String
 
         attr_reader aws_payer_reference_id: String?
 
-        def aws_payer_reference_id=: (String) -> void
+        def aws_payer_reference_id=: (String) -> String
 
         attr_reader ending_before: Time?
 
-        def ending_before=: (Time) -> void
+        def ending_before=: (Time) -> Time
 
         attr_reader gcp_account_id: String?
 
-        def gcp_account_id=: (String) -> void
+        def gcp_account_id=: (String) -> String
 
         attr_reader gcp_offer_id: String?
 
-        def gcp_offer_id=: (String) -> void
+        def gcp_offer_id=: (String) -> String
 
         attr_reader reseller_contract_value: Float?
 
-        def reseller_contract_value=: (Float) -> void
+        def reseller_contract_value=: (Float) -> Float
 
         def initialize:
           (

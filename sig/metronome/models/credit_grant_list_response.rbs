@@ -54,7 +54,7 @@ module Metronome
 
       def products=: (
         ::Array[Metronome::Models::CreditGrantListResponse::Product]
-      ) -> void
+      ) -> ::Array[Metronome::Models::CreditGrantListResponse::Product]
 
       attr_accessor reason: String?
 

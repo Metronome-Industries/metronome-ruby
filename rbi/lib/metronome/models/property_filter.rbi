@@ -4,25 +4,36 @@ module Metronome
   module Models
     class PropertyFilter < Metronome::BaseModel
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :exists
+      def exists
+      end
 
-      sig { params(exists: T::Boolean).void }
-      attr_writer :exists
-
-      sig { returns(T.nilable(T::Array[String])) }
-      attr_reader :in_values
-
-      sig { params(in_values: T::Array[String]).void }
-      attr_writer :in_values
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def exists=(_)
+      end
 
       sig { returns(T.nilable(T::Array[String])) }
-      attr_reader :not_in_values
+      def in_values
+      end
 
-      sig { params(not_in_values: T::Array[String]).void }
-      attr_writer :not_in_values
+      sig { params(_: T::Array[String]).returns(T::Array[String]) }
+      def in_values=(_)
+      end
+
+      sig { returns(T.nilable(T::Array[String])) }
+      def not_in_values
+      end
+
+      sig { params(_: T::Array[String]).returns(T::Array[String]) }
+      def not_in_values=(_)
+      end
 
       sig do
         params(

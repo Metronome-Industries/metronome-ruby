@@ -24,19 +24,19 @@ module Metronome
 
         attr_reader aws_product_code: String?
 
-        def aws_product_code=: (String) -> void
+        def aws_product_code=: (String) -> String
 
         attr_reader aws_region: Metronome::Models::Customers::BillingConfigCreateParams::aws_region?
 
         def aws_region=: (
           Metronome::Models::Customers::BillingConfigCreateParams::aws_region
-        ) -> void
+        ) -> Metronome::Models::Customers::BillingConfigCreateParams::aws_region
 
         attr_reader stripe_collection_method: Metronome::Models::Customers::BillingConfigCreateParams::stripe_collection_method?
 
         def stripe_collection_method=: (
           Metronome::Models::Customers::BillingConfigCreateParams::stripe_collection_method
-        ) -> void
+        ) -> Metronome::Models::Customers::BillingConfigCreateParams::stripe_collection_method
 
         def initialize:
           (

@@ -37,17 +37,17 @@ module Metronome
       class CreditType < Metronome::BaseModel
         attr_reader cost: Float?
 
-        def cost=: (Float) -> void
+        def cost=: (Float) -> Float
 
         attr_reader line_item_breakdown: ::Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown]?
 
         def line_item_breakdown=: (
           ::Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown]
-        ) -> void
+        ) -> ::Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown]
 
         attr_reader name: String?
 
-        def name=: (String) -> void
+        def name=: (String) -> String
 
         def initialize:
           (
@@ -72,7 +72,7 @@ module Metronome
 
           attr_reader group_key: String?
 
-          def group_key=: (String) -> void
+          def group_key=: (String) -> String
 
           attr_accessor group_value: String?
 

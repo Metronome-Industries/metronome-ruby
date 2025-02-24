@@ -6,11 +6,11 @@ module Metronome
     class EventTypeFilter < Metronome::BaseModel
       attr_reader in_values: ::Array[String]?
 
-      def in_values=: (::Array[String]) -> void
+      def in_values=: (::Array[String]) -> ::Array[String]
 
       attr_reader not_in_values: ::Array[String]?
 
-      def not_in_values=: (::Array[String]) -> void
+      def not_in_values=: (::Array[String]) -> ::Array[String]
 
       def initialize:
         (in_values: ::Array[String], not_in_values: ::Array[String]) -> void

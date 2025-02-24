@@ -4,10 +4,14 @@ module Metronome
   module Models
     class InvoiceRegenerateResponse < Metronome::BaseModel
       sig { returns(T.nilable(Metronome::Models::InvoiceRegenerateResponse::Data)) }
-      attr_reader :data
+      def data
+      end
 
-      sig { params(data: Metronome::Models::InvoiceRegenerateResponse::Data).void }
-      attr_writer :data
+      sig do
+        params(_: Metronome::Models::InvoiceRegenerateResponse::Data).returns(Metronome::Models::InvoiceRegenerateResponse::Data)
+      end
+      def data=(_)
+      end
 
       sig { params(data: Metronome::Models::InvoiceRegenerateResponse::Data).void }
       def initialize(data: nil)
@@ -19,7 +23,12 @@ module Metronome
 
       class Data < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { params(id: String).void }
         def initialize(id:)

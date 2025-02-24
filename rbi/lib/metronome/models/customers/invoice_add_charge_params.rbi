@@ -8,25 +8,60 @@ module Metronome
         include Metronome::RequestParameters
 
         sig { returns(String) }
-        attr_accessor :customer_id
+        def customer_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def customer_id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :charge_id
+        def charge_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def charge_id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :customer_plan_id
+        def customer_plan_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def customer_plan_id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :description
+        def description
+        end
+
+        sig { params(_: String).returns(String) }
+        def description=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :invoice_start_timestamp
+        def invoice_start_timestamp
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def invoice_start_timestamp=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :price
+        def price
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def price=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :quantity
+        def quantity
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def quantity=(_)
+        end
 
         sig do
           params(

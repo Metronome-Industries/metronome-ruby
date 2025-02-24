@@ -23,37 +23,37 @@ module Metronome
 
         attr_reader credit_type_id: String?
 
-        def credit_type_id=: (String) -> void
+        def credit_type_id=: (String) -> String
 
         attr_reader ending_before: Time?
 
-        def ending_before=: (Time) -> void
+        def ending_before=: (Time) -> Time
 
         attr_reader limit: Integer?
 
-        def limit=: (Integer) -> void
+        def limit=: (Integer) -> Integer
 
         attr_reader next_page: String?
 
-        def next_page=: (String) -> void
+        def next_page=: (String) -> String
 
         attr_reader skip_zero_qty_line_items: bool?
 
-        def skip_zero_qty_line_items=: (bool) -> void
+        def skip_zero_qty_line_items=: (bool) -> bool
 
         attr_reader sort: Metronome::Models::Customers::InvoiceListParams::sort?
 
         def sort=: (
           Metronome::Models::Customers::InvoiceListParams::sort
-        ) -> void
+        ) -> Metronome::Models::Customers::InvoiceListParams::sort
 
         attr_reader starting_on: Time?
 
-        def starting_on=: (Time) -> void
+        def starting_on=: (Time) -> Time
 
         attr_reader status: String?
 
-        def status=: (String) -> void
+        def status=: (String) -> String
 
         def initialize:
           (

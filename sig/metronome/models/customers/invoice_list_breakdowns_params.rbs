@@ -28,35 +28,35 @@ module Metronome
 
         attr_reader credit_type_id: String?
 
-        def credit_type_id=: (String) -> void
+        def credit_type_id=: (String) -> String
 
         attr_reader limit: Integer?
 
-        def limit=: (Integer) -> void
+        def limit=: (Integer) -> Integer
 
         attr_reader next_page: String?
 
-        def next_page=: (String) -> void
+        def next_page=: (String) -> String
 
         attr_reader skip_zero_qty_line_items: bool?
 
-        def skip_zero_qty_line_items=: (bool) -> void
+        def skip_zero_qty_line_items=: (bool) -> bool
 
         attr_reader sort: Metronome::Models::Customers::InvoiceListBreakdownsParams::sort?
 
         def sort=: (
           Metronome::Models::Customers::InvoiceListBreakdownsParams::sort
-        ) -> void
+        ) -> Metronome::Models::Customers::InvoiceListBreakdownsParams::sort
 
         attr_reader status: String?
 
-        def status=: (String) -> void
+        def status=: (String) -> String
 
         attr_reader window_size: Metronome::Models::Customers::InvoiceListBreakdownsParams::window_size?
 
         def window_size=: (
           Metronome::Models::Customers::InvoiceListBreakdownsParams::window_size
-        ) -> void
+        ) -> Metronome::Models::Customers::InvoiceListBreakdownsParams::window_size
 
         def initialize:
           (

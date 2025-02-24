@@ -11,10 +11,22 @@ module Metronome
           sig do
             returns(T::Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove])
           end
-          attr_accessor :product_moves
+          def product_moves
+          end
+
+          sig do
+            params(_: T::Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove]).returns(T::Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove])
+          end
+          def product_moves=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :rate_card_id
+          def rate_card_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def rate_card_id=(_)
+          end
 
           sig do
             params(
@@ -38,10 +50,20 @@ module Metronome
 
           class ProductMove < Metronome::BaseModel
             sig { returns(Float) }
-            attr_accessor :position
+            def position
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def position=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :product_id
+            def product_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def product_id=(_)
+            end
 
             sig { params(position: Float, product_id: String).void }
             def initialize(position:, product_id:)

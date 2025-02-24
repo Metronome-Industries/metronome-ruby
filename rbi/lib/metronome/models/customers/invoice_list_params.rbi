@@ -8,55 +8,76 @@ module Metronome
         include Metronome::RequestParameters
 
         sig { returns(String) }
-        attr_accessor :customer_id
+        def customer_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def customer_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :credit_type_id
+        def credit_type_id
+        end
 
-        sig { params(credit_type_id: String).void }
-        attr_writer :credit_type_id
+        sig { params(_: String).returns(String) }
+        def credit_type_id=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :ending_before
+        def ending_before
+        end
 
-        sig { params(ending_before: Time).void }
-        attr_writer :ending_before
+        sig { params(_: Time).returns(Time) }
+        def ending_before=(_)
+        end
 
         sig { returns(T.nilable(Integer)) }
-        attr_reader :limit
+        def limit
+        end
 
-        sig { params(limit: Integer).void }
-        attr_writer :limit
+        sig { params(_: Integer).returns(Integer) }
+        def limit=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :next_page
+        def next_page
+        end
 
-        sig { params(next_page: String).void }
-        attr_writer :next_page
+        sig { params(_: String).returns(String) }
+        def next_page=(_)
+        end
 
         sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :skip_zero_qty_line_items
+        def skip_zero_qty_line_items
+        end
 
-        sig { params(skip_zero_qty_line_items: T::Boolean).void }
-        attr_writer :skip_zero_qty_line_items
+        sig { params(_: T::Boolean).returns(T::Boolean) }
+        def skip_zero_qty_line_items=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :sort
+        def sort
+        end
 
-        sig { params(sort: Symbol).void }
-        attr_writer :sort
+        sig { params(_: Symbol).returns(Symbol) }
+        def sort=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :starting_on
+        def starting_on
+        end
 
-        sig { params(starting_on: Time).void }
-        attr_writer :starting_on
+        sig { params(_: Time).returns(Time) }
+        def starting_on=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :status
+        def status
+        end
 
-        sig { params(status: String).void }
-        attr_writer :status
+        sig { params(_: String).returns(String) }
+        def status=(_)
+        end
 
         sig do
           params(

@@ -36,45 +36,45 @@ module Metronome
         class Data < Metronome::BaseModel
           attr_reader aws_expiration_date: Time?
 
-          def aws_expiration_date=: (Time) -> void
+          def aws_expiration_date=: (Time) -> Time
 
           attr_reader aws_product_code: String?
 
-          def aws_product_code=: (String) -> void
+          def aws_product_code=: (String) -> String
 
           attr_reader aws_region: Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::aws_region?
 
           def aws_region=: (
             Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::aws_region
-          ) -> void
+          ) -> Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::aws_region
 
           attr_reader azure_expiration_date: Time?
 
-          def azure_expiration_date=: (Time) -> void
+          def azure_expiration_date=: (Time) -> Time
 
           attr_reader azure_plan_id: String?
 
-          def azure_plan_id=: (String) -> void
+          def azure_plan_id=: (String) -> String
 
           attr_reader azure_start_date: Time?
 
-          def azure_start_date=: (Time) -> void
+          def azure_start_date=: (Time) -> Time
 
           attr_reader azure_subscription_status: Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::azure_subscription_status?
 
           def azure_subscription_status=: (
             Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::azure_subscription_status
-          ) -> void
+          ) -> Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::azure_subscription_status
 
           attr_reader billing_provider_customer_id: String?
 
-          def billing_provider_customer_id=: (String) -> void
+          def billing_provider_customer_id=: (String) -> String
 
           attr_reader stripe_collection_method: Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::stripe_collection_method?
 
           def stripe_collection_method=: (
             Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::stripe_collection_method
-          ) -> void
+          ) -> Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::stripe_collection_method
 
           def initialize:
             (

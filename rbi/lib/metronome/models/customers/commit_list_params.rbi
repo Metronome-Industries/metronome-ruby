@@ -8,61 +8,84 @@ module Metronome
         include Metronome::RequestParameters
 
         sig { returns(String) }
-        attr_accessor :customer_id
+        def customer_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def customer_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :commit_id
+        def commit_id
+        end
 
-        sig { params(commit_id: String).void }
-        attr_writer :commit_id
-
-        sig { returns(T.nilable(Time)) }
-        attr_reader :covering_date
-
-        sig { params(covering_date: Time).void }
-        attr_writer :covering_date
+        sig { params(_: String).returns(String) }
+        def commit_id=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :effective_before
+        def covering_date
+        end
 
-        sig { params(effective_before: Time).void }
-        attr_writer :effective_before
+        sig { params(_: Time).returns(Time) }
+        def covering_date=(_)
+        end
 
-        sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :include_archived
+        sig { returns(T.nilable(Time)) }
+        def effective_before
+        end
 
-        sig { params(include_archived: T::Boolean).void }
-        attr_writer :include_archived
-
-        sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :include_balance
-
-        sig { params(include_balance: T::Boolean).void }
-        attr_writer :include_balance
+        sig { params(_: Time).returns(Time) }
+        def effective_before=(_)
+        end
 
         sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :include_contract_commits
+        def include_archived
+        end
 
-        sig { params(include_contract_commits: T::Boolean).void }
-        attr_writer :include_contract_commits
+        sig { params(_: T::Boolean).returns(T::Boolean) }
+        def include_archived=(_)
+        end
 
         sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :include_ledgers
+        def include_balance
+        end
 
-        sig { params(include_ledgers: T::Boolean).void }
-        attr_writer :include_ledgers
+        sig { params(_: T::Boolean).returns(T::Boolean) }
+        def include_balance=(_)
+        end
+
+        sig { returns(T.nilable(T::Boolean)) }
+        def include_contract_commits
+        end
+
+        sig { params(_: T::Boolean).returns(T::Boolean) }
+        def include_contract_commits=(_)
+        end
+
+        sig { returns(T.nilable(T::Boolean)) }
+        def include_ledgers
+        end
+
+        sig { params(_: T::Boolean).returns(T::Boolean) }
+        def include_ledgers=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :next_page
+        def next_page
+        end
 
-        sig { params(next_page: String).void }
-        attr_writer :next_page
+        sig { params(_: String).returns(String) }
+        def next_page=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :starting_at
+        def starting_at
+        end
 
-        sig { params(starting_at: Time).void }
-        attr_writer :starting_at
+        sig { params(_: Time).returns(Time) }
+        def starting_at=(_)
+        end
 
         sig do
           params(

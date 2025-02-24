@@ -29,17 +29,17 @@ module Metronome
 
         attr_reader ending_before: Time?
 
-        def ending_before=: (Time) -> void
+        def ending_before=: (Time) -> Time
 
         attr_reader net_payment_terms_days: Float?
 
-        def net_payment_terms_days=: (Float) -> void
+        def net_payment_terms_days=: (Float) -> Float
 
         attr_reader trial_info: Metronome::Models::Customers::PlanListResponse::TrialInfo?
 
         def trial_info=: (
           Metronome::Models::Customers::PlanListResponse::TrialInfo
-        ) -> void
+        ) -> Metronome::Models::Customers::PlanListResponse::TrialInfo
 
         def initialize:
           (

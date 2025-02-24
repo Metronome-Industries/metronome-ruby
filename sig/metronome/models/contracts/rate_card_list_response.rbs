@@ -27,25 +27,27 @@ module Metronome
 
         def aliases=: (
           ::Array[Metronome::Models::Contracts::RateCardListResponse::Alias]
-        ) -> void
+        ) -> ::Array[Metronome::Models::Contracts::RateCardListResponse::Alias]
 
         attr_reader credit_type_conversions: ::Array[Metronome::Models::Contracts::RateCardListResponse::CreditTypeConversion]?
 
         def credit_type_conversions=: (
           ::Array[Metronome::Models::Contracts::RateCardListResponse::CreditTypeConversion]
-        ) -> void
+        ) -> ::Array[Metronome::Models::Contracts::RateCardListResponse::CreditTypeConversion]
 
         attr_reader custom_fields: ::Hash[Symbol, String]?
 
-        def custom_fields=: (::Hash[Symbol, String]) -> void
+        def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
 
         attr_reader description: String?
 
-        def description=: (String) -> void
+        def description=: (String) -> String
 
         attr_reader fiat_credit_type: Metronome::Models::CreditTypeData?
 
-        def fiat_credit_type=: (Metronome::Models::CreditTypeData) -> void
+        def fiat_credit_type=: (
+          Metronome::Models::CreditTypeData
+        ) -> Metronome::Models::CreditTypeData
 
         def initialize:
           (
@@ -73,11 +75,11 @@ module Metronome
 
           attr_reader ending_before: Time?
 
-          def ending_before=: (Time) -> void
+          def ending_before=: (Time) -> Time
 
           attr_reader starting_at: Time?
 
-          def starting_at=: (Time) -> void
+          def starting_at=: (Time) -> Time
 
           def initialize:
             (name: String, ending_before: Time, starting_at: Time) -> void

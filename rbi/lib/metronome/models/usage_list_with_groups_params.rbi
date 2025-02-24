@@ -7,49 +7,78 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :billable_metric_id
+      def billable_metric_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def billable_metric_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :customer_id
+      def customer_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def customer_id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :window_size
+      def window_size
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def window_size=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :next_page
+      def next_page
+      end
 
-      sig { params(next_page: String).void }
-      attr_writer :next_page
+      sig { params(_: String).returns(String) }
+      def next_page=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :current_period
+      def current_period
+      end
 
-      sig { params(current_period: T::Boolean).void }
-      attr_writer :current_period
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def current_period=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_reader :ending_before
+      def ending_before
+      end
 
-      sig { params(ending_before: Time).void }
-      attr_writer :ending_before
+      sig { params(_: Time).returns(Time) }
+      def ending_before=(_)
+      end
 
       sig { returns(T.nilable(Metronome::Models::UsageListWithGroupsParams::GroupBy)) }
-      attr_reader :group_by
+      def group_by
+      end
 
-      sig { params(group_by: Metronome::Models::UsageListWithGroupsParams::GroupBy).void }
-      attr_writer :group_by
+      sig do
+        params(_: Metronome::Models::UsageListWithGroupsParams::GroupBy).returns(Metronome::Models::UsageListWithGroupsParams::GroupBy)
+      end
+      def group_by=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_reader :starting_on
+      def starting_on
+      end
 
-      sig { params(starting_on: Time).void }
-      attr_writer :starting_on
+      sig { params(_: Time).returns(Time) }
+      def starting_on=(_)
+      end
 
       sig do
         params(
@@ -112,13 +141,20 @@ module Metronome
 
       class GroupBy < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :key
+        def key
+        end
+
+        sig { params(_: String).returns(String) }
+        def key=(_)
+        end
 
         sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :values
+        def values
+        end
 
-        sig { params(values: T::Array[String]).void }
-        attr_writer :values
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def values=(_)
+        end
 
         sig { params(key: String, values: T::Array[String]).void }
         def initialize(key:, values: nil)

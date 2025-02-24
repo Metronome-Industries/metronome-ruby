@@ -7,176 +7,244 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :customer_id
+      def customer_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def customer_id=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :starting_at
+      def starting_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def starting_at=(_)
+      end
 
       sig { returns(T.nilable(Metronome::Models::ContractCreateParams::BillingProviderConfiguration)) }
-      attr_reader :billing_provider_configuration
+      def billing_provider_configuration
+      end
 
       sig do
-        params(
-          billing_provider_configuration: Metronome::Models::ContractCreateParams::BillingProviderConfiguration
-        ).void
+        params(_: Metronome::Models::ContractCreateParams::BillingProviderConfiguration).returns(Metronome::Models::ContractCreateParams::BillingProviderConfiguration)
       end
-      attr_writer :billing_provider_configuration
+      def billing_provider_configuration=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Metronome::Models::ContractCreateParams::Commit])) }
-      attr_reader :commits
+      def commits
+      end
 
-      sig { params(commits: T::Array[Metronome::Models::ContractCreateParams::Commit]).void }
-      attr_writer :commits
+      sig do
+        params(_: T::Array[Metronome::Models::ContractCreateParams::Commit]).returns(T::Array[Metronome::Models::ContractCreateParams::Commit])
+      end
+      def commits=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Metronome::Models::ContractCreateParams::Credit])) }
-      attr_reader :credits
+      def credits
+      end
 
-      sig { params(credits: T::Array[Metronome::Models::ContractCreateParams::Credit]).void }
-      attr_writer :credits
+      sig do
+        params(_: T::Array[Metronome::Models::ContractCreateParams::Credit]).returns(T::Array[Metronome::Models::ContractCreateParams::Credit])
+      end
+      def credits=(_)
+      end
 
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
-      attr_reader :custom_fields
+      def custom_fields
+      end
 
-      sig { params(custom_fields: T::Hash[Symbol, String]).void }
-      attr_writer :custom_fields
+      sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+      def custom_fields=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Metronome::Models::ContractCreateParams::Discount])) }
-      attr_reader :discounts
+      def discounts
+      end
 
-      sig { params(discounts: T::Array[Metronome::Models::ContractCreateParams::Discount]).void }
-      attr_writer :discounts
+      sig do
+        params(_: T::Array[Metronome::Models::ContractCreateParams::Discount]).returns(T::Array[Metronome::Models::ContractCreateParams::Discount])
+      end
+      def discounts=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_reader :ending_before
+      def ending_before
+      end
 
-      sig { params(ending_before: Time).void }
-      attr_writer :ending_before
+      sig { params(_: Time).returns(Time) }
+      def ending_before=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_reader :multiplier_override_prioritization
+      def multiplier_override_prioritization
+      end
 
-      sig { params(multiplier_override_prioritization: Symbol).void }
-      attr_writer :multiplier_override_prioritization
+      sig { params(_: Symbol).returns(Symbol) }
+      def multiplier_override_prioritization=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :name
+      def name
+      end
 
-      sig { params(name: String).void }
-      attr_writer :name
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(T.nilable(Float)) }
-      attr_reader :net_payment_terms_days
+      def net_payment_terms_days
+      end
 
-      sig { params(net_payment_terms_days: Float).void }
-      attr_writer :net_payment_terms_days
+      sig { params(_: Float).returns(Float) }
+      def net_payment_terms_days=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :netsuite_sales_order_id
+      def netsuite_sales_order_id
+      end
 
-      sig { params(netsuite_sales_order_id: String).void }
-      attr_writer :netsuite_sales_order_id
+      sig { params(_: String).returns(String) }
+      def netsuite_sales_order_id=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Metronome::Models::ContractCreateParams::Override])) }
-      attr_reader :overrides
+      def overrides
+      end
 
-      sig { params(overrides: T::Array[Metronome::Models::ContractCreateParams::Override]).void }
-      attr_writer :overrides
+      sig do
+        params(_: T::Array[Metronome::Models::ContractCreateParams::Override]).returns(T::Array[Metronome::Models::ContractCreateParams::Override])
+      end
+      def overrides=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Metronome::Models::ContractCreateParams::ProfessionalService])) }
-      attr_reader :professional_services
+      def professional_services
+      end
 
       sig do
-        params(professional_services: T::Array[Metronome::Models::ContractCreateParams::ProfessionalService]).void
+        params(_: T::Array[Metronome::Models::ContractCreateParams::ProfessionalService]).returns(T::Array[Metronome::Models::ContractCreateParams::ProfessionalService])
       end
-      attr_writer :professional_services
+      def professional_services=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :rate_card_alias
+      def rate_card_alias
+      end
 
-      sig { params(rate_card_alias: String).void }
-      attr_writer :rate_card_alias
+      sig { params(_: String).returns(String) }
+      def rate_card_alias=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :rate_card_id
+      def rate_card_id
+      end
 
-      sig { params(rate_card_id: String).void }
-      attr_writer :rate_card_id
+      sig { params(_: String).returns(String) }
+      def rate_card_id=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Metronome::Models::ContractCreateParams::RecurringCommit])) }
-      attr_reader :recurring_commits
+      def recurring_commits
+      end
 
       sig do
-        params(recurring_commits: T::Array[Metronome::Models::ContractCreateParams::RecurringCommit]).void
+        params(_: T::Array[Metronome::Models::ContractCreateParams::RecurringCommit]).returns(T::Array[Metronome::Models::ContractCreateParams::RecurringCommit])
       end
-      attr_writer :recurring_commits
+      def recurring_commits=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Metronome::Models::ContractCreateParams::RecurringCredit])) }
-      attr_reader :recurring_credits
+      def recurring_credits
+      end
 
       sig do
-        params(recurring_credits: T::Array[Metronome::Models::ContractCreateParams::RecurringCredit]).void
+        params(_: T::Array[Metronome::Models::ContractCreateParams::RecurringCredit]).returns(T::Array[Metronome::Models::ContractCreateParams::RecurringCredit])
       end
-      attr_writer :recurring_credits
+      def recurring_credits=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Metronome::Models::ContractCreateParams::ResellerRoyalty])) }
-      attr_reader :reseller_royalties
+      def reseller_royalties
+      end
 
       sig do
-        params(reseller_royalties: T::Array[Metronome::Models::ContractCreateParams::ResellerRoyalty]).void
+        params(_: T::Array[Metronome::Models::ContractCreateParams::ResellerRoyalty]).returns(T::Array[Metronome::Models::ContractCreateParams::ResellerRoyalty])
       end
-      attr_writer :reseller_royalties
+      def reseller_royalties=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :salesforce_opportunity_id
+      def salesforce_opportunity_id
+      end
 
-      sig { params(salesforce_opportunity_id: String).void }
-      attr_writer :salesforce_opportunity_id
+      sig { params(_: String).returns(String) }
+      def salesforce_opportunity_id=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Metronome::Models::ContractCreateParams::ScheduledCharge])) }
-      attr_reader :scheduled_charges
+      def scheduled_charges
+      end
 
       sig do
-        params(scheduled_charges: T::Array[Metronome::Models::ContractCreateParams::ScheduledCharge]).void
+        params(_: T::Array[Metronome::Models::ContractCreateParams::ScheduledCharge]).returns(T::Array[Metronome::Models::ContractCreateParams::ScheduledCharge])
       end
-      attr_writer :scheduled_charges
+      def scheduled_charges=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_reader :scheduled_charges_on_usage_invoices
+      def scheduled_charges_on_usage_invoices
+      end
 
-      sig { params(scheduled_charges_on_usage_invoices: Symbol).void }
-      attr_writer :scheduled_charges_on_usage_invoices
+      sig { params(_: Symbol).returns(Symbol) }
+      def scheduled_charges_on_usage_invoices=(_)
+      end
 
       sig { returns(T.nilable(Float)) }
-      attr_reader :total_contract_value
+      def total_contract_value
+      end
 
-      sig { params(total_contract_value: Float).void }
-      attr_writer :total_contract_value
+      sig { params(_: Float).returns(Float) }
+      def total_contract_value=(_)
+      end
 
       sig { returns(T.nilable(Metronome::Models::ContractCreateParams::Transition)) }
-      attr_reader :transition
-
-      sig { params(transition: Metronome::Models::ContractCreateParams::Transition).void }
-      attr_writer :transition
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :uniqueness_key
-
-      sig { params(uniqueness_key: String).void }
-      attr_writer :uniqueness_key
-
-      sig { returns(T.nilable(Metronome::Models::BaseUsageFilter)) }
-      attr_reader :usage_filter
-
-      sig { params(usage_filter: Metronome::Models::BaseUsageFilter).void }
-      attr_writer :usage_filter
-
-      sig { returns(T.nilable(Metronome::Models::ContractCreateParams::UsageStatementSchedule)) }
-      attr_reader :usage_statement_schedule
+      def transition
+      end
 
       sig do
-        params(usage_statement_schedule: Metronome::Models::ContractCreateParams::UsageStatementSchedule).void
+        params(_: Metronome::Models::ContractCreateParams::Transition).returns(Metronome::Models::ContractCreateParams::Transition)
       end
-      attr_writer :usage_statement_schedule
+      def transition=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def uniqueness_key
+      end
+
+      sig { params(_: String).returns(String) }
+      def uniqueness_key=(_)
+      end
+
+      sig { returns(T.nilable(Metronome::Models::BaseUsageFilter)) }
+      def usage_filter
+      end
+
+      sig { params(_: Metronome::Models::BaseUsageFilter).returns(Metronome::Models::BaseUsageFilter) }
+      def usage_filter=(_)
+      end
+
+      sig { returns(T.nilable(Metronome::Models::ContractCreateParams::UsageStatementSchedule)) }
+      def usage_statement_schedule
+      end
+
+      sig do
+        params(_: Metronome::Models::ContractCreateParams::UsageStatementSchedule).returns(Metronome::Models::ContractCreateParams::UsageStatementSchedule)
+      end
+      def usage_statement_schedule=(_)
+      end
 
       sig do
         params(
@@ -281,22 +349,28 @@ module Metronome
 
       class BillingProviderConfiguration < Metronome::BaseModel
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :billing_provider
+        def billing_provider
+        end
 
-        sig { params(billing_provider: Symbol).void }
-        attr_writer :billing_provider
+        sig { params(_: Symbol).returns(Symbol) }
+        def billing_provider=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :billing_provider_configuration_id
+        def billing_provider_configuration_id
+        end
 
-        sig { params(billing_provider_configuration_id: String).void }
-        attr_writer :billing_provider_configuration_id
+        sig { params(_: String).returns(String) }
+        def billing_provider_configuration_id=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :delivery_method
+        def delivery_method
+        end
 
-        sig { params(delivery_method: Symbol).void }
-        attr_writer :delivery_method
+        sig { params(_: Symbol).returns(Symbol) }
+        def delivery_method=(_)
+        end
 
         sig do
           params(
@@ -350,90 +424,128 @@ module Metronome
 
       class Commit < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :product_id
+        def product_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def product_id=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :type
+        def type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def type=(_)
+        end
 
         sig { returns(T.nilable(Metronome::Models::ContractCreateParams::Commit::AccessSchedule)) }
-        attr_reader :access_schedule
-
-        sig { params(access_schedule: Metronome::Models::ContractCreateParams::Commit::AccessSchedule).void }
-        attr_writer :access_schedule
-
-        sig { returns(T.nilable(Float)) }
-        attr_reader :amount
-
-        sig { params(amount: Float).void }
-        attr_writer :amount
-
-        sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :applicable_product_ids
-
-        sig { params(applicable_product_ids: T::Array[String]).void }
-        attr_writer :applicable_product_ids
-
-        sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :applicable_product_tags
-
-        sig { params(applicable_product_tags: T::Array[String]).void }
-        attr_writer :applicable_product_tags
-
-        sig { returns(T.nilable(T::Hash[Symbol, String])) }
-        attr_reader :custom_fields
-
-        sig { params(custom_fields: T::Hash[Symbol, String]).void }
-        attr_writer :custom_fields
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :description
-
-        sig { params(description: String).void }
-        attr_writer :description
-
-        sig { returns(T.nilable(Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule)) }
-        attr_reader :invoice_schedule
+        def access_schedule
+        end
 
         sig do
-          params(invoice_schedule: Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule).void
+          params(_: Metronome::Models::ContractCreateParams::Commit::AccessSchedule).returns(Metronome::Models::ContractCreateParams::Commit::AccessSchedule)
         end
-        attr_writer :invoice_schedule
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :name
-
-        sig { params(name: String).void }
-        attr_writer :name
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :netsuite_sales_order_id
-
-        sig { params(netsuite_sales_order_id: String).void }
-        attr_writer :netsuite_sales_order_id
+        def access_schedule=(_)
+        end
 
         sig { returns(T.nilable(Float)) }
-        attr_reader :priority
+        def amount
+        end
 
-        sig { params(priority: Float).void }
-        attr_writer :priority
+        sig { params(_: Float).returns(Float) }
+        def amount=(_)
+        end
+
+        sig { returns(T.nilable(T::Array[String])) }
+        def applicable_product_ids
+        end
+
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def applicable_product_ids=(_)
+        end
+
+        sig { returns(T.nilable(T::Array[String])) }
+        def applicable_product_tags
+        end
+
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def applicable_product_tags=(_)
+        end
+
+        sig { returns(T.nilable(T::Hash[Symbol, String])) }
+        def custom_fields
+        end
+
+        sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+        def custom_fields=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def description
+        end
+
+        sig { params(_: String).returns(String) }
+        def description=(_)
+        end
+
+        sig { returns(T.nilable(Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule)) }
+        def invoice_schedule
+        end
+
+        sig do
+          params(_: Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule).returns(Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule)
+        end
+        def invoice_schedule=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def netsuite_sales_order_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def netsuite_sales_order_id=(_)
+        end
+
+        sig { returns(T.nilable(Float)) }
+        def priority
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def priority=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :rate_type
+        def rate_type
+        end
 
-        sig { params(rate_type: Symbol).void }
-        attr_writer :rate_type
+        sig { params(_: Symbol).returns(Symbol) }
+        def rate_type=(_)
+        end
 
         sig { returns(T.nilable(Float)) }
-        attr_reader :rollover_fraction
+        def rollover_fraction
+        end
 
-        sig { params(rollover_fraction: Float).void }
-        attr_writer :rollover_fraction
+        sig { params(_: Float).returns(Float) }
+        def rollover_fraction=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :temporary_id
+        def temporary_id
+        end
 
-        sig { params(temporary_id: String).void }
-        attr_writer :temporary_id
+        sig { params(_: String).returns(String) }
+        def temporary_id=(_)
+        end
 
         sig do
           params(
@@ -512,13 +624,22 @@ module Metronome
           sig do
             returns(T::Array[Metronome::Models::ContractCreateParams::Commit::AccessSchedule::ScheduleItem])
           end
-          attr_accessor :schedule_items
+          def schedule_items
+          end
+
+          sig do
+            params(_: T::Array[Metronome::Models::ContractCreateParams::Commit::AccessSchedule::ScheduleItem]).returns(T::Array[Metronome::Models::ContractCreateParams::Commit::AccessSchedule::ScheduleItem])
+          end
+          def schedule_items=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_reader :credit_type_id
+          def credit_type_id
+          end
 
-          sig { params(credit_type_id: String).void }
-          attr_writer :credit_type_id
+          sig { params(_: String).returns(String) }
+          def credit_type_id=(_)
+          end
 
           sig do
             params(
@@ -541,13 +662,28 @@ module Metronome
 
           class ScheduleItem < Metronome::BaseModel
             sig { returns(Float) }
-            attr_accessor :amount
+            def amount
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def amount=(_)
+            end
 
             sig { returns(Time) }
-            attr_accessor :ending_before
+            def ending_before
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def ending_before=(_)
+            end
 
             sig { returns(Time) }
-            attr_accessor :starting_at
+            def starting_at
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def starting_at=(_)
+            end
 
             sig { params(amount: Float, ending_before: Time, starting_at: Time).void }
             def initialize(amount:, ending_before:, starting_at:)
@@ -561,34 +697,36 @@ module Metronome
 
         class InvoiceSchedule < Metronome::BaseModel
           sig { returns(T.nilable(String)) }
-          attr_reader :credit_type_id
+          def credit_type_id
+          end
 
-          sig { params(credit_type_id: String).void }
-          attr_writer :credit_type_id
+          sig { params(_: String).returns(String) }
+          def credit_type_id=(_)
+          end
 
           sig do
             returns(T.nilable(Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule))
           end
-          attr_reader :recurring_schedule
+          def recurring_schedule
+          end
 
           sig do
-            params(
-              recurring_schedule: Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule
-            ).void
+            params(_: Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule).returns(Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule)
           end
-          attr_writer :recurring_schedule
+          def recurring_schedule=(_)
+          end
 
           sig do
             returns(T.nilable(T::Array[Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::ScheduleItem]))
           end
-          attr_reader :schedule_items
+          def schedule_items
+          end
 
           sig do
-            params(
-              schedule_items: T::Array[Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::ScheduleItem]
-            ).void
+            params(_: T::Array[Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::ScheduleItem]).returns(T::Array[Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::ScheduleItem])
           end
-          attr_writer :schedule_items
+          def schedule_items=(_)
+          end
 
           sig do
             params(
@@ -614,34 +752,60 @@ module Metronome
 
           class RecurringSchedule < Metronome::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :amount_distribution
+            def amount_distribution
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def amount_distribution=(_)
+            end
 
             sig { returns(Time) }
-            attr_accessor :ending_before
+            def ending_before
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def ending_before=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :frequency
+            def frequency
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def frequency=(_)
+            end
 
             sig { returns(Time) }
-            attr_accessor :starting_at
+            def starting_at
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def starting_at=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_reader :amount
+            def amount
+            end
 
-            sig { params(amount: Float).void }
-            attr_writer :amount
-
-            sig { returns(T.nilable(Float)) }
-            attr_reader :quantity
-
-            sig { params(quantity: Float).void }
-            attr_writer :quantity
+            sig { params(_: Float).returns(Float) }
+            def amount=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_reader :unit_price
+            def quantity
+            end
 
-            sig { params(unit_price: Float).void }
-            attr_writer :unit_price
+            sig { params(_: Float).returns(Float) }
+            def quantity=(_)
+            end
+
+            sig { returns(T.nilable(Float)) }
+            def unit_price
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def unit_price=(_)
+            end
 
             sig do
               params(
@@ -709,25 +873,36 @@ module Metronome
 
           class ScheduleItem < Metronome::BaseModel
             sig { returns(Time) }
-            attr_accessor :timestamp
+            def timestamp
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def timestamp=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_reader :amount
+            def amount
+            end
 
-            sig { params(amount: Float).void }
-            attr_writer :amount
-
-            sig { returns(T.nilable(Float)) }
-            attr_reader :quantity
-
-            sig { params(quantity: Float).void }
-            attr_writer :quantity
+            sig { params(_: Float).returns(Float) }
+            def amount=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_reader :unit_price
+            def quantity
+            end
 
-            sig { params(unit_price: Float).void }
-            attr_writer :unit_price
+            sig { params(_: Float).returns(Float) }
+            def quantity=(_)
+            end
+
+            sig { returns(T.nilable(Float)) }
+            def unit_price
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def unit_price=(_)
+            end
 
             sig { params(timestamp: Time, amount: Float, quantity: Float, unit_price: Float).void }
             def initialize(timestamp:, amount: nil, quantity: nil, unit_price: nil)
@@ -753,58 +928,86 @@ module Metronome
 
       class Credit < Metronome::BaseModel
         sig { returns(Metronome::Models::ContractCreateParams::Credit::AccessSchedule) }
-        attr_accessor :access_schedule
+        def access_schedule
+        end
+
+        sig do
+          params(_: Metronome::Models::ContractCreateParams::Credit::AccessSchedule).returns(Metronome::Models::ContractCreateParams::Credit::AccessSchedule)
+        end
+        def access_schedule=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :product_id
+        def product_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def product_id=(_)
+        end
 
         sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :applicable_product_ids
+        def applicable_product_ids
+        end
 
-        sig { params(applicable_product_ids: T::Array[String]).void }
-        attr_writer :applicable_product_ids
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def applicable_product_ids=(_)
+        end
 
         sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :applicable_product_tags
+        def applicable_product_tags
+        end
 
-        sig { params(applicable_product_tags: T::Array[String]).void }
-        attr_writer :applicable_product_tags
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def applicable_product_tags=(_)
+        end
 
         sig { returns(T.nilable(T::Hash[Symbol, String])) }
-        attr_reader :custom_fields
+        def custom_fields
+        end
 
-        sig { params(custom_fields: T::Hash[Symbol, String]).void }
-        attr_writer :custom_fields
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :description
-
-        sig { params(description: String).void }
-        attr_writer :description
+        sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+        def custom_fields=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :name
+        def description
+        end
 
-        sig { params(name: String).void }
-        attr_writer :name
+        sig { params(_: String).returns(String) }
+        def description=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :netsuite_sales_order_id
+        def name
+        end
 
-        sig { params(netsuite_sales_order_id: String).void }
-        attr_writer :netsuite_sales_order_id
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def netsuite_sales_order_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def netsuite_sales_order_id=(_)
+        end
 
         sig { returns(T.nilable(Float)) }
-        attr_reader :priority
+        def priority
+        end
 
-        sig { params(priority: Float).void }
-        attr_writer :priority
+        sig { params(_: Float).returns(Float) }
+        def priority=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :rate_type
+        def rate_type
+        end
 
-        sig { params(rate_type: Symbol).void }
-        attr_writer :rate_type
+        sig { params(_: Symbol).returns(Symbol) }
+        def rate_type=(_)
+        end
 
         sig do
           params(
@@ -857,13 +1060,22 @@ module Metronome
           sig do
             returns(T::Array[Metronome::Models::ContractCreateParams::Credit::AccessSchedule::ScheduleItem])
           end
-          attr_accessor :schedule_items
+          def schedule_items
+          end
+
+          sig do
+            params(_: T::Array[Metronome::Models::ContractCreateParams::Credit::AccessSchedule::ScheduleItem]).returns(T::Array[Metronome::Models::ContractCreateParams::Credit::AccessSchedule::ScheduleItem])
+          end
+          def schedule_items=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_reader :credit_type_id
+          def credit_type_id
+          end
 
-          sig { params(credit_type_id: String).void }
-          attr_writer :credit_type_id
+          sig { params(_: String).returns(String) }
+          def credit_type_id=(_)
+          end
 
           sig do
             params(
@@ -886,13 +1098,28 @@ module Metronome
 
           class ScheduleItem < Metronome::BaseModel
             sig { returns(Float) }
-            attr_accessor :amount
+            def amount
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def amount=(_)
+            end
 
             sig { returns(Time) }
-            attr_accessor :ending_before
+            def ending_before
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def ending_before=(_)
+            end
 
             sig { returns(Time) }
-            attr_accessor :starting_at
+            def starting_at
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def starting_at=(_)
+            end
 
             sig { params(amount: Float, ending_before: Time, starting_at: Time).void }
             def initialize(amount:, ending_before:, starting_at:)
@@ -918,28 +1145,46 @@ module Metronome
 
       class Discount < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :product_id
+        def product_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def product_id=(_)
+        end
 
         sig { returns(Metronome::Models::ContractCreateParams::Discount::Schedule) }
-        attr_accessor :schedule
+        def schedule
+        end
+
+        sig do
+          params(_: Metronome::Models::ContractCreateParams::Discount::Schedule).returns(Metronome::Models::ContractCreateParams::Discount::Schedule)
+        end
+        def schedule=(_)
+        end
 
         sig { returns(T.nilable(T::Hash[Symbol, String])) }
-        attr_reader :custom_fields
+        def custom_fields
+        end
 
-        sig { params(custom_fields: T::Hash[Symbol, String]).void }
-        attr_writer :custom_fields
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :name
-
-        sig { params(name: String).void }
-        attr_writer :name
+        sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+        def custom_fields=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :netsuite_sales_order_id
+        def name
+        end
 
-        sig { params(netsuite_sales_order_id: String).void }
-        attr_writer :netsuite_sales_order_id
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def netsuite_sales_order_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def netsuite_sales_order_id=(_)
+        end
 
         sig do
           params(
@@ -969,32 +1214,36 @@ module Metronome
 
         class Schedule < Metronome::BaseModel
           sig { returns(T.nilable(String)) }
-          attr_reader :credit_type_id
+          def credit_type_id
+          end
 
-          sig { params(credit_type_id: String).void }
-          attr_writer :credit_type_id
+          sig { params(_: String).returns(String) }
+          def credit_type_id=(_)
+          end
 
           sig do
             returns(T.nilable(Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule))
           end
-          attr_reader :recurring_schedule
+          def recurring_schedule
+          end
 
           sig do
-            params(recurring_schedule: Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule).void
+            params(_: Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule).returns(Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule)
           end
-          attr_writer :recurring_schedule
+          def recurring_schedule=(_)
+          end
 
           sig do
             returns(T.nilable(T::Array[Metronome::Models::ContractCreateParams::Discount::Schedule::ScheduleItem]))
           end
-          attr_reader :schedule_items
+          def schedule_items
+          end
 
           sig do
-            params(
-              schedule_items: T::Array[Metronome::Models::ContractCreateParams::Discount::Schedule::ScheduleItem]
-            ).void
+            params(_: T::Array[Metronome::Models::ContractCreateParams::Discount::Schedule::ScheduleItem]).returns(T::Array[Metronome::Models::ContractCreateParams::Discount::Schedule::ScheduleItem])
           end
-          attr_writer :schedule_items
+          def schedule_items=(_)
+          end
 
           sig do
             params(
@@ -1020,34 +1269,60 @@ module Metronome
 
           class RecurringSchedule < Metronome::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :amount_distribution
+            def amount_distribution
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def amount_distribution=(_)
+            end
 
             sig { returns(Time) }
-            attr_accessor :ending_before
+            def ending_before
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def ending_before=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :frequency
+            def frequency
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def frequency=(_)
+            end
 
             sig { returns(Time) }
-            attr_accessor :starting_at
+            def starting_at
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def starting_at=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_reader :amount
+            def amount
+            end
 
-            sig { params(amount: Float).void }
-            attr_writer :amount
-
-            sig { returns(T.nilable(Float)) }
-            attr_reader :quantity
-
-            sig { params(quantity: Float).void }
-            attr_writer :quantity
+            sig { params(_: Float).returns(Float) }
+            def amount=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_reader :unit_price
+            def quantity
+            end
 
-            sig { params(unit_price: Float).void }
-            attr_writer :unit_price
+            sig { params(_: Float).returns(Float) }
+            def quantity=(_)
+            end
+
+            sig { returns(T.nilable(Float)) }
+            def unit_price
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def unit_price=(_)
+            end
 
             sig do
               params(
@@ -1115,25 +1390,36 @@ module Metronome
 
           class ScheduleItem < Metronome::BaseModel
             sig { returns(Time) }
-            attr_accessor :timestamp
+            def timestamp
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def timestamp=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_reader :amount
+            def amount
+            end
 
-            sig { params(amount: Float).void }
-            attr_writer :amount
-
-            sig { returns(T.nilable(Float)) }
-            attr_reader :quantity
-
-            sig { params(quantity: Float).void }
-            attr_writer :quantity
+            sig { params(_: Float).returns(Float) }
+            def amount=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_reader :unit_price
+            def quantity
+            end
 
-            sig { params(unit_price: Float).void }
-            attr_writer :unit_price
+            sig { params(_: Float).returns(Float) }
+            def quantity=(_)
+            end
+
+            sig { returns(T.nilable(Float)) }
+            def unit_price
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def unit_price=(_)
+            end
 
             sig { params(timestamp: Time, amount: Float, quantity: Float, unit_price: Float).void }
             def initialize(timestamp:, amount: nil, quantity: nil, unit_price: nil)
@@ -1159,85 +1445,116 @@ module Metronome
 
       class Override < Metronome::BaseModel
         sig { returns(Time) }
-        attr_accessor :starting_at
+        def starting_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def starting_at=(_)
+        end
 
         sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :applicable_product_tags
+        def applicable_product_tags
+        end
 
-        sig { params(applicable_product_tags: T::Array[String]).void }
-        attr_writer :applicable_product_tags
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def applicable_product_tags=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :ending_before
+        def ending_before
+        end
 
-        sig { params(ending_before: Time).void }
-        attr_writer :ending_before
-
-        sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :entitled
-
-        sig { params(entitled: T::Boolean).void }
-        attr_writer :entitled
+        sig { params(_: Time).returns(Time) }
+        def ending_before=(_)
+        end
 
         sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :is_commit_specific
+        def entitled
+        end
 
-        sig { params(is_commit_specific: T::Boolean).void }
-        attr_writer :is_commit_specific
+        sig { params(_: T::Boolean).returns(T::Boolean) }
+        def entitled=(_)
+        end
+
+        sig { returns(T.nilable(T::Boolean)) }
+        def is_commit_specific
+        end
+
+        sig { params(_: T::Boolean).returns(T::Boolean) }
+        def is_commit_specific=(_)
+        end
 
         sig { returns(T.nilable(Float)) }
-        attr_reader :multiplier
+        def multiplier
+        end
 
-        sig { params(multiplier: Float).void }
-        attr_writer :multiplier
+        sig { params(_: Float).returns(Float) }
+        def multiplier=(_)
+        end
 
         sig do
           returns(T.nilable(T::Array[Metronome::Models::ContractCreateParams::Override::OverrideSpecifier]))
         end
-        attr_reader :override_specifiers
+        def override_specifiers
+        end
 
         sig do
-          params(
-            override_specifiers: T::Array[Metronome::Models::ContractCreateParams::Override::OverrideSpecifier]
-          ).void
+          params(_: T::Array[Metronome::Models::ContractCreateParams::Override::OverrideSpecifier]).returns(T::Array[Metronome::Models::ContractCreateParams::Override::OverrideSpecifier])
         end
-        attr_writer :override_specifiers
+        def override_specifiers=(_)
+        end
 
         sig { returns(T.nilable(Metronome::Models::ContractCreateParams::Override::OverwriteRate)) }
-        attr_reader :overwrite_rate
+        def overwrite_rate
+        end
 
-        sig { params(overwrite_rate: Metronome::Models::ContractCreateParams::Override::OverwriteRate).void }
-        attr_writer :overwrite_rate
+        sig do
+          params(_: Metronome::Models::ContractCreateParams::Override::OverwriteRate).returns(Metronome::Models::ContractCreateParams::Override::OverwriteRate)
+        end
+        def overwrite_rate=(_)
+        end
 
         sig { returns(T.nilable(Float)) }
-        attr_reader :priority
+        def priority
+        end
 
-        sig { params(priority: Float).void }
-        attr_writer :priority
+        sig { params(_: Float).returns(Float) }
+        def priority=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :product_id
+        def product_id
+        end
 
-        sig { params(product_id: String).void }
-        attr_writer :product_id
+        sig { params(_: String).returns(String) }
+        def product_id=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :target
+        def target
+        end
 
-        sig { params(target: Symbol).void }
-        attr_writer :target
+        sig { params(_: Symbol).returns(Symbol) }
+        def target=(_)
+        end
 
         sig { returns(T.nilable(T::Array[Metronome::Models::ContractCreateParams::Override::Tier])) }
-        attr_reader :tiers
+        def tiers
+        end
 
-        sig { params(tiers: T::Array[Metronome::Models::ContractCreateParams::Override::Tier]).void }
-        attr_writer :tiers
+        sig do
+          params(_: T::Array[Metronome::Models::ContractCreateParams::Override::Tier]).returns(T::Array[Metronome::Models::ContractCreateParams::Override::Tier])
+        end
+        def tiers=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :type
+        def type
+        end
 
-        sig { params(type: Symbol).void }
-        attr_writer :type
+        sig { params(_: Symbol).returns(Symbol) }
+        def type=(_)
+        end
 
         sig do
           params(
@@ -1297,46 +1614,60 @@ module Metronome
 
         class OverrideSpecifier < Metronome::BaseModel
           sig { returns(T.nilable(T::Array[String])) }
-          attr_reader :commit_ids
+          def commit_ids
+          end
 
-          sig { params(commit_ids: T::Array[String]).void }
-          attr_writer :commit_ids
-
-          sig { returns(T.nilable(T::Hash[Symbol, String])) }
-          attr_reader :presentation_group_values
-
-          sig { params(presentation_group_values: T::Hash[Symbol, String]).void }
-          attr_writer :presentation_group_values
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def commit_ids=(_)
+          end
 
           sig { returns(T.nilable(T::Hash[Symbol, String])) }
-          attr_reader :pricing_group_values
+          def presentation_group_values
+          end
 
-          sig { params(pricing_group_values: T::Hash[Symbol, String]).void }
-          attr_writer :pricing_group_values
+          sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+          def presentation_group_values=(_)
+          end
+
+          sig { returns(T.nilable(T::Hash[Symbol, String])) }
+          def pricing_group_values
+          end
+
+          sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+          def pricing_group_values=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_reader :product_id
+          def product_id
+          end
 
-          sig { params(product_id: String).void }
-          attr_writer :product_id
-
-          sig { returns(T.nilable(T::Array[String])) }
-          attr_reader :product_tags
-
-          sig { params(product_tags: T::Array[String]).void }
-          attr_writer :product_tags
+          sig { params(_: String).returns(String) }
+          def product_id=(_)
+          end
 
           sig { returns(T.nilable(T::Array[String])) }
-          attr_reader :recurring_commit_ids
+          def product_tags
+          end
 
-          sig { params(recurring_commit_ids: T::Array[String]).void }
-          attr_writer :recurring_commit_ids
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def product_tags=(_)
+          end
 
           sig { returns(T.nilable(T::Array[String])) }
-          attr_reader :recurring_credit_ids
+          def recurring_commit_ids
+          end
 
-          sig { params(recurring_credit_ids: T::Array[String]).void }
-          attr_writer :recurring_credit_ids
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def recurring_commit_ids=(_)
+          end
+
+          sig { returns(T.nilable(T::Array[String])) }
+          def recurring_credit_ids
+          end
+
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def recurring_credit_ids=(_)
+          end
 
           sig do
             params(
@@ -1379,43 +1710,60 @@ module Metronome
 
         class OverwriteRate < Metronome::BaseModel
           sig { returns(Symbol) }
-          attr_accessor :rate_type
+          def rate_type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def rate_type=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_reader :credit_type_id
+          def credit_type_id
+          end
 
-          sig { params(credit_type_id: String).void }
-          attr_writer :credit_type_id
+          sig { params(_: String).returns(String) }
+          def credit_type_id=(_)
+          end
 
           sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
-          attr_reader :custom_rate
+          def custom_rate
+          end
 
-          sig { params(custom_rate: T::Hash[Symbol, T.anything]).void }
-          attr_writer :custom_rate
+          sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+          def custom_rate=(_)
+          end
 
           sig { returns(T.nilable(T::Boolean)) }
-          attr_reader :is_prorated
+          def is_prorated
+          end
 
-          sig { params(is_prorated: T::Boolean).void }
-          attr_writer :is_prorated
-
-          sig { returns(T.nilable(Float)) }
-          attr_reader :price
-
-          sig { params(price: Float).void }
-          attr_writer :price
+          sig { params(_: T::Boolean).returns(T::Boolean) }
+          def is_prorated=(_)
+          end
 
           sig { returns(T.nilable(Float)) }
-          attr_reader :quantity
+          def price
+          end
 
-          sig { params(quantity: Float).void }
-          attr_writer :quantity
+          sig { params(_: Float).returns(Float) }
+          def price=(_)
+          end
+
+          sig { returns(T.nilable(Float)) }
+          def quantity
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def quantity=(_)
+          end
 
           sig { returns(T.nilable(T::Array[Metronome::Models::Tier])) }
-          attr_reader :tiers
+          def tiers
+          end
 
-          sig { params(tiers: T::Array[Metronome::Models::Tier]).void }
-          attr_writer :tiers
+          sig { params(_: T::Array[Metronome::Models::Tier]).returns(T::Array[Metronome::Models::Tier]) }
+          def tiers=(_)
+          end
 
           sig do
             params(
@@ -1483,13 +1831,20 @@ module Metronome
 
         class Tier < Metronome::BaseModel
           sig { returns(Float) }
-          attr_accessor :multiplier
+          def multiplier
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def multiplier=(_)
+          end
 
           sig { returns(T.nilable(Float)) }
-          attr_reader :size
+          def size
+          end
 
-          sig { params(size: Float).void }
-          attr_writer :size
+          sig { params(_: Float).returns(Float) }
+          def size=(_)
+          end
 
           sig { params(multiplier: Float, size: Float).void }
           def initialize(multiplier:, size: nil)
@@ -1515,34 +1870,60 @@ module Metronome
 
       class ProfessionalService < Metronome::BaseModel
         sig { returns(Float) }
-        attr_accessor :max_amount
+        def max_amount
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def max_amount=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :product_id
+        def product_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def product_id=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :quantity
+        def quantity
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def quantity=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :unit_price
+        def unit_price
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def unit_price=(_)
+        end
 
         sig { returns(T.nilable(T::Hash[Symbol, String])) }
-        attr_reader :custom_fields
+        def custom_fields
+        end
 
-        sig { params(custom_fields: T::Hash[Symbol, String]).void }
-        attr_writer :custom_fields
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :description
-
-        sig { params(description: String).void }
-        attr_writer :description
+        sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+        def custom_fields=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :netsuite_sales_order_id
+        def description
+        end
 
-        sig { params(netsuite_sales_order_id: String).void }
-        attr_writer :netsuite_sales_order_id
+        sig { params(_: String).returns(String) }
+        def description=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def netsuite_sales_order_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def netsuite_sales_order_id=(_)
+        end
 
         sig do
           params(
@@ -1585,81 +1966,130 @@ module Metronome
 
       class RecurringCommit < Metronome::BaseModel
         sig { returns(Metronome::Models::ContractCreateParams::RecurringCommit::AccessAmount) }
-        attr_accessor :access_amount
-
-        sig { returns(Metronome::Models::ContractCreateParams::RecurringCommit::CommitDuration) }
-        attr_accessor :commit_duration
-
-        sig { returns(Float) }
-        attr_accessor :priority
-
-        sig { returns(String) }
-        attr_accessor :product_id
-
-        sig { returns(Time) }
-        attr_accessor :starting_at
-
-        sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :applicable_product_ids
-
-        sig { params(applicable_product_ids: T::Array[String]).void }
-        attr_writer :applicable_product_ids
-
-        sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :applicable_product_tags
-
-        sig { params(applicable_product_tags: T::Array[String]).void }
-        attr_writer :applicable_product_tags
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :description
-
-        sig { params(description: String).void }
-        attr_writer :description
-
-        sig { returns(T.nilable(Time)) }
-        attr_reader :ending_before
-
-        sig { params(ending_before: Time).void }
-        attr_writer :ending_before
-
-        sig { returns(T.nilable(Metronome::Models::ContractCreateParams::RecurringCommit::InvoiceAmount)) }
-        attr_reader :invoice_amount
+        def access_amount
+        end
 
         sig do
-          params(invoice_amount: Metronome::Models::ContractCreateParams::RecurringCommit::InvoiceAmount).void
+          params(_: Metronome::Models::ContractCreateParams::RecurringCommit::AccessAmount).returns(Metronome::Models::ContractCreateParams::RecurringCommit::AccessAmount)
         end
-        attr_writer :invoice_amount
+        def access_amount=(_)
+        end
+
+        sig { returns(Metronome::Models::ContractCreateParams::RecurringCommit::CommitDuration) }
+        def commit_duration
+        end
+
+        sig do
+          params(_: Metronome::Models::ContractCreateParams::RecurringCommit::CommitDuration).returns(Metronome::Models::ContractCreateParams::RecurringCommit::CommitDuration)
+        end
+        def commit_duration=(_)
+        end
+
+        sig { returns(Float) }
+        def priority
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def priority=(_)
+        end
+
+        sig { returns(String) }
+        def product_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def product_id=(_)
+        end
+
+        sig { returns(Time) }
+        def starting_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def starting_at=(_)
+        end
+
+        sig { returns(T.nilable(T::Array[String])) }
+        def applicable_product_ids
+        end
+
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def applicable_product_ids=(_)
+        end
+
+        sig { returns(T.nilable(T::Array[String])) }
+        def applicable_product_tags
+        end
+
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def applicable_product_tags=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :name
+        def description
+        end
 
-        sig { params(name: String).void }
-        attr_writer :name
+        sig { params(_: String).returns(String) }
+        def description=(_)
+        end
+
+        sig { returns(T.nilable(Time)) }
+        def ending_before
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def ending_before=(_)
+        end
+
+        sig { returns(T.nilable(Metronome::Models::ContractCreateParams::RecurringCommit::InvoiceAmount)) }
+        def invoice_amount
+        end
+
+        sig do
+          params(_: Metronome::Models::ContractCreateParams::RecurringCommit::InvoiceAmount).returns(Metronome::Models::ContractCreateParams::RecurringCommit::InvoiceAmount)
+        end
+        def invoice_amount=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :netsuite_sales_order_id
+        def name
+        end
 
-        sig { params(netsuite_sales_order_id: String).void }
-        attr_writer :netsuite_sales_order_id
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def netsuite_sales_order_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def netsuite_sales_order_id=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :rate_type
+        def rate_type
+        end
 
-        sig { params(rate_type: Symbol).void }
-        attr_writer :rate_type
+        sig { params(_: Symbol).returns(Symbol) }
+        def rate_type=(_)
+        end
 
         sig { returns(T.nilable(Float)) }
-        attr_reader :rollover_fraction
+        def rollover_fraction
+        end
 
-        sig { params(rollover_fraction: Float).void }
-        attr_writer :rollover_fraction
+        sig { params(_: Float).returns(Float) }
+        def rollover_fraction=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :temporary_id
+        def temporary_id
+        end
 
-        sig { params(temporary_id: String).void }
-        attr_writer :temporary_id
+        sig { params(_: String).returns(String) }
+        def temporary_id=(_)
+        end
 
         sig do
           params(
@@ -1725,13 +2155,28 @@ module Metronome
 
         class AccessAmount < Metronome::BaseModel
           sig { returns(String) }
-          attr_accessor :credit_type_id
+          def credit_type_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def credit_type_id=(_)
+          end
 
           sig { returns(Float) }
-          attr_accessor :quantity
+          def quantity
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def quantity=(_)
+          end
 
           sig { returns(Float) }
-          attr_accessor :unit_price
+          def unit_price
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def unit_price=(_)
+          end
 
           sig { params(credit_type_id: String, quantity: Float, unit_price: Float).void }
           def initialize(credit_type_id:, quantity:, unit_price:)
@@ -1744,10 +2189,20 @@ module Metronome
 
         class CommitDuration < Metronome::BaseModel
           sig { returns(Symbol) }
-          attr_accessor :unit
+          def unit
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def unit=(_)
+          end
 
           sig { returns(Float) }
-          attr_accessor :value
+          def value
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def value=(_)
+          end
 
           sig { params(unit: Symbol, value: Float).void }
           def initialize(unit:, value:)
@@ -1770,13 +2225,28 @@ module Metronome
 
         class InvoiceAmount < Metronome::BaseModel
           sig { returns(String) }
-          attr_accessor :credit_type_id
+          def credit_type_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def credit_type_id=(_)
+          end
 
           sig { returns(Float) }
-          attr_accessor :quantity
+          def quantity
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def quantity=(_)
+          end
 
           sig { returns(Float) }
-          attr_accessor :unit_price
+          def unit_price
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def unit_price=(_)
+          end
 
           sig { params(credit_type_id: String, quantity: Float, unit_price: Float).void }
           def initialize(credit_type_id:, quantity:, unit_price:)
@@ -1801,73 +2271,120 @@ module Metronome
 
       class RecurringCredit < Metronome::BaseModel
         sig { returns(Metronome::Models::ContractCreateParams::RecurringCredit::AccessAmount) }
-        attr_accessor :access_amount
+        def access_amount
+        end
+
+        sig do
+          params(_: Metronome::Models::ContractCreateParams::RecurringCredit::AccessAmount).returns(Metronome::Models::ContractCreateParams::RecurringCredit::AccessAmount)
+        end
+        def access_amount=(_)
+        end
 
         sig { returns(Metronome::Models::ContractCreateParams::RecurringCredit::CommitDuration) }
-        attr_accessor :commit_duration
+        def commit_duration
+        end
+
+        sig do
+          params(_: Metronome::Models::ContractCreateParams::RecurringCredit::CommitDuration).returns(Metronome::Models::ContractCreateParams::RecurringCredit::CommitDuration)
+        end
+        def commit_duration=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :priority
+        def priority
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def priority=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :product_id
+        def product_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def product_id=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :starting_at
+        def starting_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def starting_at=(_)
+        end
 
         sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :applicable_product_ids
+        def applicable_product_ids
+        end
 
-        sig { params(applicable_product_ids: T::Array[String]).void }
-        attr_writer :applicable_product_ids
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def applicable_product_ids=(_)
+        end
 
         sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :applicable_product_tags
+        def applicable_product_tags
+        end
 
-        sig { params(applicable_product_tags: T::Array[String]).void }
-        attr_writer :applicable_product_tags
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def applicable_product_tags=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :description
+        def description
+        end
 
-        sig { params(description: String).void }
-        attr_writer :description
+        sig { params(_: String).returns(String) }
+        def description=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :ending_before
+        def ending_before
+        end
 
-        sig { params(ending_before: Time).void }
-        attr_writer :ending_before
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :name
-
-        sig { params(name: String).void }
-        attr_writer :name
+        sig { params(_: Time).returns(Time) }
+        def ending_before=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :netsuite_sales_order_id
+        def name
+        end
 
-        sig { params(netsuite_sales_order_id: String).void }
-        attr_writer :netsuite_sales_order_id
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def netsuite_sales_order_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def netsuite_sales_order_id=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :rate_type
+        def rate_type
+        end
 
-        sig { params(rate_type: Symbol).void }
-        attr_writer :rate_type
+        sig { params(_: Symbol).returns(Symbol) }
+        def rate_type=(_)
+        end
 
         sig { returns(T.nilable(Float)) }
-        attr_reader :rollover_fraction
+        def rollover_fraction
+        end
 
-        sig { params(rollover_fraction: Float).void }
-        attr_writer :rollover_fraction
+        sig { params(_: Float).returns(Float) }
+        def rollover_fraction=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :temporary_id
+        def temporary_id
+        end
 
-        sig { params(temporary_id: String).void }
-        attr_writer :temporary_id
+        sig { params(_: String).returns(String) }
+        def temporary_id=(_)
+        end
 
         sig do
           params(
@@ -1930,13 +2447,28 @@ module Metronome
 
         class AccessAmount < Metronome::BaseModel
           sig { returns(String) }
-          attr_accessor :credit_type_id
+          def credit_type_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def credit_type_id=(_)
+          end
 
           sig { returns(Float) }
-          attr_accessor :quantity
+          def quantity
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def quantity=(_)
+          end
 
           sig { returns(Float) }
-          attr_accessor :unit_price
+          def unit_price
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def unit_price=(_)
+          end
 
           sig { params(credit_type_id: String, quantity: Float, unit_price: Float).void }
           def initialize(credit_type_id:, quantity:, unit_price:)
@@ -1949,10 +2481,20 @@ module Metronome
 
         class CommitDuration < Metronome::BaseModel
           sig { returns(Symbol) }
-          attr_accessor :unit
+          def unit
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def unit=(_)
+          end
 
           sig { returns(Float) }
-          attr_accessor :value
+          def value
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def value=(_)
+          end
 
           sig { params(unit: Symbol, value: Float).void }
           def initialize(unit:, value:)
@@ -1987,52 +2529,88 @@ module Metronome
 
       class ResellerRoyalty < Metronome::BaseModel
         sig { returns(Float) }
-        attr_accessor :fraction
+        def fraction
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def fraction=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :netsuite_reseller_id
+        def netsuite_reseller_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def netsuite_reseller_id=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :reseller_type
+        def reseller_type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def reseller_type=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :starting_at
+        def starting_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def starting_at=(_)
+        end
 
         sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :applicable_product_ids
+        def applicable_product_ids
+        end
 
-        sig { params(applicable_product_ids: T::Array[String]).void }
-        attr_writer :applicable_product_ids
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def applicable_product_ids=(_)
+        end
 
         sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :applicable_product_tags
+        def applicable_product_tags
+        end
 
-        sig { params(applicable_product_tags: T::Array[String]).void }
-        attr_writer :applicable_product_tags
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def applicable_product_tags=(_)
+        end
 
         sig { returns(T.nilable(Metronome::Models::ContractCreateParams::ResellerRoyalty::AwsOptions)) }
-        attr_reader :aws_options
+        def aws_options
+        end
 
-        sig { params(aws_options: Metronome::Models::ContractCreateParams::ResellerRoyalty::AwsOptions).void }
-        attr_writer :aws_options
+        sig do
+          params(_: Metronome::Models::ContractCreateParams::ResellerRoyalty::AwsOptions).returns(Metronome::Models::ContractCreateParams::ResellerRoyalty::AwsOptions)
+        end
+        def aws_options=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :ending_before
+        def ending_before
+        end
 
-        sig { params(ending_before: Time).void }
-        attr_writer :ending_before
+        sig { params(_: Time).returns(Time) }
+        def ending_before=(_)
+        end
 
         sig { returns(T.nilable(Metronome::Models::ContractCreateParams::ResellerRoyalty::GcpOptions)) }
-        attr_reader :gcp_options
+        def gcp_options
+        end
 
-        sig { params(gcp_options: Metronome::Models::ContractCreateParams::ResellerRoyalty::GcpOptions).void }
-        attr_writer :gcp_options
+        sig do
+          params(_: Metronome::Models::ContractCreateParams::ResellerRoyalty::GcpOptions).returns(Metronome::Models::ContractCreateParams::ResellerRoyalty::GcpOptions)
+        end
+        def gcp_options=(_)
+        end
 
         sig { returns(T.nilable(Float)) }
-        attr_reader :reseller_contract_value
+        def reseller_contract_value
+        end
 
-        sig { params(reseller_contract_value: Float).void }
-        attr_writer :reseller_contract_value
+        sig { params(_: Float).returns(Float) }
+        def reseller_contract_value=(_)
+        end
 
         sig do
           params(
@@ -2096,22 +2674,28 @@ module Metronome
 
         class AwsOptions < Metronome::BaseModel
           sig { returns(T.nilable(String)) }
-          attr_reader :aws_account_number
+          def aws_account_number
+          end
 
-          sig { params(aws_account_number: String).void }
-          attr_writer :aws_account_number
-
-          sig { returns(T.nilable(String)) }
-          attr_reader :aws_offer_id
-
-          sig { params(aws_offer_id: String).void }
-          attr_writer :aws_offer_id
+          sig { params(_: String).returns(String) }
+          def aws_account_number=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_reader :aws_payer_reference_id
+          def aws_offer_id
+          end
 
-          sig { params(aws_payer_reference_id: String).void }
-          attr_writer :aws_payer_reference_id
+          sig { params(_: String).returns(String) }
+          def aws_offer_id=(_)
+          end
+
+          sig { returns(T.nilable(String)) }
+          def aws_payer_reference_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def aws_payer_reference_id=(_)
+          end
 
           sig do
             params(aws_account_number: String, aws_offer_id: String, aws_payer_reference_id: String).void
@@ -2134,16 +2718,20 @@ module Metronome
 
         class GcpOptions < Metronome::BaseModel
           sig { returns(T.nilable(String)) }
-          attr_reader :gcp_account_id
+          def gcp_account_id
+          end
 
-          sig { params(gcp_account_id: String).void }
-          attr_writer :gcp_account_id
+          sig { params(_: String).returns(String) }
+          def gcp_account_id=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_reader :gcp_offer_id
+          def gcp_offer_id
+          end
 
-          sig { params(gcp_offer_id: String).void }
-          attr_writer :gcp_offer_id
+          sig { params(_: String).returns(String) }
+          def gcp_offer_id=(_)
+          end
 
           sig { params(gcp_account_id: String, gcp_offer_id: String).void }
           def initialize(gcp_account_id: nil, gcp_offer_id: nil)
@@ -2157,22 +2745,38 @@ module Metronome
 
       class ScheduledCharge < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :product_id
+        def product_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def product_id=(_)
+        end
 
         sig { returns(Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule) }
-        attr_accessor :schedule
+        def schedule
+        end
+
+        sig do
+          params(_: Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule).returns(Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule)
+        end
+        def schedule=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :name
+        def name
+        end
 
-        sig { params(name: String).void }
-        attr_writer :name
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :netsuite_sales_order_id
+        def netsuite_sales_order_id
+        end
 
-        sig { params(netsuite_sales_order_id: String).void }
-        attr_writer :netsuite_sales_order_id
+        sig { params(_: String).returns(String) }
+        def netsuite_sales_order_id=(_)
+        end
 
         sig do
           params(
@@ -2200,34 +2804,36 @@ module Metronome
 
         class Schedule < Metronome::BaseModel
           sig { returns(T.nilable(String)) }
-          attr_reader :credit_type_id
+          def credit_type_id
+          end
 
-          sig { params(credit_type_id: String).void }
-          attr_writer :credit_type_id
+          sig { params(_: String).returns(String) }
+          def credit_type_id=(_)
+          end
 
           sig do
             returns(T.nilable(Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule))
           end
-          attr_reader :recurring_schedule
+          def recurring_schedule
+          end
 
           sig do
-            params(
-              recurring_schedule: Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule
-            ).void
+            params(_: Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule).returns(Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule)
           end
-          attr_writer :recurring_schedule
+          def recurring_schedule=(_)
+          end
 
           sig do
             returns(T.nilable(T::Array[Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::ScheduleItem]))
           end
-          attr_reader :schedule_items
+          def schedule_items
+          end
 
           sig do
-            params(
-              schedule_items: T::Array[Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::ScheduleItem]
-            ).void
+            params(_: T::Array[Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::ScheduleItem]).returns(T::Array[Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::ScheduleItem])
           end
-          attr_writer :schedule_items
+          def schedule_items=(_)
+          end
 
           sig do
             params(
@@ -2253,34 +2859,60 @@ module Metronome
 
           class RecurringSchedule < Metronome::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :amount_distribution
+            def amount_distribution
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def amount_distribution=(_)
+            end
 
             sig { returns(Time) }
-            attr_accessor :ending_before
+            def ending_before
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def ending_before=(_)
+            end
 
             sig { returns(Symbol) }
-            attr_accessor :frequency
+            def frequency
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def frequency=(_)
+            end
 
             sig { returns(Time) }
-            attr_accessor :starting_at
+            def starting_at
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def starting_at=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_reader :amount
+            def amount
+            end
 
-            sig { params(amount: Float).void }
-            attr_writer :amount
-
-            sig { returns(T.nilable(Float)) }
-            attr_reader :quantity
-
-            sig { params(quantity: Float).void }
-            attr_writer :quantity
+            sig { params(_: Float).returns(Float) }
+            def amount=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_reader :unit_price
+            def quantity
+            end
 
-            sig { params(unit_price: Float).void }
-            attr_writer :unit_price
+            sig { params(_: Float).returns(Float) }
+            def quantity=(_)
+            end
+
+            sig { returns(T.nilable(Float)) }
+            def unit_price
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def unit_price=(_)
+            end
 
             sig do
               params(
@@ -2348,25 +2980,36 @@ module Metronome
 
           class ScheduleItem < Metronome::BaseModel
             sig { returns(Time) }
-            attr_accessor :timestamp
+            def timestamp
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def timestamp=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_reader :amount
+            def amount
+            end
 
-            sig { params(amount: Float).void }
-            attr_writer :amount
-
-            sig { returns(T.nilable(Float)) }
-            attr_reader :quantity
-
-            sig { params(quantity: Float).void }
-            attr_writer :quantity
+            sig { params(_: Float).returns(Float) }
+            def amount=(_)
+            end
 
             sig { returns(T.nilable(Float)) }
-            attr_reader :unit_price
+            def quantity
+            end
 
-            sig { params(unit_price: Float).void }
-            attr_writer :unit_price
+            sig { params(_: Float).returns(Float) }
+            def quantity=(_)
+            end
+
+            sig { returns(T.nilable(Float)) }
+            def unit_price
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def unit_price=(_)
+            end
 
             sig { params(timestamp: Time, amount: Float, quantity: Float, unit_price: Float).void }
             def initialize(timestamp:, amount: nil, quantity: nil, unit_price: nil)
@@ -2391,20 +3034,30 @@ module Metronome
 
       class Transition < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :from_contract_id
+        def from_contract_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def from_contract_id=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :type
+        def type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def type=(_)
+        end
 
         sig { returns(T.nilable(Metronome::Models::ContractCreateParams::Transition::FutureInvoiceBehavior)) }
-        attr_reader :future_invoice_behavior
+        def future_invoice_behavior
+        end
 
         sig do
-          params(
-            future_invoice_behavior: Metronome::Models::ContractCreateParams::Transition::FutureInvoiceBehavior
-          ).void
+          params(_: Metronome::Models::ContractCreateParams::Transition::FutureInvoiceBehavior).returns(Metronome::Models::ContractCreateParams::Transition::FutureInvoiceBehavior)
         end
-        attr_writer :future_invoice_behavior
+        def future_invoice_behavior=(_)
+        end
 
         sig do
           params(
@@ -2441,7 +3094,12 @@ module Metronome
 
         class FutureInvoiceBehavior < Metronome::BaseModel
           sig { returns(T.nilable(Symbol)) }
-          attr_accessor :trueup
+          def trueup
+          end
+
+          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          def trueup=(_)
+          end
 
           sig { params(trueup: T.nilable(Symbol)).void }
           def initialize(trueup: nil)
@@ -2466,25 +3124,36 @@ module Metronome
 
       class UsageStatementSchedule < Metronome::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :frequency
+        def frequency
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def frequency=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :billing_anchor_date
+        def billing_anchor_date
+        end
 
-        sig { params(billing_anchor_date: Time).void }
-        attr_writer :billing_anchor_date
+        sig { params(_: Time).returns(Time) }
+        def billing_anchor_date=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :day
+        def day
+        end
 
-        sig { params(day: Symbol).void }
-        attr_writer :day
+        sig { params(_: Symbol).returns(Symbol) }
+        def day=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :invoice_generation_starting_at
+        def invoice_generation_starting_at
+        end
 
-        sig { params(invoice_generation_starting_at: Time).void }
-        attr_writer :invoice_generation_starting_at
+        sig { params(_: Time).returns(Time) }
+        def invoice_generation_starting_at=(_)
+        end
 
         sig do
           params(

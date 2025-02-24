@@ -4,22 +4,28 @@ module Metronome
   module Models
     class PricingUnitListResponse < Metronome::BaseModel
       sig { returns(T.nilable(String)) }
-      attr_reader :id
+      def id
+      end
 
-      sig { params(id: String).void }
-      attr_writer :id
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :is_currency
+      def is_currency
+      end
 
-      sig { params(is_currency: T::Boolean).void }
-      attr_writer :is_currency
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def is_currency=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :name
+      def name
+      end
 
-      sig { params(name: String).void }
-      attr_writer :name
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { params(id: String, is_currency: T::Boolean, name: String).void }
       def initialize(id: nil, is_currency: nil, name: nil)

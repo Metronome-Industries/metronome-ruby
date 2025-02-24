@@ -7,43 +7,58 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(T.nilable(Metronome::Models::CustomerCreateParams::BillingConfig)) }
-      attr_reader :billing_config
+      def billing_config
+      end
 
-      sig { params(billing_config: Metronome::Models::CustomerCreateParams::BillingConfig).void }
-      attr_writer :billing_config
+      sig do
+        params(_: Metronome::Models::CustomerCreateParams::BillingConfig).returns(Metronome::Models::CustomerCreateParams::BillingConfig)
+      end
+      def billing_config=(_)
+      end
 
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
-      attr_reader :custom_fields
+      def custom_fields
+      end
 
-      sig { params(custom_fields: T::Hash[Symbol, String]).void }
-      attr_writer :custom_fields
+      sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+      def custom_fields=(_)
+      end
 
       sig do
         returns(T.nilable(T::Array[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration]))
       end
-      attr_reader :customer_billing_provider_configurations
+      def customer_billing_provider_configurations
+      end
 
       sig do
-        params(
-          customer_billing_provider_configurations: T::Array[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration]
-        ).void
+        params(_: T::Array[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration]).returns(T::Array[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration])
       end
-      attr_writer :customer_billing_provider_configurations
+      def customer_billing_provider_configurations=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :external_id
+      def external_id
+      end
 
-      sig { params(external_id: String).void }
-      attr_writer :external_id
+      sig { params(_: String).returns(String) }
+      def external_id=(_)
+      end
 
       sig { returns(T.nilable(T::Array[String])) }
-      attr_reader :ingest_aliases
+      def ingest_aliases
+      end
 
-      sig { params(ingest_aliases: T::Array[String]).void }
-      attr_writer :ingest_aliases
+      sig { params(_: T::Array[String]).returns(T::Array[String]) }
+      def ingest_aliases=(_)
+      end
 
       sig do
         params(
@@ -85,34 +100,52 @@ module Metronome
 
       class BillingConfig < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :billing_provider_customer_id
+        def billing_provider_customer_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def billing_provider_customer_id=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :billing_provider_type
+        def billing_provider_type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def billing_provider_type=(_)
+        end
 
         sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :aws_is_subscription_product
+        def aws_is_subscription_product
+        end
 
-        sig { params(aws_is_subscription_product: T::Boolean).void }
-        attr_writer :aws_is_subscription_product
+        sig { params(_: T::Boolean).returns(T::Boolean) }
+        def aws_is_subscription_product=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :aws_product_code
+        def aws_product_code
+        end
 
-        sig { params(aws_product_code: String).void }
-        attr_writer :aws_product_code
-
-        sig { returns(T.nilable(Symbol)) }
-        attr_reader :aws_region
-
-        sig { params(aws_region: Symbol).void }
-        attr_writer :aws_region
+        sig { params(_: String).returns(String) }
+        def aws_product_code=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :stripe_collection_method
+        def aws_region
+        end
 
-        sig { params(stripe_collection_method: Symbol).void }
-        attr_writer :stripe_collection_method
+        sig { params(_: Symbol).returns(Symbol) }
+        def aws_region=(_)
+        end
+
+        sig { returns(T.nilable(Symbol)) }
+        def stripe_collection_method
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def stripe_collection_method=(_)
+        end
 
         sig do
           params(
@@ -214,25 +247,36 @@ module Metronome
 
       class CustomerBillingProviderConfiguration < Metronome::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :billing_provider
+        def billing_provider
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def billing_provider=(_)
+        end
 
         sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
-        attr_reader :configuration
+        def configuration
+        end
 
-        sig { params(configuration: T::Hash[Symbol, T.anything]).void }
-        attr_writer :configuration
+        sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+        def configuration=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :delivery_method
+        def delivery_method
+        end
 
-        sig { params(delivery_method: Symbol).void }
-        attr_writer :delivery_method
+        sig { params(_: Symbol).returns(Symbol) }
+        def delivery_method=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :delivery_method_id
+        def delivery_method_id
+        end
 
-        sig { params(delivery_method_id: String).void }
-        attr_writer :delivery_method_id
+        sig { params(_: String).returns(String) }
+        def delivery_method_id=(_)
+        end
 
         sig do
           params(

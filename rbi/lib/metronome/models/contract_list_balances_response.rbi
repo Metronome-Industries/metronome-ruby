@@ -4,10 +4,30 @@ module Metronome
   module Models
     class ContractListBalancesResponse < Metronome::BaseModel
       sig { returns(T::Array[T.any(Metronome::Models::Commit, Metronome::Models::Credit)]) }
-      attr_accessor :data
+      def data
+      end
+
+      sig do
+        params(
+          _: T::Array[T.any(
+            Metronome::Models::Commit,
+            Metronome::Models::Credit
+          )]
+        ).returns(T::Array[T.any(
+          Metronome::Models::Commit,
+          Metronome::Models::Credit
+        )])
+      end
+      def data=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :next_page
+      def next_page
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def next_page=(_)
+      end
 
       sig do
         params(

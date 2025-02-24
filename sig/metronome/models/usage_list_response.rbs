@@ -48,7 +48,7 @@ module Metronome
 
         attr_reader groups: ::Hash[Symbol, Float?]?
 
-        def groups=: (::Hash[Symbol, Float?]) -> void
+        def groups=: (::Hash[Symbol, Float?]) -> ::Hash[Symbol, Float?]
 
         def initialize:
           (

@@ -5,7 +5,14 @@ module Metronome
     module Customers
       class InvoiceRetrieveResponse < Metronome::BaseModel
         sig { returns(Metronome::Models::Customers::Invoice) }
-        attr_accessor :data
+        def data
+        end
+
+        sig do
+          params(_: Metronome::Models::Customers::Invoice).returns(Metronome::Models::Customers::Invoice)
+        end
+        def data=(_)
+        end
 
         sig { params(data: Metronome::Models::Customers::Invoice).void }
         def initialize(data:)

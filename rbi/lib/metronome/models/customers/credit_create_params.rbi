@@ -8,76 +8,118 @@ module Metronome
         include Metronome::RequestParameters
 
         sig { returns(Metronome::Models::Customers::CreditCreateParams::AccessSchedule) }
-        attr_accessor :access_schedule
+        def access_schedule
+        end
+
+        sig do
+          params(_: Metronome::Models::Customers::CreditCreateParams::AccessSchedule).returns(Metronome::Models::Customers::CreditCreateParams::AccessSchedule)
+        end
+        def access_schedule=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :customer_id
+        def customer_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def customer_id=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :priority
+        def priority
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def priority=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :product_id
+        def product_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def product_id=(_)
+        end
 
         sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :applicable_contract_ids
+        def applicable_contract_ids
+        end
 
-        sig { params(applicable_contract_ids: T::Array[String]).void }
-        attr_writer :applicable_contract_ids
-
-        sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :applicable_product_ids
-
-        sig { params(applicable_product_ids: T::Array[String]).void }
-        attr_writer :applicable_product_ids
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def applicable_contract_ids=(_)
+        end
 
         sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :applicable_product_tags
+        def applicable_product_ids
+        end
 
-        sig { params(applicable_product_tags: T::Array[String]).void }
-        attr_writer :applicable_product_tags
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def applicable_product_ids=(_)
+        end
+
+        sig { returns(T.nilable(T::Array[String])) }
+        def applicable_product_tags
+        end
+
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def applicable_product_tags=(_)
+        end
 
         sig { returns(T.nilable(T::Hash[Symbol, String])) }
-        attr_reader :custom_fields
+        def custom_fields
+        end
 
-        sig { params(custom_fields: T::Hash[Symbol, String]).void }
-        attr_writer :custom_fields
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :description
-
-        sig { params(description: String).void }
-        attr_writer :description
+        sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+        def custom_fields=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :name
+        def description
+        end
 
-        sig { params(name: String).void }
-        attr_writer :name
+        sig { params(_: String).returns(String) }
+        def description=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :netsuite_sales_order_id
+        def name
+        end
 
-        sig { params(netsuite_sales_order_id: String).void }
-        attr_writer :netsuite_sales_order_id
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def netsuite_sales_order_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def netsuite_sales_order_id=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :rate_type
+        def rate_type
+        end
 
-        sig { params(rate_type: Symbol).void }
-        attr_writer :rate_type
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :salesforce_opportunity_id
-
-        sig { params(salesforce_opportunity_id: String).void }
-        attr_writer :salesforce_opportunity_id
+        sig { params(_: Symbol).returns(Symbol) }
+        def rate_type=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :uniqueness_key
+        def salesforce_opportunity_id
+        end
 
-        sig { params(uniqueness_key: String).void }
-        attr_writer :uniqueness_key
+        sig { params(_: String).returns(String) }
+        def salesforce_opportunity_id=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def uniqueness_key
+        end
+
+        sig { params(_: String).returns(String) }
+        def uniqueness_key=(_)
+        end
 
         sig do
           params(
@@ -145,13 +187,22 @@ module Metronome
           sig do
             returns(T::Array[Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem])
           end
-          attr_accessor :schedule_items
+          def schedule_items
+          end
+
+          sig do
+            params(_: T::Array[Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem]).returns(T::Array[Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem])
+          end
+          def schedule_items=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_reader :credit_type_id
+          def credit_type_id
+          end
 
-          sig { params(credit_type_id: String).void }
-          attr_writer :credit_type_id
+          sig { params(_: String).returns(String) }
+          def credit_type_id=(_)
+          end
 
           sig do
             params(
@@ -174,13 +225,28 @@ module Metronome
 
           class ScheduleItem < Metronome::BaseModel
             sig { returns(Float) }
-            attr_accessor :amount
+            def amount
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def amount=(_)
+            end
 
             sig { returns(Time) }
-            attr_accessor :ending_before
+            def ending_before
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def ending_before=(_)
+            end
 
             sig { returns(Time) }
-            attr_accessor :starting_at
+            def starting_at
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def starting_at=(_)
+            end
 
             sig { params(amount: Float, ending_before: Time, starting_at: Time).void }
             def initialize(amount:, ending_before:, starting_at:)

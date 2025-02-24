@@ -4,13 +4,20 @@ module Metronome
   module Models
     class Tier < Metronome::BaseModel
       sig { returns(Float) }
-      attr_accessor :price
+      def price
+      end
+
+      sig { params(_: Float).returns(Float) }
+      def price=(_)
+      end
 
       sig { returns(T.nilable(Float)) }
-      attr_reader :size
+      def size
+      end
 
-      sig { params(size: Float).void }
-      attr_writer :size
+      sig { params(_: Float).returns(Float) }
+      def size=(_)
+      end
 
       sig { params(price: Float, size: Float).void }
       def initialize(price:, size: nil)

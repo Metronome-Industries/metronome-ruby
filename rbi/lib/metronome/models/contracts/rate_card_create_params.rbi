@@ -8,43 +8,58 @@ module Metronome
         include Metronome::RequestParameters
 
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         sig { returns(T.nilable(T::Array[Metronome::Models::Contracts::RateCardCreateParams::Alias])) }
-        attr_reader :aliases
+        def aliases
+        end
 
-        sig { params(aliases: T::Array[Metronome::Models::Contracts::RateCardCreateParams::Alias]).void }
-        attr_writer :aliases
+        sig do
+          params(_: T::Array[Metronome::Models::Contracts::RateCardCreateParams::Alias]).returns(T::Array[Metronome::Models::Contracts::RateCardCreateParams::Alias])
+        end
+        def aliases=(_)
+        end
 
         sig do
           returns(T.nilable(T::Array[Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion]))
         end
-        attr_reader :credit_type_conversions
+        def credit_type_conversions
+        end
 
         sig do
-          params(
-            credit_type_conversions: T::Array[Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion]
-          ).void
+          params(_: T::Array[Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion]).returns(T::Array[Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion])
         end
-        attr_writer :credit_type_conversions
+        def credit_type_conversions=(_)
+        end
 
         sig { returns(T.nilable(T::Hash[Symbol, String])) }
-        attr_reader :custom_fields
+        def custom_fields
+        end
 
-        sig { params(custom_fields: T::Hash[Symbol, String]).void }
-        attr_writer :custom_fields
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :description
-
-        sig { params(description: String).void }
-        attr_writer :description
+        sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+        def custom_fields=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :fiat_credit_type_id
+        def description
+        end
 
-        sig { params(fiat_credit_type_id: String).void }
-        attr_writer :fiat_credit_type_id
+        sig { params(_: String).returns(String) }
+        def description=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def fiat_credit_type_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def fiat_credit_type_id=(_)
+        end
 
         sig do
           params(
@@ -86,19 +101,28 @@ module Metronome
 
         class Alias < Metronome::BaseModel
           sig { returns(String) }
-          attr_accessor :name
+          def name
+          end
+
+          sig { params(_: String).returns(String) }
+          def name=(_)
+          end
 
           sig { returns(T.nilable(Time)) }
-          attr_reader :ending_before
+          def ending_before
+          end
 
-          sig { params(ending_before: Time).void }
-          attr_writer :ending_before
+          sig { params(_: Time).returns(Time) }
+          def ending_before=(_)
+          end
 
           sig { returns(T.nilable(Time)) }
-          attr_reader :starting_at
+          def starting_at
+          end
 
-          sig { params(starting_at: Time).void }
-          attr_writer :starting_at
+          sig { params(_: Time).returns(Time) }
+          def starting_at=(_)
+          end
 
           sig { params(name: String, ending_before: Time, starting_at: Time).void }
           def initialize(name:, ending_before: nil, starting_at: nil)
@@ -111,10 +135,20 @@ module Metronome
 
         class CreditTypeConversion < Metronome::BaseModel
           sig { returns(String) }
-          attr_accessor :custom_credit_type_id
+          def custom_credit_type_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def custom_credit_type_id=(_)
+          end
 
           sig { returns(Float) }
-          attr_accessor :fiat_per_custom_credit
+          def fiat_per_custom_credit
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def fiat_per_custom_credit=(_)
+          end
 
           sig { params(custom_credit_type_id: String, fiat_per_custom_credit: Float).void }
           def initialize(custom_credit_type_id:, fiat_per_custom_credit:)

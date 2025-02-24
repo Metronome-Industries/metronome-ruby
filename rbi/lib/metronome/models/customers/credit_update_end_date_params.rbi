@@ -8,13 +8,28 @@ module Metronome
         include Metronome::RequestParameters
 
         sig { returns(Time) }
-        attr_accessor :access_ending_before
+        def access_ending_before
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def access_ending_before=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :credit_id
+        def credit_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def credit_id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :customer_id
+        def customer_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def customer_id=(_)
+        end
 
         sig do
           params(

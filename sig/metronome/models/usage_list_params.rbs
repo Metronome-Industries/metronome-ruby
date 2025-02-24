@@ -23,17 +23,17 @@ module Metronome
 
       attr_reader next_page: String?
 
-      def next_page=: (String) -> void
+      def next_page=: (String) -> String
 
       attr_reader billable_metrics: ::Array[Metronome::Models::UsageListParams::BillableMetric]?
 
       def billable_metrics=: (
         ::Array[Metronome::Models::UsageListParams::BillableMetric]
-      ) -> void
+      ) -> ::Array[Metronome::Models::UsageListParams::BillableMetric]
 
       attr_reader customer_ids: ::Array[String]?
 
-      def customer_ids=: (::Array[String]) -> void
+      def customer_ids=: (::Array[String]) -> ::Array[String]
 
       def initialize:
         (
@@ -74,7 +74,7 @@ module Metronome
 
         def group_by=: (
           Metronome::Models::UsageListParams::BillableMetric::GroupBy
-        ) -> void
+        ) -> Metronome::Models::UsageListParams::BillableMetric::GroupBy
 
         def initialize:
           (
@@ -95,7 +95,7 @@ module Metronome
 
           attr_reader values: ::Array[String]?
 
-          def values=: (::Array[String]) -> void
+          def values=: (::Array[String]) -> ::Array[String]
 
           def initialize:
             (key: String, values: ::Array[String]) -> void

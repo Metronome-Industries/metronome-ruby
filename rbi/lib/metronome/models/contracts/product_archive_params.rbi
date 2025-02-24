@@ -8,7 +8,12 @@ module Metronome
         include Metronome::RequestParameters
 
         sig { returns(String) }
-        attr_accessor :product_id
+        def product_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def product_id=(_)
+        end
 
         sig do
           params(

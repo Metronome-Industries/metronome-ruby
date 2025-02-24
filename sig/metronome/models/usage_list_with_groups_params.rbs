@@ -26,29 +26,29 @@ module Metronome
 
       attr_reader limit: Integer?
 
-      def limit=: (Integer) -> void
+      def limit=: (Integer) -> Integer
 
       attr_reader next_page: String?
 
-      def next_page=: (String) -> void
+      def next_page=: (String) -> String
 
       attr_reader current_period: bool?
 
-      def current_period=: (bool) -> void
+      def current_period=: (bool) -> bool
 
       attr_reader ending_before: Time?
 
-      def ending_before=: (Time) -> void
+      def ending_before=: (Time) -> Time
 
       attr_reader group_by: Metronome::Models::UsageListWithGroupsParams::GroupBy?
 
       def group_by=: (
         Metronome::Models::UsageListWithGroupsParams::GroupBy
-      ) -> void
+      ) -> Metronome::Models::UsageListWithGroupsParams::GroupBy
 
       attr_reader starting_on: Time?
 
-      def starting_on=: (Time) -> void
+      def starting_on=: (Time) -> Time
 
       def initialize:
         (
@@ -87,7 +87,7 @@ module Metronome
 
         attr_reader values: ::Array[String]?
 
-        def values=: (::Array[String]) -> void
+        def values=: (::Array[String]) -> ::Array[String]
 
         def initialize:
           (key: String, values: ::Array[String]) -> void

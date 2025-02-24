@@ -4,37 +4,68 @@ module Metronome
   module Models
     class ProService < Metronome::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(Float) }
-      attr_accessor :max_amount
+      def max_amount
+      end
+
+      sig { params(_: Float).returns(Float) }
+      def max_amount=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :product_id
+      def product_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def product_id=(_)
+      end
 
       sig { returns(Float) }
-      attr_accessor :quantity
+      def quantity
+      end
+
+      sig { params(_: Float).returns(Float) }
+      def quantity=(_)
+      end
 
       sig { returns(Float) }
-      attr_accessor :unit_price
+      def unit_price
+      end
+
+      sig { params(_: Float).returns(Float) }
+      def unit_price=(_)
+      end
 
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
-      attr_reader :custom_fields
+      def custom_fields
+      end
 
-      sig { params(custom_fields: T::Hash[Symbol, String]).void }
-      attr_writer :custom_fields
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :description
-
-      sig { params(description: String).void }
-      attr_writer :description
+      sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+      def custom_fields=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :netsuite_sales_order_id
+      def description
+      end
 
-      sig { params(netsuite_sales_order_id: String).void }
-      attr_writer :netsuite_sales_order_id
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def netsuite_sales_order_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def netsuite_sales_order_id=(_)
+      end
 
       sig do
         params(

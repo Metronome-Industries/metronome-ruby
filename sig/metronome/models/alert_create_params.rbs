@@ -30,47 +30,47 @@ module Metronome
 
       attr_reader billable_metric_id: String?
 
-      def billable_metric_id=: (String) -> void
+      def billable_metric_id=: (String) -> String
 
       attr_reader credit_grant_type_filters: ::Array[String]?
 
-      def credit_grant_type_filters=: (::Array[String]) -> void
+      def credit_grant_type_filters=: (::Array[String]) -> ::Array[String]
 
       attr_reader credit_type_id: String?
 
-      def credit_type_id=: (String) -> void
+      def credit_type_id=: (String) -> String
 
       attr_reader custom_field_filters: ::Array[Metronome::Models::AlertCreateParams::CustomFieldFilter]?
 
       def custom_field_filters=: (
         ::Array[Metronome::Models::AlertCreateParams::CustomFieldFilter]
-      ) -> void
+      ) -> ::Array[Metronome::Models::AlertCreateParams::CustomFieldFilter]
 
       attr_reader customer_id: String?
 
-      def customer_id=: (String) -> void
+      def customer_id=: (String) -> String
 
       attr_reader evaluate_on_create: bool?
 
-      def evaluate_on_create=: (bool) -> void
+      def evaluate_on_create=: (bool) -> bool
 
       attr_reader group_key_filter: Metronome::Models::AlertCreateParams::GroupKeyFilter?
 
       def group_key_filter=: (
         Metronome::Models::AlertCreateParams::GroupKeyFilter
-      ) -> void
+      ) -> Metronome::Models::AlertCreateParams::GroupKeyFilter
 
       attr_reader invoice_types_filter: ::Array[String]?
 
-      def invoice_types_filter=: (::Array[String]) -> void
+      def invoice_types_filter=: (::Array[String]) -> ::Array[String]
 
       attr_reader plan_id: String?
 
-      def plan_id=: (String) -> void
+      def plan_id=: (String) -> String
 
       attr_reader uniqueness_key: String?
 
-      def uniqueness_key=: (String) -> void
+      def uniqueness_key=: (String) -> String
 
       def initialize:
         (

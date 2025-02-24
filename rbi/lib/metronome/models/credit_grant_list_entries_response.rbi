@@ -4,10 +4,22 @@ module Metronome
   module Models
     class CreditGrantListEntriesResponse < Metronome::BaseModel
       sig { returns(T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data]) }
-      attr_accessor :data
+      def data
+      end
+
+      sig do
+        params(_: T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data]).returns(T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data])
+      end
+      def data=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :next_page
+      def next_page
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def next_page=(_)
+      end
 
       sig do
         params(
@@ -31,10 +43,22 @@ module Metronome
 
       class Data < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :customer_id
+        def customer_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def customer_id=(_)
+        end
 
         sig { returns(T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger]) }
-        attr_accessor :ledgers
+        def ledgers
+        end
+
+        sig do
+          params(_: T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger]).returns(T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger])
+        end
+        def ledgers=(_)
+        end
 
         sig do
           params(
@@ -58,19 +82,52 @@ module Metronome
 
         class Ledger < Metronome::BaseModel
           sig { returns(Metronome::Models::CreditTypeData) }
-          attr_accessor :credit_type
+          def credit_type
+          end
+
+          sig { params(_: Metronome::Models::CreditTypeData).returns(Metronome::Models::CreditTypeData) }
+          def credit_type=(_)
+          end
 
           sig { returns(Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance) }
-          attr_accessor :ending_balance
+          def ending_balance
+          end
+
+          sig do
+            params(_: Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance).returns(Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance)
+          end
+          def ending_balance=(_)
+          end
 
           sig { returns(T::Array[Metronome::Models::CreditLedgerEntry]) }
-          attr_accessor :entries
+          def entries
+          end
+
+          sig do
+            params(_: T::Array[Metronome::Models::CreditLedgerEntry]).returns(T::Array[Metronome::Models::CreditLedgerEntry])
+          end
+          def entries=(_)
+          end
 
           sig { returns(T::Array[Metronome::Models::CreditLedgerEntry]) }
-          attr_accessor :pending_entries
+          def pending_entries
+          end
+
+          sig do
+            params(_: T::Array[Metronome::Models::CreditLedgerEntry]).returns(T::Array[Metronome::Models::CreditLedgerEntry])
+          end
+          def pending_entries=(_)
+          end
 
           sig { returns(Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance) }
-          attr_accessor :starting_balance
+          def starting_balance
+          end
+
+          sig do
+            params(_: Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance).returns(Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance)
+          end
+          def starting_balance=(_)
+          end
 
           sig do
             params(
@@ -100,13 +157,28 @@ module Metronome
 
           class EndingBalance < Metronome::BaseModel
             sig { returns(Time) }
-            attr_accessor :effective_at
+            def effective_at
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def effective_at=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :excluding_pending
+            def excluding_pending
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def excluding_pending=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :including_pending
+            def including_pending
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def including_pending=(_)
+            end
 
             sig { params(effective_at: Time, excluding_pending: Float, including_pending: Float).void }
             def initialize(effective_at:, excluding_pending:, including_pending:)
@@ -119,13 +191,28 @@ module Metronome
 
           class StartingBalance < Metronome::BaseModel
             sig { returns(Time) }
-            attr_accessor :effective_at
+            def effective_at
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def effective_at=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :excluding_pending
+            def excluding_pending
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def excluding_pending=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :including_pending
+            def including_pending
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def including_pending=(_)
+            end
 
             sig { params(effective_at: Time, excluding_pending: Float, including_pending: Float).void }
             def initialize(effective_at:, excluding_pending:, including_pending:)

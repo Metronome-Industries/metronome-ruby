@@ -24,39 +24,39 @@ module Metronome
 
         attr_reader covering_date: Time?
 
-        def covering_date=: (Time) -> void
+        def covering_date=: (Time) -> Time
 
         attr_reader credit_id: String?
 
-        def credit_id=: (String) -> void
+        def credit_id=: (String) -> String
 
         attr_reader effective_before: Time?
 
-        def effective_before=: (Time) -> void
+        def effective_before=: (Time) -> Time
 
         attr_reader include_archived: bool?
 
-        def include_archived=: (bool) -> void
+        def include_archived=: (bool) -> bool
 
         attr_reader include_balance: bool?
 
-        def include_balance=: (bool) -> void
+        def include_balance=: (bool) -> bool
 
         attr_reader include_contract_credits: bool?
 
-        def include_contract_credits=: (bool) -> void
+        def include_contract_credits=: (bool) -> bool
 
         attr_reader include_ledgers: bool?
 
-        def include_ledgers=: (bool) -> void
+        def include_ledgers=: (bool) -> bool
 
         attr_reader next_page: String?
 
-        def next_page=: (String) -> void
+        def next_page=: (String) -> String
 
         attr_reader starting_at: Time?
 
-        def starting_at=: (Time) -> void
+        def starting_at=: (Time) -> Time
 
         def initialize:
           (

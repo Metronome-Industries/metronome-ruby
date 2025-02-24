@@ -28,11 +28,11 @@ module Metronome
 
       attr_reader contract_id: String?
 
-      def contract_id=: (String) -> void
+      def contract_id=: (String) -> String
 
       attr_reader timestamp: Time?
 
-      def timestamp=: (Time) -> void
+      def timestamp=: (Time) -> Time
 
       def initialize:
         (

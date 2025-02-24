@@ -4,7 +4,12 @@ module Metronome
   module Models
     class PlanGetDetailsResponse < Metronome::BaseModel
       sig { returns(Metronome::Models::PlanDetail) }
-      attr_accessor :data
+      def data
+      end
+
+      sig { params(_: Metronome::Models::PlanDetail).returns(Metronome::Models::PlanDetail) }
+      def data=(_)
+      end
 
       sig { params(data: Metronome::Models::PlanDetail).void }
       def initialize(data:)

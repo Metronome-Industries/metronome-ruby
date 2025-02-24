@@ -7,7 +7,14 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(T::Array[Metronome::Models::UsageIngestParams::Usage]) }
-      attr_accessor :usage
+      def usage
+      end
+
+      sig do
+        params(_: T::Array[Metronome::Models::UsageIngestParams::Usage]).returns(T::Array[Metronome::Models::UsageIngestParams::Usage])
+      end
+      def usage=(_)
+      end
 
       sig do
         params(
@@ -31,22 +38,44 @@ module Metronome
 
       class Usage < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :customer_id
+        def customer_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def customer_id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :event_type
+        def event_type
+        end
+
+        sig { params(_: String).returns(String) }
+        def event_type=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :timestamp
+        def timestamp
+        end
+
+        sig { params(_: String).returns(String) }
+        def timestamp=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :transaction_id
+        def transaction_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def transaction_id=(_)
+        end
 
         sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
-        attr_reader :properties
+        def properties
+        end
 
-        sig { params(properties: T::Hash[Symbol, T.anything]).void }
-        attr_writer :properties
+        sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+        def properties=(_)
+        end
 
         sig do
           params(
