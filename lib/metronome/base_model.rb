@@ -369,7 +369,6 @@ module Metronome
   # @abstract
   #
   class Union
-    extend Metronome::Extern
     extend Metronome::Converter
 
     # @private
@@ -842,7 +841,6 @@ module Metronome
   # @abstract
   #
   class BaseModel
-    extend Metronome::Extern
     extend Metronome::Converter
 
     # @private
