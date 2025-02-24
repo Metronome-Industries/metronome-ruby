@@ -83,7 +83,6 @@ module Metronome
   end
 
   class Union
-    extend Metronome::Extern
     extend Metronome::Converter
 
     private def self.known_variants: -> ::Array[[Symbol?, Proc]]
@@ -170,7 +169,6 @@ module Metronome
   end
 
   class BaseModel
-    extend Metronome::Extern
     extend Metronome::Converter
 
     type known_field = { mode: (:coerce | :dump)?, required: bool }

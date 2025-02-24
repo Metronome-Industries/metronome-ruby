@@ -153,7 +153,6 @@ module Metronome
   class Union
     abstract!
 
-    extend Metronome::Extern
     extend Metronome::Converter
 
     sig { returns(T::Array[[T.nilable(Symbol), Proc]]) }
@@ -331,7 +330,6 @@ module Metronome
   class BaseModel
     abstract!
 
-    extend Metronome::Extern
     extend Metronome::Converter
 
     KnownFieldShape = T.type_alias { {mode: T.nilable(Symbol), required: T::Boolean} }
