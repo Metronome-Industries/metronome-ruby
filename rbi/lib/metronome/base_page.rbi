@@ -27,7 +27,7 @@ module Metronome
     sig do
       params(
         client: Metronome::BaseClient,
-        req: Metronome::BaseClient::RequestShape,
+        req: Metronome::BaseClient::RequestComponentsShape,
         headers: T::Hash[String, String],
         unwrapped: T.anything
       )
