@@ -93,7 +93,8 @@ module Metronome
     end
 
     sig do
-      params(req: Metronome::BaseClient::RequestComponentsShape, opts: T::Hash[Symbol, T.anything])
+      overridable
+        .params(req: Metronome::BaseClient::RequestComponentsShape, opts: T::Hash[Symbol, T.anything])
         .returns(Metronome::BaseClient::RequestInputShape)
     end
     private def build_request(req, opts)
