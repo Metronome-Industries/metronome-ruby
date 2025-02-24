@@ -1427,7 +1427,6 @@ module Metronome
           applicable_product_tags: ::Array[String],
           description: String,
           ending_before: Time,
-          invoice_amount: Metronome::Models::ContractCreateParams::RecurringCredit::InvoiceAmount,
           name: String,
           netsuite_sales_order_id: String,
           rate_type: Metronome::Models::ContractCreateParams::RecurringCredit::rate_type,
@@ -1462,12 +1461,6 @@ module Metronome
 
         def ending_before=: (Time) -> void
 
-        attr_reader invoice_amount: Metronome::Models::ContractCreateParams::RecurringCredit::InvoiceAmount?
-
-        def invoice_amount=: (
-          Metronome::Models::ContractCreateParams::RecurringCredit::InvoiceAmount
-        ) -> void
-
         attr_reader name: String?
 
         def name=: (String) -> void
@@ -1501,7 +1494,6 @@ module Metronome
             applicable_product_tags: ::Array[String],
             description: String,
             ending_before: Time,
-            invoice_amount: Metronome::Models::ContractCreateParams::RecurringCredit::InvoiceAmount,
             name: String,
             netsuite_sales_order_id: String,
             rate_type: Metronome::Models::ContractCreateParams::RecurringCredit::rate_type,
@@ -1565,26 +1557,6 @@ module Metronome
 
             def self.values: -> ::Array[Metronome::Models::ContractCreateParams::RecurringCredit::CommitDuration::unit]
           end
-        end
-
-        type invoice_amount =
-          { credit_type_id: String, quantity: Float, unit_price: Float }
-
-        class InvoiceAmount < Metronome::BaseModel
-          attr_accessor credit_type_id: String
-
-          attr_accessor quantity: Float
-
-          attr_accessor unit_price: Float
-
-          def initialize:
-            (credit_type_id: String, quantity: Float, unit_price: Float) -> void
-            | (
-              ?Metronome::Models::ContractCreateParams::RecurringCredit::invoice_amount
-              | Metronome::BaseModel data
-            ) -> void
-
-          def to_hash: -> Metronome::Models::ContractCreateParams::RecurringCredit::invoice_amount
         end
 
         type rate_type = :COMMIT_RATE | :LIST_RATE

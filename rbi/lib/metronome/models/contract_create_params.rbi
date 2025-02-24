@@ -1839,14 +1839,6 @@ module Metronome
         sig { params(ending_before: Time).void }
         attr_writer :ending_before
 
-        sig { returns(T.nilable(Metronome::Models::ContractCreateParams::RecurringCredit::InvoiceAmount)) }
-        attr_reader :invoice_amount
-
-        sig do
-          params(invoice_amount: Metronome::Models::ContractCreateParams::RecurringCredit::InvoiceAmount).void
-        end
-        attr_writer :invoice_amount
-
         sig { returns(T.nilable(String)) }
         attr_reader :name
 
@@ -1888,7 +1880,6 @@ module Metronome
             applicable_product_tags: T::Array[String],
             description: String,
             ending_before: Time,
-            invoice_amount: Metronome::Models::ContractCreateParams::RecurringCredit::InvoiceAmount,
             name: String,
             netsuite_sales_order_id: String,
             rate_type: Symbol,
@@ -1906,7 +1897,6 @@ module Metronome
           applicable_product_tags: nil,
           description: nil,
           ending_before: nil,
-          invoice_amount: nil,
           name: nil,
           netsuite_sales_order_id: nil,
           rate_type: nil,
@@ -1927,7 +1917,6 @@ module Metronome
               applicable_product_tags: T::Array[String],
               description: String,
               ending_before: Time,
-              invoice_amount: Metronome::Models::ContractCreateParams::RecurringCredit::InvoiceAmount,
               name: String,
               netsuite_sales_order_id: String,
               rate_type: Symbol,
@@ -1981,25 +1970,6 @@ module Metronome
             sig { override.returns(T::Array[Symbol]) }
             def self.values
             end
-          end
-        end
-
-        class InvoiceAmount < Metronome::BaseModel
-          sig { returns(String) }
-          attr_accessor :credit_type_id
-
-          sig { returns(Float) }
-          attr_accessor :quantity
-
-          sig { returns(Float) }
-          attr_accessor :unit_price
-
-          sig { params(credit_type_id: String, quantity: Float, unit_price: Float).void }
-          def initialize(credit_type_id:, quantity:, unit_price:)
-          end
-
-          sig { override.returns({credit_type_id: String, quantity: Float, unit_price: Float}) }
-          def to_hash
           end
         end
 

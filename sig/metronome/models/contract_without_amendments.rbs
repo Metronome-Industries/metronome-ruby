@@ -453,7 +453,6 @@ module Metronome
           contract: Metronome::Models::ContractWithoutAmendments::RecurringCredit::Contract,
           description: String,
           ending_before: Time,
-          invoice_amount: Metronome::Models::ContractWithoutAmendments::RecurringCredit::InvoiceAmount,
           name: String,
           netsuite_sales_order_id: String,
           rollover_fraction: Float
@@ -496,12 +495,6 @@ module Metronome
 
         def ending_before=: (Time) -> void
 
-        attr_reader invoice_amount: Metronome::Models::ContractWithoutAmendments::RecurringCredit::InvoiceAmount?
-
-        def invoice_amount=: (
-          Metronome::Models::ContractWithoutAmendments::RecurringCredit::InvoiceAmount
-        ) -> void
-
         attr_reader name: String?
 
         def name=: (String) -> void
@@ -528,7 +521,6 @@ module Metronome
             contract: Metronome::Models::ContractWithoutAmendments::RecurringCredit::Contract,
             description: String,
             ending_before: Time,
-            invoice_amount: Metronome::Models::ContractWithoutAmendments::RecurringCredit::InvoiceAmount,
             name: String,
             netsuite_sales_order_id: String,
             rollover_fraction: Float
@@ -635,26 +627,6 @@ module Metronome
             ) -> void
 
           def to_hash: -> Metronome::Models::ContractWithoutAmendments::RecurringCredit::contract
-        end
-
-        type invoice_amount =
-          { credit_type_id: String, quantity: Float, unit_price: Float }
-
-        class InvoiceAmount < Metronome::BaseModel
-          attr_accessor credit_type_id: String
-
-          attr_accessor quantity: Float
-
-          attr_accessor unit_price: Float
-
-          def initialize:
-            (credit_type_id: String, quantity: Float, unit_price: Float) -> void
-            | (
-              ?Metronome::Models::ContractWithoutAmendments::RecurringCredit::invoice_amount
-              | Metronome::BaseModel data
-            ) -> void
-
-          def to_hash: -> Metronome::Models::ContractWithoutAmendments::RecurringCredit::invoice_amount
         end
       end
 
