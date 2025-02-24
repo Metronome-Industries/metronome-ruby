@@ -28,7 +28,7 @@ module Metronome
       params(
         client: Metronome::BaseClient,
         req: Metronome::BaseClient::RequestComponentsShape,
-        headers: T::Hash[String, String],
+        headers: T.any(T::Hash[String, String], Net::HTTPHeader),
         unwrapped: T.anything
       )
         .void
