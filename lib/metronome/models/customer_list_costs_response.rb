@@ -14,10 +14,7 @@ module Metronome
       # @!attribute credit_types
       #
       #   @return [Hash{Symbol=>Metronome::Models::CustomerListCostsResponse::CreditType}]
-      required :credit_types,
-               -> {
-                 Metronome::HashOf[Metronome::Models::CustomerListCostsResponse::CreditType]
-               }
+      required :credit_types, -> { Metronome::HashOf[Metronome::Models::CustomerListCostsResponse::CreditType] }
 
       # @!attribute end_timestamp
       #
@@ -60,9 +57,7 @@ module Metronome
         #
         #   @return [Array<Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown>, nil]
         optional :line_item_breakdown,
-                 -> {
-                   Metronome::ArrayOf[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown]
-                 }
+                 -> { Metronome::ArrayOf[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown] }
 
         # @!parse
         #   # @return [Array<Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown>]

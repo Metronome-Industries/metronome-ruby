@@ -111,9 +111,7 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter>, nil]
           optional :custom_field_filters,
-                   -> {
-                     Metronome::ArrayOf[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter]
-                   }
+                   -> { Metronome::ArrayOf[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter] }
 
           # @!parse
           #   # @return [Array<Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter>]
@@ -124,10 +122,7 @@ module Metronome
           #     items. Only present for spend alerts.
           #
           #   @return [Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter, nil]
-          optional :group_key_filter,
-                   -> {
-                     Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter
-                   }
+          optional :group_key_filter, -> { Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter }
 
           # @!parse
           #   # @return [Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter]
@@ -276,9 +271,7 @@ module Metronome
             #
             #   @return [Symbol, Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter::Entity]
             required :entity,
-                     enum: -> {
-                       Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter::Entity
-                     }
+                     enum: -> { Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter::Entity }
 
             # @!attribute key
             #

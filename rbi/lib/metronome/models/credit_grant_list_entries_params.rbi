@@ -54,7 +54,8 @@ module Metronome
           ending_before: Time,
           starting_on: Time,
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         next_page: nil,
@@ -67,16 +68,17 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            next_page: String,
-            credit_type_ids: T::Array[String],
-            customer_ids: T::Array[String],
-            ending_before: Time,
-            starting_on: Time,
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              next_page: String,
+              credit_type_ids: T::Array[String],
+              customer_ids: T::Array[String],
+              ending_before: Time,
+              starting_on: Time,
+              request_options: Metronome::RequestOptions
+            }
+          )
       end
       def to_hash
       end

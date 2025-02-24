@@ -28,19 +28,19 @@ module Metronome
             customer_id: String,
             billing_provider_type: Symbol,
             request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(customer_id:, billing_provider_type:, request_options: {})
         end
 
         sig do
-          override.returns(
-            {
-              customer_id: String,
-              billing_provider_type: Symbol,
-              request_options: Metronome::RequestOptions
-            }
-          )
+          override
+            .returns({
+                       customer_id: String,
+                       billing_provider_type: Symbol,
+                       request_options: Metronome::RequestOptions
+                     })
         end
         def to_hash
         end

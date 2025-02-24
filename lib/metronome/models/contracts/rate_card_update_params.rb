@@ -20,10 +20,7 @@ module Metronome
         #     recently assigned. It is not exposed to end customers.
         #
         #   @return [Array<Metronome::Models::Contracts::RateCardUpdateParams::Alias>, nil]
-        optional :aliases,
-                 -> {
-                   Metronome::ArrayOf[Metronome::Models::Contracts::RateCardUpdateParams::Alias]
-                 }
+        optional :aliases, -> { Metronome::ArrayOf[Metronome::Models::Contracts::RateCardUpdateParams::Alias] }
 
         # @!parse
         #   # @return [Array<Metronome::Models::Contracts::RateCardUpdateParams::Alias>]

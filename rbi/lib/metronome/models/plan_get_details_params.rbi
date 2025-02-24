@@ -18,7 +18,8 @@ module Metronome
         params(
           plan_id: String,
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(plan_id:, request_options: {})
       end

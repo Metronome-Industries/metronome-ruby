@@ -45,7 +45,8 @@ module Metronome
           include_balance: T::Boolean,
           include_ledgers: T::Boolean,
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         contract_id:,
@@ -57,15 +58,16 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            contract_id: String,
-            customer_id: String,
-            include_balance: T::Boolean,
-            include_ledgers: T::Boolean,
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              contract_id: String,
+              customer_id: String,
+              include_balance: T::Boolean,
+              include_ledgers: T::Boolean,
+              request_options: Metronome::RequestOptions
+            }
+          )
       end
       def to_hash
       end

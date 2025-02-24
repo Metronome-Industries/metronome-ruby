@@ -35,9 +35,7 @@ module Metronome
       #
       #   @return [Array<Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration>, nil]
       optional :customer_billing_provider_configurations,
-               -> {
-                 Metronome::ArrayOf[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration]
-               }
+               -> { Metronome::ArrayOf[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration] }
 
       # @!parse
       #   # @return [Array<Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration>]
@@ -300,9 +298,7 @@ module Metronome
         #
         #   @return [Symbol, Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::BillingProvider]
         required :billing_provider,
-                 enum: -> {
-                   Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::BillingProvider
-                 }
+                 enum: -> { Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::BillingProvider }
 
         # @!attribute [r] configuration
         #   Configuration for the billing provider. The structure of this object is specific
@@ -323,9 +319,7 @@ module Metronome
         #
         #   @return [Symbol, Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod, nil]
         optional :delivery_method,
-                 enum: -> {
-                   Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod
-                 }
+                 enum: -> { Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod }
 
         # @!parse
         #   # @return [Symbol, Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod]

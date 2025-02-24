@@ -8,7 +8,8 @@ module Metronome
       end
 
       sig do
-        params(_: Metronome::Models::InvoiceVoidResponse::Data).returns(Metronome::Models::InvoiceVoidResponse::Data)
+        params(_: Metronome::Models::InvoiceVoidResponse::Data)
+          .returns(Metronome::Models::InvoiceVoidResponse::Data)
       end
       def data=(_)
       end

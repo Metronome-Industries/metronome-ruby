@@ -58,9 +58,7 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::Contracts::RateCardRetrieveResponse::Data::Alias>, nil]
           optional :aliases,
-                   -> {
-                     Metronome::ArrayOf[Metronome::Models::Contracts::RateCardRetrieveResponse::Data::Alias]
-                   }
+                   -> { Metronome::ArrayOf[Metronome::Models::Contracts::RateCardRetrieveResponse::Data::Alias] }
 
           # @!parse
           #   # @return [Array<Metronome::Models::Contracts::RateCardRetrieveResponse::Data::Alias>]
@@ -70,9 +68,7 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion>, nil]
           optional :credit_type_conversions,
-                   -> {
-                     Metronome::ArrayOf[Metronome::Models::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion]
-                   }
+                   -> { Metronome::ArrayOf[Metronome::Models::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion] }
 
           # @!parse
           #   # @return [Array<Metronome::Models::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion>]

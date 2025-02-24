@@ -11,7 +11,8 @@ module Metronome
         end
 
         sig do
-          params(_: Metronome::Models::Customers::CustomerAlert::Alert).returns(Metronome::Models::Customers::CustomerAlert::Alert)
+          params(_: Metronome::Models::Customers::CustomerAlert::Alert)
+            .returns(Metronome::Models::Customers::CustomerAlert::Alert)
         end
         def alert=(_)
         end
@@ -37,19 +38,21 @@ module Metronome
             alert: Metronome::Models::Customers::CustomerAlert::Alert,
             customer_status: T.nilable(Symbol),
             triggered_by: T.nilable(String)
-          ).void
+          )
+            .void
         end
         def initialize(alert:, customer_status:, triggered_by: nil)
         end
 
         sig do
-          override.returns(
-            {
-              alert: Metronome::Models::Customers::CustomerAlert::Alert,
-              customer_status: T.nilable(Symbol),
-              triggered_by: T.nilable(String)
-            }
-          )
+          override
+            .returns(
+              {
+                alert: Metronome::Models::Customers::CustomerAlert::Alert,
+                customer_status: T.nilable(Symbol),
+                triggered_by: T.nilable(String)
+              }
+            )
         end
         def to_hash
         end
@@ -116,19 +119,19 @@ module Metronome
           end
 
           sig do
-            params(_: T.nilable(Metronome::Models::CreditTypeData)).returns(T.nilable(Metronome::Models::CreditTypeData))
+            params(_: T.nilable(Metronome::Models::CreditTypeData))
+              .returns(T.nilable(Metronome::Models::CreditTypeData))
           end
           def credit_type=(_)
           end
 
-          sig do
-            returns(T.nilable(T::Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter]))
-          end
+          sig { returns(T.nilable(T::Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter])) }
           def custom_field_filters
           end
 
           sig do
-            params(_: T::Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter]).returns(T::Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter])
+            params(_: T::Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter])
+              .returns(T::Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter])
           end
           def custom_field_filters=(_)
           end
@@ -138,7 +141,8 @@ module Metronome
           end
 
           sig do
-            params(_: Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter).returns(Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter)
+            params(_: Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter)
+              .returns(Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter)
           end
           def group_key_filter=(_)
           end
@@ -173,7 +177,8 @@ module Metronome
               group_key_filter: Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter,
               invoice_types_filter: T::Array[String],
               uniqueness_key: String
-            ).void
+            )
+              .void
           end
           def initialize(
             id:,
@@ -192,22 +197,23 @@ module Metronome
           end
 
           sig do
-            override.returns(
-              {
-                id: String,
-                name: String,
-                status: Symbol,
-                threshold: Float,
-                type: Symbol,
-                updated_at: Time,
-                credit_grant_type_filters: T::Array[String],
-                credit_type: T.nilable(Metronome::Models::CreditTypeData),
-                custom_field_filters: T::Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter],
-                group_key_filter: Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter,
-                invoice_types_filter: T::Array[String],
-                uniqueness_key: String
-              }
-            )
+            override
+              .returns(
+                {
+                  id: String,
+                  name: String,
+                  status: Symbol,
+                  threshold: Float,
+                  type: Symbol,
+                  updated_at: Time,
+                  credit_grant_type_filters: T::Array[String],
+                  credit_type: T.nilable(Metronome::Models::CreditTypeData),
+                  custom_field_filters: T::Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter],
+                  group_key_filter: Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter,
+                  invoice_types_filter: T::Array[String],
+                  uniqueness_key: String
+                }
+              )
           end
           def to_hash
           end

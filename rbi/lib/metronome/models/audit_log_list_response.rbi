@@ -16,7 +16,8 @@ module Metronome
       end
 
       sig do
-        params(_: Metronome::Models::AuditLogListResponse::Request).returns(Metronome::Models::AuditLogListResponse::Request)
+        params(_: Metronome::Models::AuditLogListResponse::Request)
+          .returns(Metronome::Models::AuditLogListResponse::Request)
       end
       def request=(_)
       end
@@ -42,7 +43,8 @@ module Metronome
       end
 
       sig do
-        params(_: Metronome::Models::AuditLogListResponse::Actor).returns(Metronome::Models::AuditLogListResponse::Actor)
+        params(_: Metronome::Models::AuditLogListResponse::Actor)
+          .returns(Metronome::Models::AuditLogListResponse::Actor)
       end
       def actor=(_)
       end
@@ -90,7 +92,8 @@ module Metronome
           resource_id: String,
           resource_type: String,
           status: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -106,19 +109,20 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            request: Metronome::Models::AuditLogListResponse::Request,
-            timestamp: Time,
-            action: String,
-            actor: Metronome::Models::AuditLogListResponse::Actor,
-            description: String,
-            resource_id: String,
-            resource_type: String,
-            status: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              request: Metronome::Models::AuditLogListResponse::Request,
+              timestamp: Time,
+              action: String,
+              actor: Metronome::Models::AuditLogListResponse::Actor,
+              description: String,
+              resource_id: String,
+              resource_type: String,
+              status: Symbol
+            }
+          )
       end
       def to_hash
       end

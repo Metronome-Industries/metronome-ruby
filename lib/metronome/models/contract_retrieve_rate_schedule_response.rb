@@ -85,10 +85,7 @@ module Metronome
         #     list rate when consuming a credit or commit.
         #
         #   @return [Metronome::Models::ContractRetrieveRateScheduleResponse::Data::CommitRate, nil]
-        optional :commit_rate,
-                 -> {
-                   Metronome::Models::ContractRetrieveRateScheduleResponse::Data::CommitRate
-                 }
+        optional :commit_rate, -> { Metronome::Models::ContractRetrieveRateScheduleResponse::Data::CommitRate }
 
         # @!parse
         #   # @return [Metronome::Models::ContractRetrieveRateScheduleResponse::Data::CommitRate]
@@ -168,9 +165,7 @@ module Metronome
           #
           #   @return [Symbol, Metronome::Models::ContractRetrieveRateScheduleResponse::Data::CommitRate::RateType]
           required :rate_type,
-                   enum: -> {
-                     Metronome::Models::ContractRetrieveRateScheduleResponse::Data::CommitRate::RateType
-                   }
+                   enum: -> { Metronome::Models::ContractRetrieveRateScheduleResponse::Data::CommitRate::RateType }
 
           # @!attribute [r] price
           #   Commit rate price. For FLAT rate_type, this must be >=0.

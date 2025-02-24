@@ -40,14 +40,13 @@ module Metronome
           def next_page=(_)
           end
 
-          sig do
-            returns(T.nilable(T::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector]))
-          end
+          sig { returns(T.nilable(T::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector])) }
           def selectors
           end
 
           sig do
-            params(_: T::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector]).returns(T::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector])
+            params(_: T::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector])
+              .returns(T::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector])
           end
           def selectors=(_)
           end
@@ -60,22 +59,24 @@ module Metronome
               next_page: String,
               selectors: T::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector],
               request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-            ).void
+            )
+              .void
           end
           def initialize(at:, rate_card_id:, limit: nil, next_page: nil, selectors: nil, request_options: {})
           end
 
           sig do
-            override.returns(
-              {
-                at: Time,
-                rate_card_id: String,
-                limit: Integer,
-                next_page: String,
-                selectors: T::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector],
-                request_options: Metronome::RequestOptions
-              }
-            )
+            override
+              .returns(
+                {
+                  at: Time,
+                  rate_card_id: String,
+                  limit: Integer,
+                  next_page: String,
+                  selectors: T::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector],
+                  request_options: Metronome::RequestOptions
+                }
+              )
           end
           def to_hash
           end
@@ -119,7 +120,8 @@ module Metronome
                 pricing_group_values: T::Hash[Symbol, String],
                 product_id: String,
                 product_tags: T::Array[String]
-              ).void
+              )
+                .void
             end
             def initialize(
               partial_pricing_group_values: nil,
@@ -130,14 +132,15 @@ module Metronome
             end
 
             sig do
-              override.returns(
-                {
-                  partial_pricing_group_values: T::Hash[Symbol, String],
-                  pricing_group_values: T::Hash[Symbol, String],
-                  product_id: String,
-                  product_tags: T::Array[String]
-                }
-              )
+              override
+                .returns(
+                  {
+                    partial_pricing_group_values: T::Hash[Symbol, String],
+                    pricing_group_values: T::Hash[Symbol, String],
+                    product_id: String,
+                    product_tags: T::Array[String]
+                  }
+                )
             end
             def to_hash
             end

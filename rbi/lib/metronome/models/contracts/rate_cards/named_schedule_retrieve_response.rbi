@@ -5,26 +5,24 @@ module Metronome
     module Contracts
       module RateCards
         class NamedScheduleRetrieveResponse < Metronome::BaseModel
-          sig do
-            returns(T::Array[Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse::Data])
-          end
+          sig { returns(T::Array[Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse::Data]) }
           def data
           end
 
           sig do
-            params(_: T::Array[Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse::Data]).returns(T::Array[Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse::Data])
+            params(_: T::Array[Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse::Data])
+              .returns(T::Array[Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse::Data])
           end
           def data=(_)
           end
 
-          sig do
-            params(data: T::Array[Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse::Data]).void
-          end
+          sig { params(data: T::Array[Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse::Data]).void }
           def initialize(data:)
           end
 
           sig do
-            override.returns({data: T::Array[Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse::Data]})
+            override
+              .returns({data: T::Array[Metronome::Models::Contracts::RateCards::NamedScheduleRetrieveResponse::Data]})
           end
           def to_hash
           end

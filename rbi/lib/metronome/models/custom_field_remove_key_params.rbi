@@ -27,7 +27,8 @@ module Metronome
           entity: Symbol,
           key: String,
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(entity:, key:, request_options: {})
       end

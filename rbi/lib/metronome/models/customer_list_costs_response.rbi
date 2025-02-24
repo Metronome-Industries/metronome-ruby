@@ -8,11 +8,8 @@ module Metronome
       end
 
       sig do
-        params(
-          _: T::Hash[Symbol,
-                     Metronome::Models::CustomerListCostsResponse::CreditType]
-        ).returns(T::Hash[Symbol,
-                          Metronome::Models::CustomerListCostsResponse::CreditType])
+        params(_: T::Hash[Symbol, Metronome::Models::CustomerListCostsResponse::CreditType])
+          .returns(T::Hash[Symbol, Metronome::Models::CustomerListCostsResponse::CreditType])
       end
       def credit_types=(_)
       end
@@ -38,19 +35,21 @@ module Metronome
           credit_types: T::Hash[Symbol, Metronome::Models::CustomerListCostsResponse::CreditType],
           end_timestamp: Time,
           start_timestamp: Time
-        ).void
+        )
+          .void
       end
       def initialize(credit_types:, end_timestamp:, start_timestamp:)
       end
 
       sig do
-        override.returns(
-          {
-            credit_types: T::Hash[Symbol, Metronome::Models::CustomerListCostsResponse::CreditType],
-            end_timestamp: Time,
-            start_timestamp: Time
-          }
-        )
+        override
+          .returns(
+            {
+              credit_types: T::Hash[Symbol, Metronome::Models::CustomerListCostsResponse::CreditType],
+              end_timestamp: Time,
+              start_timestamp: Time
+            }
+          )
       end
       def to_hash
       end
@@ -64,14 +63,13 @@ module Metronome
         def cost=(_)
         end
 
-        sig do
-          returns(T.nilable(T::Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown]))
-        end
+        sig { returns(T.nilable(T::Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown])) }
         def line_item_breakdown
         end
 
         sig do
-          params(_: T::Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown]).returns(T::Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown])
+          params(_: T::Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown])
+            .returns(T::Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown])
         end
         def line_item_breakdown=(_)
         end
@@ -89,19 +87,21 @@ module Metronome
             cost: Float,
             line_item_breakdown: T::Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown],
             name: String
-          ).void
+          )
+            .void
         end
         def initialize(cost: nil, line_item_breakdown: nil, name: nil)
         end
 
         sig do
-          override.returns(
-            {
-              cost: Float,
-              line_item_breakdown: T::Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown],
-              name: String
-            }
-          )
+          override
+            .returns(
+              {
+                cost: Float,
+                line_item_breakdown: T::Array[Metronome::Models::CustomerListCostsResponse::CreditType::LineItemBreakdown],
+                name: String
+              }
+            )
         end
         def to_hash
         end

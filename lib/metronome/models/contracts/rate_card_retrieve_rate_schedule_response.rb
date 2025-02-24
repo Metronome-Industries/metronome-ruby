@@ -15,9 +15,7 @@ module Metronome
         #
         #   @return [Array<Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Data>]
         required :data,
-                 -> {
-                   Metronome::ArrayOf[Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Data]
-                 }
+                 -> { Metronome::ArrayOf[Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Data] }
 
         # @!attribute next_page
         #
@@ -152,9 +150,7 @@ module Metronome
             #
             #   @return [Symbol, Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Data::CommitRate::RateType]
             required :rate_type,
-                     enum: -> {
-                       Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Data::CommitRate::RateType
-                     }
+                     enum: -> { Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Data::CommitRate::RateType }
 
             # @!attribute [r] price
             #   Commit rate price. For FLAT rate_type, this must be >=0.

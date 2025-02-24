@@ -20,10 +20,7 @@ module Metronome
         #     recently assigned. It is not exposed to end customers.
         #
         #   @return [Array<Metronome::Models::Contracts::RateCardCreateParams::Alias>, nil]
-        optional :aliases,
-                 -> {
-                   Metronome::ArrayOf[Metronome::Models::Contracts::RateCardCreateParams::Alias]
-                 }
+        optional :aliases, -> { Metronome::ArrayOf[Metronome::Models::Contracts::RateCardCreateParams::Alias] }
 
         # @!parse
         #   # @return [Array<Metronome::Models::Contracts::RateCardCreateParams::Alias>]
@@ -34,9 +31,7 @@ module Metronome
         #
         #   @return [Array<Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion>, nil]
         optional :credit_type_conversions,
-                 -> {
-                   Metronome::ArrayOf[Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion]
-                 }
+                 -> { Metronome::ArrayOf[Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion] }
 
         # @!parse
         #   # @return [Array<Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion>]

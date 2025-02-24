@@ -8,7 +8,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::UsageListResponse::Data]).returns(T::Array[Metronome::Models::UsageListResponse::Data])
+        params(_: T::Array[Metronome::Models::UsageListResponse::Data])
+          .returns(T::Array[Metronome::Models::UsageListResponse::Data])
       end
       def data=(_)
       end
@@ -21,19 +22,13 @@ module Metronome
       def next_page=(_)
       end
 
-      sig do
-        params(data: T::Array[Metronome::Models::UsageListResponse::Data], next_page: T.nilable(String)).void
-      end
+      sig { params(data: T::Array[Metronome::Models::UsageListResponse::Data], next_page: T.nilable(String)).void }
       def initialize(data:, next_page:)
       end
 
       sig do
-        override.returns(
-          {
-            data: T::Array[Metronome::Models::UsageListResponse::Data],
-            next_page: T.nilable(String)
-          }
-        )
+        override
+          .returns({data: T::Array[Metronome::Models::UsageListResponse::Data], next_page: T.nilable(String)})
       end
       def to_hash
       end
@@ -104,7 +99,8 @@ module Metronome
             start_timestamp: Time,
             value: T.nilable(Float),
             groups: T::Hash[Symbol, T.nilable(Float)]
-          ).void
+          )
+            .void
         end
         def initialize(
           billable_metric_id:,
@@ -118,17 +114,18 @@ module Metronome
         end
 
         sig do
-          override.returns(
-            {
-              billable_metric_id: String,
-              billable_metric_name: String,
-              customer_id: String,
-              end_timestamp: Time,
-              start_timestamp: Time,
-              value: T.nilable(Float),
-              groups: T::Hash[Symbol, T.nilable(Float)]
-            }
-          )
+          override
+            .returns(
+              {
+                billable_metric_id: String,
+                billable_metric_name: String,
+                customer_id: String,
+                end_timestamp: Time,
+                start_timestamp: Time,
+                value: T.nilable(Float),
+                groups: T::Hash[Symbol, T.nilable(Float)]
+              }
+            )
         end
         def to_hash
         end

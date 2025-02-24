@@ -8,7 +8,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::ScheduleDuration::ScheduleItem]).returns(T::Array[Metronome::Models::ScheduleDuration::ScheduleItem])
+        params(_: T::Array[Metronome::Models::ScheduleDuration::ScheduleItem])
+          .returns(T::Array[Metronome::Models::ScheduleDuration::ScheduleItem])
       end
       def schedule_items=(_)
       end
@@ -25,18 +26,20 @@ module Metronome
         params(
           schedule_items: T::Array[Metronome::Models::ScheduleDuration::ScheduleItem],
           credit_type: Metronome::Models::CreditTypeData
-        ).void
+        )
+          .void
       end
       def initialize(schedule_items:, credit_type: nil)
       end
 
       sig do
-        override.returns(
-          {
-            schedule_items: T::Array[Metronome::Models::ScheduleDuration::ScheduleItem],
-            credit_type: Metronome::Models::CreditTypeData
-          }
-        )
+        override
+          .returns(
+            {
+              schedule_items: T::Array[Metronome::Models::ScheduleDuration::ScheduleItem],
+              credit_type: Metronome::Models::CreditTypeData
+            }
+          )
       end
       def to_hash
       end

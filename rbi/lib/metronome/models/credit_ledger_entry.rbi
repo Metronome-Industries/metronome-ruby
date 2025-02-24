@@ -68,7 +68,8 @@ module Metronome
           reason: String,
           running_balance: Float,
           invoice_id: T.nilable(String)
-        ).void
+        )
+          .void
       end
       def initialize(
         amount:,
@@ -82,17 +83,18 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            amount: Float,
-            created_by: String,
-            credit_grant_id: String,
-            effective_at: Time,
-            reason: String,
-            running_balance: Float,
-            invoice_id: T.nilable(String)
-          }
-        )
+        override
+          .returns(
+            {
+              amount: Float,
+              created_by: String,
+              credit_grant_id: String,
+              effective_at: Time,
+              reason: String,
+              running_balance: Float,
+              invoice_id: T.nilable(String)
+            }
+          )
       end
       def to_hash
       end

@@ -45,7 +45,8 @@ module Metronome
           usage_filter: Metronome::Models::BaseUsageFilter,
           usage_statement_schedule: Metronome::Models::ContractCreateParams::UsageStatementSchedule,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::Models::ContractCreateResponse)
+        )
+          .returns(Metronome::Models::ContractCreateResponse)
       end
       def create(
         customer_id:,
@@ -86,7 +87,8 @@ module Metronome
           include_balance: T::Boolean,
           include_ledgers: T::Boolean,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::Models::ContractRetrieveResponse)
+        )
+          .returns(Metronome::Models::ContractRetrieveResponse)
       end
       def retrieve(
         contract_id:,
@@ -106,7 +108,8 @@ module Metronome
           include_ledgers: T::Boolean,
           starting_at: Time,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::Models::ContractListResponse)
+        )
+          .returns(Metronome::Models::ContractListResponse)
       end
       def list(
         customer_id:,
@@ -129,7 +132,8 @@ module Metronome
           contract_id: String,
           timestamp: Time,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).void
+        )
+          .void
       end
       def add_manual_balance_entry(
         id:,
@@ -160,7 +164,8 @@ module Metronome
           scheduled_charges: T::Array[Metronome::Models::ContractAmendParams::ScheduledCharge],
           total_contract_value: Float,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::Models::ContractAmendResponse)
+        )
+          .returns(Metronome::Models::ContractAmendResponse)
       end
       def amend(
         contract_id:,
@@ -187,7 +192,8 @@ module Metronome
           customer_id: String,
           void_invoices: T::Boolean,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::Models::ContractArchiveResponse)
+        )
+          .returns(Metronome::Models::ContractArchiveResponse)
       end
       def archive(contract_id:, customer_id:, void_invoices:, request_options: {})
       end
@@ -197,7 +203,8 @@ module Metronome
           invoices: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice],
           preview: T::Boolean,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::Models::ContractCreateHistoricalInvoicesResponse)
+        )
+          .returns(Metronome::Models::ContractCreateHistoricalInvoicesResponse)
       end
       def create_historical_invoices(invoices:, preview:, request_options: {})
       end
@@ -215,7 +222,8 @@ module Metronome
           next_page: String,
           starting_at: Time,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::Models::ContractListBalancesResponse)
+        )
+          .returns(Metronome::Models::ContractListBalancesResponse)
       end
       def list_balances(
         customer_id:,
@@ -241,7 +249,8 @@ module Metronome
           at: Time,
           selectors: T::Array[Metronome::Models::ContractRetrieveRateScheduleParams::Selector],
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::Models::ContractRetrieveRateScheduleResponse)
+        )
+          .returns(Metronome::Models::ContractRetrieveRateScheduleResponse)
       end
       def retrieve_rate_schedule(
         contract_id:,
@@ -263,7 +272,8 @@ module Metronome
           netsuite_invoice_header_end: Time,
           netsuite_invoice_header_start: Time,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::Models::ContractScheduleProServicesInvoiceResponse)
+        )
+          .returns(Metronome::Models::ContractScheduleProServicesInvoiceResponse)
       end
       def schedule_pro_services_invoice(
         contract_id:,
@@ -284,7 +294,8 @@ module Metronome
           group_values: T::Array[String],
           starting_at: Time,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).void
+        )
+          .void
       end
       def set_usage_filter(
         contract_id:,
@@ -303,7 +314,8 @@ module Metronome
           allow_ending_before_finalized_invoice: T::Boolean,
           ending_before: Time,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::Models::ContractUpdateEndDateResponse)
+        )
+          .returns(Metronome::Models::ContractUpdateEndDateResponse)
       end
       def update_end_date(
         contract_id:,

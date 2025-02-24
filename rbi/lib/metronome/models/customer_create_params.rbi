@@ -19,7 +19,8 @@ module Metronome
       end
 
       sig do
-        params(_: Metronome::Models::CustomerCreateParams::BillingConfig).returns(Metronome::Models::CustomerCreateParams::BillingConfig)
+        params(_: Metronome::Models::CustomerCreateParams::BillingConfig)
+          .returns(Metronome::Models::CustomerCreateParams::BillingConfig)
       end
       def billing_config=(_)
       end
@@ -33,13 +34,16 @@ module Metronome
       end
 
       sig do
-        returns(T.nilable(T::Array[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration]))
+        returns(
+          T.nilable(T::Array[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration])
+        )
       end
       def customer_billing_provider_configurations
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration]).returns(T::Array[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration])
+        params(_: T::Array[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration])
+          .returns(T::Array[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration])
       end
       def customer_billing_provider_configurations=(_)
       end
@@ -69,7 +73,8 @@ module Metronome
           external_id: String,
           ingest_aliases: T::Array[String],
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         name:,
@@ -83,17 +88,18 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            name: String,
-            billing_config: Metronome::Models::CustomerCreateParams::BillingConfig,
-            custom_fields: T::Hash[Symbol, String],
-            customer_billing_provider_configurations: T::Array[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration],
-            external_id: String,
-            ingest_aliases: T::Array[String],
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              name: String,
+              billing_config: Metronome::Models::CustomerCreateParams::BillingConfig,
+              custom_fields: T::Hash[Symbol, String],
+              customer_billing_provider_configurations: T::Array[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration],
+              external_id: String,
+              ingest_aliases: T::Array[String],
+              request_options: Metronome::RequestOptions
+            }
+          )
       end
       def to_hash
       end
@@ -155,7 +161,8 @@ module Metronome
             aws_product_code: String,
             aws_region: Symbol,
             stripe_collection_method: Symbol
-          ).void
+          )
+            .void
         end
         def initialize(
           billing_provider_customer_id:,
@@ -168,16 +175,17 @@ module Metronome
         end
 
         sig do
-          override.returns(
-            {
-              billing_provider_customer_id: String,
-              billing_provider_type: Symbol,
-              aws_is_subscription_product: T::Boolean,
-              aws_product_code: String,
-              aws_region: Symbol,
-              stripe_collection_method: Symbol
-            }
-          )
+          override
+            .returns(
+              {
+                billing_provider_customer_id: String,
+                billing_provider_type: Symbol,
+                aws_is_subscription_product: T::Boolean,
+                aws_product_code: String,
+                aws_region: Symbol,
+                stripe_collection_method: Symbol
+              }
+            )
         end
         def to_hash
         end
@@ -284,20 +292,22 @@ module Metronome
             configuration: T::Hash[Symbol, T.anything],
             delivery_method: Symbol,
             delivery_method_id: String
-          ).void
+          )
+            .void
         end
         def initialize(billing_provider:, configuration: nil, delivery_method: nil, delivery_method_id: nil)
         end
 
         sig do
-          override.returns(
-            {
-              billing_provider: Symbol,
-              configuration: T::Hash[Symbol, T.anything],
-              delivery_method: Symbol,
-              delivery_method_id: String
-            }
-          )
+          override
+            .returns(
+              {
+                billing_provider: Symbol,
+                configuration: T::Hash[Symbol, T.anything],
+                delivery_method: Symbol,
+                delivery_method_id: String
+              }
+            )
         end
         def to_hash
         end

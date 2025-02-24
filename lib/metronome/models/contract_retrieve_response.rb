@@ -99,9 +99,7 @@ module Metronome
         #
         #   @return [Symbol, Metronome::Models::ContractRetrieveResponse::Data::ScheduledChargesOnUsageInvoices, nil]
         optional :scheduled_charges_on_usage_invoices,
-                 enum: -> {
-                   Metronome::Models::ContractRetrieveResponse::Data::ScheduledChargesOnUsageInvoices
-                 }
+                 enum: -> { Metronome::Models::ContractRetrieveResponse::Data::ScheduledChargesOnUsageInvoices }
 
         # @!parse
         #   # @return [Symbol, Metronome::Models::ContractRetrieveResponse::Data::ScheduledChargesOnUsageInvoices]
@@ -240,9 +238,7 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty>, nil]
           optional :reseller_royalties,
-                   -> {
-                     Metronome::ArrayOf[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty]
-                   }
+                   -> { Metronome::ArrayOf[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty] }
 
           # @!parse
           #   # @return [Array<Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty>]
@@ -310,9 +306,7 @@ module Metronome
             #
             #   @return [Symbol, Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty::ResellerType]
             required :reseller_type,
-                     enum: -> {
-                       Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty::ResellerType
-                     }
+                     enum: -> { Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty::ResellerType }
 
             # @!attribute [r] aws_account_number
             #
@@ -475,17 +469,13 @@ module Metronome
           #
           #   @return [Symbol, Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::BillingProvider]
           required :billing_provider,
-                   enum: -> {
-                     Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::BillingProvider
-                   }
+                   enum: -> { Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::BillingProvider }
 
           # @!attribute delivery_method
           #
           #   @return [Symbol, Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod]
           required :delivery_method,
-                   enum: -> {
-                     Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod
-                   }
+                   enum: -> { Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod }
 
           # @!parse
           #   # The billing provider configuration associated with a contract.

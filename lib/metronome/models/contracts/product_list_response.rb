@@ -38,10 +38,7 @@ module Metronome
         # @!attribute updates
         #
         #   @return [Array<Metronome::Models::Contracts::ProductListResponse::Update>]
-        required :updates,
-                 -> {
-                   Metronome::ArrayOf[Metronome::Models::Contracts::ProductListResponse::Update]
-                 }
+        required :updates, -> { Metronome::ArrayOf[Metronome::Models::Contracts::ProductListResponse::Update] }
 
         # @!attribute archived_at
         #

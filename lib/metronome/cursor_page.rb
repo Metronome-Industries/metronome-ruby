@@ -30,6 +30,7 @@ module Metronome
     # @return [Array<Object>]
     attr_accessor :data
 
+    # rubocop:disable Lint/UnusedMethodArgument
     # @private
     #
     # @param client [Metronome::BaseClient]
@@ -54,6 +55,7 @@ module Metronome
       else
       end
     end
+    # rubocop:enable Lint/UnusedMethodArgument
 
     # @return [Boolean]
     #
@@ -66,7 +68,7 @@ module Metronome
     #
     def next_page
       unless next_page?
-        raise "No more pages available; please check #next_page? before calling #next_page"
+        raise RuntimeError.new("No more pages available; please check #next_page? before calling #next_page")
       end
 
       req = Metronome::Util.deep_merge(@req, {query: {next_page: next_page_}})

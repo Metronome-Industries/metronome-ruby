@@ -55,7 +55,8 @@ module Metronome
             value: T.anything,
             ending_before: Time,
             request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(
           rate_card_id:,
@@ -68,16 +69,17 @@ module Metronome
         end
 
         sig do
-          override.returns(
-            {
-              rate_card_id: String,
-              schedule_name: String,
-              starting_at: Time,
-              value: T.anything,
-              ending_before: Time,
-              request_options: Metronome::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                rate_card_id: String,
+                schedule_name: String,
+                starting_at: Time,
+                value: T.anything,
+                ending_before: Time,
+                request_options: Metronome::RequestOptions
+              }
+            )
         end
         def to_hash
         end

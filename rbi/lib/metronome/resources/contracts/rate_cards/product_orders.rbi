@@ -10,7 +10,8 @@ module Metronome
               product_moves: T::Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove],
               rate_card_id: String,
               request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-            ).returns(Metronome::Models::Contracts::RateCards::ProductOrderUpdateResponse)
+            )
+              .returns(Metronome::Models::Contracts::RateCards::ProductOrderUpdateResponse)
           end
           def update(product_moves:, rate_card_id:, request_options: {})
           end
@@ -20,7 +21,8 @@ module Metronome
               product_order: T::Array[String],
               rate_card_id: String,
               request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-            ).returns(Metronome::Models::Contracts::RateCards::ProductOrderSetResponse)
+            )
+              .returns(Metronome::Models::Contracts::RateCards::ProductOrderSetResponse)
           end
           def set(product_order:, rate_card_id:, request_options: {})
           end

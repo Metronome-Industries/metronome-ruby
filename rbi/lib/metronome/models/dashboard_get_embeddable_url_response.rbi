@@ -8,7 +8,8 @@ module Metronome
       end
 
       sig do
-        params(_: Metronome::Models::DashboardGetEmbeddableURLResponse::Data).returns(Metronome::Models::DashboardGetEmbeddableURLResponse::Data)
+        params(_: Metronome::Models::DashboardGetEmbeddableURLResponse::Data)
+          .returns(Metronome::Models::DashboardGetEmbeddableURLResponse::Data)
       end
       def data=(_)
       end

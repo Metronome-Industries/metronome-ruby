@@ -83,7 +83,8 @@ module Metronome
           property_filters: T::Array[Metronome::Models::PropertyFilter],
           sql: String,
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         name:,
@@ -99,19 +100,20 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            name: String,
-            aggregation_key: String,
-            aggregation_type: Symbol,
-            custom_fields: T::Hash[Symbol, String],
-            event_type_filter: Metronome::Models::EventTypeFilter,
-            group_keys: T::Array[T::Array[String]],
-            property_filters: T::Array[Metronome::Models::PropertyFilter],
-            sql: String,
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              name: String,
+              aggregation_key: String,
+              aggregation_type: Symbol,
+              custom_fields: T::Hash[Symbol, String],
+              event_type_filter: Metronome::Models::EventTypeFilter,
+              group_keys: T::Array[T::Array[String]],
+              property_filters: T::Array[Metronome::Models::PropertyFilter],
+              sql: String,
+              request_options: Metronome::RequestOptions
+            }
+          )
       end
       def to_hash
       end

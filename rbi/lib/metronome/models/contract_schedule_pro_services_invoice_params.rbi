@@ -35,7 +35,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem]).returns(T::Array[Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem])
+        params(_: T::Array[Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem])
+          .returns(T::Array[Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem])
       end
       def line_items=(_)
       end
@@ -65,7 +66,8 @@ module Metronome
           netsuite_invoice_header_end: Time,
           netsuite_invoice_header_start: Time,
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         contract_id:,
@@ -79,17 +81,18 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            contract_id: String,
-            customer_id: String,
-            issued_at: Time,
-            line_items: T::Array[Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem],
-            netsuite_invoice_header_end: Time,
-            netsuite_invoice_header_start: Time,
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              contract_id: String,
+              customer_id: String,
+              issued_at: Time,
+              line_items: T::Array[Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem],
+              netsuite_invoice_header_end: Time,
+              netsuite_invoice_header_start: Time,
+              request_options: Metronome::RequestOptions
+            }
+          )
       end
       def to_hash
       end
@@ -169,7 +172,8 @@ module Metronome
             netsuite_invoice_billing_start: Time,
             quantity: Float,
             unit_price: Float
-          ).void
+          )
+            .void
         end
         def initialize(
           professional_service_id:,
@@ -184,18 +188,19 @@ module Metronome
         end
 
         sig do
-          override.returns(
-            {
-              professional_service_id: String,
-              amendment_id: String,
-              amount: Float,
-              metadata: String,
-              netsuite_invoice_billing_end: Time,
-              netsuite_invoice_billing_start: Time,
-              quantity: Float,
-              unit_price: Float
-            }
-          )
+          override
+            .returns(
+              {
+                professional_service_id: String,
+                amendment_id: String,
+                amount: Float,
+                metadata: String,
+                netsuite_invoice_billing_end: Time,
+                netsuite_invoice_billing_start: Time,
+                quantity: Float,
+                unit_price: Float
+              }
+            )
         end
         def to_hash
         end

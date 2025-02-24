@@ -63,7 +63,8 @@ module Metronome
           only_archived: T::Boolean,
           salesforce_account_ids: T::Array[String],
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         customer_ids: nil,
@@ -77,17 +78,18 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            customer_ids: T::Array[String],
-            ingest_alias: String,
-            limit: Integer,
-            next_page: String,
-            only_archived: T::Boolean,
-            salesforce_account_ids: T::Array[String],
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              customer_ids: T::Array[String],
+              ingest_alias: String,
+              limit: Integer,
+              next_page: String,
+              only_archived: T::Boolean,
+              salesforce_account_ids: T::Array[String],
+              request_options: Metronome::RequestOptions
+            }
+          )
       end
       def to_hash
       end

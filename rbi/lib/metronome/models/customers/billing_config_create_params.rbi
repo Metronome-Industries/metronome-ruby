@@ -64,7 +64,8 @@ module Metronome
             aws_region: Symbol,
             stripe_collection_method: Symbol,
             request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(
           customer_id:,
@@ -78,17 +79,18 @@ module Metronome
         end
 
         sig do
-          override.returns(
-            {
-              customer_id: String,
-              billing_provider_type: Symbol,
-              billing_provider_customer_id: String,
-              aws_product_code: String,
-              aws_region: Symbol,
-              stripe_collection_method: Symbol,
-              request_options: Metronome::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                customer_id: String,
+                billing_provider_type: Symbol,
+                billing_provider_customer_id: String,
+                aws_product_code: String,
+                aws_region: Symbol,
+                stripe_collection_method: Symbol,
+                request_options: Metronome::RequestOptions
+              }
+            )
         end
         def to_hash
         end

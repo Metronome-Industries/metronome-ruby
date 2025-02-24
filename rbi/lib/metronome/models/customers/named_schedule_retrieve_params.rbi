@@ -37,20 +37,22 @@ module Metronome
             schedule_name: String,
             covering_date: Time,
             request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(customer_id:, schedule_name:, covering_date: nil, request_options: {})
         end
 
         sig do
-          override.returns(
-            {
-              customer_id: String,
-              schedule_name: String,
-              covering_date: Time,
-              request_options: Metronome::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                customer_id: String,
+                schedule_name: String,
+                covering_date: Time,
+                request_options: Metronome::RequestOptions
+              }
+            )
         end
         def to_hash
         end

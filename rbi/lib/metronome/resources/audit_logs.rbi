@@ -13,7 +13,8 @@ module Metronome
           sort: Symbol,
           starting_on: Time,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::CursorPage[Metronome::Models::AuditLogListResponse])
+        )
+          .returns(Metronome::CursorPage[Metronome::Models::AuditLogListResponse])
       end
       def list(
         ending_before: nil,

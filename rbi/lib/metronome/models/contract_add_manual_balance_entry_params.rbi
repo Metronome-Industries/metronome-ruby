@@ -72,7 +72,8 @@ module Metronome
           contract_id: String,
           timestamp: Time,
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -87,18 +88,19 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            amount: Float,
-            customer_id: String,
-            reason: String,
-            segment_id: String,
-            contract_id: String,
-            timestamp: Time,
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              amount: Float,
+              customer_id: String,
+              reason: String,
+              segment_id: String,
+              contract_id: String,
+              timestamp: Time,
+              request_options: Metronome::RequestOptions
+            }
+          )
       end
       def to_hash
       end

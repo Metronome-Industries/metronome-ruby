@@ -8,7 +8,8 @@ module Metronome
       end
 
       sig do
-        params(_: Metronome::Models::ContractRetrieveResponse::Data).returns(Metronome::Models::ContractRetrieveResponse::Data)
+        params(_: Metronome::Models::ContractRetrieveResponse::Data)
+          .returns(Metronome::Models::ContractRetrieveResponse::Data)
       end
       def data=(_)
       end
@@ -35,7 +36,8 @@ module Metronome
         end
 
         sig do
-          params(_: T::Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment]).returns(T::Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment])
+          params(_: T::Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment])
+            .returns(T::Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment])
         end
         def amendments=(_)
         end
@@ -45,7 +47,8 @@ module Metronome
         end
 
         sig do
-          params(_: Metronome::Models::ContractWithoutAmendments).returns(Metronome::Models::ContractWithoutAmendments)
+          params(_: Metronome::Models::ContractWithoutAmendments)
+            .returns(Metronome::Models::ContractWithoutAmendments)
         end
         def current=(_)
         end
@@ -63,7 +66,8 @@ module Metronome
         end
 
         sig do
-          params(_: Metronome::Models::ContractWithoutAmendments).returns(Metronome::Models::ContractWithoutAmendments)
+          params(_: Metronome::Models::ContractWithoutAmendments)
+            .returns(Metronome::Models::ContractWithoutAmendments)
         end
         def initial=(_)
         end
@@ -85,13 +89,16 @@ module Metronome
         end
 
         sig do
-          returns(T.nilable(Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration))
+          returns(
+            T.nilable(Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration)
+          )
         end
         def customer_billing_provider_configuration
         end
 
         sig do
-          params(_: Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration).returns(Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration)
+          params(_: Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration)
+            .returns(Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration)
         end
         def customer_billing_provider_configuration=(_)
         end
@@ -124,7 +131,8 @@ module Metronome
             customer_billing_provider_configuration: Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration,
             scheduled_charges_on_usage_invoices: Symbol,
             uniqueness_key: String
-          ).void
+          )
+            .void
         end
         def initialize(
           id:,
@@ -141,20 +149,21 @@ module Metronome
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              amendments: T::Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment],
-              current: Metronome::Models::ContractWithoutAmendments,
-              customer_id: String,
-              initial: Metronome::Models::ContractWithoutAmendments,
-              archived_at: Time,
-              custom_fields: T::Hash[Symbol, String],
-              customer_billing_provider_configuration: Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration,
-              scheduled_charges_on_usage_invoices: Symbol,
-              uniqueness_key: String
-            }
-          )
+          override
+            .returns(
+              {
+                id: String,
+                amendments: T::Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment],
+                current: Metronome::Models::ContractWithoutAmendments,
+                customer_id: String,
+                initial: Metronome::Models::ContractWithoutAmendments,
+                archived_at: Time,
+                custom_fields: T::Hash[Symbol, String],
+                customer_billing_provider_configuration: Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration,
+                scheduled_charges_on_usage_invoices: Symbol,
+                uniqueness_key: String
+              }
+            )
         end
         def to_hash
         end
@@ -196,9 +205,7 @@ module Metronome
           def overrides
           end
 
-          sig do
-            params(_: T::Array[Metronome::Models::Override]).returns(T::Array[Metronome::Models::Override])
-          end
+          sig { params(_: T::Array[Metronome::Models::Override]).returns(T::Array[Metronome::Models::Override]) }
           def overrides=(_)
           end
 
@@ -207,7 +214,8 @@ module Metronome
           end
 
           sig do
-            params(_: T::Array[Metronome::Models::ScheduledCharge]).returns(T::Array[Metronome::Models::ScheduledCharge])
+            params(_: T::Array[Metronome::Models::ScheduledCharge])
+              .returns(T::Array[Metronome::Models::ScheduledCharge])
           end
           def scheduled_charges=(_)
           end
@@ -232,9 +240,7 @@ module Metronome
           def discounts
           end
 
-          sig do
-            params(_: T::Array[Metronome::Models::Discount]).returns(T::Array[Metronome::Models::Discount])
-          end
+          sig { params(_: T::Array[Metronome::Models::Discount]).returns(T::Array[Metronome::Models::Discount]) }
           def discounts=(_)
           end
 
@@ -250,20 +256,21 @@ module Metronome
           def professional_services
           end
 
-          sig do
-            params(_: T::Array[Metronome::Models::ProService]).returns(T::Array[Metronome::Models::ProService])
-          end
+          sig { params(_: T::Array[Metronome::Models::ProService]).returns(T::Array[Metronome::Models::ProService]) }
           def professional_services=(_)
           end
 
           sig do
-            returns(T.nilable(T::Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty]))
+            returns(
+              T.nilable(T::Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty])
+            )
           end
           def reseller_royalties
           end
 
           sig do
-            params(_: T::Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty]).returns(T::Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty])
+            params(_: T::Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty])
+              .returns(T::Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty])
           end
           def reseller_royalties=(_)
           end
@@ -291,7 +298,8 @@ module Metronome
               professional_services: T::Array[Metronome::Models::ProService],
               reseller_royalties: T::Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty],
               salesforce_opportunity_id: String
-            ).void
+            )
+              .void
           end
           def initialize(
             id:,
@@ -311,23 +319,24 @@ module Metronome
           end
 
           sig do
-            override.returns(
-              {
-                id: String,
-                commits: T::Array[Metronome::Models::Commit],
-                created_at: Time,
-                created_by: String,
-                overrides: T::Array[Metronome::Models::Override],
-                scheduled_charges: T::Array[Metronome::Models::ScheduledCharge],
-                starting_at: Time,
-                credits: T::Array[Metronome::Models::Credit],
-                discounts: T::Array[Metronome::Models::Discount],
-                netsuite_sales_order_id: String,
-                professional_services: T::Array[Metronome::Models::ProService],
-                reseller_royalties: T::Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty],
-                salesforce_opportunity_id: String
-              }
-            )
+            override
+              .returns(
+                {
+                  id: String,
+                  commits: T::Array[Metronome::Models::Commit],
+                  created_at: Time,
+                  created_by: String,
+                  overrides: T::Array[Metronome::Models::Override],
+                  scheduled_charges: T::Array[Metronome::Models::ScheduledCharge],
+                  starting_at: Time,
+                  credits: T::Array[Metronome::Models::Credit],
+                  discounts: T::Array[Metronome::Models::Discount],
+                  netsuite_sales_order_id: String,
+                  professional_services: T::Array[Metronome::Models::ProService],
+                  reseller_royalties: T::Array[Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty],
+                  salesforce_opportunity_id: String
+                }
+              )
           end
           def to_hash
           end
@@ -434,7 +443,8 @@ module Metronome
                 netsuite_reseller_id: String,
                 reseller_contract_value: Float,
                 starting_at: Time
-              ).void
+              )
+                .void
             end
             def initialize(
               reseller_type:,
@@ -452,21 +462,22 @@ module Metronome
             end
 
             sig do
-              override.returns(
-                {
-                  reseller_type: Symbol,
-                  aws_account_number: String,
-                  aws_offer_id: String,
-                  aws_payer_reference_id: String,
-                  ending_before: T.nilable(Time),
-                  fraction: Float,
-                  gcp_account_id: String,
-                  gcp_offer_id: String,
-                  netsuite_reseller_id: String,
-                  reseller_contract_value: Float,
-                  starting_at: Time
-                }
-              )
+              override
+                .returns(
+                  {
+                    reseller_type: Symbol,
+                    aws_account_number: String,
+                    aws_offer_id: String,
+                    aws_payer_reference_id: String,
+                    ending_before: T.nilable(Time),
+                    fraction: Float,
+                    gcp_account_id: String,
+                    gcp_offer_id: String,
+                    netsuite_reseller_id: String,
+                    reseller_contract_value: Float,
+                    starting_at: Time
+                  }
+                )
             end
             def to_hash
             end

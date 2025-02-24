@@ -8,7 +8,8 @@ module Metronome
           limit: Integer,
           next_page: String,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::CursorPage[Metronome::Models::PlanListResponse])
+        )
+          .returns(Metronome::CursorPage[Metronome::Models::PlanListResponse])
       end
       def list(limit: nil, next_page: nil, request_options: {})
       end
@@ -17,7 +18,8 @@ module Metronome
         params(
           plan_id: String,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::Models::PlanGetDetailsResponse)
+        )
+          .returns(Metronome::Models::PlanGetDetailsResponse)
       end
       def get_details(plan_id:, request_options: {})
       end
@@ -28,7 +30,8 @@ module Metronome
           limit: Integer,
           next_page: String,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::CursorPage[Metronome::Models::PlanListChargesResponse])
+        )
+          .returns(Metronome::CursorPage[Metronome::Models::PlanListChargesResponse])
       end
       def list_charges(plan_id:, limit: nil, next_page: nil, request_options: {})
       end
@@ -40,7 +43,8 @@ module Metronome
           next_page: String,
           status: Symbol,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::CursorPage[Metronome::Models::PlanListCustomersResponse])
+        )
+          .returns(Metronome::CursorPage[Metronome::Models::PlanListCustomersResponse])
       end
       def list_customers(plan_id:, limit: nil, next_page: nil, status: nil, request_options: {})
       end

@@ -8,14 +8,13 @@ module Metronome
           extend Metronome::RequestParameters::Converter
           include Metronome::RequestParameters
 
-          sig do
-            returns(T::Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove])
-          end
+          sig { returns(T::Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove]) }
           def product_moves
           end
 
           sig do
-            params(_: T::Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove]).returns(T::Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove])
+            params(_: T::Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove])
+              .returns(T::Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove])
           end
           def product_moves=(_)
           end
@@ -33,17 +32,21 @@ module Metronome
               product_moves: T::Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove],
               rate_card_id: String,
               request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-            ).void
+            )
+              .void
           end
           def initialize(product_moves:, rate_card_id:, request_options: {})
           end
 
           sig do
-            override.returns(
-              {
-                product_moves: T::Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove], rate_card_id: String, request_options: Metronome::RequestOptions
-              }
-            )
+            override
+              .returns(
+                {
+                  product_moves: T::Array[Metronome::Models::Contracts::RateCards::ProductOrderUpdateParams::ProductMove],
+                  rate_card_id: String,
+                  request_options: Metronome::RequestOptions
+                }
+              )
           end
           def to_hash
           end

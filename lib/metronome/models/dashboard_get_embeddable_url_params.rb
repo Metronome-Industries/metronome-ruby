@@ -23,9 +23,7 @@ module Metronome
       #
       #   @return [Array<Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>, nil]
       optional :bm_group_key_overrides,
-               -> {
-                 Metronome::ArrayOf[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride]
-               }
+               -> { Metronome::ArrayOf[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride] }
 
       # @!parse
       #   # @return [Array<Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>]

@@ -11,7 +11,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::UsageIngestParams::Usage]).returns(T::Array[Metronome::Models::UsageIngestParams::Usage])
+        params(_: T::Array[Metronome::Models::UsageIngestParams::Usage])
+          .returns(T::Array[Metronome::Models::UsageIngestParams::Usage])
       end
       def usage=(_)
       end
@@ -20,18 +21,17 @@ module Metronome
         params(
           usage: T::Array[Metronome::Models::UsageIngestParams::Usage],
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(usage:, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            usage: T::Array[Metronome::Models::UsageIngestParams::Usage],
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {usage: T::Array[Metronome::Models::UsageIngestParams::Usage], request_options: Metronome::RequestOptions}
+          )
       end
       def to_hash
       end
@@ -84,21 +84,23 @@ module Metronome
             timestamp: String,
             transaction_id: String,
             properties: T::Hash[Symbol, T.anything]
-          ).void
+          )
+            .void
         end
         def initialize(customer_id:, event_type:, timestamp:, transaction_id:, properties: nil)
         end
 
         sig do
-          override.returns(
-            {
-              customer_id: String,
-              event_type: String,
-              timestamp: String,
-              transaction_id: String,
-              properties: T::Hash[Symbol, T.anything]
-            }
-          )
+          override
+            .returns(
+              {
+                customer_id: String,
+                event_type: String,
+                timestamp: String,
+                transaction_id: String,
+                properties: T::Hash[Symbol, T.anything]
+              }
+            )
         end
         def to_hash
         end

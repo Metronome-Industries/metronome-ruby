@@ -468,10 +468,7 @@ module Metronome
           # @!attribute type
           #
           #   @return [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type]
-          required :type,
-                   enum: -> {
-                     Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type
-                   }
+          required :type, enum: -> { Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type }
 
           # @!parse
           #   # @param amount [Float]
@@ -539,9 +536,7 @@ module Metronome
           #
           #   @return [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
           required :type,
-                   enum: -> {
-                     Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type
-                   }
+                   enum: -> { Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type }
 
           # @!parse
           #   # @param amount [Float]
@@ -609,10 +604,7 @@ module Metronome
           # @!attribute type
           #
           #   @return [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type]
-          required :type,
-                   enum: -> {
-                     Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type
-                   }
+          required :type, enum: -> { Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type }
 
           # @!parse
           #   # @param amount [Float]
@@ -674,10 +666,7 @@ module Metronome
           # @!attribute type
           #
           #   @return [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type]
-          required :type,
-                   enum: -> {
-                     Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type
-                   }
+          required :type, enum: -> { Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type }
 
           # @!parse
           #   # @param amount [Float]
@@ -744,10 +733,7 @@ module Metronome
           # @!attribute type
           #
           #   @return [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type]
-          required :type,
-                   enum: -> {
-                     Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type
-                   }
+          required :type, enum: -> { Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type }
 
           # @!parse
           #   # @param amount [Float]
@@ -815,10 +801,7 @@ module Metronome
           # @!attribute type
           #
           #   @return [Symbol, Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type]
-          required :type,
-                   enum: -> {
-                     Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type
-                   }
+          required :type, enum: -> { Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type }
 
           # @!parse
           #   # @param amount [Float]
@@ -875,9 +858,7 @@ module Metronome
           #
           #   @return [Symbol, Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type]
           required :type,
-                   enum: -> {
-                     Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type
-                   }
+                   enum: -> { Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type }
 
           # @!parse
           #   # @param amount [Float]
@@ -944,9 +925,7 @@ module Metronome
           #
           #   @return [Symbol, Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
           required :type,
-                   enum: -> {
-                     Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type
-                   }
+                   enum: -> { Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type }
 
           # @!parse
           #   # @param amount [Float]
@@ -1014,10 +993,7 @@ module Metronome
           # @!attribute type
           #
           #   @return [Symbol, Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type]
-          required :type,
-                   enum: -> {
-                     Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type
-                   }
+          required :type, enum: -> { Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type }
 
           # @!parse
           #   # @param amount [Float]
@@ -1079,10 +1055,7 @@ module Metronome
           # @!attribute type
           #
           #   @return [Symbol, Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type]
-          required :type,
-                   enum: -> {
-                     Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type
-                   }
+          required :type, enum: -> { Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type }
 
           # @!parse
           #   # @param amount [Float]
@@ -1204,10 +1177,7 @@ module Metronome
           # @!attribute type
           #
           #   @return [Symbol, Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type]
-          required :type,
-                   enum: -> {
-                     Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type
-                   }
+          required :type, enum: -> { Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type }
 
           # @!parse
           #   # @param amount [Float]
@@ -1262,10 +1232,7 @@ module Metronome
           # @!attribute type
           #
           #   @return [Symbol, Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type]
-          required :type,
-                   enum: -> {
-                     Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type
-                   }
+          required :type, enum: -> { Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type }
 
           # @!parse
           #   # @param amount [Float]

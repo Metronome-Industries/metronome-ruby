@@ -50,21 +50,23 @@ module Metronome
           ingest_aliases: T::Array[String],
           name: String,
           custom_fields: T::Hash[Symbol, String]
-        ).void
+        )
+          .void
       end
       def initialize(id:, external_id:, ingest_aliases:, name:, custom_fields: nil)
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            external_id: String,
-            ingest_aliases: T::Array[String],
-            name: String,
-            custom_fields: T::Hash[Symbol, String]
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              external_id: String,
+              ingest_aliases: T::Array[String],
+              name: String,
+              custom_fields: T::Hash[Symbol, String]
+            }
+          )
       end
       def to_hash
       end

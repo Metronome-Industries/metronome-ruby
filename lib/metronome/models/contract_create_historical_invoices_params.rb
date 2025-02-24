@@ -73,18 +73,14 @@ module Metronome
         #
         #   @return [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem>]
         required :usage_line_items,
-                 -> {
-                   Metronome::ArrayOf[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem]
-                 }
+                 -> { Metronome::ArrayOf[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem] }
 
         # @!attribute [r] billable_status
         #   This field's availability is dependent on your client's configuration.
         #
         #   @return [Symbol, Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus, nil]
         optional :billable_status,
-                 enum: -> {
-                   Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus
-                 }
+                 enum: -> { Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus }
 
         # @!parse
         #   # @return [Symbol, Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus]
@@ -94,9 +90,7 @@ module Metronome
         #
         #   @return [Symbol, Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity, nil]
         optional :breakdown_granularity,
-                 enum: -> {
-                   Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity
-                 }
+                 enum: -> { Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity }
 
         # @!parse
         #   # @return [Symbol, Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity]
@@ -199,9 +193,7 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity>, nil]
           optional :subtotals_with_quantity,
-                   -> {
-                     Metronome::ArrayOf[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
-                   }
+                   -> { Metronome::ArrayOf[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity] }
 
           # @!parse
           #   # @return [Array<Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity>]

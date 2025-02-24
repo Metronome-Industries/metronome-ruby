@@ -267,10 +267,7 @@ module Metronome
       # @!attribute [r] usage_statement_schedule
       #
       #   @return [Metronome::Models::ContractCreateParams::UsageStatementSchedule, nil]
-      optional :usage_statement_schedule,
-               -> {
-                 Metronome::Models::ContractCreateParams::UsageStatementSchedule
-               }
+      optional :usage_statement_schedule, -> { Metronome::Models::ContractCreateParams::UsageStatementSchedule }
 
       # @!parse
       #   # @return [Metronome::Models::ContractCreateParams::UsageStatementSchedule]
@@ -355,9 +352,7 @@ module Metronome
         #
         #   @return [Symbol, Metronome::Models::ContractCreateParams::BillingProviderConfiguration::BillingProvider, nil]
         optional :billing_provider,
-                 enum: -> {
-                   Metronome::Models::ContractCreateParams::BillingProviderConfiguration::BillingProvider
-                 }
+                 enum: -> { Metronome::Models::ContractCreateParams::BillingProviderConfiguration::BillingProvider }
 
         # @!parse
         #   # @return [Symbol, Metronome::Models::ContractCreateParams::BillingProviderConfiguration::BillingProvider]
@@ -377,9 +372,7 @@ module Metronome
         #
         #   @return [Symbol, Metronome::Models::ContractCreateParams::BillingProviderConfiguration::DeliveryMethod, nil]
         optional :delivery_method,
-                 enum: -> {
-                   Metronome::Models::ContractCreateParams::BillingProviderConfiguration::DeliveryMethod
-                 }
+                 enum: -> { Metronome::Models::ContractCreateParams::BillingProviderConfiguration::DeliveryMethod }
 
         # @!parse
         #   # @return [Symbol, Metronome::Models::ContractCreateParams::BillingProviderConfiguration::DeliveryMethod]
@@ -692,9 +685,7 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::ContractCreateParams::Commit::AccessSchedule::ScheduleItem>]
           required :schedule_items,
-                   -> {
-                     Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Commit::AccessSchedule::ScheduleItem]
-                   }
+                   -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Commit::AccessSchedule::ScheduleItem] }
 
           # @!attribute [r] credit_type_id
           #   Defaults to USD (cents) if not passed
@@ -792,9 +783,7 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::ScheduleItem>, nil]
           optional :schedule_items,
-                   -> {
-                     Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::ScheduleItem]
-                   }
+                   -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::ScheduleItem] }
 
           # @!parse
           #   # @return [Array<Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::ScheduleItem>]
@@ -830,9 +819,7 @@ module Metronome
             #
             #   @return [Symbol, Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::AmountDistribution]
             required :amount_distribution,
-                     enum: -> {
-                       Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::AmountDistribution
-                     }
+                     enum: -> { Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::AmountDistribution }
 
             # @!attribute ending_before
             #   RFC 3339 timestamp (exclusive).
@@ -844,9 +831,7 @@ module Metronome
             #
             #   @return [Symbol, Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::Frequency]
             required :frequency,
-                     enum: -> {
-                       Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::Frequency
-                     }
+                     enum: -> { Metronome::Models::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::Frequency }
 
             # @!attribute starting_at
             #   RFC 3339 timestamp (inclusive).
@@ -1208,9 +1193,7 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::ContractCreateParams::Credit::AccessSchedule::ScheduleItem>]
           required :schedule_items,
-                   -> {
-                     Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Credit::AccessSchedule::ScheduleItem]
-                   }
+                   -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Credit::AccessSchedule::ScheduleItem] }
 
           # @!attribute [r] credit_type_id
           #   Defaults to USD (cents) if not passed
@@ -1392,9 +1375,7 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::ContractCreateParams::Discount::Schedule::ScheduleItem>, nil]
           optional :schedule_items,
-                   -> {
-                     Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Discount::Schedule::ScheduleItem]
-                   }
+                   -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Discount::Schedule::ScheduleItem] }
 
           # @!parse
           #   # @return [Array<Metronome::Models::ContractCreateParams::Discount::Schedule::ScheduleItem>]
@@ -1427,9 +1408,7 @@ module Metronome
             #
             #   @return [Symbol, Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule::AmountDistribution]
             required :amount_distribution,
-                     enum: -> {
-                       Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule::AmountDistribution
-                     }
+                     enum: -> { Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule::AmountDistribution }
 
             # @!attribute ending_before
             #   RFC 3339 timestamp (exclusive).
@@ -1441,9 +1420,7 @@ module Metronome
             #
             #   @return [Symbol, Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule::Frequency]
             required :frequency,
-                     enum: -> {
-                       Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule::Frequency
-                     }
+                     enum: -> { Metronome::Models::ContractCreateParams::Discount::Schedule::RecurringSchedule::Frequency }
 
             # @!attribute starting_at
             #   RFC 3339 timestamp (inclusive).
@@ -1741,9 +1718,7 @@ module Metronome
         #
         #   @return [Array<Metronome::Models::ContractCreateParams::Override::OverrideSpecifier>, nil]
         optional :override_specifiers,
-                 -> {
-                   Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Override::OverrideSpecifier]
-                 }
+                 -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::Override::OverrideSpecifier] }
 
         # @!parse
         #   # @return [Array<Metronome::Models::ContractCreateParams::Override::OverrideSpecifier>]
@@ -2308,10 +2283,7 @@ module Metronome
         #   The amount of time the created commits will be valid for.
         #
         #   @return [Metronome::Models::ContractCreateParams::RecurringCommit::CommitDuration]
-        required :commit_duration,
-                 -> {
-                   Metronome::Models::ContractCreateParams::RecurringCommit::CommitDuration
-                 }
+        required :commit_duration, -> { Metronome::Models::ContractCreateParams::RecurringCommit::CommitDuration }
 
         # @!attribute priority
         #   Will be passed down to the individual commits
@@ -2374,10 +2346,7 @@ module Metronome
         #   The amount the customer should be billed for the commit. Not required.
         #
         #   @return [Metronome::Models::ContractCreateParams::RecurringCommit::InvoiceAmount, nil]
-        optional :invoice_amount,
-                 -> {
-                   Metronome::Models::ContractCreateParams::RecurringCommit::InvoiceAmount
-                 }
+        optional :invoice_amount, -> { Metronome::Models::ContractCreateParams::RecurringCommit::InvoiceAmount }
 
         # @!parse
         #   # @return [Metronome::Models::ContractCreateParams::RecurringCommit::InvoiceAmount]
@@ -2646,10 +2615,7 @@ module Metronome
         #   The amount of time the created commits will be valid for.
         #
         #   @return [Metronome::Models::ContractCreateParams::RecurringCredit::CommitDuration]
-        required :commit_duration,
-                 -> {
-                   Metronome::Models::ContractCreateParams::RecurringCredit::CommitDuration
-                 }
+        required :commit_duration, -> { Metronome::Models::ContractCreateParams::RecurringCredit::CommitDuration }
 
         # @!attribute priority
         #   Will be passed down to the individual commits
@@ -3229,9 +3195,7 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::ScheduleItem>, nil]
           optional :schedule_items,
-                   -> {
-                     Metronome::ArrayOf[Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::ScheduleItem]
-                   }
+                   -> { Metronome::ArrayOf[Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::ScheduleItem] }
 
           # @!parse
           #   # @return [Array<Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::ScheduleItem>]
@@ -3264,9 +3228,7 @@ module Metronome
             #
             #   @return [Symbol, Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::AmountDistribution]
             required :amount_distribution,
-                     enum: -> {
-                       Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::AmountDistribution
-                     }
+                     enum: -> { Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::AmountDistribution }
 
             # @!attribute ending_before
             #   RFC 3339 timestamp (exclusive).
@@ -3278,9 +3240,7 @@ module Metronome
             #
             #   @return [Symbol, Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::Frequency]
             required :frequency,
-                     enum: -> {
-                       Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::Frequency
-                     }
+                     enum: -> { Metronome::Models::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::Frequency }
 
             # @!attribute starting_at
             #   RFC 3339 timestamp (inclusive).
@@ -3576,9 +3536,7 @@ module Metronome
           #
           #   @return [Symbol, Metronome::Models::ContractCreateParams::Transition::FutureInvoiceBehavior::Trueup, nil]
           optional :trueup,
-                   enum: -> {
-                     Metronome::Models::ContractCreateParams::Transition::FutureInvoiceBehavior::Trueup
-                   },
+                   enum: -> { Metronome::Models::ContractCreateParams::Transition::FutureInvoiceBehavior::Trueup },
                    nil?: true
 
           # @!parse

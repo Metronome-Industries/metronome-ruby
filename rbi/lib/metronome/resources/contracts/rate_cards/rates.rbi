@@ -13,7 +13,8 @@ module Metronome
               next_page: String,
               selectors: T::Array[Metronome::Models::Contracts::RateCards::RateListParams::Selector],
               request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-            ).returns(Metronome::CursorPage[Metronome::Models::Contracts::RateCards::RateListResponse])
+            )
+              .returns(Metronome::CursorPage[Metronome::Models::Contracts::RateCards::RateListResponse])
           end
           def list(at:, rate_card_id:, limit: nil, next_page: nil, selectors: nil, request_options: {})
           end
@@ -36,7 +37,8 @@ module Metronome
               tiers: T::Array[Metronome::Models::Tier],
               use_list_prices: T::Boolean,
               request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-            ).returns(Metronome::Models::Contracts::RateCards::RateAddResponse)
+            )
+              .returns(Metronome::Models::Contracts::RateCards::RateAddResponse)
           end
           def add(
             entitled:,
@@ -63,7 +65,8 @@ module Metronome
               rate_card_id: String,
               rates: T::Array[Metronome::Models::Contracts::RateCards::RateAddManyParams::Rate],
               request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-            ).returns(Metronome::Models::Contracts::RateCards::RateAddManyResponse)
+            )
+              .returns(Metronome::Models::Contracts::RateCards::RateAddManyResponse)
           end
           def add_many(rate_card_id:, rates:, request_options: {})
           end

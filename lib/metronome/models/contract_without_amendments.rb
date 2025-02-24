@@ -47,10 +47,7 @@ module Metronome
       # @!attribute transitions
       #
       #   @return [Array<Metronome::Models::ContractWithoutAmendments::Transition>]
-      required :transitions,
-               -> {
-                 Metronome::ArrayOf[Metronome::Models::ContractWithoutAmendments::Transition]
-               }
+      required :transitions, -> { Metronome::ArrayOf[Metronome::Models::ContractWithoutAmendments::Transition] }
 
       # @!attribute usage_statement_schedule
       #
@@ -422,10 +419,7 @@ module Metronome
         #   Whether the created commits will use the commit rate or list rate
         #
         #   @return [Symbol, Metronome::Models::ContractWithoutAmendments::RecurringCommit::RateType]
-        required :rate_type,
-                 enum: -> {
-                   Metronome::Models::ContractWithoutAmendments::RecurringCommit::RateType
-                 }
+        required :rate_type, enum: -> { Metronome::Models::ContractWithoutAmendments::RecurringCommit::RateType }
 
         # @!attribute starting_at
         #   Determines the start time for the first commit
@@ -620,9 +614,7 @@ module Metronome
           #
           #   @return [Symbol, Metronome::Models::ContractWithoutAmendments::RecurringCommit::CommitDuration::Unit, nil]
           optional :unit,
-                   enum: -> {
-                     Metronome::Models::ContractWithoutAmendments::RecurringCommit::CommitDuration::Unit
-                   }
+                   enum: -> { Metronome::Models::ContractWithoutAmendments::RecurringCommit::CommitDuration::Unit }
 
           # @!parse
           #   # @return [Symbol, Metronome::Models::ContractWithoutAmendments::RecurringCommit::CommitDuration::Unit]
@@ -814,10 +806,7 @@ module Metronome
         #   Whether the created commits will use the commit rate or list rate
         #
         #   @return [Symbol, Metronome::Models::ContractWithoutAmendments::RecurringCredit::RateType]
-        required :rate_type,
-                 enum: -> {
-                   Metronome::Models::ContractWithoutAmendments::RecurringCredit::RateType
-                 }
+        required :rate_type, enum: -> { Metronome::Models::ContractWithoutAmendments::RecurringCredit::RateType }
 
         # @!attribute starting_at
         #   Determines the start time for the first commit
@@ -999,9 +988,7 @@ module Metronome
           #
           #   @return [Symbol, Metronome::Models::ContractWithoutAmendments::RecurringCredit::CommitDuration::Unit, nil]
           optional :unit,
-                   enum: -> {
-                     Metronome::Models::ContractWithoutAmendments::RecurringCredit::CommitDuration::Unit
-                   }
+                   enum: -> { Metronome::Models::ContractWithoutAmendments::RecurringCredit::CommitDuration::Unit }
 
           # @!parse
           #   # @return [Symbol, Metronome::Models::ContractWithoutAmendments::RecurringCredit::CommitDuration::Unit]

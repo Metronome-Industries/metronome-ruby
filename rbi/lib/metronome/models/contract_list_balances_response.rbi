@@ -8,15 +8,8 @@ module Metronome
       end
 
       sig do
-        params(
-          _: T::Array[T.any(
-            Metronome::Models::Commit,
-            Metronome::Models::Credit
-          )]
-        ).returns(T::Array[T.any(
-          Metronome::Models::Commit,
-          Metronome::Models::Credit
-        )])
+        params(_: T::Array[T.any(Metronome::Models::Commit, Metronome::Models::Credit)])
+          .returns(T::Array[T.any(Metronome::Models::Commit, Metronome::Models::Credit)])
       end
       def data=(_)
       end
@@ -33,18 +26,17 @@ module Metronome
         params(
           data: T::Array[T.any(Metronome::Models::Commit, Metronome::Models::Credit)],
           next_page: T.nilable(String)
-        ).void
+        )
+          .void
       end
       def initialize(data:, next_page:)
       end
 
       sig do
-        override.returns(
-          {
-            data: T::Array[T.any(Metronome::Models::Commit, Metronome::Models::Credit)],
-            next_page: T.nilable(String)
-          }
-        )
+        override
+          .returns(
+            {data: T::Array[T.any(Metronome::Models::Commit, Metronome::Models::Credit)], next_page: T.nilable(String)}
+          )
       end
       def to_hash
       end
@@ -52,9 +44,7 @@ module Metronome
       class Data < Metronome::Union
         abstract!
 
-        sig do
-          override.returns([[NilClass, Metronome::Models::Commit], [NilClass, Metronome::Models::Credit]])
-        end
+        sig { override.returns([[NilClass, Metronome::Models::Commit], [NilClass, Metronome::Models::Credit]]) }
         private_class_method def self.variants
         end
       end

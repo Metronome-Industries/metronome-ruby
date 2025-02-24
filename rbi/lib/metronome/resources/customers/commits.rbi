@@ -24,7 +24,8 @@ module Metronome
             salesforce_opportunity_id: String,
             uniqueness_key: String,
             request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Metronome::Models::Customers::CommitCreateResponse)
+          )
+            .returns(Metronome::Models::Customers::CommitCreateResponse)
         end
         def create(
           access_schedule:,
@@ -61,7 +62,8 @@ module Metronome
             next_page: String,
             starting_at: Time,
             request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Metronome::Models::Customers::CommitListResponse)
+          )
+            .returns(Metronome::Models::Customers::CommitListResponse)
         end
         def list(
           customer_id:,
@@ -85,7 +87,8 @@ module Metronome
             access_ending_before: Time,
             invoices_ending_before: Time,
             request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Metronome::Models::Customers::CommitUpdateEndDateResponse)
+          )
+            .returns(Metronome::Models::Customers::CommitUpdateEndDateResponse)
         end
         def update_end_date(
           commit_id:,

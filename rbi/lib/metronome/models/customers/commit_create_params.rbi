@@ -12,7 +12,8 @@ module Metronome
         end
 
         sig do
-          params(_: Metronome::Models::Customers::CommitCreateParams::AccessSchedule).returns(Metronome::Models::Customers::CommitCreateParams::AccessSchedule)
+          params(_: Metronome::Models::Customers::CommitCreateParams::AccessSchedule)
+            .returns(Metronome::Models::Customers::CommitCreateParams::AccessSchedule)
         end
         def access_schedule=(_)
         end
@@ -102,7 +103,8 @@ module Metronome
         end
 
         sig do
-          params(_: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule).returns(Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule)
+          params(_: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule)
+            .returns(Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule)
         end
         def invoice_schedule=(_)
         end
@@ -167,7 +169,8 @@ module Metronome
             salesforce_opportunity_id: String,
             uniqueness_key: String,
             request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(
           access_schedule:,
@@ -192,41 +195,41 @@ module Metronome
         end
 
         sig do
-          override.returns(
-            {
-              access_schedule: Metronome::Models::Customers::CommitCreateParams::AccessSchedule,
-              customer_id: String,
-              priority: Float,
-              product_id: String,
-              type: Symbol,
-              applicable_contract_ids: T::Array[String],
-              applicable_product_ids: T::Array[String],
-              applicable_product_tags: T::Array[String],
-              custom_fields: T::Hash[Symbol, String],
-              description: String,
-              invoice_contract_id: String,
-              invoice_schedule: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule,
-              name: String,
-              netsuite_sales_order_id: String,
-              rate_type: Symbol,
-              salesforce_opportunity_id: String,
-              uniqueness_key: String,
-              request_options: Metronome::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                access_schedule: Metronome::Models::Customers::CommitCreateParams::AccessSchedule,
+                customer_id: String,
+                priority: Float,
+                product_id: String,
+                type: Symbol,
+                applicable_contract_ids: T::Array[String],
+                applicable_product_ids: T::Array[String],
+                applicable_product_tags: T::Array[String],
+                custom_fields: T::Hash[Symbol, String],
+                description: String,
+                invoice_contract_id: String,
+                invoice_schedule: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule,
+                name: String,
+                netsuite_sales_order_id: String,
+                rate_type: Symbol,
+                salesforce_opportunity_id: String,
+                uniqueness_key: String,
+                request_options: Metronome::RequestOptions
+              }
+            )
         end
         def to_hash
         end
 
         class AccessSchedule < Metronome::BaseModel
-          sig do
-            returns(T::Array[Metronome::Models::Customers::CommitCreateParams::AccessSchedule::ScheduleItem])
-          end
+          sig { returns(T::Array[Metronome::Models::Customers::CommitCreateParams::AccessSchedule::ScheduleItem]) }
           def schedule_items
           end
 
           sig do
-            params(_: T::Array[Metronome::Models::Customers::CommitCreateParams::AccessSchedule::ScheduleItem]).returns(T::Array[Metronome::Models::Customers::CommitCreateParams::AccessSchedule::ScheduleItem])
+            params(_: T::Array[Metronome::Models::Customers::CommitCreateParams::AccessSchedule::ScheduleItem])
+              .returns(T::Array[Metronome::Models::Customers::CommitCreateParams::AccessSchedule::ScheduleItem])
           end
           def schedule_items=(_)
           end
@@ -243,17 +246,20 @@ module Metronome
             params(
               schedule_items: T::Array[Metronome::Models::Customers::CommitCreateParams::AccessSchedule::ScheduleItem],
               credit_type_id: String
-            ).void
+            )
+              .void
           end
           def initialize(schedule_items:, credit_type_id: nil)
           end
 
           sig do
-            override.returns(
-              {
-                schedule_items: T::Array[Metronome::Models::Customers::CommitCreateParams::AccessSchedule::ScheduleItem], credit_type_id: String
-              }
-            )
+            override
+              .returns(
+                {
+                  schedule_items: T::Array[Metronome::Models::Customers::CommitCreateParams::AccessSchedule::ScheduleItem],
+                  credit_type_id: String
+                }
+              )
           end
           def to_hash
           end
@@ -313,26 +319,28 @@ module Metronome
           def credit_type_id=(_)
           end
 
-          sig do
-            returns(T.nilable(Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule))
-          end
+          sig { returns(T.nilable(Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule)) }
           def recurring_schedule
           end
 
           sig do
-            params(_: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule).returns(Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule)
+            params(_: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule)
+              .returns(Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule)
           end
           def recurring_schedule=(_)
           end
 
           sig do
-            returns(T.nilable(T::Array[Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]))
+            returns(
+              T.nilable(T::Array[Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem])
+            )
           end
           def schedule_items
           end
 
           sig do
-            params(_: T::Array[Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]).returns(T::Array[Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem])
+            params(_: T::Array[Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem])
+              .returns(T::Array[Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem])
           end
           def schedule_items=(_)
           end
@@ -342,19 +350,21 @@ module Metronome
               credit_type_id: String,
               recurring_schedule: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule,
               schedule_items: T::Array[Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]
-            ).void
+            )
+              .void
           end
           def initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil)
           end
 
           sig do
-            override.returns(
-              {
-                credit_type_id: String,
-                recurring_schedule: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule,
-                schedule_items: T::Array[Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]
-              }
-            )
+            override
+              .returns(
+                {
+                  credit_type_id: String,
+                  recurring_schedule: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule,
+                  schedule_items: T::Array[Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]
+                }
+              )
           end
           def to_hash
           end
@@ -425,7 +435,8 @@ module Metronome
                 amount: Float,
                 quantity: Float,
                 unit_price: Float
-              ).void
+              )
+                .void
             end
             def initialize(
               amount_distribution:,
@@ -439,17 +450,18 @@ module Metronome
             end
 
             sig do
-              override.returns(
-                {
-                  amount_distribution: Symbol,
-                  ending_before: Time,
-                  frequency: Symbol,
-                  starting_at: Time,
-                  amount: Float,
-                  quantity: Float,
-                  unit_price: Float
-                }
-              )
+              override
+                .returns(
+                  {
+                    amount_distribution: Symbol,
+                    ending_before: Time,
+                    frequency: Symbol,
+                    starting_at: Time,
+                    amount: Float,
+                    quantity: Float,
+                    unit_price: Float
+                  }
+                )
             end
             def to_hash
             end

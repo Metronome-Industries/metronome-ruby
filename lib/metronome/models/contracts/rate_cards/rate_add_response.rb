@@ -38,20 +38,14 @@ module Metronome
             # @!attribute rate_type
             #
             #   @return [Symbol, Metronome::Models::Contracts::RateCards::RateAddResponse::Data::RateType]
-            required :rate_type,
-                     enum: -> {
-                       Metronome::Models::Contracts::RateCards::RateAddResponse::Data::RateType
-                     }
+            required :rate_type, enum: -> { Metronome::Models::Contracts::RateCards::RateAddResponse::Data::RateType }
 
             # @!attribute [r] commit_rate
             #   A distinct rate on the rate card. You can choose to use this rate rather than
             #     list rate when consuming a credit or commit.
             #
             #   @return [Metronome::Models::Contracts::RateCards::RateAddResponse::Data::CommitRate, nil]
-            optional :commit_rate,
-                     -> {
-                       Metronome::Models::Contracts::RateCards::RateAddResponse::Data::CommitRate
-                     }
+            optional :commit_rate, -> { Metronome::Models::Contracts::RateCards::RateAddResponse::Data::CommitRate }
 
             # @!parse
             #   # @return [Metronome::Models::Contracts::RateCards::RateAddResponse::Data::CommitRate]
@@ -217,9 +211,7 @@ module Metronome
               #
               #   @return [Symbol, Metronome::Models::Contracts::RateCards::RateAddResponse::Data::CommitRate::RateType]
               required :rate_type,
-                       enum: -> {
-                         Metronome::Models::Contracts::RateCards::RateAddResponse::Data::CommitRate::RateType
-                       }
+                       enum: -> { Metronome::Models::Contracts::RateCards::RateAddResponse::Data::CommitRate::RateType }
 
               # @!attribute [r] price
               #   Commit rate price. For FLAT rate_type, this must be >=0.

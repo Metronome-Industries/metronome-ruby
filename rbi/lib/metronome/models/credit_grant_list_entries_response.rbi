@@ -8,7 +8,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data]).returns(T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data])
+        params(_: T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data])
+          .returns(T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data])
       end
       def data=(_)
       end
@@ -25,18 +26,17 @@ module Metronome
         params(
           data: T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data],
           next_page: T.nilable(String)
-        ).void
+        )
+          .void
       end
       def initialize(data:, next_page:)
       end
 
       sig do
-        override.returns(
-          {
-            data: T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data],
-            next_page: T.nilable(String)
-          }
-        )
+        override
+          .returns(
+            {data: T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data], next_page: T.nilable(String)}
+          )
       end
       def to_hash
       end
@@ -55,7 +55,8 @@ module Metronome
         end
 
         sig do
-          params(_: T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger]).returns(T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger])
+          params(_: T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger])
+            .returns(T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger])
         end
         def ledgers=(_)
         end
@@ -64,18 +65,17 @@ module Metronome
           params(
             customer_id: String,
             ledgers: T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger]
-          ).void
+          )
+            .void
         end
         def initialize(customer_id:, ledgers:)
         end
 
         sig do
-          override.returns(
-            {
-              customer_id: String,
-              ledgers: T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger]
-            }
-          )
+          override
+            .returns(
+              {customer_id: String, ledgers: T::Array[Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger]}
+            )
         end
         def to_hash
         end
@@ -94,7 +94,8 @@ module Metronome
           end
 
           sig do
-            params(_: Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance).returns(Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance)
+            params(_: Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance)
+              .returns(Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance)
           end
           def ending_balance=(_)
           end
@@ -104,7 +105,8 @@ module Metronome
           end
 
           sig do
-            params(_: T::Array[Metronome::Models::CreditLedgerEntry]).returns(T::Array[Metronome::Models::CreditLedgerEntry])
+            params(_: T::Array[Metronome::Models::CreditLedgerEntry])
+              .returns(T::Array[Metronome::Models::CreditLedgerEntry])
           end
           def entries=(_)
           end
@@ -114,7 +116,8 @@ module Metronome
           end
 
           sig do
-            params(_: T::Array[Metronome::Models::CreditLedgerEntry]).returns(T::Array[Metronome::Models::CreditLedgerEntry])
+            params(_: T::Array[Metronome::Models::CreditLedgerEntry])
+              .returns(T::Array[Metronome::Models::CreditLedgerEntry])
           end
           def pending_entries=(_)
           end
@@ -124,7 +127,8 @@ module Metronome
           end
 
           sig do
-            params(_: Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance).returns(Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance)
+            params(_: Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance)
+              .returns(Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance)
           end
           def starting_balance=(_)
           end
@@ -136,21 +140,23 @@ module Metronome
               entries: T::Array[Metronome::Models::CreditLedgerEntry],
               pending_entries: T::Array[Metronome::Models::CreditLedgerEntry],
               starting_balance: Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance
-            ).void
+            )
+              .void
           end
           def initialize(credit_type:, ending_balance:, entries:, pending_entries:, starting_balance:)
           end
 
           sig do
-            override.returns(
-              {
-                credit_type: Metronome::Models::CreditTypeData,
-                ending_balance: Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance,
-                entries: T::Array[Metronome::Models::CreditLedgerEntry],
-                pending_entries: T::Array[Metronome::Models::CreditLedgerEntry],
-                starting_balance: Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance
-              }
-            )
+            override
+              .returns(
+                {
+                  credit_type: Metronome::Models::CreditTypeData,
+                  ending_balance: Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance,
+                  entries: T::Array[Metronome::Models::CreditLedgerEntry],
+                  pending_entries: T::Array[Metronome::Models::CreditLedgerEntry],
+                  starting_balance: Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance
+                }
+              )
           end
           def to_hash
           end

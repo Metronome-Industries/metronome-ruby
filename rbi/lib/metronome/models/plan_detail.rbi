@@ -32,7 +32,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::PlanDetail::CreditGrant]).returns(T::Array[Metronome::Models::PlanDetail::CreditGrant])
+        params(_: T::Array[Metronome::Models::PlanDetail::CreditGrant])
+          .returns(T::Array[Metronome::Models::PlanDetail::CreditGrant])
       end
       def credit_grants=(_)
       end
@@ -50,7 +51,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::PlanDetail::Minimum]).returns(T::Array[Metronome::Models::PlanDetail::Minimum])
+        params(_: T::Array[Metronome::Models::PlanDetail::Minimum])
+          .returns(T::Array[Metronome::Models::PlanDetail::Minimum])
       end
       def minimums=(_)
       end
@@ -60,7 +62,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::PlanDetail::OverageRate]).returns(T::Array[Metronome::Models::PlanDetail::OverageRate])
+        params(_: T::Array[Metronome::Models::PlanDetail::OverageRate])
+          .returns(T::Array[Metronome::Models::PlanDetail::OverageRate])
       end
       def overage_rates=(_)
       end
@@ -74,7 +77,8 @@ module Metronome
           description: String,
           minimums: T::Array[Metronome::Models::PlanDetail::Minimum],
           overage_rates: T::Array[Metronome::Models::PlanDetail::OverageRate]
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -88,17 +92,18 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            custom_fields: T::Hash[Symbol, String],
-            name: String,
-            credit_grants: T::Array[Metronome::Models::PlanDetail::CreditGrant],
-            description: String,
-            minimums: T::Array[Metronome::Models::PlanDetail::Minimum],
-            overage_rates: T::Array[Metronome::Models::PlanDetail::OverageRate]
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              custom_fields: T::Hash[Symbol, String],
+              name: String,
+              credit_grants: T::Array[Metronome::Models::PlanDetail::CreditGrant],
+              description: String,
+              minimums: T::Array[Metronome::Models::PlanDetail::Minimum],
+              overage_rates: T::Array[Metronome::Models::PlanDetail::OverageRate]
+            }
+          )
       end
       def to_hash
       end
@@ -205,7 +210,8 @@ module Metronome
             reason: String,
             recurrence_duration: Float,
             recurrence_interval: Float
-          ).void
+          )
+            .void
         end
         def initialize(
           amount_granted:,
@@ -223,21 +229,22 @@ module Metronome
         end
 
         sig do
-          override.returns(
-            {
-              amount_granted: Float,
-              amount_granted_credit_type: Metronome::Models::CreditTypeData,
-              amount_paid: Float,
-              amount_paid_credit_type: Metronome::Models::CreditTypeData,
-              effective_duration: Float,
-              name: String,
-              priority: String,
-              send_invoice: T::Boolean,
-              reason: String,
-              recurrence_duration: Float,
-              recurrence_interval: Float
-            }
-          )
+          override
+            .returns(
+              {
+                amount_granted: Float,
+                amount_granted_credit_type: Metronome::Models::CreditTypeData,
+                amount_paid: Float,
+                amount_paid_credit_type: Metronome::Models::CreditTypeData,
+                effective_duration: Float,
+                name: String,
+                priority: String,
+                send_invoice: T::Boolean,
+                reason: String,
+                recurrence_duration: Float,
+                recurrence_interval: Float
+              }
+            )
         end
         def to_hash
         end
@@ -277,25 +284,15 @@ module Metronome
         end
 
         sig do
-          params(
-            credit_type: Metronome::Models::CreditTypeData,
-            name: String,
-            start_period: Float,
-            value: Float
-          ).void
+          params(credit_type: Metronome::Models::CreditTypeData, name: String, start_period: Float, value: Float)
+            .void
         end
         def initialize(credit_type:, name:, start_period:, value:)
         end
 
         sig do
-          override.returns(
-            {
-              credit_type: Metronome::Models::CreditTypeData,
-              name: String,
-              start_period: Float,
-              value: Float
-            }
-          )
+          override
+            .returns({credit_type: Metronome::Models::CreditTypeData, name: String, start_period: Float, value: Float})
         end
         def to_hash
         end
@@ -340,20 +337,22 @@ module Metronome
             fiat_credit_type: Metronome::Models::CreditTypeData,
             start_period: Float,
             to_fiat_conversion_factor: Float
-          ).void
+          )
+            .void
         end
         def initialize(credit_type:, fiat_credit_type:, start_period:, to_fiat_conversion_factor:)
         end
 
         sig do
-          override.returns(
-            {
-              credit_type: Metronome::Models::CreditTypeData,
-              fiat_credit_type: Metronome::Models::CreditTypeData,
-              start_period: Float,
-              to_fiat_conversion_factor: Float
-            }
-          )
+          override
+            .returns(
+              {
+                credit_type: Metronome::Models::CreditTypeData,
+                fiat_credit_type: Metronome::Models::CreditTypeData,
+                start_period: Float,
+                to_fiat_conversion_factor: Float
+              }
+            )
         end
         def to_hash
         end

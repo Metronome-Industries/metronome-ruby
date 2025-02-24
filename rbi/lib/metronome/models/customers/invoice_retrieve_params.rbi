@@ -37,20 +37,22 @@ module Metronome
             invoice_id: String,
             skip_zero_qty_line_items: T::Boolean,
             request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(customer_id:, invoice_id:, skip_zero_qty_line_items: nil, request_options: {})
         end
 
         sig do
-          override.returns(
-            {
-              customer_id: String,
-              invoice_id: String,
-              skip_zero_qty_line_items: T::Boolean,
-              request_options: Metronome::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                customer_id: String,
+                invoice_id: String,
+                skip_zero_qty_line_items: T::Boolean,
+                request_options: Metronome::RequestOptions
+              }
+            )
         end
         def to_hash
         end

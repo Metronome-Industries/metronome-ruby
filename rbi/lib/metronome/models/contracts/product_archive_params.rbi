@@ -18,8 +18,12 @@ module Metronome
         sig do
           params(
             product_id: String,
-            request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+            request_options: T.any(
+              Metronome::RequestOptions,
+              T::Hash[Symbol, T.anything]
+            )
+          )
+            .void
         end
         def initialize(product_id:, request_options: {})
         end

@@ -187,9 +187,7 @@ module Metronome
           #
           #   @return [Array<Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem>]
           required :schedule_items,
-                   -> {
-                     Metronome::ArrayOf[Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem]
-                   }
+                   -> { Metronome::ArrayOf[Metronome::Models::Customers::CreditCreateParams::AccessSchedule::ScheduleItem] }
 
           # @!attribute [r] credit_type_id
           #   Defaults to USD (cents) if not passed

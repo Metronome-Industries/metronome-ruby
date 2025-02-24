@@ -29,9 +29,7 @@ module Metronome
         #
         #   @return [Array<Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price>]
         required :prices,
-                 -> {
-                   Metronome::ArrayOf[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price]
-                 }
+                 -> { Metronome::ArrayOf[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price] }
 
         # @!attribute start_period
         #
@@ -104,9 +102,7 @@ module Metronome
           #
           #   @return [Symbol, Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType]
           required :adjustment_type,
-                   enum: -> {
-                     Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType
-                   }
+                   enum: -> { Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType }
 
           # @!attribute [r] tier
           #   Used in pricing tiers. Indicates at what metric value the price applies.

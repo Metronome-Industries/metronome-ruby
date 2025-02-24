@@ -27,19 +27,19 @@ module Metronome
           id: String,
           release_uniqueness_key: T::Boolean,
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(id:, release_uniqueness_key: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            release_uniqueness_key: T::Boolean,
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns({
+                     id: String,
+                     release_uniqueness_key: T::Boolean,
+                     request_options: Metronome::RequestOptions
+                   })
       end
       def to_hash
       end

@@ -11,7 +11,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice]).returns(T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice])
+        params(_: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice])
+          .returns(T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice])
       end
       def invoices=(_)
       end
@@ -29,19 +30,21 @@ module Metronome
           invoices: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice],
           preview: T::Boolean,
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(invoices:, preview:, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            invoices: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice],
-            preview: T::Boolean,
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              invoices: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice],
+              preview: T::Boolean,
+              request_options: Metronome::RequestOptions
+            }
+          )
       end
       def to_hash
       end
@@ -95,14 +98,13 @@ module Metronome
         def issue_date=(_)
         end
 
-        sig do
-          returns(T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem])
-        end
+        sig { returns(T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem]) }
         def usage_line_items
         end
 
         sig do
-          params(_: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem]).returns(T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem])
+          params(_: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem])
+            .returns(T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem])
         end
         def usage_line_items=(_)
         end
@@ -143,7 +145,8 @@ module Metronome
             billable_status: Symbol,
             breakdown_granularity: Symbol,
             custom_fields: T::Hash[Symbol, String]
-          ).void
+          )
+            .void
         end
         def initialize(
           contract_id:,
@@ -160,20 +163,21 @@ module Metronome
         end
 
         sig do
-          override.returns(
-            {
-              contract_id: String,
-              credit_type_id: String,
-              customer_id: String,
-              exclusive_end_date: Time,
-              inclusive_start_date: Time,
-              issue_date: Time,
-              usage_line_items: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem],
-              billable_status: Symbol,
-              breakdown_granularity: Symbol,
-              custom_fields: T::Hash[Symbol, String]
-            }
-          )
+          override
+            .returns(
+              {
+                contract_id: String,
+                credit_type_id: String,
+                customer_id: String,
+                exclusive_end_date: Time,
+                inclusive_start_date: Time,
+                issue_date: Time,
+                usage_line_items: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem],
+                billable_status: Symbol,
+                breakdown_granularity: Symbol,
+                custom_fields: T::Hash[Symbol, String]
+              }
+            )
         end
         def to_hash
         end
@@ -228,7 +232,11 @@ module Metronome
           end
 
           sig do
-            returns(T.nilable(T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]))
+            returns(
+              T.nilable(
+                T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
+              )
+            )
           end
           def subtotals_with_quantity
           end
@@ -236,7 +244,10 @@ module Metronome
           sig do
             params(
               _: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
-            ).returns(T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity])
+            )
+              .returns(
+                T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
+              )
           end
           def subtotals_with_quantity=(_)
           end
@@ -250,7 +261,8 @@ module Metronome
               pricing_group_values: T::Hash[Symbol, String],
               quantity: Float,
               subtotals_with_quantity: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
-            ).void
+            )
+              .void
           end
           def initialize(
             exclusive_end_date:,
@@ -264,17 +276,18 @@ module Metronome
           end
 
           sig do
-            override.returns(
-              {
-                exclusive_end_date: Time,
-                inclusive_start_date: Time,
-                product_id: String,
-                presentation_group_values: T::Hash[Symbol, String],
-                pricing_group_values: T::Hash[Symbol, String],
-                quantity: Float,
-                subtotals_with_quantity: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
-              }
-            )
+            override
+              .returns(
+                {
+                  exclusive_end_date: Time,
+                  inclusive_start_date: Time,
+                  product_id: String,
+                  presentation_group_values: T::Hash[Symbol, String],
+                  pricing_group_values: T::Hash[Symbol, String],
+                  quantity: Float,
+                  subtotals_with_quantity: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
+                }
+              )
           end
           def to_hash
           end

@@ -16,7 +16,8 @@ module Metronome
       end
 
       sig do
-        params(_: Metronome::Models::CreditGrantListResponse::Balance).returns(Metronome::Models::CreditGrantListResponse::Balance)
+        params(_: Metronome::Models::CreditGrantListResponse::Balance)
+          .returns(Metronome::Models::CreditGrantListResponse::Balance)
       end
       def balance=(_)
       end
@@ -42,7 +43,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::CreditLedgerEntry]).returns(T::Array[Metronome::Models::CreditLedgerEntry])
+        params(_: T::Array[Metronome::Models::CreditLedgerEntry])
+          .returns(T::Array[Metronome::Models::CreditLedgerEntry])
       end
       def deductions=(_)
       end
@@ -68,7 +70,8 @@ module Metronome
       end
 
       sig do
-        params(_: Metronome::Models::CreditGrantListResponse::GrantAmount).returns(Metronome::Models::CreditGrantListResponse::GrantAmount)
+        params(_: Metronome::Models::CreditGrantListResponse::GrantAmount)
+          .returns(Metronome::Models::CreditGrantListResponse::GrantAmount)
       end
       def grant_amount=(_)
       end
@@ -86,7 +89,8 @@ module Metronome
       end
 
       sig do
-        params(_: Metronome::Models::CreditGrantListResponse::PaidAmount).returns(Metronome::Models::CreditGrantListResponse::PaidAmount)
+        params(_: Metronome::Models::CreditGrantListResponse::PaidAmount)
+          .returns(Metronome::Models::CreditGrantListResponse::PaidAmount)
       end
       def paid_amount=(_)
       end
@@ -96,7 +100,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::CreditLedgerEntry]).returns(T::Array[Metronome::Models::CreditLedgerEntry])
+        params(_: T::Array[Metronome::Models::CreditLedgerEntry])
+          .returns(T::Array[Metronome::Models::CreditLedgerEntry])
       end
       def pending_deductions=(_)
       end
@@ -130,7 +135,8 @@ module Metronome
       end
 
       sig do
-        params(_: T::Array[Metronome::Models::CreditGrantListResponse::Product]).returns(T::Array[Metronome::Models::CreditGrantListResponse::Product])
+        params(_: T::Array[Metronome::Models::CreditGrantListResponse::Product])
+          .returns(T::Array[Metronome::Models::CreditGrantListResponse::Product])
       end
       def products=(_)
       end
@@ -170,7 +176,8 @@ module Metronome
           products: T::Array[Metronome::Models::CreditGrantListResponse::Product],
           reason: T.nilable(String),
           uniqueness_key: T.nilable(String)
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -194,27 +201,28 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            balance: Metronome::Models::CreditGrantListResponse::Balance,
-            custom_fields: T::Hash[Symbol, String],
-            customer_id: String,
-            deductions: T::Array[Metronome::Models::CreditLedgerEntry],
-            effective_at: Time,
-            expires_at: Time,
-            grant_amount: Metronome::Models::CreditGrantListResponse::GrantAmount,
-            name: String,
-            paid_amount: Metronome::Models::CreditGrantListResponse::PaidAmount,
-            pending_deductions: T::Array[Metronome::Models::CreditLedgerEntry],
-            priority: Float,
-            credit_grant_type: T.nilable(String),
-            invoice_id: T.nilable(String),
-            products: T::Array[Metronome::Models::CreditGrantListResponse::Product],
-            reason: T.nilable(String),
-            uniqueness_key: T.nilable(String)
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              balance: Metronome::Models::CreditGrantListResponse::Balance,
+              custom_fields: T::Hash[Symbol, String],
+              customer_id: String,
+              deductions: T::Array[Metronome::Models::CreditLedgerEntry],
+              effective_at: Time,
+              expires_at: Time,
+              grant_amount: Metronome::Models::CreditGrantListResponse::GrantAmount,
+              name: String,
+              paid_amount: Metronome::Models::CreditGrantListResponse::PaidAmount,
+              pending_deductions: T::Array[Metronome::Models::CreditLedgerEntry],
+              priority: Float,
+              credit_grant_type: T.nilable(String),
+              invoice_id: T.nilable(String),
+              products: T::Array[Metronome::Models::CreditGrantListResponse::Product],
+              reason: T.nilable(String),
+              uniqueness_key: T.nilable(String)
+            }
+          )
       end
       def to_hash
       end

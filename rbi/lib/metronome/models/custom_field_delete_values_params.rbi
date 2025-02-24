@@ -36,20 +36,22 @@ module Metronome
           entity_id: String,
           keys: T::Array[String],
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(entity:, entity_id:, keys:, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            entity: Symbol,
-            entity_id: String,
-            keys: T::Array[String],
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              entity: Symbol,
+              entity_id: String,
+              keys: T::Array[String],
+              request_options: Metronome::RequestOptions
+            }
+          )
       end
       def to_hash
       end

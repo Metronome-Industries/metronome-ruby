@@ -72,7 +72,8 @@ module Metronome
           sort: Symbol,
           starting_on: Time,
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         ending_before: nil,
@@ -87,18 +88,19 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            ending_before: Time,
-            limit: Integer,
-            next_page: String,
-            resource_id: String,
-            resource_type: String,
-            sort: Symbol,
-            starting_on: Time,
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              ending_before: Time,
+              limit: Integer,
+              next_page: String,
+              resource_id: String,
+              resource_type: String,
+              sort: Symbol,
+              starting_on: Time,
+              request_options: Metronome::RequestOptions
+            }
+          )
       end
       def to_hash
       end

@@ -20,7 +20,8 @@ module Metronome
         end
 
         sig do
-          params(_: T::Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias]).returns(T::Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias])
+          params(_: T::Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias])
+            .returns(T::Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias])
         end
         def aliases=(_)
         end
@@ -48,21 +49,23 @@ module Metronome
             description: String,
             name: String,
             request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(rate_card_id:, aliases: nil, description: nil, name: nil, request_options: {})
         end
 
         sig do
-          override.returns(
-            {
-              rate_card_id: String,
-              aliases: T::Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias],
-              description: String,
-              name: String,
-              request_options: Metronome::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                rate_card_id: String,
+                aliases: T::Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias],
+                description: String,
+                name: String,
+                request_options: Metronome::RequestOptions
+              }
+            )
         end
         def to_hash
         end

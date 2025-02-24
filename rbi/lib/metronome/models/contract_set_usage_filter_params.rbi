@@ -54,22 +54,24 @@ module Metronome
           group_values: T::Array[String],
           starting_at: Time,
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(contract_id:, customer_id:, group_key:, group_values:, starting_at:, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            contract_id: String,
-            customer_id: String,
-            group_key: String,
-            group_values: T::Array[String],
-            starting_at: Time,
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              contract_id: String,
+              customer_id: String,
+              group_key: String,
+              group_values: T::Array[String],
+              starting_at: Time,
+              request_options: Metronome::RequestOptions
+            }
+          )
       end
       def to_hash
       end

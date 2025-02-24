@@ -45,7 +45,8 @@ module Metronome
           allow_ending_before_finalized_invoice: T::Boolean,
           ending_before: Time,
           request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         contract_id:,
@@ -57,15 +58,16 @@ module Metronome
       end
 
       sig do
-        override.returns(
-          {
-            contract_id: String,
-            customer_id: String,
-            allow_ending_before_finalized_invoice: T::Boolean,
-            ending_before: Time,
-            request_options: Metronome::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              contract_id: String,
+              customer_id: String,
+              allow_ending_before_finalized_invoice: T::Boolean,
+              ending_before: Time,
+              request_options: Metronome::RequestOptions
+            }
+          )
       end
       def to_hash
       end

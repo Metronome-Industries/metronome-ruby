@@ -40,7 +40,8 @@ module Metronome
           external_id: String,
           ingest_aliases: T::Array[String],
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::Models::CustomerCreateResponse)
+        )
+          .returns(Metronome::Models::CustomerCreateResponse)
       end
       def create(
         name:,
@@ -57,7 +58,8 @@ module Metronome
         params(
           customer_id: String,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::Models::CustomerRetrieveResponse)
+        )
+          .returns(Metronome::Models::CustomerRetrieveResponse)
       end
       def retrieve(customer_id:, request_options: {})
       end
@@ -71,7 +73,8 @@ module Metronome
           only_archived: T::Boolean,
           salesforce_account_ids: T::Array[String],
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::CursorPage[Metronome::Models::CustomerDetail])
+        )
+          .returns(Metronome::CursorPage[Metronome::Models::CustomerDetail])
       end
       def list(
         customer_ids: nil,
@@ -88,7 +91,8 @@ module Metronome
         params(
           id: String,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::Models::CustomerArchiveResponse)
+        )
+          .returns(Metronome::Models::CustomerArchiveResponse)
       end
       def archive(id:, request_options: {})
       end
@@ -101,7 +105,8 @@ module Metronome
           next_page: String,
           on_current_plan: T::Boolean,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::CursorPage[Metronome::Models::CustomerListBillableMetricsResponse])
+        )
+          .returns(Metronome::CursorPage[Metronome::Models::CustomerListBillableMetricsResponse])
       end
       def list_billable_metrics(
         customer_id:,
@@ -121,7 +126,8 @@ module Metronome
           limit: Integer,
           next_page: String,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::CursorPage[Metronome::Models::CustomerListCostsResponse])
+        )
+          .returns(Metronome::CursorPage[Metronome::Models::CustomerListCostsResponse])
       end
       def list_costs(
         customer_id:,
@@ -138,7 +144,8 @@ module Metronome
           customer_id: String,
           ingest_aliases: T::Array[String],
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).void
+        )
+          .void
       end
       def set_ingest_aliases(customer_id:, ingest_aliases:, request_options: {})
       end
@@ -148,7 +155,8 @@ module Metronome
           customer_id: String,
           name: String,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::Models::CustomerSetNameResponse)
+        )
+          .returns(Metronome::Models::CustomerSetNameResponse)
       end
       def set_name(customer_id:, name:, request_options: {})
       end
@@ -159,7 +167,8 @@ module Metronome
           leave_stripe_invoices_in_draft: T.nilable(T::Boolean),
           salesforce_account_id: T.nilable(String),
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).void
+        )
+          .void
       end
       def update_config(
         customer_id:,

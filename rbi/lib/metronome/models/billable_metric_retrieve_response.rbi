@@ -8,7 +8,8 @@ module Metronome
       end
 
       sig do
-        params(_: Metronome::Models::BillableMetricRetrieveResponse::Data).returns(Metronome::Models::BillableMetricRetrieveResponse::Data)
+        params(_: Metronome::Models::BillableMetricRetrieveResponse::Data)
+          .returns(Metronome::Models::BillableMetricRetrieveResponse::Data)
       end
       def data=(_)
       end
@@ -116,7 +117,8 @@ module Metronome
             group_keys: T::Array[T::Array[String]],
             property_filters: T::Array[Metronome::Models::PropertyFilter],
             sql: String
-          ).void
+          )
+            .void
         end
         def initialize(
           id:,
@@ -133,20 +135,21 @@ module Metronome
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              name: String,
-              aggregation_key: String,
-              aggregation_type: Symbol,
-              archived_at: Time,
-              custom_fields: T::Hash[Symbol, String],
-              event_type_filter: Metronome::Models::EventTypeFilter,
-              group_keys: T::Array[T::Array[String]],
-              property_filters: T::Array[Metronome::Models::PropertyFilter],
-              sql: String
-            }
-          )
+          override
+            .returns(
+              {
+                id: String,
+                name: String,
+                aggregation_key: String,
+                aggregation_type: Symbol,
+                archived_at: Time,
+                custom_fields: T::Hash[Symbol, String],
+                event_type_filter: Metronome::Models::EventTypeFilter,
+                group_keys: T::Array[T::Array[String]],
+                property_filters: T::Array[Metronome::Models::PropertyFilter],
+                sql: String
+              }
+            )
         end
         def to_hash
         end

@@ -14,7 +14,8 @@ module Metronome
           property_filters: T::Array[Metronome::Models::PropertyFilter],
           sql: String,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::Models::BillableMetricCreateResponse)
+        )
+          .returns(Metronome::Models::BillableMetricCreateResponse)
       end
       def create(
         name:,
@@ -33,7 +34,8 @@ module Metronome
         params(
           billable_metric_id: String,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::Models::BillableMetricRetrieveResponse)
+        )
+          .returns(Metronome::Models::BillableMetricRetrieveResponse)
       end
       def retrieve(billable_metric_id:, request_options: {})
       end
@@ -44,7 +46,8 @@ module Metronome
           limit: Integer,
           next_page: String,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::CursorPage[Metronome::Models::BillableMetricListResponse])
+        )
+          .returns(Metronome::CursorPage[Metronome::Models::BillableMetricListResponse])
       end
       def list(include_archived: nil, limit: nil, next_page: nil, request_options: {})
       end
@@ -53,7 +56,8 @@ module Metronome
         params(
           id: String,
           request_options: T.nilable(T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Metronome::Models::BillableMetricArchiveResponse)
+        )
+          .returns(Metronome::Models::BillableMetricArchiveResponse)
       end
       def archive(id:, request_options: {})
       end

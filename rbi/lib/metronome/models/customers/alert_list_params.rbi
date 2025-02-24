@@ -37,20 +37,22 @@ module Metronome
             next_page: String,
             alert_statuses: T::Array[Symbol],
             request_options: T.any(Metronome::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(customer_id:, next_page: nil, alert_statuses: nil, request_options: {})
         end
 
         sig do
-          override.returns(
-            {
-              customer_id: String,
-              next_page: String,
-              alert_statuses: T::Array[Symbol],
-              request_options: Metronome::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                customer_id: String,
+                next_page: String,
+                alert_statuses: T::Array[Symbol],
+                request_options: Metronome::RequestOptions
+              }
+            )
         end
         def to_hash
         end
