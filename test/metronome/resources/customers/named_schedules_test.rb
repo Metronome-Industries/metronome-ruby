@@ -19,6 +19,12 @@ class Metronome::Test::Resources::Customers::NamedSchedulesTest < Minitest::Test
     assert_pattern do
       response => Metronome::Models::Customers::NamedScheduleRetrieveResponse
     end
+
+    assert_pattern do
+      response => {
+        data: ^(Metronome::ArrayOf[Metronome::Models::Customers::NamedScheduleRetrieveResponse::Data])
+      }
+    end
   end
 
   def test_update_required_params

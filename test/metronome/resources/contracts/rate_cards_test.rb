@@ -16,6 +16,12 @@ class Metronome::Test::Resources::Contracts::RateCardsTest < Minitest::Test
     assert_pattern do
       response => Metronome::Models::Contracts::RateCardCreateResponse
     end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::ID
+      }
+    end
   end
 
   def test_retrieve_required_params
@@ -24,6 +30,12 @@ class Metronome::Test::Resources::Contracts::RateCardsTest < Minitest::Test
     assert_pattern do
       response => Metronome::Models::Contracts::RateCardRetrieveResponse
     end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::Contracts::RateCardRetrieveResponse::Data
+      }
+    end
   end
 
   def test_update_required_params
@@ -31,6 +43,12 @@ class Metronome::Test::Resources::Contracts::RateCardsTest < Minitest::Test
 
     assert_pattern do
       response => Metronome::Models::Contracts::RateCardUpdateResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::ID
+      }
     end
   end
 
@@ -50,6 +68,20 @@ class Metronome::Test::Resources::Contracts::RateCardsTest < Minitest::Test
     assert_pattern do
       row => Metronome::Models::Contracts::RateCardListResponse
     end
+
+    assert_pattern do
+      row => {
+        id: String,
+        created_at: Time,
+        created_by: String,
+        name: String,
+        aliases: ^(Metronome::ArrayOf[Metronome::Models::Contracts::RateCardListResponse::Alias]) | nil,
+        credit_type_conversions: ^(Metronome::ArrayOf[Metronome::Models::Contracts::RateCardListResponse::CreditTypeConversion]) | nil,
+        custom_fields: ^(Metronome::HashOf[String]) | nil,
+        description: String | nil,
+        fiat_credit_type: Metronome::Models::CreditTypeData | nil
+      }
+    end
   end
 
   def test_retrieve_rate_schedule_required_params
@@ -60,6 +92,13 @@ class Metronome::Test::Resources::Contracts::RateCardsTest < Minitest::Test
 
     assert_pattern do
       response => Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: ^(Metronome::ArrayOf[Metronome::Models::Contracts::RateCardRetrieveRateScheduleResponse::Data]),
+        next_page: String | nil
+      }
     end
   end
 end

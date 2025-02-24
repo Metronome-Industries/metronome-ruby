@@ -2,12 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # contract_retrieve_response => {
-    #   data: Metronome::Models::ContractRetrieveResponse::Data
-    # }
-    # ```
     class ContractRetrieveResponse < Metronome::BaseModel
       # @!attribute data
       #
@@ -21,17 +15,6 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # data => {
-      #   id: String,
-      #   amendments: -> { Metronome::ArrayOf[Metronome::Models::ContractRetrieveResponse::Data::Amendment] === _1 },
-      #   current: Metronome::Models::ContractWithoutAmendments,
-      #   customer_id: String,
-      #   initial: Metronome::Models::ContractWithoutAmendments,
-      #   **_
-      # }
-      # ```
       class Data < Metronome::BaseModel
         # @!attribute id
         #
@@ -147,17 +130,6 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # amendment => {
-        #   id: String,
-        #   commits: -> { Metronome::ArrayOf[Metronome::Models::Commit] === _1 },
-        #   created_at: Time,
-        #   created_by: String,
-        #   overrides: -> { Metronome::ArrayOf[Metronome::Models::Override] === _1 },
-        #   **_
-        # }
-        # ```
         class Amendment < Metronome::BaseModel
           # @!attribute id
           #
@@ -290,17 +262,6 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # reseller_royalty => {
-          #   reseller_type: Metronome::Models::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty::ResellerType,
-          #   aws_account_number: String,
-          #   aws_offer_id: String,
-          #   aws_payer_reference_id: String,
-          #   ending_before: Time,
-          #   **_
-          # }
-          # ```
           class ResellerRoyalty < Metronome::BaseModel
             # @!attribute reseller_type
             #
@@ -457,13 +418,6 @@ module Metronome
           end
         end
 
-        # @example
-        # ```ruby
-        # customer_billing_provider_configuration => {
-        #   billing_provider: Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::BillingProvider,
-        #   delivery_method: Metronome::Models::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod
-        # }
-        # ```
         class CustomerBillingProviderConfiguration < Metronome::BaseModel
           # @!attribute billing_provider
           #

@@ -26,5 +26,19 @@ class Metronome::Test::Resources::AuditLogsTest < Minitest::Test
     assert_pattern do
       row => Metronome::Models::AuditLogListResponse
     end
+
+    assert_pattern do
+      row => {
+        id: String,
+        request: Metronome::Models::AuditLogListResponse::Request,
+        timestamp: Time,
+        action: String | nil,
+        actor: Metronome::Models::AuditLogListResponse::Actor | nil,
+        description: String | nil,
+        resource_id: String | nil,
+        resource_type: String | nil,
+        status: Metronome::Models::AuditLogListResponse::Status | nil
+      }
+    end
   end
 end

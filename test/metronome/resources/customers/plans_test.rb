@@ -26,6 +26,20 @@ class Metronome::Test::Resources::Customers::PlansTest < Minitest::Test
     assert_pattern do
       row => Metronome::Models::Customers::PlanListResponse
     end
+
+    assert_pattern do
+      row => {
+        id: String,
+        custom_fields: ^(Metronome::HashOf[String]),
+        plan_description: String,
+        plan_id: String,
+        plan_name: String,
+        starting_on: Time,
+        ending_before: Time | nil,
+        net_payment_terms_days: Float | nil,
+        trial_info: Metronome::Models::Customers::PlanListResponse::TrialInfo | nil
+      }
+    end
   end
 
   def test_add_required_params
@@ -38,6 +52,12 @@ class Metronome::Test::Resources::Customers::PlansTest < Minitest::Test
     assert_pattern do
       response => Metronome::Models::Customers::PlanAddResponse
     end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::ID
+      }
+    end
   end
 
   def test_end__required_params
@@ -48,6 +68,12 @@ class Metronome::Test::Resources::Customers::PlansTest < Minitest::Test
 
     assert_pattern do
       response => Metronome::Models::Customers::PlanEndResponse
+    end
+
+    assert_pattern do
+      response => {
+        **_
+      }
     end
   end
 
@@ -69,6 +95,16 @@ class Metronome::Test::Resources::Customers::PlansTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Metronome::Models::Customers::PlanListPriceAdjustmentsResponse
+    end
+
+    assert_pattern do
+      row => {
+        charge_id: String,
+        charge_type: Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::ChargeType,
+        prices: ^(Metronome::ArrayOf[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price]),
+        start_period: Float,
+        quantity: Float | nil
+      }
     end
   end
 end

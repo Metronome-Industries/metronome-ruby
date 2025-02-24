@@ -2,17 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # audit_log_list_response => {
-    #   id: String,
-    #   request: Metronome::Models::AuditLogListResponse::Request,
-    #   timestamp: Time,
-    #   action: String,
-    #   actor: Metronome::Models::AuditLogListResponse::Actor,
-    #   **_
-    # }
-    # ```
     class AuditLogListResponse < Metronome::BaseModel
       # @!attribute id
       #
@@ -111,14 +100,6 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # request => {
-      #   id: String,
-      #   ip: String,
-      #   user_agent: String
-      # }
-      # ```
       class Request < Metronome::BaseModel
         # @!attribute id
         #
@@ -153,14 +134,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # actor => {
-      #   id: String,
-      #   name: String,
-      #   email: String
-      # }
-      # ```
       class Actor < Metronome::BaseModel
         # @!attribute id
         #

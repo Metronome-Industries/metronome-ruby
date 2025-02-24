@@ -214,13 +214,6 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # access_schedule => {
-        #   schedule_items: -> { Metronome::ArrayOf[Metronome::Models::Customers::CommitCreateParams::AccessSchedule::ScheduleItem] === _1 },
-        #   credit_type_id: String
-        # }
-        # ```
         class AccessSchedule < Metronome::BaseModel
           # @!attribute schedule_items
           #
@@ -249,14 +242,6 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # schedule_item => {
-          #   amount: Float,
-          #   ending_before: Time,
-          #   starting_at: Time
-          # }
-          # ```
           class ScheduleItem < Metronome::BaseModel
             # @!attribute amount
             #
@@ -309,14 +294,6 @@ module Metronome
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # invoice_schedule => {
-        #   credit_type_id: String,
-        #   recurring_schedule: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule,
-        #   schedule_items: -> { Metronome::ArrayOf[Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem] === _1 }
-        # }
-        # ```
         class InvoiceSchedule < Metronome::BaseModel
           # @!attribute [r] credit_type_id
           #   Defaults to USD (cents) if not passed.
@@ -366,17 +343,6 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # recurring_schedule => {
-          #   amount_distribution: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::AmountDistribution,
-          #   ending_before: Time,
-          #   frequency: Metronome::Models::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::Frequency,
-          #   starting_at: Time,
-          #   amount: Float,
-          #   **_
-          # }
-          # ```
           class RecurringSchedule < Metronome::BaseModel
             # @!attribute amount_distribution
             #
@@ -522,15 +488,6 @@ module Metronome
             end
           end
 
-          # @example
-          # ```ruby
-          # schedule_item => {
-          #   timestamp: Time,
-          #   amount: Float,
-          #   quantity: Float,
-          #   unit_price: Float
-          # }
-          # ```
           class ScheduleItem < Metronome::BaseModel
             # @!attribute timestamp
             #   timestamp of the scheduled event

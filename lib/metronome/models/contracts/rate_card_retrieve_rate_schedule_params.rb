@@ -87,14 +87,6 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # selector => {
-        #   partial_pricing_group_values: -> { Metronome::HashOf[String] === _1 },
-        #   pricing_group_values: -> { Metronome::HashOf[String] === _1 },
-        #   product_id: String
-        # }
-        # ```
         class Selector < Metronome::BaseModel
           # @!attribute [r] partial_pricing_group_values
           #   List of pricing group key value pairs, rates containing the matching key / value

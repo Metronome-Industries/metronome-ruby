@@ -4,17 +4,6 @@ module Metronome
   module Models
     module Contracts
       module RateCards
-        # @example
-        # ```ruby
-        # rate_list_response => {
-        #   entitled: Metronome::BooleanModel,
-        #   product_custom_fields: -> { Metronome::HashOf[String] === _1 },
-        #   product_id: String,
-        #   product_name: String,
-        #   product_tags: -> { Metronome::ArrayOf[String] === _1 },
-        #   **_
-        # }
-        # ```
         class RateListResponse < Metronome::BaseModel
           # @!attribute entitled
           #
@@ -110,14 +99,6 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # commit_rate => {
-          #   rate_type: Metronome::Models::Contracts::RateCards::RateListResponse::CommitRate::RateType,
-          #   price: Float,
-          #   tiers: -> { Metronome::ArrayOf[Metronome::Models::Tier] === _1 }
-          # }
-          # ```
           class CommitRate < Metronome::BaseModel
             # @!attribute rate_type
             #

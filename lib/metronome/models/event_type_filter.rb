@@ -2,13 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # event_type_filter => {
-    #   in_values: -> { Metronome::ArrayOf[String] === _1 },
-    #   not_in_values: -> { Metronome::ArrayOf[String] === _1 }
-    # }
-    # ```
     class EventTypeFilter < Metronome::BaseModel
       # @!attribute [r] in_values
       #   A list of event types that are explicitly included in the billable metric. If

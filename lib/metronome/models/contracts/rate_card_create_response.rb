@@ -3,12 +3,6 @@
 module Metronome
   module Models
     module Contracts
-      # @example
-      # ```ruby
-      # rate_card_create_response => {
-      #   data: Metronome::Models::ID
-      # }
-      # ```
       class RateCardCreateResponse < Metronome::BaseModel
         # @!attribute data
         #

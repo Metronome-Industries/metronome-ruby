@@ -16,6 +16,12 @@ class Metronome::Test::Resources::BillableMetricsTest < Minitest::Test
     assert_pattern do
       response => Metronome::Models::BillableMetricCreateResponse
     end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::ID
+      }
+    end
   end
 
   def test_retrieve_required_params
@@ -23,6 +29,12 @@ class Metronome::Test::Resources::BillableMetricsTest < Minitest::Test
 
     assert_pattern do
       response => Metronome::Models::BillableMetricRetrieveResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::BillableMetricRetrieveResponse::Data
+      }
     end
   end
 
@@ -42,6 +54,21 @@ class Metronome::Test::Resources::BillableMetricsTest < Minitest::Test
     assert_pattern do
       row => Metronome::Models::BillableMetricListResponse
     end
+
+    assert_pattern do
+      row => {
+        id: String,
+        name: String,
+        aggregation_key: String | nil,
+        aggregation_type: Metronome::Models::BillableMetricListResponse::AggregationType | nil,
+        archived_at: Time | nil,
+        custom_fields: ^(Metronome::HashOf[String]) | nil,
+        event_type_filter: Metronome::Models::EventTypeFilter | nil,
+        group_keys: ^(Metronome::ArrayOf[Metronome::ArrayOf[String]]) | nil,
+        property_filters: ^(Metronome::ArrayOf[Metronome::Models::PropertyFilter]) | nil,
+        sql: String | nil
+      }
+    end
   end
 
   def test_archive_required_params
@@ -49,6 +76,12 @@ class Metronome::Test::Resources::BillableMetricsTest < Minitest::Test
 
     assert_pattern do
       response => Metronome::Models::BillableMetricArchiveResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::ID
+      }
     end
   end
 end

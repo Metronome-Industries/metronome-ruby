@@ -3,12 +3,6 @@
 module Metronome
   module Models
     module Customers
-      # @example
-      # ```ruby
-      # commit_update_end_date_response => {
-      #   data: Metronome::Models::ID
-      # }
-      # ```
       class CommitUpdateEndDateResponse < Metronome::BaseModel
         # @!attribute data
         #

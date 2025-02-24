@@ -2,17 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # plan_list_charges_response => {
-    #   id: String,
-    #   charge_type: Metronome::Models::PlanListChargesResponse::ChargeType,
-    #   credit_type: Metronome::Models::CreditTypeData,
-    #   custom_fields: -> { Metronome::HashOf[String] === _1 },
-    #   name: String,
-    #   **_
-    # }
-    # ```
     class PlanListChargesResponse < Metronome::BaseModel
       # @!attribute id
       #
@@ -161,16 +150,6 @@ module Metronome
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # price => {
-      #   tier: Float,
-      #   value: Float,
-      #   collection_interval: Float,
-      #   collection_schedule: String,
-      #   quantity: Float
-      # }
-      # ```
       class Price < Metronome::BaseModel
         # @!attribute tier
         #   Used in pricing tiers. Indicates at what metric value the price applies.
@@ -222,13 +201,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # unit_conversion => {
-      #   division_factor: Float,
-      #   rounding_behavior: Metronome::Models::PlanListChargesResponse::UnitConversion::RoundingBehavior
-      # }
-      # ```
       class UnitConversion < Metronome::BaseModel
         # @!attribute division_factor
         #   The conversion factor

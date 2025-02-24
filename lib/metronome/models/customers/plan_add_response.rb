@@ -3,12 +3,6 @@
 module Metronome
   module Models
     module Customers
-      # @example
-      # ```ruby
-      # plan_add_response => {
-      #   data: Metronome::Models::ID
-      # }
-      # ```
       class PlanAddResponse < Metronome::BaseModel
         # @!attribute data
         #

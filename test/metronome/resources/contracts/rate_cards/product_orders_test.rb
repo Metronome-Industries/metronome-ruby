@@ -22,6 +22,12 @@ class Metronome::Test::Resources::Contracts::RateCards::ProductOrdersTest < Mini
     assert_pattern do
       response => Metronome::Models::Contracts::RateCards::ProductOrderUpdateResponse
     end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::ID
+      }
+    end
   end
 
   def test_set_required_params
@@ -32,6 +38,12 @@ class Metronome::Test::Resources::Contracts::RateCards::ProductOrdersTest < Mini
 
     assert_pattern do
       response => Metronome::Models::Contracts::RateCards::ProductOrderSetResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::ID
+      }
     end
   end
 end

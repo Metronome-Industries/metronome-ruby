@@ -3,14 +3,6 @@
 module Metronome
   module Models
     module Customers
-      # @example
-      # ```ruby
-      # customer_alert => {
-      #   alert: Metronome::Models::Customers::CustomerAlert::Alert,
-      #   customer_status: Metronome::Models::Customers::CustomerAlert::CustomerStatus,
-      #   triggered_by: String
-      # }
-      # ```
       class CustomerAlert < Metronome::BaseModel
         # @!attribute alert
         #
@@ -41,17 +33,6 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # alert => {
-        #   id: String,
-        #   name: String,
-        #   status: Metronome::Models::Customers::CustomerAlert::Alert::Status,
-        #   threshold: Float,
-        #   type: Metronome::Models::Customers::CustomerAlert::Alert::Type,
-        #   **_
-        # }
-        # ```
         class Alert < Metronome::BaseModel
           # @!attribute id
           #   the Metronome ID of the alert
@@ -258,14 +239,6 @@ module Metronome
             #   def self.values; end
           end
 
-          # @example
-          # ```ruby
-          # custom_field_filter => {
-          #   entity: Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter::Entity,
-          #   key: String,
-          #   value: String
-          # }
-          # ```
           class CustomFieldFilter < Metronome::BaseModel
             # @!attribute entity
             #
@@ -319,13 +292,6 @@ module Metronome
             end
           end
 
-          # @example
-          # ```ruby
-          # group_key_filter => {
-          #   key: String,
-          #   value: String
-          # }
-          # ```
           class GroupKeyFilter < Metronome::BaseModel
             # @!attribute key
             #

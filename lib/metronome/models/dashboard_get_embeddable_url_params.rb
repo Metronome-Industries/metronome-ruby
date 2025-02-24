@@ -101,14 +101,6 @@ module Metronome
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # bm_group_key_override => {
-      #   group_key_name: String,
-      #   display_name: String,
-      #   value_display_names: -> { Metronome::HashOf[Metronome::Unknown] === _1 }
-      # }
-      # ```
       class BmGroupKeyOverride < Metronome::BaseModel
         # @!attribute group_key_name
         #   The name of the billable metric group key.
@@ -147,13 +139,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # color_override => {
-      #   name: Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride::Name,
-      #   value: String
-      # }
-      # ```
       class ColorOverride < Metronome::BaseModel
         # @!attribute [r] name
         #   The color to override
@@ -234,13 +219,6 @@ module Metronome
         end
       end
 
-      # @example
-      # ```ruby
-      # dashboard_option => {
-      #   key: String,
-      #   value: String
-      # }
-      # ```
       class DashboardOption < Metronome::BaseModel
         # @!attribute key
         #   The option key name

@@ -19,6 +19,12 @@ class Metronome::Test::Resources::ContractsTest < Minitest::Test
     assert_pattern do
       response => Metronome::Models::ContractCreateResponse
     end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::ID
+      }
+    end
   end
 
   def test_retrieve_required_params
@@ -30,6 +36,12 @@ class Metronome::Test::Resources::ContractsTest < Minitest::Test
     assert_pattern do
       response => Metronome::Models::ContractRetrieveResponse
     end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::ContractRetrieveResponse::Data
+      }
+    end
   end
 
   def test_list_required_params
@@ -37,6 +49,12 @@ class Metronome::Test::Resources::ContractsTest < Minitest::Test
 
     assert_pattern do
       response => Metronome::Models::ContractListResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: ^(Metronome::ArrayOf[Metronome::Models::ContractListResponse::Data])
+      }
     end
   end
 
@@ -64,6 +82,12 @@ class Metronome::Test::Resources::ContractsTest < Minitest::Test
     assert_pattern do
       response => Metronome::Models::ContractAmendResponse
     end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::ID
+      }
+    end
   end
 
   def test_archive_required_params
@@ -75,6 +99,12 @@ class Metronome::Test::Resources::ContractsTest < Minitest::Test
 
     assert_pattern do
       response => Metronome::Models::ContractArchiveResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::ID
+      }
     end
   end
 
@@ -103,6 +133,12 @@ class Metronome::Test::Resources::ContractsTest < Minitest::Test
     assert_pattern do
       response => Metronome::Models::ContractCreateHistoricalInvoicesResponse
     end
+
+    assert_pattern do
+      response => {
+        data: ^(Metronome::ArrayOf[Metronome::Models::Customers::Invoice])
+      }
+    end
   end
 
   def test_list_balances_required_params
@@ -110,6 +146,13 @@ class Metronome::Test::Resources::ContractsTest < Minitest::Test
 
     assert_pattern do
       response => Metronome::Models::ContractListBalancesResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: ^(Metronome::ArrayOf[union: Metronome::Models::ContractListBalancesResponse::Data]),
+        next_page: String | nil
+      }
     end
   end
 
@@ -121,6 +164,13 @@ class Metronome::Test::Resources::ContractsTest < Minitest::Test
 
     assert_pattern do
       response => Metronome::Models::ContractRetrieveRateScheduleResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: ^(Metronome::ArrayOf[Metronome::Models::ContractRetrieveRateScheduleResponse::Data]),
+        next_page: String | nil
+      }
     end
   end
 
@@ -134,6 +184,12 @@ class Metronome::Test::Resources::ContractsTest < Minitest::Test
 
     assert_pattern do
       response => Metronome::Models::ContractScheduleProServicesInvoiceResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: ^(Metronome::ArrayOf[Metronome::Models::Customers::Invoice])
+      }
     end
   end
 
@@ -159,6 +215,12 @@ class Metronome::Test::Resources::ContractsTest < Minitest::Test
 
     assert_pattern do
       response => Metronome::Models::ContractUpdateEndDateResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::ID
+      }
     end
   end
 end

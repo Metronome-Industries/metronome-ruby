@@ -20,16 +20,6 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # usage => {
-      #   customer_id: String,
-      #   event_type: String,
-      #   timestamp: String,
-      #   transaction_id: String,
-      #   properties: -> { Metronome::HashOf[Metronome::Unknown] === _1 }
-      # }
-      # ```
       class Usage < Metronome::BaseModel
         # @!attribute customer_id
         #

@@ -2,13 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # credit_grant_list_entries_response => {
-    #   data: -> { Metronome::ArrayOf[Metronome::Models::CreditGrantListEntriesResponse::Data] === _1 },
-    #   next_page: String
-    # }
-    # ```
     class CreditGrantListEntriesResponse < Metronome::BaseModel
       # @!attribute data
       #
@@ -28,13 +21,6 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # data => {
-      #   customer_id: String,
-      #   ledgers: -> { Metronome::ArrayOf[Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger] === _1 }
-      # }
-      # ```
       class Data < Metronome::BaseModel
         # @!attribute customer_id
         #
@@ -55,16 +41,6 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # ledger => {
-        #   credit_type: Metronome::Models::CreditTypeData,
-        #   ending_balance: Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance,
-        #   entries: -> { Metronome::ArrayOf[Metronome::Models::CreditLedgerEntry] === _1 },
-        #   pending_entries: -> { Metronome::ArrayOf[Metronome::Models::CreditLedgerEntry] === _1 },
-        #   starting_balance: Metronome::Models::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance
-        # }
-        # ```
         class Ledger < Metronome::BaseModel
           # @!attribute credit_type
           #
@@ -105,14 +81,6 @@ module Metronome
 
           # def initialize: (Hash | Metronome::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # ending_balance => {
-          #   effective_at: Time,
-          #   excluding_pending: Float,
-          #   including_pending: Float
-          # }
-          # ```
           class EndingBalance < Metronome::BaseModel
             # @!attribute effective_at
             #   the ending_before request parameter (if supplied) or the current billing
@@ -148,14 +116,6 @@ module Metronome
             # def initialize: (Hash | Metronome::BaseModel) -> void
           end
 
-          # @example
-          # ```ruby
-          # starting_balance => {
-          #   effective_at: Time,
-          #   excluding_pending: Float,
-          #   including_pending: Float
-          # }
-          # ```
           class StartingBalance < Metronome::BaseModel
             # @!attribute effective_at
             #   the starting_on request parameter (if supplied) or the first credit grant's

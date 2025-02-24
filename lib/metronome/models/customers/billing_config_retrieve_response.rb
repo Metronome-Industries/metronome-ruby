@@ -3,12 +3,6 @@
 module Metronome
   module Models
     module Customers
-      # @example
-      # ```ruby
-      # billing_config_retrieve_response => {
-      #   data: Metronome::Models::Customers::BillingConfigRetrieveResponse::Data
-      # }
-      # ```
       class BillingConfigRetrieveResponse < Metronome::BaseModel
         # @!attribute data
         #
@@ -22,17 +16,6 @@ module Metronome
 
         # def initialize: (Hash | Metronome::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # data => {
-        #   aws_expiration_date: Time,
-        #   aws_product_code: String,
-        #   aws_region: Metronome::Models::Customers::BillingConfigRetrieveResponse::Data::AwsRegion,
-        #   azure_expiration_date: Time,
-        #   azure_plan_id: String,
-        #   **_
-        # }
-        # ```
         class Data < Metronome::BaseModel
           # @!attribute [r] aws_expiration_date
           #   Contract expiration date for the customer. The expected format is RFC 3339 and

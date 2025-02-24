@@ -2,13 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # schedule_duration => {
-    #   schedule_items: -> { Metronome::ArrayOf[Metronome::Models::ScheduleDuration::ScheduleItem] === _1 },
-    #   credit_type: Metronome::Models::CreditTypeData
-    # }
-    # ```
     class ScheduleDuration < Metronome::BaseModel
       # @!attribute schedule_items
       #
@@ -32,15 +25,6 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # schedule_item => {
-      #   id: String,
-      #   amount: Float,
-      #   ending_before: Time,
-      #   starting_at: Time
-      # }
-      # ```
       class ScheduleItem < Metronome::BaseModel
         # @!attribute id
         #

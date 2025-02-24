@@ -2,17 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # plan_detail => {
-    #   id: String,
-    #   custom_fields: -> { Metronome::HashOf[String] === _1 },
-    #   name: String,
-    #   credit_grants: -> { Metronome::ArrayOf[Metronome::Models::PlanDetail::CreditGrant] === _1 },
-    #   description: String,
-    #   **_
-    # }
-    # ```
     class PlanDetail < Metronome::BaseModel
       # @!attribute id
       #
@@ -78,17 +67,6 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # credit_grant => {
-      #   amount_granted: Float,
-      #   amount_granted_credit_type: Metronome::Models::CreditTypeData,
-      #   amount_paid: Float,
-      #   amount_paid_credit_type: Metronome::Models::CreditTypeData,
-      #   effective_duration: Float,
-      #   **_
-      # }
-      # ```
       class CreditGrant < Metronome::BaseModel
         # @!attribute amount_granted
         #
@@ -190,15 +168,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # minimum => {
-      #   credit_type: Metronome::Models::CreditTypeData,
-      #   name: String,
-      #   start_period: Float,
-      #   value: Float
-      # }
-      # ```
       class Minimum < Metronome::BaseModel
         # @!attribute credit_type
         #
@@ -233,15 +202,6 @@ module Metronome
         # def initialize: (Hash | Metronome::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # overage_rate => {
-      #   credit_type: Metronome::Models::CreditTypeData,
-      #   fiat_credit_type: Metronome::Models::CreditTypeData,
-      #   start_period: Float,
-      #   to_fiat_conversion_factor: Float
-      # }
-      # ```
       class OverageRate < Metronome::BaseModel
         # @!attribute credit_type
         #

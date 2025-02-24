@@ -19,6 +19,12 @@ class Metronome::Test::Resources::Customers::AlertsTest < Minitest::Test
     assert_pattern do
       response => Metronome::Models::Customers::AlertRetrieveResponse
     end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::Customers::CustomerAlert
+      }
+    end
   end
 
   def test_list_required_params
@@ -26,6 +32,13 @@ class Metronome::Test::Resources::Customers::AlertsTest < Minitest::Test
 
     assert_pattern do
       response => Metronome::Models::Customers::AlertListResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: ^(Metronome::ArrayOf[Metronome::Models::Customers::CustomerAlert]),
+        next_page: String | nil
+      }
     end
   end
 

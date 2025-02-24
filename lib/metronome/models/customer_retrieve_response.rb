@@ -2,12 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # customer_retrieve_response => {
-    #   data: Metronome::Models::CustomerDetail
-    # }
-    # ```
     class CustomerRetrieveResponse < Metronome::BaseModel
       # @!attribute data
       #

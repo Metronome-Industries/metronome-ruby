@@ -26,5 +26,13 @@ class Metronome::Test::Resources::PricingUnitsTest < Minitest::Test
     assert_pattern do
       row => Metronome::Models::PricingUnitListResponse
     end
+
+    assert_pattern do
+      row => {
+        id: String | nil,
+        is_currency: Metronome::BooleanModel | nil,
+        name: String | nil
+      }
+    end
   end
 end

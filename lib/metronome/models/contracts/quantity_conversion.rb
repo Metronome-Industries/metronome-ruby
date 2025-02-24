@@ -3,14 +3,6 @@
 module Metronome
   module Models
     module Contracts
-      # @example
-      # ```ruby
-      # quantity_conversion => {
-      #   conversion_factor: Float,
-      #   operation: Metronome::Models::Contracts::QuantityConversion::Operation,
-      #   name: String
-      # }
-      # ```
       class QuantityConversion < Metronome::BaseModel
         # @!attribute conversion_factor
         #   The factor to multiply or divide the quantity by.

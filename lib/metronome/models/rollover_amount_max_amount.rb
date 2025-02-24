@@ -2,13 +2,6 @@
 
 module Metronome
   module Models
-    # @example
-    # ```ruby
-    # rollover_amount_max_amount => {
-    #   type: Metronome::Models::RolloverAmountMaxAmount::Type,
-    #   value: Float
-    # }
-    # ```
     class RolloverAmountMaxAmount < Metronome::BaseModel
       # @!attribute type
       #   Rollover up to a fixed amount of the original credit grant amount.

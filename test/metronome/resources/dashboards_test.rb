@@ -19,5 +19,11 @@ class Metronome::Test::Resources::DashboardsTest < Minitest::Test
     assert_pattern do
       response => Metronome::Models::DashboardGetEmbeddableURLResponse
     end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::DashboardGetEmbeddableURLResponse::Data
+      }
+    end
   end
 end

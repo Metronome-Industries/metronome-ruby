@@ -86,16 +86,6 @@ module Metronome
 
       # def initialize: (Hash | Metronome::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # billing_config => {
-      #   billing_provider_customer_id: String,
-      #   billing_provider_type: Metronome::Models::CustomerCreateParams::BillingConfig::BillingProviderType,
-      #   aws_is_subscription_product: Metronome::BooleanModel,
-      #   aws_product_code: String,
-      #   aws_region: Metronome::Models::CustomerCreateParams::BillingConfig::AwsRegion
-      # }
-      # ```
       class BillingConfig < Metronome::BaseModel
         # @!attribute billing_provider_customer_id
         #
@@ -283,15 +273,6 @@ module Metronome
         end
       end
 
-      # @example
-      # ```ruby
-      # customer_billing_provider_configuration => {
-      #   billing_provider: Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::BillingProvider,
-      #   configuration: -> { Metronome::HashOf[Metronome::Unknown] === _1 },
-      #   delivery_method: Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod,
-      #   delivery_method_id: String
-      # }
-      # ```
       class CustomerBillingProviderConfiguration < Metronome::BaseModel
         # @!attribute billing_provider
         #   The billing provider set for this configuration.

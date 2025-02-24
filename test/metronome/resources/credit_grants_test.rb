@@ -23,6 +23,12 @@ class Metronome::Test::Resources::CreditGrantsTest < Minitest::Test
     assert_pattern do
       response => Metronome::Models::CreditGrantCreateResponse
     end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::ID
+      }
+    end
   end
 
   def test_list
@@ -41,6 +47,28 @@ class Metronome::Test::Resources::CreditGrantsTest < Minitest::Test
     assert_pattern do
       row => Metronome::Models::CreditGrantListResponse
     end
+
+    assert_pattern do
+      row => {
+        id: String,
+        balance: Metronome::Models::CreditGrantListResponse::Balance,
+        custom_fields: ^(Metronome::HashOf[String]),
+        customer_id: String,
+        deductions: ^(Metronome::ArrayOf[Metronome::Models::CreditLedgerEntry]),
+        effective_at: Time,
+        expires_at: Time,
+        grant_amount: Metronome::Models::CreditGrantListResponse::GrantAmount,
+        name: String,
+        paid_amount: Metronome::Models::CreditGrantListResponse::PaidAmount,
+        pending_deductions: ^(Metronome::ArrayOf[Metronome::Models::CreditLedgerEntry]),
+        priority: Float,
+        credit_grant_type: String | nil,
+        invoice_id: String | nil,
+        products: ^(Metronome::ArrayOf[Metronome::Models::CreditGrantListResponse::Product]) | nil,
+        reason: String | nil,
+        uniqueness_key: String | nil
+      }
+    end
   end
 
   def test_edit_required_params
@@ -48,6 +76,12 @@ class Metronome::Test::Resources::CreditGrantsTest < Minitest::Test
 
     assert_pattern do
       response => Metronome::Models::CreditGrantEditResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::ID
+      }
     end
   end
 
@@ -57,6 +91,13 @@ class Metronome::Test::Resources::CreditGrantsTest < Minitest::Test
     assert_pattern do
       response => Metronome::Models::CreditGrantListEntriesResponse
     end
+
+    assert_pattern do
+      response => {
+        data: ^(Metronome::ArrayOf[Metronome::Models::CreditGrantListEntriesResponse::Data]),
+        next_page: String | nil
+      }
+    end
   end
 
   def test_void_required_params
@@ -64,6 +105,12 @@ class Metronome::Test::Resources::CreditGrantsTest < Minitest::Test
 
     assert_pattern do
       response => Metronome::Models::CreditGrantVoidResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Metronome::Models::ID
+      }
     end
   end
 end
