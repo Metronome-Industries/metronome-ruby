@@ -7,70 +7,122 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :customer_id
+      def customer_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def customer_id=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :expires_at
+      def expires_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def expires_at=(_)
+      end
 
       sig { returns(Metronome::Models::CreditGrantCreateParams::GrantAmount) }
-      attr_accessor :grant_amount
+      def grant_amount
+      end
+
+      sig do
+        params(_: Metronome::Models::CreditGrantCreateParams::GrantAmount).returns(Metronome::Models::CreditGrantCreateParams::GrantAmount)
+      end
+      def grant_amount=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(Metronome::Models::CreditGrantCreateParams::PaidAmount) }
-      attr_accessor :paid_amount
+      def paid_amount
+      end
+
+      sig do
+        params(_: Metronome::Models::CreditGrantCreateParams::PaidAmount).returns(Metronome::Models::CreditGrantCreateParams::PaidAmount)
+      end
+      def paid_amount=(_)
+      end
 
       sig { returns(Float) }
-      attr_accessor :priority
+      def priority
+      end
+
+      sig { params(_: Float).returns(Float) }
+      def priority=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :credit_grant_type
+      def credit_grant_type
+      end
 
-      sig { params(credit_grant_type: String).void }
-      attr_writer :credit_grant_type
+      sig { params(_: String).returns(String) }
+      def credit_grant_type=(_)
+      end
 
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
-      attr_reader :custom_fields
+      def custom_fields
+      end
 
-      sig { params(custom_fields: T::Hash[Symbol, String]).void }
-      attr_writer :custom_fields
-
-      sig { returns(T.nilable(Time)) }
-      attr_reader :effective_at
-
-      sig { params(effective_at: Time).void }
-      attr_writer :effective_at
+      sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+      def custom_fields=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_reader :invoice_date
+      def effective_at
+      end
 
-      sig { params(invoice_date: Time).void }
-      attr_writer :invoice_date
+      sig { params(_: Time).returns(Time) }
+      def effective_at=(_)
+      end
+
+      sig { returns(T.nilable(Time)) }
+      def invoice_date
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def invoice_date=(_)
+      end
 
       sig { returns(T.nilable(T::Array[String])) }
-      attr_reader :product_ids
+      def product_ids
+      end
 
-      sig { params(product_ids: T::Array[String]).void }
-      attr_writer :product_ids
+      sig { params(_: T::Array[String]).returns(T::Array[String]) }
+      def product_ids=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :reason
+      def reason
+      end
 
-      sig { params(reason: String).void }
-      attr_writer :reason
+      sig { params(_: String).returns(String) }
+      def reason=(_)
+      end
 
       sig { returns(T.nilable(Metronome::Models::CreditGrantCreateParams::RolloverSettings)) }
-      attr_reader :rollover_settings
+      def rollover_settings
+      end
 
-      sig { params(rollover_settings: Metronome::Models::CreditGrantCreateParams::RolloverSettings).void }
-      attr_writer :rollover_settings
+      sig do
+        params(_: Metronome::Models::CreditGrantCreateParams::RolloverSettings).returns(Metronome::Models::CreditGrantCreateParams::RolloverSettings)
+      end
+      def rollover_settings=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :uniqueness_key
+      def uniqueness_key
+      end
 
-      sig { params(uniqueness_key: String).void }
-      attr_writer :uniqueness_key
+      sig { params(_: String).returns(String) }
+      def uniqueness_key=(_)
+      end
 
       sig do
         params(
@@ -136,10 +188,20 @@ module Metronome
 
       class GrantAmount < Metronome::BaseModel
         sig { returns(Float) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def amount=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :credit_type_id
+        def credit_type_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def credit_type_id=(_)
+        end
 
         sig { params(amount: Float, credit_type_id: String).void }
         def initialize(amount:, credit_type_id:)
@@ -152,10 +214,20 @@ module Metronome
 
       class PaidAmount < Metronome::BaseModel
         sig { returns(Float) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def amount=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :credit_type_id
+        def credit_type_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def credit_type_id=(_)
+        end
 
         sig { params(amount: Float, credit_type_id: String).void }
         def initialize(amount:, credit_type_id:)
@@ -168,10 +240,20 @@ module Metronome
 
       class RolloverSettings < Metronome::BaseModel
         sig { returns(Time) }
-        attr_accessor :expires_at
+        def expires_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def expires_at=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :priority
+        def priority
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def priority=(_)
+        end
 
         sig do
           returns(
@@ -181,7 +263,22 @@ module Metronome
             )
           )
         end
-        attr_accessor :rollover_amount
+        def rollover_amount
+        end
+
+        sig do
+          params(
+            _: T.any(
+              Metronome::Models::RolloverAmountMaxPercentage,
+              Metronome::Models::RolloverAmountMaxAmount
+            )
+          ).returns(T.any(
+                      Metronome::Models::RolloverAmountMaxPercentage,
+                      Metronome::Models::RolloverAmountMaxAmount
+                    ))
+        end
+        def rollover_amount=(_)
+        end
 
         sig do
           params(

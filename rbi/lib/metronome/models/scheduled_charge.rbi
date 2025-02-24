@@ -4,31 +4,56 @@ module Metronome
   module Models
     class ScheduledCharge < Metronome::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(Metronome::Models::ScheduledCharge::Product) }
-      attr_accessor :product
+      def product
+      end
+
+      sig do
+        params(_: Metronome::Models::ScheduledCharge::Product).returns(Metronome::Models::ScheduledCharge::Product)
+      end
+      def product=(_)
+      end
 
       sig { returns(Metronome::Models::SchedulePointInTime) }
-      attr_accessor :schedule
+      def schedule
+      end
+
+      sig do
+        params(_: Metronome::Models::SchedulePointInTime).returns(Metronome::Models::SchedulePointInTime)
+      end
+      def schedule=(_)
+      end
 
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
-      attr_reader :custom_fields
+      def custom_fields
+      end
 
-      sig { params(custom_fields: T::Hash[Symbol, String]).void }
-      attr_writer :custom_fields
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :name
-
-      sig { params(name: String).void }
-      attr_writer :name
+      sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+      def custom_fields=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :netsuite_sales_order_id
+      def name
+      end
 
-      sig { params(netsuite_sales_order_id: String).void }
-      attr_writer :netsuite_sales_order_id
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def netsuite_sales_order_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def netsuite_sales_order_id=(_)
+      end
 
       sig do
         params(
@@ -60,10 +85,20 @@ module Metronome
 
       class Product < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         sig { params(id: String, name: String).void }
         def initialize(id:, name:)

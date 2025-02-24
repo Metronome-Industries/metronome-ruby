@@ -126,10 +126,16 @@ module Metronome
 
       path = Metronome::Util.interpolate_path(uninterpolated_path)
 
+      query = Metronome::Util.deep_merge(
+        req[:query].to_h,
+        opts[:extra_query].to_h
+      )
+
       headers = Metronome::Util.normalized_headers(
         @headers,
         auth_headers,
-        *[req[:headers], opts[:extra_headers]].compact
+        req[:headers].to_h,
+        opts[:extra_headers].to_h
       )
 
       if @idempotency_header &&
@@ -157,7 +163,7 @@ module Metronome
           Metronome::Util.deep_merge(*[req[:body], opts[:extra_body]].compact)
         end
 
-      url = Metronome::Util.join_parsed_uri(@base_url, {**req, path: path})
+      url = Metronome::Util.join_parsed_uri(@base_url, {**req, path: path, query: query})
       headers, encoded = Metronome::Util.encode_content(headers, body)
       max_retries = opts.fetch(:max_retries, @max_retries)
       {method: method, url: url, headers: headers, body: encoded, max_retries: max_retries, timeout: timeout}
@@ -387,12 +393,10 @@ module Metronome
       parsed = Metronome::Util.decode_content(response)
       unwrapped = Metronome::Util.dig(parsed, req[:unwrap])
 
-      page = req[:page]
-      model = req.fetch(:model, Metronome::Unknown)
-      case [page, model]
-      in [Class, Class | Metronome::Converter | nil]
+      case [req[:page], req.fetch(:model, Metronome::Unknown)]
+      in [Class => page, _]
         page.new(client: self, req: req, headers: response, unwrapped: unwrapped)
-      in [nil, Class | Metronome::Converter]
+      in [nil, Class | Metronome::Converter => model]
         Metronome::Converter.coerce(model, unwrapped)
       in [nil, nil]
         unwrapped

@@ -7,10 +7,20 @@ module Metronome
     Elem = type_member
 
     sig { returns(String) }
-    attr_accessor :next_page_
+    def next_page_
+    end
+
+    sig { params(_: String).returns(String) }
+    def next_page_=(_)
+    end
 
     sig { returns(T::Array[Elem]) }
-    attr_accessor :data
+    def data
+    end
+
+    sig { params(_: T::Array[Elem]).returns(T::Array[Elem]) }
+    def data=(_)
+    end
 
     sig do
       params(

@@ -7,46 +7,60 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(T.nilable(Time)) }
-      attr_reader :ending_before
+      def ending_before
+      end
 
-      sig { params(ending_before: Time).void }
-      attr_writer :ending_before
+      sig { params(_: Time).returns(Time) }
+      def ending_before=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :next_page
-
-      sig { params(next_page: String).void }
-      attr_writer :next_page
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :resource_id
+      def next_page
+      end
 
-      sig { params(resource_id: String).void }
-      attr_writer :resource_id
+      sig { params(_: String).returns(String) }
+      def next_page=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :resource_type
+      def resource_id
+      end
 
-      sig { params(resource_type: String).void }
-      attr_writer :resource_type
+      sig { params(_: String).returns(String) }
+      def resource_id=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def resource_type
+      end
+
+      sig { params(_: String).returns(String) }
+      def resource_type=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_reader :sort
+      def sort
+      end
 
-      sig { params(sort: Symbol).void }
-      attr_writer :sort
+      sig { params(_: Symbol).returns(Symbol) }
+      def sort=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_reader :starting_on
+      def starting_on
+      end
 
-      sig { params(starting_on: Time).void }
-      attr_writer :starting_on
+      sig { params(_: Time).returns(Time) }
+      def starting_on=(_)
+      end
 
       sig do
         params(

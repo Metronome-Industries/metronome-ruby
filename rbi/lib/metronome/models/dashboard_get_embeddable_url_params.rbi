@@ -7,40 +7,54 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :customer_id
+      def customer_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def customer_id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :dashboard
+      def dashboard
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def dashboard=(_)
+      end
 
       sig do
         returns(T.nilable(T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride]))
       end
-      attr_reader :bm_group_key_overrides
+      def bm_group_key_overrides
+      end
 
       sig do
-        params(
-          bm_group_key_overrides: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride]
-        ).void
+        params(_: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride]).returns(T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::BmGroupKeyOverride])
       end
-      attr_writer :bm_group_key_overrides
+      def bm_group_key_overrides=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride])) }
-      attr_reader :color_overrides
+      def color_overrides
+      end
 
       sig do
-        params(color_overrides: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride]).void
+        params(_: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride]).returns(T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::ColorOverride])
       end
-      attr_writer :color_overrides
+      def color_overrides=(_)
+      end
 
       sig do
         returns(T.nilable(T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption]))
       end
-      attr_reader :dashboard_options
+      def dashboard_options
+      end
 
       sig do
-        params(dashboard_options: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption]).void
+        params(_: T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption]).returns(T::Array[Metronome::Models::DashboardGetEmbeddableURLParams::DashboardOption])
       end
-      attr_writer :dashboard_options
+      def dashboard_options=(_)
+      end
 
       sig do
         params(
@@ -91,19 +105,28 @@ module Metronome
 
       class BmGroupKeyOverride < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :group_key_name
+        def group_key_name
+        end
+
+        sig { params(_: String).returns(String) }
+        def group_key_name=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :display_name
+        def display_name
+        end
 
-        sig { params(display_name: String).void }
-        attr_writer :display_name
+        sig { params(_: String).returns(String) }
+        def display_name=(_)
+        end
 
         sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
-        attr_reader :value_display_names
+        def value_display_names
+        end
 
-        sig { params(value_display_names: T::Hash[Symbol, T.anything]).void }
-        attr_writer :value_display_names
+        sig { params(_: T::Hash[Symbol, T.anything]).returns(T::Hash[Symbol, T.anything]) }
+        def value_display_names=(_)
+        end
 
         sig do
           params(
@@ -130,16 +153,20 @@ module Metronome
 
       class ColorOverride < Metronome::BaseModel
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :name
+        def name
+        end
 
-        sig { params(name: Symbol).void }
-        attr_writer :name
+        sig { params(_: Symbol).returns(Symbol) }
+        def name=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :value
+        def value
+        end
 
-        sig { params(value: String).void }
-        attr_writer :value
+        sig { params(_: String).returns(String) }
+        def value=(_)
+        end
 
         sig { params(name: Symbol, value: String).void }
         def initialize(name: nil, value: nil)
@@ -180,10 +207,20 @@ module Metronome
 
       class DashboardOption < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :key
+        def key
+        end
+
+        sig { params(_: String).returns(String) }
+        def key=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :value
+        def value
+        end
+
+        sig { params(_: String).returns(String) }
+        def value=(_)
+        end
 
         sig { params(key: String, value: String).void }
         def initialize(key:, value:)

@@ -20,11 +20,11 @@ module Metronome
 
         attr_reader access_ending_before: Time?
 
-        def access_ending_before=: (Time) -> void
+        def access_ending_before=: (Time) -> Time
 
         attr_reader invoices_ending_before: Time?
 
-        def invoices_ending_before=: (Time) -> void
+        def invoices_ending_before=: (Time) -> Time
 
         def initialize:
           (

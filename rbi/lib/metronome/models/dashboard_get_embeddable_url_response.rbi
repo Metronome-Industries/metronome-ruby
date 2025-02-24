@@ -4,7 +4,14 @@ module Metronome
   module Models
     class DashboardGetEmbeddableURLResponse < Metronome::BaseModel
       sig { returns(Metronome::Models::DashboardGetEmbeddableURLResponse::Data) }
-      attr_accessor :data
+      def data
+      end
+
+      sig do
+        params(_: Metronome::Models::DashboardGetEmbeddableURLResponse::Data).returns(Metronome::Models::DashboardGetEmbeddableURLResponse::Data)
+      end
+      def data=(_)
+      end
 
       sig { params(data: Metronome::Models::DashboardGetEmbeddableURLResponse::Data).void }
       def initialize(data:)
@@ -16,10 +23,12 @@ module Metronome
 
       class Data < Metronome::BaseModel
         sig { returns(T.nilable(String)) }
-        attr_reader :url
+        def url
+        end
 
-        sig { params(url: String).void }
-        attr_writer :url
+        sig { params(_: String).returns(String) }
+        def url=(_)
+        end
 
         sig { params(url: String).void }
         def initialize(url: nil)

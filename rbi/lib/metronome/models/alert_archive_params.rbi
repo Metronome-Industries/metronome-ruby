@@ -7,13 +7,20 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :release_uniqueness_key
+      def release_uniqueness_key
+      end
 
-      sig { params(release_uniqueness_key: T::Boolean).void }
-      attr_writer :release_uniqueness_key
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def release_uniqueness_key=(_)
+      end
 
       sig do
         params(

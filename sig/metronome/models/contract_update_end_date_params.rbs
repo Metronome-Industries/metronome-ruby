@@ -19,11 +19,11 @@ module Metronome
 
       attr_reader allow_ending_before_finalized_invoice: bool?
 
-      def allow_ending_before_finalized_invoice=: (bool) -> void
+      def allow_ending_before_finalized_invoice=: (bool) -> bool
 
       attr_reader ending_before: Time?
 
-      def ending_before=: (Time) -> void
+      def ending_before=: (Time) -> Time
 
       def initialize:
         (

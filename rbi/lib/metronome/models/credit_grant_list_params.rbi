@@ -7,46 +7,60 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :next_page
+      def next_page
+      end
 
-      sig { params(next_page: String).void }
-      attr_writer :next_page
-
-      sig { returns(T.nilable(T::Array[String])) }
-      attr_reader :credit_grant_ids
-
-      sig { params(credit_grant_ids: T::Array[String]).void }
-      attr_writer :credit_grant_ids
+      sig { params(_: String).returns(String) }
+      def next_page=(_)
+      end
 
       sig { returns(T.nilable(T::Array[String])) }
-      attr_reader :credit_type_ids
+      def credit_grant_ids
+      end
 
-      sig { params(credit_type_ids: T::Array[String]).void }
-      attr_writer :credit_type_ids
+      sig { params(_: T::Array[String]).returns(T::Array[String]) }
+      def credit_grant_ids=(_)
+      end
 
       sig { returns(T.nilable(T::Array[String])) }
-      attr_reader :customer_ids
+      def credit_type_ids
+      end
 
-      sig { params(customer_ids: T::Array[String]).void }
-      attr_writer :customer_ids
+      sig { params(_: T::Array[String]).returns(T::Array[String]) }
+      def credit_type_ids=(_)
+      end
+
+      sig { returns(T.nilable(T::Array[String])) }
+      def customer_ids
+      end
+
+      sig { params(_: T::Array[String]).returns(T::Array[String]) }
+      def customer_ids=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_reader :effective_before
+      def effective_before
+      end
 
-      sig { params(effective_before: Time).void }
-      attr_writer :effective_before
+      sig { params(_: Time).returns(Time) }
+      def effective_before=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_reader :not_expiring_before
+      def not_expiring_before
+      end
 
-      sig { params(not_expiring_before: Time).void }
-      attr_writer :not_expiring_before
+      sig { params(_: Time).returns(Time) }
+      def not_expiring_before=(_)
+      end
 
       sig do
         params(

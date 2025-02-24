@@ -20,7 +20,7 @@ module Metronome
 
       attr_reader custom_fields: ::Hash[Symbol, String]?
 
-      def custom_fields=: (::Hash[Symbol, String]) -> void
+      def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
 
       def initialize:
         (

@@ -11,48 +11,62 @@ module Metronome
     DEFAULT_MAX_RETRY_DELAY = T.let(8.0, Float)
 
     sig { returns(String) }
-    attr_reader :bearer_token
+    def bearer_token
+    end
 
     sig { returns(Metronome::Resources::Alerts) }
-    attr_reader :alerts
+    def alerts
+    end
 
     sig { returns(Metronome::Resources::Plans) }
-    attr_reader :plans
+    def plans
+    end
 
     sig { returns(Metronome::Resources::CreditGrants) }
-    attr_reader :credit_grants
+    def credit_grants
+    end
 
     sig { returns(Metronome::Resources::PricingUnits) }
-    attr_reader :pricing_units
+    def pricing_units
+    end
 
     sig { returns(Metronome::Resources::Customers) }
-    attr_reader :customers
+    def customers
+    end
 
     sig { returns(Metronome::Resources::Dashboards) }
-    attr_reader :dashboards
+    def dashboards
+    end
 
     sig { returns(Metronome::Resources::Usage) }
-    attr_reader :usage
+    def usage
+    end
 
     sig { returns(Metronome::Resources::AuditLogs) }
-    attr_reader :audit_logs
+    def audit_logs
+    end
 
     sig { returns(Metronome::Resources::CustomFields) }
-    attr_reader :custom_fields
+    def custom_fields
+    end
 
     sig { returns(Metronome::Resources::BillableMetrics) }
-    attr_reader :billable_metrics
+    def billable_metrics
+    end
 
     sig { returns(Metronome::Resources::Services) }
-    attr_reader :services
+    def services
+    end
 
     sig { returns(Metronome::Resources::Invoices) }
-    attr_reader :invoices
+    def invoices
+    end
 
     sig { returns(Metronome::Resources::Contracts) }
-    attr_reader :contracts
+    def contracts
+    end
 
-    sig { returns(T::Hash[String, String]) }
+    sig { override.returns(T::Hash[String, String]) }
     private def auth_headers
     end
 

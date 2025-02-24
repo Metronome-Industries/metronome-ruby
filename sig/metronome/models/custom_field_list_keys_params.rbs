@@ -13,13 +13,13 @@ module Metronome
 
       attr_reader next_page: String?
 
-      def next_page=: (String) -> void
+      def next_page=: (String) -> String
 
       attr_reader entities: ::Array[Metronome::Models::CustomFieldListKeysParams::entity]?
 
       def entities=: (
         ::Array[Metronome::Models::CustomFieldListKeysParams::entity]
-      ) -> void
+      ) -> ::Array[Metronome::Models::CustomFieldListKeysParams::entity]
 
       def initialize:
         (

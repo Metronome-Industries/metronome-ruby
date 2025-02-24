@@ -7,25 +7,36 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :plan_id
+      def plan_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def plan_id=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :next_page
+      def next_page
+      end
 
-      sig { params(next_page: String).void }
-      attr_writer :next_page
+      sig { params(_: String).returns(String) }
+      def next_page=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_reader :status
+      def status
+      end
 
-      sig { params(status: Symbol).void }
-      attr_writer :status
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig do
         params(

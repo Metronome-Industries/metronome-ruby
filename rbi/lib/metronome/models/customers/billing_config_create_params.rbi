@@ -8,31 +8,52 @@ module Metronome
         include Metronome::RequestParameters
 
         sig { returns(String) }
-        attr_accessor :customer_id
+        def customer_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def customer_id=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :billing_provider_type
+        def billing_provider_type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def billing_provider_type=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :billing_provider_customer_id
+        def billing_provider_customer_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def billing_provider_customer_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :aws_product_code
+        def aws_product_code
+        end
 
-        sig { params(aws_product_code: String).void }
-        attr_writer :aws_product_code
-
-        sig { returns(T.nilable(Symbol)) }
-        attr_reader :aws_region
-
-        sig { params(aws_region: Symbol).void }
-        attr_writer :aws_region
+        sig { params(_: String).returns(String) }
+        def aws_product_code=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :stripe_collection_method
+        def aws_region
+        end
 
-        sig { params(stripe_collection_method: Symbol).void }
-        attr_writer :stripe_collection_method
+        sig { params(_: Symbol).returns(Symbol) }
+        def aws_region=(_)
+        end
+
+        sig { returns(T.nilable(Symbol)) }
+        def stripe_collection_method
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def stripe_collection_method=(_)
+        end
 
         sig do
           params(

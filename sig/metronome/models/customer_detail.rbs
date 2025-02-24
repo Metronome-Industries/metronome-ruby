@@ -31,7 +31,7 @@ module Metronome
 
       def current_billable_status=: (
         Metronome::Models::CustomerDetail::CurrentBillableStatus
-      ) -> void
+      ) -> Metronome::Models::CustomerDetail::CurrentBillableStatus
 
       def initialize:
         (

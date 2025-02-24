@@ -7,10 +7,20 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :customer_id
+      def customer_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def customer_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig do
         params(

@@ -7,22 +7,36 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :contract_id
+      def contract_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def contract_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :customer_id
+      def customer_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def customer_id=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :allow_ending_before_finalized_invoice
+      def allow_ending_before_finalized_invoice
+      end
 
-      sig { params(allow_ending_before_finalized_invoice: T::Boolean).void }
-      attr_writer :allow_ending_before_finalized_invoice
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def allow_ending_before_finalized_invoice=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_reader :ending_before
+      def ending_before
+      end
 
-      sig { params(ending_before: Time).void }
-      attr_writer :ending_before
+      sig { params(_: Time).returns(Time) }
+      def ending_before=(_)
+      end
 
       sig do
         params(

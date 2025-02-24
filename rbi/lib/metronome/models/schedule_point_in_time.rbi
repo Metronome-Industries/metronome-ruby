@@ -4,16 +4,22 @@ module Metronome
   module Models
     class SchedulePointInTime < Metronome::BaseModel
       sig { returns(T.nilable(Metronome::Models::CreditTypeData)) }
-      attr_reader :credit_type
+      def credit_type
+      end
 
-      sig { params(credit_type: Metronome::Models::CreditTypeData).void }
-      attr_writer :credit_type
+      sig { params(_: Metronome::Models::CreditTypeData).returns(Metronome::Models::CreditTypeData) }
+      def credit_type=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Metronome::Models::SchedulePointInTime::ScheduleItem])) }
-      attr_reader :schedule_items
+      def schedule_items
+      end
 
-      sig { params(schedule_items: T::Array[Metronome::Models::SchedulePointInTime::ScheduleItem]).void }
-      attr_writer :schedule_items
+      sig do
+        params(_: T::Array[Metronome::Models::SchedulePointInTime::ScheduleItem]).returns(T::Array[Metronome::Models::SchedulePointInTime::ScheduleItem])
+      end
+      def schedule_items=(_)
+      end
 
       sig do
         params(
@@ -37,22 +43,52 @@ module Metronome
 
       class ScheduleItem < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def amount=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :invoice_id
+        def invoice_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def invoice_id=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :quantity
+        def quantity
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def quantity=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :timestamp
+        def timestamp
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def timestamp=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :unit_price
+        def unit_price
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def unit_price=(_)
+        end
 
         sig do
           params(

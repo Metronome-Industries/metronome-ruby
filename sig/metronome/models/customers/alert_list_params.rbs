@@ -17,13 +17,13 @@ module Metronome
 
         attr_reader next_page: String?
 
-        def next_page=: (String) -> void
+        def next_page=: (String) -> String
 
         attr_reader alert_statuses: ::Array[Metronome::Models::Customers::AlertListParams::alert_status]?
 
         def alert_statuses=: (
           ::Array[Metronome::Models::Customers::AlertListParams::alert_status]
-        ) -> void
+        ) -> ::Array[Metronome::Models::Customers::AlertListParams::alert_status]
 
         def initialize:
           (

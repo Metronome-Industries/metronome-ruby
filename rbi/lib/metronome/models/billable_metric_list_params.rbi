@@ -7,22 +7,28 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :include_archived
+      def include_archived
+      end
 
-      sig { params(include_archived: T::Boolean).void }
-      attr_writer :include_archived
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def include_archived=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :next_page
+      def next_page
+      end
 
-      sig { params(next_page: String).void }
-      attr_writer :next_page
+      sig { params(_: String).returns(String) }
+      def next_page=(_)
+      end
 
       sig do
         params(

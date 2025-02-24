@@ -22,25 +22,25 @@ module Metronome
 
         def aliases=: (
           ::Array[Metronome::Models::Contracts::RateCardCreateParams::Alias]
-        ) -> void
+        ) -> ::Array[Metronome::Models::Contracts::RateCardCreateParams::Alias]
 
         attr_reader credit_type_conversions: ::Array[Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion]?
 
         def credit_type_conversions=: (
           ::Array[Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion]
-        ) -> void
+        ) -> ::Array[Metronome::Models::Contracts::RateCardCreateParams::CreditTypeConversion]
 
         attr_reader custom_fields: ::Hash[Symbol, String]?
 
-        def custom_fields=: (::Hash[Symbol, String]) -> void
+        def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
 
         attr_reader description: String?
 
-        def description=: (String) -> void
+        def description=: (String) -> String
 
         attr_reader fiat_credit_type_id: String?
 
-        def fiat_credit_type_id=: (String) -> void
+        def fiat_credit_type_id=: (String) -> String
 
         def initialize:
           (
@@ -66,11 +66,11 @@ module Metronome
 
           attr_reader ending_before: Time?
 
-          def ending_before=: (Time) -> void
+          def ending_before=: (Time) -> Time
 
           attr_reader starting_at: Time?
 
-          def starting_at=: (Time) -> void
+          def starting_at=: (Time) -> Time
 
           def initialize:
             (name: String, ending_before: Time, starting_at: Time) -> void

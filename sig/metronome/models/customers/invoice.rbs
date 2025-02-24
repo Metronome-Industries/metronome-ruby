@@ -50,43 +50,47 @@ module Metronome
 
         attr_reader amendment_id: String?
 
-        def amendment_id=: (String) -> void
+        def amendment_id=: (String) -> String
 
         attr_reader billable_status: Metronome::Models::Customers::Invoice::billable_status?
 
         def billable_status=: (
           Metronome::Models::Customers::Invoice::billable_status
-        ) -> void
+        ) -> Metronome::Models::Customers::Invoice::billable_status
 
         attr_reader contract_custom_fields: ::Hash[Symbol, String]?
 
-        def contract_custom_fields=: (::Hash[Symbol, String]) -> void
+        def contract_custom_fields=: (
+          ::Hash[Symbol, String]
+        ) -> ::Hash[Symbol, String]
 
         attr_reader contract_id: String?
 
-        def contract_id=: (String) -> void
+        def contract_id=: (String) -> String
 
         attr_reader correction_record: Metronome::Models::Customers::Invoice::CorrectionRecord?
 
         def correction_record=: (
           Metronome::Models::Customers::Invoice::CorrectionRecord
-        ) -> void
+        ) -> Metronome::Models::Customers::Invoice::CorrectionRecord
 
         attr_reader created_at: Time?
 
-        def created_at=: (Time) -> void
+        def created_at=: (Time) -> Time
 
         attr_reader custom_fields: ::Hash[Symbol, top]?
 
-        def custom_fields=: (::Hash[Symbol, top]) -> void
+        def custom_fields=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
         attr_reader customer_custom_fields: ::Hash[Symbol, String]?
 
-        def customer_custom_fields=: (::Hash[Symbol, String]) -> void
+        def customer_custom_fields=: (
+          ::Hash[Symbol, String]
+        ) -> ::Hash[Symbol, String]
 
         attr_reader end_timestamp: Time?
 
-        def end_timestamp=: (Time) -> void
+        def end_timestamp=: (Time) -> Time
 
         attr_accessor external_invoice: Metronome::Models::Customers::Invoice::ExternalInvoice?
 
@@ -94,49 +98,51 @@ module Metronome
 
         def invoice_adjustments=: (
           ::Array[Metronome::Models::Customers::Invoice::InvoiceAdjustment]
-        ) -> void
+        ) -> ::Array[Metronome::Models::Customers::Invoice::InvoiceAdjustment]
 
         attr_reader issued_at: Time?
 
-        def issued_at=: (Time) -> void
+        def issued_at=: (Time) -> Time
 
         attr_reader net_payment_terms_days: Float?
 
-        def net_payment_terms_days=: (Float) -> void
+        def net_payment_terms_days=: (Float) -> Float
 
         attr_reader netsuite_sales_order_id: String?
 
-        def netsuite_sales_order_id=: (String) -> void
+        def netsuite_sales_order_id=: (String) -> String
 
         attr_reader plan_custom_fields: ::Hash[Symbol, String]?
 
-        def plan_custom_fields=: (::Hash[Symbol, String]) -> void
+        def plan_custom_fields=: (
+          ::Hash[Symbol, String]
+        ) -> ::Hash[Symbol, String]
 
         attr_reader plan_id: String?
 
-        def plan_id=: (String) -> void
+        def plan_id=: (String) -> String
 
         attr_reader plan_name: String?
 
-        def plan_name=: (String) -> void
+        def plan_name=: (String) -> String
 
         attr_reader reseller_royalty: Metronome::Models::Customers::Invoice::ResellerRoyalty?
 
         def reseller_royalty=: (
           Metronome::Models::Customers::Invoice::ResellerRoyalty
-        ) -> void
+        ) -> Metronome::Models::Customers::Invoice::ResellerRoyalty
 
         attr_reader salesforce_opportunity_id: String?
 
-        def salesforce_opportunity_id=: (String) -> void
+        def salesforce_opportunity_id=: (String) -> String
 
         attr_reader start_timestamp: Time?
 
-        def start_timestamp=: (Time) -> void
+        def start_timestamp=: (Time) -> Time
 
         attr_reader subtotal: Float?
 
-        def subtotal=: (Float) -> void
+        def subtotal=: (Float) -> Float
 
         def initialize:
           (
@@ -226,143 +232,153 @@ module Metronome
 
           def applied_commit_or_credit=: (
             Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit
-          ) -> void
+          ) -> Metronome::Models::Customers::Invoice::LineItem::AppliedCommitOrCredit
 
           attr_reader commit_custom_fields: ::Hash[Symbol, String]?
 
-          def commit_custom_fields=: (::Hash[Symbol, String]) -> void
+          def commit_custom_fields=: (
+            ::Hash[Symbol, String]
+          ) -> ::Hash[Symbol, String]
 
           attr_reader commit_id: String?
 
-          def commit_id=: (String) -> void
+          def commit_id=: (String) -> String
 
           attr_reader commit_netsuite_item_id: String?
 
-          def commit_netsuite_item_id=: (String) -> void
+          def commit_netsuite_item_id=: (String) -> String
 
           attr_reader commit_netsuite_sales_order_id: String?
 
-          def commit_netsuite_sales_order_id=: (String) -> void
+          def commit_netsuite_sales_order_id=: (String) -> String
 
           attr_reader commit_segment_id: String?
 
-          def commit_segment_id=: (String) -> void
+          def commit_segment_id=: (String) -> String
 
           attr_reader commit_type: String?
 
-          def commit_type=: (String) -> void
+          def commit_type=: (String) -> String
 
           attr_reader custom_fields: ::Hash[Symbol, String]?
 
-          def custom_fields=: (::Hash[Symbol, String]) -> void
+          def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
 
           attr_reader ending_before: Time?
 
-          def ending_before=: (Time) -> void
+          def ending_before=: (Time) -> Time
 
           attr_reader group_key: String?
 
-          def group_key=: (String) -> void
+          def group_key=: (String) -> String
 
           attr_accessor group_value: String?
 
           attr_reader is_prorated: bool?
 
-          def is_prorated=: (bool) -> void
+          def is_prorated=: (bool) -> bool
 
           attr_reader list_price: Metronome::Models::Rate?
 
-          def list_price=: (Metronome::Models::Rate) -> void
+          def list_price=: (Metronome::Models::Rate) -> Metronome::Models::Rate
 
           attr_reader metadata: String?
 
-          def metadata=: (String) -> void
+          def metadata=: (String) -> String
 
           attr_reader netsuite_invoice_billing_end: Time?
 
-          def netsuite_invoice_billing_end=: (Time) -> void
+          def netsuite_invoice_billing_end=: (Time) -> Time
 
           attr_reader netsuite_invoice_billing_start: Time?
 
-          def netsuite_invoice_billing_start=: (Time) -> void
+          def netsuite_invoice_billing_start=: (Time) -> Time
 
           attr_reader netsuite_item_id: String?
 
-          def netsuite_item_id=: (String) -> void
+          def netsuite_item_id=: (String) -> String
 
           attr_reader postpaid_commit: Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit?
 
           def postpaid_commit=: (
             Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit
-          ) -> void
+          ) -> Metronome::Models::Customers::Invoice::LineItem::PostpaidCommit
 
           attr_reader presentation_group_values: ::Hash[Symbol, String?]?
 
-          def presentation_group_values=: (::Hash[Symbol, String?]) -> void
+          def presentation_group_values=: (
+            ::Hash[Symbol, String?]
+          ) -> ::Hash[Symbol, String?]
 
           attr_reader pricing_group_values: ::Hash[Symbol, String]?
 
-          def pricing_group_values=: (::Hash[Symbol, String]) -> void
+          def pricing_group_values=: (
+            ::Hash[Symbol, String]
+          ) -> ::Hash[Symbol, String]
 
           attr_reader product_custom_fields: ::Hash[Symbol, String]?
 
-          def product_custom_fields=: (::Hash[Symbol, String]) -> void
+          def product_custom_fields=: (
+            ::Hash[Symbol, String]
+          ) -> ::Hash[Symbol, String]
 
           attr_reader product_id: String?
 
-          def product_id=: (String) -> void
+          def product_id=: (String) -> String
 
           attr_reader product_type: String?
 
-          def product_type=: (String) -> void
+          def product_type=: (String) -> String
 
           attr_reader professional_service_custom_fields: ::Hash[Symbol, String]?
 
           def professional_service_custom_fields=: (
             ::Hash[Symbol, String]
-          ) -> void
+          ) -> ::Hash[Symbol, String]
 
           attr_reader professional_service_id: String?
 
-          def professional_service_id=: (String) -> void
+          def professional_service_id=: (String) -> String
 
           attr_reader quantity: Float?
 
-          def quantity=: (Float) -> void
+          def quantity=: (Float) -> Float
 
           attr_reader reseller_type: Metronome::Models::Customers::Invoice::LineItem::reseller_type?
 
           def reseller_type=: (
             Metronome::Models::Customers::Invoice::LineItem::reseller_type
-          ) -> void
+          ) -> Metronome::Models::Customers::Invoice::LineItem::reseller_type
 
           attr_reader scheduled_charge_custom_fields: ::Hash[Symbol, String]?
 
-          def scheduled_charge_custom_fields=: (::Hash[Symbol, String]) -> void
+          def scheduled_charge_custom_fields=: (
+            ::Hash[Symbol, String]
+          ) -> ::Hash[Symbol, String]
 
           attr_reader scheduled_charge_id: String?
 
-          def scheduled_charge_id=: (String) -> void
+          def scheduled_charge_id=: (String) -> String
 
           attr_reader starting_at: Time?
 
-          def starting_at=: (Time) -> void
+          def starting_at=: (Time) -> Time
 
           attr_reader sub_line_items: ::Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem]?
 
           def sub_line_items=: (
             ::Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem]
-          ) -> void
+          ) -> ::Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem]
 
           attr_reader tier: Metronome::Models::Customers::Invoice::LineItem::Tier?
 
           def tier=: (
             Metronome::Models::Customers::Invoice::LineItem::Tier
-          ) -> void
+          ) -> Metronome::Models::Customers::Invoice::LineItem::Tier
 
           attr_reader unit_price: Float?
 
-          def unit_price=: (Float) -> void
+          def unit_price=: (Float) -> Float
 
           def initialize:
             (
@@ -496,35 +512,35 @@ module Metronome
 
             attr_reader charge_id: String?
 
-            def charge_id=: (String) -> void
+            def charge_id=: (String) -> String
 
             attr_reader credit_grant_id: String?
 
-            def credit_grant_id=: (String) -> void
+            def credit_grant_id=: (String) -> String
 
             attr_reader end_date: Time?
 
-            def end_date=: (Time) -> void
+            def end_date=: (Time) -> Time
 
             attr_reader price: Float?
 
-            def price=: (Float) -> void
+            def price=: (Float) -> Float
 
             attr_reader start_date: Time?
 
-            def start_date=: (Time) -> void
+            def start_date=: (Time) -> Time
 
             attr_reader tier_period: Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod?
 
             def tier_period=: (
               Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod
-            ) -> void
+            ) -> Metronome::Models::Customers::Invoice::LineItem::SubLineItem::TierPeriod
 
             attr_reader tiers: ::Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]?
 
             def tiers=: (
               ::Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]
-            ) -> void
+            ) -> ::Array[Metronome::Models::Customers::Invoice::LineItem::SubLineItem::Tier]
 
             def initialize:
               (
@@ -554,7 +570,7 @@ module Metronome
 
               attr_reader ending_before: Time?
 
-              def ending_before=: (Time) -> void
+              def ending_before=: (Time) -> Time
 
               def initialize:
                 (starting_at: Time, ending_before: Time) -> void
@@ -647,7 +663,7 @@ module Metronome
 
           def corrected_external_invoice=: (
             Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice
-          ) -> void
+          ) -> Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice
 
           def initialize:
             (
@@ -678,15 +694,15 @@ module Metronome
 
             def external_status=: (
               Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status
-            ) -> void
+            ) -> Metronome::Models::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status
 
             attr_reader invoice_id: String?
 
-            def invoice_id=: (String) -> void
+            def invoice_id=: (String) -> String
 
             attr_reader issued_at_timestamp: Time?
 
-            def issued_at_timestamp=: (Time) -> void
+            def issued_at_timestamp=: (Time) -> Time
 
             def initialize:
               (
@@ -771,15 +787,15 @@ module Metronome
 
           def external_status=: (
             Metronome::Models::Customers::Invoice::ExternalInvoice::external_status
-          ) -> void
+          ) -> Metronome::Models::Customers::Invoice::ExternalInvoice::external_status
 
           attr_reader invoice_id: String?
 
-          def invoice_id=: (String) -> void
+          def invoice_id=: (String) -> String
 
           attr_reader issued_at_timestamp: Time?
 
-          def issued_at_timestamp=: (Time) -> void
+          def issued_at_timestamp=: (Time) -> Time
 
           def initialize:
             (
@@ -866,11 +882,13 @@ module Metronome
 
           attr_reader credit_grant_custom_fields: ::Hash[Symbol, String]?
 
-          def credit_grant_custom_fields=: (::Hash[Symbol, String]) -> void
+          def credit_grant_custom_fields=: (
+            ::Hash[Symbol, String]
+          ) -> ::Hash[Symbol, String]
 
           attr_reader credit_grant_id: String?
 
-          def credit_grant_id=: (String) -> void
+          def credit_grant_id=: (String) -> String
 
           def initialize:
             (
@@ -908,13 +926,13 @@ module Metronome
 
           def aws_options=: (
             Metronome::Models::Customers::Invoice::ResellerRoyalty::AwsOptions
-          ) -> void
+          ) -> Metronome::Models::Customers::Invoice::ResellerRoyalty::AwsOptions
 
           attr_reader gcp_options: Metronome::Models::Customers::Invoice::ResellerRoyalty::GcpOptions?
 
           def gcp_options=: (
             Metronome::Models::Customers::Invoice::ResellerRoyalty::GcpOptions
-          ) -> void
+          ) -> Metronome::Models::Customers::Invoice::ResellerRoyalty::GcpOptions
 
           def initialize:
             (
@@ -952,15 +970,15 @@ module Metronome
           class AwsOptions < Metronome::BaseModel
             attr_reader aws_account_number: String?
 
-            def aws_account_number=: (String) -> void
+            def aws_account_number=: (String) -> String
 
             attr_reader aws_offer_id: String?
 
-            def aws_offer_id=: (String) -> void
+            def aws_offer_id=: (String) -> String
 
             attr_reader aws_payer_reference_id: String?
 
-            def aws_payer_reference_id=: (String) -> void
+            def aws_payer_reference_id=: (String) -> String
 
             def initialize:
               (
@@ -981,11 +999,11 @@ module Metronome
           class GcpOptions < Metronome::BaseModel
             attr_reader gcp_account_id: String?
 
-            def gcp_account_id=: (String) -> void
+            def gcp_account_id=: (String) -> String
 
             attr_reader gcp_offer_id: String?
 
-            def gcp_offer_id=: (String) -> void
+            def gcp_offer_id=: (String) -> String
 
             def initialize:
               (gcp_account_id: String, gcp_offer_id: String) -> void

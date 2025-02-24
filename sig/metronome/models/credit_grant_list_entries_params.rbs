@@ -16,23 +16,23 @@ module Metronome
 
       attr_reader next_page: String?
 
-      def next_page=: (String) -> void
+      def next_page=: (String) -> String
 
       attr_reader credit_type_ids: ::Array[String]?
 
-      def credit_type_ids=: (::Array[String]) -> void
+      def credit_type_ids=: (::Array[String]) -> ::Array[String]
 
       attr_reader customer_ids: ::Array[String]?
 
-      def customer_ids=: (::Array[String]) -> void
+      def customer_ids=: (::Array[String]) -> ::Array[String]
 
       attr_reader ending_before: Time?
 
-      def ending_before=: (Time) -> void
+      def ending_before=: (Time) -> Time
 
       attr_reader starting_on: Time?
 
-      def starting_on=: (Time) -> void
+      def starting_on=: (Time) -> Time
 
       def initialize:
         (

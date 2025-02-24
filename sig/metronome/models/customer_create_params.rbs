@@ -21,25 +21,25 @@ module Metronome
 
       def billing_config=: (
         Metronome::Models::CustomerCreateParams::BillingConfig
-      ) -> void
+      ) -> Metronome::Models::CustomerCreateParams::BillingConfig
 
       attr_reader custom_fields: ::Hash[Symbol, String]?
 
-      def custom_fields=: (::Hash[Symbol, String]) -> void
+      def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
 
       attr_reader customer_billing_provider_configurations: ::Array[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration]?
 
       def customer_billing_provider_configurations=: (
         ::Array[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration]
-      ) -> void
+      ) -> ::Array[Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration]
 
       attr_reader external_id: String?
 
-      def external_id=: (String) -> void
+      def external_id=: (String) -> String
 
       attr_reader ingest_aliases: ::Array[String]?
 
-      def ingest_aliases=: (::Array[String]) -> void
+      def ingest_aliases=: (::Array[String]) -> ::Array[String]
 
       def initialize:
         (
@@ -74,23 +74,23 @@ module Metronome
 
         attr_reader aws_is_subscription_product: bool?
 
-        def aws_is_subscription_product=: (bool) -> void
+        def aws_is_subscription_product=: (bool) -> bool
 
         attr_reader aws_product_code: String?
 
-        def aws_product_code=: (String) -> void
+        def aws_product_code=: (String) -> String
 
         attr_reader aws_region: Metronome::Models::CustomerCreateParams::BillingConfig::aws_region?
 
         def aws_region=: (
           Metronome::Models::CustomerCreateParams::BillingConfig::aws_region
-        ) -> void
+        ) -> Metronome::Models::CustomerCreateParams::BillingConfig::aws_region
 
         attr_reader stripe_collection_method: Metronome::Models::CustomerCreateParams::BillingConfig::stripe_collection_method?
 
         def stripe_collection_method=: (
           Metronome::Models::CustomerCreateParams::BillingConfig::stripe_collection_method
-        ) -> void
+        ) -> Metronome::Models::CustomerCreateParams::BillingConfig::stripe_collection_method
 
         def initialize:
           (
@@ -211,17 +211,17 @@ module Metronome
 
         attr_reader configuration: ::Hash[Symbol, top]?
 
-        def configuration=: (::Hash[Symbol, top]) -> void
+        def configuration=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
         attr_reader delivery_method: Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::delivery_method?
 
         def delivery_method=: (
           Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::delivery_method
-        ) -> void
+        ) -> Metronome::Models::CustomerCreateParams::CustomerBillingProviderConfiguration::delivery_method
 
         attr_reader delivery_method_id: String?
 
-        def delivery_method_id=: (String) -> void
+        def delivery_method_id=: (String) -> String
 
         def initialize:
           (

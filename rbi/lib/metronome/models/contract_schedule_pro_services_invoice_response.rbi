@@ -4,7 +4,14 @@ module Metronome
   module Models
     class ContractScheduleProServicesInvoiceResponse < Metronome::BaseModel
       sig { returns(T::Array[Metronome::Models::Customers::Invoice]) }
-      attr_accessor :data
+      def data
+      end
+
+      sig do
+        params(_: T::Array[Metronome::Models::Customers::Invoice]).returns(T::Array[Metronome::Models::Customers::Invoice])
+      end
+      def data=(_)
+      end
 
       sig { params(data: T::Array[Metronome::Models::Customers::Invoice]).void }
       def initialize(data:)

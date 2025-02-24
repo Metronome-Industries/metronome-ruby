@@ -26,29 +26,29 @@ module Metronome
 
         attr_reader ending_before: Time?
 
-        def ending_before=: (Time) -> void
+        def ending_before=: (Time) -> Time
 
         attr_reader net_payment_terms_days: Float?
 
-        def net_payment_terms_days=: (Float) -> void
+        def net_payment_terms_days=: (Float) -> Float
 
         attr_reader overage_rate_adjustments: ::Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment]?
 
         def overage_rate_adjustments=: (
           ::Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment]
-        ) -> void
+        ) -> ::Array[Metronome::Models::Customers::PlanAddParams::OverageRateAdjustment]
 
         attr_reader price_adjustments: ::Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment]?
 
         def price_adjustments=: (
           ::Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment]
-        ) -> void
+        ) -> ::Array[Metronome::Models::Customers::PlanAddParams::PriceAdjustment]
 
         attr_reader trial_spec: Metronome::Models::Customers::PlanAddParams::TrialSpec?
 
         def trial_spec=: (
           Metronome::Models::Customers::PlanAddParams::TrialSpec
-        ) -> void
+        ) -> Metronome::Models::Customers::PlanAddParams::TrialSpec
 
         def initialize:
           (
@@ -116,15 +116,15 @@ module Metronome
 
           attr_reader quantity: Float?
 
-          def quantity=: (Float) -> void
+          def quantity=: (Float) -> Float
 
           attr_reader tier: Float?
 
-          def tier=: (Float) -> void
+          def tier=: (Float) -> Float
 
           attr_reader value: Float?
 
-          def value=: (Float) -> void
+          def value=: (Float) -> Float
 
           def initialize:
             (
@@ -167,7 +167,7 @@ module Metronome
 
           def spending_cap=: (
             Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap
-          ) -> void
+          ) -> Metronome::Models::Customers::PlanAddParams::TrialSpec::SpendingCap
 
           def initialize:
             (

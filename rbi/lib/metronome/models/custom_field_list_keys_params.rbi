@@ -7,16 +7,20 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      attr_reader :next_page
+      def next_page
+      end
 
-      sig { params(next_page: String).void }
-      attr_writer :next_page
+      sig { params(_: String).returns(String) }
+      def next_page=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Symbol])) }
-      attr_reader :entities
+      def entities
+      end
 
-      sig { params(entities: T::Array[Symbol]).void }
-      attr_writer :entities
+      sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+      def entities=(_)
+      end
 
       sig do
         params(

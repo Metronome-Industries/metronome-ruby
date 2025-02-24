@@ -6,15 +6,15 @@ module Metronome
     class PricingUnitListResponse < Metronome::BaseModel
       attr_reader id: String?
 
-      def id=: (String) -> void
+      def id=: (String) -> String
 
       attr_reader is_currency: bool?
 
-      def is_currency=: (bool) -> void
+      def is_currency=: (bool) -> bool
 
       attr_reader name: String?
 
-      def name=: (String) -> void
+      def name=: (String) -> String
 
       def initialize:
         (id: String, is_currency: bool, name: String) -> void

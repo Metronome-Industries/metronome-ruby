@@ -7,40 +7,52 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(T.nilable(T::Array[String])) }
-      attr_reader :customer_ids
+      def customer_ids
+      end
 
-      sig { params(customer_ids: T::Array[String]).void }
-      attr_writer :customer_ids
+      sig { params(_: T::Array[String]).returns(T::Array[String]) }
+      def customer_ids=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :ingest_alias
+      def ingest_alias
+      end
 
-      sig { params(ingest_alias: String).void }
-      attr_writer :ingest_alias
+      sig { params(_: String).returns(String) }
+      def ingest_alias=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :next_page
+      def next_page
+      end
 
-      sig { params(next_page: String).void }
-      attr_writer :next_page
+      sig { params(_: String).returns(String) }
+      def next_page=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :only_archived
+      def only_archived
+      end
 
-      sig { params(only_archived: T::Boolean).void }
-      attr_writer :only_archived
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def only_archived=(_)
+      end
 
       sig { returns(T.nilable(T::Array[String])) }
-      attr_reader :salesforce_account_ids
+      def salesforce_account_ids
+      end
 
-      sig { params(salesforce_account_ids: T::Array[String]).void }
-      attr_writer :salesforce_account_ids
+      sig { params(_: T::Array[String]).returns(T::Array[String]) }
+      def salesforce_account_ids=(_)
+      end
 
       sig do
         params(

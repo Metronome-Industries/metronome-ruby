@@ -15,7 +15,7 @@ module Metronome
 
         attr_reader covering_date: Time?
 
-        def covering_date=: (Time) -> void
+        def covering_date=: (Time) -> Time
 
         def initialize:
           (

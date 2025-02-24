@@ -4,25 +4,32 @@ module Metronome
   module Resources
     class Customers
       sig { returns(Metronome::Resources::Customers::Alerts) }
-      attr_reader :alerts
+      def alerts
+      end
 
       sig { returns(Metronome::Resources::Customers::Plans) }
-      attr_reader :plans
+      def plans
+      end
 
       sig { returns(Metronome::Resources::Customers::Invoices) }
-      attr_reader :invoices
+      def invoices
+      end
 
       sig { returns(Metronome::Resources::Customers::BillingConfig) }
-      attr_reader :billing_config
+      def billing_config
+      end
 
       sig { returns(Metronome::Resources::Customers::Commits) }
-      attr_reader :commits
+      def commits
+      end
 
       sig { returns(Metronome::Resources::Customers::Credits) }
-      attr_reader :credits
+      def credits
+      end
 
       sig { returns(Metronome::Resources::Customers::NamedSchedules) }
-      attr_reader :named_schedules
+      def named_schedules
+      end
 
       sig do
         params(

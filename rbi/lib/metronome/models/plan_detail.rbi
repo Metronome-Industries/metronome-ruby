@@ -4,37 +4,66 @@ module Metronome
   module Models
     class PlanDetail < Metronome::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(T::Hash[Symbol, String]) }
-      attr_accessor :custom_fields
+      def custom_fields
+      end
+
+      sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+      def custom_fields=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Metronome::Models::PlanDetail::CreditGrant])) }
-      attr_reader :credit_grants
+      def credit_grants
+      end
 
-      sig { params(credit_grants: T::Array[Metronome::Models::PlanDetail::CreditGrant]).void }
-      attr_writer :credit_grants
+      sig do
+        params(_: T::Array[Metronome::Models::PlanDetail::CreditGrant]).returns(T::Array[Metronome::Models::PlanDetail::CreditGrant])
+      end
+      def credit_grants=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :description
+      def description
+      end
 
-      sig { params(description: String).void }
-      attr_writer :description
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Metronome::Models::PlanDetail::Minimum])) }
-      attr_reader :minimums
+      def minimums
+      end
 
-      sig { params(minimums: T::Array[Metronome::Models::PlanDetail::Minimum]).void }
-      attr_writer :minimums
+      sig do
+        params(_: T::Array[Metronome::Models::PlanDetail::Minimum]).returns(T::Array[Metronome::Models::PlanDetail::Minimum])
+      end
+      def minimums=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Metronome::Models::PlanDetail::OverageRate])) }
-      attr_reader :overage_rates
+      def overage_rates
+      end
 
-      sig { params(overage_rates: T::Array[Metronome::Models::PlanDetail::OverageRate]).void }
-      attr_writer :overage_rates
+      sig do
+        params(_: T::Array[Metronome::Models::PlanDetail::OverageRate]).returns(T::Array[Metronome::Models::PlanDetail::OverageRate])
+      end
+      def overage_rates=(_)
+      end
 
       sig do
         params(
@@ -76,46 +105,92 @@ module Metronome
 
       class CreditGrant < Metronome::BaseModel
         sig { returns(Float) }
-        attr_accessor :amount_granted
+        def amount_granted
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def amount_granted=(_)
+        end
 
         sig { returns(Metronome::Models::CreditTypeData) }
-        attr_accessor :amount_granted_credit_type
+        def amount_granted_credit_type
+        end
+
+        sig { params(_: Metronome::Models::CreditTypeData).returns(Metronome::Models::CreditTypeData) }
+        def amount_granted_credit_type=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :amount_paid
+        def amount_paid
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def amount_paid=(_)
+        end
 
         sig { returns(Metronome::Models::CreditTypeData) }
-        attr_accessor :amount_paid_credit_type
+        def amount_paid_credit_type
+        end
+
+        sig { params(_: Metronome::Models::CreditTypeData).returns(Metronome::Models::CreditTypeData) }
+        def amount_paid_credit_type=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :effective_duration
+        def effective_duration
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def effective_duration=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :priority
+        def priority
+        end
+
+        sig { params(_: String).returns(String) }
+        def priority=(_)
+        end
 
         sig { returns(T::Boolean) }
-        attr_accessor :send_invoice
+        def send_invoice
+        end
+
+        sig { params(_: T::Boolean).returns(T::Boolean) }
+        def send_invoice=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :reason
+        def reason
+        end
 
-        sig { params(reason: String).void }
-        attr_writer :reason
-
-        sig { returns(T.nilable(Float)) }
-        attr_reader :recurrence_duration
-
-        sig { params(recurrence_duration: Float).void }
-        attr_writer :recurrence_duration
+        sig { params(_: String).returns(String) }
+        def reason=(_)
+        end
 
         sig { returns(T.nilable(Float)) }
-        attr_reader :recurrence_interval
+        def recurrence_duration
+        end
 
-        sig { params(recurrence_interval: Float).void }
-        attr_writer :recurrence_interval
+        sig { params(_: Float).returns(Float) }
+        def recurrence_duration=(_)
+        end
+
+        sig { returns(T.nilable(Float)) }
+        def recurrence_interval
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def recurrence_interval=(_)
+        end
 
         sig do
           params(
@@ -170,16 +245,36 @@ module Metronome
 
       class Minimum < Metronome::BaseModel
         sig { returns(Metronome::Models::CreditTypeData) }
-        attr_accessor :credit_type
+        def credit_type
+        end
+
+        sig { params(_: Metronome::Models::CreditTypeData).returns(Metronome::Models::CreditTypeData) }
+        def credit_type=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :start_period
+        def start_period
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def start_period=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :value
+        def value
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def value=(_)
+        end
 
         sig do
           params(
@@ -208,16 +303,36 @@ module Metronome
 
       class OverageRate < Metronome::BaseModel
         sig { returns(Metronome::Models::CreditTypeData) }
-        attr_accessor :credit_type
+        def credit_type
+        end
+
+        sig { params(_: Metronome::Models::CreditTypeData).returns(Metronome::Models::CreditTypeData) }
+        def credit_type=(_)
+        end
 
         sig { returns(Metronome::Models::CreditTypeData) }
-        attr_accessor :fiat_credit_type
+        def fiat_credit_type
+        end
+
+        sig { params(_: Metronome::Models::CreditTypeData).returns(Metronome::Models::CreditTypeData) }
+        def fiat_credit_type=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :start_period
+        def start_period
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def start_period=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :to_fiat_conversion_factor
+        def to_fiat_conversion_factor
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def to_fiat_conversion_factor=(_)
+        end
 
         sig do
           params(

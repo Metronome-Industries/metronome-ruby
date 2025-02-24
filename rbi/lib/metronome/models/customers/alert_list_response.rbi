@@ -5,10 +5,22 @@ module Metronome
     module Customers
       class AlertListResponse < Metronome::BaseModel
         sig { returns(T::Array[Metronome::Models::Customers::CustomerAlert]) }
-        attr_accessor :data
+        def data
+        end
+
+        sig do
+          params(_: T::Array[Metronome::Models::Customers::CustomerAlert]).returns(T::Array[Metronome::Models::Customers::CustomerAlert])
+        end
+        def data=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :next_page
+        def next_page
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def next_page=(_)
+        end
 
         sig do
           params(

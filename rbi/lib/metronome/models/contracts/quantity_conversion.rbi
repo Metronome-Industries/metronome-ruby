@@ -5,16 +5,28 @@ module Metronome
     module Contracts
       class QuantityConversion < Metronome::BaseModel
         sig { returns(Float) }
-        attr_accessor :conversion_factor
+        def conversion_factor
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def conversion_factor=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :operation
+        def operation
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def operation=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :name
+        def name
+        end
 
-        sig { params(name: String).void }
-        attr_writer :name
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         sig { params(conversion_factor: Float, operation: Symbol, name: String).void }
         def initialize(conversion_factor:, operation:, name: nil)

@@ -4,49 +4,80 @@ module Metronome
   module Models
     class AuditLogListResponse < Metronome::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(Metronome::Models::AuditLogListResponse::Request) }
-      attr_accessor :request
+      def request
+      end
+
+      sig do
+        params(_: Metronome::Models::AuditLogListResponse::Request).returns(Metronome::Models::AuditLogListResponse::Request)
+      end
+      def request=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :timestamp
+      def timestamp
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def timestamp=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :action
+      def action
+      end
 
-      sig { params(action: String).void }
-      attr_writer :action
+      sig { params(_: String).returns(String) }
+      def action=(_)
+      end
 
       sig { returns(T.nilable(Metronome::Models::AuditLogListResponse::Actor)) }
-      attr_reader :actor
+      def actor
+      end
 
-      sig { params(actor: Metronome::Models::AuditLogListResponse::Actor).void }
-      attr_writer :actor
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :description
-
-      sig { params(description: String).void }
-      attr_writer :description
+      sig do
+        params(_: Metronome::Models::AuditLogListResponse::Actor).returns(Metronome::Models::AuditLogListResponse::Actor)
+      end
+      def actor=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :resource_id
+      def description
+      end
 
-      sig { params(resource_id: String).void }
-      attr_writer :resource_id
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :resource_type
+      def resource_id
+      end
 
-      sig { params(resource_type: String).void }
-      attr_writer :resource_type
+      sig { params(_: String).returns(String) }
+      def resource_id=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def resource_type
+      end
+
+      sig { params(_: String).returns(String) }
+      def resource_type=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_reader :status
+      def status
+      end
 
-      sig { params(status: Symbol).void }
-      attr_writer :status
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig do
         params(
@@ -94,19 +125,28 @@ module Metronome
 
       class Request < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :ip
+        def ip
+        end
 
-        sig { params(ip: String).void }
-        attr_writer :ip
+        sig { params(_: String).returns(String) }
+        def ip=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :user_agent
+        def user_agent
+        end
 
-        sig { params(user_agent: String).void }
-        attr_writer :user_agent
+        sig { params(_: String).returns(String) }
+        def user_agent=(_)
+        end
 
         sig { params(id: String, ip: String, user_agent: String).void }
         def initialize(id:, ip: nil, user_agent: nil)
@@ -119,16 +159,28 @@ module Metronome
 
       class Actor < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :email
+        def email
+        end
 
-        sig { params(email: String).void }
-        attr_writer :email
+        sig { params(_: String).returns(String) }
+        def email=(_)
+        end
 
         sig { params(id: String, name: String, email: String).void }
         def initialize(id:, name:, email: nil)

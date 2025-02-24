@@ -12,15 +12,15 @@ module Metronome
 
       attr_reader credit_grant_type: String?
 
-      def credit_grant_type=: (String) -> void
+      def credit_grant_type=: (String) -> String
 
       attr_reader expires_at: Time?
 
-      def expires_at=: (Time) -> void
+      def expires_at=: (Time) -> Time
 
       attr_reader name: String?
 
-      def name=: (String) -> void
+      def name=: (String) -> String
 
       def initialize:
         (

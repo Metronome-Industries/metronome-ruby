@@ -8,22 +8,28 @@ module Metronome
         include Metronome::RequestParameters
 
         sig { returns(T.nilable(Integer)) }
-        attr_reader :limit
+        def limit
+        end
 
-        sig { params(limit: Integer).void }
-        attr_writer :limit
+        sig { params(_: Integer).returns(Integer) }
+        def limit=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :next_page
+        def next_page
+        end
 
-        sig { params(next_page: String).void }
-        attr_writer :next_page
+        sig { params(_: String).returns(String) }
+        def next_page=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :archive_filter
+        def archive_filter
+        end
 
-        sig { params(archive_filter: Symbol).void }
-        attr_writer :archive_filter
+        sig { params(_: Symbol).returns(Symbol) }
+        def archive_filter=(_)
+        end
 
         sig do
           params(

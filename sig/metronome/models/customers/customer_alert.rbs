@@ -62,7 +62,7 @@ module Metronome
 
           attr_reader credit_grant_type_filters: ::Array[String]?
 
-          def credit_grant_type_filters=: (::Array[String]) -> void
+          def credit_grant_type_filters=: (::Array[String]) -> ::Array[String]
 
           attr_accessor credit_type: Metronome::Models::CreditTypeData?
 
@@ -70,21 +70,21 @@ module Metronome
 
           def custom_field_filters=: (
             ::Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter]
-          ) -> void
+          ) -> ::Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter]
 
           attr_reader group_key_filter: Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter?
 
           def group_key_filter=: (
             Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter
-          ) -> void
+          ) -> Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter
 
           attr_reader invoice_types_filter: ::Array[String]?
 
-          def invoice_types_filter=: (::Array[String]) -> void
+          def invoice_types_filter=: (::Array[String]) -> ::Array[String]
 
           attr_reader uniqueness_key: String?
 
-          def uniqueness_key=: (String) -> void
+          def uniqueness_key=: (String) -> String
 
           def initialize:
             (

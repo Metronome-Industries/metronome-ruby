@@ -21,7 +21,7 @@ module Metronome
 
         attr_reader quantity: Float?
 
-        def quantity=: (Float) -> void
+        def quantity=: (Float) -> Float
 
         def initialize:
           (
@@ -62,11 +62,11 @@ module Metronome
 
           attr_reader tier: Float?
 
-          def tier=: (Float) -> void
+          def tier=: (Float) -> Float
 
           attr_reader value: Float?
 
-          def value=: (Float) -> void
+          def value=: (Float) -> Float
 
           def initialize:
             (

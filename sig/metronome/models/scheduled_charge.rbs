@@ -19,15 +19,15 @@ module Metronome
 
       attr_reader custom_fields: ::Hash[Symbol, String]?
 
-      def custom_fields=: (::Hash[Symbol, String]) -> void
+      def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
 
       attr_reader name: String?
 
-      def name=: (String) -> void
+      def name=: (String) -> String
 
       attr_reader netsuite_sales_order_id: String?
 
-      def netsuite_sales_order_id=: (String) -> void
+      def netsuite_sales_order_id=: (String) -> String
 
       def initialize:
         (

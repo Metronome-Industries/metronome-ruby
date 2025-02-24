@@ -8,10 +8,20 @@ module Metronome
         include Metronome::RequestParameters
 
         sig { returns(String) }
-        attr_accessor :customer_id
+        def customer_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def customer_id=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :billing_provider_type
+        def billing_provider_type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def billing_provider_type=(_)
+        end
 
         sig do
           params(

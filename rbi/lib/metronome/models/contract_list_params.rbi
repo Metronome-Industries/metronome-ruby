@@ -7,37 +7,52 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :customer_id
+      def customer_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def customer_id=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_reader :covering_date
+      def covering_date
+      end
 
-      sig { params(covering_date: Time).void }
-      attr_writer :covering_date
-
-      sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :include_archived
-
-      sig { params(include_archived: T::Boolean).void }
-      attr_writer :include_archived
+      sig { params(_: Time).returns(Time) }
+      def covering_date=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :include_balance
+      def include_archived
+      end
 
-      sig { params(include_balance: T::Boolean).void }
-      attr_writer :include_balance
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def include_archived=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :include_ledgers
+      def include_balance
+      end
 
-      sig { params(include_ledgers: T::Boolean).void }
-      attr_writer :include_ledgers
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def include_balance=(_)
+      end
+
+      sig { returns(T.nilable(T::Boolean)) }
+      def include_ledgers
+      end
+
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def include_ledgers=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_reader :starting_at
+      def starting_at
+      end
 
-      sig { params(starting_at: Time).void }
-      attr_writer :starting_at
+      sig { params(_: Time).returns(Time) }
+      def starting_at=(_)
+      end
 
       sig do
         params(

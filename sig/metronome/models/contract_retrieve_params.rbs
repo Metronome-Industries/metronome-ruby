@@ -19,11 +19,11 @@ module Metronome
 
       attr_reader include_balance: bool?
 
-      def include_balance=: (bool) -> void
+      def include_balance=: (bool) -> bool
 
       attr_reader include_ledgers: bool?
 
-      def include_ledgers=: (bool) -> void
+      def include_ledgers=: (bool) -> bool
 
       def initialize:
         (

@@ -4,19 +4,36 @@ module Metronome
   module Models
     class PlanListResponse < Metronome::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :description
+      def description
+      end
+
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
-      attr_reader :custom_fields
+      def custom_fields
+      end
 
-      sig { params(custom_fields: T::Hash[Symbol, String]).void }
-      attr_writer :custom_fields
+      sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+      def custom_fields=(_)
+      end
 
       sig do
         params(id: String, description: String, name: String, custom_fields: T::Hash[Symbol, String]).void

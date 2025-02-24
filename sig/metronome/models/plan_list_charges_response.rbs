@@ -35,21 +35,21 @@ module Metronome
 
       attr_reader quantity: Float?
 
-      def quantity=: (Float) -> void
+      def quantity=: (Float) -> Float
 
       attr_reader start_period: Float?
 
-      def start_period=: (Float) -> void
+      def start_period=: (Float) -> Float
 
       attr_reader tier_reset_frequency: Float?
 
-      def tier_reset_frequency=: (Float) -> void
+      def tier_reset_frequency=: (Float) -> Float
 
       attr_reader unit_conversion: Metronome::Models::PlanListChargesResponse::UnitConversion?
 
       def unit_conversion=: (
         Metronome::Models::PlanListChargesResponse::UnitConversion
-      ) -> void
+      ) -> Metronome::Models::PlanListChargesResponse::UnitConversion
 
       def initialize:
         (
@@ -101,15 +101,15 @@ module Metronome
 
         attr_reader collection_interval: Float?
 
-        def collection_interval=: (Float) -> void
+        def collection_interval=: (Float) -> Float
 
         attr_reader collection_schedule: String?
 
-        def collection_schedule=: (String) -> void
+        def collection_schedule=: (String) -> String
 
         attr_reader quantity: Float?
 
-        def quantity=: (Float) -> void
+        def quantity=: (Float) -> Float
 
         def initialize:
           (
@@ -140,7 +140,7 @@ module Metronome
 
         def rounding_behavior=: (
           Metronome::Models::PlanListChargesResponse::UnitConversion::rounding_behavior
-        ) -> void
+        ) -> Metronome::Models::PlanListChargesResponse::UnitConversion::rounding_behavior
 
         def initialize:
           (

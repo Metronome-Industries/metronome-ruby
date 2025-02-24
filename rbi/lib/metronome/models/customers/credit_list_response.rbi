@@ -5,10 +5,20 @@ module Metronome
     module Customers
       class CreditListResponse < Metronome::BaseModel
         sig { returns(T::Array[Metronome::Models::Credit]) }
-        attr_accessor :data
+        def data
+        end
+
+        sig { params(_: T::Array[Metronome::Models::Credit]).returns(T::Array[Metronome::Models::Credit]) }
+        def data=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :next_page
+        def next_page
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def next_page=(_)
+        end
 
         sig { params(data: T::Array[Metronome::Models::Credit], next_page: T.nilable(String)).void }
         def initialize(data:, next_page:)

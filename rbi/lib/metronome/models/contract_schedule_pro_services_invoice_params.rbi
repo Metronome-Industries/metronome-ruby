@@ -7,28 +7,54 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :contract_id
+      def contract_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def contract_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :customer_id
+      def customer_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def customer_id=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :issued_at
+      def issued_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def issued_at=(_)
+      end
 
       sig { returns(T::Array[Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem]) }
-      attr_accessor :line_items
+      def line_items
+      end
+
+      sig do
+        params(_: T::Array[Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem]).returns(T::Array[Metronome::Models::ContractScheduleProServicesInvoiceParams::LineItem])
+      end
+      def line_items=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_reader :netsuite_invoice_header_end
+      def netsuite_invoice_header_end
+      end
 
-      sig { params(netsuite_invoice_header_end: Time).void }
-      attr_writer :netsuite_invoice_header_end
+      sig { params(_: Time).returns(Time) }
+      def netsuite_invoice_header_end=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_reader :netsuite_invoice_header_start
+      def netsuite_invoice_header_start
+      end
 
-      sig { params(netsuite_invoice_header_start: Time).void }
-      attr_writer :netsuite_invoice_header_start
+      sig { params(_: Time).returns(Time) }
+      def netsuite_invoice_header_start=(_)
+      end
 
       sig do
         params(
@@ -70,49 +96,68 @@ module Metronome
 
       class LineItem < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :professional_service_id
+        def professional_service_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def professional_service_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :amendment_id
+        def amendment_id
+        end
 
-        sig { params(amendment_id: String).void }
-        attr_writer :amendment_id
+        sig { params(_: String).returns(String) }
+        def amendment_id=(_)
+        end
 
         sig { returns(T.nilable(Float)) }
-        attr_reader :amount
+        def amount
+        end
 
-        sig { params(amount: Float).void }
-        attr_writer :amount
+        sig { params(_: Float).returns(Float) }
+        def amount=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :metadata
+        def metadata
+        end
 
-        sig { params(metadata: String).void }
-        attr_writer :metadata
-
-        sig { returns(T.nilable(Time)) }
-        attr_reader :netsuite_invoice_billing_end
-
-        sig { params(netsuite_invoice_billing_end: Time).void }
-        attr_writer :netsuite_invoice_billing_end
+        sig { params(_: String).returns(String) }
+        def metadata=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :netsuite_invoice_billing_start
+        def netsuite_invoice_billing_end
+        end
 
-        sig { params(netsuite_invoice_billing_start: Time).void }
-        attr_writer :netsuite_invoice_billing_start
+        sig { params(_: Time).returns(Time) }
+        def netsuite_invoice_billing_end=(_)
+        end
+
+        sig { returns(T.nilable(Time)) }
+        def netsuite_invoice_billing_start
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def netsuite_invoice_billing_start=(_)
+        end
 
         sig { returns(T.nilable(Float)) }
-        attr_reader :quantity
+        def quantity
+        end
 
-        sig { params(quantity: Float).void }
-        attr_writer :quantity
+        sig { params(_: Float).returns(Float) }
+        def quantity=(_)
+        end
 
         sig { returns(T.nilable(Float)) }
-        attr_reader :unit_price
+        def unit_price
+        end
 
-        sig { params(unit_price: Float).void }
-        attr_writer :unit_price
+        sig { params(_: Float).returns(Float) }
+        def unit_price=(_)
+        end
 
         sig do
           params(

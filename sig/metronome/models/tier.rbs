@@ -7,7 +7,7 @@ module Metronome
 
       attr_reader size: Float?
 
-      def size=: (Float) -> void
+      def size=: (Float) -> Float
 
       def initialize:
         (price: Float, size: Float) -> void

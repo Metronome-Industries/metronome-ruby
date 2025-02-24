@@ -32,83 +32,97 @@ module Metronome
 
       attr_reader applicable_product_tags: ::Array[String]?
 
-      def applicable_product_tags=: (::Array[String]) -> void
+      def applicable_product_tags=: (::Array[String]) -> ::Array[String]
 
       attr_reader credit_type: Metronome::Models::CreditTypeData?
 
-      def credit_type=: (Metronome::Models::CreditTypeData) -> void
+      def credit_type=: (
+        Metronome::Models::CreditTypeData
+      ) -> Metronome::Models::CreditTypeData
 
       attr_reader ending_before: Time?
 
-      def ending_before=: (Time) -> void
+      def ending_before=: (Time) -> Time
 
       attr_reader entitled: bool?
 
-      def entitled=: (bool) -> void
+      def entitled=: (bool) -> bool
 
       attr_reader is_commit_specific: bool?
 
-      def is_commit_specific=: (bool) -> void
+      def is_commit_specific=: (bool) -> bool
 
       attr_reader is_prorated: bool?
 
-      def is_prorated=: (bool) -> void
+      def is_prorated=: (bool) -> bool
 
       attr_reader multiplier: Float?
 
-      def multiplier=: (Float) -> void
+      def multiplier=: (Float) -> Float
 
       attr_reader override_specifiers: ::Array[Metronome::Models::Override::OverrideSpecifier]?
 
       def override_specifiers=: (
         ::Array[Metronome::Models::Override::OverrideSpecifier]
-      ) -> void
+      ) -> ::Array[Metronome::Models::Override::OverrideSpecifier]
 
       attr_reader override_tiers: ::Array[Metronome::Models::Override::OverrideTier]?
 
       def override_tiers=: (
         ::Array[Metronome::Models::Override::OverrideTier]
-      ) -> void
+      ) -> ::Array[Metronome::Models::Override::OverrideTier]
 
       attr_reader overwrite_rate: Metronome::Models::Override::OverwriteRate?
 
-      def overwrite_rate=: (Metronome::Models::Override::OverwriteRate) -> void
+      def overwrite_rate=: (
+        Metronome::Models::Override::OverwriteRate
+      ) -> Metronome::Models::Override::OverwriteRate
 
       attr_reader price: Float?
 
-      def price=: (Float) -> void
+      def price=: (Float) -> Float
 
       attr_reader priority: Float?
 
-      def priority=: (Float) -> void
+      def priority=: (Float) -> Float
 
       attr_reader product: Metronome::Models::Override::Product?
 
-      def product=: (Metronome::Models::Override::Product) -> void
+      def product=: (
+        Metronome::Models::Override::Product
+      ) -> Metronome::Models::Override::Product
 
       attr_reader quantity: Float?
 
-      def quantity=: (Float) -> void
+      def quantity=: (Float) -> Float
 
       attr_reader rate_type: Metronome::Models::Override::rate_type?
 
-      def rate_type=: (Metronome::Models::Override::rate_type) -> void
+      def rate_type=: (
+        Metronome::Models::Override::rate_type
+      ) -> Metronome::Models::Override::rate_type
 
       attr_reader target: Metronome::Models::Override::target?
 
-      def target=: (Metronome::Models::Override::target) -> void
+      def target=: (
+        Metronome::Models::Override::target
+      ) -> Metronome::Models::Override::target
 
       attr_reader tiers: ::Array[Metronome::Models::Tier]?
 
-      def tiers=: (::Array[Metronome::Models::Tier]) -> void
+      def tiers=: (
+        ::Array[Metronome::Models::Tier]
+      ) -> ::Array[Metronome::Models::Tier]
 
       attr_reader type: Metronome::Models::Override::type_?
 
-      def type=: (Metronome::Models::Override::type_) -> void
+      def type=: (
+        Metronome::Models::Override::type_
+      ) -> Metronome::Models::Override::type_
 
       attr_reader value: ::Hash[Symbol, top]?
 
-      def value=: (::Hash[Symbol, top]) -> void
+      def value=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
       def initialize:
         (
@@ -152,31 +166,35 @@ module Metronome
       class OverrideSpecifier < Metronome::BaseModel
         attr_reader commit_ids: ::Array[String]?
 
-        def commit_ids=: (::Array[String]) -> void
+        def commit_ids=: (::Array[String]) -> ::Array[String]
 
         attr_reader presentation_group_values: ::Hash[Symbol, String?]?
 
-        def presentation_group_values=: (::Hash[Symbol, String?]) -> void
+        def presentation_group_values=: (
+          ::Hash[Symbol, String?]
+        ) -> ::Hash[Symbol, String?]
 
         attr_reader pricing_group_values: ::Hash[Symbol, String]?
 
-        def pricing_group_values=: (::Hash[Symbol, String]) -> void
+        def pricing_group_values=: (
+          ::Hash[Symbol, String]
+        ) -> ::Hash[Symbol, String]
 
         attr_reader product_id: String?
 
-        def product_id=: (String) -> void
+        def product_id=: (String) -> String
 
         attr_reader product_tags: ::Array[String]?
 
-        def product_tags=: (::Array[String]) -> void
+        def product_tags=: (::Array[String]) -> ::Array[String]
 
         attr_reader recurring_commit_ids: ::Array[String]?
 
-        def recurring_commit_ids=: (::Array[String]) -> void
+        def recurring_commit_ids=: (::Array[String]) -> ::Array[String]
 
         attr_reader recurring_credit_ids: ::Array[String]?
 
-        def recurring_credit_ids=: (::Array[String]) -> void
+        def recurring_credit_ids=: (::Array[String]) -> ::Array[String]
 
         def initialize:
           (
@@ -203,7 +221,7 @@ module Metronome
 
         attr_reader size: Float?
 
-        def size=: (Float) -> void
+        def size=: (Float) -> Float
 
         def initialize:
           (multiplier: Float, size: Float) -> void
@@ -231,27 +249,31 @@ module Metronome
 
         attr_reader credit_type: Metronome::Models::CreditTypeData?
 
-        def credit_type=: (Metronome::Models::CreditTypeData) -> void
+        def credit_type=: (
+          Metronome::Models::CreditTypeData
+        ) -> Metronome::Models::CreditTypeData
 
         attr_reader custom_rate: ::Hash[Symbol, top]?
 
-        def custom_rate=: (::Hash[Symbol, top]) -> void
+        def custom_rate=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
         attr_reader is_prorated: bool?
 
-        def is_prorated=: (bool) -> void
+        def is_prorated=: (bool) -> bool
 
         attr_reader price: Float?
 
-        def price=: (Float) -> void
+        def price=: (Float) -> Float
 
         attr_reader quantity: Float?
 
-        def quantity=: (Float) -> void
+        def quantity=: (Float) -> Float
 
         attr_reader tiers: ::Array[Metronome::Models::Tier]?
 
-        def tiers=: (::Array[Metronome::Models::Tier]) -> void
+        def tiers=: (
+          ::Array[Metronome::Models::Tier]
+        ) -> ::Array[Metronome::Models::Tier]
 
         def initialize:
           (

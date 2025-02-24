@@ -5,7 +5,14 @@ module Metronome
     module Contracts
       class NamedScheduleRetrieveResponse < Metronome::BaseModel
         sig { returns(T::Array[Metronome::Models::Contracts::NamedScheduleRetrieveResponse::Data]) }
-        attr_accessor :data
+        def data
+        end
+
+        sig do
+          params(_: T::Array[Metronome::Models::Contracts::NamedScheduleRetrieveResponse::Data]).returns(T::Array[Metronome::Models::Contracts::NamedScheduleRetrieveResponse::Data])
+        end
+        def data=(_)
+        end
 
         sig { params(data: T::Array[Metronome::Models::Contracts::NamedScheduleRetrieveResponse::Data]).void }
         def initialize(data:)
@@ -19,16 +26,28 @@ module Metronome
 
         class Data < Metronome::BaseModel
           sig { returns(Time) }
-          attr_accessor :starting_at
+          def starting_at
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def starting_at=(_)
+          end
 
           sig { returns(T.anything) }
-          attr_accessor :value
+          def value
+          end
+
+          sig { params(_: T.anything).returns(T.anything) }
+          def value=(_)
+          end
 
           sig { returns(T.nilable(Time)) }
-          attr_reader :ending_before
+          def ending_before
+          end
 
-          sig { params(ending_before: Time).void }
-          attr_writer :ending_before
+          sig { params(_: Time).returns(Time) }
+          def ending_before=(_)
+          end
 
           sig { params(starting_at: Time, value: T.anything, ending_before: Time).void }
           def initialize(starting_at:, value:, ending_before: nil)

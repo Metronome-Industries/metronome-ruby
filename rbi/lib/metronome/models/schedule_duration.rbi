@@ -4,13 +4,22 @@ module Metronome
   module Models
     class ScheduleDuration < Metronome::BaseModel
       sig { returns(T::Array[Metronome::Models::ScheduleDuration::ScheduleItem]) }
-      attr_accessor :schedule_items
+      def schedule_items
+      end
+
+      sig do
+        params(_: T::Array[Metronome::Models::ScheduleDuration::ScheduleItem]).returns(T::Array[Metronome::Models::ScheduleDuration::ScheduleItem])
+      end
+      def schedule_items=(_)
+      end
 
       sig { returns(T.nilable(Metronome::Models::CreditTypeData)) }
-      attr_reader :credit_type
+      def credit_type
+      end
 
-      sig { params(credit_type: Metronome::Models::CreditTypeData).void }
-      attr_writer :credit_type
+      sig { params(_: Metronome::Models::CreditTypeData).returns(Metronome::Models::CreditTypeData) }
+      def credit_type=(_)
+      end
 
       sig do
         params(
@@ -34,16 +43,36 @@ module Metronome
 
       class ScheduleItem < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def amount=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :ending_before
+        def ending_before
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def ending_before=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :starting_at
+        def starting_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def starting_at=(_)
+        end
 
         sig { params(id: String, amount: Float, ending_before: Time, starting_at: Time).void }
         def initialize(id:, amount:, ending_before:, starting_at:)

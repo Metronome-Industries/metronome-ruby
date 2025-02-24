@@ -5,7 +5,14 @@ module Metronome
     module Customers
       class BillingConfigRetrieveResponse < Metronome::BaseModel
         sig { returns(Metronome::Models::Customers::BillingConfigRetrieveResponse::Data) }
-        attr_accessor :data
+        def data
+        end
+
+        sig do
+          params(_: Metronome::Models::Customers::BillingConfigRetrieveResponse::Data).returns(Metronome::Models::Customers::BillingConfigRetrieveResponse::Data)
+        end
+        def data=(_)
+        end
 
         sig { params(data: Metronome::Models::Customers::BillingConfigRetrieveResponse::Data).void }
         def initialize(data:)
@@ -17,58 +24,76 @@ module Metronome
 
         class Data < Metronome::BaseModel
           sig { returns(T.nilable(Time)) }
-          attr_reader :aws_expiration_date
+          def aws_expiration_date
+          end
 
-          sig { params(aws_expiration_date: Time).void }
-          attr_writer :aws_expiration_date
+          sig { params(_: Time).returns(Time) }
+          def aws_expiration_date=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_reader :aws_product_code
+          def aws_product_code
+          end
 
-          sig { params(aws_product_code: String).void }
-          attr_writer :aws_product_code
+          sig { params(_: String).returns(String) }
+          def aws_product_code=(_)
+          end
 
           sig { returns(T.nilable(Symbol)) }
-          attr_reader :aws_region
+          def aws_region
+          end
 
-          sig { params(aws_region: Symbol).void }
-          attr_writer :aws_region
+          sig { params(_: Symbol).returns(Symbol) }
+          def aws_region=(_)
+          end
 
           sig { returns(T.nilable(Time)) }
-          attr_reader :azure_expiration_date
+          def azure_expiration_date
+          end
 
-          sig { params(azure_expiration_date: Time).void }
-          attr_writer :azure_expiration_date
+          sig { params(_: Time).returns(Time) }
+          def azure_expiration_date=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_reader :azure_plan_id
+          def azure_plan_id
+          end
 
-          sig { params(azure_plan_id: String).void }
-          attr_writer :azure_plan_id
+          sig { params(_: String).returns(String) }
+          def azure_plan_id=(_)
+          end
 
           sig { returns(T.nilable(Time)) }
-          attr_reader :azure_start_date
+          def azure_start_date
+          end
 
-          sig { params(azure_start_date: Time).void }
-          attr_writer :azure_start_date
+          sig { params(_: Time).returns(Time) }
+          def azure_start_date=(_)
+          end
 
           sig { returns(T.nilable(Symbol)) }
-          attr_reader :azure_subscription_status
+          def azure_subscription_status
+          end
 
-          sig { params(azure_subscription_status: Symbol).void }
-          attr_writer :azure_subscription_status
+          sig { params(_: Symbol).returns(Symbol) }
+          def azure_subscription_status=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_reader :billing_provider_customer_id
+          def billing_provider_customer_id
+          end
 
-          sig { params(billing_provider_customer_id: String).void }
-          attr_writer :billing_provider_customer_id
+          sig { params(_: String).returns(String) }
+          def billing_provider_customer_id=(_)
+          end
 
           sig { returns(T.nilable(Symbol)) }
-          attr_reader :stripe_collection_method
+          def stripe_collection_method
+          end
 
-          sig { params(stripe_collection_method: Symbol).void }
-          attr_writer :stripe_collection_method
+          sig { params(_: Symbol).returns(Symbol) }
+          def stripe_collection_method=(_)
+          end
 
           sig do
             params(

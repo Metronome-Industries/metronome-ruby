@@ -25,55 +25,57 @@ module Metronome
 
       attr_reader aggregate: String?
 
-      def aggregate=: (String) -> void
+      def aggregate=: (String) -> String
 
       attr_reader aggregate_keys: ::Array[String]?
 
-      def aggregate_keys=: (::Array[String]) -> void
+      def aggregate_keys=: (::Array[String]) -> ::Array[String]
 
       attr_reader aggregation_key: String?
 
-      def aggregation_key=: (String) -> void
+      def aggregation_key=: (String) -> String
 
       attr_reader aggregation_type: Metronome::Models::CustomerListBillableMetricsResponse::aggregation_type?
 
       def aggregation_type=: (
         Metronome::Models::CustomerListBillableMetricsResponse::aggregation_type
-      ) -> void
+      ) -> Metronome::Models::CustomerListBillableMetricsResponse::aggregation_type
 
       attr_reader archived_at: Time?
 
-      def archived_at=: (Time) -> void
+      def archived_at=: (Time) -> Time
 
       attr_reader custom_fields: ::Hash[Symbol, String]?
 
-      def custom_fields=: (::Hash[Symbol, String]) -> void
+      def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
 
       attr_reader event_type_filter: Metronome::Models::EventTypeFilter?
 
-      def event_type_filter=: (Metronome::Models::EventTypeFilter) -> void
+      def event_type_filter=: (
+        Metronome::Models::EventTypeFilter
+      ) -> Metronome::Models::EventTypeFilter
 
       attr_reader filter: ::Hash[Symbol, top]?
 
-      def filter=: (::Hash[Symbol, top]) -> void
+      def filter=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
       attr_reader group_by: ::Array[String]?
 
-      def group_by=: (::Array[String]) -> void
+      def group_by=: (::Array[String]) -> ::Array[String]
 
       attr_reader group_keys: ::Array[::Array[String]]?
 
-      def group_keys=: (::Array[::Array[String]]) -> void
+      def group_keys=: (::Array[::Array[String]]) -> ::Array[::Array[String]]
 
       attr_reader property_filters: ::Array[Metronome::Models::PropertyFilter]?
 
       def property_filters=: (
         ::Array[Metronome::Models::PropertyFilter]
-      ) -> void
+      ) -> ::Array[Metronome::Models::PropertyFilter]
 
       attr_reader sql: String?
 
-      def sql=: (String) -> void
+      def sql=: (String) -> String
 
       def initialize:
         (

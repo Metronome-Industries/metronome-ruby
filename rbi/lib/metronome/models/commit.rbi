@@ -4,79 +4,120 @@ module Metronome
   module Models
     class Commit < Metronome::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(Metronome::Models::Commit::Product) }
-      attr_accessor :product
+      def product
+      end
+
+      sig { params(_: Metronome::Models::Commit::Product).returns(Metronome::Models::Commit::Product) }
+      def product=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig { returns(T.nilable(Metronome::Models::ScheduleDuration)) }
-      attr_reader :access_schedule
+      def access_schedule
+      end
 
-      sig { params(access_schedule: Metronome::Models::ScheduleDuration).void }
-      attr_writer :access_schedule
-
-      sig { returns(T.nilable(Float)) }
-      attr_reader :amount
-
-      sig { params(amount: Float).void }
-      attr_writer :amount
-
-      sig { returns(T.nilable(T::Array[String])) }
-      attr_reader :applicable_contract_ids
-
-      sig { params(applicable_contract_ids: T::Array[String]).void }
-      attr_writer :applicable_contract_ids
-
-      sig { returns(T.nilable(T::Array[String])) }
-      attr_reader :applicable_product_ids
-
-      sig { params(applicable_product_ids: T::Array[String]).void }
-      attr_writer :applicable_product_ids
-
-      sig { returns(T.nilable(T::Array[String])) }
-      attr_reader :applicable_product_tags
-
-      sig { params(applicable_product_tags: T::Array[String]).void }
-      attr_writer :applicable_product_tags
+      sig { params(_: Metronome::Models::ScheduleDuration).returns(Metronome::Models::ScheduleDuration) }
+      def access_schedule=(_)
+      end
 
       sig { returns(T.nilable(Float)) }
-      attr_reader :balance
+      def amount
+      end
 
-      sig { params(balance: Float).void }
-      attr_writer :balance
+      sig { params(_: Float).returns(Float) }
+      def amount=(_)
+      end
+
+      sig { returns(T.nilable(T::Array[String])) }
+      def applicable_contract_ids
+      end
+
+      sig { params(_: T::Array[String]).returns(T::Array[String]) }
+      def applicable_contract_ids=(_)
+      end
+
+      sig { returns(T.nilable(T::Array[String])) }
+      def applicable_product_ids
+      end
+
+      sig { params(_: T::Array[String]).returns(T::Array[String]) }
+      def applicable_product_ids=(_)
+      end
+
+      sig { returns(T.nilable(T::Array[String])) }
+      def applicable_product_tags
+      end
+
+      sig { params(_: T::Array[String]).returns(T::Array[String]) }
+      def applicable_product_tags=(_)
+      end
+
+      sig { returns(T.nilable(Float)) }
+      def balance
+      end
+
+      sig { params(_: Float).returns(Float) }
+      def balance=(_)
+      end
 
       sig { returns(T.nilable(Metronome::Models::Commit::Contract)) }
-      attr_reader :contract
+      def contract
+      end
 
-      sig { params(contract: Metronome::Models::Commit::Contract).void }
-      attr_writer :contract
+      sig { params(_: Metronome::Models::Commit::Contract).returns(Metronome::Models::Commit::Contract) }
+      def contract=(_)
+      end
 
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
-      attr_reader :custom_fields
+      def custom_fields
+      end
 
-      sig { params(custom_fields: T::Hash[Symbol, String]).void }
-      attr_writer :custom_fields
+      sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+      def custom_fields=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :description
+      def description
+      end
 
-      sig { params(description: String).void }
-      attr_writer :description
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
 
       sig { returns(T.nilable(Metronome::Models::Commit::InvoiceContract)) }
-      attr_reader :invoice_contract
+      def invoice_contract
+      end
 
-      sig { params(invoice_contract: Metronome::Models::Commit::InvoiceContract).void }
-      attr_writer :invoice_contract
+      sig do
+        params(_: Metronome::Models::Commit::InvoiceContract).returns(Metronome::Models::Commit::InvoiceContract)
+      end
+      def invoice_contract=(_)
+      end
 
       sig { returns(T.nilable(Metronome::Models::SchedulePointInTime)) }
-      attr_reader :invoice_schedule
+      def invoice_schedule
+      end
 
-      sig { params(invoice_schedule: Metronome::Models::SchedulePointInTime).void }
-      attr_writer :invoice_schedule
+      sig do
+        params(_: Metronome::Models::SchedulePointInTime).returns(Metronome::Models::SchedulePointInTime)
+      end
+      def invoice_schedule=(_)
+      end
 
       sig do
         returns(
@@ -99,11 +140,12 @@ module Metronome
           )
         )
       end
-      attr_reader :ledger
+      def ledger
+      end
 
       sig do
         params(
-          ledger: T::Array[T.any(
+          _: T::Array[T.any(
             Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry,
             Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry,
             Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry,
@@ -118,57 +160,90 @@ module Metronome
             Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry,
             Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry
           )]
-        ).void
+        ).returns(T::Array[T.any(
+          Metronome::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry,
+          Metronome::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry,
+          Metronome::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry,
+          Metronome::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry,
+          Metronome::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry,
+          Metronome::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry,
+          Metronome::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry,
+          Metronome::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry,
+          Metronome::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry,
+          Metronome::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry,
+          Metronome::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry,
+          Metronome::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry,
+          Metronome::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry
+        )])
       end
-      attr_writer :ledger
+      def ledger=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :name
+      def name
+      end
 
-      sig { params(name: String).void }
-      attr_writer :name
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :netsuite_sales_order_id
+      def netsuite_sales_order_id
+      end
 
-      sig { params(netsuite_sales_order_id: String).void }
-      attr_writer :netsuite_sales_order_id
+      sig { params(_: String).returns(String) }
+      def netsuite_sales_order_id=(_)
+      end
 
       sig { returns(T.nilable(Float)) }
-      attr_reader :priority
+      def priority
+      end
 
-      sig { params(priority: Float).void }
-      attr_writer :priority
+      sig { params(_: Float).returns(Float) }
+      def priority=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_reader :rate_type
+      def rate_type
+      end
 
-      sig { params(rate_type: Symbol).void }
-      attr_writer :rate_type
+      sig { params(_: Symbol).returns(Symbol) }
+      def rate_type=(_)
+      end
 
       sig { returns(T.nilable(Metronome::Models::Commit::RolledOverFrom)) }
-      attr_reader :rolled_over_from
+      def rolled_over_from
+      end
 
-      sig { params(rolled_over_from: Metronome::Models::Commit::RolledOverFrom).void }
-      attr_writer :rolled_over_from
+      sig do
+        params(_: Metronome::Models::Commit::RolledOverFrom).returns(Metronome::Models::Commit::RolledOverFrom)
+      end
+      def rolled_over_from=(_)
+      end
 
       sig { returns(T.nilable(Float)) }
-      attr_reader :rollover_fraction
+      def rollover_fraction
+      end
 
-      sig { params(rollover_fraction: Float).void }
-      attr_writer :rollover_fraction
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :salesforce_opportunity_id
-
-      sig { params(salesforce_opportunity_id: String).void }
-      attr_writer :salesforce_opportunity_id
+      sig { params(_: Float).returns(Float) }
+      def rollover_fraction=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :uniqueness_key
+      def salesforce_opportunity_id
+      end
 
-      sig { params(uniqueness_key: String).void }
-      attr_writer :uniqueness_key
+      sig { params(_: String).returns(String) }
+      def salesforce_opportunity_id=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def uniqueness_key
+      end
+
+      sig { params(_: String).returns(String) }
+      def uniqueness_key=(_)
+      end
 
       sig do
         params(
@@ -286,10 +361,20 @@ module Metronome
 
       class Product < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         sig { params(id: String, name: String).void }
         def initialize(id:, name:)
@@ -313,7 +398,12 @@ module Metronome
 
       class Contract < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { params(id: String).void }
         def initialize(id:)
@@ -326,7 +416,12 @@ module Metronome
 
       class InvoiceContract < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { params(id: String).void }
         def initialize(id:)
@@ -342,16 +437,36 @@ module Metronome
 
         class PrepaidCommitSegmentStartLedgerEntry < Metronome::BaseModel
           sig { returns(Float) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def amount=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :segment_id
+          def segment_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def segment_id=(_)
+          end
 
           sig { returns(Time) }
-          attr_accessor :timestamp
+          def timestamp
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def timestamp=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :type
+          def type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def type=(_)
+          end
 
           sig { params(amount: Float, segment_id: String, timestamp: Time, type: Symbol).void }
           def initialize(amount:, segment_id:, timestamp:, type:)
@@ -374,19 +489,44 @@ module Metronome
 
         class PrepaidCommitAutomatedInvoiceDeductionLedgerEntry < Metronome::BaseModel
           sig { returns(Float) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def amount=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :invoice_id
+          def invoice_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def invoice_id=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :segment_id
+          def segment_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def segment_id=(_)
+          end
 
           sig { returns(Time) }
-          attr_accessor :timestamp
+          def timestamp
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def timestamp=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :type
+          def type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def type=(_)
+          end
 
           sig do
             params(amount: Float, invoice_id: String, segment_id: String, timestamp: Time, type: Symbol).void
@@ -421,19 +561,44 @@ module Metronome
 
         class PrepaidCommitRolloverLedgerEntry < Metronome::BaseModel
           sig { returns(Float) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def amount=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :new_contract_id
+          def new_contract_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def new_contract_id=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :segment_id
+          def segment_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def segment_id=(_)
+          end
 
           sig { returns(Time) }
-          attr_accessor :timestamp
+          def timestamp
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def timestamp=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :type
+          def type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def type=(_)
+          end
 
           sig do
             params(
@@ -474,16 +639,36 @@ module Metronome
 
         class PrepaidCommitExpirationLedgerEntry < Metronome::BaseModel
           sig { returns(Float) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def amount=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :segment_id
+          def segment_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def segment_id=(_)
+          end
 
           sig { returns(Time) }
-          attr_accessor :timestamp
+          def timestamp
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def timestamp=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :type
+          def type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def type=(_)
+          end
 
           sig { params(amount: Float, segment_id: String, timestamp: Time, type: Symbol).void }
           def initialize(amount:, segment_id:, timestamp:, type:)
@@ -506,19 +691,44 @@ module Metronome
 
         class PrepaidCommitCanceledLedgerEntry < Metronome::BaseModel
           sig { returns(Float) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def amount=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :invoice_id
+          def invoice_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def invoice_id=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :segment_id
+          def segment_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def segment_id=(_)
+          end
 
           sig { returns(Time) }
-          attr_accessor :timestamp
+          def timestamp
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def timestamp=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :type
+          def type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def type=(_)
+          end
 
           sig do
             params(amount: Float, invoice_id: String, segment_id: String, timestamp: Time, type: Symbol).void
@@ -553,19 +763,44 @@ module Metronome
 
         class PrepaidCommitCreditedLedgerEntry < Metronome::BaseModel
           sig { returns(Float) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def amount=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :invoice_id
+          def invoice_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def invoice_id=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :segment_id
+          def segment_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def segment_id=(_)
+          end
 
           sig { returns(Time) }
-          attr_accessor :timestamp
+          def timestamp
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def timestamp=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :type
+          def type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def type=(_)
+          end
 
           sig do
             params(amount: Float, invoice_id: String, segment_id: String, timestamp: Time, type: Symbol).void
@@ -600,13 +835,28 @@ module Metronome
 
         class PostpaidCommitInitialBalanceLedgerEntry < Metronome::BaseModel
           sig { returns(Float) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def amount=(_)
+          end
 
           sig { returns(Time) }
-          attr_accessor :timestamp
+          def timestamp
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def timestamp=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :type
+          def type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def type=(_)
+          end
 
           sig { params(amount: Float, timestamp: Time, type: Symbol).void }
           def initialize(amount:, timestamp:, type:)
@@ -629,19 +879,44 @@ module Metronome
 
         class PostpaidCommitAutomatedInvoiceDeductionLedgerEntry < Metronome::BaseModel
           sig { returns(Float) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def amount=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :invoice_id
+          def invoice_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def invoice_id=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :segment_id
+          def segment_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def segment_id=(_)
+          end
 
           sig { returns(Time) }
-          attr_accessor :timestamp
+          def timestamp
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def timestamp=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :type
+          def type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def type=(_)
+          end
 
           sig do
             params(amount: Float, invoice_id: String, segment_id: String, timestamp: Time, type: Symbol).void
@@ -676,19 +951,44 @@ module Metronome
 
         class PostpaidCommitRolloverLedgerEntry < Metronome::BaseModel
           sig { returns(Float) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def amount=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :new_contract_id
+          def new_contract_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def new_contract_id=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :segment_id
+          def segment_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def segment_id=(_)
+          end
 
           sig { returns(Time) }
-          attr_accessor :timestamp
+          def timestamp
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def timestamp=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :type
+          def type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def type=(_)
+          end
 
           sig do
             params(
@@ -729,16 +1029,36 @@ module Metronome
 
         class PostpaidCommitTrueupLedgerEntry < Metronome::BaseModel
           sig { returns(Float) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def amount=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :invoice_id
+          def invoice_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def invoice_id=(_)
+          end
 
           sig { returns(Time) }
-          attr_accessor :timestamp
+          def timestamp
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def timestamp=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :type
+          def type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def type=(_)
+          end
 
           sig { params(amount: Float, invoice_id: String, timestamp: Time, type: Symbol).void }
           def initialize(amount:, invoice_id:, timestamp:, type:)
@@ -761,16 +1081,36 @@ module Metronome
 
         class PrepaidCommitManualLedgerEntry < Metronome::BaseModel
           sig { returns(Float) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def amount=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :reason
+          def reason
+          end
+
+          sig { params(_: String).returns(String) }
+          def reason=(_)
+          end
 
           sig { returns(Time) }
-          attr_accessor :timestamp
+          def timestamp
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def timestamp=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :type
+          def type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def type=(_)
+          end
 
           sig { params(amount: Float, reason: String, timestamp: Time, type: Symbol).void }
           def initialize(amount:, reason:, timestamp:, type:)
@@ -793,16 +1133,36 @@ module Metronome
 
         class PostpaidCommitManualLedgerEntry < Metronome::BaseModel
           sig { returns(Float) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def amount=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :reason
+          def reason
+          end
+
+          sig { params(_: String).returns(String) }
+          def reason=(_)
+          end
 
           sig { returns(Time) }
-          attr_accessor :timestamp
+          def timestamp
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def timestamp=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :type
+          def type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def type=(_)
+          end
 
           sig { params(amount: Float, reason: String, timestamp: Time, type: Symbol).void }
           def initialize(amount:, reason:, timestamp:, type:)
@@ -825,13 +1185,28 @@ module Metronome
 
         class PostpaidCommitExpirationLedgerEntry < Metronome::BaseModel
           sig { returns(Float) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def amount=(_)
+          end
 
           sig { returns(Time) }
-          attr_accessor :timestamp
+          def timestamp
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def timestamp=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :type
+          def type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def type=(_)
+          end
 
           sig { params(amount: Float, timestamp: Time, type: Symbol).void }
           def initialize(amount:, timestamp:, type:)
@@ -894,10 +1269,20 @@ module Metronome
 
       class RolledOverFrom < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :commit_id
+        def commit_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def commit_id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :contract_id
+        def contract_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def contract_id=(_)
+        end
 
         sig { params(commit_id: String, contract_id: String).void }
         def initialize(commit_id:, contract_id:)

@@ -4,10 +4,22 @@ module Metronome
   module Models
     class PlanListCustomersResponse < Metronome::BaseModel
       sig { returns(Metronome::Models::CustomerDetail) }
-      attr_accessor :customer_details
+      def customer_details
+      end
+
+      sig { params(_: Metronome::Models::CustomerDetail).returns(Metronome::Models::CustomerDetail) }
+      def customer_details=(_)
+      end
 
       sig { returns(Metronome::Models::PlanListCustomersResponse::PlanDetails) }
-      attr_accessor :plan_details
+      def plan_details
+      end
+
+      sig do
+        params(_: Metronome::Models::PlanListCustomersResponse::PlanDetails).returns(Metronome::Models::PlanListCustomersResponse::PlanDetails)
+      end
+      def plan_details=(_)
+      end
 
       sig do
         params(
@@ -31,22 +43,52 @@ module Metronome
 
       class PlanDetails < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(T::Hash[Symbol, String]) }
-        attr_accessor :custom_fields
+        def custom_fields
+        end
+
+        sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+        def custom_fields=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :customer_plan_id
+        def customer_plan_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def customer_plan_id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :starting_on
+        def starting_on
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def starting_on=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :ending_before
+        def ending_before
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def ending_before=(_)
+        end
 
         sig do
           params(

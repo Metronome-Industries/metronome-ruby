@@ -19,7 +19,7 @@ module Metronome
 
         attr_reader skip_zero_qty_line_items: bool?
 
-        def skip_zero_qty_line_items=: (bool) -> void
+        def skip_zero_qty_line_items=: (bool) -> bool
 
         def initialize:
           (

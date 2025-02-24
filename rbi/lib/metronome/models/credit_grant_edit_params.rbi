@@ -7,25 +7,36 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :credit_grant_type
+      def credit_grant_type
+      end
 
-      sig { params(credit_grant_type: String).void }
-      attr_writer :credit_grant_type
+      sig { params(_: String).returns(String) }
+      def credit_grant_type=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_reader :expires_at
+      def expires_at
+      end
 
-      sig { params(expires_at: Time).void }
-      attr_writer :expires_at
+      sig { params(_: Time).returns(Time) }
+      def expires_at=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :name
+      def name
+      end
 
-      sig { params(name: String).void }
-      attr_writer :name
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig do
         params(

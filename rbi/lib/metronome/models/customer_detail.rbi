@@ -4,31 +4,72 @@ module Metronome
   module Models
     class CustomerDetail < Metronome::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(T::Hash[Symbol, String]) }
-      attr_accessor :custom_fields
+      def custom_fields
+      end
+
+      sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+      def custom_fields=(_)
+      end
 
       sig { returns(Metronome::Models::CustomerDetail::CustomerConfig) }
-      attr_accessor :customer_config
+      def customer_config
+      end
+
+      sig do
+        params(_: Metronome::Models::CustomerDetail::CustomerConfig).returns(Metronome::Models::CustomerDetail::CustomerConfig)
+      end
+      def customer_config=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :external_id
+      def external_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def external_id=(_)
+      end
 
       sig { returns(T::Array[String]) }
-      attr_accessor :ingest_aliases
+      def ingest_aliases
+      end
+
+      sig { params(_: T::Array[String]).returns(T::Array[String]) }
+      def ingest_aliases=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :archived_at
+      def archived_at
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def archived_at=(_)
+      end
 
       sig { returns(T.nilable(Metronome::Models::CustomerDetail::CurrentBillableStatus)) }
-      attr_reader :current_billable_status
+      def current_billable_status
+      end
 
-      sig { params(current_billable_status: Metronome::Models::CustomerDetail::CurrentBillableStatus).void }
-      attr_writer :current_billable_status
+      sig do
+        params(_: Metronome::Models::CustomerDetail::CurrentBillableStatus).returns(Metronome::Models::CustomerDetail::CurrentBillableStatus)
+      end
+      def current_billable_status=(_)
+      end
 
       sig do
         params(
@@ -73,7 +114,12 @@ module Metronome
 
       class CustomerConfig < Metronome::BaseModel
         sig { returns(T.nilable(String)) }
-        attr_accessor :salesforce_account_id
+        def salesforce_account_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def salesforce_account_id=(_)
+        end
 
         sig { params(salesforce_account_id: T.nilable(String)).void }
         def initialize(salesforce_account_id:)
@@ -86,10 +132,20 @@ module Metronome
 
       class CurrentBillableStatus < Metronome::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :value
+        def value
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def value=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :effective_at
+        def effective_at
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def effective_at=(_)
+        end
 
         sig { params(value: Symbol, effective_at: T.nilable(Time)).void }
         def initialize(value:, effective_at: nil)

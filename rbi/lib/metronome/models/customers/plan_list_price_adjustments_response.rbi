@@ -5,22 +5,46 @@ module Metronome
     module Customers
       class PlanListPriceAdjustmentsResponse < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :charge_id
+        def charge_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def charge_id=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :charge_type
+        def charge_type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def charge_type=(_)
+        end
 
         sig { returns(T::Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price]) }
-        attr_accessor :prices
+        def prices
+        end
+
+        sig do
+          params(_: T::Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price]).returns(T::Array[Metronome::Models::Customers::PlanListPriceAdjustmentsResponse::Price])
+        end
+        def prices=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :start_period
+        def start_period
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def start_period=(_)
+        end
 
         sig { returns(T.nilable(Float)) }
-        attr_reader :quantity
+        def quantity
+        end
 
-        sig { params(quantity: Float).void }
-        attr_writer :quantity
+        sig { params(_: Float).returns(Float) }
+        def quantity=(_)
+        end
 
         sig do
           params(
@@ -64,19 +88,28 @@ module Metronome
 
         class Price < Metronome::BaseModel
           sig { returns(Symbol) }
-          attr_accessor :adjustment_type
+          def adjustment_type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def adjustment_type=(_)
+          end
 
           sig { returns(T.nilable(Float)) }
-          attr_reader :tier
+          def tier
+          end
 
-          sig { params(tier: Float).void }
-          attr_writer :tier
+          sig { params(_: Float).returns(Float) }
+          def tier=(_)
+          end
 
           sig { returns(T.nilable(Float)) }
-          attr_reader :value
+          def value
+          end
 
-          sig { params(value: Float).void }
-          attr_writer :value
+          sig { params(_: Float).returns(Float) }
+          def value=(_)
+          end
 
           sig { params(adjustment_type: Symbol, tier: Float, value: Float).void }
           def initialize(adjustment_type:, tier: nil, value: nil)

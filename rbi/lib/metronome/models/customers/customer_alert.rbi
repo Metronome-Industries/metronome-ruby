@@ -7,13 +7,30 @@ module Metronome
     module Customers
       class CustomerAlert < Metronome::BaseModel
         sig { returns(Metronome::Models::Customers::CustomerAlert::Alert) }
-        attr_accessor :alert
+        def alert
+        end
+
+        sig do
+          params(_: Metronome::Models::Customers::CustomerAlert::Alert).returns(Metronome::Models::Customers::CustomerAlert::Alert)
+        end
+        def alert=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_accessor :customer_status
+        def customer_status
+        end
+
+        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        def customer_status=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :triggered_by
+        def triggered_by
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def triggered_by=(_)
+        end
 
         sig do
           params(
@@ -39,63 +56,108 @@ module Metronome
 
         class Alert < Metronome::BaseModel
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :name
+          def name
+          end
+
+          sig { params(_: String).returns(String) }
+          def name=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :status
+          def status
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def status=(_)
+          end
 
           sig { returns(Float) }
-          attr_accessor :threshold
+          def threshold
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def threshold=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :type
+          def type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def type=(_)
+          end
 
           sig { returns(Time) }
-          attr_accessor :updated_at
+          def updated_at
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def updated_at=(_)
+          end
 
           sig { returns(T.nilable(T::Array[String])) }
-          attr_reader :credit_grant_type_filters
+          def credit_grant_type_filters
+          end
 
-          sig { params(credit_grant_type_filters: T::Array[String]).void }
-          attr_writer :credit_grant_type_filters
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def credit_grant_type_filters=(_)
+          end
 
           sig { returns(T.nilable(Metronome::Models::CreditTypeData)) }
-          attr_accessor :credit_type
+          def credit_type
+          end
+
+          sig do
+            params(_: T.nilable(Metronome::Models::CreditTypeData)).returns(T.nilable(Metronome::Models::CreditTypeData))
+          end
+          def credit_type=(_)
+          end
 
           sig do
             returns(T.nilable(T::Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter]))
           end
-          attr_reader :custom_field_filters
+          def custom_field_filters
+          end
 
           sig do
-            params(
-              custom_field_filters: T::Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter]
-            ).void
+            params(_: T::Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter]).returns(T::Array[Metronome::Models::Customers::CustomerAlert::Alert::CustomFieldFilter])
           end
-          attr_writer :custom_field_filters
+          def custom_field_filters=(_)
+          end
 
           sig { returns(T.nilable(Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter)) }
-          attr_reader :group_key_filter
+          def group_key_filter
+          end
 
           sig do
-            params(group_key_filter: Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter).void
+            params(_: Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter).returns(Metronome::Models::Customers::CustomerAlert::Alert::GroupKeyFilter)
           end
-          attr_writer :group_key_filter
+          def group_key_filter=(_)
+          end
 
           sig { returns(T.nilable(T::Array[String])) }
-          attr_reader :invoice_types_filter
+          def invoice_types_filter
+          end
 
-          sig { params(invoice_types_filter: T::Array[String]).void }
-          attr_writer :invoice_types_filter
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def invoice_types_filter=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_reader :uniqueness_key
+          def uniqueness_key
+          end
 
-          sig { params(uniqueness_key: String).void }
-          attr_writer :uniqueness_key
+          sig { params(_: String).returns(String) }
+          def uniqueness_key=(_)
+          end
 
           sig do
             params(
@@ -187,13 +249,28 @@ module Metronome
 
           class CustomFieldFilter < Metronome::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :entity
+            def entity
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def entity=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :key
+            def key
+            end
+
+            sig { params(_: String).returns(String) }
+            def key=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :value
+            def value
+            end
+
+            sig { params(_: String).returns(String) }
+            def value=(_)
+            end
 
             sig { params(entity: Symbol, key: String, value: String).void }
             def initialize(entity:, key:, value:)
@@ -218,10 +295,20 @@ module Metronome
 
           class GroupKeyFilter < Metronome::BaseModel
             sig { returns(String) }
-            attr_accessor :key
+            def key
+            end
+
+            sig { params(_: String).returns(String) }
+            def key=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :value
+            def value
+            end
+
+            sig { params(_: String).returns(String) }
+            def value=(_)
+            end
 
             sig { params(key: String, value: String).void }
             def initialize(key:, value:)

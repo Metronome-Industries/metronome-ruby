@@ -17,27 +17,27 @@ module Metronome
 
       attr_reader customer_ids: ::Array[String]?
 
-      def customer_ids=: (::Array[String]) -> void
+      def customer_ids=: (::Array[String]) -> ::Array[String]
 
       attr_reader ingest_alias: String?
 
-      def ingest_alias=: (String) -> void
+      def ingest_alias=: (String) -> String
 
       attr_reader limit: Integer?
 
-      def limit=: (Integer) -> void
+      def limit=: (Integer) -> Integer
 
       attr_reader next_page: String?
 
-      def next_page=: (String) -> void
+      def next_page=: (String) -> String
 
       attr_reader only_archived: bool?
 
-      def only_archived=: (bool) -> void
+      def only_archived=: (bool) -> bool
 
       attr_reader salesforce_account_ids: ::Array[String]?
 
-      def salesforce_account_ids=: (::Array[String]) -> void
+      def salesforce_account_ids=: (::Array[String]) -> ::Array[String]
 
       def initialize:
         (

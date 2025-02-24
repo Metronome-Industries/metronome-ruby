@@ -4,10 +4,22 @@ module Metronome
   module Models
     class ContractRetrieveRateScheduleResponse < Metronome::BaseModel
       sig { returns(T::Array[Metronome::Models::ContractRetrieveRateScheduleResponse::Data]) }
-      attr_accessor :data
+      def data
+      end
+
+      sig do
+        params(_: T::Array[Metronome::Models::ContractRetrieveRateScheduleResponse::Data]).returns(T::Array[Metronome::Models::ContractRetrieveRateScheduleResponse::Data])
+      end
+      def data=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :next_page
+      def next_page
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def next_page=(_)
+      end
 
       sig do
         params(
@@ -31,54 +43,102 @@ module Metronome
 
       class Data < Metronome::BaseModel
         sig { returns(T::Boolean) }
-        attr_accessor :entitled
+        def entitled
+        end
+
+        sig { params(_: T::Boolean).returns(T::Boolean) }
+        def entitled=(_)
+        end
 
         sig { returns(Metronome::Models::Rate) }
-        attr_accessor :list_rate
+        def list_rate
+        end
+
+        sig { params(_: Metronome::Models::Rate).returns(Metronome::Models::Rate) }
+        def list_rate=(_)
+        end
 
         sig { returns(T::Hash[Symbol, String]) }
-        attr_accessor :product_custom_fields
+        def product_custom_fields
+        end
+
+        sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+        def product_custom_fields=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :product_id
+        def product_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def product_id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :product_name
+        def product_name
+        end
+
+        sig { params(_: String).returns(String) }
+        def product_name=(_)
+        end
 
         sig { returns(T::Array[String]) }
-        attr_accessor :product_tags
+        def product_tags
+        end
+
+        sig { params(_: T::Array[String]).returns(T::Array[String]) }
+        def product_tags=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :rate_card_id
+        def rate_card_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def rate_card_id=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :starting_at
+        def starting_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def starting_at=(_)
+        end
 
         sig { returns(T.nilable(Metronome::Models::ContractRetrieveRateScheduleResponse::Data::CommitRate)) }
-        attr_reader :commit_rate
+        def commit_rate
+        end
 
         sig do
-          params(commit_rate: Metronome::Models::ContractRetrieveRateScheduleResponse::Data::CommitRate).void
+          params(_: Metronome::Models::ContractRetrieveRateScheduleResponse::Data::CommitRate).returns(Metronome::Models::ContractRetrieveRateScheduleResponse::Data::CommitRate)
         end
-        attr_writer :commit_rate
+        def commit_rate=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :ending_before
+        def ending_before
+        end
 
-        sig { params(ending_before: Time).void }
-        attr_writer :ending_before
+        sig { params(_: Time).returns(Time) }
+        def ending_before=(_)
+        end
 
         sig { returns(T.nilable(Metronome::Models::Rate)) }
-        attr_reader :override_rate
+        def override_rate
+        end
 
-        sig { params(override_rate: Metronome::Models::Rate).void }
-        attr_writer :override_rate
+        sig { params(_: Metronome::Models::Rate).returns(Metronome::Models::Rate) }
+        def override_rate=(_)
+        end
 
         sig { returns(T.nilable(T::Hash[Symbol, String])) }
-        attr_reader :pricing_group_values
+        def pricing_group_values
+        end
 
-        sig { params(pricing_group_values: T::Hash[Symbol, String]).void }
-        attr_writer :pricing_group_values
+        sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+        def pricing_group_values=(_)
+        end
 
         sig do
           params(
@@ -135,19 +195,28 @@ module Metronome
 
         class CommitRate < Metronome::BaseModel
           sig { returns(Symbol) }
-          attr_accessor :rate_type
+          def rate_type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def rate_type=(_)
+          end
 
           sig { returns(T.nilable(Float)) }
-          attr_reader :price
+          def price
+          end
 
-          sig { params(price: Float).void }
-          attr_writer :price
+          sig { params(_: Float).returns(Float) }
+          def price=(_)
+          end
 
           sig { returns(T.nilable(T::Array[Metronome::Models::Tier])) }
-          attr_reader :tiers
+          def tiers
+          end
 
-          sig { params(tiers: T::Array[Metronome::Models::Tier]).void }
-          attr_writer :tiers
+          sig { params(_: T::Array[Metronome::Models::Tier]).returns(T::Array[Metronome::Models::Tier]) }
+          def tiers=(_)
+          end
 
           sig { params(rate_type: Symbol, price: Float, tiers: T::Array[Metronome::Models::Tier]).void }
           def initialize(rate_type:, price: nil, tiers: nil)

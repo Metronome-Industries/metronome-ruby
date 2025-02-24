@@ -6,7 +6,9 @@ module Metronome
     class InvoiceVoidResponse < Metronome::BaseModel
       attr_reader data: Metronome::Models::InvoiceVoidResponse::Data?
 
-      def data=: (Metronome::Models::InvoiceVoidResponse::Data) -> void
+      def data=: (
+        Metronome::Models::InvoiceVoidResponse::Data
+      ) -> Metronome::Models::InvoiceVoidResponse::Data
 
       def initialize:
         (data: Metronome::Models::InvoiceVoidResponse::Data) -> void

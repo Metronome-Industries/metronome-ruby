@@ -5,10 +5,20 @@ module Metronome
     module Customers
       class InvoiceListBreakdownsResponse < Metronome::Models::Customers::Invoice
         sig { returns(Time) }
-        attr_accessor :breakdown_end_timestamp
+        def breakdown_end_timestamp
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def breakdown_end_timestamp=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :breakdown_start_timestamp
+        def breakdown_start_timestamp
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def breakdown_start_timestamp=(_)
+        end
 
         sig { params(breakdown_end_timestamp: Time, breakdown_start_timestamp: Time).void }
         def initialize(breakdown_end_timestamp:, breakdown_start_timestamp:)

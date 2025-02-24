@@ -8,28 +8,44 @@ module Metronome
         include Metronome::RequestParameters
 
         sig { returns(String) }
-        attr_accessor :customer_id
+        def customer_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def customer_id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :customer_plan_id
+        def customer_plan_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def customer_plan_id=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :ending_before
+        def ending_before
+        end
 
-        sig { params(ending_before: Time).void }
-        attr_writer :ending_before
-
-        sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :void_invoices
-
-        sig { params(void_invoices: T::Boolean).void }
-        attr_writer :void_invoices
+        sig { params(_: Time).returns(Time) }
+        def ending_before=(_)
+        end
 
         sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :void_stripe_invoices
+        def void_invoices
+        end
 
-        sig { params(void_stripe_invoices: T::Boolean).void }
-        attr_writer :void_stripe_invoices
+        sig { params(_: T::Boolean).returns(T::Boolean) }
+        def void_invoices=(_)
+        end
+
+        sig { returns(T.nilable(T::Boolean)) }
+        def void_stripe_invoices
+        end
+
+        sig { params(_: T::Boolean).returns(T::Boolean) }
+        def void_stripe_invoices=(_)
+        end
 
         sig do
           params(

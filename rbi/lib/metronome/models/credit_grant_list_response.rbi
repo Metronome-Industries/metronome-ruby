@@ -4,58 +4,152 @@ module Metronome
   module Models
     class CreditGrantListResponse < Metronome::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(Metronome::Models::CreditGrantListResponse::Balance) }
-      attr_accessor :balance
+      def balance
+      end
+
+      sig do
+        params(_: Metronome::Models::CreditGrantListResponse::Balance).returns(Metronome::Models::CreditGrantListResponse::Balance)
+      end
+      def balance=(_)
+      end
 
       sig { returns(T::Hash[Symbol, String]) }
-      attr_accessor :custom_fields
+      def custom_fields
+      end
+
+      sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+      def custom_fields=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :customer_id
+      def customer_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def customer_id=(_)
+      end
 
       sig { returns(T::Array[Metronome::Models::CreditLedgerEntry]) }
-      attr_accessor :deductions
+      def deductions
+      end
+
+      sig do
+        params(_: T::Array[Metronome::Models::CreditLedgerEntry]).returns(T::Array[Metronome::Models::CreditLedgerEntry])
+      end
+      def deductions=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :effective_at
+      def effective_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def effective_at=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :expires_at
+      def expires_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def expires_at=(_)
+      end
 
       sig { returns(Metronome::Models::CreditGrantListResponse::GrantAmount) }
-      attr_accessor :grant_amount
+      def grant_amount
+      end
+
+      sig do
+        params(_: Metronome::Models::CreditGrantListResponse::GrantAmount).returns(Metronome::Models::CreditGrantListResponse::GrantAmount)
+      end
+      def grant_amount=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(Metronome::Models::CreditGrantListResponse::PaidAmount) }
-      attr_accessor :paid_amount
+      def paid_amount
+      end
+
+      sig do
+        params(_: Metronome::Models::CreditGrantListResponse::PaidAmount).returns(Metronome::Models::CreditGrantListResponse::PaidAmount)
+      end
+      def paid_amount=(_)
+      end
 
       sig { returns(T::Array[Metronome::Models::CreditLedgerEntry]) }
-      attr_accessor :pending_deductions
+      def pending_deductions
+      end
+
+      sig do
+        params(_: T::Array[Metronome::Models::CreditLedgerEntry]).returns(T::Array[Metronome::Models::CreditLedgerEntry])
+      end
+      def pending_deductions=(_)
+      end
 
       sig { returns(Float) }
-      attr_accessor :priority
+      def priority
+      end
+
+      sig { params(_: Float).returns(Float) }
+      def priority=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :credit_grant_type
+      def credit_grant_type
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def credit_grant_type=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :invoice_id
+      def invoice_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def invoice_id=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Metronome::Models::CreditGrantListResponse::Product])) }
-      attr_reader :products
+      def products
+      end
 
-      sig { params(products: T::Array[Metronome::Models::CreditGrantListResponse::Product]).void }
-      attr_writer :products
+      sig do
+        params(_: T::Array[Metronome::Models::CreditGrantListResponse::Product]).returns(T::Array[Metronome::Models::CreditGrantListResponse::Product])
+      end
+      def products=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :reason
+      def reason
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def reason=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :uniqueness_key
+      def uniqueness_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def uniqueness_key=(_)
+      end
 
       sig do
         params(
@@ -127,13 +221,28 @@ module Metronome
 
       class Balance < Metronome::BaseModel
         sig { returns(Time) }
-        attr_accessor :effective_at
+        def effective_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def effective_at=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :excluding_pending
+        def excluding_pending
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def excluding_pending=(_)
+        end
 
         sig { returns(Float) }
-        attr_accessor :including_pending
+        def including_pending
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def including_pending=(_)
+        end
 
         sig { params(effective_at: Time, excluding_pending: Float, including_pending: Float).void }
         def initialize(effective_at:, excluding_pending:, including_pending:)
@@ -146,10 +255,20 @@ module Metronome
 
       class GrantAmount < Metronome::BaseModel
         sig { returns(Float) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def amount=(_)
+        end
 
         sig { returns(Metronome::Models::CreditTypeData) }
-        attr_accessor :credit_type
+        def credit_type
+        end
+
+        sig { params(_: Metronome::Models::CreditTypeData).returns(Metronome::Models::CreditTypeData) }
+        def credit_type=(_)
+        end
 
         sig { params(amount: Float, credit_type: Metronome::Models::CreditTypeData).void }
         def initialize(amount:, credit_type:)
@@ -162,10 +281,20 @@ module Metronome
 
       class PaidAmount < Metronome::BaseModel
         sig { returns(Float) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Float).returns(Float) }
+        def amount=(_)
+        end
 
         sig { returns(Metronome::Models::CreditTypeData) }
-        attr_accessor :credit_type
+        def credit_type
+        end
+
+        sig { params(_: Metronome::Models::CreditTypeData).returns(Metronome::Models::CreditTypeData) }
+        def credit_type=(_)
+        end
 
         sig { params(amount: Float, credit_type: Metronome::Models::CreditTypeData).void }
         def initialize(amount:, credit_type:)
@@ -178,10 +307,20 @@ module Metronome
 
       class Product < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         sig { params(id: String, name: String).void }
         def initialize(id:, name:)

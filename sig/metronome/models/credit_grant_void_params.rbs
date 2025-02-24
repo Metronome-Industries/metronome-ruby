@@ -16,11 +16,11 @@ module Metronome
 
       attr_reader release_uniqueness_key: bool?
 
-      def release_uniqueness_key=: (bool) -> void
+      def release_uniqueness_key=: (bool) -> bool
 
       attr_reader void_credit_purchase_invoice: bool?
 
-      def void_credit_purchase_invoice=: (bool) -> void
+      def void_credit_purchase_invoice=: (bool) -> bool
 
       def initialize:
         (

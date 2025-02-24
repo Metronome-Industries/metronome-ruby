@@ -4,58 +4,86 @@ module Metronome
   module Models
     class BillableMetricListResponse < Metronome::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :aggregation_key
+      def aggregation_key
+      end
 
-      sig { params(aggregation_key: String).void }
-      attr_writer :aggregation_key
+      sig { params(_: String).returns(String) }
+      def aggregation_key=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_reader :aggregation_type
+      def aggregation_type
+      end
 
-      sig { params(aggregation_type: Symbol).void }
-      attr_writer :aggregation_type
+      sig { params(_: Symbol).returns(Symbol) }
+      def aggregation_type=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_reader :archived_at
+      def archived_at
+      end
 
-      sig { params(archived_at: Time).void }
-      attr_writer :archived_at
+      sig { params(_: Time).returns(Time) }
+      def archived_at=(_)
+      end
 
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
-      attr_reader :custom_fields
+      def custom_fields
+      end
 
-      sig { params(custom_fields: T::Hash[Symbol, String]).void }
-      attr_writer :custom_fields
+      sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+      def custom_fields=(_)
+      end
 
       sig { returns(T.nilable(Metronome::Models::EventTypeFilter)) }
-      attr_reader :event_type_filter
+      def event_type_filter
+      end
 
-      sig { params(event_type_filter: Metronome::Models::EventTypeFilter).void }
-      attr_writer :event_type_filter
+      sig { params(_: Metronome::Models::EventTypeFilter).returns(Metronome::Models::EventTypeFilter) }
+      def event_type_filter=(_)
+      end
 
       sig { returns(T.nilable(T::Array[T::Array[String]])) }
-      attr_reader :group_keys
+      def group_keys
+      end
 
-      sig { params(group_keys: T::Array[T::Array[String]]).void }
-      attr_writer :group_keys
+      sig { params(_: T::Array[T::Array[String]]).returns(T::Array[T::Array[String]]) }
+      def group_keys=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Metronome::Models::PropertyFilter])) }
-      attr_reader :property_filters
+      def property_filters
+      end
 
-      sig { params(property_filters: T::Array[Metronome::Models::PropertyFilter]).void }
-      attr_writer :property_filters
+      sig do
+        params(_: T::Array[Metronome::Models::PropertyFilter]).returns(T::Array[Metronome::Models::PropertyFilter])
+      end
+      def property_filters=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :sql
+      def sql
+      end
 
-      sig { params(sql: String).void }
-      attr_writer :sql
+      sig { params(_: String).returns(String) }
+      def sql=(_)
+      end
 
       sig do
         params(

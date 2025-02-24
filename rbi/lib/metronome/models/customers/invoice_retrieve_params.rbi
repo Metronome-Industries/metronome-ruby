@@ -8,16 +8,28 @@ module Metronome
         include Metronome::RequestParameters
 
         sig { returns(String) }
-        attr_accessor :customer_id
+        def customer_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def customer_id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :invoice_id
+        def invoice_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def invoice_id=(_)
+        end
 
         sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :skip_zero_qty_line_items
+        def skip_zero_qty_line_items
+        end
 
-        sig { params(skip_zero_qty_line_items: T::Boolean).void }
-        attr_writer :skip_zero_qty_line_items
+        sig { params(_: T::Boolean).returns(T::Boolean) }
+        def skip_zero_qty_line_items=(_)
+        end
 
         sig do
           params(

@@ -31,63 +31,71 @@ module Metronome
 
       attr_reader access_schedule: Metronome::Models::ScheduleDuration?
 
-      def access_schedule=: (Metronome::Models::ScheduleDuration) -> void
+      def access_schedule=: (
+        Metronome::Models::ScheduleDuration
+      ) -> Metronome::Models::ScheduleDuration
 
       attr_reader applicable_contract_ids: ::Array[String]?
 
-      def applicable_contract_ids=: (::Array[String]) -> void
+      def applicable_contract_ids=: (::Array[String]) -> ::Array[String]
 
       attr_reader applicable_product_ids: ::Array[String]?
 
-      def applicable_product_ids=: (::Array[String]) -> void
+      def applicable_product_ids=: (::Array[String]) -> ::Array[String]
 
       attr_reader applicable_product_tags: ::Array[String]?
 
-      def applicable_product_tags=: (::Array[String]) -> void
+      def applicable_product_tags=: (::Array[String]) -> ::Array[String]
 
       attr_reader balance: Float?
 
-      def balance=: (Float) -> void
+      def balance=: (Float) -> Float
 
       attr_reader contract: Metronome::Models::Credit::Contract?
 
-      def contract=: (Metronome::Models::Credit::Contract) -> void
+      def contract=: (
+        Metronome::Models::Credit::Contract
+      ) -> Metronome::Models::Credit::Contract
 
       attr_reader custom_fields: ::Hash[Symbol, String]?
 
-      def custom_fields=: (::Hash[Symbol, String]) -> void
+      def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
 
       attr_reader description: String?
 
-      def description=: (String) -> void
+      def description=: (String) -> String
 
       attr_reader ledger: ::Array[Metronome::Models::Credit::ledger]?
 
-      def ledger=: (::Array[Metronome::Models::Credit::ledger]) -> void
+      def ledger=: (
+        ::Array[Metronome::Models::Credit::ledger]
+      ) -> ::Array[Metronome::Models::Credit::ledger]
 
       attr_reader name: String?
 
-      def name=: (String) -> void
+      def name=: (String) -> String
 
       attr_reader netsuite_sales_order_id: String?
 
-      def netsuite_sales_order_id=: (String) -> void
+      def netsuite_sales_order_id=: (String) -> String
 
       attr_reader priority: Float?
 
-      def priority=: (Float) -> void
+      def priority=: (Float) -> Float
 
       attr_reader rate_type: Metronome::Models::Credit::rate_type?
 
-      def rate_type=: (Metronome::Models::Credit::rate_type) -> void
+      def rate_type=: (
+        Metronome::Models::Credit::rate_type
+      ) -> Metronome::Models::Credit::rate_type
 
       attr_reader salesforce_opportunity_id: String?
 
-      def salesforce_opportunity_id=: (String) -> void
+      def salesforce_opportunity_id=: (String) -> String
 
       attr_reader uniqueness_key: String?
 
-      def uniqueness_key=: (String) -> void
+      def uniqueness_key=: (String) -> String
 
       def initialize:
         (

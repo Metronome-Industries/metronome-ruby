@@ -5,40 +5,78 @@ module Metronome
     module Customers
       class PlanListResponse < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(T::Hash[Symbol, String]) }
-        attr_accessor :custom_fields
+        def custom_fields
+        end
+
+        sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+        def custom_fields=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :plan_description
+        def plan_description
+        end
+
+        sig { params(_: String).returns(String) }
+        def plan_description=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :plan_id
+        def plan_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def plan_id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :plan_name
+        def plan_name
+        end
+
+        sig { params(_: String).returns(String) }
+        def plan_name=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :starting_on
+        def starting_on
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def starting_on=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :ending_before
+        def ending_before
+        end
 
-        sig { params(ending_before: Time).void }
-        attr_writer :ending_before
+        sig { params(_: Time).returns(Time) }
+        def ending_before=(_)
+        end
 
         sig { returns(T.nilable(Float)) }
-        attr_reader :net_payment_terms_days
+        def net_payment_terms_days
+        end
 
-        sig { params(net_payment_terms_days: Float).void }
-        attr_writer :net_payment_terms_days
+        sig { params(_: Float).returns(Float) }
+        def net_payment_terms_days=(_)
+        end
 
         sig { returns(T.nilable(Metronome::Models::Customers::PlanListResponse::TrialInfo)) }
-        attr_reader :trial_info
+        def trial_info
+        end
 
-        sig { params(trial_info: Metronome::Models::Customers::PlanListResponse::TrialInfo).void }
-        attr_writer :trial_info
+        sig do
+          params(_: Metronome::Models::Customers::PlanListResponse::TrialInfo).returns(Metronome::Models::Customers::PlanListResponse::TrialInfo)
+        end
+        def trial_info=(_)
+        end
 
         sig do
           params(
@@ -86,10 +124,22 @@ module Metronome
 
         class TrialInfo < Metronome::BaseModel
           sig { returns(Time) }
-          attr_accessor :ending_before
+          def ending_before
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def ending_before=(_)
+          end
 
           sig { returns(T::Array[Metronome::Models::Customers::PlanListResponse::TrialInfo::SpendingCap]) }
-          attr_accessor :spending_caps
+          def spending_caps
+          end
+
+          sig do
+            params(_: T::Array[Metronome::Models::Customers::PlanListResponse::TrialInfo::SpendingCap]).returns(T::Array[Metronome::Models::Customers::PlanListResponse::TrialInfo::SpendingCap])
+          end
+          def spending_caps=(_)
+          end
 
           sig do
             params(
@@ -113,13 +163,28 @@ module Metronome
 
           class SpendingCap < Metronome::BaseModel
             sig { returns(Float) }
-            attr_accessor :amount
+            def amount
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def amount=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :amount_remaining
+            def amount_remaining
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def amount_remaining=(_)
+            end
 
             sig { returns(Metronome::Models::CreditTypeData) }
-            attr_accessor :credit_type
+            def credit_type
+            end
+
+            sig { params(_: Metronome::Models::CreditTypeData).returns(Metronome::Models::CreditTypeData) }
+            def credit_type=(_)
+            end
 
             sig do
               params(

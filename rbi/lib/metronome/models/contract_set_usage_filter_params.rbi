@@ -7,19 +7,44 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :contract_id
+      def contract_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def contract_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :customer_id
+      def customer_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def customer_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :group_key
+      def group_key
+      end
+
+      sig { params(_: String).returns(String) }
+      def group_key=(_)
+      end
 
       sig { returns(T::Array[String]) }
-      attr_accessor :group_values
+      def group_values
+      end
+
+      sig { params(_: T::Array[String]).returns(T::Array[String]) }
+      def group_values=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :starting_at
+      def starting_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def starting_at=(_)
+      end
 
       sig do
         params(

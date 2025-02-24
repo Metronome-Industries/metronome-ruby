@@ -8,25 +8,38 @@ module Metronome
         include Metronome::RequestParameters
 
         sig { returns(String) }
-        attr_accessor :rate_card_id
+        def rate_card_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def rate_card_id=(_)
+        end
 
         sig { returns(T.nilable(T::Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias])) }
-        attr_reader :aliases
+        def aliases
+        end
 
-        sig { params(aliases: T::Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias]).void }
-        attr_writer :aliases
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :description
-
-        sig { params(description: String).void }
-        attr_writer :description
+        sig do
+          params(_: T::Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias]).returns(T::Array[Metronome::Models::Contracts::RateCardUpdateParams::Alias])
+        end
+        def aliases=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :name
+        def description
+        end
 
-        sig { params(name: String).void }
-        attr_writer :name
+        sig { params(_: String).returns(String) }
+        def description=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         sig do
           params(
@@ -56,19 +69,28 @@ module Metronome
 
         class Alias < Metronome::BaseModel
           sig { returns(String) }
-          attr_accessor :name
+          def name
+          end
+
+          sig { params(_: String).returns(String) }
+          def name=(_)
+          end
 
           sig { returns(T.nilable(Time)) }
-          attr_reader :ending_before
+          def ending_before
+          end
 
-          sig { params(ending_before: Time).void }
-          attr_writer :ending_before
+          sig { params(_: Time).returns(Time) }
+          def ending_before=(_)
+          end
 
           sig { returns(T.nilable(Time)) }
-          attr_reader :starting_at
+          def starting_at
+          end
 
-          sig { params(starting_at: Time).void }
-          attr_writer :starting_at
+          sig { params(_: Time).returns(Time) }
+          def starting_at=(_)
+          end
 
           sig { params(name: String, ending_before: Time, starting_at: Time).void }
           def initialize(name:, ending_before: nil, starting_at: nil)

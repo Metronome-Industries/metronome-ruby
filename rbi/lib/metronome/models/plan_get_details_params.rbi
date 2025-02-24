@@ -7,7 +7,12 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :plan_id
+      def plan_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def plan_id=(_)
+      end
 
       sig do
         params(

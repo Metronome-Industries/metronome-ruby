@@ -17,15 +17,17 @@ module Metronome
 
       attr_reader limit: Integer?
 
-      def limit=: (Integer) -> void
+      def limit=: (Integer) -> Integer
 
       attr_reader next_page: String?
 
-      def next_page=: (String) -> void
+      def next_page=: (String) -> String
 
       attr_reader status: Metronome::Models::PlanListCustomersParams::status?
 
-      def status=: (Metronome::Models::PlanListCustomersParams::status) -> void
+      def status=: (
+        Metronome::Models::PlanListCustomersParams::status
+      ) -> Metronome::Models::PlanListCustomersParams::status
 
       def initialize:
         (

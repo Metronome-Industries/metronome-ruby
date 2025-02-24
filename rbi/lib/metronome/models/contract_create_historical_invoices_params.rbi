@@ -7,10 +7,22 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice]) }
-      attr_accessor :invoices
+      def invoices
+      end
+
+      sig do
+        params(_: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice]).returns(T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice])
+      end
+      def invoices=(_)
+      end
 
       sig { returns(T::Boolean) }
-      attr_accessor :preview
+      def preview
+      end
+
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def preview=(_)
+      end
 
       sig do
         params(
@@ -36,45 +48,88 @@ module Metronome
 
       class Invoice < Metronome::BaseModel
         sig { returns(String) }
-        attr_accessor :contract_id
+        def contract_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def contract_id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :credit_type_id
+        def credit_type_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def credit_type_id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :customer_id
+        def customer_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def customer_id=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :exclusive_end_date
+        def exclusive_end_date
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def exclusive_end_date=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :inclusive_start_date
+        def inclusive_start_date
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def inclusive_start_date=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :issue_date
+        def issue_date
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def issue_date=(_)
+        end
 
         sig do
           returns(T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem])
         end
-        attr_accessor :usage_line_items
+        def usage_line_items
+        end
+
+        sig do
+          params(_: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem]).returns(T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem])
+        end
+        def usage_line_items=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :billable_status
+        def billable_status
+        end
 
-        sig { params(billable_status: Symbol).void }
-        attr_writer :billable_status
+        sig { params(_: Symbol).returns(Symbol) }
+        def billable_status=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :breakdown_granularity
+        def breakdown_granularity
+        end
 
-        sig { params(breakdown_granularity: Symbol).void }
-        attr_writer :breakdown_granularity
+        sig { params(_: Symbol).returns(Symbol) }
+        def breakdown_granularity=(_)
+        end
 
         sig { returns(T.nilable(T::Hash[Symbol, String])) }
-        attr_reader :custom_fields
+        def custom_fields
+        end
 
-        sig { params(custom_fields: T::Hash[Symbol, String]).void }
-        attr_writer :custom_fields
+        sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+        def custom_fields=(_)
+        end
 
         sig do
           params(
@@ -125,43 +180,66 @@ module Metronome
 
         class UsageLineItem < Metronome::BaseModel
           sig { returns(Time) }
-          attr_accessor :exclusive_end_date
+          def exclusive_end_date
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def exclusive_end_date=(_)
+          end
 
           sig { returns(Time) }
-          attr_accessor :inclusive_start_date
+          def inclusive_start_date
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def inclusive_start_date=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :product_id
+          def product_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def product_id=(_)
+          end
 
           sig { returns(T.nilable(T::Hash[Symbol, String])) }
-          attr_reader :presentation_group_values
+          def presentation_group_values
+          end
 
-          sig { params(presentation_group_values: T::Hash[Symbol, String]).void }
-          attr_writer :presentation_group_values
+          sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+          def presentation_group_values=(_)
+          end
 
           sig { returns(T.nilable(T::Hash[Symbol, String])) }
-          attr_reader :pricing_group_values
+          def pricing_group_values
+          end
 
-          sig { params(pricing_group_values: T::Hash[Symbol, String]).void }
-          attr_writer :pricing_group_values
+          sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+          def pricing_group_values=(_)
+          end
 
           sig { returns(T.nilable(Float)) }
-          attr_reader :quantity
+          def quantity
+          end
 
-          sig { params(quantity: Float).void }
-          attr_writer :quantity
+          sig { params(_: Float).returns(Float) }
+          def quantity=(_)
+          end
 
           sig do
             returns(T.nilable(T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]))
           end
-          attr_reader :subtotals_with_quantity
+          def subtotals_with_quantity
+          end
 
           sig do
             params(
-              subtotals_with_quantity: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
-            ).void
+              _: T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
+            ).returns(T::Array[Metronome::Models::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity])
           end
-          attr_writer :subtotals_with_quantity
+          def subtotals_with_quantity=(_)
+          end
 
           sig do
             params(
@@ -203,13 +281,28 @@ module Metronome
 
           class SubtotalsWithQuantity < Metronome::BaseModel
             sig { returns(Time) }
-            attr_accessor :exclusive_end_date
+            def exclusive_end_date
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def exclusive_end_date=(_)
+            end
 
             sig { returns(Time) }
-            attr_accessor :inclusive_start_date
+            def inclusive_start_date
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def inclusive_start_date=(_)
+            end
 
             sig { returns(Float) }
-            attr_accessor :quantity
+            def quantity
+            end
+
+            sig { params(_: Float).returns(Float) }
+            def quantity=(_)
+            end
 
             sig { params(exclusive_end_date: Time, inclusive_start_date: Time, quantity: Float).void }
             def initialize(exclusive_end_date:, inclusive_start_date:, quantity:)

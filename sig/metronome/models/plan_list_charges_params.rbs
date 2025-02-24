@@ -12,11 +12,11 @@ module Metronome
 
       attr_reader limit: Integer?
 
-      def limit=: (Integer) -> void
+      def limit=: (Integer) -> Integer
 
       attr_reader next_page: String?
 
-      def next_page=: (String) -> void
+      def next_page=: (String) -> String
 
       def initialize:
         (

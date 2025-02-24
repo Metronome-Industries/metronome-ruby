@@ -6,7 +6,9 @@ module Metronome
     class InvoiceRegenerateResponse < Metronome::BaseModel
       attr_reader data: Metronome::Models::InvoiceRegenerateResponse::Data?
 
-      def data=: (Metronome::Models::InvoiceRegenerateResponse::Data) -> void
+      def data=: (
+        Metronome::Models::InvoiceRegenerateResponse::Data
+      ) -> Metronome::Models::InvoiceRegenerateResponse::Data
 
       def initialize:
         (data: Metronome::Models::InvoiceRegenerateResponse::Data) -> void

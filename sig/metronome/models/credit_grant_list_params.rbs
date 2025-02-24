@@ -18,31 +18,31 @@ module Metronome
 
       attr_reader limit: Integer?
 
-      def limit=: (Integer) -> void
+      def limit=: (Integer) -> Integer
 
       attr_reader next_page: String?
 
-      def next_page=: (String) -> void
+      def next_page=: (String) -> String
 
       attr_reader credit_grant_ids: ::Array[String]?
 
-      def credit_grant_ids=: (::Array[String]) -> void
+      def credit_grant_ids=: (::Array[String]) -> ::Array[String]
 
       attr_reader credit_type_ids: ::Array[String]?
 
-      def credit_type_ids=: (::Array[String]) -> void
+      def credit_type_ids=: (::Array[String]) -> ::Array[String]
 
       attr_reader customer_ids: ::Array[String]?
 
-      def customer_ids=: (::Array[String]) -> void
+      def customer_ids=: (::Array[String]) -> ::Array[String]
 
       attr_reader effective_before: Time?
 
-      def effective_before=: (Time) -> void
+      def effective_before=: (Time) -> Time
 
       attr_reader not_expiring_before: Time?
 
-      def not_expiring_before=: (Time) -> void
+      def not_expiring_before=: (Time) -> Time
 
       def initialize:
         (

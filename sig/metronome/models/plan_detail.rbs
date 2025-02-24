@@ -22,21 +22,23 @@ module Metronome
 
       def credit_grants=: (
         ::Array[Metronome::Models::PlanDetail::CreditGrant]
-      ) -> void
+      ) -> ::Array[Metronome::Models::PlanDetail::CreditGrant]
 
       attr_reader description: String?
 
-      def description=: (String) -> void
+      def description=: (String) -> String
 
       attr_reader minimums: ::Array[Metronome::Models::PlanDetail::Minimum]?
 
-      def minimums=: (::Array[Metronome::Models::PlanDetail::Minimum]) -> void
+      def minimums=: (
+        ::Array[Metronome::Models::PlanDetail::Minimum]
+      ) -> ::Array[Metronome::Models::PlanDetail::Minimum]
 
       attr_reader overage_rates: ::Array[Metronome::Models::PlanDetail::OverageRate]?
 
       def overage_rates=: (
         ::Array[Metronome::Models::PlanDetail::OverageRate]
-      ) -> void
+      ) -> ::Array[Metronome::Models::PlanDetail::OverageRate]
 
       def initialize:
         (
@@ -86,15 +88,15 @@ module Metronome
 
         attr_reader reason: String?
 
-        def reason=: (String) -> void
+        def reason=: (String) -> String
 
         attr_reader recurrence_duration: Float?
 
-        def recurrence_duration=: (Float) -> void
+        def recurrence_duration=: (Float) -> Float
 
         attr_reader recurrence_interval: Float?
 
-        def recurrence_interval=: (Float) -> void
+        def recurrence_interval=: (Float) -> Float
 
         def initialize:
           (

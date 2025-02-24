@@ -7,13 +7,28 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(T::Boolean) }
-      attr_accessor :enforce_uniqueness
+      def enforce_uniqueness
+      end
+
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def enforce_uniqueness=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :entity
+      def entity
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def entity=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :key
+      def key
+      end
+
+      sig { params(_: String).returns(String) }
+      def key=(_)
+      end
 
       sig do
         params(

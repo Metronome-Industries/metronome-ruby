@@ -7,13 +7,28 @@ module Metronome
       include Metronome::RequestParameters
 
       sig { returns(T::Hash[Symbol, String]) }
-      attr_accessor :custom_fields
+      def custom_fields
+      end
+
+      sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+      def custom_fields=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :entity
+      def entity
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def entity=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :entity_id
+      def entity_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def entity_id=(_)
+      end
 
       sig do
         params(

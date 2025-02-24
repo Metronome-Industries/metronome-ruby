@@ -4,25 +4,60 @@ module Metronome
   module Models
     class CreditLedgerEntry < Metronome::BaseModel
       sig { returns(Float) }
-      attr_accessor :amount
+      def amount
+      end
+
+      sig { params(_: Float).returns(Float) }
+      def amount=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :created_by
+      def created_by
+      end
+
+      sig { params(_: String).returns(String) }
+      def created_by=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :credit_grant_id
+      def credit_grant_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def credit_grant_id=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :effective_at
+      def effective_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def effective_at=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :reason
+      def reason
+      end
+
+      sig { params(_: String).returns(String) }
+      def reason=(_)
+      end
 
       sig { returns(Float) }
-      attr_accessor :running_balance
+      def running_balance
+      end
+
+      sig { params(_: Float).returns(Float) }
+      def running_balance=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :invoice_id
+      def invoice_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def invoice_id=(_)
+      end
 
       sig do
         params(
