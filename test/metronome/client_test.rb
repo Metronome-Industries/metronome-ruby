@@ -348,9 +348,7 @@ class MetronomeTest < Minitest::Test
     )
     headers = requester.attempts.first[:headers]
 
-    refute_empty(headers["x-stainless-lang"])
-    refute_empty(headers["x-stainless-package-version"])
-    refute_empty(headers["x-stainless-runtime"])
-    refute_empty(headers["x-stainless-runtime-version"])
+    refute_empty(headers["accept"])
+    refute_empty(headers["content-type"])
   end
 end
