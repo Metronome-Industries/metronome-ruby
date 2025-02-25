@@ -15,7 +15,6 @@ module Metronome
     # Default max retry delay in seconds.
     DEFAULT_MAX_RETRY_DELAY = 8.0
 
-    # Client option
     # @return [String]
     attr_reader :bearer_token
 
