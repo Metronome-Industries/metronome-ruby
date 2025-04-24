@@ -1,0 +1,65 @@
+module MetronomeSDK
+  module Models
+    type discount =
+      {
+        id: String,
+        product: MetronomeSDK::Models::Discount::Product,
+        schedule: MetronomeSDK::Models::SchedulePointInTime,
+        custom_fields: ::Hash[Symbol, String],
+        name: String,
+        netsuite_sales_order_id: String
+      }
+
+    class Discount < MetronomeSDK::BaseModel
+      attr_accessor id: String
+
+      attr_accessor product: MetronomeSDK::Models::Discount::Product
+
+      attr_accessor schedule: MetronomeSDK::Models::SchedulePointInTime
+
+      attr_reader custom_fields: ::Hash[Symbol, String]?
+
+      def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader netsuite_sales_order_id: String?
+
+      def netsuite_sales_order_id=: (String) -> String
+
+      def initialize:
+        (
+          id: String,
+          product: MetronomeSDK::Models::Discount::Product,
+          schedule: MetronomeSDK::Models::SchedulePointInTime,
+          custom_fields: ::Hash[Symbol, String],
+          name: String,
+          netsuite_sales_order_id: String
+        ) -> void
+        | (
+          ?MetronomeSDK::Models::discount | MetronomeSDK::BaseModel data
+        ) -> void
+
+      def to_hash: -> MetronomeSDK::Models::discount
+
+      type product = { id: String, name: String }
+
+      class Product < MetronomeSDK::BaseModel
+        attr_accessor id: String
+
+        attr_accessor name: String
+
+        def initialize:
+          (id: String, name: String) -> void
+          | (
+            ?MetronomeSDK::Models::Discount::product
+            | MetronomeSDK::BaseModel data
+          ) -> void
+
+        def to_hash: -> MetronomeSDK::Models::Discount::product
+      end
+    end
+  end
+end

@@ -1,0 +1,105 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type usage_list_with_groups_params =
+        {
+          billable_metric_id: String,
+          customer_id: String,
+          window_size: MetronomeSDK::Models::V1::UsageListWithGroupsParams::window_size,
+          limit: Integer,
+          next_page: String,
+          current_period: bool,
+          ending_before: Time,
+          group_by: MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy,
+          starting_on: Time
+        }
+        & MetronomeSDK::request_parameters
+
+      class UsageListWithGroupsParams < MetronomeSDK::BaseModel
+        extend MetronomeSDK::RequestParameters::Converter
+        include MetronomeSDK::RequestParameters
+
+        attr_accessor billable_metric_id: String
+
+        attr_accessor customer_id: String
+
+        attr_accessor window_size: MetronomeSDK::Models::V1::UsageListWithGroupsParams::window_size
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> Integer
+
+        attr_reader next_page: String?
+
+        def next_page=: (String) -> String
+
+        attr_reader current_period: bool?
+
+        def current_period=: (bool) -> bool
+
+        attr_reader ending_before: Time?
+
+        def ending_before=: (Time) -> Time
+
+        attr_reader group_by: MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy?
+
+        def group_by=: (
+          MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy
+        ) -> MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy
+
+        attr_reader starting_on: Time?
+
+        def starting_on=: (Time) -> Time
+
+        def initialize:
+          (
+            billable_metric_id: String,
+            customer_id: String,
+            window_size: MetronomeSDK::Models::V1::UsageListWithGroupsParams::window_size,
+            limit: Integer,
+            next_page: String,
+            current_period: bool,
+            ending_before: Time,
+            group_by: MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy,
+            starting_on: Time,
+            request_options: MetronomeSDK::request_opts
+          ) -> void
+          | (
+            ?MetronomeSDK::Models::V1::usage_list_with_groups_params
+            | MetronomeSDK::BaseModel data
+          ) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V1::usage_list_with_groups_params
+
+        type window_size = :HOUR | :DAY | :NONE
+
+        class WindowSize < MetronomeSDK::Enum
+          HOUR: :HOUR
+          DAY: :DAY
+          NONE: :NONE
+
+          def self.values: -> ::Array[MetronomeSDK::Models::V1::UsageListWithGroupsParams::window_size]
+        end
+
+        type group_by = { key: String, values: ::Array[String] }
+
+        class GroupBy < MetronomeSDK::BaseModel
+          attr_accessor key: String
+
+          attr_reader values: ::Array[String]?
+
+          def values=: (::Array[String]) -> ::Array[String]
+
+          def initialize:
+            (key: String, values: ::Array[String]) -> void
+            | (
+              ?MetronomeSDK::Models::V1::UsageListWithGroupsParams::group_by
+              | MetronomeSDK::BaseModel data
+            ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::UsageListWithGroupsParams::group_by
+        end
+      end
+    end
+  end
+end

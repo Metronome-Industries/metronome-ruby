@@ -1,0 +1,9 @@
+module MetronomeSDK
+  module Resources
+    class V2
+      attr_reader contracts: MetronomeSDK::Resources::V2::Contracts
+
+      def initialize: (client: MetronomeSDK::Client) -> void
+    end
+  end
+end

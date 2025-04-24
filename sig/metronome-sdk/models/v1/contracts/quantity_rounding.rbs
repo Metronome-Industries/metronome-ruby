@@ -1,0 +1,41 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Contracts
+        type quantity_rounding =
+          {
+            decimal_places: Float,
+            rounding_method: MetronomeSDK::Models::V1::Contracts::QuantityRounding::rounding_method
+          }
+
+        class QuantityRounding < MetronomeSDK::BaseModel
+          attr_accessor decimal_places: Float
+
+          attr_accessor rounding_method: MetronomeSDK::Models::V1::Contracts::QuantityRounding::rounding_method
+
+          def initialize:
+            (
+              decimal_places: Float,
+              rounding_method: MetronomeSDK::Models::V1::Contracts::QuantityRounding::rounding_method
+            ) -> void
+            | (
+              ?MetronomeSDK::Models::V1::Contracts::quantity_rounding
+              | MetronomeSDK::BaseModel data
+            ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::Contracts::quantity_rounding
+
+          type rounding_method = :ROUND_UP | :ROUND_DOWN | :ROUND_HALF_UP
+
+          class RoundingMethod < MetronomeSDK::Enum
+            ROUND_UP: :ROUND_UP
+            ROUND_DOWN: :ROUND_DOWN
+            ROUND_HALF_UP: :ROUND_HALF_UP
+
+            def self.values: -> ::Array[MetronomeSDK::Models::V1::Contracts::QuantityRounding::rounding_method]
+          end
+        end
+      end
+    end
+  end
+end

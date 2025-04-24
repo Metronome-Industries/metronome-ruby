@@ -1,0 +1,56 @@
+module MetronomeSDK
+  module Models
+    type pro_service =
+      {
+        id: String,
+        max_amount: Float,
+        product_id: String,
+        quantity: Float,
+        unit_price: Float,
+        custom_fields: ::Hash[Symbol, String],
+        description: String,
+        netsuite_sales_order_id: String
+      }
+
+    class ProService < MetronomeSDK::BaseModel
+      attr_accessor id: String
+
+      attr_accessor max_amount: Float
+
+      attr_accessor product_id: String
+
+      attr_accessor quantity: Float
+
+      attr_accessor unit_price: Float
+
+      attr_reader custom_fields: ::Hash[Symbol, String]?
+
+      def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+
+      attr_reader description: String?
+
+      def description=: (String) -> String
+
+      attr_reader netsuite_sales_order_id: String?
+
+      def netsuite_sales_order_id=: (String) -> String
+
+      def initialize:
+        (
+          id: String,
+          max_amount: Float,
+          product_id: String,
+          quantity: Float,
+          unit_price: Float,
+          custom_fields: ::Hash[Symbol, String],
+          description: String,
+          netsuite_sales_order_id: String
+        ) -> void
+        | (
+          ?MetronomeSDK::Models::pro_service | MetronomeSDK::BaseModel data
+        ) -> void
+
+      def to_hash: -> MetronomeSDK::Models::pro_service
+    end
+  end
+end

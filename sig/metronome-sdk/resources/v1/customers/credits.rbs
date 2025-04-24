@@ -1,0 +1,65 @@
+module MetronomeSDK
+  module Resources
+    class V1
+      class Customers
+        class Credits
+          def create:
+            (
+              MetronomeSDK::Models::V1::Customers::CreditCreateParams
+              | ::Hash[Symbol, top] params
+            ) -> MetronomeSDK::Models::V1::Customers::CreditCreateResponse
+            | (
+              access_schedule: MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule,
+              customer_id: String,
+              priority: Float,
+              product_id: String,
+              applicable_contract_ids: ::Array[String],
+              applicable_product_ids: ::Array[String],
+              applicable_product_tags: ::Array[String],
+              custom_fields: ::Hash[Symbol, String],
+              description: String,
+              name: String,
+              netsuite_sales_order_id: String,
+              rate_type: MetronomeSDK::Models::V1::Customers::CreditCreateParams::rate_type,
+              salesforce_opportunity_id: String,
+              uniqueness_key: String,
+              request_options: MetronomeSDK::request_opts
+            ) -> MetronomeSDK::Models::V1::Customers::CreditCreateResponse
+
+          def list:
+            (
+              MetronomeSDK::Models::V1::Customers::CreditListParams
+              | ::Hash[Symbol, top] params
+            ) -> MetronomeSDK::Models::V1::Customers::CreditListResponse
+            | (
+              customer_id: String,
+              covering_date: Time,
+              credit_id: String,
+              effective_before: Time,
+              include_archived: bool,
+              include_balance: bool,
+              include_contract_credits: bool,
+              include_ledgers: bool,
+              next_page: String,
+              starting_at: Time,
+              request_options: MetronomeSDK::request_opts
+            ) -> MetronomeSDK::Models::V1::Customers::CreditListResponse
+
+          def update_end_date:
+            (
+              MetronomeSDK::Models::V1::Customers::CreditUpdateEndDateParams
+              | ::Hash[Symbol, top] params
+            ) -> MetronomeSDK::Models::V1::Customers::CreditUpdateEndDateResponse
+            | (
+              access_ending_before: Time,
+              credit_id: String,
+              customer_id: String,
+              request_options: MetronomeSDK::request_opts
+            ) -> MetronomeSDK::Models::V1::Customers::CreditUpdateEndDateResponse
+
+          def initialize: (client: MetronomeSDK::Client) -> void
+        end
+      end
+    end
+  end
+end

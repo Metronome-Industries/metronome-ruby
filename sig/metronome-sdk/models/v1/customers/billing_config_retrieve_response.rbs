@@ -1,0 +1,185 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Customers
+        type billing_config_retrieve_response =
+          {
+            data: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data
+          }
+
+        class BillingConfigRetrieveResponse < MetronomeSDK::BaseModel
+          attr_accessor data: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data
+
+          def initialize:
+            (
+              data: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data
+            ) -> void
+            | (
+              ?MetronomeSDK::Models::V1::Customers::billing_config_retrieve_response
+              | MetronomeSDK::BaseModel data
+            ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::Customers::billing_config_retrieve_response
+
+          type data =
+            {
+              aws_expiration_date: Time,
+              aws_product_code: String,
+              aws_region: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::aws_region,
+              azure_expiration_date: Time,
+              azure_plan_id: String,
+              azure_start_date: Time,
+              azure_subscription_status: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::azure_subscription_status,
+              billing_provider_customer_id: String,
+              stripe_collection_method: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::stripe_collection_method
+            }
+
+          class Data < MetronomeSDK::BaseModel
+            attr_reader aws_expiration_date: Time?
+
+            def aws_expiration_date=: (Time) -> Time
+
+            attr_reader aws_product_code: String?
+
+            def aws_product_code=: (String) -> String
+
+            attr_reader aws_region: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::aws_region?
+
+            def aws_region=: (
+              MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::aws_region
+            ) -> MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::aws_region
+
+            attr_reader azure_expiration_date: Time?
+
+            def azure_expiration_date=: (Time) -> Time
+
+            attr_reader azure_plan_id: String?
+
+            def azure_plan_id=: (String) -> String
+
+            attr_reader azure_start_date: Time?
+
+            def azure_start_date=: (Time) -> Time
+
+            attr_reader azure_subscription_status: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::azure_subscription_status?
+
+            def azure_subscription_status=: (
+              MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::azure_subscription_status
+            ) -> MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::azure_subscription_status
+
+            attr_reader billing_provider_customer_id: String?
+
+            def billing_provider_customer_id=: (String) -> String
+
+            attr_reader stripe_collection_method: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::stripe_collection_method?
+
+            def stripe_collection_method=: (
+              MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::stripe_collection_method
+            ) -> MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::stripe_collection_method
+
+            def initialize:
+              (
+                aws_expiration_date: Time,
+                aws_product_code: String,
+                aws_region: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::aws_region,
+                azure_expiration_date: Time,
+                azure_plan_id: String,
+                azure_start_date: Time,
+                azure_subscription_status: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::azure_subscription_status,
+                billing_provider_customer_id: String,
+                stripe_collection_method: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::stripe_collection_method
+              ) -> void
+              | (
+                ?MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::data
+                | MetronomeSDK::BaseModel data
+              ) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::data
+
+            type aws_region =
+              :"af-south-1"
+              | :"ap-east-1"
+              | :"ap-northeast-1"
+              | :"ap-northeast-2"
+              | :"ap-northeast-3"
+              | :"ap-south-1"
+              | :"ap-southeast-1"
+              | :"ap-southeast-2"
+              | :"ca-central-1"
+              | :"cn-north-1"
+              | :"cn-northwest-1"
+              | :"eu-central-1"
+              | :"eu-north-1"
+              | :"eu-south-1"
+              | :"eu-west-1"
+              | :"eu-west-2"
+              | :"eu-west-3"
+              | :"me-south-1"
+              | :"sa-east-1"
+              | :"us-east-1"
+              | :"us-east-2"
+              | :"us-gov-east-1"
+              | :"us-gov-west-1"
+              | :"us-west-1"
+              | :"us-west-2"
+
+            class AwsRegion < MetronomeSDK::Enum
+              AF_SOUTH_1: :"af-south-1"
+              AP_EAST_1: :"ap-east-1"
+              AP_NORTHEAST_1: :"ap-northeast-1"
+              AP_NORTHEAST_2: :"ap-northeast-2"
+              AP_NORTHEAST_3: :"ap-northeast-3"
+              AP_SOUTH_1: :"ap-south-1"
+              AP_SOUTHEAST_1: :"ap-southeast-1"
+              AP_SOUTHEAST_2: :"ap-southeast-2"
+              CA_CENTRAL_1: :"ca-central-1"
+              CN_NORTH_1: :"cn-north-1"
+              CN_NORTHWEST_1: :"cn-northwest-1"
+              EU_CENTRAL_1: :"eu-central-1"
+              EU_NORTH_1: :"eu-north-1"
+              EU_SOUTH_1: :"eu-south-1"
+              EU_WEST_1: :"eu-west-1"
+              EU_WEST_2: :"eu-west-2"
+              EU_WEST_3: :"eu-west-3"
+              ME_SOUTH_1: :"me-south-1"
+              SA_EAST_1: :"sa-east-1"
+              US_EAST_1: :"us-east-1"
+              US_EAST_2: :"us-east-2"
+              US_GOV_EAST_1: :"us-gov-east-1"
+              US_GOV_WEST_1: :"us-gov-west-1"
+              US_WEST_1: :"us-west-1"
+              US_WEST_2: :"us-west-2"
+
+              def self.values: -> ::Array[MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::aws_region]
+            end
+
+            type azure_subscription_status =
+              :Subscribed
+              | :Unsubscribed
+              | :Suspended
+              | :PendingFulfillmentStart
+
+            class AzureSubscriptionStatus < MetronomeSDK::Enum
+              SUBSCRIBED: :Subscribed
+              UNSUBSCRIBED: :Unsubscribed
+              SUSPENDED: :Suspended
+              PENDING_FULFILLMENT_START: :PendingFulfillmentStart
+
+              def self.values: -> ::Array[MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::azure_subscription_status]
+            end
+
+            type stripe_collection_method =
+              :charge_automatically | :send_invoice
+
+            class StripeCollectionMethod < MetronomeSDK::Enum
+              CHARGE_AUTOMATICALLY: :charge_automatically
+              SEND_INVOICE: :send_invoice
+
+              def self.values: -> ::Array[MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::stripe_collection_method]
+            end
+          end
+        end
+      end
+    end
+  end
+end

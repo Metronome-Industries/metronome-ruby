@@ -35,7 +35,7 @@ Layout/LineLength:
   AllowedPatterns:
     - "^\\s*#.*$"
     - ^require(_relative)?
-    - "Metronome::(Models|Resources)::"
+    - "MetronomeSDK::(Models|Resources)::"
   Max: 110
 
 Layout/MultilineArrayLineBreaks:

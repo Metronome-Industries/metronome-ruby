@@ -1,0 +1,24 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type plan_get_details_params =
+        { plan_id: String } & MetronomeSDK::request_parameters
+
+      class PlanGetDetailsParams < MetronomeSDK::BaseModel
+        extend MetronomeSDK::RequestParameters::Converter
+        include MetronomeSDK::RequestParameters
+
+        attr_accessor plan_id: String
+
+        def initialize:
+          (plan_id: String, request_options: MetronomeSDK::request_opts) -> void
+          | (
+            ?MetronomeSDK::Models::V1::plan_get_details_params
+            | MetronomeSDK::BaseModel data
+          ) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V1::plan_get_details_params
+      end
+    end
+  end
+end

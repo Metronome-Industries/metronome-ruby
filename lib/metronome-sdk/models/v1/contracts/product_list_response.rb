@@ -1,0 +1,288 @@
+# frozen_string_literal: true
+
+module MetronomeSDK
+  module Models
+    module V1
+      module Contracts
+        class ProductListResponse < MetronomeSDK::BaseModel
+          # @!attribute id
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute current
+          #
+          #   @return [MetronomeSDK::Models::V1::Contracts::ProductListItemState]
+          required :current, -> { MetronomeSDK::Models::V1::Contracts::ProductListItemState }
+
+          # @!attribute initial
+          #
+          #   @return [MetronomeSDK::Models::V1::Contracts::ProductListItemState]
+          required :initial, -> { MetronomeSDK::Models::V1::Contracts::ProductListItemState }
+
+          # @!attribute type
+          #
+          #   @return [Symbol, MetronomeSDK::Models::V1::Contracts::ProductListResponse::Type]
+          required :type, enum: -> { MetronomeSDK::Models::V1::Contracts::ProductListResponse::Type }
+
+          # @!attribute updates
+          #
+          #   @return [Array<MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update>]
+          required :updates,
+                   -> { MetronomeSDK::ArrayOf[MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update] }
+
+          # @!attribute archived_at
+          #
+          #   @return [Time, nil]
+          optional :archived_at, Time, nil?: true
+
+          # @!attribute [r] custom_fields
+          #
+          #   @return [Hash{Symbol=>String}, nil]
+          optional :custom_fields, MetronomeSDK::HashOf[String]
+
+          # @!parse
+          #   # @return [Hash{Symbol=>String}]
+          #   attr_writer :custom_fields
+
+          # @!parse
+          #   # @param id [String]
+          #   # @param current [MetronomeSDK::Models::V1::Contracts::ProductListItemState]
+          #   # @param initial [MetronomeSDK::Models::V1::Contracts::ProductListItemState]
+          #   # @param type [Symbol, MetronomeSDK::Models::V1::Contracts::ProductListResponse::Type]
+          #   # @param updates [Array<MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update>]
+          #   # @param archived_at [Time, nil]
+          #   # @param custom_fields [Hash{Symbol=>String}]
+          #   #
+          #   def initialize(id:, current:, initial:, type:, updates:, archived_at: nil, custom_fields: nil, **) = super
+
+          # def initialize: (Hash | MetronomeSDK::BaseModel) -> void
+
+          # @abstract
+          #
+          # @example
+          # ```ruby
+          # case type
+          # in :USAGE
+          #   # ...
+          # in :SUBSCRIPTION
+          #   # ...
+          # in :COMPOSITE
+          #   # ...
+          # in :FIXED
+          #   # ...
+          # in :PRO_SERVICE
+          #   # ...
+          # end
+          # ```
+          class Type < MetronomeSDK::Enum
+            USAGE = :USAGE
+            SUBSCRIPTION = :SUBSCRIPTION
+            COMPOSITE = :COMPOSITE
+            FIXED = :FIXED
+            PRO_SERVICE = :PRO_SERVICE
+
+            finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
+          end
+
+          class Update < MetronomeSDK::BaseModel
+            # @!attribute created_at
+            #
+            #   @return [Time]
+            required :created_at, Time
+
+            # @!attribute created_by
+            #
+            #   @return [String]
+            required :created_by, String
+
+            # @!attribute [r] billable_metric_id
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String
+
+            # @!parse
+            #   # @return [String]
+            #   attr_writer :billable_metric_id
+
+            # @!attribute [r] composite_product_ids
+            #
+            #   @return [Array<String>, nil]
+            optional :composite_product_ids, MetronomeSDK::ArrayOf[String]
+
+            # @!parse
+            #   # @return [Array<String>]
+            #   attr_writer :composite_product_ids
+
+            # @!attribute [r] composite_tags
+            #
+            #   @return [Array<String>, nil]
+            optional :composite_tags, MetronomeSDK::ArrayOf[String]
+
+            # @!parse
+            #   # @return [Array<String>]
+            #   attr_writer :composite_tags
+
+            # @!attribute [r] exclude_free_usage
+            #
+            #   @return [Boolean, nil]
+            optional :exclude_free_usage, MetronomeSDK::BooleanModel
+
+            # @!parse
+            #   # @return [Boolean]
+            #   attr_writer :exclude_free_usage
+
+            # @!attribute [r] is_refundable
+            #
+            #   @return [Boolean, nil]
+            optional :is_refundable, MetronomeSDK::BooleanModel
+
+            # @!parse
+            #   # @return [Boolean]
+            #   attr_writer :is_refundable
+
+            # @!attribute [r] name
+            #
+            #   @return [String, nil]
+            optional :name, String
+
+            # @!parse
+            #   # @return [String]
+            #   attr_writer :name
+
+            # @!attribute [r] netsuite_internal_item_id
+            #   This field's availability is dependent on your client's configuration.
+            #
+            #   @return [String, nil]
+            optional :netsuite_internal_item_id, String
+
+            # @!parse
+            #   # @return [String]
+            #   attr_writer :netsuite_internal_item_id
+
+            # @!attribute [r] netsuite_overage_item_id
+            #   This field's availability is dependent on your client's configuration.
+            #
+            #   @return [String, nil]
+            optional :netsuite_overage_item_id, String
+
+            # @!parse
+            #   # @return [String]
+            #   attr_writer :netsuite_overage_item_id
+
+            # @!attribute [r] presentation_group_key
+            #   For USAGE products only. Groups usage line items on invoices. The superset of
+            #     values in the pricing group key and presentation group key must be set as one
+            #     compound group key on the billable metric.
+            #
+            #   @return [Array<String>, nil]
+            optional :presentation_group_key, MetronomeSDK::ArrayOf[String]
+
+            # @!parse
+            #   # @return [Array<String>]
+            #   attr_writer :presentation_group_key
+
+            # @!attribute [r] pricing_group_key
+            #   For USAGE products only. If set, pricing for this product will be determined for
+            #     each pricing_group_key value, as opposed to the product as a whole. The superset
+            #     of values in the pricing group key and presentation group key must be set as one
+            #     compound group key on the billable metric.
+            #
+            #   @return [Array<String>, nil]
+            optional :pricing_group_key, MetronomeSDK::ArrayOf[String]
+
+            # @!parse
+            #   # @return [Array<String>]
+            #   attr_writer :pricing_group_key
+
+            # @!attribute quantity_conversion
+            #   Optional. Only valid for USAGE products. If provided, the quantity will be
+            #     converted using the provided conversion factor and operation. For example, if
+            #     the operation is "multiply" and the conversion factor is 100, then the quantity
+            #     will be multiplied by 100. This can be used in cases where data is sent in one
+            #     unit and priced in another. For example, data could be sent in MB and priced in
+            #     GB. In this case, the conversion factor would be 1024 and the operation would be
+            #     "divide".
+            #
+            #   @return [MetronomeSDK::Models::V1::Contracts::QuantityConversion, nil]
+            optional :quantity_conversion, -> { MetronomeSDK::Models::V1::Contracts::QuantityConversion }, nil?: true
+
+            # @!attribute quantity_rounding
+            #   Optional. Only valid for USAGE products. If provided, the quantity will be
+            #     rounded using the provided rounding method and decimal places. For example, if
+            #     the method is "round up" and the decimal places is 0, then the quantity will be
+            #     rounded up to the nearest integer.
+            #
+            #   @return [MetronomeSDK::Models::V1::Contracts::QuantityRounding, nil]
+            optional :quantity_rounding, -> { MetronomeSDK::Models::V1::Contracts::QuantityRounding }, nil?: true
+
+            # @!attribute [r] starting_at
+            #
+            #   @return [Time, nil]
+            optional :starting_at, Time
+
+            # @!parse
+            #   # @return [Time]
+            #   attr_writer :starting_at
+
+            # @!attribute [r] tags
+            #
+            #   @return [Array<String>, nil]
+            optional :tags, MetronomeSDK::ArrayOf[String]
+
+            # @!parse
+            #   # @return [Array<String>]
+            #   attr_writer :tags
+
+            # @!parse
+            #   # @param created_at [Time]
+            #   # @param created_by [String]
+            #   # @param billable_metric_id [String]
+            #   # @param composite_product_ids [Array<String>]
+            #   # @param composite_tags [Array<String>]
+            #   # @param exclude_free_usage [Boolean]
+            #   # @param is_refundable [Boolean]
+            #   # @param name [String]
+            #   # @param netsuite_internal_item_id [String]
+            #   # @param netsuite_overage_item_id [String]
+            #   # @param presentation_group_key [Array<String>]
+            #   # @param pricing_group_key [Array<String>]
+            #   # @param quantity_conversion [MetronomeSDK::Models::V1::Contracts::QuantityConversion, nil]
+            #   # @param quantity_rounding [MetronomeSDK::Models::V1::Contracts::QuantityRounding, nil]
+            #   # @param starting_at [Time]
+            #   # @param tags [Array<String>]
+            #   #
+            #   def initialize(
+            #     created_at:,
+            #     created_by:,
+            #     billable_metric_id: nil,
+            #     composite_product_ids: nil,
+            #     composite_tags: nil,
+            #     exclude_free_usage: nil,
+            #     is_refundable: nil,
+            #     name: nil,
+            #     netsuite_internal_item_id: nil,
+            #     netsuite_overage_item_id: nil,
+            #     presentation_group_key: nil,
+            #     pricing_group_key: nil,
+            #     quantity_conversion: nil,
+            #     quantity_rounding: nil,
+            #     starting_at: nil,
+            #     tags: nil,
+            #     **
+            #   )
+            #     super
+            #   end
+
+            # def initialize: (Hash | MetronomeSDK::BaseModel) -> void
+          end
+        end
+      end
+    end
+  end
+end

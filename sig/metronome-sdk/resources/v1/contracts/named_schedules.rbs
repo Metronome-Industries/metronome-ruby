@@ -1,0 +1,37 @@
+module MetronomeSDK
+  module Resources
+    class V1
+      class Contracts
+        class NamedSchedules
+          def retrieve:
+            (
+              MetronomeSDK::Models::V1::Contracts::NamedScheduleRetrieveParams
+              | ::Hash[Symbol, top] params
+            ) -> MetronomeSDK::Models::V1::Contracts::NamedScheduleRetrieveResponse
+            | (
+              rate_card_id: String,
+              schedule_name: String,
+              covering_date: Time,
+              request_options: MetronomeSDK::request_opts
+            ) -> MetronomeSDK::Models::V1::Contracts::NamedScheduleRetrieveResponse
+
+          def update:
+            (
+              MetronomeSDK::Models::V1::Contracts::NamedScheduleUpdateParams
+              | ::Hash[Symbol, top] params
+            ) -> nil
+            | (
+              rate_card_id: String,
+              schedule_name: String,
+              starting_at: Time,
+              value: top,
+              ending_before: Time,
+              request_options: MetronomeSDK::request_opts
+            ) -> nil
+
+          def initialize: (client: MetronomeSDK::Client) -> void
+        end
+      end
+    end
+  end
+end

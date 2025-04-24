@@ -1,0 +1,115 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type billable_metric_retrieve_response =
+        { data: MetronomeSDK::Models::V1::BillableMetricRetrieveResponse::Data }
+
+      class BillableMetricRetrieveResponse < MetronomeSDK::BaseModel
+        attr_accessor data: MetronomeSDK::Models::V1::BillableMetricRetrieveResponse::Data
+
+        def initialize:
+          (
+            data: MetronomeSDK::Models::V1::BillableMetricRetrieveResponse::Data
+          ) -> void
+          | (
+            ?MetronomeSDK::Models::V1::billable_metric_retrieve_response
+            | MetronomeSDK::BaseModel data
+          ) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V1::billable_metric_retrieve_response
+
+        type data =
+          {
+            id: String,
+            name: String,
+            aggregation_key: String,
+            aggregation_type: MetronomeSDK::Models::V1::BillableMetricRetrieveResponse::Data::aggregation_type,
+            archived_at: Time,
+            custom_fields: ::Hash[Symbol, String],
+            event_type_filter: MetronomeSDK::Models::EventTypeFilter,
+            group_keys: ::Array[::Array[String]],
+            property_filters: ::Array[MetronomeSDK::Models::PropertyFilter],
+            sql: String
+          }
+
+        class Data < MetronomeSDK::BaseModel
+          attr_accessor id: String
+
+          attr_accessor name: String
+
+          attr_reader aggregation_key: String?
+
+          def aggregation_key=: (String) -> String
+
+          attr_reader aggregation_type: MetronomeSDK::Models::V1::BillableMetricRetrieveResponse::Data::aggregation_type?
+
+          def aggregation_type=: (
+            MetronomeSDK::Models::V1::BillableMetricRetrieveResponse::Data::aggregation_type
+          ) -> MetronomeSDK::Models::V1::BillableMetricRetrieveResponse::Data::aggregation_type
+
+          attr_reader archived_at: Time?
+
+          def archived_at=: (Time) -> Time
+
+          attr_reader custom_fields: ::Hash[Symbol, String]?
+
+          def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+
+          attr_reader event_type_filter: MetronomeSDK::Models::EventTypeFilter?
+
+          def event_type_filter=: (
+            MetronomeSDK::Models::EventTypeFilter
+          ) -> MetronomeSDK::Models::EventTypeFilter
+
+          attr_reader group_keys: ::Array[::Array[String]]?
+
+          def group_keys=: (
+            ::Array[::Array[String]]
+          ) -> ::Array[::Array[String]]
+
+          attr_reader property_filters: ::Array[MetronomeSDK::Models::PropertyFilter]?
+
+          def property_filters=: (
+            ::Array[MetronomeSDK::Models::PropertyFilter]
+          ) -> ::Array[MetronomeSDK::Models::PropertyFilter]
+
+          attr_reader sql: String?
+
+          def sql=: (String) -> String
+
+          def initialize:
+            (
+              id: String,
+              name: String,
+              aggregation_key: String,
+              aggregation_type: MetronomeSDK::Models::V1::BillableMetricRetrieveResponse::Data::aggregation_type,
+              archived_at: Time,
+              custom_fields: ::Hash[Symbol, String],
+              event_type_filter: MetronomeSDK::Models::EventTypeFilter,
+              group_keys: ::Array[::Array[String]],
+              property_filters: ::Array[MetronomeSDK::Models::PropertyFilter],
+              sql: String
+            ) -> void
+            | (
+              ?MetronomeSDK::Models::V1::BillableMetricRetrieveResponse::data
+              | MetronomeSDK::BaseModel data
+            ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::BillableMetricRetrieveResponse::data
+
+          type aggregation_type = :COUNT | :LATEST | :MAX | :SUM | :UNIQUE
+
+          class AggregationType < MetronomeSDK::Enum
+            COUNT: :COUNT
+            LATEST: :LATEST
+            MAX: :MAX
+            SUM: :SUM
+            UNIQUE: :UNIQUE
+
+            def self.values: -> ::Array[MetronomeSDK::Models::V1::BillableMetricRetrieveResponse::Data::aggregation_type]
+          end
+        end
+      end
+    end
+  end
+end

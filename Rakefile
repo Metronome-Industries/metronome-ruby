@@ -81,9 +81,9 @@ multitask(typecheck: [:steep, :sorbet])
 multitask(lint: [:rubocop, :typecheck])
 
 multitask(:build) do
-  sh(*%w[gem build -- metronome.gemspec])
+  sh(*%w[gem build -- metronome-sdk.gemspec])
 end
 
 multitask(release: [:build]) do
-  sh(*%w[gem push], *FileList["metronome-*.gem"])
+  sh(*%w[gem push], *FileList["metronome-sdk-*.gem"])
 end

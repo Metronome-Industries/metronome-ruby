@@ -1,0 +1,42 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Contracts
+        type rate_card_list_params =
+          { limit: Integer, next_page: String, body: top }
+          & MetronomeSDK::request_parameters
+
+        class RateCardListParams < MetronomeSDK::BaseModel
+          extend MetronomeSDK::RequestParameters::Converter
+          include MetronomeSDK::RequestParameters
+
+          attr_reader limit: Integer?
+
+          def limit=: (Integer) -> Integer
+
+          attr_reader next_page: String?
+
+          def next_page=: (String) -> String
+
+          attr_reader body: top?
+
+          def body=: (top) -> top
+
+          def initialize:
+            (
+              limit: Integer,
+              next_page: String,
+              body: top,
+              request_options: MetronomeSDK::request_opts
+            ) -> void
+            | (
+              ?MetronomeSDK::Models::V1::Contracts::rate_card_list_params
+              | MetronomeSDK::BaseModel data
+            ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::Contracts::rate_card_list_params
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,23 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Customers
+        type alert_retrieve_response =
+          { data: MetronomeSDK::Models::V1::Customers::CustomerAlert }
+
+        class AlertRetrieveResponse < MetronomeSDK::BaseModel
+          attr_accessor data: MetronomeSDK::Models::V1::Customers::CustomerAlert
+
+          def initialize:
+            (data: MetronomeSDK::Models::V1::Customers::CustomerAlert) -> void
+            | (
+              ?MetronomeSDK::Models::V1::Customers::alert_retrieve_response
+              | MetronomeSDK::BaseModel data
+            ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::Customers::alert_retrieve_response
+        end
+      end
+    end
+  end
+end

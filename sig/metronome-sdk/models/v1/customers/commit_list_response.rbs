@@ -1,0 +1,28 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Customers
+        type commit_list_response =
+          { data: ::Array[MetronomeSDK::Models::Commit], next_page: String? }
+
+        class CommitListResponse < MetronomeSDK::BaseModel
+          attr_accessor data: ::Array[MetronomeSDK::Models::Commit]
+
+          attr_accessor next_page: String?
+
+          def initialize:
+            (
+              data: ::Array[MetronomeSDK::Models::Commit],
+              next_page: String?
+            ) -> void
+            | (
+              ?MetronomeSDK::Models::V1::Customers::commit_list_response
+              | MetronomeSDK::BaseModel data
+            ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::Customers::commit_list_response
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,52 @@
+module MetronomeSDK
+  module Resources
+    class V1
+      class Usage
+        def list:
+          (
+            MetronomeSDK::Models::V1::UsageListParams
+            | ::Hash[Symbol, top] params
+          ) -> MetronomeSDK::Models::V1::UsageListResponse
+          | (
+            ending_before: Time,
+            starting_on: Time,
+            window_size: MetronomeSDK::Models::V1::UsageListParams::window_size,
+            next_page: String,
+            billable_metrics: ::Array[MetronomeSDK::Models::V1::UsageListParams::BillableMetric],
+            customer_ids: ::Array[String],
+            request_options: MetronomeSDK::request_opts
+          ) -> MetronomeSDK::Models::V1::UsageListResponse
+
+        def ingest:
+          (
+            ?MetronomeSDK::Models::V1::UsageIngestParams
+            | ::Hash[Symbol, top] params
+          ) -> nil
+          | (
+            usage: ::Array[MetronomeSDK::Models::V1::UsageIngestParams::Usage],
+            request_options: MetronomeSDK::request_opts
+          ) -> nil
+
+        def list_with_groups:
+          (
+            MetronomeSDK::Models::V1::UsageListWithGroupsParams
+            | ::Hash[Symbol, top] params
+          ) -> MetronomeSDK::CursorPage[MetronomeSDK::Models::V1::UsageListWithGroupsResponse]
+          | (
+            billable_metric_id: String,
+            customer_id: String,
+            window_size: MetronomeSDK::Models::V1::UsageListWithGroupsParams::window_size,
+            limit: Integer,
+            next_page: String,
+            current_period: bool,
+            ending_before: Time,
+            group_by: MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy,
+            starting_on: Time,
+            request_options: MetronomeSDK::request_opts
+          ) -> MetronomeSDK::CursorPage[MetronomeSDK::Models::V1::UsageListWithGroupsResponse]
+
+        def initialize: (client: MetronomeSDK::Client) -> void
+      end
+    end
+  end
+end
