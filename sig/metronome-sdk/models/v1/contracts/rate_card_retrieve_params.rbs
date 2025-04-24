@@ -1,0 +1,23 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Contracts
+        type rate_card_retrieve_params = {  } & MetronomeSDK::request_parameters
+
+        class RateCardRetrieveParams < MetronomeSDK::Models::ID
+          extend MetronomeSDK::RequestParameters::Converter
+          include MetronomeSDK::RequestParameters
+
+          def initialize:
+            (request_options: MetronomeSDK::request_opts) -> void
+            | (
+              ?MetronomeSDK::Models::V1::Contracts::rate_card_retrieve_params
+              | MetronomeSDK::BaseModel data
+            ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::Contracts::rate_card_retrieve_params
+        end
+      end
+    end
+  end
+end

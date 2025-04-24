@@ -1,0 +1,36 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Customers
+        type credit_update_end_date_params =
+          { access_ending_before: Time, credit_id: String, customer_id: String }
+          & MetronomeSDK::request_parameters
+
+        class CreditUpdateEndDateParams < MetronomeSDK::BaseModel
+          extend MetronomeSDK::RequestParameters::Converter
+          include MetronomeSDK::RequestParameters
+
+          attr_accessor access_ending_before: Time
+
+          attr_accessor credit_id: String
+
+          attr_accessor customer_id: String
+
+          def initialize:
+            (
+              access_ending_before: Time,
+              credit_id: String,
+              customer_id: String,
+              request_options: MetronomeSDK::request_opts
+            ) -> void
+            | (
+              ?MetronomeSDK::Models::V1::Customers::credit_update_end_date_params
+              | MetronomeSDK::BaseModel data
+            ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::Customers::credit_update_end_date_params
+        end
+      end
+    end
+  end
+end

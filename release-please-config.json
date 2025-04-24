@@ -60,5 +60,5 @@
     }
   ],
   "release-type": "ruby",
-  "version-file": "lib/metronome/version.rb"
+  "version-file": "lib/metronome-sdk/version.rb"
 }

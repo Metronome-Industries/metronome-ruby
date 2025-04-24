@@ -1,0 +1,4 @@
+module MetronomeSDK
+  module Extern
+  end
+end

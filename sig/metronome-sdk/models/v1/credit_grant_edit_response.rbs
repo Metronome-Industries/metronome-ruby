@@ -1,0 +1,20 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type credit_grant_edit_response = { data: MetronomeSDK::Models::ID }
+
+      class CreditGrantEditResponse < MetronomeSDK::BaseModel
+        attr_accessor data: MetronomeSDK::Models::ID
+
+        def initialize:
+          (data: MetronomeSDK::Models::ID) -> void
+          | (
+            ?MetronomeSDK::Models::V1::credit_grant_edit_response
+            | MetronomeSDK::BaseModel data
+          ) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V1::credit_grant_edit_response
+      end
+    end
+  end
+end

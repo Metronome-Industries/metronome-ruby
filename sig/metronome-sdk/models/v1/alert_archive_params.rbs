@@ -1,0 +1,33 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type alert_archive_params =
+        { id: String, release_uniqueness_key: bool }
+        & MetronomeSDK::request_parameters
+
+      class AlertArchiveParams < MetronomeSDK::BaseModel
+        extend MetronomeSDK::RequestParameters::Converter
+        include MetronomeSDK::RequestParameters
+
+        attr_accessor id: String
+
+        attr_reader release_uniqueness_key: bool?
+
+        def release_uniqueness_key=: (bool) -> bool
+
+        def initialize:
+          (
+            id: String,
+            release_uniqueness_key: bool,
+            request_options: MetronomeSDK::request_opts
+          ) -> void
+          | (
+            ?MetronomeSDK::Models::V1::alert_archive_params
+            | MetronomeSDK::BaseModel data
+          ) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V1::alert_archive_params
+      end
+    end
+  end
+end

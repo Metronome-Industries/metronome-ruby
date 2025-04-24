@@ -1,0 +1,41 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type usage_list_with_groups_response =
+        {
+          ending_before: Time,
+          group_key: String?,
+          group_value: String?,
+          starting_on: Time,
+          value: Float?
+        }
+
+      class UsageListWithGroupsResponse < MetronomeSDK::BaseModel
+        attr_accessor ending_before: Time
+
+        attr_accessor group_key: String?
+
+        attr_accessor group_value: String?
+
+        attr_accessor starting_on: Time
+
+        attr_accessor value: Float?
+
+        def initialize:
+          (
+            ending_before: Time,
+            group_key: String?,
+            group_value: String?,
+            starting_on: Time,
+            value: Float?
+          ) -> void
+          | (
+            ?MetronomeSDK::Models::V1::usage_list_with_groups_response
+            | MetronomeSDK::BaseModel data
+          ) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V1::usage_list_with_groups_response
+      end
+    end
+  end
+end

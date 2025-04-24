@@ -1,0 +1,110 @@
+module MetronomeSDK
+  module Resources
+    class V2
+      class Contracts
+        def retrieve:
+          (
+            MetronomeSDK::Models::V2::ContractRetrieveParams
+            | ::Hash[Symbol, top] params
+          ) -> MetronomeSDK::Models::V2::ContractRetrieveResponse
+          | (
+            contract_id: String,
+            customer_id: String,
+            as_of_date: Time,
+            include_balance: bool,
+            include_ledgers: bool,
+            request_options: MetronomeSDK::request_opts
+          ) -> MetronomeSDK::Models::V2::ContractRetrieveResponse
+
+        def list:
+          (
+            MetronomeSDK::Models::V2::ContractListParams
+            | ::Hash[Symbol, top] params
+          ) -> MetronomeSDK::Models::V2::ContractListResponse
+          | (
+            customer_id: String,
+            covering_date: Time,
+            include_archived: bool,
+            include_balance: bool,
+            include_ledgers: bool,
+            starting_at: Time,
+            request_options: MetronomeSDK::request_opts
+          ) -> MetronomeSDK::Models::V2::ContractListResponse
+
+        def edit:
+          (
+            MetronomeSDK::Models::V2::ContractEditParams
+            | ::Hash[Symbol, top] params
+          ) -> MetronomeSDK::Models::V2::ContractEditResponse
+          | (
+            contract_id: String,
+            customer_id: String,
+            add_commits: ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddCommit],
+            add_credits: ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddCredit],
+            add_discounts: ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddDiscount],
+            add_overrides: ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddOverride],
+            add_professional_services: ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddProfessionalService],
+            add_recurring_commits: ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCommit],
+            add_recurring_credits: ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCredit],
+            add_reseller_royalties: ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddResellerRoyalty],
+            add_scheduled_charges: ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddScheduledCharge],
+            add_spend_threshold_configuration: MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration,
+            archive_commits: ::Array[MetronomeSDK::Models::V2::ContractEditParams::ArchiveCommit],
+            archive_credits: ::Array[MetronomeSDK::Models::V2::ContractEditParams::ArchiveCredit],
+            archive_scheduled_charges: ::Array[MetronomeSDK::Models::V2::ContractEditParams::ArchiveScheduledCharge],
+            remove_overrides: ::Array[MetronomeSDK::Models::V2::ContractEditParams::RemoveOverride],
+            update_commits: ::Array[MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit],
+            update_credits: ::Array[MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit],
+            update_scheduled_charges: ::Array[MetronomeSDK::Models::V2::ContractEditParams::UpdateScheduledCharge],
+            update_spend_threshold_configuration: MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration,
+            request_options: MetronomeSDK::request_opts
+          ) -> MetronomeSDK::Models::V2::ContractEditResponse
+
+        def edit_commit:
+          (
+            MetronomeSDK::Models::V2::ContractEditCommitParams
+            | ::Hash[Symbol, top] params
+          ) -> MetronomeSDK::Models::V2::ContractEditCommitResponse
+          | (
+            commit_id: String,
+            customer_id: String,
+            access_schedule: MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule,
+            applicable_product_ids: ::Array[String]?,
+            applicable_product_tags: ::Array[String]?,
+            invoice_contract_id: String,
+            invoice_schedule: MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule,
+            product_id: String,
+            request_options: MetronomeSDK::request_opts
+          ) -> MetronomeSDK::Models::V2::ContractEditCommitResponse
+
+        def edit_credit:
+          (
+            MetronomeSDK::Models::V2::ContractEditCreditParams
+            | ::Hash[Symbol, top] params
+          ) -> MetronomeSDK::Models::V2::ContractEditCreditResponse
+          | (
+            credit_id: String,
+            customer_id: String,
+            access_schedule: MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule,
+            applicable_product_ids: ::Array[String]?,
+            applicable_product_tags: ::Array[String]?,
+            product_id: String,
+            request_options: MetronomeSDK::request_opts
+          ) -> MetronomeSDK::Models::V2::ContractEditCreditResponse
+
+        def get_edit_history:
+          (
+            MetronomeSDK::Models::V2::ContractGetEditHistoryParams
+            | ::Hash[Symbol, top] params
+          ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse
+          | (
+            contract_id: String,
+            customer_id: String,
+            request_options: MetronomeSDK::request_opts
+          ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse
+
+        def initialize: (client: MetronomeSDK::Client) -> void
+      end
+    end
+  end
+end

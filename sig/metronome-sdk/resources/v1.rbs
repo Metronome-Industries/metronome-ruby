@@ -1,0 +1,33 @@
+module MetronomeSDK
+  module Resources
+    class V1
+      attr_reader alerts: MetronomeSDK::Resources::V1::Alerts
+
+      attr_reader plans: MetronomeSDK::Resources::V1::Plans
+
+      attr_reader credit_grants: MetronomeSDK::Resources::V1::CreditGrants
+
+      attr_reader pricing_units: MetronomeSDK::Resources::V1::PricingUnits
+
+      attr_reader customers: MetronomeSDK::Resources::V1::Customers
+
+      attr_reader dashboards: MetronomeSDK::Resources::V1::Dashboards
+
+      attr_reader usage: MetronomeSDK::Resources::V1::Usage
+
+      attr_reader audit_logs: MetronomeSDK::Resources::V1::AuditLogs
+
+      attr_reader custom_fields: MetronomeSDK::Resources::V1::CustomFields
+
+      attr_reader billable_metrics: MetronomeSDK::Resources::V1::BillableMetrics
+
+      attr_reader services: MetronomeSDK::Resources::V1::Services
+
+      attr_reader invoices: MetronomeSDK::Resources::V1::Invoices
+
+      attr_reader contracts: MetronomeSDK::Resources::V1::Contracts
+
+      def initialize: (client: MetronomeSDK::Client) -> void
+    end
+  end
+end

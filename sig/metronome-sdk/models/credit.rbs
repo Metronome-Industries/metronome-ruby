@@ -1,0 +1,439 @@
+module MetronomeSDK
+  module Models
+    type credit =
+      {
+        id: String,
+        product: MetronomeSDK::Models::Credit::Product,
+        type: MetronomeSDK::Models::Credit::type_,
+        access_schedule: MetronomeSDK::Models::ScheduleDuration,
+        applicable_contract_ids: ::Array[String],
+        applicable_product_ids: ::Array[String],
+        applicable_product_tags: ::Array[String],
+        balance: Float,
+        contract: MetronomeSDK::Models::Credit::Contract,
+        custom_fields: ::Hash[Symbol, String],
+        description: String,
+        ledger: ::Array[MetronomeSDK::Models::Credit::ledger],
+        name: String,
+        netsuite_sales_order_id: String,
+        priority: Float,
+        rate_type: MetronomeSDK::Models::Credit::rate_type,
+        salesforce_opportunity_id: String,
+        uniqueness_key: String
+      }
+
+    class Credit < MetronomeSDK::BaseModel
+      attr_accessor id: String
+
+      attr_accessor product: MetronomeSDK::Models::Credit::Product
+
+      attr_accessor type: MetronomeSDK::Models::Credit::type_
+
+      attr_reader access_schedule: MetronomeSDK::Models::ScheduleDuration?
+
+      def access_schedule=: (
+        MetronomeSDK::Models::ScheduleDuration
+      ) -> MetronomeSDK::Models::ScheduleDuration
+
+      attr_reader applicable_contract_ids: ::Array[String]?
+
+      def applicable_contract_ids=: (::Array[String]) -> ::Array[String]
+
+      attr_reader applicable_product_ids: ::Array[String]?
+
+      def applicable_product_ids=: (::Array[String]) -> ::Array[String]
+
+      attr_reader applicable_product_tags: ::Array[String]?
+
+      def applicable_product_tags=: (::Array[String]) -> ::Array[String]
+
+      attr_reader balance: Float?
+
+      def balance=: (Float) -> Float
+
+      attr_reader contract: MetronomeSDK::Models::Credit::Contract?
+
+      def contract=: (
+        MetronomeSDK::Models::Credit::Contract
+      ) -> MetronomeSDK::Models::Credit::Contract
+
+      attr_reader custom_fields: ::Hash[Symbol, String]?
+
+      def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+
+      attr_reader description: String?
+
+      def description=: (String) -> String
+
+      attr_reader ledger: ::Array[MetronomeSDK::Models::Credit::ledger]?
+
+      def ledger=: (
+        ::Array[MetronomeSDK::Models::Credit::ledger]
+      ) -> ::Array[MetronomeSDK::Models::Credit::ledger]
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader netsuite_sales_order_id: String?
+
+      def netsuite_sales_order_id=: (String) -> String
+
+      attr_reader priority: Float?
+
+      def priority=: (Float) -> Float
+
+      attr_reader rate_type: MetronomeSDK::Models::Credit::rate_type?
+
+      def rate_type=: (
+        MetronomeSDK::Models::Credit::rate_type
+      ) -> MetronomeSDK::Models::Credit::rate_type
+
+      attr_reader salesforce_opportunity_id: String?
+
+      def salesforce_opportunity_id=: (String) -> String
+
+      attr_reader uniqueness_key: String?
+
+      def uniqueness_key=: (String) -> String
+
+      def initialize:
+        (
+          id: String,
+          product: MetronomeSDK::Models::Credit::Product,
+          type: MetronomeSDK::Models::Credit::type_,
+          access_schedule: MetronomeSDK::Models::ScheduleDuration,
+          applicable_contract_ids: ::Array[String],
+          applicable_product_ids: ::Array[String],
+          applicable_product_tags: ::Array[String],
+          balance: Float,
+          contract: MetronomeSDK::Models::Credit::Contract,
+          custom_fields: ::Hash[Symbol, String],
+          description: String,
+          ledger: ::Array[MetronomeSDK::Models::Credit::ledger],
+          name: String,
+          netsuite_sales_order_id: String,
+          priority: Float,
+          rate_type: MetronomeSDK::Models::Credit::rate_type,
+          salesforce_opportunity_id: String,
+          uniqueness_key: String
+        ) -> void
+        | (?MetronomeSDK::Models::credit | MetronomeSDK::BaseModel data) -> void
+
+      def to_hash: -> MetronomeSDK::Models::credit
+
+      type product = { id: String, name: String }
+
+      class Product < MetronomeSDK::BaseModel
+        attr_accessor id: String
+
+        attr_accessor name: String
+
+        def initialize:
+          (id: String, name: String) -> void
+          | (
+            ?MetronomeSDK::Models::Credit::product
+            | MetronomeSDK::BaseModel data
+          ) -> void
+
+        def to_hash: -> MetronomeSDK::Models::Credit::product
+      end
+
+      type type_ = :CREDIT
+
+      class Type < MetronomeSDK::Enum
+        CREDIT: :CREDIT
+
+        def self.values: -> ::Array[MetronomeSDK::Models::Credit::type_]
+      end
+
+      type contract = { id: String }
+
+      class Contract < MetronomeSDK::BaseModel
+        attr_accessor id: String
+
+        def initialize:
+          (id: String) -> void
+          | (
+            ?MetronomeSDK::Models::Credit::contract
+            | MetronomeSDK::BaseModel data
+          ) -> void
+
+        def to_hash: -> MetronomeSDK::Models::Credit::contract
+      end
+
+      type ledger =
+        MetronomeSDK::Models::Credit::Ledger::CreditSegmentStartLedgerEntry
+        | MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry
+        | MetronomeSDK::Models::Credit::Ledger::CreditExpirationLedgerEntry
+        | MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry
+        | MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry
+        | MetronomeSDK::Models::Credit::Ledger::CreditManualLedgerEntry
+
+      class Ledger < MetronomeSDK::Union
+        type credit_segment_start_ledger_entry =
+          {
+            amount: Float,
+            segment_id: String,
+            timestamp: Time,
+            type: MetronomeSDK::Models::Credit::Ledger::CreditSegmentStartLedgerEntry::type_
+          }
+
+        class CreditSegmentStartLedgerEntry < MetronomeSDK::BaseModel
+          attr_accessor amount: Float
+
+          attr_accessor segment_id: String
+
+          attr_accessor timestamp: Time
+
+          attr_accessor type: MetronomeSDK::Models::Credit::Ledger::CreditSegmentStartLedgerEntry::type_
+
+          def initialize:
+            (
+              amount: Float,
+              segment_id: String,
+              timestamp: Time,
+              type: MetronomeSDK::Models::Credit::Ledger::CreditSegmentStartLedgerEntry::type_
+            ) -> void
+            | (
+              ?MetronomeSDK::Models::Credit::Ledger::credit_segment_start_ledger_entry
+              | MetronomeSDK::BaseModel data
+            ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::Credit::Ledger::credit_segment_start_ledger_entry
+
+          type type_ = :CREDIT_SEGMENT_START
+
+          class Type < MetronomeSDK::Enum
+            CREDIT_SEGMENT_START: :CREDIT_SEGMENT_START
+
+            def self.values: -> ::Array[MetronomeSDK::Models::Credit::Ledger::CreditSegmentStartLedgerEntry::type_]
+          end
+        end
+
+        type credit_automated_invoice_deduction_ledger_entry =
+          {
+            amount: Float,
+            invoice_id: String,
+            segment_id: String,
+            timestamp: Time,
+            type: MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::type_
+          }
+
+        class CreditAutomatedInvoiceDeductionLedgerEntry < MetronomeSDK::BaseModel
+          attr_accessor amount: Float
+
+          attr_accessor invoice_id: String
+
+          attr_accessor segment_id: String
+
+          attr_accessor timestamp: Time
+
+          attr_accessor type: MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::type_
+
+          def initialize:
+            (
+              amount: Float,
+              invoice_id: String,
+              segment_id: String,
+              timestamp: Time,
+              type: MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::type_
+            ) -> void
+            | (
+              ?MetronomeSDK::Models::Credit::Ledger::credit_automated_invoice_deduction_ledger_entry
+              | MetronomeSDK::BaseModel data
+            ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::Credit::Ledger::credit_automated_invoice_deduction_ledger_entry
+
+          type type_ = :CREDIT_AUTOMATED_INVOICE_DEDUCTION
+
+          class Type < MetronomeSDK::Enum
+            CREDIT_AUTOMATED_INVOICE_DEDUCTION: :CREDIT_AUTOMATED_INVOICE_DEDUCTION
+
+            def self.values: -> ::Array[MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::type_]
+          end
+        end
+
+        type credit_expiration_ledger_entry =
+          {
+            amount: Float,
+            segment_id: String,
+            timestamp: Time,
+            type: MetronomeSDK::Models::Credit::Ledger::CreditExpirationLedgerEntry::type_
+          }
+
+        class CreditExpirationLedgerEntry < MetronomeSDK::BaseModel
+          attr_accessor amount: Float
+
+          attr_accessor segment_id: String
+
+          attr_accessor timestamp: Time
+
+          attr_accessor type: MetronomeSDK::Models::Credit::Ledger::CreditExpirationLedgerEntry::type_
+
+          def initialize:
+            (
+              amount: Float,
+              segment_id: String,
+              timestamp: Time,
+              type: MetronomeSDK::Models::Credit::Ledger::CreditExpirationLedgerEntry::type_
+            ) -> void
+            | (
+              ?MetronomeSDK::Models::Credit::Ledger::credit_expiration_ledger_entry
+              | MetronomeSDK::BaseModel data
+            ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::Credit::Ledger::credit_expiration_ledger_entry
+
+          type type_ = :CREDIT_EXPIRATION
+
+          class Type < MetronomeSDK::Enum
+            CREDIT_EXPIRATION: :CREDIT_EXPIRATION
+
+            def self.values: -> ::Array[MetronomeSDK::Models::Credit::Ledger::CreditExpirationLedgerEntry::type_]
+          end
+        end
+
+        type credit_canceled_ledger_entry =
+          {
+            amount: Float,
+            invoice_id: String,
+            segment_id: String,
+            timestamp: Time,
+            type: MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry::type_
+          }
+
+        class CreditCanceledLedgerEntry < MetronomeSDK::BaseModel
+          attr_accessor amount: Float
+
+          attr_accessor invoice_id: String
+
+          attr_accessor segment_id: String
+
+          attr_accessor timestamp: Time
+
+          attr_accessor type: MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry::type_
+
+          def initialize:
+            (
+              amount: Float,
+              invoice_id: String,
+              segment_id: String,
+              timestamp: Time,
+              type: MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry::type_
+            ) -> void
+            | (
+              ?MetronomeSDK::Models::Credit::Ledger::credit_canceled_ledger_entry
+              | MetronomeSDK::BaseModel data
+            ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::Credit::Ledger::credit_canceled_ledger_entry
+
+          type type_ = :CREDIT_CANCELED
+
+          class Type < MetronomeSDK::Enum
+            CREDIT_CANCELED: :CREDIT_CANCELED
+
+            def self.values: -> ::Array[MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry::type_]
+          end
+        end
+
+        type credit_credited_ledger_entry =
+          {
+            amount: Float,
+            invoice_id: String,
+            segment_id: String,
+            timestamp: Time,
+            type: MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry::type_
+          }
+
+        class CreditCreditedLedgerEntry < MetronomeSDK::BaseModel
+          attr_accessor amount: Float
+
+          attr_accessor invoice_id: String
+
+          attr_accessor segment_id: String
+
+          attr_accessor timestamp: Time
+
+          attr_accessor type: MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry::type_
+
+          def initialize:
+            (
+              amount: Float,
+              invoice_id: String,
+              segment_id: String,
+              timestamp: Time,
+              type: MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry::type_
+            ) -> void
+            | (
+              ?MetronomeSDK::Models::Credit::Ledger::credit_credited_ledger_entry
+              | MetronomeSDK::BaseModel data
+            ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::Credit::Ledger::credit_credited_ledger_entry
+
+          type type_ = :CREDIT_CREDITED
+
+          class Type < MetronomeSDK::Enum
+            CREDIT_CREDITED: :CREDIT_CREDITED
+
+            def self.values: -> ::Array[MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry::type_]
+          end
+        end
+
+        type credit_manual_ledger_entry =
+          {
+            amount: Float,
+            reason: String,
+            timestamp: Time,
+            type: MetronomeSDK::Models::Credit::Ledger::CreditManualLedgerEntry::type_
+          }
+
+        class CreditManualLedgerEntry < MetronomeSDK::BaseModel
+          attr_accessor amount: Float
+
+          attr_accessor reason: String
+
+          attr_accessor timestamp: Time
+
+          attr_accessor type: MetronomeSDK::Models::Credit::Ledger::CreditManualLedgerEntry::type_
+
+          def initialize:
+            (
+              amount: Float,
+              reason: String,
+              timestamp: Time,
+              type: MetronomeSDK::Models::Credit::Ledger::CreditManualLedgerEntry::type_
+            ) -> void
+            | (
+              ?MetronomeSDK::Models::Credit::Ledger::credit_manual_ledger_entry
+              | MetronomeSDK::BaseModel data
+            ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::Credit::Ledger::credit_manual_ledger_entry
+
+          type type_ = :CREDIT_MANUAL
+
+          class Type < MetronomeSDK::Enum
+            CREDIT_MANUAL: :CREDIT_MANUAL
+
+            def self.values: -> ::Array[MetronomeSDK::Models::Credit::Ledger::CreditManualLedgerEntry::type_]
+          end
+        end
+
+        private def self.variants: -> [[nil, MetronomeSDK::Models::Credit::Ledger::CreditSegmentStartLedgerEntry], [nil, MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry], [nil, MetronomeSDK::Models::Credit::Ledger::CreditExpirationLedgerEntry], [nil, MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry], [nil, MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry], [nil, MetronomeSDK::Models::Credit::Ledger::CreditManualLedgerEntry]]
+      end
+
+      type rate_type = :COMMIT_RATE | :LIST_RATE
+
+      class RateType < MetronomeSDK::Enum
+        COMMIT_RATE: :COMMIT_RATE
+        LIST_RATE: :LIST_RATE
+
+        def self.values: -> ::Array[MetronomeSDK::Models::Credit::rate_type]
+      end
+    end
+  end
+end

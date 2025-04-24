@@ -1,0 +1,25 @@
+module MetronomeSDK
+  module Models
+    type event_type_filter =
+      { in_values: ::Array[String], not_in_values: ::Array[String] }
+
+    class EventTypeFilter < MetronomeSDK::BaseModel
+      attr_reader in_values: ::Array[String]?
+
+      def in_values=: (::Array[String]) -> ::Array[String]
+
+      attr_reader not_in_values: ::Array[String]?
+
+      def not_in_values=: (::Array[String]) -> ::Array[String]
+
+      def initialize:
+        (in_values: ::Array[String], not_in_values: ::Array[String]) -> void
+        | (
+          ?MetronomeSDK::Models::event_type_filter
+          | MetronomeSDK::BaseModel data
+        ) -> void
+
+      def to_hash: -> MetronomeSDK::Models::event_type_filter
+    end
+  end
+end

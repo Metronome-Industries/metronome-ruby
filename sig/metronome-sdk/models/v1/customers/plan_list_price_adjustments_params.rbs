@@ -1,0 +1,48 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Customers
+        type plan_list_price_adjustments_params =
+          {
+            customer_id: String,
+            customer_plan_id: String,
+            limit: Integer,
+            next_page: String
+          }
+          & MetronomeSDK::request_parameters
+
+        class PlanListPriceAdjustmentsParams < MetronomeSDK::BaseModel
+          extend MetronomeSDK::RequestParameters::Converter
+          include MetronomeSDK::RequestParameters
+
+          attr_accessor customer_id: String
+
+          attr_accessor customer_plan_id: String
+
+          attr_reader limit: Integer?
+
+          def limit=: (Integer) -> Integer
+
+          attr_reader next_page: String?
+
+          def next_page=: (String) -> String
+
+          def initialize:
+            (
+              customer_id: String,
+              customer_plan_id: String,
+              limit: Integer,
+              next_page: String,
+              request_options: MetronomeSDK::request_opts
+            ) -> void
+            | (
+              ?MetronomeSDK::Models::V1::Customers::plan_list_price_adjustments_params
+              | MetronomeSDK::BaseModel data
+            ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::Customers::plan_list_price_adjustments_params
+        end
+      end
+    end
+  end
+end

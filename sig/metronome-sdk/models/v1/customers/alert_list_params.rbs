@@ -1,0 +1,56 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Customers
+        type alert_list_params =
+          {
+            customer_id: String,
+            next_page: String,
+            alert_statuses: ::Array[MetronomeSDK::Models::V1::Customers::AlertListParams::alert_status]
+          }
+          & MetronomeSDK::request_parameters
+
+        class AlertListParams < MetronomeSDK::BaseModel
+          extend MetronomeSDK::RequestParameters::Converter
+          include MetronomeSDK::RequestParameters
+
+          attr_accessor customer_id: String
+
+          attr_reader next_page: String?
+
+          def next_page=: (String) -> String
+
+          attr_reader alert_statuses: ::Array[MetronomeSDK::Models::V1::Customers::AlertListParams::alert_status]?
+
+          def alert_statuses=: (
+            ::Array[MetronomeSDK::Models::V1::Customers::AlertListParams::alert_status]
+          ) -> ::Array[MetronomeSDK::Models::V1::Customers::AlertListParams::alert_status]
+
+          def initialize:
+            (
+              customer_id: String,
+              next_page: String,
+              alert_statuses: ::Array[MetronomeSDK::Models::V1::Customers::AlertListParams::alert_status],
+              request_options: MetronomeSDK::request_opts
+            ) -> void
+            | (
+              ?MetronomeSDK::Models::V1::Customers::alert_list_params
+              | MetronomeSDK::BaseModel data
+            ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::Customers::alert_list_params
+
+          type alert_status = :ENABLED | :DISABLED | :ARCHIVED
+
+          class AlertStatus < MetronomeSDK::Enum
+            ENABLED: :ENABLED
+            DISABLED: :DISABLED
+            ARCHIVED: :ARCHIVED
+
+            def self.values: -> ::Array[MetronomeSDK::Models::V1::Customers::AlertListParams::alert_status]
+          end
+        end
+      end
+    end
+  end
+end

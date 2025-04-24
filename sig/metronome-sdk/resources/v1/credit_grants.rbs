@@ -1,0 +1,87 @@
+module MetronomeSDK
+  module Resources
+    class V1
+      class CreditGrants
+        def create:
+          (
+            MetronomeSDK::Models::V1::CreditGrantCreateParams
+            | ::Hash[Symbol, top] params
+          ) -> MetronomeSDK::Models::V1::CreditGrantCreateResponse
+          | (
+            customer_id: String,
+            expires_at: Time,
+            grant_amount: MetronomeSDK::Models::V1::CreditGrantCreateParams::GrantAmount,
+            name: String,
+            paid_amount: MetronomeSDK::Models::V1::CreditGrantCreateParams::PaidAmount,
+            priority: Float,
+            credit_grant_type: String,
+            custom_fields: ::Hash[Symbol, String],
+            effective_at: Time,
+            invoice_date: Time,
+            product_ids: ::Array[String],
+            reason: String,
+            rollover_settings: MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings,
+            uniqueness_key: String,
+            request_options: MetronomeSDK::request_opts
+          ) -> MetronomeSDK::Models::V1::CreditGrantCreateResponse
+
+        def list:
+          (
+            ?MetronomeSDK::Models::V1::CreditGrantListParams
+            | ::Hash[Symbol, top] params
+          ) -> MetronomeSDK::CursorPage[MetronomeSDK::Models::V1::CreditGrantListResponse]
+          | (
+            limit: Integer,
+            next_page: String,
+            credit_grant_ids: ::Array[String],
+            credit_type_ids: ::Array[String],
+            customer_ids: ::Array[String],
+            effective_before: Time,
+            not_expiring_before: Time,
+            request_options: MetronomeSDK::request_opts
+          ) -> MetronomeSDK::CursorPage[MetronomeSDK::Models::V1::CreditGrantListResponse]
+
+        def edit:
+          (
+            MetronomeSDK::Models::V1::CreditGrantEditParams
+            | ::Hash[Symbol, top] params
+          ) -> MetronomeSDK::Models::V1::CreditGrantEditResponse
+          | (
+            id: String,
+            credit_grant_type: String,
+            expires_at: Time,
+            name: String,
+            request_options: MetronomeSDK::request_opts
+          ) -> MetronomeSDK::Models::V1::CreditGrantEditResponse
+
+        def list_entries:
+          (
+            ?MetronomeSDK::Models::V1::CreditGrantListEntriesParams
+            | ::Hash[Symbol, top] params
+          ) -> MetronomeSDK::Models::V1::CreditGrantListEntriesResponse
+          | (
+            next_page: String,
+            credit_type_ids: ::Array[String],
+            customer_ids: ::Array[String],
+            ending_before: Time,
+            starting_on: Time,
+            request_options: MetronomeSDK::request_opts
+          ) -> MetronomeSDK::Models::V1::CreditGrantListEntriesResponse
+
+        def `void`:
+          (
+            MetronomeSDK::Models::V1::CreditGrantVoidParams
+            | ::Hash[Symbol, top] params
+          ) -> MetronomeSDK::Models::V1::CreditGrantVoidResponse
+          | (
+            id: String,
+            release_uniqueness_key: bool,
+            void_credit_purchase_invoice: bool,
+            request_options: MetronomeSDK::request_opts
+          ) -> MetronomeSDK::Models::V1::CreditGrantVoidResponse
+
+        def initialize: (client: MetronomeSDK::Client) -> void
+      end
+    end
+  end
+end

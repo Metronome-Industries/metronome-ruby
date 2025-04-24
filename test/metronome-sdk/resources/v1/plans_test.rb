@@ -1,0 +1,113 @@
+# frozen_string_literal: true
+
+require_relative "../../test_helper"
+
+class MetronomeSDK::Test::Resources::V1::PlansTest < Minitest::Test
+  def before_all
+    @metronome = MetronomeSDK::Client.new(
+      base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
+      bearer_token: "My Bearer Token"
+    )
+  end
+
+  def test_list
+    response = @metronome.v1.plans.list
+
+    assert_pattern do
+      response => MetronomeSDK::CursorPage
+    end
+
+    page = response.next_page
+    assert_pattern do
+      page => MetronomeSDK::CursorPage
+    end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => MetronomeSDK::Models::V1::PlanListResponse
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        description: String,
+        name: String,
+        custom_fields: ^(MetronomeSDK::HashOf[String]) | nil
+      }
+    end
+  end
+
+  def test_get_details_required_params
+    response = @metronome.v1.plans.get_details(plan_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc")
+
+    assert_pattern do
+      response => MetronomeSDK::Models::V1::PlanGetDetailsResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: MetronomeSDK::Models::V1::PlanDetail
+      }
+    end
+  end
+
+  def test_list_charges_required_params
+    response = @metronome.v1.plans.list_charges(plan_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc")
+
+    assert_pattern do
+      response => MetronomeSDK::CursorPage
+    end
+
+    page = response.next_page
+    assert_pattern do
+      page => MetronomeSDK::CursorPage
+    end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => MetronomeSDK::Models::V1::PlanListChargesResponse
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        charge_type: MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType,
+        credit_type: MetronomeSDK::Models::CreditTypeData,
+        custom_fields: ^(MetronomeSDK::HashOf[String]),
+        name: String,
+        prices: ^(MetronomeSDK::ArrayOf[MetronomeSDK::Models::V1::PlanListChargesResponse::Price]),
+        product_id: String,
+        product_name: String,
+        quantity: Float | nil,
+        start_period: Float | nil,
+        tier_reset_frequency: Float | nil,
+        unit_conversion: MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion | nil
+      }
+    end
+  end
+
+  def test_list_customers_required_params
+    response = @metronome.v1.plans.list_customers(plan_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc")
+
+    assert_pattern do
+      response => MetronomeSDK::CursorPage
+    end
+
+    page = response.next_page
+    assert_pattern do
+      page => MetronomeSDK::CursorPage
+    end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => MetronomeSDK::Models::V1::PlanListCustomersResponse
+    end
+
+    assert_pattern do
+      row => {
+        customer_details: MetronomeSDK::Models::V1::CustomerDetail,
+        plan_details: MetronomeSDK::Models::V1::PlanListCustomersResponse::PlanDetails
+      }
+    end
+  end
+end

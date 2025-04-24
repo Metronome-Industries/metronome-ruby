@@ -1,0 +1,55 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Contracts
+        module RateCards
+          type product_order_update_params =
+            {
+              product_moves: ::Array[MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove],
+              rate_card_id: String
+            }
+            & MetronomeSDK::request_parameters
+
+          class ProductOrderUpdateParams < MetronomeSDK::BaseModel
+            extend MetronomeSDK::RequestParameters::Converter
+            include MetronomeSDK::RequestParameters
+
+            attr_accessor product_moves: ::Array[MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove]
+
+            attr_accessor rate_card_id: String
+
+            def initialize:
+              (
+                product_moves: ::Array[MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove],
+                rate_card_id: String,
+                request_options: MetronomeSDK::request_opts
+              ) -> void
+              | (
+                ?MetronomeSDK::Models::V1::Contracts::RateCards::product_order_update_params
+                | MetronomeSDK::BaseModel data
+              ) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V1::Contracts::RateCards::product_order_update_params
+
+            type product_move = { position: Float, product_id: String }
+
+            class ProductMove < MetronomeSDK::BaseModel
+              attr_accessor position: Float
+
+              attr_accessor product_id: String
+
+              def initialize:
+                (position: Float, product_id: String) -> void
+                | (
+                  ?MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateParams::product_move
+                  | MetronomeSDK::BaseModel data
+                ) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateParams::product_move
+            end
+          end
+        end
+      end
+    end
+  end
+end

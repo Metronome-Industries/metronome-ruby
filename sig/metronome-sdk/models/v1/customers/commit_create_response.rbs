@@ -1,0 +1,22 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Customers
+        type commit_create_response = { data: MetronomeSDK::Models::ID }
+
+        class CommitCreateResponse < MetronomeSDK::BaseModel
+          attr_accessor data: MetronomeSDK::Models::ID
+
+          def initialize:
+            (data: MetronomeSDK::Models::ID) -> void
+            | (
+              ?MetronomeSDK::Models::V1::Customers::commit_create_response
+              | MetronomeSDK::BaseModel data
+            ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::Customers::commit_create_response
+        end
+      end
+    end
+  end
+end

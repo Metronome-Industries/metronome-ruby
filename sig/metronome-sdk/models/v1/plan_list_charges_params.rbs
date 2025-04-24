@@ -1,0 +1,38 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type plan_list_charges_params =
+        { plan_id: String, limit: Integer, next_page: String }
+        & MetronomeSDK::request_parameters
+
+      class PlanListChargesParams < MetronomeSDK::BaseModel
+        extend MetronomeSDK::RequestParameters::Converter
+        include MetronomeSDK::RequestParameters
+
+        attr_accessor plan_id: String
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> Integer
+
+        attr_reader next_page: String?
+
+        def next_page=: (String) -> String
+
+        def initialize:
+          (
+            plan_id: String,
+            limit: Integer,
+            next_page: String,
+            request_options: MetronomeSDK::request_opts
+          ) -> void
+          | (
+            ?MetronomeSDK::Models::V1::plan_list_charges_params
+            | MetronomeSDK::BaseModel data
+          ) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V1::plan_list_charges_params
+      end
+    end
+  end
+end

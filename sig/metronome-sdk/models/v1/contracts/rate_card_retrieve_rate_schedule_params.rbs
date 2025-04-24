@@ -1,0 +1,100 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Contracts
+        type rate_card_retrieve_rate_schedule_params =
+          {
+            rate_card_id: String,
+            starting_at: Time,
+            limit: Integer,
+            next_page: String,
+            ending_before: Time,
+            selectors: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector]
+          }
+          & MetronomeSDK::request_parameters
+
+        class RateCardRetrieveRateScheduleParams < MetronomeSDK::BaseModel
+          extend MetronomeSDK::RequestParameters::Converter
+          include MetronomeSDK::RequestParameters
+
+          attr_accessor rate_card_id: String
+
+          attr_accessor starting_at: Time
+
+          attr_reader limit: Integer?
+
+          def limit=: (Integer) -> Integer
+
+          attr_reader next_page: String?
+
+          def next_page=: (String) -> String
+
+          attr_reader ending_before: Time?
+
+          def ending_before=: (Time) -> Time
+
+          attr_reader selectors: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector]?
+
+          def selectors=: (
+            ::Array[MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector]
+          ) -> ::Array[MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector]
+
+          def initialize:
+            (
+              rate_card_id: String,
+              starting_at: Time,
+              limit: Integer,
+              next_page: String,
+              ending_before: Time,
+              selectors: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector],
+              request_options: MetronomeSDK::request_opts
+            ) -> void
+            | (
+              ?MetronomeSDK::Models::V1::Contracts::rate_card_retrieve_rate_schedule_params
+              | MetronomeSDK::BaseModel data
+            ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::Contracts::rate_card_retrieve_rate_schedule_params
+
+          type selector =
+            {
+              partial_pricing_group_values: ::Hash[Symbol, String],
+              pricing_group_values: ::Hash[Symbol, String],
+              product_id: String
+            }
+
+          class Selector < MetronomeSDK::BaseModel
+            attr_reader partial_pricing_group_values: ::Hash[Symbol, String]?
+
+            def partial_pricing_group_values=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+            def pricing_group_values=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader product_id: String?
+
+            def product_id=: (String) -> String
+
+            def initialize:
+              (
+                partial_pricing_group_values: ::Hash[Symbol, String],
+                pricing_group_values: ::Hash[Symbol, String],
+                product_id: String
+              ) -> void
+              | (
+                ?MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams::selector
+                | MetronomeSDK::BaseModel data
+              ) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams::selector
+          end
+        end
+      end
+    end
+  end
+end

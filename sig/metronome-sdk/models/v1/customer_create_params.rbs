@@ -1,0 +1,274 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type customer_create_params =
+        {
+          name: String,
+          billing_config: MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig,
+          custom_fields: ::Hash[Symbol, String],
+          customer_billing_provider_configurations: ::Array[MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration],
+          external_id: String,
+          ingest_aliases: ::Array[String]
+        }
+        & MetronomeSDK::request_parameters
+
+      class CustomerCreateParams < MetronomeSDK::BaseModel
+        extend MetronomeSDK::RequestParameters::Converter
+        include MetronomeSDK::RequestParameters
+
+        attr_accessor name: String
+
+        attr_reader billing_config: MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig?
+
+        def billing_config=: (
+          MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig
+        ) -> MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig
+
+        attr_reader custom_fields: ::Hash[Symbol, String]?
+
+        def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+
+        attr_reader customer_billing_provider_configurations: ::Array[MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration]?
+
+        def customer_billing_provider_configurations=: (
+          ::Array[MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration]
+        ) -> ::Array[MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration]
+
+        attr_reader external_id: String?
+
+        def external_id=: (String) -> String
+
+        attr_reader ingest_aliases: ::Array[String]?
+
+        def ingest_aliases=: (::Array[String]) -> ::Array[String]
+
+        def initialize:
+          (
+            name: String,
+            billing_config: MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig,
+            custom_fields: ::Hash[Symbol, String],
+            customer_billing_provider_configurations: ::Array[MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration],
+            external_id: String,
+            ingest_aliases: ::Array[String],
+            request_options: MetronomeSDK::request_opts
+          ) -> void
+          | (
+            ?MetronomeSDK::Models::V1::customer_create_params
+            | MetronomeSDK::BaseModel data
+          ) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V1::customer_create_params
+
+        type billing_config =
+          {
+            billing_provider_customer_id: String,
+            billing_provider_type: MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::billing_provider_type,
+            aws_is_subscription_product: bool,
+            aws_product_code: String,
+            aws_region: MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::aws_region,
+            stripe_collection_method: MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::stripe_collection_method
+          }
+
+        class BillingConfig < MetronomeSDK::BaseModel
+          attr_accessor billing_provider_customer_id: String
+
+          attr_accessor billing_provider_type: MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::billing_provider_type
+
+          attr_reader aws_is_subscription_product: bool?
+
+          def aws_is_subscription_product=: (bool) -> bool
+
+          attr_reader aws_product_code: String?
+
+          def aws_product_code=: (String) -> String
+
+          attr_reader aws_region: MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::aws_region?
+
+          def aws_region=: (
+            MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::aws_region
+          ) -> MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::aws_region
+
+          attr_reader stripe_collection_method: MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::stripe_collection_method?
+
+          def stripe_collection_method=: (
+            MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::stripe_collection_method
+          ) -> MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::stripe_collection_method
+
+          def initialize:
+            (
+              billing_provider_customer_id: String,
+              billing_provider_type: MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::billing_provider_type,
+              aws_is_subscription_product: bool,
+              aws_product_code: String,
+              aws_region: MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::aws_region,
+              stripe_collection_method: MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::stripe_collection_method
+            ) -> void
+            | (
+              ?MetronomeSDK::Models::V1::CustomerCreateParams::billing_config
+              | MetronomeSDK::BaseModel data
+            ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::CustomerCreateParams::billing_config
+
+          type billing_provider_type =
+            :aws_marketplace
+            | :stripe
+            | :netsuite
+            | :custom
+            | :azure_marketplace
+            | :quickbooks_online
+            | :workday
+            | :gcp_marketplace
+
+          class BillingProviderType < MetronomeSDK::Enum
+            AWS_MARKETPLACE: :aws_marketplace
+            STRIPE: :stripe
+            NETSUITE: :netsuite
+            CUSTOM: :custom
+            AZURE_MARKETPLACE: :azure_marketplace
+            QUICKBOOKS_ONLINE: :quickbooks_online
+            WORKDAY: :workday
+            GCP_MARKETPLACE: :gcp_marketplace
+
+            def self.values: -> ::Array[MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::billing_provider_type]
+          end
+
+          type aws_region =
+            :"af-south-1"
+            | :"ap-east-1"
+            | :"ap-northeast-1"
+            | :"ap-northeast-2"
+            | :"ap-northeast-3"
+            | :"ap-south-1"
+            | :"ap-southeast-1"
+            | :"ap-southeast-2"
+            | :"ca-central-1"
+            | :"cn-north-1"
+            | :"cn-northwest-1"
+            | :"eu-central-1"
+            | :"eu-north-1"
+            | :"eu-south-1"
+            | :"eu-west-1"
+            | :"eu-west-2"
+            | :"eu-west-3"
+            | :"me-south-1"
+            | :"sa-east-1"
+            | :"us-east-1"
+            | :"us-east-2"
+            | :"us-gov-east-1"
+            | :"us-gov-west-1"
+            | :"us-west-1"
+            | :"us-west-2"
+
+          class AwsRegion < MetronomeSDK::Enum
+            AF_SOUTH_1: :"af-south-1"
+            AP_EAST_1: :"ap-east-1"
+            AP_NORTHEAST_1: :"ap-northeast-1"
+            AP_NORTHEAST_2: :"ap-northeast-2"
+            AP_NORTHEAST_3: :"ap-northeast-3"
+            AP_SOUTH_1: :"ap-south-1"
+            AP_SOUTHEAST_1: :"ap-southeast-1"
+            AP_SOUTHEAST_2: :"ap-southeast-2"
+            CA_CENTRAL_1: :"ca-central-1"
+            CN_NORTH_1: :"cn-north-1"
+            CN_NORTHWEST_1: :"cn-northwest-1"
+            EU_CENTRAL_1: :"eu-central-1"
+            EU_NORTH_1: :"eu-north-1"
+            EU_SOUTH_1: :"eu-south-1"
+            EU_WEST_1: :"eu-west-1"
+            EU_WEST_2: :"eu-west-2"
+            EU_WEST_3: :"eu-west-3"
+            ME_SOUTH_1: :"me-south-1"
+            SA_EAST_1: :"sa-east-1"
+            US_EAST_1: :"us-east-1"
+            US_EAST_2: :"us-east-2"
+            US_GOV_EAST_1: :"us-gov-east-1"
+            US_GOV_WEST_1: :"us-gov-west-1"
+            US_WEST_1: :"us-west-1"
+            US_WEST_2: :"us-west-2"
+
+            def self.values: -> ::Array[MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::aws_region]
+          end
+
+          type stripe_collection_method = :charge_automatically | :send_invoice
+
+          class StripeCollectionMethod < MetronomeSDK::Enum
+            CHARGE_AUTOMATICALLY: :charge_automatically
+            SEND_INVOICE: :send_invoice
+
+            def self.values: -> ::Array[MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::stripe_collection_method]
+          end
+        end
+
+        type customer_billing_provider_configuration =
+          {
+            billing_provider: MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::billing_provider,
+            configuration: ::Hash[Symbol, top],
+            delivery_method: MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::delivery_method,
+            delivery_method_id: String
+          }
+
+        class CustomerBillingProviderConfiguration < MetronomeSDK::BaseModel
+          attr_accessor billing_provider: MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::billing_provider
+
+          attr_reader configuration: ::Hash[Symbol, top]?
+
+          def configuration=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+          attr_reader delivery_method: MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::delivery_method?
+
+          def delivery_method=: (
+            MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::delivery_method
+          ) -> MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::delivery_method
+
+          attr_reader delivery_method_id: String?
+
+          def delivery_method_id=: (String) -> String
+
+          def initialize:
+            (
+              billing_provider: MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::billing_provider,
+              configuration: ::Hash[Symbol, top],
+              delivery_method: MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::delivery_method,
+              delivery_method_id: String
+            ) -> void
+            | (
+              ?MetronomeSDK::Models::V1::CustomerCreateParams::customer_billing_provider_configuration
+              | MetronomeSDK::BaseModel data
+            ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::CustomerCreateParams::customer_billing_provider_configuration
+
+          type billing_provider =
+            :aws_marketplace
+            | :azure_marketplace
+            | :gcp_marketplace
+            | :stripe
+            | :netsuite
+
+          class BillingProvider < MetronomeSDK::Enum
+            AWS_MARKETPLACE: :aws_marketplace
+            AZURE_MARKETPLACE: :azure_marketplace
+            GCP_MARKETPLACE: :gcp_marketplace
+            STRIPE: :stripe
+            NETSUITE: :netsuite
+
+            def self.values: -> ::Array[MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::billing_provider]
+          end
+
+          type delivery_method =
+            :direct_to_billing_provider | :aws_sqs | :tackle | :aws_sns
+
+          class DeliveryMethod < MetronomeSDK::Enum
+            DIRECT_TO_BILLING_PROVIDER: :direct_to_billing_provider
+            AWS_SQS: :aws_sqs
+            TACKLE: :tackle
+            AWS_SNS: :aws_sns
+
+            def self.values: -> ::Array[MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::delivery_method]
+          end
+        end
+      end
+    end
+  end
+end

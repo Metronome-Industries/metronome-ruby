@@ -1,0 +1,29 @@
+module MetronomeSDK
+  module Resources
+    class V1
+      class Invoices
+        def regenerate:
+          (
+            MetronomeSDK::Models::V1::InvoiceRegenerateParams
+            | ::Hash[Symbol, top] params
+          ) -> MetronomeSDK::Models::V1::InvoiceRegenerateResponse
+          | (
+            id: String,
+            request_options: MetronomeSDK::request_opts
+          ) -> MetronomeSDK::Models::V1::InvoiceRegenerateResponse
+
+        def `void`:
+          (
+            MetronomeSDK::Models::V1::InvoiceVoidParams
+            | ::Hash[Symbol, top] params
+          ) -> MetronomeSDK::Models::V1::InvoiceVoidResponse
+          | (
+            id: String,
+            request_options: MetronomeSDK::request_opts
+          ) -> MetronomeSDK::Models::V1::InvoiceVoidResponse
+
+        def initialize: (client: MetronomeSDK::Client) -> void
+      end
+    end
+  end
+end

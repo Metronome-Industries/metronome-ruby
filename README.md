@@ -7,7 +7,7 @@ It is generated with [Stainless](https://www.stainlessapi.com/).
 
 ## Documentation
 
-Documentation for the most recent release of this gem can be found [on RubyDoc](https://gemdocs.org/gems/metronome/latest).
+Documentation for the most recent release of this gem can be found [on RubyDoc](https://gemdocs.org/gems/metronome-sdk/latest).
 
 The underlying REST API documentation can be found on [docs.metronome.com](https://docs.metronome.com).
 
@@ -17,7 +17,7 @@ To use this gem during the beta, install directly from GitHub with Bundler by
 adding the following to your application's `Gemfile`:
 
 ```ruby
-gem "metronome", git: "https://github.com/Metronome-Industries/metronome-ruby", branch: "main"
+gem "metronome-sdk", git: "https://github.com/Metronome-Industries/metronome-ruby", branch: "main"
 ```
 
 To fetch an initial copy of the gem:
@@ -30,32 +30,46 @@ To update the version used by your application when updates are pushed to
 GitHub:
 
 ```sh
-bundle update metronome
+bundle update metronome-sdk
 ```
 
 ## Usage
 
 ```ruby
 require "bundler/setup"
-require "metronome"
+require "metronome-sdk"
 
-metronome = Metronome::Client.new(
+metronome = MetronomeSDK::Client.new(
   bearer_token: "My Bearer Token" # defaults to ENV["METRONOME_BEARER_TOKEN"]
 )
 
-metronome.usage.ingest
+metronome.v1.usage.ingest(
+  usage: [
+  {
+    transaction_id: "90e9401f-0f8c-4cd3-9a9f-d6beb56d8d72",
+    customer_id: "team@example.com",
+    event_type: "heartbeat",
+    timestamp: "2024-01-01T00:00:00Z",
+    properties: {
+      cluster_id: "42",
+      cpu_seconds: 60,
+      region: "Europe"
+    }
+  }
+  ]
+)
 ```
 
 ### Errors
 
 When the library is unable to connect to the API, or if the API returns a
 non-success status code (i.e., 4xx or 5xx response), a subclass of
-`Metronome::Error` will be thrown:
+`MetronomeSDK::Error` will be thrown:
 
 ```ruby
 begin
-  contract = metronome.contracts.create
-rescue Metronome::Error => e
+  contract = metronome.v1.contracts.create
+rescue MetronomeSDK::Error => e
   puts(e.status) # 400
 end
 ```
@@ -87,12 +101,12 @@ You can use the `max_retries` option to configure or disable this:
 
 ```ruby
 # Configure the default for all requests:
-metronome = Metronome::Client.new(
+metronome = MetronomeSDK::Client.new(
   max_retries: 0 # default is 2
 )
 
 # Or, configure per-request:
-metronome.contracts.create(request_options: {max_retries: 5})
+metronome.v1.contracts.create(request_options: {max_retries: 5})
 ```
 
 ### Timeouts
@@ -105,12 +119,12 @@ You can use the `timeout` option to configure or disable this:
 
 ```ruby
 # Configure the default for all requests:
-metronome = Metronome::Client.new(
+metronome = MetronomeSDK::Client.new(
   timeout: nil # default is 60
 )
 
 # Or, configure per-request:
-metronome.contracts.create(request_options: {timeout: 5})
+metronome.v1.contracts.create(request_options: {timeout: 5})
 ```
 
 ## Versioning
