@@ -154,7 +154,7 @@ module MetronomeSDK
           sig { params(plan_name: String).void }
           attr_writer :plan_name
 
-          # only present for beta contract invoices with reseller royalties
+          # Only present for contract invoices with reseller royalties.
           sig { returns(T.nilable(MetronomeSDK::Models::V1::Customers::Invoice::ResellerRoyalty)) }
           attr_reader :reseller_royalty
 
@@ -252,7 +252,7 @@ module MetronomeSDK
             plan_custom_fields: nil,
             plan_id: nil,
             plan_name: nil,
-            # only present for beta contract invoices with reseller royalties
+            # Only present for contract invoices with reseller royalties.
             reseller_royalty: nil,
             # This field's availability is dependent on your client's configuration.
             salesforce_opportunity_id: nil,
@@ -310,7 +310,9 @@ module MetronomeSDK
             sig { returns(Float) }
             attr_accessor :total
 
-            # only present for beta contract invoices
+            # Details about the credit or commit that was applied to this line item. Only
+            # present on line items with product of `USAGE`, `SUBSCRIPTION` or `COMPOSITE`
+            # types.
             sig { returns(T.nilable(MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit)) }
             attr_reader :applied_commit_or_credit
 
@@ -325,44 +327,42 @@ module MetronomeSDK
             end
             attr_writer :applied_commit_or_credit
 
-            # only present for beta contract invoices
             sig { returns(T.nilable(T::Hash[Symbol, String])) }
             attr_reader :commit_custom_fields
 
             sig { params(commit_custom_fields: T::Hash[Symbol, String]).void }
             attr_writer :commit_custom_fields
 
-            # only present for beta contract invoices
+            # For line items with product of `USAGE`, `SUBSCRIPTION`, or `COMPOSITE` types,
+            # the ID of the credit or commit that was applied to this line item. For line
+            # items with product type of `FIXED`, the ID of the prepaid or postpaid commit
+            # that is being paid for.
             sig { returns(T.nilable(String)) }
             attr_reader :commit_id
 
             sig { params(commit_id: String).void }
             attr_writer :commit_id
 
-            # only present for beta contract invoices. This field's availability is dependent
-            # on your client's configuration.
             sig { returns(T.nilable(String)) }
             attr_reader :commit_netsuite_item_id
 
             sig { params(commit_netsuite_item_id: String).void }
             attr_writer :commit_netsuite_item_id
 
-            # only present for beta contract invoices. This field's availability is dependent
-            # on your client's configuration.
             sig { returns(T.nilable(String)) }
             attr_reader :commit_netsuite_sales_order_id
 
             sig { params(commit_netsuite_sales_order_id: String).void }
             attr_writer :commit_netsuite_sales_order_id
 
-            # only present for beta contract invoices
             sig { returns(T.nilable(String)) }
             attr_reader :commit_segment_id
 
             sig { params(commit_segment_id: String).void }
             attr_writer :commit_segment_id
 
-            # only present for beta contract invoices
+            # `PrepaidCommit` (for commit types `PREPAID` and `CREDIT`) or `PostpaidCommit`
+            # (for commit type `POSTPAID`).
             sig { returns(T.nilable(String)) }
             attr_reader :commit_type
 
@@ -375,7 +375,7 @@ module MetronomeSDK
             sig { params(custom_fields: T::Hash[Symbol, String]).void }
             attr_writer :custom_fields
 
-            # only present for beta contract invoices
+            # The line item's end date (exclusive).
             sig { returns(T.nilable(Time)) }
             attr_reader :ending_before
 
@@ -391,14 +391,14 @@ module MetronomeSDK
             sig { returns(T.nilable(String)) }
             attr_accessor :group_value
 
-            # only present for beta contract invoices
+            # Indicates whether the line item is prorated for `SUBSCRIPTION` type product.
             sig { returns(T.nilable(T::Boolean)) }
             attr_reader :is_prorated
 
             sig { params(is_prorated: T::Boolean).void }
             attr_writer :is_prorated
 
-            # Only present for contract invoices and when the include_list_prices query
+            # Only present for contract invoices and when the `include_list_prices` query
             # parameter is set to true. This will include the list rate for the charge if
             # applicable. Only present for usage and subscription line items.
             sig { returns(T.nilable(MetronomeSDK::Models::Rate)) }
@@ -427,15 +427,13 @@ module MetronomeSDK
             sig { params(netsuite_invoice_billing_start: Time).void }
             attr_writer :netsuite_invoice_billing_start
 
-            # only present for beta contract invoices. This field's availability is dependent
-            # on your client's configuration.
             sig { returns(T.nilable(String)) }
             attr_reader :netsuite_item_id
 
             sig { params(netsuite_item_id: String).void }
             attr_writer :netsuite_item_id
 
-            # only present for beta contract invoices
+            # Only present for line items paying for a postpaid commit true-up.
             sig { returns(T.nilable(MetronomeSDK::Models::V1::Customers::Invoice::LineItem::PostpaidCommit)) }
             attr_reader :postpaid_commit
 
@@ -450,16 +448,16 @@ module MetronomeSDK
             end
             attr_writer :postpaid_commit
 
-            # if presentation groups are used, this will contain the values used to break down
-            # the line item
+            # Includes the presentation group values associated with this line item if
+            # presentation group keys are used.
             sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
             attr_reader :presentation_group_values
 
             sig { params(presentation_group_values: T::Hash[Symbol, T.nilable(String)]).void }
             attr_writer :presentation_group_values
 
-            # if pricing groups are used, this will contain the values used to calculate the
-            # price
+            # Includes the pricing group values associated with this line item if dimensional
+            # pricing is used.
             sig { returns(T.nilable(T::Hash[Symbol, String])) }
             attr_reader :pricing_group_values
 
@@ -472,18 +470,25 @@ module MetronomeSDK
             sig { params(product_custom_fields: T::Hash[Symbol, String]).void }
             attr_writer :product_custom_fields
 
+            # ID of the product associated with the line item.
             sig { returns(T.nilable(String)) }
             attr_reader :product_id
 
             sig { params(product_id: String).void }
             attr_writer :product_id
 
+            # The current product tags associated with the line item's `product_id`.
             sig { returns(T.nilable(T::Array[String])) }
             attr_reader :product_tags
 
             sig { params(product_tags: T::Array[String]).void }
             attr_writer :product_tags
 
+            # The type of the line item's product. Possible values are `FixedProductListItem`
+            # (for `FIXED` type products), `UsageProductListItem` (for `USAGE` type products),
+            # `SubscriptionProductListItem` (for `SUBSCRIPTION` type products) or
+            # `CompositeProductListItem` (for `COMPOSITE` type products). For scheduled
+            # charges, commit and credit payments, the value is `FixedProductListItem`.
             sig { returns(T.nilable(String)) }
             attr_reader :product_type
 
@@ -504,6 +509,7 @@ module MetronomeSDK
             sig { params(professional_service_id: String).void }
             attr_writer :professional_service_id
 
+            # The quantity associated with the line item.
             sig { returns(T.nilable(Float)) }
             attr_reader :quantity
 
@@ -529,7 +535,7 @@ module MetronomeSDK
             sig { params(scheduled_charge_id: String).void }
             attr_writer :scheduled_charge_id
 
-            # only present for beta contract invoices
+            # The line item's start date (inclusive).
             sig { returns(T.nilable(Time)) }
             attr_reader :starting_at
 
@@ -558,6 +564,7 @@ module MetronomeSDK
             sig { params(subscription_custom_fields: T::Hash[Symbol, String]).void }
             attr_writer :subscription_custom_fields
 
+            # Populated if the line item has a tiered price.
             sig { returns(T.nilable(MetronomeSDK::Models::V1::Customers::Invoice::LineItem::Tier)) }
             attr_reader :tier
 
@@ -569,7 +576,7 @@ module MetronomeSDK
             end
             attr_writer :tier
 
-            # only present for beta contract invoices
+            # The unit price associated with the line item.
             sig { returns(T.nilable(Float)) }
             attr_reader :unit_price
 
@@ -634,30 +641,30 @@ module MetronomeSDK
               credit_type:,
               name:,
               total:,
-              # only present for beta contract invoices
+              # Details about the credit or commit that was applied to this line item. Only
+              # present on line items with product of `USAGE`, `SUBSCRIPTION` or `COMPOSITE`
+              # types.
               applied_commit_or_credit: nil,
-              # only present for beta contract invoices
               commit_custom_fields: nil,
-              # only present for beta contract invoices
+              # For line items with product of `USAGE`, `SUBSCRIPTION`, or `COMPOSITE` types,
+              # the ID of the credit or commit that was applied to this line item. For line
+              # items with product type of `FIXED`, the ID of the prepaid or postpaid commit
+              # that is being paid for.
               commit_id: nil,
-              # only present for beta contract invoices. This field's availability is dependent
-              # on your client's configuration.
               commit_netsuite_item_id: nil,
-              # only present for beta contract invoices. This field's availability is dependent
-              # on your client's configuration.
               commit_netsuite_sales_order_id: nil,
-              # only present for beta contract invoices
               commit_segment_id: nil,
-              # only present for beta contract invoices
+              # `PrepaidCommit` (for commit types `PREPAID` and `CREDIT`) or `PostpaidCommit`
+              # (for commit type `POSTPAID`).
               commit_type: nil,
               custom_fields: nil,
-              # only present for beta contract invoices
+              # The line item's end date (exclusive).
               ending_before: nil,
               group_key: nil,
               group_value: nil,
-              # only present for beta contract invoices
+              # Indicates whether the line item is prorated for `SUBSCRIPTION` type product.
               is_prorated: nil,
-              # Only present for contract invoices and when the include_list_prices query
+              # Only present for contract invoices and when the `include_list_prices` query
               # parameter is set to true. This will include the list rate for the charge if
               # applicable. Only present for usage and subscription line items.
               list_price: nil,
@@ -666,36 +673,43 @@ module MetronomeSDK
               netsuite_invoice_billing_end: nil,
               # The start date for the billing period on the invoice.
               netsuite_invoice_billing_start: nil,
-              # only present for beta contract invoices. This field's availability is dependent
-              # on your client's configuration.
               netsuite_item_id: nil,
-              # only present for beta contract invoices
+              # Only present for line items paying for a postpaid commit true-up.
               postpaid_commit: nil,
-              # if presentation groups are used, this will contain the values used to break down
-              # the line item
+              # Includes the presentation group values associated with this line item if
+              # presentation group keys are used.
               presentation_group_values: nil,
-              # if pricing groups are used, this will contain the values used to calculate the
-              # price
+              # Includes the pricing group values associated with this line item if dimensional
+              # pricing is used.
               pricing_group_values: nil,
               product_custom_fields: nil,
+              # ID of the product associated with the line item.
               product_id: nil,
+              # The current product tags associated with the line item's `product_id`.
               product_tags: nil,
+              # The type of the line item's product. Possible values are `FixedProductListItem`
+              # (for `FIXED` type products), `UsageProductListItem` (for `USAGE` type products),
+              # `SubscriptionProductListItem` (for `SUBSCRIPTION` type products) or
+              # `CompositeProductListItem` (for `COMPOSITE` type products). For scheduled
+              # charges, commit and credit payments, the value is `FixedProductListItem`.
               product_type: nil,
               # only present for beta contract invoices
               professional_service_custom_fields: nil,
               # only present for beta contract invoices
               professional_service_id: nil,
+              # The quantity associated with the line item.
               quantity: nil,
               reseller_type: nil,
               scheduled_charge_custom_fields: nil,
               # only present for beta contract invoices
               scheduled_charge_id: nil,
-              # only present for beta contract invoices
+              # The line item's start date (inclusive).
               starting_at: nil,
               sub_line_items: nil,
               subscription_custom_fields: nil,
+              # Populated if the line item has a tiered price.
               tier: nil,
-              # only present for beta contract invoices
+              # The unit price associated with the line item.
               unit_price: nil
             ); end
             sig do
@@ -752,7 +766,9 @@ module MetronomeSDK
               sig { returns(MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type::TaggedSymbol) }
               attr_accessor :type
 
-              # only present for beta contract invoices
+              # Details about the credit or commit that was applied to this line item. Only
+              # present on line items with product of `USAGE`, `SUBSCRIPTION` or `COMPOSITE`
+              # types.
               sig do
                 params(
                   id: String,
@@ -810,7 +826,7 @@ module MetronomeSDK
               sig { returns(String) }
               attr_accessor :id
 
-              # only present for beta contract invoices
+              # Only present for line items paying for a postpaid commit true-up.
               sig { params(id: String).returns(T.attached_class) }
               def self.new(id:); end
 
@@ -1047,6 +1063,7 @@ module MetronomeSDK
               sig { returns(T.nilable(String)) }
               attr_accessor :size
 
+              # Populated if the line item has a tiered price.
               sig do
                 params(level: Float, starting_at: String, size: T.nilable(String)).returns(T.attached_class)
               end
@@ -1604,7 +1621,7 @@ module MetronomeSDK
             end
             attr_writer :gcp_options
 
-            # only present for beta contract invoices with reseller royalties
+            # Only present for contract invoices with reseller royalties.
             sig do
               params(
                 fraction: String,
