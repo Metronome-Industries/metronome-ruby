@@ -1,0 +1,11 @@
+---
+max_files: 0
+include:
+  - '*.gemspec'
+  - 'Rakefile'
+  - 'examples/**/*.rb'
+  - 'lib/**/*.rb'
+  - 'test/metronome_sdk/resource_namespaces.rb'
+  - 'test/metronome_sdk/test_helper.rb'
+exclude:
+  - 'rbi/**/*'

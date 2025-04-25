@@ -1,0 +1,99 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Contracts
+        type rate_card_create_params =
+          {
+            name: String,
+            aliases: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::Alias],
+            credit_type_conversions: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::CreditTypeConversion],
+            custom_fields: ::Hash[Symbol, String],
+            description: String,
+            fiat_credit_type_id: String
+          }
+          & MetronomeSDK::Internal::Type::request_parameters
+
+        class RateCardCreateParams < MetronomeSDK::Internal::Type::BaseModel
+          extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+          include MetronomeSDK::Internal::Type::RequestParameters
+
+          attr_accessor name: String
+
+          attr_reader aliases: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::Alias]?
+
+          def aliases=: (
+            ::Array[MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::Alias]
+          ) -> ::Array[MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::Alias]
+
+          attr_reader credit_type_conversions: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::CreditTypeConversion]?
+
+          def credit_type_conversions=: (
+            ::Array[MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::CreditTypeConversion]
+          ) -> ::Array[MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::CreditTypeConversion]
+
+          attr_reader custom_fields: ::Hash[Symbol, String]?
+
+          def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+
+          attr_reader description: String?
+
+          def description=: (String) -> String
+
+          attr_reader fiat_credit_type_id: String?
+
+          def fiat_credit_type_id=: (String) -> String
+
+          def initialize: (
+            name: String,
+            ?aliases: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::Alias],
+            ?credit_type_conversions: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::CreditTypeConversion],
+            ?custom_fields: ::Hash[Symbol, String],
+            ?description: String,
+            ?fiat_credit_type_id: String,
+            ?request_options: MetronomeSDK::request_opts
+          ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::Contracts::rate_card_create_params
+
+          type alias_ = { name: String, ending_before: Time, starting_at: Time }
+
+          class Alias < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor name: String
+
+            attr_reader ending_before: Time?
+
+            def ending_before=: (Time) -> Time
+
+            attr_reader starting_at: Time?
+
+            def starting_at=: (Time) -> Time
+
+            def initialize: (
+              name: String,
+              ?ending_before: Time,
+              ?starting_at: Time
+            ) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::alias_
+          end
+
+          type credit_type_conversion =
+            { custom_credit_type_id: String, fiat_per_custom_credit: Float }
+
+          class CreditTypeConversion < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor custom_credit_type_id: String
+
+            attr_accessor fiat_per_custom_credit: Float
+
+            def initialize: (
+              custom_credit_type_id: String,
+              fiat_per_custom_credit: Float
+            ) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::credit_type_conversion
+          end
+        end
+      end
+    end
+  end
+end

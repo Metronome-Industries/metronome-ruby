@@ -1,0 +1,17 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type customer_archive_params =
+        {  } & MetronomeSDK::Internal::Type::request_parameters
+
+      class CustomerArchiveParams < MetronomeSDK::Models::ID
+        extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+        include MetronomeSDK::Internal::Type::RequestParameters
+
+        def initialize: (?request_options: MetronomeSDK::request_opts) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V1::customer_archive_params
+      end
+    end
+  end
+end

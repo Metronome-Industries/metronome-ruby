@@ -1,0 +1,16 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type customer_create_response =
+        { data: MetronomeSDK::Models::V1::Customer }
+
+      class CustomerCreateResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor data: MetronomeSDK::Models::V1::Customer
+
+        def initialize: (data: MetronomeSDK::Models::V1::Customer) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V1::customer_create_response
+      end
+    end
+  end
+end

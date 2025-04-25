@@ -1,0 +1,37 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type credit_grant_void_params =
+        {
+          id: String,
+          release_uniqueness_key: bool,
+          void_credit_purchase_invoice: bool
+        }
+        & MetronomeSDK::Internal::Type::request_parameters
+
+      class CreditGrantVoidParams < MetronomeSDK::Internal::Type::BaseModel
+        extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+        include MetronomeSDK::Internal::Type::RequestParameters
+
+        attr_accessor id: String
+
+        attr_reader release_uniqueness_key: bool?
+
+        def release_uniqueness_key=: (bool) -> bool
+
+        attr_reader void_credit_purchase_invoice: bool?
+
+        def void_credit_purchase_invoice=: (bool) -> bool
+
+        def initialize: (
+          id: String,
+          ?release_uniqueness_key: bool,
+          ?void_credit_purchase_invoice: bool,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V1::credit_grant_void_params
+      end
+    end
+  end
+end

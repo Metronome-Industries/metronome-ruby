@@ -1,0 +1,76 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type audit_log_list_params =
+        {
+          ending_before: Time,
+          limit: Integer,
+          next_page: String,
+          resource_id: String,
+          resource_type: String,
+          sort: MetronomeSDK::Models::V1::AuditLogListParams::sort,
+          starting_on: Time
+        }
+        & MetronomeSDK::Internal::Type::request_parameters
+
+      class AuditLogListParams < MetronomeSDK::Internal::Type::BaseModel
+        extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+        include MetronomeSDK::Internal::Type::RequestParameters
+
+        attr_reader ending_before: Time?
+
+        def ending_before=: (Time) -> Time
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> Integer
+
+        attr_reader next_page: String?
+
+        def next_page=: (String) -> String
+
+        attr_reader resource_id: String?
+
+        def resource_id=: (String) -> String
+
+        attr_reader resource_type: String?
+
+        def resource_type=: (String) -> String
+
+        attr_reader sort: MetronomeSDK::Models::V1::AuditLogListParams::sort?
+
+        def sort=: (
+          MetronomeSDK::Models::V1::AuditLogListParams::sort
+        ) -> MetronomeSDK::Models::V1::AuditLogListParams::sort
+
+        attr_reader starting_on: Time?
+
+        def starting_on=: (Time) -> Time
+
+        def initialize: (
+          ?ending_before: Time,
+          ?limit: Integer,
+          ?next_page: String,
+          ?resource_id: String,
+          ?resource_type: String,
+          ?sort: MetronomeSDK::Models::V1::AuditLogListParams::sort,
+          ?starting_on: Time,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V1::audit_log_list_params
+
+        type sort = :date_asc | :date_desc
+
+        module Sort
+          extend MetronomeSDK::Internal::Type::Enum
+
+          DATE_ASC: :date_asc
+          DATE_DESC: :date_desc
+
+          def self?.values: -> ::Array[MetronomeSDK::Models::V1::AuditLogListParams::sort]
+        end
+      end
+    end
+  end
+end

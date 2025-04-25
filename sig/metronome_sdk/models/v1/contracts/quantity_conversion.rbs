@@ -1,0 +1,43 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Contracts
+        type quantity_conversion =
+          {
+            conversion_factor: Float,
+            operation: MetronomeSDK::Models::V1::Contracts::QuantityConversion::operation,
+            name: String
+          }
+
+        class QuantityConversion < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor conversion_factor: Float
+
+          attr_accessor operation: MetronomeSDK::Models::V1::Contracts::QuantityConversion::operation
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          def initialize: (
+            conversion_factor: Float,
+            operation: MetronomeSDK::Models::V1::Contracts::QuantityConversion::operation,
+            ?name: String
+          ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::Contracts::quantity_conversion
+
+          type operation = :MULTIPLY | :DIVIDE
+
+          module Operation
+            extend MetronomeSDK::Internal::Type::Enum
+
+            MULTIPLY: :MULTIPLY
+            DIVIDE: :DIVIDE
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::Contracts::QuantityConversion::operation]
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,26 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type pricing_unit_list_response =
+        { id: String, is_currency: bool, name: String }
+
+      class PricingUnitListResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader is_currency: bool?
+
+        def is_currency=: (bool) -> bool
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        def initialize: (?id: String, ?is_currency: bool, ?name: String) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V1::pricing_unit_list_response
+      end
+    end
+  end
+end

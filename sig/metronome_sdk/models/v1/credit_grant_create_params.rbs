@@ -1,0 +1,152 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type credit_grant_create_params =
+        {
+          customer_id: String,
+          expires_at: Time,
+          grant_amount: MetronomeSDK::Models::V1::CreditGrantCreateParams::GrantAmount,
+          name: String,
+          paid_amount: MetronomeSDK::Models::V1::CreditGrantCreateParams::PaidAmount,
+          priority: Float,
+          credit_grant_type: String,
+          custom_fields: ::Hash[Symbol, String],
+          effective_at: Time,
+          invoice_date: Time,
+          product_ids: ::Array[String],
+          reason: String,
+          rollover_settings: MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings,
+          uniqueness_key: String
+        }
+        & MetronomeSDK::Internal::Type::request_parameters
+
+      class CreditGrantCreateParams < MetronomeSDK::Internal::Type::BaseModel
+        extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+        include MetronomeSDK::Internal::Type::RequestParameters
+
+        attr_accessor customer_id: String
+
+        attr_accessor expires_at: Time
+
+        attr_accessor grant_amount: MetronomeSDK::Models::V1::CreditGrantCreateParams::GrantAmount
+
+        attr_accessor name: String
+
+        attr_accessor paid_amount: MetronomeSDK::Models::V1::CreditGrantCreateParams::PaidAmount
+
+        attr_accessor priority: Float
+
+        attr_reader credit_grant_type: String?
+
+        def credit_grant_type=: (String) -> String
+
+        attr_reader custom_fields: ::Hash[Symbol, String]?
+
+        def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+
+        attr_reader effective_at: Time?
+
+        def effective_at=: (Time) -> Time
+
+        attr_reader invoice_date: Time?
+
+        def invoice_date=: (Time) -> Time
+
+        attr_reader product_ids: ::Array[String]?
+
+        def product_ids=: (::Array[String]) -> ::Array[String]
+
+        attr_reader reason: String?
+
+        def reason=: (String) -> String
+
+        attr_reader rollover_settings: MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings?
+
+        def rollover_settings=: (
+          MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings
+        ) -> MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings
+
+        attr_reader uniqueness_key: String?
+
+        def uniqueness_key=: (String) -> String
+
+        def initialize: (
+          customer_id: String,
+          expires_at: Time,
+          grant_amount: MetronomeSDK::Models::V1::CreditGrantCreateParams::GrantAmount,
+          name: String,
+          paid_amount: MetronomeSDK::Models::V1::CreditGrantCreateParams::PaidAmount,
+          priority: Float,
+          ?credit_grant_type: String,
+          ?custom_fields: ::Hash[Symbol, String],
+          ?effective_at: Time,
+          ?invoice_date: Time,
+          ?product_ids: ::Array[String],
+          ?reason: String,
+          ?rollover_settings: MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings,
+          ?uniqueness_key: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V1::credit_grant_create_params
+
+        type grant_amount = { amount: Float, credit_type_id: String }
+
+        class GrantAmount < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor amount: Float
+
+          attr_accessor credit_type_id: String
+
+          def initialize: (amount: Float, credit_type_id: String) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::CreditGrantCreateParams::grant_amount
+        end
+
+        type paid_amount = { amount: Float, credit_type_id: String }
+
+        class PaidAmount < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor amount: Float
+
+          attr_accessor credit_type_id: String
+
+          def initialize: (amount: Float, credit_type_id: String) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::CreditGrantCreateParams::paid_amount
+        end
+
+        type rollover_settings =
+          {
+            expires_at: Time,
+            priority: Float,
+            rollover_amount: MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::rollover_amount
+          }
+
+        class RolloverSettings < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor expires_at: Time
+
+          attr_accessor priority: Float
+
+          attr_accessor rollover_amount: MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::rollover_amount
+
+          def initialize: (
+            expires_at: Time,
+            priority: Float,
+            rollover_amount: MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::rollover_amount
+          ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::CreditGrantCreateParams::rollover_settings
+
+          type rollover_amount =
+            MetronomeSDK::Models::V1::RolloverAmountMaxPercentage
+            | MetronomeSDK::Models::V1::RolloverAmountMaxAmount
+
+          module RolloverAmount
+            extend MetronomeSDK::Internal::Type::Union
+
+            def self?.variants: -> [MetronomeSDK::Models::V1::RolloverAmountMaxPercentage, MetronomeSDK::Models::V1::RolloverAmountMaxAmount]
+          end
+        end
+      end
+    end
+  end
+end

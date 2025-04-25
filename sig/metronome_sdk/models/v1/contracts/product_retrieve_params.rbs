@@ -1,0 +1,19 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Contracts
+        type product_retrieve_params =
+          {  } & MetronomeSDK::Internal::Type::request_parameters
+
+        class ProductRetrieveParams < MetronomeSDK::Models::ID
+          extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+          include MetronomeSDK::Internal::Type::RequestParameters
+
+          def initialize: (?request_options: MetronomeSDK::request_opts) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::Contracts::product_retrieve_params
+        end
+      end
+    end
+  end
+end

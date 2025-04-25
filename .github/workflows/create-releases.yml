@@ -24,4 +24,4 @@ jobs:
       - name: Update RubyDocs
         if: ${{ steps.release.outputs.releases_created }}
         run: |
-          curl -i -H "Content-Type: application/json" -X POST -d '{"repository":{"url":"https://github.com/Metronome-Industries/metronome-ruby"}}' https://www.rubydoc.info/checkout
+          curl --request POST --include --header 'Content-Type: application/json' --data '{"repository":{"url":"https://github.com/Metronome-Industries/metronome-ruby"}}' -- https://www.rubydoc.info/checkout

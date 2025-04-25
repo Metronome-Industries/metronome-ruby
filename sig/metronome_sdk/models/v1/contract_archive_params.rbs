@@ -1,0 +1,29 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type contract_archive_params =
+        { contract_id: String, customer_id: String, void_invoices: bool }
+        & MetronomeSDK::Internal::Type::request_parameters
+
+      class ContractArchiveParams < MetronomeSDK::Internal::Type::BaseModel
+        extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+        include MetronomeSDK::Internal::Type::RequestParameters
+
+        attr_accessor contract_id: String
+
+        attr_accessor customer_id: String
+
+        attr_accessor void_invoices: bool
+
+        def initialize: (
+          contract_id: String,
+          customer_id: String,
+          void_invoices: bool,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V1::contract_archive_params
+      end
+    end
+  end
+end

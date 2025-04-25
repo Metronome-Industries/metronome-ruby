@@ -1,0 +1,24 @@
+module MetronomeSDK
+  module Models
+    type base_usage_filter =
+      { group_key: String, group_values: ::Array[String], starting_at: Time }
+
+    class BaseUsageFilter < MetronomeSDK::Internal::Type::BaseModel
+      attr_accessor group_key: String
+
+      attr_accessor group_values: ::Array[String]
+
+      attr_reader starting_at: Time?
+
+      def starting_at=: (Time) -> Time
+
+      def initialize: (
+        group_key: String,
+        group_values: ::Array[String],
+        ?starting_at: Time
+      ) -> void
+
+      def to_hash: -> MetronomeSDK::Models::base_usage_filter
+    end
+  end
+end

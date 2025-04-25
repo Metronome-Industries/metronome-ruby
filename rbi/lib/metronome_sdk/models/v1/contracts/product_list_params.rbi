@@ -1,0 +1,90 @@
+# typed: strong
+
+module MetronomeSDK
+  module Models
+    module V1
+      module Contracts
+        class ProductListParams < MetronomeSDK::Internal::Type::BaseModel
+          extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+          include MetronomeSDK::Internal::Type::RequestParameters
+
+          # Max number of results that should be returned
+          sig { returns(T.nilable(Integer)) }
+          attr_reader :limit
+
+          sig { params(limit: Integer).void }
+          attr_writer :limit
+
+          # Cursor that indicates where the next page of results should start.
+          sig { returns(T.nilable(String)) }
+          attr_reader :next_page
+
+          sig { params(next_page: String).void }
+          attr_writer :next_page
+
+          # Filter options for the product list
+          sig { returns(T.nilable(MetronomeSDK::Models::V1::Contracts::ProductListParams::ArchiveFilter::OrSymbol)) }
+          attr_reader :archive_filter
+
+          sig do
+            params(archive_filter: MetronomeSDK::Models::V1::Contracts::ProductListParams::ArchiveFilter::OrSymbol)
+              .void
+          end
+          attr_writer :archive_filter
+
+          sig do
+            params(
+              limit: Integer,
+              next_page: String,
+              archive_filter: MetronomeSDK::Models::V1::Contracts::ProductListParams::ArchiveFilter::OrSymbol,
+              request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
+            )
+              .returns(T.attached_class)
+          end
+          def self.new(
+            # Max number of results that should be returned
+            limit: nil,
+            # Cursor that indicates where the next page of results should start.
+            next_page: nil,
+            # Filter options for the product list
+            archive_filter: nil,
+            request_options: {}
+          ); end
+          sig do
+            override
+              .returns(
+                {
+                  limit: Integer,
+                  next_page: String,
+                  archive_filter: MetronomeSDK::Models::V1::Contracts::ProductListParams::ArchiveFilter::OrSymbol,
+                  request_options: MetronomeSDK::RequestOptions
+                }
+              )
+          end
+          def to_hash; end
+
+          # Filter options for the product list
+          module ArchiveFilter
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, MetronomeSDK::Models::V1::Contracts::ProductListParams::ArchiveFilter) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            ARCHIVED =
+              T.let(:ARCHIVED, MetronomeSDK::Models::V1::Contracts::ProductListParams::ArchiveFilter::TaggedSymbol)
+            NOT_ARCHIVED =
+              T.let(:NOT_ARCHIVED, MetronomeSDK::Models::V1::Contracts::ProductListParams::ArchiveFilter::TaggedSymbol)
+            ALL = T.let(:ALL, MetronomeSDK::Models::V1::Contracts::ProductListParams::ArchiveFilter::TaggedSymbol)
+
+            sig do
+              override
+                .returns(T::Array[MetronomeSDK::Models::V1::Contracts::ProductListParams::ArchiveFilter::TaggedSymbol])
+            end
+            def self.values; end
+          end
+        end
+      end
+    end
+  end
+end

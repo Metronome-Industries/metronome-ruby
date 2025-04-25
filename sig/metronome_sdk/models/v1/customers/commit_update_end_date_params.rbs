@@ -1,0 +1,43 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Customers
+        type commit_update_end_date_params =
+          {
+            commit_id: String,
+            customer_id: String,
+            access_ending_before: Time,
+            invoices_ending_before: Time
+          }
+          & MetronomeSDK::Internal::Type::request_parameters
+
+        class CommitUpdateEndDateParams < MetronomeSDK::Internal::Type::BaseModel
+          extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+          include MetronomeSDK::Internal::Type::RequestParameters
+
+          attr_accessor commit_id: String
+
+          attr_accessor customer_id: String
+
+          attr_reader access_ending_before: Time?
+
+          def access_ending_before=: (Time) -> Time
+
+          attr_reader invoices_ending_before: Time?
+
+          def invoices_ending_before=: (Time) -> Time
+
+          def initialize: (
+            commit_id: String,
+            customer_id: String,
+            ?access_ending_before: Time,
+            ?invoices_ending_before: Time,
+            ?request_options: MetronomeSDK::request_opts
+          ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::Customers::commit_update_end_date_params
+        end
+      end
+    end
+  end
+end

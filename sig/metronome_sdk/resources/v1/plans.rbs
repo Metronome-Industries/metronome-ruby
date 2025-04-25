@@ -1,0 +1,35 @@
+module MetronomeSDK
+  module Resources
+    class V1
+      class Plans
+        def list: (
+          ?limit: Integer,
+          ?next_page: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::PlanListResponse]
+
+        def get_details: (
+          plan_id: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V1::PlanGetDetailsResponse
+
+        def list_charges: (
+          plan_id: String,
+          ?limit: Integer,
+          ?next_page: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::PlanListChargesResponse]
+
+        def list_customers: (
+          plan_id: String,
+          ?limit: Integer,
+          ?next_page: String,
+          ?status: MetronomeSDK::Models::V1::PlanListCustomersParams::status,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::PlanListCustomersResponse]
+
+        def initialize: (client: MetronomeSDK::Client) -> void
+      end
+    end
+  end
+end

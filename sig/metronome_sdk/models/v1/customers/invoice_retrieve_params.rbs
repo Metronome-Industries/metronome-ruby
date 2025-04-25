@@ -1,0 +1,37 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Customers
+        type invoice_retrieve_params =
+          {
+            customer_id: String,
+            invoice_id: String,
+            skip_zero_qty_line_items: bool
+          }
+          & MetronomeSDK::Internal::Type::request_parameters
+
+        class InvoiceRetrieveParams < MetronomeSDK::Internal::Type::BaseModel
+          extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+          include MetronomeSDK::Internal::Type::RequestParameters
+
+          attr_accessor customer_id: String
+
+          attr_accessor invoice_id: String
+
+          attr_reader skip_zero_qty_line_items: bool?
+
+          def skip_zero_qty_line_items=: (bool) -> bool
+
+          def initialize: (
+            customer_id: String,
+            invoice_id: String,
+            ?skip_zero_qty_line_items: bool,
+            ?request_options: MetronomeSDK::request_opts
+          ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::Customers::invoice_retrieve_params
+        end
+      end
+    end
+  end
+end

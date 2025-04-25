@@ -1,0 +1,3 @@
+module MetronomeSDK
+  VERSION: String
+end

@@ -1,0 +1,152 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Customers
+        type credit_create_params =
+          {
+            access_schedule: MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule,
+            customer_id: String,
+            priority: Float,
+            product_id: String,
+            applicable_contract_ids: ::Array[String],
+            applicable_product_ids: ::Array[String],
+            applicable_product_tags: ::Array[String],
+            custom_fields: ::Hash[Symbol, String],
+            description: String,
+            name: String,
+            netsuite_sales_order_id: String,
+            rate_type: MetronomeSDK::Models::V1::Customers::CreditCreateParams::rate_type,
+            salesforce_opportunity_id: String,
+            uniqueness_key: String
+          }
+          & MetronomeSDK::Internal::Type::request_parameters
+
+        class CreditCreateParams < MetronomeSDK::Internal::Type::BaseModel
+          extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+          include MetronomeSDK::Internal::Type::RequestParameters
+
+          attr_accessor access_schedule: MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule
+
+          attr_accessor customer_id: String
+
+          attr_accessor priority: Float
+
+          attr_accessor product_id: String
+
+          attr_reader applicable_contract_ids: ::Array[String]?
+
+          def applicable_contract_ids=: (::Array[String]) -> ::Array[String]
+
+          attr_reader applicable_product_ids: ::Array[String]?
+
+          def applicable_product_ids=: (::Array[String]) -> ::Array[String]
+
+          attr_reader applicable_product_tags: ::Array[String]?
+
+          def applicable_product_tags=: (::Array[String]) -> ::Array[String]
+
+          attr_reader custom_fields: ::Hash[Symbol, String]?
+
+          def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+
+          attr_reader description: String?
+
+          def description=: (String) -> String
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          attr_reader netsuite_sales_order_id: String?
+
+          def netsuite_sales_order_id=: (String) -> String
+
+          attr_reader rate_type: MetronomeSDK::Models::V1::Customers::CreditCreateParams::rate_type?
+
+          def rate_type=: (
+            MetronomeSDK::Models::V1::Customers::CreditCreateParams::rate_type
+          ) -> MetronomeSDK::Models::V1::Customers::CreditCreateParams::rate_type
+
+          attr_reader salesforce_opportunity_id: String?
+
+          def salesforce_opportunity_id=: (String) -> String
+
+          attr_reader uniqueness_key: String?
+
+          def uniqueness_key=: (String) -> String
+
+          def initialize: (
+            access_schedule: MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule,
+            customer_id: String,
+            priority: Float,
+            product_id: String,
+            ?applicable_contract_ids: ::Array[String],
+            ?applicable_product_ids: ::Array[String],
+            ?applicable_product_tags: ::Array[String],
+            ?custom_fields: ::Hash[Symbol, String],
+            ?description: String,
+            ?name: String,
+            ?netsuite_sales_order_id: String,
+            ?rate_type: MetronomeSDK::Models::V1::Customers::CreditCreateParams::rate_type,
+            ?salesforce_opportunity_id: String,
+            ?uniqueness_key: String,
+            ?request_options: MetronomeSDK::request_opts
+          ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::Customers::credit_create_params
+
+          type access_schedule =
+            {
+              schedule_items: ::Array[MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem],
+              credit_type_id: String
+            }
+
+          class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor schedule_items: ::Array[MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem]
+
+            attr_reader credit_type_id: String?
+
+            def credit_type_id=: (String) -> String
+
+            def initialize: (
+              schedule_items: ::Array[MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem],
+              ?credit_type_id: String
+            ) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V1::Customers::CreditCreateParams::access_schedule
+
+            type schedule_item =
+              { amount: Float, ending_before: Time, starting_at: Time }
+
+            class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor amount: Float
+
+              attr_accessor ending_before: Time
+
+              attr_accessor starting_at: Time
+
+              def initialize: (
+                amount: Float,
+                ending_before: Time,
+                starting_at: Time
+              ) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule::schedule_item
+            end
+          end
+
+          type rate_type = :COMMIT_RATE | :LIST_RATE
+
+          module RateType
+            extend MetronomeSDK::Internal::Type::Enum
+
+            COMMIT_RATE: :COMMIT_RATE
+            LIST_RATE: :LIST_RATE
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::CreditCreateParams::rate_type]
+          end
+        end
+      end
+    end
+  end
+end

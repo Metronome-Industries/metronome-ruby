@@ -1,0 +1,90 @@
+module MetronomeSDK
+  module Resources
+    class V1
+      class Customers
+        attr_reader alerts: MetronomeSDK::Resources::V1::Customers::Alerts
+
+        attr_reader plans: MetronomeSDK::Resources::V1::Customers::Plans
+
+        attr_reader invoices: MetronomeSDK::Resources::V1::Customers::Invoices
+
+        attr_reader billing_config: MetronomeSDK::Resources::V1::Customers::BillingConfig
+
+        attr_reader commits: MetronomeSDK::Resources::V1::Customers::Commits
+
+        attr_reader credits: MetronomeSDK::Resources::V1::Customers::Credits
+
+        attr_reader named_schedules: MetronomeSDK::Resources::V1::Customers::NamedSchedules
+
+        def create: (
+          name: String,
+          ?billing_config: MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig,
+          ?custom_fields: ::Hash[Symbol, String],
+          ?customer_billing_provider_configurations: ::Array[MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration],
+          ?external_id: String,
+          ?ingest_aliases: ::Array[String],
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V1::CustomerCreateResponse
+
+        def retrieve: (
+          customer_id: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V1::CustomerRetrieveResponse
+
+        def list: (
+          ?customer_ids: ::Array[String],
+          ?ingest_alias: String,
+          ?limit: Integer,
+          ?next_page: String,
+          ?only_archived: bool,
+          ?salesforce_account_ids: ::Array[String],
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::CustomerDetail]
+
+        def archive: (
+          id: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V1::CustomerArchiveResponse
+
+        def list_billable_metrics: (
+          customer_id: String,
+          ?include_archived: bool,
+          ?limit: Integer,
+          ?next_page: String,
+          ?on_current_plan: bool,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::CustomerListBillableMetricsResponse]
+
+        def list_costs: (
+          customer_id: String,
+          ending_before: Time,
+          starting_on: Time,
+          ?limit: Integer,
+          ?next_page: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::CustomerListCostsResponse]
+
+        def set_ingest_aliases: (
+          customer_id: String,
+          ingest_aliases: ::Array[String],
+          ?request_options: MetronomeSDK::request_opts
+        ) -> nil
+
+        def set_name: (
+          customer_id: String,
+          name: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V1::CustomerSetNameResponse
+
+        def update_config: (
+          customer_id: String,
+          ?leave_stripe_invoices_in_draft: bool?,
+          ?salesforce_account_id: String?,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> nil
+
+        def initialize: (client: MetronomeSDK::Client) -> void
+      end
+    end
+  end
+end

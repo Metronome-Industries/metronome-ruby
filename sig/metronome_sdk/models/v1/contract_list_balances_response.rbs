@@ -1,0 +1,32 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type contract_list_balances_response =
+        {
+          data: ::Array[MetronomeSDK::Models::V1::ContractListBalancesResponse::data],
+          next_page: String?
+        }
+
+      class ContractListBalancesResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor data: ::Array[MetronomeSDK::Models::V1::ContractListBalancesResponse::data]
+
+        attr_accessor next_page: String?
+
+        def initialize: (
+          data: ::Array[MetronomeSDK::Models::V1::ContractListBalancesResponse::data],
+          next_page: String?
+        ) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V1::contract_list_balances_response
+
+        type data = MetronomeSDK::Models::Commit | MetronomeSDK::Models::Credit
+
+        module Data
+          extend MetronomeSDK::Internal::Type::Union
+
+          def self?.variants: -> [MetronomeSDK::Models::Commit, MetronomeSDK::Models::Credit]
+        end
+      end
+    end
+  end
+end

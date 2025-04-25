@@ -1,0 +1,42 @@
+module MetronomeSDK
+  module Resources
+    class V1
+      class CustomFields
+        def add_key: (
+          enforce_uniqueness: bool,
+          entity: MetronomeSDK::Models::V1::CustomFieldAddKeyParams::entity,
+          key: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> nil
+
+        def delete_values: (
+          entity: MetronomeSDK::Models::V1::CustomFieldDeleteValuesParams::entity,
+          entity_id: String,
+          keys: ::Array[String],
+          ?request_options: MetronomeSDK::request_opts
+        ) -> nil
+
+        def list_keys: (
+          ?next_page: String,
+          ?entities: ::Array[MetronomeSDK::Models::V1::CustomFieldListKeysParams::entity],
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V1::CustomFieldListKeysResponse
+
+        def remove_key: (
+          entity: MetronomeSDK::Models::V1::CustomFieldRemoveKeyParams::entity,
+          key: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> nil
+
+        def set_values: (
+          custom_fields: ::Hash[Symbol, String],
+          entity: MetronomeSDK::Models::V1::CustomFieldSetValuesParams::entity,
+          entity_id: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> nil
+
+        def initialize: (client: MetronomeSDK::Client) -> void
+      end
+    end
+  end
+end

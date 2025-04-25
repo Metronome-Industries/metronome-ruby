@@ -1,0 +1,41 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type contract_set_usage_filter_params =
+        {
+          contract_id: String,
+          customer_id: String,
+          group_key: String,
+          group_values: ::Array[String],
+          starting_at: Time
+        }
+        & MetronomeSDK::Internal::Type::request_parameters
+
+      class ContractSetUsageFilterParams < MetronomeSDK::Internal::Type::BaseModel
+        extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+        include MetronomeSDK::Internal::Type::RequestParameters
+
+        attr_accessor contract_id: String
+
+        attr_accessor customer_id: String
+
+        attr_accessor group_key: String
+
+        attr_accessor group_values: ::Array[String]
+
+        attr_accessor starting_at: Time
+
+        def initialize: (
+          contract_id: String,
+          customer_id: String,
+          group_key: String,
+          group_values: ::Array[String],
+          starting_at: Time,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V1::contract_set_usage_filter_params
+      end
+    end
+  end
+end

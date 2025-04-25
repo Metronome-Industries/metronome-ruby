@@ -1,0 +1,32 @@
+module MetronomeSDK
+  module Resources
+    class V1
+      class Alerts
+        def create: (
+          alert_type: MetronomeSDK::Models::V1::AlertCreateParams::alert_type,
+          name: String,
+          threshold: Float,
+          ?billable_metric_id: String,
+          ?credit_grant_type_filters: ::Array[String],
+          ?credit_type_id: String,
+          ?custom_field_filters: ::Array[MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter],
+          ?customer_id: String,
+          ?evaluate_on_create: bool,
+          ?group_key_filter: MetronomeSDK::Models::V1::AlertCreateParams::GroupKeyFilter,
+          ?invoice_types_filter: ::Array[String],
+          ?plan_id: String,
+          ?uniqueness_key: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V1::AlertCreateResponse
+
+        def archive: (
+          id: String,
+          ?release_uniqueness_key: bool,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V1::AlertArchiveResponse
+
+        def initialize: (client: MetronomeSDK::Client) -> void
+      end
+    end
+  end
+end

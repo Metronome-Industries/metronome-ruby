@@ -1,0 +1,16 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type contract_update_end_date_response =
+        { data: MetronomeSDK::Models::ID }
+
+      class ContractUpdateEndDateResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor data: MetronomeSDK::Models::ID
+
+        def initialize: (data: MetronomeSDK::Models::ID) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V1::contract_update_end_date_response
+      end
+    end
+  end
+end

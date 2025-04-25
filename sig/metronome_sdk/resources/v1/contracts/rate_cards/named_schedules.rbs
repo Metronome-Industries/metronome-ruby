@@ -1,0 +1,31 @@
+module MetronomeSDK
+  module Resources
+    class V1
+      class Contracts
+        class RateCards
+          class NamedSchedules
+            def retrieve: (
+              contract_id: String,
+              customer_id: String,
+              schedule_name: String,
+              ?covering_date: Time,
+              ?request_options: MetronomeSDK::request_opts
+            ) -> MetronomeSDK::Models::V1::Contracts::RateCards::NamedScheduleRetrieveResponse
+
+            def update: (
+              contract_id: String,
+              customer_id: String,
+              schedule_name: String,
+              starting_at: Time,
+              value: top,
+              ?ending_before: Time,
+              ?request_options: MetronomeSDK::request_opts
+            ) -> nil
+
+            def initialize: (client: MetronomeSDK::Client) -> void
+          end
+        end
+      end
+    end
+  end
+end
