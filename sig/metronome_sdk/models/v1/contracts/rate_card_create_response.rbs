@@ -1,0 +1,17 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Contracts
+        type rate_card_create_response = { data: MetronomeSDK::Models::ID }
+
+        class RateCardCreateResponse < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor data: MetronomeSDK::Models::ID
+
+          def initialize: (data: MetronomeSDK::Models::ID) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::Contracts::rate_card_create_response
+        end
+      end
+    end
+  end
+end

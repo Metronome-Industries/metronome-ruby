@@ -1,0 +1,15 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Customers
+        type invoice_add_charge_response = {  }
+
+        class InvoiceAddChargeResponse < MetronomeSDK::Internal::Type::BaseModel
+          def initialize: -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::Customers::invoice_add_charge_response
+        end
+      end
+    end
+  end
+end

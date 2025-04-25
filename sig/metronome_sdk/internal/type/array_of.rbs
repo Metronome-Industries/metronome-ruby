@@ -1,0 +1,45 @@
+module MetronomeSDK
+  module Internal
+    module Type
+      class ArrayOf[Elem]
+        include MetronomeSDK::Internal::Type::Converter
+
+        def self.[]: (
+          ::Hash[Symbol, top]
+          | ^-> MetronomeSDK::Internal::Type::Converter::input
+          | MetronomeSDK::Internal::Type::Converter::input type_info,
+          ?::Hash[Symbol, top] spec
+        ) -> instance
+
+        def ===: (top other) -> bool
+
+        def ==: (top other) -> bool
+
+        def hash: -> Integer
+
+        def coerce: (
+          ::Array[top] | top value,
+          state: MetronomeSDK::Internal::Type::Converter::coerce_state
+        ) -> (::Array[top] | top)
+
+        def dump: (
+          ::Array[top] | top value,
+          state: MetronomeSDK::Internal::Type::Converter::dump_state
+        ) -> (::Array[top] | top)
+
+        def item_type: -> Elem
+
+        def nilable?: -> bool
+
+        def initialize: (
+          ::Hash[Symbol, top]
+          | ^-> MetronomeSDK::Internal::Type::Converter::input
+          | MetronomeSDK::Internal::Type::Converter::input type_info,
+          ?::Hash[Symbol, top] spec
+        ) -> void
+
+        def inspect: (?depth: Integer) -> String
+      end
+    end
+  end
+end

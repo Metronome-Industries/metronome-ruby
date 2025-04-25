@@ -1,0 +1,81 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Customers
+        type commit_list_params =
+          {
+            customer_id: String,
+            commit_id: String,
+            covering_date: Time,
+            effective_before: Time,
+            include_archived: bool,
+            include_balance: bool,
+            include_contract_commits: bool,
+            include_ledgers: bool,
+            next_page: String,
+            starting_at: Time
+          }
+          & MetronomeSDK::Internal::Type::request_parameters
+
+        class CommitListParams < MetronomeSDK::Internal::Type::BaseModel
+          extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+          include MetronomeSDK::Internal::Type::RequestParameters
+
+          attr_accessor customer_id: String
+
+          attr_reader commit_id: String?
+
+          def commit_id=: (String) -> String
+
+          attr_reader covering_date: Time?
+
+          def covering_date=: (Time) -> Time
+
+          attr_reader effective_before: Time?
+
+          def effective_before=: (Time) -> Time
+
+          attr_reader include_archived: bool?
+
+          def include_archived=: (bool) -> bool
+
+          attr_reader include_balance: bool?
+
+          def include_balance=: (bool) -> bool
+
+          attr_reader include_contract_commits: bool?
+
+          def include_contract_commits=: (bool) -> bool
+
+          attr_reader include_ledgers: bool?
+
+          def include_ledgers=: (bool) -> bool
+
+          attr_reader next_page: String?
+
+          def next_page=: (String) -> String
+
+          attr_reader starting_at: Time?
+
+          def starting_at=: (Time) -> Time
+
+          def initialize: (
+            customer_id: String,
+            ?commit_id: String,
+            ?covering_date: Time,
+            ?effective_before: Time,
+            ?include_archived: bool,
+            ?include_balance: bool,
+            ?include_contract_commits: bool,
+            ?include_ledgers: bool,
+            ?next_page: String,
+            ?starting_at: Time,
+            ?request_options: MetronomeSDK::request_opts
+          ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::Customers::commit_list_params
+        end
+      end
+    end
+  end
+end

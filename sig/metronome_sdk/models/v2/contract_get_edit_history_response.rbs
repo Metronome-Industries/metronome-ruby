@@ -1,0 +1,2381 @@
+module MetronomeSDK
+  module Models
+    module V2
+      type contract_get_edit_history_response =
+        {
+          data: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data]
+        }
+
+      class ContractGetEditHistoryResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor data: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data]
+
+        def initialize: (
+          data: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data]
+        ) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V2::contract_get_edit_history_response
+
+        type data =
+          {
+            id: String,
+            add_commits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit],
+            add_credits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit],
+            add_discounts: ::Array[MetronomeSDK::Models::Discount],
+            add_overrides: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride],
+            add_pro_services: ::Array[MetronomeSDK::Models::ProService],
+            add_recurring_commits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit],
+            add_recurring_credits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit],
+            add_reseller_royalties: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddResellerRoyalty],
+            add_scheduled_charges: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge],
+            add_subscriptions: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription],
+            add_usage_filters: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddUsageFilter],
+            archive_commits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::ArchiveCommit],
+            archive_credits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::ArchiveCredit],
+            archive_scheduled_charges: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::ArchiveScheduledCharge],
+            remove_overrides: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::RemoveOverride],
+            timestamp: Time,
+            update_commits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit],
+            update_contract_end_date: Time,
+            update_credits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit],
+            update_discounts: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount],
+            update_refund_invoices: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRefundInvoice],
+            update_scheduled_charges: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge],
+            update_subscriptions: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription]
+          }
+
+        class Data < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_reader add_commits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit]?
+
+          def add_commits=: (
+            ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit]
+          ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit]
+
+          attr_reader add_credits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit]?
+
+          def add_credits=: (
+            ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit]
+          ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit]
+
+          attr_reader add_discounts: ::Array[MetronomeSDK::Models::Discount]?
+
+          def add_discounts=: (
+            ::Array[MetronomeSDK::Models::Discount]
+          ) -> ::Array[MetronomeSDK::Models::Discount]
+
+          attr_reader add_overrides: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride]?
+
+          def add_overrides=: (
+            ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride]
+          ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride]
+
+          attr_reader add_pro_services: ::Array[MetronomeSDK::Models::ProService]?
+
+          def add_pro_services=: (
+            ::Array[MetronomeSDK::Models::ProService]
+          ) -> ::Array[MetronomeSDK::Models::ProService]
+
+          attr_reader add_recurring_commits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit]?
+
+          def add_recurring_commits=: (
+            ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit]
+          ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit]
+
+          attr_reader add_recurring_credits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit]?
+
+          def add_recurring_credits=: (
+            ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit]
+          ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit]
+
+          attr_reader add_reseller_royalties: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddResellerRoyalty]?
+
+          def add_reseller_royalties=: (
+            ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddResellerRoyalty]
+          ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddResellerRoyalty]
+
+          attr_reader add_scheduled_charges: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge]?
+
+          def add_scheduled_charges=: (
+            ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge]
+          ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge]
+
+          attr_reader add_subscriptions: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription]?
+
+          def add_subscriptions=: (
+            ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription]
+          ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription]
+
+          attr_reader add_usage_filters: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddUsageFilter]?
+
+          def add_usage_filters=: (
+            ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddUsageFilter]
+          ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddUsageFilter]
+
+          attr_reader archive_commits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::ArchiveCommit]?
+
+          def archive_commits=: (
+            ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::ArchiveCommit]
+          ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::ArchiveCommit]
+
+          attr_reader archive_credits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::ArchiveCredit]?
+
+          def archive_credits=: (
+            ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::ArchiveCredit]
+          ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::ArchiveCredit]
+
+          attr_reader archive_scheduled_charges: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::ArchiveScheduledCharge]?
+
+          def archive_scheduled_charges=: (
+            ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::ArchiveScheduledCharge]
+          ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::ArchiveScheduledCharge]
+
+          attr_reader remove_overrides: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::RemoveOverride]?
+
+          def remove_overrides=: (
+            ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::RemoveOverride]
+          ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::RemoveOverride]
+
+          attr_reader timestamp: Time?
+
+          def timestamp=: (Time) -> Time
+
+          attr_reader update_commits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit]?
+
+          def update_commits=: (
+            ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit]
+          ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit]
+
+          attr_reader update_contract_end_date: Time?
+
+          def update_contract_end_date=: (Time) -> Time
+
+          attr_reader update_credits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit]?
+
+          def update_credits=: (
+            ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit]
+          ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit]
+
+          attr_reader update_discounts: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount]?
+
+          def update_discounts=: (
+            ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount]
+          ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount]
+
+          attr_reader update_refund_invoices: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRefundInvoice]?
+
+          def update_refund_invoices=: (
+            ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRefundInvoice]
+          ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRefundInvoice]
+
+          attr_reader update_scheduled_charges: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge]?
+
+          def update_scheduled_charges=: (
+            ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge]
+          ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge]
+
+          attr_reader update_subscriptions: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription]?
+
+          def update_subscriptions=: (
+            ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription]
+          ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription]
+
+          def initialize: (
+            id: String,
+            ?add_commits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit],
+            ?add_credits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit],
+            ?add_discounts: ::Array[MetronomeSDK::Models::Discount],
+            ?add_overrides: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride],
+            ?add_pro_services: ::Array[MetronomeSDK::Models::ProService],
+            ?add_recurring_commits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit],
+            ?add_recurring_credits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit],
+            ?add_reseller_royalties: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddResellerRoyalty],
+            ?add_scheduled_charges: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge],
+            ?add_subscriptions: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription],
+            ?add_usage_filters: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddUsageFilter],
+            ?archive_commits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::ArchiveCommit],
+            ?archive_credits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::ArchiveCredit],
+            ?archive_scheduled_charges: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::ArchiveScheduledCharge],
+            ?remove_overrides: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::RemoveOverride],
+            ?timestamp: Time,
+            ?update_commits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit],
+            ?update_contract_end_date: Time,
+            ?update_credits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit],
+            ?update_discounts: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount],
+            ?update_refund_invoices: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRefundInvoice],
+            ?update_scheduled_charges: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge],
+            ?update_subscriptions: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription]
+          ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::data
+
+          type add_commit =
+            {
+              id: String,
+              product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Product,
+              type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::type_,
+              access_schedule: MetronomeSDK::Models::ScheduleDuration,
+              applicable_product_ids: ::Array[String],
+              applicable_product_tags: ::Array[String],
+              description: String,
+              invoice_schedule: MetronomeSDK::Models::SchedulePointInTime,
+              name: String,
+              netsuite_sales_order_id: String,
+              priority: Float,
+              rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::rate_type,
+              rollover_fraction: Float,
+              salesforce_opportunity_id: String
+            }
+
+          class AddCommit < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Product
+
+            attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::type_
+
+            attr_reader access_schedule: MetronomeSDK::Models::ScheduleDuration?
+
+            def access_schedule=: (
+              MetronomeSDK::Models::ScheduleDuration
+            ) -> MetronomeSDK::Models::ScheduleDuration
+
+            attr_reader applicable_product_ids: ::Array[String]?
+
+            def applicable_product_ids=: (::Array[String]) -> ::Array[String]
+
+            attr_reader applicable_product_tags: ::Array[String]?
+
+            def applicable_product_tags=: (::Array[String]) -> ::Array[String]
+
+            attr_reader description: String?
+
+            def description=: (String) -> String
+
+            attr_reader invoice_schedule: MetronomeSDK::Models::SchedulePointInTime?
+
+            def invoice_schedule=: (
+              MetronomeSDK::Models::SchedulePointInTime
+            ) -> MetronomeSDK::Models::SchedulePointInTime
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_reader netsuite_sales_order_id: String?
+
+            def netsuite_sales_order_id=: (String) -> String
+
+            attr_reader priority: Float?
+
+            def priority=: (Float) -> Float
+
+            attr_reader rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::rate_type?
+
+            def rate_type=: (
+              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::rate_type
+            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::rate_type
+
+            attr_reader rollover_fraction: Float?
+
+            def rollover_fraction=: (Float) -> Float
+
+            attr_reader salesforce_opportunity_id: String?
+
+            def salesforce_opportunity_id=: (String) -> String
+
+            def initialize: (
+              id: String,
+              product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Product,
+              type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::type_,
+              ?access_schedule: MetronomeSDK::Models::ScheduleDuration,
+              ?applicable_product_ids: ::Array[String],
+              ?applicable_product_tags: ::Array[String],
+              ?description: String,
+              ?invoice_schedule: MetronomeSDK::Models::SchedulePointInTime,
+              ?name: String,
+              ?netsuite_sales_order_id: String,
+              ?priority: Float,
+              ?rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::rate_type,
+              ?rollover_fraction: Float,
+              ?salesforce_opportunity_id: String
+            ) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::add_commit
+
+            type product = { id: String, name: String }
+
+            class Product < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor name: String
+
+              def initialize: (id: String, name: String) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::product
+            end
+
+            type type_ = :PREPAID | :POSTPAID
+
+            module Type
+              extend MetronomeSDK::Internal::Type::Enum
+
+              PREPAID: :PREPAID
+              POSTPAID: :POSTPAID
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::type_]
+            end
+
+            type rate_type = :COMMIT_RATE | :LIST_RATE
+
+            module RateType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              COMMIT_RATE: :COMMIT_RATE
+              LIST_RATE: :LIST_RATE
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::rate_type]
+            end
+          end
+
+          type add_credit =
+            {
+              id: String,
+              product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Product,
+              type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::type_,
+              access_schedule: MetronomeSDK::Models::ScheduleDuration,
+              applicable_product_ids: ::Array[String],
+              applicable_product_tags: ::Array[String],
+              description: String,
+              name: String,
+              netsuite_sales_order_id: String,
+              priority: Float,
+              salesforce_opportunity_id: String
+            }
+
+          class AddCredit < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Product
+
+            attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::type_
+
+            attr_reader access_schedule: MetronomeSDK::Models::ScheduleDuration?
+
+            def access_schedule=: (
+              MetronomeSDK::Models::ScheduleDuration
+            ) -> MetronomeSDK::Models::ScheduleDuration
+
+            attr_reader applicable_product_ids: ::Array[String]?
+
+            def applicable_product_ids=: (::Array[String]) -> ::Array[String]
+
+            attr_reader applicable_product_tags: ::Array[String]?
+
+            def applicable_product_tags=: (::Array[String]) -> ::Array[String]
+
+            attr_reader description: String?
+
+            def description=: (String) -> String
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_reader netsuite_sales_order_id: String?
+
+            def netsuite_sales_order_id=: (String) -> String
+
+            attr_reader priority: Float?
+
+            def priority=: (Float) -> Float
+
+            attr_reader salesforce_opportunity_id: String?
+
+            def salesforce_opportunity_id=: (String) -> String
+
+            def initialize: (
+              id: String,
+              product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Product,
+              type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::type_,
+              ?access_schedule: MetronomeSDK::Models::ScheduleDuration,
+              ?applicable_product_ids: ::Array[String],
+              ?applicable_product_tags: ::Array[String],
+              ?description: String,
+              ?name: String,
+              ?netsuite_sales_order_id: String,
+              ?priority: Float,
+              ?salesforce_opportunity_id: String
+            ) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::add_credit
+
+            type product = { id: String, name: String }
+
+            class Product < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor name: String
+
+              def initialize: (id: String, name: String) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::product
+            end
+
+            type type_ = :CREDIT
+
+            module Type
+              extend MetronomeSDK::Internal::Type::Enum
+
+              CREDIT: :CREDIT
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::type_]
+            end
+          end
+
+          type add_override =
+            {
+              id: String,
+              starting_at: Time,
+              applicable_product_tags: ::Array[String],
+              ending_before: Time,
+              entitled: bool,
+              is_commit_specific: bool,
+              multiplier: Float,
+              override_specifiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier],
+              override_tiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideTier],
+              overwrite_rate: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate,
+              priority: Float,
+              product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::Product,
+              target: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::target,
+              type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::type_
+            }
+
+          class AddOverride < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor starting_at: Time
+
+            attr_reader applicable_product_tags: ::Array[String]?
+
+            def applicable_product_tags=: (::Array[String]) -> ::Array[String]
+
+            attr_reader ending_before: Time?
+
+            def ending_before=: (Time) -> Time
+
+            attr_reader entitled: bool?
+
+            def entitled=: (bool) -> bool
+
+            attr_reader is_commit_specific: bool?
+
+            def is_commit_specific=: (bool) -> bool
+
+            attr_reader multiplier: Float?
+
+            def multiplier=: (Float) -> Float
+
+            attr_reader override_specifiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier]?
+
+            def override_specifiers=: (
+              ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier]
+            ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier]
+
+            attr_reader override_tiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideTier]?
+
+            def override_tiers=: (
+              ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideTier]
+            ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideTier]
+
+            attr_reader overwrite_rate: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate?
+
+            def overwrite_rate=: (
+              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate
+            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate
+
+            attr_reader priority: Float?
+
+            def priority=: (Float) -> Float
+
+            attr_reader product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::Product?
+
+            def product=: (
+              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::Product
+            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::Product
+
+            attr_reader target: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::target?
+
+            def target=: (
+              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::target
+            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::target
+
+            attr_reader type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::type_?
+
+            def type=: (
+              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::type_
+            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::type_
+
+            def initialize: (
+              id: String,
+              starting_at: Time,
+              ?applicable_product_tags: ::Array[String],
+              ?ending_before: Time,
+              ?entitled: bool,
+              ?is_commit_specific: bool,
+              ?multiplier: Float,
+              ?override_specifiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier],
+              ?override_tiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideTier],
+              ?overwrite_rate: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate,
+              ?priority: Float,
+              ?product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::Product,
+              ?target: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::target,
+              ?type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::type_
+            ) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::add_override
+
+            type override_specifier =
+              {
+                billing_frequency: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier::billing_frequency,
+                commit_ids: ::Array[String],
+                presentation_group_values: ::Hash[Symbol, String?],
+                pricing_group_values: ::Hash[Symbol, String],
+                product_id: String,
+                product_tags: ::Array[String],
+                recurring_commit_ids: ::Array[String],
+                recurring_credit_ids: ::Array[String]
+              }
+
+            class OverrideSpecifier < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader billing_frequency: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier::billing_frequency?
+
+              def billing_frequency=: (
+                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier::billing_frequency
+              ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier::billing_frequency
+
+              attr_reader commit_ids: ::Array[String]?
+
+              def commit_ids=: (::Array[String]) -> ::Array[String]
+
+              attr_reader presentation_group_values: ::Hash[Symbol, String?]?
+
+              def presentation_group_values=: (
+                ::Hash[Symbol, String?]
+              ) -> ::Hash[Symbol, String?]
+
+              attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+              def pricing_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader product_id: String?
+
+              def product_id=: (String) -> String
+
+              attr_reader product_tags: ::Array[String]?
+
+              def product_tags=: (::Array[String]) -> ::Array[String]
+
+              attr_reader recurring_commit_ids: ::Array[String]?
+
+              def recurring_commit_ids=: (::Array[String]) -> ::Array[String]
+
+              attr_reader recurring_credit_ids: ::Array[String]?
+
+              def recurring_credit_ids=: (::Array[String]) -> ::Array[String]
+
+              def initialize: (
+                ?billing_frequency: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier::billing_frequency,
+                ?commit_ids: ::Array[String],
+                ?presentation_group_values: ::Hash[Symbol, String?],
+                ?pricing_group_values: ::Hash[Symbol, String],
+                ?product_id: String,
+                ?product_tags: ::Array[String],
+                ?recurring_commit_ids: ::Array[String],
+                ?recurring_credit_ids: ::Array[String]
+              ) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::override_specifier
+
+              type billing_frequency = :MONTHLY | :QUARTERLY | :ANNUAL
+
+              module BillingFrequency
+                extend MetronomeSDK::Internal::Type::Enum
+
+                MONTHLY: :MONTHLY
+                QUARTERLY: :QUARTERLY
+                ANNUAL: :ANNUAL
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier::billing_frequency]
+              end
+            end
+
+            type override_tier = { multiplier: Float, size: Float }
+
+            class OverrideTier < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor multiplier: Float
+
+              attr_reader size: Float?
+
+              def size=: (Float) -> Float
+
+              def initialize: (multiplier: Float, ?size: Float) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::override_tier
+            end
+
+            type overwrite_rate =
+              {
+                rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::rate_type,
+                credit_type: MetronomeSDK::Models::CreditTypeData,
+                custom_rate: ::Hash[Symbol, top],
+                is_prorated: bool,
+                price: Float,
+                quantity: Float,
+                tiers: ::Array[MetronomeSDK::Models::Tier]
+              }
+
+            class OverwriteRate < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::rate_type
+
+              attr_reader credit_type: MetronomeSDK::Models::CreditTypeData?
+
+              def credit_type=: (
+                MetronomeSDK::Models::CreditTypeData
+              ) -> MetronomeSDK::Models::CreditTypeData
+
+              attr_reader custom_rate: ::Hash[Symbol, top]?
+
+              def custom_rate=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+              attr_reader is_prorated: bool?
+
+              def is_prorated=: (bool) -> bool
+
+              attr_reader price: Float?
+
+              def price=: (Float) -> Float
+
+              attr_reader quantity: Float?
+
+              def quantity=: (Float) -> Float
+
+              attr_reader tiers: ::Array[MetronomeSDK::Models::Tier]?
+
+              def tiers=: (
+                ::Array[MetronomeSDK::Models::Tier]
+              ) -> ::Array[MetronomeSDK::Models::Tier]
+
+              def initialize: (
+                rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::rate_type,
+                ?credit_type: MetronomeSDK::Models::CreditTypeData,
+                ?custom_rate: ::Hash[Symbol, top],
+                ?is_prorated: bool,
+                ?price: Float,
+                ?quantity: Float,
+                ?tiers: ::Array[MetronomeSDK::Models::Tier]
+              ) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::overwrite_rate
+
+              type rate_type =
+                :FLAT | :PERCENTAGE | :SUBSCRIPTION | :TIERED | :CUSTOM
+
+              module RateType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                FLAT: :FLAT
+                PERCENTAGE: :PERCENTAGE
+                SUBSCRIPTION: :SUBSCRIPTION
+                TIERED: :TIERED
+                CUSTOM: :CUSTOM
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::rate_type]
+              end
+            end
+
+            type product = { id: String, name: String }
+
+            class Product < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor name: String
+
+              def initialize: (id: String, name: String) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::product
+            end
+
+            type target = :COMMIT_RATE | :LIST_RATE
+
+            module Target
+              extend MetronomeSDK::Internal::Type::Enum
+
+              COMMIT_RATE: :COMMIT_RATE
+              LIST_RATE: :LIST_RATE
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::target]
+            end
+
+            type type_ = :OVERWRITE | :MULTIPLIER | :TIERED
+
+            module Type
+              extend MetronomeSDK::Internal::Type::Enum
+
+              OVERWRITE: :OVERWRITE
+              MULTIPLIER: :MULTIPLIER
+              TIERED: :TIERED
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::type_]
+            end
+          end
+
+          type add_recurring_commit =
+            {
+              id: String,
+              access_amount: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::AccessAmount,
+              commit_duration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::CommitDuration,
+              priority: Float,
+              product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Product,
+              rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::rate_type,
+              starting_at: Time,
+              applicable_product_ids: ::Array[String],
+              applicable_product_tags: ::Array[String],
+              contract: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Contract,
+              description: String,
+              ending_before: Time,
+              invoice_amount: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::InvoiceAmount,
+              name: String,
+              netsuite_sales_order_id: String,
+              proration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::proration,
+              recurrence_frequency: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::recurrence_frequency,
+              rollover_fraction: Float
+            }
+
+          class AddRecurringCommit < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor access_amount: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::AccessAmount
+
+            attr_accessor commit_duration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::CommitDuration
+
+            attr_accessor priority: Float
+
+            attr_accessor product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Product
+
+            attr_accessor rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::rate_type
+
+            attr_accessor starting_at: Time
+
+            attr_reader applicable_product_ids: ::Array[String]?
+
+            def applicable_product_ids=: (::Array[String]) -> ::Array[String]
+
+            attr_reader applicable_product_tags: ::Array[String]?
+
+            def applicable_product_tags=: (::Array[String]) -> ::Array[String]
+
+            attr_reader contract: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Contract?
+
+            def contract=: (
+              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Contract
+            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Contract
+
+            attr_reader description: String?
+
+            def description=: (String) -> String
+
+            attr_reader ending_before: Time?
+
+            def ending_before=: (Time) -> Time
+
+            attr_reader invoice_amount: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::InvoiceAmount?
+
+            def invoice_amount=: (
+              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::InvoiceAmount
+            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::InvoiceAmount
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_reader netsuite_sales_order_id: String?
+
+            def netsuite_sales_order_id=: (String) -> String
+
+            attr_reader proration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::proration?
+
+            def proration=: (
+              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::proration
+            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::proration
+
+            attr_reader recurrence_frequency: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::recurrence_frequency?
+
+            def recurrence_frequency=: (
+              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::recurrence_frequency
+            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::recurrence_frequency
+
+            attr_reader rollover_fraction: Float?
+
+            def rollover_fraction=: (Float) -> Float
+
+            def initialize: (
+              id: String,
+              access_amount: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::AccessAmount,
+              commit_duration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::CommitDuration,
+              priority: Float,
+              product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Product,
+              rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::rate_type,
+              starting_at: Time,
+              ?applicable_product_ids: ::Array[String],
+              ?applicable_product_tags: ::Array[String],
+              ?contract: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Contract,
+              ?description: String,
+              ?ending_before: Time,
+              ?invoice_amount: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::InvoiceAmount,
+              ?name: String,
+              ?netsuite_sales_order_id: String,
+              ?proration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::proration,
+              ?recurrence_frequency: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::recurrence_frequency,
+              ?rollover_fraction: Float
+            ) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::add_recurring_commit
+
+            type access_amount =
+              { credit_type_id: String, quantity: Float, unit_price: Float }
+
+            class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor credit_type_id: String
+
+              attr_accessor quantity: Float
+
+              attr_accessor unit_price: Float
+
+              def initialize: (
+                credit_type_id: String,
+                quantity: Float,
+                unit_price: Float
+              ) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::access_amount
+            end
+
+            type commit_duration =
+              {
+                value: Float,
+                unit: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::CommitDuration::unit
+              }
+
+            class CommitDuration < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor value: Float
+
+              attr_reader unit: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::CommitDuration::unit?
+
+              def unit=: (
+                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::CommitDuration::unit
+              ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::CommitDuration::unit
+
+              def initialize: (
+                value: Float,
+                ?unit: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::CommitDuration::unit
+              ) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::commit_duration
+
+              type unit = :PERIODS
+
+              module Unit
+                extend MetronomeSDK::Internal::Type::Enum
+
+                PERIODS: :PERIODS
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::CommitDuration::unit]
+              end
+            end
+
+            type product = { id: String, name: String }
+
+            class Product < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor name: String
+
+              def initialize: (id: String, name: String) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::product
+            end
+
+            type rate_type = :COMMIT_RATE | :LIST_RATE
+
+            module RateType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              COMMIT_RATE: :COMMIT_RATE
+              LIST_RATE: :LIST_RATE
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::rate_type]
+            end
+
+            type contract = { id: String }
+
+            class Contract < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              def initialize: (id: String) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::contract
+            end
+
+            type invoice_amount =
+              { credit_type_id: String, quantity: Float, unit_price: Float }
+
+            class InvoiceAmount < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor credit_type_id: String
+
+              attr_accessor quantity: Float
+
+              attr_accessor unit_price: Float
+
+              def initialize: (
+                credit_type_id: String,
+                quantity: Float,
+                unit_price: Float
+              ) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::invoice_amount
+            end
+
+            type proration = :NONE | :FIRST | :LAST | :FIRST_AND_LAST
+
+            module Proration
+              extend MetronomeSDK::Internal::Type::Enum
+
+              NONE: :NONE
+              FIRST: :FIRST
+              LAST: :LAST
+              FIRST_AND_LAST: :FIRST_AND_LAST
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::proration]
+            end
+
+            type recurrence_frequency =
+              :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+
+            module RecurrenceFrequency
+              extend MetronomeSDK::Internal::Type::Enum
+
+              MONTHLY: :MONTHLY
+              QUARTERLY: :QUARTERLY
+              ANNUAL: :ANNUAL
+              WEEKLY: :WEEKLY
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::recurrence_frequency]
+            end
+          end
+
+          type add_recurring_credit =
+            {
+              id: String,
+              access_amount: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::AccessAmount,
+              commit_duration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::CommitDuration,
+              priority: Float,
+              product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Product,
+              rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::rate_type,
+              starting_at: Time,
+              applicable_product_ids: ::Array[String],
+              applicable_product_tags: ::Array[String],
+              contract: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Contract,
+              description: String,
+              ending_before: Time,
+              name: String,
+              netsuite_sales_order_id: String,
+              proration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::proration,
+              recurrence_frequency: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::recurrence_frequency,
+              rollover_fraction: Float
+            }
+
+          class AddRecurringCredit < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor access_amount: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::AccessAmount
+
+            attr_accessor commit_duration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::CommitDuration
+
+            attr_accessor priority: Float
+
+            attr_accessor product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Product
+
+            attr_accessor rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::rate_type
+
+            attr_accessor starting_at: Time
+
+            attr_reader applicable_product_ids: ::Array[String]?
+
+            def applicable_product_ids=: (::Array[String]) -> ::Array[String]
+
+            attr_reader applicable_product_tags: ::Array[String]?
+
+            def applicable_product_tags=: (::Array[String]) -> ::Array[String]
+
+            attr_reader contract: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Contract?
+
+            def contract=: (
+              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Contract
+            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Contract
+
+            attr_reader description: String?
+
+            def description=: (String) -> String
+
+            attr_reader ending_before: Time?
+
+            def ending_before=: (Time) -> Time
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_reader netsuite_sales_order_id: String?
+
+            def netsuite_sales_order_id=: (String) -> String
+
+            attr_reader proration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::proration?
+
+            def proration=: (
+              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::proration
+            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::proration
+
+            attr_reader recurrence_frequency: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::recurrence_frequency?
+
+            def recurrence_frequency=: (
+              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::recurrence_frequency
+            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::recurrence_frequency
+
+            attr_reader rollover_fraction: Float?
+
+            def rollover_fraction=: (Float) -> Float
+
+            def initialize: (
+              id: String,
+              access_amount: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::AccessAmount,
+              commit_duration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::CommitDuration,
+              priority: Float,
+              product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Product,
+              rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::rate_type,
+              starting_at: Time,
+              ?applicable_product_ids: ::Array[String],
+              ?applicable_product_tags: ::Array[String],
+              ?contract: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Contract,
+              ?description: String,
+              ?ending_before: Time,
+              ?name: String,
+              ?netsuite_sales_order_id: String,
+              ?proration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::proration,
+              ?recurrence_frequency: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::recurrence_frequency,
+              ?rollover_fraction: Float
+            ) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::add_recurring_credit
+
+            type access_amount =
+              { credit_type_id: String, quantity: Float, unit_price: Float }
+
+            class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor credit_type_id: String
+
+              attr_accessor quantity: Float
+
+              attr_accessor unit_price: Float
+
+              def initialize: (
+                credit_type_id: String,
+                quantity: Float,
+                unit_price: Float
+              ) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::access_amount
+            end
+
+            type commit_duration =
+              {
+                value: Float,
+                unit: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::CommitDuration::unit
+              }
+
+            class CommitDuration < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor value: Float
+
+              attr_reader unit: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::CommitDuration::unit?
+
+              def unit=: (
+                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::CommitDuration::unit
+              ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::CommitDuration::unit
+
+              def initialize: (
+                value: Float,
+                ?unit: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::CommitDuration::unit
+              ) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::commit_duration
+
+              type unit = :PERIODS
+
+              module Unit
+                extend MetronomeSDK::Internal::Type::Enum
+
+                PERIODS: :PERIODS
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::CommitDuration::unit]
+              end
+            end
+
+            type product = { id: String, name: String }
+
+            class Product < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor name: String
+
+              def initialize: (id: String, name: String) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::product
+            end
+
+            type rate_type = :COMMIT_RATE | :LIST_RATE
+
+            module RateType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              COMMIT_RATE: :COMMIT_RATE
+              LIST_RATE: :LIST_RATE
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::rate_type]
+            end
+
+            type contract = { id: String }
+
+            class Contract < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              def initialize: (id: String) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::contract
+            end
+
+            type proration = :NONE | :FIRST | :LAST | :FIRST_AND_LAST
+
+            module Proration
+              extend MetronomeSDK::Internal::Type::Enum
+
+              NONE: :NONE
+              FIRST: :FIRST
+              LAST: :LAST
+              FIRST_AND_LAST: :FIRST_AND_LAST
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::proration]
+            end
+
+            type recurrence_frequency =
+              :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+
+            module RecurrenceFrequency
+              extend MetronomeSDK::Internal::Type::Enum
+
+              MONTHLY: :MONTHLY
+              QUARTERLY: :QUARTERLY
+              ANNUAL: :ANNUAL
+              WEEKLY: :WEEKLY
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::recurrence_frequency]
+            end
+          end
+
+          type add_reseller_royalty =
+            {
+              reseller_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddResellerRoyalty::reseller_type,
+              applicable_product_ids: ::Array[String],
+              applicable_product_tags: ::Array[String],
+              aws_account_number: String,
+              aws_offer_id: String,
+              aws_payer_reference_id: String,
+              ending_before: Time?,
+              fraction: Float,
+              gcp_account_id: String,
+              gcp_offer_id: String,
+              netsuite_reseller_id: String,
+              reseller_contract_value: Float,
+              starting_at: Time
+            }
+
+          class AddResellerRoyalty < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor reseller_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddResellerRoyalty::reseller_type
+
+            attr_reader applicable_product_ids: ::Array[String]?
+
+            def applicable_product_ids=: (::Array[String]) -> ::Array[String]
+
+            attr_reader applicable_product_tags: ::Array[String]?
+
+            def applicable_product_tags=: (::Array[String]) -> ::Array[String]
+
+            attr_reader aws_account_number: String?
+
+            def aws_account_number=: (String) -> String
+
+            attr_reader aws_offer_id: String?
+
+            def aws_offer_id=: (String) -> String
+
+            attr_reader aws_payer_reference_id: String?
+
+            def aws_payer_reference_id=: (String) -> String
+
+            attr_accessor ending_before: Time?
+
+            attr_reader fraction: Float?
+
+            def fraction=: (Float) -> Float
+
+            attr_reader gcp_account_id: String?
+
+            def gcp_account_id=: (String) -> String
+
+            attr_reader gcp_offer_id: String?
+
+            def gcp_offer_id=: (String) -> String
+
+            attr_reader netsuite_reseller_id: String?
+
+            def netsuite_reseller_id=: (String) -> String
+
+            attr_reader reseller_contract_value: Float?
+
+            def reseller_contract_value=: (Float) -> Float
+
+            attr_reader starting_at: Time?
+
+            def starting_at=: (Time) -> Time
+
+            def initialize: (
+              reseller_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddResellerRoyalty::reseller_type,
+              ?applicable_product_ids: ::Array[String],
+              ?applicable_product_tags: ::Array[String],
+              ?aws_account_number: String,
+              ?aws_offer_id: String,
+              ?aws_payer_reference_id: String,
+              ?ending_before: Time?,
+              ?fraction: Float,
+              ?gcp_account_id: String,
+              ?gcp_offer_id: String,
+              ?netsuite_reseller_id: String,
+              ?reseller_contract_value: Float,
+              ?starting_at: Time
+            ) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::add_reseller_royalty
+
+            type reseller_type =
+              :AWS | :AWS_PRO_SERVICE | :GCP | :GCP_PRO_SERVICE
+
+            module ResellerType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              AWS: :AWS
+              AWS_PRO_SERVICE: :AWS_PRO_SERVICE
+              GCP: :GCP
+              GCP_PRO_SERVICE: :GCP_PRO_SERVICE
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddResellerRoyalty::reseller_type]
+            end
+          end
+
+          type add_scheduled_charge =
+            {
+              id: String,
+              product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Product,
+              schedule: MetronomeSDK::Models::SchedulePointInTime,
+              name: String,
+              netsuite_sales_order_id: String
+            }
+
+          class AddScheduledCharge < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Product
+
+            attr_accessor schedule: MetronomeSDK::Models::SchedulePointInTime
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_reader netsuite_sales_order_id: String?
+
+            def netsuite_sales_order_id=: (String) -> String
+
+            def initialize: (
+              id: String,
+              product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Product,
+              schedule: MetronomeSDK::Models::SchedulePointInTime,
+              ?name: String,
+              ?netsuite_sales_order_id: String
+            ) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::add_scheduled_charge
+
+            type product = { id: String, name: String }
+
+            class Product < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor name: String
+
+              def initialize: (id: String, name: String) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::product
+            end
+          end
+
+          type add_subscription =
+            {
+              collection_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::collection_schedule,
+              proration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::Proration,
+              quantity_schedule: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::QuantitySchedule],
+              starting_at: Time,
+              subscription_rate: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SubscriptionRate,
+              id: String,
+              custom_fields: ::Hash[Symbol, String],
+              description: String,
+              ending_before: Time,
+              fiat_credit_type_id: String,
+              name: String
+            }
+
+          class AddSubscription < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor collection_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::collection_schedule
+
+            attr_accessor proration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::Proration
+
+            attr_accessor quantity_schedule: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::QuantitySchedule]
+
+            attr_accessor starting_at: Time
+
+            attr_accessor subscription_rate: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SubscriptionRate
+
+            attr_reader id: String?
+
+            def id=: (String) -> String
+
+            attr_reader custom_fields: ::Hash[Symbol, String]?
+
+            def custom_fields=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader description: String?
+
+            def description=: (String) -> String
+
+            attr_reader ending_before: Time?
+
+            def ending_before=: (Time) -> Time
+
+            attr_reader fiat_credit_type_id: String?
+
+            def fiat_credit_type_id=: (String) -> String
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            def initialize: (
+              collection_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::collection_schedule,
+              proration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::Proration,
+              quantity_schedule: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::QuantitySchedule],
+              starting_at: Time,
+              subscription_rate: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SubscriptionRate,
+              ?id: String,
+              ?custom_fields: ::Hash[Symbol, String],
+              ?description: String,
+              ?ending_before: Time,
+              ?fiat_credit_type_id: String,
+              ?name: String
+            ) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::add_subscription
+
+            type collection_schedule = :ADVANCE | :ARREARS
+
+            module CollectionSchedule
+              extend MetronomeSDK::Internal::Type::Enum
+
+              ADVANCE: :ADVANCE
+              ARREARS: :ARREARS
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::collection_schedule]
+            end
+
+            type proration =
+              {
+                invoice_behavior: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::Proration::invoice_behavior,
+                is_prorated: bool
+              }
+
+            class Proration < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor invoice_behavior: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::Proration::invoice_behavior
+
+              attr_accessor is_prorated: bool
+
+              def initialize: (
+                invoice_behavior: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::Proration::invoice_behavior,
+                is_prorated: bool
+              ) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::proration
+
+              type invoice_behavior =
+                :BILL_IMMEDIATELY | :BILL_ON_NEXT_COLLECTION_DATE
+
+              module InvoiceBehavior
+                extend MetronomeSDK::Internal::Type::Enum
+
+                BILL_IMMEDIATELY: :BILL_IMMEDIATELY
+                BILL_ON_NEXT_COLLECTION_DATE: :BILL_ON_NEXT_COLLECTION_DATE
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::Proration::invoice_behavior]
+              end
+            end
+
+            type quantity_schedule =
+              { quantity: Float, starting_at: Time, ending_before: Time }
+
+            class QuantitySchedule < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor quantity: Float
+
+              attr_accessor starting_at: Time
+
+              attr_reader ending_before: Time?
+
+              def ending_before=: (Time) -> Time
+
+              def initialize: (
+                quantity: Float,
+                starting_at: Time,
+                ?ending_before: Time
+              ) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::quantity_schedule
+            end
+
+            type subscription_rate =
+              {
+                billing_frequency: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SubscriptionRate::billing_frequency,
+                product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SubscriptionRate::Product
+              }
+
+            class SubscriptionRate < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor billing_frequency: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SubscriptionRate::billing_frequency
+
+              attr_accessor product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SubscriptionRate::Product
+
+              def initialize: (
+                billing_frequency: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SubscriptionRate::billing_frequency,
+                product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SubscriptionRate::Product
+              ) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::subscription_rate
+
+              type billing_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+
+              module BillingFrequency
+                extend MetronomeSDK::Internal::Type::Enum
+
+                MONTHLY: :MONTHLY
+                QUARTERLY: :QUARTERLY
+                ANNUAL: :ANNUAL
+                WEEKLY: :WEEKLY
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SubscriptionRate::billing_frequency]
+              end
+
+              type product = { id: String, name: String }
+
+              class Product < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor name: String
+
+                def initialize: (id: String, name: String) -> void
+
+                def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SubscriptionRate::product
+              end
+            end
+          end
+
+          type add_usage_filter =
+            {
+              group_key: String,
+              group_values: ::Array[String],
+              starting_at: Time,
+              ending_before: Time
+            }
+
+          class AddUsageFilter < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor group_key: String
+
+            attr_accessor group_values: ::Array[String]
+
+            attr_accessor starting_at: Time
+
+            attr_reader ending_before: Time?
+
+            def ending_before=: (Time) -> Time
+
+            def initialize: (
+              group_key: String,
+              group_values: ::Array[String],
+              starting_at: Time,
+              ?ending_before: Time
+            ) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::add_usage_filter
+          end
+
+          type archive_commit = { id: String }
+
+          class ArchiveCommit < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            def initialize: (id: String) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::archive_commit
+          end
+
+          type archive_credit = { id: String }
+
+          class ArchiveCredit < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            def initialize: (id: String) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::archive_credit
+          end
+
+          type archive_scheduled_charge = { id: String }
+
+          class ArchiveScheduledCharge < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            def initialize: (id: String) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::archive_scheduled_charge
+          end
+
+          type remove_override = { id: String }
+
+          class RemoveOverride < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            def initialize: (id: String) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::remove_override
+          end
+
+          type update_commit =
+            {
+              id: String,
+              access_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule,
+              applicable_product_ids: ::Array[String]?,
+              applicable_product_tags: ::Array[String]?,
+              invoice_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule,
+              name: String,
+              netsuite_sales_order_id: String?,
+              product_id: String,
+              rollover_fraction: Float?
+            }
+
+          class UpdateCommit < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_reader access_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule?
+
+            def access_schedule=: (
+              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule
+            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule
+
+            attr_accessor applicable_product_ids: ::Array[String]?
+
+            attr_accessor applicable_product_tags: ::Array[String]?
+
+            attr_reader invoice_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule?
+
+            def invoice_schedule=: (
+              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule
+            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_accessor netsuite_sales_order_id: String?
+
+            attr_reader product_id: String?
+
+            def product_id=: (String) -> String
+
+            attr_accessor rollover_fraction: Float?
+
+            def initialize: (
+              id: String,
+              ?access_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule,
+              ?applicable_product_ids: ::Array[String]?,
+              ?applicable_product_tags: ::Array[String]?,
+              ?invoice_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule,
+              ?name: String,
+              ?netsuite_sales_order_id: String?,
+              ?product_id: String,
+              ?rollover_fraction: Float?
+            ) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::update_commit
+
+            type access_schedule =
+              {
+                add_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule::AddScheduleItem],
+                remove_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule::RemoveScheduleItem],
+                update_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule::UpdateScheduleItem]
+              }
+
+            class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader add_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule::AddScheduleItem]?
+
+              def add_schedule_items=: (
+                ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule::AddScheduleItem]
+              ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule::AddScheduleItem]
+
+              attr_reader remove_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule::RemoveScheduleItem]?
+
+              def remove_schedule_items=: (
+                ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule::RemoveScheduleItem]
+              ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule::RemoveScheduleItem]
+
+              attr_reader update_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule::UpdateScheduleItem]?
+
+              def update_schedule_items=: (
+                ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule::UpdateScheduleItem]
+              ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule::UpdateScheduleItem]
+
+              def initialize: (
+                ?add_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule::AddScheduleItem],
+                ?remove_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule::RemoveScheduleItem],
+                ?update_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule::UpdateScheduleItem]
+              ) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::access_schedule
+
+              type add_schedule_item =
+                { amount: Float, ending_before: Time, starting_at: Time }
+
+              class AddScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor amount: Float
+
+                attr_accessor ending_before: Time
+
+                attr_accessor starting_at: Time
+
+                def initialize: (
+                  amount: Float,
+                  ending_before: Time,
+                  starting_at: Time
+                ) -> void
+
+                def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule::add_schedule_item
+              end
+
+              type remove_schedule_item = { id: String }
+
+              class RemoveScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                def initialize: (id: String) -> void
+
+                def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule::remove_schedule_item
+              end
+
+              type update_schedule_item =
+                {
+                  id: String,
+                  amount: Float,
+                  ending_before: Time,
+                  starting_at: Time
+                }
+
+              class UpdateScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_reader amount: Float?
+
+                def amount=: (Float) -> Float
+
+                attr_reader ending_before: Time?
+
+                def ending_before=: (Time) -> Time
+
+                attr_reader starting_at: Time?
+
+                def starting_at=: (Time) -> Time
+
+                def initialize: (
+                  id: String,
+                  ?amount: Float,
+                  ?ending_before: Time,
+                  ?starting_at: Time
+                ) -> void
+
+                def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule::update_schedule_item
+              end
+            end
+
+            type invoice_schedule =
+              {
+                add_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule::AddScheduleItem],
+                remove_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule::RemoveScheduleItem],
+                update_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule::UpdateScheduleItem]
+              }
+
+            class InvoiceSchedule < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader add_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule::AddScheduleItem]?
+
+              def add_schedule_items=: (
+                ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule::AddScheduleItem]
+              ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule::AddScheduleItem]
+
+              attr_reader remove_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule::RemoveScheduleItem]?
+
+              def remove_schedule_items=: (
+                ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule::RemoveScheduleItem]
+              ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule::RemoveScheduleItem]
+
+              attr_reader update_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule::UpdateScheduleItem]?
+
+              def update_schedule_items=: (
+                ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule::UpdateScheduleItem]
+              ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule::UpdateScheduleItem]
+
+              def initialize: (
+                ?add_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule::AddScheduleItem],
+                ?remove_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule::RemoveScheduleItem],
+                ?update_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule::UpdateScheduleItem]
+              ) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::invoice_schedule
+
+              type add_schedule_item =
+                {
+                  timestamp: Time,
+                  amount: Float,
+                  quantity: Float,
+                  unit_price: Float
+                }
+
+              class AddScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor timestamp: Time
+
+                attr_reader amount: Float?
+
+                def amount=: (Float) -> Float
+
+                attr_reader quantity: Float?
+
+                def quantity=: (Float) -> Float
+
+                attr_reader unit_price: Float?
+
+                def unit_price=: (Float) -> Float
+
+                def initialize: (
+                  timestamp: Time,
+                  ?amount: Float,
+                  ?quantity: Float,
+                  ?unit_price: Float
+                ) -> void
+
+                def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule::add_schedule_item
+              end
+
+              type remove_schedule_item = { id: String }
+
+              class RemoveScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                def initialize: (id: String) -> void
+
+                def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule::remove_schedule_item
+              end
+
+              type update_schedule_item =
+                {
+                  id: String,
+                  amount: Float,
+                  quantity: Float,
+                  timestamp: Time,
+                  unit_price: Float
+                }
+
+              class UpdateScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_reader amount: Float?
+
+                def amount=: (Float) -> Float
+
+                attr_reader quantity: Float?
+
+                def quantity=: (Float) -> Float
+
+                attr_reader timestamp: Time?
+
+                def timestamp=: (Time) -> Time
+
+                attr_reader unit_price: Float?
+
+                def unit_price=: (Float) -> Float
+
+                def initialize: (
+                  id: String,
+                  ?amount: Float,
+                  ?quantity: Float,
+                  ?timestamp: Time,
+                  ?unit_price: Float
+                ) -> void
+
+                def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule::update_schedule_item
+              end
+            end
+          end
+
+          type update_credit =
+            {
+              id: String,
+              access_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule,
+              name: String,
+              netsuite_sales_order_id: String?,
+              rollover_fraction: Float?
+            }
+
+          class UpdateCredit < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_reader access_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule?
+
+            def access_schedule=: (
+              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule
+            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_accessor netsuite_sales_order_id: String?
+
+            attr_accessor rollover_fraction: Float?
+
+            def initialize: (
+              id: String,
+              ?access_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule,
+              ?name: String,
+              ?netsuite_sales_order_id: String?,
+              ?rollover_fraction: Float?
+            ) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::update_credit
+
+            type access_schedule =
+              {
+                add_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule::AddScheduleItem],
+                remove_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule::RemoveScheduleItem],
+                update_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule::UpdateScheduleItem]
+              }
+
+            class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader add_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule::AddScheduleItem]?
+
+              def add_schedule_items=: (
+                ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule::AddScheduleItem]
+              ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule::AddScheduleItem]
+
+              attr_reader remove_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule::RemoveScheduleItem]?
+
+              def remove_schedule_items=: (
+                ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule::RemoveScheduleItem]
+              ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule::RemoveScheduleItem]
+
+              attr_reader update_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule::UpdateScheduleItem]?
+
+              def update_schedule_items=: (
+                ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule::UpdateScheduleItem]
+              ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule::UpdateScheduleItem]
+
+              def initialize: (
+                ?add_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule::AddScheduleItem],
+                ?remove_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule::RemoveScheduleItem],
+                ?update_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule::UpdateScheduleItem]
+              ) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::access_schedule
+
+              type add_schedule_item =
+                { amount: Float, ending_before: Time, starting_at: Time }
+
+              class AddScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor amount: Float
+
+                attr_accessor ending_before: Time
+
+                attr_accessor starting_at: Time
+
+                def initialize: (
+                  amount: Float,
+                  ending_before: Time,
+                  starting_at: Time
+                ) -> void
+
+                def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule::add_schedule_item
+              end
+
+              type remove_schedule_item = { id: String }
+
+              class RemoveScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                def initialize: (id: String) -> void
+
+                def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule::remove_schedule_item
+              end
+
+              type update_schedule_item =
+                {
+                  id: String,
+                  amount: Float,
+                  ending_before: Time,
+                  starting_at: Time
+                }
+
+              class UpdateScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_reader amount: Float?
+
+                def amount=: (Float) -> Float
+
+                attr_reader ending_before: Time?
+
+                def ending_before=: (Time) -> Time
+
+                attr_reader starting_at: Time?
+
+                def starting_at=: (Time) -> Time
+
+                def initialize: (
+                  id: String,
+                  ?amount: Float,
+                  ?ending_before: Time,
+                  ?starting_at: Time
+                ) -> void
+
+                def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule::update_schedule_item
+              end
+            end
+          end
+
+          type update_discount =
+            {
+              id: String,
+              custom_fields: ::Hash[Symbol, String],
+              name: String,
+              netsuite_sales_order_id: String,
+              schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule
+            }
+
+          class UpdateDiscount < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_reader custom_fields: ::Hash[Symbol, String]?
+
+            def custom_fields=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_reader netsuite_sales_order_id: String?
+
+            def netsuite_sales_order_id=: (String) -> String
+
+            attr_reader schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule?
+
+            def schedule=: (
+              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule
+            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule
+
+            def initialize: (
+              id: String,
+              ?custom_fields: ::Hash[Symbol, String],
+              ?name: String,
+              ?netsuite_sales_order_id: String,
+              ?schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule
+            ) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::update_discount
+
+            type schedule =
+              {
+                credit_type_id: String,
+                recurring_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::RecurringSchedule,
+                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::ScheduleItem]
+              }
+
+            class Schedule < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader credit_type_id: String?
+
+              def credit_type_id=: (String) -> String
+
+              attr_reader recurring_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::RecurringSchedule?
+
+              def recurring_schedule=: (
+                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::RecurringSchedule
+              ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::RecurringSchedule
+
+              attr_reader schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::ScheduleItem]?
+
+              def schedule_items=: (
+                ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::ScheduleItem]
+              ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::ScheduleItem]
+
+              def initialize: (
+                ?credit_type_id: String,
+                ?recurring_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::RecurringSchedule,
+                ?schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::ScheduleItem]
+              ) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::schedule
+
+              type recurring_schedule =
+                {
+                  amount_distribution: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::RecurringSchedule::amount_distribution,
+                  ending_before: Time,
+                  frequency: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::RecurringSchedule::frequency,
+                  starting_at: Time,
+                  amount: Float,
+                  quantity: Float,
+                  unit_price: Float
+                }
+
+              class RecurringSchedule < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor amount_distribution: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::RecurringSchedule::amount_distribution
+
+                attr_accessor ending_before: Time
+
+                attr_accessor frequency: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::RecurringSchedule::frequency
+
+                attr_accessor starting_at: Time
+
+                attr_reader amount: Float?
+
+                def amount=: (Float) -> Float
+
+                attr_reader quantity: Float?
+
+                def quantity=: (Float) -> Float
+
+                attr_reader unit_price: Float?
+
+                def unit_price=: (Float) -> Float
+
+                def initialize: (
+                  amount_distribution: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::RecurringSchedule::amount_distribution,
+                  ending_before: Time,
+                  frequency: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::RecurringSchedule::frequency,
+                  starting_at: Time,
+                  ?amount: Float,
+                  ?quantity: Float,
+                  ?unit_price: Float
+                ) -> void
+
+                def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::recurring_schedule
+
+                type amount_distribution = :DIVIDED | :DIVIDED_ROUNDED | :EACH
+
+                module AmountDistribution
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  DIVIDED: :DIVIDED
+                  DIVIDED_ROUNDED: :DIVIDED_ROUNDED
+                  EACH: :EACH
+
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::RecurringSchedule::amount_distribution]
+                end
+
+                type frequency =
+                  :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL | :WEEKLY
+
+                module Frequency
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  MONTHLY: :MONTHLY
+                  QUARTERLY: :QUARTERLY
+                  SEMI_ANNUAL: :SEMI_ANNUAL
+                  ANNUAL: :ANNUAL
+                  WEEKLY: :WEEKLY
+
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::RecurringSchedule::frequency]
+                end
+              end
+
+              type schedule_item =
+                {
+                  timestamp: Time,
+                  amount: Float,
+                  quantity: Float,
+                  unit_price: Float
+                }
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor timestamp: Time
+
+                attr_reader amount: Float?
+
+                def amount=: (Float) -> Float
+
+                attr_reader quantity: Float?
+
+                def quantity=: (Float) -> Float
+
+                attr_reader unit_price: Float?
+
+                def unit_price=: (Float) -> Float
+
+                def initialize: (
+                  timestamp: Time,
+                  ?amount: Float,
+                  ?quantity: Float,
+                  ?unit_price: Float
+                ) -> void
+
+                def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::schedule_item
+              end
+            end
+          end
+
+          type update_refund_invoice = { date: Time, invoice_id: String }
+
+          class UpdateRefundInvoice < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor date: Time
+
+            attr_accessor invoice_id: String
+
+            def initialize: (date: Time, invoice_id: String) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::update_refund_invoice
+          end
+
+          type update_scheduled_charge =
+            {
+              id: String,
+              invoice_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge::InvoiceSchedule,
+              name: String,
+              netsuite_sales_order_id: String?
+            }
+
+          class UpdateScheduledCharge < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_reader invoice_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge::InvoiceSchedule?
+
+            def invoice_schedule=: (
+              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge::InvoiceSchedule
+            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge::InvoiceSchedule
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_accessor netsuite_sales_order_id: String?
+
+            def initialize: (
+              id: String,
+              ?invoice_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge::InvoiceSchedule,
+              ?name: String,
+              ?netsuite_sales_order_id: String?
+            ) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::update_scheduled_charge
+
+            type invoice_schedule =
+              {
+                add_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge::InvoiceSchedule::AddScheduleItem],
+                remove_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge::InvoiceSchedule::RemoveScheduleItem],
+                update_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge::InvoiceSchedule::UpdateScheduleItem]
+              }
+
+            class InvoiceSchedule < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader add_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge::InvoiceSchedule::AddScheduleItem]?
+
+              def add_schedule_items=: (
+                ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge::InvoiceSchedule::AddScheduleItem]
+              ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge::InvoiceSchedule::AddScheduleItem]
+
+              attr_reader remove_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge::InvoiceSchedule::RemoveScheduleItem]?
+
+              def remove_schedule_items=: (
+                ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge::InvoiceSchedule::RemoveScheduleItem]
+              ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge::InvoiceSchedule::RemoveScheduleItem]
+
+              attr_reader update_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge::InvoiceSchedule::UpdateScheduleItem]?
+
+              def update_schedule_items=: (
+                ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge::InvoiceSchedule::UpdateScheduleItem]
+              ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge::InvoiceSchedule::UpdateScheduleItem]
+
+              def initialize: (
+                ?add_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge::InvoiceSchedule::AddScheduleItem],
+                ?remove_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge::InvoiceSchedule::RemoveScheduleItem],
+                ?update_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge::InvoiceSchedule::UpdateScheduleItem]
+              ) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge::invoice_schedule
+
+              type add_schedule_item =
+                {
+                  timestamp: Time,
+                  amount: Float,
+                  quantity: Float,
+                  unit_price: Float
+                }
+
+              class AddScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor timestamp: Time
+
+                attr_reader amount: Float?
+
+                def amount=: (Float) -> Float
+
+                attr_reader quantity: Float?
+
+                def quantity=: (Float) -> Float
+
+                attr_reader unit_price: Float?
+
+                def unit_price=: (Float) -> Float
+
+                def initialize: (
+                  timestamp: Time,
+                  ?amount: Float,
+                  ?quantity: Float,
+                  ?unit_price: Float
+                ) -> void
+
+                def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge::InvoiceSchedule::add_schedule_item
+              end
+
+              type remove_schedule_item = { id: String }
+
+              class RemoveScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                def initialize: (id: String) -> void
+
+                def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge::InvoiceSchedule::remove_schedule_item
+              end
+
+              type update_schedule_item =
+                {
+                  id: String,
+                  amount: Float,
+                  quantity: Float,
+                  timestamp: Time,
+                  unit_price: Float
+                }
+
+              class UpdateScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_reader amount: Float?
+
+                def amount=: (Float) -> Float
+
+                attr_reader quantity: Float?
+
+                def quantity=: (Float) -> Float
+
+                attr_reader timestamp: Time?
+
+                def timestamp=: (Time) -> Time
+
+                attr_reader unit_price: Float?
+
+                def unit_price=: (Float) -> Float
+
+                def initialize: (
+                  id: String,
+                  ?amount: Float,
+                  ?quantity: Float,
+                  ?timestamp: Time,
+                  ?unit_price: Float
+                ) -> void
+
+                def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge::InvoiceSchedule::update_schedule_item
+              end
+            end
+          end
+
+          type update_subscription =
+            {
+              id: String,
+              ending_before: Time,
+              quantity_updates: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::QuantityUpdate]
+            }
+
+          class UpdateSubscription < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_reader ending_before: Time?
+
+            def ending_before=: (Time) -> Time
+
+            attr_reader quantity_updates: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::QuantityUpdate]?
+
+            def quantity_updates=: (
+              ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::QuantityUpdate]
+            ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::QuantityUpdate]
+
+            def initialize: (
+              id: String,
+              ?ending_before: Time,
+              ?quantity_updates: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::QuantityUpdate]
+            ) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::update_subscription
+
+            type quantity_update = { quantity: Float, starting_at: Time }
+
+            class QuantityUpdate < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor quantity: Float
+
+              attr_accessor starting_at: Time
+
+              def initialize: (quantity: Float, starting_at: Time) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::quantity_update
+            end
+          end
+        end
+      end
+    end
+  end
+end

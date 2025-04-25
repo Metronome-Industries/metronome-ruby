@@ -1,0 +1,15 @@
+module MetronomeSDK
+  module Resources
+    class V1
+      class PricingUnits
+        def list: (
+          ?limit: Integer,
+          ?next_page: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::PricingUnitListResponse]
+
+        def initialize: (client: MetronomeSDK::Client) -> void
+      end
+    end
+  end
+end

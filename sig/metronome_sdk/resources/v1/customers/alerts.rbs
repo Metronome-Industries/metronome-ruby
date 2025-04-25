@@ -1,0 +1,30 @@
+module MetronomeSDK
+  module Resources
+    class V1
+      class Customers
+        class Alerts
+          def retrieve: (
+            alert_id: String,
+            customer_id: String,
+            ?request_options: MetronomeSDK::request_opts
+          ) -> MetronomeSDK::Models::V1::Customers::AlertRetrieveResponse
+
+          def list: (
+            customer_id: String,
+            ?next_page: String,
+            ?alert_statuses: ::Array[MetronomeSDK::Models::V1::Customers::AlertListParams::alert_status],
+            ?request_options: MetronomeSDK::request_opts
+          ) -> MetronomeSDK::Models::V1::Customers::AlertListResponse
+
+          def reset: (
+            alert_id: String,
+            customer_id: String,
+            ?request_options: MetronomeSDK::request_opts
+          ) -> nil
+
+          def initialize: (client: MetronomeSDK::Client) -> void
+        end
+      end
+    end
+  end
+end

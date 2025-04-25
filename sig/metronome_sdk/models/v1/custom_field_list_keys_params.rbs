@@ -1,0 +1,80 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type custom_field_list_keys_params =
+        {
+          next_page: String,
+          entities: ::Array[MetronomeSDK::Models::V1::CustomFieldListKeysParams::entity]
+        }
+        & MetronomeSDK::Internal::Type::request_parameters
+
+      class CustomFieldListKeysParams < MetronomeSDK::Internal::Type::BaseModel
+        extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+        include MetronomeSDK::Internal::Type::RequestParameters
+
+        attr_reader next_page: String?
+
+        def next_page=: (String) -> String
+
+        attr_reader entities: ::Array[MetronomeSDK::Models::V1::CustomFieldListKeysParams::entity]?
+
+        def entities=: (
+          ::Array[MetronomeSDK::Models::V1::CustomFieldListKeysParams::entity]
+        ) -> ::Array[MetronomeSDK::Models::V1::CustomFieldListKeysParams::entity]
+
+        def initialize: (
+          ?next_page: String,
+          ?entities: ::Array[MetronomeSDK::Models::V1::CustomFieldListKeysParams::entity],
+          ?request_options: MetronomeSDK::request_opts
+        ) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V1::custom_field_list_keys_params
+
+        type entity =
+          :alert
+          | :billable_metric
+          | :charge
+          | :commit
+          | :contract_credit
+          | :contract_product
+          | :contract
+          | :credit_grant
+          | :customer_plan
+          | :customer
+          | :discount
+          | :invoice
+          | :plan
+          | :professional_service
+          | :product
+          | :rate_card
+          | :scheduled_charge
+          | :subscription
+
+        module Entity
+          extend MetronomeSDK::Internal::Type::Enum
+
+          ALERT: :alert
+          BILLABLE_METRIC: :billable_metric
+          CHARGE: :charge
+          COMMIT: :commit
+          CONTRACT_CREDIT: :contract_credit
+          CONTRACT_PRODUCT: :contract_product
+          CONTRACT: :contract
+          CREDIT_GRANT: :credit_grant
+          CUSTOMER_PLAN: :customer_plan
+          CUSTOMER: :customer
+          DISCOUNT: :discount
+          INVOICE: :invoice
+          PLAN: :plan
+          PROFESSIONAL_SERVICE: :professional_service
+          PRODUCT: :product
+          RATE_CARD: :rate_card
+          SCHEDULED_CHARGE: :scheduled_charge
+          SUBSCRIPTION: :subscription
+
+          def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomFieldListKeysParams::entity]
+        end
+      end
+    end
+  end
+end

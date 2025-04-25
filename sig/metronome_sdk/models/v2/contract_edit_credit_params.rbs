@@ -1,0 +1,148 @@
+module MetronomeSDK
+  module Models
+    module V2
+      type contract_edit_credit_params =
+        {
+          credit_id: String,
+          customer_id: String,
+          access_schedule: MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule,
+          applicable_product_ids: ::Array[String]?,
+          applicable_product_tags: ::Array[String]?,
+          product_id: String
+        }
+        & MetronomeSDK::Internal::Type::request_parameters
+
+      class ContractEditCreditParams < MetronomeSDK::Internal::Type::BaseModel
+        extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+        include MetronomeSDK::Internal::Type::RequestParameters
+
+        attr_accessor credit_id: String
+
+        attr_accessor customer_id: String
+
+        attr_reader access_schedule: MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule?
+
+        def access_schedule=: (
+          MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule
+        ) -> MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule
+
+        attr_accessor applicable_product_ids: ::Array[String]?
+
+        attr_accessor applicable_product_tags: ::Array[String]?
+
+        attr_reader product_id: String?
+
+        def product_id=: (String) -> String
+
+        def initialize: (
+          credit_id: String,
+          customer_id: String,
+          ?access_schedule: MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule,
+          ?applicable_product_ids: ::Array[String]?,
+          ?applicable_product_tags: ::Array[String]?,
+          ?product_id: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V2::contract_edit_credit_params
+
+        type access_schedule =
+          {
+            add_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::AddScheduleItem],
+            remove_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::RemoveScheduleItem],
+            update_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::UpdateScheduleItem]
+          }
+
+        class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
+          attr_reader add_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::AddScheduleItem]?
+
+          def add_schedule_items=: (
+            ::Array[MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::AddScheduleItem]
+          ) -> ::Array[MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::AddScheduleItem]
+
+          attr_reader remove_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::RemoveScheduleItem]?
+
+          def remove_schedule_items=: (
+            ::Array[MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::RemoveScheduleItem]
+          ) -> ::Array[MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::RemoveScheduleItem]
+
+          attr_reader update_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::UpdateScheduleItem]?
+
+          def update_schedule_items=: (
+            ::Array[MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::UpdateScheduleItem]
+          ) -> ::Array[MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::UpdateScheduleItem]
+
+          def initialize: (
+            ?add_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::AddScheduleItem],
+            ?remove_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::RemoveScheduleItem],
+            ?update_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::UpdateScheduleItem]
+          ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V2::ContractEditCreditParams::access_schedule
+
+          type add_schedule_item =
+            { amount: Float, ending_before: Time, starting_at: Time }
+
+          class AddScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor amount: Float
+
+            attr_accessor ending_before: Time
+
+            attr_accessor starting_at: Time
+
+            def initialize: (
+              amount: Float,
+              ending_before: Time,
+              starting_at: Time
+            ) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::add_schedule_item
+          end
+
+          type remove_schedule_item = { id: String }
+
+          class RemoveScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            def initialize: (id: String) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::remove_schedule_item
+          end
+
+          type update_schedule_item =
+            {
+              id: String,
+              amount: Float,
+              ending_before: Time,
+              starting_at: Time
+            }
+
+          class UpdateScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_reader amount: Float?
+
+            def amount=: (Float) -> Float
+
+            attr_reader ending_before: Time?
+
+            def ending_before=: (Time) -> Time
+
+            attr_reader starting_at: Time?
+
+            def starting_at=: (Time) -> Time
+
+            def initialize: (
+              id: String,
+              ?amount: Float,
+              ?ending_before: Time,
+              ?starting_at: Time
+            ) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::update_schedule_item
+          end
+        end
+      end
+    end
+  end
+end

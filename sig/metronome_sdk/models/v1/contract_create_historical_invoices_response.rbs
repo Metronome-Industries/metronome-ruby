@@ -1,0 +1,18 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type contract_create_historical_invoices_response =
+        { data: ::Array[MetronomeSDK::Models::V1::Customers::Invoice] }
+
+      class ContractCreateHistoricalInvoicesResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor data: ::Array[MetronomeSDK::Models::V1::Customers::Invoice]
+
+        def initialize: (
+          data: ::Array[MetronomeSDK::Models::V1::Customers::Invoice]
+        ) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V1::contract_create_historical_invoices_response
+      end
+    end
+  end
+end

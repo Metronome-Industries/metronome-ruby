@@ -1,0 +1,23 @@
+module MetronomeSDK
+  module Internal
+    module Type
+      class Boolean
+        extend MetronomeSDK::Internal::Type::Converter
+
+        def self.===: (top other) -> bool
+
+        def self.==: (top other) -> bool
+
+        def self.coerce: (
+          bool | top value,
+          state: MetronomeSDK::Internal::Type::Converter::coerce_state
+        ) -> (bool | top)
+
+        def self.dump: (
+          bool | top value,
+          state: MetronomeSDK::Internal::Type::Converter::dump_state
+        ) -> (bool | top)
+      end
+    end
+  end
+end

@@ -1,0 +1,59 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type plan_list_customers_response =
+        {
+          customer_details: MetronomeSDK::Models::V1::CustomerDetail,
+          plan_details: MetronomeSDK::Models::V1::PlanListCustomersResponse::PlanDetails
+        }
+
+      class PlanListCustomersResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor customer_details: MetronomeSDK::Models::V1::CustomerDetail
+
+        attr_accessor plan_details: MetronomeSDK::Models::V1::PlanListCustomersResponse::PlanDetails
+
+        def initialize: (
+          customer_details: MetronomeSDK::Models::V1::CustomerDetail,
+          plan_details: MetronomeSDK::Models::V1::PlanListCustomersResponse::PlanDetails
+        ) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V1::plan_list_customers_response
+
+        type plan_details =
+          {
+            id: String,
+            custom_fields: ::Hash[Symbol, String],
+            customer_plan_id: String,
+            name: String,
+            starting_on: Time,
+            ending_before: Time?
+          }
+
+        class PlanDetails < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor custom_fields: ::Hash[Symbol, String]
+
+          attr_accessor customer_plan_id: String
+
+          attr_accessor name: String
+
+          attr_accessor starting_on: Time
+
+          attr_accessor ending_before: Time?
+
+          def initialize: (
+            id: String,
+            custom_fields: ::Hash[Symbol, String],
+            customer_plan_id: String,
+            name: String,
+            starting_on: Time,
+            ?ending_before: Time?
+          ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::PlanListCustomersResponse::plan_details
+        end
+      end
+    end
+  end
+end

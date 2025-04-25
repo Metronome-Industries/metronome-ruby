@@ -1,0 +1,13 @@
+module MetronomeSDK
+  module Internal
+    class CursorPage[Elem]
+      include MetronomeSDK::Internal::Type::BasePage[Elem]
+
+      attr_accessor next_page_: String
+
+      attr_accessor data: ::Array[Elem]?
+
+      def inspect: -> String
+    end
+  end
+end

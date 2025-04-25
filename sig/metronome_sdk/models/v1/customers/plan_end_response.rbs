@@ -1,0 +1,15 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Customers
+        type plan_end_response = {  }
+
+        class PlanEndResponse < MetronomeSDK::Internal::Type::BaseModel
+          def initialize: -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::Customers::plan_end_response
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,102 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type usage_list_params =
+        {
+          ending_before: Time,
+          starting_on: Time,
+          window_size: MetronomeSDK::Models::V1::UsageListParams::window_size,
+          next_page: String,
+          billable_metrics: ::Array[MetronomeSDK::Models::V1::UsageListParams::BillableMetric],
+          customer_ids: ::Array[String]
+        }
+        & MetronomeSDK::Internal::Type::request_parameters
+
+      class UsageListParams < MetronomeSDK::Internal::Type::BaseModel
+        extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+        include MetronomeSDK::Internal::Type::RequestParameters
+
+        attr_accessor ending_before: Time
+
+        attr_accessor starting_on: Time
+
+        attr_accessor window_size: MetronomeSDK::Models::V1::UsageListParams::window_size
+
+        attr_reader next_page: String?
+
+        def next_page=: (String) -> String
+
+        attr_reader billable_metrics: ::Array[MetronomeSDK::Models::V1::UsageListParams::BillableMetric]?
+
+        def billable_metrics=: (
+          ::Array[MetronomeSDK::Models::V1::UsageListParams::BillableMetric]
+        ) -> ::Array[MetronomeSDK::Models::V1::UsageListParams::BillableMetric]
+
+        attr_reader customer_ids: ::Array[String]?
+
+        def customer_ids=: (::Array[String]) -> ::Array[String]
+
+        def initialize: (
+          ending_before: Time,
+          starting_on: Time,
+          window_size: MetronomeSDK::Models::V1::UsageListParams::window_size,
+          ?next_page: String,
+          ?billable_metrics: ::Array[MetronomeSDK::Models::V1::UsageListParams::BillableMetric],
+          ?customer_ids: ::Array[String],
+          ?request_options: MetronomeSDK::request_opts
+        ) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V1::usage_list_params
+
+        type window_size = :HOUR | :DAY | :NONE
+
+        module WindowSize
+          extend MetronomeSDK::Internal::Type::Enum
+
+          HOUR: :HOUR
+          DAY: :DAY
+          NONE: :NONE
+
+          def self?.values: -> ::Array[MetronomeSDK::Models::V1::UsageListParams::window_size]
+        end
+
+        type billable_metric =
+          {
+            id: String,
+            group_by: MetronomeSDK::Models::V1::UsageListParams::BillableMetric::GroupBy
+          }
+
+        class BillableMetric < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_reader group_by: MetronomeSDK::Models::V1::UsageListParams::BillableMetric::GroupBy?
+
+          def group_by=: (
+            MetronomeSDK::Models::V1::UsageListParams::BillableMetric::GroupBy
+          ) -> MetronomeSDK::Models::V1::UsageListParams::BillableMetric::GroupBy
+
+          def initialize: (
+            id: String,
+            ?group_by: MetronomeSDK::Models::V1::UsageListParams::BillableMetric::GroupBy
+          ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::UsageListParams::billable_metric
+
+          type group_by = { key: String, values: ::Array[String] }
+
+          class GroupBy < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor key: String
+
+            attr_reader values: ::Array[String]?
+
+            def values=: (::Array[String]) -> ::Array[String]
+
+            def initialize: (key: String, ?values: ::Array[String]) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V1::UsageListParams::BillableMetric::group_by
+          end
+        end
+      end
+    end
+  end
+end

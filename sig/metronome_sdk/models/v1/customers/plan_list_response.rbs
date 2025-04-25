@@ -1,0 +1,104 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Customers
+        type plan_list_response =
+          {
+            id: String,
+            custom_fields: ::Hash[Symbol, String],
+            plan_description: String,
+            plan_id: String,
+            plan_name: String,
+            starting_on: Time,
+            ending_before: Time,
+            net_payment_terms_days: Float,
+            trial_info: MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo
+          }
+
+        class PlanListResponse < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor custom_fields: ::Hash[Symbol, String]
+
+          attr_accessor plan_description: String
+
+          attr_accessor plan_id: String
+
+          attr_accessor plan_name: String
+
+          attr_accessor starting_on: Time
+
+          attr_reader ending_before: Time?
+
+          def ending_before=: (Time) -> Time
+
+          attr_reader net_payment_terms_days: Float?
+
+          def net_payment_terms_days=: (Float) -> Float
+
+          attr_reader trial_info: MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo?
+
+          def trial_info=: (
+            MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo
+          ) -> MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo
+
+          def initialize: (
+            id: String,
+            custom_fields: ::Hash[Symbol, String],
+            plan_description: String,
+            plan_id: String,
+            plan_name: String,
+            starting_on: Time,
+            ?ending_before: Time,
+            ?net_payment_terms_days: Float,
+            ?trial_info: MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo
+          ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::Customers::plan_list_response
+
+          type trial_info =
+            {
+              ending_before: Time,
+              spending_caps: ::Array[MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap]
+            }
+
+          class TrialInfo < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor ending_before: Time
+
+            attr_accessor spending_caps: ::Array[MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap]
+
+            def initialize: (
+              ending_before: Time,
+              spending_caps: ::Array[MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap]
+            ) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V1::Customers::PlanListResponse::trial_info
+
+            type spending_cap =
+              {
+                amount: Float,
+                amount_remaining: Float,
+                credit_type: MetronomeSDK::Models::CreditTypeData
+              }
+
+            class SpendingCap < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor amount: Float
+
+              attr_accessor amount_remaining: Float
+
+              attr_accessor credit_type: MetronomeSDK::Models::CreditTypeData
+
+              def initialize: (
+                amount: Float,
+                amount_remaining: Float,
+                credit_type: MetronomeSDK::Models::CreditTypeData
+              ) -> void
+
+              def to_hash: -> MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::spending_cap
+            end
+          end
+        end
+      end
+    end
+  end
+end

@@ -60,5 +60,11 @@
     }
   ],
   "release-type": "ruby",
-  "version-file": "lib/metronome-sdk/version.rb"
+  "version-file": "lib/metronome_sdk/version.rb",
+  "extra-files": [
+    {
+      "type": "ruby-readme",
+      "path": "README.md"
+    }
+  ]
 }

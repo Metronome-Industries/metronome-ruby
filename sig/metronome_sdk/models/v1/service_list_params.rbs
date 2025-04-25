@@ -1,0 +1,17 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type service_list_params =
+        {  } & MetronomeSDK::Internal::Type::request_parameters
+
+      class ServiceListParams < MetronomeSDK::Internal::Type::BaseModel
+        extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+        include MetronomeSDK::Internal::Type::RequestParameters
+
+        def initialize: (?request_options: MetronomeSDK::request_opts) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V1::service_list_params
+      end
+    end
+  end
+end

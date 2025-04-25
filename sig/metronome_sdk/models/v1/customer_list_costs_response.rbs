@@ -1,0 +1,88 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type customer_list_costs_response =
+        {
+          credit_types: ::Hash[Symbol, MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType],
+          end_timestamp: Time,
+          start_timestamp: Time
+        }
+
+      class CustomerListCostsResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor credit_types: ::Hash[Symbol, MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType]
+
+        attr_accessor end_timestamp: Time
+
+        attr_accessor start_timestamp: Time
+
+        def initialize: (
+          credit_types: ::Hash[Symbol, MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType],
+          end_timestamp: Time,
+          start_timestamp: Time
+        ) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V1::customer_list_costs_response
+
+        type credit_type =
+          {
+            cost: Float,
+            line_item_breakdown: ::Array[MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType::LineItemBreakdown],
+            name: String
+          }
+
+        class CreditType < MetronomeSDK::Internal::Type::BaseModel
+          attr_reader cost: Float?
+
+          def cost=: (Float) -> Float
+
+          attr_reader line_item_breakdown: ::Array[MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType::LineItemBreakdown]?
+
+          def line_item_breakdown=: (
+            ::Array[MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType::LineItemBreakdown]
+          ) -> ::Array[MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType::LineItemBreakdown]
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          def initialize: (
+            ?cost: Float,
+            ?line_item_breakdown: ::Array[MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType::LineItemBreakdown],
+            ?name: String
+          ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::CustomerListCostsResponse::credit_type
+
+          type line_item_breakdown =
+            {
+              cost: Float,
+              name: String,
+              group_key: String,
+              group_value: String?
+            }
+
+          class LineItemBreakdown < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor cost: Float
+
+            attr_accessor name: String
+
+            attr_reader group_key: String?
+
+            def group_key=: (String) -> String
+
+            attr_accessor group_value: String?
+
+            def initialize: (
+              cost: Float,
+              name: String,
+              ?group_key: String,
+              ?group_value: String?
+            ) -> void
+
+            def to_hash: -> MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType::line_item_breakdown
+          end
+        end
+      end
+    end
+  end
+end

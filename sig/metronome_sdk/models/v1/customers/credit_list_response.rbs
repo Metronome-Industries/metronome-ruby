@@ -1,0 +1,23 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Customers
+        type credit_list_response =
+          { data: ::Array[MetronomeSDK::Models::Credit], next_page: String? }
+
+        class CreditListResponse < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor data: ::Array[MetronomeSDK::Models::Credit]
+
+          attr_accessor next_page: String?
+
+          def initialize: (
+            data: ::Array[MetronomeSDK::Models::Credit],
+            next_page: String?
+          ) -> void
+
+          def to_hash: -> MetronomeSDK::Models::V1::Customers::credit_list_response
+        end
+      end
+    end
+  end
+end

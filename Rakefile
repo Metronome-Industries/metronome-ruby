@@ -1,89 +1,139 @@
 # frozen_string_literal: true
 
-require "minitest/test_task"
-require "rake/clean"
-require "rubocop/rake_task"
+require "pathname"
 require "securerandom"
 require "shellwords"
 
-CLEAN.push(*%w[.idea/ .ruby-lsp/ .yardoc/])
+require "minitest/test_task"
+require "rake/clean"
+require "rubocop/rake_task"
 
+tapioca = "sorbet/tapioca"
+ignore_file = ".ignore"
+
+CLEAN.push(*%w[.idea/ .ruby-lsp/ .yardoc/ doc/], *FileList["*.gem"], ignore_file)
+
+CLOBBER.push(*%w[sorbet/rbi/annotations/ sorbet/rbi/gems/], tapioca)
+
+multitask(:default) do
+  sh(*%w[rake --tasks])
+end
+
+desc("Preview docs; use `PORT=<PORT>` to change the port")
+multitask(:"docs:preview") do
+  sh(*%w[yard server --reload --quiet --bind [::] --port], ENV.fetch("PORT", "8808"))
+end
+
+desc("Run test suites; use `TEST=path/to/test.rb` to run a specific test file")
+multitask(:test) do
+  rb =
+    FileList[ENV.fetch("TEST", "./test/**/*_test.rb")]
+    .map { "require_relative(#{_1.dump});" }
+    .join
+
+  ruby(*%w[-e], rb, verbose: false) { fail unless _1 }
+end
+
+rubo_find = %w[find ./lib ./test ./rbi -type f -and ( -name *.rb -or -name *.rbi ) -print0]
 xargs = %w[xargs --no-run-if-empty --null --max-procs=0 --max-args=300 --]
 
-task(default: [:test, :format])
-
-Minitest::TestTask.create do |t|
-  t.libs = %w[.]
-  t.test_globs = ENV.fetch("TEST", "./test/**/*_test.rb")
+desc("Lint `*.rb(i)`")
+multitask(:"lint:rubocop") do
+  lint = xargs + %w[rubocop --fail-level E] + (ENV.key?("CI") ? %w[--format github] : [])
+  sh("#{rubo_find.shelljoin} | #{lint.shelljoin}")
 end
 
-RuboCop::RakeTask.new(:rubocop) do |t|
-  t.options = %w[--fail-level E]
-  if ENV.key?("CI")
-    t.options += %w[--format github]
-  end
-end
-
-multitask(:ruboformat) do
-  find = %w[find ./lib ./test ./rbi -type f -and ( -name *.rb -or -name *.rbi ) -print0]
+desc("Format `*.rb(i)`")
+multitask(:"format:rubocop") do
   fmt = xargs + %w[rubocop --fail-level F --autocorrect --format simple --]
-  sh("#{find.shelljoin} | #{fmt.shelljoin}")
+  sh("#{rubo_find.shelljoin} | #{fmt.shelljoin}")
 end
 
-multitask(:syntax_tree) do
+desc("Format `*.rbs`")
+multitask(:"format:syntax_tree") do
   find = %w[find ./sig -type f -name *.rbs -print0]
   inplace = /darwin|bsd/ =~ RUBY_PLATFORM ? %w[-i''] : %w[-i]
   uuid = SecureRandom.uuid
 
-  # `syntax_tree` has trouble with `rbs`'s class aliases
+  # `syntax_tree` has trouble with `rbs`'s class & module aliases
 
   sed = xargs + %w[sed -E] + inplace + %w[-e]
-  # annotate class aliases with a unique comment
-  pre = sed + ["s/class ([^ ]+) = (.+$)/# #{uuid}\\n\\1: \\2/", "--"]
+  # annotate unprocessable aliases with a unique comment
+  pre = sed + ["s/(class|module) ([^ ]+) = (.+$)/# \\1 #{uuid}\\n\\2: \\3/", "--"]
   fmt = xargs + %w[stree write --plugin=rbs --]
-  # remove the unique comment and transform class aliases to type aliases
+  # remove the unique comment and unprocessable aliases to type aliases
   subst = <<~SED
-    s/# #{uuid}//
+    s/# (class|module) #{uuid}/\\1/
     t l1
     b
+
     : l1
-    n
-    s/([^ :]+): (.+$)/class \\1 = \\2/
+    N
+    s/\\n *([^:]+): (.+)$/ \\1 = \\2/
   SED
-  # 1. delete the unique comment
-  # 2. if deletion happened, branch to label `l1`, else continue
-  # 3. transform the class alias to a type alias at label `l1`
+  # for each line:
+  #   1. try transform the unique comment into `class | module`, if successful, branch to label `l1`.
+  #   2. at label `l1`, join previously annotated line with `class | module` information.
   pst = sed + [subst, "--"]
+
+  success = false
 
   # transform class aliases to type aliases, which syntax tree has no trouble with
   sh("#{find.shelljoin} | #{pre.shelljoin}")
   # run syntax tree to format `*.rbs` files
-  sh("#{find.shelljoin} | #{fmt.shelljoin}")
+  sh("#{find.shelljoin} | #{fmt.shelljoin}") do
+    success = _1
+  end
   # transform type aliases back to class aliases
   sh("#{find.shelljoin} | #{pst.shelljoin}")
+
+  # always run post-processing to remove comment marker
+  fail unless success
 end
 
-multitask(format: [:ruboformat, :syntax_tree])
+desc("Format everything")
+multitask(format: [:"format:rubocop", :"format:syntax_tree"])
 
-multitask(:steep) do
+desc("Typecheck `*.rbs`")
+multitask(:"typecheck:steep") do
   sh(*%w[steep check])
 end
 
-multitask(:sorbet) do
-  sh(*%w[srb typecheck -- .], chdir: "./rbi")
+desc("Typecheck `*.rbi`")
+multitask(:"typecheck:sorbet") do
+  sh(*%w[srb typecheck])
 end
 
-file("sorbet/tapioca") do
+file(tapioca) do
   sh(*%w[tapioca init])
 end
 
-multitask(typecheck: [:steep, :sorbet])
-multitask(lint: [:rubocop, :typecheck])
+desc("Typecheck everything")
+multitask(typecheck: [:"typecheck:steep", :"typecheck:sorbet"])
 
-multitask(:build) do
-  sh(*%w[gem build -- metronome-sdk.gemspec])
+desc("Lint and typecheck")
+multitask(lint: [:"lint:rubocop", :typecheck])
+
+desc("Build yard docs")
+multitask(:"build:docs") do
+  sh(*%w[yard])
 end
 
-multitask(release: [:build]) do
-  sh(*%w[gem push], *FileList["metronome-sdk-*.gem"])
+desc("Build ruby gem")
+multitask(:"build:gem") do
+  # optimizing for grepping through the gem bundle: many tools honour `.ignore` files, including VSCode
+  #
+  # both `rbi` and `sig` directories are navigable by their respective tool chains and therefore can be ignored by tools such as `rg`
+  Pathname(ignore_file).write(<<~GLOB)
+    rbi/*
+    sig/*
+  GLOB
+
+  sh(*%w[gem build -- openai.gemspec])
+  rm_rf(ignore_file)
+end
+
+desc("Release ruby gem")
+multitask(release: [:"build:gem"]) do
+  sh(*%w[gem push], *FileList["*.gem"])
 end

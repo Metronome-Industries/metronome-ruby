@@ -1,0 +1,26 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type customer_set_ingest_aliases_params =
+        { customer_id: String, ingest_aliases: ::Array[String] }
+        & MetronomeSDK::Internal::Type::request_parameters
+
+      class CustomerSetIngestAliasesParams < MetronomeSDK::Internal::Type::BaseModel
+        extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+        include MetronomeSDK::Internal::Type::RequestParameters
+
+        attr_accessor customer_id: String
+
+        attr_accessor ingest_aliases: ::Array[String]
+
+        def initialize: (
+          customer_id: String,
+          ingest_aliases: ::Array[String],
+          ?request_options: MetronomeSDK::request_opts
+        ) -> void
+
+        def to_hash: -> MetronomeSDK::Models::V1::customer_set_ingest_aliases_params
+      end
+    end
+  end
+end
