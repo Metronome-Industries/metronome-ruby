@@ -44,6 +44,9 @@ module MetronomeSDK
           in Pathname | IO
             state[:can_retry] = false if value.is_a?(IO)
             MetronomeSDK::FilePart.new(value)
+          in MetronomeSDK::FilePart
+            state[:can_retry] = false if value.content.is_a?(IO)
+            value
           else
             value
           end
