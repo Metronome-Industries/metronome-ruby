@@ -11,7 +11,7 @@ module MetronomeSDK
               customer_id: String,
               limit: Integer,
               next_page: String,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::Customers::PlanListResponse])
           end
@@ -47,7 +47,7 @@ module MetronomeSDK
                 )
               ],
               trial_spec: T.any(MetronomeSDK::Models::V1::Customers::PlanAddParams::TrialSpec, MetronomeSDK::Internal::AnyHash),
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .returns(MetronomeSDK::Models::V1::Customers::PlanAddResponse)
           end
@@ -87,7 +87,7 @@ module MetronomeSDK
               ending_before: Time,
               void_invoices: T::Boolean,
               void_stripe_invoices: T::Boolean,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .returns(MetronomeSDK::Models::V1::Customers::PlanEndResponse)
           end
@@ -119,7 +119,7 @@ module MetronomeSDK
               customer_plan_id: String,
               limit: Integer,
               next_page: String,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .returns(
                 MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse]

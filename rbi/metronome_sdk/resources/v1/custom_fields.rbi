@@ -11,7 +11,7 @@ module MetronomeSDK
             enforce_uniqueness: T::Boolean,
             entity: MetronomeSDK::Models::V1::CustomFieldAddKeyParams::Entity::OrSymbol,
             key: String,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .void
         end
@@ -23,7 +23,7 @@ module MetronomeSDK
             entity: MetronomeSDK::Models::V1::CustomFieldDeleteValuesParams::Entity::OrSymbol,
             entity_id: String,
             keys: T::Array[String],
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .void
         end
@@ -34,7 +34,7 @@ module MetronomeSDK
           params(
             next_page: String,
             entities: T::Array[MetronomeSDK::Models::V1::CustomFieldListKeysParams::Entity::OrSymbol],
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Models::V1::CustomFieldListKeysResponse)
         end
@@ -50,7 +50,7 @@ module MetronomeSDK
           params(
             entity: MetronomeSDK::Models::V1::CustomFieldRemoveKeyParams::Entity::OrSymbol,
             key: String,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .void
         end
@@ -68,7 +68,7 @@ module MetronomeSDK
             custom_fields: T::Hash[Symbol, String],
             entity: MetronomeSDK::Models::V1::CustomFieldSetValuesParams::Entity::OrSymbol,
             entity_id: String,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .void
         end

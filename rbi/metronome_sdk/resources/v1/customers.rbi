@@ -39,7 +39,7 @@ module MetronomeSDK
             ],
             external_id: String,
             ingest_aliases: T::Array[String],
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Models::V1::CustomerCreateResponse)
         end
@@ -58,10 +58,7 @@ module MetronomeSDK
         ); end
         # Get a customer by Metronome ID.
         sig do
-          params(
-            customer_id: String,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
-          )
+          params(customer_id: String, request_options: MetronomeSDK::RequestOpts)
             .returns(MetronomeSDK::Models::V1::CustomerRetrieveResponse)
         end
         def retrieve(customer_id:, request_options: {}); end
@@ -75,7 +72,7 @@ module MetronomeSDK
             next_page: String,
             only_archived: T::Boolean,
             salesforce_account_ids: T::Array[String],
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::CustomerDetail])
         end
@@ -98,10 +95,7 @@ module MetronomeSDK
         ); end
         # Archive a customer
         sig do
-          params(
-            id: String,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
-          )
+          params(id: String, request_options: MetronomeSDK::RequestOpts)
             .returns(MetronomeSDK::Models::V1::CustomerArchiveResponse)
         end
         def archive(id:, request_options: {}); end
@@ -114,7 +108,7 @@ module MetronomeSDK
             limit: Integer,
             next_page: String,
             on_current_plan: T::Boolean,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::CustomerListBillableMetricsResponse])
         end
@@ -142,7 +136,7 @@ module MetronomeSDK
             starting_on: Time,
             limit: Integer,
             next_page: String,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::CustomerListCostsResponse])
         end
@@ -166,7 +160,7 @@ module MetronomeSDK
           params(
             customer_id: String,
             ingest_aliases: T::Array[String],
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .void
         end
@@ -179,11 +173,7 @@ module MetronomeSDK
         ); end
         # Updates the specified customer's name.
         sig do
-          params(
-            customer_id: String,
-            name: String,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
-          )
+          params(customer_id: String, name: String, request_options: MetronomeSDK::RequestOpts)
             .returns(MetronomeSDK::Models::V1::CustomerSetNameResponse)
         end
         def set_name(
@@ -200,7 +190,7 @@ module MetronomeSDK
             customer_id: String,
             leave_stripe_invoices_in_draft: T.nilable(T::Boolean),
             salesforce_account_id: T.nilable(String),
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .void
         end

@@ -22,7 +22,7 @@ module MetronomeSDK
               quantity_conversion: T.nilable(T.any(MetronomeSDK::Models::V1::Contracts::QuantityConversion, MetronomeSDK::Internal::AnyHash)),
               quantity_rounding: T.nilable(T.any(MetronomeSDK::Models::V1::Contracts::QuantityRounding, MetronomeSDK::Internal::AnyHash)),
               tags: T::Array[String],
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .returns(MetronomeSDK::Models::V1::Contracts::ProductCreateResponse)
           end
@@ -73,10 +73,7 @@ module MetronomeSDK
           ); end
           # Get a specific product
           sig do
-            params(
-              id: String,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
-            )
+            params(id: String, request_options: MetronomeSDK::RequestOpts)
               .returns(MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse)
           end
           def retrieve(id:, request_options: {}); end
@@ -99,7 +96,7 @@ module MetronomeSDK
               quantity_conversion: T.nilable(T.any(MetronomeSDK::Models::V1::Contracts::QuantityConversion, MetronomeSDK::Internal::AnyHash)),
               quantity_rounding: T.nilable(T.any(MetronomeSDK::Models::V1::Contracts::QuantityRounding, MetronomeSDK::Internal::AnyHash)),
               tags: T::Array[String],
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .returns(MetronomeSDK::Models::V1::Contracts::ProductUpdateResponse)
           end
@@ -165,7 +162,7 @@ module MetronomeSDK
               limit: Integer,
               next_page: String,
               archive_filter: MetronomeSDK::Models::V1::Contracts::ProductListParams::ArchiveFilter::OrSymbol,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::Contracts::ProductListResponse])
           end
@@ -180,10 +177,7 @@ module MetronomeSDK
           ); end
           # Archive a product
           sig do
-            params(
-              product_id: String,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
-            )
+            params(product_id: String, request_options: MetronomeSDK::RequestOpts)
               .returns(MetronomeSDK::Models::V1::Contracts::ProductArchiveResponse)
           end
           def archive(

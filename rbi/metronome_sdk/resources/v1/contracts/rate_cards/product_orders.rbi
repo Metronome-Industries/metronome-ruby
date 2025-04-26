@@ -16,12 +16,7 @@ module MetronomeSDK
                   )
                 ],
                 rate_card_id: String,
-                request_options: T.nilable(
-                  T.any(
-                    MetronomeSDK::RequestOptions,
-                    MetronomeSDK::Internal::AnyHash
-                  )
-                )
+                request_options: MetronomeSDK::RequestOpts
               )
                 .returns(MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateResponse)
             end
@@ -36,12 +31,7 @@ module MetronomeSDK
               params(
                 product_order: T::Array[String],
                 rate_card_id: String,
-                request_options: T.nilable(
-                  T.any(
-                    MetronomeSDK::RequestOptions,
-                    MetronomeSDK::Internal::AnyHash
-                  )
-                )
+                request_options: MetronomeSDK::RequestOpts
               )
                 .returns(MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderSetResponse)
             end

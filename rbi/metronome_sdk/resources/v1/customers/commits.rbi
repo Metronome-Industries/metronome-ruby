@@ -31,7 +31,7 @@ module MetronomeSDK
               rate_type: MetronomeSDK::Models::V1::Customers::CommitCreateParams::RateType::OrSymbol,
               salesforce_opportunity_id: String,
               uniqueness_key: String,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .returns(MetronomeSDK::Models::V1::Customers::CommitCreateResponse)
           end
@@ -95,7 +95,7 @@ module MetronomeSDK
               include_ledgers: T::Boolean,
               next_page: String,
               starting_at: Time,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .returns(MetronomeSDK::Models::V1::Customers::CommitListResponse)
           end
@@ -131,7 +131,7 @@ module MetronomeSDK
               customer_id: String,
               access_ending_before: Time,
               invoices_ending_before: Time,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .returns(MetronomeSDK::Models::V1::Customers::CommitUpdateEndDateResponse)
           end

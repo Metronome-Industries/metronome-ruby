@@ -35,7 +35,7 @@ module MetronomeSDK
               page: T.nilable(T::Class[MetronomeSDK::Internal::Type::BasePage[MetronomeSDK::Internal::Type::BaseModel]]),
               stream: T.nilable(T::Class[T.anything]),
               model: T.nilable(MetronomeSDK::Internal::Type::Converter::Input),
-              options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              options: T.nilable(MetronomeSDK::RequestOpts)
             }
           end
 
@@ -188,7 +188,7 @@ module MetronomeSDK
             page: T.nilable(T::Class[MetronomeSDK::Internal::Type::BasePage[MetronomeSDK::Internal::Type::BaseModel]]),
             stream: T.nilable(T::Class[T.anything]),
             model: T.nilable(MetronomeSDK::Internal::Type::Converter::Input),
-            options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            options: T.nilable(MetronomeSDK::RequestOpts)
           )
             .returns(T.anything)
         end
