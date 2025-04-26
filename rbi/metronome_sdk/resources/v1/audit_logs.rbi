@@ -17,7 +17,7 @@ module MetronomeSDK
             resource_type: String,
             sort: MetronomeSDK::Models::V1::AuditLogListParams::Sort::OrSymbol,
             starting_on: Time,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::AuditLogListResponse])
         end

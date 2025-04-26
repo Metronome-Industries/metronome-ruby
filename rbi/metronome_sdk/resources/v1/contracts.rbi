@@ -62,7 +62,7 @@ module MetronomeSDK
               MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule,
               MetronomeSDK::Internal::AnyHash
             ),
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Models::V1::ContractCreateResponse)
         end
@@ -129,7 +129,7 @@ module MetronomeSDK
             customer_id: String,
             include_balance: T::Boolean,
             include_ledgers: T::Boolean,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Models::V1::ContractRetrieveResponse)
         end
@@ -154,7 +154,7 @@ module MetronomeSDK
             include_balance: T::Boolean,
             include_ledgers: T::Boolean,
             starting_at: Time,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Models::V1::ContractListResponse)
         end
@@ -188,7 +188,7 @@ module MetronomeSDK
             segment_id: String,
             contract_id: String,
             timestamp: Time,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .void
         end
@@ -231,7 +231,7 @@ module MetronomeSDK
             salesforce_opportunity_id: String,
             scheduled_charges: T::Array[T.any(MetronomeSDK::Models::V1::ContractAmendParams::ScheduledCharge, MetronomeSDK::Internal::AnyHash)],
             total_contract_value: Float,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Models::V1::ContractAmendResponse)
         end
@@ -267,7 +267,7 @@ module MetronomeSDK
             contract_id: String,
             customer_id: String,
             void_invoices: T::Boolean,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Models::V1::ContractArchiveResponse)
         end
@@ -291,7 +291,7 @@ module MetronomeSDK
               )
             ],
             preview: T::Boolean,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse)
         end
@@ -310,7 +310,7 @@ module MetronomeSDK
             include_ledgers: T::Boolean,
             next_page: String,
             starting_at: Time,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Models::V1::ContractListBalancesResponse)
         end
@@ -351,7 +351,7 @@ module MetronomeSDK
                 MetronomeSDK::Internal::AnyHash
               )
             ],
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse)
         end
@@ -388,7 +388,7 @@ module MetronomeSDK
             ],
             netsuite_invoice_header_end: Time,
             netsuite_invoice_header_start: Time,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Models::V1::ContractScheduleProServicesInvoiceResponse)
         end
@@ -413,7 +413,7 @@ module MetronomeSDK
             group_key: String,
             group_values: T::Array[String],
             starting_at: Time,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .void
         end
@@ -434,7 +434,7 @@ module MetronomeSDK
             customer_id: String,
             allow_ending_before_finalized_invoice: T::Boolean,
             ending_before: Time,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Models::V1::ContractUpdateEndDateResponse)
         end

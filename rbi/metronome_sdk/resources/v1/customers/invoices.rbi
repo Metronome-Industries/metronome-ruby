@@ -11,7 +11,7 @@ module MetronomeSDK
               customer_id: String,
               invoice_id: String,
               skip_zero_qty_line_items: T::Boolean,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .returns(MetronomeSDK::Models::V1::Customers::InvoiceRetrieveResponse)
           end
@@ -38,7 +38,7 @@ module MetronomeSDK
               sort: MetronomeSDK::Models::V1::Customers::InvoiceListParams::Sort::OrSymbol,
               starting_on: Time,
               status: String,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::Customers::Invoice])
           end
@@ -77,7 +77,7 @@ module MetronomeSDK
               invoice_start_timestamp: Time,
               price: Float,
               quantity: Float,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .returns(MetronomeSDK::Models::V1::Customers::InvoiceAddChargeResponse)
           end
@@ -118,7 +118,7 @@ module MetronomeSDK
               sort: MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::Sort::OrSymbol,
               status: String,
               window_size: MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::WindowSize::OrSymbol,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .returns(
                 MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsResponse]

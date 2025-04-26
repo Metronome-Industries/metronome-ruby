@@ -8,11 +8,7 @@ module MetronomeSDK
           # Get the customer alert status and alert information for the specified customer
           # and alert
           sig do
-            params(
-              alert_id: String,
-              customer_id: String,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
-            )
+            params(alert_id: String, customer_id: String, request_options: MetronomeSDK::RequestOpts)
               .returns(MetronomeSDK::Models::V1::Customers::AlertRetrieveResponse)
           end
           def retrieve(
@@ -28,7 +24,7 @@ module MetronomeSDK
               customer_id: String,
               next_page: String,
               alert_statuses: T::Array[MetronomeSDK::Models::V1::Customers::AlertListParams::AlertStatus::OrSymbol],
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .returns(MetronomeSDK::Models::V1::Customers::AlertListResponse)
           end
@@ -44,12 +40,7 @@ module MetronomeSDK
           ); end
           # Reset state for an alert by customer id and force re-evaluation
           sig do
-            params(
-              alert_id: String,
-              customer_id: String,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
-            )
-              .void
+            params(alert_id: String, customer_id: String, request_options: MetronomeSDK::RequestOpts).void
           end
           def reset(
             # The Metronome ID of the alert

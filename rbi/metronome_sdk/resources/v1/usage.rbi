@@ -14,7 +14,7 @@ module MetronomeSDK
             next_page: String,
             billable_metrics: T::Array[T.any(MetronomeSDK::Models::V1::UsageListParams::BillableMetric, MetronomeSDK::Internal::AnyHash)],
             customer_ids: T::Array[String],
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Models::V1::UsageListResponse)
         end
@@ -46,7 +46,7 @@ module MetronomeSDK
         sig do
           params(
             usage: T::Array[T.any(MetronomeSDK::Models::V1::UsageIngestParams::Usage, MetronomeSDK::Internal::AnyHash)],
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .void
         end
@@ -65,7 +65,7 @@ module MetronomeSDK
             ending_before: Time,
             group_by: T.any(MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy, MetronomeSDK::Internal::AnyHash),
             starting_on: Time,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::UsageListWithGroupsResponse])
         end

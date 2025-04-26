@@ -29,7 +29,7 @@ module MetronomeSDK
                 MetronomeSDK::Internal::AnyHash
               )
             ],
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Models::V1::DashboardGetEmbeddableURLResponse)
         end

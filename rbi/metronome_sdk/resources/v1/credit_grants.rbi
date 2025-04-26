@@ -24,7 +24,7 @@ module MetronomeSDK
               MetronomeSDK::Internal::AnyHash
             ),
             uniqueness_key: String,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Models::V1::CreditGrantCreateResponse)
         end
@@ -74,7 +74,7 @@ module MetronomeSDK
             customer_ids: T::Array[String],
             effective_before: Time,
             not_expiring_before: Time,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::CreditGrantListResponse])
         end
@@ -106,7 +106,7 @@ module MetronomeSDK
             credit_grant_type: String,
             expires_at: Time,
             name: String,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Models::V1::CreditGrantEditResponse)
         end
@@ -131,7 +131,7 @@ module MetronomeSDK
             customer_ids: T::Array[String],
             ending_before: Time,
             starting_on: Time,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Models::V1::CreditGrantListEntriesResponse)
         end
@@ -160,7 +160,7 @@ module MetronomeSDK
             id: String,
             release_uniqueness_key: T::Boolean,
             void_credit_purchase_invoice: T::Boolean,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Models::V1::CreditGrantVoidResponse)
         end

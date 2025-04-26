@@ -12,7 +12,7 @@ module MetronomeSDK
               rate_card_id: String,
               schedule_name: String,
               covering_date: Time,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .returns(MetronomeSDK::Models::V1::Contracts::NamedScheduleRetrieveResponse)
           end
@@ -35,7 +35,7 @@ module MetronomeSDK
               starting_at: Time,
               value: T.anything,
               ending_before: Time,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .void
           end

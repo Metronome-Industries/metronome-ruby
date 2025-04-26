@@ -15,7 +15,7 @@ module MetronomeSDK
             group_keys: T::Array[T::Array[String]],
             property_filters: T::Array[T.any(MetronomeSDK::Models::PropertyFilter, MetronomeSDK::Internal::AnyHash)],
             sql: String,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Models::V1::BillableMetricCreateResponse)
         end
@@ -47,10 +47,7 @@ module MetronomeSDK
         ); end
         # Get a billable metric.
         sig do
-          params(
-            billable_metric_id: String,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
-          )
+          params(billable_metric_id: String, request_options: MetronomeSDK::RequestOpts)
             .returns(MetronomeSDK::Models::V1::BillableMetricRetrieveResponse)
         end
         def retrieve(billable_metric_id:, request_options: {}); end
@@ -61,7 +58,7 @@ module MetronomeSDK
             include_archived: T::Boolean,
             limit: Integer,
             next_page: String,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::BillableMetricListResponse])
         end
@@ -76,10 +73,7 @@ module MetronomeSDK
         ); end
         # Archive an existing billable metric.
         sig do
-          params(
-            id: String,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
-          )
+          params(id: String, request_options: MetronomeSDK::RequestOpts)
             .returns(MetronomeSDK::Models::V1::BillableMetricArchiveResponse)
         end
         def archive(id:, request_options: {}); end

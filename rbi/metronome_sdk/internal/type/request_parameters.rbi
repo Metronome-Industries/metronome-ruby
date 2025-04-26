@@ -6,7 +6,7 @@ module MetronomeSDK
       # @api private
       module RequestParameters
         # Options to specify HTTP behaviour for this request.
-        sig { returns(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)) }
+        sig { returns(MetronomeSDK::RequestOpts) }
         attr_accessor :request_options
 
         # @api private

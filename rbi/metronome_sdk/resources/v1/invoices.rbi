@@ -6,10 +6,7 @@ module MetronomeSDK
       class Invoices
         # Regenerate a voided contract invoice
         sig do
-          params(
-            id: String,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
-          )
+          params(id: String, request_options: MetronomeSDK::RequestOpts)
             .returns(MetronomeSDK::Models::V1::InvoiceRegenerateResponse)
         end
         def regenerate(
@@ -19,10 +16,7 @@ module MetronomeSDK
         ); end
         # Void an invoice
         sig do
-          params(
-            id: String,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
-          )
+          params(id: String, request_options: MetronomeSDK::RequestOpts)
             .returns(MetronomeSDK::Models::V1::InvoiceVoidResponse)
         end
         def void(

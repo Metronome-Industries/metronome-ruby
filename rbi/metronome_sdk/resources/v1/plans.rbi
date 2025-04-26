@@ -6,11 +6,7 @@ module MetronomeSDK
       class Plans
         # List all available plans.
         sig do
-          params(
-            limit: Integer,
-            next_page: String,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
-          )
+          params(limit: Integer, next_page: String, request_options: MetronomeSDK::RequestOpts)
             .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::PlanListResponse])
         end
         def list(
@@ -22,10 +18,7 @@ module MetronomeSDK
         ); end
         # Fetch high level details of a specific plan.
         sig do
-          params(
-            plan_id: String,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
-          )
+          params(plan_id: String, request_options: MetronomeSDK::RequestOpts)
             .returns(MetronomeSDK::Models::V1::PlanGetDetailsResponse)
         end
         def get_details(plan_id:, request_options: {}); end
@@ -36,7 +29,7 @@ module MetronomeSDK
             plan_id: String,
             limit: Integer,
             next_page: String,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::PlanListChargesResponse])
         end
@@ -57,7 +50,7 @@ module MetronomeSDK
             limit: Integer,
             next_page: String,
             status: MetronomeSDK::Models::V1::PlanListCustomersParams::Status::OrSymbol,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::PlanListCustomersResponse])
         end

@@ -28,7 +28,7 @@ module MetronomeSDK
               custom_fields: T::Hash[Symbol, String],
               description: String,
               fiat_credit_type_id: String,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .returns(MetronomeSDK::Models::V1::Contracts::RateCardCreateResponse)
           end
@@ -51,10 +51,7 @@ module MetronomeSDK
           # Get a specific rate card NOTE: Use `/contract-pricing/rate-cards/getRates` to
           # retrieve rate card rates.
           sig do
-            params(
-              id: String,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
-            )
+            params(id: String, request_options: MetronomeSDK::RequestOpts)
               .returns(MetronomeSDK::Models::V1::Contracts::RateCardRetrieveResponse)
           end
           def retrieve(id:, request_options: {}); end
@@ -66,7 +63,7 @@ module MetronomeSDK
               aliases: T::Array[T.any(MetronomeSDK::Models::V1::Contracts::RateCardUpdateParams::Alias, MetronomeSDK::Internal::AnyHash)],
               description: String,
               name: String,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .returns(MetronomeSDK::Models::V1::Contracts::RateCardUpdateResponse)
           end
@@ -89,7 +86,7 @@ module MetronomeSDK
               limit: Integer,
               next_page: String,
               body: T.anything,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::Contracts::RateCardListResponse])
           end
@@ -117,7 +114,7 @@ module MetronomeSDK
                   MetronomeSDK::Internal::AnyHash
                 )
               ],
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .returns(MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse)
           end

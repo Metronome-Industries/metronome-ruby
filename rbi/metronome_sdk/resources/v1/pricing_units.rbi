@@ -6,11 +6,7 @@ module MetronomeSDK
       class PricingUnits
         # List all pricing units (known in the API by the legacy term "credit types").
         sig do
-          params(
-            limit: Integer,
-            next_page: String,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
-          )
+          params(limit: Integer, next_page: String, request_options: MetronomeSDK::RequestOpts)
             .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::PricingUnitListResponse])
         end
         def list(

@@ -19,12 +19,7 @@ module MetronomeSDK
                     MetronomeSDK::Internal::AnyHash
                   )
                 ],
-                request_options: T.nilable(
-                  T.any(
-                    MetronomeSDK::RequestOptions,
-                    MetronomeSDK::Internal::AnyHash
-                  )
-                )
+                request_options: MetronomeSDK::RequestOpts
               )
                 .returns(
                   MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse]
@@ -66,12 +61,7 @@ module MetronomeSDK
                 quantity: Float,
                 tiers: T::Array[T.any(MetronomeSDK::Models::Tier, MetronomeSDK::Internal::AnyHash)],
                 use_list_prices: T::Boolean,
-                request_options: T.nilable(
-                  T.any(
-                    MetronomeSDK::RequestOptions,
-                    MetronomeSDK::Internal::AnyHash
-                  )
-                )
+                request_options: MetronomeSDK::RequestOpts
               )
                 .returns(MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse)
             end
@@ -126,12 +116,7 @@ module MetronomeSDK
                     MetronomeSDK::Internal::AnyHash
                   )
                 ],
-                request_options: T.nilable(
-                  T.any(
-                    MetronomeSDK::RequestOptions,
-                    MetronomeSDK::Internal::AnyHash
-                  )
-                )
+                request_options: MetronomeSDK::RequestOpts
               )
                 .returns(MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyResponse)
             end

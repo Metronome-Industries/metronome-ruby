@@ -14,7 +14,7 @@ module MetronomeSDK
               aws_product_code: String,
               aws_region: MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::AwsRegion::OrSymbol,
               stripe_collection_method: MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::StripeCollectionMethod::OrSymbol,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .void
           end
@@ -39,7 +39,7 @@ module MetronomeSDK
             params(
               customer_id: String,
               billing_provider_type: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveParams::BillingProviderType::OrSymbol,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .returns(MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse)
           end
@@ -55,7 +55,7 @@ module MetronomeSDK
             params(
               customer_id: String,
               billing_provider_type: MetronomeSDK::Models::V1::Customers::BillingConfigDeleteParams::BillingProviderType::OrSymbol,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .void
           end

@@ -25,7 +25,7 @@ module MetronomeSDK
               rate_type: MetronomeSDK::Models::V1::Customers::CreditCreateParams::RateType::OrSymbol,
               salesforce_opportunity_id: String,
               uniqueness_key: String,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .returns(MetronomeSDK::Models::V1::Customers::CreditCreateResponse)
           end
@@ -76,7 +76,7 @@ module MetronomeSDK
               include_ledgers: T::Boolean,
               next_page: String,
               starting_at: Time,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .returns(MetronomeSDK::Models::V1::Customers::CreditListResponse)
           end
@@ -110,7 +110,7 @@ module MetronomeSDK
               access_ending_before: Time,
               credit_id: String,
               customer_id: String,
-              request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+              request_options: MetronomeSDK::RequestOpts
             )
               .returns(MetronomeSDK::Models::V1::Customers::CreditUpdateEndDateResponse)
           end

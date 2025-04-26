@@ -20,7 +20,7 @@ module MetronomeSDK
             invoice_types_filter: T::Array[String],
             plan_id: String,
             uniqueness_key: String,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Models::V1::AlertCreateResponse)
         end
@@ -67,11 +67,7 @@ module MetronomeSDK
         ); end
         # Archive an existing alert
         sig do
-          params(
-            id: String,
-            release_uniqueness_key: T::Boolean,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
-          )
+          params(id: String, release_uniqueness_key: T::Boolean, request_options: MetronomeSDK::RequestOpts)
             .returns(MetronomeSDK::Models::V1::AlertArchiveResponse)
         end
         def archive(

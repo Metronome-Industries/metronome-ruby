@@ -13,7 +13,7 @@ module MetronomeSDK
             as_of_date: Time,
             include_balance: T::Boolean,
             include_ledgers: T::Boolean,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Models::V2::ContractRetrieveResponse)
         end
@@ -41,7 +41,7 @@ module MetronomeSDK
             include_balance: T::Boolean,
             include_ledgers: T::Boolean,
             starting_at: Time,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Models::V2::ContractListResponse)
         end
@@ -107,7 +107,7 @@ module MetronomeSDK
               MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration,
               MetronomeSDK::Internal::AnyHash
             ),
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Models::V2::ContractEditResponse)
         end
@@ -156,7 +156,7 @@ module MetronomeSDK
               MetronomeSDK::Internal::AnyHash
             ),
             product_id: String,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Models::V2::ContractEditCommitResponse)
         end
@@ -188,7 +188,7 @@ module MetronomeSDK
             applicable_product_ids: T.nilable(T::Array[String]),
             applicable_product_tags: T.nilable(T::Array[String]),
             product_id: String,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
+            request_options: MetronomeSDK::RequestOpts
           )
             .returns(MetronomeSDK::Models::V2::ContractEditCreditResponse)
         end
@@ -210,11 +210,7 @@ module MetronomeSDK
         # Get the edit history of a specific contract. Contract editing must be enabled to
         # use this endpoint.
         sig do
-          params(
-            contract_id: String,
-            customer_id: String,
-            request_options: T.nilable(T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
-          )
+          params(contract_id: String, customer_id: String, request_options: MetronomeSDK::RequestOpts)
             .returns(MetronomeSDK::Models::V2::ContractGetEditHistoryResponse)
         end
         def get_edit_history(contract_id:, customer_id:, request_options: {}); end
