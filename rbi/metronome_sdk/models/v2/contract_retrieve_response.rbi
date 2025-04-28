@@ -2073,23 +2073,6 @@ module MetronomeSDK
             def to_hash; end
 
             class OverrideSpecifier < MetronomeSDK::Internal::Type::BaseModel
-              sig do
-                returns(
-                  T.nilable(
-                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol
-                  )
-                )
-              end
-              attr_reader :billing_frequency
-
-              sig do
-                params(
-                  billing_frequency: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Override::OverrideSpecifier::BillingFrequency::OrSymbol
-                )
-                  .void
-              end
-              attr_writer :billing_frequency
-
               sig { returns(T.nilable(T::Array[String])) }
               attr_reader :commit_ids
 
@@ -2134,7 +2117,6 @@ module MetronomeSDK
 
               sig do
                 params(
-                  billing_frequency: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Override::OverrideSpecifier::BillingFrequency::OrSymbol,
                   commit_ids: T::Array[String],
                   presentation_group_values: T::Hash[Symbol, T.nilable(String)],
                   pricing_group_values: T::Hash[Symbol, String],
@@ -2146,7 +2128,6 @@ module MetronomeSDK
                   .returns(T.attached_class)
               end
               def self.new(
-                billing_frequency: nil,
                 commit_ids: nil,
                 presentation_group_values: nil,
                 pricing_group_values: nil,
@@ -2159,7 +2140,6 @@ module MetronomeSDK
                 override
                   .returns(
                     {
-                      billing_frequency: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol,
                       commit_ids: T::Array[String],
                       presentation_group_values: T::Hash[Symbol, T.nilable(String)],
                       pricing_group_values: T::Hash[Symbol, String],
@@ -2171,42 +2151,6 @@ module MetronomeSDK
                   )
               end
               def to_hash; end
-
-              module BillingFrequency
-                extend MetronomeSDK::Internal::Type::Enum
-
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Override::OverrideSpecifier::BillingFrequency)
-                  end
-                OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-                MONTHLY =
-                  T.let(
-                    :MONTHLY,
-                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol
-                  )
-                QUARTERLY =
-                  T.let(
-                    :QUARTERLY,
-                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol
-                  )
-                ANNUAL =
-                  T.let(
-                    :ANNUAL,
-                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol
-                  )
-
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                        MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values; end
-              end
             end
 
             class OverrideTier < MetronomeSDK::Internal::Type::BaseModel

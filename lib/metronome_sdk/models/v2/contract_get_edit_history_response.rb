@@ -72,12 +72,6 @@ module MetronomeSDK
           optional :add_scheduled_charges,
                    -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge] }
 
-          # @!attribute add_subscriptions
-          #
-          #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription>, nil]
-          optional :add_subscriptions,
-                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription] }
-
           # @!attribute add_usage_filters
           #
           #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddUsageFilter>, nil]
@@ -148,13 +142,7 @@ module MetronomeSDK
           optional :update_scheduled_charges,
                    -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge] }
 
-          # @!attribute update_subscriptions
-          #
-          #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription>, nil]
-          optional :update_subscriptions,
-                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription] }
-
-          # @!method initialize(id:, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_pro_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_subscriptions: nil, add_usage_filters: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, timestamp: nil, update_commits: nil, update_contract_end_date: nil, update_credits: nil, update_discounts: nil, update_refund_invoices: nil, update_scheduled_charges: nil, update_subscriptions: nil)
+          # @!method initialize(id:, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_pro_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_usage_filters: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, timestamp: nil, update_commits: nil, update_contract_end_date: nil, update_credits: nil, update_discounts: nil, update_refund_invoices: nil, update_scheduled_charges: nil)
           #   @param id [String]
           #   @param add_commits [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit>]
           #   @param add_credits [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit>]
@@ -165,7 +153,6 @@ module MetronomeSDK
           #   @param add_recurring_credits [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit>]
           #   @param add_reseller_royalties [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddResellerRoyalty>]
           #   @param add_scheduled_charges [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge>]
-          #   @param add_subscriptions [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription>]
           #   @param add_usage_filters [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddUsageFilter>]
           #   @param archive_commits [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::ArchiveCommit>]
           #   @param archive_credits [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::ArchiveCredit>]
@@ -178,7 +165,6 @@ module MetronomeSDK
           #   @param update_discounts [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount>]
           #   @param update_refund_invoices [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRefundInvoice>]
           #   @param update_scheduled_charges [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge>]
-          #   @param update_subscriptions [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription>]
 
           class AddCommit < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute id
@@ -549,12 +535,6 @@ module MetronomeSDK
             #   @param type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::Type]
 
             class OverrideSpecifier < MetronomeSDK::Internal::Type::BaseModel
-              # @!attribute billing_frequency
-              #
-              #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier::BillingFrequency, nil]
-              optional :billing_frequency,
-                       enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier::BillingFrequency }
-
               # @!attribute commit_ids
               #
               #   @return [Array<String>, nil]
@@ -590,8 +570,7 @@ module MetronomeSDK
               #   @return [Array<String>, nil]
               optional :recurring_credit_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
 
-              # @!method initialize(billing_frequency: nil, commit_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_ids: nil, recurring_credit_ids: nil)
-              #   @param billing_frequency [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier::BillingFrequency]
+              # @!method initialize(commit_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_ids: nil, recurring_credit_ids: nil)
               #   @param commit_ids [Array<String>]
               #   @param presentation_group_values [Hash{Symbol=>String, nil}]
               #   @param pricing_group_values [Hash{Symbol=>String}]
@@ -599,18 +578,6 @@ module MetronomeSDK
               #   @param product_tags [Array<String>]
               #   @param recurring_commit_ids [Array<String>]
               #   @param recurring_credit_ids [Array<String>]
-
-              # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier#billing_frequency
-              module BillingFrequency
-                extend MetronomeSDK::Internal::Type::Enum
-
-                MONTHLY = :MONTHLY
-                QUARTERLY = :QUARTERLY
-                ANNUAL = :ANNUAL
-
-                # @!method self.values
-                #   @return [Array<Symbol>]
-              end
             end
 
             class OverrideTier < MetronomeSDK::Internal::Type::BaseModel
@@ -1518,191 +1485,6 @@ module MetronomeSDK
             end
           end
 
-          class AddSubscription < MetronomeSDK::Internal::Type::BaseModel
-            # @!attribute collection_schedule
-            #
-            #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::CollectionSchedule]
-            required :collection_schedule,
-                     enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::CollectionSchedule }
-
-            # @!attribute proration
-            #
-            #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::Proration]
-            required :proration,
-                     -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::Proration }
-
-            # @!attribute quantity_schedule
-            #
-            #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::QuantitySchedule>]
-            required :quantity_schedule,
-                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::QuantitySchedule] }
-
-            # @!attribute starting_at
-            #
-            #   @return [Time]
-            required :starting_at, Time
-
-            # @!attribute subscription_rate
-            #
-            #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SubscriptionRate]
-            required :subscription_rate,
-                     -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SubscriptionRate }
-
-            # @!attribute id
-            #
-            #   @return [String, nil]
-            optional :id, String
-
-            # @!attribute custom_fields
-            #
-            #   @return [Hash{Symbol=>String}, nil]
-            optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
-
-            # @!attribute description
-            #
-            #   @return [String, nil]
-            optional :description, String
-
-            # @!attribute ending_before
-            #
-            #   @return [Time, nil]
-            optional :ending_before, Time
-
-            # @!attribute fiat_credit_type_id
-            #
-            #   @return [String, nil]
-            optional :fiat_credit_type_id, String
-
-            # @!attribute name
-            #
-            #   @return [String, nil]
-            optional :name, String
-
-            # @!method initialize(collection_schedule:, proration:, quantity_schedule:, starting_at:, subscription_rate:, id: nil, custom_fields: nil, description: nil, ending_before: nil, fiat_credit_type_id: nil, name: nil)
-            #   @param collection_schedule [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::CollectionSchedule]
-            #   @param proration [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::Proration]
-            #   @param quantity_schedule [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::QuantitySchedule>]
-            #   @param starting_at [Time]
-            #   @param subscription_rate [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SubscriptionRate]
-            #   @param id [String]
-            #   @param custom_fields [Hash{Symbol=>String}]
-            #   @param description [String]
-            #   @param ending_before [Time]
-            #   @param fiat_credit_type_id [String]
-            #   @param name [String]
-
-            # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription#collection_schedule
-            module CollectionSchedule
-              extend MetronomeSDK::Internal::Type::Enum
-
-              ADVANCE = :ADVANCE
-              ARREARS = :ARREARS
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-
-            # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription#proration
-            class Proration < MetronomeSDK::Internal::Type::BaseModel
-              # @!attribute invoice_behavior
-              #
-              #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::Proration::InvoiceBehavior]
-              required :invoice_behavior,
-                       enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::Proration::InvoiceBehavior }
-
-              # @!attribute is_prorated
-              #
-              #   @return [Boolean]
-              required :is_prorated, MetronomeSDK::Internal::Type::Boolean
-
-              # @!method initialize(invoice_behavior:, is_prorated:)
-              #   @param invoice_behavior [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::Proration::InvoiceBehavior]
-              #   @param is_prorated [Boolean]
-
-              # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::Proration#invoice_behavior
-              module InvoiceBehavior
-                extend MetronomeSDK::Internal::Type::Enum
-
-                BILL_IMMEDIATELY = :BILL_IMMEDIATELY
-                BILL_ON_NEXT_COLLECTION_DATE = :BILL_ON_NEXT_COLLECTION_DATE
-
-                # @!method self.values
-                #   @return [Array<Symbol>]
-              end
-            end
-
-            class QuantitySchedule < MetronomeSDK::Internal::Type::BaseModel
-              # @!attribute quantity
-              #
-              #   @return [Float]
-              required :quantity, Float
-
-              # @!attribute starting_at
-              #
-              #   @return [Time]
-              required :starting_at, Time
-
-              # @!attribute ending_before
-              #
-              #   @return [Time, nil]
-              optional :ending_before, Time
-
-              # @!method initialize(quantity:, starting_at:, ending_before: nil)
-              #   @param quantity [Float]
-              #   @param starting_at [Time]
-              #   @param ending_before [Time]
-            end
-
-            # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription#subscription_rate
-            class SubscriptionRate < MetronomeSDK::Internal::Type::BaseModel
-              # @!attribute billing_frequency
-              #
-              #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SubscriptionRate::BillingFrequency]
-              required :billing_frequency,
-                       enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SubscriptionRate::BillingFrequency }
-
-              # @!attribute product
-              #
-              #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SubscriptionRate::Product]
-              required :product,
-                       -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SubscriptionRate::Product }
-
-              # @!method initialize(billing_frequency:, product:)
-              #   @param billing_frequency [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SubscriptionRate::BillingFrequency]
-              #   @param product [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SubscriptionRate::Product]
-
-              # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SubscriptionRate#billing_frequency
-              module BillingFrequency
-                extend MetronomeSDK::Internal::Type::Enum
-
-                MONTHLY = :MONTHLY
-                QUARTERLY = :QUARTERLY
-                ANNUAL = :ANNUAL
-                WEEKLY = :WEEKLY
-
-                # @!method self.values
-                #   @return [Array<Symbol>]
-              end
-
-              # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SubscriptionRate#product
-              class Product < MetronomeSDK::Internal::Type::BaseModel
-                # @!attribute id
-                #
-                #   @return [String]
-                required :id, String
-
-                # @!attribute name
-                #
-                #   @return [String]
-                required :name, String
-
-                # @!method initialize(id:, name:)
-                #   @param id [String]
-                #   @param name [String]
-              end
-            end
-          end
-
           class AddUsageFilter < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute group_key
             #
@@ -2603,45 +2385,6 @@ module MetronomeSDK
                 #   @param timestamp [Time]
                 #   @param unit_price [Float]
               end
-            end
-          end
-
-          class UpdateSubscription < MetronomeSDK::Internal::Type::BaseModel
-            # @!attribute id
-            #
-            #   @return [String]
-            required :id, String
-
-            # @!attribute ending_before
-            #
-            #   @return [Time, nil]
-            optional :ending_before, Time
-
-            # @!attribute quantity_updates
-            #
-            #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::QuantityUpdate>, nil]
-            optional :quantity_updates,
-                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::QuantityUpdate] }
-
-            # @!method initialize(id:, ending_before: nil, quantity_updates: nil)
-            #   @param id [String]
-            #   @param ending_before [Time]
-            #   @param quantity_updates [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::QuantityUpdate>]
-
-            class QuantityUpdate < MetronomeSDK::Internal::Type::BaseModel
-              # @!attribute quantity
-              #
-              #   @return [Float]
-              required :quantity, Float
-
-              # @!attribute starting_at
-              #
-              #   @return [Time]
-              required :starting_at, Time
-
-              # @!method initialize(quantity:, starting_at:)
-              #   @param quantity [Float]
-              #   @param starting_at [Time]
             end
           end
         end
