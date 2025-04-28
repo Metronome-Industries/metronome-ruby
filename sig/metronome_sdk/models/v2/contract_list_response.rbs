@@ -1056,7 +1056,6 @@ module MetronomeSDK
 
             type override_specifier =
               {
-                billing_frequency: MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverrideSpecifier::billing_frequency,
                 commit_ids: ::Array[String],
                 presentation_group_values: ::Hash[Symbol, String?],
                 pricing_group_values: ::Hash[Symbol, String],
@@ -1067,12 +1066,6 @@ module MetronomeSDK
               }
 
             class OverrideSpecifier < MetronomeSDK::Internal::Type::BaseModel
-              attr_reader billing_frequency: MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverrideSpecifier::billing_frequency?
-
-              def billing_frequency=: (
-                MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverrideSpecifier::billing_frequency
-              ) -> MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverrideSpecifier::billing_frequency
-
               attr_reader commit_ids: ::Array[String]?
 
               def commit_ids=: (::Array[String]) -> ::Array[String]
@@ -1106,7 +1099,6 @@ module MetronomeSDK
               def recurring_credit_ids=: (::Array[String]) -> ::Array[String]
 
               def initialize: (
-                ?billing_frequency: MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverrideSpecifier::billing_frequency,
                 ?commit_ids: ::Array[String],
                 ?presentation_group_values: ::Hash[Symbol, String?],
                 ?pricing_group_values: ::Hash[Symbol, String],
@@ -1117,18 +1109,6 @@ module MetronomeSDK
               ) -> void
 
               def to_hash: -> MetronomeSDK::Models::V2::ContractListResponse::Data::Override::override_specifier
-
-              type billing_frequency = :MONTHLY | :QUARTERLY | :ANNUAL
-
-              module BillingFrequency
-                extend MetronomeSDK::Internal::Type::Enum
-
-                MONTHLY: :MONTHLY
-                QUARTERLY: :QUARTERLY
-                ANNUAL: :ANNUAL
-
-                def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverrideSpecifier::billing_frequency]
-              end
             end
 
             type override_tier = { multiplier: Float, size: Float }
