@@ -1202,12 +1202,6 @@ module MetronomeSDK
             #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Override::Type]
 
             class OverrideSpecifier < MetronomeSDK::Internal::Type::BaseModel
-              # @!attribute billing_frequency
-              #
-              #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Override::OverrideSpecifier::BillingFrequency, nil]
-              optional :billing_frequency,
-                       enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Override::OverrideSpecifier::BillingFrequency }
-
               # @!attribute commit_ids
               #
               #   @return [Array<String>, nil]
@@ -1243,8 +1237,7 @@ module MetronomeSDK
               #   @return [Array<String>, nil]
               optional :recurring_credit_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
 
-              # @!method initialize(billing_frequency: nil, commit_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_ids: nil, recurring_credit_ids: nil)
-              #   @param billing_frequency [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Override::OverrideSpecifier::BillingFrequency]
+              # @!method initialize(commit_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_ids: nil, recurring_credit_ids: nil)
               #   @param commit_ids [Array<String>]
               #   @param presentation_group_values [Hash{Symbol=>String, nil}]
               #   @param pricing_group_values [Hash{Symbol=>String}]
@@ -1252,18 +1245,6 @@ module MetronomeSDK
               #   @param product_tags [Array<String>]
               #   @param recurring_commit_ids [Array<String>]
               #   @param recurring_credit_ids [Array<String>]
-
-              # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Override::OverrideSpecifier#billing_frequency
-              module BillingFrequency
-                extend MetronomeSDK::Internal::Type::Enum
-
-                MONTHLY = :MONTHLY
-                QUARTERLY = :QUARTERLY
-                ANNUAL = :ANNUAL
-
-                # @!method self.values
-                #   @return [Array<Symbol>]
-              end
             end
 
             class OverrideTier < MetronomeSDK::Internal::Type::BaseModel
