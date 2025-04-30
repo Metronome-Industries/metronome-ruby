@@ -134,6 +134,16 @@ module MetronomeSDK
         end
         attr_writer :add_spend_threshold_configuration
 
+        # If true, allows setting the contract end date earlier than the end_timestamp of
+        # existing finalized invoices. Finalized invoices will be unchanged; if you want
+        # to incorporate the new end date, you can void and regenerate finalized usage
+        # invoices. Defaults to true.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :allow_contract_ending_before_finalized_invoice
+
+        sig { params(allow_contract_ending_before_finalized_invoice: T::Boolean).void }
+        attr_writer :allow_contract_ending_before_finalized_invoice
+
         # IDs of commits to archive
         sig { returns(T.nilable(T::Array[MetronomeSDK::Models::V2::ContractEditParams::ArchiveCommit])) }
         attr_reader :archive_commits
@@ -198,6 +208,13 @@ module MetronomeSDK
         end
         attr_writer :update_commits
 
+        # RFC 3339 timestamp indicating when the contract will end (exclusive).
+        sig { returns(T.nilable(Time)) }
+        attr_reader :update_contract_end_date
+
+        sig { params(update_contract_end_date: Time).void }
+        attr_writer :update_contract_end_date
+
         sig { returns(T.nilable(T::Array[MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit])) }
         attr_reader :update_credits
 
@@ -261,6 +278,7 @@ module MetronomeSDK
               MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration,
               MetronomeSDK::Internal::AnyHash
             ),
+            allow_contract_ending_before_finalized_invoice: T::Boolean,
             archive_commits: T::Array[T.any(MetronomeSDK::Models::V2::ContractEditParams::ArchiveCommit, MetronomeSDK::Internal::AnyHash)],
             archive_credits: T::Array[T.any(MetronomeSDK::Models::V2::ContractEditParams::ArchiveCredit, MetronomeSDK::Internal::AnyHash)],
             archive_scheduled_charges: T::Array[
@@ -271,6 +289,7 @@ module MetronomeSDK
             ],
             remove_overrides: T::Array[T.any(MetronomeSDK::Models::V2::ContractEditParams::RemoveOverride, MetronomeSDK::Internal::AnyHash)],
             update_commits: T::Array[T.any(MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit, MetronomeSDK::Internal::AnyHash)],
+            update_contract_end_date: Time,
             update_credits: T::Array[T.any(MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit, MetronomeSDK::Internal::AnyHash)],
             update_scheduled_charges: T::Array[
               T.any(
@@ -302,6 +321,11 @@ module MetronomeSDK
           add_reseller_royalties: nil,
           add_scheduled_charges: nil,
           add_spend_threshold_configuration: nil,
+          # If true, allows setting the contract end date earlier than the end_timestamp of
+          # existing finalized invoices. Finalized invoices will be unchanged; if you want
+          # to incorporate the new end date, you can void and regenerate finalized usage
+          # invoices. Defaults to true.
+          allow_contract_ending_before_finalized_invoice: nil,
           # IDs of commits to archive
           archive_commits: nil,
           # IDs of credits to archive
@@ -311,6 +335,8 @@ module MetronomeSDK
           # IDs of overrides to remove
           remove_overrides: nil,
           update_commits: nil,
+          # RFC 3339 timestamp indicating when the contract will end (exclusive).
+          update_contract_end_date: nil,
           update_credits: nil,
           update_scheduled_charges: nil,
           update_spend_threshold_configuration: nil,
@@ -332,11 +358,13 @@ module MetronomeSDK
                 add_reseller_royalties: T::Array[MetronomeSDK::Models::V2::ContractEditParams::AddResellerRoyalty],
                 add_scheduled_charges: T::Array[MetronomeSDK::Models::V2::ContractEditParams::AddScheduledCharge],
                 add_spend_threshold_configuration: MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration,
+                allow_contract_ending_before_finalized_invoice: T::Boolean,
                 archive_commits: T::Array[MetronomeSDK::Models::V2::ContractEditParams::ArchiveCommit],
                 archive_credits: T::Array[MetronomeSDK::Models::V2::ContractEditParams::ArchiveCredit],
                 archive_scheduled_charges: T::Array[MetronomeSDK::Models::V2::ContractEditParams::ArchiveScheduledCharge],
                 remove_overrides: T::Array[MetronomeSDK::Models::V2::ContractEditParams::RemoveOverride],
                 update_commits: T::Array[MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit],
+                update_contract_end_date: Time,
                 update_credits: T::Array[MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit],
                 update_scheduled_charges: T::Array[MetronomeSDK::Models::V2::ContractEditParams::UpdateScheduledCharge],
                 update_spend_threshold_configuration: MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration,
