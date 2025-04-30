@@ -81,6 +81,15 @@ module MetronomeSDK
         optional :add_spend_threshold_configuration,
                  -> { MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration }
 
+        # @!attribute allow_contract_ending_before_finalized_invoice
+        #   If true, allows setting the contract end date earlier than the end_timestamp of
+        #   existing finalized invoices. Finalized invoices will be unchanged; if you want
+        #   to incorporate the new end date, you can void and regenerate finalized usage
+        #   invoices. Defaults to true.
+        #
+        #   @return [Boolean, nil]
+        optional :allow_contract_ending_before_finalized_invoice, MetronomeSDK::Internal::Type::Boolean
+
         # @!attribute archive_commits
         #   IDs of commits to archive
         #
@@ -115,6 +124,12 @@ module MetronomeSDK
         optional :update_commits,
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit] }
 
+        # @!attribute update_contract_end_date
+        #   RFC 3339 timestamp indicating when the contract will end (exclusive).
+        #
+        #   @return [Time, nil]
+        optional :update_contract_end_date, Time
+
         # @!attribute update_credits
         #
         #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit>, nil]
@@ -133,7 +148,10 @@ module MetronomeSDK
         optional :update_spend_threshold_configuration,
                  -> { MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration }
 
-        # @!method initialize(contract_id:, customer_id:, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_professional_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_spend_threshold_configuration: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, update_commits: nil, update_credits: nil, update_scheduled_charges: nil, update_spend_threshold_configuration: nil, request_options: {})
+        # @!method initialize(contract_id:, customer_id:, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_professional_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_spend_threshold_configuration: nil, allow_contract_ending_before_finalized_invoice: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, update_commits: nil, update_contract_end_date: nil, update_credits: nil, update_scheduled_charges: nil, update_spend_threshold_configuration: nil, request_options: {})
+        #   Some parameter documentations has been truncated, see
+        #   {MetronomeSDK::Models::V2::ContractEditParams} for more details.
+        #
         #   @param contract_id [String] ID of the contract being edited
         #
         #   @param customer_id [String] ID of the customer whose contract is being edited
@@ -158,6 +176,9 @@ module MetronomeSDK
         #
         #   @param add_spend_threshold_configuration [MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration]
         #
+        #   @param allow_contract_ending_before_finalized_invoice [Boolean] If true, allows setting the contract end date earlier than the end_timestamp of
+        #   ...
+        #
         #   @param archive_commits [Array<MetronomeSDK::Models::V2::ContractEditParams::ArchiveCommit>] IDs of commits to archive
         #
         #   @param archive_credits [Array<MetronomeSDK::Models::V2::ContractEditParams::ArchiveCredit>] IDs of credits to archive
@@ -167,6 +188,8 @@ module MetronomeSDK
         #   @param remove_overrides [Array<MetronomeSDK::Models::V2::ContractEditParams::RemoveOverride>] IDs of overrides to remove
         #
         #   @param update_commits [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit>]
+        #
+        #   @param update_contract_end_date [Time] RFC 3339 timestamp indicating when the contract will end (exclusive).
         #
         #   @param update_credits [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit>]
         #

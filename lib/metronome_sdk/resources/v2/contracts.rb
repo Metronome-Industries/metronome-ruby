@@ -81,9 +81,12 @@ module MetronomeSDK
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {MetronomeSDK::Models::V2::ContractEditParams} for more details.
+        #
         # Edit a contract. Contract editing must be enabled to use this endpoint.
         #
-        # @overload edit(contract_id:, customer_id:, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_professional_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_spend_threshold_configuration: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, update_commits: nil, update_credits: nil, update_scheduled_charges: nil, update_spend_threshold_configuration: nil, request_options: {})
+        # @overload edit(contract_id:, customer_id:, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_professional_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_spend_threshold_configuration: nil, allow_contract_ending_before_finalized_invoice: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, update_commits: nil, update_contract_end_date: nil, update_credits: nil, update_scheduled_charges: nil, update_spend_threshold_configuration: nil, request_options: {})
         #
         # @param contract_id [String] ID of the contract being edited
         #
@@ -109,6 +112,9 @@ module MetronomeSDK
         #
         # @param add_spend_threshold_configuration [MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration]
         #
+        # @param allow_contract_ending_before_finalized_invoice [Boolean] If true, allows setting the contract end date earlier than the end_timestamp of
+        # ...
+        #
         # @param archive_commits [Array<MetronomeSDK::Models::V2::ContractEditParams::ArchiveCommit>] IDs of commits to archive
         #
         # @param archive_credits [Array<MetronomeSDK::Models::V2::ContractEditParams::ArchiveCredit>] IDs of credits to archive
@@ -118,6 +124,8 @@ module MetronomeSDK
         # @param remove_overrides [Array<MetronomeSDK::Models::V2::ContractEditParams::RemoveOverride>] IDs of overrides to remove
         #
         # @param update_commits [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit>]
+        #
+        # @param update_contract_end_date [Time] RFC 3339 timestamp indicating when the contract will end (exclusive).
         #
         # @param update_credits [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit>]
         #

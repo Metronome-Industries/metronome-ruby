@@ -86,6 +86,7 @@ module MetronomeSDK
               MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration,
               MetronomeSDK::Internal::AnyHash
             ),
+            allow_contract_ending_before_finalized_invoice: T::Boolean,
             archive_commits: T::Array[T.any(MetronomeSDK::Models::V2::ContractEditParams::ArchiveCommit, MetronomeSDK::Internal::AnyHash)],
             archive_credits: T::Array[T.any(MetronomeSDK::Models::V2::ContractEditParams::ArchiveCredit, MetronomeSDK::Internal::AnyHash)],
             archive_scheduled_charges: T::Array[
@@ -96,6 +97,7 @@ module MetronomeSDK
             ],
             remove_overrides: T::Array[T.any(MetronomeSDK::Models::V2::ContractEditParams::RemoveOverride, MetronomeSDK::Internal::AnyHash)],
             update_commits: T::Array[T.any(MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit, MetronomeSDK::Internal::AnyHash)],
+            update_contract_end_date: Time,
             update_credits: T::Array[T.any(MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit, MetronomeSDK::Internal::AnyHash)],
             update_scheduled_charges: T::Array[
               T.any(
@@ -127,6 +129,11 @@ module MetronomeSDK
           add_reseller_royalties: nil,
           add_scheduled_charges: nil,
           add_spend_threshold_configuration: nil,
+          # If true, allows setting the contract end date earlier than the end_timestamp of
+          # existing finalized invoices. Finalized invoices will be unchanged; if you want
+          # to incorporate the new end date, you can void and regenerate finalized usage
+          # invoices. Defaults to true.
+          allow_contract_ending_before_finalized_invoice: nil,
           # IDs of commits to archive
           archive_commits: nil,
           # IDs of credits to archive
@@ -136,6 +143,8 @@ module MetronomeSDK
           # IDs of overrides to remove
           remove_overrides: nil,
           update_commits: nil,
+          # RFC 3339 timestamp indicating when the contract will end (exclusive).
+          update_contract_end_date: nil,
           update_credits: nil,
           update_scheduled_charges: nil,
           update_spend_threshold_configuration: nil,
