@@ -395,15 +395,7 @@ module MetronomeSDK
         # Create a new instance of a model.
         #
         # @param data [Hash{Symbol=>Object}, self]
-        def initialize(data = {})
-          case MetronomeSDK::Internal::Util.coerce_hash(data)
-          in Hash => coerced
-            @data = coerced
-          else
-            message = "Expected a #{Hash} or #{MetronomeSDK::Internal::Type::BaseModel}, got #{data.inspect}"
-            raise ArgumentError.new(message)
-          end
-        end
+        def initialize(data = {}) = (@data = MetronomeSDK::Internal::Util.coerce_hash!(data).to_h)
 
         class << self
           # @api private
