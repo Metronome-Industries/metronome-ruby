@@ -99,6 +99,13 @@ module MetronomeSDK
             body: nil,
             request_options: {}
           ); end
+          # Archive a rate card
+          sig do
+            params(id: String, request_options: MetronomeSDK::RequestOpts)
+              .returns(MetronomeSDK::Models::V1::Contracts::RateCardArchiveResponse)
+          end
+          def archive(id:, request_options: {}); end
+
           # Get all rates for a rate card from starting_at (either in perpetuity or until
           # ending_before, if provided)
           sig do

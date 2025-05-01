@@ -39,6 +39,11 @@ module MetronomeSDK
             ?request_options: MetronomeSDK::request_opts
           ) -> MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::Contracts::RateCardListResponse]
 
+          def archive: (
+            id: String,
+            ?request_options: MetronomeSDK::request_opts
+          ) -> MetronomeSDK::Models::V1::Contracts::RateCardArchiveResponse
+
           def retrieve_rate_schedule: (
             rate_card_id: String,
             starting_at: Time,

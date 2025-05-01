@@ -134,6 +134,27 @@ module MetronomeSDK
             )
           end
 
+          # Archive a rate card
+          #
+          # @overload archive(id:, request_options: {})
+          #
+          # @param id [String]
+          # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
+          #
+          # @return [MetronomeSDK::Models::V1::Contracts::RateCardArchiveResponse]
+          #
+          # @see MetronomeSDK::Models::V1::Contracts::RateCardArchiveParams
+          def archive(params)
+            parsed, options = MetronomeSDK::Models::V1::Contracts::RateCardArchiveParams.dump_request(params)
+            @client.request(
+              method: :post,
+              path: "v1/contract-pricing/rate-cards/archive",
+              body: parsed,
+              model: MetronomeSDK::Models::V1::Contracts::RateCardArchiveResponse,
+              options: options
+            )
+          end
+
           # Some parameter documentations has been truncated, see
           # {MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams} for
           # more details.
