@@ -1,0 +1,37 @@
+module MetronomeSDK
+  class BaseUsageFilter = MetronomeSDK::Models::BaseUsageFilter
+
+  class Commit = MetronomeSDK::Models::Commit
+
+  class ContractWithoutAmendments = MetronomeSDK::Models::ContractWithoutAmendments
+
+  class Credit = MetronomeSDK::Models::Credit
+
+  class CreditTypeData = MetronomeSDK::Models::CreditTypeData
+
+  class Discount = MetronomeSDK::Models::Discount
+
+  class EventTypeFilter = MetronomeSDK::Models::EventTypeFilter
+
+  class ID = MetronomeSDK::Models::ID
+
+  class Override = MetronomeSDK::Models::Override
+
+  class PropertyFilter = MetronomeSDK::Models::PropertyFilter
+
+  class ProService = MetronomeSDK::Models::ProService
+
+  class Rate = MetronomeSDK::Models::Rate
+
+  class ScheduledCharge = MetronomeSDK::Models::ScheduledCharge
+
+  class ScheduleDuration = MetronomeSDK::Models::ScheduleDuration
+
+  class SchedulePointInTime = MetronomeSDK::Models::SchedulePointInTime
+
+  class Tier = MetronomeSDK::Models::Tier
+
+  module V1 = MetronomeSDK::Models::V1
+
+  module V2 = MetronomeSDK::Models::V2
+end
