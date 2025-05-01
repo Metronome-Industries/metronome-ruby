@@ -75,6 +75,20 @@ class MetronomeSDK::Test::Resources::V1::Contracts::RateCardsTest < MetronomeSDK
     end
   end
 
+  def test_archive_required_params
+    response = @metronome.v1.contracts.rate_cards.archive(id: "12b21470-4570-40df-8998-449d0b0bc52f")
+
+    assert_pattern do
+      response => MetronomeSDK::Models::V1::Contracts::RateCardArchiveResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: MetronomeSDK::Models::ID
+      }
+    end
+  end
+
   def test_retrieve_rate_schedule_required_params
     response =
       @metronome.v1.contracts.rate_cards.retrieve_rate_schedule(
