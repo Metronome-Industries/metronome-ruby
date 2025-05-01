@@ -24,7 +24,7 @@ module MetronomeSDK
 
       # @return [Boolean]
       def next_page?
-        !next_page_.nil?
+        !data.to_a.empty? && !next_page_.to_s.empty?
       end
 
       # @raise [MetronomeSDK::HTTP::Error]
@@ -67,8 +67,8 @@ module MetronomeSDK
 
         @next_page_ = page_data[:next_page]
         case page_data
-        in {data: Array | nil => data}
-          @data = data&.map { MetronomeSDK::Internal::Type::Converter.coerce(@model, _1) }
+        in {data: Array => data}
+          @data = data.map { MetronomeSDK::Internal::Type::Converter.coerce(@model, _1) }
         else
         end
       end
