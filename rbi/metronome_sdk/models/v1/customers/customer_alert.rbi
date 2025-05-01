@@ -3,6 +3,8 @@
 module MetronomeSDK
   module Models
     module V1
+      CustomerAlert = Customers::CustomerAlert
+
       module Customers
         class CustomerAlert < MetronomeSDK::Internal::Type::BaseModel
           sig { returns(MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert) }
@@ -438,8 +440,6 @@ module MetronomeSDK
           end
         end
       end
-
-      CustomerAlert = Customers::CustomerAlert
     end
   end
 end
