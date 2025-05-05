@@ -29,7 +29,7 @@ require "bundler/setup"
 require "metronome_sdk"
 
 metronome = MetronomeSDK::Client.new(
-  bearer_token: "My Bearer Token" # defaults to ENV["METRONOME_BEARER_TOKEN"]
+  bearer_token: ENV["METRONOME_BEARER_TOKEN"] # This is the default and can be omitted
 )
 
 result = metronome.v1.usage.ingest(
