@@ -386,13 +386,11 @@ module MetronomeSDK
             optional :product_type, String
 
             # @!attribute professional_service_custom_fields
-            #   only present for beta contract invoices
             #
             #   @return [Hash{Symbol=>String}, nil]
             optional :professional_service_custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
 
             # @!attribute professional_service_id
-            #   only present for beta contract invoices
             #
             #   @return [String, nil]
             optional :professional_service_id, String
@@ -414,7 +412,7 @@ module MetronomeSDK
             optional :scheduled_charge_custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
 
             # @!attribute scheduled_charge_id
-            #   only present for beta contract invoices
+            #   ID of scheduled charge.
             #
             #   @return [String, nil]
             optional :scheduled_charge_id, String
@@ -513,9 +511,9 @@ module MetronomeSDK
             #   @param product_type [String] The type of the line item's product. Possible values are `FixedProductListItem`
             #   ...
             #
-            #   @param professional_service_custom_fields [Hash{Symbol=>String}] only present for beta contract invoices
+            #   @param professional_service_custom_fields [Hash{Symbol=>String}]
             #
-            #   @param professional_service_id [String] only present for beta contract invoices
+            #   @param professional_service_id [String]
             #
             #   @param quantity [Float] The quantity associated with the line item.
             #
@@ -523,7 +521,7 @@ module MetronomeSDK
             #
             #   @param scheduled_charge_custom_fields [Hash{Symbol=>String}]
             #
-            #   @param scheduled_charge_id [String] only present for beta contract invoices
+            #   @param scheduled_charge_id [String] ID of scheduled charge.
             #
             #   @param starting_at [Time] The line item's start date (inclusive).
             #

@@ -495,14 +495,12 @@ module MetronomeSDK
             sig { params(product_type: String).void }
             attr_writer :product_type
 
-            # only present for beta contract invoices
             sig { returns(T.nilable(T::Hash[Symbol, String])) }
             attr_reader :professional_service_custom_fields
 
             sig { params(professional_service_custom_fields: T::Hash[Symbol, String]).void }
             attr_writer :professional_service_custom_fields
 
-            # only present for beta contract invoices
             sig { returns(T.nilable(String)) }
             attr_reader :professional_service_id
 
@@ -528,7 +526,7 @@ module MetronomeSDK
             sig { params(scheduled_charge_custom_fields: T::Hash[Symbol, String]).void }
             attr_writer :scheduled_charge_custom_fields
 
-            # only present for beta contract invoices
+            # ID of scheduled charge.
             sig { returns(T.nilable(String)) }
             attr_reader :scheduled_charge_id
 
@@ -693,15 +691,13 @@ module MetronomeSDK
               # `CompositeProductListItem` (for `COMPOSITE` type products). For scheduled
               # charges, commit and credit payments, the value is `FixedProductListItem`.
               product_type: nil,
-              # only present for beta contract invoices
               professional_service_custom_fields: nil,
-              # only present for beta contract invoices
               professional_service_id: nil,
               # The quantity associated with the line item.
               quantity: nil,
               reseller_type: nil,
               scheduled_charge_custom_fields: nil,
-              # only present for beta contract invoices
+              # ID of scheduled charge.
               scheduled_charge_id: nil,
               # The line item's start date (inclusive).
               starting_at: nil,
