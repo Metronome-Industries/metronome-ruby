@@ -287,6 +287,17 @@ module MetronomeSDK
             #   @return [Hash{Symbol=>String}, nil]
             optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
 
+            # @!attribute discount_custom_fields
+            #
+            #   @return [Hash{Symbol=>String}, nil]
+            optional :discount_custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
+
+            # @!attribute discount_id
+            #   ID of the discount applied to this line item.
+            #
+            #   @return [String, nil]
+            optional :discount_id, String
+
             # @!attribute ending_before
             #   The line item's end date (exclusive).
             #
@@ -449,7 +460,7 @@ module MetronomeSDK
             #   @return [Float, nil]
             optional :unit_price, Float
 
-            # @!method initialize(credit_type:, name:, total:, applied_commit_or_credit: nil, commit_custom_fields: nil, commit_id: nil, commit_netsuite_item_id: nil, commit_netsuite_sales_order_id: nil, commit_segment_id: nil, commit_type: nil, custom_fields: nil, ending_before: nil, group_key: nil, group_value: nil, is_prorated: nil, list_price: nil, metadata: nil, netsuite_invoice_billing_end: nil, netsuite_invoice_billing_start: nil, netsuite_item_id: nil, postpaid_commit: nil, presentation_group_values: nil, pricing_group_values: nil, product_custom_fields: nil, product_id: nil, product_tags: nil, product_type: nil, professional_service_custom_fields: nil, professional_service_id: nil, quantity: nil, reseller_type: nil, scheduled_charge_custom_fields: nil, scheduled_charge_id: nil, starting_at: nil, sub_line_items: nil, subscription_custom_fields: nil, tier: nil, unit_price: nil)
+            # @!method initialize(credit_type:, name:, total:, applied_commit_or_credit: nil, commit_custom_fields: nil, commit_id: nil, commit_netsuite_item_id: nil, commit_netsuite_sales_order_id: nil, commit_segment_id: nil, commit_type: nil, custom_fields: nil, discount_custom_fields: nil, discount_id: nil, ending_before: nil, group_key: nil, group_value: nil, is_prorated: nil, list_price: nil, metadata: nil, netsuite_invoice_billing_end: nil, netsuite_invoice_billing_start: nil, netsuite_item_id: nil, postpaid_commit: nil, presentation_group_values: nil, pricing_group_values: nil, product_custom_fields: nil, product_id: nil, product_tags: nil, product_type: nil, professional_service_custom_fields: nil, professional_service_id: nil, quantity: nil, reseller_type: nil, scheduled_charge_custom_fields: nil, scheduled_charge_id: nil, starting_at: nil, sub_line_items: nil, subscription_custom_fields: nil, tier: nil, unit_price: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::V1::Customers::Invoice::LineItem} for more details.
             #
@@ -474,6 +485,10 @@ module MetronomeSDK
             #   @param commit_type [String] `PrepaidCommit` (for commit types `PREPAID` and `CREDIT`) or `PostpaidCommit` (f
             #
             #   @param custom_fields [Hash{Symbol=>String}]
+            #
+            #   @param discount_custom_fields [Hash{Symbol=>String}]
+            #
+            #   @param discount_id [String] ID of the discount applied to this line item.
             #
             #   @param ending_before [Time] The line item's end date (exclusive).
             #

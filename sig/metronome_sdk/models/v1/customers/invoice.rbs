@@ -189,6 +189,8 @@ module MetronomeSDK
               commit_segment_id: String,
               commit_type: String,
               custom_fields: ::Hash[Symbol, String],
+              discount_custom_fields: ::Hash[Symbol, String],
+              discount_id: String,
               ending_before: Time,
               group_key: String,
               group_value: String?,
@@ -262,6 +264,16 @@ module MetronomeSDK
             def custom_fields=: (
               ::Hash[Symbol, String]
             ) -> ::Hash[Symbol, String]
+
+            attr_reader discount_custom_fields: ::Hash[Symbol, String]?
+
+            def discount_custom_fields=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader discount_id: String?
+
+            def discount_id=: (String) -> String
 
             attr_reader ending_before: Time?
 
@@ -401,6 +413,8 @@ module MetronomeSDK
               ?commit_segment_id: String,
               ?commit_type: String,
               ?custom_fields: ::Hash[Symbol, String],
+              ?discount_custom_fields: ::Hash[Symbol, String],
+              ?discount_id: String,
               ?ending_before: Time,
               ?group_key: String,
               ?group_value: String?,
