@@ -444,6 +444,19 @@ module MetronomeSDK
             sig { params(custom_fields: T::Hash[Symbol, String]).void }
             attr_writer :custom_fields
 
+            sig { returns(T.nilable(T::Hash[Symbol, String])) }
+            attr_reader :discount_custom_fields
+
+            sig { params(discount_custom_fields: T::Hash[Symbol, String]).void }
+            attr_writer :discount_custom_fields
+
+            # ID of the discount applied to this line item.
+            sig { returns(T.nilable(String)) }
+            attr_reader :discount_id
+
+            sig { params(discount_id: String).void }
+            attr_writer :discount_id
+
             # The line item's end date (exclusive).
             sig { returns(T.nilable(Time)) }
             attr_reader :ending_before
@@ -701,6 +714,8 @@ module MetronomeSDK
                 commit_segment_id: String,
                 commit_type: String,
                 custom_fields: T::Hash[Symbol, String],
+                discount_custom_fields: T::Hash[Symbol, String],
+                discount_id: String,
                 ending_before: Time,
                 group_key: String,
                 group_value: T.nilable(String),
@@ -757,6 +772,9 @@ module MetronomeSDK
               # (for commit type `POSTPAID`).
               commit_type: nil,
               custom_fields: nil,
+              discount_custom_fields: nil,
+              # ID of the discount applied to this line item.
+              discount_id: nil,
               # The line item's end date (exclusive).
               ending_before: nil,
               group_key: nil,
@@ -826,6 +844,8 @@ module MetronomeSDK
                   commit_segment_id: String,
                   commit_type: String,
                   custom_fields: T::Hash[Symbol, String],
+                  discount_custom_fields: T::Hash[Symbol, String],
+                  discount_id: String,
                   ending_before: Time,
                   group_key: String,
                   group_value: T.nilable(String),
