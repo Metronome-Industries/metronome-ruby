@@ -3,36 +3,44 @@
 module MetronomeSDK
   module Models
     class ScheduleDuration < MetronomeSDK::Internal::Type::BaseModel
-      sig { returns(T::Array[MetronomeSDK::Models::ScheduleDuration::ScheduleItem]) }
+      OrHash =
+        T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
+      sig { returns(T::Array[MetronomeSDK::ScheduleDuration::ScheduleItem]) }
       attr_accessor :schedule_items
 
-      sig { returns(T.nilable(MetronomeSDK::Models::CreditTypeData)) }
+      sig { returns(T.nilable(MetronomeSDK::CreditTypeData)) }
       attr_reader :credit_type
 
-      sig { params(credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash)).void }
+      sig { params(credit_type: MetronomeSDK::CreditTypeData::OrHash).void }
       attr_writer :credit_type
 
       sig do
         params(
-          schedule_items: T::Array[T.any(MetronomeSDK::Models::ScheduleDuration::ScheduleItem, MetronomeSDK::Internal::AnyHash)],
-          credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          schedule_items:
+            T::Array[MetronomeSDK::ScheduleDuration::ScheduleItem::OrHash],
+          credit_type: MetronomeSDK::CreditTypeData::OrHash
+        ).returns(T.attached_class)
       end
-      def self.new(schedule_items:, credit_type: nil); end
+      def self.new(schedule_items:, credit_type: nil)
+      end
 
       sig do
-        override
-          .returns(
-            {
-              schedule_items: T::Array[MetronomeSDK::Models::ScheduleDuration::ScheduleItem],
-              credit_type: MetronomeSDK::Models::CreditTypeData
-            }
-          )
+        override.returns(
+          {
+            schedule_items:
+              T::Array[MetronomeSDK::ScheduleDuration::ScheduleItem],
+            credit_type: MetronomeSDK::CreditTypeData
+          }
+        )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
@@ -46,12 +54,28 @@ module MetronomeSDK
         attr_accessor :starting_at
 
         sig do
-          params(id: String, amount: Float, ending_before: Time, starting_at: Time).returns(T.attached_class)
+          params(
+            id: String,
+            amount: Float,
+            ending_before: Time,
+            starting_at: Time
+          ).returns(T.attached_class)
         end
-        def self.new(id:, amount:, ending_before:, starting_at:); end
+        def self.new(id:, amount:, ending_before:, starting_at:)
+        end
 
-        sig { override.returns({id: String, amount: Float, ending_before: Time, starting_at: Time}) }
-        def to_hash; end
+        sig do
+          override.returns(
+            {
+              id: String,
+              amount: Float,
+              ending_before: Time,
+              starting_at: Time
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

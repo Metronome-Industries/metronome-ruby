@@ -24,22 +24,21 @@ module MetronomeSDK
         #
         # @param starting_at [Time] inclusive contract start time
         #
-        # @param billing_provider_configuration [MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration] The billing provider configuration associated with a contract.
+        # @param billing_provider_configuration [MetronomeSDK::V1::ContractCreateParams::BillingProviderConfiguration] The billing provider configuration associated with a contract.
         #
-        # @param commits [Array<MetronomeSDK::Models::V1::ContractCreateParams::Commit>]
+        # @param commits [Array<MetronomeSDK::V1::ContractCreateParams::Commit>]
         #
-        # @param credit_balance_threshold_configuration [MetronomeSDK::Models::V1::ContractCreateParams::CreditBalanceThresholdConfiguration]
+        # @param credit_balance_threshold_configuration [MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration]
         #
-        # @param credits [Array<MetronomeSDK::Models::V1::ContractCreateParams::Credit>]
+        # @param credits [Array<MetronomeSDK::V1::ContractCreateParams::Credit>]
         #
         # @param custom_fields [Hash{Symbol=>String}]
         #
-        # @param discounts [Array<MetronomeSDK::Models::V1::ContractCreateParams::Discount>] This field's availability is dependent on your client's configuration.
+        # @param discounts [Array<MetronomeSDK::V1::ContractCreateParams::Discount>] This field's availability is dependent on your client's configuration.
         #
         # @param ending_before [Time] exclusive contract end time
         #
-        # @param multiplier_override_prioritization [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::MultiplierOverridePrioritization] Defaults to LOWEST_MULTIPLIER, which applies the greatest discount to list price
-        # ...
+        # @param multiplier_override_prioritization [Symbol, MetronomeSDK::V1::ContractCreateParams::MultiplierOverridePrioritization] Defaults to LOWEST_MULTIPLIER, which applies the greatest discount to list price
         #
         # @param name [String]
         #
@@ -47,40 +46,37 @@ module MetronomeSDK
         #
         # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
         #
-        # @param overrides [Array<MetronomeSDK::Models::V1::ContractCreateParams::Override>]
+        # @param overrides [Array<MetronomeSDK::V1::ContractCreateParams::Override>]
         #
-        # @param professional_services [Array<MetronomeSDK::Models::V1::ContractCreateParams::ProfessionalService>] This field's availability is dependent on your client's configuration.
+        # @param professional_services [Array<MetronomeSDK::V1::ContractCreateParams::ProfessionalService>] This field's availability is dependent on your client's configuration.
         #
         # @param rate_card_alias [String] Selects the rate card linked to the specified alias as of the contract's start d
-        # ...
         #
         # @param rate_card_id [String]
         #
-        # @param recurring_commits [Array<MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit>]
+        # @param recurring_commits [Array<MetronomeSDK::V1::ContractCreateParams::RecurringCommit>]
         #
-        # @param recurring_credits [Array<MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit>]
+        # @param recurring_credits [Array<MetronomeSDK::V1::ContractCreateParams::RecurringCredit>]
         #
-        # @param reseller_royalties [Array<MetronomeSDK::Models::V1::ContractCreateParams::ResellerRoyalty>] This field's availability is dependent on your client's configuration.
+        # @param reseller_royalties [Array<MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty>] This field's availability is dependent on your client's configuration.
         #
         # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
         #
-        # @param scheduled_charges [Array<MetronomeSDK::Models::V1::ContractCreateParams::ScheduledCharge>]
+        # @param scheduled_charges [Array<MetronomeSDK::V1::ContractCreateParams::ScheduledCharge>]
         #
-        # @param scheduled_charges_on_usage_invoices [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::ScheduledChargesOnUsageInvoices] Determines which scheduled and commit charges to consolidate onto the Contract's
-        # ...
+        # @param scheduled_charges_on_usage_invoices [Symbol, MetronomeSDK::V1::ContractCreateParams::ScheduledChargesOnUsageInvoices] Determines which scheduled and commit charges to consolidate onto the Contract's
         #
-        # @param spend_threshold_configuration [MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration]
+        # @param spend_threshold_configuration [MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration]
         #
         # @param total_contract_value [Float] This field's availability is dependent on your client's configuration.
         #
-        # @param transition [MetronomeSDK::Models::V1::ContractCreateParams::Transition]
+        # @param transition [MetronomeSDK::V1::ContractCreateParams::Transition]
         #
         # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made wit
-        # ...
         #
-        # @param usage_filter [MetronomeSDK::Models::BaseUsageFilter]
+        # @param usage_filter [MetronomeSDK::BaseUsageFilter]
         #
-        # @param usage_statement_schedule [MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule]
+        # @param usage_statement_schedule [MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule]
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -88,7 +84,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::ContractCreateParams
         def create(params)
-          parsed, options = MetronomeSDK::Models::V1::ContractCreateParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::ContractCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/contracts/create",
@@ -111,10 +107,8 @@ module MetronomeSDK
         # @param customer_id [String]
         #
         # @param include_balance [Boolean] Include the balance of credits and commits in the response. Setting this flag ma
-        # ...
         #
         # @param include_ledgers [Boolean] Include commit ledgers in the response. Setting this flag may cause the query to
-        # ...
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -122,7 +116,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::ContractRetrieveParams
         def retrieve(params)
-          parsed, options = MetronomeSDK::Models::V1::ContractRetrieveParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::ContractRetrieveParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/contracts/get",
@@ -143,18 +137,14 @@ module MetronomeSDK
         # @param customer_id [String]
         #
         # @param covering_date [Time] Optional RFC 3339 timestamp. If provided, the response will include only contrac
-        # ...
         #
         # @param include_archived [Boolean] Include archived contracts in the response
         #
         # @param include_balance [Boolean] Include the balance of credits and commits in the response. Setting this flag ma
-        # ...
         #
         # @param include_ledgers [Boolean] Include commit ledgers in the response. Setting this flag may cause the query to
-        # ...
         #
         # @param starting_at [Time] Optional RFC 3339 timestamp. If provided, the response will include only contrac
-        # ...
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -162,7 +152,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::ContractListParams
         def list(params)
-          parsed, options = MetronomeSDK::Models::V1::ContractListParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::ContractListParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/contracts/list",
@@ -183,7 +173,6 @@ module MetronomeSDK
         # @param id [String] ID of the balance (commit or credit) to update.
         #
         # @param amount [Float] Amount to add to the segment. A negative number will draw down from the balance.
-        # ...
         #
         # @param customer_id [String] ID of the customer whose balance is to be updated.
         #
@@ -194,7 +183,6 @@ module MetronomeSDK
         # @param contract_id [String] ID of the contract to update. Leave blank to update a customer level balance.
         #
         # @param timestamp [Time] RFC 3339 timestamp indicating when the manual adjustment takes place. If not pro
-        # ...
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -202,7 +190,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::ContractAddManualBalanceEntryParams
         def add_manual_balance_entry(params)
-          parsed, options = MetronomeSDK::Models::V1::ContractAddManualBalanceEntryParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::ContractAddManualBalanceEntryParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/contracts/addManualBalanceLedgerEntry",
@@ -226,25 +214,25 @@ module MetronomeSDK
         #
         # @param starting_at [Time] inclusive start time for the amendment
         #
-        # @param commits [Array<MetronomeSDK::Models::V1::ContractAmendParams::Commit>]
+        # @param commits [Array<MetronomeSDK::V1::ContractAmendParams::Commit>]
         #
-        # @param credits [Array<MetronomeSDK::Models::V1::ContractAmendParams::Credit>]
+        # @param credits [Array<MetronomeSDK::V1::ContractAmendParams::Credit>]
         #
         # @param custom_fields [Hash{Symbol=>String}]
         #
-        # @param discounts [Array<MetronomeSDK::Models::V1::ContractAmendParams::Discount>] This field's availability is dependent on your client's configuration.
+        # @param discounts [Array<MetronomeSDK::V1::ContractAmendParams::Discount>] This field's availability is dependent on your client's configuration.
         #
         # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
         #
-        # @param overrides [Array<MetronomeSDK::Models::V1::ContractAmendParams::Override>]
+        # @param overrides [Array<MetronomeSDK::V1::ContractAmendParams::Override>]
         #
-        # @param professional_services [Array<MetronomeSDK::Models::V1::ContractAmendParams::ProfessionalService>] This field's availability is dependent on your client's configuration.
+        # @param professional_services [Array<MetronomeSDK::V1::ContractAmendParams::ProfessionalService>] This field's availability is dependent on your client's configuration.
         #
-        # @param reseller_royalties [Array<MetronomeSDK::Models::V1::ContractAmendParams::ResellerRoyalty>] This field's availability is dependent on your client's configuration.
+        # @param reseller_royalties [Array<MetronomeSDK::V1::ContractAmendParams::ResellerRoyalty>] This field's availability is dependent on your client's configuration.
         #
         # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
         #
-        # @param scheduled_charges [Array<MetronomeSDK::Models::V1::ContractAmendParams::ScheduledCharge>]
+        # @param scheduled_charges [Array<MetronomeSDK::V1::ContractAmendParams::ScheduledCharge>]
         #
         # @param total_contract_value [Float] This field's availability is dependent on your client's configuration.
         #
@@ -254,7 +242,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::ContractAmendParams
         def amend(params)
-          parsed, options = MetronomeSDK::Models::V1::ContractAmendParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::ContractAmendParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/contracts/amend",
@@ -276,7 +264,6 @@ module MetronomeSDK
         # @param customer_id [String] ID of the customer whose contract is to be archived
         #
         # @param void_invoices [Boolean] If false, the existing finalized invoices will remain after the contract is arch
-        # ...
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -284,7 +271,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::ContractArchiveParams
         def archive(params)
-          parsed, options = MetronomeSDK::Models::V1::ContractArchiveParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::ContractArchiveParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/contracts/archive",
@@ -298,7 +285,7 @@ module MetronomeSDK
         #
         # @overload create_historical_invoices(invoices:, preview:, request_options: {})
         #
-        # @param invoices [Array<MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice>]
+        # @param invoices [Array<MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice>]
         # @param preview [Boolean]
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -306,7 +293,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams
         def create_historical_invoices(params)
-          parsed, options = MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/contracts/createHistoricalInvoices",
@@ -334,12 +321,10 @@ module MetronomeSDK
         # @param include_archived [Boolean] Include archived credits and credits from archived contracts.
         #
         # @param include_balance [Boolean] Include the balance of credits and commits in the response. Setting this flag ma
-        # ...
         #
         # @param include_contract_balances [Boolean] Include balances on the contract level.
         #
         # @param include_ledgers [Boolean] Include ledgers in the response. Setting this flag may cause the query to be slo
-        # ...
         #
         # @param next_page [String] The next page token from a previous response.
         #
@@ -351,7 +336,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::ContractListBalancesParams
         def list_balances(params)
-          parsed, options = MetronomeSDK::Models::V1::ContractListBalancesParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::ContractListBalancesParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/contracts/customerBalances/list",
@@ -377,10 +362,8 @@ module MetronomeSDK
         # @param next_page [String] Query param: Cursor that indicates where the next page of results should start.
         #
         # @param at [Time] Body param: optional timestamp which overlaps with the returned rate schedule se
-        # ...
         #
-        # @param selectors [Array<MetronomeSDK::Models::V1::ContractRetrieveRateScheduleParams::Selector>] Body param: List of rate selectors, rates matching ANY of the selectors will be
-        # ...
+        # @param selectors [Array<MetronomeSDK::V1::ContractRetrieveRateScheduleParams::Selector>] Body param: List of rate selectors, rates matching ANY of the selectors will be
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -388,7 +371,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::ContractRetrieveRateScheduleParams
         def retrieve_rate_schedule(params)
-          parsed, options = MetronomeSDK::Models::V1::ContractRetrieveRateScheduleParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::ContractRetrieveRateScheduleParams.dump_request(params)
           query_params = [:limit, :next_page]
           @client.request(
             method: :post,
@@ -411,7 +394,7 @@ module MetronomeSDK
         #
         # @param issued_at [Time] The date the invoice is issued
         #
-        # @param line_items [Array<MetronomeSDK::Models::V1::ContractScheduleProServicesInvoiceParams::LineItem>] Each line requires an amount or both unit_price and quantity.
+        # @param line_items [Array<MetronomeSDK::V1::ContractScheduleProServicesInvoiceParams::LineItem>] Each line requires an amount or both unit_price and quantity.
         #
         # @param netsuite_invoice_header_end [Time] The end date of the invoice header in Netsuite
         #
@@ -423,7 +406,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::ContractScheduleProServicesInvoiceParams
         def schedule_pro_services_invoice(params)
-          parsed, options = MetronomeSDK::Models::V1::ContractScheduleProServicesInvoiceParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::ContractScheduleProServicesInvoiceParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/contracts/scheduleProServicesInvoice",
@@ -448,7 +431,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::ContractSetUsageFilterParams
         def set_usage_filter(params)
-          parsed, options = MetronomeSDK::Models::V1::ContractSetUsageFilterParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::ContractSetUsageFilterParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/contracts/setUsageFilter",
@@ -470,10 +453,8 @@ module MetronomeSDK
         # @param customer_id [String] ID of the customer whose contract is to be updated
         #
         # @param allow_ending_before_finalized_invoice [Boolean] If true, allows setting the contract end date earlier than the end_timestamp of
-        # ...
         #
         # @param ending_before [Time] RFC 3339 timestamp indicating when the contract will end (exclusive). If not pro
-        # ...
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -481,7 +462,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::ContractUpdateEndDateParams
         def update_end_date(params)
-          parsed, options = MetronomeSDK::Models::V1::ContractUpdateEndDateParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::ContractUpdateEndDateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/contracts/updateEndDate",

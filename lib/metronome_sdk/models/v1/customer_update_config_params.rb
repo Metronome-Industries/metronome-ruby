@@ -33,7 +33,6 @@ module MetronomeSDK
         #   @param customer_id [String]
         #
         #   @param leave_stripe_invoices_in_draft [Boolean, nil] Leave in draft or set to auto-advance on invoices sent to Stripe. Falls back to
-        #   ...
         #
         #   @param salesforce_account_id [String, nil] The Salesforce account ID for the customer
         #

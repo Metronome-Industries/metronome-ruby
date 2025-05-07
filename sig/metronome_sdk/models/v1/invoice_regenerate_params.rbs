@@ -14,8 +14,6 @@ module MetronomeSDK
           id: String,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
-
-        def to_hash: -> MetronomeSDK::Models::V1::invoice_regenerate_params
       end
     end
   end

@@ -56,18 +56,14 @@ module MetronomeSDK
         #   @param customer_id [String]
         #
         #   @param covering_date [Time] Optional RFC 3339 timestamp. If provided, the response will include only contrac
-        #   ...
         #
         #   @param include_archived [Boolean] Include archived contracts in the response
         #
         #   @param include_balance [Boolean] Include the balance of credits and commits in the response. Setting this flag ma
-        #   ...
         #
         #   @param include_ledgers [Boolean] Include commit ledgers in the response. Setting this flag may cause the query to
-        #   ...
         #
         #   @param starting_at [Time] Optional RFC 3339 timestamp. If provided, the response will include only contrac
-        #   ...
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
       end

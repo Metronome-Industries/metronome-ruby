@@ -34,8 +34,8 @@ module MetronomeSDK
 
           # @!attribute add_discounts
           #
-          #   @return [Array<MetronomeSDK::Models::Discount>, nil]
-          optional :add_discounts, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::Discount] }
+          #   @return [Array<MetronomeSDK::Discount>, nil]
+          optional :add_discounts, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Discount] }
 
           # @!attribute add_overrides
           #
@@ -45,8 +45,8 @@ module MetronomeSDK
 
           # @!attribute add_pro_services
           #
-          #   @return [Array<MetronomeSDK::Models::ProService>, nil]
-          optional :add_pro_services, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::ProService] }
+          #   @return [Array<MetronomeSDK::ProService>, nil]
+          optional :add_pro_services, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ProService] }
 
           # @!attribute add_recurring_commits
           #
@@ -146,9 +146,9 @@ module MetronomeSDK
           #   @param id [String]
           #   @param add_commits [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit>]
           #   @param add_credits [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit>]
-          #   @param add_discounts [Array<MetronomeSDK::Models::Discount>]
+          #   @param add_discounts [Array<MetronomeSDK::Discount>]
           #   @param add_overrides [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride>]
-          #   @param add_pro_services [Array<MetronomeSDK::Models::ProService>]
+          #   @param add_pro_services [Array<MetronomeSDK::ProService>]
           #   @param add_recurring_commits [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit>]
           #   @param add_recurring_credits [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit>]
           #   @param add_reseller_royalties [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddResellerRoyalty>]
@@ -188,8 +188,8 @@ module MetronomeSDK
             #   The schedule that the customer will gain access to the credits purposed with
             #   this commit.
             #
-            #   @return [MetronomeSDK::Models::ScheduleDuration, nil]
-            optional :access_schedule, -> { MetronomeSDK::Models::ScheduleDuration }
+            #   @return [MetronomeSDK::ScheduleDuration, nil]
+            optional :access_schedule, -> { MetronomeSDK::ScheduleDuration }
 
             # @!attribute applicable_product_ids
             #
@@ -209,8 +209,8 @@ module MetronomeSDK
             # @!attribute invoice_schedule
             #   The schedule that the customer will be invoiced for this commit.
             #
-            #   @return [MetronomeSDK::Models::SchedulePointInTime, nil]
-            optional :invoice_schedule, -> { MetronomeSDK::Models::SchedulePointInTime }
+            #   @return [MetronomeSDK::SchedulePointInTime, nil]
+            optional :invoice_schedule, -> { MetronomeSDK::SchedulePointInTime }
 
             # @!attribute name
             #
@@ -258,8 +258,7 @@ module MetronomeSDK
             #
             #   @param type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Type]
             #
-            #   @param access_schedule [MetronomeSDK::Models::ScheduleDuration] The schedule that the customer will gain access to the credits purposed with thi
-            #   ...
+            #   @param access_schedule [MetronomeSDK::ScheduleDuration] The schedule that the customer will gain access to the credits purposed with thi
             #
             #   @param applicable_product_ids [Array<String>]
             #
@@ -267,14 +266,13 @@ module MetronomeSDK
             #
             #   @param description [String]
             #
-            #   @param invoice_schedule [MetronomeSDK::Models::SchedulePointInTime] The schedule that the customer will be invoiced for this commit.
+            #   @param invoice_schedule [MetronomeSDK::SchedulePointInTime] The schedule that the customer will be invoiced for this commit.
             #
             #   @param name [String]
             #
             #   @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
             #
             #   @param priority [Float] If multiple credits or commits are applicable, the one with the lower priority w
-            #   ...
             #
             #   @param rate_type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::RateType]
             #
@@ -343,8 +341,8 @@ module MetronomeSDK
             # @!attribute access_schedule
             #   The schedule that the customer will gain access to the credits.
             #
-            #   @return [MetronomeSDK::Models::ScheduleDuration, nil]
-            optional :access_schedule, -> { MetronomeSDK::Models::ScheduleDuration }
+            #   @return [MetronomeSDK::ScheduleDuration, nil]
+            optional :access_schedule, -> { MetronomeSDK::ScheduleDuration }
 
             # @!attribute applicable_product_ids
             #
@@ -396,7 +394,7 @@ module MetronomeSDK
             #
             #   @param type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Type]
             #
-            #   @param access_schedule [MetronomeSDK::Models::ScheduleDuration] The schedule that the customer will gain access to the credits.
+            #   @param access_schedule [MetronomeSDK::ScheduleDuration] The schedule that the customer will gain access to the credits.
             #
             #   @param applicable_product_ids [Array<String>]
             #
@@ -409,7 +407,6 @@ module MetronomeSDK
             #   @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
             #
             #   @param priority [Float] If multiple credits or commits are applicable, the one with the lower priority w
-            #   ...
             #
             #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
 
@@ -606,8 +603,8 @@ module MetronomeSDK
 
               # @!attribute credit_type
               #
-              #   @return [MetronomeSDK::Models::CreditTypeData, nil]
-              optional :credit_type, -> { MetronomeSDK::Models::CreditTypeData }
+              #   @return [MetronomeSDK::CreditTypeData, nil]
+              optional :credit_type, -> { MetronomeSDK::CreditTypeData }
 
               # @!attribute custom_rate
               #   Only set for CUSTOM rate_type. This field is interpreted by custom rate
@@ -640,8 +637,8 @@ module MetronomeSDK
               # @!attribute tiers
               #   Only set for TIERED rate_type.
               #
-              #   @return [Array<MetronomeSDK::Models::Tier>, nil]
-              optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::Tier] }
+              #   @return [Array<MetronomeSDK::Tier>, nil]
+              optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
 
               # @!method initialize(rate_type:, credit_type: nil, custom_rate: nil, is_prorated: nil, price: nil, quantity: nil, tiers: nil)
               #   Some parameter documentations has been truncated, see
@@ -650,20 +647,17 @@ module MetronomeSDK
               #
               #   @param rate_type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::RateType]
               #
-              #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
+              #   @param credit_type [MetronomeSDK::CreditTypeData]
               #
               #   @param custom_rate [Hash{Symbol=>Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate processo
-              #   ...
               #
               #   @param is_prorated [Boolean] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
-              #   ...
               #
               #   @param price [Float] Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type, t
-              #   ...
               #
               #   @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
               #
-              #   @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
+              #   @param tiers [Array<MetronomeSDK::Tier>] Only set for TIERED rate_type.
 
               # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate#rate_type
               module RateType
@@ -878,13 +872,10 @@ module MetronomeSDK
             #   @param netsuite_sales_order_id [String] Will be passed down to the individual commits
             #
             #   @param proration [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Proration] Determines whether the first and last commit will be prorated. If not provided,
-            #   ...
             #
             #   @param recurrence_frequency [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided: -
-            #   ...
             #
             #   @param rollover_fraction [Float] Will be passed down to the individual commits. This controls how much of an indi
-            #   ...
 
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit#access_amount
             class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
@@ -1191,13 +1182,10 @@ module MetronomeSDK
             #   @param netsuite_sales_order_id [String] Will be passed down to the individual commits
             #
             #   @param proration [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Proration] Determines whether the first and last commit will be prorated. If not provided,
-            #   ...
             #
             #   @param recurrence_frequency [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided: -
-            #   ...
             #
             #   @param rollover_fraction [Float] Will be passed down to the individual commits. This controls how much of an indi
-            #   ...
 
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit#access_amount
             class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
@@ -1441,8 +1429,8 @@ module MetronomeSDK
 
             # @!attribute schedule
             #
-            #   @return [MetronomeSDK::Models::SchedulePointInTime]
-            required :schedule, -> { MetronomeSDK::Models::SchedulePointInTime }
+            #   @return [MetronomeSDK::SchedulePointInTime]
+            required :schedule, -> { MetronomeSDK::SchedulePointInTime }
 
             # @!attribute name
             #   displayed on invoices
@@ -1461,7 +1449,7 @@ module MetronomeSDK
             #
             #   @param product [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Product]
             #
-            #   @param schedule [MetronomeSDK::Models::SchedulePointInTime]
+            #   @param schedule [MetronomeSDK::SchedulePointInTime]
             #
             #   @param name [String] displayed on invoices
             #
@@ -1520,10 +1508,8 @@ module MetronomeSDK
             #   @param group_values [Array<String>]
             #
             #   @param starting_at [Time] This will match contract starting_at value if usage filter is active from the be
-            #   ...
             #
             #   @param ending_before [Time] This will match contract ending_before value if usage filter is active until the
-            #   ...
           end
 
           class ArchiveCommit < MetronomeSDK::Internal::Type::BaseModel
@@ -1628,10 +1614,8 @@ module MetronomeSDK
             #   @param access_schedule [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule]
             #
             #   @param applicable_product_ids [Array<String>, nil] Which products the commit applies to. If both applicable_product_ids and applica
-            #   ...
             #
             #   @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If both applicable*product_ids and applicable*
-            #   ...
             #
             #   @param invoice_schedule [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule]
             #
@@ -2076,7 +2060,6 @@ module MetronomeSDK
               #   @param credit_type_id [String] Defaults to USD if not passed. Only USD is supported at this time.
               #
               #   @param recurring_schedule [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::RecurringSchedule] Enter the unit price and quantity for the charge or instead only send the amount
-              #   ...
               #
               #   @param schedule_items [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::ScheduleItem>] Either provide amount or provide both unit_price and quantity.
 
@@ -2148,13 +2131,10 @@ module MetronomeSDK
                 #   @param starting_at [Time] RFC 3339 timestamp (inclusive).
                 #
                 #   @param amount [Float] Amount for the charge. Can be provided instead of unit_price and quantity. If am
-                #   ...
                 #
                 #   @param quantity [Float] Quantity for the charge. Will be multiplied by unit_price to determine the amoun
-                #   ...
                 #
                 #   @param unit_price [Float] Unit price for the charge. Will be multiplied by quantity to determine the amoun
-                #   ...
 
                 # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::RecurringSchedule#amount_distribution
                 module AmountDistribution
@@ -2222,13 +2202,10 @@ module MetronomeSDK
                 #   @param timestamp [Time] timestamp of the scheduled event
                 #
                 #   @param amount [Float] Amount for the charge. Can be provided instead of unit_price and quantity. If am
-                #   ...
                 #
                 #   @param quantity [Float] Quantity for the charge. Will be multiplied by unit_price to determine the amoun
-                #   ...
                 #
                 #   @param unit_price [Float] Unit price for the charge. Will be multiplied by quantity to determine the amoun
-                #   ...
               end
             end
           end

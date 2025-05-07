@@ -39,8 +39,8 @@ module MetronomeSDK
           class Ledger < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute credit_type
             #
-            #   @return [MetronomeSDK::Models::CreditTypeData]
-            required :credit_type, -> { MetronomeSDK::Models::CreditTypeData }
+            #   @return [MetronomeSDK::CreditTypeData]
+            required :credit_type, -> { MetronomeSDK::CreditTypeData }
 
             # @!attribute ending_balance
             #   the effective balances at the end of the specified time window
@@ -51,15 +51,17 @@ module MetronomeSDK
 
             # @!attribute entries
             #
-            #   @return [Array<MetronomeSDK::Models::V1::CreditLedgerEntry>]
+            #   @return [Array<MetronomeSDK::V1::CreditLedgerEntry>]
             required :entries,
-                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::CreditLedgerEntry] }
+                     -> {
+                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::CreditLedgerEntry]
+                     }
 
             # @!attribute pending_entries
             #
-            #   @return [Array<MetronomeSDK::Models::V1::CreditLedgerEntry>]
+            #   @return [Array<MetronomeSDK::V1::CreditLedgerEntry>]
             required :pending_entries,
-                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::CreditLedgerEntry] }
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::CreditLedgerEntry] }
 
             # @!attribute starting_balance
             #
@@ -68,13 +70,13 @@ module MetronomeSDK
                      -> { MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance }
 
             # @!method initialize(credit_type:, ending_balance:, entries:, pending_entries:, starting_balance:)
-            #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
+            #   @param credit_type [MetronomeSDK::CreditTypeData]
             #
             #   @param ending_balance [MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance] the effective balances at the end of the specified time window
             #
-            #   @param entries [Array<MetronomeSDK::Models::V1::CreditLedgerEntry>]
+            #   @param entries [Array<MetronomeSDK::V1::CreditLedgerEntry>]
             #
-            #   @param pending_entries [Array<MetronomeSDK::Models::V1::CreditLedgerEntry>]
+            #   @param pending_entries [Array<MetronomeSDK::V1::CreditLedgerEntry>]
             #
             #   @param starting_balance [MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance]
 
@@ -110,13 +112,10 @@ module MetronomeSDK
               #   the effective balances at the end of the specified time window
               #
               #   @param effective_at [Time] the ending_before request parameter (if supplied) or the current billing period'
-              #   ...
               #
               #   @param excluding_pending [Float] the ending balance, including the balance of all grants that have not expired be
-              #   ...
               #
               #   @param including_pending [Float] the excluding_pending balance plus any pending invoice deductions and expiration
-              #   ...
             end
 
             # @see MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger#starting_balance
@@ -148,13 +147,10 @@ module MetronomeSDK
               #   for more details.
               #
               #   @param effective_at [Time] the starting_on request parameter (if supplied) or the first credit grant's effe
-              #   ...
               #
               #   @param excluding_pending [Float] the starting balance, including all posted grants, deductions, and expirations t
-              #   ...
               #
               #   @param including_pending [Float] the excluding_pending balance plus any pending activity that has not been posted
-              #   ...
             end
           end
         end

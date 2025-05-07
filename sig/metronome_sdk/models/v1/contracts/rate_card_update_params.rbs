@@ -5,7 +5,7 @@ module MetronomeSDK
         type rate_card_update_params =
           {
             rate_card_id: String,
-            aliases: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardUpdateParams::Alias],
+            aliases: ::Array[MetronomeSDK::V1::Contracts::RateCardUpdateParams::Alias],
             description: String,
             name: String
           }
@@ -17,11 +17,11 @@ module MetronomeSDK
 
           attr_accessor rate_card_id: String
 
-          attr_reader aliases: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardUpdateParams::Alias]?
+          attr_reader aliases: ::Array[MetronomeSDK::V1::Contracts::RateCardUpdateParams::Alias]?
 
           def aliases=: (
-            ::Array[MetronomeSDK::Models::V1::Contracts::RateCardUpdateParams::Alias]
-          ) -> ::Array[MetronomeSDK::Models::V1::Contracts::RateCardUpdateParams::Alias]
+            ::Array[MetronomeSDK::V1::Contracts::RateCardUpdateParams::Alias]
+          ) -> ::Array[MetronomeSDK::V1::Contracts::RateCardUpdateParams::Alias]
 
           attr_reader description: String?
 
@@ -33,13 +33,11 @@ module MetronomeSDK
 
           def initialize: (
             rate_card_id: String,
-            ?aliases: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardUpdateParams::Alias],
+            ?aliases: ::Array[MetronomeSDK::V1::Contracts::RateCardUpdateParams::Alias],
             ?description: String,
             ?name: String,
             ?request_options: MetronomeSDK::request_opts
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::Contracts::rate_card_update_params
 
           type alias_ = { name: String, ending_before: Time, starting_at: Time }
 
@@ -59,8 +57,6 @@ module MetronomeSDK
               ?ending_before: Time,
               ?starting_at: Time
             ) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V1::Contracts::RateCardUpdateParams::alias_
           end
         end
       end

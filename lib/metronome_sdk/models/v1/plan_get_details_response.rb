@@ -7,11 +7,11 @@ module MetronomeSDK
       class PlanGetDetailsResponse < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute data
         #
-        #   @return [MetronomeSDK::Models::V1::PlanDetail]
-        required :data, -> { MetronomeSDK::Models::V1::PlanDetail }
+        #   @return [MetronomeSDK::V1::PlanDetail]
+        required :data, -> { MetronomeSDK::V1::PlanDetail }
 
         # @!method initialize(data:)
-        #   @param data [MetronomeSDK::Models::V1::PlanDetail]
+        #   @param data [MetronomeSDK::V1::PlanDetail]
       end
     end
   end

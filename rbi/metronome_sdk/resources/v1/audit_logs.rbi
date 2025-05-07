@@ -15,11 +15,14 @@ module MetronomeSDK
             next_page: String,
             resource_id: String,
             resource_type: String,
-            sort: MetronomeSDK::Models::V1::AuditLogListParams::Sort::OrSymbol,
+            sort: MetronomeSDK::V1::AuditLogListParams::Sort::OrSymbol,
             starting_on: Time,
-            request_options: MetronomeSDK::RequestOpts
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(
+            MetronomeSDK::Internal::CursorPage[
+              MetronomeSDK::Models::V1::AuditLogListResponse
+            ]
           )
-            .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::AuditLogListResponse])
         end
         def list(
           # RFC 3339 timestamp (exclusive). Cannot be used with 'next_page'.
@@ -40,10 +43,13 @@ module MetronomeSDK
           # 'next_page'.
           starting_on: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

@@ -4,7 +4,17 @@ module MetronomeSDK
   module Models
     module V1
       class CustomerListCostsResponse < MetronomeSDK::Internal::Type::BaseModel
-        sig { returns(T::Hash[Symbol, MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType]) }
+        OrHash =
+          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
+        sig do
+          returns(
+            T::Hash[
+              Symbol,
+              MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType
+            ]
+          )
+        end
         attr_accessor :credit_types
 
         sig { returns(Time) }
@@ -15,30 +25,38 @@ module MetronomeSDK
 
         sig do
           params(
-            credit_types: T::Hash[
-              Symbol,
-              T.any(MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType, MetronomeSDK::Internal::AnyHash)
-            ],
+            credit_types:
+              T::Hash[
+                Symbol,
+                MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType::OrHash
+              ],
             end_timestamp: Time,
             start_timestamp: Time
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
-        def self.new(credit_types:, end_timestamp:, start_timestamp:); end
+        def self.new(credit_types:, end_timestamp:, start_timestamp:)
+        end
 
         sig do
-          override
-            .returns(
-              {
-                credit_types: T::Hash[Symbol, MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType],
-                end_timestamp: Time,
-                start_timestamp: Time
-              }
-            )
+          override.returns(
+            {
+              credit_types:
+                T::Hash[
+                  Symbol,
+                  MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType
+                ],
+              end_timestamp: Time,
+              start_timestamp: Time
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class CreditType < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
           sig { returns(T.nilable(Float)) }
           attr_reader :cost
 
@@ -47,21 +65,22 @@ module MetronomeSDK
 
           sig do
             returns(
-              T.nilable(T::Array[MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType::LineItemBreakdown])
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType::LineItemBreakdown
+                ]
+              )
             )
           end
           attr_reader :line_item_breakdown
 
           sig do
             params(
-              line_item_breakdown: T::Array[
-                T.any(
-                  MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType::LineItemBreakdown,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              ]
-            )
-              .void
+              line_item_breakdown:
+                T::Array[
+                  MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType::LineItemBreakdown::OrHash
+                ]
+            ).void
           end
           attr_writer :line_item_breakdown
 
@@ -74,31 +93,37 @@ module MetronomeSDK
           sig do
             params(
               cost: Float,
-              line_item_breakdown: T::Array[
-                T.any(
-                  MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType::LineItemBreakdown,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              ],
+              line_item_breakdown:
+                T::Array[
+                  MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType::LineItemBreakdown::OrHash
+                ],
               name: String
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
-          def self.new(cost: nil, line_item_breakdown: nil, name: nil); end
+          def self.new(cost: nil, line_item_breakdown: nil, name: nil)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  cost: Float,
-                  line_item_breakdown: T::Array[MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType::LineItemBreakdown],
-                  name: String
-                }
-              )
+            override.returns(
+              {
+                cost: Float,
+                line_item_breakdown:
+                  T::Array[
+                    MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType::LineItemBreakdown
+                  ],
+                name: String
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class LineItemBreakdown < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+              end
+
             sig { returns(Float) }
             attr_accessor :cost
 
@@ -115,15 +140,28 @@ module MetronomeSDK
             attr_accessor :group_value
 
             sig do
-              params(cost: Float, name: String, group_key: String, group_value: T.nilable(String))
-                .returns(T.attached_class)
+              params(
+                cost: Float,
+                name: String,
+                group_key: String,
+                group_value: T.nilable(String)
+              ).returns(T.attached_class)
             end
-            def self.new(cost:, name:, group_key: nil, group_value: nil); end
+            def self.new(cost:, name:, group_key: nil, group_value: nil)
+            end
 
             sig do
-              override.returns({cost: Float, name: String, group_key: String, group_value: T.nilable(String)})
+              override.returns(
+                {
+                  cost: Float,
+                  name: String,
+                  group_key: String,
+                  group_value: T.nilable(String)
+                }
+              )
             end
-            def to_hash; end
+            def to_hash
+            end
           end
         end
       end

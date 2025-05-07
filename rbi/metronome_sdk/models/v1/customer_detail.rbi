@@ -4,6 +4,9 @@ module MetronomeSDK
   module Models
     module V1
       class CustomerDetail < MetronomeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
         # the Metronome ID of the customer
         sig { returns(String) }
         attr_accessor :id
@@ -15,14 +18,14 @@ module MetronomeSDK
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :custom_fields
 
-        sig { returns(MetronomeSDK::Models::V1::CustomerDetail::CustomerConfig) }
+        sig { returns(MetronomeSDK::V1::CustomerDetail::CustomerConfig) }
         attr_reader :customer_config
 
         sig do
           params(
-            customer_config: T.any(MetronomeSDK::Models::V1::CustomerDetail::CustomerConfig, MetronomeSDK::Internal::AnyHash)
-          )
-            .void
+            customer_config:
+              MetronomeSDK::V1::CustomerDetail::CustomerConfig::OrHash
+          ).void
         end
         attr_writer :customer_config
 
@@ -45,14 +48,18 @@ module MetronomeSDK
         attr_accessor :archived_at
 
         # This field's availability is dependent on your client's configuration.
-        sig { returns(T.nilable(MetronomeSDK::Models::V1::CustomerDetail::CurrentBillableStatus)) }
+        sig do
+          returns(
+            T.nilable(MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus)
+          )
+        end
         attr_reader :current_billable_status
 
         sig do
           params(
-            current_billable_status: T.any(MetronomeSDK::Models::V1::CustomerDetail::CurrentBillableStatus, MetronomeSDK::Internal::AnyHash)
-          )
-            .void
+            current_billable_status:
+              MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::OrHash
+          ).void
         end
         attr_writer :current_billable_status
 
@@ -61,14 +68,15 @@ module MetronomeSDK
             id: String,
             created_at: Time,
             custom_fields: T::Hash[Symbol, String],
-            customer_config: T.any(MetronomeSDK::Models::V1::CustomerDetail::CustomerConfig, MetronomeSDK::Internal::AnyHash),
+            customer_config:
+              MetronomeSDK::V1::CustomerDetail::CustomerConfig::OrHash,
             external_id: String,
             ingest_aliases: T::Array[String],
             name: String,
             archived_at: T.nilable(Time),
-            current_billable_status: T.any(MetronomeSDK::Models::V1::CustomerDetail::CurrentBillableStatus, MetronomeSDK::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            current_billable_status:
+              MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # the Metronome ID of the customer
@@ -89,41 +97,61 @@ module MetronomeSDK
           archived_at: nil,
           # This field's availability is dependent on your client's configuration.
           current_billable_status: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                id: String,
-                created_at: Time,
-                custom_fields: T::Hash[Symbol, String],
-                customer_config: MetronomeSDK::Models::V1::CustomerDetail::CustomerConfig,
-                external_id: String,
-                ingest_aliases: T::Array[String],
-                name: String,
-                archived_at: T.nilable(Time),
-                current_billable_status: MetronomeSDK::Models::V1::CustomerDetail::CurrentBillableStatus
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              id: String,
+              created_at: Time,
+              custom_fields: T::Hash[Symbol, String],
+              customer_config: MetronomeSDK::V1::CustomerDetail::CustomerConfig,
+              external_id: String,
+              ingest_aliases: T::Array[String],
+              name: String,
+              archived_at: T.nilable(Time),
+              current_billable_status:
+                MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus
+            }
+          )
+        end
+        def to_hash
+        end
 
         class CustomerConfig < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
           # The Salesforce account ID for the customer
           sig { returns(T.nilable(String)) }
           attr_accessor :salesforce_account_id
 
-          sig { params(salesforce_account_id: T.nilable(String)).returns(T.attached_class) }
+          sig do
+            params(salesforce_account_id: T.nilable(String)).returns(
+              T.attached_class
+            )
+          end
           def self.new(
             # The Salesforce account ID for the customer
             salesforce_account_id:
-          ); end
-          sig { override.returns({salesforce_account_id: T.nilable(String)}) }
-          def to_hash; end
+          )
+          end
+
+          sig { override.returns({ salesforce_account_id: T.nilable(String) }) }
+          def to_hash
+          end
         end
 
         class CurrentBillableStatus < MetronomeSDK::Internal::Type::BaseModel
-          sig { returns(MetronomeSDK::Models::V1::CustomerDetail::CurrentBillableStatus::Value::TaggedSymbol) }
+          OrHash =
+            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
+          sig do
+            returns(
+              MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::Value::TaggedSymbol
+            )
+          end
           attr_accessor :value
 
           sig { returns(T.nilable(Time)) }
@@ -132,41 +160,58 @@ module MetronomeSDK
           # This field's availability is dependent on your client's configuration.
           sig do
             params(
-              value: MetronomeSDK::Models::V1::CustomerDetail::CurrentBillableStatus::Value::OrSymbol,
+              value:
+                MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::Value::OrSymbol,
               effective_at: T.nilable(Time)
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
-          def self.new(value:, effective_at: nil); end
+          def self.new(value:, effective_at: nil)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  value: MetronomeSDK::Models::V1::CustomerDetail::CurrentBillableStatus::Value::TaggedSymbol,
-                  effective_at: T.nilable(Time)
-                }
-              )
+            override.returns(
+              {
+                value:
+                  MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::Value::TaggedSymbol,
+                effective_at: T.nilable(Time)
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module Value
             extend MetronomeSDK::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, MetronomeSDK::Models::V1::CustomerDetail::CurrentBillableStatus::Value) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::Value
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             BILLABLE =
-              T.let(:billable, MetronomeSDK::Models::V1::CustomerDetail::CurrentBillableStatus::Value::TaggedSymbol)
+              T.let(
+                :billable,
+                MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::Value::TaggedSymbol
+              )
             UNBILLABLE =
-              T.let(:unbillable, MetronomeSDK::Models::V1::CustomerDetail::CurrentBillableStatus::Value::TaggedSymbol)
+              T.let(
+                :unbillable,
+                MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::Value::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[MetronomeSDK::Models::V1::CustomerDetail::CurrentBillableStatus::Value::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::Value::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
       end

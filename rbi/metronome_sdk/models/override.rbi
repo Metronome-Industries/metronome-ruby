@@ -3,6 +3,9 @@
 module MetronomeSDK
   module Models
     class Override < MetronomeSDK::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
       sig { returns(String) }
       attr_accessor :id
 
@@ -15,10 +18,10 @@ module MetronomeSDK
       sig { params(applicable_product_tags: T::Array[String]).void }
       attr_writer :applicable_product_tags
 
-      sig { returns(T.nilable(MetronomeSDK::Models::CreditTypeData)) }
+      sig { returns(T.nilable(MetronomeSDK::CreditTypeData)) }
       attr_reader :credit_type
 
-      sig { params(credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash)).void }
+      sig { params(credit_type: MetronomeSDK::CreditTypeData::OrHash).void }
       attr_writer :credit_type
 
       sig { returns(T.nilable(Time)) }
@@ -53,36 +56,36 @@ module MetronomeSDK
       sig { params(multiplier: Float).void }
       attr_writer :multiplier
 
-      sig { returns(T.nilable(T::Array[MetronomeSDK::Models::Override::OverrideSpecifier])) }
+      sig do
+        returns(T.nilable(T::Array[MetronomeSDK::Override::OverrideSpecifier]))
+      end
       attr_reader :override_specifiers
 
       sig do
         params(
-          override_specifiers: T::Array[T.any(MetronomeSDK::Models::Override::OverrideSpecifier, MetronomeSDK::Internal::AnyHash)]
-        )
-          .void
+          override_specifiers:
+            T::Array[MetronomeSDK::Override::OverrideSpecifier::OrHash]
+        ).void
       end
       attr_writer :override_specifiers
 
-      sig { returns(T.nilable(T::Array[MetronomeSDK::Models::Override::OverrideTier])) }
+      sig { returns(T.nilable(T::Array[MetronomeSDK::Override::OverrideTier])) }
       attr_reader :override_tiers
 
       sig do
         params(
-          override_tiers: T::Array[T.any(MetronomeSDK::Models::Override::OverrideTier, MetronomeSDK::Internal::AnyHash)]
-        )
-          .void
+          override_tiers: T::Array[MetronomeSDK::Override::OverrideTier::OrHash]
+        ).void
       end
       attr_writer :override_tiers
 
-      sig { returns(T.nilable(MetronomeSDK::Models::Override::OverwriteRate)) }
+      sig { returns(T.nilable(MetronomeSDK::Override::OverwriteRate)) }
       attr_reader :overwrite_rate
 
       sig do
         params(
-          overwrite_rate: T.any(MetronomeSDK::Models::Override::OverwriteRate, MetronomeSDK::Internal::AnyHash)
-        )
-          .void
+          overwrite_rate: MetronomeSDK::Override::OverwriteRate::OrHash
+        ).void
       end
       attr_writer :overwrite_rate
 
@@ -100,10 +103,10 @@ module MetronomeSDK
       sig { params(priority: Float).void }
       attr_writer :priority
 
-      sig { returns(T.nilable(MetronomeSDK::Models::Override::Product)) }
+      sig { returns(T.nilable(MetronomeSDK::Override::Product)) }
       attr_reader :product
 
-      sig { params(product: T.any(MetronomeSDK::Models::Override::Product, MetronomeSDK::Internal::AnyHash)).void }
+      sig { params(product: MetronomeSDK::Override::Product::OrHash).void }
       attr_writer :product
 
       # Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
@@ -113,29 +116,29 @@ module MetronomeSDK
       sig { params(quantity: Float).void }
       attr_writer :quantity
 
-      sig { returns(T.nilable(MetronomeSDK::Models::Override::RateType::TaggedSymbol)) }
+      sig { returns(T.nilable(MetronomeSDK::Override::RateType::TaggedSymbol)) }
       attr_reader :rate_type
 
-      sig { params(rate_type: MetronomeSDK::Models::Override::RateType::OrSymbol).void }
+      sig { params(rate_type: MetronomeSDK::Override::RateType::OrSymbol).void }
       attr_writer :rate_type
 
-      sig { returns(T.nilable(MetronomeSDK::Models::Override::Target::TaggedSymbol)) }
+      sig { returns(T.nilable(MetronomeSDK::Override::Target::TaggedSymbol)) }
       attr_reader :target
 
-      sig { params(target: MetronomeSDK::Models::Override::Target::OrSymbol).void }
+      sig { params(target: MetronomeSDK::Override::Target::OrSymbol).void }
       attr_writer :target
 
       # Only set for TIERED rate_type.
-      sig { returns(T.nilable(T::Array[MetronomeSDK::Models::Tier])) }
+      sig { returns(T.nilable(T::Array[MetronomeSDK::Tier])) }
       attr_reader :tiers
 
-      sig { params(tiers: T::Array[T.any(MetronomeSDK::Models::Tier, MetronomeSDK::Internal::AnyHash)]).void }
+      sig { params(tiers: T::Array[MetronomeSDK::Tier::OrHash]).void }
       attr_writer :tiers
 
-      sig { returns(T.nilable(MetronomeSDK::Models::Override::Type::TaggedSymbol)) }
+      sig { returns(T.nilable(MetronomeSDK::Override::Type::TaggedSymbol)) }
       attr_reader :type
 
-      sig { params(type: MetronomeSDK::Models::Override::Type::OrSymbol).void }
+      sig { params(type: MetronomeSDK::Override::Type::OrSymbol).void }
       attr_writer :type
 
       # Only set for CUSTOM rate_type. This field is interpreted by custom rate
@@ -151,26 +154,27 @@ module MetronomeSDK
           id: String,
           starting_at: Time,
           applicable_product_tags: T::Array[String],
-          credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash),
+          credit_type: MetronomeSDK::CreditTypeData::OrHash,
           ending_before: Time,
           entitled: T::Boolean,
           is_commit_specific: T::Boolean,
           is_prorated: T::Boolean,
           multiplier: Float,
-          override_specifiers: T::Array[T.any(MetronomeSDK::Models::Override::OverrideSpecifier, MetronomeSDK::Internal::AnyHash)],
-          override_tiers: T::Array[T.any(MetronomeSDK::Models::Override::OverrideTier, MetronomeSDK::Internal::AnyHash)],
-          overwrite_rate: T.any(MetronomeSDK::Models::Override::OverwriteRate, MetronomeSDK::Internal::AnyHash),
+          override_specifiers:
+            T::Array[MetronomeSDK::Override::OverrideSpecifier::OrHash],
+          override_tiers:
+            T::Array[MetronomeSDK::Override::OverrideTier::OrHash],
+          overwrite_rate: MetronomeSDK::Override::OverwriteRate::OrHash,
           price: Float,
           priority: Float,
-          product: T.any(MetronomeSDK::Models::Override::Product, MetronomeSDK::Internal::AnyHash),
+          product: MetronomeSDK::Override::Product::OrHash,
           quantity: Float,
-          rate_type: MetronomeSDK::Models::Override::RateType::OrSymbol,
-          target: MetronomeSDK::Models::Override::Target::OrSymbol,
-          tiers: T::Array[T.any(MetronomeSDK::Models::Tier, MetronomeSDK::Internal::AnyHash)],
-          type: MetronomeSDK::Models::Override::Type::OrSymbol,
+          rate_type: MetronomeSDK::Override::RateType::OrSymbol,
+          target: MetronomeSDK::Override::Target::OrSymbol,
+          tiers: T::Array[MetronomeSDK::Tier::OrHash],
+          type: MetronomeSDK::Override::Type::OrSymbol,
           value: T::Hash[Symbol, T.anything]
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         id:,
@@ -202,38 +206,44 @@ module MetronomeSDK
         # Only set for CUSTOM rate_type. This field is interpreted by custom rate
         # processors.
         value: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              starting_at: Time,
-              applicable_product_tags: T::Array[String],
-              credit_type: MetronomeSDK::Models::CreditTypeData,
-              ending_before: Time,
-              entitled: T::Boolean,
-              is_commit_specific: T::Boolean,
-              is_prorated: T::Boolean,
-              multiplier: Float,
-              override_specifiers: T::Array[MetronomeSDK::Models::Override::OverrideSpecifier],
-              override_tiers: T::Array[MetronomeSDK::Models::Override::OverrideTier],
-              overwrite_rate: MetronomeSDK::Models::Override::OverwriteRate,
-              price: Float,
-              priority: Float,
-              product: MetronomeSDK::Models::Override::Product,
-              quantity: Float,
-              rate_type: MetronomeSDK::Models::Override::RateType::TaggedSymbol,
-              target: MetronomeSDK::Models::Override::Target::TaggedSymbol,
-              tiers: T::Array[MetronomeSDK::Models::Tier],
-              type: MetronomeSDK::Models::Override::Type::TaggedSymbol,
-              value: T::Hash[Symbol, T.anything]
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            starting_at: Time,
+            applicable_product_tags: T::Array[String],
+            credit_type: MetronomeSDK::CreditTypeData,
+            ending_before: Time,
+            entitled: T::Boolean,
+            is_commit_specific: T::Boolean,
+            is_prorated: T::Boolean,
+            multiplier: Float,
+            override_specifiers:
+              T::Array[MetronomeSDK::Override::OverrideSpecifier],
+            override_tiers: T::Array[MetronomeSDK::Override::OverrideTier],
+            overwrite_rate: MetronomeSDK::Override::OverwriteRate,
+            price: Float,
+            priority: Float,
+            product: MetronomeSDK::Override::Product,
+            quantity: Float,
+            rate_type: MetronomeSDK::Override::RateType::TaggedSymbol,
+            target: MetronomeSDK::Override::Target::TaggedSymbol,
+            tiers: T::Array[MetronomeSDK::Tier],
+            type: MetronomeSDK::Override::Type::TaggedSymbol,
+            value: T::Hash[Symbol, T.anything]
+          }
+        )
+      end
+      def to_hash
+      end
 
       class OverrideSpecifier < MetronomeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :commit_ids
 
@@ -243,7 +253,11 @@ module MetronomeSDK
         sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
         attr_reader :presentation_group_values
 
-        sig { params(presentation_group_values: T::Hash[Symbol, T.nilable(String)]).void }
+        sig do
+          params(
+            presentation_group_values: T::Hash[Symbol, T.nilable(String)]
+          ).void
+        end
         attr_writer :presentation_group_values
 
         sig { returns(T.nilable(T::Hash[Symbol, String])) }
@@ -285,8 +299,7 @@ module MetronomeSDK
             product_tags: T::Array[String],
             recurring_commit_ids: T::Array[String],
             recurring_credit_ids: T::Array[String]
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           commit_ids: nil,
@@ -296,25 +309,30 @@ module MetronomeSDK
           product_tags: nil,
           recurring_commit_ids: nil,
           recurring_credit_ids: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                commit_ids: T::Array[String],
-                presentation_group_values: T::Hash[Symbol, T.nilable(String)],
-                pricing_group_values: T::Hash[Symbol, String],
-                product_id: String,
-                product_tags: T::Array[String],
-                recurring_commit_ids: T::Array[String],
-                recurring_credit_ids: T::Array[String]
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              commit_ids: T::Array[String],
+              presentation_group_values: T::Hash[Symbol, T.nilable(String)],
+              pricing_group_values: T::Hash[Symbol, String],
+              product_id: String,
+              product_tags: T::Array[String],
+              recurring_commit_ids: T::Array[String],
+              recurring_credit_ids: T::Array[String]
+            }
+          )
+        end
+        def to_hash
+        end
       end
 
       class OverrideTier < MetronomeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
         sig { returns(Float) }
         attr_accessor :multiplier
 
@@ -325,20 +343,27 @@ module MetronomeSDK
         attr_writer :size
 
         sig { params(multiplier: Float, size: Float).returns(T.attached_class) }
-        def self.new(multiplier:, size: nil); end
+        def self.new(multiplier:, size: nil)
+        end
 
-        sig { override.returns({multiplier: Float, size: Float}) }
-        def to_hash; end
+        sig { override.returns({ multiplier: Float, size: Float }) }
+        def to_hash
+        end
       end
 
       class OverwriteRate < MetronomeSDK::Internal::Type::BaseModel
-        sig { returns(MetronomeSDK::Models::Override::OverwriteRate::RateType::TaggedSymbol) }
+        OrHash =
+          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
+        sig do
+          returns(MetronomeSDK::Override::OverwriteRate::RateType::TaggedSymbol)
+        end
         attr_accessor :rate_type
 
-        sig { returns(T.nilable(MetronomeSDK::Models::CreditTypeData)) }
+        sig { returns(T.nilable(MetronomeSDK::CreditTypeData)) }
         attr_reader :credit_type
 
-        sig { params(credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash)).void }
+        sig { params(credit_type: MetronomeSDK::CreditTypeData::OrHash).void }
         attr_writer :credit_type
 
         # Only set for CUSTOM rate_type. This field is interpreted by custom rate
@@ -373,23 +398,23 @@ module MetronomeSDK
         attr_writer :quantity
 
         # Only set for TIERED rate_type.
-        sig { returns(T.nilable(T::Array[MetronomeSDK::Models::Tier])) }
+        sig { returns(T.nilable(T::Array[MetronomeSDK::Tier])) }
         attr_reader :tiers
 
-        sig { params(tiers: T::Array[T.any(MetronomeSDK::Models::Tier, MetronomeSDK::Internal::AnyHash)]).void }
+        sig { params(tiers: T::Array[MetronomeSDK::Tier::OrHash]).void }
         attr_writer :tiers
 
         sig do
           params(
-            rate_type: MetronomeSDK::Models::Override::OverwriteRate::RateType::OrSymbol,
-            credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash),
+            rate_type:
+              MetronomeSDK::Override::OverwriteRate::RateType::OrSymbol,
+            credit_type: MetronomeSDK::CreditTypeData::OrHash,
             custom_rate: T::Hash[Symbol, T.anything],
             is_prorated: T::Boolean,
             price: Float,
             quantity: Float,
-            tiers: T::Array[T.any(MetronomeSDK::Models::Tier, MetronomeSDK::Internal::AnyHash)]
-          )
-            .returns(T.attached_class)
+            tiers: T::Array[MetronomeSDK::Tier::OrHash]
+          ).returns(T.attached_class)
         end
         def self.new(
           rate_type:,
@@ -407,42 +432,77 @@ module MetronomeSDK
           quantity: nil,
           # Only set for TIERED rate_type.
           tiers: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                rate_type: MetronomeSDK::Models::Override::OverwriteRate::RateType::TaggedSymbol,
-                credit_type: MetronomeSDK::Models::CreditTypeData,
-                custom_rate: T::Hash[Symbol, T.anything],
-                is_prorated: T::Boolean,
-                price: Float,
-                quantity: Float,
-                tiers: T::Array[MetronomeSDK::Models::Tier]
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              rate_type:
+                MetronomeSDK::Override::OverwriteRate::RateType::TaggedSymbol,
+              credit_type: MetronomeSDK::CreditTypeData,
+              custom_rate: T::Hash[Symbol, T.anything],
+              is_prorated: T::Boolean,
+              price: Float,
+              quantity: Float,
+              tiers: T::Array[MetronomeSDK::Tier]
+            }
+          )
+        end
+        def to_hash
+        end
 
         module RateType
           extend MetronomeSDK::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, MetronomeSDK::Models::Override::OverwriteRate::RateType) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, MetronomeSDK::Override::OverwriteRate::RateType)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          FLAT = T.let(:FLAT, MetronomeSDK::Models::Override::OverwriteRate::RateType::TaggedSymbol)
-          PERCENTAGE = T.let(:PERCENTAGE, MetronomeSDK::Models::Override::OverwriteRate::RateType::TaggedSymbol)
+          FLAT =
+            T.let(
+              :FLAT,
+              MetronomeSDK::Override::OverwriteRate::RateType::TaggedSymbol
+            )
+          PERCENTAGE =
+            T.let(
+              :PERCENTAGE,
+              MetronomeSDK::Override::OverwriteRate::RateType::TaggedSymbol
+            )
           SUBSCRIPTION =
-            T.let(:SUBSCRIPTION, MetronomeSDK::Models::Override::OverwriteRate::RateType::TaggedSymbol)
-          TIERED = T.let(:TIERED, MetronomeSDK::Models::Override::OverwriteRate::RateType::TaggedSymbol)
-          CUSTOM = T.let(:CUSTOM, MetronomeSDK::Models::Override::OverwriteRate::RateType::TaggedSymbol)
+            T.let(
+              :SUBSCRIPTION,
+              MetronomeSDK::Override::OverwriteRate::RateType::TaggedSymbol
+            )
+          TIERED =
+            T.let(
+              :TIERED,
+              MetronomeSDK::Override::OverwriteRate::RateType::TaggedSymbol
+            )
+          CUSTOM =
+            T.let(
+              :CUSTOM,
+              MetronomeSDK::Override::OverwriteRate::RateType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[MetronomeSDK::Models::Override::OverwriteRate::RateType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                MetronomeSDK::Override::OverwriteRate::RateType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
 
       class Product < MetronomeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
@@ -450,53 +510,77 @@ module MetronomeSDK
         attr_accessor :name
 
         sig { params(id: String, name: String).returns(T.attached_class) }
-        def self.new(id:, name:); end
+        def self.new(id:, name:)
+        end
 
-        sig { override.returns({id: String, name: String}) }
-        def to_hash; end
+        sig { override.returns({ id: String, name: String }) }
+        def to_hash
+        end
       end
 
       module RateType
         extend MetronomeSDK::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, MetronomeSDK::Models::Override::RateType) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, MetronomeSDK::Override::RateType) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        FLAT = T.let(:FLAT, MetronomeSDK::Models::Override::RateType::TaggedSymbol)
-        PERCENTAGE = T.let(:PERCENTAGE, MetronomeSDK::Models::Override::RateType::TaggedSymbol)
-        SUBSCRIPTION = T.let(:SUBSCRIPTION, MetronomeSDK::Models::Override::RateType::TaggedSymbol)
-        TIERED = T.let(:TIERED, MetronomeSDK::Models::Override::RateType::TaggedSymbol)
-        CUSTOM = T.let(:CUSTOM, MetronomeSDK::Models::Override::RateType::TaggedSymbol)
+        FLAT = T.let(:FLAT, MetronomeSDK::Override::RateType::TaggedSymbol)
+        PERCENTAGE =
+          T.let(:PERCENTAGE, MetronomeSDK::Override::RateType::TaggedSymbol)
+        SUBSCRIPTION =
+          T.let(:SUBSCRIPTION, MetronomeSDK::Override::RateType::TaggedSymbol)
+        TIERED = T.let(:TIERED, MetronomeSDK::Override::RateType::TaggedSymbol)
+        CUSTOM = T.let(:CUSTOM, MetronomeSDK::Override::RateType::TaggedSymbol)
 
-        sig { override.returns(T::Array[MetronomeSDK::Models::Override::RateType::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[MetronomeSDK::Override::RateType::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       module Target
         extend MetronomeSDK::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, MetronomeSDK::Models::Override::Target) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, MetronomeSDK::Override::Target) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        COMMIT_RATE = T.let(:COMMIT_RATE, MetronomeSDK::Models::Override::Target::TaggedSymbol)
-        LIST_RATE = T.let(:LIST_RATE, MetronomeSDK::Models::Override::Target::TaggedSymbol)
+        COMMIT_RATE =
+          T.let(:COMMIT_RATE, MetronomeSDK::Override::Target::TaggedSymbol)
+        LIST_RATE =
+          T.let(:LIST_RATE, MetronomeSDK::Override::Target::TaggedSymbol)
 
-        sig { override.returns(T::Array[MetronomeSDK::Models::Override::Target::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[MetronomeSDK::Override::Target::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       module Type
         extend MetronomeSDK::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, MetronomeSDK::Models::Override::Type) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, MetronomeSDK::Override::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        OVERWRITE = T.let(:OVERWRITE, MetronomeSDK::Models::Override::Type::TaggedSymbol)
-        MULTIPLIER = T.let(:MULTIPLIER, MetronomeSDK::Models::Override::Type::TaggedSymbol)
-        TIERED = T.let(:TIERED, MetronomeSDK::Models::Override::Type::TaggedSymbol)
+        OVERWRITE =
+          T.let(:OVERWRITE, MetronomeSDK::Override::Type::TaggedSymbol)
+        MULTIPLIER =
+          T.let(:MULTIPLIER, MetronomeSDK::Override::Type::TaggedSymbol)
+        TIERED = T.let(:TIERED, MetronomeSDK::Override::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[MetronomeSDK::Models::Override::Type::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(T::Array[MetronomeSDK::Override::Type::TaggedSymbol])
+        end
+        def self.values
+        end
       end
     end
   end

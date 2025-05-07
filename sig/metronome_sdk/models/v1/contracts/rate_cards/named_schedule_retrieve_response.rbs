@@ -15,8 +15,6 @@ module MetronomeSDK
               data: ::Array[MetronomeSDK::Models::V1::Contracts::RateCards::NamedScheduleRetrieveResponse::Data]
             ) -> void
 
-            def to_hash: -> MetronomeSDK::Models::V1::Contracts::RateCards::named_schedule_retrieve_response
-
             type data = { starting_at: Time, value: top, ending_before: Time }
 
             class Data < MetronomeSDK::Internal::Type::BaseModel
@@ -33,8 +31,6 @@ module MetronomeSDK
                 value: top,
                 ?ending_before: Time
               ) -> void
-
-              def to_hash: -> MetronomeSDK::Models::V1::Contracts::RateCards::NamedScheduleRetrieveResponse::data
             end
           end
         end

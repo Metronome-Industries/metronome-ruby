@@ -41,8 +41,6 @@ module MetronomeSDK
           ?on_current_plan: bool,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
-
-        def to_hash: -> MetronomeSDK::Models::V1::customer_list_billable_metrics_params
       end
     end
   end

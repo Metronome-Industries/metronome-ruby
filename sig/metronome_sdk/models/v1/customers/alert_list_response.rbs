@@ -4,21 +4,19 @@ module MetronomeSDK
       module Customers
         type alert_list_response =
           {
-            data: ::Array[MetronomeSDK::Models::V1::Customers::CustomerAlert],
+            data: ::Array[MetronomeSDK::V1::Customers::CustomerAlert],
             next_page: String?
           }
 
         class AlertListResponse < MetronomeSDK::Internal::Type::BaseModel
-          attr_accessor data: ::Array[MetronomeSDK::Models::V1::Customers::CustomerAlert]
+          attr_accessor data: ::Array[MetronomeSDK::V1::Customers::CustomerAlert]
 
           attr_accessor next_page: String?
 
           def initialize: (
-            data: ::Array[MetronomeSDK::Models::V1::Customers::CustomerAlert],
+            data: ::Array[MetronomeSDK::V1::Customers::CustomerAlert],
             next_page: String?
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::Customers::alert_list_response
         end
       end
     end

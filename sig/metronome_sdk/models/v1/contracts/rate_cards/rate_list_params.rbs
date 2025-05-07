@@ -9,7 +9,7 @@ module MetronomeSDK
               rate_card_id: String,
               limit: Integer,
               next_page: String,
-              selectors: ::Array[MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams::Selector]
+              selectors: ::Array[MetronomeSDK::V1::Contracts::RateCards::RateListParams::Selector]
             }
             & MetronomeSDK::Internal::Type::request_parameters
 
@@ -29,22 +29,20 @@ module MetronomeSDK
 
             def next_page=: (String) -> String
 
-            attr_reader selectors: ::Array[MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams::Selector]?
+            attr_reader selectors: ::Array[MetronomeSDK::V1::Contracts::RateCards::RateListParams::Selector]?
 
             def selectors=: (
-              ::Array[MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams::Selector]
-            ) -> ::Array[MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams::Selector]
+              ::Array[MetronomeSDK::V1::Contracts::RateCards::RateListParams::Selector]
+            ) -> ::Array[MetronomeSDK::V1::Contracts::RateCards::RateListParams::Selector]
 
             def initialize: (
               at: Time,
               rate_card_id: String,
               ?limit: Integer,
               ?next_page: String,
-              ?selectors: ::Array[MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams::Selector],
+              ?selectors: ::Array[MetronomeSDK::V1::Contracts::RateCards::RateListParams::Selector],
               ?request_options: MetronomeSDK::request_opts
             ) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V1::Contracts::RateCards::rate_list_params
 
             type selector =
               {
@@ -81,8 +79,6 @@ module MetronomeSDK
                 ?product_id: String,
                 ?product_tags: ::Array[String]
               ) -> void
-
-              def to_hash: -> MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams::selector
             end
           end
         end

@@ -2,25 +2,23 @@ module MetronomeSDK
   module Models
     type schedule_duration =
       {
-        schedule_items: ::Array[MetronomeSDK::Models::ScheduleDuration::ScheduleItem],
-        credit_type: MetronomeSDK::Models::CreditTypeData
+        schedule_items: ::Array[MetronomeSDK::ScheduleDuration::ScheduleItem],
+        credit_type: MetronomeSDK::CreditTypeData
       }
 
     class ScheduleDuration < MetronomeSDK::Internal::Type::BaseModel
-      attr_accessor schedule_items: ::Array[MetronomeSDK::Models::ScheduleDuration::ScheduleItem]
+      attr_accessor schedule_items: ::Array[MetronomeSDK::ScheduleDuration::ScheduleItem]
 
-      attr_reader credit_type: MetronomeSDK::Models::CreditTypeData?
+      attr_reader credit_type: MetronomeSDK::CreditTypeData?
 
       def credit_type=: (
-        MetronomeSDK::Models::CreditTypeData
-      ) -> MetronomeSDK::Models::CreditTypeData
+        MetronomeSDK::CreditTypeData
+      ) -> MetronomeSDK::CreditTypeData
 
       def initialize: (
-        schedule_items: ::Array[MetronomeSDK::Models::ScheduleDuration::ScheduleItem],
-        ?credit_type: MetronomeSDK::Models::CreditTypeData
+        schedule_items: ::Array[MetronomeSDK::ScheduleDuration::ScheduleItem],
+        ?credit_type: MetronomeSDK::CreditTypeData
       ) -> void
-
-      def to_hash: -> MetronomeSDK::Models::schedule_duration
 
       type schedule_item =
         { id: String, amount: Float, ending_before: Time, starting_at: Time }
@@ -40,8 +38,6 @@ module MetronomeSDK
           ending_before: Time,
           starting_at: Time
         ) -> void
-
-        def to_hash: -> MetronomeSDK::Models::ScheduleDuration::schedule_item
       end
     end
   end

@@ -7,6 +7,9 @@ module MetronomeSDK
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
         # ID of the balance (commit or credit) to update.
         sig { returns(String) }
         attr_accessor :id
@@ -51,9 +54,8 @@ module MetronomeSDK
             segment_id: String,
             contract_id: String,
             timestamp: Time,
-            request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # ID of the balance (commit or credit) to update.
@@ -72,23 +74,25 @@ module MetronomeSDK
           # provided, it will default to the start of the segment.
           timestamp: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                id: String,
-                amount: Float,
-                customer_id: String,
-                reason: String,
-                segment_id: String,
-                contract_id: String,
-                timestamp: Time,
-                request_options: MetronomeSDK::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              id: String,
+              amount: Float,
+              customer_id: String,
+              reason: String,
+              segment_id: String,
+              contract_id: String,
+              timestamp: Time,
+              request_options: MetronomeSDK::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

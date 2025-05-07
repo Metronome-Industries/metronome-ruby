@@ -24,8 +24,6 @@ module MetronomeSDK
             ?covering_date: Time,
             ?request_options: MetronomeSDK::request_opts
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::Contracts::named_schedule_retrieve_params
         end
       end
     end

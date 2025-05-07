@@ -7,16 +7,16 @@ module MetronomeSDK
         class CustomerAlert < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute alert
           #
-          #   @return [MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert]
-          required :alert, -> { MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert }
+          #   @return [MetronomeSDK::V1::Customers::CustomerAlert::Alert]
+          required :alert, -> { MetronomeSDK::V1::Customers::CustomerAlert::Alert }
 
           # @!attribute customer_status
           #   The status of the customer alert. If the alert is archived, null will be
           #   returned.
           #
-          #   @return [Symbol, MetronomeSDK::Models::V1::Customers::CustomerAlert::CustomerStatus, nil]
+          #   @return [Symbol, MetronomeSDK::V1::Customers::CustomerAlert::CustomerStatus, nil]
           required :customer_status,
-                   enum: -> { MetronomeSDK::Models::V1::Customers::CustomerAlert::CustomerStatus },
+                   enum: -> { MetronomeSDK::V1::Customers::CustomerAlert::CustomerStatus },
                    nil?: true
 
           # @!attribute triggered_by
@@ -27,16 +27,15 @@ module MetronomeSDK
 
           # @!method initialize(alert:, customer_status:, triggered_by: nil)
           #   Some parameter documentations has been truncated, see
-          #   {MetronomeSDK::Models::V1::Customers::CustomerAlert} for more details.
+          #   {MetronomeSDK::V1::Customers::CustomerAlert} for more details.
           #
-          #   @param alert [MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert]
+          #   @param alert [MetronomeSDK::V1::Customers::CustomerAlert::Alert]
           #
-          #   @param customer_status [Symbol, MetronomeSDK::Models::V1::Customers::CustomerAlert::CustomerStatus, nil] The status of the customer alert. If the alert is archived, null will be returne
-          #   ...
+          #   @param customer_status [Symbol, MetronomeSDK::V1::Customers::CustomerAlert::CustomerStatus, nil] The status of the customer alert. If the alert is archived, null will be returne
           #
           #   @param triggered_by [String, nil] If present, indicates the reason the alert was triggered.
 
-          # @see MetronomeSDK::Models::V1::Customers::CustomerAlert#alert
+          # @see MetronomeSDK::V1::Customers::CustomerAlert#alert
           class Alert < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute id
             #   the Metronome ID of the alert
@@ -53,8 +52,8 @@ module MetronomeSDK
             # @!attribute status
             #   Status of the alert
             #
-            #   @return [Symbol, MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::Status]
-            required :status, enum: -> { MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::Status }
+            #   @return [Symbol, MetronomeSDK::V1::Customers::CustomerAlert::Alert::Status]
+            required :status, enum: -> { MetronomeSDK::V1::Customers::CustomerAlert::Alert::Status }
 
             # @!attribute threshold
             #   Threshold value of the alert policy
@@ -65,8 +64,8 @@ module MetronomeSDK
             # @!attribute type
             #   Type of the alert
             #
-            #   @return [Symbol, MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::Type]
-            required :type, enum: -> { MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::Type }
+            #   @return [Symbol, MetronomeSDK::V1::Customers::CustomerAlert::Alert::Type]
+            required :type, enum: -> { MetronomeSDK::V1::Customers::CustomerAlert::Alert::Type }
 
             # @!attribute updated_at
             #   Timestamp for when the alert was last updated
@@ -84,23 +83,27 @@ module MetronomeSDK
 
             # @!attribute credit_type
             #
-            #   @return [MetronomeSDK::Models::CreditTypeData, nil]
-            optional :credit_type, -> { MetronomeSDK::Models::CreditTypeData }, nil?: true
+            #   @return [MetronomeSDK::CreditTypeData, nil]
+            optional :credit_type, -> { MetronomeSDK::CreditTypeData }, nil?: true
 
             # @!attribute custom_field_filters
             #   A list of custom field filters for alert types that support advanced filtering
             #
-            #   @return [Array<MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::CustomFieldFilter>, nil]
+            #   @return [Array<MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter>, nil]
             optional :custom_field_filters,
-                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::CustomFieldFilter] }
+                     -> {
+                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter]
+                     }
 
             # @!attribute group_key_filter
             #   Scopes alert evaluation to a specific presentation group key on individual line
             #   items. Only present for spend alerts.
             #
-            #   @return [MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::GroupKeyFilter, nil]
+            #   @return [MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupKeyFilter, nil]
             optional :group_key_filter,
-                     -> { MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::GroupKeyFilter }
+                     -> {
+                       MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupKeyFilter
+                     }
 
             # @!attribute invoice_types_filter
             #   Only supported for invoice_total_reached alerts. A list of invoice types to
@@ -119,39 +122,35 @@ module MetronomeSDK
 
             # @!method initialize(id:, name:, status:, threshold:, type:, updated_at:, credit_grant_type_filters: nil, credit_type: nil, custom_field_filters: nil, group_key_filter: nil, invoice_types_filter: nil, uniqueness_key: nil)
             #   Some parameter documentations has been truncated, see
-            #   {MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert} for more details.
+            #   {MetronomeSDK::V1::Customers::CustomerAlert::Alert} for more details.
             #
             #   @param id [String] the Metronome ID of the alert
             #
             #   @param name [String] Name of the alert
             #
-            #   @param status [Symbol, MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::Status] Status of the alert
+            #   @param status [Symbol, MetronomeSDK::V1::Customers::CustomerAlert::Alert::Status] Status of the alert
             #
             #   @param threshold [Float] Threshold value of the alert policy
             #
-            #   @param type [Symbol, MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::Type] Type of the alert
+            #   @param type [Symbol, MetronomeSDK::V1::Customers::CustomerAlert::Alert::Type] Type of the alert
             #
             #   @param updated_at [Time] Timestamp for when the alert was last updated
             #
             #   @param credit_grant_type_filters [Array<String>] An array of strings, representing a way to filter the credit grant this alert ap
-            #   ...
             #
-            #   @param credit_type [MetronomeSDK::Models::CreditTypeData, nil]
+            #   @param credit_type [MetronomeSDK::CreditTypeData, nil]
             #
-            #   @param custom_field_filters [Array<MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::CustomFieldFilter>] A list of custom field filters for alert types that support advanced filtering
+            #   @param custom_field_filters [Array<MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter>] A list of custom field filters for alert types that support advanced filtering
             #
-            #   @param group_key_filter [MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::GroupKeyFilter] Scopes alert evaluation to a specific presentation group key on individual line
-            #   ...
+            #   @param group_key_filter [MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupKeyFilter] Scopes alert evaluation to a specific presentation group key on individual line
             #
             #   @param invoice_types_filter [Array<String>] Only supported for invoice_total_reached alerts. A list of invoice types to eval
-            #   ...
             #
             #   @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made wit
-            #   ...
 
             # Status of the alert
             #
-            # @see MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert#status
+            # @see MetronomeSDK::V1::Customers::CustomerAlert::Alert#status
             module Status
               extend MetronomeSDK::Internal::Type::Enum
 
@@ -165,7 +164,7 @@ module MetronomeSDK
 
             # Type of the alert
             #
-            # @see MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert#type
+            # @see MetronomeSDK::V1::Customers::CustomerAlert::Alert#type
             module Type
               extend MetronomeSDK::Internal::Type::Enum
 
@@ -193,9 +192,11 @@ module MetronomeSDK
             class CustomFieldFilter < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute entity
               #
-              #   @return [Symbol, MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::CustomFieldFilter::Entity]
+              #   @return [Symbol, MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter::Entity]
               required :entity,
-                       enum: -> { MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::CustomFieldFilter::Entity }
+                       enum: -> {
+                         MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter::Entity
+                       }
 
               # @!attribute key
               #
@@ -208,11 +209,11 @@ module MetronomeSDK
               required :value, String
 
               # @!method initialize(entity:, key:, value:)
-              #   @param entity [Symbol, MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::CustomFieldFilter::Entity]
+              #   @param entity [Symbol, MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter::Entity]
               #   @param key [String]
               #   @param value [String]
 
-              # @see MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::CustomFieldFilter#entity
+              # @see MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter#entity
               module Entity
                 extend MetronomeSDK::Internal::Type::Enum
 
@@ -225,7 +226,7 @@ module MetronomeSDK
               end
             end
 
-            # @see MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert#group_key_filter
+            # @see MetronomeSDK::V1::Customers::CustomerAlert::Alert#group_key_filter
             class GroupKeyFilter < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute key
               #
@@ -249,7 +250,7 @@ module MetronomeSDK
           # The status of the customer alert. If the alert is archived, null will be
           # returned.
           #
-          # @see MetronomeSDK::Models::V1::Customers::CustomerAlert#customer_status
+          # @see MetronomeSDK::V1::Customers::CustomerAlert#customer_status
           module CustomerStatus
             extend MetronomeSDK::Internal::Type::Enum
 

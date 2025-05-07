@@ -5,6 +5,9 @@ module MetronomeSDK
     module V1
       module Contracts
         class ProductListItemState < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
           sig { returns(Time) }
           attr_accessor :created_at
 
@@ -85,14 +88,18 @@ module MetronomeSDK
           # unit and priced in another. For example, data could be sent in MB and priced in
           # GB. In this case, the conversion factor would be 1024 and the operation would be
           # "divide".
-          sig { returns(T.nilable(MetronomeSDK::Models::V1::Contracts::QuantityConversion)) }
+          sig do
+            returns(T.nilable(MetronomeSDK::V1::Contracts::QuantityConversion))
+          end
           attr_reader :quantity_conversion
 
           sig do
             params(
-              quantity_conversion: T.nilable(T.any(MetronomeSDK::Models::V1::Contracts::QuantityConversion, MetronomeSDK::Internal::AnyHash))
-            )
-              .void
+              quantity_conversion:
+                T.nilable(
+                  MetronomeSDK::V1::Contracts::QuantityConversion::OrHash
+                )
+            ).void
           end
           attr_writer :quantity_conversion
 
@@ -100,14 +107,16 @@ module MetronomeSDK
           # rounded using the provided rounding method and decimal places. For example, if
           # the method is "round up" and the decimal places is 0, then the quantity will be
           # rounded up to the nearest integer.
-          sig { returns(T.nilable(MetronomeSDK::Models::V1::Contracts::QuantityRounding)) }
+          sig do
+            returns(T.nilable(MetronomeSDK::V1::Contracts::QuantityRounding))
+          end
           attr_reader :quantity_rounding
 
           sig do
             params(
-              quantity_rounding: T.nilable(T.any(MetronomeSDK::Models::V1::Contracts::QuantityRounding, MetronomeSDK::Internal::AnyHash))
-            )
-              .void
+              quantity_rounding:
+                T.nilable(MetronomeSDK::V1::Contracts::QuantityRounding::OrHash)
+            ).void
           end
           attr_writer :quantity_rounding
 
@@ -137,12 +146,17 @@ module MetronomeSDK
               netsuite_overage_item_id: String,
               presentation_group_key: T::Array[String],
               pricing_group_key: T::Array[String],
-              quantity_conversion: T.nilable(T.any(MetronomeSDK::Models::V1::Contracts::QuantityConversion, MetronomeSDK::Internal::AnyHash)),
-              quantity_rounding: T.nilable(T.any(MetronomeSDK::Models::V1::Contracts::QuantityRounding, MetronomeSDK::Internal::AnyHash)),
+              quantity_conversion:
+                T.nilable(
+                  MetronomeSDK::V1::Contracts::QuantityConversion::OrHash
+                ),
+              quantity_rounding:
+                T.nilable(
+                  MetronomeSDK::V1::Contracts::QuantityRounding::OrHash
+                ),
               starting_at: Time,
               tags: T::Array[String]
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             created_at:,
@@ -182,31 +196,35 @@ module MetronomeSDK
             quantity_rounding: nil,
             starting_at: nil,
             tags: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  created_at: Time,
-                  created_by: String,
-                  name: String,
-                  billable_metric_id: String,
-                  composite_product_ids: T::Array[String],
-                  composite_tags: T::Array[String],
-                  exclude_free_usage: T::Boolean,
-                  is_refundable: T::Boolean,
-                  netsuite_internal_item_id: String,
-                  netsuite_overage_item_id: String,
-                  presentation_group_key: T::Array[String],
-                  pricing_group_key: T::Array[String],
-                  quantity_conversion: T.nilable(MetronomeSDK::Models::V1::Contracts::QuantityConversion),
-                  quantity_rounding: T.nilable(MetronomeSDK::Models::V1::Contracts::QuantityRounding),
-                  starting_at: Time,
-                  tags: T::Array[String]
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                created_at: Time,
+                created_by: String,
+                name: String,
+                billable_metric_id: String,
+                composite_product_ids: T::Array[String],
+                composite_tags: T::Array[String],
+                exclude_free_usage: T::Boolean,
+                is_refundable: T::Boolean,
+                netsuite_internal_item_id: String,
+                netsuite_overage_item_id: String,
+                presentation_group_key: T::Array[String],
+                pricing_group_key: T::Array[String],
+                quantity_conversion:
+                  T.nilable(MetronomeSDK::V1::Contracts::QuantityConversion),
+                quantity_rounding:
+                  T.nilable(MetronomeSDK::V1::Contracts::QuantityRounding),
+                starting_at: Time,
+                tags: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
     end

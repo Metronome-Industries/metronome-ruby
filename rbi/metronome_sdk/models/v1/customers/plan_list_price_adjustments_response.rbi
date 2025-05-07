@@ -5,13 +5,26 @@ module MetronomeSDK
     module V1
       module Customers
         class PlanListPriceAdjustmentsResponse < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :charge_id
 
-          sig { returns(MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::ChargeType::TaggedSymbol) }
+          sig do
+            returns(
+              MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::ChargeType::TaggedSymbol
+            )
+          end
           attr_accessor :charge_type
 
-          sig { returns(T::Array[MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::Price]) }
+          sig do
+            returns(
+              T::Array[
+                MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::Price
+              ]
+            )
+          end
           attr_accessor :prices
 
           sig { returns(Float) }
@@ -26,39 +39,53 @@ module MetronomeSDK
           sig do
             params(
               charge_id: String,
-              charge_type: MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::ChargeType::OrSymbol,
-              prices: T::Array[
-                T.any(
-                  MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::Price,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              ],
+              charge_type:
+                MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::ChargeType::OrSymbol,
+              prices:
+                T::Array[
+                  MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::Price::OrHash
+                ],
               start_period: Float,
               quantity: Float
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
-          def self.new(charge_id:, charge_type:, prices:, start_period:, quantity: nil); end
+          def self.new(
+            charge_id:,
+            charge_type:,
+            prices:,
+            start_period:,
+            quantity: nil
+          )
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  charge_id: String,
-                  charge_type: MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::ChargeType::TaggedSymbol,
-                  prices: T::Array[MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::Price],
-                  start_period: Float,
-                  quantity: Float
-                }
-              )
+            override.returns(
+              {
+                charge_id: String,
+                charge_type:
+                  MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::ChargeType::TaggedSymbol,
+                prices:
+                  T::Array[
+                    MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::Price
+                  ],
+                start_period: Float,
+                quantity: Float
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module ChargeType
             extend MetronomeSDK::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::ChargeType) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::ChargeType
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             USAGE =
@@ -88,15 +115,22 @@ module MetronomeSDK
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::ChargeType::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::ChargeType::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
 
           class Price < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+              end
+
             # Determines how the value will be applied.
             sig do
               returns(
@@ -120,11 +154,11 @@ module MetronomeSDK
 
             sig do
               params(
-                adjustment_type: MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType::OrSymbol,
+                adjustment_type:
+                  MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType::OrSymbol,
                 tier: Float,
                 value: Float
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
             def self.new(
               # Determines how the value will be applied.
@@ -132,18 +166,21 @@ module MetronomeSDK
               # Used in pricing tiers. Indicates at what metric value the price applies.
               tier: nil,
               value: nil
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    adjustment_type: MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType::TaggedSymbol,
-                    tier: Float,
-                    value: Float
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  adjustment_type:
+                    MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType::TaggedSymbol,
+                  tier: Float,
+                  value: Float
+                }
+              )
+            end
+            def to_hash
+            end
 
             # Determines how the value will be applied.
             module AdjustmentType
@@ -151,7 +188,10 @@ module MetronomeSDK
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType)
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType
+                  )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -177,12 +217,14 @@ module MetronomeSDK
                 )
 
               sig do
-                override
-                  .returns(
-                    T::Array[MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType::TaggedSymbol]
-                  )
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
           end
         end

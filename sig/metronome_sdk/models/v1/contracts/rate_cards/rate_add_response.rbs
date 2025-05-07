@@ -15,19 +15,17 @@ module MetronomeSDK
               data: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse::Data
             ) -> void
 
-            def to_hash: -> MetronomeSDK::Models::V1::Contracts::RateCards::rate_add_response
-
             type data =
               {
                 rate_type: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse::Data::rate_type,
                 commit_rate: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse::Data::CommitRate,
-                credit_type: MetronomeSDK::Models::CreditTypeData,
+                credit_type: MetronomeSDK::CreditTypeData,
                 custom_rate: ::Hash[Symbol, top],
                 is_prorated: bool,
                 price: Float,
                 pricing_group_values: ::Hash[Symbol, String],
                 quantity: Float,
-                tiers: ::Array[MetronomeSDK::Models::Tier],
+                tiers: ::Array[MetronomeSDK::Tier],
                 use_list_prices: bool
               }
 
@@ -40,11 +38,11 @@ module MetronomeSDK
                 MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse::Data::CommitRate
               ) -> MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse::Data::CommitRate
 
-              attr_reader credit_type: MetronomeSDK::Models::CreditTypeData?
+              attr_reader credit_type: MetronomeSDK::CreditTypeData?
 
               def credit_type=: (
-                MetronomeSDK::Models::CreditTypeData
-              ) -> MetronomeSDK::Models::CreditTypeData
+                MetronomeSDK::CreditTypeData
+              ) -> MetronomeSDK::CreditTypeData
 
               attr_reader custom_rate: ::Hash[Symbol, top]?
 
@@ -68,11 +66,11 @@ module MetronomeSDK
 
               def quantity=: (Float) -> Float
 
-              attr_reader tiers: ::Array[MetronomeSDK::Models::Tier]?
+              attr_reader tiers: ::Array[MetronomeSDK::Tier]?
 
               def tiers=: (
-                ::Array[MetronomeSDK::Models::Tier]
-              ) -> ::Array[MetronomeSDK::Models::Tier]
+                ::Array[MetronomeSDK::Tier]
+              ) -> ::Array[MetronomeSDK::Tier]
 
               attr_reader use_list_prices: bool?
 
@@ -81,17 +79,15 @@ module MetronomeSDK
               def initialize: (
                 rate_type: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse::Data::rate_type,
                 ?commit_rate: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse::Data::CommitRate,
-                ?credit_type: MetronomeSDK::Models::CreditTypeData,
+                ?credit_type: MetronomeSDK::CreditTypeData,
                 ?custom_rate: ::Hash[Symbol, top],
                 ?is_prorated: bool,
                 ?price: Float,
                 ?pricing_group_values: ::Hash[Symbol, String],
                 ?quantity: Float,
-                ?tiers: ::Array[MetronomeSDK::Models::Tier],
+                ?tiers: ::Array[MetronomeSDK::Tier],
                 ?use_list_prices: bool
               ) -> void
-
-              def to_hash: -> MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse::data
 
               type rate_type =
                 :FLAT | :PERCENTAGE | :SUBSCRIPTION | :CUSTOM | :TIERED
@@ -112,7 +108,7 @@ module MetronomeSDK
                 {
                   rate_type: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse::Data::CommitRate::rate_type,
                   price: Float,
-                  tiers: ::Array[MetronomeSDK::Models::Tier]
+                  tiers: ::Array[MetronomeSDK::Tier]
                 }
 
               class CommitRate < MetronomeSDK::Internal::Type::BaseModel
@@ -122,19 +118,17 @@ module MetronomeSDK
 
                 def price=: (Float) -> Float
 
-                attr_reader tiers: ::Array[MetronomeSDK::Models::Tier]?
+                attr_reader tiers: ::Array[MetronomeSDK::Tier]?
 
                 def tiers=: (
-                  ::Array[MetronomeSDK::Models::Tier]
-                ) -> ::Array[MetronomeSDK::Models::Tier]
+                  ::Array[MetronomeSDK::Tier]
+                ) -> ::Array[MetronomeSDK::Tier]
 
                 def initialize: (
                   rate_type: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse::Data::CommitRate::rate_type,
                   ?price: Float,
-                  ?tiers: ::Array[MetronomeSDK::Models::Tier]
+                  ?tiers: ::Array[MetronomeSDK::Tier]
                 ) -> void
-
-                def to_hash: -> MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse::Data::commit_rate
 
                 type rate_type =
                   :FLAT | :PERCENTAGE | :SUBSCRIPTION | :TIERED | :CUSTOM
