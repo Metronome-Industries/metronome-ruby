@@ -2,25 +2,23 @@ module MetronomeSDK
   module Models
     module V1
       type usage_ingest_params =
-        { usage: ::Array[MetronomeSDK::Models::V1::UsageIngestParams::Usage] }
+        { usage: ::Array[MetronomeSDK::V1::UsageIngestParams::Usage] }
         & MetronomeSDK::Internal::Type::request_parameters
 
       class UsageIngestParams < MetronomeSDK::Internal::Type::BaseModel
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
-        attr_reader usage: ::Array[MetronomeSDK::Models::V1::UsageIngestParams::Usage]?
+        attr_reader usage: ::Array[MetronomeSDK::V1::UsageIngestParams::Usage]?
 
         def usage=: (
-          ::Array[MetronomeSDK::Models::V1::UsageIngestParams::Usage]
-        ) -> ::Array[MetronomeSDK::Models::V1::UsageIngestParams::Usage]
+          ::Array[MetronomeSDK::V1::UsageIngestParams::Usage]
+        ) -> ::Array[MetronomeSDK::V1::UsageIngestParams::Usage]
 
         def initialize: (
-          ?usage: ::Array[MetronomeSDK::Models::V1::UsageIngestParams::Usage],
+          ?usage: ::Array[MetronomeSDK::V1::UsageIngestParams::Usage],
           ?request_options: MetronomeSDK::request_opts
         ) -> void
-
-        def to_hash: -> MetronomeSDK::Models::V1::usage_ingest_params
 
         type usage =
           {
@@ -51,8 +49,6 @@ module MetronomeSDK
             transaction_id: String,
             ?properties: ::Hash[Symbol, top]
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::UsageIngestParams::usage
         end
       end
     end

@@ -15,8 +15,8 @@ module MetronomeSDK
 
         # @!attribute entity
         #
-        #   @return [Symbol, MetronomeSDK::Models::V1::CustomFieldAddKeyParams::Entity]
-        required :entity, enum: -> { MetronomeSDK::Models::V1::CustomFieldAddKeyParams::Entity }
+        #   @return [Symbol, MetronomeSDK::V1::CustomFieldAddKeyParams::Entity]
+        required :entity, enum: -> { MetronomeSDK::V1::CustomFieldAddKeyParams::Entity }
 
         # @!attribute key
         #
@@ -25,7 +25,7 @@ module MetronomeSDK
 
         # @!method initialize(enforce_uniqueness:, entity:, key:, request_options: {})
         #   @param enforce_uniqueness [Boolean]
-        #   @param entity [Symbol, MetronomeSDK::Models::V1::CustomFieldAddKeyParams::Entity]
+        #   @param entity [Symbol, MetronomeSDK::V1::CustomFieldAddKeyParams::Entity]
         #   @param key [String]
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 

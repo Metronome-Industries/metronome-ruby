@@ -5,35 +5,50 @@ module MetronomeSDK
     module V1
       module Customers
         class BillingConfigRetrieveResponse < MetronomeSDK::Internal::Type::BaseModel
-          sig { returns(MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data) }
+          OrHash =
+            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
+          sig do
+            returns(
+              MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data
+            )
+          end
           attr_reader :data
 
           sig do
             params(
-              data: T.any(
-                MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data,
-                MetronomeSDK::Internal::AnyHash
-              )
-            )
-              .void
+              data:
+                MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::OrHash
+            ).void
           end
           attr_writer :data
 
           sig do
             params(
-              data: T.any(
-                MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data,
-                MetronomeSDK::Internal::AnyHash
-              )
-            )
-              .returns(T.attached_class)
+              data:
+                MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::OrHash
+            ).returns(T.attached_class)
           end
-          def self.new(data:); end
+          def self.new(data:)
+          end
 
-          sig { override.returns({data: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                data:
+                  MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data
+              }
+            )
+          end
+          def to_hash
+          end
 
           class Data < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+              end
+
             # Contract expiration date for the customer. The expected format is RFC 3339 and
             # can be retrieved from
             # [AWS's GetEntitlements API](https://docs.aws.amazon.com/marketplaceentitlement/latest/APIReference/API_GetEntitlements.html).
@@ -60,9 +75,9 @@ module MetronomeSDK
 
             sig do
               params(
-                aws_region: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::AwsRegion::OrSymbol
-              )
-                .void
+                aws_region:
+                  MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::AwsRegion::OrSymbol
+              ).void
             end
             attr_writer :aws_region
 
@@ -101,9 +116,9 @@ module MetronomeSDK
 
             sig do
               params(
-                azure_subscription_status: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::AzureSubscriptionStatus::OrSymbol
-              )
-                .void
+                azure_subscription_status:
+                  MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::AzureSubscriptionStatus::OrSymbol
+              ).void
             end
             attr_writer :azure_subscription_status
 
@@ -124,9 +139,9 @@ module MetronomeSDK
 
             sig do
               params(
-                stripe_collection_method: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::StripeCollectionMethod::OrSymbol
-              )
-                .void
+                stripe_collection_method:
+                  MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::StripeCollectionMethod::OrSymbol
+              ).void
             end
             attr_writer :stripe_collection_method
 
@@ -134,15 +149,17 @@ module MetronomeSDK
               params(
                 aws_expiration_date: Time,
                 aws_product_code: String,
-                aws_region: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::AwsRegion::OrSymbol,
+                aws_region:
+                  MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::AwsRegion::OrSymbol,
                 azure_expiration_date: Time,
                 azure_plan_id: String,
                 azure_start_date: Time,
-                azure_subscription_status: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::AzureSubscriptionStatus::OrSymbol,
+                azure_subscription_status:
+                  MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::AzureSubscriptionStatus::OrSymbol,
                 billing_provider_customer_id: String,
-                stripe_collection_method: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::StripeCollectionMethod::OrSymbol
-              )
-                .returns(T.attached_class)
+                stripe_collection_method:
+                  MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::StripeCollectionMethod::OrSymbol
+              ).returns(T.attached_class)
             end
             def self.new(
               # Contract expiration date for the customer. The expected format is RFC 3339 and
@@ -163,30 +180,40 @@ module MetronomeSDK
               azure_subscription_status: nil,
               billing_provider_customer_id: nil,
               stripe_collection_method: nil
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    aws_expiration_date: Time,
-                    aws_product_code: String,
-                    aws_region: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::AwsRegion::TaggedSymbol,
-                    azure_expiration_date: Time,
-                    azure_plan_id: String,
-                    azure_start_date: Time,
-                    azure_subscription_status: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::AzureSubscriptionStatus::TaggedSymbol,
-                    billing_provider_customer_id: String,
-                    stripe_collection_method: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::StripeCollectionMethod::TaggedSymbol
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  aws_expiration_date: Time,
+                  aws_product_code: String,
+                  aws_region:
+                    MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::AwsRegion::TaggedSymbol,
+                  azure_expiration_date: Time,
+                  azure_plan_id: String,
+                  azure_start_date: Time,
+                  azure_subscription_status:
+                    MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::AzureSubscriptionStatus::TaggedSymbol,
+                  billing_provider_customer_id: String,
+                  stripe_collection_method:
+                    MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::StripeCollectionMethod::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
 
             module AwsRegion
               extend MetronomeSDK::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias { T.all(Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::AwsRegion) }
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::AwsRegion
+                  )
+                end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               AF_SOUTH_1 =
@@ -316,12 +343,14 @@ module MetronomeSDK
                 )
 
               sig do
-                override
-                  .returns(
-                    T::Array[MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::AwsRegion::TaggedSymbol]
-                  )
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::AwsRegion::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
 
             module AzureSubscriptionStatus
@@ -329,7 +358,10 @@ module MetronomeSDK
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::AzureSubscriptionStatus)
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::AzureSubscriptionStatus
+                  )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -355,14 +387,14 @@ module MetronomeSDK
                 )
 
               sig do
-                override
-                  .returns(
-                    T::Array[
-                      MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::AzureSubscriptionStatus::TaggedSymbol
-                    ]
-                  )
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::AzureSubscriptionStatus::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
 
             module StripeCollectionMethod
@@ -370,7 +402,10 @@ module MetronomeSDK
 
               TaggedSymbol =
                 T.type_alias do
-                  T.all(Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::StripeCollectionMethod)
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::StripeCollectionMethod
+                  )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -386,14 +421,14 @@ module MetronomeSDK
                 )
 
               sig do
-                override
-                  .returns(
-                    T::Array[
-                      MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::StripeCollectionMethod::TaggedSymbol
-                    ]
-                  )
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::StripeCollectionMethod::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
           end
         end

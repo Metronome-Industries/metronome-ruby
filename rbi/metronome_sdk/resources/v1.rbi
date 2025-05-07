@@ -44,7 +44,8 @@ module MetronomeSDK
 
       # @api private
       sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

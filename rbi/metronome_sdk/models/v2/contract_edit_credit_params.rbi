@@ -7,6 +7,9 @@ module MetronomeSDK
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
         # ID of the credit to edit
         sig { returns(String) }
         attr_accessor :credit_id
@@ -15,14 +18,20 @@ module MetronomeSDK
         sig { returns(String) }
         attr_accessor :customer_id
 
-        sig { returns(T.nilable(MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule)) }
+        sig do
+          returns(
+            T.nilable(
+              MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule
+            )
+          )
+        end
         attr_reader :access_schedule
 
         sig do
           params(
-            access_schedule: T.any(MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule, MetronomeSDK::Internal::AnyHash)
-          )
-            .void
+            access_schedule:
+              MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::OrHash
+          ).void
         end
         attr_writer :access_schedule
 
@@ -46,13 +55,13 @@ module MetronomeSDK
           params(
             credit_id: String,
             customer_id: String,
-            access_schedule: T.any(MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule, MetronomeSDK::Internal::AnyHash),
+            access_schedule:
+              MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::OrHash,
             applicable_product_ids: T.nilable(T::Array[String]),
             applicable_product_tags: T.nilable(T::Array[String]),
             product_id: String,
-            request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # ID of the credit to edit
@@ -68,48 +77,57 @@ module MetronomeSDK
           applicable_product_tags: nil,
           product_id: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                credit_id: String,
-                customer_id: String,
-                access_schedule: MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule,
-                applicable_product_ids: T.nilable(T::Array[String]),
-                applicable_product_tags: T.nilable(T::Array[String]),
-                product_id: String,
-                request_options: MetronomeSDK::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              credit_id: String,
+              customer_id: String,
+              access_schedule:
+                MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule,
+              applicable_product_ids: T.nilable(T::Array[String]),
+              applicable_product_tags: T.nilable(T::Array[String]),
+              product_id: String,
+              request_options: MetronomeSDK::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
 
         class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
           sig do
             returns(
-              T.nilable(T::Array[MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::AddScheduleItem])
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::AddScheduleItem
+                ]
+              )
             )
           end
           attr_reader :add_schedule_items
 
           sig do
             params(
-              add_schedule_items: T::Array[
-                T.any(
-                  MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::AddScheduleItem,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              ]
-            )
-              .void
+              add_schedule_items:
+                T::Array[
+                  MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::AddScheduleItem::OrHash
+                ]
+            ).void
           end
           attr_writer :add_schedule_items
 
           sig do
             returns(
               T.nilable(
-                T::Array[MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::RemoveScheduleItem]
+                T::Array[
+                  MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::RemoveScheduleItem
+                ]
               )
             )
           end
@@ -117,21 +135,20 @@ module MetronomeSDK
 
           sig do
             params(
-              remove_schedule_items: T::Array[
-                T.any(
-                  MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::RemoveScheduleItem,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              ]
-            )
-              .void
+              remove_schedule_items:
+                T::Array[
+                  MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::RemoveScheduleItem::OrHash
+                ]
+            ).void
           end
           attr_writer :remove_schedule_items
 
           sig do
             returns(
               T.nilable(
-                T::Array[MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::UpdateScheduleItem]
+                T::Array[
+                  MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::UpdateScheduleItem
+                ]
               )
             )
           end
@@ -139,55 +156,64 @@ module MetronomeSDK
 
           sig do
             params(
-              update_schedule_items: T::Array[
-                T.any(
-                  MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::UpdateScheduleItem,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              ]
-            )
-              .void
+              update_schedule_items:
+                T::Array[
+                  MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::UpdateScheduleItem::OrHash
+                ]
+            ).void
           end
           attr_writer :update_schedule_items
 
           sig do
             params(
-              add_schedule_items: T::Array[
-                T.any(
-                  MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::AddScheduleItem,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              ],
-              remove_schedule_items: T::Array[
-                T.any(
-                  MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::RemoveScheduleItem,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              ],
-              update_schedule_items: T::Array[
-                T.any(
-                  MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::UpdateScheduleItem,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              ]
-            )
-              .returns(T.attached_class)
+              add_schedule_items:
+                T::Array[
+                  MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::AddScheduleItem::OrHash
+                ],
+              remove_schedule_items:
+                T::Array[
+                  MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::RemoveScheduleItem::OrHash
+                ],
+              update_schedule_items:
+                T::Array[
+                  MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::UpdateScheduleItem::OrHash
+                ]
+            ).returns(T.attached_class)
           end
-          def self.new(add_schedule_items: nil, remove_schedule_items: nil, update_schedule_items: nil); end
+          def self.new(
+            add_schedule_items: nil,
+            remove_schedule_items: nil,
+            update_schedule_items: nil
+          )
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  add_schedule_items: T::Array[MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::AddScheduleItem],
-                  remove_schedule_items: T::Array[MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::RemoveScheduleItem],
-                  update_schedule_items: T::Array[MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::UpdateScheduleItem]
-                }
-              )
+            override.returns(
+              {
+                add_schedule_items:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::AddScheduleItem
+                  ],
+                remove_schedule_items:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::RemoveScheduleItem
+                  ],
+                update_schedule_items:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::UpdateScheduleItem
+                  ]
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class AddScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+              end
+
             sig { returns(Float) }
             attr_accessor :amount
 
@@ -197,25 +223,49 @@ module MetronomeSDK
             sig { returns(Time) }
             attr_accessor :starting_at
 
-            sig { params(amount: Float, ending_before: Time, starting_at: Time).returns(T.attached_class) }
-            def self.new(amount:, ending_before:, starting_at:); end
+            sig do
+              params(
+                amount: Float,
+                ending_before: Time,
+                starting_at: Time
+              ).returns(T.attached_class)
+            end
+            def self.new(amount:, ending_before:, starting_at:)
+            end
 
-            sig { override.returns({amount: Float, ending_before: Time, starting_at: Time}) }
-            def to_hash; end
+            sig do
+              override.returns(
+                { amount: Float, ending_before: Time, starting_at: Time }
+              )
+            end
+            def to_hash
+            end
           end
 
           class RemoveScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+              end
+
             sig { returns(String) }
             attr_accessor :id
 
             sig { params(id: String).returns(T.attached_class) }
-            def self.new(id:); end
+            def self.new(id:)
+            end
 
-            sig { override.returns({id: String}) }
-            def to_hash; end
+            sig { override.returns({ id: String }) }
+            def to_hash
+            end
           end
 
           class UpdateScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+              end
+
             sig { returns(String) }
             attr_accessor :id
 
@@ -245,10 +295,21 @@ module MetronomeSDK
                 starting_at: Time
               ).returns(T.attached_class)
             end
-            def self.new(id:, amount: nil, ending_before: nil, starting_at: nil); end
+            def self.new(id:, amount: nil, ending_before: nil, starting_at: nil)
+            end
 
-            sig { override.returns({id: String, amount: Float, ending_before: Time, starting_at: Time}) }
-            def to_hash; end
+            sig do
+              override.returns(
+                {
+                  id: String,
+                  amount: Float,
+                  ending_before: Time,
+                  starting_at: Time
+                }
+              )
+            end
+            def to_hash
+            end
           end
         end
       end

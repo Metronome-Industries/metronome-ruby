@@ -13,9 +13,8 @@ module MetronomeSDK
             as_of_date: Time,
             include_balance: T::Boolean,
             include_ledgers: T::Boolean,
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .returns(MetronomeSDK::Models::V2::ContractRetrieveResponse)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V2::ContractRetrieveResponse)
         end
         def retrieve(
           contract_id:,
@@ -30,7 +29,9 @@ module MetronomeSDK
           # query to be slower. Cannot be used with as_of_date parameter.
           include_ledgers: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # List all contracts for a customer. New clients should use this endpoint rather
         # than the v1 endpoint.
         sig do
@@ -41,9 +42,8 @@ module MetronomeSDK
             include_balance: T::Boolean,
             include_ledgers: T::Boolean,
             starting_at: Time,
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .returns(MetronomeSDK::Models::V2::ContractListResponse)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V2::ContractListResponse)
         end
         def list(
           customer_id:,
@@ -62,56 +62,82 @@ module MetronomeSDK
           # this date. This cannot be provided if covering_date filter is provided.
           starting_at: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Edit a contract. Contract editing must be enabled to use this endpoint.
         sig do
           params(
             contract_id: String,
             customer_id: String,
-            add_commits: T::Array[T.any(MetronomeSDK::Models::V2::ContractEditParams::AddCommit, MetronomeSDK::Internal::AnyHash)],
-            add_credits: T::Array[T.any(MetronomeSDK::Models::V2::ContractEditParams::AddCredit, MetronomeSDK::Internal::AnyHash)],
-            add_discounts: T::Array[T.any(MetronomeSDK::Models::V2::ContractEditParams::AddDiscount, MetronomeSDK::Internal::AnyHash)],
-            add_overrides: T::Array[T.any(MetronomeSDK::Models::V2::ContractEditParams::AddOverride, MetronomeSDK::Internal::AnyHash)],
-            add_professional_services: T::Array[
-              T.any(
-                MetronomeSDK::Models::V2::ContractEditParams::AddProfessionalService,
-                MetronomeSDK::Internal::AnyHash
-              )
-            ],
-            add_recurring_commits: T::Array[T.any(MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCommit, MetronomeSDK::Internal::AnyHash)],
-            add_recurring_credits: T::Array[T.any(MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCredit, MetronomeSDK::Internal::AnyHash)],
-            add_reseller_royalties: T::Array[T.any(MetronomeSDK::Models::V2::ContractEditParams::AddResellerRoyalty, MetronomeSDK::Internal::AnyHash)],
-            add_scheduled_charges: T::Array[T.any(MetronomeSDK::Models::V2::ContractEditParams::AddScheduledCharge, MetronomeSDK::Internal::AnyHash)],
-            add_spend_threshold_configuration: T.any(
-              MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration,
-              MetronomeSDK::Internal::AnyHash
-            ),
+            add_commits:
+              T::Array[MetronomeSDK::V2::ContractEditParams::AddCommit::OrHash],
+            add_credits:
+              T::Array[MetronomeSDK::V2::ContractEditParams::AddCredit::OrHash],
+            add_discounts:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::AddDiscount::OrHash
+              ],
+            add_overrides:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::AddOverride::OrHash
+              ],
+            add_professional_services:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::AddProfessionalService::OrHash
+              ],
+            add_recurring_commits:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::OrHash
+              ],
+            add_recurring_credits:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::OrHash
+              ],
+            add_reseller_royalties:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::AddResellerRoyalty::OrHash
+              ],
+            add_scheduled_charges:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::AddScheduledCharge::OrHash
+              ],
+            add_spend_threshold_configuration:
+              MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::OrHash,
             allow_contract_ending_before_finalized_invoice: T::Boolean,
-            archive_commits: T::Array[T.any(MetronomeSDK::Models::V2::ContractEditParams::ArchiveCommit, MetronomeSDK::Internal::AnyHash)],
-            archive_credits: T::Array[T.any(MetronomeSDK::Models::V2::ContractEditParams::ArchiveCredit, MetronomeSDK::Internal::AnyHash)],
-            archive_scheduled_charges: T::Array[
-              T.any(
-                MetronomeSDK::Models::V2::ContractEditParams::ArchiveScheduledCharge,
-                MetronomeSDK::Internal::AnyHash
-              )
-            ],
-            remove_overrides: T::Array[T.any(MetronomeSDK::Models::V2::ContractEditParams::RemoveOverride, MetronomeSDK::Internal::AnyHash)],
-            update_commits: T::Array[T.any(MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit, MetronomeSDK::Internal::AnyHash)],
+            archive_commits:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::ArchiveCommit::OrHash
+              ],
+            archive_credits:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::ArchiveCredit::OrHash
+              ],
+            archive_scheduled_charges:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::ArchiveScheduledCharge::OrHash
+              ],
+            remove_overrides:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::RemoveOverride::OrHash
+              ],
+            update_commits:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::UpdateCommit::OrHash
+              ],
             update_contract_end_date: Time,
-            update_credits: T::Array[T.any(MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit, MetronomeSDK::Internal::AnyHash)],
-            update_scheduled_charges: T::Array[
-              T.any(
-                MetronomeSDK::Models::V2::ContractEditParams::UpdateScheduledCharge,
-                MetronomeSDK::Internal::AnyHash
-              )
-            ],
-            update_spend_threshold_configuration: T.any(
-              MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration,
-              MetronomeSDK::Internal::AnyHash
-            ),
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .returns(MetronomeSDK::Models::V2::ContractEditResponse)
+            update_credits:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::UpdateCredit::OrHash
+              ],
+            update_scheduled_charges:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::UpdateScheduledCharge::OrHash
+              ],
+            update_spend_threshold_configuration:
+              MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::OrHash,
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V2::ContractEditResponse)
         end
         def edit(
           # ID of the contract being edited
@@ -149,25 +175,25 @@ module MetronomeSDK
           update_scheduled_charges: nil,
           update_spend_threshold_configuration: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Edit a customer or contract commit. Contract commits can only be edited using
         # this endpoint if contract editing is enabled.
         sig do
           params(
             commit_id: String,
             customer_id: String,
-            access_schedule: T.any(MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule, MetronomeSDK::Internal::AnyHash),
+            access_schedule:
+              MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::OrHash,
             applicable_product_ids: T.nilable(T::Array[String]),
             applicable_product_tags: T.nilable(T::Array[String]),
             invoice_contract_id: String,
-            invoice_schedule: T.any(
-              MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule,
-              MetronomeSDK::Internal::AnyHash
-            ),
+            invoice_schedule:
+              MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::OrHash,
             product_id: String,
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .returns(MetronomeSDK::Models::V2::ContractEditCommitResponse)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V2::ContractEditCommitResponse)
         end
         def edit_commit(
           # ID of the commit to edit
@@ -186,20 +212,22 @@ module MetronomeSDK
           invoice_schedule: nil,
           product_id: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Edit a customer or contract credit. Contract credits can only be edited using
         # this endpoint if contract editing is enabled.
         sig do
           params(
             credit_id: String,
             customer_id: String,
-            access_schedule: T.any(MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule, MetronomeSDK::Internal::AnyHash),
+            access_schedule:
+              MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::OrHash,
             applicable_product_ids: T.nilable(T::Array[String]),
             applicable_product_tags: T.nilable(T::Array[String]),
             product_id: String,
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .returns(MetronomeSDK::Models::V2::ContractEditCreditResponse)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V2::ContractEditCreditResponse)
         end
         def edit_credit(
           # ID of the credit to edit
@@ -215,18 +243,25 @@ module MetronomeSDK
           applicable_product_tags: nil,
           product_id: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Get the edit history of a specific contract. Contract editing must be enabled to
         # use this endpoint.
         sig do
-          params(contract_id: String, customer_id: String, request_options: MetronomeSDK::RequestOpts)
-            .returns(MetronomeSDK::Models::V2::ContractGetEditHistoryResponse)
+          params(
+            contract_id: String,
+            customer_id: String,
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V2::ContractGetEditHistoryResponse)
         end
-        def get_edit_history(contract_id:, customer_id:, request_options: {}); end
+        def get_edit_history(contract_id:, customer_id:, request_options: {})
+        end
 
         # @api private
         sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

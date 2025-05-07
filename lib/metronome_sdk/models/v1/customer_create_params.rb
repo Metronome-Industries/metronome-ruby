@@ -16,8 +16,8 @@ module MetronomeSDK
 
         # @!attribute billing_config
         #
-        #   @return [MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig, nil]
-        optional :billing_config, -> { MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig }
+        #   @return [MetronomeSDK::V1::CustomerCreateParams::BillingConfig, nil]
+        optional :billing_config, -> { MetronomeSDK::V1::CustomerCreateParams::BillingConfig }
 
         # @!attribute custom_fields
         #
@@ -26,9 +26,11 @@ module MetronomeSDK
 
         # @!attribute customer_billing_provider_configurations
         #
-        #   @return [Array<MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration>, nil]
+        #   @return [Array<MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration>, nil]
         optional :customer_billing_provider_configurations,
-                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration] }
+                 -> {
+                   MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration]
+                 }
 
         # @!attribute external_id
         #   (deprecated, use ingest_aliases instead) an alias that can be used to refer to
@@ -49,14 +51,13 @@ module MetronomeSDK
         #
         #   @param name [String] This will be truncated to 160 characters if the provided name is longer.
         #
-        #   @param billing_config [MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig]
+        #   @param billing_config [MetronomeSDK::V1::CustomerCreateParams::BillingConfig]
         #
         #   @param custom_fields [Hash{Symbol=>String}]
         #
-        #   @param customer_billing_provider_configurations [Array<MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration>]
+        #   @param customer_billing_provider_configurations [Array<MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration>]
         #
         #   @param external_id [String] (deprecated, use ingest_aliases instead) an alias that can be used to refer to t
-        #   ...
         #
         #   @param ingest_aliases [Array<String>] Aliases that can be used to refer to this customer in usage events
         #
@@ -70,9 +71,9 @@ module MetronomeSDK
 
           # @!attribute billing_provider_type
           #
-          #   @return [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::BillingProviderType]
+          #   @return [Symbol, MetronomeSDK::V1::CustomerCreateParams::BillingConfig::BillingProviderType]
           required :billing_provider_type,
-                   enum: -> { MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::BillingProviderType }
+                   enum: -> { MetronomeSDK::V1::CustomerCreateParams::BillingConfig::BillingProviderType }
 
           # @!attribute aws_is_subscription_product
           #   True if the aws_product_code is a SAAS subscription product, false otherwise.
@@ -87,30 +88,29 @@ module MetronomeSDK
 
           # @!attribute aws_region
           #
-          #   @return [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::AwsRegion, nil]
-          optional :aws_region,
-                   enum: -> { MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::AwsRegion }
+          #   @return [Symbol, MetronomeSDK::V1::CustomerCreateParams::BillingConfig::AwsRegion, nil]
+          optional :aws_region, enum: -> { MetronomeSDK::V1::CustomerCreateParams::BillingConfig::AwsRegion }
 
           # @!attribute stripe_collection_method
           #
-          #   @return [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::StripeCollectionMethod, nil]
+          #   @return [Symbol, MetronomeSDK::V1::CustomerCreateParams::BillingConfig::StripeCollectionMethod, nil]
           optional :stripe_collection_method,
-                   enum: -> { MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::StripeCollectionMethod }
+                   enum: -> { MetronomeSDK::V1::CustomerCreateParams::BillingConfig::StripeCollectionMethod }
 
           # @!method initialize(billing_provider_customer_id:, billing_provider_type:, aws_is_subscription_product: nil, aws_product_code: nil, aws_region: nil, stripe_collection_method: nil)
           #   @param billing_provider_customer_id [String]
           #
-          #   @param billing_provider_type [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::BillingProviderType]
+          #   @param billing_provider_type [Symbol, MetronomeSDK::V1::CustomerCreateParams::BillingConfig::BillingProviderType]
           #
           #   @param aws_is_subscription_product [Boolean] True if the aws_product_code is a SAAS subscription product, false otherwise.
           #
           #   @param aws_product_code [String]
           #
-          #   @param aws_region [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::AwsRegion]
+          #   @param aws_region [Symbol, MetronomeSDK::V1::CustomerCreateParams::BillingConfig::AwsRegion]
           #
-          #   @param stripe_collection_method [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::StripeCollectionMethod]
+          #   @param stripe_collection_method [Symbol, MetronomeSDK::V1::CustomerCreateParams::BillingConfig::StripeCollectionMethod]
 
-          # @see MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig#billing_provider_type
+          # @see MetronomeSDK::V1::CustomerCreateParams::BillingConfig#billing_provider_type
           module BillingProviderType
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -127,7 +127,7 @@ module MetronomeSDK
             #   @return [Array<Symbol>]
           end
 
-          # @see MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig#aws_region
+          # @see MetronomeSDK::V1::CustomerCreateParams::BillingConfig#aws_region
           module AwsRegion
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -161,7 +161,7 @@ module MetronomeSDK
             #   @return [Array<Symbol>]
           end
 
-          # @see MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig#stripe_collection_method
+          # @see MetronomeSDK::V1::CustomerCreateParams::BillingConfig#stripe_collection_method
           module StripeCollectionMethod
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -177,9 +177,11 @@ module MetronomeSDK
           # @!attribute billing_provider
           #   The billing provider set for this configuration.
           #
-          #   @return [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::BillingProvider]
+          #   @return [Symbol, MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::BillingProvider]
           required :billing_provider,
-                   enum: -> { MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::BillingProvider }
+                   enum: -> {
+                     MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::BillingProvider
+                   }
 
           # @!attribute configuration
           #   Configuration for the billing provider. The structure of this object is specific
@@ -194,9 +196,11 @@ module MetronomeSDK
           #   The method to use for delivering invoices to this customer. If not provided, the
           #   `delivery_method_id` must be provided.
           #
-          #   @return [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod, nil]
+          #   @return [Symbol, MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod, nil]
           optional :delivery_method,
-                   enum: -> { MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod }
+                   enum: -> {
+                     MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod
+                   }
 
           # @!attribute delivery_method_id
           #   ID of the delivery method to use for this customer. If not provided, the
@@ -207,23 +211,20 @@ module MetronomeSDK
 
           # @!method initialize(billing_provider:, configuration: nil, delivery_method: nil, delivery_method_id: nil)
           #   Some parameter documentations has been truncated, see
-          #   {MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration}
+          #   {MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration}
           #   for more details.
           #
-          #   @param billing_provider [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::BillingProvider] The billing provider set for this configuration.
+          #   @param billing_provider [Symbol, MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::BillingProvider] The billing provider set for this configuration.
           #
           #   @param configuration [Hash{Symbol=>Object}] Configuration for the billing provider. The structure of this object is specific
-          #   ...
           #
-          #   @param delivery_method [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod] The method to use for delivering invoices to this customer. If not provided, the
-          #   ...
+          #   @param delivery_method [Symbol, MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod] The method to use for delivering invoices to this customer. If not provided, the
           #
           #   @param delivery_method_id [String] ID of the delivery method to use for this customer. If not provided, the `delive
-          #   ...
 
           # The billing provider set for this configuration.
           #
-          # @see MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration#billing_provider
+          # @see MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration#billing_provider
           module BillingProvider
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -240,7 +241,7 @@ module MetronomeSDK
           # The method to use for delivering invoices to this customer. If not provided, the
           # `delivery_method_id` must be provided.
           #
-          # @see MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration#delivery_method
+          # @see MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration#delivery_method
           module DeliveryMethod
             extend MetronomeSDK::Internal::Type::Enum
 

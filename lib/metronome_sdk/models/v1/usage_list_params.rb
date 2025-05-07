@@ -23,8 +23,8 @@ module MetronomeSDK
         #   segmented into daily or hourly aggregates. A window_size of "none" will return a
         #   single usage aggregate for the entirety of the specified period.
         #
-        #   @return [Symbol, MetronomeSDK::Models::V1::UsageListParams::WindowSize]
-        required :window_size, enum: -> { MetronomeSDK::Models::V1::UsageListParams::WindowSize }
+        #   @return [Symbol, MetronomeSDK::V1::UsageListParams::WindowSize]
+        required :window_size, enum: -> { MetronomeSDK::V1::UsageListParams::WindowSize }
 
         # @!attribute next_page
         #   Cursor that indicates where the next page of results should start.
@@ -36,9 +36,11 @@ module MetronomeSDK
         #   A list of billable metrics to fetch usage for. If absent, all billable metrics
         #   will be returned.
         #
-        #   @return [Array<MetronomeSDK::Models::V1::UsageListParams::BillableMetric>, nil]
+        #   @return [Array<MetronomeSDK::V1::UsageListParams::BillableMetric>, nil]
         optional :billable_metrics,
-                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::UsageListParams::BillableMetric] }
+                 -> {
+                   MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::UsageListParams::BillableMetric]
+                 }
 
         # @!attribute customer_ids
         #   A list of Metronome customer IDs to fetch usage for. If absent, usage for all
@@ -55,16 +57,13 @@ module MetronomeSDK
         #
         #   @param starting_on [Time]
         #
-        #   @param window_size [Symbol, MetronomeSDK::Models::V1::UsageListParams::WindowSize] A window_size of "day" or "hour" will return the usage for the specified period
-        #   ...
+        #   @param window_size [Symbol, MetronomeSDK::V1::UsageListParams::WindowSize] A window_size of "day" or "hour" will return the usage for the specified period
         #
         #   @param next_page [String] Cursor that indicates where the next page of results should start.
         #
-        #   @param billable_metrics [Array<MetronomeSDK::Models::V1::UsageListParams::BillableMetric>] A list of billable metrics to fetch usage for. If absent, all billable metrics w
-        #   ...
+        #   @param billable_metrics [Array<MetronomeSDK::V1::UsageListParams::BillableMetric>] A list of billable metrics to fetch usage for. If absent, all billable metrics w
         #
         #   @param customer_ids [Array<String>] A list of Metronome customer IDs to fetch usage for. If absent, usage for all cu
-        #   ...
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 
@@ -90,14 +89,14 @@ module MetronomeSDK
 
           # @!attribute group_by
           #
-          #   @return [MetronomeSDK::Models::V1::UsageListParams::BillableMetric::GroupBy, nil]
-          optional :group_by, -> { MetronomeSDK::Models::V1::UsageListParams::BillableMetric::GroupBy }
+          #   @return [MetronomeSDK::V1::UsageListParams::BillableMetric::GroupBy, nil]
+          optional :group_by, -> { MetronomeSDK::V1::UsageListParams::BillableMetric::GroupBy }
 
           # @!method initialize(id:, group_by: nil)
           #   @param id [String]
-          #   @param group_by [MetronomeSDK::Models::V1::UsageListParams::BillableMetric::GroupBy]
+          #   @param group_by [MetronomeSDK::V1::UsageListParams::BillableMetric::GroupBy]
 
-          # @see MetronomeSDK::Models::V1::UsageListParams::BillableMetric#group_by
+          # @see MetronomeSDK::V1::UsageListParams::BillableMetric#group_by
           class GroupBy < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute key
             #   The name of the group_by key to use
@@ -114,13 +113,11 @@ module MetronomeSDK
 
             # @!method initialize(key:, values: nil)
             #   Some parameter documentations has been truncated, see
-            #   {MetronomeSDK::Models::V1::UsageListParams::BillableMetric::GroupBy} for more
-            #   details.
+            #   {MetronomeSDK::V1::UsageListParams::BillableMetric::GroupBy} for more details.
             #
             #   @param key [String] The name of the group_by key to use
             #
             #   @param values [Array<String>] Values of the group_by key to return in the query. If this field is omitted, all
-            #   ...
           end
         end
       end

@@ -19,8 +19,6 @@ module MetronomeSDK
             customer_id: String,
             ?request_options: MetronomeSDK::request_opts
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::Customers::alert_retrieve_params
         end
       end
     end

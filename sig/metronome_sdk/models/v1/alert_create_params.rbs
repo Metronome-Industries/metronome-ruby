@@ -9,10 +9,10 @@ module MetronomeSDK
           billable_metric_id: String,
           credit_grant_type_filters: ::Array[String],
           credit_type_id: String,
-          custom_field_filters: ::Array[MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter],
+          custom_field_filters: ::Array[MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter],
           customer_id: String,
           evaluate_on_create: bool,
-          group_key_filter: MetronomeSDK::Models::V1::AlertCreateParams::GroupKeyFilter,
+          group_key_filter: MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter,
           invoice_types_filter: ::Array[String],
           plan_id: String,
           uniqueness_key: String
@@ -41,11 +41,11 @@ module MetronomeSDK
 
         def credit_type_id=: (String) -> String
 
-        attr_reader custom_field_filters: ::Array[MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter]?
+        attr_reader custom_field_filters: ::Array[MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter]?
 
         def custom_field_filters=: (
-          ::Array[MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter]
-        ) -> ::Array[MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter]
+          ::Array[MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter]
+        ) -> ::Array[MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter]
 
         attr_reader customer_id: String?
 
@@ -55,11 +55,11 @@ module MetronomeSDK
 
         def evaluate_on_create=: (bool) -> bool
 
-        attr_reader group_key_filter: MetronomeSDK::Models::V1::AlertCreateParams::GroupKeyFilter?
+        attr_reader group_key_filter: MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter?
 
         def group_key_filter=: (
-          MetronomeSDK::Models::V1::AlertCreateParams::GroupKeyFilter
-        ) -> MetronomeSDK::Models::V1::AlertCreateParams::GroupKeyFilter
+          MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter
+        ) -> MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter
 
         attr_reader invoice_types_filter: ::Array[String]?
 
@@ -80,17 +80,15 @@ module MetronomeSDK
           ?billable_metric_id: String,
           ?credit_grant_type_filters: ::Array[String],
           ?credit_type_id: String,
-          ?custom_field_filters: ::Array[MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter],
+          ?custom_field_filters: ::Array[MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter],
           ?customer_id: String,
           ?evaluate_on_create: bool,
-          ?group_key_filter: MetronomeSDK::Models::V1::AlertCreateParams::GroupKeyFilter,
+          ?group_key_filter: MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter,
           ?invoice_types_filter: ::Array[String],
           ?plan_id: String,
           ?uniqueness_key: String,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
-
-        def to_hash: -> MetronomeSDK::Models::V1::alert_create_params
 
         type alert_type =
           :low_credit_balance_reached
@@ -131,25 +129,23 @@ module MetronomeSDK
 
         type custom_field_filter =
           {
-            entity: MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter::entity,
+            entity: MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter::entity,
             key: String,
             value: String
           }
 
         class CustomFieldFilter < MetronomeSDK::Internal::Type::BaseModel
-          attr_accessor entity: MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter::entity
+          attr_accessor entity: MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter::entity
 
           attr_accessor key: String
 
           attr_accessor value: String
 
           def initialize: (
-            entity: MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter::entity,
+            entity: MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter::entity,
             key: String,
             value: String
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::AlertCreateParams::custom_field_filter
 
           type entity = :Contract | :Commit | :ContractCredit
 
@@ -160,7 +156,7 @@ module MetronomeSDK
             COMMIT: :Commit
             CONTRACT_CREDIT: :ContractCredit
 
-            def self?.values: -> ::Array[MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter::entity]
+            def self?.values: -> ::Array[MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter::entity]
           end
         end
 
@@ -172,8 +168,6 @@ module MetronomeSDK
           attr_accessor value: String
 
           def initialize: (key: String, value: String) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::AlertCreateParams::group_key_filter
         end
       end
     end

@@ -12,8 +12,8 @@ module MetronomeSDK
           # @!attribute access_schedule
           #   Schedule for distributing the credit to the customer.
           #
-          #   @return [MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule]
-          required :access_schedule, -> { MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule }
+          #   @return [MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule]
+          required :access_schedule, -> { MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule }
 
           # @!attribute customer_id
           #
@@ -78,8 +78,8 @@ module MetronomeSDK
 
           # @!attribute rate_type
           #
-          #   @return [Symbol, MetronomeSDK::Models::V1::Customers::CreditCreateParams::RateType, nil]
-          optional :rate_type, enum: -> { MetronomeSDK::Models::V1::Customers::CreditCreateParams::RateType }
+          #   @return [Symbol, MetronomeSDK::V1::Customers::CreditCreateParams::RateType, nil]
+          optional :rate_type, enum: -> { MetronomeSDK::V1::Customers::CreditCreateParams::RateType }
 
           # @!attribute salesforce_opportunity_id
           #   This field's availability is dependent on your client's configuration.
@@ -100,23 +100,19 @@ module MetronomeSDK
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::Customers::CreditCreateParams} for more details.
           #
-          #   @param access_schedule [MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule] Schedule for distributing the credit to the customer.
+          #   @param access_schedule [MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule] Schedule for distributing the credit to the customer.
           #
           #   @param customer_id [String]
           #
           #   @param priority [Float] If multiple credits or commits are applicable, the one with the lower priority w
-          #   ...
           #
           #   @param product_id [String]
           #
           #   @param applicable_contract_ids [Array<String>] Which contract the credit applies to. If not provided, the credit applies to all
-          #   ...
           #
           #   @param applicable_product_ids [Array<String>] Which products the credit applies to. If both applicable_product_ids and applica
-          #   ...
           #
           #   @param applicable_product_tags [Array<String>] Which tags the credit applies to. If both applicable*product_ids and applicable*
-          #   ...
           #
           #   @param custom_fields [Hash{Symbol=>String}]
           #
@@ -126,21 +122,22 @@ module MetronomeSDK
           #
           #   @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
           #
-          #   @param rate_type [Symbol, MetronomeSDK::Models::V1::Customers::CreditCreateParams::RateType]
+          #   @param rate_type [Symbol, MetronomeSDK::V1::Customers::CreditCreateParams::RateType]
           #
           #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
           #
           #   @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a commit or credit i
-          #   ...
           #
           #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 
           class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute schedule_items
             #
-            #   @return [Array<MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem>]
+            #   @return [Array<MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem>]
             required :schedule_items,
-                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem] }
+                     -> {
+                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem]
+                     }
 
             # @!attribute credit_type_id
             #   Defaults to USD (cents) if not passed
@@ -151,7 +148,7 @@ module MetronomeSDK
             # @!method initialize(schedule_items:, credit_type_id: nil)
             #   Schedule for distributing the credit to the customer.
             #
-            #   @param schedule_items [Array<MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem>]
+            #   @param schedule_items [Array<MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem>]
             #
             #   @param credit_type_id [String] Defaults to USD (cents) if not passed
 

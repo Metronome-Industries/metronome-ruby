@@ -7,11 +7,11 @@ module MetronomeSDK
       class ContractCreateHistoricalInvoicesResponse < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute data
         #
-        #   @return [Array<MetronomeSDK::Models::V1::Customers::Invoice>]
-        required :data, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Customers::Invoice] }
+        #   @return [Array<MetronomeSDK::V1::Customers::Invoice>]
+        required :data, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice] }
 
         # @!method initialize(data:)
-        #   @param data [Array<MetronomeSDK::Models::V1::Customers::Invoice>]
+        #   @param data [Array<MetronomeSDK::V1::Customers::Invoice>]
       end
     end
   end

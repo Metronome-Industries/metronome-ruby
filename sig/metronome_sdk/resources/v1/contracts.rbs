@@ -11,33 +11,33 @@ module MetronomeSDK
         def create: (
           customer_id: String,
           starting_at: Time,
-          ?billing_provider_configuration: MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration,
-          ?commits: ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Commit],
-          ?credit_balance_threshold_configuration: MetronomeSDK::Models::V1::ContractCreateParams::CreditBalanceThresholdConfiguration,
-          ?credits: ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Credit],
+          ?billing_provider_configuration: MetronomeSDK::V1::ContractCreateParams::BillingProviderConfiguration,
+          ?commits: ::Array[MetronomeSDK::V1::ContractCreateParams::Commit],
+          ?credit_balance_threshold_configuration: MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration,
+          ?credits: ::Array[MetronomeSDK::V1::ContractCreateParams::Credit],
           ?custom_fields: ::Hash[Symbol, String],
-          ?discounts: ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Discount],
+          ?discounts: ::Array[MetronomeSDK::V1::ContractCreateParams::Discount],
           ?ending_before: Time,
           ?multiplier_override_prioritization: MetronomeSDK::Models::V1::ContractCreateParams::multiplier_override_prioritization,
           ?name: String,
           ?net_payment_terms_days: Float,
           ?netsuite_sales_order_id: String,
-          ?overrides: ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Override],
-          ?professional_services: ::Array[MetronomeSDK::Models::V1::ContractCreateParams::ProfessionalService],
+          ?overrides: ::Array[MetronomeSDK::V1::ContractCreateParams::Override],
+          ?professional_services: ::Array[MetronomeSDK::V1::ContractCreateParams::ProfessionalService],
           ?rate_card_alias: String,
           ?rate_card_id: String,
-          ?recurring_commits: ::Array[MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit],
-          ?recurring_credits: ::Array[MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit],
-          ?reseller_royalties: ::Array[MetronomeSDK::Models::V1::ContractCreateParams::ResellerRoyalty],
+          ?recurring_commits: ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCommit],
+          ?recurring_credits: ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCredit],
+          ?reseller_royalties: ::Array[MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty],
           ?salesforce_opportunity_id: String,
-          ?scheduled_charges: ::Array[MetronomeSDK::Models::V1::ContractCreateParams::ScheduledCharge],
+          ?scheduled_charges: ::Array[MetronomeSDK::V1::ContractCreateParams::ScheduledCharge],
           ?scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::ContractCreateParams::scheduled_charges_on_usage_invoices,
-          ?spend_threshold_configuration: MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration,
+          ?spend_threshold_configuration: MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration,
           ?total_contract_value: Float,
-          ?transition: MetronomeSDK::Models::V1::ContractCreateParams::Transition,
+          ?transition: MetronomeSDK::V1::ContractCreateParams::Transition,
           ?uniqueness_key: String,
-          ?usage_filter: MetronomeSDK::Models::BaseUsageFilter,
-          ?usage_statement_schedule: MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule,
+          ?usage_filter: MetronomeSDK::BaseUsageFilter,
+          ?usage_statement_schedule: MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule,
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V1::ContractCreateResponse
 
@@ -74,16 +74,16 @@ module MetronomeSDK
           contract_id: String,
           customer_id: String,
           starting_at: Time,
-          ?commits: ::Array[MetronomeSDK::Models::V1::ContractAmendParams::Commit],
-          ?credits: ::Array[MetronomeSDK::Models::V1::ContractAmendParams::Credit],
+          ?commits: ::Array[MetronomeSDK::V1::ContractAmendParams::Commit],
+          ?credits: ::Array[MetronomeSDK::V1::ContractAmendParams::Credit],
           ?custom_fields: ::Hash[Symbol, String],
-          ?discounts: ::Array[MetronomeSDK::Models::V1::ContractAmendParams::Discount],
+          ?discounts: ::Array[MetronomeSDK::V1::ContractAmendParams::Discount],
           ?netsuite_sales_order_id: String,
-          ?overrides: ::Array[MetronomeSDK::Models::V1::ContractAmendParams::Override],
-          ?professional_services: ::Array[MetronomeSDK::Models::V1::ContractAmendParams::ProfessionalService],
-          ?reseller_royalties: ::Array[MetronomeSDK::Models::V1::ContractAmendParams::ResellerRoyalty],
+          ?overrides: ::Array[MetronomeSDK::V1::ContractAmendParams::Override],
+          ?professional_services: ::Array[MetronomeSDK::V1::ContractAmendParams::ProfessionalService],
+          ?reseller_royalties: ::Array[MetronomeSDK::V1::ContractAmendParams::ResellerRoyalty],
           ?salesforce_opportunity_id: String,
-          ?scheduled_charges: ::Array[MetronomeSDK::Models::V1::ContractAmendParams::ScheduledCharge],
+          ?scheduled_charges: ::Array[MetronomeSDK::V1::ContractAmendParams::ScheduledCharge],
           ?total_contract_value: Float,
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V1::ContractAmendResponse
@@ -96,7 +96,7 @@ module MetronomeSDK
         ) -> MetronomeSDK::Models::V1::ContractArchiveResponse
 
         def create_historical_invoices: (
-          invoices: ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice],
+          invoices: ::Array[MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice],
           preview: bool,
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse
@@ -121,7 +121,7 @@ module MetronomeSDK
           ?limit: Integer,
           ?next_page: String,
           ?at: Time,
-          ?selectors: ::Array[MetronomeSDK::Models::V1::ContractRetrieveRateScheduleParams::Selector],
+          ?selectors: ::Array[MetronomeSDK::V1::ContractRetrieveRateScheduleParams::Selector],
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse
 
@@ -129,7 +129,7 @@ module MetronomeSDK
           contract_id: String,
           customer_id: String,
           issued_at: Time,
-          line_items: ::Array[MetronomeSDK::Models::V1::ContractScheduleProServicesInvoiceParams::LineItem],
+          line_items: ::Array[MetronomeSDK::V1::ContractScheduleProServicesInvoiceParams::LineItem],
           ?netsuite_invoice_header_end: Time,
           ?netsuite_invoice_header_start: Time,
           ?request_options: MetronomeSDK::request_opts

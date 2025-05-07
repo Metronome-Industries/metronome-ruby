@@ -6,6 +6,11 @@ module MetronomeSDK
       module Contracts
         module RateCards
           class RateListResponse < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+              end
+
             sig { returns(T::Boolean) }
             attr_accessor :entitled
 
@@ -21,10 +26,10 @@ module MetronomeSDK
             sig { returns(T::Array[String]) }
             attr_accessor :product_tags
 
-            sig { returns(MetronomeSDK::Models::Rate) }
+            sig { returns(MetronomeSDK::Rate) }
             attr_reader :rate
 
-            sig { params(rate: T.any(MetronomeSDK::Models::Rate, MetronomeSDK::Internal::AnyHash)).void }
+            sig { params(rate: MetronomeSDK::Rate::OrHash).void }
             attr_writer :rate
 
             sig { returns(Time) }
@@ -32,17 +37,20 @@ module MetronomeSDK
 
             # A distinct rate on the rate card. You can choose to use this rate rather than
             # list rate when consuming a credit or commit.
-            sig { returns(T.nilable(MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::CommitRate)) }
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::CommitRate
+                )
+              )
+            end
             attr_reader :commit_rate
 
             sig do
               params(
-                commit_rate: T.any(
-                  MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::CommitRate,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              )
-                .void
+                commit_rate:
+                  MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::CommitRate::OrHash
+              ).void
             end
             attr_writer :commit_rate
 
@@ -65,16 +73,13 @@ module MetronomeSDK
                 product_id: String,
                 product_name: String,
                 product_tags: T::Array[String],
-                rate: T.any(MetronomeSDK::Models::Rate, MetronomeSDK::Internal::AnyHash),
+                rate: MetronomeSDK::Rate::OrHash,
                 starting_at: Time,
-                commit_rate: T.any(
-                  MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::CommitRate,
-                  MetronomeSDK::Internal::AnyHash
-                ),
+                commit_rate:
+                  MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::CommitRate::OrHash,
                 ending_before: Time,
                 pricing_group_values: T::Hash[Symbol, String]
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
             def self.new(
               entitled:,
@@ -89,27 +94,35 @@ module MetronomeSDK
               commit_rate: nil,
               ending_before: nil,
               pricing_group_values: nil
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    entitled: T::Boolean,
-                    product_custom_fields: T::Hash[Symbol, String],
-                    product_id: String,
-                    product_name: String,
-                    product_tags: T::Array[String],
-                    rate: MetronomeSDK::Models::Rate,
-                    starting_at: Time,
-                    commit_rate: MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::CommitRate,
-                    ending_before: Time,
-                    pricing_group_values: T::Hash[Symbol, String]
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  entitled: T::Boolean,
+                  product_custom_fields: T::Hash[Symbol, String],
+                  product_id: String,
+                  product_name: String,
+                  product_tags: T::Array[String],
+                  rate: MetronomeSDK::Rate,
+                  starting_at: Time,
+                  commit_rate:
+                    MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::CommitRate,
+                  ending_before: Time,
+                  pricing_group_values: T::Hash[Symbol, String]
+                }
+              )
+            end
+            def to_hash
+            end
 
             class CommitRate < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                end
+
               sig do
                 returns(
                   MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::CommitRate::RateType::TaggedSymbol
@@ -125,21 +138,21 @@ module MetronomeSDK
               attr_writer :price
 
               # Only set for TIERED rate_type.
-              sig { returns(T.nilable(T::Array[MetronomeSDK::Models::Tier])) }
+              sig { returns(T.nilable(T::Array[MetronomeSDK::Tier])) }
               attr_reader :tiers
 
-              sig { params(tiers: T::Array[T.any(MetronomeSDK::Models::Tier, MetronomeSDK::Internal::AnyHash)]).void }
+              sig { params(tiers: T::Array[MetronomeSDK::Tier::OrHash]).void }
               attr_writer :tiers
 
               # A distinct rate on the rate card. You can choose to use this rate rather than
               # list rate when consuming a credit or commit.
               sig do
                 params(
-                  rate_type: MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::CommitRate::RateType::OrSymbol,
+                  rate_type:
+                    MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::CommitRate::RateType::OrSymbol,
                   price: Float,
-                  tiers: T::Array[T.any(MetronomeSDK::Models::Tier, MetronomeSDK::Internal::AnyHash)]
-                )
-                  .returns(T.attached_class)
+                  tiers: T::Array[MetronomeSDK::Tier::OrHash]
+                ).returns(T.attached_class)
               end
               def self.new(
                 rate_type:,
@@ -147,24 +160,32 @@ module MetronomeSDK
                 price: nil,
                 # Only set for TIERED rate_type.
                 tiers: nil
-              ); end
-              sig do
-                override
-                  .returns(
-                    {
-                      rate_type: MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::CommitRate::RateType::TaggedSymbol,
-                      price: Float,
-                      tiers: T::Array[MetronomeSDK::Models::Tier]
-                    }
-                  )
+              )
               end
-              def to_hash; end
+
+              sig do
+                override.returns(
+                  {
+                    rate_type:
+                      MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::CommitRate::RateType::TaggedSymbol,
+                    price: Float,
+                    tiers: T::Array[MetronomeSDK::Tier]
+                  }
+                )
+              end
+              def to_hash
+              end
 
               module RateType
                 extend MetronomeSDK::Internal::Type::Enum
 
                 TaggedSymbol =
-                  T.type_alias { T.all(Symbol, MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::CommitRate::RateType) }
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::CommitRate::RateType
+                    )
+                  end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 FLAT =
@@ -194,12 +215,14 @@ module MetronomeSDK
                   )
 
                 sig do
-                  override
-                    .returns(
-                      T::Array[MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::CommitRate::RateType::TaggedSymbol]
-                    )
+                  override.returns(
+                    T::Array[
+                      MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::CommitRate::RateType::TaggedSymbol
+                    ]
+                  )
                 end
-                def self.values; end
+                def self.values
+                end
               end
             end
           end

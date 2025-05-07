@@ -42,8 +42,6 @@ module MetronomeSDK
             quantity: Float,
             ?request_options: MetronomeSDK::request_opts
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::Customers::invoice_add_charge_params
         end
       end
     end

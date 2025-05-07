@@ -36,8 +36,8 @@ module MetronomeSDK
         #   Multiple statuses can be OR'd together using commas, e.g. `active,ended`.
         #   **Note:** `ended,upcoming` combination is not yet supported.
         #
-        #   @return [Symbol, MetronomeSDK::Models::V1::PlanListCustomersParams::Status, nil]
-        optional :status, enum: -> { MetronomeSDK::Models::V1::PlanListCustomersParams::Status }
+        #   @return [Symbol, MetronomeSDK::V1::PlanListCustomersParams::Status, nil]
+        optional :status, enum: -> { MetronomeSDK::V1::PlanListCustomersParams::Status }
 
         # @!method initialize(plan_id:, limit: nil, next_page: nil, status: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
@@ -49,7 +49,7 @@ module MetronomeSDK
         #
         #   @param next_page [String] Cursor that indicates where the next page of results should start.
         #
-        #   @param status [Symbol, MetronomeSDK::Models::V1::PlanListCustomersParams::Status] Status of customers on a given plan. Defaults to `active`. ...
+        #   @param status [Symbol, MetronomeSDK::V1::PlanListCustomersParams::Status] Status of customers on a given plan. Defaults to `active`.
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 

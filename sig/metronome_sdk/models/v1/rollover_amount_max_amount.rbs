@@ -2,22 +2,17 @@ module MetronomeSDK
   module Models
     module V1
       type rollover_amount_max_amount =
-        {
-          type: MetronomeSDK::Models::V1::RolloverAmountMaxAmount::type_,
-          value: Float
-        }
+        { type: MetronomeSDK::V1::RolloverAmountMaxAmount::type_, value: Float }
 
       class RolloverAmountMaxAmount < MetronomeSDK::Internal::Type::BaseModel
-        attr_accessor type: MetronomeSDK::Models::V1::RolloverAmountMaxAmount::type_
+        attr_accessor type: MetronomeSDK::V1::RolloverAmountMaxAmount::type_
 
         attr_accessor value: Float
 
         def initialize: (
-          type: MetronomeSDK::Models::V1::RolloverAmountMaxAmount::type_,
+          type: MetronomeSDK::V1::RolloverAmountMaxAmount::type_,
           value: Float
         ) -> void
-
-        def to_hash: -> MetronomeSDK::Models::V1::rollover_amount_max_amount
 
         type type_ = :MAX_AMOUNT
 
@@ -26,7 +21,7 @@ module MetronomeSDK
 
           MAX_AMOUNT: :MAX_AMOUNT
 
-          def self?.values: -> ::Array[MetronomeSDK::Models::V1::RolloverAmountMaxAmount::type_]
+          def self?.values: -> ::Array[MetronomeSDK::V1::RolloverAmountMaxAmount::type_]
         end
       end
     end

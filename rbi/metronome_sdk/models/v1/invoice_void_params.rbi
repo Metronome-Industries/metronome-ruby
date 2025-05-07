@@ -7,6 +7,9 @@ module MetronomeSDK
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
         # The invoice id to void
         sig { returns(String) }
         attr_accessor :id
@@ -14,20 +17,23 @@ module MetronomeSDK
         sig do
           params(
             id: String,
-            request_options: T.any(
-              MetronomeSDK::RequestOptions,
-              MetronomeSDK::Internal::AnyHash
-            )
-          )
-            .returns(T.attached_class)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # The invoice id to void
           id:,
           request_options: {}
-        ); end
-        sig { override.returns({id: String, request_options: MetronomeSDK::RequestOptions}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns(
+            { id: String, request_options: MetronomeSDK::RequestOptions }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

@@ -15,16 +15,12 @@ module MetronomeSDK
           ?data: MetronomeSDK::Models::V1::InvoiceVoidResponse::Data
         ) -> void
 
-        def to_hash: -> MetronomeSDK::Models::V1::invoice_void_response
-
         type data = { id: String }
 
         class Data < MetronomeSDK::Internal::Type::BaseModel
           attr_accessor id: String
 
           def initialize: (id: String) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::InvoiceVoidResponse::data
         end
       end
     end

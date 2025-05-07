@@ -5,9 +5,9 @@ module MetronomeSDK
         def get_embeddable_url: (
           customer_id: String,
           dashboard: MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::dashboard,
-          ?bm_group_key_overrides: ::Array[MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::BmGroupKeyOverride],
-          ?color_overrides: ::Array[MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::ColorOverride],
-          ?dashboard_options: ::Array[MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::DashboardOption],
+          ?bm_group_key_overrides: ::Array[MetronomeSDK::V1::DashboardGetEmbeddableURLParams::BmGroupKeyOverride],
+          ?color_overrides: ::Array[MetronomeSDK::V1::DashboardGetEmbeddableURLParams::ColorOverride],
+          ?dashboard_options: ::Array[MetronomeSDK::V1::DashboardGetEmbeddableURLParams::DashboardOption],
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V1::DashboardGetEmbeddableURLResponse
 

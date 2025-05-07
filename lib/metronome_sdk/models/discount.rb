@@ -10,13 +10,13 @@ module MetronomeSDK
 
       # @!attribute product
       #
-      #   @return [MetronomeSDK::Models::Discount::Product]
-      required :product, -> { MetronomeSDK::Models::Discount::Product }
+      #   @return [MetronomeSDK::Discount::Product]
+      required :product, -> { MetronomeSDK::Discount::Product }
 
       # @!attribute schedule
       #
-      #   @return [MetronomeSDK::Models::SchedulePointInTime]
-      required :schedule, -> { MetronomeSDK::Models::SchedulePointInTime }
+      #   @return [MetronomeSDK::SchedulePointInTime]
+      required :schedule, -> { MetronomeSDK::SchedulePointInTime }
 
       # @!attribute custom_fields
       #
@@ -37,9 +37,9 @@ module MetronomeSDK
       # @!method initialize(id:, product:, schedule:, custom_fields: nil, name: nil, netsuite_sales_order_id: nil)
       #   @param id [String]
       #
-      #   @param product [MetronomeSDK::Models::Discount::Product]
+      #   @param product [MetronomeSDK::Discount::Product]
       #
-      #   @param schedule [MetronomeSDK::Models::SchedulePointInTime]
+      #   @param schedule [MetronomeSDK::SchedulePointInTime]
       #
       #   @param custom_fields [Hash{Symbol=>String}]
       #
@@ -47,7 +47,7 @@ module MetronomeSDK
       #
       #   @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
 
-      # @see MetronomeSDK::Models::Discount#product
+      # @see MetronomeSDK::Discount#product
       class Product < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute id
         #

@@ -14,7 +14,7 @@ module MetronomeSDK
           #
           # @param name [String] displayed on invoices
           #
-          # @param type [Symbol, MetronomeSDK::Models::V1::Contracts::ProductCreateParams::Type]
+          # @param type [Symbol, MetronomeSDK::V1::Contracts::ProductCreateParams::Type]
           #
           # @param billable_metric_id [String] Required for USAGE products
           #
@@ -23,26 +23,20 @@ module MetronomeSDK
           # @param composite_tags [Array<String>] Required for COMPOSITE products
           #
           # @param exclude_free_usage [Boolean] Beta feature only available for composite products. If true, products with $0 wi
-          # ...
           #
           # @param is_refundable [Boolean] This field's availability is dependent on your client's configuration. Defaults
-          # ...
           #
           # @param netsuite_internal_item_id [String] This field's availability is dependent on your client's configuration.
           #
           # @param netsuite_overage_item_id [String] This field's availability is dependent on your client's configuration.
           #
           # @param presentation_group_key [Array<String>] For USAGE products only. Groups usage line items on invoices. The superset of va
-          # ...
           #
           # @param pricing_group_key [Array<String>] For USAGE products only. If set, pricing for this product will be determined for
-          # ...
           #
-          # @param quantity_conversion [MetronomeSDK::Models::V1::Contracts::QuantityConversion, nil] Optional. Only valid for USAGE products. If provided, the quantity will be conve
-          # ...
+          # @param quantity_conversion [MetronomeSDK::V1::Contracts::QuantityConversion, nil] Optional. Only valid for USAGE products. If provided, the quantity will be conve
           #
-          # @param quantity_rounding [MetronomeSDK::Models::V1::Contracts::QuantityRounding, nil] Optional. Only valid for USAGE products. If provided, the quantity will be round
-          # ...
+          # @param quantity_rounding [MetronomeSDK::V1::Contracts::QuantityRounding, nil] Optional. Only valid for USAGE products. If provided, the quantity will be round
           #
           # @param tags [Array<String>]
           #
@@ -52,7 +46,7 @@ module MetronomeSDK
           #
           # @see MetronomeSDK::Models::V1::Contracts::ProductCreateParams
           def create(params)
-            parsed, options = MetronomeSDK::Models::V1::Contracts::ProductCreateParams.dump_request(params)
+            parsed, options = MetronomeSDK::V1::Contracts::ProductCreateParams.dump_request(params)
             @client.request(
               method: :post,
               path: "v1/contract-pricing/products/create",
@@ -73,7 +67,7 @@ module MetronomeSDK
           #
           # @see MetronomeSDK::Models::V1::Contracts::ProductRetrieveParams
           def retrieve(params)
-            parsed, options = MetronomeSDK::Models::V1::Contracts::ProductRetrieveParams.dump_request(params)
+            parsed, options = MetronomeSDK::V1::Contracts::ProductRetrieveParams.dump_request(params)
             @client.request(
               method: :post,
               path: "v1/contract-pricing/products/get",
@@ -93,42 +87,30 @@ module MetronomeSDK
           # @param product_id [String] ID of the product to update
           #
           # @param starting_at [Time] Timestamp representing when the update should go into effect. It must be on an h
-          # ...
           #
           # @param billable_metric_id [String] Available for USAGE products only. If not provided, defaults to product's curren
-          # ...
           #
           # @param composite_product_ids [Array<String>] Available for COMPOSITE products only. If not provided, defaults to product's cu
-          # ...
           #
           # @param composite_tags [Array<String>] Available for COMPOSITE products only. If not provided, defaults to product's cu
-          # ...
           #
           # @param exclude_free_usage [Boolean] Beta feature only available for composite products. If true, products with $0 wi
-          # ...
           #
           # @param is_refundable [Boolean] Defaults to product's current refundability status. This field's availability is
-          # ...
           #
           # @param name [String] displayed on invoices. If not provided, defaults to product's current name.
           #
           # @param netsuite_internal_item_id [String] If not provided, defaults to product's current netsuite_internal_item_id. This f
-          # ...
           #
           # @param netsuite_overage_item_id [String] Available for USAGE and COMPOSITE products only. If not provided, defaults to pr
-          # ...
           #
           # @param presentation_group_key [Array<String>] For USAGE products only. Groups usage line items on invoices. The superset of va
-          # ...
           #
           # @param pricing_group_key [Array<String>] For USAGE products only. If set, pricing for this product will be determined for
-          # ...
           #
-          # @param quantity_conversion [MetronomeSDK::Models::V1::Contracts::QuantityConversion, nil] Optional. Only valid for USAGE products. If provided, the quantity will be conve
-          # ...
+          # @param quantity_conversion [MetronomeSDK::V1::Contracts::QuantityConversion, nil] Optional. Only valid for USAGE products. If provided, the quantity will be conve
           #
-          # @param quantity_rounding [MetronomeSDK::Models::V1::Contracts::QuantityRounding, nil] Optional. Only valid for USAGE products. If provided, the quantity will be round
-          # ...
+          # @param quantity_rounding [MetronomeSDK::V1::Contracts::QuantityRounding, nil] Optional. Only valid for USAGE products. If provided, the quantity will be round
           #
           # @param tags [Array<String>] If not provided, defaults to product's current tags
           #
@@ -138,7 +120,7 @@ module MetronomeSDK
           #
           # @see MetronomeSDK::Models::V1::Contracts::ProductUpdateParams
           def update(params)
-            parsed, options = MetronomeSDK::Models::V1::Contracts::ProductUpdateParams.dump_request(params)
+            parsed, options = MetronomeSDK::V1::Contracts::ProductUpdateParams.dump_request(params)
             @client.request(
               method: :post,
               path: "v1/contract-pricing/products/update",
@@ -156,7 +138,7 @@ module MetronomeSDK
           #
           # @param next_page [String] Query param: Cursor that indicates where the next page of results should start.
           #
-          # @param archive_filter [Symbol, MetronomeSDK::Models::V1::Contracts::ProductListParams::ArchiveFilter] Body param: Filter options for the product list
+          # @param archive_filter [Symbol, MetronomeSDK::V1::Contracts::ProductListParams::ArchiveFilter] Body param: Filter options for the product list
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -164,7 +146,7 @@ module MetronomeSDK
           #
           # @see MetronomeSDK::Models::V1::Contracts::ProductListParams
           def list(params = {})
-            parsed, options = MetronomeSDK::Models::V1::Contracts::ProductListParams.dump_request(params)
+            parsed, options = MetronomeSDK::V1::Contracts::ProductListParams.dump_request(params)
             query_params = [:limit, :next_page]
             @client.request(
               method: :post,
@@ -189,7 +171,7 @@ module MetronomeSDK
           #
           # @see MetronomeSDK::Models::V1::Contracts::ProductArchiveParams
           def archive(params)
-            parsed, options = MetronomeSDK::Models::V1::Contracts::ProductArchiveParams.dump_request(params)
+            parsed, options = MetronomeSDK::V1::Contracts::ProductArchiveParams.dump_request(params)
             @client.request(
               method: :post,
               path: "v1/contract-pricing/products/archive",

@@ -10,7 +10,7 @@ module MetronomeSDK
             #
             # @overload update(product_moves:, rate_card_id:, request_options: {})
             #
-            # @param product_moves [Array<MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove>]
+            # @param product_moves [Array<MetronomeSDK::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove>]
             #
             # @param rate_card_id [String] ID of the rate card to update
             #
@@ -20,8 +20,7 @@ module MetronomeSDK
             #
             # @see MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateParams
             def update(params)
-              parsed, options =
-                MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateParams.dump_request(params)
+              parsed, options = MetronomeSDK::V1::Contracts::RateCards::ProductOrderUpdateParams.dump_request(params)
               @client.request(
                 method: :post,
                 path: "v1/contract-pricing/rate-cards/moveRateCardProducts",
@@ -45,8 +44,7 @@ module MetronomeSDK
             #
             # @see MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderSetParams
             def set(params)
-              parsed, options =
-                MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderSetParams.dump_request(params)
+              parsed, options = MetronomeSDK::V1::Contracts::RateCards::ProductOrderSetParams.dump_request(params)
               @client.request(
                 method: :post,
                 path: "v1/contract-pricing/rate-cards/setRateCardProductsOrder",

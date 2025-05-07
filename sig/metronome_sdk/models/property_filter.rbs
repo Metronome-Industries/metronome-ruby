@@ -29,8 +29,6 @@ module MetronomeSDK
         ?in_values: ::Array[String],
         ?not_in_values: ::Array[String]
       ) -> void
-
-      def to_hash: -> MetronomeSDK::Models::property_filter
     end
   end
 end

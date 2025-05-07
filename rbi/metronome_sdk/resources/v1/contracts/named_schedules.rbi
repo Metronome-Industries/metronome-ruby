@@ -12,9 +12,10 @@ module MetronomeSDK
               rate_card_id: String,
               schedule_name: String,
               covering_date: Time,
-              request_options: MetronomeSDK::RequestOpts
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(
+              MetronomeSDK::Models::V1::Contracts::NamedScheduleRetrieveResponse
             )
-              .returns(MetronomeSDK::Models::V1::Contracts::NamedScheduleRetrieveResponse)
           end
           def retrieve(
             # ID of the rate card whose named schedule is to be retrieved
@@ -25,7 +26,9 @@ module MetronomeSDK
             # this date). If not provided, all segments will be returned.
             covering_date: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # Update a named schedule for the given rate card. This endpoint's availability is
           # dependent on your client's configuration.
           sig do
@@ -35,9 +38,8 @@ module MetronomeSDK
               starting_at: Time,
               value: T.anything,
               ending_before: Time,
-              request_options: MetronomeSDK::RequestOpts
-            )
-              .void
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).void
           end
           def update(
             # ID of the rate card whose named schedule is to be updated
@@ -50,10 +52,13 @@ module MetronomeSDK
             value:,
             ending_before: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # @api private
           sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
-          def self.new(client:); end
+          def self.new(client:)
+          end
         end
       end
     end

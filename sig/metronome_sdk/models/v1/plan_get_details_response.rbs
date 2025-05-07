@@ -1,15 +1,12 @@
 module MetronomeSDK
   module Models
     module V1
-      type plan_get_details_response =
-        { data: MetronomeSDK::Models::V1::PlanDetail }
+      type plan_get_details_response = { data: MetronomeSDK::V1::PlanDetail }
 
       class PlanGetDetailsResponse < MetronomeSDK::Internal::Type::BaseModel
-        attr_accessor data: MetronomeSDK::Models::V1::PlanDetail
+        attr_accessor data: MetronomeSDK::V1::PlanDetail
 
-        def initialize: (data: MetronomeSDK::Models::V1::PlanDetail) -> void
-
-        def to_hash: -> MetronomeSDK::Models::V1::plan_get_details_response
+        def initialize: (data: MetronomeSDK::V1::PlanDetail) -> void
       end
     end
   end

@@ -38,8 +38,6 @@ module MetronomeSDK
           ?request_options: MetronomeSDK::request_opts
         ) -> void
 
-        def to_hash: -> MetronomeSDK::Models::V1::plan_list_customers_params
-
         type status = :all | :active | :ended | :upcoming
 
         module Status

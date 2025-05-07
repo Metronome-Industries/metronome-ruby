@@ -56,7 +56,7 @@ When using sorbet, it is recommended to use model classes as below. This provide
 ```ruby
 metronome.v1.usage.ingest(
   usage: [
-    MetronomeSDK::Models::V1::UsageIngestParams::Usage.new(
+    MetronomeSDK::V1::UsageIngestParams::Usage.new(
       transaction_id: "90e9401f-0f8c-4cd3-9a9f-d6beb56d8d72",
       customer_id: "team@example.com",
       event_type: "heartbeat",
@@ -162,7 +162,7 @@ In all places where a `BaseModel` type is specified, vanilla Ruby `Hash` can als
 # This has tooling readability, for auto-completion, static analysis, and goto definition with supported language services
 params = MetronomeSDK::Models::V1::UsageIngestParams.new(
   usage: [
-    MetronomeSDK::Models::V1::UsageIngestParams::Usage.new(
+    MetronomeSDK::V1::UsageIngestParams::Usage.new(
       transaction_id: "90e9401f-0f8c-4cd3-9a9f-d6beb56d8d72",
       customer_id: "team@example.com",
       event_type: "heartbeat",
@@ -231,7 +231,7 @@ It is possible to pass a compatible model / parameter class to a method that exp
 ```ruby
 params = MetronomeSDK::Models::V1::UsageIngestParams.new(
   usage: [
-    MetronomeSDK::Models::V1::UsageIngestParams::Usage.new(
+    MetronomeSDK::V1::UsageIngestParams::Usage.new(
       transaction_id: "90e9401f-0f8c-4cd3-9a9f-d6beb56d8d72",
       customer_id: "team@example.com",
       event_type: "heartbeat",

@@ -8,11 +8,18 @@ module MetronomeSDK
           extend MetronomeSDK::Internal::Type::RequestParameters::Converter
           include MetronomeSDK::Internal::Type::RequestParameters
 
+          OrHash =
+            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
           # displayed on invoices
           sig { returns(String) }
           attr_accessor :name
 
-          sig { returns(MetronomeSDK::Models::V1::Contracts::ProductCreateParams::Type::OrSymbol) }
+          sig do
+            returns(
+              MetronomeSDK::V1::Contracts::ProductCreateParams::Type::OrSymbol
+            )
+          end
           attr_accessor :type
 
           # Required for USAGE products
@@ -92,14 +99,18 @@ module MetronomeSDK
           # unit and priced in another. For example, data could be sent in MB and priced in
           # GB. In this case, the conversion factor would be 1024 and the operation would be
           # "divide".
-          sig { returns(T.nilable(MetronomeSDK::Models::V1::Contracts::QuantityConversion)) }
+          sig do
+            returns(T.nilable(MetronomeSDK::V1::Contracts::QuantityConversion))
+          end
           attr_reader :quantity_conversion
 
           sig do
             params(
-              quantity_conversion: T.nilable(T.any(MetronomeSDK::Models::V1::Contracts::QuantityConversion, MetronomeSDK::Internal::AnyHash))
-            )
-              .void
+              quantity_conversion:
+                T.nilable(
+                  MetronomeSDK::V1::Contracts::QuantityConversion::OrHash
+                )
+            ).void
           end
           attr_writer :quantity_conversion
 
@@ -107,14 +118,16 @@ module MetronomeSDK
           # rounded using the provided rounding method and decimal places. For example, if
           # the method is "round up" and the decimal places is 0, then the quantity will be
           # rounded up to the nearest integer.
-          sig { returns(T.nilable(MetronomeSDK::Models::V1::Contracts::QuantityRounding)) }
+          sig do
+            returns(T.nilable(MetronomeSDK::V1::Contracts::QuantityRounding))
+          end
           attr_reader :quantity_rounding
 
           sig do
             params(
-              quantity_rounding: T.nilable(T.any(MetronomeSDK::Models::V1::Contracts::QuantityRounding, MetronomeSDK::Internal::AnyHash))
-            )
-              .void
+              quantity_rounding:
+                T.nilable(MetronomeSDK::V1::Contracts::QuantityRounding::OrHash)
+            ).void
           end
           attr_writer :quantity_rounding
 
@@ -127,7 +140,8 @@ module MetronomeSDK
           sig do
             params(
               name: String,
-              type: MetronomeSDK::Models::V1::Contracts::ProductCreateParams::Type::OrSymbol,
+              type:
+                MetronomeSDK::V1::Contracts::ProductCreateParams::Type::OrSymbol,
               billable_metric_id: String,
               composite_product_ids: T::Array[String],
               composite_tags: T::Array[String],
@@ -137,12 +151,17 @@ module MetronomeSDK
               netsuite_overage_item_id: String,
               presentation_group_key: T::Array[String],
               pricing_group_key: T::Array[String],
-              quantity_conversion: T.nilable(T.any(MetronomeSDK::Models::V1::Contracts::QuantityConversion, MetronomeSDK::Internal::AnyHash)),
-              quantity_rounding: T.nilable(T.any(MetronomeSDK::Models::V1::Contracts::QuantityRounding, MetronomeSDK::Internal::AnyHash)),
+              quantity_conversion:
+                T.nilable(
+                  MetronomeSDK::V1::Contracts::QuantityConversion::OrHash
+                ),
+              quantity_rounding:
+                T.nilable(
+                  MetronomeSDK::V1::Contracts::QuantityRounding::OrHash
+                ),
               tags: T::Array[String],
-              request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-            )
-              .returns(T.attached_class)
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(T.attached_class)
           end
           def self.new(
             # displayed on invoices
@@ -188,51 +207,88 @@ module MetronomeSDK
             quantity_rounding: nil,
             tags: nil,
             request_options: {}
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  name: String,
-                  type: MetronomeSDK::Models::V1::Contracts::ProductCreateParams::Type::OrSymbol,
-                  billable_metric_id: String,
-                  composite_product_ids: T::Array[String],
-                  composite_tags: T::Array[String],
-                  exclude_free_usage: T::Boolean,
-                  is_refundable: T::Boolean,
-                  netsuite_internal_item_id: String,
-                  netsuite_overage_item_id: String,
-                  presentation_group_key: T::Array[String],
-                  pricing_group_key: T::Array[String],
-                  quantity_conversion: T.nilable(MetronomeSDK::Models::V1::Contracts::QuantityConversion),
-                  quantity_rounding: T.nilable(MetronomeSDK::Models::V1::Contracts::QuantityRounding),
-                  tags: T::Array[String],
-                  request_options: MetronomeSDK::RequestOptions
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                name: String,
+                type:
+                  MetronomeSDK::V1::Contracts::ProductCreateParams::Type::OrSymbol,
+                billable_metric_id: String,
+                composite_product_ids: T::Array[String],
+                composite_tags: T::Array[String],
+                exclude_free_usage: T::Boolean,
+                is_refundable: T::Boolean,
+                netsuite_internal_item_id: String,
+                netsuite_overage_item_id: String,
+                presentation_group_key: T::Array[String],
+                pricing_group_key: T::Array[String],
+                quantity_conversion:
+                  T.nilable(MetronomeSDK::V1::Contracts::QuantityConversion),
+                quantity_rounding:
+                  T.nilable(MetronomeSDK::V1::Contracts::QuantityRounding),
+                tags: T::Array[String],
+                request_options: MetronomeSDK::RequestOptions
+              }
+            )
+          end
+          def to_hash
+          end
 
           module Type
             extend MetronomeSDK::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, MetronomeSDK::Models::V1::Contracts::ProductCreateParams::Type) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V1::Contracts::ProductCreateParams::Type
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            FIXED = T.let(:FIXED, MetronomeSDK::Models::V1::Contracts::ProductCreateParams::Type::TaggedSymbol)
-            USAGE = T.let(:USAGE, MetronomeSDK::Models::V1::Contracts::ProductCreateParams::Type::TaggedSymbol)
+            FIXED =
+              T.let(
+                :FIXED,
+                MetronomeSDK::V1::Contracts::ProductCreateParams::Type::TaggedSymbol
+              )
+            USAGE =
+              T.let(
+                :USAGE,
+                MetronomeSDK::V1::Contracts::ProductCreateParams::Type::TaggedSymbol
+              )
             COMPOSITE =
-              T.let(:COMPOSITE, MetronomeSDK::Models::V1::Contracts::ProductCreateParams::Type::TaggedSymbol)
+              T.let(
+                :COMPOSITE,
+                MetronomeSDK::V1::Contracts::ProductCreateParams::Type::TaggedSymbol
+              )
             SUBSCRIPTION =
-              T.let(:SUBSCRIPTION, MetronomeSDK::Models::V1::Contracts::ProductCreateParams::Type::TaggedSymbol)
+              T.let(
+                :SUBSCRIPTION,
+                MetronomeSDK::V1::Contracts::ProductCreateParams::Type::TaggedSymbol
+              )
             PROFESSIONAL_SERVICE =
-              T.let(:PROFESSIONAL_SERVICE, MetronomeSDK::Models::V1::Contracts::ProductCreateParams::Type::TaggedSymbol)
+              T.let(
+                :PROFESSIONAL_SERVICE,
+                MetronomeSDK::V1::Contracts::ProductCreateParams::Type::TaggedSymbol
+              )
             PRO_SERVICE =
-              T.let(:PRO_SERVICE, MetronomeSDK::Models::V1::Contracts::ProductCreateParams::Type::TaggedSymbol)
+              T.let(
+                :PRO_SERVICE,
+                MetronomeSDK::V1::Contracts::ProductCreateParams::Type::TaggedSymbol
+              )
 
-            sig { override.returns(T::Array[MetronomeSDK::Models::V1::Contracts::ProductCreateParams::Type::TaggedSymbol]) }
-            def self.values; end
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::Contracts::ProductCreateParams::Type::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
       end

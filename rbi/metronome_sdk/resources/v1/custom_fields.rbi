@@ -9,34 +9,37 @@ module MetronomeSDK
         sig do
           params(
             enforce_uniqueness: T::Boolean,
-            entity: MetronomeSDK::Models::V1::CustomFieldAddKeyParams::Entity::OrSymbol,
+            entity: MetronomeSDK::V1::CustomFieldAddKeyParams::Entity::OrSymbol,
             key: String,
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .void
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).void
         end
-        def add_key(enforce_uniqueness:, entity:, key:, request_options: {}); end
+        def add_key(enforce_uniqueness:, entity:, key:, request_options: {})
+        end
 
         # Deletes one or more custom fields on an instance of a Metronome entity.
         sig do
           params(
-            entity: MetronomeSDK::Models::V1::CustomFieldDeleteValuesParams::Entity::OrSymbol,
+            entity:
+              MetronomeSDK::V1::CustomFieldDeleteValuesParams::Entity::OrSymbol,
             entity_id: String,
             keys: T::Array[String],
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .void
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).void
         end
-        def delete_values(entity:, entity_id:, keys:, request_options: {}); end
+        def delete_values(entity:, entity_id:, keys:, request_options: {})
+        end
 
         # List all active custom field keys, optionally filtered by entity type.
         sig do
           params(
             next_page: String,
-            entities: T::Array[MetronomeSDK::Models::V1::CustomFieldListKeysParams::Entity::OrSymbol],
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .returns(MetronomeSDK::Models::V1::CustomFieldListKeysResponse)
+            entities:
+              T::Array[
+                MetronomeSDK::V1::CustomFieldListKeysParams::Entity::OrSymbol
+              ],
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V1::CustomFieldListKeysResponse)
         end
         def list_keys(
           # Query param: Cursor that indicates where the next page of results should start.
@@ -44,17 +47,20 @@ module MetronomeSDK
           # Body param: Optional list of entity types to return keys for
           entities: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Remove a key from the allow list for a given entity.
         sig do
           params(
-            entity: MetronomeSDK::Models::V1::CustomFieldRemoveKeyParams::Entity::OrSymbol,
+            entity:
+              MetronomeSDK::V1::CustomFieldRemoveKeyParams::Entity::OrSymbol,
             key: String,
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .void
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).void
         end
-        def remove_key(entity:, key:, request_options: {}); end
+        def remove_key(entity:, key:, request_options: {})
+        end
 
         # Sets one or more custom fields on an instance of a Metronome entity. If a
         # key/value pair passed in this request matches one already set on the entity, its
@@ -66,17 +72,19 @@ module MetronomeSDK
         sig do
           params(
             custom_fields: T::Hash[Symbol, String],
-            entity: MetronomeSDK::Models::V1::CustomFieldSetValuesParams::Entity::OrSymbol,
+            entity:
+              MetronomeSDK::V1::CustomFieldSetValuesParams::Entity::OrSymbol,
             entity_id: String,
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .void
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).void
         end
-        def set_values(custom_fields:, entity:, entity_id:, request_options: {}); end
+        def set_values(custom_fields:, entity:, entity_id:, request_options: {})
+        end
 
         # @api private
         sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

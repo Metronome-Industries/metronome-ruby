@@ -51,7 +51,6 @@ module MetronomeSDK
         #   @param next_page [String] Cursor that indicates where the next page of results should start.
         #
         #   @param on_current_plan [Boolean] If true, the list of metrics will be filtered to just ones that are on the custo
-        #   ...
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
       end

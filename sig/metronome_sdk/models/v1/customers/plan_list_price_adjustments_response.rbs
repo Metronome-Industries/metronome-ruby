@@ -32,8 +32,6 @@ module MetronomeSDK
             ?quantity: Float
           ) -> void
 
-          def to_hash: -> MetronomeSDK::Models::V1::Customers::plan_list_price_adjustments_response
-
           type charge_type = :usage | :fixed | :composite | :minimum | :seat
 
           module ChargeType
@@ -71,8 +69,6 @@ module MetronomeSDK
               ?tier: Float,
               ?value: Float
             ) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::price
 
             type adjustment_type = :fixed | :quantity | :percentage | :override
 

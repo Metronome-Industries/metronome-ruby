@@ -17,14 +17,16 @@ module MetronomeSDK
         # @!attribute entities
         #   Optional list of entity types to return keys for
         #
-        #   @return [Array<Symbol, MetronomeSDK::Models::V1::CustomFieldListKeysParams::Entity>, nil]
+        #   @return [Array<Symbol, MetronomeSDK::V1::CustomFieldListKeysParams::Entity>, nil]
         optional :entities,
-                 -> { MetronomeSDK::Internal::Type::ArrayOf[enum: MetronomeSDK::Models::V1::CustomFieldListKeysParams::Entity] }
+                 -> {
+                   MetronomeSDK::Internal::Type::ArrayOf[enum: MetronomeSDK::V1::CustomFieldListKeysParams::Entity]
+                 }
 
         # @!method initialize(next_page: nil, entities: nil, request_options: {})
         #   @param next_page [String] Cursor that indicates where the next page of results should start.
         #
-        #   @param entities [Array<Symbol, MetronomeSDK::Models::V1::CustomFieldListKeysParams::Entity>] Optional list of entity types to return keys for
+        #   @param entities [Array<Symbol, MetronomeSDK::V1::CustomFieldListKeysParams::Entity>] Optional list of entity types to return keys for
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 

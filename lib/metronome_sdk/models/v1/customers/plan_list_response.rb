@@ -102,13 +102,13 @@ module MetronomeSDK
 
               # @!attribute credit_type
               #
-              #   @return [MetronomeSDK::Models::CreditTypeData]
-              required :credit_type, -> { MetronomeSDK::Models::CreditTypeData }
+              #   @return [MetronomeSDK::CreditTypeData]
+              required :credit_type, -> { MetronomeSDK::CreditTypeData }
 
               # @!method initialize(amount:, amount_remaining:, credit_type:)
               #   @param amount [Float]
               #   @param amount_remaining [Float]
-              #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
+              #   @param credit_type [MetronomeSDK::CreditTypeData]
             end
           end
         end

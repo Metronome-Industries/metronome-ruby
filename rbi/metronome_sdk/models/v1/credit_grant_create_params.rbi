@@ -7,6 +7,9 @@ module MetronomeSDK
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
         # the Metronome ID of the customer
         sig { returns(String) }
         attr_accessor :customer_id
@@ -16,14 +19,14 @@ module MetronomeSDK
         attr_accessor :expires_at
 
         # the amount of credits granted
-        sig { returns(MetronomeSDK::Models::V1::CreditGrantCreateParams::GrantAmount) }
+        sig { returns(MetronomeSDK::V1::CreditGrantCreateParams::GrantAmount) }
         attr_reader :grant_amount
 
         sig do
           params(
-            grant_amount: T.any(MetronomeSDK::Models::V1::CreditGrantCreateParams::GrantAmount, MetronomeSDK::Internal::AnyHash)
-          )
-            .void
+            grant_amount:
+              MetronomeSDK::V1::CreditGrantCreateParams::GrantAmount::OrHash
+          ).void
         end
         attr_writer :grant_amount
 
@@ -32,14 +35,14 @@ module MetronomeSDK
         attr_accessor :name
 
         # the amount paid for this credit grant
-        sig { returns(MetronomeSDK::Models::V1::CreditGrantCreateParams::PaidAmount) }
+        sig { returns(MetronomeSDK::V1::CreditGrantCreateParams::PaidAmount) }
         attr_reader :paid_amount
 
         sig do
           params(
-            paid_amount: T.any(MetronomeSDK::Models::V1::CreditGrantCreateParams::PaidAmount, MetronomeSDK::Internal::AnyHash)
-          )
-            .void
+            paid_amount:
+              MetronomeSDK::V1::CreditGrantCreateParams::PaidAmount::OrHash
+          ).void
         end
         attr_writer :paid_amount
 
@@ -93,17 +96,20 @@ module MetronomeSDK
         # Configure a rollover for this credit grant so if it expires it rolls over a
         # configured amount to a new credit grant. This feature is currently opt-in only.
         # Contact Metronome to be added to the beta.
-        sig { returns(T.nilable(MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings)) }
+        sig do
+          returns(
+            T.nilable(
+              MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings
+            )
+          )
+        end
         attr_reader :rollover_settings
 
         sig do
           params(
-            rollover_settings: T.any(
-              MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings,
-              MetronomeSDK::Internal::AnyHash
-            )
-          )
-            .void
+            rollover_settings:
+              MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::OrHash
+          ).void
         end
         attr_writer :rollover_settings
 
@@ -120,9 +126,11 @@ module MetronomeSDK
           params(
             customer_id: String,
             expires_at: Time,
-            grant_amount: T.any(MetronomeSDK::Models::V1::CreditGrantCreateParams::GrantAmount, MetronomeSDK::Internal::AnyHash),
+            grant_amount:
+              MetronomeSDK::V1::CreditGrantCreateParams::GrantAmount::OrHash,
             name: String,
-            paid_amount: T.any(MetronomeSDK::Models::V1::CreditGrantCreateParams::PaidAmount, MetronomeSDK::Internal::AnyHash),
+            paid_amount:
+              MetronomeSDK::V1::CreditGrantCreateParams::PaidAmount::OrHash,
             priority: Float,
             credit_grant_type: String,
             custom_fields: T::Hash[Symbol, String],
@@ -130,14 +138,11 @@ module MetronomeSDK
             invoice_date: Time,
             product_ids: T::Array[String],
             reason: String,
-            rollover_settings: T.any(
-              MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings,
-              MetronomeSDK::Internal::AnyHash
-            ),
+            rollover_settings:
+              MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::OrHash,
             uniqueness_key: String,
-            request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # the Metronome ID of the customer
@@ -174,32 +179,40 @@ module MetronomeSDK
           # request will fail with a 409 error.
           uniqueness_key: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                customer_id: String,
-                expires_at: Time,
-                grant_amount: MetronomeSDK::Models::V1::CreditGrantCreateParams::GrantAmount,
-                name: String,
-                paid_amount: MetronomeSDK::Models::V1::CreditGrantCreateParams::PaidAmount,
-                priority: Float,
-                credit_grant_type: String,
-                custom_fields: T::Hash[Symbol, String],
-                effective_at: Time,
-                invoice_date: Time,
-                product_ids: T::Array[String],
-                reason: String,
-                rollover_settings: MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings,
-                uniqueness_key: String,
-                request_options: MetronomeSDK::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              customer_id: String,
+              expires_at: Time,
+              grant_amount:
+                MetronomeSDK::V1::CreditGrantCreateParams::GrantAmount,
+              name: String,
+              paid_amount:
+                MetronomeSDK::V1::CreditGrantCreateParams::PaidAmount,
+              priority: Float,
+              credit_grant_type: String,
+              custom_fields: T::Hash[Symbol, String],
+              effective_at: Time,
+              invoice_date: Time,
+              product_ids: T::Array[String],
+              reason: String,
+              rollover_settings:
+                MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings,
+              uniqueness_key: String,
+              request_options: MetronomeSDK::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
 
         class GrantAmount < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
           sig { returns(Float) }
           attr_accessor :amount
 
@@ -208,17 +221,27 @@ module MetronomeSDK
           attr_accessor :credit_type_id
 
           # the amount of credits granted
-          sig { params(amount: Float, credit_type_id: String).returns(T.attached_class) }
+          sig do
+            params(amount: Float, credit_type_id: String).returns(
+              T.attached_class
+            )
+          end
           def self.new(
             amount:,
             # the ID of the pricing unit to be used. Defaults to USD (cents) if not passed.
             credit_type_id:
-          ); end
-          sig { override.returns({amount: Float, credit_type_id: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig { override.returns({ amount: Float, credit_type_id: String }) }
+          def to_hash
+          end
         end
 
         class PaidAmount < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
           sig { returns(Float) }
           attr_accessor :amount
 
@@ -227,17 +250,27 @@ module MetronomeSDK
           attr_accessor :credit_type_id
 
           # the amount paid for this credit grant
-          sig { params(amount: Float, credit_type_id: String).returns(T.attached_class) }
+          sig do
+            params(amount: Float, credit_type_id: String).returns(
+              T.attached_class
+            )
+          end
           def self.new(
             amount:,
             # the ID of the pricing unit to be used. Defaults to USD (cents) if not passed.
             credit_type_id:
-          ); end
-          sig { override.returns({amount: Float, credit_type_id: String}) }
-          def to_hash; end
+          )
+          end
+
+          sig { override.returns({ amount: Float, credit_type_id: String }) }
+          def to_hash
+          end
         end
 
         class RolloverSettings < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
           # The date to expire the rollover credits.
           sig { returns(Time) }
           attr_accessor :expires_at
@@ -251,8 +284,8 @@ module MetronomeSDK
           sig do
             returns(
               T.any(
-                MetronomeSDK::Models::V1::RolloverAmountMaxPercentage,
-                MetronomeSDK::Models::V1::RolloverAmountMaxAmount
+                MetronomeSDK::V1::RolloverAmountMaxPercentage,
+                MetronomeSDK::V1::RolloverAmountMaxAmount
               )
             )
           end
@@ -265,13 +298,12 @@ module MetronomeSDK
             params(
               expires_at: Time,
               priority: Float,
-              rollover_amount: T.any(
-                MetronomeSDK::Models::V1::RolloverAmountMaxPercentage,
-                MetronomeSDK::Internal::AnyHash,
-                MetronomeSDK::Models::V1::RolloverAmountMaxAmount
-              )
-            )
-              .returns(T.attached_class)
+              rollover_amount:
+                T.any(
+                  MetronomeSDK::V1::RolloverAmountMaxPercentage::OrHash,
+                  MetronomeSDK::V1::RolloverAmountMaxAmount::OrHash
+                )
+            ).returns(T.attached_class)
           end
           def self.new(
             # The date to expire the rollover credits.
@@ -281,33 +313,46 @@ module MetronomeSDK
             priority:,
             # Specify how much to rollover to the rollover credit grant
             rollover_amount:
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  expires_at: Time,
-                  priority: Float,
-                  rollover_amount: T.any(
-                    MetronomeSDK::Models::V1::RolloverAmountMaxPercentage,
-                    MetronomeSDK::Models::V1::RolloverAmountMaxAmount
-                  )
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                expires_at: Time,
+                priority: Float,
+                rollover_amount:
+                  T.any(
+                    MetronomeSDK::V1::RolloverAmountMaxPercentage,
+                    MetronomeSDK::V1::RolloverAmountMaxAmount
+                  )
+              }
+            )
+          end
+          def to_hash
+          end
 
           # Specify how much to rollover to the rollover credit grant
           module RolloverAmount
             extend MetronomeSDK::Internal::Type::Union
 
-            sig do
-              override
-                .returns(
-                  [MetronomeSDK::Models::V1::RolloverAmountMaxPercentage, MetronomeSDK::Models::V1::RolloverAmountMaxAmount]
+            Variants =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::RolloverAmountMaxPercentage,
+                  MetronomeSDK::V1::RolloverAmountMaxAmount
                 )
+              end
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::Variants
+                ]
+              )
             end
-            def self.variants; end
+            def self.variants
+            end
           end
         end
       end

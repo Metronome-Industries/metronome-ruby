@@ -5,8 +5,8 @@ module MetronomeSDK
         type rate_card_create_params =
           {
             name: String,
-            aliases: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::Alias],
-            credit_type_conversions: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::CreditTypeConversion],
+            aliases: ::Array[MetronomeSDK::V1::Contracts::RateCardCreateParams::Alias],
+            credit_type_conversions: ::Array[MetronomeSDK::V1::Contracts::RateCardCreateParams::CreditTypeConversion],
             custom_fields: ::Hash[Symbol, String],
             description: String,
             fiat_credit_type_id: String
@@ -19,17 +19,17 @@ module MetronomeSDK
 
           attr_accessor name: String
 
-          attr_reader aliases: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::Alias]?
+          attr_reader aliases: ::Array[MetronomeSDK::V1::Contracts::RateCardCreateParams::Alias]?
 
           def aliases=: (
-            ::Array[MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::Alias]
-          ) -> ::Array[MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::Alias]
+            ::Array[MetronomeSDK::V1::Contracts::RateCardCreateParams::Alias]
+          ) -> ::Array[MetronomeSDK::V1::Contracts::RateCardCreateParams::Alias]
 
-          attr_reader credit_type_conversions: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::CreditTypeConversion]?
+          attr_reader credit_type_conversions: ::Array[MetronomeSDK::V1::Contracts::RateCardCreateParams::CreditTypeConversion]?
 
           def credit_type_conversions=: (
-            ::Array[MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::CreditTypeConversion]
-          ) -> ::Array[MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::CreditTypeConversion]
+            ::Array[MetronomeSDK::V1::Contracts::RateCardCreateParams::CreditTypeConversion]
+          ) -> ::Array[MetronomeSDK::V1::Contracts::RateCardCreateParams::CreditTypeConversion]
 
           attr_reader custom_fields: ::Hash[Symbol, String]?
 
@@ -45,15 +45,13 @@ module MetronomeSDK
 
           def initialize: (
             name: String,
-            ?aliases: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::Alias],
-            ?credit_type_conversions: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::CreditTypeConversion],
+            ?aliases: ::Array[MetronomeSDK::V1::Contracts::RateCardCreateParams::Alias],
+            ?credit_type_conversions: ::Array[MetronomeSDK::V1::Contracts::RateCardCreateParams::CreditTypeConversion],
             ?custom_fields: ::Hash[Symbol, String],
             ?description: String,
             ?fiat_credit_type_id: String,
             ?request_options: MetronomeSDK::request_opts
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::Contracts::rate_card_create_params
 
           type alias_ = { name: String, ending_before: Time, starting_at: Time }
 
@@ -73,8 +71,6 @@ module MetronomeSDK
               ?ending_before: Time,
               ?starting_at: Time
             ) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::alias_
           end
 
           type credit_type_conversion =
@@ -89,8 +85,6 @@ module MetronomeSDK
               custom_credit_type_id: String,
               fiat_per_custom_credit: Float
             ) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::credit_type_conversion
           end
         end
       end

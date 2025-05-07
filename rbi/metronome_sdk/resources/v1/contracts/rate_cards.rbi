@@ -5,32 +5,44 @@ module MetronomeSDK
     class V1
       class Contracts
         class RateCards
-          sig { returns(MetronomeSDK::Resources::V1::Contracts::RateCards::ProductOrders) }
+          sig do
+            returns(
+              MetronomeSDK::Resources::V1::Contracts::RateCards::ProductOrders
+            )
+          end
           attr_reader :product_orders
 
-          sig { returns(MetronomeSDK::Resources::V1::Contracts::RateCards::Rates) }
+          sig do
+            returns(MetronomeSDK::Resources::V1::Contracts::RateCards::Rates)
+          end
           attr_reader :rates
 
-          sig { returns(MetronomeSDK::Resources::V1::Contracts::RateCards::NamedSchedules) }
+          sig do
+            returns(
+              MetronomeSDK::Resources::V1::Contracts::RateCards::NamedSchedules
+            )
+          end
           attr_reader :named_schedules
 
           # Create a new rate card
           sig do
             params(
               name: String,
-              aliases: T::Array[T.any(MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::Alias, MetronomeSDK::Internal::AnyHash)],
-              credit_type_conversions: T::Array[
-                T.any(
-                  MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::CreditTypeConversion,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              ],
+              aliases:
+                T::Array[
+                  MetronomeSDK::V1::Contracts::RateCardCreateParams::Alias::OrHash
+                ],
+              credit_type_conversions:
+                T::Array[
+                  MetronomeSDK::V1::Contracts::RateCardCreateParams::CreditTypeConversion::OrHash
+                ],
               custom_fields: T::Hash[Symbol, String],
               description: String,
               fiat_credit_type_id: String,
-              request_options: MetronomeSDK::RequestOpts
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(
+              MetronomeSDK::Models::V1::Contracts::RateCardCreateResponse
             )
-              .returns(MetronomeSDK::Models::V1::Contracts::RateCardCreateResponse)
           end
           def create(
             # Used only in UI/API. It is not exposed to end customers.
@@ -47,25 +59,36 @@ module MetronomeSDK
             # USD (cents) if not passed.
             fiat_credit_type_id: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # Get a specific rate card NOTE: Use `/contract-pricing/rate-cards/getRates` to
           # retrieve rate card rates.
           sig do
-            params(id: String, request_options: MetronomeSDK::RequestOpts)
-              .returns(MetronomeSDK::Models::V1::Contracts::RateCardRetrieveResponse)
+            params(
+              id: String,
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(
+              MetronomeSDK::Models::V1::Contracts::RateCardRetrieveResponse
+            )
           end
-          def retrieve(id:, request_options: {}); end
+          def retrieve(id:, request_options: {})
+          end
 
           # Update a rate card
           sig do
             params(
               rate_card_id: String,
-              aliases: T::Array[T.any(MetronomeSDK::Models::V1::Contracts::RateCardUpdateParams::Alias, MetronomeSDK::Internal::AnyHash)],
+              aliases:
+                T::Array[
+                  MetronomeSDK::V1::Contracts::RateCardUpdateParams::Alias::OrHash
+                ],
               description: String,
               name: String,
-              request_options: MetronomeSDK::RequestOpts
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(
+              MetronomeSDK::Models::V1::Contracts::RateCardUpdateResponse
             )
-              .returns(MetronomeSDK::Models::V1::Contracts::RateCardUpdateResponse)
           end
           def update(
             # ID of the rate card to update
@@ -78,7 +101,9 @@ module MetronomeSDK
             # Used only in UI/API. It is not exposed to end customers.
             name: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # List rate cards NOTE: Use `/contract-pricing/rate-cards/getRates` to retrieve
           # rate card rates.
           sig do
@@ -86,9 +111,12 @@ module MetronomeSDK
               limit: Integer,
               next_page: String,
               body: T.anything,
-              request_options: MetronomeSDK::RequestOpts
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(
+              MetronomeSDK::Internal::CursorPage[
+                MetronomeSDK::Models::V1::Contracts::RateCardListResponse
+              ]
             )
-              .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::Contracts::RateCardListResponse])
           end
           def list(
             # Query param: Max number of results that should be returned
@@ -98,13 +126,20 @@ module MetronomeSDK
             # Body param:
             body: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # Archive a rate card
           sig do
-            params(id: String, request_options: MetronomeSDK::RequestOpts)
-              .returns(MetronomeSDK::Models::V1::Contracts::RateCardArchiveResponse)
+            params(
+              id: String,
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(
+              MetronomeSDK::Models::V1::Contracts::RateCardArchiveResponse
+            )
           end
-          def archive(id:, request_options: {}); end
+          def archive(id:, request_options: {})
+          end
 
           # Get all rates for a rate card from starting_at (either in perpetuity or until
           # ending_before, if provided)
@@ -115,15 +150,14 @@ module MetronomeSDK
               limit: Integer,
               next_page: String,
               ending_before: Time,
-              selectors: T::Array[
-                T.any(
-                  MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              ],
-              request_options: MetronomeSDK::RequestOpts
+              selectors:
+                T::Array[
+                  MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector::OrHash
+                ],
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(
+              MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse
             )
-              .returns(MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse)
           end
           def retrieve_rate_schedule(
             # Body param: ID of the rate card to get the schedule for
@@ -142,10 +176,13 @@ module MetronomeSDK
             # returned.
             selectors: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # @api private
           sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
-          def self.new(client:); end
+          def self.new(client:)
+          end
         end
       end
     end

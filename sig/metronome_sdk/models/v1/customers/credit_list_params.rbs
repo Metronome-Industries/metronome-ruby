@@ -72,8 +72,6 @@ module MetronomeSDK
             ?starting_at: Time,
             ?request_options: MetronomeSDK::request_opts
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::Customers::credit_list_params
         end
       end
     end

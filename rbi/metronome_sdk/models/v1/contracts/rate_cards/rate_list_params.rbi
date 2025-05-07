@@ -9,6 +9,11 @@ module MetronomeSDK
             extend MetronomeSDK::Internal::Type::RequestParameters::Converter
             include MetronomeSDK::Internal::Type::RequestParameters
 
+            OrHash =
+              T.type_alias do
+                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+              end
+
             # inclusive starting point for the rates schedule
             sig { returns(Time) }
             attr_accessor :at
@@ -33,19 +38,24 @@ module MetronomeSDK
 
             # List of rate selectors, rates matching ANY of the selector will be included in
             # the response Passing no selectors will result in all rates being returned.
-            sig { returns(T.nilable(T::Array[MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams::Selector])) }
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    MetronomeSDK::V1::Contracts::RateCards::RateListParams::Selector
+                  ]
+                )
+              )
+            end
             attr_reader :selectors
 
             sig do
               params(
-                selectors: T::Array[
-                  T.any(
-                    MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams::Selector,
-                    MetronomeSDK::Internal::AnyHash
-                  )
-                ]
-              )
-                .void
+                selectors:
+                  T::Array[
+                    MetronomeSDK::V1::Contracts::RateCards::RateListParams::Selector::OrHash
+                  ]
+              ).void
             end
             attr_writer :selectors
 
@@ -55,15 +65,12 @@ module MetronomeSDK
                 rate_card_id: String,
                 limit: Integer,
                 next_page: String,
-                selectors: T::Array[
-                  T.any(
-                    MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams::Selector,
-                    MetronomeSDK::Internal::AnyHash
-                  )
-                ],
-                request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-              )
-                .returns(T.attached_class)
+                selectors:
+                  T::Array[
+                    MetronomeSDK::V1::Contracts::RateCards::RateListParams::Selector::OrHash
+                  ],
+                request_options: MetronomeSDK::RequestOptions::OrHash
+              ).returns(T.attached_class)
             end
             def self.new(
               # inclusive starting point for the rates schedule
@@ -78,29 +85,43 @@ module MetronomeSDK
               # the response Passing no selectors will result in all rates being returned.
               selectors: nil,
               request_options: {}
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    at: Time,
-                    rate_card_id: String,
-                    limit: Integer,
-                    next_page: String,
-                    selectors: T::Array[MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams::Selector],
-                    request_options: MetronomeSDK::RequestOptions
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  at: Time,
+                  rate_card_id: String,
+                  limit: Integer,
+                  next_page: String,
+                  selectors:
+                    T::Array[
+                      MetronomeSDK::V1::Contracts::RateCards::RateListParams::Selector
+                    ],
+                  request_options: MetronomeSDK::RequestOptions
+                }
+              )
+            end
+            def to_hash
+            end
 
             class Selector < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                end
+
               # List of pricing group key value pairs, rates containing the matching key / value
               # pairs will be included in the response.
               sig { returns(T.nilable(T::Hash[Symbol, String])) }
               attr_reader :partial_pricing_group_values
 
-              sig { params(partial_pricing_group_values: T::Hash[Symbol, String]).void }
+              sig do
+                params(
+                  partial_pricing_group_values: T::Hash[Symbol, String]
+                ).void
+              end
               attr_writer :partial_pricing_group_values
 
               # List of pricing group key value pairs, rates matching all of the key / value
@@ -132,8 +153,7 @@ module MetronomeSDK
                   pricing_group_values: T::Hash[Symbol, String],
                   product_id: String,
                   product_tags: T::Array[String]
-                )
-                  .returns(T.attached_class)
+                ).returns(T.attached_class)
               end
               def self.new(
                 # List of pricing group key value pairs, rates containing the matching key / value
@@ -147,19 +167,21 @@ module MetronomeSDK
                 # List of product tags, rates matching any of the tags will be included in the
                 # response.
                 product_tags: nil
-              ); end
-              sig do
-                override
-                  .returns(
-                    {
-                      partial_pricing_group_values: T::Hash[Symbol, String],
-                      pricing_group_values: T::Hash[Symbol, String],
-                      product_id: String,
-                      product_tags: T::Array[String]
-                    }
-                  )
+              )
               end
-              def to_hash; end
+
+              sig do
+                override.returns(
+                  {
+                    partial_pricing_group_values: T::Hash[Symbol, String],
+                    pricing_group_values: T::Hash[Symbol, String],
+                    product_id: String,
+                    product_tags: T::Array[String]
+                  }
+                )
+              end
+              def to_hash
+              end
             end
           end
         end

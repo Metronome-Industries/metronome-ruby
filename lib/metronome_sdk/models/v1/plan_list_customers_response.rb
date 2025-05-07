@@ -7,8 +7,8 @@ module MetronomeSDK
       class PlanListCustomersResponse < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute customer_details
         #
-        #   @return [MetronomeSDK::Models::V1::CustomerDetail]
-        required :customer_details, -> { MetronomeSDK::Models::V1::CustomerDetail }
+        #   @return [MetronomeSDK::V1::CustomerDetail]
+        required :customer_details, -> { MetronomeSDK::V1::CustomerDetail }
 
         # @!attribute plan_details
         #
@@ -16,7 +16,7 @@ module MetronomeSDK
         required :plan_details, -> { MetronomeSDK::Models::V1::PlanListCustomersResponse::PlanDetails }
 
         # @!method initialize(customer_details:, plan_details:)
-        #   @param customer_details [MetronomeSDK::Models::V1::CustomerDetail]
+        #   @param customer_details [MetronomeSDK::V1::CustomerDetail]
         #   @param plan_details [MetronomeSDK::Models::V1::PlanListCustomersResponse::PlanDetails]
 
         # @see MetronomeSDK::Models::V1::PlanListCustomersResponse#plan_details

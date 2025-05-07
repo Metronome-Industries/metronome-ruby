@@ -3,13 +3,16 @@
 module MetronomeSDK
   module Models
     class Rate < MetronomeSDK::Internal::Type::BaseModel
-      sig { returns(MetronomeSDK::Models::Rate::RateType::TaggedSymbol) }
+      OrHash =
+        T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
+      sig { returns(MetronomeSDK::Rate::RateType::TaggedSymbol) }
       attr_accessor :rate_type
 
-      sig { returns(T.nilable(MetronomeSDK::Models::CreditTypeData)) }
+      sig { returns(T.nilable(MetronomeSDK::CreditTypeData)) }
       attr_reader :credit_type
 
-      sig { params(credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash)).void }
+      sig { params(credit_type: MetronomeSDK::CreditTypeData::OrHash).void }
       attr_writer :credit_type
 
       # Only set for CUSTOM rate_type. This field is interpreted by custom rate
@@ -52,10 +55,10 @@ module MetronomeSDK
       attr_writer :quantity
 
       # Only set for TIERED rate_type.
-      sig { returns(T.nilable(T::Array[MetronomeSDK::Models::Tier])) }
+      sig { returns(T.nilable(T::Array[MetronomeSDK::Tier])) }
       attr_reader :tiers
 
-      sig { params(tiers: T::Array[T.any(MetronomeSDK::Models::Tier, MetronomeSDK::Internal::AnyHash)]).void }
+      sig { params(tiers: T::Array[MetronomeSDK::Tier::OrHash]).void }
       attr_writer :tiers
 
       # Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
@@ -69,17 +72,16 @@ module MetronomeSDK
 
       sig do
         params(
-          rate_type: MetronomeSDK::Models::Rate::RateType::OrSymbol,
-          credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash),
+          rate_type: MetronomeSDK::Rate::RateType::OrSymbol,
+          credit_type: MetronomeSDK::CreditTypeData::OrHash,
           custom_rate: T::Hash[Symbol, T.anything],
           is_prorated: T::Boolean,
           price: Float,
           pricing_group_values: T::Hash[Symbol, String],
           quantity: Float,
-          tiers: T::Array[T.any(MetronomeSDK::Models::Tier, MetronomeSDK::Internal::AnyHash)],
+          tiers: T::Array[MetronomeSDK::Tier::OrHash],
           use_list_prices: T::Boolean
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         rate_type:,
@@ -104,39 +106,47 @@ module MetronomeSDK
         # using list prices rather than the standard rates for this product on the
         # contract.
         use_list_prices: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              rate_type: MetronomeSDK::Models::Rate::RateType::TaggedSymbol,
-              credit_type: MetronomeSDK::Models::CreditTypeData,
-              custom_rate: T::Hash[Symbol, T.anything],
-              is_prorated: T::Boolean,
-              price: Float,
-              pricing_group_values: T::Hash[Symbol, String],
-              quantity: Float,
-              tiers: T::Array[MetronomeSDK::Models::Tier],
-              use_list_prices: T::Boolean
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            rate_type: MetronomeSDK::Rate::RateType::TaggedSymbol,
+            credit_type: MetronomeSDK::CreditTypeData,
+            custom_rate: T::Hash[Symbol, T.anything],
+            is_prorated: T::Boolean,
+            price: Float,
+            pricing_group_values: T::Hash[Symbol, String],
+            quantity: Float,
+            tiers: T::Array[MetronomeSDK::Tier],
+            use_list_prices: T::Boolean
+          }
+        )
+      end
+      def to_hash
+      end
 
       module RateType
         extend MetronomeSDK::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, MetronomeSDK::Models::Rate::RateType) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, MetronomeSDK::Rate::RateType) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        FLAT = T.let(:FLAT, MetronomeSDK::Models::Rate::RateType::TaggedSymbol)
-        PERCENTAGE = T.let(:PERCENTAGE, MetronomeSDK::Models::Rate::RateType::TaggedSymbol)
-        SUBSCRIPTION = T.let(:SUBSCRIPTION, MetronomeSDK::Models::Rate::RateType::TaggedSymbol)
-        CUSTOM = T.let(:CUSTOM, MetronomeSDK::Models::Rate::RateType::TaggedSymbol)
-        TIERED = T.let(:TIERED, MetronomeSDK::Models::Rate::RateType::TaggedSymbol)
+        FLAT = T.let(:FLAT, MetronomeSDK::Rate::RateType::TaggedSymbol)
+        PERCENTAGE =
+          T.let(:PERCENTAGE, MetronomeSDK::Rate::RateType::TaggedSymbol)
+        SUBSCRIPTION =
+          T.let(:SUBSCRIPTION, MetronomeSDK::Rate::RateType::TaggedSymbol)
+        CUSTOM = T.let(:CUSTOM, MetronomeSDK::Rate::RateType::TaggedSymbol)
+        TIERED = T.let(:TIERED, MetronomeSDK::Rate::RateType::TaggedSymbol)
 
-        sig { override.returns(T::Array[MetronomeSDK::Models::Rate::RateType::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(T::Array[MetronomeSDK::Rate::RateType::TaggedSymbol])
+        end
+        def self.values
+        end
       end
     end
   end

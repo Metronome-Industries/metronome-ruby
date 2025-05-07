@@ -11,8 +11,8 @@ module MetronomeSDK
 
           def create: (
             name: String,
-            ?aliases: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::Alias],
-            ?credit_type_conversions: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::CreditTypeConversion],
+            ?aliases: ::Array[MetronomeSDK::V1::Contracts::RateCardCreateParams::Alias],
+            ?credit_type_conversions: ::Array[MetronomeSDK::V1::Contracts::RateCardCreateParams::CreditTypeConversion],
             ?custom_fields: ::Hash[Symbol, String],
             ?description: String,
             ?fiat_credit_type_id: String,
@@ -26,7 +26,7 @@ module MetronomeSDK
 
           def update: (
             rate_card_id: String,
-            ?aliases: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardUpdateParams::Alias],
+            ?aliases: ::Array[MetronomeSDK::V1::Contracts::RateCardUpdateParams::Alias],
             ?description: String,
             ?name: String,
             ?request_options: MetronomeSDK::request_opts
@@ -50,7 +50,7 @@ module MetronomeSDK
             ?limit: Integer,
             ?next_page: String,
             ?ending_before: Time,
-            ?selectors: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector],
+            ?selectors: ::Array[MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector],
             ?request_options: MetronomeSDK::request_opts
           ) -> MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse
 

@@ -34,14 +34,13 @@ module MetronomeSDK
         #
         # @param name [String] This will be truncated to 160 characters if the provided name is longer.
         #
-        # @param billing_config [MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig]
+        # @param billing_config [MetronomeSDK::V1::CustomerCreateParams::BillingConfig]
         #
         # @param custom_fields [Hash{Symbol=>String}]
         #
-        # @param customer_billing_provider_configurations [Array<MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration>]
+        # @param customer_billing_provider_configurations [Array<MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration>]
         #
         # @param external_id [String] (deprecated, use ingest_aliases instead) an alias that can be used to refer to t
-        # ...
         #
         # @param ingest_aliases [Array<String>] Aliases that can be used to refer to this customer in usage events
         #
@@ -51,7 +50,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::CustomerCreateParams
         def create(params)
-          parsed, options = MetronomeSDK::Models::V1::CustomerCreateParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::CustomerCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/customers",
@@ -72,7 +71,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::CustomerRetrieveParams
         def retrieve(params)
-          parsed, options = MetronomeSDK::Models::V1::CustomerRetrieveParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::CustomerRetrieveParams.dump_request(params)
           customer_id =
             parsed.delete(:customer_id) do
               raise ArgumentError.new("missing required path argument #{_1}")
@@ -101,24 +100,22 @@ module MetronomeSDK
         # @param next_page [String] Cursor that indicates where the next page of results should start.
         #
         # @param only_archived [Boolean] Filter the customer list to only return archived customers. By default, only act
-        # ...
         #
         # @param salesforce_account_ids [Array<String>] Filter the customer list by salesforce_account_id. Up to 100 ids can be provide
-        # ...
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [MetronomeSDK::Internal::CursorPage<MetronomeSDK::Models::V1::CustomerDetail>]
+        # @return [MetronomeSDK::Internal::CursorPage<MetronomeSDK::V1::CustomerDetail>]
         #
         # @see MetronomeSDK::Models::V1::CustomerListParams
         def list(params = {})
-          parsed, options = MetronomeSDK::Models::V1::CustomerListParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::CustomerListParams.dump_request(params)
           @client.request(
             method: :get,
             path: "v1/customers",
             query: parsed,
             page: MetronomeSDK::Internal::CursorPage,
-            model: MetronomeSDK::Models::V1::CustomerDetail,
+            model: MetronomeSDK::V1::CustomerDetail,
             options: options
           )
         end
@@ -134,7 +131,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::CustomerArchiveParams
         def archive(params)
-          parsed, options = MetronomeSDK::Models::V1::CustomerArchiveParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::CustomerArchiveParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/customers/archive",
@@ -154,14 +151,12 @@ module MetronomeSDK
         # @param customer_id [String] Path param:
         #
         # @param include_archived [Boolean] Query param: If true, the list of returned metrics will include archived metrics
-        # ...
         #
         # @param limit [Integer] Query param: Max number of results that should be returned
         #
         # @param next_page [String] Query param: Cursor that indicates where the next page of results should start.
         #
         # @param on_current_plan [Boolean] Query param: If true, the list of metrics will be filtered to just ones that are
-        # ...
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -169,7 +164,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::CustomerListBillableMetricsParams
         def list_billable_metrics(params)
-          parsed, options = MetronomeSDK::Models::V1::CustomerListBillableMetricsParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::CustomerListBillableMetricsParams.dump_request(params)
           customer_id =
             parsed.delete(:customer_id) do
               raise ArgumentError.new("missing required path argument #{_1}")
@@ -206,7 +201,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::CustomerListCostsParams
         def list_costs(params)
-          parsed, options = MetronomeSDK::Models::V1::CustomerListCostsParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::CustomerListCostsParams.dump_request(params)
           customer_id =
             parsed.delete(:customer_id) do
               raise ArgumentError.new("missing required path argument #{_1}")
@@ -237,7 +232,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::CustomerSetIngestAliasesParams
         def set_ingest_aliases(params)
-          parsed, options = MetronomeSDK::Models::V1::CustomerSetIngestAliasesParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::CustomerSetIngestAliasesParams.dump_request(params)
           customer_id =
             parsed.delete(:customer_id) do
               raise ArgumentError.new("missing required path argument #{_1}")
@@ -261,7 +256,6 @@ module MetronomeSDK
         # @param customer_id [String] Path param:
         #
         # @param name [String] Body param: The new name for the customer. This will be truncated to 160 charact
-        # ...
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -269,7 +263,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::CustomerSetNameParams
         def set_name(params)
-          parsed, options = MetronomeSDK::Models::V1::CustomerSetNameParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::CustomerSetNameParams.dump_request(params)
           customer_id =
             parsed.delete(:customer_id) do
               raise ArgumentError.new("missing required path argument #{_1}")
@@ -293,7 +287,6 @@ module MetronomeSDK
         # @param customer_id [String] Path param:
         #
         # @param leave_stripe_invoices_in_draft [Boolean, nil] Body param: Leave in draft or set to auto-advance on invoices sent to Stripe. Fa
-        # ...
         #
         # @param salesforce_account_id [String, nil] Body param: The Salesforce account ID for the customer
         #
@@ -303,7 +296,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::CustomerUpdateConfigParams
         def update_config(params)
-          parsed, options = MetronomeSDK::Models::V1::CustomerUpdateConfigParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::CustomerUpdateConfigParams.dump_request(params)
           customer_id =
             parsed.delete(:customer_id) do
               raise ArgumentError.new("missing required path argument #{_1}")

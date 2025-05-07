@@ -33,8 +33,6 @@ module MetronomeSDK
           ?include_ledgers: bool,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
-
-        def to_hash: -> MetronomeSDK::Models::V1::contract_retrieve_params
       end
     end
   end

@@ -29,8 +29,8 @@ module MetronomeSDK
 
             # @!attribute rate_type
             #
-            #   @return [Symbol, MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::RateType]
-            required :rate_type, enum: -> { MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::RateType }
+            #   @return [Symbol, MetronomeSDK::V1::Contracts::RateCards::RateAddParams::RateType]
+            required :rate_type, enum: -> { MetronomeSDK::V1::Contracts::RateCards::RateAddParams::RateType }
 
             # @!attribute starting_at
             #   inclusive effective date
@@ -42,8 +42,8 @@ module MetronomeSDK
             #   A distinct rate on the rate card. You can choose to use this rate rather than
             #   list rate when consuming a credit or commit.
             #
-            #   @return [MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::CommitRate, nil]
-            optional :commit_rate, -> { MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::CommitRate }
+            #   @return [MetronomeSDK::V1::Contracts::RateCards::RateAddParams::CommitRate, nil]
+            optional :commit_rate, -> { MetronomeSDK::V1::Contracts::RateCards::RateAddParams::CommitRate }
 
             # @!attribute credit_type_id
             #   The Metronome ID of the credit type to associate with price, defaults to USD
@@ -97,8 +97,8 @@ module MetronomeSDK
             # @!attribute tiers
             #   Only set for TIERED rate_type.
             #
-            #   @return [Array<MetronomeSDK::Models::Tier>, nil]
-            optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::Tier] }
+            #   @return [Array<MetronomeSDK::Tier>, nil]
+            optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
 
             # @!attribute use_list_prices
             #   Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
@@ -119,36 +119,29 @@ module MetronomeSDK
             #
             #   @param rate_card_id [String] ID of the rate card to update
             #
-            #   @param rate_type [Symbol, MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::RateType]
+            #   @param rate_type [Symbol, MetronomeSDK::V1::Contracts::RateCards::RateAddParams::RateType]
             #
             #   @param starting_at [Time] inclusive effective date
             #
-            #   @param commit_rate [MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::CommitRate] A distinct rate on the rate card. You can choose to use this rate rather than li
-            #   ...
+            #   @param commit_rate [MetronomeSDK::V1::Contracts::RateCards::RateAddParams::CommitRate] A distinct rate on the rate card. You can choose to use this rate rather than li
             #
             #   @param credit_type_id [String] The Metronome ID of the credit type to associate with price, defaults to USD (ce
-            #   ...
             #
             #   @param custom_rate [Hash{Symbol=>Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate processo
-            #   ...
             #
             #   @param ending_before [Time] exclusive end date
             #
             #   @param is_prorated [Boolean] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
-            #   ...
             #
             #   @param price [Float] Default price. For FLAT and SUBSCRIPTION rate_type, this must be >=0. For PERCEN
-            #   ...
             #
             #   @param pricing_group_values [Hash{Symbol=>String}] Optional. List of pricing group key value pairs which will be used to calculate
-            #   ...
             #
             #   @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
             #
-            #   @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
+            #   @param tiers [Array<MetronomeSDK::Tier>] Only set for TIERED rate_type.
             #
             #   @param use_list_prices [Boolean] Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
-            #   ...
             #
             #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 
@@ -168,9 +161,11 @@ module MetronomeSDK
             class CommitRate < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute rate_type
               #
-              #   @return [Symbol, MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::CommitRate::RateType]
+              #   @return [Symbol, MetronomeSDK::V1::Contracts::RateCards::RateAddParams::CommitRate::RateType]
               required :rate_type,
-                       enum: -> { MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::CommitRate::RateType }
+                       enum: -> {
+                         MetronomeSDK::V1::Contracts::RateCards::RateAddParams::CommitRate::RateType
+                       }
 
               # @!attribute price
               #   Commit rate price. For FLAT rate_type, this must be >=0.
@@ -181,20 +176,20 @@ module MetronomeSDK
               # @!attribute tiers
               #   Only set for TIERED rate_type.
               #
-              #   @return [Array<MetronomeSDK::Models::Tier>, nil]
-              optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::Tier] }
+              #   @return [Array<MetronomeSDK::Tier>, nil]
+              optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
 
               # @!method initialize(rate_type:, price: nil, tiers: nil)
               #   A distinct rate on the rate card. You can choose to use this rate rather than
               #   list rate when consuming a credit or commit.
               #
-              #   @param rate_type [Symbol, MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::CommitRate::RateType]
+              #   @param rate_type [Symbol, MetronomeSDK::V1::Contracts::RateCards::RateAddParams::CommitRate::RateType]
               #
               #   @param price [Float] Commit rate price. For FLAT rate_type, this must be >=0.
               #
-              #   @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
+              #   @param tiers [Array<MetronomeSDK::Tier>] Only set for TIERED rate_type.
 
-              # @see MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::CommitRate#rate_type
+              # @see MetronomeSDK::V1::Contracts::RateCards::RateAddParams::CommitRate#rate_type
               module RateType
                 extend MetronomeSDK::Internal::Type::Enum
 
