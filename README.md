@@ -92,7 +92,10 @@ When the library is unable to connect to the API, or if the API returns a non-su
 
 ```ruby
 begin
-  contract = metronome.v1.contracts.create
+  contract = metronome.v1.contracts.create(
+    customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+    starting_at: "2020-01-01T00:00:00.000Z"
+  )
 rescue MetronomeSDK::Errors::APIError => e
   puts(e.status) # 400
 end
@@ -129,7 +132,11 @@ metronome = MetronomeSDK::Client.new(
 )
 
 # Or, configure per-request:
-metronome.v1.contracts.create(request_options: {max_retries: 5})
+metronome.v1.contracts.create(
+  customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+  starting_at: "2020-01-01T00:00:00.000Z",
+  request_options: {max_retries: 5}
+)
 ```
 
 ### Timeouts
@@ -147,7 +154,11 @@ metronome = MetronomeSDK::Client.new(
 )
 
 # Or, configure per-request:
-metronome.v1.contracts.create(request_options: {timeout: 5})
+metronome.v1.contracts.create(
+  customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+  starting_at: "2020-01-01T00:00:00.000Z",
+  request_options: {timeout: 5}
+)
 ```
 
 ## Model DSL
