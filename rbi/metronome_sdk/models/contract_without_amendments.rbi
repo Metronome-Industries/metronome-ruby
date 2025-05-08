@@ -42,23 +42,6 @@ module MetronomeSDK
       end
       attr_writer :usage_statement_schedule
 
-      sig do
-        returns(
-          T.nilable(
-            MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration
-          )
-        )
-      end
-      attr_reader :credit_balance_threshold_configuration
-
-      sig do
-        params(
-          credit_balance_threshold_configuration:
-            MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::OrHash
-        ).void
-      end
-      attr_writer :credit_balance_threshold_configuration
-
       sig { returns(T.nilable(T::Array[MetronomeSDK::Credit])) }
       attr_reader :credits
 
@@ -96,6 +79,23 @@ module MetronomeSDK
 
       sig { params(netsuite_sales_order_id: String).void }
       attr_writer :netsuite_sales_order_id
+
+      sig do
+        returns(
+          T.nilable(
+            MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration
+          )
+        )
+      end
+      attr_reader :prepaid_balance_threshold_configuration
+
+      sig do
+        params(
+          prepaid_balance_threshold_configuration:
+            MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::OrHash
+        ).void
+      end
+      attr_writer :prepaid_balance_threshold_configuration
 
       # This field's availability is dependent on your client's configuration.
       sig { returns(T.nilable(T::Array[MetronomeSDK::ProService])) }
@@ -252,14 +252,14 @@ module MetronomeSDK
             ],
           usage_statement_schedule:
             MetronomeSDK::ContractWithoutAmendments::UsageStatementSchedule::OrHash,
-          credit_balance_threshold_configuration:
-            MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::OrHash,
           credits: T::Array[MetronomeSDK::Credit::OrHash],
           discounts: T::Array[MetronomeSDK::Discount::OrHash],
           ending_before: Time,
           name: String,
           net_payment_terms_days: Float,
           netsuite_sales_order_id: String,
+          prepaid_balance_threshold_configuration:
+            MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::OrHash,
           professional_services: T::Array[MetronomeSDK::ProService::OrHash],
           rate_card_id: String,
           recurring_commits:
@@ -293,7 +293,6 @@ module MetronomeSDK
         starting_at:,
         transitions:,
         usage_statement_schedule:,
-        credit_balance_threshold_configuration: nil,
         credits: nil,
         # This field's availability is dependent on your client's configuration.
         discounts: nil,
@@ -302,6 +301,7 @@ module MetronomeSDK
         net_payment_terms_days: nil,
         # This field's availability is dependent on your client's configuration.
         netsuite_sales_order_id: nil,
+        prepaid_balance_threshold_configuration: nil,
         # This field's availability is dependent on your client's configuration.
         professional_services: nil,
         rate_card_id: nil,
@@ -337,14 +337,14 @@ module MetronomeSDK
               T::Array[MetronomeSDK::ContractWithoutAmendments::Transition],
             usage_statement_schedule:
               MetronomeSDK::ContractWithoutAmendments::UsageStatementSchedule,
-            credit_balance_threshold_configuration:
-              MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration,
             credits: T::Array[MetronomeSDK::Credit],
             discounts: T::Array[MetronomeSDK::Discount],
             ending_before: Time,
             name: String,
             net_payment_terms_days: Float,
             netsuite_sales_order_id: String,
+            prepaid_balance_threshold_configuration:
+              MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration,
             professional_services: T::Array[MetronomeSDK::ProService],
             rate_card_id: String,
             recurring_commits:
@@ -534,13 +534,13 @@ module MetronomeSDK
         end
       end
 
-      class CreditBalanceThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
+      class PrepaidBalanceThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
           T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
 
         sig do
           returns(
-            MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::Commit
+            MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::Commit
           )
         end
         attr_reader :commit
@@ -548,7 +548,7 @@ module MetronomeSDK
         sig do
           params(
             commit:
-              MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::Commit::OrHash
+              MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::Commit::OrHash
           ).void
         end
         attr_writer :commit
@@ -561,7 +561,7 @@ module MetronomeSDK
 
         sig do
           returns(
-            MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig
+            MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig
           )
         end
         attr_reader :payment_gate_config
@@ -569,7 +569,7 @@ module MetronomeSDK
         sig do
           params(
             payment_gate_config:
-              MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::OrHash
+              MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::OrHash
           ).void
         end
         attr_writer :payment_gate_config
@@ -578,18 +578,18 @@ module MetronomeSDK
         sig { returns(Float) }
         attr_accessor :recharge_to_amount
 
-        # Specify the threshold amount for the contract. Each time the contract's balance
-        # lowers to this amount, a threshold charge will be initiated.
+        # Specify the threshold amount for the contract. Each time the contract's prepaid
+        # balance lowers to this amount, a threshold charge will be initiated.
         sig { returns(Float) }
         attr_accessor :threshold_amount
 
         sig do
           params(
             commit:
-              MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::Commit::OrHash,
+              MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::Commit::OrHash,
             is_enabled: T::Boolean,
             payment_gate_config:
-              MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::OrHash,
+              MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::OrHash,
             recharge_to_amount: Float,
             threshold_amount: Float
           ).returns(T.attached_class)
@@ -603,8 +603,8 @@ module MetronomeSDK
           payment_gate_config:,
           # Specify the amount the balance should be recharged to.
           recharge_to_amount:,
-          # Specify the threshold amount for the contract. Each time the contract's balance
-          # lowers to this amount, a threshold charge will be initiated.
+          # Specify the threshold amount for the contract. Each time the contract's prepaid
+          # balance lowers to this amount, a threshold charge will be initiated.
           threshold_amount:
         )
         end
@@ -613,10 +613,10 @@ module MetronomeSDK
           override.returns(
             {
               commit:
-                MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::Commit,
+                MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::Commit,
               is_enabled: T::Boolean,
               payment_gate_config:
-                MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig,
+                MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig,
               recharge_to_amount: Float,
               threshold_amount: Float
             }
@@ -717,7 +717,7 @@ module MetronomeSDK
           # wish to payment gate the commit balance.
           sig do
             returns(
-              MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType::TaggedSymbol
+              MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType::TaggedSymbol
             )
           end
           attr_accessor :payment_gate_type
@@ -726,7 +726,7 @@ module MetronomeSDK
           sig do
             returns(
               T.nilable(
-                MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig
+                MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig
               )
             )
           end
@@ -735,7 +735,7 @@ module MetronomeSDK
           sig do
             params(
               stripe_config:
-                MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::OrHash
+                MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::OrHash
             ).void
           end
           attr_writer :stripe_config
@@ -746,7 +746,7 @@ module MetronomeSDK
           sig do
             returns(
               T.nilable(
-                MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
+                MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
               )
             )
           end
@@ -755,7 +755,7 @@ module MetronomeSDK
           sig do
             params(
               tax_type:
-                MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::TaxType::OrSymbol
+                MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType::OrSymbol
             ).void
           end
           attr_writer :tax_type
@@ -763,11 +763,11 @@ module MetronomeSDK
           sig do
             params(
               payment_gate_type:
-                MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType::OrSymbol,
+                MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType::OrSymbol,
               stripe_config:
-                MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::OrHash,
+                MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::OrHash,
               tax_type:
-                MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::TaxType::OrSymbol
+                MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType::OrSymbol
             ).returns(T.attached_class)
           end
           def self.new(
@@ -789,11 +789,11 @@ module MetronomeSDK
             override.returns(
               {
                 payment_gate_type:
-                  MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType::TaggedSymbol,
+                  MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType::TaggedSymbol,
                 stripe_config:
-                  MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
+                  MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
                 tax_type:
-                  MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
+                  MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
               }
             )
           end
@@ -811,7 +811,7 @@ module MetronomeSDK
               T.type_alias do
                 T.all(
                   Symbol,
-                  MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType
+                  MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -819,23 +819,23 @@ module MetronomeSDK
             NONE =
               T.let(
                 :NONE,
-                MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType::TaggedSymbol
+                MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType::TaggedSymbol
               )
             STRIPE =
               T.let(
                 :STRIPE,
-                MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType::TaggedSymbol
+                MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType::TaggedSymbol
               )
             EXTERNAL =
               T.let(
                 :EXTERNAL,
-                MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType::TaggedSymbol
+                MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType::TaggedSymbol
+                  MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType::TaggedSymbol
                 ]
               )
             end
@@ -852,7 +852,7 @@ module MetronomeSDK
             # If left blank, will default to INVOICE
             sig do
               returns(
-                MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::TaggedSymbol
+                MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::TaggedSymbol
               )
             end
             attr_accessor :payment_type
@@ -861,7 +861,7 @@ module MetronomeSDK
             sig do
               params(
                 payment_type:
-                  MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol
+                  MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol
               ).returns(T.attached_class)
             end
             def self.new(
@@ -874,7 +874,7 @@ module MetronomeSDK
               override.returns(
                 {
                   payment_type:
-                    MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::TaggedSymbol
+                    MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::TaggedSymbol
                 }
               )
             end
@@ -889,7 +889,7 @@ module MetronomeSDK
                 T.type_alias do
                   T.all(
                     Symbol,
-                    MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType
+                    MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -897,18 +897,18 @@ module MetronomeSDK
               INVOICE =
                 T.let(
                   :INVOICE,
-                  MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::TaggedSymbol
+                  MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::TaggedSymbol
                 )
               PAYMENT_INTENT =
                 T.let(
                   :PAYMENT_INTENT,
-                  MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::TaggedSymbol
+                  MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::TaggedSymbol
+                    MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::TaggedSymbol
                   ]
                 )
               end
@@ -927,7 +927,7 @@ module MetronomeSDK
               T.type_alias do
                 T.all(
                   Symbol,
-                  MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::TaxType
+                  MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -935,18 +935,18 @@ module MetronomeSDK
             NONE =
               T.let(
                 :NONE,
-                MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
+                MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
               )
             STRIPE =
               T.let(
                 :STRIPE,
-                MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
+                MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  MetronomeSDK::ContractWithoutAmendments::CreditBalanceThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
+                  MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
                 ]
               )
             end

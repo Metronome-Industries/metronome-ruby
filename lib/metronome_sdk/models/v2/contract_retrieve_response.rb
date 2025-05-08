@@ -83,12 +83,6 @@ module MetronomeSDK
           #   @return [Time, nil]
           optional :archived_at, Time
 
-          # @!attribute credit_balance_threshold_configuration
-          #
-          #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CreditBalanceThresholdConfiguration, nil]
-          optional :credit_balance_threshold_configuration,
-                   -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CreditBalanceThresholdConfiguration }
-
           # @!attribute credits
           #
           #   @return [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit>, nil]
@@ -143,6 +137,12 @@ module MetronomeSDK
           #
           #   @return [String, nil]
           optional :netsuite_sales_order_id, String
+
+          # @!attribute prepaid_balance_threshold_configuration
+          #
+          #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration, nil]
+          optional :prepaid_balance_threshold_configuration,
+                   -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration }
 
           # @!attribute professional_services
           #   This field's availability is dependent on your client's configuration.
@@ -213,7 +213,7 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :uniqueness_key, String
 
-          # @!method initialize(id:, commits:, created_at:, created_by:, customer_id:, overrides:, scheduled_charges:, starting_at:, transitions:, usage_filter:, usage_statement_schedule:, archived_at: nil, credit_balance_threshold_configuration: nil, credits: nil, custom_fields: nil, customer_billing_provider_configuration: nil, discounts: nil, ending_before: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, professional_services: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, salesforce_opportunity_id: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, total_contract_value: nil, uniqueness_key: nil)
+          # @!method initialize(id:, commits:, created_at:, created_by:, customer_id:, overrides:, scheduled_charges:, starting_at:, transitions:, usage_filter:, usage_statement_schedule:, archived_at: nil, credits: nil, custom_fields: nil, customer_billing_provider_configuration: nil, discounts: nil, ending_before: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, prepaid_balance_threshold_configuration: nil, professional_services: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, salesforce_opportunity_id: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, total_contract_value: nil, uniqueness_key: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractRetrieveResponse::Data} for more details.
           #
@@ -241,8 +241,6 @@ module MetronomeSDK
           #
           #   @param archived_at [Time]
           #
-          #   @param credit_balance_threshold_configuration [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CreditBalanceThresholdConfiguration]
-          #
           #   @param credits [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit>]
           #
           #   @param custom_fields [Hash{Symbol=>String}]
@@ -260,6 +258,8 @@ module MetronomeSDK
           #   @param net_payment_terms_days [Float]
           #
           #   @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
+          #
+          #   @param prepaid_balance_threshold_configuration [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration]
           #
           #   @param professional_services [Array<MetronomeSDK::ProService>] This field's availability is dependent on your client's configuration.
           #
@@ -1487,101 +1487,6 @@ module MetronomeSDK
             end
           end
 
-          # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data#credit_balance_threshold_configuration
-          class CreditBalanceThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
-            # @!attribute commit
-            #
-            #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CreditBalanceThresholdConfiguration::Commit]
-            required :commit,
-                     -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CreditBalanceThresholdConfiguration::Commit }
-
-            # @!attribute is_enabled
-            #   When set to false, the contract will not be evaluated against the
-            #   threshold_amount. Toggling to true will result an immediate evaluation,
-            #   regardless of prior state.
-            #
-            #   @return [Boolean]
-            required :is_enabled, MetronomeSDK::Internal::Type::Boolean
-
-            # @!attribute recharge_to_amount
-            #   Specify the amount the balance should be recharged to.
-            #
-            #   @return [Float]
-            required :recharge_to_amount, Float
-
-            # @!attribute threshold_amount
-            #   Specify the threshold amount for the contract. Each time the contract's balance
-            #   lowers to this amount, a threshold charge will be initiated.
-            #
-            #   @return [Float]
-            required :threshold_amount, Float
-
-            # @!method initialize(commit:, is_enabled:, recharge_to_amount:, threshold_amount:)
-            #   Some parameter documentations has been truncated, see
-            #   {MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CreditBalanceThresholdConfiguration}
-            #   for more details.
-            #
-            #   @param commit [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CreditBalanceThresholdConfiguration::Commit]
-            #
-            #   @param is_enabled [Boolean] When set to false, the contract will not be evaluated against the threshold_amou
-            #
-            #   @param recharge_to_amount [Float] Specify the amount the balance should be recharged to.
-            #
-            #   @param threshold_amount [Float] Specify the threshold amount for the contract. Each time the contract's balance
-
-            # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CreditBalanceThresholdConfiguration#commit
-            class Commit < MetronomeSDK::Internal::Type::BaseModel
-              # @!attribute product_id
-              #   The commit product that will be used to generate the line item for commit
-              #   payment.
-              #
-              #   @return [String]
-              required :product_id, String
-
-              # @!attribute applicable_product_ids
-              #   Which products the threshold commit applies to. If both applicable_product_ids
-              #   and applicable_product_tags are not provided, the commit applies to all
-              #   products.
-              #
-              #   @return [Array<String>, nil]
-              optional :applicable_product_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
-
-              # @!attribute applicable_product_tags
-              #   Which tags the threshold commit applies to. If both applicable_product_ids and
-              #   applicable_product_tags are not provided, the commit applies to all products.
-              #
-              #   @return [Array<String>, nil]
-              optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
-
-              # @!attribute description
-              #
-              #   @return [String, nil]
-              optional :description, String
-
-              # @!attribute name
-              #   Specify the name of the line item for the threshold charge. If left blank, it
-              #   will default to the commit product name.
-              #
-              #   @return [String, nil]
-              optional :name, String
-
-              # @!method initialize(product_id:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, name: nil)
-              #   Some parameter documentations has been truncated, see
-              #   {MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CreditBalanceThresholdConfiguration::Commit}
-              #   for more details.
-              #
-              #   @param product_id [String] The commit product that will be used to generate the line item for commit paymen
-              #
-              #   @param applicable_product_ids [Array<String>] Which products the threshold commit applies to. If both applicable_product_ids a
-              #
-              #   @param applicable_product_tags [Array<String>] Which tags the threshold commit applies to. If both applicable_product_ids and a
-              #
-              #   @param description [String]
-              #
-              #   @param name [String] Specify the name of the line item for the threshold charge. If left blank, it wi
-            end
-          end
-
           class Credit < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute id
             #
@@ -2091,6 +1996,101 @@ module MetronomeSDK
 
             # @!method self.values
             #   @return [Array<Symbol>]
+          end
+
+          # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data#prepaid_balance_threshold_configuration
+          class PrepaidBalanceThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute commit
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration::Commit]
+            required :commit,
+                     -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration::Commit }
+
+            # @!attribute is_enabled
+            #   When set to false, the contract will not be evaluated against the
+            #   threshold_amount. Toggling to true will result an immediate evaluation,
+            #   regardless of prior state.
+            #
+            #   @return [Boolean]
+            required :is_enabled, MetronomeSDK::Internal::Type::Boolean
+
+            # @!attribute recharge_to_amount
+            #   Specify the amount the balance should be recharged to.
+            #
+            #   @return [Float]
+            required :recharge_to_amount, Float
+
+            # @!attribute threshold_amount
+            #   Specify the threshold amount for the contract. Each time the contract's balance
+            #   lowers to this amount, a threshold charge will be initiated.
+            #
+            #   @return [Float]
+            required :threshold_amount, Float
+
+            # @!method initialize(commit:, is_enabled:, recharge_to_amount:, threshold_amount:)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration}
+            #   for more details.
+            #
+            #   @param commit [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration::Commit]
+            #
+            #   @param is_enabled [Boolean] When set to false, the contract will not be evaluated against the threshold_amou
+            #
+            #   @param recharge_to_amount [Float] Specify the amount the balance should be recharged to.
+            #
+            #   @param threshold_amount [Float] Specify the threshold amount for the contract. Each time the contract's balance
+
+            # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration#commit
+            class Commit < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute product_id
+              #   The commit product that will be used to generate the line item for commit
+              #   payment.
+              #
+              #   @return [String]
+              required :product_id, String
+
+              # @!attribute applicable_product_ids
+              #   Which products the threshold commit applies to. If both applicable_product_ids
+              #   and applicable_product_tags are not provided, the commit applies to all
+              #   products.
+              #
+              #   @return [Array<String>, nil]
+              optional :applicable_product_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+              # @!attribute applicable_product_tags
+              #   Which tags the threshold commit applies to. If both applicable_product_ids and
+              #   applicable_product_tags are not provided, the commit applies to all products.
+              #
+              #   @return [Array<String>, nil]
+              optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+              # @!attribute description
+              #
+              #   @return [String, nil]
+              optional :description, String
+
+              # @!attribute name
+              #   Specify the name of the line item for the threshold charge. If left blank, it
+              #   will default to the commit product name.
+              #
+              #   @return [String, nil]
+              optional :name, String
+
+              # @!method initialize(product_id:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, name: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration::Commit}
+              #   for more details.
+              #
+              #   @param product_id [String] The commit product that will be used to generate the line item for commit paymen
+              #
+              #   @param applicable_product_ids [Array<String>] Which products the threshold commit applies to. If both applicable_product_ids a
+              #
+              #   @param applicable_product_tags [Array<String>] Which tags the threshold commit applies to. If both applicable_product_ids and a
+              #
+              #   @param description [String]
+              #
+              #   @param name [String] Specify the name of the line item for the threshold charge. If left blank, it wi
+            end
           end
 
           class RecurringCommit < MetronomeSDK::Internal::Type::BaseModel

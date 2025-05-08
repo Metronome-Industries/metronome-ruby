@@ -22,8 +22,6 @@ module MetronomeSDK
               MetronomeSDK::V1::ContractCreateParams::BillingProviderConfiguration::OrHash,
             commits:
               T::Array[MetronomeSDK::V1::ContractCreateParams::Commit::OrHash],
-            credit_balance_threshold_configuration:
-              MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::OrHash,
             credits:
               T::Array[MetronomeSDK::V1::ContractCreateParams::Credit::OrHash],
             custom_fields: T::Hash[Symbol, String],
@@ -41,6 +39,8 @@ module MetronomeSDK
               T::Array[
                 MetronomeSDK::V1::ContractCreateParams::Override::OrHash
               ],
+            prepaid_balance_threshold_configuration:
+              MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::OrHash,
             professional_services:
               T::Array[
                 MetronomeSDK::V1::ContractCreateParams::ProfessionalService::OrHash
@@ -85,7 +85,6 @@ module MetronomeSDK
           # The billing provider configuration associated with a contract.
           billing_provider_configuration: nil,
           commits: nil,
-          credit_balance_threshold_configuration: nil,
           credits: nil,
           custom_fields: nil,
           # This field's availability is dependent on your client's configuration.
@@ -102,6 +101,7 @@ module MetronomeSDK
           # This field's availability is dependent on your client's configuration.
           netsuite_sales_order_id: nil,
           overrides: nil,
+          prepaid_balance_threshold_configuration: nil,
           # This field's availability is dependent on your client's configuration.
           professional_services: nil,
           # Selects the rate card linked to the specified alias as of the contract's start

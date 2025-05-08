@@ -119,23 +119,6 @@ module MetronomeSDK
           sig do
             returns(
               T.nilable(
-                MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CreditBalanceThresholdConfiguration
-              )
-            )
-          end
-          attr_reader :credit_balance_threshold_configuration
-
-          sig do
-            params(
-              credit_balance_threshold_configuration:
-                MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CreditBalanceThresholdConfiguration::OrHash
-            ).void
-          end
-          attr_writer :credit_balance_threshold_configuration
-
-          sig do
-            returns(
-              T.nilable(
                 T::Array[
                   MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit
                 ]
@@ -232,6 +215,23 @@ module MetronomeSDK
 
           sig { params(netsuite_sales_order_id: String).void }
           attr_writer :netsuite_sales_order_id
+
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration
+              )
+            )
+          end
+          attr_reader :prepaid_balance_threshold_configuration
+
+          sig do
+            params(
+              prepaid_balance_threshold_configuration:
+                MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration::OrHash
+            ).void
+          end
+          attr_writer :prepaid_balance_threshold_configuration
 
           # This field's availability is dependent on your client's configuration.
           sig { returns(T.nilable(T::Array[MetronomeSDK::ProService])) }
@@ -403,8 +403,6 @@ module MetronomeSDK
               usage_statement_schedule:
                 MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::UsageStatementSchedule::OrHash,
               archived_at: Time,
-              credit_balance_threshold_configuration:
-                MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CreditBalanceThresholdConfiguration::OrHash,
               credits:
                 T::Array[
                   MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::OrHash
@@ -419,6 +417,8 @@ module MetronomeSDK
               name: String,
               net_payment_terms_days: Float,
               netsuite_sales_order_id: String,
+              prepaid_balance_threshold_configuration:
+                MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration::OrHash,
               professional_services: T::Array[MetronomeSDK::ProService::OrHash],
               rate_card_id: String,
               recurring_commits:
@@ -455,7 +455,6 @@ module MetronomeSDK
             usage_filter:,
             usage_statement_schedule:,
             archived_at: nil,
-            credit_balance_threshold_configuration: nil,
             credits: nil,
             custom_fields: nil,
             # This field's availability is dependent on your client's configuration.
@@ -472,6 +471,7 @@ module MetronomeSDK
             net_payment_terms_days: nil,
             # This field's availability is dependent on your client's configuration.
             netsuite_sales_order_id: nil,
+            prepaid_balance_threshold_configuration: nil,
             # This field's availability is dependent on your client's configuration.
             professional_services: nil,
             rate_card_id: nil,
@@ -524,8 +524,6 @@ module MetronomeSDK
                 usage_statement_schedule:
                   MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::UsageStatementSchedule,
                 archived_at: Time,
-                credit_balance_threshold_configuration:
-                  MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CreditBalanceThresholdConfiguration,
                 credits:
                   T::Array[
                     MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit
@@ -540,6 +538,8 @@ module MetronomeSDK
                 name: String,
                 net_payment_terms_days: Float,
                 netsuite_sales_order_id: String,
+                prepaid_balance_threshold_configuration:
+                  MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration,
                 professional_services: T::Array[MetronomeSDK::ProService],
                 rate_card_id: String,
                 recurring_commits:
@@ -3061,164 +3061,6 @@ module MetronomeSDK
             end
           end
 
-          class CreditBalanceThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
-              end
-
-            sig do
-              returns(
-                MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CreditBalanceThresholdConfiguration::Commit
-              )
-            end
-            attr_reader :commit
-
-            sig do
-              params(
-                commit:
-                  MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CreditBalanceThresholdConfiguration::Commit::OrHash
-              ).void
-            end
-            attr_writer :commit
-
-            # When set to false, the contract will not be evaluated against the
-            # threshold_amount. Toggling to true will result an immediate evaluation,
-            # regardless of prior state.
-            sig { returns(T::Boolean) }
-            attr_accessor :is_enabled
-
-            # Specify the amount the balance should be recharged to.
-            sig { returns(Float) }
-            attr_accessor :recharge_to_amount
-
-            # Specify the threshold amount for the contract. Each time the contract's balance
-            # lowers to this amount, a threshold charge will be initiated.
-            sig { returns(Float) }
-            attr_accessor :threshold_amount
-
-            sig do
-              params(
-                commit:
-                  MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CreditBalanceThresholdConfiguration::Commit::OrHash,
-                is_enabled: T::Boolean,
-                recharge_to_amount: Float,
-                threshold_amount: Float
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              commit:,
-              # When set to false, the contract will not be evaluated against the
-              # threshold_amount. Toggling to true will result an immediate evaluation,
-              # regardless of prior state.
-              is_enabled:,
-              # Specify the amount the balance should be recharged to.
-              recharge_to_amount:,
-              # Specify the threshold amount for the contract. Each time the contract's balance
-              # lowers to this amount, a threshold charge will be initiated.
-              threshold_amount:
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  commit:
-                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CreditBalanceThresholdConfiguration::Commit,
-                  is_enabled: T::Boolean,
-                  recharge_to_amount: Float,
-                  threshold_amount: Float
-                }
-              )
-            end
-            def to_hash
-            end
-
-            class Commit < MetronomeSDK::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
-                end
-
-              # The commit product that will be used to generate the line item for commit
-              # payment.
-              sig { returns(String) }
-              attr_accessor :product_id
-
-              # Which products the threshold commit applies to. If both applicable_product_ids
-              # and applicable_product_tags are not provided, the commit applies to all
-              # products.
-              sig { returns(T.nilable(T::Array[String])) }
-              attr_reader :applicable_product_ids
-
-              sig { params(applicable_product_ids: T::Array[String]).void }
-              attr_writer :applicable_product_ids
-
-              # Which tags the threshold commit applies to. If both applicable_product_ids and
-              # applicable_product_tags are not provided, the commit applies to all products.
-              sig { returns(T.nilable(T::Array[String])) }
-              attr_reader :applicable_product_tags
-
-              sig { params(applicable_product_tags: T::Array[String]).void }
-              attr_writer :applicable_product_tags
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :description
-
-              sig { params(description: String).void }
-              attr_writer :description
-
-              # Specify the name of the line item for the threshold charge. If left blank, it
-              # will default to the commit product name.
-              sig { returns(T.nilable(String)) }
-              attr_reader :name
-
-              sig { params(name: String).void }
-              attr_writer :name
-
-              sig do
-                params(
-                  product_id: String,
-                  applicable_product_ids: T::Array[String],
-                  applicable_product_tags: T::Array[String],
-                  description: String,
-                  name: String
-                ).returns(T.attached_class)
-              end
-              def self.new(
-                # The commit product that will be used to generate the line item for commit
-                # payment.
-                product_id:,
-                # Which products the threshold commit applies to. If both applicable_product_ids
-                # and applicable_product_tags are not provided, the commit applies to all
-                # products.
-                applicable_product_ids: nil,
-                # Which tags the threshold commit applies to. If both applicable_product_ids and
-                # applicable_product_tags are not provided, the commit applies to all products.
-                applicable_product_tags: nil,
-                description: nil,
-                # Specify the name of the line item for the threshold charge. If left blank, it
-                # will default to the commit product name.
-                name: nil
-              )
-              end
-
-              sig do
-                override.returns(
-                  {
-                    product_id: String,
-                    applicable_product_ids: T::Array[String],
-                    applicable_product_tags: T::Array[String],
-                    description: String,
-                    name: String
-                  }
-                )
-              end
-              def to_hash
-              end
-            end
-          end
-
           class Credit < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
@@ -4278,6 +4120,164 @@ module MetronomeSDK
               )
             end
             def self.values
+            end
+          end
+
+          class PrepaidBalanceThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+              end
+
+            sig do
+              returns(
+                MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration::Commit
+              )
+            end
+            attr_reader :commit
+
+            sig do
+              params(
+                commit:
+                  MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration::Commit::OrHash
+              ).void
+            end
+            attr_writer :commit
+
+            # When set to false, the contract will not be evaluated against the
+            # threshold_amount. Toggling to true will result an immediate evaluation,
+            # regardless of prior state.
+            sig { returns(T::Boolean) }
+            attr_accessor :is_enabled
+
+            # Specify the amount the balance should be recharged to.
+            sig { returns(Float) }
+            attr_accessor :recharge_to_amount
+
+            # Specify the threshold amount for the contract. Each time the contract's balance
+            # lowers to this amount, a threshold charge will be initiated.
+            sig { returns(Float) }
+            attr_accessor :threshold_amount
+
+            sig do
+              params(
+                commit:
+                  MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration::Commit::OrHash,
+                is_enabled: T::Boolean,
+                recharge_to_amount: Float,
+                threshold_amount: Float
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              commit:,
+              # When set to false, the contract will not be evaluated against the
+              # threshold_amount. Toggling to true will result an immediate evaluation,
+              # regardless of prior state.
+              is_enabled:,
+              # Specify the amount the balance should be recharged to.
+              recharge_to_amount:,
+              # Specify the threshold amount for the contract. Each time the contract's balance
+              # lowers to this amount, a threshold charge will be initiated.
+              threshold_amount:
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  commit:
+                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration::Commit,
+                  is_enabled: T::Boolean,
+                  recharge_to_amount: Float,
+                  threshold_amount: Float
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class Commit < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                end
+
+              # The commit product that will be used to generate the line item for commit
+              # payment.
+              sig { returns(String) }
+              attr_accessor :product_id
+
+              # Which products the threshold commit applies to. If both applicable_product_ids
+              # and applicable_product_tags are not provided, the commit applies to all
+              # products.
+              sig { returns(T.nilable(T::Array[String])) }
+              attr_reader :applicable_product_ids
+
+              sig { params(applicable_product_ids: T::Array[String]).void }
+              attr_writer :applicable_product_ids
+
+              # Which tags the threshold commit applies to. If both applicable_product_ids and
+              # applicable_product_tags are not provided, the commit applies to all products.
+              sig { returns(T.nilable(T::Array[String])) }
+              attr_reader :applicable_product_tags
+
+              sig { params(applicable_product_tags: T::Array[String]).void }
+              attr_writer :applicable_product_tags
+
+              sig { returns(T.nilable(String)) }
+              attr_reader :description
+
+              sig { params(description: String).void }
+              attr_writer :description
+
+              # Specify the name of the line item for the threshold charge. If left blank, it
+              # will default to the commit product name.
+              sig { returns(T.nilable(String)) }
+              attr_reader :name
+
+              sig { params(name: String).void }
+              attr_writer :name
+
+              sig do
+                params(
+                  product_id: String,
+                  applicable_product_ids: T::Array[String],
+                  applicable_product_tags: T::Array[String],
+                  description: String,
+                  name: String
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The commit product that will be used to generate the line item for commit
+                # payment.
+                product_id:,
+                # Which products the threshold commit applies to. If both applicable_product_ids
+                # and applicable_product_tags are not provided, the commit applies to all
+                # products.
+                applicable_product_ids: nil,
+                # Which tags the threshold commit applies to. If both applicable_product_ids and
+                # applicable_product_tags are not provided, the commit applies to all products.
+                applicable_product_tags: nil,
+                description: nil,
+                # Specify the name of the line item for the threshold charge. If left blank, it
+                # will default to the commit product name.
+                name: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    product_id: String,
+                    applicable_product_ids: T::Array[String],
+                    applicable_product_tags: T::Array[String],
+                    description: String,
+                    name: String
+                  }
+                )
+              end
+              def to_hash
+              end
             end
           end
 
