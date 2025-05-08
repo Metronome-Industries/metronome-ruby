@@ -32,12 +32,6 @@ module MetronomeSDK
         optional :commits,
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractCreateParams::Commit] }
 
-        # @!attribute credit_balance_threshold_configuration
-        #
-        #   @return [MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration, nil]
-        optional :credit_balance_threshold_configuration,
-                 -> { MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration }
-
         # @!attribute credits
         #
         #   @return [Array<MetronomeSDK::V1::ContractCreateParams::Credit>, nil]
@@ -97,6 +91,12 @@ module MetronomeSDK
                  -> {
                    MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractCreateParams::Override]
                  }
+
+        # @!attribute prepaid_balance_threshold_configuration
+        #
+        #   @return [MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration, nil]
+        optional :prepaid_balance_threshold_configuration,
+                 -> { MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration }
 
         # @!attribute professional_services
         #   This field's availability is dependent on your client's configuration.
@@ -207,7 +207,7 @@ module MetronomeSDK
                    MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule
                  }
 
-        # @!method initialize(customer_id:, starting_at:, billing_provider_configuration: nil, commits: nil, credit_balance_threshold_configuration: nil, credits: nil, custom_fields: nil, discounts: nil, ending_before: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, overrides: nil, professional_services: nil, rate_card_alias: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, salesforce_opportunity_id: nil, scheduled_charges: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, total_contract_value: nil, transition: nil, uniqueness_key: nil, usage_filter: nil, usage_statement_schedule: nil, request_options: {})
+        # @!method initialize(customer_id:, starting_at:, billing_provider_configuration: nil, commits: nil, credits: nil, custom_fields: nil, discounts: nil, ending_before: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, overrides: nil, prepaid_balance_threshold_configuration: nil, professional_services: nil, rate_card_alias: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, salesforce_opportunity_id: nil, scheduled_charges: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, total_contract_value: nil, transition: nil, uniqueness_key: nil, usage_filter: nil, usage_statement_schedule: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::ContractCreateParams} for more details.
         #
@@ -218,8 +218,6 @@ module MetronomeSDK
         #   @param billing_provider_configuration [MetronomeSDK::V1::ContractCreateParams::BillingProviderConfiguration] The billing provider configuration associated with a contract.
         #
         #   @param commits [Array<MetronomeSDK::V1::ContractCreateParams::Commit>]
-        #
-        #   @param credit_balance_threshold_configuration [MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration]
         #
         #   @param credits [Array<MetronomeSDK::V1::ContractCreateParams::Credit>]
         #
@@ -238,6 +236,8 @@ module MetronomeSDK
         #   @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
         #
         #   @param overrides [Array<MetronomeSDK::V1::ContractCreateParams::Override>]
+        #
+        #   @param prepaid_balance_threshold_configuration [MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration]
         #
         #   @param professional_services [Array<MetronomeSDK::V1::ContractCreateParams::ProfessionalService>] This field's availability is dependent on your client's configuration.
         #
@@ -841,218 +841,6 @@ module MetronomeSDK
 
             # @!method self.values
             #   @return [Array<Symbol>]
-          end
-        end
-
-        class CreditBalanceThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
-          # @!attribute commit
-          #
-          #   @return [MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::Commit]
-          required :commit,
-                   -> { MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::Commit }
-
-          # @!attribute is_enabled
-          #   When set to false, the contract will not be evaluated against the
-          #   threshold_amount. Toggling to true will result an immediate evaluation,
-          #   regardless of prior state.
-          #
-          #   @return [Boolean]
-          required :is_enabled, MetronomeSDK::Internal::Type::Boolean
-
-          # @!attribute payment_gate_config
-          #
-          #   @return [MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig]
-          required :payment_gate_config,
-                   -> {
-                     MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig
-                   }
-
-          # @!attribute recharge_to_amount
-          #   Specify the amount the balance should be recharged to.
-          #
-          #   @return [Float]
-          required :recharge_to_amount, Float
-
-          # @!attribute threshold_amount
-          #   Specify the threshold amount for the contract. Each time the contract's balance
-          #   lowers to this amount, a threshold charge will be initiated.
-          #
-          #   @return [Float]
-          required :threshold_amount, Float
-
-          # @!method initialize(commit:, is_enabled:, payment_gate_config:, recharge_to_amount:, threshold_amount:)
-          #   Some parameter documentations has been truncated, see
-          #   {MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration}
-          #   for more details.
-          #
-          #   @param commit [MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::Commit]
-          #
-          #   @param is_enabled [Boolean] When set to false, the contract will not be evaluated against the threshold_amou
-          #
-          #   @param payment_gate_config [MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig]
-          #
-          #   @param recharge_to_amount [Float] Specify the amount the balance should be recharged to.
-          #
-          #   @param threshold_amount [Float] Specify the threshold amount for the contract. Each time the contract's balance
-
-          # @see MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration#commit
-          class Commit < MetronomeSDK::Internal::Type::BaseModel
-            # @!attribute product_id
-            #   The commit product that will be used to generate the line item for commit
-            #   payment.
-            #
-            #   @return [String]
-            required :product_id, String
-
-            # @!attribute applicable_product_ids
-            #   Which products the threshold commit applies to. If both applicable_product_ids
-            #   and applicable_product_tags are not provided, the commit applies to all
-            #   products.
-            #
-            #   @return [Array<String>, nil]
-            optional :applicable_product_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
-
-            # @!attribute applicable_product_tags
-            #   Which tags the threshold commit applies to. If both applicable_product_ids and
-            #   applicable_product_tags are not provided, the commit applies to all products.
-            #
-            #   @return [Array<String>, nil]
-            optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
-
-            # @!attribute description
-            #
-            #   @return [String, nil]
-            optional :description, String
-
-            # @!attribute name
-            #   Specify the name of the line item for the threshold charge. If left blank, it
-            #   will default to the commit product name.
-            #
-            #   @return [String, nil]
-            optional :name, String
-
-            # @!method initialize(product_id:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, name: nil)
-            #   Some parameter documentations has been truncated, see
-            #   {MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::Commit}
-            #   for more details.
-            #
-            #   @param product_id [String] The commit product that will be used to generate the line item for commit paymen
-            #
-            #   @param applicable_product_ids [Array<String>] Which products the threshold commit applies to. If both applicable_product_ids a
-            #
-            #   @param applicable_product_tags [Array<String>] Which tags the threshold commit applies to. If both applicable_product_ids and a
-            #
-            #   @param description [String]
-            #
-            #   @param name [String] Specify the name of the line item for the threshold charge. If left blank, it wi
-          end
-
-          # @see MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration#payment_gate_config
-          class PaymentGateConfig < MetronomeSDK::Internal::Type::BaseModel
-            # @!attribute payment_gate_type
-            #   Gate access to the commit balance based on successful collection of payment.
-            #   Select STRIPE for Metronome to facilitate payment via Stripe. Select EXTERNAL to
-            #   facilitate payment using your own payment integration. Select NONE if you do not
-            #   wish to payment gate the commit balance.
-            #
-            #   @return [Symbol, MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType]
-            required :payment_gate_type,
-                     enum: -> {
-                       MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType
-                     }
-
-            # @!attribute stripe_config
-            #   Only applicable if using Stripe as your payment gateway through Metronome.
-            #
-            #   @return [MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig, nil]
-            optional :stripe_config,
-                     -> {
-                       MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig
-                     }
-
-            # @!attribute tax_type
-            #   Stripe tax is only supported for Stripe payment gateway. Select NONE if you do
-            #   not wish Metronome to calculate tax on your behalf. Leaving this field blank
-            #   will default to NONE.
-            #
-            #   @return [Symbol, MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::TaxType, nil]
-            optional :tax_type,
-                     enum: -> {
-                       MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::TaxType
-                     }
-
-            # @!method initialize(payment_gate_type:, stripe_config: nil, tax_type: nil)
-            #   Some parameter documentations has been truncated, see
-            #   {MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig}
-            #   for more details.
-            #
-            #   @param payment_gate_type [Symbol, MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType] Gate access to the commit balance based on successful collection of payment. Sel
-            #
-            #   @param stripe_config [MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig] Only applicable if using Stripe as your payment gateway through Metronome.
-            #
-            #   @param tax_type [Symbol, MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::TaxType] Stripe tax is only supported for Stripe payment gateway. Select NONE if you do n
-
-            # Gate access to the commit balance based on successful collection of payment.
-            # Select STRIPE for Metronome to facilitate payment via Stripe. Select EXTERNAL to
-            # facilitate payment using your own payment integration. Select NONE if you do not
-            # wish to payment gate the commit balance.
-            #
-            # @see MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig#payment_gate_type
-            module PaymentGateType
-              extend MetronomeSDK::Internal::Type::Enum
-
-              NONE = :NONE
-              STRIPE = :STRIPE
-              EXTERNAL = :EXTERNAL
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-
-            # @see MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig#stripe_config
-            class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
-              # @!attribute payment_type
-              #   If left blank, will default to INVOICE
-              #
-              #   @return [Symbol, MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType]
-              required :payment_type,
-                       enum: -> {
-                         MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType
-                       }
-
-              # @!method initialize(payment_type:)
-              #   Only applicable if using Stripe as your payment gateway through Metronome.
-              #
-              #   @param payment_type [Symbol, MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType] If left blank, will default to INVOICE
-
-              # If left blank, will default to INVOICE
-              #
-              # @see MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig#payment_type
-              module PaymentType
-                extend MetronomeSDK::Internal::Type::Enum
-
-                INVOICE = :INVOICE
-                PAYMENT_INTENT = :PAYMENT_INTENT
-
-                # @!method self.values
-                #   @return [Array<Symbol>]
-              end
-            end
-
-            # Stripe tax is only supported for Stripe payment gateway. Select NONE if you do
-            # not wish Metronome to calculate tax on your behalf. Leaving this field blank
-            # will default to NONE.
-            #
-            # @see MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig#tax_type
-            module TaxType
-              extend MetronomeSDK::Internal::Type::Enum
-
-              NONE = :NONE
-              STRIPE = :STRIPE
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
           end
         end
 
@@ -1770,6 +1558,218 @@ module MetronomeSDK
 
             # @!method self.values
             #   @return [Array<Symbol>]
+          end
+        end
+
+        class PrepaidBalanceThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute commit
+          #
+          #   @return [MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::Commit]
+          required :commit,
+                   -> { MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::Commit }
+
+          # @!attribute is_enabled
+          #   When set to false, the contract will not be evaluated against the
+          #   threshold_amount. Toggling to true will result an immediate evaluation,
+          #   regardless of prior state.
+          #
+          #   @return [Boolean]
+          required :is_enabled, MetronomeSDK::Internal::Type::Boolean
+
+          # @!attribute payment_gate_config
+          #
+          #   @return [MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig]
+          required :payment_gate_config,
+                   -> {
+                     MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig
+                   }
+
+          # @!attribute recharge_to_amount
+          #   Specify the amount the balance should be recharged to.
+          #
+          #   @return [Float]
+          required :recharge_to_amount, Float
+
+          # @!attribute threshold_amount
+          #   Specify the threshold amount for the contract. Each time the contract's prepaid
+          #   balance lowers to this amount, a threshold charge will be initiated.
+          #
+          #   @return [Float]
+          required :threshold_amount, Float
+
+          # @!method initialize(commit:, is_enabled:, payment_gate_config:, recharge_to_amount:, threshold_amount:)
+          #   Some parameter documentations has been truncated, see
+          #   {MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration}
+          #   for more details.
+          #
+          #   @param commit [MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::Commit]
+          #
+          #   @param is_enabled [Boolean] When set to false, the contract will not be evaluated against the threshold_amou
+          #
+          #   @param payment_gate_config [MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig]
+          #
+          #   @param recharge_to_amount [Float] Specify the amount the balance should be recharged to.
+          #
+          #   @param threshold_amount [Float] Specify the threshold amount for the contract. Each time the contract's prepaid
+
+          # @see MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration#commit
+          class Commit < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute product_id
+            #   The commit product that will be used to generate the line item for commit
+            #   payment.
+            #
+            #   @return [String]
+            required :product_id, String
+
+            # @!attribute applicable_product_ids
+            #   Which products the threshold commit applies to. If both applicable_product_ids
+            #   and applicable_product_tags are not provided, the commit applies to all
+            #   products.
+            #
+            #   @return [Array<String>, nil]
+            optional :applicable_product_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+            # @!attribute applicable_product_tags
+            #   Which tags the threshold commit applies to. If both applicable_product_ids and
+            #   applicable_product_tags are not provided, the commit applies to all products.
+            #
+            #   @return [Array<String>, nil]
+            optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+            # @!attribute description
+            #
+            #   @return [String, nil]
+            optional :description, String
+
+            # @!attribute name
+            #   Specify the name of the line item for the threshold charge. If left blank, it
+            #   will default to the commit product name.
+            #
+            #   @return [String, nil]
+            optional :name, String
+
+            # @!method initialize(product_id:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, name: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::Commit}
+            #   for more details.
+            #
+            #   @param product_id [String] The commit product that will be used to generate the line item for commit paymen
+            #
+            #   @param applicable_product_ids [Array<String>] Which products the threshold commit applies to. If both applicable_product_ids a
+            #
+            #   @param applicable_product_tags [Array<String>] Which tags the threshold commit applies to. If both applicable_product_ids and a
+            #
+            #   @param description [String]
+            #
+            #   @param name [String] Specify the name of the line item for the threshold charge. If left blank, it wi
+          end
+
+          # @see MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration#payment_gate_config
+          class PaymentGateConfig < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute payment_gate_type
+            #   Gate access to the commit balance based on successful collection of payment.
+            #   Select STRIPE for Metronome to facilitate payment via Stripe. Select EXTERNAL to
+            #   facilitate payment using your own payment integration. Select NONE if you do not
+            #   wish to payment gate the commit balance.
+            #
+            #   @return [Symbol, MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType]
+            required :payment_gate_type,
+                     enum: -> {
+                       MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType
+                     }
+
+            # @!attribute stripe_config
+            #   Only applicable if using Stripe as your payment gateway through Metronome.
+            #
+            #   @return [MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig, nil]
+            optional :stripe_config,
+                     -> {
+                       MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig
+                     }
+
+            # @!attribute tax_type
+            #   Stripe tax is only supported for Stripe payment gateway. Select NONE if you do
+            #   not wish Metronome to calculate tax on your behalf. Leaving this field blank
+            #   will default to NONE.
+            #
+            #   @return [Symbol, MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType, nil]
+            optional :tax_type,
+                     enum: -> {
+                       MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType
+                     }
+
+            # @!method initialize(payment_gate_type:, stripe_config: nil, tax_type: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig}
+            #   for more details.
+            #
+            #   @param payment_gate_type [Symbol, MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType] Gate access to the commit balance based on successful collection of payment. Sel
+            #
+            #   @param stripe_config [MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig] Only applicable if using Stripe as your payment gateway through Metronome.
+            #
+            #   @param tax_type [Symbol, MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType] Stripe tax is only supported for Stripe payment gateway. Select NONE if you do n
+
+            # Gate access to the commit balance based on successful collection of payment.
+            # Select STRIPE for Metronome to facilitate payment via Stripe. Select EXTERNAL to
+            # facilitate payment using your own payment integration. Select NONE if you do not
+            # wish to payment gate the commit balance.
+            #
+            # @see MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig#payment_gate_type
+            module PaymentGateType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              NONE = :NONE
+              STRIPE = :STRIPE
+              EXTERNAL = :EXTERNAL
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig#stripe_config
+            class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute payment_type
+              #   If left blank, will default to INVOICE
+              #
+              #   @return [Symbol, MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType]
+              required :payment_type,
+                       enum: -> {
+                         MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType
+                       }
+
+              # @!method initialize(payment_type:)
+              #   Only applicable if using Stripe as your payment gateway through Metronome.
+              #
+              #   @param payment_type [Symbol, MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType] If left blank, will default to INVOICE
+
+              # If left blank, will default to INVOICE
+              #
+              # @see MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig#payment_type
+              module PaymentType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                INVOICE = :INVOICE
+                PAYMENT_INTENT = :PAYMENT_INTENT
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+            end
+
+            # Stripe tax is only supported for Stripe payment gateway. Select NONE if you do
+            # not wish Metronome to calculate tax on your behalf. Leaving this field blank
+            # will default to NONE.
+            #
+            # @see MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig#tax_type
+            module TaxType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              NONE = :NONE
+              STRIPE = :STRIPE
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
           end
         end
 

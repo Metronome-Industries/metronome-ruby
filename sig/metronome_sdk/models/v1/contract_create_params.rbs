@@ -7,7 +7,6 @@ module MetronomeSDK
           starting_at: Time,
           billing_provider_configuration: MetronomeSDK::V1::ContractCreateParams::BillingProviderConfiguration,
           commits: ::Array[MetronomeSDK::V1::ContractCreateParams::Commit],
-          credit_balance_threshold_configuration: MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration,
           credits: ::Array[MetronomeSDK::V1::ContractCreateParams::Credit],
           custom_fields: ::Hash[Symbol, String],
           discounts: ::Array[MetronomeSDK::V1::ContractCreateParams::Discount],
@@ -17,6 +16,7 @@ module MetronomeSDK
           net_payment_terms_days: Float,
           netsuite_sales_order_id: String,
           overrides: ::Array[MetronomeSDK::V1::ContractCreateParams::Override],
+          prepaid_balance_threshold_configuration: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration,
           professional_services: ::Array[MetronomeSDK::V1::ContractCreateParams::ProfessionalService],
           rate_card_alias: String,
           rate_card_id: String,
@@ -54,12 +54,6 @@ module MetronomeSDK
         def commits=: (
           ::Array[MetronomeSDK::V1::ContractCreateParams::Commit]
         ) -> ::Array[MetronomeSDK::V1::ContractCreateParams::Commit]
-
-        attr_reader credit_balance_threshold_configuration: MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration?
-
-        def credit_balance_threshold_configuration=: (
-          MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration
-        ) -> MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration
 
         attr_reader credits: ::Array[MetronomeSDK::V1::ContractCreateParams::Credit]?
 
@@ -104,6 +98,12 @@ module MetronomeSDK
         def overrides=: (
           ::Array[MetronomeSDK::V1::ContractCreateParams::Override]
         ) -> ::Array[MetronomeSDK::V1::ContractCreateParams::Override]
+
+        attr_reader prepaid_balance_threshold_configuration: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration?
+
+        def prepaid_balance_threshold_configuration=: (
+          MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration
+        ) -> MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration
 
         attr_reader professional_services: ::Array[MetronomeSDK::V1::ContractCreateParams::ProfessionalService]?
 
@@ -190,7 +190,6 @@ module MetronomeSDK
           starting_at: Time,
           ?billing_provider_configuration: MetronomeSDK::V1::ContractCreateParams::BillingProviderConfiguration,
           ?commits: ::Array[MetronomeSDK::V1::ContractCreateParams::Commit],
-          ?credit_balance_threshold_configuration: MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration,
           ?credits: ::Array[MetronomeSDK::V1::ContractCreateParams::Credit],
           ?custom_fields: ::Hash[Symbol, String],
           ?discounts: ::Array[MetronomeSDK::V1::ContractCreateParams::Discount],
@@ -200,6 +199,7 @@ module MetronomeSDK
           ?net_payment_terms_days: Float,
           ?netsuite_sales_order_id: String,
           ?overrides: ::Array[MetronomeSDK::V1::ContractCreateParams::Override],
+          ?prepaid_balance_threshold_configuration: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration,
           ?professional_services: ::Array[MetronomeSDK::V1::ContractCreateParams::ProfessionalService],
           ?rate_card_alias: String,
           ?rate_card_id: String,
@@ -652,148 +652,6 @@ module MetronomeSDK
             LIST_RATE: :LIST_RATE
 
             def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::Commit::rate_type]
-          end
-        end
-
-        type credit_balance_threshold_configuration =
-          {
-            commit: MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::Commit,
-            is_enabled: bool,
-            payment_gate_config: MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig,
-            recharge_to_amount: Float,
-            threshold_amount: Float
-          }
-
-        class CreditBalanceThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
-          attr_accessor commit: MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::Commit
-
-          attr_accessor is_enabled: bool
-
-          attr_accessor payment_gate_config: MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig
-
-          attr_accessor recharge_to_amount: Float
-
-          attr_accessor threshold_amount: Float
-
-          def initialize: (
-            commit: MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::Commit,
-            is_enabled: bool,
-            payment_gate_config: MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig,
-            recharge_to_amount: Float,
-            threshold_amount: Float
-          ) -> void
-
-          type commit =
-            {
-              product_id: String,
-              applicable_product_ids: ::Array[String],
-              applicable_product_tags: ::Array[String],
-              description: String,
-              name: String
-            }
-
-          class Commit < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor product_id: String
-
-            attr_reader applicable_product_ids: ::Array[String]?
-
-            def applicable_product_ids=: (::Array[String]) -> ::Array[String]
-
-            attr_reader applicable_product_tags: ::Array[String]?
-
-            def applicable_product_tags=: (::Array[String]) -> ::Array[String]
-
-            attr_reader description: String?
-
-            def description=: (String) -> String
-
-            attr_reader name: String?
-
-            def name=: (String) -> String
-
-            def initialize: (
-              product_id: String,
-              ?applicable_product_ids: ::Array[String],
-              ?applicable_product_tags: ::Array[String],
-              ?description: String,
-              ?name: String
-            ) -> void
-          end
-
-          type payment_gate_config =
-            {
-              payment_gate_type: MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type,
-              stripe_config: MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
-              tax_type: MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::tax_type
-            }
-
-          class PaymentGateConfig < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor payment_gate_type: MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type
-
-            attr_reader stripe_config: MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig?
-
-            def stripe_config=: (
-              MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig
-            ) -> MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig
-
-            attr_reader tax_type: MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::tax_type?
-
-            def tax_type=: (
-              MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::tax_type
-            ) -> MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::tax_type
-
-            def initialize: (
-              payment_gate_type: MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type,
-              ?stripe_config: MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
-              ?tax_type: MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::tax_type
-            ) -> void
-
-            type payment_gate_type = :NONE | :STRIPE | :EXTERNAL
-
-            module PaymentGateType
-              extend MetronomeSDK::Internal::Type::Enum
-
-              NONE: :NONE
-              STRIPE: :STRIPE
-              EXTERNAL: :EXTERNAL
-
-              def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type]
-            end
-
-            type stripe_config =
-              {
-                payment_type: MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
-              }
-
-            class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
-              attr_accessor payment_type: MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
-
-              def initialize: (
-                payment_type: MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
-              ) -> void
-
-              type payment_type = :INVOICE | :PAYMENT_INTENT
-
-              module PaymentType
-                extend MetronomeSDK::Internal::Type::Enum
-
-                INVOICE: :INVOICE
-                PAYMENT_INTENT: :PAYMENT_INTENT
-
-                def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type]
-              end
-            end
-
-            type tax_type = :NONE | :STRIPE
-
-            module TaxType
-              extend MetronomeSDK::Internal::Type::Enum
-
-              NONE: :NONE
-              STRIPE: :STRIPE
-
-              def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::CreditBalanceThresholdConfiguration::PaymentGateConfig::tax_type]
-            end
           end
         end
 
@@ -1335,6 +1193,148 @@ module MetronomeSDK
             TIERED: :TIERED
 
             def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::Override::type_]
+          end
+        end
+
+        type prepaid_balance_threshold_configuration =
+          {
+            commit: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::Commit,
+            is_enabled: bool,
+            payment_gate_config: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig,
+            recharge_to_amount: Float,
+            threshold_amount: Float
+          }
+
+        class PrepaidBalanceThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor commit: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::Commit
+
+          attr_accessor is_enabled: bool
+
+          attr_accessor payment_gate_config: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig
+
+          attr_accessor recharge_to_amount: Float
+
+          attr_accessor threshold_amount: Float
+
+          def initialize: (
+            commit: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::Commit,
+            is_enabled: bool,
+            payment_gate_config: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig,
+            recharge_to_amount: Float,
+            threshold_amount: Float
+          ) -> void
+
+          type commit =
+            {
+              product_id: String,
+              applicable_product_ids: ::Array[String],
+              applicable_product_tags: ::Array[String],
+              description: String,
+              name: String
+            }
+
+          class Commit < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor product_id: String
+
+            attr_reader applicable_product_ids: ::Array[String]?
+
+            def applicable_product_ids=: (::Array[String]) -> ::Array[String]
+
+            attr_reader applicable_product_tags: ::Array[String]?
+
+            def applicable_product_tags=: (::Array[String]) -> ::Array[String]
+
+            attr_reader description: String?
+
+            def description=: (String) -> String
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            def initialize: (
+              product_id: String,
+              ?applicable_product_ids: ::Array[String],
+              ?applicable_product_tags: ::Array[String],
+              ?description: String,
+              ?name: String
+            ) -> void
+          end
+
+          type payment_gate_config =
+            {
+              payment_gate_type: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+              stripe_config: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
+              tax_type: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
+            }
+
+          class PaymentGateConfig < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor payment_gate_type: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type
+
+            attr_reader stripe_config: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig?
+
+            def stripe_config=: (
+              MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig
+            ) -> MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig
+
+            attr_reader tax_type: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type?
+
+            def tax_type=: (
+              MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
+            ) -> MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
+
+            def initialize: (
+              payment_gate_type: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+              ?stripe_config: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
+              ?tax_type: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
+            ) -> void
+
+            type payment_gate_type = :NONE | :STRIPE | :EXTERNAL
+
+            module PaymentGateType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              NONE: :NONE
+              STRIPE: :STRIPE
+              EXTERNAL: :EXTERNAL
+
+              def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type]
+            end
+
+            type stripe_config =
+              {
+                payment_type: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+              }
+
+            class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor payment_type: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+
+              def initialize: (
+                payment_type: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+              ) -> void
+
+              type payment_type = :INVOICE | :PAYMENT_INTENT
+
+              module PaymentType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                INVOICE: :INVOICE
+                PAYMENT_INTENT: :PAYMENT_INTENT
+
+                def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type]
+              end
+            end
+
+            type tax_type = :NONE | :STRIPE
+
+            module TaxType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              NONE: :NONE
+              STRIPE: :STRIPE
+
+              def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type]
+            end
           end
         end
 

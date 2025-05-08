@@ -25,7 +25,6 @@ module MetronomeSDK
             usage_filter: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::UsageFilter],
             usage_statement_schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::UsageStatementSchedule,
             archived_at: Time,
-            credit_balance_threshold_configuration: MetronomeSDK::Models::V2::ContractListResponse::Data::CreditBalanceThresholdConfiguration,
             credits: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit],
             custom_fields: ::Hash[Symbol, String],
             customer_billing_provider_configuration: MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration,
@@ -35,6 +34,7 @@ module MetronomeSDK
             name: String,
             net_payment_terms_days: Float,
             netsuite_sales_order_id: String,
+            prepaid_balance_threshold_configuration: MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration,
             professional_services: ::Array[MetronomeSDK::ProService],
             rate_card_id: String,
             recurring_commits: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit],
@@ -73,12 +73,6 @@ module MetronomeSDK
           attr_reader archived_at: Time?
 
           def archived_at=: (Time) -> Time
-
-          attr_reader credit_balance_threshold_configuration: MetronomeSDK::Models::V2::ContractListResponse::Data::CreditBalanceThresholdConfiguration?
-
-          def credit_balance_threshold_configuration=: (
-            MetronomeSDK::Models::V2::ContractListResponse::Data::CreditBalanceThresholdConfiguration
-          ) -> MetronomeSDK::Models::V2::ContractListResponse::Data::CreditBalanceThresholdConfiguration
 
           attr_reader credits: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit]?
 
@@ -123,6 +117,12 @@ module MetronomeSDK
           attr_reader netsuite_sales_order_id: String?
 
           def netsuite_sales_order_id=: (String) -> String
+
+          attr_reader prepaid_balance_threshold_configuration: MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration?
+
+          def prepaid_balance_threshold_configuration=: (
+            MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration
+          ) -> MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration
 
           attr_reader professional_services: ::Array[MetronomeSDK::ProService]?
 
@@ -189,7 +189,6 @@ module MetronomeSDK
             usage_filter: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::UsageFilter],
             usage_statement_schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::UsageStatementSchedule,
             ?archived_at: Time,
-            ?credit_balance_threshold_configuration: MetronomeSDK::Models::V2::ContractListResponse::Data::CreditBalanceThresholdConfiguration,
             ?credits: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit],
             ?custom_fields: ::Hash[Symbol, String],
             ?customer_billing_provider_configuration: MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration,
@@ -199,6 +198,7 @@ module MetronomeSDK
             ?name: String,
             ?net_payment_terms_days: Float,
             ?netsuite_sales_order_id: String,
+            ?prepaid_balance_threshold_configuration: MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration,
             ?professional_services: ::Array[MetronomeSDK::ProService],
             ?rate_card_id: String,
             ?recurring_commits: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit],
@@ -1270,68 +1270,6 @@ module MetronomeSDK
             end
           end
 
-          type credit_balance_threshold_configuration =
-            {
-              commit: MetronomeSDK::Models::V2::ContractListResponse::Data::CreditBalanceThresholdConfiguration::Commit,
-              is_enabled: bool,
-              recharge_to_amount: Float,
-              threshold_amount: Float
-            }
-
-          class CreditBalanceThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor commit: MetronomeSDK::Models::V2::ContractListResponse::Data::CreditBalanceThresholdConfiguration::Commit
-
-            attr_accessor is_enabled: bool
-
-            attr_accessor recharge_to_amount: Float
-
-            attr_accessor threshold_amount: Float
-
-            def initialize: (
-              commit: MetronomeSDK::Models::V2::ContractListResponse::Data::CreditBalanceThresholdConfiguration::Commit,
-              is_enabled: bool,
-              recharge_to_amount: Float,
-              threshold_amount: Float
-            ) -> void
-
-            type commit =
-              {
-                product_id: String,
-                applicable_product_ids: ::Array[String],
-                applicable_product_tags: ::Array[String],
-                description: String,
-                name: String
-              }
-
-            class Commit < MetronomeSDK::Internal::Type::BaseModel
-              attr_accessor product_id: String
-
-              attr_reader applicable_product_ids: ::Array[String]?
-
-              def applicable_product_ids=: (::Array[String]) -> ::Array[String]
-
-              attr_reader applicable_product_tags: ::Array[String]?
-
-              def applicable_product_tags=: (::Array[String]) -> ::Array[String]
-
-              attr_reader description: String?
-
-              def description=: (String) -> String
-
-              attr_reader name: String?
-
-              def name=: (String) -> String
-
-              def initialize: (
-                product_id: String,
-                ?applicable_product_ids: ::Array[String],
-                ?applicable_product_tags: ::Array[String],
-                ?description: String,
-                ?name: String
-              ) -> void
-            end
-          end
-
           type credit =
             {
               id: String,
@@ -1769,6 +1707,68 @@ module MetronomeSDK
             EXPLICIT: :EXPLICIT
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::multiplier_override_prioritization]
+          end
+
+          type prepaid_balance_threshold_configuration =
+            {
+              commit: MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::Commit,
+              is_enabled: bool,
+              recharge_to_amount: Float,
+              threshold_amount: Float
+            }
+
+          class PrepaidBalanceThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor commit: MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::Commit
+
+            attr_accessor is_enabled: bool
+
+            attr_accessor recharge_to_amount: Float
+
+            attr_accessor threshold_amount: Float
+
+            def initialize: (
+              commit: MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::Commit,
+              is_enabled: bool,
+              recharge_to_amount: Float,
+              threshold_amount: Float
+            ) -> void
+
+            type commit =
+              {
+                product_id: String,
+                applicable_product_ids: ::Array[String],
+                applicable_product_tags: ::Array[String],
+                description: String,
+                name: String
+              }
+
+            class Commit < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor product_id: String
+
+              attr_reader applicable_product_ids: ::Array[String]?
+
+              def applicable_product_ids=: (::Array[String]) -> ::Array[String]
+
+              attr_reader applicable_product_tags: ::Array[String]?
+
+              def applicable_product_tags=: (::Array[String]) -> ::Array[String]
+
+              attr_reader description: String?
+
+              def description=: (String) -> String
+
+              attr_reader name: String?
+
+              def name=: (String) -> String
+
+              def initialize: (
+                product_id: String,
+                ?applicable_product_ids: ::Array[String],
+                ?applicable_product_tags: ::Array[String],
+                ?description: String,
+                ?name: String
+              ) -> void
+            end
           end
 
           type recurring_commit =
