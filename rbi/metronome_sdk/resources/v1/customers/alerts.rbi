@@ -11,6 +11,8 @@ module MetronomeSDK
             params(
               alert_id: String,
               customer_id: String,
+              plans_or_contracts:
+                MetronomeSDK::V1::Customers::AlertRetrieveParams::PlansOrContracts::OrSymbol,
               request_options: MetronomeSDK::RequestOptions::OrHash
             ).returns(
               MetronomeSDK::Models::V1::Customers::AlertRetrieveResponse
@@ -21,6 +23,9 @@ module MetronomeSDK
             alert_id:,
             # The Metronome ID of the customer
             customer_id:,
+            # When parallel alerts are enabled during migration, this flag denotes whether to
+            # fetch alerts for plans or contracts.
+            plans_or_contracts: nil,
             request_options: {}
           )
           end

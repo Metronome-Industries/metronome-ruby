@@ -5,14 +5,19 @@ module MetronomeSDK
     class V1
       class Customers
         class Alerts
+          # Some parameter documentations has been truncated, see
+          # {MetronomeSDK::Models::V1::Customers::AlertRetrieveParams} for more details.
+          #
           # Get the customer alert status and alert information for the specified customer
           # and alert
           #
-          # @overload retrieve(alert_id:, customer_id:, request_options: {})
+          # @overload retrieve(alert_id:, customer_id:, plans_or_contracts: nil, request_options: {})
           #
           # @param alert_id [String] The Metronome ID of the alert
           #
           # @param customer_id [String] The Metronome ID of the customer
+          #
+          # @param plans_or_contracts [Symbol, MetronomeSDK::V1::Customers::AlertRetrieveParams::PlansOrContracts] When parallel alerts are enabled during migration, this flag denotes whether to
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #
