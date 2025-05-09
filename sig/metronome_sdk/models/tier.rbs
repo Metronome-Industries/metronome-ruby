@@ -10,8 +10,6 @@ module MetronomeSDK
       def size=: (Float) -> Float
 
       def initialize: (price: Float, ?size: Float) -> void
-
-      def to_hash: -> MetronomeSDK::Models::tier
     end
   end
 end

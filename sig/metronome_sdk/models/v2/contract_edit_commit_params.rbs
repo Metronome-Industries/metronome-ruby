@@ -5,11 +5,11 @@ module MetronomeSDK
         {
           commit_id: String,
           customer_id: String,
-          access_schedule: MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule,
+          access_schedule: MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule,
           applicable_product_ids: ::Array[String]?,
           applicable_product_tags: ::Array[String]?,
           invoice_contract_id: String,
-          invoice_schedule: MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule,
+          invoice_schedule: MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule,
           product_id: String
         }
         & MetronomeSDK::Internal::Type::request_parameters
@@ -22,11 +22,11 @@ module MetronomeSDK
 
         attr_accessor customer_id: String
 
-        attr_reader access_schedule: MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule?
+        attr_reader access_schedule: MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule?
 
         def access_schedule=: (
-          MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule
-        ) -> MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule
+          MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule
+        ) -> MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule
 
         attr_accessor applicable_product_ids: ::Array[String]?
 
@@ -36,11 +36,11 @@ module MetronomeSDK
 
         def invoice_contract_id=: (String) -> String
 
-        attr_reader invoice_schedule: MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule?
+        attr_reader invoice_schedule: MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule?
 
         def invoice_schedule=: (
-          MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule
-        ) -> MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule
+          MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule
+        ) -> MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule
 
         attr_reader product_id: String?
 
@@ -49,50 +49,46 @@ module MetronomeSDK
         def initialize: (
           commit_id: String,
           customer_id: String,
-          ?access_schedule: MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule,
+          ?access_schedule: MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule,
           ?applicable_product_ids: ::Array[String]?,
           ?applicable_product_tags: ::Array[String]?,
           ?invoice_contract_id: String,
-          ?invoice_schedule: MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule,
+          ?invoice_schedule: MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule,
           ?product_id: String,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
 
-        def to_hash: -> MetronomeSDK::Models::V2::contract_edit_commit_params
-
         type access_schedule =
           {
-            add_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule::AddScheduleItem],
-            remove_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule::RemoveScheduleItem],
-            update_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule::UpdateScheduleItem]
+            add_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::AddScheduleItem],
+            remove_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::RemoveScheduleItem],
+            update_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::UpdateScheduleItem]
           }
 
         class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
-          attr_reader add_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule::AddScheduleItem]?
+          attr_reader add_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::AddScheduleItem]?
 
           def add_schedule_items=: (
-            ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule::AddScheduleItem]
-          ) -> ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule::AddScheduleItem]
+            ::Array[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::AddScheduleItem]
+          ) -> ::Array[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::AddScheduleItem]
 
-          attr_reader remove_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule::RemoveScheduleItem]?
+          attr_reader remove_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::RemoveScheduleItem]?
 
           def remove_schedule_items=: (
-            ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule::RemoveScheduleItem]
-          ) -> ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule::RemoveScheduleItem]
+            ::Array[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::RemoveScheduleItem]
+          ) -> ::Array[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::RemoveScheduleItem]
 
-          attr_reader update_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule::UpdateScheduleItem]?
+          attr_reader update_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::UpdateScheduleItem]?
 
           def update_schedule_items=: (
-            ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule::UpdateScheduleItem]
-          ) -> ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule::UpdateScheduleItem]
+            ::Array[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::UpdateScheduleItem]
+          ) -> ::Array[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::UpdateScheduleItem]
 
           def initialize: (
-            ?add_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule::AddScheduleItem],
-            ?remove_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule::RemoveScheduleItem],
-            ?update_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule::UpdateScheduleItem]
+            ?add_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::AddScheduleItem],
+            ?remove_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::RemoveScheduleItem],
+            ?update_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::UpdateScheduleItem]
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V2::ContractEditCommitParams::access_schedule
 
           type add_schedule_item =
             { amount: Float, ending_before: Time, starting_at: Time }
@@ -109,8 +105,6 @@ module MetronomeSDK
               ending_before: Time,
               starting_at: Time
             ) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule::add_schedule_item
           end
 
           type remove_schedule_item = { id: String }
@@ -119,8 +113,6 @@ module MetronomeSDK
             attr_accessor id: String
 
             def initialize: (id: String) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule::remove_schedule_item
           end
 
           type update_schedule_item =
@@ -152,44 +144,40 @@ module MetronomeSDK
               ?ending_before: Time,
               ?starting_at: Time
             ) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule::update_schedule_item
           end
         end
 
         type invoice_schedule =
           {
-            add_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule::AddScheduleItem],
-            remove_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule::RemoveScheduleItem],
-            update_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule::UpdateScheduleItem]
+            add_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::AddScheduleItem],
+            remove_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::RemoveScheduleItem],
+            update_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::UpdateScheduleItem]
           }
 
         class InvoiceSchedule < MetronomeSDK::Internal::Type::BaseModel
-          attr_reader add_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule::AddScheduleItem]?
+          attr_reader add_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::AddScheduleItem]?
 
           def add_schedule_items=: (
-            ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule::AddScheduleItem]
-          ) -> ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule::AddScheduleItem]
+            ::Array[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::AddScheduleItem]
+          ) -> ::Array[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::AddScheduleItem]
 
-          attr_reader remove_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule::RemoveScheduleItem]?
+          attr_reader remove_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::RemoveScheduleItem]?
 
           def remove_schedule_items=: (
-            ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule::RemoveScheduleItem]
-          ) -> ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule::RemoveScheduleItem]
+            ::Array[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::RemoveScheduleItem]
+          ) -> ::Array[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::RemoveScheduleItem]
 
-          attr_reader update_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule::UpdateScheduleItem]?
+          attr_reader update_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::UpdateScheduleItem]?
 
           def update_schedule_items=: (
-            ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule::UpdateScheduleItem]
-          ) -> ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule::UpdateScheduleItem]
+            ::Array[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::UpdateScheduleItem]
+          ) -> ::Array[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::UpdateScheduleItem]
 
           def initialize: (
-            ?add_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule::AddScheduleItem],
-            ?remove_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule::RemoveScheduleItem],
-            ?update_schedule_items: ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule::UpdateScheduleItem]
+            ?add_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::AddScheduleItem],
+            ?remove_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::RemoveScheduleItem],
+            ?update_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::UpdateScheduleItem]
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V2::ContractEditCommitParams::invoice_schedule
 
           type add_schedule_item =
             {
@@ -220,8 +208,6 @@ module MetronomeSDK
               ?quantity: Float,
               ?unit_price: Float
             ) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule::add_schedule_item
           end
 
           type remove_schedule_item = { id: String }
@@ -230,8 +216,6 @@ module MetronomeSDK
             attr_accessor id: String
 
             def initialize: (id: String) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule::remove_schedule_item
           end
 
           type update_schedule_item =
@@ -269,8 +253,6 @@ module MetronomeSDK
               ?timestamp: Time,
               ?unit_price: Float
             ) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule::update_schedule_item
           end
         end
       end

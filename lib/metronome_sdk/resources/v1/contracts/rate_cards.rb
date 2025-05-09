@@ -23,17 +23,15 @@ module MetronomeSDK
           #
           # @param name [String] Used only in UI/API. It is not exposed to end customers.
           #
-          # @param aliases [Array<MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::Alias>] Reference this alias when creating a contract. If the same alias is assigned to
-          # ...
+          # @param aliases [Array<MetronomeSDK::V1::Contracts::RateCardCreateParams::Alias>] Reference this alias when creating a contract. If the same alias is assigned to
           #
-          # @param credit_type_conversions [Array<MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::CreditTypeConversion>] Required when using custom pricing units in rates.
+          # @param credit_type_conversions [Array<MetronomeSDK::V1::Contracts::RateCardCreateParams::CreditTypeConversion>] Required when using custom pricing units in rates.
           #
           # @param custom_fields [Hash{Symbol=>String}]
           #
           # @param description [String]
           #
           # @param fiat_credit_type_id [String] The Metronome ID of the credit type to associate with the rate card, defaults to
-          # ...
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -41,7 +39,7 @@ module MetronomeSDK
           #
           # @see MetronomeSDK::Models::V1::Contracts::RateCardCreateParams
           def create(params)
-            parsed, options = MetronomeSDK::Models::V1::Contracts::RateCardCreateParams.dump_request(params)
+            parsed, options = MetronomeSDK::V1::Contracts::RateCardCreateParams.dump_request(params)
             @client.request(
               method: :post,
               path: "v1/contract-pricing/rate-cards/create",
@@ -63,7 +61,7 @@ module MetronomeSDK
           #
           # @see MetronomeSDK::Models::V1::Contracts::RateCardRetrieveParams
           def retrieve(params)
-            parsed, options = MetronomeSDK::Models::V1::Contracts::RateCardRetrieveParams.dump_request(params)
+            parsed, options = MetronomeSDK::V1::Contracts::RateCardRetrieveParams.dump_request(params)
             @client.request(
               method: :post,
               path: "v1/contract-pricing/rate-cards/get",
@@ -82,8 +80,7 @@ module MetronomeSDK
           #
           # @param rate_card_id [String] ID of the rate card to update
           #
-          # @param aliases [Array<MetronomeSDK::Models::V1::Contracts::RateCardUpdateParams::Alias>] Reference this alias when creating a contract. If the same alias is assigned to
-          # ...
+          # @param aliases [Array<MetronomeSDK::V1::Contracts::RateCardUpdateParams::Alias>] Reference this alias when creating a contract. If the same alias is assigned to
           #
           # @param description [String]
           #
@@ -95,7 +92,7 @@ module MetronomeSDK
           #
           # @see MetronomeSDK::Models::V1::Contracts::RateCardUpdateParams
           def update(params)
-            parsed, options = MetronomeSDK::Models::V1::Contracts::RateCardUpdateParams.dump_request(params)
+            parsed, options = MetronomeSDK::V1::Contracts::RateCardUpdateParams.dump_request(params)
             @client.request(
               method: :post,
               path: "v1/contract-pricing/rate-cards/update",
@@ -122,7 +119,7 @@ module MetronomeSDK
           #
           # @see MetronomeSDK::Models::V1::Contracts::RateCardListParams
           def list(params = {})
-            parsed, options = MetronomeSDK::Models::V1::Contracts::RateCardListParams.dump_request(params)
+            parsed, options = MetronomeSDK::V1::Contracts::RateCardListParams.dump_request(params)
             @client.request(
               method: :post,
               path: "v1/contract-pricing/rate-cards/list",
@@ -130,6 +127,27 @@ module MetronomeSDK
               body: parsed[:body],
               page: MetronomeSDK::Internal::CursorPage,
               model: MetronomeSDK::Models::V1::Contracts::RateCardListResponse,
+              options: options
+            )
+          end
+
+          # Archive a rate card
+          #
+          # @overload archive(id:, request_options: {})
+          #
+          # @param id [String]
+          # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
+          #
+          # @return [MetronomeSDK::Models::V1::Contracts::RateCardArchiveResponse]
+          #
+          # @see MetronomeSDK::Models::V1::Contracts::RateCardArchiveParams
+          def archive(params)
+            parsed, options = MetronomeSDK::V1::Contracts::RateCardArchiveParams.dump_request(params)
+            @client.request(
+              method: :post,
+              path: "v1/contract-pricing/rate-cards/archive",
+              body: parsed,
+              model: MetronomeSDK::Models::V1::Contracts::RateCardArchiveResponse,
               options: options
             )
           end
@@ -152,10 +170,8 @@ module MetronomeSDK
           # @param next_page [String] Query param: Cursor that indicates where the next page of results should start.
           #
           # @param ending_before [Time] Body param: optional exclusive end date for the rates schedule. When not specifi
-          # ...
           #
-          # @param selectors [Array<MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector>] Body param: List of rate selectors, rates matching ANY of the selector will be i
-          # ...
+          # @param selectors [Array<MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector>] Body param: List of rate selectors, rates matching ANY of the selector will be i
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -163,8 +179,7 @@ module MetronomeSDK
           #
           # @see MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams
           def retrieve_rate_schedule(params)
-            parsed, options =
-              MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams.dump_request(params)
+            parsed, options = MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams.dump_request(params)
             query_params = [:limit, :next_page]
             @client.request(
               method: :post,

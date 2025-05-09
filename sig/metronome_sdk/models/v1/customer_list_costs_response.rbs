@@ -21,8 +21,6 @@ module MetronomeSDK
           start_timestamp: Time
         ) -> void
 
-        def to_hash: -> MetronomeSDK::Models::V1::customer_list_costs_response
-
         type credit_type =
           {
             cost: Float,
@@ -51,8 +49,6 @@ module MetronomeSDK
             ?name: String
           ) -> void
 
-          def to_hash: -> MetronomeSDK::Models::V1::CustomerListCostsResponse::credit_type
-
           type line_item_breakdown =
             {
               cost: Float,
@@ -78,8 +74,6 @@ module MetronomeSDK
               ?group_key: String,
               ?group_value: String?
             ) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType::line_item_breakdown
           end
         end
       end

@@ -8,6 +8,9 @@ module MetronomeSDK
           extend MetronomeSDK::Internal::Type::RequestParameters::Converter
           include MetronomeSDK::Internal::Type::RequestParameters
 
+          OrHash =
+            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :customer_id
 
@@ -37,19 +40,24 @@ module MetronomeSDK
 
           # An optional list of overage rates that override the rates of the original plan
           # configuration. These new rates will apply to all pricing ramps.
-          sig { returns(T.nilable(T::Array[MetronomeSDK::Models::V1::Customers::PlanAddParams::OverageRateAdjustment])) }
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::V1::Customers::PlanAddParams::OverageRateAdjustment
+                ]
+              )
+            )
+          end
           attr_reader :overage_rate_adjustments
 
           sig do
             params(
-              overage_rate_adjustments: T::Array[
-                T.any(
-                  MetronomeSDK::Models::V1::Customers::PlanAddParams::OverageRateAdjustment,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              ]
-            )
-              .void
+              overage_rate_adjustments:
+                T::Array[
+                  MetronomeSDK::V1::Customers::PlanAddParams::OverageRateAdjustment::OrHash
+                ]
+            ).void
           end
           attr_writer :overage_rate_adjustments
 
@@ -57,33 +65,42 @@ module MetronomeSDK
           # See the
           # [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments)
           # for details.
-          sig { returns(T.nilable(T::Array[MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment])) }
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment
+                ]
+              )
+            )
+          end
           attr_reader :price_adjustments
 
           sig do
             params(
-              price_adjustments: T::Array[
-                T.any(
-                  MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              ]
-            )
-              .void
+              price_adjustments:
+                T::Array[
+                  MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment::OrHash
+                ]
+            ).void
           end
           attr_writer :price_adjustments
 
           # A custom trial can be set for the customer's plan. See the
           # [trial configuration documentation](https://docs.metronome.com/provisioning/configure-trials/)
           # for details.
-          sig { returns(T.nilable(MetronomeSDK::Models::V1::Customers::PlanAddParams::TrialSpec)) }
+          sig do
+            returns(
+              T.nilable(MetronomeSDK::V1::Customers::PlanAddParams::TrialSpec)
+            )
+          end
           attr_reader :trial_spec
 
           sig do
             params(
-              trial_spec: T.any(MetronomeSDK::Models::V1::Customers::PlanAddParams::TrialSpec, MetronomeSDK::Internal::AnyHash)
-            )
-              .void
+              trial_spec:
+                MetronomeSDK::V1::Customers::PlanAddParams::TrialSpec::OrHash
+            ).void
           end
           attr_writer :trial_spec
 
@@ -94,22 +111,18 @@ module MetronomeSDK
               starting_on: Time,
               ending_before: Time,
               net_payment_terms_days: Float,
-              overage_rate_adjustments: T::Array[
-                T.any(
-                  MetronomeSDK::Models::V1::Customers::PlanAddParams::OverageRateAdjustment,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              ],
-              price_adjustments: T::Array[
-                T.any(
-                  MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              ],
-              trial_spec: T.any(MetronomeSDK::Models::V1::Customers::PlanAddParams::TrialSpec, MetronomeSDK::Internal::AnyHash),
-              request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-            )
-              .returns(T.attached_class)
+              overage_rate_adjustments:
+                T::Array[
+                  MetronomeSDK::V1::Customers::PlanAddParams::OverageRateAdjustment::OrHash
+                ],
+              price_adjustments:
+                T::Array[
+                  MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment::OrHash
+                ],
+              trial_spec:
+                MetronomeSDK::V1::Customers::PlanAddParams::TrialSpec::OrHash,
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(T.attached_class)
           end
           def self.new(
             customer_id:,
@@ -136,26 +149,40 @@ module MetronomeSDK
             # for details.
             trial_spec: nil,
             request_options: {}
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  customer_id: String,
-                  plan_id: String,
-                  starting_on: Time,
-                  ending_before: Time,
-                  net_payment_terms_days: Float,
-                  overage_rate_adjustments: T::Array[MetronomeSDK::Models::V1::Customers::PlanAddParams::OverageRateAdjustment],
-                  price_adjustments: T::Array[MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment],
-                  trial_spec: MetronomeSDK::Models::V1::Customers::PlanAddParams::TrialSpec,
-                  request_options: MetronomeSDK::RequestOptions
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                customer_id: String,
+                plan_id: String,
+                starting_on: Time,
+                ending_before: Time,
+                net_payment_terms_days: Float,
+                overage_rate_adjustments:
+                  T::Array[
+                    MetronomeSDK::V1::Customers::PlanAddParams::OverageRateAdjustment
+                  ],
+                price_adjustments:
+                  T::Array[
+                    MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment
+                  ],
+                trial_spec:
+                  MetronomeSDK::V1::Customers::PlanAddParams::TrialSpec,
+                request_options: MetronomeSDK::RequestOptions
+              }
+            )
+          end
+          def to_hash
+          end
 
           class OverageRateAdjustment < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+              end
+
             sig { returns(String) }
             attr_accessor :custom_credit_type_id
 
@@ -171,30 +198,40 @@ module MetronomeSDK
                 custom_credit_type_id: String,
                 fiat_currency_credit_type_id: String,
                 to_fiat_conversion_factor: Float
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
             def self.new(
               custom_credit_type_id:,
               fiat_currency_credit_type_id:,
               # The overage cost in fiat currency for each credit of the custom credit type.
               to_fiat_conversion_factor:
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    custom_credit_type_id: String,
-                    fiat_currency_credit_type_id: String,
-                    to_fiat_conversion_factor: Float
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  custom_credit_type_id: String,
+                  fiat_currency_credit_type_id: String,
+                  to_fiat_conversion_factor: Float
+                }
+              )
+            end
+            def to_hash
+            end
           end
 
           class PriceAdjustment < MetronomeSDK::Internal::Type::BaseModel
-            sig { returns(MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment::AdjustmentType::OrSymbol) }
+            OrHash =
+              T.type_alias do
+                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+              end
+
+            sig do
+              returns(
+                MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment::AdjustmentType::OrSymbol
+              )
+            end
             attr_accessor :adjustment_type
 
             sig { returns(String) }
@@ -230,14 +267,14 @@ module MetronomeSDK
 
             sig do
               params(
-                adjustment_type: MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment::AdjustmentType::OrSymbol,
+                adjustment_type:
+                  MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment::AdjustmentType::OrSymbol,
                 charge_id: String,
                 start_period: Float,
                 quantity: Float,
                 tier: Float,
                 value: Float
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
             def self.new(
               adjustment_type:,
@@ -253,76 +290,94 @@ module MetronomeSDK
               # positive or negative. Percentage-based adjustments should be decimals, e.g.
               # -0.05 for a 5% discount.
               value: nil
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    adjustment_type: MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment::AdjustmentType::OrSymbol,
-                    charge_id: String,
-                    start_period: Float,
-                    quantity: Float,
-                    tier: Float,
-                    value: Float
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  adjustment_type:
+                    MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment::AdjustmentType::OrSymbol,
+                  charge_id: String,
+                  start_period: Float,
+                  quantity: Float,
+                  tier: Float,
+                  value: Float
+                }
+              )
+            end
+            def to_hash
+            end
 
             module AdjustmentType
               extend MetronomeSDK::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias { T.all(Symbol, MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment::AdjustmentType) }
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment::AdjustmentType
+                  )
+                end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               PERCENTAGE =
                 T.let(
                   :percentage,
-                  MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment::AdjustmentType::TaggedSymbol
+                  MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment::AdjustmentType::TaggedSymbol
                 )
               FIXED =
                 T.let(
                   :fixed,
-                  MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment::AdjustmentType::TaggedSymbol
+                  MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment::AdjustmentType::TaggedSymbol
                 )
               OVERRIDE =
                 T.let(
                   :override,
-                  MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment::AdjustmentType::TaggedSymbol
+                  MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment::AdjustmentType::TaggedSymbol
                 )
               QUANTITY =
                 T.let(
                   :quantity,
-                  MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment::AdjustmentType::TaggedSymbol
+                  MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment::AdjustmentType::TaggedSymbol
                 )
 
               sig do
-                override
-                  .returns(
-                    T::Array[MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment::AdjustmentType::TaggedSymbol]
-                  )
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment::AdjustmentType::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
           end
 
           class TrialSpec < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+              end
+
             # Length of the trial period in days.
             sig { returns(Float) }
             attr_accessor :length_in_days
 
-            sig { returns(T.nilable(MetronomeSDK::Models::V1::Customers::PlanAddParams::TrialSpec::SpendingCap)) }
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V1::Customers::PlanAddParams::TrialSpec::SpendingCap
+                )
+              )
+            end
             attr_reader :spending_cap
 
             sig do
               params(
-                spending_cap: T.any(
-                  MetronomeSDK::Models::V1::Customers::PlanAddParams::TrialSpec::SpendingCap,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              )
-                .void
+                spending_cap:
+                  MetronomeSDK::V1::Customers::PlanAddParams::TrialSpec::SpendingCap::OrHash
+              ).void
             end
             attr_writer :spending_cap
 
@@ -332,30 +387,35 @@ module MetronomeSDK
             sig do
               params(
                 length_in_days: Float,
-                spending_cap: T.any(
-                  MetronomeSDK::Models::V1::Customers::PlanAddParams::TrialSpec::SpendingCap,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              )
-                .returns(T.attached_class)
+                spending_cap:
+                  MetronomeSDK::V1::Customers::PlanAddParams::TrialSpec::SpendingCap::OrHash
+              ).returns(T.attached_class)
             end
             def self.new(
               # Length of the trial period in days.
               length_in_days:,
               spending_cap: nil
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    length_in_days: Float,
-                    spending_cap: MetronomeSDK::Models::V1::Customers::PlanAddParams::TrialSpec::SpendingCap
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  length_in_days: Float,
+                  spending_cap:
+                    MetronomeSDK::V1::Customers::PlanAddParams::TrialSpec::SpendingCap
+                }
+              )
+            end
+            def to_hash
+            end
 
             class SpendingCap < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                end
+
               # The credit amount in the given denomination based on the credit type, e.g. US
               # cents.
               sig { returns(Float) }
@@ -365,16 +425,25 @@ module MetronomeSDK
               sig { returns(String) }
               attr_accessor :credit_type_id
 
-              sig { params(amount: Float, credit_type_id: String).returns(T.attached_class) }
+              sig do
+                params(amount: Float, credit_type_id: String).returns(
+                  T.attached_class
+                )
+              end
               def self.new(
                 # The credit amount in the given denomination based on the credit type, e.g. US
                 # cents.
                 amount:,
                 # The credit type ID for the spending cap.
                 credit_type_id:
-              ); end
-              sig { override.returns({amount: Float, credit_type_id: String}) }
-              def to_hash; end
+              )
+              end
+
+              sig do
+                override.returns({ amount: Float, credit_type_id: String })
+              end
+              def to_hash
+              end
             end
           end
         end

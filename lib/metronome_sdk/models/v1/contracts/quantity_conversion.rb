@@ -14,8 +14,8 @@ module MetronomeSDK
           # @!attribute operation
           #   The operation to perform on the quantity
           #
-          #   @return [Symbol, MetronomeSDK::Models::V1::Contracts::QuantityConversion::Operation]
-          required :operation, enum: -> { MetronomeSDK::Models::V1::Contracts::QuantityConversion::Operation }
+          #   @return [Symbol, MetronomeSDK::V1::Contracts::QuantityConversion::Operation]
+          required :operation, enum: -> { MetronomeSDK::V1::Contracts::QuantityConversion::Operation }
 
           # @!attribute name
           #   Optional name for this conversion.
@@ -34,13 +34,13 @@ module MetronomeSDK
           #
           #   @param conversion_factor [Float] The factor to multiply or divide the quantity by.
           #
-          #   @param operation [Symbol, MetronomeSDK::Models::V1::Contracts::QuantityConversion::Operation] The operation to perform on the quantity
+          #   @param operation [Symbol, MetronomeSDK::V1::Contracts::QuantityConversion::Operation] The operation to perform on the quantity
           #
           #   @param name [String] Optional name for this conversion.
 
           # The operation to perform on the quantity
           #
-          # @see MetronomeSDK::Models::V1::Contracts::QuantityConversion#operation
+          # @see MetronomeSDK::V1::Contracts::QuantityConversion#operation
           module Operation
             extend MetronomeSDK::Internal::Type::Enum
 

@@ -58,7 +58,6 @@ module MetronomeSDK
           #   @param customer_id [String]
           #
           #   @param charge_id [String] The Metronome ID of the charge to add to the invoice. Note that the charge must
-          #   ...
           #
           #   @param customer_plan_id [String] The Metronome ID of the customer plan to add the charge to.
           #
@@ -67,7 +66,6 @@ module MetronomeSDK
           #   @param invoice_start_timestamp [Time] The start_timestamp of the invoice to add the charge to.
           #
           #   @param price [Float] The price of the charge. This price will match the currency on the invoice, e.g.
-          #   ...
           #
           #   @param quantity [Float]
           #

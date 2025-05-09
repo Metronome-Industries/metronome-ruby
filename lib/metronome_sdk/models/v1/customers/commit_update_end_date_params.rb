@@ -46,10 +46,8 @@ module MetronomeSDK
           #   @param customer_id [String] ID of the customer whose commit is to be updated
           #
           #   @param access_ending_before [Time] RFC 3339 timestamp indicating when access to the commit will end and it will no
-          #   ...
           #
           #   @param invoices_ending_before [Time] RFC 3339 timestamp indicating when the commit will stop being invoiced (exclusiv
-          #   ...
           #
           #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
         end

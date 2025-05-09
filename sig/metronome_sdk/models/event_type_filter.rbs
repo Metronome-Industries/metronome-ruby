@@ -16,8 +16,6 @@ module MetronomeSDK
         ?in_values: ::Array[String],
         ?not_in_values: ::Array[String]
       ) -> void
-
-      def to_hash: -> MetronomeSDK::Models::event_type_filter
     end
   end
 end

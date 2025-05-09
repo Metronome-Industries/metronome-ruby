@@ -6,8 +6,15 @@ module MetronomeSDK
       class PricingUnits
         # List all pricing units (known in the API by the legacy term "credit types").
         sig do
-          params(limit: Integer, next_page: String, request_options: MetronomeSDK::RequestOpts)
-            .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::PricingUnitListResponse])
+          params(
+            limit: Integer,
+            next_page: String,
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(
+            MetronomeSDK::Internal::CursorPage[
+              MetronomeSDK::Models::V1::PricingUnitListResponse
+            ]
+          )
         end
         def list(
           # Max number of results that should be returned
@@ -15,10 +22,13 @@ module MetronomeSDK
           # Cursor that indicates where the next page of results should start.
           next_page: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

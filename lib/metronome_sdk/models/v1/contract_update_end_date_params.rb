@@ -45,10 +45,8 @@ module MetronomeSDK
         #   @param customer_id [String] ID of the customer whose contract is to be updated
         #
         #   @param allow_ending_before_finalized_invoice [Boolean] If true, allows setting the contract end date earlier than the end_timestamp of
-        #   ...
         #
         #   @param ending_before [Time] RFC 3339 timestamp indicating when the contract will end (exclusive). If not pro
-        #   ...
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
       end

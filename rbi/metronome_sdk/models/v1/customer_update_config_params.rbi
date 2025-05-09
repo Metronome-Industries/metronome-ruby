@@ -7,6 +7,9 @@ module MetronomeSDK
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :customer_id
 
@@ -24,9 +27,8 @@ module MetronomeSDK
             customer_id: String,
             leave_stripe_invoices_in_draft: T.nilable(T::Boolean),
             salesforce_account_id: T.nilable(String),
-            request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           customer_id:,
@@ -36,19 +38,21 @@ module MetronomeSDK
           # The Salesforce account ID for the customer
           salesforce_account_id: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                customer_id: String,
-                leave_stripe_invoices_in_draft: T.nilable(T::Boolean),
-                salesforce_account_id: T.nilable(String),
-                request_options: MetronomeSDK::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              customer_id: String,
+              leave_stripe_invoices_in_draft: T.nilable(T::Boolean),
+              salesforce_account_id: T.nilable(String),
+              request_options: MetronomeSDK::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

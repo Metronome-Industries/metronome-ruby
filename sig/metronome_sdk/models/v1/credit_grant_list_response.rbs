@@ -7,13 +7,13 @@ module MetronomeSDK
           balance: MetronomeSDK::Models::V1::CreditGrantListResponse::Balance,
           custom_fields: ::Hash[Symbol, String],
           customer_id: String,
-          deductions: ::Array[MetronomeSDK::Models::V1::CreditLedgerEntry],
+          deductions: ::Array[MetronomeSDK::V1::CreditLedgerEntry],
           effective_at: Time,
           expires_at: Time,
           grant_amount: MetronomeSDK::Models::V1::CreditGrantListResponse::GrantAmount,
           name: String,
           paid_amount: MetronomeSDK::Models::V1::CreditGrantListResponse::PaidAmount,
-          pending_deductions: ::Array[MetronomeSDK::Models::V1::CreditLedgerEntry],
+          pending_deductions: ::Array[MetronomeSDK::V1::CreditLedgerEntry],
           priority: Float,
           credit_grant_type: String?,
           invoice_id: String?,
@@ -31,7 +31,7 @@ module MetronomeSDK
 
         attr_accessor customer_id: String
 
-        attr_accessor deductions: ::Array[MetronomeSDK::Models::V1::CreditLedgerEntry]
+        attr_accessor deductions: ::Array[MetronomeSDK::V1::CreditLedgerEntry]
 
         attr_accessor effective_at: Time
 
@@ -43,7 +43,7 @@ module MetronomeSDK
 
         attr_accessor paid_amount: MetronomeSDK::Models::V1::CreditGrantListResponse::PaidAmount
 
-        attr_accessor pending_deductions: ::Array[MetronomeSDK::Models::V1::CreditLedgerEntry]
+        attr_accessor pending_deductions: ::Array[MetronomeSDK::V1::CreditLedgerEntry]
 
         attr_accessor priority: Float
 
@@ -66,13 +66,13 @@ module MetronomeSDK
           balance: MetronomeSDK::Models::V1::CreditGrantListResponse::Balance,
           custom_fields: ::Hash[Symbol, String],
           customer_id: String,
-          deductions: ::Array[MetronomeSDK::Models::V1::CreditLedgerEntry],
+          deductions: ::Array[MetronomeSDK::V1::CreditLedgerEntry],
           effective_at: Time,
           expires_at: Time,
           grant_amount: MetronomeSDK::Models::V1::CreditGrantListResponse::GrantAmount,
           name: String,
           paid_amount: MetronomeSDK::Models::V1::CreditGrantListResponse::PaidAmount,
-          pending_deductions: ::Array[MetronomeSDK::Models::V1::CreditLedgerEntry],
+          pending_deductions: ::Array[MetronomeSDK::V1::CreditLedgerEntry],
           priority: Float,
           ?credit_grant_type: String?,
           ?invoice_id: String?,
@@ -80,8 +80,6 @@ module MetronomeSDK
           ?reason: String?,
           ?uniqueness_key: String?
         ) -> void
-
-        def to_hash: -> MetronomeSDK::Models::V1::credit_grant_list_response
 
         type balance =
           {
@@ -102,40 +100,34 @@ module MetronomeSDK
             excluding_pending: Float,
             including_pending: Float
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::CreditGrantListResponse::balance
         end
 
         type grant_amount =
-          { amount: Float, credit_type: MetronomeSDK::Models::CreditTypeData }
+          { amount: Float, credit_type: MetronomeSDK::CreditTypeData }
 
         class GrantAmount < MetronomeSDK::Internal::Type::BaseModel
           attr_accessor amount: Float
 
-          attr_accessor credit_type: MetronomeSDK::Models::CreditTypeData
+          attr_accessor credit_type: MetronomeSDK::CreditTypeData
 
           def initialize: (
             amount: Float,
-            credit_type: MetronomeSDK::Models::CreditTypeData
+            credit_type: MetronomeSDK::CreditTypeData
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::CreditGrantListResponse::grant_amount
         end
 
         type paid_amount =
-          { amount: Float, credit_type: MetronomeSDK::Models::CreditTypeData }
+          { amount: Float, credit_type: MetronomeSDK::CreditTypeData }
 
         class PaidAmount < MetronomeSDK::Internal::Type::BaseModel
           attr_accessor amount: Float
 
-          attr_accessor credit_type: MetronomeSDK::Models::CreditTypeData
+          attr_accessor credit_type: MetronomeSDK::CreditTypeData
 
           def initialize: (
             amount: Float,
-            credit_type: MetronomeSDK::Models::CreditTypeData
+            credit_type: MetronomeSDK::CreditTypeData
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::CreditGrantListResponse::paid_amount
         end
 
         type product = { id: String, name: String }
@@ -146,8 +138,6 @@ module MetronomeSDK
           attr_accessor name: String
 
           def initialize: (id: String, name: String) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::CreditGrantListResponse::product
         end
       end
     end

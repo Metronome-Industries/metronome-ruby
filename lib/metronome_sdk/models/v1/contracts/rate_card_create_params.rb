@@ -20,16 +20,20 @@ module MetronomeSDK
           #   multiple rate cards, it will reference the rate card to which it was most
           #   recently assigned. It is not exposed to end customers.
           #
-          #   @return [Array<MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::Alias>, nil]
+          #   @return [Array<MetronomeSDK::V1::Contracts::RateCardCreateParams::Alias>, nil]
           optional :aliases,
-                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::Alias] }
+                   -> {
+                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Contracts::RateCardCreateParams::Alias]
+                   }
 
           # @!attribute credit_type_conversions
           #   Required when using custom pricing units in rates.
           #
-          #   @return [Array<MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::CreditTypeConversion>, nil]
+          #   @return [Array<MetronomeSDK::V1::Contracts::RateCardCreateParams::CreditTypeConversion>, nil]
           optional :credit_type_conversions,
-                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::CreditTypeConversion] }
+                   -> {
+                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Contracts::RateCardCreateParams::CreditTypeConversion]
+                   }
 
           # @!attribute custom_fields
           #
@@ -54,17 +58,15 @@ module MetronomeSDK
           #
           #   @param name [String] Used only in UI/API. It is not exposed to end customers.
           #
-          #   @param aliases [Array<MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::Alias>] Reference this alias when creating a contract. If the same alias is assigned to
-          #   ...
+          #   @param aliases [Array<MetronomeSDK::V1::Contracts::RateCardCreateParams::Alias>] Reference this alias when creating a contract. If the same alias is assigned to
           #
-          #   @param credit_type_conversions [Array<MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::CreditTypeConversion>] Required when using custom pricing units in rates.
+          #   @param credit_type_conversions [Array<MetronomeSDK::V1::Contracts::RateCardCreateParams::CreditTypeConversion>] Required when using custom pricing units in rates.
           #
           #   @param custom_fields [Hash{Symbol=>String}]
           #
           #   @param description [String]
           #
           #   @param fiat_credit_type_id [String] The Metronome ID of the credit type to associate with the rate card, defaults to
-          #   ...
           #
           #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 

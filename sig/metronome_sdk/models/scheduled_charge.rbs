@@ -3,8 +3,8 @@ module MetronomeSDK
     type scheduled_charge =
       {
         id: String,
-        product: MetronomeSDK::Models::ScheduledCharge::Product,
-        schedule: MetronomeSDK::Models::SchedulePointInTime,
+        product: MetronomeSDK::ScheduledCharge::Product,
+        schedule: MetronomeSDK::SchedulePointInTime,
         archived_at: Time,
         custom_fields: ::Hash[Symbol, String],
         name: String,
@@ -14,9 +14,9 @@ module MetronomeSDK
     class ScheduledCharge < MetronomeSDK::Internal::Type::BaseModel
       attr_accessor id: String
 
-      attr_accessor product: MetronomeSDK::Models::ScheduledCharge::Product
+      attr_accessor product: MetronomeSDK::ScheduledCharge::Product
 
-      attr_accessor schedule: MetronomeSDK::Models::SchedulePointInTime
+      attr_accessor schedule: MetronomeSDK::SchedulePointInTime
 
       attr_reader archived_at: Time?
 
@@ -36,15 +36,13 @@ module MetronomeSDK
 
       def initialize: (
         id: String,
-        product: MetronomeSDK::Models::ScheduledCharge::Product,
-        schedule: MetronomeSDK::Models::SchedulePointInTime,
+        product: MetronomeSDK::ScheduledCharge::Product,
+        schedule: MetronomeSDK::SchedulePointInTime,
         ?archived_at: Time,
         ?custom_fields: ::Hash[Symbol, String],
         ?name: String,
         ?netsuite_sales_order_id: String
       ) -> void
-
-      def to_hash: -> MetronomeSDK::Models::scheduled_charge
 
       type product = { id: String, name: String }
 
@@ -54,8 +52,6 @@ module MetronomeSDK
         attr_accessor name: String
 
         def initialize: (id: String, name: String) -> void
-
-        def to_hash: -> MetronomeSDK::Models::ScheduledCharge::product
       end
     end
   end

@@ -84,8 +84,8 @@ module MetronomeSDK
           #   GB. In this case, the conversion factor would be 1024 and the operation would be
           #   "divide".
           #
-          #   @return [MetronomeSDK::Models::V1::Contracts::QuantityConversion, nil]
-          optional :quantity_conversion, -> { MetronomeSDK::Models::V1::Contracts::QuantityConversion }, nil?: true
+          #   @return [MetronomeSDK::V1::Contracts::QuantityConversion, nil]
+          optional :quantity_conversion, -> { MetronomeSDK::V1::Contracts::QuantityConversion }, nil?: true
 
           # @!attribute quantity_rounding
           #   Optional. Only valid for USAGE products. If provided, the quantity will be
@@ -93,8 +93,8 @@ module MetronomeSDK
           #   the method is "round up" and the decimal places is 0, then the quantity will be
           #   rounded up to the nearest integer.
           #
-          #   @return [MetronomeSDK::Models::V1::Contracts::QuantityRounding, nil]
-          optional :quantity_rounding, -> { MetronomeSDK::Models::V1::Contracts::QuantityRounding }, nil?: true
+          #   @return [MetronomeSDK::V1::Contracts::QuantityRounding, nil]
+          optional :quantity_rounding, -> { MetronomeSDK::V1::Contracts::QuantityRounding }, nil?: true
 
           # @!attribute starting_at
           #
@@ -108,7 +108,7 @@ module MetronomeSDK
 
           # @!method initialize(created_at:, created_by:, name:, billable_metric_id: nil, composite_product_ids: nil, composite_tags: nil, exclude_free_usage: nil, is_refundable: nil, netsuite_internal_item_id: nil, netsuite_overage_item_id: nil, presentation_group_key: nil, pricing_group_key: nil, quantity_conversion: nil, quantity_rounding: nil, starting_at: nil, tags: nil)
           #   Some parameter documentations has been truncated, see
-          #   {MetronomeSDK::Models::V1::Contracts::ProductListItemState} for more details.
+          #   {MetronomeSDK::V1::Contracts::ProductListItemState} for more details.
           #
           #   @param created_at [Time]
           #
@@ -131,16 +131,12 @@ module MetronomeSDK
           #   @param netsuite_overage_item_id [String] This field's availability is dependent on your client's configuration.
           #
           #   @param presentation_group_key [Array<String>] For USAGE products only. Groups usage line items on invoices. The superset of va
-          #   ...
           #
           #   @param pricing_group_key [Array<String>] For USAGE products only. If set, pricing for this product will be determined for
-          #   ...
           #
-          #   @param quantity_conversion [MetronomeSDK::Models::V1::Contracts::QuantityConversion, nil] Optional. Only valid for USAGE products. If provided, the quantity will be conve
-          #   ...
+          #   @param quantity_conversion [MetronomeSDK::V1::Contracts::QuantityConversion, nil] Optional. Only valid for USAGE products. If provided, the quantity will be conve
           #
-          #   @param quantity_rounding [MetronomeSDK::Models::V1::Contracts::QuantityRounding, nil] Optional. Only valid for USAGE products. If provided, the quantity will be round
-          #   ...
+          #   @param quantity_rounding [MetronomeSDK::V1::Contracts::QuantityRounding, nil] Optional. Only valid for USAGE products. If provided, the quantity will be round
           #
           #   @param starting_at [Time]
           #

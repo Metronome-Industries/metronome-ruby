@@ -18,8 +18,6 @@ module MetronomeSDK
         def name=: (String) -> String
 
         def initialize: (?id: String, ?is_currency: bool, ?name: String) -> void
-
-        def to_hash: -> MetronomeSDK::Models::V1::pricing_unit_list_response
       end
     end
   end

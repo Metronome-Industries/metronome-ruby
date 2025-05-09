@@ -11,9 +11,12 @@ module MetronomeSDK
               customer_id: String,
               limit: Integer,
               next_page: String,
-              request_options: MetronomeSDK::RequestOpts
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(
+              MetronomeSDK::Internal::CursorPage[
+                MetronomeSDK::Models::V1::Customers::PlanListResponse
+              ]
             )
-              .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::Customers::PlanListResponse])
           end
           def list(
             # Path param:
@@ -23,7 +26,9 @@ module MetronomeSDK
             # Query param: Cursor that indicates where the next page of results should start.
             next_page: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # Associate an existing customer with a plan for a specified date range. See the
           # [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments)
           # for details on the price adjustments.
@@ -34,22 +39,18 @@ module MetronomeSDK
               starting_on: Time,
               ending_before: Time,
               net_payment_terms_days: Float,
-              overage_rate_adjustments: T::Array[
-                T.any(
-                  MetronomeSDK::Models::V1::Customers::PlanAddParams::OverageRateAdjustment,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              ],
-              price_adjustments: T::Array[
-                T.any(
-                  MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              ],
-              trial_spec: T.any(MetronomeSDK::Models::V1::Customers::PlanAddParams::TrialSpec, MetronomeSDK::Internal::AnyHash),
-              request_options: MetronomeSDK::RequestOpts
-            )
-              .returns(MetronomeSDK::Models::V1::Customers::PlanAddResponse)
+              overage_rate_adjustments:
+                T::Array[
+                  MetronomeSDK::V1::Customers::PlanAddParams::OverageRateAdjustment::OrHash
+                ],
+              price_adjustments:
+                T::Array[
+                  MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment::OrHash
+                ],
+              trial_spec:
+                MetronomeSDK::V1::Customers::PlanAddParams::TrialSpec::OrHash,
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(MetronomeSDK::Models::V1::Customers::PlanAddResponse)
           end
           def add(
             # Path param:
@@ -78,7 +79,9 @@ module MetronomeSDK
             # for details.
             trial_spec: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # Change the end date of a customer's plan.
           sig do
             params(
@@ -87,9 +90,8 @@ module MetronomeSDK
               ending_before: Time,
               void_invoices: T::Boolean,
               void_stripe_invoices: T::Boolean,
-              request_options: MetronomeSDK::RequestOpts
-            )
-              .returns(MetronomeSDK::Models::V1::Customers::PlanEndResponse)
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(MetronomeSDK::Models::V1::Customers::PlanEndResponse)
           end
           def end_(
             # Path param:
@@ -109,7 +111,9 @@ module MetronomeSDK
             # still in draft state.
             void_stripe_invoices: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # Lists a customer plans adjustments. See the
           # [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments)
           # for details.
@@ -119,11 +123,12 @@ module MetronomeSDK
               customer_plan_id: String,
               limit: Integer,
               next_page: String,
-              request_options: MetronomeSDK::RequestOpts
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(
+              MetronomeSDK::Internal::CursorPage[
+                MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse
+              ]
             )
-              .returns(
-                MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse]
-              )
           end
           def list_price_adjustments(
             # Path param:
@@ -135,10 +140,13 @@ module MetronomeSDK
             # Query param: Cursor that indicates where the next page of results should start.
             next_page: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # @api private
           sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
-          def self.new(client:); end
+          def self.new(client:)
+          end
         end
       end
     end

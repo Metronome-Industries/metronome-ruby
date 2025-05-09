@@ -17,7 +17,6 @@ module MetronomeSDK
           # @param invoice_id [String] Path param:
           #
           # @param skip_zero_qty_line_items [Boolean] Query param: If set, all zero quantity line items will be filtered out of the re
-          # ...
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -25,7 +24,7 @@ module MetronomeSDK
           #
           # @see MetronomeSDK::Models::V1::Customers::InvoiceRetrieveParams
           def retrieve(params)
-            parsed, options = MetronomeSDK::Models::V1::Customers::InvoiceRetrieveParams.dump_request(params)
+            parsed, options = MetronomeSDK::V1::Customers::InvoiceRetrieveParams.dump_request(params)
             customer_id =
               parsed.delete(:customer_id) do
                 raise ArgumentError.new("missing required path argument #{_1}")
@@ -56,30 +55,26 @@ module MetronomeSDK
           # @param credit_type_id [String] Query param: Only return invoices for the specified credit type
           #
           # @param ending_before [Time] Query param: RFC 3339 timestamp (exclusive). Invoices will only be returned for
-          # ...
           #
           # @param limit [Integer] Query param: Max number of results that should be returned
           #
           # @param next_page [String] Query param: Cursor that indicates where the next page of results should start.
           #
           # @param skip_zero_qty_line_items [Boolean] Query param: If set, all zero quantity line items will be filtered out of the re
-          # ...
           #
-          # @param sort [Symbol, MetronomeSDK::Models::V1::Customers::InvoiceListParams::Sort] Query param: Invoice sort order by issued_at, e.g. date_asc or date_desc. Defau
-          # ...
+          # @param sort [Symbol, MetronomeSDK::V1::Customers::InvoiceListParams::Sort] Query param: Invoice sort order by issued_at, e.g. date_asc or date_desc. Defau
           #
           # @param starting_on [Time] Query param: RFC 3339 timestamp (inclusive). Invoices will only be returned for
-          # ...
           #
           # @param status [String] Query param: Invoice status, e.g. DRAFT, FINALIZED, or VOID
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [MetronomeSDK::Internal::CursorPage<MetronomeSDK::Models::V1::Customers::Invoice>]
+          # @return [MetronomeSDK::Internal::CursorPage<MetronomeSDK::V1::Customers::Invoice>]
           #
           # @see MetronomeSDK::Models::V1::Customers::InvoiceListParams
           def list(params)
-            parsed, options = MetronomeSDK::Models::V1::Customers::InvoiceListParams.dump_request(params)
+            parsed, options = MetronomeSDK::V1::Customers::InvoiceListParams.dump_request(params)
             customer_id =
               parsed.delete(:customer_id) do
                 raise ArgumentError.new("missing required path argument #{_1}")
@@ -89,7 +84,7 @@ module MetronomeSDK
               path: ["v1/customers/%1$s/invoices", customer_id],
               query: parsed,
               page: MetronomeSDK::Internal::CursorPage,
-              model: MetronomeSDK::Models::V1::Customers::Invoice,
+              model: MetronomeSDK::V1::Customers::Invoice,
               options: options
             )
           end
@@ -104,7 +99,6 @@ module MetronomeSDK
           # @param customer_id [String] Path param:
           #
           # @param charge_id [String] Body param: The Metronome ID of the charge to add to the invoice. Note that the
-          # ...
           #
           # @param customer_plan_id [String] Body param: The Metronome ID of the customer plan to add the charge to.
           #
@@ -113,7 +107,6 @@ module MetronomeSDK
           # @param invoice_start_timestamp [Time] Body param: The start_timestamp of the invoice to add the charge to.
           #
           # @param price [Float] Body param: The price of the charge. This price will match the currency on the i
-          # ...
           #
           # @param quantity [Float] Body param:
           #
@@ -123,7 +116,7 @@ module MetronomeSDK
           #
           # @see MetronomeSDK::Models::V1::Customers::InvoiceAddChargeParams
           def add_charge(params)
-            parsed, options = MetronomeSDK::Models::V1::Customers::InvoiceAddChargeParams.dump_request(params)
+            parsed, options = MetronomeSDK::V1::Customers::InvoiceAddChargeParams.dump_request(params)
             customer_id =
               parsed.delete(:customer_id) do
                 raise ArgumentError.new("missing required path argument #{_1}")
@@ -152,27 +145,22 @@ module MetronomeSDK
           # @param customer_id [String] Path param:
           #
           # @param ending_before [Time] Query param: RFC 3339 timestamp. Breakdowns will only be returned for time windo
-          # ...
           #
           # @param starting_on [Time] Query param: RFC 3339 timestamp. Breakdowns will only be returned for time windo
-          # ...
           #
           # @param credit_type_id [String] Query param: Only return invoices for the specified credit type
           #
           # @param limit [Integer] Query param: Max number of results that should be returned. For daily breakdowns
-          # ...
           #
           # @param next_page [String] Query param: Cursor that indicates where the next page of results should start.
           #
           # @param skip_zero_qty_line_items [Boolean] Query param: If set, all zero quantity line items will be filtered out of the re
-          # ...
           #
-          # @param sort [Symbol, MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::Sort] Query param: Invoice sort order by issued_at, e.g. date_asc or date_desc. Defau
-          # ...
+          # @param sort [Symbol, MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::Sort] Query param: Invoice sort order by issued_at, e.g. date_asc or date_desc. Defau
           #
           # @param status [String] Query param: Invoice status, e.g. DRAFT or FINALIZED
           #
-          # @param window_size [Symbol, MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::WindowSize] Query param: The granularity of the breakdowns to return. Defaults to day.
+          # @param window_size [Symbol, MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::WindowSize] Query param: The granularity of the breakdowns to return. Defaults to day.
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -180,7 +168,7 @@ module MetronomeSDK
           #
           # @see MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams
           def list_breakdowns(params)
-            parsed, options = MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams.dump_request(params)
+            parsed, options = MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams.dump_request(params)
             customer_id =
               parsed.delete(:customer_id) do
                 raise ArgumentError.new("missing required path argument #{_1}")

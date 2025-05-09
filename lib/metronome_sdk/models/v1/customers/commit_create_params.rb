@@ -13,8 +13,8 @@ module MetronomeSDK
           #   Schedule for distributing the commit to the customer. For "POSTPAID" commits
           #   only one schedule item is allowed and amount must match invoice_schedule total.
           #
-          #   @return [MetronomeSDK::Models::V1::Customers::CommitCreateParams::AccessSchedule]
-          required :access_schedule, -> { MetronomeSDK::Models::V1::Customers::CommitCreateParams::AccessSchedule }
+          #   @return [MetronomeSDK::V1::Customers::CommitCreateParams::AccessSchedule]
+          required :access_schedule, -> { MetronomeSDK::V1::Customers::CommitCreateParams::AccessSchedule }
 
           # @!attribute customer_id
           #
@@ -37,8 +37,8 @@ module MetronomeSDK
 
           # @!attribute type
           #
-          #   @return [Symbol, MetronomeSDK::Models::V1::Customers::CommitCreateParams::Type]
-          required :type, enum: -> { MetronomeSDK::Models::V1::Customers::CommitCreateParams::Type }
+          #   @return [Symbol, MetronomeSDK::V1::Customers::CommitCreateParams::Type]
+          required :type, enum: -> { MetronomeSDK::V1::Customers::CommitCreateParams::Type }
 
           # @!attribute applicable_contract_ids
           #   Which contract the commit applies to. If not provided, the commit applies to all
@@ -86,9 +86,8 @@ module MetronomeSDK
           #   accesss_schedule amount. Optional for "PREPAID" commits: if not provided, this
           #   will be a "complimentary" commit with no invoice.
           #
-          #   @return [MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule, nil]
-          optional :invoice_schedule,
-                   -> { MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule }
+          #   @return [MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule, nil]
+          optional :invoice_schedule, -> { MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule }
 
           # @!attribute name
           #   displayed on invoices
@@ -104,8 +103,8 @@ module MetronomeSDK
 
           # @!attribute rate_type
           #
-          #   @return [Symbol, MetronomeSDK::Models::V1::Customers::CommitCreateParams::RateType, nil]
-          optional :rate_type, enum: -> { MetronomeSDK::Models::V1::Customers::CommitCreateParams::RateType }
+          #   @return [Symbol, MetronomeSDK::V1::Customers::CommitCreateParams::RateType, nil]
+          optional :rate_type, enum: -> { MetronomeSDK::V1::Customers::CommitCreateParams::RateType }
 
           # @!attribute salesforce_opportunity_id
           #   This field's availability is dependent on your client's configuration.
@@ -126,57 +125,50 @@ module MetronomeSDK
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::Customers::CommitCreateParams} for more details.
           #
-          #   @param access_schedule [MetronomeSDK::Models::V1::Customers::CommitCreateParams::AccessSchedule] Schedule for distributing the commit to the customer. For "POSTPAID" commits onl
-          #   ...
+          #   @param access_schedule [MetronomeSDK::V1::Customers::CommitCreateParams::AccessSchedule] Schedule for distributing the commit to the customer. For "POSTPAID" commits onl
           #
           #   @param customer_id [String]
           #
           #   @param priority [Float] If multiple credits or commits are applicable, the one with the lower priority w
-          #   ...
           #
           #   @param product_id [String] ID of the fixed product associated with the commit. This is required because pro
-          #   ...
           #
-          #   @param type [Symbol, MetronomeSDK::Models::V1::Customers::CommitCreateParams::Type]
+          #   @param type [Symbol, MetronomeSDK::V1::Customers::CommitCreateParams::Type]
           #
           #   @param applicable_contract_ids [Array<String>] Which contract the commit applies to. If not provided, the commit applies to all
-          #   ...
           #
           #   @param applicable_product_ids [Array<String>] Which products the commit applies to. If both applicable_product_ids and applica
-          #   ...
           #
           #   @param applicable_product_tags [Array<String>] Which tags the commit applies to. If both applicable*product_ids and applicable*
-          #   ...
           #
           #   @param custom_fields [Hash{Symbol=>String}]
           #
           #   @param description [String] Used only in UI/API. It is not exposed to end customers.
           #
           #   @param invoice_contract_id [String] The contract that this commit will be billed on. This is required for "POSTPAID"
-          #   ...
           #
-          #   @param invoice_schedule [MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule] Required for "POSTPAID" commits: the true up invoice will be generated at this t
-          #   ...
+          #   @param invoice_schedule [MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule] Required for "POSTPAID" commits: the true up invoice will be generated at this t
           #
           #   @param name [String] displayed on invoices
           #
           #   @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
           #
-          #   @param rate_type [Symbol, MetronomeSDK::Models::V1::Customers::CommitCreateParams::RateType]
+          #   @param rate_type [Symbol, MetronomeSDK::V1::Customers::CommitCreateParams::RateType]
           #
           #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
           #
           #   @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a commit or credit i
-          #   ...
           #
           #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 
           class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute schedule_items
             #
-            #   @return [Array<MetronomeSDK::Models::V1::Customers::CommitCreateParams::AccessSchedule::ScheduleItem>]
+            #   @return [Array<MetronomeSDK::V1::Customers::CommitCreateParams::AccessSchedule::ScheduleItem>]
             required :schedule_items,
-                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Customers::CommitCreateParams::AccessSchedule::ScheduleItem] }
+                     -> {
+                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CommitCreateParams::AccessSchedule::ScheduleItem]
+                     }
 
             # @!attribute credit_type_id
             #   Defaults to USD (cents) if not passed
@@ -188,7 +180,7 @@ module MetronomeSDK
             #   Schedule for distributing the commit to the customer. For "POSTPAID" commits
             #   only one schedule item is allowed and amount must match invoice_schedule total.
             #
-            #   @param schedule_items [Array<MetronomeSDK::Models::V1::Customers::CommitCreateParams::AccessSchedule::ScheduleItem>]
+            #   @param schedule_items [Array<MetronomeSDK::V1::Customers::CommitCreateParams::AccessSchedule::ScheduleItem>]
             #
             #   @param credit_type_id [String] Defaults to USD (cents) if not passed
 
@@ -241,21 +233,25 @@ module MetronomeSDK
             #   amount. If amount is sent, the unit price is assumed to be the amount and
             #   quantity is inferred to be 1.
             #
-            #   @return [MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule, nil]
+            #   @return [MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule, nil]
             optional :recurring_schedule,
-                     -> { MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule }
+                     -> {
+                       MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule
+                     }
 
             # @!attribute schedule_items
             #   Either provide amount or provide both unit_price and quantity.
             #
-            #   @return [Array<MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem>, nil]
+            #   @return [Array<MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem>, nil]
             optional :schedule_items,
-                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem] }
+                     -> {
+                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]
+                     }
 
             # @!method initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil)
             #   Some parameter documentations has been truncated, see
-            #   {MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule} for
-            #   more details.
+            #   {MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule} for more
+            #   details.
             #
             #   Required for "POSTPAID" commits: the true up invoice will be generated at this
             #   time and only one schedule item is allowed; the total must match
@@ -264,18 +260,19 @@ module MetronomeSDK
             #
             #   @param credit_type_id [String] Defaults to USD (cents) if not passed.
             #
-            #   @param recurring_schedule [MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule] Enter the unit price and quantity for the charge or instead only send the amount
-            #   ...
+            #   @param recurring_schedule [MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule] Enter the unit price and quantity for the charge or instead only send the amount
             #
-            #   @param schedule_items [Array<MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem>] Either provide amount or provide both unit_price and quantity.
+            #   @param schedule_items [Array<MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem>] Either provide amount or provide both unit_price and quantity.
 
-            # @see MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule#recurring_schedule
+            # @see MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule#recurring_schedule
             class RecurringSchedule < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute amount_distribution
               #
-              #   @return [Symbol, MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::AmountDistribution]
+              #   @return [Symbol, MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::AmountDistribution]
               required :amount_distribution,
-                       enum: -> { MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::AmountDistribution }
+                       enum: -> {
+                         MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::AmountDistribution
+                       }
 
               # @!attribute ending_before
               #   RFC 3339 timestamp (exclusive).
@@ -285,9 +282,11 @@ module MetronomeSDK
 
               # @!attribute frequency
               #
-              #   @return [Symbol, MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::Frequency]
+              #   @return [Symbol, MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::Frequency]
               required :frequency,
-                       enum: -> { MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::Frequency }
+                       enum: -> {
+                         MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::Frequency
+                       }
 
               # @!attribute starting_at
               #   RFC 3339 timestamp (inclusive).
@@ -321,31 +320,28 @@ module MetronomeSDK
 
               # @!method initialize(amount_distribution:, ending_before:, frequency:, starting_at:, amount: nil, quantity: nil, unit_price: nil)
               #   Some parameter documentations has been truncated, see
-              #   {MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule}
+              #   {MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule}
               #   for more details.
               #
               #   Enter the unit price and quantity for the charge or instead only send the
               #   amount. If amount is sent, the unit price is assumed to be the amount and
               #   quantity is inferred to be 1.
               #
-              #   @param amount_distribution [Symbol, MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::AmountDistribution]
+              #   @param amount_distribution [Symbol, MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::AmountDistribution]
               #
               #   @param ending_before [Time] RFC 3339 timestamp (exclusive).
               #
-              #   @param frequency [Symbol, MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::Frequency]
+              #   @param frequency [Symbol, MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::Frequency]
               #
               #   @param starting_at [Time] RFC 3339 timestamp (inclusive).
               #
               #   @param amount [Float] Amount for the charge. Can be provided instead of unit_price and quantity. If am
-              #   ...
               #
               #   @param quantity [Float] Quantity for the charge. Will be multiplied by unit_price to determine the amoun
-              #   ...
               #
               #   @param unit_price [Float] Unit price for the charge. Will be multiplied by quantity to determine the amoun
-              #   ...
 
-              # @see MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule#amount_distribution
+              # @see MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule#amount_distribution
               module AmountDistribution
                 extend MetronomeSDK::Internal::Type::Enum
 
@@ -357,7 +353,7 @@ module MetronomeSDK
                 #   @return [Array<Symbol>]
               end
 
-              # @see MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule#frequency
+              # @see MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule#frequency
               module Frequency
                 extend MetronomeSDK::Internal::Type::Enum
 
@@ -404,19 +400,16 @@ module MetronomeSDK
 
               # @!method initialize(timestamp:, amount: nil, quantity: nil, unit_price: nil)
               #   Some parameter documentations has been truncated, see
-              #   {MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem}
+              #   {MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem}
               #   for more details.
               #
               #   @param timestamp [Time] timestamp of the scheduled event
               #
               #   @param amount [Float] Amount for the charge. Can be provided instead of unit_price and quantity. If am
-              #   ...
               #
               #   @param quantity [Float] Quantity for the charge. Will be multiplied by unit_price to determine the amoun
-              #   ...
               #
               #   @param unit_price [Float] Unit price for the charge. Will be multiplied by quantity to determine the amoun
-              #   ...
             end
           end
 

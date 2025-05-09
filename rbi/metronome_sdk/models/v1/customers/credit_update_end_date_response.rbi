@@ -5,17 +5,24 @@ module MetronomeSDK
     module V1
       module Customers
         class CreditUpdateEndDateResponse < MetronomeSDK::Internal::Type::BaseModel
-          sig { returns(MetronomeSDK::Models::ID) }
+          OrHash =
+            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
+          sig { returns(MetronomeSDK::ID) }
           attr_reader :data
 
-          sig { params(data: T.any(MetronomeSDK::Models::ID, MetronomeSDK::Internal::AnyHash)).void }
+          sig { params(data: MetronomeSDK::ID::OrHash).void }
           attr_writer :data
 
-          sig { params(data: T.any(MetronomeSDK::Models::ID, MetronomeSDK::Internal::AnyHash)).returns(T.attached_class) }
-          def self.new(data:); end
+          sig do
+            params(data: MetronomeSDK::ID::OrHash).returns(T.attached_class)
+          end
+          def self.new(data:)
+          end
 
-          sig { override.returns({data: MetronomeSDK::Models::ID}) }
-          def to_hash; end
+          sig { override.returns({ data: MetronomeSDK::ID }) }
+          def to_hash
+          end
         end
       end
     end

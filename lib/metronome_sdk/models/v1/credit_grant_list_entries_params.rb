@@ -51,16 +51,12 @@ module MetronomeSDK
         #   @param next_page [String] Cursor that indicates where the next page of results should start.
         #
         #   @param credit_type_ids [Array<String>] A list of Metronome credit type IDs to fetch ledger entries for. If absent, ledg
-        #   ...
         #
         #   @param customer_ids [Array<String>] A list of Metronome customer IDs to fetch ledger entries for. If absent, ledger
-        #   ...
         #
         #   @param ending_before [Time] If supplied, ledger entries will only be returned with an effective_at before th
-        #   ...
         #
         #   @param starting_on [Time] If supplied, only ledger entries effective at or after this time will be returne
-        #   ...
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
       end

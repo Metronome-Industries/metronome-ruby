@@ -10,13 +10,16 @@ module MetronomeSDK
           params(
             ending_before: Time,
             starting_on: Time,
-            window_size: MetronomeSDK::Models::V1::UsageListParams::WindowSize::OrSymbol,
+            window_size:
+              MetronomeSDK::V1::UsageListParams::WindowSize::OrSymbol,
             next_page: String,
-            billable_metrics: T::Array[T.any(MetronomeSDK::Models::V1::UsageListParams::BillableMetric, MetronomeSDK::Internal::AnyHash)],
+            billable_metrics:
+              T::Array[
+                MetronomeSDK::V1::UsageListParams::BillableMetric::OrHash
+              ],
             customer_ids: T::Array[String],
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .returns(MetronomeSDK::Models::V1::UsageListResponse)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V1::UsageListResponse)
         end
         def list(
           # Body param:
@@ -37,7 +40,9 @@ module MetronomeSDK
           # usage for all customers will be returned.
           customer_ids: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Send usage events to Metronome. The body of this request is expected to be a
         # JSON array of between 1 and 100 usage events. Compressed request bodies are
         # supported with a `Content-Encoding: gzip` header. See
@@ -45,12 +50,12 @@ module MetronomeSDK
         # learn more about usage events.
         sig do
           params(
-            usage: T::Array[T.any(MetronomeSDK::Models::V1::UsageIngestParams::Usage, MetronomeSDK::Internal::AnyHash)],
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .void
+            usage: T::Array[MetronomeSDK::V1::UsageIngestParams::Usage::OrHash],
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).void
         end
-        def ingest(usage: nil, request_options: {}); end
+        def ingest(usage: nil, request_options: {})
+        end
 
         # Fetch aggregated usage data for the specified customer, billable-metric, and
         # optional group, broken into intervals of the specified length.
@@ -58,16 +63,21 @@ module MetronomeSDK
           params(
             billable_metric_id: String,
             customer_id: String,
-            window_size: MetronomeSDK::Models::V1::UsageListWithGroupsParams::WindowSize::OrSymbol,
+            window_size:
+              MetronomeSDK::V1::UsageListWithGroupsParams::WindowSize::OrSymbol,
             limit: Integer,
             next_page: String,
             current_period: T::Boolean,
             ending_before: Time,
-            group_by: T.any(MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy, MetronomeSDK::Internal::AnyHash),
+            group_by:
+              MetronomeSDK::V1::UsageListWithGroupsParams::GroupBy::OrHash,
             starting_on: Time,
-            request_options: MetronomeSDK::RequestOpts
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(
+            MetronomeSDK::Internal::CursorPage[
+              MetronomeSDK::Models::V1::UsageListWithGroupsResponse
+            ]
           )
-            .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::UsageListWithGroupsResponse])
         end
         def list_with_groups(
           # Body param:
@@ -94,10 +104,13 @@ module MetronomeSDK
           # Body param:
           starting_on: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

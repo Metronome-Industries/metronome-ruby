@@ -3,6 +3,9 @@
 module MetronomeSDK
   module Models
     class EventTypeFilter < MetronomeSDK::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
       # A list of event types that are explicitly included in the billable metric. If
       # specified, only events of these types will match the billable metric. Must be
       # non-empty if present.
@@ -22,7 +25,12 @@ module MetronomeSDK
       attr_writer :not_in_values
 
       # An optional filtering rule to match the 'event_type' property of an event.
-      sig { params(in_values: T::Array[String], not_in_values: T::Array[String]).returns(T.attached_class) }
+      sig do
+        params(
+          in_values: T::Array[String],
+          not_in_values: T::Array[String]
+        ).returns(T.attached_class)
+      end
       def self.new(
         # A list of event types that are explicitly included in the billable metric. If
         # specified, only events of these types will match the billable metric. Must be
@@ -32,9 +40,16 @@ module MetronomeSDK
         # specified, events of these types will not match the billable metric. Must be
         # non-empty if present.
         not_in_values: nil
-      ); end
-      sig { override.returns({in_values: T::Array[String], not_in_values: T::Array[String]}) }
-      def to_hash; end
+      )
+      end
+
+      sig do
+        override.returns(
+          { in_values: T::Array[String], not_in_values: T::Array[String] }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

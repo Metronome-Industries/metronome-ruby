@@ -12,7 +12,7 @@ class MetronomeSDK::Test::Resources::V1::Contracts::RateCardsTest < MetronomeSDK
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::ID
+        data: MetronomeSDK::ID
       }
     end
   end
@@ -41,7 +41,7 @@ class MetronomeSDK::Test::Resources::V1::Contracts::RateCardsTest < MetronomeSDK
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::ID
+        data: MetronomeSDK::ID
       }
     end
   end
@@ -70,7 +70,21 @@ class MetronomeSDK::Test::Resources::V1::Contracts::RateCardsTest < MetronomeSDK
         credit_type_conversions: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Contracts::RateCardListResponse::CreditTypeConversion]) | nil,
         custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[String]) | nil,
         description: String | nil,
-        fiat_credit_type: MetronomeSDK::Models::CreditTypeData | nil
+        fiat_credit_type: MetronomeSDK::CreditTypeData | nil
+      }
+    end
+  end
+
+  def test_archive_required_params
+    response = @metronome.v1.contracts.rate_cards.archive(id: "12b21470-4570-40df-8998-449d0b0bc52f")
+
+    assert_pattern do
+      response => MetronomeSDK::Models::V1::Contracts::RateCardArchiveResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: MetronomeSDK::ID
       }
     end
   end

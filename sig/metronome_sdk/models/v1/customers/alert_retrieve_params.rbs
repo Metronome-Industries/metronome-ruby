@@ -3,7 +3,11 @@ module MetronomeSDK
     module V1
       module Customers
         type alert_retrieve_params =
-          { alert_id: String, customer_id: String }
+          {
+            alert_id: String,
+            customer_id: String,
+            plans_or_contracts: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::plans_or_contracts
+          }
           & MetronomeSDK::Internal::Type::request_parameters
 
         class AlertRetrieveParams < MetronomeSDK::Internal::Type::BaseModel
@@ -14,13 +18,29 @@ module MetronomeSDK
 
           attr_accessor customer_id: String
 
+          attr_reader plans_or_contracts: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::plans_or_contracts?
+
+          def plans_or_contracts=: (
+            MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::plans_or_contracts
+          ) -> MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::plans_or_contracts
+
           def initialize: (
             alert_id: String,
             customer_id: String,
+            ?plans_or_contracts: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::plans_or_contracts,
             ?request_options: MetronomeSDK::request_opts
           ) -> void
 
-          def to_hash: -> MetronomeSDK::Models::V1::Customers::alert_retrieve_params
+          type plans_or_contracts = :PLANS | :CONTRACTS
+
+          module PlansOrContracts
+            extend MetronomeSDK::Internal::Type::Enum
+
+            PLANS: :PLANS
+            CONTRACTS: :CONTRACTS
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::plans_or_contracts]
+          end
         end
       end
     end

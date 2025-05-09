@@ -5,7 +5,7 @@ module MetronomeSDK
         module RateCards
           type product_order_update_params =
             {
-              product_moves: ::Array[MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove],
+              product_moves: ::Array[MetronomeSDK::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove],
               rate_card_id: String
             }
             & MetronomeSDK::Internal::Type::request_parameters
@@ -14,17 +14,15 @@ module MetronomeSDK
             extend MetronomeSDK::Internal::Type::RequestParameters::Converter
             include MetronomeSDK::Internal::Type::RequestParameters
 
-            attr_accessor product_moves: ::Array[MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove]
+            attr_accessor product_moves: ::Array[MetronomeSDK::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove]
 
             attr_accessor rate_card_id: String
 
             def initialize: (
-              product_moves: ::Array[MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove],
+              product_moves: ::Array[MetronomeSDK::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove],
               rate_card_id: String,
               ?request_options: MetronomeSDK::request_opts
             ) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V1::Contracts::RateCards::product_order_update_params
 
             type product_move = { position: Float, product_id: String }
 
@@ -34,8 +32,6 @@ module MetronomeSDK
               attr_accessor product_id: String
 
               def initialize: (position: Float, product_id: String) -> void
-
-              def to_hash: -> MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateParams::product_move
             end
           end
         end

@@ -10,11 +10,11 @@ module MetronomeSDK
             # @!attribute data
             #   The ID of the rate card to which the rates were added.
             #
-            #   @return [MetronomeSDK::Models::ID]
-            required :data, -> { MetronomeSDK::Models::ID }
+            #   @return [MetronomeSDK::ID]
+            required :data, -> { MetronomeSDK::ID }
 
             # @!method initialize(data:)
-            #   @param data [MetronomeSDK::Models::ID] The ID of the rate card to which the rates were added.
+            #   @param data [MetronomeSDK::ID] The ID of the rate card to which the rates were added.
           end
         end
       end

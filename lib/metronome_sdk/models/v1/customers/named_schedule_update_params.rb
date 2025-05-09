@@ -50,7 +50,6 @@ module MetronomeSDK
           #   @param starting_at [Time]
           #
           #   @param value [Object] The value to set for the named schedule. The structure of this object is specifi
-          #   ...
           #
           #   @param ending_before [Time]
           #

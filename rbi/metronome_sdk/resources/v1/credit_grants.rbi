@@ -9,9 +9,11 @@ module MetronomeSDK
           params(
             customer_id: String,
             expires_at: Time,
-            grant_amount: T.any(MetronomeSDK::Models::V1::CreditGrantCreateParams::GrantAmount, MetronomeSDK::Internal::AnyHash),
+            grant_amount:
+              MetronomeSDK::V1::CreditGrantCreateParams::GrantAmount::OrHash,
             name: String,
-            paid_amount: T.any(MetronomeSDK::Models::V1::CreditGrantCreateParams::PaidAmount, MetronomeSDK::Internal::AnyHash),
+            paid_amount:
+              MetronomeSDK::V1::CreditGrantCreateParams::PaidAmount::OrHash,
             priority: Float,
             credit_grant_type: String,
             custom_fields: T::Hash[Symbol, String],
@@ -19,14 +21,11 @@ module MetronomeSDK
             invoice_date: Time,
             product_ids: T::Array[String],
             reason: String,
-            rollover_settings: T.any(
-              MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings,
-              MetronomeSDK::Internal::AnyHash
-            ),
+            rollover_settings:
+              MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::OrHash,
             uniqueness_key: String,
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .returns(MetronomeSDK::Models::V1::CreditGrantCreateResponse)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V1::CreditGrantCreateResponse)
         end
         def create(
           # the Metronome ID of the customer
@@ -63,7 +62,9 @@ module MetronomeSDK
           # request will fail with a 409 error.
           uniqueness_key: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # List credit grants. This list does not included voided grants.
         sig do
           params(
@@ -74,9 +75,12 @@ module MetronomeSDK
             customer_ids: T::Array[String],
             effective_before: Time,
             not_expiring_before: Time,
-            request_options: MetronomeSDK::RequestOpts
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(
+            MetronomeSDK::Internal::CursorPage[
+              MetronomeSDK::Models::V1::CreditGrantListResponse
+            ]
           )
-            .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::CreditGrantListResponse])
         end
         def list(
           # Query param: Max number of results that should be returned
@@ -98,7 +102,9 @@ module MetronomeSDK
           # Body param: Only return credit grants that expire at or after this timestamp.
           not_expiring_before: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Edit an existing credit grant
         sig do
           params(
@@ -106,9 +112,8 @@ module MetronomeSDK
             credit_grant_type: String,
             expires_at: Time,
             name: String,
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .returns(MetronomeSDK::Models::V1::CreditGrantEditResponse)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V1::CreditGrantEditResponse)
         end
         def edit(
           # the ID of the credit grant
@@ -120,7 +125,9 @@ module MetronomeSDK
           # the updated name for the credit grant
           name: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Fetches a list of credit ledger entries. Returns lists of ledgers per customer.
         # Ledger entries are returned in chronological order. Ledger entries associated
         # with voided credit grants are not included.
@@ -131,9 +138,8 @@ module MetronomeSDK
             customer_ids: T::Array[String],
             ending_before: Time,
             starting_on: Time,
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .returns(MetronomeSDK::Models::V1::CreditGrantListEntriesResponse)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V1::CreditGrantListEntriesResponse)
         end
         def list_entries(
           # Query param: Cursor that indicates where the next page of results should start.
@@ -153,16 +159,17 @@ module MetronomeSDK
           # will be returned.
           starting_on: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Void a credit grant
         sig do
           params(
             id: String,
             release_uniqueness_key: T::Boolean,
             void_credit_purchase_invoice: T::Boolean,
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .returns(MetronomeSDK::Models::V1::CreditGrantVoidResponse)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V1::CreditGrantVoidResponse)
         end
         def void(
           id:,
@@ -171,10 +178,13 @@ module MetronomeSDK
           # If true, void the purchase invoice associated with the grant
           void_credit_purchase_invoice: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

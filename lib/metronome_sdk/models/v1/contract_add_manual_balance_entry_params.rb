@@ -59,7 +59,6 @@ module MetronomeSDK
         #   @param id [String] ID of the balance (commit or credit) to update.
         #
         #   @param amount [Float] Amount to add to the segment. A negative number will draw down from the balance.
-        #   ...
         #
         #   @param customer_id [String] ID of the customer whose balance is to be updated.
         #
@@ -70,7 +69,6 @@ module MetronomeSDK
         #   @param contract_id [String] ID of the contract to update. Leave blank to update a customer level balance.
         #
         #   @param timestamp [Time] RFC 3339 timestamp indicating when the manual adjustment takes place. If not pro
-        #   ...
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
       end

@@ -24,16 +24,15 @@ module MetronomeSDK
           # @!attribute archive_filter
           #   Filter options for the product list
           #
-          #   @return [Symbol, MetronomeSDK::Models::V1::Contracts::ProductListParams::ArchiveFilter, nil]
-          optional :archive_filter,
-                   enum: -> { MetronomeSDK::Models::V1::Contracts::ProductListParams::ArchiveFilter }
+          #   @return [Symbol, MetronomeSDK::V1::Contracts::ProductListParams::ArchiveFilter, nil]
+          optional :archive_filter, enum: -> { MetronomeSDK::V1::Contracts::ProductListParams::ArchiveFilter }
 
           # @!method initialize(limit: nil, next_page: nil, archive_filter: nil, request_options: {})
           #   @param limit [Integer] Max number of results that should be returned
           #
           #   @param next_page [String] Cursor that indicates where the next page of results should start.
           #
-          #   @param archive_filter [Symbol, MetronomeSDK::Models::V1::Contracts::ProductListParams::ArchiveFilter] Filter options for the product list
+          #   @param archive_filter [Symbol, MetronomeSDK::V1::Contracts::ProductListParams::ArchiveFilter] Filter options for the product list
           #
           #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 

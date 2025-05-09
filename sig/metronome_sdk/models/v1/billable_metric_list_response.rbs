@@ -9,9 +9,9 @@ module MetronomeSDK
           aggregation_type: MetronomeSDK::Models::V1::BillableMetricListResponse::aggregation_type,
           archived_at: Time,
           custom_fields: ::Hash[Symbol, String],
-          event_type_filter: MetronomeSDK::Models::EventTypeFilter,
+          event_type_filter: MetronomeSDK::EventTypeFilter,
           group_keys: ::Array[::Array[String]],
-          property_filters: ::Array[MetronomeSDK::Models::PropertyFilter],
+          property_filters: ::Array[MetronomeSDK::PropertyFilter],
           sql: String
         }
 
@@ -38,21 +38,21 @@ module MetronomeSDK
 
         def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
 
-        attr_reader event_type_filter: MetronomeSDK::Models::EventTypeFilter?
+        attr_reader event_type_filter: MetronomeSDK::EventTypeFilter?
 
         def event_type_filter=: (
-          MetronomeSDK::Models::EventTypeFilter
-        ) -> MetronomeSDK::Models::EventTypeFilter
+          MetronomeSDK::EventTypeFilter
+        ) -> MetronomeSDK::EventTypeFilter
 
         attr_reader group_keys: ::Array[::Array[String]]?
 
         def group_keys=: (::Array[::Array[String]]) -> ::Array[::Array[String]]
 
-        attr_reader property_filters: ::Array[MetronomeSDK::Models::PropertyFilter]?
+        attr_reader property_filters: ::Array[MetronomeSDK::PropertyFilter]?
 
         def property_filters=: (
-          ::Array[MetronomeSDK::Models::PropertyFilter]
-        ) -> ::Array[MetronomeSDK::Models::PropertyFilter]
+          ::Array[MetronomeSDK::PropertyFilter]
+        ) -> ::Array[MetronomeSDK::PropertyFilter]
 
         attr_reader sql: String?
 
@@ -65,13 +65,11 @@ module MetronomeSDK
           ?aggregation_type: MetronomeSDK::Models::V1::BillableMetricListResponse::aggregation_type,
           ?archived_at: Time,
           ?custom_fields: ::Hash[Symbol, String],
-          ?event_type_filter: MetronomeSDK::Models::EventTypeFilter,
+          ?event_type_filter: MetronomeSDK::EventTypeFilter,
           ?group_keys: ::Array[::Array[String]],
-          ?property_filters: ::Array[MetronomeSDK::Models::PropertyFilter],
+          ?property_filters: ::Array[MetronomeSDK::PropertyFilter],
           ?sql: String
         ) -> void
-
-        def to_hash: -> MetronomeSDK::Models::V1::billable_metric_list_response
 
         type aggregation_type = :COUNT | :LATEST | :MAX | :SUM | :UNIQUE
 

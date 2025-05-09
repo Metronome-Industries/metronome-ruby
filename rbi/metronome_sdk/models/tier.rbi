@@ -3,6 +3,9 @@
 module MetronomeSDK
   module Models
     class Tier < MetronomeSDK::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
       sig { returns(Float) }
       attr_accessor :price
 
@@ -13,10 +16,12 @@ module MetronomeSDK
       attr_writer :size
 
       sig { params(price: Float, size: Float).returns(T.attached_class) }
-      def self.new(price:, size: nil); end
+      def self.new(price:, size: nil)
+      end
 
-      sig { override.returns({price: Float, size: Float}) }
-      def to_hash; end
+      sig { override.returns({ price: Float, size: Float }) }
+      def to_hash
+      end
     end
   end
 end

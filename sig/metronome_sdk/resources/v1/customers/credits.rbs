@@ -4,7 +4,7 @@ module MetronomeSDK
       class Customers
         class Credits
           def create: (
-            access_schedule: MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule,
+            access_schedule: MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule,
             customer_id: String,
             priority: Float,
             product_id: String,

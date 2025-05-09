@@ -5,9 +5,9 @@ module MetronomeSDK
         def create: (
           customer_id: String,
           expires_at: Time,
-          grant_amount: MetronomeSDK::Models::V1::CreditGrantCreateParams::GrantAmount,
+          grant_amount: MetronomeSDK::V1::CreditGrantCreateParams::GrantAmount,
           name: String,
-          paid_amount: MetronomeSDK::Models::V1::CreditGrantCreateParams::PaidAmount,
+          paid_amount: MetronomeSDK::V1::CreditGrantCreateParams::PaidAmount,
           priority: Float,
           ?credit_grant_type: String,
           ?custom_fields: ::Hash[Symbol, String],
@@ -15,7 +15,7 @@ module MetronomeSDK
           ?invoice_date: Time,
           ?product_ids: ::Array[String],
           ?reason: String,
-          ?rollover_settings: MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings,
+          ?rollover_settings: MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings,
           ?uniqueness_key: String,
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V1::CreditGrantCreateResponse

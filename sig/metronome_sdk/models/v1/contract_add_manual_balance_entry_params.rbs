@@ -45,8 +45,6 @@ module MetronomeSDK
           ?timestamp: Time,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
-
-        def to_hash: -> MetronomeSDK::Models::V1::contract_add_manual_balance_entry_params
       end
     end
   end

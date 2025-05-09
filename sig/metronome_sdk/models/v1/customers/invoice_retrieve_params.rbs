@@ -28,8 +28,6 @@ module MetronomeSDK
             ?skip_zero_qty_line_items: bool,
             ?request_options: MetronomeSDK::request_opts
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::Customers::invoice_retrieve_params
         end
       end
     end

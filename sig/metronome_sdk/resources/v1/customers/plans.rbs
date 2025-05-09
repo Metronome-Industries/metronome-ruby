@@ -16,9 +16,9 @@ module MetronomeSDK
             starting_on: Time,
             ?ending_before: Time,
             ?net_payment_terms_days: Float,
-            ?overage_rate_adjustments: ::Array[MetronomeSDK::Models::V1::Customers::PlanAddParams::OverageRateAdjustment],
-            ?price_adjustments: ::Array[MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment],
-            ?trial_spec: MetronomeSDK::Models::V1::Customers::PlanAddParams::TrialSpec,
+            ?overage_rate_adjustments: ::Array[MetronomeSDK::V1::Customers::PlanAddParams::OverageRateAdjustment],
+            ?price_adjustments: ::Array[MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment],
+            ?trial_spec: MetronomeSDK::V1::Customers::PlanAddParams::TrialSpec,
             ?request_options: MetronomeSDK::request_opts
           ) -> MetronomeSDK::Models::V1::Customers::PlanAddResponse
 

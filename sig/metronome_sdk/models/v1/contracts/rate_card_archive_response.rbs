@@ -1,0 +1,15 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Contracts
+        type rate_card_archive_response = { data: MetronomeSDK::ID }
+
+        class RateCardArchiveResponse < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor data: MetronomeSDK::ID
+
+          def initialize: (data: MetronomeSDK::ID) -> void
+        end
+      end
+    end
+  end
+end

@@ -7,6 +7,9 @@ module MetronomeSDK
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
         # Max number of results that should be returned
         sig { returns(T.nilable(Integer)) }
         attr_reader :limit
@@ -68,9 +71,8 @@ module MetronomeSDK
             customer_ids: T::Array[String],
             effective_before: Time,
             not_expiring_before: Time,
-            request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # Max number of results that should be returned
@@ -91,23 +93,25 @@ module MetronomeSDK
           # Only return credit grants that expire at or after this timestamp.
           not_expiring_before: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                limit: Integer,
-                next_page: String,
-                credit_grant_ids: T::Array[String],
-                credit_type_ids: T::Array[String],
-                customer_ids: T::Array[String],
-                effective_before: Time,
-                not_expiring_before: Time,
-                request_options: MetronomeSDK::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              limit: Integer,
+              next_page: String,
+              credit_grant_ids: T::Array[String],
+              credit_type_ids: T::Array[String],
+              customer_ids: T::Array[String],
+              effective_before: Time,
+              not_expiring_before: Time,
+              request_options: MetronomeSDK::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

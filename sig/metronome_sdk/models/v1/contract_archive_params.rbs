@@ -21,8 +21,6 @@ module MetronomeSDK
           void_invoices: bool,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
-
-        def to_hash: -> MetronomeSDK::Models::V1::contract_archive_params
       end
     end
   end

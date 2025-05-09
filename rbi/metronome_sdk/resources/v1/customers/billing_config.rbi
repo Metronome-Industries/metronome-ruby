@@ -9,14 +9,16 @@ module MetronomeSDK
           sig do
             params(
               customer_id: String,
-              billing_provider_type: MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::BillingProviderType::OrSymbol,
+              billing_provider_type:
+                MetronomeSDK::V1::Customers::BillingConfigCreateParams::BillingProviderType::OrSymbol,
               billing_provider_customer_id: String,
               aws_product_code: String,
-              aws_region: MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::AwsRegion::OrSymbol,
-              stripe_collection_method: MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::StripeCollectionMethod::OrSymbol,
-              request_options: MetronomeSDK::RequestOpts
-            )
-              .void
+              aws_region:
+                MetronomeSDK::V1::Customers::BillingConfigCreateParams::AwsRegion::OrSymbol,
+              stripe_collection_method:
+                MetronomeSDK::V1::Customers::BillingConfigCreateParams::StripeCollectionMethod::OrSymbol,
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).void
           end
           def create(
             # Path param:
@@ -33,41 +35,50 @@ module MetronomeSDK
             # Body param:
             stripe_collection_method: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # Fetch the billing configuration for the given customer.
           sig do
             params(
               customer_id: String,
-              billing_provider_type: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveParams::BillingProviderType::OrSymbol,
-              request_options: MetronomeSDK::RequestOpts
+              billing_provider_type:
+                MetronomeSDK::V1::Customers::BillingConfigRetrieveParams::BillingProviderType::OrSymbol,
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(
+              MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse
             )
-              .returns(MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse)
           end
           def retrieve(
             customer_id:,
             # The billing provider (e.g. stripe)
             billing_provider_type:,
             request_options: {}
-          ); end
+          )
+          end
+
           # Delete the billing configuration for a given customer. Note: this is unsupported
           # for Azure and AWS Marketplace customers.
           sig do
             params(
               customer_id: String,
-              billing_provider_type: MetronomeSDK::Models::V1::Customers::BillingConfigDeleteParams::BillingProviderType::OrSymbol,
-              request_options: MetronomeSDK::RequestOpts
-            )
-              .void
+              billing_provider_type:
+                MetronomeSDK::V1::Customers::BillingConfigDeleteParams::BillingProviderType::OrSymbol,
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).void
           end
           def delete(
             customer_id:,
             # The billing provider (e.g. stripe)
             billing_provider_type:,
             request_options: {}
-          ); end
+          )
+          end
+
           # @api private
           sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
-          def self.new(client:); end
+          def self.new(client:)
+          end
         end
       end
     end

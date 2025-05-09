@@ -9,7 +9,8 @@ module MetronomeSDK
           sig do
             params(
               name: String,
-              type: MetronomeSDK::Models::V1::Contracts::ProductCreateParams::Type::OrSymbol,
+              type:
+                MetronomeSDK::V1::Contracts::ProductCreateParams::Type::OrSymbol,
               billable_metric_id: String,
               composite_product_ids: T::Array[String],
               composite_tags: T::Array[String],
@@ -19,12 +20,19 @@ module MetronomeSDK
               netsuite_overage_item_id: String,
               presentation_group_key: T::Array[String],
               pricing_group_key: T::Array[String],
-              quantity_conversion: T.nilable(T.any(MetronomeSDK::Models::V1::Contracts::QuantityConversion, MetronomeSDK::Internal::AnyHash)),
-              quantity_rounding: T.nilable(T.any(MetronomeSDK::Models::V1::Contracts::QuantityRounding, MetronomeSDK::Internal::AnyHash)),
+              quantity_conversion:
+                T.nilable(
+                  MetronomeSDK::V1::Contracts::QuantityConversion::OrHash
+                ),
+              quantity_rounding:
+                T.nilable(
+                  MetronomeSDK::V1::Contracts::QuantityRounding::OrHash
+                ),
               tags: T::Array[String],
-              request_options: MetronomeSDK::RequestOpts
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(
+              MetronomeSDK::Models::V1::Contracts::ProductCreateResponse
             )
-              .returns(MetronomeSDK::Models::V1::Contracts::ProductCreateResponse)
           end
           def create(
             # displayed on invoices
@@ -70,13 +78,20 @@ module MetronomeSDK
             quantity_rounding: nil,
             tags: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # Get a specific product
           sig do
-            params(id: String, request_options: MetronomeSDK::RequestOpts)
-              .returns(MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse)
+            params(
+              id: String,
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(
+              MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse
+            )
           end
-          def retrieve(id:, request_options: {}); end
+          def retrieve(id:, request_options: {})
+          end
 
           # Update a product
           sig do
@@ -93,12 +108,19 @@ module MetronomeSDK
               netsuite_overage_item_id: String,
               presentation_group_key: T::Array[String],
               pricing_group_key: T::Array[String],
-              quantity_conversion: T.nilable(T.any(MetronomeSDK::Models::V1::Contracts::QuantityConversion, MetronomeSDK::Internal::AnyHash)),
-              quantity_rounding: T.nilable(T.any(MetronomeSDK::Models::V1::Contracts::QuantityRounding, MetronomeSDK::Internal::AnyHash)),
+              quantity_conversion:
+                T.nilable(
+                  MetronomeSDK::V1::Contracts::QuantityConversion::OrHash
+                ),
+              quantity_rounding:
+                T.nilable(
+                  MetronomeSDK::V1::Contracts::QuantityRounding::OrHash
+                ),
               tags: T::Array[String],
-              request_options: MetronomeSDK::RequestOpts
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(
+              MetronomeSDK::Models::V1::Contracts::ProductUpdateResponse
             )
-              .returns(MetronomeSDK::Models::V1::Contracts::ProductUpdateResponse)
           end
           def update(
             # ID of the product to update
@@ -155,16 +177,22 @@ module MetronomeSDK
             # If not provided, defaults to product's current tags
             tags: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # List products
           sig do
             params(
               limit: Integer,
               next_page: String,
-              archive_filter: MetronomeSDK::Models::V1::Contracts::ProductListParams::ArchiveFilter::OrSymbol,
-              request_options: MetronomeSDK::RequestOpts
+              archive_filter:
+                MetronomeSDK::V1::Contracts::ProductListParams::ArchiveFilter::OrSymbol,
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(
+              MetronomeSDK::Internal::CursorPage[
+                MetronomeSDK::Models::V1::Contracts::ProductListResponse
+              ]
             )
-              .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::Contracts::ProductListResponse])
           end
           def list(
             # Query param: Max number of results that should be returned
@@ -174,20 +202,29 @@ module MetronomeSDK
             # Body param: Filter options for the product list
             archive_filter: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # Archive a product
           sig do
-            params(product_id: String, request_options: MetronomeSDK::RequestOpts)
-              .returns(MetronomeSDK::Models::V1::Contracts::ProductArchiveResponse)
+            params(
+              product_id: String,
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(
+              MetronomeSDK::Models::V1::Contracts::ProductArchiveResponse
+            )
           end
           def archive(
             # ID of the product to be archived
             product_id:,
             request_options: {}
-          ); end
+          )
+          end
+
           # @api private
           sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
-          def self.new(client:); end
+          def self.new(client:)
+          end
         end
       end
     end

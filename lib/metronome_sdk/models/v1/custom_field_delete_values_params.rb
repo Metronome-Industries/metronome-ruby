@@ -10,8 +10,8 @@ module MetronomeSDK
 
         # @!attribute entity
         #
-        #   @return [Symbol, MetronomeSDK::Models::V1::CustomFieldDeleteValuesParams::Entity]
-        required :entity, enum: -> { MetronomeSDK::Models::V1::CustomFieldDeleteValuesParams::Entity }
+        #   @return [Symbol, MetronomeSDK::V1::CustomFieldDeleteValuesParams::Entity]
+        required :entity, enum: -> { MetronomeSDK::V1::CustomFieldDeleteValuesParams::Entity }
 
         # @!attribute entity_id
         #
@@ -24,7 +24,7 @@ module MetronomeSDK
         required :keys, MetronomeSDK::Internal::Type::ArrayOf[String]
 
         # @!method initialize(entity:, entity_id:, keys:, request_options: {})
-        #   @param entity [Symbol, MetronomeSDK::Models::V1::CustomFieldDeleteValuesParams::Entity]
+        #   @param entity [Symbol, MetronomeSDK::V1::CustomFieldDeleteValuesParams::Entity]
         #   @param entity_id [String]
         #   @param keys [Array<String>]
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]

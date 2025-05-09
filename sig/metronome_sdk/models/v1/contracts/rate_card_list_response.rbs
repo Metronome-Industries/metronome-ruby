@@ -12,7 +12,7 @@ module MetronomeSDK
             credit_type_conversions: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardListResponse::CreditTypeConversion],
             custom_fields: ::Hash[Symbol, String],
             description: String,
-            fiat_credit_type: MetronomeSDK::Models::CreditTypeData
+            fiat_credit_type: MetronomeSDK::CreditTypeData
           }
 
         class RateCardListResponse < MetronomeSDK::Internal::Type::BaseModel
@@ -44,11 +44,11 @@ module MetronomeSDK
 
           def description=: (String) -> String
 
-          attr_reader fiat_credit_type: MetronomeSDK::Models::CreditTypeData?
+          attr_reader fiat_credit_type: MetronomeSDK::CreditTypeData?
 
           def fiat_credit_type=: (
-            MetronomeSDK::Models::CreditTypeData
-          ) -> MetronomeSDK::Models::CreditTypeData
+            MetronomeSDK::CreditTypeData
+          ) -> MetronomeSDK::CreditTypeData
 
           def initialize: (
             id: String,
@@ -59,10 +59,8 @@ module MetronomeSDK
             ?credit_type_conversions: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardListResponse::CreditTypeConversion],
             ?custom_fields: ::Hash[Symbol, String],
             ?description: String,
-            ?fiat_credit_type: MetronomeSDK::Models::CreditTypeData
+            ?fiat_credit_type: MetronomeSDK::CreditTypeData
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::Contracts::rate_card_list_response
 
           type alias_ = { name: String, ending_before: Time, starting_at: Time }
 
@@ -82,27 +80,23 @@ module MetronomeSDK
               ?ending_before: Time,
               ?starting_at: Time
             ) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V1::Contracts::RateCardListResponse::alias_
           end
 
           type credit_type_conversion =
             {
-              custom_credit_type: MetronomeSDK::Models::CreditTypeData,
+              custom_credit_type: MetronomeSDK::CreditTypeData,
               fiat_per_custom_credit: String
             }
 
           class CreditTypeConversion < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor custom_credit_type: MetronomeSDK::Models::CreditTypeData
+            attr_accessor custom_credit_type: MetronomeSDK::CreditTypeData
 
             attr_accessor fiat_per_custom_credit: String
 
             def initialize: (
-              custom_credit_type: MetronomeSDK::Models::CreditTypeData,
+              custom_credit_type: MetronomeSDK::CreditTypeData,
               fiat_per_custom_credit: String
             ) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V1::Contracts::RateCardListResponse::credit_type_conversion
           end
         end
       end

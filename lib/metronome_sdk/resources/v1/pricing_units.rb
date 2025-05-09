@@ -18,7 +18,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::PricingUnitListParams
         def list(params = {})
-          parsed, options = MetronomeSDK::Models::V1::PricingUnitListParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::PricingUnitListParams.dump_request(params)
           @client.request(
             method: :get,
             path: "v1/credit-types/list",

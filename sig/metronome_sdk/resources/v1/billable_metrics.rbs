@@ -7,9 +7,9 @@ module MetronomeSDK
           ?aggregation_key: String,
           ?aggregation_type: MetronomeSDK::Models::V1::BillableMetricCreateParams::aggregation_type,
           ?custom_fields: ::Hash[Symbol, String],
-          ?event_type_filter: MetronomeSDK::Models::EventTypeFilter,
+          ?event_type_filter: MetronomeSDK::EventTypeFilter,
           ?group_keys: ::Array[::Array[String]],
-          ?property_filters: ::Array[MetronomeSDK::Models::PropertyFilter],
+          ?property_filters: ::Array[MetronomeSDK::PropertyFilter],
           ?sql: String,
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V1::BillableMetricCreateResponse

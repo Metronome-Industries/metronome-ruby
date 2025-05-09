@@ -84,12 +84,10 @@ module MetronomeSDK
           #   @param include_archived [Boolean] Include archived credits and credits from archived contracts.
           #
           #   @param include_balance [Boolean] Include the balance in the response. Setting this flag may cause the query to be
-          #   ...
           #
           #   @param include_contract_credits [Boolean] Include credits on the contract level.
           #
           #   @param include_ledgers [Boolean] Include credit ledgers in the response. Setting this flag may cause the query to
-          #   ...
           #
           #   @param next_page [String] The next page token from a previous response.
           #

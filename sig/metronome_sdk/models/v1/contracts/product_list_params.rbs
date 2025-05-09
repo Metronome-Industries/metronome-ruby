@@ -35,8 +35,6 @@ module MetronomeSDK
             ?request_options: MetronomeSDK::request_opts
           ) -> void
 
-          def to_hash: -> MetronomeSDK::Models::V1::Contracts::product_list_params
-
           type archive_filter = :ARCHIVED | :NOT_ARCHIVED | :ALL
 
           module ArchiveFilter

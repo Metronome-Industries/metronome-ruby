@@ -59,10 +59,8 @@ module MetronomeSDK
         #   @param next_page [String] Cursor that indicates where the next page of results should start.
         #
         #   @param only_archived [Boolean] Filter the customer list to only return archived customers. By default, only act
-        #   ...
         #
         #   @param salesforce_account_ids [Array<String>] Filter the customer list by salesforce_account_id. Up to 100 ids can be provide
-        #   ...
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
       end

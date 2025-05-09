@@ -3,16 +3,12 @@ module MetronomeSDK
     module V1
       module Customers
         type invoice_retrieve_response =
-          { data: MetronomeSDK::Models::V1::Customers::Invoice }
+          { data: MetronomeSDK::V1::Customers::Invoice }
 
         class InvoiceRetrieveResponse < MetronomeSDK::Internal::Type::BaseModel
-          attr_accessor data: MetronomeSDK::Models::V1::Customers::Invoice
+          attr_accessor data: MetronomeSDK::V1::Customers::Invoice
 
-          def initialize: (
-            data: MetronomeSDK::Models::V1::Customers::Invoice
-          ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::Customers::invoice_retrieve_response
+          def initialize: (data: MetronomeSDK::V1::Customers::Invoice) -> void
         end
       end
     end

@@ -17,14 +17,12 @@ module MetronomeSDK
           next_page: String?
         ) -> void
 
-        def to_hash: -> MetronomeSDK::Models::V1::contract_list_balances_response
-
-        type data = MetronomeSDK::Models::Commit | MetronomeSDK::Models::Credit
+        type data = MetronomeSDK::Commit | MetronomeSDK::Credit
 
         module Data
           extend MetronomeSDK::Internal::Type::Union
 
-          def self?.variants: -> [MetronomeSDK::Models::Commit, MetronomeSDK::Models::Credit]
+          def self?.variants: -> ::Array[MetronomeSDK::Models::V1::ContractListBalancesResponse::data]
         end
       end
     end

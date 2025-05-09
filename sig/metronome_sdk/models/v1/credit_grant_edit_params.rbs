@@ -35,8 +35,6 @@ module MetronomeSDK
           ?name: String,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
-
-        def to_hash: -> MetronomeSDK::Models::V1::credit_grant_edit_params
       end
     end
   end

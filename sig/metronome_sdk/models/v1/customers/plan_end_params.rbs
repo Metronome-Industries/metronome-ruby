@@ -40,8 +40,6 @@ module MetronomeSDK
             ?void_stripe_invoices: bool,
             ?request_options: MetronomeSDK::request_opts
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::Customers::plan_end_params
         end
       end
     end

@@ -48,13 +48,10 @@ module MetronomeSDK
         #   @param customer_id [String]
         #
         #   @param as_of_date [Time] Optional RFC 3339 timestamp. Return the contract as of this date. Cannot be used
-        #   ...
         #
         #   @param include_balance [Boolean] Include the balance of credits and commits in the response. Setting this flag ma
-        #   ...
         #
         #   @param include_ledgers [Boolean] Include commit/credit ledgers in the response. Setting this flag may cause the q
-        #   ...
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
       end

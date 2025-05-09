@@ -8,8 +8,6 @@ module MetronomeSDK
       attr_accessor name: String
 
       def initialize: (id: String, name: String) -> void
-
-      def to_hash: -> MetronomeSDK::Models::credit_type_data
     end
   end
 end

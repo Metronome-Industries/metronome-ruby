@@ -34,8 +34,6 @@ module MetronomeSDK
             ?next_page: String,
             ?request_options: MetronomeSDK::request_opts
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::Customers::plan_list_price_adjustments_params
         end
       end
     end

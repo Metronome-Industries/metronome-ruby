@@ -26,8 +26,6 @@ module MetronomeSDK
           ?request_options: MetronomeSDK::request_opts
         ) -> void
 
-        def to_hash: -> MetronomeSDK::Models::V1::custom_field_set_values_params
-
         type entity =
           :alert
           | :billable_metric

@@ -49,8 +49,8 @@ module MetronomeSDK
 
             # @!attribute rate
             #
-            #   @return [MetronomeSDK::Models::Rate]
-            required :rate, -> { MetronomeSDK::Models::Rate }
+            #   @return [MetronomeSDK::Rate]
+            required :rate, -> { MetronomeSDK::Rate }
 
             # @!attribute starting_at
             #
@@ -90,12 +90,11 @@ module MetronomeSDK
             #
             #   @param product_tags [Array<String>]
             #
-            #   @param rate [MetronomeSDK::Models::Rate]
+            #   @param rate [MetronomeSDK::Rate]
             #
             #   @param starting_at [Time]
             #
             #   @param commit_rate [MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse::Data::CommitRate] A distinct rate on the rate card. You can choose to use this rate rather than li
-            #   ...
             #
             #   @param ending_before [Time]
             #
@@ -118,8 +117,8 @@ module MetronomeSDK
               # @!attribute tiers
               #   Only set for TIERED rate_type.
               #
-              #   @return [Array<MetronomeSDK::Models::Tier>, nil]
-              optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::Tier] }
+              #   @return [Array<MetronomeSDK::Tier>, nil]
+              optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
 
               # @!method initialize(rate_type:, price: nil, tiers: nil)
               #   A distinct rate on the rate card. You can choose to use this rate rather than
@@ -129,7 +128,7 @@ module MetronomeSDK
               #
               #   @param price [Float] Commit rate price. For FLAT rate_type, this must be >=0.
               #
-              #   @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
+              #   @param tiers [Array<MetronomeSDK::Tier>] Only set for TIERED rate_type.
 
               # @see MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse::Data::CommitRate#rate_type
               module RateType

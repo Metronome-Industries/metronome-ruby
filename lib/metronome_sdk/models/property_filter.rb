@@ -38,18 +38,15 @@ module MetronomeSDK
 
       # @!method initialize(name:, exists: nil, in_values: nil, not_in_values: nil)
       #   Some parameter documentations has been truncated, see
-      #   {MetronomeSDK::Models::PropertyFilter} for more details.
+      #   {MetronomeSDK::PropertyFilter} for more details.
       #
       #   @param name [String] The name of the event property.
       #
       #   @param exists [Boolean] Determines whether the property must exist in the event. If true, only events wi
-      #   ...
       #
       #   @param in_values [Array<String>] Specifies the allowed values for the property to match an event. An event will p
-      #   ...
       #
       #   @param not_in_values [Array<String>] Specifies the values that prevent an event from matching the filter. An event wi
-      #   ...
     end
   end
 end

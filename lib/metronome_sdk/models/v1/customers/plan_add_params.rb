@@ -44,9 +44,11 @@ module MetronomeSDK
           #   An optional list of overage rates that override the rates of the original plan
           #   configuration. These new rates will apply to all pricing ramps.
           #
-          #   @return [Array<MetronomeSDK::Models::V1::Customers::PlanAddParams::OverageRateAdjustment>, nil]
+          #   @return [Array<MetronomeSDK::V1::Customers::PlanAddParams::OverageRateAdjustment>, nil]
           optional :overage_rate_adjustments,
-                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Customers::PlanAddParams::OverageRateAdjustment] }
+                   -> {
+                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::PlanAddParams::OverageRateAdjustment]
+                   }
 
           # @!attribute price_adjustments
           #   A list of price adjustments can be applied on top of the pricing in the plans.
@@ -54,17 +56,19 @@ module MetronomeSDK
           #   [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments)
           #   for details.
           #
-          #   @return [Array<MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment>, nil]
+          #   @return [Array<MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment>, nil]
           optional :price_adjustments,
-                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment] }
+                   -> {
+                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment]
+                   }
 
           # @!attribute trial_spec
           #   A custom trial can be set for the customer's plan. See the
           #   [trial configuration documentation](https://docs.metronome.com/provisioning/configure-trials/)
           #   for details.
           #
-          #   @return [MetronomeSDK::Models::V1::Customers::PlanAddParams::TrialSpec, nil]
-          optional :trial_spec, -> { MetronomeSDK::Models::V1::Customers::PlanAddParams::TrialSpec }
+          #   @return [MetronomeSDK::V1::Customers::PlanAddParams::TrialSpec, nil]
+          optional :trial_spec, -> { MetronomeSDK::V1::Customers::PlanAddParams::TrialSpec }
 
           # @!method initialize(customer_id:, plan_id:, starting_on:, ending_before: nil, net_payment_terms_days: nil, overage_rate_adjustments: nil, price_adjustments: nil, trial_spec: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
@@ -75,22 +79,16 @@ module MetronomeSDK
           #   @param plan_id [String]
           #
           #   @param starting_on [Time] RFC 3339 timestamp for when the plan becomes active for this customer. Must be a
-          #   ...
           #
           #   @param ending_before [Time] RFC 3339 timestamp for when the plan ends (exclusive) for this customer. Must be
-          #   ...
           #
           #   @param net_payment_terms_days [Float] Number of days after issuance of invoice after which the invoice is due (e.g. Ne
-          #   ...
           #
-          #   @param overage_rate_adjustments [Array<MetronomeSDK::Models::V1::Customers::PlanAddParams::OverageRateAdjustment>] An optional list of overage rates that override the rates of the original plan c
-          #   ...
+          #   @param overage_rate_adjustments [Array<MetronomeSDK::V1::Customers::PlanAddParams::OverageRateAdjustment>] An optional list of overage rates that override the rates of the original plan c
           #
-          #   @param price_adjustments [Array<MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment>] A list of price adjustments can be applied on top of the pricing in the plans. S
-          #   ...
+          #   @param price_adjustments [Array<MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment>] A list of price adjustments can be applied on top of the pricing in the plans. S
           #
-          #   @param trial_spec [MetronomeSDK::Models::V1::Customers::PlanAddParams::TrialSpec] A custom trial can be set for the customer's plan. See the [trial configuration
-          #   ...
+          #   @param trial_spec [MetronomeSDK::V1::Customers::PlanAddParams::TrialSpec] A custom trial can be set for the customer's plan. See the [trial configuration
           #
           #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 
@@ -122,9 +120,9 @@ module MetronomeSDK
           class PriceAdjustment < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute adjustment_type
             #
-            #   @return [Symbol, MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment::AdjustmentType]
+            #   @return [Symbol, MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment::AdjustmentType]
             required :adjustment_type,
-                     enum: -> { MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment::AdjustmentType }
+                     enum: -> { MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment::AdjustmentType }
 
             # @!attribute charge_id
             #
@@ -160,24 +158,21 @@ module MetronomeSDK
 
             # @!method initialize(adjustment_type:, charge_id:, start_period:, quantity: nil, tier: nil, value: nil)
             #   Some parameter documentations has been truncated, see
-            #   {MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment} for more
-            #   details.
+            #   {MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment} for more details.
             #
-            #   @param adjustment_type [Symbol, MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment::AdjustmentType]
+            #   @param adjustment_type [Symbol, MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment::AdjustmentType]
             #
             #   @param charge_id [String]
             #
             #   @param start_period [Float] Used in price ramps. Indicates how many billing periods pass before the charge
-            #   ...
             #
             #   @param quantity [Float] the overridden quantity for a fixed charge
             #
             #   @param tier [Float] Used in pricing tiers. Indicates at what metric value the price applies.
             #
             #   @param value [Float] The amount of change to a price. Percentage and fixed adjustments can be positiv
-            #   ...
 
-            # @see MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment#adjustment_type
+            # @see MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment#adjustment_type
             module AdjustmentType
               extend MetronomeSDK::Internal::Type::Enum
 
@@ -200,8 +195,8 @@ module MetronomeSDK
 
             # @!attribute spending_cap
             #
-            #   @return [MetronomeSDK::Models::V1::Customers::PlanAddParams::TrialSpec::SpendingCap, nil]
-            optional :spending_cap, -> { MetronomeSDK::Models::V1::Customers::PlanAddParams::TrialSpec::SpendingCap }
+            #   @return [MetronomeSDK::V1::Customers::PlanAddParams::TrialSpec::SpendingCap, nil]
+            optional :spending_cap, -> { MetronomeSDK::V1::Customers::PlanAddParams::TrialSpec::SpendingCap }
 
             # @!method initialize(length_in_days:, spending_cap: nil)
             #   A custom trial can be set for the customer's plan. See the
@@ -210,9 +205,9 @@ module MetronomeSDK
             #
             #   @param length_in_days [Float] Length of the trial period in days.
             #
-            #   @param spending_cap [MetronomeSDK::Models::V1::Customers::PlanAddParams::TrialSpec::SpendingCap]
+            #   @param spending_cap [MetronomeSDK::V1::Customers::PlanAddParams::TrialSpec::SpendingCap]
 
-            # @see MetronomeSDK::Models::V1::Customers::PlanAddParams::TrialSpec#spending_cap
+            # @see MetronomeSDK::V1::Customers::PlanAddParams::TrialSpec#spending_cap
             class SpendingCap < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute amount
               #   The credit amount in the given denomination based on the credit type, e.g. US
@@ -229,11 +224,10 @@ module MetronomeSDK
 
               # @!method initialize(amount:, credit_type_id:)
               #   Some parameter documentations has been truncated, see
-              #   {MetronomeSDK::Models::V1::Customers::PlanAddParams::TrialSpec::SpendingCap} for
-              #   more details.
+              #   {MetronomeSDK::V1::Customers::PlanAddParams::TrialSpec::SpendingCap} for more
+              #   details.
               #
               #   @param amount [Float] The credit amount in the given denomination based on the credit type, e.g. US ce
-              #   ...
               #
               #   @param credit_type_id [String] The credit type ID for the spending cap.
             end

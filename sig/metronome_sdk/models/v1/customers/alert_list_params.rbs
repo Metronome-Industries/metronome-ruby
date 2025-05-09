@@ -6,7 +6,7 @@ module MetronomeSDK
           {
             customer_id: String,
             next_page: String,
-            alert_statuses: ::Array[MetronomeSDK::Models::V1::Customers::AlertListParams::alert_status]
+            alert_statuses: ::Array[MetronomeSDK::V1::Customers::AlertListParams::alert_status]
           }
           & MetronomeSDK::Internal::Type::request_parameters
 
@@ -20,20 +20,18 @@ module MetronomeSDK
 
           def next_page=: (String) -> String
 
-          attr_reader alert_statuses: ::Array[MetronomeSDK::Models::V1::Customers::AlertListParams::alert_status]?
+          attr_reader alert_statuses: ::Array[MetronomeSDK::V1::Customers::AlertListParams::alert_status]?
 
           def alert_statuses=: (
-            ::Array[MetronomeSDK::Models::V1::Customers::AlertListParams::alert_status]
-          ) -> ::Array[MetronomeSDK::Models::V1::Customers::AlertListParams::alert_status]
+            ::Array[MetronomeSDK::V1::Customers::AlertListParams::alert_status]
+          ) -> ::Array[MetronomeSDK::V1::Customers::AlertListParams::alert_status]
 
           def initialize: (
             customer_id: String,
             ?next_page: String,
-            ?alert_statuses: ::Array[MetronomeSDK::Models::V1::Customers::AlertListParams::alert_status],
+            ?alert_statuses: ::Array[MetronomeSDK::V1::Customers::AlertListParams::alert_status],
             ?request_options: MetronomeSDK::request_opts
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::Customers::alert_list_params
 
           type alert_status = :ENABLED | :DISABLED | :ARCHIVED
 
@@ -44,7 +42,7 @@ module MetronomeSDK
             DISABLED: :DISABLED
             ARCHIVED: :ARCHIVED
 
-            def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::AlertListParams::alert_status]
+            def self?.values: -> ::Array[MetronomeSDK::V1::Customers::AlertListParams::alert_status]
           end
         end
       end

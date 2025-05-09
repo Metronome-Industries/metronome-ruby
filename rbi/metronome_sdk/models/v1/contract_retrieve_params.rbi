@@ -7,6 +7,9 @@ module MetronomeSDK
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :contract_id
 
@@ -35,9 +38,8 @@ module MetronomeSDK
             customer_id: String,
             include_balance: T::Boolean,
             include_ledgers: T::Boolean,
-            request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           contract_id:,
@@ -49,20 +51,22 @@ module MetronomeSDK
           # be slower.
           include_ledgers: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                contract_id: String,
-                customer_id: String,
-                include_balance: T::Boolean,
-                include_ledgers: T::Boolean,
-                request_options: MetronomeSDK::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              contract_id: String,
+              customer_id: String,
+              include_balance: T::Boolean,
+              include_ledgers: T::Boolean,
+              request_options: MetronomeSDK::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

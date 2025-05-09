@@ -21,7 +21,7 @@ module MetronomeSDK
           #
           # @see MetronomeSDK::Models::V1::Customers::PlanListParams
           def list(params)
-            parsed, options = MetronomeSDK::Models::V1::Customers::PlanListParams.dump_request(params)
+            parsed, options = MetronomeSDK::V1::Customers::PlanListParams.dump_request(params)
             customer_id =
               parsed.delete(:customer_id) do
                 raise ArgumentError.new("missing required path argument #{_1}")
@@ -50,22 +50,16 @@ module MetronomeSDK
           # @param plan_id [String] Body param:
           #
           # @param starting_on [Time] Body param: RFC 3339 timestamp for when the plan becomes active for this custome
-          # ...
           #
           # @param ending_before [Time] Body param: RFC 3339 timestamp for when the plan ends (exclusive) for this custo
-          # ...
           #
           # @param net_payment_terms_days [Float] Body param: Number of days after issuance of invoice after which the invoice is
-          # ...
           #
-          # @param overage_rate_adjustments [Array<MetronomeSDK::Models::V1::Customers::PlanAddParams::OverageRateAdjustment>] Body param: An optional list of overage rates that override the rates of the ori
-          # ...
+          # @param overage_rate_adjustments [Array<MetronomeSDK::V1::Customers::PlanAddParams::OverageRateAdjustment>] Body param: An optional list of overage rates that override the rates of the ori
           #
-          # @param price_adjustments [Array<MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment>] Body param: A list of price adjustments can be applied on top of the pricing in
-          # ...
+          # @param price_adjustments [Array<MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment>] Body param: A list of price adjustments can be applied on top of the pricing in
           #
-          # @param trial_spec [MetronomeSDK::Models::V1::Customers::PlanAddParams::TrialSpec] Body param: A custom trial can be set for the customer's plan. See the [trial co
-          # ...
+          # @param trial_spec [MetronomeSDK::V1::Customers::PlanAddParams::TrialSpec] Body param: A custom trial can be set for the customer's plan. See the [trial co
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -73,7 +67,7 @@ module MetronomeSDK
           #
           # @see MetronomeSDK::Models::V1::Customers::PlanAddParams
           def add(params)
-            parsed, options = MetronomeSDK::Models::V1::Customers::PlanAddParams.dump_request(params)
+            parsed, options = MetronomeSDK::V1::Customers::PlanAddParams.dump_request(params)
             customer_id =
               parsed.delete(:customer_id) do
                 raise ArgumentError.new("missing required path argument #{_1}")
@@ -99,13 +93,10 @@ module MetronomeSDK
           # @param customer_plan_id [String] Path param: the ID of a customer-plan relationship
           #
           # @param ending_before [Time] Body param: RFC 3339 timestamp for when the plan ends (exclusive) for this custo
-          # ...
           #
           # @param void_invoices [Boolean] Body param: If true, plan end date can be before the last finalized invoice date
-          # ...
           #
           # @param void_stripe_invoices [Boolean] Body param: Only applicable when void_invoices is set to true. If true, for ever
-          # ...
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -113,7 +104,7 @@ module MetronomeSDK
           #
           # @see MetronomeSDK::Models::V1::Customers::PlanEndParams
           def end_(params)
-            parsed, options = MetronomeSDK::Models::V1::Customers::PlanEndParams.dump_request(params)
+            parsed, options = MetronomeSDK::V1::Customers::PlanEndParams.dump_request(params)
             customer_id =
               parsed.delete(:customer_id) do
                 raise ArgumentError.new("missing required path argument #{_1}")
@@ -151,8 +142,7 @@ module MetronomeSDK
           #
           # @see MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsParams
           def list_price_adjustments(params)
-            parsed, options =
-              MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsParams.dump_request(params)
+            parsed, options = MetronomeSDK::V1::Customers::PlanListPriceAdjustmentsParams.dump_request(params)
             customer_id =
               parsed.delete(:customer_id) do
                 raise ArgumentError.new("missing required path argument #{_1}")

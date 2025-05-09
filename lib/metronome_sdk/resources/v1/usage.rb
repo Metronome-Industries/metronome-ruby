@@ -16,16 +16,13 @@ module MetronomeSDK
         #
         # @param starting_on [Time] Body param:
         #
-        # @param window_size [Symbol, MetronomeSDK::Models::V1::UsageListParams::WindowSize] Body param: A window_size of "day" or "hour" will return the usage for the speci
-        # ...
+        # @param window_size [Symbol, MetronomeSDK::V1::UsageListParams::WindowSize] Body param: A window_size of "day" or "hour" will return the usage for the speci
         #
         # @param next_page [String] Query param: Cursor that indicates where the next page of results should start.
         #
-        # @param billable_metrics [Array<MetronomeSDK::Models::V1::UsageListParams::BillableMetric>] Body param: A list of billable metrics to fetch usage for. If absent, all billab
-        # ...
+        # @param billable_metrics [Array<MetronomeSDK::V1::UsageListParams::BillableMetric>] Body param: A list of billable metrics to fetch usage for. If absent, all billab
         #
         # @param customer_ids [Array<String>] Body param: A list of Metronome customer IDs to fetch usage for. If absent, usag
-        # ...
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -33,7 +30,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::UsageListParams
         def list(params)
-          parsed, options = MetronomeSDK::Models::V1::UsageListParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::UsageListParams.dump_request(params)
           query_params = [:next_page]
           @client.request(
             method: :post,
@@ -53,14 +50,14 @@ module MetronomeSDK
         #
         # @overload ingest(usage: nil, request_options: {})
         #
-        # @param usage [Array<MetronomeSDK::Models::V1::UsageIngestParams::Usage>]
+        # @param usage [Array<MetronomeSDK::V1::UsageIngestParams::Usage>]
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [nil]
         #
         # @see MetronomeSDK::Models::V1::UsageIngestParams
         def ingest(params = {})
-          parsed, options = MetronomeSDK::Models::V1::UsageIngestParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::UsageIngestParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/ingest",
@@ -82,19 +79,17 @@ module MetronomeSDK
         #
         # @param customer_id [String] Body param:
         #
-        # @param window_size [Symbol, MetronomeSDK::Models::V1::UsageListWithGroupsParams::WindowSize] Body param: A window_size of "day" or "hour" will return the usage for the speci
-        # ...
+        # @param window_size [Symbol, MetronomeSDK::V1::UsageListWithGroupsParams::WindowSize] Body param: A window_size of "day" or "hour" will return the usage for the speci
         #
         # @param limit [Integer] Query param: Max number of results that should be returned
         #
         # @param next_page [String] Query param: Cursor that indicates where the next page of results should start.
         #
         # @param current_period [Boolean] Body param: If true, will return the usage for the current billing period. Will
-        # ...
         #
         # @param ending_before [Time] Body param:
         #
-        # @param group_by [MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy] Body param:
+        # @param group_by [MetronomeSDK::V1::UsageListWithGroupsParams::GroupBy] Body param:
         #
         # @param starting_on [Time] Body param:
         #
@@ -104,7 +99,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::UsageListWithGroupsParams
         def list_with_groups(params)
-          parsed, options = MetronomeSDK::Models::V1::UsageListWithGroupsParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::UsageListWithGroupsParams.dump_request(params)
           query_params = [:limit, :next_page]
           @client.request(
             method: :post,

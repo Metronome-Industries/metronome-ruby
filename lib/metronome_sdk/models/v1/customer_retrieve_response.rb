@@ -7,11 +7,11 @@ module MetronomeSDK
       class CustomerRetrieveResponse < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute data
         #
-        #   @return [MetronomeSDK::Models::V1::CustomerDetail]
-        required :data, -> { MetronomeSDK::Models::V1::CustomerDetail }
+        #   @return [MetronomeSDK::V1::CustomerDetail]
+        required :data, -> { MetronomeSDK::V1::CustomerDetail }
 
         # @!method initialize(data:)
-        #   @param data [MetronomeSDK::Models::V1::CustomerDetail]
+        #   @param data [MetronomeSDK::V1::CustomerDetail]
       end
     end
   end

@@ -21,15 +21,13 @@ module MetronomeSDK
 
       # @!method initialize(in_values: nil, not_in_values: nil)
       #   Some parameter documentations has been truncated, see
-      #   {MetronomeSDK::Models::EventTypeFilter} for more details.
+      #   {MetronomeSDK::EventTypeFilter} for more details.
       #
       #   An optional filtering rule to match the 'event_type' property of an event.
       #
       #   @param in_values [Array<String>] A list of event types that are explicitly included in the billable metric. If sp
-      #   ...
       #
       #   @param not_in_values [Array<String>] A list of event types that are explicitly excluded from the billable metric. If
-      #   ...
     end
   end
 end

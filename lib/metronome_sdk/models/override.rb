@@ -20,8 +20,8 @@ module MetronomeSDK
 
       # @!attribute credit_type
       #
-      #   @return [MetronomeSDK::Models::CreditTypeData, nil]
-      optional :credit_type, -> { MetronomeSDK::Models::CreditTypeData }
+      #   @return [MetronomeSDK::CreditTypeData, nil]
+      optional :credit_type, -> { MetronomeSDK::CreditTypeData }
 
       # @!attribute ending_before
       #
@@ -52,20 +52,20 @@ module MetronomeSDK
 
       # @!attribute override_specifiers
       #
-      #   @return [Array<MetronomeSDK::Models::Override::OverrideSpecifier>, nil]
+      #   @return [Array<MetronomeSDK::Override::OverrideSpecifier>, nil]
       optional :override_specifiers,
-               -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::Override::OverrideSpecifier] }
+               -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Override::OverrideSpecifier] }
 
       # @!attribute override_tiers
       #
-      #   @return [Array<MetronomeSDK::Models::Override::OverrideTier>, nil]
+      #   @return [Array<MetronomeSDK::Override::OverrideTier>, nil]
       optional :override_tiers,
-               -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::Override::OverrideTier] }
+               -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Override::OverrideTier] }
 
       # @!attribute overwrite_rate
       #
-      #   @return [MetronomeSDK::Models::Override::OverwriteRate, nil]
-      optional :overwrite_rate, -> { MetronomeSDK::Models::Override::OverwriteRate }
+      #   @return [MetronomeSDK::Override::OverwriteRate, nil]
+      optional :overwrite_rate, -> { MetronomeSDK::Override::OverwriteRate }
 
       # @!attribute price
       #   Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
@@ -81,8 +81,8 @@ module MetronomeSDK
 
       # @!attribute product
       #
-      #   @return [MetronomeSDK::Models::Override::Product, nil]
-      optional :product, -> { MetronomeSDK::Models::Override::Product }
+      #   @return [MetronomeSDK::Override::Product, nil]
+      optional :product, -> { MetronomeSDK::Override::Product }
 
       # @!attribute quantity
       #   Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
@@ -92,24 +92,24 @@ module MetronomeSDK
 
       # @!attribute rate_type
       #
-      #   @return [Symbol, MetronomeSDK::Models::Override::RateType, nil]
-      optional :rate_type, enum: -> { MetronomeSDK::Models::Override::RateType }
+      #   @return [Symbol, MetronomeSDK::Override::RateType, nil]
+      optional :rate_type, enum: -> { MetronomeSDK::Override::RateType }
 
       # @!attribute target
       #
-      #   @return [Symbol, MetronomeSDK::Models::Override::Target, nil]
-      optional :target, enum: -> { MetronomeSDK::Models::Override::Target }
+      #   @return [Symbol, MetronomeSDK::Override::Target, nil]
+      optional :target, enum: -> { MetronomeSDK::Override::Target }
 
       # @!attribute tiers
       #   Only set for TIERED rate_type.
       #
-      #   @return [Array<MetronomeSDK::Models::Tier>, nil]
-      optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::Tier] }
+      #   @return [Array<MetronomeSDK::Tier>, nil]
+      optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
 
       # @!attribute type
       #
-      #   @return [Symbol, MetronomeSDK::Models::Override::Type, nil]
-      optional :type, enum: -> { MetronomeSDK::Models::Override::Type }
+      #   @return [Symbol, MetronomeSDK::Override::Type, nil]
+      optional :type, enum: -> { MetronomeSDK::Override::Type }
 
       # @!attribute value
       #   Only set for CUSTOM rate_type. This field is interpreted by custom rate
@@ -119,8 +119,8 @@ module MetronomeSDK
       optional :value, MetronomeSDK::Internal::Type::HashOf[MetronomeSDK::Internal::Type::Unknown]
 
       # @!method initialize(id:, starting_at:, applicable_product_tags: nil, credit_type: nil, ending_before: nil, entitled: nil, is_commit_specific: nil, is_prorated: nil, multiplier: nil, override_specifiers: nil, override_tiers: nil, overwrite_rate: nil, price: nil, priority: nil, product: nil, quantity: nil, rate_type: nil, target: nil, tiers: nil, type: nil, value: nil)
-      #   Some parameter documentations has been truncated, see
-      #   {MetronomeSDK::Models::Override} for more details.
+      #   Some parameter documentations has been truncated, see {MetronomeSDK::Override}
+      #   for more details.
       #
       #   @param id [String]
       #
@@ -128,7 +128,7 @@ module MetronomeSDK
       #
       #   @param applicable_product_tags [Array<String>]
       #
-      #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
+      #   @param credit_type [MetronomeSDK::CreditTypeData]
       #
       #   @param ending_before [Time]
       #
@@ -137,35 +137,32 @@ module MetronomeSDK
       #   @param is_commit_specific [Boolean]
       #
       #   @param is_prorated [Boolean] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
-      #   ...
       #
       #   @param multiplier [Float]
       #
-      #   @param override_specifiers [Array<MetronomeSDK::Models::Override::OverrideSpecifier>]
+      #   @param override_specifiers [Array<MetronomeSDK::Override::OverrideSpecifier>]
       #
-      #   @param override_tiers [Array<MetronomeSDK::Models::Override::OverrideTier>]
+      #   @param override_tiers [Array<MetronomeSDK::Override::OverrideTier>]
       #
-      #   @param overwrite_rate [MetronomeSDK::Models::Override::OverwriteRate]
+      #   @param overwrite_rate [MetronomeSDK::Override::OverwriteRate]
       #
       #   @param price [Float] Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type, t
-      #   ...
       #
       #   @param priority [Float]
       #
-      #   @param product [MetronomeSDK::Models::Override::Product]
+      #   @param product [MetronomeSDK::Override::Product]
       #
       #   @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
       #
-      #   @param rate_type [Symbol, MetronomeSDK::Models::Override::RateType]
+      #   @param rate_type [Symbol, MetronomeSDK::Override::RateType]
       #
-      #   @param target [Symbol, MetronomeSDK::Models::Override::Target]
+      #   @param target [Symbol, MetronomeSDK::Override::Target]
       #
-      #   @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
+      #   @param tiers [Array<MetronomeSDK::Tier>] Only set for TIERED rate_type.
       #
-      #   @param type [Symbol, MetronomeSDK::Models::Override::Type]
+      #   @param type [Symbol, MetronomeSDK::Override::Type]
       #
       #   @param value [Hash{Symbol=>Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate processo
-      #   ...
 
       class OverrideSpecifier < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute commit_ids
@@ -229,17 +226,17 @@ module MetronomeSDK
         #   @param size [Float]
       end
 
-      # @see MetronomeSDK::Models::Override#overwrite_rate
+      # @see MetronomeSDK::Override#overwrite_rate
       class OverwriteRate < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute rate_type
         #
-        #   @return [Symbol, MetronomeSDK::Models::Override::OverwriteRate::RateType]
-        required :rate_type, enum: -> { MetronomeSDK::Models::Override::OverwriteRate::RateType }
+        #   @return [Symbol, MetronomeSDK::Override::OverwriteRate::RateType]
+        required :rate_type, enum: -> { MetronomeSDK::Override::OverwriteRate::RateType }
 
         # @!attribute credit_type
         #
-        #   @return [MetronomeSDK::Models::CreditTypeData, nil]
-        optional :credit_type, -> { MetronomeSDK::Models::CreditTypeData }
+        #   @return [MetronomeSDK::CreditTypeData, nil]
+        optional :credit_type, -> { MetronomeSDK::CreditTypeData }
 
         # @!attribute custom_rate
         #   Only set for CUSTOM rate_type. This field is interpreted by custom rate
@@ -271,31 +268,28 @@ module MetronomeSDK
         # @!attribute tiers
         #   Only set for TIERED rate_type.
         #
-        #   @return [Array<MetronomeSDK::Models::Tier>, nil]
-        optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::Tier] }
+        #   @return [Array<MetronomeSDK::Tier>, nil]
+        optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
 
         # @!method initialize(rate_type:, credit_type: nil, custom_rate: nil, is_prorated: nil, price: nil, quantity: nil, tiers: nil)
         #   Some parameter documentations has been truncated, see
-        #   {MetronomeSDK::Models::Override::OverwriteRate} for more details.
+        #   {MetronomeSDK::Override::OverwriteRate} for more details.
         #
-        #   @param rate_type [Symbol, MetronomeSDK::Models::Override::OverwriteRate::RateType]
+        #   @param rate_type [Symbol, MetronomeSDK::Override::OverwriteRate::RateType]
         #
-        #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
+        #   @param credit_type [MetronomeSDK::CreditTypeData]
         #
         #   @param custom_rate [Hash{Symbol=>Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate processo
-        #   ...
         #
         #   @param is_prorated [Boolean] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
-        #   ...
         #
         #   @param price [Float] Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type, t
-        #   ...
         #
         #   @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
         #
-        #   @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
+        #   @param tiers [Array<MetronomeSDK::Tier>] Only set for TIERED rate_type.
 
-        # @see MetronomeSDK::Models::Override::OverwriteRate#rate_type
+        # @see MetronomeSDK::Override::OverwriteRate#rate_type
         module RateType
           extend MetronomeSDK::Internal::Type::Enum
 
@@ -310,7 +304,7 @@ module MetronomeSDK
         end
       end
 
-      # @see MetronomeSDK::Models::Override#product
+      # @see MetronomeSDK::Override#product
       class Product < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute id
         #
@@ -327,7 +321,7 @@ module MetronomeSDK
         #   @param name [String]
       end
 
-      # @see MetronomeSDK::Models::Override#rate_type
+      # @see MetronomeSDK::Override#rate_type
       module RateType
         extend MetronomeSDK::Internal::Type::Enum
 
@@ -341,7 +335,7 @@ module MetronomeSDK
         #   @return [Array<Symbol>]
       end
 
-      # @see MetronomeSDK::Models::Override#target
+      # @see MetronomeSDK::Override#target
       module Target
         extend MetronomeSDK::Internal::Type::Enum
 
@@ -352,7 +346,7 @@ module MetronomeSDK
         #   @return [Array<Symbol>]
       end
 
-      # @see MetronomeSDK::Models::Override#type
+      # @see MetronomeSDK::Override#type
       module Type
         extend MetronomeSDK::Internal::Type::Enum
 

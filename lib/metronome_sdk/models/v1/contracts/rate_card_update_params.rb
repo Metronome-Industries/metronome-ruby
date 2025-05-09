@@ -20,9 +20,11 @@ module MetronomeSDK
           #   multiple rate cards, it will reference the rate card to which it was most
           #   recently assigned. It is not exposed to end customers.
           #
-          #   @return [Array<MetronomeSDK::Models::V1::Contracts::RateCardUpdateParams::Alias>, nil]
+          #   @return [Array<MetronomeSDK::V1::Contracts::RateCardUpdateParams::Alias>, nil]
           optional :aliases,
-                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Contracts::RateCardUpdateParams::Alias] }
+                   -> {
+                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Contracts::RateCardUpdateParams::Alias]
+                   }
 
           # @!attribute description
           #
@@ -41,8 +43,7 @@ module MetronomeSDK
           #
           #   @param rate_card_id [String] ID of the rate card to update
           #
-          #   @param aliases [Array<MetronomeSDK::Models::V1::Contracts::RateCardUpdateParams::Alias>] Reference this alias when creating a contract. If the same alias is assigned to
-          #   ...
+          #   @param aliases [Array<MetronomeSDK::V1::Contracts::RateCardUpdateParams::Alias>] Reference this alias when creating a contract. If the same alias is assigned to
           #
           #   @param description [String]
           #

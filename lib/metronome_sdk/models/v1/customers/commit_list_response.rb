@@ -8,8 +8,8 @@ module MetronomeSDK
         class CommitListResponse < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute data
           #
-          #   @return [Array<MetronomeSDK::Models::Commit>]
-          required :data, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::Commit] }
+          #   @return [Array<MetronomeSDK::Commit>]
+          required :data, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Commit] }
 
           # @!attribute next_page
           #
@@ -17,7 +17,7 @@ module MetronomeSDK
           required :next_page, String, nil?: true
 
           # @!method initialize(data:, next_page:)
-          #   @param data [Array<MetronomeSDK::Models::Commit>]
+          #   @param data [Array<MetronomeSDK::Commit>]
           #   @param next_page [String, nil]
         end
       end

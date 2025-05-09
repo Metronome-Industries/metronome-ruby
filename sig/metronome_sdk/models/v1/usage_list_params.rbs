@@ -7,7 +7,7 @@ module MetronomeSDK
           starting_on: Time,
           window_size: MetronomeSDK::Models::V1::UsageListParams::window_size,
           next_page: String,
-          billable_metrics: ::Array[MetronomeSDK::Models::V1::UsageListParams::BillableMetric],
+          billable_metrics: ::Array[MetronomeSDK::V1::UsageListParams::BillableMetric],
           customer_ids: ::Array[String]
         }
         & MetronomeSDK::Internal::Type::request_parameters
@@ -26,11 +26,11 @@ module MetronomeSDK
 
         def next_page=: (String) -> String
 
-        attr_reader billable_metrics: ::Array[MetronomeSDK::Models::V1::UsageListParams::BillableMetric]?
+        attr_reader billable_metrics: ::Array[MetronomeSDK::V1::UsageListParams::BillableMetric]?
 
         def billable_metrics=: (
-          ::Array[MetronomeSDK::Models::V1::UsageListParams::BillableMetric]
-        ) -> ::Array[MetronomeSDK::Models::V1::UsageListParams::BillableMetric]
+          ::Array[MetronomeSDK::V1::UsageListParams::BillableMetric]
+        ) -> ::Array[MetronomeSDK::V1::UsageListParams::BillableMetric]
 
         attr_reader customer_ids: ::Array[String]?
 
@@ -41,12 +41,10 @@ module MetronomeSDK
           starting_on: Time,
           window_size: MetronomeSDK::Models::V1::UsageListParams::window_size,
           ?next_page: String,
-          ?billable_metrics: ::Array[MetronomeSDK::Models::V1::UsageListParams::BillableMetric],
+          ?billable_metrics: ::Array[MetronomeSDK::V1::UsageListParams::BillableMetric],
           ?customer_ids: ::Array[String],
           ?request_options: MetronomeSDK::request_opts
         ) -> void
-
-        def to_hash: -> MetronomeSDK::Models::V1::usage_list_params
 
         type window_size = :HOUR | :DAY | :NONE
 
@@ -63,24 +61,22 @@ module MetronomeSDK
         type billable_metric =
           {
             id: String,
-            group_by: MetronomeSDK::Models::V1::UsageListParams::BillableMetric::GroupBy
+            group_by: MetronomeSDK::V1::UsageListParams::BillableMetric::GroupBy
           }
 
         class BillableMetric < MetronomeSDK::Internal::Type::BaseModel
           attr_accessor id: String
 
-          attr_reader group_by: MetronomeSDK::Models::V1::UsageListParams::BillableMetric::GroupBy?
+          attr_reader group_by: MetronomeSDK::V1::UsageListParams::BillableMetric::GroupBy?
 
           def group_by=: (
-            MetronomeSDK::Models::V1::UsageListParams::BillableMetric::GroupBy
-          ) -> MetronomeSDK::Models::V1::UsageListParams::BillableMetric::GroupBy
+            MetronomeSDK::V1::UsageListParams::BillableMetric::GroupBy
+          ) -> MetronomeSDK::V1::UsageListParams::BillableMetric::GroupBy
 
           def initialize: (
             id: String,
-            ?group_by: MetronomeSDK::Models::V1::UsageListParams::BillableMetric::GroupBy
+            ?group_by: MetronomeSDK::V1::UsageListParams::BillableMetric::GroupBy
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::UsageListParams::billable_metric
 
           type group_by = { key: String, values: ::Array[String] }
 
@@ -92,8 +88,6 @@ module MetronomeSDK
             def values=: (::Array[String]) -> ::Array[String]
 
             def initialize: (key: String, ?values: ::Array[String]) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V1::UsageListParams::BillableMetric::group_by
           end
         end
       end

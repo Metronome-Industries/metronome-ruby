@@ -7,13 +7,13 @@ module MetronomeSDK
           starting_on: Time,
           window_size: MetronomeSDK::Models::V1::UsageListParams::window_size,
           ?next_page: String,
-          ?billable_metrics: ::Array[MetronomeSDK::Models::V1::UsageListParams::BillableMetric],
+          ?billable_metrics: ::Array[MetronomeSDK::V1::UsageListParams::BillableMetric],
           ?customer_ids: ::Array[String],
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V1::UsageListResponse
 
         def ingest: (
-          ?usage: ::Array[MetronomeSDK::Models::V1::UsageIngestParams::Usage],
+          ?usage: ::Array[MetronomeSDK::V1::UsageIngestParams::Usage],
           ?request_options: MetronomeSDK::request_opts
         ) -> nil
 
@@ -25,7 +25,7 @@ module MetronomeSDK
           ?next_page: String,
           ?current_period: bool,
           ?ending_before: Time,
-          ?group_by: MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy,
+          ?group_by: MetronomeSDK::V1::UsageListWithGroupsParams::GroupBy,
           ?starting_on: Time,
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::UsageListWithGroupsResponse]

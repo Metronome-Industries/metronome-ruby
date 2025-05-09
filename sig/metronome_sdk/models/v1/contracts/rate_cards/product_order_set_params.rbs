@@ -20,8 +20,6 @@ module MetronomeSDK
               rate_card_id: String,
               ?request_options: MetronomeSDK::request_opts
             ) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V1::Contracts::RateCards::product_order_set_params
           end
         end
       end

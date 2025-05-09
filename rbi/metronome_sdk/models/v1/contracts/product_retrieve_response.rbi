@@ -5,58 +5,89 @@ module MetronomeSDK
     module V1
       module Contracts
         class ProductRetrieveResponse < MetronomeSDK::Internal::Type::BaseModel
-          sig { returns(MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data) }
+          OrHash =
+            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
+          sig do
+            returns(
+              MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data
+            )
+          end
           attr_reader :data
 
           sig do
             params(
-              data: T.any(MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data, MetronomeSDK::Internal::AnyHash)
-            )
-              .void
+              data:
+                MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::OrHash
+            ).void
           end
           attr_writer :data
 
           sig do
             params(
-              data: T.any(MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data, MetronomeSDK::Internal::AnyHash)
-            )
-              .returns(T.attached_class)
+              data:
+                MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::OrHash
+            ).returns(T.attached_class)
           end
-          def self.new(data:); end
+          def self.new(data:)
+          end
 
-          sig { override.returns({data: MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                data:
+                  MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data
+              }
+            )
+          end
+          def to_hash
+          end
 
           class Data < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+              end
+
             sig { returns(String) }
             attr_accessor :id
 
-            sig { returns(MetronomeSDK::Models::V1::Contracts::ProductListItemState) }
+            sig { returns(MetronomeSDK::V1::Contracts::ProductListItemState) }
             attr_reader :current
 
             sig do
               params(
-                current: T.any(MetronomeSDK::Models::V1::Contracts::ProductListItemState, MetronomeSDK::Internal::AnyHash)
-              )
-                .void
+                current:
+                  MetronomeSDK::V1::Contracts::ProductListItemState::OrHash
+              ).void
             end
             attr_writer :current
 
-            sig { returns(MetronomeSDK::Models::V1::Contracts::ProductListItemState) }
+            sig { returns(MetronomeSDK::V1::Contracts::ProductListItemState) }
             attr_reader :initial
 
             sig do
               params(
-                initial: T.any(MetronomeSDK::Models::V1::Contracts::ProductListItemState, MetronomeSDK::Internal::AnyHash)
-              )
-                .void
+                initial:
+                  MetronomeSDK::V1::Contracts::ProductListItemState::OrHash
+              ).void
             end
             attr_writer :initial
 
-            sig { returns(MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Type::TaggedSymbol) }
+            sig do
+              returns(
+                MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Type::TaggedSymbol
+              )
+            end
             attr_accessor :type
 
-            sig { returns(T::Array[MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Update]) }
+            sig do
+              returns(
+                T::Array[
+                  MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Update
+                ]
+              )
+            end
             attr_accessor :updates
 
             sig { returns(T.nilable(Time)) }
@@ -71,56 +102,83 @@ module MetronomeSDK
             sig do
               params(
                 id: String,
-                current: T.any(MetronomeSDK::Models::V1::Contracts::ProductListItemState, MetronomeSDK::Internal::AnyHash),
-                initial: T.any(MetronomeSDK::Models::V1::Contracts::ProductListItemState, MetronomeSDK::Internal::AnyHash),
-                type: MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Type::OrSymbol,
-                updates: T::Array[
-                  T.any(
-                    MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Update,
-                    MetronomeSDK::Internal::AnyHash
-                  )
-                ],
+                current:
+                  MetronomeSDK::V1::Contracts::ProductListItemState::OrHash,
+                initial:
+                  MetronomeSDK::V1::Contracts::ProductListItemState::OrHash,
+                type:
+                  MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Type::OrSymbol,
+                updates:
+                  T::Array[
+                    MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Update::OrHash
+                  ],
                 archived_at: T.nilable(Time),
                 custom_fields: T::Hash[Symbol, String]
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
-            def self.new(id:, current:, initial:, type:, updates:, archived_at: nil, custom_fields: nil); end
+            def self.new(
+              id:,
+              current:,
+              initial:,
+              type:,
+              updates:,
+              archived_at: nil,
+              custom_fields: nil
+            )
+            end
 
             sig do
-              override
-                .returns(
-                  {
-                    id: String,
-                    current: MetronomeSDK::Models::V1::Contracts::ProductListItemState,
-                    initial: MetronomeSDK::Models::V1::Contracts::ProductListItemState,
-                    type: MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Type::TaggedSymbol,
-                    updates: T::Array[MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Update],
-                    archived_at: T.nilable(Time),
-                    custom_fields: T::Hash[Symbol, String]
-                  }
-                )
+              override.returns(
+                {
+                  id: String,
+                  current: MetronomeSDK::V1::Contracts::ProductListItemState,
+                  initial: MetronomeSDK::V1::Contracts::ProductListItemState,
+                  type:
+                    MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Type::TaggedSymbol,
+                  updates:
+                    T::Array[
+                      MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Update
+                    ],
+                  archived_at: T.nilable(Time),
+                  custom_fields: T::Hash[Symbol, String]
+                }
+              )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             module Type
               extend MetronomeSDK::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias { T.all(Symbol, MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Type) }
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Type
+                  )
+                end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               USAGE =
-                T.let(:USAGE, MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Type::TaggedSymbol)
+                T.let(
+                  :USAGE,
+                  MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Type::TaggedSymbol
+                )
               SUBSCRIPTION =
                 T.let(
                   :SUBSCRIPTION,
                   MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Type::TaggedSymbol
                 )
               COMPOSITE =
-                T.let(:COMPOSITE, MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Type::TaggedSymbol)
+                T.let(
+                  :COMPOSITE,
+                  MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Type::TaggedSymbol
+                )
               FIXED =
-                T.let(:FIXED, MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Type::TaggedSymbol)
+                T.let(
+                  :FIXED,
+                  MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Type::TaggedSymbol
+                )
               PRO_SERVICE =
                 T.let(
                   :PRO_SERVICE,
@@ -128,13 +186,22 @@ module MetronomeSDK
                 )
 
               sig do
-                override
-                  .returns(T::Array[MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Type::TaggedSymbol])
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Type::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
 
             class Update < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                end
+
               sig { returns(Time) }
               attr_accessor :created_at
 
@@ -217,14 +284,20 @@ module MetronomeSDK
               # unit and priced in another. For example, data could be sent in MB and priced in
               # GB. In this case, the conversion factor would be 1024 and the operation would be
               # "divide".
-              sig { returns(T.nilable(MetronomeSDK::Models::V1::Contracts::QuantityConversion)) }
+              sig do
+                returns(
+                  T.nilable(MetronomeSDK::V1::Contracts::QuantityConversion)
+                )
+              end
               attr_reader :quantity_conversion
 
               sig do
                 params(
-                  quantity_conversion: T.nilable(T.any(MetronomeSDK::Models::V1::Contracts::QuantityConversion, MetronomeSDK::Internal::AnyHash))
-                )
-                  .void
+                  quantity_conversion:
+                    T.nilable(
+                      MetronomeSDK::V1::Contracts::QuantityConversion::OrHash
+                    )
+                ).void
               end
               attr_writer :quantity_conversion
 
@@ -232,14 +305,20 @@ module MetronomeSDK
               # rounded using the provided rounding method and decimal places. For example, if
               # the method is "round up" and the decimal places is 0, then the quantity will be
               # rounded up to the nearest integer.
-              sig { returns(T.nilable(MetronomeSDK::Models::V1::Contracts::QuantityRounding)) }
+              sig do
+                returns(
+                  T.nilable(MetronomeSDK::V1::Contracts::QuantityRounding)
+                )
+              end
               attr_reader :quantity_rounding
 
               sig do
                 params(
-                  quantity_rounding: T.nilable(T.any(MetronomeSDK::Models::V1::Contracts::QuantityRounding, MetronomeSDK::Internal::AnyHash))
-                )
-                  .void
+                  quantity_rounding:
+                    T.nilable(
+                      MetronomeSDK::V1::Contracts::QuantityRounding::OrHash
+                    )
+                ).void
               end
               attr_writer :quantity_rounding
 
@@ -269,12 +348,17 @@ module MetronomeSDK
                   netsuite_overage_item_id: String,
                   presentation_group_key: T::Array[String],
                   pricing_group_key: T::Array[String],
-                  quantity_conversion: T.nilable(T.any(MetronomeSDK::Models::V1::Contracts::QuantityConversion, MetronomeSDK::Internal::AnyHash)),
-                  quantity_rounding: T.nilable(T.any(MetronomeSDK::Models::V1::Contracts::QuantityRounding, MetronomeSDK::Internal::AnyHash)),
+                  quantity_conversion:
+                    T.nilable(
+                      MetronomeSDK::V1::Contracts::QuantityConversion::OrHash
+                    ),
+                  quantity_rounding:
+                    T.nilable(
+                      MetronomeSDK::V1::Contracts::QuantityRounding::OrHash
+                    ),
                   starting_at: Time,
                   tags: T::Array[String]
-                )
-                  .returns(T.attached_class)
+                ).returns(T.attached_class)
               end
               def self.new(
                 created_at:,
@@ -313,31 +397,37 @@ module MetronomeSDK
                 quantity_rounding: nil,
                 starting_at: nil,
                 tags: nil
-              ); end
-              sig do
-                override
-                  .returns(
-                    {
-                      created_at: Time,
-                      created_by: String,
-                      billable_metric_id: String,
-                      composite_product_ids: T::Array[String],
-                      composite_tags: T::Array[String],
-                      exclude_free_usage: T::Boolean,
-                      is_refundable: T::Boolean,
-                      name: String,
-                      netsuite_internal_item_id: String,
-                      netsuite_overage_item_id: String,
-                      presentation_group_key: T::Array[String],
-                      pricing_group_key: T::Array[String],
-                      quantity_conversion: T.nilable(MetronomeSDK::Models::V1::Contracts::QuantityConversion),
-                      quantity_rounding: T.nilable(MetronomeSDK::Models::V1::Contracts::QuantityRounding),
-                      starting_at: Time,
-                      tags: T::Array[String]
-                    }
-                  )
+              )
               end
-              def to_hash; end
+
+              sig do
+                override.returns(
+                  {
+                    created_at: Time,
+                    created_by: String,
+                    billable_metric_id: String,
+                    composite_product_ids: T::Array[String],
+                    composite_tags: T::Array[String],
+                    exclude_free_usage: T::Boolean,
+                    is_refundable: T::Boolean,
+                    name: String,
+                    netsuite_internal_item_id: String,
+                    netsuite_overage_item_id: String,
+                    presentation_group_key: T::Array[String],
+                    pricing_group_key: T::Array[String],
+                    quantity_conversion:
+                      T.nilable(
+                        MetronomeSDK::V1::Contracts::QuantityConversion
+                      ),
+                    quantity_rounding:
+                      T.nilable(MetronomeSDK::V1::Contracts::QuantityRounding),
+                    starting_at: Time,
+                    tags: T::Array[String]
+                  }
+                )
+              end
+              def to_hash
+              end
             end
           end
         end

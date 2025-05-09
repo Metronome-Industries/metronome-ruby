@@ -6,8 +6,15 @@ module MetronomeSDK
       class Plans
         # List all available plans.
         sig do
-          params(limit: Integer, next_page: String, request_options: MetronomeSDK::RequestOpts)
-            .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::PlanListResponse])
+          params(
+            limit: Integer,
+            next_page: String,
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(
+            MetronomeSDK::Internal::CursorPage[
+              MetronomeSDK::Models::V1::PlanListResponse
+            ]
+          )
         end
         def list(
           # Max number of results that should be returned
@@ -15,13 +22,18 @@ module MetronomeSDK
           # Cursor that indicates where the next page of results should start.
           next_page: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Fetch high level details of a specific plan.
         sig do
-          params(plan_id: String, request_options: MetronomeSDK::RequestOpts)
-            .returns(MetronomeSDK::Models::V1::PlanGetDetailsResponse)
+          params(
+            plan_id: String,
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V1::PlanGetDetailsResponse)
         end
-        def get_details(plan_id:, request_options: {}); end
+        def get_details(plan_id:, request_options: {})
+        end
 
         # Fetches a list of charges of a specific plan.
         sig do
@@ -29,9 +41,12 @@ module MetronomeSDK
             plan_id: String,
             limit: Integer,
             next_page: String,
-            request_options: MetronomeSDK::RequestOpts
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(
+            MetronomeSDK::Internal::CursorPage[
+              MetronomeSDK::Models::V1::PlanListChargesResponse
+            ]
           )
-            .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::PlanListChargesResponse])
         end
         def list_charges(
           # Path param:
@@ -41,7 +56,9 @@ module MetronomeSDK
           # Query param: Cursor that indicates where the next page of results should start.
           next_page: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Fetches a list of customers on a specific plan (by default, only currently
         # active plans are included)
         sig do
@@ -49,10 +66,13 @@ module MetronomeSDK
             plan_id: String,
             limit: Integer,
             next_page: String,
-            status: MetronomeSDK::Models::V1::PlanListCustomersParams::Status::OrSymbol,
-            request_options: MetronomeSDK::RequestOpts
+            status: MetronomeSDK::V1::PlanListCustomersParams::Status::OrSymbol,
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(
+            MetronomeSDK::Internal::CursorPage[
+              MetronomeSDK::Models::V1::PlanListCustomersResponse
+            ]
           )
-            .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::PlanListCustomersResponse])
         end
         def list_customers(
           # Path param:
@@ -72,10 +92,13 @@ module MetronomeSDK
           # **Note:** `ended,upcoming` combination is not yet supported.
           status: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

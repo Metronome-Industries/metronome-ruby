@@ -45,8 +45,6 @@ module MetronomeSDK
         ?description: String,
         ?netsuite_sales_order_id: String
       ) -> void
-
-      def to_hash: -> MetronomeSDK::Models::pro_service
     end
   end
 end

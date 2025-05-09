@@ -5,6 +5,9 @@ module MetronomeSDK
     module V1
       module Customers
         class InvoiceListBreakdownsResponse < MetronomeSDK::Models::V1::Customers::Invoice
+          OrHash =
+            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
           sig { returns(Time) }
           attr_accessor :breakdown_end_timestamp
 
@@ -12,12 +15,21 @@ module MetronomeSDK
           attr_accessor :breakdown_start_timestamp
 
           sig do
-            params(breakdown_end_timestamp: Time, breakdown_start_timestamp: Time).returns(T.attached_class)
+            params(
+              breakdown_end_timestamp: Time,
+              breakdown_start_timestamp: Time
+            ).returns(T.attached_class)
           end
-          def self.new(breakdown_end_timestamp:, breakdown_start_timestamp:); end
+          def self.new(breakdown_end_timestamp:, breakdown_start_timestamp:)
+          end
 
-          sig { override.returns({breakdown_end_timestamp: Time, breakdown_start_timestamp: Time}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              { breakdown_end_timestamp: Time, breakdown_start_timestamp: Time }
+            )
+          end
+          def to_hash
+          end
         end
       end
     end

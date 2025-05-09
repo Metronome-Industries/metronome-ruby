@@ -4,7 +4,7 @@ module MetronomeSDK
       module Customers
         type commit_create_params =
           {
-            access_schedule: MetronomeSDK::Models::V1::Customers::CommitCreateParams::AccessSchedule,
+            access_schedule: MetronomeSDK::V1::Customers::CommitCreateParams::AccessSchedule,
             customer_id: String,
             priority: Float,
             product_id: String,
@@ -15,7 +15,7 @@ module MetronomeSDK
             custom_fields: ::Hash[Symbol, String],
             description: String,
             invoice_contract_id: String,
-            invoice_schedule: MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule,
+            invoice_schedule: MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule,
             name: String,
             netsuite_sales_order_id: String,
             rate_type: MetronomeSDK::Models::V1::Customers::CommitCreateParams::rate_type,
@@ -28,7 +28,7 @@ module MetronomeSDK
           extend MetronomeSDK::Internal::Type::RequestParameters::Converter
           include MetronomeSDK::Internal::Type::RequestParameters
 
-          attr_accessor access_schedule: MetronomeSDK::Models::V1::Customers::CommitCreateParams::AccessSchedule
+          attr_accessor access_schedule: MetronomeSDK::V1::Customers::CommitCreateParams::AccessSchedule
 
           attr_accessor customer_id: String
 
@@ -62,11 +62,11 @@ module MetronomeSDK
 
           def invoice_contract_id=: (String) -> String
 
-          attr_reader invoice_schedule: MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule?
+          attr_reader invoice_schedule: MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule?
 
           def invoice_schedule=: (
-            MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule
-          ) -> MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule
+            MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule
+          ) -> MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule
 
           attr_reader name: String?
 
@@ -91,7 +91,7 @@ module MetronomeSDK
           def uniqueness_key=: (String) -> String
 
           def initialize: (
-            access_schedule: MetronomeSDK::Models::V1::Customers::CommitCreateParams::AccessSchedule,
+            access_schedule: MetronomeSDK::V1::Customers::CommitCreateParams::AccessSchedule,
             customer_id: String,
             priority: Float,
             product_id: String,
@@ -102,7 +102,7 @@ module MetronomeSDK
             ?custom_fields: ::Hash[Symbol, String],
             ?description: String,
             ?invoice_contract_id: String,
-            ?invoice_schedule: MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule,
+            ?invoice_schedule: MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule,
             ?name: String,
             ?netsuite_sales_order_id: String,
             ?rate_type: MetronomeSDK::Models::V1::Customers::CommitCreateParams::rate_type,
@@ -111,27 +111,23 @@ module MetronomeSDK
             ?request_options: MetronomeSDK::request_opts
           ) -> void
 
-          def to_hash: -> MetronomeSDK::Models::V1::Customers::commit_create_params
-
           type access_schedule =
             {
-              schedule_items: ::Array[MetronomeSDK::Models::V1::Customers::CommitCreateParams::AccessSchedule::ScheduleItem],
+              schedule_items: ::Array[MetronomeSDK::V1::Customers::CommitCreateParams::AccessSchedule::ScheduleItem],
               credit_type_id: String
             }
 
           class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor schedule_items: ::Array[MetronomeSDK::Models::V1::Customers::CommitCreateParams::AccessSchedule::ScheduleItem]
+            attr_accessor schedule_items: ::Array[MetronomeSDK::V1::Customers::CommitCreateParams::AccessSchedule::ScheduleItem]
 
             attr_reader credit_type_id: String?
 
             def credit_type_id=: (String) -> String
 
             def initialize: (
-              schedule_items: ::Array[MetronomeSDK::Models::V1::Customers::CommitCreateParams::AccessSchedule::ScheduleItem],
+              schedule_items: ::Array[MetronomeSDK::V1::Customers::CommitCreateParams::AccessSchedule::ScheduleItem],
               ?credit_type_id: String
             ) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V1::Customers::CommitCreateParams::access_schedule
 
             type schedule_item =
               { amount: Float, ending_before: Time, starting_at: Time }
@@ -148,8 +144,6 @@ module MetronomeSDK
                 ending_before: Time,
                 starting_at: Time
               ) -> void
-
-              def to_hash: -> MetronomeSDK::Models::V1::Customers::CommitCreateParams::AccessSchedule::schedule_item
             end
           end
 
@@ -167,8 +161,8 @@ module MetronomeSDK
           type invoice_schedule =
             {
               credit_type_id: String,
-              recurring_schedule: MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule,
-              schedule_items: ::Array[MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]
+              recurring_schedule: MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule,
+              schedule_items: ::Array[MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]
             }
 
           class InvoiceSchedule < MetronomeSDK::Internal::Type::BaseModel
@@ -176,31 +170,29 @@ module MetronomeSDK
 
             def credit_type_id=: (String) -> String
 
-            attr_reader recurring_schedule: MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule?
+            attr_reader recurring_schedule: MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule?
 
             def recurring_schedule=: (
-              MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule
-            ) -> MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule
+              MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule
+            ) -> MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule
 
-            attr_reader schedule_items: ::Array[MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]?
+            attr_reader schedule_items: ::Array[MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]?
 
             def schedule_items=: (
-              ::Array[MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]
-            ) -> ::Array[MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]
+              ::Array[MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]
+            ) -> ::Array[MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]
 
             def initialize: (
               ?credit_type_id: String,
-              ?recurring_schedule: MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule,
-              ?schedule_items: ::Array[MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]
+              ?recurring_schedule: MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule,
+              ?schedule_items: ::Array[MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]
             ) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V1::Customers::CommitCreateParams::invoice_schedule
 
             type recurring_schedule =
               {
-                amount_distribution: MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::amount_distribution,
+                amount_distribution: MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::amount_distribution,
                 ending_before: Time,
-                frequency: MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::frequency,
+                frequency: MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::frequency,
                 starting_at: Time,
                 amount: Float,
                 quantity: Float,
@@ -208,11 +200,11 @@ module MetronomeSDK
               }
 
             class RecurringSchedule < MetronomeSDK::Internal::Type::BaseModel
-              attr_accessor amount_distribution: MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::amount_distribution
+              attr_accessor amount_distribution: MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::amount_distribution
 
               attr_accessor ending_before: Time
 
-              attr_accessor frequency: MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::frequency
+              attr_accessor frequency: MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::frequency
 
               attr_accessor starting_at: Time
 
@@ -229,16 +221,14 @@ module MetronomeSDK
               def unit_price=: (Float) -> Float
 
               def initialize: (
-                amount_distribution: MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::amount_distribution,
+                amount_distribution: MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::amount_distribution,
                 ending_before: Time,
-                frequency: MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::frequency,
+                frequency: MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::frequency,
                 starting_at: Time,
                 ?amount: Float,
                 ?quantity: Float,
                 ?unit_price: Float
               ) -> void
-
-              def to_hash: -> MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::recurring_schedule
 
               type amount_distribution = :DIVIDED | :DIVIDED_ROUNDED | :EACH
 
@@ -249,7 +239,7 @@ module MetronomeSDK
                 DIVIDED_ROUNDED: :DIVIDED_ROUNDED
                 EACH: :EACH
 
-                def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::amount_distribution]
+                def self?.values: -> ::Array[MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::amount_distribution]
               end
 
               type frequency = :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL
@@ -262,7 +252,7 @@ module MetronomeSDK
                 SEMI_ANNUAL: :SEMI_ANNUAL
                 ANNUAL: :ANNUAL
 
-                def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::frequency]
+                def self?.values: -> ::Array[MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::frequency]
               end
             end
 
@@ -295,8 +285,6 @@ module MetronomeSDK
                 ?quantity: Float,
                 ?unit_price: Float
               ) -> void
-
-              def to_hash: -> MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::schedule_item
             end
           end
 

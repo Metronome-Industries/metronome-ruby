@@ -17,8 +17,6 @@ module MetronomeSDK
           next_page: String?
         ) -> void
 
-        def to_hash: -> MetronomeSDK::Models::V1::credit_grant_list_entries_response
-
         type data =
           {
             customer_id: String,
@@ -35,37 +33,33 @@ module MetronomeSDK
             ledgers: ::Array[MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger]
           ) -> void
 
-          def to_hash: -> MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::data
-
           type ledger =
             {
-              credit_type: MetronomeSDK::Models::CreditTypeData,
+              credit_type: MetronomeSDK::CreditTypeData,
               ending_balance: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance,
-              entries: ::Array[MetronomeSDK::Models::V1::CreditLedgerEntry],
-              pending_entries: ::Array[MetronomeSDK::Models::V1::CreditLedgerEntry],
+              entries: ::Array[MetronomeSDK::V1::CreditLedgerEntry],
+              pending_entries: ::Array[MetronomeSDK::V1::CreditLedgerEntry],
               starting_balance: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance
             }
 
           class Ledger < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor credit_type: MetronomeSDK::Models::CreditTypeData
+            attr_accessor credit_type: MetronomeSDK::CreditTypeData
 
             attr_accessor ending_balance: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance
 
-            attr_accessor entries: ::Array[MetronomeSDK::Models::V1::CreditLedgerEntry]
+            attr_accessor entries: ::Array[MetronomeSDK::V1::CreditLedgerEntry]
 
-            attr_accessor pending_entries: ::Array[MetronomeSDK::Models::V1::CreditLedgerEntry]
+            attr_accessor pending_entries: ::Array[MetronomeSDK::V1::CreditLedgerEntry]
 
             attr_accessor starting_balance: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance
 
             def initialize: (
-              credit_type: MetronomeSDK::Models::CreditTypeData,
+              credit_type: MetronomeSDK::CreditTypeData,
               ending_balance: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance,
-              entries: ::Array[MetronomeSDK::Models::V1::CreditLedgerEntry],
-              pending_entries: ::Array[MetronomeSDK::Models::V1::CreditLedgerEntry],
+              entries: ::Array[MetronomeSDK::V1::CreditLedgerEntry],
+              pending_entries: ::Array[MetronomeSDK::V1::CreditLedgerEntry],
               starting_balance: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance
             ) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::ledger
 
             type ending_balance =
               {
@@ -86,8 +80,6 @@ module MetronomeSDK
                 excluding_pending: Float,
                 including_pending: Float
               ) -> void
-
-              def to_hash: -> MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::ending_balance
             end
 
             type starting_balance =
@@ -109,8 +101,6 @@ module MetronomeSDK
                 excluding_pending: Float,
                 including_pending: Float
               ) -> void
-
-              def to_hash: -> MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::starting_balance
             end
           end
         end

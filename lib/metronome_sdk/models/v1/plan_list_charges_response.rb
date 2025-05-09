@@ -17,8 +17,8 @@ module MetronomeSDK
 
         # @!attribute credit_type
         #
-        #   @return [MetronomeSDK::Models::CreditTypeData]
-        required :credit_type, -> { MetronomeSDK::Models::CreditTypeData }
+        #   @return [MetronomeSDK::CreditTypeData]
+        required :credit_type, -> { MetronomeSDK::CreditTypeData }
 
         # @!attribute custom_fields
         #
@@ -79,7 +79,7 @@ module MetronomeSDK
         #
         #   @param charge_type [Symbol, MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType]
         #
-        #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
+        #   @param credit_type [MetronomeSDK::CreditTypeData]
         #
         #   @param custom_fields [Hash{Symbol=>String}]
         #
@@ -94,10 +94,8 @@ module MetronomeSDK
         #   @param quantity [Float]
         #
         #   @param start_period [Float] Used in price ramps. Indicates how many billing periods pass before the charge
-        #   ...
         #
         #   @param tier_reset_frequency [Float] Used in pricing tiers. Indicates how often the tier resets. Default is 1 - the
-        #   ...
         #
         #   @param unit_conversion [MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion] Specifies how quantities for usage based charges will be converted.
 
@@ -180,7 +178,6 @@ module MetronomeSDK
           #   @param division_factor [Float] The conversion factor
           #
           #   @param rounding_behavior [Symbol, MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion::RoundingBehavior] Whether usage should be rounded down or up to the nearest whole number. If null,
-          #   ...
 
           # Whether usage should be rounded down or up to the nearest whole number. If null,
           # quantity will be rounded to 20 decimal places.

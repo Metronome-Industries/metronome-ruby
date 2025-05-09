@@ -36,7 +36,6 @@ module MetronomeSDK
         #   @param customer_id [String] ID of the customer whose contract is to be archived
         #
         #   @param void_invoices [Boolean] If false, the existing finalized invoices will remain after the contract is arch
-        #   ...
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
       end

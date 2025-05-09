@@ -7,6 +7,9 @@ module MetronomeSDK
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
@@ -29,9 +32,8 @@ module MetronomeSDK
             id: String,
             release_uniqueness_key: T::Boolean,
             void_credit_purchase_invoice: T::Boolean,
-            request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -40,19 +42,21 @@ module MetronomeSDK
           # If true, void the purchase invoice associated with the grant
           void_credit_purchase_invoice: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                id: String,
-                release_uniqueness_key: T::Boolean,
-                void_credit_purchase_invoice: T::Boolean,
-                request_options: MetronomeSDK::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              id: String,
+              release_uniqueness_key: T::Boolean,
+              void_credit_purchase_invoice: T::Boolean,
+              request_options: MetronomeSDK::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

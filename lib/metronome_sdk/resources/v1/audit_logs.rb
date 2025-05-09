@@ -21,15 +21,12 @@ module MetronomeSDK
         # @param next_page [String] Cursor that indicates where the next page of results should start.
         #
         # @param resource_id [String] Optional parameter that can be used to filter which audit logs are returned. If
-        # ...
         #
         # @param resource_type [String] Optional parameter that can be used to filter which audit logs are returned. If
-        # ...
         #
-        # @param sort [Symbol, MetronomeSDK::Models::V1::AuditLogListParams::Sort] Sort order by timestamp, e.g. date_asc or date_desc. Defaults to date_asc.
+        # @param sort [Symbol, MetronomeSDK::V1::AuditLogListParams::Sort] Sort order by timestamp, e.g. date_asc or date_desc. Defaults to date_asc.
         #
         # @param starting_on [Time] RFC 3339 timestamp of the earliest audit log to return. Cannot be used with 'nex
-        # ...
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -37,7 +34,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::AuditLogListParams
         def list(params = {})
-          parsed, options = MetronomeSDK::Models::V1::AuditLogListParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::AuditLogListParams.dump_request(params)
           @client.request(
             method: :get,
             path: "v1/auditLogs",

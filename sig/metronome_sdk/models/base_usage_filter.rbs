@@ -17,8 +17,6 @@ module MetronomeSDK
         group_values: ::Array[String],
         ?starting_at: Time
       ) -> void
-
-      def to_hash: -> MetronomeSDK::Models::base_usage_filter
     end
   end
 end

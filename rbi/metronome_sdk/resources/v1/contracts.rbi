@@ -18,53 +18,65 @@ module MetronomeSDK
           params(
             customer_id: String,
             starting_at: Time,
-            billing_provider_configuration: T.any(
-              MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration,
-              MetronomeSDK::Internal::AnyHash
-            ),
-            commits: T::Array[T.any(MetronomeSDK::Models::V1::ContractCreateParams::Commit, MetronomeSDK::Internal::AnyHash)],
-            credit_balance_threshold_configuration: T.any(
-              MetronomeSDK::Models::V1::ContractCreateParams::CreditBalanceThresholdConfiguration,
-              MetronomeSDK::Internal::AnyHash
-            ),
-            credits: T::Array[T.any(MetronomeSDK::Models::V1::ContractCreateParams::Credit, MetronomeSDK::Internal::AnyHash)],
+            billing_provider_configuration:
+              MetronomeSDK::V1::ContractCreateParams::BillingProviderConfiguration::OrHash,
+            commits:
+              T::Array[MetronomeSDK::V1::ContractCreateParams::Commit::OrHash],
+            credits:
+              T::Array[MetronomeSDK::V1::ContractCreateParams::Credit::OrHash],
             custom_fields: T::Hash[Symbol, String],
-            discounts: T::Array[T.any(MetronomeSDK::Models::V1::ContractCreateParams::Discount, MetronomeSDK::Internal::AnyHash)],
+            discounts:
+              T::Array[
+                MetronomeSDK::V1::ContractCreateParams::Discount::OrHash
+              ],
             ending_before: Time,
-            multiplier_override_prioritization: MetronomeSDK::Models::V1::ContractCreateParams::MultiplierOverridePrioritization::OrSymbol,
+            multiplier_override_prioritization:
+              MetronomeSDK::V1::ContractCreateParams::MultiplierOverridePrioritization::OrSymbol,
             name: String,
             net_payment_terms_days: Float,
             netsuite_sales_order_id: String,
-            overrides: T::Array[T.any(MetronomeSDK::Models::V1::ContractCreateParams::Override, MetronomeSDK::Internal::AnyHash)],
-            professional_services: T::Array[
-              T.any(
-                MetronomeSDK::Models::V1::ContractCreateParams::ProfessionalService,
-                MetronomeSDK::Internal::AnyHash
-              )
-            ],
+            overrides:
+              T::Array[
+                MetronomeSDK::V1::ContractCreateParams::Override::OrHash
+              ],
+            prepaid_balance_threshold_configuration:
+              MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::OrHash,
+            professional_services:
+              T::Array[
+                MetronomeSDK::V1::ContractCreateParams::ProfessionalService::OrHash
+              ],
             rate_card_alias: String,
             rate_card_id: String,
-            recurring_commits: T::Array[T.any(MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit, MetronomeSDK::Internal::AnyHash)],
-            recurring_credits: T::Array[T.any(MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit, MetronomeSDK::Internal::AnyHash)],
-            reseller_royalties: T::Array[T.any(MetronomeSDK::Models::V1::ContractCreateParams::ResellerRoyalty, MetronomeSDK::Internal::AnyHash)],
+            recurring_commits:
+              T::Array[
+                MetronomeSDK::V1::ContractCreateParams::RecurringCommit::OrHash
+              ],
+            recurring_credits:
+              T::Array[
+                MetronomeSDK::V1::ContractCreateParams::RecurringCredit::OrHash
+              ],
+            reseller_royalties:
+              T::Array[
+                MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty::OrHash
+              ],
             salesforce_opportunity_id: String,
-            scheduled_charges: T::Array[T.any(MetronomeSDK::Models::V1::ContractCreateParams::ScheduledCharge, MetronomeSDK::Internal::AnyHash)],
-            scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::ContractCreateParams::ScheduledChargesOnUsageInvoices::OrSymbol,
-            spend_threshold_configuration: T.any(
-              MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration,
-              MetronomeSDK::Internal::AnyHash
-            ),
+            scheduled_charges:
+              T::Array[
+                MetronomeSDK::V1::ContractCreateParams::ScheduledCharge::OrHash
+              ],
+            scheduled_charges_on_usage_invoices:
+              MetronomeSDK::V1::ContractCreateParams::ScheduledChargesOnUsageInvoices::OrSymbol,
+            spend_threshold_configuration:
+              MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::OrHash,
             total_contract_value: Float,
-            transition: T.any(MetronomeSDK::Models::V1::ContractCreateParams::Transition, MetronomeSDK::Internal::AnyHash),
+            transition:
+              MetronomeSDK::V1::ContractCreateParams::Transition::OrHash,
             uniqueness_key: String,
-            usage_filter: T.any(MetronomeSDK::Models::BaseUsageFilter, MetronomeSDK::Internal::AnyHash),
-            usage_statement_schedule: T.any(
-              MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule,
-              MetronomeSDK::Internal::AnyHash
-            ),
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .returns(MetronomeSDK::Models::V1::ContractCreateResponse)
+            usage_filter: MetronomeSDK::BaseUsageFilter::OrHash,
+            usage_statement_schedule:
+              MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule::OrHash,
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V1::ContractCreateResponse)
         end
         def create(
           customer_id:,
@@ -73,7 +85,6 @@ module MetronomeSDK
           # The billing provider configuration associated with a contract.
           billing_provider_configuration: nil,
           commits: nil,
-          credit_balance_threshold_configuration: nil,
           credits: nil,
           custom_fields: nil,
           # This field's availability is dependent on your client's configuration.
@@ -90,6 +101,7 @@ module MetronomeSDK
           # This field's availability is dependent on your client's configuration.
           netsuite_sales_order_id: nil,
           overrides: nil,
+          prepaid_balance_threshold_configuration: nil,
           # This field's availability is dependent on your client's configuration.
           professional_services: nil,
           # Selects the rate card linked to the specified alias as of the contract's start
@@ -120,7 +132,9 @@ module MetronomeSDK
           usage_filter: nil,
           usage_statement_schedule: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # This is the v1 endpoint to get a contract. New clients should implement using
         # the v2 endpoint.
         sig do
@@ -129,9 +143,8 @@ module MetronomeSDK
             customer_id: String,
             include_balance: T::Boolean,
             include_ledgers: T::Boolean,
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .returns(MetronomeSDK::Models::V1::ContractRetrieveResponse)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V1::ContractRetrieveResponse)
         end
         def retrieve(
           contract_id:,
@@ -143,7 +156,9 @@ module MetronomeSDK
           # be slower.
           include_ledgers: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # This is the v1 endpoint to list all contracts for a customer. New clients should
         # implement using the v2 endpoint.
         sig do
@@ -154,9 +169,8 @@ module MetronomeSDK
             include_balance: T::Boolean,
             include_ledgers: T::Boolean,
             starting_at: Time,
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .returns(MetronomeSDK::Models::V1::ContractListResponse)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V1::ContractListResponse)
         end
         def list(
           customer_id:,
@@ -177,7 +191,9 @@ module MetronomeSDK
           # provided if the covering_date filter is provided.
           starting_at: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Add a manual balance entry
         sig do
           params(
@@ -188,9 +204,8 @@ module MetronomeSDK
             segment_id: String,
             contract_id: String,
             timestamp: Time,
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .void
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).void
         end
         def add_manual_balance_entry(
           # ID of the balance (commit or credit) to update.
@@ -209,7 +224,9 @@ module MetronomeSDK
           # provided, it will default to the start of the segment.
           timestamp: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Amendments will be replaced by Contract editing. New clients should implement
         # using the editContract endpoint. Read more about the migration to contract
         # editing [here](https://docs.metronome.com/migrate-amendments-to-edits/) and
@@ -220,20 +237,32 @@ module MetronomeSDK
             contract_id: String,
             customer_id: String,
             starting_at: Time,
-            commits: T::Array[T.any(MetronomeSDK::Models::V1::ContractAmendParams::Commit, MetronomeSDK::Internal::AnyHash)],
-            credits: T::Array[T.any(MetronomeSDK::Models::V1::ContractAmendParams::Credit, MetronomeSDK::Internal::AnyHash)],
+            commits:
+              T::Array[MetronomeSDK::V1::ContractAmendParams::Commit::OrHash],
+            credits:
+              T::Array[MetronomeSDK::V1::ContractAmendParams::Credit::OrHash],
             custom_fields: T::Hash[Symbol, String],
-            discounts: T::Array[T.any(MetronomeSDK::Models::V1::ContractAmendParams::Discount, MetronomeSDK::Internal::AnyHash)],
+            discounts:
+              T::Array[MetronomeSDK::V1::ContractAmendParams::Discount::OrHash],
             netsuite_sales_order_id: String,
-            overrides: T::Array[T.any(MetronomeSDK::Models::V1::ContractAmendParams::Override, MetronomeSDK::Internal::AnyHash)],
-            professional_services: T::Array[T.any(MetronomeSDK::Models::V1::ContractAmendParams::ProfessionalService, MetronomeSDK::Internal::AnyHash)],
-            reseller_royalties: T::Array[T.any(MetronomeSDK::Models::V1::ContractAmendParams::ResellerRoyalty, MetronomeSDK::Internal::AnyHash)],
+            overrides:
+              T::Array[MetronomeSDK::V1::ContractAmendParams::Override::OrHash],
+            professional_services:
+              T::Array[
+                MetronomeSDK::V1::ContractAmendParams::ProfessionalService::OrHash
+              ],
+            reseller_royalties:
+              T::Array[
+                MetronomeSDK::V1::ContractAmendParams::ResellerRoyalty::OrHash
+              ],
             salesforce_opportunity_id: String,
-            scheduled_charges: T::Array[T.any(MetronomeSDK::Models::V1::ContractAmendParams::ScheduledCharge, MetronomeSDK::Internal::AnyHash)],
+            scheduled_charges:
+              T::Array[
+                MetronomeSDK::V1::ContractAmendParams::ScheduledCharge::OrHash
+              ],
             total_contract_value: Float,
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .returns(MetronomeSDK::Models::V1::ContractAmendResponse)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V1::ContractAmendResponse)
         end
         def amend(
           # ID of the contract to amend
@@ -260,16 +289,17 @@ module MetronomeSDK
           # This field's availability is dependent on your client's configuration.
           total_contract_value: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Archive a contract
         sig do
           params(
             contract_id: String,
             customer_id: String,
             void_invoices: T::Boolean,
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .returns(MetronomeSDK::Models::V1::ContractArchiveResponse)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V1::ContractArchiveResponse)
         end
         def archive(
           # ID of the contract to archive
@@ -280,22 +310,24 @@ module MetronomeSDK
           # archived.
           void_invoices:,
           request_options: {}
-        ); end
+        )
+        end
+
         # Creates historical usage invoices for a contract
         sig do
           params(
-            invoices: T::Array[
-              T.any(
-                MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice,
-                MetronomeSDK::Internal::AnyHash
-              )
-            ],
+            invoices:
+              T::Array[
+                MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::OrHash
+              ],
             preview: T::Boolean,
-            request_options: MetronomeSDK::RequestOpts
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(
+            MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse
           )
-            .returns(MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse)
         end
-        def create_historical_invoices(invoices:, preview:, request_options: {}); end
+        def create_historical_invoices(invoices:, preview:, request_options: {})
+        end
 
         # List balances (commits and credits).
         sig do
@@ -310,9 +342,8 @@ module MetronomeSDK
             include_ledgers: T::Boolean,
             next_page: String,
             starting_at: Time,
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .returns(MetronomeSDK::Models::V1::ContractListBalancesResponse)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V1::ContractListBalancesResponse)
         end
         def list_balances(
           customer_id:,
@@ -336,7 +367,9 @@ module MetronomeSDK
           # Include only balances that have any access on or after the provided date
           starting_at: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Get the rate schedule for the rate card on a given contract.
         sig do
           params(
@@ -345,15 +378,14 @@ module MetronomeSDK
             limit: Integer,
             next_page: String,
             at: Time,
-            selectors: T::Array[
-              T.any(
-                MetronomeSDK::Models::V1::ContractRetrieveRateScheduleParams::Selector,
-                MetronomeSDK::Internal::AnyHash
-              )
-            ],
-            request_options: MetronomeSDK::RequestOpts
+            selectors:
+              T::Array[
+                MetronomeSDK::V1::ContractRetrieveRateScheduleParams::Selector::OrHash
+              ],
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(
+            MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse
           )
-            .returns(MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse)
         end
         def retrieve_rate_schedule(
           # Body param: ID of the contract to get the rate schedule for.
@@ -372,7 +404,9 @@ module MetronomeSDK
           # returned.
           selectors: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Create a new scheduled invoice for Professional Services terms on a contract.
         # This endpoint's availability is dependent on your client's configuration.
         sig do
@@ -380,17 +414,16 @@ module MetronomeSDK
             contract_id: String,
             customer_id: String,
             issued_at: Time,
-            line_items: T::Array[
-              T.any(
-                MetronomeSDK::Models::V1::ContractScheduleProServicesInvoiceParams::LineItem,
-                MetronomeSDK::Internal::AnyHash
-              )
-            ],
+            line_items:
+              T::Array[
+                MetronomeSDK::V1::ContractScheduleProServicesInvoiceParams::LineItem::OrHash
+              ],
             netsuite_invoice_header_end: Time,
             netsuite_invoice_header_start: Time,
-            request_options: MetronomeSDK::RequestOpts
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(
+            MetronomeSDK::Models::V1::ContractScheduleProServicesInvoiceResponse
           )
-            .returns(MetronomeSDK::Models::V1::ContractScheduleProServicesInvoiceResponse)
         end
         def schedule_pro_services_invoice(
           contract_id:,
@@ -404,7 +437,9 @@ module MetronomeSDK
           # The start date of the invoice header in Netsuite
           netsuite_invoice_header_start: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Set usage filter for a contract
         sig do
           params(
@@ -413,9 +448,8 @@ module MetronomeSDK
             group_key: String,
             group_values: T::Array[String],
             starting_at: Time,
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .void
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).void
         end
         def set_usage_filter(
           contract_id:,
@@ -434,9 +468,8 @@ module MetronomeSDK
             customer_id: String,
             allow_ending_before_finalized_invoice: T::Boolean,
             ending_before: Time,
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .returns(MetronomeSDK::Models::V1::ContractUpdateEndDateResponse)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V1::ContractUpdateEndDateResponse)
         end
         def update_end_date(
           # ID of the contract to update
@@ -452,10 +485,13 @@ module MetronomeSDK
           # provided, the contract will be updated to be open-ended.
           ending_before: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

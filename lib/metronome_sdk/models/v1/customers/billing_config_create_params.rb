@@ -16,9 +16,9 @@ module MetronomeSDK
 
           # @!attribute billing_provider_type
           #
-          #   @return [Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::BillingProviderType]
+          #   @return [Symbol, MetronomeSDK::V1::Customers::BillingConfigCreateParams::BillingProviderType]
           required :billing_provider_type,
-                   enum: -> { MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::BillingProviderType }
+                   enum: -> { MetronomeSDK::V1::Customers::BillingConfigCreateParams::BillingProviderType }
 
           # @!attribute billing_provider_customer_id
           #   The customer ID in the billing provider's system. For Azure, this is the
@@ -34,15 +34,14 @@ module MetronomeSDK
 
           # @!attribute aws_region
           #
-          #   @return [Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::AwsRegion, nil]
-          optional :aws_region,
-                   enum: -> { MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::AwsRegion }
+          #   @return [Symbol, MetronomeSDK::V1::Customers::BillingConfigCreateParams::AwsRegion, nil]
+          optional :aws_region, enum: -> { MetronomeSDK::V1::Customers::BillingConfigCreateParams::AwsRegion }
 
           # @!attribute stripe_collection_method
           #
-          #   @return [Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::StripeCollectionMethod, nil]
+          #   @return [Symbol, MetronomeSDK::V1::Customers::BillingConfigCreateParams::StripeCollectionMethod, nil]
           optional :stripe_collection_method,
-                   enum: -> { MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::StripeCollectionMethod }
+                   enum: -> { MetronomeSDK::V1::Customers::BillingConfigCreateParams::StripeCollectionMethod }
 
           # @!method initialize(customer_id:, billing_provider_type:, billing_provider_customer_id:, aws_product_code: nil, aws_region: nil, stripe_collection_method: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
@@ -51,16 +50,15 @@ module MetronomeSDK
           #
           #   @param customer_id [String]
           #
-          #   @param billing_provider_type [Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::BillingProviderType]
+          #   @param billing_provider_type [Symbol, MetronomeSDK::V1::Customers::BillingConfigCreateParams::BillingProviderType]
           #
           #   @param billing_provider_customer_id [String] The customer ID in the billing provider's system. For Azure, this is the subscri
-          #   ...
           #
           #   @param aws_product_code [String]
           #
-          #   @param aws_region [Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::AwsRegion]
+          #   @param aws_region [Symbol, MetronomeSDK::V1::Customers::BillingConfigCreateParams::AwsRegion]
           #
-          #   @param stripe_collection_method [Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::StripeCollectionMethod]
+          #   @param stripe_collection_method [Symbol, MetronomeSDK::V1::Customers::BillingConfigCreateParams::StripeCollectionMethod]
           #
           #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 

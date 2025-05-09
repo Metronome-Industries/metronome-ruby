@@ -5,13 +5,13 @@ module MetronomeSDK
     class Rate < MetronomeSDK::Internal::Type::BaseModel
       # @!attribute rate_type
       #
-      #   @return [Symbol, MetronomeSDK::Models::Rate::RateType]
-      required :rate_type, enum: -> { MetronomeSDK::Models::Rate::RateType }
+      #   @return [Symbol, MetronomeSDK::Rate::RateType]
+      required :rate_type, enum: -> { MetronomeSDK::Rate::RateType }
 
       # @!attribute credit_type
       #
-      #   @return [MetronomeSDK::Models::CreditTypeData, nil]
-      optional :credit_type, -> { MetronomeSDK::Models::CreditTypeData }
+      #   @return [MetronomeSDK::CreditTypeData, nil]
+      optional :credit_type, -> { MetronomeSDK::CreditTypeData }
 
       # @!attribute custom_rate
       #   Only set for CUSTOM rate_type. This field is interpreted by custom rate
@@ -50,8 +50,8 @@ module MetronomeSDK
       # @!attribute tiers
       #   Only set for TIERED rate_type.
       #
-      #   @return [Array<MetronomeSDK::Models::Tier>, nil]
-      optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::Tier] }
+      #   @return [Array<MetronomeSDK::Tier>, nil]
+      optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
 
       # @!attribute use_list_prices
       #   Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
@@ -62,33 +62,28 @@ module MetronomeSDK
       optional :use_list_prices, MetronomeSDK::Internal::Type::Boolean
 
       # @!method initialize(rate_type:, credit_type: nil, custom_rate: nil, is_prorated: nil, price: nil, pricing_group_values: nil, quantity: nil, tiers: nil, use_list_prices: nil)
-      #   Some parameter documentations has been truncated, see
-      #   {MetronomeSDK::Models::Rate} for more details.
+      #   Some parameter documentations has been truncated, see {MetronomeSDK::Rate} for
+      #   more details.
       #
-      #   @param rate_type [Symbol, MetronomeSDK::Models::Rate::RateType]
+      #   @param rate_type [Symbol, MetronomeSDK::Rate::RateType]
       #
-      #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
+      #   @param credit_type [MetronomeSDK::CreditTypeData]
       #
       #   @param custom_rate [Hash{Symbol=>Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate processo
-      #   ...
       #
       #   @param is_prorated [Boolean] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
-      #   ...
       #
       #   @param price [Float] Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type, t
-      #   ...
       #
       #   @param pricing_group_values [Hash{Symbol=>String}] if pricing groups are used, this will contain the values used to calculate the p
-      #   ...
       #
       #   @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
       #
-      #   @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
+      #   @param tiers [Array<MetronomeSDK::Tier>] Only set for TIERED rate_type.
       #
       #   @param use_list_prices [Boolean] Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
-      #   ...
 
-      # @see MetronomeSDK::Models::Rate#rate_type
+      # @see MetronomeSDK::Rate#rate_type
       module RateType
         extend MetronomeSDK::Internal::Type::Enum
 

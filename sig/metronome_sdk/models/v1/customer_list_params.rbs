@@ -49,8 +49,6 @@ module MetronomeSDK
           ?salesforce_account_ids: ::Array[String],
           ?request_options: MetronomeSDK::request_opts
         ) -> void
-
-        def to_hash: -> MetronomeSDK::Models::V1::customer_list_params
       end
     end
   end

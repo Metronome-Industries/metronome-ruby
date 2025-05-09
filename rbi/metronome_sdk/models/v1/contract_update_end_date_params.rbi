@@ -7,6 +7,9 @@ module MetronomeSDK
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
         # ID of the contract to update
         sig { returns(String) }
         attr_accessor :contract_id
@@ -39,9 +42,8 @@ module MetronomeSDK
             customer_id: String,
             allow_ending_before_finalized_invoice: T::Boolean,
             ending_before: Time,
-            request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # ID of the contract to update
@@ -57,20 +59,22 @@ module MetronomeSDK
           # provided, the contract will be updated to be open-ended.
           ending_before: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                contract_id: String,
-                customer_id: String,
-                allow_ending_before_finalized_invoice: T::Boolean,
-                ending_before: Time,
-                request_options: MetronomeSDK::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              contract_id: String,
+              customer_id: String,
+              allow_ending_before_finalized_invoice: T::Boolean,
+              ending_before: Time,
+              request_options: MetronomeSDK::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

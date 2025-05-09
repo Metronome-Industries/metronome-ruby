@@ -21,7 +21,7 @@ module MetronomeSDK
             ?starting_on: Time,
             ?status: String,
             ?request_options: MetronomeSDK::request_opts
-          ) -> MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::Customers::Invoice]
+          ) -> MetronomeSDK::Internal::CursorPage[MetronomeSDK::V1::Customers::Invoice]
 
           def add_charge: (
             customer_id: String,

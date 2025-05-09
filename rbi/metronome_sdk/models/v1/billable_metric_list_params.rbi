@@ -7,6 +7,9 @@ module MetronomeSDK
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
         # If true, the list of returned metrics will include archived metrics
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :include_archived
@@ -33,9 +36,8 @@ module MetronomeSDK
             include_archived: T::Boolean,
             limit: Integer,
             next_page: String,
-            request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # If true, the list of returned metrics will include archived metrics
@@ -45,19 +47,21 @@ module MetronomeSDK
           # Cursor that indicates where the next page of results should start.
           next_page: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                include_archived: T::Boolean,
-                limit: Integer,
-                next_page: String,
-                request_options: MetronomeSDK::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              include_archived: T::Boolean,
+              limit: Integer,
+              next_page: String,
+              request_options: MetronomeSDK::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

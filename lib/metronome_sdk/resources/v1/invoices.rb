@@ -16,7 +16,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::InvoiceRegenerateParams
         def regenerate(params)
-          parsed, options = MetronomeSDK::Models::V1::InvoiceRegenerateParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::InvoiceRegenerateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/invoices/regenerate",
@@ -38,7 +38,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::InvoiceVoidParams
         def void(params)
-          parsed, options = MetronomeSDK::Models::V1::InvoiceVoidParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::InvoiceVoidParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/invoices/void",

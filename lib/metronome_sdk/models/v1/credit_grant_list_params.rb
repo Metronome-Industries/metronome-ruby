@@ -62,13 +62,10 @@ module MetronomeSDK
         #   @param next_page [String] Cursor that indicates where the next page of results should start.
         #
         #   @param credit_grant_ids [Array<String>] An array of credit grant IDs. If this is specified, neither credit_type_ids nor
-        #   ...
         #
         #   @param credit_type_ids [Array<String>] An array of credit type IDs. This must not be specified if credit_grant_ids is s
-        #   ...
         #
         #   @param customer_ids [Array<String>] An array of Metronome customer IDs. This must not be specified if credit_grant_i
-        #   ...
         #
         #   @param effective_before [Time] Only return credit grants that are effective before this timestamp (exclusive).
         #

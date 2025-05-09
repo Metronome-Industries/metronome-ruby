@@ -5,7 +5,7 @@ module MetronomeSDK
         class RateCards
           class ProductOrders
             def update: (
-              product_moves: ::Array[MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove],
+              product_moves: ::Array[MetronomeSDK::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove],
               rate_card_id: String,
               ?request_options: MetronomeSDK::request_opts
             ) -> MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateResponse

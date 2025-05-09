@@ -8,32 +8,29 @@ module MetronomeSDK
           # Create a new commit at the customer level.
           sig do
             params(
-              access_schedule: T.any(
-                MetronomeSDK::Models::V1::Customers::CommitCreateParams::AccessSchedule,
-                MetronomeSDK::Internal::AnyHash
-              ),
+              access_schedule:
+                MetronomeSDK::V1::Customers::CommitCreateParams::AccessSchedule::OrHash,
               customer_id: String,
               priority: Float,
               product_id: String,
-              type: MetronomeSDK::Models::V1::Customers::CommitCreateParams::Type::OrSymbol,
+              type:
+                MetronomeSDK::V1::Customers::CommitCreateParams::Type::OrSymbol,
               applicable_contract_ids: T::Array[String],
               applicable_product_ids: T::Array[String],
               applicable_product_tags: T::Array[String],
               custom_fields: T::Hash[Symbol, String],
               description: String,
               invoice_contract_id: String,
-              invoice_schedule: T.any(
-                MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule,
-                MetronomeSDK::Internal::AnyHash
-              ),
+              invoice_schedule:
+                MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::OrHash,
               name: String,
               netsuite_sales_order_id: String,
-              rate_type: MetronomeSDK::Models::V1::Customers::CommitCreateParams::RateType::OrSymbol,
+              rate_type:
+                MetronomeSDK::V1::Customers::CommitCreateParams::RateType::OrSymbol,
               salesforce_opportunity_id: String,
               uniqueness_key: String,
-              request_options: MetronomeSDK::RequestOpts
-            )
-              .returns(MetronomeSDK::Models::V1::Customers::CommitCreateResponse)
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(MetronomeSDK::Models::V1::Customers::CommitCreateResponse)
           end
           def create(
             # Schedule for distributing the commit to the customer. For "POSTPAID" commits
@@ -81,7 +78,9 @@ module MetronomeSDK
             # error.
             uniqueness_key: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # List commits.
           sig do
             params(
@@ -95,9 +94,8 @@ module MetronomeSDK
               include_ledgers: T::Boolean,
               next_page: String,
               starting_at: Time,
-              request_options: MetronomeSDK::RequestOpts
-            )
-              .returns(MetronomeSDK::Models::V1::Customers::CommitListResponse)
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(MetronomeSDK::Models::V1::Customers::CommitListResponse)
           end
           def list(
             customer_id:,
@@ -121,7 +119,9 @@ module MetronomeSDK
             # Include only commits that have any access on or after the provided date
             starting_at: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # Pull forward the end date of a prepaid commit. Use the "edit a commit" endpoint
           # to extend the end date of a prepaid commit, or to make other edits to the
           # commit.
@@ -131,9 +131,10 @@ module MetronomeSDK
               customer_id: String,
               access_ending_before: Time,
               invoices_ending_before: Time,
-              request_options: MetronomeSDK::RequestOpts
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(
+              MetronomeSDK::Models::V1::Customers::CommitUpdateEndDateResponse
             )
-              .returns(MetronomeSDK::Models::V1::Customers::CommitUpdateEndDateResponse)
           end
           def update_end_date(
             # ID of the commit to update. Only supports "PREPAID" commits.
@@ -148,10 +149,13 @@ module MetronomeSDK
             # (exclusive). If not provided, the invoice schedule will not be updated.
             invoices_ending_before: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # @api private
           sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
-          def self.new(client:); end
+          def self.new(client:)
+          end
         end
       end
     end

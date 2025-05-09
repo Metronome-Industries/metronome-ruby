@@ -12,9 +12,11 @@ module MetronomeSDK
 
             # @!attribute product_moves
             #
-            #   @return [Array<MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove>]
+            #   @return [Array<MetronomeSDK::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove>]
             required :product_moves,
-                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove] }
+                     -> {
+                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove]
+                     }
 
             # @!attribute rate_card_id
             #   ID of the rate card to update
@@ -23,7 +25,7 @@ module MetronomeSDK
             required :rate_card_id, String
 
             # @!method initialize(product_moves:, rate_card_id:, request_options: {})
-            #   @param product_moves [Array<MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove>]
+            #   @param product_moves [Array<MetronomeSDK::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove>]
             #
             #   @param rate_card_id [String] ID of the rate card to update
             #

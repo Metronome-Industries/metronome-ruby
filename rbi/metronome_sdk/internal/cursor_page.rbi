@@ -15,7 +15,8 @@ module MetronomeSDK
 
       # @api private
       sig { returns(String) }
-      def inspect; end
+      def inspect
+      end
     end
   end
 end

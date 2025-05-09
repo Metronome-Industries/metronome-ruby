@@ -4,7 +4,7 @@ module MetronomeSDK
       class Customers
         class Commits
           def create: (
-            access_schedule: MetronomeSDK::Models::V1::Customers::CommitCreateParams::AccessSchedule,
+            access_schedule: MetronomeSDK::V1::Customers::CommitCreateParams::AccessSchedule,
             customer_id: String,
             priority: Float,
             product_id: String,
@@ -15,7 +15,7 @@ module MetronomeSDK
             ?custom_fields: ::Hash[Symbol, String],
             ?description: String,
             ?invoice_contract_id: String,
-            ?invoice_schedule: MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule,
+            ?invoice_schedule: MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule,
             ?name: String,
             ?netsuite_sales_order_id: String,
             ?rate_type: MetronomeSDK::Models::V1::Customers::CommitCreateParams::rate_type,

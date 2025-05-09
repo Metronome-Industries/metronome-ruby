@@ -14,8 +14,6 @@ module MetronomeSDK
             data: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data
           ) -> void
 
-          def to_hash: -> MetronomeSDK::Models::V1::Customers::billing_config_retrieve_response
-
           type data =
             {
               aws_expiration_date: Time,
@@ -83,8 +81,6 @@ module MetronomeSDK
               ?billing_provider_customer_id: String,
               ?stripe_collection_method: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::stripe_collection_method
             ) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::data
 
             type aws_region =
               :"af-south-1"

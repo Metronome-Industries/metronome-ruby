@@ -8,6 +8,9 @@ module MetronomeSDK
           extend MetronomeSDK::Internal::Type::RequestParameters::Converter
           include MetronomeSDK::Internal::Type::RequestParameters
 
+          OrHash =
+            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
           # ID of the commit to update. Only supports "PREPAID" commits.
           sig { returns(String) }
           attr_accessor :commit_id
@@ -39,9 +42,8 @@ module MetronomeSDK
               customer_id: String,
               access_ending_before: Time,
               invoices_ending_before: Time,
-              request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-            )
-              .returns(T.attached_class)
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(T.attached_class)
           end
           def self.new(
             # ID of the commit to update. Only supports "PREPAID" commits.
@@ -56,20 +58,22 @@ module MetronomeSDK
             # (exclusive). If not provided, the invoice schedule will not be updated.
             invoices_ending_before: nil,
             request_options: {}
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  commit_id: String,
-                  customer_id: String,
-                  access_ending_before: Time,
-                  invoices_ending_before: Time,
-                  request_options: MetronomeSDK::RequestOptions
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                commit_id: String,
+                customer_id: String,
+                access_ending_before: Time,
+                invoices_ending_before: Time,
+                request_options: MetronomeSDK::RequestOptions
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
     end

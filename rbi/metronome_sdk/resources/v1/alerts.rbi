@@ -7,22 +7,26 @@ module MetronomeSDK
         # Create a new alert
         sig do
           params(
-            alert_type: MetronomeSDK::Models::V1::AlertCreateParams::AlertType::OrSymbol,
+            alert_type:
+              MetronomeSDK::V1::AlertCreateParams::AlertType::OrSymbol,
             name: String,
             threshold: Float,
             billable_metric_id: String,
             credit_grant_type_filters: T::Array[String],
             credit_type_id: String,
-            custom_field_filters: T::Array[T.any(MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter, MetronomeSDK::Internal::AnyHash)],
+            custom_field_filters:
+              T::Array[
+                MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter::OrHash
+              ],
             customer_id: String,
             evaluate_on_create: T::Boolean,
-            group_key_filter: T.any(MetronomeSDK::Models::V1::AlertCreateParams::GroupKeyFilter, MetronomeSDK::Internal::AnyHash),
+            group_key_filter:
+              MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter::OrHash,
             invoice_types_filter: T::Array[String],
             plan_id: String,
             uniqueness_key: String,
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .returns(MetronomeSDK::Models::V1::AlertCreateResponse)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V1::AlertCreateResponse)
         end
         def create(
           # Type of the alert
@@ -64,11 +68,16 @@ module MetronomeSDK
           # request will fail with a 409 error.
           uniqueness_key: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Archive an existing alert
         sig do
-          params(id: String, release_uniqueness_key: T::Boolean, request_options: MetronomeSDK::RequestOpts)
-            .returns(MetronomeSDK::Models::V1::AlertArchiveResponse)
+          params(
+            id: String,
+            release_uniqueness_key: T::Boolean,
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V1::AlertArchiveResponse)
         end
         def archive(
           # The Metronome ID of the alert
@@ -76,10 +85,13 @@ module MetronomeSDK
           # If true, resets the uniqueness key on this alert so it can be re-used
           release_uniqueness_key: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

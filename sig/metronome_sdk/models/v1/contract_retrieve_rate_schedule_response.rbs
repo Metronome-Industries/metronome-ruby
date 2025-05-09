@@ -17,12 +17,10 @@ module MetronomeSDK
           ?next_page: String?
         ) -> void
 
-        def to_hash: -> MetronomeSDK::Models::V1::contract_retrieve_rate_schedule_response
-
         type data =
           {
             entitled: bool,
-            list_rate: MetronomeSDK::Models::Rate,
+            list_rate: MetronomeSDK::Rate,
             product_custom_fields: ::Hash[Symbol, String],
             product_id: String,
             product_name: String,
@@ -31,14 +29,14 @@ module MetronomeSDK
             starting_at: Time,
             commit_rate: MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse::Data::CommitRate,
             ending_before: Time,
-            override_rate: MetronomeSDK::Models::Rate,
+            override_rate: MetronomeSDK::Rate,
             pricing_group_values: ::Hash[Symbol, String]
           }
 
         class Data < MetronomeSDK::Internal::Type::BaseModel
           attr_accessor entitled: bool
 
-          attr_accessor list_rate: MetronomeSDK::Models::Rate
+          attr_accessor list_rate: MetronomeSDK::Rate
 
           attr_accessor product_custom_fields: ::Hash[Symbol, String]
 
@@ -62,11 +60,9 @@ module MetronomeSDK
 
           def ending_before=: (Time) -> Time
 
-          attr_reader override_rate: MetronomeSDK::Models::Rate?
+          attr_reader override_rate: MetronomeSDK::Rate?
 
-          def override_rate=: (
-            MetronomeSDK::Models::Rate
-          ) -> MetronomeSDK::Models::Rate
+          def override_rate=: (MetronomeSDK::Rate) -> MetronomeSDK::Rate
 
           attr_reader pricing_group_values: ::Hash[Symbol, String]?
 
@@ -76,7 +72,7 @@ module MetronomeSDK
 
           def initialize: (
             entitled: bool,
-            list_rate: MetronomeSDK::Models::Rate,
+            list_rate: MetronomeSDK::Rate,
             product_custom_fields: ::Hash[Symbol, String],
             product_id: String,
             product_name: String,
@@ -85,17 +81,15 @@ module MetronomeSDK
             starting_at: Time,
             ?commit_rate: MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse::Data::CommitRate,
             ?ending_before: Time,
-            ?override_rate: MetronomeSDK::Models::Rate,
+            ?override_rate: MetronomeSDK::Rate,
             ?pricing_group_values: ::Hash[Symbol, String]
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse::data
 
           type commit_rate =
             {
               rate_type: MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse::Data::CommitRate::rate_type,
               price: Float,
-              tiers: ::Array[MetronomeSDK::Models::Tier]
+              tiers: ::Array[MetronomeSDK::Tier]
             }
 
           class CommitRate < MetronomeSDK::Internal::Type::BaseModel
@@ -105,19 +99,17 @@ module MetronomeSDK
 
             def price=: (Float) -> Float
 
-            attr_reader tiers: ::Array[MetronomeSDK::Models::Tier]?
+            attr_reader tiers: ::Array[MetronomeSDK::Tier]?
 
             def tiers=: (
-              ::Array[MetronomeSDK::Models::Tier]
-            ) -> ::Array[MetronomeSDK::Models::Tier]
+              ::Array[MetronomeSDK::Tier]
+            ) -> ::Array[MetronomeSDK::Tier]
 
             def initialize: (
               rate_type: MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse::Data::CommitRate::rate_type,
               ?price: Float,
-              ?tiers: ::Array[MetronomeSDK::Models::Tier]
+              ?tiers: ::Array[MetronomeSDK::Tier]
             ) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse::Data::commit_rate
 
             type rate_type =
               :FLAT | :PERCENTAGE | :SUBSCRIPTION | :TIERED | :CUSTOM

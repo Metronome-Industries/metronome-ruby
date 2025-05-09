@@ -50,8 +50,8 @@ module MetronomeSDK
 
           # @!attribute fiat_credit_type
           #
-          #   @return [MetronomeSDK::Models::CreditTypeData, nil]
-          optional :fiat_credit_type, -> { MetronomeSDK::Models::CreditTypeData }
+          #   @return [MetronomeSDK::CreditTypeData, nil]
+          optional :fiat_credit_type, -> { MetronomeSDK::CreditTypeData }
 
           # @!method initialize(id:, created_at:, created_by:, name:, aliases: nil, credit_type_conversions: nil, custom_fields: nil, description: nil, fiat_credit_type: nil)
           #   @param id [String]
@@ -62,7 +62,7 @@ module MetronomeSDK
           #   @param credit_type_conversions [Array<MetronomeSDK::Models::V1::Contracts::RateCardListResponse::CreditTypeConversion>]
           #   @param custom_fields [Hash{Symbol=>String}]
           #   @param description [String]
-          #   @param fiat_credit_type [MetronomeSDK::Models::CreditTypeData]
+          #   @param fiat_credit_type [MetronomeSDK::CreditTypeData]
 
           class Alias < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute name
@@ -89,8 +89,8 @@ module MetronomeSDK
           class CreditTypeConversion < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute custom_credit_type
             #
-            #   @return [MetronomeSDK::Models::CreditTypeData]
-            required :custom_credit_type, -> { MetronomeSDK::Models::CreditTypeData }
+            #   @return [MetronomeSDK::CreditTypeData]
+            required :custom_credit_type, -> { MetronomeSDK::CreditTypeData }
 
             # @!attribute fiat_per_custom_credit
             #
@@ -98,7 +98,7 @@ module MetronomeSDK
             required :fiat_per_custom_credit, String
 
             # @!method initialize(custom_credit_type:, fiat_per_custom_credit:)
-            #   @param custom_credit_type [MetronomeSDK::Models::CreditTypeData]
+            #   @param custom_credit_type [MetronomeSDK::CreditTypeData]
             #   @param fiat_per_custom_credit [String]
           end
         end

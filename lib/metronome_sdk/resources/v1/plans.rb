@@ -18,7 +18,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::PlanListParams
         def list(params = {})
-          parsed, options = MetronomeSDK::Models::V1::PlanListParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::PlanListParams.dump_request(params)
           @client.request(
             method: :get,
             path: "v1/plans",
@@ -40,7 +40,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::PlanGetDetailsParams
         def get_details(params)
-          parsed, options = MetronomeSDK::Models::V1::PlanGetDetailsParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::PlanGetDetailsParams.dump_request(params)
           plan_id =
             parsed.delete(:plan_id) do
               raise ArgumentError.new("missing required path argument #{_1}")
@@ -69,7 +69,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::PlanListChargesParams
         def list_charges(params)
-          parsed, options = MetronomeSDK::Models::V1::PlanListChargesParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::PlanListChargesParams.dump_request(params)
           plan_id =
             parsed.delete(:plan_id) do
               raise ArgumentError.new("missing required path argument #{_1}")
@@ -98,7 +98,7 @@ module MetronomeSDK
         #
         # @param next_page [String] Query param: Cursor that indicates where the next page of results should start.
         #
-        # @param status [Symbol, MetronomeSDK::Models::V1::PlanListCustomersParams::Status] Query param: Status of customers on a given plan. Defaults to `active`. ...
+        # @param status [Symbol, MetronomeSDK::V1::PlanListCustomersParams::Status] Query param: Status of customers on a given plan. Defaults to `active`.
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -106,7 +106,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::PlanListCustomersParams
         def list_customers(params)
-          parsed, options = MetronomeSDK::Models::V1::PlanListCustomersParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::PlanListCustomersParams.dump_request(params)
           plan_id =
             parsed.delete(:plan_id) do
               raise ArgumentError.new("missing required path argument #{_1}")

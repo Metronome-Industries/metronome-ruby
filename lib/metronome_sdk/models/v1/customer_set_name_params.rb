@@ -27,7 +27,6 @@ module MetronomeSDK
         #   @param customer_id [String]
         #
         #   @param name [String] The new name for the customer. This will be truncated to 160 characters if the p
-        #   ...
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
       end

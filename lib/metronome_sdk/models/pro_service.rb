@@ -50,8 +50,8 @@ module MetronomeSDK
       optional :netsuite_sales_order_id, String
 
       # @!method initialize(id:, max_amount:, product_id:, quantity:, unit_price:, custom_fields: nil, description: nil, netsuite_sales_order_id: nil)
-      #   Some parameter documentations has been truncated, see
-      #   {MetronomeSDK::Models::ProService} for more details.
+      #   Some parameter documentations has been truncated, see {MetronomeSDK::ProService}
+      #   for more details.
       #
       #   @param id [String]
       #
@@ -60,10 +60,8 @@ module MetronomeSDK
       #   @param product_id [String]
       #
       #   @param quantity [Float] Quantity for the charge. Will be multiplied by unit_price to determine the amoun
-      #   ...
       #
       #   @param unit_price [Float] Unit price for the charge. Will be multiplied by quantity to determine the amoun
-      #   ...
       #
       #   @param custom_fields [Hash{Symbol=>String}]
       #

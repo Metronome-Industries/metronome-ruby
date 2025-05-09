@@ -79,19 +79,16 @@ module MetronomeSDK
             #   more details.
             #
             #   @param aws_expiration_date [Time] Contract expiration date for the customer. The expected format is RFC 3339 and c
-            #   ...
             #
             #   @param aws_product_code [String]
             #
             #   @param aws_region [Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::AwsRegion]
             #
             #   @param azure_expiration_date [Time] Subscription term start/end date for the customer. The expected format is RFC 33
-            #   ...
             #
             #   @param azure_plan_id [String]
             #
             #   @param azure_start_date [Time] Subscription term start/end date for the customer. The expected format is RFC 33
-            #   ...
             #
             #   @param azure_subscription_status [Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::AzureSubscriptionStatus]
             #

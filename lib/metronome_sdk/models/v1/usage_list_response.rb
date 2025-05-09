@@ -75,7 +75,6 @@ module MetronomeSDK
           #   @param value [Float, nil]
           #
           #   @param groups [Hash{Symbol=>Float, nil}] Values will be either a number or null. Null indicates that there were no matche
-          #   ...
         end
       end
     end

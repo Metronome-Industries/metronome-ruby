@@ -6,13 +6,14 @@ module MetronomeSDK
           def retrieve: (
             alert_id: String,
             customer_id: String,
+            ?plans_or_contracts: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::plans_or_contracts,
             ?request_options: MetronomeSDK::request_opts
           ) -> MetronomeSDK::Models::V1::Customers::AlertRetrieveResponse
 
           def list: (
             customer_id: String,
             ?next_page: String,
-            ?alert_statuses: ::Array[MetronomeSDK::Models::V1::Customers::AlertListParams::alert_status],
+            ?alert_statuses: ::Array[MetronomeSDK::V1::Customers::AlertListParams::alert_status],
             ?request_options: MetronomeSDK::request_opts
           ) -> MetronomeSDK::Models::V1::Customers::AlertListResponse
 

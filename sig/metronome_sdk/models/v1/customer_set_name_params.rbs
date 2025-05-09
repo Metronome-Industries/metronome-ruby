@@ -18,8 +18,6 @@ module MetronomeSDK
           name: String,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
-
-        def to_hash: -> MetronomeSDK::Models::V1::customer_set_name_params
       end
     end
   end

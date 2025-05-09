@@ -9,7 +9,7 @@ module MetronomeSDK
             limit: Integer,
             next_page: String,
             ending_before: Time,
-            selectors: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector]
+            selectors: ::Array[MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector]
           }
           & MetronomeSDK::Internal::Type::request_parameters
 
@@ -33,11 +33,11 @@ module MetronomeSDK
 
           def ending_before=: (Time) -> Time
 
-          attr_reader selectors: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector]?
+          attr_reader selectors: ::Array[MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector]?
 
           def selectors=: (
-            ::Array[MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector]
-          ) -> ::Array[MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector]
+            ::Array[MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector]
+          ) -> ::Array[MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector]
 
           def initialize: (
             rate_card_id: String,
@@ -45,11 +45,9 @@ module MetronomeSDK
             ?limit: Integer,
             ?next_page: String,
             ?ending_before: Time,
-            ?selectors: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector],
+            ?selectors: ::Array[MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector],
             ?request_options: MetronomeSDK::request_opts
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::Contracts::rate_card_retrieve_rate_schedule_params
 
           type selector =
             {
@@ -80,8 +78,6 @@ module MetronomeSDK
               ?pricing_group_values: ::Hash[Symbol, String],
               ?product_id: String
             ) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams::selector
           end
         end
       end

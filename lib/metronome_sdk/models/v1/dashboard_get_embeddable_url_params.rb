@@ -16,40 +16,46 @@ module MetronomeSDK
         # @!attribute dashboard
         #   The type of dashboard to retrieve.
         #
-        #   @return [Symbol, MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::Dashboard]
-        required :dashboard, enum: -> { MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::Dashboard }
+        #   @return [Symbol, MetronomeSDK::V1::DashboardGetEmbeddableURLParams::Dashboard]
+        required :dashboard, enum: -> { MetronomeSDK::V1::DashboardGetEmbeddableURLParams::Dashboard }
 
         # @!attribute bm_group_key_overrides
         #   Optional list of billable metric group key overrides
         #
-        #   @return [Array<MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>, nil]
+        #   @return [Array<MetronomeSDK::V1::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>, nil]
         optional :bm_group_key_overrides,
-                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::BmGroupKeyOverride] }
+                 -> {
+                   MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::DashboardGetEmbeddableURLParams::BmGroupKeyOverride]
+                 }
 
         # @!attribute color_overrides
         #   Optional list of colors to override
         #
-        #   @return [Array<MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::ColorOverride>, nil]
+        #   @return [Array<MetronomeSDK::V1::DashboardGetEmbeddableURLParams::ColorOverride>, nil]
         optional :color_overrides,
-                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::ColorOverride] }
+                 -> {
+                   MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::DashboardGetEmbeddableURLParams::ColorOverride]
+                 }
 
         # @!attribute dashboard_options
         #   Optional dashboard specific options
         #
-        #   @return [Array<MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::DashboardOption>, nil]
+        #   @return [Array<MetronomeSDK::V1::DashboardGetEmbeddableURLParams::DashboardOption>, nil]
         optional :dashboard_options,
-                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::DashboardOption] }
+                 -> {
+                   MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::DashboardGetEmbeddableURLParams::DashboardOption]
+                 }
 
         # @!method initialize(customer_id:, dashboard:, bm_group_key_overrides: nil, color_overrides: nil, dashboard_options: nil, request_options: {})
         #   @param customer_id [String]
         #
-        #   @param dashboard [Symbol, MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::Dashboard] The type of dashboard to retrieve.
+        #   @param dashboard [Symbol, MetronomeSDK::V1::DashboardGetEmbeddableURLParams::Dashboard] The type of dashboard to retrieve.
         #
-        #   @param bm_group_key_overrides [Array<MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>] Optional list of billable metric group key overrides
+        #   @param bm_group_key_overrides [Array<MetronomeSDK::V1::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>] Optional list of billable metric group key overrides
         #
-        #   @param color_overrides [Array<MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::ColorOverride>] Optional list of colors to override
+        #   @param color_overrides [Array<MetronomeSDK::V1::DashboardGetEmbeddableURLParams::ColorOverride>] Optional list of colors to override
         #
-        #   @param dashboard_options [Array<MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::DashboardOption>] Optional dashboard specific options
+        #   @param dashboard_options [Array<MetronomeSDK::V1::DashboardGetEmbeddableURLParams::DashboardOption>] Optional dashboard specific options
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 
@@ -88,24 +94,22 @@ module MetronomeSDK
 
           # @!method initialize(group_key_name:, display_name: nil, value_display_names: nil)
           #   Some parameter documentations has been truncated, see
-          #   {MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::BmGroupKeyOverride}
-          #   for more details.
+          #   {MetronomeSDK::V1::DashboardGetEmbeddableURLParams::BmGroupKeyOverride} for more
+          #   details.
           #
           #   @param group_key_name [String] The name of the billable metric group key.
           #
           #   @param display_name [String] The display name for the billable metric group key
           #
           #   @param value_display_names [Hash{Symbol=>Object}] <key, value> pairs of the billable metric group key values and their display nam
-          #   ...
         end
 
         class ColorOverride < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute name
           #   The color to override
           #
-          #   @return [Symbol, MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::ColorOverride::Name, nil]
-          optional :name,
-                   enum: -> { MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::ColorOverride::Name }
+          #   @return [Symbol, MetronomeSDK::V1::DashboardGetEmbeddableURLParams::ColorOverride::Name, nil]
+          optional :name, enum: -> { MetronomeSDK::V1::DashboardGetEmbeddableURLParams::ColorOverride::Name }
 
           # @!attribute value
           #   Hex value representation of the color
@@ -114,13 +118,13 @@ module MetronomeSDK
           optional :value, String
 
           # @!method initialize(name: nil, value: nil)
-          #   @param name [Symbol, MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::ColorOverride::Name] The color to override
+          #   @param name [Symbol, MetronomeSDK::V1::DashboardGetEmbeddableURLParams::ColorOverride::Name] The color to override
           #
           #   @param value [String] Hex value representation of the color
 
           # The color to override
           #
-          # @see MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::ColorOverride#name
+          # @see MetronomeSDK::V1::DashboardGetEmbeddableURLParams::ColorOverride#name
           module Name
             extend MetronomeSDK::Internal::Type::Enum
 

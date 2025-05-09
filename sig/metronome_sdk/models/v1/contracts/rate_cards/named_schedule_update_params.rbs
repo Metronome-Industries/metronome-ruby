@@ -41,8 +41,6 @@ module MetronomeSDK
               ?ending_before: Time,
               ?request_options: MetronomeSDK::request_opts
             ) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V1::Contracts::RateCards::named_schedule_update_params
           end
         end
       end

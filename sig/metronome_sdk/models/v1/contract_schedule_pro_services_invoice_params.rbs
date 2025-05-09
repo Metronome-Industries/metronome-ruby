@@ -6,7 +6,7 @@ module MetronomeSDK
           contract_id: String,
           customer_id: String,
           issued_at: Time,
-          line_items: ::Array[MetronomeSDK::Models::V1::ContractScheduleProServicesInvoiceParams::LineItem],
+          line_items: ::Array[MetronomeSDK::V1::ContractScheduleProServicesInvoiceParams::LineItem],
           netsuite_invoice_header_end: Time,
           netsuite_invoice_header_start: Time
         }
@@ -22,7 +22,7 @@ module MetronomeSDK
 
         attr_accessor issued_at: Time
 
-        attr_accessor line_items: ::Array[MetronomeSDK::Models::V1::ContractScheduleProServicesInvoiceParams::LineItem]
+        attr_accessor line_items: ::Array[MetronomeSDK::V1::ContractScheduleProServicesInvoiceParams::LineItem]
 
         attr_reader netsuite_invoice_header_end: Time?
 
@@ -36,13 +36,11 @@ module MetronomeSDK
           contract_id: String,
           customer_id: String,
           issued_at: Time,
-          line_items: ::Array[MetronomeSDK::Models::V1::ContractScheduleProServicesInvoiceParams::LineItem],
+          line_items: ::Array[MetronomeSDK::V1::ContractScheduleProServicesInvoiceParams::LineItem],
           ?netsuite_invoice_header_end: Time,
           ?netsuite_invoice_header_start: Time,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
-
-        def to_hash: -> MetronomeSDK::Models::V1::contract_schedule_pro_services_invoice_params
 
         type line_item =
           {
@@ -97,8 +95,6 @@ module MetronomeSDK
             ?quantity: Float,
             ?unit_price: Float
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::ContractScheduleProServicesInvoiceParams::line_item
         end
       end
     end

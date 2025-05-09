@@ -18,9 +18,9 @@ module MetronomeSDK
 
         def create: (
           name: String,
-          ?billing_config: MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig,
+          ?billing_config: MetronomeSDK::V1::CustomerCreateParams::BillingConfig,
           ?custom_fields: ::Hash[Symbol, String],
-          ?customer_billing_provider_configurations: ::Array[MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration],
+          ?customer_billing_provider_configurations: ::Array[MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration],
           ?external_id: String,
           ?ingest_aliases: ::Array[String],
           ?request_options: MetronomeSDK::request_opts
@@ -39,7 +39,7 @@ module MetronomeSDK
           ?only_archived: bool,
           ?salesforce_account_ids: ::Array[String],
           ?request_options: MetronomeSDK::request_opts
-        ) -> MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::CustomerDetail]
+        ) -> MetronomeSDK::Internal::CursorPage[MetronomeSDK::V1::CustomerDetail]
 
         def archive: (
           id: String,

@@ -34,7 +34,6 @@ module MetronomeSDK
           #   details.
           #
           #   @param access_ending_before [Time] RFC 3339 timestamp indicating when access to the credit will end and it will no
-          #   ...
           #
           #   @param credit_id [String] ID of the commit to update
           #

@@ -104,8 +104,8 @@ module MetronomeSDK
           #   GB. In this case, the conversion factor would be 1024 and the operation would be
           #   "divide".
           #
-          #   @return [MetronomeSDK::Models::V1::Contracts::QuantityConversion, nil]
-          optional :quantity_conversion, -> { MetronomeSDK::Models::V1::Contracts::QuantityConversion }, nil?: true
+          #   @return [MetronomeSDK::V1::Contracts::QuantityConversion, nil]
+          optional :quantity_conversion, -> { MetronomeSDK::V1::Contracts::QuantityConversion }, nil?: true
 
           # @!attribute quantity_rounding
           #   Optional. Only valid for USAGE products. If provided, the quantity will be
@@ -113,8 +113,8 @@ module MetronomeSDK
           #   the method is "round up" and the decimal places is 0, then the quantity will be
           #   rounded up to the nearest integer.
           #
-          #   @return [MetronomeSDK::Models::V1::Contracts::QuantityRounding, nil]
-          optional :quantity_rounding, -> { MetronomeSDK::Models::V1::Contracts::QuantityRounding }, nil?: true
+          #   @return [MetronomeSDK::V1::Contracts::QuantityRounding, nil]
+          optional :quantity_rounding, -> { MetronomeSDK::V1::Contracts::QuantityRounding }, nil?: true
 
           # @!attribute tags
           #   If not provided, defaults to product's current tags
@@ -129,42 +129,30 @@ module MetronomeSDK
           #   @param product_id [String] ID of the product to update
           #
           #   @param starting_at [Time] Timestamp representing when the update should go into effect. It must be on an h
-          #   ...
           #
           #   @param billable_metric_id [String] Available for USAGE products only. If not provided, defaults to product's curren
-          #   ...
           #
           #   @param composite_product_ids [Array<String>] Available for COMPOSITE products only. If not provided, defaults to product's cu
-          #   ...
           #
           #   @param composite_tags [Array<String>] Available for COMPOSITE products only. If not provided, defaults to product's cu
-          #   ...
           #
           #   @param exclude_free_usage [Boolean] Beta feature only available for composite products. If true, products with $0 wi
-          #   ...
           #
           #   @param is_refundable [Boolean] Defaults to product's current refundability status. This field's availability is
-          #   ...
           #
           #   @param name [String] displayed on invoices. If not provided, defaults to product's current name.
           #
           #   @param netsuite_internal_item_id [String] If not provided, defaults to product's current netsuite_internal_item_id. This f
-          #   ...
           #
           #   @param netsuite_overage_item_id [String] Available for USAGE and COMPOSITE products only. If not provided, defaults to pr
-          #   ...
           #
           #   @param presentation_group_key [Array<String>] For USAGE products only. Groups usage line items on invoices. The superset of va
-          #   ...
           #
           #   @param pricing_group_key [Array<String>] For USAGE products only. If set, pricing for this product will be determined for
-          #   ...
           #
-          #   @param quantity_conversion [MetronomeSDK::Models::V1::Contracts::QuantityConversion, nil] Optional. Only valid for USAGE products. If provided, the quantity will be conve
-          #   ...
+          #   @param quantity_conversion [MetronomeSDK::V1::Contracts::QuantityConversion, nil] Optional. Only valid for USAGE products. If provided, the quantity will be conve
           #
-          #   @param quantity_rounding [MetronomeSDK::Models::V1::Contracts::QuantityRounding, nil] Optional. Only valid for USAGE products. If provided, the quantity will be round
-          #   ...
+          #   @param quantity_rounding [MetronomeSDK::V1::Contracts::QuantityRounding, nil] Optional. Only valid for USAGE products. If provided, the quantity will be round
           #
           #   @param tags [Array<String>] If not provided, defaults to product's current tags
           #

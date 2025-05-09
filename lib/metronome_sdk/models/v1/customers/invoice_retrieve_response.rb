@@ -8,11 +8,11 @@ module MetronomeSDK
         class InvoiceRetrieveResponse < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute data
           #
-          #   @return [MetronomeSDK::Models::V1::Customers::Invoice]
-          required :data, -> { MetronomeSDK::Models::V1::Customers::Invoice }
+          #   @return [MetronomeSDK::V1::Customers::Invoice]
+          required :data, -> { MetronomeSDK::V1::Customers::Invoice }
 
           # @!method initialize(data:)
-          #   @param data [MetronomeSDK::Models::V1::Customers::Invoice]
+          #   @param data [MetronomeSDK::V1::Customers::Invoice]
         end
       end
     end

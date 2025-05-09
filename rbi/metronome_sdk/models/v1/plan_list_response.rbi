@@ -4,6 +4,9 @@ module MetronomeSDK
   module Models
     module V1
       class PlanListResponse < MetronomeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :id
 
@@ -20,10 +23,15 @@ module MetronomeSDK
         attr_writer :custom_fields
 
         sig do
-          params(id: String, description: String, name: String, custom_fields: T::Hash[Symbol, String])
-            .returns(T.attached_class)
+          params(
+            id: String,
+            description: String,
+            name: String,
+            custom_fields: T::Hash[Symbol, String]
+          ).returns(T.attached_class)
         end
-        def self.new(id:, description:, name:, custom_fields: nil); end
+        def self.new(id:, description:, name:, custom_fields: nil)
+        end
 
         sig do
           override.returns(
@@ -35,7 +43,8 @@ module MetronomeSDK
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

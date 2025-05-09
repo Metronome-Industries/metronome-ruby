@@ -7,14 +7,22 @@ module MetronomeSDK
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
-        sig do
-          params(request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash))
-            .returns(T.attached_class)
-        end
-        def self.new(request_options: {}); end
+        OrHash =
+          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
 
-        sig { override.returns({request_options: MetronomeSDK::RequestOptions}) }
-        def to_hash; end
+        sig do
+          params(request_options: MetronomeSDK::RequestOptions::OrHash).returns(
+            T.attached_class
+          )
+        end
+        def self.new(request_options: {})
+        end
+
+        sig do
+          override.returns({ request_options: MetronomeSDK::RequestOptions })
+        end
+        def to_hash
+        end
       end
     end
   end

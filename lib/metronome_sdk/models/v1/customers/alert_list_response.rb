@@ -8,9 +8,11 @@ module MetronomeSDK
         class AlertListResponse < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute data
           #
-          #   @return [Array<MetronomeSDK::Models::V1::Customers::CustomerAlert>]
+          #   @return [Array<MetronomeSDK::V1::Customers::CustomerAlert>]
           required :data,
-                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Customers::CustomerAlert] }
+                   -> {
+                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CustomerAlert]
+                   }
 
           # @!attribute next_page
           #
@@ -18,7 +20,7 @@ module MetronomeSDK
           required :next_page, String, nil?: true
 
           # @!method initialize(data:, next_page:)
-          #   @param data [Array<MetronomeSDK::Models::V1::Customers::CustomerAlert>]
+          #   @param data [Array<MetronomeSDK::V1::Customers::CustomerAlert>]
           #   @param next_page [String, nil]
         end
       end

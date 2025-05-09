@@ -22,8 +22,7 @@ module MetronomeSDK
             #
             # @param next_page [String] Query param: Cursor that indicates where the next page of results should start.
             #
-            # @param selectors [Array<MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams::Selector>] Body param: List of rate selectors, rates matching ANY of the selector will be i
-            # ...
+            # @param selectors [Array<MetronomeSDK::V1::Contracts::RateCards::RateListParams::Selector>] Body param: List of rate selectors, rates matching ANY of the selector will be i
             #
             # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
             #
@@ -31,7 +30,7 @@ module MetronomeSDK
             #
             # @see MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams
             def list(params)
-              parsed, options = MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams.dump_request(params)
+              parsed, options = MetronomeSDK::V1::Contracts::RateCards::RateListParams.dump_request(params)
               query_params = [:limit, :next_page]
               @client.request(
                 method: :post,
@@ -58,36 +57,29 @@ module MetronomeSDK
             #
             # @param rate_card_id [String] ID of the rate card to update
             #
-            # @param rate_type [Symbol, MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::RateType]
+            # @param rate_type [Symbol, MetronomeSDK::V1::Contracts::RateCards::RateAddParams::RateType]
             #
             # @param starting_at [Time] inclusive effective date
             #
-            # @param commit_rate [MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::CommitRate] A distinct rate on the rate card. You can choose to use this rate rather than li
-            # ...
+            # @param commit_rate [MetronomeSDK::V1::Contracts::RateCards::RateAddParams::CommitRate] A distinct rate on the rate card. You can choose to use this rate rather than li
             #
             # @param credit_type_id [String] The Metronome ID of the credit type to associate with price, defaults to USD (ce
-            # ...
             #
             # @param custom_rate [Hash{Symbol=>Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate processo
-            # ...
             #
             # @param ending_before [Time] exclusive end date
             #
             # @param is_prorated [Boolean] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
-            # ...
             #
             # @param price [Float] Default price. For FLAT and SUBSCRIPTION rate_type, this must be >=0. For PERCEN
-            # ...
             #
             # @param pricing_group_values [Hash{Symbol=>String}] Optional. List of pricing group key value pairs which will be used to calculate
-            # ...
             #
             # @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
             #
-            # @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
+            # @param tiers [Array<MetronomeSDK::Tier>] Only set for TIERED rate_type.
             #
             # @param use_list_prices [Boolean] Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
-            # ...
             #
             # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
             #
@@ -95,7 +87,7 @@ module MetronomeSDK
             #
             # @see MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams
             def add(params)
-              parsed, options = MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams.dump_request(params)
+              parsed, options = MetronomeSDK::V1::Contracts::RateCards::RateAddParams.dump_request(params)
               @client.request(
                 method: :post,
                 path: "v1/contract-pricing/rate-cards/addRate",
@@ -110,14 +102,14 @@ module MetronomeSDK
             # @overload add_many(rate_card_id:, rates:, request_options: {})
             #
             # @param rate_card_id [String]
-            # @param rates [Array<MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyParams::Rate>]
+            # @param rates [Array<MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate>]
             # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
             #
             # @return [MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyResponse]
             #
             # @see MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyParams
             def add_many(params)
-              parsed, options = MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyParams.dump_request(params)
+              parsed, options = MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams.dump_request(params)
               @client.request(
                 method: :post,
                 path: "v1/contract-pricing/rate-cards/addRates",

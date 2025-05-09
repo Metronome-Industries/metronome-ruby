@@ -7,38 +7,47 @@ module MetronomeSDK
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
-        sig { returns(T.nilable(T::Array[MetronomeSDK::Models::V1::UsageIngestParams::Usage])) }
+        OrHash =
+          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
+        sig do
+          returns(
+            T.nilable(T::Array[MetronomeSDK::V1::UsageIngestParams::Usage])
+          )
+        end
         attr_reader :usage
 
         sig do
           params(
-            usage: T::Array[T.any(MetronomeSDK::Models::V1::UsageIngestParams::Usage, MetronomeSDK::Internal::AnyHash)]
-          )
-            .void
+            usage: T::Array[MetronomeSDK::V1::UsageIngestParams::Usage::OrHash]
+          ).void
         end
         attr_writer :usage
 
         sig do
           params(
-            usage: T::Array[T.any(MetronomeSDK::Models::V1::UsageIngestParams::Usage, MetronomeSDK::Internal::AnyHash)],
-            request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            usage: T::Array[MetronomeSDK::V1::UsageIngestParams::Usage::OrHash],
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
-        def self.new(usage: nil, request_options: {}); end
+        def self.new(usage: nil, request_options: {})
+        end
 
         sig do
-          override
-            .returns(
-              {
-                usage: T::Array[MetronomeSDK::Models::V1::UsageIngestParams::Usage],
-                request_options: MetronomeSDK::RequestOptions
-              }
-            )
+          override.returns(
+            {
+              usage: T::Array[MetronomeSDK::V1::UsageIngestParams::Usage],
+              request_options: MetronomeSDK::RequestOptions
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class Usage < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :customer_id
 
@@ -65,8 +74,7 @@ module MetronomeSDK
               timestamp: String,
               transaction_id: String,
               properties: T::Hash[Symbol, T.anything]
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             customer_id:,
@@ -75,20 +83,22 @@ module MetronomeSDK
             timestamp:,
             transaction_id:,
             properties: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  customer_id: String,
-                  event_type: String,
-                  timestamp: String,
-                  transaction_id: String,
-                  properties: T::Hash[Symbol, T.anything]
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                customer_id: String,
+                event_type: String,
+                timestamp: String,
+                transaction_id: String,
+                properties: T::Hash[Symbol, T.anything]
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
     end

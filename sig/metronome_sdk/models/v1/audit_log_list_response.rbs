@@ -61,8 +61,6 @@ module MetronomeSDK
           ?status: MetronomeSDK::Models::V1::AuditLogListResponse::status
         ) -> void
 
-        def to_hash: -> MetronomeSDK::Models::V1::audit_log_list_response
-
         type request = { id: String, ip: String, user_agent: String }
 
         class Request < MetronomeSDK::Internal::Type::BaseModel
@@ -77,8 +75,6 @@ module MetronomeSDK
           def user_agent=: (String) -> String
 
           def initialize: (id: String, ?ip: String, ?user_agent: String) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::AuditLogListResponse::request
         end
 
         type actor = { id: String, name: String, email: String }
@@ -93,8 +89,6 @@ module MetronomeSDK
           def email=: (String) -> String
 
           def initialize: (id: String, name: String, ?email: String) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::AuditLogListResponse::actor
         end
 
         type status = :success | :failure | :pending

@@ -6,27 +6,36 @@ module MetronomeSDK
       class Invoices
         # Regenerate a voided contract invoice
         sig do
-          params(id: String, request_options: MetronomeSDK::RequestOpts)
-            .returns(MetronomeSDK::Models::V1::InvoiceRegenerateResponse)
+          params(
+            id: String,
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V1::InvoiceRegenerateResponse)
         end
         def regenerate(
           # The invoice id to regenerate
           id:,
           request_options: {}
-        ); end
+        )
+        end
+
         # Void an invoice
         sig do
-          params(id: String, request_options: MetronomeSDK::RequestOpts)
-            .returns(MetronomeSDK::Models::V1::InvoiceVoidResponse)
+          params(
+            id: String,
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V1::InvoiceVoidResponse)
         end
         def void(
           # The invoice id to void
           id:,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

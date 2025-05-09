@@ -38,7 +38,6 @@ module MetronomeSDK
           #   @param schedule_name [String] The identifier for the schedule to be retrieved
           #
           #   @param covering_date [Time] If provided, at most one schedule segment will be returned (the one that covers
-          #   ...
           #
           #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
         end
