@@ -82,6 +82,8 @@ module MetronomeSDK
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::AddOverride::OrHash
               ],
+            add_prepaid_balance_threshold_configuration:
+              MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::OrHash,
             add_professional_services:
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::AddProfessionalService::OrHash
@@ -130,6 +132,8 @@ module MetronomeSDK
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::UpdateCredit::OrHash
               ],
+            update_prepaid_balance_threshold_configuration:
+              MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::OrHash,
             update_scheduled_charges:
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::UpdateScheduledCharge::OrHash
@@ -148,6 +152,7 @@ module MetronomeSDK
           add_credits: nil,
           add_discounts: nil,
           add_overrides: nil,
+          add_prepaid_balance_threshold_configuration: nil,
           # This field's availability is dependent on your client's configuration.
           add_professional_services: nil,
           add_recurring_commits: nil,
@@ -172,6 +177,7 @@ module MetronomeSDK
           # RFC 3339 timestamp indicating when the contract will end (exclusive).
           update_contract_end_date: nil,
           update_credits: nil,
+          update_prepaid_balance_threshold_configuration: nil,
           update_scheduled_charges: nil,
           update_spend_threshold_configuration: nil,
           request_options: {}

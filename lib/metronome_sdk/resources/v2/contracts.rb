@@ -79,7 +79,7 @@ module MetronomeSDK
         #
         # Edit a contract. Contract editing must be enabled to use this endpoint.
         #
-        # @overload edit(contract_id:, customer_id:, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_professional_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_spend_threshold_configuration: nil, allow_contract_ending_before_finalized_invoice: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, update_commits: nil, update_contract_end_date: nil, update_credits: nil, update_scheduled_charges: nil, update_spend_threshold_configuration: nil, request_options: {})
+        # @overload edit(contract_id:, customer_id:, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_prepaid_balance_threshold_configuration: nil, add_professional_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_spend_threshold_configuration: nil, allow_contract_ending_before_finalized_invoice: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, update_commits: nil, update_contract_end_date: nil, update_credits: nil, update_prepaid_balance_threshold_configuration: nil, update_scheduled_charges: nil, update_spend_threshold_configuration: nil, request_options: {})
         #
         # @param contract_id [String] ID of the contract being edited
         #
@@ -92,6 +92,8 @@ module MetronomeSDK
         # @param add_discounts [Array<MetronomeSDK::V2::ContractEditParams::AddDiscount>]
         #
         # @param add_overrides [Array<MetronomeSDK::V2::ContractEditParams::AddOverride>]
+        #
+        # @param add_prepaid_balance_threshold_configuration [MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration]
         #
         # @param add_professional_services [Array<MetronomeSDK::V2::ContractEditParams::AddProfessionalService>] This field's availability is dependent on your client's configuration.
         #
@@ -120,6 +122,8 @@ module MetronomeSDK
         # @param update_contract_end_date [Time] RFC 3339 timestamp indicating when the contract will end (exclusive).
         #
         # @param update_credits [Array<MetronomeSDK::V2::ContractEditParams::UpdateCredit>]
+        #
+        # @param update_prepaid_balance_threshold_configuration [MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration]
         #
         # @param update_scheduled_charges [Array<MetronomeSDK::V2::ContractEditParams::UpdateScheduledCharge>]
         #

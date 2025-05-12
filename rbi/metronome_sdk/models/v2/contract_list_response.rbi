@@ -4270,6 +4270,21 @@ module MetronomeSDK
             sig { returns(T::Boolean) }
             attr_accessor :is_enabled
 
+            sig do
+              returns(
+                MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig
+              )
+            end
+            attr_reader :payment_gate_config
+
+            sig do
+              params(
+                payment_gate_config:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::OrHash
+              ).void
+            end
+            attr_writer :payment_gate_config
+
             # Specify the amount the balance should be recharged to.
             sig { returns(Float) }
             attr_accessor :recharge_to_amount
@@ -4284,6 +4299,8 @@ module MetronomeSDK
                 commit:
                   MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::Commit::OrHash,
                 is_enabled: T::Boolean,
+                payment_gate_config:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::OrHash,
                 recharge_to_amount: Float,
                 threshold_amount: Float
               ).returns(T.attached_class)
@@ -4294,6 +4311,7 @@ module MetronomeSDK
               # threshold_amount. Toggling to true will result an immediate evaluation,
               # regardless of prior state.
               is_enabled:,
+              payment_gate_config:,
               # Specify the amount the balance should be recharged to.
               recharge_to_amount:,
               # Specify the threshold amount for the contract. Each time the contract's balance
@@ -4308,6 +4326,8 @@ module MetronomeSDK
                   commit:
                     MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::Commit,
                   is_enabled: T::Boolean,
+                  payment_gate_config:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig,
                   recharge_to_amount: Float,
                   threshold_amount: Float
                 }
@@ -4400,6 +4420,262 @@ module MetronomeSDK
                 )
               end
               def to_hash
+              end
+            end
+
+            class PaymentGateConfig < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              # Gate access to the commit balance based on successful collection of payment.
+              # Select STRIPE for Metronome to facilitate payment via Stripe. Select EXTERNAL to
+              # facilitate payment using your own payment integration. Select NONE if you do not
+              # wish to payment gate the commit balance.
+              sig do
+                returns(
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType::TaggedSymbol
+                )
+              end
+              attr_accessor :payment_gate_type
+
+              # Only applicable if using Stripe as your payment gateway through Metronome.
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig
+                  )
+                )
+              end
+              attr_reader :stripe_config
+
+              sig do
+                params(
+                  stripe_config:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::OrHash
+                ).void
+              end
+              attr_writer :stripe_config
+
+              # Stripe tax is only supported for Stripe payment gateway. Select NONE if you do
+              # not wish Metronome to calculate tax on your behalf. Leaving this field blank
+              # will default to NONE.
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
+                  )
+                )
+              end
+              attr_reader :tax_type
+
+              sig do
+                params(
+                  tax_type:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType::OrSymbol
+                ).void
+              end
+              attr_writer :tax_type
+
+              sig do
+                params(
+                  payment_gate_type:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType::OrSymbol,
+                  stripe_config:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::OrHash,
+                  tax_type:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType::OrSymbol
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Gate access to the commit balance based on successful collection of payment.
+                # Select STRIPE for Metronome to facilitate payment via Stripe. Select EXTERNAL to
+                # facilitate payment using your own payment integration. Select NONE if you do not
+                # wish to payment gate the commit balance.
+                payment_gate_type:,
+                # Only applicable if using Stripe as your payment gateway through Metronome.
+                stripe_config: nil,
+                # Stripe tax is only supported for Stripe payment gateway. Select NONE if you do
+                # not wish Metronome to calculate tax on your behalf. Leaving this field blank
+                # will default to NONE.
+                tax_type: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    payment_gate_type:
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType::TaggedSymbol,
+                    stripe_config:
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
+                    tax_type:
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # Gate access to the commit balance based on successful collection of payment.
+              # Select STRIPE for Metronome to facilitate payment via Stripe. Select EXTERNAL to
+              # facilitate payment using your own payment integration. Select NONE if you do not
+              # wish to payment gate the commit balance.
+              module PaymentGateType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                NONE =
+                  T.let(
+                    :NONE,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType::TaggedSymbol
+                  )
+                STRIPE =
+                  T.let(
+                    :STRIPE,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType::TaggedSymbol
+                  )
+                EXTERNAL =
+                  T.let(
+                    :EXTERNAL,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                # If left blank, will default to INVOICE
+                sig do
+                  returns(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::TaggedSymbol
+                  )
+                end
+                attr_accessor :payment_type
+
+                # Only applicable if using Stripe as your payment gateway through Metronome.
+                sig do
+                  params(
+                    payment_type:
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # If left blank, will default to INVOICE
+                  payment_type:
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      payment_type:
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::TaggedSymbol
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                # If left blank, will default to INVOICE
+                module PaymentType
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(
+                        Symbol,
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType
+                      )
+                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                  INVOICE =
+                    T.let(
+                      :INVOICE,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::TaggedSymbol
+                    )
+                  PAYMENT_INTENT =
+                    T.let(
+                      :PAYMENT_INTENT,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::TaggedSymbol
+                    )
+
+                  sig do
+                    override.returns(
+                      T::Array[
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::TaggedSymbol
+                      ]
+                    )
+                  end
+                  def self.values
+                  end
+                end
+              end
+
+              # Stripe tax is only supported for Stripe payment gateway. Select NONE if you do
+              # not wish Metronome to calculate tax on your behalf. Leaving this field blank
+              # will default to NONE.
+              module TaxType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                NONE =
+                  T.let(
+                    :NONE,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
+                  )
+                STRIPE =
+                  T.let(
+                    :STRIPE,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
               end
             end
           end
