@@ -2044,6 +2044,12 @@ module MetronomeSDK
             #   @return [Boolean]
             required :is_enabled, MetronomeSDK::Internal::Type::Boolean
 
+            # @!attribute payment_gate_config
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig]
+            required :payment_gate_config,
+                     -> { MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig }
+
             # @!attribute recharge_to_amount
             #   Specify the amount the balance should be recharged to.
             #
@@ -2057,7 +2063,7 @@ module MetronomeSDK
             #   @return [Float]
             required :threshold_amount, Float
 
-            # @!method initialize(commit:, is_enabled:, recharge_to_amount:, threshold_amount:)
+            # @!method initialize(commit:, is_enabled:, payment_gate_config:, recharge_to_amount:, threshold_amount:)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration}
             #   for more details.
@@ -2065,6 +2071,8 @@ module MetronomeSDK
             #   @param commit [MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::Commit]
             #
             #   @param is_enabled [Boolean] When set to false, the contract will not be evaluated against the threshold_amou
+            #
+            #   @param payment_gate_config [MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig]
             #
             #   @param recharge_to_amount [Float] Specify the amount the balance should be recharged to.
             #
@@ -2120,6 +2128,106 @@ module MetronomeSDK
               #   @param description [String]
               #
               #   @param name [String] Specify the name of the line item for the threshold charge. If left blank, it wi
+            end
+
+            # @see MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration#payment_gate_config
+            class PaymentGateConfig < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute payment_gate_type
+              #   Gate access to the commit balance based on successful collection of payment.
+              #   Select STRIPE for Metronome to facilitate payment via Stripe. Select EXTERNAL to
+              #   facilitate payment using your own payment integration. Select NONE if you do not
+              #   wish to payment gate the commit balance.
+              #
+              #   @return [Symbol, MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType]
+              required :payment_gate_type,
+                       enum: -> { MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType }
+
+              # @!attribute stripe_config
+              #   Only applicable if using Stripe as your payment gateway through Metronome.
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig, nil]
+              optional :stripe_config,
+                       -> { MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig }
+
+              # @!attribute tax_type
+              #   Stripe tax is only supported for Stripe payment gateway. Select NONE if you do
+              #   not wish Metronome to calculate tax on your behalf. Leaving this field blank
+              #   will default to NONE.
+              #
+              #   @return [Symbol, MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType, nil]
+              optional :tax_type,
+                       enum: -> { MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType }
+
+              # @!method initialize(payment_gate_type:, stripe_config: nil, tax_type: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig}
+              #   for more details.
+              #
+              #   @param payment_gate_type [Symbol, MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType] Gate access to the commit balance based on successful collection of payment. Sel
+              #
+              #   @param stripe_config [MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig] Only applicable if using Stripe as your payment gateway through Metronome.
+              #
+              #   @param tax_type [Symbol, MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType] Stripe tax is only supported for Stripe payment gateway. Select NONE if you do n
+
+              # Gate access to the commit balance based on successful collection of payment.
+              # Select STRIPE for Metronome to facilitate payment via Stripe. Select EXTERNAL to
+              # facilitate payment using your own payment integration. Select NONE if you do not
+              # wish to payment gate the commit balance.
+              #
+              # @see MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig#payment_gate_type
+              module PaymentGateType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                NONE = :NONE
+                STRIPE = :STRIPE
+                EXTERNAL = :EXTERNAL
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+
+              # @see MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig#stripe_config
+              class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute payment_type
+                #   If left blank, will default to INVOICE
+                #
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType]
+                required :payment_type,
+                         enum: -> { MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType }
+
+                # @!method initialize(payment_type:)
+                #   Only applicable if using Stripe as your payment gateway through Metronome.
+                #
+                #   @param payment_type [Symbol, MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType] If left blank, will default to INVOICE
+
+                # If left blank, will default to INVOICE
+                #
+                # @see MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig#payment_type
+                module PaymentType
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  INVOICE = :INVOICE
+                  PAYMENT_INTENT = :PAYMENT_INTENT
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              # Stripe tax is only supported for Stripe payment gateway. Select NONE if you do
+              # not wish Metronome to calculate tax on your behalf. Leaving this field blank
+              # will default to NONE.
+              #
+              # @see MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig#tax_type
+              module TaxType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                NONE = :NONE
+                STRIPE = :STRIPE
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
             end
           end
 

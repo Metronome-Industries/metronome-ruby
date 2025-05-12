@@ -9,6 +9,7 @@ module MetronomeSDK
           add_credits: ::Array[MetronomeSDK::V2::ContractEditParams::AddCredit],
           add_discounts: ::Array[MetronomeSDK::V2::ContractEditParams::AddDiscount],
           add_overrides: ::Array[MetronomeSDK::V2::ContractEditParams::AddOverride],
+          add_prepaid_balance_threshold_configuration: MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration,
           add_professional_services: ::Array[MetronomeSDK::V2::ContractEditParams::AddProfessionalService],
           add_recurring_commits: ::Array[MetronomeSDK::V2::ContractEditParams::AddRecurringCommit],
           add_recurring_credits: ::Array[MetronomeSDK::V2::ContractEditParams::AddRecurringCredit],
@@ -23,6 +24,7 @@ module MetronomeSDK
           update_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCommit],
           update_contract_end_date: Time,
           update_credits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCredit],
+          update_prepaid_balance_threshold_configuration: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration,
           update_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateScheduledCharge],
           update_spend_threshold_configuration: MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration
         }
@@ -59,6 +61,12 @@ module MetronomeSDK
         def add_overrides=: (
           ::Array[MetronomeSDK::V2::ContractEditParams::AddOverride]
         ) -> ::Array[MetronomeSDK::V2::ContractEditParams::AddOverride]
+
+        attr_reader add_prepaid_balance_threshold_configuration: MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration?
+
+        def add_prepaid_balance_threshold_configuration=: (
+          MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration
+        ) -> MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration
 
         attr_reader add_professional_services: ::Array[MetronomeSDK::V2::ContractEditParams::AddProfessionalService]?
 
@@ -140,6 +148,12 @@ module MetronomeSDK
           ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCredit]
         ) -> ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCredit]
 
+        attr_reader update_prepaid_balance_threshold_configuration: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration?
+
+        def update_prepaid_balance_threshold_configuration=: (
+          MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration
+        ) -> MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration
+
         attr_reader update_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateScheduledCharge]?
 
         def update_scheduled_charges=: (
@@ -159,6 +173,7 @@ module MetronomeSDK
           ?add_credits: ::Array[MetronomeSDK::V2::ContractEditParams::AddCredit],
           ?add_discounts: ::Array[MetronomeSDK::V2::ContractEditParams::AddDiscount],
           ?add_overrides: ::Array[MetronomeSDK::V2::ContractEditParams::AddOverride],
+          ?add_prepaid_balance_threshold_configuration: MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration,
           ?add_professional_services: ::Array[MetronomeSDK::V2::ContractEditParams::AddProfessionalService],
           ?add_recurring_commits: ::Array[MetronomeSDK::V2::ContractEditParams::AddRecurringCommit],
           ?add_recurring_credits: ::Array[MetronomeSDK::V2::ContractEditParams::AddRecurringCredit],
@@ -173,6 +188,7 @@ module MetronomeSDK
           ?update_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCommit],
           ?update_contract_end_date: Time,
           ?update_credits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCredit],
+          ?update_prepaid_balance_threshold_configuration: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration,
           ?update_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateScheduledCharge],
           ?update_spend_threshold_configuration: MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration,
           ?request_options: MetronomeSDK::request_opts
@@ -1082,6 +1098,148 @@ module MetronomeSDK
             TIERED: :TIERED
 
             def self?.values: -> ::Array[MetronomeSDK::V2::ContractEditParams::AddOverride::type_]
+          end
+        end
+
+        type add_prepaid_balance_threshold_configuration =
+          {
+            commit: MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::Commit,
+            is_enabled: bool,
+            payment_gate_config: MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig,
+            recharge_to_amount: Float,
+            threshold_amount: Float
+          }
+
+        class AddPrepaidBalanceThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor commit: MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::Commit
+
+          attr_accessor is_enabled: bool
+
+          attr_accessor payment_gate_config: MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig
+
+          attr_accessor recharge_to_amount: Float
+
+          attr_accessor threshold_amount: Float
+
+          def initialize: (
+            commit: MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::Commit,
+            is_enabled: bool,
+            payment_gate_config: MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig,
+            recharge_to_amount: Float,
+            threshold_amount: Float
+          ) -> void
+
+          type commit =
+            {
+              product_id: String,
+              applicable_product_ids: ::Array[String],
+              applicable_product_tags: ::Array[String],
+              description: String,
+              name: String
+            }
+
+          class Commit < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor product_id: String
+
+            attr_reader applicable_product_ids: ::Array[String]?
+
+            def applicable_product_ids=: (::Array[String]) -> ::Array[String]
+
+            attr_reader applicable_product_tags: ::Array[String]?
+
+            def applicable_product_tags=: (::Array[String]) -> ::Array[String]
+
+            attr_reader description: String?
+
+            def description=: (String) -> String
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            def initialize: (
+              product_id: String,
+              ?applicable_product_ids: ::Array[String],
+              ?applicable_product_tags: ::Array[String],
+              ?description: String,
+              ?name: String
+            ) -> void
+          end
+
+          type payment_gate_config =
+            {
+              payment_gate_type: MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+              stripe_config: MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
+              tax_type: MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
+            }
+
+          class PaymentGateConfig < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor payment_gate_type: MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type
+
+            attr_reader stripe_config: MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig?
+
+            def stripe_config=: (
+              MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig
+            ) -> MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig
+
+            attr_reader tax_type: MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type?
+
+            def tax_type=: (
+              MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
+            ) -> MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
+
+            def initialize: (
+              payment_gate_type: MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+              ?stripe_config: MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
+              ?tax_type: MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
+            ) -> void
+
+            type payment_gate_type = :NONE | :STRIPE | :EXTERNAL
+
+            module PaymentGateType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              NONE: :NONE
+              STRIPE: :STRIPE
+              EXTERNAL: :EXTERNAL
+
+              def self?.values: -> ::Array[MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type]
+            end
+
+            type stripe_config =
+              {
+                payment_type: MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+              }
+
+            class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor payment_type: MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+
+              def initialize: (
+                payment_type: MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+              ) -> void
+
+              type payment_type = :INVOICE | :PAYMENT_INTENT
+
+              module PaymentType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                INVOICE: :INVOICE
+                PAYMENT_INTENT: :PAYMENT_INTENT
+
+                def self?.values: -> ::Array[MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type]
+              end
+            end
+
+            type tax_type = :NONE | :STRIPE
+
+            module TaxType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              NONE: :NONE
+              STRIPE: :STRIPE
+
+              def self?.values: -> ::Array[MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type]
+            end
           end
         end
 
@@ -2331,6 +2489,162 @@ module MetronomeSDK
                 ?ending_before: Time,
                 ?starting_at: Time
               ) -> void
+            end
+          end
+        end
+
+        type update_prepaid_balance_threshold_configuration =
+          {
+            commit: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit,
+            is_enabled: bool,
+            payment_gate_config: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig,
+            recharge_to_amount: Float,
+            threshold_amount: Float
+          }
+
+        class UpdatePrepaidBalanceThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
+          attr_reader commit: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit?
+
+          def commit=: (
+            MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit
+          ) -> MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit
+
+          attr_reader is_enabled: bool?
+
+          def is_enabled=: (bool) -> bool
+
+          attr_reader payment_gate_config: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig?
+
+          def payment_gate_config=: (
+            MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig
+          ) -> MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig
+
+          attr_reader recharge_to_amount: Float?
+
+          def recharge_to_amount=: (Float) -> Float
+
+          attr_reader threshold_amount: Float?
+
+          def threshold_amount=: (Float) -> Float
+
+          def initialize: (
+            ?commit: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit,
+            ?is_enabled: bool,
+            ?payment_gate_config: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig,
+            ?recharge_to_amount: Float,
+            ?threshold_amount: Float
+          ) -> void
+
+          type commit =
+            {
+              product_id: String,
+              applicable_product_ids: ::Array[String],
+              applicable_product_tags: ::Array[String],
+              description: String,
+              name: String
+            }
+
+          class Commit < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor product_id: String
+
+            attr_reader applicable_product_ids: ::Array[String]?
+
+            def applicable_product_ids=: (::Array[String]) -> ::Array[String]
+
+            attr_reader applicable_product_tags: ::Array[String]?
+
+            def applicable_product_tags=: (::Array[String]) -> ::Array[String]
+
+            attr_reader description: String?
+
+            def description=: (String) -> String
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            def initialize: (
+              product_id: String,
+              ?applicable_product_ids: ::Array[String],
+              ?applicable_product_tags: ::Array[String],
+              ?description: String,
+              ?name: String
+            ) -> void
+          end
+
+          type payment_gate_config =
+            {
+              payment_gate_type: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+              stripe_config: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
+              tax_type: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
+            }
+
+          class PaymentGateConfig < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor payment_gate_type: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type
+
+            attr_reader stripe_config: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig?
+
+            def stripe_config=: (
+              MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig
+            ) -> MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig
+
+            attr_reader tax_type: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type?
+
+            def tax_type=: (
+              MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
+            ) -> MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
+
+            def initialize: (
+              payment_gate_type: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+              ?stripe_config: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
+              ?tax_type: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
+            ) -> void
+
+            type payment_gate_type = :NONE | :STRIPE | :EXTERNAL
+
+            module PaymentGateType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              NONE: :NONE
+              STRIPE: :STRIPE
+              EXTERNAL: :EXTERNAL
+
+              def self?.values: -> ::Array[MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type]
+            end
+
+            type stripe_config =
+              {
+                payment_type: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+              }
+
+            class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor payment_type: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+
+              def initialize: (
+                payment_type: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+              ) -> void
+
+              type payment_type = :INVOICE | :PAYMENT_INTENT
+
+              module PaymentType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                INVOICE: :INVOICE
+                PAYMENT_INTENT: :PAYMENT_INTENT
+
+                def self?.values: -> ::Array[MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type]
+              end
+            end
+
+            type tax_type = :NONE | :STRIPE
+
+            module TaxType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              NONE: :NONE
+              STRIPE: :STRIPE
+
+              def self?.values: -> ::Array[MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type]
             end
           end
         end
