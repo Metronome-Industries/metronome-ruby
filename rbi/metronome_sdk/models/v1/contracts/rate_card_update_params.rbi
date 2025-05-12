@@ -9,7 +9,12 @@ module MetronomeSDK
           include MetronomeSDK::Internal::Type::RequestParameters
 
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::Contracts::RateCardUpdateParams,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           # ID of the rate card to update
           sig { returns(String) }
@@ -98,7 +103,10 @@ module MetronomeSDK
           class Alias < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::Contracts::RateCardUpdateParams::Alias,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(String) }

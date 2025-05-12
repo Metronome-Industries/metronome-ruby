@@ -9,7 +9,12 @@ module MetronomeSDK
           include MetronomeSDK::Internal::Type::RequestParameters
 
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::Contracts::RateCardCreateParams,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           # Used only in UI/API. It is not exposed to end customers.
           sig { returns(String) }
@@ -141,7 +146,10 @@ module MetronomeSDK
           class Alias < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::Contracts::RateCardCreateParams::Alias,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(String) }
@@ -181,7 +189,10 @@ module MetronomeSDK
           class CreditTypeConversion < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::Contracts::RateCardCreateParams::CreditTypeConversion,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(String) }

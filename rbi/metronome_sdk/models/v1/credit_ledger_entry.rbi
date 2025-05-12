@@ -5,7 +5,12 @@ module MetronomeSDK
     module V1
       class CreditLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V1::CreditLedgerEntry,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         # an amount representing the change to the customer's credit balance
         sig { returns(Float) }

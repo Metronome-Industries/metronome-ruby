@@ -4,7 +4,9 @@ module MetronomeSDK
   module Models
     class Tier < MetronomeSDK::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+        T.type_alias do
+          T.any(MetronomeSDK::Tier, MetronomeSDK::Internal::AnyHash)
+        end
 
       sig { returns(Float) }
       attr_accessor :price

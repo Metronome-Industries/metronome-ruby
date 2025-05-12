@@ -4,7 +4,9 @@ module MetronomeSDK
   module Models
     class Credit < MetronomeSDK::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+        T.type_alias do
+          T.any(MetronomeSDK::Credit, MetronomeSDK::Internal::AnyHash)
+        end
 
       sig { returns(String) }
       attr_accessor :id
@@ -270,7 +272,12 @@ module MetronomeSDK
 
       class Product < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Credit::Product,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -305,7 +312,12 @@ module MetronomeSDK
 
       class Contract < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Credit::Contract,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -336,7 +348,12 @@ module MetronomeSDK
 
         class CreditSegmentStartLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Credit::Ledger::CreditSegmentStartLedgerEntry,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(Float) }
           attr_accessor :amount
@@ -412,7 +429,12 @@ module MetronomeSDK
 
         class CreditAutomatedInvoiceDeductionLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(Float) }
           attr_accessor :amount
@@ -493,7 +515,12 @@ module MetronomeSDK
 
         class CreditExpirationLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Credit::Ledger::CreditExpirationLedgerEntry,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(Float) }
           attr_accessor :amount
@@ -569,7 +596,12 @@ module MetronomeSDK
 
         class CreditCanceledLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Credit::Ledger::CreditCanceledLedgerEntry,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(Float) }
           attr_accessor :amount
@@ -650,7 +682,12 @@ module MetronomeSDK
 
         class CreditCreditedLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Credit::Ledger::CreditCreditedLedgerEntry,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(Float) }
           attr_accessor :amount
@@ -731,7 +768,12 @@ module MetronomeSDK
 
         class CreditManualLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Credit::Ledger::CreditManualLedgerEntry,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(Float) }
           attr_accessor :amount

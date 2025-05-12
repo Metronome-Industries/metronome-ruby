@@ -8,7 +8,12 @@ module MetronomeSDK
         include MetronomeSDK::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V1::DashboardGetEmbeddableURLParams,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         sig { returns(String) }
         attr_accessor :customer_id
@@ -188,7 +193,12 @@ module MetronomeSDK
 
         class BmGroupKeyOverride < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::DashboardGetEmbeddableURLParams::BmGroupKeyOverride,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           # The name of the billable metric group key.
           sig { returns(String) }
@@ -242,7 +252,12 @@ module MetronomeSDK
 
         class ColorOverride < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::DashboardGetEmbeddableURLParams::ColorOverride,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           # The color to override
           sig do
@@ -419,7 +434,12 @@ module MetronomeSDK
 
         class DashboardOption < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::DashboardGetEmbeddableURLParams::DashboardOption,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           # The option key name
           sig { returns(String) }

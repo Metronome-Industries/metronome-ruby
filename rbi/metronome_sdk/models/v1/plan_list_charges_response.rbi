@@ -5,7 +5,12 @@ module MetronomeSDK
     module V1
       class PlanListChargesResponse < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Models::V1::PlanListChargesResponse,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -201,7 +206,12 @@ module MetronomeSDK
 
         class Price < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::PlanListChargesResponse::Price,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           # Used in pricing tiers. Indicates at what metric value the price applies.
           sig { returns(Float) }
@@ -264,7 +274,12 @@ module MetronomeSDK
 
         class UnitConversion < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           # The conversion factor
           sig { returns(Float) }

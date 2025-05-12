@@ -1,5 +1,7 @@
 module MetronomeSDK
   module Internal
+    extend MetronomeSDK::Internal::Util::SorbetRuntimeSupport
+
     OMIT: Object
   end
 end

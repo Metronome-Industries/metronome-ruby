@@ -8,7 +8,12 @@ module MetronomeSDK
         include MetronomeSDK::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V1::CreditGrantCreateParams,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         # the Metronome ID of the customer
         sig { returns(String) }
@@ -211,7 +216,12 @@ module MetronomeSDK
 
         class GrantAmount < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::CreditGrantCreateParams::GrantAmount,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(Float) }
           attr_accessor :amount
@@ -240,7 +250,12 @@ module MetronomeSDK
 
         class PaidAmount < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::CreditGrantCreateParams::PaidAmount,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(Float) }
           attr_accessor :amount
@@ -269,7 +284,12 @@ module MetronomeSDK
 
         class RolloverSettings < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           # The date to expire the rollover credits.
           sig { returns(Time) }

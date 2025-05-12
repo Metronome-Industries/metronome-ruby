@@ -5,7 +5,12 @@ module MetronomeSDK
     module V1
       class CustomFieldListKeysResponse < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Models::V1::CustomFieldListKeysResponse,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         sig do
           returns(
@@ -47,7 +52,12 @@ module MetronomeSDK
 
         class Data < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::CustomFieldListKeysResponse::Data,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Boolean) }
           attr_accessor :enforce_uniqueness

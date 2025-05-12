@@ -4,7 +4,9 @@ module MetronomeSDK
   module Models
     class ProService < MetronomeSDK::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+        T.type_alias do
+          T.any(MetronomeSDK::ProService, MetronomeSDK::Internal::AnyHash)
+        end
 
       sig { returns(String) }
       attr_accessor :id

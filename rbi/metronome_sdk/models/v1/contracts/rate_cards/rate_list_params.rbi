@@ -11,7 +11,10 @@ module MetronomeSDK
 
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::Contracts::RateCards::RateListParams,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             # inclusive starting point for the rates schedule
@@ -109,7 +112,10 @@ module MetronomeSDK
             class Selector < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::Contracts::RateCards::RateListParams::Selector,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               # List of pricing group key value pairs, rates containing the matching key / value

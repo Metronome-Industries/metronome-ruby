@@ -6,6 +6,7 @@ module MetronomeSDK
       # @api private
       module Union
         include MetronomeSDK::Internal::Type::Converter
+        include MetronomeSDK::Internal::Util::SorbetRuntimeSupport
 
         # @api private
         #

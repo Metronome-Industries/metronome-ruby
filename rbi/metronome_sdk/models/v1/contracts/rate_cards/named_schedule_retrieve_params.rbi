@@ -11,7 +11,10 @@ module MetronomeSDK
 
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::Contracts::RateCards::NamedScheduleRetrieveParams,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             # ID of the contract whose named schedule is to be retrieved

@@ -6,7 +6,12 @@ module MetronomeSDK
       module Contracts
         class RateCardUpdateResponse < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::Contracts::RateCardUpdateResponse,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(MetronomeSDK::ID) }
           attr_reader :data

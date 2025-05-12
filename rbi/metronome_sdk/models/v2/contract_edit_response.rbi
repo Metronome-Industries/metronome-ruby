@@ -5,7 +5,12 @@ module MetronomeSDK
     module V2
       class ContractEditResponse < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Models::V2::ContractEditResponse,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         sig { returns(MetronomeSDK::ID) }
         attr_reader :data

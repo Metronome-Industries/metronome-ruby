@@ -11,7 +11,10 @@ module MetronomeSDK
 
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::Contracts::RateCards::ProductOrderUpdateParams,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig do
@@ -63,7 +66,10 @@ module MetronomeSDK
             class ProductMove < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               # 0-based index of the new position of the product

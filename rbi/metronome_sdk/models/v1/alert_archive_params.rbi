@@ -8,7 +8,12 @@ module MetronomeSDK
         include MetronomeSDK::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V1::AlertArchiveParams,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         # The Metronome ID of the alert
         sig { returns(String) }

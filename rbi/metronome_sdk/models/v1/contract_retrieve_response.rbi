@@ -5,7 +5,12 @@ module MetronomeSDK
     module V1
       class ContractRetrieveResponse < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Models::V1::ContractRetrieveResponse,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         sig do
           returns(MetronomeSDK::Models::V1::ContractRetrieveResponse::Data)
@@ -39,7 +44,12 @@ module MetronomeSDK
 
         class Data < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::ContractRetrieveResponse::Data,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -254,7 +264,10 @@ module MetronomeSDK
           class Amendment < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::Amendment,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(String) }
@@ -413,7 +426,10 @@ module MetronomeSDK
             class ResellerRoyalty < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::Amendment::ResellerRoyalty,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               sig do
@@ -581,7 +597,10 @@ module MetronomeSDK
           class CustomerBillingProviderConfiguration < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig do
@@ -760,7 +779,10 @@ module MetronomeSDK
           class PrepaidBalanceThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig do
@@ -853,7 +875,10 @@ module MetronomeSDK
             class Commit < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration::Commit,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               # The commit product that will be used to generate the line item for commit
@@ -937,7 +962,10 @@ module MetronomeSDK
             class PaymentGateConfig < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               # Gate access to the commit balance based on successful collection of payment.
@@ -1075,7 +1103,10 @@ module MetronomeSDK
               class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                    T.any(
+                      MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
+                      MetronomeSDK::Internal::AnyHash
+                    )
                   end
 
                 # If left blank, will default to INVOICE
@@ -1222,7 +1253,10 @@ module MetronomeSDK
           class SpendThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::SpendThresholdConfiguration,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig do
@@ -1307,7 +1341,10 @@ module MetronomeSDK
             class Commit < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::SpendThresholdConfiguration::Commit,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               # The commit product that will be used to generate the line item for commit
@@ -1359,7 +1396,10 @@ module MetronomeSDK
             class PaymentGateConfig < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::SpendThresholdConfiguration::PaymentGateConfig,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               # Gate access to the commit balance based on successful collection of payment.
@@ -1497,7 +1537,10 @@ module MetronomeSDK
               class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                    T.any(
+                      MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig,
+                      MetronomeSDK::Internal::AnyHash
+                    )
                   end
 
                 # If left blank, will default to INVOICE

@@ -9,7 +9,12 @@ module MetronomeSDK
           include MetronomeSDK::Internal::Type::RequestParameters
 
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::Customers::CreditUpdateEndDateParams,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           # RFC 3339 timestamp indicating when access to the credit will end and it will no
           # longer be possible to draw it down (exclusive).

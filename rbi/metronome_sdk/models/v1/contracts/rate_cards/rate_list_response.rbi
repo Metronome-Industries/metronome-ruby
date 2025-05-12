@@ -8,7 +8,10 @@ module MetronomeSDK
           class RateListResponse < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(T::Boolean) }
@@ -120,7 +123,10 @@ module MetronomeSDK
             class CommitRate < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::CommitRate,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               sig do

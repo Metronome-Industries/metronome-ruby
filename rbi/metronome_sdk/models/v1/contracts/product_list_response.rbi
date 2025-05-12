@@ -6,7 +6,12 @@ module MetronomeSDK
       module Contracts
         class ProductListResponse < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::Contracts::ProductListResponse,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -156,7 +161,10 @@ module MetronomeSDK
           class Update < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(Time) }

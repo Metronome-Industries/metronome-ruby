@@ -29,6 +29,10 @@ module MetronomeSDK
 
           # @!method self.variants
           #   @return [Array(MetronomeSDK::Commit, MetronomeSDK::Credit)]
+
+          define_sorbet_constant!(:Variants) do
+            T.type_alias { T.any(MetronomeSDK::Commit, MetronomeSDK::Credit) }
+          end
         end
       end
     end

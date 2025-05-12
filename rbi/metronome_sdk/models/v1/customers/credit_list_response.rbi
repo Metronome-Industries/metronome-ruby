@@ -6,7 +6,12 @@ module MetronomeSDK
       module Customers
         class CreditListResponse < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::Customers::CreditListResponse,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[MetronomeSDK::Credit]) }
           attr_accessor :data

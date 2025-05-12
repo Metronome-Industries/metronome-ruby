@@ -11,7 +11,10 @@ module MetronomeSDK
 
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::Contracts::RateCards::ProductOrderSetParams,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(T::Array[String]) }

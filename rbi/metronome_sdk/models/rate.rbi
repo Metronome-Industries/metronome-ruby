@@ -4,7 +4,9 @@ module MetronomeSDK
   module Models
     class Rate < MetronomeSDK::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+        T.type_alias do
+          T.any(MetronomeSDK::Rate, MetronomeSDK::Internal::AnyHash)
+        end
 
       sig { returns(MetronomeSDK::Rate::RateType::TaggedSymbol) }
       attr_accessor :rate_type

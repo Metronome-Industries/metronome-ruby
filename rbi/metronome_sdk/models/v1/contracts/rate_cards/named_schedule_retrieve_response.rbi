@@ -8,7 +8,10 @@ module MetronomeSDK
           class NamedScheduleRetrieveResponse < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::Models::V1::Contracts::RateCards::NamedScheduleRetrieveResponse,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig do
@@ -47,7 +50,10 @@ module MetronomeSDK
             class Data < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::Models::V1::Contracts::RateCards::NamedScheduleRetrieveResponse::Data,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               sig { returns(Time) }

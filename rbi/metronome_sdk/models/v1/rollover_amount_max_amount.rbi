@@ -5,7 +5,12 @@ module MetronomeSDK
     module V1
       class RolloverAmountMaxAmount < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V1::RolloverAmountMaxAmount,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         # Rollover up to a fixed amount of the original credit grant amount.
         sig do
