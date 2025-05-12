@@ -99,7 +99,7 @@ module MetronomeSDK
       # @param response [nil]
       # @param message [String, nil]
       #
-      # @return [MetronomeSDK::Errors::APIStatusError]
+      # @return [self]
       def self.for(url:, status:, body:, request:, response:, message: nil)
         kwargs = {
           url: url,
