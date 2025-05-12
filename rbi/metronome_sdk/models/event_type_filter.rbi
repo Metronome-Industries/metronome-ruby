@@ -4,7 +4,9 @@ module MetronomeSDK
   module Models
     class EventTypeFilter < MetronomeSDK::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+        T.type_alias do
+          T.any(MetronomeSDK::EventTypeFilter, MetronomeSDK::Internal::AnyHash)
+        end
 
       # A list of event types that are explicitly included in the billable metric. If
       # specified, only events of these types will match the billable metric. Must be

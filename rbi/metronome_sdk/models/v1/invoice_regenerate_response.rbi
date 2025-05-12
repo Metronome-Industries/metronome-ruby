@@ -5,7 +5,12 @@ module MetronomeSDK
     module V1
       class InvoiceRegenerateResponse < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Models::V1::InvoiceRegenerateResponse,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         sig do
           returns(
@@ -41,7 +46,12 @@ module MetronomeSDK
 
         class Data < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::InvoiceRegenerateResponse::Data,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           # The new invoice id
           sig { returns(String) }

@@ -8,7 +8,10 @@ module MetronomeSDK
           class RateAddManyResponse < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyResponse,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             # The ID of the rate card to which the rates were added.

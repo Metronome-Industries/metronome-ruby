@@ -17,6 +17,7 @@ module MetronomeSDK
       # values safely.
       module Enum
         include MetronomeSDK::Internal::Type::Converter
+        include MetronomeSDK::Internal::Util::SorbetRuntimeSupport
 
         # All of the valid Symbol values for this enum.
         #

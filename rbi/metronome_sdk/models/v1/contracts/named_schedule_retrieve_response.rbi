@@ -6,7 +6,12 @@ module MetronomeSDK
       module Contracts
         class NamedScheduleRetrieveResponse < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::Contracts::NamedScheduleRetrieveResponse,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -44,7 +49,10 @@ module MetronomeSDK
           class Data < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::Models::V1::Contracts::NamedScheduleRetrieveResponse::Data,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(Time) }

@@ -8,7 +8,10 @@ module MetronomeSDK
           class ProductOrderUpdateResponse < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateResponse,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(MetronomeSDK::ID) }

@@ -8,7 +8,12 @@ module MetronomeSDK
       module Customers
         class CustomerAlert < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::Customers::CustomerAlert,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(MetronomeSDK::V1::Customers::CustomerAlert::Alert) }
           attr_reader :alert
@@ -73,7 +78,10 @@ module MetronomeSDK
           class Alert < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::Customers::CustomerAlert::Alert,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             # the Metronome ID of the alert
@@ -405,7 +413,10 @@ module MetronomeSDK
             class CustomFieldFilter < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               sig do
@@ -488,7 +499,10 @@ module MetronomeSDK
             class GroupKeyFilter < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupKeyFilter,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               sig { returns(String) }

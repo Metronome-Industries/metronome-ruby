@@ -8,7 +8,12 @@ module MetronomeSDK
         include MetronomeSDK::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V1::CustomFieldSetValuesParams,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :custom_fields

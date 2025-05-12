@@ -8,7 +8,12 @@ module MetronomeSDK
         include MetronomeSDK::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V1::BillableMetricListParams,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         # If true, the list of returned metrics will include archived metrics
         sig { returns(T.nilable(T::Boolean)) }

@@ -29,7 +29,7 @@ module MetronomeSDK
         #
         #   @option spec [Boolean] :"nil?"
         #
-        # @return [MetronomeSDK::Internal::Type::HashOf]
+        # @return [self]
         def self.[](...) = new(...)
 
         # @api public

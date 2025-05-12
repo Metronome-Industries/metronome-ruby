@@ -6,7 +6,12 @@ module MetronomeSDK
       module Contracts
         class RateCardListResponse < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::Contracts::RateCardListResponse,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -141,7 +146,10 @@ module MetronomeSDK
           class Alias < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::Models::V1::Contracts::RateCardListResponse::Alias,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(String) }
@@ -181,7 +189,10 @@ module MetronomeSDK
           class CreditTypeConversion < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::Models::V1::Contracts::RateCardListResponse::CreditTypeConversion,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(MetronomeSDK::CreditTypeData) }

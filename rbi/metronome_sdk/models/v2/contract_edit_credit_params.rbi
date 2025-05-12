@@ -8,7 +8,12 @@ module MetronomeSDK
         include MetronomeSDK::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V2::ContractEditCreditParams,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         # ID of the credit to edit
         sig { returns(String) }
@@ -99,7 +104,12 @@ module MetronomeSDK
 
         class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -211,7 +221,10 @@ module MetronomeSDK
           class AddScheduleItem < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::AddScheduleItem,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(Float) }
@@ -245,7 +258,10 @@ module MetronomeSDK
           class RemoveScheduleItem < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::RemoveScheduleItem,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(String) }
@@ -263,7 +279,10 @@ module MetronomeSDK
           class UpdateScheduleItem < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::UpdateScheduleItem,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(String) }

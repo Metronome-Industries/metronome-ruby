@@ -8,7 +8,9 @@ module MetronomeSDK
   # simply pass a Hash with symbol keys matching the attributes on this class.
   class RequestOptions < MetronomeSDK::Internal::Type::BaseModel
     OrHash =
-      T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+      T.type_alias do
+        T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
+      end
 
     # @api private
     sig { params(opts: MetronomeSDK::RequestOptions::OrHash).void }

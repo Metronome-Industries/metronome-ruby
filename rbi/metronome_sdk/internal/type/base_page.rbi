@@ -30,7 +30,7 @@ module MetronomeSDK
           params(
             client: MetronomeSDK::Internal::Transport::BaseClient,
             req:
-              MetronomeSDK::Internal::Transport::BaseClient::RequestComponentsShape,
+              MetronomeSDK::Internal::Transport::BaseClient::RequestComponents,
             headers: T.any(T::Hash[String, String], Net::HTTPHeader),
             page_data: T.anything
           ).void

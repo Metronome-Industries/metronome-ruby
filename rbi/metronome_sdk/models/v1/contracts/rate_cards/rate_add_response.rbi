@@ -8,7 +8,10 @@ module MetronomeSDK
           class RateAddResponse < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig do
@@ -49,7 +52,10 @@ module MetronomeSDK
             class Data < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse::Data,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               sig do
@@ -259,7 +265,10 @@ module MetronomeSDK
               class CommitRate < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                    T.any(
+                      MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse::Data::CommitRate,
+                      MetronomeSDK::Internal::AnyHash
+                    )
                   end
 
                 sig do

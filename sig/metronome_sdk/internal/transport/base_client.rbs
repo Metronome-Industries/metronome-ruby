@@ -2,6 +2,8 @@ module MetronomeSDK
   module Internal
     module Transport
       class BaseClient
+        extend MetronomeSDK::Internal::Util::SorbetRuntimeSupport
+
         type request_components =
           {
             method: Symbol,
@@ -20,7 +22,6 @@ module MetronomeSDK
             model: MetronomeSDK::Internal::Type::Converter::input?,
             options: MetronomeSDK::request_opts?
           }
-
         type request_input =
           {
             method: Symbol,

@@ -6,7 +6,12 @@ module MetronomeSDK
       module Customers
         class BillingConfigRetrieveResponse < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -46,7 +51,10 @@ module MetronomeSDK
           class Data < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             # Contract expiration date for the customer. The expected format is RFC 3339 and

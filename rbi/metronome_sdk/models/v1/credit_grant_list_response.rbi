@@ -5,7 +5,12 @@ module MetronomeSDK
     module V1
       class CreditGrantListResponse < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Models::V1::CreditGrantListResponse,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         # the Metronome ID of the credit grant
         sig { returns(String) }
@@ -219,7 +224,12 @@ module MetronomeSDK
 
         class Balance < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::CreditGrantListResponse::Balance,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           # The end_date of the customer's current billing period.
           sig { returns(Time) }
@@ -274,7 +284,12 @@ module MetronomeSDK
 
         class GrantAmount < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::CreditGrantListResponse::GrantAmount,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(Float) }
           attr_accessor :amount
@@ -311,7 +326,12 @@ module MetronomeSDK
 
         class PaidAmount < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::CreditGrantListResponse::PaidAmount,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(Float) }
           attr_accessor :amount
@@ -348,7 +368,12 @@ module MetronomeSDK
 
         class Product < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::CreditGrantListResponse::Product,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id

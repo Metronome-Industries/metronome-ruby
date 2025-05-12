@@ -5,7 +5,9 @@ module MetronomeSDK
     module V1
       class PlanDetail < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(MetronomeSDK::V1::PlanDetail, MetronomeSDK::Internal::AnyHash)
+          end
 
         sig { returns(String) }
         attr_accessor :id
@@ -107,7 +109,12 @@ module MetronomeSDK
 
         class CreditGrant < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::PlanDetail::CreditGrant,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(Float) }
           attr_accessor :amount_granted
@@ -218,7 +225,12 @@ module MetronomeSDK
 
         class Minimum < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::PlanDetail::Minimum,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(MetronomeSDK::CreditTypeData) }
           attr_reader :credit_type
@@ -271,7 +283,12 @@ module MetronomeSDK
 
         class OverageRate < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::PlanDetail::OverageRate,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(MetronomeSDK::CreditTypeData) }
           attr_reader :credit_type

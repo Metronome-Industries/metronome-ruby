@@ -9,7 +9,12 @@ module MetronomeSDK
           include MetronomeSDK::Internal::Type::RequestParameters
 
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::Customers::PlanAddParams,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :customer_id
@@ -180,7 +185,10 @@ module MetronomeSDK
           class OverageRateAdjustment < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::Customers::PlanAddParams::OverageRateAdjustment,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(String) }
@@ -224,7 +232,10 @@ module MetronomeSDK
           class PriceAdjustment < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig do
@@ -357,7 +368,10 @@ module MetronomeSDK
           class TrialSpec < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::Customers::PlanAddParams::TrialSpec,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             # Length of the trial period in days.
@@ -413,7 +427,10 @@ module MetronomeSDK
             class SpendingCap < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::Customers::PlanAddParams::TrialSpec::SpendingCap,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               # The credit amount in the given denomination based on the credit type, e.g. US

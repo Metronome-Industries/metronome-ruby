@@ -9,7 +9,12 @@ module MetronomeSDK
           include MetronomeSDK::Internal::Type::RequestParameters
 
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           # ID of the rate card to get the schedule for
           sig { returns(String) }
@@ -119,7 +124,10 @@ module MetronomeSDK
           class Selector < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             # List of pricing group key value pairs, rates containing the matching key / value

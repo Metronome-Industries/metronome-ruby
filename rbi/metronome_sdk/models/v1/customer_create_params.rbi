@@ -8,7 +8,12 @@ module MetronomeSDK
         include MetronomeSDK::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V1::CustomerCreateParams,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         # This will be truncated to 160 characters if the provided name is longer.
         sig { returns(String) }
@@ -123,7 +128,12 @@ module MetronomeSDK
 
         class BillingConfig < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::CustomerCreateParams::BillingConfig,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :billing_provider_customer_id
@@ -474,7 +484,12 @@ module MetronomeSDK
 
         class CustomerBillingProviderConfiguration < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           # The billing provider set for this configuration.
           sig do

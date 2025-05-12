@@ -454,6 +454,19 @@ module MetronomeSDK
 
         # @!method self.variants
         #   @return [Array(MetronomeSDK::Credit::Ledger::CreditSegmentStartLedgerEntry, MetronomeSDK::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Credit::Ledger::CreditExpirationLedgerEntry, MetronomeSDK::Credit::Ledger::CreditCanceledLedgerEntry, MetronomeSDK::Credit::Ledger::CreditCreditedLedgerEntry, MetronomeSDK::Credit::Ledger::CreditManualLedgerEntry)]
+
+        define_sorbet_constant!(:Variants) do
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Credit::Ledger::CreditSegmentStartLedgerEntry,
+              MetronomeSDK::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry,
+              MetronomeSDK::Credit::Ledger::CreditExpirationLedgerEntry,
+              MetronomeSDK::Credit::Ledger::CreditCanceledLedgerEntry,
+              MetronomeSDK::Credit::Ledger::CreditCreditedLedgerEntry,
+              MetronomeSDK::Credit::Ledger::CreditManualLedgerEntry
+            )
+          end
+        end
       end
 
       # @see MetronomeSDK::Credit#rate_type

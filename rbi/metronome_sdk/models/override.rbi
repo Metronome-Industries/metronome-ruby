@@ -4,7 +4,9 @@ module MetronomeSDK
   module Models
     class Override < MetronomeSDK::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+        T.type_alias do
+          T.any(MetronomeSDK::Override, MetronomeSDK::Internal::AnyHash)
+        end
 
       sig { returns(String) }
       attr_accessor :id
@@ -242,7 +244,12 @@ module MetronomeSDK
 
       class OverrideSpecifier < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Override::OverrideSpecifier,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :commit_ids
@@ -331,7 +338,12 @@ module MetronomeSDK
 
       class OverrideTier < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Override::OverrideTier,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         sig { returns(Float) }
         attr_accessor :multiplier
@@ -353,7 +365,12 @@ module MetronomeSDK
 
       class OverwriteRate < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Override::OverwriteRate,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         sig do
           returns(MetronomeSDK::Override::OverwriteRate::RateType::TaggedSymbol)
@@ -501,7 +518,12 @@ module MetronomeSDK
 
       class Product < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Override::Product,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         sig { returns(String) }
         attr_accessor :id

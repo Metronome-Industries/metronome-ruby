@@ -8,7 +8,12 @@ module MetronomeSDK
         include MetronomeSDK::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V1::ContractCreateParams,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         sig { returns(String) }
         attr_accessor :customer_id
@@ -566,7 +571,12 @@ module MetronomeSDK
 
         class BillingProviderConfiguration < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::ContractCreateParams::BillingProviderConfiguration,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -737,7 +747,12 @@ module MetronomeSDK
 
         class Commit < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::ContractCreateParams::Commit,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :product_id
@@ -1031,7 +1046,10 @@ module MetronomeSDK
           class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::Commit::AccessSchedule,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig do
@@ -1086,7 +1104,10 @@ module MetronomeSDK
             class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::ContractCreateParams::Commit::AccessSchedule::ScheduleItem,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               sig { returns(Float) }
@@ -1129,7 +1150,10 @@ module MetronomeSDK
           class InvoiceSchedule < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::Commit::InvoiceSchedule,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             # Defaults to USD (cents) if not passed.
@@ -1227,7 +1251,10 @@ module MetronomeSDK
             class RecurringSchedule < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               sig do
@@ -1422,7 +1449,10 @@ module MetronomeSDK
             class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::ContractCreateParams::Commit::InvoiceSchedule::ScheduleItem,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               # timestamp of the scheduled event
@@ -1500,7 +1530,10 @@ module MetronomeSDK
           class PaymentGateConfig < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             # Gate access to the commit balance based on successful collection of payment.
@@ -1639,7 +1672,10 @@ module MetronomeSDK
             class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               # If left blank, will default to INVOICE
@@ -1785,7 +1821,12 @@ module MetronomeSDK
 
         class Credit < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::ContractCreateParams::Credit,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           # Schedule for distributing the credit to the customer.
           sig do
@@ -1938,7 +1979,10 @@ module MetronomeSDK
           class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::Credit::AccessSchedule,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig do
@@ -1991,7 +2035,10 @@ module MetronomeSDK
             class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::ContractCreateParams::Credit::AccessSchedule::ScheduleItem,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               sig { returns(Float) }
@@ -2068,7 +2115,12 @@ module MetronomeSDK
 
         class Discount < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::ContractCreateParams::Discount,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :product_id
@@ -2147,7 +2199,10 @@ module MetronomeSDK
           class Schedule < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::Discount::Schedule,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             # Defaults to USD (cents) if not passed.
@@ -2242,7 +2297,10 @@ module MetronomeSDK
             class RecurringSchedule < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::ContractCreateParams::Discount::Schedule::RecurringSchedule,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               sig do
@@ -2437,7 +2495,10 @@ module MetronomeSDK
             class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::ContractCreateParams::Discount::Schedule::ScheduleItem,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               # timestamp of the scheduled event
@@ -2553,7 +2614,12 @@ module MetronomeSDK
 
         class Override < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::ContractCreateParams::Override,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           # RFC 3339 timestamp indicating when the override will start applying (inclusive)
           sig { returns(Time) }
@@ -2814,7 +2880,10 @@ module MetronomeSDK
           class OverrideSpecifier < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::Override::OverrideSpecifier,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             # Can only be used for commit specific overrides. Must be used in conjunction with
@@ -2941,7 +3010,10 @@ module MetronomeSDK
           class OverwriteRate < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig do
@@ -3134,7 +3206,10 @@ module MetronomeSDK
           class Tier < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::Override::Tier,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(Float) }
@@ -3200,7 +3275,12 @@ module MetronomeSDK
 
         class PrepaidBalanceThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -3292,7 +3372,10 @@ module MetronomeSDK
           class Commit < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::Commit,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             # The commit product that will be used to generate the line item for commit
@@ -3376,7 +3459,10 @@ module MetronomeSDK
           class PaymentGateConfig < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             # Gate access to the commit balance based on successful collection of payment.
@@ -3514,7 +3600,10 @@ module MetronomeSDK
             class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               # If left blank, will default to INVOICE
@@ -3626,7 +3715,12 @@ module MetronomeSDK
 
         class ProfessionalService < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::ContractCreateParams::ProfessionalService,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           # Maximum amount for the term.
           sig { returns(Float) }
@@ -3711,7 +3805,12 @@ module MetronomeSDK
 
         class RecurringCommit < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::ContractCreateParams::RecurringCommit,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           # The amount of commit to grant.
           sig do
@@ -3999,7 +4098,10 @@ module MetronomeSDK
           class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCommit::AccessAmount,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(String) }
@@ -4034,7 +4136,10 @@ module MetronomeSDK
           class CommitDuration < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCommit::CommitDuration,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig do
@@ -4103,7 +4208,10 @@ module MetronomeSDK
           class InvoiceAmount < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCommit::InvoiceAmount,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(String) }
@@ -4268,7 +4376,12 @@ module MetronomeSDK
 
         class RecurringCredit < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::ContractCreateParams::RecurringCredit,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           # The amount of commit to grant.
           sig do
@@ -4532,7 +4645,10 @@ module MetronomeSDK
           class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCredit::AccessAmount,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(String) }
@@ -4567,7 +4683,10 @@ module MetronomeSDK
           class CommitDuration < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCredit::CommitDuration,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig do
@@ -4766,7 +4885,12 @@ module MetronomeSDK
 
         class ResellerRoyalty < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(Float) }
           attr_accessor :fraction
@@ -4946,7 +5070,10 @@ module MetronomeSDK
           class AwsOptions < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty::AwsOptions,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(T.nilable(String)) }
@@ -4997,7 +5124,10 @@ module MetronomeSDK
           class GcpOptions < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty::GcpOptions,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(T.nilable(String)) }
@@ -5030,7 +5160,12 @@ module MetronomeSDK
 
         class ScheduledCharge < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::ContractCreateParams::ScheduledCharge,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :product_id
@@ -5102,7 +5237,10 @@ module MetronomeSDK
           class Schedule < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::ScheduledCharge::Schedule,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             # Defaults to USD (cents) if not passed.
@@ -5197,7 +5335,10 @@ module MetronomeSDK
             class RecurringSchedule < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               sig do
@@ -5392,7 +5533,10 @@ module MetronomeSDK
             class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::ContractCreateParams::ScheduledCharge::Schedule::ScheduleItem,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               # timestamp of the scheduled event
@@ -5504,7 +5648,12 @@ module MetronomeSDK
 
         class SpendThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -5588,7 +5737,10 @@ module MetronomeSDK
           class Commit < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::Commit,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             # The commit product that will be used to generate the line item for commit
@@ -5640,7 +5792,10 @@ module MetronomeSDK
           class PaymentGateConfig < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             # Gate access to the commit balance based on successful collection of payment.
@@ -5778,7 +5933,10 @@ module MetronomeSDK
             class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               # If left blank, will default to INVOICE
@@ -5890,7 +6048,12 @@ module MetronomeSDK
 
         class Transition < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::ContractCreateParams::Transition,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :from_contract_id
@@ -5989,7 +6152,10 @@ module MetronomeSDK
           class FutureInvoiceBehavior < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::Transition::FutureInvoiceBehavior,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             # Controls whether future trueup invoices are billed or removed. Default behavior
@@ -6071,7 +6237,12 @@ module MetronomeSDK
 
         class UsageStatementSchedule < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(

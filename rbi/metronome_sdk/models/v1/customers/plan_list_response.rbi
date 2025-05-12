@@ -6,7 +6,12 @@ module MetronomeSDK
       module Customers
         class PlanListResponse < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::Customers::PlanListResponse,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           # the ID of the customer plan
           sig { returns(String) }
@@ -108,7 +113,10 @@ module MetronomeSDK
           class TrialInfo < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(Time) }
@@ -152,7 +160,10 @@ module MetronomeSDK
             class SpendingCap < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               sig { returns(Float) }

@@ -5,10 +5,11 @@ module MetronomeSDK
     module Type
       class BaseModel
         extend MetronomeSDK::Internal::Type::Converter
+        extend MetronomeSDK::Internal::Util::SorbetRuntimeSupport
 
         abstract!
 
-        KnownFieldShape =
+        KnownField =
           T.type_alias do
             {
               mode: T.nilable(Symbol),
@@ -18,19 +19,29 @@ module MetronomeSDK
           end
 
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Internal::Type::BaseModel,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         class << self
           # @api private
           #
           # Assumes superclass fields are totally defined before fields are accessed /
           # defined on subclasses.
+          sig { params(child: T.self_type).void }
+          def inherited(child)
+          end
+
+          # @api private
           sig do
             returns(
               T::Hash[
                 Symbol,
                 T.all(
-                  MetronomeSDK::Internal::Type::BaseModel::KnownFieldShape,
+                  MetronomeSDK::Internal::Type::BaseModel::KnownField,
                   {
                     type_fn:
                       T.proc.returns(
@@ -50,7 +61,7 @@ module MetronomeSDK
               T::Hash[
                 Symbol,
                 T.all(
-                  MetronomeSDK::Internal::Type::BaseModel::KnownFieldShape,
+                  MetronomeSDK::Internal::Type::BaseModel::KnownField,
                   { type: MetronomeSDK::Internal::Type::Converter::Input }
                 )
               ]

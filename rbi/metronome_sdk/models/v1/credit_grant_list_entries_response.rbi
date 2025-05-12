@@ -5,7 +5,12 @@ module MetronomeSDK
     module V1
       class CreditGrantListEntriesResponse < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Models::V1::CreditGrantListEntriesResponse,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         sig do
           returns(
@@ -47,7 +52,12 @@ module MetronomeSDK
 
         class Data < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :customer_id
@@ -90,7 +100,10 @@ module MetronomeSDK
           class Ledger < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(MetronomeSDK::CreditTypeData) }
@@ -180,7 +193,10 @@ module MetronomeSDK
             class EndingBalance < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               # the ending_before request parameter (if supplied) or the current billing
@@ -237,7 +253,10 @@ module MetronomeSDK
             class StartingBalance < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               # the starting_on request parameter (if supplied) or the first credit grant's

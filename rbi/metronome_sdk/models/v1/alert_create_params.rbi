@@ -8,7 +8,12 @@ module MetronomeSDK
         include MetronomeSDK::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V1::AlertCreateParams,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         # Type of the alert
         sig do
@@ -316,7 +321,12 @@ module MetronomeSDK
 
         class CustomFieldFilter < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -397,7 +407,12 @@ module MetronomeSDK
 
         class GroupKeyFilter < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :key

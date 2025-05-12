@@ -6,7 +6,12 @@ module MetronomeSDK
       module Customers
         class PlanListPriceAdjustmentsResponse < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :charge_id
@@ -128,7 +133,10 @@ module MetronomeSDK
           class Price < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::Price,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             # Determines how the value will be applied.

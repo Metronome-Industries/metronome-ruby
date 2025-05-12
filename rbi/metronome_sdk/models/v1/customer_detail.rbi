@@ -5,7 +5,12 @@ module MetronomeSDK
     module V1
       class CustomerDetail < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V1::CustomerDetail,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         # the Metronome ID of the customer
         sig { returns(String) }
@@ -121,7 +126,12 @@ module MetronomeSDK
 
         class CustomerConfig < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::CustomerDetail::CustomerConfig,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           # The Salesforce account ID for the customer
           sig { returns(T.nilable(String)) }
@@ -145,7 +155,12 @@ module MetronomeSDK
 
         class CurrentBillableStatus < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(

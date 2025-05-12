@@ -9,7 +9,7 @@ module MetronomeSDK
           | ^-> MetronomeSDK::Internal::Type::Converter::input
           | MetronomeSDK::Internal::Type::Converter::input type_info,
           ?::Hash[Symbol, top] spec
-        ) -> instance
+        ) -> self
 
         def ===: (top other) -> bool
 

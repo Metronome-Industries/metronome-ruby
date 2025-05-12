@@ -8,7 +8,12 @@ module MetronomeSDK
         include MetronomeSDK::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V1::UsageListParams,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         sig { returns(Time) }
         attr_accessor :ending_before
@@ -151,7 +156,12 @@ module MetronomeSDK
 
         class BillableMetric < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::UsageListParams::BillableMetric,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -198,7 +208,10 @@ module MetronomeSDK
           class GroupBy < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::UsageListParams::BillableMetric::GroupBy,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             # The name of the group_by key to use

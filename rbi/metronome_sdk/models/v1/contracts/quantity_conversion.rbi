@@ -6,7 +6,12 @@ module MetronomeSDK
       module Contracts
         class QuantityConversion < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::Contracts::QuantityConversion,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           # The factor to multiply or divide the quantity by.
           sig { returns(Float) }

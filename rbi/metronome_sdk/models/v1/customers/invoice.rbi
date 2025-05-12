@@ -6,7 +6,12 @@ module MetronomeSDK
       module Customers
         class Invoice < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::Customers::Invoice,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -359,7 +364,10 @@ module MetronomeSDK
           class LineItem < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::Customers::Invoice::LineItem,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(MetronomeSDK::CreditTypeData) }
@@ -887,7 +895,10 @@ module MetronomeSDK
             class AppliedCommitOrCredit < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               sig { returns(String) }
@@ -968,7 +979,10 @@ module MetronomeSDK
             class PostpaidCommit < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::Customers::Invoice::LineItem::PostpaidCommit,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               sig { returns(String) }
@@ -1031,7 +1045,10 @@ module MetronomeSDK
             class SubLineItem < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               sig { returns(T::Hash[Symbol, String]) }
@@ -1185,7 +1202,10 @@ module MetronomeSDK
               class TierPeriod < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                    T.any(
+                      MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::TierPeriod,
+                      MetronomeSDK::Internal::AnyHash
+                    )
                   end
 
                 sig { returns(Time) }
@@ -1216,7 +1236,10 @@ module MetronomeSDK
               class Tier < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                    T.any(
+                      MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::Tier,
+                      MetronomeSDK::Internal::AnyHash
+                    )
                   end
 
                 sig { returns(Float) }
@@ -1267,7 +1290,10 @@ module MetronomeSDK
             class Tier < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::Customers::Invoice::LineItem::Tier,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               sig { returns(Float) }
@@ -1338,7 +1364,10 @@ module MetronomeSDK
           class CorrectionRecord < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::Customers::Invoice::CorrectionRecord,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(String) }
@@ -1401,7 +1430,10 @@ module MetronomeSDK
             class CorrectedExternalInvoice < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               sig do
@@ -1621,7 +1653,10 @@ module MetronomeSDK
           class ExternalInvoice < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig do
@@ -1840,7 +1875,10 @@ module MetronomeSDK
           class InvoiceAdjustment < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::Customers::Invoice::InvoiceAdjustment,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(MetronomeSDK::CreditTypeData) }
@@ -1907,7 +1945,10 @@ module MetronomeSDK
           class ResellerRoyalty < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(String) }
@@ -2043,7 +2084,10 @@ module MetronomeSDK
             class AwsOptions < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::AwsOptions,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               sig { returns(T.nilable(String)) }
@@ -2094,7 +2138,10 @@ module MetronomeSDK
             class GcpOptions < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::GcpOptions,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               sig { returns(T.nilable(String)) }

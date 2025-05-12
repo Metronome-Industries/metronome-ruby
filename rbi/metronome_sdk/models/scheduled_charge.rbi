@@ -4,7 +4,9 @@ module MetronomeSDK
   module Models
     class ScheduledCharge < MetronomeSDK::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+        T.type_alias do
+          T.any(MetronomeSDK::ScheduledCharge, MetronomeSDK::Internal::AnyHash)
+        end
 
       sig { returns(String) }
       attr_accessor :id
@@ -91,7 +93,12 @@ module MetronomeSDK
 
       class Product < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::ScheduledCharge::Product,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         sig { returns(String) }
         attr_accessor :id

@@ -6,7 +6,12 @@ module MetronomeSDK
       module Contracts
         class QuantityRounding < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::Contracts::QuantityRounding,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(Float) }
           attr_accessor :decimal_places

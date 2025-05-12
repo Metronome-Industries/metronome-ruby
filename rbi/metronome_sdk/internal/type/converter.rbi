@@ -5,6 +5,8 @@ module MetronomeSDK
     module Type
       # @api private
       module Converter
+        extend MetronomeSDK::Internal::Util::SorbetRuntimeSupport
+
         Input =
           T.type_alias do
             T.any(MetronomeSDK::Internal::Type::Converter, T::Class[T.anything])

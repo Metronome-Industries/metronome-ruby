@@ -9,7 +9,12 @@ module MetronomeSDK
           include MetronomeSDK::Internal::Type::RequestParameters
 
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::Customers::CommitCreateParams,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           # Schedule for distributing the commit to the customer. For "POSTPAID" commits
           # only one schedule item is allowed and amount must match invoice_schedule total.
@@ -272,7 +277,10 @@ module MetronomeSDK
           class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::Customers::CommitCreateParams::AccessSchedule,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig do
@@ -326,7 +334,10 @@ module MetronomeSDK
             class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::Customers::CommitCreateParams::AccessSchedule::ScheduleItem,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               sig { returns(Float) }
@@ -403,7 +414,10 @@ module MetronomeSDK
           class InvoiceSchedule < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             # Defaults to USD (cents) if not passed.
@@ -501,7 +515,10 @@ module MetronomeSDK
             class RecurringSchedule < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               sig do
@@ -696,7 +713,10 @@ module MetronomeSDK
             class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                  T.any(
+                    MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem,
+                    MetronomeSDK::Internal::AnyHash
+                  )
                 end
 
               # timestamp of the scheduled event

@@ -5,7 +5,12 @@ module MetronomeSDK
     module V1
       class BillableMetricListResponse < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Models::V1::BillableMetricListResponse,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         # ID of the billable metric
         sig { returns(String) }

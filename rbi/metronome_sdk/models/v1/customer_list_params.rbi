@@ -8,7 +8,12 @@ module MetronomeSDK
         include MetronomeSDK::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V1::CustomerListParams,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         # Filter the customer list by customer_id. Up to 100 ids can be provided.
         sig { returns(T.nilable(T::Array[String])) }

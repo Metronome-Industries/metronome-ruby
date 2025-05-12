@@ -5,7 +5,12 @@ module MetronomeSDK
     module V1
       class CustomerListCostsResponse < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Models::V1::CustomerListCostsResponse,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
 
         sig do
           returns(
@@ -55,7 +60,12 @@ module MetronomeSDK
 
         class CreditType < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, MetronomeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
 
           sig { returns(T.nilable(Float)) }
           attr_reader :cost
@@ -121,7 +131,10 @@ module MetronomeSDK
           class LineItemBreakdown < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
-                T.any(T.self_type, MetronomeSDK::Internal::AnyHash)
+                T.any(
+                  MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType::LineItemBreakdown,
+                  MetronomeSDK::Internal::AnyHash
+                )
               end
 
             sig { returns(Float) }
