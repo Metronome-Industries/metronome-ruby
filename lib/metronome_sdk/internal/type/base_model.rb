@@ -391,6 +391,14 @@ module MetronomeSDK
         # @param keys [Array<Symbol>, nil]
         #
         # @return [Hash{Symbol=>Object}]
+        #
+        # @example
+        #   # `base_usage_filter` is a `MetronomeSDK::BaseUsageFilter`
+        #   base_usage_filter => {
+        #     group_key: group_key,
+        #     group_values: group_values,
+        #     starting_at: starting_at
+        #   }
         def deconstruct_keys(keys)
           (keys || self.class.known_fields.keys)
             .filter_map do |k|
