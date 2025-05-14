@@ -50,10 +50,10 @@ module MetronomeSDK
     def initialize(
       bearer_token: ENV["METRONOME_BEARER_TOKEN"],
       base_url: ENV["METRONOME_BASE_URL"],
-      max_retries: MetronomeSDK::Client::DEFAULT_MAX_RETRIES,
-      timeout: MetronomeSDK::Client::DEFAULT_TIMEOUT_IN_SECONDS,
-      initial_retry_delay: MetronomeSDK::Client::DEFAULT_INITIAL_RETRY_DELAY,
-      max_retry_delay: MetronomeSDK::Client::DEFAULT_MAX_RETRY_DELAY
+      max_retries: self.class::DEFAULT_MAX_RETRIES,
+      timeout: self.class::DEFAULT_TIMEOUT_IN_SECONDS,
+      initial_retry_delay: self.class::DEFAULT_INITIAL_RETRY_DELAY,
+      max_retry_delay: self.class::DEFAULT_MAX_RETRY_DELAY
     )
       base_url ||= "https://api.metronome.com"
 
