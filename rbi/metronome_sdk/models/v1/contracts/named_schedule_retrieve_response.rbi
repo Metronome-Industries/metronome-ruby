@@ -5,29 +5,56 @@ module MetronomeSDK
     module V1
       module Contracts
         class NamedScheduleRetrieveResponse < MetronomeSDK::Internal::Type::BaseModel
-          sig { returns(T::Array[MetronomeSDK::Models::V1::Contracts::NamedScheduleRetrieveResponse::Data]) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::Contracts::NamedScheduleRetrieveResponse,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          sig do
+            returns(
+              T::Array[
+                MetronomeSDK::Models::V1::Contracts::NamedScheduleRetrieveResponse::Data
+              ]
+            )
+          end
           attr_accessor :data
 
           sig do
             params(
-              data: T::Array[
+              data:
+                T::Array[
+                  MetronomeSDK::Models::V1::Contracts::NamedScheduleRetrieveResponse::Data::OrHash
+                ]
+            ).returns(T.attached_class)
+          end
+          def self.new(data:)
+          end
+
+          sig do
+            override.returns(
+              {
+                data:
+                  T::Array[
+                    MetronomeSDK::Models::V1::Contracts::NamedScheduleRetrieveResponse::Data
+                  ]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class Data < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
                 T.any(
                   MetronomeSDK::Models::V1::Contracts::NamedScheduleRetrieveResponse::Data,
                   MetronomeSDK::Internal::AnyHash
                 )
-              ]
-            )
-              .returns(T.attached_class)
-          end
-          def self.new(data:); end
+              end
 
-          sig do
-            override
-              .returns({data: T::Array[MetronomeSDK::Models::V1::Contracts::NamedScheduleRetrieveResponse::Data]})
-          end
-          def to_hash; end
-
-          class Data < MetronomeSDK::Internal::Type::BaseModel
             sig { returns(Time) }
             attr_accessor :starting_at
 
@@ -41,12 +68,22 @@ module MetronomeSDK
             attr_writer :ending_before
 
             sig do
-              params(starting_at: Time, value: T.anything, ending_before: Time).returns(T.attached_class)
+              params(
+                starting_at: Time,
+                value: T.anything,
+                ending_before: Time
+              ).returns(T.attached_class)
             end
-            def self.new(starting_at:, value:, ending_before: nil); end
+            def self.new(starting_at:, value:, ending_before: nil)
+            end
 
-            sig { override.returns({starting_at: Time, value: T.anything, ending_before: Time}) }
-            def to_hash; end
+            sig do
+              override.returns(
+                { starting_at: Time, value: T.anything, ending_before: Time }
+              )
+            end
+            def to_hash
+            end
           end
         end
       end

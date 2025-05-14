@@ -5,11 +5,21 @@ module MetronomeSDK
     module V1
       module Customers
         class InvoiceAddChargeResponse < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::Customers::InvoiceAddChargeResponse,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
           sig { returns(T.attached_class) }
-          def self.new; end
+          def self.new
+          end
 
           sig { override.returns({}) }
-          def to_hash; end
+          def to_hash
+          end
         end
       end
     end

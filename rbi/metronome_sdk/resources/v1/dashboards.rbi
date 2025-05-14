@@ -10,28 +10,22 @@ module MetronomeSDK
         sig do
           params(
             customer_id: String,
-            dashboard: MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::Dashboard::OrSymbol,
-            bm_group_key_overrides: T::Array[
-              T.any(
-                MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::BmGroupKeyOverride,
-                MetronomeSDK::Internal::AnyHash
-              )
-            ],
-            color_overrides: T::Array[
-              T.any(
-                MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::ColorOverride,
-                MetronomeSDK::Internal::AnyHash
-              )
-            ],
-            dashboard_options: T::Array[
-              T.any(
-                MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::DashboardOption,
-                MetronomeSDK::Internal::AnyHash
-              )
-            ],
-            request_options: MetronomeSDK::RequestOpts
-          )
-            .returns(MetronomeSDK::Models::V1::DashboardGetEmbeddableURLResponse)
+            dashboard:
+              MetronomeSDK::V1::DashboardGetEmbeddableURLParams::Dashboard::OrSymbol,
+            bm_group_key_overrides:
+              T::Array[
+                MetronomeSDK::V1::DashboardGetEmbeddableURLParams::BmGroupKeyOverride::OrHash
+              ],
+            color_overrides:
+              T::Array[
+                MetronomeSDK::V1::DashboardGetEmbeddableURLParams::ColorOverride::OrHash
+              ],
+            dashboard_options:
+              T::Array[
+                MetronomeSDK::V1::DashboardGetEmbeddableURLParams::DashboardOption::OrHash
+              ],
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V1::DashboardGetEmbeddableURLResponse)
         end
         def get_embeddable_url(
           customer_id:,
@@ -44,10 +38,13 @@ module MetronomeSDK
           # Optional dashboard specific options
           dashboard_options: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

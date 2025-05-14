@@ -54,8 +54,6 @@ module MetronomeSDK
             ?trial_info: MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo
           ) -> void
 
-          def to_hash: -> MetronomeSDK::Models::V1::Customers::plan_list_response
-
           type trial_info =
             {
               ending_before: Time,
@@ -72,13 +70,11 @@ module MetronomeSDK
               spending_caps: ::Array[MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap]
             ) -> void
 
-            def to_hash: -> MetronomeSDK::Models::V1::Customers::PlanListResponse::trial_info
-
             type spending_cap =
               {
                 amount: Float,
                 amount_remaining: Float,
-                credit_type: MetronomeSDK::Models::CreditTypeData
+                credit_type: MetronomeSDK::CreditTypeData
               }
 
             class SpendingCap < MetronomeSDK::Internal::Type::BaseModel
@@ -86,15 +82,13 @@ module MetronomeSDK
 
               attr_accessor amount_remaining: Float
 
-              attr_accessor credit_type: MetronomeSDK::Models::CreditTypeData
+              attr_accessor credit_type: MetronomeSDK::CreditTypeData
 
               def initialize: (
                 amount: Float,
                 amount_remaining: Float,
-                credit_type: MetronomeSDK::Models::CreditTypeData
+                credit_type: MetronomeSDK::CreditTypeData
               ) -> void
-
-              def to_hash: -> MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::spending_cap
             end
           end
         end

@@ -2,6 +2,8 @@ module MetronomeSDK
   module Internal
     module Transport
       class PooledNetRequester
+        extend MetronomeSDK::Internal::Util::SorbetRuntimeSupport
+
         type request =
           {
             method: Symbol,

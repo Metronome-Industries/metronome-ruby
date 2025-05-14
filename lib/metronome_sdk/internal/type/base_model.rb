@@ -6,6 +6,7 @@ module MetronomeSDK
       # @abstract
       class BaseModel
         extend MetronomeSDK::Internal::Type::Converter
+        extend MetronomeSDK::Internal::Util::SorbetRuntimeSupport
 
         class << self
           # @api private
@@ -13,10 +14,16 @@ module MetronomeSDK
           # Assumes superclass fields are totally defined before fields are accessed /
           # defined on subclasses.
           #
-          # @return [Hash{Symbol=>Hash{Symbol=>Object}}]
-          def known_fields
-            @known_fields ||= (self < MetronomeSDK::Internal::Type::BaseModel ? superclass.known_fields.dup : {})
+          # @param child [Class<MetronomeSDK::Internal::Type::BaseModel>]
+          def inherited(child)
+            super
+            child.known_fields.replace(known_fields.dup)
           end
+
+          # @api private
+          #
+          # @return [Hash{Symbol=>Hash{Symbol=>Object}}]
+          def known_fields = @known_fields ||= {}
 
           # @api private
           #
@@ -204,7 +211,7 @@ module MetronomeSDK
           #
           #   @option state [Integer] :branched
           #
-          # @return [MetronomeSDK::Internal::Type::BaseModel, Object]
+          # @return [self, Object]
           def coerce(value, state:)
             exactness = state.fetch(:exactness)
 
@@ -263,7 +270,7 @@ module MetronomeSDK
 
           # @api private
           #
-          # @param value [MetronomeSDK::Internal::Type::BaseModel, Object]
+          # @param value [self, Object]
           #
           # @param state [Hash{Symbol=>Object}] .
           #
@@ -304,6 +311,39 @@ module MetronomeSDK
           end
         end
 
+        class << self
+          # @api private
+          #
+          # @param model [MetronomeSDK::Internal::Type::BaseModel]
+          # @param convert [Boolean]
+          #
+          # @return [Hash{Symbol=>Object}]
+          def recursively_to_h(model, convert:)
+            rec = ->(x) do
+              case x
+              in MetronomeSDK::Internal::Type::BaseModel
+                if convert
+                  fields = x.class.known_fields
+                  x.to_h.to_h do |key, val|
+                    [key, rec.call(fields.key?(key) ? x.public_send(key) : val)]
+                  rescue MetronomeSDK::Errors::ConversionError
+                    [key, rec.call(val)]
+                  end
+                else
+                  rec.call(x.to_h)
+                end
+              in Hash
+                x.transform_values(&rec)
+              in Array
+                x.map(&rec)
+              else
+                x
+              end
+            end
+            rec.call(model)
+          end
+        end
+
         # @api public
         #
         # Returns the raw value associated with the given key, if found. Otherwise, nil is
@@ -340,6 +380,14 @@ module MetronomeSDK
 
         alias_method :to_hash, :to_h
 
+        # @api public
+        #
+        # In addition to the behaviour of `#to_h`, this method will recursively call
+        # `#to_h` on nested models.
+        #
+        # @return [Hash{Symbol=>Object}]
+        def deep_to_h = self.class.recursively_to_h(@data, convert: false)
+
         # @param keys [Array<Symbol>, nil]
         #
         # @return [Hash{Symbol=>Object}]
@@ -353,29 +401,6 @@ module MetronomeSDK
               [k, public_send(k)]
             end
             .to_h
-        end
-
-        class << self
-          # @api private
-          #
-          # @param model [MetronomeSDK::Internal::Type::BaseModel]
-          #
-          # @return [Hash{Symbol=>Object}]
-          def walk(model)
-            walk = ->(x) do
-              case x
-              in MetronomeSDK::Internal::Type::BaseModel
-                walk.call(x.to_h)
-              in Hash
-                x.transform_values(&walk)
-              in Array
-                x.map(&walk)
-              else
-                x
-              end
-            end
-            walk.call(model)
-          end
         end
 
         # @api public
@@ -395,15 +420,7 @@ module MetronomeSDK
         # Create a new instance of a model.
         #
         # @param data [Hash{Symbol=>Object}, self]
-        def initialize(data = {})
-          case MetronomeSDK::Internal::Util.coerce_hash(data)
-          in Hash => coerced
-            @data = coerced
-          else
-            message = "Expected a #{Hash} or #{MetronomeSDK::Internal::Type::BaseModel}, got #{data.inspect}"
-            raise ArgumentError.new(message)
-          end
-        end
+        def initialize(data = {}) = (@data = MetronomeSDK::Internal::Util.coerce_hash!(data).to_h)
 
         class << self
           # @api private
@@ -431,12 +448,19 @@ module MetronomeSDK
         # @api public
         #
         # @return [String]
-        def to_s = self.class.walk(@data).to_s
+        def to_s = deep_to_h.to_s
 
         # @api private
         #
         # @return [String]
-        def inspect = "#<#{self.class}:0x#{object_id.to_s(16)} #{self}>"
+        def inspect
+          converted = self.class.recursively_to_h(self, convert: true)
+          "#<#{self.class}:0x#{object_id.to_s(16)} #{converted}>"
+        end
+
+        define_sorbet_constant!(:KnownField) do
+          T.type_alias { {mode: T.nilable(Symbol), required: T::Boolean, nilable: T::Boolean} }
+        end
       end
     end
   end

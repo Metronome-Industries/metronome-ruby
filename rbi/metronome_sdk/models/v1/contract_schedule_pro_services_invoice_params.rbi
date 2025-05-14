@@ -7,6 +7,14 @@ module MetronomeSDK
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V1::ContractScheduleProServicesInvoiceParams,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
         sig { returns(String) }
         attr_accessor :contract_id
 
@@ -18,7 +26,13 @@ module MetronomeSDK
         attr_accessor :issued_at
 
         # Each line requires an amount or both unit_price and quantity.
-        sig { returns(T::Array[MetronomeSDK::Models::V1::ContractScheduleProServicesInvoiceParams::LineItem]) }
+        sig do
+          returns(
+            T::Array[
+              MetronomeSDK::V1::ContractScheduleProServicesInvoiceParams::LineItem
+            ]
+          )
+        end
         attr_accessor :line_items
 
         # The end date of the invoice header in Netsuite
@@ -40,17 +54,14 @@ module MetronomeSDK
             contract_id: String,
             customer_id: String,
             issued_at: Time,
-            line_items: T::Array[
-              T.any(
-                MetronomeSDK::Models::V1::ContractScheduleProServicesInvoiceParams::LineItem,
-                MetronomeSDK::Internal::AnyHash
-              )
-            ],
+            line_items:
+              T::Array[
+                MetronomeSDK::V1::ContractScheduleProServicesInvoiceParams::LineItem::OrHash
+              ],
             netsuite_invoice_header_end: Time,
             netsuite_invoice_header_start: Time,
-            request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           contract_id:,
@@ -64,24 +75,37 @@ module MetronomeSDK
           # The start date of the invoice header in Netsuite
           netsuite_invoice_header_start: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                contract_id: String,
-                customer_id: String,
-                issued_at: Time,
-                line_items: T::Array[MetronomeSDK::Models::V1::ContractScheduleProServicesInvoiceParams::LineItem],
-                netsuite_invoice_header_end: Time,
-                netsuite_invoice_header_start: Time,
-                request_options: MetronomeSDK::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              contract_id: String,
+              customer_id: String,
+              issued_at: Time,
+              line_items:
+                T::Array[
+                  MetronomeSDK::V1::ContractScheduleProServicesInvoiceParams::LineItem
+                ],
+              netsuite_invoice_header_end: Time,
+              netsuite_invoice_header_start: Time,
+              request_options: MetronomeSDK::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
 
         class LineItem < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::ContractScheduleProServicesInvoiceParams::LineItem,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
           sig { returns(String) }
           attr_accessor :professional_service_id
 
@@ -147,8 +171,7 @@ module MetronomeSDK
               netsuite_invoice_billing_start: Time,
               quantity: Float,
               unit_price: Float
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             professional_service_id:,
@@ -168,23 +191,25 @@ module MetronomeSDK
             # If specified, this overrides the unit price on the pro service term. Must also
             # provide quantity (but not amount) if providing unit_price.
             unit_price: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  professional_service_id: String,
-                  amendment_id: String,
-                  amount: Float,
-                  metadata: String,
-                  netsuite_invoice_billing_end: Time,
-                  netsuite_invoice_billing_start: Time,
-                  quantity: Float,
-                  unit_price: Float
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                professional_service_id: String,
+                amendment_id: String,
+                amount: Float,
+                metadata: String,
+                netsuite_invoice_billing_end: Time,
+                netsuite_invoice_billing_start: Time,
+                quantity: Float,
+                unit_price: Float
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
     end

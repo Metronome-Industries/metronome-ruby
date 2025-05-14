@@ -15,8 +15,8 @@ module MetronomeSDK
             netsuite_overage_item_id: String,
             presentation_group_key: ::Array[String],
             pricing_group_key: ::Array[String],
-            quantity_conversion: MetronomeSDK::Models::V1::Contracts::QuantityConversion?,
-            quantity_rounding: MetronomeSDK::Models::V1::Contracts::QuantityRounding?,
+            quantity_conversion: MetronomeSDK::V1::Contracts::QuantityConversion?,
+            quantity_rounding: MetronomeSDK::V1::Contracts::QuantityRounding?,
             tags: ::Array[String]
           }
           & MetronomeSDK::Internal::Type::request_parameters
@@ -65,9 +65,9 @@ module MetronomeSDK
 
           def pricing_group_key=: (::Array[String]) -> ::Array[String]
 
-          attr_accessor quantity_conversion: MetronomeSDK::Models::V1::Contracts::QuantityConversion?
+          attr_accessor quantity_conversion: MetronomeSDK::V1::Contracts::QuantityConversion?
 
-          attr_accessor quantity_rounding: MetronomeSDK::Models::V1::Contracts::QuantityRounding?
+          attr_accessor quantity_rounding: MetronomeSDK::V1::Contracts::QuantityRounding?
 
           attr_reader tags: ::Array[String]?
 
@@ -85,13 +85,11 @@ module MetronomeSDK
             ?netsuite_overage_item_id: String,
             ?presentation_group_key: ::Array[String],
             ?pricing_group_key: ::Array[String],
-            ?quantity_conversion: MetronomeSDK::Models::V1::Contracts::QuantityConversion?,
-            ?quantity_rounding: MetronomeSDK::Models::V1::Contracts::QuantityRounding?,
+            ?quantity_conversion: MetronomeSDK::V1::Contracts::QuantityConversion?,
+            ?quantity_rounding: MetronomeSDK::V1::Contracts::QuantityRounding?,
             ?tags: ::Array[String],
             ?request_options: MetronomeSDK::request_opts
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::Contracts::product_create_params
 
           type type_ =
             :FIXED

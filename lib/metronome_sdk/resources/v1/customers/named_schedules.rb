@@ -19,7 +19,6 @@ module MetronomeSDK
           # @param schedule_name [String] The identifier for the schedule to be retrieved
           #
           # @param covering_date [Time] If provided, at most one schedule segment will be returned (the one that covers
-          # ...
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -27,7 +26,7 @@ module MetronomeSDK
           #
           # @see MetronomeSDK::Models::V1::Customers::NamedScheduleRetrieveParams
           def retrieve(params)
-            parsed, options = MetronomeSDK::Models::V1::Customers::NamedScheduleRetrieveParams.dump_request(params)
+            parsed, options = MetronomeSDK::V1::Customers::NamedScheduleRetrieveParams.dump_request(params)
             @client.request(
               method: :post,
               path: "v1/customers/getNamedSchedule",
@@ -53,7 +52,6 @@ module MetronomeSDK
           # @param starting_at [Time]
           #
           # @param value [Object] The value to set for the named schedule. The structure of this object is specifi
-          # ...
           #
           # @param ending_before [Time]
           #
@@ -63,7 +61,7 @@ module MetronomeSDK
           #
           # @see MetronomeSDK::Models::V1::Customers::NamedScheduleUpdateParams
           def update(params)
-            parsed, options = MetronomeSDK::Models::V1::Customers::NamedScheduleUpdateParams.dump_request(params)
+            parsed, options = MetronomeSDK::V1::Customers::NamedScheduleUpdateParams.dump_request(params)
             @client.request(
               method: :post,
               path: "v1/customers/updateNamedSchedule",

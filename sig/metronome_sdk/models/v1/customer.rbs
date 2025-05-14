@@ -30,8 +30,6 @@ module MetronomeSDK
           name: String,
           ?custom_fields: ::Hash[Symbol, String]
         ) -> void
-
-        def to_hash: -> MetronomeSDK::Models::V1::customer
       end
     end
   end

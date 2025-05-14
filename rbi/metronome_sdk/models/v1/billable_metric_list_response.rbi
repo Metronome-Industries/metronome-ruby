@@ -4,6 +4,14 @@ module MetronomeSDK
   module Models
     module V1
       class BillableMetricListResponse < MetronomeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Models::V1::BillableMetricListResponse,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
         # ID of the billable metric
         sig { returns(String) }
         attr_accessor :id
@@ -22,12 +30,20 @@ module MetronomeSDK
         attr_writer :aggregation_key
 
         # Specifies the type of aggregation performed on matching events.
-        sig { returns(T.nilable(MetronomeSDK::Models::V1::BillableMetricListResponse::AggregationType::TaggedSymbol)) }
+        sig do
+          returns(
+            T.nilable(
+              MetronomeSDK::Models::V1::BillableMetricListResponse::AggregationType::TaggedSymbol
+            )
+          )
+        end
         attr_reader :aggregation_type
 
         sig do
-          params(aggregation_type: MetronomeSDK::Models::V1::BillableMetricListResponse::AggregationType::OrSymbol)
-            .void
+          params(
+            aggregation_type:
+              MetronomeSDK::Models::V1::BillableMetricListResponse::AggregationType::OrSymbol
+          ).void
         end
         attr_writer :aggregation_type
 
@@ -46,12 +62,11 @@ module MetronomeSDK
         attr_writer :custom_fields
 
         # An optional filtering rule to match the 'event_type' property of an event.
-        sig { returns(T.nilable(MetronomeSDK::Models::EventTypeFilter)) }
+        sig { returns(T.nilable(MetronomeSDK::EventTypeFilter)) }
         attr_reader :event_type_filter
 
         sig do
-          params(event_type_filter: T.any(MetronomeSDK::Models::EventTypeFilter, MetronomeSDK::Internal::AnyHash))
-            .void
+          params(event_type_filter: MetronomeSDK::EventTypeFilter::OrHash).void
         end
         attr_writer :event_type_filter
 
@@ -66,14 +81,13 @@ module MetronomeSDK
         # A list of filters to match events to this billable metric. Each filter defines a
         # rule on an event property. All rules must pass for the event to match the
         # billable metric.
-        sig { returns(T.nilable(T::Array[MetronomeSDK::Models::PropertyFilter])) }
+        sig { returns(T.nilable(T::Array[MetronomeSDK::PropertyFilter])) }
         attr_reader :property_filters
 
         sig do
           params(
-            property_filters: T::Array[T.any(MetronomeSDK::Models::PropertyFilter, MetronomeSDK::Internal::AnyHash)]
-          )
-            .void
+            property_filters: T::Array[MetronomeSDK::PropertyFilter::OrHash]
+          ).void
         end
         attr_writer :property_filters
 
@@ -89,15 +103,15 @@ module MetronomeSDK
             id: String,
             name: String,
             aggregation_key: String,
-            aggregation_type: MetronomeSDK::Models::V1::BillableMetricListResponse::AggregationType::OrSymbol,
+            aggregation_type:
+              MetronomeSDK::Models::V1::BillableMetricListResponse::AggregationType::OrSymbol,
             archived_at: Time,
             custom_fields: T::Hash[Symbol, String],
-            event_type_filter: T.any(MetronomeSDK::Models::EventTypeFilter, MetronomeSDK::Internal::AnyHash),
+            event_type_filter: MetronomeSDK::EventTypeFilter::OrHash,
             group_keys: T::Array[T::Array[String]],
-            property_filters: T::Array[T.any(MetronomeSDK::Models::PropertyFilter, MetronomeSDK::Internal::AnyHash)],
+            property_filters: T::Array[MetronomeSDK::PropertyFilter::OrHash],
             sql: String
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # ID of the billable metric
@@ -125,48 +139,77 @@ module MetronomeSDK
           property_filters: nil,
           # The SQL query associated with the billable metric
           sql: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                id: String,
-                name: String,
-                aggregation_key: String,
-                aggregation_type: MetronomeSDK::Models::V1::BillableMetricListResponse::AggregationType::TaggedSymbol,
-                archived_at: Time,
-                custom_fields: T::Hash[Symbol, String],
-                event_type_filter: MetronomeSDK::Models::EventTypeFilter,
-                group_keys: T::Array[T::Array[String]],
-                property_filters: T::Array[MetronomeSDK::Models::PropertyFilter],
-                sql: String
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              id: String,
+              name: String,
+              aggregation_key: String,
+              aggregation_type:
+                MetronomeSDK::Models::V1::BillableMetricListResponse::AggregationType::TaggedSymbol,
+              archived_at: Time,
+              custom_fields: T::Hash[Symbol, String],
+              event_type_filter: MetronomeSDK::EventTypeFilter,
+              group_keys: T::Array[T::Array[String]],
+              property_filters: T::Array[MetronomeSDK::PropertyFilter],
+              sql: String
+            }
+          )
+        end
+        def to_hash
+        end
 
         # Specifies the type of aggregation performed on matching events.
         module AggregationType
           extend MetronomeSDK::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, MetronomeSDK::Models::V1::BillableMetricListResponse::AggregationType) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                MetronomeSDK::Models::V1::BillableMetricListResponse::AggregationType
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           COUNT =
-            T.let(:COUNT, MetronomeSDK::Models::V1::BillableMetricListResponse::AggregationType::TaggedSymbol)
+            T.let(
+              :COUNT,
+              MetronomeSDK::Models::V1::BillableMetricListResponse::AggregationType::TaggedSymbol
+            )
           LATEST =
-            T.let(:LATEST, MetronomeSDK::Models::V1::BillableMetricListResponse::AggregationType::TaggedSymbol)
-          MAX = T.let(:MAX, MetronomeSDK::Models::V1::BillableMetricListResponse::AggregationType::TaggedSymbol)
-          SUM = T.let(:SUM, MetronomeSDK::Models::V1::BillableMetricListResponse::AggregationType::TaggedSymbol)
+            T.let(
+              :LATEST,
+              MetronomeSDK::Models::V1::BillableMetricListResponse::AggregationType::TaggedSymbol
+            )
+          MAX =
+            T.let(
+              :MAX,
+              MetronomeSDK::Models::V1::BillableMetricListResponse::AggregationType::TaggedSymbol
+            )
+          SUM =
+            T.let(
+              :SUM,
+              MetronomeSDK::Models::V1::BillableMetricListResponse::AggregationType::TaggedSymbol
+            )
           UNIQUE =
-            T.let(:UNIQUE, MetronomeSDK::Models::V1::BillableMetricListResponse::AggregationType::TaggedSymbol)
+            T.let(
+              :UNIQUE,
+              MetronomeSDK::Models::V1::BillableMetricListResponse::AggregationType::TaggedSymbol
+            )
 
           sig do
-            override
-              .returns(T::Array[MetronomeSDK::Models::V1::BillableMetricListResponse::AggregationType::TaggedSymbol])
+            override.returns(
+              T::Array[
+                MetronomeSDK::Models::V1::BillableMetricListResponse::AggregationType::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

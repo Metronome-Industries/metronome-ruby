@@ -3,6 +3,11 @@
 module MetronomeSDK
   module Models
     class ProService < MetronomeSDK::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias do
+          T.any(MetronomeSDK::ProService, MetronomeSDK::Internal::AnyHash)
+        end
+
       sig { returns(String) }
       attr_accessor :id
 
@@ -52,8 +57,7 @@ module MetronomeSDK
           custom_fields: T::Hash[Symbol, String],
           description: String,
           netsuite_sales_order_id: String
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         id:,
@@ -70,23 +74,25 @@ module MetronomeSDK
         description: nil,
         # This field's availability is dependent on your client's configuration.
         netsuite_sales_order_id: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              max_amount: Float,
-              product_id: String,
-              quantity: Float,
-              unit_price: Float,
-              custom_fields: T::Hash[Symbol, String],
-              description: String,
-              netsuite_sales_order_id: String
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            max_amount: Float,
+            product_id: String,
+            quantity: Float,
+            unit_price: Float,
+            custom_fields: T::Hash[Symbol, String],
+            description: String,
+            netsuite_sales_order_id: String
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

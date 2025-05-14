@@ -6,38 +6,36 @@ module MetronomeSDK
       module Customers
         type customer_alert =
           {
-            alert: MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert,
-            customer_status: MetronomeSDK::Models::V1::Customers::CustomerAlert::customer_status?,
+            alert: MetronomeSDK::V1::Customers::CustomerAlert::Alert,
+            customer_status: MetronomeSDK::V1::Customers::CustomerAlert::customer_status?,
             triggered_by: String?
           }
 
         class CustomerAlert < MetronomeSDK::Internal::Type::BaseModel
-          attr_accessor alert: MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert
+          attr_accessor alert: MetronomeSDK::V1::Customers::CustomerAlert::Alert
 
-          attr_accessor customer_status: MetronomeSDK::Models::V1::Customers::CustomerAlert::customer_status?
+          attr_accessor customer_status: MetronomeSDK::V1::Customers::CustomerAlert::customer_status?
 
           attr_accessor triggered_by: String?
 
           def initialize: (
-            alert: MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert,
-            customer_status: MetronomeSDK::Models::V1::Customers::CustomerAlert::customer_status?,
+            alert: MetronomeSDK::V1::Customers::CustomerAlert::Alert,
+            customer_status: MetronomeSDK::V1::Customers::CustomerAlert::customer_status?,
             ?triggered_by: String?
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::Customers::customer_alert
 
           type alert =
             {
               id: String,
               name: String,
-              status: MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::status,
+              status: MetronomeSDK::V1::Customers::CustomerAlert::Alert::status,
               threshold: Float,
-              type: MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::type_,
+              type: MetronomeSDK::V1::Customers::CustomerAlert::Alert::type_,
               updated_at: Time,
               credit_grant_type_filters: ::Array[String],
-              credit_type: MetronomeSDK::Models::CreditTypeData?,
-              custom_field_filters: ::Array[MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::CustomFieldFilter],
-              group_key_filter: MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::GroupKeyFilter,
+              credit_type: MetronomeSDK::CreditTypeData?,
+              custom_field_filters: ::Array[MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter],
+              group_key_filter: MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupKeyFilter,
               invoice_types_filter: ::Array[String],
               uniqueness_key: String
             }
@@ -47,11 +45,11 @@ module MetronomeSDK
 
             attr_accessor name: String
 
-            attr_accessor status: MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::status
+            attr_accessor status: MetronomeSDK::V1::Customers::CustomerAlert::Alert::status
 
             attr_accessor threshold: Float
 
-            attr_accessor type: MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::type_
+            attr_accessor type: MetronomeSDK::V1::Customers::CustomerAlert::Alert::type_
 
             attr_accessor updated_at: Time
 
@@ -59,19 +57,19 @@ module MetronomeSDK
 
             def credit_grant_type_filters=: (::Array[String]) -> ::Array[String]
 
-            attr_accessor credit_type: MetronomeSDK::Models::CreditTypeData?
+            attr_accessor credit_type: MetronomeSDK::CreditTypeData?
 
-            attr_reader custom_field_filters: ::Array[MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::CustomFieldFilter]?
+            attr_reader custom_field_filters: ::Array[MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter]?
 
             def custom_field_filters=: (
-              ::Array[MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::CustomFieldFilter]
-            ) -> ::Array[MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::CustomFieldFilter]
+              ::Array[MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter]
+            ) -> ::Array[MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter]
 
-            attr_reader group_key_filter: MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::GroupKeyFilter?
+            attr_reader group_key_filter: MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupKeyFilter?
 
             def group_key_filter=: (
-              MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::GroupKeyFilter
-            ) -> MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::GroupKeyFilter
+              MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupKeyFilter
+            ) -> MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupKeyFilter
 
             attr_reader invoice_types_filter: ::Array[String]?
 
@@ -84,19 +82,17 @@ module MetronomeSDK
             def initialize: (
               id: String,
               name: String,
-              status: MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::status,
+              status: MetronomeSDK::V1::Customers::CustomerAlert::Alert::status,
               threshold: Float,
-              type: MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::type_,
+              type: MetronomeSDK::V1::Customers::CustomerAlert::Alert::type_,
               updated_at: Time,
               ?credit_grant_type_filters: ::Array[String],
-              ?credit_type: MetronomeSDK::Models::CreditTypeData?,
-              ?custom_field_filters: ::Array[MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::CustomFieldFilter],
-              ?group_key_filter: MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::GroupKeyFilter,
+              ?credit_type: MetronomeSDK::CreditTypeData?,
+              ?custom_field_filters: ::Array[MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter],
+              ?group_key_filter: MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupKeyFilter,
               ?invoice_types_filter: ::Array[String],
               ?uniqueness_key: String
             ) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V1::Customers::CustomerAlert::alert
 
             type status = :enabled | :archived | :disabled
 
@@ -107,7 +103,7 @@ module MetronomeSDK
               ARCHIVED: :archived
               DISABLED: :disabled
 
-              def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::status]
+              def self?.values: -> ::Array[MetronomeSDK::V1::Customers::CustomerAlert::Alert::status]
             end
 
             type type_ =
@@ -144,30 +140,28 @@ module MetronomeSDK
               LOW_REMAINING_CONTRACT_CREDIT_AND_COMMIT_BALANCE_REACHED: :low_remaining_contract_credit_and_commit_balance_reached
               INVOICE_TOTAL_REACHED: :invoice_total_reached
 
-              def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::type_]
+              def self?.values: -> ::Array[MetronomeSDK::V1::Customers::CustomerAlert::Alert::type_]
             end
 
             type custom_field_filter =
               {
-                entity: MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::CustomFieldFilter::entity,
+                entity: MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter::entity,
                 key: String,
                 value: String
               }
 
             class CustomFieldFilter < MetronomeSDK::Internal::Type::BaseModel
-              attr_accessor entity: MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::CustomFieldFilter::entity
+              attr_accessor entity: MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter::entity
 
               attr_accessor key: String
 
               attr_accessor value: String
 
               def initialize: (
-                entity: MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::CustomFieldFilter::entity,
+                entity: MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter::entity,
                 key: String,
                 value: String
               ) -> void
-
-              def to_hash: -> MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::custom_field_filter
 
               type entity = :Contract | :Commit | :ContractCredit
 
@@ -178,7 +172,7 @@ module MetronomeSDK
                 COMMIT: :Commit
                 CONTRACT_CREDIT: :ContractCredit
 
-                def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::CustomFieldFilter::entity]
+                def self?.values: -> ::Array[MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter::entity]
               end
             end
 
@@ -190,8 +184,6 @@ module MetronomeSDK
               attr_accessor value: String
 
               def initialize: (key: String, value: String) -> void
-
-              def to_hash: -> MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::group_key_filter
             end
           end
 
@@ -204,7 +196,7 @@ module MetronomeSDK
             IN_ALARM: :in_alarm
             EVALUATING: :evaluating
 
-            def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::CustomerAlert::customer_status]
+            def self?.values: -> ::Array[MetronomeSDK::V1::Customers::CustomerAlert::customer_status]
           end
         end
       end

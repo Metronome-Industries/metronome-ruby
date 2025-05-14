@@ -14,13 +14,12 @@ module MetronomeSDK
         # @param customer_id [String] the Metronome ID of the customer
         #
         # @param expires_at [Time] The credit grant will only apply to usage or charges dated before this timestamp
-        # ...
         #
-        # @param grant_amount [MetronomeSDK::Models::V1::CreditGrantCreateParams::GrantAmount] the amount of credits granted
+        # @param grant_amount [MetronomeSDK::V1::CreditGrantCreateParams::GrantAmount] the amount of credits granted
         #
         # @param name [String] the name of the credit grant as it will appear on invoices
         #
-        # @param paid_amount [MetronomeSDK::Models::V1::CreditGrantCreateParams::PaidAmount] the amount paid for this credit grant
+        # @param paid_amount [MetronomeSDK::V1::CreditGrantCreateParams::PaidAmount] the amount paid for this credit grant
         #
         # @param priority [Float]
         #
@@ -29,20 +28,16 @@ module MetronomeSDK
         # @param custom_fields [Hash{Symbol=>String}] Custom fields to attach to the credit grant.
         #
         # @param effective_at [Time] The credit grant will only apply to usage or charges dated on or after this time
-        # ...
         #
         # @param invoice_date [Time] The date to issue an invoice for the paid_amount.
         #
         # @param product_ids [Array<String>] The product(s) which these credits will be applied to. (If unspecified, the cred
-        # ...
         #
         # @param reason [String]
         #
-        # @param rollover_settings [MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings] Configure a rollover for this credit grant so if it expires it rolls over a conf
-        # ...
+        # @param rollover_settings [MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings] Configure a rollover for this credit grant so if it expires it rolls over a conf
         #
         # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made wit
-        # ...
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -50,7 +45,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::CreditGrantCreateParams
         def create(params)
-          parsed, options = MetronomeSDK::Models::V1::CreditGrantCreateParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::CreditGrantCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/credits/createGrant",
@@ -72,16 +67,12 @@ module MetronomeSDK
         # @param next_page [String] Query param: Cursor that indicates where the next page of results should start.
         #
         # @param credit_grant_ids [Array<String>] Body param: An array of credit grant IDs. If this is specified, neither credit_t
-        # ...
         #
         # @param credit_type_ids [Array<String>] Body param: An array of credit type IDs. This must not be specified if credit_gr
-        # ...
         #
         # @param customer_ids [Array<String>] Body param: An array of Metronome customer IDs. This must not be specified if cr
-        # ...
         #
         # @param effective_before [Time] Body param: Only return credit grants that are effective before this timestamp (
-        # ...
         #
         # @param not_expiring_before [Time] Body param: Only return credit grants that expire at or after this timestamp.
         #
@@ -91,7 +82,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::CreditGrantListParams
         def list(params = {})
-          parsed, options = MetronomeSDK::Models::V1::CreditGrantListParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::CreditGrantListParams.dump_request(params)
           query_params = [:limit, :next_page]
           @client.request(
             method: :post,
@@ -122,7 +113,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::CreditGrantEditParams
         def edit(params)
-          parsed, options = MetronomeSDK::Models::V1::CreditGrantEditParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::CreditGrantEditParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/credits/editGrant",
@@ -144,16 +135,13 @@ module MetronomeSDK
         # @param next_page [String] Query param: Cursor that indicates where the next page of results should start.
         #
         # @param credit_type_ids [Array<String>] Body param: A list of Metronome credit type IDs to fetch ledger entries for. If
-        # ...
         #
         # @param customer_ids [Array<String>] Body param: A list of Metronome customer IDs to fetch ledger entries for. If abs
-        # ...
         #
         # @param ending_before [Time] Body param: If supplied, ledger entries will only be returned with an
-        # effective\_ ...
+        # effective\_
         #
         # @param starting_on [Time] Body param: If supplied, only ledger entries effective at or after this time wil
-        # ...
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -161,7 +149,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::CreditGrantListEntriesParams
         def list_entries(params = {})
-          parsed, options = MetronomeSDK::Models::V1::CreditGrantListEntriesParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::CreditGrantListEntriesParams.dump_request(params)
           query_params = [:next_page]
           @client.request(
             method: :post,
@@ -189,7 +177,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::CreditGrantVoidParams
         def void(params)
-          parsed, options = MetronomeSDK::Models::V1::CreditGrantVoidParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::CreditGrantVoidParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/credits/voidGrant",

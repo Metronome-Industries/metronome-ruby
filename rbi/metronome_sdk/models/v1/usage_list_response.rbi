@@ -4,7 +4,17 @@ module MetronomeSDK
   module Models
     module V1
       class UsageListResponse < MetronomeSDK::Internal::Type::BaseModel
-        sig { returns(T::Array[MetronomeSDK::Models::V1::UsageListResponse::Data]) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Models::V1::UsageListResponse,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
+        sig do
+          returns(T::Array[MetronomeSDK::Models::V1::UsageListResponse::Data])
+        end
         attr_accessor :data
 
         sig { returns(T.nilable(String)) }
@@ -12,20 +22,36 @@ module MetronomeSDK
 
         sig do
           params(
-            data: T::Array[T.any(MetronomeSDK::Models::V1::UsageListResponse::Data, MetronomeSDK::Internal::AnyHash)],
+            data:
+              T::Array[
+                MetronomeSDK::Models::V1::UsageListResponse::Data::OrHash
+              ],
             next_page: T.nilable(String)
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
-        def self.new(data:, next_page:); end
+        def self.new(data:, next_page:)
+        end
 
         sig do
-          override
-            .returns({data: T::Array[MetronomeSDK::Models::V1::UsageListResponse::Data], next_page: T.nilable(String)})
+          override.returns(
+            {
+              data: T::Array[MetronomeSDK::Models::V1::UsageListResponse::Data],
+              next_page: T.nilable(String)
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class Data < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::UsageListResponse::Data,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
           sig { returns(String) }
           attr_accessor :billable_metric_id
 
@@ -61,8 +87,7 @@ module MetronomeSDK
               start_timestamp: Time,
               value: T.nilable(Float),
               groups: T::Hash[Symbol, T.nilable(Float)]
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             billable_metric_id:,
@@ -74,22 +99,24 @@ module MetronomeSDK
             # Values will be either a number or null. Null indicates that there were no
             # matches for the group_by value.
             groups: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  billable_metric_id: String,
-                  billable_metric_name: String,
-                  customer_id: String,
-                  end_timestamp: Time,
-                  start_timestamp: Time,
-                  value: T.nilable(Float),
-                  groups: T::Hash[Symbol, T.nilable(Float)]
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                billable_metric_id: String,
+                billable_metric_name: String,
+                customer_id: String,
+                end_timestamp: Time,
+                start_timestamp: Time,
+                value: T.nilable(Float),
+                groups: T::Hash[Symbol, T.nilable(Float)]
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
     end

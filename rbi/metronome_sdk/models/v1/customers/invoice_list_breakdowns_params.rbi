@@ -8,6 +8,14 @@ module MetronomeSDK
           extend MetronomeSDK::Internal::Type::RequestParameters::Converter
           include MetronomeSDK::Internal::Type::RequestParameters
 
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
           sig { returns(String) }
           attr_accessor :customer_id
 
@@ -54,10 +62,21 @@ module MetronomeSDK
 
           # Invoice sort order by issued_at, e.g. date_asc or date_desc. Defaults to
           # date_asc.
-          sig { returns(T.nilable(MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::Sort::OrSymbol)) }
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::Sort::OrSymbol
+              )
+            )
+          end
           attr_reader :sort
 
-          sig { params(sort: MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::Sort::OrSymbol).void }
+          sig do
+            params(
+              sort:
+                MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::Sort::OrSymbol
+            ).void
+          end
           attr_writer :sort
 
           # Invoice status, e.g. DRAFT or FINALIZED
@@ -68,14 +87,20 @@ module MetronomeSDK
           attr_writer :status
 
           # The granularity of the breakdowns to return. Defaults to day.
-          sig { returns(T.nilable(MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::WindowSize::OrSymbol)) }
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::WindowSize::OrSymbol
+              )
+            )
+          end
           attr_reader :window_size
 
           sig do
             params(
-              window_size: MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::WindowSize::OrSymbol
-            )
-              .void
+              window_size:
+                MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::WindowSize::OrSymbol
+            ).void
           end
           attr_writer :window_size
 
@@ -88,12 +113,13 @@ module MetronomeSDK
               limit: Integer,
               next_page: String,
               skip_zero_qty_line_items: T::Boolean,
-              sort: MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::Sort::OrSymbol,
+              sort:
+                MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::Sort::OrSymbol,
               status: String,
-              window_size: MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::WindowSize::OrSymbol,
-              request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-            )
-              .returns(T.attached_class)
+              window_size:
+                MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::WindowSize::OrSymbol,
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(T.attached_class)
           end
           def self.new(
             customer_id:,
@@ -122,26 +148,30 @@ module MetronomeSDK
             # The granularity of the breakdowns to return. Defaults to day.
             window_size: nil,
             request_options: {}
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  customer_id: String,
-                  ending_before: Time,
-                  starting_on: Time,
-                  credit_type_id: String,
-                  limit: Integer,
-                  next_page: String,
-                  skip_zero_qty_line_items: T::Boolean,
-                  sort: MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::Sort::OrSymbol,
-                  status: String,
-                  window_size: MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::WindowSize::OrSymbol,
-                  request_options: MetronomeSDK::RequestOptions
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                customer_id: String,
+                ending_before: Time,
+                starting_on: Time,
+                credit_type_id: String,
+                limit: Integer,
+                next_page: String,
+                skip_zero_qty_line_items: T::Boolean,
+                sort:
+                  MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::Sort::OrSymbol,
+                status: String,
+                window_size:
+                  MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::WindowSize::OrSymbol,
+                request_options: MetronomeSDK::RequestOptions
+              }
+            )
+          end
+          def to_hash
+          end
 
           # Invoice sort order by issued_at, e.g. date_asc or date_desc. Defaults to
           # date_asc.
@@ -149,19 +179,34 @@ module MetronomeSDK
             extend MetronomeSDK::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::Sort) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::Sort
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             DATE_ASC =
-              T.let(:date_asc, MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::Sort::TaggedSymbol)
+              T.let(
+                :date_asc,
+                MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::Sort::TaggedSymbol
+              )
             DATE_DESC =
-              T.let(:date_desc, MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::Sort::TaggedSymbol)
+              T.let(
+                :date_desc,
+                MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::Sort::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::Sort::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::Sort::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
 
           # The granularity of the breakdowns to return. Defaults to day.
@@ -169,21 +214,34 @@ module MetronomeSDK
             extend MetronomeSDK::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::WindowSize) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::WindowSize
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             HOUR =
-              T.let(:HOUR, MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::WindowSize::TaggedSymbol)
+              T.let(
+                :HOUR,
+                MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::WindowSize::TaggedSymbol
+              )
             DAY =
-              T.let(:DAY, MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::WindowSize::TaggedSymbol)
+              T.let(
+                :DAY,
+                MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::WindowSize::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(
-                  T::Array[MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::WindowSize::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::WindowSize::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
       end

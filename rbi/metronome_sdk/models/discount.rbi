@@ -3,19 +3,24 @@
 module MetronomeSDK
   module Models
     class Discount < MetronomeSDK::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias do
+          T.any(MetronomeSDK::Discount, MetronomeSDK::Internal::AnyHash)
+        end
+
       sig { returns(String) }
       attr_accessor :id
 
-      sig { returns(MetronomeSDK::Models::Discount::Product) }
+      sig { returns(MetronomeSDK::Discount::Product) }
       attr_reader :product
 
-      sig { params(product: T.any(MetronomeSDK::Models::Discount::Product, MetronomeSDK::Internal::AnyHash)).void }
+      sig { params(product: MetronomeSDK::Discount::Product::OrHash).void }
       attr_writer :product
 
-      sig { returns(MetronomeSDK::Models::SchedulePointInTime) }
+      sig { returns(MetronomeSDK::SchedulePointInTime) }
       attr_reader :schedule
 
-      sig { params(schedule: T.any(MetronomeSDK::Models::SchedulePointInTime, MetronomeSDK::Internal::AnyHash)).void }
+      sig { params(schedule: MetronomeSDK::SchedulePointInTime::OrHash).void }
       attr_writer :schedule
 
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
@@ -40,13 +45,12 @@ module MetronomeSDK
       sig do
         params(
           id: String,
-          product: T.any(MetronomeSDK::Models::Discount::Product, MetronomeSDK::Internal::AnyHash),
-          schedule: T.any(MetronomeSDK::Models::SchedulePointInTime, MetronomeSDK::Internal::AnyHash),
+          product: MetronomeSDK::Discount::Product::OrHash,
+          schedule: MetronomeSDK::SchedulePointInTime::OrHash,
           custom_fields: T::Hash[Symbol, String],
           name: String,
           netsuite_sales_order_id: String
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         id:,
@@ -56,23 +60,33 @@ module MetronomeSDK
         name: nil,
         # This field's availability is dependent on your client's configuration.
         netsuite_sales_order_id: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              product: MetronomeSDK::Models::Discount::Product,
-              schedule: MetronomeSDK::Models::SchedulePointInTime,
-              custom_fields: T::Hash[Symbol, String],
-              name: String,
-              netsuite_sales_order_id: String
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            product: MetronomeSDK::Discount::Product,
+            schedule: MetronomeSDK::SchedulePointInTime,
+            custom_fields: T::Hash[Symbol, String],
+            name: String,
+            netsuite_sales_order_id: String
+          }
+        )
+      end
+      def to_hash
+      end
 
       class Product < MetronomeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Discount::Product,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
         sig { returns(String) }
         attr_accessor :id
 
@@ -80,10 +94,12 @@ module MetronomeSDK
         attr_accessor :name
 
         sig { params(id: String, name: String).returns(T.attached_class) }
-        def self.new(id:, name:); end
+        def self.new(id:, name:)
+        end
 
-        sig { override.returns({id: String, name: String}) }
-        def to_hash; end
+        sig { override.returns({ id: String, name: String }) }
+        def to_hash
+        end
       end
     end
   end

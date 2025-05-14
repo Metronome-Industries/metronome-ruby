@@ -4,6 +4,14 @@ module MetronomeSDK
   module Models
     module V1
       class CreditLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V1::CreditLedgerEntry,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
         # an amount representing the change to the customer's credit balance
         sig { returns(Float) }
         attr_accessor :amount
@@ -41,8 +49,7 @@ module MetronomeSDK
             reason: String,
             running_balance: Float,
             invoice_id: T.nilable(String)
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # an amount representing the change to the customer's credit balance
@@ -59,22 +66,24 @@ module MetronomeSDK
           # deduction was consumed; if this entry is a grant, the Metronome ID of the
           # invoice where the grant's paid_amount was charged
           invoice_id: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                amount: Float,
-                created_by: String,
-                credit_grant_id: String,
-                effective_at: Time,
-                reason: String,
-                running_balance: Float,
-                invoice_id: T.nilable(String)
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              amount: Float,
+              created_by: String,
+              credit_grant_id: String,
+              effective_at: Time,
+              reason: String,
+              running_balance: Float,
+              invoice_id: T.nilable(String)
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

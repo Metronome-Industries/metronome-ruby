@@ -7,6 +7,14 @@ module MetronomeSDK
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V1::AuditLogListParams,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
         # RFC 3339 timestamp (exclusive). Cannot be used with 'next_page'.
         sig { returns(T.nilable(Time)) }
         attr_reader :ending_before
@@ -45,10 +53,18 @@ module MetronomeSDK
         attr_writer :resource_type
 
         # Sort order by timestamp, e.g. date_asc or date_desc. Defaults to date_asc.
-        sig { returns(T.nilable(MetronomeSDK::Models::V1::AuditLogListParams::Sort::OrSymbol)) }
+        sig do
+          returns(
+            T.nilable(MetronomeSDK::V1::AuditLogListParams::Sort::OrSymbol)
+          )
+        end
         attr_reader :sort
 
-        sig { params(sort: MetronomeSDK::Models::V1::AuditLogListParams::Sort::OrSymbol).void }
+        sig do
+          params(
+            sort: MetronomeSDK::V1::AuditLogListParams::Sort::OrSymbol
+          ).void
+        end
         attr_writer :sort
 
         # RFC 3339 timestamp of the earliest audit log to return. Cannot be used with
@@ -66,11 +82,10 @@ module MetronomeSDK
             next_page: String,
             resource_id: String,
             resource_type: String,
-            sort: MetronomeSDK::Models::V1::AuditLogListParams::Sort::OrSymbol,
+            sort: MetronomeSDK::V1::AuditLogListParams::Sort::OrSymbol,
             starting_on: Time,
-            request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # RFC 3339 timestamp (exclusive). Cannot be used with 'next_page'.
@@ -91,36 +106,54 @@ module MetronomeSDK
           # 'next_page'.
           starting_on: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                ending_before: Time,
-                limit: Integer,
-                next_page: String,
-                resource_id: String,
-                resource_type: String,
-                sort: MetronomeSDK::Models::V1::AuditLogListParams::Sort::OrSymbol,
-                starting_on: Time,
-                request_options: MetronomeSDK::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              ending_before: Time,
+              limit: Integer,
+              next_page: String,
+              resource_id: String,
+              resource_type: String,
+              sort: MetronomeSDK::V1::AuditLogListParams::Sort::OrSymbol,
+              starting_on: Time,
+              request_options: MetronomeSDK::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
 
         # Sort order by timestamp, e.g. date_asc or date_desc. Defaults to date_asc.
         module Sort
           extend MetronomeSDK::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, MetronomeSDK::Models::V1::AuditLogListParams::Sort) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, MetronomeSDK::V1::AuditLogListParams::Sort)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          DATE_ASC = T.let(:date_asc, MetronomeSDK::Models::V1::AuditLogListParams::Sort::TaggedSymbol)
-          DATE_DESC = T.let(:date_desc, MetronomeSDK::Models::V1::AuditLogListParams::Sort::TaggedSymbol)
+          DATE_ASC =
+            T.let(
+              :date_asc,
+              MetronomeSDK::V1::AuditLogListParams::Sort::TaggedSymbol
+            )
+          DATE_DESC =
+            T.let(
+              :date_desc,
+              MetronomeSDK::V1::AuditLogListParams::Sort::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[MetronomeSDK::Models::V1::AuditLogListParams::Sort::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[MetronomeSDK::V1::AuditLogListParams::Sort::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
       end
     end

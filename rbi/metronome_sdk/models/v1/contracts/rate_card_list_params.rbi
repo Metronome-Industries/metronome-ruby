@@ -8,6 +8,14 @@ module MetronomeSDK
           extend MetronomeSDK::Internal::Type::RequestParameters::Converter
           include MetronomeSDK::Internal::Type::RequestParameters
 
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::Contracts::RateCardListParams,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
           # Max number of results that should be returned
           sig { returns(T.nilable(Integer)) }
           attr_reader :limit
@@ -33,9 +41,8 @@ module MetronomeSDK
               limit: Integer,
               next_page: String,
               body: T.anything,
-              request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-            )
-              .returns(T.attached_class)
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(T.attached_class)
           end
           def self.new(
             # Max number of results that should be returned
@@ -44,19 +51,21 @@ module MetronomeSDK
             next_page: nil,
             body: nil,
             request_options: {}
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  limit: Integer,
-                  next_page: String,
-                  body: T.anything,
-                  request_options: MetronomeSDK::RequestOptions
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                limit: Integer,
+                next_page: String,
+                body: T.anything,
+                request_options: MetronomeSDK::RequestOptions
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
     end

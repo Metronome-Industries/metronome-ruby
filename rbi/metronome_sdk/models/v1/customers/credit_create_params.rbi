@@ -8,18 +8,27 @@ module MetronomeSDK
           extend MetronomeSDK::Internal::Type::RequestParameters::Converter
           include MetronomeSDK::Internal::Type::RequestParameters
 
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::Customers::CreditCreateParams,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
           # Schedule for distributing the credit to the customer.
-          sig { returns(MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule) }
+          sig do
+            returns(
+              MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule
+            )
+          end
           attr_reader :access_schedule
 
           sig do
             params(
-              access_schedule: T.any(
-                MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule,
-                MetronomeSDK::Internal::AnyHash
-              )
-            )
-              .void
+              access_schedule:
+                MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule::OrHash
+            ).void
           end
           attr_writer :access_schedule
 
@@ -85,10 +94,21 @@ module MetronomeSDK
           sig { params(netsuite_sales_order_id: String).void }
           attr_writer :netsuite_sales_order_id
 
-          sig { returns(T.nilable(MetronomeSDK::Models::V1::Customers::CreditCreateParams::RateType::OrSymbol)) }
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::Customers::CreditCreateParams::RateType::OrSymbol
+              )
+            )
+          end
           attr_reader :rate_type
 
-          sig { params(rate_type: MetronomeSDK::Models::V1::Customers::CreditCreateParams::RateType::OrSymbol).void }
+          sig do
+            params(
+              rate_type:
+                MetronomeSDK::V1::Customers::CreditCreateParams::RateType::OrSymbol
+            ).void
+          end
           attr_writer :rate_type
 
           # This field's availability is dependent on your client's configuration.
@@ -110,10 +130,8 @@ module MetronomeSDK
 
           sig do
             params(
-              access_schedule: T.any(
-                MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule,
-                MetronomeSDK::Internal::AnyHash
-              ),
+              access_schedule:
+                MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule::OrHash,
               customer_id: String,
               priority: Float,
               product_id: String,
@@ -124,12 +142,12 @@ module MetronomeSDK
               description: String,
               name: String,
               netsuite_sales_order_id: String,
-              rate_type: MetronomeSDK::Models::V1::Customers::CreditCreateParams::RateType::OrSymbol,
+              rate_type:
+                MetronomeSDK::V1::Customers::CreditCreateParams::RateType::OrSymbol,
               salesforce_opportunity_id: String,
               uniqueness_key: String,
-              request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-            )
-              .returns(T.attached_class)
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(T.attached_class)
           end
           def self.new(
             # Schedule for distributing the credit to the customer.
@@ -164,33 +182,51 @@ module MetronomeSDK
             # error.
             uniqueness_key: nil,
             request_options: {}
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  access_schedule: MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule,
-                  customer_id: String,
-                  priority: Float,
-                  product_id: String,
-                  applicable_contract_ids: T::Array[String],
-                  applicable_product_ids: T::Array[String],
-                  applicable_product_tags: T::Array[String],
-                  custom_fields: T::Hash[Symbol, String],
-                  description: String,
-                  name: String,
-                  netsuite_sales_order_id: String,
-                  rate_type: MetronomeSDK::Models::V1::Customers::CreditCreateParams::RateType::OrSymbol,
-                  salesforce_opportunity_id: String,
-                  uniqueness_key: String,
-                  request_options: MetronomeSDK::RequestOptions
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                access_schedule:
+                  MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule,
+                customer_id: String,
+                priority: Float,
+                product_id: String,
+                applicable_contract_ids: T::Array[String],
+                applicable_product_ids: T::Array[String],
+                applicable_product_tags: T::Array[String],
+                custom_fields: T::Hash[Symbol, String],
+                description: String,
+                name: String,
+                netsuite_sales_order_id: String,
+                rate_type:
+                  MetronomeSDK::V1::Customers::CreditCreateParams::RateType::OrSymbol,
+                salesforce_opportunity_id: String,
+                uniqueness_key: String,
+                request_options: MetronomeSDK::RequestOptions
+              }
+            )
+          end
+          def to_hash
+          end
 
           class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
-            sig { returns(T::Array[MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem]) }
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig do
+              returns(
+                T::Array[
+                  MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem
+                ]
+              )
+            end
             attr_accessor :schedule_items
 
             # Defaults to USD (cents) if not passed
@@ -203,33 +239,43 @@ module MetronomeSDK
             # Schedule for distributing the credit to the customer.
             sig do
               params(
-                schedule_items: T::Array[
-                  T.any(
-                    MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem,
-                    MetronomeSDK::Internal::AnyHash
-                  )
-                ],
+                schedule_items:
+                  T::Array[
+                    MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem::OrHash
+                  ],
                 credit_type_id: String
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
             def self.new(
               schedule_items:,
               # Defaults to USD (cents) if not passed
               credit_type_id: nil
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    schedule_items: T::Array[MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem],
-                    credit_type_id: String
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  schedule_items:
+                    T::Array[
+                      MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem
+                    ],
+                  credit_type_id: String
+                }
+              )
+            end
+            def to_hash
+            end
 
             class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
               sig { returns(Float) }
               attr_accessor :amount
 
@@ -241,16 +287,29 @@ module MetronomeSDK
               sig { returns(Time) }
               attr_accessor :starting_at
 
-              sig { params(amount: Float, ending_before: Time, starting_at: Time).returns(T.attached_class) }
+              sig do
+                params(
+                  amount: Float,
+                  ending_before: Time,
+                  starting_at: Time
+                ).returns(T.attached_class)
+              end
               def self.new(
                 amount:,
                 # RFC 3339 timestamp (exclusive)
                 ending_before:,
                 # RFC 3339 timestamp (inclusive)
                 starting_at:
-              ); end
-              sig { override.returns({amount: Float, ending_before: Time, starting_at: Time}) }
-              def to_hash; end
+              )
+              end
+
+              sig do
+                override.returns(
+                  { amount: Float, ending_before: Time, starting_at: Time }
+                )
+              end
+              def to_hash
+              end
             end
           end
 
@@ -258,18 +317,34 @@ module MetronomeSDK
             extend MetronomeSDK::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, MetronomeSDK::Models::V1::Customers::CreditCreateParams::RateType) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V1::Customers::CreditCreateParams::RateType
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             COMMIT_RATE =
-              T.let(:COMMIT_RATE, MetronomeSDK::Models::V1::Customers::CreditCreateParams::RateType::TaggedSymbol)
+              T.let(
+                :COMMIT_RATE,
+                MetronomeSDK::V1::Customers::CreditCreateParams::RateType::TaggedSymbol
+              )
             LIST_RATE =
-              T.let(:LIST_RATE, MetronomeSDK::Models::V1::Customers::CreditCreateParams::RateType::TaggedSymbol)
+              T.let(
+                :LIST_RATE,
+                MetronomeSDK::V1::Customers::CreditCreateParams::RateType::TaggedSymbol
+              )
 
             sig do
-              override.returns(T::Array[MetronomeSDK::Models::V1::Customers::CreditCreateParams::RateType::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::Customers::CreditCreateParams::RateType::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
       end

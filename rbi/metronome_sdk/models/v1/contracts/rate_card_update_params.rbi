@@ -8,6 +8,14 @@ module MetronomeSDK
           extend MetronomeSDK::Internal::Type::RequestParameters::Converter
           include MetronomeSDK::Internal::Type::RequestParameters
 
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::Contracts::RateCardUpdateParams,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
           # ID of the rate card to update
           sig { returns(String) }
           attr_accessor :rate_card_id
@@ -15,14 +23,24 @@ module MetronomeSDK
           # Reference this alias when creating a contract. If the same alias is assigned to
           # multiple rate cards, it will reference the rate card to which it was most
           # recently assigned. It is not exposed to end customers.
-          sig { returns(T.nilable(T::Array[MetronomeSDK::Models::V1::Contracts::RateCardUpdateParams::Alias])) }
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::V1::Contracts::RateCardUpdateParams::Alias
+                ]
+              )
+            )
+          end
           attr_reader :aliases
 
           sig do
             params(
-              aliases: T::Array[T.any(MetronomeSDK::Models::V1::Contracts::RateCardUpdateParams::Alias, MetronomeSDK::Internal::AnyHash)]
-            )
-              .void
+              aliases:
+                T::Array[
+                  MetronomeSDK::V1::Contracts::RateCardUpdateParams::Alias::OrHash
+                ]
+            ).void
           end
           attr_writer :aliases
 
@@ -42,12 +60,14 @@ module MetronomeSDK
           sig do
             params(
               rate_card_id: String,
-              aliases: T::Array[T.any(MetronomeSDK::Models::V1::Contracts::RateCardUpdateParams::Alias, MetronomeSDK::Internal::AnyHash)],
+              aliases:
+                T::Array[
+                  MetronomeSDK::V1::Contracts::RateCardUpdateParams::Alias::OrHash
+                ],
               description: String,
               name: String,
-              request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-            )
-              .returns(T.attached_class)
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(T.attached_class)
           end
           def self.new(
             # ID of the rate card to update
@@ -60,22 +80,35 @@ module MetronomeSDK
             # Used only in UI/API. It is not exposed to end customers.
             name: nil,
             request_options: {}
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  rate_card_id: String,
-                  aliases: T::Array[MetronomeSDK::Models::V1::Contracts::RateCardUpdateParams::Alias],
-                  description: String,
-                  name: String,
-                  request_options: MetronomeSDK::RequestOptions
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                rate_card_id: String,
+                aliases:
+                  T::Array[
+                    MetronomeSDK::V1::Contracts::RateCardUpdateParams::Alias
+                  ],
+                description: String,
+                name: String,
+                request_options: MetronomeSDK::RequestOptions
+              }
+            )
+          end
+          def to_hash
+          end
 
           class Alias < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::Contracts::RateCardUpdateParams::Alias,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
             sig { returns(String) }
             attr_accessor :name
 
@@ -91,11 +124,23 @@ module MetronomeSDK
             sig { params(starting_at: Time).void }
             attr_writer :starting_at
 
-            sig { params(name: String, ending_before: Time, starting_at: Time).returns(T.attached_class) }
-            def self.new(name:, ending_before: nil, starting_at: nil); end
+            sig do
+              params(
+                name: String,
+                ending_before: Time,
+                starting_at: Time
+              ).returns(T.attached_class)
+            end
+            def self.new(name:, ending_before: nil, starting_at: nil)
+            end
 
-            sig { override.returns({name: String, ending_before: Time, starting_at: Time}) }
-            def to_hash; end
+            sig do
+              override.returns(
+                { name: String, ending_before: Time, starting_at: Time }
+              )
+            end
+            def to_hash
+            end
           end
         end
       end

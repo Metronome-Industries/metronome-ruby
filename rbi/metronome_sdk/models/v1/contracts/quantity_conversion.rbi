@@ -5,12 +5,24 @@ module MetronomeSDK
     module V1
       module Contracts
         class QuantityConversion < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::Contracts::QuantityConversion,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
           # The factor to multiply or divide the quantity by.
           sig { returns(Float) }
           attr_accessor :conversion_factor
 
           # The operation to perform on the quantity
-          sig { returns(MetronomeSDK::Models::V1::Contracts::QuantityConversion::Operation::OrSymbol) }
+          sig do
+            returns(
+              MetronomeSDK::V1::Contracts::QuantityConversion::Operation::OrSymbol
+            )
+          end
           attr_accessor :operation
 
           # Optional name for this conversion.
@@ -30,10 +42,10 @@ module MetronomeSDK
           sig do
             params(
               conversion_factor: Float,
-              operation: MetronomeSDK::Models::V1::Contracts::QuantityConversion::Operation::OrSymbol,
+              operation:
+                MetronomeSDK::V1::Contracts::QuantityConversion::Operation::OrSymbol,
               name: String
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             # The factor to multiply or divide the quantity by.
@@ -42,36 +54,55 @@ module MetronomeSDK
             operation:,
             # Optional name for this conversion.
             name: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  conversion_factor: Float,
-                  operation: MetronomeSDK::Models::V1::Contracts::QuantityConversion::Operation::OrSymbol,
-                  name: String
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                conversion_factor: Float,
+                operation:
+                  MetronomeSDK::V1::Contracts::QuantityConversion::Operation::OrSymbol,
+                name: String
+              }
+            )
+          end
+          def to_hash
+          end
 
           # The operation to perform on the quantity
           module Operation
             extend MetronomeSDK::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, MetronomeSDK::Models::V1::Contracts::QuantityConversion::Operation) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V1::Contracts::QuantityConversion::Operation
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             MULTIPLY =
-              T.let(:MULTIPLY, MetronomeSDK::Models::V1::Contracts::QuantityConversion::Operation::TaggedSymbol)
-            DIVIDE = T.let(:DIVIDE, MetronomeSDK::Models::V1::Contracts::QuantityConversion::Operation::TaggedSymbol)
+              T.let(
+                :MULTIPLY,
+                MetronomeSDK::V1::Contracts::QuantityConversion::Operation::TaggedSymbol
+              )
+            DIVIDE =
+              T.let(
+                :DIVIDE,
+                MetronomeSDK::V1::Contracts::QuantityConversion::Operation::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[MetronomeSDK::Models::V1::Contracts::QuantityConversion::Operation::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::Contracts::QuantityConversion::Operation::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
       end

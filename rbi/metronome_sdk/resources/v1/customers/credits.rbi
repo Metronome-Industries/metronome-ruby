@@ -8,10 +8,8 @@ module MetronomeSDK
           # Create a new credit at the customer level.
           sig do
             params(
-              access_schedule: T.any(
-                MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule,
-                MetronomeSDK::Internal::AnyHash
-              ),
+              access_schedule:
+                MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule::OrHash,
               customer_id: String,
               priority: Float,
               product_id: String,
@@ -22,12 +20,12 @@ module MetronomeSDK
               description: String,
               name: String,
               netsuite_sales_order_id: String,
-              rate_type: MetronomeSDK::Models::V1::Customers::CreditCreateParams::RateType::OrSymbol,
+              rate_type:
+                MetronomeSDK::V1::Customers::CreditCreateParams::RateType::OrSymbol,
               salesforce_opportunity_id: String,
               uniqueness_key: String,
-              request_options: MetronomeSDK::RequestOpts
-            )
-              .returns(MetronomeSDK::Models::V1::Customers::CreditCreateResponse)
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(MetronomeSDK::Models::V1::Customers::CreditCreateResponse)
           end
           def create(
             # Schedule for distributing the credit to the customer.
@@ -62,7 +60,9 @@ module MetronomeSDK
             # error.
             uniqueness_key: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # List credits.
           sig do
             params(
@@ -76,9 +76,8 @@ module MetronomeSDK
               include_ledgers: T::Boolean,
               next_page: String,
               starting_at: Time,
-              request_options: MetronomeSDK::RequestOpts
-            )
-              .returns(MetronomeSDK::Models::V1::Customers::CreditListResponse)
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(MetronomeSDK::Models::V1::Customers::CreditListResponse)
           end
           def list(
             customer_id:,
@@ -102,7 +101,9 @@ module MetronomeSDK
             # Include only credits that have any access on or after the provided date
             starting_at: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # Pull forward the end date of a credit. Use the "edit a credit" endpoint to
           # extend the end date of a credit, or to make other edits to the credit.
           sig do
@@ -110,9 +111,10 @@ module MetronomeSDK
               access_ending_before: Time,
               credit_id: String,
               customer_id: String,
-              request_options: MetronomeSDK::RequestOpts
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(
+              MetronomeSDK::Models::V1::Customers::CreditUpdateEndDateResponse
             )
-              .returns(MetronomeSDK::Models::V1::Customers::CreditUpdateEndDateResponse)
           end
           def update_end_date(
             # RFC 3339 timestamp indicating when access to the credit will end and it will no
@@ -123,10 +125,13 @@ module MetronomeSDK
             # ID of the customer whose credit is to be updated
             customer_id:,
             request_options: {}
-          ); end
+          )
+          end
+
           # @api private
           sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
-          def self.new(client:); end
+          def self.new(client:)
+          end
         end
       end
     end

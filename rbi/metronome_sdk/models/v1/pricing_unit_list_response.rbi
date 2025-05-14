@@ -4,6 +4,14 @@ module MetronomeSDK
   module Models
     module V1
       class PricingUnitListResponse < MetronomeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Models::V1::PricingUnitListResponse,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
         sig { returns(T.nilable(String)) }
         attr_reader :id
 
@@ -22,11 +30,21 @@ module MetronomeSDK
         sig { params(name: String).void }
         attr_writer :name
 
-        sig { params(id: String, is_currency: T::Boolean, name: String).returns(T.attached_class) }
-        def self.new(id: nil, is_currency: nil, name: nil); end
+        sig do
+          params(id: String, is_currency: T::Boolean, name: String).returns(
+            T.attached_class
+          )
+        end
+        def self.new(id: nil, is_currency: nil, name: nil)
+        end
 
-        sig { override.returns({id: String, is_currency: T::Boolean, name: String}) }
-        def to_hash; end
+        sig do
+          override.returns(
+            { id: String, is_currency: T::Boolean, name: String }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

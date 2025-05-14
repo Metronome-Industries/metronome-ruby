@@ -7,6 +7,8 @@ module MetronomeSDK
       #
       # @abstract
       class BaseClient
+        extend MetronomeSDK::Internal::Util::SorbetRuntimeSupport
+
         # from whatwg fetch spec
         MAX_REDIRECTS = 20
 
@@ -151,6 +153,27 @@ module MetronomeSDK
           end
         end
 
+        # @return [URI::Generic]
+        attr_reader :base_url
+
+        # @return [Float]
+        attr_reader :timeout
+
+        # @return [Integer]
+        attr_reader :max_retries
+
+        # @return [Float]
+        attr_reader :initial_retry_delay
+
+        # @return [Float]
+        attr_reader :max_retry_delay
+
+        # @return [Hash{String=>String}]
+        attr_reader :headers
+
+        # @return [String, nil]
+        attr_reader :idempotency_header
+
         # @api private
         # @return [MetronomeSDK::Internal::Transport::PooledNetRequester]
         attr_reader :requester
@@ -182,10 +205,11 @@ module MetronomeSDK
             },
             headers
           )
-          @base_url = MetronomeSDK::Internal::Util.parse_uri(base_url)
+          @base_url_components = MetronomeSDK::Internal::Util.parse_uri(base_url)
+          @base_url = MetronomeSDK::Internal::Util.unparse_uri(@base_url_components)
           @idempotency_header = idempotency_header&.to_s&.downcase
-          @max_retries = max_retries
           @timeout = timeout
+          @max_retries = max_retries
           @initial_retry_delay = initial_retry_delay
           @max_retry_delay = max_retry_delay
         end
@@ -261,7 +285,7 @@ module MetronomeSDK
             headers["x-stainless-retry-count"] = "0"
           end
 
-          timeout = opts.fetch(:timeout, @timeout).to_f.clamp((0..))
+          timeout = opts.fetch(:timeout, @timeout).to_f.clamp(0..)
           unless headers.key?("x-stainless-timeout") || timeout.zero?
             headers["x-stainless-timeout"] = timeout.to_s
           end
@@ -276,10 +300,14 @@ module MetronomeSDK
               MetronomeSDK::Internal::Util.deep_merge(*[req[:body], opts[:extra_body]].compact)
             end
 
+          url = MetronomeSDK::Internal::Util.join_parsed_uri(
+            @base_url_components,
+            {**req, path: path, query: query}
+          )
           headers, encoded = MetronomeSDK::Internal::Util.encode_content(headers, body)
           {
             method: method,
-            url: MetronomeSDK::Internal::Util.join_parsed_uri(@base_url, {**req, path: path, query: query}),
+            url: url,
             headers: headers,
             body: encoded,
             max_retries: opts.fetch(:max_retries, @max_retries),
@@ -461,9 +489,9 @@ module MetronomeSDK
 
           decoded = MetronomeSDK::Internal::Util.decode_content(response, stream: stream)
           case req
-          in { stream: Class => st }
+          in {stream: Class => st}
             st.new(model: model, url: url, status: status, response: response, stream: decoded)
-          in { page: Class => page }
+          in {page: Class => page}
             page.new(client: self, req: req, headers: response, page_data: decoded)
           else
             unwrapped = MetronomeSDK::Internal::Util.dig(decoded, req[:unwrap])
@@ -476,9 +504,53 @@ module MetronomeSDK
         # @return [String]
         def inspect
           # rubocop:disable Layout/LineLength
-          base_url = MetronomeSDK::Internal::Util.unparse_uri(@base_url)
-          "#<#{self.class.name}:0x#{object_id.to_s(16)} base_url=#{base_url} max_retries=#{@max_retries} timeout=#{@timeout}>"
+          "#<#{self.class.name}:0x#{object_id.to_s(16)} base_url=#{@base_url} max_retries=#{@max_retries} timeout=#{@timeout}>"
           # rubocop:enable Layout/LineLength
+        end
+
+        define_sorbet_constant!(:RequestComponents) do
+          T.type_alias do
+            {
+              method: Symbol,
+              path: T.any(String, T::Array[String]),
+              query: T.nilable(T::Hash[String, T.nilable(T.any(T::Array[String], String))]),
+              headers: T.nilable(
+                T::Hash[String,
+                        T.nilable(
+                          T.any(
+                            String,
+                            Integer,
+                            T::Array[T.nilable(T.any(String, Integer))]
+                          )
+                        )]
+              ),
+              body: T.nilable(T.anything),
+              unwrap: T.nilable(
+                T.any(
+                  Symbol,
+                  Integer,
+                  T::Array[T.any(Symbol, Integer)],
+                  T.proc.params(arg0: T.anything).returns(T.anything)
+                )
+              ),
+              page: T.nilable(T::Class[MetronomeSDK::Internal::Type::BasePage[MetronomeSDK::Internal::Type::BaseModel]]),
+              stream: T.nilable(T::Class[T.anything]),
+              model: T.nilable(MetronomeSDK::Internal::Type::Converter::Input),
+              options: T.nilable(MetronomeSDK::RequestOptions::OrHash)
+            }
+          end
+        end
+        define_sorbet_constant!(:RequestInput) do
+          T.type_alias do
+            {
+              method: Symbol,
+              url: URI::Generic,
+              headers: T::Hash[String, String],
+              body: T.anything,
+              max_retries: Integer,
+              timeout: Float
+            }
+          end
         end
       end
     end

@@ -4,6 +4,11 @@ module MetronomeSDK
   module Models
     module V1
       class PlanDetail < MetronomeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(MetronomeSDK::V1::PlanDetail, MetronomeSDK::Internal::AnyHash)
+          end
+
         sig { returns(String) }
         attr_accessor :id
 
@@ -13,14 +18,18 @@ module MetronomeSDK
         sig { returns(String) }
         attr_accessor :name
 
-        sig { returns(T.nilable(T::Array[MetronomeSDK::Models::V1::PlanDetail::CreditGrant])) }
+        sig do
+          returns(
+            T.nilable(T::Array[MetronomeSDK::V1::PlanDetail::CreditGrant])
+          )
+        end
         attr_reader :credit_grants
 
         sig do
           params(
-            credit_grants: T::Array[T.any(MetronomeSDK::Models::V1::PlanDetail::CreditGrant, MetronomeSDK::Internal::AnyHash)]
-          )
-            .void
+            credit_grants:
+              T::Array[MetronomeSDK::V1::PlanDetail::CreditGrant::OrHash]
+          ).void
         end
         attr_writer :credit_grants
 
@@ -30,25 +39,30 @@ module MetronomeSDK
         sig { params(description: String).void }
         attr_writer :description
 
-        sig { returns(T.nilable(T::Array[MetronomeSDK::Models::V1::PlanDetail::Minimum])) }
+        sig do
+          returns(T.nilable(T::Array[MetronomeSDK::V1::PlanDetail::Minimum]))
+        end
         attr_reader :minimums
 
         sig do
           params(
-            minimums: T::Array[T.any(MetronomeSDK::Models::V1::PlanDetail::Minimum, MetronomeSDK::Internal::AnyHash)]
-          )
-            .void
+            minimums: T::Array[MetronomeSDK::V1::PlanDetail::Minimum::OrHash]
+          ).void
         end
         attr_writer :minimums
 
-        sig { returns(T.nilable(T::Array[MetronomeSDK::Models::V1::PlanDetail::OverageRate])) }
+        sig do
+          returns(
+            T.nilable(T::Array[MetronomeSDK::V1::PlanDetail::OverageRate])
+          )
+        end
         attr_reader :overage_rates
 
         sig do
           params(
-            overage_rates: T::Array[T.any(MetronomeSDK::Models::V1::PlanDetail::OverageRate, MetronomeSDK::Internal::AnyHash)]
-          )
-            .void
+            overage_rates:
+              T::Array[MetronomeSDK::V1::PlanDetail::OverageRate::OrHash]
+          ).void
         end
         attr_writer :overage_rates
 
@@ -57,12 +71,13 @@ module MetronomeSDK
             id: String,
             custom_fields: T::Hash[Symbol, String],
             name: String,
-            credit_grants: T::Array[T.any(MetronomeSDK::Models::V1::PlanDetail::CreditGrant, MetronomeSDK::Internal::AnyHash)],
+            credit_grants:
+              T::Array[MetronomeSDK::V1::PlanDetail::CreditGrant::OrHash],
             description: String,
-            minimums: T::Array[T.any(MetronomeSDK::Models::V1::PlanDetail::Minimum, MetronomeSDK::Internal::AnyHash)],
-            overage_rates: T::Array[T.any(MetronomeSDK::Models::V1::PlanDetail::OverageRate, MetronomeSDK::Internal::AnyHash)]
-          )
-            .returns(T.attached_class)
+            minimums: T::Array[MetronomeSDK::V1::PlanDetail::Minimum::OrHash],
+            overage_rates:
+              T::Array[MetronomeSDK::V1::PlanDetail::OverageRate::OrHash]
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -76,47 +91,54 @@ module MetronomeSDK
         end
 
         sig do
-          override
-            .returns(
-              {
-                id: String,
-                custom_fields: T::Hash[Symbol, String],
-                name: String,
-                credit_grants: T::Array[MetronomeSDK::Models::V1::PlanDetail::CreditGrant],
-                description: String,
-                minimums: T::Array[MetronomeSDK::Models::V1::PlanDetail::Minimum],
-                overage_rates: T::Array[MetronomeSDK::Models::V1::PlanDetail::OverageRate]
-              }
-            )
+          override.returns(
+            {
+              id: String,
+              custom_fields: T::Hash[Symbol, String],
+              name: String,
+              credit_grants:
+                T::Array[MetronomeSDK::V1::PlanDetail::CreditGrant],
+              description: String,
+              minimums: T::Array[MetronomeSDK::V1::PlanDetail::Minimum],
+              overage_rates: T::Array[MetronomeSDK::V1::PlanDetail::OverageRate]
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class CreditGrant < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::PlanDetail::CreditGrant,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
           sig { returns(Float) }
           attr_accessor :amount_granted
 
-          sig { returns(MetronomeSDK::Models::CreditTypeData) }
+          sig { returns(MetronomeSDK::CreditTypeData) }
           attr_reader :amount_granted_credit_type
 
           sig do
             params(
-              amount_granted_credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash)
-            )
-              .void
+              amount_granted_credit_type: MetronomeSDK::CreditTypeData::OrHash
+            ).void
           end
           attr_writer :amount_granted_credit_type
 
           sig { returns(Float) }
           attr_accessor :amount_paid
 
-          sig { returns(MetronomeSDK::Models::CreditTypeData) }
+          sig { returns(MetronomeSDK::CreditTypeData) }
           attr_reader :amount_paid_credit_type
 
           sig do
             params(
-              amount_paid_credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash)
-            )
-              .void
+              amount_paid_credit_type: MetronomeSDK::CreditTypeData::OrHash
+            ).void
           end
           attr_writer :amount_paid_credit_type
 
@@ -153,9 +175,9 @@ module MetronomeSDK
           sig do
             params(
               amount_granted: Float,
-              amount_granted_credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash),
+              amount_granted_credit_type: MetronomeSDK::CreditTypeData::OrHash,
               amount_paid: Float,
-              amount_paid_credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash),
+              amount_paid_credit_type: MetronomeSDK::CreditTypeData::OrHash,
               effective_duration: Float,
               name: String,
               priority: String,
@@ -163,8 +185,7 @@ module MetronomeSDK
               reason: String,
               recurrence_duration: Float,
               recurrence_interval: Float
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             amount_granted:,
@@ -178,33 +199,43 @@ module MetronomeSDK
             reason: nil,
             recurrence_duration: nil,
             recurrence_interval: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  amount_granted: Float,
-                  amount_granted_credit_type: MetronomeSDK::Models::CreditTypeData,
-                  amount_paid: Float,
-                  amount_paid_credit_type: MetronomeSDK::Models::CreditTypeData,
-                  effective_duration: Float,
-                  name: String,
-                  priority: String,
-                  send_invoice: T::Boolean,
-                  reason: String,
-                  recurrence_duration: Float,
-                  recurrence_interval: Float
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                amount_granted: Float,
+                amount_granted_credit_type: MetronomeSDK::CreditTypeData,
+                amount_paid: Float,
+                amount_paid_credit_type: MetronomeSDK::CreditTypeData,
+                effective_duration: Float,
+                name: String,
+                priority: String,
+                send_invoice: T::Boolean,
+                reason: String,
+                recurrence_duration: Float,
+                recurrence_interval: Float
+              }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Minimum < MetronomeSDK::Internal::Type::BaseModel
-          sig { returns(MetronomeSDK::Models::CreditTypeData) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::PlanDetail::Minimum,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          sig { returns(MetronomeSDK::CreditTypeData) }
           attr_reader :credit_type
 
-          sig { params(credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash)).void }
+          sig { params(credit_type: MetronomeSDK::CreditTypeData::OrHash).void }
           attr_writer :credit_type
 
           sig { returns(String) }
@@ -220,12 +251,11 @@ module MetronomeSDK
 
           sig do
             params(
-              credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash),
+              credit_type: MetronomeSDK::CreditTypeData::OrHash,
               name: String,
               start_period: Float,
               value: Float
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             credit_type:,
@@ -234,28 +264,43 @@ module MetronomeSDK
             # applies.
             start_period:,
             value:
-          ); end
-          sig do
-            override
-              .returns(
-                {credit_type: MetronomeSDK::Models::CreditTypeData, name: String, start_period: Float, value: Float}
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                credit_type: MetronomeSDK::CreditTypeData,
+                name: String,
+                start_period: Float,
+                value: Float
+              }
+            )
+          end
+          def to_hash
+          end
         end
 
         class OverageRate < MetronomeSDK::Internal::Type::BaseModel
-          sig { returns(MetronomeSDK::Models::CreditTypeData) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::PlanDetail::OverageRate,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          sig { returns(MetronomeSDK::CreditTypeData) }
           attr_reader :credit_type
 
-          sig { params(credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash)).void }
+          sig { params(credit_type: MetronomeSDK::CreditTypeData::OrHash).void }
           attr_writer :credit_type
 
-          sig { returns(MetronomeSDK::Models::CreditTypeData) }
+          sig { returns(MetronomeSDK::CreditTypeData) }
           attr_reader :fiat_credit_type
 
           sig do
-            params(fiat_credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash)).void
+            params(fiat_credit_type: MetronomeSDK::CreditTypeData::OrHash).void
           end
           attr_writer :fiat_credit_type
 
@@ -269,12 +314,11 @@ module MetronomeSDK
 
           sig do
             params(
-              credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash),
-              fiat_credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash),
+              credit_type: MetronomeSDK::CreditTypeData::OrHash,
+              fiat_credit_type: MetronomeSDK::CreditTypeData::OrHash,
               start_period: Float,
               to_fiat_conversion_factor: Float
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             credit_type:,
@@ -283,19 +327,21 @@ module MetronomeSDK
             # applies.
             start_period:,
             to_fiat_conversion_factor:
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  credit_type: MetronomeSDK::Models::CreditTypeData,
-                  fiat_credit_type: MetronomeSDK::Models::CreditTypeData,
-                  start_period: Float,
-                  to_fiat_conversion_factor: Float
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                credit_type: MetronomeSDK::CreditTypeData,
+                fiat_credit_type: MetronomeSDK::CreditTypeData,
+                start_period: Float,
+                to_fiat_conversion_factor: Float
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
     end

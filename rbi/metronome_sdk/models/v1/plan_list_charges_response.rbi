@@ -4,16 +4,28 @@ module MetronomeSDK
   module Models
     module V1
       class PlanListChargesResponse < MetronomeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Models::V1::PlanListChargesResponse,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
         sig { returns(String) }
         attr_accessor :id
 
-        sig { returns(MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType::TaggedSymbol) }
+        sig do
+          returns(
+            MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType::TaggedSymbol
+          )
+        end
         attr_accessor :charge_type
 
-        sig { returns(MetronomeSDK::Models::CreditTypeData) }
+        sig { returns(MetronomeSDK::CreditTypeData) }
         attr_reader :credit_type
 
-        sig { params(credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash)).void }
+        sig { params(credit_type: MetronomeSDK::CreditTypeData::OrHash).void }
         attr_writer :credit_type
 
         sig { returns(T::Hash[Symbol, String]) }
@@ -22,7 +34,11 @@ module MetronomeSDK
         sig { returns(String) }
         attr_accessor :name
 
-        sig { returns(T::Array[MetronomeSDK::Models::V1::PlanListChargesResponse::Price]) }
+        sig do
+          returns(
+            T::Array[MetronomeSDK::Models::V1::PlanListChargesResponse::Price]
+          )
+        end
         attr_accessor :prices
 
         sig { returns(String) }
@@ -54,33 +70,43 @@ module MetronomeSDK
         attr_writer :tier_reset_frequency
 
         # Specifies how quantities for usage based charges will be converted.
-        sig { returns(T.nilable(MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion)) }
+        sig do
+          returns(
+            T.nilable(
+              MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion
+            )
+          )
+        end
         attr_reader :unit_conversion
 
         sig do
           params(
-            unit_conversion: T.any(MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion, MetronomeSDK::Internal::AnyHash)
-          )
-            .void
+            unit_conversion:
+              MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion::OrHash
+          ).void
         end
         attr_writer :unit_conversion
 
         sig do
           params(
             id: String,
-            charge_type: MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType::OrSymbol,
-            credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash),
+            charge_type:
+              MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType::OrSymbol,
+            credit_type: MetronomeSDK::CreditTypeData::OrHash,
             custom_fields: T::Hash[Symbol, String],
             name: String,
-            prices: T::Array[T.any(MetronomeSDK::Models::V1::PlanListChargesResponse::Price, MetronomeSDK::Internal::AnyHash)],
+            prices:
+              T::Array[
+                MetronomeSDK::Models::V1::PlanListChargesResponse::Price::OrHash
+              ],
             product_id: String,
             product_name: String,
             quantity: Float,
             start_period: Float,
             tier_reset_frequency: Float,
-            unit_conversion: T.any(MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion, MetronomeSDK::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            unit_conversion:
+              MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -100,47 +126,93 @@ module MetronomeSDK
           tier_reset_frequency: nil,
           # Specifies how quantities for usage based charges will be converted.
           unit_conversion: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                id: String,
-                charge_type: MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType::TaggedSymbol,
-                credit_type: MetronomeSDK::Models::CreditTypeData,
-                custom_fields: T::Hash[Symbol, String],
-                name: String,
-                prices: T::Array[MetronomeSDK::Models::V1::PlanListChargesResponse::Price],
-                product_id: String,
-                product_name: String,
-                quantity: Float,
-                start_period: Float,
-                tier_reset_frequency: Float,
-                unit_conversion: MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              id: String,
+              charge_type:
+                MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType::TaggedSymbol,
+              credit_type: MetronomeSDK::CreditTypeData,
+              custom_fields: T::Hash[Symbol, String],
+              name: String,
+              prices:
+                T::Array[
+                  MetronomeSDK::Models::V1::PlanListChargesResponse::Price
+                ],
+              product_id: String,
+              product_name: String,
+              quantity: Float,
+              start_period: Float,
+              tier_reset_frequency: Float,
+              unit_conversion:
+                MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion
+            }
+          )
+        end
+        def to_hash
+        end
 
         module ChargeType
           extend MetronomeSDK::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USAGE = T.let(:usage, MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType::TaggedSymbol)
-          FIXED = T.let(:fixed, MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType::TaggedSymbol)
+          USAGE =
+            T.let(
+              :usage,
+              MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType::TaggedSymbol
+            )
+          FIXED =
+            T.let(
+              :fixed,
+              MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType::TaggedSymbol
+            )
           COMPOSITE =
-            T.let(:composite, MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType::TaggedSymbol)
-          MINIMUM = T.let(:minimum, MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType::TaggedSymbol)
-          SEAT = T.let(:seat, MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType::TaggedSymbol)
+            T.let(
+              :composite,
+              MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType::TaggedSymbol
+            )
+          MINIMUM =
+            T.let(
+              :minimum,
+              MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType::TaggedSymbol
+            )
+          SEAT =
+            T.let(
+              :seat,
+              MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class Price < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::PlanListChargesResponse::Price,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
           # Used in pricing tiers. Indicates at what metric value the price applies.
           sig { returns(Float) }
           attr_accessor :tier
@@ -173,8 +245,7 @@ module MetronomeSDK
               collection_interval: Float,
               collection_schedule: String,
               quantity: Float
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             # Used in pricing tiers. Indicates at what metric value the price applies.
@@ -183,23 +254,33 @@ module MetronomeSDK
             collection_interval: nil,
             collection_schedule: nil,
             quantity: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  tier: Float,
-                  value: Float,
-                  collection_interval: Float,
-                  collection_schedule: String,
-                  quantity: Float
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                tier: Float,
+                value: Float,
+                collection_interval: Float,
+                collection_schedule: String,
+                quantity: Float
+              }
+            )
+          end
+          def to_hash
+          end
         end
 
         class UnitConversion < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
           # The conversion factor
           sig { returns(Float) }
           attr_accessor :division_factor
@@ -217,9 +298,9 @@ module MetronomeSDK
 
           sig do
             params(
-              rounding_behavior: MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion::RoundingBehavior::OrSymbol
-            )
-              .void
+              rounding_behavior:
+                MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion::RoundingBehavior::OrSymbol
+            ).void
           end
           attr_writer :rounding_behavior
 
@@ -227,9 +308,9 @@ module MetronomeSDK
           sig do
             params(
               division_factor: Float,
-              rounding_behavior: MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion::RoundingBehavior::OrSymbol
-            )
-              .returns(T.attached_class)
+              rounding_behavior:
+                MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion::RoundingBehavior::OrSymbol
+            ).returns(T.attached_class)
           end
           def self.new(
             # The conversion factor
@@ -237,17 +318,20 @@ module MetronomeSDK
             # Whether usage should be rounded down or up to the nearest whole number. If null,
             # quantity will be rounded to 20 decimal places.
             rounding_behavior: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  division_factor: Float,
-                  rounding_behavior: MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion::RoundingBehavior::TaggedSymbol
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                division_factor: Float,
+                rounding_behavior:
+                  MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion::RoundingBehavior::TaggedSymbol
+              }
+            )
+          end
+          def to_hash
+          end
 
           # Whether usage should be rounded down or up to the nearest whole number. If null,
           # quantity will be rounded to 20 decimal places.
@@ -255,7 +339,12 @@ module MetronomeSDK
             extend MetronomeSDK::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion::RoundingBehavior) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion::RoundingBehavior
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             FLOOR =
@@ -270,12 +359,14 @@ module MetronomeSDK
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion::RoundingBehavior::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion::RoundingBehavior::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
       end

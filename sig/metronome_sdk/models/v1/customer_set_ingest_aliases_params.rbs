@@ -18,8 +18,6 @@ module MetronomeSDK
           ingest_aliases: ::Array[String],
           ?request_options: MetronomeSDK::request_opts
         ) -> void
-
-        def to_hash: -> MetronomeSDK::Models::V1::customer_set_ingest_aliases_params
       end
     end
   end

@@ -1,6 +1,6 @@
 # Metronome Ruby API library
 
-The Metronome Ruby library provides convenient access to the Metronome REST API from any Ruby 3.1.0+ application.
+The Metronome Ruby library provides convenient access to the Metronome REST API from any Ruby 3.2.0+ application.
 
 It is generated with [Stainless](https://www.stainless.com/).
 
@@ -17,7 +17,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "metronome-sdk", "~> 0.1.0.pre.alpha.1"
+gem "metronome-sdk", "~> 0.1.0.pre.alpha.2"
 ```
 
 <!-- x-release-please-end -->
@@ -29,7 +29,7 @@ require "bundler/setup"
 require "metronome_sdk"
 
 metronome = MetronomeSDK::Client.new(
-  bearer_token: "My Bearer Token" # defaults to ENV["METRONOME_BEARER_TOKEN"]
+  bearer_token: ENV["METRONOME_BEARER_TOKEN"] # This is the default and can be omitted
 )
 
 result = metronome.v1.usage.ingest(
@@ -56,7 +56,7 @@ When using sorbet, it is recommended to use model classes as below. This provide
 ```ruby
 metronome.v1.usage.ingest(
   usage: [
-    MetronomeSDK::Models::V1::UsageIngestParams::Usage.new(
+    MetronomeSDK::V1::UsageIngestParams::Usage.new(
       transaction_id: "90e9401f-0f8c-4cd3-9a9f-d6beb56d8d72",
       customer_id: "team@example.com",
       event_type: "heartbeat",
@@ -92,13 +92,16 @@ When the library is unable to connect to the API, or if the API returns a non-su
 
 ```ruby
 begin
-  contract = metronome.v1.contracts.create
+  contract = metronome.v1.contracts.create(
+    customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+    starting_at: "2020-01-01T00:00:00.000Z"
+  )
 rescue MetronomeSDK::Errors::APIError => e
   puts(e.status) # 400
 end
 ```
 
-Error codes are as followed:
+Error codes are as follows:
 
 | Cause            | Error Type                 |
 | ---------------- | -------------------------- |
@@ -129,7 +132,11 @@ metronome = MetronomeSDK::Client.new(
 )
 
 # Or, configure per-request:
-metronome.v1.contracts.create(request_options: {max_retries: 5})
+metronome.v1.contracts.create(
+  customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+  starting_at: "2020-01-01T00:00:00.000Z",
+  request_options: {max_retries: 5}
+)
 ```
 
 ### Timeouts
@@ -147,7 +154,11 @@ metronome = MetronomeSDK::Client.new(
 )
 
 # Or, configure per-request:
-metronome.v1.contracts.create(request_options: {timeout: 5})
+metronome.v1.contracts.create(
+  customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+  starting_at: "2020-01-01T00:00:00.000Z",
+  request_options: {timeout: 5}
+)
 ```
 
 ## Model DSL
@@ -162,7 +173,7 @@ In all places where a `BaseModel` type is specified, vanilla Ruby `Hash` can als
 # This has tooling readability, for auto-completion, static analysis, and goto definition with supported language services
 params = MetronomeSDK::Models::V1::UsageIngestParams.new(
   usage: [
-    MetronomeSDK::Models::V1::UsageIngestParams::Usage.new(
+    MetronomeSDK::V1::UsageIngestParams::Usage.new(
       transaction_id: "90e9401f-0f8c-4cd3-9a9f-d6beb56d8d72",
       customer_id: "team@example.com",
       event_type: "heartbeat",
@@ -231,7 +242,7 @@ It is possible to pass a compatible model / parameter class to a method that exp
 ```ruby
 params = MetronomeSDK::Models::V1::UsageIngestParams.new(
   usage: [
-    MetronomeSDK::Models::V1::UsageIngestParams::Usage.new(
+    MetronomeSDK::V1::UsageIngestParams::Usage.new(
       transaction_id: "90e9401f-0f8c-4cd3-9a9f-d6beb56d8d72",
       customer_id: "team@example.com",
       event_type: "heartbeat",
@@ -251,7 +262,7 @@ This package considers improvements to the (non-runtime) `*.rbi` and `*.rbs` typ
 
 ## Requirements
 
-Ruby 3.1.0 or higher.
+Ruby 3.2.0 or higher.
 
 ## Contributing
 

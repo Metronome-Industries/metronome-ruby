@@ -14,13 +14,11 @@ module MetronomeSDK
             data: MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data
           ) -> void
 
-          def to_hash: -> MetronomeSDK::Models::V1::Contracts::product_retrieve_response
-
           type data =
             {
               id: String,
-              current: MetronomeSDK::Models::V1::Contracts::ProductListItemState,
-              initial: MetronomeSDK::Models::V1::Contracts::ProductListItemState,
+              current: MetronomeSDK::V1::Contracts::ProductListItemState,
+              initial: MetronomeSDK::V1::Contracts::ProductListItemState,
               type: MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::type_,
               updates: ::Array[MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Update],
               archived_at: Time?,
@@ -30,9 +28,9 @@ module MetronomeSDK
           class Data < MetronomeSDK::Internal::Type::BaseModel
             attr_accessor id: String
 
-            attr_accessor current: MetronomeSDK::Models::V1::Contracts::ProductListItemState
+            attr_accessor current: MetronomeSDK::V1::Contracts::ProductListItemState
 
-            attr_accessor initial: MetronomeSDK::Models::V1::Contracts::ProductListItemState
+            attr_accessor initial: MetronomeSDK::V1::Contracts::ProductListItemState
 
             attr_accessor type: MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::type_
 
@@ -48,15 +46,13 @@ module MetronomeSDK
 
             def initialize: (
               id: String,
-              current: MetronomeSDK::Models::V1::Contracts::ProductListItemState,
-              initial: MetronomeSDK::Models::V1::Contracts::ProductListItemState,
+              current: MetronomeSDK::V1::Contracts::ProductListItemState,
+              initial: MetronomeSDK::V1::Contracts::ProductListItemState,
               type: MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::type_,
               updates: ::Array[MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Update],
               ?archived_at: Time?,
               ?custom_fields: ::Hash[Symbol, String]
             ) -> void
-
-            def to_hash: -> MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::data
 
             type type_ =
               :USAGE | :SUBSCRIPTION | :COMPOSITE | :FIXED | :PRO_SERVICE
@@ -87,8 +83,8 @@ module MetronomeSDK
                 netsuite_overage_item_id: String,
                 presentation_group_key: ::Array[String],
                 pricing_group_key: ::Array[String],
-                quantity_conversion: MetronomeSDK::Models::V1::Contracts::QuantityConversion?,
-                quantity_rounding: MetronomeSDK::Models::V1::Contracts::QuantityRounding?,
+                quantity_conversion: MetronomeSDK::V1::Contracts::QuantityConversion?,
+                quantity_rounding: MetronomeSDK::V1::Contracts::QuantityRounding?,
                 starting_at: Time,
                 tags: ::Array[String]
               }
@@ -138,9 +134,9 @@ module MetronomeSDK
 
               def pricing_group_key=: (::Array[String]) -> ::Array[String]
 
-              attr_accessor quantity_conversion: MetronomeSDK::Models::V1::Contracts::QuantityConversion?
+              attr_accessor quantity_conversion: MetronomeSDK::V1::Contracts::QuantityConversion?
 
-              attr_accessor quantity_rounding: MetronomeSDK::Models::V1::Contracts::QuantityRounding?
+              attr_accessor quantity_rounding: MetronomeSDK::V1::Contracts::QuantityRounding?
 
               attr_reader starting_at: Time?
 
@@ -163,13 +159,11 @@ module MetronomeSDK
                 ?netsuite_overage_item_id: String,
                 ?presentation_group_key: ::Array[String],
                 ?pricing_group_key: ::Array[String],
-                ?quantity_conversion: MetronomeSDK::Models::V1::Contracts::QuantityConversion?,
-                ?quantity_rounding: MetronomeSDK::Models::V1::Contracts::QuantityRounding?,
+                ?quantity_conversion: MetronomeSDK::V1::Contracts::QuantityConversion?,
+                ?quantity_rounding: MetronomeSDK::V1::Contracts::QuantityRounding?,
                 ?starting_at: Time,
                 ?tags: ::Array[String]
               ) -> void
-
-              def to_hash: -> MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::update
             end
           end
         end

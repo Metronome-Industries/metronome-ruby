@@ -7,7 +7,7 @@ module MetronomeSDK
       class ContractListBalancesResponse < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute data
         #
-        #   @return [Array<MetronomeSDK::Models::Commit, MetronomeSDK::Models::Credit>]
+        #   @return [Array<MetronomeSDK::Commit, MetronomeSDK::Credit>]
         required :data,
                  -> { MetronomeSDK::Internal::Type::ArrayOf[union: MetronomeSDK::Models::V1::ContractListBalancesResponse::Data] }
 
@@ -17,18 +17,22 @@ module MetronomeSDK
         required :next_page, String, nil?: true
 
         # @!method initialize(data:, next_page:)
-        #   @param data [Array<MetronomeSDK::Models::Commit, MetronomeSDK::Models::Credit>]
+        #   @param data [Array<MetronomeSDK::Commit, MetronomeSDK::Credit>]
         #   @param next_page [String, nil]
 
         module Data
           extend MetronomeSDK::Internal::Type::Union
 
-          variant -> { MetronomeSDK::Models::Commit }
+          variant -> { MetronomeSDK::Commit }
 
-          variant -> { MetronomeSDK::Models::Credit }
+          variant -> { MetronomeSDK::Credit }
 
           # @!method self.variants
-          #   @return [Array(MetronomeSDK::Models::Commit, MetronomeSDK::Models::Credit)]
+          #   @return [Array(MetronomeSDK::Commit, MetronomeSDK::Credit)]
+
+          define_sorbet_constant!(:Variants) do
+            T.type_alias { T.any(MetronomeSDK::Commit, MetronomeSDK::Credit) }
+          end
         end
       end
     end

@@ -9,6 +9,14 @@ module MetronomeSDK
             extend MetronomeSDK::Internal::Type::RequestParameters::Converter
             include MetronomeSDK::Internal::Type::RequestParameters
 
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::Contracts::RateCards::NamedScheduleUpdateParams,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
             # ID of the contract whose named schedule is to be updated
             sig { returns(String) }
             attr_accessor :contract_id
@@ -43,9 +51,8 @@ module MetronomeSDK
                 starting_at: Time,
                 value: T.anything,
                 ending_before: Time,
-                request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-              )
-                .returns(T.attached_class)
+                request_options: MetronomeSDK::RequestOptions::OrHash
+              ).returns(T.attached_class)
             end
             def self.new(
               # ID of the contract whose named schedule is to be updated
@@ -60,22 +67,24 @@ module MetronomeSDK
               value:,
               ending_before: nil,
               request_options: {}
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    contract_id: String,
-                    customer_id: String,
-                    schedule_name: String,
-                    starting_at: Time,
-                    value: T.anything,
-                    ending_before: Time,
-                    request_options: MetronomeSDK::RequestOptions
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  contract_id: String,
+                  customer_id: String,
+                  schedule_name: String,
+                  starting_at: Time,
+                  value: T.anything,
+                  ending_before: Time,
+                  request_options: MetronomeSDK::RequestOptions
+                }
+              )
+            end
+            def to_hash
+            end
           end
         end
       end

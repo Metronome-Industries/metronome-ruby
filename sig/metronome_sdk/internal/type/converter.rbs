@@ -2,6 +2,8 @@ module MetronomeSDK
   module Internal
     module Type
       module Converter
+        extend MetronomeSDK::Internal::Util::SorbetRuntimeSupport
+
         type input = MetronomeSDK::Internal::Type::Converter | Class
 
         type coerce_state =

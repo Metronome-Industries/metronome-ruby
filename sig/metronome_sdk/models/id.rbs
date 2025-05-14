@@ -6,8 +6,6 @@ module MetronomeSDK
       attr_accessor id: String
 
       def initialize: (id: String) -> void
-
-      def to_hash: -> MetronomeSDK::Models::id
     end
   end
 end

@@ -13,17 +13,16 @@ module MetronomeSDK
                 rate_card_id: String,
                 limit: Integer,
                 next_page: String,
-                selectors: T::Array[
-                  T.any(
-                    MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams::Selector,
-                    MetronomeSDK::Internal::AnyHash
-                  )
-                ],
-                request_options: MetronomeSDK::RequestOpts
+                selectors:
+                  T::Array[
+                    MetronomeSDK::V1::Contracts::RateCards::RateListParams::Selector::OrHash
+                  ],
+                request_options: MetronomeSDK::RequestOptions::OrHash
+              ).returns(
+                MetronomeSDK::Internal::CursorPage[
+                  MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse
+                ]
               )
-                .returns(
-                  MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse]
-                )
             end
             def list(
               # Body param: inclusive starting point for the rates schedule
@@ -39,19 +38,20 @@ module MetronomeSDK
               # returned.
               selectors: nil,
               request_options: {}
-            ); end
+            )
+            end
+
             # Add a new rate
             sig do
               params(
                 entitled: T::Boolean,
                 product_id: String,
                 rate_card_id: String,
-                rate_type: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::RateType::OrSymbol,
+                rate_type:
+                  MetronomeSDK::V1::Contracts::RateCards::RateAddParams::RateType::OrSymbol,
                 starting_at: Time,
-                commit_rate: T.any(
-                  MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::CommitRate,
-                  MetronomeSDK::Internal::AnyHash
-                ),
+                commit_rate:
+                  MetronomeSDK::V1::Contracts::RateCards::RateAddParams::CommitRate::OrHash,
                 credit_type_id: String,
                 custom_rate: T::Hash[Symbol, T.anything],
                 ending_before: Time,
@@ -59,11 +59,12 @@ module MetronomeSDK
                 price: Float,
                 pricing_group_values: T::Hash[Symbol, String],
                 quantity: Float,
-                tiers: T::Array[T.any(MetronomeSDK::Models::Tier, MetronomeSDK::Internal::AnyHash)],
+                tiers: T::Array[MetronomeSDK::Tier::OrHash],
                 use_list_prices: T::Boolean,
-                request_options: MetronomeSDK::RequestOpts
+                request_options: MetronomeSDK::RequestOptions::OrHash
+              ).returns(
+                MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse
               )
-                .returns(MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse)
             end
             def add(
               entitled:,
@@ -105,26 +106,31 @@ module MetronomeSDK
               # contract.
               use_list_prices: nil,
               request_options: {}
-            ); end
+            )
+            end
+
             # Add new rates
             sig do
               params(
                 rate_card_id: String,
-                rates: T::Array[
-                  T.any(
-                    MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyParams::Rate,
-                    MetronomeSDK::Internal::AnyHash
-                  )
-                ],
-                request_options: MetronomeSDK::RequestOpts
+                rates:
+                  T::Array[
+                    MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::OrHash
+                  ],
+                request_options: MetronomeSDK::RequestOptions::OrHash
+              ).returns(
+                MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyResponse
               )
-                .returns(MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyResponse)
             end
-            def add_many(rate_card_id:, rates:, request_options: {}); end
+            def add_many(rate_card_id:, rates:, request_options: {})
+            end
 
             # @api private
-            sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
-            def self.new(client:); end
+            sig do
+              params(client: MetronomeSDK::Client).returns(T.attached_class)
+            end
+            def self.new(client:)
+            end
           end
         end
       end

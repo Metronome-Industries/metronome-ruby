@@ -10,7 +10,7 @@ module MetronomeSDK
           next_page: String,
           current_period: bool,
           ending_before: Time,
-          group_by: MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy,
+          group_by: MetronomeSDK::V1::UsageListWithGroupsParams::GroupBy,
           starting_on: Time
         }
         & MetronomeSDK::Internal::Type::request_parameters
@@ -41,11 +41,11 @@ module MetronomeSDK
 
         def ending_before=: (Time) -> Time
 
-        attr_reader group_by: MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy?
+        attr_reader group_by: MetronomeSDK::V1::UsageListWithGroupsParams::GroupBy?
 
         def group_by=: (
-          MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy
-        ) -> MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy
+          MetronomeSDK::V1::UsageListWithGroupsParams::GroupBy
+        ) -> MetronomeSDK::V1::UsageListWithGroupsParams::GroupBy
 
         attr_reader starting_on: Time?
 
@@ -59,12 +59,10 @@ module MetronomeSDK
           ?next_page: String,
           ?current_period: bool,
           ?ending_before: Time,
-          ?group_by: MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy,
+          ?group_by: MetronomeSDK::V1::UsageListWithGroupsParams::GroupBy,
           ?starting_on: Time,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
-
-        def to_hash: -> MetronomeSDK::Models::V1::usage_list_with_groups_params
 
         type window_size = :HOUR | :DAY | :NONE
 
@@ -88,8 +86,6 @@ module MetronomeSDK
           def values=: (::Array[String]) -> ::Array[String]
 
           def initialize: (key: String, ?values: ::Array[String]) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::UsageListWithGroupsParams::group_by
         end
       end
     end

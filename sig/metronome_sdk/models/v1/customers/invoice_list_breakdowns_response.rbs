@@ -18,8 +18,6 @@ module MetronomeSDK
             breakdown_end_timestamp: Time,
             breakdown_start_timestamp: Time
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::Customers::invoice_list_breakdowns_response
         end
       end
     end

@@ -5,7 +5,7 @@ module MetronomeSDK
         {
           id: String,
           charge_type: MetronomeSDK::Models::V1::PlanListChargesResponse::charge_type,
-          credit_type: MetronomeSDK::Models::CreditTypeData,
+          credit_type: MetronomeSDK::CreditTypeData,
           custom_fields: ::Hash[Symbol, String],
           name: String,
           prices: ::Array[MetronomeSDK::Models::V1::PlanListChargesResponse::Price],
@@ -22,7 +22,7 @@ module MetronomeSDK
 
         attr_accessor charge_type: MetronomeSDK::Models::V1::PlanListChargesResponse::charge_type
 
-        attr_accessor credit_type: MetronomeSDK::Models::CreditTypeData
+        attr_accessor credit_type: MetronomeSDK::CreditTypeData
 
         attr_accessor custom_fields: ::Hash[Symbol, String]
 
@@ -55,7 +55,7 @@ module MetronomeSDK
         def initialize: (
           id: String,
           charge_type: MetronomeSDK::Models::V1::PlanListChargesResponse::charge_type,
-          credit_type: MetronomeSDK::Models::CreditTypeData,
+          credit_type: MetronomeSDK::CreditTypeData,
           custom_fields: ::Hash[Symbol, String],
           name: String,
           prices: ::Array[MetronomeSDK::Models::V1::PlanListChargesResponse::Price],
@@ -66,8 +66,6 @@ module MetronomeSDK
           ?tier_reset_frequency: Float,
           ?unit_conversion: MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion
         ) -> void
-
-        def to_hash: -> MetronomeSDK::Models::V1::plan_list_charges_response
 
         type charge_type = :usage | :fixed | :composite | :minimum | :seat
 
@@ -116,8 +114,6 @@ module MetronomeSDK
             ?collection_schedule: String,
             ?quantity: Float
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::PlanListChargesResponse::price
         end
 
         type unit_conversion =
@@ -139,8 +135,6 @@ module MetronomeSDK
             division_factor: Float,
             ?rounding_behavior: MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion::rounding_behavior
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::PlanListChargesResponse::unit_conversion
 
           type rounding_behavior = :floor | :ceiling
 

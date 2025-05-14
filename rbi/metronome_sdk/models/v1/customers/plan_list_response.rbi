@@ -5,6 +5,14 @@ module MetronomeSDK
     module V1
       module Customers
         class PlanListResponse < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::Customers::PlanListResponse,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
           # the ID of the customer plan
           sig { returns(String) }
           attr_accessor :id
@@ -37,14 +45,20 @@ module MetronomeSDK
           sig { params(net_payment_terms_days: Float).void }
           attr_writer :net_payment_terms_days
 
-          sig { returns(T.nilable(MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo)) }
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo
+              )
+            )
+          end
           attr_reader :trial_info
 
           sig do
             params(
-              trial_info: T.any(MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo, MetronomeSDK::Internal::AnyHash)
-            )
-              .void
+              trial_info:
+                MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::OrHash
+            ).void
           end
           attr_writer :trial_info
 
@@ -58,9 +72,9 @@ module MetronomeSDK
               starting_on: Time,
               ending_before: Time,
               net_payment_terms_days: Float,
-              trial_info: T.any(MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo, MetronomeSDK::Internal::AnyHash)
-            )
-              .returns(T.attached_class)
+              trial_info:
+                MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::OrHash
+            ).returns(T.attached_class)
           end
           def self.new(
             # the ID of the customer plan
@@ -74,85 +88,119 @@ module MetronomeSDK
             ending_before: nil,
             net_payment_terms_days: nil,
             trial_info: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  id: String,
-                  custom_fields: T::Hash[Symbol, String],
-                  plan_description: String,
-                  plan_id: String,
-                  plan_name: String,
-                  starting_on: Time,
-                  ending_before: Time,
-                  net_payment_terms_days: Float,
-                  trial_info: MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                id: String,
+                custom_fields: T::Hash[Symbol, String],
+                plan_description: String,
+                plan_id: String,
+                plan_name: String,
+                starting_on: Time,
+                ending_before: Time,
+                net_payment_terms_days: Float,
+                trial_info:
+                  MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo
+              }
+            )
+          end
+          def to_hash
+          end
 
           class TrialInfo < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
             sig { returns(Time) }
             attr_accessor :ending_before
 
-            sig { returns(T::Array[MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap]) }
+            sig do
+              returns(
+                T::Array[
+                  MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap
+                ]
+              )
+            end
             attr_accessor :spending_caps
 
             sig do
               params(
                 ending_before: Time,
-                spending_caps: T::Array[
+                spending_caps:
+                  T::Array[
+                    MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap::OrHash
+                  ]
+              ).returns(T.attached_class)
+            end
+            def self.new(ending_before:, spending_caps:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  ending_before: Time,
+                  spending_caps:
+                    T::Array[
+                      MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap
+                    ]
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class SpendingCap < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
                   T.any(
                     MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap,
                     MetronomeSDK::Internal::AnyHash
                   )
-                ]
-              )
-                .returns(T.attached_class)
-            end
-            def self.new(ending_before:, spending_caps:); end
+                end
 
-            sig do
-              override
-                .returns(
-                  {
-                    ending_before: Time,
-                    spending_caps: T::Array[MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap]
-                  }
-                )
-            end
-            def to_hash; end
-
-            class SpendingCap < MetronomeSDK::Internal::Type::BaseModel
               sig { returns(Float) }
               attr_accessor :amount
 
               sig { returns(Float) }
               attr_accessor :amount_remaining
 
-              sig { returns(MetronomeSDK::Models::CreditTypeData) }
+              sig { returns(MetronomeSDK::CreditTypeData) }
               attr_reader :credit_type
 
-              sig { params(credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash)).void }
+              sig do
+                params(credit_type: MetronomeSDK::CreditTypeData::OrHash).void
+              end
               attr_writer :credit_type
 
               sig do
                 params(
                   amount: Float,
                   amount_remaining: Float,
-                  credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash)
-                )
-                  .returns(T.attached_class)
+                  credit_type: MetronomeSDK::CreditTypeData::OrHash
+                ).returns(T.attached_class)
               end
-              def self.new(amount:, amount_remaining:, credit_type:); end
+              def self.new(amount:, amount_remaining:, credit_type:)
+              end
 
               sig do
-                override
-                  .returns({amount: Float, amount_remaining: Float, credit_type: MetronomeSDK::Models::CreditTypeData})
+                override.returns(
+                  {
+                    amount: Float,
+                    amount_remaining: Float,
+                    credit_type: MetronomeSDK::CreditTypeData
+                  }
+                )
               end
-              def to_hash; end
+              def to_hash
+              end
             end
           end
         end

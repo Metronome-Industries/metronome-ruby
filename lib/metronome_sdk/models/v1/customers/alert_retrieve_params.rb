@@ -21,12 +21,37 @@ module MetronomeSDK
           #   @return [String]
           required :customer_id, String
 
-          # @!method initialize(alert_id:, customer_id:, request_options: {})
+          # @!attribute plans_or_contracts
+          #   When parallel alerts are enabled during migration, this flag denotes whether to
+          #   fetch alerts for plans or contracts.
+          #
+          #   @return [Symbol, MetronomeSDK::V1::Customers::AlertRetrieveParams::PlansOrContracts, nil]
+          optional :plans_or_contracts,
+                   enum: -> { MetronomeSDK::V1::Customers::AlertRetrieveParams::PlansOrContracts }
+
+          # @!method initialize(alert_id:, customer_id:, plans_or_contracts: nil, request_options: {})
+          #   Some parameter documentations has been truncated, see
+          #   {MetronomeSDK::Models::V1::Customers::AlertRetrieveParams} for more details.
+          #
           #   @param alert_id [String] The Metronome ID of the alert
           #
           #   @param customer_id [String] The Metronome ID of the customer
           #
+          #   @param plans_or_contracts [Symbol, MetronomeSDK::V1::Customers::AlertRetrieveParams::PlansOrContracts] When parallel alerts are enabled during migration, this flag denotes whether to
+          #
           #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
+
+          # When parallel alerts are enabled during migration, this flag denotes whether to
+          # fetch alerts for plans or contracts.
+          module PlansOrContracts
+            extend MetronomeSDK::Internal::Type::Enum
+
+            PLANS = :PLANS
+            CONTRACTS = :CONTRACTS
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
       end
     end

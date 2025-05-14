@@ -4,6 +4,14 @@ module MetronomeSDK
   module Models
     module V1
       class AuditLogListResponse < MetronomeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Models::V1::AuditLogListResponse,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
         sig { returns(String) }
         attr_accessor :id
 
@@ -12,9 +20,9 @@ module MetronomeSDK
 
         sig do
           params(
-            request: T.any(MetronomeSDK::Models::V1::AuditLogListResponse::Request, MetronomeSDK::Internal::AnyHash)
-          )
-            .void
+            request:
+              MetronomeSDK::Models::V1::AuditLogListResponse::Request::OrHash
+          ).void
         end
         attr_writer :request
 
@@ -27,14 +35,17 @@ module MetronomeSDK
         sig { params(action: String).void }
         attr_writer :action
 
-        sig { returns(T.nilable(MetronomeSDK::Models::V1::AuditLogListResponse::Actor)) }
+        sig do
+          returns(
+            T.nilable(MetronomeSDK::Models::V1::AuditLogListResponse::Actor)
+          )
+        end
         attr_reader :actor
 
         sig do
           params(
-            actor: T.any(MetronomeSDK::Models::V1::AuditLogListResponse::Actor, MetronomeSDK::Internal::AnyHash)
-          )
-            .void
+            actor: MetronomeSDK::Models::V1::AuditLogListResponse::Actor::OrHash
+          ).void
         end
         attr_writer :actor
 
@@ -56,25 +67,38 @@ module MetronomeSDK
         sig { params(resource_type: String).void }
         attr_writer :resource_type
 
-        sig { returns(T.nilable(MetronomeSDK::Models::V1::AuditLogListResponse::Status::TaggedSymbol)) }
+        sig do
+          returns(
+            T.nilable(
+              MetronomeSDK::Models::V1::AuditLogListResponse::Status::TaggedSymbol
+            )
+          )
+        end
         attr_reader :status
 
-        sig { params(status: MetronomeSDK::Models::V1::AuditLogListResponse::Status::OrSymbol).void }
+        sig do
+          params(
+            status:
+              MetronomeSDK::Models::V1::AuditLogListResponse::Status::OrSymbol
+          ).void
+        end
         attr_writer :status
 
         sig do
           params(
             id: String,
-            request: T.any(MetronomeSDK::Models::V1::AuditLogListResponse::Request, MetronomeSDK::Internal::AnyHash),
+            request:
+              MetronomeSDK::Models::V1::AuditLogListResponse::Request::OrHash,
             timestamp: Time,
             action: String,
-            actor: T.any(MetronomeSDK::Models::V1::AuditLogListResponse::Actor, MetronomeSDK::Internal::AnyHash),
+            actor:
+              MetronomeSDK::Models::V1::AuditLogListResponse::Actor::OrHash,
             description: String,
             resource_id: String,
             resource_type: String,
-            status: MetronomeSDK::Models::V1::AuditLogListResponse::Status::OrSymbol
-          )
-            .returns(T.attached_class)
+            status:
+              MetronomeSDK::Models::V1::AuditLogListResponse::Status::OrSymbol
+          ).returns(T.attached_class)
         end
         def self.new(
           id:,
@@ -86,26 +110,37 @@ module MetronomeSDK
           resource_id: nil,
           resource_type: nil,
           status: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                id: String,
-                request: MetronomeSDK::Models::V1::AuditLogListResponse::Request,
-                timestamp: Time,
-                action: String,
-                actor: MetronomeSDK::Models::V1::AuditLogListResponse::Actor,
-                description: String,
-                resource_id: String,
-                resource_type: String,
-                status: MetronomeSDK::Models::V1::AuditLogListResponse::Status::TaggedSymbol
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              id: String,
+              request: MetronomeSDK::Models::V1::AuditLogListResponse::Request,
+              timestamp: Time,
+              action: String,
+              actor: MetronomeSDK::Models::V1::AuditLogListResponse::Actor,
+              description: String,
+              resource_id: String,
+              resource_type: String,
+              status:
+                MetronomeSDK::Models::V1::AuditLogListResponse::Status::TaggedSymbol
+            }
+          )
+        end
+        def to_hash
+        end
 
         class Request < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::AuditLogListResponse::Request,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -121,14 +156,30 @@ module MetronomeSDK
           sig { params(user_agent: String).void }
           attr_writer :user_agent
 
-          sig { params(id: String, ip: String, user_agent: String).returns(T.attached_class) }
-          def self.new(id:, ip: nil, user_agent: nil); end
+          sig do
+            params(id: String, ip: String, user_agent: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(id:, ip: nil, user_agent: nil)
+          end
 
-          sig { override.returns({id: String, ip: String, user_agent: String}) }
-          def to_hash; end
+          sig do
+            override.returns({ id: String, ip: String, user_agent: String })
+          end
+          def to_hash
+          end
         end
 
         class Actor < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::AuditLogListResponse::Actor,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -141,25 +192,56 @@ module MetronomeSDK
           sig { params(email: String).void }
           attr_writer :email
 
-          sig { params(id: String, name: String, email: String).returns(T.attached_class) }
-          def self.new(id:, name:, email: nil); end
+          sig do
+            params(id: String, name: String, email: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(id:, name:, email: nil)
+          end
 
-          sig { override.returns({id: String, name: String, email: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String, email: String }) }
+          def to_hash
+          end
         end
 
         module Status
           extend MetronomeSDK::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, MetronomeSDK::Models::V1::AuditLogListResponse::Status) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                MetronomeSDK::Models::V1::AuditLogListResponse::Status
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          SUCCESS = T.let(:success, MetronomeSDK::Models::V1::AuditLogListResponse::Status::TaggedSymbol)
-          FAILURE = T.let(:failure, MetronomeSDK::Models::V1::AuditLogListResponse::Status::TaggedSymbol)
-          PENDING = T.let(:pending, MetronomeSDK::Models::V1::AuditLogListResponse::Status::TaggedSymbol)
+          SUCCESS =
+            T.let(
+              :success,
+              MetronomeSDK::Models::V1::AuditLogListResponse::Status::TaggedSymbol
+            )
+          FAILURE =
+            T.let(
+              :failure,
+              MetronomeSDK::Models::V1::AuditLogListResponse::Status::TaggedSymbol
+            )
+          PENDING =
+            T.let(
+              :pending,
+              MetronomeSDK::Models::V1::AuditLogListResponse::Status::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[MetronomeSDK::Models::V1::AuditLogListResponse::Status::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                MetronomeSDK::Models::V1::AuditLogListResponse::Status::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
     end

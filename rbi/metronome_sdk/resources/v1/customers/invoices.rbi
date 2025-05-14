@@ -11,9 +11,10 @@ module MetronomeSDK
               customer_id: String,
               invoice_id: String,
               skip_zero_qty_line_items: T::Boolean,
-              request_options: MetronomeSDK::RequestOpts
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(
+              MetronomeSDK::Models::V1::Customers::InvoiceRetrieveResponse
             )
-              .returns(MetronomeSDK::Models::V1::Customers::InvoiceRetrieveResponse)
           end
           def retrieve(
             # Path param:
@@ -24,7 +25,9 @@ module MetronomeSDK
             # response
             skip_zero_qty_line_items: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # List all invoices for a given customer, optionally filtered by status, date
           # range, and/or credit type.
           sig do
@@ -35,12 +38,16 @@ module MetronomeSDK
               limit: Integer,
               next_page: String,
               skip_zero_qty_line_items: T::Boolean,
-              sort: MetronomeSDK::Models::V1::Customers::InvoiceListParams::Sort::OrSymbol,
+              sort:
+                MetronomeSDK::V1::Customers::InvoiceListParams::Sort::OrSymbol,
               starting_on: Time,
               status: String,
-              request_options: MetronomeSDK::RequestOpts
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(
+              MetronomeSDK::Internal::CursorPage[
+                MetronomeSDK::V1::Customers::Invoice
+              ]
             )
-              .returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::Customers::Invoice])
           end
           def list(
             # Path param:
@@ -66,7 +73,9 @@ module MetronomeSDK
             # Query param: Invoice status, e.g. DRAFT, FINALIZED, or VOID
             status: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # Add a one time charge to the specified invoice
           sig do
             params(
@@ -77,9 +86,10 @@ module MetronomeSDK
               invoice_start_timestamp: Time,
               price: Float,
               quantity: Float,
-              request_options: MetronomeSDK::RequestOpts
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(
+              MetronomeSDK::Models::V1::Customers::InvoiceAddChargeResponse
             )
-              .returns(MetronomeSDK::Models::V1::Customers::InvoiceAddChargeResponse)
           end
           def add_charge(
             # Path param:
@@ -100,7 +110,9 @@ module MetronomeSDK
             # Body param:
             quantity:,
             request_options: {}
-          ); end
+          )
+          end
+
           # List daily or hourly invoice breakdowns for a given customer, optionally
           # filtered by status, date range, and/or credit type. Important considerations:
           #
@@ -115,14 +127,17 @@ module MetronomeSDK
               limit: Integer,
               next_page: String,
               skip_zero_qty_line_items: T::Boolean,
-              sort: MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::Sort::OrSymbol,
+              sort:
+                MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::Sort::OrSymbol,
               status: String,
-              window_size: MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::WindowSize::OrSymbol,
-              request_options: MetronomeSDK::RequestOpts
+              window_size:
+                MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::WindowSize::OrSymbol,
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(
+              MetronomeSDK::Internal::CursorPage[
+                MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsResponse
+              ]
             )
-              .returns(
-                MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsResponse]
-              )
           end
           def list_breakdowns(
             # Path param:
@@ -153,10 +168,13 @@ module MetronomeSDK
             # Query param: The granularity of the breakdowns to return. Defaults to day.
             window_size: nil,
             request_options: {}
-          ); end
+          )
+          end
+
           # @api private
           sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
-          def self.new(client:); end
+          def self.new(client:)
+          end
         end
       end
     end

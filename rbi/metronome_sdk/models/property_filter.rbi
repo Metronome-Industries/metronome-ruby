@@ -3,6 +3,11 @@
 module MetronomeSDK
   module Models
     class PropertyFilter < MetronomeSDK::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias do
+          T.any(MetronomeSDK::PropertyFilter, MetronomeSDK::Internal::AnyHash)
+        end
+
       # The name of the event property.
       sig { returns(String) }
       attr_accessor :name
@@ -38,8 +43,12 @@ module MetronomeSDK
       attr_writer :not_in_values
 
       sig do
-        params(name: String, exists: T::Boolean, in_values: T::Array[String], not_in_values: T::Array[String])
-          .returns(T.attached_class)
+        params(
+          name: String,
+          exists: T::Boolean,
+          in_values: T::Array[String],
+          not_in_values: T::Array[String]
+        ).returns(T.attached_class)
       end
       def self.new(
         # The name of the event property.
@@ -59,17 +68,21 @@ module MetronomeSDK
         # or empty, all property values will pass the filter. Must be non-empty if
         # present.
         not_in_values: nil
-      ); end
-      sig do
-        override
-          .returns({
-                     name: String,
-                     exists: T::Boolean,
-                     in_values: T::Array[String],
-                     not_in_values: T::Array[String]
-                   })
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            name: String,
+            exists: T::Boolean,
+            in_values: T::Array[String],
+            not_in_values: T::Array[String]
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

@@ -8,7 +8,7 @@ module MetronomeSDK
           limit: Integer,
           next_page: String,
           at: Time,
-          selectors: ::Array[MetronomeSDK::Models::V1::ContractRetrieveRateScheduleParams::Selector]
+          selectors: ::Array[MetronomeSDK::V1::ContractRetrieveRateScheduleParams::Selector]
         }
         & MetronomeSDK::Internal::Type::request_parameters
 
@@ -32,11 +32,11 @@ module MetronomeSDK
 
         def at=: (Time) -> Time
 
-        attr_reader selectors: ::Array[MetronomeSDK::Models::V1::ContractRetrieveRateScheduleParams::Selector]?
+        attr_reader selectors: ::Array[MetronomeSDK::V1::ContractRetrieveRateScheduleParams::Selector]?
 
         def selectors=: (
-          ::Array[MetronomeSDK::Models::V1::ContractRetrieveRateScheduleParams::Selector]
-        ) -> ::Array[MetronomeSDK::Models::V1::ContractRetrieveRateScheduleParams::Selector]
+          ::Array[MetronomeSDK::V1::ContractRetrieveRateScheduleParams::Selector]
+        ) -> ::Array[MetronomeSDK::V1::ContractRetrieveRateScheduleParams::Selector]
 
         def initialize: (
           contract_id: String,
@@ -44,11 +44,9 @@ module MetronomeSDK
           ?limit: Integer,
           ?next_page: String,
           ?at: Time,
-          ?selectors: ::Array[MetronomeSDK::Models::V1::ContractRetrieveRateScheduleParams::Selector],
+          ?selectors: ::Array[MetronomeSDK::V1::ContractRetrieveRateScheduleParams::Selector],
           ?request_options: MetronomeSDK::request_opts
         ) -> void
-
-        def to_hash: -> MetronomeSDK::Models::V1::contract_retrieve_rate_schedule_params
 
         type selector =
           {
@@ -85,8 +83,6 @@ module MetronomeSDK
             ?product_id: String,
             ?product_tags: ::Array[String]
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::ContractRetrieveRateScheduleParams::selector
         end
       end
     end

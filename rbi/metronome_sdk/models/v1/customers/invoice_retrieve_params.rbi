@@ -8,6 +8,14 @@ module MetronomeSDK
           extend MetronomeSDK::Internal::Type::RequestParameters::Converter
           include MetronomeSDK::Internal::Type::RequestParameters
 
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::Customers::InvoiceRetrieveParams,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
           sig { returns(String) }
           attr_accessor :customer_id
 
@@ -26,9 +34,8 @@ module MetronomeSDK
               customer_id: String,
               invoice_id: String,
               skip_zero_qty_line_items: T::Boolean,
-              request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-            )
-              .returns(T.attached_class)
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(T.attached_class)
           end
           def self.new(
             customer_id:,
@@ -36,19 +43,21 @@ module MetronomeSDK
             # If set, all zero quantity line items will be filtered out of the response
             skip_zero_qty_line_items: nil,
             request_options: {}
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  customer_id: String,
-                  invoice_id: String,
-                  skip_zero_qty_line_items: T::Boolean,
-                  request_options: MetronomeSDK::RequestOptions
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                customer_id: String,
+                invoice_id: String,
+                skip_zero_qty_line_items: T::Boolean,
+                request_options: MetronomeSDK::RequestOptions
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
     end

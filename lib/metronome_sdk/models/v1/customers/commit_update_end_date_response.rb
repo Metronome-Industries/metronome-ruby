@@ -8,11 +8,11 @@ module MetronomeSDK
         class CommitUpdateEndDateResponse < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute data
           #
-          #   @return [MetronomeSDK::Models::ID]
-          required :data, -> { MetronomeSDK::Models::ID }
+          #   @return [MetronomeSDK::ID]
+          required :data, -> { MetronomeSDK::ID }
 
           # @!method initialize(data:)
-          #   @param data [MetronomeSDK::Models::ID]
+          #   @param data [MetronomeSDK::ID]
         end
       end
     end

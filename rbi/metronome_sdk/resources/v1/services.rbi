@@ -8,12 +8,18 @@ module MetronomeSDK
         # addresses are not necessarily unique between services. In most cases, IP
         # addresses will appear in the list at least 30 days before they are used for the
         # first time.
-        sig { params(request_options: MetronomeSDK::RequestOpts).returns(MetronomeSDK::Models::V1::ServiceListResponse) }
-        def list(request_options: {}); end
+        sig do
+          params(request_options: MetronomeSDK::RequestOptions::OrHash).returns(
+            MetronomeSDK::Models::V1::ServiceListResponse
+          )
+        end
+        def list(request_options: {})
+        end
 
         # @api private
         sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

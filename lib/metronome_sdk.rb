@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # Standard libraries.
+# rubocop:disable Lint/RedundantRequireStatement
 require "English"
 require "cgi"
 require "date"
@@ -15,6 +16,7 @@ require "set"
 require "stringio"
 require "time"
 require "uri"
+# rubocop:enable Lint/RedundantRequireStatement
 
 # We already ship the preferred sorbet manifests in the package itself.
 # `tapioca` currently does not offer us a way to opt out of unnecessary compilation.
@@ -111,6 +113,8 @@ require_relative "metronome_sdk/models/v1/contracts/product_update_params"
 require_relative "metronome_sdk/models/v1/contracts/product_update_response"
 require_relative "metronome_sdk/models/v1/contracts/quantity_conversion"
 require_relative "metronome_sdk/models/v1/contracts/quantity_rounding"
+require_relative "metronome_sdk/models/v1/contracts/rate_card_archive_params"
+require_relative "metronome_sdk/models/v1/contracts/rate_card_archive_response"
 require_relative "metronome_sdk/models/v1/contracts/rate_card_create_params"
 require_relative "metronome_sdk/models/v1/contracts/rate_card_create_response"
 require_relative "metronome_sdk/models/v1/contracts/rate_card_list_params"
@@ -251,6 +255,7 @@ require_relative "metronome_sdk/models/v2/contract_list_params"
 require_relative "metronome_sdk/models/v2/contract_list_response"
 require_relative "metronome_sdk/models/v2/contract_retrieve_params"
 require_relative "metronome_sdk/models/v2/contract_retrieve_response"
+require_relative "metronome_sdk/models"
 require_relative "metronome_sdk/resources/v1"
 require_relative "metronome_sdk/resources/v1/alerts"
 require_relative "metronome_sdk/resources/v1/audit_logs"

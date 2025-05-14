@@ -17,8 +17,6 @@ module MetronomeSDK
           next_page: String?
         ) -> void
 
-        def to_hash: -> MetronomeSDK::Models::V1::custom_field_list_keys_response
-
         type data =
           {
             enforce_uniqueness: bool,
@@ -38,8 +36,6 @@ module MetronomeSDK
             entity: MetronomeSDK::Models::V1::CustomFieldListKeysResponse::Data::entity,
             key: String
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::CustomFieldListKeysResponse::data
 
           type entity =
             :alert

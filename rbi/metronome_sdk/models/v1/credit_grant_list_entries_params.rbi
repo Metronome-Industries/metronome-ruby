@@ -7,6 +7,14 @@ module MetronomeSDK
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V1::CreditGrantListEntriesParams,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
         # Cursor that indicates where the next page of results should start.
         sig { returns(T.nilable(String)) }
         attr_reader :next_page
@@ -55,9 +63,8 @@ module MetronomeSDK
             customer_ids: T::Array[String],
             ending_before: Time,
             starting_on: Time,
-            request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # Cursor that indicates where the next page of results should start.
@@ -77,21 +84,23 @@ module MetronomeSDK
           # returned.
           starting_on: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                next_page: String,
-                credit_type_ids: T::Array[String],
-                customer_ids: T::Array[String],
-                ending_before: Time,
-                starting_on: Time,
-                request_options: MetronomeSDK::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              next_page: String,
+              credit_type_ids: T::Array[String],
+              customer_ids: T::Array[String],
+              ending_before: Time,
+              starting_on: Time,
+              request_options: MetronomeSDK::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

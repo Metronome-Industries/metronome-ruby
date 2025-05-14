@@ -48,7 +48,7 @@ module MetronomeSDK
 
         # @!method initialize(amount:, created_by:, credit_grant_id:, effective_at:, reason:, running_balance:, invoice_id: nil)
         #   Some parameter documentations has been truncated, see
-        #   {MetronomeSDK::Models::V1::CreditLedgerEntry} for more details.
+        #   {MetronomeSDK::V1::CreditLedgerEntry} for more details.
         #
         #   @param amount [Float] an amount representing the change to the customer's credit balance
         #
@@ -61,10 +61,8 @@ module MetronomeSDK
         #   @param reason [String]
         #
         #   @param running_balance [Float] the running balance for this credit type at the time of the ledger entry, includ
-        #   ...
         #
         #   @param invoice_id [String, nil] if this entry is a deduction, the Metronome ID of the invoice where the credit d
-        #   ...
       end
     end
   end

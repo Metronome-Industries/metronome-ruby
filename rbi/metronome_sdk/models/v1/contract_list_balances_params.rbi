@@ -7,6 +7,14 @@ module MetronomeSDK
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V1::ContractListBalancesParams,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
         sig { returns(String) }
         attr_accessor :customer_id
 
@@ -86,9 +94,8 @@ module MetronomeSDK
             include_ledgers: T::Boolean,
             next_page: String,
             starting_at: Time,
-            request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           customer_id:,
@@ -112,26 +119,28 @@ module MetronomeSDK
           # Include only balances that have any access on or after the provided date
           starting_at: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                customer_id: String,
-                id: String,
-                covering_date: Time,
-                effective_before: Time,
-                include_archived: T::Boolean,
-                include_balance: T::Boolean,
-                include_contract_balances: T::Boolean,
-                include_ledgers: T::Boolean,
-                next_page: String,
-                starting_at: Time,
-                request_options: MetronomeSDK::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              customer_id: String,
+              id: String,
+              covering_date: Time,
+              effective_before: Time,
+              include_archived: T::Boolean,
+              include_balance: T::Boolean,
+              include_contract_balances: T::Boolean,
+              include_ledgers: T::Boolean,
+              next_page: String,
+              starting_at: Time,
+              request_options: MetronomeSDK::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

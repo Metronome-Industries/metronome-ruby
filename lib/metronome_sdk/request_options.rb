@@ -69,5 +69,9 @@ module MetronomeSDK
     #   Returns a new instance of RequestOptions.
     #
     #   @param values [Hash{Symbol=>Object}]
+
+    define_sorbet_constant!(:OrHash) do
+      T.type_alias { T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash) }
+    end
   end
 end

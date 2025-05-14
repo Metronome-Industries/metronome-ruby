@@ -7,6 +7,14 @@ module MetronomeSDK
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V1::UsageListParams,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
         sig { returns(Time) }
         attr_accessor :ending_before
 
@@ -16,7 +24,7 @@ module MetronomeSDK
         # A window_size of "day" or "hour" will return the usage for the specified period
         # segmented into daily or hourly aggregates. A window_size of "none" will return a
         # single usage aggregate for the entirety of the specified period.
-        sig { returns(MetronomeSDK::Models::V1::UsageListParams::WindowSize::OrSymbol) }
+        sig { returns(MetronomeSDK::V1::UsageListParams::WindowSize::OrSymbol) }
         attr_accessor :window_size
 
         # Cursor that indicates where the next page of results should start.
@@ -28,14 +36,22 @@ module MetronomeSDK
 
         # A list of billable metrics to fetch usage for. If absent, all billable metrics
         # will be returned.
-        sig { returns(T.nilable(T::Array[MetronomeSDK::Models::V1::UsageListParams::BillableMetric])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[MetronomeSDK::V1::UsageListParams::BillableMetric]
+            )
+          )
+        end
         attr_reader :billable_metrics
 
         sig do
           params(
-            billable_metrics: T::Array[T.any(MetronomeSDK::Models::V1::UsageListParams::BillableMetric, MetronomeSDK::Internal::AnyHash)]
-          )
-            .void
+            billable_metrics:
+              T::Array[
+                MetronomeSDK::V1::UsageListParams::BillableMetric::OrHash
+              ]
+          ).void
         end
         attr_writer :billable_metrics
 
@@ -51,13 +67,16 @@ module MetronomeSDK
           params(
             ending_before: Time,
             starting_on: Time,
-            window_size: MetronomeSDK::Models::V1::UsageListParams::WindowSize::OrSymbol,
+            window_size:
+              MetronomeSDK::V1::UsageListParams::WindowSize::OrSymbol,
             next_page: String,
-            billable_metrics: T::Array[T.any(MetronomeSDK::Models::V1::UsageListParams::BillableMetric, MetronomeSDK::Internal::AnyHash)],
+            billable_metrics:
+              T::Array[
+                MetronomeSDK::V1::UsageListParams::BillableMetric::OrHash
+              ],
             customer_ids: T::Array[String],
-            request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           ending_before:,
@@ -75,22 +94,26 @@ module MetronomeSDK
           # customers will be returned.
           customer_ids: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                ending_before: Time,
-                starting_on: Time,
-                window_size: MetronomeSDK::Models::V1::UsageListParams::WindowSize::OrSymbol,
-                next_page: String,
-                billable_metrics: T::Array[MetronomeSDK::Models::V1::UsageListParams::BillableMetric],
-                customer_ids: T::Array[String],
-                request_options: MetronomeSDK::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              ending_before: Time,
+              starting_on: Time,
+              window_size:
+                MetronomeSDK::V1::UsageListParams::WindowSize::OrSymbol,
+              next_page: String,
+              billable_metrics:
+                T::Array[MetronomeSDK::V1::UsageListParams::BillableMetric],
+              customer_ids: T::Array[String],
+              request_options: MetronomeSDK::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
 
         # A window_size of "day" or "hour" will return the usage for the specified period
         # segmented into daily or hourly aggregates. A window_size of "none" will return a
@@ -98,48 +121,99 @@ module MetronomeSDK
         module WindowSize
           extend MetronomeSDK::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, MetronomeSDK::Models::V1::UsageListParams::WindowSize) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, MetronomeSDK::V1::UsageListParams::WindowSize)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          HOUR = T.let(:HOUR, MetronomeSDK::Models::V1::UsageListParams::WindowSize::TaggedSymbol)
-          DAY = T.let(:DAY, MetronomeSDK::Models::V1::UsageListParams::WindowSize::TaggedSymbol)
-          NONE = T.let(:NONE, MetronomeSDK::Models::V1::UsageListParams::WindowSize::TaggedSymbol)
+          HOUR =
+            T.let(
+              :HOUR,
+              MetronomeSDK::V1::UsageListParams::WindowSize::TaggedSymbol
+            )
+          DAY =
+            T.let(
+              :DAY,
+              MetronomeSDK::V1::UsageListParams::WindowSize::TaggedSymbol
+            )
+          NONE =
+            T.let(
+              :NONE,
+              MetronomeSDK::V1::UsageListParams::WindowSize::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[MetronomeSDK::Models::V1::UsageListParams::WindowSize::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                MetronomeSDK::V1::UsageListParams::WindowSize::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class BillableMetric < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::UsageListParams::BillableMetric,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
           sig { returns(String) }
           attr_accessor :id
 
-          sig { returns(T.nilable(MetronomeSDK::Models::V1::UsageListParams::BillableMetric::GroupBy)) }
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::UsageListParams::BillableMetric::GroupBy
+              )
+            )
+          end
           attr_reader :group_by
 
           sig do
             params(
-              group_by: T.any(MetronomeSDK::Models::V1::UsageListParams::BillableMetric::GroupBy, MetronomeSDK::Internal::AnyHash)
-            )
-              .void
+              group_by:
+                MetronomeSDK::V1::UsageListParams::BillableMetric::GroupBy::OrHash
+            ).void
           end
           attr_writer :group_by
 
           sig do
             params(
               id: String,
-              group_by: T.any(MetronomeSDK::Models::V1::UsageListParams::BillableMetric::GroupBy, MetronomeSDK::Internal::AnyHash)
-            )
-              .returns(T.attached_class)
+              group_by:
+                MetronomeSDK::V1::UsageListParams::BillableMetric::GroupBy::OrHash
+            ).returns(T.attached_class)
           end
-          def self.new(id:, group_by: nil); end
+          def self.new(id:, group_by: nil)
+          end
 
           sig do
-            override
-              .returns({id: String, group_by: MetronomeSDK::Models::V1::UsageListParams::BillableMetric::GroupBy})
+            override.returns(
+              {
+                id: String,
+                group_by:
+                  MetronomeSDK::V1::UsageListParams::BillableMetric::GroupBy
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class GroupBy < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::UsageListParams::BillableMetric::GroupBy,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
             # The name of the group_by key to use
             sig { returns(String) }
             attr_accessor :key
@@ -152,16 +226,23 @@ module MetronomeSDK
             sig { params(values: T::Array[String]).void }
             attr_writer :values
 
-            sig { params(key: String, values: T::Array[String]).returns(T.attached_class) }
+            sig do
+              params(key: String, values: T::Array[String]).returns(
+                T.attached_class
+              )
+            end
             def self.new(
               # The name of the group_by key to use
               key:,
               # Values of the group_by key to return in the query. If this field is omitted, all
               # available values will be returned, up to a maximum of 200.
               values: nil
-            ); end
-            sig { override.returns({key: String, values: T::Array[String]}) }
-            def to_hash; end
+            )
+            end
+
+            sig { override.returns({ key: String, values: T::Array[String] }) }
+            def to_hash
+            end
           end
         end
       end

@@ -7,8 +7,18 @@ module MetronomeSDK
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V1::AlertCreateParams,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
         # Type of the alert
-        sig { returns(MetronomeSDK::Models::V1::AlertCreateParams::AlertType::OrSymbol) }
+        sig do
+          returns(MetronomeSDK::V1::AlertCreateParams::AlertType::OrSymbol)
+        end
         attr_accessor :alert_type
 
         # Name of the alert
@@ -45,14 +55,22 @@ module MetronomeSDK
 
         # A list of custom field filters for alert types that support advanced filtering.
         # Only present for contract invoices.
-        sig { returns(T.nilable(T::Array[MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter]
+            )
+          )
+        end
         attr_reader :custom_field_filters
 
         sig do
           params(
-            custom_field_filters: T::Array[T.any(MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter, MetronomeSDK::Internal::AnyHash)]
-          )
-            .void
+            custom_field_filters:
+              T::Array[
+                MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter::OrHash
+              ]
+          ).void
         end
         attr_writer :custom_field_filters
 
@@ -75,14 +93,18 @@ module MetronomeSDK
 
         # Scopes alert evaluation to a specific presentation group key on individual line
         # items. Only present for spend alerts.
-        sig { returns(T.nilable(MetronomeSDK::Models::V1::AlertCreateParams::GroupKeyFilter)) }
+        sig do
+          returns(
+            T.nilable(MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter)
+          )
+        end
         attr_reader :group_key_filter
 
         sig do
           params(
-            group_key_filter: T.any(MetronomeSDK::Models::V1::AlertCreateParams::GroupKeyFilter, MetronomeSDK::Internal::AnyHash)
-          )
-            .void
+            group_key_filter:
+              MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter::OrHash
+          ).void
         end
         attr_writer :group_key_filter
 
@@ -113,22 +135,26 @@ module MetronomeSDK
 
         sig do
           params(
-            alert_type: MetronomeSDK::Models::V1::AlertCreateParams::AlertType::OrSymbol,
+            alert_type:
+              MetronomeSDK::V1::AlertCreateParams::AlertType::OrSymbol,
             name: String,
             threshold: Float,
             billable_metric_id: String,
             credit_grant_type_filters: T::Array[String],
             credit_type_id: String,
-            custom_field_filters: T::Array[T.any(MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter, MetronomeSDK::Internal::AnyHash)],
+            custom_field_filters:
+              T::Array[
+                MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter::OrHash
+              ],
             customer_id: String,
             evaluate_on_create: T::Boolean,
-            group_key_filter: T.any(MetronomeSDK::Models::V1::AlertCreateParams::GroupKeyFilter, MetronomeSDK::Internal::AnyHash),
+            group_key_filter:
+              MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter::OrHash,
             invoice_types_filter: T::Array[String],
             plan_id: String,
             uniqueness_key: String,
-            request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # Type of the alert
@@ -170,102 +196,143 @@ module MetronomeSDK
           # request will fail with a 409 error.
           uniqueness_key: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                alert_type: MetronomeSDK::Models::V1::AlertCreateParams::AlertType::OrSymbol,
-                name: String,
-                threshold: Float,
-                billable_metric_id: String,
-                credit_grant_type_filters: T::Array[String],
-                credit_type_id: String,
-                custom_field_filters: T::Array[MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter],
-                customer_id: String,
-                evaluate_on_create: T::Boolean,
-                group_key_filter: MetronomeSDK::Models::V1::AlertCreateParams::GroupKeyFilter,
-                invoice_types_filter: T::Array[String],
-                plan_id: String,
-                uniqueness_key: String,
-                request_options: MetronomeSDK::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              alert_type:
+                MetronomeSDK::V1::AlertCreateParams::AlertType::OrSymbol,
+              name: String,
+              threshold: Float,
+              billable_metric_id: String,
+              credit_grant_type_filters: T::Array[String],
+              credit_type_id: String,
+              custom_field_filters:
+                T::Array[
+                  MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter
+                ],
+              customer_id: String,
+              evaluate_on_create: T::Boolean,
+              group_key_filter:
+                MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter,
+              invoice_types_filter: T::Array[String],
+              plan_id: String,
+              uniqueness_key: String,
+              request_options: MetronomeSDK::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
 
         # Type of the alert
         module AlertType
           extend MetronomeSDK::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, MetronomeSDK::Models::V1::AlertCreateParams::AlertType) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, MetronomeSDK::V1::AlertCreateParams::AlertType)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           LOW_CREDIT_BALANCE_REACHED =
-            T.let(:low_credit_balance_reached, MetronomeSDK::Models::V1::AlertCreateParams::AlertType::TaggedSymbol)
+            T.let(
+              :low_credit_balance_reached,
+              MetronomeSDK::V1::AlertCreateParams::AlertType::TaggedSymbol
+            )
           SPEND_THRESHOLD_REACHED =
-            T.let(:spend_threshold_reached, MetronomeSDK::Models::V1::AlertCreateParams::AlertType::TaggedSymbol)
+            T.let(
+              :spend_threshold_reached,
+              MetronomeSDK::V1::AlertCreateParams::AlertType::TaggedSymbol
+            )
           MONTHLY_INVOICE_TOTAL_SPEND_THRESHOLD_REACHED =
             T.let(
               :monthly_invoice_total_spend_threshold_reached,
-              MetronomeSDK::Models::V1::AlertCreateParams::AlertType::TaggedSymbol
+              MetronomeSDK::V1::AlertCreateParams::AlertType::TaggedSymbol
             )
           LOW_REMAINING_DAYS_IN_PLAN_REACHED =
             T.let(
               :low_remaining_days_in_plan_reached,
-              MetronomeSDK::Models::V1::AlertCreateParams::AlertType::TaggedSymbol
+              MetronomeSDK::V1::AlertCreateParams::AlertType::TaggedSymbol
             )
           LOW_REMAINING_CREDIT_PERCENTAGE_REACHED =
             T.let(
               :low_remaining_credit_percentage_reached,
-              MetronomeSDK::Models::V1::AlertCreateParams::AlertType::TaggedSymbol
+              MetronomeSDK::V1::AlertCreateParams::AlertType::TaggedSymbol
             )
           USAGE_THRESHOLD_REACHED =
-            T.let(:usage_threshold_reached, MetronomeSDK::Models::V1::AlertCreateParams::AlertType::TaggedSymbol)
+            T.let(
+              :usage_threshold_reached,
+              MetronomeSDK::V1::AlertCreateParams::AlertType::TaggedSymbol
+            )
           LOW_REMAINING_DAYS_FOR_COMMIT_SEGMENT_REACHED =
             T.let(
               :low_remaining_days_for_commit_segment_reached,
-              MetronomeSDK::Models::V1::AlertCreateParams::AlertType::TaggedSymbol
+              MetronomeSDK::V1::AlertCreateParams::AlertType::TaggedSymbol
             )
           LOW_REMAINING_COMMIT_BALANCE_REACHED =
             T.let(
               :low_remaining_commit_balance_reached,
-              MetronomeSDK::Models::V1::AlertCreateParams::AlertType::TaggedSymbol
+              MetronomeSDK::V1::AlertCreateParams::AlertType::TaggedSymbol
             )
           LOW_REMAINING_COMMIT_PERCENTAGE_REACHED =
             T.let(
               :low_remaining_commit_percentage_reached,
-              MetronomeSDK::Models::V1::AlertCreateParams::AlertType::TaggedSymbol
+              MetronomeSDK::V1::AlertCreateParams::AlertType::TaggedSymbol
             )
           LOW_REMAINING_DAYS_FOR_CONTRACT_CREDIT_SEGMENT_REACHED =
             T.let(
               :low_remaining_days_for_contract_credit_segment_reached,
-              MetronomeSDK::Models::V1::AlertCreateParams::AlertType::TaggedSymbol
+              MetronomeSDK::V1::AlertCreateParams::AlertType::TaggedSymbol
             )
           LOW_REMAINING_CONTRACT_CREDIT_BALANCE_REACHED =
             T.let(
               :low_remaining_contract_credit_balance_reached,
-              MetronomeSDK::Models::V1::AlertCreateParams::AlertType::TaggedSymbol
+              MetronomeSDK::V1::AlertCreateParams::AlertType::TaggedSymbol
             )
           LOW_REMAINING_CONTRACT_CREDIT_PERCENTAGE_REACHED =
             T.let(
               :low_remaining_contract_credit_percentage_reached,
-              MetronomeSDK::Models::V1::AlertCreateParams::AlertType::TaggedSymbol
+              MetronomeSDK::V1::AlertCreateParams::AlertType::TaggedSymbol
             )
           LOW_REMAINING_CONTRACT_CREDIT_AND_COMMIT_BALANCE_REACHED =
             T.let(
               :low_remaining_contract_credit_and_commit_balance_reached,
-              MetronomeSDK::Models::V1::AlertCreateParams::AlertType::TaggedSymbol
+              MetronomeSDK::V1::AlertCreateParams::AlertType::TaggedSymbol
             )
           INVOICE_TOTAL_REACHED =
-            T.let(:invoice_total_reached, MetronomeSDK::Models::V1::AlertCreateParams::AlertType::TaggedSymbol)
+            T.let(
+              :invoice_total_reached,
+              MetronomeSDK::V1::AlertCreateParams::AlertType::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[MetronomeSDK::Models::V1::AlertCreateParams::AlertType::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                MetronomeSDK::V1::AlertCreateParams::AlertType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class CustomFieldFilter < MetronomeSDK::Internal::Type::BaseModel
-          sig { returns(MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter::Entity::OrSymbol) }
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          sig do
+            returns(
+              MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter::Entity::OrSymbol
+            )
+          end
           attr_accessor :entity
 
           sig { returns(String) }
@@ -276,52 +343,77 @@ module MetronomeSDK
 
           sig do
             params(
-              entity: MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter::Entity::OrSymbol,
+              entity:
+                MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter::Entity::OrSymbol,
               key: String,
               value: String
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
-          def self.new(entity:, key:, value:); end
+          def self.new(entity:, key:, value:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  entity: MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter::Entity::OrSymbol,
-                  key: String,
-                  value: String
-                }
-              )
+            override.returns(
+              {
+                entity:
+                  MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter::Entity::OrSymbol,
+                key: String,
+                value: String
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module Entity
             extend MetronomeSDK::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter::Entity) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter::Entity
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             CONTRACT =
-              T.let(:Contract, MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter::Entity::TaggedSymbol)
+              T.let(
+                :Contract,
+                MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter::Entity::TaggedSymbol
+              )
             COMMIT =
-              T.let(:Commit, MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter::Entity::TaggedSymbol)
+              T.let(
+                :Commit,
+                MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter::Entity::TaggedSymbol
+              )
             CONTRACT_CREDIT =
               T.let(
                 :ContractCredit,
-                MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter::Entity::TaggedSymbol
+                MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter::Entity::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(T::Array[MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter::Entity::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter::Entity::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class GroupKeyFilter < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
           sig { returns(String) }
           attr_accessor :key
 
@@ -331,10 +423,12 @@ module MetronomeSDK
           # Scopes alert evaluation to a specific presentation group key on individual line
           # items. Only present for spend alerts.
           sig { params(key: String, value: String).returns(T.attached_class) }
-          def self.new(key:, value:); end
+          def self.new(key:, value:)
+          end
 
-          sig { override.returns({key: String, value: String}) }
-          def to_hash; end
+          sig { override.returns({ key: String, value: String }) }
+          def to_hash
+          end
         end
       end
     end

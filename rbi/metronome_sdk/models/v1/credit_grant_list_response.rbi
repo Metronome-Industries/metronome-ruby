@@ -4,6 +4,14 @@ module MetronomeSDK
   module Models
     module V1
       class CreditGrantListResponse < MetronomeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Models::V1::CreditGrantListResponse,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
         # the Metronome ID of the credit grant
         sig { returns(String) }
         attr_accessor :id
@@ -11,14 +19,16 @@ module MetronomeSDK
         # The effective balance of the grant as of the end of the customer's current
         # billing period. Expiration deductions will be included only if the grant expires
         # before the end of the current billing period.
-        sig { returns(MetronomeSDK::Models::V1::CreditGrantListResponse::Balance) }
+        sig do
+          returns(MetronomeSDK::Models::V1::CreditGrantListResponse::Balance)
+        end
         attr_reader :balance
 
         sig do
           params(
-            balance: T.any(MetronomeSDK::Models::V1::CreditGrantListResponse::Balance, MetronomeSDK::Internal::AnyHash)
-          )
-            .void
+            balance:
+              MetronomeSDK::Models::V1::CreditGrantListResponse::Balance::OrHash
+          ).void
         end
         attr_writer :balance
 
@@ -29,7 +39,7 @@ module MetronomeSDK
         sig { returns(String) }
         attr_accessor :customer_id
 
-        sig { returns(T::Array[MetronomeSDK::Models::V1::CreditLedgerEntry]) }
+        sig { returns(T::Array[MetronomeSDK::V1::CreditLedgerEntry]) }
         attr_accessor :deductions
 
         sig { returns(Time) }
@@ -39,14 +49,18 @@ module MetronomeSDK
         attr_accessor :expires_at
 
         # the amount of credits initially granted
-        sig { returns(MetronomeSDK::Models::V1::CreditGrantListResponse::GrantAmount) }
+        sig do
+          returns(
+            MetronomeSDK::Models::V1::CreditGrantListResponse::GrantAmount
+          )
+        end
         attr_reader :grant_amount
 
         sig do
           params(
-            grant_amount: T.any(MetronomeSDK::Models::V1::CreditGrantListResponse::GrantAmount, MetronomeSDK::Internal::AnyHash)
-          )
-            .void
+            grant_amount:
+              MetronomeSDK::Models::V1::CreditGrantListResponse::GrantAmount::OrHash
+          ).void
         end
         attr_writer :grant_amount
 
@@ -54,18 +68,20 @@ module MetronomeSDK
         attr_accessor :name
 
         # the amount paid for this credit grant
-        sig { returns(MetronomeSDK::Models::V1::CreditGrantListResponse::PaidAmount) }
+        sig do
+          returns(MetronomeSDK::Models::V1::CreditGrantListResponse::PaidAmount)
+        end
         attr_reader :paid_amount
 
         sig do
           params(
-            paid_amount: T.any(MetronomeSDK::Models::V1::CreditGrantListResponse::PaidAmount, MetronomeSDK::Internal::AnyHash)
-          )
-            .void
+            paid_amount:
+              MetronomeSDK::Models::V1::CreditGrantListResponse::PaidAmount::OrHash
+          ).void
         end
         attr_writer :paid_amount
 
-        sig { returns(T::Array[MetronomeSDK::Models::V1::CreditLedgerEntry]) }
+        sig { returns(T::Array[MetronomeSDK::V1::CreditLedgerEntry]) }
         attr_accessor :pending_deductions
 
         sig { returns(Float) }
@@ -81,14 +97,24 @@ module MetronomeSDK
 
         # The products which these credits will be applied to. (If unspecified, the
         # credits will be applied to charges for all products.)
-        sig { returns(T.nilable(T::Array[MetronomeSDK::Models::V1::CreditGrantListResponse::Product])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[
+                MetronomeSDK::Models::V1::CreditGrantListResponse::Product
+              ]
+            )
+          )
+        end
         attr_reader :products
 
         sig do
           params(
-            products: T::Array[T.any(MetronomeSDK::Models::V1::CreditGrantListResponse::Product, MetronomeSDK::Internal::AnyHash)]
-          )
-            .void
+            products:
+              T::Array[
+                MetronomeSDK::Models::V1::CreditGrantListResponse::Product::OrHash
+              ]
+          ).void
         end
         attr_writer :products
 
@@ -104,24 +130,30 @@ module MetronomeSDK
         sig do
           params(
             id: String,
-            balance: T.any(MetronomeSDK::Models::V1::CreditGrantListResponse::Balance, MetronomeSDK::Internal::AnyHash),
+            balance:
+              MetronomeSDK::Models::V1::CreditGrantListResponse::Balance::OrHash,
             custom_fields: T::Hash[Symbol, String],
             customer_id: String,
-            deductions: T::Array[T.any(MetronomeSDK::Models::V1::CreditLedgerEntry, MetronomeSDK::Internal::AnyHash)],
+            deductions: T::Array[MetronomeSDK::V1::CreditLedgerEntry::OrHash],
             effective_at: Time,
             expires_at: Time,
-            grant_amount: T.any(MetronomeSDK::Models::V1::CreditGrantListResponse::GrantAmount, MetronomeSDK::Internal::AnyHash),
+            grant_amount:
+              MetronomeSDK::Models::V1::CreditGrantListResponse::GrantAmount::OrHash,
             name: String,
-            paid_amount: T.any(MetronomeSDK::Models::V1::CreditGrantListResponse::PaidAmount, MetronomeSDK::Internal::AnyHash),
-            pending_deductions: T::Array[T.any(MetronomeSDK::Models::V1::CreditLedgerEntry, MetronomeSDK::Internal::AnyHash)],
+            paid_amount:
+              MetronomeSDK::Models::V1::CreditGrantListResponse::PaidAmount::OrHash,
+            pending_deductions:
+              T::Array[MetronomeSDK::V1::CreditLedgerEntry::OrHash],
             priority: Float,
             credit_grant_type: T.nilable(String),
             invoice_id: T.nilable(String),
-            products: T::Array[T.any(MetronomeSDK::Models::V1::CreditGrantListResponse::Product, MetronomeSDK::Internal::AnyHash)],
+            products:
+              T::Array[
+                MetronomeSDK::Models::V1::CreditGrantListResponse::Product::OrHash
+              ],
             reason: T.nilable(String),
             uniqueness_key: T.nilable(String)
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # the Metronome ID of the credit grant
@@ -155,34 +187,50 @@ module MetronomeSDK
           # with a previously used uniqueness key, a new record will not be created and the
           # request will fail with a 409 error.
           uniqueness_key: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                id: String,
-                balance: MetronomeSDK::Models::V1::CreditGrantListResponse::Balance,
-                custom_fields: T::Hash[Symbol, String],
-                customer_id: String,
-                deductions: T::Array[MetronomeSDK::Models::V1::CreditLedgerEntry],
-                effective_at: Time,
-                expires_at: Time,
-                grant_amount: MetronomeSDK::Models::V1::CreditGrantListResponse::GrantAmount,
-                name: String,
-                paid_amount: MetronomeSDK::Models::V1::CreditGrantListResponse::PaidAmount,
-                pending_deductions: T::Array[MetronomeSDK::Models::V1::CreditLedgerEntry],
-                priority: Float,
-                credit_grant_type: T.nilable(String),
-                invoice_id: T.nilable(String),
-                products: T::Array[MetronomeSDK::Models::V1::CreditGrantListResponse::Product],
-                reason: T.nilable(String),
-                uniqueness_key: T.nilable(String)
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              id: String,
+              balance:
+                MetronomeSDK::Models::V1::CreditGrantListResponse::Balance,
+              custom_fields: T::Hash[Symbol, String],
+              customer_id: String,
+              deductions: T::Array[MetronomeSDK::V1::CreditLedgerEntry],
+              effective_at: Time,
+              expires_at: Time,
+              grant_amount:
+                MetronomeSDK::Models::V1::CreditGrantListResponse::GrantAmount,
+              name: String,
+              paid_amount:
+                MetronomeSDK::Models::V1::CreditGrantListResponse::PaidAmount,
+              pending_deductions: T::Array[MetronomeSDK::V1::CreditLedgerEntry],
+              priority: Float,
+              credit_grant_type: T.nilable(String),
+              invoice_id: T.nilable(String),
+              products:
+                T::Array[
+                  MetronomeSDK::Models::V1::CreditGrantListResponse::Product
+                ],
+              reason: T.nilable(String),
+              uniqueness_key: T.nilable(String)
+            }
+          )
+        end
+        def to_hash
+        end
 
         class Balance < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::CreditGrantListResponse::Balance,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
           # The end_date of the customer's current billing period.
           sig { returns(Time) }
           attr_accessor :effective_at
@@ -218,68 +266,115 @@ module MetronomeSDK
             # grant expires before the end of the customer's current billing period, this
             # amount will be 0.
             including_pending:
-          ); end
-          sig { override.returns({effective_at: Time, excluding_pending: Float, including_pending: Float}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                effective_at: Time,
+                excluding_pending: Float,
+                including_pending: Float
+              }
+            )
+          end
+          def to_hash
+          end
         end
 
         class GrantAmount < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::CreditGrantListResponse::GrantAmount,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
           sig { returns(Float) }
           attr_accessor :amount
 
           # the credit type for the amount granted
-          sig { returns(MetronomeSDK::Models::CreditTypeData) }
+          sig { returns(MetronomeSDK::CreditTypeData) }
           attr_reader :credit_type
 
-          sig { params(credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash)).void }
+          sig { params(credit_type: MetronomeSDK::CreditTypeData::OrHash).void }
           attr_writer :credit_type
 
           # the amount of credits initially granted
           sig do
             params(
               amount: Float,
-              credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash)
-            )
-              .returns(T.attached_class)
+              credit_type: MetronomeSDK::CreditTypeData::OrHash
+            ).returns(T.attached_class)
           end
           def self.new(
             amount:,
             # the credit type for the amount granted
             credit_type:
-          ); end
-          sig { override.returns({amount: Float, credit_type: MetronomeSDK::Models::CreditTypeData}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { amount: Float, credit_type: MetronomeSDK::CreditTypeData }
+            )
+          end
+          def to_hash
+          end
         end
 
         class PaidAmount < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::CreditGrantListResponse::PaidAmount,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
           sig { returns(Float) }
           attr_accessor :amount
 
           # the credit type for the amount paid
-          sig { returns(MetronomeSDK::Models::CreditTypeData) }
+          sig { returns(MetronomeSDK::CreditTypeData) }
           attr_reader :credit_type
 
-          sig { params(credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash)).void }
+          sig { params(credit_type: MetronomeSDK::CreditTypeData::OrHash).void }
           attr_writer :credit_type
 
           # the amount paid for this credit grant
           sig do
             params(
               amount: Float,
-              credit_type: T.any(MetronomeSDK::Models::CreditTypeData, MetronomeSDK::Internal::AnyHash)
-            )
-              .returns(T.attached_class)
+              credit_type: MetronomeSDK::CreditTypeData::OrHash
+            ).returns(T.attached_class)
           end
           def self.new(
             amount:,
             # the credit type for the amount paid
             credit_type:
-          ); end
-          sig { override.returns({amount: Float, credit_type: MetronomeSDK::Models::CreditTypeData}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              { amount: Float, credit_type: MetronomeSDK::CreditTypeData }
+            )
+          end
+          def to_hash
+          end
         end
 
         class Product < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::CreditGrantListResponse::Product,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
           sig { returns(String) }
           attr_accessor :id
 
@@ -287,10 +382,12 @@ module MetronomeSDK
           attr_accessor :name
 
           sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:); end
+          def self.new(id:, name:)
+          end
 
-          sig { override.returns({id: String, name: String}) }
-          def to_hash; end
+          sig { override.returns({ id: String, name: String }) }
+          def to_hash
+          end
         end
       end
     end

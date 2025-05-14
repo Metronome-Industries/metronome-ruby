@@ -7,6 +7,14 @@ module MetronomeSDK
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V1::CreditGrantEditParams,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
         # the ID of the credit grant
         sig { returns(String) }
         attr_accessor :id
@@ -38,9 +46,8 @@ module MetronomeSDK
             credit_grant_type: String,
             expires_at: Time,
             name: String,
-            request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # the ID of the credit grant
@@ -52,20 +59,22 @@ module MetronomeSDK
           # the updated name for the credit grant
           name: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                id: String,
-                credit_grant_type: String,
-                expires_at: Time,
-                name: String,
-                request_options: MetronomeSDK::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              id: String,
+              credit_grant_type: String,
+              expires_at: Time,
+              name: String,
+              request_options: MetronomeSDK::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

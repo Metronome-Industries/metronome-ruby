@@ -7,7 +7,21 @@ module MetronomeSDK
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
-        sig { returns(T::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice]) }
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
+        sig do
+          returns(
+            T::Array[
+              MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice
+            ]
+          )
+        end
         attr_accessor :invoices
 
         sig { returns(T::Boolean) }
@@ -15,32 +29,41 @@ module MetronomeSDK
 
         sig do
           params(
-            invoices: T::Array[
-              T.any(
-                MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice,
-                MetronomeSDK::Internal::AnyHash
-              )
-            ],
+            invoices:
+              T::Array[
+                MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::OrHash
+              ],
             preview: T::Boolean,
-            request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
-        def self.new(invoices:, preview:, request_options: {}); end
+        def self.new(invoices:, preview:, request_options: {})
+        end
 
         sig do
-          override
-            .returns(
-              {
-                invoices: T::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice],
-                preview: T::Boolean,
-                request_options: MetronomeSDK::RequestOptions
-              }
-            )
+          override.returns(
+            {
+              invoices:
+                T::Array[
+                  MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice
+                ],
+              preview: T::Boolean,
+              request_options: MetronomeSDK::RequestOptions
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class Invoice < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
           sig { returns(String) }
           attr_accessor :contract_id
 
@@ -61,7 +84,9 @@ module MetronomeSDK
 
           sig do
             returns(
-              T::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem]
+              T::Array[
+                MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem
+              ]
             )
           end
           attr_accessor :usage_line_items
@@ -70,7 +95,7 @@ module MetronomeSDK
           sig do
             returns(
               T.nilable(
-                MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus::OrSymbol
+                MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus::OrSymbol
               )
             )
           end
@@ -78,16 +103,16 @@ module MetronomeSDK
 
           sig do
             params(
-              billable_status: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus::OrSymbol
-            )
-              .void
+              billable_status:
+                MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus::OrSymbol
+            ).void
           end
           attr_writer :billable_status
 
           sig do
             returns(
               T.nilable(
-                MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity::OrSymbol
+                MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity::OrSymbol
               )
             )
           end
@@ -95,9 +120,9 @@ module MetronomeSDK
 
           sig do
             params(
-              breakdown_granularity: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity::OrSymbol
-            )
-              .void
+              breakdown_granularity:
+                MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity::OrSymbol
+            ).void
           end
           attr_writer :breakdown_granularity
 
@@ -115,17 +140,16 @@ module MetronomeSDK
               exclusive_end_date: Time,
               inclusive_start_date: Time,
               issue_date: Time,
-              usage_line_items: T::Array[
-                T.any(
-                  MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              ],
-              billable_status: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus::OrSymbol,
-              breakdown_granularity: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity::OrSymbol,
+              usage_line_items:
+                T::Array[
+                  MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::OrHash
+                ],
+              billable_status:
+                MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus::OrSymbol,
+              breakdown_granularity:
+                MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity::OrSymbol,
               custom_fields: T::Hash[Symbol, String]
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             contract_id:,
@@ -139,27 +163,42 @@ module MetronomeSDK
             billable_status: nil,
             breakdown_granularity: nil,
             custom_fields: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  contract_id: String,
-                  credit_type_id: String,
-                  customer_id: String,
-                  exclusive_end_date: Time,
-                  inclusive_start_date: Time,
-                  issue_date: Time,
-                  usage_line_items: T::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem],
-                  billable_status: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus::OrSymbol,
-                  breakdown_granularity: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity::OrSymbol,
-                  custom_fields: T::Hash[Symbol, String]
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                contract_id: String,
+                credit_type_id: String,
+                customer_id: String,
+                exclusive_end_date: Time,
+                inclusive_start_date: Time,
+                issue_date: Time,
+                usage_line_items:
+                  T::Array[
+                    MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem
+                  ],
+                billable_status:
+                  MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus::OrSymbol,
+                breakdown_granularity:
+                  MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity::OrSymbol,
+                custom_fields: T::Hash[Symbol, String]
+              }
+            )
+          end
+          def to_hash
+          end
 
           class UsageLineItem < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
             sig { returns(Time) }
             attr_accessor :exclusive_end_date
 
@@ -172,7 +211,9 @@ module MetronomeSDK
             sig { returns(T.nilable(T::Hash[Symbol, String])) }
             attr_reader :presentation_group_values
 
-            sig { params(presentation_group_values: T::Hash[Symbol, String]).void }
+            sig do
+              params(presentation_group_values: T::Hash[Symbol, String]).void
+            end
             attr_writer :presentation_group_values
 
             sig { returns(T.nilable(T::Hash[Symbol, String])) }
@@ -191,7 +232,7 @@ module MetronomeSDK
               returns(
                 T.nilable(
                   T::Array[
-                    MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity
+                    MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity
                   ]
                 )
               )
@@ -200,14 +241,11 @@ module MetronomeSDK
 
             sig do
               params(
-                subtotals_with_quantity: T::Array[
-                  T.any(
-                    MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity,
-                    MetronomeSDK::Internal::AnyHash
-                  )
-                ]
-              )
-                .void
+                subtotals_with_quantity:
+                  T::Array[
+                    MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity::OrHash
+                  ]
+              ).void
             end
             attr_writer :subtotals_with_quantity
 
@@ -219,14 +257,11 @@ module MetronomeSDK
                 presentation_group_values: T::Hash[Symbol, String],
                 pricing_group_values: T::Hash[Symbol, String],
                 quantity: Float,
-                subtotals_with_quantity: T::Array[
-                  T.any(
-                    MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity,
-                    MetronomeSDK::Internal::AnyHash
-                  )
-                ]
-              )
-                .returns(T.attached_class)
+                subtotals_with_quantity:
+                  T::Array[
+                    MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity::OrHash
+                  ]
+              ).returns(T.attached_class)
             end
             def self.new(
               exclusive_end_date:,
@@ -236,26 +271,37 @@ module MetronomeSDK
               pricing_group_values: nil,
               quantity: nil,
               subtotals_with_quantity: nil
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    exclusive_end_date: Time,
-                    inclusive_start_date: Time,
-                    product_id: String,
-                    presentation_group_values: T::Hash[Symbol, String],
-                    pricing_group_values: T::Hash[Symbol, String],
-                    quantity: Float,
-                    subtotals_with_quantity: T::Array[
-                      MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity
-                    ]
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  exclusive_end_date: Time,
+                  inclusive_start_date: Time,
+                  product_id: String,
+                  presentation_group_values: T::Hash[Symbol, String],
+                  pricing_group_values: T::Hash[Symbol, String],
+                  quantity: Float,
+                  subtotals_with_quantity:
+                    T::Array[
+                      MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity
+                    ]
+                }
+              )
+            end
+            def to_hash
+            end
 
             class SubtotalsWithQuantity < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
               sig { returns(Time) }
               attr_accessor :exclusive_end_date
 
@@ -272,12 +318,24 @@ module MetronomeSDK
                   quantity: Float
                 ).returns(T.attached_class)
               end
-              def self.new(exclusive_end_date:, inclusive_start_date:, quantity:); end
+              def self.new(
+                exclusive_end_date:,
+                inclusive_start_date:,
+                quantity:
+              )
+              end
 
               sig do
-                override.returns({exclusive_end_date: Time, inclusive_start_date: Time, quantity: Float})
+                override.returns(
+                  {
+                    exclusive_end_date: Time,
+                    inclusive_start_date: Time,
+                    quantity: Float
+                  }
+                )
               end
-              def to_hash; end
+              def to_hash
+              end
             end
           end
 
@@ -286,27 +344,34 @@ module MetronomeSDK
             extend MetronomeSDK::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             BILLABLE =
               T.let(
                 :billable,
-                MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus::TaggedSymbol
+                MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus::TaggedSymbol
               )
             UNBILLABLE =
               T.let(
                 :unbillable,
-                MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus::TaggedSymbol
+                MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus::TaggedSymbol]
-                )
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
 
           module BreakdownGranularity
@@ -314,30 +379,33 @@ module MetronomeSDK
 
             TaggedSymbol =
               T.type_alias do
-                T.all(Symbol, MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity)
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity
+                )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             HOUR =
               T.let(
                 :HOUR,
-                MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity::TaggedSymbol
+                MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity::TaggedSymbol
               )
             DAY =
               T.let(
                 :DAY,
-                MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity::TaggedSymbol
+                MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity::TaggedSymbol
               )
 
             sig do
-              override
-                .returns(
-                  T::Array[
-                    MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity::TaggedSymbol
-                  ]
-                )
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
       end

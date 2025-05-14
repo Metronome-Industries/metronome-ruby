@@ -2,29 +2,27 @@ module MetronomeSDK
   module Models
     type schedule_point_in_time =
       {
-        credit_type: MetronomeSDK::Models::CreditTypeData,
-        schedule_items: ::Array[MetronomeSDK::Models::SchedulePointInTime::ScheduleItem]
+        credit_type: MetronomeSDK::CreditTypeData,
+        schedule_items: ::Array[MetronomeSDK::SchedulePointInTime::ScheduleItem]
       }
 
     class SchedulePointInTime < MetronomeSDK::Internal::Type::BaseModel
-      attr_reader credit_type: MetronomeSDK::Models::CreditTypeData?
+      attr_reader credit_type: MetronomeSDK::CreditTypeData?
 
       def credit_type=: (
-        MetronomeSDK::Models::CreditTypeData
-      ) -> MetronomeSDK::Models::CreditTypeData
+        MetronomeSDK::CreditTypeData
+      ) -> MetronomeSDK::CreditTypeData
 
-      attr_reader schedule_items: ::Array[MetronomeSDK::Models::SchedulePointInTime::ScheduleItem]?
+      attr_reader schedule_items: ::Array[MetronomeSDK::SchedulePointInTime::ScheduleItem]?
 
       def schedule_items=: (
-        ::Array[MetronomeSDK::Models::SchedulePointInTime::ScheduleItem]
-      ) -> ::Array[MetronomeSDK::Models::SchedulePointInTime::ScheduleItem]
+        ::Array[MetronomeSDK::SchedulePointInTime::ScheduleItem]
+      ) -> ::Array[MetronomeSDK::SchedulePointInTime::ScheduleItem]
 
       def initialize: (
-        ?credit_type: MetronomeSDK::Models::CreditTypeData,
-        ?schedule_items: ::Array[MetronomeSDK::Models::SchedulePointInTime::ScheduleItem]
+        ?credit_type: MetronomeSDK::CreditTypeData,
+        ?schedule_items: ::Array[MetronomeSDK::SchedulePointInTime::ScheduleItem]
       ) -> void
-
-      def to_hash: -> MetronomeSDK::Models::schedule_point_in_time
 
       type schedule_item =
         {
@@ -57,8 +55,6 @@ module MetronomeSDK
           timestamp: Time,
           unit_price: Float
         ) -> void
-
-        def to_hash: -> MetronomeSDK::Models::SchedulePointInTime::schedule_item
       end
     end
   end

@@ -7,6 +7,14 @@ module MetronomeSDK
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V1::CustomerListParams,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
         # Filter the customer list by customer_id. Up to 100 ids can be provided.
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :customer_ids
@@ -59,9 +67,8 @@ module MetronomeSDK
             next_page: String,
             only_archived: T::Boolean,
             salesforce_account_ids: T::Array[String],
-            request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # Filter the customer list by customer_id. Up to 100 ids can be provided.
@@ -79,22 +86,24 @@ module MetronomeSDK
           # provided.
           salesforce_account_ids: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                customer_ids: T::Array[String],
-                ingest_alias: String,
-                limit: Integer,
-                next_page: String,
-                only_archived: T::Boolean,
-                salesforce_account_ids: T::Array[String],
-                request_options: MetronomeSDK::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              customer_ids: T::Array[String],
+              ingest_alias: String,
+              limit: Integer,
+              next_page: String,
+              only_archived: T::Boolean,
+              salesforce_account_ids: T::Array[String],
+              request_options: MetronomeSDK::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

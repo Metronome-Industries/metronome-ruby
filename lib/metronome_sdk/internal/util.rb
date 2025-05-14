@@ -128,6 +128,22 @@ module MetronomeSDK
             input.respond_to?(:to_h) ? input.to_h : input
           end
         end
+
+        # @api private
+        #
+        # @param input [Object]
+        #
+        # @raise [ArgumentError]
+        # @return [Hash{Object=>Object}, nil]
+        def coerce_hash!(input)
+          case coerce_hash(input)
+          in Hash | nil => coerced
+            coerced
+          else
+            message = "Expected a #{Hash} or #{MetronomeSDK::Internal::Type::BaseModel}, got #{data.inspect}"
+            raise ArgumentError.new(message)
+          end
+        end
       end
 
       class << self
@@ -454,7 +470,7 @@ module MetronomeSDK
       # @type [Regexp]
       JSON_CONTENT = %r{^application/(?:vnd(?:\.[^.]+)*\+)?json(?!l)}
       # @type [Regexp]
-      JSONL_CONTENT = %r{^application/(?:x-)?jsonl}
+      JSONL_CONTENT = %r{^application/(:?x-(?:n|l)djson)|(:?(?:x-)?jsonl)}
 
       class << self
         # @api private
@@ -493,7 +509,7 @@ module MetronomeSDK
             y << val.to_s
           else
             y << "Content-Type: application/json\r\n\r\n"
-            y << JSON.fast_generate(val)
+            y << JSON.generate(val)
           end
           y << "\r\n"
         end
@@ -519,7 +535,7 @@ module MetronomeSDK
             filename = ERB::Util.url_encode(val.filename)
             y << "; filename=\"#{filename}\""
           in Pathname | IO
-            filename = ERB::Util.url_encode(File.basename(val.to_path))
+            filename = ERB::Util.url_encode(::File.basename(val.to_path))
             y << "; filename=\"#{filename}\""
           else
           end
@@ -570,9 +586,9 @@ module MetronomeSDK
           content_type = headers["content-type"]
           case [content_type, body]
           in [MetronomeSDK::Internal::Util::JSON_CONTENT, Hash | Array | -> { primitive?(_1) }]
-            [headers, JSON.fast_generate(body)]
+            [headers, JSON.generate(body)]
           in [MetronomeSDK::Internal::Util::JSONL_CONTENT, Enumerable] unless body.is_a?(MetronomeSDK::Internal::Type::FileInput)
-            [headers, body.lazy.map { JSON.fast_generate(_1) }]
+            [headers, body.lazy.map { JSON.generate(_1) }]
           in [%r{^multipart/form-data}, Hash | MetronomeSDK::Internal::Type::FileInput]
             boundary, strio = encode_multipart_streaming(body)
             headers = {**headers, "content-type" => "#{content_type}; boundary=#{boundary}"}
@@ -783,6 +799,62 @@ module MetronomeSDK
 
             y << {**blank, **current} unless current.empty?
           end
+        end
+      end
+
+      # @api private
+      module SorbetRuntimeSupport
+        class MissingSorbetRuntimeError < ::RuntimeError
+        end
+
+        # @api private
+        #
+        # @return [Hash{Symbol=>Object}]
+        private def sorbet_runtime_constants = @sorbet_runtime_constants ||= {}
+
+        # @api private
+        #
+        # @param name [Symbol]
+        def const_missing(name)
+          super unless sorbet_runtime_constants.key?(name)
+
+          unless Object.const_defined?(:T)
+            message = "Trying to access a Sorbet constant #{name.inspect} without `sorbet-runtime`."
+            raise MissingSorbetRuntimeError.new(message)
+          end
+
+          sorbet_runtime_constants.fetch(name).call
+        end
+
+        # @api private
+        #
+        # @param name [Symbol]
+        # @param blk [Proc]
+        def define_sorbet_constant!(name, &blk) = sorbet_runtime_constants.store(name, blk)
+      end
+
+      extend MetronomeSDK::Internal::Util::SorbetRuntimeSupport
+
+      define_sorbet_constant!(:ParsedUri) do
+        T.type_alias do
+          {
+            scheme: T.nilable(String),
+            host: T.nilable(String),
+            port: T.nilable(Integer),
+            path: T.nilable(String),
+            query: T::Hash[String, T::Array[String]]
+          }
+        end
+      end
+
+      define_sorbet_constant!(:ServerSentEvent) do
+        T.type_alias do
+          {
+            event: T.nilable(String),
+            data: T.nilable(String),
+            id: T.nilable(String),
+            retry: T.nilable(Integer)
+          }
         end
       end
     end

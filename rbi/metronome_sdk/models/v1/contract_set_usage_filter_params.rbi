@@ -7,6 +7,14 @@ module MetronomeSDK
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V1::ContractSetUsageFilterParams,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
         sig { returns(String) }
         attr_accessor :contract_id
 
@@ -29,9 +37,8 @@ module MetronomeSDK
             group_key: String,
             group_values: T::Array[String],
             starting_at: Time,
-            request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           contract_id:,
@@ -44,19 +51,19 @@ module MetronomeSDK
         end
 
         sig do
-          override
-            .returns(
-              {
-                contract_id: String,
-                customer_id: String,
-                group_key: String,
-                group_values: T::Array[String],
-                starting_at: Time,
-                request_options: MetronomeSDK::RequestOptions
-              }
-            )
+          override.returns(
+            {
+              contract_id: String,
+              customer_id: String,
+              group_key: String,
+              group_values: T::Array[String],
+              starting_at: Time,
+              request_options: MetronomeSDK::RequestOptions
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

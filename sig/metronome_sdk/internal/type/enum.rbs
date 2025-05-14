@@ -3,6 +3,7 @@ module MetronomeSDK
     module Type
       module Enum
         include MetronomeSDK::Internal::Type::Converter
+        include MetronomeSDK::Internal::Util::SorbetRuntimeSupport
 
         def self.values: -> ::Array[(nil | bool | Integer | Float | Symbol)]
 

@@ -7,6 +7,14 @@ module MetronomeSDK
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V2::ContractListParams,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
         sig { returns(String) }
         attr_accessor :customer_id
 
@@ -57,9 +65,8 @@ module MetronomeSDK
             include_balance: T::Boolean,
             include_ledgers: T::Boolean,
             starting_at: Time,
-            request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           customer_id:,
@@ -78,22 +85,24 @@ module MetronomeSDK
           # this date. This cannot be provided if covering_date filter is provided.
           starting_at: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                customer_id: String,
-                covering_date: Time,
-                include_archived: T::Boolean,
-                include_balance: T::Boolean,
-                include_ledgers: T::Boolean,
-                starting_at: Time,
-                request_options: MetronomeSDK::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              customer_id: String,
+              covering_date: Time,
+              include_archived: T::Boolean,
+              include_balance: T::Boolean,
+              include_ledgers: T::Boolean,
+              starting_at: Time,
+              request_options: MetronomeSDK::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

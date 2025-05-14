@@ -50,13 +50,10 @@ module MetronomeSDK
           #   @param customer_plan_id [String]
           #
           #   @param ending_before [Time] RFC 3339 timestamp for when the plan ends (exclusive) for this customer. Must be
-          #   ...
           #
           #   @param void_invoices [Boolean] If true, plan end date can be before the last finalized invoice date. Any invoic
-          #   ...
           #
           #   @param void_stripe_invoices [Boolean] Only applicable when void_invoices is set to true. If true, for every invoice th
-          #   ...
           #
           #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
         end

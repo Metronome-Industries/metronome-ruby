@@ -14,22 +14,18 @@ module MetronomeSDK
         # @param name [String] The display name of the billable metric.
         #
         # @param aggregation_key [String] Specifies the type of aggregation performed on matching events. Required if `sql
-        # ...
         #
-        # @param aggregation_type [Symbol, MetronomeSDK::Models::V1::BillableMetricCreateParams::AggregationType] Specifies the type of aggregation performed on matching events.
+        # @param aggregation_type [Symbol, MetronomeSDK::V1::BillableMetricCreateParams::AggregationType] Specifies the type of aggregation performed on matching events.
         #
         # @param custom_fields [Hash{Symbol=>String}] Custom fields to attach to the billable metric.
         #
-        # @param event_type_filter [MetronomeSDK::Models::EventTypeFilter] An optional filtering rule to match the 'event_type' property of an event.
+        # @param event_type_filter [MetronomeSDK::EventTypeFilter] An optional filtering rule to match the 'event_type' property of an event.
         #
         # @param group_keys [Array<Array<String>>] Property names that are used to group usage costs on an invoice. Each entry repr
-        # ...
         #
-        # @param property_filters [Array<MetronomeSDK::Models::PropertyFilter>] A list of filters to match events to this billable metric. Each filter defines a
-        # ...
+        # @param property_filters [Array<MetronomeSDK::PropertyFilter>] A list of filters to match events to this billable metric. Each filter defines a
         #
         # @param sql [String] The SQL query associated with the billable metric. This field is mutually exclus
-        # ...
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -37,7 +33,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::BillableMetricCreateParams
         def create(params)
-          parsed, options = MetronomeSDK::Models::V1::BillableMetricCreateParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::BillableMetricCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/billable-metrics/create",
@@ -58,7 +54,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::BillableMetricRetrieveParams
         def retrieve(params)
-          parsed, options = MetronomeSDK::Models::V1::BillableMetricRetrieveParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::BillableMetricRetrieveParams.dump_request(params)
           billable_metric_id =
             parsed.delete(:billable_metric_id) do
               raise ArgumentError.new("missing required path argument #{_1}")
@@ -87,7 +83,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::BillableMetricListParams
         def list(params = {})
-          parsed, options = MetronomeSDK::Models::V1::BillableMetricListParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::BillableMetricListParams.dump_request(params)
           @client.request(
             method: :get,
             path: "v1/billable-metrics",
@@ -109,7 +105,7 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::BillableMetricArchiveParams
         def archive(params)
-          parsed, options = MetronomeSDK::Models::V1::BillableMetricArchiveParams.dump_request(params)
+          parsed, options = MetronomeSDK::V1::BillableMetricArchiveParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/billable-metrics/archive",

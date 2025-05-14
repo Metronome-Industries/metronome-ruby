@@ -28,8 +28,6 @@ module MetronomeSDK
             ?body: top,
             ?request_options: MetronomeSDK::request_opts
           ) -> void
-
-          def to_hash: -> MetronomeSDK::Models::V1::Contracts::rate_card_list_params
         end
       end
     end

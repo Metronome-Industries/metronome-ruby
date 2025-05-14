@@ -69,8 +69,6 @@ module MetronomeSDK
             ?request_options: MetronomeSDK::request_opts
           ) -> void
 
-          def to_hash: -> MetronomeSDK::Models::V1::Customers::invoice_list_params
-
           type sort = :date_asc | :date_desc
 
           module Sort

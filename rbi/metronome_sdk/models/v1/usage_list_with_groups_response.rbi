@@ -4,6 +4,14 @@ module MetronomeSDK
   module Models
     module V1
       class UsageListWithGroupsResponse < MetronomeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Models::V1::UsageListWithGroupsResponse,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
         sig { returns(Time) }
         attr_accessor :ending_before
 
@@ -26,24 +34,30 @@ module MetronomeSDK
             group_value: T.nilable(String),
             starting_on: Time,
             value: T.nilable(Float)
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
-        def self.new(ending_before:, group_key:, group_value:, starting_on:, value:); end
+        def self.new(
+          ending_before:,
+          group_key:,
+          group_value:,
+          starting_on:,
+          value:
+        )
+        end
 
         sig do
-          override
-            .returns(
-              {
-                ending_before: Time,
-                group_key: T.nilable(String),
-                group_value: T.nilable(String),
-                starting_on: Time,
-                value: T.nilable(Float)
-              }
-            )
+          override.returns(
+            {
+              ending_before: Time,
+              group_key: T.nilable(String),
+              group_value: T.nilable(String),
+              starting_on: Time,
+              value: T.nilable(Float)
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

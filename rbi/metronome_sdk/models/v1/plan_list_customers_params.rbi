@@ -7,6 +7,14 @@ module MetronomeSDK
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::V1::PlanListCustomersParams,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
         sig { returns(String) }
         attr_accessor :plan_id
 
@@ -33,10 +41,20 @@ module MetronomeSDK
         #
         # Multiple statuses can be OR'd together using commas, e.g. `active,ended`.
         # **Note:** `ended,upcoming` combination is not yet supported.
-        sig { returns(T.nilable(MetronomeSDK::Models::V1::PlanListCustomersParams::Status::OrSymbol)) }
+        sig do
+          returns(
+            T.nilable(
+              MetronomeSDK::V1::PlanListCustomersParams::Status::OrSymbol
+            )
+          )
+        end
         attr_reader :status
 
-        sig { params(status: MetronomeSDK::Models::V1::PlanListCustomersParams::Status::OrSymbol).void }
+        sig do
+          params(
+            status: MetronomeSDK::V1::PlanListCustomersParams::Status::OrSymbol
+          ).void
+        end
         attr_writer :status
 
         sig do
@@ -44,10 +62,9 @@ module MetronomeSDK
             plan_id: String,
             limit: Integer,
             next_page: String,
-            status: MetronomeSDK::Models::V1::PlanListCustomersParams::Status::OrSymbol,
-            request_options: T.any(MetronomeSDK::RequestOptions, MetronomeSDK::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            status: MetronomeSDK::V1::PlanListCustomersParams::Status::OrSymbol,
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           plan_id:,
@@ -66,20 +83,23 @@ module MetronomeSDK
           # **Note:** `ended,upcoming` combination is not yet supported.
           status: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                plan_id: String,
-                limit: Integer,
-                next_page: String,
-                status: MetronomeSDK::Models::V1::PlanListCustomersParams::Status::OrSymbol,
-                request_options: MetronomeSDK::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              plan_id: String,
+              limit: Integer,
+              next_page: String,
+              status:
+                MetronomeSDK::V1::PlanListCustomersParams::Status::OrSymbol,
+              request_options: MetronomeSDK::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
 
         # Status of customers on a given plan. Defaults to `active`.
         #
@@ -93,16 +113,42 @@ module MetronomeSDK
         module Status
           extend MetronomeSDK::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, MetronomeSDK::Models::V1::PlanListCustomersParams::Status) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, MetronomeSDK::V1::PlanListCustomersParams::Status)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ALL = T.let(:all, MetronomeSDK::Models::V1::PlanListCustomersParams::Status::TaggedSymbol)
-          ACTIVE = T.let(:active, MetronomeSDK::Models::V1::PlanListCustomersParams::Status::TaggedSymbol)
-          ENDED = T.let(:ended, MetronomeSDK::Models::V1::PlanListCustomersParams::Status::TaggedSymbol)
-          UPCOMING = T.let(:upcoming, MetronomeSDK::Models::V1::PlanListCustomersParams::Status::TaggedSymbol)
+          ALL =
+            T.let(
+              :all,
+              MetronomeSDK::V1::PlanListCustomersParams::Status::TaggedSymbol
+            )
+          ACTIVE =
+            T.let(
+              :active,
+              MetronomeSDK::V1::PlanListCustomersParams::Status::TaggedSymbol
+            )
+          ENDED =
+            T.let(
+              :ended,
+              MetronomeSDK::V1::PlanListCustomersParams::Status::TaggedSymbol
+            )
+          UPCOMING =
+            T.let(
+              :upcoming,
+              MetronomeSDK::V1::PlanListCustomersParams::Status::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[MetronomeSDK::Models::V1::PlanListCustomersParams::Status::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                MetronomeSDK::V1::PlanListCustomersParams::Status::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
     end
