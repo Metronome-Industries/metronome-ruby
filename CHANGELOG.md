@@ -1,5 +1,57 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2025-05-14)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/Metronome-Industries/metronome-ruby/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Features
+
+* **api:** api update ([a4f836d](https://github.com/Metronome-Industries/metronome-ruby/commit/a4f836d0ae211f507a54922859668ff35f94ce8e))
+* **api:** api update ([688aade](https://github.com/Metronome-Industries/metronome-ruby/commit/688aade989f1758a41c10b7f7fe7e45a58f698bd))
+* **api:** api update ([5ab431c](https://github.com/Metronome-Industries/metronome-ruby/commit/5ab431c2dc27ce3534f7d3afc3b4f5279438039d))
+* **api:** api update ([b2a6fc9](https://github.com/Metronome-Industries/metronome-ruby/commit/b2a6fc947c7b844733d8064ec0e69997aeee34ce))
+* **api:** api update ([01b3764](https://github.com/Metronome-Industries/metronome-ruby/commit/01b3764c3dcf27595b55098c751e1c2a93e5cfe5))
+* **api:** api update ([6046a6d](https://github.com/Metronome-Industries/metronome-ruby/commit/6046a6db516552be6164f54f3e810461a9c18bd1))
+* **api:** api update ([1aa390e](https://github.com/Metronome-Industries/metronome-ruby/commit/1aa390e7a464b8668e96574cf429b590ecc52914))
+* **api:** api update ([c03bee8](https://github.com/Metronome-Industries/metronome-ruby/commit/c03bee8d5f7c5b9db872275edf5b69f912be7e13))
+* **api:** api update ([9d59ec2](https://github.com/Metronome-Industries/metronome-ruby/commit/9d59ec25eed7f832cf734545fa50b3a5bd8c2bec))
+* **api:** api update ([2650244](https://github.com/Metronome-Industries/metronome-ruby/commit/26502443fad8129531a2a74dcd69593a1fa64823))
+* expose base client options as read only attributes ([4f569b2](https://github.com/Metronome-Industries/metronome-ruby/commit/4f569b2a9eee829bf49214da8f478f8588c600bb))
+* expose recursive `#to_h` conversion ([d780fc3](https://github.com/Metronome-Industries/metronome-ruby/commit/d780fc3aa31b3d1b9418d86626ca8366f9e9a6ce))
+* support sorbet aliases at the runtime ([9f251f3](https://github.com/Metronome-Industries/metronome-ruby/commit/9f251f3d72fe0032aa22feeed55417ac3ea87315))
+
+
+### Bug Fixes
+
+* **internal:** ensure formatting always uses c.utf-8 locale ([47ab8ad](https://github.com/Metronome-Industries/metronome-ruby/commit/47ab8ad4e70b382911b002a5d06c637ebb63e9f2))
+* **internal:** fix formatting script for macos ([cd28a47](https://github.com/Metronome-Industries/metronome-ruby/commit/cd28a47d72d6e2c0ca42348bb0851ce5d10a7c5b))
+* **internal:** update gemspec name ([1e9d5b2](https://github.com/Metronome-Industries/metronome-ruby/commit/1e9d5b242fb7a15182ce0908bc7dd2ce141f67e0))
+
+
+### Chores
+
+* accept all nd-json mimetype variants ([c8cc15c](https://github.com/Metronome-Industries/metronome-ruby/commit/c8cc15c35825ca171c9f831924d854bcf29a71f0))
+* always check if current page is empty in `next_page?` ([af6bc25](https://github.com/Metronome-Industries/metronome-ruby/commit/af6bc253a97f594f109516027a76fb3ae143a529))
+* fix misc linting / minor issues ([afd7f7c](https://github.com/Metronome-Industries/metronome-ruby/commit/afd7f7c2cd1ced12d750a19bb97c1789160d329b))
+* **internal:** codegen related update ([4c6b071](https://github.com/Metronome-Industries/metronome-ruby/commit/4c6b071f35043f8f449a489fb893f83103933afa))
+* **internal:** codegen related update ([ce299e2](https://github.com/Metronome-Industries/metronome-ruby/commit/ce299e225e9d43e7e7e55bfd057ffaa32d958368))
+* **internal:** codegen related update ([f5b8a2b](https://github.com/Metronome-Industries/metronome-ruby/commit/f5b8a2b7e65c01e6bffd12f2c505bf175309b197))
+* **internal:** codegen related update ([4e241c7](https://github.com/Metronome-Industries/metronome-ruby/commit/4e241c7c11c917708bca0abea5e9723922b3dc09))
+* loosen rubocop rules that don't always make sense ([f69c36b](https://github.com/Metronome-Industries/metronome-ruby/commit/f69c36bb3fac830b3142cfceab8bb190c3c47c4f))
+* migrate away from deprecated `JSON#fast_generate` ([8b10970](https://github.com/Metronome-Industries/metronome-ruby/commit/8b109703a565463d836b639dc1bd8770dfd4d650))
+* re-export top level models under library namespace ([2498d75](https://github.com/Metronome-Industries/metronome-ruby/commit/2498d75c53a4aa16a05dd1776d2d1d2ca8c14815))
+* remove Gemfile.lock during bootstrap ([459e324](https://github.com/Metronome-Industries/metronome-ruby/commit/459e324ac0108b3bc68e8c0a173e36dcd0242019))
+* reorganize type aliases ([bc60bc8](https://github.com/Metronome-Industries/metronome-ruby/commit/bc60bc83989da9809c45477034015c6e993e5827))
+* revert ignoring Gemfile.lock ([51f355e](https://github.com/Metronome-Industries/metronome-ruby/commit/51f355ec8087755200d92f1c499ee694d187288d))
+* validate request option coercion correctness ([940e426](https://github.com/Metronome-Industries/metronome-ruby/commit/940e4261d5730dc65821703c5bb64971331f4be4))
+
+
+### Documentation
+
+* illustrate environmental defaults for auth variables ([731c295](https://github.com/Metronome-Industries/metronome-ruby/commit/731c2954a9fa2c3b60f6243a02b0afdefaf738c4))
+* **readme:** fix typo ([c88281b](https://github.com/Metronome-Industries/metronome-ruby/commit/c88281b645e5f0c4cd1ec042cb8a4db0f83c156c))
+* remove or fix invalid readme examples ([780d102](https://github.com/Metronome-Industries/metronome-ruby/commit/780d10248cd977d4d7cb6c5d99f3e60db5716ef0))
+
 ## 0.1.0-alpha.1 (2025-04-28)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/Metronome-Industries/metronome-ruby/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)
