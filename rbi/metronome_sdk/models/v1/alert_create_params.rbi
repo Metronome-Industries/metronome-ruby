@@ -75,7 +75,7 @@ module MetronomeSDK
         attr_writer :custom_field_filters
 
         # If provided, will create this alert for this specific customer. To create an
-        # alert for all customers, do not specify `customer_id` or `plan_id`.
+        # alert for all customers, do not specify a `customer_id`.
         sig { returns(T.nilable(String)) }
         attr_reader :customer_id
 
@@ -117,7 +117,7 @@ module MetronomeSDK
         attr_writer :invoice_types_filter
 
         # If provided, will create this alert for this specific plan. To create an alert
-        # for all customers, do not specify `customer_id` or `plan_id`.
+        # for all customers, do not specify a `plan_id`.
         sig { returns(T.nilable(String)) }
         attr_reader :plan_id
 
@@ -176,7 +176,7 @@ module MetronomeSDK
           # Only present for contract invoices.
           custom_field_filters: nil,
           # If provided, will create this alert for this specific customer. To create an
-          # alert for all customers, do not specify `customer_id` or `plan_id`.
+          # alert for all customers, do not specify a `customer_id`.
           customer_id: nil,
           # If true, the alert will evaluate immediately on customers that already meet the
           # alert threshold. If false, it will only evaluate on future customers that
@@ -189,7 +189,7 @@ module MetronomeSDK
           # evaluate.
           invoice_types_filter: nil,
           # If provided, will create this alert for this specific plan. To create an alert
-          # for all customers, do not specify `customer_id` or `plan_id`.
+          # for all customers, do not specify a `plan_id`.
           plan_id: nil,
           # Prevents the creation of duplicates. If a request to create a record is made
           # with a previously used uniqueness key, a new record will not be created and the

@@ -127,7 +127,7 @@ module MetronomeSDK
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::UpdateCommit::OrHash
               ],
-            update_contract_end_date: Time,
+            update_contract_end_date: T.nilable(Time),
             update_credits:
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::UpdateCredit::OrHash

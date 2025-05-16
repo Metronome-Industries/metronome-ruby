@@ -158,7 +158,7 @@ module MetronomeSDK
         #   RFC 3339 timestamp indicating when the contract will end (exclusive).
         #
         #   @return [Time, nil]
-        optional :update_contract_end_date, Time
+        optional :update_contract_end_date, Time, nil?: true
 
         # @!attribute update_credits
         #
@@ -230,7 +230,7 @@ module MetronomeSDK
         #
         #   @param update_commits [Array<MetronomeSDK::V2::ContractEditParams::UpdateCommit>]
         #
-        #   @param update_contract_end_date [Time] RFC 3339 timestamp indicating when the contract will end (exclusive).
+        #   @param update_contract_end_date [Time, nil] RFC 3339 timestamp indicating when the contract will end (exclusive).
         #
         #   @param update_credits [Array<MetronomeSDK::V2::ContractEditParams::UpdateCredit>]
         #

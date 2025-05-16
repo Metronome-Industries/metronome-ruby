@@ -30,7 +30,7 @@ module MetronomeSDK
           sig { params(next_page: String).void }
           attr_writer :next_page
 
-          # Filter options for the product list
+          # Filter options for the product list. If not provided, defaults to not archived.
           sig do
             returns(
               T.nilable(
@@ -62,7 +62,7 @@ module MetronomeSDK
             limit: nil,
             # Cursor that indicates where the next page of results should start.
             next_page: nil,
-            # Filter options for the product list
+            # Filter options for the product list. If not provided, defaults to not archived.
             archive_filter: nil,
             request_options: {}
           )
@@ -82,7 +82,7 @@ module MetronomeSDK
           def to_hash
           end
 
-          # Filter options for the product list
+          # Filter options for the product list. If not provided, defaults to not archived.
           module ArchiveFilter
             extend MetronomeSDK::Internal::Type::Enum
 

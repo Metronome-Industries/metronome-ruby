@@ -59,7 +59,7 @@ module MetronomeSDK
 
         # @!attribute customer_id
         #   If provided, will create this alert for this specific customer. To create an
-        #   alert for all customers, do not specify `customer_id` or `plan_id`.
+        #   alert for all customers, do not specify a `customer_id`.
         #
         #   @return [String, nil]
         optional :customer_id, String
@@ -88,7 +88,7 @@ module MetronomeSDK
 
         # @!attribute plan_id
         #   If provided, will create this alert for this specific plan. To create an alert
-        #   for all customers, do not specify `customer_id` or `plan_id`.
+        #   for all customers, do not specify a `plan_id`.
         #
         #   @return [String, nil]
         optional :plan_id, String

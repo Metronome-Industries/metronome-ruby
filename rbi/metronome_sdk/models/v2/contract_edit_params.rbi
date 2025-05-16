@@ -340,10 +340,7 @@ module MetronomeSDK
 
         # RFC 3339 timestamp indicating when the contract will end (exclusive).
         sig { returns(T.nilable(Time)) }
-        attr_reader :update_contract_end_date
-
-        sig { params(update_contract_end_date: Time).void }
-        attr_writer :update_contract_end_date
+        attr_accessor :update_contract_end_date
 
         sig do
           returns(
@@ -480,7 +477,7 @@ module MetronomeSDK
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::UpdateCommit::OrHash
               ],
-            update_contract_end_date: Time,
+            update_contract_end_date: T.nilable(Time),
             update_credits:
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::UpdateCredit::OrHash
@@ -587,7 +584,7 @@ module MetronomeSDK
                 T::Array[MetronomeSDK::V2::ContractEditParams::RemoveOverride],
               update_commits:
                 T::Array[MetronomeSDK::V2::ContractEditParams::UpdateCommit],
-              update_contract_end_date: Time,
+              update_contract_end_date: T.nilable(Time),
               update_credits:
                 T::Array[MetronomeSDK::V2::ContractEditParams::UpdateCredit],
               update_prepaid_balance_threshold_configuration:
