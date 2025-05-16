@@ -130,6 +130,9 @@ module MetronomeSDK
             )
           end
 
+          # Some parameter documentations has been truncated, see
+          # {MetronomeSDK::Models::V1::Contracts::ProductListParams} for more details.
+          #
           # List products
           #
           # @overload list(limit: nil, next_page: nil, archive_filter: nil, request_options: {})
@@ -138,7 +141,7 @@ module MetronomeSDK
           #
           # @param next_page [String] Query param: Cursor that indicates where the next page of results should start.
           #
-          # @param archive_filter [Symbol, MetronomeSDK::V1::Contracts::ProductListParams::ArchiveFilter] Body param: Filter options for the product list
+          # @param archive_filter [Symbol, MetronomeSDK::V1::Contracts::ProductListParams::ArchiveFilter] Body param: Filter options for the product list. If not provided, defaults to no
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #
