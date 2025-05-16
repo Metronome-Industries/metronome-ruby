@@ -2,12 +2,25 @@ module MetronomeSDK
   module Models
     module V1
       module Customers
-        type credit_update_end_date_response = { data: MetronomeSDK::ID }
+        type credit_update_end_date_response =
+          {
+            data: MetronomeSDK::Models::V1::Customers::CreditUpdateEndDateResponse::Data
+          }
 
         class CreditUpdateEndDateResponse < MetronomeSDK::Internal::Type::BaseModel
-          attr_accessor data: MetronomeSDK::ID
+          attr_accessor data: MetronomeSDK::Models::V1::Customers::CreditUpdateEndDateResponse::Data
 
-          def initialize: (data: MetronomeSDK::ID) -> void
+          def initialize: (
+            data: MetronomeSDK::Models::V1::Customers::CreditUpdateEndDateResponse::Data
+          ) -> void
+
+          type data = { id: String }
+
+          class Data < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            def initialize: (id: String) -> void
+          end
         end
       end
     end

@@ -1,12 +1,225 @@
 module MetronomeSDK
   module Models
     module V1
-      type plan_get_details_response = { data: MetronomeSDK::V1::PlanDetail }
+      type plan_get_details_response =
+        { data: MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data }
 
       class PlanGetDetailsResponse < MetronomeSDK::Internal::Type::BaseModel
-        attr_accessor data: MetronomeSDK::V1::PlanDetail
+        attr_accessor data: MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data
 
-        def initialize: (data: MetronomeSDK::V1::PlanDetail) -> void
+        def initialize: (
+          data: MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data
+        ) -> void
+
+        type data =
+          {
+            id: String,
+            custom_fields: ::Hash[Symbol, String],
+            name: String,
+            credit_grants: ::Array[MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::CreditGrant],
+            description: String,
+            minimums: ::Array[MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::Minimum],
+            overage_rates: ::Array[MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::OverageRate]
+          }
+
+        class Data < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor custom_fields: ::Hash[Symbol, String]
+
+          attr_accessor name: String
+
+          attr_reader credit_grants: ::Array[MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::CreditGrant]?
+
+          def credit_grants=: (
+            ::Array[MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::CreditGrant]
+          ) -> ::Array[MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::CreditGrant]
+
+          attr_reader description: String?
+
+          def description=: (String) -> String
+
+          attr_reader minimums: ::Array[MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::Minimum]?
+
+          def minimums=: (
+            ::Array[MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::Minimum]
+          ) -> ::Array[MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::Minimum]
+
+          attr_reader overage_rates: ::Array[MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::OverageRate]?
+
+          def overage_rates=: (
+            ::Array[MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::OverageRate]
+          ) -> ::Array[MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::OverageRate]
+
+          def initialize: (
+            id: String,
+            custom_fields: ::Hash[Symbol, String],
+            name: String,
+            ?credit_grants: ::Array[MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::CreditGrant],
+            ?description: String,
+            ?minimums: ::Array[MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::Minimum],
+            ?overage_rates: ::Array[MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::OverageRate]
+          ) -> void
+
+          type credit_grant =
+            {
+              amount_granted: Float,
+              amount_granted_credit_type: MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::CreditGrant::AmountGrantedCreditType,
+              amount_paid: Float,
+              amount_paid_credit_type: MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::CreditGrant::AmountPaidCreditType,
+              effective_duration: Float,
+              name: String,
+              priority: String,
+              send_invoice: bool,
+              reason: String,
+              recurrence_duration: Float,
+              recurrence_interval: Float
+            }
+
+          class CreditGrant < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor amount_granted: Float
+
+            attr_accessor amount_granted_credit_type: MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::CreditGrant::AmountGrantedCreditType
+
+            attr_accessor amount_paid: Float
+
+            attr_accessor amount_paid_credit_type: MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::CreditGrant::AmountPaidCreditType
+
+            attr_accessor effective_duration: Float
+
+            attr_accessor name: String
+
+            attr_accessor priority: String
+
+            attr_accessor send_invoice: bool
+
+            attr_reader reason: String?
+
+            def reason=: (String) -> String
+
+            attr_reader recurrence_duration: Float?
+
+            def recurrence_duration=: (Float) -> Float
+
+            attr_reader recurrence_interval: Float?
+
+            def recurrence_interval=: (Float) -> Float
+
+            def initialize: (
+              amount_granted: Float,
+              amount_granted_credit_type: MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::CreditGrant::AmountGrantedCreditType,
+              amount_paid: Float,
+              amount_paid_credit_type: MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::CreditGrant::AmountPaidCreditType,
+              effective_duration: Float,
+              name: String,
+              priority: String,
+              send_invoice: bool,
+              ?reason: String,
+              ?recurrence_duration: Float,
+              ?recurrence_interval: Float
+            ) -> void
+
+            type amount_granted_credit_type = { id: String, name: String }
+
+            class AmountGrantedCreditType < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor name: String
+
+              def initialize: (id: String, name: String) -> void
+            end
+
+            type amount_paid_credit_type = { id: String, name: String }
+
+            class AmountPaidCreditType < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor name: String
+
+              def initialize: (id: String, name: String) -> void
+            end
+          end
+
+          type minimum =
+            {
+              credit_type: MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::Minimum::CreditType,
+              name: String,
+              start_period: Float,
+              value: Float
+            }
+
+          class Minimum < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor credit_type: MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::Minimum::CreditType
+
+            attr_accessor name: String
+
+            attr_accessor start_period: Float
+
+            attr_accessor value: Float
+
+            def initialize: (
+              credit_type: MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::Minimum::CreditType,
+              name: String,
+              start_period: Float,
+              value: Float
+            ) -> void
+
+            type credit_type = { id: String, name: String }
+
+            class CreditType < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor name: String
+
+              def initialize: (id: String, name: String) -> void
+            end
+          end
+
+          type overage_rate =
+            {
+              credit_type: MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::OverageRate::CreditType,
+              fiat_credit_type: MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::OverageRate::FiatCreditType,
+              start_period: Float,
+              to_fiat_conversion_factor: Float
+            }
+
+          class OverageRate < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor credit_type: MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::OverageRate::CreditType
+
+            attr_accessor fiat_credit_type: MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::OverageRate::FiatCreditType
+
+            attr_accessor start_period: Float
+
+            attr_accessor to_fiat_conversion_factor: Float
+
+            def initialize: (
+              credit_type: MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::OverageRate::CreditType,
+              fiat_credit_type: MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data::OverageRate::FiatCreditType,
+              start_period: Float,
+              to_fiat_conversion_factor: Float
+            ) -> void
+
+            type credit_type = { id: String, name: String }
+
+            class CreditType < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor name: String
+
+              def initialize: (id: String, name: String) -> void
+            end
+
+            type fiat_credit_type = { id: String, name: String }
+
+            class FiatCreditType < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor name: String
+
+              def initialize: (id: String, name: String) -> void
+            end
+          end
+        end
       end
     end
   end

@@ -1,12 +1,23 @@
 module MetronomeSDK
   module Models
     module V1
-      type alert_create_response = { data: MetronomeSDK::ID }
+      type alert_create_response =
+        { data: MetronomeSDK::Models::V1::AlertCreateResponse::Data }
 
       class AlertCreateResponse < MetronomeSDK::Internal::Type::BaseModel
-        attr_accessor data: MetronomeSDK::ID
+        attr_accessor data: MetronomeSDK::Models::V1::AlertCreateResponse::Data
 
-        def initialize: (data: MetronomeSDK::ID) -> void
+        def initialize: (
+          data: MetronomeSDK::Models::V1::AlertCreateResponse::Data
+        ) -> void
+
+        type data = { id: String }
+
+        class Data < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          def initialize: (id: String) -> void
+        end
       end
     end
   end

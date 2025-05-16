@@ -7,11 +7,22 @@ module MetronomeSDK
       class BillableMetricCreateResponse < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute data
         #
-        #   @return [MetronomeSDK::ID]
-        required :data, -> { MetronomeSDK::ID }
+        #   @return [MetronomeSDK::Models::V1::BillableMetricCreateResponse::Data]
+        required :data, -> { MetronomeSDK::Models::V1::BillableMetricCreateResponse::Data }
 
         # @!method initialize(data:)
-        #   @param data [MetronomeSDK::ID]
+        #   @param data [MetronomeSDK::Models::V1::BillableMetricCreateResponse::Data]
+
+        # @see MetronomeSDK::Models::V1::BillableMetricCreateResponse#data
+        class Data < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute id
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!method initialize(id:)
+          #   @param id [String]
+        end
       end
     end
   end
