@@ -3,104 +3,19 @@ module MetronomeSDK
     module V1
       type plan_list_customers_response =
         {
-          customer_details: MetronomeSDK::Models::V1::PlanListCustomersResponse::CustomerDetails,
+          customer_details: MetronomeSDK::V1::CustomerDetail,
           plan_details: MetronomeSDK::Models::V1::PlanListCustomersResponse::PlanDetails
         }
 
       class PlanListCustomersResponse < MetronomeSDK::Internal::Type::BaseModel
-        attr_accessor customer_details: MetronomeSDK::Models::V1::PlanListCustomersResponse::CustomerDetails
+        attr_accessor customer_details: MetronomeSDK::V1::CustomerDetail
 
         attr_accessor plan_details: MetronomeSDK::Models::V1::PlanListCustomersResponse::PlanDetails
 
         def initialize: (
-          customer_details: MetronomeSDK::Models::V1::PlanListCustomersResponse::CustomerDetails,
+          customer_details: MetronomeSDK::V1::CustomerDetail,
           plan_details: MetronomeSDK::Models::V1::PlanListCustomersResponse::PlanDetails
         ) -> void
-
-        type customer_details =
-          {
-            id: String,
-            created_at: Time,
-            custom_fields: ::Hash[Symbol, String],
-            customer_config: MetronomeSDK::Models::V1::PlanListCustomersResponse::CustomerDetails::CustomerConfig,
-            external_id: String,
-            ingest_aliases: ::Array[String],
-            name: String,
-            archived_at: Time?,
-            current_billable_status: MetronomeSDK::Models::V1::PlanListCustomersResponse::CustomerDetails::CurrentBillableStatus
-          }
-
-        class CustomerDetails < MetronomeSDK::Internal::Type::BaseModel
-          attr_accessor id: String
-
-          attr_accessor created_at: Time
-
-          attr_accessor custom_fields: ::Hash[Symbol, String]
-
-          attr_accessor customer_config: MetronomeSDK::Models::V1::PlanListCustomersResponse::CustomerDetails::CustomerConfig
-
-          attr_accessor external_id: String
-
-          attr_accessor ingest_aliases: ::Array[String]
-
-          attr_accessor name: String
-
-          attr_accessor archived_at: Time?
-
-          attr_reader current_billable_status: MetronomeSDK::Models::V1::PlanListCustomersResponse::CustomerDetails::CurrentBillableStatus?
-
-          def current_billable_status=: (
-            MetronomeSDK::Models::V1::PlanListCustomersResponse::CustomerDetails::CurrentBillableStatus
-          ) -> MetronomeSDK::Models::V1::PlanListCustomersResponse::CustomerDetails::CurrentBillableStatus
-
-          def initialize: (
-            id: String,
-            created_at: Time,
-            custom_fields: ::Hash[Symbol, String],
-            customer_config: MetronomeSDK::Models::V1::PlanListCustomersResponse::CustomerDetails::CustomerConfig,
-            external_id: String,
-            ingest_aliases: ::Array[String],
-            name: String,
-            ?archived_at: Time?,
-            ?current_billable_status: MetronomeSDK::Models::V1::PlanListCustomersResponse::CustomerDetails::CurrentBillableStatus
-          ) -> void
-
-          type customer_config = { salesforce_account_id: String? }
-
-          class CustomerConfig < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor salesforce_account_id: String?
-
-            def initialize: (salesforce_account_id: String?) -> void
-          end
-
-          type current_billable_status =
-            {
-              value: MetronomeSDK::Models::V1::PlanListCustomersResponse::CustomerDetails::CurrentBillableStatus::value,
-              effective_at: Time?
-            }
-
-          class CurrentBillableStatus < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor value: MetronomeSDK::Models::V1::PlanListCustomersResponse::CustomerDetails::CurrentBillableStatus::value
-
-            attr_accessor effective_at: Time?
-
-            def initialize: (
-              value: MetronomeSDK::Models::V1::PlanListCustomersResponse::CustomerDetails::CurrentBillableStatus::value,
-              ?effective_at: Time?
-            ) -> void
-
-            type value = :billable | :unbillable
-
-            module Value
-              extend MetronomeSDK::Internal::Type::Enum
-
-              BILLABLE: :billable
-              UNBILLABLE: :unbillable
-
-              def self?.values: -> ::Array[MetronomeSDK::Models::V1::PlanListCustomersResponse::CustomerDetails::CurrentBillableStatus::value]
-            end
-          end
-        end
 
         type plan_details =
           {

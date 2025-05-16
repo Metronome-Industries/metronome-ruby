@@ -4,17 +4,11 @@ module MetronomeSDK
   module Models
     module V1
       # @see MetronomeSDK::Resources::V1::BillableMetrics#archive
-      class BillableMetricArchiveParams < MetronomeSDK::Internal::Type::BaseModel
+      class BillableMetricArchiveParams < MetronomeSDK::Models::ID
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
-        # @!attribute id
-        #
-        #   @return [String]
-        required :id, String
-
-        # @!method initialize(id:, request_options: {})
-        #   @param id [String]
+        # @!method initialize(request_options: {})
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
       end
     end

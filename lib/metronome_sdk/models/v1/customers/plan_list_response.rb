@@ -102,31 +102,13 @@ module MetronomeSDK
 
               # @!attribute credit_type
               #
-              #   @return [MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap::CreditType]
-              required :credit_type,
-                       -> { MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap::CreditType }
+              #   @return [MetronomeSDK::CreditTypeData]
+              required :credit_type, -> { MetronomeSDK::CreditTypeData }
 
               # @!method initialize(amount:, amount_remaining:, credit_type:)
               #   @param amount [Float]
               #   @param amount_remaining [Float]
-              #   @param credit_type [MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap::CreditType]
-
-              # @see MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap#credit_type
-              class CreditType < MetronomeSDK::Internal::Type::BaseModel
-                # @!attribute id
-                #
-                #   @return [String]
-                required :id, String
-
-                # @!attribute name
-                #
-                #   @return [String]
-                required :name, String
-
-                # @!method initialize(id:, name:)
-                #   @param id [String]
-                #   @param name [String]
-              end
+              #   @param credit_type [MetronomeSDK::CreditTypeData]
             end
           end
         end

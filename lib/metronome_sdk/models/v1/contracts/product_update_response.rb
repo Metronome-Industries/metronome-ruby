@@ -8,22 +8,11 @@ module MetronomeSDK
         class ProductUpdateResponse < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute data
           #
-          #   @return [MetronomeSDK::Models::V1::Contracts::ProductUpdateResponse::Data]
-          required :data, -> { MetronomeSDK::Models::V1::Contracts::ProductUpdateResponse::Data }
+          #   @return [MetronomeSDK::ID]
+          required :data, -> { MetronomeSDK::ID }
 
           # @!method initialize(data:)
-          #   @param data [MetronomeSDK::Models::V1::Contracts::ProductUpdateResponse::Data]
-
-          # @see MetronomeSDK::Models::V1::Contracts::ProductUpdateResponse#data
-          class Data < MetronomeSDK::Internal::Type::BaseModel
-            # @!attribute id
-            #
-            #   @return [String]
-            required :id, String
-
-            # @!method initialize(id:)
-            #   @param id [String]
-          end
+          #   @param data [MetronomeSDK::ID]
         end
       end
     end

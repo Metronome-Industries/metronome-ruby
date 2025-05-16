@@ -15,26 +15,14 @@ module MetronomeSDK
               end
 
             # The ID of the rate card to which the rates were added.
-            sig do
-              returns(
-                MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyResponse::Data
-              )
-            end
+            sig { returns(MetronomeSDK::ID) }
             attr_reader :data
 
-            sig do
-              params(
-                data:
-                  MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyResponse::Data::OrHash
-              ).void
-            end
+            sig { params(data: MetronomeSDK::ID::OrHash).void }
             attr_writer :data
 
             sig do
-              params(
-                data:
-                  MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyResponse::Data::OrHash
-              ).returns(T.attached_class)
+              params(data: MetronomeSDK::ID::OrHash).returns(T.attached_class)
             end
             def self.new(
               # The ID of the rate card to which the rates were added.
@@ -42,37 +30,8 @@ module MetronomeSDK
             )
             end
 
-            sig do
-              override.returns(
-                {
-                  data:
-                    MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyResponse::Data
-                }
-              )
-            end
+            sig { override.returns({ data: MetronomeSDK::ID }) }
             def to_hash
-            end
-
-            class Data < MetronomeSDK::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias do
-                  T.any(
-                    MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyResponse::Data,
-                    MetronomeSDK::Internal::AnyHash
-                  )
-                end
-
-              sig { returns(String) }
-              attr_accessor :id
-
-              # The ID of the rate card to which the rates were added.
-              sig { params(id: String).returns(T.attached_class) }
-              def self.new(id:)
-              end
-
-              sig { override.returns({ id: String }) }
-              def to_hash
-              end
             end
           end
         end

@@ -2,18 +2,13 @@ module MetronomeSDK
   module Models
     module V1
       type customer_archive_params =
-        { id: String } & MetronomeSDK::Internal::Type::request_parameters
+        {  } & MetronomeSDK::Internal::Type::request_parameters
 
-      class CustomerArchiveParams < MetronomeSDK::Internal::Type::BaseModel
+      class CustomerArchiveParams < MetronomeSDK::Models::ID
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
-        attr_accessor id: String
-
-        def initialize: (
-          id: String,
-          ?request_options: MetronomeSDK::request_opts
-        ) -> void
+        def initialize: (?request_options: MetronomeSDK::request_opts) -> void
       end
     end
   end

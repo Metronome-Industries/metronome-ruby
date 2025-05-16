@@ -12,7 +12,7 @@ class MetronomeSDK::Test::Resources::V1::Contracts::RateCardsTest < MetronomeSDK
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::Contracts::RateCardCreateResponse::Data
+        data: MetronomeSDK::ID
       }
     end
   end
@@ -41,7 +41,7 @@ class MetronomeSDK::Test::Resources::V1::Contracts::RateCardsTest < MetronomeSDK
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::Contracts::RateCardUpdateResponse::Data
+        data: MetronomeSDK::ID
       }
     end
   end
@@ -70,7 +70,7 @@ class MetronomeSDK::Test::Resources::V1::Contracts::RateCardsTest < MetronomeSDK
         credit_type_conversions: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Contracts::RateCardListResponse::CreditTypeConversion]) | nil,
         custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[String]) | nil,
         description: String | nil,
-        fiat_credit_type: MetronomeSDK::Models::V1::Contracts::RateCardListResponse::FiatCreditType | nil
+        fiat_credit_type: MetronomeSDK::CreditTypeData | nil
       }
     end
   end
@@ -84,7 +84,7 @@ class MetronomeSDK::Test::Resources::V1::Contracts::RateCardsTest < MetronomeSDK
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::Contracts::RateCardArchiveResponse::Data
+        data: MetronomeSDK::ID
       }
     end
   end
