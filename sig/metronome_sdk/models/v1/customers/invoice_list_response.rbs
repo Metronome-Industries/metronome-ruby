@@ -2,46 +2,46 @@ module MetronomeSDK
   module Models
     module V1
       module Customers
-        type invoice =
+        type invoice_list_response =
           {
             id: String,
-            credit_type: MetronomeSDK::CreditTypeData,
+            credit_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CreditType,
             customer_id: String,
-            line_items: ::Array[MetronomeSDK::V1::Customers::Invoice::LineItem],
+            line_items: ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem],
             status: String,
             total: Float,
             type: String,
             amendment_id: String,
-            billable_status: MetronomeSDK::V1::Customers::Invoice::billable_status,
+            billable_status: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::billable_status,
             contract_custom_fields: ::Hash[Symbol, String],
             contract_id: String,
-            correction_record: MetronomeSDK::V1::Customers::Invoice::CorrectionRecord,
+            correction_record: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord,
             created_at: Time,
             custom_fields: ::Hash[Symbol, top],
             customer_custom_fields: ::Hash[Symbol, String],
             end_timestamp: Time,
-            external_invoice: MetronomeSDK::V1::Customers::Invoice::ExternalInvoice?,
-            invoice_adjustments: ::Array[MetronomeSDK::V1::Customers::Invoice::InvoiceAdjustment],
+            external_invoice: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice?,
+            invoice_adjustments: ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::InvoiceAdjustment],
             issued_at: Time,
             net_payment_terms_days: Float,
             netsuite_sales_order_id: String,
             plan_custom_fields: ::Hash[Symbol, String],
             plan_id: String,
             plan_name: String,
-            reseller_royalty: MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty,
+            reseller_royalty: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty,
             salesforce_opportunity_id: String,
             start_timestamp: Time,
             subtotal: Float
           }
 
-        class Invoice < MetronomeSDK::Internal::Type::BaseModel
+        class InvoiceListResponse < MetronomeSDK::Internal::Type::BaseModel
           attr_accessor id: String
 
-          attr_accessor credit_type: MetronomeSDK::CreditTypeData
+          attr_accessor credit_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CreditType
 
           attr_accessor customer_id: String
 
-          attr_accessor line_items: ::Array[MetronomeSDK::V1::Customers::Invoice::LineItem]
+          attr_accessor line_items: ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem]
 
           attr_accessor status: String
 
@@ -53,11 +53,11 @@ module MetronomeSDK
 
           def amendment_id=: (String) -> String
 
-          attr_reader billable_status: MetronomeSDK::V1::Customers::Invoice::billable_status?
+          attr_reader billable_status: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::billable_status?
 
           def billable_status=: (
-            MetronomeSDK::V1::Customers::Invoice::billable_status
-          ) -> MetronomeSDK::V1::Customers::Invoice::billable_status
+            MetronomeSDK::Models::V1::Customers::InvoiceListResponse::billable_status
+          ) -> MetronomeSDK::Models::V1::Customers::InvoiceListResponse::billable_status
 
           attr_reader contract_custom_fields: ::Hash[Symbol, String]?
 
@@ -69,11 +69,11 @@ module MetronomeSDK
 
           def contract_id=: (String) -> String
 
-          attr_reader correction_record: MetronomeSDK::V1::Customers::Invoice::CorrectionRecord?
+          attr_reader correction_record: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord?
 
           def correction_record=: (
-            MetronomeSDK::V1::Customers::Invoice::CorrectionRecord
-          ) -> MetronomeSDK::V1::Customers::Invoice::CorrectionRecord
+            MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord
+          ) -> MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord
 
           attr_reader created_at: Time?
 
@@ -93,13 +93,13 @@ module MetronomeSDK
 
           def end_timestamp=: (Time) -> Time
 
-          attr_accessor external_invoice: MetronomeSDK::V1::Customers::Invoice::ExternalInvoice?
+          attr_accessor external_invoice: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice?
 
-          attr_reader invoice_adjustments: ::Array[MetronomeSDK::V1::Customers::Invoice::InvoiceAdjustment]?
+          attr_reader invoice_adjustments: ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::InvoiceAdjustment]?
 
           def invoice_adjustments=: (
-            ::Array[MetronomeSDK::V1::Customers::Invoice::InvoiceAdjustment]
-          ) -> ::Array[MetronomeSDK::V1::Customers::Invoice::InvoiceAdjustment]
+            ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::InvoiceAdjustment]
+          ) -> ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::InvoiceAdjustment]
 
           attr_reader issued_at: Time?
 
@@ -127,11 +127,11 @@ module MetronomeSDK
 
           def plan_name=: (String) -> String
 
-          attr_reader reseller_royalty: MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty?
+          attr_reader reseller_royalty: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty?
 
           def reseller_royalty=: (
-            MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty
-          ) -> MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty
+            MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty
+          ) -> MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty
 
           attr_reader salesforce_opportunity_id: String?
 
@@ -147,41 +147,51 @@ module MetronomeSDK
 
           def initialize: (
             id: String,
-            credit_type: MetronomeSDK::CreditTypeData,
+            credit_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CreditType,
             customer_id: String,
-            line_items: ::Array[MetronomeSDK::V1::Customers::Invoice::LineItem],
+            line_items: ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem],
             status: String,
             total: Float,
             type: String,
             ?amendment_id: String,
-            ?billable_status: MetronomeSDK::V1::Customers::Invoice::billable_status,
+            ?billable_status: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::billable_status,
             ?contract_custom_fields: ::Hash[Symbol, String],
             ?contract_id: String,
-            ?correction_record: MetronomeSDK::V1::Customers::Invoice::CorrectionRecord,
+            ?correction_record: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord,
             ?created_at: Time,
             ?custom_fields: ::Hash[Symbol, top],
             ?customer_custom_fields: ::Hash[Symbol, String],
             ?end_timestamp: Time,
-            ?external_invoice: MetronomeSDK::V1::Customers::Invoice::ExternalInvoice?,
-            ?invoice_adjustments: ::Array[MetronomeSDK::V1::Customers::Invoice::InvoiceAdjustment],
+            ?external_invoice: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice?,
+            ?invoice_adjustments: ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::InvoiceAdjustment],
             ?issued_at: Time,
             ?net_payment_terms_days: Float,
             ?netsuite_sales_order_id: String,
             ?plan_custom_fields: ::Hash[Symbol, String],
             ?plan_id: String,
             ?plan_name: String,
-            ?reseller_royalty: MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty,
+            ?reseller_royalty: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty,
             ?salesforce_opportunity_id: String,
             ?start_timestamp: Time,
             ?subtotal: Float
           ) -> void
 
+          type credit_type = { id: String, name: String }
+
+          class CreditType < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor name: String
+
+            def initialize: (id: String, name: String) -> void
+          end
+
           type line_item =
             {
-              credit_type: MetronomeSDK::CreditTypeData,
+              credit_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::CreditType,
               name: String,
               total: Float,
-              applied_commit_or_credit: MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit,
+              applied_commit_or_credit: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::AppliedCommitOrCredit,
               commit_custom_fields: ::Hash[Symbol, String],
               commit_id: String,
               commit_netsuite_item_id: String,
@@ -195,12 +205,12 @@ module MetronomeSDK
               group_key: String,
               group_value: String?,
               is_prorated: bool,
-              list_price: MetronomeSDK::Rate,
+              list_price: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice,
               metadata: String,
               netsuite_invoice_billing_end: Time,
               netsuite_invoice_billing_start: Time,
               netsuite_item_id: String,
-              postpaid_commit: MetronomeSDK::V1::Customers::Invoice::LineItem::PostpaidCommit,
+              postpaid_commit: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::PostpaidCommit,
               presentation_group_values: ::Hash[Symbol, String?],
               pricing_group_values: ::Hash[Symbol, String],
               product_custom_fields: ::Hash[Symbol, String],
@@ -210,28 +220,28 @@ module MetronomeSDK
               professional_service_custom_fields: ::Hash[Symbol, String],
               professional_service_id: String,
               quantity: Float,
-              reseller_type: MetronomeSDK::V1::Customers::Invoice::LineItem::reseller_type,
+              reseller_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::reseller_type,
               scheduled_charge_custom_fields: ::Hash[Symbol, String],
               scheduled_charge_id: String,
               starting_at: Time,
-              sub_line_items: ::Array[MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem],
+              sub_line_items: ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem],
               subscription_custom_fields: ::Hash[Symbol, String],
-              tier: MetronomeSDK::V1::Customers::Invoice::LineItem::Tier,
+              tier: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::Tier,
               unit_price: Float
             }
 
           class LineItem < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor credit_type: MetronomeSDK::CreditTypeData
+            attr_accessor credit_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::CreditType
 
             attr_accessor name: String
 
             attr_accessor total: Float
 
-            attr_reader applied_commit_or_credit: MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit?
+            attr_reader applied_commit_or_credit: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::AppliedCommitOrCredit?
 
             def applied_commit_or_credit=: (
-              MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit
-            ) -> MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit
+              MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::AppliedCommitOrCredit
+            ) -> MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::AppliedCommitOrCredit
 
             attr_reader commit_custom_fields: ::Hash[Symbol, String]?
 
@@ -289,9 +299,11 @@ module MetronomeSDK
 
             def is_prorated=: (bool) -> bool
 
-            attr_reader list_price: MetronomeSDK::Rate?
+            attr_reader list_price: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice?
 
-            def list_price=: (MetronomeSDK::Rate) -> MetronomeSDK::Rate
+            def list_price=: (
+              MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice
+            ) -> MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice
 
             attr_reader metadata: String?
 
@@ -309,11 +321,11 @@ module MetronomeSDK
 
             def netsuite_item_id=: (String) -> String
 
-            attr_reader postpaid_commit: MetronomeSDK::V1::Customers::Invoice::LineItem::PostpaidCommit?
+            attr_reader postpaid_commit: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::PostpaidCommit?
 
             def postpaid_commit=: (
-              MetronomeSDK::V1::Customers::Invoice::LineItem::PostpaidCommit
-            ) -> MetronomeSDK::V1::Customers::Invoice::LineItem::PostpaidCommit
+              MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::PostpaidCommit
+            ) -> MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::PostpaidCommit
 
             attr_reader presentation_group_values: ::Hash[Symbol, String?]?
 
@@ -359,11 +371,11 @@ module MetronomeSDK
 
             def quantity=: (Float) -> Float
 
-            attr_reader reseller_type: MetronomeSDK::V1::Customers::Invoice::LineItem::reseller_type?
+            attr_reader reseller_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::reseller_type?
 
             def reseller_type=: (
-              MetronomeSDK::V1::Customers::Invoice::LineItem::reseller_type
-            ) -> MetronomeSDK::V1::Customers::Invoice::LineItem::reseller_type
+              MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::reseller_type
+            ) -> MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::reseller_type
 
             attr_reader scheduled_charge_custom_fields: ::Hash[Symbol, String]?
 
@@ -379,11 +391,11 @@ module MetronomeSDK
 
             def starting_at=: (Time) -> Time
 
-            attr_reader sub_line_items: ::Array[MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem]?
+            attr_reader sub_line_items: ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem]?
 
             def sub_line_items=: (
-              ::Array[MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem]
-            ) -> ::Array[MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem]
+              ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem]
+            ) -> ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem]
 
             attr_reader subscription_custom_fields: ::Hash[Symbol, String]?
 
@@ -391,21 +403,21 @@ module MetronomeSDK
               ::Hash[Symbol, String]
             ) -> ::Hash[Symbol, String]
 
-            attr_reader tier: MetronomeSDK::V1::Customers::Invoice::LineItem::Tier?
+            attr_reader tier: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::Tier?
 
             def tier=: (
-              MetronomeSDK::V1::Customers::Invoice::LineItem::Tier
-            ) -> MetronomeSDK::V1::Customers::Invoice::LineItem::Tier
+              MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::Tier
+            ) -> MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::Tier
 
             attr_reader unit_price: Float?
 
             def unit_price=: (Float) -> Float
 
             def initialize: (
-              credit_type: MetronomeSDK::CreditTypeData,
+              credit_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::CreditType,
               name: String,
               total: Float,
-              ?applied_commit_or_credit: MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit,
+              ?applied_commit_or_credit: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::AppliedCommitOrCredit,
               ?commit_custom_fields: ::Hash[Symbol, String],
               ?commit_id: String,
               ?commit_netsuite_item_id: String,
@@ -419,12 +431,12 @@ module MetronomeSDK
               ?group_key: String,
               ?group_value: String?,
               ?is_prorated: bool,
-              ?list_price: MetronomeSDK::Rate,
+              ?list_price: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice,
               ?metadata: String,
               ?netsuite_invoice_billing_end: Time,
               ?netsuite_invoice_billing_start: Time,
               ?netsuite_item_id: String,
-              ?postpaid_commit: MetronomeSDK::V1::Customers::Invoice::LineItem::PostpaidCommit,
+              ?postpaid_commit: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::PostpaidCommit,
               ?presentation_group_values: ::Hash[Symbol, String?],
               ?pricing_group_values: ::Hash[Symbol, String],
               ?product_custom_fields: ::Hash[Symbol, String],
@@ -434,30 +446,40 @@ module MetronomeSDK
               ?professional_service_custom_fields: ::Hash[Symbol, String],
               ?professional_service_id: String,
               ?quantity: Float,
-              ?reseller_type: MetronomeSDK::V1::Customers::Invoice::LineItem::reseller_type,
+              ?reseller_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::reseller_type,
               ?scheduled_charge_custom_fields: ::Hash[Symbol, String],
               ?scheduled_charge_id: String,
               ?starting_at: Time,
-              ?sub_line_items: ::Array[MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem],
+              ?sub_line_items: ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem],
               ?subscription_custom_fields: ::Hash[Symbol, String],
-              ?tier: MetronomeSDK::V1::Customers::Invoice::LineItem::Tier,
+              ?tier: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::Tier,
               ?unit_price: Float
             ) -> void
+
+            type credit_type = { id: String, name: String }
+
+            class CreditType < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor name: String
+
+              def initialize: (id: String, name: String) -> void
+            end
 
             type applied_commit_or_credit =
               {
                 id: String,
-                type: MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::type_
+                type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::AppliedCommitOrCredit::type_
               }
 
             class AppliedCommitOrCredit < MetronomeSDK::Internal::Type::BaseModel
               attr_accessor id: String
 
-              attr_accessor type: MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::type_
+              attr_accessor type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::AppliedCommitOrCredit::type_
 
               def initialize: (
                 id: String,
-                type: MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::type_
+                type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::AppliedCommitOrCredit::type_
               ) -> void
 
               type type_ = :PREPAID | :POSTPAID | :CREDIT
@@ -469,7 +491,111 @@ module MetronomeSDK
                 POSTPAID: :POSTPAID
                 CREDIT: :CREDIT
 
-                def self?.values: -> ::Array[MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::type_]
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::AppliedCommitOrCredit::type_]
+              end
+            end
+
+            type list_price =
+              {
+                rate_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::rate_type,
+                credit_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::CreditType,
+                custom_rate: ::Hash[Symbol, top],
+                is_prorated: bool,
+                price: Float,
+                pricing_group_values: ::Hash[Symbol, String],
+                quantity: Float,
+                tiers: ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::Tier],
+                use_list_prices: bool
+              }
+
+            class ListPrice < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor rate_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::rate_type
+
+              attr_reader credit_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::CreditType?
+
+              def credit_type=: (
+                MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::CreditType
+              ) -> MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::CreditType
+
+              attr_reader custom_rate: ::Hash[Symbol, top]?
+
+              def custom_rate=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+              attr_reader is_prorated: bool?
+
+              def is_prorated=: (bool) -> bool
+
+              attr_reader price: Float?
+
+              def price=: (Float) -> Float
+
+              attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+              def pricing_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader quantity: Float?
+
+              def quantity=: (Float) -> Float
+
+              attr_reader tiers: ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::Tier]?
+
+              def tiers=: (
+                ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::Tier]
+              ) -> ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::Tier]
+
+              attr_reader use_list_prices: bool?
+
+              def use_list_prices=: (bool) -> bool
+
+              def initialize: (
+                rate_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::rate_type,
+                ?credit_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::CreditType,
+                ?custom_rate: ::Hash[Symbol, top],
+                ?is_prorated: bool,
+                ?price: Float,
+                ?pricing_group_values: ::Hash[Symbol, String],
+                ?quantity: Float,
+                ?tiers: ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::Tier],
+                ?use_list_prices: bool
+              ) -> void
+
+              type rate_type =
+                :FLAT | :PERCENTAGE | :SUBSCRIPTION | :CUSTOM | :TIERED
+
+              module RateType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                FLAT: :FLAT
+                PERCENTAGE: :PERCENTAGE
+                SUBSCRIPTION: :SUBSCRIPTION
+                CUSTOM: :CUSTOM
+                TIERED: :TIERED
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::rate_type]
+              end
+
+              type credit_type = { id: String, name: String }
+
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor name: String
+
+                def initialize: (id: String, name: String) -> void
+              end
+
+              type tier = { price: Float, size: Float }
+
+              class Tier < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor price: Float
+
+                attr_reader size: Float?
+
+                def size=: (Float) -> Float
+
+                def initialize: (price: Float, ?size: Float) -> void
               end
             end
 
@@ -492,7 +618,7 @@ module MetronomeSDK
               GCP: :GCP
               GCP_PRO_SERVICE: :GCP_PRO_SERVICE
 
-              def self?.values: -> ::Array[MetronomeSDK::V1::Customers::Invoice::LineItem::reseller_type]
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::reseller_type]
             end
 
             type sub_line_item =
@@ -506,8 +632,8 @@ module MetronomeSDK
                 end_date: Time,
                 price: Float,
                 start_date: Time,
-                tier_period: MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::TierPeriod,
-                tiers: ::Array[MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::Tier]
+                tier_period: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem::TierPeriod,
+                tiers: ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem::Tier]
               }
 
             class SubLineItem < MetronomeSDK::Internal::Type::BaseModel
@@ -539,17 +665,17 @@ module MetronomeSDK
 
               def start_date=: (Time) -> Time
 
-              attr_reader tier_period: MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::TierPeriod?
+              attr_reader tier_period: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem::TierPeriod?
 
               def tier_period=: (
-                MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::TierPeriod
-              ) -> MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::TierPeriod
+                MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem::TierPeriod
+              ) -> MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem::TierPeriod
 
-              attr_reader tiers: ::Array[MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::Tier]?
+              attr_reader tiers: ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem::Tier]?
 
               def tiers=: (
-                ::Array[MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::Tier]
-              ) -> ::Array[MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::Tier]
+                ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem::Tier]
+              ) -> ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem::Tier]
 
               def initialize: (
                 custom_fields: ::Hash[Symbol, String],
@@ -561,8 +687,8 @@ module MetronomeSDK
                 ?end_date: Time,
                 ?price: Float,
                 ?start_date: Time,
-                ?tier_period: MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::TierPeriod,
-                ?tiers: ::Array[MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::Tier]
+                ?tier_period: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem::TierPeriod,
+                ?tiers: ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem::Tier]
               ) -> void
 
               type tier_period = { starting_at: Time, ending_before: Time }
@@ -631,7 +757,7 @@ module MetronomeSDK
             BILLABLE: :billable
             UNBILLABLE: :unbillable
 
-            def self?.values: -> ::Array[MetronomeSDK::V1::Customers::Invoice::billable_status]
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::billable_status]
           end
 
           type correction_record =
@@ -639,7 +765,7 @@ module MetronomeSDK
               corrected_invoice_id: String,
               memo: String,
               reason: String,
-              corrected_external_invoice: MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice
+              corrected_external_invoice: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice
             }
 
           class CorrectionRecord < MetronomeSDK::Internal::Type::BaseModel
@@ -649,35 +775,35 @@ module MetronomeSDK
 
             attr_accessor reason: String
 
-            attr_reader corrected_external_invoice: MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice?
+            attr_reader corrected_external_invoice: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice?
 
             def corrected_external_invoice=: (
-              MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice
-            ) -> MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice
+              MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice
+            ) -> MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice
 
             def initialize: (
               corrected_invoice_id: String,
               memo: String,
               reason: String,
-              ?corrected_external_invoice: MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice
+              ?corrected_external_invoice: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice
             ) -> void
 
             type corrected_external_invoice =
               {
-                billing_provider_type: MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type,
-                external_status: MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status,
+                billing_provider_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type,
+                external_status: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::external_status,
                 invoice_id: String,
                 issued_at_timestamp: Time
               }
 
             class CorrectedExternalInvoice < MetronomeSDK::Internal::Type::BaseModel
-              attr_accessor billing_provider_type: MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type
+              attr_accessor billing_provider_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type
 
-              attr_reader external_status: MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status?
+              attr_reader external_status: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::external_status?
 
               def external_status=: (
-                MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status
-              ) -> MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status
+                MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::external_status
+              ) -> MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::external_status
 
               attr_reader invoice_id: String?
 
@@ -688,8 +814,8 @@ module MetronomeSDK
               def issued_at_timestamp=: (Time) -> Time
 
               def initialize: (
-                billing_provider_type: MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type,
-                ?external_status: MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status,
+                billing_provider_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type,
+                ?external_status: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::external_status,
                 ?invoice_id: String,
                 ?issued_at_timestamp: Time
               ) -> void
@@ -716,7 +842,7 @@ module MetronomeSDK
                 WORKDAY: :workday
                 GCP_MARKETPLACE: :gcp_marketplace
 
-                def self?.values: -> ::Array[MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type]
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type]
               end
 
               type external_status =
@@ -747,27 +873,27 @@ module MetronomeSDK
                 SENT: :SENT
                 QUEUED: :QUEUED
 
-                def self?.values: -> ::Array[MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status]
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::external_status]
               end
             end
           end
 
           type external_invoice =
             {
-              billing_provider_type: MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::billing_provider_type,
-              external_status: MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::external_status,
+              billing_provider_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::billing_provider_type,
+              external_status: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::external_status,
               invoice_id: String,
               issued_at_timestamp: Time
             }
 
           class ExternalInvoice < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor billing_provider_type: MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::billing_provider_type
+            attr_accessor billing_provider_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::billing_provider_type
 
-            attr_reader external_status: MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::external_status?
+            attr_reader external_status: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::external_status?
 
             def external_status=: (
-              MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::external_status
-            ) -> MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::external_status
+              MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::external_status
+            ) -> MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::external_status
 
             attr_reader invoice_id: String?
 
@@ -778,8 +904,8 @@ module MetronomeSDK
             def issued_at_timestamp=: (Time) -> Time
 
             def initialize: (
-              billing_provider_type: MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::billing_provider_type,
-              ?external_status: MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::external_status,
+              billing_provider_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::billing_provider_type,
+              ?external_status: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::external_status,
               ?invoice_id: String,
               ?issued_at_timestamp: Time
             ) -> void
@@ -806,7 +932,7 @@ module MetronomeSDK
               WORKDAY: :workday
               GCP_MARKETPLACE: :gcp_marketplace
 
-              def self?.values: -> ::Array[MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::billing_provider_type]
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::billing_provider_type]
             end
 
             type external_status =
@@ -837,13 +963,13 @@ module MetronomeSDK
               SENT: :SENT
               QUEUED: :QUEUED
 
-              def self?.values: -> ::Array[MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::external_status]
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::external_status]
             end
           end
 
           type invoice_adjustment =
             {
-              credit_type: MetronomeSDK::CreditTypeData,
+              credit_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::InvoiceAdjustment::CreditType,
               name: String,
               total: Float,
               credit_grant_custom_fields: ::Hash[Symbol, String],
@@ -851,7 +977,7 @@ module MetronomeSDK
             }
 
           class InvoiceAdjustment < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor credit_type: MetronomeSDK::CreditTypeData
+            attr_accessor credit_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::InvoiceAdjustment::CreditType
 
             attr_accessor name: String
 
@@ -868,21 +994,31 @@ module MetronomeSDK
             def credit_grant_id=: (String) -> String
 
             def initialize: (
-              credit_type: MetronomeSDK::CreditTypeData,
+              credit_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::InvoiceAdjustment::CreditType,
               name: String,
               total: Float,
               ?credit_grant_custom_fields: ::Hash[Symbol, String],
               ?credit_grant_id: String
             ) -> void
+
+            type credit_type = { id: String, name: String }
+
+            class CreditType < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor name: String
+
+              def initialize: (id: String, name: String) -> void
+            end
           end
 
           type reseller_royalty =
             {
               fraction: String,
               netsuite_reseller_id: String,
-              reseller_type: MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::reseller_type,
-              aws_options: MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::AwsOptions,
-              gcp_options: MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::GcpOptions
+              reseller_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::reseller_type,
+              aws_options: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::AwsOptions,
+              gcp_options: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::GcpOptions
             }
 
           class ResellerRoyalty < MetronomeSDK::Internal::Type::BaseModel
@@ -890,26 +1026,26 @@ module MetronomeSDK
 
             attr_accessor netsuite_reseller_id: String
 
-            attr_accessor reseller_type: MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::reseller_type
+            attr_accessor reseller_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::reseller_type
 
-            attr_reader aws_options: MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::AwsOptions?
+            attr_reader aws_options: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::AwsOptions?
 
             def aws_options=: (
-              MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::AwsOptions
-            ) -> MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::AwsOptions
+              MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::AwsOptions
+            ) -> MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::AwsOptions
 
-            attr_reader gcp_options: MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::GcpOptions?
+            attr_reader gcp_options: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::GcpOptions?
 
             def gcp_options=: (
-              MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::GcpOptions
-            ) -> MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::GcpOptions
+              MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::GcpOptions
+            ) -> MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::GcpOptions
 
             def initialize: (
               fraction: String,
               netsuite_reseller_id: String,
-              reseller_type: MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::reseller_type,
-              ?aws_options: MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::AwsOptions,
-              ?gcp_options: MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::GcpOptions
+              reseller_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::reseller_type,
+              ?aws_options: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::AwsOptions,
+              ?gcp_options: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::GcpOptions
             ) -> void
 
             type reseller_type =
@@ -923,7 +1059,7 @@ module MetronomeSDK
               GCP: :GCP
               GCP_PRO_SERVICE: :GCP_PRO_SERVICE
 
-              def self?.values: -> ::Array[MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::reseller_type]
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::reseller_type]
             end
 
             type aws_options =

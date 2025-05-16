@@ -129,11 +129,65 @@ module MetronomeSDK
           ) -> void
 
           type rollover_amount =
-            MetronomeSDK::V1::RolloverAmountMaxPercentage
-            | MetronomeSDK::V1::RolloverAmountMaxAmount
+            MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0
+            | MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1
 
           module RolloverAmount
             extend MetronomeSDK::Internal::Type::Union
+
+            type union_member0 =
+              {
+                type: MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0::type_,
+                value: Float
+              }
+
+            class UnionMember0 < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor type: MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0::type_
+
+              attr_accessor value: Float
+
+              def initialize: (
+                type: MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0::type_,
+                value: Float
+              ) -> void
+
+              type type_ = :MAX_PERCENTAGE
+
+              module Type
+                extend MetronomeSDK::Internal::Type::Enum
+
+                MAX_PERCENTAGE: :MAX_PERCENTAGE
+
+                def self?.values: -> ::Array[MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0::type_]
+              end
+            end
+
+            type union_member1 =
+              {
+                type: MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1::type_,
+                value: Float
+              }
+
+            class UnionMember1 < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor type: MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1::type_
+
+              attr_accessor value: Float
+
+              def initialize: (
+                type: MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1::type_,
+                value: Float
+              ) -> void
+
+              type type_ = :MAX_AMOUNT
+
+              module Type
+                extend MetronomeSDK::Internal::Type::Enum
+
+                MAX_AMOUNT: :MAX_AMOUNT
+
+                def self?.values: -> ::Array[MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1::type_]
+              end
+            end
 
             def self?.variants: -> ::Array[MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::rollover_amount]
           end

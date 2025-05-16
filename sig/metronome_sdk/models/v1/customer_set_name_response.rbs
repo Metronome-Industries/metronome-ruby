@@ -1,12 +1,46 @@
 module MetronomeSDK
   module Models
     module V1
-      type customer_set_name_response = { data: MetronomeSDK::V1::Customer }
+      type customer_set_name_response =
+        { data: MetronomeSDK::Models::V1::CustomerSetNameResponse::Data }
 
       class CustomerSetNameResponse < MetronomeSDK::Internal::Type::BaseModel
-        attr_accessor data: MetronomeSDK::V1::Customer
+        attr_accessor data: MetronomeSDK::Models::V1::CustomerSetNameResponse::Data
 
-        def initialize: (data: MetronomeSDK::V1::Customer) -> void
+        def initialize: (
+          data: MetronomeSDK::Models::V1::CustomerSetNameResponse::Data
+        ) -> void
+
+        type data =
+          {
+            id: String,
+            external_id: String,
+            ingest_aliases: ::Array[String],
+            name: String,
+            custom_fields: ::Hash[Symbol, String]
+          }
+
+        class Data < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor external_id: String
+
+          attr_accessor ingest_aliases: ::Array[String]
+
+          attr_accessor name: String
+
+          attr_reader custom_fields: ::Hash[Symbol, String]?
+
+          def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+
+          def initialize: (
+            id: String,
+            external_id: String,
+            ingest_aliases: ::Array[String],
+            name: String,
+            ?custom_fields: ::Hash[Symbol, String]
+          ) -> void
+        end
       end
     end
   end

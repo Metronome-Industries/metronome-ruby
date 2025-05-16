@@ -2,14 +2,1122 @@ module MetronomeSDK
   module Models
     module V1
       type contract_create_historical_invoices_response =
-        { data: ::Array[MetronomeSDK::V1::Customers::Invoice] }
+        {
+          data: ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data]
+        }
 
       class ContractCreateHistoricalInvoicesResponse < MetronomeSDK::Internal::Type::BaseModel
-        attr_accessor data: ::Array[MetronomeSDK::V1::Customers::Invoice]
+        attr_accessor data: ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data]
 
         def initialize: (
-          data: ::Array[MetronomeSDK::V1::Customers::Invoice]
+          data: ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data]
         ) -> void
+
+        type data =
+          {
+            id: String,
+            credit_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::CreditType,
+            customer_id: String,
+            line_items: ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem],
+            status: String,
+            total: Float,
+            type: String,
+            amendment_id: String,
+            billable_status: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::billable_status,
+            contract_custom_fields: ::Hash[Symbol, String],
+            contract_id: String,
+            correction_record: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::CorrectionRecord,
+            created_at: Time,
+            custom_fields: ::Hash[Symbol, top],
+            customer_custom_fields: ::Hash[Symbol, String],
+            end_timestamp: Time,
+            external_invoice: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ExternalInvoice?,
+            invoice_adjustments: ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::InvoiceAdjustment],
+            issued_at: Time,
+            net_payment_terms_days: Float,
+            netsuite_sales_order_id: String,
+            plan_custom_fields: ::Hash[Symbol, String],
+            plan_id: String,
+            plan_name: String,
+            reseller_royalty: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ResellerRoyalty,
+            salesforce_opportunity_id: String,
+            start_timestamp: Time,
+            subtotal: Float
+          }
+
+        class Data < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor credit_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::CreditType
+
+          attr_accessor customer_id: String
+
+          attr_accessor line_items: ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem]
+
+          attr_accessor status: String
+
+          attr_accessor total: Float
+
+          attr_accessor type: String
+
+          attr_reader amendment_id: String?
+
+          def amendment_id=: (String) -> String
+
+          attr_reader billable_status: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::billable_status?
+
+          def billable_status=: (
+            MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::billable_status
+          ) -> MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::billable_status
+
+          attr_reader contract_custom_fields: ::Hash[Symbol, String]?
+
+          def contract_custom_fields=: (
+            ::Hash[Symbol, String]
+          ) -> ::Hash[Symbol, String]
+
+          attr_reader contract_id: String?
+
+          def contract_id=: (String) -> String
+
+          attr_reader correction_record: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::CorrectionRecord?
+
+          def correction_record=: (
+            MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::CorrectionRecord
+          ) -> MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::CorrectionRecord
+
+          attr_reader created_at: Time?
+
+          def created_at=: (Time) -> Time
+
+          attr_reader custom_fields: ::Hash[Symbol, top]?
+
+          def custom_fields=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+          attr_reader customer_custom_fields: ::Hash[Symbol, String]?
+
+          def customer_custom_fields=: (
+            ::Hash[Symbol, String]
+          ) -> ::Hash[Symbol, String]
+
+          attr_reader end_timestamp: Time?
+
+          def end_timestamp=: (Time) -> Time
+
+          attr_accessor external_invoice: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ExternalInvoice?
+
+          attr_reader invoice_adjustments: ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::InvoiceAdjustment]?
+
+          def invoice_adjustments=: (
+            ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::InvoiceAdjustment]
+          ) -> ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::InvoiceAdjustment]
+
+          attr_reader issued_at: Time?
+
+          def issued_at=: (Time) -> Time
+
+          attr_reader net_payment_terms_days: Float?
+
+          def net_payment_terms_days=: (Float) -> Float
+
+          attr_reader netsuite_sales_order_id: String?
+
+          def netsuite_sales_order_id=: (String) -> String
+
+          attr_reader plan_custom_fields: ::Hash[Symbol, String]?
+
+          def plan_custom_fields=: (
+            ::Hash[Symbol, String]
+          ) -> ::Hash[Symbol, String]
+
+          attr_reader plan_id: String?
+
+          def plan_id=: (String) -> String
+
+          attr_reader plan_name: String?
+
+          def plan_name=: (String) -> String
+
+          attr_reader reseller_royalty: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ResellerRoyalty?
+
+          def reseller_royalty=: (
+            MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ResellerRoyalty
+          ) -> MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ResellerRoyalty
+
+          attr_reader salesforce_opportunity_id: String?
+
+          def salesforce_opportunity_id=: (String) -> String
+
+          attr_reader start_timestamp: Time?
+
+          def start_timestamp=: (Time) -> Time
+
+          attr_reader subtotal: Float?
+
+          def subtotal=: (Float) -> Float
+
+          def initialize: (
+            id: String,
+            credit_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::CreditType,
+            customer_id: String,
+            line_items: ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem],
+            status: String,
+            total: Float,
+            type: String,
+            ?amendment_id: String,
+            ?billable_status: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::billable_status,
+            ?contract_custom_fields: ::Hash[Symbol, String],
+            ?contract_id: String,
+            ?correction_record: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::CorrectionRecord,
+            ?created_at: Time,
+            ?custom_fields: ::Hash[Symbol, top],
+            ?customer_custom_fields: ::Hash[Symbol, String],
+            ?end_timestamp: Time,
+            ?external_invoice: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ExternalInvoice?,
+            ?invoice_adjustments: ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::InvoiceAdjustment],
+            ?issued_at: Time,
+            ?net_payment_terms_days: Float,
+            ?netsuite_sales_order_id: String,
+            ?plan_custom_fields: ::Hash[Symbol, String],
+            ?plan_id: String,
+            ?plan_name: String,
+            ?reseller_royalty: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ResellerRoyalty,
+            ?salesforce_opportunity_id: String,
+            ?start_timestamp: Time,
+            ?subtotal: Float
+          ) -> void
+
+          type credit_type = { id: String, name: String }
+
+          class CreditType < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor name: String
+
+            def initialize: (id: String, name: String) -> void
+          end
+
+          type line_item =
+            {
+              credit_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::CreditType,
+              name: String,
+              total: Float,
+              applied_commit_or_credit: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::AppliedCommitOrCredit,
+              commit_custom_fields: ::Hash[Symbol, String],
+              commit_id: String,
+              commit_netsuite_item_id: String,
+              commit_netsuite_sales_order_id: String,
+              commit_segment_id: String,
+              commit_type: String,
+              custom_fields: ::Hash[Symbol, String],
+              discount_custom_fields: ::Hash[Symbol, String],
+              discount_id: String,
+              ending_before: Time,
+              group_key: String,
+              group_value: String?,
+              is_prorated: bool,
+              list_price: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::ListPrice,
+              metadata: String,
+              netsuite_invoice_billing_end: Time,
+              netsuite_invoice_billing_start: Time,
+              netsuite_item_id: String,
+              postpaid_commit: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::PostpaidCommit,
+              presentation_group_values: ::Hash[Symbol, String?],
+              pricing_group_values: ::Hash[Symbol, String],
+              product_custom_fields: ::Hash[Symbol, String],
+              product_id: String,
+              product_tags: ::Array[String],
+              product_type: String,
+              professional_service_custom_fields: ::Hash[Symbol, String],
+              professional_service_id: String,
+              quantity: Float,
+              reseller_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::reseller_type,
+              scheduled_charge_custom_fields: ::Hash[Symbol, String],
+              scheduled_charge_id: String,
+              starting_at: Time,
+              sub_line_items: ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::SubLineItem],
+              subscription_custom_fields: ::Hash[Symbol, String],
+              tier: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::Tier,
+              unit_price: Float
+            }
+
+          class LineItem < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor credit_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::CreditType
+
+            attr_accessor name: String
+
+            attr_accessor total: Float
+
+            attr_reader applied_commit_or_credit: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::AppliedCommitOrCredit?
+
+            def applied_commit_or_credit=: (
+              MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::AppliedCommitOrCredit
+            ) -> MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::AppliedCommitOrCredit
+
+            attr_reader commit_custom_fields: ::Hash[Symbol, String]?
+
+            def commit_custom_fields=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader commit_id: String?
+
+            def commit_id=: (String) -> String
+
+            attr_reader commit_netsuite_item_id: String?
+
+            def commit_netsuite_item_id=: (String) -> String
+
+            attr_reader commit_netsuite_sales_order_id: String?
+
+            def commit_netsuite_sales_order_id=: (String) -> String
+
+            attr_reader commit_segment_id: String?
+
+            def commit_segment_id=: (String) -> String
+
+            attr_reader commit_type: String?
+
+            def commit_type=: (String) -> String
+
+            attr_reader custom_fields: ::Hash[Symbol, String]?
+
+            def custom_fields=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader discount_custom_fields: ::Hash[Symbol, String]?
+
+            def discount_custom_fields=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader discount_id: String?
+
+            def discount_id=: (String) -> String
+
+            attr_reader ending_before: Time?
+
+            def ending_before=: (Time) -> Time
+
+            attr_reader group_key: String?
+
+            def group_key=: (String) -> String
+
+            attr_accessor group_value: String?
+
+            attr_reader is_prorated: bool?
+
+            def is_prorated=: (bool) -> bool
+
+            attr_reader list_price: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::ListPrice?
+
+            def list_price=: (
+              MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::ListPrice
+            ) -> MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::ListPrice
+
+            attr_reader metadata: String?
+
+            def metadata=: (String) -> String
+
+            attr_reader netsuite_invoice_billing_end: Time?
+
+            def netsuite_invoice_billing_end=: (Time) -> Time
+
+            attr_reader netsuite_invoice_billing_start: Time?
+
+            def netsuite_invoice_billing_start=: (Time) -> Time
+
+            attr_reader netsuite_item_id: String?
+
+            def netsuite_item_id=: (String) -> String
+
+            attr_reader postpaid_commit: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::PostpaidCommit?
+
+            def postpaid_commit=: (
+              MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::PostpaidCommit
+            ) -> MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::PostpaidCommit
+
+            attr_reader presentation_group_values: ::Hash[Symbol, String?]?
+
+            def presentation_group_values=: (
+              ::Hash[Symbol, String?]
+            ) -> ::Hash[Symbol, String?]
+
+            attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+            def pricing_group_values=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader product_custom_fields: ::Hash[Symbol, String]?
+
+            def product_custom_fields=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader product_id: String?
+
+            def product_id=: (String) -> String
+
+            attr_reader product_tags: ::Array[String]?
+
+            def product_tags=: (::Array[String]) -> ::Array[String]
+
+            attr_reader product_type: String?
+
+            def product_type=: (String) -> String
+
+            attr_reader professional_service_custom_fields: ::Hash[Symbol, String]?
+
+            def professional_service_custom_fields=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader professional_service_id: String?
+
+            def professional_service_id=: (String) -> String
+
+            attr_reader quantity: Float?
+
+            def quantity=: (Float) -> Float
+
+            attr_reader reseller_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::reseller_type?
+
+            def reseller_type=: (
+              MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::reseller_type
+            ) -> MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::reseller_type
+
+            attr_reader scheduled_charge_custom_fields: ::Hash[Symbol, String]?
+
+            def scheduled_charge_custom_fields=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader scheduled_charge_id: String?
+
+            def scheduled_charge_id=: (String) -> String
+
+            attr_reader starting_at: Time?
+
+            def starting_at=: (Time) -> Time
+
+            attr_reader sub_line_items: ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::SubLineItem]?
+
+            def sub_line_items=: (
+              ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::SubLineItem]
+            ) -> ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::SubLineItem]
+
+            attr_reader subscription_custom_fields: ::Hash[Symbol, String]?
+
+            def subscription_custom_fields=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader tier: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::Tier?
+
+            def tier=: (
+              MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::Tier
+            ) -> MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::Tier
+
+            attr_reader unit_price: Float?
+
+            def unit_price=: (Float) -> Float
+
+            def initialize: (
+              credit_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::CreditType,
+              name: String,
+              total: Float,
+              ?applied_commit_or_credit: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::AppliedCommitOrCredit,
+              ?commit_custom_fields: ::Hash[Symbol, String],
+              ?commit_id: String,
+              ?commit_netsuite_item_id: String,
+              ?commit_netsuite_sales_order_id: String,
+              ?commit_segment_id: String,
+              ?commit_type: String,
+              ?custom_fields: ::Hash[Symbol, String],
+              ?discount_custom_fields: ::Hash[Symbol, String],
+              ?discount_id: String,
+              ?ending_before: Time,
+              ?group_key: String,
+              ?group_value: String?,
+              ?is_prorated: bool,
+              ?list_price: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::ListPrice,
+              ?metadata: String,
+              ?netsuite_invoice_billing_end: Time,
+              ?netsuite_invoice_billing_start: Time,
+              ?netsuite_item_id: String,
+              ?postpaid_commit: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::PostpaidCommit,
+              ?presentation_group_values: ::Hash[Symbol, String?],
+              ?pricing_group_values: ::Hash[Symbol, String],
+              ?product_custom_fields: ::Hash[Symbol, String],
+              ?product_id: String,
+              ?product_tags: ::Array[String],
+              ?product_type: String,
+              ?professional_service_custom_fields: ::Hash[Symbol, String],
+              ?professional_service_id: String,
+              ?quantity: Float,
+              ?reseller_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::reseller_type,
+              ?scheduled_charge_custom_fields: ::Hash[Symbol, String],
+              ?scheduled_charge_id: String,
+              ?starting_at: Time,
+              ?sub_line_items: ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::SubLineItem],
+              ?subscription_custom_fields: ::Hash[Symbol, String],
+              ?tier: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::Tier,
+              ?unit_price: Float
+            ) -> void
+
+            type credit_type = { id: String, name: String }
+
+            class CreditType < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor name: String
+
+              def initialize: (id: String, name: String) -> void
+            end
+
+            type applied_commit_or_credit =
+              {
+                id: String,
+                type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::AppliedCommitOrCredit::type_
+              }
+
+            class AppliedCommitOrCredit < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::AppliedCommitOrCredit::type_
+
+              def initialize: (
+                id: String,
+                type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::AppliedCommitOrCredit::type_
+              ) -> void
+
+              type type_ = :PREPAID | :POSTPAID | :CREDIT
+
+              module Type
+                extend MetronomeSDK::Internal::Type::Enum
+
+                PREPAID: :PREPAID
+                POSTPAID: :POSTPAID
+                CREDIT: :CREDIT
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::AppliedCommitOrCredit::type_]
+              end
+            end
+
+            type list_price =
+              {
+                rate_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::ListPrice::rate_type,
+                credit_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::ListPrice::CreditType,
+                custom_rate: ::Hash[Symbol, top],
+                is_prorated: bool,
+                price: Float,
+                pricing_group_values: ::Hash[Symbol, String],
+                quantity: Float,
+                tiers: ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::ListPrice::Tier],
+                use_list_prices: bool
+              }
+
+            class ListPrice < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor rate_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::ListPrice::rate_type
+
+              attr_reader credit_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::ListPrice::CreditType?
+
+              def credit_type=: (
+                MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::ListPrice::CreditType
+              ) -> MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::ListPrice::CreditType
+
+              attr_reader custom_rate: ::Hash[Symbol, top]?
+
+              def custom_rate=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+              attr_reader is_prorated: bool?
+
+              def is_prorated=: (bool) -> bool
+
+              attr_reader price: Float?
+
+              def price=: (Float) -> Float
+
+              attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+              def pricing_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader quantity: Float?
+
+              def quantity=: (Float) -> Float
+
+              attr_reader tiers: ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::ListPrice::Tier]?
+
+              def tiers=: (
+                ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::ListPrice::Tier]
+              ) -> ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::ListPrice::Tier]
+
+              attr_reader use_list_prices: bool?
+
+              def use_list_prices=: (bool) -> bool
+
+              def initialize: (
+                rate_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::ListPrice::rate_type,
+                ?credit_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::ListPrice::CreditType,
+                ?custom_rate: ::Hash[Symbol, top],
+                ?is_prorated: bool,
+                ?price: Float,
+                ?pricing_group_values: ::Hash[Symbol, String],
+                ?quantity: Float,
+                ?tiers: ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::ListPrice::Tier],
+                ?use_list_prices: bool
+              ) -> void
+
+              type rate_type =
+                :FLAT | :PERCENTAGE | :SUBSCRIPTION | :CUSTOM | :TIERED
+
+              module RateType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                FLAT: :FLAT
+                PERCENTAGE: :PERCENTAGE
+                SUBSCRIPTION: :SUBSCRIPTION
+                CUSTOM: :CUSTOM
+                TIERED: :TIERED
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::ListPrice::rate_type]
+              end
+
+              type credit_type = { id: String, name: String }
+
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor name: String
+
+                def initialize: (id: String, name: String) -> void
+              end
+
+              type tier = { price: Float, size: Float }
+
+              class Tier < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor price: Float
+
+                attr_reader size: Float?
+
+                def size=: (Float) -> Float
+
+                def initialize: (price: Float, ?size: Float) -> void
+              end
+            end
+
+            type postpaid_commit = { id: String }
+
+            class PostpaidCommit < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              def initialize: (id: String) -> void
+            end
+
+            type reseller_type =
+              :AWS | :AWS_PRO_SERVICE | :GCP | :GCP_PRO_SERVICE
+
+            module ResellerType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              AWS: :AWS
+              AWS_PRO_SERVICE: :AWS_PRO_SERVICE
+              GCP: :GCP
+              GCP_PRO_SERVICE: :GCP_PRO_SERVICE
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::reseller_type]
+            end
+
+            type sub_line_item =
+              {
+                custom_fields: ::Hash[Symbol, String],
+                name: String,
+                quantity: Float,
+                subtotal: Float,
+                charge_id: String,
+                credit_grant_id: String,
+                end_date: Time,
+                price: Float,
+                start_date: Time,
+                tier_period: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::SubLineItem::TierPeriod,
+                tiers: ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::SubLineItem::Tier]
+              }
+
+            class SubLineItem < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor custom_fields: ::Hash[Symbol, String]
+
+              attr_accessor name: String
+
+              attr_accessor quantity: Float
+
+              attr_accessor subtotal: Float
+
+              attr_reader charge_id: String?
+
+              def charge_id=: (String) -> String
+
+              attr_reader credit_grant_id: String?
+
+              def credit_grant_id=: (String) -> String
+
+              attr_reader end_date: Time?
+
+              def end_date=: (Time) -> Time
+
+              attr_reader price: Float?
+
+              def price=: (Float) -> Float
+
+              attr_reader start_date: Time?
+
+              def start_date=: (Time) -> Time
+
+              attr_reader tier_period: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::SubLineItem::TierPeriod?
+
+              def tier_period=: (
+                MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::SubLineItem::TierPeriod
+              ) -> MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::SubLineItem::TierPeriod
+
+              attr_reader tiers: ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::SubLineItem::Tier]?
+
+              def tiers=: (
+                ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::SubLineItem::Tier]
+              ) -> ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::SubLineItem::Tier]
+
+              def initialize: (
+                custom_fields: ::Hash[Symbol, String],
+                name: String,
+                quantity: Float,
+                subtotal: Float,
+                ?charge_id: String,
+                ?credit_grant_id: String,
+                ?end_date: Time,
+                ?price: Float,
+                ?start_date: Time,
+                ?tier_period: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::SubLineItem::TierPeriod,
+                ?tiers: ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::LineItem::SubLineItem::Tier]
+              ) -> void
+
+              type tier_period = { starting_at: Time, ending_before: Time }
+
+              class TierPeriod < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor starting_at: Time
+
+                attr_reader ending_before: Time?
+
+                def ending_before=: (Time) -> Time
+
+                def initialize: (
+                  starting_at: Time,
+                  ?ending_before: Time
+                ) -> void
+              end
+
+              type tier =
+                {
+                  price: Float,
+                  quantity: Float,
+                  starting_at: Float,
+                  subtotal: Float
+                }
+
+              class Tier < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor price: Float
+
+                attr_accessor quantity: Float
+
+                attr_accessor starting_at: Float
+
+                attr_accessor subtotal: Float
+
+                def initialize: (
+                  price: Float,
+                  quantity: Float,
+                  starting_at: Float,
+                  subtotal: Float
+                ) -> void
+              end
+            end
+
+            type tier = { level: Float, starting_at: String, size: String? }
+
+            class Tier < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor level: Float
+
+              attr_accessor starting_at: String
+
+              attr_accessor size: String?
+
+              def initialize: (
+                level: Float,
+                starting_at: String,
+                ?size: String?
+              ) -> void
+            end
+          end
+
+          type billable_status = :billable | :unbillable
+
+          module BillableStatus
+            extend MetronomeSDK::Internal::Type::Enum
+
+            BILLABLE: :billable
+            UNBILLABLE: :unbillable
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::billable_status]
+          end
+
+          type correction_record =
+            {
+              corrected_invoice_id: String,
+              memo: String,
+              reason: String,
+              corrected_external_invoice: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::CorrectionRecord::CorrectedExternalInvoice
+            }
+
+          class CorrectionRecord < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor corrected_invoice_id: String
+
+            attr_accessor memo: String
+
+            attr_accessor reason: String
+
+            attr_reader corrected_external_invoice: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::CorrectionRecord::CorrectedExternalInvoice?
+
+            def corrected_external_invoice=: (
+              MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::CorrectionRecord::CorrectedExternalInvoice
+            ) -> MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::CorrectionRecord::CorrectedExternalInvoice
+
+            def initialize: (
+              corrected_invoice_id: String,
+              memo: String,
+              reason: String,
+              ?corrected_external_invoice: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::CorrectionRecord::CorrectedExternalInvoice
+            ) -> void
+
+            type corrected_external_invoice =
+              {
+                billing_provider_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type,
+                external_status: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::CorrectionRecord::CorrectedExternalInvoice::external_status,
+                invoice_id: String,
+                issued_at_timestamp: Time
+              }
+
+            class CorrectedExternalInvoice < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor billing_provider_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type
+
+              attr_reader external_status: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::CorrectionRecord::CorrectedExternalInvoice::external_status?
+
+              def external_status=: (
+                MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::CorrectionRecord::CorrectedExternalInvoice::external_status
+              ) -> MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::CorrectionRecord::CorrectedExternalInvoice::external_status
+
+              attr_reader invoice_id: String?
+
+              def invoice_id=: (String) -> String
+
+              attr_reader issued_at_timestamp: Time?
+
+              def issued_at_timestamp=: (Time) -> Time
+
+              def initialize: (
+                billing_provider_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type,
+                ?external_status: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::CorrectionRecord::CorrectedExternalInvoice::external_status,
+                ?invoice_id: String,
+                ?issued_at_timestamp: Time
+              ) -> void
+
+              type billing_provider_type =
+                :aws_marketplace
+                | :stripe
+                | :netsuite
+                | :custom
+                | :azure_marketplace
+                | :quickbooks_online
+                | :workday
+                | :gcp_marketplace
+
+              module BillingProviderType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                AWS_MARKETPLACE: :aws_marketplace
+                STRIPE: :stripe
+                NETSUITE: :netsuite
+                CUSTOM: :custom
+                AZURE_MARKETPLACE: :azure_marketplace
+                QUICKBOOKS_ONLINE: :quickbooks_online
+                WORKDAY: :workday
+                GCP_MARKETPLACE: :gcp_marketplace
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type]
+              end
+
+              type external_status =
+                :DRAFT
+                | :FINALIZED
+                | :PAID
+                | :UNCOLLECTIBLE
+                | :VOID
+                | :DELETED
+                | :PAYMENT_FAILED
+                | :INVALID_REQUEST_ERROR
+                | :SKIPPED
+                | :SENT
+                | :QUEUED
+
+              module ExternalStatus
+                extend MetronomeSDK::Internal::Type::Enum
+
+                DRAFT: :DRAFT
+                FINALIZED: :FINALIZED
+                PAID: :PAID
+                UNCOLLECTIBLE: :UNCOLLECTIBLE
+                VOID: :VOID
+                DELETED: :DELETED
+                PAYMENT_FAILED: :PAYMENT_FAILED
+                INVALID_REQUEST_ERROR: :INVALID_REQUEST_ERROR
+                SKIPPED: :SKIPPED
+                SENT: :SENT
+                QUEUED: :QUEUED
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::CorrectionRecord::CorrectedExternalInvoice::external_status]
+              end
+            end
+          end
+
+          type external_invoice =
+            {
+              billing_provider_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ExternalInvoice::billing_provider_type,
+              external_status: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ExternalInvoice::external_status,
+              invoice_id: String,
+              issued_at_timestamp: Time
+            }
+
+          class ExternalInvoice < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor billing_provider_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ExternalInvoice::billing_provider_type
+
+            attr_reader external_status: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ExternalInvoice::external_status?
+
+            def external_status=: (
+              MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ExternalInvoice::external_status
+            ) -> MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ExternalInvoice::external_status
+
+            attr_reader invoice_id: String?
+
+            def invoice_id=: (String) -> String
+
+            attr_reader issued_at_timestamp: Time?
+
+            def issued_at_timestamp=: (Time) -> Time
+
+            def initialize: (
+              billing_provider_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ExternalInvoice::billing_provider_type,
+              ?external_status: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ExternalInvoice::external_status,
+              ?invoice_id: String,
+              ?issued_at_timestamp: Time
+            ) -> void
+
+            type billing_provider_type =
+              :aws_marketplace
+              | :stripe
+              | :netsuite
+              | :custom
+              | :azure_marketplace
+              | :quickbooks_online
+              | :workday
+              | :gcp_marketplace
+
+            module BillingProviderType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              AWS_MARKETPLACE: :aws_marketplace
+              STRIPE: :stripe
+              NETSUITE: :netsuite
+              CUSTOM: :custom
+              AZURE_MARKETPLACE: :azure_marketplace
+              QUICKBOOKS_ONLINE: :quickbooks_online
+              WORKDAY: :workday
+              GCP_MARKETPLACE: :gcp_marketplace
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ExternalInvoice::billing_provider_type]
+            end
+
+            type external_status =
+              :DRAFT
+              | :FINALIZED
+              | :PAID
+              | :UNCOLLECTIBLE
+              | :VOID
+              | :DELETED
+              | :PAYMENT_FAILED
+              | :INVALID_REQUEST_ERROR
+              | :SKIPPED
+              | :SENT
+              | :QUEUED
+
+            module ExternalStatus
+              extend MetronomeSDK::Internal::Type::Enum
+
+              DRAFT: :DRAFT
+              FINALIZED: :FINALIZED
+              PAID: :PAID
+              UNCOLLECTIBLE: :UNCOLLECTIBLE
+              VOID: :VOID
+              DELETED: :DELETED
+              PAYMENT_FAILED: :PAYMENT_FAILED
+              INVALID_REQUEST_ERROR: :INVALID_REQUEST_ERROR
+              SKIPPED: :SKIPPED
+              SENT: :SENT
+              QUEUED: :QUEUED
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ExternalInvoice::external_status]
+            end
+          end
+
+          type invoice_adjustment =
+            {
+              credit_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::InvoiceAdjustment::CreditType,
+              name: String,
+              total: Float,
+              credit_grant_custom_fields: ::Hash[Symbol, String],
+              credit_grant_id: String
+            }
+
+          class InvoiceAdjustment < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor credit_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::InvoiceAdjustment::CreditType
+
+            attr_accessor name: String
+
+            attr_accessor total: Float
+
+            attr_reader credit_grant_custom_fields: ::Hash[Symbol, String]?
+
+            def credit_grant_custom_fields=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader credit_grant_id: String?
+
+            def credit_grant_id=: (String) -> String
+
+            def initialize: (
+              credit_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::InvoiceAdjustment::CreditType,
+              name: String,
+              total: Float,
+              ?credit_grant_custom_fields: ::Hash[Symbol, String],
+              ?credit_grant_id: String
+            ) -> void
+
+            type credit_type = { id: String, name: String }
+
+            class CreditType < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor name: String
+
+              def initialize: (id: String, name: String) -> void
+            end
+          end
+
+          type reseller_royalty =
+            {
+              fraction: String,
+              netsuite_reseller_id: String,
+              reseller_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ResellerRoyalty::reseller_type,
+              aws_options: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ResellerRoyalty::AwsOptions,
+              gcp_options: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ResellerRoyalty::GcpOptions
+            }
+
+          class ResellerRoyalty < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor fraction: String
+
+            attr_accessor netsuite_reseller_id: String
+
+            attr_accessor reseller_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ResellerRoyalty::reseller_type
+
+            attr_reader aws_options: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ResellerRoyalty::AwsOptions?
+
+            def aws_options=: (
+              MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ResellerRoyalty::AwsOptions
+            ) -> MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ResellerRoyalty::AwsOptions
+
+            attr_reader gcp_options: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ResellerRoyalty::GcpOptions?
+
+            def gcp_options=: (
+              MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ResellerRoyalty::GcpOptions
+            ) -> MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ResellerRoyalty::GcpOptions
+
+            def initialize: (
+              fraction: String,
+              netsuite_reseller_id: String,
+              reseller_type: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ResellerRoyalty::reseller_type,
+              ?aws_options: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ResellerRoyalty::AwsOptions,
+              ?gcp_options: MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ResellerRoyalty::GcpOptions
+            ) -> void
+
+            type reseller_type =
+              :AWS | :AWS_PRO_SERVICE | :GCP | :GCP_PRO_SERVICE
+
+            module ResellerType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              AWS: :AWS
+              AWS_PRO_SERVICE: :AWS_PRO_SERVICE
+              GCP: :GCP
+              GCP_PRO_SERVICE: :GCP_PRO_SERVICE
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data::ResellerRoyalty::reseller_type]
+            end
+
+            type aws_options =
+              {
+                aws_account_number: String,
+                aws_offer_id: String,
+                aws_payer_reference_id: String
+              }
+
+            class AwsOptions < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader aws_account_number: String?
+
+              def aws_account_number=: (String) -> String
+
+              attr_reader aws_offer_id: String?
+
+              def aws_offer_id=: (String) -> String
+
+              attr_reader aws_payer_reference_id: String?
+
+              def aws_payer_reference_id=: (String) -> String
+
+              def initialize: (
+                ?aws_account_number: String,
+                ?aws_offer_id: String,
+                ?aws_payer_reference_id: String
+              ) -> void
+            end
+
+            type gcp_options = { gcp_account_id: String, gcp_offer_id: String }
+
+            class GcpOptions < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader gcp_account_id: String?
+
+              def gcp_account_id=: (String) -> String
+
+              attr_reader gcp_offer_id: String?
+
+              def gcp_offer_id=: (String) -> String
+
+              def initialize: (
+                ?gcp_account_id: String,
+                ?gcp_offer_id: String
+              ) -> void
+            end
+          end
+        end
       end
     end
   end

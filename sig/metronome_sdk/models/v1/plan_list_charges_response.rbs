@@ -5,7 +5,7 @@ module MetronomeSDK
         {
           id: String,
           charge_type: MetronomeSDK::Models::V1::PlanListChargesResponse::charge_type,
-          credit_type: MetronomeSDK::CreditTypeData,
+          credit_type: MetronomeSDK::Models::V1::PlanListChargesResponse::CreditType,
           custom_fields: ::Hash[Symbol, String],
           name: String,
           prices: ::Array[MetronomeSDK::Models::V1::PlanListChargesResponse::Price],
@@ -22,7 +22,7 @@ module MetronomeSDK
 
         attr_accessor charge_type: MetronomeSDK::Models::V1::PlanListChargesResponse::charge_type
 
-        attr_accessor credit_type: MetronomeSDK::CreditTypeData
+        attr_accessor credit_type: MetronomeSDK::Models::V1::PlanListChargesResponse::CreditType
 
         attr_accessor custom_fields: ::Hash[Symbol, String]
 
@@ -55,7 +55,7 @@ module MetronomeSDK
         def initialize: (
           id: String,
           charge_type: MetronomeSDK::Models::V1::PlanListChargesResponse::charge_type,
-          credit_type: MetronomeSDK::CreditTypeData,
+          credit_type: MetronomeSDK::Models::V1::PlanListChargesResponse::CreditType,
           custom_fields: ::Hash[Symbol, String],
           name: String,
           prices: ::Array[MetronomeSDK::Models::V1::PlanListChargesResponse::Price],
@@ -79,6 +79,16 @@ module MetronomeSDK
           SEAT: :seat
 
           def self?.values: -> ::Array[MetronomeSDK::Models::V1::PlanListChargesResponse::charge_type]
+        end
+
+        type credit_type = { id: String, name: String }
+
+        class CreditType < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor name: String
+
+          def initialize: (id: String, name: String) -> void
         end
 
         type price =
