@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2025-05-16)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/Metronome-Industries/metronome-ruby/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Features
+
+* **api:** api update ([b380b6b](https://github.com/Metronome-Industries/metronome-ruby/commit/b380b6b419c5632c69042c59e56da7dd77b1c48d))
+* **api:** api update ([5f4769e](https://github.com/Metronome-Industries/metronome-ruby/commit/5f4769ef4d7618986889aa65eb27b216925b6b88))
+* **api:** api update ([6bc1ed9](https://github.com/Metronome-Industries/metronome-ruby/commit/6bc1ed9258a3e91af051ad66ce1154ca8f935672))
+* bump default connection pool size limit to minimum of 99 ([3505102](https://github.com/Metronome-Industries/metronome-ruby/commit/35051025eee8e1cc82573c6cdb22e5cdbba8bac4))
+
+
+### Chores
+
+* configure new SDK language ([f533e8d](https://github.com/Metronome-Industries/metronome-ruby/commit/f533e8dd8644c8ea438f6415107dae372e066b42))
+* update SDK settings ([cba0fb7](https://github.com/Metronome-Industries/metronome-ruby/commit/cba0fb75b0455b8a49cdf6b184a4976792a34e6e))
+
+
+### Documentation
+
+* rewrite much of README.md for readability ([c653f5e](https://github.com/Metronome-Industries/metronome-ruby/commit/c653f5e7a6c5b176c3ca4b566afd0ed612ef4e3d))
+
 ## 0.1.0-alpha.2 (2025-05-14)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/Metronome-Industries/metronome-ruby/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
