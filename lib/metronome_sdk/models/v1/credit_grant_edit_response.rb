@@ -7,22 +7,11 @@ module MetronomeSDK
       class CreditGrantEditResponse < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute data
         #
-        #   @return [MetronomeSDK::Models::V1::CreditGrantEditResponse::Data]
-        required :data, -> { MetronomeSDK::Models::V1::CreditGrantEditResponse::Data }
+        #   @return [MetronomeSDK::ID]
+        required :data, -> { MetronomeSDK::ID }
 
         # @!method initialize(data:)
-        #   @param data [MetronomeSDK::Models::V1::CreditGrantEditResponse::Data]
-
-        # @see MetronomeSDK::Models::V1::CreditGrantEditResponse#data
-        class Data < MetronomeSDK::Internal::Type::BaseModel
-          # @!attribute id
-          #
-          #   @return [String]
-          required :id, String
-
-          # @!method initialize(id:)
-          #   @param id [String]
-        end
+        #   @param data [MetronomeSDK::ID]
       end
     end
   end

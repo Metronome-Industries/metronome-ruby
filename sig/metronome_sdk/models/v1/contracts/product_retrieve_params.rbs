@@ -3,18 +3,13 @@ module MetronomeSDK
     module V1
       module Contracts
         type product_retrieve_params =
-          { id: String } & MetronomeSDK::Internal::Type::request_parameters
+          {  } & MetronomeSDK::Internal::Type::request_parameters
 
-        class ProductRetrieveParams < MetronomeSDK::Internal::Type::BaseModel
+        class ProductRetrieveParams < MetronomeSDK::Models::ID
           extend MetronomeSDK::Internal::Type::RequestParameters::Converter
           include MetronomeSDK::Internal::Type::RequestParameters
 
-          attr_accessor id: String
-
-          def initialize: (
-            id: String,
-            ?request_options: MetronomeSDK::request_opts
-          ) -> void
+          def initialize: (?request_options: MetronomeSDK::request_opts) -> void
         end
       end
     end
