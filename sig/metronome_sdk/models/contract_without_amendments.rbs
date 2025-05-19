@@ -385,7 +385,8 @@ module MetronomeSDK
           netsuite_sales_order_id: String,
           proration: MetronomeSDK::ContractWithoutAmendments::RecurringCommit::proration,
           recurrence_frequency: MetronomeSDK::ContractWithoutAmendments::RecurringCommit::recurrence_frequency,
-          rollover_fraction: Float
+          rollover_fraction: Float,
+          specifiers: ::Array[MetronomeSDK::ContractWithoutAmendments::RecurringCommit::Specifier]
         }
 
       class RecurringCommit < MetronomeSDK::Internal::Type::BaseModel
@@ -455,6 +456,12 @@ module MetronomeSDK
 
         def rollover_fraction=: (Float) -> Float
 
+        attr_reader specifiers: ::Array[MetronomeSDK::ContractWithoutAmendments::RecurringCommit::Specifier]?
+
+        def specifiers=: (
+          ::Array[MetronomeSDK::ContractWithoutAmendments::RecurringCommit::Specifier]
+        ) -> ::Array[MetronomeSDK::ContractWithoutAmendments::RecurringCommit::Specifier]
+
         def initialize: (
           id: String,
           access_amount: MetronomeSDK::ContractWithoutAmendments::RecurringCommit::AccessAmount,
@@ -473,7 +480,8 @@ module MetronomeSDK
           ?netsuite_sales_order_id: String,
           ?proration: MetronomeSDK::ContractWithoutAmendments::RecurringCommit::proration,
           ?recurrence_frequency: MetronomeSDK::ContractWithoutAmendments::RecurringCommit::recurrence_frequency,
-          ?rollover_fraction: Float
+          ?rollover_fraction: Float,
+          ?specifiers: ::Array[MetronomeSDK::ContractWithoutAmendments::RecurringCommit::Specifier]
         ) -> void
 
         type access_amount =
@@ -595,6 +603,43 @@ module MetronomeSDK
 
           def self?.values: -> ::Array[MetronomeSDK::ContractWithoutAmendments::RecurringCommit::recurrence_frequency]
         end
+
+        type specifier =
+          {
+            presentation_group_values: ::Hash[Symbol, String],
+            pricing_group_values: ::Hash[Symbol, String],
+            product_id: String,
+            product_tags: ::Array[String]
+          }
+
+        class Specifier < MetronomeSDK::Internal::Type::BaseModel
+          attr_reader presentation_group_values: ::Hash[Symbol, String]?
+
+          def presentation_group_values=: (
+            ::Hash[Symbol, String]
+          ) -> ::Hash[Symbol, String]
+
+          attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+          def pricing_group_values=: (
+            ::Hash[Symbol, String]
+          ) -> ::Hash[Symbol, String]
+
+          attr_reader product_id: String?
+
+          def product_id=: (String) -> String
+
+          attr_reader product_tags: ::Array[String]?
+
+          def product_tags=: (::Array[String]) -> ::Array[String]
+
+          def initialize: (
+            ?presentation_group_values: ::Hash[Symbol, String],
+            ?pricing_group_values: ::Hash[Symbol, String],
+            ?product_id: String,
+            ?product_tags: ::Array[String]
+          ) -> void
+        end
       end
 
       type recurring_credit =
@@ -615,7 +660,8 @@ module MetronomeSDK
           netsuite_sales_order_id: String,
           proration: MetronomeSDK::ContractWithoutAmendments::RecurringCredit::proration,
           recurrence_frequency: MetronomeSDK::ContractWithoutAmendments::RecurringCredit::recurrence_frequency,
-          rollover_fraction: Float
+          rollover_fraction: Float,
+          specifiers: ::Array[MetronomeSDK::ContractWithoutAmendments::RecurringCredit::Specifier]
         }
 
       class RecurringCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -679,6 +725,12 @@ module MetronomeSDK
 
         def rollover_fraction=: (Float) -> Float
 
+        attr_reader specifiers: ::Array[MetronomeSDK::ContractWithoutAmendments::RecurringCredit::Specifier]?
+
+        def specifiers=: (
+          ::Array[MetronomeSDK::ContractWithoutAmendments::RecurringCredit::Specifier]
+        ) -> ::Array[MetronomeSDK::ContractWithoutAmendments::RecurringCredit::Specifier]
+
         def initialize: (
           id: String,
           access_amount: MetronomeSDK::ContractWithoutAmendments::RecurringCredit::AccessAmount,
@@ -696,7 +748,8 @@ module MetronomeSDK
           ?netsuite_sales_order_id: String,
           ?proration: MetronomeSDK::ContractWithoutAmendments::RecurringCredit::proration,
           ?recurrence_frequency: MetronomeSDK::ContractWithoutAmendments::RecurringCredit::recurrence_frequency,
-          ?rollover_fraction: Float
+          ?rollover_fraction: Float,
+          ?specifiers: ::Array[MetronomeSDK::ContractWithoutAmendments::RecurringCredit::Specifier]
         ) -> void
 
         type access_amount =
@@ -800,6 +853,43 @@ module MetronomeSDK
           WEEKLY: :WEEKLY
 
           def self?.values: -> ::Array[MetronomeSDK::ContractWithoutAmendments::RecurringCredit::recurrence_frequency]
+        end
+
+        type specifier =
+          {
+            presentation_group_values: ::Hash[Symbol, String],
+            pricing_group_values: ::Hash[Symbol, String],
+            product_id: String,
+            product_tags: ::Array[String]
+          }
+
+        class Specifier < MetronomeSDK::Internal::Type::BaseModel
+          attr_reader presentation_group_values: ::Hash[Symbol, String]?
+
+          def presentation_group_values=: (
+            ::Hash[Symbol, String]
+          ) -> ::Hash[Symbol, String]
+
+          attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+          def pricing_group_values=: (
+            ::Hash[Symbol, String]
+          ) -> ::Hash[Symbol, String]
+
+          attr_reader product_id: String?
+
+          def product_id=: (String) -> String
+
+          attr_reader product_tags: ::Array[String]?
+
+          def product_tags=: (::Array[String]) -> ::Array[String]
+
+          def initialize: (
+            ?presentation_group_values: ::Hash[Symbol, String],
+            ?pricing_group_values: ::Hash[Symbol, String],
+            ?product_id: String,
+            ?product_tags: ::Array[String]
+          ) -> void
         end
       end
 

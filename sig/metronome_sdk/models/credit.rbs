@@ -19,6 +19,7 @@ module MetronomeSDK
         priority: Float,
         rate_type: MetronomeSDK::Credit::rate_type,
         salesforce_opportunity_id: String,
+        specifiers: ::Array[MetronomeSDK::Credit::Specifier],
         uniqueness_key: String
       }
 
@@ -93,6 +94,12 @@ module MetronomeSDK
 
       def salesforce_opportunity_id=: (String) -> String
 
+      attr_reader specifiers: ::Array[MetronomeSDK::Credit::Specifier]?
+
+      def specifiers=: (
+        ::Array[MetronomeSDK::Credit::Specifier]
+      ) -> ::Array[MetronomeSDK::Credit::Specifier]
+
       attr_reader uniqueness_key: String?
 
       def uniqueness_key=: (String) -> String
@@ -115,6 +122,7 @@ module MetronomeSDK
         ?priority: Float,
         ?rate_type: MetronomeSDK::Credit::rate_type,
         ?salesforce_opportunity_id: String,
+        ?specifiers: ::Array[MetronomeSDK::Credit::Specifier],
         ?uniqueness_key: String
       ) -> void
 
@@ -391,6 +399,43 @@ module MetronomeSDK
         LIST_RATE: :LIST_RATE
 
         def self?.values: -> ::Array[MetronomeSDK::Credit::rate_type]
+      end
+
+      type specifier =
+        {
+          presentation_group_values: ::Hash[Symbol, String],
+          pricing_group_values: ::Hash[Symbol, String],
+          product_id: String,
+          product_tags: ::Array[String]
+        }
+
+      class Specifier < MetronomeSDK::Internal::Type::BaseModel
+        attr_reader presentation_group_values: ::Hash[Symbol, String]?
+
+        def presentation_group_values=: (
+          ::Hash[Symbol, String]
+        ) -> ::Hash[Symbol, String]
+
+        attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+        def pricing_group_values=: (
+          ::Hash[Symbol, String]
+        ) -> ::Hash[Symbol, String]
+
+        attr_reader product_id: String?
+
+        def product_id=: (String) -> String
+
+        attr_reader product_tags: ::Array[String]?
+
+        def product_tags=: (::Array[String]) -> ::Array[String]
+
+        def initialize: (
+          ?presentation_group_values: ::Hash[Symbol, String],
+          ?pricing_group_values: ::Hash[Symbol, String],
+          ?product_id: String,
+          ?product_tags: ::Array[String]
+        ) -> void
       end
     end
   end

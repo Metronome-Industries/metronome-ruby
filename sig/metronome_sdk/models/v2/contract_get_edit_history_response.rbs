@@ -204,7 +204,8 @@ module MetronomeSDK
               priority: Float,
               rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::rate_type,
               rollover_fraction: Float,
-              salesforce_opportunity_id: String
+              salesforce_opportunity_id: String,
+              specifiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Specifier]
             }
 
           class AddCommit < MetronomeSDK::Internal::Type::BaseModel
@@ -264,6 +265,12 @@ module MetronomeSDK
 
             def salesforce_opportunity_id=: (String) -> String
 
+            attr_reader specifiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Specifier]?
+
+            def specifiers=: (
+              ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Specifier]
+            ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Specifier]
+
             def initialize: (
               id: String,
               product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Product,
@@ -278,7 +285,8 @@ module MetronomeSDK
               ?priority: Float,
               ?rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::rate_type,
               ?rollover_fraction: Float,
-              ?salesforce_opportunity_id: String
+              ?salesforce_opportunity_id: String,
+              ?specifiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Specifier]
             ) -> void
 
             type product = { id: String, name: String }
@@ -312,6 +320,43 @@ module MetronomeSDK
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::rate_type]
             end
+
+            type specifier =
+              {
+                presentation_group_values: ::Hash[Symbol, String],
+                pricing_group_values: ::Hash[Symbol, String],
+                product_id: String,
+                product_tags: ::Array[String]
+              }
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader presentation_group_values: ::Hash[Symbol, String]?
+
+              def presentation_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+              def pricing_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader product_id: String?
+
+              def product_id=: (String) -> String
+
+              attr_reader product_tags: ::Array[String]?
+
+              def product_tags=: (::Array[String]) -> ::Array[String]
+
+              def initialize: (
+                ?presentation_group_values: ::Hash[Symbol, String],
+                ?pricing_group_values: ::Hash[Symbol, String],
+                ?product_id: String,
+                ?product_tags: ::Array[String]
+              ) -> void
+            end
           end
 
           type add_credit =
@@ -326,7 +371,8 @@ module MetronomeSDK
               name: String,
               netsuite_sales_order_id: String,
               priority: Float,
-              salesforce_opportunity_id: String
+              salesforce_opportunity_id: String,
+              specifiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Specifier]
             }
 
           class AddCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -370,6 +416,12 @@ module MetronomeSDK
 
             def salesforce_opportunity_id=: (String) -> String
 
+            attr_reader specifiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Specifier]?
+
+            def specifiers=: (
+              ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Specifier]
+            ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Specifier]
+
             def initialize: (
               id: String,
               product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Product,
@@ -381,7 +433,8 @@ module MetronomeSDK
               ?name: String,
               ?netsuite_sales_order_id: String,
               ?priority: Float,
-              ?salesforce_opportunity_id: String
+              ?salesforce_opportunity_id: String,
+              ?specifiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Specifier]
             ) -> void
 
             type product = { id: String, name: String }
@@ -402,6 +455,43 @@ module MetronomeSDK
               CREDIT: :CREDIT
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::type_]
+            end
+
+            type specifier =
+              {
+                presentation_group_values: ::Hash[Symbol, String],
+                pricing_group_values: ::Hash[Symbol, String],
+                product_id: String,
+                product_tags: ::Array[String]
+              }
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader presentation_group_values: ::Hash[Symbol, String]?
+
+              def presentation_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+              def pricing_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader product_id: String?
+
+              def product_id=: (String) -> String
+
+              attr_reader product_tags: ::Array[String]?
+
+              def product_tags=: (::Array[String]) -> ::Array[String]
+
+              def initialize: (
+                ?presentation_group_values: ::Hash[Symbol, String],
+                ?pricing_group_values: ::Hash[Symbol, String],
+                ?product_id: String,
+                ?product_tags: ::Array[String]
+              ) -> void
             end
           end
 
@@ -693,7 +783,8 @@ module MetronomeSDK
               netsuite_sales_order_id: String,
               proration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::proration,
               recurrence_frequency: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::recurrence_frequency,
-              rollover_fraction: Float
+              rollover_fraction: Float,
+              specifiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Specifier]
             }
 
           class AddRecurringCommit < MetronomeSDK::Internal::Type::BaseModel
@@ -763,6 +854,12 @@ module MetronomeSDK
 
             def rollover_fraction=: (Float) -> Float
 
+            attr_reader specifiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Specifier]?
+
+            def specifiers=: (
+              ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Specifier]
+            ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Specifier]
+
             def initialize: (
               id: String,
               access_amount: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::AccessAmount,
@@ -781,7 +878,8 @@ module MetronomeSDK
               ?netsuite_sales_order_id: String,
               ?proration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::proration,
               ?recurrence_frequency: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::recurrence_frequency,
-              ?rollover_fraction: Float
+              ?rollover_fraction: Float,
+              ?specifiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Specifier]
             ) -> void
 
             type access_amount =
@@ -904,6 +1002,43 @@ module MetronomeSDK
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::recurrence_frequency]
             end
+
+            type specifier =
+              {
+                presentation_group_values: ::Hash[Symbol, String],
+                pricing_group_values: ::Hash[Symbol, String],
+                product_id: String,
+                product_tags: ::Array[String]
+              }
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader presentation_group_values: ::Hash[Symbol, String]?
+
+              def presentation_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+              def pricing_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader product_id: String?
+
+              def product_id=: (String) -> String
+
+              attr_reader product_tags: ::Array[String]?
+
+              def product_tags=: (::Array[String]) -> ::Array[String]
+
+              def initialize: (
+                ?presentation_group_values: ::Hash[Symbol, String],
+                ?pricing_group_values: ::Hash[Symbol, String],
+                ?product_id: String,
+                ?product_tags: ::Array[String]
+              ) -> void
+            end
           end
 
           type add_recurring_credit =
@@ -924,7 +1059,8 @@ module MetronomeSDK
               netsuite_sales_order_id: String,
               proration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::proration,
               recurrence_frequency: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::recurrence_frequency,
-              rollover_fraction: Float
+              rollover_fraction: Float,
+              specifiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Specifier]
             }
 
           class AddRecurringCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -988,6 +1124,12 @@ module MetronomeSDK
 
             def rollover_fraction=: (Float) -> Float
 
+            attr_reader specifiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Specifier]?
+
+            def specifiers=: (
+              ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Specifier]
+            ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Specifier]
+
             def initialize: (
               id: String,
               access_amount: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::AccessAmount,
@@ -1005,7 +1147,8 @@ module MetronomeSDK
               ?netsuite_sales_order_id: String,
               ?proration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::proration,
               ?recurrence_frequency: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::recurrence_frequency,
-              ?rollover_fraction: Float
+              ?rollover_fraction: Float,
+              ?specifiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Specifier]
             ) -> void
 
             type access_amount =
@@ -1110,6 +1253,43 @@ module MetronomeSDK
               WEEKLY: :WEEKLY
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::recurrence_frequency]
+            end
+
+            type specifier =
+              {
+                presentation_group_values: ::Hash[Symbol, String],
+                pricing_group_values: ::Hash[Symbol, String],
+                product_id: String,
+                product_tags: ::Array[String]
+              }
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader presentation_group_values: ::Hash[Symbol, String]?
+
+              def presentation_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+              def pricing_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader product_id: String?
+
+              def product_id=: (String) -> String
+
+              attr_reader product_tags: ::Array[String]?
+
+              def product_tags=: (::Array[String]) -> ::Array[String]
+
+              def initialize: (
+                ?presentation_group_values: ::Hash[Symbol, String],
+                ?pricing_group_values: ::Hash[Symbol, String],
+                ?product_id: String,
+                ?product_tags: ::Array[String]
+              ) -> void
             end
           end
 
@@ -1322,7 +1502,8 @@ module MetronomeSDK
               name: String,
               netsuite_sales_order_id: String?,
               product_id: String,
-              rollover_fraction: Float?
+              rollover_fraction: Float?,
+              specifiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::Specifier]
             }
 
           class UpdateCommit < MetronomeSDK::Internal::Type::BaseModel
@@ -1356,6 +1537,12 @@ module MetronomeSDK
 
             attr_accessor rollover_fraction: Float?
 
+            attr_reader specifiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::Specifier]?
+
+            def specifiers=: (
+              ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::Specifier]
+            ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::Specifier]
+
             def initialize: (
               id: String,
               ?access_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule,
@@ -1365,7 +1552,8 @@ module MetronomeSDK
               ?name: String,
               ?netsuite_sales_order_id: String?,
               ?product_id: String,
-              ?rollover_fraction: Float?
+              ?rollover_fraction: Float?,
+              ?specifiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::Specifier]
             ) -> void
 
             type access_schedule =
@@ -1564,6 +1752,43 @@ module MetronomeSDK
                   ?unit_price: Float
                 ) -> void
               end
+            end
+
+            type specifier =
+              {
+                presentation_group_values: ::Hash[Symbol, String],
+                pricing_group_values: ::Hash[Symbol, String],
+                product_id: String,
+                product_tags: ::Array[String]
+              }
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader presentation_group_values: ::Hash[Symbol, String]?
+
+              def presentation_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+              def pricing_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader product_id: String?
+
+              def product_id=: (String) -> String
+
+              attr_reader product_tags: ::Array[String]?
+
+              def product_tags=: (::Array[String]) -> ::Array[String]
+
+              def initialize: (
+                ?presentation_group_values: ::Hash[Symbol, String],
+                ?pricing_group_values: ::Hash[Symbol, String],
+                ?product_id: String,
+                ?product_tags: ::Array[String]
+              ) -> void
             end
           end
 

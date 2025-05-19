@@ -123,6 +123,7 @@ module MetronomeSDK
             priority: Float,
             rate_type: MetronomeSDK::V1::ContractAmendParams::Commit::rate_type,
             rollover_fraction: Float,
+            specifiers: ::Array[MetronomeSDK::V1::ContractAmendParams::Commit::Specifier],
             temporary_id: String
           }
 
@@ -191,6 +192,12 @@ module MetronomeSDK
 
           def rollover_fraction=: (Float) -> Float
 
+          attr_reader specifiers: ::Array[MetronomeSDK::V1::ContractAmendParams::Commit::Specifier]?
+
+          def specifiers=: (
+            ::Array[MetronomeSDK::V1::ContractAmendParams::Commit::Specifier]
+          ) -> ::Array[MetronomeSDK::V1::ContractAmendParams::Commit::Specifier]
+
           attr_reader temporary_id: String?
 
           def temporary_id=: (String) -> String
@@ -211,6 +218,7 @@ module MetronomeSDK
             ?priority: Float,
             ?rate_type: MetronomeSDK::V1::ContractAmendParams::Commit::rate_type,
             ?rollover_fraction: Float,
+            ?specifiers: ::Array[MetronomeSDK::V1::ContractAmendParams::Commit::Specifier],
             ?temporary_id: String
           ) -> void
 
@@ -477,6 +485,43 @@ module MetronomeSDK
 
             def self?.values: -> ::Array[MetronomeSDK::V1::ContractAmendParams::Commit::rate_type]
           end
+
+          type specifier =
+            {
+              presentation_group_values: ::Hash[Symbol, String],
+              pricing_group_values: ::Hash[Symbol, String],
+              product_id: String,
+              product_tags: ::Array[String]
+            }
+
+          class Specifier < MetronomeSDK::Internal::Type::BaseModel
+            attr_reader presentation_group_values: ::Hash[Symbol, String]?
+
+            def presentation_group_values=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+            def pricing_group_values=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader product_id: String?
+
+            def product_id=: (String) -> String
+
+            attr_reader product_tags: ::Array[String]?
+
+            def product_tags=: (::Array[String]) -> ::Array[String]
+
+            def initialize: (
+              ?presentation_group_values: ::Hash[Symbol, String],
+              ?pricing_group_values: ::Hash[Symbol, String],
+              ?product_id: String,
+              ?product_tags: ::Array[String]
+            ) -> void
+          end
         end
 
         type credit =
@@ -490,7 +535,8 @@ module MetronomeSDK
             name: String,
             netsuite_sales_order_id: String,
             priority: Float,
-            rate_type: MetronomeSDK::V1::ContractAmendParams::Credit::rate_type
+            rate_type: MetronomeSDK::V1::ContractAmendParams::Credit::rate_type,
+            specifiers: ::Array[MetronomeSDK::V1::ContractAmendParams::Credit::Specifier]
           }
 
         class Credit < MetronomeSDK::Internal::Type::BaseModel
@@ -532,6 +578,12 @@ module MetronomeSDK
             MetronomeSDK::V1::ContractAmendParams::Credit::rate_type
           ) -> MetronomeSDK::V1::ContractAmendParams::Credit::rate_type
 
+          attr_reader specifiers: ::Array[MetronomeSDK::V1::ContractAmendParams::Credit::Specifier]?
+
+          def specifiers=: (
+            ::Array[MetronomeSDK::V1::ContractAmendParams::Credit::Specifier]
+          ) -> ::Array[MetronomeSDK::V1::ContractAmendParams::Credit::Specifier]
+
           def initialize: (
             access_schedule: MetronomeSDK::V1::ContractAmendParams::Credit::AccessSchedule,
             product_id: String,
@@ -542,7 +594,8 @@ module MetronomeSDK
             ?name: String,
             ?netsuite_sales_order_id: String,
             ?priority: Float,
-            ?rate_type: MetronomeSDK::V1::ContractAmendParams::Credit::rate_type
+            ?rate_type: MetronomeSDK::V1::ContractAmendParams::Credit::rate_type,
+            ?specifiers: ::Array[MetronomeSDK::V1::ContractAmendParams::Credit::Specifier]
           ) -> void
 
           type access_schedule =
@@ -590,6 +643,43 @@ module MetronomeSDK
             LIST_RATE: :LIST_RATE
 
             def self?.values: -> ::Array[MetronomeSDK::V1::ContractAmendParams::Credit::rate_type]
+          end
+
+          type specifier =
+            {
+              presentation_group_values: ::Hash[Symbol, String],
+              pricing_group_values: ::Hash[Symbol, String],
+              product_id: String,
+              product_tags: ::Array[String]
+            }
+
+          class Specifier < MetronomeSDK::Internal::Type::BaseModel
+            attr_reader presentation_group_values: ::Hash[Symbol, String]?
+
+            def presentation_group_values=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+            def pricing_group_values=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader product_id: String?
+
+            def product_id=: (String) -> String
+
+            attr_reader product_tags: ::Array[String]?
+
+            def product_tags=: (::Array[String]) -> ::Array[String]
+
+            def initialize: (
+              ?presentation_group_values: ::Hash[Symbol, String],
+              ?pricing_group_values: ::Hash[Symbol, String],
+              ?product_id: String,
+              ?product_tags: ::Array[String]
+            ) -> void
           end
         end
 

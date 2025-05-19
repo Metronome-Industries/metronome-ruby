@@ -25,6 +25,7 @@ module MetronomeSDK
         rolled_over_from: MetronomeSDK::Commit::RolledOverFrom,
         rollover_fraction: Float,
         salesforce_opportunity_id: String,
+        specifiers: ::Array[MetronomeSDK::Commit::Specifier],
         uniqueness_key: String
       }
 
@@ -129,6 +130,12 @@ module MetronomeSDK
 
       def salesforce_opportunity_id=: (String) -> String
 
+      attr_reader specifiers: ::Array[MetronomeSDK::Commit::Specifier]?
+
+      def specifiers=: (
+        ::Array[MetronomeSDK::Commit::Specifier]
+      ) -> ::Array[MetronomeSDK::Commit::Specifier]
+
       attr_reader uniqueness_key: String?
 
       def uniqueness_key=: (String) -> String
@@ -157,6 +164,7 @@ module MetronomeSDK
         ?rolled_over_from: MetronomeSDK::Commit::RolledOverFrom,
         ?rollover_fraction: Float,
         ?salesforce_opportunity_id: String,
+        ?specifiers: ::Array[MetronomeSDK::Commit::Specifier],
         ?uniqueness_key: String
       ) -> void
 
@@ -708,6 +716,43 @@ module MetronomeSDK
         attr_accessor contract_id: String
 
         def initialize: (commit_id: String, contract_id: String) -> void
+      end
+
+      type specifier =
+        {
+          presentation_group_values: ::Hash[Symbol, String],
+          pricing_group_values: ::Hash[Symbol, String],
+          product_id: String,
+          product_tags: ::Array[String]
+        }
+
+      class Specifier < MetronomeSDK::Internal::Type::BaseModel
+        attr_reader presentation_group_values: ::Hash[Symbol, String]?
+
+        def presentation_group_values=: (
+          ::Hash[Symbol, String]
+        ) -> ::Hash[Symbol, String]
+
+        attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+        def pricing_group_values=: (
+          ::Hash[Symbol, String]
+        ) -> ::Hash[Symbol, String]
+
+        attr_reader product_id: String?
+
+        def product_id=: (String) -> String
+
+        attr_reader product_tags: ::Array[String]?
+
+        def product_tags=: (::Array[String]) -> ::Array[String]
+
+        def initialize: (
+          ?presentation_group_values: ::Hash[Symbol, String],
+          ?pricing_group_values: ::Hash[Symbol, String],
+          ?product_id: String,
+          ?product_tags: ::Array[String]
+        ) -> void
       end
     end
   end
