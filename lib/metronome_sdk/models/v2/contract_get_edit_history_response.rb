@@ -247,7 +247,17 @@ module MetronomeSDK
             #   @return [String, nil]
             optional :salesforce_opportunity_id, String
 
-            # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, rollover_fraction: nil, salesforce_opportunity_id: nil)
+            # @!attribute specifiers
+            #   List of filters that determine what kind of customer usage draws down a commit
+            #   or credit. A customer's usage needs to meet the condition of at least one of the
+            #   specifiers to contribute to a commit's or credit's drawdown. This field cannot
+            #   be used together with `applicable_product_ids` or `applicable_product_tags`.
+            #
+            #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Specifier>, nil]
+            optional :specifiers,
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Specifier] }
+
+            # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit} for
             #   more details.
@@ -279,6 +289,8 @@ module MetronomeSDK
             #   @param rollover_fraction [Float]
             #
             #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
+            #
+            #   @param specifiers [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
 
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit#product
             class Product < MetronomeSDK::Internal::Type::BaseModel
@@ -317,6 +329,44 @@ module MetronomeSDK
 
               # @!method self.values
               #   @return [Array<Symbol>]
+            end
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute presentation_group_values
+              #
+              #   @return [Hash{Symbol=>String}, nil]
+              optional :presentation_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+              # @!attribute pricing_group_values
+              #
+              #   @return [Hash{Symbol=>String}, nil]
+              optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+              # @!attribute product_id
+              #   If provided, the specifier will only apply to the product with the specified ID.
+              #
+              #   @return [String, nil]
+              optional :product_id, String
+
+              # @!attribute product_tags
+              #   If provided, the specifier will only apply to products with all the specified
+              #   tags.
+              #
+              #   @return [Array<String>, nil]
+              optional :product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+              # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Specifier}
+              #   for more details.
+              #
+              #   @param presentation_group_values [Hash{Symbol=>String}]
+              #
+              #   @param pricing_group_values [Hash{Symbol=>String}]
+              #
+              #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
+              #
+              #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
             end
           end
 
@@ -383,7 +433,17 @@ module MetronomeSDK
             #   @return [String, nil]
             optional :salesforce_opportunity_id, String
 
-            # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, salesforce_opportunity_id: nil)
+            # @!attribute specifiers
+            #   List of filters that determine what kind of customer usage draws down a commit
+            #   or credit. A customer's usage needs to meet the condition of at least one of the
+            #   specifiers to contribute to a commit's or credit's drawdown. This field cannot
+            #   be used together with `applicable_product_ids` or `applicable_product_tags`.
+            #
+            #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Specifier>, nil]
+            optional :specifiers,
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Specifier] }
+
+            # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, salesforce_opportunity_id: nil, specifiers: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit} for
             #   more details.
@@ -409,6 +469,8 @@ module MetronomeSDK
             #   @param priority [Float] If multiple credits or commits are applicable, the one with the lower priority w
             #
             #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
+            #
+            #   @param specifiers [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
 
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit#product
             class Product < MetronomeSDK::Internal::Type::BaseModel
@@ -435,6 +497,44 @@ module MetronomeSDK
 
               # @!method self.values
               #   @return [Array<Symbol>]
+            end
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute presentation_group_values
+              #
+              #   @return [Hash{Symbol=>String}, nil]
+              optional :presentation_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+              # @!attribute pricing_group_values
+              #
+              #   @return [Hash{Symbol=>String}, nil]
+              optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+              # @!attribute product_id
+              #   If provided, the specifier will only apply to the product with the specified ID.
+              #
+              #   @return [String, nil]
+              optional :product_id, String
+
+              # @!attribute product_tags
+              #   If provided, the specifier will only apply to products with all the specified
+              #   tags.
+              #
+              #   @return [Array<String>, nil]
+              optional :product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+              # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Specifier}
+              #   for more details.
+              #
+              #   @param presentation_group_values [Hash{Symbol=>String}]
+              #
+              #   @param pricing_group_values [Hash{Symbol=>String}]
+              #
+              #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
+              #
+              #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
             end
           end
 
@@ -836,7 +936,16 @@ module MetronomeSDK
             #   @return [Float, nil]
             optional :rollover_fraction, Float
 
-            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, invoice_amount: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil)
+            # @!attribute specifiers
+            #   List of filters that determine what kind of customer usage draws down a commit
+            #   or credit. A customer's usage needs to meet the condition of at least one of the
+            #   specifiers to contribute to a commit's or credit's drawdown.
+            #
+            #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Specifier>, nil]
+            optional :specifiers,
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Specifier] }
+
+            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, invoice_amount: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit}
             #   for more details.
@@ -876,6 +985,8 @@ module MetronomeSDK
             #   @param recurrence_frequency [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided: -
             #
             #   @param rollover_fraction [Float] Will be passed down to the individual commits. This controls how much of an indi
+            #
+            #   @param specifiers [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
 
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit#access_amount
             class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
@@ -1032,6 +1143,44 @@ module MetronomeSDK
               # @!method self.values
               #   @return [Array<Symbol>]
             end
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute presentation_group_values
+              #
+              #   @return [Hash{Symbol=>String}, nil]
+              optional :presentation_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+              # @!attribute pricing_group_values
+              #
+              #   @return [Hash{Symbol=>String}, nil]
+              optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+              # @!attribute product_id
+              #   If provided, the specifier will only apply to the product with the specified ID.
+              #
+              #   @return [String, nil]
+              optional :product_id, String
+
+              # @!attribute product_tags
+              #   If provided, the specifier will only apply to products with all the specified
+              #   tags.
+              #
+              #   @return [Array<String>, nil]
+              optional :product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+              # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Specifier}
+              #   for more details.
+              #
+              #   @param presentation_group_values [Hash{Symbol=>String}]
+              #
+              #   @param pricing_group_values [Hash{Symbol=>String}]
+              #
+              #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
+              #
+              #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
+            end
           end
 
           class AddRecurringCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -1148,7 +1297,16 @@ module MetronomeSDK
             #   @return [Float, nil]
             optional :rollover_fraction, Float
 
-            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil)
+            # @!attribute specifiers
+            #   List of filters that determine what kind of customer usage draws down a commit
+            #   or credit. A customer's usage needs to meet the condition of at least one of the
+            #   specifiers to contribute to a commit's or credit's drawdown.
+            #
+            #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Specifier>, nil]
+            optional :specifiers,
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Specifier] }
+
+            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit}
             #   for more details.
@@ -1186,6 +1344,8 @@ module MetronomeSDK
             #   @param recurrence_frequency [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided: -
             #
             #   @param rollover_fraction [Float] Will be passed down to the individual commits. This controls how much of an indi
+            #
+            #   @param specifiers [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
 
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit#access_amount
             class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
@@ -1316,6 +1476,44 @@ module MetronomeSDK
 
               # @!method self.values
               #   @return [Array<Symbol>]
+            end
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute presentation_group_values
+              #
+              #   @return [Hash{Symbol=>String}, nil]
+              optional :presentation_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+              # @!attribute pricing_group_values
+              #
+              #   @return [Hash{Symbol=>String}, nil]
+              optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+              # @!attribute product_id
+              #   If provided, the specifier will only apply to the product with the specified ID.
+              #
+              #   @return [String, nil]
+              optional :product_id, String
+
+              # @!attribute product_tags
+              #   If provided, the specifier will only apply to products with all the specified
+              #   tags.
+              #
+              #   @return [Array<String>, nil]
+              optional :product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+              # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Specifier}
+              #   for more details.
+              #
+              #   @param presentation_group_values [Hash{Symbol=>String}]
+              #
+              #   @param pricing_group_values [Hash{Symbol=>String}]
+              #
+              #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
+              #
+              #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
             end
           end
 
@@ -1604,7 +1802,17 @@ module MetronomeSDK
             #   @return [Float, nil]
             optional :rollover_fraction, Float, nil?: true
 
-            # @!method initialize(id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, product_id: nil, rollover_fraction: nil)
+            # @!attribute specifiers
+            #   List of filters that determine what kind of customer usage draws down a commit
+            #   or credit. A customer's usage needs to meet the condition of at least one of the
+            #   specifiers to contribute to a commit's or credit's drawdown. This field cannot
+            #   be used together with `applicable_product_ids` or `applicable_product_tags`.
+            #
+            #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::Specifier>, nil]
+            optional :specifiers,
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::Specifier] }
+
+            # @!method initialize(id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, product_id: nil, rollover_fraction: nil, specifiers: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit}
             #   for more details.
@@ -1626,6 +1834,8 @@ module MetronomeSDK
             #   @param product_id [String]
             #
             #   @param rollover_fraction [Float, nil]
+            #
+            #   @param specifiers [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
 
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit#access_schedule
             class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
@@ -1842,6 +2052,44 @@ module MetronomeSDK
                 #   @param timestamp [Time]
                 #   @param unit_price [Float]
               end
+            end
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute presentation_group_values
+              #
+              #   @return [Hash{Symbol=>String}, nil]
+              optional :presentation_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+              # @!attribute pricing_group_values
+              #
+              #   @return [Hash{Symbol=>String}, nil]
+              optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+              # @!attribute product_id
+              #   If provided, the specifier will only apply to the product with the specified ID.
+              #
+              #   @return [String, nil]
+              optional :product_id, String
+
+              # @!attribute product_tags
+              #   If provided, the specifier will only apply to products with all the specified
+              #   tags.
+              #
+              #   @return [Array<String>, nil]
+              optional :product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+              # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::Specifier}
+              #   for more details.
+              #
+              #   @param presentation_group_values [Hash{Symbol=>String}]
+              #
+              #   @param pricing_group_values [Hash{Symbol=>String}]
+              #
+              #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
+              #
+              #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
             end
           end
 

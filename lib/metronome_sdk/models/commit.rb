@@ -139,6 +139,14 @@ module MetronomeSDK
       #   @return [String, nil]
       optional :salesforce_opportunity_id, String
 
+      # @!attribute specifiers
+      #   List of filters that determine what kind of customer usage draws down a commit
+      #   or credit. A customer's usage needs to meet the condition of at least one of the
+      #   specifiers to contribute to a commit's or credit's drawdown.
+      #
+      #   @return [Array<MetronomeSDK::Commit::Specifier>, nil]
+      optional :specifiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Commit::Specifier] }
+
       # @!attribute uniqueness_key
       #   Prevents the creation of duplicates. If a request to create a commit or credit
       #   is made with a uniqueness key that was previously used to create a commit or
@@ -148,7 +156,7 @@ module MetronomeSDK
       #   @return [String, nil]
       optional :uniqueness_key, String
 
-      # @!method initialize(id:, product:, type:, access_schedule: nil, amount: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, custom_fields: nil, description: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, uniqueness_key: nil)
+      # @!method initialize(id:, product:, type:, access_schedule: nil, amount: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, custom_fields: nil, description: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil, uniqueness_key: nil)
       #   Some parameter documentations has been truncated, see {MetronomeSDK::Commit} for
       #   more details.
       #
@@ -197,6 +205,8 @@ module MetronomeSDK
       #   @param rollover_fraction [Float]
       #
       #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
+      #
+      #   @param specifiers [Array<MetronomeSDK::Commit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
       #
       #   @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a commit or credit i
 
@@ -861,6 +871,43 @@ module MetronomeSDK
         # @!method initialize(commit_id:, contract_id:)
         #   @param commit_id [String]
         #   @param contract_id [String]
+      end
+
+      class Specifier < MetronomeSDK::Internal::Type::BaseModel
+        # @!attribute presentation_group_values
+        #
+        #   @return [Hash{Symbol=>String}, nil]
+        optional :presentation_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+        # @!attribute pricing_group_values
+        #
+        #   @return [Hash{Symbol=>String}, nil]
+        optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+        # @!attribute product_id
+        #   If provided, the specifier will only apply to the product with the specified ID.
+        #
+        #   @return [String, nil]
+        optional :product_id, String
+
+        # @!attribute product_tags
+        #   If provided, the specifier will only apply to products with all the specified
+        #   tags.
+        #
+        #   @return [Array<String>, nil]
+        optional :product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+        # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {MetronomeSDK::Commit::Specifier} for more details.
+        #
+        #   @param presentation_group_values [Hash{Symbol=>String}]
+        #
+        #   @param pricing_group_values [Hash{Symbol=>String}]
+        #
+        #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
+        #
+        #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
       end
     end
   end

@@ -755,6 +755,31 @@ module MetronomeSDK
             sig { params(salesforce_opportunity_id: String).void }
             attr_writer :salesforce_opportunity_id
 
+            # List of filters that determine what kind of customer usage draws down a commit
+            # or credit. A customer's usage needs to meet the condition of at least one of the
+            # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+            # be used together with `applicable_product_ids` or `applicable_product_tags`.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Specifier
+                  ]
+                )
+              )
+            end
+            attr_reader :specifiers
+
+            sig do
+              params(
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Specifier::OrHash
+                  ]
+              ).void
+            end
+            attr_writer :specifiers
+
             sig do
               params(
                 id: String,
@@ -773,7 +798,11 @@ module MetronomeSDK
                 rate_type:
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::RateType::OrSymbol,
                 rollover_fraction: Float,
-                salesforce_opportunity_id: String
+                salesforce_opportunity_id: String,
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Specifier::OrHash
+                  ]
               ).returns(T.attached_class)
             end
             def self.new(
@@ -797,7 +826,12 @@ module MetronomeSDK
               rate_type: nil,
               rollover_fraction: nil,
               # This field's availability is dependent on your client's configuration.
-              salesforce_opportunity_id: nil
+              salesforce_opportunity_id: nil,
+              # List of filters that determine what kind of customer usage draws down a commit
+              # or credit. A customer's usage needs to meet the condition of at least one of the
+              # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+              # be used together with `applicable_product_ids` or `applicable_product_tags`.
+              specifiers: nil
             )
             end
 
@@ -820,7 +854,11 @@ module MetronomeSDK
                   rate_type:
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::RateType::TaggedSymbol,
                   rollover_fraction: Float,
-                  salesforce_opportunity_id: String
+                  salesforce_opportunity_id: String,
+                  specifiers:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Specifier
+                    ]
                 }
               )
             end
@@ -918,6 +956,77 @@ module MetronomeSDK
               def self.values
               end
             end
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Specifier,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :presentation_group_values
+
+              sig do
+                params(presentation_group_values: T::Hash[Symbol, String]).void
+              end
+              attr_writer :presentation_group_values
+
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :pricing_group_values
+
+              sig { params(pricing_group_values: T::Hash[Symbol, String]).void }
+              attr_writer :pricing_group_values
+
+              # If provided, the specifier will only apply to the product with the specified ID.
+              sig { returns(T.nilable(String)) }
+              attr_reader :product_id
+
+              sig { params(product_id: String).void }
+              attr_writer :product_id
+
+              # If provided, the specifier will only apply to products with all the specified
+              # tags.
+              sig { returns(T.nilable(T::Array[String])) }
+              attr_reader :product_tags
+
+              sig { params(product_tags: T::Array[String]).void }
+              attr_writer :product_tags
+
+              sig do
+                params(
+                  presentation_group_values: T::Hash[Symbol, String],
+                  pricing_group_values: T::Hash[Symbol, String],
+                  product_id: String,
+                  product_tags: T::Array[String]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                presentation_group_values: nil,
+                pricing_group_values: nil,
+                # If provided, the specifier will only apply to the product with the specified ID.
+                product_id: nil,
+                # If provided, the specifier will only apply to products with all the specified
+                # tags.
+                product_tags: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    presentation_group_values: T::Hash[Symbol, String],
+                    pricing_group_values: T::Hash[Symbol, String],
+                    product_id: String,
+                    product_tags: T::Array[String]
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
           end
 
           class AddCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -1011,6 +1120,31 @@ module MetronomeSDK
             sig { params(salesforce_opportunity_id: String).void }
             attr_writer :salesforce_opportunity_id
 
+            # List of filters that determine what kind of customer usage draws down a commit
+            # or credit. A customer's usage needs to meet the condition of at least one of the
+            # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+            # be used together with `applicable_product_ids` or `applicable_product_tags`.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Specifier
+                  ]
+                )
+              )
+            end
+            attr_reader :specifiers
+
+            sig do
+              params(
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Specifier::OrHash
+                  ]
+              ).void
+            end
+            attr_writer :specifiers
+
             sig do
               params(
                 id: String,
@@ -1025,7 +1159,11 @@ module MetronomeSDK
                 name: String,
                 netsuite_sales_order_id: String,
                 priority: Float,
-                salesforce_opportunity_id: String
+                salesforce_opportunity_id: String,
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Specifier::OrHash
+                  ]
               ).returns(T.attached_class)
             end
             def self.new(
@@ -1044,7 +1182,12 @@ module MetronomeSDK
               # will apply first.
               priority: nil,
               # This field's availability is dependent on your client's configuration.
-              salesforce_opportunity_id: nil
+              salesforce_opportunity_id: nil,
+              # List of filters that determine what kind of customer usage draws down a commit
+              # or credit. A customer's usage needs to meet the condition of at least one of the
+              # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+              # be used together with `applicable_product_ids` or `applicable_product_tags`.
+              specifiers: nil
             )
             end
 
@@ -1063,7 +1206,11 @@ module MetronomeSDK
                   name: String,
                   netsuite_sales_order_id: String,
                   priority: Float,
-                  salesforce_opportunity_id: String
+                  salesforce_opportunity_id: String,
+                  specifiers:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Specifier
+                    ]
                 }
               )
             end
@@ -1120,6 +1267,77 @@ module MetronomeSDK
                 )
               end
               def self.values
+              end
+            end
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Specifier,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :presentation_group_values
+
+              sig do
+                params(presentation_group_values: T::Hash[Symbol, String]).void
+              end
+              attr_writer :presentation_group_values
+
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :pricing_group_values
+
+              sig { params(pricing_group_values: T::Hash[Symbol, String]).void }
+              attr_writer :pricing_group_values
+
+              # If provided, the specifier will only apply to the product with the specified ID.
+              sig { returns(T.nilable(String)) }
+              attr_reader :product_id
+
+              sig { params(product_id: String).void }
+              attr_writer :product_id
+
+              # If provided, the specifier will only apply to products with all the specified
+              # tags.
+              sig { returns(T.nilable(T::Array[String])) }
+              attr_reader :product_tags
+
+              sig { params(product_tags: T::Array[String]).void }
+              attr_writer :product_tags
+
+              sig do
+                params(
+                  presentation_group_values: T::Hash[Symbol, String],
+                  pricing_group_values: T::Hash[Symbol, String],
+                  product_id: String,
+                  product_tags: T::Array[String]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                presentation_group_values: nil,
+                pricing_group_values: nil,
+                # If provided, the specifier will only apply to the product with the specified ID.
+                product_id: nil,
+                # If provided, the specifier will only apply to products with all the specified
+                # tags.
+                product_tags: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    presentation_group_values: T::Hash[Symbol, String],
+                    pricing_group_values: T::Hash[Symbol, String],
+                    product_id: String,
+                    product_tags: T::Array[String]
+                  }
+                )
+              end
+              def to_hash
               end
             end
           end
@@ -1948,6 +2166,30 @@ module MetronomeSDK
             sig { params(rollover_fraction: Float).void }
             attr_writer :rollover_fraction
 
+            # List of filters that determine what kind of customer usage draws down a commit
+            # or credit. A customer's usage needs to meet the condition of at least one of the
+            # specifiers to contribute to a commit's or credit's drawdown.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Specifier
+                  ]
+                )
+              )
+            end
+            attr_reader :specifiers
+
+            sig do
+              params(
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Specifier::OrHash
+                  ]
+              ).void
+            end
+            attr_writer :specifiers
+
             sig do
               params(
                 id: String,
@@ -1975,7 +2217,11 @@ module MetronomeSDK
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Proration::OrSymbol,
                 recurrence_frequency:
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::RecurrenceFrequency::OrSymbol,
-                rollover_fraction: Float
+                rollover_fraction: Float,
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Specifier::OrHash
+                  ]
               ).returns(T.attached_class)
             end
             def self.new(
@@ -2018,7 +2264,11 @@ module MetronomeSDK
               # Will be passed down to the individual commits. This controls how much of an
               # individual unexpired commit will roll over upon contract transition. Must be
               # between 0 and 1.
-              rollover_fraction: nil
+              rollover_fraction: nil,
+              # List of filters that determine what kind of customer usage draws down a commit
+              # or credit. A customer's usage needs to meet the condition of at least one of the
+              # specifiers to contribute to a commit's or credit's drawdown.
+              specifiers: nil
             )
             end
 
@@ -2050,7 +2300,11 @@ module MetronomeSDK
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Proration::TaggedSymbol,
                   recurrence_frequency:
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::RecurrenceFrequency::TaggedSymbol,
-                  rollover_fraction: Float
+                  rollover_fraction: Float,
+                  specifiers:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Specifier
+                    ]
                 }
               )
             end
@@ -2389,6 +2643,77 @@ module MetronomeSDK
               def self.values
               end
             end
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Specifier,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :presentation_group_values
+
+              sig do
+                params(presentation_group_values: T::Hash[Symbol, String]).void
+              end
+              attr_writer :presentation_group_values
+
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :pricing_group_values
+
+              sig { params(pricing_group_values: T::Hash[Symbol, String]).void }
+              attr_writer :pricing_group_values
+
+              # If provided, the specifier will only apply to the product with the specified ID.
+              sig { returns(T.nilable(String)) }
+              attr_reader :product_id
+
+              sig { params(product_id: String).void }
+              attr_writer :product_id
+
+              # If provided, the specifier will only apply to products with all the specified
+              # tags.
+              sig { returns(T.nilable(T::Array[String])) }
+              attr_reader :product_tags
+
+              sig { params(product_tags: T::Array[String]).void }
+              attr_writer :product_tags
+
+              sig do
+                params(
+                  presentation_group_values: T::Hash[Symbol, String],
+                  pricing_group_values: T::Hash[Symbol, String],
+                  product_id: String,
+                  product_tags: T::Array[String]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                presentation_group_values: nil,
+                pricing_group_values: nil,
+                # If provided, the specifier will only apply to the product with the specified ID.
+                product_id: nil,
+                # If provided, the specifier will only apply to products with all the specified
+                # tags.
+                product_tags: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    presentation_group_values: T::Hash[Symbol, String],
+                    pricing_group_values: T::Hash[Symbol, String],
+                    product_id: String,
+                    product_tags: T::Array[String]
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
           end
 
           class AddRecurringCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -2575,6 +2900,30 @@ module MetronomeSDK
             sig { params(rollover_fraction: Float).void }
             attr_writer :rollover_fraction
 
+            # List of filters that determine what kind of customer usage draws down a commit
+            # or credit. A customer's usage needs to meet the condition of at least one of the
+            # specifiers to contribute to a commit's or credit's drawdown.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Specifier
+                  ]
+                )
+              )
+            end
+            attr_reader :specifiers
+
+            sig do
+              params(
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Specifier::OrHash
+                  ]
+              ).void
+            end
+            attr_writer :specifiers
+
             sig do
               params(
                 id: String,
@@ -2600,7 +2949,11 @@ module MetronomeSDK
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Proration::OrSymbol,
                 recurrence_frequency:
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::RecurrenceFrequency::OrSymbol,
-                rollover_fraction: Float
+                rollover_fraction: Float,
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Specifier::OrHash
+                  ]
               ).returns(T.attached_class)
             end
             def self.new(
@@ -2641,7 +2994,11 @@ module MetronomeSDK
               # Will be passed down to the individual commits. This controls how much of an
               # individual unexpired commit will roll over upon contract transition. Must be
               # between 0 and 1.
-              rollover_fraction: nil
+              rollover_fraction: nil,
+              # List of filters that determine what kind of customer usage draws down a commit
+              # or credit. A customer's usage needs to meet the condition of at least one of the
+              # specifiers to contribute to a commit's or credit's drawdown.
+              specifiers: nil
             )
             end
 
@@ -2671,7 +3028,11 @@ module MetronomeSDK
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Proration::TaggedSymbol,
                   recurrence_frequency:
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::RecurrenceFrequency::TaggedSymbol,
-                  rollover_fraction: Float
+                  rollover_fraction: Float,
+                  specifiers:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Specifier
+                    ]
                 }
               )
             end
@@ -2970,6 +3331,77 @@ module MetronomeSDK
                 )
               end
               def self.values
+              end
+            end
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Specifier,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :presentation_group_values
+
+              sig do
+                params(presentation_group_values: T::Hash[Symbol, String]).void
+              end
+              attr_writer :presentation_group_values
+
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :pricing_group_values
+
+              sig { params(pricing_group_values: T::Hash[Symbol, String]).void }
+              attr_writer :pricing_group_values
+
+              # If provided, the specifier will only apply to the product with the specified ID.
+              sig { returns(T.nilable(String)) }
+              attr_reader :product_id
+
+              sig { params(product_id: String).void }
+              attr_writer :product_id
+
+              # If provided, the specifier will only apply to products with all the specified
+              # tags.
+              sig { returns(T.nilable(T::Array[String])) }
+              attr_reader :product_tags
+
+              sig { params(product_tags: T::Array[String]).void }
+              attr_writer :product_tags
+
+              sig do
+                params(
+                  presentation_group_values: T::Hash[Symbol, String],
+                  pricing_group_values: T::Hash[Symbol, String],
+                  product_id: String,
+                  product_tags: T::Array[String]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                presentation_group_values: nil,
+                pricing_group_values: nil,
+                # If provided, the specifier will only apply to the product with the specified ID.
+                product_id: nil,
+                # If provided, the specifier will only apply to products with all the specified
+                # tags.
+                product_tags: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    presentation_group_values: T::Hash[Symbol, String],
+                    pricing_group_values: T::Hash[Symbol, String],
+                    product_id: String,
+                    product_tags: T::Array[String]
+                  }
+                )
+              end
+              def to_hash
               end
             end
           end
@@ -3492,6 +3924,31 @@ module MetronomeSDK
             sig { returns(T.nilable(Float)) }
             attr_accessor :rollover_fraction
 
+            # List of filters that determine what kind of customer usage draws down a commit
+            # or credit. A customer's usage needs to meet the condition of at least one of the
+            # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+            # be used together with `applicable_product_ids` or `applicable_product_tags`.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::Specifier
+                  ]
+                )
+              )
+            end
+            attr_reader :specifiers
+
+            sig do
+              params(
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::Specifier::OrHash
+                  ]
+              ).void
+            end
+            attr_writer :specifiers
+
             sig do
               params(
                 id: String,
@@ -3504,7 +3961,11 @@ module MetronomeSDK
                 name: String,
                 netsuite_sales_order_id: T.nilable(String),
                 product_id: String,
-                rollover_fraction: T.nilable(Float)
+                rollover_fraction: T.nilable(Float),
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::Specifier::OrHash
+                  ]
               ).returns(T.attached_class)
             end
             def self.new(
@@ -3520,7 +3981,12 @@ module MetronomeSDK
               name: nil,
               netsuite_sales_order_id: nil,
               product_id: nil,
-              rollover_fraction: nil
+              rollover_fraction: nil,
+              # List of filters that determine what kind of customer usage draws down a commit
+              # or credit. A customer's usage needs to meet the condition of at least one of the
+              # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+              # be used together with `applicable_product_ids` or `applicable_product_tags`.
+              specifiers: nil
             )
             end
 
@@ -3537,7 +4003,11 @@ module MetronomeSDK
                   name: String,
                   netsuite_sales_order_id: T.nilable(String),
                   product_id: String,
-                  rollover_fraction: T.nilable(Float)
+                  rollover_fraction: T.nilable(Float),
+                  specifiers:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::Specifier
+                    ]
                 }
               )
             end
@@ -4055,6 +4525,77 @@ module MetronomeSDK
                 end
                 def to_hash
                 end
+              end
+            end
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::Specifier,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :presentation_group_values
+
+              sig do
+                params(presentation_group_values: T::Hash[Symbol, String]).void
+              end
+              attr_writer :presentation_group_values
+
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :pricing_group_values
+
+              sig { params(pricing_group_values: T::Hash[Symbol, String]).void }
+              attr_writer :pricing_group_values
+
+              # If provided, the specifier will only apply to the product with the specified ID.
+              sig { returns(T.nilable(String)) }
+              attr_reader :product_id
+
+              sig { params(product_id: String).void }
+              attr_writer :product_id
+
+              # If provided, the specifier will only apply to products with all the specified
+              # tags.
+              sig { returns(T.nilable(T::Array[String])) }
+              attr_reader :product_tags
+
+              sig { params(product_tags: T::Array[String]).void }
+              attr_writer :product_tags
+
+              sig do
+                params(
+                  presentation_group_values: T::Hash[Symbol, String],
+                  pricing_group_values: T::Hash[Symbol, String],
+                  product_id: String,
+                  product_tags: T::Array[String]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                presentation_group_values: nil,
+                pricing_group_values: nil,
+                # If provided, the specifier will only apply to the product with the specified ID.
+                product_id: nil,
+                # If provided, the specifier will only apply to products with all the specified
+                # tags.
+                product_tags: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    presentation_group_values: T::Hash[Symbol, String],
+                    pricing_group_values: T::Hash[Symbol, String],
+                    product_id: String,
+                    product_tags: T::Array[String]
+                  }
+                )
+              end
+              def to_hash
               end
             end
           end

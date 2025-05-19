@@ -340,6 +340,18 @@ module MetronomeSDK
           #   @return [Float, nil]
           optional :rollover_fraction, Float
 
+          # @!attribute specifiers
+          #   List of filters that determine what kind of customer usage draws down a commit
+          #   or credit. A customer's usage needs to meet the condition of at least one of the
+          #   specifiers to contribute to a commit's or credit's drawdown. This field cannot
+          #   be used together with `applicable_product_ids` or `applicable_product_tags`.
+          #
+          #   @return [Array<MetronomeSDK::V2::ContractEditParams::AddCommit::Specifier>, nil]
+          optional :specifiers,
+                   -> {
+                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditParams::AddCommit::Specifier]
+                   }
+
           # @!attribute temporary_id
           #   A temporary ID for the commit that can be used to reference the commit for
           #   commit specific overrides.
@@ -347,7 +359,7 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :temporary_id, String
 
-          # @!method initialize(product_id:, type:, access_schedule: nil, amount: nil, applicable_product_ids: nil, applicable_product_tags: nil, custom_fields: nil, description: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, payment_gate_config: nil, priority: nil, rate_type: nil, rollover_fraction: nil, temporary_id: nil)
+          # @!method initialize(product_id:, type:, access_schedule: nil, amount: nil, applicable_product_ids: nil, applicable_product_tags: nil, custom_fields: nil, description: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, payment_gate_config: nil, priority: nil, rate_type: nil, rollover_fraction: nil, specifiers: nil, temporary_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::V2::ContractEditParams::AddCommit} for more details.
           #
@@ -380,6 +392,8 @@ module MetronomeSDK
           #   @param rate_type [Symbol, MetronomeSDK::V2::ContractEditParams::AddCommit::RateType]
           #
           #   @param rollover_fraction [Float] Fraction of unused segments that will be rolled over. Must be between 0 and 1.
+          #
+          #   @param specifiers [Array<MetronomeSDK::V2::ContractEditParams::AddCommit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
           #
           #   @param temporary_id [String] A temporary ID for the commit that can be used to reference the commit for commi
 
@@ -754,6 +768,43 @@ module MetronomeSDK
             # @!method self.values
             #   @return [Array<Symbol>]
           end
+
+          class Specifier < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute presentation_group_values
+            #
+            #   @return [Hash{Symbol=>String}, nil]
+            optional :presentation_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+            # @!attribute pricing_group_values
+            #
+            #   @return [Hash{Symbol=>String}, nil]
+            optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+            # @!attribute product_id
+            #   If provided, the specifier will only apply to the product with the specified ID.
+            #
+            #   @return [String, nil]
+            optional :product_id, String
+
+            # @!attribute product_tags
+            #   If provided, the specifier will only apply to products with all the specified
+            #   tags.
+            #
+            #   @return [Array<String>, nil]
+            optional :product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::V2::ContractEditParams::AddCommit::Specifier} for more details.
+            #
+            #   @param presentation_group_values [Hash{Symbol=>String}]
+            #
+            #   @param pricing_group_values [Hash{Symbol=>String}]
+            #
+            #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
+            #
+            #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
+          end
         end
 
         class AddCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -817,7 +868,19 @@ module MetronomeSDK
           #   @return [Symbol, MetronomeSDK::V2::ContractEditParams::AddCredit::RateType, nil]
           optional :rate_type, enum: -> { MetronomeSDK::V2::ContractEditParams::AddCredit::RateType }
 
-          # @!method initialize(access_schedule:, product_id:, applicable_product_ids: nil, applicable_product_tags: nil, custom_fields: nil, description: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil)
+          # @!attribute specifiers
+          #   List of filters that determine what kind of customer usage draws down a commit
+          #   or credit. A customer's usage needs to meet the condition of at least one of the
+          #   specifiers to contribute to a commit's or credit's drawdown. This field cannot
+          #   be used together with `applicable_product_ids` or `applicable_product_tags`.
+          #
+          #   @return [Array<MetronomeSDK::V2::ContractEditParams::AddCredit::Specifier>, nil]
+          optional :specifiers,
+                   -> {
+                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditParams::AddCredit::Specifier]
+                   }
+
+          # @!method initialize(access_schedule:, product_id:, applicable_product_ids: nil, applicable_product_tags: nil, custom_fields: nil, description: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, specifiers: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::V2::ContractEditParams::AddCredit} for more details.
           #
@@ -840,6 +903,8 @@ module MetronomeSDK
           #   @param priority [Float] If multiple credits are applicable, the one with the lower priority will apply f
           #
           #   @param rate_type [Symbol, MetronomeSDK::V2::ContractEditParams::AddCredit::RateType]
+          #
+          #   @param specifiers [Array<MetronomeSDK::V2::ContractEditParams::AddCredit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
 
           # @see MetronomeSDK::V2::ContractEditParams::AddCredit#access_schedule
           class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
@@ -898,6 +963,43 @@ module MetronomeSDK
 
             # @!method self.values
             #   @return [Array<Symbol>]
+          end
+
+          class Specifier < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute presentation_group_values
+            #
+            #   @return [Hash{Symbol=>String}, nil]
+            optional :presentation_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+            # @!attribute pricing_group_values
+            #
+            #   @return [Hash{Symbol=>String}, nil]
+            optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+            # @!attribute product_id
+            #   If provided, the specifier will only apply to the product with the specified ID.
+            #
+            #   @return [String, nil]
+            optional :product_id, String
+
+            # @!attribute product_tags
+            #   If provided, the specifier will only apply to products with all the specified
+            #   tags.
+            #
+            #   @return [Array<String>, nil]
+            optional :product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::V2::ContractEditParams::AddCredit::Specifier} for more details.
+            #
+            #   @param presentation_group_values [Hash{Symbol=>String}]
+            #
+            #   @param pricing_group_values [Hash{Symbol=>String}]
+            #
+            #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
+            #
+            #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
           end
         end
 
@@ -1846,6 +1948,18 @@ module MetronomeSDK
           #   @return [Float, nil]
           optional :rollover_fraction, Float
 
+          # @!attribute specifiers
+          #   List of filters that determine what kind of customer usage draws down a commit
+          #   or credit. A customer's usage needs to meet the condition of at least one of the
+          #   specifiers to contribute to a commit's or credit's drawdown. This field cannot
+          #   be used together with `applicable_product_ids` or `applicable_product_tags`.
+          #
+          #   @return [Array<MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::Specifier>, nil]
+          optional :specifiers,
+                   -> {
+                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::Specifier]
+                   }
+
           # @!attribute temporary_id
           #   A temporary ID that can be used to reference the recurring commit for commit
           #   specific overrides.
@@ -1853,7 +1967,7 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :temporary_id, String
 
-          # @!method initialize(access_amount:, commit_duration:, priority:, product_id:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, ending_before: nil, invoice_amount: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, rate_type: nil, recurrence_frequency: nil, rollover_fraction: nil, temporary_id: nil)
+          # @!method initialize(access_amount:, commit_duration:, priority:, product_id:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, ending_before: nil, invoice_amount: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, rate_type: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, temporary_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::V2::ContractEditParams::AddRecurringCommit} for more details.
           #
@@ -1888,6 +2002,8 @@ module MetronomeSDK
           #   @param recurrence_frequency [Symbol, MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided: -
           #
           #   @param rollover_fraction [Float] Will be passed down to the individual commits. This controls how much of an indi
+          #
+          #   @param specifiers [Array<MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
           #
           #   @param temporary_id [String] A temporary ID that can be used to reference the recurring commit for commit spe
 
@@ -2020,6 +2136,44 @@ module MetronomeSDK
             # @!method self.values
             #   @return [Array<Symbol>]
           end
+
+          class Specifier < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute presentation_group_values
+            #
+            #   @return [Hash{Symbol=>String}, nil]
+            optional :presentation_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+            # @!attribute pricing_group_values
+            #
+            #   @return [Hash{Symbol=>String}, nil]
+            optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+            # @!attribute product_id
+            #   If provided, the specifier will only apply to the product with the specified ID.
+            #
+            #   @return [String, nil]
+            optional :product_id, String
+
+            # @!attribute product_tags
+            #   If provided, the specifier will only apply to products with all the specified
+            #   tags.
+            #
+            #   @return [Array<String>, nil]
+            optional :product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::Specifier} for more
+            #   details.
+            #
+            #   @param presentation_group_values [Hash{Symbol=>String}]
+            #
+            #   @param pricing_group_values [Hash{Symbol=>String}]
+            #
+            #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
+            #
+            #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
+          end
         end
 
         class AddRecurringCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -2129,6 +2283,18 @@ module MetronomeSDK
           #   @return [Float, nil]
           optional :rollover_fraction, Float
 
+          # @!attribute specifiers
+          #   List of filters that determine what kind of customer usage draws down a commit
+          #   or credit. A customer's usage needs to meet the condition of at least one of the
+          #   specifiers to contribute to a commit's or credit's drawdown. This field cannot
+          #   be used together with `applicable_product_ids` or `applicable_product_tags`.
+          #
+          #   @return [Array<MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::Specifier>, nil]
+          optional :specifiers,
+                   -> {
+                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::Specifier]
+                   }
+
           # @!attribute temporary_id
           #   A temporary ID that can be used to reference the recurring commit for commit
           #   specific overrides.
@@ -2136,7 +2302,7 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :temporary_id, String
 
-          # @!method initialize(access_amount:, commit_duration:, priority:, product_id:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, ending_before: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, rate_type: nil, recurrence_frequency: nil, rollover_fraction: nil, temporary_id: nil)
+          # @!method initialize(access_amount:, commit_duration:, priority:, product_id:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, ending_before: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, rate_type: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, temporary_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::V2::ContractEditParams::AddRecurringCredit} for more details.
           #
@@ -2169,6 +2335,8 @@ module MetronomeSDK
           #   @param recurrence_frequency [Symbol, MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided: -
           #
           #   @param rollover_fraction [Float] Will be passed down to the individual commits. This controls how much of an indi
+          #
+          #   @param specifiers [Array<MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
           #
           #   @param temporary_id [String] A temporary ID that can be used to reference the recurring commit for commit spe
 
@@ -2275,6 +2443,44 @@ module MetronomeSDK
 
             # @!method self.values
             #   @return [Array<Symbol>]
+          end
+
+          class Specifier < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute presentation_group_values
+            #
+            #   @return [Hash{Symbol=>String}, nil]
+            optional :presentation_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+            # @!attribute pricing_group_values
+            #
+            #   @return [Hash{Symbol=>String}, nil]
+            optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+            # @!attribute product_id
+            #   If provided, the specifier will only apply to the product with the specified ID.
+            #
+            #   @return [String, nil]
+            optional :product_id, String
+
+            # @!attribute product_tags
+            #   If provided, the specifier will only apply to products with all the specified
+            #   tags.
+            #
+            #   @return [Array<String>, nil]
+            optional :product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::Specifier} for more
+            #   details.
+            #
+            #   @param presentation_group_values [Hash{Symbol=>String}]
+            #
+            #   @param pricing_group_values [Hash{Symbol=>String}]
+            #
+            #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
+            #
+            #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
           end
         end
 

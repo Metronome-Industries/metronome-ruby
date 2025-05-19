@@ -17,6 +17,7 @@ module MetronomeSDK
             netsuite_sales_order_id: String,
             rate_type: MetronomeSDK::Models::V1::Customers::CreditCreateParams::rate_type,
             salesforce_opportunity_id: String,
+            specifiers: ::Array[MetronomeSDK::V1::Customers::CreditCreateParams::Specifier],
             uniqueness_key: String
           }
           & MetronomeSDK::Internal::Type::request_parameters
@@ -71,6 +72,12 @@ module MetronomeSDK
 
           def salesforce_opportunity_id=: (String) -> String
 
+          attr_reader specifiers: ::Array[MetronomeSDK::V1::Customers::CreditCreateParams::Specifier]?
+
+          def specifiers=: (
+            ::Array[MetronomeSDK::V1::Customers::CreditCreateParams::Specifier]
+          ) -> ::Array[MetronomeSDK::V1::Customers::CreditCreateParams::Specifier]
+
           attr_reader uniqueness_key: String?
 
           def uniqueness_key=: (String) -> String
@@ -89,6 +96,7 @@ module MetronomeSDK
             ?netsuite_sales_order_id: String,
             ?rate_type: MetronomeSDK::Models::V1::Customers::CreditCreateParams::rate_type,
             ?salesforce_opportunity_id: String,
+            ?specifiers: ::Array[MetronomeSDK::V1::Customers::CreditCreateParams::Specifier],
             ?uniqueness_key: String,
             ?request_options: MetronomeSDK::request_opts
           ) -> void
@@ -138,6 +146,43 @@ module MetronomeSDK
             LIST_RATE: :LIST_RATE
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::CreditCreateParams::rate_type]
+          end
+
+          type specifier =
+            {
+              presentation_group_values: ::Hash[Symbol, String],
+              pricing_group_values: ::Hash[Symbol, String],
+              product_id: String,
+              product_tags: ::Array[String]
+            }
+
+          class Specifier < MetronomeSDK::Internal::Type::BaseModel
+            attr_reader presentation_group_values: ::Hash[Symbol, String]?
+
+            def presentation_group_values=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+            def pricing_group_values=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader product_id: String?
+
+            def product_id=: (String) -> String
+
+            attr_reader product_tags: ::Array[String]?
+
+            def product_tags=: (::Array[String]) -> ::Array[String]
+
+            def initialize: (
+              ?presentation_group_values: ::Hash[Symbol, String],
+              ?pricing_group_values: ::Hash[Symbol, String],
+              ?product_id: String,
+              ?product_tags: ::Array[String]
+            ) -> void
           end
         end
       end
