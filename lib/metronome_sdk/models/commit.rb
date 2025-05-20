@@ -823,26 +823,6 @@ module MetronomeSDK
 
         # @!method self.variants
         #   @return [Array(MetronomeSDK::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry, MetronomeSDK::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Commit::Ledger::PrepaidCommitRolloverLedgerEntry, MetronomeSDK::Commit::Ledger::PrepaidCommitExpirationLedgerEntry, MetronomeSDK::Commit::Ledger::PrepaidCommitCanceledLedgerEntry, MetronomeSDK::Commit::Ledger::PrepaidCommitCreditedLedgerEntry, MetronomeSDK::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry, MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Commit::Ledger::PostpaidCommitRolloverLedgerEntry, MetronomeSDK::Commit::Ledger::PostpaidCommitTrueupLedgerEntry, MetronomeSDK::Commit::Ledger::PrepaidCommitManualLedgerEntry, MetronomeSDK::Commit::Ledger::PostpaidCommitManualLedgerEntry, MetronomeSDK::Commit::Ledger::PostpaidCommitExpirationLedgerEntry)]
-
-        define_sorbet_constant!(:Variants) do
-          T.type_alias do
-            T.any(
-              MetronomeSDK::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry,
-              MetronomeSDK::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry,
-              MetronomeSDK::Commit::Ledger::PrepaidCommitRolloverLedgerEntry,
-              MetronomeSDK::Commit::Ledger::PrepaidCommitExpirationLedgerEntry,
-              MetronomeSDK::Commit::Ledger::PrepaidCommitCanceledLedgerEntry,
-              MetronomeSDK::Commit::Ledger::PrepaidCommitCreditedLedgerEntry,
-              MetronomeSDK::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry,
-              MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry,
-              MetronomeSDK::Commit::Ledger::PostpaidCommitRolloverLedgerEntry,
-              MetronomeSDK::Commit::Ledger::PostpaidCommitTrueupLedgerEntry,
-              MetronomeSDK::Commit::Ledger::PrepaidCommitManualLedgerEntry,
-              MetronomeSDK::Commit::Ledger::PostpaidCommitManualLedgerEntry,
-              MetronomeSDK::Commit::Ledger::PostpaidCommitExpirationLedgerEntry
-            )
-          end
-        end
       end
 
       # @see MetronomeSDK::Commit#rate_type

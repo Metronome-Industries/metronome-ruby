@@ -218,15 +218,6 @@ module MetronomeSDK
 
             # @!method self.variants
             #   @return [Array(MetronomeSDK::V1::RolloverAmountMaxPercentage, MetronomeSDK::V1::RolloverAmountMaxAmount)]
-
-            define_sorbet_constant!(:Variants) do
-              T.type_alias do
-                T.any(
-                  MetronomeSDK::V1::RolloverAmountMaxPercentage,
-                  MetronomeSDK::V1::RolloverAmountMaxAmount
-                )
-              end
-            end
           end
         end
       end
