@@ -82,20 +82,7 @@ module MetronomeSDK
       # A list of ordered events that impact the balance of a credit. For example, an
       # invoice deduction or an expiration.
       sig do
-        returns(
-          T.nilable(
-            T::Array[
-              T.any(
-                MetronomeSDK::Credit::Ledger::CreditSegmentStartLedgerEntry,
-                MetronomeSDK::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry,
-                MetronomeSDK::Credit::Ledger::CreditExpirationLedgerEntry,
-                MetronomeSDK::Credit::Ledger::CreditCanceledLedgerEntry,
-                MetronomeSDK::Credit::Ledger::CreditCreditedLedgerEntry,
-                MetronomeSDK::Credit::Ledger::CreditManualLedgerEntry
-              )
-            ]
-          )
-        )
+        returns(T.nilable(T::Array[MetronomeSDK::Credit::Ledger::Variants]))
       end
       attr_reader :ledger
 
@@ -265,17 +252,7 @@ module MetronomeSDK
             contract: MetronomeSDK::Credit::Contract,
             custom_fields: T::Hash[Symbol, String],
             description: String,
-            ledger:
-              T::Array[
-                T.any(
-                  MetronomeSDK::Credit::Ledger::CreditSegmentStartLedgerEntry,
-                  MetronomeSDK::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry,
-                  MetronomeSDK::Credit::Ledger::CreditExpirationLedgerEntry,
-                  MetronomeSDK::Credit::Ledger::CreditCanceledLedgerEntry,
-                  MetronomeSDK::Credit::Ledger::CreditCreditedLedgerEntry,
-                  MetronomeSDK::Credit::Ledger::CreditManualLedgerEntry
-                )
-              ],
+            ledger: T::Array[MetronomeSDK::Credit::Ledger::Variants],
             name: String,
             netsuite_sales_order_id: String,
             priority: Float,
