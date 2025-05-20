@@ -25,6 +25,7 @@ class MetronomeSDK::Test::SorbetRuntimeSupportTest < Minitest::Test
     err = MetronomeSDK::Internal::Util::SorbetRuntimeSupport::MissingSorbetRuntimeError
 
     assert_raises(err) { MetronomeSDK::Internal::AnyHash }
+    assert_raises(err) { MetronomeSDK::Internal::FileInput }
     assert_raises(err) { MetronomeSDK::Internal::Type::Converter::Input }
     assert_raises(err) { MetronomeSDK::Internal::Type::Converter::CoerceState }
     assert_raises(err) { MetronomeSDK::Internal::Type::Converter::DumpState }

@@ -2,6 +2,8 @@ module MetronomeSDK
   module Internal
     extend MetronomeSDK::Internal::Util::SorbetRuntimeSupport
 
+    type file_input = Pathname | StringIO | IO | String | MetronomeSDK::FilePart
+
     OMIT: Object
   end
 end
