@@ -13,7 +13,11 @@ module MetronomeSDK
           end
 
         sig do
-          returns(T::Array[T.any(MetronomeSDK::Commit, MetronomeSDK::Credit)])
+          returns(
+            T::Array[
+              MetronomeSDK::Models::V1::ContractListBalancesResponse::Data::Variants
+            ]
+          )
         end
         attr_accessor :data
 
@@ -38,7 +42,10 @@ module MetronomeSDK
         sig do
           override.returns(
             {
-              data: T::Array[T.any(MetronomeSDK::Commit, MetronomeSDK::Credit)],
+              data:
+                T::Array[
+                  MetronomeSDK::Models::V1::ContractListBalancesResponse::Data::Variants
+                ],
               next_page: T.nilable(String)
             }
           )

@@ -118,27 +118,7 @@ module MetronomeSDK
       # A list of ordered events that impact the balance of a commit. For example, an
       # invoice deduction or a rollover.
       sig do
-        returns(
-          T.nilable(
-            T::Array[
-              T.any(
-                MetronomeSDK::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry,
-                MetronomeSDK::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry,
-                MetronomeSDK::Commit::Ledger::PrepaidCommitRolloverLedgerEntry,
-                MetronomeSDK::Commit::Ledger::PrepaidCommitExpirationLedgerEntry,
-                MetronomeSDK::Commit::Ledger::PrepaidCommitCanceledLedgerEntry,
-                MetronomeSDK::Commit::Ledger::PrepaidCommitCreditedLedgerEntry,
-                MetronomeSDK::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry,
-                MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry,
-                MetronomeSDK::Commit::Ledger::PostpaidCommitRolloverLedgerEntry,
-                MetronomeSDK::Commit::Ledger::PostpaidCommitTrueupLedgerEntry,
-                MetronomeSDK::Commit::Ledger::PrepaidCommitManualLedgerEntry,
-                MetronomeSDK::Commit::Ledger::PostpaidCommitManualLedgerEntry,
-                MetronomeSDK::Commit::Ledger::PostpaidCommitExpirationLedgerEntry
-              )
-            ]
-          )
-        )
+        returns(T.nilable(T::Array[MetronomeSDK::Commit::Ledger::Variants]))
       end
       attr_reader :ledger
 
@@ -360,24 +340,7 @@ module MetronomeSDK
             description: String,
             invoice_contract: MetronomeSDK::Commit::InvoiceContract,
             invoice_schedule: MetronomeSDK::SchedulePointInTime,
-            ledger:
-              T::Array[
-                T.any(
-                  MetronomeSDK::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry,
-                  MetronomeSDK::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry,
-                  MetronomeSDK::Commit::Ledger::PrepaidCommitRolloverLedgerEntry,
-                  MetronomeSDK::Commit::Ledger::PrepaidCommitExpirationLedgerEntry,
-                  MetronomeSDK::Commit::Ledger::PrepaidCommitCanceledLedgerEntry,
-                  MetronomeSDK::Commit::Ledger::PrepaidCommitCreditedLedgerEntry,
-                  MetronomeSDK::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry,
-                  MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry,
-                  MetronomeSDK::Commit::Ledger::PostpaidCommitRolloverLedgerEntry,
-                  MetronomeSDK::Commit::Ledger::PostpaidCommitTrueupLedgerEntry,
-                  MetronomeSDK::Commit::Ledger::PrepaidCommitManualLedgerEntry,
-                  MetronomeSDK::Commit::Ledger::PostpaidCommitManualLedgerEntry,
-                  MetronomeSDK::Commit::Ledger::PostpaidCommitExpirationLedgerEntry
-                )
-              ],
+            ledger: T::Array[MetronomeSDK::Commit::Ledger::Variants],
             name: String,
             netsuite_sales_order_id: String,
             priority: Float,
