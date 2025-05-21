@@ -917,13 +917,42 @@ module MetronomeSDK
               sig { params(name: String).void }
               attr_writer :name
 
+              # List of filters that determine what kind of customer usage draws down a commit
+              # or credit. A customer's usage needs to meet the condition of at least one of the
+              # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+              # be used together with `applicable_product_ids` or `applicable_product_tags`.
+              sig do
+                returns(
+                  T.nilable(
+                    T::Array[
+                      MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration::Commit::Specifier
+                    ]
+                  )
+                )
+              end
+              attr_reader :specifiers
+
+              sig do
+                params(
+                  specifiers:
+                    T::Array[
+                      MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration::Commit::Specifier::OrHash
+                    ]
+                ).void
+              end
+              attr_writer :specifiers
+
               sig do
                 params(
                   product_id: String,
                   applicable_product_ids: T::Array[String],
                   applicable_product_tags: T::Array[String],
                   description: String,
-                  name: String
+                  name: String,
+                  specifiers:
+                    T::Array[
+                      MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration::Commit::Specifier::OrHash
+                    ]
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -940,7 +969,12 @@ module MetronomeSDK
                 description: nil,
                 # Specify the name of the line item for the threshold charge. If left blank, it
                 # will default to the commit product name.
-                name: nil
+                name: nil,
+                # List of filters that determine what kind of customer usage draws down a commit
+                # or credit. A customer's usage needs to meet the condition of at least one of the
+                # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+                # be used together with `applicable_product_ids` or `applicable_product_tags`.
+                specifiers: nil
               )
               end
 
@@ -951,11 +985,90 @@ module MetronomeSDK
                     applicable_product_ids: T::Array[String],
                     applicable_product_tags: T::Array[String],
                     description: String,
-                    name: String
+                    name: String,
+                    specifiers:
+                      T::Array[
+                        MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration::Commit::Specifier
+                      ]
                   }
                 )
               end
               def to_hash
+              end
+
+              class Specifier < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration::Commit::Specifier,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(T.nilable(T::Hash[Symbol, String])) }
+                attr_reader :presentation_group_values
+
+                sig do
+                  params(
+                    presentation_group_values: T::Hash[Symbol, String]
+                  ).void
+                end
+                attr_writer :presentation_group_values
+
+                sig { returns(T.nilable(T::Hash[Symbol, String])) }
+                attr_reader :pricing_group_values
+
+                sig do
+                  params(pricing_group_values: T::Hash[Symbol, String]).void
+                end
+                attr_writer :pricing_group_values
+
+                # If provided, the specifier will only apply to the product with the specified ID.
+                sig { returns(T.nilable(String)) }
+                attr_reader :product_id
+
+                sig { params(product_id: String).void }
+                attr_writer :product_id
+
+                # If provided, the specifier will only apply to products with all the specified
+                # tags.
+                sig { returns(T.nilable(T::Array[String])) }
+                attr_reader :product_tags
+
+                sig { params(product_tags: T::Array[String]).void }
+                attr_writer :product_tags
+
+                sig do
+                  params(
+                    presentation_group_values: T::Hash[Symbol, String],
+                    pricing_group_values: T::Hash[Symbol, String],
+                    product_id: String,
+                    product_tags: T::Array[String]
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  presentation_group_values: nil,
+                  pricing_group_values: nil,
+                  # If provided, the specifier will only apply to the product with the specified ID.
+                  product_id: nil,
+                  # If provided, the specifier will only apply to products with all the specified
+                  # tags.
+                  product_tags: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      presentation_group_values: T::Hash[Symbol, String],
+                      pricing_group_values: T::Hash[Symbol, String],
+                      product_id: String,
+                      product_tags: T::Array[String]
+                    }
+                  )
+                end
+                def to_hash
+                end
               end
             end
 

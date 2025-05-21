@@ -365,7 +365,19 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :name, String
 
-          # @!method initialize(product_id:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, name: nil)
+          # @!attribute specifiers
+          #   List of filters that determine what kind of customer usage draws down a commit
+          #   or credit. A customer's usage needs to meet the condition of at least one of the
+          #   specifiers to contribute to a commit's or credit's drawdown. This field cannot
+          #   be used together with `applicable_product_ids` or `applicable_product_tags`.
+          #
+          #   @return [Array<MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::Commit::Specifier>, nil]
+          optional :specifiers,
+                   -> {
+                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::Commit::Specifier]
+                   }
+
+          # @!method initialize(product_id:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, name: nil, specifiers: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::Commit}
           #   for more details.
@@ -379,6 +391,46 @@ module MetronomeSDK
           #   @param description [String]
           #
           #   @param name [String] Specify the name of the line item for the threshold charge. If left blank, it wi
+          #
+          #   @param specifiers [Array<MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::Commit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
+
+          class Specifier < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute presentation_group_values
+            #
+            #   @return [Hash{Symbol=>String}, nil]
+            optional :presentation_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+            # @!attribute pricing_group_values
+            #
+            #   @return [Hash{Symbol=>String}, nil]
+            optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+            # @!attribute product_id
+            #   If provided, the specifier will only apply to the product with the specified ID.
+            #
+            #   @return [String, nil]
+            optional :product_id, String
+
+            # @!attribute product_tags
+            #   If provided, the specifier will only apply to products with all the specified
+            #   tags.
+            #
+            #   @return [Array<String>, nil]
+            optional :product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::Commit::Specifier}
+            #   for more details.
+            #
+            #   @param presentation_group_values [Hash{Symbol=>String}]
+            #
+            #   @param pricing_group_values [Hash{Symbol=>String}]
+            #
+            #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
+            #
+            #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
+          end
         end
 
         # @see MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration#payment_gate_config
@@ -595,7 +647,7 @@ module MetronomeSDK
         #   The frequency at which the recurring commits will be created. If not provided: -
         #   The commits will be created on the usage invoice frequency. If provided: - The
         #   period defined in the duration will correspond to this frequency. - Commits will
-        #   be created aligned with the recurring commit's start_date rather than the usage
+        #   be created aligned with the recurring commit's starting_at rather than the usage
         #   invoice dates.
         #
         #   @return [Symbol, MetronomeSDK::ContractWithoutAmendments::RecurringCommit::RecurrenceFrequency, nil]
@@ -803,7 +855,7 @@ module MetronomeSDK
         # The frequency at which the recurring commits will be created. If not provided: -
         # The commits will be created on the usage invoice frequency. If provided: - The
         # period defined in the duration will correspond to this frequency. - Commits will
-        # be created aligned with the recurring commit's start_date rather than the usage
+        # be created aligned with the recurring commit's starting_at rather than the usage
         # invoice dates.
         #
         # @see MetronomeSDK::ContractWithoutAmendments::RecurringCommit#recurrence_frequency
@@ -954,7 +1006,7 @@ module MetronomeSDK
         #   The frequency at which the recurring commits will be created. If not provided: -
         #   The commits will be created on the usage invoice frequency. If provided: - The
         #   period defined in the duration will correspond to this frequency. - Commits will
-        #   be created aligned with the recurring commit's start_date rather than the usage
+        #   be created aligned with the recurring commit's starting_at rather than the usage
         #   invoice dates.
         #
         #   @return [Symbol, MetronomeSDK::ContractWithoutAmendments::RecurringCredit::RecurrenceFrequency, nil]
@@ -1135,7 +1187,7 @@ module MetronomeSDK
         # The frequency at which the recurring commits will be created. If not provided: -
         # The commits will be created on the usage invoice frequency. If provided: - The
         # period defined in the duration will correspond to this frequency. - Commits will
-        # be created aligned with the recurring commit's start_date rather than the usage
+        # be created aligned with the recurring commit's starting_at rather than the usage
         # invoice dates.
         #
         # @see MetronomeSDK::ContractWithoutAmendments::RecurringCredit#recurrence_frequency

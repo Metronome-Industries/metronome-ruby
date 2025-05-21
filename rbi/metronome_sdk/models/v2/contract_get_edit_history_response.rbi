@@ -2138,7 +2138,7 @@ module MetronomeSDK
             # The frequency at which the recurring commits will be created. If not provided: -
             # The commits will be created on the usage invoice frequency. If provided: - The
             # period defined in the duration will correspond to this frequency. - Commits will
-            # be created aligned with the recurring commit's start_date rather than the usage
+            # be created aligned with the recurring commit's starting_at rather than the usage
             # invoice dates.
             sig do
               returns(
@@ -2258,7 +2258,7 @@ module MetronomeSDK
               # The frequency at which the recurring commits will be created. If not provided: -
               # The commits will be created on the usage invoice frequency. If provided: - The
               # period defined in the duration will correspond to this frequency. - Commits will
-              # be created aligned with the recurring commit's start_date rather than the usage
+              # be created aligned with the recurring commit's starting_at rather than the usage
               # invoice dates.
               recurrence_frequency: nil,
               # Will be passed down to the individual commits. This controls how much of an
@@ -2598,7 +2598,7 @@ module MetronomeSDK
             # The frequency at which the recurring commits will be created. If not provided: -
             # The commits will be created on the usage invoice frequency. If provided: - The
             # period defined in the duration will correspond to this frequency. - Commits will
-            # be created aligned with the recurring commit's start_date rather than the usage
+            # be created aligned with the recurring commit's starting_at rather than the usage
             # invoice dates.
             module RecurrenceFrequency
               extend MetronomeSDK::Internal::Type::Enum
@@ -2872,7 +2872,7 @@ module MetronomeSDK
             # The frequency at which the recurring commits will be created. If not provided: -
             # The commits will be created on the usage invoice frequency. If provided: - The
             # period defined in the duration will correspond to this frequency. - Commits will
-            # be created aligned with the recurring commit's start_date rather than the usage
+            # be created aligned with the recurring commit's starting_at rather than the usage
             # invoice dates.
             sig do
               returns(
@@ -2988,7 +2988,7 @@ module MetronomeSDK
               # The frequency at which the recurring commits will be created. If not provided: -
               # The commits will be created on the usage invoice frequency. If provided: - The
               # period defined in the duration will correspond to this frequency. - Commits will
-              # be created aligned with the recurring commit's start_date rather than the usage
+              # be created aligned with the recurring commit's starting_at rather than the usage
               # invoice dates.
               recurrence_frequency: nil,
               # Will be passed down to the individual commits. This controls how much of an
@@ -3288,7 +3288,7 @@ module MetronomeSDK
             # The frequency at which the recurring commits will be created. If not provided: -
             # The commits will be created on the usage invoice frequency. If provided: - The
             # period defined in the duration will correspond to this frequency. - Commits will
-            # be created aligned with the recurring commit's start_date rather than the usage
+            # be created aligned with the recurring commit's starting_at rather than the usage
             # invoice dates.
             module RecurrenceFrequency
               extend MetronomeSDK::Internal::Type::Enum
