@@ -921,7 +921,7 @@ module MetronomeSDK
             #   The frequency at which the recurring commits will be created. If not provided: -
             #   The commits will be created on the usage invoice frequency. If provided: - The
             #   period defined in the duration will correspond to this frequency. - Commits will
-            #   be created aligned with the recurring commit's start_date rather than the usage
+            #   be created aligned with the recurring commit's starting_at rather than the usage
             #   invoice dates.
             #
             #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::RecurrenceFrequency, nil]
@@ -1128,7 +1128,7 @@ module MetronomeSDK
             # The frequency at which the recurring commits will be created. If not provided: -
             # The commits will be created on the usage invoice frequency. If provided: - The
             # period defined in the duration will correspond to this frequency. - Commits will
-            # be created aligned with the recurring commit's start_date rather than the usage
+            # be created aligned with the recurring commit's starting_at rather than the usage
             # invoice dates.
             #
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit#recurrence_frequency
@@ -1282,7 +1282,7 @@ module MetronomeSDK
             #   The frequency at which the recurring commits will be created. If not provided: -
             #   The commits will be created on the usage invoice frequency. If provided: - The
             #   period defined in the duration will correspond to this frequency. - Commits will
-            #   be created aligned with the recurring commit's start_date rather than the usage
+            #   be created aligned with the recurring commit's starting_at rather than the usage
             #   invoice dates.
             #
             #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::RecurrenceFrequency, nil]
@@ -1462,7 +1462,7 @@ module MetronomeSDK
             # The frequency at which the recurring commits will be created. If not provided: -
             # The commits will be created on the usage invoice frequency. If provided: - The
             # period defined in the duration will correspond to this frequency. - Commits will
-            # be created aligned with the recurring commit's start_date rather than the usage
+            # be created aligned with the recurring commit's starting_at rather than the usage
             # invoice dates.
             #
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit#recurrence_frequency
