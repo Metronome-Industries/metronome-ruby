@@ -43,6 +43,15 @@ module MetronomeSDK
           ?starting_on: Time,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
+
+        def to_hash: -> {
+          next_page: String,
+          credit_type_ids: ::Array[String],
+          customer_ids: ::Array[String],
+          ending_before: Time,
+          starting_on: Time,
+          request_options: MetronomeSDK::RequestOptions
+        }
       end
     end
   end

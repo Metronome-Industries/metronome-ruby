@@ -40,6 +40,16 @@ module MetronomeSDK
             ?custom_fields: ::Hash[Symbol, String]
           ) -> void
 
+          def to_hash: -> {
+            id: String,
+            current: MetronomeSDK::V1::Contracts::ProductListItemState,
+            initial: MetronomeSDK::V1::Contracts::ProductListItemState,
+            type: MetronomeSDK::Models::V1::Contracts::ProductListResponse::type_,
+            updates: ::Array[MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update],
+            archived_at: Time?,
+            custom_fields: ::Hash[Symbol, String]
+          }
+
           type type_ =
             :USAGE | :SUBSCRIPTION | :COMPOSITE | :FIXED | :PRO_SERVICE
 
@@ -150,6 +160,25 @@ module MetronomeSDK
               ?starting_at: Time,
               ?tags: ::Array[String]
             ) -> void
+
+            def to_hash: -> {
+              created_at: Time,
+              created_by: String,
+              billable_metric_id: String,
+              composite_product_ids: ::Array[String],
+              composite_tags: ::Array[String],
+              exclude_free_usage: bool,
+              is_refundable: bool,
+              name: String,
+              netsuite_internal_item_id: String,
+              netsuite_overage_item_id: String,
+              presentation_group_key: ::Array[String],
+              pricing_group_key: ::Array[String],
+              quantity_conversion: MetronomeSDK::V1::Contracts::QuantityConversion?,
+              quantity_rounding: MetronomeSDK::V1::Contracts::QuantityRounding?,
+              starting_at: Time,
+              tags: ::Array[String]
+            }
           end
         end
       end

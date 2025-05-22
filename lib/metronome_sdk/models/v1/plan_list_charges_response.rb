@@ -17,7 +17,7 @@ module MetronomeSDK
 
         # @!attribute credit_type
         #
-        #   @return [MetronomeSDK::CreditTypeData]
+        #   @return [MetronomeSDK::Models::CreditTypeData]
         required :credit_type, -> { MetronomeSDK::CreditTypeData }
 
         # @!attribute custom_fields
@@ -79,7 +79,7 @@ module MetronomeSDK
         #
         #   @param charge_type [Symbol, MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType]
         #
-        #   @param credit_type [MetronomeSDK::CreditTypeData]
+        #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
         #
         #   @param custom_fields [Hash{Symbol=>String}]
         #

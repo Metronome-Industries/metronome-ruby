@@ -96,6 +96,25 @@ module MetronomeSDK
             ?tags: ::Array[String],
             ?request_options: MetronomeSDK::request_opts
           ) -> void
+
+          def to_hash: -> {
+            product_id: String,
+            starting_at: Time,
+            billable_metric_id: String,
+            composite_product_ids: ::Array[String],
+            composite_tags: ::Array[String],
+            exclude_free_usage: bool,
+            is_refundable: bool,
+            name: String,
+            netsuite_internal_item_id: String,
+            netsuite_overage_item_id: String,
+            presentation_group_key: ::Array[String],
+            pricing_group_key: ::Array[String],
+            quantity_conversion: MetronomeSDK::V1::Contracts::QuantityConversion?,
+            quantity_rounding: MetronomeSDK::V1::Contracts::QuantityRounding?,
+            tags: ::Array[String],
+            request_options: MetronomeSDK::RequestOptions
+          }
         end
       end
     end

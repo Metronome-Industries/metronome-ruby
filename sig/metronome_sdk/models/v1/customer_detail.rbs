@@ -49,29 +49,48 @@ module MetronomeSDK
           ?current_billable_status: MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus
         ) -> void
 
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          custom_fields: ::Hash[Symbol, String],
+          customer_config: MetronomeSDK::V1::CustomerDetail::CustomerConfig,
+          external_id: String,
+          ingest_aliases: ::Array[String],
+          name: String,
+          archived_at: Time?,
+          current_billable_status: MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus
+        }
+
         type customer_config = { salesforce_account_id: String? }
 
         class CustomerConfig < MetronomeSDK::Internal::Type::BaseModel
           attr_accessor salesforce_account_id: String?
 
           def initialize: (salesforce_account_id: String?) -> void
+
+          def to_hash: -> { salesforce_account_id: String? }
         end
 
         type current_billable_status =
           {
-            value: MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::value,
+            value: MetronomeSDK::Models::V1::CustomerDetail::CurrentBillableStatus::value,
             effective_at: Time?
           }
 
         class CurrentBillableStatus < MetronomeSDK::Internal::Type::BaseModel
-          attr_accessor value: MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::value
+          attr_accessor value: MetronomeSDK::Models::V1::CustomerDetail::CurrentBillableStatus::value
 
           attr_accessor effective_at: Time?
 
           def initialize: (
-            value: MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::value,
+            value: MetronomeSDK::Models::V1::CustomerDetail::CurrentBillableStatus::value,
             ?effective_at: Time?
           ) -> void
+
+          def to_hash: -> {
+            value: MetronomeSDK::Models::V1::CustomerDetail::CurrentBillableStatus::value,
+            effective_at: Time?
+          }
 
           type value = :billable | :unbillable
 
@@ -81,7 +100,7 @@ module MetronomeSDK
             BILLABLE: :billable
             UNBILLABLE: :unbillable
 
-            def self?.values: -> ::Array[MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::value]
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomerDetail::CurrentBillableStatus::value]
           end
         end
       end

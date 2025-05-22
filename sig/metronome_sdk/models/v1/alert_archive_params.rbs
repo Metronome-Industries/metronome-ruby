@@ -20,6 +20,12 @@ module MetronomeSDK
           ?release_uniqueness_key: bool,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
+
+        def to_hash: -> {
+          id: String,
+          release_uniqueness_key: bool,
+          request_options: MetronomeSDK::RequestOptions
+        }
       end
     end
   end

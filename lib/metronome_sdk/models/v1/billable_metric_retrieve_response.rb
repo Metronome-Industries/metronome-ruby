@@ -57,7 +57,7 @@ module MetronomeSDK
           # @!attribute event_type_filter
           #   An optional filtering rule to match the 'event_type' property of an event.
           #
-          #   @return [MetronomeSDK::EventTypeFilter, nil]
+          #   @return [MetronomeSDK::Models::EventTypeFilter, nil]
           optional :event_type_filter, -> { MetronomeSDK::EventTypeFilter }
 
           # @!attribute group_keys
@@ -73,7 +73,7 @@ module MetronomeSDK
           #   rule on an event property. All rules must pass for the event to match the
           #   billable metric.
           #
-          #   @return [Array<MetronomeSDK::PropertyFilter>, nil]
+          #   @return [Array<MetronomeSDK::Models::PropertyFilter>, nil]
           optional :property_filters,
                    -> {
                      MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::PropertyFilter]
@@ -102,11 +102,11 @@ module MetronomeSDK
           #
           #   @param custom_fields [Hash{Symbol=>String}]
           #
-          #   @param event_type_filter [MetronomeSDK::EventTypeFilter] An optional filtering rule to match the 'event_type' property of an event.
+          #   @param event_type_filter [MetronomeSDK::Models::EventTypeFilter] An optional filtering rule to match the 'event_type' property of an event.
           #
           #   @param group_keys [Array<Array<String>>] Property names that are used to group usage costs on an invoice. Each entry repr
           #
-          #   @param property_filters [Array<MetronomeSDK::PropertyFilter>] A list of filters to match events to this billable metric. Each filter defines a
+          #   @param property_filters [Array<MetronomeSDK::Models::PropertyFilter>] A list of filters to match events to this billable metric. Each filter defines a
           #
           #   @param sql [String] The SQL query associated with the billable metric
 

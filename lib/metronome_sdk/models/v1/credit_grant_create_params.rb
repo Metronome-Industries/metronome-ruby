@@ -23,7 +23,7 @@ module MetronomeSDK
         # @!attribute grant_amount
         #   the amount of credits granted
         #
-        #   @return [MetronomeSDK::V1::CreditGrantCreateParams::GrantAmount]
+        #   @return [MetronomeSDK::Models::V1::CreditGrantCreateParams::GrantAmount]
         required :grant_amount, -> { MetronomeSDK::V1::CreditGrantCreateParams::GrantAmount }
 
         # @!attribute name
@@ -35,7 +35,7 @@ module MetronomeSDK
         # @!attribute paid_amount
         #   the amount paid for this credit grant
         #
-        #   @return [MetronomeSDK::V1::CreditGrantCreateParams::PaidAmount]
+        #   @return [MetronomeSDK::Models::V1::CreditGrantCreateParams::PaidAmount]
         required :paid_amount, -> { MetronomeSDK::V1::CreditGrantCreateParams::PaidAmount }
 
         # @!attribute priority
@@ -86,7 +86,7 @@ module MetronomeSDK
         #   configured amount to a new credit grant. This feature is currently opt-in only.
         #   Contact Metronome to be added to the beta.
         #
-        #   @return [MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings, nil]
+        #   @return [MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings, nil]
         optional :rollover_settings, -> { MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings }
 
         # @!attribute uniqueness_key
@@ -105,11 +105,11 @@ module MetronomeSDK
         #
         #   @param expires_at [Time] The credit grant will only apply to usage or charges dated before this timestamp
         #
-        #   @param grant_amount [MetronomeSDK::V1::CreditGrantCreateParams::GrantAmount] the amount of credits granted
+        #   @param grant_amount [MetronomeSDK::Models::V1::CreditGrantCreateParams::GrantAmount] the amount of credits granted
         #
         #   @param name [String] the name of the credit grant as it will appear on invoices
         #
-        #   @param paid_amount [MetronomeSDK::V1::CreditGrantCreateParams::PaidAmount] the amount paid for this credit grant
+        #   @param paid_amount [MetronomeSDK::Models::V1::CreditGrantCreateParams::PaidAmount] the amount paid for this credit grant
         #
         #   @param priority [Float]
         #
@@ -125,7 +125,7 @@ module MetronomeSDK
         #
         #   @param reason [String]
         #
-        #   @param rollover_settings [MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings] Configure a rollover for this credit grant so if it expires it rolls over a conf
+        #   @param rollover_settings [MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings] Configure a rollover for this credit grant so if it expires it rolls over a conf
         #
         #   @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made wit
         #
@@ -188,13 +188,14 @@ module MetronomeSDK
           # @!attribute rollover_amount
           #   Specify how much to rollover to the rollover credit grant
           #
-          #   @return [MetronomeSDK::V1::RolloverAmountMaxPercentage, MetronomeSDK::V1::RolloverAmountMaxAmount]
+          #   @return [MetronomeSDK::Models::V1::RolloverAmountMaxPercentage, MetronomeSDK::Models::V1::RolloverAmountMaxAmount]
           required :rollover_amount,
                    union: -> { MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount }
 
           # @!method initialize(expires_at:, priority:, rollover_amount:)
           #   Some parameter documentations has been truncated, see
-          #   {MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings} for more details.
+          #   {MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings} for more
+          #   details.
           #
           #   Configure a rollover for this credit grant so if it expires it rolls over a
           #   configured amount to a new credit grant. This feature is currently opt-in only.
@@ -204,11 +205,11 @@ module MetronomeSDK
           #
           #   @param priority [Float] The priority to give the rollover credit grant that gets created when a rollover
           #
-          #   @param rollover_amount [MetronomeSDK::V1::RolloverAmountMaxPercentage, MetronomeSDK::V1::RolloverAmountMaxAmount] Specify how much to rollover to the rollover credit grant
+          #   @param rollover_amount [MetronomeSDK::Models::V1::RolloverAmountMaxPercentage, MetronomeSDK::Models::V1::RolloverAmountMaxAmount] Specify how much to rollover to the rollover credit grant
 
           # Specify how much to rollover to the rollover credit grant
           #
-          # @see MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings#rollover_amount
+          # @see MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings#rollover_amount
           module RolloverAmount
             extend MetronomeSDK::Internal::Type::Union
 
@@ -217,7 +218,7 @@ module MetronomeSDK
             variant -> { MetronomeSDK::V1::RolloverAmountMaxAmount }
 
             # @!method self.variants
-            #   @return [Array(MetronomeSDK::V1::RolloverAmountMaxPercentage, MetronomeSDK::V1::RolloverAmountMaxAmount)]
+            #   @return [Array(MetronomeSDK::Models::V1::RolloverAmountMaxPercentage, MetronomeSDK::Models::V1::RolloverAmountMaxAmount)]
           end
         end
       end

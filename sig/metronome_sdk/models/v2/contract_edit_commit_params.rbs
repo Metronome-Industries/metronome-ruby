@@ -66,6 +66,19 @@ module MetronomeSDK
           ?request_options: MetronomeSDK::request_opts
         ) -> void
 
+        def to_hash: -> {
+          commit_id: String,
+          customer_id: String,
+          access_schedule: MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule,
+          applicable_product_ids: ::Array[String]?,
+          applicable_product_tags: ::Array[String]?,
+          invoice_contract_id: String,
+          invoice_schedule: MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule,
+          product_id: String,
+          specifiers: ::Array[MetronomeSDK::V2::ContractEditCommitParams::Specifier],
+          request_options: MetronomeSDK::RequestOptions
+        }
+
         type access_schedule =
           {
             add_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::AddScheduleItem],
@@ -98,6 +111,12 @@ module MetronomeSDK
             ?update_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::UpdateScheduleItem]
           ) -> void
 
+          def to_hash: -> {
+            add_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::AddScheduleItem],
+            remove_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::RemoveScheduleItem],
+            update_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::UpdateScheduleItem]
+          }
+
           type add_schedule_item =
             { amount: Float, ending_before: Time, starting_at: Time }
 
@@ -113,6 +132,12 @@ module MetronomeSDK
               ending_before: Time,
               starting_at: Time
             ) -> void
+
+            def to_hash: -> {
+              amount: Float,
+              ending_before: Time,
+              starting_at: Time
+            }
           end
 
           type remove_schedule_item = { id: String }
@@ -121,6 +146,8 @@ module MetronomeSDK
             attr_accessor id: String
 
             def initialize: (id: String) -> void
+
+            def to_hash: -> { id: String }
           end
 
           type update_schedule_item =
@@ -152,6 +179,13 @@ module MetronomeSDK
               ?ending_before: Time,
               ?starting_at: Time
             ) -> void
+
+            def to_hash: -> {
+              id: String,
+              amount: Float,
+              ending_before: Time,
+              starting_at: Time
+            }
           end
         end
 
@@ -187,6 +221,12 @@ module MetronomeSDK
             ?update_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::UpdateScheduleItem]
           ) -> void
 
+          def to_hash: -> {
+            add_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::AddScheduleItem],
+            remove_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::RemoveScheduleItem],
+            update_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::UpdateScheduleItem]
+          }
+
           type add_schedule_item =
             {
               timestamp: Time,
@@ -216,6 +256,13 @@ module MetronomeSDK
               ?quantity: Float,
               ?unit_price: Float
             ) -> void
+
+            def to_hash: -> {
+              timestamp: Time,
+              amount: Float,
+              quantity: Float,
+              unit_price: Float
+            }
           end
 
           type remove_schedule_item = { id: String }
@@ -224,6 +271,8 @@ module MetronomeSDK
             attr_accessor id: String
 
             def initialize: (id: String) -> void
+
+            def to_hash: -> { id: String }
           end
 
           type update_schedule_item =
@@ -261,6 +310,14 @@ module MetronomeSDK
               ?timestamp: Time,
               ?unit_price: Float
             ) -> void
+
+            def to_hash: -> {
+              id: String,
+              amount: Float,
+              quantity: Float,
+              timestamp: Time,
+              unit_price: Float
+            }
           end
         end
 
@@ -299,6 +356,13 @@ module MetronomeSDK
             ?product_id: String,
             ?product_tags: ::Array[String]
           ) -> void
+
+          def to_hash: -> {
+            presentation_group_values: ::Hash[Symbol, String],
+            pricing_group_values: ::Hash[Symbol, String],
+            product_id: String,
+            product_tags: ::Array[String]
+          }
         end
       end
     end

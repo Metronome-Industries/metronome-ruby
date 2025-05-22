@@ -33,7 +33,7 @@ module MetronomeSDK
 
               # @!attribute credit_type
               #
-              #   @return [MetronomeSDK::CreditTypeData, nil]
+              #   @return [MetronomeSDK::Models::CreditTypeData, nil]
               optional :credit_type, -> { MetronomeSDK::CreditTypeData }
 
               # @!attribute custom_rate
@@ -74,7 +74,7 @@ module MetronomeSDK
               # @!attribute tiers
               #   Only set for TIERED rate_type.
               #
-              #   @return [Array<MetronomeSDK::Tier>, nil]
+              #   @return [Array<MetronomeSDK::Models::Tier>, nil]
               optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
 
               # @!attribute use_list_prices
@@ -94,7 +94,7 @@ module MetronomeSDK
               #
               #   @param commit_rate [MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse::Data::CommitRate] A distinct rate on the rate card. You can choose to use this rate rather than li
               #
-              #   @param credit_type [MetronomeSDK::CreditTypeData]
+              #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
               #
               #   @param custom_rate [Hash{Symbol=>Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate processo
               #
@@ -106,7 +106,7 @@ module MetronomeSDK
               #
               #   @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
               #
-              #   @param tiers [Array<MetronomeSDK::Tier>] Only set for TIERED rate_type.
+              #   @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
               #
               #   @param use_list_prices [Boolean] Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
 
@@ -141,7 +141,7 @@ module MetronomeSDK
                 # @!attribute tiers
                 #   Only set for TIERED rate_type.
                 #
-                #   @return [Array<MetronomeSDK::Tier>, nil]
+                #   @return [Array<MetronomeSDK::Models::Tier>, nil]
                 optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
 
                 # @!method initialize(rate_type:, price: nil, tiers: nil)
@@ -152,7 +152,7 @@ module MetronomeSDK
                 #
                 #   @param price [Float] Commit rate price. For FLAT rate_type, this must be >=0.
                 #
-                #   @param tiers [Array<MetronomeSDK::Tier>] Only set for TIERED rate_type.
+                #   @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
 
                 # @see MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse::Data::CommitRate#rate_type
                 module RateType

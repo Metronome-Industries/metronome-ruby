@@ -39,7 +39,7 @@ module MetronomeSDK
           class Ledger < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute credit_type
             #
-            #   @return [MetronomeSDK::CreditTypeData]
+            #   @return [MetronomeSDK::Models::CreditTypeData]
             required :credit_type, -> { MetronomeSDK::CreditTypeData }
 
             # @!attribute ending_balance
@@ -51,7 +51,7 @@ module MetronomeSDK
 
             # @!attribute entries
             #
-            #   @return [Array<MetronomeSDK::V1::CreditLedgerEntry>]
+            #   @return [Array<MetronomeSDK::Models::V1::CreditLedgerEntry>]
             required :entries,
                      -> {
                        MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::CreditLedgerEntry]
@@ -59,7 +59,7 @@ module MetronomeSDK
 
             # @!attribute pending_entries
             #
-            #   @return [Array<MetronomeSDK::V1::CreditLedgerEntry>]
+            #   @return [Array<MetronomeSDK::Models::V1::CreditLedgerEntry>]
             required :pending_entries,
                      -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::CreditLedgerEntry] }
 
@@ -70,13 +70,13 @@ module MetronomeSDK
                      -> { MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance }
 
             # @!method initialize(credit_type:, ending_balance:, entries:, pending_entries:, starting_balance:)
-            #   @param credit_type [MetronomeSDK::CreditTypeData]
+            #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
             #
             #   @param ending_balance [MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance] the effective balances at the end of the specified time window
             #
-            #   @param entries [Array<MetronomeSDK::V1::CreditLedgerEntry>]
+            #   @param entries [Array<MetronomeSDK::Models::V1::CreditLedgerEntry>]
             #
-            #   @param pending_entries [Array<MetronomeSDK::V1::CreditLedgerEntry>]
+            #   @param pending_entries [Array<MetronomeSDK::Models::V1::CreditLedgerEntry>]
             #
             #   @param starting_balance [MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance]
 

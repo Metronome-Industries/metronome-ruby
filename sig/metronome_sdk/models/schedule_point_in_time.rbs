@@ -24,6 +24,11 @@ module MetronomeSDK
         ?schedule_items: ::Array[MetronomeSDK::SchedulePointInTime::ScheduleItem]
       ) -> void
 
+      def to_hash: -> {
+        credit_type: MetronomeSDK::CreditTypeData,
+        schedule_items: ::Array[MetronomeSDK::SchedulePointInTime::ScheduleItem]
+      }
+
       type schedule_item =
         {
           id: String,
@@ -55,6 +60,15 @@ module MetronomeSDK
           timestamp: Time,
           unit_price: Float
         ) -> void
+
+        def to_hash: -> {
+          id: String,
+          amount: Float,
+          invoice_id: String,
+          quantity: Float,
+          timestamp: Time,
+          unit_price: Float
+        }
       end
     end
   end

@@ -63,6 +63,18 @@ module MetronomeSDK
             ?request_options: MetronomeSDK::request_opts
           ) -> void
 
+          def to_hash: -> {
+            customer_id: String,
+            plan_id: String,
+            starting_on: Time,
+            ending_before: Time,
+            net_payment_terms_days: Float,
+            overage_rate_adjustments: ::Array[MetronomeSDK::V1::Customers::PlanAddParams::OverageRateAdjustment],
+            price_adjustments: ::Array[MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment],
+            trial_spec: MetronomeSDK::V1::Customers::PlanAddParams::TrialSpec,
+            request_options: MetronomeSDK::RequestOptions
+          }
+
           type overage_rate_adjustment =
             {
               custom_credit_type_id: String,
@@ -82,11 +94,17 @@ module MetronomeSDK
               fiat_currency_credit_type_id: String,
               to_fiat_conversion_factor: Float
             ) -> void
+
+            def to_hash: -> {
+              custom_credit_type_id: String,
+              fiat_currency_credit_type_id: String,
+              to_fiat_conversion_factor: Float
+            }
           end
 
           type price_adjustment =
             {
-              adjustment_type: MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment::adjustment_type,
+              adjustment_type: MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment::adjustment_type,
               charge_id: String,
               start_period: Float,
               quantity: Float,
@@ -95,7 +113,7 @@ module MetronomeSDK
             }
 
           class PriceAdjustment < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor adjustment_type: MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment::adjustment_type
+            attr_accessor adjustment_type: MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment::adjustment_type
 
             attr_accessor charge_id: String
 
@@ -114,13 +132,22 @@ module MetronomeSDK
             def value=: (Float) -> Float
 
             def initialize: (
-              adjustment_type: MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment::adjustment_type,
+              adjustment_type: MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment::adjustment_type,
               charge_id: String,
               start_period: Float,
               ?quantity: Float,
               ?tier: Float,
               ?value: Float
             ) -> void
+
+            def to_hash: -> {
+              adjustment_type: MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment::adjustment_type,
+              charge_id: String,
+              start_period: Float,
+              quantity: Float,
+              tier: Float,
+              value: Float
+            }
 
             type adjustment_type = :percentage | :fixed | :override | :quantity
 
@@ -132,7 +159,7 @@ module MetronomeSDK
               OVERRIDE: :override
               QUANTITY: :quantity
 
-              def self?.values: -> ::Array[MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment::adjustment_type]
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment::adjustment_type]
             end
           end
 
@@ -156,6 +183,11 @@ module MetronomeSDK
               ?spending_cap: MetronomeSDK::V1::Customers::PlanAddParams::TrialSpec::SpendingCap
             ) -> void
 
+            def to_hash: -> {
+              length_in_days: Float,
+              spending_cap: MetronomeSDK::V1::Customers::PlanAddParams::TrialSpec::SpendingCap
+            }
+
             type spending_cap = { amount: Float, credit_type_id: String }
 
             class SpendingCap < MetronomeSDK::Internal::Type::BaseModel
@@ -164,6 +196,8 @@ module MetronomeSDK
               attr_accessor credit_type_id: String
 
               def initialize: (amount: Float, credit_type_id: String) -> void
+
+              def to_hash: -> { amount: Float, credit_type_id: String }
             end
           end
         end

@@ -62,7 +62,7 @@ module MetronomeSDK
           #
           # @param skip_zero_qty_line_items [Boolean] Query param: If set, all zero quantity line items will be filtered out of the re
           #
-          # @param sort [Symbol, MetronomeSDK::V1::Customers::InvoiceListParams::Sort] Query param: Invoice sort order by issued_at, e.g. date_asc or date_desc. Defau
+          # @param sort [Symbol, MetronomeSDK::Models::V1::Customers::InvoiceListParams::Sort] Query param: Invoice sort order by issued_at, e.g. date_asc or date_desc. Defau
           #
           # @param starting_on [Time] Query param: RFC 3339 timestamp (inclusive). Invoices will only be returned for
           #
@@ -70,7 +70,7 @@ module MetronomeSDK
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [MetronomeSDK::Internal::CursorPage<MetronomeSDK::V1::Customers::Invoice>]
+          # @return [MetronomeSDK::Internal::CursorPage<MetronomeSDK::Models::V1::Customers::Invoice>]
           #
           # @see MetronomeSDK::Models::V1::Customers::InvoiceListParams
           def list(params)
@@ -156,11 +156,11 @@ module MetronomeSDK
           #
           # @param skip_zero_qty_line_items [Boolean] Query param: If set, all zero quantity line items will be filtered out of the re
           #
-          # @param sort [Symbol, MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::Sort] Query param: Invoice sort order by issued_at, e.g. date_asc or date_desc. Defau
+          # @param sort [Symbol, MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::Sort] Query param: Invoice sort order by issued_at, e.g. date_asc or date_desc. Defau
           #
           # @param status [String] Query param: Invoice status, e.g. DRAFT or FINALIZED
           #
-          # @param window_size [Symbol, MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::WindowSize] Query param: The granularity of the breakdowns to return. Defaults to day.
+          # @param window_size [Symbol, MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::WindowSize] Query param: The granularity of the breakdowns to return. Defaults to day.
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #

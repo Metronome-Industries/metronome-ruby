@@ -49,6 +49,16 @@ module MetronomeSDK
             ?request_options: MetronomeSDK::request_opts
           ) -> void
 
+          def to_hash: -> {
+            rate_card_id: String,
+            starting_at: Time,
+            limit: Integer,
+            next_page: String,
+            ending_before: Time,
+            selectors: ::Array[MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector],
+            request_options: MetronomeSDK::RequestOptions
+          }
+
           type selector =
             {
               partial_pricing_group_values: ::Hash[Symbol, String],
@@ -78,6 +88,12 @@ module MetronomeSDK
               ?pricing_group_values: ::Hash[Symbol, String],
               ?product_id: String
             ) -> void
+
+            def to_hash: -> {
+              partial_pricing_group_values: ::Hash[Symbol, String],
+              pricing_group_values: ::Hash[Symbol, String],
+              product_id: String
+            }
           end
         end
       end

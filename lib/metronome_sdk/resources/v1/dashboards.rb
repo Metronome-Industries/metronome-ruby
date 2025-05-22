@@ -12,13 +12,13 @@ module MetronomeSDK
         #
         # @param customer_id [String]
         #
-        # @param dashboard [Symbol, MetronomeSDK::V1::DashboardGetEmbeddableURLParams::Dashboard] The type of dashboard to retrieve.
+        # @param dashboard [Symbol, MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::Dashboard] The type of dashboard to retrieve.
         #
-        # @param bm_group_key_overrides [Array<MetronomeSDK::V1::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>] Optional list of billable metric group key overrides
+        # @param bm_group_key_overrides [Array<MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>] Optional list of billable metric group key overrides
         #
-        # @param color_overrides [Array<MetronomeSDK::V1::DashboardGetEmbeddableURLParams::ColorOverride>] Optional list of colors to override
+        # @param color_overrides [Array<MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::ColorOverride>] Optional list of colors to override
         #
-        # @param dashboard_options [Array<MetronomeSDK::V1::DashboardGetEmbeddableURLParams::DashboardOption>] Optional dashboard specific options
+        # @param dashboard_options [Array<MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::DashboardOption>] Optional dashboard specific options
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #

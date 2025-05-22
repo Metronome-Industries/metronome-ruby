@@ -36,6 +36,16 @@ module MetronomeSDK
           running_balance: Float,
           ?invoice_id: String?
         ) -> void
+
+        def to_hash: -> {
+          amount: Float,
+          created_by: String,
+          credit_grant_id: String,
+          effective_at: Time,
+          reason: String,
+          running_balance: Float,
+          invoice_id: String?
+        }
       end
     end
   end

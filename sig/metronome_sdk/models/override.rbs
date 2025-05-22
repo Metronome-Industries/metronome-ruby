@@ -18,10 +18,10 @@ module MetronomeSDK
         priority: Float,
         product: MetronomeSDK::Override::Product,
         quantity: Float,
-        rate_type: MetronomeSDK::Override::rate_type,
-        target: MetronomeSDK::Override::target,
+        rate_type: MetronomeSDK::Models::Override::rate_type,
+        target: MetronomeSDK::Models::Override::target,
         tiers: ::Array[MetronomeSDK::Tier],
-        type: MetronomeSDK::Override::type_,
+        type: MetronomeSDK::Models::Override::type_,
         value: ::Hash[Symbol, top]
       }
 
@@ -96,27 +96,27 @@ module MetronomeSDK
 
       def quantity=: (Float) -> Float
 
-      attr_reader rate_type: MetronomeSDK::Override::rate_type?
+      attr_reader rate_type: MetronomeSDK::Models::Override::rate_type?
 
       def rate_type=: (
-        MetronomeSDK::Override::rate_type
-      ) -> MetronomeSDK::Override::rate_type
+        MetronomeSDK::Models::Override::rate_type
+      ) -> MetronomeSDK::Models::Override::rate_type
 
-      attr_reader target: MetronomeSDK::Override::target?
+      attr_reader target: MetronomeSDK::Models::Override::target?
 
       def target=: (
-        MetronomeSDK::Override::target
-      ) -> MetronomeSDK::Override::target
+        MetronomeSDK::Models::Override::target
+      ) -> MetronomeSDK::Models::Override::target
 
       attr_reader tiers: ::Array[MetronomeSDK::Tier]?
 
       def tiers=: (::Array[MetronomeSDK::Tier]) -> ::Array[MetronomeSDK::Tier]
 
-      attr_reader type: MetronomeSDK::Override::type_?
+      attr_reader type: MetronomeSDK::Models::Override::type_?
 
       def type=: (
-        MetronomeSDK::Override::type_
-      ) -> MetronomeSDK::Override::type_
+        MetronomeSDK::Models::Override::type_
+      ) -> MetronomeSDK::Models::Override::type_
 
       attr_reader value: ::Hash[Symbol, top]?
 
@@ -139,12 +139,36 @@ module MetronomeSDK
         ?priority: Float,
         ?product: MetronomeSDK::Override::Product,
         ?quantity: Float,
-        ?rate_type: MetronomeSDK::Override::rate_type,
-        ?target: MetronomeSDK::Override::target,
+        ?rate_type: MetronomeSDK::Models::Override::rate_type,
+        ?target: MetronomeSDK::Models::Override::target,
         ?tiers: ::Array[MetronomeSDK::Tier],
-        ?type: MetronomeSDK::Override::type_,
+        ?type: MetronomeSDK::Models::Override::type_,
         ?value: ::Hash[Symbol, top]
       ) -> void
+
+      def to_hash: -> {
+        id: String,
+        starting_at: Time,
+        applicable_product_tags: ::Array[String],
+        credit_type: MetronomeSDK::CreditTypeData,
+        ending_before: Time,
+        entitled: bool,
+        is_commit_specific: bool,
+        is_prorated: bool,
+        multiplier: Float,
+        override_specifiers: ::Array[MetronomeSDK::Override::OverrideSpecifier],
+        override_tiers: ::Array[MetronomeSDK::Override::OverrideTier],
+        overwrite_rate: MetronomeSDK::Override::OverwriteRate,
+        price: Float,
+        priority: Float,
+        product: MetronomeSDK::Override::Product,
+        quantity: Float,
+        rate_type: MetronomeSDK::Models::Override::rate_type,
+        target: MetronomeSDK::Models::Override::target,
+        tiers: ::Array[MetronomeSDK::Tier],
+        type: MetronomeSDK::Models::Override::type_,
+        value: ::Hash[Symbol, top]
+      }
 
       type override_specifier =
         {
@@ -199,6 +223,16 @@ module MetronomeSDK
           ?recurring_commit_ids: ::Array[String],
           ?recurring_credit_ids: ::Array[String]
         ) -> void
+
+        def to_hash: -> {
+          commit_ids: ::Array[String],
+          presentation_group_values: ::Hash[Symbol, String?],
+          pricing_group_values: ::Hash[Symbol, String],
+          product_id: String,
+          product_tags: ::Array[String],
+          recurring_commit_ids: ::Array[String],
+          recurring_credit_ids: ::Array[String]
+        }
       end
 
       type override_tier = { multiplier: Float, size: Float }
@@ -211,11 +245,13 @@ module MetronomeSDK
         def size=: (Float) -> Float
 
         def initialize: (multiplier: Float, ?size: Float) -> void
+
+        def to_hash: -> { multiplier: Float, size: Float }
       end
 
       type overwrite_rate =
         {
-          rate_type: MetronomeSDK::Override::OverwriteRate::rate_type,
+          rate_type: MetronomeSDK::Models::Override::OverwriteRate::rate_type,
           credit_type: MetronomeSDK::CreditTypeData,
           custom_rate: ::Hash[Symbol, top],
           is_prorated: bool,
@@ -225,7 +261,7 @@ module MetronomeSDK
         }
 
       class OverwriteRate < MetronomeSDK::Internal::Type::BaseModel
-        attr_accessor rate_type: MetronomeSDK::Override::OverwriteRate::rate_type
+        attr_accessor rate_type: MetronomeSDK::Models::Override::OverwriteRate::rate_type
 
         attr_reader credit_type: MetronomeSDK::CreditTypeData?
 
@@ -254,7 +290,7 @@ module MetronomeSDK
         def tiers=: (::Array[MetronomeSDK::Tier]) -> ::Array[MetronomeSDK::Tier]
 
         def initialize: (
-          rate_type: MetronomeSDK::Override::OverwriteRate::rate_type,
+          rate_type: MetronomeSDK::Models::Override::OverwriteRate::rate_type,
           ?credit_type: MetronomeSDK::CreditTypeData,
           ?custom_rate: ::Hash[Symbol, top],
           ?is_prorated: bool,
@@ -262,6 +298,16 @@ module MetronomeSDK
           ?quantity: Float,
           ?tiers: ::Array[MetronomeSDK::Tier]
         ) -> void
+
+        def to_hash: -> {
+          rate_type: MetronomeSDK::Models::Override::OverwriteRate::rate_type,
+          credit_type: MetronomeSDK::CreditTypeData,
+          custom_rate: ::Hash[Symbol, top],
+          is_prorated: bool,
+          price: Float,
+          quantity: Float,
+          tiers: ::Array[MetronomeSDK::Tier]
+        }
 
         type rate_type = :FLAT | :PERCENTAGE | :SUBSCRIPTION | :TIERED | :CUSTOM
 
@@ -274,7 +320,7 @@ module MetronomeSDK
           TIERED: :TIERED
           CUSTOM: :CUSTOM
 
-          def self?.values: -> ::Array[MetronomeSDK::Override::OverwriteRate::rate_type]
+          def self?.values: -> ::Array[MetronomeSDK::Models::Override::OverwriteRate::rate_type]
         end
       end
 
@@ -286,6 +332,8 @@ module MetronomeSDK
         attr_accessor name: String
 
         def initialize: (id: String, name: String) -> void
+
+        def to_hash: -> { id: String, name: String }
       end
 
       type rate_type = :FLAT | :PERCENTAGE | :SUBSCRIPTION | :TIERED | :CUSTOM
@@ -299,7 +347,7 @@ module MetronomeSDK
         TIERED: :TIERED
         CUSTOM: :CUSTOM
 
-        def self?.values: -> ::Array[MetronomeSDK::Override::rate_type]
+        def self?.values: -> ::Array[MetronomeSDK::Models::Override::rate_type]
       end
 
       type target = :COMMIT_RATE | :LIST_RATE
@@ -310,7 +358,7 @@ module MetronomeSDK
         COMMIT_RATE: :COMMIT_RATE
         LIST_RATE: :LIST_RATE
 
-        def self?.values: -> ::Array[MetronomeSDK::Override::target]
+        def self?.values: -> ::Array[MetronomeSDK::Models::Override::target]
       end
 
       type type_ = :OVERWRITE | :MULTIPLIER | :TIERED
@@ -322,7 +370,7 @@ module MetronomeSDK
         MULTIPLIER: :MULTIPLIER
         TIERED: :TIERED
 
-        def self?.values: -> ::Array[MetronomeSDK::Override::type_]
+        def self?.values: -> ::Array[MetronomeSDK::Models::Override::type_]
       end
     end
   end

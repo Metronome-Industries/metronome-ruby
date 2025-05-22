@@ -17,6 +17,11 @@ module MetronomeSDK
           next_page: String?
         ) -> void
 
+        def to_hash: -> {
+          data: ::Array[MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data],
+          next_page: String?
+        }
+
         type data =
           {
             customer_id: String,
@@ -32,6 +37,11 @@ module MetronomeSDK
             customer_id: String,
             ledgers: ::Array[MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger]
           ) -> void
+
+          def to_hash: -> {
+            customer_id: String,
+            ledgers: ::Array[MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger]
+          }
 
           type ledger =
             {
@@ -61,6 +71,14 @@ module MetronomeSDK
               starting_balance: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance
             ) -> void
 
+            def to_hash: -> {
+              credit_type: MetronomeSDK::CreditTypeData,
+              ending_balance: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance,
+              entries: ::Array[MetronomeSDK::V1::CreditLedgerEntry],
+              pending_entries: ::Array[MetronomeSDK::V1::CreditLedgerEntry],
+              starting_balance: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance
+            }
+
             type ending_balance =
               {
                 effective_at: Time,
@@ -80,6 +98,12 @@ module MetronomeSDK
                 excluding_pending: Float,
                 including_pending: Float
               ) -> void
+
+              def to_hash: -> {
+                effective_at: Time,
+                excluding_pending: Float,
+                including_pending: Float
+              }
             end
 
             type starting_balance =
@@ -101,6 +125,12 @@ module MetronomeSDK
                 excluding_pending: Float,
                 including_pending: Float
               ) -> void
+
+              def to_hash: -> {
+                effective_at: Time,
+                excluding_pending: Float,
+                including_pending: Float
+              }
             end
           end
         end

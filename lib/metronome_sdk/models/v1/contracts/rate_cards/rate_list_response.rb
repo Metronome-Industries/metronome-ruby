@@ -34,7 +34,7 @@ module MetronomeSDK
 
             # @!attribute rate
             #
-            #   @return [MetronomeSDK::Rate]
+            #   @return [MetronomeSDK::Models::Rate]
             required :rate, -> { MetronomeSDK::Rate }
 
             # @!attribute starting_at
@@ -74,7 +74,7 @@ module MetronomeSDK
             #
             #   @param product_tags [Array<String>]
             #
-            #   @param rate [MetronomeSDK::Rate]
+            #   @param rate [MetronomeSDK::Models::Rate]
             #
             #   @param starting_at [Time]
             #
@@ -101,7 +101,7 @@ module MetronomeSDK
               # @!attribute tiers
               #   Only set for TIERED rate_type.
               #
-              #   @return [Array<MetronomeSDK::Tier>, nil]
+              #   @return [Array<MetronomeSDK::Models::Tier>, nil]
               optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
 
               # @!method initialize(rate_type:, price: nil, tiers: nil)
@@ -112,7 +112,7 @@ module MetronomeSDK
               #
               #   @param price [Float] Commit rate price. For FLAT rate_type, this must be >=0.
               #
-              #   @param tiers [Array<MetronomeSDK::Tier>] Only set for TIERED rate_type.
+              #   @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
 
               # @see MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::CommitRate#rate_type
               module RateType

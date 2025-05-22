@@ -42,6 +42,17 @@ module MetronomeSDK
             quantity: Float,
             ?request_options: MetronomeSDK::request_opts
           ) -> void
+
+          def to_hash: -> {
+            customer_id: String,
+            charge_id: String,
+            customer_plan_id: String,
+            description: String,
+            invoice_start_timestamp: Time,
+            price: Float,
+            quantity: Float,
+            request_options: MetronomeSDK::RequestOptions
+          }
         end
       end
     end

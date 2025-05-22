@@ -10,19 +10,19 @@ module MetronomeSDK
 
       # @!attribute product
       #
-      #   @return [MetronomeSDK::Commit::Product]
+      #   @return [MetronomeSDK::Models::Commit::Product]
       required :product, -> { MetronomeSDK::Commit::Product }
 
       # @!attribute type
       #
-      #   @return [Symbol, MetronomeSDK::Commit::Type]
+      #   @return [Symbol, MetronomeSDK::Models::Commit::Type]
       required :type, enum: -> { MetronomeSDK::Commit::Type }
 
       # @!attribute access_schedule
       #   The schedule that the customer will gain access to the credits purposed with
       #   this commit.
       #
-      #   @return [MetronomeSDK::ScheduleDuration, nil]
+      #   @return [MetronomeSDK::Models::ScheduleDuration, nil]
       optional :access_schedule, -> { MetronomeSDK::ScheduleDuration }
 
       # @!attribute amount
@@ -68,7 +68,7 @@ module MetronomeSDK
 
       # @!attribute contract
       #
-      #   @return [MetronomeSDK::Commit::Contract, nil]
+      #   @return [MetronomeSDK::Models::Commit::Contract, nil]
       optional :contract, -> { MetronomeSDK::Commit::Contract }
 
       # @!attribute custom_fields
@@ -84,20 +84,20 @@ module MetronomeSDK
       # @!attribute invoice_contract
       #   The contract that this commit will be billed on.
       #
-      #   @return [MetronomeSDK::Commit::InvoiceContract, nil]
+      #   @return [MetronomeSDK::Models::Commit::InvoiceContract, nil]
       optional :invoice_contract, -> { MetronomeSDK::Commit::InvoiceContract }
 
       # @!attribute invoice_schedule
       #   The schedule that the customer will be invoiced for this commit.
       #
-      #   @return [MetronomeSDK::SchedulePointInTime, nil]
+      #   @return [MetronomeSDK::Models::SchedulePointInTime, nil]
       optional :invoice_schedule, -> { MetronomeSDK::SchedulePointInTime }
 
       # @!attribute ledger
       #   A list of ordered events that impact the balance of a commit. For example, an
       #   invoice deduction or a rollover.
       #
-      #   @return [Array<MetronomeSDK::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry, MetronomeSDK::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Commit::Ledger::PrepaidCommitRolloverLedgerEntry, MetronomeSDK::Commit::Ledger::PrepaidCommitExpirationLedgerEntry, MetronomeSDK::Commit::Ledger::PrepaidCommitCanceledLedgerEntry, MetronomeSDK::Commit::Ledger::PrepaidCommitCreditedLedgerEntry, MetronomeSDK::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry, MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Commit::Ledger::PostpaidCommitRolloverLedgerEntry, MetronomeSDK::Commit::Ledger::PostpaidCommitTrueupLedgerEntry, MetronomeSDK::Commit::Ledger::PrepaidCommitManualLedgerEntry, MetronomeSDK::Commit::Ledger::PostpaidCommitManualLedgerEntry, MetronomeSDK::Commit::Ledger::PostpaidCommitExpirationLedgerEntry>, nil]
+      #   @return [Array<MetronomeSDK::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry>, nil]
       optional :ledger, -> { MetronomeSDK::Internal::Type::ArrayOf[union: MetronomeSDK::Commit::Ledger] }
 
       # @!attribute name
@@ -120,12 +120,12 @@ module MetronomeSDK
 
       # @!attribute rate_type
       #
-      #   @return [Symbol, MetronomeSDK::Commit::RateType, nil]
+      #   @return [Symbol, MetronomeSDK::Models::Commit::RateType, nil]
       optional :rate_type, enum: -> { MetronomeSDK::Commit::RateType }
 
       # @!attribute rolled_over_from
       #
-      #   @return [MetronomeSDK::Commit::RolledOverFrom, nil]
+      #   @return [MetronomeSDK::Models::Commit::RolledOverFrom, nil]
       optional :rolled_over_from, -> { MetronomeSDK::Commit::RolledOverFrom }
 
       # @!attribute rollover_fraction
@@ -144,7 +144,7 @@ module MetronomeSDK
       #   or credit. A customer's usage needs to meet the condition of at least one of the
       #   specifiers to contribute to a commit's or credit's drawdown.
       #
-      #   @return [Array<MetronomeSDK::Commit::Specifier>, nil]
+      #   @return [Array<MetronomeSDK::Models::Commit::Specifier>, nil]
       optional :specifiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Commit::Specifier] }
 
       # @!attribute uniqueness_key
@@ -157,16 +157,16 @@ module MetronomeSDK
       optional :uniqueness_key, String
 
       # @!method initialize(id:, product:, type:, access_schedule: nil, amount: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, custom_fields: nil, description: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil, uniqueness_key: nil)
-      #   Some parameter documentations has been truncated, see {MetronomeSDK::Commit} for
-      #   more details.
+      #   Some parameter documentations has been truncated, see
+      #   {MetronomeSDK::Models::Commit} for more details.
       #
       #   @param id [String]
       #
-      #   @param product [MetronomeSDK::Commit::Product]
+      #   @param product [MetronomeSDK::Models::Commit::Product]
       #
-      #   @param type [Symbol, MetronomeSDK::Commit::Type]
+      #   @param type [Symbol, MetronomeSDK::Models::Commit::Type]
       #
-      #   @param access_schedule [MetronomeSDK::ScheduleDuration] The schedule that the customer will gain access to the credits purposed with thi
+      #   @param access_schedule [MetronomeSDK::Models::ScheduleDuration] The schedule that the customer will gain access to the credits purposed with thi
       #
       #   @param amount [Float] (DEPRECATED) Use access_schedule + invoice_schedule instead.
       #
@@ -180,17 +180,17 @@ module MetronomeSDK
       #
       #   @param balance [Float] The current balance of the credit or commit. This balance reflects the amount of
       #
-      #   @param contract [MetronomeSDK::Commit::Contract]
+      #   @param contract [MetronomeSDK::Models::Commit::Contract]
       #
       #   @param custom_fields [Hash{Symbol=>String}]
       #
       #   @param description [String]
       #
-      #   @param invoice_contract [MetronomeSDK::Commit::InvoiceContract] The contract that this commit will be billed on.
+      #   @param invoice_contract [MetronomeSDK::Models::Commit::InvoiceContract] The contract that this commit will be billed on.
       #
-      #   @param invoice_schedule [MetronomeSDK::SchedulePointInTime] The schedule that the customer will be invoiced for this commit.
+      #   @param invoice_schedule [MetronomeSDK::Models::SchedulePointInTime] The schedule that the customer will be invoiced for this commit.
       #
-      #   @param ledger [Array<MetronomeSDK::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry, MetronomeSDK::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Commit::Ledger::PrepaidCommitRolloverLedgerEntry, MetronomeSDK::Commit::Ledger::PrepaidCommitExpirationLedgerEntry, MetronomeSDK::Commit::Ledger::PrepaidCommitCanceledLedgerEntry, MetronomeSDK::Commit::Ledger::PrepaidCommitCreditedLedgerEntry, MetronomeSDK::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry, MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Commit::Ledger::PostpaidCommitRolloverLedgerEntry, MetronomeSDK::Commit::Ledger::PostpaidCommitTrueupLedgerEntry, MetronomeSDK::Commit::Ledger::PrepaidCommitManualLedgerEntry, MetronomeSDK::Commit::Ledger::PostpaidCommitManualLedgerEntry, MetronomeSDK::Commit::Ledger::PostpaidCommitExpirationLedgerEntry>] A list of ordered events that impact the balance of a commit. For example, an in
+      #   @param ledger [Array<MetronomeSDK::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry>] A list of ordered events that impact the balance of a commit. For example, an in
       #
       #   @param name [String]
       #
@@ -198,19 +198,19 @@ module MetronomeSDK
       #
       #   @param priority [Float] If multiple credits or commits are applicable, the one with the lower priority w
       #
-      #   @param rate_type [Symbol, MetronomeSDK::Commit::RateType]
+      #   @param rate_type [Symbol, MetronomeSDK::Models::Commit::RateType]
       #
-      #   @param rolled_over_from [MetronomeSDK::Commit::RolledOverFrom]
+      #   @param rolled_over_from [MetronomeSDK::Models::Commit::RolledOverFrom]
       #
       #   @param rollover_fraction [Float]
       #
       #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
       #
-      #   @param specifiers [Array<MetronomeSDK::Commit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
+      #   @param specifiers [Array<MetronomeSDK::Models::Commit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
       #
       #   @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a commit or credit i
 
-      # @see MetronomeSDK::Commit#product
+      # @see MetronomeSDK::Models::Commit#product
       class Product < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute id
         #
@@ -227,7 +227,7 @@ module MetronomeSDK
         #   @param name [String]
       end
 
-      # @see MetronomeSDK::Commit#type
+      # @see MetronomeSDK::Models::Commit#type
       module Type
         extend MetronomeSDK::Internal::Type::Enum
 
@@ -238,7 +238,7 @@ module MetronomeSDK
         #   @return [Array<Symbol>]
       end
 
-      # @see MetronomeSDK::Commit#contract
+      # @see MetronomeSDK::Models::Commit#contract
       class Contract < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute id
         #
@@ -249,7 +249,7 @@ module MetronomeSDK
         #   @param id [String]
       end
 
-      # @see MetronomeSDK::Commit#invoice_contract
+      # @see MetronomeSDK::Models::Commit#invoice_contract
       class InvoiceContract < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute id
         #
@@ -309,7 +309,7 @@ module MetronomeSDK
 
           # @!attribute type
           #
-          #   @return [Symbol, MetronomeSDK::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type]
+          #   @return [Symbol, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type]
           required :type,
                    enum: -> {
                      MetronomeSDK::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type
@@ -319,9 +319,9 @@ module MetronomeSDK
           #   @param amount [Float]
           #   @param segment_id [String]
           #   @param timestamp [Time]
-          #   @param type [Symbol, MetronomeSDK::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type]
+          #   @param type [Symbol, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type]
 
-          # @see MetronomeSDK::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry#type
+          # @see MetronomeSDK::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry#type
           module Type
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -355,7 +355,7 @@ module MetronomeSDK
 
           # @!attribute type
           #
-          #   @return [Symbol, MetronomeSDK::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
+          #   @return [Symbol, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
           required :type,
                    enum: -> {
                      MetronomeSDK::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type
@@ -366,9 +366,9 @@ module MetronomeSDK
           #   @param invoice_id [String]
           #   @param segment_id [String]
           #   @param timestamp [Time]
-          #   @param type [Symbol, MetronomeSDK::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
+          #   @param type [Symbol, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
 
-          # @see MetronomeSDK::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry#type
+          # @see MetronomeSDK::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry#type
           module Type
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -402,7 +402,7 @@ module MetronomeSDK
 
           # @!attribute type
           #
-          #   @return [Symbol, MetronomeSDK::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type]
+          #   @return [Symbol, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type]
           required :type, enum: -> { MetronomeSDK::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type }
 
           # @!method initialize(amount:, new_contract_id:, segment_id:, timestamp:, type:)
@@ -410,9 +410,9 @@ module MetronomeSDK
           #   @param new_contract_id [String]
           #   @param segment_id [String]
           #   @param timestamp [Time]
-          #   @param type [Symbol, MetronomeSDK::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type]
+          #   @param type [Symbol, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type]
 
-          # @see MetronomeSDK::Commit::Ledger::PrepaidCommitRolloverLedgerEntry#type
+          # @see MetronomeSDK::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry#type
           module Type
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -441,16 +441,16 @@ module MetronomeSDK
 
           # @!attribute type
           #
-          #   @return [Symbol, MetronomeSDK::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type]
+          #   @return [Symbol, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type]
           required :type, enum: -> { MetronomeSDK::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type }
 
           # @!method initialize(amount:, segment_id:, timestamp:, type:)
           #   @param amount [Float]
           #   @param segment_id [String]
           #   @param timestamp [Time]
-          #   @param type [Symbol, MetronomeSDK::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type]
+          #   @param type [Symbol, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type]
 
-          # @see MetronomeSDK::Commit::Ledger::PrepaidCommitExpirationLedgerEntry#type
+          # @see MetronomeSDK::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry#type
           module Type
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -484,7 +484,7 @@ module MetronomeSDK
 
           # @!attribute type
           #
-          #   @return [Symbol, MetronomeSDK::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type]
+          #   @return [Symbol, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type]
           required :type, enum: -> { MetronomeSDK::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type }
 
           # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
@@ -492,9 +492,9 @@ module MetronomeSDK
           #   @param invoice_id [String]
           #   @param segment_id [String]
           #   @param timestamp [Time]
-          #   @param type [Symbol, MetronomeSDK::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type]
+          #   @param type [Symbol, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type]
 
-          # @see MetronomeSDK::Commit::Ledger::PrepaidCommitCanceledLedgerEntry#type
+          # @see MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry#type
           module Type
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -528,7 +528,7 @@ module MetronomeSDK
 
           # @!attribute type
           #
-          #   @return [Symbol, MetronomeSDK::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type]
+          #   @return [Symbol, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type]
           required :type, enum: -> { MetronomeSDK::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type }
 
           # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
@@ -536,9 +536,9 @@ module MetronomeSDK
           #   @param invoice_id [String]
           #   @param segment_id [String]
           #   @param timestamp [Time]
-          #   @param type [Symbol, MetronomeSDK::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type]
+          #   @param type [Symbol, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type]
 
-          # @see MetronomeSDK::Commit::Ledger::PrepaidCommitCreditedLedgerEntry#type
+          # @see MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry#type
           module Type
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -562,7 +562,7 @@ module MetronomeSDK
 
           # @!attribute type
           #
-          #   @return [Symbol, MetronomeSDK::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type]
+          #   @return [Symbol, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type]
           required :type,
                    enum: -> {
                      MetronomeSDK::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type
@@ -571,9 +571,9 @@ module MetronomeSDK
           # @!method initialize(amount:, timestamp:, type:)
           #   @param amount [Float]
           #   @param timestamp [Time]
-          #   @param type [Symbol, MetronomeSDK::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type]
+          #   @param type [Symbol, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type]
 
-          # @see MetronomeSDK::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry#type
+          # @see MetronomeSDK::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry#type
           module Type
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -607,7 +607,7 @@ module MetronomeSDK
 
           # @!attribute type
           #
-          #   @return [Symbol, MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
+          #   @return [Symbol, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
           required :type,
                    enum: -> {
                      MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type
@@ -618,9 +618,9 @@ module MetronomeSDK
           #   @param invoice_id [String]
           #   @param segment_id [String]
           #   @param timestamp [Time]
-          #   @param type [Symbol, MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
+          #   @param type [Symbol, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
 
-          # @see MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry#type
+          # @see MetronomeSDK::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry#type
           module Type
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -654,7 +654,7 @@ module MetronomeSDK
 
           # @!attribute type
           #
-          #   @return [Symbol, MetronomeSDK::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type]
+          #   @return [Symbol, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type]
           required :type, enum: -> { MetronomeSDK::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type }
 
           # @!method initialize(amount:, new_contract_id:, segment_id:, timestamp:, type:)
@@ -662,9 +662,9 @@ module MetronomeSDK
           #   @param new_contract_id [String]
           #   @param segment_id [String]
           #   @param timestamp [Time]
-          #   @param type [Symbol, MetronomeSDK::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type]
+          #   @param type [Symbol, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type]
 
-          # @see MetronomeSDK::Commit::Ledger::PostpaidCommitRolloverLedgerEntry#type
+          # @see MetronomeSDK::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry#type
           module Type
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -693,16 +693,16 @@ module MetronomeSDK
 
           # @!attribute type
           #
-          #   @return [Symbol, MetronomeSDK::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type]
+          #   @return [Symbol, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type]
           required :type, enum: -> { MetronomeSDK::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type }
 
           # @!method initialize(amount:, invoice_id:, timestamp:, type:)
           #   @param amount [Float]
           #   @param invoice_id [String]
           #   @param timestamp [Time]
-          #   @param type [Symbol, MetronomeSDK::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type]
+          #   @param type [Symbol, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type]
 
-          # @see MetronomeSDK::Commit::Ledger::PostpaidCommitTrueupLedgerEntry#type
+          # @see MetronomeSDK::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry#type
           module Type
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -731,16 +731,16 @@ module MetronomeSDK
 
           # @!attribute type
           #
-          #   @return [Symbol, MetronomeSDK::Commit::Ledger::PrepaidCommitManualLedgerEntry::Type]
+          #   @return [Symbol, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry::Type]
           required :type, enum: -> { MetronomeSDK::Commit::Ledger::PrepaidCommitManualLedgerEntry::Type }
 
           # @!method initialize(amount:, reason:, timestamp:, type:)
           #   @param amount [Float]
           #   @param reason [String]
           #   @param timestamp [Time]
-          #   @param type [Symbol, MetronomeSDK::Commit::Ledger::PrepaidCommitManualLedgerEntry::Type]
+          #   @param type [Symbol, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry::Type]
 
-          # @see MetronomeSDK::Commit::Ledger::PrepaidCommitManualLedgerEntry#type
+          # @see MetronomeSDK::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry#type
           module Type
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -769,16 +769,16 @@ module MetronomeSDK
 
           # @!attribute type
           #
-          #   @return [Symbol, MetronomeSDK::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type]
+          #   @return [Symbol, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type]
           required :type, enum: -> { MetronomeSDK::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type }
 
           # @!method initialize(amount:, reason:, timestamp:, type:)
           #   @param amount [Float]
           #   @param reason [String]
           #   @param timestamp [Time]
-          #   @param type [Symbol, MetronomeSDK::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type]
+          #   @param type [Symbol, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type]
 
-          # @see MetronomeSDK::Commit::Ledger::PostpaidCommitManualLedgerEntry#type
+          # @see MetronomeSDK::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry#type
           module Type
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -802,15 +802,15 @@ module MetronomeSDK
 
           # @!attribute type
           #
-          #   @return [Symbol, MetronomeSDK::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type]
+          #   @return [Symbol, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type]
           required :type, enum: -> { MetronomeSDK::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type }
 
           # @!method initialize(amount:, timestamp:, type:)
           #   @param amount [Float]
           #   @param timestamp [Time]
-          #   @param type [Symbol, MetronomeSDK::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type]
+          #   @param type [Symbol, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type]
 
-          # @see MetronomeSDK::Commit::Ledger::PostpaidCommitExpirationLedgerEntry#type
+          # @see MetronomeSDK::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry#type
           module Type
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -822,10 +822,10 @@ module MetronomeSDK
         end
 
         # @!method self.variants
-        #   @return [Array(MetronomeSDK::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry, MetronomeSDK::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Commit::Ledger::PrepaidCommitRolloverLedgerEntry, MetronomeSDK::Commit::Ledger::PrepaidCommitExpirationLedgerEntry, MetronomeSDK::Commit::Ledger::PrepaidCommitCanceledLedgerEntry, MetronomeSDK::Commit::Ledger::PrepaidCommitCreditedLedgerEntry, MetronomeSDK::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry, MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Commit::Ledger::PostpaidCommitRolloverLedgerEntry, MetronomeSDK::Commit::Ledger::PostpaidCommitTrueupLedgerEntry, MetronomeSDK::Commit::Ledger::PrepaidCommitManualLedgerEntry, MetronomeSDK::Commit::Ledger::PostpaidCommitManualLedgerEntry, MetronomeSDK::Commit::Ledger::PostpaidCommitExpirationLedgerEntry)]
+        #   @return [Array(MetronomeSDK::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry)]
       end
 
-      # @see MetronomeSDK::Commit#rate_type
+      # @see MetronomeSDK::Models::Commit#rate_type
       module RateType
         extend MetronomeSDK::Internal::Type::Enum
 
@@ -836,7 +836,7 @@ module MetronomeSDK
         #   @return [Array<Symbol>]
       end
 
-      # @see MetronomeSDK::Commit#rolled_over_from
+      # @see MetronomeSDK::Models::Commit#rolled_over_from
       class RolledOverFrom < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute commit_id
         #
@@ -879,7 +879,7 @@ module MetronomeSDK
 
         # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
         #   Some parameter documentations has been truncated, see
-        #   {MetronomeSDK::Commit::Specifier} for more details.
+        #   {MetronomeSDK::Models::Commit::Specifier} for more details.
         #
         #   @param presentation_group_values [Hash{Symbol=>String}]
         #

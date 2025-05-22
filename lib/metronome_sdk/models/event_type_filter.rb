@@ -21,7 +21,7 @@ module MetronomeSDK
 
       # @!method initialize(in_values: nil, not_in_values: nil)
       #   Some parameter documentations has been truncated, see
-      #   {MetronomeSDK::EventTypeFilter} for more details.
+      #   {MetronomeSDK::Models::EventTypeFilter} for more details.
       #
       #   An optional filtering rule to match the 'event_type' property of an event.
       #

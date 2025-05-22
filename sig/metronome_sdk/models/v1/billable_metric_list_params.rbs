@@ -27,6 +27,13 @@ module MetronomeSDK
           ?next_page: String,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
+
+        def to_hash: -> {
+          include_archived: bool,
+          limit: Integer,
+          next_page: String,
+          request_options: MetronomeSDK::RequestOptions
+        }
       end
     end
   end

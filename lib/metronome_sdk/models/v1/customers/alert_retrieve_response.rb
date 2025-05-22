@@ -8,11 +8,11 @@ module MetronomeSDK
         class AlertRetrieveResponse < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute data
           #
-          #   @return [MetronomeSDK::V1::Customers::CustomerAlert]
+          #   @return [MetronomeSDK::Models::V1::Customers::CustomerAlert]
           required :data, -> { MetronomeSDK::V1::Customers::CustomerAlert }
 
           # @!method initialize(data:)
-          #   @param data [MetronomeSDK::V1::Customers::CustomerAlert]
+          #   @param data [MetronomeSDK::Models::V1::Customers::CustomerAlert]
         end
       end
     end

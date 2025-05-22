@@ -5,18 +5,18 @@ module MetronomeSDK
     class ScheduleDuration < MetronomeSDK::Internal::Type::BaseModel
       # @!attribute schedule_items
       #
-      #   @return [Array<MetronomeSDK::ScheduleDuration::ScheduleItem>]
+      #   @return [Array<MetronomeSDK::Models::ScheduleDuration::ScheduleItem>]
       required :schedule_items,
                -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ScheduleDuration::ScheduleItem] }
 
       # @!attribute credit_type
       #
-      #   @return [MetronomeSDK::CreditTypeData, nil]
+      #   @return [MetronomeSDK::Models::CreditTypeData, nil]
       optional :credit_type, -> { MetronomeSDK::CreditTypeData }
 
       # @!method initialize(schedule_items:, credit_type: nil)
-      #   @param schedule_items [Array<MetronomeSDK::ScheduleDuration::ScheduleItem>]
-      #   @param credit_type [MetronomeSDK::CreditTypeData]
+      #   @param schedule_items [Array<MetronomeSDK::Models::ScheduleDuration::ScheduleItem>]
+      #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
 
       class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute id

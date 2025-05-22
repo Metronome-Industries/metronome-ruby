@@ -71,6 +71,19 @@ module MetronomeSDK
           ?sql: String
         ) -> void
 
+        def to_hash: -> {
+          id: String,
+          name: String,
+          aggregation_key: String,
+          aggregation_type: MetronomeSDK::Models::V1::BillableMetricListResponse::aggregation_type,
+          archived_at: Time,
+          custom_fields: ::Hash[Symbol, String],
+          event_type_filter: MetronomeSDK::EventTypeFilter,
+          group_keys: ::Array[::Array[String]],
+          property_filters: ::Array[MetronomeSDK::PropertyFilter],
+          sql: String
+        }
+
         type aggregation_type = :COUNT | :LATEST | :MAX | :SUM | :UNIQUE
 
         module AggregationType

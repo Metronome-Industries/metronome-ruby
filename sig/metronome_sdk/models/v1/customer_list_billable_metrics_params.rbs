@@ -41,6 +41,15 @@ module MetronomeSDK
           ?on_current_plan: bool,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
+
+        def to_hash: -> {
+          customer_id: String,
+          include_archived: bool,
+          limit: Integer,
+          next_page: String,
+          on_current_plan: bool,
+          request_options: MetronomeSDK::RequestOptions
+        }
       end
     end
   end

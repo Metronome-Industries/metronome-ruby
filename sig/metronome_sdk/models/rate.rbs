@@ -2,7 +2,7 @@ module MetronomeSDK
   module Models
     type rate =
       {
-        rate_type: MetronomeSDK::Rate::rate_type,
+        rate_type: MetronomeSDK::Models::Rate::rate_type,
         credit_type: MetronomeSDK::CreditTypeData,
         custom_rate: ::Hash[Symbol, top],
         is_prorated: bool,
@@ -14,7 +14,7 @@ module MetronomeSDK
       }
 
     class Rate < MetronomeSDK::Internal::Type::BaseModel
-      attr_accessor rate_type: MetronomeSDK::Rate::rate_type
+      attr_accessor rate_type: MetronomeSDK::Models::Rate::rate_type
 
       attr_reader credit_type: MetronomeSDK::CreditTypeData?
 
@@ -53,7 +53,7 @@ module MetronomeSDK
       def use_list_prices=: (bool) -> bool
 
       def initialize: (
-        rate_type: MetronomeSDK::Rate::rate_type,
+        rate_type: MetronomeSDK::Models::Rate::rate_type,
         ?credit_type: MetronomeSDK::CreditTypeData,
         ?custom_rate: ::Hash[Symbol, top],
         ?is_prorated: bool,
@@ -63,6 +63,18 @@ module MetronomeSDK
         ?tiers: ::Array[MetronomeSDK::Tier],
         ?use_list_prices: bool
       ) -> void
+
+      def to_hash: -> {
+        rate_type: MetronomeSDK::Models::Rate::rate_type,
+        credit_type: MetronomeSDK::CreditTypeData,
+        custom_rate: ::Hash[Symbol, top],
+        is_prorated: bool,
+        price: Float,
+        pricing_group_values: ::Hash[Symbol, String],
+        quantity: Float,
+        tiers: ::Array[MetronomeSDK::Tier],
+        use_list_prices: bool
+      }
 
       type rate_type = :FLAT | :PERCENTAGE | :SUBSCRIPTION | :CUSTOM | :TIERED
 
@@ -75,7 +87,7 @@ module MetronomeSDK
         CUSTOM: :CUSTOM
         TIERED: :TIERED
 
-        def self?.values: -> ::Array[MetronomeSDK::Rate::rate_type]
+        def self?.values: -> ::Array[MetronomeSDK::Models::Rate::rate_type]
       end
     end
   end

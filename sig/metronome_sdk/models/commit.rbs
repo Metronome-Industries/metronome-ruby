@@ -4,7 +4,7 @@ module MetronomeSDK
       {
         id: String,
         product: MetronomeSDK::Commit::Product,
-        type: MetronomeSDK::Commit::type_,
+        type: MetronomeSDK::Models::Commit::type_,
         access_schedule: MetronomeSDK::ScheduleDuration,
         amount: Float,
         applicable_contract_ids: ::Array[String],
@@ -17,11 +17,11 @@ module MetronomeSDK
         description: String,
         invoice_contract: MetronomeSDK::Commit::InvoiceContract,
         invoice_schedule: MetronomeSDK::SchedulePointInTime,
-        ledger: ::Array[MetronomeSDK::Commit::ledger],
+        ledger: ::Array[MetronomeSDK::Models::Commit::ledger],
         name: String,
         netsuite_sales_order_id: String,
         priority: Float,
-        rate_type: MetronomeSDK::Commit::rate_type,
+        rate_type: MetronomeSDK::Models::Commit::rate_type,
         rolled_over_from: MetronomeSDK::Commit::RolledOverFrom,
         rollover_fraction: Float,
         salesforce_opportunity_id: String,
@@ -34,7 +34,7 @@ module MetronomeSDK
 
       attr_accessor product: MetronomeSDK::Commit::Product
 
-      attr_accessor type: MetronomeSDK::Commit::type_
+      attr_accessor type: MetronomeSDK::Models::Commit::type_
 
       attr_reader access_schedule: MetronomeSDK::ScheduleDuration?
 
@@ -92,11 +92,11 @@ module MetronomeSDK
         MetronomeSDK::SchedulePointInTime
       ) -> MetronomeSDK::SchedulePointInTime
 
-      attr_reader ledger: ::Array[MetronomeSDK::Commit::ledger]?
+      attr_reader ledger: ::Array[MetronomeSDK::Models::Commit::ledger]?
 
       def ledger=: (
-        ::Array[MetronomeSDK::Commit::ledger]
-      ) -> ::Array[MetronomeSDK::Commit::ledger]
+        ::Array[MetronomeSDK::Models::Commit::ledger]
+      ) -> ::Array[MetronomeSDK::Models::Commit::ledger]
 
       attr_reader name: String?
 
@@ -110,11 +110,11 @@ module MetronomeSDK
 
       def priority=: (Float) -> Float
 
-      attr_reader rate_type: MetronomeSDK::Commit::rate_type?
+      attr_reader rate_type: MetronomeSDK::Models::Commit::rate_type?
 
       def rate_type=: (
-        MetronomeSDK::Commit::rate_type
-      ) -> MetronomeSDK::Commit::rate_type
+        MetronomeSDK::Models::Commit::rate_type
+      ) -> MetronomeSDK::Models::Commit::rate_type
 
       attr_reader rolled_over_from: MetronomeSDK::Commit::RolledOverFrom?
 
@@ -143,7 +143,7 @@ module MetronomeSDK
       def initialize: (
         id: String,
         product: MetronomeSDK::Commit::Product,
-        type: MetronomeSDK::Commit::type_,
+        type: MetronomeSDK::Models::Commit::type_,
         ?access_schedule: MetronomeSDK::ScheduleDuration,
         ?amount: Float,
         ?applicable_contract_ids: ::Array[String],
@@ -156,17 +156,45 @@ module MetronomeSDK
         ?description: String,
         ?invoice_contract: MetronomeSDK::Commit::InvoiceContract,
         ?invoice_schedule: MetronomeSDK::SchedulePointInTime,
-        ?ledger: ::Array[MetronomeSDK::Commit::ledger],
+        ?ledger: ::Array[MetronomeSDK::Models::Commit::ledger],
         ?name: String,
         ?netsuite_sales_order_id: String,
         ?priority: Float,
-        ?rate_type: MetronomeSDK::Commit::rate_type,
+        ?rate_type: MetronomeSDK::Models::Commit::rate_type,
         ?rolled_over_from: MetronomeSDK::Commit::RolledOverFrom,
         ?rollover_fraction: Float,
         ?salesforce_opportunity_id: String,
         ?specifiers: ::Array[MetronomeSDK::Commit::Specifier],
         ?uniqueness_key: String
       ) -> void
+
+      def to_hash: -> {
+        id: String,
+        product: MetronomeSDK::Commit::Product,
+        type: MetronomeSDK::Models::Commit::type_,
+        access_schedule: MetronomeSDK::ScheduleDuration,
+        amount: Float,
+        applicable_contract_ids: ::Array[String],
+        applicable_product_ids: ::Array[String],
+        applicable_product_tags: ::Array[String],
+        archived_at: Time,
+        balance: Float,
+        contract: MetronomeSDK::Commit::Contract,
+        custom_fields: ::Hash[Symbol, String],
+        description: String,
+        invoice_contract: MetronomeSDK::Commit::InvoiceContract,
+        invoice_schedule: MetronomeSDK::SchedulePointInTime,
+        ledger: ::Array[MetronomeSDK::Models::Commit::ledger],
+        name: String,
+        netsuite_sales_order_id: String,
+        priority: Float,
+        rate_type: MetronomeSDK::Models::Commit::rate_type,
+        rolled_over_from: MetronomeSDK::Commit::RolledOverFrom,
+        rollover_fraction: Float,
+        salesforce_opportunity_id: String,
+        specifiers: ::Array[MetronomeSDK::Commit::Specifier],
+        uniqueness_key: String
+      }
 
       type product = { id: String, name: String }
 
@@ -176,6 +204,8 @@ module MetronomeSDK
         attr_accessor name: String
 
         def initialize: (id: String, name: String) -> void
+
+        def to_hash: -> { id: String, name: String }
       end
 
       type type_ = :PREPAID | :POSTPAID
@@ -186,7 +216,7 @@ module MetronomeSDK
         PREPAID: :PREPAID
         POSTPAID: :POSTPAID
 
-        def self?.values: -> ::Array[MetronomeSDK::Commit::type_]
+        def self?.values: -> ::Array[MetronomeSDK::Models::Commit::type_]
       end
 
       type contract = { id: String }
@@ -195,6 +225,8 @@ module MetronomeSDK
         attr_accessor id: String
 
         def initialize: (id: String) -> void
+
+        def to_hash: -> { id: String }
       end
 
       type invoice_contract = { id: String }
@@ -203,6 +235,8 @@ module MetronomeSDK
         attr_accessor id: String
 
         def initialize: (id: String) -> void
+
+        def to_hash: -> { id: String }
       end
 
       type ledger =
@@ -228,7 +262,7 @@ module MetronomeSDK
             amount: Float,
             segment_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::type_
           }
 
         class PrepaidCommitSegmentStartLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
@@ -238,14 +272,21 @@ module MetronomeSDK
 
           attr_accessor timestamp: Time
 
-          attr_accessor type: MetronomeSDK::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::type_
+          attr_accessor type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::type_
 
           def initialize: (
             amount: Float,
             segment_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::type_
           ) -> void
+
+          def to_hash: -> {
+            amount: Float,
+            segment_id: String,
+            timestamp: Time,
+            type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::type_
+          }
 
           type type_ = :PREPAID_COMMIT_SEGMENT_START
 
@@ -254,7 +295,7 @@ module MetronomeSDK
 
             PREPAID_COMMIT_SEGMENT_START: :PREPAID_COMMIT_SEGMENT_START
 
-            def self?.values: -> ::Array[MetronomeSDK::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::type_]
+            def self?.values: -> ::Array[MetronomeSDK::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::type_]
           end
         end
 
@@ -264,7 +305,7 @@ module MetronomeSDK
             invoice_id: String,
             segment_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::type_
           }
 
         class PrepaidCommitAutomatedInvoiceDeductionLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
@@ -276,15 +317,23 @@ module MetronomeSDK
 
           attr_accessor timestamp: Time
 
-          attr_accessor type: MetronomeSDK::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::type_
+          attr_accessor type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::type_
 
           def initialize: (
             amount: Float,
             invoice_id: String,
             segment_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::type_
           ) -> void
+
+          def to_hash: -> {
+            amount: Float,
+            invoice_id: String,
+            segment_id: String,
+            timestamp: Time,
+            type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::type_
+          }
 
           type type_ = :PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
 
@@ -293,7 +342,7 @@ module MetronomeSDK
 
             PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION: :PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
 
-            def self?.values: -> ::Array[MetronomeSDK::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::type_]
+            def self?.values: -> ::Array[MetronomeSDK::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::type_]
           end
         end
 
@@ -303,7 +352,7 @@ module MetronomeSDK
             new_contract_id: String,
             segment_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::type_
           }
 
         class PrepaidCommitRolloverLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
@@ -315,15 +364,23 @@ module MetronomeSDK
 
           attr_accessor timestamp: Time
 
-          attr_accessor type: MetronomeSDK::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::type_
+          attr_accessor type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::type_
 
           def initialize: (
             amount: Float,
             new_contract_id: String,
             segment_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::type_
           ) -> void
+
+          def to_hash: -> {
+            amount: Float,
+            new_contract_id: String,
+            segment_id: String,
+            timestamp: Time,
+            type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::type_
+          }
 
           type type_ = :PREPAID_COMMIT_ROLLOVER
 
@@ -332,7 +389,7 @@ module MetronomeSDK
 
             PREPAID_COMMIT_ROLLOVER: :PREPAID_COMMIT_ROLLOVER
 
-            def self?.values: -> ::Array[MetronomeSDK::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::type_]
+            def self?.values: -> ::Array[MetronomeSDK::Models::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::type_]
           end
         end
 
@@ -341,7 +398,7 @@ module MetronomeSDK
             amount: Float,
             segment_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::type_
           }
 
         class PrepaidCommitExpirationLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
@@ -351,14 +408,21 @@ module MetronomeSDK
 
           attr_accessor timestamp: Time
 
-          attr_accessor type: MetronomeSDK::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::type_
+          attr_accessor type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::type_
 
           def initialize: (
             amount: Float,
             segment_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::type_
           ) -> void
+
+          def to_hash: -> {
+            amount: Float,
+            segment_id: String,
+            timestamp: Time,
+            type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::type_
+          }
 
           type type_ = :PREPAID_COMMIT_EXPIRATION
 
@@ -367,7 +431,7 @@ module MetronomeSDK
 
             PREPAID_COMMIT_EXPIRATION: :PREPAID_COMMIT_EXPIRATION
 
-            def self?.values: -> ::Array[MetronomeSDK::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::type_]
+            def self?.values: -> ::Array[MetronomeSDK::Models::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::type_]
           end
         end
 
@@ -377,7 +441,7 @@ module MetronomeSDK
             invoice_id: String,
             segment_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::type_
           }
 
         class PrepaidCommitCanceledLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
@@ -389,15 +453,23 @@ module MetronomeSDK
 
           attr_accessor timestamp: Time
 
-          attr_accessor type: MetronomeSDK::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::type_
+          attr_accessor type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::type_
 
           def initialize: (
             amount: Float,
             invoice_id: String,
             segment_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::type_
           ) -> void
+
+          def to_hash: -> {
+            amount: Float,
+            invoice_id: String,
+            segment_id: String,
+            timestamp: Time,
+            type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::type_
+          }
 
           type type_ = :PREPAID_COMMIT_CANCELED
 
@@ -406,7 +478,7 @@ module MetronomeSDK
 
             PREPAID_COMMIT_CANCELED: :PREPAID_COMMIT_CANCELED
 
-            def self?.values: -> ::Array[MetronomeSDK::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::type_]
+            def self?.values: -> ::Array[MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::type_]
           end
         end
 
@@ -416,7 +488,7 @@ module MetronomeSDK
             invoice_id: String,
             segment_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::type_
           }
 
         class PrepaidCommitCreditedLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
@@ -428,15 +500,23 @@ module MetronomeSDK
 
           attr_accessor timestamp: Time
 
-          attr_accessor type: MetronomeSDK::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::type_
+          attr_accessor type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::type_
 
           def initialize: (
             amount: Float,
             invoice_id: String,
             segment_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::type_
           ) -> void
+
+          def to_hash: -> {
+            amount: Float,
+            invoice_id: String,
+            segment_id: String,
+            timestamp: Time,
+            type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::type_
+          }
 
           type type_ = :PREPAID_COMMIT_CREDITED
 
@@ -445,7 +525,7 @@ module MetronomeSDK
 
             PREPAID_COMMIT_CREDITED: :PREPAID_COMMIT_CREDITED
 
-            def self?.values: -> ::Array[MetronomeSDK::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::type_]
+            def self?.values: -> ::Array[MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::type_]
           end
         end
 
@@ -453,7 +533,7 @@ module MetronomeSDK
           {
             amount: Float,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::type_
           }
 
         class PostpaidCommitInitialBalanceLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
@@ -461,13 +541,19 @@ module MetronomeSDK
 
           attr_accessor timestamp: Time
 
-          attr_accessor type: MetronomeSDK::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::type_
+          attr_accessor type: MetronomeSDK::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::type_
 
           def initialize: (
             amount: Float,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::type_
           ) -> void
+
+          def to_hash: -> {
+            amount: Float,
+            timestamp: Time,
+            type: MetronomeSDK::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::type_
+          }
 
           type type_ = :POSTPAID_COMMIT_INITIAL_BALANCE
 
@@ -476,7 +562,7 @@ module MetronomeSDK
 
             POSTPAID_COMMIT_INITIAL_BALANCE: :POSTPAID_COMMIT_INITIAL_BALANCE
 
-            def self?.values: -> ::Array[MetronomeSDK::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::type_]
+            def self?.values: -> ::Array[MetronomeSDK::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::type_]
           end
         end
 
@@ -486,7 +572,7 @@ module MetronomeSDK
             invoice_id: String,
             segment_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::type_
           }
 
         class PostpaidCommitAutomatedInvoiceDeductionLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
@@ -498,15 +584,23 @@ module MetronomeSDK
 
           attr_accessor timestamp: Time
 
-          attr_accessor type: MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::type_
+          attr_accessor type: MetronomeSDK::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::type_
 
           def initialize: (
             amount: Float,
             invoice_id: String,
             segment_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::type_
           ) -> void
+
+          def to_hash: -> {
+            amount: Float,
+            invoice_id: String,
+            segment_id: String,
+            timestamp: Time,
+            type: MetronomeSDK::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::type_
+          }
 
           type type_ = :POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
 
@@ -515,7 +609,7 @@ module MetronomeSDK
 
             POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION: :POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
 
-            def self?.values: -> ::Array[MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::type_]
+            def self?.values: -> ::Array[MetronomeSDK::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::type_]
           end
         end
 
@@ -525,7 +619,7 @@ module MetronomeSDK
             new_contract_id: String,
             segment_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::type_
           }
 
         class PostpaidCommitRolloverLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
@@ -537,15 +631,23 @@ module MetronomeSDK
 
           attr_accessor timestamp: Time
 
-          attr_accessor type: MetronomeSDK::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::type_
+          attr_accessor type: MetronomeSDK::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::type_
 
           def initialize: (
             amount: Float,
             new_contract_id: String,
             segment_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::type_
           ) -> void
+
+          def to_hash: -> {
+            amount: Float,
+            new_contract_id: String,
+            segment_id: String,
+            timestamp: Time,
+            type: MetronomeSDK::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::type_
+          }
 
           type type_ = :POSTPAID_COMMIT_ROLLOVER
 
@@ -554,7 +656,7 @@ module MetronomeSDK
 
             POSTPAID_COMMIT_ROLLOVER: :POSTPAID_COMMIT_ROLLOVER
 
-            def self?.values: -> ::Array[MetronomeSDK::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::type_]
+            def self?.values: -> ::Array[MetronomeSDK::Models::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::type_]
           end
         end
 
@@ -563,7 +665,7 @@ module MetronomeSDK
             amount: Float,
             invoice_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::type_
           }
 
         class PostpaidCommitTrueupLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
@@ -573,14 +675,21 @@ module MetronomeSDK
 
           attr_accessor timestamp: Time
 
-          attr_accessor type: MetronomeSDK::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::type_
+          attr_accessor type: MetronomeSDK::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::type_
 
           def initialize: (
             amount: Float,
             invoice_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::type_
           ) -> void
+
+          def to_hash: -> {
+            amount: Float,
+            invoice_id: String,
+            timestamp: Time,
+            type: MetronomeSDK::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::type_
+          }
 
           type type_ = :POSTPAID_COMMIT_TRUEUP
 
@@ -589,7 +698,7 @@ module MetronomeSDK
 
             POSTPAID_COMMIT_TRUEUP: :POSTPAID_COMMIT_TRUEUP
 
-            def self?.values: -> ::Array[MetronomeSDK::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::type_]
+            def self?.values: -> ::Array[MetronomeSDK::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::type_]
           end
         end
 
@@ -598,7 +707,7 @@ module MetronomeSDK
             amount: Float,
             reason: String,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PrepaidCommitManualLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry::type_
           }
 
         class PrepaidCommitManualLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
@@ -608,14 +717,21 @@ module MetronomeSDK
 
           attr_accessor timestamp: Time
 
-          attr_accessor type: MetronomeSDK::Commit::Ledger::PrepaidCommitManualLedgerEntry::type_
+          attr_accessor type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry::type_
 
           def initialize: (
             amount: Float,
             reason: String,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PrepaidCommitManualLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry::type_
           ) -> void
+
+          def to_hash: -> {
+            amount: Float,
+            reason: String,
+            timestamp: Time,
+            type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry::type_
+          }
 
           type type_ = :PREPAID_COMMIT_MANUAL
 
@@ -624,7 +740,7 @@ module MetronomeSDK
 
             PREPAID_COMMIT_MANUAL: :PREPAID_COMMIT_MANUAL
 
-            def self?.values: -> ::Array[MetronomeSDK::Commit::Ledger::PrepaidCommitManualLedgerEntry::type_]
+            def self?.values: -> ::Array[MetronomeSDK::Models::Commit::Ledger::PrepaidCommitManualLedgerEntry::type_]
           end
         end
 
@@ -633,7 +749,7 @@ module MetronomeSDK
             amount: Float,
             reason: String,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PostpaidCommitManualLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry::type_
           }
 
         class PostpaidCommitManualLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
@@ -643,14 +759,21 @@ module MetronomeSDK
 
           attr_accessor timestamp: Time
 
-          attr_accessor type: MetronomeSDK::Commit::Ledger::PostpaidCommitManualLedgerEntry::type_
+          attr_accessor type: MetronomeSDK::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry::type_
 
           def initialize: (
             amount: Float,
             reason: String,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PostpaidCommitManualLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry::type_
           ) -> void
+
+          def to_hash: -> {
+            amount: Float,
+            reason: String,
+            timestamp: Time,
+            type: MetronomeSDK::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry::type_
+          }
 
           type type_ = :POSTPAID_COMMIT_MANUAL
 
@@ -659,7 +782,7 @@ module MetronomeSDK
 
             POSTPAID_COMMIT_MANUAL: :POSTPAID_COMMIT_MANUAL
 
-            def self?.values: -> ::Array[MetronomeSDK::Commit::Ledger::PostpaidCommitManualLedgerEntry::type_]
+            def self?.values: -> ::Array[MetronomeSDK::Models::Commit::Ledger::PostpaidCommitManualLedgerEntry::type_]
           end
         end
 
@@ -667,7 +790,7 @@ module MetronomeSDK
           {
             amount: Float,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::type_
           }
 
         class PostpaidCommitExpirationLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
@@ -675,13 +798,19 @@ module MetronomeSDK
 
           attr_accessor timestamp: Time
 
-          attr_accessor type: MetronomeSDK::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::type_
+          attr_accessor type: MetronomeSDK::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::type_
 
           def initialize: (
             amount: Float,
             timestamp: Time,
-            type: MetronomeSDK::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::type_
+            type: MetronomeSDK::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::type_
           ) -> void
+
+          def to_hash: -> {
+            amount: Float,
+            timestamp: Time,
+            type: MetronomeSDK::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::type_
+          }
 
           type type_ = :POSTPAID_COMMIT_EXPIRATION
 
@@ -690,11 +819,11 @@ module MetronomeSDK
 
             POSTPAID_COMMIT_EXPIRATION: :POSTPAID_COMMIT_EXPIRATION
 
-            def self?.values: -> ::Array[MetronomeSDK::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::type_]
+            def self?.values: -> ::Array[MetronomeSDK::Models::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::type_]
           end
         end
 
-        def self?.variants: -> ::Array[MetronomeSDK::Commit::ledger]
+        def self?.variants: -> ::Array[MetronomeSDK::Models::Commit::ledger]
       end
 
       type rate_type = :COMMIT_RATE | :LIST_RATE
@@ -705,7 +834,7 @@ module MetronomeSDK
         COMMIT_RATE: :COMMIT_RATE
         LIST_RATE: :LIST_RATE
 
-        def self?.values: -> ::Array[MetronomeSDK::Commit::rate_type]
+        def self?.values: -> ::Array[MetronomeSDK::Models::Commit::rate_type]
       end
 
       type rolled_over_from = { commit_id: String, contract_id: String }
@@ -716,6 +845,8 @@ module MetronomeSDK
         attr_accessor contract_id: String
 
         def initialize: (commit_id: String, contract_id: String) -> void
+
+        def to_hash: -> { commit_id: String, contract_id: String }
       end
 
       type specifier =
@@ -753,6 +884,13 @@ module MetronomeSDK
           ?product_id: String,
           ?product_tags: ::Array[String]
         ) -> void
+
+        def to_hash: -> {
+          presentation_group_values: ::Hash[Symbol, String],
+          pricing_group_values: ::Hash[Symbol, String],
+          product_id: String,
+          product_tags: ::Array[String]
+        }
       end
     end
   end

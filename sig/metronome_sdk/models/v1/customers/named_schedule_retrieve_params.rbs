@@ -24,6 +24,13 @@ module MetronomeSDK
             ?covering_date: Time,
             ?request_options: MetronomeSDK::request_opts
           ) -> void
+
+          def to_hash: -> {
+            customer_id: String,
+            schedule_name: String,
+            covering_date: Time,
+            request_options: MetronomeSDK::RequestOptions
+          }
         end
       end
     end

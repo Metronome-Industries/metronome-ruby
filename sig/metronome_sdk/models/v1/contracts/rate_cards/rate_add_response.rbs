@@ -15,6 +15,10 @@ module MetronomeSDK
               data: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse::Data
             ) -> void
 
+            def to_hash: -> {
+              data: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse::Data
+            }
+
             type data =
               {
                 rate_type: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse::Data::rate_type,
@@ -89,6 +93,19 @@ module MetronomeSDK
                 ?use_list_prices: bool
               ) -> void
 
+              def to_hash: -> {
+                rate_type: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse::Data::rate_type,
+                commit_rate: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse::Data::CommitRate,
+                credit_type: MetronomeSDK::CreditTypeData,
+                custom_rate: ::Hash[Symbol, top],
+                is_prorated: bool,
+                price: Float,
+                pricing_group_values: ::Hash[Symbol, String],
+                quantity: Float,
+                tiers: ::Array[MetronomeSDK::Tier],
+                use_list_prices: bool
+              }
+
               type rate_type =
                 :FLAT | :PERCENTAGE | :SUBSCRIPTION | :CUSTOM | :TIERED
 
@@ -129,6 +146,12 @@ module MetronomeSDK
                   ?price: Float,
                   ?tiers: ::Array[MetronomeSDK::Tier]
                 ) -> void
+
+                def to_hash: -> {
+                  rate_type: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse::Data::CommitRate::rate_type,
+                  price: Float,
+                  tiers: ::Array[MetronomeSDK::Tier]
+                }
 
                 type rate_type =
                   :FLAT | :PERCENTAGE | :SUBSCRIPTION | :TIERED | :CUSTOM

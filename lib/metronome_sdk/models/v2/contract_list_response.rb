@@ -49,7 +49,7 @@ module MetronomeSDK
 
           # @!attribute scheduled_charges
           #
-          #   @return [Array<MetronomeSDK::ScheduledCharge>]
+          #   @return [Array<MetronomeSDK::Models::ScheduledCharge>]
           required :scheduled_charges,
                    -> {
                      MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ScheduledCharge]
@@ -104,7 +104,7 @@ module MetronomeSDK
           # @!attribute discounts
           #   This field's availability is dependent on your client's configuration.
           #
-          #   @return [Array<MetronomeSDK::Discount>, nil]
+          #   @return [Array<MetronomeSDK::Models::Discount>, nil]
           optional :discounts, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Discount] }
 
           # @!attribute ending_before
@@ -147,7 +147,7 @@ module MetronomeSDK
           # @!attribute professional_services
           #   This field's availability is dependent on your client's configuration.
           #
-          #   @return [Array<MetronomeSDK::ProService>, nil]
+          #   @return [Array<MetronomeSDK::Models::ProService>, nil]
           optional :professional_services,
                    -> {
                      MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ProService]
@@ -229,7 +229,7 @@ module MetronomeSDK
           #
           #   @param overrides [Array<MetronomeSDK::Models::V2::ContractListResponse::Data::Override>]
           #
-          #   @param scheduled_charges [Array<MetronomeSDK::ScheduledCharge>]
+          #   @param scheduled_charges [Array<MetronomeSDK::Models::ScheduledCharge>]
           #
           #   @param starting_at [Time]
           #
@@ -247,7 +247,7 @@ module MetronomeSDK
           #
           #   @param customer_billing_provider_configuration [MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration] This field's availability is dependent on your client's configuration.
           #
-          #   @param discounts [Array<MetronomeSDK::Discount>] This field's availability is dependent on your client's configuration.
+          #   @param discounts [Array<MetronomeSDK::Models::Discount>] This field's availability is dependent on your client's configuration.
           #
           #   @param ending_before [Time]
           #
@@ -261,7 +261,7 @@ module MetronomeSDK
           #
           #   @param prepaid_balance_threshold_configuration [MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration]
           #
-          #   @param professional_services [Array<MetronomeSDK::ProService>] This field's availability is dependent on your client's configuration.
+          #   @param professional_services [Array<MetronomeSDK::Models::ProService>] This field's availability is dependent on your client's configuration.
           #
           #   @param rate_card_id [String]
           #
@@ -301,7 +301,7 @@ module MetronomeSDK
             #   The schedule that the customer will gain access to the credits purposed with
             #   this commit.
             #
-            #   @return [MetronomeSDK::ScheduleDuration, nil]
+            #   @return [MetronomeSDK::Models::ScheduleDuration, nil]
             optional :access_schedule, -> { MetronomeSDK::ScheduleDuration }
 
             # @!attribute applicable_contract_ids
@@ -362,7 +362,7 @@ module MetronomeSDK
             # @!attribute invoice_schedule
             #   The schedule that the customer will be invoiced for this commit.
             #
-            #   @return [MetronomeSDK::SchedulePointInTime, nil]
+            #   @return [MetronomeSDK::Models::SchedulePointInTime, nil]
             optional :invoice_schedule, -> { MetronomeSDK::SchedulePointInTime }
 
             # @!attribute ledger
@@ -432,7 +432,7 @@ module MetronomeSDK
             #
             #   @param type [Symbol, MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Type]
             #
-            #   @param access_schedule [MetronomeSDK::ScheduleDuration] The schedule that the customer will gain access to the credits purposed with thi
+            #   @param access_schedule [MetronomeSDK::Models::ScheduleDuration] The schedule that the customer will gain access to the credits purposed with thi
             #
             #   @param applicable_contract_ids [Array<String>]
             #
@@ -452,7 +452,7 @@ module MetronomeSDK
             #
             #   @param invoice_contract [MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceContract] The contract that this commit will be billed on.
             #
-            #   @param invoice_schedule [MetronomeSDK::SchedulePointInTime] The schedule that the customer will be invoiced for this commit.
+            #   @param invoice_schedule [MetronomeSDK::Models::SchedulePointInTime] The schedule that the customer will be invoiced for this commit.
             #
             #   @param ledger [Array<MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry, MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry, MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry, MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry, MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry, MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry, MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry, MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry, MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry, MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry, MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry>] A list of ordered events that impact the balance of a commit. For example, an in
             #
@@ -1317,7 +1317,7 @@ module MetronomeSDK
 
               # @!attribute credit_type
               #
-              #   @return [MetronomeSDK::CreditTypeData, nil]
+              #   @return [MetronomeSDK::Models::CreditTypeData, nil]
               optional :credit_type, -> { MetronomeSDK::CreditTypeData }
 
               # @!attribute custom_rate
@@ -1351,7 +1351,7 @@ module MetronomeSDK
               # @!attribute tiers
               #   Only set for TIERED rate_type.
               #
-              #   @return [Array<MetronomeSDK::Tier>, nil]
+              #   @return [Array<MetronomeSDK::Models::Tier>, nil]
               optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
 
               # @!method initialize(rate_type:, credit_type: nil, custom_rate: nil, is_prorated: nil, price: nil, quantity: nil, tiers: nil)
@@ -1361,7 +1361,7 @@ module MetronomeSDK
               #
               #   @param rate_type [Symbol, MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::RateType]
               #
-              #   @param credit_type [MetronomeSDK::CreditTypeData]
+              #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
               #
               #   @param custom_rate [Hash{Symbol=>Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate processo
               #
@@ -1371,7 +1371,7 @@ module MetronomeSDK
               #
               #   @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
               #
-              #   @param tiers [Array<MetronomeSDK::Tier>] Only set for TIERED rate_type.
+              #   @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
 
               # @see MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate#rate_type
               module RateType
@@ -1553,7 +1553,7 @@ module MetronomeSDK
             # @!attribute access_schedule
             #   The schedule that the customer will gain access to the credits.
             #
-            #   @return [MetronomeSDK::ScheduleDuration, nil]
+            #   @return [MetronomeSDK::Models::ScheduleDuration, nil]
             optional :access_schedule, -> { MetronomeSDK::ScheduleDuration }
 
             # @!attribute applicable_contract_ids
@@ -1650,7 +1650,7 @@ module MetronomeSDK
             #
             #   @param type [Symbol, MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Type]
             #
-            #   @param access_schedule [MetronomeSDK::ScheduleDuration] The schedule that the customer will gain access to the credits.
+            #   @param access_schedule [MetronomeSDK::Models::ScheduleDuration] The schedule that the customer will gain access to the credits.
             #
             #   @param applicable_contract_ids [Array<String>]
             #

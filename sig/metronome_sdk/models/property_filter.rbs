@@ -29,6 +29,13 @@ module MetronomeSDK
         ?in_values: ::Array[String],
         ?not_in_values: ::Array[String]
       ) -> void
+
+      def to_hash: -> {
+        name: String,
+        exists: bool,
+        in_values: ::Array[String],
+        not_in_values: ::Array[String]
+      }
     end
   end
 end

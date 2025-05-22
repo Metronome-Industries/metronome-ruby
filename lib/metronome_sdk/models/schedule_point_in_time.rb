@@ -5,18 +5,18 @@ module MetronomeSDK
     class SchedulePointInTime < MetronomeSDK::Internal::Type::BaseModel
       # @!attribute credit_type
       #
-      #   @return [MetronomeSDK::CreditTypeData, nil]
+      #   @return [MetronomeSDK::Models::CreditTypeData, nil]
       optional :credit_type, -> { MetronomeSDK::CreditTypeData }
 
       # @!attribute schedule_items
       #
-      #   @return [Array<MetronomeSDK::SchedulePointInTime::ScheduleItem>, nil]
+      #   @return [Array<MetronomeSDK::Models::SchedulePointInTime::ScheduleItem>, nil]
       optional :schedule_items,
                -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::SchedulePointInTime::ScheduleItem] }
 
       # @!method initialize(credit_type: nil, schedule_items: nil)
-      #   @param credit_type [MetronomeSDK::CreditTypeData]
-      #   @param schedule_items [Array<MetronomeSDK::SchedulePointInTime::ScheduleItem>]
+      #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
+      #   @param schedule_items [Array<MetronomeSDK::Models::SchedulePointInTime::ScheduleItem>]
 
       class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute id

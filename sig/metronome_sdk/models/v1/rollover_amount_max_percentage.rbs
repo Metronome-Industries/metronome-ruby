@@ -3,19 +3,24 @@ module MetronomeSDK
     module V1
       type rollover_amount_max_percentage =
         {
-          type: MetronomeSDK::V1::RolloverAmountMaxPercentage::type_,
+          type: MetronomeSDK::Models::V1::RolloverAmountMaxPercentage::type_,
           value: Float
         }
 
       class RolloverAmountMaxPercentage < MetronomeSDK::Internal::Type::BaseModel
-        attr_accessor type: MetronomeSDK::V1::RolloverAmountMaxPercentage::type_
+        attr_accessor type: MetronomeSDK::Models::V1::RolloverAmountMaxPercentage::type_
 
         attr_accessor value: Float
 
         def initialize: (
-          type: MetronomeSDK::V1::RolloverAmountMaxPercentage::type_,
+          type: MetronomeSDK::Models::V1::RolloverAmountMaxPercentage::type_,
           value: Float
         ) -> void
+
+        def to_hash: -> {
+          type: MetronomeSDK::Models::V1::RolloverAmountMaxPercentage::type_,
+          value: Float
+        }
 
         type type_ = :MAX_PERCENTAGE
 
@@ -24,7 +29,7 @@ module MetronomeSDK
 
           MAX_PERCENTAGE: :MAX_PERCENTAGE
 
-          def self?.values: -> ::Array[MetronomeSDK::V1::RolloverAmountMaxPercentage::type_]
+          def self?.values: -> ::Array[MetronomeSDK::Models::V1::RolloverAmountMaxPercentage::type_]
         end
       end
     end

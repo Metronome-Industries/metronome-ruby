@@ -17,6 +17,11 @@ module MetronomeSDK
           next_page: String?
         ) -> void
 
+        def to_hash: -> {
+          data: ::Array[MetronomeSDK::Models::V1::UsageListResponse::Data],
+          next_page: String?
+        }
+
         type data =
           {
             billable_metric_id: String,
@@ -54,6 +59,16 @@ module MetronomeSDK
             value: Float?,
             ?groups: ::Hash[Symbol, Float?]
           ) -> void
+
+          def to_hash: -> {
+            billable_metric_id: String,
+            billable_metric_name: String,
+            customer_id: String,
+            end_timestamp: Time,
+            start_timestamp: Time,
+            value: Float?,
+            groups: ::Hash[Symbol, Float?]
+          }
         end
       end
     end

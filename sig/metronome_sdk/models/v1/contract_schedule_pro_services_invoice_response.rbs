@@ -10,6 +10,8 @@ module MetronomeSDK
         def initialize: (
           data: ::Array[MetronomeSDK::V1::Customers::Invoice]
         ) -> void
+
+        def to_hash: -> { data: ::Array[MetronomeSDK::V1::Customers::Invoice] }
       end
     end
   end

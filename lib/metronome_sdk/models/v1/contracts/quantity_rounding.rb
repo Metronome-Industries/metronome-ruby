@@ -12,7 +12,7 @@ module MetronomeSDK
 
           # @!attribute rounding_method
           #
-          #   @return [Symbol, MetronomeSDK::V1::Contracts::QuantityRounding::RoundingMethod]
+          #   @return [Symbol, MetronomeSDK::Models::V1::Contracts::QuantityRounding::RoundingMethod]
           required :rounding_method,
                    enum: -> {
                      MetronomeSDK::V1::Contracts::QuantityRounding::RoundingMethod
@@ -25,9 +25,9 @@ module MetronomeSDK
           #   rounded up to the nearest integer.
           #
           #   @param decimal_places [Float]
-          #   @param rounding_method [Symbol, MetronomeSDK::V1::Contracts::QuantityRounding::RoundingMethod]
+          #   @param rounding_method [Symbol, MetronomeSDK::Models::V1::Contracts::QuantityRounding::RoundingMethod]
 
-          # @see MetronomeSDK::V1::Contracts::QuantityRounding#rounding_method
+          # @see MetronomeSDK::Models::V1::Contracts::QuantityRounding#rounding_method
           module RoundingMethod
             extend MetronomeSDK::Internal::Type::Enum
 

@@ -24,6 +24,12 @@ module MetronomeSDK
               ?request_options: MetronomeSDK::request_opts
             ) -> void
 
+            def to_hash: -> {
+              product_moves: ::Array[MetronomeSDK::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove],
+              rate_card_id: String,
+              request_options: MetronomeSDK::RequestOptions
+            }
+
             type product_move = { position: Float, product_id: String }
 
             class ProductMove < MetronomeSDK::Internal::Type::BaseModel
@@ -32,6 +38,8 @@ module MetronomeSDK
               attr_accessor product_id: String
 
               def initialize: (position: Float, product_id: String) -> void
+
+              def to_hash: -> { position: Float, product_id: String }
             end
           end
         end

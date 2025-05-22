@@ -10,18 +10,18 @@ module MetronomeSDK
 
       # @!attribute product
       #
-      #   @return [MetronomeSDK::Credit::Product]
+      #   @return [MetronomeSDK::Models::Credit::Product]
       required :product, -> { MetronomeSDK::Credit::Product }
 
       # @!attribute type
       #
-      #   @return [Symbol, MetronomeSDK::Credit::Type]
+      #   @return [Symbol, MetronomeSDK::Models::Credit::Type]
       required :type, enum: -> { MetronomeSDK::Credit::Type }
 
       # @!attribute access_schedule
       #   The schedule that the customer will gain access to the credits.
       #
-      #   @return [MetronomeSDK::ScheduleDuration, nil]
+      #   @return [MetronomeSDK::Models::ScheduleDuration, nil]
       optional :access_schedule, -> { MetronomeSDK::ScheduleDuration }
 
       # @!attribute applicable_contract_ids
@@ -54,7 +54,7 @@ module MetronomeSDK
 
       # @!attribute contract
       #
-      #   @return [MetronomeSDK::Credit::Contract, nil]
+      #   @return [MetronomeSDK::Models::Credit::Contract, nil]
       optional :contract, -> { MetronomeSDK::Credit::Contract }
 
       # @!attribute custom_fields
@@ -71,7 +71,7 @@ module MetronomeSDK
       #   A list of ordered events that impact the balance of a credit. For example, an
       #   invoice deduction or an expiration.
       #
-      #   @return [Array<MetronomeSDK::Credit::Ledger::CreditSegmentStartLedgerEntry, MetronomeSDK::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Credit::Ledger::CreditExpirationLedgerEntry, MetronomeSDK::Credit::Ledger::CreditCanceledLedgerEntry, MetronomeSDK::Credit::Ledger::CreditCreditedLedgerEntry, MetronomeSDK::Credit::Ledger::CreditManualLedgerEntry>, nil]
+      #   @return [Array<MetronomeSDK::Models::Credit::Ledger::CreditSegmentStartLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditExpirationLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditManualLedgerEntry>, nil]
       optional :ledger, -> { MetronomeSDK::Internal::Type::ArrayOf[union: MetronomeSDK::Credit::Ledger] }
 
       # @!attribute name
@@ -94,7 +94,7 @@ module MetronomeSDK
 
       # @!attribute rate_type
       #
-      #   @return [Symbol, MetronomeSDK::Credit::RateType, nil]
+      #   @return [Symbol, MetronomeSDK::Models::Credit::RateType, nil]
       optional :rate_type, enum: -> { MetronomeSDK::Credit::RateType }
 
       # @!attribute salesforce_opportunity_id
@@ -108,7 +108,7 @@ module MetronomeSDK
       #   or credit. A customer's usage needs to meet the condition of at least one of the
       #   specifiers to contribute to a commit's or credit's drawdown.
       #
-      #   @return [Array<MetronomeSDK::Credit::Specifier>, nil]
+      #   @return [Array<MetronomeSDK::Models::Credit::Specifier>, nil]
       optional :specifiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Credit::Specifier] }
 
       # @!attribute uniqueness_key
@@ -121,16 +121,16 @@ module MetronomeSDK
       optional :uniqueness_key, String
 
       # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, balance: nil, contract: nil, custom_fields: nil, description: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, salesforce_opportunity_id: nil, specifiers: nil, uniqueness_key: nil)
-      #   Some parameter documentations has been truncated, see {MetronomeSDK::Credit} for
-      #   more details.
+      #   Some parameter documentations has been truncated, see
+      #   {MetronomeSDK::Models::Credit} for more details.
       #
       #   @param id [String]
       #
-      #   @param product [MetronomeSDK::Credit::Product]
+      #   @param product [MetronomeSDK::Models::Credit::Product]
       #
-      #   @param type [Symbol, MetronomeSDK::Credit::Type]
+      #   @param type [Symbol, MetronomeSDK::Models::Credit::Type]
       #
-      #   @param access_schedule [MetronomeSDK::ScheduleDuration] The schedule that the customer will gain access to the credits.
+      #   @param access_schedule [MetronomeSDK::Models::ScheduleDuration] The schedule that the customer will gain access to the credits.
       #
       #   @param applicable_contract_ids [Array<String>]
       #
@@ -140,13 +140,13 @@ module MetronomeSDK
       #
       #   @param balance [Float] The current balance of the credit or commit. This balance reflects the amount of
       #
-      #   @param contract [MetronomeSDK::Credit::Contract]
+      #   @param contract [MetronomeSDK::Models::Credit::Contract]
       #
       #   @param custom_fields [Hash{Symbol=>String}]
       #
       #   @param description [String]
       #
-      #   @param ledger [Array<MetronomeSDK::Credit::Ledger::CreditSegmentStartLedgerEntry, MetronomeSDK::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Credit::Ledger::CreditExpirationLedgerEntry, MetronomeSDK::Credit::Ledger::CreditCanceledLedgerEntry, MetronomeSDK::Credit::Ledger::CreditCreditedLedgerEntry, MetronomeSDK::Credit::Ledger::CreditManualLedgerEntry>] A list of ordered events that impact the balance of a credit. For example, an in
+      #   @param ledger [Array<MetronomeSDK::Models::Credit::Ledger::CreditSegmentStartLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditExpirationLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditManualLedgerEntry>] A list of ordered events that impact the balance of a credit. For example, an in
       #
       #   @param name [String]
       #
@@ -154,15 +154,15 @@ module MetronomeSDK
       #
       #   @param priority [Float] If multiple credits or commits are applicable, the one with the lower priority w
       #
-      #   @param rate_type [Symbol, MetronomeSDK::Credit::RateType]
+      #   @param rate_type [Symbol, MetronomeSDK::Models::Credit::RateType]
       #
       #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
       #
-      #   @param specifiers [Array<MetronomeSDK::Credit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
+      #   @param specifiers [Array<MetronomeSDK::Models::Credit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
       #
       #   @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a commit or credit i
 
-      # @see MetronomeSDK::Credit#product
+      # @see MetronomeSDK::Models::Credit#product
       class Product < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute id
         #
@@ -179,7 +179,7 @@ module MetronomeSDK
         #   @param name [String]
       end
 
-      # @see MetronomeSDK::Credit#type
+      # @see MetronomeSDK::Models::Credit#type
       module Type
         extend MetronomeSDK::Internal::Type::Enum
 
@@ -189,7 +189,7 @@ module MetronomeSDK
         #   @return [Array<Symbol>]
       end
 
-      # @see MetronomeSDK::Credit#contract
+      # @see MetronomeSDK::Models::Credit#contract
       class Contract < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute id
         #
@@ -233,16 +233,16 @@ module MetronomeSDK
 
           # @!attribute type
           #
-          #   @return [Symbol, MetronomeSDK::Credit::Ledger::CreditSegmentStartLedgerEntry::Type]
+          #   @return [Symbol, MetronomeSDK::Models::Credit::Ledger::CreditSegmentStartLedgerEntry::Type]
           required :type, enum: -> { MetronomeSDK::Credit::Ledger::CreditSegmentStartLedgerEntry::Type }
 
           # @!method initialize(amount:, segment_id:, timestamp:, type:)
           #   @param amount [Float]
           #   @param segment_id [String]
           #   @param timestamp [Time]
-          #   @param type [Symbol, MetronomeSDK::Credit::Ledger::CreditSegmentStartLedgerEntry::Type]
+          #   @param type [Symbol, MetronomeSDK::Models::Credit::Ledger::CreditSegmentStartLedgerEntry::Type]
 
-          # @see MetronomeSDK::Credit::Ledger::CreditSegmentStartLedgerEntry#type
+          # @see MetronomeSDK::Models::Credit::Ledger::CreditSegmentStartLedgerEntry#type
           module Type
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -276,7 +276,7 @@ module MetronomeSDK
 
           # @!attribute type
           #
-          #   @return [Symbol, MetronomeSDK::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type]
+          #   @return [Symbol, MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type]
           required :type,
                    enum: -> { MetronomeSDK::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type }
 
@@ -285,9 +285,9 @@ module MetronomeSDK
           #   @param invoice_id [String]
           #   @param segment_id [String]
           #   @param timestamp [Time]
-          #   @param type [Symbol, MetronomeSDK::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type]
+          #   @param type [Symbol, MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type]
 
-          # @see MetronomeSDK::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry#type
+          # @see MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry#type
           module Type
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -316,16 +316,16 @@ module MetronomeSDK
 
           # @!attribute type
           #
-          #   @return [Symbol, MetronomeSDK::Credit::Ledger::CreditExpirationLedgerEntry::Type]
+          #   @return [Symbol, MetronomeSDK::Models::Credit::Ledger::CreditExpirationLedgerEntry::Type]
           required :type, enum: -> { MetronomeSDK::Credit::Ledger::CreditExpirationLedgerEntry::Type }
 
           # @!method initialize(amount:, segment_id:, timestamp:, type:)
           #   @param amount [Float]
           #   @param segment_id [String]
           #   @param timestamp [Time]
-          #   @param type [Symbol, MetronomeSDK::Credit::Ledger::CreditExpirationLedgerEntry::Type]
+          #   @param type [Symbol, MetronomeSDK::Models::Credit::Ledger::CreditExpirationLedgerEntry::Type]
 
-          # @see MetronomeSDK::Credit::Ledger::CreditExpirationLedgerEntry#type
+          # @see MetronomeSDK::Models::Credit::Ledger::CreditExpirationLedgerEntry#type
           module Type
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -359,7 +359,7 @@ module MetronomeSDK
 
           # @!attribute type
           #
-          #   @return [Symbol, MetronomeSDK::Credit::Ledger::CreditCanceledLedgerEntry::Type]
+          #   @return [Symbol, MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry::Type]
           required :type, enum: -> { MetronomeSDK::Credit::Ledger::CreditCanceledLedgerEntry::Type }
 
           # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
@@ -367,9 +367,9 @@ module MetronomeSDK
           #   @param invoice_id [String]
           #   @param segment_id [String]
           #   @param timestamp [Time]
-          #   @param type [Symbol, MetronomeSDK::Credit::Ledger::CreditCanceledLedgerEntry::Type]
+          #   @param type [Symbol, MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry::Type]
 
-          # @see MetronomeSDK::Credit::Ledger::CreditCanceledLedgerEntry#type
+          # @see MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry#type
           module Type
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -403,7 +403,7 @@ module MetronomeSDK
 
           # @!attribute type
           #
-          #   @return [Symbol, MetronomeSDK::Credit::Ledger::CreditCreditedLedgerEntry::Type]
+          #   @return [Symbol, MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry::Type]
           required :type, enum: -> { MetronomeSDK::Credit::Ledger::CreditCreditedLedgerEntry::Type }
 
           # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
@@ -411,9 +411,9 @@ module MetronomeSDK
           #   @param invoice_id [String]
           #   @param segment_id [String]
           #   @param timestamp [Time]
-          #   @param type [Symbol, MetronomeSDK::Credit::Ledger::CreditCreditedLedgerEntry::Type]
+          #   @param type [Symbol, MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry::Type]
 
-          # @see MetronomeSDK::Credit::Ledger::CreditCreditedLedgerEntry#type
+          # @see MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry#type
           module Type
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -442,16 +442,16 @@ module MetronomeSDK
 
           # @!attribute type
           #
-          #   @return [Symbol, MetronomeSDK::Credit::Ledger::CreditManualLedgerEntry::Type]
+          #   @return [Symbol, MetronomeSDK::Models::Credit::Ledger::CreditManualLedgerEntry::Type]
           required :type, enum: -> { MetronomeSDK::Credit::Ledger::CreditManualLedgerEntry::Type }
 
           # @!method initialize(amount:, reason:, timestamp:, type:)
           #   @param amount [Float]
           #   @param reason [String]
           #   @param timestamp [Time]
-          #   @param type [Symbol, MetronomeSDK::Credit::Ledger::CreditManualLedgerEntry::Type]
+          #   @param type [Symbol, MetronomeSDK::Models::Credit::Ledger::CreditManualLedgerEntry::Type]
 
-          # @see MetronomeSDK::Credit::Ledger::CreditManualLedgerEntry#type
+          # @see MetronomeSDK::Models::Credit::Ledger::CreditManualLedgerEntry#type
           module Type
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -463,10 +463,10 @@ module MetronomeSDK
         end
 
         # @!method self.variants
-        #   @return [Array(MetronomeSDK::Credit::Ledger::CreditSegmentStartLedgerEntry, MetronomeSDK::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Credit::Ledger::CreditExpirationLedgerEntry, MetronomeSDK::Credit::Ledger::CreditCanceledLedgerEntry, MetronomeSDK::Credit::Ledger::CreditCreditedLedgerEntry, MetronomeSDK::Credit::Ledger::CreditManualLedgerEntry)]
+        #   @return [Array(MetronomeSDK::Models::Credit::Ledger::CreditSegmentStartLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditExpirationLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditManualLedgerEntry)]
       end
 
-      # @see MetronomeSDK::Credit#rate_type
+      # @see MetronomeSDK::Models::Credit#rate_type
       module RateType
         extend MetronomeSDK::Internal::Type::Enum
 
@@ -503,7 +503,7 @@ module MetronomeSDK
 
         # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
         #   Some parameter documentations has been truncated, see
-        #   {MetronomeSDK::Credit::Specifier} for more details.
+        #   {MetronomeSDK::Models::Credit::Specifier} for more details.
         #
         #   @param presentation_group_values [Hash{Symbol=>String}]
         #
