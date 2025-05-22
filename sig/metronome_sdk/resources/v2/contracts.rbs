@@ -44,6 +44,8 @@ module MetronomeSDK
           ?update_contract_end_date: Time?,
           ?update_credits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCredit],
           ?update_prepaid_balance_threshold_configuration: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration,
+          ?update_recurring_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit],
+          ?update_recurring_credits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit],
           ?update_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateScheduledCharge],
           ?update_spend_threshold_configuration: MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration,
           ?request_options: MetronomeSDK::request_opts

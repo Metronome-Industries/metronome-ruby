@@ -25,6 +25,8 @@ module MetronomeSDK
           update_contract_end_date: Time?,
           update_credits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCredit],
           update_prepaid_balance_threshold_configuration: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration,
+          update_recurring_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit],
+          update_recurring_credits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit],
           update_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateScheduledCharge],
           update_spend_threshold_configuration: MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration
         }
@@ -152,6 +154,18 @@ module MetronomeSDK
           MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration
         ) -> MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration
 
+        attr_reader update_recurring_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit]?
+
+        def update_recurring_commits=: (
+          ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit]
+        ) -> ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit]
+
+        attr_reader update_recurring_credits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit]?
+
+        def update_recurring_credits=: (
+          ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit]
+        ) -> ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit]
+
         attr_reader update_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateScheduledCharge]?
 
         def update_scheduled_charges=: (
@@ -187,6 +201,8 @@ module MetronomeSDK
           ?update_contract_end_date: Time?,
           ?update_credits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCredit],
           ?update_prepaid_balance_threshold_configuration: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration,
+          ?update_recurring_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit],
+          ?update_recurring_credits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit],
           ?update_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateScheduledCharge],
           ?update_spend_threshold_configuration: MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration,
           ?request_options: MetronomeSDK::request_opts
@@ -215,6 +231,8 @@ module MetronomeSDK
           update_contract_end_date: Time?,
           update_credits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCredit],
           update_prepaid_balance_threshold_configuration: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration,
+          update_recurring_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit],
+          update_recurring_credits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit],
           update_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateScheduledCharge],
           update_spend_threshold_configuration: MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration,
           request_options: MetronomeSDK::RequestOptions
@@ -3442,6 +3460,125 @@ module MetronomeSDK
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type]
             end
+          end
+        end
+
+        type update_recurring_commit =
+          {
+            recurring_commit_id: String,
+            access_amount: MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::AccessAmount,
+            ending_before: Time?,
+            invoice_amount: MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::InvoiceAmount
+          }
+
+        class UpdateRecurringCommit < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor recurring_commit_id: String
+
+          attr_reader access_amount: MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::AccessAmount?
+
+          def access_amount=: (
+            MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::AccessAmount
+          ) -> MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::AccessAmount
+
+          attr_accessor ending_before: Time?
+
+          attr_reader invoice_amount: MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::InvoiceAmount?
+
+          def invoice_amount=: (
+            MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::InvoiceAmount
+          ) -> MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::InvoiceAmount
+
+          def initialize: (
+            recurring_commit_id: String,
+            ?access_amount: MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::AccessAmount,
+            ?ending_before: Time?,
+            ?invoice_amount: MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::InvoiceAmount
+          ) -> void
+
+          def to_hash: -> {
+            recurring_commit_id: String,
+            access_amount: MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::AccessAmount,
+            ending_before: Time?,
+            invoice_amount: MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::InvoiceAmount
+          }
+
+          type access_amount = { quantity: Float, unit_price: Float }
+
+          class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
+            attr_reader quantity: Float?
+
+            def quantity=: (Float) -> Float
+
+            attr_reader unit_price: Float?
+
+            def unit_price=: (Float) -> Float
+
+            def initialize: (?quantity: Float, ?unit_price: Float) -> void
+
+            def to_hash: -> { quantity: Float, unit_price: Float }
+          end
+
+          type invoice_amount = { quantity: Float, unit_price: Float }
+
+          class InvoiceAmount < MetronomeSDK::Internal::Type::BaseModel
+            attr_reader quantity: Float?
+
+            def quantity=: (Float) -> Float
+
+            attr_reader unit_price: Float?
+
+            def unit_price=: (Float) -> Float
+
+            def initialize: (?quantity: Float, ?unit_price: Float) -> void
+
+            def to_hash: -> { quantity: Float, unit_price: Float }
+          end
+        end
+
+        type update_recurring_credit =
+          {
+            recurring_credit_id: String,
+            access_amount: MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::AccessAmount,
+            ending_before: Time?
+          }
+
+        class UpdateRecurringCredit < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor recurring_credit_id: String
+
+          attr_reader access_amount: MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::AccessAmount?
+
+          def access_amount=: (
+            MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::AccessAmount
+          ) -> MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::AccessAmount
+
+          attr_accessor ending_before: Time?
+
+          def initialize: (
+            recurring_credit_id: String,
+            ?access_amount: MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::AccessAmount,
+            ?ending_before: Time?
+          ) -> void
+
+          def to_hash: -> {
+            recurring_credit_id: String,
+            access_amount: MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::AccessAmount,
+            ending_before: Time?
+          }
+
+          type access_amount = { quantity: Float, unit_price: Float }
+
+          class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
+            attr_reader quantity: Float?
+
+            def quantity=: (Float) -> Float
+
+            attr_reader unit_price: Float?
+
+            def unit_price=: (Float) -> Float
+
+            def initialize: (?quantity: Float, ?unit_price: Float) -> void
+
+            def to_hash: -> { quantity: Float, unit_price: Float }
           end
         end
 

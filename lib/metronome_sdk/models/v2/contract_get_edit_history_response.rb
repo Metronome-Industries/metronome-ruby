@@ -130,6 +130,18 @@ module MetronomeSDK
           optional :update_discounts,
                    -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount] }
 
+          # @!attribute update_recurring_commits
+          #
+          #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit>, nil]
+          optional :update_recurring_commits,
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit] }
+
+          # @!attribute update_recurring_credits
+          #
+          #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit>, nil]
+          optional :update_recurring_credits,
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit] }
+
           # @!attribute update_refund_invoices
           #
           #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRefundInvoice>, nil]
@@ -142,7 +154,7 @@ module MetronomeSDK
           optional :update_scheduled_charges,
                    -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge] }
 
-          # @!method initialize(id:, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_pro_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_usage_filters: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, timestamp: nil, update_commits: nil, update_contract_end_date: nil, update_credits: nil, update_discounts: nil, update_refund_invoices: nil, update_scheduled_charges: nil)
+          # @!method initialize(id:, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_pro_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_usage_filters: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, timestamp: nil, update_commits: nil, update_contract_end_date: nil, update_credits: nil, update_discounts: nil, update_recurring_commits: nil, update_recurring_credits: nil, update_refund_invoices: nil, update_scheduled_charges: nil)
           #   @param id [String]
           #   @param add_commits [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit>]
           #   @param add_credits [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit>]
@@ -163,6 +175,8 @@ module MetronomeSDK
           #   @param update_contract_end_date [Time]
           #   @param update_credits [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit>]
           #   @param update_discounts [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount>]
+          #   @param update_recurring_commits [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit>]
+          #   @param update_recurring_credits [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit>]
           #   @param update_refund_invoices [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRefundInvoice>]
           #   @param update_scheduled_charges [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateScheduledCharge>]
 
@@ -2455,6 +2469,110 @@ module MetronomeSDK
                 #
                 #   @param unit_price [Float] Unit price for the charge. Will be multiplied by quantity to determine the amoun
               end
+            end
+          end
+
+          class UpdateRecurringCommit < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute id
+            #
+            #   @return [String]
+            required :id, String
+
+            # @!attribute access_amount
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::AccessAmount, nil]
+            optional :access_amount,
+                     -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::AccessAmount }
+
+            # @!attribute ending_before
+            #
+            #   @return [Time, nil]
+            optional :ending_before, Time
+
+            # @!attribute invoice_amount
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::InvoiceAmount, nil]
+            optional :invoice_amount,
+                     -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::InvoiceAmount }
+
+            # @!method initialize(id:, access_amount: nil, ending_before: nil, invoice_amount: nil)
+            #   @param id [String]
+            #   @param access_amount [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::AccessAmount]
+            #   @param ending_before [Time]
+            #   @param invoice_amount [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::InvoiceAmount]
+
+            # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit#access_amount
+            class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute quantity
+              #
+              #   @return [Float, nil]
+              optional :quantity, Float
+
+              # @!attribute unit_price
+              #
+              #   @return [Float, nil]
+              optional :unit_price, Float
+
+              # @!method initialize(quantity: nil, unit_price: nil)
+              #   @param quantity [Float]
+              #   @param unit_price [Float]
+            end
+
+            # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit#invoice_amount
+            class InvoiceAmount < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute quantity
+              #
+              #   @return [Float, nil]
+              optional :quantity, Float
+
+              # @!attribute unit_price
+              #
+              #   @return [Float, nil]
+              optional :unit_price, Float
+
+              # @!method initialize(quantity: nil, unit_price: nil)
+              #   @param quantity [Float]
+              #   @param unit_price [Float]
+            end
+          end
+
+          class UpdateRecurringCredit < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute id
+            #
+            #   @return [String]
+            required :id, String
+
+            # @!attribute access_amount
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit::AccessAmount, nil]
+            optional :access_amount,
+                     -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit::AccessAmount }
+
+            # @!attribute ending_before
+            #
+            #   @return [Time, nil]
+            optional :ending_before, Time
+
+            # @!method initialize(id:, access_amount: nil, ending_before: nil)
+            #   @param id [String]
+            #   @param access_amount [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit::AccessAmount]
+            #   @param ending_before [Time]
+
+            # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit#access_amount
+            class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute quantity
+              #
+              #   @return [Float, nil]
+              optional :quantity, Float
+
+              # @!attribute unit_price
+              #
+              #   @return [Float, nil]
+              optional :unit_price, Float
+
+              # @!method initialize(quantity: nil, unit_price: nil)
+              #   @param quantity [Float]
+              #   @param unit_price [Float]
             end
           end
 

@@ -134,6 +134,14 @@ module MetronomeSDK
               ],
             update_prepaid_balance_threshold_configuration:
               MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::OrHash,
+            update_recurring_commits:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::OrHash
+              ],
+            update_recurring_credits:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::OrHash
+              ],
             update_scheduled_charges:
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::UpdateScheduledCharge::OrHash
@@ -178,6 +186,8 @@ module MetronomeSDK
           update_contract_end_date: nil,
           update_credits: nil,
           update_prepaid_balance_threshold_configuration: nil,
+          update_recurring_commits: nil,
+          update_recurring_credits: nil,
           update_scheduled_charges: nil,
           update_spend_threshold_configuration: nil,
           request_options: {}
