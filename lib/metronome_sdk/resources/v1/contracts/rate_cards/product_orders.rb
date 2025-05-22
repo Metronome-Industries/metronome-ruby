@@ -10,7 +10,7 @@ module MetronomeSDK
             #
             # @overload update(product_moves:, rate_card_id:, request_options: {})
             #
-            # @param product_moves [Array<MetronomeSDK::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove>]
+            # @param product_moves [Array<MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove>]
             #
             # @param rate_card_id [String] ID of the rate card to update
             #

@@ -13,12 +13,12 @@ module MetronomeSDK
 
           # @!attribute current
           #
-          #   @return [MetronomeSDK::V1::Contracts::ProductListItemState]
+          #   @return [MetronomeSDK::Models::V1::Contracts::ProductListItemState]
           required :current, -> { MetronomeSDK::V1::Contracts::ProductListItemState }
 
           # @!attribute initial
           #
-          #   @return [MetronomeSDK::V1::Contracts::ProductListItemState]
+          #   @return [MetronomeSDK::Models::V1::Contracts::ProductListItemState]
           required :initial, -> { MetronomeSDK::V1::Contracts::ProductListItemState }
 
           # @!attribute type
@@ -44,8 +44,8 @@ module MetronomeSDK
 
           # @!method initialize(id:, current:, initial:, type:, updates:, archived_at: nil, custom_fields: nil)
           #   @param id [String]
-          #   @param current [MetronomeSDK::V1::Contracts::ProductListItemState]
-          #   @param initial [MetronomeSDK::V1::Contracts::ProductListItemState]
+          #   @param current [MetronomeSDK::Models::V1::Contracts::ProductListItemState]
+          #   @param initial [MetronomeSDK::Models::V1::Contracts::ProductListItemState]
           #   @param type [Symbol, MetronomeSDK::Models::V1::Contracts::ProductListResponse::Type]
           #   @param updates [Array<MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update>]
           #   @param archived_at [Time, nil]
@@ -144,7 +144,7 @@ module MetronomeSDK
             #   GB. In this case, the conversion factor would be 1024 and the operation would be
             #   "divide".
             #
-            #   @return [MetronomeSDK::V1::Contracts::QuantityConversion, nil]
+            #   @return [MetronomeSDK::Models::V1::Contracts::QuantityConversion, nil]
             optional :quantity_conversion, -> { MetronomeSDK::V1::Contracts::QuantityConversion }, nil?: true
 
             # @!attribute quantity_rounding
@@ -153,7 +153,7 @@ module MetronomeSDK
             #   the method is "round up" and the decimal places is 0, then the quantity will be
             #   rounded up to the nearest integer.
             #
-            #   @return [MetronomeSDK::V1::Contracts::QuantityRounding, nil]
+            #   @return [MetronomeSDK::Models::V1::Contracts::QuantityRounding, nil]
             optional :quantity_rounding, -> { MetronomeSDK::V1::Contracts::QuantityRounding }, nil?: true
 
             # @!attribute starting_at
@@ -195,9 +195,9 @@ module MetronomeSDK
             #
             #   @param pricing_group_key [Array<String>] For USAGE products only. If set, pricing for this product will be determined for
             #
-            #   @param quantity_conversion [MetronomeSDK::V1::Contracts::QuantityConversion, nil] Optional. Only valid for USAGE products. If provided, the quantity will be conve
+            #   @param quantity_conversion [MetronomeSDK::Models::V1::Contracts::QuantityConversion, nil] Optional. Only valid for USAGE products. If provided, the quantity will be conve
             #
-            #   @param quantity_rounding [MetronomeSDK::V1::Contracts::QuantityRounding, nil] Optional. Only valid for USAGE products. If provided, the quantity will be round
+            #   @param quantity_rounding [MetronomeSDK::Models::V1::Contracts::QuantityRounding, nil] Optional. Only valid for USAGE products. If provided, the quantity will be round
             #
             #   @param starting_at [Time]
             #

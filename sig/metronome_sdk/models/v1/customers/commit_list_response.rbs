@@ -14,6 +14,11 @@ module MetronomeSDK
             data: ::Array[MetronomeSDK::Commit],
             next_page: String?
           ) -> void
+
+          def to_hash: -> {
+            data: ::Array[MetronomeSDK::Commit],
+            next_page: String?
+          }
         end
       end
     end

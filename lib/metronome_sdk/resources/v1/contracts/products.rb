@@ -14,7 +14,7 @@ module MetronomeSDK
           #
           # @param name [String] displayed on invoices
           #
-          # @param type [Symbol, MetronomeSDK::V1::Contracts::ProductCreateParams::Type]
+          # @param type [Symbol, MetronomeSDK::Models::V1::Contracts::ProductCreateParams::Type]
           #
           # @param billable_metric_id [String] Required for USAGE products
           #
@@ -34,9 +34,9 @@ module MetronomeSDK
           #
           # @param pricing_group_key [Array<String>] For USAGE products only. If set, pricing for this product will be determined for
           #
-          # @param quantity_conversion [MetronomeSDK::V1::Contracts::QuantityConversion, nil] Optional. Only valid for USAGE products. If provided, the quantity will be conve
+          # @param quantity_conversion [MetronomeSDK::Models::V1::Contracts::QuantityConversion, nil] Optional. Only valid for USAGE products. If provided, the quantity will be conve
           #
-          # @param quantity_rounding [MetronomeSDK::V1::Contracts::QuantityRounding, nil] Optional. Only valid for USAGE products. If provided, the quantity will be round
+          # @param quantity_rounding [MetronomeSDK::Models::V1::Contracts::QuantityRounding, nil] Optional. Only valid for USAGE products. If provided, the quantity will be round
           #
           # @param tags [Array<String>]
           #
@@ -108,9 +108,9 @@ module MetronomeSDK
           #
           # @param pricing_group_key [Array<String>] For USAGE products only. If set, pricing for this product will be determined for
           #
-          # @param quantity_conversion [MetronomeSDK::V1::Contracts::QuantityConversion, nil] Optional. Only valid for USAGE products. If provided, the quantity will be conve
+          # @param quantity_conversion [MetronomeSDK::Models::V1::Contracts::QuantityConversion, nil] Optional. Only valid for USAGE products. If provided, the quantity will be conve
           #
-          # @param quantity_rounding [MetronomeSDK::V1::Contracts::QuantityRounding, nil] Optional. Only valid for USAGE products. If provided, the quantity will be round
+          # @param quantity_rounding [MetronomeSDK::Models::V1::Contracts::QuantityRounding, nil] Optional. Only valid for USAGE products. If provided, the quantity will be round
           #
           # @param tags [Array<String>] If not provided, defaults to product's current tags
           #
@@ -141,7 +141,7 @@ module MetronomeSDK
           #
           # @param next_page [String] Query param: Cursor that indicates where the next page of results should start.
           #
-          # @param archive_filter [Symbol, MetronomeSDK::V1::Contracts::ProductListParams::ArchiveFilter] Body param: Filter options for the product list. If not provided, defaults to no
+          # @param archive_filter [Symbol, MetronomeSDK::Models::V1::Contracts::ProductListParams::ArchiveFilter] Body param: Filter options for the product list. If not provided, defaults to no
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #

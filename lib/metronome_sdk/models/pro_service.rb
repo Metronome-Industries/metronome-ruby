@@ -50,8 +50,8 @@ module MetronomeSDK
       optional :netsuite_sales_order_id, String
 
       # @!method initialize(id:, max_amount:, product_id:, quantity:, unit_price:, custom_fields: nil, description: nil, netsuite_sales_order_id: nil)
-      #   Some parameter documentations has been truncated, see {MetronomeSDK::ProService}
-      #   for more details.
+      #   Some parameter documentations has been truncated, see
+      #   {MetronomeSDK::Models::ProService} for more details.
       #
       #   @param id [String]
       #

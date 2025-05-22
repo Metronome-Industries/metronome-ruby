@@ -61,6 +61,19 @@ module MetronomeSDK
               ?pricing_group_values: ::Hash[Symbol, String]
             ) -> void
 
+            def to_hash: -> {
+              entitled: bool,
+              product_custom_fields: ::Hash[Symbol, String],
+              product_id: String,
+              product_name: String,
+              product_tags: ::Array[String],
+              rate: MetronomeSDK::Rate,
+              starting_at: Time,
+              commit_rate: MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::CommitRate,
+              ending_before: Time,
+              pricing_group_values: ::Hash[Symbol, String]
+            }
+
             type commit_rate =
               {
                 rate_type: MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::CommitRate::rate_type,
@@ -86,6 +99,12 @@ module MetronomeSDK
                 ?price: Float,
                 ?tiers: ::Array[MetronomeSDK::Tier]
               ) -> void
+
+              def to_hash: -> {
+                rate_type: MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::CommitRate::rate_type,
+                price: Float,
+                tiers: ::Array[MetronomeSDK::Tier]
+              }
 
               type rate_type =
                 :FLAT | :PERCENTAGE | :SUBSCRIPTION | :TIERED | :CUSTOM

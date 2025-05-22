@@ -67,6 +67,21 @@ module MetronomeSDK
           ?unit_conversion: MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion
         ) -> void
 
+        def to_hash: -> {
+          id: String,
+          charge_type: MetronomeSDK::Models::V1::PlanListChargesResponse::charge_type,
+          credit_type: MetronomeSDK::CreditTypeData,
+          custom_fields: ::Hash[Symbol, String],
+          name: String,
+          prices: ::Array[MetronomeSDK::Models::V1::PlanListChargesResponse::Price],
+          product_id: String,
+          product_name: String,
+          quantity: Float,
+          start_period: Float,
+          tier_reset_frequency: Float,
+          unit_conversion: MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion
+        }
+
         type charge_type = :usage | :fixed | :composite | :minimum | :seat
 
         module ChargeType
@@ -114,6 +129,14 @@ module MetronomeSDK
             ?collection_schedule: String,
             ?quantity: Float
           ) -> void
+
+          def to_hash: -> {
+            tier: Float,
+            value: Float,
+            collection_interval: Float,
+            collection_schedule: String,
+            quantity: Float
+          }
         end
 
         type unit_conversion =
@@ -135,6 +158,11 @@ module MetronomeSDK
             division_factor: Float,
             ?rounding_behavior: MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion::rounding_behavior
           ) -> void
+
+          def to_hash: -> {
+            division_factor: Float,
+            rounding_behavior: MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion::rounding_behavior
+          }
 
           type rounding_behavior = :floor | :ceiling
 

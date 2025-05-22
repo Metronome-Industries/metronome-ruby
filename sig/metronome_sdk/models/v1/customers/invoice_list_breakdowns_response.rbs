@@ -18,6 +18,11 @@ module MetronomeSDK
             breakdown_end_timestamp: Time,
             breakdown_start_timestamp: Time
           ) -> void
+
+          def to_hash: -> {
+            breakdown_end_timestamp: Time,
+            breakdown_start_timestamp: Time
+          }
         end
       end
     end

@@ -8,7 +8,7 @@ module MetronomeSDK
         class CreditListResponse < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute data
           #
-          #   @return [Array<MetronomeSDK::Credit>]
+          #   @return [Array<MetronomeSDK::Models::Credit>]
           required :data, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Credit] }
 
           # @!attribute next_page
@@ -17,7 +17,7 @@ module MetronomeSDK
           required :next_page, String, nil?: true
 
           # @!method initialize(data:, next_page:)
-          #   @param data [Array<MetronomeSDK::Credit>]
+          #   @param data [Array<MetronomeSDK::Models::Credit>]
           #   @param next_page [String, nil]
         end
       end

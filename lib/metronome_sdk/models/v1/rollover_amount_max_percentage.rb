@@ -7,7 +7,7 @@ module MetronomeSDK
         # @!attribute type
         #   Rollover up to a percentage of the original credit grant amount.
         #
-        #   @return [Symbol, MetronomeSDK::V1::RolloverAmountMaxPercentage::Type]
+        #   @return [Symbol, MetronomeSDK::Models::V1::RolloverAmountMaxPercentage::Type]
         required :type, enum: -> { MetronomeSDK::V1::RolloverAmountMaxPercentage::Type }
 
         # @!attribute value
@@ -17,13 +17,13 @@ module MetronomeSDK
         required :value, Float
 
         # @!method initialize(type:, value:)
-        #   @param type [Symbol, MetronomeSDK::V1::RolloverAmountMaxPercentage::Type] Rollover up to a percentage of the original credit grant amount.
+        #   @param type [Symbol, MetronomeSDK::Models::V1::RolloverAmountMaxPercentage::Type] Rollover up to a percentage of the original credit grant amount.
         #
         #   @param value [Float] The maximum percentage (0-1) of the original credit grant to rollover.
 
         # Rollover up to a percentage of the original credit grant amount.
         #
-        # @see MetronomeSDK::V1::RolloverAmountMaxPercentage#type
+        # @see MetronomeSDK::Models::V1::RolloverAmountMaxPercentage#type
         module Type
           extend MetronomeSDK::Internal::Type::Enum
 

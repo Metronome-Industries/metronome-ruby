@@ -35,6 +35,14 @@ module MetronomeSDK
           ?name: String,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
+
+        def to_hash: -> {
+          id: String,
+          credit_grant_type: String,
+          expires_at: Time,
+          name: String,
+          request_options: MetronomeSDK::RequestOptions
+        }
       end
     end
   end

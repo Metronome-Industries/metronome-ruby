@@ -21,7 +21,7 @@ module MetronomeSDK
 
         # @!attribute credit_grants
         #
-        #   @return [Array<MetronomeSDK::V1::PlanDetail::CreditGrant>, nil]
+        #   @return [Array<MetronomeSDK::Models::V1::PlanDetail::CreditGrant>, nil]
         optional :credit_grants,
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::PlanDetail::CreditGrant] }
 
@@ -32,7 +32,7 @@ module MetronomeSDK
 
         # @!attribute minimums
         #
-        #   @return [Array<MetronomeSDK::V1::PlanDetail::Minimum>, nil]
+        #   @return [Array<MetronomeSDK::Models::V1::PlanDetail::Minimum>, nil]
         optional :minimums,
                  -> {
                    MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::PlanDetail::Minimum]
@@ -40,7 +40,7 @@ module MetronomeSDK
 
         # @!attribute overage_rates
         #
-        #   @return [Array<MetronomeSDK::V1::PlanDetail::OverageRate>, nil]
+        #   @return [Array<MetronomeSDK::Models::V1::PlanDetail::OverageRate>, nil]
         optional :overage_rates,
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::PlanDetail::OverageRate] }
 
@@ -48,10 +48,10 @@ module MetronomeSDK
         #   @param id [String]
         #   @param custom_fields [Hash{Symbol=>String}]
         #   @param name [String]
-        #   @param credit_grants [Array<MetronomeSDK::V1::PlanDetail::CreditGrant>]
+        #   @param credit_grants [Array<MetronomeSDK::Models::V1::PlanDetail::CreditGrant>]
         #   @param description [String]
-        #   @param minimums [Array<MetronomeSDK::V1::PlanDetail::Minimum>]
-        #   @param overage_rates [Array<MetronomeSDK::V1::PlanDetail::OverageRate>]
+        #   @param minimums [Array<MetronomeSDK::Models::V1::PlanDetail::Minimum>]
+        #   @param overage_rates [Array<MetronomeSDK::Models::V1::PlanDetail::OverageRate>]
 
         class CreditGrant < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute amount_granted
@@ -61,7 +61,7 @@ module MetronomeSDK
 
           # @!attribute amount_granted_credit_type
           #
-          #   @return [MetronomeSDK::CreditTypeData]
+          #   @return [MetronomeSDK::Models::CreditTypeData]
           required :amount_granted_credit_type, -> { MetronomeSDK::CreditTypeData }
 
           # @!attribute amount_paid
@@ -71,7 +71,7 @@ module MetronomeSDK
 
           # @!attribute amount_paid_credit_type
           #
-          #   @return [MetronomeSDK::CreditTypeData]
+          #   @return [MetronomeSDK::Models::CreditTypeData]
           required :amount_paid_credit_type, -> { MetronomeSDK::CreditTypeData }
 
           # @!attribute effective_duration
@@ -111,9 +111,9 @@ module MetronomeSDK
 
           # @!method initialize(amount_granted:, amount_granted_credit_type:, amount_paid:, amount_paid_credit_type:, effective_duration:, name:, priority:, send_invoice:, reason: nil, recurrence_duration: nil, recurrence_interval: nil)
           #   @param amount_granted [Float]
-          #   @param amount_granted_credit_type [MetronomeSDK::CreditTypeData]
+          #   @param amount_granted_credit_type [MetronomeSDK::Models::CreditTypeData]
           #   @param amount_paid [Float]
-          #   @param amount_paid_credit_type [MetronomeSDK::CreditTypeData]
+          #   @param amount_paid_credit_type [MetronomeSDK::Models::CreditTypeData]
           #   @param effective_duration [Float]
           #   @param name [String]
           #   @param priority [String]
@@ -126,7 +126,7 @@ module MetronomeSDK
         class Minimum < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute credit_type
           #
-          #   @return [MetronomeSDK::CreditTypeData]
+          #   @return [MetronomeSDK::Models::CreditTypeData]
           required :credit_type, -> { MetronomeSDK::CreditTypeData }
 
           # @!attribute name
@@ -148,9 +148,9 @@ module MetronomeSDK
 
           # @!method initialize(credit_type:, name:, start_period:, value:)
           #   Some parameter documentations has been truncated, see
-          #   {MetronomeSDK::V1::PlanDetail::Minimum} for more details.
+          #   {MetronomeSDK::Models::V1::PlanDetail::Minimum} for more details.
           #
-          #   @param credit_type [MetronomeSDK::CreditTypeData]
+          #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
           #
           #   @param name [String]
           #
@@ -162,12 +162,12 @@ module MetronomeSDK
         class OverageRate < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute credit_type
           #
-          #   @return [MetronomeSDK::CreditTypeData]
+          #   @return [MetronomeSDK::Models::CreditTypeData]
           required :credit_type, -> { MetronomeSDK::CreditTypeData }
 
           # @!attribute fiat_credit_type
           #
-          #   @return [MetronomeSDK::CreditTypeData]
+          #   @return [MetronomeSDK::Models::CreditTypeData]
           required :fiat_credit_type, -> { MetronomeSDK::CreditTypeData }
 
           # @!attribute start_period
@@ -184,11 +184,11 @@ module MetronomeSDK
 
           # @!method initialize(credit_type:, fiat_credit_type:, start_period:, to_fiat_conversion_factor:)
           #   Some parameter documentations has been truncated, see
-          #   {MetronomeSDK::V1::PlanDetail::OverageRate} for more details.
+          #   {MetronomeSDK::Models::V1::PlanDetail::OverageRate} for more details.
           #
-          #   @param credit_type [MetronomeSDK::CreditTypeData]
+          #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
           #
-          #   @param fiat_credit_type [MetronomeSDK::CreditTypeData]
+          #   @param fiat_credit_type [MetronomeSDK::Models::CreditTypeData]
           #
           #   @param start_period [Float] Used in price ramps. Indicates how many billing periods pass before the charge
           #

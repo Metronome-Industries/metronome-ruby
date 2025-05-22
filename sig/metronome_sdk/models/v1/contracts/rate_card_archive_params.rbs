@@ -10,6 +10,8 @@ module MetronomeSDK
           include MetronomeSDK::Internal::Type::RequestParameters
 
           def initialize: (?request_options: MetronomeSDK::request_opts) -> void
+
+          def to_hash: -> { request_options: MetronomeSDK::RequestOptions }
         end
       end
     end

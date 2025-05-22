@@ -23,6 +23,12 @@ module MetronomeSDK
             ?request_options: MetronomeSDK::request_opts
           ) -> void
 
+          def to_hash: -> {
+            customer_id: String,
+            billing_provider_type: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveParams::billing_provider_type,
+            request_options: MetronomeSDK::RequestOptions
+          }
+
           type billing_provider_type =
             :aws_marketplace
             | :stripe

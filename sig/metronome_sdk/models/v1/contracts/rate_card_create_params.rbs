@@ -53,6 +53,16 @@ module MetronomeSDK
             ?request_options: MetronomeSDK::request_opts
           ) -> void
 
+          def to_hash: -> {
+            name: String,
+            aliases: ::Array[MetronomeSDK::V1::Contracts::RateCardCreateParams::Alias],
+            credit_type_conversions: ::Array[MetronomeSDK::V1::Contracts::RateCardCreateParams::CreditTypeConversion],
+            custom_fields: ::Hash[Symbol, String],
+            description: String,
+            fiat_credit_type_id: String,
+            request_options: MetronomeSDK::RequestOptions
+          }
+
           type alias_ = { name: String, ending_before: Time, starting_at: Time }
 
           class Alias < MetronomeSDK::Internal::Type::BaseModel
@@ -71,6 +81,12 @@ module MetronomeSDK
               ?ending_before: Time,
               ?starting_at: Time
             ) -> void
+
+            def to_hash: -> {
+              name: String,
+              ending_before: Time,
+              starting_at: Time
+            }
           end
 
           type credit_type_conversion =
@@ -85,6 +101,11 @@ module MetronomeSDK
               custom_credit_type_id: String,
               fiat_per_custom_credit: Float
             ) -> void
+
+            def to_hash: -> {
+              custom_credit_type_id: String,
+              fiat_per_custom_credit: Float
+            }
           end
         end
       end

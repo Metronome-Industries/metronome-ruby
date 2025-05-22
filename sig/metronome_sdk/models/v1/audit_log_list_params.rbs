@@ -58,6 +58,17 @@ module MetronomeSDK
           ?request_options: MetronomeSDK::request_opts
         ) -> void
 
+        def to_hash: -> {
+          ending_before: Time,
+          limit: Integer,
+          next_page: String,
+          resource_id: String,
+          resource_type: String,
+          sort: MetronomeSDK::Models::V1::AuditLogListParams::sort,
+          starting_on: Time,
+          request_options: MetronomeSDK::RequestOptions
+        }
+
         type sort = :date_asc | :date_desc
 
         module Sort

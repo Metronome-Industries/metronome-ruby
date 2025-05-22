@@ -45,6 +45,17 @@ module MetronomeSDK
         ?description: String,
         ?netsuite_sales_order_id: String
       ) -> void
+
+      def to_hash: -> {
+        id: String,
+        max_amount: Float,
+        product_id: String,
+        quantity: Float,
+        unit_price: Float,
+        custom_fields: ::Hash[Symbol, String],
+        description: String,
+        netsuite_sales_order_id: String
+      }
     end
   end
 end

@@ -28,7 +28,7 @@ module MetronomeSDK
 
           # @!attribute current
           #
-          #   @return [MetronomeSDK::ContractWithoutAmendments]
+          #   @return [MetronomeSDK::Models::ContractWithoutAmendments]
           required :current, -> { MetronomeSDK::ContractWithoutAmendments }
 
           # @!attribute customer_id
@@ -38,7 +38,7 @@ module MetronomeSDK
 
           # @!attribute initial
           #
-          #   @return [MetronomeSDK::ContractWithoutAmendments]
+          #   @return [MetronomeSDK::Models::ContractWithoutAmendments]
           required :initial, -> { MetronomeSDK::ContractWithoutAmendments }
 
           # @!attribute archived_at
@@ -99,11 +99,11 @@ module MetronomeSDK
           #
           #   @param amendments [Array<MetronomeSDK::Models::V1::ContractListResponse::Data::Amendment>]
           #
-          #   @param current [MetronomeSDK::ContractWithoutAmendments]
+          #   @param current [MetronomeSDK::Models::ContractWithoutAmendments]
           #
           #   @param customer_id [String]
           #
-          #   @param initial [MetronomeSDK::ContractWithoutAmendments]
+          #   @param initial [MetronomeSDK::Models::ContractWithoutAmendments]
           #
           #   @param archived_at [Time] RFC 3339 timestamp indicating when the contract was archived. If not returned, t
           #
@@ -127,7 +127,7 @@ module MetronomeSDK
 
             # @!attribute commits
             #
-            #   @return [Array<MetronomeSDK::Commit>]
+            #   @return [Array<MetronomeSDK::Models::Commit>]
             required :commits, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Commit] }
 
             # @!attribute created_at
@@ -142,12 +142,12 @@ module MetronomeSDK
 
             # @!attribute overrides
             #
-            #   @return [Array<MetronomeSDK::Override>]
+            #   @return [Array<MetronomeSDK::Models::Override>]
             required :overrides, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Override] }
 
             # @!attribute scheduled_charges
             #
-            #   @return [Array<MetronomeSDK::ScheduledCharge>]
+            #   @return [Array<MetronomeSDK::Models::ScheduledCharge>]
             required :scheduled_charges,
                      -> {
                        MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ScheduledCharge]
@@ -160,13 +160,13 @@ module MetronomeSDK
 
             # @!attribute credits
             #
-            #   @return [Array<MetronomeSDK::Credit>, nil]
+            #   @return [Array<MetronomeSDK::Models::Credit>, nil]
             optional :credits, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Credit] }
 
             # @!attribute discounts
             #   This field's availability is dependent on your client's configuration.
             #
-            #   @return [Array<MetronomeSDK::Discount>, nil]
+            #   @return [Array<MetronomeSDK::Models::Discount>, nil]
             optional :discounts, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Discount] }
 
             # @!attribute netsuite_sales_order_id
@@ -178,7 +178,7 @@ module MetronomeSDK
             # @!attribute professional_services
             #   This field's availability is dependent on your client's configuration.
             #
-            #   @return [Array<MetronomeSDK::ProService>, nil]
+            #   @return [Array<MetronomeSDK::Models::ProService>, nil]
             optional :professional_services,
                      -> {
                        MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ProService]
@@ -200,25 +200,25 @@ module MetronomeSDK
             # @!method initialize(id:, commits:, created_at:, created_by:, overrides:, scheduled_charges:, starting_at:, credits: nil, discounts: nil, netsuite_sales_order_id: nil, professional_services: nil, reseller_royalties: nil, salesforce_opportunity_id: nil)
             #   @param id [String]
             #
-            #   @param commits [Array<MetronomeSDK::Commit>]
+            #   @param commits [Array<MetronomeSDK::Models::Commit>]
             #
             #   @param created_at [Time]
             #
             #   @param created_by [String]
             #
-            #   @param overrides [Array<MetronomeSDK::Override>]
+            #   @param overrides [Array<MetronomeSDK::Models::Override>]
             #
-            #   @param scheduled_charges [Array<MetronomeSDK::ScheduledCharge>]
+            #   @param scheduled_charges [Array<MetronomeSDK::Models::ScheduledCharge>]
             #
             #   @param starting_at [Time]
             #
-            #   @param credits [Array<MetronomeSDK::Credit>]
+            #   @param credits [Array<MetronomeSDK::Models::Credit>]
             #
-            #   @param discounts [Array<MetronomeSDK::Discount>] This field's availability is dependent on your client's configuration.
+            #   @param discounts [Array<MetronomeSDK::Models::Discount>] This field's availability is dependent on your client's configuration.
             #
             #   @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
             #
-            #   @param professional_services [Array<MetronomeSDK::ProService>] This field's availability is dependent on your client's configuration.
+            #   @param professional_services [Array<MetronomeSDK::Models::ProService>] This field's availability is dependent on your client's configuration.
             #
             #   @param reseller_royalties [Array<MetronomeSDK::Models::V1::ContractListResponse::Data::Amendment::ResellerRoyalty>] This field's availability is dependent on your client's configuration.
             #

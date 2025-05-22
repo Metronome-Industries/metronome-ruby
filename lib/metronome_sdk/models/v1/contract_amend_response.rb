@@ -7,11 +7,11 @@ module MetronomeSDK
       class ContractAmendResponse < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute data
         #
-        #   @return [MetronomeSDK::ID]
+        #   @return [MetronomeSDK::Models::ID]
         required :data, -> { MetronomeSDK::ID }
 
         # @!method initialize(data:)
-        #   @param data [MetronomeSDK::ID]
+        #   @param data [MetronomeSDK::Models::ID]
       end
     end
   end

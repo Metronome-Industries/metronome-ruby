@@ -20,6 +20,11 @@ module MetronomeSDK
           ?request_options: MetronomeSDK::request_opts
         ) -> void
 
+        def to_hash: -> {
+          usage: ::Array[MetronomeSDK::V1::UsageIngestParams::Usage],
+          request_options: MetronomeSDK::RequestOptions
+        }
+
         type usage =
           {
             customer_id: String,
@@ -49,6 +54,14 @@ module MetronomeSDK
             transaction_id: String,
             ?properties: ::Hash[Symbol, top]
           ) -> void
+
+          def to_hash: -> {
+            customer_id: String,
+            event_type: String,
+            timestamp: String,
+            transaction_id: String,
+            properties: ::Hash[Symbol, top]
+          }
         end
       end
     end

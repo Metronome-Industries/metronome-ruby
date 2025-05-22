@@ -36,7 +36,7 @@ module MetronomeSDK
 
         # @!method initialize(id:, external_id:, ingest_aliases:, name:, custom_fields: nil)
         #   Some parameter documentations has been truncated, see
-        #   {MetronomeSDK::V1::Customer} for more details.
+        #   {MetronomeSDK::Models::V1::Customer} for more details.
         #
         #   @param id [String] the Metronome ID of the customer
         #

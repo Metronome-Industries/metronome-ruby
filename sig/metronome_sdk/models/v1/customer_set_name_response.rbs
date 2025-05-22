@@ -7,6 +7,8 @@ module MetronomeSDK
         attr_accessor data: MetronomeSDK::V1::Customer
 
         def initialize: (data: MetronomeSDK::V1::Customer) -> void
+
+        def to_hash: -> { data: MetronomeSDK::V1::Customer }
       end
     end
   end

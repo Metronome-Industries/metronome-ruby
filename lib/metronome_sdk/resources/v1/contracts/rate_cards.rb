@@ -23,9 +23,9 @@ module MetronomeSDK
           #
           # @param name [String] Used only in UI/API. It is not exposed to end customers.
           #
-          # @param aliases [Array<MetronomeSDK::V1::Contracts::RateCardCreateParams::Alias>] Reference this alias when creating a contract. If the same alias is assigned to
+          # @param aliases [Array<MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::Alias>] Reference this alias when creating a contract. If the same alias is assigned to
           #
-          # @param credit_type_conversions [Array<MetronomeSDK::V1::Contracts::RateCardCreateParams::CreditTypeConversion>] Required when using custom pricing units in rates.
+          # @param credit_type_conversions [Array<MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::CreditTypeConversion>] Required when using custom pricing units in rates.
           #
           # @param custom_fields [Hash{Symbol=>String}]
           #
@@ -80,7 +80,7 @@ module MetronomeSDK
           #
           # @param rate_card_id [String] ID of the rate card to update
           #
-          # @param aliases [Array<MetronomeSDK::V1::Contracts::RateCardUpdateParams::Alias>] Reference this alias when creating a contract. If the same alias is assigned to
+          # @param aliases [Array<MetronomeSDK::Models::V1::Contracts::RateCardUpdateParams::Alias>] Reference this alias when creating a contract. If the same alias is assigned to
           #
           # @param description [String]
           #
@@ -171,7 +171,7 @@ module MetronomeSDK
           #
           # @param ending_before [Time] Body param: optional exclusive end date for the rates schedule. When not specifi
           #
-          # @param selectors [Array<MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector>] Body param: List of rate selectors, rates matching ANY of the selector will be i
+          # @param selectors [Array<MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector>] Body param: List of rate selectors, rates matching ANY of the selector will be i
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #

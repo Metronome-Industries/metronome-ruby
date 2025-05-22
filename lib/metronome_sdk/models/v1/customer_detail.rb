@@ -24,7 +24,7 @@ module MetronomeSDK
 
         # @!attribute customer_config
         #
-        #   @return [MetronomeSDK::V1::CustomerDetail::CustomerConfig]
+        #   @return [MetronomeSDK::Models::V1::CustomerDetail::CustomerConfig]
         required :customer_config, -> { MetronomeSDK::V1::CustomerDetail::CustomerConfig }
 
         # @!attribute external_id
@@ -56,12 +56,12 @@ module MetronomeSDK
         # @!attribute current_billable_status
         #   This field's availability is dependent on your client's configuration.
         #
-        #   @return [MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus, nil]
+        #   @return [MetronomeSDK::Models::V1::CustomerDetail::CurrentBillableStatus, nil]
         optional :current_billable_status, -> { MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus }
 
         # @!method initialize(id:, created_at:, custom_fields:, customer_config:, external_id:, ingest_aliases:, name:, archived_at: nil, current_billable_status: nil)
         #   Some parameter documentations has been truncated, see
-        #   {MetronomeSDK::V1::CustomerDetail} for more details.
+        #   {MetronomeSDK::Models::V1::CustomerDetail} for more details.
         #
         #   @param id [String] the Metronome ID of the customer
         #
@@ -69,7 +69,7 @@ module MetronomeSDK
         #
         #   @param custom_fields [Hash{Symbol=>String}]
         #
-        #   @param customer_config [MetronomeSDK::V1::CustomerDetail::CustomerConfig]
+        #   @param customer_config [MetronomeSDK::Models::V1::CustomerDetail::CustomerConfig]
         #
         #   @param external_id [String] (deprecated, use ingest_aliases instead) the first ID (Metronome or ingest alias
         #
@@ -79,9 +79,9 @@ module MetronomeSDK
         #
         #   @param archived_at [Time, nil] RFC 3339 timestamp indicating when the customer was archived. Null if the custom
         #
-        #   @param current_billable_status [MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus] This field's availability is dependent on your client's configuration.
+        #   @param current_billable_status [MetronomeSDK::Models::V1::CustomerDetail::CurrentBillableStatus] This field's availability is dependent on your client's configuration.
 
-        # @see MetronomeSDK::V1::CustomerDetail#customer_config
+        # @see MetronomeSDK::Models::V1::CustomerDetail#customer_config
         class CustomerConfig < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute salesforce_account_id
           #   The Salesforce account ID for the customer
@@ -93,11 +93,11 @@ module MetronomeSDK
           #   @param salesforce_account_id [String, nil] The Salesforce account ID for the customer
         end
 
-        # @see MetronomeSDK::V1::CustomerDetail#current_billable_status
+        # @see MetronomeSDK::Models::V1::CustomerDetail#current_billable_status
         class CurrentBillableStatus < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute value
           #
-          #   @return [Symbol, MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::Value]
+          #   @return [Symbol, MetronomeSDK::Models::V1::CustomerDetail::CurrentBillableStatus::Value]
           required :value, enum: -> { MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::Value }
 
           # @!attribute effective_at
@@ -108,10 +108,10 @@ module MetronomeSDK
           # @!method initialize(value:, effective_at: nil)
           #   This field's availability is dependent on your client's configuration.
           #
-          #   @param value [Symbol, MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::Value]
+          #   @param value [Symbol, MetronomeSDK::Models::V1::CustomerDetail::CurrentBillableStatus::Value]
           #   @param effective_at [Time, nil]
 
-          # @see MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus#value
+          # @see MetronomeSDK::Models::V1::CustomerDetail::CurrentBillableStatus#value
           module Value
             extend MetronomeSDK::Internal::Type::Enum
 

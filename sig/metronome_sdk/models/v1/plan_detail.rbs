@@ -51,6 +51,16 @@ module MetronomeSDK
           ?overage_rates: ::Array[MetronomeSDK::V1::PlanDetail::OverageRate]
         ) -> void
 
+        def to_hash: -> {
+          id: String,
+          custom_fields: ::Hash[Symbol, String],
+          name: String,
+          credit_grants: ::Array[MetronomeSDK::V1::PlanDetail::CreditGrant],
+          description: String,
+          minimums: ::Array[MetronomeSDK::V1::PlanDetail::Minimum],
+          overage_rates: ::Array[MetronomeSDK::V1::PlanDetail::OverageRate]
+        }
+
         type credit_grant =
           {
             amount_granted: Float,
@@ -108,6 +118,20 @@ module MetronomeSDK
             ?recurrence_duration: Float,
             ?recurrence_interval: Float
           ) -> void
+
+          def to_hash: -> {
+            amount_granted: Float,
+            amount_granted_credit_type: MetronomeSDK::CreditTypeData,
+            amount_paid: Float,
+            amount_paid_credit_type: MetronomeSDK::CreditTypeData,
+            effective_duration: Float,
+            name: String,
+            priority: String,
+            send_invoice: bool,
+            reason: String,
+            recurrence_duration: Float,
+            recurrence_interval: Float
+          }
         end
 
         type minimum =
@@ -133,6 +157,13 @@ module MetronomeSDK
             start_period: Float,
             value: Float
           ) -> void
+
+          def to_hash: -> {
+            credit_type: MetronomeSDK::CreditTypeData,
+            name: String,
+            start_period: Float,
+            value: Float
+          }
         end
 
         type overage_rate =
@@ -158,6 +189,13 @@ module MetronomeSDK
             start_period: Float,
             to_fiat_conversion_factor: Float
           ) -> void
+
+          def to_hash: -> {
+            credit_type: MetronomeSDK::CreditTypeData,
+            fiat_credit_type: MetronomeSDK::CreditTypeData,
+            start_period: Float,
+            to_fiat_conversion_factor: Float
+          }
         end
       end
     end

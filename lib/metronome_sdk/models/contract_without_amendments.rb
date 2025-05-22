@@ -5,7 +5,7 @@ module MetronomeSDK
     class ContractWithoutAmendments < MetronomeSDK::Internal::Type::BaseModel
       # @!attribute commits
       #
-      #   @return [Array<MetronomeSDK::Commit>]
+      #   @return [Array<MetronomeSDK::Models::Commit>]
       required :commits, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Commit] }
 
       # @!attribute created_at
@@ -20,12 +20,12 @@ module MetronomeSDK
 
       # @!attribute overrides
       #
-      #   @return [Array<MetronomeSDK::Override>]
+      #   @return [Array<MetronomeSDK::Models::Override>]
       required :overrides, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Override] }
 
       # @!attribute scheduled_charges
       #
-      #   @return [Array<MetronomeSDK::ScheduledCharge>]
+      #   @return [Array<MetronomeSDK::Models::ScheduledCharge>]
       required :scheduled_charges, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ScheduledCharge] }
 
       # @!attribute starting_at
@@ -35,7 +35,7 @@ module MetronomeSDK
 
       # @!attribute transitions
       #
-      #   @return [Array<MetronomeSDK::ContractWithoutAmendments::Transition>]
+      #   @return [Array<MetronomeSDK::Models::ContractWithoutAmendments::Transition>]
       required :transitions,
                -> {
                  MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ContractWithoutAmendments::Transition]
@@ -43,7 +43,7 @@ module MetronomeSDK
 
       # @!attribute usage_statement_schedule
       #
-      #   @return [MetronomeSDK::ContractWithoutAmendments::UsageStatementSchedule]
+      #   @return [MetronomeSDK::Models::ContractWithoutAmendments::UsageStatementSchedule]
       required :usage_statement_schedule,
                -> {
                  MetronomeSDK::ContractWithoutAmendments::UsageStatementSchedule
@@ -51,13 +51,13 @@ module MetronomeSDK
 
       # @!attribute credits
       #
-      #   @return [Array<MetronomeSDK::Credit>, nil]
+      #   @return [Array<MetronomeSDK::Models::Credit>, nil]
       optional :credits, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Credit] }
 
       # @!attribute discounts
       #   This field's availability is dependent on your client's configuration.
       #
-      #   @return [Array<MetronomeSDK::Discount>, nil]
+      #   @return [Array<MetronomeSDK::Models::Discount>, nil]
       optional :discounts, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Discount] }
 
       # @!attribute ending_before
@@ -83,14 +83,14 @@ module MetronomeSDK
 
       # @!attribute prepaid_balance_threshold_configuration
       #
-      #   @return [MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration, nil]
+      #   @return [MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration, nil]
       optional :prepaid_balance_threshold_configuration,
                -> { MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration }
 
       # @!attribute professional_services
       #   This field's availability is dependent on your client's configuration.
       #
-      #   @return [Array<MetronomeSDK::ProService>, nil]
+      #   @return [Array<MetronomeSDK::Models::ProService>, nil]
       optional :professional_services, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ProService] }
 
       # @!attribute rate_card_id
@@ -100,7 +100,7 @@ module MetronomeSDK
 
       # @!attribute recurring_commits
       #
-      #   @return [Array<MetronomeSDK::ContractWithoutAmendments::RecurringCommit>, nil]
+      #   @return [Array<MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit>, nil]
       optional :recurring_commits,
                -> {
                  MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ContractWithoutAmendments::RecurringCommit]
@@ -108,7 +108,7 @@ module MetronomeSDK
 
       # @!attribute recurring_credits
       #
-      #   @return [Array<MetronomeSDK::ContractWithoutAmendments::RecurringCredit>, nil]
+      #   @return [Array<MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit>, nil]
       optional :recurring_credits,
                -> {
                  MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ContractWithoutAmendments::RecurringCredit]
@@ -117,7 +117,7 @@ module MetronomeSDK
       # @!attribute reseller_royalties
       #   This field's availability is dependent on your client's configuration.
       #
-      #   @return [Array<MetronomeSDK::ContractWithoutAmendments::ResellerRoyalty>, nil]
+      #   @return [Array<MetronomeSDK::Models::ContractWithoutAmendments::ResellerRoyalty>, nil]
       optional :reseller_royalties,
                -> {
                  MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ContractWithoutAmendments::ResellerRoyalty]
@@ -136,13 +136,13 @@ module MetronomeSDK
       #   after a Contract has been created. If this field is omitted, charges will appear
       #   on a separate invoice from usage charges.
       #
-      #   @return [Symbol, MetronomeSDK::ContractWithoutAmendments::ScheduledChargesOnUsageInvoices, nil]
+      #   @return [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::ScheduledChargesOnUsageInvoices, nil]
       optional :scheduled_charges_on_usage_invoices,
                enum: -> { MetronomeSDK::ContractWithoutAmendments::ScheduledChargesOnUsageInvoices }
 
       # @!attribute spend_threshold_configuration
       #
-      #   @return [MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration, nil]
+      #   @return [MetronomeSDK::Models::ContractWithoutAmendments::SpendThresholdConfiguration, nil]
       optional :spend_threshold_configuration,
                -> { MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration }
 
@@ -154,32 +154,32 @@ module MetronomeSDK
 
       # @!attribute usage_filter
       #
-      #   @return [MetronomeSDK::ContractWithoutAmendments::UsageFilter, nil]
+      #   @return [MetronomeSDK::Models::ContractWithoutAmendments::UsageFilter, nil]
       optional :usage_filter, -> { MetronomeSDK::ContractWithoutAmendments::UsageFilter }
 
       # @!method initialize(commits:, created_at:, created_by:, overrides:, scheduled_charges:, starting_at:, transitions:, usage_statement_schedule:, credits: nil, discounts: nil, ending_before: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, prepaid_balance_threshold_configuration: nil, professional_services: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, salesforce_opportunity_id: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, total_contract_value: nil, usage_filter: nil)
       #   Some parameter documentations has been truncated, see
-      #   {MetronomeSDK::ContractWithoutAmendments} for more details.
+      #   {MetronomeSDK::Models::ContractWithoutAmendments} for more details.
       #
-      #   @param commits [Array<MetronomeSDK::Commit>]
+      #   @param commits [Array<MetronomeSDK::Models::Commit>]
       #
       #   @param created_at [Time]
       #
       #   @param created_by [String]
       #
-      #   @param overrides [Array<MetronomeSDK::Override>]
+      #   @param overrides [Array<MetronomeSDK::Models::Override>]
       #
-      #   @param scheduled_charges [Array<MetronomeSDK::ScheduledCharge>]
+      #   @param scheduled_charges [Array<MetronomeSDK::Models::ScheduledCharge>]
       #
       #   @param starting_at [Time]
       #
-      #   @param transitions [Array<MetronomeSDK::ContractWithoutAmendments::Transition>]
+      #   @param transitions [Array<MetronomeSDK::Models::ContractWithoutAmendments::Transition>]
       #
-      #   @param usage_statement_schedule [MetronomeSDK::ContractWithoutAmendments::UsageStatementSchedule]
+      #   @param usage_statement_schedule [MetronomeSDK::Models::ContractWithoutAmendments::UsageStatementSchedule]
       #
-      #   @param credits [Array<MetronomeSDK::Credit>]
+      #   @param credits [Array<MetronomeSDK::Models::Credit>]
       #
-      #   @param discounts [Array<MetronomeSDK::Discount>] This field's availability is dependent on your client's configuration.
+      #   @param discounts [Array<MetronomeSDK::Models::Discount>] This field's availability is dependent on your client's configuration.
       #
       #   @param ending_before [Time]
       #
@@ -189,27 +189,27 @@ module MetronomeSDK
       #
       #   @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
       #
-      #   @param prepaid_balance_threshold_configuration [MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration]
+      #   @param prepaid_balance_threshold_configuration [MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration]
       #
-      #   @param professional_services [Array<MetronomeSDK::ProService>] This field's availability is dependent on your client's configuration.
+      #   @param professional_services [Array<MetronomeSDK::Models::ProService>] This field's availability is dependent on your client's configuration.
       #
       #   @param rate_card_id [String]
       #
-      #   @param recurring_commits [Array<MetronomeSDK::ContractWithoutAmendments::RecurringCommit>]
+      #   @param recurring_commits [Array<MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit>]
       #
-      #   @param recurring_credits [Array<MetronomeSDK::ContractWithoutAmendments::RecurringCredit>]
+      #   @param recurring_credits [Array<MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit>]
       #
-      #   @param reseller_royalties [Array<MetronomeSDK::ContractWithoutAmendments::ResellerRoyalty>] This field's availability is dependent on your client's configuration.
+      #   @param reseller_royalties [Array<MetronomeSDK::Models::ContractWithoutAmendments::ResellerRoyalty>] This field's availability is dependent on your client's configuration.
       #
       #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
       #
-      #   @param scheduled_charges_on_usage_invoices [Symbol, MetronomeSDK::ContractWithoutAmendments::ScheduledChargesOnUsageInvoices] Determines which scheduled and commit charges to consolidate onto the Contract's
+      #   @param scheduled_charges_on_usage_invoices [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::ScheduledChargesOnUsageInvoices] Determines which scheduled and commit charges to consolidate onto the Contract's
       #
-      #   @param spend_threshold_configuration [MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration]
+      #   @param spend_threshold_configuration [MetronomeSDK::Models::ContractWithoutAmendments::SpendThresholdConfiguration]
       #
       #   @param total_contract_value [Float] This field's availability is dependent on your client's configuration.
       #
-      #   @param usage_filter [MetronomeSDK::ContractWithoutAmendments::UsageFilter]
+      #   @param usage_filter [MetronomeSDK::Models::ContractWithoutAmendments::UsageFilter]
 
       class Transition < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute from_contract_id
@@ -224,15 +224,15 @@ module MetronomeSDK
 
         # @!attribute type
         #
-        #   @return [Symbol, MetronomeSDK::ContractWithoutAmendments::Transition::Type]
+        #   @return [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::Transition::Type]
         required :type, enum: -> { MetronomeSDK::ContractWithoutAmendments::Transition::Type }
 
         # @!method initialize(from_contract_id:, to_contract_id:, type:)
         #   @param from_contract_id [String]
         #   @param to_contract_id [String]
-        #   @param type [Symbol, MetronomeSDK::ContractWithoutAmendments::Transition::Type]
+        #   @param type [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::Transition::Type]
 
-        # @see MetronomeSDK::ContractWithoutAmendments::Transition#type
+        # @see MetronomeSDK::Models::ContractWithoutAmendments::Transition#type
         module Type
           extend MetronomeSDK::Internal::Type::Enum
 
@@ -244,7 +244,7 @@ module MetronomeSDK
         end
       end
 
-      # @see MetronomeSDK::ContractWithoutAmendments#usage_statement_schedule
+      # @see MetronomeSDK::Models::ContractWithoutAmendments#usage_statement_schedule
       class UsageStatementSchedule < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute billing_anchor_date
         #   Contract usage statements follow a selected cadence based on this date.
@@ -254,16 +254,16 @@ module MetronomeSDK
 
         # @!attribute frequency
         #
-        #   @return [Symbol, MetronomeSDK::ContractWithoutAmendments::UsageStatementSchedule::Frequency]
+        #   @return [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::UsageStatementSchedule::Frequency]
         required :frequency,
                  enum: -> { MetronomeSDK::ContractWithoutAmendments::UsageStatementSchedule::Frequency }
 
         # @!method initialize(billing_anchor_date:, frequency:)
         #   @param billing_anchor_date [Time] Contract usage statements follow a selected cadence based on this date.
         #
-        #   @param frequency [Symbol, MetronomeSDK::ContractWithoutAmendments::UsageStatementSchedule::Frequency]
+        #   @param frequency [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::UsageStatementSchedule::Frequency]
 
-        # @see MetronomeSDK::ContractWithoutAmendments::UsageStatementSchedule#frequency
+        # @see MetronomeSDK::Models::ContractWithoutAmendments::UsageStatementSchedule#frequency
         module Frequency
           extend MetronomeSDK::Internal::Type::Enum
 
@@ -277,11 +277,11 @@ module MetronomeSDK
         end
       end
 
-      # @see MetronomeSDK::ContractWithoutAmendments#prepaid_balance_threshold_configuration
+      # @see MetronomeSDK::Models::ContractWithoutAmendments#prepaid_balance_threshold_configuration
       class PrepaidBalanceThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute commit
         #
-        #   @return [MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::Commit]
+        #   @return [MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::Commit]
         required :commit,
                  -> { MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::Commit }
 
@@ -295,7 +295,7 @@ module MetronomeSDK
 
         # @!attribute payment_gate_config
         #
-        #   @return [MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig]
+        #   @return [MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig]
         required :payment_gate_config,
                  -> {
                    MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig
@@ -316,20 +316,20 @@ module MetronomeSDK
 
         # @!method initialize(commit:, is_enabled:, payment_gate_config:, recharge_to_amount:, threshold_amount:)
         #   Some parameter documentations has been truncated, see
-        #   {MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration}
+        #   {MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration}
         #   for more details.
         #
-        #   @param commit [MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::Commit]
+        #   @param commit [MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::Commit]
         #
         #   @param is_enabled [Boolean] When set to false, the contract will not be evaluated against the threshold_amou
         #
-        #   @param payment_gate_config [MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig]
+        #   @param payment_gate_config [MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig]
         #
         #   @param recharge_to_amount [Float] Specify the amount the balance should be recharged to.
         #
         #   @param threshold_amount [Float] Specify the threshold amount for the contract. Each time the contract's prepaid
 
-        # @see MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration#commit
+        # @see MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration#commit
         class Commit < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute product_id
           #   The commit product that will be used to generate the line item for commit
@@ -371,7 +371,7 @@ module MetronomeSDK
           #   specifiers to contribute to a commit's or credit's drawdown. This field cannot
           #   be used together with `applicable_product_ids` or `applicable_product_tags`.
           #
-          #   @return [Array<MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::Commit::Specifier>, nil]
+          #   @return [Array<MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::Commit::Specifier>, nil]
           optional :specifiers,
                    -> {
                      MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::Commit::Specifier]
@@ -379,7 +379,7 @@ module MetronomeSDK
 
           # @!method initialize(product_id:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, name: nil, specifiers: nil)
           #   Some parameter documentations has been truncated, see
-          #   {MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::Commit}
+          #   {MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::Commit}
           #   for more details.
           #
           #   @param product_id [String] The commit product that will be used to generate the line item for commit paymen
@@ -392,7 +392,7 @@ module MetronomeSDK
           #
           #   @param name [String] Specify the name of the line item for the threshold charge. If left blank, it wi
           #
-          #   @param specifiers [Array<MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::Commit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
+          #   @param specifiers [Array<MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::Commit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
 
           class Specifier < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute presentation_group_values
@@ -420,7 +420,7 @@ module MetronomeSDK
 
             # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
             #   Some parameter documentations has been truncated, see
-            #   {MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::Commit::Specifier}
+            #   {MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::Commit::Specifier}
             #   for more details.
             #
             #   @param presentation_group_values [Hash{Symbol=>String}]
@@ -433,7 +433,7 @@ module MetronomeSDK
           end
         end
 
-        # @see MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration#payment_gate_config
+        # @see MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration#payment_gate_config
         class PaymentGateConfig < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute payment_gate_type
           #   Gate access to the commit balance based on successful collection of payment.
@@ -441,7 +441,7 @@ module MetronomeSDK
           #   facilitate payment using your own payment integration. Select NONE if you do not
           #   wish to payment gate the commit balance.
           #
-          #   @return [Symbol, MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType]
+          #   @return [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType]
           required :payment_gate_type,
                    enum: -> {
                      MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType
@@ -450,7 +450,7 @@ module MetronomeSDK
           # @!attribute stripe_config
           #   Only applicable if using Stripe as your payment gateway through Metronome.
           #
-          #   @return [MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig, nil]
+          #   @return [MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig, nil]
           optional :stripe_config,
                    -> {
                      MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig
@@ -461,7 +461,7 @@ module MetronomeSDK
           #   not wish Metronome to calculate tax on your behalf. Leaving this field blank
           #   will default to NONE.
           #
-          #   @return [Symbol, MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType, nil]
+          #   @return [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType, nil]
           optional :tax_type,
                    enum: -> {
                      MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType
@@ -469,21 +469,21 @@ module MetronomeSDK
 
           # @!method initialize(payment_gate_type:, stripe_config: nil, tax_type: nil)
           #   Some parameter documentations has been truncated, see
-          #   {MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig}
+          #   {MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig}
           #   for more details.
           #
-          #   @param payment_gate_type [Symbol, MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType] Gate access to the commit balance based on successful collection of payment. Sel
+          #   @param payment_gate_type [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType] Gate access to the commit balance based on successful collection of payment. Sel
           #
-          #   @param stripe_config [MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig] Only applicable if using Stripe as your payment gateway through Metronome.
+          #   @param stripe_config [MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig] Only applicable if using Stripe as your payment gateway through Metronome.
           #
-          #   @param tax_type [Symbol, MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType] Stripe tax is only supported for Stripe payment gateway. Select NONE if you do n
+          #   @param tax_type [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType] Stripe tax is only supported for Stripe payment gateway. Select NONE if you do n
 
           # Gate access to the commit balance based on successful collection of payment.
           # Select STRIPE for Metronome to facilitate payment via Stripe. Select EXTERNAL to
           # facilitate payment using your own payment integration. Select NONE if you do not
           # wish to payment gate the commit balance.
           #
-          # @see MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig#payment_gate_type
+          # @see MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig#payment_gate_type
           module PaymentGateType
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -495,12 +495,12 @@ module MetronomeSDK
             #   @return [Array<Symbol>]
           end
 
-          # @see MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig#stripe_config
+          # @see MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig#stripe_config
           class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute payment_type
             #   If left blank, will default to INVOICE
             #
-            #   @return [Symbol, MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType]
+            #   @return [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType]
             required :payment_type,
                      enum: -> {
                        MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType
@@ -509,11 +509,11 @@ module MetronomeSDK
             # @!method initialize(payment_type:)
             #   Only applicable if using Stripe as your payment gateway through Metronome.
             #
-            #   @param payment_type [Symbol, MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType] If left blank, will default to INVOICE
+            #   @param payment_type [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType] If left blank, will default to INVOICE
 
             # If left blank, will default to INVOICE
             #
-            # @see MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig#payment_type
+            # @see MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig#payment_type
             module PaymentType
               extend MetronomeSDK::Internal::Type::Enum
 
@@ -529,7 +529,7 @@ module MetronomeSDK
           # not wish Metronome to calculate tax on your behalf. Leaving this field blank
           # will default to NONE.
           #
-          # @see MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig#tax_type
+          # @see MetronomeSDK::Models::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig#tax_type
           module TaxType
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -551,13 +551,13 @@ module MetronomeSDK
         # @!attribute access_amount
         #   The amount of commit to grant.
         #
-        #   @return [MetronomeSDK::ContractWithoutAmendments::RecurringCommit::AccessAmount]
+        #   @return [MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit::AccessAmount]
         required :access_amount, -> { MetronomeSDK::ContractWithoutAmendments::RecurringCommit::AccessAmount }
 
         # @!attribute commit_duration
         #   The amount of time the created commits will be valid for
         #
-        #   @return [MetronomeSDK::ContractWithoutAmendments::RecurringCommit::CommitDuration]
+        #   @return [MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit::CommitDuration]
         required :commit_duration,
                  -> {
                    MetronomeSDK::ContractWithoutAmendments::RecurringCommit::CommitDuration
@@ -571,13 +571,13 @@ module MetronomeSDK
 
         # @!attribute product
         #
-        #   @return [MetronomeSDK::ContractWithoutAmendments::RecurringCommit::Product]
+        #   @return [MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit::Product]
         required :product, -> { MetronomeSDK::ContractWithoutAmendments::RecurringCommit::Product }
 
         # @!attribute rate_type
         #   Whether the created commits will use the commit rate or list rate
         #
-        #   @return [Symbol, MetronomeSDK::ContractWithoutAmendments::RecurringCommit::RateType]
+        #   @return [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit::RateType]
         required :rate_type, enum: -> { MetronomeSDK::ContractWithoutAmendments::RecurringCommit::RateType }
 
         # @!attribute starting_at
@@ -600,7 +600,7 @@ module MetronomeSDK
 
         # @!attribute contract
         #
-        #   @return [MetronomeSDK::ContractWithoutAmendments::RecurringCommit::Contract, nil]
+        #   @return [MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit::Contract, nil]
         optional :contract, -> { MetronomeSDK::ContractWithoutAmendments::RecurringCommit::Contract }
 
         # @!attribute description
@@ -618,7 +618,7 @@ module MetronomeSDK
         # @!attribute invoice_amount
         #   The amount the customer should be billed for the commit. Not required.
         #
-        #   @return [MetronomeSDK::ContractWithoutAmendments::RecurringCommit::InvoiceAmount, nil]
+        #   @return [MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit::InvoiceAmount, nil]
         optional :invoice_amount,
                  -> {
                    MetronomeSDK::ContractWithoutAmendments::RecurringCommit::InvoiceAmount
@@ -640,7 +640,7 @@ module MetronomeSDK
         #   Determines whether the first and last commit will be prorated. If not provided,
         #   the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
         #
-        #   @return [Symbol, MetronomeSDK::ContractWithoutAmendments::RecurringCommit::Proration, nil]
+        #   @return [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit::Proration, nil]
         optional :proration, enum: -> { MetronomeSDK::ContractWithoutAmendments::RecurringCommit::Proration }
 
         # @!attribute recurrence_frequency
@@ -650,7 +650,7 @@ module MetronomeSDK
         #   be created aligned with the recurring commit's starting_at rather than the usage
         #   invoice dates.
         #
-        #   @return [Symbol, MetronomeSDK::ContractWithoutAmendments::RecurringCommit::RecurrenceFrequency, nil]
+        #   @return [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit::RecurrenceFrequency, nil]
         optional :recurrence_frequency,
                  enum: -> { MetronomeSDK::ContractWithoutAmendments::RecurringCommit::RecurrenceFrequency }
 
@@ -667,7 +667,7 @@ module MetronomeSDK
         #   or credit. A customer's usage needs to meet the condition of at least one of the
         #   specifiers to contribute to a commit's or credit's drawdown.
         #
-        #   @return [Array<MetronomeSDK::ContractWithoutAmendments::RecurringCommit::Specifier>, nil]
+        #   @return [Array<MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit::Specifier>, nil]
         optional :specifiers,
                  -> {
                    MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ContractWithoutAmendments::RecurringCommit::Specifier]
@@ -675,19 +675,20 @@ module MetronomeSDK
 
         # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, invoice_amount: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil)
         #   Some parameter documentations has been truncated, see
-        #   {MetronomeSDK::ContractWithoutAmendments::RecurringCommit} for more details.
+        #   {MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit} for more
+        #   details.
         #
         #   @param id [String]
         #
-        #   @param access_amount [MetronomeSDK::ContractWithoutAmendments::RecurringCommit::AccessAmount] The amount of commit to grant.
+        #   @param access_amount [MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit::AccessAmount] The amount of commit to grant.
         #
-        #   @param commit_duration [MetronomeSDK::ContractWithoutAmendments::RecurringCommit::CommitDuration] The amount of time the created commits will be valid for
+        #   @param commit_duration [MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit::CommitDuration] The amount of time the created commits will be valid for
         #
         #   @param priority [Float] Will be passed down to the individual commits
         #
-        #   @param product [MetronomeSDK::ContractWithoutAmendments::RecurringCommit::Product]
+        #   @param product [MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit::Product]
         #
-        #   @param rate_type [Symbol, MetronomeSDK::ContractWithoutAmendments::RecurringCommit::RateType] Whether the created commits will use the commit rate or list rate
+        #   @param rate_type [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit::RateType] Whether the created commits will use the commit rate or list rate
         #
         #   @param starting_at [Time] Determines the start time for the first commit
         #
@@ -695,27 +696,27 @@ module MetronomeSDK
         #
         #   @param applicable_product_tags [Array<String>] Will be passed down to the individual commits
         #
-        #   @param contract [MetronomeSDK::ContractWithoutAmendments::RecurringCommit::Contract]
+        #   @param contract [MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit::Contract]
         #
         #   @param description [String] Will be passed down to the individual commits
         #
         #   @param ending_before [Time] Determines when the contract will stop creating recurring commits. Optional
         #
-        #   @param invoice_amount [MetronomeSDK::ContractWithoutAmendments::RecurringCommit::InvoiceAmount] The amount the customer should be billed for the commit. Not required.
+        #   @param invoice_amount [MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit::InvoiceAmount] The amount the customer should be billed for the commit. Not required.
         #
         #   @param name [String] Displayed on invoices. Will be passed through to the individual commits
         #
         #   @param netsuite_sales_order_id [String] Will be passed down to the individual commits
         #
-        #   @param proration [Symbol, MetronomeSDK::ContractWithoutAmendments::RecurringCommit::Proration] Determines whether the first and last commit will be prorated. If not provided,
+        #   @param proration [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit::Proration] Determines whether the first and last commit will be prorated. If not provided,
         #
-        #   @param recurrence_frequency [Symbol, MetronomeSDK::ContractWithoutAmendments::RecurringCommit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided:
+        #   @param recurrence_frequency [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided:
         #
         #   @param rollover_fraction [Float] Will be passed down to the individual commits. This controls how much of an indi
         #
-        #   @param specifiers [Array<MetronomeSDK::ContractWithoutAmendments::RecurringCommit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
+        #   @param specifiers [Array<MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
 
-        # @see MetronomeSDK::ContractWithoutAmendments::RecurringCommit#access_amount
+        # @see MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit#access_amount
         class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute credit_type_id
           #
@@ -740,7 +741,7 @@ module MetronomeSDK
           #   @param unit_price [Float]
         end
 
-        # @see MetronomeSDK::ContractWithoutAmendments::RecurringCommit#commit_duration
+        # @see MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit#commit_duration
         class CommitDuration < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute value
           #
@@ -749,7 +750,7 @@ module MetronomeSDK
 
           # @!attribute unit
           #
-          #   @return [Symbol, MetronomeSDK::ContractWithoutAmendments::RecurringCommit::CommitDuration::Unit, nil]
+          #   @return [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit::CommitDuration::Unit, nil]
           optional :unit,
                    enum: -> { MetronomeSDK::ContractWithoutAmendments::RecurringCommit::CommitDuration::Unit }
 
@@ -757,9 +758,9 @@ module MetronomeSDK
           #   The amount of time the created commits will be valid for
           #
           #   @param value [Float]
-          #   @param unit [Symbol, MetronomeSDK::ContractWithoutAmendments::RecurringCommit::CommitDuration::Unit]
+          #   @param unit [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit::CommitDuration::Unit]
 
-          # @see MetronomeSDK::ContractWithoutAmendments::RecurringCommit::CommitDuration#unit
+          # @see MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit::CommitDuration#unit
           module Unit
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -770,7 +771,7 @@ module MetronomeSDK
           end
         end
 
-        # @see MetronomeSDK::ContractWithoutAmendments::RecurringCommit#product
+        # @see MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit#product
         class Product < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute id
           #
@@ -789,7 +790,7 @@ module MetronomeSDK
 
         # Whether the created commits will use the commit rate or list rate
         #
-        # @see MetronomeSDK::ContractWithoutAmendments::RecurringCommit#rate_type
+        # @see MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit#rate_type
         module RateType
           extend MetronomeSDK::Internal::Type::Enum
 
@@ -800,7 +801,7 @@ module MetronomeSDK
           #   @return [Array<Symbol>]
         end
 
-        # @see MetronomeSDK::ContractWithoutAmendments::RecurringCommit#contract
+        # @see MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit#contract
         class Contract < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute id
           #
@@ -811,7 +812,7 @@ module MetronomeSDK
           #   @param id [String]
         end
 
-        # @see MetronomeSDK::ContractWithoutAmendments::RecurringCommit#invoice_amount
+        # @see MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit#invoice_amount
         class InvoiceAmount < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute credit_type_id
           #
@@ -839,7 +840,7 @@ module MetronomeSDK
         # Determines whether the first and last commit will be prorated. If not provided,
         # the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
         #
-        # @see MetronomeSDK::ContractWithoutAmendments::RecurringCommit#proration
+        # @see MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit#proration
         module Proration
           extend MetronomeSDK::Internal::Type::Enum
 
@@ -858,7 +859,7 @@ module MetronomeSDK
         # be created aligned with the recurring commit's starting_at rather than the usage
         # invoice dates.
         #
-        # @see MetronomeSDK::ContractWithoutAmendments::RecurringCommit#recurrence_frequency
+        # @see MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit#recurrence_frequency
         module RecurrenceFrequency
           extend MetronomeSDK::Internal::Type::Enum
 
@@ -897,8 +898,8 @@ module MetronomeSDK
 
           # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
           #   Some parameter documentations has been truncated, see
-          #   {MetronomeSDK::ContractWithoutAmendments::RecurringCommit::Specifier} for more
-          #   details.
+          #   {MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit::Specifier}
+          #   for more details.
           #
           #   @param presentation_group_values [Hash{Symbol=>String}]
           #
@@ -919,13 +920,13 @@ module MetronomeSDK
         # @!attribute access_amount
         #   The amount of commit to grant.
         #
-        #   @return [MetronomeSDK::ContractWithoutAmendments::RecurringCredit::AccessAmount]
+        #   @return [MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit::AccessAmount]
         required :access_amount, -> { MetronomeSDK::ContractWithoutAmendments::RecurringCredit::AccessAmount }
 
         # @!attribute commit_duration
         #   The amount of time the created commits will be valid for
         #
-        #   @return [MetronomeSDK::ContractWithoutAmendments::RecurringCredit::CommitDuration]
+        #   @return [MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit::CommitDuration]
         required :commit_duration,
                  -> {
                    MetronomeSDK::ContractWithoutAmendments::RecurringCredit::CommitDuration
@@ -939,13 +940,13 @@ module MetronomeSDK
 
         # @!attribute product
         #
-        #   @return [MetronomeSDK::ContractWithoutAmendments::RecurringCredit::Product]
+        #   @return [MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit::Product]
         required :product, -> { MetronomeSDK::ContractWithoutAmendments::RecurringCredit::Product }
 
         # @!attribute rate_type
         #   Whether the created commits will use the commit rate or list rate
         #
-        #   @return [Symbol, MetronomeSDK::ContractWithoutAmendments::RecurringCredit::RateType]
+        #   @return [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit::RateType]
         required :rate_type, enum: -> { MetronomeSDK::ContractWithoutAmendments::RecurringCredit::RateType }
 
         # @!attribute starting_at
@@ -968,7 +969,7 @@ module MetronomeSDK
 
         # @!attribute contract
         #
-        #   @return [MetronomeSDK::ContractWithoutAmendments::RecurringCredit::Contract, nil]
+        #   @return [MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit::Contract, nil]
         optional :contract, -> { MetronomeSDK::ContractWithoutAmendments::RecurringCredit::Contract }
 
         # @!attribute description
@@ -999,7 +1000,7 @@ module MetronomeSDK
         #   Determines whether the first and last commit will be prorated. If not provided,
         #   the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
         #
-        #   @return [Symbol, MetronomeSDK::ContractWithoutAmendments::RecurringCredit::Proration, nil]
+        #   @return [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit::Proration, nil]
         optional :proration, enum: -> { MetronomeSDK::ContractWithoutAmendments::RecurringCredit::Proration }
 
         # @!attribute recurrence_frequency
@@ -1009,7 +1010,7 @@ module MetronomeSDK
         #   be created aligned with the recurring commit's starting_at rather than the usage
         #   invoice dates.
         #
-        #   @return [Symbol, MetronomeSDK::ContractWithoutAmendments::RecurringCredit::RecurrenceFrequency, nil]
+        #   @return [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit::RecurrenceFrequency, nil]
         optional :recurrence_frequency,
                  enum: -> { MetronomeSDK::ContractWithoutAmendments::RecurringCredit::RecurrenceFrequency }
 
@@ -1026,7 +1027,7 @@ module MetronomeSDK
         #   or credit. A customer's usage needs to meet the condition of at least one of the
         #   specifiers to contribute to a commit's or credit's drawdown.
         #
-        #   @return [Array<MetronomeSDK::ContractWithoutAmendments::RecurringCredit::Specifier>, nil]
+        #   @return [Array<MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit::Specifier>, nil]
         optional :specifiers,
                  -> {
                    MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ContractWithoutAmendments::RecurringCredit::Specifier]
@@ -1034,19 +1035,20 @@ module MetronomeSDK
 
         # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil)
         #   Some parameter documentations has been truncated, see
-        #   {MetronomeSDK::ContractWithoutAmendments::RecurringCredit} for more details.
+        #   {MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit} for more
+        #   details.
         #
         #   @param id [String]
         #
-        #   @param access_amount [MetronomeSDK::ContractWithoutAmendments::RecurringCredit::AccessAmount] The amount of commit to grant.
+        #   @param access_amount [MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit::AccessAmount] The amount of commit to grant.
         #
-        #   @param commit_duration [MetronomeSDK::ContractWithoutAmendments::RecurringCredit::CommitDuration] The amount of time the created commits will be valid for
+        #   @param commit_duration [MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit::CommitDuration] The amount of time the created commits will be valid for
         #
         #   @param priority [Float] Will be passed down to the individual commits
         #
-        #   @param product [MetronomeSDK::ContractWithoutAmendments::RecurringCredit::Product]
+        #   @param product [MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit::Product]
         #
-        #   @param rate_type [Symbol, MetronomeSDK::ContractWithoutAmendments::RecurringCredit::RateType] Whether the created commits will use the commit rate or list rate
+        #   @param rate_type [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit::RateType] Whether the created commits will use the commit rate or list rate
         #
         #   @param starting_at [Time] Determines the start time for the first commit
         #
@@ -1054,7 +1056,7 @@ module MetronomeSDK
         #
         #   @param applicable_product_tags [Array<String>] Will be passed down to the individual commits
         #
-        #   @param contract [MetronomeSDK::ContractWithoutAmendments::RecurringCredit::Contract]
+        #   @param contract [MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit::Contract]
         #
         #   @param description [String] Will be passed down to the individual commits
         #
@@ -1064,15 +1066,15 @@ module MetronomeSDK
         #
         #   @param netsuite_sales_order_id [String] Will be passed down to the individual commits
         #
-        #   @param proration [Symbol, MetronomeSDK::ContractWithoutAmendments::RecurringCredit::Proration] Determines whether the first and last commit will be prorated. If not provided,
+        #   @param proration [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit::Proration] Determines whether the first and last commit will be prorated. If not provided,
         #
-        #   @param recurrence_frequency [Symbol, MetronomeSDK::ContractWithoutAmendments::RecurringCredit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided:
+        #   @param recurrence_frequency [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided:
         #
         #   @param rollover_fraction [Float] Will be passed down to the individual commits. This controls how much of an indi
         #
-        #   @param specifiers [Array<MetronomeSDK::ContractWithoutAmendments::RecurringCredit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
+        #   @param specifiers [Array<MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
 
-        # @see MetronomeSDK::ContractWithoutAmendments::RecurringCredit#access_amount
+        # @see MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit#access_amount
         class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute credit_type_id
           #
@@ -1097,7 +1099,7 @@ module MetronomeSDK
           #   @param unit_price [Float]
         end
 
-        # @see MetronomeSDK::ContractWithoutAmendments::RecurringCredit#commit_duration
+        # @see MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit#commit_duration
         class CommitDuration < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute value
           #
@@ -1106,7 +1108,7 @@ module MetronomeSDK
 
           # @!attribute unit
           #
-          #   @return [Symbol, MetronomeSDK::ContractWithoutAmendments::RecurringCredit::CommitDuration::Unit, nil]
+          #   @return [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit::CommitDuration::Unit, nil]
           optional :unit,
                    enum: -> { MetronomeSDK::ContractWithoutAmendments::RecurringCredit::CommitDuration::Unit }
 
@@ -1114,9 +1116,9 @@ module MetronomeSDK
           #   The amount of time the created commits will be valid for
           #
           #   @param value [Float]
-          #   @param unit [Symbol, MetronomeSDK::ContractWithoutAmendments::RecurringCredit::CommitDuration::Unit]
+          #   @param unit [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit::CommitDuration::Unit]
 
-          # @see MetronomeSDK::ContractWithoutAmendments::RecurringCredit::CommitDuration#unit
+          # @see MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit::CommitDuration#unit
           module Unit
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -1127,7 +1129,7 @@ module MetronomeSDK
           end
         end
 
-        # @see MetronomeSDK::ContractWithoutAmendments::RecurringCredit#product
+        # @see MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit#product
         class Product < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute id
           #
@@ -1146,7 +1148,7 @@ module MetronomeSDK
 
         # Whether the created commits will use the commit rate or list rate
         #
-        # @see MetronomeSDK::ContractWithoutAmendments::RecurringCredit#rate_type
+        # @see MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit#rate_type
         module RateType
           extend MetronomeSDK::Internal::Type::Enum
 
@@ -1157,7 +1159,7 @@ module MetronomeSDK
           #   @return [Array<Symbol>]
         end
 
-        # @see MetronomeSDK::ContractWithoutAmendments::RecurringCredit#contract
+        # @see MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit#contract
         class Contract < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute id
           #
@@ -1171,7 +1173,7 @@ module MetronomeSDK
         # Determines whether the first and last commit will be prorated. If not provided,
         # the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
         #
-        # @see MetronomeSDK::ContractWithoutAmendments::RecurringCredit#proration
+        # @see MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit#proration
         module Proration
           extend MetronomeSDK::Internal::Type::Enum
 
@@ -1190,7 +1192,7 @@ module MetronomeSDK
         # be created aligned with the recurring commit's starting_at rather than the usage
         # invoice dates.
         #
-        # @see MetronomeSDK::ContractWithoutAmendments::RecurringCredit#recurrence_frequency
+        # @see MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit#recurrence_frequency
         module RecurrenceFrequency
           extend MetronomeSDK::Internal::Type::Enum
 
@@ -1229,8 +1231,8 @@ module MetronomeSDK
 
           # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
           #   Some parameter documentations has been truncated, see
-          #   {MetronomeSDK::ContractWithoutAmendments::RecurringCredit::Specifier} for more
-          #   details.
+          #   {MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit::Specifier}
+          #   for more details.
           #
           #   @param presentation_group_values [Hash{Symbol=>String}]
           #
@@ -1255,7 +1257,7 @@ module MetronomeSDK
 
         # @!attribute reseller_type
         #
-        #   @return [Symbol, MetronomeSDK::ContractWithoutAmendments::ResellerRoyalty::ResellerType]
+        #   @return [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::ResellerRoyalty::ResellerType]
         required :reseller_type,
                  enum: -> { MetronomeSDK::ContractWithoutAmendments::ResellerRoyalty::ResellerType }
 
@@ -1312,7 +1314,7 @@ module MetronomeSDK
         # @!method initialize(fraction:, netsuite_reseller_id:, reseller_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, aws_account_number: nil, aws_offer_id: nil, aws_payer_reference_id: nil, ending_before: nil, gcp_account_id: nil, gcp_offer_id: nil, reseller_contract_value: nil)
         #   @param fraction [Float]
         #   @param netsuite_reseller_id [String]
-        #   @param reseller_type [Symbol, MetronomeSDK::ContractWithoutAmendments::ResellerRoyalty::ResellerType]
+        #   @param reseller_type [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::ResellerRoyalty::ResellerType]
         #   @param starting_at [Time]
         #   @param applicable_product_ids [Array<String>]
         #   @param applicable_product_tags [Array<String>]
@@ -1324,7 +1326,7 @@ module MetronomeSDK
         #   @param gcp_offer_id [String]
         #   @param reseller_contract_value [Float]
 
-        # @see MetronomeSDK::ContractWithoutAmendments::ResellerRoyalty#reseller_type
+        # @see MetronomeSDK::Models::ContractWithoutAmendments::ResellerRoyalty#reseller_type
         module ResellerType
           extend MetronomeSDK::Internal::Type::Enum
 
@@ -1344,7 +1346,7 @@ module MetronomeSDK
       # after a Contract has been created. If this field is omitted, charges will appear
       # on a separate invoice from usage charges.
       #
-      # @see MetronomeSDK::ContractWithoutAmendments#scheduled_charges_on_usage_invoices
+      # @see MetronomeSDK::Models::ContractWithoutAmendments#scheduled_charges_on_usage_invoices
       module ScheduledChargesOnUsageInvoices
         extend MetronomeSDK::Internal::Type::Enum
 
@@ -1354,11 +1356,11 @@ module MetronomeSDK
         #   @return [Array<Symbol>]
       end
 
-      # @see MetronomeSDK::ContractWithoutAmendments#spend_threshold_configuration
+      # @see MetronomeSDK::Models::ContractWithoutAmendments#spend_threshold_configuration
       class SpendThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute commit
         #
-        #   @return [MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration::Commit]
+        #   @return [MetronomeSDK::Models::ContractWithoutAmendments::SpendThresholdConfiguration::Commit]
         required :commit, -> { MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration::Commit }
 
         # @!attribute is_enabled
@@ -1371,7 +1373,7 @@ module MetronomeSDK
 
         # @!attribute payment_gate_config
         #
-        #   @return [MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig]
+        #   @return [MetronomeSDK::Models::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig]
         required :payment_gate_config,
                  -> {
                    MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig
@@ -1386,18 +1388,18 @@ module MetronomeSDK
 
         # @!method initialize(commit:, is_enabled:, payment_gate_config:, threshold_amount:)
         #   Some parameter documentations has been truncated, see
-        #   {MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration} for more
-        #   details.
+        #   {MetronomeSDK::Models::ContractWithoutAmendments::SpendThresholdConfiguration}
+        #   for more details.
         #
-        #   @param commit [MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration::Commit]
+        #   @param commit [MetronomeSDK::Models::ContractWithoutAmendments::SpendThresholdConfiguration::Commit]
         #
         #   @param is_enabled [Boolean] When set to false, the contract will not be evaluated against the threshold_amou
         #
-        #   @param payment_gate_config [MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig]
+        #   @param payment_gate_config [MetronomeSDK::Models::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig]
         #
         #   @param threshold_amount [Float] Specify the threshold amount for the contract. Each time the contract's usage hi
 
-        # @see MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration#commit
+        # @see MetronomeSDK::Models::ContractWithoutAmendments::SpendThresholdConfiguration#commit
         class Commit < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute product_id
           #   The commit product that will be used to generate the line item for commit
@@ -1420,7 +1422,7 @@ module MetronomeSDK
 
           # @!method initialize(product_id:, description: nil, name: nil)
           #   Some parameter documentations has been truncated, see
-          #   {MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration::Commit}
+          #   {MetronomeSDK::Models::ContractWithoutAmendments::SpendThresholdConfiguration::Commit}
           #   for more details.
           #
           #   @param product_id [String] The commit product that will be used to generate the line item for commit paymen
@@ -1430,7 +1432,7 @@ module MetronomeSDK
           #   @param name [String] Specify the name of the line item for the threshold charge. If left blank, it wi
         end
 
-        # @see MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration#payment_gate_config
+        # @see MetronomeSDK::Models::ContractWithoutAmendments::SpendThresholdConfiguration#payment_gate_config
         class PaymentGateConfig < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute payment_gate_type
           #   Gate access to the commit balance based on successful collection of payment.
@@ -1438,7 +1440,7 @@ module MetronomeSDK
           #   facilitate payment using your own payment integration. Select NONE if you do not
           #   wish to payment gate the commit balance.
           #
-          #   @return [Symbol, MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig::PaymentGateType]
+          #   @return [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig::PaymentGateType]
           required :payment_gate_type,
                    enum: -> {
                      MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig::PaymentGateType
@@ -1447,7 +1449,7 @@ module MetronomeSDK
           # @!attribute stripe_config
           #   Only applicable if using Stripe as your payment gateway through Metronome.
           #
-          #   @return [MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig, nil]
+          #   @return [MetronomeSDK::Models::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig, nil]
           optional :stripe_config,
                    -> {
                      MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig
@@ -1458,7 +1460,7 @@ module MetronomeSDK
           #   not wish Metronome to calculate tax on your behalf. Leaving this field blank
           #   will default to NONE.
           #
-          #   @return [Symbol, MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig::TaxType, nil]
+          #   @return [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig::TaxType, nil]
           optional :tax_type,
                    enum: -> {
                      MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig::TaxType
@@ -1466,21 +1468,21 @@ module MetronomeSDK
 
           # @!method initialize(payment_gate_type:, stripe_config: nil, tax_type: nil)
           #   Some parameter documentations has been truncated, see
-          #   {MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig}
+          #   {MetronomeSDK::Models::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig}
           #   for more details.
           #
-          #   @param payment_gate_type [Symbol, MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig::PaymentGateType] Gate access to the commit balance based on successful collection of payment. Sel
+          #   @param payment_gate_type [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig::PaymentGateType] Gate access to the commit balance based on successful collection of payment. Sel
           #
-          #   @param stripe_config [MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig] Only applicable if using Stripe as your payment gateway through Metronome.
+          #   @param stripe_config [MetronomeSDK::Models::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig] Only applicable if using Stripe as your payment gateway through Metronome.
           #
-          #   @param tax_type [Symbol, MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig::TaxType] Stripe tax is only supported for Stripe payment gateway. Select NONE if you do n
+          #   @param tax_type [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig::TaxType] Stripe tax is only supported for Stripe payment gateway. Select NONE if you do n
 
           # Gate access to the commit balance based on successful collection of payment.
           # Select STRIPE for Metronome to facilitate payment via Stripe. Select EXTERNAL to
           # facilitate payment using your own payment integration. Select NONE if you do not
           # wish to payment gate the commit balance.
           #
-          # @see MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig#payment_gate_type
+          # @see MetronomeSDK::Models::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig#payment_gate_type
           module PaymentGateType
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -1492,12 +1494,12 @@ module MetronomeSDK
             #   @return [Array<Symbol>]
           end
 
-          # @see MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig#stripe_config
+          # @see MetronomeSDK::Models::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig#stripe_config
           class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute payment_type
             #   If left blank, will default to INVOICE
             #
-            #   @return [Symbol, MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType]
+            #   @return [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType]
             required :payment_type,
                      enum: -> {
                        MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType
@@ -1506,11 +1508,11 @@ module MetronomeSDK
             # @!method initialize(payment_type:)
             #   Only applicable if using Stripe as your payment gateway through Metronome.
             #
-            #   @param payment_type [Symbol, MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType] If left blank, will default to INVOICE
+            #   @param payment_type [Symbol, MetronomeSDK::Models::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType] If left blank, will default to INVOICE
 
             # If left blank, will default to INVOICE
             #
-            # @see MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig#payment_type
+            # @see MetronomeSDK::Models::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig#payment_type
             module PaymentType
               extend MetronomeSDK::Internal::Type::Enum
 
@@ -1526,7 +1528,7 @@ module MetronomeSDK
           # not wish Metronome to calculate tax on your behalf. Leaving this field blank
           # will default to NONE.
           #
-          # @see MetronomeSDK::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig#tax_type
+          # @see MetronomeSDK::Models::ContractWithoutAmendments::SpendThresholdConfiguration::PaymentGateConfig#tax_type
           module TaxType
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -1539,30 +1541,30 @@ module MetronomeSDK
         end
       end
 
-      # @see MetronomeSDK::ContractWithoutAmendments#usage_filter
+      # @see MetronomeSDK::Models::ContractWithoutAmendments#usage_filter
       class UsageFilter < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute current
         #
-        #   @return [MetronomeSDK::BaseUsageFilter, nil]
+        #   @return [MetronomeSDK::Models::BaseUsageFilter, nil]
         required :current, -> { MetronomeSDK::BaseUsageFilter }, nil?: true
 
         # @!attribute initial
         #
-        #   @return [MetronomeSDK::BaseUsageFilter]
+        #   @return [MetronomeSDK::Models::BaseUsageFilter]
         required :initial, -> { MetronomeSDK::BaseUsageFilter }
 
         # @!attribute updates
         #
-        #   @return [Array<MetronomeSDK::ContractWithoutAmendments::UsageFilter::Update>]
+        #   @return [Array<MetronomeSDK::Models::ContractWithoutAmendments::UsageFilter::Update>]
         required :updates,
                  -> {
                    MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ContractWithoutAmendments::UsageFilter::Update]
                  }
 
         # @!method initialize(current:, initial:, updates:)
-        #   @param current [MetronomeSDK::BaseUsageFilter, nil]
-        #   @param initial [MetronomeSDK::BaseUsageFilter]
-        #   @param updates [Array<MetronomeSDK::ContractWithoutAmendments::UsageFilter::Update>]
+        #   @param current [MetronomeSDK::Models::BaseUsageFilter, nil]
+        #   @param initial [MetronomeSDK::Models::BaseUsageFilter]
+        #   @param updates [Array<MetronomeSDK::Models::ContractWithoutAmendments::UsageFilter::Update>]
 
         class Update < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute group_key

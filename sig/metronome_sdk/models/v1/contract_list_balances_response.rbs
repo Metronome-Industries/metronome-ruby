@@ -17,6 +17,11 @@ module MetronomeSDK
           next_page: String?
         ) -> void
 
+        def to_hash: -> {
+          data: ::Array[MetronomeSDK::Models::V1::ContractListBalancesResponse::data],
+          next_page: String?
+        }
+
         type data = MetronomeSDK::Commit | MetronomeSDK::Credit
 
         module Data

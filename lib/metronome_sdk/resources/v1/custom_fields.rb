@@ -10,7 +10,7 @@ module MetronomeSDK
         # @overload add_key(enforce_uniqueness:, entity:, key:, request_options: {})
         #
         # @param enforce_uniqueness [Boolean]
-        # @param entity [Symbol, MetronomeSDK::V1::CustomFieldAddKeyParams::Entity]
+        # @param entity [Symbol, MetronomeSDK::Models::V1::CustomFieldAddKeyParams::Entity]
         # @param key [String]
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -32,7 +32,7 @@ module MetronomeSDK
         #
         # @overload delete_values(entity:, entity_id:, keys:, request_options: {})
         #
-        # @param entity [Symbol, MetronomeSDK::V1::CustomFieldDeleteValuesParams::Entity]
+        # @param entity [Symbol, MetronomeSDK::Models::V1::CustomFieldDeleteValuesParams::Entity]
         # @param entity_id [String]
         # @param keys [Array<String>]
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
@@ -57,7 +57,7 @@ module MetronomeSDK
         #
         # @param next_page [String] Query param: Cursor that indicates where the next page of results should start.
         #
-        # @param entities [Array<Symbol, MetronomeSDK::V1::CustomFieldListKeysParams::Entity>] Body param: Optional list of entity types to return keys for
+        # @param entities [Array<Symbol, MetronomeSDK::Models::V1::CustomFieldListKeysParams::Entity>] Body param: Optional list of entity types to return keys for
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -81,7 +81,7 @@ module MetronomeSDK
         #
         # @overload remove_key(entity:, key:, request_options: {})
         #
-        # @param entity [Symbol, MetronomeSDK::V1::CustomFieldRemoveKeyParams::Entity]
+        # @param entity [Symbol, MetronomeSDK::Models::V1::CustomFieldRemoveKeyParams::Entity]
         # @param key [String]
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -110,7 +110,7 @@ module MetronomeSDK
         # @overload set_values(custom_fields:, entity:, entity_id:, request_options: {})
         #
         # @param custom_fields [Hash{Symbol=>String}]
-        # @param entity [Symbol, MetronomeSDK::V1::CustomFieldSetValuesParams::Entity]
+        # @param entity [Symbol, MetronomeSDK::Models::V1::CustomFieldSetValuesParams::Entity]
         # @param entity_id [String]
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #

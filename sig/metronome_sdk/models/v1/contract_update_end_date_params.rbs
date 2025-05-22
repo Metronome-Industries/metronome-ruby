@@ -33,6 +33,14 @@ module MetronomeSDK
           ?ending_before: Time,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
+
+        def to_hash: -> {
+          contract_id: String,
+          customer_id: String,
+          allow_ending_before_finalized_invoice: bool,
+          ending_before: Time,
+          request_options: MetronomeSDK::RequestOptions
+        }
       end
     end
   end

@@ -45,6 +45,17 @@ module MetronomeSDK
           ?timestamp: Time,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
+
+        def to_hash: -> {
+          id: String,
+          amount: Float,
+          customer_id: String,
+          reason: String,
+          segment_id: String,
+          contract_id: String,
+          timestamp: Time,
+          request_options: MetronomeSDK::RequestOptions
+        }
       end
     end
   end

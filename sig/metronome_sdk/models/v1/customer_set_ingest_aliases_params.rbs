@@ -18,6 +18,12 @@ module MetronomeSDK
           ingest_aliases: ::Array[String],
           ?request_options: MetronomeSDK::request_opts
         ) -> void
+
+        def to_hash: -> {
+          customer_id: String,
+          ingest_aliases: ::Array[String],
+          request_options: MetronomeSDK::RequestOptions
+        }
       end
     end
   end

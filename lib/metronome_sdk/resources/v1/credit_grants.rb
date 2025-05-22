@@ -15,11 +15,11 @@ module MetronomeSDK
         #
         # @param expires_at [Time] The credit grant will only apply to usage or charges dated before this timestamp
         #
-        # @param grant_amount [MetronomeSDK::V1::CreditGrantCreateParams::GrantAmount] the amount of credits granted
+        # @param grant_amount [MetronomeSDK::Models::V1::CreditGrantCreateParams::GrantAmount] the amount of credits granted
         #
         # @param name [String] the name of the credit grant as it will appear on invoices
         #
-        # @param paid_amount [MetronomeSDK::V1::CreditGrantCreateParams::PaidAmount] the amount paid for this credit grant
+        # @param paid_amount [MetronomeSDK::Models::V1::CreditGrantCreateParams::PaidAmount] the amount paid for this credit grant
         #
         # @param priority [Float]
         #
@@ -35,7 +35,7 @@ module MetronomeSDK
         #
         # @param reason [String]
         #
-        # @param rollover_settings [MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings] Configure a rollover for this credit grant so if it expires it rolls over a conf
+        # @param rollover_settings [MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings] Configure a rollover for this credit grant so if it expires it rolls over a conf
         #
         # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made wit
         #

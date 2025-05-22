@@ -11,6 +11,8 @@ module MetronomeSDK
           def initialize: (
             data: MetronomeSDK::V1::Customers::CustomerAlert
           ) -> void
+
+          def to_hash: -> { data: MetronomeSDK::V1::Customers::CustomerAlert }
         end
       end
     end

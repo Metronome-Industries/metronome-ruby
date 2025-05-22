@@ -32,7 +32,7 @@ module MetronomeSDK
 
         # @!attribute deductions
         #
-        #   @return [Array<MetronomeSDK::V1::CreditLedgerEntry>]
+        #   @return [Array<MetronomeSDK::Models::V1::CreditLedgerEntry>]
         required :deductions,
                  -> {
                    MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::CreditLedgerEntry]
@@ -67,7 +67,7 @@ module MetronomeSDK
 
         # @!attribute pending_deductions
         #
-        #   @return [Array<MetronomeSDK::V1::CreditLedgerEntry>]
+        #   @return [Array<MetronomeSDK::Models::V1::CreditLedgerEntry>]
         required :pending_deductions,
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::CreditLedgerEntry] }
 
@@ -121,7 +121,7 @@ module MetronomeSDK
         #
         #   @param customer_id [String] the Metronome ID of the customer
         #
-        #   @param deductions [Array<MetronomeSDK::V1::CreditLedgerEntry>]
+        #   @param deductions [Array<MetronomeSDK::Models::V1::CreditLedgerEntry>]
         #
         #   @param effective_at [Time]
         #
@@ -133,7 +133,7 @@ module MetronomeSDK
         #
         #   @param paid_amount [MetronomeSDK::Models::V1::CreditGrantListResponse::PaidAmount] the amount paid for this credit grant
         #
-        #   @param pending_deductions [Array<MetronomeSDK::V1::CreditLedgerEntry>]
+        #   @param pending_deductions [Array<MetronomeSDK::Models::V1::CreditLedgerEntry>]
         #
         #   @param priority [Float]
         #
@@ -195,7 +195,7 @@ module MetronomeSDK
           # @!attribute credit_type
           #   the credit type for the amount granted
           #
-          #   @return [MetronomeSDK::CreditTypeData]
+          #   @return [MetronomeSDK::Models::CreditTypeData]
           required :credit_type, -> { MetronomeSDK::CreditTypeData }
 
           # @!method initialize(amount:, credit_type:)
@@ -203,7 +203,7 @@ module MetronomeSDK
           #
           #   @param amount [Float]
           #
-          #   @param credit_type [MetronomeSDK::CreditTypeData] the credit type for the amount granted
+          #   @param credit_type [MetronomeSDK::Models::CreditTypeData] the credit type for the amount granted
         end
 
         # @see MetronomeSDK::Models::V1::CreditGrantListResponse#paid_amount
@@ -216,7 +216,7 @@ module MetronomeSDK
           # @!attribute credit_type
           #   the credit type for the amount paid
           #
-          #   @return [MetronomeSDK::CreditTypeData]
+          #   @return [MetronomeSDK::Models::CreditTypeData]
           required :credit_type, -> { MetronomeSDK::CreditTypeData }
 
           # @!method initialize(amount:, credit_type:)
@@ -224,7 +224,7 @@ module MetronomeSDK
           #
           #   @param amount [Float]
           #
-          #   @param credit_type [MetronomeSDK::CreditTypeData] the credit type for the amount paid
+          #   @param credit_type [MetronomeSDK::Models::CreditTypeData] the credit type for the amount paid
         end
 
         class Product < MetronomeSDK::Internal::Type::BaseModel

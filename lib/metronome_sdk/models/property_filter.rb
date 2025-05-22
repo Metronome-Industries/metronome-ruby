@@ -38,7 +38,7 @@ module MetronomeSDK
 
       # @!method initialize(name:, exists: nil, in_values: nil, not_in_values: nil)
       #   Some parameter documentations has been truncated, see
-      #   {MetronomeSDK::PropertyFilter} for more details.
+      #   {MetronomeSDK::Models::PropertyFilter} for more details.
       #
       #   @param name [String] The name of the event property.
       #

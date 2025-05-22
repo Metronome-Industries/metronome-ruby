@@ -101,6 +101,25 @@ module MetronomeSDK
             ?request_options: MetronomeSDK::request_opts
           ) -> void
 
+          def to_hash: -> {
+            access_schedule: MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule,
+            customer_id: String,
+            priority: Float,
+            product_id: String,
+            applicable_contract_ids: ::Array[String],
+            applicable_product_ids: ::Array[String],
+            applicable_product_tags: ::Array[String],
+            custom_fields: ::Hash[Symbol, String],
+            description: String,
+            name: String,
+            netsuite_sales_order_id: String,
+            rate_type: MetronomeSDK::Models::V1::Customers::CreditCreateParams::rate_type,
+            salesforce_opportunity_id: String,
+            specifiers: ::Array[MetronomeSDK::V1::Customers::CreditCreateParams::Specifier],
+            uniqueness_key: String,
+            request_options: MetronomeSDK::RequestOptions
+          }
+
           type access_schedule =
             {
               schedule_items: ::Array[MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem],
@@ -119,6 +138,11 @@ module MetronomeSDK
               ?credit_type_id: String
             ) -> void
 
+            def to_hash: -> {
+              schedule_items: ::Array[MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem],
+              credit_type_id: String
+            }
+
             type schedule_item =
               { amount: Float, ending_before: Time, starting_at: Time }
 
@@ -134,6 +158,12 @@ module MetronomeSDK
                 ending_before: Time,
                 starting_at: Time
               ) -> void
+
+              def to_hash: -> {
+                amount: Float,
+                ending_before: Time,
+                starting_at: Time
+              }
             end
           end
 
@@ -183,6 +213,13 @@ module MetronomeSDK
               ?product_id: String,
               ?product_tags: ::Array[String]
             ) -> void
+
+            def to_hash: -> {
+              presentation_group_values: ::Hash[Symbol, String],
+              pricing_group_values: ::Hash[Symbol, String],
+              product_id: String,
+              product_tags: ::Array[String]
+            }
           end
         end
       end

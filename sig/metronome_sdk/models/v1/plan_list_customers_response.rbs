@@ -17,6 +17,11 @@ module MetronomeSDK
           plan_details: MetronomeSDK::Models::V1::PlanListCustomersResponse::PlanDetails
         ) -> void
 
+        def to_hash: -> {
+          customer_details: MetronomeSDK::V1::CustomerDetail,
+          plan_details: MetronomeSDK::Models::V1::PlanListCustomersResponse::PlanDetails
+        }
+
         type plan_details =
           {
             id: String,
@@ -48,6 +53,15 @@ module MetronomeSDK
             starting_on: Time,
             ?ending_before: Time?
           ) -> void
+
+          def to_hash: -> {
+            id: String,
+            custom_fields: ::Hash[Symbol, String],
+            customer_plan_id: String,
+            name: String,
+            starting_on: Time,
+            ending_before: Time?
+          }
         end
       end
     end

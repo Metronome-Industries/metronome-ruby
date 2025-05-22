@@ -54,6 +54,18 @@ module MetronomeSDK
             ?trial_info: MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo
           ) -> void
 
+          def to_hash: -> {
+            id: String,
+            custom_fields: ::Hash[Symbol, String],
+            plan_description: String,
+            plan_id: String,
+            plan_name: String,
+            starting_on: Time,
+            ending_before: Time,
+            net_payment_terms_days: Float,
+            trial_info: MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo
+          }
+
           type trial_info =
             {
               ending_before: Time,
@@ -69,6 +81,11 @@ module MetronomeSDK
               ending_before: Time,
               spending_caps: ::Array[MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap]
             ) -> void
+
+            def to_hash: -> {
+              ending_before: Time,
+              spending_caps: ::Array[MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap]
+            }
 
             type spending_cap =
               {
@@ -89,6 +106,12 @@ module MetronomeSDK
                 amount_remaining: Float,
                 credit_type: MetronomeSDK::CreditTypeData
               ) -> void
+
+              def to_hash: -> {
+                amount: Float,
+                amount_remaining: Float,
+                credit_type: MetronomeSDK::CreditTypeData
+              }
             end
           end
         end

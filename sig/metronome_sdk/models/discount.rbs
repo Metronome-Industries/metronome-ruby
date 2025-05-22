@@ -38,6 +38,15 @@ module MetronomeSDK
         ?netsuite_sales_order_id: String
       ) -> void
 
+      def to_hash: -> {
+        id: String,
+        product: MetronomeSDK::Discount::Product,
+        schedule: MetronomeSDK::SchedulePointInTime,
+        custom_fields: ::Hash[Symbol, String],
+        name: String,
+        netsuite_sales_order_id: String
+      }
+
       type product = { id: String, name: String }
 
       class Product < MetronomeSDK::Internal::Type::BaseModel
@@ -46,6 +55,8 @@ module MetronomeSDK
         attr_accessor name: String
 
         def initialize: (id: String, name: String) -> void
+
+        def to_hash: -> { id: String, name: String }
       end
     end
   end

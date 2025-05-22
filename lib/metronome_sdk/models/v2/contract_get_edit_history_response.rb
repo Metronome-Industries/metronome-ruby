@@ -34,7 +34,7 @@ module MetronomeSDK
 
           # @!attribute add_discounts
           #
-          #   @return [Array<MetronomeSDK::Discount>, nil]
+          #   @return [Array<MetronomeSDK::Models::Discount>, nil]
           optional :add_discounts, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Discount] }
 
           # @!attribute add_overrides
@@ -45,7 +45,7 @@ module MetronomeSDK
 
           # @!attribute add_pro_services
           #
-          #   @return [Array<MetronomeSDK::ProService>, nil]
+          #   @return [Array<MetronomeSDK::Models::ProService>, nil]
           optional :add_pro_services, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ProService] }
 
           # @!attribute add_recurring_commits
@@ -146,9 +146,9 @@ module MetronomeSDK
           #   @param id [String]
           #   @param add_commits [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit>]
           #   @param add_credits [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit>]
-          #   @param add_discounts [Array<MetronomeSDK::Discount>]
+          #   @param add_discounts [Array<MetronomeSDK::Models::Discount>]
           #   @param add_overrides [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride>]
-          #   @param add_pro_services [Array<MetronomeSDK::ProService>]
+          #   @param add_pro_services [Array<MetronomeSDK::Models::ProService>]
           #   @param add_recurring_commits [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit>]
           #   @param add_recurring_credits [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit>]
           #   @param add_reseller_royalties [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddResellerRoyalty>]
@@ -188,7 +188,7 @@ module MetronomeSDK
             #   The schedule that the customer will gain access to the credits purposed with
             #   this commit.
             #
-            #   @return [MetronomeSDK::ScheduleDuration, nil]
+            #   @return [MetronomeSDK::Models::ScheduleDuration, nil]
             optional :access_schedule, -> { MetronomeSDK::ScheduleDuration }
 
             # @!attribute applicable_product_ids
@@ -209,7 +209,7 @@ module MetronomeSDK
             # @!attribute invoice_schedule
             #   The schedule that the customer will be invoiced for this commit.
             #
-            #   @return [MetronomeSDK::SchedulePointInTime, nil]
+            #   @return [MetronomeSDK::Models::SchedulePointInTime, nil]
             optional :invoice_schedule, -> { MetronomeSDK::SchedulePointInTime }
 
             # @!attribute name
@@ -268,7 +268,7 @@ module MetronomeSDK
             #
             #   @param type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Type]
             #
-            #   @param access_schedule [MetronomeSDK::ScheduleDuration] The schedule that the customer will gain access to the credits purposed with thi
+            #   @param access_schedule [MetronomeSDK::Models::ScheduleDuration] The schedule that the customer will gain access to the credits purposed with thi
             #
             #   @param applicable_product_ids [Array<String>]
             #
@@ -276,7 +276,7 @@ module MetronomeSDK
             #
             #   @param description [String]
             #
-            #   @param invoice_schedule [MetronomeSDK::SchedulePointInTime] The schedule that the customer will be invoiced for this commit.
+            #   @param invoice_schedule [MetronomeSDK::Models::SchedulePointInTime] The schedule that the customer will be invoiced for this commit.
             #
             #   @param name [String]
             #
@@ -391,7 +391,7 @@ module MetronomeSDK
             # @!attribute access_schedule
             #   The schedule that the customer will gain access to the credits.
             #
-            #   @return [MetronomeSDK::ScheduleDuration, nil]
+            #   @return [MetronomeSDK::Models::ScheduleDuration, nil]
             optional :access_schedule, -> { MetronomeSDK::ScheduleDuration }
 
             # @!attribute applicable_product_ids
@@ -454,7 +454,7 @@ module MetronomeSDK
             #
             #   @param type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Type]
             #
-            #   @param access_schedule [MetronomeSDK::ScheduleDuration] The schedule that the customer will gain access to the credits.
+            #   @param access_schedule [MetronomeSDK::Models::ScheduleDuration] The schedule that the customer will gain access to the credits.
             #
             #   @param applicable_product_ids [Array<String>]
             #
@@ -703,7 +703,7 @@ module MetronomeSDK
 
               # @!attribute credit_type
               #
-              #   @return [MetronomeSDK::CreditTypeData, nil]
+              #   @return [MetronomeSDK::Models::CreditTypeData, nil]
               optional :credit_type, -> { MetronomeSDK::CreditTypeData }
 
               # @!attribute custom_rate
@@ -737,7 +737,7 @@ module MetronomeSDK
               # @!attribute tiers
               #   Only set for TIERED rate_type.
               #
-              #   @return [Array<MetronomeSDK::Tier>, nil]
+              #   @return [Array<MetronomeSDK::Models::Tier>, nil]
               optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
 
               # @!method initialize(rate_type:, credit_type: nil, custom_rate: nil, is_prorated: nil, price: nil, quantity: nil, tiers: nil)
@@ -747,7 +747,7 @@ module MetronomeSDK
               #
               #   @param rate_type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::RateType]
               #
-              #   @param credit_type [MetronomeSDK::CreditTypeData]
+              #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
               #
               #   @param custom_rate [Hash{Symbol=>Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate processo
               #
@@ -757,7 +757,7 @@ module MetronomeSDK
               #
               #   @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
               #
-              #   @param tiers [Array<MetronomeSDK::Tier>] Only set for TIERED rate_type.
+              #   @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
 
               # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate#rate_type
               module RateType
@@ -1627,7 +1627,7 @@ module MetronomeSDK
 
             # @!attribute schedule
             #
-            #   @return [MetronomeSDK::SchedulePointInTime]
+            #   @return [MetronomeSDK::Models::SchedulePointInTime]
             required :schedule, -> { MetronomeSDK::SchedulePointInTime }
 
             # @!attribute name
@@ -1647,7 +1647,7 @@ module MetronomeSDK
             #
             #   @param product [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Product]
             #
-            #   @param schedule [MetronomeSDK::SchedulePointInTime]
+            #   @param schedule [MetronomeSDK::Models::SchedulePointInTime]
             #
             #   @param name [String] displayed on invoices
             #

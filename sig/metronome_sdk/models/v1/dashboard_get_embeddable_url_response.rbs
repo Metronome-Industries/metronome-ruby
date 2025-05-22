@@ -13,6 +13,10 @@ module MetronomeSDK
           data: MetronomeSDK::Models::V1::DashboardGetEmbeddableURLResponse::Data
         ) -> void
 
+        def to_hash: -> {
+          data: MetronomeSDK::Models::V1::DashboardGetEmbeddableURLResponse::Data
+        }
+
         type data = { url: String }
 
         class Data < MetronomeSDK::Internal::Type::BaseModel
@@ -21,6 +25,8 @@ module MetronomeSDK
           def url=: (String) -> String
 
           def initialize: (?url: String) -> void
+
+          def to_hash: -> { url: String }
         end
       end
     end
