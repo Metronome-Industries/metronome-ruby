@@ -406,6 +406,48 @@ module MetronomeSDK
             returns(
               T.nilable(
                 T::Array[
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit
+                ]
+              )
+            )
+          end
+          attr_reader :update_recurring_commits
+
+          sig do
+            params(
+              update_recurring_commits:
+                T::Array[
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::OrHash
+                ]
+            ).void
+          end
+          attr_writer :update_recurring_commits
+
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit
+                ]
+              )
+            )
+          end
+          attr_reader :update_recurring_credits
+
+          sig do
+            params(
+              update_recurring_credits:
+                T::Array[
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit::OrHash
+                ]
+            ).void
+          end
+          attr_writer :update_recurring_credits
+
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRefundInvoice
                 ]
               )
@@ -511,6 +553,14 @@ module MetronomeSDK
                 T::Array[
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::OrHash
                 ],
+              update_recurring_commits:
+                T::Array[
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::OrHash
+                ],
+              update_recurring_credits:
+                T::Array[
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit::OrHash
+                ],
               update_refund_invoices:
                 T::Array[
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRefundInvoice::OrHash
@@ -542,6 +592,8 @@ module MetronomeSDK
             update_contract_end_date: nil,
             update_credits: nil,
             update_discounts: nil,
+            update_recurring_commits: nil,
+            update_recurring_credits: nil,
             update_refund_invoices: nil,
             update_scheduled_charges: nil
           )
@@ -614,6 +666,14 @@ module MetronomeSDK
                 update_discounts:
                   T::Array[
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount
+                  ],
+                update_recurring_commits:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit
+                  ],
+                update_recurring_credits:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit
                   ],
                 update_refund_invoices:
                   T::Array[
@@ -5385,6 +5445,254 @@ module MetronomeSDK
                 end
                 def to_hash
                 end
+              end
+            end
+          end
+
+          class UpdateRecurringCommit < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig { returns(String) }
+            attr_accessor :id
+
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::AccessAmount
+                )
+              )
+            end
+            attr_reader :access_amount
+
+            sig do
+              params(
+                access_amount:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::AccessAmount::OrHash
+              ).void
+            end
+            attr_writer :access_amount
+
+            sig { returns(T.nilable(Time)) }
+            attr_reader :ending_before
+
+            sig { params(ending_before: Time).void }
+            attr_writer :ending_before
+
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::InvoiceAmount
+                )
+              )
+            end
+            attr_reader :invoice_amount
+
+            sig do
+              params(
+                invoice_amount:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::InvoiceAmount::OrHash
+              ).void
+            end
+            attr_writer :invoice_amount
+
+            sig do
+              params(
+                id: String,
+                access_amount:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::AccessAmount::OrHash,
+                ending_before: Time,
+                invoice_amount:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::InvoiceAmount::OrHash
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              id:,
+              access_amount: nil,
+              ending_before: nil,
+              invoice_amount: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  id: String,
+                  access_amount:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::AccessAmount,
+                  ending_before: Time,
+                  invoice_amount:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::InvoiceAmount
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::AccessAmount,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(T.nilable(Float)) }
+              attr_reader :quantity
+
+              sig { params(quantity: Float).void }
+              attr_writer :quantity
+
+              sig { returns(T.nilable(Float)) }
+              attr_reader :unit_price
+
+              sig { params(unit_price: Float).void }
+              attr_writer :unit_price
+
+              sig do
+                params(quantity: Float, unit_price: Float).returns(
+                  T.attached_class
+                )
+              end
+              def self.new(quantity: nil, unit_price: nil)
+              end
+
+              sig { override.returns({ quantity: Float, unit_price: Float }) }
+              def to_hash
+              end
+            end
+
+            class InvoiceAmount < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::InvoiceAmount,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(T.nilable(Float)) }
+              attr_reader :quantity
+
+              sig { params(quantity: Float).void }
+              attr_writer :quantity
+
+              sig { returns(T.nilable(Float)) }
+              attr_reader :unit_price
+
+              sig { params(unit_price: Float).void }
+              attr_writer :unit_price
+
+              sig do
+                params(quantity: Float, unit_price: Float).returns(
+                  T.attached_class
+                )
+              end
+              def self.new(quantity: nil, unit_price: nil)
+              end
+
+              sig { override.returns({ quantity: Float, unit_price: Float }) }
+              def to_hash
+              end
+            end
+          end
+
+          class UpdateRecurringCredit < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig { returns(String) }
+            attr_accessor :id
+
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit::AccessAmount
+                )
+              )
+            end
+            attr_reader :access_amount
+
+            sig do
+              params(
+                access_amount:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit::AccessAmount::OrHash
+              ).void
+            end
+            attr_writer :access_amount
+
+            sig { returns(T.nilable(Time)) }
+            attr_reader :ending_before
+
+            sig { params(ending_before: Time).void }
+            attr_writer :ending_before
+
+            sig do
+              params(
+                id: String,
+                access_amount:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit::AccessAmount::OrHash,
+                ending_before: Time
+              ).returns(T.attached_class)
+            end
+            def self.new(id:, access_amount: nil, ending_before: nil)
+            end
+
+            sig do
+              override.returns(
+                {
+                  id: String,
+                  access_amount:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit::AccessAmount,
+                  ending_before: Time
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit::AccessAmount,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(T.nilable(Float)) }
+              attr_reader :quantity
+
+              sig { params(quantity: Float).void }
+              attr_writer :quantity
+
+              sig { returns(T.nilable(Float)) }
+              attr_reader :unit_price
+
+              sig { params(unit_price: Float).void }
+              attr_writer :unit_price
+
+              sig do
+                params(quantity: Float, unit_price: Float).returns(
+                  T.attached_class
+                )
+              end
+              def self.new(quantity: nil, unit_price: nil)
+              end
+
+              sig { override.returns({ quantity: Float, unit_price: Float }) }
+              def to_hash
               end
             end
           end
