@@ -49,11 +49,9 @@ module MetronomeSDK
 
           # @!attribute scheduled_charges
           #
-          #   @return [Array<MetronomeSDK::ScheduledCharge>]
+          #   @return [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::ScheduledCharge>]
           required :scheduled_charges,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ScheduledCharge]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::ScheduledCharge] }
 
           # @!attribute starting_at
           #
@@ -104,8 +102,9 @@ module MetronomeSDK
           # @!attribute discounts
           #   This field's availability is dependent on your client's configuration.
           #
-          #   @return [Array<MetronomeSDK::Discount>, nil]
-          optional :discounts, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Discount] }
+          #   @return [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Discount>, nil]
+          optional :discounts,
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Discount] }
 
           # @!attribute ending_before
           #
@@ -147,11 +146,9 @@ module MetronomeSDK
           # @!attribute professional_services
           #   This field's availability is dependent on your client's configuration.
           #
-          #   @return [Array<MetronomeSDK::ProService>, nil]
+          #   @return [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::ProfessionalService>, nil]
           optional :professional_services,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ProService]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::ProfessionalService] }
 
           # @!attribute rate_card_id
           #
@@ -229,7 +226,7 @@ module MetronomeSDK
           #
           #   @param overrides [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Override>]
           #
-          #   @param scheduled_charges [Array<MetronomeSDK::ScheduledCharge>]
+          #   @param scheduled_charges [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::ScheduledCharge>]
           #
           #   @param starting_at [Time]
           #
@@ -247,7 +244,7 @@ module MetronomeSDK
           #
           #   @param customer_billing_provider_configuration [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration] This field's availability is dependent on your client's configuration.
           #
-          #   @param discounts [Array<MetronomeSDK::Discount>] This field's availability is dependent on your client's configuration.
+          #   @param discounts [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Discount>] This field's availability is dependent on your client's configuration.
           #
           #   @param ending_before [Time]
           #
@@ -261,7 +258,7 @@ module MetronomeSDK
           #
           #   @param prepaid_balance_threshold_configuration [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration]
           #
-          #   @param professional_services [Array<MetronomeSDK::ProService>] This field's availability is dependent on your client's configuration.
+          #   @param professional_services [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::ProfessionalService>] This field's availability is dependent on your client's configuration.
           #
           #   @param rate_card_id [String]
           #
@@ -301,8 +298,9 @@ module MetronomeSDK
             #   The schedule that the customer will gain access to the credits purposed with
             #   this commit.
             #
-            #   @return [MetronomeSDK::ScheduleDuration, nil]
-            optional :access_schedule, -> { MetronomeSDK::ScheduleDuration }
+            #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::AccessSchedule, nil]
+            optional :access_schedule,
+                     -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::AccessSchedule }
 
             # @!attribute applicable_contract_ids
             #
@@ -362,14 +360,15 @@ module MetronomeSDK
             # @!attribute invoice_schedule
             #   The schedule that the customer will be invoiced for this commit.
             #
-            #   @return [MetronomeSDK::SchedulePointInTime, nil]
-            optional :invoice_schedule, -> { MetronomeSDK::SchedulePointInTime }
+            #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::InvoiceSchedule, nil]
+            optional :invoice_schedule,
+                     -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::InvoiceSchedule }
 
             # @!attribute ledger
             #   A list of ordered events that impact the balance of a commit. For example, an
             #   invoice deduction or a rollover.
             #
-            #   @return [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry>, nil]
+            #   @return [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember0, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember1, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember2, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember3, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember4, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember5, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember6, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember7, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember8, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember9, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember10, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember11, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember12>, nil]
             optional :ledger,
                      -> { MetronomeSDK::Internal::Type::ArrayOf[union: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger] }
 
@@ -414,7 +413,16 @@ module MetronomeSDK
             #   @return [String, nil]
             optional :salesforce_opportunity_id, String
 
-            # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, custom_fields: nil, description: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil)
+            # @!attribute specifiers
+            #   List of filters that determine what kind of customer usage draws down a commit
+            #   or credit. A customer's usage needs to meet the condition of at least one of the
+            #   specifiers to contribute to a commit's or credit's drawdown.
+            #
+            #   @return [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Specifier>, nil]
+            optional :specifiers,
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Specifier] }
+
+            # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, custom_fields: nil, description: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit} for more
             #   details.
@@ -425,7 +433,7 @@ module MetronomeSDK
             #
             #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Type]
             #
-            #   @param access_schedule [MetronomeSDK::ScheduleDuration] The schedule that the customer will gain access to the credits purposed with thi
+            #   @param access_schedule [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::AccessSchedule] The schedule that the customer will gain access to the credits purposed with thi
             #
             #   @param applicable_contract_ids [Array<String>]
             #
@@ -445,9 +453,9 @@ module MetronomeSDK
             #
             #   @param invoice_contract [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::InvoiceContract] The contract that this commit will be billed on.
             #
-            #   @param invoice_schedule [MetronomeSDK::SchedulePointInTime] The schedule that the customer will be invoiced for this commit.
+            #   @param invoice_schedule [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::InvoiceSchedule] The schedule that the customer will be invoiced for this commit.
             #
-            #   @param ledger [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry>] A list of ordered events that impact the balance of a commit. For example, an in
+            #   @param ledger [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember0, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember1, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember2, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember3, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember4, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember5, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember6, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember7, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember8, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember9, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember10, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember11, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember12>] A list of ordered events that impact the balance of a commit. For example, an in
             #
             #   @param name [String]
             #
@@ -462,6 +470,8 @@ module MetronomeSDK
             #   @param rollover_fraction [Float]
             #
             #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
+            #
+            #   @param specifiers [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
 
             # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit#product
             class Product < MetronomeSDK::Internal::Type::BaseModel
@@ -491,6 +501,73 @@ module MetronomeSDK
               #   @return [Array<Symbol>]
             end
 
+            # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit#access_schedule
+            class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute schedule_items
+              #
+              #   @return [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem>]
+              required :schedule_items,
+                       -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem] }
+
+              # @!attribute credit_type
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::AccessSchedule::CreditType, nil]
+              optional :credit_type,
+                       -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::AccessSchedule::CreditType }
+
+              # @!method initialize(schedule_items:, credit_type: nil)
+              #   The schedule that the customer will gain access to the credits purposed with
+              #   this commit.
+              #
+              #   @param schedule_items [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem>]
+              #   @param credit_type [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::AccessSchedule::CreditType]
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute id
+                #
+                #   @return [String]
+                required :id, String
+
+                # @!attribute amount
+                #
+                #   @return [Float]
+                required :amount, Float
+
+                # @!attribute ending_before
+                #
+                #   @return [Time]
+                required :ending_before, Time
+
+                # @!attribute starting_at
+                #
+                #   @return [Time]
+                required :starting_at, Time
+
+                # @!method initialize(id:, amount:, ending_before:, starting_at:)
+                #   @param id [String]
+                #   @param amount [Float]
+                #   @param ending_before [Time]
+                #   @param starting_at [Time]
+              end
+
+              # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::AccessSchedule#credit_type
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute id
+                #
+                #   @return [String]
+                required :id, String
+
+                # @!attribute name
+                #
+                #   @return [String]
+                required :name, String
+
+                # @!method initialize(id:, name:)
+                #   @param id [String]
+                #   @param name [String]
+              end
+            end
+
             # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit#contract
             class Contract < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute id
@@ -515,36 +592,114 @@ module MetronomeSDK
               #   @param id [String]
             end
 
+            # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit#invoice_schedule
+            class InvoiceSchedule < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute credit_type
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::InvoiceSchedule::CreditType, nil]
+              optional :credit_type,
+                       -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::InvoiceSchedule::CreditType }
+
+              # @!attribute schedule_items
+              #
+              #   @return [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::InvoiceSchedule::ScheduleItem>, nil]
+              optional :schedule_items,
+                       -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::InvoiceSchedule::ScheduleItem] }
+
+              # @!method initialize(credit_type: nil, schedule_items: nil)
+              #   The schedule that the customer will be invoiced for this commit.
+              #
+              #   @param credit_type [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::InvoiceSchedule::CreditType]
+              #   @param schedule_items [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::InvoiceSchedule::ScheduleItem>]
+
+              # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::InvoiceSchedule#credit_type
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute id
+                #
+                #   @return [String]
+                required :id, String
+
+                # @!attribute name
+                #
+                #   @return [String]
+                required :name, String
+
+                # @!method initialize(id:, name:)
+                #   @param id [String]
+                #   @param name [String]
+              end
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute id
+                #
+                #   @return [String]
+                required :id, String
+
+                # @!attribute amount
+                #
+                #   @return [Float]
+                required :amount, Float
+
+                # @!attribute invoice_id
+                #
+                #   @return [String]
+                required :invoice_id, String
+
+                # @!attribute quantity
+                #
+                #   @return [Float]
+                required :quantity, Float
+
+                # @!attribute timestamp
+                #
+                #   @return [Time]
+                required :timestamp, Time
+
+                # @!attribute unit_price
+                #
+                #   @return [Float]
+                required :unit_price, Float
+
+                # @!method initialize(id:, amount:, invoice_id:, quantity:, timestamp:, unit_price:)
+                #   @param id [String]
+                #   @param amount [Float]
+                #   @param invoice_id [String]
+                #   @param quantity [Float]
+                #   @param timestamp [Time]
+                #   @param unit_price [Float]
+              end
+            end
+
             module Ledger
               extend MetronomeSDK::Internal::Type::Union
 
-              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry }
+              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember0 }
 
-              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry }
+              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember1 }
 
-              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry }
+              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember2 }
 
-              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry }
+              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember3 }
 
-              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry }
+              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember4 }
 
-              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry }
+              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember5 }
 
-              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry }
+              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember6 }
 
-              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry }
+              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember7 }
 
-              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry }
+              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember8 }
 
-              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry }
+              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember9 }
 
-              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry }
+              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember10 }
 
-              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry }
+              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember11 }
 
-              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry }
+              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember12 }
 
-              class PrepaidCommitSegmentStartLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember0 < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute amount
                 #
                 #   @return [Float]
@@ -562,17 +717,17 @@ module MetronomeSDK
 
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember0::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type }
+                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember0::Type }
 
                 # @!method initialize(amount:, segment_id:, timestamp:, type:)
                 #   @param amount [Float]
                 #   @param segment_id [String]
                 #   @param timestamp [Time]
-                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember0::Type]
 
-                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry#type
+                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember0#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -583,7 +738,7 @@ module MetronomeSDK
                 end
               end
 
-              class PrepaidCommitAutomatedInvoiceDeductionLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember1 < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute amount
                 #
                 #   @return [Float]
@@ -606,18 +761,18 @@ module MetronomeSDK
 
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember1::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type }
+                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember1::Type }
 
                 # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
                 #   @param amount [Float]
                 #   @param invoice_id [String]
                 #   @param segment_id [String]
                 #   @param timestamp [Time]
-                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember1::Type]
 
-                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry#type
+                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember1#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -628,7 +783,7 @@ module MetronomeSDK
                 end
               end
 
-              class PrepaidCommitRolloverLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember2 < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute amount
                 #
                 #   @return [Float]
@@ -651,18 +806,18 @@ module MetronomeSDK
 
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember2::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type }
+                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember2::Type }
 
                 # @!method initialize(amount:, new_contract_id:, segment_id:, timestamp:, type:)
                 #   @param amount [Float]
                 #   @param new_contract_id [String]
                 #   @param segment_id [String]
                 #   @param timestamp [Time]
-                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember2::Type]
 
-                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry#type
+                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember2#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -673,7 +828,7 @@ module MetronomeSDK
                 end
               end
 
-              class PrepaidCommitExpirationLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember3 < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute amount
                 #
                 #   @return [Float]
@@ -691,17 +846,17 @@ module MetronomeSDK
 
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember3::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type }
+                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember3::Type }
 
                 # @!method initialize(amount:, segment_id:, timestamp:, type:)
                 #   @param amount [Float]
                 #   @param segment_id [String]
                 #   @param timestamp [Time]
-                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember3::Type]
 
-                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry#type
+                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember3#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -712,7 +867,7 @@ module MetronomeSDK
                 end
               end
 
-              class PrepaidCommitCanceledLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember4 < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute amount
                 #
                 #   @return [Float]
@@ -735,18 +890,18 @@ module MetronomeSDK
 
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember4::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type }
+                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember4::Type }
 
                 # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
                 #   @param amount [Float]
                 #   @param invoice_id [String]
                 #   @param segment_id [String]
                 #   @param timestamp [Time]
-                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember4::Type]
 
-                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry#type
+                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember4#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -757,7 +912,7 @@ module MetronomeSDK
                 end
               end
 
-              class PrepaidCommitCreditedLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember5 < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute amount
                 #
                 #   @return [Float]
@@ -780,18 +935,18 @@ module MetronomeSDK
 
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember5::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type }
+                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember5::Type }
 
                 # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
                 #   @param amount [Float]
                 #   @param invoice_id [String]
                 #   @param segment_id [String]
                 #   @param timestamp [Time]
-                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember5::Type]
 
-                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry#type
+                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember5#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -802,7 +957,7 @@ module MetronomeSDK
                 end
               end
 
-              class PostpaidCommitInitialBalanceLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember6 < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute amount
                 #
                 #   @return [Float]
@@ -815,16 +970,16 @@ module MetronomeSDK
 
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember6::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type }
+                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember6::Type }
 
                 # @!method initialize(amount:, timestamp:, type:)
                 #   @param amount [Float]
                 #   @param timestamp [Time]
-                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember6::Type]
 
-                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry#type
+                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember6#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -835,7 +990,7 @@ module MetronomeSDK
                 end
               end
 
-              class PostpaidCommitAutomatedInvoiceDeductionLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember7 < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute amount
                 #
                 #   @return [Float]
@@ -858,18 +1013,18 @@ module MetronomeSDK
 
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember7::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type }
+                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember7::Type }
 
                 # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
                 #   @param amount [Float]
                 #   @param invoice_id [String]
                 #   @param segment_id [String]
                 #   @param timestamp [Time]
-                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember7::Type]
 
-                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry#type
+                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember7#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -880,7 +1035,7 @@ module MetronomeSDK
                 end
               end
 
-              class PostpaidCommitRolloverLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember8 < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute amount
                 #
                 #   @return [Float]
@@ -903,18 +1058,18 @@ module MetronomeSDK
 
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember8::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type }
+                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember8::Type }
 
                 # @!method initialize(amount:, new_contract_id:, segment_id:, timestamp:, type:)
                 #   @param amount [Float]
                 #   @param new_contract_id [String]
                 #   @param segment_id [String]
                 #   @param timestamp [Time]
-                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember8::Type]
 
-                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry#type
+                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember8#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -925,7 +1080,7 @@ module MetronomeSDK
                 end
               end
 
-              class PostpaidCommitTrueupLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember9 < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute amount
                 #
                 #   @return [Float]
@@ -943,17 +1098,17 @@ module MetronomeSDK
 
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember9::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type }
+                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember9::Type }
 
                 # @!method initialize(amount:, invoice_id:, timestamp:, type:)
                 #   @param amount [Float]
                 #   @param invoice_id [String]
                 #   @param timestamp [Time]
-                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember9::Type]
 
-                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry#type
+                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember9#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -964,7 +1119,7 @@ module MetronomeSDK
                 end
               end
 
-              class PrepaidCommitManualLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember10 < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute amount
                 #
                 #   @return [Float]
@@ -982,17 +1137,17 @@ module MetronomeSDK
 
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember10::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry::Type }
+                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember10::Type }
 
                 # @!method initialize(amount:, reason:, timestamp:, type:)
                 #   @param amount [Float]
                 #   @param reason [String]
                 #   @param timestamp [Time]
-                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember10::Type]
 
-                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry#type
+                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember10#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -1003,7 +1158,7 @@ module MetronomeSDK
                 end
               end
 
-              class PostpaidCommitManualLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember11 < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute amount
                 #
                 #   @return [Float]
@@ -1021,17 +1176,17 @@ module MetronomeSDK
 
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember11::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type }
+                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember11::Type }
 
                 # @!method initialize(amount:, reason:, timestamp:, type:)
                 #   @param amount [Float]
                 #   @param reason [String]
                 #   @param timestamp [Time]
-                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember11::Type]
 
-                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry#type
+                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember11#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -1042,7 +1197,7 @@ module MetronomeSDK
                 end
               end
 
-              class PostpaidCommitExpirationLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember12 < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute amount
                 #
                 #   @return [Float]
@@ -1055,16 +1210,16 @@ module MetronomeSDK
 
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember12::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type }
+                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember12::Type }
 
                 # @!method initialize(amount:, timestamp:, type:)
                 #   @param amount [Float]
                 #   @param timestamp [Time]
-                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember12::Type]
 
-                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry#type
+                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember12#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -1076,27 +1231,7 @@ module MetronomeSDK
               end
 
               # @!method self.variants
-              #   @return [Array(MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry)]
-
-              define_sorbet_constant!(:Variants) do
-                T.type_alias do
-                  T.any(
-                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry
-                  )
-                end
-              end
+              #   @return [Array(MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember0, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember1, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember2, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember3, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember4, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember5, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember6, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember7, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember8, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember9, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember10, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember11, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::UnionMember12)]
             end
 
             # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit#rate_type
@@ -1125,6 +1260,44 @@ module MetronomeSDK
               # @!method initialize(commit_id:, contract_id:)
               #   @param commit_id [String]
               #   @param contract_id [String]
+            end
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute presentation_group_values
+              #
+              #   @return [Hash{Symbol=>String}, nil]
+              optional :presentation_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+              # @!attribute pricing_group_values
+              #
+              #   @return [Hash{Symbol=>String}, nil]
+              optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+              # @!attribute product_id
+              #   If provided, the specifier will only apply to the product with the specified ID.
+              #
+              #   @return [String, nil]
+              optional :product_id, String
+
+              # @!attribute product_tags
+              #   If provided, the specifier will only apply to products with all the specified
+              #   tags.
+              #
+              #   @return [Array<String>, nil]
+              optional :product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+              # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Specifier}
+              #   for more details.
+              #
+              #   @param presentation_group_values [Hash{Symbol=>String}]
+              #
+              #   @param pricing_group_values [Hash{Symbol=>String}]
+              #
+              #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
+              #
+              #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
             end
           end
 
@@ -1290,8 +1463,9 @@ module MetronomeSDK
 
               # @!attribute credit_type
               #
-              #   @return [MetronomeSDK::CreditTypeData, nil]
-              optional :credit_type, -> { MetronomeSDK::CreditTypeData }
+              #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Override::OverwriteRate::CreditType, nil]
+              optional :credit_type,
+                       -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Override::OverwriteRate::CreditType }
 
               # @!attribute custom_rate
               #   Only set for CUSTOM rate_type. This field is interpreted by custom rate
@@ -1324,8 +1498,9 @@ module MetronomeSDK
               # @!attribute tiers
               #   Only set for TIERED rate_type.
               #
-              #   @return [Array<MetronomeSDK::Tier>, nil]
-              optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
+              #   @return [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Override::OverwriteRate::Tier>, nil]
+              optional :tiers,
+                       -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Override::OverwriteRate::Tier] }
 
               # @!method initialize(rate_type:, credit_type: nil, custom_rate: nil, is_prorated: nil, price: nil, quantity: nil, tiers: nil)
               #   Some parameter documentations has been truncated, see
@@ -1334,7 +1509,7 @@ module MetronomeSDK
               #
               #   @param rate_type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Override::OverwriteRate::RateType]
               #
-              #   @param credit_type [MetronomeSDK::CreditTypeData]
+              #   @param credit_type [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Override::OverwriteRate::CreditType]
               #
               #   @param custom_rate [Hash{Symbol=>Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate processo
               #
@@ -1344,7 +1519,7 @@ module MetronomeSDK
               #
               #   @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
               #
-              #   @param tiers [Array<MetronomeSDK::Tier>] Only set for TIERED rate_type.
+              #   @param tiers [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Override::OverwriteRate::Tier>] Only set for TIERED rate_type.
 
               # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Override::OverwriteRate#rate_type
               module RateType
@@ -1358,6 +1533,39 @@ module MetronomeSDK
 
                 # @!method self.values
                 #   @return [Array<Symbol>]
+              end
+
+              # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Override::OverwriteRate#credit_type
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute id
+                #
+                #   @return [String]
+                required :id, String
+
+                # @!attribute name
+                #
+                #   @return [String]
+                required :name, String
+
+                # @!method initialize(id:, name:)
+                #   @param id [String]
+                #   @param name [String]
+              end
+
+              class Tier < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute price
+                #
+                #   @return [Float]
+                required :price, Float
+
+                # @!attribute size
+                #
+                #   @return [Float, nil]
+                optional :size, Float
+
+                # @!method initialize(price:, size: nil)
+                #   @param price [Float]
+                #   @param size [Float]
               end
             end
 
@@ -1399,6 +1607,155 @@ module MetronomeSDK
 
               # @!method self.values
               #   @return [Array<Symbol>]
+            end
+          end
+
+          class ScheduledCharge < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute id
+            #
+            #   @return [String]
+            required :id, String
+
+            # @!attribute product
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::ScheduledCharge::Product]
+            required :product,
+                     -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::ScheduledCharge::Product }
+
+            # @!attribute schedule
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::ScheduledCharge::Schedule]
+            required :schedule,
+                     -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::ScheduledCharge::Schedule }
+
+            # @!attribute archived_at
+            #
+            #   @return [Time, nil]
+            optional :archived_at, Time
+
+            # @!attribute custom_fields
+            #
+            #   @return [Hash{Symbol=>String}, nil]
+            optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
+
+            # @!attribute name
+            #   displayed on invoices
+            #
+            #   @return [String, nil]
+            optional :name, String
+
+            # @!attribute netsuite_sales_order_id
+            #   This field's availability is dependent on your client's configuration.
+            #
+            #   @return [String, nil]
+            optional :netsuite_sales_order_id, String
+
+            # @!method initialize(id:, product:, schedule:, archived_at: nil, custom_fields: nil, name: nil, netsuite_sales_order_id: nil)
+            #   @param id [String]
+            #
+            #   @param product [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::ScheduledCharge::Product]
+            #
+            #   @param schedule [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::ScheduledCharge::Schedule]
+            #
+            #   @param archived_at [Time]
+            #
+            #   @param custom_fields [Hash{Symbol=>String}]
+            #
+            #   @param name [String] displayed on invoices
+            #
+            #   @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
+
+            # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::ScheduledCharge#product
+            class Product < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute id
+              #
+              #   @return [String]
+              required :id, String
+
+              # @!attribute name
+              #
+              #   @return [String]
+              required :name, String
+
+              # @!method initialize(id:, name:)
+              #   @param id [String]
+              #   @param name [String]
+            end
+
+            # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::ScheduledCharge#schedule
+            class Schedule < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute credit_type
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::ScheduledCharge::Schedule::CreditType, nil]
+              optional :credit_type,
+                       -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::ScheduledCharge::Schedule::CreditType }
+
+              # @!attribute schedule_items
+              #
+              #   @return [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::ScheduledCharge::Schedule::ScheduleItem>, nil]
+              optional :schedule_items,
+                       -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::ScheduledCharge::Schedule::ScheduleItem] }
+
+              # @!method initialize(credit_type: nil, schedule_items: nil)
+              #   @param credit_type [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::ScheduledCharge::Schedule::CreditType]
+              #   @param schedule_items [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::ScheduledCharge::Schedule::ScheduleItem>]
+
+              # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::ScheduledCharge::Schedule#credit_type
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute id
+                #
+                #   @return [String]
+                required :id, String
+
+                # @!attribute name
+                #
+                #   @return [String]
+                required :name, String
+
+                # @!method initialize(id:, name:)
+                #   @param id [String]
+                #   @param name [String]
+              end
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute id
+                #
+                #   @return [String]
+                required :id, String
+
+                # @!attribute amount
+                #
+                #   @return [Float]
+                required :amount, Float
+
+                # @!attribute invoice_id
+                #
+                #   @return [String]
+                required :invoice_id, String
+
+                # @!attribute quantity
+                #
+                #   @return [Float]
+                required :quantity, Float
+
+                # @!attribute timestamp
+                #
+                #   @return [Time]
+                required :timestamp, Time
+
+                # @!attribute unit_price
+                #
+                #   @return [Float]
+                required :unit_price, Float
+
+                # @!method initialize(id:, amount:, invoice_id:, quantity:, timestamp:, unit_price:)
+                #   @param id [String]
+                #   @param amount [Float]
+                #   @param invoice_id [String]
+                #   @param quantity [Float]
+                #   @param timestamp [Time]
+                #   @param unit_price [Float]
+              end
             end
           end
 
@@ -1526,8 +1883,9 @@ module MetronomeSDK
             # @!attribute access_schedule
             #   The schedule that the customer will gain access to the credits.
             #
-            #   @return [MetronomeSDK::ScheduleDuration, nil]
-            optional :access_schedule, -> { MetronomeSDK::ScheduleDuration }
+            #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::AccessSchedule, nil]
+            optional :access_schedule,
+                     -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::AccessSchedule }
 
             # @!attribute applicable_contract_ids
             #
@@ -1576,7 +1934,7 @@ module MetronomeSDK
             #   A list of ordered events that impact the balance of a credit. For example, an
             #   invoice deduction or an expiration.
             #
-            #   @return [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditManualLedgerEntry>, nil]
+            #   @return [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember0, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember1, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember2, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember3, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember4, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember5>, nil]
             optional :ledger,
                      -> { MetronomeSDK::Internal::Type::ArrayOf[union: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger] }
 
@@ -1604,7 +1962,16 @@ module MetronomeSDK
             #   @return [String, nil]
             optional :salesforce_opportunity_id, String
 
-            # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, balance: nil, contract: nil, custom_fields: nil, description: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, salesforce_opportunity_id: nil)
+            # @!attribute specifiers
+            #   List of filters that determine what kind of customer usage draws down a commit
+            #   or credit. A customer's usage needs to meet the condition of at least one of the
+            #   specifiers to contribute to a commit's or credit's drawdown.
+            #
+            #   @return [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Specifier>, nil]
+            optional :specifiers,
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Specifier] }
+
+            # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, balance: nil, contract: nil, custom_fields: nil, description: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, salesforce_opportunity_id: nil, specifiers: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit} for more
             #   details.
@@ -1615,7 +1982,7 @@ module MetronomeSDK
             #
             #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Type]
             #
-            #   @param access_schedule [MetronomeSDK::ScheduleDuration] The schedule that the customer will gain access to the credits.
+            #   @param access_schedule [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::AccessSchedule] The schedule that the customer will gain access to the credits.
             #
             #   @param applicable_contract_ids [Array<String>]
             #
@@ -1631,7 +1998,7 @@ module MetronomeSDK
             #
             #   @param description [String]
             #
-            #   @param ledger [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditManualLedgerEntry>] A list of ordered events that impact the balance of a credit. For example, an in
+            #   @param ledger [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember0, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember1, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember2, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember3, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember4, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember5>] A list of ordered events that impact the balance of a credit. For example, an in
             #
             #   @param name [String]
             #
@@ -1640,6 +2007,8 @@ module MetronomeSDK
             #   @param priority [Float] If multiple credits or commits are applicable, the one with the lower priority w
             #
             #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
+            #
+            #   @param specifiers [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
 
             # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit#product
             class Product < MetronomeSDK::Internal::Type::BaseModel
@@ -1668,6 +2037,72 @@ module MetronomeSDK
               #   @return [Array<Symbol>]
             end
 
+            # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit#access_schedule
+            class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute schedule_items
+              #
+              #   @return [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem>]
+              required :schedule_items,
+                       -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem] }
+
+              # @!attribute credit_type
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::AccessSchedule::CreditType, nil]
+              optional :credit_type,
+                       -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::AccessSchedule::CreditType }
+
+              # @!method initialize(schedule_items:, credit_type: nil)
+              #   The schedule that the customer will gain access to the credits.
+              #
+              #   @param schedule_items [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem>]
+              #   @param credit_type [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::AccessSchedule::CreditType]
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute id
+                #
+                #   @return [String]
+                required :id, String
+
+                # @!attribute amount
+                #
+                #   @return [Float]
+                required :amount, Float
+
+                # @!attribute ending_before
+                #
+                #   @return [Time]
+                required :ending_before, Time
+
+                # @!attribute starting_at
+                #
+                #   @return [Time]
+                required :starting_at, Time
+
+                # @!method initialize(id:, amount:, ending_before:, starting_at:)
+                #   @param id [String]
+                #   @param amount [Float]
+                #   @param ending_before [Time]
+                #   @param starting_at [Time]
+              end
+
+              # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::AccessSchedule#credit_type
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute id
+                #
+                #   @return [String]
+                required :id, String
+
+                # @!attribute name
+                #
+                #   @return [String]
+                required :name, String
+
+                # @!method initialize(id:, name:)
+                #   @param id [String]
+                #   @param name [String]
+              end
+            end
+
             # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit#contract
             class Contract < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute id
@@ -1682,19 +2117,19 @@ module MetronomeSDK
             module Ledger
               extend MetronomeSDK::Internal::Type::Union
 
-              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry }
+              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember0 }
 
-              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry }
+              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember1 }
 
-              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry }
+              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember2 }
 
-              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry }
+              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember3 }
 
-              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry }
+              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember4 }
 
-              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditManualLedgerEntry }
+              variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember5 }
 
-              class CreditSegmentStartLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember0 < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute amount
                 #
                 #   @return [Float]
@@ -1712,17 +2147,17 @@ module MetronomeSDK
 
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember0::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry::Type }
+                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember0::Type }
 
                 # @!method initialize(amount:, segment_id:, timestamp:, type:)
                 #   @param amount [Float]
                 #   @param segment_id [String]
                 #   @param timestamp [Time]
-                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember0::Type]
 
-                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry#type
+                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember0#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -1733,7 +2168,7 @@ module MetronomeSDK
                 end
               end
 
-              class CreditAutomatedInvoiceDeductionLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember1 < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute amount
                 #
                 #   @return [Float]
@@ -1756,18 +2191,18 @@ module MetronomeSDK
 
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember1::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type }
+                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember1::Type }
 
                 # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
                 #   @param amount [Float]
                 #   @param invoice_id [String]
                 #   @param segment_id [String]
                 #   @param timestamp [Time]
-                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember1::Type]
 
-                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry#type
+                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember1#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -1778,7 +2213,7 @@ module MetronomeSDK
                 end
               end
 
-              class CreditExpirationLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember2 < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute amount
                 #
                 #   @return [Float]
@@ -1796,17 +2231,17 @@ module MetronomeSDK
 
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember2::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry::Type }
+                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember2::Type }
 
                 # @!method initialize(amount:, segment_id:, timestamp:, type:)
                 #   @param amount [Float]
                 #   @param segment_id [String]
                 #   @param timestamp [Time]
-                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember2::Type]
 
-                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry#type
+                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember2#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -1817,7 +2252,7 @@ module MetronomeSDK
                 end
               end
 
-              class CreditCanceledLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember3 < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute amount
                 #
                 #   @return [Float]
@@ -1840,18 +2275,18 @@ module MetronomeSDK
 
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember3::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry::Type }
+                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember3::Type }
 
                 # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
                 #   @param amount [Float]
                 #   @param invoice_id [String]
                 #   @param segment_id [String]
                 #   @param timestamp [Time]
-                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember3::Type]
 
-                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry#type
+                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember3#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -1862,7 +2297,7 @@ module MetronomeSDK
                 end
               end
 
-              class CreditCreditedLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember4 < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute amount
                 #
                 #   @return [Float]
@@ -1885,18 +2320,18 @@ module MetronomeSDK
 
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember4::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry::Type }
+                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember4::Type }
 
                 # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
                 #   @param amount [Float]
                 #   @param invoice_id [String]
                 #   @param segment_id [String]
                 #   @param timestamp [Time]
-                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember4::Type]
 
-                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry#type
+                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember4#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -1907,7 +2342,7 @@ module MetronomeSDK
                 end
               end
 
-              class CreditManualLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember5 < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute amount
                 #
                 #   @return [Float]
@@ -1925,17 +2360,17 @@ module MetronomeSDK
 
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditManualLedgerEntry::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember5::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditManualLedgerEntry::Type }
+                         enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember5::Type }
 
                 # @!method initialize(amount:, reason:, timestamp:, type:)
                 #   @param amount [Float]
                 #   @param reason [String]
                 #   @param timestamp [Time]
-                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditManualLedgerEntry::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember5::Type]
 
-                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditManualLedgerEntry#type
+                # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember5#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -1947,20 +2382,45 @@ module MetronomeSDK
               end
 
               # @!method self.variants
-              #   @return [Array(MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditManualLedgerEntry)]
+              #   @return [Array(MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember0, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember1, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember2, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember3, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember4, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::UnionMember5)]
+            end
 
-              define_sorbet_constant!(:Variants) do
-                T.type_alias do
-                  T.any(
-                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditManualLedgerEntry
-                  )
-                end
-              end
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute presentation_group_values
+              #
+              #   @return [Hash{Symbol=>String}, nil]
+              optional :presentation_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+              # @!attribute pricing_group_values
+              #
+              #   @return [Hash{Symbol=>String}, nil]
+              optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+              # @!attribute product_id
+              #   If provided, the specifier will only apply to the product with the specified ID.
+              #
+              #   @return [String, nil]
+              optional :product_id, String
+
+              # @!attribute product_tags
+              #   If provided, the specifier will only apply to products with all the specified
+              #   tags.
+              #
+              #   @return [Array<String>, nil]
+              optional :product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+              # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Specifier}
+              #   for more details.
+              #
+              #   @param presentation_group_values [Hash{Symbol=>String}]
+              #
+              #   @param pricing_group_values [Hash{Symbol=>String}]
+              #
+              #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
+              #
+              #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
             end
           end
 
@@ -2012,6 +2472,145 @@ module MetronomeSDK
 
               # @!method self.values
               #   @return [Array<Symbol>]
+            end
+          end
+
+          class Discount < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute id
+            #
+            #   @return [String]
+            required :id, String
+
+            # @!attribute product
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Discount::Product]
+            required :product, -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Discount::Product }
+
+            # @!attribute schedule
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Discount::Schedule]
+            required :schedule, -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Discount::Schedule }
+
+            # @!attribute custom_fields
+            #
+            #   @return [Hash{Symbol=>String}, nil]
+            optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
+
+            # @!attribute name
+            #
+            #   @return [String, nil]
+            optional :name, String
+
+            # @!attribute netsuite_sales_order_id
+            #   This field's availability is dependent on your client's configuration.
+            #
+            #   @return [String, nil]
+            optional :netsuite_sales_order_id, String
+
+            # @!method initialize(id:, product:, schedule:, custom_fields: nil, name: nil, netsuite_sales_order_id: nil)
+            #   @param id [String]
+            #
+            #   @param product [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Discount::Product]
+            #
+            #   @param schedule [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Discount::Schedule]
+            #
+            #   @param custom_fields [Hash{Symbol=>String}]
+            #
+            #   @param name [String]
+            #
+            #   @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
+
+            # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Discount#product
+            class Product < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute id
+              #
+              #   @return [String]
+              required :id, String
+
+              # @!attribute name
+              #
+              #   @return [String]
+              required :name, String
+
+              # @!method initialize(id:, name:)
+              #   @param id [String]
+              #   @param name [String]
+            end
+
+            # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Discount#schedule
+            class Schedule < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute credit_type
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Discount::Schedule::CreditType, nil]
+              optional :credit_type,
+                       -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Discount::Schedule::CreditType }
+
+              # @!attribute schedule_items
+              #
+              #   @return [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Discount::Schedule::ScheduleItem>, nil]
+              optional :schedule_items,
+                       -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Discount::Schedule::ScheduleItem] }
+
+              # @!method initialize(credit_type: nil, schedule_items: nil)
+              #   @param credit_type [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Discount::Schedule::CreditType]
+              #   @param schedule_items [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Discount::Schedule::ScheduleItem>]
+
+              # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Discount::Schedule#credit_type
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute id
+                #
+                #   @return [String]
+                required :id, String
+
+                # @!attribute name
+                #
+                #   @return [String]
+                required :name, String
+
+                # @!method initialize(id:, name:)
+                #   @param id [String]
+                #   @param name [String]
+              end
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute id
+                #
+                #   @return [String]
+                required :id, String
+
+                # @!attribute amount
+                #
+                #   @return [Float]
+                required :amount, Float
+
+                # @!attribute invoice_id
+                #
+                #   @return [String]
+                required :invoice_id, String
+
+                # @!attribute quantity
+                #
+                #   @return [Float]
+                required :quantity, Float
+
+                # @!attribute timestamp
+                #
+                #   @return [Time]
+                required :timestamp, Time
+
+                # @!attribute unit_price
+                #
+                #   @return [Float]
+                required :unit_price, Float
+
+                # @!method initialize(id:, amount:, invoice_id:, quantity:, timestamp:, unit_price:)
+                #   @param id [String]
+                #   @param amount [Float]
+                #   @param invoice_id [String]
+                #   @param quantity [Float]
+                #   @param timestamp [Time]
+                #   @param unit_price [Float]
+              end
             end
           end
 
@@ -2117,7 +2716,21 @@ module MetronomeSDK
               #   @return [String, nil]
               optional :name, String
 
-              # @!method initialize(product_id:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, name: nil)
+              # @!attribute specifiers
+              #   List of filters that determine what kind of customer usage draws down a commit
+              #   or credit. A customer's usage needs to meet the condition of at least one of the
+              #   specifiers to contribute to a commit's or credit's drawdown. This field cannot
+              #   be used together with `applicable_product_ids` or `applicable_product_tags`.
+              #
+              #   @return [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration::Commit::Specifier>, nil]
+              optional :specifiers,
+                       -> do
+                         MetronomeSDK::Internal::Type::ArrayOf[
+                           MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration::Commit::Specifier
+                         ]
+                       end
+
+              # @!method initialize(product_id:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, name: nil, specifiers: nil)
               #   Some parameter documentations has been truncated, see
               #   {MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration::Commit}
               #   for more details.
@@ -2131,6 +2744,46 @@ module MetronomeSDK
               #   @param description [String]
               #
               #   @param name [String] Specify the name of the line item for the threshold charge. If left blank, it wi
+              #
+              #   @param specifiers [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration::Commit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
+
+              class Specifier < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute presentation_group_values
+                #
+                #   @return [Hash{Symbol=>String}, nil]
+                optional :presentation_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+                # @!attribute pricing_group_values
+                #
+                #   @return [Hash{Symbol=>String}, nil]
+                optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+                # @!attribute product_id
+                #   If provided, the specifier will only apply to the product with the specified ID.
+                #
+                #   @return [String, nil]
+                optional :product_id, String
+
+                # @!attribute product_tags
+                #   If provided, the specifier will only apply to products with all the specified
+                #   tags.
+                #
+                #   @return [Array<String>, nil]
+                optional :product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+                # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
+                #   Some parameter documentations has been truncated, see
+                #   {MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration::Commit::Specifier}
+                #   for more details.
+                #
+                #   @param presentation_group_values [Hash{Symbol=>String}]
+                #
+                #   @param pricing_group_values [Hash{Symbol=>String}]
+                #
+                #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
+                #
+                #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
+              end
             end
 
             # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration#payment_gate_config
@@ -2232,6 +2885,75 @@ module MetronomeSDK
                 #   @return [Array<Symbol>]
               end
             end
+          end
+
+          class ProfessionalService < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute id
+            #
+            #   @return [String]
+            required :id, String
+
+            # @!attribute max_amount
+            #   Maximum amount for the term.
+            #
+            #   @return [Float]
+            required :max_amount, Float
+
+            # @!attribute product_id
+            #
+            #   @return [String]
+            required :product_id, String
+
+            # @!attribute quantity
+            #   Quantity for the charge. Will be multiplied by unit_price to determine the
+            #   amount.
+            #
+            #   @return [Float]
+            required :quantity, Float
+
+            # @!attribute unit_price
+            #   Unit price for the charge. Will be multiplied by quantity to determine the
+            #   amount and must be specified.
+            #
+            #   @return [Float]
+            required :unit_price, Float
+
+            # @!attribute custom_fields
+            #
+            #   @return [Hash{Symbol=>String}, nil]
+            optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
+
+            # @!attribute description
+            #
+            #   @return [String, nil]
+            optional :description, String
+
+            # @!attribute netsuite_sales_order_id
+            #   This field's availability is dependent on your client's configuration.
+            #
+            #   @return [String, nil]
+            optional :netsuite_sales_order_id, String
+
+            # @!method initialize(id:, max_amount:, product_id:, quantity:, unit_price:, custom_fields: nil, description: nil, netsuite_sales_order_id: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::ProfessionalService}
+            #   for more details.
+            #
+            #   @param id [String]
+            #
+            #   @param max_amount [Float] Maximum amount for the term.
+            #
+            #   @param product_id [String]
+            #
+            #   @param quantity [Float] Quantity for the charge. Will be multiplied by unit_price to determine the amoun
+            #
+            #   @param unit_price [Float] Unit price for the charge. Will be multiplied by quantity to determine the amoun
+            #
+            #   @param custom_fields [Hash{Symbol=>String}]
+            #
+            #   @param description [String]
+            #
+            #   @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
           end
 
           class RecurringCommit < MetronomeSDK::Internal::Type::BaseModel
@@ -2340,7 +3062,7 @@ module MetronomeSDK
             #   The frequency at which the recurring commits will be created. If not provided: -
             #   The commits will be created on the usage invoice frequency. If provided: - The
             #   period defined in the duration will correspond to this frequency. - Commits will
-            #   be created aligned with the recurring commit's start_date rather than the usage
+            #   be created aligned with the recurring commit's starting_at rather than the usage
             #   invoice dates.
             #
             #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::RecurrenceFrequency, nil]
@@ -2355,7 +3077,16 @@ module MetronomeSDK
             #   @return [Float, nil]
             optional :rollover_fraction, Float
 
-            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, invoice_amount: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil)
+            # @!attribute specifiers
+            #   List of filters that determine what kind of customer usage draws down a commit
+            #   or credit. A customer's usage needs to meet the condition of at least one of the
+            #   specifiers to contribute to a commit's or credit's drawdown.
+            #
+            #   @return [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::Specifier>, nil]
+            optional :specifiers,
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::Specifier] }
+
+            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, invoice_amount: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit} for
             #   more details.
@@ -2395,6 +3126,8 @@ module MetronomeSDK
             #   @param recurrence_frequency [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided: -
             #
             #   @param rollover_fraction [Float] Will be passed down to the individual commits. This controls how much of an indi
+            #
+            #   @param specifiers [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
 
             # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit#access_amount
             class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
@@ -2536,7 +3269,7 @@ module MetronomeSDK
             # The frequency at which the recurring commits will be created. If not provided: -
             # The commits will be created on the usage invoice frequency. If provided: - The
             # period defined in the duration will correspond to this frequency. - Commits will
-            # be created aligned with the recurring commit's start_date rather than the usage
+            # be created aligned with the recurring commit's starting_at rather than the usage
             # invoice dates.
             #
             # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit#recurrence_frequency
@@ -2550,6 +3283,44 @@ module MetronomeSDK
 
               # @!method self.values
               #   @return [Array<Symbol>]
+            end
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute presentation_group_values
+              #
+              #   @return [Hash{Symbol=>String}, nil]
+              optional :presentation_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+              # @!attribute pricing_group_values
+              #
+              #   @return [Hash{Symbol=>String}, nil]
+              optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+              # @!attribute product_id
+              #   If provided, the specifier will only apply to the product with the specified ID.
+              #
+              #   @return [String, nil]
+              optional :product_id, String
+
+              # @!attribute product_tags
+              #   If provided, the specifier will only apply to products with all the specified
+              #   tags.
+              #
+              #   @return [Array<String>, nil]
+              optional :product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+              # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::Specifier}
+              #   for more details.
+              #
+              #   @param presentation_group_values [Hash{Symbol=>String}]
+              #
+              #   @param pricing_group_values [Hash{Symbol=>String}]
+              #
+              #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
+              #
+              #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
             end
           end
 
@@ -2652,7 +3423,7 @@ module MetronomeSDK
             #   The frequency at which the recurring commits will be created. If not provided: -
             #   The commits will be created on the usage invoice frequency. If provided: - The
             #   period defined in the duration will correspond to this frequency. - Commits will
-            #   be created aligned with the recurring commit's start_date rather than the usage
+            #   be created aligned with the recurring commit's starting_at rather than the usage
             #   invoice dates.
             #
             #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::RecurrenceFrequency, nil]
@@ -2667,7 +3438,16 @@ module MetronomeSDK
             #   @return [Float, nil]
             optional :rollover_fraction, Float
 
-            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil)
+            # @!attribute specifiers
+            #   List of filters that determine what kind of customer usage draws down a commit
+            #   or credit. A customer's usage needs to meet the condition of at least one of the
+            #   specifiers to contribute to a commit's or credit's drawdown.
+            #
+            #   @return [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::Specifier>, nil]
+            optional :specifiers,
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::Specifier] }
+
+            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit} for
             #   more details.
@@ -2705,6 +3485,8 @@ module MetronomeSDK
             #   @param recurrence_frequency [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided: -
             #
             #   @param rollover_fraction [Float] Will be passed down to the individual commits. This controls how much of an indi
+            #
+            #   @param specifiers [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
 
             # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit#access_amount
             class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
@@ -2821,7 +3603,7 @@ module MetronomeSDK
             # The frequency at which the recurring commits will be created. If not provided: -
             # The commits will be created on the usage invoice frequency. If provided: - The
             # period defined in the duration will correspond to this frequency. - Commits will
-            # be created aligned with the recurring commit's start_date rather than the usage
+            # be created aligned with the recurring commit's starting_at rather than the usage
             # invoice dates.
             #
             # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit#recurrence_frequency
@@ -2835,6 +3617,44 @@ module MetronomeSDK
 
               # @!method self.values
               #   @return [Array<Symbol>]
+            end
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute presentation_group_values
+              #
+              #   @return [Hash{Symbol=>String}, nil]
+              optional :presentation_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+              # @!attribute pricing_group_values
+              #
+              #   @return [Hash{Symbol=>String}, nil]
+              optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+              # @!attribute product_id
+              #   If provided, the specifier will only apply to the product with the specified ID.
+              #
+              #   @return [String, nil]
+              optional :product_id, String
+
+              # @!attribute product_tags
+              #   If provided, the specifier will only apply to products with all the specified
+              #   tags.
+              #
+              #   @return [Array<String>, nil]
+              optional :product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+              # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::Specifier}
+              #   for more details.
+              #
+              #   @param presentation_group_values [Hash{Symbol=>String}]
+              #
+              #   @param pricing_group_values [Hash{Symbol=>String}]
+              #
+              #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
+              #
+              #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
             end
           end
 

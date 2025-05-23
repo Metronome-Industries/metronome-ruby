@@ -5,11 +5,17 @@ module MetronomeSDK
     module V1
       module Contracts
         # @see MetronomeSDK::Resources::V1::Contracts::RateCards#retrieve
-        class RateCardRetrieveParams < MetronomeSDK::Models::ID
+        class RateCardRetrieveParams < MetronomeSDK::Internal::Type::BaseModel
           extend MetronomeSDK::Internal::Type::RequestParameters::Converter
           include MetronomeSDK::Internal::Type::RequestParameters
 
-          # @!method initialize(request_options: {})
+          # @!attribute id
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!method initialize(id:, request_options: {})
+          #   @param id [String]
           #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
         end
       end

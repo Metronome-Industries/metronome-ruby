@@ -15,15 +15,15 @@ module MetronomeSDK
           #
           # @param customer_id [String] Path param:
           #
-          # @param billing_provider_type [Symbol, MetronomeSDK::V1::Customers::BillingConfigCreateParams::BillingProviderType] Path param: The billing provider (e.g. stripe)
+          # @param billing_provider_type [Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::BillingProviderType] Path param: The billing provider (e.g. stripe)
           #
           # @param billing_provider_customer_id [String] Body param: The customer ID in the billing provider's system. For Azure, this is
           #
           # @param aws_product_code [String] Body param:
           #
-          # @param aws_region [Symbol, MetronomeSDK::V1::Customers::BillingConfigCreateParams::AwsRegion] Body param:
+          # @param aws_region [Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::AwsRegion] Body param:
           #
-          # @param stripe_collection_method [Symbol, MetronomeSDK::V1::Customers::BillingConfigCreateParams::StripeCollectionMethod] Body param:
+          # @param stripe_collection_method [Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::StripeCollectionMethod] Body param:
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -55,7 +55,7 @@ module MetronomeSDK
           #
           # @param customer_id [String]
           #
-          # @param billing_provider_type [Symbol, MetronomeSDK::V1::Customers::BillingConfigRetrieveParams::BillingProviderType] The billing provider (e.g. stripe)
+          # @param billing_provider_type [Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveParams::BillingProviderType] The billing provider (e.g. stripe)
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -87,7 +87,7 @@ module MetronomeSDK
           #
           # @param customer_id [String]
           #
-          # @param billing_provider_type [Symbol, MetronomeSDK::V1::Customers::BillingConfigDeleteParams::BillingProviderType] The billing provider (e.g. stripe)
+          # @param billing_provider_type [Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigDeleteParams::BillingProviderType] The billing provider (e.g. stripe)
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #

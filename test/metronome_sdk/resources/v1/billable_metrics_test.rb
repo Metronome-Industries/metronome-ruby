@@ -12,7 +12,7 @@ class MetronomeSDK::Test::Resources::V1::BillableMetricsTest < MetronomeSDK::Tes
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::ID
+        data: MetronomeSDK::Models::V1::BillableMetricCreateResponse::Data
       }
     end
   end
@@ -54,9 +54,9 @@ class MetronomeSDK::Test::Resources::V1::BillableMetricsTest < MetronomeSDK::Tes
         aggregation_type: MetronomeSDK::Models::V1::BillableMetricListResponse::AggregationType | nil,
         archived_at: Time | nil,
         custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[String]) | nil,
-        event_type_filter: MetronomeSDK::EventTypeFilter | nil,
+        event_type_filter: MetronomeSDK::Models::V1::BillableMetricListResponse::EventTypeFilter | nil,
         group_keys: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Internal::Type::ArrayOf[String]]) | nil,
-        property_filters: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::PropertyFilter]) | nil,
+        property_filters: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::BillableMetricListResponse::PropertyFilter]) | nil,
         sql: String | nil
       }
     end
@@ -71,7 +71,7 @@ class MetronomeSDK::Test::Resources::V1::BillableMetricsTest < MetronomeSDK::Tes
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::ID
+        data: MetronomeSDK::Models::V1::BillableMetricArchiveResponse::Data
       }
     end
   end

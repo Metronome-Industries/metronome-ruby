@@ -309,6 +309,13 @@ module MetronomeSDK
 
             acc
           end
+
+          # @api private
+          #
+          # @return [Object]
+          def to_sorbet_type
+            self
+          end
         end
 
         class << self
@@ -391,6 +398,12 @@ module MetronomeSDK
         # @param keys [Array<Symbol>, nil]
         #
         # @return [Hash{Symbol=>Object}]
+        #
+        # @example
+        #   # `contract_retrieve_response` is a `MetronomeSDK::Models::V2::ContractRetrieveResponse`
+        #   contract_retrieve_response => {
+        #     data: data
+        #   }
         def deconstruct_keys(keys)
           (keys || self.class.known_fields.keys)
             .filter_map do |k|

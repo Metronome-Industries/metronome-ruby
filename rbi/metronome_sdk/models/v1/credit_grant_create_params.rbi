@@ -304,8 +304,8 @@ module MetronomeSDK
           sig do
             returns(
               T.any(
-                MetronomeSDK::V1::RolloverAmountMaxPercentage,
-                MetronomeSDK::V1::RolloverAmountMaxAmount
+                MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0,
+                MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1
               )
             )
           end
@@ -320,8 +320,8 @@ module MetronomeSDK
               priority: Float,
               rollover_amount:
                 T.any(
-                  MetronomeSDK::V1::RolloverAmountMaxPercentage::OrHash,
-                  MetronomeSDK::V1::RolloverAmountMaxAmount::OrHash
+                  MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0::OrHash,
+                  MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1::OrHash
                 )
             ).returns(T.attached_class)
           end
@@ -343,8 +343,8 @@ module MetronomeSDK
                 priority: Float,
                 rollover_amount:
                   T.any(
-                    MetronomeSDK::V1::RolloverAmountMaxPercentage,
-                    MetronomeSDK::V1::RolloverAmountMaxAmount
+                    MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0,
+                    MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1
                   )
               }
             )
@@ -359,10 +359,168 @@ module MetronomeSDK
             Variants =
               T.type_alias do
                 T.any(
-                  MetronomeSDK::V1::RolloverAmountMaxPercentage,
-                  MetronomeSDK::V1::RolloverAmountMaxAmount
+                  MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0,
+                  MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1
                 )
               end
+
+            class UnionMember0 < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              # Rollover up to a percentage of the original credit grant amount.
+              sig do
+                returns(
+                  MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0::Type::OrSymbol
+                )
+              end
+              attr_accessor :type
+
+              # The maximum percentage (0-1) of the original credit grant to rollover.
+              sig { returns(Float) }
+              attr_accessor :value
+
+              sig do
+                params(
+                  type:
+                    MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0::Type::OrSymbol,
+                  value: Float
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Rollover up to a percentage of the original credit grant amount.
+                type:,
+                # The maximum percentage (0-1) of the original credit grant to rollover.
+                value:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    type:
+                      MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0::Type::OrSymbol,
+                    value: Float
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # Rollover up to a percentage of the original credit grant amount.
+              module Type
+                extend MetronomeSDK::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0::Type
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                MAX_PERCENTAGE =
+                  T.let(
+                    :MAX_PERCENTAGE,
+                    MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0::Type::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0::Type::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+
+            class UnionMember1 < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              # Rollover up to a fixed amount of the original credit grant amount.
+              sig do
+                returns(
+                  MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1::Type::OrSymbol
+                )
+              end
+              attr_accessor :type
+
+              # The maximum amount to rollover.
+              sig { returns(Float) }
+              attr_accessor :value
+
+              sig do
+                params(
+                  type:
+                    MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1::Type::OrSymbol,
+                  value: Float
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Rollover up to a fixed amount of the original credit grant amount.
+                type:,
+                # The maximum amount to rollover.
+                value:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    type:
+                      MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1::Type::OrSymbol,
+                    value: Float
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # Rollover up to a fixed amount of the original credit grant amount.
+              module Type
+                extend MetronomeSDK::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1::Type
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                MAX_AMOUNT =
+                  T.let(
+                    :MAX_AMOUNT,
+                    MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1::Type::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1::Type::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
 
             sig do
               override.returns(

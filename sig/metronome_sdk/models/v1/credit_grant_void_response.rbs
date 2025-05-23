@@ -1,12 +1,29 @@
 module MetronomeSDK
   module Models
     module V1
-      type credit_grant_void_response = { data: MetronomeSDK::ID }
+      type credit_grant_void_response =
+        { data: MetronomeSDK::Models::V1::CreditGrantVoidResponse::Data }
 
       class CreditGrantVoidResponse < MetronomeSDK::Internal::Type::BaseModel
-        attr_accessor data: MetronomeSDK::ID
+        attr_accessor data: MetronomeSDK::Models::V1::CreditGrantVoidResponse::Data
 
-        def initialize: (data: MetronomeSDK::ID) -> void
+        def initialize: (
+          data: MetronomeSDK::Models::V1::CreditGrantVoidResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: MetronomeSDK::Models::V1::CreditGrantVoidResponse::Data
+        }
+
+        type data = { id: String }
+
+        class Data < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          def initialize: (id: String) -> void
+
+          def to_hash: -> { id: String }
+        end
       end
     end
   end

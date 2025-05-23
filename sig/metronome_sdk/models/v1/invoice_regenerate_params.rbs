@@ -14,6 +14,11 @@ module MetronomeSDK
           id: String,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
+
+        def to_hash: -> {
+          id: String,
+          request_options: MetronomeSDK::RequestOptions
+        }
       end
     end
   end

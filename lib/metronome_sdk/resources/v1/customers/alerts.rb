@@ -17,7 +17,7 @@ module MetronomeSDK
           #
           # @param customer_id [String] The Metronome ID of the customer
           #
-          # @param plans_or_contracts [Symbol, MetronomeSDK::V1::Customers::AlertRetrieveParams::PlansOrContracts] When parallel alerts are enabled during migration, this flag denotes whether to
+          # @param plans_or_contracts [Symbol, MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::PlansOrContracts] When parallel alerts are enabled during migration, this flag denotes whether to
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -46,7 +46,7 @@ module MetronomeSDK
           #
           # @param next_page [String] Query param: Cursor that indicates where the next page of results should start.
           #
-          # @param alert_statuses [Array<Symbol, MetronomeSDK::V1::Customers::AlertListParams::AlertStatus>] Body param: Optionally filter by alert status. If absent, only enabled alerts wi
+          # @param alert_statuses [Array<Symbol, MetronomeSDK::Models::V1::Customers::AlertListParams::AlertStatus>] Body param: Optionally filter by alert status. If absent, only enabled alerts wi
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #

@@ -28,6 +28,14 @@ module MetronomeSDK
           starting_on: Time,
           value: Float?
         ) -> void
+
+        def to_hash: -> {
+          ending_before: Time,
+          group_key: String?,
+          group_value: String?,
+          starting_on: Time,
+          value: Float?
+        }
       end
     end
   end

@@ -10,7 +10,8 @@ module MetronomeSDK
           applicable_product_tags: ::Array[String]?,
           invoice_contract_id: String,
           invoice_schedule: MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule,
-          product_id: String
+          product_id: String,
+          specifiers: ::Array[MetronomeSDK::V2::ContractEditCommitParams::Specifier]
         }
         & MetronomeSDK::Internal::Type::request_parameters
 
@@ -46,6 +47,12 @@ module MetronomeSDK
 
         def product_id=: (String) -> String
 
+        attr_reader specifiers: ::Array[MetronomeSDK::V2::ContractEditCommitParams::Specifier]?
+
+        def specifiers=: (
+          ::Array[MetronomeSDK::V2::ContractEditCommitParams::Specifier]
+        ) -> ::Array[MetronomeSDK::V2::ContractEditCommitParams::Specifier]
+
         def initialize: (
           commit_id: String,
           customer_id: String,
@@ -55,8 +62,22 @@ module MetronomeSDK
           ?invoice_contract_id: String,
           ?invoice_schedule: MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule,
           ?product_id: String,
+          ?specifiers: ::Array[MetronomeSDK::V2::ContractEditCommitParams::Specifier],
           ?request_options: MetronomeSDK::request_opts
         ) -> void
+
+        def to_hash: -> {
+          commit_id: String,
+          customer_id: String,
+          access_schedule: MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule,
+          applicable_product_ids: ::Array[String]?,
+          applicable_product_tags: ::Array[String]?,
+          invoice_contract_id: String,
+          invoice_schedule: MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule,
+          product_id: String,
+          specifiers: ::Array[MetronomeSDK::V2::ContractEditCommitParams::Specifier],
+          request_options: MetronomeSDK::RequestOptions
+        }
 
         type access_schedule =
           {
@@ -90,6 +111,12 @@ module MetronomeSDK
             ?update_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::UpdateScheduleItem]
           ) -> void
 
+          def to_hash: -> {
+            add_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::AddScheduleItem],
+            remove_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::RemoveScheduleItem],
+            update_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::UpdateScheduleItem]
+          }
+
           type add_schedule_item =
             { amount: Float, ending_before: Time, starting_at: Time }
 
@@ -105,6 +132,12 @@ module MetronomeSDK
               ending_before: Time,
               starting_at: Time
             ) -> void
+
+            def to_hash: -> {
+              amount: Float,
+              ending_before: Time,
+              starting_at: Time
+            }
           end
 
           type remove_schedule_item = { id: String }
@@ -113,6 +146,8 @@ module MetronomeSDK
             attr_accessor id: String
 
             def initialize: (id: String) -> void
+
+            def to_hash: -> { id: String }
           end
 
           type update_schedule_item =
@@ -144,6 +179,13 @@ module MetronomeSDK
               ?ending_before: Time,
               ?starting_at: Time
             ) -> void
+
+            def to_hash: -> {
+              id: String,
+              amount: Float,
+              ending_before: Time,
+              starting_at: Time
+            }
           end
         end
 
@@ -179,6 +221,12 @@ module MetronomeSDK
             ?update_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::UpdateScheduleItem]
           ) -> void
 
+          def to_hash: -> {
+            add_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::AddScheduleItem],
+            remove_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::RemoveScheduleItem],
+            update_schedule_items: ::Array[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::UpdateScheduleItem]
+          }
+
           type add_schedule_item =
             {
               timestamp: Time,
@@ -208,6 +256,13 @@ module MetronomeSDK
               ?quantity: Float,
               ?unit_price: Float
             ) -> void
+
+            def to_hash: -> {
+              timestamp: Time,
+              amount: Float,
+              quantity: Float,
+              unit_price: Float
+            }
           end
 
           type remove_schedule_item = { id: String }
@@ -216,6 +271,8 @@ module MetronomeSDK
             attr_accessor id: String
 
             def initialize: (id: String) -> void
+
+            def to_hash: -> { id: String }
           end
 
           type update_schedule_item =
@@ -253,7 +310,59 @@ module MetronomeSDK
               ?timestamp: Time,
               ?unit_price: Float
             ) -> void
+
+            def to_hash: -> {
+              id: String,
+              amount: Float,
+              quantity: Float,
+              timestamp: Time,
+              unit_price: Float
+            }
           end
+        end
+
+        type specifier =
+          {
+            presentation_group_values: ::Hash[Symbol, String],
+            pricing_group_values: ::Hash[Symbol, String],
+            product_id: String,
+            product_tags: ::Array[String]
+          }
+
+        class Specifier < MetronomeSDK::Internal::Type::BaseModel
+          attr_reader presentation_group_values: ::Hash[Symbol, String]?
+
+          def presentation_group_values=: (
+            ::Hash[Symbol, String]
+          ) -> ::Hash[Symbol, String]
+
+          attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+          def pricing_group_values=: (
+            ::Hash[Symbol, String]
+          ) -> ::Hash[Symbol, String]
+
+          attr_reader product_id: String?
+
+          def product_id=: (String) -> String
+
+          attr_reader product_tags: ::Array[String]?
+
+          def product_tags=: (::Array[String]) -> ::Array[String]
+
+          def initialize: (
+            ?presentation_group_values: ::Hash[Symbol, String],
+            ?pricing_group_values: ::Hash[Symbol, String],
+            ?product_id: String,
+            ?product_tags: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            presentation_group_values: ::Hash[Symbol, String],
+            pricing_group_values: ::Hash[Symbol, String],
+            product_id: String,
+            product_tags: ::Array[String]
+          }
         end
       end
     end

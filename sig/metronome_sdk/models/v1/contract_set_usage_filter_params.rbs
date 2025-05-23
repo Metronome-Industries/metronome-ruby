@@ -33,6 +33,15 @@ module MetronomeSDK
           starting_at: Time,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
+
+        def to_hash: -> {
+          contract_id: String,
+          customer_id: String,
+          group_key: String,
+          group_values: ::Array[String],
+          starting_at: Time,
+          request_options: MetronomeSDK::RequestOptions
+        }
       end
     end
   end

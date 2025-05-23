@@ -25,7 +25,7 @@ module MetronomeSDK
           #   Optionally filter by alert status. If absent, only enabled alerts will be
           #   returned.
           #
-          #   @return [Array<Symbol, MetronomeSDK::V1::Customers::AlertListParams::AlertStatus>, nil]
+          #   @return [Array<Symbol, MetronomeSDK::Models::V1::Customers::AlertListParams::AlertStatus>, nil]
           optional :alert_statuses,
                    -> {
                      MetronomeSDK::Internal::Type::ArrayOf[enum: MetronomeSDK::V1::Customers::AlertListParams::AlertStatus]
@@ -39,7 +39,7 @@ module MetronomeSDK
           #
           #   @param next_page [String] Cursor that indicates where the next page of results should start.
           #
-          #   @param alert_statuses [Array<Symbol, MetronomeSDK::V1::Customers::AlertListParams::AlertStatus>] Optionally filter by alert status. If absent, only enabled alerts will be return
+          #   @param alert_statuses [Array<Symbol, MetronomeSDK::Models::V1::Customers::AlertListParams::AlertStatus>] Optionally filter by alert status. If absent, only enabled alerts will be return
           #
           #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 

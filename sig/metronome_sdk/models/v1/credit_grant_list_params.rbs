@@ -55,6 +55,17 @@ module MetronomeSDK
           ?not_expiring_before: Time,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
+
+        def to_hash: -> {
+          limit: Integer,
+          next_page: String,
+          credit_grant_ids: ::Array[String],
+          credit_type_ids: ::Array[String],
+          customer_ids: ::Array[String],
+          effective_before: Time,
+          not_expiring_before: Time,
+          request_options: MetronomeSDK::RequestOptions
+        }
       end
     end
   end

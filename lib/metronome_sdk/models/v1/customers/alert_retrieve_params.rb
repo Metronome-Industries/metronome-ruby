@@ -25,7 +25,7 @@ module MetronomeSDK
           #   When parallel alerts are enabled during migration, this flag denotes whether to
           #   fetch alerts for plans or contracts.
           #
-          #   @return [Symbol, MetronomeSDK::V1::Customers::AlertRetrieveParams::PlansOrContracts, nil]
+          #   @return [Symbol, MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::PlansOrContracts, nil]
           optional :plans_or_contracts,
                    enum: -> { MetronomeSDK::V1::Customers::AlertRetrieveParams::PlansOrContracts }
 
@@ -37,7 +37,7 @@ module MetronomeSDK
           #
           #   @param customer_id [String] The Metronome ID of the customer
           #
-          #   @param plans_or_contracts [Symbol, MetronomeSDK::V1::Customers::AlertRetrieveParams::PlansOrContracts] When parallel alerts are enabled during migration, this flag denotes whether to
+          #   @param plans_or_contracts [Symbol, MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::PlansOrContracts] When parallel alerts are enabled during migration, this flag denotes whether to
           #
           #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 

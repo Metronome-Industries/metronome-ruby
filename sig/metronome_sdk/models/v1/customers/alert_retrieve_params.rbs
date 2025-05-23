@@ -31,6 +31,13 @@ module MetronomeSDK
             ?request_options: MetronomeSDK::request_opts
           ) -> void
 
+          def to_hash: -> {
+            alert_id: String,
+            customer_id: String,
+            plans_or_contracts: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::plans_or_contracts,
+            request_options: MetronomeSDK::RequestOptions
+          }
+
           type plans_or_contracts = :PLANS | :CONTRACTS
 
           module PlansOrContracts

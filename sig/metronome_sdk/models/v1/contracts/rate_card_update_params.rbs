@@ -39,6 +39,14 @@ module MetronomeSDK
             ?request_options: MetronomeSDK::request_opts
           ) -> void
 
+          def to_hash: -> {
+            rate_card_id: String,
+            aliases: ::Array[MetronomeSDK::V1::Contracts::RateCardUpdateParams::Alias],
+            description: String,
+            name: String,
+            request_options: MetronomeSDK::RequestOptions
+          }
+
           type alias_ = { name: String, ending_before: Time, starting_at: Time }
 
           class Alias < MetronomeSDK::Internal::Type::BaseModel
@@ -57,6 +65,12 @@ module MetronomeSDK
               ?ending_before: Time,
               ?starting_at: Time
             ) -> void
+
+            def to_hash: -> {
+              name: String,
+              ending_before: Time,
+              starting_at: Time
+            }
           end
         end
       end

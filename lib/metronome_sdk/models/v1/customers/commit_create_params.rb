@@ -13,7 +13,7 @@ module MetronomeSDK
           #   Schedule for distributing the commit to the customer. For "POSTPAID" commits
           #   only one schedule item is allowed and amount must match invoice_schedule total.
           #
-          #   @return [MetronomeSDK::V1::Customers::CommitCreateParams::AccessSchedule]
+          #   @return [MetronomeSDK::Models::V1::Customers::CommitCreateParams::AccessSchedule]
           required :access_schedule, -> { MetronomeSDK::V1::Customers::CommitCreateParams::AccessSchedule }
 
           # @!attribute customer_id
@@ -37,7 +37,7 @@ module MetronomeSDK
 
           # @!attribute type
           #
-          #   @return [Symbol, MetronomeSDK::V1::Customers::CommitCreateParams::Type]
+          #   @return [Symbol, MetronomeSDK::Models::V1::Customers::CommitCreateParams::Type]
           required :type, enum: -> { MetronomeSDK::V1::Customers::CommitCreateParams::Type }
 
           # @!attribute applicable_contract_ids
@@ -86,7 +86,7 @@ module MetronomeSDK
           #   accesss_schedule amount. Optional for "PREPAID" commits: if not provided, this
           #   will be a "complimentary" commit with no invoice.
           #
-          #   @return [MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule, nil]
+          #   @return [MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule, nil]
           optional :invoice_schedule, -> { MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule }
 
           # @!attribute name
@@ -103,7 +103,7 @@ module MetronomeSDK
 
           # @!attribute rate_type
           #
-          #   @return [Symbol, MetronomeSDK::V1::Customers::CommitCreateParams::RateType, nil]
+          #   @return [Symbol, MetronomeSDK::Models::V1::Customers::CommitCreateParams::RateType, nil]
           optional :rate_type, enum: -> { MetronomeSDK::V1::Customers::CommitCreateParams::RateType }
 
           # @!attribute salesforce_opportunity_id
@@ -111,6 +111,18 @@ module MetronomeSDK
           #
           #   @return [String, nil]
           optional :salesforce_opportunity_id, String
+
+          # @!attribute specifiers
+          #   List of filters that determine what kind of customer usage draws down a commit
+          #   or credit. A customer's usage needs to meet the condition of at least one of the
+          #   specifiers to contribute to a commit's or credit's drawdown. This field cannot
+          #   be used together with `applicable_product_ids` or `applicable_product_tags`.
+          #
+          #   @return [Array<MetronomeSDK::Models::V1::Customers::CommitCreateParams::Specifier>, nil]
+          optional :specifiers,
+                   -> {
+                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CommitCreateParams::Specifier]
+                   }
 
           # @!attribute uniqueness_key
           #   Prevents the creation of duplicates. If a request to create a commit or credit
@@ -121,11 +133,11 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :uniqueness_key, String
 
-          # @!method initialize(access_schedule:, customer_id:, priority:, product_id:, type:, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, custom_fields: nil, description: nil, invoice_contract_id: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, rate_type: nil, salesforce_opportunity_id: nil, uniqueness_key: nil, request_options: {})
+          # @!method initialize(access_schedule:, customer_id:, priority:, product_id:, type:, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, custom_fields: nil, description: nil, invoice_contract_id: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, rate_type: nil, salesforce_opportunity_id: nil, specifiers: nil, uniqueness_key: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::Customers::CommitCreateParams} for more details.
           #
-          #   @param access_schedule [MetronomeSDK::V1::Customers::CommitCreateParams::AccessSchedule] Schedule for distributing the commit to the customer. For "POSTPAID" commits onl
+          #   @param access_schedule [MetronomeSDK::Models::V1::Customers::CommitCreateParams::AccessSchedule] Schedule for distributing the commit to the customer. For "POSTPAID" commits onl
           #
           #   @param customer_id [String]
           #
@@ -133,7 +145,7 @@ module MetronomeSDK
           #
           #   @param product_id [String] ID of the fixed product associated with the commit. This is required because pro
           #
-          #   @param type [Symbol, MetronomeSDK::V1::Customers::CommitCreateParams::Type]
+          #   @param type [Symbol, MetronomeSDK::Models::V1::Customers::CommitCreateParams::Type]
           #
           #   @param applicable_contract_ids [Array<String>] Which contract the commit applies to. If not provided, the commit applies to all
           #
@@ -147,15 +159,17 @@ module MetronomeSDK
           #
           #   @param invoice_contract_id [String] The contract that this commit will be billed on. This is required for "POSTPAID"
           #
-          #   @param invoice_schedule [MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule] Required for "POSTPAID" commits: the true up invoice will be generated at this t
+          #   @param invoice_schedule [MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule] Required for "POSTPAID" commits: the true up invoice will be generated at this t
           #
           #   @param name [String] displayed on invoices
           #
           #   @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
           #
-          #   @param rate_type [Symbol, MetronomeSDK::V1::Customers::CommitCreateParams::RateType]
+          #   @param rate_type [Symbol, MetronomeSDK::Models::V1::Customers::CommitCreateParams::RateType]
           #
           #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
+          #
+          #   @param specifiers [Array<MetronomeSDK::Models::V1::Customers::CommitCreateParams::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
           #
           #   @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a commit or credit i
           #
@@ -164,7 +178,7 @@ module MetronomeSDK
           class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute schedule_items
             #
-            #   @return [Array<MetronomeSDK::V1::Customers::CommitCreateParams::AccessSchedule::ScheduleItem>]
+            #   @return [Array<MetronomeSDK::Models::V1::Customers::CommitCreateParams::AccessSchedule::ScheduleItem>]
             required :schedule_items,
                      -> {
                        MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CommitCreateParams::AccessSchedule::ScheduleItem]
@@ -180,7 +194,7 @@ module MetronomeSDK
             #   Schedule for distributing the commit to the customer. For "POSTPAID" commits
             #   only one schedule item is allowed and amount must match invoice_schedule total.
             #
-            #   @param schedule_items [Array<MetronomeSDK::V1::Customers::CommitCreateParams::AccessSchedule::ScheduleItem>]
+            #   @param schedule_items [Array<MetronomeSDK::Models::V1::Customers::CommitCreateParams::AccessSchedule::ScheduleItem>]
             #
             #   @param credit_type_id [String] Defaults to USD (cents) if not passed
 
@@ -233,7 +247,7 @@ module MetronomeSDK
             #   amount. If amount is sent, the unit price is assumed to be the amount and
             #   quantity is inferred to be 1.
             #
-            #   @return [MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule, nil]
+            #   @return [MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule, nil]
             optional :recurring_schedule,
                      -> {
                        MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule
@@ -242,7 +256,7 @@ module MetronomeSDK
             # @!attribute schedule_items
             #   Either provide amount or provide both unit_price and quantity.
             #
-            #   @return [Array<MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem>, nil]
+            #   @return [Array<MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem>, nil]
             optional :schedule_items,
                      -> {
                        MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]
@@ -250,8 +264,8 @@ module MetronomeSDK
 
             # @!method initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil)
             #   Some parameter documentations has been truncated, see
-            #   {MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule} for more
-            #   details.
+            #   {MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule} for
+            #   more details.
             #
             #   Required for "POSTPAID" commits: the true up invoice will be generated at this
             #   time and only one schedule item is allowed; the total must match
@@ -260,15 +274,15 @@ module MetronomeSDK
             #
             #   @param credit_type_id [String] Defaults to USD (cents) if not passed.
             #
-            #   @param recurring_schedule [MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule] Enter the unit price and quantity for the charge or instead only send the amount
+            #   @param recurring_schedule [MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule] Enter the unit price and quantity for the charge or instead only send the amount
             #
-            #   @param schedule_items [Array<MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem>] Either provide amount or provide both unit_price and quantity.
+            #   @param schedule_items [Array<MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem>] Either provide amount or provide both unit_price and quantity.
 
-            # @see MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule#recurring_schedule
+            # @see MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule#recurring_schedule
             class RecurringSchedule < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute amount_distribution
               #
-              #   @return [Symbol, MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::AmountDistribution]
+              #   @return [Symbol, MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::AmountDistribution]
               required :amount_distribution,
                        enum: -> {
                          MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::AmountDistribution
@@ -282,7 +296,7 @@ module MetronomeSDK
 
               # @!attribute frequency
               #
-              #   @return [Symbol, MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::Frequency]
+              #   @return [Symbol, MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::Frequency]
               required :frequency,
                        enum: -> {
                          MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::Frequency
@@ -320,18 +334,18 @@ module MetronomeSDK
 
               # @!method initialize(amount_distribution:, ending_before:, frequency:, starting_at:, amount: nil, quantity: nil, unit_price: nil)
               #   Some parameter documentations has been truncated, see
-              #   {MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule}
+              #   {MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule}
               #   for more details.
               #
               #   Enter the unit price and quantity for the charge or instead only send the
               #   amount. If amount is sent, the unit price is assumed to be the amount and
               #   quantity is inferred to be 1.
               #
-              #   @param amount_distribution [Symbol, MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::AmountDistribution]
+              #   @param amount_distribution [Symbol, MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::AmountDistribution]
               #
               #   @param ending_before [Time] RFC 3339 timestamp (exclusive).
               #
-              #   @param frequency [Symbol, MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::Frequency]
+              #   @param frequency [Symbol, MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::Frequency]
               #
               #   @param starting_at [Time] RFC 3339 timestamp (inclusive).
               #
@@ -341,7 +355,7 @@ module MetronomeSDK
               #
               #   @param unit_price [Float] Unit price for the charge. Will be multiplied by quantity to determine the amoun
 
-              # @see MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule#amount_distribution
+              # @see MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule#amount_distribution
               module AmountDistribution
                 extend MetronomeSDK::Internal::Type::Enum
 
@@ -353,7 +367,7 @@ module MetronomeSDK
                 #   @return [Array<Symbol>]
               end
 
-              # @see MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule#frequency
+              # @see MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule#frequency
               module Frequency
                 extend MetronomeSDK::Internal::Type::Enum
 
@@ -400,7 +414,7 @@ module MetronomeSDK
 
               # @!method initialize(timestamp:, amount: nil, quantity: nil, unit_price: nil)
               #   Some parameter documentations has been truncated, see
-              #   {MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem}
+              #   {MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem}
               #   for more details.
               #
               #   @param timestamp [Time] timestamp of the scheduled event
@@ -421,6 +435,44 @@ module MetronomeSDK
 
             # @!method self.values
             #   @return [Array<Symbol>]
+          end
+
+          class Specifier < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute presentation_group_values
+            #
+            #   @return [Hash{Symbol=>String}, nil]
+            optional :presentation_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+            # @!attribute pricing_group_values
+            #
+            #   @return [Hash{Symbol=>String}, nil]
+            optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+            # @!attribute product_id
+            #   If provided, the specifier will only apply to the product with the specified ID.
+            #
+            #   @return [String, nil]
+            optional :product_id, String
+
+            # @!attribute product_tags
+            #   If provided, the specifier will only apply to products with all the specified
+            #   tags.
+            #
+            #   @return [Array<String>, nil]
+            optional :product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V1::Customers::CommitCreateParams::Specifier} for more
+            #   details.
+            #
+            #   @param presentation_group_values [Hash{Symbol=>String}]
+            #
+            #   @param pricing_group_values [Hash{Symbol=>String}]
+            #
+            #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
+            #
+            #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
           end
         end
       end

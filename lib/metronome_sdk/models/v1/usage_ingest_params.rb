@@ -10,14 +10,14 @@ module MetronomeSDK
 
         # @!attribute usage
         #
-        #   @return [Array<MetronomeSDK::V1::UsageIngestParams::Usage>, nil]
+        #   @return [Array<MetronomeSDK::Models::V1::UsageIngestParams::Usage>, nil]
         optional :usage,
                  -> {
                    MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::UsageIngestParams::Usage]
                  }
 
         # @!method initialize(usage: nil, request_options: {})
-        #   @param usage [Array<MetronomeSDK::V1::UsageIngestParams::Usage>]
+        #   @param usage [Array<MetronomeSDK::Models::V1::UsageIngestParams::Usage>]
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 
         class Usage < MetronomeSDK::Internal::Type::BaseModel

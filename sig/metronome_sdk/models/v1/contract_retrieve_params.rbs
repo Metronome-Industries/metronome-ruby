@@ -33,6 +33,14 @@ module MetronomeSDK
           ?include_ledgers: bool,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
+
+        def to_hash: -> {
+          contract_id: String,
+          customer_id: String,
+          include_balance: bool,
+          include_ledgers: bool,
+          request_options: MetronomeSDK::RequestOptions
+        }
       end
     end
   end

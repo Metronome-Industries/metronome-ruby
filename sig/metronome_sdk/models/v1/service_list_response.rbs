@@ -13,6 +13,10 @@ module MetronomeSDK
           services: ::Array[MetronomeSDK::Models::V1::ServiceListResponse::Service]
         ) -> void
 
+        def to_hash: -> {
+          services: ::Array[MetronomeSDK::Models::V1::ServiceListResponse::Service]
+        }
+
         type service =
           {
             ips: ::Array[String],
@@ -32,6 +36,12 @@ module MetronomeSDK
             name: String,
             usage: MetronomeSDK::Models::V1::ServiceListResponse::Service::usage
           ) -> void
+
+          def to_hash: -> {
+            ips: ::Array[String],
+            name: String,
+            usage: MetronomeSDK::Models::V1::ServiceListResponse::Service::usage
+          }
 
           type usage = :makes_connections_from | :accepts_connections_at
 

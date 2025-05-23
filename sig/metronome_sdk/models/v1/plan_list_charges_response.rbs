@@ -5,7 +5,7 @@ module MetronomeSDK
         {
           id: String,
           charge_type: MetronomeSDK::Models::V1::PlanListChargesResponse::charge_type,
-          credit_type: MetronomeSDK::CreditTypeData,
+          credit_type: MetronomeSDK::Models::V1::PlanListChargesResponse::CreditType,
           custom_fields: ::Hash[Symbol, String],
           name: String,
           prices: ::Array[MetronomeSDK::Models::V1::PlanListChargesResponse::Price],
@@ -22,7 +22,7 @@ module MetronomeSDK
 
         attr_accessor charge_type: MetronomeSDK::Models::V1::PlanListChargesResponse::charge_type
 
-        attr_accessor credit_type: MetronomeSDK::CreditTypeData
+        attr_accessor credit_type: MetronomeSDK::Models::V1::PlanListChargesResponse::CreditType
 
         attr_accessor custom_fields: ::Hash[Symbol, String]
 
@@ -55,7 +55,7 @@ module MetronomeSDK
         def initialize: (
           id: String,
           charge_type: MetronomeSDK::Models::V1::PlanListChargesResponse::charge_type,
-          credit_type: MetronomeSDK::CreditTypeData,
+          credit_type: MetronomeSDK::Models::V1::PlanListChargesResponse::CreditType,
           custom_fields: ::Hash[Symbol, String],
           name: String,
           prices: ::Array[MetronomeSDK::Models::V1::PlanListChargesResponse::Price],
@@ -66,6 +66,21 @@ module MetronomeSDK
           ?tier_reset_frequency: Float,
           ?unit_conversion: MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion
         ) -> void
+
+        def to_hash: -> {
+          id: String,
+          charge_type: MetronomeSDK::Models::V1::PlanListChargesResponse::charge_type,
+          credit_type: MetronomeSDK::Models::V1::PlanListChargesResponse::CreditType,
+          custom_fields: ::Hash[Symbol, String],
+          name: String,
+          prices: ::Array[MetronomeSDK::Models::V1::PlanListChargesResponse::Price],
+          product_id: String,
+          product_name: String,
+          quantity: Float,
+          start_period: Float,
+          tier_reset_frequency: Float,
+          unit_conversion: MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion
+        }
 
         type charge_type = :usage | :fixed | :composite | :minimum | :seat
 
@@ -79,6 +94,18 @@ module MetronomeSDK
           SEAT: :seat
 
           def self?.values: -> ::Array[MetronomeSDK::Models::V1::PlanListChargesResponse::charge_type]
+        end
+
+        type credit_type = { id: String, name: String }
+
+        class CreditType < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor name: String
+
+          def initialize: (id: String, name: String) -> void
+
+          def to_hash: -> { id: String, name: String }
         end
 
         type price =
@@ -114,6 +141,14 @@ module MetronomeSDK
             ?collection_schedule: String,
             ?quantity: Float
           ) -> void
+
+          def to_hash: -> {
+            tier: Float,
+            value: Float,
+            collection_interval: Float,
+            collection_schedule: String,
+            quantity: Float
+          }
         end
 
         type unit_conversion =
@@ -135,6 +170,11 @@ module MetronomeSDK
             division_factor: Float,
             ?rounding_behavior: MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion::rounding_behavior
           ) -> void
+
+          def to_hash: -> {
+            division_factor: Float,
+            rounding_behavior: MetronomeSDK::Models::V1::PlanListChargesResponse::UnitConversion::rounding_behavior
+          }
 
           type rounding_behavior = :floor | :ceiling
 

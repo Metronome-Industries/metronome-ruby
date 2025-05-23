@@ -15,8 +15,8 @@ module MetronomeSDK
             ?netsuite_overage_item_id: String,
             ?presentation_group_key: ::Array[String],
             ?pricing_group_key: ::Array[String],
-            ?quantity_conversion: MetronomeSDK::V1::Contracts::QuantityConversion?,
-            ?quantity_rounding: MetronomeSDK::V1::Contracts::QuantityRounding?,
+            ?quantity_conversion: MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityConversion?,
+            ?quantity_rounding: MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityRounding?,
             ?tags: ::Array[String],
             ?request_options: MetronomeSDK::request_opts
           ) -> MetronomeSDK::Models::V1::Contracts::ProductCreateResponse
@@ -39,8 +39,8 @@ module MetronomeSDK
             ?netsuite_overage_item_id: String,
             ?presentation_group_key: ::Array[String],
             ?pricing_group_key: ::Array[String],
-            ?quantity_conversion: MetronomeSDK::V1::Contracts::QuantityConversion?,
-            ?quantity_rounding: MetronomeSDK::V1::Contracts::QuantityRounding?,
+            ?quantity_conversion: MetronomeSDK::V1::Contracts::ProductUpdateParams::QuantityConversion?,
+            ?quantity_rounding: MetronomeSDK::V1::Contracts::ProductUpdateParams::QuantityRounding?,
             ?tags: ::Array[String],
             ?request_options: MetronomeSDK::request_opts
           ) -> MetronomeSDK::Models::V1::Contracts::ProductUpdateResponse

@@ -47,6 +47,16 @@ module MetronomeSDK
           ?starting_at: Time,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
+
+        def to_hash: -> {
+          customer_id: String,
+          covering_date: Time,
+          include_archived: bool,
+          include_balance: bool,
+          include_ledgers: bool,
+          starting_at: Time,
+          request_options: MetronomeSDK::RequestOptions
+        }
       end
     end
   end

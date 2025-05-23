@@ -89,6 +89,13 @@ module MetronomeSDK
 
             value
           end
+
+          # @api private
+          #
+          # @return [Object]
+          def to_sorbet_type
+            T.any(Pathname, StringIO, IO, String, MetronomeSDK::FilePart)
+          end
         end
       end
     end

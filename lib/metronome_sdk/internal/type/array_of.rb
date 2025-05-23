@@ -12,6 +12,7 @@ module MetronomeSDK
       # Array of items of a given type.
       class ArrayOf
         include MetronomeSDK::Internal::Type::Converter
+        include MetronomeSDK::Internal::Util::SorbetRuntimeSupport
 
         private_class_method :new
 
@@ -108,6 +109,13 @@ module MetronomeSDK
           else
             super
           end
+        end
+
+        # @api private
+        #
+        # @return [Object]
+        def to_sorbet_type
+          T::Array[MetronomeSDK::Internal::Util::SorbetRuntimeSupport.to_sorbet_type(item_type)]
         end
 
         # @api private

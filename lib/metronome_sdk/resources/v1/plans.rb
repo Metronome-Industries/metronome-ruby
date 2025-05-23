@@ -98,7 +98,7 @@ module MetronomeSDK
         #
         # @param next_page [String] Query param: Cursor that indicates where the next page of results should start.
         #
-        # @param status [Symbol, MetronomeSDK::V1::PlanListCustomersParams::Status] Query param: Status of customers on a given plan. Defaults to `active`.
+        # @param status [Symbol, MetronomeSDK::Models::V1::PlanListCustomersParams::Status] Query param: Status of customers on a given plan. Defaults to `active`.
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #

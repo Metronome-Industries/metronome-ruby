@@ -43,7 +43,7 @@ module MetronomeSDK
         # @!attribute sort
         #   Sort order by timestamp, e.g. date_asc or date_desc. Defaults to date_asc.
         #
-        #   @return [Symbol, MetronomeSDK::V1::AuditLogListParams::Sort, nil]
+        #   @return [Symbol, MetronomeSDK::Models::V1::AuditLogListParams::Sort, nil]
         optional :sort, enum: -> { MetronomeSDK::V1::AuditLogListParams::Sort }
 
         # @!attribute starting_on
@@ -67,7 +67,7 @@ module MetronomeSDK
         #
         #   @param resource_type [String] Optional parameter that can be used to filter which audit logs are returned. If
         #
-        #   @param sort [Symbol, MetronomeSDK::V1::AuditLogListParams::Sort] Sort order by timestamp, e.g. date_asc or date_desc. Defaults to date_asc.
+        #   @param sort [Symbol, MetronomeSDK::Models::V1::AuditLogListParams::Sort] Sort order by timestamp, e.g. date_asc or date_desc. Defaults to date_asc.
         #
         #   @param starting_on [Time] RFC 3339 timestamp of the earliest audit log to return. Cannot be used with 'nex
         #

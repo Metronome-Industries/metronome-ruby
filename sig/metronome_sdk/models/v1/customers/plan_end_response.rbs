@@ -6,6 +6,8 @@ module MetronomeSDK
 
         class PlanEndResponse < MetronomeSDK::Internal::Type::BaseModel
           def initialize: -> void
+
+          def to_hash: -> {  }
         end
       end
     end

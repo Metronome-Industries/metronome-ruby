@@ -38,6 +38,14 @@ module MetronomeSDK
           ?request_options: MetronomeSDK::request_opts
         ) -> void
 
+        def to_hash: -> {
+          plan_id: String,
+          limit: Integer,
+          next_page: String,
+          status: MetronomeSDK::Models::V1::PlanListCustomersParams::status,
+          request_options: MetronomeSDK::RequestOptions
+        }
+
         type status = :all | :active | :ended | :upcoming
 
         module Status

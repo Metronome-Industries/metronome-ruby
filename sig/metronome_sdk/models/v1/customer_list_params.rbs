@@ -49,6 +49,16 @@ module MetronomeSDK
           ?salesforce_account_ids: ::Array[String],
           ?request_options: MetronomeSDK::request_opts
         ) -> void
+
+        def to_hash: -> {
+          customer_ids: ::Array[String],
+          ingest_alias: String,
+          limit: Integer,
+          next_page: String,
+          only_archived: bool,
+          salesforce_account_ids: ::Array[String],
+          request_options: MetronomeSDK::RequestOptions
+        }
       end
     end
   end

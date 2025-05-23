@@ -4,7 +4,7 @@ module MetronomeSDK
       type custom_field_list_keys_params =
         {
           next_page: String,
-          entities: ::Array[MetronomeSDK::V1::CustomFieldListKeysParams::entity]
+          entities: ::Array[MetronomeSDK::Models::V1::CustomFieldListKeysParams::entity]
         }
         & MetronomeSDK::Internal::Type::request_parameters
 
@@ -16,17 +16,23 @@ module MetronomeSDK
 
         def next_page=: (String) -> String
 
-        attr_reader entities: ::Array[MetronomeSDK::V1::CustomFieldListKeysParams::entity]?
+        attr_reader entities: ::Array[MetronomeSDK::Models::V1::CustomFieldListKeysParams::entity]?
 
         def entities=: (
-          ::Array[MetronomeSDK::V1::CustomFieldListKeysParams::entity]
-        ) -> ::Array[MetronomeSDK::V1::CustomFieldListKeysParams::entity]
+          ::Array[MetronomeSDK::Models::V1::CustomFieldListKeysParams::entity]
+        ) -> ::Array[MetronomeSDK::Models::V1::CustomFieldListKeysParams::entity]
 
         def initialize: (
           ?next_page: String,
-          ?entities: ::Array[MetronomeSDK::V1::CustomFieldListKeysParams::entity],
+          ?entities: ::Array[MetronomeSDK::Models::V1::CustomFieldListKeysParams::entity],
           ?request_options: MetronomeSDK::request_opts
         ) -> void
+
+        def to_hash: -> {
+          next_page: String,
+          entities: ::Array[MetronomeSDK::Models::V1::CustomFieldListKeysParams::entity],
+          request_options: MetronomeSDK::RequestOptions
+        }
 
         type entity =
           :alert
@@ -70,7 +76,7 @@ module MetronomeSDK
           SCHEDULED_CHARGE: :scheduled_charge
           SUBSCRIPTION: :subscription
 
-          def self?.values: -> ::Array[MetronomeSDK::V1::CustomFieldListKeysParams::entity]
+          def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomFieldListKeysParams::entity]
         end
       end
     end

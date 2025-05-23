@@ -22,11 +22,11 @@ module MetronomeSDK
               pricing_group_key: T::Array[String],
               quantity_conversion:
                 T.nilable(
-                  MetronomeSDK::V1::Contracts::QuantityConversion::OrHash
+                  MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityConversion::OrHash
                 ),
               quantity_rounding:
                 T.nilable(
-                  MetronomeSDK::V1::Contracts::QuantityRounding::OrHash
+                  MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityRounding::OrHash
                 ),
               tags: T::Array[String],
               request_options: MetronomeSDK::RequestOptions::OrHash
@@ -110,11 +110,11 @@ module MetronomeSDK
               pricing_group_key: T::Array[String],
               quantity_conversion:
                 T.nilable(
-                  MetronomeSDK::V1::Contracts::QuantityConversion::OrHash
+                  MetronomeSDK::V1::Contracts::ProductUpdateParams::QuantityConversion::OrHash
                 ),
               quantity_rounding:
                 T.nilable(
-                  MetronomeSDK::V1::Contracts::QuantityRounding::OrHash
+                  MetronomeSDK::V1::Contracts::ProductUpdateParams::QuantityRounding::OrHash
                 ),
               tags: T::Array[String],
               request_options: MetronomeSDK::RequestOptions::OrHash
@@ -199,7 +199,8 @@ module MetronomeSDK
             limit: nil,
             # Query param: Cursor that indicates where the next page of results should start.
             next_page: nil,
-            # Body param: Filter options for the product list
+            # Body param: Filter options for the product list. If not provided, defaults to
+            # not archived.
             archive_filter: nil,
             request_options: {}
           )

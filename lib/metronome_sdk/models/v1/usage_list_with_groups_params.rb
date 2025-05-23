@@ -23,7 +23,7 @@ module MetronomeSDK
         #   segmented into daily or hourly aggregates. A window_size of "none" will return a
         #   single usage aggregate for the entirety of the specified period.
         #
-        #   @return [Symbol, MetronomeSDK::V1::UsageListWithGroupsParams::WindowSize]
+        #   @return [Symbol, MetronomeSDK::Models::V1::UsageListWithGroupsParams::WindowSize]
         required :window_size, enum: -> { MetronomeSDK::V1::UsageListWithGroupsParams::WindowSize }
 
         # @!attribute limit
@@ -53,7 +53,7 @@ module MetronomeSDK
 
         # @!attribute group_by
         #
-        #   @return [MetronomeSDK::V1::UsageListWithGroupsParams::GroupBy, nil]
+        #   @return [MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy, nil]
         optional :group_by, -> { MetronomeSDK::V1::UsageListWithGroupsParams::GroupBy }
 
         # @!attribute starting_on
@@ -69,7 +69,7 @@ module MetronomeSDK
         #
         #   @param customer_id [String]
         #
-        #   @param window_size [Symbol, MetronomeSDK::V1::UsageListWithGroupsParams::WindowSize] A window_size of "day" or "hour" will return the usage for the specified period
+        #   @param window_size [Symbol, MetronomeSDK::Models::V1::UsageListWithGroupsParams::WindowSize] A window_size of "day" or "hour" will return the usage for the specified period
         #
         #   @param limit [Integer] Max number of results that should be returned
         #
@@ -79,7 +79,7 @@ module MetronomeSDK
         #
         #   @param ending_before [Time]
         #
-        #   @param group_by [MetronomeSDK::V1::UsageListWithGroupsParams::GroupBy]
+        #   @param group_by [MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy]
         #
         #   @param starting_on [Time]
         #
@@ -115,7 +115,7 @@ module MetronomeSDK
 
           # @!method initialize(key:, values: nil)
           #   Some parameter documentations has been truncated, see
-          #   {MetronomeSDK::V1::UsageListWithGroupsParams::GroupBy} for more details.
+          #   {MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy} for more details.
           #
           #   @param key [String] The name of the group_by key to use
           #

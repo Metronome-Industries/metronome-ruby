@@ -37,6 +37,15 @@ module MetronomeSDK
           ?next_page: String,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
+
+        def to_hash: -> {
+          customer_id: String,
+          ending_before: Time,
+          starting_on: Time,
+          limit: Integer,
+          next_page: String,
+          request_options: MetronomeSDK::RequestOptions
+        }
       end
     end
   end

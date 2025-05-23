@@ -8,6 +8,7 @@ module MetronomeSDK
       # Array of items of a given type.
       class ArrayOf
         include MetronomeSDK::Internal::Type::Converter
+        include MetronomeSDK::Internal::Util::SorbetRuntimeSupport
 
         abstract!
 
@@ -61,6 +62,11 @@ module MetronomeSDK
             .returns(T.any(T::Array[T.anything], T.anything))
         end
         def dump(value, state:)
+        end
+
+        # @api private
+        sig { returns(T.anything) }
+        def to_sorbet_type
         end
 
         # @api private

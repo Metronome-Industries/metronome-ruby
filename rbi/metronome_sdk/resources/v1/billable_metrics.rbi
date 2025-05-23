@@ -12,9 +12,13 @@ module MetronomeSDK
             aggregation_type:
               MetronomeSDK::V1::BillableMetricCreateParams::AggregationType::OrSymbol,
             custom_fields: T::Hash[Symbol, String],
-            event_type_filter: MetronomeSDK::EventTypeFilter::OrHash,
+            event_type_filter:
+              MetronomeSDK::V1::BillableMetricCreateParams::EventTypeFilter::OrHash,
             group_keys: T::Array[T::Array[String]],
-            property_filters: T::Array[MetronomeSDK::PropertyFilter::OrHash],
+            property_filters:
+              T::Array[
+                MetronomeSDK::V1::BillableMetricCreateParams::PropertyFilter::OrHash
+              ],
             sql: String,
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(MetronomeSDK::Models::V1::BillableMetricCreateResponse)

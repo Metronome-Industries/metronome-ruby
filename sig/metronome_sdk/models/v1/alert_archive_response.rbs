@@ -1,12 +1,29 @@
 module MetronomeSDK
   module Models
     module V1
-      type alert_archive_response = { data: MetronomeSDK::ID }
+      type alert_archive_response =
+        { data: MetronomeSDK::Models::V1::AlertArchiveResponse::Data }
 
       class AlertArchiveResponse < MetronomeSDK::Internal::Type::BaseModel
-        attr_accessor data: MetronomeSDK::ID
+        attr_accessor data: MetronomeSDK::Models::V1::AlertArchiveResponse::Data
 
-        def initialize: (data: MetronomeSDK::ID) -> void
+        def initialize: (
+          data: MetronomeSDK::Models::V1::AlertArchiveResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: MetronomeSDK::Models::V1::AlertArchiveResponse::Data
+        }
+
+        type data = { id: String }
+
+        class Data < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          def initialize: (id: String) -> void
+
+          def to_hash: -> { id: String }
+        end
       end
     end
   end

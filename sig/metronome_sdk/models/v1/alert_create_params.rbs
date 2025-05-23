@@ -90,6 +90,23 @@ module MetronomeSDK
           ?request_options: MetronomeSDK::request_opts
         ) -> void
 
+        def to_hash: -> {
+          alert_type: MetronomeSDK::Models::V1::AlertCreateParams::alert_type,
+          name: String,
+          threshold: Float,
+          billable_metric_id: String,
+          credit_grant_type_filters: ::Array[String],
+          credit_type_id: String,
+          custom_field_filters: ::Array[MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter],
+          customer_id: String,
+          evaluate_on_create: bool,
+          group_key_filter: MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter,
+          invoice_types_filter: ::Array[String],
+          plan_id: String,
+          uniqueness_key: String,
+          request_options: MetronomeSDK::RequestOptions
+        }
+
         type alert_type =
           :low_credit_balance_reached
           | :spend_threshold_reached
@@ -129,23 +146,29 @@ module MetronomeSDK
 
         type custom_field_filter =
           {
-            entity: MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter::entity,
+            entity: MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter::entity,
             key: String,
             value: String
           }
 
         class CustomFieldFilter < MetronomeSDK::Internal::Type::BaseModel
-          attr_accessor entity: MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter::entity
+          attr_accessor entity: MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter::entity
 
           attr_accessor key: String
 
           attr_accessor value: String
 
           def initialize: (
-            entity: MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter::entity,
+            entity: MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter::entity,
             key: String,
             value: String
           ) -> void
+
+          def to_hash: -> {
+            entity: MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter::entity,
+            key: String,
+            value: String
+          }
 
           type entity = :Contract | :Commit | :ContractCredit
 
@@ -156,7 +179,7 @@ module MetronomeSDK
             COMMIT: :Commit
             CONTRACT_CREDIT: :ContractCredit
 
-            def self?.values: -> ::Array[MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter::entity]
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter::entity]
           end
         end
 
@@ -168,6 +191,8 @@ module MetronomeSDK
           attr_accessor value: String
 
           def initialize: (key: String, value: String) -> void
+
+          def to_hash: -> { key: String, value: String }
         end
       end
     end

@@ -28,6 +28,10 @@ module MetronomeSDK
               rate_type:
                 MetronomeSDK::V1::Customers::CommitCreateParams::RateType::OrSymbol,
               salesforce_opportunity_id: String,
+              specifiers:
+                T::Array[
+                  MetronomeSDK::V1::Customers::CommitCreateParams::Specifier::OrHash
+                ],
               uniqueness_key: String,
               request_options: MetronomeSDK::RequestOptions::OrHash
             ).returns(MetronomeSDK::Models::V1::Customers::CommitCreateResponse)
@@ -72,6 +76,11 @@ module MetronomeSDK
             rate_type: nil,
             # This field's availability is dependent on your client's configuration.
             salesforce_opportunity_id: nil,
+            # List of filters that determine what kind of customer usage draws down a commit
+            # or credit. A customer's usage needs to meet the condition of at least one of the
+            # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+            # be used together with `applicable_product_ids` or `applicable_product_tags`.
+            specifiers: nil,
             # Prevents the creation of duplicates. If a request to create a commit or credit
             # is made with a uniqueness key that was previously used to create a commit or
             # credit, a new record will not be created and the request will fail with a 409

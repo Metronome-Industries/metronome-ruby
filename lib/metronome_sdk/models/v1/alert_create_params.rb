@@ -11,7 +11,7 @@ module MetronomeSDK
         # @!attribute alert_type
         #   Type of the alert
         #
-        #   @return [Symbol, MetronomeSDK::V1::AlertCreateParams::AlertType]
+        #   @return [Symbol, MetronomeSDK::Models::V1::AlertCreateParams::AlertType]
         required :alert_type, enum: -> { MetronomeSDK::V1::AlertCreateParams::AlertType }
 
         # @!attribute name
@@ -51,7 +51,7 @@ module MetronomeSDK
         #   A list of custom field filters for alert types that support advanced filtering.
         #   Only present for contract invoices.
         #
-        #   @return [Array<MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter>, nil]
+        #   @return [Array<MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter>, nil]
         optional :custom_field_filters,
                  -> {
                    MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter]
@@ -59,7 +59,7 @@ module MetronomeSDK
 
         # @!attribute customer_id
         #   If provided, will create this alert for this specific customer. To create an
-        #   alert for all customers, do not specify `customer_id` or `plan_id`.
+        #   alert for all customers, do not specify a `customer_id`.
         #
         #   @return [String, nil]
         optional :customer_id, String
@@ -76,7 +76,7 @@ module MetronomeSDK
         #   Scopes alert evaluation to a specific presentation group key on individual line
         #   items. Only present for spend alerts.
         #
-        #   @return [MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter, nil]
+        #   @return [MetronomeSDK::Models::V1::AlertCreateParams::GroupKeyFilter, nil]
         optional :group_key_filter, -> { MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter }
 
         # @!attribute invoice_types_filter
@@ -88,7 +88,7 @@ module MetronomeSDK
 
         # @!attribute plan_id
         #   If provided, will create this alert for this specific plan. To create an alert
-        #   for all customers, do not specify `customer_id` or `plan_id`.
+        #   for all customers, do not specify a `plan_id`.
         #
         #   @return [String, nil]
         optional :plan_id, String
@@ -105,7 +105,7 @@ module MetronomeSDK
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::AlertCreateParams} for more details.
         #
-        #   @param alert_type [Symbol, MetronomeSDK::V1::AlertCreateParams::AlertType] Type of the alert
+        #   @param alert_type [Symbol, MetronomeSDK::Models::V1::AlertCreateParams::AlertType] Type of the alert
         #
         #   @param name [String] Name of the alert
         #
@@ -117,13 +117,13 @@ module MetronomeSDK
         #
         #   @param credit_type_id [String]
         #
-        #   @param custom_field_filters [Array<MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter>] A list of custom field filters for alert types that support advanced filtering.
+        #   @param custom_field_filters [Array<MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter>] A list of custom field filters for alert types that support advanced filtering.
         #
         #   @param customer_id [String] If provided, will create this alert for this specific customer. To create an ale
         #
         #   @param evaluate_on_create [Boolean] If true, the alert will evaluate immediately on customers that already meet the
         #
-        #   @param group_key_filter [MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter] Scopes alert evaluation to a specific presentation group key on individual line
+        #   @param group_key_filter [MetronomeSDK::Models::V1::AlertCreateParams::GroupKeyFilter] Scopes alert evaluation to a specific presentation group key on individual line
         #
         #   @param invoice_types_filter [Array<String>] Only supported for invoice_total_reached alerts. A list of invoice types to eval
         #
@@ -161,7 +161,7 @@ module MetronomeSDK
         class CustomFieldFilter < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute entity
           #
-          #   @return [Symbol, MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter::Entity]
+          #   @return [Symbol, MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter::Entity]
           required :entity, enum: -> { MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter::Entity }
 
           # @!attribute key
@@ -175,11 +175,11 @@ module MetronomeSDK
           required :value, String
 
           # @!method initialize(entity:, key:, value:)
-          #   @param entity [Symbol, MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter::Entity]
+          #   @param entity [Symbol, MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter::Entity]
           #   @param key [String]
           #   @param value [String]
 
-          # @see MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter#entity
+          # @see MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter#entity
           module Entity
             extend MetronomeSDK::Internal::Type::Enum
 

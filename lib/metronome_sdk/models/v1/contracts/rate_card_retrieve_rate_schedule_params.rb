@@ -44,7 +44,7 @@ module MetronomeSDK
           #   List of rate selectors, rates matching ANY of the selector will be included in
           #   the response Passing no selectors will result in all rates being returned.
           #
-          #   @return [Array<MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector>, nil]
+          #   @return [Array<MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector>, nil]
           optional :selectors,
                    -> {
                      MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector]
@@ -65,7 +65,7 @@ module MetronomeSDK
           #
           #   @param ending_before [Time] optional exclusive end date for the rates schedule. When not specified rates wil
           #
-          #   @param selectors [Array<MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector>] List of rate selectors, rates matching ANY of the selector will be included in t
+          #   @param selectors [Array<MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector>] List of rate selectors, rates matching ANY of the selector will be included in t
           #
           #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 
@@ -92,8 +92,8 @@ module MetronomeSDK
 
             # @!method initialize(partial_pricing_group_values: nil, pricing_group_values: nil, product_id: nil)
             #   Some parameter documentations has been truncated, see
-            #   {MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector} for
-            #   more details.
+            #   {MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector}
+            #   for more details.
             #
             #   @param partial_pricing_group_values [Hash{Symbol=>String}] List of pricing group key value pairs, rates containing the matching key / value
             #

@@ -55,11 +55,11 @@ module MetronomeSDK
           #
           # @param net_payment_terms_days [Float] Body param: Number of days after issuance of invoice after which the invoice is
           #
-          # @param overage_rate_adjustments [Array<MetronomeSDK::V1::Customers::PlanAddParams::OverageRateAdjustment>] Body param: An optional list of overage rates that override the rates of the ori
+          # @param overage_rate_adjustments [Array<MetronomeSDK::Models::V1::Customers::PlanAddParams::OverageRateAdjustment>] Body param: An optional list of overage rates that override the rates of the ori
           #
-          # @param price_adjustments [Array<MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment>] Body param: A list of price adjustments can be applied on top of the pricing in
+          # @param price_adjustments [Array<MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment>] Body param: A list of price adjustments can be applied on top of the pricing in
           #
-          # @param trial_spec [MetronomeSDK::V1::Customers::PlanAddParams::TrialSpec] Body param: A custom trial can be set for the customer's plan. See the [trial co
+          # @param trial_spec [MetronomeSDK::Models::V1::Customers::PlanAddParams::TrialSpec] Body param: A custom trial can be set for the customer's plan. See the [trial co
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #

@@ -73,6 +73,20 @@ module MetronomeSDK
             ?request_options: MetronomeSDK::request_opts
           ) -> void
 
+          def to_hash: -> {
+            customer_id: String,
+            ending_before: Time,
+            starting_on: Time,
+            credit_type_id: String,
+            limit: Integer,
+            next_page: String,
+            skip_zero_qty_line_items: bool,
+            sort: MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::sort,
+            status: String,
+            window_size: MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::window_size,
+            request_options: MetronomeSDK::RequestOptions
+          }
+
           type sort = :date_asc | :date_desc
 
           module Sort

@@ -12,22 +12,102 @@ module MetronomeSDK
             )
           end
 
-        sig { returns(MetronomeSDK::V1::Customer) }
+        sig { returns(MetronomeSDK::Models::V1::CustomerSetNameResponse::Data) }
         attr_reader :data
 
-        sig { params(data: MetronomeSDK::V1::Customer::OrHash).void }
+        sig do
+          params(
+            data:
+              MetronomeSDK::Models::V1::CustomerSetNameResponse::Data::OrHash
+          ).void
+        end
         attr_writer :data
 
         sig do
-          params(data: MetronomeSDK::V1::Customer::OrHash).returns(
-            T.attached_class
-          )
+          params(
+            data:
+              MetronomeSDK::Models::V1::CustomerSetNameResponse::Data::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(data:)
         end
 
-        sig { override.returns({ data: MetronomeSDK::V1::Customer }) }
+        sig do
+          override.returns(
+            { data: MetronomeSDK::Models::V1::CustomerSetNameResponse::Data }
+          )
+        end
         def to_hash
+        end
+
+        class Data < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V1::CustomerSetNameResponse::Data,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          # the Metronome ID of the customer
+          sig { returns(String) }
+          attr_accessor :id
+
+          # (deprecated, use ingest_aliases instead) the first ID (Metronome or ingest
+          # alias) that can be used in usage events
+          sig { returns(String) }
+          attr_accessor :external_id
+
+          # aliases for this customer that can be used instead of the Metronome customer ID
+          # in usage events
+          sig { returns(T::Array[String]) }
+          attr_accessor :ingest_aliases
+
+          sig { returns(String) }
+          attr_accessor :name
+
+          sig { returns(T.nilable(T::Hash[Symbol, String])) }
+          attr_reader :custom_fields
+
+          sig { params(custom_fields: T::Hash[Symbol, String]).void }
+          attr_writer :custom_fields
+
+          sig do
+            params(
+              id: String,
+              external_id: String,
+              ingest_aliases: T::Array[String],
+              name: String,
+              custom_fields: T::Hash[Symbol, String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # the Metronome ID of the customer
+            id:,
+            # (deprecated, use ingest_aliases instead) the first ID (Metronome or ingest
+            # alias) that can be used in usage events
+            external_id:,
+            # aliases for this customer that can be used instead of the Metronome customer ID
+            # in usage events
+            ingest_aliases:,
+            name:,
+            custom_fields: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                id: String,
+                external_id: String,
+                ingest_aliases: T::Array[String],
+                name: String,
+                custom_fields: T::Hash[Symbol, String]
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
     end

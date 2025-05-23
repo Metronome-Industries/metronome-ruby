@@ -16,13 +16,13 @@ module MetronomeSDK
 
           # @!attribute billing_provider_type
           #
-          #   @return [Symbol, MetronomeSDK::V1::Customers::BillingConfigRetrieveParams::BillingProviderType]
+          #   @return [Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveParams::BillingProviderType]
           required :billing_provider_type,
                    enum: -> { MetronomeSDK::V1::Customers::BillingConfigRetrieveParams::BillingProviderType }
 
           # @!method initialize(customer_id:, billing_provider_type:, request_options: {})
           #   @param customer_id [String]
-          #   @param billing_provider_type [Symbol, MetronomeSDK::V1::Customers::BillingConfigRetrieveParams::BillingProviderType]
+          #   @param billing_provider_type [Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveParams::BillingProviderType]
           #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 
           module BillingProviderType

@@ -22,6 +22,12 @@ module MetronomeSDK
           ?request_options: MetronomeSDK::request_opts
         ) -> void
 
+        def to_hash: -> {
+          entity: MetronomeSDK::Models::V1::CustomFieldRemoveKeyParams::entity,
+          key: String,
+          request_options: MetronomeSDK::RequestOptions
+        }
+
         type entity =
           :alert
           | :billable_metric

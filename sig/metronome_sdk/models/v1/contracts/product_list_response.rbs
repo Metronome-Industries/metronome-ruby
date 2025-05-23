@@ -5,8 +5,8 @@ module MetronomeSDK
         type product_list_response =
           {
             id: String,
-            current: MetronomeSDK::V1::Contracts::ProductListItemState,
-            initial: MetronomeSDK::V1::Contracts::ProductListItemState,
+            current: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Current,
+            initial: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Initial,
             type: MetronomeSDK::Models::V1::Contracts::ProductListResponse::type_,
             updates: ::Array[MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update],
             archived_at: Time?,
@@ -16,9 +16,9 @@ module MetronomeSDK
         class ProductListResponse < MetronomeSDK::Internal::Type::BaseModel
           attr_accessor id: String
 
-          attr_accessor current: MetronomeSDK::V1::Contracts::ProductListItemState
+          attr_accessor current: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Current
 
-          attr_accessor initial: MetronomeSDK::V1::Contracts::ProductListItemState
+          attr_accessor initial: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Initial
 
           attr_accessor type: MetronomeSDK::Models::V1::Contracts::ProductListResponse::type_
 
@@ -32,13 +32,399 @@ module MetronomeSDK
 
           def initialize: (
             id: String,
-            current: MetronomeSDK::V1::Contracts::ProductListItemState,
-            initial: MetronomeSDK::V1::Contracts::ProductListItemState,
+            current: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Current,
+            initial: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Initial,
             type: MetronomeSDK::Models::V1::Contracts::ProductListResponse::type_,
             updates: ::Array[MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update],
             ?archived_at: Time?,
             ?custom_fields: ::Hash[Symbol, String]
           ) -> void
+
+          def to_hash: -> {
+            id: String,
+            current: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Current,
+            initial: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Initial,
+            type: MetronomeSDK::Models::V1::Contracts::ProductListResponse::type_,
+            updates: ::Array[MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update],
+            archived_at: Time?,
+            custom_fields: ::Hash[Symbol, String]
+          }
+
+          type current =
+            {
+              created_at: Time,
+              created_by: String,
+              name: String,
+              billable_metric_id: String,
+              composite_product_ids: ::Array[String],
+              composite_tags: ::Array[String],
+              exclude_free_usage: bool,
+              is_refundable: bool,
+              netsuite_internal_item_id: String,
+              netsuite_overage_item_id: String,
+              presentation_group_key: ::Array[String],
+              pricing_group_key: ::Array[String],
+              quantity_conversion: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Current::QuantityConversion?,
+              quantity_rounding: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Current::QuantityRounding?,
+              starting_at: Time,
+              tags: ::Array[String]
+            }
+
+          class Current < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor created_at: Time
+
+            attr_accessor created_by: String
+
+            attr_accessor name: String
+
+            attr_reader billable_metric_id: String?
+
+            def billable_metric_id=: (String) -> String
+
+            attr_reader composite_product_ids: ::Array[String]?
+
+            def composite_product_ids=: (::Array[String]) -> ::Array[String]
+
+            attr_reader composite_tags: ::Array[String]?
+
+            def composite_tags=: (::Array[String]) -> ::Array[String]
+
+            attr_reader exclude_free_usage: bool?
+
+            def exclude_free_usage=: (bool) -> bool
+
+            attr_reader is_refundable: bool?
+
+            def is_refundable=: (bool) -> bool
+
+            attr_reader netsuite_internal_item_id: String?
+
+            def netsuite_internal_item_id=: (String) -> String
+
+            attr_reader netsuite_overage_item_id: String?
+
+            def netsuite_overage_item_id=: (String) -> String
+
+            attr_reader presentation_group_key: ::Array[String]?
+
+            def presentation_group_key=: (::Array[String]) -> ::Array[String]
+
+            attr_reader pricing_group_key: ::Array[String]?
+
+            def pricing_group_key=: (::Array[String]) -> ::Array[String]
+
+            attr_accessor quantity_conversion: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Current::QuantityConversion?
+
+            attr_accessor quantity_rounding: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Current::QuantityRounding?
+
+            attr_reader starting_at: Time?
+
+            def starting_at=: (Time) -> Time
+
+            attr_reader tags: ::Array[String]?
+
+            def tags=: (::Array[String]) -> ::Array[String]
+
+            def initialize: (
+              created_at: Time,
+              created_by: String,
+              name: String,
+              ?billable_metric_id: String,
+              ?composite_product_ids: ::Array[String],
+              ?composite_tags: ::Array[String],
+              ?exclude_free_usage: bool,
+              ?is_refundable: bool,
+              ?netsuite_internal_item_id: String,
+              ?netsuite_overage_item_id: String,
+              ?presentation_group_key: ::Array[String],
+              ?pricing_group_key: ::Array[String],
+              ?quantity_conversion: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Current::QuantityConversion?,
+              ?quantity_rounding: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Current::QuantityRounding?,
+              ?starting_at: Time,
+              ?tags: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              created_at: Time,
+              created_by: String,
+              name: String,
+              billable_metric_id: String,
+              composite_product_ids: ::Array[String],
+              composite_tags: ::Array[String],
+              exclude_free_usage: bool,
+              is_refundable: bool,
+              netsuite_internal_item_id: String,
+              netsuite_overage_item_id: String,
+              presentation_group_key: ::Array[String],
+              pricing_group_key: ::Array[String],
+              quantity_conversion: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Current::QuantityConversion?,
+              quantity_rounding: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Current::QuantityRounding?,
+              starting_at: Time,
+              tags: ::Array[String]
+            }
+
+            type quantity_conversion =
+              {
+                conversion_factor: Float,
+                operation: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Current::QuantityConversion::operation,
+                name: String
+              }
+
+            class QuantityConversion < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor conversion_factor: Float
+
+              attr_accessor operation: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Current::QuantityConversion::operation
+
+              attr_reader name: String?
+
+              def name=: (String) -> String
+
+              def initialize: (
+                conversion_factor: Float,
+                operation: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Current::QuantityConversion::operation,
+                ?name: String
+              ) -> void
+
+              def to_hash: -> {
+                conversion_factor: Float,
+                operation: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Current::QuantityConversion::operation,
+                name: String
+              }
+
+              type operation = :MULTIPLY | :DIVIDE
+
+              module Operation
+                extend MetronomeSDK::Internal::Type::Enum
+
+                MULTIPLY: :MULTIPLY
+                DIVIDE: :DIVIDE
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::Contracts::ProductListResponse::Current::QuantityConversion::operation]
+              end
+            end
+
+            type quantity_rounding =
+              {
+                decimal_places: Float,
+                rounding_method: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Current::QuantityRounding::rounding_method
+              }
+
+            class QuantityRounding < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor decimal_places: Float
+
+              attr_accessor rounding_method: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Current::QuantityRounding::rounding_method
+
+              def initialize: (
+                decimal_places: Float,
+                rounding_method: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Current::QuantityRounding::rounding_method
+              ) -> void
+
+              def to_hash: -> {
+                decimal_places: Float,
+                rounding_method: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Current::QuantityRounding::rounding_method
+              }
+
+              type rounding_method = :ROUND_UP | :ROUND_DOWN | :ROUND_HALF_UP
+
+              module RoundingMethod
+                extend MetronomeSDK::Internal::Type::Enum
+
+                ROUND_UP: :ROUND_UP
+                ROUND_DOWN: :ROUND_DOWN
+                ROUND_HALF_UP: :ROUND_HALF_UP
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::Contracts::ProductListResponse::Current::QuantityRounding::rounding_method]
+              end
+            end
+          end
+
+          type initial =
+            {
+              created_at: Time,
+              created_by: String,
+              name: String,
+              billable_metric_id: String,
+              composite_product_ids: ::Array[String],
+              composite_tags: ::Array[String],
+              exclude_free_usage: bool,
+              is_refundable: bool,
+              netsuite_internal_item_id: String,
+              netsuite_overage_item_id: String,
+              presentation_group_key: ::Array[String],
+              pricing_group_key: ::Array[String],
+              quantity_conversion: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Initial::QuantityConversion?,
+              quantity_rounding: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Initial::QuantityRounding?,
+              starting_at: Time,
+              tags: ::Array[String]
+            }
+
+          class Initial < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor created_at: Time
+
+            attr_accessor created_by: String
+
+            attr_accessor name: String
+
+            attr_reader billable_metric_id: String?
+
+            def billable_metric_id=: (String) -> String
+
+            attr_reader composite_product_ids: ::Array[String]?
+
+            def composite_product_ids=: (::Array[String]) -> ::Array[String]
+
+            attr_reader composite_tags: ::Array[String]?
+
+            def composite_tags=: (::Array[String]) -> ::Array[String]
+
+            attr_reader exclude_free_usage: bool?
+
+            def exclude_free_usage=: (bool) -> bool
+
+            attr_reader is_refundable: bool?
+
+            def is_refundable=: (bool) -> bool
+
+            attr_reader netsuite_internal_item_id: String?
+
+            def netsuite_internal_item_id=: (String) -> String
+
+            attr_reader netsuite_overage_item_id: String?
+
+            def netsuite_overage_item_id=: (String) -> String
+
+            attr_reader presentation_group_key: ::Array[String]?
+
+            def presentation_group_key=: (::Array[String]) -> ::Array[String]
+
+            attr_reader pricing_group_key: ::Array[String]?
+
+            def pricing_group_key=: (::Array[String]) -> ::Array[String]
+
+            attr_accessor quantity_conversion: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Initial::QuantityConversion?
+
+            attr_accessor quantity_rounding: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Initial::QuantityRounding?
+
+            attr_reader starting_at: Time?
+
+            def starting_at=: (Time) -> Time
+
+            attr_reader tags: ::Array[String]?
+
+            def tags=: (::Array[String]) -> ::Array[String]
+
+            def initialize: (
+              created_at: Time,
+              created_by: String,
+              name: String,
+              ?billable_metric_id: String,
+              ?composite_product_ids: ::Array[String],
+              ?composite_tags: ::Array[String],
+              ?exclude_free_usage: bool,
+              ?is_refundable: bool,
+              ?netsuite_internal_item_id: String,
+              ?netsuite_overage_item_id: String,
+              ?presentation_group_key: ::Array[String],
+              ?pricing_group_key: ::Array[String],
+              ?quantity_conversion: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Initial::QuantityConversion?,
+              ?quantity_rounding: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Initial::QuantityRounding?,
+              ?starting_at: Time,
+              ?tags: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              created_at: Time,
+              created_by: String,
+              name: String,
+              billable_metric_id: String,
+              composite_product_ids: ::Array[String],
+              composite_tags: ::Array[String],
+              exclude_free_usage: bool,
+              is_refundable: bool,
+              netsuite_internal_item_id: String,
+              netsuite_overage_item_id: String,
+              presentation_group_key: ::Array[String],
+              pricing_group_key: ::Array[String],
+              quantity_conversion: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Initial::QuantityConversion?,
+              quantity_rounding: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Initial::QuantityRounding?,
+              starting_at: Time,
+              tags: ::Array[String]
+            }
+
+            type quantity_conversion =
+              {
+                conversion_factor: Float,
+                operation: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Initial::QuantityConversion::operation,
+                name: String
+              }
+
+            class QuantityConversion < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor conversion_factor: Float
+
+              attr_accessor operation: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Initial::QuantityConversion::operation
+
+              attr_reader name: String?
+
+              def name=: (String) -> String
+
+              def initialize: (
+                conversion_factor: Float,
+                operation: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Initial::QuantityConversion::operation,
+                ?name: String
+              ) -> void
+
+              def to_hash: -> {
+                conversion_factor: Float,
+                operation: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Initial::QuantityConversion::operation,
+                name: String
+              }
+
+              type operation = :MULTIPLY | :DIVIDE
+
+              module Operation
+                extend MetronomeSDK::Internal::Type::Enum
+
+                MULTIPLY: :MULTIPLY
+                DIVIDE: :DIVIDE
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::Contracts::ProductListResponse::Initial::QuantityConversion::operation]
+              end
+            end
+
+            type quantity_rounding =
+              {
+                decimal_places: Float,
+                rounding_method: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Initial::QuantityRounding::rounding_method
+              }
+
+            class QuantityRounding < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor decimal_places: Float
+
+              attr_accessor rounding_method: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Initial::QuantityRounding::rounding_method
+
+              def initialize: (
+                decimal_places: Float,
+                rounding_method: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Initial::QuantityRounding::rounding_method
+              ) -> void
+
+              def to_hash: -> {
+                decimal_places: Float,
+                rounding_method: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Initial::QuantityRounding::rounding_method
+              }
+
+              type rounding_method = :ROUND_UP | :ROUND_DOWN | :ROUND_HALF_UP
+
+              module RoundingMethod
+                extend MetronomeSDK::Internal::Type::Enum
+
+                ROUND_UP: :ROUND_UP
+                ROUND_DOWN: :ROUND_DOWN
+                ROUND_HALF_UP: :ROUND_HALF_UP
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::Contracts::ProductListResponse::Initial::QuantityRounding::rounding_method]
+              end
+            end
+          end
 
           type type_ =
             :USAGE | :SUBSCRIPTION | :COMPOSITE | :FIXED | :PRO_SERVICE
@@ -69,8 +455,8 @@ module MetronomeSDK
               netsuite_overage_item_id: String,
               presentation_group_key: ::Array[String],
               pricing_group_key: ::Array[String],
-              quantity_conversion: MetronomeSDK::V1::Contracts::QuantityConversion?,
-              quantity_rounding: MetronomeSDK::V1::Contracts::QuantityRounding?,
+              quantity_conversion: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update::QuantityConversion?,
+              quantity_rounding: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update::QuantityRounding?,
               starting_at: Time,
               tags: ::Array[String]
             }
@@ -120,9 +506,9 @@ module MetronomeSDK
 
             def pricing_group_key=: (::Array[String]) -> ::Array[String]
 
-            attr_accessor quantity_conversion: MetronomeSDK::V1::Contracts::QuantityConversion?
+            attr_accessor quantity_conversion: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update::QuantityConversion?
 
-            attr_accessor quantity_rounding: MetronomeSDK::V1::Contracts::QuantityRounding?
+            attr_accessor quantity_rounding: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update::QuantityRounding?
 
             attr_reader starting_at: Time?
 
@@ -145,11 +531,104 @@ module MetronomeSDK
               ?netsuite_overage_item_id: String,
               ?presentation_group_key: ::Array[String],
               ?pricing_group_key: ::Array[String],
-              ?quantity_conversion: MetronomeSDK::V1::Contracts::QuantityConversion?,
-              ?quantity_rounding: MetronomeSDK::V1::Contracts::QuantityRounding?,
+              ?quantity_conversion: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update::QuantityConversion?,
+              ?quantity_rounding: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update::QuantityRounding?,
               ?starting_at: Time,
               ?tags: ::Array[String]
             ) -> void
+
+            def to_hash: -> {
+              created_at: Time,
+              created_by: String,
+              billable_metric_id: String,
+              composite_product_ids: ::Array[String],
+              composite_tags: ::Array[String],
+              exclude_free_usage: bool,
+              is_refundable: bool,
+              name: String,
+              netsuite_internal_item_id: String,
+              netsuite_overage_item_id: String,
+              presentation_group_key: ::Array[String],
+              pricing_group_key: ::Array[String],
+              quantity_conversion: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update::QuantityConversion?,
+              quantity_rounding: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update::QuantityRounding?,
+              starting_at: Time,
+              tags: ::Array[String]
+            }
+
+            type quantity_conversion =
+              {
+                conversion_factor: Float,
+                operation: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update::QuantityConversion::operation,
+                name: String
+              }
+
+            class QuantityConversion < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor conversion_factor: Float
+
+              attr_accessor operation: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update::QuantityConversion::operation
+
+              attr_reader name: String?
+
+              def name=: (String) -> String
+
+              def initialize: (
+                conversion_factor: Float,
+                operation: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update::QuantityConversion::operation,
+                ?name: String
+              ) -> void
+
+              def to_hash: -> {
+                conversion_factor: Float,
+                operation: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update::QuantityConversion::operation,
+                name: String
+              }
+
+              type operation = :MULTIPLY | :DIVIDE
+
+              module Operation
+                extend MetronomeSDK::Internal::Type::Enum
+
+                MULTIPLY: :MULTIPLY
+                DIVIDE: :DIVIDE
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update::QuantityConversion::operation]
+              end
+            end
+
+            type quantity_rounding =
+              {
+                decimal_places: Float,
+                rounding_method: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update::QuantityRounding::rounding_method
+              }
+
+            class QuantityRounding < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor decimal_places: Float
+
+              attr_accessor rounding_method: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update::QuantityRounding::rounding_method
+
+              def initialize: (
+                decimal_places: Float,
+                rounding_method: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update::QuantityRounding::rounding_method
+              ) -> void
+
+              def to_hash: -> {
+                decimal_places: Float,
+                rounding_method: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update::QuantityRounding::rounding_method
+              }
+
+              type rounding_method = :ROUND_UP | :ROUND_DOWN | :ROUND_HALF_UP
+
+              module RoundingMethod
+                extend MetronomeSDK::Internal::Type::Enum
+
+                ROUND_UP: :ROUND_UP
+                ROUND_DOWN: :ROUND_DOWN
+                ROUND_HALF_UP: :ROUND_HALF_UP
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update::QuantityRounding::rounding_method]
+              end
+            end
           end
         end
       end

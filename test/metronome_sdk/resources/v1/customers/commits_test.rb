@@ -27,7 +27,7 @@ class MetronomeSDK::Test::Resources::V1::Customers::CommitsTest < MetronomeSDK::
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::ID
+        data: MetronomeSDK::Models::V1::Customers::CommitCreateResponse::Data
       }
     end
   end
@@ -41,7 +41,7 @@ class MetronomeSDK::Test::Resources::V1::Customers::CommitsTest < MetronomeSDK::
 
     assert_pattern do
       response => {
-        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Commit]),
+        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Customers::CommitListResponse::Data]),
         next_page: String | nil
       }
     end
@@ -60,7 +60,7 @@ class MetronomeSDK::Test::Resources::V1::Customers::CommitsTest < MetronomeSDK::
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::ID
+        data: MetronomeSDK::Models::V1::Customers::CommitUpdateEndDateResponse::Data
       }
     end
   end

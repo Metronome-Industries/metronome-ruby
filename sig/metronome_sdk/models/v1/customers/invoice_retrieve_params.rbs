@@ -28,6 +28,13 @@ module MetronomeSDK
             ?skip_zero_qty_line_items: bool,
             ?request_options: MetronomeSDK::request_opts
           ) -> void
+
+          def to_hash: -> {
+            customer_id: String,
+            invoice_id: String,
+            skip_zero_qty_line_items: bool,
+            request_options: MetronomeSDK::RequestOptions
+          }
         end
       end
     end

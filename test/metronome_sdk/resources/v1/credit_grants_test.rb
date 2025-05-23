@@ -20,7 +20,7 @@ class MetronomeSDK::Test::Resources::V1::CreditGrantsTest < MetronomeSDK::Test::
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::ID
+        data: MetronomeSDK::Models::V1::CreditGrantCreateResponse::Data
       }
     end
   end
@@ -45,13 +45,13 @@ class MetronomeSDK::Test::Resources::V1::CreditGrantsTest < MetronomeSDK::Test::
         balance: MetronomeSDK::Models::V1::CreditGrantListResponse::Balance,
         custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[String]),
         customer_id: String,
-        deductions: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::CreditLedgerEntry]),
+        deductions: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::CreditGrantListResponse::Deduction]),
         effective_at: Time,
         expires_at: Time,
         grant_amount: MetronomeSDK::Models::V1::CreditGrantListResponse::GrantAmount,
         name: String,
         paid_amount: MetronomeSDK::Models::V1::CreditGrantListResponse::PaidAmount,
-        pending_deductions: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::CreditLedgerEntry]),
+        pending_deductions: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::CreditGrantListResponse::PendingDeduction]),
         priority: Float,
         credit_grant_type: String | nil,
         invoice_id: String | nil,
@@ -71,7 +71,7 @@ class MetronomeSDK::Test::Resources::V1::CreditGrantsTest < MetronomeSDK::Test::
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::ID
+        data: MetronomeSDK::Models::V1::CreditGrantEditResponse::Data
       }
     end
   end
@@ -100,7 +100,7 @@ class MetronomeSDK::Test::Resources::V1::CreditGrantsTest < MetronomeSDK::Test::
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::ID
+        data: MetronomeSDK::Models::V1::CreditGrantVoidResponse::Data
       }
     end
   end

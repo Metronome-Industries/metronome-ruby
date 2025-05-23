@@ -27,7 +27,7 @@ module MetronomeSDK
         # @!attribute line_items
         #   Each line requires an amount or both unit_price and quantity.
         #
-        #   @return [Array<MetronomeSDK::V1::ContractScheduleProServicesInvoiceParams::LineItem>]
+        #   @return [Array<MetronomeSDK::Models::V1::ContractScheduleProServicesInvoiceParams::LineItem>]
         required :line_items,
                  -> {
                    MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractScheduleProServicesInvoiceParams::LineItem]
@@ -52,7 +52,7 @@ module MetronomeSDK
         #
         #   @param issued_at [Time] The date the invoice is issued
         #
-        #   @param line_items [Array<MetronomeSDK::V1::ContractScheduleProServicesInvoiceParams::LineItem>] Each line requires an amount or both unit_price and quantity.
+        #   @param line_items [Array<MetronomeSDK::Models::V1::ContractScheduleProServicesInvoiceParams::LineItem>] Each line requires an amount or both unit_price and quantity.
         #
         #   @param netsuite_invoice_header_end [Time] The end date of the invoice header in Netsuite
         #
@@ -112,8 +112,8 @@ module MetronomeSDK
 
           # @!method initialize(professional_service_id:, amendment_id: nil, amount: nil, metadata: nil, netsuite_invoice_billing_end: nil, netsuite_invoice_billing_start: nil, quantity: nil, unit_price: nil)
           #   Some parameter documentations has been truncated, see
-          #   {MetronomeSDK::V1::ContractScheduleProServicesInvoiceParams::LineItem} for more
-          #   details.
+          #   {MetronomeSDK::Models::V1::ContractScheduleProServicesInvoiceParams::LineItem}
+          #   for more details.
           #
           #   Describes the line item for a professional service charge on an invoice.
           #

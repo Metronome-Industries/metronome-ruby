@@ -10,7 +10,7 @@ module MetronomeSDK
 
         # @!attribute entity
         #
-        #   @return [Symbol, MetronomeSDK::V1::CustomFieldRemoveKeyParams::Entity]
+        #   @return [Symbol, MetronomeSDK::Models::V1::CustomFieldRemoveKeyParams::Entity]
         required :entity, enum: -> { MetronomeSDK::V1::CustomFieldRemoveKeyParams::Entity }
 
         # @!attribute key
@@ -19,7 +19,7 @@ module MetronomeSDK
         required :key, String
 
         # @!method initialize(entity:, key:, request_options: {})
-        #   @param entity [Symbol, MetronomeSDK::V1::CustomFieldRemoveKeyParams::Entity]
+        #   @param entity [Symbol, MetronomeSDK::Models::V1::CustomFieldRemoveKeyParams::Entity]
         #   @param key [String]
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 

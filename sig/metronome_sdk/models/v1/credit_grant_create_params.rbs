@@ -88,6 +88,24 @@ module MetronomeSDK
           ?request_options: MetronomeSDK::request_opts
         ) -> void
 
+        def to_hash: -> {
+          customer_id: String,
+          expires_at: Time,
+          grant_amount: MetronomeSDK::V1::CreditGrantCreateParams::GrantAmount,
+          name: String,
+          paid_amount: MetronomeSDK::V1::CreditGrantCreateParams::PaidAmount,
+          priority: Float,
+          credit_grant_type: String,
+          custom_fields: ::Hash[Symbol, String],
+          effective_at: Time,
+          invoice_date: Time,
+          product_ids: ::Array[String],
+          reason: String,
+          rollover_settings: MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings,
+          uniqueness_key: String,
+          request_options: MetronomeSDK::RequestOptions
+        }
+
         type grant_amount = { amount: Float, credit_type_id: String }
 
         class GrantAmount < MetronomeSDK::Internal::Type::BaseModel
@@ -96,6 +114,8 @@ module MetronomeSDK
           attr_accessor credit_type_id: String
 
           def initialize: (amount: Float, credit_type_id: String) -> void
+
+          def to_hash: -> { amount: Float, credit_type_id: String }
         end
 
         type paid_amount = { amount: Float, credit_type_id: String }
@@ -106,13 +126,15 @@ module MetronomeSDK
           attr_accessor credit_type_id: String
 
           def initialize: (amount: Float, credit_type_id: String) -> void
+
+          def to_hash: -> { amount: Float, credit_type_id: String }
         end
 
         type rollover_settings =
           {
             expires_at: Time,
             priority: Float,
-            rollover_amount: MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::rollover_amount
+            rollover_amount: MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::rollover_amount
           }
 
         class RolloverSettings < MetronomeSDK::Internal::Type::BaseModel
@@ -120,22 +142,92 @@ module MetronomeSDK
 
           attr_accessor priority: Float
 
-          attr_accessor rollover_amount: MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::rollover_amount
+          attr_accessor rollover_amount: MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::rollover_amount
 
           def initialize: (
             expires_at: Time,
             priority: Float,
-            rollover_amount: MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::rollover_amount
+            rollover_amount: MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::rollover_amount
           ) -> void
 
+          def to_hash: -> {
+            expires_at: Time,
+            priority: Float,
+            rollover_amount: MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::rollover_amount
+          }
+
           type rollover_amount =
-            MetronomeSDK::V1::RolloverAmountMaxPercentage
-            | MetronomeSDK::V1::RolloverAmountMaxAmount
+            MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0
+            | MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1
 
           module RolloverAmount
             extend MetronomeSDK::Internal::Type::Union
 
-            def self?.variants: -> ::Array[MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::rollover_amount]
+            type union_member0 =
+              {
+                type: MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0::type_,
+                value: Float
+              }
+
+            class UnionMember0 < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor type: MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0::type_
+
+              attr_accessor value: Float
+
+              def initialize: (
+                type: MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0::type_,
+                value: Float
+              ) -> void
+
+              def to_hash: -> {
+                type: MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0::type_,
+                value: Float
+              }
+
+              type type_ = :MAX_PERCENTAGE
+
+              module Type
+                extend MetronomeSDK::Internal::Type::Enum
+
+                MAX_PERCENTAGE: :MAX_PERCENTAGE
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0::type_]
+              end
+            end
+
+            type union_member1 =
+              {
+                type: MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1::type_,
+                value: Float
+              }
+
+            class UnionMember1 < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor type: MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1::type_
+
+              attr_accessor value: Float
+
+              def initialize: (
+                type: MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1::type_,
+                value: Float
+              ) -> void
+
+              def to_hash: -> {
+                type: MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1::type_,
+                value: Float
+              }
+
+              type type_ = :MAX_AMOUNT
+
+              module Type
+                extend MetronomeSDK::Internal::Type::Enum
+
+                MAX_AMOUNT: :MAX_AMOUNT
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1::type_]
+              end
+            end
+
+            def self?.variants: -> ::Array[MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::rollover_amount]
           end
         end
       end

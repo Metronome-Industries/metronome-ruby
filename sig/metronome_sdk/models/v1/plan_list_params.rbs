@@ -22,6 +22,12 @@ module MetronomeSDK
           ?next_page: String,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
+
+        def to_hash: -> {
+          limit: Integer,
+          next_page: String,
+          request_options: MetronomeSDK::RequestOptions
+        }
       end
     end
   end

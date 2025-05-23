@@ -15,7 +15,7 @@ module MetronomeSDK
 
         # @!attribute entity
         #
-        #   @return [Symbol, MetronomeSDK::V1::CustomFieldSetValuesParams::Entity]
+        #   @return [Symbol, MetronomeSDK::Models::V1::CustomFieldSetValuesParams::Entity]
         required :entity, enum: -> { MetronomeSDK::V1::CustomFieldSetValuesParams::Entity }
 
         # @!attribute entity_id
@@ -25,7 +25,7 @@ module MetronomeSDK
 
         # @!method initialize(custom_fields:, entity:, entity_id:, request_options: {})
         #   @param custom_fields [Hash{Symbol=>String}]
-        #   @param entity [Symbol, MetronomeSDK::V1::CustomFieldSetValuesParams::Entity]
+        #   @param entity [Symbol, MetronomeSDK::Models::V1::CustomFieldSetValuesParams::Entity]
         #   @param entity_id [String]
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 

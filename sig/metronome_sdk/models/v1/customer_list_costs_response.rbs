@@ -21,6 +21,12 @@ module MetronomeSDK
           start_timestamp: Time
         ) -> void
 
+        def to_hash: -> {
+          credit_types: ::Hash[Symbol, MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType],
+          end_timestamp: Time,
+          start_timestamp: Time
+        }
+
         type credit_type =
           {
             cost: Float,
@@ -49,6 +55,12 @@ module MetronomeSDK
             ?name: String
           ) -> void
 
+          def to_hash: -> {
+            cost: Float,
+            line_item_breakdown: ::Array[MetronomeSDK::Models::V1::CustomerListCostsResponse::CreditType::LineItemBreakdown],
+            name: String
+          }
+
           type line_item_breakdown =
             {
               cost: Float,
@@ -74,6 +86,13 @@ module MetronomeSDK
               ?group_key: String,
               ?group_value: String?
             ) -> void
+
+            def to_hash: -> {
+              cost: Float,
+              name: String,
+              group_key: String,
+              group_value: String?
+            }
           end
         end
       end
