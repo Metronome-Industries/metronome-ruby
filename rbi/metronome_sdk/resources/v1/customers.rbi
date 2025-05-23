@@ -77,7 +77,9 @@ module MetronomeSDK
             salesforce_account_ids: T::Array[String],
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(
-            MetronomeSDK::Internal::CursorPage[MetronomeSDK::V1::CustomerDetail]
+            MetronomeSDK::Internal::CursorPage[
+              MetronomeSDK::Models::V1::CustomerListResponse
+            ]
           )
         end
         def list(
