@@ -3154,10 +3154,25 @@ module MetronomeSDK
             attr_writer :quantity
 
             # Only set for TIERED rate_type.
-            sig { returns(T.nilable(T::Array[MetronomeSDK::Tier])) }
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier
+                  ]
+                )
+              )
+            end
             attr_reader :tiers
 
-            sig { params(tiers: T::Array[MetronomeSDK::Tier::OrHash]).void }
+            sig do
+              params(
+                tiers:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier::OrHash
+                  ]
+              ).void
+            end
             attr_writer :tiers
 
             # Required for OVERWRITE type.
@@ -3170,7 +3185,10 @@ module MetronomeSDK
                 is_prorated: T::Boolean,
                 price: Float,
                 quantity: Float,
-                tiers: T::Array[MetronomeSDK::Tier::OrHash]
+                tiers:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier::OrHash
+                  ]
               ).returns(T.attached_class)
             end
             def self.new(
@@ -3202,7 +3220,10 @@ module MetronomeSDK
                   is_prorated: T::Boolean,
                   price: Float,
                   quantity: Float,
-                  tiers: T::Array[MetronomeSDK::Tier]
+                  tiers:
+                    T::Array[
+                      MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier
+                    ]
                 }
               )
             end
@@ -3255,6 +3276,35 @@ module MetronomeSDK
                 )
               end
               def self.values
+              end
+            end
+
+            class Tier < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(Float) }
+              attr_accessor :price
+
+              sig { returns(T.nilable(Float)) }
+              attr_reader :size
+
+              sig { params(size: Float).void }
+              attr_writer :size
+
+              sig do
+                params(price: Float, size: Float).returns(T.attached_class)
+              end
+              def self.new(price:, size: nil)
+              end
+
+              sig { override.returns({ price: Float, size: Float }) }
+              def to_hash
               end
             end
           end
@@ -7592,11 +7642,6 @@ module MetronomeSDK
                 )
               end
 
-            # The commit product that will be used to generate the line item for commit
-            # payment.
-            sig { returns(String) }
-            attr_accessor :product_id
-
             # Which products the threshold commit applies to. If both applicable_product_ids
             # and applicable_product_tags are not provided, the commit applies to all
             # products.
@@ -7628,6 +7673,14 @@ module MetronomeSDK
             sig { params(name: String).void }
             attr_writer :name
 
+            # The commit product that will be used to generate the line item for commit
+            # payment.
+            sig { returns(T.nilable(String)) }
+            attr_reader :product_id
+
+            sig { params(product_id: String).void }
+            attr_writer :product_id
+
             # List of filters that determine what kind of customer usage draws down a commit
             # or credit. A customer's usage needs to meet the condition of at least one of the
             # specifiers to contribute to a commit's or credit's drawdown. This field cannot
@@ -7655,11 +7708,11 @@ module MetronomeSDK
 
             sig do
               params(
-                product_id: String,
                 applicable_product_ids: T::Array[String],
                 applicable_product_tags: T::Array[String],
                 description: String,
                 name: String,
+                product_id: String,
                 specifiers:
                   T::Array[
                     MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier::OrHash
@@ -7667,9 +7720,6 @@ module MetronomeSDK
               ).returns(T.attached_class)
             end
             def self.new(
-              # The commit product that will be used to generate the line item for commit
-              # payment.
-              product_id:,
               # Which products the threshold commit applies to. If both applicable_product_ids
               # and applicable_product_tags are not provided, the commit applies to all
               # products.
@@ -7681,6 +7731,9 @@ module MetronomeSDK
               # Specify the name of the line item for the threshold charge. If left blank, it
               # will default to the commit product name.
               name: nil,
+              # The commit product that will be used to generate the line item for commit
+              # payment.
+              product_id: nil,
               # List of filters that determine what kind of customer usage draws down a commit
               # or credit. A customer's usage needs to meet the condition of at least one of the
               # specifiers to contribute to a commit's or credit's drawdown. This field cannot
@@ -7692,11 +7745,11 @@ module MetronomeSDK
             sig do
               override.returns(
                 {
-                  product_id: String,
                   applicable_product_ids: T::Array[String],
                   applicable_product_tags: T::Array[String],
                   description: String,
                   name: String,
+                  product_id: String,
                   specifiers:
                     T::Array[
                       MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier
@@ -8718,13 +8771,21 @@ module MetronomeSDK
               end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :description
+            attr_reader :description
+
+            sig { params(description: String).void }
+            attr_writer :description
 
             # Specify the name of the line item for the threshold charge. If left blank, it
             # will default to the commit product name.
             sig { returns(T.nilable(String)) }
-            attr_accessor :name
+            attr_reader :name
 
+            sig { params(name: String).void }
+            attr_writer :name
+
+            # The commit product that will be used to generate the line item for commit
+            # payment.
             sig { returns(T.nilable(String)) }
             attr_reader :product_id
 
@@ -8733,8 +8794,8 @@ module MetronomeSDK
 
             sig do
               params(
-                description: T.nilable(String),
-                name: T.nilable(String),
+                description: String,
+                name: String,
                 product_id: String
               ).returns(T.attached_class)
             end
@@ -8743,17 +8804,15 @@ module MetronomeSDK
               # Specify the name of the line item for the threshold charge. If left blank, it
               # will default to the commit product name.
               name: nil,
+              # The commit product that will be used to generate the line item for commit
+              # payment.
               product_id: nil
             )
             end
 
             sig do
               override.returns(
-                {
-                  description: T.nilable(String),
-                  name: T.nilable(String),
-                  product_id: String
-                }
+                { description: String, name: String, product_id: String }
               )
             end
             def to_hash

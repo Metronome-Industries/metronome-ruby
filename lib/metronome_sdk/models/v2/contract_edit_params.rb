@@ -1495,8 +1495,11 @@ module MetronomeSDK
             # @!attribute tiers
             #   Only set for TIERED rate_type.
             #
-            #   @return [Array<MetronomeSDK::Models::Tier>, nil]
-            optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
+            #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::AddOverride::OverwriteRate::Tier>, nil]
+            optional :tiers,
+                     -> {
+                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier]
+                     }
 
             # @!method initialize(rate_type:, credit_type_id: nil, custom_rate: nil, is_prorated: nil, price: nil, quantity: nil, tiers: nil)
             #   Some parameter documentations has been truncated, see
@@ -1517,7 +1520,7 @@ module MetronomeSDK
             #
             #   @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
             #
-            #   @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
+            #   @param tiers [Array<MetronomeSDK::Models::V2::ContractEditParams::AddOverride::OverwriteRate::Tier>] Only set for TIERED rate_type.
 
             # @see MetronomeSDK::Models::V2::ContractEditParams::AddOverride::OverwriteRate#rate_type
             module RateType
@@ -1531,6 +1534,22 @@ module MetronomeSDK
 
               # @!method self.values
               #   @return [Array<Symbol>]
+            end
+
+            class Tier < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute price
+              #
+              #   @return [Float]
+              required :price, Float
+
+              # @!attribute size
+              #
+              #   @return [Float, nil]
+              optional :size, Float
+
+              # @!method initialize(price:, size: nil)
+              #   @param price [Float]
+              #   @param size [Float]
             end
           end
 
@@ -3608,13 +3627,6 @@ module MetronomeSDK
 
           # @see MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration#commit
           class Commit < MetronomeSDK::Internal::Type::BaseModel
-            # @!attribute product_id
-            #   The commit product that will be used to generate the line item for commit
-            #   payment.
-            #
-            #   @return [String]
-            required :product_id, String
-
             # @!attribute applicable_product_ids
             #   Which products the threshold commit applies to. If both applicable_product_ids
             #   and applicable_product_tags are not provided, the commit applies to all
@@ -3642,6 +3654,13 @@ module MetronomeSDK
             #   @return [String, nil]
             optional :name, String
 
+            # @!attribute product_id
+            #   The commit product that will be used to generate the line item for commit
+            #   payment.
+            #
+            #   @return [String, nil]
+            optional :product_id, String
+
             # @!attribute specifiers
             #   List of filters that determine what kind of customer usage draws down a commit
             #   or credit. A customer's usage needs to meet the condition of at least one of the
@@ -3654,12 +3673,10 @@ module MetronomeSDK
                        MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier]
                      }
 
-            # @!method initialize(product_id:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, name: nil, specifiers: nil)
+            # @!method initialize(applicable_product_ids: nil, applicable_product_tags: nil, description: nil, name: nil, product_id: nil, specifiers: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit}
             #   for more details.
-            #
-            #   @param product_id [String] The commit product that will be used to generate the line item for commit paymen
             #
             #   @param applicable_product_ids [Array<String>] Which products the threshold commit applies to. If both applicable_product_ids a
             #
@@ -3668,6 +3685,8 @@ module MetronomeSDK
             #   @param description [String]
             #
             #   @param name [String] Specify the name of the line item for the threshold charge. If left blank, it wi
+            #
+            #   @param product_id [String] The commit product that will be used to generate the line item for commit paymen
             #
             #   @param specifiers [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
 
@@ -4104,16 +4123,18 @@ module MetronomeSDK
             # @!attribute description
             #
             #   @return [String, nil]
-            optional :description, String, nil?: true
+            optional :description, String
 
             # @!attribute name
             #   Specify the name of the line item for the threshold charge. If left blank, it
             #   will default to the commit product name.
             #
             #   @return [String, nil]
-            optional :name, String, nil?: true
+            optional :name, String
 
             # @!attribute product_id
+            #   The commit product that will be used to generate the line item for commit
+            #   payment.
             #
             #   @return [String, nil]
             optional :product_id, String
@@ -4123,11 +4144,11 @@ module MetronomeSDK
             #   {MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration::Commit}
             #   for more details.
             #
-            #   @param description [String, nil]
+            #   @param description [String]
             #
-            #   @param name [String, nil] Specify the name of the line item for the threshold charge. If left blank, it wi
+            #   @param name [String] Specify the name of the line item for the threshold charge. If left blank, it wi
             #
-            #   @param product_id [String]
+            #   @param product_id [String] The commit product that will be used to generate the line item for commit paymen
           end
 
           # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration#payment_gate_config

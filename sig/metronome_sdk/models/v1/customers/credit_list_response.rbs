@@ -3,22 +3,614 @@ module MetronomeSDK
     module V1
       module Customers
         type credit_list_response =
-          { data: ::Array[MetronomeSDK::Credit], next_page: String? }
+          {
+            data: ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data],
+            next_page: String?
+          }
 
         class CreditListResponse < MetronomeSDK::Internal::Type::BaseModel
-          attr_accessor data: ::Array[MetronomeSDK::Credit]
+          attr_accessor data: ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data]
 
           attr_accessor next_page: String?
 
           def initialize: (
-            data: ::Array[MetronomeSDK::Credit],
+            data: ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data],
             next_page: String?
           ) -> void
 
           def to_hash: -> {
-            data: ::Array[MetronomeSDK::Credit],
+            data: ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data],
             next_page: String?
           }
+
+          type data =
+            {
+              id: String,
+              product: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Product,
+              type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::type_,
+              access_schedule: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::AccessSchedule,
+              applicable_contract_ids: ::Array[String],
+              applicable_product_ids: ::Array[String],
+              applicable_product_tags: ::Array[String],
+              balance: Float,
+              contract: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Contract,
+              custom_fields: ::Hash[Symbol, String],
+              description: String,
+              ledger: ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::ledger],
+              name: String,
+              netsuite_sales_order_id: String,
+              priority: Float,
+              rate_type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::rate_type,
+              salesforce_opportunity_id: String,
+              specifiers: ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Specifier],
+              uniqueness_key: String
+            }
+
+          class Data < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor product: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Product
+
+            attr_accessor type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::type_
+
+            attr_reader access_schedule: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::AccessSchedule?
+
+            def access_schedule=: (
+              MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::AccessSchedule
+            ) -> MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::AccessSchedule
+
+            attr_reader applicable_contract_ids: ::Array[String]?
+
+            def applicable_contract_ids=: (::Array[String]) -> ::Array[String]
+
+            attr_reader applicable_product_ids: ::Array[String]?
+
+            def applicable_product_ids=: (::Array[String]) -> ::Array[String]
+
+            attr_reader applicable_product_tags: ::Array[String]?
+
+            def applicable_product_tags=: (::Array[String]) -> ::Array[String]
+
+            attr_reader balance: Float?
+
+            def balance=: (Float) -> Float
+
+            attr_reader contract: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Contract?
+
+            def contract=: (
+              MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Contract
+            ) -> MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Contract
+
+            attr_reader custom_fields: ::Hash[Symbol, String]?
+
+            def custom_fields=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader description: String?
+
+            def description=: (String) -> String
+
+            attr_reader ledger: ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::ledger]?
+
+            def ledger=: (
+              ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::ledger]
+            ) -> ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::ledger]
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_reader netsuite_sales_order_id: String?
+
+            def netsuite_sales_order_id=: (String) -> String
+
+            attr_reader priority: Float?
+
+            def priority=: (Float) -> Float
+
+            attr_reader rate_type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::rate_type?
+
+            def rate_type=: (
+              MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::rate_type
+            ) -> MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::rate_type
+
+            attr_reader salesforce_opportunity_id: String?
+
+            def salesforce_opportunity_id=: (String) -> String
+
+            attr_reader specifiers: ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Specifier]?
+
+            def specifiers=: (
+              ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Specifier]
+            ) -> ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Specifier]
+
+            attr_reader uniqueness_key: String?
+
+            def uniqueness_key=: (String) -> String
+
+            def initialize: (
+              id: String,
+              product: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Product,
+              type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::type_,
+              ?access_schedule: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::AccessSchedule,
+              ?applicable_contract_ids: ::Array[String],
+              ?applicable_product_ids: ::Array[String],
+              ?applicable_product_tags: ::Array[String],
+              ?balance: Float,
+              ?contract: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Contract,
+              ?custom_fields: ::Hash[Symbol, String],
+              ?description: String,
+              ?ledger: ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::ledger],
+              ?name: String,
+              ?netsuite_sales_order_id: String,
+              ?priority: Float,
+              ?rate_type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::rate_type,
+              ?salesforce_opportunity_id: String,
+              ?specifiers: ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Specifier],
+              ?uniqueness_key: String
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              product: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Product,
+              type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::type_,
+              access_schedule: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::AccessSchedule,
+              applicable_contract_ids: ::Array[String],
+              applicable_product_ids: ::Array[String],
+              applicable_product_tags: ::Array[String],
+              balance: Float,
+              contract: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Contract,
+              custom_fields: ::Hash[Symbol, String],
+              description: String,
+              ledger: ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::ledger],
+              name: String,
+              netsuite_sales_order_id: String,
+              priority: Float,
+              rate_type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::rate_type,
+              salesforce_opportunity_id: String,
+              specifiers: ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Specifier],
+              uniqueness_key: String
+            }
+
+            type product = { id: String, name: String }
+
+            class Product < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor name: String
+
+              def initialize: (id: String, name: String) -> void
+
+              def to_hash: -> { id: String, name: String }
+            end
+
+            type type_ = :CREDIT
+
+            module Type
+              extend MetronomeSDK::Internal::Type::Enum
+
+              CREDIT: :CREDIT
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::type_]
+            end
+
+            type access_schedule =
+              {
+                schedule_items: ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::AccessSchedule::ScheduleItem],
+                credit_type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::AccessSchedule::CreditType
+              }
+
+            class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor schedule_items: ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::AccessSchedule::ScheduleItem]
+
+              attr_reader credit_type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::AccessSchedule::CreditType?
+
+              def credit_type=: (
+                MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::AccessSchedule::CreditType
+              ) -> MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::AccessSchedule::CreditType
+
+              def initialize: (
+                schedule_items: ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::AccessSchedule::ScheduleItem],
+                ?credit_type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::AccessSchedule::CreditType
+              ) -> void
+
+              def to_hash: -> {
+                schedule_items: ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::AccessSchedule::ScheduleItem],
+                credit_type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::AccessSchedule::CreditType
+              }
+
+              type schedule_item =
+                {
+                  id: String,
+                  amount: Float,
+                  ending_before: Time,
+                  starting_at: Time
+                }
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor amount: Float
+
+                attr_accessor ending_before: Time
+
+                attr_accessor starting_at: Time
+
+                def initialize: (
+                  id: String,
+                  amount: Float,
+                  ending_before: Time,
+                  starting_at: Time
+                ) -> void
+
+                def to_hash: -> {
+                  id: String,
+                  amount: Float,
+                  ending_before: Time,
+                  starting_at: Time
+                }
+              end
+
+              type credit_type = { id: String, name: String }
+
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor name: String
+
+                def initialize: (id: String, name: String) -> void
+
+                def to_hash: -> { id: String, name: String }
+              end
+            end
+
+            type contract = { id: String }
+
+            class Contract < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              def initialize: (id: String) -> void
+
+              def to_hash: -> { id: String }
+            end
+
+            type ledger =
+              MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember0
+              | MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember1
+              | MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember2
+              | MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember3
+              | MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember4
+              | MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember5
+
+            module Ledger
+              extend MetronomeSDK::Internal::Type::Union
+
+              type union_member0 =
+                {
+                  amount: Float,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember0::type_
+                }
+
+              class UnionMember0 < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor amount: Float
+
+                attr_accessor segment_id: String
+
+                attr_accessor timestamp: Time
+
+                attr_accessor type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember0::type_
+
+                def initialize: (
+                  amount: Float,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember0::type_
+                ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember0::type_
+                }
+
+                type type_ = :CREDIT_SEGMENT_START
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  CREDIT_SEGMENT_START: :CREDIT_SEGMENT_START
+
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember0::type_]
+                end
+              end
+
+              type union_member1 =
+                {
+                  amount: Float,
+                  invoice_id: String,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember1::type_
+                }
+
+              class UnionMember1 < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor amount: Float
+
+                attr_accessor invoice_id: String
+
+                attr_accessor segment_id: String
+
+                attr_accessor timestamp: Time
+
+                attr_accessor type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember1::type_
+
+                def initialize: (
+                  amount: Float,
+                  invoice_id: String,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember1::type_
+                ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  invoice_id: String,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember1::type_
+                }
+
+                type type_ = :CREDIT_AUTOMATED_INVOICE_DEDUCTION
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  CREDIT_AUTOMATED_INVOICE_DEDUCTION: :CREDIT_AUTOMATED_INVOICE_DEDUCTION
+
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember1::type_]
+                end
+              end
+
+              type union_member2 =
+                {
+                  amount: Float,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember2::type_
+                }
+
+              class UnionMember2 < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor amount: Float
+
+                attr_accessor segment_id: String
+
+                attr_accessor timestamp: Time
+
+                attr_accessor type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember2::type_
+
+                def initialize: (
+                  amount: Float,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember2::type_
+                ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember2::type_
+                }
+
+                type type_ = :CREDIT_EXPIRATION
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  CREDIT_EXPIRATION: :CREDIT_EXPIRATION
+
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember2::type_]
+                end
+              end
+
+              type union_member3 =
+                {
+                  amount: Float,
+                  invoice_id: String,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember3::type_
+                }
+
+              class UnionMember3 < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor amount: Float
+
+                attr_accessor invoice_id: String
+
+                attr_accessor segment_id: String
+
+                attr_accessor timestamp: Time
+
+                attr_accessor type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember3::type_
+
+                def initialize: (
+                  amount: Float,
+                  invoice_id: String,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember3::type_
+                ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  invoice_id: String,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember3::type_
+                }
+
+                type type_ = :CREDIT_CANCELED
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  CREDIT_CANCELED: :CREDIT_CANCELED
+
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember3::type_]
+                end
+              end
+
+              type union_member4 =
+                {
+                  amount: Float,
+                  invoice_id: String,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember4::type_
+                }
+
+              class UnionMember4 < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor amount: Float
+
+                attr_accessor invoice_id: String
+
+                attr_accessor segment_id: String
+
+                attr_accessor timestamp: Time
+
+                attr_accessor type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember4::type_
+
+                def initialize: (
+                  amount: Float,
+                  invoice_id: String,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember4::type_
+                ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  invoice_id: String,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember4::type_
+                }
+
+                type type_ = :CREDIT_CREDITED
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  CREDIT_CREDITED: :CREDIT_CREDITED
+
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember4::type_]
+                end
+              end
+
+              type union_member5 =
+                {
+                  amount: Float,
+                  reason: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember5::type_
+                }
+
+              class UnionMember5 < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor amount: Float
+
+                attr_accessor reason: String
+
+                attr_accessor timestamp: Time
+
+                attr_accessor type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember5::type_
+
+                def initialize: (
+                  amount: Float,
+                  reason: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember5::type_
+                ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  reason: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember5::type_
+                }
+
+                type type_ = :CREDIT_MANUAL
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  CREDIT_MANUAL: :CREDIT_MANUAL
+
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::Ledger::UnionMember5::type_]
+                end
+              end
+
+              def self?.variants: -> ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::ledger]
+            end
+
+            type rate_type = :COMMIT_RATE | :LIST_RATE
+
+            module RateType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              COMMIT_RATE: :COMMIT_RATE
+              LIST_RATE: :LIST_RATE
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data::rate_type]
+            end
+
+            type specifier =
+              {
+                presentation_group_values: ::Hash[Symbol, String],
+                pricing_group_values: ::Hash[Symbol, String],
+                product_id: String,
+                product_tags: ::Array[String]
+              }
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader presentation_group_values: ::Hash[Symbol, String]?
+
+              def presentation_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+              def pricing_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader product_id: String?
+
+              def product_id=: (String) -> String
+
+              attr_reader product_tags: ::Array[String]?
+
+              def product_tags=: (::Array[String]) -> ::Array[String]
+
+              def initialize: (
+                ?presentation_group_values: ::Hash[Symbol, String],
+                ?pricing_group_values: ::Hash[Symbol, String],
+                ?product_id: String,
+                ?product_tags: ::Array[String]
+              ) -> void
+
+              def to_hash: -> {
+                presentation_group_values: ::Hash[Symbol, String],
+                pricing_group_values: ::Hash[Symbol, String],
+                product_id: String,
+                product_tags: ::Array[String]
+              }
+            end
+          end
         end
       end
     end

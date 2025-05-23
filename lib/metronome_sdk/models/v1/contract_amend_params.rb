@@ -1371,8 +1371,11 @@ module MetronomeSDK
             # @!attribute tiers
             #   Only set for TIERED rate_type.
             #
-            #   @return [Array<MetronomeSDK::Models::Tier>, nil]
-            optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
+            #   @return [Array<MetronomeSDK::Models::V1::ContractAmendParams::Override::OverwriteRate::Tier>, nil]
+            optional :tiers,
+                     -> {
+                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractAmendParams::Override::OverwriteRate::Tier]
+                     }
 
             # @!method initialize(rate_type:, credit_type_id: nil, custom_rate: nil, is_prorated: nil, price: nil, quantity: nil, tiers: nil)
             #   Some parameter documentations has been truncated, see
@@ -1393,7 +1396,7 @@ module MetronomeSDK
             #
             #   @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
             #
-            #   @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
+            #   @param tiers [Array<MetronomeSDK::Models::V1::ContractAmendParams::Override::OverwriteRate::Tier>] Only set for TIERED rate_type.
 
             # @see MetronomeSDK::Models::V1::ContractAmendParams::Override::OverwriteRate#rate_type
             module RateType
@@ -1407,6 +1410,22 @@ module MetronomeSDK
 
               # @!method self.values
               #   @return [Array<Symbol>]
+            end
+
+            class Tier < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute price
+              #
+              #   @return [Float]
+              required :price, Float
+
+              # @!attribute size
+              #
+              #   @return [Float, nil]
+              optional :size, Float
+
+              # @!method initialize(price:, size: nil)
+              #   @param price [Float]
+              #   @param size [Float]
             end
           end
 
