@@ -184,6 +184,9 @@ module MetronomeSDK
                  -> { MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration }
 
         # @!attribute update_recurring_commits
+        #   Edits to these recurring commits will only affect commits whose access schedules
+        #   has not started. Expired commits, and commits with an active access schedule
+        #   will remain unchanged.
         #
         #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCommit>, nil]
         optional :update_recurring_commits,
@@ -192,6 +195,9 @@ module MetronomeSDK
                  }
 
         # @!attribute update_recurring_credits
+        #   Edits to these recurring credits will only affect credits whose access schedules
+        #   has not started. Expired credits, and credits with an active access schedule
+        #   will remain unchanged.
         #
         #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCredit>, nil]
         optional :update_recurring_credits,
@@ -272,9 +278,9 @@ module MetronomeSDK
         #
         #   @param update_prepaid_balance_threshold_configuration [MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration]
         #
-        #   @param update_recurring_commits [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCommit>]
+        #   @param update_recurring_commits [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCommit>] Edits to these recurring commits will only affect commits whose access schedules
         #
-        #   @param update_recurring_credits [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCredit>]
+        #   @param update_recurring_credits [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCredit>] Edits to these recurring credits will only affect credits whose access schedules
         #
         #   @param update_scheduled_charges [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateScheduledCharge>]
         #
