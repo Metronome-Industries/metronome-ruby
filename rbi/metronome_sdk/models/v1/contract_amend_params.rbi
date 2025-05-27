@@ -2592,6 +2592,23 @@ module MetronomeSDK
                 )
               end
 
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V1::ContractAmendParams::Override::OverrideSpecifier::BillingFrequency::OrSymbol
+                )
+              )
+            end
+            attr_reader :billing_frequency
+
+            sig do
+              params(
+                billing_frequency:
+                  MetronomeSDK::V1::ContractAmendParams::Override::OverrideSpecifier::BillingFrequency::OrSymbol
+              ).void
+            end
+            attr_writer :billing_frequency
+
             # Can only be used for commit specific overrides. Must be used in conjunction with
             # one of product_id, product_tags, pricing_group_values, or
             # presentation_group_values. If provided, the override will only apply to the
@@ -2657,6 +2674,8 @@ module MetronomeSDK
 
             sig do
               params(
+                billing_frequency:
+                  MetronomeSDK::V1::ContractAmendParams::Override::OverrideSpecifier::BillingFrequency::OrSymbol,
                 commit_ids: T::Array[String],
                 presentation_group_values: T::Hash[Symbol, String],
                 pricing_group_values: T::Hash[Symbol, String],
@@ -2667,6 +2686,7 @@ module MetronomeSDK
               ).returns(T.attached_class)
             end
             def self.new(
+              billing_frequency: nil,
               # Can only be used for commit specific overrides. Must be used in conjunction with
               # one of product_id, product_tags, pricing_group_values, or
               # presentation_group_values. If provided, the override will only apply to the
@@ -2699,6 +2719,8 @@ module MetronomeSDK
             sig do
               override.returns(
                 {
+                  billing_frequency:
+                    MetronomeSDK::V1::ContractAmendParams::Override::OverrideSpecifier::BillingFrequency::OrSymbol,
                   commit_ids: T::Array[String],
                   presentation_group_values: T::Hash[Symbol, String],
                   pricing_group_values: T::Hash[Symbol, String],
@@ -2710,6 +2732,50 @@ module MetronomeSDK
               )
             end
             def to_hash
+            end
+
+            module BillingFrequency
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V1::ContractAmendParams::Override::OverrideSpecifier::BillingFrequency
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              MONTHLY =
+                T.let(
+                  :MONTHLY,
+                  MetronomeSDK::V1::ContractAmendParams::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol
+                )
+              QUARTERLY =
+                T.let(
+                  :QUARTERLY,
+                  MetronomeSDK::V1::ContractAmendParams::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :ANNUAL,
+                  MetronomeSDK::V1::ContractAmendParams::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol
+                )
+              WEEKLY =
+                T.let(
+                  :WEEKLY,
+                  MetronomeSDK::V1::ContractAmendParams::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V1::ContractAmendParams::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
             end
           end
 
@@ -2767,25 +2833,10 @@ module MetronomeSDK
             attr_writer :quantity
 
             # Only set for TIERED rate_type.
-            sig do
-              returns(
-                T.nilable(
-                  T::Array[
-                    MetronomeSDK::V1::ContractAmendParams::Override::OverwriteRate::Tier
-                  ]
-                )
-              )
-            end
+            sig { returns(T.nilable(T::Array[MetronomeSDK::Tier])) }
             attr_reader :tiers
 
-            sig do
-              params(
-                tiers:
-                  T::Array[
-                    MetronomeSDK::V1::ContractAmendParams::Override::OverwriteRate::Tier::OrHash
-                  ]
-              ).void
-            end
+            sig { params(tiers: T::Array[MetronomeSDK::Tier::OrHash]).void }
             attr_writer :tiers
 
             # Required for OVERWRITE type.
@@ -2798,10 +2849,7 @@ module MetronomeSDK
                 is_prorated: T::Boolean,
                 price: Float,
                 quantity: Float,
-                tiers:
-                  T::Array[
-                    MetronomeSDK::V1::ContractAmendParams::Override::OverwriteRate::Tier::OrHash
-                  ]
+                tiers: T::Array[MetronomeSDK::Tier::OrHash]
               ).returns(T.attached_class)
             end
             def self.new(
@@ -2833,10 +2881,7 @@ module MetronomeSDK
                   is_prorated: T::Boolean,
                   price: Float,
                   quantity: Float,
-                  tiers:
-                    T::Array[
-                      MetronomeSDK::V1::ContractAmendParams::Override::OverwriteRate::Tier
-                    ]
+                  tiers: T::Array[MetronomeSDK::Tier]
                 }
               )
             end
@@ -2889,35 +2934,6 @@ module MetronomeSDK
                 )
               end
               def self.values
-              end
-            end
-
-            class Tier < MetronomeSDK::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias do
-                  T.any(
-                    MetronomeSDK::V1::ContractAmendParams::Override::OverwriteRate::Tier,
-                    MetronomeSDK::Internal::AnyHash
-                  )
-                end
-
-              sig { returns(Float) }
-              attr_accessor :price
-
-              sig { returns(T.nilable(Float)) }
-              attr_reader :size
-
-              sig { params(size: Float).void }
-              attr_writer :size
-
-              sig do
-                params(price: Float, size: Float).returns(T.attached_class)
-              end
-              def self.new(price:, size: nil)
-              end
-
-              sig { override.returns({ price: Float, size: Float }) }
-              def to_hash
               end
             end
           end

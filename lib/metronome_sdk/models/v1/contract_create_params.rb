@@ -175,6 +175,15 @@ module MetronomeSDK
         optional :spend_threshold_configuration,
                  -> { MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration }
 
+        # @!attribute subscriptions
+        #   (beta) Optional list of subscriptions to add to the contract.
+        #
+        #   @return [Array<MetronomeSDK::Models::V1::ContractCreateParams::Subscription>, nil]
+        optional :subscriptions,
+                 -> {
+                   MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractCreateParams::Subscription]
+                 }
+
         # @!attribute total_contract_value
         #   This field's availability is dependent on your client's configuration.
         #
@@ -196,8 +205,8 @@ module MetronomeSDK
 
         # @!attribute usage_filter
         #
-        #   @return [MetronomeSDK::Models::V1::ContractCreateParams::UsageFilter, nil]
-        optional :usage_filter, -> { MetronomeSDK::V1::ContractCreateParams::UsageFilter }
+        #   @return [MetronomeSDK::Models::BaseUsageFilter, nil]
+        optional :usage_filter, -> { MetronomeSDK::BaseUsageFilter }
 
         # @!attribute usage_statement_schedule
         #
@@ -207,7 +216,7 @@ module MetronomeSDK
                    MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule
                  }
 
-        # @!method initialize(customer_id:, starting_at:, billing_provider_configuration: nil, commits: nil, credits: nil, custom_fields: nil, discounts: nil, ending_before: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, overrides: nil, prepaid_balance_threshold_configuration: nil, professional_services: nil, rate_card_alias: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, salesforce_opportunity_id: nil, scheduled_charges: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, total_contract_value: nil, transition: nil, uniqueness_key: nil, usage_filter: nil, usage_statement_schedule: nil, request_options: {})
+        # @!method initialize(customer_id:, starting_at:, billing_provider_configuration: nil, commits: nil, credits: nil, custom_fields: nil, discounts: nil, ending_before: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, overrides: nil, prepaid_balance_threshold_configuration: nil, professional_services: nil, rate_card_alias: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, salesforce_opportunity_id: nil, scheduled_charges: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, total_contract_value: nil, transition: nil, uniqueness_key: nil, usage_filter: nil, usage_statement_schedule: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::ContractCreateParams} for more details.
         #
@@ -259,13 +268,15 @@ module MetronomeSDK
         #
         #   @param spend_threshold_configuration [MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration]
         #
+        #   @param subscriptions [Array<MetronomeSDK::Models::V1::ContractCreateParams::Subscription>] (beta) Optional list of subscriptions to add to the contract.
+        #
         #   @param total_contract_value [Float] This field's availability is dependent on your client's configuration.
         #
         #   @param transition [MetronomeSDK::Models::V1::ContractCreateParams::Transition]
         #
         #   @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made wit
         #
-        #   @param usage_filter [MetronomeSDK::Models::V1::ContractCreateParams::UsageFilter]
+        #   @param usage_filter [MetronomeSDK::Models::BaseUsageFilter]
         #
         #   @param usage_statement_schedule [MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule]
         #
@@ -1464,6 +1475,14 @@ module MetronomeSDK
           #   @param type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Override::Type] Overwrites are prioritized over multipliers and tiered overrides.
 
           class OverrideSpecifier < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute billing_frequency
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Override::OverrideSpecifier::BillingFrequency, nil]
+            optional :billing_frequency,
+                     enum: -> {
+                       MetronomeSDK::V1::ContractCreateParams::Override::OverrideSpecifier::BillingFrequency
+                     }
+
             # @!attribute commit_ids
             #   Can only be used for commit specific overrides. Must be used in conjunction with
             #   one of product_id, product_tags, pricing_group_values, or
@@ -1518,10 +1537,12 @@ module MetronomeSDK
             #   @return [Array<String>, nil]
             optional :recurring_credit_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
 
-            # @!method initialize(commit_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_ids: nil, recurring_credit_ids: nil)
+            # @!method initialize(billing_frequency: nil, commit_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_ids: nil, recurring_credit_ids: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::ContractCreateParams::Override::OverrideSpecifier}
             #   for more details.
+            #
+            #   @param billing_frequency [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Override::OverrideSpecifier::BillingFrequency]
             #
             #   @param commit_ids [Array<String>] Can only be used for commit specific overrides. Must be used in conjunction with
             #
@@ -1536,6 +1557,19 @@ module MetronomeSDK
             #   @param recurring_commit_ids [Array<String>] Can only be used for commit specific overrides. Must be used in conjunction with
             #
             #   @param recurring_credit_ids [Array<String>] Can only be used for commit specific overrides. Must be used in conjunction with
+
+            # @see MetronomeSDK::Models::V1::ContractCreateParams::Override::OverrideSpecifier#billing_frequency
+            module BillingFrequency
+              extend MetronomeSDK::Internal::Type::Enum
+
+              MONTHLY = :MONTHLY
+              QUARTERLY = :QUARTERLY
+              ANNUAL = :ANNUAL
+              WEEKLY = :WEEKLY
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
           end
 
           # @see MetronomeSDK::Models::V1::ContractCreateParams::Override#overwrite_rate
@@ -1581,11 +1615,8 @@ module MetronomeSDK
             # @!attribute tiers
             #   Only set for TIERED rate_type.
             #
-            #   @return [Array<MetronomeSDK::Models::V1::ContractCreateParams::Override::OverwriteRate::Tier>, nil]
-            optional :tiers,
-                     -> {
-                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier]
-                     }
+            #   @return [Array<MetronomeSDK::Models::Tier>, nil]
+            optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
 
             # @!method initialize(rate_type:, credit_type_id: nil, custom_rate: nil, is_prorated: nil, price: nil, quantity: nil, tiers: nil)
             #   Some parameter documentations has been truncated, see
@@ -1606,7 +1637,7 @@ module MetronomeSDK
             #
             #   @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
             #
-            #   @param tiers [Array<MetronomeSDK::Models::V1::ContractCreateParams::Override::OverwriteRate::Tier>] Only set for TIERED rate_type.
+            #   @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
 
             # @see MetronomeSDK::Models::V1::ContractCreateParams::Override::OverwriteRate#rate_type
             module RateType
@@ -1620,22 +1651,6 @@ module MetronomeSDK
 
               # @!method self.values
               #   @return [Array<Symbol>]
-            end
-
-            class Tier < MetronomeSDK::Internal::Type::BaseModel
-              # @!attribute price
-              #
-              #   @return [Float]
-              required :price, Float
-
-              # @!attribute size
-              #
-              #   @return [Float, nil]
-              optional :size, Float
-
-              # @!method initialize(price:, size: nil)
-              #   @param price [Float]
-              #   @param size [Float]
             end
           end
 
@@ -3210,6 +3225,185 @@ module MetronomeSDK
           end
         end
 
+        class Subscription < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute collection_schedule
+          #
+          #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Subscription::CollectionSchedule]
+          required :collection_schedule,
+                   enum: -> { MetronomeSDK::V1::ContractCreateParams::Subscription::CollectionSchedule }
+
+          # @!attribute initial_quantity
+          #   The initial quantity for the subscription. It must be non-negative value.
+          #
+          #   @return [Float]
+          required :initial_quantity, Float
+
+          # @!attribute proration
+          #
+          #   @return [MetronomeSDK::Models::V1::ContractCreateParams::Subscription::Proration]
+          required :proration, -> { MetronomeSDK::V1::ContractCreateParams::Subscription::Proration }
+
+          # @!attribute subscription_rate
+          #
+          #   @return [MetronomeSDK::Models::V1::ContractCreateParams::Subscription::SubscriptionRate]
+          required :subscription_rate,
+                   -> {
+                     MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate
+                   }
+
+          # @!attribute custom_fields
+          #
+          #   @return [Hash{Symbol=>String}, nil]
+          optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
+
+          # @!attribute description
+          #
+          #   @return [String, nil]
+          optional :description, String
+
+          # @!attribute ending_before
+          #   Exclusive end time for the subscription. If not provided, subscription inherits
+          #   contract end date.
+          #
+          #   @return [Time, nil]
+          optional :ending_before, Time
+
+          # @!attribute name
+          #
+          #   @return [String, nil]
+          optional :name, String
+
+          # @!attribute starting_at
+          #   Inclusive start time for the subscription. If not provided, defaults to contract
+          #   start date
+          #
+          #   @return [Time, nil]
+          optional :starting_at, Time
+
+          # @!method initialize(collection_schedule:, initial_quantity:, proration:, subscription_rate:, custom_fields: nil, description: nil, ending_before: nil, name: nil, starting_at: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {MetronomeSDK::Models::V1::ContractCreateParams::Subscription} for more details.
+          #
+          #   @param collection_schedule [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Subscription::CollectionSchedule]
+          #
+          #   @param initial_quantity [Float] The initial quantity for the subscription. It must be non-negative value.
+          #
+          #   @param proration [MetronomeSDK::Models::V1::ContractCreateParams::Subscription::Proration]
+          #
+          #   @param subscription_rate [MetronomeSDK::Models::V1::ContractCreateParams::Subscription::SubscriptionRate]
+          #
+          #   @param custom_fields [Hash{Symbol=>String}]
+          #
+          #   @param description [String]
+          #
+          #   @param ending_before [Time] Exclusive end time for the subscription. If not provided, subscription inherits
+          #
+          #   @param name [String]
+          #
+          #   @param starting_at [Time] Inclusive start time for the subscription. If not provided, defaults to contract
+
+          # @see MetronomeSDK::Models::V1::ContractCreateParams::Subscription#collection_schedule
+          module CollectionSchedule
+            extend MetronomeSDK::Internal::Type::Enum
+
+            ADVANCE = :ADVANCE
+            ARREARS = :ARREARS
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # @see MetronomeSDK::Models::V1::ContractCreateParams::Subscription#proration
+          class Proration < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute invoice_behavior
+            #   Indicates how mid-period quantity adjustments are invoiced. If BILL_IMMEDIATELY
+            #   is selected, the quantity increase will be billed on the scheduled date. If
+            #   BILL_ON_NEXT_COLLECTION_DATE is selected, the quantity increase will be billed
+            #   for in-arrears at the end of the period.
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Subscription::Proration::InvoiceBehavior, nil]
+            optional :invoice_behavior,
+                     enum: -> {
+                       MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::InvoiceBehavior
+                     }
+
+            # @!attribute is_prorated
+            #   Indicates if the partial period will be prorated or charged a full amount.
+            #
+            #   @return [Boolean, nil]
+            optional :is_prorated, MetronomeSDK::Internal::Type::Boolean
+
+            # @!method initialize(invoice_behavior: nil, is_prorated: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V1::ContractCreateParams::Subscription::Proration} for
+            #   more details.
+            #
+            #   @param invoice_behavior [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Subscription::Proration::InvoiceBehavior] Indicates how mid-period quantity adjustments are invoiced. If BILL_IMMEDIATELY
+            #
+            #   @param is_prorated [Boolean] Indicates if the partial period will be prorated or charged a full amount.
+
+            # Indicates how mid-period quantity adjustments are invoiced. If BILL_IMMEDIATELY
+            # is selected, the quantity increase will be billed on the scheduled date. If
+            # BILL_ON_NEXT_COLLECTION_DATE is selected, the quantity increase will be billed
+            # for in-arrears at the end of the period.
+            #
+            # @see MetronomeSDK::Models::V1::ContractCreateParams::Subscription::Proration#invoice_behavior
+            module InvoiceBehavior
+              extend MetronomeSDK::Internal::Type::Enum
+
+              BILL_IMMEDIATELY = :BILL_IMMEDIATELY
+              BILL_ON_NEXT_COLLECTION_DATE = :BILL_ON_NEXT_COLLECTION_DATE
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
+
+          # @see MetronomeSDK::Models::V1::ContractCreateParams::Subscription#subscription_rate
+          class SubscriptionRate < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute billing_frequency
+            #   Frequency to bill subscription with. Together with product_id, must match
+            #   existing rate on the rate card.
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Subscription::SubscriptionRate::BillingFrequency]
+            required :billing_frequency,
+                     enum: -> {
+                       MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate::BillingFrequency
+                     }
+
+            # @!attribute product_id
+            #   Must be subscription type product
+            #
+            #   @return [String]
+            required :product_id, String
+
+            # @!method initialize(billing_frequency:, product_id:)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V1::ContractCreateParams::Subscription::SubscriptionRate}
+            #   for more details.
+            #
+            #   @param billing_frequency [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Subscription::SubscriptionRate::BillingFrequency] Frequency to bill subscription with. Together with product_id, must match existi
+            #
+            #   @param product_id [String] Must be subscription type product
+
+            # Frequency to bill subscription with. Together with product_id, must match
+            # existing rate on the rate card.
+            #
+            # @see MetronomeSDK::Models::V1::ContractCreateParams::Subscription::SubscriptionRate#billing_frequency
+            module BillingFrequency
+              extend MetronomeSDK::Internal::Type::Enum
+
+              MONTHLY = :MONTHLY
+              QUARTERLY = :QUARTERLY
+              ANNUAL = :ANNUAL
+              WEEKLY = :WEEKLY
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
+        end
+
         class Transition < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute from_contract_id
           #
@@ -3282,28 +3476,6 @@ module MetronomeSDK
               #   @return [Array<Symbol>]
             end
           end
-        end
-
-        class UsageFilter < MetronomeSDK::Internal::Type::BaseModel
-          # @!attribute group_key
-          #
-          #   @return [String]
-          required :group_key, String
-
-          # @!attribute group_values
-          #
-          #   @return [Array<String>]
-          required :group_values, MetronomeSDK::Internal::Type::ArrayOf[String]
-
-          # @!attribute starting_at
-          #
-          #   @return [Time, nil]
-          optional :starting_at, Time
-
-          # @!method initialize(group_key:, group_values:, starting_at: nil)
-          #   @param group_key [String]
-          #   @param group_values [Array<String>]
-          #   @param starting_at [Time]
         end
 
         class UsageStatementSchedule < MetronomeSDK::Internal::Type::BaseModel

@@ -106,6 +106,10 @@ module MetronomeSDK
               ],
             add_spend_threshold_configuration:
               MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::OrHash,
+            add_subscriptions:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::AddSubscription::OrHash
+              ],
             allow_contract_ending_before_finalized_invoice: T::Boolean,
             archive_commits:
               T::Array[
@@ -148,6 +152,10 @@ module MetronomeSDK
               ],
             update_spend_threshold_configuration:
               MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::OrHash,
+            update_subscriptions:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::UpdateSubscription::OrHash
+              ],
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(MetronomeSDK::Models::V2::ContractEditResponse)
         end
@@ -168,6 +176,8 @@ module MetronomeSDK
           add_reseller_royalties: nil,
           add_scheduled_charges: nil,
           add_spend_threshold_configuration: nil,
+          # (beta) Optional list of subscriptions to add to the contract.
+          add_subscriptions: nil,
           # If true, allows setting the contract end date earlier than the end_timestamp of
           # existing finalized invoices. Finalized invoices will be unchanged; if you want
           # to incorporate the new end date, you can void and regenerate finalized usage
@@ -190,6 +200,8 @@ module MetronomeSDK
           update_recurring_credits: nil,
           update_scheduled_charges: nil,
           update_spend_threshold_configuration: nil,
+          # (beta) Optional list of subscriptions to update.
+          update_subscriptions: nil,
           request_options: {}
         )
         end

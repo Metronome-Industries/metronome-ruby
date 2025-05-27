@@ -18,7 +18,7 @@ module MetronomeSDK
         #
         # Create a new contract
         #
-        # @overload create(customer_id:, starting_at:, billing_provider_configuration: nil, commits: nil, credits: nil, custom_fields: nil, discounts: nil, ending_before: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, overrides: nil, prepaid_balance_threshold_configuration: nil, professional_services: nil, rate_card_alias: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, salesforce_opportunity_id: nil, scheduled_charges: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, total_contract_value: nil, transition: nil, uniqueness_key: nil, usage_filter: nil, usage_statement_schedule: nil, request_options: {})
+        # @overload create(customer_id:, starting_at:, billing_provider_configuration: nil, commits: nil, credits: nil, custom_fields: nil, discounts: nil, ending_before: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, overrides: nil, prepaid_balance_threshold_configuration: nil, professional_services: nil, rate_card_alias: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, salesforce_opportunity_id: nil, scheduled_charges: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, total_contract_value: nil, transition: nil, uniqueness_key: nil, usage_filter: nil, usage_statement_schedule: nil, request_options: {})
         #
         # @param customer_id [String]
         #
@@ -68,13 +68,15 @@ module MetronomeSDK
         #
         # @param spend_threshold_configuration [MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration]
         #
+        # @param subscriptions [Array<MetronomeSDK::Models::V1::ContractCreateParams::Subscription>] (beta) Optional list of subscriptions to add to the contract.
+        #
         # @param total_contract_value [Float] This field's availability is dependent on your client's configuration.
         #
         # @param transition [MetronomeSDK::Models::V1::ContractCreateParams::Transition]
         #
         # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made wit
         #
-        # @param usage_filter [MetronomeSDK::Models::V1::ContractCreateParams::UsageFilter]
+        # @param usage_filter [MetronomeSDK::Models::BaseUsageFilter]
         #
         # @param usage_statement_schedule [MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule]
         #

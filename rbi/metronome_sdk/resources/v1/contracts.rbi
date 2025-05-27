@@ -68,12 +68,15 @@ module MetronomeSDK
               MetronomeSDK::V1::ContractCreateParams::ScheduledChargesOnUsageInvoices::OrSymbol,
             spend_threshold_configuration:
               MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::OrHash,
+            subscriptions:
+              T::Array[
+                MetronomeSDK::V1::ContractCreateParams::Subscription::OrHash
+              ],
             total_contract_value: Float,
             transition:
               MetronomeSDK::V1::ContractCreateParams::Transition::OrHash,
             uniqueness_key: String,
-            usage_filter:
-              MetronomeSDK::V1::ContractCreateParams::UsageFilter::OrHash,
+            usage_filter: MetronomeSDK::BaseUsageFilter::OrHash,
             usage_statement_schedule:
               MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule::OrHash,
             request_options: MetronomeSDK::RequestOptions::OrHash
@@ -123,6 +126,8 @@ module MetronomeSDK
           # on a separate invoice from usage charges.
           scheduled_charges_on_usage_invoices: nil,
           spend_threshold_configuration: nil,
+          # (beta) Optional list of subscriptions to add to the contract.
+          subscriptions: nil,
           # This field's availability is dependent on your client's configuration.
           total_contract_value: nil,
           transition: nil,

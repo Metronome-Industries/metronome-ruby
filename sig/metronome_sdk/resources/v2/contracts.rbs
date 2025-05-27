@@ -35,6 +35,7 @@ module MetronomeSDK
           ?add_reseller_royalties: ::Array[MetronomeSDK::V2::ContractEditParams::AddResellerRoyalty],
           ?add_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::AddScheduledCharge],
           ?add_spend_threshold_configuration: MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration,
+          ?add_subscriptions: ::Array[MetronomeSDK::V2::ContractEditParams::AddSubscription],
           ?allow_contract_ending_before_finalized_invoice: bool,
           ?archive_commits: ::Array[MetronomeSDK::V2::ContractEditParams::ArchiveCommit],
           ?archive_credits: ::Array[MetronomeSDK::V2::ContractEditParams::ArchiveCredit],
@@ -48,6 +49,7 @@ module MetronomeSDK
           ?update_recurring_credits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit],
           ?update_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateScheduledCharge],
           ?update_spend_threshold_configuration: MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration,
+          ?update_subscriptions: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription],
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V2::ContractEditResponse
 

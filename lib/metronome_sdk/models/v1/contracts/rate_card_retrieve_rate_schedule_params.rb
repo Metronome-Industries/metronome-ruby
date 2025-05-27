@@ -70,6 +70,16 @@ module MetronomeSDK
           #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 
           class Selector < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute billing_frequency
+            #   Subscription rates matching the billing frequency will be included in the
+            #   response.
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector::BillingFrequency, nil]
+            optional :billing_frequency,
+                     enum: -> {
+                       MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector::BillingFrequency
+                     }
+
             # @!attribute partial_pricing_group_values
             #   List of pricing group key value pairs, rates containing the matching key / value
             #   pairs will be included in the response.
@@ -90,16 +100,34 @@ module MetronomeSDK
             #   @return [String, nil]
             optional :product_id, String
 
-            # @!method initialize(partial_pricing_group_values: nil, pricing_group_values: nil, product_id: nil)
+            # @!method initialize(billing_frequency: nil, partial_pricing_group_values: nil, pricing_group_values: nil, product_id: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector}
             #   for more details.
+            #
+            #   @param billing_frequency [Symbol, MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector::BillingFrequency] Subscription rates matching the billing frequency will be included in the respon
             #
             #   @param partial_pricing_group_values [Hash{Symbol=>String}] List of pricing group key value pairs, rates containing the matching key / value
             #
             #   @param pricing_group_values [Hash{Symbol=>String}] List of pricing group key value pairs, rates matching all of the key / value pai
             #
             #   @param product_id [String] Rates matching the product id will be included in the response.
+
+            # Subscription rates matching the billing frequency will be included in the
+            # response.
+            #
+            # @see MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector#billing_frequency
+            module BillingFrequency
+              extend MetronomeSDK::Internal::Type::Enum
+
+              MONTHLY = :MONTHLY
+              QUARTERLY = :QUARTERLY
+              ANNUAL = :ANNUAL
+              WEEKLY = :WEEKLY
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
           end
         end
       end

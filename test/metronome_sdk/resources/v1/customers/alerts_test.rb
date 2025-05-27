@@ -16,7 +16,7 @@ class MetronomeSDK::Test::Resources::V1::Customers::AlertsTest < MetronomeSDK::T
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::Customers::AlertRetrieveResponse::Data
+        data: MetronomeSDK::V1::Customers::CustomerAlert
       }
     end
   end
@@ -30,7 +30,7 @@ class MetronomeSDK::Test::Resources::V1::Customers::AlertsTest < MetronomeSDK::T
 
     assert_pattern do
       response => {
-        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Customers::AlertListResponse::Data]),
+        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CustomerAlert]),
         next_page: String | nil
       }
     end
