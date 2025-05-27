@@ -12,7 +12,7 @@ class MetronomeSDK::Test::Resources::V1::Contracts::ProductsTest < MetronomeSDK:
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::Contracts::ProductCreateResponse::Data
+        data: MetronomeSDK::ID
       }
     end
   end
@@ -44,7 +44,7 @@ class MetronomeSDK::Test::Resources::V1::Contracts::ProductsTest < MetronomeSDK:
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::Contracts::ProductUpdateResponse::Data
+        data: MetronomeSDK::ID
       }
     end
   end
@@ -66,8 +66,8 @@ class MetronomeSDK::Test::Resources::V1::Contracts::ProductsTest < MetronomeSDK:
     assert_pattern do
       row => {
         id: String,
-        current: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Current,
-        initial: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Initial,
+        current: MetronomeSDK::V1::Contracts::ProductListItemState,
+        initial: MetronomeSDK::V1::Contracts::ProductListItemState,
         type: MetronomeSDK::Models::V1::Contracts::ProductListResponse::Type,
         updates: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Contracts::ProductListResponse::Update]),
         archived_at: Time | nil,
@@ -85,7 +85,7 @@ class MetronomeSDK::Test::Resources::V1::Contracts::ProductsTest < MetronomeSDK:
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::Contracts::ProductArchiveResponse::Data
+        data: MetronomeSDK::ID
       }
     end
   end

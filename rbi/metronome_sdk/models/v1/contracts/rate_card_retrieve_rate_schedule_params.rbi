@@ -130,6 +130,25 @@ module MetronomeSDK
                 )
               end
 
+            # Subscription rates matching the billing frequency will be included in the
+            # response.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector::BillingFrequency::OrSymbol
+                )
+              )
+            end
+            attr_reader :billing_frequency
+
+            sig do
+              params(
+                billing_frequency:
+                  MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector::BillingFrequency::OrSymbol
+              ).void
+            end
+            attr_writer :billing_frequency
+
             # List of pricing group key value pairs, rates containing the matching key / value
             # pairs will be included in the response.
             sig { returns(T.nilable(T::Hash[Symbol, String])) }
@@ -157,12 +176,17 @@ module MetronomeSDK
 
             sig do
               params(
+                billing_frequency:
+                  MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector::BillingFrequency::OrSymbol,
                 partial_pricing_group_values: T::Hash[Symbol, String],
                 pricing_group_values: T::Hash[Symbol, String],
                 product_id: String
               ).returns(T.attached_class)
             end
             def self.new(
+              # Subscription rates matching the billing frequency will be included in the
+              # response.
+              billing_frequency: nil,
               # List of pricing group key value pairs, rates containing the matching key / value
               # pairs will be included in the response.
               partial_pricing_group_values: nil,
@@ -177,6 +201,8 @@ module MetronomeSDK
             sig do
               override.returns(
                 {
+                  billing_frequency:
+                    MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector::BillingFrequency::OrSymbol,
                   partial_pricing_group_values: T::Hash[Symbol, String],
                   pricing_group_values: T::Hash[Symbol, String],
                   product_id: String
@@ -184,6 +210,52 @@ module MetronomeSDK
               )
             end
             def to_hash
+            end
+
+            # Subscription rates matching the billing frequency will be included in the
+            # response.
+            module BillingFrequency
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector::BillingFrequency
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              MONTHLY =
+                T.let(
+                  :MONTHLY,
+                  MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector::BillingFrequency::TaggedSymbol
+                )
+              QUARTERLY =
+                T.let(
+                  :QUARTERLY,
+                  MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector::BillingFrequency::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :ANNUAL,
+                  MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector::BillingFrequency::TaggedSymbol
+                )
+              WEEKLY =
+                T.let(
+                  :WEEKLY,
+                  MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector::BillingFrequency::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams::Selector::BillingFrequency::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
             end
           end
         end

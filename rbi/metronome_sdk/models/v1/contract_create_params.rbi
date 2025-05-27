@@ -334,6 +334,26 @@ module MetronomeSDK
         end
         attr_writer :spend_threshold_configuration
 
+        # (beta) Optional list of subscriptions to add to the contract.
+        sig do
+          returns(
+            T.nilable(
+              T::Array[MetronomeSDK::V1::ContractCreateParams::Subscription]
+            )
+          )
+        end
+        attr_reader :subscriptions
+
+        sig do
+          params(
+            subscriptions:
+              T::Array[
+                MetronomeSDK::V1::ContractCreateParams::Subscription::OrHash
+              ]
+          ).void
+        end
+        attr_writer :subscriptions
+
         # This field's availability is dependent on your client's configuration.
         sig { returns(T.nilable(Float)) }
         attr_reader :total_contract_value
@@ -363,19 +383,10 @@ module MetronomeSDK
         sig { params(uniqueness_key: String).void }
         attr_writer :uniqueness_key
 
-        sig do
-          returns(
-            T.nilable(MetronomeSDK::V1::ContractCreateParams::UsageFilter)
-          )
-        end
+        sig { returns(T.nilable(MetronomeSDK::BaseUsageFilter)) }
         attr_reader :usage_filter
 
-        sig do
-          params(
-            usage_filter:
-              MetronomeSDK::V1::ContractCreateParams::UsageFilter::OrHash
-          ).void
-        end
+        sig { params(usage_filter: MetronomeSDK::BaseUsageFilter::OrHash).void }
         attr_writer :usage_filter
 
         sig do
@@ -449,12 +460,15 @@ module MetronomeSDK
               MetronomeSDK::V1::ContractCreateParams::ScheduledChargesOnUsageInvoices::OrSymbol,
             spend_threshold_configuration:
               MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::OrHash,
+            subscriptions:
+              T::Array[
+                MetronomeSDK::V1::ContractCreateParams::Subscription::OrHash
+              ],
             total_contract_value: Float,
             transition:
               MetronomeSDK::V1::ContractCreateParams::Transition::OrHash,
             uniqueness_key: String,
-            usage_filter:
-              MetronomeSDK::V1::ContractCreateParams::UsageFilter::OrHash,
+            usage_filter: MetronomeSDK::BaseUsageFilter::OrHash,
             usage_statement_schedule:
               MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule::OrHash,
             request_options: MetronomeSDK::RequestOptions::OrHash
@@ -504,6 +518,8 @@ module MetronomeSDK
           # on a separate invoice from usage charges.
           scheduled_charges_on_usage_invoices: nil,
           spend_threshold_configuration: nil,
+          # (beta) Optional list of subscriptions to add to the contract.
+          subscriptions: nil,
           # This field's availability is dependent on your client's configuration.
           total_contract_value: nil,
           transition: nil,
@@ -566,10 +582,12 @@ module MetronomeSDK
                 MetronomeSDK::V1::ContractCreateParams::ScheduledChargesOnUsageInvoices::OrSymbol,
               spend_threshold_configuration:
                 MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration,
+              subscriptions:
+                T::Array[MetronomeSDK::V1::ContractCreateParams::Subscription],
               total_contract_value: Float,
               transition: MetronomeSDK::V1::ContractCreateParams::Transition,
               uniqueness_key: String,
-              usage_filter: MetronomeSDK::V1::ContractCreateParams::UsageFilter,
+              usage_filter: MetronomeSDK::BaseUsageFilter,
               usage_statement_schedule:
                 MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule,
               request_options: MetronomeSDK::RequestOptions
@@ -3114,6 +3132,23 @@ module MetronomeSDK
                 )
               end
 
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V1::ContractCreateParams::Override::OverrideSpecifier::BillingFrequency::OrSymbol
+                )
+              )
+            end
+            attr_reader :billing_frequency
+
+            sig do
+              params(
+                billing_frequency:
+                  MetronomeSDK::V1::ContractCreateParams::Override::OverrideSpecifier::BillingFrequency::OrSymbol
+              ).void
+            end
+            attr_writer :billing_frequency
+
             # Can only be used for commit specific overrides. Must be used in conjunction with
             # one of product_id, product_tags, pricing_group_values, or
             # presentation_group_values. If provided, the override will only apply to the
@@ -3179,6 +3214,8 @@ module MetronomeSDK
 
             sig do
               params(
+                billing_frequency:
+                  MetronomeSDK::V1::ContractCreateParams::Override::OverrideSpecifier::BillingFrequency::OrSymbol,
                 commit_ids: T::Array[String],
                 presentation_group_values: T::Hash[Symbol, String],
                 pricing_group_values: T::Hash[Symbol, String],
@@ -3189,6 +3226,7 @@ module MetronomeSDK
               ).returns(T.attached_class)
             end
             def self.new(
+              billing_frequency: nil,
               # Can only be used for commit specific overrides. Must be used in conjunction with
               # one of product_id, product_tags, pricing_group_values, or
               # presentation_group_values. If provided, the override will only apply to the
@@ -3221,6 +3259,8 @@ module MetronomeSDK
             sig do
               override.returns(
                 {
+                  billing_frequency:
+                    MetronomeSDK::V1::ContractCreateParams::Override::OverrideSpecifier::BillingFrequency::OrSymbol,
                   commit_ids: T::Array[String],
                   presentation_group_values: T::Hash[Symbol, String],
                   pricing_group_values: T::Hash[Symbol, String],
@@ -3232,6 +3272,50 @@ module MetronomeSDK
               )
             end
             def to_hash
+            end
+
+            module BillingFrequency
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V1::ContractCreateParams::Override::OverrideSpecifier::BillingFrequency
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              MONTHLY =
+                T.let(
+                  :MONTHLY,
+                  MetronomeSDK::V1::ContractCreateParams::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol
+                )
+              QUARTERLY =
+                T.let(
+                  :QUARTERLY,
+                  MetronomeSDK::V1::ContractCreateParams::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :ANNUAL,
+                  MetronomeSDK::V1::ContractCreateParams::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol
+                )
+              WEEKLY =
+                T.let(
+                  :WEEKLY,
+                  MetronomeSDK::V1::ContractCreateParams::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V1::ContractCreateParams::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
             end
           end
 
@@ -3289,25 +3373,10 @@ module MetronomeSDK
             attr_writer :quantity
 
             # Only set for TIERED rate_type.
-            sig do
-              returns(
-                T.nilable(
-                  T::Array[
-                    MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier
-                  ]
-                )
-              )
-            end
+            sig { returns(T.nilable(T::Array[MetronomeSDK::Tier])) }
             attr_reader :tiers
 
-            sig do
-              params(
-                tiers:
-                  T::Array[
-                    MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier::OrHash
-                  ]
-              ).void
-            end
+            sig { params(tiers: T::Array[MetronomeSDK::Tier::OrHash]).void }
             attr_writer :tiers
 
             # Required for OVERWRITE type.
@@ -3320,10 +3389,7 @@ module MetronomeSDK
                 is_prorated: T::Boolean,
                 price: Float,
                 quantity: Float,
-                tiers:
-                  T::Array[
-                    MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier::OrHash
-                  ]
+                tiers: T::Array[MetronomeSDK::Tier::OrHash]
               ).returns(T.attached_class)
             end
             def self.new(
@@ -3355,10 +3421,7 @@ module MetronomeSDK
                   is_prorated: T::Boolean,
                   price: Float,
                   quantity: Float,
-                  tiers:
-                    T::Array[
-                      MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier
-                    ]
+                  tiers: T::Array[MetronomeSDK::Tier]
                 }
               )
             end
@@ -3411,35 +3474,6 @@ module MetronomeSDK
                 )
               end
               def self.values
-              end
-            end
-
-            class Tier < MetronomeSDK::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias do
-                  T.any(
-                    MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier,
-                    MetronomeSDK::Internal::AnyHash
-                  )
-                end
-
-              sig { returns(Float) }
-              attr_accessor :price
-
-              sig { returns(T.nilable(Float)) }
-              attr_reader :size
-
-              sig { params(size: Float).void }
-              attr_writer :size
-
-              sig do
-                params(price: Float, size: Float).returns(T.attached_class)
-              end
-              def self.new(price:, size: nil)
-              end
-
-              sig { override.returns({ price: Float, size: Float }) }
-              def to_hash
               end
             end
           end
@@ -6651,6 +6685,383 @@ module MetronomeSDK
           end
         end
 
+        class Subscription < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::ContractCreateParams::Subscription,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          sig do
+            returns(
+              MetronomeSDK::V1::ContractCreateParams::Subscription::CollectionSchedule::OrSymbol
+            )
+          end
+          attr_accessor :collection_schedule
+
+          # The initial quantity for the subscription. It must be non-negative value.
+          sig { returns(Float) }
+          attr_accessor :initial_quantity
+
+          sig do
+            returns(
+              MetronomeSDK::V1::ContractCreateParams::Subscription::Proration
+            )
+          end
+          attr_reader :proration
+
+          sig do
+            params(
+              proration:
+                MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::OrHash
+            ).void
+          end
+          attr_writer :proration
+
+          sig do
+            returns(
+              MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate
+            )
+          end
+          attr_reader :subscription_rate
+
+          sig do
+            params(
+              subscription_rate:
+                MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate::OrHash
+            ).void
+          end
+          attr_writer :subscription_rate
+
+          sig { returns(T.nilable(T::Hash[Symbol, String])) }
+          attr_reader :custom_fields
+
+          sig { params(custom_fields: T::Hash[Symbol, String]).void }
+          attr_writer :custom_fields
+
+          sig { returns(T.nilable(String)) }
+          attr_reader :description
+
+          sig { params(description: String).void }
+          attr_writer :description
+
+          # Exclusive end time for the subscription. If not provided, subscription inherits
+          # contract end date.
+          sig { returns(T.nilable(Time)) }
+          attr_reader :ending_before
+
+          sig { params(ending_before: Time).void }
+          attr_writer :ending_before
+
+          sig { returns(T.nilable(String)) }
+          attr_reader :name
+
+          sig { params(name: String).void }
+          attr_writer :name
+
+          # Inclusive start time for the subscription. If not provided, defaults to contract
+          # start date
+          sig { returns(T.nilable(Time)) }
+          attr_reader :starting_at
+
+          sig { params(starting_at: Time).void }
+          attr_writer :starting_at
+
+          sig do
+            params(
+              collection_schedule:
+                MetronomeSDK::V1::ContractCreateParams::Subscription::CollectionSchedule::OrSymbol,
+              initial_quantity: Float,
+              proration:
+                MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::OrHash,
+              subscription_rate:
+                MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate::OrHash,
+              custom_fields: T::Hash[Symbol, String],
+              description: String,
+              ending_before: Time,
+              name: String,
+              starting_at: Time
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            collection_schedule:,
+            # The initial quantity for the subscription. It must be non-negative value.
+            initial_quantity:,
+            proration:,
+            subscription_rate:,
+            custom_fields: nil,
+            description: nil,
+            # Exclusive end time for the subscription. If not provided, subscription inherits
+            # contract end date.
+            ending_before: nil,
+            name: nil,
+            # Inclusive start time for the subscription. If not provided, defaults to contract
+            # start date
+            starting_at: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                collection_schedule:
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::CollectionSchedule::OrSymbol,
+                initial_quantity: Float,
+                proration:
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::Proration,
+                subscription_rate:
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate,
+                custom_fields: T::Hash[Symbol, String],
+                description: String,
+                ending_before: Time,
+                name: String,
+                starting_at: Time
+              }
+            )
+          end
+          def to_hash
+          end
+
+          module CollectionSchedule
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::CollectionSchedule
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            ADVANCE =
+              T.let(
+                :ADVANCE,
+                MetronomeSDK::V1::ContractCreateParams::Subscription::CollectionSchedule::TaggedSymbol
+              )
+            ARREARS =
+              T.let(
+                :ARREARS,
+                MetronomeSDK::V1::ContractCreateParams::Subscription::CollectionSchedule::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::CollectionSchedule::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          class Proration < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::Proration,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            # Indicates how mid-period quantity adjustments are invoiced. If BILL_IMMEDIATELY
+            # is selected, the quantity increase will be billed on the scheduled date. If
+            # BILL_ON_NEXT_COLLECTION_DATE is selected, the quantity increase will be billed
+            # for in-arrears at the end of the period.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::InvoiceBehavior::OrSymbol
+                )
+              )
+            end
+            attr_reader :invoice_behavior
+
+            sig do
+              params(
+                invoice_behavior:
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::InvoiceBehavior::OrSymbol
+              ).void
+            end
+            attr_writer :invoice_behavior
+
+            # Indicates if the partial period will be prorated or charged a full amount.
+            sig { returns(T.nilable(T::Boolean)) }
+            attr_reader :is_prorated
+
+            sig { params(is_prorated: T::Boolean).void }
+            attr_writer :is_prorated
+
+            sig do
+              params(
+                invoice_behavior:
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::InvoiceBehavior::OrSymbol,
+                is_prorated: T::Boolean
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Indicates how mid-period quantity adjustments are invoiced. If BILL_IMMEDIATELY
+              # is selected, the quantity increase will be billed on the scheduled date. If
+              # BILL_ON_NEXT_COLLECTION_DATE is selected, the quantity increase will be billed
+              # for in-arrears at the end of the period.
+              invoice_behavior: nil,
+              # Indicates if the partial period will be prorated or charged a full amount.
+              is_prorated: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  invoice_behavior:
+                    MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::InvoiceBehavior::OrSymbol,
+                  is_prorated: T::Boolean
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # Indicates how mid-period quantity adjustments are invoiced. If BILL_IMMEDIATELY
+            # is selected, the quantity increase will be billed on the scheduled date. If
+            # BILL_ON_NEXT_COLLECTION_DATE is selected, the quantity increase will be billed
+            # for in-arrears at the end of the period.
+            module InvoiceBehavior
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::InvoiceBehavior
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              BILL_IMMEDIATELY =
+                T.let(
+                  :BILL_IMMEDIATELY,
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::InvoiceBehavior::TaggedSymbol
+                )
+              BILL_ON_NEXT_COLLECTION_DATE =
+                T.let(
+                  :BILL_ON_NEXT_COLLECTION_DATE,
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::InvoiceBehavior::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::InvoiceBehavior::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
+
+          class SubscriptionRate < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            # Frequency to bill subscription with. Together with product_id, must match
+            # existing rate on the rate card.
+            sig do
+              returns(
+                MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate::BillingFrequency::OrSymbol
+              )
+            end
+            attr_accessor :billing_frequency
+
+            # Must be subscription type product
+            sig { returns(String) }
+            attr_accessor :product_id
+
+            sig do
+              params(
+                billing_frequency:
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate::BillingFrequency::OrSymbol,
+                product_id: String
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Frequency to bill subscription with. Together with product_id, must match
+              # existing rate on the rate card.
+              billing_frequency:,
+              # Must be subscription type product
+              product_id:
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  billing_frequency:
+                    MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate::BillingFrequency::OrSymbol,
+                  product_id: String
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # Frequency to bill subscription with. Together with product_id, must match
+            # existing rate on the rate card.
+            module BillingFrequency
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate::BillingFrequency
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              MONTHLY =
+                T.let(
+                  :MONTHLY,
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate::BillingFrequency::TaggedSymbol
+                )
+              QUARTERLY =
+                T.let(
+                  :QUARTERLY,
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate::BillingFrequency::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :ANNUAL,
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate::BillingFrequency::TaggedSymbol
+                )
+              WEEKLY =
+                T.let(
+                  :WEEKLY,
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate::BillingFrequency::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate::BillingFrequency::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
+        end
+
         class Transition < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
             T.type_alias do
@@ -6837,50 +7248,6 @@ module MetronomeSDK
               def self.values
               end
             end
-          end
-        end
-
-        class UsageFilter < MetronomeSDK::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                MetronomeSDK::V1::ContractCreateParams::UsageFilter,
-                MetronomeSDK::Internal::AnyHash
-              )
-            end
-
-          sig { returns(String) }
-          attr_accessor :group_key
-
-          sig { returns(T::Array[String]) }
-          attr_accessor :group_values
-
-          sig { returns(T.nilable(Time)) }
-          attr_reader :starting_at
-
-          sig { params(starting_at: Time).void }
-          attr_writer :starting_at
-
-          sig do
-            params(
-              group_key: String,
-              group_values: T::Array[String],
-              starting_at: Time
-            ).returns(T.attached_class)
-          end
-          def self.new(group_key:, group_values:, starting_at: nil)
-          end
-
-          sig do
-            override.returns(
-              {
-                group_key: String,
-                group_values: T::Array[String],
-                starting_at: Time
-              }
-            )
-          end
-          def to_hash
           end
         end
 

@@ -1252,6 +1252,14 @@ module MetronomeSDK
           #   @param type [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Override::Type] Overwrites are prioritized over multipliers and tiered overrides.
 
           class OverrideSpecifier < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute billing_frequency
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Override::OverrideSpecifier::BillingFrequency, nil]
+            optional :billing_frequency,
+                     enum: -> {
+                       MetronomeSDK::V1::ContractAmendParams::Override::OverrideSpecifier::BillingFrequency
+                     }
+
             # @!attribute commit_ids
             #   Can only be used for commit specific overrides. Must be used in conjunction with
             #   one of product_id, product_tags, pricing_group_values, or
@@ -1306,10 +1314,12 @@ module MetronomeSDK
             #   @return [Array<String>, nil]
             optional :recurring_credit_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
 
-            # @!method initialize(commit_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_ids: nil, recurring_credit_ids: nil)
+            # @!method initialize(billing_frequency: nil, commit_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_ids: nil, recurring_credit_ids: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::ContractAmendParams::Override::OverrideSpecifier} for
             #   more details.
+            #
+            #   @param billing_frequency [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Override::OverrideSpecifier::BillingFrequency]
             #
             #   @param commit_ids [Array<String>] Can only be used for commit specific overrides. Must be used in conjunction with
             #
@@ -1324,6 +1334,19 @@ module MetronomeSDK
             #   @param recurring_commit_ids [Array<String>] Can only be used for commit specific overrides. Must be used in conjunction with
             #
             #   @param recurring_credit_ids [Array<String>] Can only be used for commit specific overrides. Must be used in conjunction with
+
+            # @see MetronomeSDK::Models::V1::ContractAmendParams::Override::OverrideSpecifier#billing_frequency
+            module BillingFrequency
+              extend MetronomeSDK::Internal::Type::Enum
+
+              MONTHLY = :MONTHLY
+              QUARTERLY = :QUARTERLY
+              ANNUAL = :ANNUAL
+              WEEKLY = :WEEKLY
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
           end
 
           # @see MetronomeSDK::Models::V1::ContractAmendParams::Override#overwrite_rate
@@ -1371,11 +1394,8 @@ module MetronomeSDK
             # @!attribute tiers
             #   Only set for TIERED rate_type.
             #
-            #   @return [Array<MetronomeSDK::Models::V1::ContractAmendParams::Override::OverwriteRate::Tier>, nil]
-            optional :tiers,
-                     -> {
-                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractAmendParams::Override::OverwriteRate::Tier]
-                     }
+            #   @return [Array<MetronomeSDK::Models::Tier>, nil]
+            optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
 
             # @!method initialize(rate_type:, credit_type_id: nil, custom_rate: nil, is_prorated: nil, price: nil, quantity: nil, tiers: nil)
             #   Some parameter documentations has been truncated, see
@@ -1396,7 +1416,7 @@ module MetronomeSDK
             #
             #   @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
             #
-            #   @param tiers [Array<MetronomeSDK::Models::V1::ContractAmendParams::Override::OverwriteRate::Tier>] Only set for TIERED rate_type.
+            #   @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
 
             # @see MetronomeSDK::Models::V1::ContractAmendParams::Override::OverwriteRate#rate_type
             module RateType
@@ -1410,22 +1430,6 @@ module MetronomeSDK
 
               # @!method self.values
               #   @return [Array<Symbol>]
-            end
-
-            class Tier < MetronomeSDK::Internal::Type::BaseModel
-              # @!attribute price
-              #
-              #   @return [Float]
-              required :price, Float
-
-              # @!attribute size
-              #
-              #   @return [Float, nil]
-              optional :size, Float
-
-              # @!method initialize(price:, size: nil)
-              #   @param price [Float]
-              #   @param size [Float]
             end
           end
 

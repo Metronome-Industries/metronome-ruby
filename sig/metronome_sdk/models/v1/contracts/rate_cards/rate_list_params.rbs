@@ -55,6 +55,7 @@ module MetronomeSDK
 
             type selector =
               {
+                billing_frequency: MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams::Selector::billing_frequency,
                 partial_pricing_group_values: ::Hash[Symbol, String],
                 pricing_group_values: ::Hash[Symbol, String],
                 product_id: String,
@@ -62,6 +63,12 @@ module MetronomeSDK
               }
 
             class Selector < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader billing_frequency: MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams::Selector::billing_frequency?
+
+              def billing_frequency=: (
+                MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams::Selector::billing_frequency
+              ) -> MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams::Selector::billing_frequency
+
               attr_reader partial_pricing_group_values: ::Hash[Symbol, String]?
 
               def partial_pricing_group_values=: (
@@ -83,6 +90,7 @@ module MetronomeSDK
               def product_tags=: (::Array[String]) -> ::Array[String]
 
               def initialize: (
+                ?billing_frequency: MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams::Selector::billing_frequency,
                 ?partial_pricing_group_values: ::Hash[Symbol, String],
                 ?pricing_group_values: ::Hash[Symbol, String],
                 ?product_id: String,
@@ -90,11 +98,25 @@ module MetronomeSDK
               ) -> void
 
               def to_hash: -> {
+                billing_frequency: MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams::Selector::billing_frequency,
                 partial_pricing_group_values: ::Hash[Symbol, String],
                 pricing_group_values: ::Hash[Symbol, String],
                 product_id: String,
                 product_tags: ::Array[String]
               }
+
+              type billing_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+
+              module BillingFrequency
+                extend MetronomeSDK::Internal::Type::Enum
+
+                MONTHLY: :MONTHLY
+                QUARTERLY: :QUARTERLY
+                ANNUAL: :ANNUAL
+                WEEKLY: :WEEKLY
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams::Selector::billing_frequency]
+              end
             end
           end
         end

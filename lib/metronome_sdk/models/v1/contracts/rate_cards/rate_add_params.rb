@@ -38,6 +38,14 @@ module MetronomeSDK
             #   @return [Time]
             required :starting_at, Time
 
+            # @!attribute billing_frequency
+            #   Optional. Frequency to bill subscriptions with. Required for subscription type
+            #   products with Flat rate.
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::BillingFrequency, nil]
+            optional :billing_frequency,
+                     enum: -> { MetronomeSDK::V1::Contracts::RateCards::RateAddParams::BillingFrequency }
+
             # @!attribute commit_rate
             #   A distinct rate on the rate card. You can choose to use this rate rather than
             #   list rate when consuming a credit or commit.
@@ -97,11 +105,8 @@ module MetronomeSDK
             # @!attribute tiers
             #   Only set for TIERED rate_type.
             #
-            #   @return [Array<MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::Tier>, nil]
-            optional :tiers,
-                     -> {
-                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Contracts::RateCards::RateAddParams::Tier]
-                     }
+            #   @return [Array<MetronomeSDK::Models::Tier>, nil]
+            optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
 
             # @!attribute use_list_prices
             #   Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
@@ -111,7 +116,7 @@ module MetronomeSDK
             #   @return [Boolean, nil]
             optional :use_list_prices, MetronomeSDK::Internal::Type::Boolean
 
-            # @!method initialize(entitled:, product_id:, rate_card_id:, rate_type:, starting_at:, commit_rate: nil, credit_type_id: nil, custom_rate: nil, ending_before: nil, is_prorated: nil, price: nil, pricing_group_values: nil, quantity: nil, tiers: nil, use_list_prices: nil, request_options: {})
+            # @!method initialize(entitled:, product_id:, rate_card_id:, rate_type:, starting_at:, billing_frequency: nil, commit_rate: nil, credit_type_id: nil, custom_rate: nil, ending_before: nil, is_prorated: nil, price: nil, pricing_group_values: nil, quantity: nil, tiers: nil, use_list_prices: nil, request_options: {})
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams} for more
             #   details.
@@ -125,6 +130,8 @@ module MetronomeSDK
             #   @param rate_type [Symbol, MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::RateType]
             #
             #   @param starting_at [Time] inclusive effective date
+            #
+            #   @param billing_frequency [Symbol, MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::BillingFrequency] Optional. Frequency to bill subscriptions with. Required for subscription type p
             #
             #   @param commit_rate [MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::CommitRate] A distinct rate on the rate card. You can choose to use this rate rather than li
             #
@@ -142,7 +149,7 @@ module MetronomeSDK
             #
             #   @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
             #
-            #   @param tiers [Array<MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::Tier>] Only set for TIERED rate_type.
+            #   @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
             #
             #   @param use_list_prices [Boolean] Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
             #
@@ -156,6 +163,20 @@ module MetronomeSDK
               SUBSCRIPTION = :SUBSCRIPTION
               TIERED = :TIERED
               CUSTOM = :CUSTOM
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Optional. Frequency to bill subscriptions with. Required for subscription type
+            # products with Flat rate.
+            module BillingFrequency
+              extend MetronomeSDK::Internal::Type::Enum
+
+              MONTHLY = :MONTHLY
+              QUARTERLY = :QUARTERLY
+              ANNUAL = :ANNUAL
+              WEEKLY = :WEEKLY
 
               # @!method self.values
               #   @return [Array<Symbol>]
@@ -179,11 +200,8 @@ module MetronomeSDK
               # @!attribute tiers
               #   Only set for TIERED rate_type.
               #
-              #   @return [Array<MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::CommitRate::Tier>, nil]
-              optional :tiers,
-                       -> {
-                         MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Contracts::RateCards::RateAddParams::CommitRate::Tier]
-                       }
+              #   @return [Array<MetronomeSDK::Models::Tier>, nil]
+              optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
 
               # @!method initialize(rate_type:, price: nil, tiers: nil)
               #   A distinct rate on the rate card. You can choose to use this rate rather than
@@ -193,7 +211,7 @@ module MetronomeSDK
               #
               #   @param price [Float] Commit rate price. For FLAT rate_type, this must be >=0.
               #
-              #   @param tiers [Array<MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::CommitRate::Tier>] Only set for TIERED rate_type.
+              #   @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
 
               # @see MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::CommitRate#rate_type
               module RateType
@@ -208,38 +226,6 @@ module MetronomeSDK
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
-
-              class Tier < MetronomeSDK::Internal::Type::BaseModel
-                # @!attribute price
-                #
-                #   @return [Float]
-                required :price, Float
-
-                # @!attribute size
-                #
-                #   @return [Float, nil]
-                optional :size, Float
-
-                # @!method initialize(price:, size: nil)
-                #   @param price [Float]
-                #   @param size [Float]
-              end
-            end
-
-            class Tier < MetronomeSDK::Internal::Type::BaseModel
-              # @!attribute price
-              #
-              #   @return [Float]
-              required :price, Float
-
-              # @!attribute size
-              #
-              #   @return [Float, nil]
-              optional :size, Float
-
-              # @!method initialize(price:, size: nil)
-              #   @param price [Float]
-              #   @param size [Float]
             end
           end
         end

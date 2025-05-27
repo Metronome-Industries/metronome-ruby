@@ -84,6 +84,25 @@ module MetronomeSDK
               sig { returns(Time) }
               attr_accessor :starting_at
 
+              # Optional. Frequency to bill subscriptions with. Required for subscription type
+              # products with Flat rate.
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::BillingFrequency::OrSymbol
+                  )
+                )
+              end
+              attr_reader :billing_frequency
+
+              sig do
+                params(
+                  billing_frequency:
+                    MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::BillingFrequency::OrSymbol
+                ).void
+              end
+              attr_writer :billing_frequency
+
               # A distinct rate on the rate card. You can choose to use this rate rather than
               # list rate when consuming a credit or commit.
               sig do
@@ -160,25 +179,10 @@ module MetronomeSDK
               attr_writer :quantity
 
               # Only set for TIERED rate_type.
-              sig do
-                returns(
-                  T.nilable(
-                    T::Array[
-                      MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::Tier
-                    ]
-                  )
-                )
-              end
+              sig { returns(T.nilable(T::Array[MetronomeSDK::Tier])) }
               attr_reader :tiers
 
-              sig do
-                params(
-                  tiers:
-                    T::Array[
-                      MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::Tier::OrHash
-                    ]
-                ).void
-              end
+              sig { params(tiers: T::Array[MetronomeSDK::Tier::OrHash]).void }
               attr_writer :tiers
 
               # Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
@@ -197,6 +201,8 @@ module MetronomeSDK
                   rate_type:
                     MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::RateType::OrSymbol,
                   starting_at: Time,
+                  billing_frequency:
+                    MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::BillingFrequency::OrSymbol,
                   commit_rate:
                     MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::OrHash,
                   credit_type_id: String,
@@ -206,10 +212,7 @@ module MetronomeSDK
                   price: Float,
                   pricing_group_values: T::Hash[Symbol, String],
                   quantity: Float,
-                  tiers:
-                    T::Array[
-                      MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::Tier::OrHash
-                    ],
+                  tiers: T::Array[MetronomeSDK::Tier::OrHash],
                   use_list_prices: T::Boolean
                 ).returns(T.attached_class)
               end
@@ -220,6 +223,9 @@ module MetronomeSDK
                 rate_type:,
                 # inclusive effective date
                 starting_at:,
+                # Optional. Frequency to bill subscriptions with. Required for subscription type
+                # products with Flat rate.
+                billing_frequency: nil,
                 # A distinct rate on the rate card. You can choose to use this rate rather than
                 # list rate when consuming a credit or commit.
                 commit_rate: nil,
@@ -261,6 +267,8 @@ module MetronomeSDK
                     rate_type:
                       MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::RateType::OrSymbol,
                     starting_at: Time,
+                    billing_frequency:
+                      MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::BillingFrequency::OrSymbol,
                     commit_rate:
                       MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate,
                     credit_type_id: String,
@@ -270,10 +278,7 @@ module MetronomeSDK
                     price: Float,
                     pricing_group_values: T::Hash[Symbol, String],
                     quantity: Float,
-                    tiers:
-                      T::Array[
-                        MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::Tier
-                      ],
+                    tiers: T::Array[MetronomeSDK::Tier],
                     use_list_prices: T::Boolean
                   }
                 )
@@ -330,6 +335,52 @@ module MetronomeSDK
                 end
               end
 
+              # Optional. Frequency to bill subscriptions with. Required for subscription type
+              # products with Flat rate.
+              module BillingFrequency
+                extend MetronomeSDK::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::BillingFrequency
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                MONTHLY =
+                  T.let(
+                    :MONTHLY,
+                    MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::BillingFrequency::TaggedSymbol
+                  )
+                QUARTERLY =
+                  T.let(
+                    :QUARTERLY,
+                    MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::BillingFrequency::TaggedSymbol
+                  )
+                ANNUAL =
+                  T.let(
+                    :ANNUAL,
+                    MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::BillingFrequency::TaggedSymbol
+                  )
+                WEEKLY =
+                  T.let(
+                    :WEEKLY,
+                    MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::BillingFrequency::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::BillingFrequency::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
               class CommitRate < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
@@ -354,25 +405,10 @@ module MetronomeSDK
                 attr_writer :price
 
                 # Only set for TIERED rate_type.
-                sig do
-                  returns(
-                    T.nilable(
-                      T::Array[
-                        MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::Tier
-                      ]
-                    )
-                  )
-                end
+                sig { returns(T.nilable(T::Array[MetronomeSDK::Tier])) }
                 attr_reader :tiers
 
-                sig do
-                  params(
-                    tiers:
-                      T::Array[
-                        MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::Tier::OrHash
-                      ]
-                  ).void
-                end
+                sig { params(tiers: T::Array[MetronomeSDK::Tier::OrHash]).void }
                 attr_writer :tiers
 
                 # A distinct rate on the rate card. You can choose to use this rate rather than
@@ -382,10 +418,7 @@ module MetronomeSDK
                     rate_type:
                       MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::RateType::OrSymbol,
                     price: Float,
-                    tiers:
-                      T::Array[
-                        MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::Tier::OrHash
-                      ]
+                    tiers: T::Array[MetronomeSDK::Tier::OrHash]
                   ).returns(T.attached_class)
                 end
                 def self.new(
@@ -403,10 +436,7 @@ module MetronomeSDK
                       rate_type:
                         MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::RateType::OrSymbol,
                       price: Float,
-                      tiers:
-                        T::Array[
-                          MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::Tier
-                        ]
+                      tiers: T::Array[MetronomeSDK::Tier]
                     }
                   )
                 end
@@ -460,64 +490,6 @@ module MetronomeSDK
                   end
                   def self.values
                   end
-                end
-
-                class Tier < MetronomeSDK::Internal::Type::BaseModel
-                  OrHash =
-                    T.type_alias do
-                      T.any(
-                        MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::Tier,
-                        MetronomeSDK::Internal::AnyHash
-                      )
-                    end
-
-                  sig { returns(Float) }
-                  attr_accessor :price
-
-                  sig { returns(T.nilable(Float)) }
-                  attr_reader :size
-
-                  sig { params(size: Float).void }
-                  attr_writer :size
-
-                  sig do
-                    params(price: Float, size: Float).returns(T.attached_class)
-                  end
-                  def self.new(price:, size: nil)
-                  end
-
-                  sig { override.returns({ price: Float, size: Float }) }
-                  def to_hash
-                  end
-                end
-              end
-
-              class Tier < MetronomeSDK::Internal::Type::BaseModel
-                OrHash =
-                  T.type_alias do
-                    T.any(
-                      MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::Tier,
-                      MetronomeSDK::Internal::AnyHash
-                    )
-                  end
-
-                sig { returns(Float) }
-                attr_accessor :price
-
-                sig { returns(T.nilable(Float)) }
-                attr_reader :size
-
-                sig { params(size: Float).void }
-                attr_writer :size
-
-                sig do
-                  params(price: Float, size: Float).returns(T.attached_class)
-                end
-                def self.new(price:, size: nil)
-                end
-
-                sig { override.returns({ price: Float, size: Float }) }
-                def to_hash
                 end
               end
             end
