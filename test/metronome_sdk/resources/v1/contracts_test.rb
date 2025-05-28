@@ -140,6 +140,25 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
     end
   end
 
+  def test_get_subscription_quantity_history_required_params
+    response =
+      @metronome.v1.contracts.get_subscription_quantity_history(
+        contract_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
+        customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+        subscription_id: "1a824d53-bde6-4d82-96d7-6347ff227d5c"
+      )
+
+    assert_pattern do
+      response => MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse::Data
+      }
+    end
+  end
+
   def test_list_balances_required_params
     response = @metronome.v1.contracts.list_balances(customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d")
 

@@ -305,6 +305,30 @@ module MetronomeSDK
           )
         end
 
+        # Fetch the quantity and price for a subscription over time. End-point does not
+        # return future scheduled changes.
+        #
+        # @overload get_subscription_quantity_history(contract_id:, customer_id:, subscription_id:, request_options: {})
+        #
+        # @param contract_id [String]
+        # @param customer_id [String]
+        # @param subscription_id [String]
+        # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse]
+        #
+        # @see MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryParams
+        def get_subscription_quantity_history(params)
+          parsed, options = MetronomeSDK::V1::ContractGetSubscriptionQuantityHistoryParams.dump_request(params)
+          @client.request(
+            method: :post,
+            path: "v1/contracts/getSubscriptionQuantityHistory",
+            body: parsed,
+            model: MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse,
+            options: options
+          )
+        end
+
         # Some parameter documentations has been truncated, see
         # {MetronomeSDK::Models::V1::ContractListBalancesParams} for more details.
         #
