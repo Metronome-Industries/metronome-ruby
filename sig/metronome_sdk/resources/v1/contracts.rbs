@@ -102,6 +102,13 @@ module MetronomeSDK
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse
 
+        def get_subscription_quantity_history: (
+          contract_id: String,
+          customer_id: String,
+          subscription_id: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse
+
         def list_balances: (
           customer_id: String,
           ?id: String,

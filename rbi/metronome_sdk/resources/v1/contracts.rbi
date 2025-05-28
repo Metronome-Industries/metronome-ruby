@@ -335,6 +335,26 @@ module MetronomeSDK
         def create_historical_invoices(invoices:, preview:, request_options: {})
         end
 
+        # Fetch the quantity and price for a subscription over time. End-point does not
+        # return future scheduled changes.
+        sig do
+          params(
+            contract_id: String,
+            customer_id: String,
+            subscription_id: String,
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(
+            MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse
+          )
+        end
+        def get_subscription_quantity_history(
+          contract_id:,
+          customer_id:,
+          subscription_id:,
+          request_options: {}
+        )
+        end
+
         # List balances (commits and credits).
         sig do
           params(
