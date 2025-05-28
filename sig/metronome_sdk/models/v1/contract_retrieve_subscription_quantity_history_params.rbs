@@ -1,11 +1,11 @@
 module MetronomeSDK
   module Models
     module V1
-      type contract_get_subscription_quantity_history_params =
+      type contract_retrieve_subscription_quantity_history_params =
         { contract_id: String, customer_id: String, subscription_id: String }
         & MetronomeSDK::Internal::Type::request_parameters
 
-      class ContractGetSubscriptionQuantityHistoryParams < MetronomeSDK::Internal::Type::BaseModel
+      class ContractRetrieveSubscriptionQuantityHistoryParams < MetronomeSDK::Internal::Type::BaseModel
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
