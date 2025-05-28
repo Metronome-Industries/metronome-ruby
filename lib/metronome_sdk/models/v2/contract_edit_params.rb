@@ -102,7 +102,9 @@ module MetronomeSDK
                  -> { MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration }
 
         # @!attribute add_subscriptions
-        #   (beta) Optional list of subscriptions to add to the contract.
+        #   (beta) Optional list of
+        #   [subscriptions](https://docs.metronome.com/manage-product-access/create-subscription/)
+        #   to add to the contract.
         #
         #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::AddSubscription>, nil]
         optional :add_subscriptions,
@@ -258,7 +260,7 @@ module MetronomeSDK
         #
         #   @param add_spend_threshold_configuration [MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration]
         #
-        #   @param add_subscriptions [Array<MetronomeSDK::Models::V2::ContractEditParams::AddSubscription>] (beta) Optional list of subscriptions to add to the contract.
+        #   @param add_subscriptions [Array<MetronomeSDK::Models::V2::ContractEditParams::AddSubscription>] (beta) Optional list of [subscriptions](https://docs.metronome.com/manage-produc
         #
         #   @param allow_contract_ending_before_finalized_invoice [Boolean] If true, allows setting the contract end date earlier than the end_timestamp of
         #

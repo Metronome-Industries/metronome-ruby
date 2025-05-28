@@ -334,7 +334,9 @@ module MetronomeSDK
         end
         attr_writer :spend_threshold_configuration
 
-        # (beta) Optional list of subscriptions to add to the contract.
+        # (beta) Optional list of
+        # [subscriptions](https://docs.metronome.com/manage-product-access/create-subscription/)
+        # to add to the contract.
         sig do
           returns(
             T.nilable(
@@ -518,7 +520,9 @@ module MetronomeSDK
           # on a separate invoice from usage charges.
           scheduled_charges_on_usage_invoices: nil,
           spend_threshold_configuration: nil,
-          # (beta) Optional list of subscriptions to add to the contract.
+          # (beta) Optional list of
+          # [subscriptions](https://docs.metronome.com/manage-product-access/create-subscription/)
+          # to add to the contract.
           subscriptions: nil,
           # This field's availability is dependent on your client's configuration.
           total_contract_value: nil,
