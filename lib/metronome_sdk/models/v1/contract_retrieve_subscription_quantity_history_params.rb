@@ -3,8 +3,8 @@
 module MetronomeSDK
   module Models
     module V1
-      # @see MetronomeSDK::Resources::V1::Contracts#get_subscription_quantity_history
-      class ContractGetSubscriptionQuantityHistoryParams < MetronomeSDK::Internal::Type::BaseModel
+      # @see MetronomeSDK::Resources::V1::Contracts#retrieve_subscription_quantity_history
+      class ContractRetrieveSubscriptionQuantityHistoryParams < MetronomeSDK::Internal::Type::BaseModel
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 

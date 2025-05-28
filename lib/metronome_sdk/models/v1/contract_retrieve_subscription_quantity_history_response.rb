@@ -3,17 +3,17 @@
 module MetronomeSDK
   module Models
     module V1
-      # @see MetronomeSDK::Resources::V1::Contracts#get_subscription_quantity_history
-      class ContractGetSubscriptionQuantityHistoryResponse < MetronomeSDK::Internal::Type::BaseModel
+      # @see MetronomeSDK::Resources::V1::Contracts#retrieve_subscription_quantity_history
+      class ContractRetrieveSubscriptionQuantityHistoryResponse < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute data
         #
-        #   @return [MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse::Data]
-        required :data, -> { MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse::Data }
+        #   @return [MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data]
+        required :data, -> { MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data }
 
         # @!method initialize(data:)
-        #   @param data [MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse::Data]
+        #   @param data [MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data]
 
-        # @see MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse#data
+        # @see MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse#data
         class Data < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute fiat_credit_type_id
           #
@@ -22,9 +22,9 @@ module MetronomeSDK
 
           # @!attribute history
           #
-          #   @return [Array<MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse::Data::History>, nil]
+          #   @return [Array<MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History>, nil]
           optional :history,
-                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse::Data::History] }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History] }
 
           # @!attribute subscription_id
           #
@@ -33,15 +33,15 @@ module MetronomeSDK
 
           # @!method initialize(fiat_credit_type_id: nil, history: nil, subscription_id: nil)
           #   @param fiat_credit_type_id [String]
-          #   @param history [Array<MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse::Data::History>]
+          #   @param history [Array<MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History>]
           #   @param subscription_id [String]
 
           class History < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute data
             #
-            #   @return [Array<MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse::Data::History::Data>]
+            #   @return [Array<MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History::Data>]
             required :data,
-                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse::Data::History::Data] }
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History::Data] }
 
             # @!attribute starting_at
             #
@@ -49,7 +49,7 @@ module MetronomeSDK
             required :starting_at, Time
 
             # @!method initialize(data:, starting_at:)
-            #   @param data [Array<MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse::Data::History::Data>]
+            #   @param data [Array<MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History::Data>]
             #   @param starting_at [Time]
 
             class Data < MetronomeSDK::Internal::Type::BaseModel

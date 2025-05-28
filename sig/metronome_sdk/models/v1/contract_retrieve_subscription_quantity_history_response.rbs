@@ -1,0 +1,101 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type contract_retrieve_subscription_quantity_history_response =
+        {
+          data: MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data
+        }
+
+      class ContractRetrieveSubscriptionQuantityHistoryResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor data: MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data
+
+        def initialize: (
+          data: MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data
+        }
+
+        type data =
+          {
+            fiat_credit_type_id: String,
+            history: ::Array[MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History],
+            subscription_id: String
+          }
+
+        class Data < MetronomeSDK::Internal::Type::BaseModel
+          attr_reader fiat_credit_type_id: String?
+
+          def fiat_credit_type_id=: (String) -> String
+
+          attr_reader history: ::Array[MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History]?
+
+          def history=: (
+            ::Array[MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History]
+          ) -> ::Array[MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History]
+
+          attr_reader subscription_id: String?
+
+          def subscription_id=: (String) -> String
+
+          def initialize: (
+            ?fiat_credit_type_id: String,
+            ?history: ::Array[MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History],
+            ?subscription_id: String
+          ) -> void
+
+          def to_hash: -> {
+            fiat_credit_type_id: String,
+            history: ::Array[MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History],
+            subscription_id: String
+          }
+
+          type history =
+            {
+              data: ::Array[MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History::Data],
+              starting_at: Time
+            }
+
+          class History < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor data: ::Array[MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History::Data]
+
+            attr_accessor starting_at: Time
+
+            def initialize: (
+              data: ::Array[MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History::Data],
+              starting_at: Time
+            ) -> void
+
+            def to_hash: -> {
+              data: ::Array[MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History::Data],
+              starting_at: Time
+            }
+
+            type data = { quantity: Float, total: Float, unit_price: Float }
+
+            class Data < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor quantity: Float
+
+              attr_accessor total: Float
+
+              attr_accessor unit_price: Float
+
+              def initialize: (
+                quantity: Float,
+                total: Float,
+                unit_price: Float
+              ) -> void
+
+              def to_hash: -> {
+                quantity: Float,
+                total: Float,
+                unit_price: Float
+              }
+            end
+          end
+        end
+      end
+    end
+  end
+end

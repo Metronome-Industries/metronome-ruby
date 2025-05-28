@@ -3,18 +3,18 @@
 module MetronomeSDK
   module Models
     module V1
-      class ContractGetSubscriptionQuantityHistoryResponse < MetronomeSDK::Internal::Type::BaseModel
+      class ContractRetrieveSubscriptionQuantityHistoryResponse < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
-              MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse,
+              MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse,
               MetronomeSDK::Internal::AnyHash
             )
           end
 
         sig do
           returns(
-            MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse::Data
+            MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data
           )
         end
         attr_reader :data
@@ -22,7 +22,7 @@ module MetronomeSDK
         sig do
           params(
             data:
-              MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse::Data::OrHash
+              MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::OrHash
           ).void
         end
         attr_writer :data
@@ -30,7 +30,7 @@ module MetronomeSDK
         sig do
           params(
             data:
-              MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse::Data::OrHash
+              MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::OrHash
           ).returns(T.attached_class)
         end
         def self.new(data:)
@@ -40,7 +40,7 @@ module MetronomeSDK
           override.returns(
             {
               data:
-                MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse::Data
+                MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data
             }
           )
         end
@@ -51,7 +51,7 @@ module MetronomeSDK
           OrHash =
             T.type_alias do
               T.any(
-                MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse::Data,
+                MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data,
                 MetronomeSDK::Internal::AnyHash
               )
             end
@@ -66,7 +66,7 @@ module MetronomeSDK
             returns(
               T.nilable(
                 T::Array[
-                  MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse::Data::History
+                  MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History
                 ]
               )
             )
@@ -77,7 +77,7 @@ module MetronomeSDK
             params(
               history:
                 T::Array[
-                  MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse::Data::History::OrHash
+                  MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History::OrHash
                 ]
             ).void
           end
@@ -94,7 +94,7 @@ module MetronomeSDK
               fiat_credit_type_id: String,
               history:
                 T::Array[
-                  MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse::Data::History::OrHash
+                  MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History::OrHash
                 ],
               subscription_id: String
             ).returns(T.attached_class)
@@ -112,7 +112,7 @@ module MetronomeSDK
                 fiat_credit_type_id: String,
                 history:
                   T::Array[
-                    MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse::Data::History
+                    MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History
                   ],
                 subscription_id: String
               }
@@ -125,7 +125,7 @@ module MetronomeSDK
             OrHash =
               T.type_alias do
                 T.any(
-                  MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse::Data::History,
+                  MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History,
                   MetronomeSDK::Internal::AnyHash
                 )
               end
@@ -133,7 +133,7 @@ module MetronomeSDK
             sig do
               returns(
                 T::Array[
-                  MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse::Data::History::Data
+                  MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History::Data
                 ]
               )
             end
@@ -146,7 +146,7 @@ module MetronomeSDK
               params(
                 data:
                   T::Array[
-                    MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse::Data::History::Data::OrHash
+                    MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History::Data::OrHash
                   ],
                 starting_at: Time
               ).returns(T.attached_class)
@@ -159,7 +159,7 @@ module MetronomeSDK
                 {
                   data:
                     T::Array[
-                      MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse::Data::History::Data
+                      MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History::Data
                     ],
                   starting_at: Time
                 }
@@ -172,7 +172,7 @@ module MetronomeSDK
               OrHash =
                 T.type_alias do
                   T.any(
-                    MetronomeSDK::Models::V1::ContractGetSubscriptionQuantityHistoryResponse::Data::History::Data,
+                    MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History::Data,
                     MetronomeSDK::Internal::AnyHash
                   )
                 end
