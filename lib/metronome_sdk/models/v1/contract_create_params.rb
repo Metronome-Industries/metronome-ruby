@@ -176,7 +176,9 @@ module MetronomeSDK
                  -> { MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration }
 
         # @!attribute subscriptions
-        #   (beta) Optional list of subscriptions to add to the contract.
+        #   (beta) Optional list of
+        #   [subscriptions](https://docs.metronome.com/manage-product-access/create-subscription/)
+        #   to add to the contract.
         #
         #   @return [Array<MetronomeSDK::Models::V1::ContractCreateParams::Subscription>, nil]
         optional :subscriptions,
@@ -268,7 +270,7 @@ module MetronomeSDK
         #
         #   @param spend_threshold_configuration [MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration]
         #
-        #   @param subscriptions [Array<MetronomeSDK::Models::V1::ContractCreateParams::Subscription>] (beta) Optional list of subscriptions to add to the contract.
+        #   @param subscriptions [Array<MetronomeSDK::Models::V1::ContractCreateParams::Subscription>] (beta) Optional list of [subscriptions](https://docs.metronome.com/manage-produc
         #
         #   @param total_contract_value [Float] This field's availability is dependent on your client's configuration.
         #

@@ -223,7 +223,9 @@ module MetronomeSDK
         end
         attr_writer :add_spend_threshold_configuration
 
-        # (beta) Optional list of subscriptions to add to the contract.
+        # (beta) Optional list of
+        # [subscriptions](https://docs.metronome.com/manage-product-access/create-subscription/)
+        # to add to the contract.
         sig do
           returns(
             T.nilable(
@@ -614,7 +616,9 @@ module MetronomeSDK
           add_reseller_royalties: nil,
           add_scheduled_charges: nil,
           add_spend_threshold_configuration: nil,
-          # (beta) Optional list of subscriptions to add to the contract.
+          # (beta) Optional list of
+          # [subscriptions](https://docs.metronome.com/manage-product-access/create-subscription/)
+          # to add to the contract.
           add_subscriptions: nil,
           # If true, allows setting the contract end date earlier than the end_timestamp of
           # existing finalized invoices. Finalized invoices will be unchanged; if you want
