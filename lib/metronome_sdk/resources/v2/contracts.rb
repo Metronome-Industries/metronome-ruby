@@ -79,55 +79,63 @@ module MetronomeSDK
         #
         # Edit a contract. Contract editing must be enabled to use this endpoint.
         #
-        # @overload edit(contract_id:, customer_id:, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_prepaid_balance_threshold_configuration: nil, add_professional_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_spend_threshold_configuration: nil, allow_contract_ending_before_finalized_invoice: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, update_commits: nil, update_contract_end_date: nil, update_credits: nil, update_prepaid_balance_threshold_configuration: nil, update_scheduled_charges: nil, update_spend_threshold_configuration: nil, request_options: {})
+        # @overload edit(contract_id:, customer_id:, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_prepaid_balance_threshold_configuration: nil, add_professional_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_spend_threshold_configuration: nil, add_subscriptions: nil, allow_contract_ending_before_finalized_invoice: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, update_commits: nil, update_contract_end_date: nil, update_credits: nil, update_prepaid_balance_threshold_configuration: nil, update_recurring_commits: nil, update_recurring_credits: nil, update_scheduled_charges: nil, update_spend_threshold_configuration: nil, update_subscriptions: nil, request_options: {})
         #
         # @param contract_id [String] ID of the contract being edited
         #
         # @param customer_id [String] ID of the customer whose contract is being edited
         #
-        # @param add_commits [Array<MetronomeSDK::V2::ContractEditParams::AddCommit>]
+        # @param add_commits [Array<MetronomeSDK::Models::V2::ContractEditParams::AddCommit>]
         #
-        # @param add_credits [Array<MetronomeSDK::V2::ContractEditParams::AddCredit>]
+        # @param add_credits [Array<MetronomeSDK::Models::V2::ContractEditParams::AddCredit>]
         #
-        # @param add_discounts [Array<MetronomeSDK::V2::ContractEditParams::AddDiscount>]
+        # @param add_discounts [Array<MetronomeSDK::Models::V2::ContractEditParams::AddDiscount>]
         #
-        # @param add_overrides [Array<MetronomeSDK::V2::ContractEditParams::AddOverride>]
+        # @param add_overrides [Array<MetronomeSDK::Models::V2::ContractEditParams::AddOverride>]
         #
-        # @param add_prepaid_balance_threshold_configuration [MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration]
+        # @param add_prepaid_balance_threshold_configuration [MetronomeSDK::Models::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration]
         #
-        # @param add_professional_services [Array<MetronomeSDK::V2::ContractEditParams::AddProfessionalService>] This field's availability is dependent on your client's configuration.
+        # @param add_professional_services [Array<MetronomeSDK::Models::V2::ContractEditParams::AddProfessionalService>] This field's availability is dependent on your client's configuration.
         #
-        # @param add_recurring_commits [Array<MetronomeSDK::V2::ContractEditParams::AddRecurringCommit>]
+        # @param add_recurring_commits [Array<MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCommit>]
         #
-        # @param add_recurring_credits [Array<MetronomeSDK::V2::ContractEditParams::AddRecurringCredit>]
+        # @param add_recurring_credits [Array<MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCredit>]
         #
-        # @param add_reseller_royalties [Array<MetronomeSDK::V2::ContractEditParams::AddResellerRoyalty>]
+        # @param add_reseller_royalties [Array<MetronomeSDK::Models::V2::ContractEditParams::AddResellerRoyalty>]
         #
-        # @param add_scheduled_charges [Array<MetronomeSDK::V2::ContractEditParams::AddScheduledCharge>]
+        # @param add_scheduled_charges [Array<MetronomeSDK::Models::V2::ContractEditParams::AddScheduledCharge>]
         #
-        # @param add_spend_threshold_configuration [MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration]
+        # @param add_spend_threshold_configuration [MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration]
+        #
+        # @param add_subscriptions [Array<MetronomeSDK::Models::V2::ContractEditParams::AddSubscription>] (beta) Optional list of [subscriptions](https://docs.metronome.com/manage-produc
         #
         # @param allow_contract_ending_before_finalized_invoice [Boolean] If true, allows setting the contract end date earlier than the end_timestamp of
         #
-        # @param archive_commits [Array<MetronomeSDK::V2::ContractEditParams::ArchiveCommit>] IDs of commits to archive
+        # @param archive_commits [Array<MetronomeSDK::Models::V2::ContractEditParams::ArchiveCommit>] IDs of commits to archive
         #
-        # @param archive_credits [Array<MetronomeSDK::V2::ContractEditParams::ArchiveCredit>] IDs of credits to archive
+        # @param archive_credits [Array<MetronomeSDK::Models::V2::ContractEditParams::ArchiveCredit>] IDs of credits to archive
         #
-        # @param archive_scheduled_charges [Array<MetronomeSDK::V2::ContractEditParams::ArchiveScheduledCharge>] IDs of scheduled charges to archive
+        # @param archive_scheduled_charges [Array<MetronomeSDK::Models::V2::ContractEditParams::ArchiveScheduledCharge>] IDs of scheduled charges to archive
         #
-        # @param remove_overrides [Array<MetronomeSDK::V2::ContractEditParams::RemoveOverride>] IDs of overrides to remove
+        # @param remove_overrides [Array<MetronomeSDK::Models::V2::ContractEditParams::RemoveOverride>] IDs of overrides to remove
         #
-        # @param update_commits [Array<MetronomeSDK::V2::ContractEditParams::UpdateCommit>]
+        # @param update_commits [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit>]
         #
-        # @param update_contract_end_date [Time] RFC 3339 timestamp indicating when the contract will end (exclusive).
+        # @param update_contract_end_date [Time, nil] RFC 3339 timestamp indicating when the contract will end (exclusive).
         #
-        # @param update_credits [Array<MetronomeSDK::V2::ContractEditParams::UpdateCredit>]
+        # @param update_credits [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit>]
         #
-        # @param update_prepaid_balance_threshold_configuration [MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration]
+        # @param update_prepaid_balance_threshold_configuration [MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration]
         #
-        # @param update_scheduled_charges [Array<MetronomeSDK::V2::ContractEditParams::UpdateScheduledCharge>]
+        # @param update_recurring_commits [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCommit>] Edits to these recurring commits will only affect commits whose access schedules
         #
-        # @param update_spend_threshold_configuration [MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration]
+        # @param update_recurring_credits [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCredit>] Edits to these recurring credits will only affect credits whose access schedules
+        #
+        # @param update_scheduled_charges [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateScheduledCharge>]
+        #
+        # @param update_spend_threshold_configuration [MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration]
+        #
+        # @param update_subscriptions [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription>] (beta) Optional list of subscriptions to update.
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -151,13 +159,13 @@ module MetronomeSDK
         # Edit a customer or contract commit. Contract commits can only be edited using
         # this endpoint if contract editing is enabled.
         #
-        # @overload edit_commit(commit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, invoice_contract_id: nil, invoice_schedule: nil, product_id: nil, request_options: {})
+        # @overload edit_commit(commit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, invoice_contract_id: nil, invoice_schedule: nil, product_id: nil, specifiers: nil, request_options: {})
         #
         # @param commit_id [String] ID of the commit to edit
         #
         # @param customer_id [String] ID of the customer whose commit is being edited
         #
-        # @param access_schedule [MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule]
+        # @param access_schedule [MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule]
         #
         # @param applicable_product_ids [Array<String>, nil] Which products the commit applies to. If both applicable_product_ids and applica
         #
@@ -165,9 +173,11 @@ module MetronomeSDK
         #
         # @param invoice_contract_id [String] ID of contract to use for invoicing
         #
-        # @param invoice_schedule [MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule]
+        # @param invoice_schedule [MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule]
         #
         # @param product_id [String]
+        #
+        # @param specifiers [Array<MetronomeSDK::Models::V2::ContractEditCommitParams::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -191,19 +201,21 @@ module MetronomeSDK
         # Edit a customer or contract credit. Contract credits can only be edited using
         # this endpoint if contract editing is enabled.
         #
-        # @overload edit_credit(credit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, product_id: nil, request_options: {})
+        # @overload edit_credit(credit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, product_id: nil, specifiers: nil, request_options: {})
         #
         # @param credit_id [String] ID of the credit to edit
         #
         # @param customer_id [String] ID of the customer whose credit is being edited
         #
-        # @param access_schedule [MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule]
+        # @param access_schedule [MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule]
         #
         # @param applicable_product_ids [Array<String>, nil] Which products the credit applies to. If both applicable_product_ids and applica
         #
         # @param applicable_product_tags [Array<String>, nil] Which tags the credit applies to. If both applicable*product_ids and applicable*
         #
         # @param product_id [String]
+        #
+        # @param specifiers [Array<MetronomeSDK::Models::V2::ContractEditCreditParams::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #

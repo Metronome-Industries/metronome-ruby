@@ -10,9 +10,9 @@ module MetronomeSDK
           #
           # Create a new commit at the customer level.
           #
-          # @overload create(access_schedule:, customer_id:, priority:, product_id:, type:, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, custom_fields: nil, description: nil, invoice_contract_id: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, rate_type: nil, salesforce_opportunity_id: nil, uniqueness_key: nil, request_options: {})
+          # @overload create(access_schedule:, customer_id:, priority:, product_id:, type:, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, custom_fields: nil, description: nil, invoice_contract_id: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, rate_type: nil, salesforce_opportunity_id: nil, specifiers: nil, uniqueness_key: nil, request_options: {})
           #
-          # @param access_schedule [MetronomeSDK::V1::Customers::CommitCreateParams::AccessSchedule] Schedule for distributing the commit to the customer. For "POSTPAID" commits onl
+          # @param access_schedule [MetronomeSDK::Models::V1::Customers::CommitCreateParams::AccessSchedule] Schedule for distributing the commit to the customer. For "POSTPAID" commits onl
           #
           # @param customer_id [String]
           #
@@ -20,7 +20,7 @@ module MetronomeSDK
           #
           # @param product_id [String] ID of the fixed product associated with the commit. This is required because pro
           #
-          # @param type [Symbol, MetronomeSDK::V1::Customers::CommitCreateParams::Type]
+          # @param type [Symbol, MetronomeSDK::Models::V1::Customers::CommitCreateParams::Type]
           #
           # @param applicable_contract_ids [Array<String>] Which contract the commit applies to. If not provided, the commit applies to all
           #
@@ -34,15 +34,17 @@ module MetronomeSDK
           #
           # @param invoice_contract_id [String] The contract that this commit will be billed on. This is required for "POSTPAID"
           #
-          # @param invoice_schedule [MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule] Required for "POSTPAID" commits: the true up invoice will be generated at this t
+          # @param invoice_schedule [MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule] Required for "POSTPAID" commits: the true up invoice will be generated at this t
           #
           # @param name [String] displayed on invoices
           #
           # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
           #
-          # @param rate_type [Symbol, MetronomeSDK::V1::Customers::CommitCreateParams::RateType]
+          # @param rate_type [Symbol, MetronomeSDK::Models::V1::Customers::CommitCreateParams::RateType]
           #
           # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
+          #
+          # @param specifiers [Array<MetronomeSDK::Models::V1::Customers::CommitCreateParams::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
           #
           # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a commit or credit i
           #

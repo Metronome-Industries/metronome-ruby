@@ -68,11 +68,16 @@ module MetronomeSDK
               MetronomeSDK::V1::ContractCreateParams::ScheduledChargesOnUsageInvoices::OrSymbol,
             spend_threshold_configuration:
               MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::OrHash,
+            subscriptions:
+              T::Array[
+                MetronomeSDK::V1::ContractCreateParams::Subscription::OrHash
+              ],
             total_contract_value: Float,
             transition:
               MetronomeSDK::V1::ContractCreateParams::Transition::OrHash,
             uniqueness_key: String,
-            usage_filter: MetronomeSDK::BaseUsageFilter::OrHash,
+            usage_filter:
+              MetronomeSDK::V1::ContractCreateParams::UsageFilter::OrHash,
             usage_statement_schedule:
               MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule::OrHash,
             request_options: MetronomeSDK::RequestOptions::OrHash
@@ -122,6 +127,10 @@ module MetronomeSDK
           # on a separate invoice from usage charges.
           scheduled_charges_on_usage_invoices: nil,
           spend_threshold_configuration: nil,
+          # (beta) Optional list of
+          # [subscriptions](https://docs.metronome.com/manage-product-access/create-subscription/)
+          # to add to the contract.
+          subscriptions: nil,
           # This field's availability is dependent on your client's configuration.
           total_contract_value: nil,
           transition: nil,
@@ -403,6 +412,26 @@ module MetronomeSDK
           # included in the response. Passing no selectors will result in all rates being
           # returned.
           selectors: nil,
+          request_options: {}
+        )
+        end
+
+        # Fetch the quantity and price for a subscription over time. End-point does not
+        # return future scheduled changes.
+        sig do
+          params(
+            contract_id: String,
+            customer_id: String,
+            subscription_id: String,
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(
+            MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse
+          )
+        end
+        def retrieve_subscription_quantity_history(
+          contract_id:,
+          customer_id:,
+          subscription_id:,
           request_options: {}
         )
         end

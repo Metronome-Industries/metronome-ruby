@@ -106,6 +106,10 @@ module MetronomeSDK
               ],
             add_spend_threshold_configuration:
               MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::OrHash,
+            add_subscriptions:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::AddSubscription::OrHash
+              ],
             allow_contract_ending_before_finalized_invoice: T::Boolean,
             archive_commits:
               T::Array[
@@ -127,19 +131,31 @@ module MetronomeSDK
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::UpdateCommit::OrHash
               ],
-            update_contract_end_date: Time,
+            update_contract_end_date: T.nilable(Time),
             update_credits:
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::UpdateCredit::OrHash
               ],
             update_prepaid_balance_threshold_configuration:
               MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::OrHash,
+            update_recurring_commits:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::OrHash
+              ],
+            update_recurring_credits:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::OrHash
+              ],
             update_scheduled_charges:
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::UpdateScheduledCharge::OrHash
               ],
             update_spend_threshold_configuration:
               MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::OrHash,
+            update_subscriptions:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::UpdateSubscription::OrHash
+              ],
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(MetronomeSDK::Models::V2::ContractEditResponse)
         end
@@ -160,6 +176,10 @@ module MetronomeSDK
           add_reseller_royalties: nil,
           add_scheduled_charges: nil,
           add_spend_threshold_configuration: nil,
+          # (beta) Optional list of
+          # [subscriptions](https://docs.metronome.com/manage-product-access/create-subscription/)
+          # to add to the contract.
+          add_subscriptions: nil,
           # If true, allows setting the contract end date earlier than the end_timestamp of
           # existing finalized invoices. Finalized invoices will be unchanged; if you want
           # to incorporate the new end date, you can void and regenerate finalized usage
@@ -178,8 +198,18 @@ module MetronomeSDK
           update_contract_end_date: nil,
           update_credits: nil,
           update_prepaid_balance_threshold_configuration: nil,
+          # Edits to these recurring commits will only affect commits whose access schedules
+          # has not started. Expired commits, and commits with an active access schedule
+          # will remain unchanged.
+          update_recurring_commits: nil,
+          # Edits to these recurring credits will only affect credits whose access schedules
+          # has not started. Expired credits, and credits with an active access schedule
+          # will remain unchanged.
+          update_recurring_credits: nil,
           update_scheduled_charges: nil,
           update_spend_threshold_configuration: nil,
+          # (beta) Optional list of subscriptions to update.
+          update_subscriptions: nil,
           request_options: {}
         )
         end
@@ -198,6 +228,10 @@ module MetronomeSDK
             invoice_schedule:
               MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::OrHash,
             product_id: String,
+            specifiers:
+              T::Array[
+                MetronomeSDK::V2::ContractEditCommitParams::Specifier::OrHash
+              ],
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(MetronomeSDK::Models::V2::ContractEditCommitResponse)
         end
@@ -217,6 +251,11 @@ module MetronomeSDK
           invoice_contract_id: nil,
           invoice_schedule: nil,
           product_id: nil,
+          # List of filters that determine what kind of customer usage draws down a commit
+          # or credit. A customer's usage needs to meet the condition of at least one of the
+          # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+          # be used together with `applicable_product_ids` or `applicable_product_tags`.
+          specifiers: nil,
           request_options: {}
         )
         end
@@ -232,6 +271,10 @@ module MetronomeSDK
             applicable_product_ids: T.nilable(T::Array[String]),
             applicable_product_tags: T.nilable(T::Array[String]),
             product_id: String,
+            specifiers:
+              T::Array[
+                MetronomeSDK::V2::ContractEditCreditParams::Specifier::OrHash
+              ],
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(MetronomeSDK::Models::V2::ContractEditCreditResponse)
         end
@@ -248,6 +291,11 @@ module MetronomeSDK
           # applicable_product_tags are not provided, the credit applies to all products.
           applicable_product_tags: nil,
           product_id: nil,
+          # List of filters that determine what kind of customer usage draws down a commit
+          # or credit. A customer's usage needs to meet the condition of at least one of the
+          # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+          # be used together with `applicable_product_ids` or `applicable_product_tags`.
+          specifiers: nil,
           request_options: {}
         )
         end

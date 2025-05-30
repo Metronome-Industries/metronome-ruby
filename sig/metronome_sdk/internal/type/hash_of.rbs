@@ -3,6 +3,7 @@ module MetronomeSDK
     module Type
       class HashOf[Elem]
         include MetronomeSDK::Internal::Type::Converter
+        include MetronomeSDK::Internal::Util::SorbetRuntimeSupport
 
         def self.[]: (
           ::Hash[Symbol, top]
@@ -26,6 +27,8 @@ module MetronomeSDK
           ::Hash[top, top] | top value,
           state: MetronomeSDK::Internal::Type::Converter::dump_state
         ) -> (::Hash[Symbol, top] | top)
+
+        def to_sorbet_type: -> top
 
         def item_type: -> Elem
 

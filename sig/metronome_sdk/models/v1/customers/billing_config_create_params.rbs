@@ -49,6 +49,16 @@ module MetronomeSDK
             ?request_options: MetronomeSDK::request_opts
           ) -> void
 
+          def to_hash: -> {
+            customer_id: String,
+            billing_provider_type: MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::billing_provider_type,
+            billing_provider_customer_id: String,
+            aws_product_code: String,
+            aws_region: MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::aws_region,
+            stripe_collection_method: MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::stripe_collection_method,
+            request_options: MetronomeSDK::RequestOptions
+          }
+
           type billing_provider_type =
             :aws_marketplace
             | :stripe

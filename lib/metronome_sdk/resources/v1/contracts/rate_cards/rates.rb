@@ -22,7 +22,7 @@ module MetronomeSDK
             #
             # @param next_page [String] Query param: Cursor that indicates where the next page of results should start.
             #
-            # @param selectors [Array<MetronomeSDK::V1::Contracts::RateCards::RateListParams::Selector>] Body param: List of rate selectors, rates matching ANY of the selector will be i
+            # @param selectors [Array<MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams::Selector>] Body param: List of rate selectors, rates matching ANY of the selector will be i
             #
             # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
             #
@@ -49,7 +49,7 @@ module MetronomeSDK
             #
             # Add a new rate
             #
-            # @overload add(entitled:, product_id:, rate_card_id:, rate_type:, starting_at:, commit_rate: nil, credit_type_id: nil, custom_rate: nil, ending_before: nil, is_prorated: nil, price: nil, pricing_group_values: nil, quantity: nil, tiers: nil, use_list_prices: nil, request_options: {})
+            # @overload add(entitled:, product_id:, rate_card_id:, rate_type:, starting_at:, billing_frequency: nil, commit_rate: nil, credit_type_id: nil, custom_rate: nil, ending_before: nil, is_prorated: nil, price: nil, pricing_group_values: nil, quantity: nil, tiers: nil, use_list_prices: nil, request_options: {})
             #
             # @param entitled [Boolean]
             #
@@ -57,11 +57,13 @@ module MetronomeSDK
             #
             # @param rate_card_id [String] ID of the rate card to update
             #
-            # @param rate_type [Symbol, MetronomeSDK::V1::Contracts::RateCards::RateAddParams::RateType]
+            # @param rate_type [Symbol, MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::RateType]
             #
             # @param starting_at [Time] inclusive effective date
             #
-            # @param commit_rate [MetronomeSDK::V1::Contracts::RateCards::RateAddParams::CommitRate] A distinct rate on the rate card. You can choose to use this rate rather than li
+            # @param billing_frequency [Symbol, MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::BillingFrequency] Optional. Frequency to bill subscriptions with. Required for subscription type p
+            #
+            # @param commit_rate [MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::CommitRate] A distinct rate on the rate card. You can choose to use this rate rather than li
             #
             # @param credit_type_id [String] The Metronome ID of the credit type to associate with price, defaults to USD (ce
             #
@@ -77,7 +79,7 @@ module MetronomeSDK
             #
             # @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
             #
-            # @param tiers [Array<MetronomeSDK::Tier>] Only set for TIERED rate_type.
+            # @param tiers [Array<MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::Tier>] Only set for TIERED rate_type.
             #
             # @param use_list_prices [Boolean] Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
             #
@@ -102,7 +104,7 @@ module MetronomeSDK
             # @overload add_many(rate_card_id:, rates:, request_options: {})
             #
             # @param rate_card_id [String]
-            # @param rates [Array<MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate>]
+            # @param rates [Array<MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyParams::Rate>]
             # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
             #
             # @return [MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyResponse]

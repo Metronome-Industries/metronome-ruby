@@ -35,17 +35,21 @@ module MetronomeSDK
           ?add_reseller_royalties: ::Array[MetronomeSDK::V2::ContractEditParams::AddResellerRoyalty],
           ?add_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::AddScheduledCharge],
           ?add_spend_threshold_configuration: MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration,
+          ?add_subscriptions: ::Array[MetronomeSDK::V2::ContractEditParams::AddSubscription],
           ?allow_contract_ending_before_finalized_invoice: bool,
           ?archive_commits: ::Array[MetronomeSDK::V2::ContractEditParams::ArchiveCommit],
           ?archive_credits: ::Array[MetronomeSDK::V2::ContractEditParams::ArchiveCredit],
           ?archive_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::ArchiveScheduledCharge],
           ?remove_overrides: ::Array[MetronomeSDK::V2::ContractEditParams::RemoveOverride],
           ?update_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCommit],
-          ?update_contract_end_date: Time,
+          ?update_contract_end_date: Time?,
           ?update_credits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCredit],
           ?update_prepaid_balance_threshold_configuration: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration,
+          ?update_recurring_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit],
+          ?update_recurring_credits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit],
           ?update_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateScheduledCharge],
           ?update_spend_threshold_configuration: MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration,
+          ?update_subscriptions: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription],
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V2::ContractEditResponse
 
@@ -58,6 +62,7 @@ module MetronomeSDK
           ?invoice_contract_id: String,
           ?invoice_schedule: MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule,
           ?product_id: String,
+          ?specifiers: ::Array[MetronomeSDK::V2::ContractEditCommitParams::Specifier],
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V2::ContractEditCommitResponse
 
@@ -68,6 +73,7 @@ module MetronomeSDK
           ?applicable_product_ids: ::Array[String]?,
           ?applicable_product_tags: ::Array[String]?,
           ?product_id: String,
+          ?specifiers: ::Array[MetronomeSDK::V2::ContractEditCreditParams::Specifier],
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V2::ContractEditCreditResponse
 

@@ -25,6 +25,13 @@ module MetronomeSDK
           ?salesforce_account_id: String?,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
+
+        def to_hash: -> {
+          customer_id: String,
+          leave_stripe_invoices_in_draft: bool?,
+          salesforce_account_id: String?,
+          request_options: MetronomeSDK::RequestOptions
+        }
       end
     end
   end

@@ -3,13 +3,23 @@ module MetronomeSDK
     module V1
       module Contracts
         type rate_card_retrieve_params =
-          {  } & MetronomeSDK::Internal::Type::request_parameters
+          { id: String } & MetronomeSDK::Internal::Type::request_parameters
 
-        class RateCardRetrieveParams < MetronomeSDK::Models::ID
+        class RateCardRetrieveParams < MetronomeSDK::Internal::Type::BaseModel
           extend MetronomeSDK::Internal::Type::RequestParameters::Converter
           include MetronomeSDK::Internal::Type::RequestParameters
 
-          def initialize: (?request_options: MetronomeSDK::request_opts) -> void
+          attr_accessor id: String
+
+          def initialize: (
+            id: String,
+            ?request_options: MetronomeSDK::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            request_options: MetronomeSDK::RequestOptions
+          }
         end
       end
     end

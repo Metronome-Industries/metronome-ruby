@@ -11,6 +11,10 @@ module MetronomeSDK
           data: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data]
         ) -> void
 
+        def to_hash: -> {
+          data: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data]
+        }
+
         type data =
           {
             id: String,
@@ -19,7 +23,7 @@ module MetronomeSDK
             created_by: String,
             customer_id: String,
             overrides: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Override],
-            scheduled_charges: ::Array[MetronomeSDK::ScheduledCharge],
+            scheduled_charges: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge],
             starting_at: Time,
             transitions: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Transition],
             usage_filter: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::UsageFilter],
@@ -28,14 +32,14 @@ module MetronomeSDK
             credits: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit],
             custom_fields: ::Hash[Symbol, String],
             customer_billing_provider_configuration: MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration,
-            discounts: ::Array[MetronomeSDK::Discount],
+            discounts: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Discount],
             ending_before: Time,
             multiplier_override_prioritization: MetronomeSDK::Models::V2::ContractListResponse::Data::multiplier_override_prioritization,
             name: String,
             net_payment_terms_days: Float,
             netsuite_sales_order_id: String,
             prepaid_balance_threshold_configuration: MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration,
-            professional_services: ::Array[MetronomeSDK::ProService],
+            professional_services: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::ProfessionalService],
             rate_card_id: String,
             recurring_commits: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit],
             recurring_credits: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit],
@@ -43,6 +47,7 @@ module MetronomeSDK
             salesforce_opportunity_id: String,
             scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V2::ContractListResponse::Data::scheduled_charges_on_usage_invoices,
             spend_threshold_configuration: MetronomeSDK::Models::V2::ContractListResponse::Data::SpendThresholdConfiguration,
+            subscriptions: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription],
             total_contract_value: Float,
             uniqueness_key: String
           }
@@ -60,7 +65,7 @@ module MetronomeSDK
 
           attr_accessor overrides: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Override]
 
-          attr_accessor scheduled_charges: ::Array[MetronomeSDK::ScheduledCharge]
+          attr_accessor scheduled_charges: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge]
 
           attr_accessor starting_at: Time
 
@@ -90,11 +95,11 @@ module MetronomeSDK
             MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration
           ) -> MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration
 
-          attr_reader discounts: ::Array[MetronomeSDK::Discount]?
+          attr_reader discounts: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Discount]?
 
           def discounts=: (
-            ::Array[MetronomeSDK::Discount]
-          ) -> ::Array[MetronomeSDK::Discount]
+            ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Discount]
+          ) -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Discount]
 
           attr_reader ending_before: Time?
 
@@ -124,11 +129,11 @@ module MetronomeSDK
             MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration
           ) -> MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration
 
-          attr_reader professional_services: ::Array[MetronomeSDK::ProService]?
+          attr_reader professional_services: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::ProfessionalService]?
 
           def professional_services=: (
-            ::Array[MetronomeSDK::ProService]
-          ) -> ::Array[MetronomeSDK::ProService]
+            ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::ProfessionalService]
+          ) -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::ProfessionalService]
 
           attr_reader rate_card_id: String?
 
@@ -168,6 +173,12 @@ module MetronomeSDK
             MetronomeSDK::Models::V2::ContractListResponse::Data::SpendThresholdConfiguration
           ) -> MetronomeSDK::Models::V2::ContractListResponse::Data::SpendThresholdConfiguration
 
+          attr_reader subscriptions: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription]?
+
+          def subscriptions=: (
+            ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription]
+          ) -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription]
+
           attr_reader total_contract_value: Float?
 
           def total_contract_value=: (Float) -> Float
@@ -183,7 +194,7 @@ module MetronomeSDK
             created_by: String,
             customer_id: String,
             overrides: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Override],
-            scheduled_charges: ::Array[MetronomeSDK::ScheduledCharge],
+            scheduled_charges: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge],
             starting_at: Time,
             transitions: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Transition],
             usage_filter: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::UsageFilter],
@@ -192,14 +203,14 @@ module MetronomeSDK
             ?credits: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit],
             ?custom_fields: ::Hash[Symbol, String],
             ?customer_billing_provider_configuration: MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration,
-            ?discounts: ::Array[MetronomeSDK::Discount],
+            ?discounts: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Discount],
             ?ending_before: Time,
             ?multiplier_override_prioritization: MetronomeSDK::Models::V2::ContractListResponse::Data::multiplier_override_prioritization,
             ?name: String,
             ?net_payment_terms_days: Float,
             ?netsuite_sales_order_id: String,
             ?prepaid_balance_threshold_configuration: MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration,
-            ?professional_services: ::Array[MetronomeSDK::ProService],
+            ?professional_services: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::ProfessionalService],
             ?rate_card_id: String,
             ?recurring_commits: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit],
             ?recurring_credits: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit],
@@ -207,16 +218,53 @@ module MetronomeSDK
             ?salesforce_opportunity_id: String,
             ?scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V2::ContractListResponse::Data::scheduled_charges_on_usage_invoices,
             ?spend_threshold_configuration: MetronomeSDK::Models::V2::ContractListResponse::Data::SpendThresholdConfiguration,
+            ?subscriptions: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription],
             ?total_contract_value: Float,
             ?uniqueness_key: String
           ) -> void
+
+          def to_hash: -> {
+            id: String,
+            commits: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit],
+            created_at: Time,
+            created_by: String,
+            customer_id: String,
+            overrides: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Override],
+            scheduled_charges: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge],
+            starting_at: Time,
+            transitions: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Transition],
+            usage_filter: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::UsageFilter],
+            usage_statement_schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::UsageStatementSchedule,
+            archived_at: Time,
+            credits: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit],
+            custom_fields: ::Hash[Symbol, String],
+            customer_billing_provider_configuration: MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration,
+            discounts: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Discount],
+            ending_before: Time,
+            multiplier_override_prioritization: MetronomeSDK::Models::V2::ContractListResponse::Data::multiplier_override_prioritization,
+            name: String,
+            net_payment_terms_days: Float,
+            netsuite_sales_order_id: String,
+            prepaid_balance_threshold_configuration: MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration,
+            professional_services: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::ProfessionalService],
+            rate_card_id: String,
+            recurring_commits: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit],
+            recurring_credits: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit],
+            reseller_royalties: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::ResellerRoyalty],
+            salesforce_opportunity_id: String,
+            scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V2::ContractListResponse::Data::scheduled_charges_on_usage_invoices,
+            spend_threshold_configuration: MetronomeSDK::Models::V2::ContractListResponse::Data::SpendThresholdConfiguration,
+            subscriptions: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription],
+            total_contract_value: Float,
+            uniqueness_key: String
+          }
 
           type commit =
             {
               id: String,
               product: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Product,
               type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::type_,
-              access_schedule: MetronomeSDK::ScheduleDuration,
+              access_schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule,
               applicable_contract_ids: ::Array[String],
               applicable_product_ids: ::Array[String],
               applicable_product_tags: ::Array[String],
@@ -226,7 +274,7 @@ module MetronomeSDK
               custom_fields: ::Hash[Symbol, String],
               description: String,
               invoice_contract: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceContract,
-              invoice_schedule: MetronomeSDK::SchedulePointInTime,
+              invoice_schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule,
               ledger: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::ledger],
               name: String,
               netsuite_sales_order_id: String,
@@ -234,7 +282,8 @@ module MetronomeSDK
               rate_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::rate_type,
               rolled_over_from: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::RolledOverFrom,
               rollover_fraction: Float,
-              salesforce_opportunity_id: String
+              salesforce_opportunity_id: String,
+              specifiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Specifier]
             }
 
           class Commit < MetronomeSDK::Internal::Type::BaseModel
@@ -244,11 +293,11 @@ module MetronomeSDK
 
             attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::type_
 
-            attr_reader access_schedule: MetronomeSDK::ScheduleDuration?
+            attr_reader access_schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule?
 
             def access_schedule=: (
-              MetronomeSDK::ScheduleDuration
-            ) -> MetronomeSDK::ScheduleDuration
+              MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule
+            ) -> MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule
 
             attr_reader applicable_contract_ids: ::Array[String]?
 
@@ -292,11 +341,11 @@ module MetronomeSDK
               MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceContract
             ) -> MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceContract
 
-            attr_reader invoice_schedule: MetronomeSDK::SchedulePointInTime?
+            attr_reader invoice_schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule?
 
             def invoice_schedule=: (
-              MetronomeSDK::SchedulePointInTime
-            ) -> MetronomeSDK::SchedulePointInTime
+              MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule
+            ) -> MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule
 
             attr_reader ledger: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::ledger]?
 
@@ -336,11 +385,17 @@ module MetronomeSDK
 
             def salesforce_opportunity_id=: (String) -> String
 
+            attr_reader specifiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Specifier]?
+
+            def specifiers=: (
+              ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Specifier]
+            ) -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Specifier]
+
             def initialize: (
               id: String,
               product: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Product,
               type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::type_,
-              ?access_schedule: MetronomeSDK::ScheduleDuration,
+              ?access_schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule,
               ?applicable_contract_ids: ::Array[String],
               ?applicable_product_ids: ::Array[String],
               ?applicable_product_tags: ::Array[String],
@@ -350,7 +405,7 @@ module MetronomeSDK
               ?custom_fields: ::Hash[Symbol, String],
               ?description: String,
               ?invoice_contract: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceContract,
-              ?invoice_schedule: MetronomeSDK::SchedulePointInTime,
+              ?invoice_schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule,
               ?ledger: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::ledger],
               ?name: String,
               ?netsuite_sales_order_id: String,
@@ -358,8 +413,35 @@ module MetronomeSDK
               ?rate_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::rate_type,
               ?rolled_over_from: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::RolledOverFrom,
               ?rollover_fraction: Float,
-              ?salesforce_opportunity_id: String
+              ?salesforce_opportunity_id: String,
+              ?specifiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Specifier]
             ) -> void
+
+            def to_hash: -> {
+              id: String,
+              product: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Product,
+              type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::type_,
+              access_schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule,
+              applicable_contract_ids: ::Array[String],
+              applicable_product_ids: ::Array[String],
+              applicable_product_tags: ::Array[String],
+              archived_at: Time,
+              balance: Float,
+              contract: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Contract,
+              custom_fields: ::Hash[Symbol, String],
+              description: String,
+              invoice_contract: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceContract,
+              invoice_schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule,
+              ledger: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::ledger],
+              name: String,
+              netsuite_sales_order_id: String,
+              priority: Float,
+              rate_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::rate_type,
+              rolled_over_from: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::RolledOverFrom,
+              rollover_fraction: Float,
+              salesforce_opportunity_id: String,
+              specifiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Specifier]
+            }
 
             type product = { id: String, name: String }
 
@@ -369,6 +451,8 @@ module MetronomeSDK
               attr_accessor name: String
 
               def initialize: (id: String, name: String) -> void
+
+              def to_hash: -> { id: String, name: String }
             end
 
             type type_ = :PREPAID | :POSTPAID
@@ -382,12 +466,84 @@ module MetronomeSDK
               def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::type_]
             end
 
+            type access_schedule =
+              {
+                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule::ScheduleItem],
+                credit_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule::CreditType
+              }
+
+            class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor schedule_items: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule::ScheduleItem]
+
+              attr_reader credit_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule::CreditType?
+
+              def credit_type=: (
+                MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule::CreditType
+              ) -> MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule::CreditType
+
+              def initialize: (
+                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule::ScheduleItem],
+                ?credit_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule::CreditType
+              ) -> void
+
+              def to_hash: -> {
+                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule::ScheduleItem],
+                credit_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule::CreditType
+              }
+
+              type schedule_item =
+                {
+                  id: String,
+                  amount: Float,
+                  ending_before: Time,
+                  starting_at: Time
+                }
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor amount: Float
+
+                attr_accessor ending_before: Time
+
+                attr_accessor starting_at: Time
+
+                def initialize: (
+                  id: String,
+                  amount: Float,
+                  ending_before: Time,
+                  starting_at: Time
+                ) -> void
+
+                def to_hash: -> {
+                  id: String,
+                  amount: Float,
+                  ending_before: Time,
+                  starting_at: Time
+                }
+              end
+
+              type credit_type = { id: String, name: String }
+
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor name: String
+
+                def initialize: (id: String, name: String) -> void
+
+                def to_hash: -> { id: String, name: String }
+              end
+            end
+
             type contract = { id: String }
 
             class Contract < MetronomeSDK::Internal::Type::BaseModel
               attr_accessor id: String
 
               def initialize: (id: String) -> void
+
+              def to_hash: -> { id: String }
             end
 
             type invoice_contract = { id: String }
@@ -396,49 +552,142 @@ module MetronomeSDK
               attr_accessor id: String
 
               def initialize: (id: String) -> void
+
+              def to_hash: -> { id: String }
+            end
+
+            type invoice_schedule =
+              {
+                credit_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule::CreditType,
+                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule::ScheduleItem]
+              }
+
+            class InvoiceSchedule < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader credit_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule::CreditType?
+
+              def credit_type=: (
+                MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule::CreditType
+              ) -> MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule::CreditType
+
+              attr_reader schedule_items: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule::ScheduleItem]?
+
+              def schedule_items=: (
+                ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule::ScheduleItem]
+              ) -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule::ScheduleItem]
+
+              def initialize: (
+                ?credit_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule::CreditType,
+                ?schedule_items: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule::ScheduleItem]
+              ) -> void
+
+              def to_hash: -> {
+                credit_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule::CreditType,
+                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule::ScheduleItem]
+              }
+
+              type credit_type = { id: String, name: String }
+
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor name: String
+
+                def initialize: (id: String, name: String) -> void
+
+                def to_hash: -> { id: String, name: String }
+              end
+
+              type schedule_item =
+                {
+                  id: String,
+                  amount: Float,
+                  invoice_id: String,
+                  quantity: Float,
+                  timestamp: Time,
+                  unit_price: Float
+                }
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor amount: Float
+
+                attr_accessor invoice_id: String
+
+                attr_accessor quantity: Float
+
+                attr_accessor timestamp: Time
+
+                attr_accessor unit_price: Float
+
+                def initialize: (
+                  id: String,
+                  amount: Float,
+                  invoice_id: String,
+                  quantity: Float,
+                  timestamp: Time,
+                  unit_price: Float
+                ) -> void
+
+                def to_hash: -> {
+                  id: String,
+                  amount: Float,
+                  invoice_id: String,
+                  quantity: Float,
+                  timestamp: Time,
+                  unit_price: Float
+                }
+              end
             end
 
             type ledger =
-              MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry
-              | MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry
-              | MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry
-              | MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry
-              | MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry
-              | MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry
-              | MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry
-              | MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry
-              | MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry
-              | MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry
-              | MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry
-              | MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry
-              | MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry
+              MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember0
+              | MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember1
+              | MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember2
+              | MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember3
+              | MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember4
+              | MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember5
+              | MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember6
+              | MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember7
+              | MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember8
+              | MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember9
+              | MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember10
+              | MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember11
+              | MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember12
 
             module Ledger
               extend MetronomeSDK::Internal::Type::Union
 
-              type prepaid_commit_segment_start_ledger_entry =
+              type union_member0 =
                 {
                   amount: Float,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember0::type_
                 }
 
-              class PrepaidCommitSegmentStartLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember0 < MetronomeSDK::Internal::Type::BaseModel
                 attr_accessor amount: Float
 
                 attr_accessor segment_id: String
 
                 attr_accessor timestamp: Time
 
-                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::type_
+                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember0::type_
 
                 def initialize: (
                   amount: Float,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember0::type_
                 ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember0::type_
+                }
 
                 type type_ = :PREPAID_COMMIT_SEGMENT_START
 
@@ -447,20 +696,20 @@ module MetronomeSDK
 
                   PREPAID_COMMIT_SEGMENT_START: :PREPAID_COMMIT_SEGMENT_START
 
-                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::type_]
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember0::type_]
                 end
               end
 
-              type prepaid_commit_automated_invoice_deduction_ledger_entry =
+              type union_member1 =
                 {
                   amount: Float,
                   invoice_id: String,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember1::type_
                 }
 
-              class PrepaidCommitAutomatedInvoiceDeductionLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember1 < MetronomeSDK::Internal::Type::BaseModel
                 attr_accessor amount: Float
 
                 attr_accessor invoice_id: String
@@ -469,15 +718,23 @@ module MetronomeSDK
 
                 attr_accessor timestamp: Time
 
-                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::type_
+                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember1::type_
 
                 def initialize: (
                   amount: Float,
                   invoice_id: String,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember1::type_
                 ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  invoice_id: String,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember1::type_
+                }
 
                 type type_ = :PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
 
@@ -486,20 +743,20 @@ module MetronomeSDK
 
                   PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION: :PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
 
-                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::type_]
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember1::type_]
                 end
               end
 
-              type prepaid_commit_rollover_ledger_entry =
+              type union_member2 =
                 {
                   amount: Float,
                   new_contract_id: String,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember2::type_
                 }
 
-              class PrepaidCommitRolloverLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember2 < MetronomeSDK::Internal::Type::BaseModel
                 attr_accessor amount: Float
 
                 attr_accessor new_contract_id: String
@@ -508,15 +765,23 @@ module MetronomeSDK
 
                 attr_accessor timestamp: Time
 
-                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::type_
+                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember2::type_
 
                 def initialize: (
                   amount: Float,
                   new_contract_id: String,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember2::type_
                 ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  new_contract_id: String,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember2::type_
+                }
 
                 type type_ = :PREPAID_COMMIT_ROLLOVER
 
@@ -525,33 +790,40 @@ module MetronomeSDK
 
                   PREPAID_COMMIT_ROLLOVER: :PREPAID_COMMIT_ROLLOVER
 
-                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::type_]
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember2::type_]
                 end
               end
 
-              type prepaid_commit_expiration_ledger_entry =
+              type union_member3 =
                 {
                   amount: Float,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember3::type_
                 }
 
-              class PrepaidCommitExpirationLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember3 < MetronomeSDK::Internal::Type::BaseModel
                 attr_accessor amount: Float
 
                 attr_accessor segment_id: String
 
                 attr_accessor timestamp: Time
 
-                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::type_
+                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember3::type_
 
                 def initialize: (
                   amount: Float,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember3::type_
                 ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember3::type_
+                }
 
                 type type_ = :PREPAID_COMMIT_EXPIRATION
 
@@ -560,20 +832,20 @@ module MetronomeSDK
 
                   PREPAID_COMMIT_EXPIRATION: :PREPAID_COMMIT_EXPIRATION
 
-                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::type_]
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember3::type_]
                 end
               end
 
-              type prepaid_commit_canceled_ledger_entry =
+              type union_member4 =
                 {
                   amount: Float,
                   invoice_id: String,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember4::type_
                 }
 
-              class PrepaidCommitCanceledLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember4 < MetronomeSDK::Internal::Type::BaseModel
                 attr_accessor amount: Float
 
                 attr_accessor invoice_id: String
@@ -582,15 +854,23 @@ module MetronomeSDK
 
                 attr_accessor timestamp: Time
 
-                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::type_
+                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember4::type_
 
                 def initialize: (
                   amount: Float,
                   invoice_id: String,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember4::type_
                 ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  invoice_id: String,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember4::type_
+                }
 
                 type type_ = :PREPAID_COMMIT_CANCELED
 
@@ -599,20 +879,20 @@ module MetronomeSDK
 
                   PREPAID_COMMIT_CANCELED: :PREPAID_COMMIT_CANCELED
 
-                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::type_]
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember4::type_]
                 end
               end
 
-              type prepaid_commit_credited_ledger_entry =
+              type union_member5 =
                 {
                   amount: Float,
                   invoice_id: String,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember5::type_
                 }
 
-              class PrepaidCommitCreditedLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember5 < MetronomeSDK::Internal::Type::BaseModel
                 attr_accessor amount: Float
 
                 attr_accessor invoice_id: String
@@ -621,15 +901,23 @@ module MetronomeSDK
 
                 attr_accessor timestamp: Time
 
-                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::type_
+                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember5::type_
 
                 def initialize: (
                   amount: Float,
                   invoice_id: String,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember5::type_
                 ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  invoice_id: String,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember5::type_
+                }
 
                 type type_ = :PREPAID_COMMIT_CREDITED
 
@@ -638,29 +926,35 @@ module MetronomeSDK
 
                   PREPAID_COMMIT_CREDITED: :PREPAID_COMMIT_CREDITED
 
-                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::type_]
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember5::type_]
                 end
               end
 
-              type postpaid_commit_initial_balance_ledger_entry =
+              type union_member6 =
                 {
                   amount: Float,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember6::type_
                 }
 
-              class PostpaidCommitInitialBalanceLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember6 < MetronomeSDK::Internal::Type::BaseModel
                 attr_accessor amount: Float
 
                 attr_accessor timestamp: Time
 
-                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::type_
+                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember6::type_
 
                 def initialize: (
                   amount: Float,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember6::type_
                 ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember6::type_
+                }
 
                 type type_ = :POSTPAID_COMMIT_INITIAL_BALANCE
 
@@ -669,20 +963,20 @@ module MetronomeSDK
 
                   POSTPAID_COMMIT_INITIAL_BALANCE: :POSTPAID_COMMIT_INITIAL_BALANCE
 
-                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::type_]
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember6::type_]
                 end
               end
 
-              type postpaid_commit_automated_invoice_deduction_ledger_entry =
+              type union_member7 =
                 {
                   amount: Float,
                   invoice_id: String,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember7::type_
                 }
 
-              class PostpaidCommitAutomatedInvoiceDeductionLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember7 < MetronomeSDK::Internal::Type::BaseModel
                 attr_accessor amount: Float
 
                 attr_accessor invoice_id: String
@@ -691,15 +985,23 @@ module MetronomeSDK
 
                 attr_accessor timestamp: Time
 
-                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::type_
+                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember7::type_
 
                 def initialize: (
                   amount: Float,
                   invoice_id: String,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember7::type_
                 ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  invoice_id: String,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember7::type_
+                }
 
                 type type_ = :POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
 
@@ -708,20 +1010,20 @@ module MetronomeSDK
 
                   POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION: :POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
 
-                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::type_]
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember7::type_]
                 end
               end
 
-              type postpaid_commit_rollover_ledger_entry =
+              type union_member8 =
                 {
                   amount: Float,
                   new_contract_id: String,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember8::type_
                 }
 
-              class PostpaidCommitRolloverLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember8 < MetronomeSDK::Internal::Type::BaseModel
                 attr_accessor amount: Float
 
                 attr_accessor new_contract_id: String
@@ -730,15 +1032,23 @@ module MetronomeSDK
 
                 attr_accessor timestamp: Time
 
-                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::type_
+                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember8::type_
 
                 def initialize: (
                   amount: Float,
                   new_contract_id: String,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember8::type_
                 ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  new_contract_id: String,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember8::type_
+                }
 
                 type type_ = :POSTPAID_COMMIT_ROLLOVER
 
@@ -747,33 +1057,40 @@ module MetronomeSDK
 
                   POSTPAID_COMMIT_ROLLOVER: :POSTPAID_COMMIT_ROLLOVER
 
-                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::type_]
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember8::type_]
                 end
               end
 
-              type postpaid_commit_trueup_ledger_entry =
+              type union_member9 =
                 {
                   amount: Float,
                   invoice_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember9::type_
                 }
 
-              class PostpaidCommitTrueupLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember9 < MetronomeSDK::Internal::Type::BaseModel
                 attr_accessor amount: Float
 
                 attr_accessor invoice_id: String
 
                 attr_accessor timestamp: Time
 
-                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::type_
+                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember9::type_
 
                 def initialize: (
                   amount: Float,
                   invoice_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember9::type_
                 ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  invoice_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember9::type_
+                }
 
                 type type_ = :POSTPAID_COMMIT_TRUEUP
 
@@ -782,33 +1099,40 @@ module MetronomeSDK
 
                   POSTPAID_COMMIT_TRUEUP: :POSTPAID_COMMIT_TRUEUP
 
-                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::type_]
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember9::type_]
                 end
               end
 
-              type prepaid_commit_manual_ledger_entry =
+              type union_member10 =
                 {
                   amount: Float,
                   reason: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember10::type_
                 }
 
-              class PrepaidCommitManualLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember10 < MetronomeSDK::Internal::Type::BaseModel
                 attr_accessor amount: Float
 
                 attr_accessor reason: String
 
                 attr_accessor timestamp: Time
 
-                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry::type_
+                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember10::type_
 
                 def initialize: (
                   amount: Float,
                   reason: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember10::type_
                 ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  reason: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember10::type_
+                }
 
                 type type_ = :PREPAID_COMMIT_MANUAL
 
@@ -817,33 +1141,40 @@ module MetronomeSDK
 
                   PREPAID_COMMIT_MANUAL: :PREPAID_COMMIT_MANUAL
 
-                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry::type_]
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember10::type_]
                 end
               end
 
-              type postpaid_commit_manual_ledger_entry =
+              type union_member11 =
                 {
                   amount: Float,
                   reason: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember11::type_
                 }
 
-              class PostpaidCommitManualLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember11 < MetronomeSDK::Internal::Type::BaseModel
                 attr_accessor amount: Float
 
                 attr_accessor reason: String
 
                 attr_accessor timestamp: Time
 
-                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry::type_
+                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember11::type_
 
                 def initialize: (
                   amount: Float,
                   reason: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember11::type_
                 ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  reason: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember11::type_
+                }
 
                 type type_ = :POSTPAID_COMMIT_MANUAL
 
@@ -852,29 +1183,35 @@ module MetronomeSDK
 
                   POSTPAID_COMMIT_MANUAL: :POSTPAID_COMMIT_MANUAL
 
-                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry::type_]
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember11::type_]
                 end
               end
 
-              type postpaid_commit_expiration_ledger_entry =
+              type union_member12 =
                 {
                   amount: Float,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember12::type_
                 }
 
-              class PostpaidCommitExpirationLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember12 < MetronomeSDK::Internal::Type::BaseModel
                 attr_accessor amount: Float
 
                 attr_accessor timestamp: Time
 
-                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::type_
+                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember12::type_
 
                 def initialize: (
                   amount: Float,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember12::type_
                 ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember12::type_
+                }
 
                 type type_ = :POSTPAID_COMMIT_EXPIRATION
 
@@ -883,7 +1220,7 @@ module MetronomeSDK
 
                   POSTPAID_COMMIT_EXPIRATION: :POSTPAID_COMMIT_EXPIRATION
 
-                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::type_]
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember12::type_]
                 end
               end
 
@@ -909,6 +1246,52 @@ module MetronomeSDK
               attr_accessor contract_id: String
 
               def initialize: (commit_id: String, contract_id: String) -> void
+
+              def to_hash: -> { commit_id: String, contract_id: String }
+            end
+
+            type specifier =
+              {
+                presentation_group_values: ::Hash[Symbol, String],
+                pricing_group_values: ::Hash[Symbol, String],
+                product_id: String,
+                product_tags: ::Array[String]
+              }
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader presentation_group_values: ::Hash[Symbol, String]?
+
+              def presentation_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+              def pricing_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader product_id: String?
+
+              def product_id=: (String) -> String
+
+              attr_reader product_tags: ::Array[String]?
+
+              def product_tags=: (::Array[String]) -> ::Array[String]
+
+              def initialize: (
+                ?presentation_group_values: ::Hash[Symbol, String],
+                ?pricing_group_values: ::Hash[Symbol, String],
+                ?product_id: String,
+                ?product_tags: ::Array[String]
+              ) -> void
+
+              def to_hash: -> {
+                presentation_group_values: ::Hash[Symbol, String],
+                pricing_group_values: ::Hash[Symbol, String],
+                product_id: String,
+                product_tags: ::Array[String]
+              }
             end
           end
 
@@ -1012,8 +1395,26 @@ module MetronomeSDK
               ?type: MetronomeSDK::Models::V2::ContractListResponse::Data::Override::type_
             ) -> void
 
+            def to_hash: -> {
+              id: String,
+              starting_at: Time,
+              applicable_product_tags: ::Array[String],
+              ending_before: Time,
+              entitled: bool,
+              is_commit_specific: bool,
+              multiplier: Float,
+              override_specifiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverrideSpecifier],
+              override_tiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverrideTier],
+              overwrite_rate: MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate,
+              priority: Float,
+              product: MetronomeSDK::Models::V2::ContractListResponse::Data::Override::Product,
+              target: MetronomeSDK::Models::V2::ContractListResponse::Data::Override::target,
+              type: MetronomeSDK::Models::V2::ContractListResponse::Data::Override::type_
+            }
+
             type override_specifier =
               {
+                billing_frequency: MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverrideSpecifier::billing_frequency,
                 commit_ids: ::Array[String],
                 presentation_group_values: ::Hash[Symbol, String?],
                 pricing_group_values: ::Hash[Symbol, String],
@@ -1024,6 +1425,12 @@ module MetronomeSDK
               }
 
             class OverrideSpecifier < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader billing_frequency: MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverrideSpecifier::billing_frequency?
+
+              def billing_frequency=: (
+                MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverrideSpecifier::billing_frequency
+              ) -> MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverrideSpecifier::billing_frequency
+
               attr_reader commit_ids: ::Array[String]?
 
               def commit_ids=: (::Array[String]) -> ::Array[String]
@@ -1057,6 +1464,7 @@ module MetronomeSDK
               def recurring_credit_ids=: (::Array[String]) -> ::Array[String]
 
               def initialize: (
+                ?billing_frequency: MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverrideSpecifier::billing_frequency,
                 ?commit_ids: ::Array[String],
                 ?presentation_group_values: ::Hash[Symbol, String?],
                 ?pricing_group_values: ::Hash[Symbol, String],
@@ -1065,6 +1473,30 @@ module MetronomeSDK
                 ?recurring_commit_ids: ::Array[String],
                 ?recurring_credit_ids: ::Array[String]
               ) -> void
+
+              def to_hash: -> {
+                billing_frequency: MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverrideSpecifier::billing_frequency,
+                commit_ids: ::Array[String],
+                presentation_group_values: ::Hash[Symbol, String?],
+                pricing_group_values: ::Hash[Symbol, String],
+                product_id: String,
+                product_tags: ::Array[String],
+                recurring_commit_ids: ::Array[String],
+                recurring_credit_ids: ::Array[String]
+              }
+
+              type billing_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+
+              module BillingFrequency
+                extend MetronomeSDK::Internal::Type::Enum
+
+                MONTHLY: :MONTHLY
+                QUARTERLY: :QUARTERLY
+                ANNUAL: :ANNUAL
+                WEEKLY: :WEEKLY
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverrideSpecifier::billing_frequency]
+              end
             end
 
             type override_tier = { multiplier: Float, size: Float }
@@ -1077,27 +1509,29 @@ module MetronomeSDK
               def size=: (Float) -> Float
 
               def initialize: (multiplier: Float, ?size: Float) -> void
+
+              def to_hash: -> { multiplier: Float, size: Float }
             end
 
             type overwrite_rate =
               {
                 rate_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::rate_type,
-                credit_type: MetronomeSDK::CreditTypeData,
+                credit_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::CreditType,
                 custom_rate: ::Hash[Symbol, top],
                 is_prorated: bool,
                 price: Float,
                 quantity: Float,
-                tiers: ::Array[MetronomeSDK::Tier]
+                tiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::Tier]
               }
 
             class OverwriteRate < MetronomeSDK::Internal::Type::BaseModel
               attr_accessor rate_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::rate_type
 
-              attr_reader credit_type: MetronomeSDK::CreditTypeData?
+              attr_reader credit_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::CreditType?
 
               def credit_type=: (
-                MetronomeSDK::CreditTypeData
-              ) -> MetronomeSDK::CreditTypeData
+                MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::CreditType
+              ) -> MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::CreditType
 
               attr_reader custom_rate: ::Hash[Symbol, top]?
 
@@ -1115,21 +1549,31 @@ module MetronomeSDK
 
               def quantity=: (Float) -> Float
 
-              attr_reader tiers: ::Array[MetronomeSDK::Tier]?
+              attr_reader tiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::Tier]?
 
               def tiers=: (
-                ::Array[MetronomeSDK::Tier]
-              ) -> ::Array[MetronomeSDK::Tier]
+                ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::Tier]
+              ) -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::Tier]
 
               def initialize: (
                 rate_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::rate_type,
-                ?credit_type: MetronomeSDK::CreditTypeData,
+                ?credit_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::CreditType,
                 ?custom_rate: ::Hash[Symbol, top],
                 ?is_prorated: bool,
                 ?price: Float,
                 ?quantity: Float,
-                ?tiers: ::Array[MetronomeSDK::Tier]
+                ?tiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::Tier]
               ) -> void
+
+              def to_hash: -> {
+                rate_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::rate_type,
+                credit_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::CreditType,
+                custom_rate: ::Hash[Symbol, top],
+                is_prorated: bool,
+                price: Float,
+                quantity: Float,
+                tiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::Tier]
+              }
 
               type rate_type =
                 :FLAT | :PERCENTAGE | :SUBSCRIPTION | :TIERED | :CUSTOM
@@ -1145,6 +1589,32 @@ module MetronomeSDK
 
                 def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::rate_type]
               end
+
+              type credit_type = { id: String, name: String }
+
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor name: String
+
+                def initialize: (id: String, name: String) -> void
+
+                def to_hash: -> { id: String, name: String }
+              end
+
+              type tier = { price: Float, size: Float }
+
+              class Tier < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor price: Float
+
+                attr_reader size: Float?
+
+                def size=: (Float) -> Float
+
+                def initialize: (price: Float, ?size: Float) -> void
+
+                def to_hash: -> { price: Float, size: Float }
+              end
             end
 
             type product = { id: String, name: String }
@@ -1155,6 +1625,8 @@ module MetronomeSDK
               attr_accessor name: String
 
               def initialize: (id: String, name: String) -> void
+
+              def to_hash: -> { id: String, name: String }
             end
 
             type target = :COMMIT_RATE | :LIST_RATE
@@ -1181,6 +1653,159 @@ module MetronomeSDK
             end
           end
 
+          type scheduled_charge =
+            {
+              id: String,
+              product: MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Product,
+              schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule,
+              archived_at: Time,
+              custom_fields: ::Hash[Symbol, String],
+              name: String,
+              netsuite_sales_order_id: String
+            }
+
+          class ScheduledCharge < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor product: MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Product
+
+            attr_accessor schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule
+
+            attr_reader archived_at: Time?
+
+            def archived_at=: (Time) -> Time
+
+            attr_reader custom_fields: ::Hash[Symbol, String]?
+
+            def custom_fields=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_reader netsuite_sales_order_id: String?
+
+            def netsuite_sales_order_id=: (String) -> String
+
+            def initialize: (
+              id: String,
+              product: MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Product,
+              schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule,
+              ?archived_at: Time,
+              ?custom_fields: ::Hash[Symbol, String],
+              ?name: String,
+              ?netsuite_sales_order_id: String
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              product: MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Product,
+              schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule,
+              archived_at: Time,
+              custom_fields: ::Hash[Symbol, String],
+              name: String,
+              netsuite_sales_order_id: String
+            }
+
+            type product = { id: String, name: String }
+
+            class Product < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor name: String
+
+              def initialize: (id: String, name: String) -> void
+
+              def to_hash: -> { id: String, name: String }
+            end
+
+            type schedule =
+              {
+                credit_type: MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule::CreditType,
+                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule::ScheduleItem]
+              }
+
+            class Schedule < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader credit_type: MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule::CreditType?
+
+              def credit_type=: (
+                MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule::CreditType
+              ) -> MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule::CreditType
+
+              attr_reader schedule_items: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule::ScheduleItem]?
+
+              def schedule_items=: (
+                ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule::ScheduleItem]
+              ) -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule::ScheduleItem]
+
+              def initialize: (
+                ?credit_type: MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule::CreditType,
+                ?schedule_items: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule::ScheduleItem]
+              ) -> void
+
+              def to_hash: -> {
+                credit_type: MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule::CreditType,
+                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule::ScheduleItem]
+              }
+
+              type credit_type = { id: String, name: String }
+
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor name: String
+
+                def initialize: (id: String, name: String) -> void
+
+                def to_hash: -> { id: String, name: String }
+              end
+
+              type schedule_item =
+                {
+                  id: String,
+                  amount: Float,
+                  invoice_id: String,
+                  quantity: Float,
+                  timestamp: Time,
+                  unit_price: Float
+                }
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor amount: Float
+
+                attr_accessor invoice_id: String
+
+                attr_accessor quantity: Float
+
+                attr_accessor timestamp: Time
+
+                attr_accessor unit_price: Float
+
+                def initialize: (
+                  id: String,
+                  amount: Float,
+                  invoice_id: String,
+                  quantity: Float,
+                  timestamp: Time,
+                  unit_price: Float
+                ) -> void
+
+                def to_hash: -> {
+                  id: String,
+                  amount: Float,
+                  invoice_id: String,
+                  quantity: Float,
+                  timestamp: Time,
+                  unit_price: Float
+                }
+              end
+            end
+          end
+
           type transition =
             {
               from_contract_id: String,
@@ -1200,6 +1825,12 @@ module MetronomeSDK
               to_contract_id: String,
               type: MetronomeSDK::Models::V2::ContractListResponse::Data::Transition::type_
             ) -> void
+
+            def to_hash: -> {
+              from_contract_id: String,
+              to_contract_id: String,
+              type: MetronomeSDK::Models::V2::ContractListResponse::Data::Transition::type_
+            }
 
             type type_ = :SUPERSEDE | :RENEWAL
 
@@ -1238,6 +1869,13 @@ module MetronomeSDK
               starting_at: Time,
               ?ending_before: Time
             ) -> void
+
+            def to_hash: -> {
+              group_key: String,
+              group_values: ::Array[String],
+              starting_at: Time,
+              ending_before: Time
+            }
           end
 
           type usage_statement_schedule =
@@ -1255,6 +1893,11 @@ module MetronomeSDK
               billing_anchor_date: Time,
               frequency: MetronomeSDK::Models::V2::ContractListResponse::Data::UsageStatementSchedule::frequency
             ) -> void
+
+            def to_hash: -> {
+              billing_anchor_date: Time,
+              frequency: MetronomeSDK::Models::V2::ContractListResponse::Data::UsageStatementSchedule::frequency
+            }
 
             type frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
 
@@ -1275,7 +1918,7 @@ module MetronomeSDK
               id: String,
               product: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Product,
               type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::type_,
-              access_schedule: MetronomeSDK::ScheduleDuration,
+              access_schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule,
               applicable_contract_ids: ::Array[String],
               applicable_product_ids: ::Array[String],
               applicable_product_tags: ::Array[String],
@@ -1287,7 +1930,8 @@ module MetronomeSDK
               name: String,
               netsuite_sales_order_id: String,
               priority: Float,
-              salesforce_opportunity_id: String
+              salesforce_opportunity_id: String,
+              specifiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Specifier]
             }
 
           class Credit < MetronomeSDK::Internal::Type::BaseModel
@@ -1297,11 +1941,11 @@ module MetronomeSDK
 
             attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::type_
 
-            attr_reader access_schedule: MetronomeSDK::ScheduleDuration?
+            attr_reader access_schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule?
 
             def access_schedule=: (
-              MetronomeSDK::ScheduleDuration
-            ) -> MetronomeSDK::ScheduleDuration
+              MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule
+            ) -> MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule
 
             attr_reader applicable_contract_ids: ::Array[String]?
 
@@ -1357,11 +2001,17 @@ module MetronomeSDK
 
             def salesforce_opportunity_id=: (String) -> String
 
+            attr_reader specifiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Specifier]?
+
+            def specifiers=: (
+              ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Specifier]
+            ) -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Specifier]
+
             def initialize: (
               id: String,
               product: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Product,
               type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::type_,
-              ?access_schedule: MetronomeSDK::ScheduleDuration,
+              ?access_schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule,
               ?applicable_contract_ids: ::Array[String],
               ?applicable_product_ids: ::Array[String],
               ?applicable_product_tags: ::Array[String],
@@ -1373,8 +2023,29 @@ module MetronomeSDK
               ?name: String,
               ?netsuite_sales_order_id: String,
               ?priority: Float,
-              ?salesforce_opportunity_id: String
+              ?salesforce_opportunity_id: String,
+              ?specifiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Specifier]
             ) -> void
+
+            def to_hash: -> {
+              id: String,
+              product: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Product,
+              type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::type_,
+              access_schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule,
+              applicable_contract_ids: ::Array[String],
+              applicable_product_ids: ::Array[String],
+              applicable_product_tags: ::Array[String],
+              balance: Float,
+              contract: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Contract,
+              custom_fields: ::Hash[Symbol, String],
+              description: String,
+              ledger: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::ledger],
+              name: String,
+              netsuite_sales_order_id: String,
+              priority: Float,
+              salesforce_opportunity_id: String,
+              specifiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Specifier]
+            }
 
             type product = { id: String, name: String }
 
@@ -1384,6 +2055,8 @@ module MetronomeSDK
               attr_accessor name: String
 
               def initialize: (id: String, name: String) -> void
+
+              def to_hash: -> { id: String, name: String }
             end
 
             type type_ = :CREDIT
@@ -1396,48 +2069,127 @@ module MetronomeSDK
               def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::type_]
             end
 
+            type access_schedule =
+              {
+                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule::ScheduleItem],
+                credit_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule::CreditType
+              }
+
+            class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor schedule_items: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule::ScheduleItem]
+
+              attr_reader credit_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule::CreditType?
+
+              def credit_type=: (
+                MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule::CreditType
+              ) -> MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule::CreditType
+
+              def initialize: (
+                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule::ScheduleItem],
+                ?credit_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule::CreditType
+              ) -> void
+
+              def to_hash: -> {
+                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule::ScheduleItem],
+                credit_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule::CreditType
+              }
+
+              type schedule_item =
+                {
+                  id: String,
+                  amount: Float,
+                  ending_before: Time,
+                  starting_at: Time
+                }
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor amount: Float
+
+                attr_accessor ending_before: Time
+
+                attr_accessor starting_at: Time
+
+                def initialize: (
+                  id: String,
+                  amount: Float,
+                  ending_before: Time,
+                  starting_at: Time
+                ) -> void
+
+                def to_hash: -> {
+                  id: String,
+                  amount: Float,
+                  ending_before: Time,
+                  starting_at: Time
+                }
+              end
+
+              type credit_type = { id: String, name: String }
+
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor name: String
+
+                def initialize: (id: String, name: String) -> void
+
+                def to_hash: -> { id: String, name: String }
+              end
+            end
+
             type contract = { id: String }
 
             class Contract < MetronomeSDK::Internal::Type::BaseModel
               attr_accessor id: String
 
               def initialize: (id: String) -> void
+
+              def to_hash: -> { id: String }
             end
 
             type ledger =
-              MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry
-              | MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry
-              | MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry
-              | MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry
-              | MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry
-              | MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditManualLedgerEntry
+              MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember0
+              | MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember1
+              | MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember2
+              | MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember3
+              | MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember4
+              | MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember5
 
             module Ledger
               extend MetronomeSDK::Internal::Type::Union
 
-              type credit_segment_start_ledger_entry =
+              type union_member0 =
                 {
                   amount: Float,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember0::type_
                 }
 
-              class CreditSegmentStartLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember0 < MetronomeSDK::Internal::Type::BaseModel
                 attr_accessor amount: Float
 
                 attr_accessor segment_id: String
 
                 attr_accessor timestamp: Time
 
-                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry::type_
+                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember0::type_
 
                 def initialize: (
                   amount: Float,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember0::type_
                 ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember0::type_
+                }
 
                 type type_ = :CREDIT_SEGMENT_START
 
@@ -1446,20 +2198,20 @@ module MetronomeSDK
 
                   CREDIT_SEGMENT_START: :CREDIT_SEGMENT_START
 
-                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry::type_]
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember0::type_]
                 end
               end
 
-              type credit_automated_invoice_deduction_ledger_entry =
+              type union_member1 =
                 {
                   amount: Float,
                   invoice_id: String,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember1::type_
                 }
 
-              class CreditAutomatedInvoiceDeductionLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember1 < MetronomeSDK::Internal::Type::BaseModel
                 attr_accessor amount: Float
 
                 attr_accessor invoice_id: String
@@ -1468,15 +2220,23 @@ module MetronomeSDK
 
                 attr_accessor timestamp: Time
 
-                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::type_
+                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember1::type_
 
                 def initialize: (
                   amount: Float,
                   invoice_id: String,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember1::type_
                 ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  invoice_id: String,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember1::type_
+                }
 
                 type type_ = :CREDIT_AUTOMATED_INVOICE_DEDUCTION
 
@@ -1485,33 +2245,40 @@ module MetronomeSDK
 
                   CREDIT_AUTOMATED_INVOICE_DEDUCTION: :CREDIT_AUTOMATED_INVOICE_DEDUCTION
 
-                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::type_]
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember1::type_]
                 end
               end
 
-              type credit_expiration_ledger_entry =
+              type union_member2 =
                 {
                   amount: Float,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember2::type_
                 }
 
-              class CreditExpirationLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember2 < MetronomeSDK::Internal::Type::BaseModel
                 attr_accessor amount: Float
 
                 attr_accessor segment_id: String
 
                 attr_accessor timestamp: Time
 
-                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry::type_
+                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember2::type_
 
                 def initialize: (
                   amount: Float,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember2::type_
                 ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember2::type_
+                }
 
                 type type_ = :CREDIT_EXPIRATION
 
@@ -1520,20 +2287,20 @@ module MetronomeSDK
 
                   CREDIT_EXPIRATION: :CREDIT_EXPIRATION
 
-                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry::type_]
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember2::type_]
                 end
               end
 
-              type credit_canceled_ledger_entry =
+              type union_member3 =
                 {
                   amount: Float,
                   invoice_id: String,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember3::type_
                 }
 
-              class CreditCanceledLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember3 < MetronomeSDK::Internal::Type::BaseModel
                 attr_accessor amount: Float
 
                 attr_accessor invoice_id: String
@@ -1542,15 +2309,23 @@ module MetronomeSDK
 
                 attr_accessor timestamp: Time
 
-                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry::type_
+                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember3::type_
 
                 def initialize: (
                   amount: Float,
                   invoice_id: String,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember3::type_
                 ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  invoice_id: String,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember3::type_
+                }
 
                 type type_ = :CREDIT_CANCELED
 
@@ -1559,20 +2334,20 @@ module MetronomeSDK
 
                   CREDIT_CANCELED: :CREDIT_CANCELED
 
-                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry::type_]
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember3::type_]
                 end
               end
 
-              type credit_credited_ledger_entry =
+              type union_member4 =
                 {
                   amount: Float,
                   invoice_id: String,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember4::type_
                 }
 
-              class CreditCreditedLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember4 < MetronomeSDK::Internal::Type::BaseModel
                 attr_accessor amount: Float
 
                 attr_accessor invoice_id: String
@@ -1581,15 +2356,23 @@ module MetronomeSDK
 
                 attr_accessor timestamp: Time
 
-                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry::type_
+                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember4::type_
 
                 def initialize: (
                   amount: Float,
                   invoice_id: String,
                   segment_id: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember4::type_
                 ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  invoice_id: String,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember4::type_
+                }
 
                 type type_ = :CREDIT_CREDITED
 
@@ -1598,33 +2381,40 @@ module MetronomeSDK
 
                   CREDIT_CREDITED: :CREDIT_CREDITED
 
-                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry::type_]
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember4::type_]
                 end
               end
 
-              type credit_manual_ledger_entry =
+              type union_member5 =
                 {
                   amount: Float,
                   reason: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditManualLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember5::type_
                 }
 
-              class CreditManualLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember5 < MetronomeSDK::Internal::Type::BaseModel
                 attr_accessor amount: Float
 
                 attr_accessor reason: String
 
                 attr_accessor timestamp: Time
 
-                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditManualLedgerEntry::type_
+                attr_accessor type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember5::type_
 
                 def initialize: (
                   amount: Float,
                   reason: String,
                   timestamp: Time,
-                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditManualLedgerEntry::type_
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember5::type_
                 ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  reason: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember5::type_
+                }
 
                 type type_ = :CREDIT_MANUAL
 
@@ -1633,11 +2423,55 @@ module MetronomeSDK
 
                   CREDIT_MANUAL: :CREDIT_MANUAL
 
-                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditManualLedgerEntry::type_]
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember5::type_]
                 end
               end
 
               def self?.variants: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::ledger]
+            end
+
+            type specifier =
+              {
+                presentation_group_values: ::Hash[Symbol, String],
+                pricing_group_values: ::Hash[Symbol, String],
+                product_id: String,
+                product_tags: ::Array[String]
+              }
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader presentation_group_values: ::Hash[Symbol, String]?
+
+              def presentation_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+              def pricing_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader product_id: String?
+
+              def product_id=: (String) -> String
+
+              attr_reader product_tags: ::Array[String]?
+
+              def product_tags=: (::Array[String]) -> ::Array[String]
+
+              def initialize: (
+                ?presentation_group_values: ::Hash[Symbol, String],
+                ?pricing_group_values: ::Hash[Symbol, String],
+                ?product_id: String,
+                ?product_tags: ::Array[String]
+              ) -> void
+
+              def to_hash: -> {
+                presentation_group_values: ::Hash[Symbol, String],
+                pricing_group_values: ::Hash[Symbol, String],
+                product_id: String,
+                product_tags: ::Array[String]
+              }
             end
           end
 
@@ -1656,6 +2490,11 @@ module MetronomeSDK
               billing_provider: MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration::billing_provider,
               delivery_method: MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration::delivery_method
             ) -> void
+
+            def to_hash: -> {
+              billing_provider: MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration::billing_provider,
+              delivery_method: MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration::delivery_method
+            }
 
             type billing_provider =
               :aws_marketplace
@@ -1694,6 +2533,152 @@ module MetronomeSDK
               AWS_SNS: :aws_sns
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration::delivery_method]
+            end
+          end
+
+          type discount =
+            {
+              id: String,
+              product: MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Product,
+              schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule,
+              custom_fields: ::Hash[Symbol, String],
+              name: String,
+              netsuite_sales_order_id: String
+            }
+
+          class Discount < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor product: MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Product
+
+            attr_accessor schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule
+
+            attr_reader custom_fields: ::Hash[Symbol, String]?
+
+            def custom_fields=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_reader netsuite_sales_order_id: String?
+
+            def netsuite_sales_order_id=: (String) -> String
+
+            def initialize: (
+              id: String,
+              product: MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Product,
+              schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule,
+              ?custom_fields: ::Hash[Symbol, String],
+              ?name: String,
+              ?netsuite_sales_order_id: String
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              product: MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Product,
+              schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule,
+              custom_fields: ::Hash[Symbol, String],
+              name: String,
+              netsuite_sales_order_id: String
+            }
+
+            type product = { id: String, name: String }
+
+            class Product < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor name: String
+
+              def initialize: (id: String, name: String) -> void
+
+              def to_hash: -> { id: String, name: String }
+            end
+
+            type schedule =
+              {
+                credit_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule::CreditType,
+                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule::ScheduleItem]
+              }
+
+            class Schedule < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader credit_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule::CreditType?
+
+              def credit_type=: (
+                MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule::CreditType
+              ) -> MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule::CreditType
+
+              attr_reader schedule_items: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule::ScheduleItem]?
+
+              def schedule_items=: (
+                ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule::ScheduleItem]
+              ) -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule::ScheduleItem]
+
+              def initialize: (
+                ?credit_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule::CreditType,
+                ?schedule_items: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule::ScheduleItem]
+              ) -> void
+
+              def to_hash: -> {
+                credit_type: MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule::CreditType,
+                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule::ScheduleItem]
+              }
+
+              type credit_type = { id: String, name: String }
+
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor name: String
+
+                def initialize: (id: String, name: String) -> void
+
+                def to_hash: -> { id: String, name: String }
+              end
+
+              type schedule_item =
+                {
+                  id: String,
+                  amount: Float,
+                  invoice_id: String,
+                  quantity: Float,
+                  timestamp: Time,
+                  unit_price: Float
+                }
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor amount: Float
+
+                attr_accessor invoice_id: String
+
+                attr_accessor quantity: Float
+
+                attr_accessor timestamp: Time
+
+                attr_accessor unit_price: Float
+
+                def initialize: (
+                  id: String,
+                  amount: Float,
+                  invoice_id: String,
+                  quantity: Float,
+                  timestamp: Time,
+                  unit_price: Float
+                ) -> void
+
+                def to_hash: -> {
+                  id: String,
+                  amount: Float,
+                  invoice_id: String,
+                  quantity: Float,
+                  timestamp: Time,
+                  unit_price: Float
+                }
+              end
             end
           end
 
@@ -1737,13 +2722,22 @@ module MetronomeSDK
               threshold_amount: Float
             ) -> void
 
+            def to_hash: -> {
+              commit: MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::Commit,
+              is_enabled: bool,
+              payment_gate_config: MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig,
+              recharge_to_amount: Float,
+              threshold_amount: Float
+            }
+
             type commit =
               {
                 product_id: String,
                 applicable_product_ids: ::Array[String],
                 applicable_product_tags: ::Array[String],
                 description: String,
-                name: String
+                name: String,
+                specifiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::Commit::Specifier]
               }
 
             class Commit < MetronomeSDK::Internal::Type::BaseModel
@@ -1765,13 +2759,73 @@ module MetronomeSDK
 
               def name=: (String) -> String
 
+              attr_reader specifiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::Commit::Specifier]?
+
+              def specifiers=: (
+                ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::Commit::Specifier]
+              ) -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::Commit::Specifier]
+
               def initialize: (
                 product_id: String,
                 ?applicable_product_ids: ::Array[String],
                 ?applicable_product_tags: ::Array[String],
                 ?description: String,
-                ?name: String
+                ?name: String,
+                ?specifiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::Commit::Specifier]
               ) -> void
+
+              def to_hash: -> {
+                product_id: String,
+                applicable_product_ids: ::Array[String],
+                applicable_product_tags: ::Array[String],
+                description: String,
+                name: String,
+                specifiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::Commit::Specifier]
+              }
+
+              type specifier =
+                {
+                  presentation_group_values: ::Hash[Symbol, String],
+                  pricing_group_values: ::Hash[Symbol, String],
+                  product_id: String,
+                  product_tags: ::Array[String]
+                }
+
+              class Specifier < MetronomeSDK::Internal::Type::BaseModel
+                attr_reader presentation_group_values: ::Hash[Symbol, String]?
+
+                def presentation_group_values=: (
+                  ::Hash[Symbol, String]
+                ) -> ::Hash[Symbol, String]
+
+                attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+                def pricing_group_values=: (
+                  ::Hash[Symbol, String]
+                ) -> ::Hash[Symbol, String]
+
+                attr_reader product_id: String?
+
+                def product_id=: (String) -> String
+
+                attr_reader product_tags: ::Array[String]?
+
+                def product_tags=: (::Array[String]) -> ::Array[String]
+
+                def initialize: (
+                  ?presentation_group_values: ::Hash[Symbol, String],
+                  ?pricing_group_values: ::Hash[Symbol, String],
+                  ?product_id: String,
+                  ?product_tags: ::Array[String]
+                ) -> void
+
+                def to_hash: -> {
+                  presentation_group_values: ::Hash[Symbol, String],
+                  pricing_group_values: ::Hash[Symbol, String],
+                  product_id: String,
+                  product_tags: ::Array[String]
+                }
+              end
             end
 
             type payment_gate_config =
@@ -1802,6 +2856,12 @@ module MetronomeSDK
                 ?tax_type: MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
               ) -> void
 
+              def to_hash: -> {
+                payment_gate_type: MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+                stripe_config: MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
+                tax_type: MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
+              }
+
               type payment_gate_type = :NONE | :STRIPE | :EXTERNAL
 
               module PaymentGateType
@@ -1825,6 +2885,10 @@ module MetronomeSDK
                 def initialize: (
                   payment_type: MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
                 ) -> void
+
+                def to_hash: -> {
+                  payment_type: MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+                }
 
                 type payment_type = :INVOICE | :PAYMENT_INTENT
 
@@ -1851,6 +2915,66 @@ module MetronomeSDK
             end
           end
 
+          type professional_service =
+            {
+              id: String,
+              max_amount: Float,
+              product_id: String,
+              quantity: Float,
+              unit_price: Float,
+              custom_fields: ::Hash[Symbol, String],
+              description: String,
+              netsuite_sales_order_id: String
+            }
+
+          class ProfessionalService < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor max_amount: Float
+
+            attr_accessor product_id: String
+
+            attr_accessor quantity: Float
+
+            attr_accessor unit_price: Float
+
+            attr_reader custom_fields: ::Hash[Symbol, String]?
+
+            def custom_fields=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader description: String?
+
+            def description=: (String) -> String
+
+            attr_reader netsuite_sales_order_id: String?
+
+            def netsuite_sales_order_id=: (String) -> String
+
+            def initialize: (
+              id: String,
+              max_amount: Float,
+              product_id: String,
+              quantity: Float,
+              unit_price: Float,
+              ?custom_fields: ::Hash[Symbol, String],
+              ?description: String,
+              ?netsuite_sales_order_id: String
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              max_amount: Float,
+              product_id: String,
+              quantity: Float,
+              unit_price: Float,
+              custom_fields: ::Hash[Symbol, String],
+              description: String,
+              netsuite_sales_order_id: String
+            }
+          end
+
           type recurring_commit =
             {
               id: String,
@@ -1870,7 +2994,8 @@ module MetronomeSDK
               netsuite_sales_order_id: String,
               proration: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::proration,
               recurrence_frequency: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::recurrence_frequency,
-              rollover_fraction: Float
+              rollover_fraction: Float,
+              specifiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::Specifier]
             }
 
           class RecurringCommit < MetronomeSDK::Internal::Type::BaseModel
@@ -1940,6 +3065,12 @@ module MetronomeSDK
 
             def rollover_fraction=: (Float) -> Float
 
+            attr_reader specifiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::Specifier]?
+
+            def specifiers=: (
+              ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::Specifier]
+            ) -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::Specifier]
+
             def initialize: (
               id: String,
               access_amount: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::AccessAmount,
@@ -1958,8 +3089,31 @@ module MetronomeSDK
               ?netsuite_sales_order_id: String,
               ?proration: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::proration,
               ?recurrence_frequency: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::recurrence_frequency,
-              ?rollover_fraction: Float
+              ?rollover_fraction: Float,
+              ?specifiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::Specifier]
             ) -> void
+
+            def to_hash: -> {
+              id: String,
+              access_amount: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::AccessAmount,
+              commit_duration: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::CommitDuration,
+              priority: Float,
+              product: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::Product,
+              rate_type: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::rate_type,
+              starting_at: Time,
+              applicable_product_ids: ::Array[String],
+              applicable_product_tags: ::Array[String],
+              contract: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::Contract,
+              description: String,
+              ending_before: Time,
+              invoice_amount: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::InvoiceAmount,
+              name: String,
+              netsuite_sales_order_id: String,
+              proration: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::proration,
+              recurrence_frequency: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::recurrence_frequency,
+              rollover_fraction: Float,
+              specifiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::Specifier]
+            }
 
             type access_amount =
               { credit_type_id: String, quantity: Float, unit_price: Float }
@@ -1976,6 +3130,12 @@ module MetronomeSDK
                 quantity: Float,
                 unit_price: Float
               ) -> void
+
+              def to_hash: -> {
+                credit_type_id: String,
+                quantity: Float,
+                unit_price: Float
+              }
             end
 
             type commit_duration =
@@ -1998,6 +3158,11 @@ module MetronomeSDK
                 ?unit: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::CommitDuration::unit
               ) -> void
 
+              def to_hash: -> {
+                value: Float,
+                unit: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::CommitDuration::unit
+              }
+
               type unit = :PERIODS
 
               module Unit
@@ -2017,6 +3182,8 @@ module MetronomeSDK
               attr_accessor name: String
 
               def initialize: (id: String, name: String) -> void
+
+              def to_hash: -> { id: String, name: String }
             end
 
             type rate_type = :COMMIT_RATE | :LIST_RATE
@@ -2036,6 +3203,8 @@ module MetronomeSDK
               attr_accessor id: String
 
               def initialize: (id: String) -> void
+
+              def to_hash: -> { id: String }
             end
 
             type invoice_amount =
@@ -2053,6 +3222,12 @@ module MetronomeSDK
                 quantity: Float,
                 unit_price: Float
               ) -> void
+
+              def to_hash: -> {
+                credit_type_id: String,
+                quantity: Float,
+                unit_price: Float
+              }
             end
 
             type proration = :NONE | :FIRST | :LAST | :FIRST_AND_LAST
@@ -2081,6 +3256,50 @@ module MetronomeSDK
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::recurrence_frequency]
             end
+
+            type specifier =
+              {
+                presentation_group_values: ::Hash[Symbol, String],
+                pricing_group_values: ::Hash[Symbol, String],
+                product_id: String,
+                product_tags: ::Array[String]
+              }
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader presentation_group_values: ::Hash[Symbol, String]?
+
+              def presentation_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+              def pricing_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader product_id: String?
+
+              def product_id=: (String) -> String
+
+              attr_reader product_tags: ::Array[String]?
+
+              def product_tags=: (::Array[String]) -> ::Array[String]
+
+              def initialize: (
+                ?presentation_group_values: ::Hash[Symbol, String],
+                ?pricing_group_values: ::Hash[Symbol, String],
+                ?product_id: String,
+                ?product_tags: ::Array[String]
+              ) -> void
+
+              def to_hash: -> {
+                presentation_group_values: ::Hash[Symbol, String],
+                pricing_group_values: ::Hash[Symbol, String],
+                product_id: String,
+                product_tags: ::Array[String]
+              }
+            end
           end
 
           type recurring_credit =
@@ -2101,7 +3320,8 @@ module MetronomeSDK
               netsuite_sales_order_id: String,
               proration: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::proration,
               recurrence_frequency: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::recurrence_frequency,
-              rollover_fraction: Float
+              rollover_fraction: Float,
+              specifiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::Specifier]
             }
 
           class RecurringCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -2165,6 +3385,12 @@ module MetronomeSDK
 
             def rollover_fraction=: (Float) -> Float
 
+            attr_reader specifiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::Specifier]?
+
+            def specifiers=: (
+              ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::Specifier]
+            ) -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::Specifier]
+
             def initialize: (
               id: String,
               access_amount: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::AccessAmount,
@@ -2182,8 +3408,30 @@ module MetronomeSDK
               ?netsuite_sales_order_id: String,
               ?proration: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::proration,
               ?recurrence_frequency: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::recurrence_frequency,
-              ?rollover_fraction: Float
+              ?rollover_fraction: Float,
+              ?specifiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::Specifier]
             ) -> void
+
+            def to_hash: -> {
+              id: String,
+              access_amount: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::AccessAmount,
+              commit_duration: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::CommitDuration,
+              priority: Float,
+              product: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::Product,
+              rate_type: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::rate_type,
+              starting_at: Time,
+              applicable_product_ids: ::Array[String],
+              applicable_product_tags: ::Array[String],
+              contract: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::Contract,
+              description: String,
+              ending_before: Time,
+              name: String,
+              netsuite_sales_order_id: String,
+              proration: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::proration,
+              recurrence_frequency: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::recurrence_frequency,
+              rollover_fraction: Float,
+              specifiers: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::Specifier]
+            }
 
             type access_amount =
               { credit_type_id: String, quantity: Float, unit_price: Float }
@@ -2200,6 +3448,12 @@ module MetronomeSDK
                 quantity: Float,
                 unit_price: Float
               ) -> void
+
+              def to_hash: -> {
+                credit_type_id: String,
+                quantity: Float,
+                unit_price: Float
+              }
             end
 
             type commit_duration =
@@ -2222,6 +3476,11 @@ module MetronomeSDK
                 ?unit: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::CommitDuration::unit
               ) -> void
 
+              def to_hash: -> {
+                value: Float,
+                unit: MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::CommitDuration::unit
+              }
+
               type unit = :PERIODS
 
               module Unit
@@ -2241,6 +3500,8 @@ module MetronomeSDK
               attr_accessor name: String
 
               def initialize: (id: String, name: String) -> void
+
+              def to_hash: -> { id: String, name: String }
             end
 
             type rate_type = :COMMIT_RATE | :LIST_RATE
@@ -2260,6 +3521,8 @@ module MetronomeSDK
               attr_accessor id: String
 
               def initialize: (id: String) -> void
+
+              def to_hash: -> { id: String }
             end
 
             type proration = :NONE | :FIRST | :LAST | :FIRST_AND_LAST
@@ -2288,6 +3551,50 @@ module MetronomeSDK
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::recurrence_frequency]
             end
+
+            type specifier =
+              {
+                presentation_group_values: ::Hash[Symbol, String],
+                pricing_group_values: ::Hash[Symbol, String],
+                product_id: String,
+                product_tags: ::Array[String]
+              }
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader presentation_group_values: ::Hash[Symbol, String]?
+
+              def presentation_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+              def pricing_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader product_id: String?
+
+              def product_id=: (String) -> String
+
+              attr_reader product_tags: ::Array[String]?
+
+              def product_tags=: (::Array[String]) -> ::Array[String]
+
+              def initialize: (
+                ?presentation_group_values: ::Hash[Symbol, String],
+                ?pricing_group_values: ::Hash[Symbol, String],
+                ?product_id: String,
+                ?product_tags: ::Array[String]
+              ) -> void
+
+              def to_hash: -> {
+                presentation_group_values: ::Hash[Symbol, String],
+                pricing_group_values: ::Hash[Symbol, String],
+                product_id: String,
+                product_tags: ::Array[String]
+              }
+            end
           end
 
           type reseller_royalty =
@@ -2305,6 +3612,11 @@ module MetronomeSDK
               reseller_type: MetronomeSDK::Models::V2::ContractListResponse::Data::ResellerRoyalty::reseller_type,
               segments: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::ResellerRoyalty::Segment]
             ) -> void
+
+            def to_hash: -> {
+              reseller_type: MetronomeSDK::Models::V2::ContractListResponse::Data::ResellerRoyalty::reseller_type,
+              segments: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::ResellerRoyalty::Segment]
+            }
 
             type reseller_type =
               :AWS | :AWS_PRO_SERVICE | :GCP | :GCP_PRO_SERVICE
@@ -2398,6 +3710,22 @@ module MetronomeSDK
                 ?reseller_contract_value: Float
               ) -> void
 
+              def to_hash: -> {
+                fraction: Float,
+                netsuite_reseller_id: String,
+                reseller_type: MetronomeSDK::Models::V2::ContractListResponse::Data::ResellerRoyalty::Segment::reseller_type,
+                starting_at: Time,
+                applicable_product_ids: ::Array[String],
+                applicable_product_tags: ::Array[String],
+                aws_account_number: String,
+                aws_offer_id: String,
+                aws_payer_reference_id: String,
+                ending_before: Time,
+                gcp_account_id: String,
+                gcp_offer_id: String,
+                reseller_contract_value: Float
+              }
+
               type reseller_type =
                 :AWS | :AWS_PRO_SERVICE | :GCP | :GCP_PRO_SERVICE
 
@@ -2448,6 +3776,13 @@ module MetronomeSDK
               threshold_amount: Float
             ) -> void
 
+            def to_hash: -> {
+              commit: MetronomeSDK::Models::V2::ContractListResponse::Data::SpendThresholdConfiguration::Commit,
+              is_enabled: bool,
+              payment_gate_config: MetronomeSDK::Models::V2::ContractListResponse::Data::SpendThresholdConfiguration::PaymentGateConfig,
+              threshold_amount: Float
+            }
+
             type commit =
               { product_id: String, description: String, name: String }
 
@@ -2467,6 +3802,12 @@ module MetronomeSDK
                 ?description: String,
                 ?name: String
               ) -> void
+
+              def to_hash: -> {
+                product_id: String,
+                description: String,
+                name: String
+              }
             end
 
             type payment_gate_config =
@@ -2497,6 +3838,12 @@ module MetronomeSDK
                 ?tax_type: MetronomeSDK::Models::V2::ContractListResponse::Data::SpendThresholdConfiguration::PaymentGateConfig::tax_type
               ) -> void
 
+              def to_hash: -> {
+                payment_gate_type: MetronomeSDK::Models::V2::ContractListResponse::Data::SpendThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+                stripe_config: MetronomeSDK::Models::V2::ContractListResponse::Data::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig,
+                tax_type: MetronomeSDK::Models::V2::ContractListResponse::Data::SpendThresholdConfiguration::PaymentGateConfig::tax_type
+              }
+
               type payment_gate_type = :NONE | :STRIPE | :EXTERNAL
 
               module PaymentGateType
@@ -2521,6 +3868,10 @@ module MetronomeSDK
                   payment_type: MetronomeSDK::Models::V2::ContractListResponse::Data::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
                 ) -> void
 
+                def to_hash: -> {
+                  payment_type: MetronomeSDK::Models::V2::ContractListResponse::Data::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+                }
+
                 type payment_type = :INVOICE | :PAYMENT_INTENT
 
                 module PaymentType
@@ -2542,6 +3893,204 @@ module MetronomeSDK
                 STRIPE: :STRIPE
 
                 def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::SpendThresholdConfiguration::PaymentGateConfig::tax_type]
+              end
+            end
+          end
+
+          type subscription =
+            {
+              collection_schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::collection_schedule,
+              proration: MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::Proration,
+              quantity_schedule: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::QuantitySchedule],
+              starting_at: Time,
+              subscription_rate: MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate,
+              id: String,
+              custom_fields: ::Hash[Symbol, String],
+              description: String,
+              ending_before: Time,
+              fiat_credit_type_id: String,
+              name: String
+            }
+
+          class Subscription < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor collection_schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::collection_schedule
+
+            attr_accessor proration: MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::Proration
+
+            attr_accessor quantity_schedule: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::QuantitySchedule]
+
+            attr_accessor starting_at: Time
+
+            attr_accessor subscription_rate: MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate
+
+            attr_reader id: String?
+
+            def id=: (String) -> String
+
+            attr_reader custom_fields: ::Hash[Symbol, String]?
+
+            def custom_fields=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader description: String?
+
+            def description=: (String) -> String
+
+            attr_reader ending_before: Time?
+
+            def ending_before=: (Time) -> Time
+
+            attr_reader fiat_credit_type_id: String?
+
+            def fiat_credit_type_id=: (String) -> String
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            def initialize: (
+              collection_schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::collection_schedule,
+              proration: MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::Proration,
+              quantity_schedule: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::QuantitySchedule],
+              starting_at: Time,
+              subscription_rate: MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate,
+              ?id: String,
+              ?custom_fields: ::Hash[Symbol, String],
+              ?description: String,
+              ?ending_before: Time,
+              ?fiat_credit_type_id: String,
+              ?name: String
+            ) -> void
+
+            def to_hash: -> {
+              collection_schedule: MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::collection_schedule,
+              proration: MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::Proration,
+              quantity_schedule: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::QuantitySchedule],
+              starting_at: Time,
+              subscription_rate: MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate,
+              id: String,
+              custom_fields: ::Hash[Symbol, String],
+              description: String,
+              ending_before: Time,
+              fiat_credit_type_id: String,
+              name: String
+            }
+
+            type collection_schedule = :ADVANCE | :ARREARS
+
+            module CollectionSchedule
+              extend MetronomeSDK::Internal::Type::Enum
+
+              ADVANCE: :ADVANCE
+              ARREARS: :ARREARS
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::collection_schedule]
+            end
+
+            type proration =
+              {
+                invoice_behavior: MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::Proration::invoice_behavior,
+                is_prorated: bool
+              }
+
+            class Proration < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor invoice_behavior: MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::Proration::invoice_behavior
+
+              attr_accessor is_prorated: bool
+
+              def initialize: (
+                invoice_behavior: MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::Proration::invoice_behavior,
+                is_prorated: bool
+              ) -> void
+
+              def to_hash: -> {
+                invoice_behavior: MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::Proration::invoice_behavior,
+                is_prorated: bool
+              }
+
+              type invoice_behavior =
+                :BILL_IMMEDIATELY | :BILL_ON_NEXT_COLLECTION_DATE
+
+              module InvoiceBehavior
+                extend MetronomeSDK::Internal::Type::Enum
+
+                BILL_IMMEDIATELY: :BILL_IMMEDIATELY
+                BILL_ON_NEXT_COLLECTION_DATE: :BILL_ON_NEXT_COLLECTION_DATE
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::Proration::invoice_behavior]
+              end
+            end
+
+            type quantity_schedule =
+              { quantity: Float, starting_at: Time, ending_before: Time }
+
+            class QuantitySchedule < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor quantity: Float
+
+              attr_accessor starting_at: Time
+
+              attr_reader ending_before: Time?
+
+              def ending_before=: (Time) -> Time
+
+              def initialize: (
+                quantity: Float,
+                starting_at: Time,
+                ?ending_before: Time
+              ) -> void
+
+              def to_hash: -> {
+                quantity: Float,
+                starting_at: Time,
+                ending_before: Time
+              }
+            end
+
+            type subscription_rate =
+              {
+                billing_frequency: MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate::billing_frequency,
+                product: MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate::Product
+              }
+
+            class SubscriptionRate < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor billing_frequency: MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate::billing_frequency
+
+              attr_accessor product: MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate::Product
+
+              def initialize: (
+                billing_frequency: MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate::billing_frequency,
+                product: MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate::Product
+              ) -> void
+
+              def to_hash: -> {
+                billing_frequency: MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate::billing_frequency,
+                product: MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate::Product
+              }
+
+              type billing_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+
+              module BillingFrequency
+                extend MetronomeSDK::Internal::Type::Enum
+
+                MONTHLY: :MONTHLY
+                QUARTERLY: :QUARTERLY
+                ANNUAL: :ANNUAL
+                WEEKLY: :WEEKLY
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate::billing_frequency]
+              end
+
+              type product = { id: String, name: String }
+
+              class Product < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor name: String
+
+                def initialize: (id: String, name: String) -> void
+
+                def to_hash: -> { id: String, name: String }
               end
             end
           end

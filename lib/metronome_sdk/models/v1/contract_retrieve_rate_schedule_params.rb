@@ -43,7 +43,7 @@ module MetronomeSDK
         #   List of rate selectors, rates matching ANY of the selectors will be included in
         #   the response. Passing no selectors will result in all rates being returned.
         #
-        #   @return [Array<MetronomeSDK::V1::ContractRetrieveRateScheduleParams::Selector>, nil]
+        #   @return [Array<MetronomeSDK::Models::V1::ContractRetrieveRateScheduleParams::Selector>, nil]
         optional :selectors,
                  -> {
                    MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractRetrieveRateScheduleParams::Selector]
@@ -63,11 +63,21 @@ module MetronomeSDK
         #
         #   @param at [Time] optional timestamp which overlaps with the returned rate schedule segments. When
         #
-        #   @param selectors [Array<MetronomeSDK::V1::ContractRetrieveRateScheduleParams::Selector>] List of rate selectors, rates matching ANY of the selectors will be included in
+        #   @param selectors [Array<MetronomeSDK::Models::V1::ContractRetrieveRateScheduleParams::Selector>] List of rate selectors, rates matching ANY of the selectors will be included in
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 
         class Selector < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute billing_frequency
+          #   Subscription rates matching the billing frequency will be included in the
+          #   response.
+          #
+          #   @return [Symbol, MetronomeSDK::Models::V1::ContractRetrieveRateScheduleParams::Selector::BillingFrequency, nil]
+          optional :billing_frequency,
+                   enum: -> {
+                     MetronomeSDK::V1::ContractRetrieveRateScheduleParams::Selector::BillingFrequency
+                   }
+
           # @!attribute partial_pricing_group_values
           #   List of pricing group key value pairs, rates containing the matching key / value
           #   pairs will be included in the response.
@@ -95,10 +105,12 @@ module MetronomeSDK
           #   @return [Array<String>, nil]
           optional :product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
 
-          # @!method initialize(partial_pricing_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
+          # @!method initialize(billing_frequency: nil, partial_pricing_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
           #   Some parameter documentations has been truncated, see
-          #   {MetronomeSDK::V1::ContractRetrieveRateScheduleParams::Selector} for more
-          #   details.
+          #   {MetronomeSDK::Models::V1::ContractRetrieveRateScheduleParams::Selector} for
+          #   more details.
+          #
+          #   @param billing_frequency [Symbol, MetronomeSDK::Models::V1::ContractRetrieveRateScheduleParams::Selector::BillingFrequency] Subscription rates matching the billing frequency will be included in the respon
           #
           #   @param partial_pricing_group_values [Hash{Symbol=>String}] List of pricing group key value pairs, rates containing the matching key / value
           #
@@ -107,6 +119,22 @@ module MetronomeSDK
           #   @param product_id [String] Rates matching the product id will be included in the response.
           #
           #   @param product_tags [Array<String>] List of product tags, rates matching any of the tags will be included in the res
+
+          # Subscription rates matching the billing frequency will be included in the
+          # response.
+          #
+          # @see MetronomeSDK::Models::V1::ContractRetrieveRateScheduleParams::Selector#billing_frequency
+          module BillingFrequency
+            extend MetronomeSDK::Internal::Type::Enum
+
+            MONTHLY = :MONTHLY
+            QUARTERLY = :QUARTERLY
+            ANNUAL = :ANNUAL
+            WEEKLY = :WEEKLY
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
       end
     end

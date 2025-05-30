@@ -1,5 +1,50 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2025-05-30)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/Metronome-Industries/metronome-ruby/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Features
+
+* **api:** add subscription quantity history endpoint ([e351c6a](https://github.com/Metronome-Industries/metronome-ruby/commit/e351c6a19805c7ee8b81bf91a53eba9aca23de3b))
+* **api:** api update ([74509d0](https://github.com/Metronome-Industries/metronome-ruby/commit/74509d026a2b1d05de8f01d632265712ec76902c))
+* **api:** api update ([fd3ee7b](https://github.com/Metronome-Industries/metronome-ruby/commit/fd3ee7b5a91c376610c43bca936275acc2496d9a))
+* **api:** api update ([cf7391b](https://github.com/Metronome-Industries/metronome-ruby/commit/cf7391bae153f1ef054eca2b823c2ad24b2a4ca2))
+* **api:** api update ([d20737d](https://github.com/Metronome-Industries/metronome-ruby/commit/d20737d6b20aff070f442cb3d839a6936cefbfd9))
+* **api:** api update ([43088af](https://github.com/Metronome-Industries/metronome-ruby/commit/43088af50aedccdc33d881d798abae2ae43effd4))
+* **api:** api update ([a594256](https://github.com/Metronome-Industries/metronome-ruby/commit/a5942561ba77e6737f173845b8c77851d01bc29e))
+* **api:** api update ([abef131](https://github.com/Metronome-Industries/metronome-ruby/commit/abef13148c6c87616bf17b9d8ddd27fa0720b4d2))
+* **api:** api update ([e43c423](https://github.com/Metronome-Industries/metronome-ruby/commit/e43c4232914c39e151e48408f5e7bc92e3bba344))
+* **api:** api update ([b380b6b](https://github.com/Metronome-Industries/metronome-ruby/commit/b380b6b419c5632c69042c59e56da7dd77b1c48d))
+* **api:** api update ([5f4769e](https://github.com/Metronome-Industries/metronome-ruby/commit/5f4769ef4d7618986889aa65eb27b216925b6b88))
+* **api:** api update ([6bc1ed9](https://github.com/Metronome-Industries/metronome-ruby/commit/6bc1ed9258a3e91af051ad66ce1154ca8f935672))
+* **api:** rename get subscription quantity history to retrieve ([f42dd95](https://github.com/Metronome-Industries/metronome-ruby/commit/f42dd9512d9753529e30d84581d773266d3430a1))
+* bump default connection pool size limit to minimum of 99 ([3505102](https://github.com/Metronome-Industries/metronome-ruby/commit/35051025eee8e1cc82573c6cdb22e5cdbba8bac4))
+
+
+### Bug Fixes
+
+* correctly instantiate sorbet type aliases for enums and unions ([1f185c4](https://github.com/Metronome-Industries/metronome-ruby/commit/1f185c48f242edd584803dbe80446c7d1fda8dd0))
+* prevent rubocop from mangling `===` to `is_a?` check ([c83f973](https://github.com/Metronome-Industries/metronome-ruby/commit/c83f9731040b4fb2681463e1462ce0c58fa76a9d))
+* sorbet types for enums, and make tapioca detection ignore `tapioca dsl` ([20f971e](https://github.com/Metronome-Industries/metronome-ruby/commit/20f971e01e29c18fa9da3d8997501ced4201dbcf))
+
+
+### Chores
+
+* configure new SDK language ([f533e8d](https://github.com/Metronome-Industries/metronome-ruby/commit/f533e8dd8644c8ea438f6415107dae372e066b42))
+* **docs:** grammar improvements ([75acd0d](https://github.com/Metronome-Industries/metronome-ruby/commit/75acd0d91d514981f2289a30d5814b22572937e1))
+* force utf-8 locale via `RUBYOPT` when formatting ([f0d61eb](https://github.com/Metronome-Industries/metronome-ruby/commit/f0d61eb00cc448aea60b083e39becc33ca1dbcda))
+* refine Yard and Sorbet types and ensure linting is turned on for examples ([17087f7](https://github.com/Metronome-Industries/metronome-ruby/commit/17087f718e886d75803b500f31e271eb1372fb1d))
+* update SDK settings ([cba0fb7](https://github.com/Metronome-Industries/metronome-ruby/commit/cba0fb75b0455b8a49cdf6b184a4976792a34e6e))
+* use fully qualified names for yard annotations and rbs aliases ([e6c95d3](https://github.com/Metronome-Industries/metronome-ruby/commit/e6c95d341d8d28396ccc7a986afe0930749d32c8))
+* use sorbet union aliases where available ([0070ea5](https://github.com/Metronome-Industries/metronome-ruby/commit/0070ea559f406fa847bc4078f346923469a404d8))
+* whitespaces ([e343538](https://github.com/Metronome-Industries/metronome-ruby/commit/e343538c481650b8e1ad74a25e32635261f4d132))
+
+
+### Documentation
+
+* rewrite much of README.md for readability ([c653f5e](https://github.com/Metronome-Industries/metronome-ruby/commit/c653f5e7a6c5b176c3ca4b566afd0ed612ef4e3d))
+
 ## 0.1.0-alpha.2 (2025-05-14)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/Metronome-Industries/metronome-ruby/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)

@@ -77,7 +77,9 @@ module MetronomeSDK
             salesforce_account_ids: T::Array[String],
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(
-            MetronomeSDK::Internal::CursorPage[MetronomeSDK::V1::CustomerDetail]
+            MetronomeSDK::Internal::CursorPage[
+              MetronomeSDK::Models::V1::CustomerListResponse
+            ]
           )
         end
         def list(
@@ -99,7 +101,8 @@ module MetronomeSDK
         )
         end
 
-        # Archive a customer
+        # Archive a customer Note: any alerts associated with the customer will not be
+        # triggered.
         sig do
           params(
             id: String,

@@ -50,6 +50,8 @@ module MetronomeSDK
                 rate_type:
                   MetronomeSDK::V1::Contracts::RateCards::RateAddParams::RateType::OrSymbol,
                 starting_at: Time,
+                billing_frequency:
+                  MetronomeSDK::V1::Contracts::RateCards::RateAddParams::BillingFrequency::OrSymbol,
                 commit_rate:
                   MetronomeSDK::V1::Contracts::RateCards::RateAddParams::CommitRate::OrHash,
                 credit_type_id: String,
@@ -59,7 +61,10 @@ module MetronomeSDK
                 price: Float,
                 pricing_group_values: T::Hash[Symbol, String],
                 quantity: Float,
-                tiers: T::Array[MetronomeSDK::Tier::OrHash],
+                tiers:
+                  T::Array[
+                    MetronomeSDK::V1::Contracts::RateCards::RateAddParams::Tier::OrHash
+                  ],
                 use_list_prices: T::Boolean,
                 request_options: MetronomeSDK::RequestOptions::OrHash
               ).returns(
@@ -75,6 +80,9 @@ module MetronomeSDK
               rate_type:,
               # inclusive effective date
               starting_at:,
+              # Optional. Frequency to bill subscriptions with. Required for subscription type
+              # products with Flat rate.
+              billing_frequency: nil,
               # A distinct rate on the rate card. You can choose to use this rate rather than
               # list rate when consuming a credit or commit.
               commit_rate: nil,

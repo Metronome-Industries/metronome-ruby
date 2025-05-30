@@ -22,9 +22,9 @@ module MetronomeSDK
           optional :next_page, String
 
           # @!attribute archive_filter
-          #   Filter options for the product list
+          #   Filter options for the product list. If not provided, defaults to not archived.
           #
-          #   @return [Symbol, MetronomeSDK::V1::Contracts::ProductListParams::ArchiveFilter, nil]
+          #   @return [Symbol, MetronomeSDK::Models::V1::Contracts::ProductListParams::ArchiveFilter, nil]
           optional :archive_filter, enum: -> { MetronomeSDK::V1::Contracts::ProductListParams::ArchiveFilter }
 
           # @!method initialize(limit: nil, next_page: nil, archive_filter: nil, request_options: {})
@@ -32,11 +32,11 @@ module MetronomeSDK
           #
           #   @param next_page [String] Cursor that indicates where the next page of results should start.
           #
-          #   @param archive_filter [Symbol, MetronomeSDK::V1::Contracts::ProductListParams::ArchiveFilter] Filter options for the product list
+          #   @param archive_filter [Symbol, MetronomeSDK::Models::V1::Contracts::ProductListParams::ArchiveFilter] Filter options for the product list. If not provided, defaults to not archived.
           #
           #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 
-          # Filter options for the product list
+          # Filter options for the product list. If not provided, defaults to not archived.
           module ArchiveFilter
             extend MetronomeSDK::Internal::Type::Enum
 

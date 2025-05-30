@@ -49,7 +49,7 @@ module MetronomeSDK
           #   Invoice sort order by issued_at, e.g. date_asc or date_desc. Defaults to
           #   date_asc.
           #
-          #   @return [Symbol, MetronomeSDK::V1::Customers::InvoiceListParams::Sort, nil]
+          #   @return [Symbol, MetronomeSDK::Models::V1::Customers::InvoiceListParams::Sort, nil]
           optional :sort, enum: -> { MetronomeSDK::V1::Customers::InvoiceListParams::Sort }
 
           # @!attribute starting_on
@@ -81,7 +81,7 @@ module MetronomeSDK
           #
           #   @param skip_zero_qty_line_items [Boolean] If set, all zero quantity line items will be filtered out of the response
           #
-          #   @param sort [Symbol, MetronomeSDK::V1::Customers::InvoiceListParams::Sort] Invoice sort order by issued_at, e.g. date_asc or date_desc. Defaults to date_a
+          #   @param sort [Symbol, MetronomeSDK::Models::V1::Customers::InvoiceListParams::Sort] Invoice sort order by issued_at, e.g. date_asc or date_desc. Defaults to date_a
           #
           #   @param starting_on [Time] RFC 3339 timestamp (inclusive). Invoices will only be returned for billing perio
           #

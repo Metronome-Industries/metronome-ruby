@@ -3,12 +3,31 @@ module MetronomeSDK
     module V1
       module Contracts
         module RateCards
-          type product_order_update_response = { data: MetronomeSDK::ID }
+          type product_order_update_response =
+            {
+              data: MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateResponse::Data
+            }
 
           class ProductOrderUpdateResponse < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor data: MetronomeSDK::ID
+            attr_accessor data: MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateResponse::Data
 
-            def initialize: (data: MetronomeSDK::ID) -> void
+            def initialize: (
+              data: MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateResponse::Data
+            ) -> void
+
+            def to_hash: -> {
+              data: MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateResponse::Data
+            }
+
+            type data = { id: String }
+
+            class Data < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              def initialize: (id: String) -> void
+
+              def to_hash: -> { id: String }
+            end
           end
         end
       end

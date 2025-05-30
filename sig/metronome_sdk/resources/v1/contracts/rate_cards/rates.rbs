@@ -19,6 +19,7 @@ module MetronomeSDK
               rate_card_id: String,
               rate_type: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::rate_type,
               starting_at: Time,
+              ?billing_frequency: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::billing_frequency,
               ?commit_rate: MetronomeSDK::V1::Contracts::RateCards::RateAddParams::CommitRate,
               ?credit_type_id: String,
               ?custom_rate: ::Hash[Symbol, top],
@@ -27,7 +28,7 @@ module MetronomeSDK
               ?price: Float,
               ?pricing_group_values: ::Hash[Symbol, String],
               ?quantity: Float,
-              ?tiers: ::Array[MetronomeSDK::Tier],
+              ?tiers: ::Array[MetronomeSDK::V1::Contracts::RateCards::RateAddParams::Tier],
               ?use_list_prices: bool,
               ?request_options: MetronomeSDK::request_opts
             ) -> MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse

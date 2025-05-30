@@ -12,7 +12,7 @@ module MetronomeSDK
           # @!attribute access_schedule
           #   Schedule for distributing the credit to the customer.
           #
-          #   @return [MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule]
+          #   @return [MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule]
           required :access_schedule, -> { MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule }
 
           # @!attribute customer_id
@@ -78,7 +78,7 @@ module MetronomeSDK
 
           # @!attribute rate_type
           #
-          #   @return [Symbol, MetronomeSDK::V1::Customers::CreditCreateParams::RateType, nil]
+          #   @return [Symbol, MetronomeSDK::Models::V1::Customers::CreditCreateParams::RateType, nil]
           optional :rate_type, enum: -> { MetronomeSDK::V1::Customers::CreditCreateParams::RateType }
 
           # @!attribute salesforce_opportunity_id
@@ -86,6 +86,18 @@ module MetronomeSDK
           #
           #   @return [String, nil]
           optional :salesforce_opportunity_id, String
+
+          # @!attribute specifiers
+          #   List of filters that determine what kind of customer usage draws down a commit
+          #   or credit. A customer's usage needs to meet the condition of at least one of the
+          #   specifiers to contribute to a commit's or credit's drawdown. This field cannot
+          #   be used together with `applicable_product_ids` or `applicable_product_tags`.
+          #
+          #   @return [Array<MetronomeSDK::Models::V1::Customers::CreditCreateParams::Specifier>, nil]
+          optional :specifiers,
+                   -> {
+                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CreditCreateParams::Specifier]
+                   }
 
           # @!attribute uniqueness_key
           #   Prevents the creation of duplicates. If a request to create a commit or credit
@@ -96,11 +108,11 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :uniqueness_key, String
 
-          # @!method initialize(access_schedule:, customer_id:, priority:, product_id:, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, custom_fields: nil, description: nil, name: nil, netsuite_sales_order_id: nil, rate_type: nil, salesforce_opportunity_id: nil, uniqueness_key: nil, request_options: {})
+          # @!method initialize(access_schedule:, customer_id:, priority:, product_id:, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, custom_fields: nil, description: nil, name: nil, netsuite_sales_order_id: nil, rate_type: nil, salesforce_opportunity_id: nil, specifiers: nil, uniqueness_key: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::Customers::CreditCreateParams} for more details.
           #
-          #   @param access_schedule [MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule] Schedule for distributing the credit to the customer.
+          #   @param access_schedule [MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule] Schedule for distributing the credit to the customer.
           #
           #   @param customer_id [String]
           #
@@ -122,9 +134,11 @@ module MetronomeSDK
           #
           #   @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
           #
-          #   @param rate_type [Symbol, MetronomeSDK::V1::Customers::CreditCreateParams::RateType]
+          #   @param rate_type [Symbol, MetronomeSDK::Models::V1::Customers::CreditCreateParams::RateType]
           #
           #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
+          #
+          #   @param specifiers [Array<MetronomeSDK::Models::V1::Customers::CreditCreateParams::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
           #
           #   @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a commit or credit i
           #
@@ -133,7 +147,7 @@ module MetronomeSDK
           class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute schedule_items
             #
-            #   @return [Array<MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem>]
+            #   @return [Array<MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem>]
             required :schedule_items,
                      -> {
                        MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem]
@@ -148,7 +162,7 @@ module MetronomeSDK
             # @!method initialize(schedule_items:, credit_type_id: nil)
             #   Schedule for distributing the credit to the customer.
             #
-            #   @param schedule_items [Array<MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem>]
+            #   @param schedule_items [Array<MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem>]
             #
             #   @param credit_type_id [String] Defaults to USD (cents) if not passed
 
@@ -187,6 +201,44 @@ module MetronomeSDK
 
             # @!method self.values
             #   @return [Array<Symbol>]
+          end
+
+          class Specifier < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute presentation_group_values
+            #
+            #   @return [Hash{Symbol=>String}, nil]
+            optional :presentation_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+            # @!attribute pricing_group_values
+            #
+            #   @return [Hash{Symbol=>String}, nil]
+            optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+
+            # @!attribute product_id
+            #   If provided, the specifier will only apply to the product with the specified ID.
+            #
+            #   @return [String, nil]
+            optional :product_id, String
+
+            # @!attribute product_tags
+            #   If provided, the specifier will only apply to products with all the specified
+            #   tags.
+            #
+            #   @return [Array<String>, nil]
+            optional :product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V1::Customers::CreditCreateParams::Specifier} for more
+            #   details.
+            #
+            #   @param presentation_group_values [Hash{Symbol=>String}]
+            #
+            #   @param pricing_group_values [Hash{Symbol=>String}]
+            #
+            #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
+            #
+            #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
           end
         end
       end

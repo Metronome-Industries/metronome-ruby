@@ -223,6 +223,28 @@ module MetronomeSDK
         end
         attr_writer :add_spend_threshold_configuration
 
+        # (beta) Optional list of
+        # [subscriptions](https://docs.metronome.com/manage-product-access/create-subscription/)
+        # to add to the contract.
+        sig do
+          returns(
+            T.nilable(
+              T::Array[MetronomeSDK::V2::ContractEditParams::AddSubscription]
+            )
+          )
+        end
+        attr_reader :add_subscriptions
+
+        sig do
+          params(
+            add_subscriptions:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::AddSubscription::OrHash
+              ]
+          ).void
+        end
+        attr_writer :add_subscriptions
+
         # If true, allows setting the contract end date earlier than the end_timestamp of
         # existing finalized invoices. Finalized invoices will be unchanged; if you want
         # to incorporate the new end date, you can void and regenerate finalized usage
@@ -340,10 +362,7 @@ module MetronomeSDK
 
         # RFC 3339 timestamp indicating when the contract will end (exclusive).
         sig { returns(T.nilable(Time)) }
-        attr_reader :update_contract_end_date
-
-        sig { params(update_contract_end_date: Time).void }
-        attr_writer :update_contract_end_date
+        attr_accessor :update_contract_end_date
 
         sig do
           returns(
@@ -380,6 +399,54 @@ module MetronomeSDK
           ).void
         end
         attr_writer :update_prepaid_balance_threshold_configuration
+
+        # Edits to these recurring commits will only affect commits whose access schedules
+        # has not started. Expired commits, and commits with an active access schedule
+        # will remain unchanged.
+        sig do
+          returns(
+            T.nilable(
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit
+              ]
+            )
+          )
+        end
+        attr_reader :update_recurring_commits
+
+        sig do
+          params(
+            update_recurring_commits:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::OrHash
+              ]
+          ).void
+        end
+        attr_writer :update_recurring_commits
+
+        # Edits to these recurring credits will only affect credits whose access schedules
+        # has not started. Expired credits, and credits with an active access schedule
+        # will remain unchanged.
+        sig do
+          returns(
+            T.nilable(
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit
+              ]
+            )
+          )
+        end
+        attr_reader :update_recurring_credits
+
+        sig do
+          params(
+            update_recurring_credits:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::OrHash
+              ]
+          ).void
+        end
+        attr_writer :update_recurring_credits
 
         sig do
           returns(
@@ -418,6 +485,26 @@ module MetronomeSDK
           ).void
         end
         attr_writer :update_spend_threshold_configuration
+
+        # (beta) Optional list of subscriptions to update.
+        sig do
+          returns(
+            T.nilable(
+              T::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription]
+            )
+          )
+        end
+        attr_reader :update_subscriptions
+
+        sig do
+          params(
+            update_subscriptions:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::UpdateSubscription::OrHash
+              ]
+          ).void
+        end
+        attr_writer :update_subscriptions
 
         sig do
           params(
@@ -459,6 +546,10 @@ module MetronomeSDK
               ],
             add_spend_threshold_configuration:
               MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::OrHash,
+            add_subscriptions:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::AddSubscription::OrHash
+              ],
             allow_contract_ending_before_finalized_invoice: T::Boolean,
             archive_commits:
               T::Array[
@@ -480,19 +571,31 @@ module MetronomeSDK
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::UpdateCommit::OrHash
               ],
-            update_contract_end_date: Time,
+            update_contract_end_date: T.nilable(Time),
             update_credits:
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::UpdateCredit::OrHash
               ],
             update_prepaid_balance_threshold_configuration:
               MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::OrHash,
+            update_recurring_commits:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::OrHash
+              ],
+            update_recurring_credits:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::OrHash
+              ],
             update_scheduled_charges:
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::UpdateScheduledCharge::OrHash
               ],
             update_spend_threshold_configuration:
               MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::OrHash,
+            update_subscriptions:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::UpdateSubscription::OrHash
+              ],
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -513,6 +616,10 @@ module MetronomeSDK
           add_reseller_royalties: nil,
           add_scheduled_charges: nil,
           add_spend_threshold_configuration: nil,
+          # (beta) Optional list of
+          # [subscriptions](https://docs.metronome.com/manage-product-access/create-subscription/)
+          # to add to the contract.
+          add_subscriptions: nil,
           # If true, allows setting the contract end date earlier than the end_timestamp of
           # existing finalized invoices. Finalized invoices will be unchanged; if you want
           # to incorporate the new end date, you can void and regenerate finalized usage
@@ -531,8 +638,18 @@ module MetronomeSDK
           update_contract_end_date: nil,
           update_credits: nil,
           update_prepaid_balance_threshold_configuration: nil,
+          # Edits to these recurring commits will only affect commits whose access schedules
+          # has not started. Expired commits, and commits with an active access schedule
+          # will remain unchanged.
+          update_recurring_commits: nil,
+          # Edits to these recurring credits will only affect credits whose access schedules
+          # has not started. Expired credits, and credits with an active access schedule
+          # will remain unchanged.
+          update_recurring_credits: nil,
           update_scheduled_charges: nil,
           update_spend_threshold_configuration: nil,
+          # (beta) Optional list of subscriptions to update.
+          update_subscriptions: nil,
           request_options: {}
         )
         end
@@ -574,6 +691,8 @@ module MetronomeSDK
                 ],
               add_spend_threshold_configuration:
                 MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration,
+              add_subscriptions:
+                T::Array[MetronomeSDK::V2::ContractEditParams::AddSubscription],
               allow_contract_ending_before_finalized_invoice: T::Boolean,
               archive_commits:
                 T::Array[MetronomeSDK::V2::ContractEditParams::ArchiveCommit],
@@ -587,17 +706,29 @@ module MetronomeSDK
                 T::Array[MetronomeSDK::V2::ContractEditParams::RemoveOverride],
               update_commits:
                 T::Array[MetronomeSDK::V2::ContractEditParams::UpdateCommit],
-              update_contract_end_date: Time,
+              update_contract_end_date: T.nilable(Time),
               update_credits:
                 T::Array[MetronomeSDK::V2::ContractEditParams::UpdateCredit],
               update_prepaid_balance_threshold_configuration:
                 MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration,
+              update_recurring_commits:
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit
+                ],
+              update_recurring_credits:
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit
+                ],
               update_scheduled_charges:
                 T::Array[
                   MetronomeSDK::V2::ContractEditParams::UpdateScheduledCharge
                 ],
               update_spend_threshold_configuration:
                 MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration,
+              update_subscriptions:
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::UpdateSubscription
+                ],
               request_options: MetronomeSDK::RequestOptions
             }
           )
@@ -765,6 +896,31 @@ module MetronomeSDK
           sig { params(rollover_fraction: Float).void }
           attr_writer :rollover_fraction
 
+          # List of filters that determine what kind of customer usage draws down a commit
+          # or credit. A customer's usage needs to meet the condition of at least one of the
+          # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+          # be used together with `applicable_product_ids` or `applicable_product_tags`.
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::AddCommit::Specifier
+                ]
+              )
+            )
+          end
+          attr_reader :specifiers
+
+          sig do
+            params(
+              specifiers:
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::AddCommit::Specifier::OrHash
+                ]
+            ).void
+          end
+          attr_writer :specifiers
+
           # A temporary ID for the commit that can be used to reference the commit for
           # commit specific overrides.
           sig { returns(T.nilable(String)) }
@@ -795,6 +951,10 @@ module MetronomeSDK
               rate_type:
                 MetronomeSDK::V2::ContractEditParams::AddCommit::RateType::OrSymbol,
               rollover_fraction: Float,
+              specifiers:
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::AddCommit::Specifier::OrHash
+                ],
               temporary_id: String
             ).returns(T.attached_class)
           end
@@ -833,6 +993,11 @@ module MetronomeSDK
             rate_type: nil,
             # Fraction of unused segments that will be rolled over. Must be between 0 and 1.
             rollover_fraction: nil,
+            # List of filters that determine what kind of customer usage draws down a commit
+            # or credit. A customer's usage needs to meet the condition of at least one of the
+            # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+            # be used together with `applicable_product_ids` or `applicable_product_tags`.
+            specifiers: nil,
             # A temporary ID for the commit that can be used to reference the commit for
             # commit specific overrides.
             temporary_id: nil
@@ -862,6 +1027,10 @@ module MetronomeSDK
                 rate_type:
                   MetronomeSDK::V2::ContractEditParams::AddCommit::RateType::OrSymbol,
                 rollover_fraction: Float,
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddCommit::Specifier
+                  ],
                 temporary_id: String
               }
             )
@@ -1677,6 +1846,77 @@ module MetronomeSDK
             def self.values
             end
           end
+
+          class Specifier < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::AddCommit::Specifier,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig { returns(T.nilable(T::Hash[Symbol, String])) }
+            attr_reader :presentation_group_values
+
+            sig do
+              params(presentation_group_values: T::Hash[Symbol, String]).void
+            end
+            attr_writer :presentation_group_values
+
+            sig { returns(T.nilable(T::Hash[Symbol, String])) }
+            attr_reader :pricing_group_values
+
+            sig { params(pricing_group_values: T::Hash[Symbol, String]).void }
+            attr_writer :pricing_group_values
+
+            # If provided, the specifier will only apply to the product with the specified ID.
+            sig { returns(T.nilable(String)) }
+            attr_reader :product_id
+
+            sig { params(product_id: String).void }
+            attr_writer :product_id
+
+            # If provided, the specifier will only apply to products with all the specified
+            # tags.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_reader :product_tags
+
+            sig { params(product_tags: T::Array[String]).void }
+            attr_writer :product_tags
+
+            sig do
+              params(
+                presentation_group_values: T::Hash[Symbol, String],
+                pricing_group_values: T::Hash[Symbol, String],
+                product_id: String,
+                product_tags: T::Array[String]
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              presentation_group_values: nil,
+              pricing_group_values: nil,
+              # If provided, the specifier will only apply to the product with the specified ID.
+              product_id: nil,
+              # If provided, the specifier will only apply to products with all the specified
+              # tags.
+              product_tags: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  presentation_group_values: T::Hash[Symbol, String],
+                  pricing_group_values: T::Hash[Symbol, String],
+                  product_id: String,
+                  product_tags: T::Array[String]
+                }
+              )
+            end
+            def to_hash
+            end
+          end
         end
 
         class AddCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -1775,6 +2015,31 @@ module MetronomeSDK
           end
           attr_writer :rate_type
 
+          # List of filters that determine what kind of customer usage draws down a commit
+          # or credit. A customer's usage needs to meet the condition of at least one of the
+          # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+          # be used together with `applicable_product_ids` or `applicable_product_tags`.
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::AddCredit::Specifier
+                ]
+              )
+            )
+          end
+          attr_reader :specifiers
+
+          sig do
+            params(
+              specifiers:
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::AddCredit::Specifier::OrHash
+                ]
+            ).void
+          end
+          attr_writer :specifiers
+
           sig do
             params(
               access_schedule:
@@ -1788,7 +2053,11 @@ module MetronomeSDK
               netsuite_sales_order_id: String,
               priority: Float,
               rate_type:
-                MetronomeSDK::V2::ContractEditParams::AddCredit::RateType::OrSymbol
+                MetronomeSDK::V2::ContractEditParams::AddCredit::RateType::OrSymbol,
+              specifiers:
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::AddCredit::Specifier::OrHash
+                ]
             ).returns(T.attached_class)
           end
           def self.new(
@@ -1811,7 +2080,12 @@ module MetronomeSDK
             # If multiple credits are applicable, the one with the lower priority will apply
             # first.
             priority: nil,
-            rate_type: nil
+            rate_type: nil,
+            # List of filters that determine what kind of customer usage draws down a commit
+            # or credit. A customer's usage needs to meet the condition of at least one of the
+            # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+            # be used together with `applicable_product_ids` or `applicable_product_tags`.
+            specifiers: nil
           )
           end
 
@@ -1829,7 +2103,11 @@ module MetronomeSDK
                 netsuite_sales_order_id: String,
                 priority: Float,
                 rate_type:
-                  MetronomeSDK::V2::ContractEditParams::AddCredit::RateType::OrSymbol
+                  MetronomeSDK::V2::ContractEditParams::AddCredit::RateType::OrSymbol,
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddCredit::Specifier
+                  ]
               }
             )
           end
@@ -1964,6 +2242,77 @@ module MetronomeSDK
               )
             end
             def self.values
+            end
+          end
+
+          class Specifier < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::AddCredit::Specifier,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig { returns(T.nilable(T::Hash[Symbol, String])) }
+            attr_reader :presentation_group_values
+
+            sig do
+              params(presentation_group_values: T::Hash[Symbol, String]).void
+            end
+            attr_writer :presentation_group_values
+
+            sig { returns(T.nilable(T::Hash[Symbol, String])) }
+            attr_reader :pricing_group_values
+
+            sig { params(pricing_group_values: T::Hash[Symbol, String]).void }
+            attr_writer :pricing_group_values
+
+            # If provided, the specifier will only apply to the product with the specified ID.
+            sig { returns(T.nilable(String)) }
+            attr_reader :product_id
+
+            sig { params(product_id: String).void }
+            attr_writer :product_id
+
+            # If provided, the specifier will only apply to products with all the specified
+            # tags.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_reader :product_tags
+
+            sig { params(product_tags: T::Array[String]).void }
+            attr_writer :product_tags
+
+            sig do
+              params(
+                presentation_group_values: T::Hash[Symbol, String],
+                pricing_group_values: T::Hash[Symbol, String],
+                product_id: String,
+                product_tags: T::Array[String]
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              presentation_group_values: nil,
+              pricing_group_values: nil,
+              # If provided, the specifier will only apply to the product with the specified ID.
+              product_id: nil,
+              # If provided, the specifier will only apply to products with all the specified
+              # tags.
+              product_tags: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  presentation_group_values: T::Hash[Symbol, String],
+                  pricing_group_values: T::Hash[Symbol, String],
+                  product_id: String,
+                  product_tags: T::Array[String]
+                }
+              )
+            end
+            def to_hash
             end
           end
         end
@@ -2704,6 +3053,23 @@ module MetronomeSDK
                 )
               end
 
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V2::ContractEditParams::AddOverride::OverrideSpecifier::BillingFrequency::OrSymbol
+                )
+              )
+            end
+            attr_reader :billing_frequency
+
+            sig do
+              params(
+                billing_frequency:
+                  MetronomeSDK::V2::ContractEditParams::AddOverride::OverrideSpecifier::BillingFrequency::OrSymbol
+              ).void
+            end
+            attr_writer :billing_frequency
+
             # If provided, the override will only apply to the specified commits. Can only be
             # used for commit specific overrides. If not provided, the override will apply to
             # all commits.
@@ -2769,6 +3135,8 @@ module MetronomeSDK
 
             sig do
               params(
+                billing_frequency:
+                  MetronomeSDK::V2::ContractEditParams::AddOverride::OverrideSpecifier::BillingFrequency::OrSymbol,
                 commit_ids: T::Array[String],
                 presentation_group_values: T::Hash[Symbol, String],
                 pricing_group_values: T::Hash[Symbol, String],
@@ -2779,6 +3147,7 @@ module MetronomeSDK
               ).returns(T.attached_class)
             end
             def self.new(
+              billing_frequency: nil,
               # If provided, the override will only apply to the specified commits. Can only be
               # used for commit specific overrides. If not provided, the override will apply to
               # all commits.
@@ -2811,6 +3180,8 @@ module MetronomeSDK
             sig do
               override.returns(
                 {
+                  billing_frequency:
+                    MetronomeSDK::V2::ContractEditParams::AddOverride::OverrideSpecifier::BillingFrequency::OrSymbol,
                   commit_ids: T::Array[String],
                   presentation_group_values: T::Hash[Symbol, String],
                   pricing_group_values: T::Hash[Symbol, String],
@@ -2822,6 +3193,50 @@ module MetronomeSDK
               )
             end
             def to_hash
+            end
+
+            module BillingFrequency
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V2::ContractEditParams::AddOverride::OverrideSpecifier::BillingFrequency
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              MONTHLY =
+                T.let(
+                  :MONTHLY,
+                  MetronomeSDK::V2::ContractEditParams::AddOverride::OverrideSpecifier::BillingFrequency::TaggedSymbol
+                )
+              QUARTERLY =
+                T.let(
+                  :QUARTERLY,
+                  MetronomeSDK::V2::ContractEditParams::AddOverride::OverrideSpecifier::BillingFrequency::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :ANNUAL,
+                  MetronomeSDK::V2::ContractEditParams::AddOverride::OverrideSpecifier::BillingFrequency::TaggedSymbol
+                )
+              WEEKLY =
+                T.let(
+                  :WEEKLY,
+                  MetronomeSDK::V2::ContractEditParams::AddOverride::OverrideSpecifier::BillingFrequency::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddOverride::OverrideSpecifier::BillingFrequency::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
             end
           end
 
@@ -2879,10 +3294,25 @@ module MetronomeSDK
             attr_writer :quantity
 
             # Only set for TIERED rate_type.
-            sig { returns(T.nilable(T::Array[MetronomeSDK::Tier])) }
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier
+                  ]
+                )
+              )
+            end
             attr_reader :tiers
 
-            sig { params(tiers: T::Array[MetronomeSDK::Tier::OrHash]).void }
+            sig do
+              params(
+                tiers:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier::OrHash
+                  ]
+              ).void
+            end
             attr_writer :tiers
 
             # Required for OVERWRITE type.
@@ -2895,7 +3325,10 @@ module MetronomeSDK
                 is_prorated: T::Boolean,
                 price: Float,
                 quantity: Float,
-                tiers: T::Array[MetronomeSDK::Tier::OrHash]
+                tiers:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier::OrHash
+                  ]
               ).returns(T.attached_class)
             end
             def self.new(
@@ -2927,7 +3360,10 @@ module MetronomeSDK
                   is_prorated: T::Boolean,
                   price: Float,
                   quantity: Float,
-                  tiers: T::Array[MetronomeSDK::Tier]
+                  tiers:
+                    T::Array[
+                      MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier
+                    ]
                 }
               )
             end
@@ -2980,6 +3416,35 @@ module MetronomeSDK
                 )
               end
               def self.values
+              end
+            end
+
+            class Tier < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(Float) }
+              attr_accessor :price
+
+              sig { returns(T.nilable(Float)) }
+              attr_reader :size
+
+              sig { params(size: Float).void }
+              attr_writer :size
+
+              sig do
+                params(price: Float, size: Float).returns(T.attached_class)
+              end
+              def self.new(price:, size: nil)
+              end
+
+              sig { override.returns({ price: Float, size: Float }) }
+              def to_hash
               end
             end
           end
@@ -3232,13 +3697,42 @@ module MetronomeSDK
             sig { params(name: String).void }
             attr_writer :name
 
+            # List of filters that determine what kind of customer usage draws down a commit
+            # or credit. A customer's usage needs to meet the condition of at least one of the
+            # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+            # be used together with `applicable_product_ids` or `applicable_product_tags`.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::Commit::Specifier
+                  ]
+                )
+              )
+            end
+            attr_reader :specifiers
+
+            sig do
+              params(
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::Commit::Specifier::OrHash
+                  ]
+              ).void
+            end
+            attr_writer :specifiers
+
             sig do
               params(
                 product_id: String,
                 applicable_product_ids: T::Array[String],
                 applicable_product_tags: T::Array[String],
                 description: String,
-                name: String
+                name: String,
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::Commit::Specifier::OrHash
+                  ]
               ).returns(T.attached_class)
             end
             def self.new(
@@ -3255,7 +3749,12 @@ module MetronomeSDK
               description: nil,
               # Specify the name of the line item for the threshold charge. If left blank, it
               # will default to the commit product name.
-              name: nil
+              name: nil,
+              # List of filters that determine what kind of customer usage draws down a commit
+              # or credit. A customer's usage needs to meet the condition of at least one of the
+              # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+              # be used together with `applicable_product_ids` or `applicable_product_tags`.
+              specifiers: nil
             )
             end
 
@@ -3266,11 +3765,86 @@ module MetronomeSDK
                   applicable_product_ids: T::Array[String],
                   applicable_product_tags: T::Array[String],
                   description: String,
-                  name: String
+                  name: String,
+                  specifiers:
+                    T::Array[
+                      MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::Commit::Specifier
+                    ]
                 }
               )
             end
             def to_hash
+            end
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::Commit::Specifier,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :presentation_group_values
+
+              sig do
+                params(presentation_group_values: T::Hash[Symbol, String]).void
+              end
+              attr_writer :presentation_group_values
+
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :pricing_group_values
+
+              sig { params(pricing_group_values: T::Hash[Symbol, String]).void }
+              attr_writer :pricing_group_values
+
+              # If provided, the specifier will only apply to the product with the specified ID.
+              sig { returns(T.nilable(String)) }
+              attr_reader :product_id
+
+              sig { params(product_id: String).void }
+              attr_writer :product_id
+
+              # If provided, the specifier will only apply to products with all the specified
+              # tags.
+              sig { returns(T.nilable(T::Array[String])) }
+              attr_reader :product_tags
+
+              sig { params(product_tags: T::Array[String]).void }
+              attr_writer :product_tags
+
+              sig do
+                params(
+                  presentation_group_values: T::Hash[Symbol, String],
+                  pricing_group_values: T::Hash[Symbol, String],
+                  product_id: String,
+                  product_tags: T::Array[String]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                presentation_group_values: nil,
+                pricing_group_values: nil,
+                # If provided, the specifier will only apply to the product with the specified ID.
+                product_id: nil,
+                # If provided, the specifier will only apply to products with all the specified
+                # tags.
+                product_tags: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    presentation_group_values: T::Hash[Symbol, String],
+                    pricing_group_values: T::Hash[Symbol, String],
+                    product_id: String,
+                    product_tags: T::Array[String]
+                  }
+                )
+              end
+              def to_hash
+              end
             end
           end
 
@@ -3646,7 +4220,9 @@ module MetronomeSDK
           end
           attr_writer :access_amount
 
-          # The amount of time the created commits will be valid for.
+          # Defines the length of the access schedule for each created commit/credit. The
+          # value represents the number of units. Unit defaults to "PERIODS", where the
+          # length of a period is determined by the recurrence_frequency.
           sig do
             returns(
               MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::CommitDuration
@@ -3773,7 +4349,7 @@ module MetronomeSDK
           # The frequency at which the recurring commits will be created. If not provided: -
           # The commits will be created on the usage invoice frequency. If provided: - The
           # period defined in the duration will correspond to this frequency. - Commits will
-          # be created aligned with the recurring commit's start_date rather than the usage
+          # be created aligned with the recurring commit's starting_at rather than the usage
           # invoice dates.
           sig do
             returns(
@@ -3800,6 +4376,31 @@ module MetronomeSDK
 
           sig { params(rollover_fraction: Float).void }
           attr_writer :rollover_fraction
+
+          # List of filters that determine what kind of customer usage draws down a commit
+          # or credit. A customer's usage needs to meet the condition of at least one of the
+          # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+          # be used together with `applicable_product_ids` or `applicable_product_tags`.
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::Specifier
+                ]
+              )
+            )
+          end
+          attr_reader :specifiers
+
+          sig do
+            params(
+              specifiers:
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::Specifier::OrHash
+                ]
+            ).void
+          end
+          attr_writer :specifiers
 
           # A temporary ID that can be used to reference the recurring commit for commit
           # specific overrides.
@@ -3833,13 +4434,19 @@ module MetronomeSDK
               recurrence_frequency:
                 MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::RecurrenceFrequency::OrSymbol,
               rollover_fraction: Float,
+              specifiers:
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::Specifier::OrHash
+                ],
               temporary_id: String
             ).returns(T.attached_class)
           end
           def self.new(
             # The amount of commit to grant.
             access_amount:,
-            # The amount of time the created commits will be valid for.
+            # Defines the length of the access schedule for each created commit/credit. The
+            # value represents the number of units. Unit defaults to "PERIODS", where the
+            # length of a period is determined by the recurrence_frequency.
             commit_duration:,
             # Will be passed down to the individual commits
             priority:,
@@ -3868,13 +4475,18 @@ module MetronomeSDK
             # The frequency at which the recurring commits will be created. If not provided: -
             # The commits will be created on the usage invoice frequency. If provided: - The
             # period defined in the duration will correspond to this frequency. - Commits will
-            # be created aligned with the recurring commit's start_date rather than the usage
+            # be created aligned with the recurring commit's starting_at rather than the usage
             # invoice dates.
             recurrence_frequency: nil,
             # Will be passed down to the individual commits. This controls how much of an
             # individual unexpired commit will roll over upon contract transition. Must be
             # between 0 and 1.
             rollover_fraction: nil,
+            # List of filters that determine what kind of customer usage draws down a commit
+            # or credit. A customer's usage needs to meet the condition of at least one of the
+            # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+            # be used together with `applicable_product_ids` or `applicable_product_tags`.
+            specifiers: nil,
             # A temporary ID that can be used to reference the recurring commit for commit
             # specific overrides.
             temporary_id: nil
@@ -3906,6 +4518,10 @@ module MetronomeSDK
                 recurrence_frequency:
                   MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::RecurrenceFrequency::OrSymbol,
                 rollover_fraction: Float,
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::Specifier
+                  ],
                 temporary_id: String
               }
             )
@@ -3960,33 +4576,45 @@ module MetronomeSDK
                 )
               end
 
-            sig do
-              returns(
-                MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::CommitDuration::Unit::OrSymbol
-              )
-            end
-            attr_accessor :unit
-
             sig { returns(Float) }
             attr_accessor :value
 
-            # The amount of time the created commits will be valid for.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::CommitDuration::Unit::OrSymbol
+                )
+              )
+            end
+            attr_reader :unit
+
             sig do
               params(
                 unit:
-                  MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::CommitDuration::Unit::OrSymbol,
-                value: Float
+                  MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::CommitDuration::Unit::OrSymbol
+              ).void
+            end
+            attr_writer :unit
+
+            # Defines the length of the access schedule for each created commit/credit. The
+            # value represents the number of units. Unit defaults to "PERIODS", where the
+            # length of a period is determined by the recurrence_frequency.
+            sig do
+              params(
+                value: Float,
+                unit:
+                  MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::CommitDuration::Unit::OrSymbol
               ).returns(T.attached_class)
             end
-            def self.new(unit:, value:)
+            def self.new(value:, unit: nil)
             end
 
             sig do
               override.returns(
                 {
+                  value: Float,
                   unit:
-                    MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::CommitDuration::Unit::OrSymbol,
-                  value: Float
+                    MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::CommitDuration::Unit::OrSymbol
                 }
               )
             end
@@ -4145,7 +4773,7 @@ module MetronomeSDK
           # The frequency at which the recurring commits will be created. If not provided: -
           # The commits will be created on the usage invoice frequency. If provided: - The
           # period defined in the duration will correspond to this frequency. - Commits will
-          # be created aligned with the recurring commit's start_date rather than the usage
+          # be created aligned with the recurring commit's starting_at rather than the usage
           # invoice dates.
           module RecurrenceFrequency
             extend MetronomeSDK::Internal::Type::Enum
@@ -4190,6 +4818,77 @@ module MetronomeSDK
             def self.values
             end
           end
+
+          class Specifier < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::Specifier,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig { returns(T.nilable(T::Hash[Symbol, String])) }
+            attr_reader :presentation_group_values
+
+            sig do
+              params(presentation_group_values: T::Hash[Symbol, String]).void
+            end
+            attr_writer :presentation_group_values
+
+            sig { returns(T.nilable(T::Hash[Symbol, String])) }
+            attr_reader :pricing_group_values
+
+            sig { params(pricing_group_values: T::Hash[Symbol, String]).void }
+            attr_writer :pricing_group_values
+
+            # If provided, the specifier will only apply to the product with the specified ID.
+            sig { returns(T.nilable(String)) }
+            attr_reader :product_id
+
+            sig { params(product_id: String).void }
+            attr_writer :product_id
+
+            # If provided, the specifier will only apply to products with all the specified
+            # tags.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_reader :product_tags
+
+            sig { params(product_tags: T::Array[String]).void }
+            attr_writer :product_tags
+
+            sig do
+              params(
+                presentation_group_values: T::Hash[Symbol, String],
+                pricing_group_values: T::Hash[Symbol, String],
+                product_id: String,
+                product_tags: T::Array[String]
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              presentation_group_values: nil,
+              pricing_group_values: nil,
+              # If provided, the specifier will only apply to the product with the specified ID.
+              product_id: nil,
+              # If provided, the specifier will only apply to products with all the specified
+              # tags.
+              product_tags: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  presentation_group_values: T::Hash[Symbol, String],
+                  pricing_group_values: T::Hash[Symbol, String],
+                  product_id: String,
+                  product_tags: T::Array[String]
+                }
+              )
+            end
+            def to_hash
+            end
+          end
         end
 
         class AddRecurringCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -4217,7 +4916,9 @@ module MetronomeSDK
           end
           attr_writer :access_amount
 
-          # The amount of time the created commits will be valid for.
+          # Defines the length of the access schedule for each created commit/credit. The
+          # value represents the number of units. Unit defaults to "PERIODS", where the
+          # length of a period is determined by the recurrence_frequency.
           sig do
             returns(
               MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::CommitDuration
@@ -4326,7 +5027,7 @@ module MetronomeSDK
           # The frequency at which the recurring commits will be created. If not provided: -
           # The commits will be created on the usage invoice frequency. If provided: - The
           # period defined in the duration will correspond to this frequency. - Commits will
-          # be created aligned with the recurring commit's start_date rather than the usage
+          # be created aligned with the recurring commit's starting_at rather than the usage
           # invoice dates.
           sig do
             returns(
@@ -4353,6 +5054,31 @@ module MetronomeSDK
 
           sig { params(rollover_fraction: Float).void }
           attr_writer :rollover_fraction
+
+          # List of filters that determine what kind of customer usage draws down a commit
+          # or credit. A customer's usage needs to meet the condition of at least one of the
+          # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+          # be used together with `applicable_product_ids` or `applicable_product_tags`.
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::Specifier
+                ]
+              )
+            )
+          end
+          attr_reader :specifiers
+
+          sig do
+            params(
+              specifiers:
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::Specifier::OrHash
+                ]
+            ).void
+          end
+          attr_writer :specifiers
 
           # A temporary ID that can be used to reference the recurring commit for commit
           # specific overrides.
@@ -4384,13 +5110,19 @@ module MetronomeSDK
               recurrence_frequency:
                 MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::RecurrenceFrequency::OrSymbol,
               rollover_fraction: Float,
+              specifiers:
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::Specifier::OrHash
+                ],
               temporary_id: String
             ).returns(T.attached_class)
           end
           def self.new(
             # The amount of commit to grant.
             access_amount:,
-            # The amount of time the created commits will be valid for.
+            # Defines the length of the access schedule for each created commit/credit. The
+            # value represents the number of units. Unit defaults to "PERIODS", where the
+            # length of a period is determined by the recurrence_frequency.
             commit_duration:,
             # Will be passed down to the individual commits
             priority:,
@@ -4417,13 +5149,18 @@ module MetronomeSDK
             # The frequency at which the recurring commits will be created. If not provided: -
             # The commits will be created on the usage invoice frequency. If provided: - The
             # period defined in the duration will correspond to this frequency. - Commits will
-            # be created aligned with the recurring commit's start_date rather than the usage
+            # be created aligned with the recurring commit's starting_at rather than the usage
             # invoice dates.
             recurrence_frequency: nil,
             # Will be passed down to the individual commits. This controls how much of an
             # individual unexpired commit will roll over upon contract transition. Must be
             # between 0 and 1.
             rollover_fraction: nil,
+            # List of filters that determine what kind of customer usage draws down a commit
+            # or credit. A customer's usage needs to meet the condition of at least one of the
+            # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+            # be used together with `applicable_product_ids` or `applicable_product_tags`.
+            specifiers: nil,
             # A temporary ID that can be used to reference the recurring commit for commit
             # specific overrides.
             temporary_id: nil
@@ -4453,6 +5190,10 @@ module MetronomeSDK
                 recurrence_frequency:
                   MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::RecurrenceFrequency::OrSymbol,
                 rollover_fraction: Float,
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::Specifier
+                  ],
                 temporary_id: String
               }
             )
@@ -4507,33 +5248,45 @@ module MetronomeSDK
                 )
               end
 
-            sig do
-              returns(
-                MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::CommitDuration::Unit::OrSymbol
-              )
-            end
-            attr_accessor :unit
-
             sig { returns(Float) }
             attr_accessor :value
 
-            # The amount of time the created commits will be valid for.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::CommitDuration::Unit::OrSymbol
+                )
+              )
+            end
+            attr_reader :unit
+
             sig do
               params(
                 unit:
-                  MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::CommitDuration::Unit::OrSymbol,
-                value: Float
+                  MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::CommitDuration::Unit::OrSymbol
+              ).void
+            end
+            attr_writer :unit
+
+            # Defines the length of the access schedule for each created commit/credit. The
+            # value represents the number of units. Unit defaults to "PERIODS", where the
+            # length of a period is determined by the recurrence_frequency.
+            sig do
+              params(
+                value: Float,
+                unit:
+                  MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::CommitDuration::Unit::OrSymbol
               ).returns(T.attached_class)
             end
-            def self.new(unit:, value:)
+            def self.new(value:, unit: nil)
             end
 
             sig do
               override.returns(
                 {
+                  value: Float,
                   unit:
-                    MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::CommitDuration::Unit::OrSymbol,
-                  value: Float
+                    MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::CommitDuration::Unit::OrSymbol
                 }
               )
             end
@@ -4654,7 +5407,7 @@ module MetronomeSDK
           # The frequency at which the recurring commits will be created. If not provided: -
           # The commits will be created on the usage invoice frequency. If provided: - The
           # period defined in the duration will correspond to this frequency. - Commits will
-          # be created aligned with the recurring commit's start_date rather than the usage
+          # be created aligned with the recurring commit's starting_at rather than the usage
           # invoice dates.
           module RecurrenceFrequency
             extend MetronomeSDK::Internal::Type::Enum
@@ -4697,6 +5450,77 @@ module MetronomeSDK
               )
             end
             def self.values
+            end
+          end
+
+          class Specifier < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::Specifier,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig { returns(T.nilable(T::Hash[Symbol, String])) }
+            attr_reader :presentation_group_values
+
+            sig do
+              params(presentation_group_values: T::Hash[Symbol, String]).void
+            end
+            attr_writer :presentation_group_values
+
+            sig { returns(T.nilable(T::Hash[Symbol, String])) }
+            attr_reader :pricing_group_values
+
+            sig { params(pricing_group_values: T::Hash[Symbol, String]).void }
+            attr_writer :pricing_group_values
+
+            # If provided, the specifier will only apply to the product with the specified ID.
+            sig { returns(T.nilable(String)) }
+            attr_reader :product_id
+
+            sig { params(product_id: String).void }
+            attr_writer :product_id
+
+            # If provided, the specifier will only apply to products with all the specified
+            # tags.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_reader :product_tags
+
+            sig { params(product_tags: T::Array[String]).void }
+            attr_writer :product_tags
+
+            sig do
+              params(
+                presentation_group_values: T::Hash[Symbol, String],
+                pricing_group_values: T::Hash[Symbol, String],
+                product_id: String,
+                product_tags: T::Array[String]
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              presentation_group_values: nil,
+              pricing_group_values: nil,
+              # If provided, the specifier will only apply to the product with the specified ID.
+              product_id: nil,
+              # If provided, the specifier will only apply to products with all the specified
+              # tags.
+              product_tags: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  presentation_group_values: T::Hash[Symbol, String],
+                  pricing_group_values: T::Hash[Symbol, String],
+                  product_id: String,
+                  product_tags: T::Array[String]
+                }
+              )
+            end
+            def to_hash
             end
           end
         end
@@ -5834,6 +6658,381 @@ module MetronomeSDK
                 override.returns(
                   T::Array[
                     MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
+        end
+
+        class AddSubscription < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V2::ContractEditParams::AddSubscription,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          sig do
+            returns(
+              MetronomeSDK::V2::ContractEditParams::AddSubscription::CollectionSchedule::OrSymbol
+            )
+          end
+          attr_accessor :collection_schedule
+
+          sig { returns(Float) }
+          attr_accessor :initial_quantity
+
+          sig do
+            returns(
+              MetronomeSDK::V2::ContractEditParams::AddSubscription::Proration
+            )
+          end
+          attr_reader :proration
+
+          sig do
+            params(
+              proration:
+                MetronomeSDK::V2::ContractEditParams::AddSubscription::Proration::OrHash
+            ).void
+          end
+          attr_writer :proration
+
+          sig do
+            returns(
+              MetronomeSDK::V2::ContractEditParams::AddSubscription::SubscriptionRate
+            )
+          end
+          attr_reader :subscription_rate
+
+          sig do
+            params(
+              subscription_rate:
+                MetronomeSDK::V2::ContractEditParams::AddSubscription::SubscriptionRate::OrHash
+            ).void
+          end
+          attr_writer :subscription_rate
+
+          sig { returns(T.nilable(T::Hash[Symbol, String])) }
+          attr_reader :custom_fields
+
+          sig { params(custom_fields: T::Hash[Symbol, String]).void }
+          attr_writer :custom_fields
+
+          sig { returns(T.nilable(String)) }
+          attr_reader :description
+
+          sig { params(description: String).void }
+          attr_writer :description
+
+          # Exclusive end time for the subscription. If not provided, subscription inherits
+          # contract end date.
+          sig { returns(T.nilable(Time)) }
+          attr_reader :ending_before
+
+          sig { params(ending_before: Time).void }
+          attr_writer :ending_before
+
+          sig { returns(T.nilable(String)) }
+          attr_reader :name
+
+          sig { params(name: String).void }
+          attr_writer :name
+
+          # Inclusive start time for the subscription. If not provided, defaults to contract
+          # start date
+          sig { returns(T.nilable(Time)) }
+          attr_reader :starting_at
+
+          sig { params(starting_at: Time).void }
+          attr_writer :starting_at
+
+          sig do
+            params(
+              collection_schedule:
+                MetronomeSDK::V2::ContractEditParams::AddSubscription::CollectionSchedule::OrSymbol,
+              initial_quantity: Float,
+              proration:
+                MetronomeSDK::V2::ContractEditParams::AddSubscription::Proration::OrHash,
+              subscription_rate:
+                MetronomeSDK::V2::ContractEditParams::AddSubscription::SubscriptionRate::OrHash,
+              custom_fields: T::Hash[Symbol, String],
+              description: String,
+              ending_before: Time,
+              name: String,
+              starting_at: Time
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            collection_schedule:,
+            initial_quantity:,
+            proration:,
+            subscription_rate:,
+            custom_fields: nil,
+            description: nil,
+            # Exclusive end time for the subscription. If not provided, subscription inherits
+            # contract end date.
+            ending_before: nil,
+            name: nil,
+            # Inclusive start time for the subscription. If not provided, defaults to contract
+            # start date
+            starting_at: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                collection_schedule:
+                  MetronomeSDK::V2::ContractEditParams::AddSubscription::CollectionSchedule::OrSymbol,
+                initial_quantity: Float,
+                proration:
+                  MetronomeSDK::V2::ContractEditParams::AddSubscription::Proration,
+                subscription_rate:
+                  MetronomeSDK::V2::ContractEditParams::AddSubscription::SubscriptionRate,
+                custom_fields: T::Hash[Symbol, String],
+                description: String,
+                ending_before: Time,
+                name: String,
+                starting_at: Time
+              }
+            )
+          end
+          def to_hash
+          end
+
+          module CollectionSchedule
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V2::ContractEditParams::AddSubscription::CollectionSchedule
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            ADVANCE =
+              T.let(
+                :ADVANCE,
+                MetronomeSDK::V2::ContractEditParams::AddSubscription::CollectionSchedule::TaggedSymbol
+              )
+            ARREARS =
+              T.let(
+                :ARREARS,
+                MetronomeSDK::V2::ContractEditParams::AddSubscription::CollectionSchedule::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::AddSubscription::CollectionSchedule::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          class Proration < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::AddSubscription::Proration,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            # Indicates how mid-period quantity adjustments are invoiced. If BILL_IMMEDIATELY
+            # is selected, the quantity increase will be billed on the scheduled date. If
+            # BILL_ON_NEXT_COLLECTION_DATE is selected, the quantity increase will be billed
+            # for in-arrears at the end of the period.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V2::ContractEditParams::AddSubscription::Proration::InvoiceBehavior::OrSymbol
+                )
+              )
+            end
+            attr_reader :invoice_behavior
+
+            sig do
+              params(
+                invoice_behavior:
+                  MetronomeSDK::V2::ContractEditParams::AddSubscription::Proration::InvoiceBehavior::OrSymbol
+              ).void
+            end
+            attr_writer :invoice_behavior
+
+            # Indicates if the partial period will be prorated or charged a full amount.
+            sig { returns(T.nilable(T::Boolean)) }
+            attr_reader :is_prorated
+
+            sig { params(is_prorated: T::Boolean).void }
+            attr_writer :is_prorated
+
+            sig do
+              params(
+                invoice_behavior:
+                  MetronomeSDK::V2::ContractEditParams::AddSubscription::Proration::InvoiceBehavior::OrSymbol,
+                is_prorated: T::Boolean
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Indicates how mid-period quantity adjustments are invoiced. If BILL_IMMEDIATELY
+              # is selected, the quantity increase will be billed on the scheduled date. If
+              # BILL_ON_NEXT_COLLECTION_DATE is selected, the quantity increase will be billed
+              # for in-arrears at the end of the period.
+              invoice_behavior: nil,
+              # Indicates if the partial period will be prorated or charged a full amount.
+              is_prorated: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  invoice_behavior:
+                    MetronomeSDK::V2::ContractEditParams::AddSubscription::Proration::InvoiceBehavior::OrSymbol,
+                  is_prorated: T::Boolean
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # Indicates how mid-period quantity adjustments are invoiced. If BILL_IMMEDIATELY
+            # is selected, the quantity increase will be billed on the scheduled date. If
+            # BILL_ON_NEXT_COLLECTION_DATE is selected, the quantity increase will be billed
+            # for in-arrears at the end of the period.
+            module InvoiceBehavior
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V2::ContractEditParams::AddSubscription::Proration::InvoiceBehavior
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              BILL_IMMEDIATELY =
+                T.let(
+                  :BILL_IMMEDIATELY,
+                  MetronomeSDK::V2::ContractEditParams::AddSubscription::Proration::InvoiceBehavior::TaggedSymbol
+                )
+              BILL_ON_NEXT_COLLECTION_DATE =
+                T.let(
+                  :BILL_ON_NEXT_COLLECTION_DATE,
+                  MetronomeSDK::V2::ContractEditParams::AddSubscription::Proration::InvoiceBehavior::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddSubscription::Proration::InvoiceBehavior::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
+
+          class SubscriptionRate < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::AddSubscription::SubscriptionRate,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            # Frequency to bill subscription with. Together with product_id, must match
+            # existing rate on the rate card.
+            sig do
+              returns(
+                MetronomeSDK::V2::ContractEditParams::AddSubscription::SubscriptionRate::BillingFrequency::OrSymbol
+              )
+            end
+            attr_accessor :billing_frequency
+
+            # Must be subscription type product
+            sig { returns(String) }
+            attr_accessor :product_id
+
+            sig do
+              params(
+                billing_frequency:
+                  MetronomeSDK::V2::ContractEditParams::AddSubscription::SubscriptionRate::BillingFrequency::OrSymbol,
+                product_id: String
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Frequency to bill subscription with. Together with product_id, must match
+              # existing rate on the rate card.
+              billing_frequency:,
+              # Must be subscription type product
+              product_id:
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  billing_frequency:
+                    MetronomeSDK::V2::ContractEditParams::AddSubscription::SubscriptionRate::BillingFrequency::OrSymbol,
+                  product_id: String
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # Frequency to bill subscription with. Together with product_id, must match
+            # existing rate on the rate card.
+            module BillingFrequency
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V2::ContractEditParams::AddSubscription::SubscriptionRate::BillingFrequency
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              MONTHLY =
+                T.let(
+                  :MONTHLY,
+                  MetronomeSDK::V2::ContractEditParams::AddSubscription::SubscriptionRate::BillingFrequency::TaggedSymbol
+                )
+              QUARTERLY =
+                T.let(
+                  :QUARTERLY,
+                  MetronomeSDK::V2::ContractEditParams::AddSubscription::SubscriptionRate::BillingFrequency::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :ANNUAL,
+                  MetronomeSDK::V2::ContractEditParams::AddSubscription::SubscriptionRate::BillingFrequency::TaggedSymbol
+                )
+              WEEKLY =
+                T.let(
+                  :WEEKLY,
+                  MetronomeSDK::V2::ContractEditParams::AddSubscription::SubscriptionRate::BillingFrequency::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddSubscription::SubscriptionRate::BillingFrequency::TaggedSymbol
                   ]
                 )
               end
@@ -6990,11 +8189,6 @@ module MetronomeSDK
                 )
               end
 
-            # The commit product that will be used to generate the line item for commit
-            # payment.
-            sig { returns(String) }
-            attr_accessor :product_id
-
             # Which products the threshold commit applies to. If both applicable_product_ids
             # and applicable_product_tags are not provided, the commit applies to all
             # products.
@@ -7026,19 +8220,53 @@ module MetronomeSDK
             sig { params(name: String).void }
             attr_writer :name
 
+            # The commit product that will be used to generate the line item for commit
+            # payment.
+            sig { returns(T.nilable(String)) }
+            attr_reader :product_id
+
+            sig { params(product_id: String).void }
+            attr_writer :product_id
+
+            # List of filters that determine what kind of customer usage draws down a commit
+            # or credit. A customer's usage needs to meet the condition of at least one of the
+            # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+            # be used together with `applicable_product_ids` or `applicable_product_tags`.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier
+                  ]
+                )
+              )
+            end
+            attr_reader :specifiers
+
             sig do
               params(
-                product_id: String,
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier::OrHash
+                  ]
+              ).void
+            end
+            attr_writer :specifiers
+
+            sig do
+              params(
                 applicable_product_ids: T::Array[String],
                 applicable_product_tags: T::Array[String],
                 description: String,
-                name: String
+                name: String,
+                product_id: String,
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier::OrHash
+                  ]
               ).returns(T.attached_class)
             end
             def self.new(
-              # The commit product that will be used to generate the line item for commit
-              # payment.
-              product_id:,
               # Which products the threshold commit applies to. If both applicable_product_ids
               # and applicable_product_tags are not provided, the commit applies to all
               # products.
@@ -7049,22 +8277,105 @@ module MetronomeSDK
               description: nil,
               # Specify the name of the line item for the threshold charge. If left blank, it
               # will default to the commit product name.
-              name: nil
+              name: nil,
+              # The commit product that will be used to generate the line item for commit
+              # payment.
+              product_id: nil,
+              # List of filters that determine what kind of customer usage draws down a commit
+              # or credit. A customer's usage needs to meet the condition of at least one of the
+              # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+              # be used together with `applicable_product_ids` or `applicable_product_tags`.
+              specifiers: nil
             )
             end
 
             sig do
               override.returns(
                 {
-                  product_id: String,
                   applicable_product_ids: T::Array[String],
                   applicable_product_tags: T::Array[String],
                   description: String,
-                  name: String
+                  name: String,
+                  product_id: String,
+                  specifiers:
+                    T::Array[
+                      MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier
+                    ]
                 }
               )
             end
             def to_hash
+            end
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :presentation_group_values
+
+              sig do
+                params(presentation_group_values: T::Hash[Symbol, String]).void
+              end
+              attr_writer :presentation_group_values
+
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :pricing_group_values
+
+              sig { params(pricing_group_values: T::Hash[Symbol, String]).void }
+              attr_writer :pricing_group_values
+
+              # If provided, the specifier will only apply to the product with the specified ID.
+              sig { returns(T.nilable(String)) }
+              attr_reader :product_id
+
+              sig { params(product_id: String).void }
+              attr_writer :product_id
+
+              # If provided, the specifier will only apply to products with all the specified
+              # tags.
+              sig { returns(T.nilable(T::Array[String])) }
+              attr_reader :product_tags
+
+              sig { params(product_tags: T::Array[String]).void }
+              attr_writer :product_tags
+
+              sig do
+                params(
+                  presentation_group_values: T::Hash[Symbol, String],
+                  pricing_group_values: T::Hash[Symbol, String],
+                  product_id: String,
+                  product_tags: T::Array[String]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                presentation_group_values: nil,
+                pricing_group_values: nil,
+                # If provided, the specifier will only apply to the product with the specified ID.
+                product_id: nil,
+                # If provided, the specifier will only apply to products with all the specified
+                # tags.
+                product_tags: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    presentation_group_values: T::Hash[Symbol, String],
+                    pricing_group_values: T::Hash[Symbol, String],
+                    product_id: String,
+                    product_tags: T::Array[String]
+                  }
+                )
+              end
+              def to_hash
+              end
             end
           end
 
@@ -7321,6 +8632,252 @@ module MetronomeSDK
               end
               def self.values
               end
+            end
+          end
+        end
+
+        class UpdateRecurringCommit < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          sig { returns(String) }
+          attr_accessor :recurring_commit_id
+
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::AccessAmount
+              )
+            )
+          end
+          attr_reader :access_amount
+
+          sig do
+            params(
+              access_amount:
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::AccessAmount::OrHash
+            ).void
+          end
+          attr_writer :access_amount
+
+          sig { returns(T.nilable(Time)) }
+          attr_accessor :ending_before
+
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::InvoiceAmount
+              )
+            )
+          end
+          attr_reader :invoice_amount
+
+          sig do
+            params(
+              invoice_amount:
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::InvoiceAmount::OrHash
+            ).void
+          end
+          attr_writer :invoice_amount
+
+          sig do
+            params(
+              recurring_commit_id: String,
+              access_amount:
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::AccessAmount::OrHash,
+              ending_before: T.nilable(Time),
+              invoice_amount:
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::InvoiceAmount::OrHash
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            recurring_commit_id:,
+            access_amount: nil,
+            ending_before: nil,
+            invoice_amount: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                recurring_commit_id: String,
+                access_amount:
+                  MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::AccessAmount,
+                ending_before: T.nilable(Time),
+                invoice_amount:
+                  MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::InvoiceAmount
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::AccessAmount,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig { returns(T.nilable(Float)) }
+            attr_reader :quantity
+
+            sig { params(quantity: Float).void }
+            attr_writer :quantity
+
+            sig { returns(T.nilable(Float)) }
+            attr_reader :unit_price
+
+            sig { params(unit_price: Float).void }
+            attr_writer :unit_price
+
+            sig do
+              params(quantity: Float, unit_price: Float).returns(
+                T.attached_class
+              )
+            end
+            def self.new(quantity: nil, unit_price: nil)
+            end
+
+            sig { override.returns({ quantity: Float, unit_price: Float }) }
+            def to_hash
+            end
+          end
+
+          class InvoiceAmount < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::InvoiceAmount,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig { returns(T.nilable(Float)) }
+            attr_reader :quantity
+
+            sig { params(quantity: Float).void }
+            attr_writer :quantity
+
+            sig { returns(T.nilable(Float)) }
+            attr_reader :unit_price
+
+            sig { params(unit_price: Float).void }
+            attr_writer :unit_price
+
+            sig do
+              params(quantity: Float, unit_price: Float).returns(
+                T.attached_class
+              )
+            end
+            def self.new(quantity: nil, unit_price: nil)
+            end
+
+            sig { override.returns({ quantity: Float, unit_price: Float }) }
+            def to_hash
+            end
+          end
+        end
+
+        class UpdateRecurringCredit < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          sig { returns(String) }
+          attr_accessor :recurring_credit_id
+
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::AccessAmount
+              )
+            )
+          end
+          attr_reader :access_amount
+
+          sig do
+            params(
+              access_amount:
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::AccessAmount::OrHash
+            ).void
+          end
+          attr_writer :access_amount
+
+          sig { returns(T.nilable(Time)) }
+          attr_accessor :ending_before
+
+          sig do
+            params(
+              recurring_credit_id: String,
+              access_amount:
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::AccessAmount::OrHash,
+              ending_before: T.nilable(Time)
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            recurring_credit_id:,
+            access_amount: nil,
+            ending_before: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                recurring_credit_id: String,
+                access_amount:
+                  MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::AccessAmount,
+                ending_before: T.nilable(Time)
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::AccessAmount,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig { returns(T.nilable(Float)) }
+            attr_reader :quantity
+
+            sig { params(quantity: Float).void }
+            attr_writer :quantity
+
+            sig { returns(T.nilable(Float)) }
+            attr_reader :unit_price
+
+            sig { params(unit_price: Float).void }
+            attr_writer :unit_price
+
+            sig do
+              params(quantity: Float, unit_price: Float).returns(
+                T.attached_class
+              )
+            end
+            def self.new(quantity: nil, unit_price: nil)
+            end
+
+            sig { override.returns({ quantity: Float, unit_price: Float }) }
+            def to_hash
             end
           end
         end
@@ -7761,13 +9318,21 @@ module MetronomeSDK
               end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :description
+            attr_reader :description
+
+            sig { params(description: String).void }
+            attr_writer :description
 
             # Specify the name of the line item for the threshold charge. If left blank, it
             # will default to the commit product name.
             sig { returns(T.nilable(String)) }
-            attr_accessor :name
+            attr_reader :name
 
+            sig { params(name: String).void }
+            attr_writer :name
+
+            # The commit product that will be used to generate the line item for commit
+            # payment.
             sig { returns(T.nilable(String)) }
             attr_reader :product_id
 
@@ -7776,8 +9341,8 @@ module MetronomeSDK
 
             sig do
               params(
-                description: T.nilable(String),
-                name: T.nilable(String),
+                description: String,
+                name: String,
                 product_id: String
               ).returns(T.attached_class)
             end
@@ -7786,17 +9351,15 @@ module MetronomeSDK
               # Specify the name of the line item for the threshold charge. If left blank, it
               # will default to the commit product name.
               name: nil,
+              # The commit product that will be used to generate the line item for commit
+              # payment.
               product_id: nil
             )
             end
 
             sig do
               override.returns(
-                {
-                  description: T.nilable(String),
-                  name: T.nilable(String),
-                  product_id: String
-                }
+                { description: String, name: String, product_id: String }
               )
             end
             def to_hash
@@ -8056,6 +9619,138 @@ module MetronomeSDK
               end
               def self.values
               end
+            end
+          end
+        end
+
+        class UpdateSubscription < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V2::ContractEditParams::UpdateSubscription,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          sig { returns(String) }
+          attr_accessor :subscription_id
+
+          sig { returns(T.nilable(Time)) }
+          attr_accessor :ending_before
+
+          # Quantity changes are applied on the effective date based on the order which they
+          # are sent. For example, if I scheduled the quantity to be 12 on May 21 and then
+          # scheduled a quantity delta change of -1, the result from that day would be 11.
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityUpdate
+                ]
+              )
+            )
+          end
+          attr_reader :quantity_updates
+
+          sig do
+            params(
+              quantity_updates:
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityUpdate::OrHash
+                ]
+            ).void
+          end
+          attr_writer :quantity_updates
+
+          sig do
+            params(
+              subscription_id: String,
+              ending_before: T.nilable(Time),
+              quantity_updates:
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityUpdate::OrHash
+                ]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            subscription_id:,
+            ending_before: nil,
+            # Quantity changes are applied on the effective date based on the order which they
+            # are sent. For example, if I scheduled the quantity to be 12 on May 21 and then
+            # scheduled a quantity delta change of -1, the result from that day would be 11.
+            quantity_updates: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                subscription_id: String,
+                ending_before: T.nilable(Time),
+                quantity_updates:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityUpdate
+                  ]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class QuantityUpdate < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityUpdate,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Time) }
+            attr_accessor :starting_at
+
+            # The new quantity for the subscription. Must be provided if quantity_delta is not
+            # provided. Must be non-negative.
+            sig { returns(T.nilable(Float)) }
+            attr_reader :quantity
+
+            sig { params(quantity: Float).void }
+            attr_writer :quantity
+
+            # The delta to add to the subscription's quantity. Must be provided if quantity is
+            # not provided. Can't be zero. It also can't result in a negative quantity on the
+            # subscription.
+            sig { returns(T.nilable(Float)) }
+            attr_reader :quantity_delta
+
+            sig { params(quantity_delta: Float).void }
+            attr_writer :quantity_delta
+
+            sig do
+              params(
+                starting_at: Time,
+                quantity: Float,
+                quantity_delta: Float
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              starting_at:,
+              # The new quantity for the subscription. Must be provided if quantity_delta is not
+              # provided. Must be non-negative.
+              quantity: nil,
+              # The delta to add to the subscription's quantity. Must be provided if quantity is
+              # not provided. Can't be zero. It also can't result in a negative quantity on the
+              # subscription.
+              quantity_delta: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                { starting_at: Time, quantity: Float, quantity_delta: Float }
+              )
+            end
+            def to_hash
             end
           end
         end

@@ -46,6 +46,15 @@ module MetronomeSDK
           ?request_options: MetronomeSDK::request_opts
         ) -> void
 
+        def to_hash: -> {
+          customer_id: String,
+          dashboard: MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::dashboard,
+          bm_group_key_overrides: ::Array[MetronomeSDK::V1::DashboardGetEmbeddableURLParams::BmGroupKeyOverride],
+          color_overrides: ::Array[MetronomeSDK::V1::DashboardGetEmbeddableURLParams::ColorOverride],
+          dashboard_options: ::Array[MetronomeSDK::V1::DashboardGetEmbeddableURLParams::DashboardOption],
+          request_options: MetronomeSDK::RequestOptions
+        }
+
         type dashboard = :invoices | :usage | :credits
 
         module Dashboard
@@ -81,29 +90,40 @@ module MetronomeSDK
             ?display_name: String,
             ?value_display_names: ::Hash[Symbol, top]
           ) -> void
+
+          def to_hash: -> {
+            group_key_name: String,
+            display_name: String,
+            value_display_names: ::Hash[Symbol, top]
+          }
         end
 
         type color_override =
           {
-            name: MetronomeSDK::V1::DashboardGetEmbeddableURLParams::ColorOverride::name_,
+            name: MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::ColorOverride::name_,
             value: String
           }
 
         class ColorOverride < MetronomeSDK::Internal::Type::BaseModel
-          attr_reader name: MetronomeSDK::V1::DashboardGetEmbeddableURLParams::ColorOverride::name_?
+          attr_reader name: MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::ColorOverride::name_?
 
           def name=: (
-            MetronomeSDK::V1::DashboardGetEmbeddableURLParams::ColorOverride::name_
-          ) -> MetronomeSDK::V1::DashboardGetEmbeddableURLParams::ColorOverride::name_
+            MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::ColorOverride::name_
+          ) -> MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::ColorOverride::name_
 
           attr_reader value: String?
 
           def value=: (String) -> String
 
           def initialize: (
-            ?name: MetronomeSDK::V1::DashboardGetEmbeddableURLParams::ColorOverride::name_,
+            ?name: MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::ColorOverride::name_,
             ?value: String
           ) -> void
+
+          def to_hash: -> {
+            name: MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::ColorOverride::name_,
+            value: String
+          }
 
           type name_ =
             :Gray_dark
@@ -149,7 +169,7 @@ module MetronomeSDK
             PRIMARY_GREEN: :Primary_green
             PRIMARY_RED: :Primary_red
 
-            def self?.values: -> ::Array[MetronomeSDK::V1::DashboardGetEmbeddableURLParams::ColorOverride::name_]
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::ColorOverride::name_]
           end
         end
 
@@ -161,6 +181,8 @@ module MetronomeSDK
           attr_accessor value: String
 
           def initialize: (key: String, value: String) -> void
+
+          def to_hash: -> { key: String, value: String }
         end
       end
     end

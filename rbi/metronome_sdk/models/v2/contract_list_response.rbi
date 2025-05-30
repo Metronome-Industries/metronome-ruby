@@ -80,7 +80,13 @@ module MetronomeSDK
           end
           attr_accessor :overrides
 
-          sig { returns(T::Array[MetronomeSDK::ScheduledCharge]) }
+          sig do
+            returns(
+              T::Array[
+                MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge
+              ]
+            )
+          end
           attr_accessor :scheduled_charges
 
           sig { returns(Time) }
@@ -171,11 +177,24 @@ module MetronomeSDK
           attr_writer :customer_billing_provider_configuration
 
           # This field's availability is dependent on your client's configuration.
-          sig { returns(T.nilable(T::Array[MetronomeSDK::Discount])) }
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Discount
+                ]
+              )
+            )
+          end
           attr_reader :discounts
 
           sig do
-            params(discounts: T::Array[MetronomeSDK::Discount::OrHash]).void
+            params(
+              discounts:
+                T::Array[
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::OrHash
+                ]
+            ).void
           end
           attr_writer :discounts
 
@@ -243,12 +262,23 @@ module MetronomeSDK
           attr_writer :prepaid_balance_threshold_configuration
 
           # This field's availability is dependent on your client's configuration.
-          sig { returns(T.nilable(T::Array[MetronomeSDK::ProService])) }
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::ProfessionalService
+                ]
+              )
+            )
+          end
           attr_reader :professional_services
 
           sig do
             params(
-              professional_services: T::Array[MetronomeSDK::ProService::OrHash]
+              professional_services:
+                T::Array[
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::ProfessionalService::OrHash
+                ]
             ).void
           end
           attr_writer :professional_services
@@ -369,6 +399,28 @@ module MetronomeSDK
           end
           attr_writer :spend_threshold_configuration
 
+          # (beta) List of subscriptions on the contract.
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription
+                ]
+              )
+            )
+          end
+          attr_reader :subscriptions
+
+          sig do
+            params(
+              subscriptions:
+                T::Array[
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::OrHash
+                ]
+            ).void
+          end
+          attr_writer :subscriptions
+
           sig { returns(T.nilable(Float)) }
           attr_reader :total_contract_value
 
@@ -399,7 +451,9 @@ module MetronomeSDK
                   MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OrHash
                 ],
               scheduled_charges:
-                T::Array[MetronomeSDK::ScheduledCharge::OrHash],
+                T::Array[
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::OrHash
+                ],
               starting_at: Time,
               transitions:
                 T::Array[
@@ -419,7 +473,10 @@ module MetronomeSDK
               custom_fields: T::Hash[Symbol, String],
               customer_billing_provider_configuration:
                 MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration::OrHash,
-              discounts: T::Array[MetronomeSDK::Discount::OrHash],
+              discounts:
+                T::Array[
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::OrHash
+                ],
               ending_before: Time,
               multiplier_override_prioritization:
                 MetronomeSDK::Models::V2::ContractListResponse::Data::MultiplierOverridePrioritization::OrSymbol,
@@ -428,7 +485,10 @@ module MetronomeSDK
               netsuite_sales_order_id: String,
               prepaid_balance_threshold_configuration:
                 MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::OrHash,
-              professional_services: T::Array[MetronomeSDK::ProService::OrHash],
+              professional_services:
+                T::Array[
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::ProfessionalService::OrHash
+                ],
               rate_card_id: String,
               recurring_commits:
                 T::Array[
@@ -447,6 +507,10 @@ module MetronomeSDK
                 MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledChargesOnUsageInvoices::OrSymbol,
               spend_threshold_configuration:
                 MetronomeSDK::Models::V2::ContractListResponse::Data::SpendThresholdConfiguration::OrHash,
+              subscriptions:
+                T::Array[
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::OrHash
+                ],
               total_contract_value: Float,
               uniqueness_key: String
             ).returns(T.attached_class)
@@ -497,6 +561,8 @@ module MetronomeSDK
             # on a separate invoice from usage charges.
             scheduled_charges_on_usage_invoices: nil,
             spend_threshold_configuration: nil,
+            # (beta) List of subscriptions on the contract.
+            subscriptions: nil,
             total_contract_value: nil,
             # Prevents the creation of duplicates. If a request to create a record is made
             # with a previously used uniqueness key, a new record will not be created and the
@@ -520,7 +586,10 @@ module MetronomeSDK
                   T::Array[
                     MetronomeSDK::Models::V2::ContractListResponse::Data::Override
                   ],
-                scheduled_charges: T::Array[MetronomeSDK::ScheduledCharge],
+                scheduled_charges:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge
+                  ],
                 starting_at: Time,
                 transitions:
                   T::Array[
@@ -540,7 +609,10 @@ module MetronomeSDK
                 custom_fields: T::Hash[Symbol, String],
                 customer_billing_provider_configuration:
                   MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration,
-                discounts: T::Array[MetronomeSDK::Discount],
+                discounts:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Discount
+                  ],
                 ending_before: Time,
                 multiplier_override_prioritization:
                   MetronomeSDK::Models::V2::ContractListResponse::Data::MultiplierOverridePrioritization::TaggedSymbol,
@@ -549,7 +621,10 @@ module MetronomeSDK
                 netsuite_sales_order_id: String,
                 prepaid_balance_threshold_configuration:
                   MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration,
-                professional_services: T::Array[MetronomeSDK::ProService],
+                professional_services:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::ProfessionalService
+                  ],
                 rate_card_id: String,
                 recurring_commits:
                   T::Array[
@@ -568,6 +643,10 @@ module MetronomeSDK
                   MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledChargesOnUsageInvoices::TaggedSymbol,
                 spend_threshold_configuration:
                   MetronomeSDK::Models::V2::ContractListResponse::Data::SpendThresholdConfiguration,
+                subscriptions:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription
+                  ],
                 total_contract_value: Float,
                 uniqueness_key: String
               }
@@ -612,12 +691,19 @@ module MetronomeSDK
 
             # The schedule that the customer will gain access to the credits purposed with
             # this commit.
-            sig { returns(T.nilable(MetronomeSDK::ScheduleDuration)) }
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule
+                )
+              )
+            end
             attr_reader :access_schedule
 
             sig do
               params(
-                access_schedule: MetronomeSDK::ScheduleDuration::OrHash
+                access_schedule:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule::OrHash
               ).void
             end
             attr_writer :access_schedule
@@ -708,12 +794,19 @@ module MetronomeSDK
             attr_writer :invoice_contract
 
             # The schedule that the customer will be invoiced for this commit.
-            sig { returns(T.nilable(MetronomeSDK::SchedulePointInTime)) }
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule
+                )
+              )
+            end
             attr_reader :invoice_schedule
 
             sig do
               params(
-                invoice_schedule: MetronomeSDK::SchedulePointInTime::OrHash
+                invoice_schedule:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule::OrHash
               ).void
             end
             attr_writer :invoice_schedule
@@ -724,21 +817,7 @@ module MetronomeSDK
               returns(
                 T.nilable(
                   T::Array[
-                    T.any(
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry
-                    )
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::Variants
                   ]
                 )
               )
@@ -750,19 +829,19 @@ module MetronomeSDK
                 ledger:
                   T::Array[
                     T.any(
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::OrHash
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember0::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember1::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember2::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember3::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember4::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember5::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember6::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember7::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember8::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember9::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember10::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember11::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember12::OrHash
                     )
                   ]
               ).void
@@ -837,6 +916,30 @@ module MetronomeSDK
             sig { params(salesforce_opportunity_id: String).void }
             attr_writer :salesforce_opportunity_id
 
+            # List of filters that determine what kind of customer usage draws down a commit
+            # or credit. A customer's usage needs to meet the condition of at least one of the
+            # specifiers to contribute to a commit's or credit's drawdown.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Specifier
+                  ]
+                )
+              )
+            end
+            attr_reader :specifiers
+
+            sig do
+              params(
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Specifier::OrHash
+                  ]
+              ).void
+            end
+            attr_writer :specifiers
+
             sig do
               params(
                 id: String,
@@ -844,7 +947,8 @@ module MetronomeSDK
                   MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Product::OrHash,
                 type:
                   MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Type::OrSymbol,
-                access_schedule: MetronomeSDK::ScheduleDuration::OrHash,
+                access_schedule:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule::OrHash,
                 applicable_contract_ids: T::Array[String],
                 applicable_product_ids: T::Array[String],
                 applicable_product_tags: T::Array[String],
@@ -856,23 +960,24 @@ module MetronomeSDK
                 description: String,
                 invoice_contract:
                   MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceContract::OrHash,
-                invoice_schedule: MetronomeSDK::SchedulePointInTime::OrHash,
+                invoice_schedule:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule::OrHash,
                 ledger:
                   T::Array[
                     T.any(
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::OrHash
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember0::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember1::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember2::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember3::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember4::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember5::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember6::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember7::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember8::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember9::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember10::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember11::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember12::OrHash
                     )
                   ],
                 name: String,
@@ -883,7 +988,11 @@ module MetronomeSDK
                 rolled_over_from:
                   MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::RolledOverFrom::OrHash,
                 rollover_fraction: Float,
-                salesforce_opportunity_id: String
+                salesforce_opportunity_id: String,
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Specifier::OrHash
+                  ]
               ).returns(T.attached_class)
             end
             def self.new(
@@ -926,7 +1035,11 @@ module MetronomeSDK
               rolled_over_from: nil,
               rollover_fraction: nil,
               # This field's availability is dependent on your client's configuration.
-              salesforce_opportunity_id: nil
+              salesforce_opportunity_id: nil,
+              # List of filters that determine what kind of customer usage draws down a commit
+              # or credit. A customer's usage needs to meet the condition of at least one of the
+              # specifiers to contribute to a commit's or credit's drawdown.
+              specifiers: nil
             )
             end
 
@@ -938,7 +1051,8 @@ module MetronomeSDK
                     MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Product,
                   type:
                     MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Type::TaggedSymbol,
-                  access_schedule: MetronomeSDK::ScheduleDuration,
+                  access_schedule:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule,
                   applicable_contract_ids: T::Array[String],
                   applicable_product_ids: T::Array[String],
                   applicable_product_tags: T::Array[String],
@@ -950,24 +1064,11 @@ module MetronomeSDK
                   description: String,
                   invoice_contract:
                     MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceContract,
-                  invoice_schedule: MetronomeSDK::SchedulePointInTime,
+                  invoice_schedule:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule,
                   ledger:
                     T::Array[
-                      T.any(
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry
-                      )
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::Variants
                     ],
                   name: String,
                   netsuite_sales_order_id: String,
@@ -977,7 +1078,11 @@ module MetronomeSDK
                   rolled_over_from:
                     MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::RolledOverFrom,
                   rollover_fraction: Float,
-                  salesforce_opportunity_id: String
+                  salesforce_opportunity_id: String,
+                  specifiers:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Specifier
+                    ]
                 }
               )
             end
@@ -1042,6 +1147,144 @@ module MetronomeSDK
               end
             end
 
+            class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig do
+                returns(
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule::ScheduleItem
+                  ]
+                )
+              end
+              attr_accessor :schedule_items
+
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule::CreditType
+                  )
+                )
+              end
+              attr_reader :credit_type
+
+              sig do
+                params(
+                  credit_type:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule::CreditType::OrHash
+                ).void
+              end
+              attr_writer :credit_type
+
+              # The schedule that the customer will gain access to the credits purposed with
+              # this commit.
+              sig do
+                params(
+                  schedule_items:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule::ScheduleItem::OrHash
+                    ],
+                  credit_type:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule::CreditType::OrHash
+                ).returns(T.attached_class)
+              end
+              def self.new(schedule_items:, credit_type: nil)
+              end
+
+              sig do
+                override.returns(
+                  {
+                    schedule_items:
+                      T::Array[
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule::ScheduleItem
+                      ],
+                    credit_type:
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule::CreditType
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule::ScheduleItem,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :id
+
+                sig { returns(Float) }
+                attr_accessor :amount
+
+                sig { returns(Time) }
+                attr_accessor :ending_before
+
+                sig { returns(Time) }
+                attr_accessor :starting_at
+
+                sig do
+                  params(
+                    id: String,
+                    amount: Float,
+                    ending_before: Time,
+                    starting_at: Time
+                  ).returns(T.attached_class)
+                end
+                def self.new(id:, amount:, ending_before:, starting_at:)
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      id: String,
+                      amount: Float,
+                      ending_before: Time,
+                      starting_at: Time
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::AccessSchedule::CreditType,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :id
+
+                sig { returns(String) }
+                attr_accessor :name
+
+                sig do
+                  params(id: String, name: String).returns(T.attached_class)
+                end
+                def self.new(id:, name:)
+                end
+
+                sig { override.returns({ id: String, name: String }) }
+                def to_hash
+                end
+              end
+            end
+
             class Contract < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -1085,33 +1328,199 @@ module MetronomeSDK
               end
             end
 
+            class InvoiceSchedule < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule::CreditType
+                  )
+                )
+              end
+              attr_reader :credit_type
+
+              sig do
+                params(
+                  credit_type:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule::CreditType::OrHash
+                ).void
+              end
+              attr_writer :credit_type
+
+              sig do
+                returns(
+                  T.nilable(
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule::ScheduleItem
+                    ]
+                  )
+                )
+              end
+              attr_reader :schedule_items
+
+              sig do
+                params(
+                  schedule_items:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule::ScheduleItem::OrHash
+                    ]
+                ).void
+              end
+              attr_writer :schedule_items
+
+              # The schedule that the customer will be invoiced for this commit.
+              sig do
+                params(
+                  credit_type:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule::CreditType::OrHash,
+                  schedule_items:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule::ScheduleItem::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(credit_type: nil, schedule_items: nil)
+              end
+
+              sig do
+                override.returns(
+                  {
+                    credit_type:
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule::CreditType,
+                    schedule_items:
+                      T::Array[
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule::ScheduleItem
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule::CreditType,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :id
+
+                sig { returns(String) }
+                attr_accessor :name
+
+                sig do
+                  params(id: String, name: String).returns(T.attached_class)
+                end
+                def self.new(id:, name:)
+                end
+
+                sig { override.returns({ id: String, name: String }) }
+                def to_hash
+                end
+              end
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::InvoiceSchedule::ScheduleItem,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :id
+
+                sig { returns(Float) }
+                attr_accessor :amount
+
+                sig { returns(String) }
+                attr_accessor :invoice_id
+
+                sig { returns(Float) }
+                attr_accessor :quantity
+
+                sig { returns(Time) }
+                attr_accessor :timestamp
+
+                sig { returns(Float) }
+                attr_accessor :unit_price
+
+                sig do
+                  params(
+                    id: String,
+                    amount: Float,
+                    invoice_id: String,
+                    quantity: Float,
+                    timestamp: Time,
+                    unit_price: Float
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  id:,
+                  amount:,
+                  invoice_id:,
+                  quantity:,
+                  timestamp:,
+                  unit_price:
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      id: String,
+                      amount: Float,
+                      invoice_id: String,
+                      quantity: Float,
+                      timestamp: Time,
+                      unit_price: Float
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+
             module Ledger
               extend MetronomeSDK::Internal::Type::Union
 
               Variants =
                 T.type_alias do
                   T.any(
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember0,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember1,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember2,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember3,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember4,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember5,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember6,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember7,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember8,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember9,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember10,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember11,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember12
                   )
                 end
 
-              class PrepaidCommitSegmentStartLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember0 < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember0,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
@@ -1127,7 +1536,7 @@ module MetronomeSDK
 
                 sig do
                   returns(
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type::TaggedSymbol
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember0::Type::TaggedSymbol
                   )
                 end
                 attr_accessor :type
@@ -1138,7 +1547,7 @@ module MetronomeSDK
                     segment_id: String,
                     timestamp: Time,
                     type:
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type::OrSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember0::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(amount:, segment_id:, timestamp:, type:)
@@ -1151,7 +1560,7 @@ module MetronomeSDK
                       segment_id: String,
                       timestamp: Time,
                       type:
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember0::Type::TaggedSymbol
                     }
                   )
                 end
@@ -1165,7 +1574,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember0::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1173,13 +1582,13 @@ module MetronomeSDK
                   PREPAID_COMMIT_SEGMENT_START =
                     T.let(
                       :PREPAID_COMMIT_SEGMENT_START,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type::TaggedSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember0::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember0::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -1188,11 +1597,11 @@ module MetronomeSDK
                 end
               end
 
-              class PrepaidCommitAutomatedInvoiceDeductionLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember1 < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember1,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
@@ -1211,7 +1620,7 @@ module MetronomeSDK
 
                 sig do
                   returns(
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type::TaggedSymbol
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember1::Type::TaggedSymbol
                   )
                 end
                 attr_accessor :type
@@ -1223,7 +1632,7 @@ module MetronomeSDK
                     segment_id: String,
                     timestamp: Time,
                     type:
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type::OrSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember1::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(
@@ -1243,7 +1652,7 @@ module MetronomeSDK
                       segment_id: String,
                       timestamp: Time,
                       type:
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember1::Type::TaggedSymbol
                     }
                   )
                 end
@@ -1257,7 +1666,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember1::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1265,13 +1674,13 @@ module MetronomeSDK
                   PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION =
                     T.let(
                       :PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type::TaggedSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember1::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember1::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -1280,11 +1689,11 @@ module MetronomeSDK
                 end
               end
 
-              class PrepaidCommitRolloverLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember2 < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember2,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
@@ -1303,7 +1712,7 @@ module MetronomeSDK
 
                 sig do
                   returns(
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type::TaggedSymbol
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember2::Type::TaggedSymbol
                   )
                 end
                 attr_accessor :type
@@ -1315,7 +1724,7 @@ module MetronomeSDK
                     segment_id: String,
                     timestamp: Time,
                     type:
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type::OrSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember2::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(
@@ -1335,7 +1744,7 @@ module MetronomeSDK
                       segment_id: String,
                       timestamp: Time,
                       type:
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember2::Type::TaggedSymbol
                     }
                   )
                 end
@@ -1349,7 +1758,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember2::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1357,13 +1766,13 @@ module MetronomeSDK
                   PREPAID_COMMIT_ROLLOVER =
                     T.let(
                       :PREPAID_COMMIT_ROLLOVER,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type::TaggedSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember2::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitRolloverLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember2::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -1372,11 +1781,11 @@ module MetronomeSDK
                 end
               end
 
-              class PrepaidCommitExpirationLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember3 < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember3,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
@@ -1392,7 +1801,7 @@ module MetronomeSDK
 
                 sig do
                   returns(
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type::TaggedSymbol
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember3::Type::TaggedSymbol
                   )
                 end
                 attr_accessor :type
@@ -1403,7 +1812,7 @@ module MetronomeSDK
                     segment_id: String,
                     timestamp: Time,
                     type:
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type::OrSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember3::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(amount:, segment_id:, timestamp:, type:)
@@ -1416,7 +1825,7 @@ module MetronomeSDK
                       segment_id: String,
                       timestamp: Time,
                       type:
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember3::Type::TaggedSymbol
                     }
                   )
                 end
@@ -1430,7 +1839,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember3::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1438,13 +1847,13 @@ module MetronomeSDK
                   PREPAID_COMMIT_EXPIRATION =
                     T.let(
                       :PREPAID_COMMIT_EXPIRATION,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type::TaggedSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember3::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember3::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -1453,11 +1862,11 @@ module MetronomeSDK
                 end
               end
 
-              class PrepaidCommitCanceledLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember4 < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember4,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
@@ -1476,7 +1885,7 @@ module MetronomeSDK
 
                 sig do
                   returns(
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type::TaggedSymbol
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember4::Type::TaggedSymbol
                   )
                 end
                 attr_accessor :type
@@ -1488,7 +1897,7 @@ module MetronomeSDK
                     segment_id: String,
                     timestamp: Time,
                     type:
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type::OrSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember4::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(
@@ -1508,7 +1917,7 @@ module MetronomeSDK
                       segment_id: String,
                       timestamp: Time,
                       type:
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember4::Type::TaggedSymbol
                     }
                   )
                 end
@@ -1522,7 +1931,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember4::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1530,13 +1939,13 @@ module MetronomeSDK
                   PREPAID_COMMIT_CANCELED =
                     T.let(
                       :PREPAID_COMMIT_CANCELED,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type::TaggedSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember4::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember4::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -1545,11 +1954,11 @@ module MetronomeSDK
                 end
               end
 
-              class PrepaidCommitCreditedLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember5 < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember5,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
@@ -1568,7 +1977,7 @@ module MetronomeSDK
 
                 sig do
                   returns(
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type::TaggedSymbol
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember5::Type::TaggedSymbol
                   )
                 end
                 attr_accessor :type
@@ -1580,7 +1989,7 @@ module MetronomeSDK
                     segment_id: String,
                     timestamp: Time,
                     type:
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type::OrSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember5::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(
@@ -1600,7 +2009,7 @@ module MetronomeSDK
                       segment_id: String,
                       timestamp: Time,
                       type:
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember5::Type::TaggedSymbol
                     }
                   )
                 end
@@ -1614,7 +2023,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember5::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1622,13 +2031,13 @@ module MetronomeSDK
                   PREPAID_COMMIT_CREDITED =
                     T.let(
                       :PREPAID_COMMIT_CREDITED,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type::TaggedSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember5::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember5::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -1637,11 +2046,11 @@ module MetronomeSDK
                 end
               end
 
-              class PostpaidCommitInitialBalanceLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember6 < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember6,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
@@ -1654,7 +2063,7 @@ module MetronomeSDK
 
                 sig do
                   returns(
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type::TaggedSymbol
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember6::Type::TaggedSymbol
                   )
                 end
                 attr_accessor :type
@@ -1664,7 +2073,7 @@ module MetronomeSDK
                     amount: Float,
                     timestamp: Time,
                     type:
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type::OrSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember6::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(amount:, timestamp:, type:)
@@ -1676,7 +2085,7 @@ module MetronomeSDK
                       amount: Float,
                       timestamp: Time,
                       type:
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember6::Type::TaggedSymbol
                     }
                   )
                 end
@@ -1690,7 +2099,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember6::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1698,13 +2107,13 @@ module MetronomeSDK
                   POSTPAID_COMMIT_INITIAL_BALANCE =
                     T.let(
                       :POSTPAID_COMMIT_INITIAL_BALANCE,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type::TaggedSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember6::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember6::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -1713,11 +2122,11 @@ module MetronomeSDK
                 end
               end
 
-              class PostpaidCommitAutomatedInvoiceDeductionLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember7 < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember7,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
@@ -1736,7 +2145,7 @@ module MetronomeSDK
 
                 sig do
                   returns(
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type::TaggedSymbol
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember7::Type::TaggedSymbol
                   )
                 end
                 attr_accessor :type
@@ -1748,7 +2157,7 @@ module MetronomeSDK
                     segment_id: String,
                     timestamp: Time,
                     type:
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type::OrSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember7::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(
@@ -1768,7 +2177,7 @@ module MetronomeSDK
                       segment_id: String,
                       timestamp: Time,
                       type:
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember7::Type::TaggedSymbol
                     }
                   )
                 end
@@ -1782,7 +2191,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember7::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1790,13 +2199,13 @@ module MetronomeSDK
                   POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION =
                     T.let(
                       :POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type::TaggedSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember7::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember7::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -1805,11 +2214,11 @@ module MetronomeSDK
                 end
               end
 
-              class PostpaidCommitRolloverLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember8 < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember8,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
@@ -1828,7 +2237,7 @@ module MetronomeSDK
 
                 sig do
                   returns(
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type::TaggedSymbol
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember8::Type::TaggedSymbol
                   )
                 end
                 attr_accessor :type
@@ -1840,7 +2249,7 @@ module MetronomeSDK
                     segment_id: String,
                     timestamp: Time,
                     type:
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type::OrSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember8::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(
@@ -1860,7 +2269,7 @@ module MetronomeSDK
                       segment_id: String,
                       timestamp: Time,
                       type:
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember8::Type::TaggedSymbol
                     }
                   )
                 end
@@ -1874,7 +2283,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember8::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1882,13 +2291,13 @@ module MetronomeSDK
                   POSTPAID_COMMIT_ROLLOVER =
                     T.let(
                       :POSTPAID_COMMIT_ROLLOVER,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type::TaggedSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember8::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember8::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -1897,11 +2306,11 @@ module MetronomeSDK
                 end
               end
 
-              class PostpaidCommitTrueupLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember9 < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember9,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
@@ -1917,7 +2326,7 @@ module MetronomeSDK
 
                 sig do
                   returns(
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type::TaggedSymbol
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember9::Type::TaggedSymbol
                   )
                 end
                 attr_accessor :type
@@ -1928,7 +2337,7 @@ module MetronomeSDK
                     invoice_id: String,
                     timestamp: Time,
                     type:
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type::OrSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember9::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(amount:, invoice_id:, timestamp:, type:)
@@ -1941,7 +2350,7 @@ module MetronomeSDK
                       invoice_id: String,
                       timestamp: Time,
                       type:
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember9::Type::TaggedSymbol
                     }
                   )
                 end
@@ -1955,7 +2364,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember9::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1963,13 +2372,13 @@ module MetronomeSDK
                   POSTPAID_COMMIT_TRUEUP =
                     T.let(
                       :POSTPAID_COMMIT_TRUEUP,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type::TaggedSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember9::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember9::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -1978,11 +2387,11 @@ module MetronomeSDK
                 end
               end
 
-              class PrepaidCommitManualLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember10 < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember10,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
@@ -1998,7 +2407,7 @@ module MetronomeSDK
 
                 sig do
                   returns(
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry::Type::TaggedSymbol
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember10::Type::TaggedSymbol
                   )
                 end
                 attr_accessor :type
@@ -2009,7 +2418,7 @@ module MetronomeSDK
                     reason: String,
                     timestamp: Time,
                     type:
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry::Type::OrSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember10::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(amount:, reason:, timestamp:, type:)
@@ -2022,7 +2431,7 @@ module MetronomeSDK
                       reason: String,
                       timestamp: Time,
                       type:
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember10::Type::TaggedSymbol
                     }
                   )
                 end
@@ -2036,7 +2445,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry::Type
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember10::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2044,13 +2453,13 @@ module MetronomeSDK
                   PREPAID_COMMIT_MANUAL =
                     T.let(
                       :PREPAID_COMMIT_MANUAL,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry::Type::TaggedSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember10::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PrepaidCommitManualLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember10::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -2059,11 +2468,11 @@ module MetronomeSDK
                 end
               end
 
-              class PostpaidCommitManualLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember11 < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember11,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
@@ -2079,7 +2488,7 @@ module MetronomeSDK
 
                 sig do
                   returns(
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type::TaggedSymbol
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember11::Type::TaggedSymbol
                   )
                 end
                 attr_accessor :type
@@ -2090,7 +2499,7 @@ module MetronomeSDK
                     reason: String,
                     timestamp: Time,
                     type:
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type::OrSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember11::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(amount:, reason:, timestamp:, type:)
@@ -2103,7 +2512,7 @@ module MetronomeSDK
                       reason: String,
                       timestamp: Time,
                       type:
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember11::Type::TaggedSymbol
                     }
                   )
                 end
@@ -2117,7 +2526,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember11::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2125,13 +2534,13 @@ module MetronomeSDK
                   POSTPAID_COMMIT_MANUAL =
                     T.let(
                       :POSTPAID_COMMIT_MANUAL,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type::TaggedSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember11::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitManualLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember11::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -2140,11 +2549,11 @@ module MetronomeSDK
                 end
               end
 
-              class PostpaidCommitExpirationLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember12 < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember12,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
@@ -2157,7 +2566,7 @@ module MetronomeSDK
 
                 sig do
                   returns(
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type::TaggedSymbol
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember12::Type::TaggedSymbol
                   )
                 end
                 attr_accessor :type
@@ -2167,7 +2576,7 @@ module MetronomeSDK
                     amount: Float,
                     timestamp: Time,
                     type:
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type::OrSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember12::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(amount:, timestamp:, type:)
@@ -2179,7 +2588,7 @@ module MetronomeSDK
                       amount: Float,
                       timestamp: Time,
                       type:
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember12::Type::TaggedSymbol
                     }
                   )
                 end
@@ -2193,7 +2602,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember12::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2201,13 +2610,13 @@ module MetronomeSDK
                   POSTPAID_COMMIT_EXPIRATION =
                     T.let(
                       :POSTPAID_COMMIT_EXPIRATION,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type::TaggedSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember12::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::PostpaidCommitExpirationLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Ledger::UnionMember12::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -2286,6 +2695,77 @@ module MetronomeSDK
 
               sig do
                 override.returns({ commit_id: String, contract_id: String })
+              end
+              def to_hash
+              end
+            end
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Commit::Specifier,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :presentation_group_values
+
+              sig do
+                params(presentation_group_values: T::Hash[Symbol, String]).void
+              end
+              attr_writer :presentation_group_values
+
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :pricing_group_values
+
+              sig { params(pricing_group_values: T::Hash[Symbol, String]).void }
+              attr_writer :pricing_group_values
+
+              # If provided, the specifier will only apply to the product with the specified ID.
+              sig { returns(T.nilable(String)) }
+              attr_reader :product_id
+
+              sig { params(product_id: String).void }
+              attr_writer :product_id
+
+              # If provided, the specifier will only apply to products with all the specified
+              # tags.
+              sig { returns(T.nilable(T::Array[String])) }
+              attr_reader :product_tags
+
+              sig { params(product_tags: T::Array[String]).void }
+              attr_writer :product_tags
+
+              sig do
+                params(
+                  presentation_group_values: T::Hash[Symbol, String],
+                  pricing_group_values: T::Hash[Symbol, String],
+                  product_id: String,
+                  product_tags: T::Array[String]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                presentation_group_values: nil,
+                pricing_group_values: nil,
+                # If provided, the specifier will only apply to the product with the specified ID.
+                product_id: nil,
+                # If provided, the specifier will only apply to products with all the specified
+                # tags.
+                product_tags: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    presentation_group_values: T::Hash[Symbol, String],
+                    pricing_group_values: T::Hash[Symbol, String],
+                    product_id: String,
+                    product_tags: T::Array[String]
+                  }
+                )
               end
               def to_hash
               end
@@ -2541,6 +3021,23 @@ module MetronomeSDK
                   )
                 end
 
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol
+                  )
+                )
+              end
+              attr_reader :billing_frequency
+
+              sig do
+                params(
+                  billing_frequency:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverrideSpecifier::BillingFrequency::OrSymbol
+                ).void
+              end
+              attr_writer :billing_frequency
+
               sig { returns(T.nilable(T::Array[String])) }
               attr_reader :commit_ids
 
@@ -2589,6 +3086,8 @@ module MetronomeSDK
 
               sig do
                 params(
+                  billing_frequency:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverrideSpecifier::BillingFrequency::OrSymbol,
                   commit_ids: T::Array[String],
                   presentation_group_values: T::Hash[Symbol, T.nilable(String)],
                   pricing_group_values: T::Hash[Symbol, String],
@@ -2599,6 +3098,7 @@ module MetronomeSDK
                 ).returns(T.attached_class)
               end
               def self.new(
+                billing_frequency: nil,
                 commit_ids: nil,
                 presentation_group_values: nil,
                 pricing_group_values: nil,
@@ -2612,6 +3112,8 @@ module MetronomeSDK
               sig do
                 override.returns(
                   {
+                    billing_frequency:
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol,
                     commit_ids: T::Array[String],
                     presentation_group_values:
                       T::Hash[Symbol, T.nilable(String)],
@@ -2624,6 +3126,50 @@ module MetronomeSDK
                 )
               end
               def to_hash
+              end
+
+              module BillingFrequency
+                extend MetronomeSDK::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverrideSpecifier::BillingFrequency
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                MONTHLY =
+                  T.let(
+                    :MONTHLY,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol
+                  )
+                QUARTERLY =
+                  T.let(
+                    :QUARTERLY,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol
+                  )
+                ANNUAL =
+                  T.let(
+                    :ANNUAL,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol
+                  )
+                WEEKLY =
+                  T.let(
+                    :WEEKLY,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
               end
             end
 
@@ -2672,11 +3218,20 @@ module MetronomeSDK
               end
               attr_accessor :rate_type
 
-              sig { returns(T.nilable(MetronomeSDK::CreditTypeData)) }
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::CreditType
+                  )
+                )
+              end
               attr_reader :credit_type
 
               sig do
-                params(credit_type: MetronomeSDK::CreditTypeData::OrHash).void
+                params(
+                  credit_type:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::CreditType::OrHash
+                ).void
               end
               attr_writer :credit_type
 
@@ -2712,22 +3267,41 @@ module MetronomeSDK
               attr_writer :quantity
 
               # Only set for TIERED rate_type.
-              sig { returns(T.nilable(T::Array[MetronomeSDK::Tier])) }
+              sig do
+                returns(
+                  T.nilable(
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::Tier
+                    ]
+                  )
+                )
+              end
               attr_reader :tiers
 
-              sig { params(tiers: T::Array[MetronomeSDK::Tier::OrHash]).void }
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::Tier::OrHash
+                    ]
+                ).void
+              end
               attr_writer :tiers
 
               sig do
                 params(
                   rate_type:
                     MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::RateType::OrSymbol,
-                  credit_type: MetronomeSDK::CreditTypeData::OrHash,
+                  credit_type:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::CreditType::OrHash,
                   custom_rate: T::Hash[Symbol, T.anything],
                   is_prorated: T::Boolean,
                   price: Float,
                   quantity: Float,
-                  tiers: T::Array[MetronomeSDK::Tier::OrHash]
+                  tiers:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::Tier::OrHash
+                    ]
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -2754,12 +3328,16 @@ module MetronomeSDK
                   {
                     rate_type:
                       MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::RateType::TaggedSymbol,
-                    credit_type: MetronomeSDK::CreditTypeData,
+                    credit_type:
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::CreditType,
                     custom_rate: T::Hash[Symbol, T.anything],
                     is_prorated: T::Boolean,
                     price: Float,
                     quantity: Float,
-                    tiers: T::Array[MetronomeSDK::Tier]
+                    tiers:
+                      T::Array[
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::Tier
+                      ]
                   }
                 )
               end
@@ -2812,6 +3390,61 @@ module MetronomeSDK
                   )
                 end
                 def self.values
+                end
+              end
+
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::CreditType,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :id
+
+                sig { returns(String) }
+                attr_accessor :name
+
+                sig do
+                  params(id: String, name: String).returns(T.attached_class)
+                end
+                def self.new(id:, name:)
+                end
+
+                sig { override.returns({ id: String, name: String }) }
+                def to_hash
+                end
+              end
+
+              class Tier < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Override::OverwriteRate::Tier,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(Float) }
+                attr_accessor :price
+
+                sig { returns(T.nilable(Float)) }
+                attr_reader :size
+
+                sig { params(size: Float).void }
+                attr_writer :size
+
+                sig do
+                  params(price: Float, size: Float).returns(T.attached_class)
+                end
+                def self.new(price:, size: nil)
+                end
+
+                sig { override.returns({ price: Float, size: Float }) }
+                def to_hash
                 end
               end
             end
@@ -2910,6 +3543,308 @@ module MetronomeSDK
                 )
               end
               def self.values
+              end
+            end
+          end
+
+          class ScheduledCharge < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig { returns(String) }
+            attr_accessor :id
+
+            sig do
+              returns(
+                MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Product
+              )
+            end
+            attr_reader :product
+
+            sig do
+              params(
+                product:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Product::OrHash
+              ).void
+            end
+            attr_writer :product
+
+            sig do
+              returns(
+                MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule
+              )
+            end
+            attr_reader :schedule
+
+            sig do
+              params(
+                schedule:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule::OrHash
+              ).void
+            end
+            attr_writer :schedule
+
+            sig { returns(T.nilable(Time)) }
+            attr_reader :archived_at
+
+            sig { params(archived_at: Time).void }
+            attr_writer :archived_at
+
+            sig { returns(T.nilable(T::Hash[Symbol, String])) }
+            attr_reader :custom_fields
+
+            sig { params(custom_fields: T::Hash[Symbol, String]).void }
+            attr_writer :custom_fields
+
+            # displayed on invoices
+            sig { returns(T.nilable(String)) }
+            attr_reader :name
+
+            sig { params(name: String).void }
+            attr_writer :name
+
+            # This field's availability is dependent on your client's configuration.
+            sig { returns(T.nilable(String)) }
+            attr_reader :netsuite_sales_order_id
+
+            sig { params(netsuite_sales_order_id: String).void }
+            attr_writer :netsuite_sales_order_id
+
+            sig do
+              params(
+                id: String,
+                product:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Product::OrHash,
+                schedule:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule::OrHash,
+                archived_at: Time,
+                custom_fields: T::Hash[Symbol, String],
+                name: String,
+                netsuite_sales_order_id: String
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              id:,
+              product:,
+              schedule:,
+              archived_at: nil,
+              custom_fields: nil,
+              # displayed on invoices
+              name: nil,
+              # This field's availability is dependent on your client's configuration.
+              netsuite_sales_order_id: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  id: String,
+                  product:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Product,
+                  schedule:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule,
+                  archived_at: Time,
+                  custom_fields: T::Hash[Symbol, String],
+                  name: String,
+                  netsuite_sales_order_id: String
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class Product < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Product,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(String) }
+              attr_accessor :id
+
+              sig { returns(String) }
+              attr_accessor :name
+
+              sig { params(id: String, name: String).returns(T.attached_class) }
+              def self.new(id:, name:)
+              end
+
+              sig { override.returns({ id: String, name: String }) }
+              def to_hash
+              end
+            end
+
+            class Schedule < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule::CreditType
+                  )
+                )
+              end
+              attr_reader :credit_type
+
+              sig do
+                params(
+                  credit_type:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule::CreditType::OrHash
+                ).void
+              end
+              attr_writer :credit_type
+
+              sig do
+                returns(
+                  T.nilable(
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule::ScheduleItem
+                    ]
+                  )
+                )
+              end
+              attr_reader :schedule_items
+
+              sig do
+                params(
+                  schedule_items:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule::ScheduleItem::OrHash
+                    ]
+                ).void
+              end
+              attr_writer :schedule_items
+
+              sig do
+                params(
+                  credit_type:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule::CreditType::OrHash,
+                  schedule_items:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule::ScheduleItem::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(credit_type: nil, schedule_items: nil)
+              end
+
+              sig do
+                override.returns(
+                  {
+                    credit_type:
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule::CreditType,
+                    schedule_items:
+                      T::Array[
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule::ScheduleItem
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule::CreditType,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :id
+
+                sig { returns(String) }
+                attr_accessor :name
+
+                sig do
+                  params(id: String, name: String).returns(T.attached_class)
+                end
+                def self.new(id:, name:)
+                end
+
+                sig { override.returns({ id: String, name: String }) }
+                def to_hash
+                end
+              end
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::ScheduledCharge::Schedule::ScheduleItem,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :id
+
+                sig { returns(Float) }
+                attr_accessor :amount
+
+                sig { returns(String) }
+                attr_accessor :invoice_id
+
+                sig { returns(Float) }
+                attr_accessor :quantity
+
+                sig { returns(Time) }
+                attr_accessor :timestamp
+
+                sig { returns(Float) }
+                attr_accessor :unit_price
+
+                sig do
+                  params(
+                    id: String,
+                    amount: Float,
+                    invoice_id: String,
+                    quantity: Float,
+                    timestamp: Time,
+                    unit_price: Float
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  id:,
+                  amount:,
+                  invoice_id:,
+                  quantity:,
+                  timestamp:,
+                  unit_price:
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      id: String,
+                      amount: Float,
+                      invoice_id: String,
+                      quantity: Float,
+                      timestamp: Time,
+                      unit_price: Float
+                    }
+                  )
+                end
+                def to_hash
+                end
               end
             end
           end
@@ -3183,12 +4118,19 @@ module MetronomeSDK
             attr_accessor :type
 
             # The schedule that the customer will gain access to the credits.
-            sig { returns(T.nilable(MetronomeSDK::ScheduleDuration)) }
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule
+                )
+              )
+            end
             attr_reader :access_schedule
 
             sig do
               params(
-                access_schedule: MetronomeSDK::ScheduleDuration::OrHash
+                access_schedule:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule::OrHash
               ).void
             end
             attr_writer :access_schedule
@@ -3260,14 +4202,7 @@ module MetronomeSDK
               returns(
                 T.nilable(
                   T::Array[
-                    T.any(
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditManualLedgerEntry
-                    )
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::Variants
                   ]
                 )
               )
@@ -3279,12 +4214,12 @@ module MetronomeSDK
                 ledger:
                   T::Array[
                     T.any(
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditManualLedgerEntry::OrHash
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember0::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember1::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember2::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember3::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember4::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember5::OrHash
                     )
                   ]
               ).void
@@ -3319,6 +4254,30 @@ module MetronomeSDK
             sig { params(salesforce_opportunity_id: String).void }
             attr_writer :salesforce_opportunity_id
 
+            # List of filters that determine what kind of customer usage draws down a commit
+            # or credit. A customer's usage needs to meet the condition of at least one of the
+            # specifiers to contribute to a commit's or credit's drawdown.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Specifier
+                  ]
+                )
+              )
+            end
+            attr_reader :specifiers
+
+            sig do
+              params(
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Specifier::OrHash
+                  ]
+              ).void
+            end
+            attr_writer :specifiers
+
             sig do
               params(
                 id: String,
@@ -3326,7 +4285,8 @@ module MetronomeSDK
                   MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Product::OrHash,
                 type:
                   MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Type::OrSymbol,
-                access_schedule: MetronomeSDK::ScheduleDuration::OrHash,
+                access_schedule:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule::OrHash,
                 applicable_contract_ids: T::Array[String],
                 applicable_product_ids: T::Array[String],
                 applicable_product_tags: T::Array[String],
@@ -3338,18 +4298,22 @@ module MetronomeSDK
                 ledger:
                   T::Array[
                     T.any(
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditManualLedgerEntry::OrHash
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember0::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember1::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember2::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember3::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember4::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember5::OrHash
                     )
                   ],
                 name: String,
                 netsuite_sales_order_id: String,
                 priority: Float,
-                salesforce_opportunity_id: String
+                salesforce_opportunity_id: String,
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Specifier::OrHash
+                  ]
               ).returns(T.attached_class)
             end
             def self.new(
@@ -3383,7 +4347,11 @@ module MetronomeSDK
               # will apply first.
               priority: nil,
               # This field's availability is dependent on your client's configuration.
-              salesforce_opportunity_id: nil
+              salesforce_opportunity_id: nil,
+              # List of filters that determine what kind of customer usage draws down a commit
+              # or credit. A customer's usage needs to meet the condition of at least one of the
+              # specifiers to contribute to a commit's or credit's drawdown.
+              specifiers: nil
             )
             end
 
@@ -3395,7 +4363,8 @@ module MetronomeSDK
                     MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Product,
                   type:
                     MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Type::TaggedSymbol,
-                  access_schedule: MetronomeSDK::ScheduleDuration,
+                  access_schedule:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule,
                   applicable_contract_ids: T::Array[String],
                   applicable_product_ids: T::Array[String],
                   applicable_product_tags: T::Array[String],
@@ -3406,19 +4375,16 @@ module MetronomeSDK
                   description: String,
                   ledger:
                     T::Array[
-                      T.any(
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditManualLedgerEntry
-                      )
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::Variants
                     ],
                   name: String,
                   netsuite_sales_order_id: String,
                   priority: Float,
-                  salesforce_opportunity_id: String
+                  salesforce_opportunity_id: String,
+                  specifiers:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Specifier
+                    ]
                 }
               )
             end
@@ -3478,6 +4444,143 @@ module MetronomeSDK
               end
             end
 
+            class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig do
+                returns(
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule::ScheduleItem
+                  ]
+                )
+              end
+              attr_accessor :schedule_items
+
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule::CreditType
+                  )
+                )
+              end
+              attr_reader :credit_type
+
+              sig do
+                params(
+                  credit_type:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule::CreditType::OrHash
+                ).void
+              end
+              attr_writer :credit_type
+
+              # The schedule that the customer will gain access to the credits.
+              sig do
+                params(
+                  schedule_items:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule::ScheduleItem::OrHash
+                    ],
+                  credit_type:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule::CreditType::OrHash
+                ).returns(T.attached_class)
+              end
+              def self.new(schedule_items:, credit_type: nil)
+              end
+
+              sig do
+                override.returns(
+                  {
+                    schedule_items:
+                      T::Array[
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule::ScheduleItem
+                      ],
+                    credit_type:
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule::CreditType
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule::ScheduleItem,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :id
+
+                sig { returns(Float) }
+                attr_accessor :amount
+
+                sig { returns(Time) }
+                attr_accessor :ending_before
+
+                sig { returns(Time) }
+                attr_accessor :starting_at
+
+                sig do
+                  params(
+                    id: String,
+                    amount: Float,
+                    ending_before: Time,
+                    starting_at: Time
+                  ).returns(T.attached_class)
+                end
+                def self.new(id:, amount:, ending_before:, starting_at:)
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      id: String,
+                      amount: Float,
+                      ending_before: Time,
+                      starting_at: Time
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::AccessSchedule::CreditType,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :id
+
+                sig { returns(String) }
+                attr_accessor :name
+
+                sig do
+                  params(id: String, name: String).returns(T.attached_class)
+                end
+                def self.new(id:, name:)
+                end
+
+                sig { override.returns({ id: String, name: String }) }
+                def to_hash
+                end
+              end
+            end
+
             class Contract < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -3505,20 +4608,20 @@ module MetronomeSDK
               Variants =
                 T.type_alias do
                   T.any(
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditManualLedgerEntry
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember0,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember1,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember2,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember3,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember4,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember5
                   )
                 end
 
-              class CreditSegmentStartLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember0 < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember0,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
@@ -3534,7 +4637,7 @@ module MetronomeSDK
 
                 sig do
                   returns(
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry::Type::TaggedSymbol
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember0::Type::TaggedSymbol
                   )
                 end
                 attr_accessor :type
@@ -3545,7 +4648,7 @@ module MetronomeSDK
                     segment_id: String,
                     timestamp: Time,
                     type:
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry::Type::OrSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember0::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(amount:, segment_id:, timestamp:, type:)
@@ -3558,7 +4661,7 @@ module MetronomeSDK
                       segment_id: String,
                       timestamp: Time,
                       type:
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember0::Type::TaggedSymbol
                     }
                   )
                 end
@@ -3572,7 +4675,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry::Type
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember0::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3580,13 +4683,13 @@ module MetronomeSDK
                   CREDIT_SEGMENT_START =
                     T.let(
                       :CREDIT_SEGMENT_START,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry::Type::TaggedSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember0::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditSegmentStartLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember0::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -3595,11 +4698,11 @@ module MetronomeSDK
                 end
               end
 
-              class CreditAutomatedInvoiceDeductionLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember1 < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember1,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
@@ -3618,7 +4721,7 @@ module MetronomeSDK
 
                 sig do
                   returns(
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type::TaggedSymbol
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember1::Type::TaggedSymbol
                   )
                 end
                 attr_accessor :type
@@ -3630,7 +4733,7 @@ module MetronomeSDK
                     segment_id: String,
                     timestamp: Time,
                     type:
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type::OrSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember1::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(
@@ -3650,7 +4753,7 @@ module MetronomeSDK
                       segment_id: String,
                       timestamp: Time,
                       type:
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember1::Type::TaggedSymbol
                     }
                   )
                 end
@@ -3664,7 +4767,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember1::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3672,13 +4775,13 @@ module MetronomeSDK
                   CREDIT_AUTOMATED_INVOICE_DEDUCTION =
                     T.let(
                       :CREDIT_AUTOMATED_INVOICE_DEDUCTION,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type::TaggedSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember1::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember1::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -3687,11 +4790,11 @@ module MetronomeSDK
                 end
               end
 
-              class CreditExpirationLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember2 < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember2,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
@@ -3707,7 +4810,7 @@ module MetronomeSDK
 
                 sig do
                   returns(
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry::Type::TaggedSymbol
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember2::Type::TaggedSymbol
                   )
                 end
                 attr_accessor :type
@@ -3718,7 +4821,7 @@ module MetronomeSDK
                     segment_id: String,
                     timestamp: Time,
                     type:
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry::Type::OrSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember2::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(amount:, segment_id:, timestamp:, type:)
@@ -3731,7 +4834,7 @@ module MetronomeSDK
                       segment_id: String,
                       timestamp: Time,
                       type:
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember2::Type::TaggedSymbol
                     }
                   )
                 end
@@ -3745,7 +4848,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry::Type
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember2::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3753,13 +4856,13 @@ module MetronomeSDK
                   CREDIT_EXPIRATION =
                     T.let(
                       :CREDIT_EXPIRATION,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry::Type::TaggedSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember2::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember2::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -3768,11 +4871,11 @@ module MetronomeSDK
                 end
               end
 
-              class CreditCanceledLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember3 < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember3,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
@@ -3791,7 +4894,7 @@ module MetronomeSDK
 
                 sig do
                   returns(
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry::Type::TaggedSymbol
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember3::Type::TaggedSymbol
                   )
                 end
                 attr_accessor :type
@@ -3803,7 +4906,7 @@ module MetronomeSDK
                     segment_id: String,
                     timestamp: Time,
                     type:
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry::Type::OrSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember3::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(
@@ -3823,7 +4926,7 @@ module MetronomeSDK
                       segment_id: String,
                       timestamp: Time,
                       type:
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember3::Type::TaggedSymbol
                     }
                   )
                 end
@@ -3837,7 +4940,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry::Type
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember3::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3845,13 +4948,13 @@ module MetronomeSDK
                   CREDIT_CANCELED =
                     T.let(
                       :CREDIT_CANCELED,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry::Type::TaggedSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember3::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember3::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -3860,11 +4963,11 @@ module MetronomeSDK
                 end
               end
 
-              class CreditCreditedLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember4 < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember4,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
@@ -3883,7 +4986,7 @@ module MetronomeSDK
 
                 sig do
                   returns(
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry::Type::TaggedSymbol
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember4::Type::TaggedSymbol
                   )
                 end
                 attr_accessor :type
@@ -3895,7 +4998,7 @@ module MetronomeSDK
                     segment_id: String,
                     timestamp: Time,
                     type:
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry::Type::OrSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember4::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(
@@ -3915,7 +5018,7 @@ module MetronomeSDK
                       segment_id: String,
                       timestamp: Time,
                       type:
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember4::Type::TaggedSymbol
                     }
                   )
                 end
@@ -3929,7 +5032,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry::Type
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember4::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3937,13 +5040,13 @@ module MetronomeSDK
                   CREDIT_CREDITED =
                     T.let(
                       :CREDIT_CREDITED,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry::Type::TaggedSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember4::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember4::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -3952,11 +5055,11 @@ module MetronomeSDK
                 end
               end
 
-              class CreditManualLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember5 < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditManualLedgerEntry,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember5,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
@@ -3972,7 +5075,7 @@ module MetronomeSDK
 
                 sig do
                   returns(
-                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditManualLedgerEntry::Type::TaggedSymbol
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember5::Type::TaggedSymbol
                   )
                 end
                 attr_accessor :type
@@ -3983,7 +5086,7 @@ module MetronomeSDK
                     reason: String,
                     timestamp: Time,
                     type:
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditManualLedgerEntry::Type::OrSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember5::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(amount:, reason:, timestamp:, type:)
@@ -3996,7 +5099,7 @@ module MetronomeSDK
                       reason: String,
                       timestamp: Time,
                       type:
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditManualLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember5::Type::TaggedSymbol
                     }
                   )
                 end
@@ -4010,7 +5113,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditManualLedgerEntry::Type
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember5::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -4018,13 +5121,13 @@ module MetronomeSDK
                   CREDIT_MANUAL =
                     T.let(
                       :CREDIT_MANUAL,
-                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditManualLedgerEntry::Type::TaggedSymbol
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember5::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::CreditManualLedgerEntry::Type::TaggedSymbol
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Ledger::UnionMember5::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -4041,6 +5144,77 @@ module MetronomeSDK
                 )
               end
               def self.variants
+              end
+            end
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Credit::Specifier,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :presentation_group_values
+
+              sig do
+                params(presentation_group_values: T::Hash[Symbol, String]).void
+              end
+              attr_writer :presentation_group_values
+
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :pricing_group_values
+
+              sig { params(pricing_group_values: T::Hash[Symbol, String]).void }
+              attr_writer :pricing_group_values
+
+              # If provided, the specifier will only apply to the product with the specified ID.
+              sig { returns(T.nilable(String)) }
+              attr_reader :product_id
+
+              sig { params(product_id: String).void }
+              attr_writer :product_id
+
+              # If provided, the specifier will only apply to products with all the specified
+              # tags.
+              sig { returns(T.nilable(T::Array[String])) }
+              attr_reader :product_tags
+
+              sig { params(product_tags: T::Array[String]).void }
+              attr_writer :product_tags
+
+              sig do
+                params(
+                  presentation_group_values: T::Hash[Symbol, String],
+                  pricing_group_values: T::Hash[Symbol, String],
+                  product_id: String,
+                  product_tags: T::Array[String]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                presentation_group_values: nil,
+                pricing_group_values: nil,
+                # If provided, the specifier will only apply to the product with the specified ID.
+                product_id: nil,
+                # If provided, the specifier will only apply to products with all the specified
+                # tags.
+                product_tags: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    presentation_group_values: T::Hash[Symbol, String],
+                    pricing_group_values: T::Hash[Symbol, String],
+                    product_id: String,
+                    product_tags: T::Array[String]
+                  }
+                )
+              end
+              def to_hash
               end
             end
           end
@@ -4198,6 +5372,297 @@ module MetronomeSDK
                 )
               end
               def self.values
+              end
+            end
+          end
+
+          class Discount < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Discount,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig { returns(String) }
+            attr_accessor :id
+
+            sig do
+              returns(
+                MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Product
+              )
+            end
+            attr_reader :product
+
+            sig do
+              params(
+                product:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Product::OrHash
+              ).void
+            end
+            attr_writer :product
+
+            sig do
+              returns(
+                MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule
+              )
+            end
+            attr_reader :schedule
+
+            sig do
+              params(
+                schedule:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule::OrHash
+              ).void
+            end
+            attr_writer :schedule
+
+            sig { returns(T.nilable(T::Hash[Symbol, String])) }
+            attr_reader :custom_fields
+
+            sig { params(custom_fields: T::Hash[Symbol, String]).void }
+            attr_writer :custom_fields
+
+            sig { returns(T.nilable(String)) }
+            attr_reader :name
+
+            sig { params(name: String).void }
+            attr_writer :name
+
+            # This field's availability is dependent on your client's configuration.
+            sig { returns(T.nilable(String)) }
+            attr_reader :netsuite_sales_order_id
+
+            sig { params(netsuite_sales_order_id: String).void }
+            attr_writer :netsuite_sales_order_id
+
+            sig do
+              params(
+                id: String,
+                product:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Product::OrHash,
+                schedule:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule::OrHash,
+                custom_fields: T::Hash[Symbol, String],
+                name: String,
+                netsuite_sales_order_id: String
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              id:,
+              product:,
+              schedule:,
+              custom_fields: nil,
+              name: nil,
+              # This field's availability is dependent on your client's configuration.
+              netsuite_sales_order_id: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  id: String,
+                  product:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Product,
+                  schedule:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule,
+                  custom_fields: T::Hash[Symbol, String],
+                  name: String,
+                  netsuite_sales_order_id: String
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class Product < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Product,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(String) }
+              attr_accessor :id
+
+              sig { returns(String) }
+              attr_accessor :name
+
+              sig { params(id: String, name: String).returns(T.attached_class) }
+              def self.new(id:, name:)
+              end
+
+              sig { override.returns({ id: String, name: String }) }
+              def to_hash
+              end
+            end
+
+            class Schedule < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule::CreditType
+                  )
+                )
+              end
+              attr_reader :credit_type
+
+              sig do
+                params(
+                  credit_type:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule::CreditType::OrHash
+                ).void
+              end
+              attr_writer :credit_type
+
+              sig do
+                returns(
+                  T.nilable(
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule::ScheduleItem
+                    ]
+                  )
+                )
+              end
+              attr_reader :schedule_items
+
+              sig do
+                params(
+                  schedule_items:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule::ScheduleItem::OrHash
+                    ]
+                ).void
+              end
+              attr_writer :schedule_items
+
+              sig do
+                params(
+                  credit_type:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule::CreditType::OrHash,
+                  schedule_items:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule::ScheduleItem::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(credit_type: nil, schedule_items: nil)
+              end
+
+              sig do
+                override.returns(
+                  {
+                    credit_type:
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule::CreditType,
+                    schedule_items:
+                      T::Array[
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule::ScheduleItem
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule::CreditType,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :id
+
+                sig { returns(String) }
+                attr_accessor :name
+
+                sig do
+                  params(id: String, name: String).returns(T.attached_class)
+                end
+                def self.new(id:, name:)
+                end
+
+                sig { override.returns({ id: String, name: String }) }
+                def to_hash
+                end
+              end
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Discount::Schedule::ScheduleItem,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :id
+
+                sig { returns(Float) }
+                attr_accessor :amount
+
+                sig { returns(String) }
+                attr_accessor :invoice_id
+
+                sig { returns(Float) }
+                attr_accessor :quantity
+
+                sig { returns(Time) }
+                attr_accessor :timestamp
+
+                sig { returns(Float) }
+                attr_accessor :unit_price
+
+                sig do
+                  params(
+                    id: String,
+                    amount: Float,
+                    invoice_id: String,
+                    quantity: Float,
+                    timestamp: Time,
+                    unit_price: Float
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  id:,
+                  amount:,
+                  invoice_id:,
+                  quantity:,
+                  timestamp:,
+                  unit_price:
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      id: String,
+                      amount: Float,
+                      invoice_id: String,
+                      quantity: Float,
+                      timestamp: Time,
+                      unit_price: Float
+                    }
+                  )
+                end
+                def to_hash
+                end
               end
             end
           end
@@ -4381,13 +5846,42 @@ module MetronomeSDK
               sig { params(name: String).void }
               attr_writer :name
 
+              # List of filters that determine what kind of customer usage draws down a commit
+              # or credit. A customer's usage needs to meet the condition of at least one of the
+              # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+              # be used together with `applicable_product_ids` or `applicable_product_tags`.
+              sig do
+                returns(
+                  T.nilable(
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::Commit::Specifier
+                    ]
+                  )
+                )
+              end
+              attr_reader :specifiers
+
+              sig do
+                params(
+                  specifiers:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::Commit::Specifier::OrHash
+                    ]
+                ).void
+              end
+              attr_writer :specifiers
+
               sig do
                 params(
                   product_id: String,
                   applicable_product_ids: T::Array[String],
                   applicable_product_tags: T::Array[String],
                   description: String,
-                  name: String
+                  name: String,
+                  specifiers:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::Commit::Specifier::OrHash
+                    ]
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -4404,7 +5898,12 @@ module MetronomeSDK
                 description: nil,
                 # Specify the name of the line item for the threshold charge. If left blank, it
                 # will default to the commit product name.
-                name: nil
+                name: nil,
+                # List of filters that determine what kind of customer usage draws down a commit
+                # or credit. A customer's usage needs to meet the condition of at least one of the
+                # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+                # be used together with `applicable_product_ids` or `applicable_product_tags`.
+                specifiers: nil
               )
               end
 
@@ -4415,11 +5914,90 @@ module MetronomeSDK
                     applicable_product_ids: T::Array[String],
                     applicable_product_tags: T::Array[String],
                     description: String,
-                    name: String
+                    name: String,
+                    specifiers:
+                      T::Array[
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::Commit::Specifier
+                      ]
                   }
                 )
               end
               def to_hash
+              end
+
+              class Specifier < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::Commit::Specifier,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(T.nilable(T::Hash[Symbol, String])) }
+                attr_reader :presentation_group_values
+
+                sig do
+                  params(
+                    presentation_group_values: T::Hash[Symbol, String]
+                  ).void
+                end
+                attr_writer :presentation_group_values
+
+                sig { returns(T.nilable(T::Hash[Symbol, String])) }
+                attr_reader :pricing_group_values
+
+                sig do
+                  params(pricing_group_values: T::Hash[Symbol, String]).void
+                end
+                attr_writer :pricing_group_values
+
+                # If provided, the specifier will only apply to the product with the specified ID.
+                sig { returns(T.nilable(String)) }
+                attr_reader :product_id
+
+                sig { params(product_id: String).void }
+                attr_writer :product_id
+
+                # If provided, the specifier will only apply to products with all the specified
+                # tags.
+                sig { returns(T.nilable(T::Array[String])) }
+                attr_reader :product_tags
+
+                sig { params(product_tags: T::Array[String]).void }
+                attr_writer :product_tags
+
+                sig do
+                  params(
+                    presentation_group_values: T::Hash[Symbol, String],
+                    pricing_group_values: T::Hash[Symbol, String],
+                    product_id: String,
+                    product_tags: T::Array[String]
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  presentation_group_values: nil,
+                  pricing_group_values: nil,
+                  # If provided, the specifier will only apply to the product with the specified ID.
+                  product_id: nil,
+                  # If provided, the specifier will only apply to products with all the specified
+                  # tags.
+                  product_tags: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      presentation_group_values: T::Hash[Symbol, String],
+                      pricing_group_values: T::Hash[Symbol, String],
+                      product_id: String,
+                      product_tags: T::Array[String]
+                    }
+                  )
+                end
+                def to_hash
+                end
               end
             end
 
@@ -4680,6 +6258,102 @@ module MetronomeSDK
             end
           end
 
+          class ProfessionalService < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::ProfessionalService,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig { returns(String) }
+            attr_accessor :id
+
+            # Maximum amount for the term.
+            sig { returns(Float) }
+            attr_accessor :max_amount
+
+            sig { returns(String) }
+            attr_accessor :product_id
+
+            # Quantity for the charge. Will be multiplied by unit_price to determine the
+            # amount.
+            sig { returns(Float) }
+            attr_accessor :quantity
+
+            # Unit price for the charge. Will be multiplied by quantity to determine the
+            # amount and must be specified.
+            sig { returns(Float) }
+            attr_accessor :unit_price
+
+            sig { returns(T.nilable(T::Hash[Symbol, String])) }
+            attr_reader :custom_fields
+
+            sig { params(custom_fields: T::Hash[Symbol, String]).void }
+            attr_writer :custom_fields
+
+            sig { returns(T.nilable(String)) }
+            attr_reader :description
+
+            sig { params(description: String).void }
+            attr_writer :description
+
+            # This field's availability is dependent on your client's configuration.
+            sig { returns(T.nilable(String)) }
+            attr_reader :netsuite_sales_order_id
+
+            sig { params(netsuite_sales_order_id: String).void }
+            attr_writer :netsuite_sales_order_id
+
+            sig do
+              params(
+                id: String,
+                max_amount: Float,
+                product_id: String,
+                quantity: Float,
+                unit_price: Float,
+                custom_fields: T::Hash[Symbol, String],
+                description: String,
+                netsuite_sales_order_id: String
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              id:,
+              # Maximum amount for the term.
+              max_amount:,
+              product_id:,
+              # Quantity for the charge. Will be multiplied by unit_price to determine the
+              # amount.
+              quantity:,
+              # Unit price for the charge. Will be multiplied by quantity to determine the
+              # amount and must be specified.
+              unit_price:,
+              custom_fields: nil,
+              description: nil,
+              # This field's availability is dependent on your client's configuration.
+              netsuite_sales_order_id: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  id: String,
+                  max_amount: Float,
+                  product_id: String,
+                  quantity: Float,
+                  unit_price: Float,
+                  custom_fields: T::Hash[Symbol, String],
+                  description: String,
+                  netsuite_sales_order_id: String
+                }
+              )
+            end
+            def to_hash
+            end
+          end
+
           class RecurringCommit < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
@@ -4854,7 +6528,7 @@ module MetronomeSDK
             # The frequency at which the recurring commits will be created. If not provided: -
             # The commits will be created on the usage invoice frequency. If provided: - The
             # period defined in the duration will correspond to this frequency. - Commits will
-            # be created aligned with the recurring commit's start_date rather than the usage
+            # be created aligned with the recurring commit's starting_at rather than the usage
             # invoice dates.
             sig do
               returns(
@@ -4881,6 +6555,30 @@ module MetronomeSDK
 
             sig { params(rollover_fraction: Float).void }
             attr_writer :rollover_fraction
+
+            # List of filters that determine what kind of customer usage draws down a commit
+            # or credit. A customer's usage needs to meet the condition of at least one of the
+            # specifiers to contribute to a commit's or credit's drawdown.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::Specifier
+                  ]
+                )
+              )
+            end
+            attr_reader :specifiers
+
+            sig do
+              params(
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::Specifier::OrHash
+                  ]
+              ).void
+            end
+            attr_writer :specifiers
 
             sig do
               params(
@@ -4909,7 +6607,11 @@ module MetronomeSDK
                   MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::Proration::OrSymbol,
                 recurrence_frequency:
                   MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::RecurrenceFrequency::OrSymbol,
-                rollover_fraction: Float
+                rollover_fraction: Float,
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::Specifier::OrHash
+                  ]
               ).returns(T.attached_class)
             end
             def self.new(
@@ -4946,13 +6648,17 @@ module MetronomeSDK
               # The frequency at which the recurring commits will be created. If not provided: -
               # The commits will be created on the usage invoice frequency. If provided: - The
               # period defined in the duration will correspond to this frequency. - Commits will
-              # be created aligned with the recurring commit's start_date rather than the usage
+              # be created aligned with the recurring commit's starting_at rather than the usage
               # invoice dates.
               recurrence_frequency: nil,
               # Will be passed down to the individual commits. This controls how much of an
               # individual unexpired commit will roll over upon contract transition. Must be
               # between 0 and 1.
-              rollover_fraction: nil
+              rollover_fraction: nil,
+              # List of filters that determine what kind of customer usage draws down a commit
+              # or credit. A customer's usage needs to meet the condition of at least one of the
+              # specifiers to contribute to a commit's or credit's drawdown.
+              specifiers: nil
             )
             end
 
@@ -4984,7 +6690,11 @@ module MetronomeSDK
                     MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::Proration::TaggedSymbol,
                   recurrence_frequency:
                     MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::RecurrenceFrequency::TaggedSymbol,
-                  rollover_fraction: Float
+                  rollover_fraction: Float,
+                  specifiers:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::Specifier
+                    ]
                 }
               )
             end
@@ -5278,7 +6988,7 @@ module MetronomeSDK
             # The frequency at which the recurring commits will be created. If not provided: -
             # The commits will be created on the usage invoice frequency. If provided: - The
             # period defined in the duration will correspond to this frequency. - Commits will
-            # be created aligned with the recurring commit's start_date rather than the usage
+            # be created aligned with the recurring commit's starting_at rather than the usage
             # invoice dates.
             module RecurrenceFrequency
               extend MetronomeSDK::Internal::Type::Enum
@@ -5321,6 +7031,77 @@ module MetronomeSDK
                 )
               end
               def self.values
+              end
+            end
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::Specifier,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :presentation_group_values
+
+              sig do
+                params(presentation_group_values: T::Hash[Symbol, String]).void
+              end
+              attr_writer :presentation_group_values
+
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :pricing_group_values
+
+              sig { params(pricing_group_values: T::Hash[Symbol, String]).void }
+              attr_writer :pricing_group_values
+
+              # If provided, the specifier will only apply to the product with the specified ID.
+              sig { returns(T.nilable(String)) }
+              attr_reader :product_id
+
+              sig { params(product_id: String).void }
+              attr_writer :product_id
+
+              # If provided, the specifier will only apply to products with all the specified
+              # tags.
+              sig { returns(T.nilable(T::Array[String])) }
+              attr_reader :product_tags
+
+              sig { params(product_tags: T::Array[String]).void }
+              attr_writer :product_tags
+
+              sig do
+                params(
+                  presentation_group_values: T::Hash[Symbol, String],
+                  pricing_group_values: T::Hash[Symbol, String],
+                  product_id: String,
+                  product_tags: T::Array[String]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                presentation_group_values: nil,
+                pricing_group_values: nil,
+                # If provided, the specifier will only apply to the product with the specified ID.
+                product_id: nil,
+                # If provided, the specifier will only apply to products with all the specified
+                # tags.
+                product_tags: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    presentation_group_values: T::Hash[Symbol, String],
+                    pricing_group_values: T::Hash[Symbol, String],
+                    product_id: String,
+                    product_tags: T::Array[String]
+                  }
+                )
+              end
+              def to_hash
               end
             end
           end
@@ -5481,7 +7262,7 @@ module MetronomeSDK
             # The frequency at which the recurring commits will be created. If not provided: -
             # The commits will be created on the usage invoice frequency. If provided: - The
             # period defined in the duration will correspond to this frequency. - Commits will
-            # be created aligned with the recurring commit's start_date rather than the usage
+            # be created aligned with the recurring commit's starting_at rather than the usage
             # invoice dates.
             sig do
               returns(
@@ -5509,6 +7290,30 @@ module MetronomeSDK
             sig { params(rollover_fraction: Float).void }
             attr_writer :rollover_fraction
 
+            # List of filters that determine what kind of customer usage draws down a commit
+            # or credit. A customer's usage needs to meet the condition of at least one of the
+            # specifiers to contribute to a commit's or credit's drawdown.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::Specifier
+                  ]
+                )
+              )
+            end
+            attr_reader :specifiers
+
+            sig do
+              params(
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::Specifier::OrHash
+                  ]
+              ).void
+            end
+            attr_writer :specifiers
+
             sig do
               params(
                 id: String,
@@ -5534,7 +7339,11 @@ module MetronomeSDK
                   MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::Proration::OrSymbol,
                 recurrence_frequency:
                   MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::RecurrenceFrequency::OrSymbol,
-                rollover_fraction: Float
+                rollover_fraction: Float,
+                specifiers:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::Specifier::OrHash
+                  ]
               ).returns(T.attached_class)
             end
             def self.new(
@@ -5569,13 +7378,17 @@ module MetronomeSDK
               # The frequency at which the recurring commits will be created. If not provided: -
               # The commits will be created on the usage invoice frequency. If provided: - The
               # period defined in the duration will correspond to this frequency. - Commits will
-              # be created aligned with the recurring commit's start_date rather than the usage
+              # be created aligned with the recurring commit's starting_at rather than the usage
               # invoice dates.
               recurrence_frequency: nil,
               # Will be passed down to the individual commits. This controls how much of an
               # individual unexpired commit will roll over upon contract transition. Must be
               # between 0 and 1.
-              rollover_fraction: nil
+              rollover_fraction: nil,
+              # List of filters that determine what kind of customer usage draws down a commit
+              # or credit. A customer's usage needs to meet the condition of at least one of the
+              # specifiers to contribute to a commit's or credit's drawdown.
+              specifiers: nil
             )
             end
 
@@ -5605,7 +7418,11 @@ module MetronomeSDK
                     MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::Proration::TaggedSymbol,
                   recurrence_frequency:
                     MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::RecurrenceFrequency::TaggedSymbol,
-                  rollover_fraction: Float
+                  rollover_fraction: Float,
+                  specifiers:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::Specifier
+                    ]
                 }
               )
             end
@@ -5861,7 +7678,7 @@ module MetronomeSDK
             # The frequency at which the recurring commits will be created. If not provided: -
             # The commits will be created on the usage invoice frequency. If provided: - The
             # period defined in the duration will correspond to this frequency. - Commits will
-            # be created aligned with the recurring commit's start_date rather than the usage
+            # be created aligned with the recurring commit's starting_at rather than the usage
             # invoice dates.
             module RecurrenceFrequency
               extend MetronomeSDK::Internal::Type::Enum
@@ -5904,6 +7721,77 @@ module MetronomeSDK
                 )
               end
               def self.values
+              end
+            end
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::Specifier,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :presentation_group_values
+
+              sig do
+                params(presentation_group_values: T::Hash[Symbol, String]).void
+              end
+              attr_writer :presentation_group_values
+
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :pricing_group_values
+
+              sig { params(pricing_group_values: T::Hash[Symbol, String]).void }
+              attr_writer :pricing_group_values
+
+              # If provided, the specifier will only apply to the product with the specified ID.
+              sig { returns(T.nilable(String)) }
+              attr_reader :product_id
+
+              sig { params(product_id: String).void }
+              attr_writer :product_id
+
+              # If provided, the specifier will only apply to products with all the specified
+              # tags.
+              sig { returns(T.nilable(T::Array[String])) }
+              attr_reader :product_tags
+
+              sig { params(product_tags: T::Array[String]).void }
+              attr_writer :product_tags
+
+              sig do
+                params(
+                  presentation_group_values: T::Hash[Symbol, String],
+                  pricing_group_values: T::Hash[Symbol, String],
+                  product_id: String,
+                  product_tags: T::Array[String]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                presentation_group_values: nil,
+                pricing_group_values: nil,
+                # If provided, the specifier will only apply to the product with the specified ID.
+                product_id: nil,
+                # If provided, the specifier will only apply to products with all the specified
+                # tags.
+                product_tags: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    presentation_group_values: T::Hash[Symbol, String],
+                    pricing_group_values: T::Hash[Symbol, String],
+                    product_id: String,
+                    product_tags: T::Array[String]
+                  }
+                )
+              end
+              def to_hash
               end
             end
           end
@@ -6617,6 +8505,439 @@ module MetronomeSDK
                   )
                 end
                 def self.values
+                end
+              end
+            end
+          end
+
+          class Subscription < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig do
+              returns(
+                MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::CollectionSchedule::TaggedSymbol
+              )
+            end
+            attr_accessor :collection_schedule
+
+            sig do
+              returns(
+                MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::Proration
+              )
+            end
+            attr_reader :proration
+
+            sig do
+              params(
+                proration:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::Proration::OrHash
+              ).void
+            end
+            attr_writer :proration
+
+            sig do
+              returns(
+                T::Array[
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::QuantitySchedule
+                ]
+              )
+            end
+            attr_accessor :quantity_schedule
+
+            sig { returns(Time) }
+            attr_accessor :starting_at
+
+            sig do
+              returns(
+                MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate
+              )
+            end
+            attr_reader :subscription_rate
+
+            sig do
+              params(
+                subscription_rate:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate::OrHash
+              ).void
+            end
+            attr_writer :subscription_rate
+
+            sig { returns(T.nilable(String)) }
+            attr_reader :id
+
+            sig { params(id: String).void }
+            attr_writer :id
+
+            sig { returns(T.nilable(T::Hash[Symbol, String])) }
+            attr_reader :custom_fields
+
+            sig { params(custom_fields: T::Hash[Symbol, String]).void }
+            attr_writer :custom_fields
+
+            sig { returns(T.nilable(String)) }
+            attr_reader :description
+
+            sig { params(description: String).void }
+            attr_writer :description
+
+            sig { returns(T.nilable(Time)) }
+            attr_reader :ending_before
+
+            sig { params(ending_before: Time).void }
+            attr_writer :ending_before
+
+            sig { returns(T.nilable(String)) }
+            attr_reader :fiat_credit_type_id
+
+            sig { params(fiat_credit_type_id: String).void }
+            attr_writer :fiat_credit_type_id
+
+            sig { returns(T.nilable(String)) }
+            attr_reader :name
+
+            sig { params(name: String).void }
+            attr_writer :name
+
+            sig do
+              params(
+                collection_schedule:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::CollectionSchedule::OrSymbol,
+                proration:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::Proration::OrHash,
+                quantity_schedule:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::QuantitySchedule::OrHash
+                  ],
+                starting_at: Time,
+                subscription_rate:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate::OrHash,
+                id: String,
+                custom_fields: T::Hash[Symbol, String],
+                description: String,
+                ending_before: Time,
+                fiat_credit_type_id: String,
+                name: String
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              collection_schedule:,
+              proration:,
+              quantity_schedule:,
+              starting_at:,
+              subscription_rate:,
+              id: nil,
+              custom_fields: nil,
+              description: nil,
+              ending_before: nil,
+              fiat_credit_type_id: nil,
+              name: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  collection_schedule:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::CollectionSchedule::TaggedSymbol,
+                  proration:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::Proration,
+                  quantity_schedule:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::QuantitySchedule
+                    ],
+                  starting_at: Time,
+                  subscription_rate:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate,
+                  id: String,
+                  custom_fields: T::Hash[Symbol, String],
+                  description: String,
+                  ending_before: Time,
+                  fiat_credit_type_id: String,
+                  name: String
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module CollectionSchedule
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::CollectionSchedule
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              ADVANCE =
+                T.let(
+                  :ADVANCE,
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::CollectionSchedule::TaggedSymbol
+                )
+              ARREARS =
+                T.let(
+                  :ARREARS,
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::CollectionSchedule::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::CollectionSchedule::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            class Proration < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::Proration,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig do
+                returns(
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::Proration::InvoiceBehavior::TaggedSymbol
+                )
+              end
+              attr_accessor :invoice_behavior
+
+              sig { returns(T::Boolean) }
+              attr_accessor :is_prorated
+
+              sig do
+                params(
+                  invoice_behavior:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::Proration::InvoiceBehavior::OrSymbol,
+                  is_prorated: T::Boolean
+                ).returns(T.attached_class)
+              end
+              def self.new(invoice_behavior:, is_prorated:)
+              end
+
+              sig do
+                override.returns(
+                  {
+                    invoice_behavior:
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::Proration::InvoiceBehavior::TaggedSymbol,
+                    is_prorated: T::Boolean
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              module InvoiceBehavior
+                extend MetronomeSDK::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::Proration::InvoiceBehavior
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                BILL_IMMEDIATELY =
+                  T.let(
+                    :BILL_IMMEDIATELY,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::Proration::InvoiceBehavior::TaggedSymbol
+                  )
+                BILL_ON_NEXT_COLLECTION_DATE =
+                  T.let(
+                    :BILL_ON_NEXT_COLLECTION_DATE,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::Proration::InvoiceBehavior::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::Proration::InvoiceBehavior::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+
+            class QuantitySchedule < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::QuantitySchedule,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(Float) }
+              attr_accessor :quantity
+
+              sig { returns(Time) }
+              attr_accessor :starting_at
+
+              sig { returns(T.nilable(Time)) }
+              attr_reader :ending_before
+
+              sig { params(ending_before: Time).void }
+              attr_writer :ending_before
+
+              sig do
+                params(
+                  quantity: Float,
+                  starting_at: Time,
+                  ending_before: Time
+                ).returns(T.attached_class)
+              end
+              def self.new(quantity:, starting_at:, ending_before: nil)
+              end
+
+              sig do
+                override.returns(
+                  { quantity: Float, starting_at: Time, ending_before: Time }
+                )
+              end
+              def to_hash
+              end
+            end
+
+            class SubscriptionRate < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig do
+                returns(
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate::BillingFrequency::TaggedSymbol
+                )
+              end
+              attr_accessor :billing_frequency
+
+              sig do
+                returns(
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate::Product
+                )
+              end
+              attr_reader :product
+
+              sig do
+                params(
+                  product:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate::Product::OrHash
+                ).void
+              end
+              attr_writer :product
+
+              sig do
+                params(
+                  billing_frequency:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate::BillingFrequency::OrSymbol,
+                  product:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate::Product::OrHash
+                ).returns(T.attached_class)
+              end
+              def self.new(billing_frequency:, product:)
+              end
+
+              sig do
+                override.returns(
+                  {
+                    billing_frequency:
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate::BillingFrequency::TaggedSymbol,
+                    product:
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate::Product
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              module BillingFrequency
+                extend MetronomeSDK::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate::BillingFrequency
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                MONTHLY =
+                  T.let(
+                    :MONTHLY,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate::BillingFrequency::TaggedSymbol
+                  )
+                QUARTERLY =
+                  T.let(
+                    :QUARTERLY,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate::BillingFrequency::TaggedSymbol
+                  )
+                ANNUAL =
+                  T.let(
+                    :ANNUAL,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate::BillingFrequency::TaggedSymbol
+                  )
+                WEEKLY =
+                  T.let(
+                    :WEEKLY,
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate::BillingFrequency::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate::BillingFrequency::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              class Product < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate::Product,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :id
+
+                sig { returns(String) }
+                attr_accessor :name
+
+                sig do
+                  params(id: String, name: String).returns(T.attached_class)
+                end
+                def self.new(id:, name:)
+                end
+
+                sig { override.returns({ id: String, name: String }) }
+                def to_hash
                 end
               end
             end

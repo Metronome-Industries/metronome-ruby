@@ -64,6 +64,19 @@ module MetronomeSDK
           ?request_options: MetronomeSDK::request_opts
         ) -> void
 
+        def to_hash: -> {
+          billable_metric_id: String,
+          customer_id: String,
+          window_size: MetronomeSDK::Models::V1::UsageListWithGroupsParams::window_size,
+          limit: Integer,
+          next_page: String,
+          current_period: bool,
+          ending_before: Time,
+          group_by: MetronomeSDK::V1::UsageListWithGroupsParams::GroupBy,
+          starting_on: Time,
+          request_options: MetronomeSDK::RequestOptions
+        }
+
         type window_size = :HOUR | :DAY | :NONE
 
         module WindowSize
@@ -86,6 +99,8 @@ module MetronomeSDK
           def values=: (::Array[String]) -> ::Array[String]
 
           def initialize: (key: String, ?values: ::Array[String]) -> void
+
+          def to_hash: -> { key: String, values: ::Array[String] }
         end
       end
     end

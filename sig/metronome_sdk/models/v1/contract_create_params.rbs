@@ -27,10 +27,11 @@ module MetronomeSDK
           scheduled_charges: ::Array[MetronomeSDK::V1::ContractCreateParams::ScheduledCharge],
           scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::ContractCreateParams::scheduled_charges_on_usage_invoices,
           spend_threshold_configuration: MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration,
+          subscriptions: ::Array[MetronomeSDK::V1::ContractCreateParams::Subscription],
           total_contract_value: Float,
           transition: MetronomeSDK::V1::ContractCreateParams::Transition,
           uniqueness_key: String,
-          usage_filter: MetronomeSDK::BaseUsageFilter,
+          usage_filter: MetronomeSDK::V1::ContractCreateParams::UsageFilter,
           usage_statement_schedule: MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule
         }
         & MetronomeSDK::Internal::Type::request_parameters
@@ -159,6 +160,12 @@ module MetronomeSDK
           MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration
         ) -> MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration
 
+        attr_reader subscriptions: ::Array[MetronomeSDK::V1::ContractCreateParams::Subscription]?
+
+        def subscriptions=: (
+          ::Array[MetronomeSDK::V1::ContractCreateParams::Subscription]
+        ) -> ::Array[MetronomeSDK::V1::ContractCreateParams::Subscription]
+
         attr_reader total_contract_value: Float?
 
         def total_contract_value=: (Float) -> Float
@@ -173,11 +180,11 @@ module MetronomeSDK
 
         def uniqueness_key=: (String) -> String
 
-        attr_reader usage_filter: MetronomeSDK::BaseUsageFilter?
+        attr_reader usage_filter: MetronomeSDK::V1::ContractCreateParams::UsageFilter?
 
         def usage_filter=: (
-          MetronomeSDK::BaseUsageFilter
-        ) -> MetronomeSDK::BaseUsageFilter
+          MetronomeSDK::V1::ContractCreateParams::UsageFilter
+        ) -> MetronomeSDK::V1::ContractCreateParams::UsageFilter
 
         attr_reader usage_statement_schedule: MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule?
 
@@ -210,43 +217,84 @@ module MetronomeSDK
           ?scheduled_charges: ::Array[MetronomeSDK::V1::ContractCreateParams::ScheduledCharge],
           ?scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::ContractCreateParams::scheduled_charges_on_usage_invoices,
           ?spend_threshold_configuration: MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration,
+          ?subscriptions: ::Array[MetronomeSDK::V1::ContractCreateParams::Subscription],
           ?total_contract_value: Float,
           ?transition: MetronomeSDK::V1::ContractCreateParams::Transition,
           ?uniqueness_key: String,
-          ?usage_filter: MetronomeSDK::BaseUsageFilter,
+          ?usage_filter: MetronomeSDK::V1::ContractCreateParams::UsageFilter,
           ?usage_statement_schedule: MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
 
+        def to_hash: -> {
+          customer_id: String,
+          starting_at: Time,
+          billing_provider_configuration: MetronomeSDK::V1::ContractCreateParams::BillingProviderConfiguration,
+          commits: ::Array[MetronomeSDK::V1::ContractCreateParams::Commit],
+          credits: ::Array[MetronomeSDK::V1::ContractCreateParams::Credit],
+          custom_fields: ::Hash[Symbol, String],
+          discounts: ::Array[MetronomeSDK::V1::ContractCreateParams::Discount],
+          ending_before: Time,
+          multiplier_override_prioritization: MetronomeSDK::Models::V1::ContractCreateParams::multiplier_override_prioritization,
+          name: String,
+          net_payment_terms_days: Float,
+          netsuite_sales_order_id: String,
+          overrides: ::Array[MetronomeSDK::V1::ContractCreateParams::Override],
+          prepaid_balance_threshold_configuration: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration,
+          professional_services: ::Array[MetronomeSDK::V1::ContractCreateParams::ProfessionalService],
+          rate_card_alias: String,
+          rate_card_id: String,
+          recurring_commits: ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCommit],
+          recurring_credits: ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCredit],
+          reseller_royalties: ::Array[MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty],
+          salesforce_opportunity_id: String,
+          scheduled_charges: ::Array[MetronomeSDK::V1::ContractCreateParams::ScheduledCharge],
+          scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::ContractCreateParams::scheduled_charges_on_usage_invoices,
+          spend_threshold_configuration: MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration,
+          subscriptions: ::Array[MetronomeSDK::V1::ContractCreateParams::Subscription],
+          total_contract_value: Float,
+          transition: MetronomeSDK::V1::ContractCreateParams::Transition,
+          uniqueness_key: String,
+          usage_filter: MetronomeSDK::V1::ContractCreateParams::UsageFilter,
+          usage_statement_schedule: MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule,
+          request_options: MetronomeSDK::RequestOptions
+        }
+
         type billing_provider_configuration =
           {
-            billing_provider: MetronomeSDK::V1::ContractCreateParams::BillingProviderConfiguration::billing_provider,
+            billing_provider: MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration::billing_provider,
             billing_provider_configuration_id: String,
-            delivery_method: MetronomeSDK::V1::ContractCreateParams::BillingProviderConfiguration::delivery_method
+            delivery_method: MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration::delivery_method
           }
 
         class BillingProviderConfiguration < MetronomeSDK::Internal::Type::BaseModel
-          attr_reader billing_provider: MetronomeSDK::V1::ContractCreateParams::BillingProviderConfiguration::billing_provider?
+          attr_reader billing_provider: MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration::billing_provider?
 
           def billing_provider=: (
-            MetronomeSDK::V1::ContractCreateParams::BillingProviderConfiguration::billing_provider
-          ) -> MetronomeSDK::V1::ContractCreateParams::BillingProviderConfiguration::billing_provider
+            MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration::billing_provider
+          ) -> MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration::billing_provider
 
           attr_reader billing_provider_configuration_id: String?
 
           def billing_provider_configuration_id=: (String) -> String
 
-          attr_reader delivery_method: MetronomeSDK::V1::ContractCreateParams::BillingProviderConfiguration::delivery_method?
+          attr_reader delivery_method: MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration::delivery_method?
 
           def delivery_method=: (
-            MetronomeSDK::V1::ContractCreateParams::BillingProviderConfiguration::delivery_method
-          ) -> MetronomeSDK::V1::ContractCreateParams::BillingProviderConfiguration::delivery_method
+            MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration::delivery_method
+          ) -> MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration::delivery_method
 
           def initialize: (
-            ?billing_provider: MetronomeSDK::V1::ContractCreateParams::BillingProviderConfiguration::billing_provider,
+            ?billing_provider: MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration::billing_provider,
             ?billing_provider_configuration_id: String,
-            ?delivery_method: MetronomeSDK::V1::ContractCreateParams::BillingProviderConfiguration::delivery_method
+            ?delivery_method: MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration::delivery_method
           ) -> void
+
+          def to_hash: -> {
+            billing_provider: MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration::billing_provider,
+            billing_provider_configuration_id: String,
+            delivery_method: MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration::delivery_method
+          }
 
           type billing_provider =
             :aws_marketplace
@@ -264,7 +312,7 @@ module MetronomeSDK
             STRIPE: :stripe
             NETSUITE: :netsuite
 
-            def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::BillingProviderConfiguration::billing_provider]
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration::billing_provider]
           end
 
           type delivery_method =
@@ -278,14 +326,14 @@ module MetronomeSDK
             TACKLE: :tackle
             AWS_SNS: :aws_sns
 
-            def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::BillingProviderConfiguration::delivery_method]
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration::delivery_method]
           end
         end
 
         type commit =
           {
             product_id: String,
-            type: MetronomeSDK::V1::ContractCreateParams::Commit::type_,
+            type: MetronomeSDK::Models::V1::ContractCreateParams::Commit::type_,
             access_schedule: MetronomeSDK::V1::ContractCreateParams::Commit::AccessSchedule,
             amount: Float,
             applicable_product_ids: ::Array[String],
@@ -297,15 +345,16 @@ module MetronomeSDK
             netsuite_sales_order_id: String,
             payment_gate_config: MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig,
             priority: Float,
-            rate_type: MetronomeSDK::V1::ContractCreateParams::Commit::rate_type,
+            rate_type: MetronomeSDK::Models::V1::ContractCreateParams::Commit::rate_type,
             rollover_fraction: Float,
+            specifiers: ::Array[MetronomeSDK::V1::ContractCreateParams::Commit::Specifier],
             temporary_id: String
           }
 
         class Commit < MetronomeSDK::Internal::Type::BaseModel
           attr_accessor product_id: String
 
-          attr_accessor type: MetronomeSDK::V1::ContractCreateParams::Commit::type_
+          attr_accessor type: MetronomeSDK::Models::V1::ContractCreateParams::Commit::type_
 
           attr_reader access_schedule: MetronomeSDK::V1::ContractCreateParams::Commit::AccessSchedule?
 
@@ -357,15 +406,21 @@ module MetronomeSDK
 
           def priority=: (Float) -> Float
 
-          attr_reader rate_type: MetronomeSDK::V1::ContractCreateParams::Commit::rate_type?
+          attr_reader rate_type: MetronomeSDK::Models::V1::ContractCreateParams::Commit::rate_type?
 
           def rate_type=: (
-            MetronomeSDK::V1::ContractCreateParams::Commit::rate_type
-          ) -> MetronomeSDK::V1::ContractCreateParams::Commit::rate_type
+            MetronomeSDK::Models::V1::ContractCreateParams::Commit::rate_type
+          ) -> MetronomeSDK::Models::V1::ContractCreateParams::Commit::rate_type
 
           attr_reader rollover_fraction: Float?
 
           def rollover_fraction=: (Float) -> Float
+
+          attr_reader specifiers: ::Array[MetronomeSDK::V1::ContractCreateParams::Commit::Specifier]?
+
+          def specifiers=: (
+            ::Array[MetronomeSDK::V1::ContractCreateParams::Commit::Specifier]
+          ) -> ::Array[MetronomeSDK::V1::ContractCreateParams::Commit::Specifier]
 
           attr_reader temporary_id: String?
 
@@ -373,7 +428,7 @@ module MetronomeSDK
 
           def initialize: (
             product_id: String,
-            type: MetronomeSDK::V1::ContractCreateParams::Commit::type_,
+            type: MetronomeSDK::Models::V1::ContractCreateParams::Commit::type_,
             ?access_schedule: MetronomeSDK::V1::ContractCreateParams::Commit::AccessSchedule,
             ?amount: Float,
             ?applicable_product_ids: ::Array[String],
@@ -385,10 +440,31 @@ module MetronomeSDK
             ?netsuite_sales_order_id: String,
             ?payment_gate_config: MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig,
             ?priority: Float,
-            ?rate_type: MetronomeSDK::V1::ContractCreateParams::Commit::rate_type,
+            ?rate_type: MetronomeSDK::Models::V1::ContractCreateParams::Commit::rate_type,
             ?rollover_fraction: Float,
+            ?specifiers: ::Array[MetronomeSDK::V1::ContractCreateParams::Commit::Specifier],
             ?temporary_id: String
           ) -> void
+
+          def to_hash: -> {
+            product_id: String,
+            type: MetronomeSDK::Models::V1::ContractCreateParams::Commit::type_,
+            access_schedule: MetronomeSDK::V1::ContractCreateParams::Commit::AccessSchedule,
+            amount: Float,
+            applicable_product_ids: ::Array[String],
+            applicable_product_tags: ::Array[String],
+            custom_fields: ::Hash[Symbol, String],
+            description: String,
+            invoice_schedule: MetronomeSDK::V1::ContractCreateParams::Commit::InvoiceSchedule,
+            name: String,
+            netsuite_sales_order_id: String,
+            payment_gate_config: MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig,
+            priority: Float,
+            rate_type: MetronomeSDK::Models::V1::ContractCreateParams::Commit::rate_type,
+            rollover_fraction: Float,
+            specifiers: ::Array[MetronomeSDK::V1::ContractCreateParams::Commit::Specifier],
+            temporary_id: String
+          }
 
           type type_ = :PREPAID | :POSTPAID
 
@@ -398,7 +474,7 @@ module MetronomeSDK
             PREPAID: :PREPAID
             POSTPAID: :POSTPAID
 
-            def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::Commit::type_]
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Commit::type_]
           end
 
           type access_schedule =
@@ -419,6 +495,11 @@ module MetronomeSDK
               ?credit_type_id: String
             ) -> void
 
+            def to_hash: -> {
+              schedule_items: ::Array[MetronomeSDK::V1::ContractCreateParams::Commit::AccessSchedule::ScheduleItem],
+              credit_type_id: String
+            }
+
             type schedule_item =
               { amount: Float, ending_before: Time, starting_at: Time }
 
@@ -434,6 +515,12 @@ module MetronomeSDK
                 ending_before: Time,
                 starting_at: Time
               ) -> void
+
+              def to_hash: -> {
+                amount: Float,
+                ending_before: Time,
+                starting_at: Time
+              }
             end
           end
 
@@ -467,11 +554,17 @@ module MetronomeSDK
               ?schedule_items: ::Array[MetronomeSDK::V1::ContractCreateParams::Commit::InvoiceSchedule::ScheduleItem]
             ) -> void
 
+            def to_hash: -> {
+              credit_type_id: String,
+              recurring_schedule: MetronomeSDK::V1::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule,
+              schedule_items: ::Array[MetronomeSDK::V1::ContractCreateParams::Commit::InvoiceSchedule::ScheduleItem]
+            }
+
             type recurring_schedule =
               {
-                amount_distribution: MetronomeSDK::V1::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::amount_distribution,
+                amount_distribution: MetronomeSDK::Models::V1::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::amount_distribution,
                 ending_before: Time,
-                frequency: MetronomeSDK::V1::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::frequency,
+                frequency: MetronomeSDK::Models::V1::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::frequency,
                 starting_at: Time,
                 amount: Float,
                 quantity: Float,
@@ -479,11 +572,11 @@ module MetronomeSDK
               }
 
             class RecurringSchedule < MetronomeSDK::Internal::Type::BaseModel
-              attr_accessor amount_distribution: MetronomeSDK::V1::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::amount_distribution
+              attr_accessor amount_distribution: MetronomeSDK::Models::V1::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::amount_distribution
 
               attr_accessor ending_before: Time
 
-              attr_accessor frequency: MetronomeSDK::V1::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::frequency
+              attr_accessor frequency: MetronomeSDK::Models::V1::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::frequency
 
               attr_accessor starting_at: Time
 
@@ -500,14 +593,24 @@ module MetronomeSDK
               def unit_price=: (Float) -> Float
 
               def initialize: (
-                amount_distribution: MetronomeSDK::V1::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::amount_distribution,
+                amount_distribution: MetronomeSDK::Models::V1::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::amount_distribution,
                 ending_before: Time,
-                frequency: MetronomeSDK::V1::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::frequency,
+                frequency: MetronomeSDK::Models::V1::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::frequency,
                 starting_at: Time,
                 ?amount: Float,
                 ?quantity: Float,
                 ?unit_price: Float
               ) -> void
+
+              def to_hash: -> {
+                amount_distribution: MetronomeSDK::Models::V1::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::amount_distribution,
+                ending_before: Time,
+                frequency: MetronomeSDK::Models::V1::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::frequency,
+                starting_at: Time,
+                amount: Float,
+                quantity: Float,
+                unit_price: Float
+              }
 
               type amount_distribution = :DIVIDED | :DIVIDED_ROUNDED | :EACH
 
@@ -518,7 +621,7 @@ module MetronomeSDK
                 DIVIDED_ROUNDED: :DIVIDED_ROUNDED
                 EACH: :EACH
 
-                def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::amount_distribution]
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::amount_distribution]
               end
 
               type frequency = :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL
@@ -531,7 +634,7 @@ module MetronomeSDK
                 SEMI_ANNUAL: :SEMI_ANNUAL
                 ANNUAL: :ANNUAL
 
-                def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::frequency]
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Commit::InvoiceSchedule::RecurringSchedule::frequency]
               end
             end
 
@@ -564,18 +667,25 @@ module MetronomeSDK
                 ?quantity: Float,
                 ?unit_price: Float
               ) -> void
+
+              def to_hash: -> {
+                timestamp: Time,
+                amount: Float,
+                quantity: Float,
+                unit_price: Float
+              }
             end
           end
 
           type payment_gate_config =
             {
-              payment_gate_type: MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::payment_gate_type,
+              payment_gate_type: MetronomeSDK::Models::V1::ContractCreateParams::Commit::PaymentGateConfig::payment_gate_type,
               stripe_config: MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig,
-              tax_type: MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::tax_type
+              tax_type: MetronomeSDK::Models::V1::ContractCreateParams::Commit::PaymentGateConfig::tax_type
             }
 
           class PaymentGateConfig < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor payment_gate_type: MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::payment_gate_type
+            attr_accessor payment_gate_type: MetronomeSDK::Models::V1::ContractCreateParams::Commit::PaymentGateConfig::payment_gate_type
 
             attr_reader stripe_config: MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig?
 
@@ -583,17 +693,23 @@ module MetronomeSDK
               MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig
             ) -> MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig
 
-            attr_reader tax_type: MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::tax_type?
+            attr_reader tax_type: MetronomeSDK::Models::V1::ContractCreateParams::Commit::PaymentGateConfig::tax_type?
 
             def tax_type=: (
-              MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::tax_type
-            ) -> MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::tax_type
+              MetronomeSDK::Models::V1::ContractCreateParams::Commit::PaymentGateConfig::tax_type
+            ) -> MetronomeSDK::Models::V1::ContractCreateParams::Commit::PaymentGateConfig::tax_type
 
             def initialize: (
-              payment_gate_type: MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::payment_gate_type,
+              payment_gate_type: MetronomeSDK::Models::V1::ContractCreateParams::Commit::PaymentGateConfig::payment_gate_type,
               ?stripe_config: MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig,
-              ?tax_type: MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::tax_type
+              ?tax_type: MetronomeSDK::Models::V1::ContractCreateParams::Commit::PaymentGateConfig::tax_type
             ) -> void
+
+            def to_hash: -> {
+              payment_gate_type: MetronomeSDK::Models::V1::ContractCreateParams::Commit::PaymentGateConfig::payment_gate_type,
+              stripe_config: MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig,
+              tax_type: MetronomeSDK::Models::V1::ContractCreateParams::Commit::PaymentGateConfig::tax_type
+            }
 
             type payment_gate_type = :NONE | :STRIPE | :EXTERNAL
 
@@ -604,20 +720,24 @@ module MetronomeSDK
               STRIPE: :STRIPE
               EXTERNAL: :EXTERNAL
 
-              def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::payment_gate_type]
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Commit::PaymentGateConfig::payment_gate_type]
             end
 
             type stripe_config =
               {
-                payment_type: MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig::payment_type
+                payment_type: MetronomeSDK::Models::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig::payment_type
               }
 
             class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
-              attr_accessor payment_type: MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig::payment_type
+              attr_accessor payment_type: MetronomeSDK::Models::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig::payment_type
 
               def initialize: (
-                payment_type: MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig::payment_type
+                payment_type: MetronomeSDK::Models::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig::payment_type
               ) -> void
+
+              def to_hash: -> {
+                payment_type: MetronomeSDK::Models::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig::payment_type
+              }
 
               type payment_type = :INVOICE | :PAYMENT_INTENT
 
@@ -627,7 +747,7 @@ module MetronomeSDK
                 INVOICE: :INVOICE
                 PAYMENT_INTENT: :PAYMENT_INTENT
 
-                def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig::payment_type]
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig::payment_type]
               end
             end
 
@@ -639,7 +759,7 @@ module MetronomeSDK
               NONE: :NONE
               STRIPE: :STRIPE
 
-              def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::tax_type]
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Commit::PaymentGateConfig::tax_type]
             end
           end
 
@@ -651,7 +771,51 @@ module MetronomeSDK
             COMMIT_RATE: :COMMIT_RATE
             LIST_RATE: :LIST_RATE
 
-            def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::Commit::rate_type]
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Commit::rate_type]
+          end
+
+          type specifier =
+            {
+              presentation_group_values: ::Hash[Symbol, String],
+              pricing_group_values: ::Hash[Symbol, String],
+              product_id: String,
+              product_tags: ::Array[String]
+            }
+
+          class Specifier < MetronomeSDK::Internal::Type::BaseModel
+            attr_reader presentation_group_values: ::Hash[Symbol, String]?
+
+            def presentation_group_values=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+            def pricing_group_values=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader product_id: String?
+
+            def product_id=: (String) -> String
+
+            attr_reader product_tags: ::Array[String]?
+
+            def product_tags=: (::Array[String]) -> ::Array[String]
+
+            def initialize: (
+              ?presentation_group_values: ::Hash[Symbol, String],
+              ?pricing_group_values: ::Hash[Symbol, String],
+              ?product_id: String,
+              ?product_tags: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              presentation_group_values: ::Hash[Symbol, String],
+              pricing_group_values: ::Hash[Symbol, String],
+              product_id: String,
+              product_tags: ::Array[String]
+            }
           end
         end
 
@@ -666,7 +830,8 @@ module MetronomeSDK
             name: String,
             netsuite_sales_order_id: String,
             priority: Float,
-            rate_type: MetronomeSDK::V1::ContractCreateParams::Credit::rate_type
+            rate_type: MetronomeSDK::Models::V1::ContractCreateParams::Credit::rate_type,
+            specifiers: ::Array[MetronomeSDK::V1::ContractCreateParams::Credit::Specifier]
           }
 
         class Credit < MetronomeSDK::Internal::Type::BaseModel
@@ -702,11 +867,17 @@ module MetronomeSDK
 
           def priority=: (Float) -> Float
 
-          attr_reader rate_type: MetronomeSDK::V1::ContractCreateParams::Credit::rate_type?
+          attr_reader rate_type: MetronomeSDK::Models::V1::ContractCreateParams::Credit::rate_type?
 
           def rate_type=: (
-            MetronomeSDK::V1::ContractCreateParams::Credit::rate_type
-          ) -> MetronomeSDK::V1::ContractCreateParams::Credit::rate_type
+            MetronomeSDK::Models::V1::ContractCreateParams::Credit::rate_type
+          ) -> MetronomeSDK::Models::V1::ContractCreateParams::Credit::rate_type
+
+          attr_reader specifiers: ::Array[MetronomeSDK::V1::ContractCreateParams::Credit::Specifier]?
+
+          def specifiers=: (
+            ::Array[MetronomeSDK::V1::ContractCreateParams::Credit::Specifier]
+          ) -> ::Array[MetronomeSDK::V1::ContractCreateParams::Credit::Specifier]
 
           def initialize: (
             access_schedule: MetronomeSDK::V1::ContractCreateParams::Credit::AccessSchedule,
@@ -718,8 +889,23 @@ module MetronomeSDK
             ?name: String,
             ?netsuite_sales_order_id: String,
             ?priority: Float,
-            ?rate_type: MetronomeSDK::V1::ContractCreateParams::Credit::rate_type
+            ?rate_type: MetronomeSDK::Models::V1::ContractCreateParams::Credit::rate_type,
+            ?specifiers: ::Array[MetronomeSDK::V1::ContractCreateParams::Credit::Specifier]
           ) -> void
+
+          def to_hash: -> {
+            access_schedule: MetronomeSDK::V1::ContractCreateParams::Credit::AccessSchedule,
+            product_id: String,
+            applicable_product_ids: ::Array[String],
+            applicable_product_tags: ::Array[String],
+            custom_fields: ::Hash[Symbol, String],
+            description: String,
+            name: String,
+            netsuite_sales_order_id: String,
+            priority: Float,
+            rate_type: MetronomeSDK::Models::V1::ContractCreateParams::Credit::rate_type,
+            specifiers: ::Array[MetronomeSDK::V1::ContractCreateParams::Credit::Specifier]
+          }
 
           type access_schedule =
             {
@@ -739,6 +925,11 @@ module MetronomeSDK
               ?credit_type_id: String
             ) -> void
 
+            def to_hash: -> {
+              schedule_items: ::Array[MetronomeSDK::V1::ContractCreateParams::Credit::AccessSchedule::ScheduleItem],
+              credit_type_id: String
+            }
+
             type schedule_item =
               { amount: Float, ending_before: Time, starting_at: Time }
 
@@ -754,6 +945,12 @@ module MetronomeSDK
                 ending_before: Time,
                 starting_at: Time
               ) -> void
+
+              def to_hash: -> {
+                amount: Float,
+                ending_before: Time,
+                starting_at: Time
+              }
             end
           end
 
@@ -765,7 +962,51 @@ module MetronomeSDK
             COMMIT_RATE: :COMMIT_RATE
             LIST_RATE: :LIST_RATE
 
-            def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::Credit::rate_type]
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Credit::rate_type]
+          end
+
+          type specifier =
+            {
+              presentation_group_values: ::Hash[Symbol, String],
+              pricing_group_values: ::Hash[Symbol, String],
+              product_id: String,
+              product_tags: ::Array[String]
+            }
+
+          class Specifier < MetronomeSDK::Internal::Type::BaseModel
+            attr_reader presentation_group_values: ::Hash[Symbol, String]?
+
+            def presentation_group_values=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+            def pricing_group_values=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader product_id: String?
+
+            def product_id=: (String) -> String
+
+            attr_reader product_tags: ::Array[String]?
+
+            def product_tags=: (::Array[String]) -> ::Array[String]
+
+            def initialize: (
+              ?presentation_group_values: ::Hash[Symbol, String],
+              ?pricing_group_values: ::Hash[Symbol, String],
+              ?product_id: String,
+              ?product_tags: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              presentation_group_values: ::Hash[Symbol, String],
+              pricing_group_values: ::Hash[Symbol, String],
+              product_id: String,
+              product_tags: ::Array[String]
+            }
           end
         end
 
@@ -803,6 +1044,14 @@ module MetronomeSDK
             ?netsuite_sales_order_id: String
           ) -> void
 
+          def to_hash: -> {
+            product_id: String,
+            schedule: MetronomeSDK::V1::ContractCreateParams::Discount::Schedule,
+            custom_fields: ::Hash[Symbol, String],
+            name: String,
+            netsuite_sales_order_id: String
+          }
+
           type schedule =
             {
               credit_type_id: String,
@@ -833,11 +1082,17 @@ module MetronomeSDK
               ?schedule_items: ::Array[MetronomeSDK::V1::ContractCreateParams::Discount::Schedule::ScheduleItem]
             ) -> void
 
+            def to_hash: -> {
+              credit_type_id: String,
+              recurring_schedule: MetronomeSDK::V1::ContractCreateParams::Discount::Schedule::RecurringSchedule,
+              schedule_items: ::Array[MetronomeSDK::V1::ContractCreateParams::Discount::Schedule::ScheduleItem]
+            }
+
             type recurring_schedule =
               {
-                amount_distribution: MetronomeSDK::V1::ContractCreateParams::Discount::Schedule::RecurringSchedule::amount_distribution,
+                amount_distribution: MetronomeSDK::Models::V1::ContractCreateParams::Discount::Schedule::RecurringSchedule::amount_distribution,
                 ending_before: Time,
-                frequency: MetronomeSDK::V1::ContractCreateParams::Discount::Schedule::RecurringSchedule::frequency,
+                frequency: MetronomeSDK::Models::V1::ContractCreateParams::Discount::Schedule::RecurringSchedule::frequency,
                 starting_at: Time,
                 amount: Float,
                 quantity: Float,
@@ -845,11 +1100,11 @@ module MetronomeSDK
               }
 
             class RecurringSchedule < MetronomeSDK::Internal::Type::BaseModel
-              attr_accessor amount_distribution: MetronomeSDK::V1::ContractCreateParams::Discount::Schedule::RecurringSchedule::amount_distribution
+              attr_accessor amount_distribution: MetronomeSDK::Models::V1::ContractCreateParams::Discount::Schedule::RecurringSchedule::amount_distribution
 
               attr_accessor ending_before: Time
 
-              attr_accessor frequency: MetronomeSDK::V1::ContractCreateParams::Discount::Schedule::RecurringSchedule::frequency
+              attr_accessor frequency: MetronomeSDK::Models::V1::ContractCreateParams::Discount::Schedule::RecurringSchedule::frequency
 
               attr_accessor starting_at: Time
 
@@ -866,14 +1121,24 @@ module MetronomeSDK
               def unit_price=: (Float) -> Float
 
               def initialize: (
-                amount_distribution: MetronomeSDK::V1::ContractCreateParams::Discount::Schedule::RecurringSchedule::amount_distribution,
+                amount_distribution: MetronomeSDK::Models::V1::ContractCreateParams::Discount::Schedule::RecurringSchedule::amount_distribution,
                 ending_before: Time,
-                frequency: MetronomeSDK::V1::ContractCreateParams::Discount::Schedule::RecurringSchedule::frequency,
+                frequency: MetronomeSDK::Models::V1::ContractCreateParams::Discount::Schedule::RecurringSchedule::frequency,
                 starting_at: Time,
                 ?amount: Float,
                 ?quantity: Float,
                 ?unit_price: Float
               ) -> void
+
+              def to_hash: -> {
+                amount_distribution: MetronomeSDK::Models::V1::ContractCreateParams::Discount::Schedule::RecurringSchedule::amount_distribution,
+                ending_before: Time,
+                frequency: MetronomeSDK::Models::V1::ContractCreateParams::Discount::Schedule::RecurringSchedule::frequency,
+                starting_at: Time,
+                amount: Float,
+                quantity: Float,
+                unit_price: Float
+              }
 
               type amount_distribution = :DIVIDED | :DIVIDED_ROUNDED | :EACH
 
@@ -884,7 +1149,7 @@ module MetronomeSDK
                 DIVIDED_ROUNDED: :DIVIDED_ROUNDED
                 EACH: :EACH
 
-                def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::Discount::Schedule::RecurringSchedule::amount_distribution]
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Discount::Schedule::RecurringSchedule::amount_distribution]
               end
 
               type frequency = :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL
@@ -897,7 +1162,7 @@ module MetronomeSDK
                 SEMI_ANNUAL: :SEMI_ANNUAL
                 ANNUAL: :ANNUAL
 
-                def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::Discount::Schedule::RecurringSchedule::frequency]
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Discount::Schedule::RecurringSchedule::frequency]
               end
             end
 
@@ -930,6 +1195,13 @@ module MetronomeSDK
                 ?quantity: Float,
                 ?unit_price: Float
               ) -> void
+
+              def to_hash: -> {
+                timestamp: Time,
+                amount: Float,
+                quantity: Float,
+                unit_price: Float
+              }
             end
           end
         end
@@ -957,9 +1229,9 @@ module MetronomeSDK
             overwrite_rate: MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate,
             priority: Float,
             product_id: String,
-            target: MetronomeSDK::V1::ContractCreateParams::Override::target,
+            target: MetronomeSDK::Models::V1::ContractCreateParams::Override::target,
             tiers: ::Array[MetronomeSDK::V1::ContractCreateParams::Override::Tier],
-            type: MetronomeSDK::V1::ContractCreateParams::Override::type_
+            type: MetronomeSDK::Models::V1::ContractCreateParams::Override::type_
           }
 
         class Override < MetronomeSDK::Internal::Type::BaseModel
@@ -1005,11 +1277,11 @@ module MetronomeSDK
 
           def product_id=: (String) -> String
 
-          attr_reader target: MetronomeSDK::V1::ContractCreateParams::Override::target?
+          attr_reader target: MetronomeSDK::Models::V1::ContractCreateParams::Override::target?
 
           def target=: (
-            MetronomeSDK::V1::ContractCreateParams::Override::target
-          ) -> MetronomeSDK::V1::ContractCreateParams::Override::target
+            MetronomeSDK::Models::V1::ContractCreateParams::Override::target
+          ) -> MetronomeSDK::Models::V1::ContractCreateParams::Override::target
 
           attr_reader tiers: ::Array[MetronomeSDK::V1::ContractCreateParams::Override::Tier]?
 
@@ -1017,11 +1289,11 @@ module MetronomeSDK
             ::Array[MetronomeSDK::V1::ContractCreateParams::Override::Tier]
           ) -> ::Array[MetronomeSDK::V1::ContractCreateParams::Override::Tier]
 
-          attr_reader type: MetronomeSDK::V1::ContractCreateParams::Override::type_?
+          attr_reader type: MetronomeSDK::Models::V1::ContractCreateParams::Override::type_?
 
           def type=: (
-            MetronomeSDK::V1::ContractCreateParams::Override::type_
-          ) -> MetronomeSDK::V1::ContractCreateParams::Override::type_
+            MetronomeSDK::Models::V1::ContractCreateParams::Override::type_
+          ) -> MetronomeSDK::Models::V1::ContractCreateParams::Override::type_
 
           def initialize: (
             starting_at: Time,
@@ -1034,13 +1306,30 @@ module MetronomeSDK
             ?overwrite_rate: MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate,
             ?priority: Float,
             ?product_id: String,
-            ?target: MetronomeSDK::V1::ContractCreateParams::Override::target,
+            ?target: MetronomeSDK::Models::V1::ContractCreateParams::Override::target,
             ?tiers: ::Array[MetronomeSDK::V1::ContractCreateParams::Override::Tier],
-            ?type: MetronomeSDK::V1::ContractCreateParams::Override::type_
+            ?type: MetronomeSDK::Models::V1::ContractCreateParams::Override::type_
           ) -> void
+
+          def to_hash: -> {
+            starting_at: Time,
+            applicable_product_tags: ::Array[String],
+            ending_before: Time,
+            entitled: bool,
+            is_commit_specific: bool,
+            multiplier: Float,
+            override_specifiers: ::Array[MetronomeSDK::V1::ContractCreateParams::Override::OverrideSpecifier],
+            overwrite_rate: MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate,
+            priority: Float,
+            product_id: String,
+            target: MetronomeSDK::Models::V1::ContractCreateParams::Override::target,
+            tiers: ::Array[MetronomeSDK::V1::ContractCreateParams::Override::Tier],
+            type: MetronomeSDK::Models::V1::ContractCreateParams::Override::type_
+          }
 
           type override_specifier =
             {
+              billing_frequency: MetronomeSDK::Models::V1::ContractCreateParams::Override::OverrideSpecifier::billing_frequency,
               commit_ids: ::Array[String],
               presentation_group_values: ::Hash[Symbol, String],
               pricing_group_values: ::Hash[Symbol, String],
@@ -1051,6 +1340,12 @@ module MetronomeSDK
             }
 
           class OverrideSpecifier < MetronomeSDK::Internal::Type::BaseModel
+            attr_reader billing_frequency: MetronomeSDK::Models::V1::ContractCreateParams::Override::OverrideSpecifier::billing_frequency?
+
+            def billing_frequency=: (
+              MetronomeSDK::Models::V1::ContractCreateParams::Override::OverrideSpecifier::billing_frequency
+            ) -> MetronomeSDK::Models::V1::ContractCreateParams::Override::OverrideSpecifier::billing_frequency
+
             attr_reader commit_ids: ::Array[String]?
 
             def commit_ids=: (::Array[String]) -> ::Array[String]
@@ -1084,6 +1379,7 @@ module MetronomeSDK
             def recurring_credit_ids=: (::Array[String]) -> ::Array[String]
 
             def initialize: (
+              ?billing_frequency: MetronomeSDK::Models::V1::ContractCreateParams::Override::OverrideSpecifier::billing_frequency,
               ?commit_ids: ::Array[String],
               ?presentation_group_values: ::Hash[Symbol, String],
               ?pricing_group_values: ::Hash[Symbol, String],
@@ -1092,21 +1388,45 @@ module MetronomeSDK
               ?recurring_commit_ids: ::Array[String],
               ?recurring_credit_ids: ::Array[String]
             ) -> void
+
+            def to_hash: -> {
+              billing_frequency: MetronomeSDK::Models::V1::ContractCreateParams::Override::OverrideSpecifier::billing_frequency,
+              commit_ids: ::Array[String],
+              presentation_group_values: ::Hash[Symbol, String],
+              pricing_group_values: ::Hash[Symbol, String],
+              product_id: String,
+              product_tags: ::Array[String],
+              recurring_commit_ids: ::Array[String],
+              recurring_credit_ids: ::Array[String]
+            }
+
+            type billing_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+
+            module BillingFrequency
+              extend MetronomeSDK::Internal::Type::Enum
+
+              MONTHLY: :MONTHLY
+              QUARTERLY: :QUARTERLY
+              ANNUAL: :ANNUAL
+              WEEKLY: :WEEKLY
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Override::OverrideSpecifier::billing_frequency]
+            end
           end
 
           type overwrite_rate =
             {
-              rate_type: MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::rate_type,
+              rate_type: MetronomeSDK::Models::V1::ContractCreateParams::Override::OverwriteRate::rate_type,
               credit_type_id: String,
               custom_rate: ::Hash[Symbol, top],
               is_prorated: bool,
               price: Float,
               quantity: Float,
-              tiers: ::Array[MetronomeSDK::Tier]
+              tiers: ::Array[MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier]
             }
 
           class OverwriteRate < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor rate_type: MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::rate_type
+            attr_accessor rate_type: MetronomeSDK::Models::V1::ContractCreateParams::Override::OverwriteRate::rate_type
 
             attr_reader credit_type_id: String?
 
@@ -1128,21 +1448,31 @@ module MetronomeSDK
 
             def quantity=: (Float) -> Float
 
-            attr_reader tiers: ::Array[MetronomeSDK::Tier]?
+            attr_reader tiers: ::Array[MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier]?
 
             def tiers=: (
-              ::Array[MetronomeSDK::Tier]
-            ) -> ::Array[MetronomeSDK::Tier]
+              ::Array[MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier]
+            ) -> ::Array[MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier]
 
             def initialize: (
-              rate_type: MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::rate_type,
+              rate_type: MetronomeSDK::Models::V1::ContractCreateParams::Override::OverwriteRate::rate_type,
               ?credit_type_id: String,
               ?custom_rate: ::Hash[Symbol, top],
               ?is_prorated: bool,
               ?price: Float,
               ?quantity: Float,
-              ?tiers: ::Array[MetronomeSDK::Tier]
+              ?tiers: ::Array[MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier]
             ) -> void
+
+            def to_hash: -> {
+              rate_type: MetronomeSDK::Models::V1::ContractCreateParams::Override::OverwriteRate::rate_type,
+              credit_type_id: String,
+              custom_rate: ::Hash[Symbol, top],
+              is_prorated: bool,
+              price: Float,
+              quantity: Float,
+              tiers: ::Array[MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier]
+            }
 
             type rate_type =
               :FLAT | :PERCENTAGE | :SUBSCRIPTION | :TIERED | :CUSTOM
@@ -1156,7 +1486,21 @@ module MetronomeSDK
               TIERED: :TIERED
               CUSTOM: :CUSTOM
 
-              def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::rate_type]
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Override::OverwriteRate::rate_type]
+            end
+
+            type tier = { price: Float, size: Float }
+
+            class Tier < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor price: Float
+
+              attr_reader size: Float?
+
+              def size=: (Float) -> Float
+
+              def initialize: (price: Float, ?size: Float) -> void
+
+              def to_hash: -> { price: Float, size: Float }
             end
           end
 
@@ -1168,7 +1512,7 @@ module MetronomeSDK
             COMMIT_RATE: :COMMIT_RATE
             LIST_RATE: :LIST_RATE
 
-            def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::Override::target]
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Override::target]
           end
 
           type tier = { multiplier: Float, size: Float }
@@ -1181,6 +1525,8 @@ module MetronomeSDK
             def size=: (Float) -> Float
 
             def initialize: (multiplier: Float, ?size: Float) -> void
+
+            def to_hash: -> { multiplier: Float, size: Float }
           end
 
           type type_ = :OVERWRITE | :MULTIPLIER | :TIERED
@@ -1192,7 +1538,7 @@ module MetronomeSDK
             MULTIPLIER: :MULTIPLIER
             TIERED: :TIERED
 
-            def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::Override::type_]
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Override::type_]
           end
         end
 
@@ -1224,13 +1570,22 @@ module MetronomeSDK
             threshold_amount: Float
           ) -> void
 
+          def to_hash: -> {
+            commit: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::Commit,
+            is_enabled: bool,
+            payment_gate_config: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig,
+            recharge_to_amount: Float,
+            threshold_amount: Float
+          }
+
           type commit =
             {
               product_id: String,
               applicable_product_ids: ::Array[String],
               applicable_product_tags: ::Array[String],
               description: String,
-              name: String
+              name: String,
+              specifiers: ::Array[MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::Commit::Specifier]
             }
 
           class Commit < MetronomeSDK::Internal::Type::BaseModel
@@ -1252,24 +1607,84 @@ module MetronomeSDK
 
             def name=: (String) -> String
 
+            attr_reader specifiers: ::Array[MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::Commit::Specifier]?
+
+            def specifiers=: (
+              ::Array[MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::Commit::Specifier]
+            ) -> ::Array[MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::Commit::Specifier]
+
             def initialize: (
               product_id: String,
               ?applicable_product_ids: ::Array[String],
               ?applicable_product_tags: ::Array[String],
               ?description: String,
-              ?name: String
+              ?name: String,
+              ?specifiers: ::Array[MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::Commit::Specifier]
             ) -> void
+
+            def to_hash: -> {
+              product_id: String,
+              applicable_product_ids: ::Array[String],
+              applicable_product_tags: ::Array[String],
+              description: String,
+              name: String,
+              specifiers: ::Array[MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::Commit::Specifier]
+            }
+
+            type specifier =
+              {
+                presentation_group_values: ::Hash[Symbol, String],
+                pricing_group_values: ::Hash[Symbol, String],
+                product_id: String,
+                product_tags: ::Array[String]
+              }
+
+            class Specifier < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader presentation_group_values: ::Hash[Symbol, String]?
+
+              def presentation_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+              def pricing_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader product_id: String?
+
+              def product_id=: (String) -> String
+
+              attr_reader product_tags: ::Array[String]?
+
+              def product_tags=: (::Array[String]) -> ::Array[String]
+
+              def initialize: (
+                ?presentation_group_values: ::Hash[Symbol, String],
+                ?pricing_group_values: ::Hash[Symbol, String],
+                ?product_id: String,
+                ?product_tags: ::Array[String]
+              ) -> void
+
+              def to_hash: -> {
+                presentation_group_values: ::Hash[Symbol, String],
+                pricing_group_values: ::Hash[Symbol, String],
+                product_id: String,
+                product_tags: ::Array[String]
+              }
+            end
           end
 
           type payment_gate_config =
             {
-              payment_gate_type: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+              payment_gate_type: MetronomeSDK::Models::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type,
               stripe_config: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
-              tax_type: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
+              tax_type: MetronomeSDK::Models::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
             }
 
           class PaymentGateConfig < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor payment_gate_type: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type
+            attr_accessor payment_gate_type: MetronomeSDK::Models::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type
 
             attr_reader stripe_config: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig?
 
@@ -1277,17 +1692,23 @@ module MetronomeSDK
               MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig
             ) -> MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig
 
-            attr_reader tax_type: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type?
+            attr_reader tax_type: MetronomeSDK::Models::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type?
 
             def tax_type=: (
-              MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
-            ) -> MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
+              MetronomeSDK::Models::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
+            ) -> MetronomeSDK::Models::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
 
             def initialize: (
-              payment_gate_type: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+              payment_gate_type: MetronomeSDK::Models::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type,
               ?stripe_config: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
-              ?tax_type: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
+              ?tax_type: MetronomeSDK::Models::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
             ) -> void
+
+            def to_hash: -> {
+              payment_gate_type: MetronomeSDK::Models::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+              stripe_config: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
+              tax_type: MetronomeSDK::Models::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
+            }
 
             type payment_gate_type = :NONE | :STRIPE | :EXTERNAL
 
@@ -1298,20 +1719,24 @@ module MetronomeSDK
               STRIPE: :STRIPE
               EXTERNAL: :EXTERNAL
 
-              def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type]
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type]
             end
 
             type stripe_config =
               {
-                payment_type: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+                payment_type: MetronomeSDK::Models::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
               }
 
             class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
-              attr_accessor payment_type: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+              attr_accessor payment_type: MetronomeSDK::Models::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
 
               def initialize: (
-                payment_type: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+                payment_type: MetronomeSDK::Models::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
               ) -> void
+
+              def to_hash: -> {
+                payment_type: MetronomeSDK::Models::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+              }
 
               type payment_type = :INVOICE | :PAYMENT_INTENT
 
@@ -1321,7 +1746,7 @@ module MetronomeSDK
                 INVOICE: :INVOICE
                 PAYMENT_INTENT: :PAYMENT_INTENT
 
-                def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type]
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type]
               end
             end
 
@@ -1333,7 +1758,7 @@ module MetronomeSDK
               NONE: :NONE
               STRIPE: :STRIPE
 
-              def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type]
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type]
             end
           end
         end
@@ -1379,6 +1804,16 @@ module MetronomeSDK
             ?description: String,
             ?netsuite_sales_order_id: String
           ) -> void
+
+          def to_hash: -> {
+            max_amount: Float,
+            product_id: String,
+            quantity: Float,
+            unit_price: Float,
+            custom_fields: ::Hash[Symbol, String],
+            description: String,
+            netsuite_sales_order_id: String
+          }
         end
 
         type recurring_commit =
@@ -1395,10 +1830,11 @@ module MetronomeSDK
             invoice_amount: MetronomeSDK::V1::ContractCreateParams::RecurringCommit::InvoiceAmount,
             name: String,
             netsuite_sales_order_id: String,
-            proration: MetronomeSDK::V1::ContractCreateParams::RecurringCommit::proration,
-            rate_type: MetronomeSDK::V1::ContractCreateParams::RecurringCommit::rate_type,
-            recurrence_frequency: MetronomeSDK::V1::ContractCreateParams::RecurringCommit::recurrence_frequency,
+            proration: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::proration,
+            rate_type: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::rate_type,
+            recurrence_frequency: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::recurrence_frequency,
             rollover_fraction: Float,
+            specifiers: ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCommit::Specifier],
             temporary_id: String
           }
 
@@ -1443,27 +1879,33 @@ module MetronomeSDK
 
           def netsuite_sales_order_id=: (String) -> String
 
-          attr_reader proration: MetronomeSDK::V1::ContractCreateParams::RecurringCommit::proration?
+          attr_reader proration: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::proration?
 
           def proration=: (
-            MetronomeSDK::V1::ContractCreateParams::RecurringCommit::proration
-          ) -> MetronomeSDK::V1::ContractCreateParams::RecurringCommit::proration
+            MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::proration
+          ) -> MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::proration
 
-          attr_reader rate_type: MetronomeSDK::V1::ContractCreateParams::RecurringCommit::rate_type?
+          attr_reader rate_type: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::rate_type?
 
           def rate_type=: (
-            MetronomeSDK::V1::ContractCreateParams::RecurringCommit::rate_type
-          ) -> MetronomeSDK::V1::ContractCreateParams::RecurringCommit::rate_type
+            MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::rate_type
+          ) -> MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::rate_type
 
-          attr_reader recurrence_frequency: MetronomeSDK::V1::ContractCreateParams::RecurringCommit::recurrence_frequency?
+          attr_reader recurrence_frequency: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::recurrence_frequency?
 
           def recurrence_frequency=: (
-            MetronomeSDK::V1::ContractCreateParams::RecurringCommit::recurrence_frequency
-          ) -> MetronomeSDK::V1::ContractCreateParams::RecurringCommit::recurrence_frequency
+            MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::recurrence_frequency
+          ) -> MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::recurrence_frequency
 
           attr_reader rollover_fraction: Float?
 
           def rollover_fraction=: (Float) -> Float
+
+          attr_reader specifiers: ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCommit::Specifier]?
+
+          def specifiers=: (
+            ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCommit::Specifier]
+          ) -> ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCommit::Specifier]
 
           attr_reader temporary_id: String?
 
@@ -1482,12 +1924,34 @@ module MetronomeSDK
             ?invoice_amount: MetronomeSDK::V1::ContractCreateParams::RecurringCommit::InvoiceAmount,
             ?name: String,
             ?netsuite_sales_order_id: String,
-            ?proration: MetronomeSDK::V1::ContractCreateParams::RecurringCommit::proration,
-            ?rate_type: MetronomeSDK::V1::ContractCreateParams::RecurringCommit::rate_type,
-            ?recurrence_frequency: MetronomeSDK::V1::ContractCreateParams::RecurringCommit::recurrence_frequency,
+            ?proration: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::proration,
+            ?rate_type: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::rate_type,
+            ?recurrence_frequency: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::recurrence_frequency,
             ?rollover_fraction: Float,
+            ?specifiers: ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCommit::Specifier],
             ?temporary_id: String
           ) -> void
+
+          def to_hash: -> {
+            access_amount: MetronomeSDK::V1::ContractCreateParams::RecurringCommit::AccessAmount,
+            commit_duration: MetronomeSDK::V1::ContractCreateParams::RecurringCommit::CommitDuration,
+            priority: Float,
+            product_id: String,
+            starting_at: Time,
+            applicable_product_ids: ::Array[String],
+            applicable_product_tags: ::Array[String],
+            description: String,
+            ending_before: Time,
+            invoice_amount: MetronomeSDK::V1::ContractCreateParams::RecurringCommit::InvoiceAmount,
+            name: String,
+            netsuite_sales_order_id: String,
+            proration: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::proration,
+            rate_type: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::rate_type,
+            recurrence_frequency: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::recurrence_frequency,
+            rollover_fraction: Float,
+            specifiers: ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCommit::Specifier],
+            temporary_id: String
+          }
 
           type access_amount =
             { credit_type_id: String, quantity: Float, unit_price: Float }
@@ -1504,23 +1968,38 @@ module MetronomeSDK
               quantity: Float,
               unit_price: Float
             ) -> void
+
+            def to_hash: -> {
+              credit_type_id: String,
+              quantity: Float,
+              unit_price: Float
+            }
           end
 
           type commit_duration =
             {
-              unit: MetronomeSDK::V1::ContractCreateParams::RecurringCommit::CommitDuration::unit,
-              value: Float
+              value: Float,
+              unit: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::CommitDuration::unit
             }
 
           class CommitDuration < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor unit: MetronomeSDK::V1::ContractCreateParams::RecurringCommit::CommitDuration::unit
-
             attr_accessor value: Float
 
+            attr_reader unit: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::CommitDuration::unit?
+
+            def unit=: (
+              MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::CommitDuration::unit
+            ) -> MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::CommitDuration::unit
+
             def initialize: (
-              unit: MetronomeSDK::V1::ContractCreateParams::RecurringCommit::CommitDuration::unit,
-              value: Float
+              value: Float,
+              ?unit: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::CommitDuration::unit
             ) -> void
+
+            def to_hash: -> {
+              value: Float,
+              unit: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::CommitDuration::unit
+            }
 
             type unit = :PERIODS
 
@@ -1529,7 +2008,7 @@ module MetronomeSDK
 
               PERIODS: :PERIODS
 
-              def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCommit::CommitDuration::unit]
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::CommitDuration::unit]
             end
           end
 
@@ -1548,6 +2027,12 @@ module MetronomeSDK
               quantity: Float,
               unit_price: Float
             ) -> void
+
+            def to_hash: -> {
+              credit_type_id: String,
+              quantity: Float,
+              unit_price: Float
+            }
           end
 
           type proration = :NONE | :FIRST | :LAST | :FIRST_AND_LAST
@@ -1560,7 +2045,7 @@ module MetronomeSDK
             LAST: :LAST
             FIRST_AND_LAST: :FIRST_AND_LAST
 
-            def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCommit::proration]
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::proration]
           end
 
           type rate_type = :COMMIT_RATE | :LIST_RATE
@@ -1571,7 +2056,7 @@ module MetronomeSDK
             COMMIT_RATE: :COMMIT_RATE
             LIST_RATE: :LIST_RATE
 
-            def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCommit::rate_type]
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::rate_type]
           end
 
           type recurrence_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
@@ -1584,7 +2069,51 @@ module MetronomeSDK
             ANNUAL: :ANNUAL
             WEEKLY: :WEEKLY
 
-            def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCommit::recurrence_frequency]
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::recurrence_frequency]
+          end
+
+          type specifier =
+            {
+              presentation_group_values: ::Hash[Symbol, String],
+              pricing_group_values: ::Hash[Symbol, String],
+              product_id: String,
+              product_tags: ::Array[String]
+            }
+
+          class Specifier < MetronomeSDK::Internal::Type::BaseModel
+            attr_reader presentation_group_values: ::Hash[Symbol, String]?
+
+            def presentation_group_values=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+            def pricing_group_values=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader product_id: String?
+
+            def product_id=: (String) -> String
+
+            attr_reader product_tags: ::Array[String]?
+
+            def product_tags=: (::Array[String]) -> ::Array[String]
+
+            def initialize: (
+              ?presentation_group_values: ::Hash[Symbol, String],
+              ?pricing_group_values: ::Hash[Symbol, String],
+              ?product_id: String,
+              ?product_tags: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              presentation_group_values: ::Hash[Symbol, String],
+              pricing_group_values: ::Hash[Symbol, String],
+              product_id: String,
+              product_tags: ::Array[String]
+            }
           end
         end
 
@@ -1601,10 +2130,11 @@ module MetronomeSDK
             ending_before: Time,
             name: String,
             netsuite_sales_order_id: String,
-            proration: MetronomeSDK::V1::ContractCreateParams::RecurringCredit::proration,
-            rate_type: MetronomeSDK::V1::ContractCreateParams::RecurringCredit::rate_type,
-            recurrence_frequency: MetronomeSDK::V1::ContractCreateParams::RecurringCredit::recurrence_frequency,
+            proration: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::proration,
+            rate_type: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::rate_type,
+            recurrence_frequency: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::recurrence_frequency,
             rollover_fraction: Float,
+            specifiers: ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCredit::Specifier],
             temporary_id: String
           }
 
@@ -1643,27 +2173,33 @@ module MetronomeSDK
 
           def netsuite_sales_order_id=: (String) -> String
 
-          attr_reader proration: MetronomeSDK::V1::ContractCreateParams::RecurringCredit::proration?
+          attr_reader proration: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::proration?
 
           def proration=: (
-            MetronomeSDK::V1::ContractCreateParams::RecurringCredit::proration
-          ) -> MetronomeSDK::V1::ContractCreateParams::RecurringCredit::proration
+            MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::proration
+          ) -> MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::proration
 
-          attr_reader rate_type: MetronomeSDK::V1::ContractCreateParams::RecurringCredit::rate_type?
+          attr_reader rate_type: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::rate_type?
 
           def rate_type=: (
-            MetronomeSDK::V1::ContractCreateParams::RecurringCredit::rate_type
-          ) -> MetronomeSDK::V1::ContractCreateParams::RecurringCredit::rate_type
+            MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::rate_type
+          ) -> MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::rate_type
 
-          attr_reader recurrence_frequency: MetronomeSDK::V1::ContractCreateParams::RecurringCredit::recurrence_frequency?
+          attr_reader recurrence_frequency: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::recurrence_frequency?
 
           def recurrence_frequency=: (
-            MetronomeSDK::V1::ContractCreateParams::RecurringCredit::recurrence_frequency
-          ) -> MetronomeSDK::V1::ContractCreateParams::RecurringCredit::recurrence_frequency
+            MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::recurrence_frequency
+          ) -> MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::recurrence_frequency
 
           attr_reader rollover_fraction: Float?
 
           def rollover_fraction=: (Float) -> Float
+
+          attr_reader specifiers: ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCredit::Specifier]?
+
+          def specifiers=: (
+            ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCredit::Specifier]
+          ) -> ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCredit::Specifier]
 
           attr_reader temporary_id: String?
 
@@ -1681,12 +2217,33 @@ module MetronomeSDK
             ?ending_before: Time,
             ?name: String,
             ?netsuite_sales_order_id: String,
-            ?proration: MetronomeSDK::V1::ContractCreateParams::RecurringCredit::proration,
-            ?rate_type: MetronomeSDK::V1::ContractCreateParams::RecurringCredit::rate_type,
-            ?recurrence_frequency: MetronomeSDK::V1::ContractCreateParams::RecurringCredit::recurrence_frequency,
+            ?proration: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::proration,
+            ?rate_type: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::rate_type,
+            ?recurrence_frequency: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::recurrence_frequency,
             ?rollover_fraction: Float,
+            ?specifiers: ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCredit::Specifier],
             ?temporary_id: String
           ) -> void
+
+          def to_hash: -> {
+            access_amount: MetronomeSDK::V1::ContractCreateParams::RecurringCredit::AccessAmount,
+            commit_duration: MetronomeSDK::V1::ContractCreateParams::RecurringCredit::CommitDuration,
+            priority: Float,
+            product_id: String,
+            starting_at: Time,
+            applicable_product_ids: ::Array[String],
+            applicable_product_tags: ::Array[String],
+            description: String,
+            ending_before: Time,
+            name: String,
+            netsuite_sales_order_id: String,
+            proration: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::proration,
+            rate_type: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::rate_type,
+            recurrence_frequency: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::recurrence_frequency,
+            rollover_fraction: Float,
+            specifiers: ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCredit::Specifier],
+            temporary_id: String
+          }
 
           type access_amount =
             { credit_type_id: String, quantity: Float, unit_price: Float }
@@ -1703,23 +2260,38 @@ module MetronomeSDK
               quantity: Float,
               unit_price: Float
             ) -> void
+
+            def to_hash: -> {
+              credit_type_id: String,
+              quantity: Float,
+              unit_price: Float
+            }
           end
 
           type commit_duration =
             {
-              unit: MetronomeSDK::V1::ContractCreateParams::RecurringCredit::CommitDuration::unit,
-              value: Float
+              value: Float,
+              unit: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::CommitDuration::unit
             }
 
           class CommitDuration < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor unit: MetronomeSDK::V1::ContractCreateParams::RecurringCredit::CommitDuration::unit
-
             attr_accessor value: Float
 
+            attr_reader unit: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::CommitDuration::unit?
+
+            def unit=: (
+              MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::CommitDuration::unit
+            ) -> MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::CommitDuration::unit
+
             def initialize: (
-              unit: MetronomeSDK::V1::ContractCreateParams::RecurringCredit::CommitDuration::unit,
-              value: Float
+              value: Float,
+              ?unit: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::CommitDuration::unit
             ) -> void
+
+            def to_hash: -> {
+              value: Float,
+              unit: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::CommitDuration::unit
+            }
 
             type unit = :PERIODS
 
@@ -1728,7 +2300,7 @@ module MetronomeSDK
 
               PERIODS: :PERIODS
 
-              def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCredit::CommitDuration::unit]
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::CommitDuration::unit]
             end
           end
 
@@ -1742,7 +2314,7 @@ module MetronomeSDK
             LAST: :LAST
             FIRST_AND_LAST: :FIRST_AND_LAST
 
-            def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCredit::proration]
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::proration]
           end
 
           type rate_type = :COMMIT_RATE | :LIST_RATE
@@ -1753,7 +2325,7 @@ module MetronomeSDK
             COMMIT_RATE: :COMMIT_RATE
             LIST_RATE: :LIST_RATE
 
-            def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCredit::rate_type]
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::rate_type]
           end
 
           type recurrence_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
@@ -1766,7 +2338,51 @@ module MetronomeSDK
             ANNUAL: :ANNUAL
             WEEKLY: :WEEKLY
 
-            def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCredit::recurrence_frequency]
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::recurrence_frequency]
+          end
+
+          type specifier =
+            {
+              presentation_group_values: ::Hash[Symbol, String],
+              pricing_group_values: ::Hash[Symbol, String],
+              product_id: String,
+              product_tags: ::Array[String]
+            }
+
+          class Specifier < MetronomeSDK::Internal::Type::BaseModel
+            attr_reader presentation_group_values: ::Hash[Symbol, String]?
+
+            def presentation_group_values=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+            def pricing_group_values=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader product_id: String?
+
+            def product_id=: (String) -> String
+
+            attr_reader product_tags: ::Array[String]?
+
+            def product_tags=: (::Array[String]) -> ::Array[String]
+
+            def initialize: (
+              ?presentation_group_values: ::Hash[Symbol, String],
+              ?pricing_group_values: ::Hash[Symbol, String],
+              ?product_id: String,
+              ?product_tags: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              presentation_group_values: ::Hash[Symbol, String],
+              pricing_group_values: ::Hash[Symbol, String],
+              product_id: String,
+              product_tags: ::Array[String]
+            }
           end
         end
 
@@ -1774,7 +2390,7 @@ module MetronomeSDK
           {
             fraction: Float,
             netsuite_reseller_id: String,
-            reseller_type: MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty::reseller_type,
+            reseller_type: MetronomeSDK::Models::V1::ContractCreateParams::ResellerRoyalty::reseller_type,
             starting_at: Time,
             applicable_product_ids: ::Array[String],
             applicable_product_tags: ::Array[String],
@@ -1789,7 +2405,7 @@ module MetronomeSDK
 
           attr_accessor netsuite_reseller_id: String
 
-          attr_accessor reseller_type: MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty::reseller_type
+          attr_accessor reseller_type: MetronomeSDK::Models::V1::ContractCreateParams::ResellerRoyalty::reseller_type
 
           attr_accessor starting_at: Time
 
@@ -1824,7 +2440,7 @@ module MetronomeSDK
           def initialize: (
             fraction: Float,
             netsuite_reseller_id: String,
-            reseller_type: MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty::reseller_type,
+            reseller_type: MetronomeSDK::Models::V1::ContractCreateParams::ResellerRoyalty::reseller_type,
             starting_at: Time,
             ?applicable_product_ids: ::Array[String],
             ?applicable_product_tags: ::Array[String],
@@ -1833,6 +2449,19 @@ module MetronomeSDK
             ?gcp_options: MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty::GcpOptions,
             ?reseller_contract_value: Float
           ) -> void
+
+          def to_hash: -> {
+            fraction: Float,
+            netsuite_reseller_id: String,
+            reseller_type: MetronomeSDK::Models::V1::ContractCreateParams::ResellerRoyalty::reseller_type,
+            starting_at: Time,
+            applicable_product_ids: ::Array[String],
+            applicable_product_tags: ::Array[String],
+            aws_options: MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty::AwsOptions,
+            ending_before: Time,
+            gcp_options: MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty::GcpOptions,
+            reseller_contract_value: Float
+          }
 
           type reseller_type = :AWS | :AWS_PRO_SERVICE | :GCP | :GCP_PRO_SERVICE
 
@@ -1844,7 +2473,7 @@ module MetronomeSDK
             GCP: :GCP
             GCP_PRO_SERVICE: :GCP_PRO_SERVICE
 
-            def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty::reseller_type]
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::ResellerRoyalty::reseller_type]
           end
 
           type aws_options =
@@ -1872,6 +2501,12 @@ module MetronomeSDK
               ?aws_offer_id: String,
               ?aws_payer_reference_id: String
             ) -> void
+
+            def to_hash: -> {
+              aws_account_number: String,
+              aws_offer_id: String,
+              aws_payer_reference_id: String
+            }
           end
 
           type gcp_options = { gcp_account_id: String, gcp_offer_id: String }
@@ -1889,6 +2524,8 @@ module MetronomeSDK
               ?gcp_account_id: String,
               ?gcp_offer_id: String
             ) -> void
+
+            def to_hash: -> { gcp_account_id: String, gcp_offer_id: String }
           end
         end
 
@@ -1920,6 +2557,13 @@ module MetronomeSDK
             ?netsuite_sales_order_id: String
           ) -> void
 
+          def to_hash: -> {
+            product_id: String,
+            schedule: MetronomeSDK::V1::ContractCreateParams::ScheduledCharge::Schedule,
+            name: String,
+            netsuite_sales_order_id: String
+          }
+
           type schedule =
             {
               credit_type_id: String,
@@ -1950,11 +2594,17 @@ module MetronomeSDK
               ?schedule_items: ::Array[MetronomeSDK::V1::ContractCreateParams::ScheduledCharge::Schedule::ScheduleItem]
             ) -> void
 
+            def to_hash: -> {
+              credit_type_id: String,
+              recurring_schedule: MetronomeSDK::V1::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule,
+              schedule_items: ::Array[MetronomeSDK::V1::ContractCreateParams::ScheduledCharge::Schedule::ScheduleItem]
+            }
+
             type recurring_schedule =
               {
-                amount_distribution: MetronomeSDK::V1::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::amount_distribution,
+                amount_distribution: MetronomeSDK::Models::V1::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::amount_distribution,
                 ending_before: Time,
-                frequency: MetronomeSDK::V1::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::frequency,
+                frequency: MetronomeSDK::Models::V1::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::frequency,
                 starting_at: Time,
                 amount: Float,
                 quantity: Float,
@@ -1962,11 +2612,11 @@ module MetronomeSDK
               }
 
             class RecurringSchedule < MetronomeSDK::Internal::Type::BaseModel
-              attr_accessor amount_distribution: MetronomeSDK::V1::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::amount_distribution
+              attr_accessor amount_distribution: MetronomeSDK::Models::V1::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::amount_distribution
 
               attr_accessor ending_before: Time
 
-              attr_accessor frequency: MetronomeSDK::V1::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::frequency
+              attr_accessor frequency: MetronomeSDK::Models::V1::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::frequency
 
               attr_accessor starting_at: Time
 
@@ -1983,14 +2633,24 @@ module MetronomeSDK
               def unit_price=: (Float) -> Float
 
               def initialize: (
-                amount_distribution: MetronomeSDK::V1::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::amount_distribution,
+                amount_distribution: MetronomeSDK::Models::V1::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::amount_distribution,
                 ending_before: Time,
-                frequency: MetronomeSDK::V1::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::frequency,
+                frequency: MetronomeSDK::Models::V1::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::frequency,
                 starting_at: Time,
                 ?amount: Float,
                 ?quantity: Float,
                 ?unit_price: Float
               ) -> void
+
+              def to_hash: -> {
+                amount_distribution: MetronomeSDK::Models::V1::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::amount_distribution,
+                ending_before: Time,
+                frequency: MetronomeSDK::Models::V1::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::frequency,
+                starting_at: Time,
+                amount: Float,
+                quantity: Float,
+                unit_price: Float
+              }
 
               type amount_distribution = :DIVIDED | :DIVIDED_ROUNDED | :EACH
 
@@ -2001,7 +2661,7 @@ module MetronomeSDK
                 DIVIDED_ROUNDED: :DIVIDED_ROUNDED
                 EACH: :EACH
 
-                def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::amount_distribution]
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::amount_distribution]
               end
 
               type frequency = :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL
@@ -2014,7 +2674,7 @@ module MetronomeSDK
                 SEMI_ANNUAL: :SEMI_ANNUAL
                 ANNUAL: :ANNUAL
 
-                def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::frequency]
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::ScheduledCharge::Schedule::RecurringSchedule::frequency]
               end
             end
 
@@ -2047,6 +2707,13 @@ module MetronomeSDK
                 ?quantity: Float,
                 ?unit_price: Float
               ) -> void
+
+              def to_hash: -> {
+                timestamp: Time,
+                amount: Float,
+                quantity: Float,
+                unit_price: Float
+              }
             end
           end
         end
@@ -2085,6 +2752,13 @@ module MetronomeSDK
             threshold_amount: Float
           ) -> void
 
+          def to_hash: -> {
+            commit: MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::Commit,
+            is_enabled: bool,
+            payment_gate_config: MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig,
+            threshold_amount: Float
+          }
+
           type commit =
             { product_id: String, description: String, name: String }
 
@@ -2104,17 +2778,23 @@ module MetronomeSDK
               ?description: String,
               ?name: String
             ) -> void
+
+            def to_hash: -> {
+              product_id: String,
+              description: String,
+              name: String
+            }
           end
 
           type payment_gate_config =
             {
-              payment_gate_type: MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+              payment_gate_type: MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::payment_gate_type,
               stripe_config: MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig,
-              tax_type: MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::tax_type
+              tax_type: MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::tax_type
             }
 
           class PaymentGateConfig < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor payment_gate_type: MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::payment_gate_type
+            attr_accessor payment_gate_type: MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::payment_gate_type
 
             attr_reader stripe_config: MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig?
 
@@ -2122,17 +2802,23 @@ module MetronomeSDK
               MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig
             ) -> MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig
 
-            attr_reader tax_type: MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::tax_type?
+            attr_reader tax_type: MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::tax_type?
 
             def tax_type=: (
-              MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::tax_type
-            ) -> MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::tax_type
+              MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::tax_type
+            ) -> MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::tax_type
 
             def initialize: (
-              payment_gate_type: MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+              payment_gate_type: MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::payment_gate_type,
               ?stripe_config: MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig,
-              ?tax_type: MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::tax_type
+              ?tax_type: MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::tax_type
             ) -> void
+
+            def to_hash: -> {
+              payment_gate_type: MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+              stripe_config: MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig,
+              tax_type: MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::tax_type
+            }
 
             type payment_gate_type = :NONE | :STRIPE | :EXTERNAL
 
@@ -2143,20 +2829,24 @@ module MetronomeSDK
               STRIPE: :STRIPE
               EXTERNAL: :EXTERNAL
 
-              def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::payment_gate_type]
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::payment_gate_type]
             end
 
             type stripe_config =
               {
-                payment_type: MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+                payment_type: MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
               }
 
             class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
-              attr_accessor payment_type: MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+              attr_accessor payment_type: MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
 
               def initialize: (
-                payment_type: MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+                payment_type: MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
               ) -> void
+
+              def to_hash: -> {
+                payment_type: MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+              }
 
               type payment_type = :INVOICE | :PAYMENT_INTENT
 
@@ -2166,7 +2856,7 @@ module MetronomeSDK
                 INVOICE: :INVOICE
                 PAYMENT_INTENT: :PAYMENT_INTENT
 
-                def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type]
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type]
               end
             end
 
@@ -2178,7 +2868,160 @@ module MetronomeSDK
               NONE: :NONE
               STRIPE: :STRIPE
 
-              def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::tax_type]
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration::PaymentGateConfig::tax_type]
+            end
+          end
+        end
+
+        type subscription =
+          {
+            collection_schedule: MetronomeSDK::Models::V1::ContractCreateParams::Subscription::collection_schedule,
+            initial_quantity: Float,
+            proration: MetronomeSDK::V1::ContractCreateParams::Subscription::Proration,
+            subscription_rate: MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate,
+            custom_fields: ::Hash[Symbol, String],
+            description: String,
+            ending_before: Time,
+            name: String,
+            starting_at: Time
+          }
+
+        class Subscription < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor collection_schedule: MetronomeSDK::Models::V1::ContractCreateParams::Subscription::collection_schedule
+
+          attr_accessor initial_quantity: Float
+
+          attr_accessor proration: MetronomeSDK::V1::ContractCreateParams::Subscription::Proration
+
+          attr_accessor subscription_rate: MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate
+
+          attr_reader custom_fields: ::Hash[Symbol, String]?
+
+          def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+
+          attr_reader description: String?
+
+          def description=: (String) -> String
+
+          attr_reader ending_before: Time?
+
+          def ending_before=: (Time) -> Time
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          attr_reader starting_at: Time?
+
+          def starting_at=: (Time) -> Time
+
+          def initialize: (
+            collection_schedule: MetronomeSDK::Models::V1::ContractCreateParams::Subscription::collection_schedule,
+            initial_quantity: Float,
+            proration: MetronomeSDK::V1::ContractCreateParams::Subscription::Proration,
+            subscription_rate: MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate,
+            ?custom_fields: ::Hash[Symbol, String],
+            ?description: String,
+            ?ending_before: Time,
+            ?name: String,
+            ?starting_at: Time
+          ) -> void
+
+          def to_hash: -> {
+            collection_schedule: MetronomeSDK::Models::V1::ContractCreateParams::Subscription::collection_schedule,
+            initial_quantity: Float,
+            proration: MetronomeSDK::V1::ContractCreateParams::Subscription::Proration,
+            subscription_rate: MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate,
+            custom_fields: ::Hash[Symbol, String],
+            description: String,
+            ending_before: Time,
+            name: String,
+            starting_at: Time
+          }
+
+          type collection_schedule = :ADVANCE | :ARREARS
+
+          module CollectionSchedule
+            extend MetronomeSDK::Internal::Type::Enum
+
+            ADVANCE: :ADVANCE
+            ARREARS: :ARREARS
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Subscription::collection_schedule]
+          end
+
+          type proration =
+            {
+              invoice_behavior: MetronomeSDK::Models::V1::ContractCreateParams::Subscription::Proration::invoice_behavior,
+              is_prorated: bool
+            }
+
+          class Proration < MetronomeSDK::Internal::Type::BaseModel
+            attr_reader invoice_behavior: MetronomeSDK::Models::V1::ContractCreateParams::Subscription::Proration::invoice_behavior?
+
+            def invoice_behavior=: (
+              MetronomeSDK::Models::V1::ContractCreateParams::Subscription::Proration::invoice_behavior
+            ) -> MetronomeSDK::Models::V1::ContractCreateParams::Subscription::Proration::invoice_behavior
+
+            attr_reader is_prorated: bool?
+
+            def is_prorated=: (bool) -> bool
+
+            def initialize: (
+              ?invoice_behavior: MetronomeSDK::Models::V1::ContractCreateParams::Subscription::Proration::invoice_behavior,
+              ?is_prorated: bool
+            ) -> void
+
+            def to_hash: -> {
+              invoice_behavior: MetronomeSDK::Models::V1::ContractCreateParams::Subscription::Proration::invoice_behavior,
+              is_prorated: bool
+            }
+
+            type invoice_behavior =
+              :BILL_IMMEDIATELY | :BILL_ON_NEXT_COLLECTION_DATE
+
+            module InvoiceBehavior
+              extend MetronomeSDK::Internal::Type::Enum
+
+              BILL_IMMEDIATELY: :BILL_IMMEDIATELY
+              BILL_ON_NEXT_COLLECTION_DATE: :BILL_ON_NEXT_COLLECTION_DATE
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Subscription::Proration::invoice_behavior]
+            end
+          end
+
+          type subscription_rate =
+            {
+              billing_frequency: MetronomeSDK::Models::V1::ContractCreateParams::Subscription::SubscriptionRate::billing_frequency,
+              product_id: String
+            }
+
+          class SubscriptionRate < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor billing_frequency: MetronomeSDK::Models::V1::ContractCreateParams::Subscription::SubscriptionRate::billing_frequency
+
+            attr_accessor product_id: String
+
+            def initialize: (
+              billing_frequency: MetronomeSDK::Models::V1::ContractCreateParams::Subscription::SubscriptionRate::billing_frequency,
+              product_id: String
+            ) -> void
+
+            def to_hash: -> {
+              billing_frequency: MetronomeSDK::Models::V1::ContractCreateParams::Subscription::SubscriptionRate::billing_frequency,
+              product_id: String
+            }
+
+            type billing_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+
+            module BillingFrequency
+              extend MetronomeSDK::Internal::Type::Enum
+
+              MONTHLY: :MONTHLY
+              QUARTERLY: :QUARTERLY
+              ANNUAL: :ANNUAL
+              WEEKLY: :WEEKLY
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Subscription::SubscriptionRate::billing_frequency]
             end
           end
         end
@@ -2186,14 +3029,14 @@ module MetronomeSDK
         type transition =
           {
             from_contract_id: String,
-            type: MetronomeSDK::V1::ContractCreateParams::Transition::type_,
+            type: MetronomeSDK::Models::V1::ContractCreateParams::Transition::type_,
             future_invoice_behavior: MetronomeSDK::V1::ContractCreateParams::Transition::FutureInvoiceBehavior
           }
 
         class Transition < MetronomeSDK::Internal::Type::BaseModel
           attr_accessor from_contract_id: String
 
-          attr_accessor type: MetronomeSDK::V1::ContractCreateParams::Transition::type_
+          attr_accessor type: MetronomeSDK::Models::V1::ContractCreateParams::Transition::type_
 
           attr_reader future_invoice_behavior: MetronomeSDK::V1::ContractCreateParams::Transition::FutureInvoiceBehavior?
 
@@ -2203,9 +3046,15 @@ module MetronomeSDK
 
           def initialize: (
             from_contract_id: String,
-            type: MetronomeSDK::V1::ContractCreateParams::Transition::type_,
+            type: MetronomeSDK::Models::V1::ContractCreateParams::Transition::type_,
             ?future_invoice_behavior: MetronomeSDK::V1::ContractCreateParams::Transition::FutureInvoiceBehavior
           ) -> void
+
+          def to_hash: -> {
+            from_contract_id: String,
+            type: MetronomeSDK::Models::V1::ContractCreateParams::Transition::type_,
+            future_invoice_behavior: MetronomeSDK::V1::ContractCreateParams::Transition::FutureInvoiceBehavior
+          }
 
           type type_ = :SUPERSEDE | :RENEWAL
 
@@ -2215,20 +3064,24 @@ module MetronomeSDK
             SUPERSEDE: :SUPERSEDE
             RENEWAL: :RENEWAL
 
-            def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::Transition::type_]
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Transition::type_]
           end
 
           type future_invoice_behavior =
             {
-              trueup: MetronomeSDK::V1::ContractCreateParams::Transition::FutureInvoiceBehavior::trueup?
+              trueup: MetronomeSDK::Models::V1::ContractCreateParams::Transition::FutureInvoiceBehavior::trueup?
             }
 
           class FutureInvoiceBehavior < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor trueup: MetronomeSDK::V1::ContractCreateParams::Transition::FutureInvoiceBehavior::trueup?
+            attr_accessor trueup: MetronomeSDK::Models::V1::ContractCreateParams::Transition::FutureInvoiceBehavior::trueup?
 
             def initialize: (
-              ?trueup: MetronomeSDK::V1::ContractCreateParams::Transition::FutureInvoiceBehavior::trueup?
+              ?trueup: MetronomeSDK::Models::V1::ContractCreateParams::Transition::FutureInvoiceBehavior::trueup?
             ) -> void
+
+            def to_hash: -> {
+              trueup: MetronomeSDK::Models::V1::ContractCreateParams::Transition::FutureInvoiceBehavior::trueup?
+            }
 
             type trueup = :REMOVE | :AS_IS
 
@@ -2238,42 +3091,78 @@ module MetronomeSDK
               REMOVE: :REMOVE
               AS_IS: :AS_IS
 
-              def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::Transition::FutureInvoiceBehavior::trueup]
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Transition::FutureInvoiceBehavior::trueup]
             end
           end
         end
 
+        type usage_filter =
+          {
+            group_key: String,
+            group_values: ::Array[String],
+            starting_at: Time
+          }
+
+        class UsageFilter < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor group_key: String
+
+          attr_accessor group_values: ::Array[String]
+
+          attr_reader starting_at: Time?
+
+          def starting_at=: (Time) -> Time
+
+          def initialize: (
+            group_key: String,
+            group_values: ::Array[String],
+            ?starting_at: Time
+          ) -> void
+
+          def to_hash: -> {
+            group_key: String,
+            group_values: ::Array[String],
+            starting_at: Time
+          }
+        end
+
         type usage_statement_schedule =
           {
-            frequency: MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule::frequency,
+            frequency: MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule::frequency,
             billing_anchor_date: Time,
-            day: MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule::day,
+            day: MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule::day,
             invoice_generation_starting_at: Time
           }
 
         class UsageStatementSchedule < MetronomeSDK::Internal::Type::BaseModel
-          attr_accessor frequency: MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule::frequency
+          attr_accessor frequency: MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule::frequency
 
           attr_reader billing_anchor_date: Time?
 
           def billing_anchor_date=: (Time) -> Time
 
-          attr_reader day: MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule::day?
+          attr_reader day: MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule::day?
 
           def day=: (
-            MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule::day
-          ) -> MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule::day
+            MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule::day
+          ) -> MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule::day
 
           attr_reader invoice_generation_starting_at: Time?
 
           def invoice_generation_starting_at=: (Time) -> Time
 
           def initialize: (
-            frequency: MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule::frequency,
+            frequency: MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule::frequency,
             ?billing_anchor_date: Time,
-            ?day: MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule::day,
+            ?day: MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule::day,
             ?invoice_generation_starting_at: Time
           ) -> void
+
+          def to_hash: -> {
+            frequency: MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule::frequency,
+            billing_anchor_date: Time,
+            day: MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule::day,
+            invoice_generation_starting_at: Time
+          }
 
           type frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
 
@@ -2285,7 +3174,7 @@ module MetronomeSDK
             ANNUAL: :ANNUAL
             WEEKLY: :WEEKLY
 
-            def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule::frequency]
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule::frequency]
           end
 
           type day = :FIRST_OF_MONTH | :CONTRACT_START | :CUSTOM_DATE
@@ -2297,7 +3186,7 @@ module MetronomeSDK
             CONTRACT_START: :CONTRACT_START
             CUSTOM_DATE: :CUSTOM_DATE
 
-            def self?.values: -> ::Array[MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule::day]
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule::day]
           end
         end
       end

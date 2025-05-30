@@ -16,11 +16,11 @@ module MetronomeSDK
         #
         # @param starting_on [Time] Body param:
         #
-        # @param window_size [Symbol, MetronomeSDK::V1::UsageListParams::WindowSize] Body param: A window_size of "day" or "hour" will return the usage for the speci
+        # @param window_size [Symbol, MetronomeSDK::Models::V1::UsageListParams::WindowSize] Body param: A window_size of "day" or "hour" will return the usage for the speci
         #
         # @param next_page [String] Query param: Cursor that indicates where the next page of results should start.
         #
-        # @param billable_metrics [Array<MetronomeSDK::V1::UsageListParams::BillableMetric>] Body param: A list of billable metrics to fetch usage for. If absent, all billab
+        # @param billable_metrics [Array<MetronomeSDK::Models::V1::UsageListParams::BillableMetric>] Body param: A list of billable metrics to fetch usage for. If absent, all billab
         #
         # @param customer_ids [Array<String>] Body param: A list of Metronome customer IDs to fetch usage for. If absent, usag
         #
@@ -50,7 +50,7 @@ module MetronomeSDK
         #
         # @overload ingest(usage: nil, request_options: {})
         #
-        # @param usage [Array<MetronomeSDK::V1::UsageIngestParams::Usage>]
+        # @param usage [Array<MetronomeSDK::Models::V1::UsageIngestParams::Usage>]
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [nil]
@@ -79,7 +79,7 @@ module MetronomeSDK
         #
         # @param customer_id [String] Body param:
         #
-        # @param window_size [Symbol, MetronomeSDK::V1::UsageListWithGroupsParams::WindowSize] Body param: A window_size of "day" or "hour" will return the usage for the speci
+        # @param window_size [Symbol, MetronomeSDK::Models::V1::UsageListWithGroupsParams::WindowSize] Body param: A window_size of "day" or "hour" will return the usage for the speci
         #
         # @param limit [Integer] Query param: Max number of results that should be returned
         #
@@ -89,7 +89,7 @@ module MetronomeSDK
         #
         # @param ending_before [Time] Body param:
         #
-        # @param group_by [MetronomeSDK::V1::UsageListWithGroupsParams::GroupBy] Body param:
+        # @param group_by [MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy] Body param:
         #
         # @param starting_on [Time] Body param:
         #

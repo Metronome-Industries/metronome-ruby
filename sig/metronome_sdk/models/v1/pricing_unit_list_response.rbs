@@ -18,6 +18,8 @@ module MetronomeSDK
         def name=: (String) -> String
 
         def initialize: (?id: String, ?is_currency: bool, ?name: String) -> void
+
+        def to_hash: -> { id: String, is_currency: bool, name: String }
       end
     end
   end

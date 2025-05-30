@@ -18,25 +18,25 @@ module MetronomeSDK
         #
         # Create a new contract
         #
-        # @overload create(customer_id:, starting_at:, billing_provider_configuration: nil, commits: nil, credits: nil, custom_fields: nil, discounts: nil, ending_before: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, overrides: nil, prepaid_balance_threshold_configuration: nil, professional_services: nil, rate_card_alias: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, salesforce_opportunity_id: nil, scheduled_charges: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, total_contract_value: nil, transition: nil, uniqueness_key: nil, usage_filter: nil, usage_statement_schedule: nil, request_options: {})
+        # @overload create(customer_id:, starting_at:, billing_provider_configuration: nil, commits: nil, credits: nil, custom_fields: nil, discounts: nil, ending_before: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, overrides: nil, prepaid_balance_threshold_configuration: nil, professional_services: nil, rate_card_alias: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, salesforce_opportunity_id: nil, scheduled_charges: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, total_contract_value: nil, transition: nil, uniqueness_key: nil, usage_filter: nil, usage_statement_schedule: nil, request_options: {})
         #
         # @param customer_id [String]
         #
         # @param starting_at [Time] inclusive contract start time
         #
-        # @param billing_provider_configuration [MetronomeSDK::V1::ContractCreateParams::BillingProviderConfiguration] The billing provider configuration associated with a contract.
+        # @param billing_provider_configuration [MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration] The billing provider configuration associated with a contract.
         #
-        # @param commits [Array<MetronomeSDK::V1::ContractCreateParams::Commit>]
+        # @param commits [Array<MetronomeSDK::Models::V1::ContractCreateParams::Commit>]
         #
-        # @param credits [Array<MetronomeSDK::V1::ContractCreateParams::Credit>]
+        # @param credits [Array<MetronomeSDK::Models::V1::ContractCreateParams::Credit>]
         #
         # @param custom_fields [Hash{Symbol=>String}]
         #
-        # @param discounts [Array<MetronomeSDK::V1::ContractCreateParams::Discount>] This field's availability is dependent on your client's configuration.
+        # @param discounts [Array<MetronomeSDK::Models::V1::ContractCreateParams::Discount>] This field's availability is dependent on your client's configuration.
         #
         # @param ending_before [Time] exclusive contract end time
         #
-        # @param multiplier_override_prioritization [Symbol, MetronomeSDK::V1::ContractCreateParams::MultiplierOverridePrioritization] Defaults to LOWEST_MULTIPLIER, which applies the greatest discount to list price
+        # @param multiplier_override_prioritization [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::MultiplierOverridePrioritization] Defaults to LOWEST_MULTIPLIER, which applies the greatest discount to list price
         #
         # @param name [String]
         #
@@ -44,39 +44,41 @@ module MetronomeSDK
         #
         # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
         #
-        # @param overrides [Array<MetronomeSDK::V1::ContractCreateParams::Override>]
+        # @param overrides [Array<MetronomeSDK::Models::V1::ContractCreateParams::Override>]
         #
-        # @param prepaid_balance_threshold_configuration [MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration]
+        # @param prepaid_balance_threshold_configuration [MetronomeSDK::Models::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration]
         #
-        # @param professional_services [Array<MetronomeSDK::V1::ContractCreateParams::ProfessionalService>] This field's availability is dependent on your client's configuration.
+        # @param professional_services [Array<MetronomeSDK::Models::V1::ContractCreateParams::ProfessionalService>] This field's availability is dependent on your client's configuration.
         #
         # @param rate_card_alias [String] Selects the rate card linked to the specified alias as of the contract's start d
         #
         # @param rate_card_id [String]
         #
-        # @param recurring_commits [Array<MetronomeSDK::V1::ContractCreateParams::RecurringCommit>]
+        # @param recurring_commits [Array<MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit>]
         #
-        # @param recurring_credits [Array<MetronomeSDK::V1::ContractCreateParams::RecurringCredit>]
+        # @param recurring_credits [Array<MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit>]
         #
-        # @param reseller_royalties [Array<MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty>] This field's availability is dependent on your client's configuration.
+        # @param reseller_royalties [Array<MetronomeSDK::Models::V1::ContractCreateParams::ResellerRoyalty>] This field's availability is dependent on your client's configuration.
         #
         # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
         #
-        # @param scheduled_charges [Array<MetronomeSDK::V1::ContractCreateParams::ScheduledCharge>]
+        # @param scheduled_charges [Array<MetronomeSDK::Models::V1::ContractCreateParams::ScheduledCharge>]
         #
-        # @param scheduled_charges_on_usage_invoices [Symbol, MetronomeSDK::V1::ContractCreateParams::ScheduledChargesOnUsageInvoices] Determines which scheduled and commit charges to consolidate onto the Contract's
+        # @param scheduled_charges_on_usage_invoices [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::ScheduledChargesOnUsageInvoices] Determines which scheduled and commit charges to consolidate onto the Contract's
         #
-        # @param spend_threshold_configuration [MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration]
+        # @param spend_threshold_configuration [MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration]
+        #
+        # @param subscriptions [Array<MetronomeSDK::Models::V1::ContractCreateParams::Subscription>] (beta) Optional list of [subscriptions](https://docs.metronome.com/manage-produc
         #
         # @param total_contract_value [Float] This field's availability is dependent on your client's configuration.
         #
-        # @param transition [MetronomeSDK::V1::ContractCreateParams::Transition]
+        # @param transition [MetronomeSDK::Models::V1::ContractCreateParams::Transition]
         #
         # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made wit
         #
-        # @param usage_filter [MetronomeSDK::BaseUsageFilter]
+        # @param usage_filter [MetronomeSDK::Models::V1::ContractCreateParams::UsageFilter]
         #
-        # @param usage_statement_schedule [MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule]
+        # @param usage_statement_schedule [MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule]
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -214,25 +216,25 @@ module MetronomeSDK
         #
         # @param starting_at [Time] inclusive start time for the amendment
         #
-        # @param commits [Array<MetronomeSDK::V1::ContractAmendParams::Commit>]
+        # @param commits [Array<MetronomeSDK::Models::V1::ContractAmendParams::Commit>]
         #
-        # @param credits [Array<MetronomeSDK::V1::ContractAmendParams::Credit>]
+        # @param credits [Array<MetronomeSDK::Models::V1::ContractAmendParams::Credit>]
         #
         # @param custom_fields [Hash{Symbol=>String}]
         #
-        # @param discounts [Array<MetronomeSDK::V1::ContractAmendParams::Discount>] This field's availability is dependent on your client's configuration.
+        # @param discounts [Array<MetronomeSDK::Models::V1::ContractAmendParams::Discount>] This field's availability is dependent on your client's configuration.
         #
         # @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
         #
-        # @param overrides [Array<MetronomeSDK::V1::ContractAmendParams::Override>]
+        # @param overrides [Array<MetronomeSDK::Models::V1::ContractAmendParams::Override>]
         #
-        # @param professional_services [Array<MetronomeSDK::V1::ContractAmendParams::ProfessionalService>] This field's availability is dependent on your client's configuration.
+        # @param professional_services [Array<MetronomeSDK::Models::V1::ContractAmendParams::ProfessionalService>] This field's availability is dependent on your client's configuration.
         #
-        # @param reseller_royalties [Array<MetronomeSDK::V1::ContractAmendParams::ResellerRoyalty>] This field's availability is dependent on your client's configuration.
+        # @param reseller_royalties [Array<MetronomeSDK::Models::V1::ContractAmendParams::ResellerRoyalty>] This field's availability is dependent on your client's configuration.
         #
         # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
         #
-        # @param scheduled_charges [Array<MetronomeSDK::V1::ContractAmendParams::ScheduledCharge>]
+        # @param scheduled_charges [Array<MetronomeSDK::Models::V1::ContractAmendParams::ScheduledCharge>]
         #
         # @param total_contract_value [Float] This field's availability is dependent on your client's configuration.
         #
@@ -285,7 +287,7 @@ module MetronomeSDK
         #
         # @overload create_historical_invoices(invoices:, preview:, request_options: {})
         #
-        # @param invoices [Array<MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice>]
+        # @param invoices [Array<MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice>]
         # @param preview [Boolean]
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -363,7 +365,7 @@ module MetronomeSDK
         #
         # @param at [Time] Body param: optional timestamp which overlaps with the returned rate schedule se
         #
-        # @param selectors [Array<MetronomeSDK::V1::ContractRetrieveRateScheduleParams::Selector>] Body param: List of rate selectors, rates matching ANY of the selectors will be
+        # @param selectors [Array<MetronomeSDK::Models::V1::ContractRetrieveRateScheduleParams::Selector>] Body param: List of rate selectors, rates matching ANY of the selectors will be
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -383,6 +385,31 @@ module MetronomeSDK
           )
         end
 
+        # Fetch the quantity and price for a subscription over time. End-point does not
+        # return future scheduled changes.
+        #
+        # @overload retrieve_subscription_quantity_history(contract_id:, customer_id:, subscription_id:, request_options: {})
+        #
+        # @param contract_id [String]
+        # @param customer_id [String]
+        # @param subscription_id [String]
+        # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse]
+        #
+        # @see MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryParams
+        def retrieve_subscription_quantity_history(params)
+          parsed, options =
+            MetronomeSDK::V1::ContractRetrieveSubscriptionQuantityHistoryParams.dump_request(params)
+          @client.request(
+            method: :post,
+            path: "v1/contracts/getSubscriptionQuantityHistory",
+            body: parsed,
+            model: MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse,
+            options: options
+          )
+        end
+
         # Create a new scheduled invoice for Professional Services terms on a contract.
         # This endpoint's availability is dependent on your client's configuration.
         #
@@ -394,7 +421,7 @@ module MetronomeSDK
         #
         # @param issued_at [Time] The date the invoice is issued
         #
-        # @param line_items [Array<MetronomeSDK::V1::ContractScheduleProServicesInvoiceParams::LineItem>] Each line requires an amount or both unit_price and quantity.
+        # @param line_items [Array<MetronomeSDK::Models::V1::ContractScheduleProServicesInvoiceParams::LineItem>] Each line requires an amount or both unit_price and quantity.
         #
         # @param netsuite_invoice_header_end [Time] The end date of the invoice header in Netsuite
         #

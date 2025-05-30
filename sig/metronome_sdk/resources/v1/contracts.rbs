@@ -33,10 +33,11 @@ module MetronomeSDK
           ?scheduled_charges: ::Array[MetronomeSDK::V1::ContractCreateParams::ScheduledCharge],
           ?scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::ContractCreateParams::scheduled_charges_on_usage_invoices,
           ?spend_threshold_configuration: MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration,
+          ?subscriptions: ::Array[MetronomeSDK::V1::ContractCreateParams::Subscription],
           ?total_contract_value: Float,
           ?transition: MetronomeSDK::V1::ContractCreateParams::Transition,
           ?uniqueness_key: String,
-          ?usage_filter: MetronomeSDK::BaseUsageFilter,
+          ?usage_filter: MetronomeSDK::V1::ContractCreateParams::UsageFilter,
           ?usage_statement_schedule: MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule,
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V1::ContractCreateResponse
@@ -124,6 +125,13 @@ module MetronomeSDK
           ?selectors: ::Array[MetronomeSDK::V1::ContractRetrieveRateScheduleParams::Selector],
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse
+
+        def retrieve_subscription_quantity_history: (
+          contract_id: String,
+          customer_id: String,
+          subscription_id: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse
 
         def schedule_pro_services_invoice: (
           contract_id: String,

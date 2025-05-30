@@ -16,7 +16,7 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::ID
+        data: MetronomeSDK::Models::V1::ContractCreateResponse::Data
       }
     end
   end
@@ -82,7 +82,7 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::ID
+        data: MetronomeSDK::Models::V1::ContractAmendResponse::Data
       }
     end
   end
@@ -101,7 +101,7 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::ID
+        data: MetronomeSDK::Models::V1::ContractArchiveResponse::Data
       }
     end
   end
@@ -135,7 +135,7 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice])
+        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data])
       }
     end
   end
@@ -174,6 +174,25 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
     end
   end
 
+  def test_retrieve_subscription_quantity_history_required_params
+    response =
+      @metronome.v1.contracts.retrieve_subscription_quantity_history(
+        contract_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
+        customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+        subscription_id: "1a824d53-bde6-4d82-96d7-6347ff227d5c"
+      )
+
+    assert_pattern do
+      response => MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data
+      }
+    end
+  end
+
   def test_schedule_pro_services_invoice_required_params
     response =
       @metronome.v1.contracts.schedule_pro_services_invoice(
@@ -189,7 +208,7 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice])
+        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::ContractScheduleProServicesInvoiceResponse::Data])
       }
     end
   end
@@ -222,7 +241,7 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::ID
+        data: MetronomeSDK::Models::V1::ContractUpdateEndDateResponse::Data
       }
     end
   end

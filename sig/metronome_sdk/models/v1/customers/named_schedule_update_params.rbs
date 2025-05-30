@@ -36,6 +36,15 @@ module MetronomeSDK
             ?ending_before: Time,
             ?request_options: MetronomeSDK::request_opts
           ) -> void
+
+          def to_hash: -> {
+            customer_id: String,
+            schedule_name: String,
+            starting_at: Time,
+            value: top,
+            ending_before: Time,
+            request_options: MetronomeSDK::RequestOptions
+          }
         end
       end
     end

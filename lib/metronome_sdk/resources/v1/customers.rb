@@ -34,11 +34,11 @@ module MetronomeSDK
         #
         # @param name [String] This will be truncated to 160 characters if the provided name is longer.
         #
-        # @param billing_config [MetronomeSDK::V1::CustomerCreateParams::BillingConfig]
+        # @param billing_config [MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig]
         #
         # @param custom_fields [Hash{Symbol=>String}]
         #
-        # @param customer_billing_provider_configurations [Array<MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration>]
+        # @param customer_billing_provider_configurations [Array<MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration>]
         #
         # @param external_id [String] (deprecated, use ingest_aliases instead) an alias that can be used to refer to t
         #
@@ -105,7 +105,7 @@ module MetronomeSDK
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [MetronomeSDK::Internal::CursorPage<MetronomeSDK::V1::CustomerDetail>]
+        # @return [MetronomeSDK::Internal::CursorPage<MetronomeSDK::Models::V1::CustomerListResponse>]
         #
         # @see MetronomeSDK::Models::V1::CustomerListParams
         def list(params = {})
@@ -115,12 +115,13 @@ module MetronomeSDK
             path: "v1/customers",
             query: parsed,
             page: MetronomeSDK::Internal::CursorPage,
-            model: MetronomeSDK::V1::CustomerDetail,
+            model: MetronomeSDK::Models::V1::CustomerListResponse,
             options: options
           )
         end
 
-        # Archive a customer
+        # Archive a customer Note: any alerts associated with the customer will not be
+        # triggered.
         #
         # @overload archive(id:, request_options: {})
         #

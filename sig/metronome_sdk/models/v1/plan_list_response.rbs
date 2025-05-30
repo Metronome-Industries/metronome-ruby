@@ -26,6 +26,13 @@ module MetronomeSDK
           name: String,
           ?custom_fields: ::Hash[Symbol, String]
         ) -> void
+
+        def to_hash: -> {
+          id: String,
+          description: String,
+          name: String,
+          custom_fields: ::Hash[Symbol, String]
+        }
       end
     end
   end

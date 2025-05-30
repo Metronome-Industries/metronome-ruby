@@ -59,7 +59,7 @@ module MetronomeSDK
           #   Invoice sort order by issued_at, e.g. date_asc or date_desc. Defaults to
           #   date_asc.
           #
-          #   @return [Symbol, MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::Sort, nil]
+          #   @return [Symbol, MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::Sort, nil]
           optional :sort, enum: -> { MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::Sort }
 
           # @!attribute status
@@ -71,7 +71,7 @@ module MetronomeSDK
           # @!attribute window_size
           #   The granularity of the breakdowns to return. Defaults to day.
           #
-          #   @return [Symbol, MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::WindowSize, nil]
+          #   @return [Symbol, MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::WindowSize, nil]
           optional :window_size,
                    enum: -> {
                      MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::WindowSize
@@ -96,11 +96,11 @@ module MetronomeSDK
           #
           #   @param skip_zero_qty_line_items [Boolean] If set, all zero quantity line items will be filtered out of the response
           #
-          #   @param sort [Symbol, MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::Sort] Invoice sort order by issued_at, e.g. date_asc or date_desc. Defaults to date_a
+          #   @param sort [Symbol, MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::Sort] Invoice sort order by issued_at, e.g. date_asc or date_desc. Defaults to date_a
           #
           #   @param status [String] Invoice status, e.g. DRAFT or FINALIZED
           #
-          #   @param window_size [Symbol, MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::WindowSize] The granularity of the breakdowns to return. Defaults to day.
+          #   @param window_size [Symbol, MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::WindowSize] The granularity of the breakdowns to return. Defaults to day.
           #
           #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 

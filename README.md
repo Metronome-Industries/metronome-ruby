@@ -1,6 +1,6 @@
 # Metronome Ruby API library
 
-The Metronome Ruby library provides convenient access to the Metronome REST API from any Ruby 3.2.0+ application.
+The Metronome Ruby library provides convenient access to the Metronome REST API from any Ruby 3.2.0+ application. It ships with comprehensive types & docstrings in Yard, RBS, and RBI – [see below](https://github.com/Metronome-Industries/metronome-ruby#Sorbet) for usage with Sorbet. The standard library's `net/http` is used as the HTTP transport, with connection pooling via the `connection_pool` gem.
 
 It is generated with [Stainless](https://www.stainless.com/).
 
@@ -17,7 +17,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "metronome-sdk", "~> 0.1.0.pre.alpha.2"
+gem "metronome-sdk", "~> 0.1.0.pre.alpha.3"
 ```
 
 <!-- x-release-please-end -->
@@ -47,26 +47,6 @@ result = metronome.v1.usage.ingest(
 puts(result)
 ```
 
-## Sorbet
-
-This library is written with [Sorbet type definitions](https://sorbet.org/docs/rbi). However, there is no runtime dependency on the `sorbet-runtime`.
-
-When using sorbet, it is recommended to use model classes as below. This provides stronger type checking and tooling integration.
-
-```ruby
-metronome.v1.usage.ingest(
-  usage: [
-    MetronomeSDK::V1::UsageIngestParams::Usage.new(
-      transaction_id: "90e9401f-0f8c-4cd3-9a9f-d6beb56d8d72",
-      customer_id: "team@example.com",
-      event_type: "heartbeat",
-      timestamp: "2024-01-01T00:00:00Z",
-      properties: {cluster_id: "42", cpu_seconds: 60, region: "Europe"}
-    )
-  ]
-)
-```
-
 ### Pagination
 
 List methods in the Metronome API are paginated.
@@ -86,7 +66,16 @@ page.auto_paging_each do |product|
 end
 ```
 
-### Errors
+Alternatively, you can use the `#next_page?` and `#next_page` methods for more granular control working with pages.
+
+```ruby
+if page.next_page?
+  new_page = page.next_page
+  puts(new_page.data[0].id)
+end
+```
+
+### Handling errors
 
 When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `MetronomeSDK::Errors::APIError` will be thrown:
 
@@ -96,8 +85,14 @@ begin
     customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
     starting_at: "2020-01-01T00:00:00.000Z"
   )
-rescue MetronomeSDK::Errors::APIError => e
-  puts(e.status) # 400
+rescue MetronomeSDK::Errors::APIConnectionError => e
+  puts("The server could not be reached")
+  puts(e.cause)  # an underlying Exception, likely raised within `net/http`
+rescue MetronomeSDK::Errors::RateLimitError => e
+  puts("A 429 status code was received; we should back off a bit.")
+rescue MetronomeSDK::Errors::APIStatusError => e
+  puts("Another non-200-range status code was received")
+  puts(e.status)
 end
 ```
 
@@ -141,11 +136,7 @@ metronome.v1.contracts.create(
 
 ### Timeouts
 
-By default, requests will time out after 60 seconds.
-
-Timeouts are applied separately to the initial connection and the overall request time, so in some cases a request could wait 2\*timeout seconds before it fails.
-
-You can use the `timeout` option to configure or disable this:
+By default, requests will time out after 60 seconds. You can use the timeout option to configure or disable this:
 
 ```ruby
 # Configure the default for all requests:
@@ -161,17 +152,83 @@ metronome.v1.contracts.create(
 )
 ```
 
-## Model DSL
+On timeout, `MetronomeSDK::Errors::APITimeoutError` is raised.
 
-This library uses a simple DSL to represent request parameters and response shapes in `lib/metronome_sdk/models`.
+Note that requests that time out are retried by default.
 
-With the right [editor plugins](https://shopify.github.io/ruby-lsp), you can ctrl-click on elements of the DSL to navigate around and explore the library.
+## Advanced concepts
 
-In all places where a `BaseModel` type is specified, vanilla Ruby `Hash` can also be used. For example, the following are interchangeable as arguments:
+### BaseModel
+
+All parameter and response objects inherit from `MetronomeSDK::Internal::Type::BaseModel`, which provides several conveniences, including:
+
+1. All fields, including unknown ones, are accessible with `obj[:prop]` syntax, and can be destructured with `obj => {prop: prop}` or pattern-matching syntax.
+
+2. Structural equivalence for equality; if two API calls return the same values, comparing the responses with == will return true.
+
+3. Both instances and the classes themselves can be pretty-printed.
+
+4. Helpers such as `#to_h`, `#deep_to_h`, `#to_json`, and `#to_yaml`.
+
+### Making custom or undocumented requests
+
+#### Undocumented properties
+
+You can send undocumented parameters to any endpoint, and read undocumented response properties, like so:
+
+Note: the `extra_` parameters of the same name overrides the documented parameters.
 
 ```ruby
-# This has tooling readability, for auto-completion, static analysis, and goto definition with supported language services
-params = MetronomeSDK::Models::V1::UsageIngestParams.new(
+contract =
+  metronome.v1.contracts.create(
+    customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+    starting_at: "2020-01-01T00:00:00.000Z",
+    request_options: {
+      extra_query: {my_query_parameter: value},
+      extra_body: {my_body_parameter: value},
+      extra_headers: {"my-header": value}
+    }
+  )
+
+puts(contract[:my_undocumented_property])
+```
+
+#### Undocumented request params
+
+If you want to explicitly send an extra param, you can do so with the `extra_query`, `extra_body`, and `extra_headers` under the `request_options:` parameter when making a request, as seen in the examples above.
+
+#### Undocumented endpoints
+
+To make requests to undocumented endpoints while retaining the benefit of auth, retries, and so on, you can make requests using `client.request`, like so:
+
+```ruby
+response = client.request(
+  method: :post,
+  path: '/undocumented/endpoint',
+  query: {"dog": "woof"},
+  headers: {"useful-header": "interesting-value"},
+  body: {"hello": "world"}
+)
+```
+
+### Concurrency & connection pooling
+
+The `MetronomeSDK::Client` instances are threadsafe, but are only are fork-safe when there are no in-flight HTTP requests.
+
+Each instance of `MetronomeSDK::Client` has its own HTTP connection pool with a default size of 99. As such, we recommend instantiating the client once per application in most settings.
+
+When all available connections from the pool are checked out, requests wait for a new connection to become available, with queue time counting towards the request timeout.
+
+Unless otherwise specified, other classes in the SDK do not have locks protecting their underlying data structure.
+
+## Sorbet
+
+This library provides comprehensive [RBI](https://sorbet.org/docs/rbi) definitions, and has no dependency on sorbet-runtime.
+
+You can provide typesafe request parameters like so:
+
+```ruby
+metronome.v1.usage.ingest(
   usage: [
     MetronomeSDK::V1::UsageIngestParams::Usage.new(
       transaction_id: "90e9401f-0f8c-4cd3-9a9f-d6beb56d8d72",
@@ -182,9 +239,13 @@ params = MetronomeSDK::Models::V1::UsageIngestParams.new(
     )
   ]
 )
+```
 
-# This also works
-params = {
+Or, equivalently:
+
+```ruby
+# Hashes work, but are not typesafe:
+metronome.v1.usage.ingest(
   usage: [
     {
       transaction_id: "90e9401f-0f8c-4cd3-9a9f-d6beb56d8d72",
@@ -194,53 +255,10 @@ params = {
       properties: {cluster_id: "42", cpu_seconds: 60, region: "Europe"}
     }
   ]
-}
-```
-
-## Editor support
-
-A combination of [Shopify LSP](https://shopify.github.io/ruby-lsp) and [Solargraph](https://solargraph.org/) is recommended for non-[Sorbet](https://sorbet.org) users. The former is especially good at go to definition, while the latter has much better auto-completion support.
-
-## Advanced concepts
-
-### Making custom/undocumented requests
-
-#### Undocumented request params
-
-If you want to explicitly send an extra param, you can do so with the `extra_query`, `extra_body`, and `extra_headers` under the `request_options:` parameter when making a requests as seen in examples above.
-
-#### Undocumented endpoints
-
-To make requests to undocumented endpoints, you can make requests using `client.request`. Options on the client will be respected (such as retries) when making this request.
-
-```ruby
-response = client.request(
-  method: :post,
-  path: '/undocumented/endpoint',
-  query: {"dog": "woof"},
-  headers: {"useful-header": "interesting-value"},
-  body: {"he": "llo"},
 )
-```
 
-### Concurrency & connection pooling
-
-The `MetronomeSDK::Client` instances are thread-safe, and should be re-used across multiple threads. By default, each `Client` have their own HTTP connection pool, with a maximum number of connections equal to thread count.
-
-When the maximum number of connections has been checked out from the connection pool, the `Client` will wait for an in use connection to become available. The queue time for this mechanism is accounted for by the per-request timeout.
-
-Unless otherwise specified, other classes in the SDK do not have locks protecting their underlying data structure.
-
-Currently, `MetronomeSDK::Client` instances are only fork-safe if there are no in-flight HTTP requests.
-
-### Sorbet
-
-#### Argument passing trick
-
-It is possible to pass a compatible model / parameter class to a method that expects keyword arguments by using the `**` splat operator.
-
-```ruby
-params = MetronomeSDK::Models::V1::UsageIngestParams.new(
+# You can also splat a full Params class:
+params = MetronomeSDK::V1::UsageIngestParams.new(
   usage: [
     MetronomeSDK::V1::UsageIngestParams::Usage.new(
       transaction_id: "90e9401f-0f8c-4cd3-9a9f-d6beb56d8d72",
@@ -252,6 +270,34 @@ params = MetronomeSDK::Models::V1::UsageIngestParams.new(
   ]
 )
 metronome.v1.usage.ingest(**params)
+```
+
+### Enums
+
+Since this library does not depend on `sorbet-runtime`, it cannot provide [`T::Enum`](https://sorbet.org/docs/tenum) instances. Instead, we provide "tagged symbols" instead, which is always a primitive at runtime:
+
+```ruby
+# :low_credit_balance_reached
+puts(MetronomeSDK::V1::AlertCreateParams::AlertType::LOW_CREDIT_BALANCE_REACHED)
+
+# Revealed type: `T.all(MetronomeSDK::V1::AlertCreateParams::AlertType, Symbol)`
+T.reveal_type(MetronomeSDK::V1::AlertCreateParams::AlertType::LOW_CREDIT_BALANCE_REACHED)
+```
+
+Enum parameters have a "relaxed" type, so you can either pass in enum constants or their literal value:
+
+```ruby
+# Using the enum constants preserves the tagged type information:
+metronome.v1.alerts.create(
+  alert_type: MetronomeSDK::V1::AlertCreateParams::AlertType::LOW_CREDIT_BALANCE_REACHED,
+  # …
+)
+
+# Literal values are also permissible:
+metronome.v1.alerts.create(
+  alert_type: :low_credit_balance_reached,
+  # …
+)
 ```
 
 ## Versioning

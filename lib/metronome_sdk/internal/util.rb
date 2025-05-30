@@ -9,6 +9,23 @@ module MetronomeSDK
       # @return [Float]
       def self.monotonic_secs = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 
+      # @api private
+      #
+      # @param ns [Module, Class]
+      #
+      # @return [Enumerable<Module, Class>]
+      def self.walk_namespaces(ns)
+        ns.constants(false).lazy.flat_map do
+          case (c = ns.const_get(_1, false))
+          in Module | Class
+            walk_namespaces(c)
+          else
+            []
+          end
+        end
+          .chain([ns])
+      end
+
       class << self
         # @api private
         #
@@ -583,11 +600,13 @@ module MetronomeSDK
         #
         # @return [Object]
         def encode_content(headers, body)
+          # rubocop:disable Style/CaseEquality
+          # rubocop:disable Layout/LineLength
           content_type = headers["content-type"]
           case [content_type, body]
           in [MetronomeSDK::Internal::Util::JSON_CONTENT, Hash | Array | -> { primitive?(_1) }]
             [headers, JSON.generate(body)]
-          in [MetronomeSDK::Internal::Util::JSONL_CONTENT, Enumerable] unless body.is_a?(MetronomeSDK::Internal::Type::FileInput)
+          in [MetronomeSDK::Internal::Util::JSONL_CONTENT, Enumerable] unless MetronomeSDK::Internal::Type::FileInput === body
             [headers, body.lazy.map { JSON.generate(_1) }]
           in [%r{^multipart/form-data}, Hash | MetronomeSDK::Internal::Type::FileInput]
             boundary, strio = encode_multipart_streaming(body)
@@ -602,6 +621,8 @@ module MetronomeSDK
           else
             [headers, body]
           end
+          # rubocop:enable Layout/LineLength
+          # rubocop:enable Style/CaseEquality
         end
 
         # @api private
@@ -829,8 +850,40 @@ module MetronomeSDK
         # @api private
         #
         # @param name [Symbol]
+        #
+        # @return [Boolean]
+        def sorbet_constant_defined?(name) = sorbet_runtime_constants.key?(name)
+
+        # @api private
+        #
+        # @param name [Symbol]
         # @param blk [Proc]
         def define_sorbet_constant!(name, &blk) = sorbet_runtime_constants.store(name, blk)
+
+        # @api private
+        #
+        # @return [Object]
+        def to_sorbet_type = raise NotImplementedError
+
+        class << self
+          # @api private
+          #
+          # @param type [MetronomeSDK::Internal::Util::SorbetRuntimeSupport, Object]
+          #
+          # @return [Object]
+          def to_sorbet_type(type)
+            case type
+            in MetronomeSDK::Internal::Util::SorbetRuntimeSupport
+              type.to_sorbet_type
+            in Class | Module
+              type
+            in true | false
+              T::Boolean
+            else
+              type.class
+            end
+          end
+        end
       end
 
       extend MetronomeSDK::Internal::Util::SorbetRuntimeSupport
