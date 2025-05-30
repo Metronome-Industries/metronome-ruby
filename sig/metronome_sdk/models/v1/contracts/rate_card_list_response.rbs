@@ -12,7 +12,7 @@ module MetronomeSDK
             credit_type_conversions: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardListResponse::CreditTypeConversion],
             custom_fields: ::Hash[Symbol, String],
             description: String,
-            fiat_credit_type: MetronomeSDK::CreditTypeData
+            fiat_credit_type: MetronomeSDK::Models::V1::Contracts::RateCardListResponse::FiatCreditType
           }
 
         class RateCardListResponse < MetronomeSDK::Internal::Type::BaseModel
@@ -44,11 +44,11 @@ module MetronomeSDK
 
           def description=: (String) -> String
 
-          attr_reader fiat_credit_type: MetronomeSDK::CreditTypeData?
+          attr_reader fiat_credit_type: MetronomeSDK::Models::V1::Contracts::RateCardListResponse::FiatCreditType?
 
           def fiat_credit_type=: (
-            MetronomeSDK::CreditTypeData
-          ) -> MetronomeSDK::CreditTypeData
+            MetronomeSDK::Models::V1::Contracts::RateCardListResponse::FiatCreditType
+          ) -> MetronomeSDK::Models::V1::Contracts::RateCardListResponse::FiatCreditType
 
           def initialize: (
             id: String,
@@ -59,7 +59,7 @@ module MetronomeSDK
             ?credit_type_conversions: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardListResponse::CreditTypeConversion],
             ?custom_fields: ::Hash[Symbol, String],
             ?description: String,
-            ?fiat_credit_type: MetronomeSDK::CreditTypeData
+            ?fiat_credit_type: MetronomeSDK::Models::V1::Contracts::RateCardListResponse::FiatCreditType
           ) -> void
 
           def to_hash: -> {
@@ -71,7 +71,7 @@ module MetronomeSDK
             credit_type_conversions: ::Array[MetronomeSDK::Models::V1::Contracts::RateCardListResponse::CreditTypeConversion],
             custom_fields: ::Hash[Symbol, String],
             description: String,
-            fiat_credit_type: MetronomeSDK::CreditTypeData
+            fiat_credit_type: MetronomeSDK::Models::V1::Contracts::RateCardListResponse::FiatCreditType
           }
 
           type alias_ = { name: String, ending_before: Time, starting_at: Time }
@@ -102,24 +102,48 @@ module MetronomeSDK
 
           type credit_type_conversion =
             {
-              custom_credit_type: MetronomeSDK::CreditTypeData,
+              custom_credit_type: MetronomeSDK::Models::V1::Contracts::RateCardListResponse::CreditTypeConversion::CustomCreditType,
               fiat_per_custom_credit: String
             }
 
           class CreditTypeConversion < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor custom_credit_type: MetronomeSDK::CreditTypeData
+            attr_accessor custom_credit_type: MetronomeSDK::Models::V1::Contracts::RateCardListResponse::CreditTypeConversion::CustomCreditType
 
             attr_accessor fiat_per_custom_credit: String
 
             def initialize: (
-              custom_credit_type: MetronomeSDK::CreditTypeData,
+              custom_credit_type: MetronomeSDK::Models::V1::Contracts::RateCardListResponse::CreditTypeConversion::CustomCreditType,
               fiat_per_custom_credit: String
             ) -> void
 
             def to_hash: -> {
-              custom_credit_type: MetronomeSDK::CreditTypeData,
+              custom_credit_type: MetronomeSDK::Models::V1::Contracts::RateCardListResponse::CreditTypeConversion::CustomCreditType,
               fiat_per_custom_credit: String
             }
+
+            type custom_credit_type = { id: String, name: String }
+
+            class CustomCreditType < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor name: String
+
+              def initialize: (id: String, name: String) -> void
+
+              def to_hash: -> { id: String, name: String }
+            end
+          end
+
+          type fiat_credit_type = { id: String, name: String }
+
+          class FiatCreditType < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor name: String
+
+            def initialize: (id: String, name: String) -> void
+
+            def to_hash: -> { id: String, name: String }
           end
         end
       end

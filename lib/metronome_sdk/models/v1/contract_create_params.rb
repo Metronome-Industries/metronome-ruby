@@ -207,8 +207,8 @@ module MetronomeSDK
 
         # @!attribute usage_filter
         #
-        #   @return [MetronomeSDK::Models::BaseUsageFilter, nil]
-        optional :usage_filter, -> { MetronomeSDK::BaseUsageFilter }
+        #   @return [MetronomeSDK::Models::V1::ContractCreateParams::UsageFilter, nil]
+        optional :usage_filter, -> { MetronomeSDK::V1::ContractCreateParams::UsageFilter }
 
         # @!attribute usage_statement_schedule
         #
@@ -278,7 +278,7 @@ module MetronomeSDK
         #
         #   @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made wit
         #
-        #   @param usage_filter [MetronomeSDK::Models::BaseUsageFilter]
+        #   @param usage_filter [MetronomeSDK::Models::V1::ContractCreateParams::UsageFilter]
         #
         #   @param usage_statement_schedule [MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule]
         #
@@ -1617,8 +1617,11 @@ module MetronomeSDK
             # @!attribute tiers
             #   Only set for TIERED rate_type.
             #
-            #   @return [Array<MetronomeSDK::Models::Tier>, nil]
-            optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
+            #   @return [Array<MetronomeSDK::Models::V1::ContractCreateParams::Override::OverwriteRate::Tier>, nil]
+            optional :tiers,
+                     -> {
+                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier]
+                     }
 
             # @!method initialize(rate_type:, credit_type_id: nil, custom_rate: nil, is_prorated: nil, price: nil, quantity: nil, tiers: nil)
             #   Some parameter documentations has been truncated, see
@@ -1639,7 +1642,7 @@ module MetronomeSDK
             #
             #   @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
             #
-            #   @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
+            #   @param tiers [Array<MetronomeSDK::Models::V1::ContractCreateParams::Override::OverwriteRate::Tier>] Only set for TIERED rate_type.
 
             # @see MetronomeSDK::Models::V1::ContractCreateParams::Override::OverwriteRate#rate_type
             module RateType
@@ -1653,6 +1656,22 @@ module MetronomeSDK
 
               # @!method self.values
               #   @return [Array<Symbol>]
+            end
+
+            class Tier < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute price
+              #
+              #   @return [Float]
+              required :price, Float
+
+              # @!attribute size
+              #
+              #   @return [Float, nil]
+              optional :size, Float
+
+              # @!method initialize(price:, size: nil)
+              #   @param price [Float]
+              #   @param size [Float]
             end
           end
 
@@ -2039,7 +2058,9 @@ module MetronomeSDK
                    }
 
           # @!attribute commit_duration
-          #   The amount of time the created commits will be valid for.
+          #   Defines the length of the access schedule for each created commit/credit. The
+          #   value represents the number of units. Unit defaults to "PERIODS", where the
+          #   length of a period is determined by the recurrence_frequency.
           #
           #   @return [MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::CommitDuration]
           required :commit_duration,
@@ -2167,7 +2188,7 @@ module MetronomeSDK
           #
           #   @param access_amount [MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::AccessAmount] The amount of commit to grant.
           #
-          #   @param commit_duration [MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::CommitDuration] The amount of time the created commits will be valid for.
+          #   @param commit_duration [MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::CommitDuration] Defines the length of the access schedule for each created commit/credit. The va
           #
           #   @param priority [Float] Will be passed down to the individual commits
           #
@@ -2228,24 +2249,26 @@ module MetronomeSDK
 
           # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit#commit_duration
           class CommitDuration < MetronomeSDK::Internal::Type::BaseModel
-            # @!attribute unit
-            #
-            #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::CommitDuration::Unit]
-            required :unit,
-                     enum: -> {
-                       MetronomeSDK::V1::ContractCreateParams::RecurringCommit::CommitDuration::Unit
-                     }
-
             # @!attribute value
             #
             #   @return [Float]
             required :value, Float
 
-            # @!method initialize(unit:, value:)
-            #   The amount of time the created commits will be valid for.
+            # @!attribute unit
             #
-            #   @param unit [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::CommitDuration::Unit]
+            #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::CommitDuration::Unit, nil]
+            optional :unit,
+                     enum: -> {
+                       MetronomeSDK::V1::ContractCreateParams::RecurringCommit::CommitDuration::Unit
+                     }
+
+            # @!method initialize(value:, unit: nil)
+            #   Defines the length of the access schedule for each created commit/credit. The
+            #   value represents the number of units. Unit defaults to "PERIODS", where the
+            #   length of a period is determined by the recurrence_frequency.
+            #
             #   @param value [Float]
+            #   @param unit [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::CommitDuration::Unit]
 
             # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::CommitDuration#unit
             module Unit
@@ -2381,7 +2404,9 @@ module MetronomeSDK
                    }
 
           # @!attribute commit_duration
-          #   The amount of time the created commits will be valid for.
+          #   Defines the length of the access schedule for each created commit/credit. The
+          #   value represents the number of units. Unit defaults to "PERIODS", where the
+          #   length of a period is determined by the recurrence_frequency.
           #
           #   @return [MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::CommitDuration]
           required :commit_duration,
@@ -2500,7 +2525,7 @@ module MetronomeSDK
           #
           #   @param access_amount [MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::AccessAmount] The amount of commit to grant.
           #
-          #   @param commit_duration [MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::CommitDuration] The amount of time the created commits will be valid for.
+          #   @param commit_duration [MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::CommitDuration] Defines the length of the access schedule for each created commit/credit. The va
           #
           #   @param priority [Float] Will be passed down to the individual commits
           #
@@ -2559,24 +2584,26 @@ module MetronomeSDK
 
           # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit#commit_duration
           class CommitDuration < MetronomeSDK::Internal::Type::BaseModel
-            # @!attribute unit
-            #
-            #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::CommitDuration::Unit]
-            required :unit,
-                     enum: -> {
-                       MetronomeSDK::V1::ContractCreateParams::RecurringCredit::CommitDuration::Unit
-                     }
-
             # @!attribute value
             #
             #   @return [Float]
             required :value, Float
 
-            # @!method initialize(unit:, value:)
-            #   The amount of time the created commits will be valid for.
+            # @!attribute unit
             #
-            #   @param unit [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::CommitDuration::Unit]
+            #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::CommitDuration::Unit, nil]
+            optional :unit,
+                     enum: -> {
+                       MetronomeSDK::V1::ContractCreateParams::RecurringCredit::CommitDuration::Unit
+                     }
+
+            # @!method initialize(value:, unit: nil)
+            #   Defines the length of the access schedule for each created commit/credit. The
+            #   value represents the number of units. Unit defaults to "PERIODS", where the
+            #   length of a period is determined by the recurrence_frequency.
+            #
             #   @param value [Float]
+            #   @param unit [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::CommitDuration::Unit]
 
             # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::CommitDuration#unit
             module Unit
@@ -3478,6 +3505,28 @@ module MetronomeSDK
               #   @return [Array<Symbol>]
             end
           end
+        end
+
+        class UsageFilter < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute group_key
+          #
+          #   @return [String]
+          required :group_key, String
+
+          # @!attribute group_values
+          #
+          #   @return [Array<String>]
+          required :group_values, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+          # @!attribute starting_at
+          #
+          #   @return [Time, nil]
+          optional :starting_at, Time
+
+          # @!method initialize(group_key:, group_values:, starting_at: nil)
+          #   @param group_key [String]
+          #   @param group_values [Array<String>]
+          #   @param starting_at [Time]
         end
 
         class UsageStatementSchedule < MetronomeSDK::Internal::Type::BaseModel

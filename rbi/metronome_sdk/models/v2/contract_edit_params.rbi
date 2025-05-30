@@ -3294,10 +3294,25 @@ module MetronomeSDK
             attr_writer :quantity
 
             # Only set for TIERED rate_type.
-            sig { returns(T.nilable(T::Array[MetronomeSDK::Tier])) }
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier
+                  ]
+                )
+              )
+            end
             attr_reader :tiers
 
-            sig { params(tiers: T::Array[MetronomeSDK::Tier::OrHash]).void }
+            sig do
+              params(
+                tiers:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier::OrHash
+                  ]
+              ).void
+            end
             attr_writer :tiers
 
             # Required for OVERWRITE type.
@@ -3310,7 +3325,10 @@ module MetronomeSDK
                 is_prorated: T::Boolean,
                 price: Float,
                 quantity: Float,
-                tiers: T::Array[MetronomeSDK::Tier::OrHash]
+                tiers:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier::OrHash
+                  ]
               ).returns(T.attached_class)
             end
             def self.new(
@@ -3342,7 +3360,10 @@ module MetronomeSDK
                   is_prorated: T::Boolean,
                   price: Float,
                   quantity: Float,
-                  tiers: T::Array[MetronomeSDK::Tier]
+                  tiers:
+                    T::Array[
+                      MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier
+                    ]
                 }
               )
             end
@@ -3395,6 +3416,35 @@ module MetronomeSDK
                 )
               end
               def self.values
+              end
+            end
+
+            class Tier < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(Float) }
+              attr_accessor :price
+
+              sig { returns(T.nilable(Float)) }
+              attr_reader :size
+
+              sig { params(size: Float).void }
+              attr_writer :size
+
+              sig do
+                params(price: Float, size: Float).returns(T.attached_class)
+              end
+              def self.new(price:, size: nil)
+              end
+
+              sig { override.returns({ price: Float, size: Float }) }
+              def to_hash
               end
             end
           end
@@ -4170,7 +4220,9 @@ module MetronomeSDK
           end
           attr_writer :access_amount
 
-          # The amount of time the created commits will be valid for.
+          # Defines the length of the access schedule for each created commit/credit. The
+          # value represents the number of units. Unit defaults to "PERIODS", where the
+          # length of a period is determined by the recurrence_frequency.
           sig do
             returns(
               MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::CommitDuration
@@ -4392,7 +4444,9 @@ module MetronomeSDK
           def self.new(
             # The amount of commit to grant.
             access_amount:,
-            # The amount of time the created commits will be valid for.
+            # Defines the length of the access schedule for each created commit/credit. The
+            # value represents the number of units. Unit defaults to "PERIODS", where the
+            # length of a period is determined by the recurrence_frequency.
             commit_duration:,
             # Will be passed down to the individual commits
             priority:,
@@ -4522,33 +4576,45 @@ module MetronomeSDK
                 )
               end
 
-            sig do
-              returns(
-                MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::CommitDuration::Unit::OrSymbol
-              )
-            end
-            attr_accessor :unit
-
             sig { returns(Float) }
             attr_accessor :value
 
-            # The amount of time the created commits will be valid for.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::CommitDuration::Unit::OrSymbol
+                )
+              )
+            end
+            attr_reader :unit
+
             sig do
               params(
                 unit:
-                  MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::CommitDuration::Unit::OrSymbol,
-                value: Float
+                  MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::CommitDuration::Unit::OrSymbol
+              ).void
+            end
+            attr_writer :unit
+
+            # Defines the length of the access schedule for each created commit/credit. The
+            # value represents the number of units. Unit defaults to "PERIODS", where the
+            # length of a period is determined by the recurrence_frequency.
+            sig do
+              params(
+                value: Float,
+                unit:
+                  MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::CommitDuration::Unit::OrSymbol
               ).returns(T.attached_class)
             end
-            def self.new(unit:, value:)
+            def self.new(value:, unit: nil)
             end
 
             sig do
               override.returns(
                 {
+                  value: Float,
                   unit:
-                    MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::CommitDuration::Unit::OrSymbol,
-                  value: Float
+                    MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::CommitDuration::Unit::OrSymbol
                 }
               )
             end
@@ -4850,7 +4916,9 @@ module MetronomeSDK
           end
           attr_writer :access_amount
 
-          # The amount of time the created commits will be valid for.
+          # Defines the length of the access schedule for each created commit/credit. The
+          # value represents the number of units. Unit defaults to "PERIODS", where the
+          # length of a period is determined by the recurrence_frequency.
           sig do
             returns(
               MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::CommitDuration
@@ -5052,7 +5120,9 @@ module MetronomeSDK
           def self.new(
             # The amount of commit to grant.
             access_amount:,
-            # The amount of time the created commits will be valid for.
+            # Defines the length of the access schedule for each created commit/credit. The
+            # value represents the number of units. Unit defaults to "PERIODS", where the
+            # length of a period is determined by the recurrence_frequency.
             commit_duration:,
             # Will be passed down to the individual commits
             priority:,
@@ -5178,33 +5248,45 @@ module MetronomeSDK
                 )
               end
 
-            sig do
-              returns(
-                MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::CommitDuration::Unit::OrSymbol
-              )
-            end
-            attr_accessor :unit
-
             sig { returns(Float) }
             attr_accessor :value
 
-            # The amount of time the created commits will be valid for.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::CommitDuration::Unit::OrSymbol
+                )
+              )
+            end
+            attr_reader :unit
+
             sig do
               params(
                 unit:
-                  MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::CommitDuration::Unit::OrSymbol,
-                value: Float
+                  MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::CommitDuration::Unit::OrSymbol
+              ).void
+            end
+            attr_writer :unit
+
+            # Defines the length of the access schedule for each created commit/credit. The
+            # value represents the number of units. Unit defaults to "PERIODS", where the
+            # length of a period is determined by the recurrence_frequency.
+            sig do
+              params(
+                value: Float,
+                unit:
+                  MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::CommitDuration::Unit::OrSymbol
               ).returns(T.attached_class)
             end
-            def self.new(unit:, value:)
+            def self.new(value:, unit: nil)
             end
 
             sig do
               override.returns(
                 {
+                  value: Float,
                   unit:
-                    MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::CommitDuration::Unit::OrSymbol,
-                  value: Float
+                    MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::CommitDuration::Unit::OrSymbol
                 }
               )
             end

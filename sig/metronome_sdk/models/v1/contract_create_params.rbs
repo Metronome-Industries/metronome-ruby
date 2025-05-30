@@ -31,7 +31,7 @@ module MetronomeSDK
           total_contract_value: Float,
           transition: MetronomeSDK::V1::ContractCreateParams::Transition,
           uniqueness_key: String,
-          usage_filter: MetronomeSDK::BaseUsageFilter,
+          usage_filter: MetronomeSDK::V1::ContractCreateParams::UsageFilter,
           usage_statement_schedule: MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule
         }
         & MetronomeSDK::Internal::Type::request_parameters
@@ -180,11 +180,11 @@ module MetronomeSDK
 
         def uniqueness_key=: (String) -> String
 
-        attr_reader usage_filter: MetronomeSDK::BaseUsageFilter?
+        attr_reader usage_filter: MetronomeSDK::V1::ContractCreateParams::UsageFilter?
 
         def usage_filter=: (
-          MetronomeSDK::BaseUsageFilter
-        ) -> MetronomeSDK::BaseUsageFilter
+          MetronomeSDK::V1::ContractCreateParams::UsageFilter
+        ) -> MetronomeSDK::V1::ContractCreateParams::UsageFilter
 
         attr_reader usage_statement_schedule: MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule?
 
@@ -221,7 +221,7 @@ module MetronomeSDK
           ?total_contract_value: Float,
           ?transition: MetronomeSDK::V1::ContractCreateParams::Transition,
           ?uniqueness_key: String,
-          ?usage_filter: MetronomeSDK::BaseUsageFilter,
+          ?usage_filter: MetronomeSDK::V1::ContractCreateParams::UsageFilter,
           ?usage_statement_schedule: MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
@@ -255,7 +255,7 @@ module MetronomeSDK
           total_contract_value: Float,
           transition: MetronomeSDK::V1::ContractCreateParams::Transition,
           uniqueness_key: String,
-          usage_filter: MetronomeSDK::BaseUsageFilter,
+          usage_filter: MetronomeSDK::V1::ContractCreateParams::UsageFilter,
           usage_statement_schedule: MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule,
           request_options: MetronomeSDK::RequestOptions
         }
@@ -1422,7 +1422,7 @@ module MetronomeSDK
               is_prorated: bool,
               price: Float,
               quantity: Float,
-              tiers: ::Array[MetronomeSDK::Tier]
+              tiers: ::Array[MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier]
             }
 
           class OverwriteRate < MetronomeSDK::Internal::Type::BaseModel
@@ -1448,11 +1448,11 @@ module MetronomeSDK
 
             def quantity=: (Float) -> Float
 
-            attr_reader tiers: ::Array[MetronomeSDK::Tier]?
+            attr_reader tiers: ::Array[MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier]?
 
             def tiers=: (
-              ::Array[MetronomeSDK::Tier]
-            ) -> ::Array[MetronomeSDK::Tier]
+              ::Array[MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier]
+            ) -> ::Array[MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier]
 
             def initialize: (
               rate_type: MetronomeSDK::Models::V1::ContractCreateParams::Override::OverwriteRate::rate_type,
@@ -1461,7 +1461,7 @@ module MetronomeSDK
               ?is_prorated: bool,
               ?price: Float,
               ?quantity: Float,
-              ?tiers: ::Array[MetronomeSDK::Tier]
+              ?tiers: ::Array[MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier]
             ) -> void
 
             def to_hash: -> {
@@ -1471,7 +1471,7 @@ module MetronomeSDK
               is_prorated: bool,
               price: Float,
               quantity: Float,
-              tiers: ::Array[MetronomeSDK::Tier]
+              tiers: ::Array[MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier]
             }
 
             type rate_type =
@@ -1487,6 +1487,20 @@ module MetronomeSDK
               CUSTOM: :CUSTOM
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Override::OverwriteRate::rate_type]
+            end
+
+            type tier = { price: Float, size: Float }
+
+            class Tier < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor price: Float
+
+              attr_reader size: Float?
+
+              def size=: (Float) -> Float
+
+              def initialize: (price: Float, ?size: Float) -> void
+
+              def to_hash: -> { price: Float, size: Float }
             end
           end
 
@@ -1964,23 +1978,27 @@ module MetronomeSDK
 
           type commit_duration =
             {
-              unit: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::CommitDuration::unit,
-              value: Float
+              value: Float,
+              unit: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::CommitDuration::unit
             }
 
           class CommitDuration < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor unit: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::CommitDuration::unit
-
             attr_accessor value: Float
 
+            attr_reader unit: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::CommitDuration::unit?
+
+            def unit=: (
+              MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::CommitDuration::unit
+            ) -> MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::CommitDuration::unit
+
             def initialize: (
-              unit: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::CommitDuration::unit,
-              value: Float
+              value: Float,
+              ?unit: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::CommitDuration::unit
             ) -> void
 
             def to_hash: -> {
-              unit: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::CommitDuration::unit,
-              value: Float
+              value: Float,
+              unit: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::CommitDuration::unit
             }
 
             type unit = :PERIODS
@@ -2252,23 +2270,27 @@ module MetronomeSDK
 
           type commit_duration =
             {
-              unit: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::CommitDuration::unit,
-              value: Float
+              value: Float,
+              unit: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::CommitDuration::unit
             }
 
           class CommitDuration < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor unit: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::CommitDuration::unit
-
             attr_accessor value: Float
 
+            attr_reader unit: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::CommitDuration::unit?
+
+            def unit=: (
+              MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::CommitDuration::unit
+            ) -> MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::CommitDuration::unit
+
             def initialize: (
-              unit: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::CommitDuration::unit,
-              value: Float
+              value: Float,
+              ?unit: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::CommitDuration::unit
             ) -> void
 
             def to_hash: -> {
-              unit: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::CommitDuration::unit,
-              value: Float
+              value: Float,
+              unit: MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::CommitDuration::unit
             }
 
             type unit = :PERIODS
@@ -3072,6 +3094,35 @@ module MetronomeSDK
               def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Transition::FutureInvoiceBehavior::trueup]
             end
           end
+        end
+
+        type usage_filter =
+          {
+            group_key: String,
+            group_values: ::Array[String],
+            starting_at: Time
+          }
+
+        class UsageFilter < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor group_key: String
+
+          attr_accessor group_values: ::Array[String]
+
+          attr_reader starting_at: Time?
+
+          def starting_at=: (Time) -> Time
+
+          def initialize: (
+            group_key: String,
+            group_values: ::Array[String],
+            ?starting_at: Time
+          ) -> void
+
+          def to_hash: -> {
+            group_key: String,
+            group_values: ::Array[String],
+            starting_at: Time
+          }
         end
 
         type usage_statement_schedule =
