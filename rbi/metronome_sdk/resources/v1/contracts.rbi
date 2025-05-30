@@ -76,7 +76,8 @@ module MetronomeSDK
             transition:
               MetronomeSDK::V1::ContractCreateParams::Transition::OrHash,
             uniqueness_key: String,
-            usage_filter: MetronomeSDK::BaseUsageFilter::OrHash,
+            usage_filter:
+              MetronomeSDK::V1::ContractCreateParams::UsageFilter::OrHash,
             usage_statement_schedule:
               MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule::OrHash,
             request_options: MetronomeSDK::RequestOptions::OrHash

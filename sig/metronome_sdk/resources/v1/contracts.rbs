@@ -37,7 +37,7 @@ module MetronomeSDK
           ?total_contract_value: Float,
           ?transition: MetronomeSDK::V1::ContractCreateParams::Transition,
           ?uniqueness_key: String,
-          ?usage_filter: MetronomeSDK::BaseUsageFilter,
+          ?usage_filter: MetronomeSDK::V1::ContractCreateParams::UsageFilter,
           ?usage_statement_schedule: MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule,
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V1::ContractCreateResponse

@@ -12,18 +12,55 @@ module MetronomeSDK
             )
           end
 
-        sig { returns(MetronomeSDK::ID) }
+        sig do
+          returns(MetronomeSDK::Models::V2::ContractEditCreditResponse::Data)
+        end
         attr_reader :data
 
-        sig { params(data: MetronomeSDK::ID::OrHash).void }
+        sig do
+          params(
+            data:
+              MetronomeSDK::Models::V2::ContractEditCreditResponse::Data::OrHash
+          ).void
+        end
         attr_writer :data
 
-        sig { params(data: MetronomeSDK::ID::OrHash).returns(T.attached_class) }
+        sig do
+          params(
+            data:
+              MetronomeSDK::Models::V2::ContractEditCreditResponse::Data::OrHash
+          ).returns(T.attached_class)
+        end
         def self.new(data:)
         end
 
-        sig { override.returns({ data: MetronomeSDK::ID }) }
+        sig do
+          override.returns(
+            { data: MetronomeSDK::Models::V2::ContractEditCreditResponse::Data }
+          )
+        end
         def to_hash
+        end
+
+        class Data < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Models::V2::ContractEditCreditResponse::Data,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          sig { returns(String) }
+          attr_accessor :id
+
+          sig { params(id: String).returns(T.attached_class) }
+          def self.new(id:)
+          end
+
+          sig { override.returns({ id: String }) }
+          def to_hash
+          end
         end
       end
     end
