@@ -385,19 +385,10 @@ module MetronomeSDK
         sig { params(uniqueness_key: String).void }
         attr_writer :uniqueness_key
 
-        sig do
-          returns(
-            T.nilable(MetronomeSDK::V1::ContractCreateParams::UsageFilter)
-          )
-        end
+        sig { returns(T.nilable(MetronomeSDK::BaseUsageFilter)) }
         attr_reader :usage_filter
 
-        sig do
-          params(
-            usage_filter:
-              MetronomeSDK::V1::ContractCreateParams::UsageFilter::OrHash
-          ).void
-        end
+        sig { params(usage_filter: MetronomeSDK::BaseUsageFilter::OrHash).void }
         attr_writer :usage_filter
 
         sig do
@@ -479,8 +470,7 @@ module MetronomeSDK
             transition:
               MetronomeSDK::V1::ContractCreateParams::Transition::OrHash,
             uniqueness_key: String,
-            usage_filter:
-              MetronomeSDK::V1::ContractCreateParams::UsageFilter::OrHash,
+            usage_filter: MetronomeSDK::BaseUsageFilter::OrHash,
             usage_statement_schedule:
               MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule::OrHash,
             request_options: MetronomeSDK::RequestOptions::OrHash
@@ -601,7 +591,7 @@ module MetronomeSDK
               total_contract_value: Float,
               transition: MetronomeSDK::V1::ContractCreateParams::Transition,
               uniqueness_key: String,
-              usage_filter: MetronomeSDK::V1::ContractCreateParams::UsageFilter,
+              usage_filter: MetronomeSDK::BaseUsageFilter,
               usage_statement_schedule:
                 MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule,
               request_options: MetronomeSDK::RequestOptions
@@ -3387,25 +3377,10 @@ module MetronomeSDK
             attr_writer :quantity
 
             # Only set for TIERED rate_type.
-            sig do
-              returns(
-                T.nilable(
-                  T::Array[
-                    MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier
-                  ]
-                )
-              )
-            end
+            sig { returns(T.nilable(T::Array[MetronomeSDK::Tier])) }
             attr_reader :tiers
 
-            sig do
-              params(
-                tiers:
-                  T::Array[
-                    MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier::OrHash
-                  ]
-              ).void
-            end
+            sig { params(tiers: T::Array[MetronomeSDK::Tier::OrHash]).void }
             attr_writer :tiers
 
             # Required for OVERWRITE type.
@@ -3418,10 +3393,7 @@ module MetronomeSDK
                 is_prorated: T::Boolean,
                 price: Float,
                 quantity: Float,
-                tiers:
-                  T::Array[
-                    MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier::OrHash
-                  ]
+                tiers: T::Array[MetronomeSDK::Tier::OrHash]
               ).returns(T.attached_class)
             end
             def self.new(
@@ -3453,10 +3425,7 @@ module MetronomeSDK
                   is_prorated: T::Boolean,
                   price: Float,
                   quantity: Float,
-                  tiers:
-                    T::Array[
-                      MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier
-                    ]
+                  tiers: T::Array[MetronomeSDK::Tier]
                 }
               )
             end
@@ -3509,35 +3478,6 @@ module MetronomeSDK
                 )
               end
               def self.values
-              end
-            end
-
-            class Tier < MetronomeSDK::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias do
-                  T.any(
-                    MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier,
-                    MetronomeSDK::Internal::AnyHash
-                  )
-                end
-
-              sig { returns(Float) }
-              attr_accessor :price
-
-              sig { returns(T.nilable(Float)) }
-              attr_reader :size
-
-              sig { params(size: Float).void }
-              attr_writer :size
-
-              sig do
-                params(price: Float, size: Float).returns(T.attached_class)
-              end
-              def self.new(price:, size: nil)
-              end
-
-              sig { override.returns({ price: Float, size: Float }) }
-              def to_hash
               end
             end
           end
@@ -7344,50 +7284,6 @@ module MetronomeSDK
               def self.values
               end
             end
-          end
-        end
-
-        class UsageFilter < MetronomeSDK::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                MetronomeSDK::V1::ContractCreateParams::UsageFilter,
-                MetronomeSDK::Internal::AnyHash
-              )
-            end
-
-          sig { returns(String) }
-          attr_accessor :group_key
-
-          sig { returns(T::Array[String]) }
-          attr_accessor :group_values
-
-          sig { returns(T.nilable(Time)) }
-          attr_reader :starting_at
-
-          sig { params(starting_at: Time).void }
-          attr_writer :starting_at
-
-          sig do
-            params(
-              group_key: String,
-              group_values: T::Array[String],
-              starting_at: Time
-            ).returns(T.attached_class)
-          end
-          def self.new(group_key:, group_values:, starting_at: nil)
-          end
-
-          sig do
-            override.returns(
-              {
-                group_key: String,
-                group_values: T::Array[String],
-                starting_at: Time
-              }
-            )
-          end
-          def to_hash
           end
         end
 

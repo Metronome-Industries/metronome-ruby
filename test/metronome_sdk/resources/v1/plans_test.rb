@@ -36,7 +36,7 @@ class MetronomeSDK::Test::Resources::V1::PlansTest < MetronomeSDK::Test::Resourc
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::PlanGetDetailsResponse::Data
+        data: MetronomeSDK::V1::PlanDetail
       }
     end
   end
@@ -59,7 +59,7 @@ class MetronomeSDK::Test::Resources::V1::PlansTest < MetronomeSDK::Test::Resourc
       row => {
         id: String,
         charge_type: MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType,
-        credit_type: MetronomeSDK::Models::V1::PlanListChargesResponse::CreditType,
+        credit_type: MetronomeSDK::CreditTypeData,
         custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[String]),
         name: String,
         prices: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::PlanListChargesResponse::Price]),
@@ -89,7 +89,7 @@ class MetronomeSDK::Test::Resources::V1::PlansTest < MetronomeSDK::Test::Resourc
 
     assert_pattern do
       row => {
-        customer_details: MetronomeSDK::Models::V1::PlanListCustomersResponse::CustomerDetails,
+        customer_details: MetronomeSDK::V1::CustomerDetail,
         plan_details: MetronomeSDK::Models::V1::PlanListCustomersResponse::PlanDetails
       }
     end

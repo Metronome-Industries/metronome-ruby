@@ -1,0 +1,13 @@
+module MetronomeSDK
+  module Models
+    type id = { id: String }
+
+    class ID < MetronomeSDK::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      def initialize: (id: String) -> void
+
+      def to_hash: -> { id: String }
+    end
+  end
+end

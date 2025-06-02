@@ -4,7 +4,7 @@ module MetronomeSDK
   module Models
     module V1
       module Contracts
-        class RateCardRetrieveParams < MetronomeSDK::Internal::Type::BaseModel
+        class RateCardRetrieveParams < MetronomeSDK::Models::ID
           extend MetronomeSDK::Internal::Type::RequestParameters::Converter
           include MetronomeSDK::Internal::Type::RequestParameters
 
@@ -16,22 +16,16 @@ module MetronomeSDK
               )
             end
 
-          sig { returns(String) }
-          attr_accessor :id
-
           sig do
             params(
-              id: String,
               request_options: MetronomeSDK::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
-          def self.new(id:, request_options: {})
+          def self.new(request_options: {})
           end
 
           sig do
-            override.returns(
-              { id: String, request_options: MetronomeSDK::RequestOptions }
-            )
+            override.returns({ request_options: MetronomeSDK::RequestOptions })
           end
           def to_hash
           end
