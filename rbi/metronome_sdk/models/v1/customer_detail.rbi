@@ -3,11 +3,11 @@
 module MetronomeSDK
   module Models
     module V1
-      class CustomerListResponse < MetronomeSDK::Internal::Type::BaseModel
+      class CustomerDetail < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
-              MetronomeSDK::Models::V1::CustomerListResponse,
+              MetronomeSDK::V1::CustomerDetail,
               MetronomeSDK::Internal::AnyHash
             )
           end
@@ -23,17 +23,13 @@ module MetronomeSDK
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :custom_fields
 
-        sig do
-          returns(
-            MetronomeSDK::Models::V1::CustomerListResponse::CustomerConfig
-          )
-        end
+        sig { returns(MetronomeSDK::V1::CustomerDetail::CustomerConfig) }
         attr_reader :customer_config
 
         sig do
           params(
             customer_config:
-              MetronomeSDK::Models::V1::CustomerListResponse::CustomerConfig::OrHash
+              MetronomeSDK::V1::CustomerDetail::CustomerConfig::OrHash
           ).void
         end
         attr_writer :customer_config
@@ -59,9 +55,7 @@ module MetronomeSDK
         # This field's availability is dependent on your client's configuration.
         sig do
           returns(
-            T.nilable(
-              MetronomeSDK::Models::V1::CustomerListResponse::CurrentBillableStatus
-            )
+            T.nilable(MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus)
           )
         end
         attr_reader :current_billable_status
@@ -69,7 +63,7 @@ module MetronomeSDK
         sig do
           params(
             current_billable_status:
-              MetronomeSDK::Models::V1::CustomerListResponse::CurrentBillableStatus::OrHash
+              MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::OrHash
           ).void
         end
         attr_writer :current_billable_status
@@ -80,13 +74,13 @@ module MetronomeSDK
             created_at: Time,
             custom_fields: T::Hash[Symbol, String],
             customer_config:
-              MetronomeSDK::Models::V1::CustomerListResponse::CustomerConfig::OrHash,
+              MetronomeSDK::V1::CustomerDetail::CustomerConfig::OrHash,
             external_id: String,
             ingest_aliases: T::Array[String],
             name: String,
             archived_at: T.nilable(Time),
             current_billable_status:
-              MetronomeSDK::Models::V1::CustomerListResponse::CurrentBillableStatus::OrHash
+              MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
@@ -117,14 +111,13 @@ module MetronomeSDK
               id: String,
               created_at: Time,
               custom_fields: T::Hash[Symbol, String],
-              customer_config:
-                MetronomeSDK::Models::V1::CustomerListResponse::CustomerConfig,
+              customer_config: MetronomeSDK::V1::CustomerDetail::CustomerConfig,
               external_id: String,
               ingest_aliases: T::Array[String],
               name: String,
               archived_at: T.nilable(Time),
               current_billable_status:
-                MetronomeSDK::Models::V1::CustomerListResponse::CurrentBillableStatus
+                MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus
             }
           )
         end
@@ -135,7 +128,7 @@ module MetronomeSDK
           OrHash =
             T.type_alias do
               T.any(
-                MetronomeSDK::Models::V1::CustomerListResponse::CustomerConfig,
+                MetronomeSDK::V1::CustomerDetail::CustomerConfig,
                 MetronomeSDK::Internal::AnyHash
               )
             end
@@ -164,14 +157,14 @@ module MetronomeSDK
           OrHash =
             T.type_alias do
               T.any(
-                MetronomeSDK::Models::V1::CustomerListResponse::CurrentBillableStatus,
+                MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus,
                 MetronomeSDK::Internal::AnyHash
               )
             end
 
           sig do
             returns(
-              MetronomeSDK::Models::V1::CustomerListResponse::CurrentBillableStatus::Value::TaggedSymbol
+              MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::Value::TaggedSymbol
             )
           end
           attr_accessor :value
@@ -183,7 +176,7 @@ module MetronomeSDK
           sig do
             params(
               value:
-                MetronomeSDK::Models::V1::CustomerListResponse::CurrentBillableStatus::Value::OrSymbol,
+                MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::Value::OrSymbol,
               effective_at: T.nilable(Time)
             ).returns(T.attached_class)
           end
@@ -194,7 +187,7 @@ module MetronomeSDK
             override.returns(
               {
                 value:
-                  MetronomeSDK::Models::V1::CustomerListResponse::CurrentBillableStatus::Value::TaggedSymbol,
+                  MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::Value::TaggedSymbol,
                 effective_at: T.nilable(Time)
               }
             )
@@ -209,7 +202,7 @@ module MetronomeSDK
               T.type_alias do
                 T.all(
                   Symbol,
-                  MetronomeSDK::Models::V1::CustomerListResponse::CurrentBillableStatus::Value
+                  MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::Value
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -217,18 +210,18 @@ module MetronomeSDK
             BILLABLE =
               T.let(
                 :billable,
-                MetronomeSDK::Models::V1::CustomerListResponse::CurrentBillableStatus::Value::TaggedSymbol
+                MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::Value::TaggedSymbol
               )
             UNBILLABLE =
               T.let(
                 :unbillable,
-                MetronomeSDK::Models::V1::CustomerListResponse::CurrentBillableStatus::Value::TaggedSymbol
+                MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::Value::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  MetronomeSDK::Models::V1::CustomerListResponse::CurrentBillableStatus::Value::TaggedSymbol
+                  MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::Value::TaggedSymbol
                 ]
               )
             end

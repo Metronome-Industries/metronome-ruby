@@ -2,31 +2,14 @@ module MetronomeSDK
   module Models
     module V1
       module Customers
-        type commit_update_end_date_response =
-          {
-            data: MetronomeSDK::Models::V1::Customers::CommitUpdateEndDateResponse::Data
-          }
+        type commit_update_end_date_response = { data: MetronomeSDK::ID }
 
         class CommitUpdateEndDateResponse < MetronomeSDK::Internal::Type::BaseModel
-          attr_accessor data: MetronomeSDK::Models::V1::Customers::CommitUpdateEndDateResponse::Data
+          attr_accessor data: MetronomeSDK::ID
 
-          def initialize: (
-            data: MetronomeSDK::Models::V1::Customers::CommitUpdateEndDateResponse::Data
-          ) -> void
+          def initialize: (data: MetronomeSDK::ID) -> void
 
-          def to_hash: -> {
-            data: MetronomeSDK::Models::V1::Customers::CommitUpdateEndDateResponse::Data
-          }
-
-          type data = { id: String }
-
-          class Data < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor id: String
-
-            def initialize: (id: String) -> void
-
-            def to_hash: -> { id: String }
-          end
+          def to_hash: -> { data: MetronomeSDK::ID }
         end
       end
     end

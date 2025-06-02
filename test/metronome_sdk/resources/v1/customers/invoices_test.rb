@@ -16,7 +16,7 @@ class MetronomeSDK::Test::Resources::V1::Customers::InvoicesTest < MetronomeSDK:
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::Customers::InvoiceRetrieveResponse::Data
+        data: MetronomeSDK::V1::Customers::Invoice
       }
     end
   end
@@ -32,36 +32,36 @@ class MetronomeSDK::Test::Resources::V1::Customers::InvoicesTest < MetronomeSDK:
     return if row.nil?
 
     assert_pattern do
-      row => MetronomeSDK::Models::V1::Customers::InvoiceListResponse
+      row => MetronomeSDK::V1::Customers::Invoice
     end
 
     assert_pattern do
       row => {
         id: String,
-        credit_type: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CreditType,
+        credit_type: MetronomeSDK::CreditTypeData,
         customer_id: String,
-        line_items: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem]),
+        line_items: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice::LineItem]),
         status: String,
         total: Float,
         type: String,
         amendment_id: String | nil,
-        billable_status: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::BillableStatus | nil,
+        billable_status: MetronomeSDK::V1::Customers::Invoice::BillableStatus | nil,
         contract_custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[String]) | nil,
         contract_id: String | nil,
-        correction_record: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord | nil,
+        correction_record: MetronomeSDK::V1::Customers::Invoice::CorrectionRecord | nil,
         created_at: Time | nil,
         custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[MetronomeSDK::Internal::Type::Unknown]) | nil,
         customer_custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[String]) | nil,
         end_timestamp: Time | nil,
-        external_invoice: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice | nil,
-        invoice_adjustments: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Customers::InvoiceListResponse::InvoiceAdjustment]) | nil,
+        external_invoice: MetronomeSDK::V1::Customers::Invoice::ExternalInvoice | nil,
+        invoice_adjustments: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice::InvoiceAdjustment]) | nil,
         issued_at: Time | nil,
         net_payment_terms_days: Float | nil,
         netsuite_sales_order_id: String | nil,
         plan_custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[String]) | nil,
         plan_id: String | nil,
         plan_name: String | nil,
-        reseller_royalty: MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty | nil,
+        reseller_royalty: MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty | nil,
         salesforce_opportunity_id: String | nil,
         start_timestamp: Time | nil,
         subtotal: Float | nil
@@ -109,41 +109,6 @@ class MetronomeSDK::Test::Resources::V1::Customers::InvoicesTest < MetronomeSDK:
 
     assert_pattern do
       row => MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsResponse
-    end
-
-    assert_pattern do
-      row => {
-        id: String,
-        breakdown_end_timestamp: Time,
-        breakdown_start_timestamp: Time,
-        credit_type: MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsResponse::CreditType,
-        customer_id: String,
-        line_items: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsResponse::LineItem]),
-        status: String,
-        total: Float,
-        type: String,
-        amendment_id: String | nil,
-        billable_status: MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsResponse::BillableStatus | nil,
-        contract_custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[String]) | nil,
-        contract_id: String | nil,
-        correction_record: MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsResponse::CorrectionRecord | nil,
-        created_at: Time | nil,
-        custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[MetronomeSDK::Internal::Type::Unknown]) | nil,
-        customer_custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[String]) | nil,
-        end_timestamp: Time | nil,
-        external_invoice: MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsResponse::ExternalInvoice | nil,
-        invoice_adjustments: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsResponse::InvoiceAdjustment]) | nil,
-        issued_at: Time | nil,
-        net_payment_terms_days: Float | nil,
-        netsuite_sales_order_id: String | nil,
-        plan_custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[String]) | nil,
-        plan_id: String | nil,
-        plan_name: String | nil,
-        reseller_royalty: MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsResponse::ResellerRoyalty | nil,
-        salesforce_opportunity_id: String | nil,
-        start_timestamp: Time | nil,
-        subtotal: Float | nil
-      }
     end
   end
 end
