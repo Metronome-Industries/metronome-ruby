@@ -14,6 +14,12 @@ module MetronomeSDK
         #   @return [String, nil]
         optional :next_page, String
 
+        # @!attribute sort
+        #   Ledgers sort order by date, asc or desc. Defaults to asc.
+        #
+        #   @return [Symbol, MetronomeSDK::Models::V1::CreditGrantListEntriesParams::Sort, nil]
+        optional :sort, enum: -> { MetronomeSDK::V1::CreditGrantListEntriesParams::Sort }
+
         # @!attribute credit_type_ids
         #   A list of Metronome credit type IDs to fetch ledger entries for. If absent,
         #   ledger entries for all credit types will be returned.
@@ -44,11 +50,13 @@ module MetronomeSDK
         #   @return [Time, nil]
         optional :starting_on, Time
 
-        # @!method initialize(next_page: nil, credit_type_ids: nil, customer_ids: nil, ending_before: nil, starting_on: nil, request_options: {})
+        # @!method initialize(next_page: nil, sort: nil, credit_type_ids: nil, customer_ids: nil, ending_before: nil, starting_on: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::CreditGrantListEntriesParams} for more details.
         #
         #   @param next_page [String] Cursor that indicates where the next page of results should start.
+        #
+        #   @param sort [Symbol, MetronomeSDK::Models::V1::CreditGrantListEntriesParams::Sort] Ledgers sort order by date, asc or desc. Defaults to asc.
         #
         #   @param credit_type_ids [Array<String>] A list of Metronome credit type IDs to fetch ledger entries for. If absent, ledg
         #
@@ -59,6 +67,17 @@ module MetronomeSDK
         #   @param starting_on [Time] If supplied, only ledger entries effective at or after this time will be returne
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
+
+        # Ledgers sort order by date, asc or desc. Defaults to asc.
+        module Sort
+          extend MetronomeSDK::Internal::Type::Enum
+
+          ASC = :asc
+          DESC = :desc
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
       end
     end
   end

@@ -134,6 +134,8 @@ module MetronomeSDK
         sig do
           params(
             next_page: String,
+            sort:
+              MetronomeSDK::V1::CreditGrantListEntriesParams::Sort::OrSymbol,
             credit_type_ids: T::Array[String],
             customer_ids: T::Array[String],
             ending_before: Time,
@@ -144,6 +146,8 @@ module MetronomeSDK
         def list_entries(
           # Query param: Cursor that indicates where the next page of results should start.
           next_page: nil,
+          # Query param: Ledgers sort order by date, asc or desc. Defaults to asc.
+          sort: nil,
           # Body param: A list of Metronome credit type IDs to fetch ledger entries for. If
           # absent, ledger entries for all credit types will be returned.
           credit_type_ids: nil,
