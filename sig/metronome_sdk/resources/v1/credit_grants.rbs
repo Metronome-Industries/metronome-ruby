@@ -41,6 +41,7 @@ module MetronomeSDK
 
         def list_entries: (
           ?next_page: String,
+          ?sort: MetronomeSDK::Models::V1::CreditGrantListEntriesParams::sort,
           ?credit_type_ids: ::Array[String],
           ?customer_ids: ::Array[String],
           ?ending_before: Time,
