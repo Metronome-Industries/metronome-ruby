@@ -1458,25 +1458,28 @@ module MetronomeSDK
           attr_accessor :credit_type_id
 
           sig { returns(Float) }
-          attr_accessor :quantity
-
-          sig { returns(Float) }
           attr_accessor :unit_price
+
+          sig { returns(T.nilable(Float)) }
+          attr_reader :quantity
+
+          sig { params(quantity: Float).void }
+          attr_writer :quantity
 
           # The amount of commit to grant.
           sig do
             params(
               credit_type_id: String,
-              quantity: Float,
-              unit_price: Float
+              unit_price: Float,
+              quantity: Float
             ).returns(T.attached_class)
           end
-          def self.new(credit_type_id:, quantity:, unit_price:)
+          def self.new(credit_type_id:, unit_price:, quantity: nil)
           end
 
           sig do
             override.returns(
-              { credit_type_id: String, quantity: Float, unit_price: Float }
+              { credit_type_id: String, unit_price: Float, quantity: Float }
             )
           end
           def to_hash
@@ -2186,25 +2189,28 @@ module MetronomeSDK
           attr_accessor :credit_type_id
 
           sig { returns(Float) }
-          attr_accessor :quantity
-
-          sig { returns(Float) }
           attr_accessor :unit_price
+
+          sig { returns(T.nilable(Float)) }
+          attr_reader :quantity
+
+          sig { params(quantity: Float).void }
+          attr_writer :quantity
 
           # The amount of commit to grant.
           sig do
             params(
               credit_type_id: String,
-              quantity: Float,
-              unit_price: Float
+              unit_price: Float,
+              quantity: Float
             ).returns(T.attached_class)
           end
-          def self.new(credit_type_id:, quantity:, unit_price:)
+          def self.new(credit_type_id:, unit_price:, quantity: nil)
           end
 
           sig do
             override.returns(
-              { credit_type_id: String, quantity: Float, unit_price: Float }
+              { credit_type_id: String, unit_price: Float, quantity: Float }
             )
           end
           def to_hash

@@ -1276,6 +1276,7 @@ module MetronomeSDK
             # @!attribute proration
             #   Determines whether the first and last commit will be prorated. If not provided,
             #   the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
+            #   subscription_config:
             #
             #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::Proration, nil]
             optional :proration,
@@ -1359,22 +1360,22 @@ module MetronomeSDK
               #   @return [String]
               required :credit_type_id, String
 
-              # @!attribute quantity
-              #
-              #   @return [Float]
-              required :quantity, Float
-
               # @!attribute unit_price
               #
               #   @return [Float]
               required :unit_price, Float
 
-              # @!method initialize(credit_type_id:, quantity:, unit_price:)
+              # @!attribute quantity
+              #
+              #   @return [Float, nil]
+              optional :quantity, Float
+
+              # @!method initialize(credit_type_id:, unit_price:, quantity: nil)
               #   The amount of commit to grant.
               #
               #   @param credit_type_id [String]
-              #   @param quantity [Float]
               #   @param unit_price [Float]
+              #   @param quantity [Float]
             end
 
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit#commit_duration
@@ -1475,6 +1476,7 @@ module MetronomeSDK
 
             # Determines whether the first and last commit will be prorated. If not provided,
             # the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
+            # subscription_config:
             #
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit#proration
             module Proration
@@ -1637,6 +1639,7 @@ module MetronomeSDK
             # @!attribute proration
             #   Determines whether the first and last commit will be prorated. If not provided,
             #   the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
+            #   subscription_config:
             #
             #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::Proration, nil]
             optional :proration,
@@ -1718,22 +1721,22 @@ module MetronomeSDK
               #   @return [String]
               required :credit_type_id, String
 
-              # @!attribute quantity
-              #
-              #   @return [Float]
-              required :quantity, Float
-
               # @!attribute unit_price
               #
               #   @return [Float]
               required :unit_price, Float
 
-              # @!method initialize(credit_type_id:, quantity:, unit_price:)
+              # @!attribute quantity
+              #
+              #   @return [Float, nil]
+              optional :quantity, Float
+
+              # @!method initialize(credit_type_id:, unit_price:, quantity: nil)
               #   The amount of commit to grant.
               #
               #   @param credit_type_id [String]
-              #   @param quantity [Float]
               #   @param unit_price [Float]
+              #   @param quantity [Float]
             end
 
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit#commit_duration
@@ -1809,6 +1812,7 @@ module MetronomeSDK
 
             # Determines whether the first and last commit will be prorated. If not provided,
             # the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
+            # subscription_config:
             #
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit#proration
             module Proration

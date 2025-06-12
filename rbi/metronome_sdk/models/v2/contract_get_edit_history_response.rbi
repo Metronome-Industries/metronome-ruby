@@ -2949,6 +2949,7 @@ module MetronomeSDK
 
             # Determines whether the first and last commit will be prorated. If not provided,
             # the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
+            # subscription_config:
             sig do
               returns(
                 T.nilable(
@@ -3085,6 +3086,7 @@ module MetronomeSDK
               netsuite_sales_order_id: nil,
               # Determines whether the first and last commit will be prorated. If not provided,
               # the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
+              # subscription_config:
               proration: nil,
               # The frequency at which the recurring commits will be created. If not provided: -
               # The commits will be created on the usage invoice frequency. If provided: - The
@@ -3155,25 +3157,28 @@ module MetronomeSDK
               attr_accessor :credit_type_id
 
               sig { returns(Float) }
-              attr_accessor :quantity
-
-              sig { returns(Float) }
               attr_accessor :unit_price
+
+              sig { returns(T.nilable(Float)) }
+              attr_reader :quantity
+
+              sig { params(quantity: Float).void }
+              attr_writer :quantity
 
               # The amount of commit to grant.
               sig do
                 params(
                   credit_type_id: String,
-                  quantity: Float,
-                  unit_price: Float
+                  unit_price: Float,
+                  quantity: Float
                 ).returns(T.attached_class)
               end
-              def self.new(credit_type_id:, quantity:, unit_price:)
+              def self.new(credit_type_id:, unit_price:, quantity: nil)
               end
 
               sig do
                 override.returns(
-                  { credit_type_id: String, quantity: Float, unit_price: Float }
+                  { credit_type_id: String, unit_price: Float, quantity: Float }
                 )
               end
               def to_hash
@@ -3382,6 +3387,7 @@ module MetronomeSDK
 
             # Determines whether the first and last commit will be prorated. If not provided,
             # the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
+            # subscription_config:
             module Proration
               extend MetronomeSDK::Internal::Type::Enum
 
@@ -3683,6 +3689,7 @@ module MetronomeSDK
 
             # Determines whether the first and last commit will be prorated. If not provided,
             # the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
+            # subscription_config:
             sig do
               returns(
                 T.nilable(
@@ -3815,6 +3822,7 @@ module MetronomeSDK
               netsuite_sales_order_id: nil,
               # Determines whether the first and last commit will be prorated. If not provided,
               # the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
+              # subscription_config:
               proration: nil,
               # The frequency at which the recurring commits will be created. If not provided: -
               # The commits will be created on the usage invoice frequency. If provided: - The
@@ -3883,25 +3891,28 @@ module MetronomeSDK
               attr_accessor :credit_type_id
 
               sig { returns(Float) }
-              attr_accessor :quantity
-
-              sig { returns(Float) }
               attr_accessor :unit_price
+
+              sig { returns(T.nilable(Float)) }
+              attr_reader :quantity
+
+              sig { params(quantity: Float).void }
+              attr_writer :quantity
 
               # The amount of commit to grant.
               sig do
                 params(
                   credit_type_id: String,
-                  quantity: Float,
-                  unit_price: Float
+                  unit_price: Float,
+                  quantity: Float
                 ).returns(T.attached_class)
               end
-              def self.new(credit_type_id:, quantity:, unit_price:)
+              def self.new(credit_type_id:, unit_price:, quantity: nil)
               end
 
               sig do
                 override.returns(
-                  { credit_type_id: String, quantity: Float, unit_price: Float }
+                  { credit_type_id: String, unit_price: Float, quantity: Float }
                 )
               end
               def to_hash
@@ -4072,6 +4083,7 @@ module MetronomeSDK
 
             # Determines whether the first and last commit will be prorated. If not provided,
             # the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
+            # subscription_config:
             module Proration
               extend MetronomeSDK::Internal::Type::Enum
 

@@ -2146,22 +2146,30 @@ module MetronomeSDK
             #   @return [String]
             required :credit_type_id, String
 
-            # @!attribute quantity
-            #
-            #   @return [Float]
-            required :quantity, Float
-
             # @!attribute unit_price
             #
             #   @return [Float]
             required :unit_price, Float
 
-            # @!method initialize(credit_type_id:, quantity:, unit_price:)
+            # @!attribute quantity
+            #   This field is currently required. Upcoming recurring commit/credit configuration
+            #   options will allow it to be optional.
+            #
+            #   @return [Float, nil]
+            optional :quantity, Float
+
+            # @!method initialize(credit_type_id:, unit_price:, quantity: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCommit::AccessAmount}
+            #   for more details.
+            #
             #   The amount of commit to grant.
             #
             #   @param credit_type_id [String]
-            #   @param quantity [Float]
+            #
             #   @param unit_price [Float]
+            #
+            #   @param quantity [Float] This field is currently required. Upcoming recurring commit/credit configuration
           end
 
           # @see MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCommit#commit_duration
@@ -2484,22 +2492,30 @@ module MetronomeSDK
             #   @return [String]
             required :credit_type_id, String
 
-            # @!attribute quantity
-            #
-            #   @return [Float]
-            required :quantity, Float
-
             # @!attribute unit_price
             #
             #   @return [Float]
             required :unit_price, Float
 
-            # @!method initialize(credit_type_id:, quantity:, unit_price:)
+            # @!attribute quantity
+            #   This field is currently required. Upcoming recurring commit/credit configuration
+            #   options will allow it to be optional.
+            #
+            #   @return [Float, nil]
+            optional :quantity, Float
+
+            # @!method initialize(credit_type_id:, unit_price:, quantity: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCredit::AccessAmount}
+            #   for more details.
+            #
             #   The amount of commit to grant.
             #
             #   @param credit_type_id [String]
-            #   @param quantity [Float]
+            #
             #   @param unit_price [Float]
+            #
+            #   @param quantity [Float] This field is currently required. Upcoming recurring commit/credit configuration
           end
 
           # @see MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCredit#commit_duration
