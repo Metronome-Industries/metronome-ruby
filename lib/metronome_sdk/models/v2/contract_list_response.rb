@@ -201,7 +201,7 @@ module MetronomeSDK
                    -> { MetronomeSDK::Models::V2::ContractListResponse::Data::SpendThresholdConfiguration }
 
           # @!attribute subscriptions
-          #   (beta) List of subscriptions on the contract.
+          #   List of subscriptions on the contract.
           #
           #   @return [Array<MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription>, nil]
           optional :subscriptions,
@@ -284,7 +284,7 @@ module MetronomeSDK
           #
           #   @param spend_threshold_configuration [MetronomeSDK::Models::V2::ContractListResponse::Data::SpendThresholdConfiguration]
           #
-          #   @param subscriptions [Array<MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription>] (beta) List of subscriptions on the contract.
+          #   @param subscriptions [Array<MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription>] List of subscriptions on the contract.
           #
           #   @param total_contract_value [Float]
           #
@@ -3413,6 +3413,8 @@ module MetronomeSDK
             required :proration, -> { MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::Proration }
 
             # @!attribute quantity_schedule
+            #   List of quantity schedule items for the subscription. Only includes the current
+            #   quantity and future quantity changes.
             #
             #   @return [Array<MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::QuantitySchedule>]
             required :quantity_schedule,
@@ -3460,16 +3462,30 @@ module MetronomeSDK
             optional :name, String
 
             # @!method initialize(collection_schedule:, proration:, quantity_schedule:, starting_at:, subscription_rate:, id: nil, custom_fields: nil, description: nil, ending_before: nil, fiat_credit_type_id: nil, name: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription} for more
+            #   details.
+            #
             #   @param collection_schedule [Symbol, MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::CollectionSchedule]
+            #
             #   @param proration [MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::Proration]
-            #   @param quantity_schedule [Array<MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::QuantitySchedule>]
+            #
+            #   @param quantity_schedule [Array<MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::QuantitySchedule>] List of quantity schedule items for the subscription. Only includes the current
+            #
             #   @param starting_at [Time]
+            #
             #   @param subscription_rate [MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription::SubscriptionRate]
+            #
             #   @param id [String]
+            #
             #   @param custom_fields [Hash{Symbol=>String}]
+            #
             #   @param description [String]
+            #
             #   @param ending_before [Time]
+            #
             #   @param fiat_credit_type_id [String]
+            #
             #   @param name [String]
 
             # @see MetronomeSDK::Models::V2::ContractListResponse::Data::Subscription#collection_schedule

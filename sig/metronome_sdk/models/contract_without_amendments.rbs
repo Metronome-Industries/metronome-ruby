@@ -13,6 +13,7 @@ module MetronomeSDK
         credits: ::Array[MetronomeSDK::Credit],
         discounts: ::Array[MetronomeSDK::Discount],
         ending_before: Time,
+        hierarchy_configuration: MetronomeSDK::Models::ContractWithoutAmendments::hierarchy_configuration,
         name: String,
         net_payment_terms_days: Float,
         netsuite_sales_order_id: String,
@@ -61,6 +62,12 @@ module MetronomeSDK
       attr_reader ending_before: Time?
 
       def ending_before=: (Time) -> Time
+
+      attr_reader hierarchy_configuration: MetronomeSDK::Models::ContractWithoutAmendments::hierarchy_configuration?
+
+      def hierarchy_configuration=: (
+        MetronomeSDK::Models::ContractWithoutAmendments::hierarchy_configuration
+      ) -> MetronomeSDK::Models::ContractWithoutAmendments::hierarchy_configuration
 
       attr_reader name: String?
 
@@ -146,6 +153,7 @@ module MetronomeSDK
         ?credits: ::Array[MetronomeSDK::Credit],
         ?discounts: ::Array[MetronomeSDK::Discount],
         ?ending_before: Time,
+        ?hierarchy_configuration: MetronomeSDK::Models::ContractWithoutAmendments::hierarchy_configuration,
         ?name: String,
         ?net_payment_terms_days: Float,
         ?netsuite_sales_order_id: String,
@@ -174,6 +182,7 @@ module MetronomeSDK
         credits: ::Array[MetronomeSDK::Credit],
         discounts: ::Array[MetronomeSDK::Discount],
         ending_before: Time,
+        hierarchy_configuration: MetronomeSDK::Models::ContractWithoutAmendments::hierarchy_configuration,
         name: String,
         net_payment_terms_days: Float,
         netsuite_sales_order_id: String,
@@ -261,6 +270,74 @@ module MetronomeSDK
 
           def self?.values: -> ::Array[MetronomeSDK::Models::ContractWithoutAmendments::UsageStatementSchedule::frequency]
         end
+      end
+
+      type hierarchy_configuration =
+        MetronomeSDK::ContractWithoutAmendments::HierarchyConfiguration::ParentHierarchyConfiguration
+        | MetronomeSDK::ContractWithoutAmendments::HierarchyConfiguration::ChildHierarchyConfiguration
+
+      module HierarchyConfiguration
+        extend MetronomeSDK::Internal::Type::Union
+
+        type parent_hierarchy_configuration =
+          {
+            children: ::Array[MetronomeSDK::ContractWithoutAmendments::HierarchyConfiguration::ParentHierarchyConfiguration::Child]
+          }
+
+        class ParentHierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor children: ::Array[MetronomeSDK::ContractWithoutAmendments::HierarchyConfiguration::ParentHierarchyConfiguration::Child]
+
+          def initialize: (
+            children: ::Array[MetronomeSDK::ContractWithoutAmendments::HierarchyConfiguration::ParentHierarchyConfiguration::Child]
+          ) -> void
+
+          def to_hash: -> {
+            children: ::Array[MetronomeSDK::ContractWithoutAmendments::HierarchyConfiguration::ParentHierarchyConfiguration::Child]
+          }
+
+          type child = { contract_id: String, customer_id: String }
+
+          class Child < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor contract_id: String
+
+            attr_accessor customer_id: String
+
+            def initialize: (contract_id: String, customer_id: String) -> void
+
+            def to_hash: -> { contract_id: String, customer_id: String }
+          end
+        end
+
+        type child_hierarchy_configuration =
+          {
+            parent: MetronomeSDK::ContractWithoutAmendments::HierarchyConfiguration::ChildHierarchyConfiguration::Parent
+          }
+
+        class ChildHierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor parent: MetronomeSDK::ContractWithoutAmendments::HierarchyConfiguration::ChildHierarchyConfiguration::Parent
+
+          def initialize: (
+            parent: MetronomeSDK::ContractWithoutAmendments::HierarchyConfiguration::ChildHierarchyConfiguration::Parent
+          ) -> void
+
+          def to_hash: -> {
+            parent: MetronomeSDK::ContractWithoutAmendments::HierarchyConfiguration::ChildHierarchyConfiguration::Parent
+          }
+
+          type parent = { contract_id: String, customer_id: String }
+
+          class Parent < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor contract_id: String
+
+            attr_accessor customer_id: String
+
+            def initialize: (contract_id: String, customer_id: String) -> void
+
+            def to_hash: -> { contract_id: String, customer_id: String }
+          end
+        end
+
+        def self?.variants: -> ::Array[MetronomeSDK::Models::ContractWithoutAmendments::hierarchy_configuration]
       end
 
       type prepaid_balance_threshold_configuration =

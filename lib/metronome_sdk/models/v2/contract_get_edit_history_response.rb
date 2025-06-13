@@ -85,7 +85,7 @@ module MetronomeSDK
                    -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration }
 
           # @!attribute add_subscriptions
-          #   (beta) List of subscriptions on the contract.
+          #   List of subscriptions on the contract.
           #
           #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription>, nil]
           optional :add_subscriptions,
@@ -186,7 +186,7 @@ module MetronomeSDK
                    -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration }
 
           # @!attribute update_subscriptions
-          #   (beta) Optional list of subscriptions to update.
+          #   Optional list of subscriptions to update.
           #
           #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription>, nil]
           optional :update_subscriptions,
@@ -217,7 +217,7 @@ module MetronomeSDK
           #
           #   @param add_spend_threshold_configuration [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration]
           #
-          #   @param add_subscriptions [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription>] (beta) List of subscriptions on the contract.
+          #   @param add_subscriptions [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription>] List of subscriptions on the contract.
           #
           #   @param add_usage_filters [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddUsageFilter>]
           #
@@ -251,7 +251,7 @@ module MetronomeSDK
           #
           #   @param update_spend_threshold_configuration [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration]
           #
-          #   @param update_subscriptions [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription>] (beta) Optional list of subscriptions to update.
+          #   @param update_subscriptions [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription>] Optional list of subscriptions to update.
 
           class AddCommit < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute id
@@ -2229,6 +2229,8 @@ module MetronomeSDK
                      -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::Proration }
 
             # @!attribute quantity_schedule
+            #   List of quantity schedule items for the subscription. Only includes the current
+            #   quantity and future quantity changes.
             #
             #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::QuantitySchedule>]
             required :quantity_schedule,
@@ -2276,16 +2278,30 @@ module MetronomeSDK
             optional :name, String
 
             # @!method initialize(collection_schedule:, proration:, quantity_schedule:, starting_at:, subscription_rate:, id: nil, custom_fields: nil, description: nil, ending_before: nil, fiat_credit_type_id: nil, name: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription}
+            #   for more details.
+            #
             #   @param collection_schedule [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::CollectionSchedule]
+            #
             #   @param proration [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::Proration]
-            #   @param quantity_schedule [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::QuantitySchedule>]
+            #
+            #   @param quantity_schedule [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::QuantitySchedule>] List of quantity schedule items for the subscription. Only includes the current
+            #
             #   @param starting_at [Time]
+            #
             #   @param subscription_rate [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SubscriptionRate]
+            #
             #   @param id [String]
+            #
             #   @param custom_fields [Hash{Symbol=>String}]
+            #
             #   @param description [String]
+            #
             #   @param ending_before [Time]
+            #
             #   @param fiat_credit_type_id [String]
+            #
             #   @param name [String]
 
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription#collection_schedule

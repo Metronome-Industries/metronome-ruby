@@ -223,7 +223,7 @@ module MetronomeSDK
         end
         attr_writer :add_spend_threshold_configuration
 
-        # (beta) Optional list of
+        # Optional list of
         # [subscriptions](https://docs.metronome.com/manage-product-access/create-subscription/)
         # to add to the contract.
         sig do
@@ -486,7 +486,7 @@ module MetronomeSDK
         end
         attr_writer :update_spend_threshold_configuration
 
-        # (beta) Optional list of subscriptions to update.
+        # Optional list of subscriptions to update.
         sig do
           returns(
             T.nilable(
@@ -616,7 +616,7 @@ module MetronomeSDK
           add_reseller_royalties: nil,
           add_scheduled_charges: nil,
           add_spend_threshold_configuration: nil,
-          # (beta) Optional list of
+          # Optional list of
           # [subscriptions](https://docs.metronome.com/manage-product-access/create-subscription/)
           # to add to the contract.
           add_subscriptions: nil,
@@ -648,7 +648,7 @@ module MetronomeSDK
           update_recurring_credits: nil,
           update_scheduled_charges: nil,
           update_spend_threshold_configuration: nil,
-          # (beta) Optional list of subscriptions to update.
+          # Optional list of subscriptions to update.
           update_subscriptions: nil,
           request_options: {}
         )

@@ -256,7 +256,7 @@ module MetronomeSDK
           end
           attr_writer :add_spend_threshold_configuration
 
-          # (beta) List of subscriptions on the contract.
+          # List of subscriptions on the contract.
           sig do
             returns(
               T.nilable(
@@ -576,7 +576,7 @@ module MetronomeSDK
           end
           attr_writer :update_spend_threshold_configuration
 
-          # (beta) Optional list of subscriptions to update.
+          # Optional list of subscriptions to update.
           sig do
             returns(
               T.nilable(
@@ -712,7 +712,7 @@ module MetronomeSDK
             add_reseller_royalties: nil,
             add_scheduled_charges: nil,
             add_spend_threshold_configuration: nil,
-            # (beta) List of subscriptions on the contract.
+            # List of subscriptions on the contract.
             add_subscriptions: nil,
             add_usage_filters: nil,
             archive_commits: nil,
@@ -730,7 +730,7 @@ module MetronomeSDK
             update_refund_invoices: nil,
             update_scheduled_charges: nil,
             update_spend_threshold_configuration: nil,
-            # (beta) Optional list of subscriptions to update.
+            # Optional list of subscriptions to update.
             update_subscriptions: nil
           )
           end
@@ -4978,6 +4978,8 @@ module MetronomeSDK
             end
             attr_writer :proration
 
+            # List of quantity schedule items for the subscription. Only includes the current
+            # quantity and future quantity changes.
             sig do
               returns(
                 T::Array[
@@ -5065,6 +5067,8 @@ module MetronomeSDK
             def self.new(
               collection_schedule:,
               proration:,
+              # List of quantity schedule items for the subscription. Only includes the current
+              # quantity and future quantity changes.
               quantity_schedule:,
               starting_at:,
               subscription_rate:,
