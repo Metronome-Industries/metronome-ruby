@@ -369,7 +369,7 @@ module MetronomeSDK
           end
           attr_writer :spend_threshold_configuration
 
-          # (beta) List of subscriptions on the contract.
+          # List of subscriptions on the contract.
           sig do
             returns(
               T.nilable(
@@ -523,7 +523,7 @@ module MetronomeSDK
             # on a separate invoice from usage charges.
             scheduled_charges_on_usage_invoices: nil,
             spend_threshold_configuration: nil,
-            # (beta) List of subscriptions on the contract.
+            # List of subscriptions on the contract.
             subscriptions: nil,
             total_contract_value: nil,
             # Prevents the creation of duplicates. If a request to create a record is made
@@ -7262,6 +7262,8 @@ module MetronomeSDK
             end
             attr_writer :proration
 
+            # List of quantity schedule items for the subscription. Only includes the current
+            # quantity and future quantity changes.
             sig do
               returns(
                 T::Array[
@@ -7349,6 +7351,8 @@ module MetronomeSDK
             def self.new(
               collection_schedule:,
               proration:,
+              # List of quantity schedule items for the subscription. Only includes the current
+              # quantity and future quantity changes.
               quantity_schedule:,
               starting_at:,
               subscription_rate:,

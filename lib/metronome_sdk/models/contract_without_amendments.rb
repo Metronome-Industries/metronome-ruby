@@ -65,6 +65,14 @@ module MetronomeSDK
       #   @return [Time, nil]
       optional :ending_before, Time
 
+      # @!attribute hierarchy_configuration
+      #   Either a **parent** configuration with a list of children or a **child**
+      #   configuration with a single parent.
+      #
+      #   @return [MetronomeSDK::Models::ContractWithoutAmendments::HierarchyConfiguration::ParentHierarchyConfiguration, MetronomeSDK::Models::ContractWithoutAmendments::HierarchyConfiguration::ChildHierarchyConfiguration, nil]
+      optional :hierarchy_configuration,
+               union: -> { MetronomeSDK::ContractWithoutAmendments::HierarchyConfiguration }
+
       # @!attribute name
       #
       #   @return [String, nil]
@@ -157,7 +165,7 @@ module MetronomeSDK
       #   @return [MetronomeSDK::Models::ContractWithoutAmendments::UsageFilter, nil]
       optional :usage_filter, -> { MetronomeSDK::ContractWithoutAmendments::UsageFilter }
 
-      # @!method initialize(commits:, created_at:, created_by:, overrides:, scheduled_charges:, starting_at:, transitions:, usage_statement_schedule:, credits: nil, discounts: nil, ending_before: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, prepaid_balance_threshold_configuration: nil, professional_services: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, salesforce_opportunity_id: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, total_contract_value: nil, usage_filter: nil)
+      # @!method initialize(commits:, created_at:, created_by:, overrides:, scheduled_charges:, starting_at:, transitions:, usage_statement_schedule:, credits: nil, discounts: nil, ending_before: nil, hierarchy_configuration: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, prepaid_balance_threshold_configuration: nil, professional_services: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, salesforce_opportunity_id: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, total_contract_value: nil, usage_filter: nil)
       #   Some parameter documentations has been truncated, see
       #   {MetronomeSDK::Models::ContractWithoutAmendments} for more details.
       #
@@ -182,6 +190,8 @@ module MetronomeSDK
       #   @param discounts [Array<MetronomeSDK::Models::Discount>] This field's availability is dependent on your client's configuration.
       #
       #   @param ending_before [Time]
+      #
+      #   @param hierarchy_configuration [MetronomeSDK::Models::ContractWithoutAmendments::HierarchyConfiguration::ParentHierarchyConfiguration, MetronomeSDK::Models::ContractWithoutAmendments::HierarchyConfiguration::ChildHierarchyConfiguration] Either a **parent** configuration with a list of children or a **child** configu
       #
       #   @param name [String]
       #
@@ -275,6 +285,88 @@ module MetronomeSDK
           # @!method self.values
           #   @return [Array<Symbol>]
         end
+      end
+
+      # Either a **parent** configuration with a list of children or a **child**
+      # configuration with a single parent.
+      #
+      # @see MetronomeSDK::Models::ContractWithoutAmendments#hierarchy_configuration
+      module HierarchyConfiguration
+        extend MetronomeSDK::Internal::Type::Union
+
+        variant -> {
+          MetronomeSDK::ContractWithoutAmendments::HierarchyConfiguration::ParentHierarchyConfiguration
+        }
+
+        variant -> {
+          MetronomeSDK::ContractWithoutAmendments::HierarchyConfiguration::ChildHierarchyConfiguration
+        }
+
+        class ParentHierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute children
+          #   List of contracts that belong to this parent.
+          #
+          #   @return [Array<MetronomeSDK::Models::ContractWithoutAmendments::HierarchyConfiguration::ParentHierarchyConfiguration::Child>]
+          required :children,
+                   -> {
+                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ContractWithoutAmendments::HierarchyConfiguration::ParentHierarchyConfiguration::Child]
+                   }
+
+          # @!method initialize(children:)
+          #   @param children [Array<MetronomeSDK::Models::ContractWithoutAmendments::HierarchyConfiguration::ParentHierarchyConfiguration::Child>] List of contracts that belong to this parent.
+
+          class Child < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute contract_id
+            #
+            #   @return [String]
+            required :contract_id, String
+
+            # @!attribute customer_id
+            #
+            #   @return [String]
+            required :customer_id, String
+
+            # @!method initialize(contract_id:, customer_id:)
+            #   @param contract_id [String]
+            #   @param customer_id [String]
+          end
+        end
+
+        class ChildHierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute parent
+          #   The single parent contract/customer for this child.
+          #
+          #   @return [MetronomeSDK::Models::ContractWithoutAmendments::HierarchyConfiguration::ChildHierarchyConfiguration::Parent]
+          required :parent,
+                   -> {
+                     MetronomeSDK::ContractWithoutAmendments::HierarchyConfiguration::ChildHierarchyConfiguration::Parent
+                   }
+
+          # @!method initialize(parent:)
+          #   @param parent [MetronomeSDK::Models::ContractWithoutAmendments::HierarchyConfiguration::ChildHierarchyConfiguration::Parent] The single parent contract/customer for this child.
+
+          # @see MetronomeSDK::Models::ContractWithoutAmendments::HierarchyConfiguration::ChildHierarchyConfiguration#parent
+          class Parent < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute contract_id
+            #
+            #   @return [String]
+            required :contract_id, String
+
+            # @!attribute customer_id
+            #
+            #   @return [String]
+            required :customer_id, String
+
+            # @!method initialize(contract_id:, customer_id:)
+            #   The single parent contract/customer for this child.
+            #
+            #   @param contract_id [String]
+            #   @param customer_id [String]
+          end
+        end
+
+        # @!method self.variants
+        #   @return [Array(MetronomeSDK::Models::ContractWithoutAmendments::HierarchyConfiguration::ParentHierarchyConfiguration, MetronomeSDK::Models::ContractWithoutAmendments::HierarchyConfiguration::ChildHierarchyConfiguration)]
       end
 
       # @see MetronomeSDK::Models::ContractWithoutAmendments#prepaid_balance_threshold_configuration
