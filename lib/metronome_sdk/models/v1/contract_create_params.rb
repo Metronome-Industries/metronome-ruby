@@ -207,8 +207,8 @@ module MetronomeSDK
 
         # @!attribute usage_filter
         #
-        #   @return [MetronomeSDK::Models::BaseUsageFilter, nil]
-        optional :usage_filter, -> { MetronomeSDK::BaseUsageFilter }
+        #   @return [MetronomeSDK::Models::V1::ContractCreateParams::UsageFilter, nil]
+        optional :usage_filter, -> { MetronomeSDK::V1::ContractCreateParams::UsageFilter }
 
         # @!attribute usage_statement_schedule
         #
@@ -278,7 +278,7 @@ module MetronomeSDK
         #
         #   @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made wit
         #
-        #   @param usage_filter [MetronomeSDK::Models::BaseUsageFilter]
+        #   @param usage_filter [MetronomeSDK::Models::V1::ContractCreateParams::UsageFilter]
         #
         #   @param usage_statement_schedule [MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule]
         #
@@ -1617,8 +1617,11 @@ module MetronomeSDK
             # @!attribute tiers
             #   Only set for TIERED rate_type.
             #
-            #   @return [Array<MetronomeSDK::Models::Tier>, nil]
-            optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
+            #   @return [Array<MetronomeSDK::Models::V1::ContractCreateParams::Override::OverwriteRate::Tier>, nil]
+            optional :tiers,
+                     -> {
+                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier]
+                     }
 
             # @!method initialize(rate_type:, credit_type_id: nil, custom_rate: nil, is_prorated: nil, price: nil, quantity: nil, tiers: nil)
             #   Some parameter documentations has been truncated, see
@@ -1639,7 +1642,7 @@ module MetronomeSDK
             #
             #   @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
             #
-            #   @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
+            #   @param tiers [Array<MetronomeSDK::Models::V1::ContractCreateParams::Override::OverwriteRate::Tier>] Only set for TIERED rate_type.
 
             # @see MetronomeSDK::Models::V1::ContractCreateParams::Override::OverwriteRate#rate_type
             module RateType
@@ -1653,6 +1656,22 @@ module MetronomeSDK
 
               # @!method self.values
               #   @return [Array<Symbol>]
+            end
+
+            class Tier < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute price
+              #
+              #   @return [Float]
+              required :price, Float
+
+              # @!attribute size
+              #
+              #   @return [Float, nil]
+              optional :size, Float
+
+              # @!method initialize(price:, size: nil)
+              #   @param price [Float]
+              #   @param size [Float]
             end
           end
 
@@ -3502,6 +3521,28 @@ module MetronomeSDK
               #   @return [Array<Symbol>]
             end
           end
+        end
+
+        class UsageFilter < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute group_key
+          #
+          #   @return [String]
+          required :group_key, String
+
+          # @!attribute group_values
+          #
+          #   @return [Array<String>]
+          required :group_values, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+          # @!attribute starting_at
+          #
+          #   @return [Time, nil]
+          optional :starting_at, Time
+
+          # @!method initialize(group_key:, group_values:, starting_at: nil)
+          #   @param group_key [String]
+          #   @param group_values [Array<String>]
+          #   @param starting_at [Time]
         end
 
         class UsageStatementSchedule < MetronomeSDK::Internal::Type::BaseModel
