@@ -1341,7 +1341,7 @@ module MetronomeSDK
               is_prorated: bool,
               price: Float,
               quantity: Float,
-              tiers: ::Array[MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier]
+              tiers: ::Array[MetronomeSDK::Tier]
             }
 
           class OverwriteRate < MetronomeSDK::Internal::Type::BaseModel
@@ -1367,11 +1367,11 @@ module MetronomeSDK
 
             def quantity=: (Float) -> Float
 
-            attr_reader tiers: ::Array[MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier]?
+            attr_reader tiers: ::Array[MetronomeSDK::Tier]?
 
             def tiers=: (
-              ::Array[MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier]
-            ) -> ::Array[MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier]
+              ::Array[MetronomeSDK::Tier]
+            ) -> ::Array[MetronomeSDK::Tier]
 
             def initialize: (
               rate_type: MetronomeSDK::Models::V2::ContractEditParams::AddOverride::OverwriteRate::rate_type,
@@ -1380,7 +1380,7 @@ module MetronomeSDK
               ?is_prorated: bool,
               ?price: Float,
               ?quantity: Float,
-              ?tiers: ::Array[MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier]
+              ?tiers: ::Array[MetronomeSDK::Tier]
             ) -> void
 
             def to_hash: -> {
@@ -1390,7 +1390,7 @@ module MetronomeSDK
               is_prorated: bool,
               price: Float,
               quantity: Float,
-              tiers: ::Array[MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier]
+              tiers: ::Array[MetronomeSDK::Tier]
             }
 
             type rate_type =
@@ -1406,20 +1406,6 @@ module MetronomeSDK
               CUSTOM: :CUSTOM
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddOverride::OverwriteRate::rate_type]
-            end
-
-            type tier = { price: Float, size: Float }
-
-            class Tier < MetronomeSDK::Internal::Type::BaseModel
-              attr_accessor price: Float
-
-              attr_reader size: Float?
-
-              def size=: (Float) -> Float
-
-              def initialize: (price: Float, ?size: Float) -> void
-
-              def to_hash: -> { price: Float, size: Float }
             end
           end
 
@@ -3499,22 +3485,18 @@ module MetronomeSDK
 
           type commit =
             {
-              applicable_product_ids: ::Array[String],
-              applicable_product_tags: ::Array[String],
+              applicable_product_ids: ::Array[String]?,
+              applicable_product_tags: ::Array[String]?,
               description: String,
               name: String,
               product_id: String,
-              specifiers: ::Array[MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier]
+              specifiers: ::Array[MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier]?
             }
 
           class Commit < MetronomeSDK::Internal::Type::BaseModel
-            attr_reader applicable_product_ids: ::Array[String]?
+            attr_accessor applicable_product_ids: ::Array[String]?
 
-            def applicable_product_ids=: (::Array[String]) -> ::Array[String]
-
-            attr_reader applicable_product_tags: ::Array[String]?
-
-            def applicable_product_tags=: (::Array[String]) -> ::Array[String]
+            attr_accessor applicable_product_tags: ::Array[String]?
 
             attr_reader description: String?
 
@@ -3528,28 +3510,24 @@ module MetronomeSDK
 
             def product_id=: (String) -> String
 
-            attr_reader specifiers: ::Array[MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier]?
-
-            def specifiers=: (
-              ::Array[MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier]
-            ) -> ::Array[MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier]
+            attr_accessor specifiers: ::Array[MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier]?
 
             def initialize: (
-              ?applicable_product_ids: ::Array[String],
-              ?applicable_product_tags: ::Array[String],
+              ?applicable_product_ids: ::Array[String]?,
+              ?applicable_product_tags: ::Array[String]?,
               ?description: String,
               ?name: String,
               ?product_id: String,
-              ?specifiers: ::Array[MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier]
+              ?specifiers: ::Array[MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier]?
             ) -> void
 
             def to_hash: -> {
-              applicable_product_ids: ::Array[String],
-              applicable_product_tags: ::Array[String],
+              applicable_product_ids: ::Array[String]?,
+              applicable_product_tags: ::Array[String]?,
               description: String,
               name: String,
               product_id: String,
-              specifiers: ::Array[MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier]
+              specifiers: ::Array[MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier]?
             }
 
             type specifier =

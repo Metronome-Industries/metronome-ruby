@@ -17,7 +17,7 @@ class MetronomeSDK::Test::Resources::V1::AlertsTest < MetronomeSDK::Test::Resour
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::AlertCreateResponse::Data
+        data: MetronomeSDK::ID
       }
     end
   end
@@ -31,7 +31,7 @@ class MetronomeSDK::Test::Resources::V1::AlertsTest < MetronomeSDK::Test::Resour
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::AlertArchiveResponse::Data
+        data: MetronomeSDK::ID
       }
     end
   end

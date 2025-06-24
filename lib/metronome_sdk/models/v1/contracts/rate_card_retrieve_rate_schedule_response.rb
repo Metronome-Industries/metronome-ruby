@@ -49,9 +49,8 @@ module MetronomeSDK
 
             # @!attribute rate
             #
-            #   @return [MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse::Data::Rate]
-            required :rate,
-                     -> { MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse::Data::Rate }
+            #   @return [MetronomeSDK::Models::Rate]
+            required :rate, -> { MetronomeSDK::Rate }
 
             # @!attribute starting_at
             #
@@ -97,7 +96,7 @@ module MetronomeSDK
             #
             #   @param product_tags [Array<String>]
             #
-            #   @param rate [MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse::Data::Rate]
+            #   @param rate [MetronomeSDK::Models::Rate]
             #
             #   @param starting_at [Time]
             #
@@ -108,141 +107,6 @@ module MetronomeSDK
             #   @param ending_before [Time]
             #
             #   @param pricing_group_values [Hash{Symbol=>String}]
-
-            # @see MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse::Data#rate
-            class Rate < MetronomeSDK::Internal::Type::BaseModel
-              # @!attribute rate_type
-              #
-              #   @return [Symbol, MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse::Data::Rate::RateType]
-              required :rate_type,
-                       enum: -> { MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse::Data::Rate::RateType }
-
-              # @!attribute credit_type
-              #
-              #   @return [MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse::Data::Rate::CreditType, nil]
-              optional :credit_type,
-                       -> { MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse::Data::Rate::CreditType }
-
-              # @!attribute custom_rate
-              #   Only set for CUSTOM rate_type. This field is interpreted by custom rate
-              #   processors.
-              #
-              #   @return [Hash{Symbol=>Object}, nil]
-              optional :custom_rate,
-                       MetronomeSDK::Internal::Type::HashOf[MetronomeSDK::Internal::Type::Unknown]
-
-              # @!attribute is_prorated
-              #   Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
-              #   set to true.
-              #
-              #   @return [Boolean, nil]
-              optional :is_prorated, MetronomeSDK::Internal::Type::Boolean
-
-              # @!attribute price
-              #   Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
-              #   this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
-              #
-              #   @return [Float, nil]
-              optional :price, Float
-
-              # @!attribute pricing_group_values
-              #   if pricing groups are used, this will contain the values used to calculate the
-              #   price
-              #
-              #   @return [Hash{Symbol=>String}, nil]
-              optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
-
-              # @!attribute quantity
-              #   Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
-              #
-              #   @return [Float, nil]
-              optional :quantity, Float
-
-              # @!attribute tiers
-              #   Only set for TIERED rate_type.
-              #
-              #   @return [Array<MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse::Data::Rate::Tier>, nil]
-              optional :tiers,
-                       -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse::Data::Rate::Tier] }
-
-              # @!attribute use_list_prices
-              #   Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
-              #   using list prices rather than the standard rates for this product on the
-              #   contract.
-              #
-              #   @return [Boolean, nil]
-              optional :use_list_prices, MetronomeSDK::Internal::Type::Boolean
-
-              # @!method initialize(rate_type:, credit_type: nil, custom_rate: nil, is_prorated: nil, price: nil, pricing_group_values: nil, quantity: nil, tiers: nil, use_list_prices: nil)
-              #   Some parameter documentations has been truncated, see
-              #   {MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse::Data::Rate}
-              #   for more details.
-              #
-              #   @param rate_type [Symbol, MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse::Data::Rate::RateType]
-              #
-              #   @param credit_type [MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse::Data::Rate::CreditType]
-              #
-              #   @param custom_rate [Hash{Symbol=>Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate processo
-              #
-              #   @param is_prorated [Boolean] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
-              #
-              #   @param price [Float] Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type, t
-              #
-              #   @param pricing_group_values [Hash{Symbol=>String}] if pricing groups are used, this will contain the values used to calculate the p
-              #
-              #   @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
-              #
-              #   @param tiers [Array<MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse::Data::Rate::Tier>] Only set for TIERED rate_type.
-              #
-              #   @param use_list_prices [Boolean] Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
-
-              # @see MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse::Data::Rate#rate_type
-              module RateType
-                extend MetronomeSDK::Internal::Type::Enum
-
-                FLAT = :FLAT
-                PERCENTAGE = :PERCENTAGE
-                SUBSCRIPTION = :SUBSCRIPTION
-                CUSTOM = :CUSTOM
-                TIERED = :TIERED
-
-                # @!method self.values
-                #   @return [Array<Symbol>]
-              end
-
-              # @see MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse::Data::Rate#credit_type
-              class CreditType < MetronomeSDK::Internal::Type::BaseModel
-                # @!attribute id
-                #
-                #   @return [String]
-                required :id, String
-
-                # @!attribute name
-                #
-                #   @return [String]
-                required :name, String
-
-                # @!method initialize(id:, name:)
-                #   @param id [String]
-                #   @param name [String]
-              end
-
-              class Tier < MetronomeSDK::Internal::Type::BaseModel
-                # @!attribute price
-                #
-                #   @return [Float]
-                required :price, Float
-
-                # @!attribute size
-                #
-                #   @return [Float, nil]
-                optional :size, Float
-
-                # @!method initialize(price:, size: nil)
-                #   @param price [Float]
-                #   @param size [Float]
-              end
-            end
 
             # @see MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse::Data#billing_frequency
             module BillingFrequency
@@ -274,9 +138,8 @@ module MetronomeSDK
               # @!attribute tiers
               #   Only set for TIERED rate_type.
               #
-              #   @return [Array<MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse::Data::CommitRate::Tier>, nil]
-              optional :tiers,
-                       -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse::Data::CommitRate::Tier] }
+              #   @return [Array<MetronomeSDK::Models::Tier>, nil]
+              optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
 
               # @!method initialize(rate_type:, price: nil, tiers: nil)
               #   A distinct rate on the rate card. You can choose to use this rate rather than
@@ -286,7 +149,7 @@ module MetronomeSDK
               #
               #   @param price [Float] Commit rate price. For FLAT rate_type, this must be >=0.
               #
-              #   @param tiers [Array<MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse::Data::CommitRate::Tier>] Only set for TIERED rate_type.
+              #   @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
 
               # @see MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse::Data::CommitRate#rate_type
               module RateType
@@ -300,22 +163,6 @@ module MetronomeSDK
 
                 # @!method self.values
                 #   @return [Array<Symbol>]
-              end
-
-              class Tier < MetronomeSDK::Internal::Type::BaseModel
-                # @!attribute price
-                #
-                #   @return [Float]
-                required :price, Float
-
-                # @!attribute size
-                #
-                #   @return [Float, nil]
-                optional :size, Float
-
-                # @!method initialize(price:, size: nil)
-                #   @param price [Float]
-                #   @param size [Float]
               end
             end
           end

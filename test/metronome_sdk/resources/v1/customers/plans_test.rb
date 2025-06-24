@@ -46,7 +46,7 @@ class MetronomeSDK::Test::Resources::V1::Customers::PlansTest < MetronomeSDK::Te
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::Customers::PlanAddResponse::Data
+        data: MetronomeSDK::ID
       }
     end
   end

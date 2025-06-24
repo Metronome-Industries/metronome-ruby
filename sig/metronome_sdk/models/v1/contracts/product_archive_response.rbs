@@ -2,31 +2,14 @@ module MetronomeSDK
   module Models
     module V1
       module Contracts
-        type product_archive_response =
-          {
-            data: MetronomeSDK::Models::V1::Contracts::ProductArchiveResponse::Data
-          }
+        type product_archive_response = { data: MetronomeSDK::ID }
 
         class ProductArchiveResponse < MetronomeSDK::Internal::Type::BaseModel
-          attr_accessor data: MetronomeSDK::Models::V1::Contracts::ProductArchiveResponse::Data
+          attr_accessor data: MetronomeSDK::ID
 
-          def initialize: (
-            data: MetronomeSDK::Models::V1::Contracts::ProductArchiveResponse::Data
-          ) -> void
+          def initialize: (data: MetronomeSDK::ID) -> void
 
-          def to_hash: -> {
-            data: MetronomeSDK::Models::V1::Contracts::ProductArchiveResponse::Data
-          }
-
-          type data = { id: String }
-
-          class Data < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor id: String
-
-            def initialize: (id: String) -> void
-
-            def to_hash: -> { id: String }
-          end
+          def to_hash: -> { data: MetronomeSDK::ID }
         end
       end
     end
