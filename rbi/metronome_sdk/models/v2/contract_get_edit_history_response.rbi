@@ -99,11 +99,24 @@ module MetronomeSDK
           end
           attr_writer :add_credits
 
-          sig { returns(T.nilable(T::Array[MetronomeSDK::Discount])) }
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount
+                ]
+              )
+            )
+          end
           attr_reader :add_discounts
 
           sig do
-            params(add_discounts: T::Array[MetronomeSDK::Discount::OrHash]).void
+            params(
+              add_discounts:
+                T::Array[
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::OrHash
+                ]
+            ).void
           end
           attr_writer :add_discounts
 
@@ -145,12 +158,23 @@ module MetronomeSDK
           end
           attr_writer :add_prepaid_balance_threshold_configuration
 
-          sig { returns(T.nilable(T::Array[MetronomeSDK::ProService])) }
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddProService
+                ]
+              )
+            )
+          end
           attr_reader :add_pro_services
 
           sig do
             params(
-              add_pro_services: T::Array[MetronomeSDK::ProService::OrHash]
+              add_pro_services:
+                T::Array[
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddProService::OrHash
+                ]
             ).void
           end
           attr_writer :add_pro_services
@@ -609,14 +633,20 @@ module MetronomeSDK
                 T::Array[
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::OrHash
                 ],
-              add_discounts: T::Array[MetronomeSDK::Discount::OrHash],
+              add_discounts:
+                T::Array[
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::OrHash
+                ],
               add_overrides:
                 T::Array[
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OrHash
                 ],
               add_prepaid_balance_threshold_configuration:
                 MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::OrHash,
-              add_pro_services: T::Array[MetronomeSDK::ProService::OrHash],
+              add_pro_services:
+                T::Array[
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddProService::OrHash
+                ],
               add_recurring_commits:
                 T::Array[
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::OrHash
@@ -747,14 +777,20 @@ module MetronomeSDK
                   T::Array[
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit
                   ],
-                add_discounts: T::Array[MetronomeSDK::Discount],
+                add_discounts:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount
+                  ],
                 add_overrides:
                   T::Array[
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride
                   ],
                 add_prepaid_balance_threshold_configuration:
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration,
-                add_pro_services: T::Array[MetronomeSDK::ProService],
+                add_pro_services:
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddProService
+                  ],
                 add_recurring_commits:
                   T::Array[
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit
@@ -877,12 +913,19 @@ module MetronomeSDK
 
             # The schedule that the customer will gain access to the credits purposed with
             # this commit.
-            sig { returns(T.nilable(MetronomeSDK::ScheduleDuration)) }
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule
+                )
+              )
+            end
             attr_reader :access_schedule
 
             sig do
               params(
-                access_schedule: MetronomeSDK::ScheduleDuration::OrHash
+                access_schedule:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule::OrHash
               ).void
             end
             attr_writer :access_schedule
@@ -906,12 +949,19 @@ module MetronomeSDK
             attr_writer :description
 
             # The schedule that the customer will be invoiced for this commit.
-            sig { returns(T.nilable(MetronomeSDK::SchedulePointInTime)) }
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule
+                )
+              )
+            end
             attr_reader :invoice_schedule
 
             sig do
               params(
-                invoice_schedule: MetronomeSDK::SchedulePointInTime::OrHash
+                invoice_schedule:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::OrHash
               ).void
             end
             attr_writer :invoice_schedule
@@ -999,11 +1049,13 @@ module MetronomeSDK
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Product::OrHash,
                 type:
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Type::OrSymbol,
-                access_schedule: MetronomeSDK::ScheduleDuration::OrHash,
+                access_schedule:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule::OrHash,
                 applicable_product_ids: T::Array[String],
                 applicable_product_tags: T::Array[String],
                 description: String,
-                invoice_schedule: MetronomeSDK::SchedulePointInTime::OrHash,
+                invoice_schedule:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::OrHash,
                 name: String,
                 netsuite_sales_order_id: String,
                 priority: Float,
@@ -1055,11 +1107,13 @@ module MetronomeSDK
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Product,
                   type:
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Type::TaggedSymbol,
-                  access_schedule: MetronomeSDK::ScheduleDuration,
+                  access_schedule:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule,
                   applicable_product_ids: T::Array[String],
                   applicable_product_tags: T::Array[String],
                   description: String,
-                  invoice_schedule: MetronomeSDK::SchedulePointInTime,
+                  invoice_schedule:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule,
                   name: String,
                   netsuite_sales_order_id: String,
                   priority: Float,
@@ -1132,6 +1186,310 @@ module MetronomeSDK
                 )
               end
               def self.values
+              end
+            end
+
+            class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig do
+                returns(
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule::ScheduleItem
+                  ]
+                )
+              end
+              attr_accessor :schedule_items
+
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule::CreditType
+                  )
+                )
+              end
+              attr_reader :credit_type
+
+              sig do
+                params(
+                  credit_type:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule::CreditType::OrHash
+                ).void
+              end
+              attr_writer :credit_type
+
+              # The schedule that the customer will gain access to the credits purposed with
+              # this commit.
+              sig do
+                params(
+                  schedule_items:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule::ScheduleItem::OrHash
+                    ],
+                  credit_type:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule::CreditType::OrHash
+                ).returns(T.attached_class)
+              end
+              def self.new(schedule_items:, credit_type: nil)
+              end
+
+              sig do
+                override.returns(
+                  {
+                    schedule_items:
+                      T::Array[
+                        MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule::ScheduleItem
+                      ],
+                    credit_type:
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule::CreditType
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule::ScheduleItem,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :id
+
+                sig { returns(Float) }
+                attr_accessor :amount
+
+                sig { returns(Time) }
+                attr_accessor :ending_before
+
+                sig { returns(Time) }
+                attr_accessor :starting_at
+
+                sig do
+                  params(
+                    id: String,
+                    amount: Float,
+                    ending_before: Time,
+                    starting_at: Time
+                  ).returns(T.attached_class)
+                end
+                def self.new(id:, amount:, ending_before:, starting_at:)
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      id: String,
+                      amount: Float,
+                      ending_before: Time,
+                      starting_at: Time
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule::CreditType,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :id
+
+                sig { returns(String) }
+                attr_accessor :name
+
+                sig do
+                  params(id: String, name: String).returns(T.attached_class)
+                end
+                def self.new(id:, name:)
+                end
+
+                sig { override.returns({ id: String, name: String }) }
+                def to_hash
+                end
+              end
+            end
+
+            class InvoiceSchedule < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::CreditType
+                  )
+                )
+              end
+              attr_reader :credit_type
+
+              sig do
+                params(
+                  credit_type:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::CreditType::OrHash
+                ).void
+              end
+              attr_writer :credit_type
+
+              sig do
+                returns(
+                  T.nilable(
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::ScheduleItem
+                    ]
+                  )
+                )
+              end
+              attr_reader :schedule_items
+
+              sig do
+                params(
+                  schedule_items:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::ScheduleItem::OrHash
+                    ]
+                ).void
+              end
+              attr_writer :schedule_items
+
+              # The schedule that the customer will be invoiced for this commit.
+              sig do
+                params(
+                  credit_type:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::CreditType::OrHash,
+                  schedule_items:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::ScheduleItem::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(credit_type: nil, schedule_items: nil)
+              end
+
+              sig do
+                override.returns(
+                  {
+                    credit_type:
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::CreditType,
+                    schedule_items:
+                      T::Array[
+                        MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::ScheduleItem
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::CreditType,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :id
+
+                sig { returns(String) }
+                attr_accessor :name
+
+                sig do
+                  params(id: String, name: String).returns(T.attached_class)
+                end
+                def self.new(id:, name:)
+                end
+
+                sig { override.returns({ id: String, name: String }) }
+                def to_hash
+                end
+              end
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::ScheduleItem,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :id
+
+                sig { returns(Float) }
+                attr_accessor :amount
+
+                sig { returns(String) }
+                attr_accessor :invoice_id
+
+                sig { returns(Float) }
+                attr_accessor :quantity
+
+                sig { returns(Time) }
+                attr_accessor :timestamp
+
+                sig { returns(Float) }
+                attr_accessor :unit_price
+
+                sig do
+                  params(
+                    id: String,
+                    amount: Float,
+                    invoice_id: String,
+                    quantity: Float,
+                    timestamp: Time,
+                    unit_price: Float
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  id:,
+                  amount:,
+                  invoice_id:,
+                  quantity:,
+                  timestamp:,
+                  unit_price:
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      id: String,
+                      amount: Float,
+                      invoice_id: String,
+                      quantity: Float,
+                      timestamp: Time,
+                      unit_price: Float
+                    }
+                  )
+                end
+                def to_hash
+                end
               end
             end
 
@@ -1276,12 +1634,19 @@ module MetronomeSDK
             attr_accessor :type
 
             # The schedule that the customer will gain access to the credits.
-            sig { returns(T.nilable(MetronomeSDK::ScheduleDuration)) }
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule
+                )
+              )
+            end
             attr_reader :access_schedule
 
             sig do
               params(
-                access_schedule: MetronomeSDK::ScheduleDuration::OrHash
+                access_schedule:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule::OrHash
               ).void
             end
             attr_writer :access_schedule
@@ -1364,7 +1729,8 @@ module MetronomeSDK
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Product::OrHash,
                 type:
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Type::OrSymbol,
-                access_schedule: MetronomeSDK::ScheduleDuration::OrHash,
+                access_schedule:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule::OrHash,
                 applicable_product_ids: T::Array[String],
                 applicable_product_tags: T::Array[String],
                 description: String,
@@ -1411,7 +1777,8 @@ module MetronomeSDK
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Product,
                   type:
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Type::TaggedSymbol,
-                  access_schedule: MetronomeSDK::ScheduleDuration,
+                  access_schedule:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule,
                   applicable_product_ids: T::Array[String],
                   applicable_product_tags: T::Array[String],
                   description: String,
@@ -1479,6 +1846,143 @@ module MetronomeSDK
                 )
               end
               def self.values
+              end
+            end
+
+            class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig do
+                returns(
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule::ScheduleItem
+                  ]
+                )
+              end
+              attr_accessor :schedule_items
+
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule::CreditType
+                  )
+                )
+              end
+              attr_reader :credit_type
+
+              sig do
+                params(
+                  credit_type:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule::CreditType::OrHash
+                ).void
+              end
+              attr_writer :credit_type
+
+              # The schedule that the customer will gain access to the credits.
+              sig do
+                params(
+                  schedule_items:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule::ScheduleItem::OrHash
+                    ],
+                  credit_type:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule::CreditType::OrHash
+                ).returns(T.attached_class)
+              end
+              def self.new(schedule_items:, credit_type: nil)
+              end
+
+              sig do
+                override.returns(
+                  {
+                    schedule_items:
+                      T::Array[
+                        MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule::ScheduleItem
+                      ],
+                    credit_type:
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule::CreditType
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule::ScheduleItem,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :id
+
+                sig { returns(Float) }
+                attr_accessor :amount
+
+                sig { returns(Time) }
+                attr_accessor :ending_before
+
+                sig { returns(Time) }
+                attr_accessor :starting_at
+
+                sig do
+                  params(
+                    id: String,
+                    amount: Float,
+                    ending_before: Time,
+                    starting_at: Time
+                  ).returns(T.attached_class)
+                end
+                def self.new(id:, amount:, ending_before:, starting_at:)
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      id: String,
+                      amount: Float,
+                      ending_before: Time,
+                      starting_at: Time
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
+
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule::CreditType,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :id
+
+                sig { returns(String) }
+                attr_accessor :name
+
+                sig do
+                  params(id: String, name: String).returns(T.attached_class)
+                end
+                def self.new(id:, name:)
+                end
+
+                sig { override.returns({ id: String, name: String }) }
+                def to_hash
+                end
               end
             end
 
@@ -1550,6 +2054,297 @@ module MetronomeSDK
                 )
               end
               def to_hash
+              end
+            end
+          end
+
+          class AddDiscount < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig { returns(String) }
+            attr_accessor :id
+
+            sig do
+              returns(
+                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Product
+              )
+            end
+            attr_reader :product
+
+            sig do
+              params(
+                product:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Product::OrHash
+              ).void
+            end
+            attr_writer :product
+
+            sig do
+              returns(
+                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule
+              )
+            end
+            attr_reader :schedule
+
+            sig do
+              params(
+                schedule:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule::OrHash
+              ).void
+            end
+            attr_writer :schedule
+
+            sig { returns(T.nilable(T::Hash[Symbol, String])) }
+            attr_reader :custom_fields
+
+            sig { params(custom_fields: T::Hash[Symbol, String]).void }
+            attr_writer :custom_fields
+
+            sig { returns(T.nilable(String)) }
+            attr_reader :name
+
+            sig { params(name: String).void }
+            attr_writer :name
+
+            # This field's availability is dependent on your client's configuration.
+            sig { returns(T.nilable(String)) }
+            attr_reader :netsuite_sales_order_id
+
+            sig { params(netsuite_sales_order_id: String).void }
+            attr_writer :netsuite_sales_order_id
+
+            sig do
+              params(
+                id: String,
+                product:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Product::OrHash,
+                schedule:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule::OrHash,
+                custom_fields: T::Hash[Symbol, String],
+                name: String,
+                netsuite_sales_order_id: String
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              id:,
+              product:,
+              schedule:,
+              custom_fields: nil,
+              name: nil,
+              # This field's availability is dependent on your client's configuration.
+              netsuite_sales_order_id: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  id: String,
+                  product:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Product,
+                  schedule:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule,
+                  custom_fields: T::Hash[Symbol, String],
+                  name: String,
+                  netsuite_sales_order_id: String
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class Product < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Product,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(String) }
+              attr_accessor :id
+
+              sig { returns(String) }
+              attr_accessor :name
+
+              sig { params(id: String, name: String).returns(T.attached_class) }
+              def self.new(id:, name:)
+              end
+
+              sig { override.returns({ id: String, name: String }) }
+              def to_hash
+              end
+            end
+
+            class Schedule < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule::CreditType
+                  )
+                )
+              end
+              attr_reader :credit_type
+
+              sig do
+                params(
+                  credit_type:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule::CreditType::OrHash
+                ).void
+              end
+              attr_writer :credit_type
+
+              sig do
+                returns(
+                  T.nilable(
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule::ScheduleItem
+                    ]
+                  )
+                )
+              end
+              attr_reader :schedule_items
+
+              sig do
+                params(
+                  schedule_items:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule::ScheduleItem::OrHash
+                    ]
+                ).void
+              end
+              attr_writer :schedule_items
+
+              sig do
+                params(
+                  credit_type:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule::CreditType::OrHash,
+                  schedule_items:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule::ScheduleItem::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(credit_type: nil, schedule_items: nil)
+              end
+
+              sig do
+                override.returns(
+                  {
+                    credit_type:
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule::CreditType,
+                    schedule_items:
+                      T::Array[
+                        MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule::ScheduleItem
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule::CreditType,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :id
+
+                sig { returns(String) }
+                attr_accessor :name
+
+                sig do
+                  params(id: String, name: String).returns(T.attached_class)
+                end
+                def self.new(id:, name:)
+                end
+
+                sig { override.returns({ id: String, name: String }) }
+                def to_hash
+                end
+              end
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule::ScheduleItem,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :id
+
+                sig { returns(Float) }
+                attr_accessor :amount
+
+                sig { returns(String) }
+                attr_accessor :invoice_id
+
+                sig { returns(Float) }
+                attr_accessor :quantity
+
+                sig { returns(Time) }
+                attr_accessor :timestamp
+
+                sig { returns(Float) }
+                attr_accessor :unit_price
+
+                sig do
+                  params(
+                    id: String,
+                    amount: Float,
+                    invoice_id: String,
+                    quantity: Float,
+                    timestamp: Time,
+                    unit_price: Float
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  id:,
+                  amount:,
+                  invoice_id:,
+                  quantity:,
+                  timestamp:,
+                  unit_price:
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      id: String,
+                      amount: Float,
+                      invoice_id: String,
+                      quantity: Float,
+                      timestamp: Time,
+                      unit_price: Float
+                    }
+                  )
+                end
+                def to_hash
+                end
               end
             end
           end
@@ -2000,11 +2795,20 @@ module MetronomeSDK
               end
               attr_accessor :rate_type
 
-              sig { returns(T.nilable(MetronomeSDK::CreditTypeData)) }
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::CreditType
+                  )
+                )
+              end
               attr_reader :credit_type
 
               sig do
-                params(credit_type: MetronomeSDK::CreditTypeData::OrHash).void
+                params(
+                  credit_type:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::CreditType::OrHash
+                ).void
               end
               attr_writer :credit_type
 
@@ -2040,22 +2844,41 @@ module MetronomeSDK
               attr_writer :quantity
 
               # Only set for TIERED rate_type.
-              sig { returns(T.nilable(T::Array[MetronomeSDK::Tier])) }
+              sig do
+                returns(
+                  T.nilable(
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::Tier
+                    ]
+                  )
+                )
+              end
               attr_reader :tiers
 
-              sig { params(tiers: T::Array[MetronomeSDK::Tier::OrHash]).void }
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::Tier::OrHash
+                    ]
+                ).void
+              end
               attr_writer :tiers
 
               sig do
                 params(
                   rate_type:
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::RateType::OrSymbol,
-                  credit_type: MetronomeSDK::CreditTypeData::OrHash,
+                  credit_type:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::CreditType::OrHash,
                   custom_rate: T::Hash[Symbol, T.anything],
                   is_prorated: T::Boolean,
                   price: Float,
                   quantity: Float,
-                  tiers: T::Array[MetronomeSDK::Tier::OrHash]
+                  tiers:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::Tier::OrHash
+                    ]
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -2082,12 +2905,16 @@ module MetronomeSDK
                   {
                     rate_type:
                       MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::RateType::TaggedSymbol,
-                    credit_type: MetronomeSDK::CreditTypeData,
+                    credit_type:
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::CreditType,
                     custom_rate: T::Hash[Symbol, T.anything],
                     is_prorated: T::Boolean,
                     price: Float,
                     quantity: Float,
-                    tiers: T::Array[MetronomeSDK::Tier]
+                    tiers:
+                      T::Array[
+                        MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::Tier
+                      ]
                   }
                 )
               end
@@ -2140,6 +2967,61 @@ module MetronomeSDK
                   )
                 end
                 def self.values
+                end
+              end
+
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::CreditType,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :id
+
+                sig { returns(String) }
+                attr_accessor :name
+
+                sig do
+                  params(id: String, name: String).returns(T.attached_class)
+                end
+                def self.new(id:, name:)
+                end
+
+                sig { override.returns({ id: String, name: String }) }
+                def to_hash
+                end
+              end
+
+              class Tier < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::Tier,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(Float) }
+                attr_accessor :price
+
+                sig { returns(T.nilable(Float)) }
+                attr_reader :size
+
+                sig { params(size: Float).void }
+                attr_writer :size
+
+                sig do
+                  params(price: Float, size: Float).returns(T.attached_class)
+                end
+                def self.new(price:, size: nil)
+                end
+
+                sig { override.returns({ price: Float, size: Float }) }
+                def to_hash
                 end
               end
             end
@@ -2792,6 +3674,102 @@ module MetronomeSDK
                 def self.values
                 end
               end
+            end
+          end
+
+          class AddProService < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddProService,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig { returns(String) }
+            attr_accessor :id
+
+            # Maximum amount for the term.
+            sig { returns(Float) }
+            attr_accessor :max_amount
+
+            sig { returns(String) }
+            attr_accessor :product_id
+
+            # Quantity for the charge. Will be multiplied by unit_price to determine the
+            # amount.
+            sig { returns(Float) }
+            attr_accessor :quantity
+
+            # Unit price for the charge. Will be multiplied by quantity to determine the
+            # amount and must be specified.
+            sig { returns(Float) }
+            attr_accessor :unit_price
+
+            sig { returns(T.nilable(T::Hash[Symbol, String])) }
+            attr_reader :custom_fields
+
+            sig { params(custom_fields: T::Hash[Symbol, String]).void }
+            attr_writer :custom_fields
+
+            sig { returns(T.nilable(String)) }
+            attr_reader :description
+
+            sig { params(description: String).void }
+            attr_writer :description
+
+            # This field's availability is dependent on your client's configuration.
+            sig { returns(T.nilable(String)) }
+            attr_reader :netsuite_sales_order_id
+
+            sig { params(netsuite_sales_order_id: String).void }
+            attr_writer :netsuite_sales_order_id
+
+            sig do
+              params(
+                id: String,
+                max_amount: Float,
+                product_id: String,
+                quantity: Float,
+                unit_price: Float,
+                custom_fields: T::Hash[Symbol, String],
+                description: String,
+                netsuite_sales_order_id: String
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              id:,
+              # Maximum amount for the term.
+              max_amount:,
+              product_id:,
+              # Quantity for the charge. Will be multiplied by unit_price to determine the
+              # amount.
+              quantity:,
+              # Unit price for the charge. Will be multiplied by quantity to determine the
+              # amount and must be specified.
+              unit_price:,
+              custom_fields: nil,
+              description: nil,
+              # This field's availability is dependent on your client's configuration.
+              netsuite_sales_order_id: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  id: String,
+                  max_amount: Float,
+                  product_id: String,
+                  quantity: Float,
+                  unit_price: Float,
+                  custom_fields: T::Hash[Symbol, String],
+                  description: String,
+                  netsuite_sales_order_id: String
+                }
+              )
+            end
+            def to_hash
             end
           end
 
@@ -4464,11 +5442,18 @@ module MetronomeSDK
             end
             attr_writer :product
 
-            sig { returns(MetronomeSDK::SchedulePointInTime) }
+            sig do
+              returns(
+                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule
+              )
+            end
             attr_reader :schedule
 
             sig do
-              params(schedule: MetronomeSDK::SchedulePointInTime::OrHash).void
+              params(
+                schedule:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule::OrHash
+              ).void
             end
             attr_writer :schedule
 
@@ -4491,7 +5476,8 @@ module MetronomeSDK
                 id: String,
                 product:
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Product::OrHash,
-                schedule: MetronomeSDK::SchedulePointInTime::OrHash,
+                schedule:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule::OrHash,
                 name: String,
                 netsuite_sales_order_id: String
               ).returns(T.attached_class)
@@ -4513,7 +5499,8 @@ module MetronomeSDK
                   id: String,
                   product:
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Product,
-                  schedule: MetronomeSDK::SchedulePointInTime,
+                  schedule:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule,
                   name: String,
                   netsuite_sales_order_id: String
                 }
@@ -4543,6 +5530,171 @@ module MetronomeSDK
 
               sig { override.returns({ id: String, name: String }) }
               def to_hash
+              end
+            end
+
+            class Schedule < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule::CreditType
+                  )
+                )
+              end
+              attr_reader :credit_type
+
+              sig do
+                params(
+                  credit_type:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule::CreditType::OrHash
+                ).void
+              end
+              attr_writer :credit_type
+
+              sig do
+                returns(
+                  T.nilable(
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule::ScheduleItem
+                    ]
+                  )
+                )
+              end
+              attr_reader :schedule_items
+
+              sig do
+                params(
+                  schedule_items:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule::ScheduleItem::OrHash
+                    ]
+                ).void
+              end
+              attr_writer :schedule_items
+
+              sig do
+                params(
+                  credit_type:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule::CreditType::OrHash,
+                  schedule_items:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule::ScheduleItem::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(credit_type: nil, schedule_items: nil)
+              end
+
+              sig do
+                override.returns(
+                  {
+                    credit_type:
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule::CreditType,
+                    schedule_items:
+                      T::Array[
+                        MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule::ScheduleItem
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule::CreditType,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :id
+
+                sig { returns(String) }
+                attr_accessor :name
+
+                sig do
+                  params(id: String, name: String).returns(T.attached_class)
+                end
+                def self.new(id:, name:)
+                end
+
+                sig { override.returns({ id: String, name: String }) }
+                def to_hash
+                end
+              end
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule::ScheduleItem,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :id
+
+                sig { returns(Float) }
+                attr_accessor :amount
+
+                sig { returns(String) }
+                attr_accessor :invoice_id
+
+                sig { returns(Float) }
+                attr_accessor :quantity
+
+                sig { returns(Time) }
+                attr_accessor :timestamp
+
+                sig { returns(Float) }
+                attr_accessor :unit_price
+
+                sig do
+                  params(
+                    id: String,
+                    amount: Float,
+                    invoice_id: String,
+                    quantity: Float,
+                    timestamp: Time,
+                    unit_price: Float
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  id:,
+                  amount:,
+                  invoice_id:,
+                  quantity:,
+                  timestamp:,
+                  unit_price:
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      id: String,
+                      amount: Float,
+                      invoice_id: String,
+                      quantity: Float,
+                      timestamp: Time,
+                      unit_price: Float
+                    }
+                  )
+                end
+                def to_hash
+                end
               end
             end
           end

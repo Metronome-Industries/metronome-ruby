@@ -179,10 +179,25 @@ module MetronomeSDK
               attr_writer :quantity
 
               # Only set for TIERED rate_type.
-              sig { returns(T.nilable(T::Array[MetronomeSDK::Tier])) }
+              sig do
+                returns(
+                  T.nilable(
+                    T::Array[
+                      MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::Tier
+                    ]
+                  )
+                )
+              end
               attr_reader :tiers
 
-              sig { params(tiers: T::Array[MetronomeSDK::Tier::OrHash]).void }
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::Tier::OrHash
+                    ]
+                ).void
+              end
               attr_writer :tiers
 
               # Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
@@ -212,7 +227,10 @@ module MetronomeSDK
                   price: Float,
                   pricing_group_values: T::Hash[Symbol, String],
                   quantity: Float,
-                  tiers: T::Array[MetronomeSDK::Tier::OrHash],
+                  tiers:
+                    T::Array[
+                      MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::Tier::OrHash
+                    ],
                   use_list_prices: T::Boolean
                 ).returns(T.attached_class)
               end
@@ -278,7 +296,10 @@ module MetronomeSDK
                     price: Float,
                     pricing_group_values: T::Hash[Symbol, String],
                     quantity: Float,
-                    tiers: T::Array[MetronomeSDK::Tier],
+                    tiers:
+                      T::Array[
+                        MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::Tier
+                      ],
                     use_list_prices: T::Boolean
                   }
                 )
@@ -405,10 +426,25 @@ module MetronomeSDK
                 attr_writer :price
 
                 # Only set for TIERED rate_type.
-                sig { returns(T.nilable(T::Array[MetronomeSDK::Tier])) }
+                sig do
+                  returns(
+                    T.nilable(
+                      T::Array[
+                        MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::Tier
+                      ]
+                    )
+                  )
+                end
                 attr_reader :tiers
 
-                sig { params(tiers: T::Array[MetronomeSDK::Tier::OrHash]).void }
+                sig do
+                  params(
+                    tiers:
+                      T::Array[
+                        MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::Tier::OrHash
+                      ]
+                  ).void
+                end
                 attr_writer :tiers
 
                 # A distinct rate on the rate card. You can choose to use this rate rather than
@@ -418,7 +454,10 @@ module MetronomeSDK
                     rate_type:
                       MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::RateType::OrSymbol,
                     price: Float,
-                    tiers: T::Array[MetronomeSDK::Tier::OrHash]
+                    tiers:
+                      T::Array[
+                        MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::Tier::OrHash
+                      ]
                   ).returns(T.attached_class)
                 end
                 def self.new(
@@ -436,7 +475,10 @@ module MetronomeSDK
                       rate_type:
                         MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::RateType::OrSymbol,
                       price: Float,
-                      tiers: T::Array[MetronomeSDK::Tier]
+                      tiers:
+                        T::Array[
+                          MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::Tier
+                        ]
                     }
                   )
                 end
@@ -490,6 +532,64 @@ module MetronomeSDK
                   end
                   def self.values
                   end
+                end
+
+                class Tier < MetronomeSDK::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::Tier,
+                        MetronomeSDK::Internal::AnyHash
+                      )
+                    end
+
+                  sig { returns(Float) }
+                  attr_accessor :price
+
+                  sig { returns(T.nilable(Float)) }
+                  attr_reader :size
+
+                  sig { params(size: Float).void }
+                  attr_writer :size
+
+                  sig do
+                    params(price: Float, size: Float).returns(T.attached_class)
+                  end
+                  def self.new(price:, size: nil)
+                  end
+
+                  sig { override.returns({ price: Float, size: Float }) }
+                  def to_hash
+                  end
+                end
+              end
+
+              class Tier < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::Tier,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(Float) }
+                attr_accessor :price
+
+                sig { returns(T.nilable(Float)) }
+                attr_reader :size
+
+                sig { params(size: Float).void }
+                attr_writer :size
+
+                sig do
+                  params(price: Float, size: Float).returns(T.attached_class)
+                end
+                def self.new(price:, size: nil)
+                end
+
+                sig { override.returns({ price: Float, size: Float }) }
+                def to_hash
                 end
               end
             end
