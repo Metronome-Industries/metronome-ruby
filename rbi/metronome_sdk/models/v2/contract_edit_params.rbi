@@ -3294,25 +3294,10 @@ module MetronomeSDK
             attr_writer :quantity
 
             # Only set for TIERED rate_type.
-            sig do
-              returns(
-                T.nilable(
-                  T::Array[
-                    MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier
-                  ]
-                )
-              )
-            end
+            sig { returns(T.nilable(T::Array[MetronomeSDK::Tier])) }
             attr_reader :tiers
 
-            sig do
-              params(
-                tiers:
-                  T::Array[
-                    MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier::OrHash
-                  ]
-              ).void
-            end
+            sig { params(tiers: T::Array[MetronomeSDK::Tier::OrHash]).void }
             attr_writer :tiers
 
             # Required for OVERWRITE type.
@@ -3325,10 +3310,7 @@ module MetronomeSDK
                 is_prorated: T::Boolean,
                 price: Float,
                 quantity: Float,
-                tiers:
-                  T::Array[
-                    MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier::OrHash
-                  ]
+                tiers: T::Array[MetronomeSDK::Tier::OrHash]
               ).returns(T.attached_class)
             end
             def self.new(
@@ -3360,10 +3342,7 @@ module MetronomeSDK
                   is_prorated: T::Boolean,
                   price: Float,
                   quantity: Float,
-                  tiers:
-                    T::Array[
-                      MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier
-                    ]
+                  tiers: T::Array[MetronomeSDK::Tier]
                 }
               )
             end
@@ -3416,35 +3395,6 @@ module MetronomeSDK
                 )
               end
               def self.values
-              end
-            end
-
-            class Tier < MetronomeSDK::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias do
-                  T.any(
-                    MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier,
-                    MetronomeSDK::Internal::AnyHash
-                  )
-                end
-
-              sig { returns(Float) }
-              attr_accessor :price
-
-              sig { returns(T.nilable(Float)) }
-              attr_reader :size
-
-              sig { params(size: Float).void }
-              attr_writer :size
-
-              sig do
-                params(price: Float, size: Float).returns(T.attached_class)
-              end
-              def self.new(price:, size: nil)
-              end
-
-              sig { override.returns({ price: Float, size: Float }) }
-              def to_hash
               end
             end
           end
@@ -8215,18 +8165,12 @@ module MetronomeSDK
             # and applicable_product_tags are not provided, the commit applies to all
             # products.
             sig { returns(T.nilable(T::Array[String])) }
-            attr_reader :applicable_product_ids
-
-            sig { params(applicable_product_ids: T::Array[String]).void }
-            attr_writer :applicable_product_ids
+            attr_accessor :applicable_product_ids
 
             # Which tags the threshold commit applies to. If both applicable_product_ids and
             # applicable_product_tags are not provided, the commit applies to all products.
             sig { returns(T.nilable(T::Array[String])) }
-            attr_reader :applicable_product_tags
-
-            sig { params(applicable_product_tags: T::Array[String]).void }
-            attr_writer :applicable_product_tags
+            attr_accessor :applicable_product_tags
 
             sig { returns(T.nilable(String)) }
             attr_reader :description
@@ -8263,29 +8207,21 @@ module MetronomeSDK
                 )
               )
             end
-            attr_reader :specifiers
+            attr_accessor :specifiers
 
             sig do
               params(
-                specifiers:
-                  T::Array[
-                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier::OrHash
-                  ]
-              ).void
-            end
-            attr_writer :specifiers
-
-            sig do
-              params(
-                applicable_product_ids: T::Array[String],
-                applicable_product_tags: T::Array[String],
+                applicable_product_ids: T.nilable(T::Array[String]),
+                applicable_product_tags: T.nilable(T::Array[String]),
                 description: String,
                 name: String,
                 product_id: String,
                 specifiers:
-                  T::Array[
-                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier::OrHash
-                  ]
+                  T.nilable(
+                    T::Array[
+                      MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier::OrHash
+                    ]
+                  )
               ).returns(T.attached_class)
             end
             def self.new(
@@ -8314,15 +8250,17 @@ module MetronomeSDK
             sig do
               override.returns(
                 {
-                  applicable_product_ids: T::Array[String],
-                  applicable_product_tags: T::Array[String],
+                  applicable_product_ids: T.nilable(T::Array[String]),
+                  applicable_product_tags: T.nilable(T::Array[String]),
                   description: String,
                   name: String,
                   product_id: String,
                   specifiers:
-                    T::Array[
-                      MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier
-                    ]
+                    T.nilable(
+                      T::Array[
+                        MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier
+                      ]
+                    )
                 }
               )
             end

@@ -229,9 +229,11 @@ module MetronomeSDK
               MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::OrHash,
             product_id: String,
             specifiers:
-              T::Array[
-                MetronomeSDK::V2::ContractEditCommitParams::Specifier::OrHash
-              ],
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::V2::ContractEditCommitParams::Specifier::OrHash
+                ]
+              ),
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(MetronomeSDK::Models::V2::ContractEditCommitResponse)
         end
@@ -272,9 +274,11 @@ module MetronomeSDK
             applicable_product_tags: T.nilable(T::Array[String]),
             product_id: String,
             specifiers:
-              T::Array[
-                MetronomeSDK::V2::ContractEditCreditParams::Specifier::OrHash
-              ],
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::V2::ContractEditCreditParams::Specifier::OrHash
+                ]
+              ),
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(MetronomeSDK::Models::V2::ContractEditCreditResponse)
         end

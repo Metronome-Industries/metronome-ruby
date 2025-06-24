@@ -177,7 +177,7 @@ module MetronomeSDK
         #
         # @param product_id [String]
         #
-        # @param specifiers [Array<MetronomeSDK::Models::V2::ContractEditCommitParams::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
+        # @param specifiers [Array<MetronomeSDK::Models::V2::ContractEditCommitParams::Specifier>, nil] List of filters that determine what kind of customer usage draws down a commit o
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -215,7 +215,7 @@ module MetronomeSDK
         #
         # @param product_id [String]
         #
-        # @param specifiers [Array<MetronomeSDK::Models::V2::ContractEditCreditParams::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
+        # @param specifiers [Array<MetronomeSDK::Models::V2::ContractEditCreditParams::Specifier>, nil] List of filters that determine what kind of customer usage draws down a commit o
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #

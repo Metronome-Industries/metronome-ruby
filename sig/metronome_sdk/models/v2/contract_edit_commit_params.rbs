@@ -11,7 +11,7 @@ module MetronomeSDK
           invoice_contract_id: String,
           invoice_schedule: MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule,
           product_id: String,
-          specifiers: ::Array[MetronomeSDK::V2::ContractEditCommitParams::Specifier]
+          specifiers: ::Array[MetronomeSDK::V2::ContractEditCommitParams::Specifier]?
         }
         & MetronomeSDK::Internal::Type::request_parameters
 
@@ -47,11 +47,7 @@ module MetronomeSDK
 
         def product_id=: (String) -> String
 
-        attr_reader specifiers: ::Array[MetronomeSDK::V2::ContractEditCommitParams::Specifier]?
-
-        def specifiers=: (
-          ::Array[MetronomeSDK::V2::ContractEditCommitParams::Specifier]
-        ) -> ::Array[MetronomeSDK::V2::ContractEditCommitParams::Specifier]
+        attr_accessor specifiers: ::Array[MetronomeSDK::V2::ContractEditCommitParams::Specifier]?
 
         def initialize: (
           commit_id: String,
@@ -62,7 +58,7 @@ module MetronomeSDK
           ?invoice_contract_id: String,
           ?invoice_schedule: MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule,
           ?product_id: String,
-          ?specifiers: ::Array[MetronomeSDK::V2::ContractEditCommitParams::Specifier],
+          ?specifiers: ::Array[MetronomeSDK::V2::ContractEditCommitParams::Specifier]?,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
 
@@ -75,7 +71,7 @@ module MetronomeSDK
           invoice_contract_id: String,
           invoice_schedule: MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule,
           product_id: String,
-          specifiers: ::Array[MetronomeSDK::V2::ContractEditCommitParams::Specifier],
+          specifiers: ::Array[MetronomeSDK::V2::ContractEditCommitParams::Specifier]?,
           request_options: MetronomeSDK::RequestOptions
         }
 

@@ -39,7 +39,7 @@ module MetronomeSDK
           ?only_archived: bool,
           ?salesforce_account_ids: ::Array[String],
           ?request_options: MetronomeSDK::request_opts
-        ) -> MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::CustomerListResponse]
+        ) -> MetronomeSDK::Internal::CursorPage[MetronomeSDK::V1::CustomerDetail]
 
         def archive: (
           id: String,

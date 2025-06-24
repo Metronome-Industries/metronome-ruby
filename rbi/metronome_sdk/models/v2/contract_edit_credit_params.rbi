@@ -67,17 +67,7 @@ module MetronomeSDK
             )
           )
         end
-        attr_reader :specifiers
-
-        sig do
-          params(
-            specifiers:
-              T::Array[
-                MetronomeSDK::V2::ContractEditCreditParams::Specifier::OrHash
-              ]
-          ).void
-        end
-        attr_writer :specifiers
+        attr_accessor :specifiers
 
         sig do
           params(
@@ -89,9 +79,11 @@ module MetronomeSDK
             applicable_product_tags: T.nilable(T::Array[String]),
             product_id: String,
             specifiers:
-              T::Array[
-                MetronomeSDK::V2::ContractEditCreditParams::Specifier::OrHash
-              ],
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::V2::ContractEditCreditParams::Specifier::OrHash
+                ]
+              ),
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -128,7 +120,11 @@ module MetronomeSDK
               applicable_product_tags: T.nilable(T::Array[String]),
               product_id: String,
               specifiers:
-                T::Array[MetronomeSDK::V2::ContractEditCreditParams::Specifier],
+                T.nilable(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditCreditParams::Specifier
+                  ]
+                ),
               request_options: MetronomeSDK::RequestOptions
             }
           )

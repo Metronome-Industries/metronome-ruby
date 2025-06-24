@@ -79,7 +79,7 @@ module MetronomeSDK
             #
             # @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
             #
-            # @param tiers [Array<MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::Tier>] Only set for TIERED rate_type.
+            # @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
             #
             # @param use_list_prices [Boolean] Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
             #
