@@ -243,11 +243,13 @@ module MetronomeSDK
           # ID of the customer whose commit is being edited
           customer_id:,
           access_schedule: nil,
-          # Which products the commit applies to. If both applicable_product_ids and
-          # applicable_product_tags are not provided, the commit applies to all products.
+          # Which products the commit applies to. If applicable_product_ids,
+          # applicable_product_tags or specifiers are not provided, the commit applies to
+          # all products.
           applicable_product_ids: nil,
-          # Which tags the commit applies to. If both applicable_product_ids and
-          # applicable_product_tags are not provided, the commit applies to all products.
+          # Which tags the commit applies to. If applicable_product_ids,
+          # applicable_product_tags or specifiers are not provided, the commit applies to
+          # all products.
           applicable_product_tags: nil,
           # ID of contract to use for invoicing
           invoice_contract_id: nil,

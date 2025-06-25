@@ -26,15 +26,17 @@ module MetronomeSDK
         optional :access_schedule, -> { MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule }
 
         # @!attribute applicable_product_ids
-        #   Which products the commit applies to. If both applicable_product_ids and
-        #   applicable_product_tags are not provided, the commit applies to all products.
+        #   Which products the commit applies to. If applicable_product_ids,
+        #   applicable_product_tags or specifiers are not provided, the commit applies to
+        #   all products.
         #
         #   @return [Array<String>, nil]
         optional :applicable_product_ids, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
 
         # @!attribute applicable_product_tags
-        #   Which tags the commit applies to. If both applicable_product_ids and
-        #   applicable_product_tags are not provided, the commit applies to all products.
+        #   Which tags the commit applies to. If applicable_product_ids,
+        #   applicable_product_tags or specifiers are not provided, the commit applies to
+        #   all products.
         #
         #   @return [Array<String>, nil]
         optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
@@ -78,9 +80,9 @@ module MetronomeSDK
         #
         #   @param access_schedule [MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule]
         #
-        #   @param applicable_product_ids [Array<String>, nil] Which products the commit applies to. If both applicable_product_ids and applica
+        #   @param applicable_product_ids [Array<String>, nil] Which products the commit applies to. If applicable_product_ids, applicable_prod
         #
-        #   @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If both applicable*product_ids and applicable*
+        #   @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If applicable*product_ids, applicable_product*
         #
         #   @param invoice_contract_id [String] ID of contract to use for invoicing
         #

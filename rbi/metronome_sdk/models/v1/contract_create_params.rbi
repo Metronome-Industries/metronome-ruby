@@ -823,16 +823,18 @@ module MetronomeSDK
           sig { params(amount: Float).void }
           attr_writer :amount
 
-          # Which products the commit applies to. If both applicable_product_ids and
-          # applicable_product_tags are not provided, the commit applies to all products.
+          # Which products the commit applies to. If applicable_product_ids,
+          # applicable_product_tags or specifiers are not provided, the commit applies to
+          # all products.
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :applicable_product_ids
 
           sig { params(applicable_product_ids: T::Array[String]).void }
           attr_writer :applicable_product_ids
 
-          # Which tags the commit applies to. If both applicable_product_ids and
-          # applicable_product_tags are not provided, the commit applies to all products.
+          # Which tags the commit applies to. If applicable_product_ids,
+          # applicable_product_tags or specifiers are not provided, the commit applies to
+          # all products.
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :applicable_product_tags
 
@@ -1008,11 +1010,13 @@ module MetronomeSDK
             access_schedule: nil,
             # (DEPRECATED) Use access_schedule and invoice_schedule instead.
             amount: nil,
-            # Which products the commit applies to. If both applicable_product_ids and
-            # applicable_product_tags are not provided, the commit applies to all products.
+            # Which products the commit applies to. If applicable_product_ids,
+            # applicable_product_tags or specifiers are not provided, the commit applies to
+            # all products.
             applicable_product_ids: nil,
-            # Which tags the commit applies to. If both applicable_product_ids and
-            # applicable_product_tags are not provided, the commit applies to all products.
+            # Which tags the commit applies to. If applicable_product_ids,
+            # applicable_product_tags or specifiers are not provided, the commit applies to
+            # all products.
             applicable_product_tags: nil,
             custom_fields: nil,
             # Used only in UI/API. It is not exposed to end customers.
@@ -3699,17 +3703,18 @@ module MetronomeSDK
             sig { returns(String) }
             attr_accessor :product_id
 
-            # Which products the threshold commit applies to. If both applicable_product_ids
-            # and applicable_product_tags are not provided, the commit applies to all
-            # products.
+            # Which products the threshold commit applies to. If applicable_product_ids,
+            # applicable_product_tags or specifiers are not provided, the commit applies to
+            # all products.
             sig { returns(T.nilable(T::Array[String])) }
             attr_reader :applicable_product_ids
 
             sig { params(applicable_product_ids: T::Array[String]).void }
             attr_writer :applicable_product_ids
 
-            # Which tags the threshold commit applies to. If both applicable_product_ids and
-            # applicable_product_tags are not provided, the commit applies to all products.
+            # Which tags the threshold commit applies to. If applicable_product_ids,
+            # applicable_product_tags or specifiers are not provided, the commit applies to
+            # all products.
             sig { returns(T.nilable(T::Array[String])) }
             attr_reader :applicable_product_tags
 
@@ -3772,12 +3777,13 @@ module MetronomeSDK
               # The commit product that will be used to generate the line item for commit
               # payment.
               product_id:,
-              # Which products the threshold commit applies to. If both applicable_product_ids
-              # and applicable_product_tags are not provided, the commit applies to all
-              # products.
+              # Which products the threshold commit applies to. If applicable_product_ids,
+              # applicable_product_tags or specifiers are not provided, the commit applies to
+              # all products.
               applicable_product_ids: nil,
-              # Which tags the threshold commit applies to. If both applicable_product_ids and
-              # applicable_product_tags are not provided, the commit applies to all products.
+              # Which tags the threshold commit applies to. If applicable_product_ids,
+              # applicable_product_tags or specifiers are not provided, the commit applies to
+              # all products.
               applicable_product_tags: nil,
               description: nil,
               # Specify the name of the line item for the threshold charge. If left blank, it
