@@ -318,15 +318,17 @@ module MetronomeSDK
           optional :amount, Float
 
           # @!attribute applicable_product_ids
-          #   Which products the commit applies to. If both applicable_product_ids and
-          #   applicable_product_tags are not provided, the commit applies to all products.
+          #   Which products the commit applies to. If applicable_product_ids,
+          #   applicable_product_tags or specifiers are not provided, the commit applies to
+          #   all products.
           #
           #   @return [Array<String>, nil]
           optional :applicable_product_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
 
           # @!attribute applicable_product_tags
-          #   Which tags the commit applies to. If both applicable_product_ids and
-          #   applicable_product_tags are not provided, the commit applies to all products.
+          #   Which tags the commit applies to. If applicable_product_ids,
+          #   applicable_product_tags or specifiers are not provided, the commit applies to
+          #   all products.
           #
           #   @return [Array<String>, nil]
           optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
@@ -421,9 +423,9 @@ module MetronomeSDK
           #
           #   @param amount [Float] (DEPRECATED) Use access_schedule and invoice_schedule instead.
           #
-          #   @param applicable_product_ids [Array<String>] Which products the commit applies to. If both applicable_product_ids and applica
+          #   @param applicable_product_ids [Array<String>] Which products the commit applies to. If applicable_product_ids, applicable_prod
           #
-          #   @param applicable_product_tags [Array<String>] Which tags the commit applies to. If both applicable*product_ids and applicable*
+          #   @param applicable_product_tags [Array<String>] Which tags the commit applies to. If applicable*product_ids, applicable_product*
           #
           #   @param custom_fields [Hash{Symbol=>String}]
           #
@@ -1696,16 +1698,17 @@ module MetronomeSDK
             required :product_id, String
 
             # @!attribute applicable_product_ids
-            #   Which products the threshold commit applies to. If both applicable_product_ids
-            #   and applicable_product_tags are not provided, the commit applies to all
-            #   products.
+            #   Which products the threshold commit applies to. If applicable_product_ids,
+            #   applicable_product_tags or specifiers are not provided, the commit applies to
+            #   all products.
             #
             #   @return [Array<String>, nil]
             optional :applicable_product_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
 
             # @!attribute applicable_product_tags
-            #   Which tags the threshold commit applies to. If both applicable_product_ids and
-            #   applicable_product_tags are not provided, the commit applies to all products.
+            #   Which tags the threshold commit applies to. If applicable_product_ids,
+            #   applicable_product_tags or specifiers are not provided, the commit applies to
+            #   all products.
             #
             #   @return [Array<String>, nil]
             optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
@@ -1741,9 +1744,9 @@ module MetronomeSDK
             #
             #   @param product_id [String] The commit product that will be used to generate the line item for commit paymen
             #
-            #   @param applicable_product_ids [Array<String>] Which products the threshold commit applies to. If both applicable_product_ids a
+            #   @param applicable_product_ids [Array<String>] Which products the threshold commit applies to. If applicable_product_ids, appli
             #
-            #   @param applicable_product_tags [Array<String>] Which tags the threshold commit applies to. If both applicable_product_ids and a
+            #   @param applicable_product_tags [Array<String>] Which tags the threshold commit applies to. If applicable_product_ids, applicabl
             #
             #   @param description [String]
             #
@@ -3410,15 +3413,17 @@ module MetronomeSDK
           optional :access_schedule, -> { MetronomeSDK::V2::ContractEditParams::UpdateCommit::AccessSchedule }
 
           # @!attribute applicable_product_ids
-          #   Which products the commit applies to. If both applicable_product_ids and
-          #   applicable_product_tags are not provided, the commit applies to all products.
+          #   Which products the commit applies to. If applicable_product_ids,
+          #   applicable_product_tags or specifiers are not provided, the commit applies to
+          #   all products.
           #
           #   @return [Array<String>, nil]
           optional :applicable_product_ids, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
 
           # @!attribute applicable_product_tags
-          #   Which tags the commit applies to. If both applicable_product_ids and
-          #   applicable_product_tags are not provided, the commit applies to all products.
+          #   Which tags the commit applies to. If applicable_product_ids,
+          #   applicable_product_tags or specifiers are not provided, the commit applies to
+          #   all products.
           #
           #   @return [Array<String>, nil]
           optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
@@ -3454,9 +3459,9 @@ module MetronomeSDK
           #
           #   @param access_schedule [MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::AccessSchedule]
           #
-          #   @param applicable_product_ids [Array<String>, nil] Which products the commit applies to. If both applicable_product_ids and applica
+          #   @param applicable_product_ids [Array<String>, nil] Which products the commit applies to. If applicable_product_ids, applicable_prod
           #
-          #   @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If both applicable*product_ids and applicable*
+          #   @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If applicable*product_ids, applicable_product*
           #
           #   @param invoice_schedule [MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::InvoiceSchedule]
           #
@@ -3675,15 +3680,17 @@ module MetronomeSDK
           optional :access_schedule, -> { MetronomeSDK::V2::ContractEditParams::UpdateCredit::AccessSchedule }
 
           # @!attribute applicable_product_ids
-          #   Which products the commit applies to. If both applicable_product_ids and
-          #   applicable_product_tags are not provided, the commit applies to all products.
+          #   Which products the commit applies to. If applicable_product_ids,
+          #   applicable_product_tags or specifiers are not provided, the commit applies to
+          #   all products.
           #
           #   @return [Array<String>, nil]
           optional :applicable_product_ids, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
 
           # @!attribute applicable_product_tags
-          #   Which tags the commit applies to. If both applicable_product_ids and
-          #   applicable_product_tags are not provided, the commit applies to all products.
+          #   Which tags the commit applies to. If applicable_product_ids,
+          #   applicable_product_tags or specifiers are not provided, the commit applies to
+          #   all products.
           #
           #   @return [Array<String>, nil]
           optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
@@ -3706,9 +3713,9 @@ module MetronomeSDK
           #
           #   @param access_schedule [MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::AccessSchedule]
           #
-          #   @param applicable_product_ids [Array<String>, nil] Which products the commit applies to. If both applicable_product_ids and applica
+          #   @param applicable_product_ids [Array<String>, nil] Which products the commit applies to. If applicable_product_ids, applicable_prod
           #
-          #   @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If both applicable*product_ids and applicable*
+          #   @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If applicable*product_ids, applicable_product*
           #
           #   @param netsuite_sales_order_id [String, nil]
           #
