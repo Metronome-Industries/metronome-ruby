@@ -112,6 +112,14 @@ module MetronomeSDK
           #   @return [Time, nil]
           optional :ending_before, Time
 
+          # @!attribute hierarchy_configuration
+          #   Either a **parent** configuration with a list of children or a **child**
+          #   configuration with a single parent.
+          #
+          #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ParentHierarchyConfiguration, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ChildHierarchyConfiguration, nil]
+          optional :hierarchy_configuration,
+                   union: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration }
+
           # @!attribute multiplier_override_prioritization
           #   Defaults to LOWEST_MULTIPLIER, which applies the greatest discount to list
           #   prices automatically. EXPLICIT prioritization requires specifying priorities for
@@ -220,7 +228,7 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :uniqueness_key, String
 
-          # @!method initialize(id:, commits:, created_at:, created_by:, customer_id:, overrides:, scheduled_charges:, starting_at:, transitions:, usage_filter:, usage_statement_schedule:, archived_at: nil, credits: nil, custom_fields: nil, customer_billing_provider_configuration: nil, discounts: nil, ending_before: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, prepaid_balance_threshold_configuration: nil, professional_services: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, salesforce_opportunity_id: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, total_contract_value: nil, uniqueness_key: nil)
+          # @!method initialize(id:, commits:, created_at:, created_by:, customer_id:, overrides:, scheduled_charges:, starting_at:, transitions:, usage_filter:, usage_statement_schedule:, archived_at: nil, credits: nil, custom_fields: nil, customer_billing_provider_configuration: nil, discounts: nil, ending_before: nil, hierarchy_configuration: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, prepaid_balance_threshold_configuration: nil, professional_services: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, salesforce_opportunity_id: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, total_contract_value: nil, uniqueness_key: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractRetrieveResponse::Data} for more details.
           #
@@ -257,6 +265,8 @@ module MetronomeSDK
           #   @param discounts [Array<MetronomeSDK::Models::Discount>] This field's availability is dependent on your client's configuration.
           #
           #   @param ending_before [Time]
+          #
+          #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ParentHierarchyConfiguration, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ChildHierarchyConfiguration] Either a **parent** configuration with a list of children or a **child** configu
           #
           #   @param multiplier_override_prioritization [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::MultiplierOverridePrioritization] Defaults to LOWEST_MULTIPLIER, which applies the greatest discount to list price
           #
@@ -2107,6 +2117,84 @@ module MetronomeSDK
               # @!method self.values
               #   @return [Array<Symbol>]
             end
+          end
+
+          # Either a **parent** configuration with a list of children or a **child**
+          # configuration with a single parent.
+          #
+          # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data#hierarchy_configuration
+          module HierarchyConfiguration
+            extend MetronomeSDK::Internal::Type::Union
+
+            variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ParentHierarchyConfiguration }
+
+            variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ChildHierarchyConfiguration }
+
+            class ParentHierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute children
+              #   List of contracts that belong to this parent.
+              #
+              #   @return [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ParentHierarchyConfiguration::Child>]
+              required :children,
+                       -> do
+                         MetronomeSDK::Internal::Type::ArrayOf[
+                           MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ParentHierarchyConfiguration::Child
+                         ]
+                       end
+
+              # @!method initialize(children:)
+              #   @param children [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ParentHierarchyConfiguration::Child>] List of contracts that belong to this parent.
+
+              class Child < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute contract_id
+                #
+                #   @return [String]
+                required :contract_id, String
+
+                # @!attribute customer_id
+                #
+                #   @return [String]
+                required :customer_id, String
+
+                # @!method initialize(contract_id:, customer_id:)
+                #   @param contract_id [String]
+                #   @param customer_id [String]
+              end
+            end
+
+            class ChildHierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute parent
+              #   The single parent contract/customer for this child.
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ChildHierarchyConfiguration::Parent]
+              required :parent,
+                       -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ChildHierarchyConfiguration::Parent }
+
+              # @!method initialize(parent:)
+              #   @param parent [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ChildHierarchyConfiguration::Parent] The single parent contract/customer for this child.
+
+              # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ChildHierarchyConfiguration#parent
+              class Parent < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute contract_id
+                #
+                #   @return [String]
+                required :contract_id, String
+
+                # @!attribute customer_id
+                #
+                #   @return [String]
+                required :customer_id, String
+
+                # @!method initialize(contract_id:, customer_id:)
+                #   The single parent contract/customer for this child.
+                #
+                #   @param contract_id [String]
+                #   @param customer_id [String]
+              end
+            end
+
+            # @!method self.variants
+            #   @return [Array(MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ParentHierarchyConfiguration, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ChildHierarchyConfiguration)]
           end
 
           # Defaults to LOWEST_MULTIPLIER, which applies the greatest discount to list
