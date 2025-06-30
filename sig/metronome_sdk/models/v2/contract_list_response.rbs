@@ -34,6 +34,7 @@ module MetronomeSDK
             customer_billing_provider_configuration: MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration,
             discounts: ::Array[MetronomeSDK::Discount],
             ending_before: Time,
+            hierarchy_configuration: MetronomeSDK::Models::V2::ContractListResponse::Data::hierarchy_configuration,
             multiplier_override_prioritization: MetronomeSDK::Models::V2::ContractListResponse::Data::multiplier_override_prioritization,
             name: String,
             net_payment_terms_days: Float,
@@ -104,6 +105,12 @@ module MetronomeSDK
           attr_reader ending_before: Time?
 
           def ending_before=: (Time) -> Time
+
+          attr_reader hierarchy_configuration: MetronomeSDK::Models::V2::ContractListResponse::Data::hierarchy_configuration?
+
+          def hierarchy_configuration=: (
+            MetronomeSDK::Models::V2::ContractListResponse::Data::hierarchy_configuration
+          ) -> MetronomeSDK::Models::V2::ContractListResponse::Data::hierarchy_configuration
 
           attr_reader multiplier_override_prioritization: MetronomeSDK::Models::V2::ContractListResponse::Data::multiplier_override_prioritization?
 
@@ -205,6 +212,7 @@ module MetronomeSDK
             ?customer_billing_provider_configuration: MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration,
             ?discounts: ::Array[MetronomeSDK::Discount],
             ?ending_before: Time,
+            ?hierarchy_configuration: MetronomeSDK::Models::V2::ContractListResponse::Data::hierarchy_configuration,
             ?multiplier_override_prioritization: MetronomeSDK::Models::V2::ContractListResponse::Data::multiplier_override_prioritization,
             ?name: String,
             ?net_payment_terms_days: Float,
@@ -241,6 +249,7 @@ module MetronomeSDK
             customer_billing_provider_configuration: MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration,
             discounts: ::Array[MetronomeSDK::Discount],
             ending_before: Time,
+            hierarchy_configuration: MetronomeSDK::Models::V2::ContractListResponse::Data::hierarchy_configuration,
             multiplier_override_prioritization: MetronomeSDK::Models::V2::ContractListResponse::Data::multiplier_override_prioritization,
             name: String,
             net_payment_terms_days: Float,
@@ -2131,6 +2140,80 @@ module MetronomeSDK
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration::delivery_method]
             end
+          end
+
+          type hierarchy_configuration =
+            MetronomeSDK::Models::V2::ContractListResponse::Data::HierarchyConfiguration::ParentHierarchyConfiguration
+            | MetronomeSDK::Models::V2::ContractListResponse::Data::HierarchyConfiguration::ChildHierarchyConfiguration
+
+          module HierarchyConfiguration
+            extend MetronomeSDK::Internal::Type::Union
+
+            type parent_hierarchy_configuration =
+              {
+                children: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::HierarchyConfiguration::ParentHierarchyConfiguration::Child]
+              }
+
+            class ParentHierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor children: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::HierarchyConfiguration::ParentHierarchyConfiguration::Child]
+
+              def initialize: (
+                children: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::HierarchyConfiguration::ParentHierarchyConfiguration::Child]
+              ) -> void
+
+              def to_hash: -> {
+                children: ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::HierarchyConfiguration::ParentHierarchyConfiguration::Child]
+              }
+
+              type child = { contract_id: String, customer_id: String }
+
+              class Child < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor contract_id: String
+
+                attr_accessor customer_id: String
+
+                def initialize: (
+                  contract_id: String,
+                  customer_id: String
+                ) -> void
+
+                def to_hash: -> { contract_id: String, customer_id: String }
+              end
+            end
+
+            type child_hierarchy_configuration =
+              {
+                parent: MetronomeSDK::Models::V2::ContractListResponse::Data::HierarchyConfiguration::ChildHierarchyConfiguration::Parent
+              }
+
+            class ChildHierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor parent: MetronomeSDK::Models::V2::ContractListResponse::Data::HierarchyConfiguration::ChildHierarchyConfiguration::Parent
+
+              def initialize: (
+                parent: MetronomeSDK::Models::V2::ContractListResponse::Data::HierarchyConfiguration::ChildHierarchyConfiguration::Parent
+              ) -> void
+
+              def to_hash: -> {
+                parent: MetronomeSDK::Models::V2::ContractListResponse::Data::HierarchyConfiguration::ChildHierarchyConfiguration::Parent
+              }
+
+              type parent = { contract_id: String, customer_id: String }
+
+              class Parent < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor contract_id: String
+
+                attr_accessor customer_id: String
+
+                def initialize: (
+                  contract_id: String,
+                  customer_id: String
+                ) -> void
+
+                def to_hash: -> { contract_id: String, customer_id: String }
+              end
+            end
+
+            def self?.variants: -> ::Array[MetronomeSDK::Models::V2::ContractListResponse::Data::hierarchy_configuration]
           end
 
           type multiplier_override_prioritization =

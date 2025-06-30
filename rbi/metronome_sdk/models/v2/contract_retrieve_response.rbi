@@ -186,6 +186,28 @@ module MetronomeSDK
           sig { params(ending_before: Time).void }
           attr_writer :ending_before
 
+          # Either a **parent** configuration with a list of children or a **child**
+          # configuration with a single parent.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::Variants
+              )
+            )
+          end
+          attr_reader :hierarchy_configuration
+
+          sig do
+            params(
+              hierarchy_configuration:
+                T.any(
+                  MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ParentHierarchyConfiguration::OrHash,
+                  MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ChildHierarchyConfiguration::OrHash
+                )
+            ).void
+          end
+          attr_writer :hierarchy_configuration
+
           # Defaults to LOWEST_MULTIPLIER, which applies the greatest discount to list
           # prices automatically. EXPLICIT prioritization requires specifying priorities for
           # each multiplier; the one with the lowest priority value will be prioritized
@@ -444,6 +466,11 @@ module MetronomeSDK
                 MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::OrHash,
               discounts: T::Array[MetronomeSDK::Discount::OrHash],
               ending_before: Time,
+              hierarchy_configuration:
+                T.any(
+                  MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ParentHierarchyConfiguration::OrHash,
+                  MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ChildHierarchyConfiguration::OrHash
+                ),
               multiplier_override_prioritization:
                 MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::MultiplierOverridePrioritization::OrSymbol,
               name: String,
@@ -498,6 +525,9 @@ module MetronomeSDK
             # This field's availability is dependent on your client's configuration.
             discounts: nil,
             ending_before: nil,
+            # Either a **parent** configuration with a list of children or a **child**
+            # configuration with a single parent.
+            hierarchy_configuration: nil,
             # Defaults to LOWEST_MULTIPLIER, which applies the greatest discount to list
             # prices automatically. EXPLICIT prioritization requires specifying priorities for
             # each multiplier; the one with the lowest priority value will be prioritized
@@ -571,6 +601,8 @@ module MetronomeSDK
                   MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration,
                 discounts: T::Array[MetronomeSDK::Discount],
                 ending_before: Time,
+                hierarchy_configuration:
+                  MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::Variants,
                 multiplier_override_prioritization:
                   MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::MultiplierOverridePrioritization::TaggedSymbol,
                 name: String,
@@ -4470,6 +4502,187 @@ module MetronomeSDK
               end
               def self.values
               end
+            end
+          end
+
+          # Either a **parent** configuration with a list of children or a **child**
+          # configuration with a single parent.
+          module HierarchyConfiguration
+            extend MetronomeSDK::Internal::Type::Union
+
+            Variants =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ParentHierarchyConfiguration,
+                  MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ChildHierarchyConfiguration
+                )
+              end
+
+            class ParentHierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ParentHierarchyConfiguration,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              # List of contracts that belong to this parent.
+              sig do
+                returns(
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ParentHierarchyConfiguration::Child
+                  ]
+                )
+              end
+              attr_accessor :children
+
+              sig do
+                params(
+                  children:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ParentHierarchyConfiguration::Child::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # List of contracts that belong to this parent.
+                children:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    children:
+                      T::Array[
+                        MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ParentHierarchyConfiguration::Child
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Child < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ParentHierarchyConfiguration::Child,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :contract_id
+
+                sig { returns(String) }
+                attr_accessor :customer_id
+
+                sig do
+                  params(contract_id: String, customer_id: String).returns(
+                    T.attached_class
+                  )
+                end
+                def self.new(contract_id:, customer_id:)
+                end
+
+                sig do
+                  override.returns({ contract_id: String, customer_id: String })
+                end
+                def to_hash
+                end
+              end
+            end
+
+            class ChildHierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ChildHierarchyConfiguration,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              # The single parent contract/customer for this child.
+              sig do
+                returns(
+                  MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ChildHierarchyConfiguration::Parent
+                )
+              end
+              attr_reader :parent
+
+              sig do
+                params(
+                  parent:
+                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ChildHierarchyConfiguration::Parent::OrHash
+                ).void
+              end
+              attr_writer :parent
+
+              sig do
+                params(
+                  parent:
+                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ChildHierarchyConfiguration::Parent::OrHash
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The single parent contract/customer for this child.
+                parent:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    parent:
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ChildHierarchyConfiguration::Parent
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Parent < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ChildHierarchyConfiguration::Parent,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :contract_id
+
+                sig { returns(String) }
+                attr_accessor :customer_id
+
+                # The single parent contract/customer for this child.
+                sig do
+                  params(contract_id: String, customer_id: String).returns(
+                    T.attached_class
+                  )
+                end
+                def self.new(contract_id:, customer_id:)
+                end
+
+                sig do
+                  override.returns({ contract_id: String, customer_id: String })
+                end
+                def to_hash
+                end
+              end
+            end
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::Variants
+                ]
+              )
+            end
+            def self.variants
             end
           end
 
