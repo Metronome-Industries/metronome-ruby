@@ -11,6 +11,7 @@ module MetronomeSDK
           custom_fields: ::Hash[Symbol, String],
           discounts: ::Array[MetronomeSDK::V1::ContractCreateParams::Discount],
           ending_before: Time,
+          hierarchy_configuration: MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration,
           multiplier_override_prioritization: MetronomeSDK::Models::V1::ContractCreateParams::multiplier_override_prioritization,
           name: String,
           net_payment_terms_days: Float,
@@ -75,6 +76,12 @@ module MetronomeSDK
         attr_reader ending_before: Time?
 
         def ending_before=: (Time) -> Time
+
+        attr_reader hierarchy_configuration: MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration?
+
+        def hierarchy_configuration=: (
+          MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration
+        ) -> MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration
 
         attr_reader multiplier_override_prioritization: MetronomeSDK::Models::V1::ContractCreateParams::multiplier_override_prioritization?
 
@@ -201,6 +208,7 @@ module MetronomeSDK
           ?custom_fields: ::Hash[Symbol, String],
           ?discounts: ::Array[MetronomeSDK::V1::ContractCreateParams::Discount],
           ?ending_before: Time,
+          ?hierarchy_configuration: MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration,
           ?multiplier_override_prioritization: MetronomeSDK::Models::V1::ContractCreateParams::multiplier_override_prioritization,
           ?name: String,
           ?net_payment_terms_days: Float,
@@ -235,6 +243,7 @@ module MetronomeSDK
           custom_fields: ::Hash[Symbol, String],
           discounts: ::Array[MetronomeSDK::V1::ContractCreateParams::Discount],
           ending_before: Time,
+          hierarchy_configuration: MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration,
           multiplier_override_prioritization: MetronomeSDK::Models::V1::ContractCreateParams::multiplier_override_prioritization,
           name: String,
           net_payment_terms_days: Float,
@@ -1203,6 +1212,35 @@ module MetronomeSDK
                 unit_price: Float
               }
             end
+          end
+        end
+
+        type hierarchy_configuration =
+          {
+            parent: MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Parent
+          }
+
+        class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor parent: MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Parent
+
+          def initialize: (
+            parent: MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Parent
+          ) -> void
+
+          def to_hash: -> {
+            parent: MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Parent
+          }
+
+          type parent = { contract_id: String, customer_id: String }
+
+          class Parent < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor contract_id: String
+
+            attr_accessor customer_id: String
+
+            def initialize: (contract_id: String, customer_id: String) -> void
+
+            def to_hash: -> { contract_id: String, customer_id: String }
           end
         end
 

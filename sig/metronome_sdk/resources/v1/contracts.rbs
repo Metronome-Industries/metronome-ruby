@@ -17,6 +17,7 @@ module MetronomeSDK
           ?custom_fields: ::Hash[Symbol, String],
           ?discounts: ::Array[MetronomeSDK::V1::ContractCreateParams::Discount],
           ?ending_before: Time,
+          ?hierarchy_configuration: MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration,
           ?multiplier_override_prioritization: MetronomeSDK::Models::V1::ContractCreateParams::multiplier_override_prioritization,
           ?name: String,
           ?net_payment_terms_days: Float,

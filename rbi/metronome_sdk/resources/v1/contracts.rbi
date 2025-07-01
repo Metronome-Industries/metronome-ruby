@@ -30,6 +30,8 @@ module MetronomeSDK
                 MetronomeSDK::V1::ContractCreateParams::Discount::OrHash
               ],
             ending_before: Time,
+            hierarchy_configuration:
+              MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::OrHash,
             multiplier_override_prioritization:
               MetronomeSDK::V1::ContractCreateParams::MultiplierOverridePrioritization::OrSymbol,
             name: String,
@@ -95,6 +97,7 @@ module MetronomeSDK
           discounts: nil,
           # exclusive contract end time
           ending_before: nil,
+          hierarchy_configuration: nil,
           # Defaults to LOWEST_MULTIPLIER, which applies the greatest discount to list
           # prices automatically. EXPLICIT prioritization requires specifying priorities for
           # each multiplier; the one with the lowest priority value will be prioritized
