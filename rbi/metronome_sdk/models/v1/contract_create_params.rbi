@@ -101,6 +101,23 @@ module MetronomeSDK
         sig { params(ending_before: Time).void }
         attr_writer :ending_before
 
+        sig do
+          returns(
+            T.nilable(
+              MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration
+            )
+          )
+        end
+        attr_reader :hierarchy_configuration
+
+        sig do
+          params(
+            hierarchy_configuration:
+              MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::OrHash
+          ).void
+        end
+        attr_writer :hierarchy_configuration
+
         # Defaults to LOWEST_MULTIPLIER, which applies the greatest discount to list
         # prices automatically. EXPLICIT prioritization requires specifying priorities for
         # each multiplier; the one with the lowest priority value will be prioritized
@@ -424,6 +441,8 @@ module MetronomeSDK
                 MetronomeSDK::V1::ContractCreateParams::Discount::OrHash
               ],
             ending_before: Time,
+            hierarchy_configuration:
+              MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::OrHash,
             multiplier_override_prioritization:
               MetronomeSDK::V1::ContractCreateParams::MultiplierOverridePrioritization::OrSymbol,
             name: String,
@@ -489,6 +508,7 @@ module MetronomeSDK
           discounts: nil,
           # exclusive contract end time
           ending_before: nil,
+          hierarchy_configuration: nil,
           # Defaults to LOWEST_MULTIPLIER, which applies the greatest discount to list
           # prices automatically. EXPLICIT prioritization requires specifying priorities for
           # each multiplier; the one with the lowest priority value will be prioritized
@@ -550,6 +570,8 @@ module MetronomeSDK
               discounts:
                 T::Array[MetronomeSDK::V1::ContractCreateParams::Discount],
               ending_before: Time,
+              hierarchy_configuration:
+                MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration,
               multiplier_override_prioritization:
                 MetronomeSDK::V1::ContractCreateParams::MultiplierOverridePrioritization::OrSymbol,
               name: String,
@@ -2824,6 +2846,81 @@ module MetronomeSDK
               end
               def to_hash
               end
+            end
+          end
+        end
+
+        class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          sig do
+            returns(
+              MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Parent
+            )
+          end
+          attr_reader :parent
+
+          sig do
+            params(
+              parent:
+                MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Parent::OrHash
+            ).void
+          end
+          attr_writer :parent
+
+          sig do
+            params(
+              parent:
+                MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Parent::OrHash
+            ).returns(T.attached_class)
+          end
+          def self.new(parent:)
+          end
+
+          sig do
+            override.returns(
+              {
+                parent:
+                  MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Parent
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class Parent < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Parent,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig { returns(String) }
+            attr_accessor :contract_id
+
+            sig { returns(String) }
+            attr_accessor :customer_id
+
+            sig do
+              params(contract_id: String, customer_id: String).returns(
+                T.attached_class
+              )
+            end
+            def self.new(contract_id:, customer_id:)
+            end
+
+            sig do
+              override.returns({ contract_id: String, customer_id: String })
+            end
+            def to_hash
             end
           end
         end
