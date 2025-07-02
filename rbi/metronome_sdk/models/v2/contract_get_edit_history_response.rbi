@@ -416,6 +416,11 @@ module MetronomeSDK
           sig { params(update_contract_end_date: Time).void }
           attr_writer :update_contract_end_date
 
+          # Value to update the contract name to. If not provided, the contract name will
+          # remain unchanged.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :update_contract_name
+
           sig do
             returns(
               T.nilable(
@@ -665,6 +670,7 @@ module MetronomeSDK
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::OrHash
                 ],
               update_contract_end_date: Time,
+              update_contract_name: T.nilable(String),
               update_credits:
                 T::Array[
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::OrHash
@@ -722,6 +728,9 @@ module MetronomeSDK
             timestamp: nil,
             update_commits: nil,
             update_contract_end_date: nil,
+            # Value to update the contract name to. If not provided, the contract name will
+            # remain unchanged.
+            update_contract_name: nil,
             update_credits: nil,
             update_discounts: nil,
             update_prepaid_balance_threshold_configuration: nil,
@@ -803,6 +812,7 @@ module MetronomeSDK
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit
                   ],
                 update_contract_end_date: Time,
+                update_contract_name: T.nilable(String),
                 update_credits:
                   T::Array[
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit

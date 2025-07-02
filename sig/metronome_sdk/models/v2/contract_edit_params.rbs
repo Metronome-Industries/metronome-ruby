@@ -24,6 +24,7 @@ module MetronomeSDK
           remove_overrides: ::Array[MetronomeSDK::V2::ContractEditParams::RemoveOverride],
           update_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCommit],
           update_contract_end_date: Time?,
+          update_contract_name: String?,
           update_credits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCredit],
           update_prepaid_balance_threshold_configuration: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration,
           update_recurring_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit],
@@ -150,6 +151,8 @@ module MetronomeSDK
 
         attr_accessor update_contract_end_date: Time?
 
+        attr_accessor update_contract_name: String?
+
         attr_reader update_credits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCredit]?
 
         def update_credits=: (
@@ -214,6 +217,7 @@ module MetronomeSDK
           ?remove_overrides: ::Array[MetronomeSDK::V2::ContractEditParams::RemoveOverride],
           ?update_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCommit],
           ?update_contract_end_date: Time?,
+          ?update_contract_name: String?,
           ?update_credits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCredit],
           ?update_prepaid_balance_threshold_configuration: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration,
           ?update_recurring_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit],
@@ -246,6 +250,7 @@ module MetronomeSDK
           remove_overrides: ::Array[MetronomeSDK::V2::ContractEditParams::RemoveOverride],
           update_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCommit],
           update_contract_end_date: Time?,
+          update_contract_name: String?,
           update_credits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCredit],
           update_prepaid_balance_threshold_configuration: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration,
           update_recurring_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit],

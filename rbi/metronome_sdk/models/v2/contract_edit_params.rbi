@@ -364,6 +364,11 @@ module MetronomeSDK
         sig { returns(T.nilable(Time)) }
         attr_accessor :update_contract_end_date
 
+        # Value to update the contract name to. If not provided, the contract name will
+        # remain unchanged.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :update_contract_name
+
         sig do
           returns(
             T.nilable(
@@ -572,6 +577,7 @@ module MetronomeSDK
                 MetronomeSDK::V2::ContractEditParams::UpdateCommit::OrHash
               ],
             update_contract_end_date: T.nilable(Time),
+            update_contract_name: T.nilable(String),
             update_credits:
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::UpdateCredit::OrHash
@@ -636,6 +642,9 @@ module MetronomeSDK
           update_commits: nil,
           # RFC 3339 timestamp indicating when the contract will end (exclusive).
           update_contract_end_date: nil,
+          # Value to update the contract name to. If not provided, the contract name will
+          # remain unchanged.
+          update_contract_name: nil,
           update_credits: nil,
           update_prepaid_balance_threshold_configuration: nil,
           # Edits to these recurring commits will only affect commits whose access schedules
@@ -707,6 +716,7 @@ module MetronomeSDK
               update_commits:
                 T::Array[MetronomeSDK::V2::ContractEditParams::UpdateCommit],
               update_contract_end_date: T.nilable(Time),
+              update_contract_name: T.nilable(String),
               update_credits:
                 T::Array[MetronomeSDK::V2::ContractEditParams::UpdateCredit],
               update_prepaid_balance_threshold_configuration:
