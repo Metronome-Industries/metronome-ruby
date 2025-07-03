@@ -264,6 +264,13 @@ module MetronomeSDK
           end
           attr_writer :prepaid_balance_threshold_configuration
 
+          # Priority of the contract.
+          sig { returns(T.nilable(Float)) }
+          attr_reader :priority
+
+          sig { params(priority: Float).void }
+          attr_writer :priority
+
           # This field's availability is dependent on your client's configuration.
           sig { returns(T.nilable(T::Array[MetronomeSDK::ProService])) }
           attr_reader :professional_services
@@ -477,6 +484,7 @@ module MetronomeSDK
               netsuite_sales_order_id: String,
               prepaid_balance_threshold_configuration:
                 MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::OrHash,
+              priority: Float,
               professional_services: T::Array[MetronomeSDK::ProService::OrHash],
               rate_card_id: String,
               recurring_commits:
@@ -537,6 +545,8 @@ module MetronomeSDK
             # This field's availability is dependent on your client's configuration.
             netsuite_sales_order_id: nil,
             prepaid_balance_threshold_configuration: nil,
+            # Priority of the contract.
+            priority: nil,
             # This field's availability is dependent on your client's configuration.
             professional_services: nil,
             rate_card_id: nil,
@@ -609,6 +619,7 @@ module MetronomeSDK
                 netsuite_sales_order_id: String,
                 prepaid_balance_threshold_configuration:
                   MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration,
+                priority: Float,
                 professional_services: T::Array[MetronomeSDK::ProService],
                 rate_card_id: String,
                 recurring_commits:

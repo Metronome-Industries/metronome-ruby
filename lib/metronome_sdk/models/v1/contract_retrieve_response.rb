@@ -66,6 +66,12 @@ module MetronomeSDK
           optional :prepaid_balance_threshold_configuration,
                    -> { MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration }
 
+          # @!attribute priority
+          #   Priority of the contract.
+          #
+          #   @return [Float, nil]
+          optional :priority, Float
+
           # @!attribute scheduled_charges_on_usage_invoices
           #   Determines which scheduled and commit charges to consolidate onto the Contract's
           #   usage invoice. The charge's `timestamp` must match the usage invoice's
@@ -98,7 +104,7 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :uniqueness_key, String
 
-          # @!method initialize(id:, amendments:, current:, customer_id:, initial:, archived_at: nil, custom_fields: nil, customer_billing_provider_configuration: nil, prepaid_balance_threshold_configuration: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, uniqueness_key: nil)
+          # @!method initialize(id:, amendments:, current:, customer_id:, initial:, archived_at: nil, custom_fields: nil, customer_billing_provider_configuration: nil, prepaid_balance_threshold_configuration: nil, priority: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, uniqueness_key: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::ContractRetrieveResponse::Data} for more details.
           #
@@ -119,6 +125,8 @@ module MetronomeSDK
           #   @param customer_billing_provider_configuration [MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration] The billing provider configuration associated with a contract.
           #
           #   @param prepaid_balance_threshold_configuration [MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration]
+          #
+          #   @param priority [Float] Priority of the contract.
           #
           #   @param scheduled_charges_on_usage_invoices [Symbol, MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::ScheduledChargesOnUsageInvoices] Determines which scheduled and commit charges to consolidate onto the Contract's
           #

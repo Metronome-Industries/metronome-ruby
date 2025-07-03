@@ -40,6 +40,7 @@ module MetronomeSDK
             net_payment_terms_days: Float,
             netsuite_sales_order_id: String,
             prepaid_balance_threshold_configuration: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration,
+            priority: Float,
             professional_services: ::Array[MetronomeSDK::ProService],
             rate_card_id: String,
             recurring_commits: ::Array[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit],
@@ -136,6 +137,10 @@ module MetronomeSDK
             MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration
           ) -> MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration
 
+          attr_reader priority: Float?
+
+          def priority=: (Float) -> Float
+
           attr_reader professional_services: ::Array[MetronomeSDK::ProService]?
 
           def professional_services=: (
@@ -218,6 +223,7 @@ module MetronomeSDK
             ?net_payment_terms_days: Float,
             ?netsuite_sales_order_id: String,
             ?prepaid_balance_threshold_configuration: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration,
+            ?priority: Float,
             ?professional_services: ::Array[MetronomeSDK::ProService],
             ?rate_card_id: String,
             ?recurring_commits: ::Array[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit],
@@ -255,6 +261,7 @@ module MetronomeSDK
             net_payment_terms_days: Float,
             netsuite_sales_order_id: String,
             prepaid_balance_threshold_configuration: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration,
+            priority: Float,
             professional_services: ::Array[MetronomeSDK::ProService],
             rate_card_id: String,
             recurring_commits: ::Array[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit],
