@@ -135,6 +135,13 @@ module MetronomeSDK
           end
           attr_writer :prepaid_balance_threshold_configuration
 
+          # Priority of the contract.
+          sig { returns(T.nilable(Float)) }
+          attr_reader :priority
+
+          sig { params(priority: Float).void }
+          attr_writer :priority
+
           # Determines which scheduled and commit charges to consolidate onto the Contract's
           # usage invoice. The charge's `timestamp` must match the usage invoice's
           # `ending_before` date for consolidation to occur. This field cannot be modified
@@ -221,6 +228,7 @@ module MetronomeSDK
                 MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::OrHash,
               prepaid_balance_threshold_configuration:
                 MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration::OrHash,
+              priority: Float,
               scheduled_charges_on_usage_invoices:
                 MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::ScheduledChargesOnUsageInvoices::OrSymbol,
               spend_threshold_configuration:
@@ -245,6 +253,8 @@ module MetronomeSDK
             # The billing provider configuration associated with a contract.
             customer_billing_provider_configuration: nil,
             prepaid_balance_threshold_configuration: nil,
+            # Priority of the contract.
+            priority: nil,
             # Determines which scheduled and commit charges to consolidate onto the Contract's
             # usage invoice. The charge's `timestamp` must match the usage invoice's
             # `ending_before` date for consolidation to occur. This field cannot be modified
@@ -278,6 +288,7 @@ module MetronomeSDK
                   MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration,
                 prepaid_balance_threshold_configuration:
                   MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration,
+                priority: Float,
                 scheduled_charges_on_usage_invoices:
                   MetronomeSDK::Models::V1::ContractRetrieveResponse::Data::ScheduledChargesOnUsageInvoices::TaggedSymbol,
                 spend_threshold_configuration:

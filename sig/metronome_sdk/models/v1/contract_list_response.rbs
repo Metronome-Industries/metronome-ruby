@@ -26,6 +26,7 @@ module MetronomeSDK
             custom_fields: ::Hash[Symbol, String],
             customer_billing_provider_configuration: MetronomeSDK::Models::V1::ContractListResponse::Data::CustomerBillingProviderConfiguration,
             prepaid_balance_threshold_configuration: MetronomeSDK::Models::V1::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration,
+            priority: Float,
             scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::ContractListResponse::Data::scheduled_charges_on_usage_invoices,
             spend_threshold_configuration: MetronomeSDK::Models::V1::ContractListResponse::Data::SpendThresholdConfiguration,
             subscriptions: ::Array[MetronomeSDK::Models::V1::ContractListResponse::Data::Subscription],
@@ -63,6 +64,10 @@ module MetronomeSDK
             MetronomeSDK::Models::V1::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration
           ) -> MetronomeSDK::Models::V1::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration
 
+          attr_reader priority: Float?
+
+          def priority=: (Float) -> Float
+
           attr_reader scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::ContractListResponse::Data::scheduled_charges_on_usage_invoices?
 
           def scheduled_charges_on_usage_invoices=: (
@@ -95,6 +100,7 @@ module MetronomeSDK
             ?custom_fields: ::Hash[Symbol, String],
             ?customer_billing_provider_configuration: MetronomeSDK::Models::V1::ContractListResponse::Data::CustomerBillingProviderConfiguration,
             ?prepaid_balance_threshold_configuration: MetronomeSDK::Models::V1::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration,
+            ?priority: Float,
             ?scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::ContractListResponse::Data::scheduled_charges_on_usage_invoices,
             ?spend_threshold_configuration: MetronomeSDK::Models::V1::ContractListResponse::Data::SpendThresholdConfiguration,
             ?subscriptions: ::Array[MetronomeSDK::Models::V1::ContractListResponse::Data::Subscription],
@@ -111,6 +117,7 @@ module MetronomeSDK
             custom_fields: ::Hash[Symbol, String],
             customer_billing_provider_configuration: MetronomeSDK::Models::V1::ContractListResponse::Data::CustomerBillingProviderConfiguration,
             prepaid_balance_threshold_configuration: MetronomeSDK::Models::V1::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration,
+            priority: Float,
             scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::ContractListResponse::Data::scheduled_charges_on_usage_invoices,
             spend_threshold_configuration: MetronomeSDK::Models::V1::ContractListResponse::Data::SpendThresholdConfiguration,
             subscriptions: ::Array[MetronomeSDK::Models::V1::ContractListResponse::Data::Subscription],
