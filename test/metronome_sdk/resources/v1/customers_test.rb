@@ -137,24 +137,6 @@ class MetronomeSDK::Test::Resources::V1::CustomersTest < MetronomeSDK::Test::Res
     end
   end
 
-  def test_preview_events_required_params
-    response =
-      @metronome.v1.customers.preview_events(
-        customer_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
-        events: [{event_type: "heartbeat"}]
-      )
-
-    assert_pattern do
-      response => MetronomeSDK::Models::V1::CustomerPreviewEventsResponse
-    end
-
-    assert_pattern do
-      response => {
-        data: MetronomeSDK::V1::Customers::Invoice
-      }
-    end
-  end
-
   def test_set_ingest_aliases_required_params
     response =
       @metronome.v1.customers.set_ingest_aliases(

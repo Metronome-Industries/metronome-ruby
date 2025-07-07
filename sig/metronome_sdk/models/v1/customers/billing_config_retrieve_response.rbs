@@ -21,6 +21,7 @@ module MetronomeSDK
           type data =
             {
               aws_expiration_date: Time,
+              aws_is_subscription_product: bool,
               aws_product_code: String,
               aws_region: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::aws_region,
               azure_expiration_date: Time,
@@ -35,6 +36,10 @@ module MetronomeSDK
             attr_reader aws_expiration_date: Time?
 
             def aws_expiration_date=: (Time) -> Time
+
+            attr_reader aws_is_subscription_product: bool?
+
+            def aws_is_subscription_product=: (bool) -> bool
 
             attr_reader aws_product_code: String?
 
@@ -76,6 +81,7 @@ module MetronomeSDK
 
             def initialize: (
               ?aws_expiration_date: Time,
+              ?aws_is_subscription_product: bool,
               ?aws_product_code: String,
               ?aws_region: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::aws_region,
               ?azure_expiration_date: Time,
@@ -88,6 +94,7 @@ module MetronomeSDK
 
             def to_hash: -> {
               aws_expiration_date: Time,
+              aws_is_subscription_product: bool,
               aws_product_code: String,
               aws_region: MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::aws_region,
               azure_expiration_date: Time,
