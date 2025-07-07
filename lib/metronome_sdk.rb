@@ -169,6 +169,8 @@ require_relative "metronome_sdk/models/v1/customer_list_billable_metrics_respons
 require_relative "metronome_sdk/models/v1/customer_list_costs_params"
 require_relative "metronome_sdk/models/v1/customer_list_costs_response"
 require_relative "metronome_sdk/models/v1/customer_list_params"
+require_relative "metronome_sdk/models/v1/customer_preview_events_params"
+require_relative "metronome_sdk/models/v1/customer_preview_events_response"
 require_relative "metronome_sdk/models/v1/customer_retrieve_params"
 require_relative "metronome_sdk/models/v1/customer_retrieve_response"
 require_relative "metronome_sdk/models/v1/customers/alert_list_params"
