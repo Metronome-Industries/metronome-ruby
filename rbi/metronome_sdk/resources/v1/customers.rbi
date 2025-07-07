@@ -173,38 +173,6 @@ module MetronomeSDK
         )
         end
 
-        # Generates a draft invoice for a customer using their current contract
-        # configuration and the provided events. This is useful for testing how new events
-        # will affect the customer's invoice before they are actually processed.
-        sig do
-          params(
-            customer_id: String,
-            events:
-              T::Array[
-                MetronomeSDK::V1::CustomerPreviewEventsParams::Event::OrHash
-              ],
-            mode: MetronomeSDK::V1::CustomerPreviewEventsParams::Mode::OrSymbol,
-            skip_zero_qty_line_items: T::Boolean,
-            request_options: MetronomeSDK::RequestOptions::OrHash
-          ).returns(MetronomeSDK::Models::V1::CustomerPreviewEventsResponse)
-        end
-        def preview_events(
-          # Path param:
-          customer_id:,
-          # Body param:
-          events:,
-          # Body param: If set to "replace", the preview will be generated as if those were
-          # the only events for the specified customer. If set to "merge", the events will
-          # be merged with any existing events for the specified customer. Defaults to
-          # "replace".
-          mode: nil,
-          # Body param: If set, all zero quantity line items will be filtered out of the
-          # response.
-          skip_zero_qty_line_items: nil,
-          request_options: {}
-        )
-        end
-
         # Sets the ingest aliases for a customer. Ingest aliases can be used in the
         # `customer_id` field when sending usage events to Metronome. This call is
         # idempotent. It fully replaces the set of ingest aliases for the given customer.
