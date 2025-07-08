@@ -1,0 +1,26 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type usage_search_params =
+        { transaction_ids: ::Array[String] }
+        & MetronomeSDK::Internal::Type::request_parameters
+
+      class UsageSearchParams < MetronomeSDK::Internal::Type::BaseModel
+        extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+        include MetronomeSDK::Internal::Type::RequestParameters
+
+        attr_accessor transaction_ids: ::Array[String]
+
+        def initialize: (
+          transaction_ids: ::Array[String],
+          ?request_options: MetronomeSDK::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          transaction_ids: ::Array[String],
+          request_options: MetronomeSDK::RequestOptions
+        }
+      end
+    end
+  end
+end
