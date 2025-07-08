@@ -112,29 +112,6 @@ module MetronomeSDK
           )
         end
 
-        # Find events to match to customers, billable metrics, etc. We only look for
-        # transactions that occurred in the last 34 days.
-        #
-        # @overload search(transaction_ids:, request_options: {})
-        #
-        # @param transaction_ids [Array<String>] The transaction IDs of the events to retrieve
-        #
-        # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
-        #
-        # @return [Array<MetronomeSDK::Models::V1::UsageSearchResponseItem>]
-        #
-        # @see MetronomeSDK::Models::V1::UsageSearchParams
-        def search(params)
-          parsed, options = MetronomeSDK::V1::UsageSearchParams.dump_request(params)
-          @client.request(
-            method: :post,
-            path: "v1/events/search",
-            body: parsed,
-            model: MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::UsageSearchResponseItem],
-            options: options
-          )
-        end
-
         # @api private
         #
         # @param client [MetronomeSDK::Client]
