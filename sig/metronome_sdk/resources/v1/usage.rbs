@@ -30,11 +30,6 @@ module MetronomeSDK
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::UsageListWithGroupsResponse]
 
-        def search: (
-          transaction_ids: ::Array[String],
-          ?request_options: MetronomeSDK::request_opts
-        ) -> MetronomeSDK::Models::V1::usage_search_response
-
         def initialize: (client: MetronomeSDK::Client) -> void
       end
     end

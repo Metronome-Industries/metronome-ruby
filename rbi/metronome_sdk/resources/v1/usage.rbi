@@ -107,21 +107,6 @@ module MetronomeSDK
         )
         end
 
-        # Find events to match to customers, billable metrics, etc. We only look for
-        # transactions that occurred in the last 34 days.
-        sig do
-          params(
-            transaction_ids: T::Array[String],
-            request_options: MetronomeSDK::RequestOptions::OrHash
-          ).returns(T::Array[MetronomeSDK::Models::V1::UsageSearchResponseItem])
-        end
-        def search(
-          # The transaction IDs of the events to retrieve
-          transaction_ids:,
-          request_options: {}
-        )
-        end
-
         # @api private
         sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
         def self.new(client:)

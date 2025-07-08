@@ -18,6 +18,7 @@ module MetronomeSDK
           netsuite_sales_order_id: String,
           overrides: ::Array[MetronomeSDK::V1::ContractCreateParams::Override],
           prepaid_balance_threshold_configuration: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration,
+          priority: Float,
           professional_services: ::Array[MetronomeSDK::V1::ContractCreateParams::ProfessionalService],
           rate_card_alias: String,
           rate_card_id: String,
@@ -112,6 +113,10 @@ module MetronomeSDK
         def prepaid_balance_threshold_configuration=: (
           MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration
         ) -> MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration
+
+        attr_reader priority: Float?
+
+        def priority=: (Float) -> Float
 
         attr_reader professional_services: ::Array[MetronomeSDK::V1::ContractCreateParams::ProfessionalService]?
 
@@ -215,6 +220,7 @@ module MetronomeSDK
           ?netsuite_sales_order_id: String,
           ?overrides: ::Array[MetronomeSDK::V1::ContractCreateParams::Override],
           ?prepaid_balance_threshold_configuration: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration,
+          ?priority: Float,
           ?professional_services: ::Array[MetronomeSDK::V1::ContractCreateParams::ProfessionalService],
           ?rate_card_alias: String,
           ?rate_card_id: String,
@@ -250,6 +256,7 @@ module MetronomeSDK
           netsuite_sales_order_id: String,
           overrides: ::Array[MetronomeSDK::V1::ContractCreateParams::Override],
           prepaid_balance_threshold_configuration: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration,
+          priority: Float,
           professional_services: ::Array[MetronomeSDK::V1::ContractCreateParams::ProfessionalService],
           rate_card_alias: String,
           rate_card_id: String,

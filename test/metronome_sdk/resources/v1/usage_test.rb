@@ -60,12 +60,4 @@ class MetronomeSDK::Test::Resources::V1::UsageTest < MetronomeSDK::Test::Resourc
       }
     end
   end
-
-  def test_search_required_params
-    response = @metronome.v1.usage.search(transaction_ids: ["2021-01-01T00:00:00Z_cluster42"])
-
-    assert_pattern do
-      response => ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::UsageSearchResponseItem])
-    end
-  end
 end

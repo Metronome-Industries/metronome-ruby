@@ -192,6 +192,13 @@ module MetronomeSDK
         end
         attr_writer :prepaid_balance_threshold_configuration
 
+        # Priority of the contract.
+        sig { returns(T.nilable(Float)) }
+        attr_reader :priority
+
+        sig { params(priority: Float).void }
+        attr_writer :priority
+
         # This field's availability is dependent on your client's configuration.
         sig do
           returns(
@@ -454,6 +461,7 @@ module MetronomeSDK
               ],
             prepaid_balance_threshold_configuration:
               MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::OrHash,
+            priority: Float,
             professional_services:
               T::Array[
                 MetronomeSDK::V1::ContractCreateParams::ProfessionalService::OrHash
@@ -520,6 +528,8 @@ module MetronomeSDK
           netsuite_sales_order_id: nil,
           overrides: nil,
           prepaid_balance_threshold_configuration: nil,
+          # Priority of the contract.
+          priority: nil,
           # This field's availability is dependent on your client's configuration.
           professional_services: nil,
           # Selects the rate card linked to the specified alias as of the contract's start
@@ -581,6 +591,7 @@ module MetronomeSDK
                 T::Array[MetronomeSDK::V1::ContractCreateParams::Override],
               prepaid_balance_threshold_configuration:
                 MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration,
+              priority: Float,
               professional_services:
                 T::Array[
                   MetronomeSDK::V1::ContractCreateParams::ProfessionalService
