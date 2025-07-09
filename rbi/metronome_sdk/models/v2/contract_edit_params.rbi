@@ -3574,6 +3574,14 @@ module MetronomeSDK
           sig { returns(Float) }
           attr_accessor :threshold_amount
 
+          # If provided, the threshold, recharge-to amount, and the resulting threshold
+          # commit amount will be in terms of this credit type instead of the fiat currency.
+          sig { returns(T.nilable(String)) }
+          attr_reader :custom_credit_type_id
+
+          sig { params(custom_credit_type_id: String).void }
+          attr_writer :custom_credit_type_id
+
           sig do
             params(
               commit:
@@ -3582,7 +3590,8 @@ module MetronomeSDK
               payment_gate_config:
                 MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::OrHash,
               recharge_to_amount: Float,
-              threshold_amount: Float
+              threshold_amount: Float,
+              custom_credit_type_id: String
             ).returns(T.attached_class)
           end
           def self.new(
@@ -3596,7 +3605,10 @@ module MetronomeSDK
             recharge_to_amount:,
             # Specify the threshold amount for the contract. Each time the contract's balance
             # lowers to this amount, a threshold charge will be initiated.
-            threshold_amount:
+            threshold_amount:,
+            # If provided, the threshold, recharge-to amount, and the resulting threshold
+            # commit amount will be in terms of this credit type instead of the fiat currency.
+            custom_credit_type_id: nil
           )
           end
 
@@ -3609,7 +3621,8 @@ module MetronomeSDK
                 payment_gate_config:
                   MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig,
                 recharge_to_amount: Float,
-                threshold_amount: Float
+                threshold_amount: Float,
+                custom_credit_type_id: String
               }
             )
           end
@@ -8093,6 +8106,14 @@ module MetronomeSDK
           end
           attr_writer :commit
 
+          # If provided, the threshold, recharge-to amount, and the resulting threshold
+          # commit amount will be in terms of this credit type instead of the fiat currency.
+          sig { returns(T.nilable(String)) }
+          attr_reader :custom_credit_type_id
+
+          sig { params(custom_credit_type_id: String).void }
+          attr_writer :custom_credit_type_id
+
           # When set to false, the contract will not be evaluated against the
           # threshold_amount. Toggling to true will result an immediate evaluation,
           # regardless of prior state.
@@ -8138,6 +8159,7 @@ module MetronomeSDK
             params(
               commit:
                 MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::OrHash,
+              custom_credit_type_id: String,
               is_enabled: T::Boolean,
               payment_gate_config:
                 MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::OrHash,
@@ -8147,6 +8169,9 @@ module MetronomeSDK
           end
           def self.new(
             commit: nil,
+            # If provided, the threshold, recharge-to amount, and the resulting threshold
+            # commit amount will be in terms of this credit type instead of the fiat currency.
+            custom_credit_type_id: nil,
             # When set to false, the contract will not be evaluated against the
             # threshold_amount. Toggling to true will result an immediate evaluation,
             # regardless of prior state.
@@ -8165,6 +8190,7 @@ module MetronomeSDK
               {
                 commit:
                   MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit,
+                custom_credit_type_id: String,
                 is_enabled: T::Boolean,
                 payment_gate_config:
                   MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig,

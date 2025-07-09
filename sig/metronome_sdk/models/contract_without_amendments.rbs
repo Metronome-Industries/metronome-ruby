@@ -346,7 +346,8 @@ module MetronomeSDK
           is_enabled: bool,
           payment_gate_config: MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig,
           recharge_to_amount: Float,
-          threshold_amount: Float
+          threshold_amount: Float,
+          custom_credit_type_id: String
         }
 
       class PrepaidBalanceThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
@@ -360,12 +361,17 @@ module MetronomeSDK
 
         attr_accessor threshold_amount: Float
 
+        attr_reader custom_credit_type_id: String?
+
+        def custom_credit_type_id=: (String) -> String
+
         def initialize: (
           commit: MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::Commit,
           is_enabled: bool,
           payment_gate_config: MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig,
           recharge_to_amount: Float,
-          threshold_amount: Float
+          threshold_amount: Float,
+          ?custom_credit_type_id: String
         ) -> void
 
         def to_hash: -> {
@@ -373,7 +379,8 @@ module MetronomeSDK
           is_enabled: bool,
           payment_gate_config: MetronomeSDK::ContractWithoutAmendments::PrepaidBalanceThresholdConfiguration::PaymentGateConfig,
           recharge_to_amount: Float,
-          threshold_amount: Float
+          threshold_amount: Float,
+          custom_credit_type_id: String
         }
 
         type commit =
