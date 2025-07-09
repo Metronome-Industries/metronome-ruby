@@ -1785,7 +1785,14 @@ module MetronomeSDK
           #   @return [Float]
           required :threshold_amount, Float
 
-          # @!method initialize(commit:, is_enabled:, payment_gate_config:, recharge_to_amount:, threshold_amount:)
+          # @!attribute custom_credit_type_id
+          #   If provided, the threshold, recharge-to amount, and the resulting threshold
+          #   commit amount will be in terms of this credit type instead of the fiat currency.
+          #
+          #   @return [String, nil]
+          optional :custom_credit_type_id, String
+
+          # @!method initialize(commit:, is_enabled:, payment_gate_config:, recharge_to_amount:, threshold_amount:, custom_credit_type_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration}
           #   for more details.
@@ -1799,6 +1806,8 @@ module MetronomeSDK
           #   @param recharge_to_amount [Float] Specify the amount the balance should be recharged to.
           #
           #   @param threshold_amount [Float] Specify the threshold amount for the contract. Each time the contract's prepaid
+          #
+          #   @param custom_credit_type_id [String] If provided, the threshold, recharge-to amount, and the resulting threshold comm
 
           # @see MetronomeSDK::Models::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration#commit
           class Commit < MetronomeSDK::Internal::Type::BaseModel

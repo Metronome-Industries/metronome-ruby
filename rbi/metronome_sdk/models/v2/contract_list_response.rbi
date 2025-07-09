@@ -4788,6 +4788,14 @@ module MetronomeSDK
             sig { returns(Float) }
             attr_accessor :threshold_amount
 
+            # If provided, the threshold, recharge-to amount, and the resulting threshold
+            # commit amount will be in terms of this credit type instead of the fiat currency.
+            sig { returns(T.nilable(String)) }
+            attr_reader :custom_credit_type_id
+
+            sig { params(custom_credit_type_id: String).void }
+            attr_writer :custom_credit_type_id
+
             sig do
               params(
                 commit:
@@ -4796,7 +4804,8 @@ module MetronomeSDK
                 payment_gate_config:
                   MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig::OrHash,
                 recharge_to_amount: Float,
-                threshold_amount: Float
+                threshold_amount: Float,
+                custom_credit_type_id: String
               ).returns(T.attached_class)
             end
             def self.new(
@@ -4810,7 +4819,10 @@ module MetronomeSDK
               recharge_to_amount:,
               # Specify the threshold amount for the contract. Each time the contract's balance
               # lowers to this amount, a threshold charge will be initiated.
-              threshold_amount:
+              threshold_amount:,
+              # If provided, the threshold, recharge-to amount, and the resulting threshold
+              # commit amount will be in terms of this credit type instead of the fiat currency.
+              custom_credit_type_id: nil
             )
             end
 
@@ -4823,7 +4835,8 @@ module MetronomeSDK
                   payment_gate_config:
                     MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::PaymentGateConfig,
                   recharge_to_amount: Float,
-                  threshold_amount: Float
+                  threshold_amount: Float,
+                  custom_credit_type_id: String
                 }
               )
             end
