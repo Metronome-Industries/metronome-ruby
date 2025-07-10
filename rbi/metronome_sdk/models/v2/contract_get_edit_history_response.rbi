@@ -7121,10 +7121,7 @@ module MetronomeSDK
             # If provided, the threshold, recharge-to amount, and the resulting threshold
             # commit amount will be in terms of this credit type instead of the fiat currency.
             sig { returns(T.nilable(String)) }
-            attr_reader :custom_credit_type_id
-
-            sig { params(custom_credit_type_id: String).void }
-            attr_writer :custom_credit_type_id
+            attr_accessor :custom_credit_type_id
 
             # When set to false, the contract will not be evaluated against the
             # threshold_amount. Toggling to true will result an immediate evaluation,
@@ -7171,7 +7168,7 @@ module MetronomeSDK
               params(
                 commit:
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::OrHash,
-                custom_credit_type_id: String,
+                custom_credit_type_id: T.nilable(String),
                 is_enabled: T::Boolean,
                 payment_gate_config:
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::OrHash,
@@ -7202,7 +7199,7 @@ module MetronomeSDK
                 {
                   commit:
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit,
-                  custom_credit_type_id: String,
+                  custom_credit_type_id: T.nilable(String),
                   is_enabled: T::Boolean,
                   payment_gate_config:
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig,

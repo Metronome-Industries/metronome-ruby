@@ -3141,7 +3141,7 @@ module MetronomeSDK
           type update_prepaid_balance_threshold_configuration =
             {
               commit: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit,
-              custom_credit_type_id: String,
+              custom_credit_type_id: String?,
               is_enabled: bool,
               payment_gate_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig,
               recharge_to_amount: Float,
@@ -3155,9 +3155,7 @@ module MetronomeSDK
               MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit
             ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit
 
-            attr_reader custom_credit_type_id: String?
-
-            def custom_credit_type_id=: (String) -> String
+            attr_accessor custom_credit_type_id: String?
 
             attr_reader is_enabled: bool?
 
@@ -3179,7 +3177,7 @@ module MetronomeSDK
 
             def initialize: (
               ?commit: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit,
-              ?custom_credit_type_id: String,
+              ?custom_credit_type_id: String?,
               ?is_enabled: bool,
               ?payment_gate_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig,
               ?recharge_to_amount: Float,
@@ -3188,7 +3186,7 @@ module MetronomeSDK
 
             def to_hash: -> {
               commit: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit,
-              custom_credit_type_id: String,
+              custom_credit_type_id: String?,
               is_enabled: bool,
               payment_gate_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig,
               recharge_to_amount: Float,

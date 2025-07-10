@@ -3846,7 +3846,7 @@ module MetronomeSDK
           #   commit amount will be in terms of this credit type instead of the fiat currency.
           #
           #   @return [String, nil]
-          optional :custom_credit_type_id, String
+          optional :custom_credit_type_id, String, nil?: true
 
           # @!attribute is_enabled
           #   When set to false, the contract will not be evaluated against the
@@ -3884,7 +3884,7 @@ module MetronomeSDK
           #
           #   @param commit [MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit]
           #
-          #   @param custom_credit_type_id [String] If provided, the threshold, recharge-to amount, and the resulting threshold comm
+          #   @param custom_credit_type_id [String, nil] If provided, the threshold, recharge-to amount, and the resulting threshold comm
           #
           #   @param is_enabled [Boolean] When set to false, the contract will not be evaluated against the threshold_amou
           #
