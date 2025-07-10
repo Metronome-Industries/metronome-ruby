@@ -107,8 +107,10 @@ module MetronomeSDK
         )
         end
 
-        # Find events to match to customers, billable metrics, etc. We only look for
-        # transactions that occurred in the last 34 days.
+        # For a set of events, look up matched billable metrics and customers by
+        # transaction id. This endpoint looks at transactions that occurred in the last 34
+        # days, and is intended for sampling-based testing workflows. It is heavily rate
+        # limited.
         sig do
           params(
             transaction_ids: T::Array[String],
