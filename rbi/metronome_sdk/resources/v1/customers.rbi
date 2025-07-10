@@ -173,9 +173,10 @@ module MetronomeSDK
         )
         end
 
-        # Generates a draft invoice for a customer using their current contract
-        # configuration and the provided events. This is useful for testing how new events
-        # will affect the customer's invoice before they are actually processed.
+        # Preview how a set of events will affect a customer's invoice. Generates a draft
+        # invoice for a customer using their current contract configuration and the
+        # provided events. This is useful for testing how new events will affect the
+        # customer's invoice before they are actually processed.
         sig do
           params(
             customer_id: String,
