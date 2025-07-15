@@ -32,8 +32,8 @@ module MetronomeSDK
         )
         end
 
-        # List all contracts for a customer. New clients should use this endpoint rather
-        # than the v1 endpoint.
+        # List all contracts for a customer in chronological order. New clients should use
+        # this endpoint rather than the v1 endpoint.
         sig do
           params(
             customer_id: String,

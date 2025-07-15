@@ -41,8 +41,8 @@ module MetronomeSDK
         # Some parameter documentations has been truncated, see
         # {MetronomeSDK::Models::V2::ContractListParams} for more details.
         #
-        # List all contracts for a customer. New clients should use this endpoint rather
-        # than the v1 endpoint.
+        # List all contracts for a customer in chronological order. New clients should use
+        # this endpoint rather than the v1 endpoint.
         #
         # @overload list(customer_id:, covering_date: nil, include_archived: nil, include_balance: nil, include_ledgers: nil, starting_at: nil, request_options: {})
         #
