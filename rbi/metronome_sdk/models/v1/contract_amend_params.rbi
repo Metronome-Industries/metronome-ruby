@@ -1415,7 +1415,25 @@ module MetronomeSDK
             end
             attr_accessor :payment_gate_type
 
-            # Only applicable if using Stripe as your payment gateway through Metronome.
+            # Only applicable if using PRECALCULATED as your tax type.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::PrecalculatedTaxConfig
+                )
+              )
+            end
+            attr_reader :precalculated_tax_config
+
+            sig do
+              params(
+                precalculated_tax_config:
+                  MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::PrecalculatedTaxConfig::OrHash
+              ).void
+            end
+            attr_writer :precalculated_tax_config
+
+            # Only applicable if using STRIPE as your payment gate type.
             sig do
               returns(
                 T.nilable(
@@ -1458,6 +1476,8 @@ module MetronomeSDK
               params(
                 payment_gate_type:
                   MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::PaymentGateType::OrSymbol,
+                precalculated_tax_config:
+                  MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::PrecalculatedTaxConfig::OrHash,
                 stripe_config:
                   MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::StripeConfig::OrHash,
                 tax_type:
@@ -1470,7 +1490,9 @@ module MetronomeSDK
               # facilitate payment using your own payment integration. Select NONE if you do not
               # wish to payment gate the commit balance.
               payment_gate_type:,
-              # Only applicable if using Stripe as your payment gateway through Metronome.
+              # Only applicable if using PRECALCULATED as your tax type.
+              precalculated_tax_config: nil,
+              # Only applicable if using STRIPE as your payment gate type.
               stripe_config: nil,
               # Stripe tax is only supported for Stripe payment gateway. Select NONE if you do
               # not wish Metronome to calculate tax on your behalf. Leaving this field blank
@@ -1484,6 +1506,8 @@ module MetronomeSDK
                 {
                   payment_gate_type:
                     MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::PaymentGateType::OrSymbol,
+                  precalculated_tax_config:
+                    MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::PrecalculatedTaxConfig,
                   stripe_config:
                     MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::StripeConfig,
                   tax_type:
@@ -1537,6 +1561,49 @@ module MetronomeSDK
               end
             end
 
+            class PrecalculatedTaxConfig < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::PrecalculatedTaxConfig,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              # Amount of tax to be applied. This should be in the same currency and
+              # denomination as the commit's invoice schedule
+              sig { returns(Float) }
+              attr_accessor :tax_amount
+
+              # Name of the tax to be applied. This may be used in an invoice line item
+              # description.
+              sig { returns(T.nilable(String)) }
+              attr_reader :tax_name
+
+              sig { params(tax_name: String).void }
+              attr_writer :tax_name
+
+              # Only applicable if using PRECALCULATED as your tax type.
+              sig do
+                params(tax_amount: Float, tax_name: String).returns(
+                  T.attached_class
+                )
+              end
+              def self.new(
+                # Amount of tax to be applied. This should be in the same currency and
+                # denomination as the commit's invoice schedule
+                tax_amount:,
+                # Name of the tax to be applied. This may be used in an invoice line item
+                # description.
+                tax_name: nil
+              )
+              end
+
+              sig { override.returns({ tax_amount: Float, tax_name: String }) }
+              def to_hash
+              end
+            end
+
             class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -1554,16 +1621,28 @@ module MetronomeSDK
               end
               attr_accessor :payment_type
 
-              # Only applicable if using Stripe as your payment gateway through Metronome.
+              # Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
+              # your payment type.
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :invoice_metadata
+
+              sig { params(invoice_metadata: T::Hash[Symbol, String]).void }
+              attr_writer :invoice_metadata
+
+              # Only applicable if using STRIPE as your payment gate type.
               sig do
                 params(
                   payment_type:
-                    MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol
+                    MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol,
+                  invoice_metadata: T::Hash[Symbol, String]
                 ).returns(T.attached_class)
               end
               def self.new(
                 # If left blank, will default to INVOICE
-                payment_type:
+                payment_type:,
+                # Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
+                # your payment type.
+                invoice_metadata: nil
               )
               end
 
@@ -1571,7 +1650,8 @@ module MetronomeSDK
                 override.returns(
                   {
                     payment_type:
-                      MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol
+                      MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol,
+                    invoice_metadata: T::Hash[Symbol, String]
                   }
                 )
               end
@@ -1637,6 +1717,16 @@ module MetronomeSDK
               STRIPE =
                 T.let(
                   :STRIPE,
+                  MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::TaxType::TaggedSymbol
+                )
+              ANROK =
+                T.let(
+                  :ANROK,
+                  MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::TaxType::TaggedSymbol
+                )
+              PRECALCULATED =
+                T.let(
+                  :PRECALCULATED,
                   MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::TaxType::TaggedSymbol
                 )
 

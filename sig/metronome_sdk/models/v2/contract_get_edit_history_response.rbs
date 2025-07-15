@@ -1128,12 +1128,19 @@ module MetronomeSDK
             type payment_gate_config =
               {
                 payment_gate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+                precalculated_tax_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig,
                 stripe_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
                 tax_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
               }
 
             class PaymentGateConfig < MetronomeSDK::Internal::Type::BaseModel
               attr_accessor payment_gate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type
+
+              attr_reader precalculated_tax_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig?
+
+              def precalculated_tax_config=: (
+                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig
+              ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig
 
               attr_reader stripe_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig?
 
@@ -1149,12 +1156,14 @@ module MetronomeSDK
 
               def initialize: (
                 payment_gate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+                ?precalculated_tax_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig,
                 ?stripe_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
                 ?tax_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
               ) -> void
 
               def to_hash: -> {
                 payment_gate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+                precalculated_tax_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig,
                 stripe_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
                 tax_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
               }
@@ -1171,20 +1180,44 @@ module MetronomeSDK
                 def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type]
               end
 
+              type precalculated_tax_config =
+                { tax_amount: Float, tax_name: String }
+
+              class PrecalculatedTaxConfig < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor tax_amount: Float
+
+                attr_reader tax_name: String?
+
+                def tax_name=: (String) -> String
+
+                def initialize: (tax_amount: Float, ?tax_name: String) -> void
+
+                def to_hash: -> { tax_amount: Float, tax_name: String }
+              end
+
               type stripe_config =
                 {
-                  payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+                  payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type,
+                  invoice_metadata: ::Hash[Symbol, String]
                 }
 
               class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
                 attr_accessor payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
 
+                attr_reader invoice_metadata: ::Hash[Symbol, String]?
+
+                def invoice_metadata=: (
+                  ::Hash[Symbol, String]
+                ) -> ::Hash[Symbol, String]
+
                 def initialize: (
-                  payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+                  payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type,
+                  ?invoice_metadata: ::Hash[Symbol, String]
                 ) -> void
 
                 def to_hash: -> {
-                  payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+                  payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type,
+                  invoice_metadata: ::Hash[Symbol, String]
                 }
 
                 type payment_type = :INVOICE | :PAYMENT_INTENT
@@ -1199,13 +1232,15 @@ module MetronomeSDK
                 end
               end
 
-              type tax_type = :NONE | :STRIPE
+              type tax_type = :NONE | :STRIPE | :ANROK | :PRECALCULATED
 
               module TaxType
                 extend MetronomeSDK::Internal::Type::Enum
 
                 NONE: :NONE
                 STRIPE: :STRIPE
+                ANROK: :ANROK
+                PRECALCULATED: :PRECALCULATED
 
                 def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type]
               end
@@ -2065,12 +2100,19 @@ module MetronomeSDK
             type payment_gate_config =
               {
                 payment_gate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+                precalculated_tax_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig,
                 stripe_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig,
                 tax_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::tax_type
               }
 
             class PaymentGateConfig < MetronomeSDK::Internal::Type::BaseModel
               attr_accessor payment_gate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::payment_gate_type
+
+              attr_reader precalculated_tax_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig?
+
+              def precalculated_tax_config=: (
+                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig
+              ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig
 
               attr_reader stripe_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig?
 
@@ -2086,12 +2128,14 @@ module MetronomeSDK
 
               def initialize: (
                 payment_gate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+                ?precalculated_tax_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig,
                 ?stripe_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig,
                 ?tax_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::tax_type
               ) -> void
 
               def to_hash: -> {
                 payment_gate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+                precalculated_tax_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig,
                 stripe_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig,
                 tax_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::tax_type
               }
@@ -2108,20 +2152,44 @@ module MetronomeSDK
                 def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::payment_gate_type]
               end
 
+              type precalculated_tax_config =
+                { tax_amount: Float, tax_name: String }
+
+              class PrecalculatedTaxConfig < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor tax_amount: Float
+
+                attr_reader tax_name: String?
+
+                def tax_name=: (String) -> String
+
+                def initialize: (tax_amount: Float, ?tax_name: String) -> void
+
+                def to_hash: -> { tax_amount: Float, tax_name: String }
+              end
+
               type stripe_config =
                 {
-                  payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+                  payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type,
+                  invoice_metadata: ::Hash[Symbol, String]
                 }
 
               class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
                 attr_accessor payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
 
+                attr_reader invoice_metadata: ::Hash[Symbol, String]?
+
+                def invoice_metadata=: (
+                  ::Hash[Symbol, String]
+                ) -> ::Hash[Symbol, String]
+
                 def initialize: (
-                  payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+                  payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type,
+                  ?invoice_metadata: ::Hash[Symbol, String]
                 ) -> void
 
                 def to_hash: -> {
-                  payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+                  payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type,
+                  invoice_metadata: ::Hash[Symbol, String]
                 }
 
                 type payment_type = :INVOICE | :PAYMENT_INTENT
@@ -2136,13 +2204,15 @@ module MetronomeSDK
                 end
               end
 
-              type tax_type = :NONE | :STRIPE
+              type tax_type = :NONE | :STRIPE | :ANROK | :PRECALCULATED
 
               module TaxType
                 extend MetronomeSDK::Internal::Type::Enum
 
                 NONE: :NONE
                 STRIPE: :STRIPE
+                ANROK: :ANROK
+                PRECALCULATED: :PRECALCULATED
 
                 def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::tax_type]
               end
@@ -3288,12 +3358,19 @@ module MetronomeSDK
             type payment_gate_config =
               {
                 payment_gate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+                precalculated_tax_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig,
                 stripe_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
                 tax_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
               }
 
             class PaymentGateConfig < MetronomeSDK::Internal::Type::BaseModel
               attr_accessor payment_gate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type
+
+              attr_reader precalculated_tax_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig?
+
+              def precalculated_tax_config=: (
+                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig
+              ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig
 
               attr_reader stripe_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig?
 
@@ -3309,12 +3386,14 @@ module MetronomeSDK
 
               def initialize: (
                 payment_gate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+                ?precalculated_tax_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig,
                 ?stripe_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
                 ?tax_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
               ) -> void
 
               def to_hash: -> {
                 payment_gate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+                precalculated_tax_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig,
                 stripe_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
                 tax_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type
               }
@@ -3331,20 +3410,44 @@ module MetronomeSDK
                 def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::payment_gate_type]
               end
 
+              type precalculated_tax_config =
+                { tax_amount: Float, tax_name: String }
+
+              class PrecalculatedTaxConfig < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor tax_amount: Float
+
+                attr_reader tax_name: String?
+
+                def tax_name=: (String) -> String
+
+                def initialize: (tax_amount: Float, ?tax_name: String) -> void
+
+                def to_hash: -> { tax_amount: Float, tax_name: String }
+              end
+
               type stripe_config =
                 {
-                  payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+                  payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type,
+                  invoice_metadata: ::Hash[Symbol, String]
                 }
 
               class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
                 attr_accessor payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
 
+                attr_reader invoice_metadata: ::Hash[Symbol, String]?
+
+                def invoice_metadata=: (
+                  ::Hash[Symbol, String]
+                ) -> ::Hash[Symbol, String]
+
                 def initialize: (
-                  payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+                  payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type,
+                  ?invoice_metadata: ::Hash[Symbol, String]
                 ) -> void
 
                 def to_hash: -> {
-                  payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+                  payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type,
+                  invoice_metadata: ::Hash[Symbol, String]
                 }
 
                 type payment_type = :INVOICE | :PAYMENT_INTENT
@@ -3359,13 +3462,15 @@ module MetronomeSDK
                 end
               end
 
-              type tax_type = :NONE | :STRIPE
+              type tax_type = :NONE | :STRIPE | :ANROK | :PRECALCULATED
 
               module TaxType
                 extend MetronomeSDK::Internal::Type::Enum
 
                 NONE: :NONE
                 STRIPE: :STRIPE
+                ANROK: :ANROK
+                PRECALCULATED: :PRECALCULATED
 
                 def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::tax_type]
               end
@@ -3752,12 +3857,19 @@ module MetronomeSDK
             type payment_gate_config =
               {
                 payment_gate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+                precalculated_tax_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig,
                 stripe_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig,
                 tax_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::tax_type
               }
 
             class PaymentGateConfig < MetronomeSDK::Internal::Type::BaseModel
               attr_accessor payment_gate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::payment_gate_type
+
+              attr_reader precalculated_tax_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig?
+
+              def precalculated_tax_config=: (
+                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig
+              ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig
 
               attr_reader stripe_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig?
 
@@ -3773,12 +3885,14 @@ module MetronomeSDK
 
               def initialize: (
                 payment_gate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+                ?precalculated_tax_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig,
                 ?stripe_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig,
                 ?tax_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::tax_type
               ) -> void
 
               def to_hash: -> {
                 payment_gate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::payment_gate_type,
+                precalculated_tax_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig,
                 stripe_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig,
                 tax_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::tax_type
               }
@@ -3795,20 +3909,44 @@ module MetronomeSDK
                 def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::payment_gate_type]
               end
 
+              type precalculated_tax_config =
+                { tax_amount: Float, tax_name: String }
+
+              class PrecalculatedTaxConfig < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor tax_amount: Float
+
+                attr_reader tax_name: String?
+
+                def tax_name=: (String) -> String
+
+                def initialize: (tax_amount: Float, ?tax_name: String) -> void
+
+                def to_hash: -> { tax_amount: Float, tax_name: String }
+              end
+
               type stripe_config =
                 {
-                  payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+                  payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type,
+                  invoice_metadata: ::Hash[Symbol, String]
                 }
 
               class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
                 attr_accessor payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
 
+                attr_reader invoice_metadata: ::Hash[Symbol, String]?
+
+                def invoice_metadata=: (
+                  ::Hash[Symbol, String]
+                ) -> ::Hash[Symbol, String]
+
                 def initialize: (
-                  payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+                  payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type,
+                  ?invoice_metadata: ::Hash[Symbol, String]
                 ) -> void
 
                 def to_hash: -> {
-                  payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type
+                  payment_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::payment_type,
+                  invoice_metadata: ::Hash[Symbol, String]
                 }
 
                 type payment_type = :INVOICE | :PAYMENT_INTENT
@@ -3823,13 +3961,15 @@ module MetronomeSDK
                 end
               end
 
-              type tax_type = :NONE | :STRIPE
+              type tax_type = :NONE | :STRIPE | :ANROK | :PRECALCULATED
 
               module TaxType
                 extend MetronomeSDK::Internal::Type::Enum
 
                 NONE: :NONE
                 STRIPE: :STRIPE
+                ANROK: :ANROK
+                PRECALCULATED: :PRECALCULATED
 
                 def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::tax_type]
               end
