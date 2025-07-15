@@ -1113,8 +1113,15 @@ module MetronomeSDK
               required :payment_gate_type,
                        enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType }
 
+              # @!attribute precalculated_tax_config
+              #   Only applicable if using PRECALCULATED as your tax type.
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig, nil]
+              optional :precalculated_tax_config,
+                       -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig }
+
               # @!attribute stripe_config
-              #   Only applicable if using Stripe as your payment gateway through Metronome.
+              #   Only applicable if using STRIPE as your payment gateway type.
               #
               #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig, nil]
               optional :stripe_config,
@@ -1129,14 +1136,16 @@ module MetronomeSDK
               optional :tax_type,
                        enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType }
 
-              # @!method initialize(payment_gate_type:, stripe_config: nil, tax_type: nil)
+              # @!method initialize(payment_gate_type:, precalculated_tax_config: nil, stripe_config: nil, tax_type: nil)
               #   Some parameter documentations has been truncated, see
               #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig}
               #   for more details.
               #
               #   @param payment_gate_type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType] Gate access to the commit balance based on successful collection of payment. Sel
               #
-              #   @param stripe_config [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig] Only applicable if using Stripe as your payment gateway through Metronome.
+              #   @param precalculated_tax_config [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig] Only applicable if using PRECALCULATED as your tax type.
+              #
+              #   @param stripe_config [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig] Only applicable if using STRIPE as your payment gateway type.
               #
               #   @param tax_type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType] Stripe tax is only supported for Stripe payment gateway. Select NONE if you do n
 
@@ -1157,6 +1166,34 @@ module MetronomeSDK
                 #   @return [Array<Symbol>]
               end
 
+              # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig#precalculated_tax_config
+              class PrecalculatedTaxConfig < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute tax_amount
+                #   Amount of tax to be applied. This should be in the same currency and
+                #   denomination as the commit's invoice schedule
+                #
+                #   @return [Float]
+                required :tax_amount, Float
+
+                # @!attribute tax_name
+                #   Name of the tax to be applied. This may be used in an invoice line item
+                #   description.
+                #
+                #   @return [String, nil]
+                optional :tax_name, String
+
+                # @!method initialize(tax_amount:, tax_name: nil)
+                #   Some parameter documentations has been truncated, see
+                #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig}
+                #   for more details.
+                #
+                #   Only applicable if using PRECALCULATED as your tax type.
+                #
+                #   @param tax_amount [Float] Amount of tax to be applied. This should be in the same currency and denominatio
+                #
+                #   @param tax_name [String] Name of the tax to be applied. This may be used in an invoice line item descript
+              end
+
               # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig#stripe_config
               class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute payment_type
@@ -1166,10 +1203,23 @@ module MetronomeSDK
                 required :payment_type,
                          enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType }
 
-                # @!method initialize(payment_type:)
-                #   Only applicable if using Stripe as your payment gateway through Metronome.
+                # @!attribute invoice_metadata
+                #   Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
+                #   your payment type.
+                #
+                #   @return [Hash{Symbol=>String}, nil]
+                optional :invoice_metadata, MetronomeSDK::Internal::Type::HashOf[String]
+
+                # @!method initialize(payment_type:, invoice_metadata: nil)
+                #   Some parameter documentations has been truncated, see
+                #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig}
+                #   for more details.
+                #
+                #   Only applicable if using STRIPE as your payment gateway type.
                 #
                 #   @param payment_type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType] If left blank, will default to INVOICE
+                #
+                #   @param invoice_metadata [Hash{Symbol=>String}] Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
 
                 # If left blank, will default to INVOICE
                 #
@@ -1195,6 +1245,8 @@ module MetronomeSDK
 
                 NONE = :NONE
                 STRIPE = :STRIPE
+                ANROK = :ANROK
+                PRECALCULATED = :PRECALCULATED
 
                 # @!method self.values
                 #   @return [Array<Symbol>]
@@ -2149,8 +2201,15 @@ module MetronomeSDK
               required :payment_gate_type,
                        enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::PaymentGateType }
 
+              # @!attribute precalculated_tax_config
+              #   Only applicable if using PRECALCULATED as your tax type.
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig, nil]
+              optional :precalculated_tax_config,
+                       -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig }
+
               # @!attribute stripe_config
-              #   Only applicable if using Stripe as your payment gateway through Metronome.
+              #   Only applicable if using STRIPE as your payment gateway type.
               #
               #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig, nil]
               optional :stripe_config,
@@ -2165,14 +2224,16 @@ module MetronomeSDK
               optional :tax_type,
                        enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::TaxType }
 
-              # @!method initialize(payment_gate_type:, stripe_config: nil, tax_type: nil)
+              # @!method initialize(payment_gate_type:, precalculated_tax_config: nil, stripe_config: nil, tax_type: nil)
               #   Some parameter documentations has been truncated, see
               #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig}
               #   for more details.
               #
               #   @param payment_gate_type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::PaymentGateType] Gate access to the commit balance based on successful collection of payment. Sel
               #
-              #   @param stripe_config [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig] Only applicable if using Stripe as your payment gateway through Metronome.
+              #   @param precalculated_tax_config [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig] Only applicable if using PRECALCULATED as your tax type.
+              #
+              #   @param stripe_config [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig] Only applicable if using STRIPE as your payment gateway type.
               #
               #   @param tax_type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::TaxType] Stripe tax is only supported for Stripe payment gateway. Select NONE if you do n
 
@@ -2193,6 +2254,34 @@ module MetronomeSDK
                 #   @return [Array<Symbol>]
               end
 
+              # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig#precalculated_tax_config
+              class PrecalculatedTaxConfig < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute tax_amount
+                #   Amount of tax to be applied. This should be in the same currency and
+                #   denomination as the commit's invoice schedule
+                #
+                #   @return [Float]
+                required :tax_amount, Float
+
+                # @!attribute tax_name
+                #   Name of the tax to be applied. This may be used in an invoice line item
+                #   description.
+                #
+                #   @return [String, nil]
+                optional :tax_name, String
+
+                # @!method initialize(tax_amount:, tax_name: nil)
+                #   Some parameter documentations has been truncated, see
+                #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig}
+                #   for more details.
+                #
+                #   Only applicable if using PRECALCULATED as your tax type.
+                #
+                #   @param tax_amount [Float] Amount of tax to be applied. This should be in the same currency and denominatio
+                #
+                #   @param tax_name [String] Name of the tax to be applied. This may be used in an invoice line item descript
+              end
+
               # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig#stripe_config
               class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute payment_type
@@ -2202,10 +2291,23 @@ module MetronomeSDK
                 required :payment_type,
                          enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType }
 
-                # @!method initialize(payment_type:)
-                #   Only applicable if using Stripe as your payment gateway through Metronome.
+                # @!attribute invoice_metadata
+                #   Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
+                #   your payment type.
+                #
+                #   @return [Hash{Symbol=>String}, nil]
+                optional :invoice_metadata, MetronomeSDK::Internal::Type::HashOf[String]
+
+                # @!method initialize(payment_type:, invoice_metadata: nil)
+                #   Some parameter documentations has been truncated, see
+                #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig}
+                #   for more details.
+                #
+                #   Only applicable if using STRIPE as your payment gateway type.
                 #
                 #   @param payment_type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType] If left blank, will default to INVOICE
+                #
+                #   @param invoice_metadata [Hash{Symbol=>String}] Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
 
                 # If left blank, will default to INVOICE
                 #
@@ -2231,6 +2333,8 @@ module MetronomeSDK
 
                 NONE = :NONE
                 STRIPE = :STRIPE
+                ANROK = :ANROK
+                PRECALCULATED = :PRECALCULATED
 
                 # @!method self.values
                 #   @return [Array<Symbol>]
@@ -3407,8 +3511,15 @@ module MetronomeSDK
               required :payment_gate_type,
                        enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType }
 
+              # @!attribute precalculated_tax_config
+              #   Only applicable if using PRECALCULATED as your tax type.
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig, nil]
+              optional :precalculated_tax_config,
+                       -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig }
+
               # @!attribute stripe_config
-              #   Only applicable if using Stripe as your payment gateway through Metronome.
+              #   Only applicable if using STRIPE as your payment gateway type.
               #
               #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig, nil]
               optional :stripe_config,
@@ -3423,14 +3534,16 @@ module MetronomeSDK
               optional :tax_type,
                        enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType }
 
-              # @!method initialize(payment_gate_type:, stripe_config: nil, tax_type: nil)
+              # @!method initialize(payment_gate_type:, precalculated_tax_config: nil, stripe_config: nil, tax_type: nil)
               #   Some parameter documentations has been truncated, see
               #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig}
               #   for more details.
               #
               #   @param payment_gate_type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType] Gate access to the commit balance based on successful collection of payment. Sel
               #
-              #   @param stripe_config [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig] Only applicable if using Stripe as your payment gateway through Metronome.
+              #   @param precalculated_tax_config [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig] Only applicable if using PRECALCULATED as your tax type.
+              #
+              #   @param stripe_config [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig] Only applicable if using STRIPE as your payment gateway type.
               #
               #   @param tax_type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType] Stripe tax is only supported for Stripe payment gateway. Select NONE if you do n
 
@@ -3451,6 +3564,34 @@ module MetronomeSDK
                 #   @return [Array<Symbol>]
               end
 
+              # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig#precalculated_tax_config
+              class PrecalculatedTaxConfig < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute tax_amount
+                #   Amount of tax to be applied. This should be in the same currency and
+                #   denomination as the commit's invoice schedule
+                #
+                #   @return [Float]
+                required :tax_amount, Float
+
+                # @!attribute tax_name
+                #   Name of the tax to be applied. This may be used in an invoice line item
+                #   description.
+                #
+                #   @return [String, nil]
+                optional :tax_name, String
+
+                # @!method initialize(tax_amount:, tax_name: nil)
+                #   Some parameter documentations has been truncated, see
+                #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig}
+                #   for more details.
+                #
+                #   Only applicable if using PRECALCULATED as your tax type.
+                #
+                #   @param tax_amount [Float] Amount of tax to be applied. This should be in the same currency and denominatio
+                #
+                #   @param tax_name [String] Name of the tax to be applied. This may be used in an invoice line item descript
+              end
+
               # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig#stripe_config
               class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute payment_type
@@ -3460,10 +3601,23 @@ module MetronomeSDK
                 required :payment_type,
                          enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType }
 
-                # @!method initialize(payment_type:)
-                #   Only applicable if using Stripe as your payment gateway through Metronome.
+                # @!attribute invoice_metadata
+                #   Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
+                #   your payment type.
+                #
+                #   @return [Hash{Symbol=>String}, nil]
+                optional :invoice_metadata, MetronomeSDK::Internal::Type::HashOf[String]
+
+                # @!method initialize(payment_type:, invoice_metadata: nil)
+                #   Some parameter documentations has been truncated, see
+                #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig}
+                #   for more details.
+                #
+                #   Only applicable if using STRIPE as your payment gateway type.
                 #
                 #   @param payment_type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType] If left blank, will default to INVOICE
+                #
+                #   @param invoice_metadata [Hash{Symbol=>String}] Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
 
                 # If left blank, will default to INVOICE
                 #
@@ -3489,6 +3643,8 @@ module MetronomeSDK
 
                 NONE = :NONE
                 STRIPE = :STRIPE
+                ANROK = :ANROK
+                PRECALCULATED = :PRECALCULATED
 
                 # @!method self.values
                 #   @return [Array<Symbol>]
@@ -3842,8 +3998,15 @@ module MetronomeSDK
               required :payment_gate_type,
                        enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::PaymentGateType }
 
+              # @!attribute precalculated_tax_config
+              #   Only applicable if using PRECALCULATED as your tax type.
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig, nil]
+              optional :precalculated_tax_config,
+                       -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig }
+
               # @!attribute stripe_config
-              #   Only applicable if using Stripe as your payment gateway through Metronome.
+              #   Only applicable if using STRIPE as your payment gateway type.
               #
               #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig, nil]
               optional :stripe_config,
@@ -3858,14 +4021,16 @@ module MetronomeSDK
               optional :tax_type,
                        enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::TaxType }
 
-              # @!method initialize(payment_gate_type:, stripe_config: nil, tax_type: nil)
+              # @!method initialize(payment_gate_type:, precalculated_tax_config: nil, stripe_config: nil, tax_type: nil)
               #   Some parameter documentations has been truncated, see
               #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig}
               #   for more details.
               #
               #   @param payment_gate_type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::PaymentGateType] Gate access to the commit balance based on successful collection of payment. Sel
               #
-              #   @param stripe_config [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig] Only applicable if using Stripe as your payment gateway through Metronome.
+              #   @param precalculated_tax_config [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig] Only applicable if using PRECALCULATED as your tax type.
+              #
+              #   @param stripe_config [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig] Only applicable if using STRIPE as your payment gateway type.
               #
               #   @param tax_type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::TaxType] Stripe tax is only supported for Stripe payment gateway. Select NONE if you do n
 
@@ -3886,6 +4051,34 @@ module MetronomeSDK
                 #   @return [Array<Symbol>]
               end
 
+              # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig#precalculated_tax_config
+              class PrecalculatedTaxConfig < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute tax_amount
+                #   Amount of tax to be applied. This should be in the same currency and
+                #   denomination as the commit's invoice schedule
+                #
+                #   @return [Float]
+                required :tax_amount, Float
+
+                # @!attribute tax_name
+                #   Name of the tax to be applied. This may be used in an invoice line item
+                #   description.
+                #
+                #   @return [String, nil]
+                optional :tax_name, String
+
+                # @!method initialize(tax_amount:, tax_name: nil)
+                #   Some parameter documentations has been truncated, see
+                #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig}
+                #   for more details.
+                #
+                #   Only applicable if using PRECALCULATED as your tax type.
+                #
+                #   @param tax_amount [Float] Amount of tax to be applied. This should be in the same currency and denominatio
+                #
+                #   @param tax_name [String] Name of the tax to be applied. This may be used in an invoice line item descript
+              end
+
               # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig#stripe_config
               class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute payment_type
@@ -3895,10 +4088,23 @@ module MetronomeSDK
                 required :payment_type,
                          enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType }
 
-                # @!method initialize(payment_type:)
-                #   Only applicable if using Stripe as your payment gateway through Metronome.
+                # @!attribute invoice_metadata
+                #   Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
+                #   your payment type.
+                #
+                #   @return [Hash{Symbol=>String}, nil]
+                optional :invoice_metadata, MetronomeSDK::Internal::Type::HashOf[String]
+
+                # @!method initialize(payment_type:, invoice_metadata: nil)
+                #   Some parameter documentations has been truncated, see
+                #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig}
+                #   for more details.
+                #
+                #   Only applicable if using STRIPE as your payment gateway type.
                 #
                 #   @param payment_type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType] If left blank, will default to INVOICE
+                #
+                #   @param invoice_metadata [Hash{Symbol=>String}] Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
 
                 # If left blank, will default to INVOICE
                 #
@@ -3924,6 +4130,8 @@ module MetronomeSDK
 
                 NONE = :NONE
                 STRIPE = :STRIPE
+                ANROK = :ANROK
+                PRECALCULATED = :PRECALCULATED
 
                 # @!method self.values
                 #   @return [Array<Symbol>]
