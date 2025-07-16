@@ -13,6 +13,7 @@ module MetronomeSDK
         contract: MetronomeSDK::Credit::Contract,
         custom_fields: ::Hash[Symbol, String],
         description: String,
+        hierarchy_configuration: MetronomeSDK::Credit::HierarchyConfiguration,
         ledger: ::Array[MetronomeSDK::Models::Credit::ledger],
         name: String,
         netsuite_sales_order_id: String,
@@ -66,6 +67,12 @@ module MetronomeSDK
 
       def description=: (String) -> String
 
+      attr_reader hierarchy_configuration: MetronomeSDK::Credit::HierarchyConfiguration?
+
+      def hierarchy_configuration=: (
+        MetronomeSDK::Credit::HierarchyConfiguration
+      ) -> MetronomeSDK::Credit::HierarchyConfiguration
+
       attr_reader ledger: ::Array[MetronomeSDK::Models::Credit::ledger]?
 
       def ledger=: (
@@ -116,6 +123,7 @@ module MetronomeSDK
         ?contract: MetronomeSDK::Credit::Contract,
         ?custom_fields: ::Hash[Symbol, String],
         ?description: String,
+        ?hierarchy_configuration: MetronomeSDK::Credit::HierarchyConfiguration,
         ?ledger: ::Array[MetronomeSDK::Models::Credit::ledger],
         ?name: String,
         ?netsuite_sales_order_id: String,
@@ -138,6 +146,7 @@ module MetronomeSDK
         contract: MetronomeSDK::Credit::Contract,
         custom_fields: ::Hash[Symbol, String],
         description: String,
+        hierarchy_configuration: MetronomeSDK::Credit::HierarchyConfiguration,
         ledger: ::Array[MetronomeSDK::Models::Credit::ledger],
         name: String,
         netsuite_sales_order_id: String,
@@ -178,6 +187,120 @@ module MetronomeSDK
         def initialize: (id: String) -> void
 
         def to_hash: -> { id: String }
+      end
+
+      type hierarchy_configuration =
+        {
+          child_access: MetronomeSDK::Models::Credit::HierarchyConfiguration::child_access
+        }
+
+      class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor child_access: MetronomeSDK::Models::Credit::HierarchyConfiguration::child_access
+
+        def initialize: (
+          child_access: MetronomeSDK::Models::Credit::HierarchyConfiguration::child_access
+        ) -> void
+
+        def to_hash: -> {
+          child_access: MetronomeSDK::Models::Credit::HierarchyConfiguration::child_access
+        }
+
+        type child_access =
+          MetronomeSDK::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll
+          | MetronomeSDK::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone
+          | MetronomeSDK::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
+
+        module ChildAccess
+          extend MetronomeSDK::Internal::Type::Union
+
+          type commit_hierarchy_child_access_all =
+            {
+              type: MetronomeSDK::Models::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
+            }
+
+          class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor type: MetronomeSDK::Models::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
+
+            def initialize: (
+              type: MetronomeSDK::Models::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
+            ) -> void
+
+            def to_hash: -> {
+              type: MetronomeSDK::Models::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
+            }
+
+            type type_ = :ALL
+
+            module Type
+              extend MetronomeSDK::Internal::Type::Enum
+
+              ALL: :ALL
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_]
+            end
+          end
+
+          type commit_hierarchy_child_access_none =
+            {
+              type: MetronomeSDK::Models::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+            }
+
+          class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor type: MetronomeSDK::Models::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+
+            def initialize: (
+              type: MetronomeSDK::Models::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+            ) -> void
+
+            def to_hash: -> {
+              type: MetronomeSDK::Models::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+            }
+
+            type type_ = :NONE
+
+            module Type
+              extend MetronomeSDK::Internal::Type::Enum
+
+              NONE: :NONE
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_]
+            end
+          end
+
+          type commit_hierarchy_child_access_contract_ids =
+            {
+              contract_ids: ::Array[String],
+              type: MetronomeSDK::Models::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
+            }
+
+          class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor contract_ids: ::Array[String]
+
+            attr_accessor type: MetronomeSDK::Models::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
+
+            def initialize: (
+              contract_ids: ::Array[String],
+              type: MetronomeSDK::Models::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
+            ) -> void
+
+            def to_hash: -> {
+              contract_ids: ::Array[String],
+              type: MetronomeSDK::Models::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
+            }
+
+            type type_ = :CONTRACT_IDS
+
+            module Type
+              extend MetronomeSDK::Internal::Type::Enum
+
+              CONTRACT_IDS: :CONTRACT_IDS
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_]
+            end
+          end
+
+          def self?.variants: -> ::Array[MetronomeSDK::Models::Credit::HierarchyConfiguration::child_access]
+        end
       end
 
       type ledger =
