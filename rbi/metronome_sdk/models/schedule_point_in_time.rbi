@@ -69,9 +69,6 @@ module MetronomeSDK
         sig { returns(Float) }
         attr_accessor :amount
 
-        sig { returns(String) }
-        attr_accessor :invoice_id
-
         sig { returns(Float) }
         attr_accessor :quantity
 
@@ -81,23 +78,26 @@ module MetronomeSDK
         sig { returns(Float) }
         attr_accessor :unit_price
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_id
+
         sig do
           params(
             id: String,
             amount: Float,
-            invoice_id: String,
             quantity: Float,
             timestamp: Time,
-            unit_price: Float
+            unit_price: Float,
+            invoice_id: T.nilable(String)
           ).returns(T.attached_class)
         end
         def self.new(
           id:,
           amount:,
-          invoice_id:,
           quantity:,
           timestamp:,
-          unit_price:
+          unit_price:,
+          invoice_id: nil
         )
         end
 
@@ -106,10 +106,10 @@ module MetronomeSDK
             {
               id: String,
               amount: Float,
-              invoice_id: String,
               quantity: Float,
               timestamp: Time,
-              unit_price: Float
+              unit_price: Float,
+              invoice_id: T.nilable(String)
             }
           )
         end
