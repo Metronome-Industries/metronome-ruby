@@ -24,7 +24,7 @@ module MetronomeSDK
         #
         # @param starting_at [Time] inclusive contract start time
         #
-        # @param billing_provider_configuration [MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration] The billing provider configuration associated with a contract.
+        # @param billing_provider_configuration [MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration] The billing provider configuration associated with a contract. Provide either an
         #
         # @param commits [Array<MetronomeSDK::Models::V1::ContractCreateParams::Commit>]
         #
