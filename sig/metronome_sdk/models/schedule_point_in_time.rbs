@@ -33,10 +33,10 @@ module MetronomeSDK
         {
           id: String,
           amount: Float,
-          invoice_id: String,
           quantity: Float,
           timestamp: Time,
-          unit_price: Float
+          unit_price: Float,
+          invoice_id: String?
         }
 
       class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
@@ -44,30 +44,30 @@ module MetronomeSDK
 
         attr_accessor amount: Float
 
-        attr_accessor invoice_id: String
-
         attr_accessor quantity: Float
 
         attr_accessor timestamp: Time
 
         attr_accessor unit_price: Float
 
+        attr_accessor invoice_id: String?
+
         def initialize: (
           id: String,
           amount: Float,
-          invoice_id: String,
           quantity: Float,
           timestamp: Time,
-          unit_price: Float
+          unit_price: Float,
+          ?invoice_id: String?
         ) -> void
 
         def to_hash: -> {
           id: String,
           amount: Float,
-          invoice_id: String,
           quantity: Float,
           timestamp: Time,
-          unit_price: Float
+          unit_price: Float,
+          invoice_id: String?
         }
       end
     end
