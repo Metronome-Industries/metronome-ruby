@@ -179,6 +179,11 @@ module MetronomeSDK
               :credits,
               MetronomeSDK::V1::DashboardGetEmbeddableURLParams::Dashboard::TaggedSymbol
             )
+          COMMITS_AND_CREDITS =
+            T.let(
+              :commits_and_credits,
+              MetronomeSDK::V1::DashboardGetEmbeddableURLParams::Dashboard::TaggedSymbol
+            )
 
           sig do
             override.returns(

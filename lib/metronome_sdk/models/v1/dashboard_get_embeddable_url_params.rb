@@ -66,6 +66,7 @@ module MetronomeSDK
           INVOICES = :invoices
           USAGE = :usage
           CREDITS = :credits
+          COMMITS_AND_CREDITS = :commits_and_credits
 
           # @!method self.values
           #   @return [Array<Symbol>]
