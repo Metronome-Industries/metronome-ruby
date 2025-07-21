@@ -836,6 +836,7 @@ module MetronomeSDK
                       MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::OrHash,
                       MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::OrHash,
                       MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::OrHash,
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::OrHash,
                       MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::OrHash,
                       MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::OrHash,
                       MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::OrHash,
@@ -972,6 +973,7 @@ module MetronomeSDK
                       MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::OrHash,
                       MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::OrHash,
                       MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::OrHash,
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::OrHash,
                       MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::OrHash,
                       MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::OrHash,
                       MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::OrHash,
@@ -1473,6 +1475,7 @@ module MetronomeSDK
                     MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry,
                     MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry,
                     MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry,
+                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry,
                     MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry,
                     MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry,
                     MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry,
@@ -2005,6 +2008,87 @@ module MetronomeSDK
                     override.returns(
                       T::Array[
                         MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type::TaggedSymbol
+                      ]
+                    )
+                  end
+                  def self.values
+                  end
+                end
+              end
+
+              class PrepaidCommitSeatBasedAdjustmentLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(Float) }
+                attr_accessor :amount
+
+                sig { returns(String) }
+                attr_accessor :segment_id
+
+                sig { returns(Time) }
+                attr_accessor :timestamp
+
+                sig do
+                  returns(
+                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::Type::TaggedSymbol
+                  )
+                end
+                attr_accessor :type
+
+                sig do
+                  params(
+                    amount: Float,
+                    segment_id: String,
+                    timestamp: Time,
+                    type:
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::Type::OrSymbol
+                  ).returns(T.attached_class)
+                end
+                def self.new(amount:, segment_id:, timestamp:, type:)
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      amount: Float,
+                      segment_id: String,
+                      timestamp: Time,
+                      type:
+                        MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::Type::TaggedSymbol
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(
+                        Symbol,
+                        MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::Type
+                      )
+                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                  PREPAID_COMMIT_SEAT_BASED_ADJUSTMENT =
+                    T.let(
+                      :PREPAID_COMMIT_SEAT_BASED_ADJUSTMENT,
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::Type::TaggedSymbol
+                    )
+
+                  sig do
+                    override.returns(
+                      T::Array[
+                        MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -3808,7 +3892,8 @@ module MetronomeSDK
                       MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry::OrHash,
                       MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry::OrHash,
                       MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditManualLedgerEntry::OrHash
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditManualLedgerEntry::OrHash,
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::OrHash
                     )
                   ]
               ).void
@@ -3893,7 +3978,8 @@ module MetronomeSDK
                       MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry::OrHash,
                       MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry::OrHash,
                       MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry::OrHash,
-                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditManualLedgerEntry::OrHash
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditManualLedgerEntry::OrHash,
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::OrHash
                     )
                   ],
                 name: String,
@@ -4337,7 +4423,8 @@ module MetronomeSDK
                     MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditExpirationLedgerEntry,
                     MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry,
                     MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry,
-                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditManualLedgerEntry
+                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditManualLedgerEntry,
+                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry
                   )
                 end
 
@@ -4852,6 +4939,87 @@ module MetronomeSDK
                     override.returns(
                       T::Array[
                         MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditManualLedgerEntry::Type::TaggedSymbol
+                      ]
+                    )
+                  end
+                  def self.values
+                  end
+                end
+              end
+
+              class CreditSeatBasedAdjustmentLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(Float) }
+                attr_accessor :amount
+
+                sig { returns(String) }
+                attr_accessor :segment_id
+
+                sig { returns(Time) }
+                attr_accessor :timestamp
+
+                sig do
+                  returns(
+                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::Type::TaggedSymbol
+                  )
+                end
+                attr_accessor :type
+
+                sig do
+                  params(
+                    amount: Float,
+                    segment_id: String,
+                    timestamp: Time,
+                    type:
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::Type::OrSymbol
+                  ).returns(T.attached_class)
+                end
+                def self.new(amount:, segment_id:, timestamp:, type:)
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      amount: Float,
+                      segment_id: String,
+                      timestamp: Time,
+                      type:
+                        MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::Type::TaggedSymbol
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(
+                        Symbol,
+                        MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::Type
+                      )
+                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                  CREDIT_SEAT_BASED_ADJUSTMENT =
+                    T.let(
+                      :CREDIT_SEAT_BASED_ADJUSTMENT,
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::Type::TaggedSymbol
+                    )
+
+                  sig do
+                    override.returns(
+                      T::Array[
+                        MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::Type::TaggedSymbol
                       ]
                     )
                   end
