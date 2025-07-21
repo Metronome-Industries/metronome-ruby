@@ -39,7 +39,7 @@ module MetronomeSDK
           ?only_archived: bool,
           ?salesforce_account_ids: ::Array[String],
           ?request_options: MetronomeSDK::request_opts
-        ) -> MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::CustomerListResponse]
+        ) -> MetronomeSDK::Internal::CursorPage[MetronomeSDK::V1::CustomerDetail]
 
         def archive: (
           id: String,
@@ -63,6 +63,14 @@ module MetronomeSDK
           ?next_page: String,
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::CustomerListCostsResponse]
+
+        def preview_events: (
+          customer_id: String,
+          events: ::Array[MetronomeSDK::V1::CustomerPreviewEventsParams::Event],
+          ?mode: MetronomeSDK::Models::V1::CustomerPreviewEventsParams::mode,
+          ?skip_zero_qty_line_items: bool,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V1::CustomerPreviewEventsResponse
 
         def set_ingest_aliases: (
           customer_id: String,

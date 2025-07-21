@@ -107,6 +107,23 @@ module MetronomeSDK
         )
         end
 
+        # For a set of events, look up matched billable metrics and customers by
+        # transaction id. This endpoint looks at transactions that occurred in the last 34
+        # days, and is intended for sampling-based testing workflows. It is heavily rate
+        # limited.
+        sig do
+          params(
+            transaction_ids: T::Array[String],
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(T::Array[MetronomeSDK::Models::V1::UsageSearchResponseItem])
+        end
+        def search(
+          # The transaction IDs of the events to retrieve
+          transaction_ids:,
+          request_options: {}
+        )
+        end
+
         # @api private
         sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
         def self.new(client:)

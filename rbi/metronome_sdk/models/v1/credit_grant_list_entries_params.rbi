@@ -22,6 +22,23 @@ module MetronomeSDK
         sig { params(next_page: String).void }
         attr_writer :next_page
 
+        # Ledgers sort order by date, asc or desc. Defaults to asc.
+        sig do
+          returns(
+            T.nilable(
+              MetronomeSDK::V1::CreditGrantListEntriesParams::Sort::OrSymbol
+            )
+          )
+        end
+        attr_reader :sort
+
+        sig do
+          params(
+            sort: MetronomeSDK::V1::CreditGrantListEntriesParams::Sort::OrSymbol
+          ).void
+        end
+        attr_writer :sort
+
         # A list of Metronome credit type IDs to fetch ledger entries for. If absent,
         # ledger entries for all credit types will be returned.
         sig { returns(T.nilable(T::Array[String])) }
@@ -59,6 +76,8 @@ module MetronomeSDK
         sig do
           params(
             next_page: String,
+            sort:
+              MetronomeSDK::V1::CreditGrantListEntriesParams::Sort::OrSymbol,
             credit_type_ids: T::Array[String],
             customer_ids: T::Array[String],
             ending_before: Time,
@@ -69,6 +88,8 @@ module MetronomeSDK
         def self.new(
           # Cursor that indicates where the next page of results should start.
           next_page: nil,
+          # Ledgers sort order by date, asc or desc. Defaults to asc.
+          sort: nil,
           # A list of Metronome credit type IDs to fetch ledger entries for. If absent,
           # ledger entries for all credit types will be returned.
           credit_type_ids: nil,
@@ -91,6 +112,8 @@ module MetronomeSDK
           override.returns(
             {
               next_page: String,
+              sort:
+                MetronomeSDK::V1::CreditGrantListEntriesParams::Sort::OrSymbol,
               credit_type_ids: T::Array[String],
               customer_ids: T::Array[String],
               ending_before: Time,
@@ -100,6 +123,41 @@ module MetronomeSDK
           )
         end
         def to_hash
+        end
+
+        # Ledgers sort order by date, asc or desc. Defaults to asc.
+        module Sort
+          extend MetronomeSDK::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                MetronomeSDK::V1::CreditGrantListEntriesParams::Sort
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          ASC =
+            T.let(
+              :asc,
+              MetronomeSDK::V1::CreditGrantListEntriesParams::Sort::TaggedSymbol
+            )
+          DESC =
+            T.let(
+              :desc,
+              MetronomeSDK::V1::CreditGrantListEntriesParams::Sort::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                MetronomeSDK::V1::CreditGrantListEntriesParams::Sort::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
     end

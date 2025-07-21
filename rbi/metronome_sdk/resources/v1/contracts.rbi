@@ -30,6 +30,8 @@ module MetronomeSDK
                 MetronomeSDK::V1::ContractCreateParams::Discount::OrHash
               ],
             ending_before: Time,
+            hierarchy_configuration:
+              MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::OrHash,
             multiplier_override_prioritization:
               MetronomeSDK::V1::ContractCreateParams::MultiplierOverridePrioritization::OrSymbol,
             name: String,
@@ -41,6 +43,7 @@ module MetronomeSDK
               ],
             prepaid_balance_threshold_configuration:
               MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::OrHash,
+            priority: Float,
             professional_services:
               T::Array[
                 MetronomeSDK::V1::ContractCreateParams::ProfessionalService::OrHash
@@ -76,8 +79,7 @@ module MetronomeSDK
             transition:
               MetronomeSDK::V1::ContractCreateParams::Transition::OrHash,
             uniqueness_key: String,
-            usage_filter:
-              MetronomeSDK::V1::ContractCreateParams::UsageFilter::OrHash,
+            usage_filter: MetronomeSDK::BaseUsageFilter::OrHash,
             usage_statement_schedule:
               MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule::OrHash,
             request_options: MetronomeSDK::RequestOptions::OrHash
@@ -87,7 +89,8 @@ module MetronomeSDK
           customer_id:,
           # inclusive contract start time
           starting_at:,
-          # The billing provider configuration associated with a contract.
+          # The billing provider configuration associated with a contract. Provide either an
+          # ID or the provider and delivery method.
           billing_provider_configuration: nil,
           commits: nil,
           credits: nil,
@@ -96,6 +99,7 @@ module MetronomeSDK
           discounts: nil,
           # exclusive contract end time
           ending_before: nil,
+          hierarchy_configuration: nil,
           # Defaults to LOWEST_MULTIPLIER, which applies the greatest discount to list
           # prices automatically. EXPLICIT prioritization requires specifying priorities for
           # each multiplier; the one with the lowest priority value will be prioritized
@@ -107,6 +111,8 @@ module MetronomeSDK
           netsuite_sales_order_id: nil,
           overrides: nil,
           prepaid_balance_threshold_configuration: nil,
+          # Priority of the contract.
+          priority: nil,
           # This field's availability is dependent on your client's configuration.
           professional_services: nil,
           # Selects the rate card linked to the specified alias as of the contract's start
@@ -127,7 +133,7 @@ module MetronomeSDK
           # on a separate invoice from usage charges.
           scheduled_charges_on_usage_invoices: nil,
           spend_threshold_configuration: nil,
-          # (beta) Optional list of
+          # Optional list of
           # [subscriptions](https://docs.metronome.com/manage-product-access/create-subscription/)
           # to add to the contract.
           subscriptions: nil,

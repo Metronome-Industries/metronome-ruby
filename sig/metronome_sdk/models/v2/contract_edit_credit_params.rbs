@@ -9,7 +9,7 @@ module MetronomeSDK
           applicable_product_ids: ::Array[String]?,
           applicable_product_tags: ::Array[String]?,
           product_id: String,
-          specifiers: ::Array[MetronomeSDK::V2::ContractEditCreditParams::Specifier]
+          specifiers: ::Array[MetronomeSDK::V2::ContractEditCreditParams::Specifier]?
         }
         & MetronomeSDK::Internal::Type::request_parameters
 
@@ -35,11 +35,7 @@ module MetronomeSDK
 
         def product_id=: (String) -> String
 
-        attr_reader specifiers: ::Array[MetronomeSDK::V2::ContractEditCreditParams::Specifier]?
-
-        def specifiers=: (
-          ::Array[MetronomeSDK::V2::ContractEditCreditParams::Specifier]
-        ) -> ::Array[MetronomeSDK::V2::ContractEditCreditParams::Specifier]
+        attr_accessor specifiers: ::Array[MetronomeSDK::V2::ContractEditCreditParams::Specifier]?
 
         def initialize: (
           credit_id: String,
@@ -48,7 +44,7 @@ module MetronomeSDK
           ?applicable_product_ids: ::Array[String]?,
           ?applicable_product_tags: ::Array[String]?,
           ?product_id: String,
-          ?specifiers: ::Array[MetronomeSDK::V2::ContractEditCreditParams::Specifier],
+          ?specifiers: ::Array[MetronomeSDK::V2::ContractEditCreditParams::Specifier]?,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
 
@@ -59,7 +55,7 @@ module MetronomeSDK
           applicable_product_ids: ::Array[String]?,
           applicable_product_tags: ::Array[String]?,
           product_id: String,
-          specifiers: ::Array[MetronomeSDK::V2::ContractEditCreditParams::Specifier],
+          specifiers: ::Array[MetronomeSDK::V2::ContractEditCreditParams::Specifier]?,
           request_options: MetronomeSDK::RequestOptions
         }
 

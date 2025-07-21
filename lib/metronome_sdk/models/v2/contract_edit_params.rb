@@ -102,7 +102,7 @@ module MetronomeSDK
                  -> { MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration }
 
         # @!attribute add_subscriptions
-        #   (beta) Optional list of
+        #   Optional list of
         #   [subscriptions](https://docs.metronome.com/manage-product-access/create-subscription/)
         #   to add to the contract.
         #
@@ -171,6 +171,13 @@ module MetronomeSDK
         #   @return [Time, nil]
         optional :update_contract_end_date, Time, nil?: true
 
+        # @!attribute update_contract_name
+        #   Value to update the contract name to. If not provided, the contract name will
+        #   remain unchanged.
+        #
+        #   @return [String, nil]
+        optional :update_contract_name, String, nil?: true
+
         # @!attribute update_credits
         #
         #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit>, nil]
@@ -222,7 +229,7 @@ module MetronomeSDK
                  -> { MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration }
 
         # @!attribute update_subscriptions
-        #   (beta) Optional list of subscriptions to update.
+        #   Optional list of subscriptions to update.
         #
         #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription>, nil]
         optional :update_subscriptions,
@@ -230,7 +237,7 @@ module MetronomeSDK
                    MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditParams::UpdateSubscription]
                  }
 
-        # @!method initialize(contract_id:, customer_id:, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_prepaid_balance_threshold_configuration: nil, add_professional_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_spend_threshold_configuration: nil, add_subscriptions: nil, allow_contract_ending_before_finalized_invoice: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, update_commits: nil, update_contract_end_date: nil, update_credits: nil, update_prepaid_balance_threshold_configuration: nil, update_recurring_commits: nil, update_recurring_credits: nil, update_scheduled_charges: nil, update_spend_threshold_configuration: nil, update_subscriptions: nil, request_options: {})
+        # @!method initialize(contract_id:, customer_id:, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_prepaid_balance_threshold_configuration: nil, add_professional_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_spend_threshold_configuration: nil, add_subscriptions: nil, allow_contract_ending_before_finalized_invoice: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, update_commits: nil, update_contract_end_date: nil, update_contract_name: nil, update_credits: nil, update_prepaid_balance_threshold_configuration: nil, update_recurring_commits: nil, update_recurring_credits: nil, update_scheduled_charges: nil, update_spend_threshold_configuration: nil, update_subscriptions: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V2::ContractEditParams} for more details.
         #
@@ -260,7 +267,7 @@ module MetronomeSDK
         #
         #   @param add_spend_threshold_configuration [MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration]
         #
-        #   @param add_subscriptions [Array<MetronomeSDK::Models::V2::ContractEditParams::AddSubscription>] (beta) Optional list of [subscriptions](https://docs.metronome.com/manage-produc
+        #   @param add_subscriptions [Array<MetronomeSDK::Models::V2::ContractEditParams::AddSubscription>] Optional list of [subscriptions](https://docs.metronome.com/manage-product-acces
         #
         #   @param allow_contract_ending_before_finalized_invoice [Boolean] If true, allows setting the contract end date earlier than the end_timestamp of
         #
@@ -276,6 +283,8 @@ module MetronomeSDK
         #
         #   @param update_contract_end_date [Time, nil] RFC 3339 timestamp indicating when the contract will end (exclusive).
         #
+        #   @param update_contract_name [String, nil] Value to update the contract name to. If not provided, the contract name will re
+        #
         #   @param update_credits [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit>]
         #
         #   @param update_prepaid_balance_threshold_configuration [MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration]
@@ -288,7 +297,7 @@ module MetronomeSDK
         #
         #   @param update_spend_threshold_configuration [MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration]
         #
-        #   @param update_subscriptions [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription>] (beta) Optional list of subscriptions to update.
+        #   @param update_subscriptions [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription>] Optional list of subscriptions to update.
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 
@@ -318,15 +327,17 @@ module MetronomeSDK
           optional :amount, Float
 
           # @!attribute applicable_product_ids
-          #   Which products the commit applies to. If both applicable_product_ids and
-          #   applicable_product_tags are not provided, the commit applies to all products.
+          #   Which products the commit applies to. If applicable_product_ids,
+          #   applicable_product_tags or specifiers are not provided, the commit applies to
+          #   all products.
           #
           #   @return [Array<String>, nil]
           optional :applicable_product_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
 
           # @!attribute applicable_product_tags
-          #   Which tags the commit applies to. If both applicable_product_ids and
-          #   applicable_product_tags are not provided, the commit applies to all products.
+          #   Which tags the commit applies to. If applicable_product_ids,
+          #   applicable_product_tags or specifiers are not provided, the commit applies to
+          #   all products.
           #
           #   @return [Array<String>, nil]
           optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
@@ -341,6 +352,13 @@ module MetronomeSDK
           #
           #   @return [String, nil]
           optional :description, String
+
+          # @!attribute hierarchy_configuration
+          #   Optional configuration for commit hierarchy access control
+          #
+          #   @return [MetronomeSDK::Models::V2::ContractEditParams::AddCommit::HierarchyConfiguration, nil]
+          optional :hierarchy_configuration,
+                   -> { MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration }
 
           # @!attribute invoice_schedule
           #   Required for "POSTPAID" commits: the true up invoice will be generated at this
@@ -409,7 +427,7 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :temporary_id, String
 
-          # @!method initialize(product_id:, type:, access_schedule: nil, amount: nil, applicable_product_ids: nil, applicable_product_tags: nil, custom_fields: nil, description: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, payment_gate_config: nil, priority: nil, rate_type: nil, rollover_fraction: nil, specifiers: nil, temporary_id: nil)
+          # @!method initialize(product_id:, type:, access_schedule: nil, amount: nil, applicable_product_ids: nil, applicable_product_tags: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, payment_gate_config: nil, priority: nil, rate_type: nil, rollover_fraction: nil, specifiers: nil, temporary_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractEditParams::AddCommit} for more details.
           #
@@ -421,13 +439,15 @@ module MetronomeSDK
           #
           #   @param amount [Float] (DEPRECATED) Use access_schedule and invoice_schedule instead.
           #
-          #   @param applicable_product_ids [Array<String>] Which products the commit applies to. If both applicable_product_ids and applica
+          #   @param applicable_product_ids [Array<String>] Which products the commit applies to. If applicable_product_ids, applicable_prod
           #
-          #   @param applicable_product_tags [Array<String>] Which tags the commit applies to. If both applicable*product_ids and applicable*
+          #   @param applicable_product_tags [Array<String>] Which tags the commit applies to. If applicable*product_ids, applicable_product*
           #
           #   @param custom_fields [Hash{Symbol=>String}]
           #
           #   @param description [String] Used only in UI/API. It is not exposed to end customers.
+          #
+          #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractEditParams::AddCommit::HierarchyConfiguration] Optional configuration for commit hierarchy access control
           #
           #   @param invoice_schedule [MetronomeSDK::Models::V2::ContractEditParams::AddCommit::InvoiceSchedule] Required for "POSTPAID" commits: the true up invoice will be generated at this t
           #
@@ -505,6 +525,117 @@ module MetronomeSDK
               #   @param ending_before [Time] RFC 3339 timestamp (exclusive)
               #
               #   @param starting_at [Time] RFC 3339 timestamp (inclusive)
+            end
+          end
+
+          # @see MetronomeSDK::Models::V2::ContractEditParams::AddCommit#hierarchy_configuration
+          class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute child_access
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+            required :child_access,
+                     union: -> {
+                       MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess
+                     }
+
+            # @!method initialize(child_access:)
+            #   Optional configuration for commit hierarchy access control
+            #
+            #   @param child_access [MetronomeSDK::Models::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+
+            # @see MetronomeSDK::Models::V2::ContractEditParams::AddCommit::HierarchyConfiguration#child_access
+            module ChildAccess
+              extend MetronomeSDK::Internal::Type::Union
+
+              variant -> {
+                MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll
+              }
+
+              variant -> {
+                MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone
+              }
+
+              variant -> {
+                MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
+              }
+
+              class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute type
+                #
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+                required :type,
+                         enum: -> {
+                           MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type
+                         }
+
+                # @!method initialize(type:)
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+
+                # @see MetronomeSDK::Models::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll#type
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  ALL = :ALL
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute type
+                #
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
+                required :type,
+                         enum: -> {
+                           MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type
+                         }
+
+                # @!method initialize(type:)
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
+
+                # @see MetronomeSDK::Models::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone#type
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  NONE = :NONE
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute contract_ids
+                #
+                #   @return [Array<String>]
+                required :contract_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+                # @!attribute type
+                #
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+                required :type,
+                         enum: -> {
+                           MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type
+                         }
+
+                # @!method initialize(contract_ids:, type:)
+                #   @param contract_ids [Array<String>]
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+
+                # @see MetronomeSDK::Models::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs#type
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  CONTRACT_IDS = :CONTRACT_IDS
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              # @!method self.variants
+              #   @return [Array(MetronomeSDK::Models::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs)]
             end
           end
 
@@ -716,8 +847,17 @@ module MetronomeSDK
                        MetronomeSDK::V2::ContractEditParams::AddCommit::PaymentGateConfig::PaymentGateType
                      }
 
+            # @!attribute precalculated_tax_config
+            #   Only applicable if using PRECALCULATED as your tax type.
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractEditParams::AddCommit::PaymentGateConfig::PrecalculatedTaxConfig, nil]
+            optional :precalculated_tax_config,
+                     -> {
+                       MetronomeSDK::V2::ContractEditParams::AddCommit::PaymentGateConfig::PrecalculatedTaxConfig
+                     }
+
             # @!attribute stripe_config
-            #   Only applicable if using Stripe as your payment gateway through Metronome.
+            #   Only applicable if using STRIPE as your payment gateway type.
             #
             #   @return [MetronomeSDK::Models::V2::ContractEditParams::AddCommit::PaymentGateConfig::StripeConfig, nil]
             optional :stripe_config,
@@ -732,7 +872,7 @@ module MetronomeSDK
             optional :tax_type,
                      enum: -> { MetronomeSDK::V2::ContractEditParams::AddCommit::PaymentGateConfig::TaxType }
 
-            # @!method initialize(payment_gate_type:, stripe_config: nil, tax_type: nil)
+            # @!method initialize(payment_gate_type:, precalculated_tax_config: nil, stripe_config: nil, tax_type: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractEditParams::AddCommit::PaymentGateConfig} for
             #   more details.
@@ -741,7 +881,9 @@ module MetronomeSDK
             #
             #   @param payment_gate_type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddCommit::PaymentGateConfig::PaymentGateType] Gate access to the commit balance based on successful collection of payment. Sel
             #
-            #   @param stripe_config [MetronomeSDK::Models::V2::ContractEditParams::AddCommit::PaymentGateConfig::StripeConfig] Only applicable if using Stripe as your payment gateway through Metronome.
+            #   @param precalculated_tax_config [MetronomeSDK::Models::V2::ContractEditParams::AddCommit::PaymentGateConfig::PrecalculatedTaxConfig] Only applicable if using PRECALCULATED as your tax type.
+            #
+            #   @param stripe_config [MetronomeSDK::Models::V2::ContractEditParams::AddCommit::PaymentGateConfig::StripeConfig] Only applicable if using STRIPE as your payment gateway type.
             #
             #   @param tax_type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddCommit::PaymentGateConfig::TaxType] Stripe tax is only supported for Stripe payment gateway. Select NONE if you do n
 
@@ -762,6 +904,34 @@ module MetronomeSDK
               #   @return [Array<Symbol>]
             end
 
+            # @see MetronomeSDK::Models::V2::ContractEditParams::AddCommit::PaymentGateConfig#precalculated_tax_config
+            class PrecalculatedTaxConfig < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute tax_amount
+              #   Amount of tax to be applied. This should be in the same currency and
+              #   denomination as the commit's invoice schedule
+              #
+              #   @return [Float]
+              required :tax_amount, Float
+
+              # @!attribute tax_name
+              #   Name of the tax to be applied. This may be used in an invoice line item
+              #   description.
+              #
+              #   @return [String, nil]
+              optional :tax_name, String
+
+              # @!method initialize(tax_amount:, tax_name: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractEditParams::AddCommit::PaymentGateConfig::PrecalculatedTaxConfig}
+              #   for more details.
+              #
+              #   Only applicable if using PRECALCULATED as your tax type.
+              #
+              #   @param tax_amount [Float] Amount of tax to be applied. This should be in the same currency and denominatio
+              #
+              #   @param tax_name [String] Name of the tax to be applied. This may be used in an invoice line item descript
+            end
+
             # @see MetronomeSDK::Models::V2::ContractEditParams::AddCommit::PaymentGateConfig#stripe_config
             class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute payment_type
@@ -773,10 +943,23 @@ module MetronomeSDK
                          MetronomeSDK::V2::ContractEditParams::AddCommit::PaymentGateConfig::StripeConfig::PaymentType
                        }
 
-              # @!method initialize(payment_type:)
-              #   Only applicable if using Stripe as your payment gateway through Metronome.
+              # @!attribute invoice_metadata
+              #   Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
+              #   your payment type.
+              #
+              #   @return [Hash{Symbol=>String}, nil]
+              optional :invoice_metadata, MetronomeSDK::Internal::Type::HashOf[String]
+
+              # @!method initialize(payment_type:, invoice_metadata: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractEditParams::AddCommit::PaymentGateConfig::StripeConfig}
+              #   for more details.
+              #
+              #   Only applicable if using STRIPE as your payment gateway type.
               #
               #   @param payment_type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddCommit::PaymentGateConfig::StripeConfig::PaymentType] If left blank, will default to INVOICE
+              #
+              #   @param invoice_metadata [Hash{Symbol=>String}] Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
 
               # If left blank, will default to INVOICE
               #
@@ -802,6 +985,8 @@ module MetronomeSDK
 
               NONE = :NONE
               STRIPE = :STRIPE
+              ANROK = :ANROK
+              PRECALCULATED = :PRECALCULATED
 
               # @!method self.values
               #   @return [Array<Symbol>]
@@ -895,6 +1080,13 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :description, String
 
+          # @!attribute hierarchy_configuration
+          #   Optional configuration for credit hierarchy access control
+          #
+          #   @return [MetronomeSDK::Models::V2::ContractEditParams::AddCredit::HierarchyConfiguration, nil]
+          optional :hierarchy_configuration,
+                   -> { MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration }
+
           # @!attribute name
           #   displayed on invoices
           #
@@ -931,7 +1123,7 @@ module MetronomeSDK
                      MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditParams::AddCredit::Specifier]
                    }
 
-          # @!method initialize(access_schedule:, product_id:, applicable_product_ids: nil, applicable_product_tags: nil, custom_fields: nil, description: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, specifiers: nil)
+          # @!method initialize(access_schedule:, product_id:, applicable_product_ids: nil, applicable_product_tags: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, specifiers: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractEditParams::AddCredit} for more details.
           #
@@ -946,6 +1138,8 @@ module MetronomeSDK
           #   @param custom_fields [Hash{Symbol=>String}]
           #
           #   @param description [String] Used only in UI/API. It is not exposed to end customers.
+          #
+          #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractEditParams::AddCredit::HierarchyConfiguration] Optional configuration for credit hierarchy access control
           #
           #   @param name [String] displayed on invoices
           #
@@ -1002,6 +1196,117 @@ module MetronomeSDK
               #   @param ending_before [Time] RFC 3339 timestamp (exclusive)
               #
               #   @param starting_at [Time] RFC 3339 timestamp (inclusive)
+            end
+          end
+
+          # @see MetronomeSDK::Models::V2::ContractEditParams::AddCredit#hierarchy_configuration
+          class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute child_access
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+            required :child_access,
+                     union: -> {
+                       MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess
+                     }
+
+            # @!method initialize(child_access:)
+            #   Optional configuration for credit hierarchy access control
+            #
+            #   @param child_access [MetronomeSDK::Models::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+
+            # @see MetronomeSDK::Models::V2::ContractEditParams::AddCredit::HierarchyConfiguration#child_access
+            module ChildAccess
+              extend MetronomeSDK::Internal::Type::Union
+
+              variant -> {
+                MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll
+              }
+
+              variant -> {
+                MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone
+              }
+
+              variant -> {
+                MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
+              }
+
+              class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute type
+                #
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+                required :type,
+                         enum: -> {
+                           MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type
+                         }
+
+                # @!method initialize(type:)
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+
+                # @see MetronomeSDK::Models::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll#type
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  ALL = :ALL
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute type
+                #
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
+                required :type,
+                         enum: -> {
+                           MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type
+                         }
+
+                # @!method initialize(type:)
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
+
+                # @see MetronomeSDK::Models::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone#type
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  NONE = :NONE
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute contract_ids
+                #
+                #   @return [Array<String>]
+                required :contract_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+                # @!attribute type
+                #
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+                required :type,
+                         enum: -> {
+                           MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type
+                         }
+
+                # @!method initialize(contract_ids:, type:)
+                #   @param contract_ids [Array<String>]
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+
+                # @see MetronomeSDK::Models::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs#type
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  CONTRACT_IDS = :CONTRACT_IDS
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              # @!method self.variants
+              #   @return [Array(MetronomeSDK::Models::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs)]
             end
           end
 
@@ -1548,11 +1853,8 @@ module MetronomeSDK
             # @!attribute tiers
             #   Only set for TIERED rate_type.
             #
-            #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::AddOverride::OverwriteRate::Tier>, nil]
-            optional :tiers,
-                     -> {
-                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier]
-                     }
+            #   @return [Array<MetronomeSDK::Models::Tier>, nil]
+            optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
 
             # @!method initialize(rate_type:, credit_type_id: nil, custom_rate: nil, is_prorated: nil, price: nil, quantity: nil, tiers: nil)
             #   Some parameter documentations has been truncated, see
@@ -1573,7 +1875,7 @@ module MetronomeSDK
             #
             #   @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
             #
-            #   @param tiers [Array<MetronomeSDK::Models::V2::ContractEditParams::AddOverride::OverwriteRate::Tier>] Only set for TIERED rate_type.
+            #   @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
 
             # @see MetronomeSDK::Models::V2::ContractEditParams::AddOverride::OverwriteRate#rate_type
             module RateType
@@ -1587,22 +1889,6 @@ module MetronomeSDK
 
               # @!method self.values
               #   @return [Array<Symbol>]
-            end
-
-            class Tier < MetronomeSDK::Internal::Type::BaseModel
-              # @!attribute price
-              #
-              #   @return [Float]
-              required :price, Float
-
-              # @!attribute size
-              #
-              #   @return [Float, nil]
-              optional :size, Float
-
-              # @!method initialize(price:, size: nil)
-              #   @param price [Float]
-              #   @param size [Float]
             end
           end
 
@@ -1690,7 +1976,14 @@ module MetronomeSDK
           #   @return [Float]
           required :threshold_amount, Float
 
-          # @!method initialize(commit:, is_enabled:, payment_gate_config:, recharge_to_amount:, threshold_amount:)
+          # @!attribute custom_credit_type_id
+          #   If provided, the threshold, recharge-to amount, and the resulting threshold
+          #   commit amount will be in terms of this credit type instead of the fiat currency.
+          #
+          #   @return [String, nil]
+          optional :custom_credit_type_id, String
+
+          # @!method initialize(commit:, is_enabled:, payment_gate_config:, recharge_to_amount:, threshold_amount:, custom_credit_type_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration}
           #   for more details.
@@ -1704,6 +1997,8 @@ module MetronomeSDK
           #   @param recharge_to_amount [Float] Specify the amount the balance should be recharged to.
           #
           #   @param threshold_amount [Float] Specify the threshold amount for the contract. Each time the contract's balance
+          #
+          #   @param custom_credit_type_id [String] If provided, the threshold, recharge-to amount, and the resulting threshold comm
 
           # @see MetronomeSDK::Models::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration#commit
           class Commit < MetronomeSDK::Internal::Type::BaseModel
@@ -1715,16 +2010,17 @@ module MetronomeSDK
             required :product_id, String
 
             # @!attribute applicable_product_ids
-            #   Which products the threshold commit applies to. If both applicable_product_ids
-            #   and applicable_product_tags are not provided, the commit applies to all
-            #   products.
+            #   Which products the threshold commit applies to. If applicable_product_ids,
+            #   applicable_product_tags or specifiers are not provided, the commit applies to
+            #   all products.
             #
             #   @return [Array<String>, nil]
             optional :applicable_product_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
 
             # @!attribute applicable_product_tags
-            #   Which tags the threshold commit applies to. If both applicable_product_ids and
-            #   applicable_product_tags are not provided, the commit applies to all products.
+            #   Which tags the threshold commit applies to. If applicable_product_ids,
+            #   applicable_product_tags or specifiers are not provided, the commit applies to
+            #   all products.
             #
             #   @return [Array<String>, nil]
             optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
@@ -1760,9 +2056,9 @@ module MetronomeSDK
             #
             #   @param product_id [String] The commit product that will be used to generate the line item for commit paymen
             #
-            #   @param applicable_product_ids [Array<String>] Which products the threshold commit applies to. If both applicable_product_ids a
+            #   @param applicable_product_ids [Array<String>] Which products the threshold commit applies to. If applicable_product_ids, appli
             #
-            #   @param applicable_product_tags [Array<String>] Which tags the threshold commit applies to. If both applicable_product_ids and a
+            #   @param applicable_product_tags [Array<String>] Which tags the threshold commit applies to. If applicable_product_ids, applicabl
             #
             #   @param description [String]
             #
@@ -1823,8 +2119,17 @@ module MetronomeSDK
                        MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType
                      }
 
+            # @!attribute precalculated_tax_config
+            #   Only applicable if using PRECALCULATED as your tax type.
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig, nil]
+            optional :precalculated_tax_config,
+                     -> {
+                       MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig
+                     }
+
             # @!attribute stripe_config
-            #   Only applicable if using Stripe as your payment gateway through Metronome.
+            #   Only applicable if using STRIPE as your payment gateway type.
             #
             #   @return [MetronomeSDK::Models::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig, nil]
             optional :stripe_config,
@@ -1843,14 +2148,16 @@ module MetronomeSDK
                        MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType
                      }
 
-            # @!method initialize(payment_gate_type:, stripe_config: nil, tax_type: nil)
+            # @!method initialize(payment_gate_type:, precalculated_tax_config: nil, stripe_config: nil, tax_type: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig}
             #   for more details.
             #
             #   @param payment_gate_type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType] Gate access to the commit balance based on successful collection of payment. Sel
             #
-            #   @param stripe_config [MetronomeSDK::Models::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig] Only applicable if using Stripe as your payment gateway through Metronome.
+            #   @param precalculated_tax_config [MetronomeSDK::Models::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig] Only applicable if using PRECALCULATED as your tax type.
+            #
+            #   @param stripe_config [MetronomeSDK::Models::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig] Only applicable if using STRIPE as your payment gateway type.
             #
             #   @param tax_type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType] Stripe tax is only supported for Stripe payment gateway. Select NONE if you do n
 
@@ -1871,6 +2178,34 @@ module MetronomeSDK
               #   @return [Array<Symbol>]
             end
 
+            # @see MetronomeSDK::Models::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig#precalculated_tax_config
+            class PrecalculatedTaxConfig < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute tax_amount
+              #   Amount of tax to be applied. This should be in the same currency and
+              #   denomination as the commit's invoice schedule
+              #
+              #   @return [Float]
+              required :tax_amount, Float
+
+              # @!attribute tax_name
+              #   Name of the tax to be applied. This may be used in an invoice line item
+              #   description.
+              #
+              #   @return [String, nil]
+              optional :tax_name, String
+
+              # @!method initialize(tax_amount:, tax_name: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig}
+              #   for more details.
+              #
+              #   Only applicable if using PRECALCULATED as your tax type.
+              #
+              #   @param tax_amount [Float] Amount of tax to be applied. This should be in the same currency and denominatio
+              #
+              #   @param tax_name [String] Name of the tax to be applied. This may be used in an invoice line item descript
+            end
+
             # @see MetronomeSDK::Models::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig#stripe_config
             class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute payment_type
@@ -1882,10 +2217,23 @@ module MetronomeSDK
                          MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType
                        }
 
-              # @!method initialize(payment_type:)
-              #   Only applicable if using Stripe as your payment gateway through Metronome.
+              # @!attribute invoice_metadata
+              #   Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
+              #   your payment type.
+              #
+              #   @return [Hash{Symbol=>String}, nil]
+              optional :invoice_metadata, MetronomeSDK::Internal::Type::HashOf[String]
+
+              # @!method initialize(payment_type:, invoice_metadata: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig}
+              #   for more details.
+              #
+              #   Only applicable if using STRIPE as your payment gateway type.
               #
               #   @param payment_type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType] If left blank, will default to INVOICE
+              #
+              #   @param invoice_metadata [Hash{Symbol=>String}] Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
 
               # If left blank, will default to INVOICE
               #
@@ -1911,6 +2259,8 @@ module MetronomeSDK
 
               NONE = :NONE
               STRIPE = :STRIPE
+              ANROK = :ANROK
+              PRECALCULATED = :PRECALCULATED
 
               # @!method self.values
               #   @return [Array<Symbol>]
@@ -2165,22 +2515,30 @@ module MetronomeSDK
             #   @return [String]
             required :credit_type_id, String
 
-            # @!attribute quantity
-            #
-            #   @return [Float]
-            required :quantity, Float
-
             # @!attribute unit_price
             #
             #   @return [Float]
             required :unit_price, Float
 
-            # @!method initialize(credit_type_id:, quantity:, unit_price:)
+            # @!attribute quantity
+            #   This field is currently required. Upcoming recurring commit/credit configuration
+            #   options will allow it to be optional.
+            #
+            #   @return [Float, nil]
+            optional :quantity, Float
+
+            # @!method initialize(credit_type_id:, unit_price:, quantity: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCommit::AccessAmount}
+            #   for more details.
+            #
             #   The amount of commit to grant.
             #
             #   @param credit_type_id [String]
-            #   @param quantity [Float]
+            #
             #   @param unit_price [Float]
+            #
+            #   @param quantity [Float] This field is currently required. Upcoming recurring commit/credit configuration
           end
 
           # @see MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCommit#commit_duration
@@ -2503,22 +2861,30 @@ module MetronomeSDK
             #   @return [String]
             required :credit_type_id, String
 
-            # @!attribute quantity
-            #
-            #   @return [Float]
-            required :quantity, Float
-
             # @!attribute unit_price
             #
             #   @return [Float]
             required :unit_price, Float
 
-            # @!method initialize(credit_type_id:, quantity:, unit_price:)
+            # @!attribute quantity
+            #   This field is currently required. Upcoming recurring commit/credit configuration
+            #   options will allow it to be optional.
+            #
+            #   @return [Float, nil]
+            optional :quantity, Float
+
+            # @!method initialize(credit_type_id:, unit_price:, quantity: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCredit::AccessAmount}
+            #   for more details.
+            #
             #   The amount of commit to grant.
             #
             #   @param credit_type_id [String]
-            #   @param quantity [Float]
+            #
             #   @param unit_price [Float]
+            #
+            #   @param quantity [Float] This field is currently required. Upcoming recurring commit/credit configuration
           end
 
           # @see MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCredit#commit_duration
@@ -3089,8 +3455,17 @@ module MetronomeSDK
                        MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::PaymentGateType
                      }
 
+            # @!attribute precalculated_tax_config
+            #   Only applicable if using PRECALCULATED as your tax type.
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig, nil]
+            optional :precalculated_tax_config,
+                     -> {
+                       MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig
+                     }
+
             # @!attribute stripe_config
-            #   Only applicable if using Stripe as your payment gateway through Metronome.
+            #   Only applicable if using STRIPE as your payment gateway type.
             #
             #   @return [MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig, nil]
             optional :stripe_config,
@@ -3109,14 +3484,16 @@ module MetronomeSDK
                        MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::TaxType
                      }
 
-            # @!method initialize(payment_gate_type:, stripe_config: nil, tax_type: nil)
+            # @!method initialize(payment_gate_type:, precalculated_tax_config: nil, stripe_config: nil, tax_type: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig}
             #   for more details.
             #
             #   @param payment_gate_type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::PaymentGateType] Gate access to the commit balance based on successful collection of payment. Sel
             #
-            #   @param stripe_config [MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig] Only applicable if using Stripe as your payment gateway through Metronome.
+            #   @param precalculated_tax_config [MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig] Only applicable if using PRECALCULATED as your tax type.
+            #
+            #   @param stripe_config [MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig] Only applicable if using STRIPE as your payment gateway type.
             #
             #   @param tax_type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::TaxType] Stripe tax is only supported for Stripe payment gateway. Select NONE if you do n
 
@@ -3137,6 +3514,34 @@ module MetronomeSDK
               #   @return [Array<Symbol>]
             end
 
+            # @see MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig#precalculated_tax_config
+            class PrecalculatedTaxConfig < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute tax_amount
+              #   Amount of tax to be applied. This should be in the same currency and
+              #   denomination as the commit's invoice schedule
+              #
+              #   @return [Float]
+              required :tax_amount, Float
+
+              # @!attribute tax_name
+              #   Name of the tax to be applied. This may be used in an invoice line item
+              #   description.
+              #
+              #   @return [String, nil]
+              optional :tax_name, String
+
+              # @!method initialize(tax_amount:, tax_name: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig}
+              #   for more details.
+              #
+              #   Only applicable if using PRECALCULATED as your tax type.
+              #
+              #   @param tax_amount [Float] Amount of tax to be applied. This should be in the same currency and denominatio
+              #
+              #   @param tax_name [String] Name of the tax to be applied. This may be used in an invoice line item descript
+            end
+
             # @see MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig#stripe_config
             class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute payment_type
@@ -3148,10 +3553,23 @@ module MetronomeSDK
                          MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType
                        }
 
-              # @!method initialize(payment_type:)
-              #   Only applicable if using Stripe as your payment gateway through Metronome.
+              # @!attribute invoice_metadata
+              #   Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
+              #   your payment type.
+              #
+              #   @return [Hash{Symbol=>String}, nil]
+              optional :invoice_metadata, MetronomeSDK::Internal::Type::HashOf[String]
+
+              # @!method initialize(payment_type:, invoice_metadata: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig}
+              #   for more details.
+              #
+              #   Only applicable if using STRIPE as your payment gateway type.
               #
               #   @param payment_type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType] If left blank, will default to INVOICE
+              #
+              #   @param invoice_metadata [Hash{Symbol=>String}] Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
 
               # If left blank, will default to INVOICE
               #
@@ -3177,6 +3595,8 @@ module MetronomeSDK
 
               NONE = :NONE
               STRIPE = :STRIPE
+              ANROK = :ANROK
+              PRECALCULATED = :PRECALCULATED
 
               # @!method self.values
               #   @return [Array<Symbol>]
@@ -3413,18 +3833,27 @@ module MetronomeSDK
           optional :access_schedule, -> { MetronomeSDK::V2::ContractEditParams::UpdateCommit::AccessSchedule }
 
           # @!attribute applicable_product_ids
-          #   Which products the commit applies to. If both applicable_product_ids and
-          #   applicable_product_tags are not provided, the commit applies to all products.
+          #   Which products the commit applies to. If applicable_product_ids,
+          #   applicable_product_tags or specifiers are not provided, the commit applies to
+          #   all products.
           #
           #   @return [Array<String>, nil]
           optional :applicable_product_ids, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
 
           # @!attribute applicable_product_tags
-          #   Which tags the commit applies to. If both applicable_product_ids and
-          #   applicable_product_tags are not provided, the commit applies to all products.
+          #   Which tags the commit applies to. If applicable_product_ids,
+          #   applicable_product_tags or specifiers are not provided, the commit applies to
+          #   all products.
           #
           #   @return [Array<String>, nil]
           optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
+
+          # @!attribute hierarchy_configuration
+          #   Optional configuration for commit hierarchy access control
+          #
+          #   @return [MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration, nil]
+          optional :hierarchy_configuration,
+                   -> { MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration }
 
           # @!attribute invoice_schedule
           #
@@ -3449,7 +3878,7 @@ module MetronomeSDK
           #   @return [Float, nil]
           optional :rollover_fraction, Float, nil?: true
 
-          # @!method initialize(commit_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, invoice_schedule: nil, netsuite_sales_order_id: nil, product_id: nil, rollover_fraction: nil)
+          # @!method initialize(commit_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, invoice_schedule: nil, netsuite_sales_order_id: nil, product_id: nil, rollover_fraction: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit} for more details.
           #
@@ -3457,9 +3886,11 @@ module MetronomeSDK
           #
           #   @param access_schedule [MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::AccessSchedule]
           #
-          #   @param applicable_product_ids [Array<String>, nil] Which products the commit applies to. If both applicable_product_ids and applica
+          #   @param applicable_product_ids [Array<String>, nil] Which products the commit applies to. If applicable_product_ids, applicable_prod
           #
-          #   @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If both applicable*product_ids and applicable*
+          #   @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If applicable*product_ids, applicable_product*
+          #
+          #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration] Optional configuration for commit hierarchy access control
           #
           #   @param invoice_schedule [MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::InvoiceSchedule]
           #
@@ -3558,6 +3989,117 @@ module MetronomeSDK
               #   @param amount [Float]
               #   @param ending_before [Time]
               #   @param starting_at [Time]
+            end
+          end
+
+          # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit#hierarchy_configuration
+          class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute child_access
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+            required :child_access,
+                     union: -> {
+                       MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess
+                     }
+
+            # @!method initialize(child_access:)
+            #   Optional configuration for commit hierarchy access control
+            #
+            #   @param child_access [MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+
+            # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration#child_access
+            module ChildAccess
+              extend MetronomeSDK::Internal::Type::Union
+
+              variant -> {
+                MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll
+              }
+
+              variant -> {
+                MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone
+              }
+
+              variant -> {
+                MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
+              }
+
+              class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute type
+                #
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+                required :type,
+                         enum: -> {
+                           MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type
+                         }
+
+                # @!method initialize(type:)
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+
+                # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll#type
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  ALL = :ALL
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute type
+                #
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
+                required :type,
+                         enum: -> {
+                           MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type
+                         }
+
+                # @!method initialize(type:)
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
+
+                # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone#type
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  NONE = :NONE
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute contract_ids
+                #
+                #   @return [Array<String>]
+                required :contract_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+                # @!attribute type
+                #
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+                required :type,
+                         enum: -> {
+                           MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type
+                         }
+
+                # @!method initialize(contract_ids:, type:)
+                #   @param contract_ids [Array<String>]
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+
+                # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs#type
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  CONTRACT_IDS = :CONTRACT_IDS
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              # @!method self.variants
+              #   @return [Array(MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs)]
             end
           end
 
@@ -3678,18 +4220,27 @@ module MetronomeSDK
           optional :access_schedule, -> { MetronomeSDK::V2::ContractEditParams::UpdateCredit::AccessSchedule }
 
           # @!attribute applicable_product_ids
-          #   Which products the commit applies to. If both applicable_product_ids and
-          #   applicable_product_tags are not provided, the commit applies to all products.
+          #   Which products the commit applies to. If applicable_product_ids,
+          #   applicable_product_tags or specifiers are not provided, the commit applies to
+          #   all products.
           #
           #   @return [Array<String>, nil]
           optional :applicable_product_ids, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
 
           # @!attribute applicable_product_tags
-          #   Which tags the commit applies to. If both applicable_product_ids and
-          #   applicable_product_tags are not provided, the commit applies to all products.
+          #   Which tags the commit applies to. If applicable_product_ids,
+          #   applicable_product_tags or specifiers are not provided, the commit applies to
+          #   all products.
           #
           #   @return [Array<String>, nil]
           optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
+
+          # @!attribute hierarchy_configuration
+          #   Optional configuration for commit hierarchy access control
+          #
+          #   @return [MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration, nil]
+          optional :hierarchy_configuration,
+                   -> { MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration }
 
           # @!attribute netsuite_sales_order_id
           #
@@ -3701,7 +4252,7 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :product_id, String
 
-          # @!method initialize(credit_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, netsuite_sales_order_id: nil, product_id: nil)
+          # @!method initialize(credit_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, netsuite_sales_order_id: nil, product_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit} for more details.
           #
@@ -3709,9 +4260,11 @@ module MetronomeSDK
           #
           #   @param access_schedule [MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::AccessSchedule]
           #
-          #   @param applicable_product_ids [Array<String>, nil] Which products the commit applies to. If both applicable_product_ids and applica
+          #   @param applicable_product_ids [Array<String>, nil] Which products the commit applies to. If applicable_product_ids, applicable_prod
           #
-          #   @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If both applicable*product_ids and applicable*
+          #   @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If applicable*product_ids, applicable_product*
+          #
+          #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration] Optional configuration for commit hierarchy access control
           #
           #   @param netsuite_sales_order_id [String, nil]
           #
@@ -3808,6 +4361,117 @@ module MetronomeSDK
               #   @param starting_at [Time]
             end
           end
+
+          # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit#hierarchy_configuration
+          class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute child_access
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+            required :child_access,
+                     union: -> {
+                       MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess
+                     }
+
+            # @!method initialize(child_access:)
+            #   Optional configuration for commit hierarchy access control
+            #
+            #   @param child_access [MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+
+            # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration#child_access
+            module ChildAccess
+              extend MetronomeSDK::Internal::Type::Union
+
+              variant -> {
+                MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll
+              }
+
+              variant -> {
+                MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone
+              }
+
+              variant -> {
+                MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
+              }
+
+              class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute type
+                #
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+                required :type,
+                         enum: -> {
+                           MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type
+                         }
+
+                # @!method initialize(type:)
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+
+                # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll#type
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  ALL = :ALL
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute type
+                #
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
+                required :type,
+                         enum: -> {
+                           MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type
+                         }
+
+                # @!method initialize(type:)
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
+
+                # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone#type
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  NONE = :NONE
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute contract_ids
+                #
+                #   @return [Array<String>]
+                required :contract_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+                # @!attribute type
+                #
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+                required :type,
+                         enum: -> {
+                           MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type
+                         }
+
+                # @!method initialize(contract_ids:, type:)
+                #   @param contract_ids [Array<String>]
+                #   @param type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+
+                # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs#type
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  CONTRACT_IDS = :CONTRACT_IDS
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              # @!method self.variants
+              #   @return [Array(MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs)]
+            end
+          end
         end
 
         class UpdatePrepaidBalanceThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
@@ -3818,6 +4482,13 @@ module MetronomeSDK
                    -> {
                      MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit
                    }
+
+          # @!attribute custom_credit_type_id
+          #   If provided, the threshold, recharge-to amount, and the resulting threshold
+          #   commit amount will be in terms of this credit type instead of the fiat currency.
+          #
+          #   @return [String, nil]
+          optional :custom_credit_type_id, String, nil?: true
 
           # @!attribute is_enabled
           #   When set to false, the contract will not be evaluated against the
@@ -3848,12 +4519,14 @@ module MetronomeSDK
           #   @return [Float, nil]
           optional :threshold_amount, Float
 
-          # @!method initialize(commit: nil, is_enabled: nil, payment_gate_config: nil, recharge_to_amount: nil, threshold_amount: nil)
+          # @!method initialize(commit: nil, custom_credit_type_id: nil, is_enabled: nil, payment_gate_config: nil, recharge_to_amount: nil, threshold_amount: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration}
           #   for more details.
           #
           #   @param commit [MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit]
+          #
+          #   @param custom_credit_type_id [String, nil] If provided, the threshold, recharge-to amount, and the resulting threshold comm
           #
           #   @param is_enabled [Boolean] When set to false, the contract will not be evaluated against the threshold_amou
           #
@@ -3871,14 +4544,14 @@ module MetronomeSDK
             #   products.
             #
             #   @return [Array<String>, nil]
-            optional :applicable_product_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
+            optional :applicable_product_ids, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
 
             # @!attribute applicable_product_tags
             #   Which tags the threshold commit applies to. If both applicable_product_ids and
             #   applicable_product_tags are not provided, the commit applies to all products.
             #
             #   @return [Array<String>, nil]
-            optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
+            optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
 
             # @!attribute description
             #
@@ -3909,16 +4582,17 @@ module MetronomeSDK
             optional :specifiers,
                      -> {
                        MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier]
-                     }
+                     },
+                     nil?: true
 
             # @!method initialize(applicable_product_ids: nil, applicable_product_tags: nil, description: nil, name: nil, product_id: nil, specifiers: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit}
             #   for more details.
             #
-            #   @param applicable_product_ids [Array<String>] Which products the threshold commit applies to. If both applicable_product_ids a
+            #   @param applicable_product_ids [Array<String>, nil] Which products the threshold commit applies to. If both applicable_product_ids a
             #
-            #   @param applicable_product_tags [Array<String>] Which tags the threshold commit applies to. If both applicable_product_ids and a
+            #   @param applicable_product_tags [Array<String>, nil] Which tags the threshold commit applies to. If both applicable_product_ids and a
             #
             #   @param description [String]
             #
@@ -3926,7 +4600,7 @@ module MetronomeSDK
             #
             #   @param product_id [String] The commit product that will be used to generate the line item for commit paymen
             #
-            #   @param specifiers [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
+            #   @param specifiers [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier>, nil] List of filters that determine what kind of customer usage draws down a commit o
 
             class Specifier < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute presentation_group_values
@@ -3981,8 +4655,17 @@ module MetronomeSDK
                        MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType
                      }
 
+            # @!attribute precalculated_tax_config
+            #   Only applicable if using PRECALCULATED as your tax type.
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig, nil]
+            optional :precalculated_tax_config,
+                     -> {
+                       MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig
+                     }
+
             # @!attribute stripe_config
-            #   Only applicable if using Stripe as your payment gateway through Metronome.
+            #   Only applicable if using STRIPE as your payment gateway type.
             #
             #   @return [MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig, nil]
             optional :stripe_config,
@@ -4001,14 +4684,16 @@ module MetronomeSDK
                        MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType
                      }
 
-            # @!method initialize(payment_gate_type:, stripe_config: nil, tax_type: nil)
+            # @!method initialize(payment_gate_type:, precalculated_tax_config: nil, stripe_config: nil, tax_type: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig}
             #   for more details.
             #
             #   @param payment_gate_type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType] Gate access to the commit balance based on successful collection of payment. Sel
             #
-            #   @param stripe_config [MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig] Only applicable if using Stripe as your payment gateway through Metronome.
+            #   @param precalculated_tax_config [MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig] Only applicable if using PRECALCULATED as your tax type.
+            #
+            #   @param stripe_config [MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig] Only applicable if using STRIPE as your payment gateway type.
             #
             #   @param tax_type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType] Stripe tax is only supported for Stripe payment gateway. Select NONE if you do n
 
@@ -4029,6 +4714,34 @@ module MetronomeSDK
               #   @return [Array<Symbol>]
             end
 
+            # @see MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig#precalculated_tax_config
+            class PrecalculatedTaxConfig < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute tax_amount
+              #   Amount of tax to be applied. This should be in the same currency and
+              #   denomination as the commit's invoice schedule
+              #
+              #   @return [Float]
+              required :tax_amount, Float
+
+              # @!attribute tax_name
+              #   Name of the tax to be applied. This may be used in an invoice line item
+              #   description.
+              #
+              #   @return [String, nil]
+              optional :tax_name, String
+
+              # @!method initialize(tax_amount:, tax_name: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig}
+              #   for more details.
+              #
+              #   Only applicable if using PRECALCULATED as your tax type.
+              #
+              #   @param tax_amount [Float] Amount of tax to be applied. This should be in the same currency and denominatio
+              #
+              #   @param tax_name [String] Name of the tax to be applied. This may be used in an invoice line item descript
+            end
+
             # @see MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig#stripe_config
             class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute payment_type
@@ -4040,10 +4753,23 @@ module MetronomeSDK
                          MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType
                        }
 
-              # @!method initialize(payment_type:)
-              #   Only applicable if using Stripe as your payment gateway through Metronome.
+              # @!attribute invoice_metadata
+              #   Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
+              #   your payment type.
+              #
+              #   @return [Hash{Symbol=>String}, nil]
+              optional :invoice_metadata, MetronomeSDK::Internal::Type::HashOf[String]
+
+              # @!method initialize(payment_type:, invoice_metadata: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig}
+              #   for more details.
+              #
+              #   Only applicable if using STRIPE as your payment gateway type.
               #
               #   @param payment_type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType] If left blank, will default to INVOICE
+              #
+              #   @param invoice_metadata [Hash{Symbol=>String}] Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
 
               # If left blank, will default to INVOICE
               #
@@ -4069,6 +4795,8 @@ module MetronomeSDK
 
               NONE = :NONE
               STRIPE = :STRIPE
+              ANROK = :ANROK
+              PRECALCULATED = :PRECALCULATED
 
               # @!method self.values
               #   @return [Array<Symbol>]
@@ -4403,8 +5131,17 @@ module MetronomeSDK
                        MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::PaymentGateType
                      }
 
+            # @!attribute precalculated_tax_config
+            #   Only applicable if using PRECALCULATED as your tax type.
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig, nil]
+            optional :precalculated_tax_config,
+                     -> {
+                       MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig
+                     }
+
             # @!attribute stripe_config
-            #   Only applicable if using Stripe as your payment gateway through Metronome.
+            #   Only applicable if using STRIPE as your payment gateway type.
             #
             #   @return [MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig, nil]
             optional :stripe_config,
@@ -4423,14 +5160,16 @@ module MetronomeSDK
                        MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::TaxType
                      }
 
-            # @!method initialize(payment_gate_type:, stripe_config: nil, tax_type: nil)
+            # @!method initialize(payment_gate_type:, precalculated_tax_config: nil, stripe_config: nil, tax_type: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig}
             #   for more details.
             #
             #   @param payment_gate_type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::PaymentGateType] Gate access to the commit balance based on successful collection of payment. Sel
             #
-            #   @param stripe_config [MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig] Only applicable if using Stripe as your payment gateway through Metronome.
+            #   @param precalculated_tax_config [MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig] Only applicable if using PRECALCULATED as your tax type.
+            #
+            #   @param stripe_config [MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig] Only applicable if using STRIPE as your payment gateway type.
             #
             #   @param tax_type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::TaxType] Stripe tax is only supported for Stripe payment gateway. Select NONE if you do n
 
@@ -4451,6 +5190,34 @@ module MetronomeSDK
               #   @return [Array<Symbol>]
             end
 
+            # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig#precalculated_tax_config
+            class PrecalculatedTaxConfig < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute tax_amount
+              #   Amount of tax to be applied. This should be in the same currency and
+              #   denomination as the commit's invoice schedule
+              #
+              #   @return [Float]
+              required :tax_amount, Float
+
+              # @!attribute tax_name
+              #   Name of the tax to be applied. This may be used in an invoice line item
+              #   description.
+              #
+              #   @return [String, nil]
+              optional :tax_name, String
+
+              # @!method initialize(tax_amount:, tax_name: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig}
+              #   for more details.
+              #
+              #   Only applicable if using PRECALCULATED as your tax type.
+              #
+              #   @param tax_amount [Float] Amount of tax to be applied. This should be in the same currency and denominatio
+              #
+              #   @param tax_name [String] Name of the tax to be applied. This may be used in an invoice line item descript
+            end
+
             # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig#stripe_config
             class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute payment_type
@@ -4462,10 +5229,23 @@ module MetronomeSDK
                          MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType
                        }
 
-              # @!method initialize(payment_type:)
-              #   Only applicable if using Stripe as your payment gateway through Metronome.
+              # @!attribute invoice_metadata
+              #   Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
+              #   your payment type.
+              #
+              #   @return [Hash{Symbol=>String}, nil]
+              optional :invoice_metadata, MetronomeSDK::Internal::Type::HashOf[String]
+
+              # @!method initialize(payment_type:, invoice_metadata: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig}
+              #   for more details.
+              #
+              #   Only applicable if using STRIPE as your payment gateway type.
               #
               #   @param payment_type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType] If left blank, will default to INVOICE
+              #
+              #   @param invoice_metadata [Hash{Symbol=>String}] Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
 
               # If left blank, will default to INVOICE
               #
@@ -4491,6 +5271,8 @@ module MetronomeSDK
 
               NONE = :NONE
               STRIPE = :STRIPE
+              ANROK = :ANROK
+              PRECALCULATED = :PRECALCULATED
 
               # @!method self.values
               #   @return [Array<Symbol>]

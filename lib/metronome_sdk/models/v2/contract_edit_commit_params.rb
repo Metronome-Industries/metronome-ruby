@@ -26,15 +26,17 @@ module MetronomeSDK
         optional :access_schedule, -> { MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule }
 
         # @!attribute applicable_product_ids
-        #   Which products the commit applies to. If both applicable_product_ids and
-        #   applicable_product_tags are not provided, the commit applies to all products.
+        #   Which products the commit applies to. If applicable_product_ids,
+        #   applicable_product_tags or specifiers are not provided, the commit applies to
+        #   all products.
         #
         #   @return [Array<String>, nil]
         optional :applicable_product_ids, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
 
         # @!attribute applicable_product_tags
-        #   Which tags the commit applies to. If both applicable_product_ids and
-        #   applicable_product_tags are not provided, the commit applies to all products.
+        #   Which tags the commit applies to. If applicable_product_ids,
+        #   applicable_product_tags or specifiers are not provided, the commit applies to
+        #   all products.
         #
         #   @return [Array<String>, nil]
         optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
@@ -65,7 +67,8 @@ module MetronomeSDK
         optional :specifiers,
                  -> {
                    MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditCommitParams::Specifier]
-                 }
+                 },
+                 nil?: true
 
         # @!method initialize(commit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, invoice_contract_id: nil, invoice_schedule: nil, product_id: nil, specifiers: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
@@ -77,9 +80,9 @@ module MetronomeSDK
         #
         #   @param access_schedule [MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule]
         #
-        #   @param applicable_product_ids [Array<String>, nil] Which products the commit applies to. If both applicable_product_ids and applica
+        #   @param applicable_product_ids [Array<String>, nil] Which products the commit applies to. If applicable_product_ids, applicable_prod
         #
-        #   @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If both applicable*product_ids and applicable*
+        #   @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If applicable*product_ids, applicable_product*
         #
         #   @param invoice_contract_id [String] ID of contract to use for invoicing
         #
@@ -87,7 +90,7 @@ module MetronomeSDK
         #
         #   @param product_id [String]
         #
-        #   @param specifiers [Array<MetronomeSDK::Models::V2::ContractEditCommitParams::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
+        #   @param specifiers [Array<MetronomeSDK::Models::V2::ContractEditCommitParams::Specifier>, nil] List of filters that determine what kind of customer usage draws down a commit o
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 

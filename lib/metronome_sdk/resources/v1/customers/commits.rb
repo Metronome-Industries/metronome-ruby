@@ -24,9 +24,9 @@ module MetronomeSDK
           #
           # @param applicable_contract_ids [Array<String>] Which contract the commit applies to. If not provided, the commit applies to all
           #
-          # @param applicable_product_ids [Array<String>] Which products the commit applies to. If both applicable_product_ids and applica
+          # @param applicable_product_ids [Array<String>] Which products the commit applies to. If applicable_product_ids, applicable_prod
           #
-          # @param applicable_product_tags [Array<String>] Which tags the commit applies to. If both applicable*product_ids and applicable*
+          # @param applicable_product_tags [Array<String>] Which tags the commit applies to. If applicable*product_ids, applicable_product*
           #
           # @param custom_fields [Hash{Symbol=>String}]
           #

@@ -45,7 +45,7 @@ module MetronomeSDK
                 price: Float,
                 pricing_group_values: ::Hash[Symbol, String],
                 quantity: Float,
-                tiers: ::Array[MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::Tier],
+                tiers: ::Array[MetronomeSDK::Tier],
                 use_list_prices: bool
               }
 
@@ -100,11 +100,11 @@ module MetronomeSDK
 
               def quantity=: (Float) -> Float
 
-              attr_reader tiers: ::Array[MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::Tier]?
+              attr_reader tiers: ::Array[MetronomeSDK::Tier]?
 
               def tiers=: (
-                ::Array[MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::Tier]
-              ) -> ::Array[MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::Tier]
+                ::Array[MetronomeSDK::Tier]
+              ) -> ::Array[MetronomeSDK::Tier]
 
               attr_reader use_list_prices: bool?
 
@@ -124,7 +124,7 @@ module MetronomeSDK
                 ?price: Float,
                 ?pricing_group_values: ::Hash[Symbol, String],
                 ?quantity: Float,
-                ?tiers: ::Array[MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::Tier],
+                ?tiers: ::Array[MetronomeSDK::Tier],
                 ?use_list_prices: bool
               ) -> void
 
@@ -142,7 +142,7 @@ module MetronomeSDK
                 price: Float,
                 pricing_group_values: ::Hash[Symbol, String],
                 quantity: Float,
-                tiers: ::Array[MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::Tier],
+                tiers: ::Array[MetronomeSDK::Tier],
                 use_list_prices: bool
               }
 
@@ -178,7 +178,7 @@ module MetronomeSDK
                 {
                   rate_type: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::rate_type,
                   price: Float,
-                  tiers: ::Array[MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::Tier]
+                  tiers: ::Array[MetronomeSDK::Tier]
                 }
 
               class CommitRate < MetronomeSDK::Internal::Type::BaseModel
@@ -188,22 +188,22 @@ module MetronomeSDK
 
                 def price=: (Float) -> Float
 
-                attr_reader tiers: ::Array[MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::Tier]?
+                attr_reader tiers: ::Array[MetronomeSDK::Tier]?
 
                 def tiers=: (
-                  ::Array[MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::Tier]
-                ) -> ::Array[MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::Tier]
+                  ::Array[MetronomeSDK::Tier]
+                ) -> ::Array[MetronomeSDK::Tier]
 
                 def initialize: (
                   rate_type: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::rate_type,
                   ?price: Float,
-                  ?tiers: ::Array[MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::Tier]
+                  ?tiers: ::Array[MetronomeSDK::Tier]
                 ) -> void
 
                 def to_hash: -> {
                   rate_type: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::rate_type,
                   price: Float,
-                  tiers: ::Array[MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::Tier]
+                  tiers: ::Array[MetronomeSDK::Tier]
                 }
 
                 type rate_type =
@@ -220,34 +220,6 @@ module MetronomeSDK
 
                   def self?.values: -> ::Array[MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyParams::Rate::CommitRate::rate_type]
                 end
-
-                type tier = { price: Float, size: Float }
-
-                class Tier < MetronomeSDK::Internal::Type::BaseModel
-                  attr_accessor price: Float
-
-                  attr_reader size: Float?
-
-                  def size=: (Float) -> Float
-
-                  def initialize: (price: Float, ?size: Float) -> void
-
-                  def to_hash: -> { price: Float, size: Float }
-                end
-              end
-
-              type tier = { price: Float, size: Float }
-
-              class Tier < MetronomeSDK::Internal::Type::BaseModel
-                attr_accessor price: Float
-
-                attr_reader size: Float?
-
-                def size=: (Float) -> Float
-
-                def initialize: (price: Float, ?size: Float) -> void
-
-                def to_hash: -> { price: Float, size: Float }
               end
             end
           end

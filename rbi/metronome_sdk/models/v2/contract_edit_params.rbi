@@ -223,7 +223,7 @@ module MetronomeSDK
         end
         attr_writer :add_spend_threshold_configuration
 
-        # (beta) Optional list of
+        # Optional list of
         # [subscriptions](https://docs.metronome.com/manage-product-access/create-subscription/)
         # to add to the contract.
         sig do
@@ -364,6 +364,11 @@ module MetronomeSDK
         sig { returns(T.nilable(Time)) }
         attr_accessor :update_contract_end_date
 
+        # Value to update the contract name to. If not provided, the contract name will
+        # remain unchanged.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :update_contract_name
+
         sig do
           returns(
             T.nilable(
@@ -486,7 +491,7 @@ module MetronomeSDK
         end
         attr_writer :update_spend_threshold_configuration
 
-        # (beta) Optional list of subscriptions to update.
+        # Optional list of subscriptions to update.
         sig do
           returns(
             T.nilable(
@@ -572,6 +577,7 @@ module MetronomeSDK
                 MetronomeSDK::V2::ContractEditParams::UpdateCommit::OrHash
               ],
             update_contract_end_date: T.nilable(Time),
+            update_contract_name: T.nilable(String),
             update_credits:
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::UpdateCredit::OrHash
@@ -616,7 +622,7 @@ module MetronomeSDK
           add_reseller_royalties: nil,
           add_scheduled_charges: nil,
           add_spend_threshold_configuration: nil,
-          # (beta) Optional list of
+          # Optional list of
           # [subscriptions](https://docs.metronome.com/manage-product-access/create-subscription/)
           # to add to the contract.
           add_subscriptions: nil,
@@ -636,6 +642,9 @@ module MetronomeSDK
           update_commits: nil,
           # RFC 3339 timestamp indicating when the contract will end (exclusive).
           update_contract_end_date: nil,
+          # Value to update the contract name to. If not provided, the contract name will
+          # remain unchanged.
+          update_contract_name: nil,
           update_credits: nil,
           update_prepaid_balance_threshold_configuration: nil,
           # Edits to these recurring commits will only affect commits whose access schedules
@@ -648,7 +657,7 @@ module MetronomeSDK
           update_recurring_credits: nil,
           update_scheduled_charges: nil,
           update_spend_threshold_configuration: nil,
-          # (beta) Optional list of subscriptions to update.
+          # Optional list of subscriptions to update.
           update_subscriptions: nil,
           request_options: {}
         )
@@ -707,6 +716,7 @@ module MetronomeSDK
               update_commits:
                 T::Array[MetronomeSDK::V2::ContractEditParams::UpdateCommit],
               update_contract_end_date: T.nilable(Time),
+              update_contract_name: T.nilable(String),
               update_credits:
                 T::Array[MetronomeSDK::V2::ContractEditParams::UpdateCredit],
               update_prepaid_balance_threshold_configuration:
@@ -782,16 +792,18 @@ module MetronomeSDK
           sig { params(amount: Float).void }
           attr_writer :amount
 
-          # Which products the commit applies to. If both applicable_product_ids and
-          # applicable_product_tags are not provided, the commit applies to all products.
+          # Which products the commit applies to. If applicable_product_ids,
+          # applicable_product_tags or specifiers are not provided, the commit applies to
+          # all products.
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :applicable_product_ids
 
           sig { params(applicable_product_ids: T::Array[String]).void }
           attr_writer :applicable_product_ids
 
-          # Which tags the commit applies to. If both applicable_product_ids and
-          # applicable_product_tags are not provided, the commit applies to all products.
+          # Which tags the commit applies to. If applicable_product_ids,
+          # applicable_product_tags or specifiers are not provided, the commit applies to
+          # all products.
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :applicable_product_tags
 
@@ -810,6 +822,24 @@ module MetronomeSDK
 
           sig { params(description: String).void }
           attr_writer :description
+
+          # Optional configuration for commit hierarchy access control
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration
+              )
+            )
+          end
+          attr_reader :hierarchy_configuration
+
+          sig do
+            params(
+              hierarchy_configuration:
+                MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::OrHash
+            ).void
+          end
+          attr_writer :hierarchy_configuration
 
           # Required for "POSTPAID" commits: the true up invoice will be generated at this
           # time and only one schedule item is allowed; the total must match access_schedule
@@ -941,6 +971,8 @@ module MetronomeSDK
               applicable_product_tags: T::Array[String],
               custom_fields: T::Hash[Symbol, String],
               description: String,
+              hierarchy_configuration:
+                MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::OrHash,
               invoice_schedule:
                 MetronomeSDK::V2::ContractEditParams::AddCommit::InvoiceSchedule::OrHash,
               name: String,
@@ -967,15 +999,19 @@ module MetronomeSDK
             access_schedule: nil,
             # (DEPRECATED) Use access_schedule and invoice_schedule instead.
             amount: nil,
-            # Which products the commit applies to. If both applicable_product_ids and
-            # applicable_product_tags are not provided, the commit applies to all products.
+            # Which products the commit applies to. If applicable_product_ids,
+            # applicable_product_tags or specifiers are not provided, the commit applies to
+            # all products.
             applicable_product_ids: nil,
-            # Which tags the commit applies to. If both applicable_product_ids and
-            # applicable_product_tags are not provided, the commit applies to all products.
+            # Which tags the commit applies to. If applicable_product_ids,
+            # applicable_product_tags or specifiers are not provided, the commit applies to
+            # all products.
             applicable_product_tags: nil,
             custom_fields: nil,
             # Used only in UI/API. It is not exposed to end customers.
             description: nil,
+            # Optional configuration for commit hierarchy access control
+            hierarchy_configuration: nil,
             # Required for "POSTPAID" commits: the true up invoice will be generated at this
             # time and only one schedule item is allowed; the total must match access_schedule
             # amount. Optional for "PREPAID" commits: if not provided, this will be a
@@ -1017,6 +1053,8 @@ module MetronomeSDK
                 applicable_product_tags: T::Array[String],
                 custom_fields: T::Hash[Symbol, String],
                 description: String,
+                hierarchy_configuration:
+                  MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration,
                 invoice_schedule:
                   MetronomeSDK::V2::ContractEditParams::AddCommit::InvoiceSchedule,
                 name: String,
@@ -1167,6 +1205,282 @@ module MetronomeSDK
                 )
               end
               def to_hash
+              end
+            end
+          end
+
+          class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig do
+              returns(
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                  MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                  MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
+                )
+              )
+            end
+            attr_accessor :child_access
+
+            # Optional configuration for commit hierarchy access control
+            sig do
+              params(
+                child_access:
+                  T.any(
+                    MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::OrHash,
+                    MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::OrHash,
+                    MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::OrHash
+                  )
+              ).returns(T.attached_class)
+            end
+            def self.new(child_access:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  child_access:
+                    T.any(
+                      MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                      MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                      MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
+                    )
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module ChildAccess
+              extend MetronomeSDK::Internal::Type::Union
+
+              Variants =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                    MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                    MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
+                  )
+                end
+
+              class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig do
+                  returns(
+                    MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
+                  )
+                end
+                attr_accessor :type
+
+                sig do
+                  params(
+                    type:
+                      MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
+                  ).returns(T.attached_class)
+                end
+                def self.new(type:)
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      type:
+                        MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(
+                        Symbol,
+                        MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type
+                      )
+                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                  ALL =
+                    T.let(
+                      :ALL,
+                      MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
+                    )
+
+                  sig do
+                    override.returns(
+                      T::Array[
+                        MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
+                      ]
+                    )
+                  end
+                  def self.values
+                  end
+                end
+              end
+
+              class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig do
+                  returns(
+                    MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                  )
+                end
+                attr_accessor :type
+
+                sig do
+                  params(
+                    type:
+                      MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                  ).returns(T.attached_class)
+                end
+                def self.new(type:)
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      type:
+                        MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(
+                        Symbol,
+                        MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type
+                      )
+                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                  NONE =
+                    T.let(
+                      :NONE,
+                      MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
+                    )
+
+                  sig do
+                    override.returns(
+                      T::Array[
+                        MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
+                      ]
+                    )
+                  end
+                  def self.values
+                  end
+                end
+              end
+
+              class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(T::Array[String]) }
+                attr_accessor :contract_ids
+
+                sig do
+                  returns(
+                    MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
+                  )
+                end
+                attr_accessor :type
+
+                sig do
+                  params(
+                    contract_ids: T::Array[String],
+                    type:
+                      MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
+                  ).returns(T.attached_class)
+                end
+                def self.new(contract_ids:, type:)
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      contract_ids: T::Array[String],
+                      type:
+                        MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(
+                        Symbol,
+                        MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type
+                      )
+                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                  CONTRACT_IDS =
+                    T.let(
+                      :CONTRACT_IDS,
+                      MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
+                    )
+
+                  sig do
+                    override.returns(
+                      T::Array[
+                        MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
+                      ]
+                    )
+                  end
+                  def self.values
+                  end
+                end
+              end
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddCommit::HierarchyConfiguration::ChildAccess::Variants
+                  ]
+                )
+              end
+              def self.variants
               end
             end
           end
@@ -1576,7 +1890,25 @@ module MetronomeSDK
             end
             attr_accessor :payment_gate_type
 
-            # Only applicable if using Stripe as your payment gateway through Metronome.
+            # Only applicable if using PRECALCULATED as your tax type.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V2::ContractEditParams::AddCommit::PaymentGateConfig::PrecalculatedTaxConfig
+                )
+              )
+            end
+            attr_reader :precalculated_tax_config
+
+            sig do
+              params(
+                precalculated_tax_config:
+                  MetronomeSDK::V2::ContractEditParams::AddCommit::PaymentGateConfig::PrecalculatedTaxConfig::OrHash
+              ).void
+            end
+            attr_writer :precalculated_tax_config
+
+            # Only applicable if using STRIPE as your payment gateway type.
             sig do
               returns(
                 T.nilable(
@@ -1619,6 +1951,8 @@ module MetronomeSDK
               params(
                 payment_gate_type:
                   MetronomeSDK::V2::ContractEditParams::AddCommit::PaymentGateConfig::PaymentGateType::OrSymbol,
+                precalculated_tax_config:
+                  MetronomeSDK::V2::ContractEditParams::AddCommit::PaymentGateConfig::PrecalculatedTaxConfig::OrHash,
                 stripe_config:
                   MetronomeSDK::V2::ContractEditParams::AddCommit::PaymentGateConfig::StripeConfig::OrHash,
                 tax_type:
@@ -1631,7 +1965,9 @@ module MetronomeSDK
               # facilitate payment using your own payment integration. Select NONE if you do not
               # wish to payment gate the commit balance.
               payment_gate_type:,
-              # Only applicable if using Stripe as your payment gateway through Metronome.
+              # Only applicable if using PRECALCULATED as your tax type.
+              precalculated_tax_config: nil,
+              # Only applicable if using STRIPE as your payment gateway type.
               stripe_config: nil,
               # Stripe tax is only supported for Stripe payment gateway. Select NONE if you do
               # not wish Metronome to calculate tax on your behalf. Leaving this field blank
@@ -1645,6 +1981,8 @@ module MetronomeSDK
                 {
                   payment_gate_type:
                     MetronomeSDK::V2::ContractEditParams::AddCommit::PaymentGateConfig::PaymentGateType::OrSymbol,
+                  precalculated_tax_config:
+                    MetronomeSDK::V2::ContractEditParams::AddCommit::PaymentGateConfig::PrecalculatedTaxConfig,
                   stripe_config:
                     MetronomeSDK::V2::ContractEditParams::AddCommit::PaymentGateConfig::StripeConfig,
                   tax_type:
@@ -1698,6 +2036,49 @@ module MetronomeSDK
               end
             end
 
+            class PrecalculatedTaxConfig < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V2::ContractEditParams::AddCommit::PaymentGateConfig::PrecalculatedTaxConfig,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              # Amount of tax to be applied. This should be in the same currency and
+              # denomination as the commit's invoice schedule
+              sig { returns(Float) }
+              attr_accessor :tax_amount
+
+              # Name of the tax to be applied. This may be used in an invoice line item
+              # description.
+              sig { returns(T.nilable(String)) }
+              attr_reader :tax_name
+
+              sig { params(tax_name: String).void }
+              attr_writer :tax_name
+
+              # Only applicable if using PRECALCULATED as your tax type.
+              sig do
+                params(tax_amount: Float, tax_name: String).returns(
+                  T.attached_class
+                )
+              end
+              def self.new(
+                # Amount of tax to be applied. This should be in the same currency and
+                # denomination as the commit's invoice schedule
+                tax_amount:,
+                # Name of the tax to be applied. This may be used in an invoice line item
+                # description.
+                tax_name: nil
+              )
+              end
+
+              sig { override.returns({ tax_amount: Float, tax_name: String }) }
+              def to_hash
+              end
+            end
+
             class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -1715,16 +2096,28 @@ module MetronomeSDK
               end
               attr_accessor :payment_type
 
-              # Only applicable if using Stripe as your payment gateway through Metronome.
+              # Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
+              # your payment type.
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :invoice_metadata
+
+              sig { params(invoice_metadata: T::Hash[Symbol, String]).void }
+              attr_writer :invoice_metadata
+
+              # Only applicable if using STRIPE as your payment gateway type.
               sig do
                 params(
                   payment_type:
-                    MetronomeSDK::V2::ContractEditParams::AddCommit::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol
+                    MetronomeSDK::V2::ContractEditParams::AddCommit::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol,
+                  invoice_metadata: T::Hash[Symbol, String]
                 ).returns(T.attached_class)
               end
               def self.new(
                 # If left blank, will default to INVOICE
-                payment_type:
+                payment_type:,
+                # Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
+                # your payment type.
+                invoice_metadata: nil
               )
               end
 
@@ -1732,7 +2125,8 @@ module MetronomeSDK
                 override.returns(
                   {
                     payment_type:
-                      MetronomeSDK::V2::ContractEditParams::AddCommit::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol
+                      MetronomeSDK::V2::ContractEditParams::AddCommit::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol,
+                    invoice_metadata: T::Hash[Symbol, String]
                   }
                 )
               end
@@ -1798,6 +2192,16 @@ module MetronomeSDK
               STRIPE =
                 T.let(
                   :STRIPE,
+                  MetronomeSDK::V2::ContractEditParams::AddCommit::PaymentGateConfig::TaxType::TaggedSymbol
+                )
+              ANROK =
+                T.let(
+                  :ANROK,
+                  MetronomeSDK::V2::ContractEditParams::AddCommit::PaymentGateConfig::TaxType::TaggedSymbol
+                )
+              PRECALCULATED =
+                T.let(
+                  :PRECALCULATED,
                   MetronomeSDK::V2::ContractEditParams::AddCommit::PaymentGateConfig::TaxType::TaggedSymbol
                 )
 
@@ -1976,6 +2380,24 @@ module MetronomeSDK
           sig { params(description: String).void }
           attr_writer :description
 
+          # Optional configuration for credit hierarchy access control
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration
+              )
+            )
+          end
+          attr_reader :hierarchy_configuration
+
+          sig do
+            params(
+              hierarchy_configuration:
+                MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::OrHash
+            ).void
+          end
+          attr_writer :hierarchy_configuration
+
           # displayed on invoices
           sig { returns(T.nilable(String)) }
           attr_reader :name
@@ -2049,6 +2471,8 @@ module MetronomeSDK
               applicable_product_tags: T::Array[String],
               custom_fields: T::Hash[Symbol, String],
               description: String,
+              hierarchy_configuration:
+                MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::OrHash,
               name: String,
               netsuite_sales_order_id: String,
               priority: Float,
@@ -2073,6 +2497,8 @@ module MetronomeSDK
             custom_fields: nil,
             # Used only in UI/API. It is not exposed to end customers.
             description: nil,
+            # Optional configuration for credit hierarchy access control
+            hierarchy_configuration: nil,
             # displayed on invoices
             name: nil,
             # This field's availability is dependent on your client's configuration.
@@ -2099,6 +2525,8 @@ module MetronomeSDK
                 applicable_product_tags: T::Array[String],
                 custom_fields: T::Hash[Symbol, String],
                 description: String,
+                hierarchy_configuration:
+                  MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration,
                 name: String,
                 netsuite_sales_order_id: String,
                 priority: Float,
@@ -2207,6 +2635,282 @@ module MetronomeSDK
                 )
               end
               def to_hash
+              end
+            end
+          end
+
+          class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig do
+              returns(
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                  MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                  MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
+                )
+              )
+            end
+            attr_accessor :child_access
+
+            # Optional configuration for credit hierarchy access control
+            sig do
+              params(
+                child_access:
+                  T.any(
+                    MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::OrHash,
+                    MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::OrHash,
+                    MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::OrHash
+                  )
+              ).returns(T.attached_class)
+            end
+            def self.new(child_access:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  child_access:
+                    T.any(
+                      MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                      MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                      MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
+                    )
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module ChildAccess
+              extend MetronomeSDK::Internal::Type::Union
+
+              Variants =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                    MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                    MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
+                  )
+                end
+
+              class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig do
+                  returns(
+                    MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
+                  )
+                end
+                attr_accessor :type
+
+                sig do
+                  params(
+                    type:
+                      MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
+                  ).returns(T.attached_class)
+                end
+                def self.new(type:)
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      type:
+                        MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(
+                        Symbol,
+                        MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type
+                      )
+                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                  ALL =
+                    T.let(
+                      :ALL,
+                      MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
+                    )
+
+                  sig do
+                    override.returns(
+                      T::Array[
+                        MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
+                      ]
+                    )
+                  end
+                  def self.values
+                  end
+                end
+              end
+
+              class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig do
+                  returns(
+                    MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                  )
+                end
+                attr_accessor :type
+
+                sig do
+                  params(
+                    type:
+                      MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                  ).returns(T.attached_class)
+                end
+                def self.new(type:)
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      type:
+                        MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(
+                        Symbol,
+                        MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type
+                      )
+                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                  NONE =
+                    T.let(
+                      :NONE,
+                      MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
+                    )
+
+                  sig do
+                    override.returns(
+                      T::Array[
+                        MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
+                      ]
+                    )
+                  end
+                  def self.values
+                  end
+                end
+              end
+
+              class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(T::Array[String]) }
+                attr_accessor :contract_ids
+
+                sig do
+                  returns(
+                    MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
+                  )
+                end
+                attr_accessor :type
+
+                sig do
+                  params(
+                    contract_ids: T::Array[String],
+                    type:
+                      MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
+                  ).returns(T.attached_class)
+                end
+                def self.new(contract_ids:, type:)
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      contract_ids: T::Array[String],
+                      type:
+                        MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(
+                        Symbol,
+                        MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type
+                      )
+                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                  CONTRACT_IDS =
+                    T.let(
+                      :CONTRACT_IDS,
+                      MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
+                    )
+
+                  sig do
+                    override.returns(
+                      T::Array[
+                        MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
+                      ]
+                    )
+                  end
+                  def self.values
+                  end
+                end
+              end
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddCredit::HierarchyConfiguration::ChildAccess::Variants
+                  ]
+                )
+              end
+              def self.variants
               end
             end
           end
@@ -3294,25 +3998,10 @@ module MetronomeSDK
             attr_writer :quantity
 
             # Only set for TIERED rate_type.
-            sig do
-              returns(
-                T.nilable(
-                  T::Array[
-                    MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier
-                  ]
-                )
-              )
-            end
+            sig { returns(T.nilable(T::Array[MetronomeSDK::Tier])) }
             attr_reader :tiers
 
-            sig do
-              params(
-                tiers:
-                  T::Array[
-                    MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier::OrHash
-                  ]
-              ).void
-            end
+            sig { params(tiers: T::Array[MetronomeSDK::Tier::OrHash]).void }
             attr_writer :tiers
 
             # Required for OVERWRITE type.
@@ -3325,10 +4014,7 @@ module MetronomeSDK
                 is_prorated: T::Boolean,
                 price: Float,
                 quantity: Float,
-                tiers:
-                  T::Array[
-                    MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier::OrHash
-                  ]
+                tiers: T::Array[MetronomeSDK::Tier::OrHash]
               ).returns(T.attached_class)
             end
             def self.new(
@@ -3360,10 +4046,7 @@ module MetronomeSDK
                   is_prorated: T::Boolean,
                   price: Float,
                   quantity: Float,
-                  tiers:
-                    T::Array[
-                      MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier
-                    ]
+                  tiers: T::Array[MetronomeSDK::Tier]
                 }
               )
             end
@@ -3416,35 +4099,6 @@ module MetronomeSDK
                 )
               end
               def self.values
-              end
-            end
-
-            class Tier < MetronomeSDK::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias do
-                  T.any(
-                    MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::Tier,
-                    MetronomeSDK::Internal::AnyHash
-                  )
-                end
-
-              sig { returns(Float) }
-              attr_accessor :price
-
-              sig { returns(T.nilable(Float)) }
-              attr_reader :size
-
-              sig { params(size: Float).void }
-              attr_writer :size
-
-              sig do
-                params(price: Float, size: Float).returns(T.attached_class)
-              end
-              def self.new(price:, size: nil)
-              end
-
-              sig { override.returns({ price: Float, size: Float }) }
-              def to_hash
               end
             end
           end
@@ -3610,6 +4264,14 @@ module MetronomeSDK
           sig { returns(Float) }
           attr_accessor :threshold_amount
 
+          # If provided, the threshold, recharge-to amount, and the resulting threshold
+          # commit amount will be in terms of this credit type instead of the fiat currency.
+          sig { returns(T.nilable(String)) }
+          attr_reader :custom_credit_type_id
+
+          sig { params(custom_credit_type_id: String).void }
+          attr_writer :custom_credit_type_id
+
           sig do
             params(
               commit:
@@ -3618,7 +4280,8 @@ module MetronomeSDK
               payment_gate_config:
                 MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::OrHash,
               recharge_to_amount: Float,
-              threshold_amount: Float
+              threshold_amount: Float,
+              custom_credit_type_id: String
             ).returns(T.attached_class)
           end
           def self.new(
@@ -3632,7 +4295,10 @@ module MetronomeSDK
             recharge_to_amount:,
             # Specify the threshold amount for the contract. Each time the contract's balance
             # lowers to this amount, a threshold charge will be initiated.
-            threshold_amount:
+            threshold_amount:,
+            # If provided, the threshold, recharge-to amount, and the resulting threshold
+            # commit amount will be in terms of this credit type instead of the fiat currency.
+            custom_credit_type_id: nil
           )
           end
 
@@ -3645,7 +4311,8 @@ module MetronomeSDK
                 payment_gate_config:
                   MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig,
                 recharge_to_amount: Float,
-                threshold_amount: Float
+                threshold_amount: Float,
+                custom_credit_type_id: String
               }
             )
           end
@@ -3666,17 +4333,18 @@ module MetronomeSDK
             sig { returns(String) }
             attr_accessor :product_id
 
-            # Which products the threshold commit applies to. If both applicable_product_ids
-            # and applicable_product_tags are not provided, the commit applies to all
-            # products.
+            # Which products the threshold commit applies to. If applicable_product_ids,
+            # applicable_product_tags or specifiers are not provided, the commit applies to
+            # all products.
             sig { returns(T.nilable(T::Array[String])) }
             attr_reader :applicable_product_ids
 
             sig { params(applicable_product_ids: T::Array[String]).void }
             attr_writer :applicable_product_ids
 
-            # Which tags the threshold commit applies to. If both applicable_product_ids and
-            # applicable_product_tags are not provided, the commit applies to all products.
+            # Which tags the threshold commit applies to. If applicable_product_ids,
+            # applicable_product_tags or specifiers are not provided, the commit applies to
+            # all products.
             sig { returns(T.nilable(T::Array[String])) }
             attr_reader :applicable_product_tags
 
@@ -3739,12 +4407,13 @@ module MetronomeSDK
               # The commit product that will be used to generate the line item for commit
               # payment.
               product_id:,
-              # Which products the threshold commit applies to. If both applicable_product_ids
-              # and applicable_product_tags are not provided, the commit applies to all
-              # products.
+              # Which products the threshold commit applies to. If applicable_product_ids,
+              # applicable_product_tags or specifiers are not provided, the commit applies to
+              # all products.
               applicable_product_ids: nil,
-              # Which tags the threshold commit applies to. If both applicable_product_ids and
-              # applicable_product_tags are not provided, the commit applies to all products.
+              # Which tags the threshold commit applies to. If applicable_product_ids,
+              # applicable_product_tags or specifiers are not provided, the commit applies to
+              # all products.
               applicable_product_tags: nil,
               description: nil,
               # Specify the name of the line item for the threshold charge. If left blank, it
@@ -3868,7 +4537,25 @@ module MetronomeSDK
             end
             attr_accessor :payment_gate_type
 
-            # Only applicable if using Stripe as your payment gateway through Metronome.
+            # Only applicable if using PRECALCULATED as your tax type.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig
+                )
+              )
+            end
+            attr_reader :precalculated_tax_config
+
+            sig do
+              params(
+                precalculated_tax_config:
+                  MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig::OrHash
+              ).void
+            end
+            attr_writer :precalculated_tax_config
+
+            # Only applicable if using STRIPE as your payment gateway type.
             sig do
               returns(
                 T.nilable(
@@ -3910,6 +4597,8 @@ module MetronomeSDK
               params(
                 payment_gate_type:
                   MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType::OrSymbol,
+                precalculated_tax_config:
+                  MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig::OrHash,
                 stripe_config:
                   MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::OrHash,
                 tax_type:
@@ -3922,7 +4611,9 @@ module MetronomeSDK
               # facilitate payment using your own payment integration. Select NONE if you do not
               # wish to payment gate the commit balance.
               payment_gate_type:,
-              # Only applicable if using Stripe as your payment gateway through Metronome.
+              # Only applicable if using PRECALCULATED as your tax type.
+              precalculated_tax_config: nil,
+              # Only applicable if using STRIPE as your payment gateway type.
               stripe_config: nil,
               # Stripe tax is only supported for Stripe payment gateway. Select NONE if you do
               # not wish Metronome to calculate tax on your behalf. Leaving this field blank
@@ -3936,6 +4627,8 @@ module MetronomeSDK
                 {
                   payment_gate_type:
                     MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType::OrSymbol,
+                  precalculated_tax_config:
+                    MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig,
                   stripe_config:
                     MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
                   tax_type:
@@ -3989,6 +4682,49 @@ module MetronomeSDK
               end
             end
 
+            class PrecalculatedTaxConfig < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              # Amount of tax to be applied. This should be in the same currency and
+              # denomination as the commit's invoice schedule
+              sig { returns(Float) }
+              attr_accessor :tax_amount
+
+              # Name of the tax to be applied. This may be used in an invoice line item
+              # description.
+              sig { returns(T.nilable(String)) }
+              attr_reader :tax_name
+
+              sig { params(tax_name: String).void }
+              attr_writer :tax_name
+
+              # Only applicable if using PRECALCULATED as your tax type.
+              sig do
+                params(tax_amount: Float, tax_name: String).returns(
+                  T.attached_class
+                )
+              end
+              def self.new(
+                # Amount of tax to be applied. This should be in the same currency and
+                # denomination as the commit's invoice schedule
+                tax_amount:,
+                # Name of the tax to be applied. This may be used in an invoice line item
+                # description.
+                tax_name: nil
+              )
+              end
+
+              sig { override.returns({ tax_amount: Float, tax_name: String }) }
+              def to_hash
+              end
+            end
+
             class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -4006,16 +4742,28 @@ module MetronomeSDK
               end
               attr_accessor :payment_type
 
-              # Only applicable if using Stripe as your payment gateway through Metronome.
+              # Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
+              # your payment type.
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :invoice_metadata
+
+              sig { params(invoice_metadata: T::Hash[Symbol, String]).void }
+              attr_writer :invoice_metadata
+
+              # Only applicable if using STRIPE as your payment gateway type.
               sig do
                 params(
                   payment_type:
-                    MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol
+                    MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol,
+                  invoice_metadata: T::Hash[Symbol, String]
                 ).returns(T.attached_class)
               end
               def self.new(
                 # If left blank, will default to INVOICE
-                payment_type:
+                payment_type:,
+                # Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
+                # your payment type.
+                invoice_metadata: nil
               )
               end
 
@@ -4023,7 +4771,8 @@ module MetronomeSDK
                 override.returns(
                   {
                     payment_type:
-                      MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol
+                      MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol,
+                    invoice_metadata: T::Hash[Symbol, String]
                   }
                 )
               end
@@ -4089,6 +4838,16 @@ module MetronomeSDK
               STRIPE =
                 T.let(
                   :STRIPE,
+                  MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
+                )
+              ANROK =
+                T.let(
+                  :ANROK,
+                  MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
+                )
+              PRECALCULATED =
+                T.let(
+                  :PRECALCULATED,
                   MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
                 )
 
@@ -4542,25 +5301,36 @@ module MetronomeSDK
             attr_accessor :credit_type_id
 
             sig { returns(Float) }
-            attr_accessor :quantity
-
-            sig { returns(Float) }
             attr_accessor :unit_price
+
+            # This field is currently required. Upcoming recurring commit/credit configuration
+            # options will allow it to be optional.
+            sig { returns(T.nilable(Float)) }
+            attr_reader :quantity
+
+            sig { params(quantity: Float).void }
+            attr_writer :quantity
 
             # The amount of commit to grant.
             sig do
               params(
                 credit_type_id: String,
-                quantity: Float,
-                unit_price: Float
+                unit_price: Float,
+                quantity: Float
               ).returns(T.attached_class)
             end
-            def self.new(credit_type_id:, quantity:, unit_price:)
+            def self.new(
+              credit_type_id:,
+              unit_price:,
+              # This field is currently required. Upcoming recurring commit/credit configuration
+              # options will allow it to be optional.
+              quantity: nil
+            )
             end
 
             sig do
               override.returns(
-                { credit_type_id: String, quantity: Float, unit_price: Float }
+                { credit_type_id: String, unit_price: Float, quantity: Float }
               )
             end
             def to_hash
@@ -5214,25 +5984,36 @@ module MetronomeSDK
             attr_accessor :credit_type_id
 
             sig { returns(Float) }
-            attr_accessor :quantity
-
-            sig { returns(Float) }
             attr_accessor :unit_price
+
+            # This field is currently required. Upcoming recurring commit/credit configuration
+            # options will allow it to be optional.
+            sig { returns(T.nilable(Float)) }
+            attr_reader :quantity
+
+            sig { params(quantity: Float).void }
+            attr_writer :quantity
 
             # The amount of commit to grant.
             sig do
               params(
                 credit_type_id: String,
-                quantity: Float,
-                unit_price: Float
+                unit_price: Float,
+                quantity: Float
               ).returns(T.attached_class)
             end
-            def self.new(credit_type_id:, quantity:, unit_price:)
+            def self.new(
+              credit_type_id:,
+              unit_price:,
+              # This field is currently required. Upcoming recurring commit/credit configuration
+              # options will allow it to be optional.
+              quantity: nil
+            )
             end
 
             sig do
               override.returns(
-                { credit_type_id: String, quantity: Float, unit_price: Float }
+                { credit_type_id: String, unit_price: Float, quantity: Float }
               )
             end
             def to_hash
@@ -6430,7 +7211,25 @@ module MetronomeSDK
             end
             attr_accessor :payment_gate_type
 
-            # Only applicable if using Stripe as your payment gateway through Metronome.
+            # Only applicable if using PRECALCULATED as your tax type.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig
+                )
+              )
+            end
+            attr_reader :precalculated_tax_config
+
+            sig do
+              params(
+                precalculated_tax_config:
+                  MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig::OrHash
+              ).void
+            end
+            attr_writer :precalculated_tax_config
+
+            # Only applicable if using STRIPE as your payment gateway type.
             sig do
               returns(
                 T.nilable(
@@ -6472,6 +7271,8 @@ module MetronomeSDK
               params(
                 payment_gate_type:
                   MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::PaymentGateType::OrSymbol,
+                precalculated_tax_config:
+                  MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig::OrHash,
                 stripe_config:
                   MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::OrHash,
                 tax_type:
@@ -6484,7 +7285,9 @@ module MetronomeSDK
               # facilitate payment using your own payment integration. Select NONE if you do not
               # wish to payment gate the commit balance.
               payment_gate_type:,
-              # Only applicable if using Stripe as your payment gateway through Metronome.
+              # Only applicable if using PRECALCULATED as your tax type.
+              precalculated_tax_config: nil,
+              # Only applicable if using STRIPE as your payment gateway type.
               stripe_config: nil,
               # Stripe tax is only supported for Stripe payment gateway. Select NONE if you do
               # not wish Metronome to calculate tax on your behalf. Leaving this field blank
@@ -6498,6 +7301,8 @@ module MetronomeSDK
                 {
                   payment_gate_type:
                     MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::PaymentGateType::OrSymbol,
+                  precalculated_tax_config:
+                    MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig,
                   stripe_config:
                     MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig,
                   tax_type:
@@ -6551,6 +7356,49 @@ module MetronomeSDK
               end
             end
 
+            class PrecalculatedTaxConfig < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              # Amount of tax to be applied. This should be in the same currency and
+              # denomination as the commit's invoice schedule
+              sig { returns(Float) }
+              attr_accessor :tax_amount
+
+              # Name of the tax to be applied. This may be used in an invoice line item
+              # description.
+              sig { returns(T.nilable(String)) }
+              attr_reader :tax_name
+
+              sig { params(tax_name: String).void }
+              attr_writer :tax_name
+
+              # Only applicable if using PRECALCULATED as your tax type.
+              sig do
+                params(tax_amount: Float, tax_name: String).returns(
+                  T.attached_class
+                )
+              end
+              def self.new(
+                # Amount of tax to be applied. This should be in the same currency and
+                # denomination as the commit's invoice schedule
+                tax_amount:,
+                # Name of the tax to be applied. This may be used in an invoice line item
+                # description.
+                tax_name: nil
+              )
+              end
+
+              sig { override.returns({ tax_amount: Float, tax_name: String }) }
+              def to_hash
+              end
+            end
+
             class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -6568,16 +7416,28 @@ module MetronomeSDK
               end
               attr_accessor :payment_type
 
-              # Only applicable if using Stripe as your payment gateway through Metronome.
+              # Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
+              # your payment type.
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :invoice_metadata
+
+              sig { params(invoice_metadata: T::Hash[Symbol, String]).void }
+              attr_writer :invoice_metadata
+
+              # Only applicable if using STRIPE as your payment gateway type.
               sig do
                 params(
                   payment_type:
-                    MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol
+                    MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol,
+                  invoice_metadata: T::Hash[Symbol, String]
                 ).returns(T.attached_class)
               end
               def self.new(
                 # If left blank, will default to INVOICE
-                payment_type:
+                payment_type:,
+                # Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
+                # your payment type.
+                invoice_metadata: nil
               )
               end
 
@@ -6585,7 +7445,8 @@ module MetronomeSDK
                 override.returns(
                   {
                     payment_type:
-                      MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol
+                      MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol,
+                    invoice_metadata: T::Hash[Symbol, String]
                   }
                 )
               end
@@ -6651,6 +7512,16 @@ module MetronomeSDK
               STRIPE =
                 T.let(
                   :STRIPE,
+                  MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
+                )
+              ANROK =
+                T.let(
+                  :ANROK,
+                  MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
+                )
+              PRECALCULATED =
+                T.let(
+                  :PRECALCULATED,
                   MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
                 )
 
@@ -7155,15 +8026,35 @@ module MetronomeSDK
           end
           attr_writer :access_schedule
 
-          # Which products the commit applies to. If both applicable_product_ids and
-          # applicable_product_tags are not provided, the commit applies to all products.
+          # Which products the commit applies to. If applicable_product_ids,
+          # applicable_product_tags or specifiers are not provided, the commit applies to
+          # all products.
           sig { returns(T.nilable(T::Array[String])) }
           attr_accessor :applicable_product_ids
 
-          # Which tags the commit applies to. If both applicable_product_ids and
-          # applicable_product_tags are not provided, the commit applies to all products.
+          # Which tags the commit applies to. If applicable_product_ids,
+          # applicable_product_tags or specifiers are not provided, the commit applies to
+          # all products.
           sig { returns(T.nilable(T::Array[String])) }
           attr_accessor :applicable_product_tags
+
+          # Optional configuration for commit hierarchy access control
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration
+              )
+            )
+          end
+          attr_reader :hierarchy_configuration
+
+          sig do
+            params(
+              hierarchy_configuration:
+                MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::OrHash
+            ).void
+          end
+          attr_writer :hierarchy_configuration
 
           sig do
             returns(
@@ -7201,6 +8092,8 @@ module MetronomeSDK
                 MetronomeSDK::V2::ContractEditParams::UpdateCommit::AccessSchedule::OrHash,
               applicable_product_ids: T.nilable(T::Array[String]),
               applicable_product_tags: T.nilable(T::Array[String]),
+              hierarchy_configuration:
+                MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::OrHash,
               invoice_schedule:
                 MetronomeSDK::V2::ContractEditParams::UpdateCommit::InvoiceSchedule::OrHash,
               netsuite_sales_order_id: T.nilable(String),
@@ -7211,12 +8104,16 @@ module MetronomeSDK
           def self.new(
             commit_id:,
             access_schedule: nil,
-            # Which products the commit applies to. If both applicable_product_ids and
-            # applicable_product_tags are not provided, the commit applies to all products.
+            # Which products the commit applies to. If applicable_product_ids,
+            # applicable_product_tags or specifiers are not provided, the commit applies to
+            # all products.
             applicable_product_ids: nil,
-            # Which tags the commit applies to. If both applicable_product_ids and
-            # applicable_product_tags are not provided, the commit applies to all products.
+            # Which tags the commit applies to. If applicable_product_ids,
+            # applicable_product_tags or specifiers are not provided, the commit applies to
+            # all products.
             applicable_product_tags: nil,
+            # Optional configuration for commit hierarchy access control
+            hierarchy_configuration: nil,
             invoice_schedule: nil,
             netsuite_sales_order_id: nil,
             product_id: nil,
@@ -7232,6 +8129,8 @@ module MetronomeSDK
                   MetronomeSDK::V2::ContractEditParams::UpdateCommit::AccessSchedule,
                 applicable_product_ids: T.nilable(T::Array[String]),
                 applicable_product_tags: T.nilable(T::Array[String]),
+                hierarchy_configuration:
+                  MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration,
                 invoice_schedule:
                   MetronomeSDK::V2::ContractEditParams::UpdateCommit::InvoiceSchedule,
                 netsuite_sales_order_id: T.nilable(String),
@@ -7474,6 +8373,282 @@ module MetronomeSDK
                 )
               end
               def to_hash
+              end
+            end
+          end
+
+          class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig do
+              returns(
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                  MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                  MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
+                )
+              )
+            end
+            attr_accessor :child_access
+
+            # Optional configuration for commit hierarchy access control
+            sig do
+              params(
+                child_access:
+                  T.any(
+                    MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::OrHash,
+                    MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::OrHash,
+                    MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::OrHash
+                  )
+              ).returns(T.attached_class)
+            end
+            def self.new(child_access:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  child_access:
+                    T.any(
+                      MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                      MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                      MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
+                    )
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module ChildAccess
+              extend MetronomeSDK::Internal::Type::Union
+
+              Variants =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                    MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                    MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
+                  )
+                end
+
+              class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig do
+                  returns(
+                    MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
+                  )
+                end
+                attr_accessor :type
+
+                sig do
+                  params(
+                    type:
+                      MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
+                  ).returns(T.attached_class)
+                end
+                def self.new(type:)
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      type:
+                        MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(
+                        Symbol,
+                        MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type
+                      )
+                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                  ALL =
+                    T.let(
+                      :ALL,
+                      MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
+                    )
+
+                  sig do
+                    override.returns(
+                      T::Array[
+                        MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
+                      ]
+                    )
+                  end
+                  def self.values
+                  end
+                end
+              end
+
+              class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig do
+                  returns(
+                    MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                  )
+                end
+                attr_accessor :type
+
+                sig do
+                  params(
+                    type:
+                      MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                  ).returns(T.attached_class)
+                end
+                def self.new(type:)
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      type:
+                        MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(
+                        Symbol,
+                        MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type
+                      )
+                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                  NONE =
+                    T.let(
+                      :NONE,
+                      MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
+                    )
+
+                  sig do
+                    override.returns(
+                      T::Array[
+                        MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
+                      ]
+                    )
+                  end
+                  def self.values
+                  end
+                end
+              end
+
+              class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(T::Array[String]) }
+                attr_accessor :contract_ids
+
+                sig do
+                  returns(
+                    MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
+                  )
+                end
+                attr_accessor :type
+
+                sig do
+                  params(
+                    contract_ids: T::Array[String],
+                    type:
+                      MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
+                  ).returns(T.attached_class)
+                end
+                def self.new(contract_ids:, type:)
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      contract_ids: T::Array[String],
+                      type:
+                        MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(
+                        Symbol,
+                        MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type
+                      )
+                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                  CONTRACT_IDS =
+                    T.let(
+                      :CONTRACT_IDS,
+                      MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
+                    )
+
+                  sig do
+                    override.returns(
+                      T::Array[
+                        MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
+                      ]
+                    )
+                  end
+                  def self.values
+                  end
+                end
+              end
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration::ChildAccess::Variants
+                  ]
+                )
+              end
+              def self.variants
               end
             end
           end
@@ -7775,15 +8950,35 @@ module MetronomeSDK
           end
           attr_writer :access_schedule
 
-          # Which products the commit applies to. If both applicable_product_ids and
-          # applicable_product_tags are not provided, the commit applies to all products.
+          # Which products the commit applies to. If applicable_product_ids,
+          # applicable_product_tags or specifiers are not provided, the commit applies to
+          # all products.
           sig { returns(T.nilable(T::Array[String])) }
           attr_accessor :applicable_product_ids
 
-          # Which tags the commit applies to. If both applicable_product_ids and
-          # applicable_product_tags are not provided, the commit applies to all products.
+          # Which tags the commit applies to. If applicable_product_ids,
+          # applicable_product_tags or specifiers are not provided, the commit applies to
+          # all products.
           sig { returns(T.nilable(T::Array[String])) }
           attr_accessor :applicable_product_tags
+
+          # Optional configuration for commit hierarchy access control
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration
+              )
+            )
+          end
+          attr_reader :hierarchy_configuration
+
+          sig do
+            params(
+              hierarchy_configuration:
+                MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::OrHash
+            ).void
+          end
+          attr_writer :hierarchy_configuration
 
           sig { returns(T.nilable(String)) }
           attr_accessor :netsuite_sales_order_id
@@ -7801,6 +8996,8 @@ module MetronomeSDK
                 MetronomeSDK::V2::ContractEditParams::UpdateCredit::AccessSchedule::OrHash,
               applicable_product_ids: T.nilable(T::Array[String]),
               applicable_product_tags: T.nilable(T::Array[String]),
+              hierarchy_configuration:
+                MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::OrHash,
               netsuite_sales_order_id: T.nilable(String),
               product_id: String
             ).returns(T.attached_class)
@@ -7808,12 +9005,16 @@ module MetronomeSDK
           def self.new(
             credit_id:,
             access_schedule: nil,
-            # Which products the commit applies to. If both applicable_product_ids and
-            # applicable_product_tags are not provided, the commit applies to all products.
+            # Which products the commit applies to. If applicable_product_ids,
+            # applicable_product_tags or specifiers are not provided, the commit applies to
+            # all products.
             applicable_product_ids: nil,
-            # Which tags the commit applies to. If both applicable_product_ids and
-            # applicable_product_tags are not provided, the commit applies to all products.
+            # Which tags the commit applies to. If applicable_product_ids,
+            # applicable_product_tags or specifiers are not provided, the commit applies to
+            # all products.
             applicable_product_tags: nil,
+            # Optional configuration for commit hierarchy access control
+            hierarchy_configuration: nil,
             netsuite_sales_order_id: nil,
             product_id: nil
           )
@@ -7827,6 +9028,8 @@ module MetronomeSDK
                   MetronomeSDK::V2::ContractEditParams::UpdateCredit::AccessSchedule,
                 applicable_product_ids: T.nilable(T::Array[String]),
                 applicable_product_tags: T.nilable(T::Array[String]),
+                hierarchy_configuration:
+                  MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration,
                 netsuite_sales_order_id: T.nilable(String),
                 product_id: String
               }
@@ -8069,6 +9272,282 @@ module MetronomeSDK
               end
             end
           end
+
+          class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig do
+              returns(
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                  MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                  MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
+                )
+              )
+            end
+            attr_accessor :child_access
+
+            # Optional configuration for commit hierarchy access control
+            sig do
+              params(
+                child_access:
+                  T.any(
+                    MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::OrHash,
+                    MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::OrHash,
+                    MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::OrHash
+                  )
+              ).returns(T.attached_class)
+            end
+            def self.new(child_access:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  child_access:
+                    T.any(
+                      MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                      MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                      MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
+                    )
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module ChildAccess
+              extend MetronomeSDK::Internal::Type::Union
+
+              Variants =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                    MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                    MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
+                  )
+                end
+
+              class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig do
+                  returns(
+                    MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
+                  )
+                end
+                attr_accessor :type
+
+                sig do
+                  params(
+                    type:
+                      MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
+                  ).returns(T.attached_class)
+                end
+                def self.new(type:)
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      type:
+                        MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(
+                        Symbol,
+                        MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type
+                      )
+                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                  ALL =
+                    T.let(
+                      :ALL,
+                      MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
+                    )
+
+                  sig do
+                    override.returns(
+                      T::Array[
+                        MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
+                      ]
+                    )
+                  end
+                  def self.values
+                  end
+                end
+              end
+
+              class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig do
+                  returns(
+                    MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                  )
+                end
+                attr_accessor :type
+
+                sig do
+                  params(
+                    type:
+                      MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                  ).returns(T.attached_class)
+                end
+                def self.new(type:)
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      type:
+                        MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(
+                        Symbol,
+                        MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type
+                      )
+                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                  NONE =
+                    T.let(
+                      :NONE,
+                      MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
+                    )
+
+                  sig do
+                    override.returns(
+                      T::Array[
+                        MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
+                      ]
+                    )
+                  end
+                  def self.values
+                  end
+                end
+              end
+
+              class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(T::Array[String]) }
+                attr_accessor :contract_ids
+
+                sig do
+                  returns(
+                    MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
+                  )
+                end
+                attr_accessor :type
+
+                sig do
+                  params(
+                    contract_ids: T::Array[String],
+                    type:
+                      MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
+                  ).returns(T.attached_class)
+                end
+                def self.new(contract_ids:, type:)
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      contract_ids: T::Array[String],
+                      type:
+                        MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(
+                        Symbol,
+                        MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type
+                      )
+                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                  CONTRACT_IDS =
+                    T.let(
+                      :CONTRACT_IDS,
+                      MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
+                    )
+
+                  sig do
+                    override.returns(
+                      T::Array[
+                        MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
+                      ]
+                    )
+                  end
+                  def self.values
+                  end
+                end
+              end
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::ChildAccess::Variants
+                  ]
+                )
+              end
+              def self.variants
+              end
+            end
+          end
         end
 
         class UpdatePrepaidBalanceThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
@@ -8096,6 +9575,11 @@ module MetronomeSDK
             ).void
           end
           attr_writer :commit
+
+          # If provided, the threshold, recharge-to amount, and the resulting threshold
+          # commit amount will be in terms of this credit type instead of the fiat currency.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :custom_credit_type_id
 
           # When set to false, the contract will not be evaluated against the
           # threshold_amount. Toggling to true will result an immediate evaluation,
@@ -8142,6 +9626,7 @@ module MetronomeSDK
             params(
               commit:
                 MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::OrHash,
+              custom_credit_type_id: T.nilable(String),
               is_enabled: T::Boolean,
               payment_gate_config:
                 MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::OrHash,
@@ -8151,6 +9636,9 @@ module MetronomeSDK
           end
           def self.new(
             commit: nil,
+            # If provided, the threshold, recharge-to amount, and the resulting threshold
+            # commit amount will be in terms of this credit type instead of the fiat currency.
+            custom_credit_type_id: nil,
             # When set to false, the contract will not be evaluated against the
             # threshold_amount. Toggling to true will result an immediate evaluation,
             # regardless of prior state.
@@ -8169,6 +9657,7 @@ module MetronomeSDK
               {
                 commit:
                   MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit,
+                custom_credit_type_id: T.nilable(String),
                 is_enabled: T::Boolean,
                 payment_gate_config:
                   MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig,
@@ -8193,18 +9682,12 @@ module MetronomeSDK
             # and applicable_product_tags are not provided, the commit applies to all
             # products.
             sig { returns(T.nilable(T::Array[String])) }
-            attr_reader :applicable_product_ids
-
-            sig { params(applicable_product_ids: T::Array[String]).void }
-            attr_writer :applicable_product_ids
+            attr_accessor :applicable_product_ids
 
             # Which tags the threshold commit applies to. If both applicable_product_ids and
             # applicable_product_tags are not provided, the commit applies to all products.
             sig { returns(T.nilable(T::Array[String])) }
-            attr_reader :applicable_product_tags
-
-            sig { params(applicable_product_tags: T::Array[String]).void }
-            attr_writer :applicable_product_tags
+            attr_accessor :applicable_product_tags
 
             sig { returns(T.nilable(String)) }
             attr_reader :description
@@ -8241,29 +9724,21 @@ module MetronomeSDK
                 )
               )
             end
-            attr_reader :specifiers
+            attr_accessor :specifiers
 
             sig do
               params(
-                specifiers:
-                  T::Array[
-                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier::OrHash
-                  ]
-              ).void
-            end
-            attr_writer :specifiers
-
-            sig do
-              params(
-                applicable_product_ids: T::Array[String],
-                applicable_product_tags: T::Array[String],
+                applicable_product_ids: T.nilable(T::Array[String]),
+                applicable_product_tags: T.nilable(T::Array[String]),
                 description: String,
                 name: String,
                 product_id: String,
                 specifiers:
-                  T::Array[
-                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier::OrHash
-                  ]
+                  T.nilable(
+                    T::Array[
+                      MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier::OrHash
+                    ]
+                  )
               ).returns(T.attached_class)
             end
             def self.new(
@@ -8292,15 +9767,17 @@ module MetronomeSDK
             sig do
               override.returns(
                 {
-                  applicable_product_ids: T::Array[String],
-                  applicable_product_tags: T::Array[String],
+                  applicable_product_ids: T.nilable(T::Array[String]),
+                  applicable_product_tags: T.nilable(T::Array[String]),
                   description: String,
                   name: String,
                   product_id: String,
                   specifiers:
-                    T::Array[
-                      MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier
-                    ]
+                    T.nilable(
+                      T::Array[
+                        MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier
+                      ]
+                    )
                 }
               )
             end
@@ -8399,7 +9876,25 @@ module MetronomeSDK
             end
             attr_accessor :payment_gate_type
 
-            # Only applicable if using Stripe as your payment gateway through Metronome.
+            # Only applicable if using PRECALCULATED as your tax type.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig
+                )
+              )
+            end
+            attr_reader :precalculated_tax_config
+
+            sig do
+              params(
+                precalculated_tax_config:
+                  MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig::OrHash
+              ).void
+            end
+            attr_writer :precalculated_tax_config
+
+            # Only applicable if using STRIPE as your payment gateway type.
             sig do
               returns(
                 T.nilable(
@@ -8441,6 +9936,8 @@ module MetronomeSDK
               params(
                 payment_gate_type:
                   MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType::OrSymbol,
+                precalculated_tax_config:
+                  MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig::OrHash,
                 stripe_config:
                   MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::OrHash,
                 tax_type:
@@ -8453,7 +9950,9 @@ module MetronomeSDK
               # facilitate payment using your own payment integration. Select NONE if you do not
               # wish to payment gate the commit balance.
               payment_gate_type:,
-              # Only applicable if using Stripe as your payment gateway through Metronome.
+              # Only applicable if using PRECALCULATED as your tax type.
+              precalculated_tax_config: nil,
+              # Only applicable if using STRIPE as your payment gateway type.
               stripe_config: nil,
               # Stripe tax is only supported for Stripe payment gateway. Select NONE if you do
               # not wish Metronome to calculate tax on your behalf. Leaving this field blank
@@ -8467,6 +9966,8 @@ module MetronomeSDK
                 {
                   payment_gate_type:
                     MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::PaymentGateType::OrSymbol,
+                  precalculated_tax_config:
+                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig,
                   stripe_config:
                     MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig,
                   tax_type:
@@ -8520,6 +10021,49 @@ module MetronomeSDK
               end
             end
 
+            class PrecalculatedTaxConfig < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              # Amount of tax to be applied. This should be in the same currency and
+              # denomination as the commit's invoice schedule
+              sig { returns(Float) }
+              attr_accessor :tax_amount
+
+              # Name of the tax to be applied. This may be used in an invoice line item
+              # description.
+              sig { returns(T.nilable(String)) }
+              attr_reader :tax_name
+
+              sig { params(tax_name: String).void }
+              attr_writer :tax_name
+
+              # Only applicable if using PRECALCULATED as your tax type.
+              sig do
+                params(tax_amount: Float, tax_name: String).returns(
+                  T.attached_class
+                )
+              end
+              def self.new(
+                # Amount of tax to be applied. This should be in the same currency and
+                # denomination as the commit's invoice schedule
+                tax_amount:,
+                # Name of the tax to be applied. This may be used in an invoice line item
+                # description.
+                tax_name: nil
+              )
+              end
+
+              sig { override.returns({ tax_amount: Float, tax_name: String }) }
+              def to_hash
+              end
+            end
+
             class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -8537,16 +10081,28 @@ module MetronomeSDK
               end
               attr_accessor :payment_type
 
-              # Only applicable if using Stripe as your payment gateway through Metronome.
+              # Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
+              # your payment type.
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :invoice_metadata
+
+              sig { params(invoice_metadata: T::Hash[Symbol, String]).void }
+              attr_writer :invoice_metadata
+
+              # Only applicable if using STRIPE as your payment gateway type.
               sig do
                 params(
                   payment_type:
-                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol
+                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol,
+                  invoice_metadata: T::Hash[Symbol, String]
                 ).returns(T.attached_class)
               end
               def self.new(
                 # If left blank, will default to INVOICE
-                payment_type:
+                payment_type:,
+                # Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
+                # your payment type.
+                invoice_metadata: nil
               )
               end
 
@@ -8554,7 +10110,8 @@ module MetronomeSDK
                 override.returns(
                   {
                     payment_type:
-                      MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol
+                      MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol,
+                    invoice_metadata: T::Hash[Symbol, String]
                   }
                 )
               end
@@ -8620,6 +10177,16 @@ module MetronomeSDK
               STRIPE =
                 T.let(
                   :STRIPE,
+                  MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
+                )
+              ANROK =
+                T.let(
+                  :ANROK,
+                  MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
+                )
+              PRECALCULATED =
+                T.let(
+                  :PRECALCULATED,
                   MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
                 )
 
@@ -9386,7 +10953,25 @@ module MetronomeSDK
             end
             attr_accessor :payment_gate_type
 
-            # Only applicable if using Stripe as your payment gateway through Metronome.
+            # Only applicable if using PRECALCULATED as your tax type.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig
+                )
+              )
+            end
+            attr_reader :precalculated_tax_config
+
+            sig do
+              params(
+                precalculated_tax_config:
+                  MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig::OrHash
+              ).void
+            end
+            attr_writer :precalculated_tax_config
+
+            # Only applicable if using STRIPE as your payment gateway type.
             sig do
               returns(
                 T.nilable(
@@ -9428,6 +11013,8 @@ module MetronomeSDK
               params(
                 payment_gate_type:
                   MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::PaymentGateType::OrSymbol,
+                precalculated_tax_config:
+                  MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig::OrHash,
                 stripe_config:
                   MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::OrHash,
                 tax_type:
@@ -9440,7 +11027,9 @@ module MetronomeSDK
               # facilitate payment using your own payment integration. Select NONE if you do not
               # wish to payment gate the commit balance.
               payment_gate_type:,
-              # Only applicable if using Stripe as your payment gateway through Metronome.
+              # Only applicable if using PRECALCULATED as your tax type.
+              precalculated_tax_config: nil,
+              # Only applicable if using STRIPE as your payment gateway type.
               stripe_config: nil,
               # Stripe tax is only supported for Stripe payment gateway. Select NONE if you do
               # not wish Metronome to calculate tax on your behalf. Leaving this field blank
@@ -9454,6 +11043,8 @@ module MetronomeSDK
                 {
                   payment_gate_type:
                     MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::PaymentGateType::OrSymbol,
+                  precalculated_tax_config:
+                    MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig,
                   stripe_config:
                     MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig,
                   tax_type:
@@ -9507,6 +11098,49 @@ module MetronomeSDK
               end
             end
 
+            class PrecalculatedTaxConfig < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::PrecalculatedTaxConfig,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              # Amount of tax to be applied. This should be in the same currency and
+              # denomination as the commit's invoice schedule
+              sig { returns(Float) }
+              attr_accessor :tax_amount
+
+              # Name of the tax to be applied. This may be used in an invoice line item
+              # description.
+              sig { returns(T.nilable(String)) }
+              attr_reader :tax_name
+
+              sig { params(tax_name: String).void }
+              attr_writer :tax_name
+
+              # Only applicable if using PRECALCULATED as your tax type.
+              sig do
+                params(tax_amount: Float, tax_name: String).returns(
+                  T.attached_class
+                )
+              end
+              def self.new(
+                # Amount of tax to be applied. This should be in the same currency and
+                # denomination as the commit's invoice schedule
+                tax_amount:,
+                # Name of the tax to be applied. This may be used in an invoice line item
+                # description.
+                tax_name: nil
+              )
+              end
+
+              sig { override.returns({ tax_amount: Float, tax_name: String }) }
+              def to_hash
+              end
+            end
+
             class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -9524,16 +11158,28 @@ module MetronomeSDK
               end
               attr_accessor :payment_type
 
-              # Only applicable if using Stripe as your payment gateway through Metronome.
+              # Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
+              # your payment type.
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :invoice_metadata
+
+              sig { params(invoice_metadata: T::Hash[Symbol, String]).void }
+              attr_writer :invoice_metadata
+
+              # Only applicable if using STRIPE as your payment gateway type.
               sig do
                 params(
                   payment_type:
-                    MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol
+                    MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol,
+                  invoice_metadata: T::Hash[Symbol, String]
                 ).returns(T.attached_class)
               end
               def self.new(
                 # If left blank, will default to INVOICE
-                payment_type:
+                payment_type:,
+                # Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
+                # your payment type.
+                invoice_metadata: nil
               )
               end
 
@@ -9541,7 +11187,8 @@ module MetronomeSDK
                 override.returns(
                   {
                     payment_type:
-                      MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol
+                      MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol,
+                    invoice_metadata: T::Hash[Symbol, String]
                   }
                 )
               end
@@ -9607,6 +11254,16 @@ module MetronomeSDK
               STRIPE =
                 T.let(
                   :STRIPE,
+                  MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
+                )
+              ANROK =
+                T.let(
+                  :ANROK,
+                  MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
+                )
+              PRECALCULATED =
+                T.let(
+                  :PRECALCULATED,
                   MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::PaymentGateConfig::TaxType::TaggedSymbol
                 )
 

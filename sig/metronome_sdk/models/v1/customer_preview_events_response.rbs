@@ -1,0 +1,16 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type customer_preview_events_response =
+        { data: MetronomeSDK::V1::Customers::Invoice }
+
+      class CustomerPreviewEventsResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor data: MetronomeSDK::V1::Customers::Invoice
+
+        def initialize: (data: MetronomeSDK::V1::Customers::Invoice) -> void
+
+        def to_hash: -> { data: MetronomeSDK::V1::Customers::Invoice }
+      end
+    end
+  end
+end

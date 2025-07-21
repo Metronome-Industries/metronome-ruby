@@ -4,6 +4,7 @@ module MetronomeSDK
       type credit_grant_list_entries_params =
         {
           next_page: String,
+          sort: MetronomeSDK::Models::V1::CreditGrantListEntriesParams::sort,
           credit_type_ids: ::Array[String],
           customer_ids: ::Array[String],
           ending_before: Time,
@@ -18,6 +19,12 @@ module MetronomeSDK
         attr_reader next_page: String?
 
         def next_page=: (String) -> String
+
+        attr_reader sort: MetronomeSDK::Models::V1::CreditGrantListEntriesParams::sort?
+
+        def sort=: (
+          MetronomeSDK::Models::V1::CreditGrantListEntriesParams::sort
+        ) -> MetronomeSDK::Models::V1::CreditGrantListEntriesParams::sort
 
         attr_reader credit_type_ids: ::Array[String]?
 
@@ -37,6 +44,7 @@ module MetronomeSDK
 
         def initialize: (
           ?next_page: String,
+          ?sort: MetronomeSDK::Models::V1::CreditGrantListEntriesParams::sort,
           ?credit_type_ids: ::Array[String],
           ?customer_ids: ::Array[String],
           ?ending_before: Time,
@@ -46,12 +54,24 @@ module MetronomeSDK
 
         def to_hash: -> {
           next_page: String,
+          sort: MetronomeSDK::Models::V1::CreditGrantListEntriesParams::sort,
           credit_type_ids: ::Array[String],
           customer_ids: ::Array[String],
           ending_before: Time,
           starting_on: Time,
           request_options: MetronomeSDK::RequestOptions
         }
+
+        type sort = :asc | :desc
+
+        module Sort
+          extend MetronomeSDK::Internal::Type::Enum
+
+          ASC: :asc
+          DESC: :desc
+
+          def self?.values: -> ::Array[MetronomeSDK::Models::V1::CreditGrantListEntriesParams::sort]
+        end
       end
     end
   end

@@ -32,8 +32,8 @@ module MetronomeSDK
         )
         end
 
-        # List all contracts for a customer. New clients should use this endpoint rather
-        # than the v1 endpoint.
+        # List all contracts for a customer in chronological order. New clients should use
+        # this endpoint rather than the v1 endpoint.
         sig do
           params(
             customer_id: String,
@@ -132,6 +132,7 @@ module MetronomeSDK
                 MetronomeSDK::V2::ContractEditParams::UpdateCommit::OrHash
               ],
             update_contract_end_date: T.nilable(Time),
+            update_contract_name: T.nilable(String),
             update_credits:
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::UpdateCredit::OrHash
@@ -176,7 +177,7 @@ module MetronomeSDK
           add_reseller_royalties: nil,
           add_scheduled_charges: nil,
           add_spend_threshold_configuration: nil,
-          # (beta) Optional list of
+          # Optional list of
           # [subscriptions](https://docs.metronome.com/manage-product-access/create-subscription/)
           # to add to the contract.
           add_subscriptions: nil,
@@ -196,6 +197,9 @@ module MetronomeSDK
           update_commits: nil,
           # RFC 3339 timestamp indicating when the contract will end (exclusive).
           update_contract_end_date: nil,
+          # Value to update the contract name to. If not provided, the contract name will
+          # remain unchanged.
+          update_contract_name: nil,
           update_credits: nil,
           update_prepaid_balance_threshold_configuration: nil,
           # Edits to these recurring commits will only affect commits whose access schedules
@@ -208,7 +212,7 @@ module MetronomeSDK
           update_recurring_credits: nil,
           update_scheduled_charges: nil,
           update_spend_threshold_configuration: nil,
-          # (beta) Optional list of subscriptions to update.
+          # Optional list of subscriptions to update.
           update_subscriptions: nil,
           request_options: {}
         )
@@ -229,9 +233,11 @@ module MetronomeSDK
               MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::OrHash,
             product_id: String,
             specifiers:
-              T::Array[
-                MetronomeSDK::V2::ContractEditCommitParams::Specifier::OrHash
-              ],
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::V2::ContractEditCommitParams::Specifier::OrHash
+                ]
+              ),
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(MetronomeSDK::Models::V2::ContractEditCommitResponse)
         end
@@ -241,11 +247,13 @@ module MetronomeSDK
           # ID of the customer whose commit is being edited
           customer_id:,
           access_schedule: nil,
-          # Which products the commit applies to. If both applicable_product_ids and
-          # applicable_product_tags are not provided, the commit applies to all products.
+          # Which products the commit applies to. If applicable_product_ids,
+          # applicable_product_tags or specifiers are not provided, the commit applies to
+          # all products.
           applicable_product_ids: nil,
-          # Which tags the commit applies to. If both applicable_product_ids and
-          # applicable_product_tags are not provided, the commit applies to all products.
+          # Which tags the commit applies to. If applicable_product_ids,
+          # applicable_product_tags or specifiers are not provided, the commit applies to
+          # all products.
           applicable_product_tags: nil,
           # ID of contract to use for invoicing
           invoice_contract_id: nil,
@@ -272,9 +280,11 @@ module MetronomeSDK
             applicable_product_tags: T.nilable(T::Array[String]),
             product_id: String,
             specifiers:
-              T::Array[
-                MetronomeSDK::V2::ContractEditCreditParams::Specifier::OrHash
-              ],
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::V2::ContractEditCreditParams::Specifier::OrHash
+                ]
+              ),
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(MetronomeSDK::Models::V2::ContractEditCreditResponse)
         end

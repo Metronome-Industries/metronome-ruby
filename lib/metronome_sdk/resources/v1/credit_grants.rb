@@ -130,9 +130,11 @@ module MetronomeSDK
         # Ledger entries are returned in chronological order. Ledger entries associated
         # with voided credit grants are not included.
         #
-        # @overload list_entries(next_page: nil, credit_type_ids: nil, customer_ids: nil, ending_before: nil, starting_on: nil, request_options: {})
+        # @overload list_entries(next_page: nil, sort: nil, credit_type_ids: nil, customer_ids: nil, ending_before: nil, starting_on: nil, request_options: {})
         #
         # @param next_page [String] Query param: Cursor that indicates where the next page of results should start.
+        #
+        # @param sort [Symbol, MetronomeSDK::Models::V1::CreditGrantListEntriesParams::Sort] Query param: Ledgers sort order by date, asc or desc. Defaults to asc.
         #
         # @param credit_type_ids [Array<String>] Body param: A list of Metronome credit type IDs to fetch ledger entries for. If
         #
@@ -150,7 +152,7 @@ module MetronomeSDK
         # @see MetronomeSDK::Models::V1::CreditGrantListEntriesParams
         def list_entries(params = {})
           parsed, options = MetronomeSDK::V1::CreditGrantListEntriesParams.dump_request(params)
-          query_params = [:next_page]
+          query_params = [:next_page, :sort]
           @client.request(
             method: :post,
             path: "v1/credits/listEntries",

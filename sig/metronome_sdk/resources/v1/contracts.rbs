@@ -17,12 +17,14 @@ module MetronomeSDK
           ?custom_fields: ::Hash[Symbol, String],
           ?discounts: ::Array[MetronomeSDK::V1::ContractCreateParams::Discount],
           ?ending_before: Time,
+          ?hierarchy_configuration: MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration,
           ?multiplier_override_prioritization: MetronomeSDK::Models::V1::ContractCreateParams::multiplier_override_prioritization,
           ?name: String,
           ?net_payment_terms_days: Float,
           ?netsuite_sales_order_id: String,
           ?overrides: ::Array[MetronomeSDK::V1::ContractCreateParams::Override],
           ?prepaid_balance_threshold_configuration: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration,
+          ?priority: Float,
           ?professional_services: ::Array[MetronomeSDK::V1::ContractCreateParams::ProfessionalService],
           ?rate_card_alias: String,
           ?rate_card_id: String,
@@ -37,7 +39,7 @@ module MetronomeSDK
           ?total_contract_value: Float,
           ?transition: MetronomeSDK::V1::ContractCreateParams::Transition,
           ?uniqueness_key: String,
-          ?usage_filter: MetronomeSDK::V1::ContractCreateParams::UsageFilter,
+          ?usage_filter: MetronomeSDK::BaseUsageFilter,
           ?usage_statement_schedule: MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule,
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V1::ContractCreateResponse

@@ -41,8 +41,8 @@ module MetronomeSDK
         # Some parameter documentations has been truncated, see
         # {MetronomeSDK::Models::V2::ContractListParams} for more details.
         #
-        # List all contracts for a customer. New clients should use this endpoint rather
-        # than the v1 endpoint.
+        # List all contracts for a customer in chronological order. New clients should use
+        # this endpoint rather than the v1 endpoint.
         #
         # @overload list(customer_id:, covering_date: nil, include_archived: nil, include_balance: nil, include_ledgers: nil, starting_at: nil, request_options: {})
         #
@@ -79,7 +79,7 @@ module MetronomeSDK
         #
         # Edit a contract. Contract editing must be enabled to use this endpoint.
         #
-        # @overload edit(contract_id:, customer_id:, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_prepaid_balance_threshold_configuration: nil, add_professional_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_spend_threshold_configuration: nil, add_subscriptions: nil, allow_contract_ending_before_finalized_invoice: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, update_commits: nil, update_contract_end_date: nil, update_credits: nil, update_prepaid_balance_threshold_configuration: nil, update_recurring_commits: nil, update_recurring_credits: nil, update_scheduled_charges: nil, update_spend_threshold_configuration: nil, update_subscriptions: nil, request_options: {})
+        # @overload edit(contract_id:, customer_id:, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_prepaid_balance_threshold_configuration: nil, add_professional_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_spend_threshold_configuration: nil, add_subscriptions: nil, allow_contract_ending_before_finalized_invoice: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, update_commits: nil, update_contract_end_date: nil, update_contract_name: nil, update_credits: nil, update_prepaid_balance_threshold_configuration: nil, update_recurring_commits: nil, update_recurring_credits: nil, update_scheduled_charges: nil, update_spend_threshold_configuration: nil, update_subscriptions: nil, request_options: {})
         #
         # @param contract_id [String] ID of the contract being edited
         #
@@ -107,7 +107,7 @@ module MetronomeSDK
         #
         # @param add_spend_threshold_configuration [MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration]
         #
-        # @param add_subscriptions [Array<MetronomeSDK::Models::V2::ContractEditParams::AddSubscription>] (beta) Optional list of [subscriptions](https://docs.metronome.com/manage-produc
+        # @param add_subscriptions [Array<MetronomeSDK::Models::V2::ContractEditParams::AddSubscription>] Optional list of [subscriptions](https://docs.metronome.com/manage-product-acces
         #
         # @param allow_contract_ending_before_finalized_invoice [Boolean] If true, allows setting the contract end date earlier than the end_timestamp of
         #
@@ -123,6 +123,8 @@ module MetronomeSDK
         #
         # @param update_contract_end_date [Time, nil] RFC 3339 timestamp indicating when the contract will end (exclusive).
         #
+        # @param update_contract_name [String, nil] Value to update the contract name to. If not provided, the contract name will re
+        #
         # @param update_credits [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit>]
         #
         # @param update_prepaid_balance_threshold_configuration [MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration]
@@ -135,7 +137,7 @@ module MetronomeSDK
         #
         # @param update_spend_threshold_configuration [MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration]
         #
-        # @param update_subscriptions [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription>] (beta) Optional list of subscriptions to update.
+        # @param update_subscriptions [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription>] Optional list of subscriptions to update.
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -167,9 +169,9 @@ module MetronomeSDK
         #
         # @param access_schedule [MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule]
         #
-        # @param applicable_product_ids [Array<String>, nil] Which products the commit applies to. If both applicable_product_ids and applica
+        # @param applicable_product_ids [Array<String>, nil] Which products the commit applies to. If applicable_product_ids, applicable_prod
         #
-        # @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If both applicable*product_ids and applicable*
+        # @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If applicable*product_ids, applicable_product*
         #
         # @param invoice_contract_id [String] ID of contract to use for invoicing
         #
@@ -177,7 +179,7 @@ module MetronomeSDK
         #
         # @param product_id [String]
         #
-        # @param specifiers [Array<MetronomeSDK::Models::V2::ContractEditCommitParams::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
+        # @param specifiers [Array<MetronomeSDK::Models::V2::ContractEditCommitParams::Specifier>, nil] List of filters that determine what kind of customer usage draws down a commit o
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -215,7 +217,7 @@ module MetronomeSDK
         #
         # @param product_id [String]
         #
-        # @param specifiers [Array<MetronomeSDK::Models::V2::ContractEditCreditParams::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
+        # @param specifiers [Array<MetronomeSDK::Models::V2::ContractEditCreditParams::Specifier>, nil] List of filters that determine what kind of customer usage draws down a commit o
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #

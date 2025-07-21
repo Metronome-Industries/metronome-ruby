@@ -1,5 +1,45 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2025-07-18)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/Metronome-Industries/metronome-ruby/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Features
+
+* **api:** Add Event Search API for finding events to match to customers and billable metrics ([26a0a0d](https://github.com/Metronome-Industries/metronome-ruby/commit/26a0a0d293496c532c635a9936dd2ba7c3f14683))
+* **api:** add previewEvents API for generating draft invoices with provided events ([e2e5795](https://github.com/Metronome-Industries/metronome-ruby/commit/e2e579573a289ce749608a9c08a97b074ead387d))
+* **api:** update v2 contracts list documentation to specify chronological order ([b322bbc](https://github.com/Metronome-Industries/metronome-ruby/commit/b322bbc373ac7b90fe771fa6a2a2bef1fdc504ff))
+* **api:** add support for Anrok and Precalculated tax types in payment gateway configuration ([ee0d2af](https://github.com/Metronome-Industries/metronome-ruby/commit/ee0d2af6cc3cb1fb2bbc321f619ccd941db06c44))
+* **api:** add hierarchy configuration to v1 contracts ([f076da2](https://github.com/Metronome-Industries/metronome-ruby/commit/f076da2387c85f5e4f94c2b9a5f0ab279a778c92))
+* **api:** improve Event Search API documentation and rate limiting details ([e8618a3](https://github.com/Metronome-Industries/metronome-ruby/commit/e8618a3b86ec4d9e19df9dd24f5381288071313e))
+* **api:** improve previewEvents API documentation and make custom_credit_type_id nullable ([12c5814](https://github.com/Metronome-Industries/metronome-ruby/commit/12c5814b48b6bf441c5b6b8a22adb683c185c007))
+* **api:** add custom credit type support to prepaid balance thresholds ([1b75766](https://github.com/Metronome-Industries/metronome-ruby/commit/1b75766b321ca146dd911c56c47bf286f928f550))
+* **api:** add Event Search API ([8065b4c](https://github.com/Metronome-Industries/metronome-ruby/commit/8065b4c8053818b19a40faf3dc99e17396d1f546))
+* **api:** remove Event Search API and add contract priority field ([ae63c04](https://github.com/Metronome-Industries/metronome-ruby/commit/ae63c045c280949ba69c636c9ed25ea5942822ad))
+* **api:** add shared type aliases for commit/credit types ([2f8a188](https://github.com/Metronome-Industries/metronome-ruby/commit/2f8a18824b0f5b6455dce126799de441be282a78))
+* **api:** remove shared type aliases for commit/credit types ([e86a139](https://github.com/Metronome-Industries/metronome-ruby/commit/e86a139fca3e4b1919d8de7e1fb5841eb4835e3b))
+* **api:** add contract hierarchy configuration to shared types ([4a31b46](https://github.com/Metronome-Industries/metronome-ruby/commit/4a31b4636526937656b65c265e74119c1944fb82))
+* **api:** change recurring commit/credit access amount quantity field from required to optional ([2403df6](https://github.com/Metronome-Industries/metronome-ruby/commit/2403df68d460ddbdac8d0e5ef51c64b9d95a3029))
+* **api:** add sort parameter to credit grant list entries API ([a56f5cb](https://github.com/Metronome-Industries/metronome-ruby/commit/a56f5cb1a04d956a282e21e520e25855b45807a6))
+* **client:** add debug log helper ([fbc9042](https://github.com/Metronome-Industries/metronome-ruby/commit/fbc904277c1a3e96f3a0a03f3b2f65863802be2d))
+
+
+### Bug Fixes
+
+* `to_sorbet_type` should not return branded types ([9fda15f](https://github.com/Metronome-Industries/metronome-ruby/commit/9fda15fbb91924034acacadd4e4b88ba49bb9e61))
+* **ci:** release-doctor — report correct token name ([ea3a4df](https://github.com/Metronome-Industries/metronome-ruby/commit/ea3a4dfc3c361601f10d7bf0bf9e8472404a413b))
+* default content-type for text in multi-part formdata uploads should be text/plain ([c566bfd](https://github.com/Metronome-Industries/metronome-ruby/commit/c566bfd18faba7624ccf41b9275ecfa2610c40ed))
+* issue where we cannot mutate arrays on base model derivatives ([8020ba8](https://github.com/Metronome-Industries/metronome-ruby/commit/8020ba8df6fbdb8362dd00223ad360a93acc0666))
+
+
+### Chores
+
+* **ci:** enable for pull requests ([0dbe09f](https://github.com/Metronome-Industries/metronome-ruby/commit/0dbe09f41e8b56a873bcf1151ab5dff3a39a2d30))
+* **ci:** link to correct github repo ([ca6bdf8](https://github.com/Metronome-Industries/metronome-ruby/commit/ca6bdf8a4edfe037c672b8e1fc4a800656391a49))
+* **ci:** only run for pushes and fork pull requests ([e21f43c](https://github.com/Metronome-Industries/metronome-ruby/commit/e21f43ca4d03f0246693dc04393c2f82391d617a))
+* **internal:** allow streams to also be unwrapped on a per-row basis ([b40d49a](https://github.com/Metronome-Industries/metronome-ruby/commit/b40d49a3e3915cc4bb47ebdcebac5e139ad7f07b))
+* **internal:** version bump ([c50a620](https://github.com/Metronome-Industries/metronome-ruby/commit/c50a620ff8154b422aeb80e827986f28eded7da5))
+
 ## 0.1.0-alpha.3 (2025-05-30)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/Metronome-Industries/metronome-ruby/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)

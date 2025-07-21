@@ -105,7 +105,7 @@ module MetronomeSDK
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [MetronomeSDK::Internal::CursorPage<MetronomeSDK::Models::V1::CustomerListResponse>]
+        # @return [MetronomeSDK::Internal::CursorPage<MetronomeSDK::Models::V1::CustomerDetail>]
         #
         # @see MetronomeSDK::Models::V1::CustomerListParams
         def list(params = {})
@@ -115,7 +115,7 @@ module MetronomeSDK
             path: "v1/customers",
             query: parsed,
             page: MetronomeSDK::Internal::CursorPage,
-            model: MetronomeSDK::Models::V1::CustomerListResponse,
+            model: MetronomeSDK::V1::CustomerDetail,
             options: options
           )
         end
@@ -213,6 +213,44 @@ module MetronomeSDK
             query: parsed,
             page: MetronomeSDK::Internal::CursorPage,
             model: MetronomeSDK::Models::V1::CustomerListCostsResponse,
+            options: options
+          )
+        end
+
+        # Some parameter documentations has been truncated, see
+        # {MetronomeSDK::Models::V1::CustomerPreviewEventsParams} for more details.
+        #
+        # Preview how a set of events will affect a customer's invoice. Generates a draft
+        # invoice for a customer using their current contract configuration and the
+        # provided events. This is useful for testing how new events will affect the
+        # customer's invoice before they are actually processed.
+        #
+        # @overload preview_events(customer_id:, events:, mode: nil, skip_zero_qty_line_items: nil, request_options: {})
+        #
+        # @param customer_id [String] Path param:
+        #
+        # @param events [Array<MetronomeSDK::Models::V1::CustomerPreviewEventsParams::Event>] Body param:
+        #
+        # @param mode [Symbol, MetronomeSDK::Models::V1::CustomerPreviewEventsParams::Mode] Body param: If set to "replace", the preview will be generated as if those were
+        #
+        # @param skip_zero_qty_line_items [Boolean] Body param: If set, all zero quantity line items will be filtered out of the res
+        #
+        # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [MetronomeSDK::Models::V1::CustomerPreviewEventsResponse]
+        #
+        # @see MetronomeSDK::Models::V1::CustomerPreviewEventsParams
+        def preview_events(params)
+          parsed, options = MetronomeSDK::V1::CustomerPreviewEventsParams.dump_request(params)
+          customer_id =
+            parsed.delete(:customer_id) do
+              raise ArgumentError.new("missing required path argument #{_1}")
+            end
+          @client.request(
+            method: :post,
+            path: ["v1/customers/%1$s/previewEvents", customer_id],
+            body: parsed,
+            model: MetronomeSDK::Models::V1::CustomerPreviewEventsResponse,
             options: options
           )
         end

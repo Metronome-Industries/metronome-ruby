@@ -24,6 +24,12 @@ module MetronomeSDK
             #   @return [Time, nil]
             optional :aws_expiration_date, Time
 
+            # @!attribute aws_is_subscription_product
+            #   True if the aws_product_code is a SAAS subscription product, false otherwise.
+            #
+            #   @return [Boolean, nil]
+            optional :aws_is_subscription_product, MetronomeSDK::Internal::Type::Boolean
+
             # @!attribute aws_product_code
             #
             #   @return [String, nil]
@@ -73,12 +79,14 @@ module MetronomeSDK
             optional :stripe_collection_method,
                      enum: -> { MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::StripeCollectionMethod }
 
-            # @!method initialize(aws_expiration_date: nil, aws_product_code: nil, aws_region: nil, azure_expiration_date: nil, azure_plan_id: nil, azure_start_date: nil, azure_subscription_status: nil, billing_provider_customer_id: nil, stripe_collection_method: nil)
+            # @!method initialize(aws_expiration_date: nil, aws_is_subscription_product: nil, aws_product_code: nil, aws_region: nil, azure_expiration_date: nil, azure_plan_id: nil, azure_start_date: nil, azure_subscription_status: nil, billing_provider_customer_id: nil, stripe_collection_method: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data} for
             #   more details.
             #
             #   @param aws_expiration_date [Time] Contract expiration date for the customer. The expected format is RFC 3339 and c
+            #
+            #   @param aws_is_subscription_product [Boolean] True if the aws_product_code is a SAAS subscription product, false otherwise.
             #
             #   @param aws_product_code [String]
             #

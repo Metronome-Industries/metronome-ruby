@@ -12,7 +12,7 @@ class MetronomeSDK::Test::Resources::V1::CustomersTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::CustomerCreateResponse::Data
+        data: MetronomeSDK::V1::Customer
       }
     end
   end
@@ -26,7 +26,7 @@ class MetronomeSDK::Test::Resources::V1::CustomersTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::CustomerRetrieveResponse::Data
+        data: MetronomeSDK::V1::CustomerDetail
       }
     end
   end
@@ -42,7 +42,7 @@ class MetronomeSDK::Test::Resources::V1::CustomersTest < MetronomeSDK::Test::Res
     return if row.nil?
 
     assert_pattern do
-      row => MetronomeSDK::Models::V1::CustomerListResponse
+      row => MetronomeSDK::V1::CustomerDetail
     end
 
     assert_pattern do
@@ -50,12 +50,12 @@ class MetronomeSDK::Test::Resources::V1::CustomersTest < MetronomeSDK::Test::Res
         id: String,
         created_at: Time,
         custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[String]),
-        customer_config: MetronomeSDK::Models::V1::CustomerListResponse::CustomerConfig,
+        customer_config: MetronomeSDK::V1::CustomerDetail::CustomerConfig,
         external_id: String,
         ingest_aliases: ^(MetronomeSDK::Internal::Type::ArrayOf[String]),
         name: String,
         archived_at: Time | nil,
-        current_billable_status: MetronomeSDK::Models::V1::CustomerListResponse::CurrentBillableStatus | nil
+        current_billable_status: MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus | nil
       }
     end
   end
@@ -69,7 +69,7 @@ class MetronomeSDK::Test::Resources::V1::CustomersTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::CustomerArchiveResponse::Data
+        data: MetronomeSDK::ID
       }
     end
   end
@@ -99,11 +99,11 @@ class MetronomeSDK::Test::Resources::V1::CustomersTest < MetronomeSDK::Test::Res
         aggregation_type: MetronomeSDK::Models::V1::CustomerListBillableMetricsResponse::AggregationType | nil,
         archived_at: Time | nil,
         custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[String]) | nil,
-        event_type_filter: MetronomeSDK::Models::V1::CustomerListBillableMetricsResponse::EventTypeFilter | nil,
+        event_type_filter: MetronomeSDK::EventTypeFilter | nil,
         filter: ^(MetronomeSDK::Internal::Type::HashOf[MetronomeSDK::Internal::Type::Unknown]) | nil,
         group_by: ^(MetronomeSDK::Internal::Type::ArrayOf[String]) | nil,
         group_keys: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Internal::Type::ArrayOf[String]]) | nil,
-        property_filters: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::CustomerListBillableMetricsResponse::PropertyFilter]) | nil,
+        property_filters: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::PropertyFilter]) | nil,
         sql: String | nil
       }
     end
@@ -137,6 +137,24 @@ class MetronomeSDK::Test::Resources::V1::CustomersTest < MetronomeSDK::Test::Res
     end
   end
 
+  def test_preview_events_required_params
+    response =
+      @metronome.v1.customers.preview_events(
+        customer_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
+        events: [{event_type: "heartbeat"}]
+      )
+
+    assert_pattern do
+      response => MetronomeSDK::Models::V1::CustomerPreviewEventsResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: MetronomeSDK::V1::Customers::Invoice
+      }
+    end
+  end
+
   def test_set_ingest_aliases_required_params
     response =
       @metronome.v1.customers.set_ingest_aliases(
@@ -162,7 +180,7 @@ class MetronomeSDK::Test::Resources::V1::CustomersTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::CustomerSetNameResponse::Data
+        data: MetronomeSDK::V1::Customer
       }
     end
   end

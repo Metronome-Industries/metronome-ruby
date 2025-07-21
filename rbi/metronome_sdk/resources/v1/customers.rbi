@@ -77,9 +77,7 @@ module MetronomeSDK
             salesforce_account_ids: T::Array[String],
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(
-            MetronomeSDK::Internal::CursorPage[
-              MetronomeSDK::Models::V1::CustomerListResponse
-            ]
+            MetronomeSDK::Internal::CursorPage[MetronomeSDK::V1::CustomerDetail]
           )
         end
         def list(
@@ -171,6 +169,39 @@ module MetronomeSDK
           limit: nil,
           # Query param: Cursor that indicates where the next page of results should start.
           next_page: nil,
+          request_options: {}
+        )
+        end
+
+        # Preview how a set of events will affect a customer's invoice. Generates a draft
+        # invoice for a customer using their current contract configuration and the
+        # provided events. This is useful for testing how new events will affect the
+        # customer's invoice before they are actually processed.
+        sig do
+          params(
+            customer_id: String,
+            events:
+              T::Array[
+                MetronomeSDK::V1::CustomerPreviewEventsParams::Event::OrHash
+              ],
+            mode: MetronomeSDK::V1::CustomerPreviewEventsParams::Mode::OrSymbol,
+            skip_zero_qty_line_items: T::Boolean,
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V1::CustomerPreviewEventsResponse)
+        end
+        def preview_events(
+          # Path param:
+          customer_id:,
+          # Body param:
+          events:,
+          # Body param: If set to "replace", the preview will be generated as if those were
+          # the only events for the specified customer. If set to "merge", the events will
+          # be merged with any existing events for the specified customer. Defaults to
+          # "replace".
+          mode: nil,
+          # Body param: If set, all zero quantity line items will be filtered out of the
+          # response.
+          skip_zero_qty_line_items: nil,
           request_options: {}
         )
         end

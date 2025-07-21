@@ -66,6 +66,13 @@ module MetronomeSDK
             sig { params(aws_expiration_date: Time).void }
             attr_writer :aws_expiration_date
 
+            # True if the aws_product_code is a SAAS subscription product, false otherwise.
+            sig { returns(T.nilable(T::Boolean)) }
+            attr_reader :aws_is_subscription_product
+
+            sig { params(aws_is_subscription_product: T::Boolean).void }
+            attr_writer :aws_is_subscription_product
+
             sig { returns(T.nilable(String)) }
             attr_reader :aws_product_code
 
@@ -156,6 +163,7 @@ module MetronomeSDK
             sig do
               params(
                 aws_expiration_date: Time,
+                aws_is_subscription_product: T::Boolean,
                 aws_product_code: String,
                 aws_region:
                   MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::AwsRegion::OrSymbol,
@@ -174,6 +182,8 @@ module MetronomeSDK
               # can be retrieved from
               # [AWS's GetEntitlements API](https://docs.aws.amazon.com/marketplaceentitlement/latest/APIReference/API_GetEntitlements.html).
               aws_expiration_date: nil,
+              # True if the aws_product_code is a SAAS subscription product, false otherwise.
+              aws_is_subscription_product: nil,
               aws_product_code: nil,
               aws_region: nil,
               # Subscription term start/end date for the customer. The expected format is RFC
@@ -195,6 +205,7 @@ module MetronomeSDK
               override.returns(
                 {
                   aws_expiration_date: Time,
+                  aws_is_subscription_product: T::Boolean,
                   aws_product_code: String,
                   aws_region:
                     MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::AwsRegion::TaggedSymbol,
