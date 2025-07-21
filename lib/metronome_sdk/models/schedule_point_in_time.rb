@@ -29,11 +29,6 @@ module MetronomeSDK
         #   @return [Float]
         required :amount, Float
 
-        # @!attribute invoice_id
-        #
-        #   @return [String]
-        required :invoice_id, String
-
         # @!attribute quantity
         #
         #   @return [Float]
@@ -49,13 +44,18 @@ module MetronomeSDK
         #   @return [Float]
         required :unit_price, Float
 
-        # @!method initialize(id:, amount:, invoice_id:, quantity:, timestamp:, unit_price:)
+        # @!attribute invoice_id
+        #
+        #   @return [String, nil]
+        optional :invoice_id, String, nil?: true
+
+        # @!method initialize(id:, amount:, quantity:, timestamp:, unit_price:, invoice_id: nil)
         #   @param id [String]
         #   @param amount [Float]
-        #   @param invoice_id [String]
         #   @param quantity [Float]
         #   @param timestamp [Time]
         #   @param unit_price [Float]
+        #   @param invoice_id [String, nil]
       end
     end
   end

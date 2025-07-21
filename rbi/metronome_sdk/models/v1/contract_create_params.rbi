@@ -22,7 +22,8 @@ module MetronomeSDK
         sig { returns(Time) }
         attr_accessor :starting_at
 
-        # The billing provider configuration associated with a contract.
+        # The billing provider configuration associated with a contract. Provide either an
+        # ID or the provider and delivery method.
         sig do
           returns(
             T.nilable(
@@ -507,7 +508,8 @@ module MetronomeSDK
           customer_id:,
           # inclusive contract start time
           starting_at:,
-          # The billing provider configuration associated with a contract.
+          # The billing provider configuration associated with a contract. Provide either an
+          # ID or the provider and delivery method.
           billing_provider_configuration: nil,
           commits: nil,
           credits: nil,
@@ -643,6 +645,7 @@ module MetronomeSDK
               )
             end
 
+          # Do not specify if using billing_provider_configuration_id.
           sig do
             returns(
               T.nilable(
@@ -660,13 +663,16 @@ module MetronomeSDK
           end
           attr_writer :billing_provider
 
-          # The Metronome ID of the billing provider configuration
+          # The Metronome ID of the billing provider configuration. Use when a customer has
+          # multiple configurations with the same billing provider and delivery method.
+          # Otherwise, specify the billing_provider and delivery_method.
           sig { returns(T.nilable(String)) }
           attr_reader :billing_provider_configuration_id
 
           sig { params(billing_provider_configuration_id: String).void }
           attr_writer :billing_provider_configuration_id
 
+          # Do not specify if using billing_provider_configuration_id.
           sig do
             returns(
               T.nilable(
@@ -684,7 +690,8 @@ module MetronomeSDK
           end
           attr_writer :delivery_method
 
-          # The billing provider configuration associated with a contract.
+          # The billing provider configuration associated with a contract. Provide either an
+          # ID or the provider and delivery method.
           sig do
             params(
               billing_provider:
@@ -695,9 +702,13 @@ module MetronomeSDK
             ).returns(T.attached_class)
           end
           def self.new(
+            # Do not specify if using billing_provider_configuration_id.
             billing_provider: nil,
-            # The Metronome ID of the billing provider configuration
+            # The Metronome ID of the billing provider configuration. Use when a customer has
+            # multiple configurations with the same billing provider and delivery method.
+            # Otherwise, specify the billing_provider and delivery_method.
             billing_provider_configuration_id: nil,
+            # Do not specify if using billing_provider_configuration_id.
             delivery_method: nil
           )
           end
@@ -716,6 +727,7 @@ module MetronomeSDK
           def to_hash
           end
 
+          # Do not specify if using billing_provider_configuration_id.
           module BillingProvider
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -765,6 +777,7 @@ module MetronomeSDK
             end
           end
 
+          # Do not specify if using billing_provider_configuration_id.
           module DeliveryMethod
             extend MetronomeSDK::Internal::Type::Enum
 

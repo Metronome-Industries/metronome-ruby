@@ -20,7 +20,8 @@ module MetronomeSDK
         required :starting_at, Time
 
         # @!attribute billing_provider_configuration
-        #   The billing provider configuration associated with a contract.
+        #   The billing provider configuration associated with a contract. Provide either an
+        #   ID or the provider and delivery method.
         #
         #   @return [MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration, nil]
         optional :billing_provider_configuration,
@@ -240,7 +241,7 @@ module MetronomeSDK
         #
         #   @param starting_at [Time] inclusive contract start time
         #
-        #   @param billing_provider_configuration [MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration] The billing provider configuration associated with a contract.
+        #   @param billing_provider_configuration [MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration] The billing provider configuration associated with a contract. Provide either an
         #
         #   @param commits [Array<MetronomeSDK::Models::V1::ContractCreateParams::Commit>]
         #
@@ -304,6 +305,7 @@ module MetronomeSDK
 
         class BillingProviderConfiguration < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute billing_provider
+          #   Do not specify if using billing_provider_configuration_id.
           #
           #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration::BillingProvider, nil]
           optional :billing_provider,
@@ -312,12 +314,15 @@ module MetronomeSDK
                    }
 
           # @!attribute billing_provider_configuration_id
-          #   The Metronome ID of the billing provider configuration
+          #   The Metronome ID of the billing provider configuration. Use when a customer has
+          #   multiple configurations with the same billing provider and delivery method.
+          #   Otherwise, specify the billing_provider and delivery_method.
           #
           #   @return [String, nil]
           optional :billing_provider_configuration_id, String
 
           # @!attribute delivery_method
+          #   Do not specify if using billing_provider_configuration_id.
           #
           #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration::DeliveryMethod, nil]
           optional :delivery_method,
@@ -326,14 +331,21 @@ module MetronomeSDK
                    }
 
           # @!method initialize(billing_provider: nil, billing_provider_configuration_id: nil, delivery_method: nil)
-          #   The billing provider configuration associated with a contract.
+          #   Some parameter documentations has been truncated, see
+          #   {MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration}
+          #   for more details.
           #
-          #   @param billing_provider [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration::BillingProvider]
+          #   The billing provider configuration associated with a contract. Provide either an
+          #   ID or the provider and delivery method.
           #
-          #   @param billing_provider_configuration_id [String] The Metronome ID of the billing provider configuration
+          #   @param billing_provider [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration::BillingProvider] Do not specify if using billing_provider_configuration_id.
           #
-          #   @param delivery_method [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration::DeliveryMethod]
+          #   @param billing_provider_configuration_id [String] The Metronome ID of the billing provider configuration. Use when a customer has
+          #
+          #   @param delivery_method [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration::DeliveryMethod] Do not specify if using billing_provider_configuration_id.
 
+          # Do not specify if using billing_provider_configuration_id.
+          #
           # @see MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration#billing_provider
           module BillingProvider
             extend MetronomeSDK::Internal::Type::Enum
@@ -348,6 +360,8 @@ module MetronomeSDK
             #   @return [Array<Symbol>]
           end
 
+          # Do not specify if using billing_provider_configuration_id.
+          #
           # @see MetronomeSDK::Models::V1::ContractCreateParams::BillingProviderConfiguration#delivery_method
           module DeliveryMethod
             extend MetronomeSDK::Internal::Type::Enum

@@ -47,6 +47,9 @@ module MetronomeSDK
         sig { params(credit_grant_type_filters: T::Array[String]).void }
         attr_writer :credit_grant_type_filters
 
+        # ID of the credit's currency, defaults to USD. If the specific alert type
+        # requires a pricing unit/currency, find the ID in the
+        # [Metronome app](https://app.metronome.com/offering/pricing-units).
         sig { returns(T.nilable(String)) }
         attr_reader :credit_type_id
 
@@ -171,6 +174,9 @@ module MetronomeSDK
           # applies to, by looking at the credit_grant_type field on the credit grant. This
           # field is only defined for CreditPercentage and CreditBalance alerts
           credit_grant_type_filters: nil,
+          # ID of the credit's currency, defaults to USD. If the specific alert type
+          # requires a pricing unit/currency, find the ID in the
+          # [Metronome app](https://app.metronome.com/offering/pricing-units).
           credit_type_id: nil,
           # A list of custom field filters for alert types that support advanced filtering.
           # Only present for contract invoices.

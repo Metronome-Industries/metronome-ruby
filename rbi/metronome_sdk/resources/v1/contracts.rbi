@@ -89,7 +89,8 @@ module MetronomeSDK
           customer_id:,
           # inclusive contract start time
           starting_at:,
-          # The billing provider configuration associated with a contract.
+          # The billing provider configuration associated with a contract. Provide either an
+          # ID or the provider and delivery method.
           billing_provider_configuration: nil,
           commits: nil,
           credits: nil,

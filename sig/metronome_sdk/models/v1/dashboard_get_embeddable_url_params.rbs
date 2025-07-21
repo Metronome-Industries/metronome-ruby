@@ -55,7 +55,7 @@ module MetronomeSDK
           request_options: MetronomeSDK::RequestOptions
         }
 
-        type dashboard = :invoices | :usage | :credits
+        type dashboard = :invoices | :usage | :credits | :commits_and_credits
 
         module Dashboard
           extend MetronomeSDK::Internal::Type::Enum
@@ -63,6 +63,7 @@ module MetronomeSDK
           INVOICES: :invoices
           USAGE: :usage
           CREDITS: :credits
+          COMMITS_AND_CREDITS: :commits_and_credits
 
           def self?.values: -> ::Array[MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::dashboard]
         end

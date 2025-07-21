@@ -15,6 +15,7 @@ module MetronomeSDK
         contract: MetronomeSDK::Commit::Contract,
         custom_fields: ::Hash[Symbol, String],
         description: String,
+        hierarchy_configuration: MetronomeSDK::Commit::HierarchyConfiguration,
         invoice_contract: MetronomeSDK::Commit::InvoiceContract,
         invoice_schedule: MetronomeSDK::SchedulePointInTime,
         ledger: ::Array[MetronomeSDK::Models::Commit::ledger],
@@ -79,6 +80,12 @@ module MetronomeSDK
       attr_reader description: String?
 
       def description=: (String) -> String
+
+      attr_reader hierarchy_configuration: MetronomeSDK::Commit::HierarchyConfiguration?
+
+      def hierarchy_configuration=: (
+        MetronomeSDK::Commit::HierarchyConfiguration
+      ) -> MetronomeSDK::Commit::HierarchyConfiguration
 
       attr_reader invoice_contract: MetronomeSDK::Commit::InvoiceContract?
 
@@ -154,6 +161,7 @@ module MetronomeSDK
         ?contract: MetronomeSDK::Commit::Contract,
         ?custom_fields: ::Hash[Symbol, String],
         ?description: String,
+        ?hierarchy_configuration: MetronomeSDK::Commit::HierarchyConfiguration,
         ?invoice_contract: MetronomeSDK::Commit::InvoiceContract,
         ?invoice_schedule: MetronomeSDK::SchedulePointInTime,
         ?ledger: ::Array[MetronomeSDK::Models::Commit::ledger],
@@ -182,6 +190,7 @@ module MetronomeSDK
         contract: MetronomeSDK::Commit::Contract,
         custom_fields: ::Hash[Symbol, String],
         description: String,
+        hierarchy_configuration: MetronomeSDK::Commit::HierarchyConfiguration,
         invoice_contract: MetronomeSDK::Commit::InvoiceContract,
         invoice_schedule: MetronomeSDK::SchedulePointInTime,
         ledger: ::Array[MetronomeSDK::Models::Commit::ledger],
@@ -227,6 +236,120 @@ module MetronomeSDK
         def initialize: (id: String) -> void
 
         def to_hash: -> { id: String }
+      end
+
+      type hierarchy_configuration =
+        {
+          child_access: MetronomeSDK::Models::Commit::HierarchyConfiguration::child_access
+        }
+
+      class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor child_access: MetronomeSDK::Models::Commit::HierarchyConfiguration::child_access
+
+        def initialize: (
+          child_access: MetronomeSDK::Models::Commit::HierarchyConfiguration::child_access
+        ) -> void
+
+        def to_hash: -> {
+          child_access: MetronomeSDK::Models::Commit::HierarchyConfiguration::child_access
+        }
+
+        type child_access =
+          MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll
+          | MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone
+          | MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
+
+        module ChildAccess
+          extend MetronomeSDK::Internal::Type::Union
+
+          type commit_hierarchy_child_access_all =
+            {
+              type: MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
+            }
+
+          class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor type: MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
+
+            def initialize: (
+              type: MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
+            ) -> void
+
+            def to_hash: -> {
+              type: MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
+            }
+
+            type type_ = :ALL
+
+            module Type
+              extend MetronomeSDK::Internal::Type::Enum
+
+              ALL: :ALL
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_]
+            end
+          end
+
+          type commit_hierarchy_child_access_none =
+            {
+              type: MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+            }
+
+          class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor type: MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+
+            def initialize: (
+              type: MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+            ) -> void
+
+            def to_hash: -> {
+              type: MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+            }
+
+            type type_ = :NONE
+
+            module Type
+              extend MetronomeSDK::Internal::Type::Enum
+
+              NONE: :NONE
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_]
+            end
+          end
+
+          type commit_hierarchy_child_access_contract_ids =
+            {
+              contract_ids: ::Array[String],
+              type: MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
+            }
+
+          class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor contract_ids: ::Array[String]
+
+            attr_accessor type: MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
+
+            def initialize: (
+              contract_ids: ::Array[String],
+              type: MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
+            ) -> void
+
+            def to_hash: -> {
+              contract_ids: ::Array[String],
+              type: MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
+            }
+
+            type type_ = :CONTRACT_IDS
+
+            module Type
+              extend MetronomeSDK::Internal::Type::Enum
+
+              CONTRACT_IDS: :CONTRACT_IDS
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_]
+            end
+          end
+
+          def self?.variants: -> ::Array[MetronomeSDK::Models::Commit::HierarchyConfiguration::child_access]
+        end
       end
 
       type invoice_contract = { id: String }

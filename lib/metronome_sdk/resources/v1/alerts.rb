@@ -21,7 +21,7 @@ module MetronomeSDK
         #
         # @param credit_grant_type_filters [Array<String>] An array of strings, representing a way to filter the credit grant this alert ap
         #
-        # @param credit_type_id [String]
+        # @param credit_type_id [String] ID of the credit's currency, defaults to USD. If the specific alert type require
         #
         # @param custom_field_filters [Array<MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter>] A list of custom field filters for alert types that support advanced filtering.
         #

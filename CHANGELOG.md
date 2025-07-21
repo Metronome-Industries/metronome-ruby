@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0-alpha.4 (2025-07-15)
+## 0.1.0-alpha.4 (2025-07-18)
 
 Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/Metronome-Industries/metronome-ruby/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
 
