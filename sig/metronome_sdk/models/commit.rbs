@@ -369,6 +369,7 @@ module MetronomeSDK
         | MetronomeSDK::Commit::Ledger::PrepaidCommitExpirationLedgerEntry
         | MetronomeSDK::Commit::Ledger::PrepaidCommitCanceledLedgerEntry
         | MetronomeSDK::Commit::Ledger::PrepaidCommitCreditedLedgerEntry
+        | MetronomeSDK::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry
         | MetronomeSDK::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry
         | MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry
         | MetronomeSDK::Commit::Ledger::PostpaidCommitRolloverLedgerEntry
@@ -649,6 +650,48 @@ module MetronomeSDK
             PREPAID_COMMIT_CREDITED: :PREPAID_COMMIT_CREDITED
 
             def self?.values: -> ::Array[MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::type_]
+          end
+        end
+
+        type prepaid_commit_seat_based_adjustment_ledger_entry =
+          {
+            amount: Float,
+            segment_id: String,
+            timestamp: Time,
+            type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::type_
+          }
+
+        class PrepaidCommitSeatBasedAdjustmentLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor amount: Float
+
+          attr_accessor segment_id: String
+
+          attr_accessor timestamp: Time
+
+          attr_accessor type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::type_
+
+          def initialize: (
+            amount: Float,
+            segment_id: String,
+            timestamp: Time,
+            type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::type_
+          ) -> void
+
+          def to_hash: -> {
+            amount: Float,
+            segment_id: String,
+            timestamp: Time,
+            type: MetronomeSDK::Models::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::type_
+          }
+
+          type type_ = :PREPAID_COMMIT_SEAT_BASED_ADJUSTMENT
+
+          module Type
+            extend MetronomeSDK::Internal::Type::Enum
+
+            PREPAID_COMMIT_SEAT_BASED_ADJUSTMENT: :PREPAID_COMMIT_SEAT_BASED_ADJUSTMENT
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::type_]
           end
         end
 

@@ -77,7 +77,7 @@ module MetronomeSDK
       #   A list of ordered events that impact the balance of a credit. For example, an
       #   invoice deduction or an expiration.
       #
-      #   @return [Array<MetronomeSDK::Models::Credit::Ledger::CreditSegmentStartLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditExpirationLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditManualLedgerEntry>, nil]
+      #   @return [Array<MetronomeSDK::Models::Credit::Ledger::CreditSegmentStartLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditExpirationLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditManualLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry>, nil]
       optional :ledger, -> { MetronomeSDK::Internal::Type::ArrayOf[union: MetronomeSDK::Credit::Ledger] }
 
       # @!attribute name
@@ -154,7 +154,7 @@ module MetronomeSDK
       #
       #   @param hierarchy_configuration [MetronomeSDK::Models::Credit::HierarchyConfiguration] Optional configuration for credit hierarchy access control
       #
-      #   @param ledger [Array<MetronomeSDK::Models::Credit::Ledger::CreditSegmentStartLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditExpirationLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditManualLedgerEntry>] A list of ordered events that impact the balance of a credit. For example, an in
+      #   @param ledger [Array<MetronomeSDK::Models::Credit::Ledger::CreditSegmentStartLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditExpirationLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditManualLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry>] A list of ordered events that impact the balance of a credit. For example, an in
       #
       #   @param name [String]
       #
@@ -330,6 +330,8 @@ module MetronomeSDK
         variant -> { MetronomeSDK::Credit::Ledger::CreditCreditedLedgerEntry }
 
         variant -> { MetronomeSDK::Credit::Ledger::CreditManualLedgerEntry }
+
+        variant -> { MetronomeSDK::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry }
 
         class CreditSegmentStartLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute amount
@@ -578,8 +580,49 @@ module MetronomeSDK
           end
         end
 
+        class CreditSeatBasedAdjustmentLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute amount
+          #
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute segment_id
+          #
+          #   @return [String]
+          required :segment_id, String
+
+          # @!attribute timestamp
+          #
+          #   @return [Time]
+          required :timestamp, Time
+
+          # @!attribute type
+          #
+          #   @return [Symbol, MetronomeSDK::Models::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::Type]
+          required :type,
+                   enum: -> {
+                     MetronomeSDK::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::Type
+                   }
+
+          # @!method initialize(amount:, segment_id:, timestamp:, type:)
+          #   @param amount [Float]
+          #   @param segment_id [String]
+          #   @param timestamp [Time]
+          #   @param type [Symbol, MetronomeSDK::Models::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::Type]
+
+          # @see MetronomeSDK::Models::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry#type
+          module Type
+            extend MetronomeSDK::Internal::Type::Enum
+
+            CREDIT_SEAT_BASED_ADJUSTMENT = :CREDIT_SEAT_BASED_ADJUSTMENT
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
         # @!method self.variants
-        #   @return [Array(MetronomeSDK::Models::Credit::Ledger::CreditSegmentStartLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditExpirationLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditManualLedgerEntry)]
+        #   @return [Array(MetronomeSDK::Models::Credit::Ledger::CreditSegmentStartLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditExpirationLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditManualLedgerEntry, MetronomeSDK::Models::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry)]
       end
 
       # @see MetronomeSDK::Models::Credit#rate_type

@@ -145,6 +145,7 @@ module MetronomeSDK
                 MetronomeSDK::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::OrHash,
                 MetronomeSDK::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::OrHash,
                 MetronomeSDK::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::OrHash,
+                MetronomeSDK::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::OrHash,
                 MetronomeSDK::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::OrHash,
                 MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::OrHash,
                 MetronomeSDK::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::OrHash,
@@ -259,6 +260,7 @@ module MetronomeSDK
                 MetronomeSDK::Commit::Ledger::PrepaidCommitExpirationLedgerEntry::OrHash,
                 MetronomeSDK::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::OrHash,
                 MetronomeSDK::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::OrHash,
+                MetronomeSDK::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::OrHash,
                 MetronomeSDK::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::OrHash,
                 MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::OrHash,
                 MetronomeSDK::Commit::Ledger::PostpaidCommitRolloverLedgerEntry::OrHash,
@@ -738,6 +740,7 @@ module MetronomeSDK
               MetronomeSDK::Commit::Ledger::PrepaidCommitExpirationLedgerEntry,
               MetronomeSDK::Commit::Ledger::PrepaidCommitCanceledLedgerEntry,
               MetronomeSDK::Commit::Ledger::PrepaidCommitCreditedLedgerEntry,
+              MetronomeSDK::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry,
               MetronomeSDK::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry,
               MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry,
               MetronomeSDK::Commit::Ledger::PostpaidCommitRolloverLedgerEntry,
@@ -1252,6 +1255,87 @@ module MetronomeSDK
               override.returns(
                 T::Array[
                   MetronomeSDK::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
+        class PrepaidCommitSeatBasedAdjustmentLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          sig { returns(Float) }
+          attr_accessor :amount
+
+          sig { returns(String) }
+          attr_accessor :segment_id
+
+          sig { returns(Time) }
+          attr_accessor :timestamp
+
+          sig do
+            returns(
+              MetronomeSDK::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::Type::TaggedSymbol
+            )
+          end
+          attr_accessor :type
+
+          sig do
+            params(
+              amount: Float,
+              segment_id: String,
+              timestamp: Time,
+              type:
+                MetronomeSDK::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::Type::OrSymbol
+            ).returns(T.attached_class)
+          end
+          def self.new(amount:, segment_id:, timestamp:, type:)
+          end
+
+          sig do
+            override.returns(
+              {
+                amount: Float,
+                segment_id: String,
+                timestamp: Time,
+                type:
+                  MetronomeSDK::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::Type::TaggedSymbol
+              }
+            )
+          end
+          def to_hash
+          end
+
+          module Type
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::Type
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PREPAID_COMMIT_SEAT_BASED_ADJUSTMENT =
+              T.let(
+                :PREPAID_COMMIT_SEAT_BASED_ADJUSTMENT,
+                MetronomeSDK::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::Type::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::Type::TaggedSymbol
                 ]
               )
             end

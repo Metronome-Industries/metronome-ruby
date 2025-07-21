@@ -632,6 +632,7 @@ module MetronomeSDK
               | MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitExpirationLedgerEntry
               | MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry
               | MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry
+              | MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry
               | MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry
               | MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry
               | MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitRolloverLedgerEntry
@@ -912,6 +913,48 @@ module MetronomeSDK
                   PREPAID_COMMIT_CREDITED: :PREPAID_COMMIT_CREDITED
 
                   def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::type_]
+                end
+              end
+
+              type prepaid_commit_seat_based_adjustment_ledger_entry =
+                {
+                  amount: Float,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::type_
+                }
+
+              class PrepaidCommitSeatBasedAdjustmentLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor amount: Float
+
+                attr_accessor segment_id: String
+
+                attr_accessor timestamp: Time
+
+                attr_accessor type: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::type_
+
+                def initialize: (
+                  amount: Float,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::type_
+                ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::type_
+                }
+
+                type type_ = :PREPAID_COMMIT_SEAT_BASED_ADJUSTMENT
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  PREPAID_COMMIT_SEAT_BASED_ADJUSTMENT: :PREPAID_COMMIT_SEAT_BASED_ADJUSTMENT
+
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::type_]
                 end
               end
 
@@ -2015,6 +2058,7 @@ module MetronomeSDK
               | MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry
               | MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry
               | MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditManualLedgerEntry
+              | MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry
 
             module Ledger
               extend MetronomeSDK::Internal::Type::Union
@@ -2283,6 +2327,48 @@ module MetronomeSDK
                   CREDIT_MANUAL: :CREDIT_MANUAL
 
                   def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditManualLedgerEntry::type_]
+                end
+              end
+
+              type credit_seat_based_adjustment_ledger_entry =
+                {
+                  amount: Float,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::type_
+                }
+
+              class CreditSeatBasedAdjustmentLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor amount: Float
+
+                attr_accessor segment_id: String
+
+                attr_accessor timestamp: Time
+
+                attr_accessor type: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::type_
+
+                def initialize: (
+                  amount: Float,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::type_
+                ) -> void
+
+                def to_hash: -> {
+                  amount: Float,
+                  segment_id: String,
+                  timestamp: Time,
+                  type: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::type_
+                }
+
+                type type_ = :CREDIT_SEAT_BASED_ADJUSTMENT
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  CREDIT_SEAT_BASED_ADJUSTMENT: :CREDIT_SEAT_BASED_ADJUSTMENT
+
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::type_]
                 end
               end
 

@@ -310,6 +310,7 @@ module MetronomeSDK
         | MetronomeSDK::Credit::Ledger::CreditCanceledLedgerEntry
         | MetronomeSDK::Credit::Ledger::CreditCreditedLedgerEntry
         | MetronomeSDK::Credit::Ledger::CreditManualLedgerEntry
+        | MetronomeSDK::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry
 
       module Ledger
         extend MetronomeSDK::Internal::Type::Union
@@ -578,6 +579,48 @@ module MetronomeSDK
             CREDIT_MANUAL: :CREDIT_MANUAL
 
             def self?.values: -> ::Array[MetronomeSDK::Models::Credit::Ledger::CreditManualLedgerEntry::type_]
+          end
+        end
+
+        type credit_seat_based_adjustment_ledger_entry =
+          {
+            amount: Float,
+            segment_id: String,
+            timestamp: Time,
+            type: MetronomeSDK::Models::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::type_
+          }
+
+        class CreditSeatBasedAdjustmentLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor amount: Float
+
+          attr_accessor segment_id: String
+
+          attr_accessor timestamp: Time
+
+          attr_accessor type: MetronomeSDK::Models::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::type_
+
+          def initialize: (
+            amount: Float,
+            segment_id: String,
+            timestamp: Time,
+            type: MetronomeSDK::Models::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::type_
+          ) -> void
+
+          def to_hash: -> {
+            amount: Float,
+            segment_id: String,
+            timestamp: Time,
+            type: MetronomeSDK::Models::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::type_
+          }
+
+          type type_ = :CREDIT_SEAT_BASED_ADJUSTMENT
+
+          module Type
+            extend MetronomeSDK::Internal::Type::Enum
+
+            CREDIT_SEAT_BASED_ADJUSTMENT: :CREDIT_SEAT_BASED_ADJUSTMENT
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::type_]
           end
         end
 
