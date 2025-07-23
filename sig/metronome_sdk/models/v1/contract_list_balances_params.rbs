@@ -11,7 +11,6 @@ module MetronomeSDK
           include_balance: bool,
           include_contract_balances: bool,
           include_ledgers: bool,
-          limit: Integer,
           next_page: String,
           starting_at: Time
         }
@@ -51,10 +50,6 @@ module MetronomeSDK
 
         def include_ledgers=: (bool) -> bool
 
-        attr_reader limit: Integer?
-
-        def limit=: (Integer) -> Integer
-
         attr_reader next_page: String?
 
         def next_page=: (String) -> String
@@ -72,7 +67,6 @@ module MetronomeSDK
           ?include_balance: bool,
           ?include_contract_balances: bool,
           ?include_ledgers: bool,
-          ?limit: Integer,
           ?next_page: String,
           ?starting_at: Time,
           ?request_options: MetronomeSDK::request_opts
@@ -87,7 +81,6 @@ module MetronomeSDK
           include_balance: bool,
           include_contract_balances: bool,
           include_ledgers: bool,
-          limit: Integer,
           next_page: String,
           starting_at: Time,
           request_options: MetronomeSDK::RequestOptions

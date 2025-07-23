@@ -63,7 +63,7 @@ module MetronomeSDK
           #
           # List credits.
           #
-          # @overload list(customer_id:, covering_date: nil, credit_id: nil, effective_before: nil, include_archived: nil, include_balance: nil, include_contract_credits: nil, include_ledgers: nil, limit: nil, next_page: nil, starting_at: nil, request_options: {})
+          # @overload list(customer_id:, covering_date: nil, credit_id: nil, effective_before: nil, include_archived: nil, include_balance: nil, include_contract_credits: nil, include_ledgers: nil, next_page: nil, starting_at: nil, request_options: {})
           #
           # @param customer_id [String]
           #
@@ -80,8 +80,6 @@ module MetronomeSDK
           # @param include_contract_credits [Boolean] Include credits on the contract level.
           #
           # @param include_ledgers [Boolean] Include credit ledgers in the response. Setting this flag may cause the query to
-          #
-          # @param limit [Integer] The maximum number of commits to return. Defaults to 25.
           #
           # @param next_page [String] The next page token from a previous response.
           #
