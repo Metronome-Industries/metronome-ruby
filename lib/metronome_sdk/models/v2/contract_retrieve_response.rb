@@ -112,6 +112,13 @@ module MetronomeSDK
           #   @return [Time, nil]
           optional :ending_before, Time
 
+          # @!attribute has_more
+          #   Indicates whether there are more items than the limit for this endpoint. Use the
+          #   respective list endpoints to get the full lists.
+          #
+          #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HasMore, nil]
+          optional :has_more, -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HasMore }
+
           # @!attribute hierarchy_configuration
           #   Either a **parent** configuration with a list of children or a **child**
           #   configuration with a single parent.
@@ -234,7 +241,7 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :uniqueness_key, String
 
-          # @!method initialize(id:, commits:, created_at:, created_by:, customer_id:, overrides:, scheduled_charges:, starting_at:, transitions:, usage_filter:, usage_statement_schedule:, archived_at: nil, credits: nil, custom_fields: nil, customer_billing_provider_configuration: nil, discounts: nil, ending_before: nil, hierarchy_configuration: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, prepaid_balance_threshold_configuration: nil, priority: nil, professional_services: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, salesforce_opportunity_id: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, total_contract_value: nil, uniqueness_key: nil)
+          # @!method initialize(id:, commits:, created_at:, created_by:, customer_id:, overrides:, scheduled_charges:, starting_at:, transitions:, usage_filter:, usage_statement_schedule:, archived_at: nil, credits: nil, custom_fields: nil, customer_billing_provider_configuration: nil, discounts: nil, ending_before: nil, has_more: nil, hierarchy_configuration: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, prepaid_balance_threshold_configuration: nil, priority: nil, professional_services: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, salesforce_opportunity_id: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, total_contract_value: nil, uniqueness_key: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractRetrieveResponse::Data} for more details.
           #
@@ -271,6 +278,8 @@ module MetronomeSDK
           #   @param discounts [Array<MetronomeSDK::Models::Discount>] This field's availability is dependent on your client's configuration.
           #
           #   @param ending_before [Time]
+          #
+          #   @param has_more [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HasMore] Indicates whether there are more items than the limit for this endpoint. Use the
           #
           #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ParentHierarchyConfiguration, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HierarchyConfiguration::ChildHierarchyConfiguration] Either a **parent** configuration with a list of children or a **child** configu
           #
@@ -2421,6 +2430,37 @@ module MetronomeSDK
             end
           end
 
+          # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data#has_more
+          class HasMore < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute commits
+            #   Whether there are more commits on this contract than the limit for this
+            #   endpoint. Use the /contracts/customerCommits/list endpoint to get the full list
+            #   of commits.
+            #
+            #   @return [Boolean]
+            required :commits, MetronomeSDK::Internal::Type::Boolean
+
+            # @!attribute credits
+            #   Whether there are more credits on this contract than the limit for this
+            #   endpoint. Use the /contracts/customerCredits/list endpoint to get the full list
+            #   of credits.
+            #
+            #   @return [Boolean]
+            required :credits, MetronomeSDK::Internal::Type::Boolean
+
+            # @!method initialize(commits:, credits:)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::HasMore} for more
+            #   details.
+            #
+            #   Indicates whether there are more items than the limit for this endpoint. Use the
+            #   respective list endpoints to get the full lists.
+            #
+            #   @param commits [Boolean] Whether there are more commits on this contract than the limit for this endpoint
+            #
+            #   @param credits [Boolean] Whether there are more credits on this contract than the limit for this endpoint
+          end
+
           # Either a **parent** configuration with a list of children or a **child**
           # configuration with a single parent.
           #
@@ -2909,6 +2949,13 @@ module MetronomeSDK
             #   @return [Time, nil]
             optional :ending_before, Time
 
+            # @!attribute hierarchy_configuration
+            #   Optional configuration for recurring commit/credit hierarchy access control
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration, nil]
+            optional :hierarchy_configuration,
+                     -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration }
+
             # @!attribute invoice_amount
             #   The amount the customer should be billed for the commit. Not required.
             #
@@ -2931,7 +2978,6 @@ module MetronomeSDK
             # @!attribute proration
             #   Determines whether the first and last commit will be prorated. If not provided,
             #   the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
-            #   subscription_config:
             #
             #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::Proration, nil]
             optional :proration,
@@ -2965,7 +3011,7 @@ module MetronomeSDK
             optional :specifiers,
                      -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::Specifier] }
 
-            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, invoice_amount: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil)
+            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, invoice_amount: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit} for
             #   more details.
@@ -2993,6 +3039,8 @@ module MetronomeSDK
             #   @param description [String] Will be passed down to the individual commits
             #
             #   @param ending_before [Time] Determines when the contract will stop creating recurring commits. Optional
+            #
+            #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration] Optional configuration for recurring commit/credit hierarchy access control
             #
             #   @param invoice_amount [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::InvoiceAmount] The amount the customer should be billed for the commit. Not required.
             #
@@ -3104,6 +3152,103 @@ module MetronomeSDK
               #   @param id [String]
             end
 
+            # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit#hierarchy_configuration
+            class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute child_access
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+              required :child_access,
+                       union: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess }
+
+              # @!method initialize(child_access:)
+              #   Optional configuration for recurring commit/credit hierarchy access control
+              #
+              #   @param child_access [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+
+              # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration#child_access
+              module ChildAccess
+                extend MetronomeSDK::Internal::Type::Union
+
+                variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll }
+
+                variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone }
+
+                variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs }
+
+                class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+                  # @!attribute type
+                  #
+                  #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+                  required :type,
+                           enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type }
+
+                  # @!method initialize(type:)
+                  #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+
+                  # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll#type
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    ALL = :ALL
+
+                    # @!method self.values
+                    #   @return [Array<Symbol>]
+                  end
+                end
+
+                class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
+                  # @!attribute type
+                  #
+                  #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
+                  required :type,
+                           enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type }
+
+                  # @!method initialize(type:)
+                  #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
+
+                  # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone#type
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    NONE = :NONE
+
+                    # @!method self.values
+                    #   @return [Array<Symbol>]
+                  end
+                end
+
+                class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+                  # @!attribute contract_ids
+                  #
+                  #   @return [Array<String>]
+                  required :contract_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+                  # @!attribute type
+                  #
+                  #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+                  required :type,
+                           enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type }
+
+                  # @!method initialize(contract_ids:, type:)
+                  #   @param contract_ids [Array<String>]
+                  #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+
+                  # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs#type
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    CONTRACT_IDS = :CONTRACT_IDS
+
+                    # @!method self.values
+                    #   @return [Array<Symbol>]
+                  end
+                end
+
+                # @!method self.variants
+                #   @return [Array(MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs)]
+              end
+            end
+
             # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit#invoice_amount
             class InvoiceAmount < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute credit_type_id
@@ -3131,7 +3276,6 @@ module MetronomeSDK
 
             # Determines whether the first and last commit will be prorated. If not provided,
             # the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
-            # subscription_config:
             #
             # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit#proration
             module Proration
@@ -3279,6 +3423,13 @@ module MetronomeSDK
             #   @return [Time, nil]
             optional :ending_before, Time
 
+            # @!attribute hierarchy_configuration
+            #   Optional configuration for recurring commit/credit hierarchy access control
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration, nil]
+            optional :hierarchy_configuration,
+                     -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration }
+
             # @!attribute name
             #   Displayed on invoices. Will be passed through to the individual commits
             #
@@ -3294,7 +3445,6 @@ module MetronomeSDK
             # @!attribute proration
             #   Determines whether the first and last commit will be prorated. If not provided,
             #   the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
-            #   subscription_config:
             #
             #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::Proration, nil]
             optional :proration,
@@ -3328,7 +3478,7 @@ module MetronomeSDK
             optional :specifiers,
                      -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::Specifier] }
 
-            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil)
+            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit} for
             #   more details.
@@ -3356,6 +3506,8 @@ module MetronomeSDK
             #   @param description [String] Will be passed down to the individual commits
             #
             #   @param ending_before [Time] Determines when the contract will stop creating recurring commits. Optional
+            #
+            #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration] Optional configuration for recurring commit/credit hierarchy access control
             #
             #   @param name [String] Displayed on invoices. Will be passed through to the individual commits
             #
@@ -3465,9 +3617,105 @@ module MetronomeSDK
               #   @param id [String]
             end
 
+            # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit#hierarchy_configuration
+            class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute child_access
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+              required :child_access,
+                       union: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess }
+
+              # @!method initialize(child_access:)
+              #   Optional configuration for recurring commit/credit hierarchy access control
+              #
+              #   @param child_access [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+
+              # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration#child_access
+              module ChildAccess
+                extend MetronomeSDK::Internal::Type::Union
+
+                variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll }
+
+                variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone }
+
+                variant -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs }
+
+                class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+                  # @!attribute type
+                  #
+                  #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+                  required :type,
+                           enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type }
+
+                  # @!method initialize(type:)
+                  #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+
+                  # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll#type
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    ALL = :ALL
+
+                    # @!method self.values
+                    #   @return [Array<Symbol>]
+                  end
+                end
+
+                class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
+                  # @!attribute type
+                  #
+                  #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
+                  required :type,
+                           enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type }
+
+                  # @!method initialize(type:)
+                  #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
+
+                  # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone#type
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    NONE = :NONE
+
+                    # @!method self.values
+                    #   @return [Array<Symbol>]
+                  end
+                end
+
+                class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+                  # @!attribute contract_ids
+                  #
+                  #   @return [Array<String>]
+                  required :contract_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+                  # @!attribute type
+                  #
+                  #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+                  required :type,
+                           enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type }
+
+                  # @!method initialize(contract_ids:, type:)
+                  #   @param contract_ids [Array<String>]
+                  #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+
+                  # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs#type
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    CONTRACT_IDS = :CONTRACT_IDS
+
+                    # @!method self.values
+                    #   @return [Array<Symbol>]
+                  end
+                end
+
+                # @!method self.variants
+                #   @return [Array(MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs)]
+              end
+            end
+
             # Determines whether the first and last commit will be prorated. If not provided,
             # the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
-            # subscription_config:
             #
             # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit#proration
             module Proration

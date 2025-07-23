@@ -185,6 +185,25 @@ module MetronomeSDK
           sig { params(ending_before: Time).void }
           attr_writer :ending_before
 
+          # Indicates whether there are more items than the limit for this endpoint. Use the
+          # respective list endpoints to get the full lists.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::Models::V2::ContractListResponse::Data::HasMore
+              )
+            )
+          end
+          attr_reader :has_more
+
+          sig do
+            params(
+              has_more:
+                MetronomeSDK::Models::V2::ContractListResponse::Data::HasMore::OrHash
+            ).void
+          end
+          attr_writer :has_more
+
           # Either a **parent** configuration with a list of children or a **child**
           # configuration with a single parent.
           sig do
@@ -472,6 +491,8 @@ module MetronomeSDK
                 MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration::OrHash,
               discounts: T::Array[MetronomeSDK::Discount::OrHash],
               ending_before: Time,
+              has_more:
+                MetronomeSDK::Models::V2::ContractListResponse::Data::HasMore::OrHash,
               hierarchy_configuration:
                 T.any(
                   MetronomeSDK::Models::V2::ContractListResponse::Data::HierarchyConfiguration::ParentHierarchyConfiguration::OrHash,
@@ -532,6 +553,9 @@ module MetronomeSDK
             # This field's availability is dependent on your client's configuration.
             discounts: nil,
             ending_before: nil,
+            # Indicates whether there are more items than the limit for this endpoint. Use the
+            # respective list endpoints to get the full lists.
+            has_more: nil,
             # Either a **parent** configuration with a list of children or a **child**
             # configuration with a single parent.
             hierarchy_configuration: nil,
@@ -610,6 +634,8 @@ module MetronomeSDK
                   MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration,
                 discounts: T::Array[MetronomeSDK::Discount],
                 ending_before: Time,
+                has_more:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::HasMore,
                 hierarchy_configuration:
                   MetronomeSDK::Models::V2::ContractListResponse::Data::HierarchyConfiguration::Variants,
                 multiplier_override_prioritization:
@@ -5267,6 +5293,53 @@ module MetronomeSDK
             end
           end
 
+          class HasMore < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::HasMore,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            # Whether there are more commits on this contract than the limit for this
+            # endpoint. Use the /contracts/customerCommits/list endpoint to get the full list
+            # of commits.
+            sig { returns(T::Boolean) }
+            attr_accessor :commits
+
+            # Whether there are more credits on this contract than the limit for this
+            # endpoint. Use the /contracts/customerCredits/list endpoint to get the full list
+            # of credits.
+            sig { returns(T::Boolean) }
+            attr_accessor :credits
+
+            # Indicates whether there are more items than the limit for this endpoint. Use the
+            # respective list endpoints to get the full lists.
+            sig do
+              params(commits: T::Boolean, credits: T::Boolean).returns(
+                T.attached_class
+              )
+            end
+            def self.new(
+              # Whether there are more commits on this contract than the limit for this
+              # endpoint. Use the /contracts/customerCommits/list endpoint to get the full list
+              # of commits.
+              commits:,
+              # Whether there are more credits on this contract than the limit for this
+              # endpoint. Use the /contracts/customerCredits/list endpoint to get the full list
+              # of credits.
+              credits:
+            )
+            end
+
+            sig do
+              override.returns({ commits: T::Boolean, credits: T::Boolean })
+            end
+            def to_hash
+            end
+          end
+
           # Either a **parent** configuration with a list of children or a **child**
           # configuration with a single parent.
           module HierarchyConfiguration
@@ -6266,6 +6339,24 @@ module MetronomeSDK
             sig { params(ending_before: Time).void }
             attr_writer :ending_before
 
+            # Optional configuration for recurring commit/credit hierarchy access control
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration
+                )
+              )
+            end
+            attr_reader :hierarchy_configuration
+
+            sig do
+              params(
+                hierarchy_configuration:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::OrHash
+              ).void
+            end
+            attr_writer :hierarchy_configuration
+
             # The amount the customer should be billed for the commit. Not required.
             sig do
               returns(
@@ -6300,7 +6391,6 @@ module MetronomeSDK
 
             # Determines whether the first and last commit will be prorated. If not provided,
             # the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
-            # subscription_config:
             sig do
               returns(
                 T.nilable(
@@ -6392,6 +6482,8 @@ module MetronomeSDK
                   MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::Contract::OrHash,
                 description: String,
                 ending_before: Time,
+                hierarchy_configuration:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::OrHash,
                 invoice_amount:
                   MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::InvoiceAmount::OrHash,
                 name: String,
@@ -6429,6 +6521,8 @@ module MetronomeSDK
               description: nil,
               # Determines when the contract will stop creating recurring commits. Optional
               ending_before: nil,
+              # Optional configuration for recurring commit/credit hierarchy access control
+              hierarchy_configuration: nil,
               # The amount the customer should be billed for the commit. Not required.
               invoice_amount: nil,
               # Displayed on invoices. Will be passed through to the individual commits
@@ -6437,7 +6531,6 @@ module MetronomeSDK
               netsuite_sales_order_id: nil,
               # Determines whether the first and last commit will be prorated. If not provided,
               # the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
-              # subscription_config:
               proration: nil,
               # The frequency at which the recurring commits will be created. If not provided: -
               # The commits will be created on the usage invoice frequency. If provided: - The
@@ -6476,6 +6569,8 @@ module MetronomeSDK
                     MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::Contract,
                   description: String,
                   ending_before: Time,
+                  hierarchy_configuration:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration,
                   invoice_amount:
                     MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::InvoiceAmount,
                   name: String,
@@ -6698,6 +6793,274 @@ module MetronomeSDK
               end
             end
 
+            class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig do
+                returns(
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::Variants
+                )
+              end
+              attr_accessor :child_access
+
+              # Optional configuration for recurring commit/credit hierarchy access control
+              sig do
+                params(
+                  child_access:
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::OrHash
+                    )
+                ).returns(T.attached_class)
+              end
+              def self.new(child_access:)
+              end
+
+              sig do
+                override.returns(
+                  {
+                    child_access:
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::Variants
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              module ChildAccess
+                extend MetronomeSDK::Internal::Type::Union
+
+                Variants =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
+                    )
+                  end
+
+                class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                        MetronomeSDK::Internal::AnyHash
+                      )
+                    end
+
+                  sig do
+                    returns(
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
+                    )
+                  end
+                  attr_accessor :type
+
+                  sig do
+                    params(
+                      type:
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
+                    ).returns(T.attached_class)
+                  end
+                  def self.new(type:)
+                  end
+
+                  sig do
+                    override.returns(
+                      {
+                        type:
+                          MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
+                      }
+                    )
+                  end
+                  def to_hash
+                  end
+
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    TaggedSymbol =
+                      T.type_alias do
+                        T.all(
+                          Symbol,
+                          MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type
+                        )
+                      end
+                    OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                    ALL =
+                      T.let(
+                        :ALL,
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
+                      )
+
+                    sig do
+                      override.returns(
+                        T::Array[
+                          MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
+                        ]
+                      )
+                    end
+                    def self.values
+                    end
+                  end
+                end
+
+                class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                        MetronomeSDK::Internal::AnyHash
+                      )
+                    end
+
+                  sig do
+                    returns(
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
+                    )
+                  end
+                  attr_accessor :type
+
+                  sig do
+                    params(
+                      type:
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                    ).returns(T.attached_class)
+                  end
+                  def self.new(type:)
+                  end
+
+                  sig do
+                    override.returns(
+                      {
+                        type:
+                          MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
+                      }
+                    )
+                  end
+                  def to_hash
+                  end
+
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    TaggedSymbol =
+                      T.type_alias do
+                        T.all(
+                          Symbol,
+                          MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type
+                        )
+                      end
+                    OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                    NONE =
+                      T.let(
+                        :NONE,
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
+                      )
+
+                    sig do
+                      override.returns(
+                        T::Array[
+                          MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
+                        ]
+                      )
+                    end
+                    def self.values
+                    end
+                  end
+                end
+
+                class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs,
+                        MetronomeSDK::Internal::AnyHash
+                      )
+                    end
+
+                  sig { returns(T::Array[String]) }
+                  attr_accessor :contract_ids
+
+                  sig do
+                    returns(
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
+                    )
+                  end
+                  attr_accessor :type
+
+                  sig do
+                    params(
+                      contract_ids: T::Array[String],
+                      type:
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
+                    ).returns(T.attached_class)
+                  end
+                  def self.new(contract_ids:, type:)
+                  end
+
+                  sig do
+                    override.returns(
+                      {
+                        contract_ids: T::Array[String],
+                        type:
+                          MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
+                      }
+                    )
+                  end
+                  def to_hash
+                  end
+
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    TaggedSymbol =
+                      T.type_alias do
+                        T.all(
+                          Symbol,
+                          MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type
+                        )
+                      end
+                    OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                    CONTRACT_IDS =
+                      T.let(
+                        :CONTRACT_IDS,
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
+                      )
+
+                    sig do
+                      override.returns(
+                        T::Array[
+                          MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
+                        ]
+                      )
+                    end
+                    def self.values
+                    end
+                  end
+                end
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::Variants
+                    ]
+                  )
+                end
+                def self.variants
+                end
+              end
+            end
+
             class InvoiceAmount < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
@@ -6738,7 +7101,6 @@ module MetronomeSDK
 
             # Determines whether the first and last commit will be prorated. If not provided,
             # the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
-            # subscription_config:
             module Proration
               extend MetronomeSDK::Internal::Type::Enum
 
@@ -7024,6 +7386,24 @@ module MetronomeSDK
             sig { params(ending_before: Time).void }
             attr_writer :ending_before
 
+            # Optional configuration for recurring commit/credit hierarchy access control
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration
+                )
+              )
+            end
+            attr_reader :hierarchy_configuration
+
+            sig do
+              params(
+                hierarchy_configuration:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::OrHash
+              ).void
+            end
+            attr_writer :hierarchy_configuration
+
             # Displayed on invoices. Will be passed through to the individual commits
             sig { returns(T.nilable(String)) }
             attr_reader :name
@@ -7040,7 +7420,6 @@ module MetronomeSDK
 
             # Determines whether the first and last commit will be prorated. If not provided,
             # the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
-            # subscription_config:
             sig do
               returns(
                 T.nilable(
@@ -7132,6 +7511,8 @@ module MetronomeSDK
                   MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::Contract::OrHash,
                 description: String,
                 ending_before: Time,
+                hierarchy_configuration:
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::OrHash,
                 name: String,
                 netsuite_sales_order_id: String,
                 proration:
@@ -7167,13 +7548,14 @@ module MetronomeSDK
               description: nil,
               # Determines when the contract will stop creating recurring commits. Optional
               ending_before: nil,
+              # Optional configuration for recurring commit/credit hierarchy access control
+              hierarchy_configuration: nil,
               # Displayed on invoices. Will be passed through to the individual commits
               name: nil,
               # Will be passed down to the individual commits
               netsuite_sales_order_id: nil,
               # Determines whether the first and last commit will be prorated. If not provided,
               # the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
-              # subscription_config:
               proration: nil,
               # The frequency at which the recurring commits will be created. If not provided: -
               # The commits will be created on the usage invoice frequency. If provided: - The
@@ -7212,6 +7594,8 @@ module MetronomeSDK
                     MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::Contract,
                   description: String,
                   ending_before: Time,
+                  hierarchy_configuration:
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration,
                   name: String,
                   netsuite_sales_order_id: String,
                   proration:
@@ -7432,9 +7816,276 @@ module MetronomeSDK
               end
             end
 
+            class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig do
+                returns(
+                  MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::Variants
+                )
+              end
+              attr_accessor :child_access
+
+              # Optional configuration for recurring commit/credit hierarchy access control
+              sig do
+                params(
+                  child_access:
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::OrHash,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::OrHash
+                    )
+                ).returns(T.attached_class)
+              end
+              def self.new(child_access:)
+              end
+
+              sig do
+                override.returns(
+                  {
+                    child_access:
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::Variants
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              module ChildAccess
+                extend MetronomeSDK::Internal::Type::Union
+
+                Variants =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
+                    )
+                  end
+
+                class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                        MetronomeSDK::Internal::AnyHash
+                      )
+                    end
+
+                  sig do
+                    returns(
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
+                    )
+                  end
+                  attr_accessor :type
+
+                  sig do
+                    params(
+                      type:
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
+                    ).returns(T.attached_class)
+                  end
+                  def self.new(type:)
+                  end
+
+                  sig do
+                    override.returns(
+                      {
+                        type:
+                          MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
+                      }
+                    )
+                  end
+                  def to_hash
+                  end
+
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    TaggedSymbol =
+                      T.type_alias do
+                        T.all(
+                          Symbol,
+                          MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type
+                        )
+                      end
+                    OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                    ALL =
+                      T.let(
+                        :ALL,
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
+                      )
+
+                    sig do
+                      override.returns(
+                        T::Array[
+                          MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
+                        ]
+                      )
+                    end
+                    def self.values
+                    end
+                  end
+                end
+
+                class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                        MetronomeSDK::Internal::AnyHash
+                      )
+                    end
+
+                  sig do
+                    returns(
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
+                    )
+                  end
+                  attr_accessor :type
+
+                  sig do
+                    params(
+                      type:
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                    ).returns(T.attached_class)
+                  end
+                  def self.new(type:)
+                  end
+
+                  sig do
+                    override.returns(
+                      {
+                        type:
+                          MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
+                      }
+                    )
+                  end
+                  def to_hash
+                  end
+
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    TaggedSymbol =
+                      T.type_alias do
+                        T.all(
+                          Symbol,
+                          MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type
+                        )
+                      end
+                    OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                    NONE =
+                      T.let(
+                        :NONE,
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
+                      )
+
+                    sig do
+                      override.returns(
+                        T::Array[
+                          MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
+                        ]
+                      )
+                    end
+                    def self.values
+                    end
+                  end
+                end
+
+                class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs,
+                        MetronomeSDK::Internal::AnyHash
+                      )
+                    end
+
+                  sig { returns(T::Array[String]) }
+                  attr_accessor :contract_ids
+
+                  sig do
+                    returns(
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
+                    )
+                  end
+                  attr_accessor :type
+
+                  sig do
+                    params(
+                      contract_ids: T::Array[String],
+                      type:
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
+                    ).returns(T.attached_class)
+                  end
+                  def self.new(contract_ids:, type:)
+                  end
+
+                  sig do
+                    override.returns(
+                      {
+                        contract_ids: T::Array[String],
+                        type:
+                          MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
+                      }
+                    )
+                  end
+                  def to_hash
+                  end
+
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    TaggedSymbol =
+                      T.type_alias do
+                        T.all(
+                          Symbol,
+                          MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type
+                        )
+                      end
+                    OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                    CONTRACT_IDS =
+                      T.let(
+                        :CONTRACT_IDS,
+                        MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
+                      )
+
+                    sig do
+                      override.returns(
+                        T::Array[
+                          MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
+                        ]
+                      )
+                    end
+                    def self.values
+                    end
+                  end
+                end
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::Variants
+                    ]
+                  )
+                end
+                def self.variants
+                end
+              end
+            end
+
             # Determines whether the first and last commit will be prorated. If not provided,
             # the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
-            # subscription_config:
             module Proration
               extend MetronomeSDK::Internal::Type::Enum
 

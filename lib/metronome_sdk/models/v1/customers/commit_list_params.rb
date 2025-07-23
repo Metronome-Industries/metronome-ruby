@@ -57,6 +57,12 @@ module MetronomeSDK
           #   @return [Boolean, nil]
           optional :include_ledgers, MetronomeSDK::Internal::Type::Boolean
 
+          # @!attribute limit
+          #   The maximum number of commits to return. Defaults to 25.
+          #
+          #   @return [Integer, nil]
+          optional :limit, Integer
+
           # @!attribute next_page
           #   The next page token from a previous response.
           #
@@ -69,7 +75,7 @@ module MetronomeSDK
           #   @return [Time, nil]
           optional :starting_at, Time
 
-          # @!method initialize(customer_id:, commit_id: nil, covering_date: nil, effective_before: nil, include_archived: nil, include_balance: nil, include_contract_commits: nil, include_ledgers: nil, next_page: nil, starting_at: nil, request_options: {})
+          # @!method initialize(customer_id:, commit_id: nil, covering_date: nil, effective_before: nil, include_archived: nil, include_balance: nil, include_contract_commits: nil, include_ledgers: nil, limit: nil, next_page: nil, starting_at: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::Customers::CommitListParams} for more details.
           #
@@ -88,6 +94,8 @@ module MetronomeSDK
           #   @param include_contract_commits [Boolean] Include commits on the contract level.
           #
           #   @param include_ledgers [Boolean] Include commit ledgers in the response. Setting this flag may cause the query to
+          #
+          #   @param limit [Integer] The maximum number of commits to return. Defaults to 25.
           #
           #   @param next_page [String] The next page token from a previous response.
           #
