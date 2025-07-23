@@ -103,7 +103,6 @@ module MetronomeSDK
               include_balance: T::Boolean,
               include_contract_commits: T::Boolean,
               include_ledgers: T::Boolean,
-              limit: Integer,
               next_page: String,
               starting_at: Time,
               request_options: MetronomeSDK::RequestOptions::OrHash
@@ -126,8 +125,6 @@ module MetronomeSDK
             # Include commit ledgers in the response. Setting this flag may cause the query to
             # be slower.
             include_ledgers: nil,
-            # The maximum number of commits to return. Defaults to 25.
-            limit: nil,
             # The next page token from a previous response.
             next_page: nil,
             # Include only commits that have any access on or after the provided date

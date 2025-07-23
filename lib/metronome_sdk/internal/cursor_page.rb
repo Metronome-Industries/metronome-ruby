@@ -24,7 +24,7 @@ module MetronomeSDK
 
       # @return [Boolean]
       def next_page?
-        !data.to_a.empty? && !next_page_.to_s.empty?
+        !next_page_.to_s.empty?
       end
 
       # @raise [MetronomeSDK::HTTP::Error]
