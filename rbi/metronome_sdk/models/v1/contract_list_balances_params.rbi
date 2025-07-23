@@ -68,6 +68,13 @@ module MetronomeSDK
         sig { params(include_ledgers: T::Boolean).void }
         attr_writer :include_ledgers
 
+        # The maximum number of commits to return. Defaults to 25.
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :limit
+
+        sig { params(limit: Integer).void }
+        attr_writer :limit
+
         # The next page token from a previous response.
         sig { returns(T.nilable(String)) }
         attr_reader :next_page
@@ -92,6 +99,7 @@ module MetronomeSDK
             include_balance: T::Boolean,
             include_contract_balances: T::Boolean,
             include_ledgers: T::Boolean,
+            limit: Integer,
             next_page: String,
             starting_at: Time,
             request_options: MetronomeSDK::RequestOptions::OrHash
@@ -114,6 +122,8 @@ module MetronomeSDK
           # Include ledgers in the response. Setting this flag may cause the query to be
           # slower.
           include_ledgers: nil,
+          # The maximum number of commits to return. Defaults to 25.
+          limit: nil,
           # The next page token from a previous response.
           next_page: nil,
           # Include only balances that have any access on or after the provided date
@@ -133,6 +143,7 @@ module MetronomeSDK
               include_balance: T::Boolean,
               include_contract_balances: T::Boolean,
               include_ledgers: T::Boolean,
+              limit: Integer,
               next_page: String,
               starting_at: Time,
               request_options: MetronomeSDK::RequestOptions
