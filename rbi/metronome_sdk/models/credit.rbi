@@ -108,7 +108,8 @@ module MetronomeSDK
                 MetronomeSDK::Credit::Ledger::CreditExpirationLedgerEntry::OrHash,
                 MetronomeSDK::Credit::Ledger::CreditCanceledLedgerEntry::OrHash,
                 MetronomeSDK::Credit::Ledger::CreditCreditedLedgerEntry::OrHash,
-                MetronomeSDK::Credit::Ledger::CreditManualLedgerEntry::OrHash
+                MetronomeSDK::Credit::Ledger::CreditManualLedgerEntry::OrHash,
+                MetronomeSDK::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::OrHash
               )
             ]
         ).void
@@ -195,7 +196,8 @@ module MetronomeSDK
                 MetronomeSDK::Credit::Ledger::CreditExpirationLedgerEntry::OrHash,
                 MetronomeSDK::Credit::Ledger::CreditCanceledLedgerEntry::OrHash,
                 MetronomeSDK::Credit::Ledger::CreditCreditedLedgerEntry::OrHash,
-                MetronomeSDK::Credit::Ledger::CreditManualLedgerEntry::OrHash
+                MetronomeSDK::Credit::Ledger::CreditManualLedgerEntry::OrHash,
+                MetronomeSDK::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::OrHash
               )
             ],
           name: String,
@@ -624,7 +626,8 @@ module MetronomeSDK
               MetronomeSDK::Credit::Ledger::CreditExpirationLedgerEntry,
               MetronomeSDK::Credit::Ledger::CreditCanceledLedgerEntry,
               MetronomeSDK::Credit::Ledger::CreditCreditedLedgerEntry,
-              MetronomeSDK::Credit::Ledger::CreditManualLedgerEntry
+              MetronomeSDK::Credit::Ledger::CreditManualLedgerEntry,
+              MetronomeSDK::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry
             )
           end
 
@@ -1121,6 +1124,87 @@ module MetronomeSDK
               override.returns(
                 T::Array[
                   MetronomeSDK::Credit::Ledger::CreditManualLedgerEntry::Type::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
+        class CreditSeatBasedAdjustmentLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          sig { returns(Float) }
+          attr_accessor :amount
+
+          sig { returns(String) }
+          attr_accessor :segment_id
+
+          sig { returns(Time) }
+          attr_accessor :timestamp
+
+          sig do
+            returns(
+              MetronomeSDK::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::Type::TaggedSymbol
+            )
+          end
+          attr_accessor :type
+
+          sig do
+            params(
+              amount: Float,
+              segment_id: String,
+              timestamp: Time,
+              type:
+                MetronomeSDK::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::Type::OrSymbol
+            ).returns(T.attached_class)
+          end
+          def self.new(amount:, segment_id:, timestamp:, type:)
+          end
+
+          sig do
+            override.returns(
+              {
+                amount: Float,
+                segment_id: String,
+                timestamp: Time,
+                type:
+                  MetronomeSDK::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::Type::TaggedSymbol
+              }
+            )
+          end
+          def to_hash
+          end
+
+          module Type
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::Type
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            CREDIT_SEAT_BASED_ADJUSTMENT =
+              T.let(
+                :CREDIT_SEAT_BASED_ADJUSTMENT,
+                MetronomeSDK::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::Type::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::Type::TaggedSymbol
                 ]
               )
             end
