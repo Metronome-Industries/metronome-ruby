@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.0 (2025-07-24)
+
+Full Changelog: [v0.1.0-alpha.4...v0.1.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v0.1.0-alpha.4...v0.1.0)
+
+### Features
+
+* **api:** Allow for Pagination past empty pages ([b608e5e](https://github.com/Metronome-Industries/metronome-ruby/commit/b608e5e7b9109f7859371c4816d07b4ccd25e976))
+* **api:** api update ([44cce30](https://github.com/Metronome-Industries/metronome-ruby/commit/44cce30fe4d15233fe4bb0b42cd46ceda2faa0a7))
+* **api:** api update ([d205568](https://github.com/Metronome-Industries/metronome-ruby/commit/d2055689feba86efebd0e926cf2c18a8f6682080))
+* **api:** api update ([ead65db](https://github.com/Metronome-Industries/metronome-ruby/commit/ead65db988e30be27317d6e0dfc57fc8a58f8aad))
+
+
+### Chores
+
+* **internal:** version bump ([eabd459](https://github.com/Metronome-Industries/metronome-ruby/commit/eabd459fc04f484ee853a336b2f0d30f6b2382b1))
+
 ## 0.1.0-alpha.4 (2025-07-18)
 
 Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/Metronome-Industries/metronome-ruby/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
