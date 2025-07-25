@@ -306,6 +306,13 @@ module MetronomeSDK
             #   @return [String, nil]
             optional :description, String
 
+            # @!attribute hierarchy_configuration
+            #   Optional configuration for commit hierarchy access control
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration, nil]
+            optional :hierarchy_configuration,
+                     -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration }
+
             # @!attribute invoice_schedule
             #   The schedule that the customer will be invoiced for this commit.
             #
@@ -357,7 +364,7 @@ module MetronomeSDK
             optional :specifiers,
                      -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Specifier] }
 
-            # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil)
+            # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, hierarchy_configuration: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit} for
             #   more details.
@@ -375,6 +382,8 @@ module MetronomeSDK
             #   @param applicable_product_tags [Array<String>]
             #
             #   @param description [String]
+            #
+            #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration] Optional configuration for commit hierarchy access control
             #
             #   @param invoice_schedule [MetronomeSDK::Models::SchedulePointInTime] The schedule that the customer will be invoiced for this commit.
             #
@@ -418,6 +427,103 @@ module MetronomeSDK
 
               # @!method self.values
               #   @return [Array<Symbol>]
+            end
+
+            # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit#hierarchy_configuration
+            class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute child_access
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+              required :child_access,
+                       union: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess }
+
+              # @!method initialize(child_access:)
+              #   Optional configuration for commit hierarchy access control
+              #
+              #   @param child_access [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+
+              # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration#child_access
+              module ChildAccess
+                extend MetronomeSDK::Internal::Type::Union
+
+                variant -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll }
+
+                variant -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone }
+
+                variant -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs }
+
+                class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+                  # @!attribute type
+                  #
+                  #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+                  required :type,
+                           enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type }
+
+                  # @!method initialize(type:)
+                  #   @param type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+
+                  # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll#type
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    ALL = :ALL
+
+                    # @!method self.values
+                    #   @return [Array<Symbol>]
+                  end
+                end
+
+                class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
+                  # @!attribute type
+                  #
+                  #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
+                  required :type,
+                           enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type }
+
+                  # @!method initialize(type:)
+                  #   @param type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
+
+                  # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone#type
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    NONE = :NONE
+
+                    # @!method self.values
+                    #   @return [Array<Symbol>]
+                  end
+                end
+
+                class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+                  # @!attribute contract_ids
+                  #
+                  #   @return [Array<String>]
+                  required :contract_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+                  # @!attribute type
+                  #
+                  #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+                  required :type,
+                           enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type }
+
+                  # @!method initialize(contract_ids:, type:)
+                  #   @param contract_ids [Array<String>]
+                  #   @param type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+
+                  # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs#type
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    CONTRACT_IDS = :CONTRACT_IDS
+
+                    # @!method self.values
+                    #   @return [Array<Symbol>]
+                  end
+                end
+
+                # @!method self.variants
+                #   @return [Array(MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs)]
+              end
             end
 
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit#rate_type
@@ -509,6 +615,13 @@ module MetronomeSDK
             #   @return [String, nil]
             optional :description, String
 
+            # @!attribute hierarchy_configuration
+            #   Optional configuration for recurring credit hierarchy access control
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration, nil]
+            optional :hierarchy_configuration,
+                     -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration }
+
             # @!attribute name
             #
             #   @return [String, nil]
@@ -543,7 +656,7 @@ module MetronomeSDK
             optional :specifiers,
                      -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Specifier] }
 
-            # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, salesforce_opportunity_id: nil, specifiers: nil)
+            # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, salesforce_opportunity_id: nil, specifiers: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit} for
             #   more details.
@@ -561,6 +674,8 @@ module MetronomeSDK
             #   @param applicable_product_tags [Array<String>]
             #
             #   @param description [String]
+            #
+            #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration] Optional configuration for recurring credit hierarchy access control
             #
             #   @param name [String]
             #
@@ -597,6 +712,103 @@ module MetronomeSDK
 
               # @!method self.values
               #   @return [Array<Symbol>]
+            end
+
+            # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit#hierarchy_configuration
+            class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute child_access
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+              required :child_access,
+                       union: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess }
+
+              # @!method initialize(child_access:)
+              #   Optional configuration for recurring credit hierarchy access control
+              #
+              #   @param child_access [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+
+              # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration#child_access
+              module ChildAccess
+                extend MetronomeSDK::Internal::Type::Union
+
+                variant -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll }
+
+                variant -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone }
+
+                variant -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs }
+
+                class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+                  # @!attribute type
+                  #
+                  #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+                  required :type,
+                           enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type }
+
+                  # @!method initialize(type:)
+                  #   @param type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+
+                  # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll#type
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    ALL = :ALL
+
+                    # @!method self.values
+                    #   @return [Array<Symbol>]
+                  end
+                end
+
+                class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
+                  # @!attribute type
+                  #
+                  #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
+                  required :type,
+                           enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type }
+
+                  # @!method initialize(type:)
+                  #   @param type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
+
+                  # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone#type
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    NONE = :NONE
+
+                    # @!method self.values
+                    #   @return [Array<Symbol>]
+                  end
+                end
+
+                class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+                  # @!attribute contract_ids
+                  #
+                  #   @return [Array<String>]
+                  required :contract_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+                  # @!attribute type
+                  #
+                  #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+                  required :type,
+                           enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type }
+
+                  # @!method initialize(contract_ids:, type:)
+                  #   @param contract_ids [Array<String>]
+                  #   @param type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+
+                  # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs#type
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    CONTRACT_IDS = :CONTRACT_IDS
+
+                    # @!method self.values
+                    #   @return [Array<Symbol>]
+                  end
+                end
+
+                # @!method self.variants
+                #   @return [Array(MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs)]
+              end
             end
 
             class Specifier < MetronomeSDK::Internal::Type::BaseModel
@@ -1330,7 +1542,7 @@ module MetronomeSDK
             optional :ending_before, Time
 
             # @!attribute hierarchy_configuration
-            #   Optional configuration for recurring commit/credit hierarchy access control
+            #   Optional configuration for recurring credit hierarchy access control
             #
             #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration, nil]
             optional :hierarchy_configuration,
@@ -1420,7 +1632,7 @@ module MetronomeSDK
             #
             #   @param ending_before [Time] Determines when the contract will stop creating recurring commits. Optional
             #
-            #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration] Optional configuration for recurring commit/credit hierarchy access control
+            #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration] Optional configuration for recurring credit hierarchy access control
             #
             #   @param invoice_amount [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::InvoiceAmount] The amount the customer should be billed for the commit. Not required.
             #
@@ -1541,7 +1753,7 @@ module MetronomeSDK
                        union: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess }
 
               # @!method initialize(child_access:)
-              #   Optional configuration for recurring commit/credit hierarchy access control
+              #   Optional configuration for recurring credit hierarchy access control
               #
               #   @param child_access [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
 
@@ -1804,7 +2016,7 @@ module MetronomeSDK
             optional :ending_before, Time
 
             # @!attribute hierarchy_configuration
-            #   Optional configuration for recurring commit/credit hierarchy access control
+            #   Optional configuration for recurring credit hierarchy access control
             #
             #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration, nil]
             optional :hierarchy_configuration,
@@ -1887,7 +2099,7 @@ module MetronomeSDK
             #
             #   @param ending_before [Time] Determines when the contract will stop creating recurring commits. Optional
             #
-            #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration] Optional configuration for recurring commit/credit hierarchy access control
+            #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration] Optional configuration for recurring credit hierarchy access control
             #
             #   @param name [String] Displayed on invoices. Will be passed through to the individual commits
             #
@@ -2006,7 +2218,7 @@ module MetronomeSDK
                        union: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess }
 
               # @!method initialize(child_access:)
-              #   Optional configuration for recurring commit/credit hierarchy access control
+              #   Optional configuration for recurring credit hierarchy access control
               #
               #   @param child_access [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
 
@@ -2858,6 +3070,13 @@ module MetronomeSDK
             #   @return [Array<String>, nil]
             optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
 
+            # @!attribute hierarchy_configuration
+            #   Optional configuration for commit hierarchy access control
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration, nil]
+            optional :hierarchy_configuration,
+                     -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration }
+
             # @!attribute invoice_schedule
             #
             #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule, nil]
@@ -2895,7 +3114,7 @@ module MetronomeSDK
                      -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::Specifier] },
                      nil?: true
 
-            # @!method initialize(id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, product_id: nil, rollover_fraction: nil, specifiers: nil)
+            # @!method initialize(id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, product_id: nil, rollover_fraction: nil, specifiers: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit}
             #   for more details.
@@ -2907,6 +3126,8 @@ module MetronomeSDK
             #   @param applicable_product_ids [Array<String>, nil] Which products the commit applies to. If applicable_product_ids, applicable_prod
             #
             #   @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If applicable*product_ids, applicable_product*
+            #
+            #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration] Optional configuration for commit hierarchy access control
             #
             #   @param invoice_schedule [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule]
             #
@@ -3024,6 +3245,103 @@ module MetronomeSDK
                 #   @param ending_before [Time] RFC 3339 timestamp (exclusive)
                 #
                 #   @param starting_at [Time] RFC 3339 timestamp (inclusive)
+              end
+            end
+
+            # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit#hierarchy_configuration
+            class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute child_access
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+              required :child_access,
+                       union: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess }
+
+              # @!method initialize(child_access:)
+              #   Optional configuration for commit hierarchy access control
+              #
+              #   @param child_access [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+
+              # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration#child_access
+              module ChildAccess
+                extend MetronomeSDK::Internal::Type::Union
+
+                variant -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll }
+
+                variant -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone }
+
+                variant -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs }
+
+                class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+                  # @!attribute type
+                  #
+                  #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+                  required :type,
+                           enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type }
+
+                  # @!method initialize(type:)
+                  #   @param type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+
+                  # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll#type
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    ALL = :ALL
+
+                    # @!method self.values
+                    #   @return [Array<Symbol>]
+                  end
+                end
+
+                class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
+                  # @!attribute type
+                  #
+                  #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
+                  required :type,
+                           enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type }
+
+                  # @!method initialize(type:)
+                  #   @param type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
+
+                  # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone#type
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    NONE = :NONE
+
+                    # @!method self.values
+                    #   @return [Array<Symbol>]
+                  end
+                end
+
+                class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+                  # @!attribute contract_ids
+                  #
+                  #   @return [Array<String>]
+                  required :contract_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+                  # @!attribute type
+                  #
+                  #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+                  required :type,
+                           enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type }
+
+                  # @!method initialize(contract_ids:, type:)
+                  #   @param contract_ids [Array<String>]
+                  #   @param type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+
+                  # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs#type
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    CONTRACT_IDS = :CONTRACT_IDS
+
+                    # @!method self.values
+                    #   @return [Array<Symbol>]
+                  end
+                end
+
+                # @!method self.variants
+                #   @return [Array(MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs)]
               end
             end
 
@@ -3188,6 +3506,13 @@ module MetronomeSDK
             optional :access_schedule,
                      -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule }
 
+            # @!attribute hierarchy_configuration
+            #   Optional configuration for credit hierarchy access control
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration, nil]
+            optional :hierarchy_configuration,
+                     -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration }
+
             # @!attribute name
             #
             #   @return [String, nil]
@@ -3203,11 +3528,17 @@ module MetronomeSDK
             #   @return [Float, nil]
             optional :rollover_fraction, Float, nil?: true
 
-            # @!method initialize(id:, access_schedule: nil, name: nil, netsuite_sales_order_id: nil, rollover_fraction: nil)
+            # @!method initialize(id:, access_schedule: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, rollover_fraction: nil)
             #   @param id [String]
+            #
             #   @param access_schedule [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule]
+            #
+            #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration] Optional configuration for credit hierarchy access control
+            #
             #   @param name [String]
+            #
             #   @param netsuite_sales_order_id [String, nil]
+            #
             #   @param rollover_fraction [Float, nil]
 
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit#access_schedule
@@ -3314,6 +3645,103 @@ module MetronomeSDK
                 #   @param ending_before [Time] RFC 3339 timestamp (exclusive)
                 #
                 #   @param starting_at [Time] RFC 3339 timestamp (inclusive)
+              end
+            end
+
+            # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit#hierarchy_configuration
+            class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute child_access
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+              required :child_access,
+                       union: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess }
+
+              # @!method initialize(child_access:)
+              #   Optional configuration for credit hierarchy access control
+              #
+              #   @param child_access [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+
+              # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration#child_access
+              module ChildAccess
+                extend MetronomeSDK::Internal::Type::Union
+
+                variant -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll }
+
+                variant -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone }
+
+                variant -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs }
+
+                class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+                  # @!attribute type
+                  #
+                  #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+                  required :type,
+                           enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type }
+
+                  # @!method initialize(type:)
+                  #   @param type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+
+                  # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll#type
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    ALL = :ALL
+
+                    # @!method self.values
+                    #   @return [Array<Symbol>]
+                  end
+                end
+
+                class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
+                  # @!attribute type
+                  #
+                  #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
+                  required :type,
+                           enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type }
+
+                  # @!method initialize(type:)
+                  #   @param type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
+
+                  # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone#type
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    NONE = :NONE
+
+                    # @!method self.values
+                    #   @return [Array<Symbol>]
+                  end
+                end
+
+                class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+                  # @!attribute contract_ids
+                  #
+                  #   @return [Array<String>]
+                  required :contract_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+                  # @!attribute type
+                  #
+                  #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+                  required :type,
+                           enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type }
+
+                  # @!method initialize(contract_ids:, type:)
+                  #   @param contract_ids [Array<String>]
+                  #   @param type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+
+                  # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs#type
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    CONTRACT_IDS = :CONTRACT_IDS
+
+                    # @!method self.values
+                    #   @return [Array<Symbol>]
+                  end
+                end
+
+                # @!method self.variants
+                #   @return [Array(MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs)]
               end
             end
           end
