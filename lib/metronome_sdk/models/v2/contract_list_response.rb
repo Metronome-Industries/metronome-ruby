@@ -2653,6 +2653,8 @@ module MetronomeSDK
               #   or credit. A customer's usage needs to meet the condition of at least one of the
               #   specifiers to contribute to a commit's or credit's drawdown. This field cannot
               #   be used together with `applicable_product_ids` or `applicable_product_tags`.
+              #   Instead, to target usage by product or product tag, pass those values in the
+              #   body of `specifiers`.
               #
               #   @return [Array<MetronomeSDK::Models::V2::ContractListResponse::Data::PrepaidBalanceThresholdConfiguration::Commit::Specifier>, nil]
               optional :specifiers,
@@ -2945,7 +2947,7 @@ module MetronomeSDK
             optional :ending_before, Time
 
             # @!attribute hierarchy_configuration
-            #   Optional configuration for recurring commit/credit hierarchy access control
+            #   Optional configuration for recurring credit hierarchy access control
             #
             #   @return [MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration, nil]
             optional :hierarchy_configuration,
@@ -3035,7 +3037,7 @@ module MetronomeSDK
             #
             #   @param ending_before [Time] Determines when the contract will stop creating recurring commits. Optional
             #
-            #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration] Optional configuration for recurring commit/credit hierarchy access control
+            #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration] Optional configuration for recurring credit hierarchy access control
             #
             #   @param invoice_amount [MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::InvoiceAmount] The amount the customer should be billed for the commit. Not required.
             #
@@ -3156,7 +3158,7 @@ module MetronomeSDK
                        union: -> { MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess }
 
               # @!method initialize(child_access:)
-              #   Optional configuration for recurring commit/credit hierarchy access control
+              #   Optional configuration for recurring credit hierarchy access control
               #
               #   @param child_access [MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
 
@@ -3417,7 +3419,7 @@ module MetronomeSDK
             optional :ending_before, Time
 
             # @!attribute hierarchy_configuration
-            #   Optional configuration for recurring commit/credit hierarchy access control
+            #   Optional configuration for recurring credit hierarchy access control
             #
             #   @return [MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration, nil]
             optional :hierarchy_configuration,
@@ -3500,7 +3502,7 @@ module MetronomeSDK
             #
             #   @param ending_before [Time] Determines when the contract will stop creating recurring commits. Optional
             #
-            #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration] Optional configuration for recurring commit/credit hierarchy access control
+            #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration] Optional configuration for recurring credit hierarchy access control
             #
             #   @param name [String] Displayed on invoices. Will be passed through to the individual commits
             #
@@ -3619,7 +3621,7 @@ module MetronomeSDK
                        union: -> { MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess }
 
               # @!method initialize(child_access:)
-              #   Optional configuration for recurring commit/credit hierarchy access control
+              #   Optional configuration for recurring credit hierarchy access control
               #
               #   @param child_access [MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
 

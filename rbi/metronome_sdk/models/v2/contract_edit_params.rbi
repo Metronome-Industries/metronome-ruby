@@ -930,6 +930,8 @@ module MetronomeSDK
           # or credit. A customer's usage needs to meet the condition of at least one of the
           # specifiers to contribute to a commit's or credit's drawdown. This field cannot
           # be used together with `applicable_product_ids` or `applicable_product_tags`.
+          # Instead, to target usage by product or product tag, pass those values in the
+          # body of `specifiers`.
           sig do
             returns(
               T.nilable(
@@ -1033,6 +1035,8 @@ module MetronomeSDK
             # or credit. A customer's usage needs to meet the condition of at least one of the
             # specifiers to contribute to a commit's or credit's drawdown. This field cannot
             # be used together with `applicable_product_ids` or `applicable_product_tags`.
+            # Instead, to target usage by product or product tag, pass those values in the
+            # body of `specifiers`.
             specifiers: nil,
             # A temporary ID for the commit that can be used to reference the commit for
             # commit specific overrides.
@@ -2441,6 +2445,8 @@ module MetronomeSDK
           # or credit. A customer's usage needs to meet the condition of at least one of the
           # specifiers to contribute to a commit's or credit's drawdown. This field cannot
           # be used together with `applicable_product_ids` or `applicable_product_tags`.
+          # Instead, to target usage by product or product tag, pass those values in the
+          # body of `specifiers`.
           sig do
             returns(
               T.nilable(
@@ -2511,6 +2517,8 @@ module MetronomeSDK
             # or credit. A customer's usage needs to meet the condition of at least one of the
             # specifiers to contribute to a commit's or credit's drawdown. This field cannot
             # be used together with `applicable_product_ids` or `applicable_product_tags`.
+            # Instead, to target usage by product or product tag, pass those values in the
+            # body of `specifiers`.
             specifiers: nil
           )
           end
@@ -4369,6 +4377,8 @@ module MetronomeSDK
             # or credit. A customer's usage needs to meet the condition of at least one of the
             # specifiers to contribute to a commit's or credit's drawdown. This field cannot
             # be used together with `applicable_product_ids` or `applicable_product_tags`.
+            # Instead, to target usage by product or product tag, pass those values in the
+            # body of `specifiers`.
             sig do
               returns(
                 T.nilable(
@@ -4423,6 +4433,8 @@ module MetronomeSDK
               # or credit. A customer's usage needs to meet the condition of at least one of the
               # specifiers to contribute to a commit's or credit's drawdown. This field cannot
               # be used together with `applicable_product_ids` or `applicable_product_tags`.
+              # Instead, to target usage by product or product tag, pass those values in the
+              # body of `specifiers`.
               specifiers: nil
             )
             end
@@ -5036,7 +5048,7 @@ module MetronomeSDK
           sig { params(ending_before: Time).void }
           attr_writer :ending_before
 
-          # Optional configuration for recurring commit/credit hierarchy access control
+          # Optional configuration for recurring credit hierarchy access control
           sig do
             returns(
               T.nilable(
@@ -5158,6 +5170,8 @@ module MetronomeSDK
           # or credit. A customer's usage needs to meet the condition of at least one of the
           # specifiers to contribute to a commit's or credit's drawdown. This field cannot
           # be used together with `applicable_product_ids` or `applicable_product_tags`.
+          # Instead, to target usage by product or product tag, pass those values in the
+          # body of `specifiers`.
           sig do
             returns(
               T.nilable(
@@ -5240,7 +5254,7 @@ module MetronomeSDK
             description: nil,
             # Determines when the contract will stop creating recurring commits. optional
             ending_before: nil,
-            # Optional configuration for recurring commit/credit hierarchy access control
+            # Optional configuration for recurring credit hierarchy access control
             hierarchy_configuration: nil,
             # The amount the customer should be billed for the commit. Not required.
             invoice_amount: nil,
@@ -5267,6 +5281,8 @@ module MetronomeSDK
             # or credit. A customer's usage needs to meet the condition of at least one of the
             # specifiers to contribute to a commit's or credit's drawdown. This field cannot
             # be used together with `applicable_product_ids` or `applicable_product_tags`.
+            # Instead, to target usage by product or product tag, pass those values in the
+            # body of `specifiers`.
             specifiers: nil,
             # A temporary ID that can be used to reference the recurring commit for commit
             # specific overrides.
@@ -5465,7 +5481,7 @@ module MetronomeSDK
             end
             attr_accessor :child_access
 
-            # Optional configuration for recurring commit/credit hierarchy access control
+            # Optional configuration for recurring credit hierarchy access control
             sig do
               params(
                 child_access:
@@ -6043,7 +6059,7 @@ module MetronomeSDK
           sig { params(ending_before: Time).void }
           attr_writer :ending_before
 
-          # Optional configuration for recurring commit/credit hierarchy access control
+          # Optional configuration for recurring credit hierarchy access control
           sig do
             returns(
               T.nilable(
@@ -6147,6 +6163,8 @@ module MetronomeSDK
           # or credit. A customer's usage needs to meet the condition of at least one of the
           # specifiers to contribute to a commit's or credit's drawdown. This field cannot
           # be used together with `applicable_product_ids` or `applicable_product_tags`.
+          # Instead, to target usage by product or product tag, pass those values in the
+          # body of `specifiers`.
           sig do
             returns(
               T.nilable(
@@ -6227,7 +6245,7 @@ module MetronomeSDK
             description: nil,
             # Determines when the contract will stop creating recurring commits. optional
             ending_before: nil,
-            # Optional configuration for recurring commit/credit hierarchy access control
+            # Optional configuration for recurring credit hierarchy access control
             hierarchy_configuration: nil,
             # displayed on invoices. will be passed through to the individual commits
             name: nil,
@@ -6252,6 +6270,8 @@ module MetronomeSDK
             # or credit. A customer's usage needs to meet the condition of at least one of the
             # specifiers to contribute to a commit's or credit's drawdown. This field cannot
             # be used together with `applicable_product_ids` or `applicable_product_tags`.
+            # Instead, to target usage by product or product tag, pass those values in the
+            # body of `specifiers`.
             specifiers: nil,
             # A temporary ID that can be used to reference the recurring commit for commit
             # specific overrides.
@@ -6448,7 +6468,7 @@ module MetronomeSDK
             end
             attr_accessor :child_access
 
-            # Optional configuration for recurring commit/credit hierarchy access control
+            # Optional configuration for recurring credit hierarchy access control
             sig do
               params(
                 child_access:
@@ -8318,10 +8338,11 @@ module MetronomeSDK
                 )
               end
 
-            # Indicates how mid-period quantity adjustments are invoiced. If BILL_IMMEDIATELY
-            # is selected, the quantity increase will be billed on the scheduled date. If
-            # BILL_ON_NEXT_COLLECTION_DATE is selected, the quantity increase will be billed
-            # for in-arrears at the end of the period.
+            # Indicates how mid-period quantity adjustments are invoiced.
+            # **BILL_IMMEDIATELY**: Only available when collection schedule is `ADVANCE`. The
+            # quantity increase will be billed immediately on the scheduled date.
+            # **BILL_ON_NEXT_COLLECTION_DATE**: The quantity increase will be billed for
+            # in-arrears at the end of the period.
             sig do
               returns(
                 T.nilable(
@@ -8354,10 +8375,11 @@ module MetronomeSDK
               ).returns(T.attached_class)
             end
             def self.new(
-              # Indicates how mid-period quantity adjustments are invoiced. If BILL_IMMEDIATELY
-              # is selected, the quantity increase will be billed on the scheduled date. If
-              # BILL_ON_NEXT_COLLECTION_DATE is selected, the quantity increase will be billed
-              # for in-arrears at the end of the period.
+              # Indicates how mid-period quantity adjustments are invoiced.
+              # **BILL_IMMEDIATELY**: Only available when collection schedule is `ADVANCE`. The
+              # quantity increase will be billed immediately on the scheduled date.
+              # **BILL_ON_NEXT_COLLECTION_DATE**: The quantity increase will be billed for
+              # in-arrears at the end of the period.
               invoice_behavior: nil,
               # Indicates if the partial period will be prorated or charged a full amount.
               is_prorated: nil
@@ -8376,10 +8398,11 @@ module MetronomeSDK
             def to_hash
             end
 
-            # Indicates how mid-period quantity adjustments are invoiced. If BILL_IMMEDIATELY
-            # is selected, the quantity increase will be billed on the scheduled date. If
-            # BILL_ON_NEXT_COLLECTION_DATE is selected, the quantity increase will be billed
-            # for in-arrears at the end of the period.
+            # Indicates how mid-period quantity adjustments are invoiced.
+            # **BILL_IMMEDIATELY**: Only available when collection schedule is `ADVANCE`. The
+            # quantity increase will be billed immediately on the scheduled date.
+            # **BILL_ON_NEXT_COLLECTION_DATE**: The quantity increase will be billed for
+            # in-arrears at the end of the period.
             module InvoiceBehavior
               extend MetronomeSDK::Internal::Type::Enum
 
@@ -10315,6 +10338,8 @@ module MetronomeSDK
             # or credit. A customer's usage needs to meet the condition of at least one of the
             # specifiers to contribute to a commit's or credit's drawdown. This field cannot
             # be used together with `applicable_product_ids` or `applicable_product_tags`.
+            # Instead, to target usage by product or product tag, pass those values in the
+            # body of `specifiers`.
             sig do
               returns(
                 T.nilable(
@@ -10360,6 +10385,8 @@ module MetronomeSDK
               # or credit. A customer's usage needs to meet the condition of at least one of the
               # specifiers to contribute to a commit's or credit's drawdown. This field cannot
               # be used together with `applicable_product_ids` or `applicable_product_tags`.
+              # Instead, to target usage by product or product tag, pass those values in the
+              # body of `specifiers`.
               specifiers: nil
             )
             end

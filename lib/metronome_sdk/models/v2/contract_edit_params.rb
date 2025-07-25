@@ -413,6 +413,8 @@ module MetronomeSDK
           #   or credit. A customer's usage needs to meet the condition of at least one of the
           #   specifiers to contribute to a commit's or credit's drawdown. This field cannot
           #   be used together with `applicable_product_ids` or `applicable_product_tags`.
+          #   Instead, to target usage by product or product tag, pass those values in the
+          #   body of `specifiers`.
           #
           #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::AddCommit::Specifier>, nil]
           optional :specifiers,
@@ -1116,6 +1118,8 @@ module MetronomeSDK
           #   or credit. A customer's usage needs to meet the condition of at least one of the
           #   specifiers to contribute to a commit's or credit's drawdown. This field cannot
           #   be used together with `applicable_product_ids` or `applicable_product_tags`.
+          #   Instead, to target usage by product or product tag, pass those values in the
+          #   body of `specifiers`.
           #
           #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::AddCredit::Specifier>, nil]
           optional :specifiers,
@@ -2042,6 +2046,8 @@ module MetronomeSDK
             #   or credit. A customer's usage needs to meet the condition of at least one of the
             #   specifiers to contribute to a commit's or credit's drawdown. This field cannot
             #   be used together with `applicable_product_ids` or `applicable_product_tags`.
+            #   Instead, to target usage by product or product tag, pass those values in the
+            #   body of `specifiers`.
             #
             #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::Commit::Specifier>, nil]
             optional :specifiers,
@@ -2393,7 +2399,7 @@ module MetronomeSDK
           optional :ending_before, Time
 
           # @!attribute hierarchy_configuration
-          #   Optional configuration for recurring commit/credit hierarchy access control
+          #   Optional configuration for recurring credit hierarchy access control
           #
           #   @return [MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCommit::HierarchyConfiguration, nil]
           optional :hierarchy_configuration,
@@ -2460,6 +2466,8 @@ module MetronomeSDK
           #   or credit. A customer's usage needs to meet the condition of at least one of the
           #   specifiers to contribute to a commit's or credit's drawdown. This field cannot
           #   be used together with `applicable_product_ids` or `applicable_product_tags`.
+          #   Instead, to target usage by product or product tag, pass those values in the
+          #   body of `specifiers`.
           #
           #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCommit::Specifier>, nil]
           optional :specifiers,
@@ -2497,7 +2505,7 @@ module MetronomeSDK
           #
           #   @param ending_before [Time] Determines when the contract will stop creating recurring commits. optional
           #
-          #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCommit::HierarchyConfiguration] Optional configuration for recurring commit/credit hierarchy access control
+          #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCommit::HierarchyConfiguration] Optional configuration for recurring credit hierarchy access control
           #
           #   @param invoice_amount [MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCommit::InvoiceAmount] The amount the customer should be billed for the commit. Not required.
           #
@@ -2595,7 +2603,7 @@ module MetronomeSDK
                      }
 
             # @!method initialize(child_access:)
-            #   Optional configuration for recurring commit/credit hierarchy access control
+            #   Optional configuration for recurring credit hierarchy access control
             #
             #   @param child_access [MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
 
@@ -2870,7 +2878,7 @@ module MetronomeSDK
           optional :ending_before, Time
 
           # @!attribute hierarchy_configuration
-          #   Optional configuration for recurring commit/credit hierarchy access control
+          #   Optional configuration for recurring credit hierarchy access control
           #
           #   @return [MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCredit::HierarchyConfiguration, nil]
           optional :hierarchy_configuration,
@@ -2928,6 +2936,8 @@ module MetronomeSDK
           #   or credit. A customer's usage needs to meet the condition of at least one of the
           #   specifiers to contribute to a commit's or credit's drawdown. This field cannot
           #   be used together with `applicable_product_ids` or `applicable_product_tags`.
+          #   Instead, to target usage by product or product tag, pass those values in the
+          #   body of `specifiers`.
           #
           #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCredit::Specifier>, nil]
           optional :specifiers,
@@ -2965,7 +2975,7 @@ module MetronomeSDK
           #
           #   @param ending_before [Time] Determines when the contract will stop creating recurring commits. optional
           #
-          #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCredit::HierarchyConfiguration] Optional configuration for recurring commit/credit hierarchy access control
+          #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCredit::HierarchyConfiguration] Optional configuration for recurring credit hierarchy access control
           #
           #   @param name [String] displayed on invoices. will be passed through to the individual commits
           #
@@ -3061,7 +3071,7 @@ module MetronomeSDK
                      }
 
             # @!method initialize(child_access:)
-            #   Optional configuration for recurring commit/credit hierarchy access control
+            #   Optional configuration for recurring credit hierarchy access control
             #
             #   @param child_access [MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
 
@@ -3933,10 +3943,11 @@ module MetronomeSDK
           # @see MetronomeSDK::Models::V2::ContractEditParams::AddSubscription#proration
           class Proration < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute invoice_behavior
-            #   Indicates how mid-period quantity adjustments are invoiced. If BILL_IMMEDIATELY
-            #   is selected, the quantity increase will be billed on the scheduled date. If
-            #   BILL_ON_NEXT_COLLECTION_DATE is selected, the quantity increase will be billed
-            #   for in-arrears at the end of the period.
+            #   Indicates how mid-period quantity adjustments are invoiced.
+            #   **BILL_IMMEDIATELY**: Only available when collection schedule is `ADVANCE`. The
+            #   quantity increase will be billed immediately on the scheduled date.
+            #   **BILL_ON_NEXT_COLLECTION_DATE**: The quantity increase will be billed for
+            #   in-arrears at the end of the period.
             #
             #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::Proration::InvoiceBehavior, nil]
             optional :invoice_behavior,
@@ -3955,14 +3966,15 @@ module MetronomeSDK
             #   {MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::Proration} for
             #   more details.
             #
-            #   @param invoice_behavior [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::Proration::InvoiceBehavior] Indicates how mid-period quantity adjustments are invoiced. If BILL_IMMEDIATELY
+            #   @param invoice_behavior [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::Proration::InvoiceBehavior] Indicates how mid-period quantity adjustments are invoiced.
             #
             #   @param is_prorated [Boolean] Indicates if the partial period will be prorated or charged a full amount.
 
-            # Indicates how mid-period quantity adjustments are invoiced. If BILL_IMMEDIATELY
-            # is selected, the quantity increase will be billed on the scheduled date. If
-            # BILL_ON_NEXT_COLLECTION_DATE is selected, the quantity increase will be billed
-            # for in-arrears at the end of the period.
+            # Indicates how mid-period quantity adjustments are invoiced.
+            # **BILL_IMMEDIATELY**: Only available when collection schedule is `ADVANCE`. The
+            # quantity increase will be billed immediately on the scheduled date.
+            # **BILL_ON_NEXT_COLLECTION_DATE**: The quantity increase will be billed for
+            # in-arrears at the end of the period.
             #
             # @see MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::Proration#invoice_behavior
             module InvoiceBehavior
@@ -4817,6 +4829,8 @@ module MetronomeSDK
             #   or credit. A customer's usage needs to meet the condition of at least one of the
             #   specifiers to contribute to a commit's or credit's drawdown. This field cannot
             #   be used together with `applicable_product_ids` or `applicable_product_tags`.
+            #   Instead, to target usage by product or product tag, pass those values in the
+            #   body of `specifiers`.
             #
             #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Specifier>, nil]
             optional :specifiers,

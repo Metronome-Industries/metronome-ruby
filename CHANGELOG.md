@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.2.0 (2025-07-25)
+
+Full Changelog: [v0.1.0...v0.2.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v0.1.0...v0.2.0)
+
+### Features
+
+* **api:** api update ([eb60df9](https://github.com/Metronome-Industries/metronome-ruby/commit/eb60df9e8d131d8bb4269ab64a512fca278ce396))
+* **api:** api update ([38dad99](https://github.com/Metronome-Industries/metronome-ruby/commit/38dad990c411c170d40a52b70be4be50081fd74f))
+* **api:** api update ([7a0434a](https://github.com/Metronome-Industries/metronome-ruby/commit/7a0434ab8c1184de88d6e6e863600deb5362db71))
+* **api:** api update ([bf00f48](https://github.com/Metronome-Industries/metronome-ruby/commit/bf00f486bc290a241c0be04eadadb842e06781a0))
+
+
+### Chores
+
+* update contribute.md ([c4ee7db](https://github.com/Metronome-Industries/metronome-ruby/commit/c4ee7dbc1eb87a213a3e5d35910271b79f5b37a4))
+
 ## 0.1.0 (2025-07-24)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v0.1.0-alpha.4...v0.1.0)

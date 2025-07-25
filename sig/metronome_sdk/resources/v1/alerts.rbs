@@ -13,6 +13,7 @@ module MetronomeSDK
           ?customer_id: String,
           ?evaluate_on_create: bool,
           ?group_key_filter: MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter,
+          ?group_values: ::Array[MetronomeSDK::V1::AlertCreateParams::GroupValue],
           ?invoice_types_filter: ::Array[String],
           ?plan_id: String,
           ?uniqueness_key: String,

@@ -105,6 +105,16 @@ module MetronomeSDK
                        MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupKeyFilter
                      }
 
+            # @!attribute group_values
+            #   Only present for `spend_threshold_reached` alerts. Scope alert to a specific
+            #   group key on individual line items.
+            #
+            #   @return [Array<MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::GroupValue>, nil]
+            optional :group_values,
+                     -> {
+                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupValue]
+                     }
+
             # @!attribute invoice_types_filter
             #   Only supported for invoice_total_reached alerts. A list of invoice types to
             #   evaluate.
@@ -120,7 +130,7 @@ module MetronomeSDK
             #   @return [String, nil]
             optional :uniqueness_key, String
 
-            # @!method initialize(id:, name:, status:, threshold:, type:, updated_at:, credit_grant_type_filters: nil, credit_type: nil, custom_field_filters: nil, group_key_filter: nil, invoice_types_filter: nil, uniqueness_key: nil)
+            # @!method initialize(id:, name:, status:, threshold:, type:, updated_at:, credit_grant_type_filters: nil, credit_type: nil, custom_field_filters: nil, group_key_filter: nil, group_values: nil, invoice_types_filter: nil, uniqueness_key: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert} for more details.
             #
@@ -143,6 +153,8 @@ module MetronomeSDK
             #   @param custom_field_filters [Array<MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::CustomFieldFilter>] A list of custom field filters for alert types that support advanced filtering
             #
             #   @param group_key_filter [MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::GroupKeyFilter] Scopes alert evaluation to a specific presentation group key on individual line
+            #
+            #   @param group_values [Array<MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::GroupValue>] Only present for `spend_threshold_reached` alerts. Scope alert to a specific gro
             #
             #   @param invoice_types_filter [Array<String>] Only supported for invoice_total_reached alerts. A list of invoice types to eval
             #
@@ -242,6 +254,22 @@ module MetronomeSDK
               #   Scopes alert evaluation to a specific presentation group key on individual line
               #   items. Only present for spend alerts.
               #
+              #   @param key [String]
+              #   @param value [String]
+            end
+
+            class GroupValue < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute key
+              #
+              #   @return [String]
+              required :key, String
+
+              # @!attribute value
+              #
+              #   @return [String]
+              required :value, String
+
+              # @!method initialize(key:, value:)
               #   @param key [String]
               #   @param value [String]
             end
