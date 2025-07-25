@@ -6340,7 +6340,7 @@ module MetronomeSDK
             sig { params(ending_before: Time).void }
             attr_writer :ending_before
 
-            # Optional configuration for recurring commit/credit hierarchy access control
+            # Optional configuration for recurring credit hierarchy access control
             sig do
               returns(
                 T.nilable(
@@ -6522,7 +6522,7 @@ module MetronomeSDK
               description: nil,
               # Determines when the contract will stop creating recurring commits. Optional
               ending_before: nil,
-              # Optional configuration for recurring commit/credit hierarchy access control
+              # Optional configuration for recurring credit hierarchy access control
               hierarchy_configuration: nil,
               # The amount the customer should be billed for the commit. Not required.
               invoice_amount: nil,
@@ -6810,7 +6810,7 @@ module MetronomeSDK
               end
               attr_accessor :child_access
 
-              # Optional configuration for recurring commit/credit hierarchy access control
+              # Optional configuration for recurring credit hierarchy access control
               sig do
                 params(
                   child_access:
@@ -7387,7 +7387,7 @@ module MetronomeSDK
             sig { params(ending_before: Time).void }
             attr_writer :ending_before
 
-            # Optional configuration for recurring commit/credit hierarchy access control
+            # Optional configuration for recurring credit hierarchy access control
             sig do
               returns(
                 T.nilable(
@@ -7549,7 +7549,7 @@ module MetronomeSDK
               description: nil,
               # Determines when the contract will stop creating recurring commits. Optional
               ending_before: nil,
-              # Optional configuration for recurring commit/credit hierarchy access control
+              # Optional configuration for recurring credit hierarchy access control
               hierarchy_configuration: nil,
               # Displayed on invoices. Will be passed through to the individual commits
               name: nil,
@@ -7833,7 +7833,7 @@ module MetronomeSDK
               end
               attr_accessor :child_access
 
-              # Optional configuration for recurring commit/credit hierarchy access control
+              # Optional configuration for recurring credit hierarchy access control
               sig do
                 params(
                   child_access:
