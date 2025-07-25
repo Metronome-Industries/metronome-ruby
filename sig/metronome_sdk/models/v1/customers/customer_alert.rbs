@@ -42,6 +42,7 @@ module MetronomeSDK
               credit_type: MetronomeSDK::CreditTypeData?,
               custom_field_filters: ::Array[MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter],
               group_key_filter: MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupKeyFilter,
+              group_values: ::Array[MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupValue],
               invoice_types_filter: ::Array[String],
               uniqueness_key: String
             }
@@ -77,6 +78,12 @@ module MetronomeSDK
               MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupKeyFilter
             ) -> MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupKeyFilter
 
+            attr_reader group_values: ::Array[MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupValue]?
+
+            def group_values=: (
+              ::Array[MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupValue]
+            ) -> ::Array[MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupValue]
+
             attr_reader invoice_types_filter: ::Array[String]?
 
             def invoice_types_filter=: (::Array[String]) -> ::Array[String]
@@ -96,6 +103,7 @@ module MetronomeSDK
               ?credit_type: MetronomeSDK::CreditTypeData?,
               ?custom_field_filters: ::Array[MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter],
               ?group_key_filter: MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupKeyFilter,
+              ?group_values: ::Array[MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupValue],
               ?invoice_types_filter: ::Array[String],
               ?uniqueness_key: String
             ) -> void
@@ -111,6 +119,7 @@ module MetronomeSDK
               credit_type: MetronomeSDK::CreditTypeData?,
               custom_field_filters: ::Array[MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter],
               group_key_filter: MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupKeyFilter,
+              group_values: ::Array[MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupValue],
               invoice_types_filter: ::Array[String],
               uniqueness_key: String
             }
@@ -206,6 +215,18 @@ module MetronomeSDK
             type group_key_filter = { key: String, value: String }
 
             class GroupKeyFilter < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor key: String
+
+              attr_accessor value: String
+
+              def initialize: (key: String, value: String) -> void
+
+              def to_hash: -> { key: String, value: String }
+            end
+
+            type group_value = { key: String, value: String }
+
+            class GroupValue < MetronomeSDK::Internal::Type::BaseModel
               attr_accessor key: String
 
               attr_accessor value: String
