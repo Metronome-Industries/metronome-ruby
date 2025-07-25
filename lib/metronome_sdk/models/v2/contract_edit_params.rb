@@ -3943,10 +3943,11 @@ module MetronomeSDK
           # @see MetronomeSDK::Models::V2::ContractEditParams::AddSubscription#proration
           class Proration < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute invoice_behavior
-            #   Indicates how mid-period quantity adjustments are invoiced. If BILL_IMMEDIATELY
-            #   is selected, the quantity increase will be billed on the scheduled date. If
-            #   BILL_ON_NEXT_COLLECTION_DATE is selected, the quantity increase will be billed
-            #   for in-arrears at the end of the period.
+            #   Indicates how mid-period quantity adjustments are invoiced.
+            #   **BILL_IMMEDIATELY**: Only available when collection schedule is `ADVANCE`. The
+            #   quantity increase will be billed immediately on the scheduled date.
+            #   **BILL_ON_NEXT_COLLECTION_DATE**: The quantity increase will be billed for
+            #   in-arrears at the end of the period.
             #
             #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::Proration::InvoiceBehavior, nil]
             optional :invoice_behavior,
@@ -3965,14 +3966,15 @@ module MetronomeSDK
             #   {MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::Proration} for
             #   more details.
             #
-            #   @param invoice_behavior [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::Proration::InvoiceBehavior] Indicates how mid-period quantity adjustments are invoiced. If BILL_IMMEDIATELY
+            #   @param invoice_behavior [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::Proration::InvoiceBehavior] Indicates how mid-period quantity adjustments are invoiced.
             #
             #   @param is_prorated [Boolean] Indicates if the partial period will be prorated or charged a full amount.
 
-            # Indicates how mid-period quantity adjustments are invoiced. If BILL_IMMEDIATELY
-            # is selected, the quantity increase will be billed on the scheduled date. If
-            # BILL_ON_NEXT_COLLECTION_DATE is selected, the quantity increase will be billed
-            # for in-arrears at the end of the period.
+            # Indicates how mid-period quantity adjustments are invoiced.
+            # **BILL_IMMEDIATELY**: Only available when collection schedule is `ADVANCE`. The
+            # quantity increase will be billed immediately on the scheduled date.
+            # **BILL_ON_NEXT_COLLECTION_DATE**: The quantity increase will be billed for
+            # in-arrears at the end of the period.
             #
             # @see MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::Proration#invoice_behavior
             module InvoiceBehavior

@@ -8535,10 +8535,11 @@ module MetronomeSDK
                 )
               end
 
-            # Indicates how mid-period quantity adjustments are invoiced. If BILL_IMMEDIATELY
-            # is selected, the quantity increase will be billed on the scheduled date. If
-            # BILL_ON_NEXT_COLLECTION_DATE is selected, the quantity increase will be billed
-            # for in-arrears at the end of the period.
+            # Indicates how mid-period quantity adjustments are invoiced.
+            # **BILL_IMMEDIATELY**: Only available when collection schedule is `ADVANCE`. The
+            # quantity increase will be billed immediately on the scheduled date.
+            # **BILL_ON_NEXT_COLLECTION_DATE**: The quantity increase will be billed for
+            # in-arrears at the end of the period.
             sig do
               returns(
                 T.nilable(
@@ -8571,10 +8572,11 @@ module MetronomeSDK
               ).returns(T.attached_class)
             end
             def self.new(
-              # Indicates how mid-period quantity adjustments are invoiced. If BILL_IMMEDIATELY
-              # is selected, the quantity increase will be billed on the scheduled date. If
-              # BILL_ON_NEXT_COLLECTION_DATE is selected, the quantity increase will be billed
-              # for in-arrears at the end of the period.
+              # Indicates how mid-period quantity adjustments are invoiced.
+              # **BILL_IMMEDIATELY**: Only available when collection schedule is `ADVANCE`. The
+              # quantity increase will be billed immediately on the scheduled date.
+              # **BILL_ON_NEXT_COLLECTION_DATE**: The quantity increase will be billed for
+              # in-arrears at the end of the period.
               invoice_behavior: nil,
               # Indicates if the partial period will be prorated or charged a full amount.
               is_prorated: nil
@@ -8593,10 +8595,11 @@ module MetronomeSDK
             def to_hash
             end
 
-            # Indicates how mid-period quantity adjustments are invoiced. If BILL_IMMEDIATELY
-            # is selected, the quantity increase will be billed on the scheduled date. If
-            # BILL_ON_NEXT_COLLECTION_DATE is selected, the quantity increase will be billed
-            # for in-arrears at the end of the period.
+            # Indicates how mid-period quantity adjustments are invoiced.
+            # **BILL_IMMEDIATELY**: Only available when collection schedule is `ADVANCE`. The
+            # quantity increase will be billed immediately on the scheduled date.
+            # **BILL_ON_NEXT_COLLECTION_DATE**: The quantity increase will be billed for
+            # in-arrears at the end of the period.
             module InvoiceBehavior
               extend MetronomeSDK::Internal::Type::Enum
 
