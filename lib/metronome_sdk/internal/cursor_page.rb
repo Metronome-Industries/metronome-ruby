@@ -10,8 +10,8 @@ module MetronomeSDK
     #   end
     #
     # @example
-    #   cursor_page.auto_paging_each do |plan|
-    #     puts(plan)
+    #   cursor_page.auto_paging_each do |item|
+    #     puts(item)
     #   end
     class CursorPage
       include MetronomeSDK::Internal::Type::BasePage
@@ -35,7 +35,7 @@ module MetronomeSDK
           raise RuntimeError.new(message)
         end
 
-        req = MetronomeSDK::Internal::Util.deep_merge(@req, {query: {next_page: next_page_}})
+        req = MetronomeSDK::Internal::Util.deep_merge(@req, {body: {next_page: next_page_}})
         @client.request(req)
       end
 

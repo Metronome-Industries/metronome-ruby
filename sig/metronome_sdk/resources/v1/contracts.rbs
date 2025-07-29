@@ -117,7 +117,7 @@ module MetronomeSDK
           ?next_page: String,
           ?starting_at: Time,
           ?request_options: MetronomeSDK::request_opts
-        ) -> MetronomeSDK::Models::V1::ContractListBalancesResponse
+        ) -> MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::contract_list_balances_response]
 
         def retrieve_rate_schedule: (
           contract_id: String,

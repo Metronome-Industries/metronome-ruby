@@ -340,7 +340,7 @@ module MetronomeSDK
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [MetronomeSDK::Models::V1::ContractListBalancesResponse]
+        # @return [MetronomeSDK::Internal::CursorPage<MetronomeSDK::Models::Commit, MetronomeSDK::Models::Credit>]
         #
         # @see MetronomeSDK::Models::V1::ContractListBalancesParams
         def list_balances(params)
@@ -349,6 +349,7 @@ module MetronomeSDK
             method: :post,
             path: "v1/contracts/customerBalances/list",
             body: parsed,
+            page: MetronomeSDK::Internal::CursorPage,
             model: MetronomeSDK::Models::V1::ContractListBalancesResponse,
             options: options
           )

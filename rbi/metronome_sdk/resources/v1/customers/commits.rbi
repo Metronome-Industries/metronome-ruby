@@ -107,7 +107,7 @@ module MetronomeSDK
               next_page: String,
               starting_at: Time,
               request_options: MetronomeSDK::RequestOptions::OrHash
-            ).returns(MetronomeSDK::Models::V1::Customers::CommitListResponse)
+            ).returns(MetronomeSDK::Internal::CursorPage[MetronomeSDK::Commit])
           end
           def list(
             customer_id:,
