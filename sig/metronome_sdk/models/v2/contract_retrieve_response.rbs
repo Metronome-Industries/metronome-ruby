@@ -2431,21 +2431,26 @@ module MetronomeSDK
 
           type customer_billing_provider_configuration =
             {
+              id: String,
               billing_provider: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::billing_provider,
               delivery_method: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::delivery_method
             }
 
           class CustomerBillingProviderConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
             attr_accessor billing_provider: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::billing_provider
 
             attr_accessor delivery_method: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::delivery_method
 
             def initialize: (
+              id: String,
               billing_provider: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::billing_provider,
               delivery_method: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::delivery_method
             ) -> void
 
             def to_hash: -> {
+              id: String,
               billing_provider: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::billing_provider,
               delivery_method: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::delivery_method
             }

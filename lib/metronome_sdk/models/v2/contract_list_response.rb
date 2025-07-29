@@ -2378,6 +2378,12 @@ module MetronomeSDK
 
           # @see MetronomeSDK::Models::V2::ContractListResponse::Data#customer_billing_provider_configuration
           class CustomerBillingProviderConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute id
+            #   ID of Customer's billing provider configuration.
+            #
+            #   @return [String]
+            required :id, String
+
             # @!attribute billing_provider
             #
             #   @return [Symbol, MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration::BillingProvider]
@@ -2390,10 +2396,13 @@ module MetronomeSDK
             required :delivery_method,
                      enum: -> { MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod }
 
-            # @!method initialize(billing_provider:, delivery_method:)
+            # @!method initialize(id:, billing_provider:, delivery_method:)
             #   This field's availability is dependent on your client's configuration.
             #
+            #   @param id [String] ID of Customer's billing provider configuration.
+            #
             #   @param billing_provider [Symbol, MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration::BillingProvider]
+            #
             #   @param delivery_method [Symbol, MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod]
 
             # @see MetronomeSDK::Models::V2::ContractListResponse::Data::CustomerBillingProviderConfiguration#billing_provider
