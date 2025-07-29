@@ -5146,6 +5146,10 @@ module MetronomeSDK
                 )
               end
 
+            # ID of Customer's billing provider configuration.
+            sig { returns(String) }
+            attr_accessor :id
+
             sig do
               returns(
                 MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::BillingProvider::TaggedSymbol
@@ -5163,18 +5167,25 @@ module MetronomeSDK
             # This field's availability is dependent on your client's configuration.
             sig do
               params(
+                id: String,
                 billing_provider:
                   MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::BillingProvider::OrSymbol,
                 delivery_method:
                   MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod::OrSymbol
               ).returns(T.attached_class)
             end
-            def self.new(billing_provider:, delivery_method:)
+            def self.new(
+              # ID of Customer's billing provider configuration.
+              id:,
+              billing_provider:,
+              delivery_method:
+            )
             end
 
             sig do
               override.returns(
                 {
+                  id: String,
                   billing_provider:
                     MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::BillingProvider::TaggedSymbol,
                   delivery_method:
