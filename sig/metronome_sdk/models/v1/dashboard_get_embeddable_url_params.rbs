@@ -146,6 +146,8 @@ module MetronomeSDK
             | :UsageLine_9
             | :Primary_green
             | :Primary_red
+            | :Progress_bar
+            | :Progress_bar_background
 
           module Name
             extend MetronomeSDK::Internal::Type::Enum
@@ -169,6 +171,8 @@ module MetronomeSDK
             USAGE_LINE_9: :UsageLine_9
             PRIMARY_GREEN: :Primary_green
             PRIMARY_RED: :Primary_red
+            PROGRESS_BAR: :Progress_bar
+            PROGRESS_BAR_BACKGROUND: :Progress_bar_background
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::ColorOverride::name_]
           end
