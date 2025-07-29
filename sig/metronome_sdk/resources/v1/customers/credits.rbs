@@ -35,7 +35,7 @@ module MetronomeSDK
             ?next_page: String,
             ?starting_at: Time,
             ?request_options: MetronomeSDK::request_opts
-          ) -> MetronomeSDK::Models::V1::Customers::CreditListResponse
+          ) -> MetronomeSDK::Internal::CursorPage[MetronomeSDK::Credit]
 
           def update_end_date: (
             access_ending_before: Time,

@@ -359,7 +359,11 @@ module MetronomeSDK
             next_page: String,
             starting_at: Time,
             request_options: MetronomeSDK::RequestOptions::OrHash
-          ).returns(MetronomeSDK::Models::V1::ContractListBalancesResponse)
+          ).returns(
+            MetronomeSDK::Internal::CursorPage[
+              MetronomeSDK::Models::V1::ContractListBalancesResponse::Variants
+            ]
+          )
         end
         def list_balances(
           customer_id:,
