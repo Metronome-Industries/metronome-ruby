@@ -75,13 +75,6 @@ module MetronomeSDK
         #   @return [Boolean, nil]
         optional :evaluate_on_create, MetronomeSDK::Internal::Type::Boolean
 
-        # @!attribute group_key_filter
-        #   Scopes alert evaluation to a specific presentation group key on individual line
-        #   items. Only present for spend alerts.
-        #
-        #   @return [MetronomeSDK::Models::V1::AlertCreateParams::GroupKeyFilter, nil]
-        optional :group_key_filter, -> { MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter }
-
         # @!attribute group_values
         #   Only present for `spend_threshold_reached` alerts. Scope alert to a specific
         #   group key on individual line items.
@@ -112,7 +105,7 @@ module MetronomeSDK
         #   @return [String, nil]
         optional :uniqueness_key, String
 
-        # @!method initialize(alert_type:, name:, threshold:, billable_metric_id: nil, credit_grant_type_filters: nil, credit_type_id: nil, custom_field_filters: nil, customer_id: nil, evaluate_on_create: nil, group_key_filter: nil, group_values: nil, invoice_types_filter: nil, plan_id: nil, uniqueness_key: nil, request_options: {})
+        # @!method initialize(alert_type:, name:, threshold:, billable_metric_id: nil, credit_grant_type_filters: nil, credit_type_id: nil, custom_field_filters: nil, customer_id: nil, evaluate_on_create: nil, group_values: nil, invoice_types_filter: nil, plan_id: nil, uniqueness_key: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::AlertCreateParams} for more details.
         #
@@ -133,8 +126,6 @@ module MetronomeSDK
         #   @param customer_id [String] If provided, will create this alert for this specific customer. To create an ale
         #
         #   @param evaluate_on_create [Boolean] If true, the alert will evaluate immediately on customers that already meet the
-        #
-        #   @param group_key_filter [MetronomeSDK::Models::V1::AlertCreateParams::GroupKeyFilter] Scopes alert evaluation to a specific presentation group key on individual line
         #
         #   @param group_values [Array<MetronomeSDK::Models::V1::AlertCreateParams::GroupValue>] Only present for `spend_threshold_reached` alerts. Scope alert to a specific gro
         #
@@ -203,25 +194,6 @@ module MetronomeSDK
             # @!method self.values
             #   @return [Array<Symbol>]
           end
-        end
-
-        class GroupKeyFilter < MetronomeSDK::Internal::Type::BaseModel
-          # @!attribute key
-          #
-          #   @return [String]
-          required :key, String
-
-          # @!attribute value
-          #
-          #   @return [String]
-          required :value, String
-
-          # @!method initialize(key:, value:)
-          #   Scopes alert evaluation to a specific presentation group key on individual line
-          #   items. Only present for spend alerts.
-          #
-          #   @param key [String]
-          #   @param value [String]
         end
 
         class GroupValue < MetronomeSDK::Internal::Type::BaseModel

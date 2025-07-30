@@ -94,23 +94,6 @@ module MetronomeSDK
         sig { params(evaluate_on_create: T::Boolean).void }
         attr_writer :evaluate_on_create
 
-        # Scopes alert evaluation to a specific presentation group key on individual line
-        # items. Only present for spend alerts.
-        sig do
-          returns(
-            T.nilable(MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter)
-          )
-        end
-        attr_reader :group_key_filter
-
-        sig do
-          params(
-            group_key_filter:
-              MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter::OrHash
-          ).void
-        end
-        attr_writer :group_key_filter
-
         # Only present for `spend_threshold_reached` alerts. Scope alert to a specific
         # group key on individual line items.
         sig do
@@ -168,8 +151,6 @@ module MetronomeSDK
               ],
             customer_id: String,
             evaluate_on_create: T::Boolean,
-            group_key_filter:
-              MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter::OrHash,
             group_values:
               T::Array[MetronomeSDK::V1::AlertCreateParams::GroupValue::OrHash],
             invoice_types_filter: T::Array[String],
@@ -207,9 +188,6 @@ module MetronomeSDK
           # alert threshold. If false, it will only evaluate on future customers that
           # trigger the alert threshold. Defaults to true.
           evaluate_on_create: nil,
-          # Scopes alert evaluation to a specific presentation group key on individual line
-          # items. Only present for spend alerts.
-          group_key_filter: nil,
           # Only present for `spend_threshold_reached` alerts. Scope alert to a specific
           # group key on individual line items.
           group_values: nil,
@@ -243,8 +221,6 @@ module MetronomeSDK
                 ],
               customer_id: String,
               evaluate_on_create: T::Boolean,
-              group_key_filter:
-                MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter,
               group_values:
                 T::Array[MetronomeSDK::V1::AlertCreateParams::GroupValue],
               invoice_types_filter: T::Array[String],
@@ -432,32 +408,6 @@ module MetronomeSDK
             end
             def self.values
             end
-          end
-        end
-
-        class GroupKeyFilter < MetronomeSDK::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter,
-                MetronomeSDK::Internal::AnyHash
-              )
-            end
-
-          sig { returns(String) }
-          attr_accessor :key
-
-          sig { returns(String) }
-          attr_accessor :value
-
-          # Scopes alert evaluation to a specific presentation group key on individual line
-          # items. Only present for spend alerts.
-          sig { params(key: String, value: String).returns(T.attached_class) }
-          def self.new(key:, value:)
-          end
-
-          sig { override.returns({ key: String, value: String }) }
-          def to_hash
           end
         end
 
