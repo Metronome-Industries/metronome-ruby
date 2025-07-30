@@ -26,7 +26,7 @@ class MetronomeSDK::Test::Resources::V1::Customers::CreditsTest < MetronomeSDK::
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::Customers::CreditCreateResponse::Data
+        data: MetronomeSDK::ID
       }
     end
   end
@@ -40,7 +40,7 @@ class MetronomeSDK::Test::Resources::V1::Customers::CreditsTest < MetronomeSDK::
 
     assert_pattern do
       response => {
-        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Customers::CreditListResponse::Data]),
+        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Credit]),
         next_page: String | nil
       }
     end
@@ -60,7 +60,7 @@ class MetronomeSDK::Test::Resources::V1::Customers::CreditsTest < MetronomeSDK::
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::Customers::CreditUpdateEndDateResponse::Data
+        data: MetronomeSDK::ID
       }
     end
   end

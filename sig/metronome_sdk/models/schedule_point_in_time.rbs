@@ -1,0 +1,75 @@
+module MetronomeSDK
+  module Models
+    type schedule_point_in_time =
+      {
+        credit_type: MetronomeSDK::CreditTypeData,
+        schedule_items: ::Array[MetronomeSDK::SchedulePointInTime::ScheduleItem]
+      }
+
+    class SchedulePointInTime < MetronomeSDK::Internal::Type::BaseModel
+      attr_reader credit_type: MetronomeSDK::CreditTypeData?
+
+      def credit_type=: (
+        MetronomeSDK::CreditTypeData
+      ) -> MetronomeSDK::CreditTypeData
+
+      attr_reader schedule_items: ::Array[MetronomeSDK::SchedulePointInTime::ScheduleItem]?
+
+      def schedule_items=: (
+        ::Array[MetronomeSDK::SchedulePointInTime::ScheduleItem]
+      ) -> ::Array[MetronomeSDK::SchedulePointInTime::ScheduleItem]
+
+      def initialize: (
+        ?credit_type: MetronomeSDK::CreditTypeData,
+        ?schedule_items: ::Array[MetronomeSDK::SchedulePointInTime::ScheduleItem]
+      ) -> void
+
+      def to_hash: -> {
+        credit_type: MetronomeSDK::CreditTypeData,
+        schedule_items: ::Array[MetronomeSDK::SchedulePointInTime::ScheduleItem]
+      }
+
+      type schedule_item =
+        {
+          id: String,
+          amount: Float,
+          quantity: Float,
+          timestamp: Time,
+          unit_price: Float,
+          invoice_id: String?
+        }
+
+      class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor amount: Float
+
+        attr_accessor quantity: Float
+
+        attr_accessor timestamp: Time
+
+        attr_accessor unit_price: Float
+
+        attr_accessor invoice_id: String?
+
+        def initialize: (
+          id: String,
+          amount: Float,
+          quantity: Float,
+          timestamp: Time,
+          unit_price: Float,
+          ?invoice_id: String?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          amount: Float,
+          quantity: Float,
+          timestamp: Time,
+          unit_price: Float,
+          invoice_id: String?
+        }
+      end
+    end
+  end
+end

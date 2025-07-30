@@ -188,7 +188,7 @@ module MetronomeSDK
           # @!attribute rollover_amount
           #   Specify how much to rollover to the rollover credit grant
           #
-          #   @return [MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0, MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1]
+          #   @return [MetronomeSDK::Models::V1::RolloverAmountMaxPercentage, MetronomeSDK::Models::V1::RolloverAmountMaxAmount]
           required :rollover_amount,
                    union: -> { MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount }
 
@@ -205,7 +205,7 @@ module MetronomeSDK
           #
           #   @param priority [Float] The priority to give the rollover credit grant that gets created when a rollover
           #
-          #   @param rollover_amount [MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0, MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1] Specify how much to rollover to the rollover credit grant
+          #   @param rollover_amount [MetronomeSDK::Models::V1::RolloverAmountMaxPercentage, MetronomeSDK::Models::V1::RolloverAmountMaxAmount] Specify how much to rollover to the rollover credit grant
 
           # Specify how much to rollover to the rollover credit grant
           #
@@ -213,84 +213,12 @@ module MetronomeSDK
           module RolloverAmount
             extend MetronomeSDK::Internal::Type::Union
 
-            variant -> {
-              MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0
-            }
+            variant -> { MetronomeSDK::V1::RolloverAmountMaxPercentage }
 
-            variant -> {
-              MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1
-            }
-
-            class UnionMember0 < MetronomeSDK::Internal::Type::BaseModel
-              # @!attribute type
-              #   Rollover up to a percentage of the original credit grant amount.
-              #
-              #   @return [Symbol, MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0::Type]
-              required :type,
-                       enum: -> {
-                         MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0::Type
-                       }
-
-              # @!attribute value
-              #   The maximum percentage (0-1) of the original credit grant to rollover.
-              #
-              #   @return [Float]
-              required :value, Float
-
-              # @!method initialize(type:, value:)
-              #   @param type [Symbol, MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0::Type] Rollover up to a percentage of the original credit grant amount.
-              #
-              #   @param value [Float] The maximum percentage (0-1) of the original credit grant to rollover.
-
-              # Rollover up to a percentage of the original credit grant amount.
-              #
-              # @see MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0#type
-              module Type
-                extend MetronomeSDK::Internal::Type::Enum
-
-                MAX_PERCENTAGE = :MAX_PERCENTAGE
-
-                # @!method self.values
-                #   @return [Array<Symbol>]
-              end
-            end
-
-            class UnionMember1 < MetronomeSDK::Internal::Type::BaseModel
-              # @!attribute type
-              #   Rollover up to a fixed amount of the original credit grant amount.
-              #
-              #   @return [Symbol, MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1::Type]
-              required :type,
-                       enum: -> {
-                         MetronomeSDK::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1::Type
-                       }
-
-              # @!attribute value
-              #   The maximum amount to rollover.
-              #
-              #   @return [Float]
-              required :value, Float
-
-              # @!method initialize(type:, value:)
-              #   @param type [Symbol, MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1::Type] Rollover up to a fixed amount of the original credit grant amount.
-              #
-              #   @param value [Float] The maximum amount to rollover.
-
-              # Rollover up to a fixed amount of the original credit grant amount.
-              #
-              # @see MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1#type
-              module Type
-                extend MetronomeSDK::Internal::Type::Enum
-
-                MAX_AMOUNT = :MAX_AMOUNT
-
-                # @!method self.values
-                #   @return [Array<Symbol>]
-              end
-            end
+            variant -> { MetronomeSDK::V1::RolloverAmountMaxAmount }
 
             # @!method self.variants
-            #   @return [Array(MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember0, MetronomeSDK::Models::V1::CreditGrantCreateParams::RolloverSettings::RolloverAmount::UnionMember1)]
+            #   @return [Array(MetronomeSDK::Models::V1::RolloverAmountMaxPercentage, MetronomeSDK::Models::V1::RolloverAmountMaxAmount)]
           end
         end
       end
