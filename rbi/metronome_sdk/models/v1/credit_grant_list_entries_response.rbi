@@ -106,11 +106,18 @@ module MetronomeSDK
                 )
               end
 
-            sig { returns(MetronomeSDK::CreditTypeData) }
+            sig do
+              returns(
+                MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::CreditType
+              )
+            end
             attr_reader :credit_type
 
             sig do
-              params(credit_type: MetronomeSDK::CreditTypeData::OrHash).void
+              params(
+                credit_type:
+                  MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::CreditType::OrHash
+              ).void
             end
             attr_writer :credit_type
 
@@ -130,10 +137,22 @@ module MetronomeSDK
             end
             attr_writer :ending_balance
 
-            sig { returns(T::Array[MetronomeSDK::V1::CreditLedgerEntry]) }
+            sig do
+              returns(
+                T::Array[
+                  MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::Entry
+                ]
+              )
+            end
             attr_accessor :entries
 
-            sig { returns(T::Array[MetronomeSDK::V1::CreditLedgerEntry]) }
+            sig do
+              returns(
+                T::Array[
+                  MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::PendingEntry
+                ]
+              )
+            end
             attr_accessor :pending_entries
 
             sig do
@@ -153,12 +172,18 @@ module MetronomeSDK
 
             sig do
               params(
-                credit_type: MetronomeSDK::CreditTypeData::OrHash,
+                credit_type:
+                  MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::CreditType::OrHash,
                 ending_balance:
                   MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance::OrHash,
-                entries: T::Array[MetronomeSDK::V1::CreditLedgerEntry::OrHash],
+                entries:
+                  T::Array[
+                    MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::Entry::OrHash
+                  ],
                 pending_entries:
-                  T::Array[MetronomeSDK::V1::CreditLedgerEntry::OrHash],
+                  T::Array[
+                    MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::PendingEntry::OrHash
+                  ],
                 starting_balance:
                   MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance::OrHash
               ).returns(T.attached_class)
@@ -176,18 +201,48 @@ module MetronomeSDK
             sig do
               override.returns(
                 {
-                  credit_type: MetronomeSDK::CreditTypeData,
+                  credit_type:
+                    MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::CreditType,
                   ending_balance:
                     MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance,
-                  entries: T::Array[MetronomeSDK::V1::CreditLedgerEntry],
+                  entries:
+                    T::Array[
+                      MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::Entry
+                    ],
                   pending_entries:
-                    T::Array[MetronomeSDK::V1::CreditLedgerEntry],
+                    T::Array[
+                      MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::PendingEntry
+                    ],
                   starting_balance:
                     MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance
                 }
               )
             end
             def to_hash
+            end
+
+            class CreditType < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::CreditType,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(String) }
+              attr_accessor :id
+
+              sig { returns(String) }
+              attr_accessor :name
+
+              sig { params(id: String, name: String).returns(T.attached_class) }
+              def self.new(id:, name:)
+              end
+
+              sig { override.returns({ id: String, name: String }) }
+              def to_hash
+              end
             end
 
             class EndingBalance < MetronomeSDK::Internal::Type::BaseModel
@@ -243,6 +298,172 @@ module MetronomeSDK
                     effective_at: Time,
                     excluding_pending: Float,
                     including_pending: Float
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
+            class Entry < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::Entry,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              # an amount representing the change to the customer's credit balance
+              sig { returns(Float) }
+              attr_accessor :amount
+
+              sig { returns(String) }
+              attr_accessor :created_by
+
+              # the credit grant this entry is related to
+              sig { returns(String) }
+              attr_accessor :credit_grant_id
+
+              sig { returns(Time) }
+              attr_accessor :effective_at
+
+              sig { returns(String) }
+              attr_accessor :reason
+
+              # the running balance for this credit type at the time of the ledger entry,
+              # including all preceding charges
+              sig { returns(Float) }
+              attr_accessor :running_balance
+
+              # if this entry is a deduction, the Metronome ID of the invoice where the credit
+              # deduction was consumed; if this entry is a grant, the Metronome ID of the
+              # invoice where the grant's paid_amount was charged
+              sig { returns(T.nilable(String)) }
+              attr_accessor :invoice_id
+
+              sig do
+                params(
+                  amount: Float,
+                  created_by: String,
+                  credit_grant_id: String,
+                  effective_at: Time,
+                  reason: String,
+                  running_balance: Float,
+                  invoice_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # an amount representing the change to the customer's credit balance
+                amount:,
+                created_by:,
+                # the credit grant this entry is related to
+                credit_grant_id:,
+                effective_at:,
+                reason:,
+                # the running balance for this credit type at the time of the ledger entry,
+                # including all preceding charges
+                running_balance:,
+                # if this entry is a deduction, the Metronome ID of the invoice where the credit
+                # deduction was consumed; if this entry is a grant, the Metronome ID of the
+                # invoice where the grant's paid_amount was charged
+                invoice_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    amount: Float,
+                    created_by: String,
+                    credit_grant_id: String,
+                    effective_at: Time,
+                    reason: String,
+                    running_balance: Float,
+                    invoice_id: T.nilable(String)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
+            class PendingEntry < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::PendingEntry,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              # an amount representing the change to the customer's credit balance
+              sig { returns(Float) }
+              attr_accessor :amount
+
+              sig { returns(String) }
+              attr_accessor :created_by
+
+              # the credit grant this entry is related to
+              sig { returns(String) }
+              attr_accessor :credit_grant_id
+
+              sig { returns(Time) }
+              attr_accessor :effective_at
+
+              sig { returns(String) }
+              attr_accessor :reason
+
+              # the running balance for this credit type at the time of the ledger entry,
+              # including all preceding charges
+              sig { returns(Float) }
+              attr_accessor :running_balance
+
+              # if this entry is a deduction, the Metronome ID of the invoice where the credit
+              # deduction was consumed; if this entry is a grant, the Metronome ID of the
+              # invoice where the grant's paid_amount was charged
+              sig { returns(T.nilable(String)) }
+              attr_accessor :invoice_id
+
+              sig do
+                params(
+                  amount: Float,
+                  created_by: String,
+                  credit_grant_id: String,
+                  effective_at: Time,
+                  reason: String,
+                  running_balance: Float,
+                  invoice_id: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # an amount representing the change to the customer's credit balance
+                amount:,
+                created_by:,
+                # the credit grant this entry is related to
+                credit_grant_id:,
+                effective_at:,
+                reason:,
+                # the running balance for this credit type at the time of the ledger entry,
+                # including all preceding charges
+                running_balance:,
+                # if this entry is a deduction, the Metronome ID of the invoice where the credit
+                # deduction was consumed; if this entry is a grant, the Metronome ID of the
+                # invoice where the grant's paid_amount was charged
+                invoice_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    amount: Float,
+                    created_by: String,
+                    credit_grant_id: String,
+                    effective_at: Time,
+                    reason: String,
+                    running_balance: Float,
+                    invoice_id: T.nilable(String)
                   }
                 )
               end

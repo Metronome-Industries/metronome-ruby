@@ -2,14 +2,122 @@ module MetronomeSDK
   module Models
     module V1
       type customer_retrieve_response =
-        { data: MetronomeSDK::V1::CustomerDetail }
+        { data: MetronomeSDK::Models::V1::CustomerRetrieveResponse::Data }
 
       class CustomerRetrieveResponse < MetronomeSDK::Internal::Type::BaseModel
-        attr_accessor data: MetronomeSDK::V1::CustomerDetail
+        attr_accessor data: MetronomeSDK::Models::V1::CustomerRetrieveResponse::Data
 
-        def initialize: (data: MetronomeSDK::V1::CustomerDetail) -> void
+        def initialize: (
+          data: MetronomeSDK::Models::V1::CustomerRetrieveResponse::Data
+        ) -> void
 
-        def to_hash: -> { data: MetronomeSDK::V1::CustomerDetail }
+        def to_hash: -> {
+          data: MetronomeSDK::Models::V1::CustomerRetrieveResponse::Data
+        }
+
+        type data =
+          {
+            id: String,
+            created_at: Time,
+            custom_fields: ::Hash[Symbol, String],
+            customer_config: MetronomeSDK::Models::V1::CustomerRetrieveResponse::Data::CustomerConfig,
+            external_id: String,
+            ingest_aliases: ::Array[String],
+            name: String,
+            archived_at: Time?,
+            current_billable_status: MetronomeSDK::Models::V1::CustomerRetrieveResponse::Data::CurrentBillableStatus
+          }
+
+        class Data < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor created_at: Time
+
+          attr_accessor custom_fields: ::Hash[Symbol, String]
+
+          attr_accessor customer_config: MetronomeSDK::Models::V1::CustomerRetrieveResponse::Data::CustomerConfig
+
+          attr_accessor external_id: String
+
+          attr_accessor ingest_aliases: ::Array[String]
+
+          attr_accessor name: String
+
+          attr_accessor archived_at: Time?
+
+          attr_reader current_billable_status: MetronomeSDK::Models::V1::CustomerRetrieveResponse::Data::CurrentBillableStatus?
+
+          def current_billable_status=: (
+            MetronomeSDK::Models::V1::CustomerRetrieveResponse::Data::CurrentBillableStatus
+          ) -> MetronomeSDK::Models::V1::CustomerRetrieveResponse::Data::CurrentBillableStatus
+
+          def initialize: (
+            id: String,
+            created_at: Time,
+            custom_fields: ::Hash[Symbol, String],
+            customer_config: MetronomeSDK::Models::V1::CustomerRetrieveResponse::Data::CustomerConfig,
+            external_id: String,
+            ingest_aliases: ::Array[String],
+            name: String,
+            ?archived_at: Time?,
+            ?current_billable_status: MetronomeSDK::Models::V1::CustomerRetrieveResponse::Data::CurrentBillableStatus
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            created_at: Time,
+            custom_fields: ::Hash[Symbol, String],
+            customer_config: MetronomeSDK::Models::V1::CustomerRetrieveResponse::Data::CustomerConfig,
+            external_id: String,
+            ingest_aliases: ::Array[String],
+            name: String,
+            archived_at: Time?,
+            current_billable_status: MetronomeSDK::Models::V1::CustomerRetrieveResponse::Data::CurrentBillableStatus
+          }
+
+          type customer_config = { salesforce_account_id: String? }
+
+          class CustomerConfig < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor salesforce_account_id: String?
+
+            def initialize: (salesforce_account_id: String?) -> void
+
+            def to_hash: -> { salesforce_account_id: String? }
+          end
+
+          type current_billable_status =
+            {
+              value: MetronomeSDK::Models::V1::CustomerRetrieveResponse::Data::CurrentBillableStatus::value,
+              effective_at: Time?
+            }
+
+          class CurrentBillableStatus < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor value: MetronomeSDK::Models::V1::CustomerRetrieveResponse::Data::CurrentBillableStatus::value
+
+            attr_accessor effective_at: Time?
+
+            def initialize: (
+              value: MetronomeSDK::Models::V1::CustomerRetrieveResponse::Data::CurrentBillableStatus::value,
+              ?effective_at: Time?
+            ) -> void
+
+            def to_hash: -> {
+              value: MetronomeSDK::Models::V1::CustomerRetrieveResponse::Data::CurrentBillableStatus::value,
+              effective_at: Time?
+            }
+
+            type value = :billable | :unbillable
+
+            module Value
+              extend MetronomeSDK::Internal::Type::Enum
+
+              BILLABLE: :billable
+              UNBILLABLE: :unbillable
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomerRetrieveResponse::Data::CurrentBillableStatus::value]
+            end
+          end
+        end
       end
     end
   end

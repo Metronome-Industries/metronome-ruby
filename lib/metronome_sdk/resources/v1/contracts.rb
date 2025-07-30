@@ -80,7 +80,7 @@ module MetronomeSDK
         #
         # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made wit
         #
-        # @param usage_filter [MetronomeSDK::Models::BaseUsageFilter]
+        # @param usage_filter [MetronomeSDK::Models::V1::ContractCreateParams::UsageFilter]
         #
         # @param usage_statement_schedule [MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule]
         #
@@ -340,7 +340,7 @@ module MetronomeSDK
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [MetronomeSDK::Internal::CursorPage<MetronomeSDK::Models::Commit, MetronomeSDK::Models::Credit>]
+        # @return [MetronomeSDK::Models::V1::ContractListBalancesResponse]
         #
         # @see MetronomeSDK::Models::V1::ContractListBalancesParams
         def list_balances(params)
@@ -349,7 +349,6 @@ module MetronomeSDK
             method: :post,
             path: "v1/contracts/customerBalances/list",
             body: parsed,
-            page: MetronomeSDK::Internal::CursorPage,
             model: MetronomeSDK::Models::V1::ContractListBalancesResponse,
             options: options
           )

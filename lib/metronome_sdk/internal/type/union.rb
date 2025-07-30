@@ -4,17 +4,6 @@ module MetronomeSDK
   module Internal
     module Type
       # @api private
-      #
-      # @example
-      #   # `contract_list_balances_response` is a `MetronomeSDK::Models::V1::ContractListBalancesResponse`
-      #   case contract_list_balances_response
-      #   when MetronomeSDK::Commit
-      #     puts(contract_list_balances_response.id)
-      #   when MetronomeSDK::Credit
-      #     puts(contract_list_balances_response.product)
-      #   else
-      #     puts(contract_list_balances_response)
-      #   end
       module Union
         include MetronomeSDK::Internal::Type::Converter
         include MetronomeSDK::Internal::Util::SorbetRuntimeSupport

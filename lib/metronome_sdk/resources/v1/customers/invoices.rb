@@ -70,7 +70,7 @@ module MetronomeSDK
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [MetronomeSDK::Internal::CursorPage<MetronomeSDK::Models::V1::Customers::Invoice>]
+          # @return [MetronomeSDK::Internal::CursorPage<MetronomeSDK::Models::V1::Customers::InvoiceListResponse>]
           #
           # @see MetronomeSDK::Models::V1::Customers::InvoiceListParams
           def list(params)
@@ -84,7 +84,7 @@ module MetronomeSDK
               path: ["v1/customers/%1$s/invoices", customer_id],
               query: parsed,
               page: MetronomeSDK::Internal::CursorPage,
-              model: MetronomeSDK::V1::Customers::Invoice,
+              model: MetronomeSDK::Models::V1::Customers::InvoiceListResponse,
               options: options
             )
           end

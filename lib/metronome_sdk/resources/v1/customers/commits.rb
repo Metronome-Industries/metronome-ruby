@@ -95,7 +95,7 @@ module MetronomeSDK
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [MetronomeSDK::Internal::CursorPage<MetronomeSDK::Models::Commit>]
+          # @return [MetronomeSDK::Models::V1::Customers::CommitListResponse]
           #
           # @see MetronomeSDK::Models::V1::Customers::CommitListParams
           def list(params)
@@ -104,8 +104,7 @@ module MetronomeSDK
               method: :post,
               path: "v1/contracts/customerCommits/list",
               body: parsed,
-              page: MetronomeSDK::Internal::CursorPage,
-              model: MetronomeSDK::Commit,
+              model: MetronomeSDK::Models::V1::Customers::CommitListResponse,
               options: options
             )
           end

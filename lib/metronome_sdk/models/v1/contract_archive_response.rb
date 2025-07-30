@@ -7,11 +7,22 @@ module MetronomeSDK
       class ContractArchiveResponse < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute data
         #
-        #   @return [MetronomeSDK::Models::ID]
-        required :data, -> { MetronomeSDK::ID }
+        #   @return [MetronomeSDK::Models::V1::ContractArchiveResponse::Data]
+        required :data, -> { MetronomeSDK::Models::V1::ContractArchiveResponse::Data }
 
         # @!method initialize(data:)
-        #   @param data [MetronomeSDK::Models::ID]
+        #   @param data [MetronomeSDK::Models::V1::ContractArchiveResponse::Data]
+
+        # @see MetronomeSDK::Models::V1::ContractArchiveResponse#data
+        class Data < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute id
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!method initialize(id:)
+          #   @param id [String]
+        end
       end
     end
   end
