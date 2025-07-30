@@ -6479,6 +6479,24 @@ module MetronomeSDK
             end
             attr_writer :specifiers
 
+            # Attach a subscription to the recurring commit/credit.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig
+                )
+              )
+            end
+            attr_reader :subscription_config
+
+            sig do
+              params(
+                subscription_config:
+                  MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::OrHash
+              ).void
+            end
+            attr_writer :subscription_config
+
             sig do
               params(
                 id: String,
@@ -6512,7 +6530,9 @@ module MetronomeSDK
                 specifiers:
                   T::Array[
                     MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::Specifier::OrHash
-                  ]
+                  ],
+                subscription_config:
+                  MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::OrHash
               ).returns(T.attached_class)
             end
             def self.new(
@@ -6561,7 +6581,9 @@ module MetronomeSDK
               # List of filters that determine what kind of customer usage draws down a commit
               # or credit. A customer's usage needs to meet the condition of at least one of the
               # specifiers to contribute to a commit's or credit's drawdown.
-              specifiers: nil
+              specifiers: nil,
+              # Attach a subscription to the recurring commit/credit.
+              subscription_config: nil
             )
             end
 
@@ -6599,7 +6621,9 @@ module MetronomeSDK
                   specifiers:
                     T::Array[
                       MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::Specifier
-                    ]
+                    ],
+                  subscription_config:
+                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig
                 }
               )
             end
@@ -7280,6 +7304,133 @@ module MetronomeSDK
               def to_hash
               end
             end
+
+            class SubscriptionConfig < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig do
+                returns(
+                  MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::Allocation::TaggedSymbol
+                )
+              end
+              attr_accessor :allocation
+
+              sig do
+                returns(
+                  MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::ApplySeatIncreaseConfig
+                )
+              end
+              attr_reader :apply_seat_increase_config
+
+              sig do
+                params(
+                  apply_seat_increase_config:
+                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::ApplySeatIncreaseConfig::OrHash
+                ).void
+              end
+              attr_writer :apply_seat_increase_config
+
+              sig { returns(String) }
+              attr_accessor :subscription_id
+
+              # Attach a subscription to the recurring commit/credit.
+              sig do
+                params(
+                  allocation:
+                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::Allocation::OrSymbol,
+                  apply_seat_increase_config:
+                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::ApplySeatIncreaseConfig::OrHash,
+                  subscription_id: String
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                allocation:,
+                apply_seat_increase_config:,
+                subscription_id:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    allocation:
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::Allocation::TaggedSymbol,
+                    apply_seat_increase_config:
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::ApplySeatIncreaseConfig,
+                    subscription_id: String
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              module Allocation
+                extend MetronomeSDK::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::Allocation
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                INDIVIDUAL =
+                  T.let(
+                    :INDIVIDUAL,
+                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::Allocation::TaggedSymbol
+                  )
+                POOLED =
+                  T.let(
+                    :POOLED,
+                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::Allocation::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::Allocation::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              class ApplySeatIncreaseConfig < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::ApplySeatIncreaseConfig,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                # Indicates whether a mid-period seat increase should be prorated.
+                sig { returns(T::Boolean) }
+                attr_accessor :is_prorated
+
+                sig do
+                  params(is_prorated: T::Boolean).returns(T.attached_class)
+                end
+                def self.new(
+                  # Indicates whether a mid-period seat increase should be prorated.
+                  is_prorated:
+                )
+                end
+
+                sig { override.returns({ is_prorated: T::Boolean }) }
+                def to_hash
+                end
+              end
+            end
           end
 
           class RecurringCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -7508,6 +7659,24 @@ module MetronomeSDK
             end
             attr_writer :specifiers
 
+            # Attach a subscription to the recurring commit/credit.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig
+                )
+              )
+            end
+            attr_reader :subscription_config
+
+            sig do
+              params(
+                subscription_config:
+                  MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::OrHash
+              ).void
+            end
+            attr_writer :subscription_config
+
             sig do
               params(
                 id: String,
@@ -7539,7 +7708,9 @@ module MetronomeSDK
                 specifiers:
                   T::Array[
                     MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::Specifier::OrHash
-                  ]
+                  ],
+                subscription_config:
+                  MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::OrHash
               ).returns(T.attached_class)
             end
             def self.new(
@@ -7586,7 +7757,9 @@ module MetronomeSDK
               # List of filters that determine what kind of customer usage draws down a commit
               # or credit. A customer's usage needs to meet the condition of at least one of the
               # specifiers to contribute to a commit's or credit's drawdown.
-              specifiers: nil
+              specifiers: nil,
+              # Attach a subscription to the recurring commit/credit.
+              subscription_config: nil
             )
             end
 
@@ -7622,7 +7795,9 @@ module MetronomeSDK
                   specifiers:
                     T::Array[
                       MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::Specifier
-                    ]
+                    ],
+                  subscription_config:
+                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig
                 }
               )
             end
@@ -8263,6 +8438,133 @@ module MetronomeSDK
                 )
               end
               def to_hash
+              end
+            end
+
+            class SubscriptionConfig < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig do
+                returns(
+                  MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::Allocation::TaggedSymbol
+                )
+              end
+              attr_accessor :allocation
+
+              sig do
+                returns(
+                  MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::ApplySeatIncreaseConfig
+                )
+              end
+              attr_reader :apply_seat_increase_config
+
+              sig do
+                params(
+                  apply_seat_increase_config:
+                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::ApplySeatIncreaseConfig::OrHash
+                ).void
+              end
+              attr_writer :apply_seat_increase_config
+
+              sig { returns(String) }
+              attr_accessor :subscription_id
+
+              # Attach a subscription to the recurring commit/credit.
+              sig do
+                params(
+                  allocation:
+                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::Allocation::OrSymbol,
+                  apply_seat_increase_config:
+                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::ApplySeatIncreaseConfig::OrHash,
+                  subscription_id: String
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                allocation:,
+                apply_seat_increase_config:,
+                subscription_id:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    allocation:
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::Allocation::TaggedSymbol,
+                    apply_seat_increase_config:
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::ApplySeatIncreaseConfig,
+                    subscription_id: String
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              module Allocation
+                extend MetronomeSDK::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::Allocation
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                INDIVIDUAL =
+                  T.let(
+                    :INDIVIDUAL,
+                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::Allocation::TaggedSymbol
+                  )
+                POOLED =
+                  T.let(
+                    :POOLED,
+                    MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::Allocation::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::Allocation::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              class ApplySeatIncreaseConfig < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::ApplySeatIncreaseConfig,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                # Indicates whether a mid-period seat increase should be prorated.
+                sig { returns(T::Boolean) }
+                attr_accessor :is_prorated
+
+                sig do
+                  params(is_prorated: T::Boolean).returns(T.attached_class)
+                end
+                def self.new(
+                  # Indicates whether a mid-period seat increase should be prorated.
+                  is_prorated:
+                )
+                end
+
+                sig { override.returns({ is_prorated: T::Boolean }) }
+                def to_hash
+                end
               end
             end
           end

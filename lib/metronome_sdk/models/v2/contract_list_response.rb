@@ -3017,7 +3017,14 @@ module MetronomeSDK
             optional :specifiers,
                      -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::Specifier] }
 
-            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, invoice_amount: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil)
+            # @!attribute subscription_config
+            #   Attach a subscription to the recurring commit/credit.
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::SubscriptionConfig, nil]
+            optional :subscription_config,
+                     -> { MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::SubscriptionConfig }
+
+            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, invoice_amount: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit} for more
             #   details.
@@ -3061,6 +3068,8 @@ module MetronomeSDK
             #   @param rollover_fraction [Float] Will be passed down to the individual commits. This controls how much of an indi
             #
             #   @param specifiers [Array<MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
+            #
+            #   @param subscription_config [MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::SubscriptionConfig] Attach a subscription to the recurring commit/credit.
 
             # @see MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit#access_amount
             class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
@@ -3352,6 +3361,56 @@ module MetronomeSDK
               #
               #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
             end
+
+            # @see MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit#subscription_config
+            class SubscriptionConfig < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute allocation
+              #
+              #   @return [Symbol, MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::SubscriptionConfig::Allocation]
+              required :allocation,
+                       enum: -> { MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::SubscriptionConfig::Allocation }
+
+              # @!attribute apply_seat_increase_config
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::SubscriptionConfig::ApplySeatIncreaseConfig]
+              required :apply_seat_increase_config,
+                       -> { MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::SubscriptionConfig::ApplySeatIncreaseConfig }
+
+              # @!attribute subscription_id
+              #
+              #   @return [String]
+              required :subscription_id, String
+
+              # @!method initialize(allocation:, apply_seat_increase_config:, subscription_id:)
+              #   Attach a subscription to the recurring commit/credit.
+              #
+              #   @param allocation [Symbol, MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::SubscriptionConfig::Allocation]
+              #   @param apply_seat_increase_config [MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::SubscriptionConfig::ApplySeatIncreaseConfig]
+              #   @param subscription_id [String]
+
+              # @see MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::SubscriptionConfig#allocation
+              module Allocation
+                extend MetronomeSDK::Internal::Type::Enum
+
+                INDIVIDUAL = :INDIVIDUAL
+                POOLED = :POOLED
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+
+              # @see MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCommit::SubscriptionConfig#apply_seat_increase_config
+              class ApplySeatIncreaseConfig < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute is_prorated
+                #   Indicates whether a mid-period seat increase should be prorated.
+                #
+                #   @return [Boolean]
+                required :is_prorated, MetronomeSDK::Internal::Type::Boolean
+
+                # @!method initialize(is_prorated:)
+                #   @param is_prorated [Boolean] Indicates whether a mid-period seat increase should be prorated.
+              end
+            end
           end
 
           class RecurringCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -3482,7 +3541,14 @@ module MetronomeSDK
             optional :specifiers,
                      -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::Specifier] }
 
-            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil)
+            # @!attribute subscription_config
+            #   Attach a subscription to the recurring commit/credit.
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::SubscriptionConfig, nil]
+            optional :subscription_config,
+                     -> { MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::SubscriptionConfig }
+
+            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit} for more
             #   details.
@@ -3524,6 +3590,8 @@ module MetronomeSDK
             #   @param rollover_fraction [Float] Will be passed down to the individual commits. This controls how much of an indi
             #
             #   @param specifiers [Array<MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
+            #
+            #   @param subscription_config [MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::SubscriptionConfig] Attach a subscription to the recurring commit/credit.
 
             # @see MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit#access_amount
             class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
@@ -3789,6 +3857,56 @@ module MetronomeSDK
               #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
               #
               #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
+            end
+
+            # @see MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit#subscription_config
+            class SubscriptionConfig < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute allocation
+              #
+              #   @return [Symbol, MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::SubscriptionConfig::Allocation]
+              required :allocation,
+                       enum: -> { MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::SubscriptionConfig::Allocation }
+
+              # @!attribute apply_seat_increase_config
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::SubscriptionConfig::ApplySeatIncreaseConfig]
+              required :apply_seat_increase_config,
+                       -> { MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::SubscriptionConfig::ApplySeatIncreaseConfig }
+
+              # @!attribute subscription_id
+              #
+              #   @return [String]
+              required :subscription_id, String
+
+              # @!method initialize(allocation:, apply_seat_increase_config:, subscription_id:)
+              #   Attach a subscription to the recurring commit/credit.
+              #
+              #   @param allocation [Symbol, MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::SubscriptionConfig::Allocation]
+              #   @param apply_seat_increase_config [MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::SubscriptionConfig::ApplySeatIncreaseConfig]
+              #   @param subscription_id [String]
+
+              # @see MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::SubscriptionConfig#allocation
+              module Allocation
+                extend MetronomeSDK::Internal::Type::Enum
+
+                INDIVIDUAL = :INDIVIDUAL
+                POOLED = :POOLED
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+
+              # @see MetronomeSDK::Models::V2::ContractListResponse::Data::RecurringCredit::SubscriptionConfig#apply_seat_increase_config
+              class ApplySeatIncreaseConfig < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute is_prorated
+                #   Indicates whether a mid-period seat increase should be prorated.
+                #
+                #   @return [Boolean]
+                required :is_prorated, MetronomeSDK::Internal::Type::Boolean
+
+                # @!method initialize(is_prorated:)
+                #   @param is_prorated [Boolean] Indicates whether a mid-period seat increase should be prorated.
+              end
             end
           end
 
