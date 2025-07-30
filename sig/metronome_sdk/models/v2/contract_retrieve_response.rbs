@@ -2877,7 +2877,8 @@ module MetronomeSDK
               proration: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::proration,
               recurrence_frequency: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::recurrence_frequency,
               rollover_fraction: Float,
-              specifiers: ::Array[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::Specifier]
+              specifiers: ::Array[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::Specifier],
+              subscription_config: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig
             }
 
           class RecurringCommit < MetronomeSDK::Internal::Type::BaseModel
@@ -2959,6 +2960,12 @@ module MetronomeSDK
               ::Array[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::Specifier]
             ) -> ::Array[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::Specifier]
 
+            attr_reader subscription_config: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig?
+
+            def subscription_config=: (
+              MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig
+            ) -> MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig
+
             def initialize: (
               id: String,
               access_amount: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::AccessAmount,
@@ -2979,7 +2986,8 @@ module MetronomeSDK
               ?proration: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::proration,
               ?recurrence_frequency: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::recurrence_frequency,
               ?rollover_fraction: Float,
-              ?specifiers: ::Array[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::Specifier]
+              ?specifiers: ::Array[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::Specifier],
+              ?subscription_config: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig
             ) -> void
 
             def to_hash: -> {
@@ -3002,7 +3010,8 @@ module MetronomeSDK
               proration: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::proration,
               recurrence_frequency: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::recurrence_frequency,
               rollover_fraction: Float,
-              specifiers: ::Array[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::Specifier]
+              specifiers: ::Array[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::Specifier],
+              subscription_config: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig
             }
 
             type access_amount =
@@ -3306,6 +3315,54 @@ module MetronomeSDK
                 product_tags: ::Array[String]
               }
             end
+
+            type subscription_config =
+              {
+                allocation: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::allocation,
+                apply_seat_increase_config: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::ApplySeatIncreaseConfig,
+                subscription_id: String
+              }
+
+            class SubscriptionConfig < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor allocation: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::allocation
+
+              attr_accessor apply_seat_increase_config: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::ApplySeatIncreaseConfig
+
+              attr_accessor subscription_id: String
+
+              def initialize: (
+                allocation: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::allocation,
+                apply_seat_increase_config: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::ApplySeatIncreaseConfig,
+                subscription_id: String
+              ) -> void
+
+              def to_hash: -> {
+                allocation: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::allocation,
+                apply_seat_increase_config: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::ApplySeatIncreaseConfig,
+                subscription_id: String
+              }
+
+              type allocation = :INDIVIDUAL | :POOLED
+
+              module Allocation
+                extend MetronomeSDK::Internal::Type::Enum
+
+                INDIVIDUAL: :INDIVIDUAL
+                POOLED: :POOLED
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::allocation]
+              end
+
+              type apply_seat_increase_config = { is_prorated: bool }
+
+              class ApplySeatIncreaseConfig < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor is_prorated: bool
+
+                def initialize: (is_prorated: bool) -> void
+
+                def to_hash: -> { is_prorated: bool }
+              end
+            end
           end
 
           type recurring_credit =
@@ -3328,7 +3385,8 @@ module MetronomeSDK
               proration: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::proration,
               recurrence_frequency: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::recurrence_frequency,
               rollover_fraction: Float,
-              specifiers: ::Array[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::Specifier]
+              specifiers: ::Array[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::Specifier],
+              subscription_config: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig
             }
 
           class RecurringCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -3404,6 +3462,12 @@ module MetronomeSDK
               ::Array[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::Specifier]
             ) -> ::Array[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::Specifier]
 
+            attr_reader subscription_config: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig?
+
+            def subscription_config=: (
+              MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig
+            ) -> MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig
+
             def initialize: (
               id: String,
               access_amount: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::AccessAmount,
@@ -3423,7 +3487,8 @@ module MetronomeSDK
               ?proration: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::proration,
               ?recurrence_frequency: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::recurrence_frequency,
               ?rollover_fraction: Float,
-              ?specifiers: ::Array[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::Specifier]
+              ?specifiers: ::Array[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::Specifier],
+              ?subscription_config: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig
             ) -> void
 
             def to_hash: -> {
@@ -3445,7 +3510,8 @@ module MetronomeSDK
               proration: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::proration,
               recurrence_frequency: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::recurrence_frequency,
               rollover_fraction: Float,
-              specifiers: ::Array[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::Specifier]
+              specifiers: ::Array[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::Specifier],
+              subscription_config: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig
             }
 
             type access_amount =
@@ -3725,6 +3791,54 @@ module MetronomeSDK
                 product_id: String,
                 product_tags: ::Array[String]
               }
+            end
+
+            type subscription_config =
+              {
+                allocation: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::allocation,
+                apply_seat_increase_config: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::ApplySeatIncreaseConfig,
+                subscription_id: String
+              }
+
+            class SubscriptionConfig < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor allocation: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::allocation
+
+              attr_accessor apply_seat_increase_config: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::ApplySeatIncreaseConfig
+
+              attr_accessor subscription_id: String
+
+              def initialize: (
+                allocation: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::allocation,
+                apply_seat_increase_config: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::ApplySeatIncreaseConfig,
+                subscription_id: String
+              ) -> void
+
+              def to_hash: -> {
+                allocation: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::allocation,
+                apply_seat_increase_config: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::ApplySeatIncreaseConfig,
+                subscription_id: String
+              }
+
+              type allocation = :INDIVIDUAL | :POOLED
+
+              module Allocation
+                extend MetronomeSDK::Internal::Type::Enum
+
+                INDIVIDUAL: :INDIVIDUAL
+                POOLED: :POOLED
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::allocation]
+              end
+
+              type apply_seat_increase_config = { is_prorated: bool }
+
+              class ApplySeatIncreaseConfig < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor is_prorated: bool
+
+                def initialize: (is_prorated: bool) -> void
+
+                def to_hash: -> { is_prorated: bool }
+              end
             end
           end
 
