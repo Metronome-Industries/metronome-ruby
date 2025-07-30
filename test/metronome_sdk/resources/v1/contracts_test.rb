@@ -16,7 +16,7 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::ID
+        data: MetronomeSDK::Models::V1::ContractCreateResponse::Data
       }
     end
   end
@@ -82,7 +82,7 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::ID
+        data: MetronomeSDK::Models::V1::ContractAmendResponse::Data
       }
     end
   end
@@ -101,7 +101,7 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::ID
+        data: MetronomeSDK::Models::V1::ContractArchiveResponse::Data
       }
     end
   end
@@ -135,7 +135,7 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice])
+        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data])
       }
     end
   end
@@ -144,21 +144,14 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
     response = @metronome.v1.contracts.list_balances(customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d")
 
     assert_pattern do
-      response => MetronomeSDK::Internal::CursorPage
-    end
-
-    row = response.to_enum.first
-    return if row.nil?
-
-    assert_pattern do
-      row => MetronomeSDK::Models::V1::ContractListBalancesResponse
+      response => MetronomeSDK::Models::V1::ContractListBalancesResponse
     end
 
     assert_pattern do
-      case row
-      in MetronomeSDK::Commit
-      in MetronomeSDK::Credit
-      end
+      response => {
+        data: ^(MetronomeSDK::Internal::Type::ArrayOf[union: MetronomeSDK::Models::V1::ContractListBalancesResponse::Data]),
+        next_page: String | nil
+      }
     end
   end
 
@@ -215,7 +208,7 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice])
+        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::ContractScheduleProServicesInvoiceResponse::Data])
       }
     end
   end
@@ -248,7 +241,7 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::ID
+        data: MetronomeSDK::Models::V1::ContractUpdateEndDateResponse::Data
       }
     end
   end

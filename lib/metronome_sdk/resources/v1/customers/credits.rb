@@ -89,7 +89,7 @@ module MetronomeSDK
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [MetronomeSDK::Internal::CursorPage<MetronomeSDK::Models::Credit>]
+          # @return [MetronomeSDK::Models::V1::Customers::CreditListResponse]
           #
           # @see MetronomeSDK::Models::V1::Customers::CreditListParams
           def list(params)
@@ -98,8 +98,7 @@ module MetronomeSDK
               method: :post,
               path: "v1/contracts/customerCredits/list",
               body: parsed,
-              page: MetronomeSDK::Internal::CursorPage,
-              model: MetronomeSDK::Credit,
+              model: MetronomeSDK::Models::V1::Customers::CreditListResponse,
               options: options
             )
           end

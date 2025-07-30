@@ -39,7 +39,7 @@ module MetronomeSDK
           ?total_contract_value: Float,
           ?transition: MetronomeSDK::V1::ContractCreateParams::Transition,
           ?uniqueness_key: String,
-          ?usage_filter: MetronomeSDK::BaseUsageFilter,
+          ?usage_filter: MetronomeSDK::V1::ContractCreateParams::UsageFilter,
           ?usage_statement_schedule: MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule,
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V1::ContractCreateResponse
@@ -117,7 +117,7 @@ module MetronomeSDK
           ?next_page: String,
           ?starting_at: Time,
           ?request_options: MetronomeSDK::request_opts
-        ) -> MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::contract_list_balances_response]
+        ) -> MetronomeSDK::Models::V1::ContractListBalancesResponse
 
         def retrieve_rate_schedule: (
           contract_id: String,

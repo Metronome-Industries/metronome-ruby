@@ -131,8 +131,9 @@ module MetronomeSDK
           # @!attribute event_type_filter
           #   An optional filtering rule to match the 'event_type' property of an event.
           #
-          #   @return [MetronomeSDK::Models::EventTypeFilter, nil]
-          optional :event_type_filter, -> { MetronomeSDK::EventTypeFilter }
+          #   @return [MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::EventTypeFilter, nil]
+          optional :event_type_filter,
+                   -> { MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::EventTypeFilter }
 
           # @!attribute filter
           #   (DEPRECATED) use property_filters & event_type_filter instead
@@ -159,11 +160,9 @@ module MetronomeSDK
           #   rule on an event property. All rules must pass for the event to match the
           #   billable metric.
           #
-          #   @return [Array<MetronomeSDK::Models::PropertyFilter>, nil]
+          #   @return [Array<MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::PropertyFilter>, nil]
           optional :property_filters,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::PropertyFilter]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::PropertyFilter] }
 
           # @!attribute sql
           #   The SQL query associated with the billable metric
@@ -192,7 +191,7 @@ module MetronomeSDK
           #
           #   @param custom_fields [Hash{Symbol=>String}]
           #
-          #   @param event_type_filter [MetronomeSDK::Models::EventTypeFilter] An optional filtering rule to match the 'event_type' property of an event.
+          #   @param event_type_filter [MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::EventTypeFilter] An optional filtering rule to match the 'event_type' property of an event.
           #
           #   @param filter [Hash{Symbol=>Object}] (DEPRECATED) use property_filters & event_type_filter instead
           #
@@ -200,7 +199,7 @@ module MetronomeSDK
           #
           #   @param group_keys [Array<Array<String>>] Property names that are used to group usage costs on an invoice. Each entry repr
           #
-          #   @param property_filters [Array<MetronomeSDK::Models::PropertyFilter>] A list of filters to match events to this billable metric. Each filter defines a
+          #   @param property_filters [Array<MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::PropertyFilter>] A list of filters to match events to this billable metric. Each filter defines a
           #
           #   @param sql [String] The SQL query associated with the billable metric
 
@@ -218,6 +217,84 @@ module MetronomeSDK
 
             # @!method self.values
             #   @return [Array<Symbol>]
+          end
+
+          # @see MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric#event_type_filter
+          class EventTypeFilter < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute in_values
+            #   A list of event types that are explicitly included in the billable metric. If
+            #   specified, only events of these types will match the billable metric. Must be
+            #   non-empty if present.
+            #
+            #   @return [Array<String>, nil]
+            optional :in_values, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+            # @!attribute not_in_values
+            #   A list of event types that are explicitly excluded from the billable metric. If
+            #   specified, events of these types will not match the billable metric. Must be
+            #   non-empty if present.
+            #
+            #   @return [Array<String>, nil]
+            optional :not_in_values, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(in_values: nil, not_in_values: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::EventTypeFilter}
+            #   for more details.
+            #
+            #   An optional filtering rule to match the 'event_type' property of an event.
+            #
+            #   @param in_values [Array<String>] A list of event types that are explicitly included in the billable metric. If sp
+            #
+            #   @param not_in_values [Array<String>] A list of event types that are explicitly excluded from the billable metric. If
+          end
+
+          class PropertyFilter < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute name
+            #   The name of the event property.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute exists
+            #   Determines whether the property must exist in the event. If true, only events
+            #   with this property will pass the filter. If false, only events without this
+            #   property will pass the filter. If null or omitted, the existence of the property
+            #   is optional.
+            #
+            #   @return [Boolean, nil]
+            optional :exists, MetronomeSDK::Internal::Type::Boolean
+
+            # @!attribute in_values
+            #   Specifies the allowed values for the property to match an event. An event will
+            #   pass the filter only if its property value is included in this list. If
+            #   undefined, all property values will pass the filter. Must be non-empty if
+            #   present.
+            #
+            #   @return [Array<String>, nil]
+            optional :in_values, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+            # @!attribute not_in_values
+            #   Specifies the values that prevent an event from matching the filter. An event
+            #   will not pass the filter if its property value is included in this list. If null
+            #   or empty, all property values will pass the filter. Must be non-empty if
+            #   present.
+            #
+            #   @return [Array<String>, nil]
+            optional :not_in_values, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(name:, exists: nil, in_values: nil, not_in_values: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::PropertyFilter}
+            #   for more details.
+            #
+            #   @param name [String] The name of the event property.
+            #
+            #   @param exists [Boolean] Determines whether the property must exist in the event. If true, only events wi
+            #
+            #   @param in_values [Array<String>] Specifies the allowed values for the property to match an event. An event will p
+            #
+            #   @param not_in_values [Array<String>] Specifies the values that prevent an event from matching the filter. An event wi
           end
         end
 
