@@ -8,14 +8,27 @@ module MetronomeSDK
       #   @return [MetronomeSDK::Models::CreditTypeData, nil]
       optional :credit_type, -> { MetronomeSDK::CreditTypeData }
 
+      # @!attribute do_not_invoice
+      #   This field is only applicable to commit invoice schedules. If true, this
+      #   schedule will not generate an invoice.
+      #
+      #   @return [Boolean, nil]
+      optional :do_not_invoice, MetronomeSDK::Internal::Type::Boolean
+
       # @!attribute schedule_items
       #
       #   @return [Array<MetronomeSDK::Models::SchedulePointInTime::ScheduleItem>, nil]
       optional :schedule_items,
                -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::SchedulePointInTime::ScheduleItem] }
 
-      # @!method initialize(credit_type: nil, schedule_items: nil)
+      # @!method initialize(credit_type: nil, do_not_invoice: nil, schedule_items: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {MetronomeSDK::Models::SchedulePointInTime} for more details.
+      #
       #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
+      #
+      #   @param do_not_invoice [Boolean] This field is only applicable to commit invoice schedules. If true, this schedul
+      #
       #   @param schedule_items [Array<MetronomeSDK::Models::SchedulePointInTime::ScheduleItem>]
 
       class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
