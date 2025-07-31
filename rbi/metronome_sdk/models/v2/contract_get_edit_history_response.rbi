@@ -8973,6 +8973,14 @@ module MetronomeSDK
               sig { params(credit_type_id: String).void }
               attr_writer :credit_type_id
 
+              # This field is only applicable to commit invoice schedules. If true, this
+              # schedule will not generate an invoice.
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :do_not_invoice
+
+              sig { params(do_not_invoice: T::Boolean).void }
+              attr_writer :do_not_invoice
+
               # Enter the unit price and quantity for the charge or instead only send the
               # amount. If amount is sent, the unit price is assumed to be the amount and
               # quantity is inferred to be 1.
@@ -9019,6 +9027,7 @@ module MetronomeSDK
               sig do
                 params(
                   credit_type_id: String,
+                  do_not_invoice: T::Boolean,
                   recurring_schedule:
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::RecurringSchedule::OrHash,
                   schedule_items:
@@ -9030,6 +9039,9 @@ module MetronomeSDK
               def self.new(
                 # Defaults to USD (cents) if not passed.
                 credit_type_id: nil,
+                # This field is only applicable to commit invoice schedules. If true, this
+                # schedule will not generate an invoice.
+                do_not_invoice: nil,
                 # Enter the unit price and quantity for the charge or instead only send the
                 # amount. If amount is sent, the unit price is assumed to be the amount and
                 # quantity is inferred to be 1.
@@ -9043,6 +9055,7 @@ module MetronomeSDK
                 override.returns(
                   {
                     credit_type_id: String,
+                    do_not_invoice: T::Boolean,
                     recurring_schedule:
                       MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::RecurringSchedule,
                     schedule_items:
