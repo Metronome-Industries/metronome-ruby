@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.2.0 (2025-07-31)
+
+Full Changelog: [v0.1.0...v0.2.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v0.1.0...v0.2.0)
+
+### Features
+
+* **api:** api update ([d47ccaa](https://github.com/Metronome-Industries/metronome-ruby/commit/d47ccaa5da03d7cae8a0c88181f3b4bd5507d2bb))
+* **api:** api update ([6a77dbd](https://github.com/Metronome-Industries/metronome-ruby/commit/6a77dbd346b4d4ab5d8c91a328df364dd5efce98))
+* **api:** api update ([c0397c2](https://github.com/Metronome-Industries/metronome-ruby/commit/c0397c2cf8947a4642a1c967744d4679c5ffe8a6))
+* **api:** api update ([f8430de](https://github.com/Metronome-Industries/metronome-ruby/commit/f8430dec9bbd4a95c7201523b990b7186f2df0a4))
+* **api:** api update ([ebf2e65](https://github.com/Metronome-Industries/metronome-ruby/commit/ebf2e65905d232c6adf447dfdf5499985fbc3795))
+* **api:** api update ([b16a8cf](https://github.com/Metronome-Industries/metronome-ruby/commit/b16a8cf07e6b0cc738c710549b9a2d2faa3579fd))
+* **api:** api update ([eb60df9](https://github.com/Metronome-Industries/metronome-ruby/commit/eb60df9e8d131d8bb4269ab64a512fca278ce396))
+* **api:** api update ([38dad99](https://github.com/Metronome-Industries/metronome-ruby/commit/38dad990c411c170d40a52b70be4be50081fd74f))
+* **api:** api update ([7a0434a](https://github.com/Metronome-Industries/metronome-ruby/commit/7a0434ab8c1184de88d6e6e863600deb5362db71))
+* **api:** api update ([bf00f48](https://github.com/Metronome-Industries/metronome-ruby/commit/bf00f486bc290a241c0be04eadadb842e06781a0))
+
+
+### Bug Fixes
+
+* **internal:** ensure sorbet test always runs serially ([0c997ad](https://github.com/Metronome-Industries/metronome-ruby/commit/0c997adba39963b20c4236debec9ad1181522a4b))
+
+
+### Chores
+
+* **internal:** increase visibility of internal helper method ([26219e8](https://github.com/Metronome-Industries/metronome-ruby/commit/26219e89a8a777735bdd36f5c4c8c10a3b75f08e))
+* update contribute.md ([c4ee7db](https://github.com/Metronome-Industries/metronome-ruby/commit/c4ee7dbc1eb87a213a3e5d35910271b79f5b37a4))
+
 ## 0.1.0 (2025-07-24)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v0.1.0-alpha.4...v0.1.0)
