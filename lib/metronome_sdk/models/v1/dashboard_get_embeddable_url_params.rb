@@ -148,6 +148,8 @@ module MetronomeSDK
             USAGE_LINE_9 = :UsageLine_9
             PRIMARY_GREEN = :Primary_green
             PRIMARY_RED = :Primary_red
+            PROGRESS_BAR = :Progress_bar
+            PROGRESS_BAR_BACKGROUND = :Progress_bar_background
 
             # @!method self.values
             #   @return [Array<Symbol>]

@@ -20,8 +20,8 @@ module MetronomeSDK
               ],
             customer_id: String,
             evaluate_on_create: T::Boolean,
-            group_key_filter:
-              MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter::OrHash,
+            group_values:
+              T::Array[MetronomeSDK::V1::AlertCreateParams::GroupValue::OrHash],
             invoice_types_filter: T::Array[String],
             plan_id: String,
             uniqueness_key: String,
@@ -57,9 +57,9 @@ module MetronomeSDK
           # alert threshold. If false, it will only evaluate on future customers that
           # trigger the alert threshold. Defaults to true.
           evaluate_on_create: nil,
-          # Scopes alert evaluation to a specific presentation group key on individual line
-          # items. Only present for spend alerts.
-          group_key_filter: nil,
+          # Only present for `spend_threshold_reached` alerts. Scope alert to a specific
+          # group key on individual line items.
+          group_values: nil,
           # Only supported for invoice_total_reached alerts. A list of invoice types to
           # evaluate.
           invoice_types_filter: nil,

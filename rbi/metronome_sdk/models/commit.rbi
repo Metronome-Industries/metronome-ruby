@@ -860,6 +860,12 @@ module MetronomeSDK
           end
           attr_accessor :type
 
+          sig { returns(T.nilable(String)) }
+          attr_reader :contract_id
+
+          sig { params(contract_id: String).void }
+          attr_writer :contract_id
+
           sig do
             params(
               amount: Float,
@@ -867,10 +873,18 @@ module MetronomeSDK
               segment_id: String,
               timestamp: Time,
               type:
-                MetronomeSDK::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type::OrSymbol
+                MetronomeSDK::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type::OrSymbol,
+              contract_id: String
             ).returns(T.attached_class)
           end
-          def self.new(amount:, invoice_id:, segment_id:, timestamp:, type:)
+          def self.new(
+            amount:,
+            invoice_id:,
+            segment_id:,
+            timestamp:,
+            type:,
+            contract_id: nil
+          )
           end
 
           sig do
@@ -881,7 +895,8 @@ module MetronomeSDK
                 segment_id: String,
                 timestamp: Time,
                 type:
-                  MetronomeSDK::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type::TaggedSymbol
+                  MetronomeSDK::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type::TaggedSymbol,
+                contract_id: String
               }
             )
           end
@@ -1119,6 +1134,12 @@ module MetronomeSDK
           end
           attr_accessor :type
 
+          sig { returns(T.nilable(String)) }
+          attr_reader :contract_id
+
+          sig { params(contract_id: String).void }
+          attr_writer :contract_id
+
           sig do
             params(
               amount: Float,
@@ -1126,10 +1147,18 @@ module MetronomeSDK
               segment_id: String,
               timestamp: Time,
               type:
-                MetronomeSDK::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type::OrSymbol
+                MetronomeSDK::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type::OrSymbol,
+              contract_id: String
             ).returns(T.attached_class)
           end
-          def self.new(amount:, invoice_id:, segment_id:, timestamp:, type:)
+          def self.new(
+            amount:,
+            invoice_id:,
+            segment_id:,
+            timestamp:,
+            type:,
+            contract_id: nil
+          )
           end
 
           sig do
@@ -1140,7 +1169,8 @@ module MetronomeSDK
                 segment_id: String,
                 timestamp: Time,
                 type:
-                  MetronomeSDK::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type::TaggedSymbol
+                  MetronomeSDK::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type::TaggedSymbol,
+                contract_id: String
               }
             )
           end
@@ -1205,6 +1235,12 @@ module MetronomeSDK
           end
           attr_accessor :type
 
+          sig { returns(T.nilable(String)) }
+          attr_reader :contract_id
+
+          sig { params(contract_id: String).void }
+          attr_writer :contract_id
+
           sig do
             params(
               amount: Float,
@@ -1212,10 +1248,18 @@ module MetronomeSDK
               segment_id: String,
               timestamp: Time,
               type:
-                MetronomeSDK::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type::OrSymbol
+                MetronomeSDK::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type::OrSymbol,
+              contract_id: String
             ).returns(T.attached_class)
           end
-          def self.new(amount:, invoice_id:, segment_id:, timestamp:, type:)
+          def self.new(
+            amount:,
+            invoice_id:,
+            segment_id:,
+            timestamp:,
+            type:,
+            contract_id: nil
+          )
           end
 
           sig do
@@ -1226,7 +1270,8 @@ module MetronomeSDK
                 segment_id: String,
                 timestamp: Time,
                 type:
-                  MetronomeSDK::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type::TaggedSymbol
+                  MetronomeSDK::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type::TaggedSymbol,
+                contract_id: String
               }
             )
           end
@@ -1448,6 +1493,12 @@ module MetronomeSDK
           end
           attr_accessor :type
 
+          sig { returns(T.nilable(String)) }
+          attr_reader :contract_id
+
+          sig { params(contract_id: String).void }
+          attr_writer :contract_id
+
           sig do
             params(
               amount: Float,
@@ -1455,10 +1506,18 @@ module MetronomeSDK
               segment_id: String,
               timestamp: Time,
               type:
-                MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type::OrSymbol
+                MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type::OrSymbol,
+              contract_id: String
             ).returns(T.attached_class)
           end
-          def self.new(amount:, invoice_id:, segment_id:, timestamp:, type:)
+          def self.new(
+            amount:,
+            invoice_id:,
+            segment_id:,
+            timestamp:,
+            type:,
+            contract_id: nil
+          )
           end
 
           sig do
@@ -1469,7 +1528,8 @@ module MetronomeSDK
                 segment_id: String,
                 timestamp: Time,
                 type:
-                  MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type::TaggedSymbol
+                  MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type::TaggedSymbol,
+                contract_id: String
               }
             )
           end
@@ -1623,16 +1683,29 @@ module MetronomeSDK
           end
           attr_accessor :type
 
+          sig { returns(T.nilable(String)) }
+          attr_reader :contract_id
+
+          sig { params(contract_id: String).void }
+          attr_writer :contract_id
+
           sig do
             params(
               amount: Float,
               invoice_id: String,
               timestamp: Time,
               type:
-                MetronomeSDK::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type::OrSymbol
+                MetronomeSDK::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type::OrSymbol,
+              contract_id: String
             ).returns(T.attached_class)
           end
-          def self.new(amount:, invoice_id:, timestamp:, type:)
+          def self.new(
+            amount:,
+            invoice_id:,
+            timestamp:,
+            type:,
+            contract_id: nil
+          )
           end
 
           sig do
@@ -1642,7 +1715,8 @@ module MetronomeSDK
                 invoice_id: String,
                 timestamp: Time,
                 type:
-                  MetronomeSDK::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type::TaggedSymbol
+                  MetronomeSDK::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type::TaggedSymbol,
+                contract_id: String
               }
             )
           end

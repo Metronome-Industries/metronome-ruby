@@ -363,7 +363,8 @@ module MetronomeSDK
             invoice_id: String,
             segment_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::type_
+            type: MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::type_,
+            contract_id: String
           }
 
         class CreditAutomatedInvoiceDeductionLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
@@ -377,12 +378,17 @@ module MetronomeSDK
 
           attr_accessor type: MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::type_
 
+          attr_reader contract_id: String?
+
+          def contract_id=: (String) -> String
+
           def initialize: (
             amount: Float,
             invoice_id: String,
             segment_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::type_
+            type: MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::type_,
+            ?contract_id: String
           ) -> void
 
           def to_hash: -> {
@@ -390,7 +396,8 @@ module MetronomeSDK
             invoice_id: String,
             segment_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::type_
+            type: MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::type_,
+            contract_id: String
           }
 
           type type_ = :CREDIT_AUTOMATED_INVOICE_DEDUCTION
@@ -452,7 +459,8 @@ module MetronomeSDK
             invoice_id: String,
             segment_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry::type_
+            type: MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry::type_,
+            contract_id: String
           }
 
         class CreditCanceledLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
@@ -466,12 +474,17 @@ module MetronomeSDK
 
           attr_accessor type: MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry::type_
 
+          attr_reader contract_id: String?
+
+          def contract_id=: (String) -> String
+
           def initialize: (
             amount: Float,
             invoice_id: String,
             segment_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry::type_
+            type: MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry::type_,
+            ?contract_id: String
           ) -> void
 
           def to_hash: -> {
@@ -479,7 +492,8 @@ module MetronomeSDK
             invoice_id: String,
             segment_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry::type_
+            type: MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry::type_,
+            contract_id: String
           }
 
           type type_ = :CREDIT_CANCELED
@@ -499,7 +513,8 @@ module MetronomeSDK
             invoice_id: String,
             segment_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry::type_
+            type: MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry::type_,
+            contract_id: String
           }
 
         class CreditCreditedLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
@@ -513,12 +528,17 @@ module MetronomeSDK
 
           attr_accessor type: MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry::type_
 
+          attr_reader contract_id: String?
+
+          def contract_id=: (String) -> String
+
           def initialize: (
             amount: Float,
             invoice_id: String,
             segment_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry::type_
+            type: MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry::type_,
+            ?contract_id: String
           ) -> void
 
           def to_hash: -> {
@@ -526,7 +546,8 @@ module MetronomeSDK
             invoice_id: String,
             segment_id: String,
             timestamp: Time,
-            type: MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry::type_
+            type: MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry::type_,
+            contract_id: String
           }
 
           type type_ = :CREDIT_CREDITED

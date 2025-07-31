@@ -740,6 +740,12 @@ module MetronomeSDK
           end
           attr_accessor :type
 
+          sig { returns(T.nilable(String)) }
+          attr_reader :contract_id
+
+          sig { params(contract_id: String).void }
+          attr_writer :contract_id
+
           sig do
             params(
               amount: Float,
@@ -747,10 +753,18 @@ module MetronomeSDK
               segment_id: String,
               timestamp: Time,
               type:
-                MetronomeSDK::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type::OrSymbol
+                MetronomeSDK::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type::OrSymbol,
+              contract_id: String
             ).returns(T.attached_class)
           end
-          def self.new(amount:, invoice_id:, segment_id:, timestamp:, type:)
+          def self.new(
+            amount:,
+            invoice_id:,
+            segment_id:,
+            timestamp:,
+            type:,
+            contract_id: nil
+          )
           end
 
           sig do
@@ -761,7 +775,8 @@ module MetronomeSDK
                 segment_id: String,
                 timestamp: Time,
                 type:
-                  MetronomeSDK::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type::TaggedSymbol
+                  MetronomeSDK::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type::TaggedSymbol,
+                contract_id: String
               }
             )
           end
@@ -907,6 +922,12 @@ module MetronomeSDK
           end
           attr_accessor :type
 
+          sig { returns(T.nilable(String)) }
+          attr_reader :contract_id
+
+          sig { params(contract_id: String).void }
+          attr_writer :contract_id
+
           sig do
             params(
               amount: Float,
@@ -914,10 +935,18 @@ module MetronomeSDK
               segment_id: String,
               timestamp: Time,
               type:
-                MetronomeSDK::Credit::Ledger::CreditCanceledLedgerEntry::Type::OrSymbol
+                MetronomeSDK::Credit::Ledger::CreditCanceledLedgerEntry::Type::OrSymbol,
+              contract_id: String
             ).returns(T.attached_class)
           end
-          def self.new(amount:, invoice_id:, segment_id:, timestamp:, type:)
+          def self.new(
+            amount:,
+            invoice_id:,
+            segment_id:,
+            timestamp:,
+            type:,
+            contract_id: nil
+          )
           end
 
           sig do
@@ -928,7 +957,8 @@ module MetronomeSDK
                 segment_id: String,
                 timestamp: Time,
                 type:
-                  MetronomeSDK::Credit::Ledger::CreditCanceledLedgerEntry::Type::TaggedSymbol
+                  MetronomeSDK::Credit::Ledger::CreditCanceledLedgerEntry::Type::TaggedSymbol,
+                contract_id: String
               }
             )
           end
@@ -993,6 +1023,12 @@ module MetronomeSDK
           end
           attr_accessor :type
 
+          sig { returns(T.nilable(String)) }
+          attr_reader :contract_id
+
+          sig { params(contract_id: String).void }
+          attr_writer :contract_id
+
           sig do
             params(
               amount: Float,
@@ -1000,10 +1036,18 @@ module MetronomeSDK
               segment_id: String,
               timestamp: Time,
               type:
-                MetronomeSDK::Credit::Ledger::CreditCreditedLedgerEntry::Type::OrSymbol
+                MetronomeSDK::Credit::Ledger::CreditCreditedLedgerEntry::Type::OrSymbol,
+              contract_id: String
             ).returns(T.attached_class)
           end
-          def self.new(amount:, invoice_id:, segment_id:, timestamp:, type:)
+          def self.new(
+            amount:,
+            invoice_id:,
+            segment_id:,
+            timestamp:,
+            type:,
+            contract_id: nil
+          )
           end
 
           sig do
@@ -1014,7 +1058,8 @@ module MetronomeSDK
                 segment_id: String,
                 timestamp: Time,
                 type:
-                  MetronomeSDK::Credit::Ledger::CreditCreditedLedgerEntry::Type::TaggedSymbol
+                  MetronomeSDK::Credit::Ledger::CreditCreditedLedgerEntry::Type::TaggedSymbol,
+                contract_id: String
               }
             )
           end

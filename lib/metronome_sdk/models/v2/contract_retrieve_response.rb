@@ -765,12 +765,18 @@ module MetronomeSDK
                 required :type,
                          enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type }
 
-                # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
+                # @!attribute contract_id
+                #
+                #   @return [String, nil]
+                optional :contract_id, String
+
+                # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, contract_id: nil)
                 #   @param amount [Float]
                 #   @param invoice_id [String]
                 #   @param segment_id [String]
                 #   @param timestamp [Time]
                 #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
+                #   @param contract_id [String]
 
                 # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry#type
                 module Type
@@ -894,12 +900,18 @@ module MetronomeSDK
                 required :type,
                          enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type }
 
-                # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
+                # @!attribute contract_id
+                #
+                #   @return [String, nil]
+                optional :contract_id, String
+
+                # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, contract_id: nil)
                 #   @param amount [Float]
                 #   @param invoice_id [String]
                 #   @param segment_id [String]
                 #   @param timestamp [Time]
                 #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type]
+                #   @param contract_id [String]
 
                 # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCanceledLedgerEntry#type
                 module Type
@@ -939,12 +951,18 @@ module MetronomeSDK
                 required :type,
                          enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type }
 
-                # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
+                # @!attribute contract_id
+                #
+                #   @return [String, nil]
+                optional :contract_id, String
+
+                # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, contract_id: nil)
                 #   @param amount [Float]
                 #   @param invoice_id [String]
                 #   @param segment_id [String]
                 #   @param timestamp [Time]
                 #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type]
+                #   @param contract_id [String]
 
                 # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PrepaidCommitCreditedLedgerEntry#type
                 module Type
@@ -1056,12 +1074,18 @@ module MetronomeSDK
                 required :type,
                          enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type }
 
-                # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
+                # @!attribute contract_id
+                #
+                #   @return [String, nil]
+                optional :contract_id, String
+
+                # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, contract_id: nil)
                 #   @param amount [Float]
                 #   @param invoice_id [String]
                 #   @param segment_id [String]
                 #   @param timestamp [Time]
                 #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
+                #   @param contract_id [String]
 
                 # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry#type
                 module Type
@@ -1141,11 +1165,17 @@ module MetronomeSDK
                 required :type,
                          enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type }
 
-                # @!method initialize(amount:, invoice_id:, timestamp:, type:)
+                # @!attribute contract_id
+                #
+                #   @return [String, nil]
+                optional :contract_id, String
+
+                # @!method initialize(amount:, invoice_id:, timestamp:, type:, contract_id: nil)
                 #   @param amount [Float]
                 #   @param invoice_id [String]
                 #   @param timestamp [Time]
                 #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type]
+                #   @param contract_id [String]
 
                 # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Commit::Ledger::PostpaidCommitTrueupLedgerEntry#type
                 module Type
@@ -2111,12 +2141,18 @@ module MetronomeSDK
                 required :type,
                          enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type }
 
-                # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
+                # @!attribute contract_id
+                #
+                #   @return [String, nil]
+                optional :contract_id, String
+
+                # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, contract_id: nil)
                 #   @param amount [Float]
                 #   @param invoice_id [String]
                 #   @param segment_id [String]
                 #   @param timestamp [Time]
                 #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type]
+                #   @param contract_id [String]
 
                 # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry#type
                 module Type
@@ -2195,12 +2231,18 @@ module MetronomeSDK
                 required :type,
                          enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry::Type }
 
-                # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
+                # @!attribute contract_id
+                #
+                #   @return [String, nil]
+                optional :contract_id, String
+
+                # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, contract_id: nil)
                 #   @param amount [Float]
                 #   @param invoice_id [String]
                 #   @param segment_id [String]
                 #   @param timestamp [Time]
                 #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry::Type]
+                #   @param contract_id [String]
 
                 # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCanceledLedgerEntry#type
                 module Type
@@ -2240,12 +2282,18 @@ module MetronomeSDK
                 required :type,
                          enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry::Type }
 
-                # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
+                # @!attribute contract_id
+                #
+                #   @return [String, nil]
+                optional :contract_id, String
+
+                # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, contract_id: nil)
                 #   @param amount [Float]
                 #   @param invoice_id [String]
                 #   @param segment_id [String]
                 #   @param timestamp [Time]
                 #   @param type [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry::Type]
+                #   @param contract_id [String]
 
                 # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::Credit::Ledger::CreditCreditedLedgerEntry#type
                 module Type
@@ -2381,6 +2429,12 @@ module MetronomeSDK
 
           # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data#customer_billing_provider_configuration
           class CustomerBillingProviderConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute id
+            #   ID of Customer's billing provider configuration.
+            #
+            #   @return [String]
+            required :id, String
+
             # @!attribute billing_provider
             #
             #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::BillingProvider]
@@ -2393,10 +2447,13 @@ module MetronomeSDK
             required :delivery_method,
                      enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod }
 
-            # @!method initialize(billing_provider:, delivery_method:)
+            # @!method initialize(id:, billing_provider:, delivery_method:)
             #   This field's availability is dependent on your client's configuration.
             #
+            #   @param id [String] ID of Customer's billing provider configuration.
+            #
             #   @param billing_provider [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::BillingProvider]
+            #
             #   @param delivery_method [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration::DeliveryMethod]
 
             # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::CustomerBillingProviderConfiguration#billing_provider
@@ -2656,6 +2713,8 @@ module MetronomeSDK
               #   or credit. A customer's usage needs to meet the condition of at least one of the
               #   specifiers to contribute to a commit's or credit's drawdown. This field cannot
               #   be used together with `applicable_product_ids` or `applicable_product_tags`.
+              #   Instead, to target usage by product or product tag, pass those values in the
+              #   body of `specifiers`.
               #
               #   @return [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::PrepaidBalanceThresholdConfiguration::Commit::Specifier>, nil]
               optional :specifiers,
@@ -2950,7 +3009,7 @@ module MetronomeSDK
             optional :ending_before, Time
 
             # @!attribute hierarchy_configuration
-            #   Optional configuration for recurring commit/credit hierarchy access control
+            #   Optional configuration for recurring credit hierarchy access control
             #
             #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration, nil]
             optional :hierarchy_configuration,
@@ -3011,7 +3070,14 @@ module MetronomeSDK
             optional :specifiers,
                      -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::Specifier] }
 
-            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, invoice_amount: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil)
+            # @!attribute subscription_config
+            #   Attach a subscription to the recurring commit/credit.
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig, nil]
+            optional :subscription_config,
+                     -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig }
+
+            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, invoice_amount: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit} for
             #   more details.
@@ -3040,7 +3106,7 @@ module MetronomeSDK
             #
             #   @param ending_before [Time] Determines when the contract will stop creating recurring commits. Optional
             #
-            #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration] Optional configuration for recurring commit/credit hierarchy access control
+            #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration] Optional configuration for recurring credit hierarchy access control
             #
             #   @param invoice_amount [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::InvoiceAmount] The amount the customer should be billed for the commit. Not required.
             #
@@ -3055,6 +3121,8 @@ module MetronomeSDK
             #   @param rollover_fraction [Float] Will be passed down to the individual commits. This controls how much of an indi
             #
             #   @param specifiers [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
+            #
+            #   @param subscription_config [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig] Attach a subscription to the recurring commit/credit.
 
             # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit#access_amount
             class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
@@ -3161,7 +3229,7 @@ module MetronomeSDK
                        union: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess }
 
               # @!method initialize(child_access:)
-              #   Optional configuration for recurring commit/credit hierarchy access control
+              #   Optional configuration for recurring credit hierarchy access control
               #
               #   @param child_access [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
 
@@ -3346,6 +3414,56 @@ module MetronomeSDK
               #
               #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
             end
+
+            # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit#subscription_config
+            class SubscriptionConfig < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute allocation
+              #
+              #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::Allocation]
+              required :allocation,
+                       enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::Allocation }
+
+              # @!attribute apply_seat_increase_config
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::ApplySeatIncreaseConfig]
+              required :apply_seat_increase_config,
+                       -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::ApplySeatIncreaseConfig }
+
+              # @!attribute subscription_id
+              #
+              #   @return [String]
+              required :subscription_id, String
+
+              # @!method initialize(allocation:, apply_seat_increase_config:, subscription_id:)
+              #   Attach a subscription to the recurring commit/credit.
+              #
+              #   @param allocation [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::Allocation]
+              #   @param apply_seat_increase_config [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::ApplySeatIncreaseConfig]
+              #   @param subscription_id [String]
+
+              # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig#allocation
+              module Allocation
+                extend MetronomeSDK::Internal::Type::Enum
+
+                INDIVIDUAL = :INDIVIDUAL
+                POOLED = :POOLED
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+
+              # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCommit::SubscriptionConfig#apply_seat_increase_config
+              class ApplySeatIncreaseConfig < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute is_prorated
+                #   Indicates whether a mid-period seat increase should be prorated.
+                #
+                #   @return [Boolean]
+                required :is_prorated, MetronomeSDK::Internal::Type::Boolean
+
+                # @!method initialize(is_prorated:)
+                #   @param is_prorated [Boolean] Indicates whether a mid-period seat increase should be prorated.
+              end
+            end
           end
 
           class RecurringCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -3424,7 +3542,7 @@ module MetronomeSDK
             optional :ending_before, Time
 
             # @!attribute hierarchy_configuration
-            #   Optional configuration for recurring commit/credit hierarchy access control
+            #   Optional configuration for recurring credit hierarchy access control
             #
             #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration, nil]
             optional :hierarchy_configuration,
@@ -3478,7 +3596,14 @@ module MetronomeSDK
             optional :specifiers,
                      -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::Specifier] }
 
-            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil)
+            # @!attribute subscription_config
+            #   Attach a subscription to the recurring commit/credit.
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig, nil]
+            optional :subscription_config,
+                     -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig }
+
+            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit} for
             #   more details.
@@ -3507,7 +3632,7 @@ module MetronomeSDK
             #
             #   @param ending_before [Time] Determines when the contract will stop creating recurring commits. Optional
             #
-            #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration] Optional configuration for recurring commit/credit hierarchy access control
+            #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration] Optional configuration for recurring credit hierarchy access control
             #
             #   @param name [String] Displayed on invoices. Will be passed through to the individual commits
             #
@@ -3520,6 +3645,8 @@ module MetronomeSDK
             #   @param rollover_fraction [Float] Will be passed down to the individual commits. This controls how much of an indi
             #
             #   @param specifiers [Array<MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
+            #
+            #   @param subscription_config [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig] Attach a subscription to the recurring commit/credit.
 
             # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit#access_amount
             class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
@@ -3626,7 +3753,7 @@ module MetronomeSDK
                        union: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess }
 
               # @!method initialize(child_access:)
-              #   Optional configuration for recurring commit/credit hierarchy access control
+              #   Optional configuration for recurring credit hierarchy access control
               #
               #   @param child_access [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
 
@@ -3785,6 +3912,56 @@ module MetronomeSDK
               #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
               #
               #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
+            end
+
+            # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit#subscription_config
+            class SubscriptionConfig < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute allocation
+              #
+              #   @return [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::Allocation]
+              required :allocation,
+                       enum: -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::Allocation }
+
+              # @!attribute apply_seat_increase_config
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::ApplySeatIncreaseConfig]
+              required :apply_seat_increase_config,
+                       -> { MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::ApplySeatIncreaseConfig }
+
+              # @!attribute subscription_id
+              #
+              #   @return [String]
+              required :subscription_id, String
+
+              # @!method initialize(allocation:, apply_seat_increase_config:, subscription_id:)
+              #   Attach a subscription to the recurring commit/credit.
+              #
+              #   @param allocation [Symbol, MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::Allocation]
+              #   @param apply_seat_increase_config [MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::ApplySeatIncreaseConfig]
+              #   @param subscription_id [String]
+
+              # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig#allocation
+              module Allocation
+                extend MetronomeSDK::Internal::Type::Enum
+
+                INDIVIDUAL = :INDIVIDUAL
+                POOLED = :POOLED
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+
+              # @see MetronomeSDK::Models::V2::ContractRetrieveResponse::Data::RecurringCredit::SubscriptionConfig#apply_seat_increase_config
+              class ApplySeatIncreaseConfig < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute is_prorated
+                #   Indicates whether a mid-period seat increase should be prorated.
+                #
+                #   @return [Boolean]
+                required :is_prorated, MetronomeSDK::Internal::Type::Boolean
+
+                # @!method initialize(is_prorated:)
+                #   @param is_prorated [Boolean] Indicates whether a mid-period seat increase should be prorated.
+              end
             end
           end
 

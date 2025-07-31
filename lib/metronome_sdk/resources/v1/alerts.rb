@@ -9,7 +9,7 @@ module MetronomeSDK
         #
         # Create a new alert
         #
-        # @overload create(alert_type:, name:, threshold:, billable_metric_id: nil, credit_grant_type_filters: nil, credit_type_id: nil, custom_field_filters: nil, customer_id: nil, evaluate_on_create: nil, group_key_filter: nil, invoice_types_filter: nil, plan_id: nil, uniqueness_key: nil, request_options: {})
+        # @overload create(alert_type:, name:, threshold:, billable_metric_id: nil, credit_grant_type_filters: nil, credit_type_id: nil, custom_field_filters: nil, customer_id: nil, evaluate_on_create: nil, group_values: nil, invoice_types_filter: nil, plan_id: nil, uniqueness_key: nil, request_options: {})
         #
         # @param alert_type [Symbol, MetronomeSDK::Models::V1::AlertCreateParams::AlertType] Type of the alert
         #
@@ -29,7 +29,7 @@ module MetronomeSDK
         #
         # @param evaluate_on_create [Boolean] If true, the alert will evaluate immediately on customers that already meet the
         #
-        # @param group_key_filter [MetronomeSDK::Models::V1::AlertCreateParams::GroupKeyFilter] Scopes alert evaluation to a specific presentation group key on individual line
+        # @param group_values [Array<MetronomeSDK::Models::V1::AlertCreateParams::GroupValue>] Only present for `spend_threshold_reached` alerts. Scope alert to a specific gro
         #
         # @param invoice_types_filter [Array<String>] Only supported for invoice_total_reached alerts. A list of invoice types to eval
         #

@@ -12,7 +12,7 @@ module MetronomeSDK
           custom_field_filters: ::Array[MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter],
           customer_id: String,
           evaluate_on_create: bool,
-          group_key_filter: MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter,
+          group_values: ::Array[MetronomeSDK::V1::AlertCreateParams::GroupValue],
           invoice_types_filter: ::Array[String],
           plan_id: String,
           uniqueness_key: String
@@ -55,11 +55,11 @@ module MetronomeSDK
 
         def evaluate_on_create=: (bool) -> bool
 
-        attr_reader group_key_filter: MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter?
+        attr_reader group_values: ::Array[MetronomeSDK::V1::AlertCreateParams::GroupValue]?
 
-        def group_key_filter=: (
-          MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter
-        ) -> MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter
+        def group_values=: (
+          ::Array[MetronomeSDK::V1::AlertCreateParams::GroupValue]
+        ) -> ::Array[MetronomeSDK::V1::AlertCreateParams::GroupValue]
 
         attr_reader invoice_types_filter: ::Array[String]?
 
@@ -83,7 +83,7 @@ module MetronomeSDK
           ?custom_field_filters: ::Array[MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter],
           ?customer_id: String,
           ?evaluate_on_create: bool,
-          ?group_key_filter: MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter,
+          ?group_values: ::Array[MetronomeSDK::V1::AlertCreateParams::GroupValue],
           ?invoice_types_filter: ::Array[String],
           ?plan_id: String,
           ?uniqueness_key: String,
@@ -100,7 +100,7 @@ module MetronomeSDK
           custom_field_filters: ::Array[MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter],
           customer_id: String,
           evaluate_on_create: bool,
-          group_key_filter: MetronomeSDK::V1::AlertCreateParams::GroupKeyFilter,
+          group_values: ::Array[MetronomeSDK::V1::AlertCreateParams::GroupValue],
           invoice_types_filter: ::Array[String],
           plan_id: String,
           uniqueness_key: String,
@@ -183,9 +183,9 @@ module MetronomeSDK
           end
         end
 
-        type group_key_filter = { key: String, value: String }
+        type group_value = { key: String, value: String }
 
-        class GroupKeyFilter < MetronomeSDK::Internal::Type::BaseModel
+        class GroupValue < MetronomeSDK::Internal::Type::BaseModel
           attr_accessor key: String
 
           attr_accessor value: String

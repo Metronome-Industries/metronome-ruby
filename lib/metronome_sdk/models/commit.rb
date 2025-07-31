@@ -479,12 +479,18 @@ module MetronomeSDK
                      MetronomeSDK::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type
                    }
 
-          # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
+          # @!attribute contract_id
+          #
+          #   @return [String, nil]
+          optional :contract_id, String
+
+          # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, contract_id: nil)
           #   @param amount [Float]
           #   @param invoice_id [String]
           #   @param segment_id [String]
           #   @param timestamp [Time]
           #   @param type [Symbol, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
+          #   @param contract_id [String]
 
           # @see MetronomeSDK::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry#type
           module Type
@@ -605,12 +611,18 @@ module MetronomeSDK
           #   @return [Symbol, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type]
           required :type, enum: -> { MetronomeSDK::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type }
 
-          # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
+          # @!attribute contract_id
+          #
+          #   @return [String, nil]
+          optional :contract_id, String
+
+          # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, contract_id: nil)
           #   @param amount [Float]
           #   @param invoice_id [String]
           #   @param segment_id [String]
           #   @param timestamp [Time]
           #   @param type [Symbol, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry::Type]
+          #   @param contract_id [String]
 
           # @see MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCanceledLedgerEntry#type
           module Type
@@ -649,12 +661,18 @@ module MetronomeSDK
           #   @return [Symbol, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type]
           required :type, enum: -> { MetronomeSDK::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type }
 
-          # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
+          # @!attribute contract_id
+          #
+          #   @return [String, nil]
+          optional :contract_id, String
+
+          # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, contract_id: nil)
           #   @param amount [Float]
           #   @param invoice_id [String]
           #   @param segment_id [String]
           #   @param timestamp [Time]
           #   @param type [Symbol, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry::Type]
+          #   @param contract_id [String]
 
           # @see MetronomeSDK::Models::Commit::Ledger::PrepaidCommitCreditedLedgerEntry#type
           module Type
@@ -772,12 +790,18 @@ module MetronomeSDK
                      MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type
                    }
 
-          # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
+          # @!attribute contract_id
+          #
+          #   @return [String, nil]
+          optional :contract_id, String
+
+          # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, contract_id: nil)
           #   @param amount [Float]
           #   @param invoice_id [String]
           #   @param segment_id [String]
           #   @param timestamp [Time]
           #   @param type [Symbol, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
+          #   @param contract_id [String]
 
           # @see MetronomeSDK::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry#type
           module Type
@@ -855,11 +879,17 @@ module MetronomeSDK
           #   @return [Symbol, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type]
           required :type, enum: -> { MetronomeSDK::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type }
 
-          # @!method initialize(amount:, invoice_id:, timestamp:, type:)
+          # @!attribute contract_id
+          #
+          #   @return [String, nil]
+          optional :contract_id, String
+
+          # @!method initialize(amount:, invoice_id:, timestamp:, type:, contract_id: nil)
           #   @param amount [Float]
           #   @param invoice_id [String]
           #   @param timestamp [Time]
           #   @param type [Symbol, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry::Type]
+          #   @param contract_id [String]
 
           # @see MetronomeSDK::Models::Commit::Ledger::PostpaidCommitTrueupLedgerEntry#type
           module Type

@@ -398,12 +398,18 @@ module MetronomeSDK
           required :type,
                    enum: -> { MetronomeSDK::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type }
 
-          # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
+          # @!attribute contract_id
+          #
+          #   @return [String, nil]
+          optional :contract_id, String
+
+          # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, contract_id: nil)
           #   @param amount [Float]
           #   @param invoice_id [String]
           #   @param segment_id [String]
           #   @param timestamp [Time]
           #   @param type [Symbol, MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry::Type]
+          #   @param contract_id [String]
 
           # @see MetronomeSDK::Models::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry#type
           module Type
@@ -480,12 +486,18 @@ module MetronomeSDK
           #   @return [Symbol, MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry::Type]
           required :type, enum: -> { MetronomeSDK::Credit::Ledger::CreditCanceledLedgerEntry::Type }
 
-          # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
+          # @!attribute contract_id
+          #
+          #   @return [String, nil]
+          optional :contract_id, String
+
+          # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, contract_id: nil)
           #   @param amount [Float]
           #   @param invoice_id [String]
           #   @param segment_id [String]
           #   @param timestamp [Time]
           #   @param type [Symbol, MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry::Type]
+          #   @param contract_id [String]
 
           # @see MetronomeSDK::Models::Credit::Ledger::CreditCanceledLedgerEntry#type
           module Type
@@ -524,12 +536,18 @@ module MetronomeSDK
           #   @return [Symbol, MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry::Type]
           required :type, enum: -> { MetronomeSDK::Credit::Ledger::CreditCreditedLedgerEntry::Type }
 
-          # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:)
+          # @!attribute contract_id
+          #
+          #   @return [String, nil]
+          optional :contract_id, String
+
+          # @!method initialize(amount:, invoice_id:, segment_id:, timestamp:, type:, contract_id: nil)
           #   @param amount [Float]
           #   @param invoice_id [String]
           #   @param segment_id [String]
           #   @param timestamp [Time]
           #   @param type [Symbol, MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry::Type]
+          #   @param contract_id [String]
 
           # @see MetronomeSDK::Models::Credit::Ledger::CreditCreditedLedgerEntry#type
           module Type
