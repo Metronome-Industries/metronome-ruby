@@ -444,6 +444,7 @@ module MetronomeSDK
           type invoice_schedule =
             {
               credit_type_id: String,
+              do_not_invoice: bool,
               recurring_schedule: MetronomeSDK::V1::ContractAmendParams::Commit::InvoiceSchedule::RecurringSchedule,
               schedule_items: ::Array[MetronomeSDK::V1::ContractAmendParams::Commit::InvoiceSchedule::ScheduleItem]
             }
@@ -452,6 +453,10 @@ module MetronomeSDK
             attr_reader credit_type_id: String?
 
             def credit_type_id=: (String) -> String
+
+            attr_reader do_not_invoice: bool?
+
+            def do_not_invoice=: (bool) -> bool
 
             attr_reader recurring_schedule: MetronomeSDK::V1::ContractAmendParams::Commit::InvoiceSchedule::RecurringSchedule?
 
@@ -467,12 +472,14 @@ module MetronomeSDK
 
             def initialize: (
               ?credit_type_id: String,
+              ?do_not_invoice: bool,
               ?recurring_schedule: MetronomeSDK::V1::ContractAmendParams::Commit::InvoiceSchedule::RecurringSchedule,
               ?schedule_items: ::Array[MetronomeSDK::V1::ContractAmendParams::Commit::InvoiceSchedule::ScheduleItem]
             ) -> void
 
             def to_hash: -> {
               credit_type_id: String,
+              do_not_invoice: bool,
               recurring_schedule: MetronomeSDK::V1::ContractAmendParams::Commit::InvoiceSchedule::RecurringSchedule,
               schedule_items: ::Array[MetronomeSDK::V1::ContractAmendParams::Commit::InvoiceSchedule::ScheduleItem]
             }
@@ -1130,6 +1137,7 @@ module MetronomeSDK
           type schedule =
             {
               credit_type_id: String,
+              do_not_invoice: bool,
               recurring_schedule: MetronomeSDK::V1::ContractAmendParams::Discount::Schedule::RecurringSchedule,
               schedule_items: ::Array[MetronomeSDK::V1::ContractAmendParams::Discount::Schedule::ScheduleItem]
             }
@@ -1138,6 +1146,10 @@ module MetronomeSDK
             attr_reader credit_type_id: String?
 
             def credit_type_id=: (String) -> String
+
+            attr_reader do_not_invoice: bool?
+
+            def do_not_invoice=: (bool) -> bool
 
             attr_reader recurring_schedule: MetronomeSDK::V1::ContractAmendParams::Discount::Schedule::RecurringSchedule?
 
@@ -1153,12 +1165,14 @@ module MetronomeSDK
 
             def initialize: (
               ?credit_type_id: String,
+              ?do_not_invoice: bool,
               ?recurring_schedule: MetronomeSDK::V1::ContractAmendParams::Discount::Schedule::RecurringSchedule,
               ?schedule_items: ::Array[MetronomeSDK::V1::ContractAmendParams::Discount::Schedule::ScheduleItem]
             ) -> void
 
             def to_hash: -> {
               credit_type_id: String,
+              do_not_invoice: bool,
               recurring_schedule: MetronomeSDK::V1::ContractAmendParams::Discount::Schedule::RecurringSchedule,
               schedule_items: ::Array[MetronomeSDK::V1::ContractAmendParams::Discount::Schedule::ScheduleItem]
             }
@@ -1830,6 +1844,7 @@ module MetronomeSDK
           type schedule =
             {
               credit_type_id: String,
+              do_not_invoice: bool,
               recurring_schedule: MetronomeSDK::V1::ContractAmendParams::ScheduledCharge::Schedule::RecurringSchedule,
               schedule_items: ::Array[MetronomeSDK::V1::ContractAmendParams::ScheduledCharge::Schedule::ScheduleItem]
             }
@@ -1838,6 +1853,10 @@ module MetronomeSDK
             attr_reader credit_type_id: String?
 
             def credit_type_id=: (String) -> String
+
+            attr_reader do_not_invoice: bool?
+
+            def do_not_invoice=: (bool) -> bool
 
             attr_reader recurring_schedule: MetronomeSDK::V1::ContractAmendParams::ScheduledCharge::Schedule::RecurringSchedule?
 
@@ -1853,12 +1872,14 @@ module MetronomeSDK
 
             def initialize: (
               ?credit_type_id: String,
+              ?do_not_invoice: bool,
               ?recurring_schedule: MetronomeSDK::V1::ContractAmendParams::ScheduledCharge::Schedule::RecurringSchedule,
               ?schedule_items: ::Array[MetronomeSDK::V1::ContractAmendParams::ScheduledCharge::Schedule::ScheduleItem]
             ) -> void
 
             def to_hash: -> {
               credit_type_id: String,
+              do_not_invoice: bool,
               recurring_schedule: MetronomeSDK::V1::ContractAmendParams::ScheduledCharge::Schedule::RecurringSchedule,
               schedule_items: ::Array[MetronomeSDK::V1::ContractAmendParams::ScheduledCharge::Schedule::ScheduleItem]
             }

@@ -3907,6 +3907,7 @@ module MetronomeSDK
             type schedule =
               {
                 credit_type_id: String,
+                do_not_invoice: bool,
                 recurring_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::RecurringSchedule,
                 schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::ScheduleItem]
               }
@@ -3915,6 +3916,10 @@ module MetronomeSDK
               attr_reader credit_type_id: String?
 
               def credit_type_id=: (String) -> String
+
+              attr_reader do_not_invoice: bool?
+
+              def do_not_invoice=: (bool) -> bool
 
               attr_reader recurring_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::RecurringSchedule?
 
@@ -3930,12 +3935,14 @@ module MetronomeSDK
 
               def initialize: (
                 ?credit_type_id: String,
+                ?do_not_invoice: bool,
                 ?recurring_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::RecurringSchedule,
                 ?schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::ScheduleItem]
               ) -> void
 
               def to_hash: -> {
                 credit_type_id: String,
+                do_not_invoice: bool,
                 recurring_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::RecurringSchedule,
                 schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::ScheduleItem]
               }
