@@ -2565,8 +2565,8 @@ module MetronomeSDK
             required :unit_price, Float
 
             # @!attribute quantity
-            #   This field is currently required. Upcoming recurring commit/credit configuration
-            #   options will allow it to be optional.
+            #   This field is required unless a subscription is attached via
+            #   `subscription_config`.
             #
             #   @return [Float, nil]
             optional :quantity, Float
@@ -2582,7 +2582,7 @@ module MetronomeSDK
             #
             #   @param unit_price [Float]
             #
-            #   @param quantity [Float] This field is currently required. Upcoming recurring commit/credit configuration
+            #   @param quantity [Float] This field is required unless a subscription is attached via `subscription_confi
           end
 
           # @see MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCommit#commit_duration
@@ -3101,8 +3101,8 @@ module MetronomeSDK
             required :unit_price, Float
 
             # @!attribute quantity
-            #   This field is currently required. Upcoming recurring commit/credit configuration
-            #   options will allow it to be optional.
+            #   This field is required unless a subscription is attached via
+            #   `subscription_config`.
             #
             #   @return [Float, nil]
             optional :quantity, Float
@@ -3118,7 +3118,7 @@ module MetronomeSDK
             #
             #   @param unit_price [Float]
             #
-            #   @param quantity [Float] This field is currently required. Upcoming recurring commit/credit configuration
+            #   @param quantity [Float] This field is required unless a subscription is attached via `subscription_confi
           end
 
           # @see MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCredit#commit_duration
