@@ -5571,8 +5571,8 @@ module MetronomeSDK
             sig { returns(Float) }
             attr_accessor :unit_price
 
-            # This field is currently required. Upcoming recurring commit/credit configuration
-            # options will allow it to be optional.
+            # This field is required unless a subscription is attached via
+            # `subscription_config`.
             sig { returns(T.nilable(Float)) }
             attr_reader :quantity
 
@@ -5590,8 +5590,8 @@ module MetronomeSDK
             def self.new(
               credit_type_id:,
               unit_price:,
-              # This field is currently required. Upcoming recurring commit/credit configuration
-              # options will allow it to be optional.
+              # This field is required unless a subscription is attached via
+              # `subscription_config`.
               quantity: nil
             )
             end
@@ -6713,8 +6713,8 @@ module MetronomeSDK
             sig { returns(Float) }
             attr_accessor :unit_price
 
-            # This field is currently required. Upcoming recurring commit/credit configuration
-            # options will allow it to be optional.
+            # This field is required unless a subscription is attached via
+            # `subscription_config`.
             sig { returns(T.nilable(Float)) }
             attr_reader :quantity
 
@@ -6732,8 +6732,8 @@ module MetronomeSDK
             def self.new(
               credit_type_id:,
               unit_price:,
-              # This field is currently required. Upcoming recurring commit/credit configuration
-              # options will allow it to be optional.
+              # This field is required unless a subscription is attached via
+              # `subscription_config`.
               quantity: nil
             )
             end
