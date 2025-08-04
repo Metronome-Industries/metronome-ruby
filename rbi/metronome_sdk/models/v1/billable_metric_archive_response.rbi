@@ -12,58 +12,18 @@ module MetronomeSDK
             )
           end
 
-        sig do
-          returns(MetronomeSDK::Models::V1::BillableMetricArchiveResponse::Data)
-        end
+        sig { returns(MetronomeSDK::ID) }
         attr_reader :data
 
-        sig do
-          params(
-            data:
-              MetronomeSDK::Models::V1::BillableMetricArchiveResponse::Data::OrHash
-          ).void
-        end
+        sig { params(data: MetronomeSDK::ID::OrHash).void }
         attr_writer :data
 
-        sig do
-          params(
-            data:
-              MetronomeSDK::Models::V1::BillableMetricArchiveResponse::Data::OrHash
-          ).returns(T.attached_class)
-        end
+        sig { params(data: MetronomeSDK::ID::OrHash).returns(T.attached_class) }
         def self.new(data:)
         end
 
-        sig do
-          override.returns(
-            {
-              data:
-                MetronomeSDK::Models::V1::BillableMetricArchiveResponse::Data
-            }
-          )
-        end
+        sig { override.returns({ data: MetronomeSDK::ID }) }
         def to_hash
-        end
-
-        class Data < MetronomeSDK::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                MetronomeSDK::Models::V1::BillableMetricArchiveResponse::Data,
-                MetronomeSDK::Internal::AnyHash
-              )
-            end
-
-          sig { returns(String) }
-          attr_accessor :id
-
-          sig { params(id: String).returns(T.attached_class) }
-          def self.new(id:)
-          end
-
-          sig { override.returns({ id: String }) }
-          def to_hash
-          end
         end
       end
     end

@@ -7,22 +7,11 @@ module MetronomeSDK
       class AlertCreateResponse < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute data
         #
-        #   @return [MetronomeSDK::Models::V1::AlertCreateResponse::Data]
-        required :data, -> { MetronomeSDK::Models::V1::AlertCreateResponse::Data }
+        #   @return [MetronomeSDK::Models::ID]
+        required :data, -> { MetronomeSDK::ID }
 
         # @!method initialize(data:)
-        #   @param data [MetronomeSDK::Models::V1::AlertCreateResponse::Data]
-
-        # @see MetronomeSDK::Models::V1::AlertCreateResponse#data
-        class Data < MetronomeSDK::Internal::Type::BaseModel
-          # @!attribute id
-          #
-          #   @return [String]
-          required :id, String
-
-          # @!method initialize(id:)
-          #   @param id [String]
-        end
+        #   @param data [MetronomeSDK::Models::ID]
       end
     end
   end

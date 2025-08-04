@@ -3,7 +3,7 @@
 module MetronomeSDK
   module Models
     module V1
-      class CustomerArchiveParams < MetronomeSDK::Internal::Type::BaseModel
+      class CustomerArchiveParams < MetronomeSDK::Models::ID
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
@@ -15,22 +15,16 @@ module MetronomeSDK
             )
           end
 
-        sig { returns(String) }
-        attr_accessor :id
-
         sig do
-          params(
-            id: String,
-            request_options: MetronomeSDK::RequestOptions::OrHash
-          ).returns(T.attached_class)
-        end
-        def self.new(id:, request_options: {})
-        end
-
-        sig do
-          override.returns(
-            { id: String, request_options: MetronomeSDK::RequestOptions }
+          params(request_options: MetronomeSDK::RequestOptions::OrHash).returns(
+            T.attached_class
           )
+        end
+        def self.new(request_options: {})
+        end
+
+        sig do
+          override.returns({ request_options: MetronomeSDK::RequestOptions })
         end
         def to_hash
         end
