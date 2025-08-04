@@ -22,10 +22,10 @@ module MetronomeSDK
             id: String,
             add_commits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit],
             add_credits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit],
-            add_discounts: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount],
+            add_discounts: ::Array[MetronomeSDK::Discount],
             add_overrides: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride],
             add_prepaid_balance_threshold_configuration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration,
-            add_pro_services: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddProService],
+            add_pro_services: ::Array[MetronomeSDK::ProService],
             add_recurring_commits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit],
             add_recurring_credits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit],
             add_reseller_royalties: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddResellerRoyalty],
@@ -67,11 +67,11 @@ module MetronomeSDK
             ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit]
           ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit]
 
-          attr_reader add_discounts: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount]?
+          attr_reader add_discounts: ::Array[MetronomeSDK::Discount]?
 
           def add_discounts=: (
-            ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount]
-          ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount]
+            ::Array[MetronomeSDK::Discount]
+          ) -> ::Array[MetronomeSDK::Discount]
 
           attr_reader add_overrides: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride]?
 
@@ -85,11 +85,11 @@ module MetronomeSDK
             MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration
           ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration
 
-          attr_reader add_pro_services: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddProService]?
+          attr_reader add_pro_services: ::Array[MetronomeSDK::ProService]?
 
           def add_pro_services=: (
-            ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddProService]
-          ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddProService]
+            ::Array[MetronomeSDK::ProService]
+          ) -> ::Array[MetronomeSDK::ProService]
 
           attr_reader add_recurring_commits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit]?
 
@@ -231,10 +231,10 @@ module MetronomeSDK
             id: String,
             ?add_commits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit],
             ?add_credits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit],
-            ?add_discounts: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount],
+            ?add_discounts: ::Array[MetronomeSDK::Discount],
             ?add_overrides: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride],
             ?add_prepaid_balance_threshold_configuration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration,
-            ?add_pro_services: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddProService],
+            ?add_pro_services: ::Array[MetronomeSDK::ProService],
             ?add_recurring_commits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit],
             ?add_recurring_credits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit],
             ?add_reseller_royalties: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddResellerRoyalty],
@@ -265,10 +265,10 @@ module MetronomeSDK
             id: String,
             add_commits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit],
             add_credits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit],
-            add_discounts: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount],
+            add_discounts: ::Array[MetronomeSDK::Discount],
             add_overrides: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride],
             add_prepaid_balance_threshold_configuration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddPrepaidBalanceThresholdConfiguration,
-            add_pro_services: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddProService],
+            add_pro_services: ::Array[MetronomeSDK::ProService],
             add_recurring_commits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit],
             add_recurring_credits: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit],
             add_reseller_royalties: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddResellerRoyalty],
@@ -300,12 +300,12 @@ module MetronomeSDK
               id: String,
               product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Product,
               type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::type_,
-              access_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule,
+              access_schedule: MetronomeSDK::ScheduleDuration,
               applicable_product_ids: ::Array[String],
               applicable_product_tags: ::Array[String],
               description: String,
               hierarchy_configuration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration,
-              invoice_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule,
+              invoice_schedule: MetronomeSDK::SchedulePointInTime,
               name: String,
               netsuite_sales_order_id: String,
               priority: Float,
@@ -322,11 +322,11 @@ module MetronomeSDK
 
             attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::type_
 
-            attr_reader access_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule?
+            attr_reader access_schedule: MetronomeSDK::ScheduleDuration?
 
             def access_schedule=: (
-              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule
-            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule
+              MetronomeSDK::ScheduleDuration
+            ) -> MetronomeSDK::ScheduleDuration
 
             attr_reader applicable_product_ids: ::Array[String]?
 
@@ -346,11 +346,11 @@ module MetronomeSDK
               MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration
             ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration
 
-            attr_reader invoice_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule?
+            attr_reader invoice_schedule: MetronomeSDK::SchedulePointInTime?
 
             def invoice_schedule=: (
-              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule
-            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule
+              MetronomeSDK::SchedulePointInTime
+            ) -> MetronomeSDK::SchedulePointInTime
 
             attr_reader name: String?
 
@@ -388,12 +388,12 @@ module MetronomeSDK
               id: String,
               product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Product,
               type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::type_,
-              ?access_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule,
+              ?access_schedule: MetronomeSDK::ScheduleDuration,
               ?applicable_product_ids: ::Array[String],
               ?applicable_product_tags: ::Array[String],
               ?description: String,
               ?hierarchy_configuration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration,
-              ?invoice_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule,
+              ?invoice_schedule: MetronomeSDK::SchedulePointInTime,
               ?name: String,
               ?netsuite_sales_order_id: String,
               ?priority: Float,
@@ -407,12 +407,12 @@ module MetronomeSDK
               id: String,
               product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::Product,
               type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::type_,
-              access_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule,
+              access_schedule: MetronomeSDK::ScheduleDuration,
               applicable_product_ids: ::Array[String],
               applicable_product_tags: ::Array[String],
               description: String,
               hierarchy_configuration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration,
-              invoice_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule,
+              invoice_schedule: MetronomeSDK::SchedulePointInTime,
               name: String,
               netsuite_sales_order_id: String,
               priority: Float,
@@ -445,76 +445,6 @@ module MetronomeSDK
               def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::type_]
             end
 
-            type access_schedule =
-              {
-                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule::ScheduleItem],
-                credit_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule::CreditType
-              }
-
-            class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
-              attr_accessor schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule::ScheduleItem]
-
-              attr_reader credit_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule::CreditType?
-
-              def credit_type=: (
-                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule::CreditType
-              ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule::CreditType
-
-              def initialize: (
-                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule::ScheduleItem],
-                ?credit_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule::CreditType
-              ) -> void
-
-              def to_hash: -> {
-                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule::ScheduleItem],
-                credit_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::AccessSchedule::CreditType
-              }
-
-              type schedule_item =
-                {
-                  id: String,
-                  amount: Float,
-                  ending_before: Time,
-                  starting_at: Time
-                }
-
-              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
-                attr_accessor id: String
-
-                attr_accessor amount: Float
-
-                attr_accessor ending_before: Time
-
-                attr_accessor starting_at: Time
-
-                def initialize: (
-                  id: String,
-                  amount: Float,
-                  ending_before: Time,
-                  starting_at: Time
-                ) -> void
-
-                def to_hash: -> {
-                  id: String,
-                  amount: Float,
-                  ending_before: Time,
-                  starting_at: Time
-                }
-              end
-
-              type credit_type = { id: String, name: String }
-
-              class CreditType < MetronomeSDK::Internal::Type::BaseModel
-                attr_accessor id: String
-
-                attr_accessor name: String
-
-                def initialize: (id: String, name: String) -> void
-
-                def to_hash: -> { id: String, name: String }
-              end
-            end
-
             type hierarchy_configuration =
               {
                 child_access: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::child_access
@@ -532,26 +462,27 @@ module MetronomeSDK
               }
 
               type child_access =
-                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::Type
-                | MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::UnionMember2
+                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll
+                | MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone
+                | MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
 
               module ChildAccess
                 extend MetronomeSDK::Internal::Type::Union
 
-                type type_ =
+                type commit_hierarchy_child_access_all =
                   {
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::Type::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
                   }
 
-                class Type < MetronomeSDK::Internal::Type::BaseModel
-                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::Type::type_
+                class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
 
                   def initialize: (
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::Type::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
                   ) -> void
 
                   def to_hash: -> {
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::Type::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
                   }
 
                   type type_ = :ALL
@@ -561,29 +492,56 @@ module MetronomeSDK
 
                     ALL: :ALL
 
-                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::Type::type_]
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_]
                   end
                 end
 
-                type union_member2 =
+                type commit_hierarchy_child_access_none =
                   {
-                    contract_ids: ::Array[String],
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::UnionMember2::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
                   }
 
-                class UnionMember2 < MetronomeSDK::Internal::Type::BaseModel
+                class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+
+                  def initialize: (
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+                  ) -> void
+
+                  def to_hash: -> {
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+                  }
+
+                  type type_ = :NONE
+
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    NONE: :NONE
+
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_]
+                  end
+                end
+
+                type commit_hierarchy_child_access_contract_ids =
+                  {
+                    contract_ids: ::Array[String],
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
+                  }
+
+                class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
                   attr_accessor contract_ids: ::Array[String]
 
-                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::UnionMember2::type_
+                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
 
                   def initialize: (
                     contract_ids: ::Array[String],
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::UnionMember2::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
                   ) -> void
 
                   def to_hash: -> {
                     contract_ids: ::Array[String],
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::UnionMember2::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
                   }
 
                   type type_ = :CONTRACT_IDS
@@ -593,102 +551,11 @@ module MetronomeSDK
 
                     CONTRACT_IDS: :CONTRACT_IDS
 
-                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::UnionMember2::type_]
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_]
                   end
                 end
 
                 def self?.variants: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::HierarchyConfiguration::child_access]
-              end
-            end
-
-            type invoice_schedule =
-              {
-                credit_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::CreditType,
-                do_not_invoice: bool,
-                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::ScheduleItem]
-              }
-
-            class InvoiceSchedule < MetronomeSDK::Internal::Type::BaseModel
-              attr_reader credit_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::CreditType?
-
-              def credit_type=: (
-                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::CreditType
-              ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::CreditType
-
-              attr_reader do_not_invoice: bool?
-
-              def do_not_invoice=: (bool) -> bool
-
-              attr_reader schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::ScheduleItem]?
-
-              def schedule_items=: (
-                ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::ScheduleItem]
-              ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::ScheduleItem]
-
-              def initialize: (
-                ?credit_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::CreditType,
-                ?do_not_invoice: bool,
-                ?schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::ScheduleItem]
-              ) -> void
-
-              def to_hash: -> {
-                credit_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::CreditType,
-                do_not_invoice: bool,
-                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::ScheduleItem]
-              }
-
-              type credit_type = { id: String, name: String }
-
-              class CreditType < MetronomeSDK::Internal::Type::BaseModel
-                attr_accessor id: String
-
-                attr_accessor name: String
-
-                def initialize: (id: String, name: String) -> void
-
-                def to_hash: -> { id: String, name: String }
-              end
-
-              type schedule_item =
-                {
-                  id: String,
-                  amount: Float,
-                  quantity: Float,
-                  timestamp: Time,
-                  unit_price: Float,
-                  invoice_id: String?
-                }
-
-              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
-                attr_accessor id: String
-
-                attr_accessor amount: Float
-
-                attr_accessor quantity: Float
-
-                attr_accessor timestamp: Time
-
-                attr_accessor unit_price: Float
-
-                attr_accessor invoice_id: String?
-
-                def initialize: (
-                  id: String,
-                  amount: Float,
-                  quantity: Float,
-                  timestamp: Time,
-                  unit_price: Float,
-                  ?invoice_id: String?
-                ) -> void
-
-                def to_hash: -> {
-                  id: String,
-                  amount: Float,
-                  quantity: Float,
-                  timestamp: Time,
-                  unit_price: Float,
-                  invoice_id: String?
-                }
               end
             end
 
@@ -753,7 +620,7 @@ module MetronomeSDK
               id: String,
               product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Product,
               type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::type_,
-              access_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule,
+              access_schedule: MetronomeSDK::ScheduleDuration,
               applicable_product_ids: ::Array[String],
               applicable_product_tags: ::Array[String],
               description: String,
@@ -772,11 +639,11 @@ module MetronomeSDK
 
             attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::type_
 
-            attr_reader access_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule?
+            attr_reader access_schedule: MetronomeSDK::ScheduleDuration?
 
             def access_schedule=: (
-              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule
-            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule
+              MetronomeSDK::ScheduleDuration
+            ) -> MetronomeSDK::ScheduleDuration
 
             attr_reader applicable_product_ids: ::Array[String]?
 
@@ -822,7 +689,7 @@ module MetronomeSDK
               id: String,
               product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Product,
               type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::type_,
-              ?access_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule,
+              ?access_schedule: MetronomeSDK::ScheduleDuration,
               ?applicable_product_ids: ::Array[String],
               ?applicable_product_tags: ::Array[String],
               ?description: String,
@@ -838,7 +705,7 @@ module MetronomeSDK
               id: String,
               product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Product,
               type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::type_,
-              access_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule,
+              access_schedule: MetronomeSDK::ScheduleDuration,
               applicable_product_ids: ::Array[String],
               applicable_product_tags: ::Array[String],
               description: String,
@@ -872,76 +739,6 @@ module MetronomeSDK
               def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::type_]
             end
 
-            type access_schedule =
-              {
-                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule::ScheduleItem],
-                credit_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule::CreditType
-              }
-
-            class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
-              attr_accessor schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule::ScheduleItem]
-
-              attr_reader credit_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule::CreditType?
-
-              def credit_type=: (
-                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule::CreditType
-              ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule::CreditType
-
-              def initialize: (
-                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule::ScheduleItem],
-                ?credit_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule::CreditType
-              ) -> void
-
-              def to_hash: -> {
-                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule::ScheduleItem],
-                credit_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::AccessSchedule::CreditType
-              }
-
-              type schedule_item =
-                {
-                  id: String,
-                  amount: Float,
-                  ending_before: Time,
-                  starting_at: Time
-                }
-
-              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
-                attr_accessor id: String
-
-                attr_accessor amount: Float
-
-                attr_accessor ending_before: Time
-
-                attr_accessor starting_at: Time
-
-                def initialize: (
-                  id: String,
-                  amount: Float,
-                  ending_before: Time,
-                  starting_at: Time
-                ) -> void
-
-                def to_hash: -> {
-                  id: String,
-                  amount: Float,
-                  ending_before: Time,
-                  starting_at: Time
-                }
-              end
-
-              type credit_type = { id: String, name: String }
-
-              class CreditType < MetronomeSDK::Internal::Type::BaseModel
-                attr_accessor id: String
-
-                attr_accessor name: String
-
-                def initialize: (id: String, name: String) -> void
-
-                def to_hash: -> { id: String, name: String }
-              end
-            end
-
             type hierarchy_configuration =
               {
                 child_access: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::child_access
@@ -959,26 +756,27 @@ module MetronomeSDK
               }
 
               type child_access =
-                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::Type
-                | MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::UnionMember2
+                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll
+                | MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone
+                | MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
 
               module ChildAccess
                 extend MetronomeSDK::Internal::Type::Union
 
-                type type_ =
+                type commit_hierarchy_child_access_all =
                   {
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::Type::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
                   }
 
-                class Type < MetronomeSDK::Internal::Type::BaseModel
-                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::Type::type_
+                class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
 
                   def initialize: (
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::Type::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
                   ) -> void
 
                   def to_hash: -> {
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::Type::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
                   }
 
                   type type_ = :ALL
@@ -988,29 +786,56 @@ module MetronomeSDK
 
                     ALL: :ALL
 
-                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::Type::type_]
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_]
                   end
                 end
 
-                type union_member2 =
+                type commit_hierarchy_child_access_none =
                   {
-                    contract_ids: ::Array[String],
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::UnionMember2::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
                   }
 
-                class UnionMember2 < MetronomeSDK::Internal::Type::BaseModel
+                class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+
+                  def initialize: (
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+                  ) -> void
+
+                  def to_hash: -> {
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+                  }
+
+                  type type_ = :NONE
+
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    NONE: :NONE
+
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_]
+                  end
+                end
+
+                type commit_hierarchy_child_access_contract_ids =
+                  {
+                    contract_ids: ::Array[String],
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
+                  }
+
+                class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
                   attr_accessor contract_ids: ::Array[String]
 
-                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::UnionMember2::type_
+                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
 
                   def initialize: (
                     contract_ids: ::Array[String],
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::UnionMember2::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
                   ) -> void
 
                   def to_hash: -> {
                     contract_ids: ::Array[String],
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::UnionMember2::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
                   }
 
                   type type_ = :CONTRACT_IDS
@@ -1020,7 +845,7 @@ module MetronomeSDK
 
                     CONTRACT_IDS: :CONTRACT_IDS
 
-                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::UnionMember2::type_]
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_]
                   end
                 end
 
@@ -1070,159 +895,6 @@ module MetronomeSDK
                 product_id: String,
                 product_tags: ::Array[String]
               }
-            end
-          end
-
-          type add_discount =
-            {
-              id: String,
-              product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Product,
-              schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule,
-              custom_fields: ::Hash[Symbol, String],
-              name: String,
-              netsuite_sales_order_id: String
-            }
-
-          class AddDiscount < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor id: String
-
-            attr_accessor product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Product
-
-            attr_accessor schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule
-
-            attr_reader custom_fields: ::Hash[Symbol, String]?
-
-            def custom_fields=: (
-              ::Hash[Symbol, String]
-            ) -> ::Hash[Symbol, String]
-
-            attr_reader name: String?
-
-            def name=: (String) -> String
-
-            attr_reader netsuite_sales_order_id: String?
-
-            def netsuite_sales_order_id=: (String) -> String
-
-            def initialize: (
-              id: String,
-              product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Product,
-              schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule,
-              ?custom_fields: ::Hash[Symbol, String],
-              ?name: String,
-              ?netsuite_sales_order_id: String
-            ) -> void
-
-            def to_hash: -> {
-              id: String,
-              product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Product,
-              schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule,
-              custom_fields: ::Hash[Symbol, String],
-              name: String,
-              netsuite_sales_order_id: String
-            }
-
-            type product = { id: String, name: String }
-
-            class Product < MetronomeSDK::Internal::Type::BaseModel
-              attr_accessor id: String
-
-              attr_accessor name: String
-
-              def initialize: (id: String, name: String) -> void
-
-              def to_hash: -> { id: String, name: String }
-            end
-
-            type schedule =
-              {
-                credit_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule::CreditType,
-                do_not_invoice: bool,
-                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule::ScheduleItem]
-              }
-
-            class Schedule < MetronomeSDK::Internal::Type::BaseModel
-              attr_reader credit_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule::CreditType?
-
-              def credit_type=: (
-                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule::CreditType
-              ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule::CreditType
-
-              attr_reader do_not_invoice: bool?
-
-              def do_not_invoice=: (bool) -> bool
-
-              attr_reader schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule::ScheduleItem]?
-
-              def schedule_items=: (
-                ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule::ScheduleItem]
-              ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule::ScheduleItem]
-
-              def initialize: (
-                ?credit_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule::CreditType,
-                ?do_not_invoice: bool,
-                ?schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule::ScheduleItem]
-              ) -> void
-
-              def to_hash: -> {
-                credit_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule::CreditType,
-                do_not_invoice: bool,
-                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddDiscount::Schedule::ScheduleItem]
-              }
-
-              type credit_type = { id: String, name: String }
-
-              class CreditType < MetronomeSDK::Internal::Type::BaseModel
-                attr_accessor id: String
-
-                attr_accessor name: String
-
-                def initialize: (id: String, name: String) -> void
-
-                def to_hash: -> { id: String, name: String }
-              end
-
-              type schedule_item =
-                {
-                  id: String,
-                  amount: Float,
-                  quantity: Float,
-                  timestamp: Time,
-                  unit_price: Float,
-                  invoice_id: String?
-                }
-
-              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
-                attr_accessor id: String
-
-                attr_accessor amount: Float
-
-                attr_accessor quantity: Float
-
-                attr_accessor timestamp: Time
-
-                attr_accessor unit_price: Float
-
-                attr_accessor invoice_id: String?
-
-                def initialize: (
-                  id: String,
-                  amount: Float,
-                  quantity: Float,
-                  timestamp: Time,
-                  unit_price: Float,
-                  ?invoice_id: String?
-                ) -> void
-
-                def to_hash: -> {
-                  id: String,
-                  amount: Float,
-                  quantity: Float,
-                  timestamp: Time,
-                  unit_price: Float,
-                  invoice_id: String?
-                }
-              end
             end
           end
 
@@ -1447,22 +1119,22 @@ module MetronomeSDK
             type overwrite_rate =
               {
                 rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::rate_type,
-                credit_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::CreditType,
+                credit_type: MetronomeSDK::CreditTypeData,
                 custom_rate: ::Hash[Symbol, top],
                 is_prorated: bool,
                 price: Float,
                 quantity: Float,
-                tiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::Tier]
+                tiers: ::Array[MetronomeSDK::Tier]
               }
 
             class OverwriteRate < MetronomeSDK::Internal::Type::BaseModel
               attr_accessor rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::rate_type
 
-              attr_reader credit_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::CreditType?
+              attr_reader credit_type: MetronomeSDK::CreditTypeData?
 
               def credit_type=: (
-                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::CreditType
-              ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::CreditType
+                MetronomeSDK::CreditTypeData
+              ) -> MetronomeSDK::CreditTypeData
 
               attr_reader custom_rate: ::Hash[Symbol, top]?
 
@@ -1480,30 +1152,30 @@ module MetronomeSDK
 
               def quantity=: (Float) -> Float
 
-              attr_reader tiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::Tier]?
+              attr_reader tiers: ::Array[MetronomeSDK::Tier]?
 
               def tiers=: (
-                ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::Tier]
-              ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::Tier]
+                ::Array[MetronomeSDK::Tier]
+              ) -> ::Array[MetronomeSDK::Tier]
 
               def initialize: (
                 rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::rate_type,
-                ?credit_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::CreditType,
+                ?credit_type: MetronomeSDK::CreditTypeData,
                 ?custom_rate: ::Hash[Symbol, top],
                 ?is_prorated: bool,
                 ?price: Float,
                 ?quantity: Float,
-                ?tiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::Tier]
+                ?tiers: ::Array[MetronomeSDK::Tier]
               ) -> void
 
               def to_hash: -> {
                 rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::rate_type,
-                credit_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::CreditType,
+                credit_type: MetronomeSDK::CreditTypeData,
                 custom_rate: ::Hash[Symbol, top],
                 is_prorated: bool,
                 price: Float,
                 quantity: Float,
-                tiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::Tier]
+                tiers: ::Array[MetronomeSDK::Tier]
               }
 
               type rate_type =
@@ -1519,32 +1191,6 @@ module MetronomeSDK
                 CUSTOM: :CUSTOM
 
                 def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::rate_type]
-              end
-
-              type credit_type = { id: String, name: String }
-
-              class CreditType < MetronomeSDK::Internal::Type::BaseModel
-                attr_accessor id: String
-
-                attr_accessor name: String
-
-                def initialize: (id: String, name: String) -> void
-
-                def to_hash: -> { id: String, name: String }
-              end
-
-              type tier = { price: Float, size: Float }
-
-              class Tier < MetronomeSDK::Internal::Type::BaseModel
-                attr_accessor price: Float
-
-                attr_reader size: Float?
-
-                def size=: (Float) -> Float
-
-                def initialize: (price: Float, ?size: Float) -> void
-
-                def to_hash: -> { price: Float, size: Float }
               end
             end
 
@@ -1847,66 +1493,6 @@ module MetronomeSDK
             end
           end
 
-          type add_pro_service =
-            {
-              id: String,
-              max_amount: Float,
-              product_id: String,
-              quantity: Float,
-              unit_price: Float,
-              custom_fields: ::Hash[Symbol, String],
-              description: String,
-              netsuite_sales_order_id: String
-            }
-
-          class AddProService < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor id: String
-
-            attr_accessor max_amount: Float
-
-            attr_accessor product_id: String
-
-            attr_accessor quantity: Float
-
-            attr_accessor unit_price: Float
-
-            attr_reader custom_fields: ::Hash[Symbol, String]?
-
-            def custom_fields=: (
-              ::Hash[Symbol, String]
-            ) -> ::Hash[Symbol, String]
-
-            attr_reader description: String?
-
-            def description=: (String) -> String
-
-            attr_reader netsuite_sales_order_id: String?
-
-            def netsuite_sales_order_id=: (String) -> String
-
-            def initialize: (
-              id: String,
-              max_amount: Float,
-              product_id: String,
-              quantity: Float,
-              unit_price: Float,
-              ?custom_fields: ::Hash[Symbol, String],
-              ?description: String,
-              ?netsuite_sales_order_id: String
-            ) -> void
-
-            def to_hash: -> {
-              id: String,
-              max_amount: Float,
-              product_id: String,
-              quantity: Float,
-              unit_price: Float,
-              custom_fields: ::Hash[Symbol, String],
-              description: String,
-              netsuite_sales_order_id: String
-            }
-          end
-
           type add_recurring_commit =
             {
               id: String,
@@ -2176,26 +1762,27 @@ module MetronomeSDK
               }
 
               type child_access =
-                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::Type
-                | MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::UnionMember2
+                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll
+                | MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone
+                | MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
 
               module ChildAccess
                 extend MetronomeSDK::Internal::Type::Union
 
-                type type_ =
+                type commit_hierarchy_child_access_all =
                   {
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::Type::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
                   }
 
-                class Type < MetronomeSDK::Internal::Type::BaseModel
-                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::Type::type_
+                class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
 
                   def initialize: (
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::Type::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
                   ) -> void
 
                   def to_hash: -> {
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::Type::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
                   }
 
                   type type_ = :ALL
@@ -2205,29 +1792,56 @@ module MetronomeSDK
 
                     ALL: :ALL
 
-                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::Type::type_]
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_]
                   end
                 end
 
-                type union_member2 =
+                type commit_hierarchy_child_access_none =
                   {
-                    contract_ids: ::Array[String],
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::UnionMember2::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
                   }
 
-                class UnionMember2 < MetronomeSDK::Internal::Type::BaseModel
+                class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+
+                  def initialize: (
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+                  ) -> void
+
+                  def to_hash: -> {
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+                  }
+
+                  type type_ = :NONE
+
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    NONE: :NONE
+
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_]
+                  end
+                end
+
+                type commit_hierarchy_child_access_contract_ids =
+                  {
+                    contract_ids: ::Array[String],
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
+                  }
+
+                class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
                   attr_accessor contract_ids: ::Array[String]
 
-                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::UnionMember2::type_
+                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
 
                   def initialize: (
                     contract_ids: ::Array[String],
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::UnionMember2::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
                   ) -> void
 
                   def to_hash: -> {
                     contract_ids: ::Array[String],
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::UnionMember2::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
                   }
 
                   type type_ = :CONTRACT_IDS
@@ -2237,7 +1851,7 @@ module MetronomeSDK
 
                     CONTRACT_IDS: :CONTRACT_IDS
 
-                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::UnionMember2::type_]
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_]
                   end
                 end
 
@@ -2648,26 +2262,27 @@ module MetronomeSDK
               }
 
               type child_access =
-                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::Type
-                | MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::UnionMember2
+                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll
+                | MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone
+                | MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
 
               module ChildAccess
                 extend MetronomeSDK::Internal::Type::Union
 
-                type type_ =
+                type commit_hierarchy_child_access_all =
                   {
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::Type::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
                   }
 
-                class Type < MetronomeSDK::Internal::Type::BaseModel
-                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::Type::type_
+                class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
 
                   def initialize: (
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::Type::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
                   ) -> void
 
                   def to_hash: -> {
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::Type::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
                   }
 
                   type type_ = :ALL
@@ -2677,29 +2292,56 @@ module MetronomeSDK
 
                     ALL: :ALL
 
-                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::Type::type_]
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_]
                   end
                 end
 
-                type union_member2 =
+                type commit_hierarchy_child_access_none =
                   {
-                    contract_ids: ::Array[String],
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::UnionMember2::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
                   }
 
-                class UnionMember2 < MetronomeSDK::Internal::Type::BaseModel
+                class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+
+                  def initialize: (
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+                  ) -> void
+
+                  def to_hash: -> {
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+                  }
+
+                  type type_ = :NONE
+
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    NONE: :NONE
+
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_]
+                  end
+                end
+
+                type commit_hierarchy_child_access_contract_ids =
+                  {
+                    contract_ids: ::Array[String],
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
+                  }
+
+                class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
                   attr_accessor contract_ids: ::Array[String]
 
-                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::UnionMember2::type_
+                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
 
                   def initialize: (
                     contract_ids: ::Array[String],
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::UnionMember2::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
                   ) -> void
 
                   def to_hash: -> {
                     contract_ids: ::Array[String],
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::UnionMember2::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
                   }
 
                   type type_ = :CONTRACT_IDS
@@ -2709,7 +2351,7 @@ module MetronomeSDK
 
                     CONTRACT_IDS: :CONTRACT_IDS
 
-                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::UnionMember2::type_]
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_]
                   end
                 end
 
@@ -2954,7 +2596,7 @@ module MetronomeSDK
             {
               id: String,
               product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Product,
-              schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule,
+              schedule: MetronomeSDK::SchedulePointInTime,
               name: String,
               netsuite_sales_order_id: String
             }
@@ -2964,7 +2606,7 @@ module MetronomeSDK
 
             attr_accessor product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Product
 
-            attr_accessor schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule
+            attr_accessor schedule: MetronomeSDK::SchedulePointInTime
 
             attr_reader name: String?
 
@@ -2977,7 +2619,7 @@ module MetronomeSDK
             def initialize: (
               id: String,
               product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Product,
-              schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule,
+              schedule: MetronomeSDK::SchedulePointInTime,
               ?name: String,
               ?netsuite_sales_order_id: String
             ) -> void
@@ -2985,7 +2627,7 @@ module MetronomeSDK
             def to_hash: -> {
               id: String,
               product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Product,
-              schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule,
+              schedule: MetronomeSDK::SchedulePointInTime,
               name: String,
               netsuite_sales_order_id: String
             }
@@ -3000,97 +2642,6 @@ module MetronomeSDK
               def initialize: (id: String, name: String) -> void
 
               def to_hash: -> { id: String, name: String }
-            end
-
-            type schedule =
-              {
-                credit_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule::CreditType,
-                do_not_invoice: bool,
-                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule::ScheduleItem]
-              }
-
-            class Schedule < MetronomeSDK::Internal::Type::BaseModel
-              attr_reader credit_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule::CreditType?
-
-              def credit_type=: (
-                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule::CreditType
-              ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule::CreditType
-
-              attr_reader do_not_invoice: bool?
-
-              def do_not_invoice=: (bool) -> bool
-
-              attr_reader schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule::ScheduleItem]?
-
-              def schedule_items=: (
-                ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule::ScheduleItem]
-              ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule::ScheduleItem]
-
-              def initialize: (
-                ?credit_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule::CreditType,
-                ?do_not_invoice: bool,
-                ?schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule::ScheduleItem]
-              ) -> void
-
-              def to_hash: -> {
-                credit_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule::CreditType,
-                do_not_invoice: bool,
-                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddScheduledCharge::Schedule::ScheduleItem]
-              }
-
-              type credit_type = { id: String, name: String }
-
-              class CreditType < MetronomeSDK::Internal::Type::BaseModel
-                attr_accessor id: String
-
-                attr_accessor name: String
-
-                def initialize: (id: String, name: String) -> void
-
-                def to_hash: -> { id: String, name: String }
-              end
-
-              type schedule_item =
-                {
-                  id: String,
-                  amount: Float,
-                  quantity: Float,
-                  timestamp: Time,
-                  unit_price: Float,
-                  invoice_id: String?
-                }
-
-              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
-                attr_accessor id: String
-
-                attr_accessor amount: Float
-
-                attr_accessor quantity: Float
-
-                attr_accessor timestamp: Time
-
-                attr_accessor unit_price: Float
-
-                attr_accessor invoice_id: String?
-
-                def initialize: (
-                  id: String,
-                  amount: Float,
-                  quantity: Float,
-                  timestamp: Time,
-                  unit_price: Float,
-                  ?invoice_id: String?
-                ) -> void
-
-                def to_hash: -> {
-                  id: String,
-                  amount: Float,
-                  quantity: Float,
-                  timestamp: Time,
-                  unit_price: Float,
-                  invoice_id: String?
-                }
-              end
             end
           end
 
@@ -3760,26 +3311,27 @@ module MetronomeSDK
               }
 
               type child_access =
-                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::Type
-                | MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::UnionMember2
+                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll
+                | MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone
+                | MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
 
               module ChildAccess
                 extend MetronomeSDK::Internal::Type::Union
 
-                type type_ =
+                type commit_hierarchy_child_access_all =
                   {
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::Type::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
                   }
 
-                class Type < MetronomeSDK::Internal::Type::BaseModel
-                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::Type::type_
+                class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
 
                   def initialize: (
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::Type::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
                   ) -> void
 
                   def to_hash: -> {
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::Type::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
                   }
 
                   type type_ = :ALL
@@ -3789,29 +3341,56 @@ module MetronomeSDK
 
                     ALL: :ALL
 
-                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::Type::type_]
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_]
                   end
                 end
 
-                type union_member2 =
+                type commit_hierarchy_child_access_none =
                   {
-                    contract_ids: ::Array[String],
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::UnionMember2::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
                   }
 
-                class UnionMember2 < MetronomeSDK::Internal::Type::BaseModel
+                class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+
+                  def initialize: (
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+                  ) -> void
+
+                  def to_hash: -> {
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+                  }
+
+                  type type_ = :NONE
+
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    NONE: :NONE
+
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_]
+                  end
+                end
+
+                type commit_hierarchy_child_access_contract_ids =
+                  {
+                    contract_ids: ::Array[String],
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
+                  }
+
+                class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
                   attr_accessor contract_ids: ::Array[String]
 
-                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::UnionMember2::type_
+                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
 
                   def initialize: (
                     contract_ids: ::Array[String],
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::UnionMember2::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
                   ) -> void
 
                   def to_hash: -> {
                     contract_ids: ::Array[String],
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::UnionMember2::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
                   }
 
                   type type_ = :CONTRACT_IDS
@@ -3821,7 +3400,7 @@ module MetronomeSDK
 
                     CONTRACT_IDS: :CONTRACT_IDS
 
-                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::UnionMember2::type_]
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_]
                   end
                 end
 
@@ -4189,26 +3768,27 @@ module MetronomeSDK
               }
 
               type child_access =
-                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::Type
-                | MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::UnionMember2
+                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll
+                | MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone
+                | MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
 
               module ChildAccess
                 extend MetronomeSDK::Internal::Type::Union
 
-                type type_ =
+                type commit_hierarchy_child_access_all =
                   {
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::Type::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
                   }
 
-                class Type < MetronomeSDK::Internal::Type::BaseModel
-                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::Type::type_
+                class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
 
                   def initialize: (
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::Type::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
                   ) -> void
 
                   def to_hash: -> {
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::Type::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_
                   }
 
                   type type_ = :ALL
@@ -4218,29 +3798,56 @@ module MetronomeSDK
 
                     ALL: :ALL
 
-                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::Type::type_]
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::type_]
                   end
                 end
 
-                type union_member2 =
+                type commit_hierarchy_child_access_none =
                   {
-                    contract_ids: ::Array[String],
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::UnionMember2::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
                   }
 
-                class UnionMember2 < MetronomeSDK::Internal::Type::BaseModel
+                class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+
+                  def initialize: (
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+                  ) -> void
+
+                  def to_hash: -> {
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_
+                  }
+
+                  type type_ = :NONE
+
+                  module Type
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    NONE: :NONE
+
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::type_]
+                  end
+                end
+
+                type commit_hierarchy_child_access_contract_ids =
+                  {
+                    contract_ids: ::Array[String],
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
+                  }
+
+                class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
                   attr_accessor contract_ids: ::Array[String]
 
-                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::UnionMember2::type_
+                  attr_accessor type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
 
                   def initialize: (
                     contract_ids: ::Array[String],
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::UnionMember2::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
                   ) -> void
 
                   def to_hash: -> {
                     contract_ids: ::Array[String],
-                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::UnionMember2::type_
+                    type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_
                   }
 
                   type type_ = :CONTRACT_IDS
@@ -4250,7 +3857,7 @@ module MetronomeSDK
 
                     CONTRACT_IDS: :CONTRACT_IDS
 
-                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::UnionMember2::type_]
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::type_]
                   end
                 end
 

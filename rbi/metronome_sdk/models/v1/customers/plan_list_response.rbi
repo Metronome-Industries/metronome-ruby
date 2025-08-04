@@ -172,18 +172,11 @@ module MetronomeSDK
               sig { returns(Float) }
               attr_accessor :amount_remaining
 
-              sig do
-                returns(
-                  MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap::CreditType
-                )
-              end
+              sig { returns(MetronomeSDK::CreditTypeData) }
               attr_reader :credit_type
 
               sig do
-                params(
-                  credit_type:
-                    MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap::CreditType::OrHash
-                ).void
+                params(credit_type: MetronomeSDK::CreditTypeData::OrHash).void
               end
               attr_writer :credit_type
 
@@ -191,8 +184,7 @@ module MetronomeSDK
                 params(
                   amount: Float,
                   amount_remaining: Float,
-                  credit_type:
-                    MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap::CreditType::OrHash
+                  credit_type: MetronomeSDK::CreditTypeData::OrHash
                 ).returns(T.attached_class)
               end
               def self.new(amount:, amount_remaining:, credit_type:)
@@ -203,38 +195,11 @@ module MetronomeSDK
                   {
                     amount: Float,
                     amount_remaining: Float,
-                    credit_type:
-                      MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap::CreditType
+                    credit_type: MetronomeSDK::CreditTypeData
                   }
                 )
               end
               def to_hash
-              end
-
-              class CreditType < MetronomeSDK::Internal::Type::BaseModel
-                OrHash =
-                  T.type_alias do
-                    T.any(
-                      MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap::CreditType,
-                      MetronomeSDK::Internal::AnyHash
-                    )
-                  end
-
-                sig { returns(String) }
-                attr_accessor :id
-
-                sig { returns(String) }
-                attr_accessor :name
-
-                sig do
-                  params(id: String, name: String).returns(T.attached_class)
-                end
-                def self.new(id:, name:)
-                end
-
-                sig { override.returns({ id: String, name: String }) }
-                def to_hash
-                end
               end
             end
           end

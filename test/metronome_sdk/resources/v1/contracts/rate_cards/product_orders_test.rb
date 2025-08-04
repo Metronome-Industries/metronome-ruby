@@ -19,7 +19,7 @@ class MetronomeSDK::Test::Resources::V1::Contracts::RateCards::ProductOrdersTest
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateResponse::Data
+        data: MetronomeSDK::ID
       }
     end
   end
@@ -37,7 +37,7 @@ class MetronomeSDK::Test::Resources::V1::Contracts::RateCards::ProductOrdersTest
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderSetResponse::Data
+        data: MetronomeSDK::ID
       }
     end
   end
