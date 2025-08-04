@@ -3,14 +3,31 @@ module MetronomeSDK
     module V1
       module Contracts
         module RateCards
-          type rate_add_many_response = { data: MetronomeSDK::ID }
+          type rate_add_many_response =
+            {
+              data: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyResponse::Data
+            }
 
           class RateAddManyResponse < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor data: MetronomeSDK::ID
+            attr_accessor data: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyResponse::Data
 
-            def initialize: (data: MetronomeSDK::ID) -> void
+            def initialize: (
+              data: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyResponse::Data
+            ) -> void
 
-            def to_hash: -> { data: MetronomeSDK::ID }
+            def to_hash: -> {
+              data: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyResponse::Data
+            }
+
+            type data = { id: String }
+
+            class Data < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              def initialize: (id: String) -> void
+
+              def to_hash: -> { id: String }
+            end
           end
         end
       end
