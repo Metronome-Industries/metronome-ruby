@@ -4168,6 +4168,7 @@ module MetronomeSDK
             applicable_product_tags: ::Array[String]?,
             hierarchy_configuration: MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration,
             netsuite_sales_order_id: String?,
+            priority: Float?,
             product_id: String
           }
 
@@ -4192,6 +4193,8 @@ module MetronomeSDK
 
           attr_accessor netsuite_sales_order_id: String?
 
+          attr_accessor priority: Float?
+
           attr_reader product_id: String?
 
           def product_id=: (String) -> String
@@ -4203,6 +4206,7 @@ module MetronomeSDK
             ?applicable_product_tags: ::Array[String]?,
             ?hierarchy_configuration: MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration,
             ?netsuite_sales_order_id: String?,
+            ?priority: Float?,
             ?product_id: String
           ) -> void
 
@@ -4213,6 +4217,7 @@ module MetronomeSDK
             applicable_product_tags: ::Array[String]?,
             hierarchy_configuration: MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration,
             netsuite_sales_order_id: String?,
+            priority: Float?,
             product_id: String
           }
 

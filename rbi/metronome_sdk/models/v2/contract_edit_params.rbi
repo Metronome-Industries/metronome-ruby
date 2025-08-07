@@ -9982,6 +9982,9 @@ module MetronomeSDK
           sig { returns(T.nilable(String)) }
           attr_accessor :netsuite_sales_order_id
 
+          sig { returns(T.nilable(Float)) }
+          attr_accessor :priority
+
           sig { returns(T.nilable(String)) }
           attr_reader :product_id
 
@@ -9998,6 +10001,7 @@ module MetronomeSDK
               hierarchy_configuration:
                 MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration::OrHash,
               netsuite_sales_order_id: T.nilable(String),
+              priority: T.nilable(Float),
               product_id: String
             ).returns(T.attached_class)
           end
@@ -10015,6 +10019,7 @@ module MetronomeSDK
             # Optional configuration for commit hierarchy access control
             hierarchy_configuration: nil,
             netsuite_sales_order_id: nil,
+            priority: nil,
             product_id: nil
           )
           end
@@ -10030,6 +10035,7 @@ module MetronomeSDK
                 hierarchy_configuration:
                   MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration,
                 netsuite_sales_order_id: T.nilable(String),
+                priority: T.nilable(Float),
                 product_id: String
               }
             )
