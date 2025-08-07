@@ -4678,12 +4678,17 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :netsuite_sales_order_id, String, nil?: true
 
+          # @!attribute priority
+          #
+          #   @return [Float, nil]
+          optional :priority, Float, nil?: true
+
           # @!attribute product_id
           #
           #   @return [String, nil]
           optional :product_id, String
 
-          # @!method initialize(credit_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, netsuite_sales_order_id: nil, product_id: nil)
+          # @!method initialize(credit_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, netsuite_sales_order_id: nil, priority: nil, product_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit} for more details.
           #
@@ -4698,6 +4703,8 @@ module MetronomeSDK
           #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration] Optional configuration for commit hierarchy access control
           #
           #   @param netsuite_sales_order_id [String, nil]
+          #
+          #   @param priority [Float, nil]
           #
           #   @param product_id [String]
 
