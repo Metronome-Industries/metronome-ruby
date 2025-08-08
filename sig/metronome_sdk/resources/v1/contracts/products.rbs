@@ -9,6 +9,7 @@ module MetronomeSDK
             ?billable_metric_id: String,
             ?composite_product_ids: ::Array[String],
             ?composite_tags: ::Array[String],
+            ?custom_fields: ::Hash[Symbol, String],
             ?exclude_free_usage: bool,
             ?is_refundable: bool,
             ?netsuite_internal_item_id: String,
