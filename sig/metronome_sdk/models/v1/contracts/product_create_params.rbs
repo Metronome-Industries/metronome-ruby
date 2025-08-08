@@ -9,6 +9,7 @@ module MetronomeSDK
             billable_metric_id: String,
             composite_product_ids: ::Array[String],
             composite_tags: ::Array[String],
+            custom_fields: ::Hash[Symbol, String],
             exclude_free_usage: bool,
             is_refundable: bool,
             netsuite_internal_item_id: String,
@@ -40,6 +41,10 @@ module MetronomeSDK
           attr_reader composite_tags: ::Array[String]?
 
           def composite_tags=: (::Array[String]) -> ::Array[String]
+
+          attr_reader custom_fields: ::Hash[Symbol, String]?
+
+          def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
 
           attr_reader exclude_free_usage: bool?
 
@@ -79,6 +84,7 @@ module MetronomeSDK
             ?billable_metric_id: String,
             ?composite_product_ids: ::Array[String],
             ?composite_tags: ::Array[String],
+            ?custom_fields: ::Hash[Symbol, String],
             ?exclude_free_usage: bool,
             ?is_refundable: bool,
             ?netsuite_internal_item_id: String,
@@ -97,6 +103,7 @@ module MetronomeSDK
             billable_metric_id: String,
             composite_product_ids: ::Array[String],
             composite_tags: ::Array[String],
+            custom_fields: ::Hash[Symbol, String],
             exclude_free_usage: bool,
             is_refundable: bool,
             netsuite_internal_item_id: String,
