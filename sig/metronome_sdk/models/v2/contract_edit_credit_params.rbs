@@ -8,6 +8,7 @@ module MetronomeSDK
           access_schedule: MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule,
           applicable_product_ids: ::Array[String]?,
           applicable_product_tags: ::Array[String]?,
+          priority: Float?,
           product_id: String,
           specifiers: ::Array[MetronomeSDK::V2::ContractEditCreditParams::Specifier]?
         }
@@ -31,6 +32,8 @@ module MetronomeSDK
 
         attr_accessor applicable_product_tags: ::Array[String]?
 
+        attr_accessor priority: Float?
+
         attr_reader product_id: String?
 
         def product_id=: (String) -> String
@@ -43,6 +46,7 @@ module MetronomeSDK
           ?access_schedule: MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule,
           ?applicable_product_ids: ::Array[String]?,
           ?applicable_product_tags: ::Array[String]?,
+          ?priority: Float?,
           ?product_id: String,
           ?specifiers: ::Array[MetronomeSDK::V2::ContractEditCreditParams::Specifier]?,
           ?request_options: MetronomeSDK::request_opts
@@ -54,6 +58,7 @@ module MetronomeSDK
           access_schedule: MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule,
           applicable_product_ids: ::Array[String]?,
           applicable_product_tags: ::Array[String]?,
+          priority: Float?,
           product_id: String,
           specifiers: ::Array[MetronomeSDK::V2::ContractEditCreditParams::Specifier]?,
           request_options: MetronomeSDK::RequestOptions

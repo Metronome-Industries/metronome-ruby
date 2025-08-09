@@ -39,6 +39,13 @@ module MetronomeSDK
         #   @return [Array<String>, nil]
         optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
 
+        # @!attribute priority
+        #   If multiple commits are applicable, the one with the lower priority will apply
+        #   first.
+        #
+        #   @return [Float, nil]
+        optional :priority, Float, nil?: true
+
         # @!attribute product_id
         #
         #   @return [String, nil]
@@ -59,7 +66,7 @@ module MetronomeSDK
                  },
                  nil?: true
 
-        # @!method initialize(credit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, product_id: nil, specifiers: nil, request_options: {})
+        # @!method initialize(credit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, priority: nil, product_id: nil, specifiers: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V2::ContractEditCreditParams} for more details.
         #
@@ -72,6 +79,8 @@ module MetronomeSDK
         #   @param applicable_product_ids [Array<String>, nil] Which products the credit applies to. If both applicable_product_ids and applica
         #
         #   @param applicable_product_tags [Array<String>, nil] Which tags the credit applies to. If both applicable*product_ids and applicable*
+        #
+        #   @param priority [Float, nil] If multiple commits are applicable, the one with the lower priority will apply f
         #
         #   @param product_id [String]
         #

@@ -14,6 +14,7 @@ module MetronomeSDK
               billable_metric_id: String,
               composite_product_ids: T::Array[String],
               composite_tags: T::Array[String],
+              custom_fields: T::Hash[Symbol, String],
               exclude_free_usage: T::Boolean,
               is_refundable: T::Boolean,
               netsuite_internal_item_id: String,
@@ -44,6 +45,7 @@ module MetronomeSDK
             composite_product_ids: nil,
             # Required for COMPOSITE products
             composite_tags: nil,
+            custom_fields: nil,
             # Beta feature only available for composite products. If true, products with $0
             # will not be included when computing composite usage. Defaults to false
             exclude_free_usage: nil,

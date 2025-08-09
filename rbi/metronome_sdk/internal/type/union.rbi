@@ -16,7 +16,8 @@ module MetronomeSDK
             T::Array[
               [
                 T.nilable(Symbol),
-                T.proc.returns(MetronomeSDK::Internal::Type::Converter::Input)
+                T.proc.returns(MetronomeSDK::Internal::Type::Converter::Input),
+                MetronomeSDK::Internal::AnyHash
               ]
             ]
           )
@@ -25,7 +26,13 @@ module MetronomeSDK
         end
 
         # @api private
-        sig { returns(T::Array[[T.nilable(Symbol), T.anything]]) }
+        sig do
+          returns(
+            T::Array[
+              [T.nilable(Symbol), T.anything, MetronomeSDK::Internal::AnyHash]
+            ]
+          )
+        end
         protected def derefed_variants
         end
 

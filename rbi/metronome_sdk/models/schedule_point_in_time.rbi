@@ -17,6 +17,14 @@ module MetronomeSDK
       sig { params(credit_type: MetronomeSDK::CreditTypeData::OrHash).void }
       attr_writer :credit_type
 
+      # This field is only applicable to commit invoice schedules. If true, this
+      # schedule will not generate an invoice.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :do_not_invoice
+
+      sig { params(do_not_invoice: T::Boolean).void }
+      attr_writer :do_not_invoice
+
       sig do
         returns(
           T.nilable(T::Array[MetronomeSDK::SchedulePointInTime::ScheduleItem])
@@ -35,17 +43,25 @@ module MetronomeSDK
       sig do
         params(
           credit_type: MetronomeSDK::CreditTypeData::OrHash,
+          do_not_invoice: T::Boolean,
           schedule_items:
             T::Array[MetronomeSDK::SchedulePointInTime::ScheduleItem::OrHash]
         ).returns(T.attached_class)
       end
-      def self.new(credit_type: nil, schedule_items: nil)
+      def self.new(
+        credit_type: nil,
+        # This field is only applicable to commit invoice schedules. If true, this
+        # schedule will not generate an invoice.
+        do_not_invoice: nil,
+        schedule_items: nil
+      )
       end
 
       sig do
         override.returns(
           {
             credit_type: MetronomeSDK::CreditTypeData,
+            do_not_invoice: T::Boolean,
             schedule_items:
               T::Array[MetronomeSDK::SchedulePointInTime::ScheduleItem]
           }

@@ -3217,6 +3217,13 @@ module MetronomeSDK
             #   @return [String, nil]
             optional :netsuite_sales_order_id, String, nil?: true
 
+            # @!attribute priority
+            #   If multiple commits are applicable, the one with the lower priority will apply
+            #   first.
+            #
+            #   @return [Float, nil]
+            optional :priority, Float, nil?: true
+
             # @!attribute product_id
             #
             #   @return [String, nil]
@@ -3240,7 +3247,7 @@ module MetronomeSDK
                      -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::Specifier] },
                      nil?: true
 
-            # @!method initialize(id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, product_id: nil, rollover_fraction: nil, specifiers: nil)
+            # @!method initialize(id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, product_id: nil, rollover_fraction: nil, specifiers: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit}
             #   for more details.
@@ -3260,6 +3267,8 @@ module MetronomeSDK
             #   @param name [String]
             #
             #   @param netsuite_sales_order_id [String, nil]
+            #
+            #   @param priority [Float, nil] If multiple commits are applicable, the one with the lower priority will apply f
             #
             #   @param product_id [String]
             #
@@ -3649,12 +3658,23 @@ module MetronomeSDK
             #   @return [String, nil]
             optional :netsuite_sales_order_id, String, nil?: true
 
+            # @!attribute priority
+            #   If multiple credits are applicable, the one with the lower priority will apply
+            #   first.
+            #
+            #   @return [Float, nil]
+            optional :priority, Float, nil?: true
+
             # @!attribute rollover_fraction
             #
             #   @return [Float, nil]
             optional :rollover_fraction, Float, nil?: true
 
-            # @!method initialize(id:, access_schedule: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, rollover_fraction: nil)
+            # @!method initialize(id:, access_schedule: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rollover_fraction: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit}
+            #   for more details.
+            #
             #   @param id [String]
             #
             #   @param access_schedule [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule]
@@ -3664,6 +3684,8 @@ module MetronomeSDK
             #   @param name [String]
             #
             #   @param netsuite_sales_order_id [String, nil]
+            #
+            #   @param priority [Float, nil] If multiple credits are applicable, the one with the lower priority will apply f
             #
             #   @param rollover_fraction [Float, nil]
 
@@ -3919,6 +3941,13 @@ module MetronomeSDK
               #   @return [String, nil]
               optional :credit_type_id, String
 
+              # @!attribute do_not_invoice
+              #   This field is only applicable to commit invoice schedules. If true, this
+              #   schedule will not generate an invoice.
+              #
+              #   @return [Boolean, nil]
+              optional :do_not_invoice, MetronomeSDK::Internal::Type::Boolean
+
               # @!attribute recurring_schedule
               #   Enter the unit price and quantity for the charge or instead only send the
               #   amount. If amount is sent, the unit price is assumed to be the amount and
@@ -3935,7 +3964,7 @@ module MetronomeSDK
               optional :schedule_items,
                        -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::ScheduleItem] }
 
-              # @!method initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil)
+              # @!method initialize(credit_type_id: nil, do_not_invoice: nil, recurring_schedule: nil, schedule_items: nil)
               #   Some parameter documentations has been truncated, see
               #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule}
               #   for more details.
@@ -3943,6 +3972,8 @@ module MetronomeSDK
               #   Must provide either schedule_items or recurring_schedule.
               #
               #   @param credit_type_id [String] Defaults to USD (cents) if not passed.
+              #
+              #   @param do_not_invoice [Boolean] This field is only applicable to commit invoice schedules. If true, this schedul
               #
               #   @param recurring_schedule [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateDiscount::Schedule::RecurringSchedule] Enter the unit price and quantity for the charge or instead only send the amount
               #

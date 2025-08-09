@@ -581,6 +581,7 @@ module MetronomeSDK
           type invoice_schedule =
             {
               credit_type_id: String,
+              do_not_invoice: bool,
               recurring_schedule: MetronomeSDK::V2::ContractEditParams::AddCommit::InvoiceSchedule::RecurringSchedule,
               schedule_items: ::Array[MetronomeSDK::V2::ContractEditParams::AddCommit::InvoiceSchedule::ScheduleItem]
             }
@@ -589,6 +590,10 @@ module MetronomeSDK
             attr_reader credit_type_id: String?
 
             def credit_type_id=: (String) -> String
+
+            attr_reader do_not_invoice: bool?
+
+            def do_not_invoice=: (bool) -> bool
 
             attr_reader recurring_schedule: MetronomeSDK::V2::ContractEditParams::AddCommit::InvoiceSchedule::RecurringSchedule?
 
@@ -604,12 +609,14 @@ module MetronomeSDK
 
             def initialize: (
               ?credit_type_id: String,
+              ?do_not_invoice: bool,
               ?recurring_schedule: MetronomeSDK::V2::ContractEditParams::AddCommit::InvoiceSchedule::RecurringSchedule,
               ?schedule_items: ::Array[MetronomeSDK::V2::ContractEditParams::AddCommit::InvoiceSchedule::ScheduleItem]
             ) -> void
 
             def to_hash: -> {
               credit_type_id: String,
+              do_not_invoice: bool,
               recurring_schedule: MetronomeSDK::V2::ContractEditParams::AddCommit::InvoiceSchedule::RecurringSchedule,
               schedule_items: ::Array[MetronomeSDK::V2::ContractEditParams::AddCommit::InvoiceSchedule::ScheduleItem]
             }
@@ -1269,6 +1276,7 @@ module MetronomeSDK
           type schedule =
             {
               credit_type_id: String,
+              do_not_invoice: bool,
               recurring_schedule: MetronomeSDK::V2::ContractEditParams::AddDiscount::Schedule::RecurringSchedule,
               schedule_items: ::Array[MetronomeSDK::V2::ContractEditParams::AddDiscount::Schedule::ScheduleItem]
             }
@@ -1277,6 +1285,10 @@ module MetronomeSDK
             attr_reader credit_type_id: String?
 
             def credit_type_id=: (String) -> String
+
+            attr_reader do_not_invoice: bool?
+
+            def do_not_invoice=: (bool) -> bool
 
             attr_reader recurring_schedule: MetronomeSDK::V2::ContractEditParams::AddDiscount::Schedule::RecurringSchedule?
 
@@ -1292,12 +1304,14 @@ module MetronomeSDK
 
             def initialize: (
               ?credit_type_id: String,
+              ?do_not_invoice: bool,
               ?recurring_schedule: MetronomeSDK::V2::ContractEditParams::AddDiscount::Schedule::RecurringSchedule,
               ?schedule_items: ::Array[MetronomeSDK::V2::ContractEditParams::AddDiscount::Schedule::ScheduleItem]
             ) -> void
 
             def to_hash: -> {
               credit_type_id: String,
+              do_not_invoice: bool,
               recurring_schedule: MetronomeSDK::V2::ContractEditParams::AddDiscount::Schedule::RecurringSchedule,
               schedule_items: ::Array[MetronomeSDK::V2::ContractEditParams::AddDiscount::Schedule::ScheduleItem]
             }
@@ -3174,6 +3188,7 @@ module MetronomeSDK
           type schedule =
             {
               credit_type_id: String,
+              do_not_invoice: bool,
               recurring_schedule: MetronomeSDK::V2::ContractEditParams::AddScheduledCharge::Schedule::RecurringSchedule,
               schedule_items: ::Array[MetronomeSDK::V2::ContractEditParams::AddScheduledCharge::Schedule::ScheduleItem]
             }
@@ -3182,6 +3197,10 @@ module MetronomeSDK
             attr_reader credit_type_id: String?
 
             def credit_type_id=: (String) -> String
+
+            attr_reader do_not_invoice: bool?
+
+            def do_not_invoice=: (bool) -> bool
 
             attr_reader recurring_schedule: MetronomeSDK::V2::ContractEditParams::AddScheduledCharge::Schedule::RecurringSchedule?
 
@@ -3197,12 +3216,14 @@ module MetronomeSDK
 
             def initialize: (
               ?credit_type_id: String,
+              ?do_not_invoice: bool,
               ?recurring_schedule: MetronomeSDK::V2::ContractEditParams::AddScheduledCharge::Schedule::RecurringSchedule,
               ?schedule_items: ::Array[MetronomeSDK::V2::ContractEditParams::AddScheduledCharge::Schedule::ScheduleItem]
             ) -> void
 
             def to_hash: -> {
               credit_type_id: String,
+              do_not_invoice: bool,
               recurring_schedule: MetronomeSDK::V2::ContractEditParams::AddScheduledCharge::Schedule::RecurringSchedule,
               schedule_items: ::Array[MetronomeSDK::V2::ContractEditParams::AddScheduledCharge::Schedule::ScheduleItem]
             }
@@ -3716,6 +3737,7 @@ module MetronomeSDK
             hierarchy_configuration: MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration,
             invoice_schedule: MetronomeSDK::V2::ContractEditParams::UpdateCommit::InvoiceSchedule,
             netsuite_sales_order_id: String?,
+            priority: Float?,
             product_id: String,
             rollover_fraction: Float?
           }
@@ -3747,6 +3769,8 @@ module MetronomeSDK
 
           attr_accessor netsuite_sales_order_id: String?
 
+          attr_accessor priority: Float?
+
           attr_reader product_id: String?
 
           def product_id=: (String) -> String
@@ -3761,6 +3785,7 @@ module MetronomeSDK
             ?hierarchy_configuration: MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration,
             ?invoice_schedule: MetronomeSDK::V2::ContractEditParams::UpdateCommit::InvoiceSchedule,
             ?netsuite_sales_order_id: String?,
+            ?priority: Float?,
             ?product_id: String,
             ?rollover_fraction: Float?
           ) -> void
@@ -3773,6 +3798,7 @@ module MetronomeSDK
             hierarchy_configuration: MetronomeSDK::V2::ContractEditParams::UpdateCommit::HierarchyConfiguration,
             invoice_schedule: MetronomeSDK::V2::ContractEditParams::UpdateCommit::InvoiceSchedule,
             netsuite_sales_order_id: String?,
+            priority: Float?,
             product_id: String,
             rollover_fraction: Float?
           }
@@ -4142,6 +4168,7 @@ module MetronomeSDK
             applicable_product_tags: ::Array[String]?,
             hierarchy_configuration: MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration,
             netsuite_sales_order_id: String?,
+            priority: Float?,
             product_id: String
           }
 
@@ -4166,6 +4193,8 @@ module MetronomeSDK
 
           attr_accessor netsuite_sales_order_id: String?
 
+          attr_accessor priority: Float?
+
           attr_reader product_id: String?
 
           def product_id=: (String) -> String
@@ -4177,6 +4206,7 @@ module MetronomeSDK
             ?applicable_product_tags: ::Array[String]?,
             ?hierarchy_configuration: MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration,
             ?netsuite_sales_order_id: String?,
+            ?priority: Float?,
             ?product_id: String
           ) -> void
 
@@ -4187,6 +4217,7 @@ module MetronomeSDK
             applicable_product_tags: ::Array[String]?,
             hierarchy_configuration: MetronomeSDK::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration,
             netsuite_sales_order_id: String?,
+            priority: Float?,
             product_id: String
           }
 

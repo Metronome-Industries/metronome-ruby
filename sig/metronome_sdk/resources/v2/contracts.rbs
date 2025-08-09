@@ -62,6 +62,7 @@ module MetronomeSDK
           ?applicable_product_tags: ::Array[String]?,
           ?invoice_contract_id: String,
           ?invoice_schedule: MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule,
+          ?priority: Float?,
           ?product_id: String,
           ?specifiers: ::Array[MetronomeSDK::V2::ContractEditCommitParams::Specifier]?,
           ?request_options: MetronomeSDK::request_opts
@@ -73,6 +74,7 @@ module MetronomeSDK
           ?access_schedule: MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule,
           ?applicable_product_ids: ::Array[String]?,
           ?applicable_product_tags: ::Array[String]?,
+          ?priority: Float?,
           ?product_id: String,
           ?specifiers: ::Array[MetronomeSDK::V2::ContractEditCreditParams::Specifier]?,
           ?request_options: MetronomeSDK::request_opts
