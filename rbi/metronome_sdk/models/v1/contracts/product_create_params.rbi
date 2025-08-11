@@ -111,7 +111,11 @@ module MetronomeSDK
           # GB. In this case, the conversion factor would be 1024 and the operation would be
           # "divide".
           sig do
-            returns(T.nilable(MetronomeSDK::V1::Contracts::QuantityConversion))
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityConversion
+              )
+            )
           end
           attr_reader :quantity_conversion
 
@@ -119,7 +123,7 @@ module MetronomeSDK
             params(
               quantity_conversion:
                 T.nilable(
-                  MetronomeSDK::V1::Contracts::QuantityConversion::OrHash
+                  MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityConversion::OrHash
                 )
             ).void
           end
@@ -130,14 +134,20 @@ module MetronomeSDK
           # the method is "round up" and the decimal places is 0, then the quantity will be
           # rounded up to the nearest integer.
           sig do
-            returns(T.nilable(MetronomeSDK::V1::Contracts::QuantityRounding))
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityRounding
+              )
+            )
           end
           attr_reader :quantity_rounding
 
           sig do
             params(
               quantity_rounding:
-                T.nilable(MetronomeSDK::V1::Contracts::QuantityRounding::OrHash)
+                T.nilable(
+                  MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityRounding::OrHash
+                )
             ).void
           end
           attr_writer :quantity_rounding
@@ -165,11 +175,11 @@ module MetronomeSDK
               pricing_group_key: T::Array[String],
               quantity_conversion:
                 T.nilable(
-                  MetronomeSDK::V1::Contracts::QuantityConversion::OrHash
+                  MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityConversion::OrHash
                 ),
               quantity_rounding:
                 T.nilable(
-                  MetronomeSDK::V1::Contracts::QuantityRounding::OrHash
+                  MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityRounding::OrHash
                 ),
               tags: T::Array[String],
               request_options: MetronomeSDK::RequestOptions::OrHash
@@ -240,9 +250,13 @@ module MetronomeSDK
                 presentation_group_key: T::Array[String],
                 pricing_group_key: T::Array[String],
                 quantity_conversion:
-                  T.nilable(MetronomeSDK::V1::Contracts::QuantityConversion),
+                  T.nilable(
+                    MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityConversion
+                  ),
                 quantity_rounding:
-                  T.nilable(MetronomeSDK::V1::Contracts::QuantityRounding),
+                  T.nilable(
+                    MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityRounding
+                  ),
                 tags: T::Array[String],
                 request_options: MetronomeSDK::RequestOptions
               }
@@ -302,6 +316,193 @@ module MetronomeSDK
               )
             end
             def self.values
+            end
+          end
+
+          class QuantityConversion < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityConversion,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            # The factor to multiply or divide the quantity by.
+            sig { returns(Float) }
+            attr_accessor :conversion_factor
+
+            # The operation to perform on the quantity
+            sig do
+              returns(
+                MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityConversion::Operation::OrSymbol
+              )
+            end
+            attr_accessor :operation
+
+            # Optional name for this conversion.
+            sig { returns(T.nilable(String)) }
+            attr_reader :name
+
+            sig { params(name: String).void }
+            attr_writer :name
+
+            # Optional. Only valid for USAGE products. If provided, the quantity will be
+            # converted using the provided conversion factor and operation. For example, if
+            # the operation is "multiply" and the conversion factor is 100, then the quantity
+            # will be multiplied by 100. This can be used in cases where data is sent in one
+            # unit and priced in another. For example, data could be sent in MB and priced in
+            # GB. In this case, the conversion factor would be 1024 and the operation would be
+            # "divide".
+            sig do
+              params(
+                conversion_factor: Float,
+                operation:
+                  MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityConversion::Operation::OrSymbol,
+                name: String
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The factor to multiply or divide the quantity by.
+              conversion_factor:,
+              # The operation to perform on the quantity
+              operation:,
+              # Optional name for this conversion.
+              name: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  conversion_factor: Float,
+                  operation:
+                    MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityConversion::Operation::OrSymbol,
+                  name: String
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # The operation to perform on the quantity
+            module Operation
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityConversion::Operation
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              MULTIPLY =
+                T.let(
+                  :MULTIPLY,
+                  MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityConversion::Operation::TaggedSymbol
+                )
+              DIVIDE =
+                T.let(
+                  :DIVIDE,
+                  MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityConversion::Operation::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityConversion::Operation::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
+
+          class QuantityRounding < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityRounding,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Float) }
+            attr_accessor :decimal_places
+
+            sig do
+              returns(
+                MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityRounding::RoundingMethod::OrSymbol
+              )
+            end
+            attr_accessor :rounding_method
+
+            # Optional. Only valid for USAGE products. If provided, the quantity will be
+            # rounded using the provided rounding method and decimal places. For example, if
+            # the method is "round up" and the decimal places is 0, then the quantity will be
+            # rounded up to the nearest integer.
+            sig do
+              params(
+                decimal_places: Float,
+                rounding_method:
+                  MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityRounding::RoundingMethod::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(decimal_places:, rounding_method:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  decimal_places: Float,
+                  rounding_method:
+                    MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityRounding::RoundingMethod::OrSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module RoundingMethod
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityRounding::RoundingMethod
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              ROUND_UP =
+                T.let(
+                  :ROUND_UP,
+                  MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityRounding::RoundingMethod::TaggedSymbol
+                )
+              ROUND_DOWN =
+                T.let(
+                  :ROUND_DOWN,
+                  MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityRounding::RoundingMethod::TaggedSymbol
+                )
+              ROUND_HALF_UP =
+                T.let(
+                  :ROUND_HALF_UP,
+                  MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityRounding::RoundingMethod::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityRounding::RoundingMethod::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
             end
           end
         end
