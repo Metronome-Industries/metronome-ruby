@@ -2194,12 +2194,27 @@ module MetronomeSDK
               sig { params(invoice_metadata: T::Hash[Symbol, String]).void }
               attr_writer :invoice_metadata
 
+              # If true, the payment will be made assuming the customer is present (i.e. on
+              # session).
+              #
+              # If false, the payment will be made assuming the customer is not present (i.e.
+              # off session). For cardholders from a country with an e-mandate requirement (e.g.
+              # India), the payment may be declined.
+              #
+              # If left blank, will default to false.
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :on_session_payment
+
+              sig { params(on_session_payment: T::Boolean).void }
+              attr_writer :on_session_payment
+
               # Only applicable if using STRIPE as your payment gate type.
               sig do
                 params(
                   payment_type:
                     MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol,
-                  invoice_metadata: T::Hash[Symbol, String]
+                  invoice_metadata: T::Hash[Symbol, String],
+                  on_session_payment: T::Boolean
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -2207,7 +2222,16 @@ module MetronomeSDK
                 payment_type:,
                 # Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
                 # your payment type.
-                invoice_metadata: nil
+                invoice_metadata: nil,
+                # If true, the payment will be made assuming the customer is present (i.e. on
+                # session).
+                #
+                # If false, the payment will be made assuming the customer is not present (i.e.
+                # off session). For cardholders from a country with an e-mandate requirement (e.g.
+                # India), the payment may be declined.
+                #
+                # If left blank, will default to false.
+                on_session_payment: nil
               )
               end
 
@@ -2216,7 +2240,8 @@ module MetronomeSDK
                   {
                     payment_type:
                       MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol,
-                    invoice_metadata: T::Hash[Symbol, String]
+                    invoice_metadata: T::Hash[Symbol, String],
+                    on_session_payment: T::Boolean
                   }
                 )
               end
