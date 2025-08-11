@@ -36,9 +36,9 @@ module MetronomeSDK
           #
           # @param pricing_group_key [Array<String>] For USAGE products only. If set, pricing for this product will be determined for
           #
-          # @param quantity_conversion [MetronomeSDK::Models::V1::Contracts::ProductCreateParams::QuantityConversion, nil] Optional. Only valid for USAGE products. If provided, the quantity will be conve
+          # @param quantity_conversion [MetronomeSDK::Models::V1::Contracts::QuantityConversion, nil] Optional. Only valid for USAGE products. If provided, the quantity will be conve
           #
-          # @param quantity_rounding [MetronomeSDK::Models::V1::Contracts::ProductCreateParams::QuantityRounding, nil] Optional. Only valid for USAGE products. If provided, the quantity will be round
+          # @param quantity_rounding [MetronomeSDK::Models::V1::Contracts::QuantityRounding, nil] Optional. Only valid for USAGE products. If provided, the quantity will be round
           #
           # @param tags [Array<String>]
           #
@@ -110,9 +110,9 @@ module MetronomeSDK
           #
           # @param pricing_group_key [Array<String>] For USAGE products only. If set, pricing for this product will be determined for
           #
-          # @param quantity_conversion [MetronomeSDK::Models::V1::Contracts::ProductUpdateParams::QuantityConversion, nil] Optional. Only valid for USAGE products. If provided, the quantity will be conve
+          # @param quantity_conversion [MetronomeSDK::Models::V1::Contracts::QuantityConversion, nil] Optional. Only valid for USAGE products. If provided, the quantity will be conve
           #
-          # @param quantity_rounding [MetronomeSDK::Models::V1::Contracts::ProductUpdateParams::QuantityRounding, nil] Optional. Only valid for USAGE products. If provided, the quantity will be round
+          # @param quantity_rounding [MetronomeSDK::Models::V1::Contracts::QuantityRounding, nil] Optional. Only valid for USAGE products. If provided, the quantity will be round
           #
           # @param tags [Array<String>] If not provided, defaults to product's current tags
           #
